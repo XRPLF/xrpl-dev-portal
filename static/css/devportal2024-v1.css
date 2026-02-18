@@ -18446,6 +18446,17 @@ h1:hover .hover_anchor, .h1:hover .hover_anchor, h2:hover .hover_anchor, .h2:hov
     margin-left: calc((100% - 8px * (12 - 1)) / 12 * 11 + 8px * 11);
   }
 }
+li.bds-grid__col {
+  list-style: none;
+  display: block;
+}
+
+ul.bds-grid__row {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
 .bds-link-icon {
   display: inline-flex;
   align-items: center;
@@ -22467,6 +22478,207 @@ html.dark .bds-link-text-directory {
 }
 .bds-link-text-directory__header h2, .bds-link-text-directory__header .h2, .bds-link-text-directory__header p {
   margin-bottom: 0;
+}
+
+.bds-card-text-icon-card {
+  display: flex !important;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  text-decoration: none;
+  box-sizing: border-box;
+  border-left: 1px solid #CAD4DF;
+  margin-bottom: 24px;
+}
+.bds-card-text-icon-card:not(.bds-card-text-icon-card--grid-col) {
+  width: 100%;
+}
+.bds-card-text-icon-card {
+  padding: 16px;
+  gap: 16px;
+}
+@media (min-width: 576px) {
+  .bds-card-text-icon-card {
+    padding: 20px;
+    gap: 20px;
+    margin-bottom: 32px;
+  }
+}
+@media (min-width: 992px) {
+  .bds-card-text-icon-card {
+    padding: 24px;
+    gap: 24px;
+    margin-bottom: 40px;
+  }
+}
+.bds-card-text-icon-card[style*="--bds-card-text-icon-aspect-ratio"] {
+  aspect-ratio: var(--bds-card-text-icon-aspect-ratio);
+}
+html.dark .bds-card-text-icon-card {
+  color: #FFFFFF;
+}
+
+.bds-card-text-icon-card__icon {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.bds-card-text-icon-card__icon-img {
+  object-fit: contain;
+  display: block;
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+}
+@media (min-width: 576px) {
+  .bds-card-text-icon-card__icon-img {
+    width: 36px;
+    height: 36px;
+  }
+}
+@media (min-width: 992px) {
+  .bds-card-text-icon-card__icon-img {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+.bds-card-text-icon-card__heading {
+  margin: 0;
+  color: inherit;
+}
+
+.bds-card-text-icon-card__description {
+  margin: 0;
+  color: inherit;
+  min-width: 0;
+  position: relative;
+}
+.bds-card-text-icon-card__description a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.bds-card-text-icon-card__description a:hover {
+  text-decoration-thickness: 2px;
+}
+
+.bds-cards-icon-grid {
+  padding-top: 24px;
+}
+@media (min-width: 576px) {
+  .bds-cards-icon-grid {
+    padding-top: 32px;
+  }
+}
+@media (min-width: 992px) {
+  .bds-cards-icon-grid {
+    padding-top: 40px;
+  }
+}
+.bds-cards-icon-grid ul {
+  padding-left: 0;
+  list-style: none;
+}
+html.dark .bds-cards-icon-grid {
+  color: #FFFFFF;
+}
+
+.bds-cards-icon-grid__header {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+@media (min-width: 576px) {
+  .bds-cards-icon-grid__header {
+    gap: 8px;
+    margin-bottom: 32px;
+  }
+}
+@media (min-width: 992px) {
+  .bds-cards-icon-grid__header {
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+}
+.bds-cards-icon-grid__header h2, .bds-cards-icon-grid__header .h2, .bds-cards-icon-grid__header p {
+  margin-bottom: 0;
+}
+
+.bds-cards-icon-grid__list > li {
+  aspect-ratio: 3/2;
+}
+@media (min-width: 576px) {
+  .bds-cards-icon-grid__list > li {
+    aspect-ratio: 4/3;
+  }
+}
+@media (min-width: 992px) {
+  .bds-cards-icon-grid__list > li {
+    aspect-ratio: 4/3;
+  }
+}
+
+.bds-cards-text-grid {
+  padding-top: 24px;
+  padding-bottom: 24px;
+}
+@media (min-width: 576px) {
+  .bds-cards-text-grid {
+    padding-top: 32px;
+    padding-bottom: 32px;
+  }
+}
+@media (min-width: 992px) {
+  .bds-cards-text-grid {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+}
+.bds-cards-text-grid ul {
+  padding-left: 0;
+  list-style: none;
+}
+html.dark .bds-cards-text-grid {
+  color: #FFFFFF;
+}
+
+.bds-cards-text-grid__header {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+@media (min-width: 576px) {
+  .bds-cards-text-grid__header {
+    gap: 8px;
+    margin-bottom: 32px;
+  }
+}
+@media (min-width: 992px) {
+  .bds-cards-text-grid__header {
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+}
+.bds-cards-text-grid__header h2, .bds-cards-text-grid__header .h2, .bds-cards-text-grid__header p {
+  margin-bottom: 0;
+}
+
+.bds-cards-text-grid__list > li {
+  aspect-ratio: 16/9;
+}
+@media (min-width: 576px) {
+  .bds-cards-text-grid__list > li {
+    aspect-ratio: 3/2;
+  }
+}
+@media (min-width: 992px) {
+  .bds-cards-text-grid__list > li {
+    aspect-ratio: 3/1;
+  }
 }
 
 pre {

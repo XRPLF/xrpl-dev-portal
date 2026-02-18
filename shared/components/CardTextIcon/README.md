@@ -1,0 +1,108 @@
+# CardTextIconCard Component
+
+A card component featuring an icon, heading, and description. Built from Section Cards - Icon and Section Cards - Text Grid Figma designs.
+
+## Overview
+
+CardTextIconCard displays an icon at the top, followed by a heading and description. The description accepts `ReactNode`, so it can include hyperlinks and other rich content. No buttons; links are inline within the description.
+
+## Features
+
+- **Icon + Text Layout**: Icon container, heading, and description in a vertical stack
+- **Rich Description**: `description` accepts `ReactNode` for inline links and formatted content
+- **Aspect Ratio Foundation**: Optional `aspectRatio` prop for future responsive sizing
+- **Light/Dark Mode**: Full theming support
+- **Responsive Design**: Adaptive icon size and spacing across breakpoints
+
+## Usage
+
+### Basic Usage
+
+```tsx
+<CardTextIconCard
+  icon="/icons/docs.svg"
+  iconAlt="Documentation"
+  heading="Documentation"
+  description="Access everything you need to get started with the XRPL."
+/>
+```
+
+### With Inline Link in Description
+
+```tsx
+<CardTextIconCard
+  icon="/icons/docs.svg"
+  heading="Documentation"
+  description={
+    <>
+      Learn more in our{' '}
+      <a href="/docs">documentation</a>.
+    </>
+  }
+/>
+```
+
+### With Aspect Ratio
+
+```tsx
+<CardTextIconCard
+  icon="/icons/docs.svg"
+  heading="Documentation"
+  description="Access everything you need."
+  aspectRatio={4 / 3}
+/>
+```
+
+## Props
+
+### CardTextIconCardProps
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `icon` | `string` | Required | Icon image URL |
+| `iconAlt` | `string` | `''` | Alt text for the icon image |
+| `heading` | `string` | Required | Card heading |
+| `description` | `React.ReactNode` | Required | Card description; accepts rich content (e.g., text with inline links) |
+| `aspectRatio` | `number` | - | Optional ratio for future use; applied via CSS variable |
+| `className` | `string` | - | Additional CSS classes |
+
+## Component Structure
+
+```tsx
+<article className="bds-card-text-icon-card">
+  <div className="bds-card-text-icon-card__icon">
+    <img className="bds-card-text-icon-card__icon-img" ... />
+  </div>
+  <h3 className="bds-card-text-icon-card__heading sh-md-l">...</h3>
+  <div className="bds-card-text-icon-card__description body-l">
+    {description}
+  </div>
+</article>
+```
+
+## Responsive Sizing
+
+| Breakpoint | Icon Size | Padding | Gap |
+|------------|-----------|---------|-----|
+| Base (< 576px) | 56px | 16px | 16px |
+| MD (576px - 991px) | 60px | 20px | 20px |
+| LG (≥ 992px) | 64px | 24px | 24px |
+
+## Files
+
+- `CardTextIconCard.tsx` - React component with TypeScript
+- `CardTextIconCard.scss` - Styles with BEM naming
+- `index.ts` - Barrel exports
+- `README.md` - This file
+
+## Import
+
+```tsx
+import { CardTextIconCard } from 'shared/patterns/CardTextIcon';
+// or
+import { CardTextIconCard, type CardTextIconCardProps } from 'shared/patterns/CardTextIcon';
+```
+
+## Design System
+
+Part of the Brand Design System (BDS) with `bds-` namespace prefix.
