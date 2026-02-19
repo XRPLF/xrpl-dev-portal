@@ -127,7 +127,7 @@ footer:
         - page: docs/concepts/index.md
           label: Concepts
           labelTranslationKey: footer.docs.concepts
-        - page: docs/tutorials/index.md
+        - page: docs/tutorials/index.page.tsx
           label: Tutorials
           labelTranslationKey: footer.docs.tutorials
         - page: docs/references/index.md

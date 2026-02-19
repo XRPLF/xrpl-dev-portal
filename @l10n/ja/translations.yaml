@@ -577,6 +577,16 @@ Stay ahead of the curve with the latest developments in RWA tokenization on the 
 Join the Developer Discord: 開発者ディスコードに参加
 Sign up for the Newsletter: ニュースレターに登録
 
+# docs/tutorials/index.page.tsx
+Crypto Wallet and Blockchain Development Tutorials: 暗号資産ウォレットやブロックチェーン開発のチュートリアル
+These tutorials walk you through the basics of building a very simple XRP Ledger-connected application using your favorite programming language.: これらのチュートリアルでは、お好きなプログラミング言語を使って、XRP Ledgerに接続するアプリケーションを構築するための基礎について説明します。
+Get Started with SDKs: SDKを使って始める
+Using the xrpl.js client library.: クライアントライブラリxrpl.jsを使用。
+Using xrpl.py, a pure Python library.: Pythonライブラリxrpl.pyを使用。
+Using xrpl4j, a pure Java library.: Javaライブラリを使用。
+Using the XRPL_PHP client library.: PHPライブラリXRPL_PHPを使用。
+Access the XRP Ledger directly through the APIs of its core server.: コアサーバのAPIを通じてXRP Ledgerに直接アクセス。
+
 # community/index.page.tsx
 XRPL Community: XRPLコミュニティ
 community.index.h1part1: 開発者とイノベーターによる

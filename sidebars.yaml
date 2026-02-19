@@ -184,7 +184,7 @@
             - page: docs/concepts/decentralized-storage/decentralized-identifiers.md
             - page: docs/concepts/decentralized-storage/price-oracles.md
 
-    - page: docs/tutorials/index.md
+    - page: docs/tutorials/index.page.tsx
       label: Tutorials
       labelTranslationKey: sidebar.docs.tutorials
       expanded: false

@@ -282,68 +282,6 @@ main article .card-grid {
         width: 70%;
         height: 70%;
       }
-
-      // Multi-icon support for tutorials with multiple languages
-      &.multi-icon {
-        width: auto;
-        min-width: 50px;
-        padding: 0 8px;
-        border-radius: 25px;
-        gap: 6px;
-
-        img {
-          width: 28px;
-          height: 28px;
-        }
-      }
-    }
-
-    // Multi-link card with explicit language buttons
-    &.multi-link-card {
-      display: flex;
-      flex-direction: column;
-
-      .card-body {
-        flex: 1;
-      }
-
-      .card-links {
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-        padding: 0 1rem 1rem;
-
-        .card-link-btn {
-          display: inline-flex;
-          align-items: center;
-          justify-content: space-between;
-          padding: 8px 16px;
-          font-size: 0.85rem;
-          font-weight: 700;
-          color: $white;
-          background: $blue-purple-500;
-          border-radius: 4px;
-          text-decoration: none;
-          transition: background-color 0.2s ease;
-
-          &::after {
-            content: url(../img/icons/arrow-right.svg);
-            display: inline-block;
-            width: 16px;
-            height: 16px;
-            transition: transform 0.3s ease-out;
-          }
-
-          &:hover {
-            background: $blue-purple-600;
-            text-decoration: none;
-
-            &::after {
-              transform: translateX(4px);
-            }
-          }
-        }
-      }
     }
 
       .card-footer {
@@ -382,3 +320,84 @@ main article .card-grid {
   margin-bottom: 0.25rem;
   margin-top: 0.5rem;
 }
+
+/* Tutorial cards */
+.page-tutorials .tutorial-cards {
+  > div {
+    display: flex;
+  }
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    min-height: 280px;
+    transition: all 0.35s ease-out;
+    cursor: pointer;
+
+    &:hover {
+      transform: translateY(-16px);
+    }
+
+    .card-header {
+      border-bottom: none;
+      background: transparent;
+      padding: 1.5rem 1.5rem 0 2rem;
+    }
+
+    .circled-logo {
+      margin-left: -10px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .card-body {
+      padding: 1rem 1.5rem;
+      flex: 1;
+    }
+
+    .card-title {
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .card-text {
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .card-footer {
+      background-color: transparent;
+      border-top: none;
+      padding: 0;
+      height: 40px;
+      background-size: cover;
+      background-position: bottom;
+      background-repeat: no-repeat;
+      margin-top: auto;
+    }
+  }
+
+  // Apply colored footers to each card
+  > div:nth-child(1) .card .card-footer {
+    background-image: url("../img/cards/3-col-pink.svg");
+  }
+  > div:nth-child(2) .card .card-footer {
+    background-image: url("../img/cards/3col-blue-light-blue.svg");
+  }
+  > div:nth-child(3) .card .card-footer {
+    background-image: url("../img/cards/3-col-light-blue.svg");
+  }
+  > div:nth-child(4) .card .card-footer {
+    background-image: url("../img/cards/3col-blue-green.svg");
+  }
+  > div:nth-child(5) .card .card-footer {
+    background-image: url("../img/cards/3col-magenta.svg");
+  }
+  > div:nth-child(6) .card .card-footer {
+    background-image: url("../img/cards/3-col-orange.svg");
+  }
+}
+
