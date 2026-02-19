@@ -7,20 +7,20 @@
 // .bds-cards-text-grid__list   - Grid list (ul as PageGrid.Row)
 
 // =============================================================================
-// Design Tokens
+// Design Tokens (uses BDS spacing from _spacing.scss)
 // =============================================================================
 
-$bds-cards-text-grid-padding-base: 24px;
-$bds-cards-text-grid-padding-md: 32px;
-$bds-cards-text-grid-padding-lg: 40px;
+$bds-cards-text-grid-padding-base: $bds-space-2xl;
+$bds-cards-text-grid-padding-md: $bds-space-3xl;
+$bds-cards-text-grid-padding-lg: $bds-space-4xl;
 
-$bds-cards-text-grid-header-gap-base: 8px;
-$bds-cards-text-grid-header-gap-md: 8px;
-$bds-cards-text-grid-header-gap-lg: 16px;
+$bds-cards-text-grid-header-gap-base: $bds-gap-header-sm;
+$bds-cards-text-grid-header-gap-md: $bds-gap-header-md;
+$bds-cards-text-grid-header-gap-lg: $bds-gap-header-lg;
 
-$bds-cards-text-grid-header-margin-base: 24px;
-$bds-cards-text-grid-header-margin-md: 32px;
-$bds-cards-text-grid-header-margin-lg: 40px;
+$bds-cards-text-grid-header-margin-base: $bds-gap-section-sm;
+$bds-cards-text-grid-header-margin-md: $bds-gap-section-md;
+$bds-cards-text-grid-header-margin-lg: $bds-gap-section-lg;
 
 // =============================================================================
 // Section Container
