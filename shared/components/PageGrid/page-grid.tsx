@@ -7,19 +7,24 @@ type PageGridElementProps = React.HTMLAttributes<HTMLDivElement>;
 export type PageGridBreakpoint = "base" | "sm" | "md" | "lg" | "xl";
 
 // Define the ResponsiveValue type using Partial<Record> for breakpoints
-type ResponsiveValue<T> = T | Partial<Record<PageGridBreakpoint, T>>;
+export type ResponsiveValue<T> = T | Partial<Record<PageGridBreakpoint, T>>;
 
 export interface PageGridProps extends PageGridElementProps {
   /** Container layout type - "standard" (default) or "wide" (1504px max-width, 144px padding at xl breakpoint) */
   containerType?: "standard" | "wide";
 }
 
-export interface PageGridRowProps extends PageGridElementProps {}
+export interface PageGridRowProps extends PageGridElementProps {
+  /** Polymorphic element - e.g. "ul" for semantic list markup */
+  as?: React.ElementType;
+}
 
-type PageGridSpanValue = number | "auto" | "fill";
+export type PageGridSpanValue = number | "auto" | "fill";
 type PageGridOffsetValue = number;
 
 export interface PageGridColProps extends PageGridElementProps {
+  /** Polymorphic element - e.g. "li" for semantic list markup */
+  as?: React.ElementType;
   span?: ResponsiveValue<PageGridSpanValue>;
   offset?: ResponsiveValue<PageGridOffsetValue>;
 }
@@ -85,17 +90,17 @@ PageGridRoot.displayName = "PageGrid";
 
 
 // --- PageGrid.Row Component ---
-const PageGridRow = React.forwardRef<HTMLDivElement, PageGridRowProps>(
-  ({ className, ...rest }, ref) => (
-    <div ref={ref} className={clsx("bds-grid__row", className)} {...rest} />
+const PageGridRow = React.forwardRef<HTMLElement, PageGridRowProps>(
+  ({ as: Component = "div", className, ...rest }, ref) => (
+    <Component ref={ref} className={clsx("bds-grid__row", className)} {...rest} />
   )
 );
 
-PageGridRow.displayName = "PageGridRow"; // Renamed display name for clarity
+PageGridRow.displayName = "PageGridRow";
 
 // --- PageGrid.Col Component ---
-const PageGridCol = React.forwardRef<HTMLDivElement, PageGridColProps>((props, ref) => {
-  const { className, span, offset, ...rest } = props;
+const PageGridCol = React.forwardRef<HTMLElement, PageGridColProps>((props, ref) => {
+  const { as: Component = "div", className, span, offset, ...rest } = props;
   const spanClasses: string[] = [];
   const offsetClasses: string[] = [];
 
@@ -151,10 +156,9 @@ const PageGridCol = React.forwardRef<HTMLDivElement, PageGridColProps>((props, r
 
   // Ensure the base class is always applied for styling
   return (
-    <div
+    <Component
       ref={ref}
-      // Note: Added "bds-grid__col" base class for consistent column initialization
-      className={clsx("bds-grid__col", className, spanClasses, offsetClasses)} 
+      className={clsx("bds-grid__col", className, spanClasses, offsetClasses)}
       {...rest}
     />
   );

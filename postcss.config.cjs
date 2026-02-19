@@ -66,6 +66,8 @@ module.exports = {
                 /^container/, // All container classes
                 /^row$/, // Row class
                 /^col-/, // Column classes
+                /^bds-grid__col/, // PageGrid column classes (dynamic span values)
+                /^bds-grid__offset/, // PageGrid offset classes
                 /^g-/, // Gap utilities
                 /^p-/, // Padding utilities
                 /^m-/, // Margin utilities  

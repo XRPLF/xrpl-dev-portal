@@ -1,0 +1,130 @@
+// BDS CardTextIconCard Pattern Styles
+// Brand Design System - Card with icon, heading, and description
+//
+// Naming Convention: BEM with 'bds' namespace
+// .bds-card-text-icon-card              - Base card container
+// .bds-card-text-icon-card__icon        - Icon container
+// .bds-card-text-icon-card__icon-img    - Icon image
+// .bds-card-text-icon-card__heading     - Card heading
+// .bds-card-text-icon-card__description - Card description (supports ReactNode/links)
+//
+// Built from Section Cards - Icon and Section Cards - Text Grid Figma designs
+
+// =============================================================================
+// Design Tokens
+// =============================================================================
+
+// Icon sizes (responsive)
+$bds-card-text-icon-icon-size-sm: 32px;
+$bds-card-text-icon-icon-size-md: 36px;
+$bds-card-text-icon-icon-size-lg: 40px;
+
+// Padding (uses BDS card presets from _spacing.scss)
+$bds-card-text-icon-padding-sm: $bds-padding-card-sm;
+$bds-card-text-icon-padding-md: $bds-padding-card-md;
+$bds-card-text-icon-padding-lg: $bds-padding-card-lg;
+
+// Gaps (between icon, heading, description)
+$bds-card-text-icon-gap-sm: $bds-padding-card-sm;
+$bds-card-text-icon-gap-md: $bds-padding-card-md;
+$bds-card-text-icon-gap-lg: $bds-padding-card-lg;
+
+// =============================================================================
+// Card Component
+// =============================================================================
+
+.bds-card-text-icon-card {
+  display: flex !important;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  text-decoration: none;
+  box-sizing: border-box;
+  border-left: 1px solid $gray-300;
+  margin-bottom: $bds-space-2xl;
+  // When used standalone (not as grid column), take full width
+  &:not(.bds-card-text-icon-card--grid-col) {
+    width: 100%;
+  }
+  padding: $bds-card-text-icon-padding-sm;
+  gap: $bds-card-text-icon-gap-sm;
+
+  @include media-breakpoint-up(md) {
+    padding: $bds-card-text-icon-padding-md;
+    gap: $bds-card-text-icon-gap-md;
+    margin-bottom: $bds-space-3xl;
+  }
+
+  @include media-breakpoint-up(lg) {
+    padding: $bds-card-text-icon-padding-lg;
+    gap: $bds-card-text-icon-gap-lg;
+    margin-bottom: $bds-space-4xl;
+  }
+
+  // Aspect ratio foundation - when CSS variable is set via aspectRatio prop
+  &[style*="--bds-card-text-icon-aspect-ratio"] {
+    aspect-ratio: var(--bds-card-text-icon-aspect-ratio);
+  }
+
+  @include bds-theme-mode(dark) {
+    color: $white;
+  }
+}
+
+// =============================================================================
+// Icon
+// =============================================================================
+
+.bds-card-text-icon-card__icon {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: $bds-space-lg;
+  &-img {
+    object-fit: contain;
+    display: block;
+    flex-shrink: 0;
+    width: $bds-card-text-icon-icon-size-sm;
+    height: $bds-card-text-icon-icon-size-sm;
+
+    @include media-breakpoint-up(md) {
+      width: $bds-card-text-icon-icon-size-md;
+      height: $bds-card-text-icon-icon-size-md;
+    }
+
+    @include media-breakpoint-up(lg) {
+      width: $bds-card-text-icon-icon-size-lg;
+      height: $bds-card-text-icon-icon-size-lg;
+    }
+  }
+}
+
+// =============================================================================
+// Heading
+// =============================================================================
+
+.bds-card-text-icon-card__heading {
+  margin: 0;
+  color: inherit;
+}
+
+// =============================================================================
+// Description (supports ReactNode - links, formatted text, etc.)
+// =============================================================================
+
+.bds-card-text-icon-card__description {
+  margin: 0;
+  color: inherit;
+  min-width: 0; 
+  position: relative;
+
+  a {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+
+    &:hover {
+      text-decoration-thickness: 2px;
+    }
+  }
+}

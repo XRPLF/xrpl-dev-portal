@@ -187,3 +187,17 @@
   @include bds-grid-generate-auto('xl');
   @include bds-grid-generate-offsets(12, 'xl');
 }
+
+// Polymorphic as="li" — when Col renders as li, override list-item defaults
+// so flex layout and width calculations apply correctly
+li.bds-grid__col {
+  list-style: none;
+  display: block;
+}
+
+// Polymorphic as="ul" — when Row renders as ul, reset list styling
+ul.bds-grid__row {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
