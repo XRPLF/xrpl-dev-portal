@@ -71,13 +71,13 @@ func main() {
 		ManagementFeeRate: &mgmtFeeRate,
 	}
 
-	flatTx := loanBrokerSetTx.Flatten()
-	txJSON, _ := json.MarshalIndent(flatTx, "", "  ")
-	fmt.Printf("%s\n", string(txJSON))
+	flatLoanBrokerSetTx := loanBrokerSetTx.Flatten()
+	loanBrokerSetTxJSON, _ := json.MarshalIndent(flatLoanBrokerSetTx, "", "  ")
+	fmt.Printf("%s\n", string(loanBrokerSetTxJSON))
 
 	// Submit, sign, and wait for validation
 	fmt.Printf("\n=== Submitting LoanBrokerSet transaction ===\n\n")
-	response, err := client.SubmitTxAndWait(flatTx, &wstypes.SubmitOptions{
+	loanBrokerSetResponse, err := client.SubmitTxAndWait(flatLoanBrokerSetTx, &wstypes.SubmitOptions{
 		Autofill: true,
 		Wallet:   &loanBrokerWallet,
 	})
@@ -85,15 +85,15 @@ func main() {
 		panic(err)
 	}
 
-	if response.Meta.TransactionResult != "tesSUCCESS" {
-		fmt.Printf("Error: Unable to create loan broker: %s\n", response.Meta.TransactionResult)
+	if loanBrokerSetResponse.Meta.TransactionResult != "tesSUCCESS" {
+		fmt.Printf("Error: Unable to create loan broker: %s\n", loanBrokerSetResponse.Meta.TransactionResult)
 		os.Exit(1)
 	}
 	fmt.Printf("Loan broker created successfully!\n")
 
 	// Extract loan broker information from the transaction result
 	fmt.Printf("\n=== Loan Broker Information ===\n\n")
-	for _, node := range response.Meta.AffectedNodes {
+	for _, node := range loanBrokerSetResponse.Meta.AffectedNodes {
 		if node.CreatedNode != nil && node.CreatedNode.LedgerEntryType == "LoanBroker" {
 			fmt.Printf("LoanBroker ID: %s\n", node.CreatedNode.LedgerIndex)
 			fmt.Printf("LoanBroker Pseudo-Account Address: %s\n", node.CreatedNode.NewFields["Account"])
