@@ -12,12 +12,12 @@ When building applications that integrate with the XRP Ledger, proper API usage 
 
 The following code samples cover essential techniques for working with API responses, including:
 
-* [Pagination and Markers](_code-samples/markers-and-pagination/README.md): Handle large datasets that span multiple responses by properly using markers to iterate through results without missing data or overloading your application.
+* {% repo-link path="_code-samples/markers-and-pagination/README.md" %}Pagination and Markers{% /repo-link %}: Handle large datasets that span multiple responses by properly using markers to iterate through results without missing data or overloading your application.
 
-* [Data Normalization](_code-samples/normalize-currency-codes/README.md): Convert XRP Ledger data formats into human-readable formats, such as transforming currency codes from hexadecimal to standard representations.
+* {% repo-link path="_code-samples/normalize-currency-codes/README.md" %}Data Normalization{% /repo-link %}: Convert XRP Ledger data formats into human-readable formats, such as transforming currency codes from hexadecimal to standard representations.
 
-* [Rate Limiting](docs/references/http-websocket-apis/api-conventions/rate-limiting.md): Understand and work within API rate limits to maintain consistent access and avoid service interruptions.
+* [Rate Limiting](../../../references/http-websocket-apis/api-conventions/rate-limiting.md): Understand and work within API rate limits to maintain consistent access and avoid service interruptions.
 
-* [Error Handling](docs/references/http-websocket-apis/api-conventions/error-formatting.md): Implement robust error handling strategies to gracefully manage network issues, invalid requests, and unexpected responses.
+* [Error Handling](../../../references/http-websocket-apis/api-conventions/error-formatting.md): Implement robust error handling strategies to gracefully manage network issues, invalid requests, and unexpected responses.
 
-These practices help you build more resilient applications while minimizing unnecessary load on XRP Ledger servers.
+These practices help you build more resilient applications while minimizing unnecessary load on XRP Ledger servers. 
