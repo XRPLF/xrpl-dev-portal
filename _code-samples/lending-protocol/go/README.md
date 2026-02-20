@@ -55,6 +55,61 @@ go run ./cover-clawback
 
 The script should output the cover available, the LoanBrokerCoverDeposit transaction, cover available after the deposit, the LoanBrokerCoverClawback transaction, and the final cover available after the clawback.
 
+```sh
+Loan broker address: rLsTX2RjNTqwiwNpMn7mny3MyrXtmbhFQV
+MPT issuer address: rfYxCEWxA9ACyvpciPZYbKujjLEVX5CCwW
+LoanBrokerID: 373BEBB8A1EF735FCD330C2B0DDF2C37FD3B1589B084C94F2CA52A904FBED08D
+MPT ID: 003A9D5247DC1C9997DB5500A84C3EC748F3F61D2BC56D51
+
+=== Cover Available ===
+
+0 TSTUSD
+
+=== Preparing LoanBrokerCoverDeposit transaction ===
+
+{
+  "Account": "rLsTX2RjNTqwiwNpMn7mny3MyrXtmbhFQV",
+  "Amount": {
+    "mpt_issuance_id": "003A9D5247DC1C9997DB5500A84C3EC748F3F61D2BC56D51",
+    "value": "1000"
+  },
+  "LoanBrokerID": "373BEBB8A1EF735FCD330C2B0DDF2C37FD3B1589B084C94F2CA52A904FBED08D",
+  "TransactionType": "LoanBrokerCoverDeposit"
+}
+
+=== Submitting LoanBrokerCoverDeposit transaction ===
+
+Cover deposit successful!
+
+=== Cover Available After Deposit ===
+
+1000 TSTUSD
+
+=== Verifying Asset Issuer ===
+
+MPT issuer account verified: rfYxCEWxA9ACyvpciPZYbKujjLEVX5CCwW. Proceeding to clawback.
+
+=== Preparing LoanBrokerCoverClawback transaction ===
+
+{
+  "Account": "rfYxCEWxA9ACyvpciPZYbKujjLEVX5CCwW",
+  "Amount": {
+    "mpt_issuance_id": "003A9D5247DC1C9997DB5500A84C3EC748F3F61D2BC56D51",
+    "value": "1000"
+  },
+  "LoanBrokerID": "373BEBB8A1EF735FCD330C2B0DDF2C37FD3B1589B084C94F2CA52A904FBED08D",
+  "TransactionType": "LoanBrokerCoverClawback"
+}
+
+=== Submitting LoanBrokerCoverClawback transaction ===
+
+Successfully clawed back 1000 TSTUSD!
+
+=== Final Cover Available After Clawback ===
+
+0 TSTUSD
+```
+
 ---
 
 ## Deposit and Withdraw First-loss Capital

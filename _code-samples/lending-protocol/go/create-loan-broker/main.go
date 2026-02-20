@@ -50,7 +50,7 @@ func main() {
 	json.Unmarshal(data, &setup)
 
 	// You can replace these values with your own
-	loanBrokerWallet, err := wallet.FromSeed(setup["loanBroker"].(map[string]any)["seed"].(string), "")
+	loanBrokerWallet, err := wallet.FromSecret(setup["loanBroker"].(map[string]any)["seed"].(string))
 	if err != nil {
 		panic(err)
 	}
@@ -62,9 +62,9 @@ func main() {
 	// Prepare LoanBrokerSet transaction
 	fmt.Printf("\n=== Preparing LoanBrokerSet transaction ===\n\n")
 	mgmtFeeRate := types.InterestRate(1000)
-	loanBrokerSetTx := &transaction.LoanBrokerSet{
+	loanBrokerSetTx := transaction.LoanBrokerSet{
 		BaseTx: transaction.BaseTx{
-			Account:         loanBrokerWallet.GetAddress(),
+			Account:         loanBrokerWallet.ClassicAddress,
 			TransactionType: transaction.LoanBrokerSetTx,
 		},
 		VaultID:           vaultID,
