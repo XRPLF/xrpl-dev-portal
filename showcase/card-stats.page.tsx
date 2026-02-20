@@ -1,5 +1,5 @@
 import { PageGrid, PageGridRow, PageGridCol } from "shared/components/PageGrid/page-grid";
-import { CardStats, CardStatsCardConfig } from "shared/patterns/CardStats";
+import { CardStats, CardStatsCardConfig } from "shared/sections/CardStatsList";
 import { Divider } from "shared/components/Divider";
 
 export const frontmatter = {
@@ -208,7 +208,7 @@ export default function CardStatsShowcase() {
 
               <h5 className="mb-4">Basic Usage</h5>
               <div className="p-4 mb-8 br-4" style={{ backgroundColor: '#f5f5f7', fontFamily: 'monospace', fontSize: '14px' }}>
-                <pre style={{ margin: 0, whiteSpace: 'pre-wrap', color: '#000' }}>{`import { CardStats } from 'shared/patterns/CardStats';
+                <pre style={{ margin: 0, whiteSpace: 'pre-wrap', color: '#000' }}>{`import { CardStats } from 'shared/sections/CardStatsList';
 
 <CardStats
   heading="Blockchain Trusted at Scale"
@@ -258,7 +258,7 @@ export default function CardStatsShowcase() {
                 </div>
                 <div>
                   <strong>Pattern Location:</strong>{' '}
-                  <code>shared/patterns/CardStats/</code>
+                  <code>shared/sections/CardStatsList/</code>
                 </div>
                 <div>
                   <strong>Component Used:</strong>{' '}

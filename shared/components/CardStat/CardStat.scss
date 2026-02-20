@@ -44,7 +44,7 @@ $bds-card-stat-transition-timing: $bds-transition-timing;
 
 .bds-card-stat {
   // Layout
-  display: flex;
+  display: flex !important;
   flex-direction: column;
   width: 100%;
   min-height: 200px;
@@ -103,7 +103,7 @@ $bds-card-stat-transition-timing: $bds-transition-timing;
     display: flex;
     flex-wrap: wrap;
     gap: $bds-card-stat-gap;
-    align-items: flex-start;
+    align-items: flex-end;
   }
 }
 

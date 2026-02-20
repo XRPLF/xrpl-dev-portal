@@ -14,7 +14,7 @@ A section pattern that displays a heading, optional description, and a responsiv
 ## Usage
 
 ```tsx
-import { CardStats } from 'shared/patterns/CardStats';
+import { CardStats } from 'shared/sections/CardStatsList';
 
 <CardStats
   heading="Blockchain Trusted at Scale"
@@ -136,7 +136,7 @@ Uses breakpoints from `styles/_breakpoints.scss`:
 
 - **Figma Design**: [Section Cards - Stats](https://www.figma.com/design/drnQQXnK9Q67MTPPKQsY9l/Section-Cards---Stats?node-id=32051-2839&m=dev)
 - **Showcase Page**: `/about/card-stats-showcase`
-- **Pattern Location**: `shared/patterns/CardStats/`
+- **Pattern Location**: `shared/sections/CardStatsList/`
 - **Component Used**: `shared/components/CardStat/`
 
 ## Accessibility

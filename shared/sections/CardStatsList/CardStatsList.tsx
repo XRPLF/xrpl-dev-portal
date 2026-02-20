@@ -85,7 +85,7 @@ export const CardStats = React.forwardRef<HTMLElement, CardStatsProps>(
             </div>
           </PageGrid.Col>
         </PageGrid.Row>
-        <PageGrid.Row>
+        <PageGrid.Row as="ul">
           {cards.map((cardConfig, index) => (
             <CardStat
               key={index}
