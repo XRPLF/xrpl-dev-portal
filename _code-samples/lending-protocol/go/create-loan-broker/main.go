@@ -19,7 +19,7 @@ import (
 )
 
 func main() {
-	// Connect to the network
+	// Connect to the network ----------------------
 	client := websocket.NewClient(
 		websocket.NewClientConfig().
 			WithHost("wss://s.devnet.rippletest.net:51233"),
@@ -47,19 +47,21 @@ func main() {
 		panic(err)
 	}
 	var setup map[string]any
-	json.Unmarshal(data, &setup)
+	if err := json.Unmarshal(data, &setup); err != nil {
+		panic(err)
+	}
 
 	// You can replace these values with your own
 	loanBrokerWallet, err := wallet.FromSecret(setup["loanBroker"].(map[string]any)["seed"].(string))
 	if err != nil {
 		panic(err)
 	}
-	vaultID := setup["vaultId"].(string)
+	vaultID := setup["vaultID"].(string)
 
 	fmt.Printf("\nLoan broker/vault owner address: %s\n", loanBrokerWallet.ClassicAddress)
 	fmt.Printf("Vault ID: %s\n", vaultID)
 
-	// Prepare LoanBrokerSet transaction
+	// Prepare LoanBrokerSet transaction ----------------------
 	fmt.Printf("\n=== Preparing LoanBrokerSet transaction ===\n\n")
 	mgmtFeeRate := types.InterestRate(1000)
 	loanBrokerSetTx := transaction.LoanBrokerSet{
@@ -75,7 +77,7 @@ func main() {
 	loanBrokerSetTxJSON, _ := json.MarshalIndent(flatLoanBrokerSetTx, "", "  ")
 	fmt.Printf("%s\n", string(loanBrokerSetTxJSON))
 
-	// Submit, sign, and wait for validation
+	// Submit, sign, and wait for validation ----------------------
 	fmt.Printf("\n=== Submitting LoanBrokerSet transaction ===\n\n")
 	loanBrokerSetResponse, err := client.SubmitTxAndWait(flatLoanBrokerSetTx, &wstypes.SubmitOptions{
 		Autofill: true,

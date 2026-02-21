@@ -33,7 +33,7 @@ func (*mptIssuanceEntryRequest) Validate() error { return nil }
 func (*mptIssuanceEntryRequest) APIVersion() int { return 2 }
 
 func main() {
-	// Connect to the network
+	// Connect to the network ----------------------
 	client := websocket.NewClient(
 		websocket.NewClientConfig().
 			WithHost("wss://s.devnet.rippletest.net:51233"),
@@ -61,7 +61,9 @@ func main() {
 		panic(err)
 	}
 	var setup map[string]any
-	json.Unmarshal(data, &setup)
+	if err := json.Unmarshal(data, &setup); err != nil {
+		panic(err)
+	}
 
 	// You can replace these values with your own
 	loanBrokerWallet, err := wallet.FromSecret(setup["loanBroker"].(map[string]any)["seed"].(string))
@@ -72,15 +74,15 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	loanBrokerID := setup["loanBrokerId"].(string)
-	mptID := setup["mptId"].(string)
+	loanBrokerID := setup["loanBrokerID"].(string)
+	mptID := setup["mptID"].(string)
 
 	fmt.Printf("\nLoan broker address: %s\n", loanBrokerWallet.ClassicAddress)
 	fmt.Printf("MPT issuer address: %s\n", mptIssuerWallet.ClassicAddress)
 	fmt.Printf("LoanBrokerID: %s\n", loanBrokerID)
 	fmt.Printf("MPT ID: %s\n", mptID)
 
-	// Check cover available
+	// Check cover available ----------------------
 	fmt.Printf("\n=== Cover Available ===\n\n")
 	coverInfo, err := client.GetLedgerEntry(&ledger.EntryRequest{
 		Index:       loanBrokerID,
@@ -96,7 +98,7 @@ func main() {
 	}
 	fmt.Printf("%s TSTUSD\n", currentCoverAvailable)
 
-	// Prepare LoanBrokerCoverDeposit transaction
+	// Prepare LoanBrokerCoverDeposit transaction ----------------------
 	fmt.Printf("\n=== Preparing LoanBrokerCoverDeposit transaction ===\n\n")
 	coverDepositTx := transaction.LoanBrokerCoverDeposit{
 		BaseTx: transaction.BaseTx{
@@ -114,7 +116,7 @@ func main() {
 	coverDepositTxJSON, _ := json.MarshalIndent(flatCoverDepositTx, "", "  ")
 	fmt.Printf("%s\n", string(coverDepositTxJSON))
 
-	// Sign, submit, and wait for deposit validation
+	// Sign, submit, and wait for deposit validation ----------------------
 	fmt.Printf("\n=== Submitting LoanBrokerCoverDeposit transaction ===\n\n")
 	depositResponse, err := client.SubmitTxAndWait(flatCoverDepositTx, &wstypes.SubmitOptions{
 		Autofill: true,
@@ -130,7 +132,7 @@ func main() {
 	}
 	fmt.Printf("Cover deposit successful!\n")
 
-	// Extract updated cover available after deposit
+	// Extract updated cover available after deposit ----------------------
 	fmt.Printf("\n=== Cover Available After Deposit ===\n\n")
 	for _, node := range depositResponse.Meta.AffectedNodes {
 		if node.ModifiedNode != nil && node.ModifiedNode.LedgerEntryType == "LoanBroker" {
@@ -140,7 +142,7 @@ func main() {
 	}
 	fmt.Printf("%s TSTUSD\n", currentCoverAvailable)
 
-	// Verify issuer of cover asset matches.
+	// Verify issuer of cover asset matches ----------------------
 	// Only the issuer of the asset can submit clawback transactions.
 	// The asset must also have clawback enabled.
 	fmt.Printf("\n=== Verifying Asset Issuer ===\n\n")
@@ -159,7 +161,7 @@ func main() {
 	}
 	fmt.Printf("MPT issuer account verified: %s. Proceeding to clawback.\n", mptIssuerWallet.ClassicAddress)
 
-	// Prepare LoanBrokerCoverClawback transaction
+	// Prepare LoanBrokerCoverClawback transaction ----------------------
 	fmt.Printf("\n=== Preparing LoanBrokerCoverClawback transaction ===\n\n")
 	lbID := types.LoanBrokerID(loanBrokerID)
 	coverClawbackTx := transaction.LoanBrokerCoverClawback{
@@ -177,7 +179,7 @@ func main() {
 	coverClawbackTxJSON, _ := json.MarshalIndent(flatCoverClawbackTx, "", "  ")
 	fmt.Printf("%s\n", string(coverClawbackTxJSON))
 
-	// Sign, submit, and wait for clawback validation
+	// Sign, submit, and wait for clawback validation ----------------------
 	fmt.Printf("\n=== Submitting LoanBrokerCoverClawback transaction ===\n\n")
 	clawbackResponse, err := client.SubmitTxAndWait(flatCoverClawbackTx, &wstypes.SubmitOptions{
 		Autofill: true,
@@ -193,7 +195,7 @@ func main() {
 	}
 	fmt.Printf("Successfully clawed back %s TSTUSD!\n", currentCoverAvailable)
 
-	// Extract final cover available
+	// Extract final cover available ----------------------
 	fmt.Printf("\n=== Final Cover Available After Clawback ===\n\n")
 	for _, node := range clawbackResponse.Meta.AffectedNodes {
 		if node.ModifiedNode != nil && node.ModifiedNode.LedgerEntryType == "LoanBroker" {

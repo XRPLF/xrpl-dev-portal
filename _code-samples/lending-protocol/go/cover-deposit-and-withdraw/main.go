@@ -17,7 +17,7 @@ import (
 )
 
 func main() {
-	// Connect to the network
+	// Connect to the network ----------------------
 	client := websocket.NewClient(
 		websocket.NewClientConfig().
 			WithHost("wss://s.devnet.rippletest.net:51233"),
@@ -45,21 +45,23 @@ func main() {
 		panic(err)
 	}
 	var setup map[string]any
-	json.Unmarshal(data, &setup)
+	if err := json.Unmarshal(data, &setup); err != nil {
+		panic(err)
+	}
 
 	// You can replace these values with your own
 	loanBrokerWallet, err := wallet.FromSecret(setup["loanBroker"].(map[string]any)["seed"].(string))
 	if err != nil {
 		panic(err)
 	}
-	loanBrokerID := setup["loanBrokerId"].(string)
-	mptID := setup["mptId"].(string)
+	loanBrokerID := setup["loanBrokerID"].(string)
+	mptID := setup["mptID"].(string)
 
 	fmt.Printf("\nLoan broker address: %s\n", loanBrokerWallet.ClassicAddress)
 	fmt.Printf("LoanBrokerID: %s\n", loanBrokerID)
 	fmt.Printf("MPT ID: %s\n", mptID)
 
-	// Prepare LoanBrokerCoverDeposit transaction
+	// Prepare LoanBrokerCoverDeposit transaction ----------------------
 	fmt.Printf("\n=== Preparing LoanBrokerCoverDeposit transaction ===\n\n")
 	coverDepositTx := transaction.LoanBrokerCoverDeposit{
 		BaseTx: transaction.BaseTx{
@@ -77,7 +79,7 @@ func main() {
 	coverDepositTxJSON, _ := json.MarshalIndent(flatCoverDepositTx, "", "  ")
 	fmt.Printf("%s\n", string(coverDepositTxJSON))
 
-	// Sign, submit, and wait for deposit validation
+	// Sign, submit, and wait for deposit validation ----------------------
 	fmt.Printf("\n=== Submitting LoanBrokerCoverDeposit transaction ===\n\n")
 	depositResponse, err := client.SubmitTxAndWait(flatCoverDepositTx, &wstypes.SubmitOptions{
 		Autofill: true,
@@ -104,7 +106,7 @@ func main() {
 		}
 	}
 
-	// Prepare LoanBrokerCoverWithdraw transaction
+	// Prepare LoanBrokerCoverWithdraw transaction ----------------------
 	fmt.Printf("\n=== Preparing LoanBrokerCoverWithdraw transaction ===\n\n")
 	coverWithdrawTx := transaction.LoanBrokerCoverWithdraw{
 		BaseTx: transaction.BaseTx{
@@ -121,7 +123,7 @@ func main() {
 	coverWithdrawTxJSON, _ := json.MarshalIndent(flatCoverWithdrawTx, "", "  ")
 	fmt.Printf("%s\n", string(coverWithdrawTxJSON))
 
-	// Sign, submit, and wait for withdraw validation
+	// Sign, submit, and wait for withdraw validation ----------------------
 	fmt.Printf("\n=== Submitting LoanBrokerCoverWithdraw transaction ===\n\n")
 	withdrawResponse, err := client.SubmitTxAndWait(flatCoverWithdrawTx, &wstypes.SubmitOptions{
 		Autofill: true,

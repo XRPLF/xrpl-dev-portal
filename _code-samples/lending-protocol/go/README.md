@@ -188,6 +188,52 @@ go run ./loan-manage
 
 The script should output the initial status of the loan, the LoanManage transaction, and the updated loan status and grace period after impairment. The script will countdown the grace period before outputting another LoanManage transaction, and then the final flags on the loan.
 
+```sh
+Loan broker address: rN7eCZhKHcq5LEC2W2RrrGcUPBYwZagEPX
+LoanID: 2BD3F3F587D1BD4FB247B0935FB098E2DC6E3B571F493472CED914216990EC6C
+
+=== Loan Status ===
+
+Total Amount Owed: 1001 TSTUSD.
+Payment Due Date: 2026-03-23 01:23:40
+
+=== Preparing LoanManage transaction to impair loan ===
+
+{
+  "Account": "rN7eCZhKHcq5LEC2W2RrrGcUPBYwZagEPX",
+  "Flags": 131072,
+  "LoanID": "2BD3F3F587D1BD4FB247B0935FB098E2DC6E3B571F493472CED914216990EC6C",
+  "TransactionType": "LoanManage"
+}
+
+=== Submitting LoanManage impairment transaction ===
+
+Loan impaired successfully!
+New Payment Due Date: 2026-02-21 00:24:10
+Grace Period: 60 seconds
+
+=== Countdown until loan can be defaulted ===
+
+Grace period expired. Loan can now be defaulted.
+
+=== Preparing LoanManage transaction to default loan ===
+
+{
+  "Account": "rN7eCZhKHcq5LEC2W2RrrGcUPBYwZagEPX",
+  "Flags": 65536,
+  "LoanID": "2BD3F3F587D1BD4FB247B0935FB098E2DC6E3B571F493472CED914216990EC6C",
+  "TransactionType": "LoanManage"
+}
+
+=== Submitting LoanManage default transaction ===
+
+Loan defaulted successfully!
+
+=== Checking final loan status ===
+
+Final loan flags: [tfLoanDefault tfLoanImpair]
+```
+
 ---
 
 ## Pay a Loan
