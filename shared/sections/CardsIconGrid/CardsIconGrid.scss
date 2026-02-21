@@ -3,7 +3,6 @@
 //
 // Naming Convention: BEM with 'bds' namespace
 // .bds-cards-icon-grid         - Base section container
-// .bds-cards-icon-grid__header - Header section (heading + description)
 // .bds-cards-icon-grid__list   - Grid list (ul as PageGrid.Row)
 
 // =============================================================================
@@ -13,14 +12,6 @@
 $bds-cards-icon-grid-padding-base: $bds-space-2xl;
 $bds-cards-icon-grid-padding-md: $bds-space-3xl;
 $bds-cards-icon-grid-padding-lg: $bds-space-4xl;
-
-$bds-cards-icon-grid-header-gap-base: $bds-gap-header-sm;
-$bds-cards-icon-grid-header-gap-md: $bds-gap-header-md;
-$bds-cards-icon-grid-header-gap-lg: $bds-gap-header-lg;
-
-$bds-cards-icon-grid-header-margin-base: $bds-gap-section-sm;
-$bds-cards-icon-grid-header-margin-md: $bds-gap-section-md;
-$bds-cards-icon-grid-header-margin-lg: $bds-gap-section-lg;
 
 // =============================================================================
 // Section Container
@@ -44,31 +35,6 @@ $bds-cards-icon-grid-header-margin-lg: $bds-gap-section-lg;
 
   @include bds-theme-mode(dark) {
     color: $white;
-  }
-}
-
-// =============================================================================
-// Header Section
-// =============================================================================
-
-.bds-cards-icon-grid__header {
-  display: flex;
-  flex-direction: column;
-  gap: $bds-cards-icon-grid-header-gap-base;
-  margin-bottom: $bds-cards-icon-grid-header-margin-base;
-
-  @include media-breakpoint-up(md) {
-    gap: $bds-cards-icon-grid-header-gap-md;
-    margin-bottom: $bds-cards-icon-grid-header-margin-md;
-  }
-
-  @include media-breakpoint-up(lg) {
-    gap: $bds-cards-icon-grid-header-gap-lg;
-    margin-bottom: $bds-cards-icon-grid-header-margin-lg;
-  }
-
-  h2, p {
-    margin-bottom: 0;
   }
 }
 

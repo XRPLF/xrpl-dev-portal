@@ -3,9 +3,6 @@
 //
 // Naming Convention: BEM with 'bds' namespace
 // .bds-standard-card-group-section                    - Base section container
-// .bds-standard-card-group-section__header            - Header wrapper for headline and description
-// .bds-standard-card-group-section__headline           - Section headline (uses .h-md)
-// .bds-standard-card-group-section__description       - Section description (uses .body-l)
 //
 // Design tokens from Figma:
 // Light Mode:
@@ -24,16 +21,6 @@
 // Design Tokens (from Figma)
 // =============================================================================
 // Note: Uses centralized spacing tokens from _spacing.scss.
-
-// Spacing - Header gap (between headline and description)
-$bds-standard-card-group-section-header-gap-sm: $bds-space-sm;   // 8px - spacing('sm')
-$bds-standard-card-group-section-header-gap-md: $bds-space-sm;   // 8px - spacing('sm')
-$bds-standard-card-group-section-header-gap-lg: $bds-space-lg;   // 16px - spacing('lg')
-
-// Spacing - Section gap (between header and cards)
-$bds-standard-card-group-section-section-gap-sm: $bds-space-2xl; // 24px - spacing('2xl')
-$bds-standard-card-group-section-section-gap-md: $bds-space-3xl; // 32px - spacing('3xl')
-$bds-standard-card-group-section-section-gap-lg: $bds-space-4xl; // 40px - spacing('4xl')
 
 // Spacing - Section padding (vertical)
 $bds-standard-card-group-section-padding-y-sm: $bds-space-5xl;   // 48px - spacing('5xl')
@@ -69,43 +56,8 @@ $bds-standard-card-group-section-padding-y-lg: $bds-space-8xl;   // 80px - spaci
   }
 }
 
-// =============================================================================
-// Header Section
-// =============================================================================
-
-.bds-standard-card-group-section__header {
-  display: flex;
-  flex-direction: column;
-  gap: $bds-standard-card-group-section-header-gap-sm;
-
-  @include media-breakpoint-up(md) {
-    gap: $bds-standard-card-group-section-header-gap-md;
-  }
-
-  @include media-breakpoint-up(lg) {
-    gap: $bds-standard-card-group-section-header-gap-lg;
-  }
-}
-
-.bds-standard-card-group-section__headline {
-  margin: 0;
-  // Typography handled by .h-md class from _font.scss
-}
-
-.bds-standard-card-group-section__description {
-  margin: 0;
-  // Typography handled by .body-l class from _font.scss
-}
-
+// Header section uses SectionHeader component
 
 .bds-standard-card-group-section__cards {
-  margin-top: $bds-standard-card-group-section-section-gap-sm;
-
-  @include media-breakpoint-up(md) {
-    margin-top: $bds-standard-card-group-section-section-gap-md;
-  }
-
-  @include media-breakpoint-up(lg) {
-    margin-top: $bds-standard-card-group-section-section-gap-lg;
-  }
+  // Section gap handled by SectionHeader margin-bottom
 }

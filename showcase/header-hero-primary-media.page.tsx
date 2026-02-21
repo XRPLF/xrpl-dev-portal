@@ -110,8 +110,8 @@ export default function HeaderHeroPrimaryMediaShowcase() {
               code={`<HeaderHeroPrimaryMedia
   headline="Build on XRPL"
   subtitle="Start developing today with our comprehensive developer tools and APIs."
-  callsToAction={[
-    { children: "Get Started", href: "/docs" }
+  links={[
+    { label: "Get Started", href: "/docs" }
   ]}
   media={{
     type: "image",
@@ -123,7 +123,7 @@ export default function HeaderHeroPrimaryMediaShowcase() {
               <HeaderHeroPrimaryMedia
                 headline="Build on XRPL"
                 subtitle="Start developing today with our comprehensive developer tools and APIs."
-                callsToAction={[{ children: "Get Started", href: "/docs" }]}
+                links={[{ label: "Get Started", href: "/docs" }]}
                 media={{
                   type: "image",
                   src: placeholderImage,
@@ -143,9 +143,9 @@ export default function HeaderHeroPrimaryMediaShowcase() {
               code={`<HeaderHeroPrimaryMedia
   headline="Real-world asset tokenization"
   subtitle="Learn how to issue crypto tokens and build tokenization solutions."
-  callsToAction={[
-    { children: "Get Started", href: "/docs" },
-    { children: "Learn More", href: "/about" }
+  links={[
+    { label: "Get Started", href: "/docs" },
+    { label: "Learn More", href: "/about" }
   ]}
   media={{
     type: "image",
@@ -157,9 +157,9 @@ export default function HeaderHeroPrimaryMediaShowcase() {
               <HeaderHeroPrimaryMedia
                 headline="Real-world asset tokenization"
                 subtitle="Learn how to issue crypto tokens and build tokenization solutions."
-                callsToAction={[
-                  { children: "Get Started", href: "/docs" },
-                  { children: "Learn More", href: "/about" },
+                links={[
+                  { label: "Get Started", href: "/docs" },
+                  { label: "Learn More", href: "/about" },
                 ]}
                 media={{
                   type: "image",
@@ -180,8 +180,8 @@ export default function HeaderHeroPrimaryMediaShowcase() {
               code={`<HeaderHeroPrimaryMedia
   headline="Watch and Learn"
   subtitle="Explore our video tutorials and guides."
-  callsToAction={[
-    { children: "Watch Tutorials", href: "/tutorials" }
+  links={[
+    { label: "Watch Tutorials", href: "/tutorials" }
   ]}
   media={{
     type: "video",
@@ -197,8 +197,8 @@ export default function HeaderHeroPrimaryMediaShowcase() {
               <HeaderHeroPrimaryMedia
                 headline="Watch and Learn"
                 subtitle="Explore our video tutorials and guides."
-                callsToAction={[
-                  { children: "Watch Tutorials", href: "/tutorials" },
+                links={[
+                  { label: "Watch Tutorials", href: "/tutorials" },
                 ]}
                 media={{
                   type: "video",
@@ -223,8 +223,8 @@ export default function HeaderHeroPrimaryMediaShowcase() {
               code={`<HeaderHeroPrimaryMedia
   headline="Interactive Experience"
   subtitle="Engage with our custom interactive media."
-  callsToAction={[
-    { children: "Explore", href: "/interactive" }
+  links={[
+    { label: "Explore", href: "/interactive" }
   ]}
   media={{
     type: "custom",
@@ -235,7 +235,7 @@ export default function HeaderHeroPrimaryMediaShowcase() {
               <HeaderHeroPrimaryMedia
                 headline="Interactive Experience"
                 subtitle="Engage with our custom interactive media."
-                callsToAction={[{ children: "Explore", href: "/interactive" }]}
+                links={[{ label: "Explore", href: "/interactive" }]}
                 media={{
                   type: "custom",
                   element: <SampleAnimation />,
@@ -254,8 +254,8 @@ export default function HeaderHeroPrimaryMediaShowcase() {
               code={`<HeaderHeroPrimaryMedia
   headline="Optimized Images"
   subtitle="Use native image attributes for performance and security."
-  callsToAction={[
-    { children: "View Gallery", href: "/gallery" }
+  links={[
+    { label: "View Gallery", href: "/gallery" }
   ]}
   media={{
     type: "image",
@@ -270,7 +270,7 @@ export default function HeaderHeroPrimaryMediaShowcase() {
               <HeaderHeroPrimaryMedia
                 headline="Optimized Images"
                 subtitle="Use native image attributes for performance and security."
-                callsToAction={[{ children: "View Gallery", href: "/gallery" }]}
+                links={[{ label: "View Gallery", href: "/gallery" }]}
                 media={{
                   type: "image",
                   src: placeholderImage,
@@ -292,8 +292,8 @@ export default function HeaderHeroPrimaryMediaShowcase() {
               code={`<HeaderHeroPrimaryMedia
   headline="Video Content"
   subtitle="Rich video experiences with full control."
-  callsToAction={[
-    { children: "Watch Now", href: "/videos" }
+  links={[
+    { label: "Watch Now", href: "/videos" }
   ]}
   media={{
     type: "video",
@@ -308,7 +308,7 @@ export default function HeaderHeroPrimaryMediaShowcase() {
               <HeaderHeroPrimaryMedia
                 headline="Video Content"
                 subtitle="Rich video experiences with full control."
-                callsToAction={[{ children: "Watch Now", href: "/videos" }]}
+                links={[{ label: "Watch Now", href: "/videos" }]}
                 media={{
                   type: "video",
                   src: placeholderVideo,
@@ -345,8 +345,8 @@ export default function HeaderHeroPrimaryMediaShowcase() {
               code={`<HeaderHeroPrimaryMedia
   headline="Build on XRPL"
   subtitle={undefined}
-  callsToAction={[
-    { children: "Get Started", href: "/docs" }
+  links={[
+    { label: "Get Started", href: "/docs" }
   ]}
   media={{
     type: "image",
@@ -358,7 +358,7 @@ export default function HeaderHeroPrimaryMediaShowcase() {
               <HeaderHeroPrimaryMedia
                 headline="Build on XRPL"
                 subtitle={undefined as any}
-                callsToAction={[{ children: "Get Started", href: "/docs" }]}
+                links={[{ label: "Get Started", href: "/docs" }]}
                 media={{
                   type: "image",
                   src: placeholderImage,
@@ -378,9 +378,9 @@ export default function HeaderHeroPrimaryMediaShowcase() {
               code={`<HeaderHeroPrimaryMedia
   headline="Single Call to Action"
   subtitle="Focus on one primary action for better conversion."
-  callsToAction={[
-    { children: "Get Started", href: "/docs" }
-    // No secondary CTA - this is valid
+  links={[
+    { label: "Get Started", href: "/docs" }
+    // No secondary link - this is valid
   ]}
   media={{
     type: "image",
@@ -392,7 +392,7 @@ export default function HeaderHeroPrimaryMediaShowcase() {
               <HeaderHeroPrimaryMedia
                 headline="Single Call to Action"
                 subtitle="Focus on one primary action for better conversion."
-                callsToAction={[{ children: "Get Started", href: "/docs" }]}
+                links={[{ label: "Get Started", href: "/docs" }]}
                 media={{
                   type: "image",
                   src: placeholderImage,
@@ -412,8 +412,8 @@ export default function HeaderHeroPrimaryMediaShowcase() {
               code={`<HeaderHeroPrimaryMedia
   headline="Content Without Media"
   subtitle="Sometimes you may want to focus purely on the content without media."
-  callsToAction={[
-    { children: "Learn More", href: "/about" }
+  links={[
+    { label: "Learn More", href: "/about" }
   ]}
   media={undefined}
 />`}
@@ -421,7 +421,7 @@ export default function HeaderHeroPrimaryMediaShowcase() {
               <HeaderHeroPrimaryMedia
                 headline="Content Without Media"
                 subtitle="Sometimes you may want to focus purely on the content without media."
-                callsToAction={[{ children: "Learn More", href: "/about" }]}
+                links={[{ label: "Learn More", href: "/about" }]}
                 media={undefined as any}
               />
             </CodeDemo>
@@ -499,9 +499,9 @@ export default function HeaderHeroPrimaryMediaShowcase() {
                     <code>React.ReactNode</code> - Hero subtitle text
                   </li>
                   <li>
-                    <code>callsToAction</code> (required) -{" "}
-                    <code>[ButtonProps, ButtonProps?]</code> - Array with
-                    primary CTA (required) and optional secondary CTA
+                    <code>links</code> (optional) -{" "}
+                    <code>DesignConstrainedLink[]</code> - Array of{" "}
+                    <code>{`{ label, href }`}</code> for ButtonGroup
                   </li>
                   <li>
                     <code>media</code> (required) - <code>HeaderHeroMedia</code>{" "}
@@ -568,11 +568,12 @@ export default function HeaderHeroPrimaryMediaShowcase() {
                 </ul>
               </div>
 
-              <h4 className="h5 mb-4">Button Props (callsToAction)</h4>
+              <h4 className="h5 mb-4">Links (ButtonGroup)</h4>
               <p className="mb-4">
-                The <code>callsToAction</code> prop accepts Button component
-                props, but <code>variant</code> and <code>color</code> are
-                automatically set:
+                The <code>links</code> prop accepts an array of{" "}
+                <code>{`{ label, href }`}</code> objects for consistent
+                ButtonGroup rendering; <code>variant</code> and{" "}
+                <code>color</code> are set by the component:
               </p>
               <ul>
                 <li>
@@ -624,8 +625,8 @@ export default function HeaderHeroPrimaryMediaShowcase() {
                   {`<HeaderHeroPrimaryMedia
   headline="Build on XRPL"
   subtitle="Start developing today with our comprehensive developer tools."
-  callsToAction={[
-    { children: "Get Started", href: "/docs" }
+  links={[
+    { label: "Get Started", href: "/docs" }
   ]}
   media={{
     type: "image",
@@ -651,9 +652,9 @@ export default function HeaderHeroPrimaryMediaShowcase() {
                   {`<HeaderHeroPrimaryMedia
   headline="Real-world asset tokenization"
   subtitle="Learn how to issue crypto tokens and build solutions."
-  callsToAction={[
-    { children: "Get Started", href: "/docs" },
-    { children: "Learn More", href: "/about" }
+  links={[
+    { label: "Get Started", href: "/docs" },
+    { label: "Learn More", href: "/about" }
   ]}
   media={{
     type: "image",
@@ -679,8 +680,8 @@ export default function HeaderHeroPrimaryMediaShowcase() {
                   {`<HeaderHeroPrimaryMedia
   headline="Watch and Learn"
   subtitle="Explore our video tutorials."
-  callsToAction={[
-    { children: "Watch Tutorials", href: "/tutorials" }
+  links={[
+    { label: "Watch Tutorials", href: "/tutorials" }
   ]}
   media={{
     type: "video",
@@ -709,8 +710,8 @@ export default function HeaderHeroPrimaryMediaShowcase() {
                   {`<HeaderHeroPrimaryMedia
   headline="Interactive Experience"
   subtitle="Engage with custom media."
-  callsToAction={[
-    { children: "Explore", href: "/interactive" }
+  links={[
+    { label: "Explore", href: "/interactive" }
   ]}
   media={{
     type: "custom",

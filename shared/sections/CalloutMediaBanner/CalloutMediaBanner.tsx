@@ -12,6 +12,8 @@ export interface CalloutMediaBannerProps {
   textColor?: 'white' | 'black';
   /** Main heading text */
   heading?: string;
+  /** Heading element type - h1 through h6 (defaults to h6) */
+  headingAs?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
   /** Subheading/description text */
   subheading: string;
   /** Button configurations (1-2 buttons supported) */
@@ -22,12 +24,12 @@ export interface CalloutMediaBannerProps {
 
 /**
  * CalloutMediaBanner Component
- * 
+ *
  * A full-width banner component featuring a heading, subheading, and optional action buttons.
  * Supports 5 color variants or a custom background image. Responsive across mobile, tablet, and desktop.
- * 
+ *
  * @example
- * // Color variant
+ * // Color variant with default h6 heading
  * <CalloutMediaBanner
  *   variant="green"
  *   heading="The Compliant Ledger Protocol"
@@ -36,6 +38,16 @@ export interface CalloutMediaBannerProps {
  *     { label: "Get Started", href: "/docs" },
  *     { label: "Learn More", href: "/about" }
  *   ]}
+ * />
+ *
+ * @example
+ * // With custom heading level (h1)
+ * <CalloutMediaBanner
+ *   variant="green"
+ *   heading="The Compliant Ledger Protocol"
+ *   headingAs="h1"
+ *   subheading="A decentralized public Layer 1 blockchain..."
+ *   buttons={[{ label: "Get Started", href: "/docs" }]}
  * />
  *
  * @example
@@ -53,6 +65,7 @@ export interface CalloutMediaBannerProps {
  *   backgroundImage="/images/light-hero-bg.jpg"
  *   textColor="black"
  *   heading="Build on XRPL"
+ *   headingAs="h2"
  *   subheading="Start building your next project"
  *   buttons={[{ label: "Start Building", onClick: handleClick }]}
  * />
@@ -62,6 +75,7 @@ export const CalloutMediaBanner: React.FC<CalloutMediaBannerProps> = ({
   backgroundImage,
   textColor = 'white',
   heading,
+  headingAs = 'h4',
   subheading,
   buttons,
   className = '',
@@ -96,6 +110,9 @@ export const CalloutMediaBanner: React.FC<CalloutMediaBannerProps> = ({
     ? { backgroundImage: `url(${backgroundImage})` }
     : {};
 
+  // Create the heading element dynamically
+  const HeadingElement = headingAs;
+
   return (
     <PageGrid containerType="wide">
       <PageGridRow className={classNames} style={inlineStyle}>
@@ -103,7 +120,7 @@ export const CalloutMediaBanner: React.FC<CalloutMediaBannerProps> = ({
           <div className="bds-callout-media-banner__content">
             {/* Text Content */}
             <div className="bds-callout-media-banner__text">
-              {heading && <h2 className="bds-callout-media-banner__heading">{heading}</h2>}
+              {heading && <HeadingElement className="bds-callout-media-banner__heading">{heading}</HeadingElement>}
               <p className="bds-callout-media-banner__subheading">{subheading}</p>
             </div>
 

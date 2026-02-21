@@ -39,6 +39,7 @@ export default function CalloutMediaBannerShowcase() {
         <CalloutMediaBanner
           variant="green"
           heading="The Compliant Ledger Protocol"
+          headingAs="h1"
           subheading="A decentralized public Layer 1 blockchain for creating, transferring, and exchanging digital assets with a focus on compliance."
           buttons={[
             { label: "Get Started", onClick: () => handleClick('responsive-demo-primary') },
@@ -290,6 +291,7 @@ export default function CalloutMediaBannerShowcase() {
             backgroundImage={sampleLightBackgroundImage}
             textColor="black"
             heading="Build the Future of Finance"
+            headingAs="h2"
             subheading="Create powerful decentralized applications with XRPL's fast, efficient, and sustainable blockchain technology."
             buttons={[
               { label: "Start Building", onClick: () => handleClick('image-black-primary') },
@@ -574,8 +576,16 @@ export default function CalloutMediaBannerShowcase() {
                 <div className="d-flex flex-row py-3" style={{ gap: '1rem', borderBottom: '1px solid var(--bs-border-color, #dee2e6)' }}>
                   <div style={{ width: '140px', flexShrink: 0 }}><code>heading</code></div>
                   <div style={{ flex: '1 1 0', minWidth: 0 }}><code>string</code></div>
-                  <div style={{ width: '120px', flexShrink: 0 }}><em>required</em></div>
+                  <div style={{ width: '120px', flexShrink: 0 }}><code>undefined</code></div>
                   <div style={{ flex: '1 1 0', minWidth: 0 }}>Main heading text</div>
+                </div>
+
+                {/* headingAs */}
+                <div className="d-flex flex-row py-3" style={{ gap: '1rem', borderBottom: '1px solid var(--bs-border-color, #dee2e6)' }}>
+                  <div style={{ width: '140px', flexShrink: 0 }}><code>headingAs</code></div>
+                  <div style={{ flex: '1 1 0', minWidth: 0 }}><code>'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'</code></div>
+                  <div style={{ width: '120px', flexShrink: 0 }}><code>'h6'</code></div>
+                  <div style={{ flex: '1 1 0', minWidth: 0 }}>Heading element type - allows semantic HTML customization while maintaining visual styling</div>
                 </div>
 
                 {/* subheading */}

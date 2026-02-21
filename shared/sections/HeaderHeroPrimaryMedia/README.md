@@ -21,7 +21,7 @@ function MyPage() {
     <HeaderHeroPrimaryMedia
       headline="Build on XRPL"
       subtitle="Start developing today with our comprehensive developer tools."
-      callsToAction={[{ children: "Get Started", href: "/docs" }]}
+      links={[{ label: "Get Started", href: "/docs" }]}
       media={{
         type: "image",
         src: "/img/hero.png",
@@ -38,19 +38,18 @@ function MyPage() {
 | --------------- | ------------------------------ | -------- | ------------------------------------------------------------ |
 | `headline`      | `React.ReactNode`              | Yes      | Hero headline text (display-md typography)                   |
 | `subtitle`      | `React.ReactNode`              | Yes      | Hero subtitle text (label-l typography)                      |
-| `callsToAction` | `[ButtonProps, ButtonProps?]`  | Yes      | Array with primary CTA (required) and optional secondary CTA |
+| `links`        | `DesignConstrainedLink[]`     | No       | Array of `{ label, href }` for ButtonGroup                   |
 | `media`         | `HeaderHeroMedia`              | Yes      | Media element (image, video, or custom)                      |
 | `className`     | `string`                       | No       | Additional CSS classes for the header element                |
 | `...rest`       | `HTMLHeaderElement attributes` | No       | Any other HTML header attributes                             |
 
-### Calls to Action
+### Links (ButtonGroup)
 
-The `callsToAction` prop accepts Button component props, but `variant` and `color` are automatically set:
+The `links` prop accepts an array of `{ label, href }` objects for consistent ButtonGroup rendering; `variant` and `color` are set by the component:
 
-- **Primary CTA**: `variant="primary"`, `color="green"`
-- **Secondary CTA**: `variant="tertiary"`, `color="green"`
-
-All other Button props are supported (e.g., `children`, `href`, `onClick`, etc.).
+- **First link**: `variant="primary"`, `color="green"`
+- **Second link**: `variant="tertiary"`, `color="green"`
+- Max 2 links supported (ButtonGroup validation)
 
 ## Media Types
 
@@ -130,9 +129,9 @@ media={{
 <HeaderHeroPrimaryMedia
   headline="Real-world asset tokenization"
   subtitle="Learn how to issue crypto tokens and build solutions."
-  callsToAction={[
-    { children: "Get Started", href: "/docs" },
-    { children: "Learn More", href: "/about" },
+  links={[
+    { label: "Get Started", href: "/docs" },
+    { label: "Learn More", href: "/about" },
   ]}
   media={{
     type: "image",
@@ -148,7 +147,7 @@ media={{
 <HeaderHeroPrimaryMedia
   headline="Watch and Learn"
   subtitle="Explore our video tutorials."
-  callsToAction={[{ children: "Watch Tutorials", href: "/tutorials" }]}
+  links={[{ label: "Watch Tutorials", href: "/tutorials" }]}
   media={{
     type: "video",
     src: "/video/intro.mp4",
@@ -166,7 +165,7 @@ media={{
 <HeaderHeroPrimaryMedia
   headline="Interactive Experience"
   subtitle="Engage with custom media."
-  callsToAction={[{ children: "Explore", href: "/interactive" }]}
+  links={[{ label: "Explore", href: "/interactive" }]}
   media={{
     type: "custom",
     element: <MyAnimationComponent />,
@@ -190,7 +189,7 @@ The component enforces specific design requirements:
 The component includes development-time validation that logs warnings to the console when required props are missing:
 
 - Missing `headline`: Component returns `null` (error logged)
-- Missing `subtitle`, `callsToAction`, or `media`: Warning logged, component still renders
+- Missing `subtitle`, `links`, or `media`: Warning logged, component still renders
 
 ## CSS Classes
 

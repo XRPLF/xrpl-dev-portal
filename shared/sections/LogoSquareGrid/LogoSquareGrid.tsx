@@ -1,6 +1,7 @@
 import React from 'react';
 import clsx from 'clsx';
 import { PageGrid, PageGridCol, PageGridRow } from 'shared/components/PageGrid/page-grid';
+import { SectionHeader } from 'shared/patterns/SectionHeader';
 import { TileLogo, TileLogoProps } from '../../components/TileLogo/TileLogo';
 import { ButtonGroup, ButtonConfig, validateButtonGroup } from '../../patterns/ButtonGroup/ButtonGroup';
 
@@ -73,36 +74,23 @@ export const LogoSquareGrid: React.FC<LogoSquareGridProps> = ({
     className
   );
 
-  // Determine if we should show the header section
-  const hasHeader = !!(heading || description || hasButtons);
-
   return (
     <PageGrid className={classNames}>
-      <PageGridRow>
-        <PageGridCol span={{ base: 4, md: 6, lg: 8 }}>
-            {/* Header Section */}
-            {hasHeader && (
-              <div className="bds-logo-square-grid__header">
-                {/* Text Content */}
-                {(heading || description) && (
-                  <div className="bds-logo-square-grid__text">
-                    {heading && <h4 className="h-md mb-0">{heading}</h4>}
-                    {description && <p className="body-l mb-0">{description}</p>}
-                  </div>
-                )}
-
-                {/* Buttons */}
-                {hasButtons && (
-                  <ButtonGroup
-                    buttons={buttonValidation.buttons}
-                    color="green"
-                    gap="small"
-                  />
-                )}
-              </div>
-            )}
-        </PageGridCol>
-      </PageGridRow>
+      <SectionHeader
+        heading={heading}
+        description={description}
+        as="h4"
+        span={{ base: 4, md: 6, lg: 8 }}
+        className="bds-logo-square-grid__section-header"
+      >
+        {hasButtons && (
+          <ButtonGroup
+            buttons={buttonValidation.buttons}
+            color="green"
+            gap="small"
+          />
+        )}
+      </SectionHeader>
       <PageGridRow>
         {logos.map((logo, index) => (
           <PageGridCol key={index} span={{ base: 2, lg: 3 }}>

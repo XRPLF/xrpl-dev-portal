@@ -1,6 +1,7 @@
 import React from 'react';
 import clsx from 'clsx';
 import { PageGrid, PageGridRow, PageGridCol } from 'shared/components/PageGrid/page-grid';
+import { SectionHeader } from 'shared/patterns/SectionHeader';
 import { CardTextIconCard, CardTextIconCardProps } from 'shared/components/CardTextIcon';
 
 export interface CardsIconGridProps {
@@ -38,12 +39,7 @@ export const CardsIconGrid: React.FC<CardsIconGridProps> = ({
 }) => {
   return (
     <PageGrid className={clsx('bds-cards-icon-grid', className)}>
-      <PageGridRow>
-        <PageGridCol className="bds-cards-icon-grid__header" span={{ base: 12, md: 6, lg: 8 }}>
-          <h2 className="h-md">{heading}</h2>
-          {description && <p className="body-l">{description}</p>}
-        </PageGridCol>
-      </PageGridRow>
+      <SectionHeader heading={heading} description={description} span={{ base: 12, md: 6, lg: 8 }} />
 
       <PageGridRow as="ul" className="bds-cards-icon-grid__list list-none pl-0">
         {cards.map((card, index) => (

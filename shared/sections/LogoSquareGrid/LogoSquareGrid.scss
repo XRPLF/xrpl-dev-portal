@@ -5,10 +5,7 @@
 // .bds-logo-square-grid                  - Base component
 // .bds-logo-square-grid--gray            - Gray variant (maps to TileLogo 'neutral')
 // .bds-logo-square-grid--green           - Green variant (maps to TileLogo 'green')
-// .bds-logo-square-grid__header          - Header section container
-// .bds-logo-square-grid__text            - Text content container
-// .bds-logo-square-grid__heading         - Heading element
-// .bds-logo-square-grid__description     - Description element
+// .bds-logo-square-grid__section-header  - SectionHeader with optional top margin
 //
 // Note: Individual logo tiles are rendered using the TileLogo component
 // Note: Button layout is handled by the ButtonGroup component
@@ -19,19 +16,6 @@
 // Note: Color variants are now handled by the TileLogo component
 // LogoSquareGrid 'gray' maps to TileLogo 'neutral'
 // LogoSquareGrid 'green' maps to TileLogo 'green'
-
-// Spacing tokens - responsive
-// Note: Uses centralized spacing tokens from _spacing.scss.
-// Mobile (<768px)
-$bds-lsg-header-gap-mobile: $bds-space-2xl;   // 24px - spacing('2xl')
-$bds-lsg-text-gap-mobile: $bds-space-sm;      // 8px - spacing('sm')
-
-// Tablet (768px-1023px)
-$bds-lsg-header-gap-tablet: $bds-space-3xl;   // 32px - spacing('3xl')
-
-// Desktop (≥1024px)
-$bds-lsg-header-gap-desktop: $bds-space-4xl;  // 40px - spacing('4xl')
-$bds-lsg-text-gap-desktop: $bds-space-lg;     // 16px - spacing('lg')
 
 // =============================================================================
 // Base Component Styles
@@ -44,55 +28,20 @@ $bds-lsg-text-gap-desktop: $bds-space-lg;     // 16px - spacing('lg')
 }
 
 // =============================================================================
-// Header Section
+// Header Section (uses SectionHeader component)
 // =============================================================================
+// LogoSquareGrid needs additional top margin for the header row
+.bds-logo-square-grid__section-header {
+  margin-top: $bds-space-2xl;
 
-.bds-logo-square-grid__header {
-  @extend .d-flex;
-  @extend .flex-column;
-  margin-top: $bds-space-2xl; // 24px - spacing('2xl')
-  margin-bottom: $bds-space-2xl; // 24px - spacing('2xl')
-
-  // Mobile-first gap
-  gap: $bds-lsg-header-gap-mobile;
-
-  // Tablet breakpoint
   @include media-breakpoint-up(md) {
-    gap: $bds-lsg-header-gap-tablet;
-    margin-top: $bds-space-3xl; // 32px - spacing('3xl')
-    margin-bottom: $bds-space-3xl; // 32px - spacing('3xl')
+    margin-top: $bds-space-3xl;
   }
 
-  // Desktop breakpoint
   @include media-breakpoint-up(lg) {
-    gap: $bds-lsg-header-gap-desktop;
-    margin-top: $bds-space-4xl; // 40px - spacing('4xl')
-    margin-bottom: $bds-space-4xl; // 40px - spacing('4xl')
+    margin-top: $bds-space-4xl;
   }
 }
-
-// =============================================================================
-// Text Content
-// =============================================================================
-
-.bds-logo-square-grid__text {
-  @extend .d-flex;
-  @extend .flex-column;
-  
-  // Mobile-first gap
-  gap: $bds-lsg-text-gap-mobile;
-  
-  // Desktop breakpoint
-  @include media-breakpoint-up(lg) {
-    gap: $bds-lsg-text-gap-desktop;
-  }
-}
-
-
-// =============================================================================
-// Action Buttons
-// =============================================================================
-// Note: Button layout is now handled by the ButtonGroup component
 
 // =============================================================================
 // Logo Grid Row

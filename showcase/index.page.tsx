@@ -75,9 +75,9 @@ function ShowcaseColumn({
 
 export default function ShowcaseIndex() {
   return (
-    <div className="landing">
+    <div className="landing py-26">
       <div className="overflow-hidden">
-        <section className="py-26 text-center">
+        <section className="mb-8 text-center">
           <div className="col-lg-8 mx-auto">
             <h6 className="eyebrow mb-3">Brand Design System</h6>
             <h1 className="mb-4">Showcase</h1>
@@ -87,7 +87,7 @@ export default function ShowcaseIndex() {
           </div>
         </section>
 
-        <PageGrid className="py-26">
+        <PageGrid>
           <PageGridRow>
             <PageGridCol span={{ base: 4, lg: 6 }} className="mb-10 mb-lg-0">
               <div className="p-6-sm p-10-until-sm br-8 h-100" style={{border: "1px solid var(--bs-border-color)" }}>

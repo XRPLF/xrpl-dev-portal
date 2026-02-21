@@ -3,6 +3,7 @@ import clsx from 'clsx';
 import { LinkTextCard } from 'shared/patterns/LinkTextCard';
 import { ButtonConfig } from 'shared/patterns/ButtonGroup';
 import { PageGrid, PageGridRow, PageGridCol } from 'shared/components/PageGrid/page-grid';
+import { SectionHeader } from 'shared/patterns/SectionHeader';
 
 export interface LinkTextCardData {
   /** Heading text for the card */
@@ -75,13 +76,7 @@ export const LinkTextDirectory: React.FC<LinkTextDirectoryProps> = ({
 }) => {
   return (
     <PageGrid className={clsx('bds-link-text-directory', className)}>
-      {/* Header Section */}
-      <PageGridRow>
-        <PageGridCol className="bds-link-text-directory__header" span={{ base: 12, md: 6, lg: 8}}>
-          <h2 className="h-md">{heading}</h2>
-          {description && <p className="body-l">{description}</p>}
-        </PageGridCol>
-      </PageGridRow>
+      <SectionHeader heading={heading} description={description} span={{ base: 12, md: 6, lg: 8 }} />
 
       {/* Cards List */}
       <PageGridRow className="bds-link-text-directory__list">

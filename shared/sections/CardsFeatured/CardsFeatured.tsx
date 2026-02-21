@@ -2,6 +2,7 @@ import React from 'react';
 import clsx from 'clsx';
 import { CardImage, CardImageProps } from '../../components/CardImage';
 import { PageGrid } from '../../components/PageGrid/page-grid';
+import { SectionHeader } from 'shared/patterns/SectionHeader';
 import { getCardKey, isEnvironment } from '../../utils';
 
 /**
@@ -72,21 +73,7 @@ export const CardsFeatured = React.forwardRef<HTMLElement, CardsFeaturedProps>(
         {...rest}
       >
         <PageGrid>
-          {/* Header content row */}
-          <PageGrid.Row>
-            <PageGrid.Col
-              span={{
-                base: 'fill',
-                md: 6,
-                lg: 8,
-              }}
-            >
-              <div className="bds-cards-featured__header">
-                <h2 className="bds-cards-featured__heading h-md">{heading}</h2>
-                <p className="bds-cards-featured__description body-l">{description}</p>
-              </div>
-            </PageGrid.Col>
-          </PageGrid.Row>
+          <SectionHeader heading={heading} description={description} />
 
           {/* Cards grid row */}
           <PageGrid.Row>

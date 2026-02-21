@@ -1,6 +1,7 @@
 import React from "react";
 import clsx from "clsx";
 import { PageGrid } from "../../components/PageGrid/page-grid";
+import { SectionHeader } from 'shared/patterns/SectionHeader';
 import StandardCard, {
   StandardCardPropsWithoutVariant,
   StandardCardVariant,
@@ -79,29 +80,7 @@ export const StandardCardGroupSection = React.forwardRef<
       {...rest}
     >
       <PageGrid>
-        {/* Header content row */}
-        <PageGrid.Row>
-          <PageGrid.Col
-            span={{
-              base: "fill",
-              md: 6,
-              lg: 8,
-            }}
-          >
-            <div className="bds-standard-card-group-section__header">
-              {headline && (
-                <h2 className="bds-standard-card-group-section__headline h-md">
-                  {headline}
-                </h2>
-              )}
-              {description && (
-                <div className="bds-standard-card-group-section__description body-l">
-                  {description}
-                </div>
-              )}
-            </div>
-          </PageGrid.Col>
-        </PageGrid.Row>
+        <SectionHeader heading={headline} description={description} />
 
         {/* Cards grid row */}
         <PageGrid.Row

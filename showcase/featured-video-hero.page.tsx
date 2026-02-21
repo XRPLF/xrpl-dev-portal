@@ -96,8 +96,8 @@ useEffect(() => {
       <p>XRP Ledger's built-in functionality and compliance-enabling features allow asset tokenization without additional layers of complexity.</p>
     </>
   }
-  callsToAction={[
-    { children: "Get Started", href: "/docs" }
+  links={[
+    { label: "Get Started", href: "/docs" }
   ]}
   videoElement={{
     ref: videoRef,
@@ -127,7 +127,7 @@ useEffect(() => {
             </p>
           </>
         }
-        callsToAction={[{ children: "Get Started", href: "/docs" }]}
+        links={[{ label: "Get Started", href: "/docs" }]}
         videoElement={{
           ref: videoRef,
           src: placeholderVideo,
@@ -147,9 +147,9 @@ useEffect(() => {
               code={`<FeaturedVideoHero
   headline="Real-world asset tokenization"
   subtitle="Learn how to issue crypto tokens and build tokenization solutions."
-  callsToAction={[
-    { children: "Get Started", href: "/docs" },
-    { children: "Learn More", href: "/about" }
+  links={[
+    { label: "Get Started", href: "/docs" },
+    { label: "Learn More", href: "/about" }
   ]}
   videoElement={{
     src: "/video/tokenization.mp4",
@@ -166,10 +166,10 @@ useEffect(() => {
       <FeaturedVideoHero
         headline="Real-world asset tokenization"
         subtitle="Learn how to issue crypto tokens and build tokenization solutions."
-        callsToAction={[
-          { children: "Get Started", href: "/docs" },
-          { children: "Learn More", href: "/about" },
-        ]}
+links={[
+    { label: "Get Started", href: "/docs" },
+    { label: "Learn More", href: "/about" },
+  ]}
         videoElement={{
           src: placeholderVideo,
           autoPlay: true,
@@ -188,8 +188,8 @@ useEffect(() => {
               code={`<FeaturedVideoHero
   headline="Watch and Learn"
   subtitle="Explore our video tutorials and guides."
-  callsToAction={[
-    { children: "Watch Tutorials", href: "/tutorials" }
+  links={[
+    { label: "Watch Tutorials", href: "/tutorials" }
   ]}
   videoElement={{
     src: "/video/intro.mp4",
@@ -208,7 +208,7 @@ useEffect(() => {
       <FeaturedVideoHero
         headline="Watch and Learn"
         subtitle="Explore our video tutorials and guides."
-        callsToAction={[{ children: "Watch Tutorials", href: "/tutorials" }]}
+        links={[{ label: "Watch Tutorials", href: "/tutorials" }]}
         videoElement={{
           src: placeholderVideo,
           autoPlay: false,
@@ -220,6 +220,48 @@ useEffect(() => {
         }}
       />
       <PageGrid className="py-26">
+        {/* YouTube Embed with Cover Modal */}
+        <PageGridRow>
+          <PageGridCol>
+            <DemoCaption
+              title="YouTube Embed with Cover Modal"
+              description="Use the video prop with embed source and coverImage to show a thumbnail that opens a modal on click. Supports YouTube, Vimeo, and Wistia embeds."
+              code={`<FeaturedVideoHero
+  headline="Nodes and Validators"
+  subtitle="Learn how designated servers called validators come to agreement on the order and outcome of XRP transactions."
+  links={[{ label: "Watch Full Series", href: "/about" }]}
+  video={{
+    source: {
+      type: "embed",
+      embedUrl: "https://www.youtube.com/embed/JjaVDXPqnbA?rel=0&showinfo=0&autoplay=1"
+    },
+    coverImage: {
+      src: "/static/img/overview/video_explainer_nodes@2x.png",
+      alt: "Nodes and Validators - Watch video"
+    }
+  }}
+/>`}
+            />
+          </PageGridCol>
+        </PageGridRow>
+      </PageGrid>
+      <FeaturedVideoHero
+        headline="Nodes and Validators"
+        subtitle="Learn how designated servers called validators come to agreement on the order and outcome of XRP transactions."
+        links={[{ label: "Watch Full Series", href: "/about" }]}
+        video={{
+          source: {
+            type: "embed",
+            embedUrl:
+              "https://www.youtube.com/embed/JjaVDXPqnbA?rel=0&showinfo=0&autoplay=1",
+          },
+          coverImage: {
+            src: require("../static/img/overview/video_explainer_nodes@2x.png"),
+            alt: "Nodes and Validators - Watch video",
+          },
+        }}
+      />
+      <PageGrid className="py-26">
         {/* Validation Examples */}
         <PageGridRow>
           <PageGridCol>
@@ -227,10 +269,10 @@ useEffect(() => {
               <h2 className="h3 mb-6">Validation Examples</h2>
               <p className="mb-6">
                 The component includes development-time validation that logs
-                warnings to the console when required props (headline,
-                videoElement) are missing. The component will return null and
-                not render when validation fails. The callsToAction prop is
-                optional; when provided, at least one non-empty CTA is needed to
+                warnings to the console when required props (headline, and
+                either videoElement or video) are missing. The component will
+                return null and not render when validation fails. The links prop is
+                optional; when provided, at least one non-empty link is needed to
                 show the CTA section.
               </p>
             </div>
@@ -246,8 +288,8 @@ useEffect(() => {
               code={`<FeaturedVideoHero
   headline="Single Call to Action"
   subtitle="Focus on one primary action for better conversion."
-  callsToAction={[
-    { children: "Get Started", href: "/docs" }
+  links={[
+    { label: "Get Started", href: "/docs" }
   ]}
   videoElement={{
     src: "/video/intro.mp4",
@@ -264,7 +306,7 @@ useEffect(() => {
       <FeaturedVideoHero
         headline="Single Call to Action"
         subtitle="Focus on one primary action for better conversion."
-        callsToAction={[{ children: "Get Started", href: "/docs" }]}
+        links={[{ label: "Get Started", href: "/docs" }]}
         videoElement={{
           src: placeholderVideo,
           autoPlay: true,
@@ -282,8 +324,8 @@ useEffect(() => {
               description="Subtitle is optional. The component renders without a subtitle section when omitted."
               code={`<FeaturedVideoHero
   headline="Headline Only"
-  callsToAction={[
-    { children: "Get Started", href: "/docs" }
+  links={[
+    { label: "Get Started", href: "/docs" }
   ]}
   videoElement={{
     src: "/video/intro.mp4",
@@ -299,7 +341,7 @@ useEffect(() => {
       </PageGrid>
       <FeaturedVideoHero
         headline="Headline Only"
-        callsToAction={[{ children: "Get Started", href: "/docs" }]}
+        links={[{ label: "Get Started", href: "/docs" }]}
         videoElement={{
           src: placeholderVideo,
           autoPlay: true,
@@ -327,16 +369,21 @@ useEffect(() => {
                     <code>React.ReactNode</code> - Hero subtitle text
                   </li>
                   <li>
-                    <code>callsToAction</code> (optional) -{" "}
-                    <code>DesignConstrainedCallsToActions</code> - Array with
-                    primary CTA and optional secondary CTA. Omit or pass
-                    empty/non-rendering CTAs to hide the CTA section.
+                    <code>links</code> (optional) -{" "}
+                    <code>DesignConstrainedLink[]</code> - Array of{" "}
+                    <code>{`{ label, href }`}</code> for ButtonGroup. Omit or pass
+                    empty array to hide the button section.
                   </li>
                   <li>
-                    <code>videoElement</code> (required) - Native{" "}
-                    <code>&lt;video&gt;</code> element props (e.g. src,
-                    autoPlay, loop, muted, playsInline, controls, preload,
-                    poster)
+                    <code>videoElement</code> (optional) - Native{" "}
+                    <code>&lt;video&gt;</code> element props. Use when{" "}
+                    <code>video</code> is not provided.
+                  </li>
+                  <li>
+                    <code>video</code> (optional) - Video config with{" "}
+                    <code>source</code> (native or embed) and optional{" "}
+                    <code>coverImage</code>. Use for YouTube/Vimeo/Wistia embeds
+                    with cover thumbnail that opens in a modal.
                   </li>
                   <li>
                     <code>className</code> (optional) - <code>string</code> -
@@ -349,25 +396,24 @@ useEffect(() => {
                 </ul>
               </div>
 
-              <h4 className="h5 mb-4">Button Props (callsToAction)</h4>
+              <h4 className="h5 mb-4">Links (ButtonGroup)</h4>
               <p className="mb-4">
-                The <code>callsToAction</code> prop accepts design-constrained
-                Button props; <code>variant</code> and <code>color</code> are
-                set by the component:
+                The <code>links</code> prop accepts an array of{" "}
+                <code>{`{ label, href }`}</code> objects for consistent
+                ButtonGroup rendering; <code>variant</code> and{" "}
+                <code>color</code> are set by the component:
               </p>
               <ul>
                 <li>
-                  Primary CTA: <code>variant="primary"</code>,{" "}
+                  First link: <code>variant="primary"</code>,{" "}
                   <code>color="green"</code>
                 </li>
                 <li>
-                  Secondary CTA: <code>variant="tertiary"</code>,{" "}
+                  Second link: <code>variant="tertiary"</code>,{" "}
                   <code>color="green"</code>
                 </li>
                 <li>
-                  All other Button props are supported (e.g.,{" "}
-                  <code>children</code>, <code>href</code>, <code>onClick</code>
-                  , etc.)
+                  Max 2 links supported (ButtonGroup validation)
                 </li>
               </ul>
             </div>
@@ -410,8 +456,8 @@ useEffect(() => {
       <p>XRP Ledger's built-in functionality and compliance-enabling features allow asset tokenization without additional layers of complexity.</p>
     </>
   }
-  callsToAction={[
-    { children: "Get Started", href: "/docs" }
+  links={[
+    { label: "Get Started", href: "/docs" }
   ]}
   videoElement={{
     src: "/video/intro.mp4",
@@ -439,9 +485,9 @@ useEffect(() => {
                   {`<FeaturedVideoHero
   headline="Real-world asset tokenization"
   subtitle="Learn how to issue crypto tokens and build solutions."
-  callsToAction={[
-    { children: "Get Started", href: "/docs" },
-    { children: "Learn More", href: "/about" }
+  links={[
+    { label: "Get Started", href: "/docs" },
+    { label: "Learn More", href: "/about" }
   ]}
   videoElement={{
     src: "/video/tokenization.mp4",

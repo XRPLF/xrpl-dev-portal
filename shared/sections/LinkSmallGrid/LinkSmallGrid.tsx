@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react';
 import clsx from 'clsx';
 import { PageGrid, PageGridRow, PageGridCol } from 'shared/components/PageGrid/page-grid';
+import { SectionHeader } from 'shared/patterns/SectionHeader';
 import { TileLink, TileLinkProps } from 'shared/patterns/TileLinks';
 import { calculateTileOffset } from 'shared/utils/helpers';
 
@@ -90,17 +91,7 @@ export const LinkSmallGrid: React.FC<LinkSmallGridProps> = ({
   return (
     <section className={classNames}>
       <PageGrid>
-        <PageGridRow>
-          <PageGridCol span={{ base: 4, md: 6, lg: 8 }}>
-            {/* Header Section */}
-            <div className="bds-link-small-grid__header">
-              <h2 className="bds-link-small-grid__heading h-md">{heading}</h2>
-              {description && (
-                <p className="body-l mb-0">{description}</p>
-              )}
-            </div>
-          </PageGridCol>
-        </PageGridRow>
+        <SectionHeader heading={heading} description={description} span={{ base: 4, md: 6, lg: 8 }} />
         <PageGridRow>
           {links.map((link, index) => {
             const offset = linkOffsets[index];

@@ -3,11 +3,6 @@
 //
 // Naming Convention: BEM with 'bds' namespace
 // .bds-card-stats                    - Base section container
-// .bds-card-stats__header            - Header wrapper for heading and description
-// .bds-card-stats__heading           - Section heading (uses .h-md)
-// .bds-card-stats__description       - Section description (uses .body-l)
-// .bds-card-stats__cards             - Cards grid container
-// .bds-card-stats__card-wrapper      - Individual card wrapper
 //
 // Design tokens from Figma:
 // Light Mode:
@@ -24,25 +19,6 @@
 // - Gap between heading and description: 16px
 // - Gap between cards: 8px (matches $bds-grid-gutter)
 
-
-// Color tokens - Light Mode (from Figma: node 32051-2839)
-$bds-card-stats-heading-light: $black;      // --neutral/black (#141414)
-$bds-card-stats-description-light: $black;  // --neutral/black (#141414)
-
-// Color tokens - Dark Mode (from Figma: node 32051-2524)
-$bds-card-stats-bg-dark: transparent;       // Inherits page background
-$bds-card-stats-heading-dark: $white;       // --neutral/white (#FFFFFF)
-$bds-card-stats-description-dark: $white;   // --neutral/white (#FFFFFF)
-
-// Spacing - Header gap (between heading and description)
-// Note: Uses centralized spacing tokens from _spacing.scss.
-$bds-card-stats-header-gap-base: $bds-space-sm;   // 8px - spacing('sm')
-$bds-card-stats-header-gap-lg: $bds-space-lg;     // 16px - spacing('lg')
-
-// Spacing - Section gap (between header and cards)
-$bds-card-stats-section-gap-sm: $bds-space-2xl;   // 24px - spacing('2xl')
-$bds-card-stats-section-gap-md: $bds-space-3xl;   // 32px - spacing('3xl')
-$bds-card-stats-section-gap-lg: $bds-space-4xl;   // 40px - spacing('4xl')
 
 // Spacing - Section padding
 $bds-card-stats-padding-y-sm: $bds-space-2xl;     // 24px - spacing('2xl')
@@ -69,36 +45,4 @@ $bds-card-stats-padding-y-lg: $bds-space-4xl;     // 40px - spacing('4xl')
   }
 }
 
-// =============================================================================
-// Header Styles
-// =============================================================================
-
-.bds-card-stats__header {
-  display: flex;
-  flex-direction: column;
-  gap: $bds-card-stats-header-gap-base;
-  margin-bottom: $bds-card-stats-section-gap-sm;
-  
-  @include media-breakpoint-up(md) {
-    margin-bottom: $bds-card-stats-section-gap-md;
-  }
-  
-  @include media-breakpoint-up(lg) {
-    gap: $bds-card-stats-header-gap-lg;
-    margin-bottom: $bds-card-stats-section-gap-lg;
-  }
-}
-
-
-
-// =============================================================================
-// Dark Mode Styles
-// =============================================================================
-
-html.dark {
-  .bds-card-stats__heading,
-  .bds-card-stats__description {
-    color: $white;
-  }
-}
-
+// Header section uses SectionHeader component

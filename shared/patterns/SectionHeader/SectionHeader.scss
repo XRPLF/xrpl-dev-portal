@@ -1,0 +1,70 @@
+// BDS SectionHeader Pattern Styles
+// Brand Design System - Consolidated section header (heading + description)
+//
+// Naming Convention: BEM with 'bds' namespace
+// .bds-section-header              - Header wrapper for heading and description
+// .bds-section-header__heading    - Section heading (uses .h-md)
+// .bds-section-header__description - Section description (uses .body-l)
+//
+// Design tokens from _spacing.scss:
+// - Gap between heading and description: $bds-gap-header-*
+// - Light/Dark mode colors: $black / $white
+
+// =============================================================================
+// Header Section
+// =============================================================================
+
+.bds-section-header {
+  display: flex;
+  flex-direction: column;
+  gap: $bds-gap-header-sm;
+  margin-bottom: $bds-gap-section-sm;
+
+  @include media-breakpoint-up(md) {
+    gap: $bds-gap-header-md;
+    margin-bottom: $bds-gap-section-md;
+  }
+
+  @include media-breakpoint-up(lg) {
+    gap: $bds-gap-header-lg;
+    margin-bottom: $bds-gap-section-lg;
+  }
+}
+
+.bds-section-header__heading {
+  margin: 0;
+  // Typography handled by .h-md class from _font.scss
+}
+
+.bds-section-header__description {
+  margin: 0;
+  // Typography handled by .body-l class from _font.scss
+}
+
+// =============================================================================
+// Light Mode Styles
+// =============================================================================
+
+html.light {
+  .bds-section-header__heading {
+    color: $black;
+  }
+
+  .bds-section-header__description {
+    color: $black;
+  }
+}
+
+// =============================================================================
+// Dark Mode Styles
+// =============================================================================
+
+html.dark {
+  .bds-section-header__heading {
+    color: $white;
+  }
+
+  .bds-section-header__description {
+    color: $white;
+  }
+}

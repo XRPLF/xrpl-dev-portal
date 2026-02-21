@@ -3,9 +3,6 @@
 //
 // Naming Convention: BEM with 'bds' namespace
 // .bds-cards-featured                    - Base section container
-// .bds-cards-featured__header            - Header wrapper for heading and description
-// .bds-cards-featured__heading           - Section heading (uses .h-md)
-// .bds-cards-featured__description       - Section description (uses .body-l)
 // .bds-cards-featured__cards             - Cards grid container
 // .bds-cards-featured__card-wrapper      - Individual card wrapper
 //
@@ -18,8 +15,7 @@
 // - Heading: Neutral White (#FFFFFF) → $white
 // - Description: Neutral White (#FFFFFF) → $white
 //
-// - Header content max-width: 808px (approximately 8 columns at desktop)
-// - Gap between heading and description: 16px
+// - Header: uses SectionHeader component
 // - Gap between cards: 8px (matches $bds-grid-gutter)
 
 // =============================================================================
@@ -28,15 +24,7 @@
 // Note: Uses centralized spacing tokens from _spacing.scss.
 // $bds-grid-gutter is defined in _spacing.scss (8px).
 
-// Spacing - Header gap (between heading and description)
-$bds-cards-featured-header-gap-sm: $bds-space-sm;   // 8px - spacing('sm')
-$bds-cards-featured-header-gap-md: $bds-space-sm;   // 8px - spacing('sm')
-$bds-cards-featured-header-gap-lg: $bds-space-lg;   // 16px - spacing('lg')
-
-// Spacing - Section gap (between header and cards)
-$bds-cards-featured-section-gap-sm: $bds-space-2xl; // 24px - spacing('2xl')
-$bds-cards-featured-section-gap-md: $bds-space-3xl; // 32px - spacing('3xl')
-$bds-cards-featured-section-gap-lg: $bds-space-4xl; // 40px - spacing('4xl')
+// Spacing - Section gap handled by SectionHeader margin-bottom
 
 // Spacing - Cards gap
 $bds-cards-featured-cards-gap-sm: $bds-space-5xl;   // 48px - spacing('5xl')
@@ -49,14 +37,6 @@ $bds-cards-featured-padding-y-md: $bds-space-6xl;   // 64px - spacing('6xl')
 $bds-cards-featured-padding-y-lg: $bds-space-8xl;   // 80px - spacing('8xl')
 
 // Spacing - Section padding (horizontal) - handled by PageGrid
-
-// Colors - Light Mode (default)
-$bds-cards-featured-heading-color: $black;      // #141414 - Neutral black
-$bds-cards-featured-description-color: $black;  // #141414 - Neutral black
-
-// Colors - Dark Mode (from Figma node 27020-3045)
-$bds-cards-featured-heading-color-dark: $white;      // #FFFFFF - Neutral white
-$bds-cards-featured-description-color-dark: $white;  // #FFFFFF - Neutral white
 
 // =============================================================================
 // Section Container
@@ -79,34 +59,6 @@ $bds-cards-featured-description-color-dark: $white;  // #FFFFFF - Neutral white
 }
 
 // =============================================================================
-// Header Section
-// =============================================================================
-
-.bds-cards-featured__header {
-  display: flex;
-  flex-direction: column;
-  gap: $bds-cards-featured-header-gap-sm;
-
-  @include media-breakpoint-up(md) {
-    gap: $bds-cards-featured-header-gap-md;
-  }
-
-  @include media-breakpoint-up(lg) {
-    gap: $bds-cards-featured-header-gap-lg;
-  }
-}
-
-.bds-cards-featured__heading {
-  margin: 0;
-  // Typography handled by .h-md class from _font.scss
-}
-
-.bds-cards-featured__description {
-  margin: 0;
-  // Typography handled by .body-l class from _font.scss
-}
-
-// =============================================================================
 // Cards Grid
 // =============================================================================
 
@@ -116,20 +68,17 @@ $bds-cards-featured-description-color-dark: $white;  // #FFFFFF - Neutral white
   column-gap: $bds-cards-featured-cards-gap-sm;
   row-gap: $bds-space-5xl; // 48px - spacing('5xl')
   width: 100%;
-  margin-top: $bds-cards-featured-section-gap-sm;
 
   @include media-breakpoint-up(md) {
     grid-template-columns: repeat(2, 1fr);
     column-gap: $bds-cards-featured-cards-gap-md;
     row-gap: 52px; // Non-standard value, kept as-is
-    margin-top: $bds-cards-featured-section-gap-md;
   }
 
   @include media-breakpoint-up(lg) {
     grid-template-columns: repeat(3, 1fr);
     column-gap: $bds-cards-featured-cards-gap-lg;
     row-gap: 56px; // Non-standard value, kept as-is
-    margin-top: $bds-cards-featured-section-gap-lg;
   }
 }
 
@@ -152,27 +101,10 @@ html.light {
   .bds-cards-featured {
     background-color: $white;
   }
-
-  .bds-cards-featured__heading {
-    color: $bds-cards-featured-heading-color;
-  }
-
-  .bds-cards-featured__description {
-    color: $bds-cards-featured-description-color;
-  }
 }
 
 // =============================================================================
 // Dark Mode Styles (from Figma node 27020-3045)
 // =============================================================================
-
-html.dark {
-  .bds-cards-featured__heading {
-    color: $bds-cards-featured-heading-color-dark;
-  }
-
-  .bds-cards-featured__description {
-    color: $bds-cards-featured-description-color-dark;
-  }
-}
+// Header colors handled by SectionHeader component
 

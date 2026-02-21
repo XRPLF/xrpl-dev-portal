@@ -1,15 +1,12 @@
 import React, { forwardRef, memo, useEffect } from "react";
 import clsx from "clsx";
 import { PageGrid } from "shared/components/PageGrid/page-grid";
-import { Button } from "shared/components/Button/Button";
-import {
-  isEmpty,
-  DesignConstrainedButtonProps,
-  isEnvironment,
-} from "shared/utils";
+import { ButtonGroup, validateButtonGroup } from "shared/patterns/ButtonGroup/ButtonGroup";
+import { isEmpty, isEnvironment } from "shared/utils";
 import {
   DesignConstrainedImageProps,
   DesignConstrainedVideoProps,
+  DesignConstrainedLinksProps,
 } from "shared/utils/types";
 
 /**
@@ -45,12 +42,11 @@ export type HeaderHeroMedia =
   | VideoMediaProps
   | CustomMediaProps;
 
-export interface HeaderHeroPrimaryMediaProps extends React.ComponentPropsWithoutRef<"header"> {
+export interface HeaderHeroPrimaryMediaProps extends React.ComponentPropsWithoutRef<"header">, DesignConstrainedLinksProps {
   /** Hero title text (display-md typography) */
   headline: React.ReactNode;
   /** Hero subtitle text (subhead-sm-l typography) */
   subtitle: React.ReactNode;
-  callsToAction: [DesignConstrainedButtonProps, DesignConstrainedButtonProps?];
   /** Media element - supports image, video, or custom React element */
   media: HeaderHeroMedia;
 }
@@ -110,10 +106,14 @@ const HeaderHeroPrimaryMedia = forwardRef<
   HTMLElement,
   HeaderHeroPrimaryMediaProps
 >((props, ref) => {
-  const { headline, subtitle, callsToAction, media, className, ...restProps } =
+  const { headline, subtitle, links, media, className, ...restProps } =
     props;
 
-  const [primaryCta, secondaryCta] = callsToAction;
+  const buttonValidation = validateButtonGroup(
+    (links ?? []).map((l) => ({ label: l.label, href: l.href, forceColor: true })),
+    2,
+    isEnvironment(["development", "test"])
+  );
 
   // Headline is critical - exit early if missing
   if (!headline) {
@@ -132,7 +132,7 @@ const HeaderHeroPrimaryMedia = forwardRef<
 
     const propsToValidate = {
       subtitle,
-      callsToAction,
+      links,
       media,
     };
 
@@ -141,7 +141,7 @@ const HeaderHeroPrimaryMedia = forwardRef<
         console.warn(`${key} is required for HeaderHeroPrimaryMedia`);
       }
     });
-  }, [subtitle, callsToAction, media]);
+  }, [subtitle, links, media]);
 
   return (
     <header
@@ -166,28 +166,14 @@ const HeaderHeroPrimaryMedia = forwardRef<
                   {subtitle}
                 </div>
               )}
-              {(!isEmpty(primaryCta) || !isEmpty(secondaryCta)) && (
+              {buttonValidation.hasButtons && (
                 <div className="bds-header-hero-primary-media__cta-buttons">
-                  {!isEmpty(primaryCta) && (
-                    <Button
-                      {...primaryCta!}
-                      variant="primary"
-                      color="green"
-                      showIcon={true}
-                    />
-                  )}
-                  {!isEmpty(secondaryCta) && (
-                    <Button
-                      {...secondaryCta!}
-                      className={clsx(
-                        "bds-header-hero-primary-media__cta-button-tertiary",
-                        secondaryCta?.className,
-                      )}
-                      variant="tertiary"
-                      color="green"
-                      showIcon={true}
-                    />
-                  )}
+                  <ButtonGroup
+                    buttons={buttonValidation.buttons}
+                    color="green"
+                    forceColor
+                    gap="small"
+                  />
                 </div>
               )}
             </div>

@@ -3,7 +3,6 @@
 //
 // Naming Convention: BEM with 'bds' namespace
 // .bds-link-text-directory         - Base section container
-// .bds-link-text-directory__header - Header section (heading + description)
 
 // =============================================================================
 // Design Tokens
@@ -13,16 +12,6 @@
 $bds-link-text-directory-padding-base: 24px;
 $bds-link-text-directory-padding-md: 32px;
 $bds-link-text-directory-padding-lg: 40px;
-
-// Header gap (between heading and description)
-$bds-link-text-directory-header-gap-base: 8px;
-$bds-link-text-directory-header-gap-md: 8px;
-$bds-link-text-directory-header-gap-lg: 16px;
-
-// Header margin-bottom (space before cards list)
-$bds-link-text-directory-header-margin-base: 24px;
-$bds-link-text-directory-header-margin-md: 32px;
-$bds-link-text-directory-header-margin-lg: 40px;
 
 // =============================================================================
 // Section Container
@@ -51,26 +40,4 @@ $bds-link-text-directory-header-margin-lg: 40px;
   }
 }
 
-// =============================================================================
-// Header Section
-// =============================================================================
-
-.bds-link-text-directory__header {
-  display: flex;
-  flex-direction: column;
-  gap: $bds-link-text-directory-header-gap-base;
-  margin-bottom: $bds-link-text-directory-header-margin-base;
-
-  @include media-breakpoint-up(md) {
-    gap: $bds-link-text-directory-header-gap-md;
-    margin-bottom: $bds-link-text-directory-header-margin-md;
-  }
-
-  @include media-breakpoint-up(lg) {
-    gap: $bds-link-text-directory-header-gap-lg;
-    margin-bottom: $bds-link-text-directory-header-margin-lg;
-  }
-  h2, p {
-    margin-bottom: 0;
-  }
-}
+// Header section uses SectionHeader component

@@ -2,6 +2,7 @@ import React from 'react';
 import clsx from 'clsx';
 import { CardStat, CardStatProps } from '../../components/CardStat';
 import { PageGrid } from '../../components/PageGrid/page-grid';
+import { SectionHeader } from 'shared/patterns/SectionHeader';
 
 /**
  * Configuration for a single stat card in the CardStats pattern
@@ -72,19 +73,7 @@ export const CardStats = React.forwardRef<HTMLElement, CardStatsProps>(
         className={clsx('bds-card-stats', className)}
         {...rest}
       >
-        <PageGrid.Row>
-          <PageGrid.Col span={{ base: 4, md: 6, lg: 8 }}>
-            {/* Header section */}
-            <div className="bds-card-stats__header">
-              <h2 className="mb-0 h-md">{heading}</h2>
-              {description && (
-                <p className="bmb-0 body-l">
-                  {description}
-                </p>
-              )}
-            </div>
-          </PageGrid.Col>
-        </PageGrid.Row>
+        <SectionHeader heading={heading} description={description} span={{ base: 4, md: 6, lg: 8 }} />
         <PageGrid.Row as="ul">
           {cards.map((cardConfig, index) => (
             <CardStat

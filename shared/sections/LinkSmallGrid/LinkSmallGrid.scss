@@ -3,7 +3,6 @@
 //
 // Naming Convention: BEM with 'bds' namespace
 // .bds-link-small-grid                - Base section container
-// .bds-link-small-grid__header        - Header container (heading + description)
 
 // =============================================================================
 // Design Tokens
@@ -42,23 +41,6 @@ $bds-link-small-grid-spacing-lg: $bds-space-4xl;     // 40px - spacing('4xl')
   background-color: transparent;
 }
 
-// =============================================================================
-// Header Section
-// =============================================================================
-
-.bds-link-small-grid__header {
-  gap: $bds-space-sm; // 8px - spacing('sm')
-  margin-bottom: $bds-link-small-grid-spacing-base;
-
-  @include media-breakpoint-up(md) {
-    gap: $bds-space-lg; // 16px - spacing('lg')
-    margin-bottom: $bds-link-small-grid-spacing-md;
-  }
-
-  @include media-breakpoint-up(lg) {
-    gap: $bds-space-lg; // 16px - spacing('lg')
-    margin-bottom: $bds-link-small-grid-spacing-lg;
-  }
-}
+// Header section uses SectionHeader component
 
 

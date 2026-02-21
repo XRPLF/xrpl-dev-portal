@@ -26,7 +26,7 @@ function MyPage() {
           smart contracts.
         </p>
       }
-      callsToAction={[{ children: "Get Started", href: "/docs" }]}
+      links={[{ label: "Get Started", href: "/docs" }]}
       videoElement={{
         src: "/video/intro.mp4",
         autoPlay: true,
@@ -45,19 +45,18 @@ function MyPage() {
 | --------------- | --------------------------------- | -------- | ---------------------------------------------------------------------------- |
 | `headline`      | `React.ReactNode`                 | Yes      | Hero headline text (h-md typography)                                         |
 | `subtitle`      | `React.ReactNode`                 | No       | Hero subtitle content                                                        |
-| `callsToAction` | `DesignConstrainedCallsToActions` | No       | Array with primary CTA and optional secondary CTA. Omit to hide CTA section. |
+| `links`         | `DesignConstrainedLink[]`         | No       | Array of `{ label, href }` for ButtonGroup. Omit to hide button section.     |
 | `videoElement`  | `DesignConstrainedVideoProps`     | Yes      | Native `<video>` element props (e.g. `src`, `autoPlay`, `loop`, `muted`)     |
 | `className`     | `string`                          | No       | Additional CSS classes for the header element                                |
 | `...rest`       | `HTMLHeaderElement` attributes    | No       | Any other HTML header attributes                                             |
 
-### Calls to Action
+### Links (ButtonGroup)
 
-The `callsToAction` prop is optional. When provided, at least one non-empty CTA is required to show the CTA section. The component uses design-constrained Button props; `variant` and `color` are set automatically:
+The `links` prop is optional. When provided, at least one non-empty link (`label` and `href`) is required to show the button section. Uses `{ label, href }` format for consistent ButtonGroup rendering; `variant` and `color` are set by the component:
 
-- **Primary CTA**: `variant="primary"`, `color="green"`, `forceColor={true}`
-- **Secondary CTA**: `variant="tertiary"`, `color="green"`, `forceColor={true}`
-
-All other Button props are supported (e.g., `children`, `href`, `onClick`). Do not pass `variant` or `color` in the CTA objects.
+- **First link**: `variant="primary"`, `color="green"`, `forceColor={true}`
+- **Second link**: `variant="tertiary"`, `color="green"`, `forceColor={true}`
+- Max 2 links supported (ButtonGroup validation)
 
 ### Video Element
 
@@ -77,9 +76,9 @@ The video is rendered with `object-fit: cover` and a 16:9 aspect ratio container
 <FeaturedVideoHero
   headline="Real-world asset tokenization"
   subtitle="Learn how to issue crypto tokens and build tokenization solutions."
-  callsToAction={[
-    { children: "Get Started", href: "/docs" },
-    { children: "Learn More", href: "/about" },
+  links={[
+    { label: "Get Started", href: "/docs" },
+    { label: "Learn More", href: "/about" },
   ]}
   videoElement={{
     src: "/video/tokenization.mp4",
@@ -113,7 +112,7 @@ The video is rendered with `object-fit: cover` and a 16:9 aspect ratio container
 <FeaturedVideoHero
   headline="Watch and Learn"
   subtitle="Explore our video tutorials and guides."
-  callsToAction={[{ children: "Watch Tutorials", href: "/tutorials" }]}
+  links={[{ label: "Watch Tutorials", href: "/tutorials" }]}
   videoElement={{
     src: "/video/intro.mp4",
     autoPlay: false,
@@ -129,7 +128,7 @@ The video is rendered with `object-fit: cover` and a 16:9 aspect ratio container
 ## Validation
 
 - **Required props**: `headline`, `videoElement`. If either is missing or empty, the component returns `null` and (in development/test) logs a console warning.
-- **Optional props**: `subtitle`, `callsToAction`. Omit `callsToAction` or pass an array with no renderable CTAs to hide the CTA section.
+- **Optional props**: `subtitle`, `links`. Omit `links` or pass an empty array to hide the button section.
 
 ## Responsive Behavior
 
