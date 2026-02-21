@@ -64,13 +64,13 @@ func main() {
 	mgmtFeeRate := types.InterestRate(1000)
 	loanBrokerSetTx := transaction.LoanBrokerSet{
 		BaseTx: transaction.BaseTx{
-			Account:         loanBrokerWallet.ClassicAddress,
-			TransactionType: transaction.LoanBrokerSetTx,
+			Account: loanBrokerWallet.ClassicAddress,
 		},
 		VaultID:           vaultID,
 		ManagementFeeRate: &mgmtFeeRate,
 	}
 
+	// Flatten() converts the struct to a map and adds the TransactionType field
 	flatLoanBrokerSetTx := loanBrokerSetTx.Flatten()
 	loanBrokerSetTxJSON, _ := json.MarshalIndent(flatLoanBrokerSetTx, "", "  ")
 	fmt.Printf("%s\n", string(loanBrokerSetTxJSON))

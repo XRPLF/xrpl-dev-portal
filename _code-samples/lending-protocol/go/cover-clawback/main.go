@@ -100,8 +100,7 @@ func main() {
 	fmt.Printf("\n=== Preparing LoanBrokerCoverDeposit transaction ===\n\n")
 	coverDepositTx := transaction.LoanBrokerCoverDeposit{
 		BaseTx: transaction.BaseTx{
-			Account:         loanBrokerWallet.ClassicAddress,
-			TransactionType: transaction.LoanBrokerCoverDepositTx,
+			Account: loanBrokerWallet.ClassicAddress,
 		},
 		LoanBrokerID: loanBrokerID,
 		Amount: types.MPTCurrencyAmount{
@@ -110,6 +109,7 @@ func main() {
 		},
 	}
 
+	// Flatten() converts the struct to a map and adds the TransactionType field
 	flatCoverDepositTx := coverDepositTx.Flatten()
 	coverDepositTxJSON, _ := json.MarshalIndent(flatCoverDepositTx, "", "  ")
 	fmt.Printf("%s\n", string(coverDepositTxJSON))
@@ -164,8 +164,7 @@ func main() {
 	lbID := types.LoanBrokerID(loanBrokerID)
 	coverClawbackTx := transaction.LoanBrokerCoverClawback{
 		BaseTx: transaction.BaseTx{
-			Account:         mptIssuerWallet.ClassicAddress,
-			TransactionType: transaction.LoanBrokerCoverClawbackTx,
+			Account: mptIssuerWallet.ClassicAddress,
 		},
 		LoanBrokerID: &lbID,
 		Amount: types.MPTCurrencyAmount{

@@ -120,6 +120,54 @@ go run ./cover-deposit-and-withdraw
 
 The script should output the LoanBrokerCoverDeposit, cover balance after the deposit, the LoanBrokerCoverWithdraw transaction, and the cover balance after the withdrawal.
 
+```sh
+Loan broker address: rU9ANkvdSCs7p59Guf2XzGrrCPSMM2tDQV
+LoanBrokerID: 633375BCB82DB1440189D3E0721AF92B0888304717DA1B002C8824D631E97DC3
+MPT ID: 003B6A9EE92357082A44FA2EAA26385E2F85071634BC3315
+
+=== Preparing LoanBrokerCoverDeposit transaction ===
+
+{
+  "Account": "rU9ANkvdSCs7p59Guf2XzGrrCPSMM2tDQV",
+  "Amount": {
+    "mpt_issuance_id": "003B6A9EE92357082A44FA2EAA26385E2F85071634BC3315",
+    "value": "2000"
+  },
+  "LoanBrokerID": "633375BCB82DB1440189D3E0721AF92B0888304717DA1B002C8824D631E97DC3",
+  "TransactionType": "LoanBrokerCoverDeposit"
+}
+
+=== Submitting LoanBrokerCoverDeposit transaction ===
+
+Cover deposit successful!
+
+=== Cover Balance ===
+
+LoanBroker Pseudo-Account: rJoTTaGKQr8o475xKNZkEPRsmTbUkr6sbi
+Cover balance after deposit: 2000 TSTUSD
+
+=== Preparing LoanBrokerCoverWithdraw transaction ===
+
+{
+  "Account": "rU9ANkvdSCs7p59Guf2XzGrrCPSMM2tDQV",
+  "Amount": {
+    "mpt_issuance_id": "003B6A9EE92357082A44FA2EAA26385E2F85071634BC3315",
+    "value": "1000"
+  },
+  "LoanBrokerID": "633375BCB82DB1440189D3E0721AF92B0888304717DA1B002C8824D631E97DC3",
+  "TransactionType": "LoanBrokerCoverWithdraw"
+}
+
+=== Submitting LoanBrokerCoverWithdraw transaction ===
+
+Cover withdraw successful!
+
+=== Updated Cover Balance ===
+
+LoanBroker Pseudo-Account: rJoTTaGKQr8o475xKNZkEPRsmTbUkr6sbi
+Cover balance after withdraw: 1000 TSTUSD
+```
+
 ---
 
 ## Create a Loan
