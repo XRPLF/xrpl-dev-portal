@@ -243,3 +243,51 @@ go run ./loan-pay
 ```
 
 The script should output the amount required to totally pay off a loan, the LoanPay transaction, the amount due after the payment, the LoanDelete transaction, and then the status of the loan ledger entry.
+
+```sh
+Borrower address: rFx8s3P5J66MAvWkp5rMj5bBF76gQUCt2
+LoanID: D0455CD5F9C2FEC62FC67F31BD97134FBA877D7FE1AE7130EE0006D10661325A
+MPT ID: 003B8FC2F51C1BC4E0211E6370EC4FC78BB20D5C4069F07B
+
+=== Loan Status ===
+
+Amount Owed: 1001 TSTUSD
+Loan Service Fee: 10 TSTUSD
+Total Payment Due (including fees): 1011 TSTUSD
+
+=== Preparing LoanPay transaction ===
+
+{
+  "Account": "rFx8s3P5J66MAvWkp5rMj5bBF76gQUCt2",
+  "Amount": {
+    "mpt_issuance_id": "003B8FC2F51C1BC4E0211E6370EC4FC78BB20D5C4069F07B",
+    "value": "1011"
+  },
+  "LoanID": "D0455CD5F9C2FEC62FC67F31BD97134FBA877D7FE1AE7130EE0006D10661325A",
+  "TransactionType": "LoanPay"
+}
+
+=== Submitting LoanPay transaction ===
+
+Loan paid successfully!
+
+=== Loan Status After Payment ===
+
+Outstanding Loan Balance: Loan fully paid off!
+
+=== Preparing LoanDelete transaction ===
+
+{
+  "Account": "rFx8s3P5J66MAvWkp5rMj5bBF76gQUCt2",
+  "LoanID": "D0455CD5F9C2FEC62FC67F31BD97134FBA877D7FE1AE7130EE0006D10661325A",
+  "TransactionType": "LoanDelete"
+}
+
+=== Submitting LoanDelete transaction ===
+
+Loan deleted successfully!
+
+=== Verifying Loan Deletion ===
+
+Loan has been successfully removed from the XRP Ledger!
+```
