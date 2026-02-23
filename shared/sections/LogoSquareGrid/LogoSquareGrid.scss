@@ -1,0 +1,52 @@
+// BDS LogoSquareGrid Component Styles
+// Brand Design System - Logo grid pattern with optional header section
+//
+// Naming Convention: BEM with 'bds' namespace
+// .bds-logo-square-grid                  - Base component
+// .bds-logo-square-grid--gray            - Gray variant (maps to TileLogo 'neutral')
+// .bds-logo-square-grid--green           - Green variant (maps to TileLogo 'green')
+// .bds-logo-square-grid__section-header  - SectionHeader with optional top margin
+//
+// Note: Individual logo tiles are rendered using the TileLogo component
+// Note: Button layout is handled by the ButtonGroup component
+
+// =============================================================================
+// Design Tokens
+// =============================================================================
+// Note: Color variants are now handled by the TileLogo component
+// LogoSquareGrid 'gray' maps to TileLogo 'neutral'
+// LogoSquareGrid 'green' maps to TileLogo 'green'
+
+// =============================================================================
+// Base Component Styles
+// =============================================================================
+
+.bds-logo-square-grid {
+  @extend .d-flex;
+  @extend .flex-column;
+  @extend .w-100;
+}
+
+// =============================================================================
+// Header Section (uses SectionHeader component)
+// =============================================================================
+// LogoSquareGrid needs additional top margin for the header row
+.bds-logo-square-grid__section-header {
+  margin-top: $bds-space-2xl;
+
+  @include media-breakpoint-up(md) {
+    margin-top: $bds-space-3xl;
+  }
+
+  @include media-breakpoint-up(lg) {
+    margin-top: $bds-space-4xl;
+  }
+}
+
+// =============================================================================
+// Logo Grid Row
+// =============================================================================
+// Note: Grid layout is now handled by PageGridRow/PageGridCol
+// Each tile uses PageGridCol with span={{ base: 2, lg: 3 }}
+// This gives us 2 columns on mobile (2/4) and 4 columns on desktop (3/12)
+// Tile rendering and styling is handled by the TileLogo component

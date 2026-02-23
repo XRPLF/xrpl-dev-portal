@@ -5,34 +5,36 @@
 // .bds-link-text-card           - Base card container with border-top divider
 // .bds-link-text-card__header   - Header section (number + heading)
 // .bds-link-text-card__content  - Content section (description + buttons)
+//
+// Note: Uses centralized spacing tokens from _spacing.scss.
 
 // =============================================================================
-// Design Tokens
+// Design Tokens (from _spacing.scss)
 // =============================================================================
 
 // Header gap (between number and heading)
-$bds-link-text-card-header-gap-base: 8px;
-$bds-link-text-card-header-gap-md: 12px;
-$bds-link-text-card-header-gap-lg: 16px;
+$bds-link-text-card-header-gap-base: $bds-space-sm;   // 8px - spacing('sm')
+$bds-link-text-card-header-gap-md: $bds-space-md;     // 12px - spacing('md')
+$bds-link-text-card-header-gap-lg: $bds-space-lg;     // 16px - spacing('lg')
 
 // Content gap (between description and buttons)
-$bds-link-text-card-content-gap-base: 16px;
-$bds-link-text-card-content-gap-md: 24px;
-$bds-link-text-card-content-gap-lg: 32px;
+$bds-link-text-card-content-gap-base: $bds-space-lg;   // 16px - spacing('lg')
+$bds-link-text-card-content-gap-md: $bds-space-2xl;   // 24px - spacing('2xl')
+$bds-link-text-card-content-gap-lg: $bds-space-3xl;   // 32px - spacing('3xl')
 
 // Card gap (between header and content sections)
-$bds-link-text-card-gap-base: 24px;
-$bds-link-text-card-gap-md: 32px;
-$bds-link-text-card-gap-lg: 40px;
+$bds-link-text-card-gap-base: $bds-gap-section-sm;   // 24px - spacing('2xl')
+$bds-link-text-card-gap-md: $bds-gap-section-md;     // 32px - spacing('3xl')
+$bds-link-text-card-gap-lg: $bds-gap-section-lg;     // 40px - spacing('4xl')
 
 // Padding
-$bds-link-text-card-padding-top-base: 8px;
-$bds-link-text-card-padding-top-md: 12px;
-$bds-link-text-card-padding-top-lg: 16px;
+$bds-link-text-card-padding-top-base: $bds-space-sm;   // 8px - spacing('sm')
+$bds-link-text-card-padding-top-md: $bds-space-md;     // 12px - spacing('md')
+$bds-link-text-card-padding-top-lg: $bds-space-lg;     // 16px - spacing('lg')
 
-$bds-link-text-card-padding-bottom-base: 24px;
-$bds-link-text-card-padding-bottom-md: 32px;
-$bds-link-text-card-padding-bottom-lg: 40px;
+$bds-link-text-card-padding-bottom-base: $bds-space-2xl;   // 24px - spacing('2xl')
+$bds-link-text-card-padding-bottom-md: $bds-space-3xl;     // 32px - spacing('3xl')
+$bds-link-text-card-padding-bottom-lg: $bds-space-4xl;     // 40px - spacing('4xl')
 
 // Border
 $bds-link-text-card-border-width: 1px;
@@ -98,6 +100,9 @@ $bds-link-text-card-content-width-md: calc(75% - 2px);
   p {
     color: $bds-link-text-card-number-color;
   }
+  @include bds-theme-mode(dark) {
+    color: $white;
+  }
 }
 
 // =============================================================================
@@ -120,5 +125,8 @@ $bds-link-text-card-content-width-md: calc(75% - 2px);
 
   p {
     color: $bds-link-text-card-number-color;
+  }
+  @include bds-theme-mode(dark) {
+    color: $white;
   }
 }
