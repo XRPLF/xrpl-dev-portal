@@ -29,6 +29,14 @@
     gap: $bds-gap-header-lg;
     margin-bottom: $bds-gap-section-lg;
   }
+
+  @include bds-theme-mode(light) {
+    color: $black;
+  }
+
+  @include bds-theme-mode(dark) {
+    color: $white;
+  }
 }
 
 .bds-section-header__heading {
@@ -39,32 +47,4 @@
 .bds-section-header__description {
   margin: 0;
   // Typography handled by .body-l class from _font.scss
-}
-
-// =============================================================================
-// Light Mode Styles
-// =============================================================================
-
-html.light {
-  .bds-section-header__heading {
-    color: $black;
-  }
-
-  .bds-section-header__description {
-    color: $black;
-  }
-}
-
-// =============================================================================
-// Dark Mode Styles
-// =============================================================================
-
-html.dark {
-  .bds-section-header__heading {
-    color: $white;
-  }
-
-  .bds-section-header__description {
-    color: $white;
-  }
 }

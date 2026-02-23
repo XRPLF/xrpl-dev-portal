@@ -21511,6 +21511,12 @@ html.light .bds-carousel-featured--bg-yellow .bds-divider {
     margin-bottom: 40px;
   }
 }
+html.light .bds-section-header {
+  color: #141414;
+}
+html.dark .bds-section-header {
+  color: #FFFFFF;
+}
 
 .bds-section-header__heading {
   margin: 0;
@@ -21518,20 +21524,6 @@ html.light .bds-carousel-featured--bg-yellow .bds-divider {
 
 .bds-section-header__description {
   margin: 0;
-}
-
-html.light .bds-section-header__heading {
-  color: #141414;
-}
-html.light .bds-section-header__description {
-  color: #141414;
-}
-
-html.dark .bds-section-header__heading {
-  color: #FFFFFF;
-}
-html.dark .bds-section-header__description {
-  color: #FFFFFF;
 }
 
 .bds-cards-featured {
