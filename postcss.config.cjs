@@ -19,13 +19,14 @@ module.exports = {
     ...(isProduction || process.env.PURGECSS === 'true'
       ? [
           purgecss({
-            // Scan all content files for class names
+            // Scan all content files for class names (TSX/TS/HTML = usage; SCSS = BEM modifier definitions)
             content: [
               './**/*.tsx',
               './**/*.ts',
               './**/*.md',
               './**/*.yaml',
               './**/*.html',
+              './**/*.scss',
               './static/js/**/*.js',
               './static/vendor/**/*.js',
               // Ignore node_modules except for specific libraries that inject classes
@@ -42,7 +43,11 @@ module.exports = {
                 const m = match.match(/["']([^"']*)["']/);
                 return m ? m[1].split(/\s+/) : [];
               });
-              return [...broadMatches, ...classes];
+              // Extract BEM modifier classes from SCSS (e.g. .bds-callout-media-banner--green)
+              // These are dynamically applied in TSX via template literals so PurgeCSS won't find them as literals
+              const scssBemMatches = content.match(/\.(bds-[a-z0-9-]+--[a-z0-9-]+)/g) || [];
+              const bemModifiers = [...new Set(scssBemMatches.map(m => m.replace(/^\./, '')))];
+              return [...new Set([...broadMatches, ...classes, ...bemModifiers])];
             },
 
             // Safelist - classes that should never be removed
@@ -68,6 +73,9 @@ module.exports = {
                 /^col-/, // Column classes
                 /^bds-grid__col/, // PageGrid column classes (dynamic span values)
                 /^bds-grid__offset/, // PageGrid offset classes
+                // BDS BEM modifier classes - applied dynamically via template literals (e.g. bds-callout-media-banner--green)
+                // Required: PurgeCSS cannot find these in TSX/SCSS due to interpolation
+                /^bds-[a-z0-9-]+--/,
                 /^g-/, // Gap utilities
                 /^p-/, // Padding utilities
                 /^m-/, // Margin utilities  

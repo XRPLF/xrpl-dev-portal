@@ -87,43 +87,41 @@ export const CardStat: React.FC<CardStatProps> = ({
   const isNumericSuperscript = superscript && /^[0-9]+$/.test(superscript);
 
   return (
-    <PageGridCol span={span}>
-      <div className={classNames}>
-        {/* Text section */}
-        <div className="bds-card-stat__text">
-          <div className="bds-card-stat__statistic">
-            {statistic}{superscript && <sup className={isNumericSuperscript ? 'bds-card-stat__superscript--numeric' : ''}>{superscript}</sup>}</div>
-          <div className="body-r">{label}</div>
-        </div>
-
-        {/* Buttons section */}
-        {hasButtons && (
-          <div className="bds-card-stat__buttons">
-            {primaryButton && (
-              <Button
-                forceColor
-                variant="primary"
-                color="black"
-                href={primaryButton.href}
-                onClick={primaryButton.onClick}
-              >
-                {primaryButton.label}
-              </Button>
-            )}
-            {secondaryButton && (
-              <Button
-                forceColor
-                variant="secondary"
-                color="black"
-                href={secondaryButton.href}
-                onClick={secondaryButton.onClick}
-              >
-                {secondaryButton.label}
-              </Button>
-            )}
-          </div>
-        )}
+    <PageGridCol span={span} as="li" className={classNames}>
+      {/* Text section */}
+      <div className="bds-card-stat__text">
+        <div className="bds-card-stat__statistic">
+          {statistic}{superscript && <sup className={isNumericSuperscript ? 'bds-card-stat__superscript--numeric' : ''}>{superscript}</sup>}</div>
+        <div className="body-r">{label}</div>
       </div>
+
+      {/* Buttons section */}
+      {hasButtons && (
+        <div className="bds-card-stat__buttons">
+          {primaryButton && (
+            <Button
+              forceColor
+              variant="primary"
+              color="black"
+              href={primaryButton.href}
+              onClick={primaryButton.onClick}
+            >
+              {primaryButton.label}
+            </Button>
+          )}
+          {secondaryButton && (
+            <Button
+              forceColor
+              variant="secondary"
+              color="black"
+              href={secondaryButton.href}
+              onClick={secondaryButton.onClick}
+            >
+              {secondaryButton.label}
+            </Button>
+          )}
+        </div>
+      )}
     </PageGridCol>
   );
 };

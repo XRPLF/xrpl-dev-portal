@@ -26,6 +26,16 @@ export type DesignConstrainedCallToActionsProps = {
   callsToAction?: DesignConstrainedCallsToActions;
 };
 
+/** Link config for ButtonGroup - consistent with ButtonConfig (label + href) */
+export interface DesignConstrainedLink {
+  label: string;
+  href: string;
+}
+
+export type DesignConstrainedLinksProps = {
+  links?: DesignConstrainedLink[];
+};
+
 /**
  * Base props that all media elements must have to ensure proper styling.
  * These props are automatically applied to maintain the 9:16 aspect ratio

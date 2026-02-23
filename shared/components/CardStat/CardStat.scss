@@ -44,7 +44,8 @@ $bds-card-stat-transition-timing: $bds-transition-timing;
 
 .bds-card-stat {
   // Layout
-  display: flex;
+  // !important needed to override PageGridCol's default display (e.g. grid/flex from parent)
+  display: flex !important;
   flex-direction: column;
   width: 100%;
   min-height: 200px;
