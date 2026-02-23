@@ -70,7 +70,7 @@ export const SectionHeader = React.forwardRef<HTMLDivElement, SectionHeaderProps
 
     const hasContent = heading || description || children;
     if (!hasContent) {
-      if (isEnvironment('development')) {
+      if (isEnvironment(["development", "test"])) {
         console.warn(
           'SectionHeader: No content provided. Component requires at least one of: heading, description, or children. ' +
           'Returning null - this may indicate a missing prop or data issue.'

@@ -2,7 +2,7 @@ import React from 'react';
 import clsx from 'clsx';
 import { PageGrid, PageGridCol, PageGridRow } from 'shared/components/PageGrid/page-grid';
 import { SectionHeader } from 'shared/patterns/SectionHeader';
-import { TileLogo, TileLogoProps } from '../../components/TileLogo/TileLogo';
+import { TileLogo, TileLogoProps } from 'shared/components/TileLogo/TileLogo';
 import { ButtonGroup, ButtonConfig, validateButtonGroup } from 'shared/patterns/ButtonGroup/ButtonGroup';
 
 export interface LogoItem extends TileLogoProps {}
