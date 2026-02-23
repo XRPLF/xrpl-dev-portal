@@ -60,7 +60,7 @@
         - page: ./docs/concepts/index.md
           label: Concepts
           labelTranslationKey: topnav.docs.concepts
-        - page: ./docs/tutorials/index.md
+        - page: ./docs/tutorials/index.page.tsx
           label: Tutorials
           labelTranslationKey: topnav.docs.tutorials
         - page: ./docs/references/index.md
