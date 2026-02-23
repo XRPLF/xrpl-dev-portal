@@ -1,6 +1,6 @@
 import React from 'react';
 import clsx from 'clsx';
-import { PageGrid, PageGridRow, PageGridCol } from 'shared/components/PageGrid/page-grid';
+import { PageGrid, PageGridRow } from 'shared/components/PageGrid/page-grid';
 import { SectionHeader } from 'shared/patterns/SectionHeader';
 import { CardTextIconCard, CardTextIconCardProps } from 'shared/components/CardTextIcon';
 

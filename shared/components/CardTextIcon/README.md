@@ -92,9 +92,9 @@ CardTextIconCard displays an icon at the top, followed by a heading and descript
 
 | Breakpoint | Icon Size | Padding | Gap |
 |------------|-----------|---------|-----|
-| Base (< 576px) | 40px | 16px | 16px |
+| Base (< 576px) | 32px | 16px | 16px |
 | MD (576px - 991px) | 36px | 20px | 20px |
-| LG (≥ 992px) | 64px | 32px | 24px |
+| LG (≥ 992px) | 40px | 32px | 24px |
 
 ## Files
 

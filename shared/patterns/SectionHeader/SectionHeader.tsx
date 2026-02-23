@@ -2,6 +2,7 @@ import React from 'react';
 import clsx from 'clsx';
 import { PageGrid } from '../../components/PageGrid/page-grid';
 import type { ResponsiveValue, PageGridSpanValue } from '../../components/PageGrid/page-grid';
+import { isEnvironment } from '../../utils/helpers';
 
 const DEFAULT_SPAN = {
   base: 'fill' as const,
@@ -30,7 +31,31 @@ export interface SectionHeaderProps {
  * Renders a PageGrid.Row + Col with heading (polymorphic h1-h6) and optional description.
  * Used across CardsFeatured, StandardCardGroupSection, CardsIconGrid, and other sections.
  *
- * Returns null if both heading and description are falsy and no children provided.
+ * **Behavior:**
+ * - Returns `null` if no content is provided (no heading, description, or children)
+ * - Logs a development warning when returning null to help catch missing props
+ * - At least one of `heading`, `description`, or `children` should be provided
+ *
+ * @example
+ * // Typical usage with heading and description
+ * <SectionHeader
+ *   heading="Our Features"
+ *   description="Explore what we offer"
+ * />
+ *
+ * @example
+ * // With custom heading level
+ * <SectionHeader
+ *   heading="Main Title"
+ *   as="h1"
+ *   description="Subtitle text"
+ * />
+ *
+ * @example
+ * // With children (e.g., ButtonGroup)
+ * <SectionHeader heading="Products">
+ *   <ButtonGroup buttons={[...]} />
+ * </SectionHeader>
  */
 export const SectionHeader = React.forwardRef<HTMLDivElement, SectionHeaderProps>(
   (props, ref) => {
@@ -45,6 +70,12 @@ export const SectionHeader = React.forwardRef<HTMLDivElement, SectionHeaderProps
 
     const hasContent = heading || description || children;
     if (!hasContent) {
+      if (isEnvironment('development')) {
+        console.warn(
+          'SectionHeader: No content provided. Component requires at least one of: heading, description, or children. ' +
+          'Returning null - this may indicate a missing prop or data issue.'
+        );
+      }
       return null;
     }
 

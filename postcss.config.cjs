@@ -68,7 +68,8 @@ module.exports = {
                 /^col-/, // Column classes
                 /^bds-grid__col/, // PageGrid column classes (dynamic span values)
                 /^bds-grid__offset/, // PageGrid offset classes
-                /^bds-[a-z0-9-]+--/, // BDS BEM modifier classes (e.g. bds-callout-media-banner--green, bds-tile-link--primary)
+                // BDS BEM modifier classes - dynamically applied (e.g. bds-callout-media-banner--green, bds-tile-link--primary)
+                /^bds-[a-z0-9-]+--/,
                 /^g-/, // Gap utilities
                 /^p-/, // Padding utilities
                 /^m-/, // Margin utilities  

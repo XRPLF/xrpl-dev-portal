@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { useCallback, useEffect, useRef } from 'react';
 import clsx from 'clsx';
 import type { DesignConstrainedVideoProps } from 'shared/utils/types';
 
@@ -8,14 +8,32 @@ export type VideoSourceNative = {
   props: DesignConstrainedVideoProps;
 };
 
-/** Embed source - raw HTML iframe code from YouTube/Vimeo/Wistia */
+/**
+ * Embed source - raw HTML iframe code from YouTube/Vimeo/Wistia
+ *
+ * ⚠️ **SECURITY WARNING**: embedCode uses regex-based parsing which can be bypassed
+ * with malformed HTML (e.g., newlines in attributes, missing quotes, unusual spacing).
+ * **Always prefer `embedUrl` over `embedCode` when possible.**
+ *
+ * Only use embedCode when:
+ * - The HTML comes from a trusted source you control
+ * - You cannot extract the URL beforehand
+ *
+ * The component validates against TRUSTED_EMBED_ORIGINS, but regex parsing is not
+ * foolproof against all HTML variations.
+ */
 export type VideoSourceEmbedCode = {
   type: 'embed';
   embedCode: string;
   embedUrl?: never;
 };
 
-/** Embed source - direct embed URL (safer, preferred) */
+/**
+ * Embed source - direct embed URL (safer, preferred)
+ *
+ * ✅ **RECOMMENDED**: This is the preferred and safer method for embedding videos.
+ * Directly validates the URL against TRUSTED_EMBED_ORIGINS without HTML parsing.
+ */
 export type VideoSourceEmbedUrl = {
   type: 'embed';
   embedUrl: string;
@@ -28,7 +46,13 @@ export type VideoSource =
   | VideoSourceEmbedUrl;
 
 export interface VideoProps {
-  /** Video source: native HTML video or embed (YouTube/Vimeo/Wistia) */
+  /**
+   * Video source: native HTML video or embed (YouTube/Vimeo/Wistia)
+   *
+   * **For embeds, prefer `embedUrl` over `embedCode`:**
+   * - ✅ `embedUrl`: Direct URL validation (safer, recommended)
+   * - ⚠️ `embedCode`: Regex-based HTML parsing (can be bypassed, use with caution)
+   */
   source: VideoSource;
   /** Optional cover image - when provided, video shows in modal on click */
   coverImage?: {
@@ -65,7 +89,22 @@ function isTrustedEmbedUrl(url: string): boolean {
   }
 }
 
-/** Extract iframe src from embed code if from trusted origin */
+/**
+ * Extract iframe src from embed code if from trusted origin
+ *
+ * ⚠️ **SECURITY WARNING**: This regex-based parser is NOT foolproof and can be bypassed
+ * with malformed HTML. Known bypass vectors include:
+ * - Newlines or unusual whitespace in attributes
+ * - Missing or unusual quote characters
+ * - HTML comments or CDATA sections
+ * - Encoded characters or HTML entities
+ *
+ * This function should only be used as a fallback when embedUrl is not available.
+ * Always prefer using embedUrl directly when possible.
+ *
+ * @param embedCode - Raw HTML iframe embed code (from trusted sources only)
+ * @returns Extracted URL if valid and from trusted origin, null otherwise
+ */
 function extractEmbedUrlFromCode(embedCode: string): string | null {
   const iframeMatch = embedCode.match(/<iframe[^>]+src=["']([^"']+)["']/i);
   if (!iframeMatch) return null;
@@ -83,6 +122,8 @@ export const Video = React.forwardRef<HTMLDivElement, VideoProps>(
     } = props;
 
     const [isModalOpen, setIsModalOpen] = React.useState(false);
+    const closeButtonRef = useRef<HTMLButtonElement>(null);
+    const previousActiveElementRef = useRef<HTMLElement | null>(null);
 
     const closeModal = useCallback(() => {
       setIsModalOpen(false);
@@ -97,12 +138,17 @@ export const Video = React.forwardRef<HTMLDivElement, VideoProps>(
       return () => document.removeEventListener('keydown', handleEscape);
     }, [isModalOpen, closeModal]);
 
-    const handleBackdropClick = useCallback(
-      (e: React.MouseEvent) => {
-        if (e.target === e.currentTarget) closeModal();
-      },
-      [closeModal]
-    );
+    // Focus trap: capture previous focus, focus close button, restore on close
+    useEffect(() => {
+      if (isModalOpen) {
+        previousActiveElementRef.current = document.activeElement as HTMLElement | null;
+        closeButtonRef.current?.focus();
+      } else {
+        previousActiveElementRef.current?.focus();
+      }
+    }, [isModalOpen]);
+
+
 
     const renderVideoContent = () => {
       if (source.type === 'native') {
@@ -196,11 +242,12 @@ export const Video = React.forwardRef<HTMLDivElement, VideoProps>(
             >
               <div
                 className="bds-video-modal__backdrop"
-                onClick={handleBackdropClick}
+                onClick={closeModal}
                 aria-hidden
               />
               <div className="bds-video-modal__content">
                 <button
+                  ref={closeButtonRef}
                   type="button"
                   className="bds-video-modal__close"
                   onClick={closeModal}

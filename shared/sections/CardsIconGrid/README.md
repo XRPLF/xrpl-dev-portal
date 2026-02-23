@@ -16,7 +16,7 @@ CardsIconGrid mirrors the LinkTextDirectory header structure and renders cards i
 ## Usage
 
 ```tsx
-import { CardsIconGrid } from 'shared/patterns/CardsIconGrid';
+import { CardsIconGrid } from 'shared/sections/CardsIconGrid';
 
 <CardsIconGrid
   heading="Explore Tools"

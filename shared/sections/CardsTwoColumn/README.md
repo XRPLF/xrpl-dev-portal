@@ -15,7 +15,7 @@ A section pattern featuring a header with title and description, plus a 2×2 gri
 ## Usage
 
 ```tsx
-import { CardsTwoColumn } from 'shared/patterns/CardsTwoColumn';
+import { CardsTwoColumn } from 'shared/sections/CardsTwoColumn';
 
 <CardsTwoColumn
   title="The Future of Finance is Already Onchain"
@@ -153,7 +153,7 @@ Each color variant has four interactive states with a "window shade" hover anima
 
 - **Figma Design**: [Section Cards - Two Column](https://www.figma.com/design/MP5gjNp7yPBnKBKleb8LRL/Section-Cards---Two-Column)
 - **Showcase Page**: `/about/cards-two-column-showcase`
-- **Component Location**: `shared/patterns/CardsTwoColumn/`
+- **Component Location**: `shared/sections/CardsTwoColumn/`
 
 ## Version History
 

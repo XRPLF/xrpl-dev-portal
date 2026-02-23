@@ -75,7 +75,7 @@ export const CalloutMediaBanner: React.FC<CalloutMediaBannerProps> = ({
   backgroundImage,
   textColor = 'white',
   heading,
-  headingAs = 'h4',
+  headingAs = 'h6',
   subheading,
   buttons,
   className = '',

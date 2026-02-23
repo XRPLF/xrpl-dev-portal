@@ -15,7 +15,7 @@ A feature section pattern that pairs a title/description with a media element in
 ## Basic Usage
 
 ```tsx
-import { FeatureSingleTopic } from 'shared/patterns/FeatureSingleTopic';
+import { FeatureSingleTopic } from 'shared/sections/FeatureSingleTopic';
 
 <FeatureSingleTopic
   variant="default"
@@ -167,7 +167,7 @@ Full dark mode support with `html.dark` selector:
 
 - **Figma Design**: [Section Feature - Single Topic](https://www.figma.com/design/sg6T5EptbN0V2olfCSHzcx/Section-Feature---Single-Topic?node-id=18030-2250&m=dev)
 - **Showcase Page**: `/about/feature-single-topic-showcase`
-- **Component Location**: `shared/patterns/FeatureSingleTopic/`
+- **Component Location**: `shared/sections/FeatureSingleTopic/`
 
 ## Related Components
 

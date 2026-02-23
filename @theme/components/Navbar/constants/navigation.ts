@@ -14,7 +14,7 @@ export const navItems: NavItem[] = [
   { label: "Use Cases", labelTranslationKey: "navbar.usecases", href: "/use-cases", hasSubmenu: true },
   { label: "Community", labelTranslationKey: "navbar.community", href: "/community", hasSubmenu: true },
   { label: "Network", labelTranslationKey: "navbar.network", href: "/resources", hasSubmenu: true },
-  { label: "Showcase", labelTranslationKey: "navbar.network", href: "/showcase", hasSubmenu: false },
+  { label: "Showcase (Temporary)", labelTranslationKey: "navbar.showcase", href: "/showcase", hasSubmenu: false },
 ];
 
 // Develop submenu data structure

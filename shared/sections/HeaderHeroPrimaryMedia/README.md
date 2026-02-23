@@ -14,7 +14,7 @@ The HeaderHeroPrimaryMedia component provides a structured hero section with:
 ## Basic Usage
 
 ```tsx
-import HeaderHeroPrimaryMedia from "shared/patterns/HeaderHeroPrimaryMedia/HeaderHeroPrimaryMedia";
+import HeaderHeroPrimaryMedia from "shared/sections/HeaderHeroPrimaryMedia/HeaderHeroPrimaryMedia";
 
 function MyPage() {
   return (

@@ -16,7 +16,7 @@ CardsTextGrid mirrors the LinkTextDirectory header structure and renders cards i
 ## Usage
 
 ```tsx
-import { CardsTextGrid } from 'shared/patterns/CardsTextGrid';
+import { CardsTextGrid } from 'shared/sections/CardsTextGrid';
 
 <CardsTextGrid
   heading="Explore Tools"

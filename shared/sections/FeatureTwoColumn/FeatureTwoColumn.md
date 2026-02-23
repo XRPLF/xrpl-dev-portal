@@ -210,7 +210,7 @@ FeatureTwoColumn
 ## Design References
 
 - **Figma Design**: [Pattern - Feature - Two Column](https://www.figma.com/design/3tmqxMrEvOVvpYhgOCxv2D/Pattern-Feature---Two-Column?node-id=20017-3501&m=dev)
-- **Component Location**: `shared/patterns/FeatureTwoColumn/`
+- **Component Location**: `shared/sections/FeatureTwoColumn/`
 - **Color Tokens**: `styles/_colors.scss`
 - **Typography**: `styles/_font.scss`
 

@@ -94,7 +94,7 @@ interface CalloutMediaBannerProps {
 ### Basic Usage with Color Variant
 
 ```tsx
-import { CalloutMediaBanner } from 'shared/patterns/CalloutMediaBanner';
+import { CalloutMediaBanner } from 'shared/sections/CalloutMediaBanner';
 
 <CalloutMediaBanner
   variant="green"
@@ -313,7 +313,7 @@ $gray-600     // Gray (dark)
 
 - **Figma Design**: [Callout - Media Banner](https://www.figma.com/design/i4OuOX6QSBauMaJE4iY4kV/Callout---Media-Banner?node-id=1-2&m=dev)
 - **Showcase Page**: `/about/callout-media-banner-showcase.page.tsx`
-- **Component Location**: `shared/patterns/CalloutMediaBanner/`
+- **Component Location**: `shared/sections/CalloutMediaBanner/`
 
 ## Version History
 

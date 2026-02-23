@@ -14,7 +14,7 @@ The FeaturedVideoHero component provides a structured hero section with:
 ## Basic Usage
 
 ```tsx
-import { FeaturedVideoHero } from "shared/patterns/FeaturedVideoHero";
+import { FeaturedVideoHero } from "shared/sections/FeaturedVideoHero";
 
 function MyPage() {
   return (
@@ -95,7 +95,7 @@ The video is rendered with `object-fit: cover` and a 16:9 aspect ratio container
 ```tsx
 <FeaturedVideoHero
   headline="Headline Only"
-  callsToAction={[{ children: "Get Started", href: "/docs" }]}
+  links={[{ label: "Get Started", href: "/docs" }]}
   videoElement={{
     src: "/video/intro.mp4",
     autoPlay: true,

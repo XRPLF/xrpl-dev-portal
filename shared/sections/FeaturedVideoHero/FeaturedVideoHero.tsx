@@ -100,7 +100,6 @@ const FeaturedVideoHero = forwardRef<HTMLElement, FeaturedVideoHeroProps>(
                       <PageGrid.Col
                         span={{ base: "fill", md: 6, lg: 10 }}
                         className="bds-featured-video-hero__subtitle-col"
-                        as="p"
                       >
                         {subtitle}
                       </PageGrid.Col>
@@ -127,12 +126,12 @@ const FeaturedVideoHero = forwardRef<HTMLElement, FeaturedVideoHeroProps>(
                     coverImage={video.coverImage}
                     className="bds-featured-video-hero__video"
                   />
-                ) : (
+                ) : videoElement ? (
                   <Video
-                    source={{ type: "native", props: videoElement! }}
+                    source={{ type: "native", props: videoElement }}
                     className="bds-featured-video-hero__video"
                   />
-                )}
+                ) : null}
               </div>
             </PageGrid.Col>
           </PageGrid.Row>

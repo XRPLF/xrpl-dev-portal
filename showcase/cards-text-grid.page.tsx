@@ -1,3 +1,4 @@
+import * as React from "react";
 import { CardsTextGrid } from "shared/sections/CardsTextGrid";
 import { Divider } from "shared/components/Divider";
 
