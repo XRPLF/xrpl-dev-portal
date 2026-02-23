@@ -18,7 +18,7 @@ const links = [
 ];
 
 const softwallets = [
-  { href: "https://towolabs.com/", id: "wallet-towo", alt: "Towo" },
+  { href: "https://bifrostwallet.com/", id: "wallet-bifrost", alt: "Bifrost Wallet" },
   { href: "https://xaman.app/", id: "wallet-xumm", alt: "Xaman" },
   { href: "https://trustwallet.com/", id: "wallet-trust", alt: "Trust Wallet" },
   {

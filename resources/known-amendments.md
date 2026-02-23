@@ -23,8 +23,6 @@ The following is a list of [amendments](../docs/concepts/networks-and-servers/am
 |:----------------------------------|:------------------------------------------|:-------------------------------|
 | [Hooks][]                         | {% badge %}In Development: TBD{% /badge %} | [XRPL Hooks](https://hooks.xrpl.org/) |
 | [InvariantsV1_1][]                | {% badge %}In Development: TBD{% /badge %} |  |
-| [LendingProtocol][]               | {% badge %}In Development: TBD{% /badge %} | [Lending Protocol (Ripple Opensource)](https://opensource.ripple.com/docs/xls-66d-lending-protocol) |
-| [SingleAssetVault][]              | {% badge %}In Development: TBD{% /badge %} | [Single Asset Vault (Ripple Opensource)](https://opensource.ripple.com/docs/xls-65d-single-asset-vault) |
 
 {% admonition type="success" name="Tip" %}
 This list is updated manually. If you're working on an amendment and have a private network to test the changes, you can edit this page to add your in-development amendment to this list. For more information on contributing to the XRP Ledger, see [Contribute Code to the XRP Ledger](contribute-code/index.md).
@@ -37,6 +35,7 @@ The following is a list of known [amendments](../docs/concepts/networks-and-serv
 
 | Name                              | Introduced | Status                        |
 |:----------------------------------|:-----------|:------------------------------|
+| [PermissionDelegation]            | v2.5.0     | {% badge href="https://xrpl.org/blog/2025/rippled-2.6.1" %}Obsolete: Removed in v2.6.1{% /badge %} |
 | [fixNFTokenNegOffer][]            | v1.9.2     | {% badge %}Obsolete: To Be Removed{% /badge %} |
 | [fixNFTokenDirV1][]               | v1.9.1     | {% badge %}Obsolete: To Be Removed{% /badge %} |
 | [NonFungibleTokensV1][]           | v1.9.0     | {% badge %}Obsolete: To Be Removed{% /badge %} |
@@ -739,6 +738,19 @@ Adds several fixes to Automated Market Maker code, specifically:
     - On deposit, tokens out are rounded downward and deposit amount is rounded upward.
     - On withdrawal, tokens in are rounded upward and withdrawal amount is rounded downward.
 - Fix validation of [AMMBid transactions][] to ensure that `AuthAccounts` cannot contain duplicates or the transaction sender.
+
+
+### fixBatchInnerSigs
+[fixBatchInnerSigs]: #fixbatchinnersigs
+
+| Amendment    | fixBatchInnerSigs |
+|:-------------|:----------------|
+| Amendment ID | 267624F8F744C4A4F1B5821A7D54410BCEBABE987F0172EE89E5FC4B6EDBC18A |
+| Status       | Open for Voting |
+| Default Vote (Latest stable release) | No |
+| Pre-amendment functionality retired? | No |
+
+This amendment fixes an issue where inner transactions of a `Batch` transaction would be flagged as having valid signatures. Since inner transactions aren't signed directly, they should never have valid signatures.
 
 
 ### fixCheckThreading
@@ -1469,13 +1481,13 @@ This amendment adds several new invariants to protect the ledger against bugs in
 | Amendment    | LendingProtocol |
 |:-------------|:-----------------|
 | Amendment ID | 565B90CA1AB2B9D42208ED10884188C64F9E19083DECB9634AAF06EB03299509 |
-| Status       | In Development |
+| Status       | Open for Voting |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
 The Lending Protocol enables on-chain, fixed-term, uncollateralized loans using pooled funds from a Single Asset Vault. This implementation relies on off-chain underwriting and risk management to assess the creditworthiness of borrowers, but offers configurable, peer-to-peer loans.
 
-Specification: [XLS-66](https://github.com/Tapanito/XRPL-Standards/tree/xls-66-lending-protocol/XLS-0066d-lending-protocol).
+Specification: [XLS-66](https://github.com/Tapanito/XRPL-Standards/tree/xls-66-lending-protocol/XLS-0066-lending-protocol).
 
 
 ### MPTokensV1
@@ -1683,11 +1695,11 @@ For more information, see the [Payment Channels Tutorial](../docs/tutorials/how-
 | Amendment    | PermissionDelegation |
 |:-------------|:---------------------|
 | Amendment ID | AE6AB9028EEB7299EBB03C7CBCC3F2A4F5FBE00EA28B8223AA3118A0B436C1C5 |
-| Status       | Open for Voting |
+| Status       | Obsolete |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
-Allows accounts to delegate some permissions to other accounts.
+Allows accounts to delegate some permissions to other accounts. This amendment was disabled in v2.6.1 due to a bug. It will be replaced by `PermissionDelegationV1_1` in a future release.
 
 Specification: [XLS-75](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0075-permission-delegation).
 
@@ -1777,14 +1789,30 @@ When this amendment is activated, the XRP Ledger will undergo a brief scheduled 
 | Amendment    | SingleAssetVault |
 |:-------------|:-----------------|
 | Amendment ID | 81BD2619B6B3C8625AC5D0BC01DE17F06C3F0AB95C7C87C93715B87A4FD240D8 |
-| Status       | In Development |
+| Status       | Open for Voting |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
-Creates a structure for aggregating assets from multiple depositors. This is intended to be used with the proposed on-chain Lending Protocol.
+Creates a structure for aggregating assets from multiple depositors. This is intended to be used with the on-chain Lending Protocol.
 
-Specification: [XLS-65](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0065d-single-asset-vault).
+**New ledger entry types**:
 
+- [Vault entry][]
+
+**New transactions**:
+
+- [VaultClawback transaction][]
+- [VaultCreate transaction][]
+- [VaultDelete transaction][]
+- [VaultDeposit transaction][]
+- [VaultSet transaction][]
+- [VaultWithdraw transaction][]
+
+**New API methods**:
+
+- [vault_info method][]
+
+Specification: [XLS-65](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0065-single-asset-vault).
 
 ### SortedDirectories
 [SortedDirectories]: #sorteddirectories

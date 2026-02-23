@@ -49,10 +49,10 @@ Before you install `rippled`, you must meet the [System Requirements](system-req
     The output should include an entry for Ripple such as the following:
 
     ```
-    pub   rsa3072 2019-02-14 [SC] [expires: 2026-02-17]
-        C0010EC205B35A3310DC90DE395F97FFCCAFD9A2
-    uid           TechOps Team at Ripple <techops+rippled@ripple.com>
-    sub   rsa3072 2019-02-14 [E] [expires: 2026-02-17]
+    pub   ed25519 2026-02-16 [SC] [expires: 2033-02-14]
+        E057C1CF72B0DF1A4559E8577DEE9236AB06FAA6
+    uid   TechOps Team at Ripple <techops+rippled@ripple.com>
+    sub   ed25519 2026-02-16 [S] [expires: 2029-02-15]
     ```
 
     In particular, make sure that the fingerprint matches. (In the above example, the fingerprint is on the second line, starting with `C001`.)

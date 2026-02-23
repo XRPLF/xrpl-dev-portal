@@ -26,7 +26,7 @@ const logos = {
   ],
   developer_tooling: ["cryptum", "evernode", "threezy", "tokenize"],
   interoperability: ["multichain"],
-  wallet: ["crossmark", "edge", "gem-wallet", "xumm", "joey-wallet"],
+  wallet: ["crossmark", "edge", "gem-wallet", "xumm", "joey-wallet", "bifrost-wallet"],
   nfts: [
     "aesthetes",
     "audiotarky",
@@ -413,6 +413,15 @@ const cardsData = [
     category_name: "Wallet",
     link: "https://xaman.app/#team",
   },
+  {
+    id: "bifrost-wallet",
+    title: "Bifrost Wallet",
+    description:
+      "Bifrost Wallet is a secure, independently audited self-custodial wallet for the XRP Ledger with multi-chain support. Purpose-built for XRPFi: a wallet where your XRP works for you and earns yield.",
+    category_id: "wallet",
+    category_name: "Wallet",
+    link: "https://bifrostwallet.com/",
+  },
 ];
 
 const featured_categories = {
@@ -459,7 +468,7 @@ const uses = [
   {
     id: "wallet",
     title: "Wallet",
-    number: 5,
+    number: 6,
     description:
       "Build digital wallets to store passwords and interact with various blockchains to send and receive digital assets, including XRP."
   },
