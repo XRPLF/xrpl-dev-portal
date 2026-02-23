@@ -1,0 +1,132 @@
+// BDS LinkTextCard Pattern Styles
+// Brand Design System - Numbered card with heading, description, and CTA buttons
+//
+// Naming Convention: BEM with 'bds' namespace
+// .bds-link-text-card           - Base card container with border-top divider
+// .bds-link-text-card__header   - Header section (number + heading)
+// .bds-link-text-card__content  - Content section (description + buttons)
+//
+// Note: Uses centralized spacing tokens from _spacing.scss.
+
+// =============================================================================
+// Design Tokens (from _spacing.scss)
+// =============================================================================
+
+// Header gap (between number and heading)
+$bds-link-text-card-header-gap-base: $bds-space-sm;   // 8px - spacing('sm')
+$bds-link-text-card-header-gap-md: $bds-space-md;     // 12px - spacing('md')
+$bds-link-text-card-header-gap-lg: $bds-space-lg;     // 16px - spacing('lg')
+
+// Content gap (between description and buttons)
+$bds-link-text-card-content-gap-base: $bds-space-lg;   // 16px - spacing('lg')
+$bds-link-text-card-content-gap-md: $bds-space-2xl;   // 24px - spacing('2xl')
+$bds-link-text-card-content-gap-lg: $bds-space-3xl;   // 32px - spacing('3xl')
+
+// Card gap (between header and content sections)
+$bds-link-text-card-gap-base: $bds-gap-section-sm;   // 24px - spacing('2xl')
+$bds-link-text-card-gap-md: $bds-gap-section-md;     // 32px - spacing('3xl')
+$bds-link-text-card-gap-lg: $bds-gap-section-lg;     // 40px - spacing('4xl')
+
+// Padding
+$bds-link-text-card-padding-top-base: $bds-space-sm;   // 8px - spacing('sm')
+$bds-link-text-card-padding-top-md: $bds-space-md;     // 12px - spacing('md')
+$bds-link-text-card-padding-top-lg: $bds-space-lg;     // 16px - spacing('lg')
+
+$bds-link-text-card-padding-bottom-base: $bds-space-2xl;   // 24px - spacing('2xl')
+$bds-link-text-card-padding-bottom-md: $bds-space-3xl;     // 32px - spacing('3xl')
+$bds-link-text-card-padding-bottom-lg: $bds-space-4xl;     // 40px - spacing('4xl')
+
+// Border
+$bds-link-text-card-border-width: 1px;
+$bds-link-text-card-border-color: $gray-300;
+
+// Text color
+$bds-link-text-card-number-color: $gray-500;
+
+// Content width at MD+
+$bds-link-text-card-content-width-md: calc(75% - 2px);
+
+// =============================================================================
+// Card Component
+// =============================================================================
+
+.bds-link-text-card {
+  display: flex;
+  flex-direction: column;
+  border-top: $bds-link-text-card-border-width solid $bds-link-text-card-border-color;
+  padding-top: $bds-link-text-card-padding-top-base;
+  padding-bottom: $bds-link-text-card-padding-bottom-base;
+  gap: $bds-link-text-card-gap-base;
+
+  @include media-breakpoint-up(md) {
+    padding-top: $bds-link-text-card-padding-top-md;
+    padding-bottom: $bds-link-text-card-padding-bottom-md;
+    gap: $bds-link-text-card-gap-md;
+  }
+
+  @include media-breakpoint-up(lg) {
+    padding-top: $bds-link-text-card-padding-top-lg;
+    padding-bottom: $bds-link-text-card-padding-bottom-lg;
+    gap: $bds-link-text-card-gap-lg;
+  }
+
+  // Remove padding-bottom for the last card in the list
+  &:last-child {
+    padding-bottom: 0;
+  }
+  @include bds-theme-mode(dark) {
+    color: $white;
+  }
+}
+
+// =============================================================================
+// Header Section (Number + Heading)
+// =============================================================================
+
+.bds-link-text-card__header {
+  display: flex;
+  flex-direction: column;
+  gap: $bds-link-text-card-header-gap-base;
+
+  @include media-breakpoint-up(md) {
+    gap: $bds-link-text-card-header-gap-md;
+    width: $bds-link-text-card-content-width-md;
+  }
+
+  @include media-breakpoint-up(lg) {
+    gap: $bds-link-text-card-header-gap-lg;
+  }
+
+  p {
+    color: $bds-link-text-card-number-color;
+  }
+  @include bds-theme-mode(dark) {
+    color: $white;
+  }
+}
+
+// =============================================================================
+// Content Section (Description + Buttons)
+// =============================================================================
+
+.bds-link-text-card__content {
+  display: flex;
+  flex-direction: column;
+  gap: $bds-link-text-card-content-gap-base;
+
+  @include media-breakpoint-up(md) {
+    gap: $bds-link-text-card-content-gap-md;
+    width: $bds-link-text-card-content-width-md;
+  }
+
+  @include media-breakpoint-up(lg) {
+    gap: $bds-link-text-card-content-gap-lg;
+  }
+
+  p {
+    color: $bds-link-text-card-number-color;
+  }
+  @include bds-theme-mode(dark) {
+    color: $white;
+  }
+}

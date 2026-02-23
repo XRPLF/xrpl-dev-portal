@@ -1,0 +1,63 @@
+// BDS StandardCardGroupSection Pattern Styles
+// Brand Design System - Section with headline, description, and grid of StandardCard components
+//
+// Naming Convention: BEM with 'bds' namespace
+// .bds-standard-card-group-section                    - Base section container
+//
+// Design tokens from Figma:
+// Light Mode:
+// - Headline: Neutral Black (#141414) → $black
+// - Description: Neutral Black (#141414) → $black
+//
+// Dark Mode:
+// - Headline: Neutral White (#FFFFFF) → $white
+// - Description: Neutral White (#FFFFFF) → $white
+//
+// - Header content max-width: 808px (approximately 8 columns at desktop)
+// - Gap between headline and description: 16px
+// - Gap between cards: handled by PageGrid gutter
+
+// =============================================================================
+// Design Tokens (from Figma)
+// =============================================================================
+// Note: Uses centralized spacing tokens from _spacing.scss.
+
+// Spacing - Section padding (vertical)
+$bds-standard-card-group-section-padding-y-sm: $bds-space-5xl;   // 48px - spacing('5xl')
+$bds-standard-card-group-section-padding-y-md: $bds-space-6xl;   // 64px - spacing('6xl')
+$bds-standard-card-group-section-padding-y-lg: $bds-space-8xl;   // 80px - spacing('8xl')
+
+
+// =============================================================================
+// Section Container
+// =============================================================================
+
+.bds-standard-card-group-section {
+  width: 100%;
+  padding-top: $bds-standard-card-group-section-padding-y-sm;
+  padding-bottom: $bds-standard-card-group-section-padding-y-sm;
+
+  @include media-breakpoint-up(md) {
+    padding-top: $bds-standard-card-group-section-padding-y-md;
+    padding-bottom: $bds-standard-card-group-section-padding-y-md;
+  }
+
+  @include media-breakpoint-up(lg) {
+    padding-top: $bds-standard-card-group-section-padding-y-lg;
+    padding-bottom: $bds-standard-card-group-section-padding-y-lg;
+  }
+
+  @include bds-theme-mode(light) {
+    background-color: $white;
+  }
+
+  @include bds-theme-mode(dark) {
+    background-color: $black;
+  }
+}
+
+// Header section uses SectionHeader component
+
+.bds-standard-card-group-section__cards {
+  // Section gap handled by SectionHeader margin-bottom
+}

@@ -54,16 +54,12 @@ scripts:
   head:
     - src: https://cmp.osano.com/AzyjT6TIZMlgyLyy8/f11f7772-8ed5-4b73-bd17-c0814edcc440/osano.js
     - src: ./static/js/xrpl-2.11.0.min.js
-    - src: ./static/vendor/jquery-3.7.1.min.js
+    # - src: ./static/vendor/jquery-3.7.1.min.js
     - src: ./static/vendor/bootstrap.min.js
     - src: ./static/js/osano.js
       type: text/javascript
 links:
-  - href: https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700&display=swap
-    rel: stylesheet
-  - href: https://fonts.googleapis.com/css?family=Source+Code+Pro:300,400,600,700&display=swap
-    rel: stylesheet
-  - href: https://fonts.googleapis.com/css?family=Space+Grotesk:300,400,600,700&display=swap
+  - href: https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700&family=Noto+Serif:wght@400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;600;700&display=swap
     rel: stylesheet
   - href: ./static/css/devportal2024-v1.css
     rel: stylesheet

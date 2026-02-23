@@ -1,0 +1,292 @@
+// BDS CarouselCardList Pattern Styles
+// Brand Design System - Horizontal scrolling carousel with CardOffgrid components
+//
+// Naming Convention: BEM with 'bds' namespace
+// .bds-carousel-card-list                      - Base section container
+// .bds-carousel-card-list--neutral             - Neutral color variant
+// .bds-carousel-card-list--green               - Green color variant
+// .bds-carousel-card-list__header              - Header wrapper (title, subtitle, nav)
+// .bds-carousel-card-list__header-content      - Title and subtitle wrapper
+// .bds-carousel-card-list__heading             - Section heading (uses .h-md)
+// .bds-carousel-card-list__description         - Section description (uses .body-l)
+// .bds-carousel-card-list__nav                 - Navigation buttons wrapper
+// .bds-carousel-card-list__track-wrapper       - Scroll container wrapper
+// .bds-carousel-card-list__track               - Horizontal scroll track
+// .bds-carousel-card-list__card                - Individual card wrapper
+//
+// Note: Navigation button styles are in shared/components/CarouselButton/CarouselButton.scss
+
+// =============================================================================
+// Design Tokens (from Figma)
+// =============================================================================
+// Note: Uses centralized spacing tokens from _spacing.scss.
+// $bds-grid-gutter is defined in _spacing.scss (8px).
+
+// Grid padding (matches PageGrid container padding)
+$bds-carousel-grid-padding-sm: 18px;            // Mobile (non-standard)
+$bds-carousel-grid-padding-md: $bds-space-2xl;  // 24px - spacing('2xl')
+$bds-carousel-grid-padding-lg: $bds-space-3xl;  // 32px - spacing('3xl')
+$bds-carousel-grid-max-width: 1280px;           // Max container width (per _breakpoints.scss $xl)
+
+// Spacing - Header gap (between heading and description)
+$bds-carousel-header-gap-sm: $bds-space-sm;     // 8px - spacing('sm')
+$bds-carousel-header-gap-md: $bds-space-sm;     // 8px - spacing('sm')
+$bds-carousel-header-gap-lg: $bds-space-lg;     // 16px - spacing('lg')
+
+// Spacing - Section gap (between header content and buttons row on mobile)
+$bds-carousel-section-gap-sm: $bds-space-2xl;   // 24px - spacing('2xl')
+$bds-carousel-section-gap-md: $bds-space-3xl;   // 32px - spacing('3xl')
+$bds-carousel-section-gap-lg: $bds-space-4xl;   // 40px - spacing('4xl')
+
+// Spacing - Gap between header and cards
+$bds-carousel-cards-gap-sm: $bds-space-2xl;     // 24px - spacing('2xl')
+$bds-carousel-cards-gap-md: $bds-space-3xl;     // 32px - spacing('3xl')
+$bds-carousel-cards-gap-lg: $bds-space-4xl;     // 40px - spacing('4xl')
+
+// Button gap (button styles are in shared/components/CarouselButton)
+$bds-carousel-button-gap: $bds-space-sm;        // 8px - spacing('sm')
+
+// Card dimensions per breakpoint
+$bds-carousel-card-width-sm: 343px;         // Mobile
+$bds-carousel-card-height-sm: 400px;
+$bds-carousel-card-width-md: 356px;         // Tablet
+$bds-carousel-card-height-md: 440px;
+$bds-carousel-card-width-lg: 400px;         // Desktop
+$bds-carousel-card-height-lg: 480px;
+
+// Card padding per breakpoint
+$bds-carousel-card-padding-sm: $bds-space-lg;   // 16px - spacing('lg')
+$bds-carousel-card-padding-md: $bds-space-xl;   // 20px - spacing('xl')
+$bds-carousel-card-padding-lg: $bds-space-2xl;  // 24px - spacing('2xl')
+
+// Transition
+$bds-carousel-transition: 200ms cubic-bezier(0.98, 0.12, 0.12, 0.98);
+
+// =============================================================================
+// Section Container
+// =============================================================================
+
+.bds-carousel-card-list {
+  width: 100%;
+  // Constrain to max-width at xl breakpoint (per _breakpoints.scss)
+  @include media-breakpoint-up(xl) {
+    max-width: $bds-carousel-grid-max-width;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  // Allow focus rings to be visible (no overflow:hidden)
+}
+
+// =============================================================================
+// Header Section
+// =============================================================================
+
+.bds-carousel-card-list__header {
+  display: flex;
+  flex-direction: column;
+  gap: $bds-carousel-section-gap-sm;
+  // Apply same padding as track to align header with cards
+  padding-left: $bds-carousel-grid-padding-sm;
+  padding-right: $bds-carousel-grid-padding-sm;
+
+  @include media-breakpoint-up(md) {
+    gap: $bds-carousel-section-gap-md;
+    padding-left: $bds-carousel-grid-padding-md;
+    padding-right: $bds-carousel-grid-padding-md;
+  }
+
+  // Row layout only at desktop (lg and up)
+  @include media-breakpoint-up(lg) {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: $bds-carousel-section-gap-lg;
+    padding-left: $bds-carousel-grid-padding-lg;
+    padding-right: $bds-carousel-grid-padding-lg;
+  }
+}
+
+.bds-carousel-card-list__header-content {
+  display: flex;
+  flex-direction: column;
+  gap: $bds-carousel-header-gap-sm;
+  // Full width on mobile and tablet
+  max-width: 100%;
+
+  @include media-breakpoint-up(md) {
+    gap: $bds-carousel-header-gap-md;
+  }
+
+  // Constrain heading/description to grid (8 columns at desktop)
+  @include media-breakpoint-up(lg) {
+    gap: $bds-carousel-header-gap-lg;
+    max-width: 808px; // Desktop: 8 columns
+  }
+}
+
+.bds-carousel-card-list__heading {
+  margin: 0;
+  // Typography handled by .h-md class from _font.scss
+}
+
+.bds-carousel-card-list__description {
+  margin: 0;
+  // Typography handled by .body-l class from _font.scss
+}
+
+// =============================================================================
+// Navigation Buttons Container
+// =============================================================================
+
+.bds-carousel-card-list__nav {
+  display: flex;
+  gap: $bds-carousel-button-gap;
+  justify-content: flex-end;
+  flex-shrink: 0;
+  // Add padding to allow focus ring to be visible without clipping
+  padding: 4px;
+  margin: -4px;
+}
+
+// =============================================================================
+// Scroll Track
+// =============================================================================
+
+.bds-carousel-card-list__track-wrapper {
+  margin-top: $bds-carousel-cards-gap-sm;
+  overflow: visible;
+  // Add left padding here so it's OUTSIDE the scrollable area
+  padding-left: $bds-carousel-grid-padding-sm;
+
+  @include media-breakpoint-up(md) {
+    margin-top: $bds-carousel-cards-gap-md;
+    padding-left: $bds-carousel-grid-padding-md;
+  }
+
+  @include media-breakpoint-up(lg) {
+    margin-top: $bds-carousel-cards-gap-lg;
+    padding-left: $bds-carousel-grid-padding-lg;
+  }
+}
+
+.bds-carousel-card-list__track {
+  display: flex;
+  gap: $bds-grid-gutter;
+  overflow-x: auto;
+  overflow-y: visible;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+
+  // Hide scrollbar but keep functionality
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  // Vertical padding to prevent focus ring clipping
+  padding-top: 4px;
+  padding-bottom: 4px;
+  margin-top: -4px;
+  margin-bottom: -4px;
+
+  // Focus outline for keyboard navigation
+  &:focus {
+    outline: none;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $white;
+    outline-offset: 4px;
+  }
+}
+
+// =============================================================================
+// Card Wrapper
+// =============================================================================
+
+.bds-carousel-card-list__card {
+  flex-shrink: 0;
+  scroll-snap-align: start;
+
+  // Override CardOffgrid dimensions for carousel
+  .bds-card-offgrid {
+    width: $bds-carousel-card-width-sm;
+    height: $bds-carousel-card-height-sm;
+    padding: $bds-carousel-card-padding-sm;
+
+    @include media-breakpoint-up(md) {
+      width: $bds-carousel-card-width-md;
+      height: $bds-carousel-card-height-md;
+      padding: $bds-carousel-card-padding-md;
+    }
+
+    @include media-breakpoint-up(lg) {
+      width: $bds-carousel-card-width-lg;
+      height: $bds-carousel-card-height-lg;
+      padding: $bds-carousel-card-padding-lg;
+    }
+
+    // Fix: Prevent unwanted hover styles from parent styles
+    // No text underline on hover
+    &:hover {
+      text-decoration: none;
+    }
+
+    // Ensure title and description never have underline
+    .bds-card-offgrid__title,
+    .bds-card-offgrid__description {
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+
+    // Ensure icon does not change color on hover
+    .bds-card-offgrid__icon-container {
+      // Icon color is inherited from card text color, which CardOffgrid manages
+      // No additional color changes should happen on hover
+      > * {
+        transition: none;
+      }
+    }
+  }
+}
+
+// =============================================================================
+// DARK MODE (Default) - Section Text Colors
+// =============================================================================
+
+// Section text colors - Dark Mode (applies to both neutral and green card variants)
+.bds-carousel-card-list--neutral,
+.bds-carousel-card-list--green {
+  .bds-carousel-card-list__heading,
+  .bds-carousel-card-list__description {
+    color: $white;
+  }
+}
+
+// =============================================================================
+// LIGHT MODE (html.light) - Color Variants
+// =============================================================================
+
+html.light {
+  .bds-carousel-card-list__track {
+    &:focus-visible {
+      outline-color: $gray-900;
+    }
+  }
+
+  // Section text colors - Light Mode
+  .bds-carousel-card-list--neutral,
+  .bds-carousel-card-list--green {
+    .bds-carousel-card-list__heading,
+    .bds-carousel-card-list__description {
+      color: $black;
+    }
+  }
+}
+

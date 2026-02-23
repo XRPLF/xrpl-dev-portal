@@ -57,13 +57,6 @@ export default function Index() {
   return (
     <div className="landing dev-blog">
       <div className="justify-content-center align-items-lg-center">
-        <div className="position-relative d-none-sm">
-          <img
-            alt="background purple waves"
-            src={require("../static/img/backgrounds/home-purple.svg")}
-            id="blog-purple"
-          />
-        </div>
         <section className="py-lg-5 text-center mt-lg-5">
           <div className="mx-auto text-center col-lg-5">
             <div className="d-flex flex-column">

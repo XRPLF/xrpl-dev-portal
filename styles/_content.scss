@@ -3,13 +3,6 @@
 [data-component-name="Markdown/Markdown"] article {
   padding-bottom: 50px;
 
-  p code,
-  table code,
-  li > code {
-    background-color: $green-1000;
-    color: $green-400;
-  }
-
   a {
     text-decoration: underline;
   }

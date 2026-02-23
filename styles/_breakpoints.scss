@@ -1,0 +1,11 @@
+// Shared breakpoints for responsive design
+// These values are used by Bootstrap and custom components
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 576px,
+  lg: 992px,
+  xl: 1280px,
+  xxl: 1512px
+);

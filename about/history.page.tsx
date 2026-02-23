@@ -24,14 +24,6 @@ export default function History() {
   return (
     <div className="landing">
       <div className="overflow-hidden">
-        <div className="position-relative">
-          <img
-            alt="background orange waves"
-            src={require("../static/img/backgrounds/history-orange.svg")}
-            className="landing-bg"
-            id="history-orange"
-          />
-        </div>
         <section className="py-26 text-center">
           <div className="col-lg-5 mx-auto text-center">
             <div className="d-flex flex-column-reverse">
@@ -61,13 +53,6 @@ export default function History() {
             </p>
           </div>
         </section>
-        <div className="position-relative d-none-sm">
-          <img
-            alt="background purple waves"
-            src={require("../static/img/backgrounds/history-purple.svg")}
-            id="history-purple"
-          />
-        </div>
         <div className="container-new marketing-wrapper">
           <section className="row mb-60">
             <div className="timeline">

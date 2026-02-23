@@ -23,11 +23,6 @@
     }
   }
 
-  section:first-of-type h1:first-child {
-    margin-top: 0;
-    line-height: 1.2;
-  }
-
   .level-1,
   .level-2{
     margin-top: 0;
@@ -72,8 +67,8 @@
     }
   }
 
-  p a,
-  h5 a {
+  p a:not(.bds-link),
+  h5 a:not(.bds-link) {
     color: $blue-purple-400;
     font-weight: 600;
     &:hover {
@@ -185,7 +180,7 @@
 // Alert banners
 .alert-info {
   color: white;
-  background-color: $blue-700;
+  background-color: $blue-400;
   border-width: 0;
 
   a {
