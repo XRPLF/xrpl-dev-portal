@@ -10,7 +10,7 @@ labels:
   - XRP
 ---
 
-# Batch Mint NFTs
+# Batch Mint NFTs Using Python
 
 You can create an application that mints multiple NFTs at one time, using a `for` loop to send one transaction after another.
 

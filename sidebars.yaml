@@ -221,24 +221,27 @@
                 - page: docs/tutorials/defi/dex/add-assets-to-amm-in-javascript.md
                 - page: docs/tutorials/defi/dex/trade-in-the-decentralized-exchange.md
                 - page: docs/tutorials/defi/dex/trade-with-auction-slot-in-javascript.md
-            - page: docs/tutorials/defi/lending/index.md
+            - group: Set Up Lending
+              groupTranslationKey: sidebar.docs.tutorials.defi.setUpLending
               expanded: false
               items:
-                - page: docs/tutorials/defi/lending/use-the-lending-protocol/index.md
+                - group: Use the Lending Protocol
+                  groupTranslationKey: sidebar.docs.tutorials.defi.setUpLending.useTheLendingProtocol
                   expanded: false
                   items:
-                    - page: docs/tutorials/defi/lending/use-the-lending-protocol/manage-a-loan.md
-                    - page: docs/tutorials/defi/lending/use-the-lending-protocol/claw-back-cover.md
                     - page: docs/tutorials/defi/lending/use-the-lending-protocol/create-a-loan-broker.md
+                    - page: docs/tutorials/defi/lending/use-the-lending-protocol/claw-back-cover.md
                     - page: docs/tutorials/defi/lending/use-the-lending-protocol/deposit-and-withdraw-cover.md
-                    - page: docs/tutorials/defi/lending/use-the-lending-protocol/pay-off-a-loan.md
                     - page: docs/tutorials/defi/lending/use-the-lending-protocol/create-a-loan.md
-                - page: docs/tutorials/defi/lending/use-single-asset-vaults/index.md
+                    - page: docs/tutorials/defi/lending/use-the-lending-protocol/manage-a-loan.md
+                    - page: docs/tutorials/defi/lending/use-the-lending-protocol/pay-off-a-loan.md
+                - group: Use Single Asset Vaults
+                  groupTranslationKey: sidebar.docs.tutorials.defi.setUpLending.useSingleAssetVaults
                   expanded: false
                   items:
-                    - page: docs/tutorials/defi/lending/use-single-asset-vaults/withdraw-from-a-vault.md
                     - page: docs/tutorials/defi/lending/use-single-asset-vaults/create-a-single-asset-vault.md
                     - page: docs/tutorials/defi/lending/use-single-asset-vaults/deposit-into-a-vault.md
+                    - page: docs/tutorials/defi/lending/use-single-asset-vaults/withdraw-from-a-vault.md
         - group: Payments
           groupTranslationKey: sidebar.docs.tutorials.payments
           expanded: false

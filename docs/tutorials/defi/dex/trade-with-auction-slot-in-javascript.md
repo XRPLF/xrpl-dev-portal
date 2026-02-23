@@ -1,4 +1,4 @@
-# Trade with an AMM Auction Slot
+# Trade with an AMM Auction Slot in JavaScript
 
 Follow the steps from the [Create an AMM](./create-an-automated-market-maker.md) tutorial before proceeding.
 

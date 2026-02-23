@@ -5,7 +5,7 @@ labels:
   - Decentralized Finance
   - Permissioned Domains
 ---
-# Create Permissioned Domains
+# Create Permissioned Domains in JavaScript
 
 Permissioned domains are controlled environments within the broader ecosystem of the XRP Ledger blockchain. Domains restrict access to other features such as Permissioned DEXes and Lending Protocols, only allowing access to them for accounts with specific credentials.
 
