@@ -404,3 +404,44 @@ main article .card-grid {
 .light .page-tutorials .tutorial-cards .circled-logo img[alt="HTTP / WebSocket"] {
   filter: invert(1);
 }
+
+// TOC buttons for tutorials page
+.page-tutorials .page-toc.no-sideline {
+  border-left: none;
+  gap: 0.75rem;
+
+  li {
+    a {
+      border-radius: 100px;
+      padding: 0.5rem 1rem;
+      margin: 0;
+      background-color: $gray-800;
+      color: $gray-200;
+      font-weight: 500;
+      transition: all 0.2s ease;
+
+      &:hover,
+      &:focus,
+      &:active {
+        background-color: $blue-purple-500;
+        color: $white;
+        border-left: none;
+        margin-left: 0;
+      }
+    }
+  }
+}
+
+.light .page-tutorials .page-toc.no-sideline {
+  li a {
+    background-color: $gray-200;
+    color: $gray-800;
+
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: $blue-purple-500;
+      color: $white;
+    }
+  }
+}

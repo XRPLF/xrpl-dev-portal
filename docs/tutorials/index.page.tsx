@@ -1,4 +1,5 @@
 import { useThemeHooks } from "@redocly/theme/core/hooks"
+import { Link } from "@redocly/theme/components/Link/Link"
 
 export const frontmatter = {
   seo: {
@@ -266,15 +267,15 @@ function TutorialCard({
   showFooter?: boolean
   translate: (text: string) => string
 }) {
-  // Get icons: auto-detected languages take priority, then manual icon, then XRPL fallback
-  const icons = detectedLanguages && detectedLanguages.length > 0
-      ? detectedLanguages.map((lang) => langIcons[lang]).filter(Boolean)
-      : tutorial.icon && langIcons[tutorial.icon]
-        ? [langIcons[tutorial.icon]]
+  // Get icons: manual icon takes priority, then auto-detected languages, then XRPL fallback
+  const icons = tutorial.icon && langIcons[tutorial.icon]
+      ? [langIcons[tutorial.icon]]
+      : detectedLanguages && detectedLanguages.length > 0
+        ? detectedLanguages.map((lang) => langIcons[lang]).filter(Boolean)
         : [langIcons.xrpl]
 
   return (
-    <a href={tutorial.path} className="card">
+    <Link to={tutorial.path} className="card">
       <div className="card-header d-flex align-items-center flex-wrap">
         {icons.map((icon, idx) => (
           <span className="circled-logo" key={idx}>
@@ -287,7 +288,7 @@ function TutorialCard({
         {tutorial.body && <p className="card-text">{translate(tutorial.body)}</p>}
       </div>
       {showFooter && <div className="card-footer"></div>}
-    </a>
+    </Link>
   )
 }
 
@@ -308,11 +309,20 @@ export default function TutorialsIndex() {
             </h1>
             <h6 className="eyebrow mb-3">{translate("Tutorials")}</h6>
           </div>
+          {/* Table of Contents */}
+          <nav className="mt-4">
+            <ul className="page-toc no-sideline d-flex flex-wrap justify-content-center gap-2 mb-0">
+              <li><a href="#get-started">{translate("Get Started with SDKs")}</a></li>
+              {sections.map((section) => (
+                <li key={section.id}><a href={`#${section.id}`}>{translate(section.title)}</a></li>
+              ))}
+            </ul>
+          </nav>
         </div>
       </section>
 
       {/* Get Started */}
-      <section className="container-new pt-10 pb-20">
+      <section className="container-new pt-10 pb-20" id="get-started">
         <div className="col-12 col-xl-8 p-0">
           <h3 className="h4 mb-3">{translate("Get Started with SDKs")}</h3>
           <p className="mb-4">
@@ -330,7 +340,7 @@ export default function TutorialsIndex() {
 
       {/* Other Tutorials */}
       {sections.map((section) => (
-        <section className="container-new pt-10 pb-10" key={section.id}>
+        <section className="container-new pt-10 pb-10" key={section.id} id={section.id}>
           <div className="col-12 col-xl-8 p-0">
             <h3 className="h4 mb-3">{translate(section.title)}</h3>
             <p className="mb-4">{translate(section.description)}</p>
