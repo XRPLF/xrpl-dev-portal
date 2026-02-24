@@ -1,4 +1,4 @@
-# Add Assets to an AMM
+# Add Assets to an AMM in JavaScript
 
 Follow the steps from the [Create an AMM](./create-an-automated-market-maker.md) tutorial before proceeding.
 
