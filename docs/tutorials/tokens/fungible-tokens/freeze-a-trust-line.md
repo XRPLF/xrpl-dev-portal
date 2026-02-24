@@ -347,7 +347,7 @@ As before, wait for the transaction to be validated by consensus.
 - **Tutorials:**
     - [Enable No Freeze](enable-no-freeze.md)
     - [Enact Global Freeze](enact-global-freeze.md)
-    - [Change or Remove a Regular Key Pair](../../best-practices/key-management/change-or-remove-a-regular-key-pair.md)
+    - [Remove a Regular Key Pair](../../best-practices/key-management/remove-a-regular-key-pair.md)
 - **References:**
     - [account_lines method][]
     - [account_info method][]

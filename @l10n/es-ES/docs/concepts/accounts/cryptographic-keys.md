@@ -249,7 +249,7 @@ Los pasos para derivar par de claves de cuenta XRP Ledger secp256k1 desde un val
     - [Direcciones de emisión y operacionales](account-types.md)
 - **Tutoriales:**
     - [Asignación de par de claves normales](/docs/tutorials/best-practices/key-management/assign-a-regular-key-pair.md)
-    - [Cambiar o eliminar par de claves normales](/docs/tutorials/best-practices/key-management/change-or-remove-a-regular-key-pair.md)
+    - [Cambiar o eliminar par de claves normales](/docs/tutorials/best-practices/key-management/remove-a-regular-key-pair.md)
 - **Referencias:**
     - [Transacción SetRegularKey][]
     - [Objeto de ledger AccountRoot](../../references/protocol/ledger-data/ledger-entry-types/accountroot.md)

@@ -127,7 +127,7 @@ There currently is no way to have more than one multi-signing list assigned to y
 At this point, you can [send a multi-signed transaction](send-a-multi-signed-transaction.md). You may also want to:
 
 * [Disable the master key pair](disable-master-key-pair.md).
-* [Remove the regular key pair](change-or-remove-a-regular-key-pair.md) (if you previously set one)
+* [Remove the regular key pair](remove-a-regular-key-pair.md) (if you previously set one)
 
 ## See Also
 

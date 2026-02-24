@@ -137,7 +137,7 @@ For more information about this and related topics, see:
     - [Account Types](../../../concepts/accounts/account-types.md)
 - **Tutorials:**
     - [Assign a Regular Key Pair](assign-a-regular-key-pair.md)
-    - [Change or Remove a Regular Key Pair](change-or-remove-a-regular-key-pair.md)
+    - [Remove a Regular Key Pair](remove-a-regular-key-pair.md)
     - [Set Up Multi-Signing](set-up-multi-signing.md)
 - **References:**
     - [account_info method][]

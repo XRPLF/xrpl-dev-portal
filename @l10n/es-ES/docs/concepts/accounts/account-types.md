@@ -75,7 +75,7 @@ Si una dirección de reserva se ve comprometida, las consecuencias son similares
     - [Claves criptográficas](cryptographic-keys.md)
 - **Tutoriales:**
     - [Asignar par de claves regulares](/docs/tutorials/best-practices/key-management/assign-a-regular-key-pair.md)
-    - [Cambiar o eliminar par de claves regulares](/docs/tutorials/best-practices/key-management/change-or-remove-a-regular-key-pair.md)
+    - [Cambiar o eliminar par de claves regulares](/docs/tutorials/best-practices/key-management/remove-a-regular-key-pair.md)
 - **Referencias:**
     - [metodo account_info][]
     - [Transacción SetRegularKey][]

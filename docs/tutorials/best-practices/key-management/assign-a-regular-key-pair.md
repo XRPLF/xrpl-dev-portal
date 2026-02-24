@@ -9,7 +9,7 @@ labels:
 
 This tutorial shows how to authorize a secondary key pair, called a _[regular key pair](../../../concepts/accounts/cryptographic-keys.md)_, to sign future transactions. Unlike the master key pair, which is mathematically linked to the account's address, you can remove or replace the regular key pair, which is better for security.
 
-You can use these steps to assign a regular key pair for the first time or to replace an existing regular key pair with a new one.
+You can use these steps to assign a regular key pair for the first time or to replace an existing regular key pair with a new one. You can use this same process for key rotation as a proactive security measure.
 
 ## Goals
 
@@ -97,7 +97,7 @@ Use the [`Wallet.create()` class method](https://xrpl-py.readthedocs.io/en/stabl
 
 Use a [SetRegularKey transaction][] to assign the new key pair to your account as a regular key pair.
 
-{% admonition type="success" name="Tip" %}This example signs the transaction using the master key pair, but you could also use an existing regular key pair, or a [multi-signing list](../../../concepts/accounts/multi-signing.md) if your account has multi-signing set up.{% /admonition %}
+{% admonition type="success" name="Tip: Rotating a Regular Key" %}This example signs the transaction using the master key pair, but you could also use an existing regular key pair, or a [multi-signing list](../../../concepts/accounts/multi-signing.md) if your account has multi-signing set up.{% /admonition %}
 
 {% tabs %}
 {% tab label="JavaScript" %}
@@ -156,7 +156,7 @@ Now that you're familiar with the benefits of assigning a regular key pair to an
     - [Multi-Signing](../../../concepts/accounts/multi-signing.md)
     - [Issuing and Operational Addresses](../../../concepts/accounts/account-types.md)
 - **Tutorials:**
-    - [Change or Remove a Regular Key Pair](change-or-remove-a-regular-key-pair.md)
+    - [Remove a Regular Key Pair](remove-a-regular-key-pair.md)
     - [Set Up Multi-Signing](set-up-multi-signing.md)
     - [List XRP as an Exchange](../../../use-cases/defi/list-xrp-as-an-exchange.md)
 - **References:**
