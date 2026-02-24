@@ -323,7 +323,7 @@
               items:
                 - page: docs/tutorials/best-practices/key-management/assign-a-regular-key-pair.md
                 - page: docs/tutorials/best-practices/key-management/disable-master-key-pair.md
-                - page: docs/tutorials/best-practices/key-management/change-or-remove-a-regular-key-pair.md
+                - page: docs/tutorials/best-practices/key-management/remove-a-regular-key-pair.md
                 - page: docs/tutorials/best-practices/key-management/offline-account-setup.md
                 - page: docs/tutorials/best-practices/key-management/set-up-multi-signing.md
                 - page: docs/tutorials/best-practices/key-management/send-a-multi-signed-transaction.md        

@@ -74,7 +74,7 @@ labels:
     - [暗号鍵](cryptographic-keys.md)
 - **チュートリアル:**
     - [レギュラーキーペアの割り当て](../../tutorials/best-practices/key-management/assign-a-regular-key-pair.md)
-    - [レギュラーキーペアの変更または削除](../../tutorials/best-practices/key-management/change-or-remove-a-regular-key-pair.md)
+    - [レギュラーキーペアの変更または削除](../../tutorials/best-practices/key-management/remove-a-regular-key-pair.md)
 - **リファレンス:**
     - [account_infoメソッド][]
     - [SetRegularKeyトランザクション][]

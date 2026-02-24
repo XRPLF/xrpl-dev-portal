@@ -276,7 +276,7 @@ After the transaction is validated, you can confirm the status of the Global Fre
 - **Tutorials:**
     - [Enable No Freeze](enable-no-freeze.md)
     - [Freeze a Trust Line](freeze-a-trust-line.md)
-    - [Change or Remove a Regular Key Pair](../../best-practices/key-management/change-or-remove-a-regular-key-pair.md)
+    - [Remove a Regular Key Pair](../../best-practices/key-management/remove-a-regular-key-pair.md)
 - **References:**
     - [account_lines method][]
     - [account_info method][]
