@@ -1,7 +1,10 @@
+# Docs redirects for moved pages -----------------------------------------------
+# (not associated with a major reorg)
+
 /resources/contribute-documentation/tutorial-structure/:
     to: /resources/contribute-documentation/tutorial-guidelines/
 /docs/tutorials/how-tos/use-specialized-payment-types/use-escrows/use-an-escrow-as-a-smart-contract:
-    to: /docs/tutorials/how-tos/use-specialized-payment-types/use-escrows/send-a-conditional-escrow
+    to: /docs/tutorials/payments/send-a-conditional-escrow/
 /docs/references/protocol/transactions/pseudo-transaction-types/pseudo-transaction-types/:
     to: /docs/references/protocol/transactions/pseudo-transaction-types/
 /docs/concepts/tokens/transfer-fees/:
@@ -27,21 +30,250 @@
 /docs/concepts/accounts/decentralized-identifiers/:
     to: /docs/concepts/decentralized-storage/decentralized-identifiers/
 /docs/tutorials/javascript/trade-on-ledger/:
-    to: /docs/tutorials/javascript/amm/
+    to: /docs/tutorials/defi/dex/trade-in-the-decentralized-exchange/
 /docs/tutorials/javascript/trade-on-ledger/earn-passive-income-as-a-liquidity-provider:
-    to: /docs/tutorials/javascript/amm/add-assets-to-amm
+    to: /docs/tutorials/defi/dex/add-assets-to-amm-in-javascript/
 /docs/tutorials/javascript/trade-on-ledger/use-amm-auction-slot-for-lower-fees:
-    to: /docs/tutorials/javascript/amm/trade-with-auction-slot
+    to: /docs/tutorials/defi/dex/trade-with-auction-slot-in-javascript/
 /docs/tutorials/how-tos/use-specialized-payment-types/use-checks/look-up-checks-by-recipient:
-    to: /docs/tutorials/how-tos/use-specialized-payment-types/use-checks/look-up-checks
+    to: /docs/tutorials/payments/look-up-checks/
 /docs/tutorials/how-tos/use-specialized-payment-types/use-checks/look-up-checks-by-sender:
-    to: /docs/tutorials/how-tos/use-specialized-payment-types/use-checks/look-up-checks
+    to: /docs/tutorials/payments/look-up-checks/
 /docs/tutorials/how-tos/use-specialized-payment-types/use-checks/use-checks:
-    to: /docs/tutorials/how-tos/use-specialized-payment-types/use-checks
+    to: /docs/tutorials/
 /docs/references/http-websocket-apis/public-api-methods/clio-server:
     to: /docs/references/http-websocket-apis/public-api-methods/clio-methods
 /docs/references/protocol/transactions/transaction-results/transaction-results:
     to: /docs/references/protocol/transactions/transaction-results
+
+# Docs redirects for Tutorials IAv4: -------------------------------------------
+
+/docs/tutorials/python/build-apps/credential-issuing-service/:
+    to: /docs/tutorials/sample-apps/credential-issuing-service-in-python/
+/docs/tutorials/python/build-apps/build-a-desktop-wallet-in-python/:
+    to: /docs/tutorials/sample-apps/build-a-desktop-wallet-in-python/
+/docs/tutorials/python/build-apps/get-started/:
+    to: /docs/tutorials/get-started/get-started-python/
+/docs/tutorials/python/send-payments/send-and-cash-checks/:
+    to: /docs/tutorials/payments/send-a-check/
+/docs/tutorials/python/send-payments/create-time-based-escrows/:
+    to: /docs/tutorials/payments/send-a-timed-escrow/
+/docs/tutorials/python/send-payments/create-trust-line-send-currency/:
+    to: /docs/tutorials/payments/create-trust-line-send-currency-in-python/
+/docs/tutorials/python/send-payments/create-accounts-send-xrp/:
+    to: /docs/tutorials/payments/send-xrp/
+/docs/tutorials/python/send-payments/create-conditional-escrows/:
+    to: /docs/tutorials/payments/send-a-conditional-escrow/
+/docs/tutorials/python/nfts/assign-an-authorized-minter/:
+    to: /docs/tutorials/tokens/nfts/assign-an-authorized-minter-py/
+/docs/tutorials/python/nfts/broker-an-nft-sale/:
+    to: /docs/tutorials/tokens/nfts/broker-an-nft-sale-py/
+/docs/tutorials/python/nfts/mint-and-burn-nfts/:
+    to: /docs/tutorials/tokens/nfts/mint-and-burn-nfts-py/
+/docs/tutorials/python/nfts/batch-mint-nfts/:
+    to: /docs/tutorials/tokens/nfts/batch-mint-nfts-py/
+/docs/tutorials/python/nfts/transfer-nfts/:
+    to: /docs/tutorials/tokens/nfts/transfer-nfts-py/
+/docs/tutorials/python/compliance/verify-credential/:
+    to: /docs/tutorials/compliance-features/verify-credentials/
+/docs/tutorials/javascript/build-apps/build-a-desktop-wallet-in-javascript/:
+    to: /docs/tutorials/sample-apps/build-a-desktop-wallet-in-javascript/
+/docs/tutorials/javascript/build-apps/build-a-browser-wallet-in-javascript/:
+    to: /docs/tutorials/sample-apps/build-a-browser-wallet-in-javascript/
+/docs/tutorials/javascript/send-payments/sending-mpts/:
+    to: /docs/tutorials/tokens/mpts/sending-mpts-in-javascript/
+/docs/tutorials/javascript/send-payments/create-offers/:
+    to: /docs/tutorials/defi/dex/trade-in-the-decentralized-exchange/
+/docs/tutorials/javascript/compliance/create-permissioned-domains/:
+    to: /docs/tutorials/compliance-features/create-permissioned-domains-in-javascript/
+/docs/tutorials/javascript/amm/add-assets-to-amm/:
+    to: /docs/tutorials/defi/dex/add-assets-to-amm-in-javascript/
+/docs/tutorials/javascript/amm/trade-with-auction-slot/:
+    to: /docs/tutorials/defi/dex/trade-with-auction-slot-in-javascript/
+/docs/tutorials/javascript/amm/create-an-amm/:
+    to: /docs/tutorials/defi/dex/create-an-automated-market-maker/
+/docs/tutorials/how-tos/send-xrp/:
+    to: /docs/tutorials/payments/send-xrp/
+/docs/tutorials/how-tos/testing-devnet-features/:
+    to: /docs/tutorials/advanced-developer-topics/protocol-development/testing-devnet-features/
+/docs/tutorials/how-tos/use-tokens/enact-global-freeze/:
+    to: /docs/tutorials/tokens/fungible-tokens/enact-global-freeze/
+/docs/tutorials/how-tos/use-tokens/freeze-a-trust-line/:
+    to: /docs/tutorials/tokens/fungible-tokens/freeze-a-trust-line/
+/docs/tutorials/how-tos/use-tokens/issue-a-multi-purpose-token/:
+    to: /docs/tutorials/tokens/mpts/issue-a-multi-purpose-token/
+/docs/tutorials/how-tos/use-tokens/issue-a-fungible-token/:
+    to: /docs/tutorials/tokens/fungible-tokens/issue-a-fungible-token/
+/docs/tutorials/how-tos/use-tokens/enable-no-freeze/:
+    to: /docs/tutorials/tokens/fungible-tokens/enable-no-freeze/
+/docs/tutorials/how-tos/use-tokens/trade-in-the-decentralized-exchange/:
+    to: /docs/tutorials/defi/dex/trade-in-the-decentralized-exchange/
+/docs/tutorials/how-tos/use-tokens/create-an-automated-market-maker/:
+    to: /docs/tutorials/defi/dex/create-an-automated-market-maker/
+/docs/tutorials/how-tos/use-xrpl-sidechains/submit-cross-chain-transaction/:
+    to: /docs/tutorials/programmability/submit-cross-chain-transaction/
+/docs/tutorials/how-tos/use-xrpl-sidechains/set-up-xrp-xrp-bridge/:
+    to: /docs/tutorials/programmability/set-up-xrp-xrp-bridge/
+/docs/tutorials/how-tos/use-xrpl-sidechains/set-up-iou-iou-bridge/:
+    to: /docs/tutorials/programmability/set-up-iou-iou-bridge/
+/docs/tutorials/how-tos/manage-account-settings/disable-master-key-pair/:
+    to: /docs/tutorials/best-practices/key-management/disable-master-key-pair/
+/docs/tutorials/how-tos/manage-account-settings/send-a-multi-signed-transaction/:
+    to: /docs/tutorials/best-practices/key-management/send-a-multi-signed-transaction/
+/docs/tutorials/how-tos/manage-account-settings/offline-account-setup/:
+    to: /docs/tutorials/best-practices/key-management/offline-account-setup/
+/docs/tutorials/how-tos/manage-account-settings/assign-a-regular-key-pair/:
+    to: /docs/tutorials/best-practices/key-management/assign-a-regular-key-pair/
+/docs/tutorials/how-tos/manage-account-settings/set-up-multi-signing/:
+    to: /docs/tutorials/best-practices/key-management/set-up-multi-signing/
+/docs/tutorials/how-tos/manage-account-settings/change-or-remove-a-regular-key-pair/:
+    to: /docs/tutorials/best-practices/key-management/remove-a-regular-key-pair/
+/docs/tutorials/how-tos/manage-account-settings/use-tickets/:
+    to: /docs/tutorials/best-practices/transaction-sending/use-tickets/
+/docs/tutorials/how-tos/manage-account-settings/require-destination-tags/:
+    to: /docs/tutorials/compliance-features/require-destination-tags/
+/docs/tutorials/how-tos/use-specialized-payment-types/use-escrows/cancel-an-expired-escrow/:
+    to: /docs/tutorials/payments/cancel-an-expired-escrow/
+/docs/tutorials/how-tos/use-specialized-payment-types/use-escrows/send-a-conditional-escrow/:
+    to: /docs/tutorials/payments/send-a-conditional-escrow/
+/docs/tutorials/how-tos/use-specialized-payment-types/use-escrows/send-a-timed-escrow/:
+    to: /docs/tutorials/payments/send-a-timed-escrow/
+/docs/tutorials/how-tos/use-specialized-payment-types/use-escrows/look-up-escrows/:
+    to: /docs/tutorials/payments/look-up-escrows/
+/docs/tutorials/how-tos/use-specialized-payment-types/use-checks/send-a-check/:
+    to: /docs/tutorials/payments/send-a-check/
+/docs/tutorials/how-tos/use-specialized-payment-types/use-checks/cash-a-check-for-an-exact-amount/:
+    to: /docs/tutorials/payments/cash-a-check-for-an-exact-amount/
+/docs/tutorials/how-tos/use-specialized-payment-types/use-checks/cancel-a-check/:
+    to: /docs/tutorials/payments/cancel-a-check/
+/docs/tutorials/how-tos/use-specialized-payment-types/use-checks/cash-a-check-for-a-flexible-amount/:
+    to: /docs/tutorials/payments/cash-a-check-for-a-flexible-amount/
+/docs/tutorials/how-tos/use-specialized-payment-types/use-checks/look-up-checks/:
+    to: /docs/tutorials/payments/look-up-checks/
+/docs/tutorials/how-tos/use-specialized-payment-types/use-payment-channels/open-a-payment-channel-to-enable-an-inter-exchange-network/:
+    to: /docs/tutorials/payments/use-payment-channels/
+/docs/tutorials/how-tos/set-up-lending/use-the-lending-protocol/manage-a-loan/:
+    to: /docs/tutorials/defi/lending/use-the-lending-protocol/manage-a-loan/
+/docs/tutorials/how-tos/set-up-lending/use-the-lending-protocol/claw-back-cover/:
+    to: /docs/tutorials/defi/lending/use-the-lending-protocol/claw-back-cover/
+/docs/tutorials/how-tos/set-up-lending/use-the-lending-protocol/create-a-loan-broker/:
+    to: /docs/tutorials/defi/lending/use-the-lending-protocol/create-a-loan-broker/
+/docs/tutorials/how-tos/set-up-lending/use-the-lending-protocol/deposit-and-withdraw-cover/:
+    to: /docs/tutorials/defi/lending/use-the-lending-protocol/deposit-and-withdraw-cover/
+/docs/tutorials/how-tos/set-up-lending/use-the-lending-protocol/pay-off-a-loan/:
+    to: /docs/tutorials/defi/lending/use-the-lending-protocol/pay-off-a-loan/
+/docs/tutorials/how-tos/set-up-lending/use-the-lending-protocol/create-a-loan/:
+    to: /docs/tutorials/defi/lending/use-the-lending-protocol/create-a-loan/
+/docs/tutorials/how-tos/set-up-lending/use-single-asset-vaults/withdraw-from-a-vault/:
+    to: /docs/tutorials/defi/lending/use-single-asset-vaults/withdraw-from-a-vault/
+/docs/tutorials/how-tos/set-up-lending/use-single-asset-vaults/create-a-single-asset-vault/:
+    to: /docs/tutorials/defi/lending/use-single-asset-vaults/create-a-single-asset-vault/
+/docs/tutorials/how-tos/set-up-lending/use-single-asset-vaults/deposit-into-a-vault/:
+    to: /docs/tutorials/defi/lending/use-single-asset-vaults/deposit-into-a-vault/
+/docs/tutorials/how-tos/use-batch-transactions/send-a-multi-account-batch-transaction/:
+    to: /docs/tutorials/best-practices/transaction-sending/send-a-multi-account-batch-transaction/
+/docs/tutorials/how-tos/use-batch-transactions/send-a-single-account-batch-transaction/:
+    to: /docs/tutorials/best-practices/transaction-sending/send-a-single-account-batch-transaction/
+/docs/tutorials/http-websocket-apis/build-apps/monitor-incoming-payments-with-websocket/:
+    to: /docs/tutorials/advanced-developer-topics/client-library-development/monitor-incoming-payments-with-websocket/
+/docs/tutorials/php/build-apps/get-started/:
+    to: /docs/tutorials/get-started/get-started-php/
+/docs/tutorials/javascript/build-apps/get-started/:
+    to: /docs/tutorials/get-started/get-started-javascript/
+/docs/tutorials/go/build-apps/get-started/:
+    to: /docs/tutorials/get-started/get-started-go/
+/docs/tutorials/java/build-apps/get-started/:
+    to: /docs/tutorials/get-started/get-started-java/
+/docs/tutorials/http-websocket-apis/build-apps/get-started/:
+    to: /docs/tutorials/get-started/get-started-http-websocket-apis/
+/docs/tutorials/javascript/build-apps/credential-issuing-service/:
+    to: /docs/tutorials/sample-apps/credential-issuing-service-in-javascript/
+/docs/tutorials/javascript/send-payments/send-and-cash-checks/:
+    to: /docs/tutorials/payments/send-a-check/
+/docs/tutorials/javascript/send-payments/create-time-based-escrows/:
+    to: /docs/tutorials/payments/send-a-timed-escrow/
+/docs/tutorials/javascript/send-payments/create-trust-line-send-currency/:
+    to: /docs/tutorials/payments/create-trust-line-send-currency-in-javascript/
+/docs/tutorials/javascript/send-payments/create-accounts-send-xrp/:
+    to: /docs/tutorials/payments/send-xrp/
+/docs/tutorials/javascript/send-payments/create-conditional-escrows/:
+    to: /docs/tutorials/payments/send-a-conditional-escrow/
+/docs/tutorials/javascript/nfts/assign-an-authorized-minter/:
+    to: /docs/tutorials/tokens/nfts/assign-an-authorized-minter-js/
+/docs/tutorials/javascript/nfts/broker-an-nft-sale/:
+    to: /docs/tutorials/tokens/nfts/broker-an-nft-sale-js/
+/docs/tutorials/javascript/nfts/mint-and-burn-nfts/:
+    to: /docs/tutorials/tokens/nfts/mint-and-burn-nfts-js/
+/docs/tutorials/javascript/nfts/batch-mint-nfts/:
+    to: /docs/tutorials/tokens/nfts/batch-mint-nfts-js/
+/docs/tutorials/javascript/nfts/transfer-nfts/:
+    to: /docs/tutorials/tokens/nfts/transfer-nfts-js/
+/docs/tutorials/javascript/compliance/verify-credential/:
+    to: /docs/tutorials/compliance-features/verify-credentials/
+/docs/tutorials/python/:
+    to: /docs/tutorials/
+/docs/tutorials/python/build-apps/:
+    to: /docs/tutorials/
+/docs/tutorials/python/send-payments/:
+    to: /docs/tutorials/
+/docs/tutorials/python/nfts/:
+    to: /docs/tutorials/
+/docs/tutorials/python/compliance/:
+    to: /docs/tutorials/
+/docs/tutorials/php/:
+    to: /docs/tutorials/
+/docs/tutorials/php/build-apps/:
+    to: /docs/tutorials/
+/docs/tutorials/javascript/:
+    to: /docs/tutorials/
+/docs/tutorials/javascript/build-apps/:
+    to: /docs/tutorials/
+/docs/tutorials/javascript/send-payments/:
+    to: /docs/tutorials/
+/docs/tutorials/javascript/nfts/:
+    to: /docs/tutorials/
+/docs/tutorials/javascript/compliance/:
+    to: /docs/tutorials/
+/docs/tutorials/javascript/amm/:
+    to: /docs/tutorials/
+/docs/tutorials/go/:
+    to: /docs/tutorials/
+/docs/tutorials/go/build-apps/:
+    to: /docs/tutorials/
+/docs/tutorials/how-tos/:
+    to: /docs/tutorials/
+/docs/tutorials/how-tos/use-tokens/:
+    to: /docs/tutorials/
+/docs/tutorials/how-tos/use-xrpl-sidechains/:
+    to: /docs/tutorials/
+/docs/tutorials/how-tos/manage-account-settings/:
+    to: /docs/tutorials/
+/docs/tutorials/how-tos/use-specialized-payment-types/:
+    to: /docs/tutorials/
+/docs/tutorials/how-tos/use-specialized-payment-types/use-escrows/:
+    to: /docs/tutorials/
+/docs/tutorials/how-tos/use-specialized-payment-types/use-checks/:
+    to: /docs/tutorials/
+/docs/tutorials/how-tos/use-specialized-payment-types/use-payment-channels/:
+    to: /docs/tutorials/payments/use-payment-channels/
+/docs/tutorials/how-tos/set-up-lending/:
+    to: /docs/tutorials/
+/docs/tutorials/how-tos/set-up-lending/use-the-lending-protocol/:
+    to: /docs/tutorials/
+/docs/tutorials/how-tos/set-up-lending/use-single-asset-vaults/:
+    to: /docs/tutorials/
+/docs/tutorials/how-tos/use-batch-transactions/:
+    to: /docs/tutorials/
+/docs/tutorials/java/:
+    to: /docs/tutorials/
+/docs/tutorials/java/build-apps/:
+    to: /docs/tutorials/
+/docs/tutorials/http-websocket-apis/:
+    to: /docs/tutorials/
+/docs/tutorials/http-websocket-apis/build-apps/:
+    to: /docs/tutorials/
+
+# Redirects from pre-Redocly .html URLs ----------------------------------------
 xrp-ledger-rpc-tool.html:
     to: /resources/dev-tools/rpc-tool
 xrp-ledger-toml-checker.html:
@@ -373,25 +605,25 @@ witness-servers.html:
 public-servers.html:
     to: /docs/tutorials/public-servers
 python.html:
-    to: /docs/tutorials/python/
+    to: /docs/tutorials/
 get-started-using-python.html:
-    to: /docs/tutorials/python/get-started
+    to: /docs/tutorials/get-started/get-started-python/
 docs/tutorials/python/get-started/:
-    to: docs/tutorials/python/build-apps/get-started/
+    to: /docs/tutorials/get-started/get-started-python/
 modular-tutorials-in-python.html:
-    to: /docs/tutorials/python/
+    to: /docs/tutorials/
 send-payments-using-python.html:
-    to: /docs/tutorials/python/send-payments
+    to: /docs/tutorials/
 py-create-accounts-send-xrp.html:
-    to: /docs/tutorials/python/send-payments/create-accounts-send-xrp
+    to: /docs/tutorials/payments/send-xrp/
 py-create-trustline-send-currency.html:
     to: /docs/tutorials/python/send-payments/create-trustline-send-currency
 py-create-time-based-escrows.html:
-    to: /docs/tutorials/python/send-payments/create-time-based-escrows
+    to: /docs/tutorials/payments/send-a-timed-escrow/
 py-mint-and-burn-nfts.html:
-    to: /docs/tutorials/python/nfts/mint-and-burn-nfts
+    to: /docs/tutorials/tokens/nfts/mint-and-burn-nfts-py/
 py-transfer-nfts.html:
-    to: /docs/tutorials/python/nfts/transfer-nfts
+    to: /docs/tutorials/tokens/nfts/transfer-nfts-py/
 py-broker-sale.html:
     to: /docs/tutorials/python/nfts/broker-sale
 py-authorize-minter.html:
@@ -399,155 +631,155 @@ py-authorize-minter.html:
 py-batch-minting.html:
     to: /docs/tutorials/python/nfts/batch-minting
 build-a-desktop-wallet-in-python.html:
-    to: /docs/tutorials/python/build-apps/build-a-desktop-wallet-in-python
+    to: /docs/tutorials/sample-apps/build-a-desktop-wallet-in-python/
 javascript.html:
-    to: /docs/tutorials/javascript/
+    to: /docs/tutorials/
 get-started-using-javascript.html:
-    to: /docs/tutorials/javascript/build-apps/get-started
+    to: /docs/tutorials/get-started/get-started-javascript/
 docs/tutorials/javascript/get-started:
     to: docs/tutorials/javascript/build-apps/get-started/
 docs/tutorials/javascript/get-started/:
     to: docs/tutorials/javascript/build-apps/get-started/
 get-started-using-node-js.html:
-    to: /docs/tutorials/javascript/build-apps/get-started
+    to: /docs/tutorials/get-started/get-started-javascript/
 get-started-with-rippleapi-for-javascript.html:
-    to: /docs/tutorials/javascript/build-apps/get-started
+    to: /docs/tutorials/get-started/get-started-javascript/
 modular-tutorials-in-javascript.html:
-    to: /docs/tutorials/javascript/
+    to: /docs/tutorials/
 send-payments-using-javascript.html:
-    to: /docs/tutorials/javascript/send-payments
+    to: /docs/tutorials/
 create-accounts-send-xrp-using-javascript.html:
-    to: /docs/tutorials/javascript/send-payments/create-accounts-send-xrp
+    to: /docs/tutorials/payments/send-xrp/
 create-trustline-send-currency-using-javascript.html:
     to: /docs/tutorials/javascript/send-payments/create-trustline-send-currency
 create-time-based-escrows-using-javascript.html:
-    to: /docs/tutorials/javascript/send-payments/create-time-based-escrows
+    to: /docs/tutorials/payments/send-a-timed-escrow/
 create-conditional-escrows-using-javascript.html:
-    to: /docs/tutorials/javascript/send-payments/create-conditional-escrows
+    to: /docs/tutorials/payments/send-a-conditional-escrow/
 nfts-using-javascript.html:
     to: /docs/tutorials/javascript/nfts-using-javascript/
 nfts-using-python.html:
-    to: /docs/tutorials/python/nfts
+    to: /docs/tutorials/
 mint-and-burn-nfts-using-javascript.html:
-    to: /docs/tutorials/javascript/nfts/mint-and-burn-nfts
+    to: /docs/tutorials/tokens/nfts/mint-and-burn-nfts-js/
 transfer-nfts-using-javascript.html:
-    to: /docs/tutorials/javascript/nfts/transfer-nfts
+    to: /docs/tutorials/tokens/nfts/transfer-nfts-js/
 broker-an-nft-sale-using-javascript.html:
-    to: /docs/tutorials/javascript/nfts/broker-an-nft-sale
+    to: /docs/tutorials/tokens/nfts/broker-an-nft-sale-js/
 assign-an-authorized-minter-using-javascript.html:
-    to: /docs/tutorials/javascript/nfts/assign-an-authorized-minter
+    to: /docs/tutorials/tokens/nfts/assign-an-authorized-minter-js/
 batch-mint-nfts-using-javascript.html:
-    to: /docs/tutorials/javascript/nfts/batch-mint-nfts
+    to: /docs/tutorials/tokens/nfts/batch-mint-nfts-js/
 build-a-browser-wallet-in-javascript.html:
-    to: /docs/tutorials/javascript/build-apps/build-a-browser-wallet-in-javascript/
+    to: /docs/tutorials/sample-apps/build-a-browser-wallet-in-javascript/
 build-a-browser-wallet-using-javascript.html:
-    to: /docs/tutorials/javascript/build-apps/build-a-browser-wallet-in-javascript/
+    to: /docs/tutorials/sample-apps/build-a-browser-wallet-in-javascript/
 docs/tutorials/javascript/build-a-browser-wallet-in-javascript:
     to: docs/tutorials/javascript/build-apps/build-a-browser-wallet-in-javascript/
 docs/tutorials/javascript/build-a-browser-wallet-in-javascript/:
     to: docs/tutorials/javascript/build-apps/build-a-browser-wallet-in-javascript/
 build-a-desktop-wallet-in-javascript.html:
-    to: /docs/tutorials/javascript/build-apps/build-a-desktop-wallet-in-javascript
+    to: /docs/tutorials/sample-apps/build-a-desktop-wallet-in-javascript/
 docs/tutorials/javascript/build-a-desktop-wallet-in-javascript:
-    to: /docs/tutorials/javascript/build-apps/build-a-desktop-wallet-in-javascript
+    to: /docs/tutorials/sample-apps/build-a-desktop-wallet-in-javascript/
 docs/tutorials/javascript/build-a-desktop-wallet-in-javascript/:
-    to: /docs/tutorials/javascript/build-apps/build-a-desktop-wallet-in-javascript
+    to: /docs/tutorials/sample-apps/build-a-desktop-wallet-in-javascript/
 java.html:
-    to: /docs/tutorials/java/
+    to: /docs/tutorials/
 get-started-using-java.html:
-    to: /docs/tutorials/java/build-apps/get-started
+    to: /docs/tutorials/get-started/get-started-java/
 docs/tutorials/java/get-started:
-    to: /docs/tutorials/java/build-apps/get-started
+    to: /docs/tutorials/get-started/get-started-java/
 docs/tutorials/java/get-started/:
-    to: /docs/tutorials/java/build-apps/get-started
+    to: /docs/tutorials/get-started/get-started-java/
 php.html:
-    to: /docs/tutorials/php
+    to: /docs/tutorials/
 get-started-using-php.html:
-    to: /docs/tutorials/php/build-apps/get-started
+    to: /docs/tutorials/get-started/get-started-php/
 http-websocket-apis-tutorials.html:
-    to: /docs/tutorials/http-websocket-apis/
+    to: /docs/tutorials/
 get-started-with-the-rippled-api.html:
-    to: /docs/tutorials/http-websocket-apis/build-apps/get-started
+    to: /docs/tutorials/get-started/get-started-http-websocket-apis/
 get-started-using-http-websocket-apis.html:
-    to: /docs/tutorials/http-websocket-apis/build-apps/get-started/
+    to: /docs/tutorials/get-started/get-started-http-websocket-apis/
 docs/tutorials/http-websocket-apis/get-started:
-    to: /docs/tutorials/http-websocket-apis/build-apps/get-started/
+    to: /docs/tutorials/get-started/get-started-http-websocket-apis/
 docs/tutorials/http-websocket-apis/get-started/:
-    to: /docs/tutorials/http-websocket-apis/build-apps/get-started/         
+    to: /docs/tutorials/get-started/get-started-http-websocket-apis/
 monitor-incoming-payments-with-websocket.html:
-    to: /docs/tutorials/http-websocket-apis/build-apps/monitor-incoming-payments-with-websocket
+    to: /docs/tutorials/advanced-developer-topics/client-library-development/monitor-incoming-payments-with-websocket/
 tasks.html:
-    to: /docs/tutorials/how-tos/
+    to: /docs/tutorials/
 manage-account-settings.html:
-    to: /docs/tutorials/how-tos/manage-account-settings/
+    to: /docs/tutorials/
 assign-a-regular-key-pair.html:
-    to: /docs/tutorials/how-tos/manage-account-settings/assign-a-regular-key-pair
+    to: /docs/tutorials/best-practices/key-management/assign-a-regular-key-pair/
 change-or-remove-a-regular-key-pair.html:
-    to: /docs/tutorials/how-tos/manage-account-settings/change-or-remove-a-regular-key-pair
+    to: /docs/tutorials/best-practices/key-management/remove-a-regular-key-pair/
 disable-master-key-pair.html:
-    to: /docs/tutorials/how-tos/manage-account-settings/disable-master-key-pair
+    to: /docs/tutorials/best-practices/key-management/disable-master-key-pair/
 set-up-multi-signing.html:
-    to: /docs/tutorials/how-tos/manage-account-settings/set-up-multi-signing
+    to: /docs/tutorials/best-practices/key-management/set-up-multi-signing/
 send-a-multi-signed-transaction.html:
-    to: /docs/tutorials/how-tos/manage-account-settings/send-a-multi-signed-transaction
+    to: /docs/tutorials/best-practices/key-management/send-a-multi-signed-transaction/
 require-destination-tags.html:
-    to: /docs/tutorials/how-tos/manage-account-settings/require-destination-tags
+    to: /docs/tutorials/compliance-features/require-destination-tags/
 offline-account-setup.html:
-    to: /docs/tutorials/how-tos/manage-account-settings/offline-account-setup
+    to: /docs/tutorials/best-practices/key-management/offline-account-setup/
 use-tickets.html:
-    to: /docs/tutorials/how-tos/manage-account-settings/use-tickets
+    to: /docs/tutorials/best-practices/transaction-sending/use-tickets/
 send-xrp.html:
-    to: /docs/tutorials/how-tos/send-xrp
+    to: /docs/tutorials/payments/send-xrp/
 use-specialized-payment-types.html:
-    to: /docs/tutorials/how-tos/use-specialized-payment-types/
+    to: /docs/tutorials/
 use-complex-payment-types.html:
-    to: /docs/tutorials/how-tos/use-specialized-payment-types/
+    to: /docs/tutorials/
 use-escrows.html:
-    to: /docs/tutorials/how-tos/use-specialized-payment-types/use-escrows/
+    to: /docs/tutorials/
 send-a-time-held-escrow.html:
     to: /docs/tutorials/how-tos/use-specialized-payment-types/use-escrows/send-a-time-held-escrow
 send-a-conditionally-held-escrow.html:
-    to: /docs/tutorials/how-tos/use-specialized-payment-types/use-escrows/send-a-conditional-escrow
+    to: /docs/tutorials/payments/send-a-conditional-escrow/
 cancel-an-expired-escrow.html:
-    to: /docs/tutorials/how-tos/use-specialized-payment-types/use-escrows/cancel-an-expired-escrow
+    to: /docs/tutorials/payments/cancel-an-expired-escrow/
 look-up-escrows.html:
-    to: /docs/tutorials/how-tos/use-specialized-payment-types/use-escrows/look-up-escrows
+    to: /docs/tutorials/payments/look-up-escrows/
 use-an-escrow-as-a-smart-contract.html:
-    to: /docs/tutorials/how-tos/use-specialized-payment-types/use-escrows/send-a-conditional-escrow
+    to: /docs/tutorials/payments/send-a-conditional-escrow/
 use-payment-channels.html:
-    to: /docs/tutorials/how-tos/use-specialized-payment-types/use-payment-channels
+    to: /docs/tutorials/payments/use-payment-channels/
 open-a-payment-channel-to-enable-an-inter-exchange-network.html:
     to: /docs/tutorials/how-tos/use-specialized-payment-types/open-a-payment-channel-to-enable-an-inter-exchange-network
 use-checks.html:
     to: /docs/tutorials/how-tos/use-specialized-payment-types/use-checks/use-checks
 send-a-check.html:
-    to: /docs/tutorials/how-tos/use-specialized-payment-types/use-checks/send-a-check
+    to: /docs/tutorials/payments/send-a-check/
 cash-a-check-for-an-exact-amount.html:
-    to: /docs/tutorials/how-tos/use-specialized-payment-types/use-checks/cash-a-check-for-an-exact-amount
+    to: /docs/tutorials/payments/cash-a-check-for-an-exact-amount/
 cash-a-check-for-a-flexible-amount.html:
-    to: /docs/tutorials/how-tos/use-specialized-payment-types/use-checks/cash-a-check-for-a-flexible-amount
+    to: /docs/tutorials/payments/cash-a-check-for-a-flexible-amount/
 cancel-a-check.html:
-    to: /docs/tutorials/how-tos/use-specialized-payment-types/use-checks/cancel-a-check
+    to: /docs/tutorials/payments/cancel-a-check/
 look-up-checks-by-sender.html:
     to: /docs/tutorials/how-tos/use-specialized-payment-types/use-checks/look-up-checks-by-sender
 look-up-checks-by-recipient.html:
     to: /docs/tutorials/how-tos/use-specialized-payment-types/use-checks/look-up-checks-by-recipient
 use-tokens.html:
-    to: /docs/tutorials/how-tos/use-tokens/
+    to: /docs/tutorials/
 issue-a-fungible-token.html:
-    to: /docs/tutorials/how-tos/use-tokens/issue-a-fungible-token
+    to: /docs/tutorials/tokens/fungible-tokens/issue-a-fungible-token/
 trade-in-the-decentralized-exchange.html:
-    to: /docs/tutorials/how-tos/use-tokens/trade-in-the-decentralized-exchange
+    to: /docs/tutorials/defi/dex/trade-in-the-decentralized-exchange/
 enable-no-freeze.html:
-    to: /docs/tutorials/how-tos/use-tokens/enable-no-freeze
+    to: /docs/tutorials/tokens/fungible-tokens/enable-no-freeze/
 enact-global-freeze.html:
-    to: /docs/tutorials/how-tos/use-tokens/enact-global-freeze
+    to: /docs/tutorials/tokens/fungible-tokens/enact-global-freeze/
 freeze-a-trust-line.html:
-    to: /docs/tutorials/how-tos/use-tokens/freeze-a-trust-line
+    to: /docs/tutorials/tokens/fungible-tokens/freeze-a-trust-line/
 create-an-automated-market-maker.html:
-    to: /docs/tutorials/how-tos/use-tokens/create-an-automated-market-maker
+    to: /docs/tutorials/defi/dex/create-an-automated-market-maker/
 use-simple-xrp-payments.html:
-    to: /docs/tutorials/how-tos/send-xrp
+    to: /docs/tutorials/payments/send-xrp/
 cancel-or-skip-a-transaction.html:
     to: /docs/concepts/transactions/finality-of-results/canceling-a-transaction
 evm-sidechains.html:
@@ -563,13 +795,13 @@ evm-sidechain-validator-security.html:
 evm-sidechain-run-a-validator-node.html:
     to: https://opensource.ripple.com/docs/evm-sidechain/evm-sidechain-run-a-validator-node/
 use-xrpl-sidechains.html:
-    to: /docs/tutorials/how-tos/use-xrpl-sidechains/
+    to: /docs/tutorials/
 set-up-xrp-xrp-bridge.html:
-    to: /docs/tutorials/how-tos/use-xrpl-sidechains/set-up-xrp-xrp-bridge
+    to: /docs/tutorials/programmability/set-up-xrp-xrp-bridge/
 set-up-iou-iou-bridge.html:
-    to: /docs/tutorials/how-tos/use-xrpl-sidechains/set-up-iou-iou-bridge
+    to: /docs/tutorials/programmability/set-up-iou-iou-bridge/
 submit-cross-chain-transactions.html:
-    to: /docs/tutorials/how-tos/use-xrpl-sidechains/submit-cross-chain-transaction
+    to: /docs/tutorials/programmability/submit-cross-chain-transaction/
 references.html:
     to: /docs/references/
 protocol-reference.html:
@@ -1120,14 +1352,22 @@ report-a-scam.html:
     to: /contributing/report-a-scam
 wallets.html:
     to: /docs/introduction/crypto-wallets
-blog/2014:
-    to: /blog
-blog/2015:
-    to: /blog
 
-blog/2020:
+# Blog redirects ---------------------------------------------------------------
+
+blog/2014/:
     to: /blog
-blog/2021:
+blog/2015/:
+    to: /blog
+blog/2017/:
+    to: /blog
+blog/2018/:
+    to: /blog
+blog/2019/:
+    to: /blog
+blog/2020/:
+    to: /blog
+blog/2021/:
     to: /blog
 blog/2024/rippled-2.2.0.html:
     to: /blog/2024/rippled-2.2.0
@@ -1565,6 +1805,9 @@ blog/2024.html:
     to: /blog/
 blog/label/developer-reflections.html:
     to: /blog/
+
+# Miscellaneous redirects ------------------------------------------------------
+
 code_of_conduct/:
     to: /code-of-conduct
 code_of_conduct:
