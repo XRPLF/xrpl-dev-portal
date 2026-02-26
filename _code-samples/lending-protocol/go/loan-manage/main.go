@@ -185,6 +185,7 @@ func main() {
 
 	// Check which loan flags are set:
 	// 0x00010000 = tfLoanDefault, 0x00020000 = tfLoanImpair
+	// Update to use Contain() flags utility
 	activeFlags := []string{}
 	if types.IsFlagEnabled(loanFlags, 0x00010000) {
 		activeFlags = append(activeFlags, "tfLoanDefault")
