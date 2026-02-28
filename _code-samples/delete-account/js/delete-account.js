@@ -106,6 +106,31 @@ if (acctBalance < deletionCost) {
   console.log(`OK: Account balance (${acctBalance} drops) is high enough.`)
 }
 
+// Check if FirstNFTSequence is too high
+const firstNFTSeq = acctInfoResp.result.account_data.FirstNFTokenSequence || 0
+const mintedNFTs = acctInfoResp.result.account_data.MintedNFTokens || 0
+if (firstNFTSeq + mintedNFTs + 256 >= lastValidatedLedgerIndex) {
+  console.error(`Account's FirstNFTokenSequence + MintedNFTokens + 256 is too high.
+    Current total: ${firstNFTSeq + mintedNFTs + 256}
+    Validated ledger index: ${lastValidatedLedgerIndex}
+    (FirstNFTokenSequence + MintedNFTokens + 256 must be less than the ledger index)`)
+  numProblems += 1
+} else {
+  console.log('OK: FirstNFTokenSequence + MintedNFTokens is low enough.')
+}
+
+// Check that all issued NFTs have been burned
+const burnedNFTs = acctInfoResp.result.account_data.BurnedNFTokens || 0
+if (mintedNFTs > burnedNFTs) {
+  console.error(`Account has issued NFTs outstanding.
+    Number of NFTs minted: ${mintedNFTs}
+    Number of NFTs burned: ${burnedNFTs}`)
+  numProblems += 1
+} else {
+  console.log('OK: No outstanding, un-burned NFTs')
+}
+
+// Stop if any problems were found
 if (numProblems) {
   console.error(`A total of ${numProblems} problem(s) prevent the account from being deleted.`)
   client.disconnect()

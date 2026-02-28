@@ -115,6 +115,29 @@ if acct_balance < deletion_cost:
 else:
     print(f"OK: Account balance ({acct_balance} drops) is high enough.")
 
+# Check if FirstNFTSequence is too high
+first_nfq_seq = acct_info_result["account_data"].get("FirstNFTokenSequence", 0)
+minted_nfts = acct_info_result["account_data"].get("MintedNFTokens", 0)
+if first_nfq_seq + minted_nfts + 256 >= last_validated_ledger_index:
+    print(f"""Account's FirstNFTokenSequence + MintedNFTokens + 256 is too high.
+    Current total: {first_nfq_seq + minted_nfts + 256}
+    Validated ledger index: {last_validated_ledger_index}
+    (FirstNFTokenSequence + MintedNFTokens + 256 must be less than the ledger index)""")
+    num_problems += 1
+else:
+    print("OK: FirstNFTokenSequence + MintedNFTokens is low enough.")
+
+# Check that all issued NFTs have been burned
+burned_nfts = acct_info_result["account_data"].get("BurnedNFTokens", 0)
+if minted_nfts > burned_nfts:
+    print(f"""Account has NFTs outstanding.
+    Number of NFTs minted: {minted_nfts}
+    Number of NFTs burned: {burned_nfts}""")
+    num_problems += 1
+else:
+    print("OK: No outstanding, un-burned NFTs")
+
+# Stop if any problems were found
 if num_problems:
     print(
         f"A total of {num_problems} problem(s) prevent the account from being deleted."
