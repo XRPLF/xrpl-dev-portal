@@ -23,6 +23,7 @@ const logos = {
     "xrp-toolkit",
     "bithomp",
     "onthedex",
+    "insumerapi",
   ],
   developer_tooling: ["cryptum", "evernode", "threezy", "tokenize"],
   interoperability: ["multichain"],
@@ -170,6 +171,15 @@ const cardsData = [
     category_id: "infrastructure",
     category_name: "Infrastructure",
     link: "https://gatehub.net/markets",
+  },
+  {
+    id: "insumerapi",
+    title: "InsumerAPI",
+    description:
+      "On-chain verification API for XRPL commerce. Verify native XRP, trust line tokens (RLUSD, USDC, any issued currency), and NFT ownership across 25 REST endpoints with ECDSA-signed boolean responses. Supports 32 chains total.",
+    category_id: "infrastructure",
+    category_name: "Infrastructure",
+    link: "https://insumermodel.com/developers/",
   },
   {
     id: "gem-wallet",
