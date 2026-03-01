@@ -176,10 +176,10 @@ const cardsData = [
     id: "insumerapi",
     title: "InsumerAPI",
     description:
-      "On-chain verification API for XRPL commerce. Verify native XRP, trust line tokens (RLUSD, USDC, any issued currency), and NFT ownership across 25 REST endpoints with ECDSA-signed boolean responses. Supports 32 chains total.",
+      "Trust-line eligibility verification for XRPL commerce. Performs issuer-aware reads of RLUSD, USDC, and any trust-line token, evaluates balance thresholds, and returns ECDSA-signed attestations with ledgerIndex and conditionHash for independent verification.",
     category_id: "infrastructure",
     category_name: "Infrastructure",
-    link: "https://insumermodel.com/developers/",
+    link: "https://insumermodel.com/demos/xrpl/",
   },
   {
     id: "gem-wallet",
