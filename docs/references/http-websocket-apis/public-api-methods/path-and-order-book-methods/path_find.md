@@ -22,6 +22,8 @@ There are three different modes, or sub-commands, of the path_find command. Spec
 
 Although the `rippled` server tries to find the cheapest path or combination of paths for making a payment, it is not guaranteed that the paths returned by this method are, in fact, the best paths. Due to server load, pathfinding may not find the best results. Additionally, you should be careful with the pathfinding results from untrusted servers. A server could be modified to return less-than-optimal paths to earn money for its operators. If you do not have your own server that you can trust with pathfinding, you should compare the results of pathfinding from multiple servers run by different parties, to minimize the risk of a single server returning poor results. (**Note:** A server returning less-than-optimal results is not necessarily proof of malicious behavior; it could also be a symptom of heavy server load.)
 
+<!-- {% amendment-disclaimer name="MPTokensV2" mode="updated" /%} -->
+
 ## path_find create
 
 The `create` sub-command of `path_find` creates an ongoing request to find possible paths along which a payment transaction could be made from one specified account such that another account receives a desired amount of some currency. The initial response contains a suggested path between the two addresses that would result in the desired amount being received. After that, the server sends additional messages, with `"type": "path_find"`, with updates to the potential paths. The frequency of updates is left to the discretion of the server, but it usually means once every few seconds when there is a new ledger version.
@@ -33,7 +35,7 @@ An example of the request format:
 
 {% tabs %}
 
-{% tab label="WebSocket" %}
+{% tab label="WebSocket - Trust Line Token" %}
 ```json
 {
     "id": 8,
@@ -50,6 +52,22 @@ An example of the request format:
 ```
 {% /tab %}
 
+{% tab label="WebSocket - MPT" %}
+```json
+{
+  "command": "path_find",
+  "subcommand": "create",
+  "destination_account": "rPMh7Pi9ct699iZUTWaytJUoHcJ7cgyziK",
+  "destination_amount": {
+    "mpt_issuance_id": "000000045C488AAC5813270850685FFD89F4A4A8F4CD4C83",
+    "value": "-1"
+  },
+  "send_max": "100000000000000",
+  "source_account": "rG1QQv2nh2gr7RCZ1P8YYcBUKCCN633jCn"
+}
+```
+{% /tab %}
+
 {% /tabs %}
 
 {% try-it method="path_find" /%}
@@ -61,10 +79,10 @@ The request includes the following parameters:
 | `subcommand`          | String               | Yes       | Use `"create"` to send the create sub-command |
 | `source_account`      | String - [Address][] | Yes       | The account to find a path from. (In other words, the account that would be sending a payment.) |
 | `destination_account` | String - [Address][] | Yes       | The account to find a path to. (In other words, the account that would receive a payment.) |
-| `destination_amount`  | [Currency Amount][]  | Yes       | How much the destination account would receive. **Special case:** You can specify `"-1"` (for XRP) or provide -1 as the contents of the `value` field (for tokens). This requests a path to deliver as much as possible, while spending no more than the amount specified in `send_max` (if provided). |
+| `destination_amount`  | [Currency Amount][]  | Yes       | How much the destination account would receive. Can be XRP or a fungible token. **Special case:** You can specify `"-1"` (for XRP) or provide -1 as the contents of the `value` field (for tokens). This requests a path to deliver as much as possible, while spending no more than the amount specified in `send_max` (if provided). |
 | `domain`              | String - [Hash][]    | No        | The ledger entry ID of a permissioned domain. If provided, only return paths that use the corresponding [permissioned DEX](../../../../concepts/tokens/decentralized-exchange/permissioned-dexes.md). {% amendment-disclaimer name="PermissionedDEX" /%} |
 | `paths`               | Array                | No        | Array of arrays of objects, representing [payment paths](../../../../concepts/tokens/fungible-tokens/paths.md) to check. You can use this to keep updated on changes to particular paths you already know about, or to check the overall cost to make a payment along a certain path. |
-| `send_max`            | [Currency Amount][]  | No        | Maximum amount that would be spent. Not compatible with `source_currencies`.  |
+| `send_max`            | [Currency Amount][]  | No        | Maximum amount that would be spent. Can be XRP or a fungible token. Not compatible with `source_currencies`. |
 
 The server also recognizes the following fields, but the results of using them are not guaranteed: `source_currencies`, `bridges`. These fields should be considered reserved for future use.
 
@@ -74,8 +92,39 @@ An example of a successful response:
 
 {% tabs %}
 
-{% tab label="WebSocket" %}
+{% tab label="WebSocket - Trust Line Token" %}
 {% code-snippet file="/_api-examples/path_find/create-response.json" /%}
+{% /tab %}
+
+{% tab label="WebSocket - MPT" %}
+```json
+{
+  "id": 1,
+  "result": {
+    "alternatives": [
+      {
+        "paths_computed": [
+          [
+            {
+              "mpt_issuance_id": "000000045C488AAC5813270850685FFD89F4A4A8F4CD4C83"
+            }
+          ]
+        ],
+        "source_amount": "100000000"
+      }
+    ],
+    "destination_account": "rPMh7Pi9ct699iZUTWaytJUoHcJ7cgyziK",
+    "destination_amount": {
+      "mpt_issuance_id": "000000045C488AAC5813270850685FFD89F4A4A8F4CD4C83",
+      "value": "100"
+    },
+    "full_reply": true,
+    "source_account": "rG1QQv2nh2gr7RCZ1P8YYcBUKCCN633jCn"
+  },
+  "status": "success",
+  "type": "response"
+}
+```
 {% /tab %}
 
 {% /tabs %}

@@ -10,6 +10,7 @@ status: not_enabled
 An `MPToken` entry tracks [MPTs](../../../../concepts/tokens/fungible-tokens/multi-purpose-tokens.md) held by an account that is not the token issuer. You can create or delete an empty `MPToken` entry by sending an [MPTokenAuthorize transaction][]. You can send and receive MPTs using several other transaction types including [Payment][] and [OfferCreate][] transactions.
 
 {% amendment-disclaimer name="MPTokensV1" /%}
+<!-- {% amendment-disclaimer name="MPTokensV2" mode="updated" /%} -->
 
 ## Example MPToken JSON
 
@@ -46,7 +47,7 @@ In addition to the [common fields](../common-fields.md), {% code-page-name /%} e
 |:------------------|:-----------|:--------------------------------------------|
 | `lsfMPTLocked`     | `0x00000001`   | If enabled, indicates that the MPT owned by this account is currently locked and cannot be used in any XRP transactions other than sending value back to the issuer. |
 | `lsfMPTAuthorized` | `0x00000002`   | (Only applicable for allow-listing) If set, indicates that the issuer has authorized the holder for the MPT. This flag can be set using a `MPTokenAuthorize` transaction; it can also be "un-set" using a `MPTokenAuthorize` transaction specifying the `tfMPTUnauthorize` flag. |
-
+| `lsfMPTAMM`        | `0x00000004`   | This MPToken is owned by an [Automated Market Maker](../../../../concepts/tokens/decentralized-exchange/automated-market-makers.md)'s pseudo-account. |
 
 ## MPToken ID Format
 

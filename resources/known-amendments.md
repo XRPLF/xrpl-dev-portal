@@ -1531,6 +1531,21 @@ Implements a new type of fungible token, called a _Multi-Purpose Token_ (MPT). T
 - (New) `mpt_holders` method - Returns a list of accounts that hold a specific MPT issuance.
 - (Updated) `ledger_entry` method - Can look up MPToken and MPTokenIssuance ledger entry types.
 
+<!-- TODO: Add when MPTokensV2 is on Devnet -->
+<!-- ### MPTokensV2
+[MPTokensV2]: #mptokensv2
+
+| Amendment    | MPTokensV2 |
+|:-------------|:-----------|
+| Amendment ID | BE2D87DF21B690ED1497B593FDC013CC04276302380B1BD50A033DCF8DEFB2EB |
+| Status       | In Development |
+| Default Vote (Latest stable release) | No |
+| Pre-amendment functionality retired? | No |
+
+Extends [Multi-Purpose Tokens (MPTs)](#mptokensv1) to work with the Decentralized Exchange (DEX) and Automated Market Makers (AMMs). This amendment enables MPTs to be traded, used in offers, and pooled in AMMs alongside XRP and Trust Line Tokens.
+
+Specification: [XLS-82](https://github.com/XRPLF/XRPL-Standards/discussions/217).
+ -->
 
 ### MultiSign
 [MultiSign]: #multisign
