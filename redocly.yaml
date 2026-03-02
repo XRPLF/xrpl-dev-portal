@@ -43,6 +43,49 @@ metadataGlobs:
     redocly_category: Community
 seo:
   siteUrl: https://xrpl.org/
+  llmstxt:
+    hide: false
+    title: XRPL Developer Portal & Documentation
+    description: >-
+      Explore XRP Ledger documentation, blog, announcements, and other
+      blockchain developer resources needed to start building and
+      integrating with the ledger.
+    details:
+      content: >-
+        XRP Ledger documentation, tutorials, samples, and other blockchain
+        developer resources. Also, stay up to date with release announcements
+        and more through XRPL Blog.
+    # top‑level link to alternate language file; will appear at head of llms.txt
+    sections:
+      - title: Docs (English)
+        description: XRP Ledger documentation and tutorials (english only)
+        includeFiles:
+          - docs/**/*.*
+        excludeFiles:
+          - '@l10n/**'          # drop all localized copies
+      - title: Blog (2023+)
+        description: Recent XRPL Blog posts (showing 2023 and newer)
+        includeFiles:
+          - blog/2023/**/*.md
+          - blog/2024/**/*.md
+          - blog/2025/**/*.md
+          - blog/2026/**/*.md
+      - title: Resources
+        description: Code samples, dev tools, and other resources
+        includeFiles:
+          - resources/**/*.*
+      - title: Community
+        description: Connect with the XRPL community, find events, funding
+          opportunities, and more.
+        includeFiles:
+          - community/**/*.*
+      - title: About
+        description: Learn about the XRP Ledger, its history, impact, and
+          more.
+        includeFiles:
+          - about/**/*.*
+    # configuration for generating additional locale-specific file(s)        
+
 analytics:
   gtm:
     includeInDevelopment: true
