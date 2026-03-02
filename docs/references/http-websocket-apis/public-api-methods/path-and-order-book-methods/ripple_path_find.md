@@ -8,6 +8,8 @@ labels:
 # ripple_path_find
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/RipplePathFind.cpp "Source")
 
+<!-- {% amendment-disclaimer name="MPTokensV2" mode="updated" /%} -->
+
 The `ripple_path_find` method is a simplified version of the [path_find method][] that provides a single response with a [payment path](../../../../concepts/tokens/fungible-tokens/paths.md) you can use right away. It is available in both the WebSocket and JSON-RPC APIs. However, the results tend to become outdated as time passes. Instead of making multiple calls to stay updated, you should instead use the [path_find method][] to subscribe to continued updates where possible.
 
 Although the `rippled` server tries to find the cheapest path or combination of paths for making a payment, it is not guaranteed that the paths returned by this method are, in fact, the best paths.
@@ -77,6 +79,21 @@ rippled ripple_path_find '{"source_account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59
 ```
 {% /tab %}
 
+{% tab label="WebSocket - MPT" %}
+```json
+{
+  "command": "ripple_path_find",
+  "destination_account": "rPMh7Pi9ct699iZUTWaytJUoHcJ7cgyziK",
+  "destination_amount": {
+    "mpt_issuance_id": "000000045C488AAC5813270850685FFD89F4A4A8F4CD4C83",
+    "value": "-1"
+  },
+  "send_max": "100000000000000",
+  "source_account": "rG1QQv2nh2gr7RCZ1P8YYcBUKCCN633jCn"
+}
+```
+{% /tab %}
+
 {% /tabs %}
 
 {% try-it method="ripple_path_find" /%}
@@ -92,7 +109,7 @@ The request includes the following parameters:
 | `ledger_hash`         | String - [Hash][]    | No        | The unique hash of the ledger version to use. (See [Specifying Ledgers][]) |
 | `ledger_index`        | [Ledger Index][]     | No        | The ledger index of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
 | `send_max`            | [Currency Amount][]  | No        | Maximum amount that would be spent. Cannot be used with `source_currencies`. |
-| `source_currencies`   | Array                | No        | Array of currencies that the source account might want to spend. Each entry in the array should be a JSON object with a mandatory `currency` field and optional `issuer` field, like how [currency amounts][Currency Amount] are specified. Cannot contain more than **18** source currencies. By default, uses all source currencies available up to a maximum of **88** different currency/issuer pairs. |
+| `source_currencies`   | Array                | No        | Array of currencies that the source account might want to spend. Each entry in the array should be a JSON object with a mandatory `currency` field and optional `issuer` field (for Trust Line Tokens) or `mpt_issuance_id` field (for MPTs), like how [currency amounts][Currency Amount] are specified. Cannot contain more than **18** source currencies. By default, uses all source currencies available up to a maximum of **88** different currency/issuer pairs. |
 
 ## Response Format
 

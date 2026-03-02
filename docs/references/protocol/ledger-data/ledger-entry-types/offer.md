@@ -11,6 +11,7 @@ An `Offer` ledger entry describes an [offer](../../../../concepts/tokens/decentr
 
 An offer can become unfunded through other activities in the network, while remaining in the ledger. When processing transactions, the network automatically removes any unfunded Offers that those transactions come across. (Otherwise, unfunded Offers remain, because _only_ transactions can change the ledger state.)
 
+<!-- {% amendment-disclaimer name="MPTokensV2" mode="updated" /%} -->
 
 ## Example {% $frontmatter.seo.title %} JSON
 
