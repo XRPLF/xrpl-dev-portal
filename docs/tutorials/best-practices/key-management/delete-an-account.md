@@ -131,23 +131,59 @@ Deleting an account requires a special [transaction cost][] equal to the increme
 
 {% tabs %}
 {% tab label="JavaScript" %}
-{% code-snippet file="/_code-samples/delete-account/js/delete-account.js" language="js" from="// Check if XRP balance is high enough" before="if (numProblems) {" /%}
+{% code-snippet file="/_code-samples/delete-account/js/delete-account.js" language="js" from="// Check if XRP balance is high enough" before="// Check if FirstNFTSequence is too high" /%}
 {% /tab %}
 
 {% tab label="Python" %}
-{% code-snippet file="/_code-samples/delete-account/py/delete-account.py" language="py" from="# Check if XRP balance is high enough" before="if num_problems:" /%}
+{% code-snippet file="/_code-samples/delete-account/py/delete-account.py" language="py" from="# Check if XRP balance is high enough" before="# Check if FirstNFTSequence is too high" /%}
 {% /tab %}
 {% /tabs %}
 
-If this or any of the previous checks failed, you can't delete the account.
+#### 3.5. Check NFT sequence number
+
+Check the `FirstNFTokenSequence` and `MintedNFTokens` fields of the account. (If either field is absent, you can treat its value as `0` for this purpose.) For the account to be deletable, the sum of these two numbers plus 256 must be lower than the current ledger index. 
 
 {% tabs %}
 {% tab label="JavaScript" %}
-{% code-snippet file="/_code-samples/delete-account/js/delete-account.js" language="js" from="if (numProblems) {" before="// Check for deletion blockers" /%}
+{% code-snippet file="/_code-samples/delete-account/js/delete-account.js" language="js" from="// Check if FirstNFTSequence is too high" before="// Check that all issued NFTs have been burned" /%}
 {% /tab %}
 
 {% tab label="Python" %}
-{% code-snippet file="/_code-samples/delete-account/py/delete-account.py" language="py" from="if num_problems:" before="# Check for deletion blockers" /%}
+{% code-snippet file="/_code-samples/delete-account/py/delete-account.py" language="py" from="# Check if FirstNFTSequence is too high" before="# Check that all issued NFTs have been burned" /%}
+{% /tab %}
+{% /tabs %}
+
+#### 3.6. Check that all issued NFTs have been burned
+
+If the account has issued any NFTs that are still present in the ledger, the account cannot be deleted. You can check to see if any exist by comparing the `MintedNFTokens` field and `BurnedNFTokens` fields of the account. (In both cases, if the field is omitted, treat its value as `0`.) If the `MintedNFTokens` value is larger, the account has issued at least one NFT that has not been burned yet.
+
+{% tabs %}
+{% tab label="JavaScript" %}
+{% code-snippet file="/_code-samples/delete-account/js/delete-account.js" language="js" from="// Check that all issued NFTs have been burned" before="// Stop if any problems were found" /%}
+{% /tab %}
+
+{% tab label="Python" %}
+{% code-snippet file="/_code-samples/delete-account/py/delete-account.py" language="py" from="# Check that all issued NFTs have been burned" before="# Stop if any problems were found" /%}
+{% /tab %}
+{% /tabs %}
+
+#### 3.7. Stop if the account can't be deleted
+
+If any of the previous checks failed, you can't delete the account. Resolving the problems varies by type:
+
+- If the account sequence or NFT sequence number is too low, wait for the ledger index to advance automatically and try again later. About 15 minutes should be enough.
+- If the account owns too many objects, or has issued NFTs outstanding, remove the offending objects.
+- If the account does not have enough XRP, you can send XRP to it so that it can pay the deletion cost, but of course in this case the account does not have enough XRP for you to recover any by deleting it. You can also wait and try again if the network [votes to lower the reserve requirements](../../../concepts/consensus-protocol/fee-voting.md), which would also lower the cost to delete an account.
+
+The sample code does not try to handle these problems, and quits if any problems were found:
+
+{% tabs %}
+{% tab label="JavaScript" %}
+{% code-snippet file="/_code-samples/delete-account/js/delete-account.js" language="js" from="// Stop if any problems were found" before="// Check for deletion blockers" /%}
+{% /tab %}
+
+{% tab label="Python" %}
+{% code-snippet file="/_code-samples/delete-account/py/delete-account.py" language="py" from="# Stop if any problems were found" before="# Check for deletion blockers" /%}
 {% /tab %}
 {% /tabs %}
 
