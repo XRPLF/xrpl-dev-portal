@@ -1,0 +1,38 @@
+# CODEOWNERS
+# Defines code ownership for automatic review assignment.
+# The last matching pattern takes precedence.
+# See: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+# Global default — core maintainers review everything
+*                                   @XRPLF/docs-maintainers
+
+# Concepts and narrative docs
+/docs/concepts/                     @XRPLF/docs-maintainers
+
+# Tutorials
+/docs/tutorials/                    @XRPLF/docs-maintainers
+
+# API reference
+/docs/references/                   @XRPLF/docs-maintainers
+
+# Infrastructure / node docs
+/docs/infrastructure/               @XRPLF/docs-maintainers
+
+# Code samples — require technical review
+/_code-samples/                     @XRPLF/docs-maintainers
+
+# API examples
+/_api-examples/                     @XRPLF/docs-maintainers
+
+# Site theme and web tooling
+/@theme/                            @XRPLF/docs-maintainers
+/styles/                            @XRPLF/docs-maintainers
+
+# Localization files
+/@l10n/                             @XRPLF/docs-maintainers
+
+# CI/CD and project configuration — maintainer-only
+/.github/                           @XRPLF/docs-maintainers
+/redocly.yaml                       @XRPLF/docs-maintainers
+/package.json                       @XRPLF/docs-maintainers
+/package-lock.json                  @XRPLF/docs-maintainers

@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: XRP Ledger Developer Discord
+    url: https://discord.gg/xrpl
+    about: Ask questions and discuss XRP Ledger development with the community
+  - name: XRPL.org Feedback
+    url: https://xrpl.org/about/contact
+    about: General feedback about the XRP Ledger portal

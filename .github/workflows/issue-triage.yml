@@ -1,0 +1,97 @@
+name: Issue Triage
+
+on:
+  issues:
+    types: [opened, reopened]
+
+permissions:
+  issues: write
+
+jobs:
+  triage:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Auto-label based on issue title and body
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const issue = context.payload.issue;
+            const title = (issue.title || '').toLowerCase();
+            const body  = (issue.body  || '').toLowerCase();
+            const text  = title + ' ' + body;
+            const labelsToAdd = new Set();
+
+            // --- keyword → label mapping ---
+            const rules = [
+              // Content areas
+              { patterns: ['nft', 'nonfungible', 'non-fungible', 'token', 'mpt', 'fungible'], label: 'tokenization' },
+              { patterns: ['amm', 'dex', 'offer', 'liquidity', 'pool'], label: 'defi' },
+              { patterns: ['escrow', 'payment channel', 'check'], label: 'content updates' },
+              { patterns: ['tutorial', 'how to', 'how-to', 'walkthrough', 'guide'], label: 'content updates' },
+              { patterns: ['api', 'rpc', 'websocket', 'method', 'command', 'response field'], label: 'content updates' },
+              { patterns: ['amendment', 'feature flag'], label: 'content updates' },
+              { patterns: ['rippled', 'validator', 'node', 'server', 'peer'], label: 'infra' },
+              { patterns: ['javascript', 'js ', 'node.js', 'typescript'], label: 'javascript' },
+              { patterns: ['python'], label: 'python' },
+              { patterns: ['java', 'xrpl4j'], label: 'java' },
+              { patterns: ['navigate', 'menu', 'sidebar', 'landing page', 'homepage'], label: 'organization' },
+              { patterns: ['style', 'css', 'layout', 'theme', 'mobile', 'responsive'], label: 'web dev' },
+              { patterns: ['translate', 'translation', 'locali', 'japanese', 'spanish'], label: 'localization' },
+              { patterns: ['broken link', 'dead link', '404 error', 'page not found', 'typo', 'grammar', 'spelling'], label: 'bug' },
+              { patterns: ['redocly', 'build', 'ci ', 'ci/', 'workflow', 'lint', 'tooling'], label: 'docs-tooling' },
+            ];
+
+            for (const rule of rules) {
+              if (rule.patterns.some(p => text.includes(p))) {
+                labelsToAdd.add(rule.label);
+              }
+            }
+
+            // If no labels matched, add 'needs triage' so maintainers notice it
+            if (labelsToAdd.size === 0) {
+              labelsToAdd.add('needs triage');
+            }
+
+            const existingLabels = (issue.labels || []).map(l => l.name);
+            const newLabels = [...labelsToAdd].filter(l => !existingLabels.includes(l));
+
+            if (newLabels.length > 0) {
+              await github.rest.issues.addLabels({
+                owner: context.repo.owner,
+                repo:  context.repo.repo,
+                issue_number: issue.number,
+                labels: newLabels,
+              });
+              console.log(`Added labels: ${newLabels.join(', ')}`);
+            } else {
+              console.log('No new labels to add.');
+            }
+
+      - name: Request triage for unlabeled issues
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const issue = context.payload.issue;
+            const labels = (issue.labels || []).map(l => l.name);
+
+            // If the only label is 'needs triage', add a comment directing maintainers
+            if (labels.length === 1 && labels[0] === 'needs triage') {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo:  context.repo.repo,
+                issue_number: issue.number,
+                body: [
+                  '👋 Thanks for opening this issue!',
+                  '',
+                  'This issue has been flagged for **maintainer triage** because it could not be automatically categorized.',
+                  'A maintainer will review it shortly to add labels and assess priority.',
+                  '',
+                  'In the meantime, you can help by:',
+                  '- Making sure the issue title clearly describes the problem',
+                  '- Adding a link to the affected page (for documentation issues)',
+                  '- Providing a reference to source code or specs (for technical accuracy issues)',
+                ].join('\n'),
+              });
+            }

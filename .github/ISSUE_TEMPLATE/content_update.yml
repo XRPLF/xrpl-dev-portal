@@ -1,0 +1,86 @@
+name: "Content Update"
+description: Request an update, addition, or improvement to existing documentation
+title: "[Content]: "
+labels: ["content updates"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this template to request changes to existing documentation content — for example, adding new details, updating outdated information, or improving clarity.
+
+  - type: input
+    id: page-url
+    attributes:
+      label: Affected Page URL
+      description: URL of the page that needs updating (if applicable)
+      placeholder: "https://xrpl.org/docs/..."
+
+  - type: dropdown
+    id: update-type
+    attributes:
+      label: Type of Update
+      options:
+        - Add missing information
+        - Update outdated content
+        - Improve clarity or readability
+        - Reorganize or restructure content
+        - Add examples or code samples
+        - Other
+    validations:
+      required: true
+
+  - type: dropdown
+    id: content-area
+    attributes:
+      label: Content Area
+      description: Which area of the documentation does this affect?
+      options:
+        - Concepts
+        - Tutorials
+        - References / API
+        - Infrastructure / Nodes
+        - Tokenization / NFTs
+        - DEX / AMM
+        - Payment Channels / Escrow
+        - Accounts / Wallets
+        - Localization / Translation
+        - Site tooling
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: Describe what needs to be changed and why. Be as specific as possible.
+      placeholder: "The documentation for X needs to be updated because..."
+    validations:
+      required: true
+
+  - type: input
+    id: source-reference
+    attributes:
+      label: Source / Reference
+      description: Link to the rippled source, amendment details, XLS proposal, or other authoritative reference
+      placeholder: "https://github.com/XRPLF/rippled/..."
+
+  - type: dropdown
+    id: amendment-status
+    attributes:
+      label: Amendment Status (if applicable)
+      description: If this relates to a protocol amendment, what is its status?
+      options:
+        - "N/A"
+        - In development (not yet proposed)
+        - Proposed (in open voting)
+        - Enabled on Mainnet
+        - Enabled on Devnet/Testnet only
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Checklist
+      options:
+        - label: I have searched existing issues to avoid duplicates
+          required: true
