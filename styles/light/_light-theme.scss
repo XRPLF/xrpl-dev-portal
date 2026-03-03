@@ -1513,4 +1513,8 @@ main article .card-grid {
   .tx-legend-item img.tx-type-icon {
     filter: none;
   }
+}  
+
+[data-component-name="Layout/DocumentationLayoutBottom"] {
+  border-top-color: black;
 }
