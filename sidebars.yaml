@@ -183,6 +183,7 @@
             - page: docs/concepts/decentralized-storage/credentials.md
             - page: docs/concepts/decentralized-storage/decentralized-identifiers.md
             - page: docs/concepts/decentralized-storage/price-oracles.md
+        - page: docs/concepts/identity/index.md
     - page: docs/tutorials/index.md
       label: Tutorials
       labelTranslationKey: sidebar.docs.tutorials
