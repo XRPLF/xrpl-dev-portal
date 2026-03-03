@@ -273,6 +273,8 @@ ul.nav.navbar-nav {
   --language-picker-background-color: var(--color-gray-8);
   --select-list-bg-color: var(--color-gray-8);
 
+  --button-bg-color-secondary: var(--color-gray-8);
+
   --footer-title-text-color: black;
   --bg-color: var(--color-gray-9);
   --bg-color-raised: var(--color-gray-8);
