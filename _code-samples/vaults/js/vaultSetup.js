@@ -1,9 +1,16 @@
 import xrpl from 'xrpl'
 import fs from 'fs'
 
+// Helper function to extract ticket sequences from a TicketCreate transaction result
+function getTicketSequences(ticketCreateResult) {
+  return ticketCreateResult.result.meta.AffectedNodes
+    .filter(node => node.CreatedNode?.LedgerEntryType === 'Ticket')
+    .map(node => node.CreatedNode.NewFields.TicketSequence)
+}
+
 // Setup script for vault tutorials
 
-process.stdout.write('Setting up tutorial: 0/5\r')
+process.stdout.write('Setting up tutorial: 0/6\r')
 
 const client = new xrpl.Client('wss://s.devnet.rippletest.net:51233')
 await client.connect()
@@ -21,11 +28,37 @@ const [
   client.fundWallet()
 ])
 
-// Step 1: Create MPT issuance, permissioned domain, and credentials in parallel
-process.stdout.write('Setting up tutorial: 1/5\r')
+// Step 1: Create tickets for domain owner and depositor to submit transactions concurrently
+process.stdout.write('Setting up tutorial: 1/6\r')
 
 const credType = 'VaultAccess'
-const [mptCreateResult] = await Promise.all([
+const [domainOwnerTicketCreateResult, depositorTicketCreateResult] = await Promise.all([
+  client.submitAndWait(
+    {
+      TransactionType: 'TicketCreate',
+      Account: domainOwner.address,
+      TicketCount: 2
+    },
+    { wallet: domainOwner, autofill: true }
+  ),
+  client.submitAndWait(
+    {
+      TransactionType: 'TicketCreate',
+      Account: depositor.address,
+      TicketCount: 2
+    },
+    { wallet: depositor, autofill: true }
+  )
+])
+
+// Get the ticket sequences from transaction results
+const domainOwnerTicketSequences = getTicketSequences(domainOwnerTicketCreateResult)
+const depositorTicketSequences = getTicketSequences(depositorTicketCreateResult)
+
+// Step 2: Create MPT issuance, permissioned domain, and credentials in parallel
+process.stdout.write('Setting up tutorial: 2/6\r')
+
+const [mptCreateResult, domainSetResult] = await Promise.all([
   client.submitAndWait(
     {
       TransactionType: "MPTokenIssuanceCreate",
@@ -71,35 +104,29 @@ const [mptCreateResult] = await Promise.all([
   ),
   client.submitAndWait(
     {
-      TransactionType: "Batch",
+      TransactionType: "PermissionedDomainSet",
       Account: domainOwner.address,
-      Flags: xrpl.BatchFlags.tfAllOrNothing,
-      RawTransactions: [
+      AcceptedCredentials: [
         {
-          RawTransaction: {
-            TransactionType: "PermissionedDomainSet",
-            Account: domainOwner.address,
-            AcceptedCredentials: [
-              {
-                Credential: {
-                  Issuer: domainOwner.address,
-                  CredentialType: xrpl.convertStringToHex(credType),
-                },
-              },
-            ],
-            Flags: xrpl.GlobalFlags.tfInnerBatchTxn,
-          },
-        },
-        {
-          RawTransaction: {
-            TransactionType: "CredentialCreate",
-            Account: domainOwner.address,
-            Subject: depositor.address,
+          Credential: {
+            Issuer: domainOwner.address,
             CredentialType: xrpl.convertStringToHex(credType),
-            Flags: xrpl.GlobalFlags.tfInnerBatchTxn,
           },
         },
       ],
+      TicketSequence: domainOwnerTicketSequences[0],
+      Sequence: 0
+    },
+    { wallet: domainOwner, autofill: true },
+  ),
+  client.submitAndWait(
+    {
+      TransactionType: "CredentialCreate",
+      Account: domainOwner.address,
+      Subject: depositor.address,
+      CredentialType: xrpl.convertStringToHex(credType),
+      TicketSequence: domainOwnerTicketSequences[1],
+      Sequence: 0
     },
     { wallet: domainOwner, autofill: true },
   ),
@@ -107,44 +134,34 @@ const [mptCreateResult] = await Promise.all([
 
 const mptIssuanceId = mptCreateResult.result.meta.mpt_issuance_id
 
-// Get domain ID
-const domainOwnerObjects = await client.request({
-  command: 'account_objects',
-  account: domainOwner.address,
-  ledger_index: 'validated'
-})
-const domainId = domainOwnerObjects.result.account_objects.find(
-  (node) => node.LedgerEntryType === 'PermissionedDomain'
-).index
+// Get domain ID from transaction result
+const domainNode = domainSetResult.result.meta.AffectedNodes.find(
+  (node) => node.CreatedNode?.LedgerEntryType === 'PermissionedDomain'
+)
+const domainId = domainNode.CreatedNode.LedgerIndex
 
-// Step 2: Depositor accepts credential, authorizes MPT, and creates vault in parallel
-process.stdout.write('Setting up tutorial: 2/5\r')
+// Step 3: Depositor accepts credential, authorizes MPT, and creates vault in parallel
+process.stdout.write('Setting up tutorial: 3/6\r')
 
-const [, vaultCreateResult] = await Promise.all([
+const [, , vaultCreateResult] = await Promise.all([
   client.submitAndWait(
     {
-      TransactionType: 'Batch',
+      TransactionType: 'CredentialAccept',
       Account: depositor.address,
-      Flags: xrpl.BatchFlags.tfAllOrNothing,
-      RawTransactions: [
-        {
-          RawTransaction: {
-            TransactionType: 'CredentialAccept',
-            Account: depositor.address,
-            Issuer: domainOwner.address,
-            CredentialType: xrpl.convertStringToHex(credType),
-            Flags: xrpl.GlobalFlags.tfInnerBatchTxn
-          }
-        },
-        {
-          RawTransaction: {
-            TransactionType: 'MPTokenAuthorize',
-            Account: depositor.address,
-            MPTokenIssuanceID: mptIssuanceId,
-            Flags: xrpl.GlobalFlags.tfInnerBatchTxn
-          }
-        }
-      ]
+      Issuer: domainOwner.address,
+      CredentialType: xrpl.convertStringToHex(credType),
+      TicketSequence: depositorTicketSequences[0],
+      Sequence: 0
+    },
+    { wallet: depositor, autofill: true }
+  ),
+  client.submitAndWait(
+    {
+      TransactionType: 'MPTokenAuthorize',
+      Account: depositor.address,
+      MPTokenIssuanceID: mptIssuanceId,
+      TicketSequence: depositorTicketSequences[1],
+      Sequence: 0
     },
     { wallet: depositor, autofill: true }
   ),
@@ -196,8 +213,8 @@ const vaultNode = vaultCreateResult.result.meta.AffectedNodes.find(
 const vaultID = vaultNode.CreatedNode.LedgerIndex
 const vaultShareMPTIssuanceId = vaultNode.CreatedNode.NewFields.ShareMPTID
 
-// Step 3: Issuer sends payment to depositor
-process.stdout.write('Setting up tutorial: 3/5\r')
+// Step 4: Issuer sends payment to depositor
+process.stdout.write('Setting up tutorial: 4/6\r')
 
 const paymentResult = await client.submitAndWait(
   {
@@ -218,8 +235,8 @@ if (paymentResult.result.meta.TransactionResult !== 'tesSUCCESS') {
   process.exit(1)
 }
 
-// Step 4: Make an initial deposit so withdraw example has shares to work with
-process.stdout.write('Setting up tutorial: 4/5\r')
+// Step 5: Make an initial deposit so withdraw example has shares to work with
+process.stdout.write('Setting up tutorial: 5/6\r')
 
 const initialDepositResult = await client.submitAndWait(
   {
@@ -240,8 +257,8 @@ if (initialDepositResult.result.meta.TransactionResult !== 'tesSUCCESS') {
   process.exit(1)
 }
 
-// Step 5: Save setup data to file
-process.stdout.write('Setting up tutorial: 5/5\r')
+// Step 6: Save setup data to file
+process.stdout.write('Setting up tutorial: 6/6\r')
 
 const setupData = {
   mptIssuer: {

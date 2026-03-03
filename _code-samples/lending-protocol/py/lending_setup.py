@@ -8,9 +8,6 @@ from xrpl.asyncio.wallet import generate_faucet_wallet
 from xrpl.asyncio.transaction import submit_and_wait, autofill, sign
 from xrpl.transaction import sign_loan_set_by_counterparty
 from xrpl.models import (
-    AccountObjects,
-    Batch,
-    BatchFlag,
     CredentialAccept,
     CredentialCreate,
     LoanBrokerSet,
@@ -34,7 +31,7 @@ from xrpl.utils import encode_mptoken_metadata, str_to_hex
 async def main():
     async with AsyncWebsocketClient("wss://s.devnet.rippletest.net:51233") as client:
 
-        print("Setting up tutorial: 0/6", end="\r")
+        print("Setting up tutorial: 0/7", end="\r")
 
         # Create and fund wallets
         loan_broker, borrower, depositor, credential_issuer = await asyncio.gather(
@@ -44,10 +41,61 @@ async def main():
             generate_faucet_wallet(client),
         )
 
-        print("Setting up tutorial: 1/6", end="\r")
+        print("Setting up tutorial: 1/7", end="\r")
+
+        # Create tickets for parallel transactions
+        def extract_tickets(response):
+            return [
+                node["CreatedNode"]["NewFields"]["TicketSequence"]
+                for node in response.result["meta"]["AffectedNodes"]
+                if node.get("CreatedNode", {}).get("LedgerEntryType") == "Ticket"
+            ]
+
+        ci_ticket_response, lb_ticket_response, br_ticket_response, dp_ticket_response = (
+            await asyncio.gather(
+                submit_and_wait(
+                    TicketCreate(
+                        account=credential_issuer.address,
+                        ticket_count=4,
+                    ),
+                    client,
+                    credential_issuer,
+                ),
+                submit_and_wait(
+                    TicketCreate(
+                        account=loan_broker.address,
+                        ticket_count=4,
+                    ),
+                    client,
+                    loan_broker,
+                ),
+                submit_and_wait(
+                    TicketCreate(
+                        account=borrower.address,
+                        ticket_count=2,
+                    ),
+                    client,
+                    borrower,
+                ),
+                submit_and_wait(
+                    TicketCreate(
+                        account=depositor.address,
+                        ticket_count=2,
+                    ),
+                    client,
+                    depositor,
+                ),
+            )
+        )
+
+        ci_tickets = extract_tickets(ci_ticket_response)
+        lb_tickets = extract_tickets(lb_ticket_response)
+        br_tickets = extract_tickets(br_ticket_response)
+        dp_tickets = extract_tickets(dp_ticket_response)
+
+        print("Setting up tutorial: 2/7", end="\r")
 
         # Issue MPT with depositor
-        # Create tickets for later use with loan_broker
         # Set up credentials and domain with credential_issuer
         credential_type = str_to_hex("KYC-Verified")
 
@@ -80,15 +128,7 @@ async def main():
             },
         }
 
-        ticket_create_response, mpt_issuance_response, _ = await asyncio.gather(
-            submit_and_wait(
-                TicketCreate(
-                    account=loan_broker.address,
-                    ticket_count=2,
-                ),
-                client,
-                loan_broker,
-            ),
+        mpt_issuance_response, domain_set_response, *_ = await asyncio.gather(
             submit_and_wait(
                 MPTokenIssuanceCreate(
                     account=depositor.address,
@@ -105,104 +145,112 @@ async def main():
                 depositor,
             ),
             submit_and_wait(
-                Batch(
+                PermissionedDomainSet(
                     account=credential_issuer.address,
-                    flags=BatchFlag.TF_ALL_OR_NOTHING,
-                    raw_transactions=[
-                        CredentialCreate(
-                            account=credential_issuer.address,
-                            subject=loan_broker.address,
+                    accepted_credentials=[
+                        Credential(
+                            issuer=credential_issuer.address,
                             credential_type=credential_type,
-                        ),
-                        CredentialCreate(
-                            account=credential_issuer.address,
-                            subject=borrower.address,
-                            credential_type=credential_type,
-                        ),
-                        CredentialCreate(
-                            account=credential_issuer.address,
-                            subject=depositor.address,
-                            credential_type=credential_type,
-                        ),
-                        PermissionedDomainSet(
-                            account=credential_issuer.address,
-                            accepted_credentials=[
-                                Credential(
-                                    issuer=credential_issuer.address,
-                                    credential_type=credential_type,
-                                ),
-                            ],
                         ),
                     ],
+                    sequence=0,
+                    ticket_sequence=ci_tickets[0],
+                ),
+                client,
+                credential_issuer,
+            ),
+            submit_and_wait(
+                CredentialCreate(
+                    account=credential_issuer.address,
+                    subject=loan_broker.address,
+                    credential_type=credential_type,
+                    sequence=0,
+                    ticket_sequence=ci_tickets[1],
+                ),
+                client,
+                credential_issuer,
+            ),
+            submit_and_wait(
+                CredentialCreate(
+                    account=credential_issuer.address,
+                    subject=borrower.address,
+                    credential_type=credential_type,
+                    sequence=0,
+                    ticket_sequence=ci_tickets[2],
+                ),
+                client,
+                credential_issuer,
+            ),
+            submit_and_wait(
+                CredentialCreate(
+                    account=credential_issuer.address,
+                    subject=depositor.address,
+                    credential_type=credential_type,
+                    sequence=0,
+                    ticket_sequence=ci_tickets[3],
                 ),
                 client,
                 credential_issuer,
             ),
         )
 
-        # Extract ticket sequence numbers
-        tickets = [
-            node["CreatedNode"]["NewFields"]["TicketSequence"]
-            for node in ticket_create_response.result["meta"]["AffectedNodes"]
-            if node.get("CreatedNode", {}).get("LedgerEntryType") == "Ticket"
-        ]
-
         # Extract MPT issuance ID
         mpt_id = mpt_issuance_response.result["meta"]["mpt_issuance_id"]
 
-        # Get domain ID
-        credential_issuer_objects = await client.request(AccountObjects(
-            account=credential_issuer.address,
-            ledger_index="validated",
-        ))
+        # Extract domain ID
         domain_id = next(
-            node["index"]
-            for node in credential_issuer_objects.result["account_objects"]
-            if node["LedgerEntryType"] == "PermissionedDomain"
+            node["CreatedNode"]["LedgerIndex"]
+            for node in domain_set_response.result["meta"]["AffectedNodes"]
+            if node.get("CreatedNode", {}).get("LedgerEntryType") == "PermissionedDomain"
         )
 
-        print("Setting up tutorial: 2/6", end="\r")
+        print("Setting up tutorial: 3/7", end="\r")
 
         # Accept credentials and authorize MPT for each account
         await asyncio.gather(
             submit_and_wait(
-                Batch(
+                CredentialAccept(
                     account=loan_broker.address,
-                    flags=BatchFlag.TF_ALL_OR_NOTHING,
-                    raw_transactions=[
-                        CredentialAccept(
-                            account=loan_broker.address,
-                            issuer=credential_issuer.address,
-                            credential_type=credential_type,
-                        ),
-                        MPTokenAuthorize(
-                            account=loan_broker.address,
-                            mptoken_issuance_id=mpt_id,
-                        ),
-                    ],
+                    issuer=credential_issuer.address,
+                    credential_type=credential_type,
+                    sequence=0,
+                    ticket_sequence=lb_tickets[0],
                 ),
                 client,
                 loan_broker,
             ),
             submit_and_wait(
-                Batch(
+                MPTokenAuthorize(
+                    account=loan_broker.address,
+                    mptoken_issuance_id=mpt_id,
+                    sequence=0,
+                    ticket_sequence=lb_tickets[1],
+                ),
+                client,
+                loan_broker,
+            ),
+            submit_and_wait(
+                CredentialAccept(
                     account=borrower.address,
-                    flags=BatchFlag.TF_ALL_OR_NOTHING,
-                    raw_transactions=[
-                        CredentialAccept(
-                            account=borrower.address,
-                            issuer=credential_issuer.address,
-                            credential_type=credential_type,
-                        ),
-                        MPTokenAuthorize(
-                            account=borrower.address,
-                            mptoken_issuance_id=mpt_id,
-                        ),
-                    ],
+                    issuer=credential_issuer.address,
+                    credential_type=credential_type,
+                    sequence=0,
+                    ticket_sequence=br_tickets[0],
                 ),
                 client,
                 borrower,
             ),
+            submit_and_wait(
+                MPTokenAuthorize(
+                    account=borrower.address,
+                    mptoken_issuance_id=mpt_id,
+                    sequence=0,
+                    ticket_sequence=br_tickets[1],
+                ),
+                client,
+                borrower,
+            ),
+            # Depositor only needs to accept credentials
             submit_and_wait(
                 CredentialAccept(
                     account=depositor.address,
@@ -214,10 +262,10 @@ async def main():
             ),
         )
 
-        print("Setting up tutorial: 3/6", end="\r")
+        print("Setting up tutorial: 4/7", end="\r")
 
         # Create private vault and distribute MPT to accounts
-        vault_create_response, _ = await asyncio.gather(
+        vault_create_response, *_ = await asyncio.gather(
             submit_and_wait(
                 VaultCreate(
                     account=loan_broker.address,
@@ -229,21 +277,23 @@ async def main():
                 loan_broker,
             ),
             submit_and_wait(
-                Batch(
+                Payment(
                     account=depositor.address,
-                    flags=BatchFlag.TF_ALL_OR_NOTHING,
-                    raw_transactions=[
-                        Payment(
-                            account=depositor.address,
-                            destination=loan_broker.address,
-                            amount=MPTAmount(mpt_issuance_id=mpt_id, value="5000"),
-                        ),
-                        Payment(
-                            account=depositor.address,
-                            destination=borrower.address,
-                            amount=MPTAmount(mpt_issuance_id=mpt_id, value="2500"),
-                        ),
-                    ],
+                    destination=loan_broker.address,
+                    amount=MPTAmount(mpt_issuance_id=mpt_id, value="5000"),
+                    sequence=0,
+                    ticket_sequence=dp_tickets[0],
+                ),
+                client,
+                depositor,
+            ),
+            submit_and_wait(
+                Payment(
+                    account=depositor.address,
+                    destination=borrower.address,
+                    amount=MPTAmount(mpt_issuance_id=mpt_id, value="2500"),
+                    sequence=0,
+                    ticket_sequence=dp_tickets[1],
                 ),
                 client,
                 depositor,
@@ -256,7 +306,7 @@ async def main():
             if node.get("CreatedNode", {}).get("LedgerEntryType") == "Vault"
         )
 
-        print("Setting up tutorial: 4/6", end="\r")
+        print("Setting up tutorial: 5/7", end="\r")
 
         # Create LoanBroker and deposit MPT into vault
         loan_broker_set_response, _ = await asyncio.gather(
@@ -285,10 +335,10 @@ async def main():
             if node.get("CreatedNode", {}).get("LedgerEntryType") == "LoanBroker"
         )
 
-        print("Setting up tutorial: 5/6", end="\r")
+        print("Setting up tutorial: 6/7", end="\r")
 
         # Create 2 identical loans with complete repayment due in 30 days
-        
+
         # Helper function to create, sign, and submit a LoanSet transaction
         async def create_loan(ticket_sequence):
             loan_set_tx = await autofill(LoanSet(
@@ -312,8 +362,8 @@ async def main():
             return submit_response
 
         submit_response_1, submit_response_2 = await asyncio.gather(
-            create_loan(tickets[0]),
-            create_loan(tickets[1]),
+            create_loan(lb_tickets[2]),
+            create_loan(lb_tickets[3]),
         )
 
         loan_id_1 = next(
@@ -328,7 +378,7 @@ async def main():
             if node.get("CreatedNode", {}).get("LedgerEntryType") == "Loan"
         )
 
-        print("Setting up tutorial: 6/6", end="\r")
+        print("Setting up tutorial: 7/7", end="\r")
 
         # Write setup data to JSON file
         setup_data = {

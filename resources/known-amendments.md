@@ -35,6 +35,8 @@ The following is a list of known [amendments](../docs/concepts/networks-and-serv
 
 | Name                              | Introduced | Status                        |
 |:----------------------------------|:-----------|:------------------------------|
+| [fixBatchInnerSigs]               | v3.1.0     | {% badge href="https://xrpl.org/blog/2026/rippled-3.1.1" %}Obsolete: Removed in v3.1.1{% /badge %} |
+| [Batch]                           | v2.5.0     | {% badge href="https://xrpl.org/blog/2026/rippled-3.1.1" %}Obsolete: Removed in v3.1.1{% /badge %} |
 | [PermissionDelegation]            | v2.5.0     | {% badge href="https://xrpl.org/blog/2025/rippled-2.6.1" %}Obsolete: Removed in v2.6.1{% /badge %} |
 | [fixNFTokenNegOffer][]            | v1.9.2     | {% badge %}Obsolete: To Be Removed{% /badge %} |
 | [fixNFTokenDirV1][]               | v1.9.1     | {% badge %}Obsolete: To Be Removed{% /badge %} |
@@ -105,11 +107,15 @@ For details, see the [XLS-73: AMMClawback specification](https://github.com/XRPL
 | Amendment    | Batch |
 |:-------------|:------|
 | Amendment ID | 894646DD5284E97DECFE6674A6D6152686791C4A95F8C132CCA9BAF9E5812FB6 |
-| Status       | Open for Voting |
+| Status       | Obsolete |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
 Allows multiple transactions to be bundled into a batch that's processed all together. Standard: [XLS-56](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0056-batch)
+
+{% admonition type="danger" name="Warning" %}
+This amendment was disabled in v3.1.1 due to a bug. It will be replaced by `BatchV1_1` in a future release.
+{% /admonition %}
 
 
 ### CheckCashMakesTrustLine
@@ -746,11 +752,15 @@ Adds several fixes to Automated Market Maker code, specifically:
 | Amendment    | fixBatchInnerSigs |
 |:-------------|:----------------|
 | Amendment ID | 267624F8F744C4A4F1B5821A7D54410BCEBABE987F0172EE89E5FC4B6EDBC18A |
-| Status       | Open for Voting |
+| Status       | Obsolete |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
 This amendment fixes an issue where inner transactions of a `Batch` transaction would be flagged as having valid signatures. Since inner transactions aren't signed directly, they should never have valid signatures.
+
+{% admonition type="danger" name="Warning" %}
+This amendment was disabled in v3.1.1 due to a bug. It will be replaced by `BatchV1_1` in a future release.
+{% /admonition %}
 
 
 ### fixCheckThreading
@@ -1487,7 +1497,7 @@ This amendment adds several new invariants to protect the ledger against bugs in
 
 The Lending Protocol enables on-chain, fixed-term, uncollateralized loans using pooled funds from a Single Asset Vault. This implementation relies on off-chain underwriting and risk management to assess the creditworthiness of borrowers, but offers configurable, peer-to-peer loans.
 
-Specification: [XLS-66](https://github.com/Tapanito/XRPL-Standards/tree/xls-66-lending-protocol/XLS-0066-lending-protocol).
+Specification: [XLS-66](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0066-lending-protocol).
 
 
 ### MPTokensV1
@@ -1699,9 +1709,11 @@ For more information, see the [Payment Channels Tutorial](../docs/tutorials/paym
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
-Allows accounts to delegate some permissions to other accounts. This amendment was disabled in v2.6.1 due to a bug. It will be replaced by `PermissionDelegationV1_1` in a future release.
+Allows accounts to delegate some permissions to other accounts. Specification: [XLS-75](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0075-permission-delegation).
 
-Specification: [XLS-75](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0075-permission-delegation).
+{% admonition type="danger" name="Warning" %}
+This amendment was disabled in v2.6.1 due to a bug. It will be replaced by `PermissionDelegationV1_1` in a future release.
+{% /admonition %}
 
 
 ### PermissionedDEX

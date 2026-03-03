@@ -172,7 +172,7 @@
 }
 
 #wallets {
-  @each $wallet in "ledger", "secalot", "trezor", "xumm", "trust", "gatehub", "bifrost", "keystone", "dcent", "coin", "gem", "joey" {
+  @each $wallet in "ledger", "secalot", "trezor", "xumm", "trust", "gatehub", "bifrost", "bitget", "keystone", "dcent", "coin", "gem", "joey" {
     #wallet-#{$wallet} {
       content: url("../img/wallets/#{$wallet}.svg");
     }
@@ -405,6 +405,7 @@
     "multichain": "svg",
     "xumm-wallet": "svg",
     "bifrost-wallet": "svg",
+    "bitget-wallet": "svg",
     "gem-wallet": "svg",
     "aesthetes": "svg",
     "audiotarky": "svg",

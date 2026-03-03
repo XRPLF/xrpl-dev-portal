@@ -19,18 +19,14 @@ const links = [
 
 const softwallets = [
   { href: "https://bifrostwallet.com/", id: "wallet-bifrost", alt: "Bifrost Wallet" },
-  { href: "https://xaman.app/", id: "wallet-xumm", alt: "Xaman" },
-  { href: "https://trustwallet.com/", id: "wallet-trust", alt: "Trust Wallet" },
-  {
-    href: "https://gatehub.net/",
-    id: "wallet-gatehub",
-    alt: "Gatehub",
-    imgclasses: "invertible-img",
-  },
-  { href: "https://gemwallet.app/", id: "wallet-gem", alt: "Gem Wallet" },
+  { href: "https://web3.bitget.com/", id: "wallet-bitget", alt: "Bitget Wallet" },
   { href: "https://coin.space/", id: "wallet-coin", alt: "Coin Space" },
   { href: "https://crossmark.io/", id: "wallet-crossmark", alt: "Crossmark Wallet" },
+  { href: "https://gatehub.net/", id: "wallet-gatehub", alt: "Gatehub", imgclasses: "invertible-img" },
+  { href: "https://gemwallet.app/", id: "wallet-gem", alt: "Gem Wallet" },
   { href: "https://joeywallet.xyz/", id: "wallet-joey", alt: "Joey Wallet" },
+  { href: "https://trustwallet.com/", id: "wallet-trust", alt: "Trust Wallet" },
+  { href: "https://xaman.app/", id: "wallet-xumm", alt: "Xaman" }
 ];
 
 const hardwallets = [
@@ -61,16 +57,8 @@ const exchanges = [
   { href: "https://www.liquid.com/", id: "exch-liquid", alt: "Liquid" },
   { href: "https://www.lmax.com/", id: "exch-lmax", alt: "LMAX" },
   { href: "https://www.bitfinex.com/", id: "exch-bitfinex", alt: "Bitfinex" },
-  {
-    href: "https://www.etoro.com/crypto/exchange/",
-    id: "exch-etoro",
-    alt: "eToro",
-  },
-  {
-    href: "https://currency.com",
-    id: "exch-currency-com",
-    alt: "Currency.com",
-  },
+  { href: "https://www.etoro.com/crypto/exchange/", id: "exch-etoro", alt: "eToro"},
+  { href: "https://currency.com", id: "exch-currency-com", alt: "Currency.com"},
   { href: "https://bittrex.com/", id: "exch-bittrex", alt: "Bittrex" },
 ];
 
