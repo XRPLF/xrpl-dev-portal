@@ -1120,6 +1120,10 @@ main article .card-grid {
   }
 }
 
+[data-component-name="Markdown/Markdown"] article {
+  border-bottom-color: $gray-500;
+}
+
 .dev-blog {
   .text-bg {
     background-color: $white;
