@@ -85,11 +85,17 @@
       groupTranslationKey: topnav.docs.get-started
       items:
         - page: ./docs/tutorials/get-started/get-started-javascript.md
+          label: JavaScript
         - page: ./docs/tutorials/get-started/get-started-python.md
+          label: Python
         - page: ./docs/tutorials/get-started/get-started-java.md
+          label: Java
         - page: ./docs/tutorials/get-started/get-started-php.md
+          label: PHP
         - page: ./docs/tutorials/get-started/get-started-go.md
+          label: Go
         - page: ./docs/tutorials/get-started/get-started-http-websocket-apis.md
+          label: HTTP / WebSocket
 
 - group: Resources
   groupTranslationKey: navbar.resources
