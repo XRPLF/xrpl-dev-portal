@@ -20,6 +20,10 @@ Version 3.1.1 of `rippled`, the reference server implementation of the XRP Ledge
 
 Devnet is scheduled for a reset on **Tuesday, March 3, 2026**. The `Batch` amendment requires more development and is now set to unsupported in version 3.1.1. To prevent validators that upgrade to this version from becoming amendment blocked, Devnet must be reset.
 
+{% admonition type="success" name="Update" %}
+The reset has completed successfully. Devnet is online and fully operational.
+{% /admonition %}
+
 ### Impact
 
 This reset affects Devnet only. Other networks will continue to operate as usual, including XRPL Mainnet, XRPL Testnet, Xahau, and the Hooks Testnet.
