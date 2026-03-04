@@ -808,7 +808,7 @@
           "id": "example_get_loan",
           "command": "ledger_entry",
           "loan": {
-            "loan_broker_id": "7430D67254BAE93A8CAD43596D26BBDAAA5BCD2DB7D2FB6E81B302916E8BD48D",
+            "loan_broker_id": "490DB29AD0CCFBDFE9A176F71AB7512497407CCA37E86F0C88CCDA1DF99A1F09",
             "loan_seq": 2
           },
           "ledger_index": "validated"
@@ -823,8 +823,8 @@
           "id": "example_get_loanbroker",
           "command": "ledger_entry",
           "loan_broker": {
-            "owner": "rsgmF1wgf43LmqmU8MBJ2kzU2akkC1KCG8",
-            "seq": 3213616
+            "owner": "rKHVvo9vMQwm2xz44qfhHyDC2VwYKfzgrX",
+            "seq": 6903
           },
           "ledger_index": "validated"
         }
@@ -929,13 +929,12 @@
         "name": "ledger_entry - PermissionedDomain",
         "description": "Returns a PermissionedDomain object in its raw ledger format.",
         "link": "/docs/references/http-websocket-apis/public-api-methods/ledger-methods/ledger_entry#get-permissioneddomain-entry",
-        "status": "not_enabled",
         "body": {
           "id": "example_get_permissioneddomain",
           "command": "ledger_entry",
           "permissioned_domain": {
-            "account": "rf7zCh1aPD2DpeJVo6keG5Cf1TVyAKMFpR",
-            "seq": 2093655
+            "account": "rHt39rFPxgy3hDcajtSK4Ty12oRFuw5A2g",
+            "seq": 0
           },
           "ledger_index": "validated"
         }
@@ -983,6 +982,18 @@
         }
       },
       {
+        "name": "ledger_entry - Vault",
+        "description": "Returns a Vault object in its raw ledger format.",
+        "link": "/docs/references/http-websocket-apis/public-api-methods/ledger-methods/ledger_entry#get-vault-entry",
+        "status": "not_enabled",
+        "body": {
+          "id": "example_get_vault",
+          "command": "ledger_entry",
+          "vault": "3C52C93E5A2F5B075F04C33861E434CC7B98580F6F3403CA3A97E19B6C7266AA",
+          "ledger_index": "validated"
+        }
+      },
+      {
         "name": "ledger_entry - XChainOwnedClaimID",
         "description": "Returns a single XChainOwnedClaimID object in its raw ledger format.",
         "link": "/docs/references/http-websocket-apis/public-api-methods/ledger-methods/ledger_entry#get-xchainownedclaimid-entry",
@@ -1023,17 +1034,6 @@
             },
             "xchain_owned_create_account_claim_id": 1
           },
-          "ledger_index": "validated"
-        }
-      },
-      {
-        "name": "ledger_entry - Vault",
-        "description": "Returns a Vault object in its raw ledger format.",
-        "link": "/docs/references/http-websocket-apis/public-api-methods/ledger-methods/ledger_entry#get-vault-entry",
-        "body": {
-          "id": "example_get_vault",
-          "command": "ledger_entry",
-          "vault": "9E48171960CD9F62C3A7B6559315A510AE544C3F51E02947B5D4DAC8AA66C3BA",
           "ledger_index": "validated"
         }
       }
