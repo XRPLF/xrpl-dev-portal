@@ -14,7 +14,7 @@ from xrpl.wallet import Wallet, generate_faucet_wallet
 from look_up_credentials import look_up_credentials
 from decode_hex import decode_hex
 
-XRPL_SERVER = "https://s.devnet.rippletest.net:51234/"
+XRPL_SERVER = "https://s.altnet.rippletest.net:51234/"
 
 client = JsonRpcClient(XRPL_SERVER)
 
