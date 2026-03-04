@@ -43,6 +43,81 @@ metadataGlobs:
     redocly_category: Community
 seo:
   siteUrl: https://xrpl.org/
+  llmstxt:
+    hide: false
+    title: XRPL Developer Portal & Documentation
+    description: >-
+      Explore XRP Ledger documentation, blogs, and other blockchain
+      developer resources needed to start building and integrating with the ledger.
+    details:
+      content: >-
+        XRP Ledger concepts, use cases, tutorials, references, and other blockchain
+        developer resources. Also, stay up to date with release announcements
+        and more through the XRPL Blog.
+    sections:
+      - title: Introduction
+        description: A high-level introduction to the XRP Ledger.
+        includeFiles:
+          - docs/introduction/**/*.*
+          - about/faq.md
+        excludeFiles:
+          - docs/introduction/index.md
+      - title: Use Cases
+        description: Real-world applications and business scenarios for the XRP Ledger.
+        includeFiles:
+          - docs/use-cases/**/*.*
+        excludeFiles:
+          - docs/use-cases/index.md
+          - docs/use-cases/defi/index.md
+      - title: Concepts
+        description: Core concepts including accounts, tokens, transactions, consensus, and more.
+        includeFiles:
+          - docs/concepts/**/*.*
+        excludeFiles:
+          - docs/concepts/index.md
+          - docs/concepts/decentralized-storage/index.md
+          - docs/concepts/payment-types/index.md
+      - title: Tutorials
+        description: Step-by-step guides for building on the XRP Ledger in JavaScript, Python, Go, and more.
+        includeFiles:
+          - docs/tutorials/**/*.*
+      - title: References
+        description: Protocol specification, transaction types, ledger entries, and API methods.
+        includeFiles:
+          - docs/references/**/*.*
+        excludeFiles:
+          - docs/references/xrp-api.md
+          - docs/references/data-api.md
+          - docs/references/protocol/index.md
+          - docs/references/protocol/ledger-data/ledger-entry-types/index.md
+          - docs/references/protocol/transactions/index.md
+          - docs/references/protocol/transactions/types/index.md
+          - docs/references/http-websocket-apis/api-conventions/index.md
+          - docs/references/http-websocket-apis/public-api-methods/*/index.md
+          - docs/references/http-websocket-apis/admin-api-methods/*/index.md
+      - title: Infrastructure
+        description: Install, configure, and troubleshoot rippled and Clio servers.
+        includeFiles:
+          - docs/infrastructure/**/*.*
+        excludeFiles:
+          - docs/infrastructure/index.md
+          - docs/infrastructure/*/index.md
+          - docs/infrastructure/installation/build-run-rippled-in-reporting-mode.md
+          - docs/infrastructure/configuration/data-retention/index.md
+          - docs/infrastructure/configuration/server-modes/index.md
+      - title: Blog (2023+)
+        description: Recent XRPL Blog posts (showing 2023 and newer).
+        includeFiles:
+          - blog/2023/**/*.*
+          - blog/2024/**/*.*
+          - blog/2025/**/*.*
+          - blog/2026/**/*.*
+      - title: Resources
+        description: Developer resources and contribution guidelines.
+        includeFiles:
+          - resources/**/*.*
+        excludeFiles:
+          - resources/index.md
 analytics:
   gtm:
     includeInDevelopment: true
