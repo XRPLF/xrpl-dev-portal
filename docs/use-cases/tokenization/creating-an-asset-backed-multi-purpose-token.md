@@ -28,7 +28,7 @@ To learn about MPTs in general, go to the **Concept** page. For developer-focuse
 {% card-grid %}
 
 {% xrpl-card title="Concept: Multi‑Purpose Tokens" body="Read the concept documentation to learn more about Multi-Purpose Tokens." href="docs/concepts/tokens/fungible-tokens/multi-purpose-tokens/" /%}
-{% xrpl-card title="Tutorial: Issue a Multi‑Purpose Token" body="Step‑by‑step, hands‑on tutorial to issue an MPT using the XRP Ledger SDKs." href="docs/tutorials/how-tos/use-tokens/issue-a-multi-purpose-token/" /%}
+{% xrpl-card title="Tutorial: Issue a Multi‑Purpose Token" body="Step‑by‑step, hands‑on tutorial to issue an MPT using the XRP Ledger SDKs." href="docs/tutorials/issue-a-multi-purpose-token/" /%}
 {% xrpl-card title="MPT Generator" body="Download the MPT Generator and learn how to create an asset-backed Treasury bill." href="#mpt-generator"/%}
 {% /card-grid %}
 
@@ -477,13 +477,13 @@ Follow the link and scroll down to find the `MPTokenIssuanceCreate` transaction 
 
 ![Explorer record of the new T-bill MPT.](../../img/uc-mpt1-t-bill-in-explorer.png)
 
-Click **Gather MPT Information** to copy the account information and MPT Issuance ID to the result field. Copy the information and save it to send the MPT to another account as shown in [Sending MPTs](../../tutorials/javascript/send-payments/sending-mpts.md).
+Click **Gather MPT Information** to copy the account information and MPT Issuance ID to the result field. Copy the information and save it to send the MPT to another account as shown in [Sending MPTs](../../tutorials/tokens/mpts/sending-mpts-in-javascript.md).
 
 ![Account and MPT ID in the result field.](../../img/uc-mpt1-t-bill-gather-mpt-info.png)
 
 ## See Also
 
-- [Issue a Multi-Purpose Token (MPT)](../../tutorials/how-tos/use-tokens/issue-a-multi-purpose-token.md)
-- [Sending MPTs](../../tutorials/javascript/send-payments/sending-mpts.md)
+- [Issue a Multi-Purpose Token (MPT)](../../tutorials/tokens/mpts/issue-a-multi-purpose-token.md)
+- [Sending MPTs](../../tutorials/tokens/mpts/sending-mpts-in-javascript.md)
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

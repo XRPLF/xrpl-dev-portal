@@ -35,8 +35,7 @@ The following diagram summarizes the lifecycle of a payment channel:
 - **Related Concepts:**
     - [Escrow](escrow.md), a similar feature for higher-value, lower-speed conditional payments.
 - **Tutorials and Use Cases:**
-    - [Use Payment Channels](../../tutorials/how-tos/use-specialized-payment-types/use-payment-channels/index.md), a tutorial stepping through the process of using a payment channel.
-    - [Open a Payment Channel to Enable an Inter-Exchange Network](../../tutorials/how-tos/use-specialized-payment-types/use-payment-channels/open-a-payment-channel-to-enable-an-inter-exchange-network.md)
+    - [Use Payment Channels](../../tutorials/payments/use-payment-channels.md), a tutorial stepping through the process of using a payment channel.
 - **References:**
     - [channel_authorize method][]
     - [channel_verify method][]

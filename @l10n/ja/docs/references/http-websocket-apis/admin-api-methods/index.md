@@ -10,7 +10,7 @@ labels:
 
 `rippled`サーバと直接通信する際には管理APIメソッドを使用します。管理メソッドは、信頼できるサーバ運用担当者のみを対象としています。管理メソッドには、サーバの管理、監視、デバッグのためのコマンドが含まれています。
 
-管理コマンドを使用できるのは、管理者として、`rippled.cfg`ファイルに指定されているホストとポートで`rippled`サーバに接続している場合に限られます。デフォルトでは、コマンドラインクライアントが管理接続を使用します。`rippled`への接続についての詳細は、[rippled API入門](../../../tutorials/http-websocket-apis/build-apps/get-started.md)をご覧ください。
+管理コマンドを使用できるのは、管理者として、`rippled.cfg`ファイルに指定されているホストとポートで`rippled`サーバに接続している場合に限られます。デフォルトでは、コマンドラインクライアントが管理接続を使用します。`rippled`への接続についての詳細は、[rippled API入門](/docs/tutorials/get-started/get-started-http-websocket-apis.md)をご覧ください。
 
 
 ## [キー生成メソッド](key-generation-methods/index.md)
@@ -39,7 +39,6 @@ rippledサーバの管理には、以下のメソッドを使用します。
 * **[`connect`](peer-management-methods/connect.md)** - rippledサーバを特定のピアに強制的に接続します。
 * **[`ledger_accept`](server-control-methods/ledger_accept.md)** - スタンドアロンモードでレジャーを閉鎖し、次のレジャーに進みます。
 * **[`stop`](server-control-methods/stop.md)** - rippledサーバをシャットダウンします。
-* **[`validation_seed`](server-control-methods/validation_seed.md)** - 検証に使用するキーを一時的に設定します。
 
 
 ## [ステータスおよびデバッグメソッド](status-and-debugging-methods/index.md)

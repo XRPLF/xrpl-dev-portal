@@ -58,7 +58,7 @@ There might be a scenario where you create a multi-signing list as a "backup pla
 
 To successfully submit a multi-signed transaction, you must do all of the following:
 
-* The address sending the transaction (specified in the `Account` field) must have a [`SignerList` object in the ledger](../../references/protocol/ledger-data/ledger-entry-types/signerlist.md). For instructions on how to do this, see [Set Up Multi-Signing](../../tutorials/how-tos/manage-account-settings/set-up-multi-signing.md).
+* The address sending the transaction (specified in the `Account` field) must have a [`SignerList` object in the ledger](../../references/protocol/ledger-data/ledger-entry-types/signerlist.md). For instructions on how to do this, see [Set Up Multi-Signing](../../tutorials/best-practices/key-management/set-up-multi-signing.md).
 * The transaction must include the `SigningPubKey` field as an empty string.
 * The transaction must include a [`Signers` field](../../references/protocol/transactions/common-fields.md#signers-field) containing an array of signatures.
 * The signatures present in the `Signers` array must match signers defined in the `SignerList`.
@@ -70,8 +70,8 @@ To successfully submit a multi-signed transaction, you must do all of the follow
 ## See Also
 
 - **Tutorials:**
-    - [Set Up Multi-Signing](../../tutorials/how-tos/manage-account-settings/set-up-multi-signing.md)
-    - [Send a Multi-Signed Transaction](../../tutorials/how-tos/manage-account-settings/send-a-multi-signed-transaction.md)
+    - [Set Up Multi-Signing](../../tutorials/best-practices/key-management/set-up-multi-signing.md)
+    - [Send a Multi-Signed Transaction](../../tutorials/best-practices/key-management/send-a-multi-signed-transaction.md)
 - **Concepts:**
     - [Cryptographic Keys](cryptographic-keys.md)
     - [Special Transaction Cost for Multi-signed transactions](../transactions/transaction-cost.md#special-transaction-costs)

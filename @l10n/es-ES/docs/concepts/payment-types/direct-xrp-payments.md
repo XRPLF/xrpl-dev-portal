@@ -39,8 +39,8 @@ La base de cualquier sistema financiero es la transferencia de valor. El método
 ## Ver también
 
 - **Tutoriales:**
-    - [Enviar XRP (Tutorial interactivo)](../../tutorials/how-tos/send-xrp.md)
-    - [Monitorizar pagos entrantes con WebSocket](../../tutorials/http-websocket-apis/build-apps/monitor-incoming-payments-with-websocket.md)
+    - [Enviar XRP (Tutorial interactivo)](/docs/tutorials/payments/send-xrp.md)
+    - [Monitorizar pagos entrantes con WebSocket](/docs/tutorials/advanced-developer-topics/client-library-development/monitor-incoming-payments-with-websocket.md)
 - **Referencias:**
     - [Transacción Payment][]
     - [Resultados de Transaction](../../references/protocol/transactions/transaction-results/index.md)

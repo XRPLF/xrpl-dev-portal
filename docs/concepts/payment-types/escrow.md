@@ -102,12 +102,16 @@ reference_fee * (signer_count + 33 + (fulfillment_bytes / 16))
 
 For more information about Escrow in the XRP Ledger, see the following:
 
-- [Escrow Tutorials](../../tutorials/how-tos/use-specialized-payment-types/use-escrows/index.md)
+- **Escrow Tutorials:**
+    - [Send a Timed Escrow](../../tutorials/payments/send-a-timed-escrow.md)
+    - [Send a conditional Escrow](../../tutorials/payments/send-a-conditional-escrow.md)
+    - [Look Up Escrows](../../tutorials/payments/look-up-escrows.md)
+    - [Cancel an Expired Escrow](../../tutorials/payments/cancel-an-expired-escrow.md)
 - [Transaction Reference](../../references/protocol/transactions/index.md)
     - [EscrowCreate transaction][]
     - [EscrowFinish transaction][]
     - [EscrowCancel transaction][]
 - [Ledger Reference](../../references/protocol/ledger-data/index.md)
-    - [Escrow object](../../references/protocol/ledger-data/ledger-entry-types/escrow.md)
+    - [Escrow entry][]
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

@@ -19,6 +19,6 @@ Generalmente, al enviar stablecoins, utilizas una [transacción Payment][]. Algu
 - Omitir el campo `Paths`. Este campo es innecesario cuando se envía directamente desde el emisor, o desde una cartera caliente siempre y cuando los tokens que se envían y los que se reciben tengan el mismo código de divisa y emisor, es decir, sean la misma stablecoin. El campo `Paths` está destinado a [Pagos entre divisas](cross-currency-payments.md) y a pagos multi-salto (rippling) más largos. Si realizas una búsqueda de rutas (paths) de manera ingenua y adjuntas las rutas a tu transacción, tu pago puede tomar un camino indirecto más costoso en lugar de fallar si el camino directo no está disponible; los usuarios malintencionados incluso pueden configurar esto.
 - Si recibes un código de resultado `tecPATH_DRY`, esto suele indicar que el cliente no tiene configurada la línea de confianza (trustline) necesaria, o que los ajustes de rippling de tu emisor no están configurados correctamente.
 
-Para un tutorial detallado sobre cómo emitir un token en el XRP Ledger, ya sea una stablecoin u otro tipo, visita [Emitir un token fungible](../../tutorials/how-tos/use-tokens/issue-a-fungible-token.md).
+Para un tutorial detallado sobre cómo emitir un token en el XRP Ledger, ya sea una stablecoin u otro tipo, visita [Emitir un token fungible](../../tutorials/tokens/fungible-tokens/issue-a-fungible-token.md).
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}
