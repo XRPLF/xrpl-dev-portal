@@ -7,20 +7,20 @@ labels:
 ---
 # Paths
 
-In the XRP Ledger, paths define a way for [trust line tokens](trust-line-tokens.md) to flow through intermediary steps as part of a payment. Paths enable [cross-currency payments](../../payment-types/cross-currency-payments.md) by connecting sender and receiver through orders and [automated market makers (AMM)](../../../concepts/tokens/decentralized-exchange/automated-market-makers.md) in the XRP Ledger's [decentralized exchange](../decentralized-exchange/index.md). Paths also enable complex settlement of offsetting debts.
+In the XRP Ledger, paths define a way for [tokens](../index.md) to flow through intermediary steps as part of a payment. Paths enable [cross-currency payments](../../payment-types/cross-currency-payments.md) by connecting sender and receiver through orders and [automated market makers (AMM)](../../../concepts/tokens/decentralized-exchange/automated-market-makers.md) in the XRP Ledger's [decentralized exchange](../decentralized-exchange/index.md). Paths also enable complex settlement of offsetting debts.
 
 A single Payment transaction in the XRP Ledger can use multiple paths, combining liquidity from different sources to deliver the desired amount. Thus, a transaction includes a _path set_, which is a collection of possible paths to take. All paths in a path set must start with the same currency, and must also end with the same currency as each other.
 
-[XRP-to-XRP transactions](../../payment-types/direct-xrp-payments.md) and MPT transfers are always sent directly, and do not use any paths.
+[XRP-to-XRP transactions](../../payment-types/direct-xrp-payments.md) are always sent directly and do not use paths. MPT-to-MPT transfers of the same issuance are also direct, but MPTs can be included in paths for cross-currency payments.
 
 ## Path Steps
 
 A path is made of steps that connect the sender to the receiver of the payment. Every step is either:
 
-* Rippling through another address with the same currency.
+* Rippling through another address with the same currency (Trust Line Tokens only).
 * Trading tokens or XRP using an order book or AMM.
 
-[Rippling](rippling.md) is the process of exchanging equivalent tokens using the same currency code. In the typical case, rippling through an issuer involves reducing the tokens issued to one party and increasing the tokens issued to another party by an equal amount. The path step specifies which account to ripple through.
+[Rippling](rippling.md) is the process of exchanging equivalent Trust Line Tokens using the same currency code. In the typical case, rippling through an issuer involves reducing the tokens issued to one party and increasing the tokens issued to another party by an equal amount. The path step specifies which account to ripple through.
 
 [Trading tokens and possibly XRP](../decentralized-exchange/index.md) involves going to an order book or AMM and finding the best exchange rate between the assets involved for the amount being sent. The path step specifies which currency to change to, but does not record the state of the Offers in the order book. The canonical order of transactions is not final until a ledger is validated, so you cannot know for certain which Offers or AMMs a transaction will take, until after the transaction has been validated. (You can make an educated guess, since each transaction takes the best available exchange rates at the time it executes in the final ledger.) <!-- STYLE_OVERRIDE: will -->
 
@@ -78,9 +78,10 @@ A path set is an array. Each member of the path set is another array that repres
 
 | Field      | Value                  | Description                            |
 |:-----------|:-----------------------|:---------------------------------------|
-| `account`  | String - Address       | _(Optional)_ If present, this path step represents rippling through the specified address. MUST NOT be provided if this step specifies the `currency` or `issuer` fields. |
-| `currency` | String - Currency Code | _(Optional)_ If present, this path step represents changing currencies through an order book or AMM. The currency specified indicates the new currency. MUST NOT be provided if this step specifies the `account` field. |
-| `issuer`   | String - Address       | _(Optional)_ If present, this path step represents changing currencies and this address defines the issuer of the new currency. If omitted in a step with a non-XRP `currency`, a previous step of the path defines the issuer. If present when `currency` is omitted, indicates a path step that uses an order book or AMM between same-named currencies with different issuers. MUST be omitted if the `currency` is XRP. MUST NOT be provided if this step specifies the `account` field. |
+| `account`  | String - Address       | _(Optional)_ If present, this path step represents rippling through the specified address. MUST NOT be provided if this step specifies the `currency`, `issuer`, or `mpt_issuance_id` fields. |
+| `currency` | String - Currency Code | _(Optional)_ If present, this path step represents changing currencies through an order book or AMM. The currency specified indicates the new currency. MUST NOT be provided if this step specifies the `account` or `mpt_issuance_id` field. |
+| `issuer`   | String - Address       | _(Optional)_ If present, this path step represents changing currencies and this address defines the issuer of the new currency. If omitted in a step with a non-XRP `currency`, a previous step of the path defines the issuer. If present when `currency` is omitted, indicates a path step that uses an order book or AMM between same-named currencies with different issuers. MUST be omitted if the `currency` is XRP. MUST NOT be provided if this step specifies the `account` or `mpt_issuance_id` field. |
+| `mpt_issuance_id` | String | _(Optional)_ If present, this path step represents changing to an MPT through an order book or AMM. MUST NOT be provided if this step specifies the `account`, `currency`, or `issuer` fields. |
 | `type`     | Integer                | **DEPRECATED** _(Optional)_ An indicator of which other fields are present. |
 | `type_hex` | String                 | **DEPRECATED**: _(Optional)_ A hexadecimal representation of the `type` field. |
 
@@ -90,8 +91,9 @@ In summary, the following combination of fields are valid, optionally with `type
 - `currency` by itself
 - `currency` and `issuer` as long as the `currency` is not XRP
 - `issuer` by itself
+- `mpt_issuance_id` by itself
 
-Any other use of `account`, `currency`, and `issuer` fields in a path step is invalid.
+Any other use of `account`, `currency`, `issuer`, and `mpt_issuance_id` fields in a path step is invalid.
 
 The `type` field, used for the binary serialization of a path set, is actually constructed through bitwise operations on a single integer. The bits are defined as follows:
 
@@ -100,6 +102,7 @@ The `type` field, used for the binary serialization of a path set, is actually c
 | `0x01`      | 1               | A change of address (rippling): the `account` field is present. |
 | `0x10`      | 16              | A change of currency: the `currency` field is present. |
 | `0x20`      | 32              | A change of issuer: the `issuer` field is present. |
+| `0x40`      | 64              | A change to an MPT: the `mpt_issuance_id` field is present. |
 
 
 ## See Also

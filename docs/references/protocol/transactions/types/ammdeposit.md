@@ -13,14 +13,20 @@ If successful, this transaction creates a [trust line](../../../../concepts/toke
 
 {% admonition type="info" name="Note" %}
 You can't deposit either asset into an AMM if:
-- At least one of the pooled assets is frozen by the token issuer.
+
+- At least one of the pooled assets is frozen or locked by the token issuer.
 - You aren't authorized to hold at least one of the pooled assets.
 {% /admonition %}
 
 {% amendment-disclaimer name="AMM" /%}
 
+<!-- TODO: Add {% amendment-disclaimer name="MPTokensV2" mode="updated" /%} badge. -->
+
 ## Example {% $frontmatter.seo.title %} JSON
 
+{% tabs %}
+
+{% tab label="Trust Line Token/XRP" %}
 ```json
 {
     "Account" : "rJVUeRqDFNs2xqA7ncVE6ZoAhPUoaJJSQm",
@@ -43,6 +49,35 @@ You can't deposit either asset into an AMM if:
     "TransactionType" : "AMMDeposit"
 }
 ```
+{% /tab %}
+
+{% tab label="MPT/MPT" %}
+```json
+{
+    "Account" : "rJVUeRqDFNs2xqA7ncVE6ZoAhPUoaJJSQm",
+    "Amount" : {
+        "mpt_issuance_id" : "00002403C84A0A28E0190E208E982C352BBD71B2",
+        "value" : "500"
+    },
+    "Amount2" : {
+        "mpt_issuance_id" : "00002710D5F38CCE3B43BD597D1B6CCED4AC2D5C",
+        "value" : "1000"
+    },
+    "Asset" : {
+        "mpt_issuance_id" : "00002403C84A0A28E0190E208E982C352BBD71B2"
+    },
+    "Asset2" : {
+        "mpt_issuance_id" : "00002710D5F38CCE3B43BD597D1B6CCED4AC2D5C"
+    },
+    "Fee" : "10",
+    "Flags" : 1048576,
+    "Sequence" : 8,
+    "TransactionType" : "AMMDeposit"
+}
+```
+{% /tab %}
+
+{% /tabs %}
 
 {% tx-example txid="BB00ECE591DFD0F8F410C5C2C639F1C1D1D2EFD92DF567AA226C3BDBE712FDD9" /%}
 
@@ -135,9 +170,14 @@ Besides errors that can occur for all transactions, {% $frontmatter.seo.title %}
 | `tecAMM_EMPTY`          | The AMM currently holds no assets, so you cannot do a normal deposit. You must use the Empty AMM Special Case deposit instead. |
 | `tecAMM_NOT_EMPTY`      | The transaction specified `tfTwoAssetIfEmpty`, but the AMM was not empty. |
 | `tecAMM_FAILED`         | The conditions on the deposit could not be satisfied. For example, the requested effective price in the `EPrice` field is too low. |
-| `tecFROZEN`             | The transaction tried to deposit a [frozen](../../../../concepts/tokens/fungible-tokens/freezes.md) token, or at least one of the paired tokens is frozen. |
+| `tecFROZEN`             | The transaction tried to deposit a [frozen](../../../../concepts/tokens/fungible-tokens/freezes.md) Trust Line Token, or at least one of the paired tokens is frozen. |
 | `tecINSUF_RESERVE_LINE` | The sender of this transaction does meet the increased [reserve requirement](../../../../concepts/accounts/reserves.md) of processing this transaction, probably because they need a new trust line to hold the LP Tokens, and they don't have enough XRP to meet the additional owner reserve for a new trust line. |
+| `tecLOCKED`             | At least one of the assets is an MPT that is currently [locked](../../../../concepts/tokens/fungible-tokens/deep-freeze.md#how-does-mpt-freezelock-behavior-differ-from-iou). |
+| `tecNO_ISSUER`          | The issuer account of at least one MPT does not exist. |
+| `tecNO_PERMISSION`      | At least one of the MPT assets does not have **Can Trade** or **Can Transfer** enabled. |
+| `tecOBJECT_NOT_FOUND`   | At least one of the MPT issuances does not exist. |
 | `tecUNFUNDED_AMM`       | The sender does not have a high enough balance to make the specified deposit. |
+| `temDISABLED`           | At least one of the assets or amounts is an MPT, but the [MPTokensV2 amendment][] is not enabled. |
 | `temBAD_AMM_TOKENS`     | The transaction specified the LP Tokens incorrectly. For example, the `issuer` is not the AMM's associated AccountRoot address or the `currency` is not the currency code for this AMM's LP Tokens, or the transaction specified this AMM's LP Tokens in one of the asset fields. |
 | `temBAD_AMOUNT`         | An amount specified in the transaction is invalid. For example, a deposit amount is negative. |
 | `temBAD_FEE`            | A fee value specified in the transaction is invalid. For example, the trading fee is outside the allowable range. |

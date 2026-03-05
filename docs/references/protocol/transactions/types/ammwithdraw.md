@@ -9,10 +9,19 @@ labels:
 
 Withdraw assets from an [Automated Market Maker](../../../../concepts/tokens/decentralized-exchange/automated-market-makers.md) (AMM) instance by returning the AMM's liquidity provider tokens (LP Tokens).
 
+{% admonition type="info" name="Note" %}
+If you withdraw an MPT but don't already have an [MPToken entry][] for it, this transaction automatically creates one for you.
+{% /admonition %}
+
 {% amendment-disclaimer name="AMM" /%}
+
+<!-- TODO: Add {% amendment-disclaimer name="MPTokensV2" mode="updated" /%} badge. -->
 
 ## Example {% $frontmatter.seo.title %} JSON
 
+{% tabs %}
+
+{% tab label="Trust Line Token/XRP" %}
 ```json
 {
     "Account" : "rJVUeRqDFNs2xqA7ncVE6ZoAhPUoaJJSQm",
@@ -35,6 +44,35 @@ Withdraw assets from an [Automated Market Maker](../../../../concepts/tokens/dec
     "TransactionType" : "AMMWithdraw"
 }
 ```
+{% /tab %}
+
+{% tab label="MPT/MPT" %}
+```json
+{
+    "Account" : "rJVUeRqDFNs2xqA7ncVE6ZoAhPUoaJJSQm",
+    "Amount" : {
+        "mpt_issuance_id" : "00002403C84A0A28E0190E208E982C352BBD71B2",
+        "value" : "250"
+    },
+    "Amount2" : {
+        "mpt_issuance_id" : "00002710D5F38CCE3B43BD597D1B6CCED4AC2D5C",
+        "value" : "500"
+    },
+    "Asset" : {
+        "mpt_issuance_id" : "00002403C84A0A28E0190E208E982C352BBD71B2"
+    },
+    "Asset2" : {
+        "mpt_issuance_id" : "00002710D5F38CCE3B43BD597D1B6CCED4AC2D5C"
+    },
+    "Fee" : "10",
+    "Flags" : 1048576,
+    "Sequence" : 11,
+    "TransactionType" : "AMMWithdraw"
+}
+```
+{% /tab %}
+
+{% /tabs %}
 
 {% tx-example txid="E606F37847E012E0D71267ED18CEA8B235AD9409BB6C2383A7D53ADEC2F314D4" /%}
 
@@ -114,9 +152,14 @@ Besides errors that can occur for all transactions, {% $frontmatter.seo.title %}
 | `tecAMM_BALANCE`        | The transaction would withdraw all of one asset from the pool, or rounding would cause a "withdraw all" to leave a nonzero amount behind. |
 | `tecAMM_FAILED`         | The conditions on the withdrawal could not be satisfied; for example, the requested effective price in the `EPrice` field is too low. |
 | `tecAMM_INVALID_TOKENS` | The AMM for this token pair does not exist, or one of the calculations resulted in a withdrawal amount rounding to zero. |
-| `tecFROZEN`             | The transaction tried to withdraw a [frozen](../../../../concepts/tokens/fungible-tokens/freezes.md) token. |
+| `tecFROZEN`             | The transaction tried to withdraw a [frozen](../../../../concepts/tokens/fungible-tokens/freezes.md) Trust Line Token. |
 | `tecINSUF_RESERVE_LINE` | The sender of this transaction does not meet the increased [reserve requirement](../../../../concepts/accounts/reserves.md) of processing this transaction, probably because they need at least one new trust line to hold one of the assets to be withdrawn, and they don't have enough XRP to meet the additional owner reserve for a new trust line. |
+| `tecLOCKED`             | At least one of the withdrawal assets is an MPT that is currently [locked](../../../../concepts/tokens/fungible-tokens/deep-freeze.md#how-does-mpt-freezelock-behavior-differ-from-iou). |
 | `tecNO_AUTH`            | The sender is not authorized to hold one of the AMM assets. |
+| `tecNO_ISSUER`          | The issuer account of at least one MPT does not exist. |
+| `tecNO_PERMISSION`      | At least one of the MPT withdrawal assets does not have **Can Trade** or **Can Transfer** enabled. |
+| `tecOBJECT_NOT_FOUND`   | At least one of the MPT issuances does not exist. |
+| `temDISABLED`           | At least one of the assets or amounts is an MPT, but the [MPTokensV2 amendment][] is not enabled. |
 | `temMALFORMED`          | The transaction specified an invalid combination of fields. See [AMMWithdraw Modes](#ammwithdraw-modes). (This error can also occur if the transaction is malformed in other ways.) |
 | `temBAD_AMM_TOKENS`     | The transaction specified the LP Tokens incorrectly; for example, the `issuer` is not the AMM's associated AccountRoot address or the `currency` is not the currency code for this AMM's LP Tokens, or the transaction specified this AMM's LP Tokens in one of the asset fields.  |
 | `terNO_AMM`             | The Automated Market Maker instance for the asset pair in this transaction does not exist. |

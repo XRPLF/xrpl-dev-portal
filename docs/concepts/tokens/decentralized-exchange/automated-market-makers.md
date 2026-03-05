@@ -28,7 +28,14 @@ LP tokens enable liquidity providers to:
 
 ## How the AMM Works
 
-An AMM holds two different assets: at most one of these can be XRP, and one or both of them can be [tokens](../index.md). 
+An AMM holds two different assets: at most one of these can be XRP, and one or both of them can be [tokens](../index.md). Valid token combinations are:
+
+- XRP/Trust Line Token
+- Trust Line Token/Trust Line Token
+- XRP/MPT
+- Trust Line Token/MPT
+- MPT/MPT (each with a unique `mpt_issuance_id`)
+
 For any given pair of assets, there can be up to one AMM in the ledger. Anyone can create the AMM for an asset pair if it doesn't exist, or deposit to an AMM if it already exists.
 
 When you want to trade in the decentralized exchange, your [offers](offers.md) and [cross-currency payments](../../payment-types/cross-currency-payments.md) can automatically use AMMs to complete the trade. A single transaction might execute by matching offers, AMMs, or a mix of both, depending on what's cheaper. You can [read a transaction's metadata](../../transactions/finality-of-results/look-up-transaction-results.md) to see what liquidity it consumed.
@@ -47,7 +54,9 @@ The XRP Ledger implements a _geometric mean_ AMM with a weight parameter of 0.5,
 
 ### Token Issuers
 
-Tokens with different issuers are considered different assets. This means that there can be an AMM for two tokens with the same currency code but different issuers.  For example, _FOO_ issued by WayGate is different than _FOO_ issued by StableFoo. Similarly, the tokens can have the same issuer but different currency codes. The trade direction doesn't matter; the AMM for FOO.WayGate to XRP is the same as the AMM for XRP to FOO.WayGate.
+Trust Line Tokens with different issuers are considered different assets. This means that there can be an AMM for two Trust Line Tokens with the same currency code but different issuers. For example, _FOO_ issued by WayGate is different than _FOO_ issued by StableFoo. Trust Line Tokens can also have the same issuer but different currency codes. The trade direction doesn't matter; the AMM for FOO.WayGate to XRP is the same as the AMM for XRP to FOO.WayGate.
+
+For MPTs, each issuance has a unique `mpt_issuance_id` that identifies it, so there is no ambiguity between issuers.
 
 ### Currency Risk
 
@@ -82,8 +91,9 @@ The diagram below illustrates how an offer interacts with other offers and AMM l
 To prevent misuse, some restrictions apply to the assets used in an AMM. If you try to create an AMM with an asset that does not meet these restrictions, the transaction fails. The rules are as follows:
 
 - The asset must not be an LP token from another AMM.
-- If the asset is a token whose issuer uses [Authorized Trust Lines](../fungible-tokens/authorized-trust-lines.md), the creator of the AMM must be authorized to hold those tokens. Only your authorized trust lines can deposit that token into the AMM or withdraw it; however, you can still deposit or withdraw the other asset.
-- If the [Clawback amendment][] is enabled, the issuer of the token must not have enabled the ability to claw back their tokens.
+- If the asset is a Trust Line Token whose issuer uses [Authorized Trust Lines](../fungible-tokens/authorized-trust-lines.md), the creator of the AMM must be authorized to hold those tokens. Similarly, if the asset is an MPT with the **Require Auth** flag enabled, the creator must be authorized to hold that MPT. Only authorized holders can deposit that token into the AMM or withdraw it; however, you can still deposit or withdraw the other asset.
+- The issuer must not be able to claw back the asset. For Trust Line Tokens, this means the issuer has not enabled **Allow Trust Line Clawback** on their account. For MPTs, the **Can Clawback** flag must not be enabled on the MPT issuance.
+- If the asset is an MPT, the **Can Trade** flag must be enabled on the issuance, and the **Can Transfer** flag must also be enabled if the account is not the issuer.
 
 ## AMM and LP Tokens
 
@@ -173,7 +183,7 @@ In the ledger's state data, an AMM consists of multiple [ledger entries](../../.
 
     The address of this AccountRoot is chosen somewhat randomly when the AMM is created, and it is different if the AMM is deleted and re-created. This is to prevent people from funding the AMM account with excess XRP in advance.
 
-- [Trust lines](../fungible-tokens/index.md) to the special AMM Account for the tokens in the AMM's pool.
+- [RippleState entries](../../../references/protocol/ledger-data/ledger-entry-types/ripplestate.md) for any Trust Line Tokens in the AMM's pool, or [MPToken entries](../../../references/protocol/ledger-data/ledger-entry-types/mptoken.md) for any MPTs.
 
 These ledger entries are not owned by any account, so the [reserve requirement](../../accounts/reserves.md) does not apply to them. However, to prevent spam, the transaction to create an AMM has a special [transaction cost](../../transactions/transaction-cost.md) that requires the sender to burn a larger than usual amount of XRP.
 
@@ -185,9 +195,9 @@ An AMM is deleted when an [AMMWithdraw transaction][] withdraws all assets from 
 - AMM
 - AccountRoot
 - Trust lines for the AMM's LP tokens. Those trust lines would have a balance of 0 but may have other details, such as the limit, set to a non-default value.
-- Trust lines for the tokens that were in the AMM pool.
+- Trust lines for any Trust Line Tokens that were in the AMM pool, or MPToken objects for any MPTs.
 
-If there are more than 512 trust lines attached to the AMM account when it would be deleted, the withdraw succeeds and deletes as many trust lines as it can, but leaves the AMM in the ledger with no assets in its pool.
+If there are more than 512 trust lines attached to the AMM account when it would be deleted, the withdraw succeeds and deletes as many as it can, but leaves the AMM in the ledger with no assets in its pool.
 
 While an AMM has no assets in its pool, anyone can delete it by sending an [AMMDelete transaction][]; if the remaining number of trust lines is still greater than the limit, multiple AMMDelete transactions might be necessary to fully delete the AMM. Alternatively, anyone can perform a [special deposit](../../../references/protocol/transactions/types/ammdeposit.md#empty-amm-special-case) to fund the AMM as if it were new. No other operations are valid on an AMM with an empty asset pool.
 
