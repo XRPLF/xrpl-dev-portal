@@ -326,7 +326,8 @@
                 - page: docs/tutorials/best-practices/key-management/remove-a-regular-key-pair.md
                 - page: docs/tutorials/best-practices/key-management/offline-account-setup.md
                 - page: docs/tutorials/best-practices/key-management/set-up-multi-signing.md
-                - page: docs/tutorials/best-practices/key-management/send-a-multi-signed-transaction.md        
+                - page: docs/tutorials/best-practices/key-management/send-a-multi-signed-transaction.md
+                - page: docs/tutorials/best-practices/key-management/delete-an-account.md
         - group: Advanced Developer Topics
           groupTranslationKey: sidebar.docs.tutorials.advancedDeveloperTopics
           expanded: false
