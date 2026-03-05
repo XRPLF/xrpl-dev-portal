@@ -23,6 +23,7 @@ const logos = {
     "xrp-toolkit",
     "bithomp",
     "onthedex",
+    "insumerapi",
   ],
   developer_tooling: ["cryptum", "evernode", "threezy", "tokenize"],
   interoperability: ["multichain"],
@@ -170,6 +171,15 @@ const cardsData = [
     category_id: "infrastructure",
     category_name: "Infrastructure",
     link: "https://gatehub.net/markets",
+  },
+  {
+    id: "insumerapi",
+    title: "InsumerAPI",
+    description:
+      "Trust-line eligibility verification for XRPL commerce. Performs issuer-aware reads of RLUSD, USDC, and any trust-line token, evaluates balance thresholds, and returns ECDSA-signed attestations with ledgerIndex and conditionHash for independent verification.",
+    category_id: "infrastructure",
+    category_name: "Infrastructure",
+    link: "https://insumermodel.com/demos/xrpl/",
   },
   {
     id: "gem-wallet",
