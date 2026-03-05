@@ -1,0 +1,73 @@
+name: Stale Issue & PR Management
+
+on:
+  schedule:
+    # Runs daily at 01:00 UTC
+    - cron: "0 1 * * *"
+  workflow_dispatch:
+
+permissions:
+  issues: write
+  pull-requests: write
+
+jobs:
+  stale:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/stale@v9
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+
+          # ── Issues ────────────────────────────────────────────────────────
+          days-before-issue-stale: 90
+          days-before-issue-close: 14
+          stale-issue-label: "stale"
+          stale-issue-message: >
+            This issue has been open for 90 days with no recent activity.
+            It will be closed in 14 days unless someone comments or removes
+            the `stale` label.
+            
+            If this issue is still relevant, please:
+            - Leave a comment with an update
+            - Remove the `stale` label if you plan to work on it
+            - Link it to an open PR if work is already in progress
+
+          close-issue-message: >
+            This issue was closed due to inactivity (90 + 14 days).
+            If you believe it is still relevant, please open a new issue
+            and reference this one.
+
+          # Issues with these labels are never marked stale
+          exempt-issue-labels: >
+            pinned,
+            security,
+            good first issue,
+            help wanted
+
+          # ── Pull Requests ─────────────────────────────────────────────────
+          days-before-pr-stale: 30
+          days-before-pr-close: 7
+          stale-pr-label: "stale"
+          stale-pr-message: >
+            This pull request has been open for 30 days with no recent activity.
+            It will be closed in 7 days unless there is new activity.
+            
+            If this PR is still in progress:
+            - Push an update or leave a comment
+            - Remove the `stale` label to reset the timer
+
+          close-pr-message: >
+            This pull request was closed due to inactivity (30 + 7 days).
+            The branch has been preserved. Please open a new PR if you
+            wish to continue this work.
+
+          exempt-pr-labels: >
+            pinned,
+            security,
+            work in progress,
+            wip
+
+          # Keep the stale label when the issue/PR becomes active again
+          remove-stale-when-updated: true
+          # Only count non-bot comments as activity
+          operations-per-run: 100

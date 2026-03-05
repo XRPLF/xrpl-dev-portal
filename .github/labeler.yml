@@ -1,0 +1,80 @@
+# Auto-labeler configuration for pull_request_target events.
+# Labels are applied based on which files are changed in the PR.
+# See: https://github.com/actions/labeler
+
+"content updates":
+  - changed-files:
+      - any-glob-to-any-file:
+          - "docs/**/*.md"
+          - "docs/**/*.mdx"
+          - "docs/**/*.page.tsx"
+
+"web dev":
+  - changed-files:
+      - any-glob-to-any-file:
+          - "@theme/**"
+          - "styles/**"
+          - "*.tsx"
+          - "*.ts"
+          - "shared/**"
+
+"docs-tooling":
+  - changed-files:
+      - any-glob-to-any-file:
+          - ".github/**"
+          - "redocly.yaml"
+          - "package.json"
+          - "package-lock.json"
+          - "tsconfig.json"
+          - "sidebars.yaml"
+          - "redirects.yaml"
+
+"localization":
+  - changed-files:
+      - any-glob-to-any-file:
+          - "@l10n/**"
+          - "translations.yaml"
+          - "**/*.ja.md"
+          - "**/*.es-ES.md"
+
+"javascript":
+  - changed-files:
+      - any-glob-to-any-file:
+          - "_code-samples/**/*.js"
+          - "_code-samples/**/*.mjs"
+          - "_code-samples/**/*.cjs"
+          - "docs/tutorials/**/*javascript*"
+          - "docs/tutorials/**/*js*"
+
+"python":
+  - changed-files:
+      - any-glob-to-any-file:
+          - "_code-samples/**/*.py"
+          - "docs/tutorials/**/*python*"
+
+"java":
+  - changed-files:
+      - any-glob-to-any-file:
+          - "_code-samples/**/*.java"
+          - "docs/tutorials/**/*java*"
+
+"tokenization":
+  - changed-files:
+      - any-glob-to-any-file:
+          - "docs/**/*nft*"
+          - "docs/**/*token*"
+          - "docs/**/*fungible*"
+          - "docs/tutorials/nfts/**"
+          - "docs/concepts/tokens/**"
+
+"infra":
+  - changed-files:
+      - any-glob-to-any-file:
+          - "docs/infrastructure/**"
+
+"organization":
+  - changed-files:
+      - any-glob-to-any-file:
+          - "sidebars.yaml"
+          - "top-nav.yaml"
+          - "redirects.yaml"
