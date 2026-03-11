@@ -1,5 +1,7 @@
 # Contributor Covenant Code of Conduct
 
+For translated verisons of this document, see the [@l10n folder](@l10n/).
+
 ## Our Pledge
 
 In the interest of fostering an open and welcoming environment, we as contributors and maintainers pledge to make participation in our project and our community a harassment-free experience for everyone, regardless of, but not limited to characteristics like age, body size, disability, ethnicity, sex characteristics, gender identity and expression, level of experience, education, socio-economic status, nationality, personal appearance, race, religion, or sexual identity and orientation.
