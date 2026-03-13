@@ -145,14 +145,17 @@ In the above example with a ¥95/$15 offer and a ¥5/$2 offer, the situation is 
 
 ## MPT Payments
 
-When you send a payment using [MPTs](/docs/concepts/tokens/fungible-tokens/multi-purpose-tokens), the _Amount_ field requires only the `mpt_issuance_id` and the `value`. The `MPTokenIssuanceID` is used to uniquely identify the MPT for the transaction.
+When you send a payment using [MPTs](/docs/concepts/tokens/fungible-tokens/multi-purpose-tokens), the `Amount` (or `DeliverMax`), `DeliverMin`, `SendMax`, and `Paths` fields can specify MPT amounts using `mpt_issuance_id` and `value`.
 
-Version 1 MPTokens only support direct MPT payment between accounts. They cannot be traded in the decentralized exchange.
+MPTs can be used in direct payments, cross-currency payments, payment paths, and the decentralized exchange.
 
-{% amendment-disclaimer name="MPTokensV1" /%}
+<!-- {% amendment-disclaimer name="MPTokensV2" /%} -->
 
 ### Sample MPT Payment transaction
 
+{% tabs %}
+
+{% tab label="Direct MPT Payment" %}
 ```json
 {
    "Account": "rLWSJKbwYSzG32JuGissYd66MFTvfMk4Bt",
@@ -160,19 +163,48 @@ Version 1 MPTokens only support direct MPT payment between accounts. They cannot
       "mpt_issuance_id": "006419063CEBEB49FC20032206CE0F203138BFC59F1AC578",
       "value": "100"
    },
-   "DeliverMax": {
-      "mpt_issuance_id": "006419063CEBEB49FC20032206CE0F203138BFC59F1AC578",
-      "value": "100"
-   },
-   "SendMax": {
-      "mpt_issuance_id": "006419063CEBEB49FC20032206CE0F203138BFC59F1AC578",
-      "value": "100"
-   },
    "Destination": "raZ3wTTKiMHn3BiStvz4ET9rbCHfU1DMak",
    "Fee": "120",
-   "Flags": 0,
+   "Flags": 0
 }
 ```
+{% /tab %}
+
+{% tab label="Cross-Currency with MPT" %}
+```json
+{
+  "Account": "rJ85Mok8YRNxSo7NnxKGrPuk29uAeZQqwZ",
+  "DeliverMax": {
+    "mpt_issuance_id": "00000010A407AF5856CCF3C42619DAA925813FC955C72983",
+    "value": "100"
+  },
+  "DeliverMin": {
+    "mpt_issuance_id": "00000010A407AF5856CCF3C42619DAA925813FC955C72983",
+    "value": "90"
+  },
+  "Destination": "rHKBGB4vhnnVFmfrj4sUx3F9riz2CiHgCK",
+  "Fee": "10",
+  "Flags": 131072,
+  "Paths": [
+    [
+      {
+        "mpt_issuance_id": "00000004A407AF5856CCF3C42619DAA925813FC955C72983"
+      },
+      {
+        "mpt_issuance_id": "0000000AA407AF5856CCF3C42619DAA925813FC955C72983"
+      },
+      {
+        "mpt_issuance_id": "00000010A407AF5856CCF3C42619DAA925813FC955C72983"
+      }
+    ]
+  ],
+  "SendMax": "100000000"
+}
+```
+{% /tab %}
+
+{% /tabs %}
+
 ## Credential IDs
 
 You can send money to an account that uses [Deposit Authorization](../../../../concepts/accounts/depositauth.md) by providing the `CredentialIDs` field with an exact set of credentials that are preauthorized by the recipient. The set of credentials must match a [DepositPreauth entry](../../ledger-data/ledger-entry-types/depositpreauth.md) in the ledger.

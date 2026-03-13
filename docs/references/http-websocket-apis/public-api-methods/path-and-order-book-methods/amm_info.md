@@ -12,6 +12,7 @@ labels:
 The {% code-page-name /%} method gets information about an [Automated Market Maker (AMM)](/docs/concepts/tokens/decentralized-exchange/automated-market-makers) instance.
 
 {% amendment-disclaimer name="AMM" /%}
+<!-- {% amendment-disclaimer name="MPTokensV2" mode="updated" /%} -->
 
 
 ### Request Format
@@ -64,8 +65,8 @@ The request includes the following parameters:
 |:--------------|:-----------------|:----------|-------------|
 | `account`     | String - [Address][] | No    | Show only LP Tokens held by this liquidity provider. |
 | `amm_account` | String - [Address][] | No    | The address of the AMM's special AccountRoot. (This is the `issuer` of the AMM's LP Tokens.) |
-| `asset`       | Object           | No        | One of the assets of the AMM to look up, as an object with `currency` and `issuer` fields (omit `issuer` for XRP), like [currency amounts][Currency Amount]. |
-| `asset2`      | Object           | No        | The other of the assets of the AMM, as an object with `currency` and `issuer` fields (omit `issuer` for XRP), like [currency amounts][Currency Amount]. |
+| `asset`       | Object           | No        | One of the assets of the AMM to look up. For Trust Line Tokens, use an object with `currency` and `issuer` fields (omit `issuer` for XRP). For MPTs, use an object with `mpt_issuance_id` field. |
+| `asset2`      | Object           | No        | The other of the assets of the AMM. For Trust Line Tokens, use an object with `currency` and `issuer` fields (omit `issuer` for XRP). For MPTs, use an object with `mpt_issuance_id` field. |
 
 You must specify _either_ `amm_account` or both `asset` and `asset2`.
 

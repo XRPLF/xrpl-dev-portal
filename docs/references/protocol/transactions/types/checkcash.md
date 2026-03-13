@@ -11,10 +11,19 @@ Attempts to redeem a [check](../../../../concepts/payment-types/checks.md) to re
 
 Since the funds for a check are not guaranteed, redeeming a check can fail because the sender does not have a high enough balance or because there is not enough liquidity to deliver the funds. If this happens, the check remains in the ledger and the destination can try to cash it again later, or for a different amount.
 
+{% admonition type="info" name="Note" %}
+If you cash a Check for an MPT but don't already have an [MPToken entry][] for it, this transaction automatically creates one for you.
+{% /admonition %}
+
 {% amendment-disclaimer name="Checks" /%}
+
+<!-- TODO: Add {% amendment-disclaimer name="MPTokensV2" mode="updated" /%} badge. -->
 
 ## Example {% $frontmatter.seo.title %} JSON
 
+{% tabs %}
+
+{% tab label="XRP" %}
 ```json
 {
     "Account": "rfkE1aSy9G8Upk4JssnwBxhEv5p4mn2KTy",
@@ -24,6 +33,24 @@ Since the funds for a check are not guaranteed, redeeming a check can fail becau
     "Fee": "12"
 }
 ```
+{% /tab %}
+
+{% tab label="MPT" %}
+```json
+{
+    "Account": "rfkE1aSy9G8Upk4JssnwBxhEv5p4mn2KTy",
+    "TransactionType": "CheckCash",
+    "Amount": {
+        "mpt_issuance_id": "00000003430427B80BD2D09D36B70B969E12801065F22308",
+        "value": "100"
+    },
+    "CheckID": "838766BA2B995C00744175F69A1B11E32C3DBC40E64801A4056FCBD657F57334",
+    "Fee": "12"
+}
+```
+{% /tab %}
+
+{% /tabs %}
 
 {% tx-example txid="67B71B13601CDA5402920691841AC27A156463678E106FABD45357175F9FF406" /%}
 
@@ -39,12 +66,20 @@ The transaction ***must*** include either `Amount` or `DeliverMin`, but not both
 
 ## Error Cases
 
-- If the sender of the CheckCash transaction is not the `Destination` of the check, the transaction fails with the result code `tecNO_PERMISSION`.
-- If the Check identified by the `CheckID` field does not exist, the transaction fails with the result `tecNO_ENTRY`.
-- If the Check identified by the `CheckID` field has already expired, the transaction fails with the result `tecEXPIRED`.
-- If the destination of the Check has the `RequireDest` flag enabled but the Check, as created, does not have a destination tag, the transaction fails with the result code `tecDST_TAG_NEEDED`.
-- If the transaction specifies both `Amount` and `DeliverMin`, or omits both, the transaction fails with the result `temMALFORMED`.
-- If the `Amount` or `DeliverMin` does not match the currency (and issuer, if not XRP) of the Check, the transaction fails with the result `temBAD_CURRENCY`.
+Besides errors that can occur for all transactions, {% $frontmatter.seo.title %} transactions can result in the following [transaction result codes](../transaction-results/index.md):
+
+| Error Code | Description |
+|:-----------|:------------|
+| `tecDST_TAG_NEEDED` | The destination of the Check has the `RequireDest` flag enabled but the Check, as created, does not have a destination tag. |
+| `tecEXPIRED` | The Check identified by the `CheckID` field has already expired. |
+| `tecFROZEN` | The destination's trust line to the issuer is frozen, or, the MPT is locked. |
+| `tecNO_AUTH` | The transaction involves a token whose issuer uses [Authorized Trust Lines](../../../../concepts/tokens/fungible-tokens/authorized-trust-lines.md) and the trust line that would receive the tokens exists but has not been authorized. Or, the destination is not authorized to hold the MPT. |
+| `tecNO_ENTRY` | The Check identified by the `CheckID` field does not exist. |
+| `tecNO_PERMISSION` | The sender of the CheckCash transaction is not the `Destination` of the check. This can also occur when the **Can Trade** flag is not set on an `MPTokenIssuance`. |
+| `tecPATH_PARTIAL` | The requested amount exceeds the Check's `SendMax`, the Check owner has insufficient available funds, or the `DeliverMin` amount could not be delivered. |
+| `temBAD_CURRENCY` | The `Amount` or `DeliverMin` does not match the currency (and issuer, if not XRP) of the Check. |
+| `temDISABLED` | `Amount` or `DeliverMin` specifies an MPT but the [MPTokensV2 amendment][] is not enabled. |
+| `temMALFORMED` | The transaction specifies both `Amount` and `DeliverMin`, or omits both. |
 
 ## See Also
 

@@ -356,17 +356,21 @@ Each path consists of **1 to 8** path steps in order[[Source]](https://github.co
 
 The following table describes the possible fields and the bitwise flags to set in the type byte to indicate them:
 
-| Type Flag | Field Present | Field Type        | Bit Size | Order |
-|:----------|:--------------|:------------------|:---------|:------|
-| `0x01`    | `account`     | [AccountID][]     | 160 bits | 1st   |
-| `0x10`    | `currency`    | [Currency Code][] | 160 bits | 2nd   |
-| `0x20`    | `issuer`      | [AccountID][]     | 160 bits | 3rd   |
+| Type Flag | Field Present     | Field Type           | Bit Size | Order |
+|:----------|:------------------|:---------------------|:---------|:------|
+| `0x01`    | `account`         | [AccountID][]        | 160 bits | 1st   |
+| `0x10`    | `currency`        | [Currency Code][]    | 160 bits | 2nd   |
+| `0x40`    | `mpt_issuance_id` | [MPT Issuance ID][]  | 192 bits | 2nd   |
+| `0x20`    | `issuer`          | [AccountID][]        | 160 bits | 3rd   |
 
 [Currency Code]: data-types/currency-formats.md#standard-currency-codes
+[MPT Issuance ID]: ledger-data/ledger-entry-types/mptokenissuance.md#mptokenissuanceid
 
 Some combinations are invalid; see [Path Specifications](../../concepts/tokens/fungible-tokens/paths.md#path-specifications) for details.
 
 The AccountIDs in the `account` and `issuer` fields are presented _without_ a length prefix. When the `currency` is XRP, the currency code is represented as 160 bits of zeroes.
+
+The `currency` and `mpt_issuance_id` fields are mutually exclusive. A path step can contain either a `currency` or an `mpt_issuance_id`, but not both. Both occupy the 2nd position in the serialization order when present.
 
 Each step is followed directly by the next step of the path. As described above, the last step of a path is followed by either `0xff` (if another path follows) or `0x00` (if this ends the last path).
 

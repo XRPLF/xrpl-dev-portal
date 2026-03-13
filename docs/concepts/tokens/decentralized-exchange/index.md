@@ -15,6 +15,8 @@ The XRP Ledger has possibly the world's oldest _decentralized exchange_ (sometim
 
 {% admonition type="warning" name="Caution" %}Anyone can [issue a token](../../../tutorials/tokens/fungible-tokens/issue-a-fungible-token.md) with any currency code or ticker symbol they want and sell it in the decentralized exchange. Always perform due diligence before buying a token, and pay attention to the issuer. Otherwise, you might give up something of value and receive worthless tokens in exchange.{% /admonition %}
 
+<!-- {% amendment-disclaimer name="MPTokensV2" mode="updated" /%} -->
+
 ## What is a Decentralized Exchange? 
 
 A decentralized exchange, abbreviated "DEX", is a platform that enables anyone to directly buy, sell, and trade digital assets with one another, without relying on a centralized intermediary like a bank or traditional exchange. DEXes typically use smart contracts and automated market makers (AMMs) to facilitate peer-to-peer trading and liquidity provision, enabling users to retain control over their assets while interacting in a decentralized manner. 
@@ -43,7 +45,7 @@ The XRP Ledger's CLOB DEX is unique in that it does **not require** AMMs to swap
 
 ## DEX Structure
 
-The XRP Ledger's decentralized exchange consists of an unlimited number of currency pairs, tracked on-demand when users make trades. A currency pair can consist of XRP and a token or two different tokens; tokens are always identified by the combination of an issuer and a currency code. It is possible to trade between two tokens with the same currency code and different issuers, or the same issuer and different currency codes. <!-- STYLE_OVERRIDE: limited number -->
+The XRP Ledger's decentralized exchange consists of an unlimited number of currency pairs, tracked on-demand when users make trades. A currency pair can consist of XRP and a token or two different tokens. Trust line tokens are identified by the combination of an issuer and a currency code. Multi-Purpose Tokens (MPTs) are identified by a unique `mpt_issuance_id`. You can trade between any combination of XRP, trust line tokens, and MPTs. <!-- STYLE_OVERRIDE: limited number -->
 
 As with all changes to the XRP Ledger, you need to send a [transaction](../../transactions/index.md) to make a trade. A trade in the XRP Ledger is called an [Offer](offers.md). An Offer is effectively a [_limit order_](https://en.wikipedia.org/wiki/Order_(exchange)#Limit_order) to buy or sell a specific amount of one currency (XRP or a token) for a specific amount of another. When the network executes an Offer, if there are any matching Offers for the same currency pair, they are consumed starting with the best exchange rate first.
 
@@ -80,12 +82,14 @@ Because trades are only executed each time a new ledger closes (approximately ev
 
 The XRP Ledger does not natively represent concepts such as market orders, stop orders, or trading on leverage. Some of these may be possible with creative use of custom tokens and Offer properties.
 
-As a decentralized system, the XRP Ledger does not have any personal information on the actual people and organizations behind the [accounts](../../accounts/index.md) involved in trading. The ledger itself cannot implement restrictions around who can or cannot participate in trading, and users and issuers must take care to follow any relevant laws to regulate trading tokens that represent various types of underlying assets. Features such as [freezes](../fungible-tokens/freezes.md) and [authorized trust lines](../fungible-tokens/authorized-trust-lines.md) are intended to help issuers comply with relevant laws and regulations.
+As a decentralized system, the XRP Ledger does not have any personal information on the actual people and organizations behind the [accounts](../../accounts/index.md) involved in trading. The ledger itself cannot implement restrictions around who can or cannot participate in trading, and users and issuers must take care to follow any relevant laws to regulate trading tokens that represent various types of underlying assets. The following features help issuers comply with relevant laws and regulations:
+
+- Trust line tokens can use **[Freezes](../fungible-tokens/freezes.md)** to freeze balances globally or individually, and **[Authorized Trust Lines](../fungible-tokens/authorized-trust-lines.md)** to require holders to be approved.
+- MPTs can use the **[Can Lock](../fungible-tokens/multi-purpose-tokens.md#compliance-controls)** flag to freeze balances globally or per-holder, and **[Require Auth](../fungible-tokens/multi-purpose-tokens.md#transferability-controls)** to require holders to be approved.
 
 ## See Also
 
 - **Concepts:**
-    - See [Offers](offers.md) for details on how trades work in the XRP Ledger.
     - See [Tokens](../index.md) for an overview of how various types of value can be represented in the XRP Ledger.
 - **References:**
     - [account_offers method][] to look up Offers placed by an account
