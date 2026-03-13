@@ -92,7 +92,7 @@ On supported platforms, see the [instructions on installing or updating `rippled
 | [RPM for Red Hat / CentOS (x86-64)](https://repos.ripple.com/repos/rippled-rpm/stable/rippled-3.1.1-1.el9.x86_64.rpm) | `c6d028db1e2a4da898df68e5a92a893bebf1d167a0539d15ae27435f2155ccb2` |
 | [DEB for Ubuntu / Debian (x86-64)](https://repos.ripple.com/repos/rippled-deb/pool/stable/rippled_3.1.1-1_amd64.deb) | `cc30c33012bd83ed793b38738870cf931a96ae106fde60b71685c766da1d22e3` |
 
-For other platforms, please [build from source](https://github.com/XRPLF/rippled/blob/master/BUILD.md). The most recent commit in the git log should be the change setting the version:
+For other platforms, please [build from source](https://github.com/XRPLF/rippled/blob/release-3.1/BUILD.md). The most recent commit in the git log should be the change setting the version:
 
 ```text
 commit c5988233d05bedddac28866ed37607f4869855f9
