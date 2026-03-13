@@ -1,0 +1,66 @@
+name: "Feature Request"
+description: Suggest a new page, section, tool, or site feature
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this template to suggest a new documentation page, site feature, or tooling improvement for the XRP Ledger Developer Portal.
+
+  - type: dropdown
+    id: feature-type
+    attributes:
+      label: Feature Type
+      options:
+        - New documentation page or section
+        - New interactive tool or code sample
+        - Site navigation or UX improvement
+        - Developer tooling or CI/CD improvement
+        - Localization support
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem to Solve
+      description: Describe the problem or gap this feature would address. Who would benefit?
+      placeholder: "As a developer building on the XRP Ledger, I need..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed Solution
+      description: Describe what you'd like to see added or changed.
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives Considered
+      description: Have you considered any alternative approaches?
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority (your assessment)
+      options:
+        - Low – nice to have
+        - Medium – would significantly improve the docs
+        - High – blocks common developer workflows
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Checklist
+      options:
+        - label: I have searched existing issues to avoid duplicates
+          required: true
+        - label: I am willing to contribute a PR for this feature

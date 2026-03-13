@@ -1,0 +1,67 @@
+name: "Bug Report"
+description: Report a typo, broken link, incorrect information, or other documentation error
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping improve the XRP Ledger documentation! Please fill out this form as completely as possible.
+
+  - type: input
+    id: page-url
+    attributes:
+      label: Affected Page URL
+      description: The URL of the page with the issue (e.g. https://xrpl.org/docs/...)
+      placeholder: "https://xrpl.org/docs/..."
+    validations:
+      required: true
+
+  - type: dropdown
+    id: bug-type
+    attributes:
+      label: Type of Issue
+      description: What kind of problem did you find?
+      options:
+        - Typo or grammar error
+        - Broken or incorrect link
+        - Incorrect technical information
+        - Outdated content
+        - Missing content
+        - Formatting or display issue
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: Describe the problem clearly. Include what is wrong and what it should say instead.
+      placeholder: "The page states X, but it should say Y because..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Content
+      description: What should the correct content say?
+    validations:
+      required: false
+
+  - type: input
+    id: source-reference
+    attributes:
+      label: Source Reference (optional)
+      description: Link to source code, specification, or other reference that confirms the correct information
+      placeholder: "https://github.com/XRPLF/rippled/..."
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Checklist
+      options:
+        - label: I have searched existing issues to confirm this has not already been reported
+          required: true
+        - label: I have verified this issue exists on the live site (not just locally)

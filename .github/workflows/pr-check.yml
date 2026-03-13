@@ -1,0 +1,95 @@
+name: PR Validation
+
+on:
+  pull_request_target:
+    types: [opened, edited, synchronize, reopened]
+
+permissions:
+  pull-requests: write
+  issues: read
+
+jobs:
+  validate-pr:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Validate PR description and linked issue
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const pr = context.payload.pull_request;
+            const body = pr.body || '';
+            const title = pr.title || '';
+            const warnings = [];
+            const errors   = [];
+
+            // 1. PR must have a non-trivial description
+            const descriptionSection = body.replace(/<!--[\s\S]*?-->/g, '').trim();
+            if (descriptionSection.length < 30) {
+              errors.push('❌ **Missing description**: Please provide a clear description of what this PR changes and why.');
+            }
+
+            // 2. PR should reference an issue (Fixes/Closes/Resolves #N or mention #N)
+            const issueRef = /(?:fix(?:es|ed)?|close[sd]?|resolve[sd]?)\s+#\d+|#\d+/i.test(body);
+            if (!issueRef) {
+              warnings.push('⚠️ **No linked issue detected**: Consider linking this PR to an issue using `Fixes #<number>` so progress is tracked on the project board.');
+            }
+
+            // 3. RACI table must have at least Responsible checked
+            // Simple check: if the RACI section exists, at least one checkbox should be filled
+            if (body.includes('RACI') && !/- \[x\]/i.test(body)) {
+              warnings.push('⚠️ **RACI checklist incomplete**: Please tick the checkboxes in the RACI Confirmation table.');
+            }
+
+            // 4. Draft PRs skip hard errors
+            const isDraft = pr.draft;
+
+            // Post a review comment only if there are issues
+            if (errors.length > 0 || warnings.length > 0) {
+              const lines = [
+                '## 🤖 PR Validation Report',
+                '',
+                ...errors,
+                ...warnings,
+                '',
+                isDraft ? '_This is a draft PR — errors above will need to be resolved before requesting review._'
+                        : '_Please address the items above before requesting a maintainer review._',
+                '',
+                '---',
+                '_This comment is generated automatically. See [CONTRIBUTING.md](./CONTRIBUTING.md) for guidelines._',
+              ];
+
+              // Check if we already posted a validation comment so we update rather than duplicate
+              const { data: comments } = await github.rest.issues.listComments({
+                owner: context.repo.owner,
+                repo:  context.repo.repo,
+                issue_number: pr.number,
+              });
+
+              const botComment = comments.find(c =>
+                c.user.type === 'Bot' && c.body.includes('PR Validation Report')
+              );
+
+              const commentBody = lines.join('\n');
+
+              if (botComment) {
+                await github.rest.issues.updateComment({
+                  owner:      context.repo.owner,
+                  repo:       context.repo.repo,
+                  comment_id: botComment.id,
+                  body:       commentBody,
+                });
+              } else {
+                await github.rest.issues.createComment({
+                  owner:        context.repo.owner,
+                  repo:         context.repo.repo,
+                  issue_number: pr.number,
+                  body:         commentBody,
+                });
+              }
+
+              // Fail the check if there are hard errors and this is not a draft
+              if (errors.length > 0 && !isDraft) {
+                core.setFailed(`PR validation failed: ${errors.join(' | ')}`);
+              }
+            }
