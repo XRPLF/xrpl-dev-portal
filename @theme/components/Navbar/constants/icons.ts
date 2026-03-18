@@ -33,10 +33,14 @@ export { default as tradingIcon } from "../../../../static/img/navbar/trading.sv
 
 // Community submenu icons
 export { default as communityIcon } from "../../../../static/img/navbar/community.svg";
+export { default as fundingIcon } from "../../../../static/img/navbar/funding.svg";
+export { default as contributeIcon } from "../../../../static/img/navbar/contribute.svg";
+export { default as ecosystemIcon } from "../../../../static/img/navbar/ecosystem.svg";
 
 // Network submenu icons
 export { default as insightsIcon } from "../../../../static/img/navbar/insights.svg";
 export { default as resourcesIcon } from "../../../../static/img/navbar/resources.svg";
+
 
 // Network submenu pattern images (used for both light and dark mode)
 export { default as resourcesIconPattern } from "../../../../static/img/navbar/resources-icon.svg";
@@ -60,8 +64,11 @@ import tradingIcon from "../../../../static/img/navbar/trading.svg";
 import communityIcon from "../../../../static/img/navbar/community.svg";
 import insightsIcon from "../../../../static/img/navbar/insights.svg";
 import resourcesIcon from "../../../../static/img/navbar/resources.svg";
+import contributeIcon from "../../../../static/img/navbar/contribute.svg";
+import ecosystemIcon from "../../../../static/img/navbar/ecosystem.svg";
+import fundingIcon from "../../../../static/img/navbar/funding.svg";
 
-export const walletIcons: Record<string, string> = {
+export const navIcons: Record<string, string> = {
   green: greenWallet,
   lilac: lilacWallet,
   yellow: yellowWallet,
@@ -77,7 +84,10 @@ export const walletIcons: Record<string, string> = {
   credit: creditIcon,
   trading: tradingIcon,
   community: communityIcon,
+  contribute: contributeIcon,
   insights: insightsIcon,
   resources: resourcesIcon,
+  ecosystem: ecosystemIcon,
+  funding: fundingIcon,
 };
 

@@ -1,6 +1,6 @@
 import { useThemeHooks } from "@redocly/theme/core/hooks";
 import { ArrowIcon } from "../icons";
-import { walletIcons } from "../constants/icons";
+import { navIcons } from "../constants/icons";
 import { hasChildren, type SubmenuItem, type SubmenuItemWithChildren, type SubmenuItemBase } from "../types";
 
 interface SubmenuSectionProps {
@@ -28,7 +28,7 @@ export function SubmenuSection({ item, showChildren = true }: SubmenuSectionProp
     <div className="bds-submenu__section">
       <a href={item.href} className="bds-submenu__tier1 bds-submenu__parent-link">
         <span className="bds-submenu__icon">
-          <img src={walletIcons[item.icon]} alt="" />
+          <img src={navIcons[item.icon]} alt="" />
         </span>
         <span className="bds-submenu__link bds-submenu__link--bold">
           {translate(item.label)}

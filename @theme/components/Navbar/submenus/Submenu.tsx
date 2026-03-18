@@ -2,7 +2,7 @@ import * as React from "react";
 import { useThemeHooks } from "@redocly/theme/core/hooks";
 import { SubmenuSection } from "./SubmenuSection";
 import { ArrowIcon } from "../icons";
-import { walletIcons, resourcesIconPattern, insightsIconPattern } from "../constants/icons";
+import { navIcons, resourcesIconPattern, insightsIconPattern } from "../constants/icons";
 import { developSubmenuData, useCasesSubmenuData, communitySubmenuData, networkSubmenuData } from "../constants/navigation";
 import type { SubmenuItem, SubmenuItemWithChildren, NetworkSubmenuSection } from "../types";
 
@@ -239,7 +239,7 @@ function NetworkSubmenuContent({ isActive, isClosing, onClose }: { isActive: boo
         <div key={section.label} className="bds-submenu__section">
           <a href={section.href} className="bds-submenu__tier1 bds-submenu__parent-link">
             <span className="bds-submenu__icon">
-              <img src={walletIcons[section.icon]} alt="" />
+              <img src={navIcons[section.icon]} alt="" />
             </span>
             <span className="bds-submenu__link bds-submenu__link--bold">
               {translate(section.label)}

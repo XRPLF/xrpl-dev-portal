@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useThemeHooks } from "@redocly/theme/core/hooks";
 import { SubmenuArrow, SubmenuChildArrow } from "../icons";
-import { walletIcons } from "../constants/icons";
+import { navIcons } from "../constants/icons";
 import { hasChildren, type SubmenuItem } from "../types";
 
 interface MobileMenuSectionProps {
@@ -21,7 +21,7 @@ export function MobileMenuSection({ item }: MobileMenuSectionProps) {
     <React.Fragment>
       <a href={item.href} className="bds-mobile-menu__tier1 bds-mobile-menu__parent-link">
         <span className="bds-mobile-menu__icon">
-          <img src={walletIcons[item.icon]} alt="" />
+          <img src={navIcons[item.icon]} alt={translate(item.label)} />
         </span>
         <span className="bds-mobile-menu__link bds-mobile-menu__link--bold">
           {translate(item.label)}
