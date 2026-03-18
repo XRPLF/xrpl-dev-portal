@@ -28,7 +28,7 @@ export function SubmenuSection({ item, showChildren = true }: SubmenuSectionProp
     <div className="bds-submenu__section">
       <a href={item.href} className="bds-submenu__tier1 bds-submenu__parent-link">
         <span className="bds-submenu__icon">
-          <img src={navIcons[item.icon]} alt="" />
+          <img src={navIcons[item.icon]} alt={translate(item.label)} />
         </span>
         <span className="bds-submenu__link bds-submenu__link--bold">
           {translate(item.label)}

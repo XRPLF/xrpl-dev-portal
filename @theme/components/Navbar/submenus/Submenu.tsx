@@ -239,7 +239,7 @@ function NetworkSubmenuContent({ isActive, isClosing, onClose }: { isActive: boo
         <div key={section.label} className="bds-submenu__section">
           <a href={section.href} className="bds-submenu__tier1 bds-submenu__parent-link">
             <span className="bds-submenu__icon">
-              <img src={navIcons[section.icon]} alt="" />
+              <img src={navIcons[section.icon]} alt={translate(section.label)} />
             </span>
             <span className="bds-submenu__link bds-submenu__link--bold">
               {translate(section.label)}

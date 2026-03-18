@@ -11,13 +11,6 @@ export { default as chevronDown } from "../../../../static/img/navbar/chevron-do
 export { default as hamburgerIcon } from "../../../../static/img/navbar/hamburger-icon.svg";
 export { default as arrowUpRight } from "../../../../static/img/icons/arrow-up-right-custom.svg";
 
-// Wallet icons for submenu
-export { default as greenWallet } from "../../../../static/img/navbar/green-wallet.svg";
-export { default as lilacWallet } from "../../../../static/img/navbar/lilac-wallet.svg";
-export { default as yellowWallet } from "../../../../static/img/navbar/yellow-wallet.svg";
-export { default as pinkWallet } from "../../../../static/img/navbar/pink-wallet.svg";
-export { default as blueWallet } from "../../../../static/img/navbar/blue-wallet.svg";
-
 // Develop submenu icons
 export { default as devHomeIcon } from "../../../../static/img/navbar/dev_home.svg";
 export { default as learnIcon } from "../../../../static/img/navbar/learn.svg";
@@ -41,17 +34,11 @@ export { default as ecosystemIcon } from "../../../../static/img/navbar/ecosyste
 export { default as insightsIcon } from "../../../../static/img/navbar/insights.svg";
 export { default as resourcesIcon } from "../../../../static/img/navbar/resources.svg";
 
-
 // Network submenu pattern images (used for both light and dark mode)
 export { default as resourcesIconPattern } from "../../../../static/img/navbar/resources-icon.svg";
 export { default as insightsIconPattern } from "../../../../static/img/navbar/insights-icon.svg";
 
 // Wallet icon mapping for dynamic icon lookup
-import greenWallet from "../../../../static/img/navbar/green-wallet.svg";
-import lilacWallet from "../../../../static/img/navbar/lilac-wallet.svg";
-import yellowWallet from "../../../../static/img/navbar/yellow-wallet.svg";
-import pinkWallet from "../../../../static/img/navbar/pink-wallet.svg";
-import blueWallet from "../../../../static/img/navbar/blue-wallet.svg";
 import devHomeIcon from "../../../../static/img/navbar/dev_home.svg";
 import learnIcon from "../../../../static/img/navbar/learn.svg";
 import codeSamplesIcon from "../../../../static/img/navbar/code_samples.svg";
@@ -69,11 +56,6 @@ import ecosystemIcon from "../../../../static/img/navbar/ecosystem.svg";
 import fundingIcon from "../../../../static/img/navbar/funding.svg";
 
 export const navIcons: Record<string, string> = {
-  green: greenWallet,
-  lilac: lilacWallet,
-  yellow: yellowWallet,
-  pink: pinkWallet,
-  blue: blueWallet,
   dev_home: devHomeIcon,
   learn: learnIcon,
   code_samples: codeSamplesIcon,
