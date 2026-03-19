@@ -11,34 +11,11 @@ export { default as chevronDown } from "../../../../static/img/navbar/chevron-do
 export { default as hamburgerIcon } from "../../../../static/img/navbar/hamburger-icon.svg";
 export { default as arrowUpRight } from "../../../../static/img/icons/arrow-up-right-custom.svg";
 
-// Develop submenu icons
-export { default as devHomeIcon } from "../../../../static/img/navbar/dev_home.svg";
-export { default as learnIcon } from "../../../../static/img/navbar/learn.svg";
-export { default as codeSamplesIcon } from "../../../../static/img/navbar/code_samples.svg";
-export { default as docsIcon } from "../../../../static/img/navbar/docs.svg";
-export { default as clientLibIcon } from "../../../../static/img/navbar/client_lib.svg";
-
-// Use Cases submenu icons
-export { default as paymentsIcon } from "../../../../static/img/navbar/payments.svg";
-export { default as tokenizationIcon } from "../../../../static/img/navbar/tokenization.svg";
-export { default as creditIcon } from "../../../../static/img/navbar/credit.svg";
-export { default as tradingIcon } from "../../../../static/img/navbar/trading.svg";
-
-// Community submenu icons
-export { default as communityIcon } from "../../../../static/img/navbar/community.svg";
-export { default as fundingIcon } from "../../../../static/img/navbar/funding.svg";
-export { default as contributeIcon } from "../../../../static/img/navbar/contribute.svg";
-export { default as ecosystemIcon } from "../../../../static/img/navbar/ecosystem.svg";
-
-// Network submenu icons
-export { default as insightsIcon } from "../../../../static/img/navbar/insights.svg";
-export { default as resourcesIcon } from "../../../../static/img/navbar/resources.svg";
-
 // Network submenu pattern images (used for both light and dark mode)
 export { default as resourcesIconPattern } from "../../../../static/img/navbar/resources-icon.svg";
 export { default as insightsIconPattern } from "../../../../static/img/navbar/insights-icon.svg";
 
-// Wallet icon mapping for dynamic icon lookup
+// Submenu icons - imported once, exported individually and used in navIcons mapping
 import devHomeIcon from "../../../../static/img/navbar/dev_home.svg";
 import learnIcon from "../../../../static/img/navbar/learn.svg";
 import codeSamplesIcon from "../../../../static/img/navbar/code_samples.svg";
@@ -49,12 +26,32 @@ import tokenizationIcon from "../../../../static/img/navbar/tokenization.svg";
 import creditIcon from "../../../../static/img/navbar/credit.svg";
 import tradingIcon from "../../../../static/img/navbar/trading.svg";
 import communityIcon from "../../../../static/img/navbar/community.svg";
-import insightsIcon from "../../../../static/img/navbar/insights.svg";
-import resourcesIcon from "../../../../static/img/navbar/resources.svg";
+import fundingIcon from "../../../../static/img/navbar/funding.svg";
 import contributeIcon from "../../../../static/img/navbar/contribute.svg";
 import ecosystemIcon from "../../../../static/img/navbar/ecosystem.svg";
-import fundingIcon from "../../../../static/img/navbar/funding.svg";
+import insightsIcon from "../../../../static/img/navbar/insights.svg";
+import resourcesIcon from "../../../../static/img/navbar/resources.svg";
 
+// Re-export submenu icons for direct imports
+export {
+  devHomeIcon,
+  learnIcon,
+  codeSamplesIcon,
+  docsIcon,
+  clientLibIcon,
+  paymentsIcon,
+  tokenizationIcon,
+  creditIcon,
+  tradingIcon,
+  communityIcon,
+  fundingIcon,
+  contributeIcon,
+  ecosystemIcon,
+  insightsIcon,
+  resourcesIcon,
+};
+
+// Dynamic icon lookup for navbar submenus
 export const navIcons: Record<string, string> = {
   dev_home: devHomeIcon,
   learn: learnIcon,
@@ -72,4 +69,3 @@ export const navIcons: Record<string, string> = {
   ecosystem: ecosystemIcon,
   funding: fundingIcon,
 };
-
