@@ -33,7 +33,7 @@ import insightsIcon from "../../../../static/img/navbar/insights.svg";
 import resourcesIcon from "../../../../static/img/navbar/resources.svg";
 
 // Re-export submenu icons for direct imports
-export {
+export default {
   devHomeIcon,
   learnIcon,
   codeSamplesIcon,
