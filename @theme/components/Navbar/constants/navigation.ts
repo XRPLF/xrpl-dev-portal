@@ -119,19 +119,19 @@ export const communitySubmenuData: {
         { label: "Blog", href: "/blog" },
       ],
     },
-    { label: "Funding", href: "/community/developer-funding", icon: "code_samples" },
+    { label: "Funding", href: "/community/developer-funding", icon: "funding" },
   ],
   right: [
     {
       label: "Contribute",
       href: "/community/contribute",
-      icon: "client_lib",
+      icon: "contribute",
       children: [
         { label: "Bug Bounty", href: "/blog/2020/rippled-1.5.0#bug-bounties-and-responsible-disclosures" },
         { label: "Research", href: "https://xls.xrpl.org/" },
       ],
     },
-    { label: "Ecosystem Map", href: "/about/uses", icon: "learn" },
+    { label: "Ecosystem Map", href: "/about/uses", icon: "ecosystem" },
   ],
 };
 
