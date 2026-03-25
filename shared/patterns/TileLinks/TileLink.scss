@@ -57,9 +57,10 @@ $bds-tile-link-variants: (
     light-hover: $gray-300,        // #CAD4DF
     light-pressed: $gray-400,      // #A8B4C4
     light-text: $black,            // #141414
-    dark-bg: $gray-500,            // #5A5A5E
-    dark-hover: $gray-400,         // #A8B4C4
-    dark-pressed: rgba($gray-500, 0.7),  // 70% opacity
+    dark-bg: $gray-500,            // #72777E
+    dark-hover: $gray-400,         // #8A919A
+    // Opaque pressed: rgba($gray-500, 0.7) on same base is invisible — use #56595E (target look)
+    dark-pressed: #56595e,
     dark-text: $white              // #FFFFFF
   ),
   'lilac': (
@@ -167,6 +168,11 @@ $bds-tile-link-variants: (
 
 // Hovered state: shade fully raised (visible)
 .bds-tile-link--hovered .bds-tile-link__overlay {
+  clip-path: inset(0 0 0 0);
+}
+
+// Keyboard focus: same overlay color as hover (gray/lilac × light/dark set on .bds-tile-link__overlay above)
+.bds-tile-link:focus-visible:not(.bds-tile-link--disabled) .bds-tile-link__overlay {
   clip-path: inset(0 0 0 0);
 }
 
@@ -298,5 +304,14 @@ $bds-tile-link-variants: (
         color: $white;
       }
     }
+  }
+}
+
+// =============================================================================
+// Tablet + mobile: no clip-path transition (instant overlay show/hide)
+// =============================================================================
+@media (max-width: 991px) {
+  .bds-tile-link__overlay {
+    transition: none;
   }
 }
