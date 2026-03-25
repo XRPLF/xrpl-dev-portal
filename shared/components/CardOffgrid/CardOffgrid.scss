@@ -132,6 +132,13 @@ $bds-card-offgrid-focus-color-light: $gray-900;          // #111112
     outline: 2px solid $bds-card-offgrid-focus-color-dark;
     outline-offset: 2px;
   }
+
+  // Match hover background: reveal overlay on keyboard focus (same clip-path as --hovered)
+  &:focus-visible:not(.bds-card-offgrid--disabled) {
+    .bds-card-offgrid__overlay {
+      clip-path: inset(0 0 0 0);
+    }
+  }
 }
 
 // =============================================================================
@@ -298,8 +305,9 @@ html.light {
       background-color: $bds-card-offgrid-neutral-hover-light;
     }
     
-    // Text color on hover
-    &.bds-card-offgrid--hovered {
+    // Text color on hover and keyboard focus (matches hover treatment)
+    &.bds-card-offgrid--hovered,
+    &:focus-visible:not(.bds-card-offgrid--disabled) {
       color: $bds-card-offgrid-neutral-text-hover-light;
     }
     
@@ -352,6 +360,48 @@ html.light {
 // =============================================================================
 // Responsive Styles
 // =============================================================================
+
+// Tablet + mobile: no clip-path wipe (touch :hover is sticky / fights the animation).
+// Jump straight to pressed overlay color; instant show/hide.
+@media (max-width: 991px) {
+  .bds-card-offgrid__overlay {
+    transition: none;
+  }
+
+  .bds-card-offgrid--neutral:not(.bds-card-offgrid--disabled) {
+    &.bds-card-offgrid--hovered .bds-card-offgrid__overlay,
+    &:focus-visible .bds-card-offgrid__overlay {
+      background-color: $bds-card-offgrid-neutral-pressed-dark;
+      clip-path: inset(0 0 0 0);
+    }
+  }
+
+  .bds-card-offgrid--green:not(.bds-card-offgrid--disabled) {
+    &.bds-card-offgrid--hovered .bds-card-offgrid__overlay,
+    &:focus-visible .bds-card-offgrid__overlay {
+      background-color: $bds-card-offgrid-green-pressed-dark;
+      clip-path: inset(0 0 0 0);
+    }
+  }
+
+  html.light {
+    .bds-card-offgrid--neutral:not(.bds-card-offgrid--disabled) {
+      &.bds-card-offgrid--hovered .bds-card-offgrid__overlay,
+      &:focus-visible .bds-card-offgrid__overlay {
+        background-color: $bds-card-offgrid-neutral-pressed-light;
+        clip-path: inset(0 0 0 0);
+      }
+    }
+
+    .bds-card-offgrid--green:not(.bds-card-offgrid--disabled) {
+      &.bds-card-offgrid--hovered .bds-card-offgrid__overlay,
+      &:focus-visible .bds-card-offgrid__overlay {
+        background-color: $bds-card-offgrid-green-pressed-light;
+        clip-path: inset(0 0 0 0);
+      }
+    }
+  }
+}
 
 @media (max-width: 767px) {
   .bds-card-offgrid {
