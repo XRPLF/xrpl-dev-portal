@@ -432,7 +432,10 @@ export default function TileLogoShowcase() {
                       </div>
                       <div className="d-flex flex-row align-items-center gap-3">
                         <div style={{ width: '32px', height: '32px', backgroundColor: 'rgba(114,119,126,0.7)', borderRadius: '4px', flexShrink: 0, border: '1px solid #ccc' }}></div>
-                        <div><code>Pressed: rgba($gray-500, 0.7)</code></div>
+                        <div>
+                          <code>Pressed: $gray-500-pressed-dark</code>{' '}
+                          <small className="text-muted">#56595E</small>
+                        </div>
                       </div>
                       <div className="d-flex flex-row align-items-center gap-3">
                         <div style={{ width: '32px', height: '32px', backgroundColor: 'rgba(114,119,126,0.3)', borderRadius: '4px', flexShrink: 0, border: '1px solid #ccc' }}></div>
