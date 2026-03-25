@@ -59,7 +59,7 @@ $bds-tile-link-variants: (
     light-text: $black,            // #141414
     dark-bg: $gray-500,            // #5A5A5E
     dark-hover: $gray-400,         // #A8B4C4
-    dark-pressed: rgba($gray-500, 0.7),  // 70% opacity
+    dark-pressed: $gray-500-pressed-dark, // #72777E + 70% black → #56595E
     dark-text: $white              // #FFFFFF
   ),
   'lilac': (
