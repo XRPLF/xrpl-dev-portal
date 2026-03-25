@@ -19,6 +19,10 @@
 $bds-tile-logo-focus-border-light: $black;
 $bds-tile-logo-focus-border-dark: $white;
 
+// Dark mode neutral — pressed overlay (opaque). Semi-transparent rgba(114,119,126,0.7)
+// on top of the same $gray-500 (#72777E) tile base does not change the color; use solid #56595E.
+$bds-tile-logo-neutral-pressed-dark: #56595e;
+
 // -----------------------------------------------------------------------------
 // Shape Tokens - Square (1:1 aspect ratio)
 // -----------------------------------------------------------------------------
@@ -171,6 +175,13 @@ $bds-tile-logo-rect-padding-lg: 32px 64px; // LG: vertical 32px, horizontal 64px
     background-color: $gray-300;
   }
 
+  // Keyboard focus: same overlay fill as hover
+  &:focus-visible:not(.bds-tile-logo--disabled) {
+    .bds-tile-logo__overlay {
+      @include bds-window-shade-revealed;
+    }
+  }
+
   // Pressed state
   &:active:not(.bds-tile-logo--disabled) {
     .bds-tile-logo__overlay {
@@ -189,6 +200,12 @@ $bds-tile-logo-rect-padding-lg: 32px 64px; // LG: vertical 32px, horizontal 64px
   // Overlay color for hover wipe
   .bds-tile-logo__overlay {
     background-color: $green-300;
+  }
+
+  &:focus-visible:not(.bds-tile-logo--disabled) {
+    .bds-tile-logo__overlay {
+      @include bds-window-shade-revealed;
+    }
   }
 
   // Pressed state
@@ -253,7 +270,7 @@ html.dark {
     // Pressed state
     &:active:not(.bds-tile-logo--disabled) {
       .bds-tile-logo__overlay {
-        background-color: rgba($gray-500, 0.7);
+        background-color: $bds-tile-logo-neutral-pressed-dark;
         clip-path: inset(0 0 0 0);
       }
     }
@@ -391,7 +408,7 @@ html.light {
     .bds-tile-logo--neutral:not(.bds-tile-logo--disabled) {
       &.bds-tile-logo--hovered .bds-tile-logo__overlay,
       &:focus-visible .bds-tile-logo__overlay {
-        background-color: rgba($gray-500, 0.7);
+        background-color: $bds-tile-logo-neutral-pressed-dark;
         clip-path: inset(0 0 0 0);
       }
     }

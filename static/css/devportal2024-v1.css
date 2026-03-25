@@ -19475,6 +19475,9 @@ html.dark .bds-card-image--disabled .bds-card-image__subtitle {
 .bds-tile-logo--neutral .bds-tile-logo__overlay {
   background-color: #CAD4DF;
 }
+.bds-tile-logo--neutral:focus-visible:not(.bds-tile-logo--disabled) .bds-tile-logo__overlay {
+  clip-path: inset(0 0 0 0);
+}
 .bds-tile-logo--neutral:active:not(.bds-tile-logo--disabled) .bds-tile-logo__overlay {
   background-color: #8A919A;
   clip-path: inset(0 0 0 0);
@@ -19485,6 +19488,9 @@ html.dark .bds-card-image--disabled .bds-card-image__subtitle {
 }
 .bds-tile-logo--green .bds-tile-logo__overlay {
   background-color: #21E46B;
+}
+.bds-tile-logo--green:focus-visible:not(.bds-tile-logo--disabled) .bds-tile-logo__overlay {
+  clip-path: inset(0 0 0 0);
 }
 .bds-tile-logo--green:active:not(.bds-tile-logo--disabled) .bds-tile-logo__overlay {
   background-color: #0DAA3E;
@@ -19519,7 +19525,7 @@ html.dark .bds-tile-logo--neutral .bds-tile-logo__image--monochrome-white {
   filter: brightness(0) invert(1);
 }
 html.dark .bds-tile-logo--neutral:active:not(.bds-tile-logo--disabled) .bds-tile-logo__overlay {
-  background-color: rgba(114, 119, 126, 0.7);
+  background-color: #56595e;
   clip-path: inset(0 0 0 0);
 }
 html.dark .bds-tile-logo--green {
@@ -19590,7 +19596,7 @@ html.light .bds-tile-logo--disabled .bds-tile-logo__image {
     clip-path: inset(0 0 0 0);
   }
   html.dark .bds-tile-logo--neutral:not(.bds-tile-logo--disabled).bds-tile-logo--hovered .bds-tile-logo__overlay, html.dark .bds-tile-logo--neutral:not(.bds-tile-logo--disabled):focus-visible .bds-tile-logo__overlay {
-    background-color: rgba(114, 119, 126, 0.7);
+    background-color: #56595e;
     clip-path: inset(0 0 0 0);
   }
   html.dark .bds-tile-logo--green:not(.bds-tile-logo--disabled).bds-tile-logo--hovered .bds-tile-logo__overlay, html.dark .bds-tile-logo--green:not(.bds-tile-logo--disabled):focus-visible .bds-tile-logo__overlay {
