@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import clsx from 'clsx';
 import { LinkArrow } from '../Link/LinkArrow';
 
 export interface CardIconProps {
@@ -76,15 +77,15 @@ export const CardIcon: React.FC<CardIconProps> = ({
   const [isHovered, setIsHovered] = useState(false);
 
   // Build class names using BEM convention
-  const classNames = [
+  const classNames = clsx(
     'bds-card-icon',
     `bds-card-icon--${variant}`,
-    disabled ? 'bds-card-icon--disabled' : '',
-    isHovered && !disabled ? 'bds-card-icon--hovered' : '',
-    className,
-  ]
-    .filter(Boolean)
-    .join(' ');
+    {
+      'bds-card-icon--disabled': disabled,
+      'bds-card-icon--hovered': isHovered && !disabled,
+    },
+    className
+  );
 
   // Hover handlers
   const handleMouseEnter = () => !disabled && setIsHovered(true);

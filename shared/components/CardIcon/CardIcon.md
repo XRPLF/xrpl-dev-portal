@@ -42,18 +42,18 @@ The component automatically adapts its dimensions based on viewport width:
 ### Dark Mode
 
 #### Neutral Variant
-- **Default**: Gray 500 (#72777E) - white text
+- **Default**: Gray 500 (#72777E) - white text; icons forced white (`filter`)
 - **Hover**: Gray 400 (#8A919A) - white text
-- **Focused**: Gray 400 + 2px white border - white text
-- **Pressed**: Gray 500 at 70% opacity - white text
-- **Disabled**: Gray 500 at 30% opacity - white text
+- **Focused**: Gray 400 overlay + **2px white** focus outline - white text
+- **Pressed**: **70% black** overlay `rgba(0, 0, 0, 0.7)` on the tile (readable on gray-500; same-RGB wash would not show)
+- **Disabled**: Gray 500 at 30% opacity - white text; icons stay white (same filter)
 
 #### Green Variant
 - **Default**: Green 300 (#21E46B) - black text
 - **Hover**: Green 200 (#70EE97) - black text
-- **Focused**: Green 200 + 2px white border - black text
+- **Focused**: Green 200 overlay + **2px white** focus outline - black text
 - **Pressed**: Green 400 (#0DAA3E) - black text
-- **Disabled**: Gray 500 at 30% opacity - white text
+- **Disabled**: Gray 500 at 30% opacity - white text; **icon forced white** for contrast
 
 ## Props
 

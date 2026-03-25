@@ -137,6 +137,11 @@ $bds-card-icon-icon-size-lg: 64px;
   clip-path: inset(0 0 0 0);
 }
 
+// Keyboard focus: same overlay fill as hover (neutral / green tokens unchanged)
+.bds-card-icon:focus-visible:not(.bds-card-icon--disabled) .bds-card-icon__overlay {
+  clip-path: inset(0 0 0 0);
+}
+
 // =============================================================================
 // Icon Container
 // =============================================================================
@@ -310,11 +315,11 @@ $bds-card-icon-icon-size-lg: 64px;
 // Dark Mode Styles (html.dark)
 // =============================================================================
 // Dark mode uses different color palette per Figma specs:
-// - Neutral: gray-500 base with white text
-// - Green: green-300 base with black text
-// - Focus border: white
-// - Pressed: 70% opacity
-// - Disabled: 30% opacity
+// - Neutral: gray-500 base with white text; SVG icons → white (filter)
+// - Green: green-300 base with black text; disabled → white icon
+// - Focus outline: white
+// - Neutral pressed: 70% black overlay (visible on gray-500 base)
+// - Disabled: 30% opacity on card
 
 html.dark {
   // Focus styles - white border in dark mode
@@ -330,7 +335,7 @@ html.dark {
 
   // ---------------------------------------------------------------------------
   // Neutral Variant - Dark Mode
-  // Default: gray-500, Hover: gray-400, Pressed: 70% gray-500, Disabled: 30% opacity
+  // Default: gray-500, Hover: gray-400, Pressed: 70% black overlay, Disabled: 30% opacity
   // ---------------------------------------------------------------------------
   .bds-card-icon--neutral {
     background-color: $gray-500;
@@ -340,15 +345,20 @@ html.dark {
       color: $white;
     }
 
+    // Icons read as white on gray (all raster/SVG sources)
+    .bds-card-icon__icon-img {
+      filter: brightness(0) invert(1);
+    }
+
     // Overlay color for hover wipe
     .bds-card-icon__overlay {
       background-color: $gray-400;
     }
 
-    // Pressed state - 70% opacity background
+    // Pressed: 70% black overlay (same-RGB rgba on $gray-500 base is invisible)
     &:active:not(.bds-card-icon--disabled) {
       .bds-card-icon__overlay {
-        background-color: rgba($gray-500, 0.7);
+        background-color: rgba(0, 0, 0, 0.7);
         clip-path: inset(0 0 0 0);
       }
     }
@@ -410,6 +420,7 @@ html.dark {
 
       .bds-card-icon__icon-img {
         opacity: 1; // Reset since parent has opacity
+        filter: brightness(0) invert(1);
       }
     }
   }
@@ -448,11 +459,6 @@ html.light {
       background-color: $gray-300;
     }
 
-    // Maintain background color on focus (override generic link focus styles)
-    &:focus {
-      background-color: $gray-200 !important;
-    }
-
     &:active:not(.bds-card-icon--disabled) {
       .bds-card-icon__overlay {
         background-color: $gray-400;
@@ -474,11 +480,6 @@ html.light {
 
     .bds-card-icon__overlay {
       background-color: $green-300;
-    }
-
-    // Maintain background color on focus (override generic link focus styles)
-    &:focus {
-      background-color: $green-200 !important;
     }
 
     &:active:not(.bds-card-icon--disabled) {

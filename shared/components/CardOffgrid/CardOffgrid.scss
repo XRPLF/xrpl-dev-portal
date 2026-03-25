@@ -216,6 +216,10 @@ $bds-card-offgrid-focus-color-light: $gray-900;          // #111112
 .bds-card-offgrid--neutral {
   background-color: $bds-card-offgrid-neutral-default-dark;
   color: $bds-card-offgrid-neutral-text-dark;
+
+  .bds-card-offgrid__icon-image {
+    filter: brightness(0) invert(1);
+  }
   
   // Overlay color for hover wipe
   .bds-card-offgrid__overlay {
@@ -292,6 +296,10 @@ html.light {
   .bds-card-offgrid--neutral {
     background-color: $bds-card-offgrid-neutral-default-light;
     color: $bds-card-offgrid-neutral-text-light;
+
+    .bds-card-offgrid__icon-image {
+      filter: none;
+    }
     
     // Overlay color for hover wipe
     .bds-card-offgrid__overlay {
