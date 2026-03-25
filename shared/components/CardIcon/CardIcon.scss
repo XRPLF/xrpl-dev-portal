@@ -318,7 +318,7 @@ $bds-card-icon-icon-size-lg: 64px;
 // - Neutral: gray-500 base with white text; SVG icons → white (filter)
 // - Green: green-300 base with black text; disabled → white icon
 // - Focus outline: white
-// - Neutral pressed: 70% black overlay (visible on gray-500 base)
+// - Neutral pressed: #56595E (neutral/500 + 70% black tint on $gray-500 base)
 // - Disabled: 30% opacity on card
 
 html.dark {
@@ -335,7 +335,7 @@ html.dark {
 
   // ---------------------------------------------------------------------------
   // Neutral Variant - Dark Mode
-  // Default: gray-500, Hover: gray-400, Pressed: 70% black overlay, Disabled: 30% opacity
+  // Default: gray-500, Hover: gray-400, Pressed: $gray-500-pressed-dark, Disabled: 30% opacity
   // ---------------------------------------------------------------------------
   .bds-card-icon--neutral {
     background-color: $gray-500;
@@ -355,10 +355,10 @@ html.dark {
       background-color: $gray-400;
     }
 
-    // Pressed: 70% black overlay (same-RGB rgba on $gray-500 base is invisible)
+    // Pressed: reads as #56595E (Figma: #72777E + 70% black)
     &:active:not(.bds-card-icon--disabled) {
       .bds-card-icon__overlay {
-        background-color: rgba(0, 0, 0, 0.7);
+        background-color: $gray-500-pressed-dark;
         clip-path: inset(0 0 0 0);
       }
     }

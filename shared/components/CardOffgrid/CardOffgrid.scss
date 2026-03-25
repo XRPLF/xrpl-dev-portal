@@ -46,7 +46,7 @@ $bds-card-offgrid-transition-timing: $bds-transition-timing;
 // Neutral variant - Dark Mode
 $bds-card-offgrid-neutral-default-dark: $gray-500;       // #72777E
 $bds-card-offgrid-neutral-hover-dark: $gray-400;         // #8A919A
-$bds-card-offgrid-neutral-pressed-dark: rgba($gray-500, 0.7); // 70% opacity
+$bds-card-offgrid-neutral-pressed-dark: $gray-500-pressed-dark; // #72777E + 70% black → #56595E
 $bds-card-offgrid-neutral-text-dark: $white;             // #FFFFFF
 
 // Green variant - Dark Mode

@@ -16,6 +16,8 @@ $gray-200: #E6EAF0;  // New design token
 $gray-300: #CAD4DF;  // New design token (default)
 $gray-400: #8A919A;  // New design token
 $gray-500: #72777E;  // New design token
+// Dark tiles on $gray-500: pressed = neutral/500 + ~70% black tint → reads as #56595E
+$gray-500-pressed-dark: #56595E;
 // Legacy gray values (600-900 for dark mode)
 $gray-600: #454549;
 $gray-700: #343437;

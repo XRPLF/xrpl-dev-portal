@@ -45,7 +45,7 @@ The component automatically adapts its dimensions based on viewport width:
 - **Default**: Gray 500 (#72777E) - white text; icons forced white (`filter`)
 - **Hover**: Gray 400 (#8A919A) - white text
 - **Focused**: Gray 400 overlay + **2px white** focus outline - white text
-- **Pressed**: **70% black** overlay `rgba(0, 0, 0, 0.7)` on the tile (readable on gray-500; same-RGB wash would not show)
+- **Pressed**: **`$gray-500-pressed-dark` (#56595E)** — neutral/500 (#72777E) with 70% black tint
 - **Disabled**: Gray 500 at 30% opacity - white text; icons stay white (same filter)
 
 #### Green Variant

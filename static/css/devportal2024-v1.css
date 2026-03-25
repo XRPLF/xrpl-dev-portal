@@ -18971,7 +18971,7 @@ html.light .bds-divider--green {
   background-color: #8A919A;
 }
 .bds-card-offgrid--neutral:active:not(.bds-card-offgrid--disabled) .bds-card-offgrid__overlay {
-  background-color: rgba(114, 119, 126, 0.7);
+  background-color: #56595E;
   clip-path: inset(0 0 0 0);
 }
 
@@ -19525,7 +19525,7 @@ html.dark .bds-tile-logo--neutral .bds-tile-logo__overlay {
   background-color: #8A919A;
 }
 html.dark .bds-tile-logo--neutral:active:not(.bds-tile-logo--disabled) .bds-tile-logo__overlay {
-  background-color: rgba(114, 119, 126, 0.7);
+  background-color: #56595E;
   clip-path: inset(0 0 0 0);
 }
 html.dark .bds-tile-logo--green {
@@ -19790,7 +19790,7 @@ html.dark .bds-card-icon--neutral .bds-card-icon__overlay {
   background-color: #8A919A;
 }
 html.dark .bds-card-icon--neutral:active:not(.bds-card-icon--disabled) .bds-card-icon__overlay {
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: #56595E;
   clip-path: inset(0 0 0 0);
 }
 html.dark .bds-card-icon--green {

@@ -253,7 +253,7 @@ html.dark {
     // Pressed state
     &:active:not(.bds-tile-logo--disabled) {
       .bds-tile-logo__overlay {
-        background-color: rgba($gray-500, 0.7);
+        background-color: $gray-500-pressed-dark;
         clip-path: inset(0 0 0 0);
       }
     }

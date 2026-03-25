@@ -464,12 +464,12 @@ export default function CardIconShowcase() {
                             borderRadius: '4px',
                             flexShrink: 0,
                             border: '1px solid #ccc',
-                            background: 'linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), #72777E',
+                            backgroundColor: '#56595E',
                           }}
                         />
                         <div>
-                          <code>Pressed: rgba(0,0,0,0.7)</code>{' '}
-                          <small className="text-muted">70% black on $gray-500</small>
+                          <code>Pressed: $gray-500-pressed-dark</code>{' '}
+                          <small className="text-muted">#56595E (#72777E + 70% black)</small>
                         </div>
                       </div>
                       <div className="d-flex flex-row align-items-center gap-3">
