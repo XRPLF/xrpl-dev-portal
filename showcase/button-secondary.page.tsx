@@ -1,4 +1,5 @@
 import * as React from 'react';
+import clsx from 'clsx';
 import { Button } from 'shared/components/Button';
 import { PageGrid, PageGridCol, PageGridRow } from 'shared/components/PageGrid/page-grid';
 
@@ -24,9 +25,11 @@ export default function ButtonShowcaseSecondary() {
           <h6 className="eyebrow mb-3">Brand Design System</h6>
         </div>
         <p className="col-lg-8 mx-auto mt-10">
-          The Secondary button is an outline-style button used for secondary actions. It features a transparent
-          background with a green stroke/border, providing visual hierarchy below the Primary button while maintaining
-          brand consistency.
+          The Secondary button is an outline-style button used for secondary actions. It uses a transparent background,
+          a 2px border, and a bottom-to-top hover fill on a pseudo-element. On the green theme, pressed/active returns
+          text and border to Green 400 (enabled) while keeping hover padding/gap so the arrow animation is unchanged.
+          The black theme uses <strong>#434343</strong> for pressed text and border only; default and hover stay neutral
+          black and 15% black fill.
         </p>
       </section>
 
@@ -82,7 +85,7 @@ export default function ButtonShowcaseSecondary() {
         <PageGrid>
           <PageGridRow>
             <PageGridCol span={{ base: 4, lg: 6 }}>
-              <div className="p-6-sm p-10-until-sm br-8" style={{ backgroundColor: '#f5f5f7' }}>
+              <div>
                 <h5 className="mb-4">Enabled State</h5>
                 <p className="mb-4 text-muted">Default outline style with green border and text.</p>
                 <Button variant="secondary" onClick={handleClick}>
@@ -91,7 +94,7 @@ export default function ButtonShowcaseSecondary() {
               </div>
             </PageGridCol>
             <PageGridCol span={{ base: 4, lg: 6 }}>
-              <div className="p-6-sm p-10-until-sm br-8" style={{ backgroundColor: '#f5f5f7' }}>
+              <div>
                 <h5 className="mb-4">Disabled State</h5>
                 <p className="mb-4 text-muted">Gray border and text indicate non-interactive state.</p>
                 <Button variant="secondary" disabled>
@@ -104,8 +107,8 @@ export default function ButtonShowcaseSecondary() {
         <div className="mt-10">
           <h5 className="mb-4">Hover & Focus States</h5>
           <p className="mb-4 text-muted">
-            Hover over the buttons or use Tab to focus them. Notice the light green background fill and darker green
-            border on hover/focus.
+            Hover or focus: Green 500 text and border, Green 100 fill, arrow animation. Pressed (mouse down): Green 400
+            text and border (enabled colors) with no layout jump.
           </p>
           <div className="d-flex flex-wrap">
             <Button variant="secondary" onClick={handleClick} className="me-4 mb-4">
@@ -149,7 +152,7 @@ export default function ButtonShowcaseSecondary() {
         <PageGrid>
           <PageGridRow>
             <PageGridCol span={{ base: 4, lg: 6 }}>
-              <div className="p-6-sm p-10-until-sm br-8" style={{ backgroundColor: '#f5f5f7' }}>
+              <div>
                 <h5 className="mb-4">Enabled State</h5>
                 <p className="mb-4 text-muted">Black border and text with transparent background.</p>
                 <Button variant="secondary" color="black" onClick={handleClick}>
@@ -158,7 +161,7 @@ export default function ButtonShowcaseSecondary() {
               </div>
             </PageGridCol>
             <PageGridCol span={{ base: 4, lg: 6 }}>
-              <div className="p-6-sm p-10-until-sm br-8" style={{ backgroundColor: '#f5f5f7' }}>
+              <div>
                 <h5 className="mb-4">Disabled State</h5>
                 <p className="mb-4 text-muted">Same disabled styling as green variant.</p>
                 <Button variant="secondary" color="black" disabled>
@@ -171,7 +174,8 @@ export default function ButtonShowcaseSecondary() {
         <div className="mt-10">
           <h5 className="mb-4">Hover & Focus States</h5>
           <p className="mb-4 text-muted">
-            Hover over the buttons or use Tab to focus them. Notice the subtle black background fill on hover.
+            Hover or focus: neutral black text/border with a 15% black fill. Pressed: text and border use{' '}
+            <strong>#434343</strong> (not the default #141414).
           </p>
           <div className="d-flex flex-wrap">
             <Button variant="secondary" color="black" onClick={handleClick} className="me-4 mb-4">
@@ -287,7 +291,7 @@ export default function ButtonShowcaseSecondary() {
               <ul>
                 <li>Tab to focus buttons</li>
                 <li>Enter or Space to activate</li>
-                <li>Focus indicator: 2px black outline (additional to green border)</li>
+                <li>Focus: 2px neutral black outline; on secondary green, border is removed where the outline applies and padding compensates</li>
                 <li>Disabled buttons are not focusable</li>
               </ul>
             </PageGridCol>
@@ -295,7 +299,7 @@ export default function ButtonShowcaseSecondary() {
               <h5 className="mb-4">Screen Reader Support</h5>
               <ul>
                 <li>Button labels are announced</li>
-                <li>Disabled state communicated via aria-disabled</li>
+                <li>Disabled state: <code>disabled</code> + <code>aria-disabled</code> on <code>&lt;button&gt;</code></li>
                 <li>Icons are hidden from screen readers (aria-hidden)</li>
                 <li>Semantic button element used</li>
               </ul>
@@ -312,7 +316,7 @@ export default function ButtonShowcaseSecondary() {
               <strong>Hover:</strong> Green 500 (#078139) on Green 100 (#EAFCF1) = 4.87:1 (AA)
             </li>
             <li>
-              <strong>Disabled:</strong> Gray 400 (#A2A2A4) on White = reduced contrast (acceptable for disabled state)
+              <strong>Disabled:</strong> Gray 400 (#8A919A) text and border on white — reduced contrast (disabled pattern)
             </li>
           </ul>
         </div>
@@ -324,7 +328,7 @@ export default function ButtonShowcaseSecondary() {
           <h2 className="h4 mb-8">Code Examples</h2>
           <h6 className="eyebrow mb-3">Implementation</h6>
         </div>
-        <div className="p-6-sm p-10-until-sm br-8" style={{ backgroundColor: '#1e1e1e', color: '#d4d4d4' }}>
+        <div className="p-4 br-8" style={{ backgroundColor: 'var(--code-bg, #1e1e1e)', color: 'var(--code-text, #d4d4d4)' }}>
           <pre style={{ margin: 0, overflow: 'auto' }}>
             <code>{`import { Button } from 'shared/components/Button';
 
@@ -391,87 +395,88 @@ export default function ButtonShowcaseSecondary() {
         </PageGrid>
         <div className="mt-10">
           <h5 className="mb-4">State Colors - Green Theme</h5>
-          <div style={{ width: '100%', backgroundColor: '#FFFFFF' }}>
-            {/* Header */}
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr', borderBottom: '2px solid #E0E0E1' }}>
-              <div style={{ padding: '12px', fontWeight: 'bold' }}>State</div>
-              <div style={{ padding: '12px', fontWeight: 'bold' }}>Text Color</div>
-              <div style={{ padding: '12px', fontWeight: 'bold' }}>Background</div>
-              <div style={{ padding: '12px', fontWeight: 'bold' }}>Border</div>
+          <div className={clsx('grid-showcase-breakpoints-table', 'grid-showcase-breakpoints-table--4col')}>
+            <div className="grid-showcase-breakpoints-table__grid grid-showcase-breakpoints-table__header">
+              <div className="grid-showcase-breakpoints-table__cell">State</div>
+              <div className="grid-showcase-breakpoints-table__cell">Text Color</div>
+              <div className="grid-showcase-breakpoints-table__cell">Background</div>
+              <div className="grid-showcase-breakpoints-table__cell">Border</div>
             </div>
-            {/* Rows */}
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr', borderBottom: '1px solid #E0E0E1' }}>
-              <div style={{ padding: '12px' }}>Enabled</div>
-              <div style={{ padding: '12px' }}>#0DAA3E (Green 400)</div>
-              <div style={{ padding: '12px' }}>Transparent</div>
-              <div style={{ padding: '12px' }}>2px #0DAA3E (Green 400)</div>
+            <div className="grid-showcase-breakpoints-table__grid grid-showcase-breakpoints-table__row">
+              <div className="grid-showcase-breakpoints-table__cell">Enabled</div>
+              <div className="grid-showcase-breakpoints-table__cell">#0DAA3E (Green 400)</div>
+              <div className="grid-showcase-breakpoints-table__cell">Transparent</div>
+              <div className="grid-showcase-breakpoints-table__cell">2px #0DAA3E (Green 400)</div>
             </div>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr', borderBottom: '1px solid #E0E0E1' }}>
-              <div style={{ padding: '12px' }}>Hover</div>
-              <div style={{ padding: '12px' }}>#078139 (Green 500)</div>
-              <div style={{ padding: '12px' }}>#EAFCF1 (Green 100)</div>
-              <div style={{ padding: '12px' }}>2px #078139 (Green 500)</div>
+            <div className="grid-showcase-breakpoints-table__grid grid-showcase-breakpoints-table__row">
+              <div className="grid-showcase-breakpoints-table__cell">Hover</div>
+              <div className="grid-showcase-breakpoints-table__cell">#078139 (Green 500)</div>
+              <div className="grid-showcase-breakpoints-table__cell">#EAFCF1 (Green 100)</div>
+              <div className="grid-showcase-breakpoints-table__cell">2px #078139 (Green 500)</div>
             </div>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr', borderBottom: '1px solid #E0E0E1' }}>
-              <div style={{ padding: '12px' }}>Focus</div>
-              <div style={{ padding: '12px' }}>#078139 (Green 500)</div>
-              <div style={{ padding: '12px' }}>#EAFCF1 (Green 100)</div>
-              <div style={{ padding: '12px' }}>2px #078139 + 2px #141414 outline</div>
+            <div className="grid-showcase-breakpoints-table__grid grid-showcase-breakpoints-table__row">
+              <div className="grid-showcase-breakpoints-table__cell">Focus</div>
+              <div className="grid-showcase-breakpoints-table__cell">#078139 (Green 500)</div>
+              <div className="grid-showcase-breakpoints-table__cell">#EAFCF1 (Green 100)</div>
+              <div className="grid-showcase-breakpoints-table__cell">2px #078139 + 2px #141414 outline</div>
             </div>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr', borderBottom: '1px solid #E0E0E1' }}>
-              <div style={{ padding: '12px' }}>Active</div>
-              <div style={{ padding: '12px' }}>#0DAA3E (Green 400)</div>
-              <div style={{ padding: '12px' }}>Transparent</div>
-              <div style={{ padding: '12px' }}>2px #0DAA3E (Green 400)</div>
+            <div className="grid-showcase-breakpoints-table__grid grid-showcase-breakpoints-table__row">
+              <div className="grid-showcase-breakpoints-table__cell">Active (pressed)</div>
+              <div className="grid-showcase-breakpoints-table__cell">#0DAA3E (Green 400)</div>
+              <div className="grid-showcase-breakpoints-table__cell">Transparent</div>
+              <div className="grid-showcase-breakpoints-table__cell">2px #0DAA3E (Green 400)</div>
             </div>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr' }}>
-              <div style={{ padding: '12px' }}>Disabled</div>
-              <div style={{ padding: '12px' }}>#A2A2A4 (Gray 400)</div>
-              <div style={{ padding: '12px' }}>Transparent</div>
-              <div style={{ padding: '12px' }}>2px #A2A2A4 (Gray 400)</div>
+            <div className="grid-showcase-breakpoints-table__grid grid-showcase-breakpoints-table__row">
+              <div className="grid-showcase-breakpoints-table__cell">Disabled</div>
+              <div className="grid-showcase-breakpoints-table__cell">#8A919A (Gray 400)</div>
+              <div className="grid-showcase-breakpoints-table__cell">Transparent</div>
+              <div className="grid-showcase-breakpoints-table__cell">2px #8A919A (Gray 400)</div>
             </div>
           </div>
+          <p className="mt-4 text-muted">
+            <strong>Dark mode:</strong> both green and black secondary variants use the same green palette (Green 300
+            enabled, Green 200 hover/focus, Green 500 fill). <strong>Pressed/active</strong> returns to Green 300 for both
+            — light-mode black secondary still uses <strong>#434343</strong> only when pressed.
+          </p>
         </div>
         <div className="mt-10">
           <h5 className="mb-4">State Colors - Black Theme</h5>
-          <div style={{ width: '100%', backgroundColor: '#FFFFFF' }}>
-            {/* Header */}
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr', borderBottom: '2px solid #E0E0E1' }}>
-              <div style={{ padding: '12px', fontWeight: 'bold' }}>State</div>
-              <div style={{ padding: '12px', fontWeight: 'bold' }}>Text Color</div>
-              <div style={{ padding: '12px', fontWeight: 'bold' }}>Background</div>
-              <div style={{ padding: '12px', fontWeight: 'bold' }}>Border</div>
+          <div className={clsx('grid-showcase-breakpoints-table', 'grid-showcase-breakpoints-table--4col')}>
+            <div className="grid-showcase-breakpoints-table__grid grid-showcase-breakpoints-table__header">
+              <div className="grid-showcase-breakpoints-table__cell">State</div>
+              <div className="grid-showcase-breakpoints-table__cell">Text Color</div>
+              <div className="grid-showcase-breakpoints-table__cell">Background</div>
+              <div className="grid-showcase-breakpoints-table__cell">Border</div>
             </div>
-            {/* Rows */}
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr', borderBottom: '1px solid #E0E0E1' }}>
-              <div style={{ padding: '12px' }}>Enabled</div>
-              <div style={{ padding: '12px' }}>#141414 (Neutral Black)</div>
-              <div style={{ padding: '12px' }}>Transparent</div>
-              <div style={{ padding: '12px' }}>2px #141414 (Neutral Black)</div>
+            <div className="grid-showcase-breakpoints-table__grid grid-showcase-breakpoints-table__row">
+              <div className="grid-showcase-breakpoints-table__cell">Enabled</div>
+              <div className="grid-showcase-breakpoints-table__cell">#141414 (Neutral Black)</div>
+              <div className="grid-showcase-breakpoints-table__cell">Transparent</div>
+              <div className="grid-showcase-breakpoints-table__cell">2px #141414 (Neutral Black)</div>
             </div>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr', borderBottom: '1px solid #E0E0E1' }}>
-              <div style={{ padding: '12px' }}>Hover</div>
-              <div style={{ padding: '12px' }}>#141414 (Neutral Black)</div>
-              <div style={{ padding: '12px' }}>rgba(20, 20, 20, 0.15) (15% Black)</div>
-              <div style={{ padding: '12px' }}>2px #141414 (Neutral Black)</div>
+            <div className="grid-showcase-breakpoints-table__grid grid-showcase-breakpoints-table__row">
+              <div className="grid-showcase-breakpoints-table__cell">Hover</div>
+              <div className="grid-showcase-breakpoints-table__cell">#141414 (Neutral Black)</div>
+              <div className="grid-showcase-breakpoints-table__cell">rgba(20, 20, 20, 0.15) (15% Black)</div>
+              <div className="grid-showcase-breakpoints-table__cell">2px #141414 (Neutral Black)</div>
             </div>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr', borderBottom: '1px solid #E0E0E1' }}>
-              <div style={{ padding: '12px' }}>Focus</div>
-              <div style={{ padding: '12px' }}>#141414 (Neutral Black)</div>
-              <div style={{ padding: '12px' }}>rgba(20, 20, 20, 0.15) (15% Black)</div>
-              <div style={{ padding: '12px' }}>2px #141414 + 2px #141414 outline</div>
+            <div className="grid-showcase-breakpoints-table__grid grid-showcase-breakpoints-table__row">
+              <div className="grid-showcase-breakpoints-table__cell">Focus</div>
+              <div className="grid-showcase-breakpoints-table__cell">#141414 (Neutral Black)</div>
+              <div className="grid-showcase-breakpoints-table__cell">rgba(20, 20, 20, 0.15) (15% Black)</div>
+              <div className="grid-showcase-breakpoints-table__cell">2px #141414 + 2px #141414 outline</div>
             </div>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr', borderBottom: '1px solid #E0E0E1' }}>
-              <div style={{ padding: '12px' }}>Active</div>
-              <div style={{ padding: '12px' }}>#141414 (Neutral Black)</div>
-              <div style={{ padding: '12px' }}>Transparent</div>
-              <div style={{ padding: '12px' }}>2px #141414 (Neutral Black)</div>
+            <div className="grid-showcase-breakpoints-table__grid grid-showcase-breakpoints-table__row">
+              <div className="grid-showcase-breakpoints-table__cell">Active (pressed)</div>
+              <div className="grid-showcase-breakpoints-table__cell">#434343</div>
+              <div className="grid-showcase-breakpoints-table__cell">Transparent</div>
+              <div className="grid-showcase-breakpoints-table__cell">2px #434343</div>
             </div>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr' }}>
-              <div style={{ padding: '12px' }}>Disabled</div>
-              <div style={{ padding: '12px' }}>#A2A2A4 (Gray 400)</div>
-              <div style={{ padding: '12px' }}>Transparent</div>
-              <div style={{ padding: '12px' }}>2px #A2A2A4 (Gray 400)</div>
+            <div className="grid-showcase-breakpoints-table__grid grid-showcase-breakpoints-table__row">
+              <div className="grid-showcase-breakpoints-table__cell">Disabled</div>
+              <div className="grid-showcase-breakpoints-table__cell">#8A919A (Gray 400)</div>
+              <div className="grid-showcase-breakpoints-table__cell">Transparent</div>
+              <div className="grid-showcase-breakpoints-table__cell">2px #8A919A (Gray 400)</div>
             </div>
           </div>
         </div>
@@ -483,43 +488,41 @@ export default function ButtonShowcaseSecondary() {
           <h2 className="h4 mb-8">Key Differences from Primary</h2>
           <h6 className="eyebrow mb-3">Comparison</h6>
         </div>
-        <div style={{ width: '100%', backgroundColor: '#FFFFFF' }}>
-          {/* Header */}
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', borderBottom: '2px solid #E0E0E1' }}>
-            <div style={{ padding: '12px', fontWeight: 'bold' }}>Aspect</div>
-            <div style={{ padding: '12px', fontWeight: 'bold' }}>Primary</div>
-            <div style={{ padding: '12px', fontWeight: 'bold' }}>Secondary</div>
+        <div className={clsx('grid-showcase-breakpoints-table', 'grid-showcase-breakpoints-table--3col')}>
+          <div className="grid-showcase-breakpoints-table__grid grid-showcase-breakpoints-table__header">
+            <div className="grid-showcase-breakpoints-table__cell">Aspect</div>
+            <div className="grid-showcase-breakpoints-table__cell">Primary</div>
+            <div className="grid-showcase-breakpoints-table__cell">Secondary</div>
           </div>
-          {/* Rows */}
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', borderBottom: '1px solid #E0E0E1' }}>
-            <div style={{ padding: '12px' }}>Background (Enabled)</div>
-            <div style={{ padding: '12px' }}>Green 300 (#21E46B)</div>
-            <div style={{ padding: '12px' }}>Transparent</div>
+          <div className="grid-showcase-breakpoints-table__grid grid-showcase-breakpoints-table__row">
+            <div className="grid-showcase-breakpoints-table__cell">Background (Enabled)</div>
+            <div className="grid-showcase-breakpoints-table__cell">Green 300 (#21E46B)</div>
+            <div className="grid-showcase-breakpoints-table__cell">Transparent</div>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', borderBottom: '1px solid #E0E0E1' }}>
-            <div style={{ padding: '12px' }}>Background (Hover)</div>
-            <div style={{ padding: '12px' }}>Green 200 (#70EE97)</div>
-            <div style={{ padding: '12px' }}>Green 100 (#EAFCF1)</div>
+          <div className="grid-showcase-breakpoints-table__grid grid-showcase-breakpoints-table__row">
+            <div className="grid-showcase-breakpoints-table__cell">Background (Hover)</div>
+            <div className="grid-showcase-breakpoints-table__cell">Green 200 (#70EE97)</div>
+            <div className="grid-showcase-breakpoints-table__cell">Green 100 (#EAFCF1)</div>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', borderBottom: '1px solid #E0E0E1' }}>
-            <div style={{ padding: '12px' }}>Border (Enabled)</div>
-            <div style={{ padding: '12px' }}>None</div>
-            <div style={{ padding: '12px' }}>2px Green 400</div>
+          <div className="grid-showcase-breakpoints-table__grid grid-showcase-breakpoints-table__row">
+            <div className="grid-showcase-breakpoints-table__cell">Border (Enabled)</div>
+            <div className="grid-showcase-breakpoints-table__cell">None</div>
+            <div className="grid-showcase-breakpoints-table__cell">2px Green 400</div>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', borderBottom: '1px solid #E0E0E1' }}>
-            <div style={{ padding: '12px' }}>Text Color (Enabled)</div>
-            <div style={{ padding: '12px' }}>Black (#141414)</div>
-            <div style={{ padding: '12px' }}>Green 400 (#0DAA3E)</div>
+          <div className="grid-showcase-breakpoints-table__grid grid-showcase-breakpoints-table__row">
+            <div className="grid-showcase-breakpoints-table__cell">Text Color (Enabled)</div>
+            <div className="grid-showcase-breakpoints-table__cell">Black (#141414)</div>
+            <div className="grid-showcase-breakpoints-table__cell">Green 400 (#0DAA3E)</div>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', borderBottom: '1px solid #E0E0E1' }}>
-            <div style={{ padding: '12px' }}>Disabled Background</div>
-            <div style={{ padding: '12px' }}>Gray 200 (#E0E0E1)</div>
-            <div style={{ padding: '12px' }}>Transparent</div>
+          <div className="grid-showcase-breakpoints-table__grid grid-showcase-breakpoints-table__row">
+            <div className="grid-showcase-breakpoints-table__cell">Disabled Background</div>
+            <div className="grid-showcase-breakpoints-table__cell">Gray 200 (#E6EAF0)</div>
+            <div className="grid-showcase-breakpoints-table__cell">Transparent</div>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr' }}>
-            <div style={{ padding: '12px' }}>Arrow Icon</div>
-            <div style={{ padding: '12px' }}>✅ Shared</div>
-            <div style={{ padding: '12px' }}>✅ Shared</div>
+          <div className="grid-showcase-breakpoints-table__grid grid-showcase-breakpoints-table__row">
+            <div className="grid-showcase-breakpoints-table__cell">Arrow Icon</div>
+            <div className="grid-showcase-breakpoints-table__cell">✅ Shared</div>
+            <div className="grid-showcase-breakpoints-table__cell">✅ Shared</div>
           </div>
         </div>
       </section>
