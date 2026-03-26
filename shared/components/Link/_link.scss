@@ -121,6 +121,11 @@ html.light {
       outline-color: $black;
     }
     
+    // Visited state: Lilac 400
+    // &:visited:not(.bds-link--disabled) {
+    //   color: $lilac-400;
+    // }
+    
     // Hover state: Green 500 + underline
     &:hover:not(.bds-link--disabled) {
       color: $green-500;
@@ -139,10 +144,7 @@ html.light {
       text-decoration: underline;
     }
     
-    // Visited state: Lilac 400 (purple)
-    &:visited:not(.bds-link--disabled) {
-      color: $purple;
-    }
+
     
     // Disabled state - needs to be here for specificity
     &.bds-link--disabled {
@@ -174,6 +176,11 @@ html.dark {
     &:focus-visible {
       outline-color: $white;
     }
+
+    // Visited state: Lilac 300
+    &:visited:not(.bds-link--disabled) {
+      color: $lilac-300;
+    }
     
     // Hover state: Green 200 + underline
     &:hover:not(.bds-link--disabled) {
@@ -193,11 +200,7 @@ html.dark {
       text-decoration: underline;
     }
     
-    // Visited state: Lilac 300
-    &:visited:not(.bds-link--disabled) {
-      color: $lilac-300;
-    }
-    
+   
     // Disabled state - needs to be here for specificity
     &.bds-link--disabled {
       color: $gray-400;
@@ -224,10 +227,6 @@ a.bds-link.bds-link--disabled,
   cursor: not-allowed;
   pointer-events: none;
   text-decoration: none;
-  
-  .bds-link-icon {
-    opacity: 0.5;
-  }
   
   &:hover,
   &:focus,
