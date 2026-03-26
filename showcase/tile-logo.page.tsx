@@ -5,7 +5,7 @@ import { TileLogo } from "shared/components/TileLogo";
 export const frontmatter = {
   seo: {
     title: 'TileLogo Component Showcase',
-    description: "A comprehensive showcase of all TileLogo component variants, states, and themes in the XRPL.org Design System.",
+    description: "TileLogo showcase: square/rectangle shapes, neutral and green variants, window-shade hover (>991px), instant pressed overlay (≤991px), html.dark pressed neutral #56595E, focus matches hover overlay + ring, SVG logo filters in dark mode.",
   }
 };
 
@@ -26,9 +26,12 @@ export default function TileLogoShowcase() {
             <h6 className="eyebrow mb-3">Component Showcase</h6>
             <h1 className="mb-4">TileLogo Component</h1>
             <p className="longform">
-              A tile/card component designed to display brand logos with interactive states. 
-              Supports two shape variants (Square and Rectangle), two color variants (Neutral and Green), 
-              and five interaction states. Sizes are responsive and change based on breakpoints.
+              A tile component for brand logos with hover, pressed, disabled, and keyboard focus. Square (1:1) and rectangle (9:5)
+              shapes use responsive padding from the grid. On viewports wider than <strong>991px</strong>, a clip-path “window shade”
+              animates the hover overlay (200ms). At <strong>991px and below</strong>, that transition is off—hover and{' '}
+              <code>:focus-visible</code> jump straight to the <strong>pressed</strong> overlay so quick taps do not glitch. On wider screens,{' '}
+              <code>:focus-visible</code> uses the <strong>same overlay color as hover</strong> (plus the focus ring). Theming uses{' '}
+              <code>html.light</code> and <code>html.dark</code>. In <code>html.dark</code>, neutral tiles use <code>$gray-500</code> with a solid pressed overlay <strong>#56595E</strong> (same token is used for hover/focus at ≤991px). SVG logos on neutral tiles are forced white; green + disabled inverts the logo on the disabled wash.
             </p>
           </div>
         </section>
@@ -156,9 +159,11 @@ export default function TileLogoShowcase() {
           <PageGridRow>
             <PageGridCol span={12}>
               <h2 className="h4 mb-6">Interaction States: Neutral Variant</h2>
-              <p className="mb-4">
-                Hover over and interact with the tiles below to see the different states. 
-                Use Tab key to see focus states.
+              <p className="mb-4 longform">
+                Hover for the overlay wipe on large screens; click and hold for pressed. Tab to focus: same overlay fill as hover (with the focus ring)
+                via <code>:focus-visible</code>; on <strong>≤991px</strong>, hover and focus jump to the pressed overlay with no transition.
+                Tile labels list <strong>light</strong> tokens by default—see <strong>html.dark</strong> in the Color Reference (neutral default{' '}
+                <code>$gray-500</code>, pressed overlay <code>#56595E</code>).
               </p>
 
               <PageGridRow>
@@ -175,11 +180,13 @@ export default function TileLogoShowcase() {
                       <strong>Default</strong>
                       <br />
                       <code className="small">$gray-200</code>
+                      <br />
+                      <small className="text-muted">html.dark: $gray-500</small>
                     </div>
                   </div>
                 </PageGridCol>
 
-                {/* Hover - Note: This shows the default, users hover to see state */}
+                {/* Hover */}
                 <PageGridCol span={{ base: 4, sm: 4, lg: 2 }}>
                   <div className="d-flex flex-column align-items-center">
                     <TileLogo
@@ -192,11 +199,13 @@ export default function TileLogoShowcase() {
                       <strong>Hover</strong>
                       <br />
                       <code className="small">$gray-300</code>
+                      <br />
+                      <small className="text-muted">html.dark: $gray-400</small>
                     </div>
                   </div>
                 </PageGridCol>
 
-                {/* Focus - Users tab to see */}
+                {/* Focus */}
                 <PageGridCol span={{ base: 4, sm: 4, lg: 2 }}>
                   <div className="d-flex flex-column align-items-center">
                     <TileLogo
@@ -208,12 +217,14 @@ export default function TileLogoShowcase() {
                     <div className="mt-3 text-center">
                       <strong>Focused</strong>
                       <br />
-                      <code className="small">$gray-300 + border</code>
+                      <code className="small">hover overlay + ring</code>
+                      <br />
+                      <small className="text-muted">≤991px: pressed overlay</small>
                     </div>
                   </div>
                 </PageGridCol>
 
-                {/* Pressed - Users click to see */}
+                {/* Pressed */}
                 <PageGridCol span={{ base: 4, sm: 4, lg: 2 }}>
                   <div className="d-flex flex-column align-items-center">
                     <TileLogo
@@ -226,6 +237,8 @@ export default function TileLogoShowcase() {
                       <strong>Pressed</strong>
                       <br />
                       <code className="small">$gray-400</code>
+                      <br />
+                      <small className="text-muted">html.dark: #56595E</small>
                     </div>
                   </div>
                 </PageGridCol>
@@ -243,6 +256,8 @@ export default function TileLogoShowcase() {
                       <strong>Disabled</strong>
                       <br />
                       <code className="small">$gray-100</code>
+                      <br />
+                      <small className="text-muted">html.dark: rgba($gray-500, 0.3)</small>
                     </div>
                   </div>
                 </PageGridCol>
@@ -256,8 +271,10 @@ export default function TileLogoShowcase() {
           <PageGridRow>
             <PageGridCol span={12}>
               <h2 className="h4 mb-6">Interaction States: Green Variant</h2>
-              <p className="mb-4">
-                The green variant follows the same interaction pattern but uses the brand green color palette.
+              <p className="mb-4 longform">
+                Same model as neutral: on wide screens hover wipes and <code>:focus-visible</code> shows the <strong>hover</strong> overlay color
+                plus the ring; at <strong>≤991px</strong>, hover and focus use the <strong>pressed</strong> overlay (<code>$green-400</code>) with no
+                transition. In <code>html.dark</code>, disabled green tiles use <code>rgba($gray-500, 0.3)</code> and force the logo white.
               </p>
 
               <PageGridRow>
@@ -274,6 +291,8 @@ export default function TileLogoShowcase() {
                       <strong>Default</strong>
                       <br />
                       <code className="small">$green-200</code>
+                      <br />
+                      <small className="text-muted">same in html.dark</small>
                     </div>
                   </div>
                 </PageGridCol>
@@ -291,6 +310,8 @@ export default function TileLogoShowcase() {
                       <strong>Hover</strong>
                       <br />
                       <code className="small">$green-300</code>
+                      <br />
+                      <small className="text-muted">same in html.dark</small>
                     </div>
                   </div>
                 </PageGridCol>
@@ -307,7 +328,9 @@ export default function TileLogoShowcase() {
                     <div className="mt-3 text-center">
                       <strong>Focused</strong>
                       <br />
-                      <code className="small">$green-300 + border</code>
+                      <code className="small">hover overlay + ring</code>
+                      <br />
+                      <small className="text-muted">≤991px: pressed overlay</small>
                     </div>
                   </div>
                 </PageGridCol>
@@ -325,6 +348,8 @@ export default function TileLogoShowcase() {
                       <strong>Pressed</strong>
                       <br />
                       <code className="small">$green-400</code>
+                      <br />
+                      <small className="text-muted">same in html.dark</small>
                     </div>
                   </div>
                 </PageGridCol>
@@ -342,6 +367,8 @@ export default function TileLogoShowcase() {
                       <strong>Disabled</strong>
                       <br />
                       <code className="small">$gray-100</code>
+                      <br />
+                      <small className="text-muted">html.dark: same bg + logo → white</small>
                     </div>
                   </div>
                 </PageGridCol>
@@ -355,12 +382,19 @@ export default function TileLogoShowcase() {
           <PageGridRow>
             <PageGridCol span={12}>
               <h2 className="h4 mb-6">Color Token Reference</h2>
-              <p className="mb-4">All colors are mapped from <code>styles/_colors.scss</code>. The component uses <code>html.dark</code> selector for dark mode styles.</p>
+              <p className="mb-4">
+                Colors come from <code>styles/_colors.scss</code>. Base rules target the default (light) tile palette; <code>html.dark</code> and{' '}
+                <code>html.light</code> override focus borders and theme-specific surfaces (see <code>TileLogo.scss</code>).
+              </p>
+              <p className="mb-4 longform">
+                <strong>Viewports &gt;991px:</strong> hover animates the overlay; <code>:focus-visible</code> shows the <strong>same overlay color as hover</strong> (full <code>clip-path</code>) plus the focus ring; <code>:active</code> switches the overlay to the <strong>pressed</strong> color while the pointer is down.{' '}
+                <strong>≤991px:</strong> overlay <code>transition: none</code>; hover and <code>:focus-visible</code> jump straight to the pressed overlay—light neutral/green use <code>$gray-400</code> / <code>$green-400</code>; <code>html.dark</code> neutral uses opaque <strong>#56595E</strong> (not <code>$gray-400</code>, which is only the wide-screen hover there).
+              </p>
               
               <div className="d-flex flex-row gap-6 mb-6" style={{ flexWrap: 'wrap' }}>
                 {/* Light Mode Colors */}
                 <div style={{ flex: '1 1 400px', minWidth: '320px' }}>
-                  <h6 className="mb-4">Light Mode</h6>
+                  <h6 className="mb-4">Light Mode (default / <code>html.light</code>)</h6>
                   
                   <div className="mb-4">
                     <strong className="d-block mb-2">Neutral Variant</strong>
@@ -371,11 +405,11 @@ export default function TileLogoShowcase() {
                       </div>
                       <div className="d-flex flex-row align-items-center gap-3">
                         <div style={{ width: '32px', height: '32px', backgroundColor: '#CAD4DF', borderRadius: '4px', flexShrink: 0, border: '1px solid #ccc' }}></div>
-                        <div><code>Hover/Focus: $gray-300</code> <small className="text-muted">#CAD4DF</small></div>
+                        <div><code>Hover: $gray-300</code> <small className="text-muted">#CAD4DF (wipe &gt;991px; ≤991px → pressed)</small></div>
                       </div>
                       <div className="d-flex flex-row align-items-center gap-3">
                         <div style={{ width: '32px', height: '32px', backgroundColor: '#8A919A', borderRadius: '4px', flexShrink: 0, border: '1px solid #ccc' }}></div>
-                        <div><code>Pressed: $gray-400</code> <small className="text-muted">#8A919A</small></div>
+                        <div><code>Pressed: $gray-400</code> <small className="text-muted">#8A919A (also hover/focus overlay ≤991px)</small></div>
                       </div>
                       <div className="d-flex flex-row align-items-center gap-3">
                         <div style={{ width: '32px', height: '32px', backgroundColor: '#F0F3F7', borderRadius: '4px', flexShrink: 0, border: '1px solid #ccc' }}></div>
@@ -393,11 +427,11 @@ export default function TileLogoShowcase() {
                       </div>
                       <div className="d-flex flex-row align-items-center gap-3">
                         <div style={{ width: '32px', height: '32px', backgroundColor: '#21E46B', borderRadius: '4px', flexShrink: 0, border: '1px solid #ccc' }}></div>
-                        <div><code>Hover/Focus: $green-300</code> <small className="text-muted">#21E46B</small></div>
+                        <div><code>Hover: $green-300</code> <small className="text-muted">#21E46B (wipe &gt;991px; ≤991px → pressed)</small></div>
                       </div>
                       <div className="d-flex flex-row align-items-center gap-3">
                         <div style={{ width: '32px', height: '32px', backgroundColor: '#0DAA3E', borderRadius: '4px', flexShrink: 0, border: '1px solid #ccc' }}></div>
-                        <div><code>Pressed: $green-400</code> <small className="text-muted">#0DAA3E</small></div>
+                        <div><code>Pressed: $green-400</code> <small className="text-muted">#0DAA3E (also hover/focus overlay ≤991px)</small></div>
                       </div>
                       <div className="d-flex flex-row align-items-center gap-3">
                         <div style={{ width: '32px', height: '32px', backgroundColor: '#F0F3F7', borderRadius: '4px', flexShrink: 0, border: '1px solid #ccc' }}></div>
@@ -407,10 +441,10 @@ export default function TileLogoShowcase() {
                   </div>
 
                   <div className="mt-4">
-                    <strong className="d-block mb-2">Focus Border</strong>
+                    <strong className="d-block mb-2">Focus outline</strong>
                     <div className="d-flex flex-row align-items-center gap-3">
-                      <div style={{ width: '32px', height: '32px', backgroundColor: '#000000', borderRadius: '4px', flexShrink: 0 }}></div>
-                      <div><code>$black</code> <small className="text-muted">#000000</small></div>
+                      <div style={{ width: '32px', height: '32px', backgroundColor: '#141414', borderRadius: '4px', flexShrink: 0 }}></div>
+                      <div><code>$black</code> <small className="text-muted">#141414 (html.light)</small></div>
                     </div>
                   </div>
                 </div>
@@ -428,11 +462,17 @@ export default function TileLogoShowcase() {
                       </div>
                       <div className="d-flex flex-row align-items-center gap-3">
                         <div style={{ width: '32px', height: '32px', backgroundColor: '#8A919A', borderRadius: '4px', flexShrink: 0, border: '1px solid #ccc' }}></div>
-                        <div><code>Hover/Focus: $gray-400</code> <small className="text-muted">#8A919A</small></div>
+                        <div><code>Hover: $gray-400</code> <small className="text-muted">#8A919A (wipe &gt;991px; ≤991px → #56595E)</small></div>
                       </div>
                       <div className="d-flex flex-row align-items-center gap-3">
-                        <div style={{ width: '32px', height: '32px', backgroundColor: 'rgba(114,119,126,0.7)', borderRadius: '4px', flexShrink: 0, border: '1px solid #ccc' }}></div>
-                        <div><code>Pressed: rgba($gray-500, 0.7)</code></div>
+                        <div style={{ width: '32px', height: '32px', backgroundColor: '#56595E', borderRadius: '4px', flexShrink: 0, border: '1px solid #ccc' }}></div>
+                        <div>
+                          <code>Pressed: $bds-tile-logo-neutral-pressed-dark (#56595E)</code>
+                          <br />
+                          <small className="text-muted">
+                            opaque overlay on <code>$gray-500</code> tile; <code>:active</code> and ≤991px hover/focus (html.dark neutral)
+                          </small>
+                        </div>
                       </div>
                       <div className="d-flex flex-row align-items-center gap-3">
                         <div style={{ width: '32px', height: '32px', backgroundColor: 'rgba(114,119,126,0.3)', borderRadius: '4px', flexShrink: 0, border: '1px solid #ccc' }}></div>
@@ -450,28 +490,55 @@ export default function TileLogoShowcase() {
                       </div>
                       <div className="d-flex flex-row align-items-center gap-3">
                         <div style={{ width: '32px', height: '32px', backgroundColor: '#21E46B', borderRadius: '4px', flexShrink: 0, border: '1px solid #ccc' }}></div>
-                        <div><code>Hover/Focus: $green-300</code> <small className="text-muted">#21E46B</small></div>
+                        <div><code>Hover: $green-300</code> <small className="text-muted">#21E46B (wipe &gt;991px; ≤991px → pressed)</small></div>
                       </div>
                       <div className="d-flex flex-row align-items-center gap-3">
                         <div style={{ width: '32px', height: '32px', backgroundColor: '#0DAA3E', borderRadius: '4px', flexShrink: 0, border: '1px solid #ccc' }}></div>
-                        <div><code>Pressed: $green-400</code> <small className="text-muted">#0DAA3E</small></div>
+                        <div><code>Pressed: $green-400</code> <small className="text-muted">#0DAA3E (also hover/focus overlay ≤991px)</small></div>
                       </div>
                       <div className="d-flex flex-row align-items-center gap-3">
                         <div style={{ width: '32px', height: '32px', backgroundColor: 'rgba(114,119,126,0.3)', borderRadius: '4px', flexShrink: 0, border: '1px solid #ccc' }}></div>
-                        <div><code>Disabled: rgba($gray-500, 0.3)</code></div>
+                        <div><code>Disabled: rgba($gray-500, 0.3)</code> <small className="text-muted">logo → white</small></div>
                       </div>
                     </div>
                   </div>
 
                   <div className="mt-4">
-                    <strong className="d-block mb-2">Focus Border</strong>
+                    <strong className="d-block mb-2">Logo asset (<code>html.dark</code>)</strong>
+                    <ul className="small text-muted mb-0 ps-3">
+                      <li><strong>Neutral + SVG</strong> (<code>.svg</code> path or <code>data:image/svg+xml</code>): <code>filter: brightness(0) invert(1)</code> for a white mark.</li>
+                      <li><strong>Green + disabled:</strong> same filter on the <code>&lt;img&gt;</code> so the logo stays visible on the disabled wash.</li>
+                    </ul>
+                  </div>
+
+                  <div className="mt-4">
+                    <strong className="d-block mb-2">Focus outline</strong>
                     <div className="d-flex flex-row align-items-center gap-3">
                       <div style={{ width: '32px', height: '32px', backgroundColor: '#FFFFFF', borderRadius: '4px', flexShrink: 0, border: '1px solid #ccc' }}></div>
-                      <div><code>$white</code> <small className="text-muted">#FFFFFF</small></div>
+                      <div><code>$white</code> <small className="text-muted">#FFFFFF (html.dark)</small></div>
                     </div>
                   </div>
                 </div>
               </div>
+            </PageGridCol>
+          </PageGridRow>
+        </PageGrid>
+
+        {/* Animation & responsive overlay */}
+        <PageGrid className="py-26">
+          <PageGridRow>
+            <PageGridCol span={12}>
+              <h2 className="h4 mb-6">Animation &amp; overlay behavior</h2>
+              <p className="mb-4 longform">
+                The hover layer uses the shared window-shade mixins in <code>styles/_animations.scss</code>: <strong>200ms</strong> and{' '}
+                <code>cubic-bezier(0.98, 0.12, 0.12, 0.98)</code> on <code>clip-path</code>. Implemented in <code>TileLogo.scss</code> as{' '}
+                <code>.bds-tile-logo__overlay</code>.
+              </p>
+              <ul className="mb-0">
+                <li className="mb-2"><strong>Wider than 991px:</strong> hover animates the overlay open and closed; <code>:focus-visible</code> reveals the <strong>same hover-colored overlay</strong> (plus the focus ring).</li>
+                <li className="mb-2"><strong>max-width: 991px:</strong> overlay <code>transition: none</code>; <code>.bds-tile-logo--hovered</code> and <code>:focus-visible</code> set the pressed overlay and full <code>clip-path</code> immediately—neutral uses <code>$gray-400</code> (light) or <strong>#56595E</strong> (<code>html.dark</code>); green uses <code>$green-400</code> in both themes.</li>
+                <li><strong>Pointer down:</strong> <code>:active</code> keeps the pressed overlay at all breakpoints.</li>
+              </ul>
             </PageGridCol>
           </PageGridRow>
         </PageGrid>
@@ -636,7 +703,9 @@ export default function TileLogoShowcase() {
                   <div style={{ width: '100px', flexShrink: 0 }}><code>logo</code></div>
                   <div style={{ flex: '1 1 0', minWidth: 0 }}><code>string</code></div>
                   <div style={{ width: '100px', flexShrink: 0 }}><em>required</em></div>
-                  <div style={{ flex: '1 1 0', minWidth: 0 }}>Logo image source (URL or path)</div>
+                  <div style={{ flex: '1 1 0', minWidth: 0 }}>
+                    Logo image URL or path. In <code>html.dark</code>, SVGs on <strong>neutral</strong> use a white filter; <strong>green</strong> + <code>disabled</code> forces the image white (see Color Reference).
+                  </div>
                 </div>
                 
                 {/* alt */}

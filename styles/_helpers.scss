@@ -6,20 +6,34 @@
  * runtime validation with @if/@error to ensure only valid values are accepted.
  * 
  * @param {string} $mode - Theme mode: "dark" or "light" (default: "dark")
+ * @param {boolean} $at-root - If true, emit `html.{mode} { ... }` (use at stylesheet root
+ *   where `&` is unavailable). If false (default), emit `html.{mode} & { ... }` (nested under a parent selector).
  * @throws Error if $mode is not "dark" or "light"
  * 
  * @example
- *   @include theme-mode(light) {
+ *   // Nested (inside .my-component)
+ *   @include bds-theme-mode(light) {
  *     background-color: white;
  *   }
+ *
+ *   // Root-level (e.g. shared/components/Button/Button.scss)
+ *   @include bds-theme-mode(light, $at-root: true) {
+ *     .bds-btn { ... }
+ *   }
  */
- @mixin bds-theme-mode($mode: "dark") {
+ @mixin bds-theme-mode($mode: "dark", $at-root: false) {
   @if $mode != "dark" and $mode != "light" {
       @error "Invalid theme mode: #{$mode}. Must be either 'dark' or 'light'.";
   }
 
-  html.#{$mode} & {
+  @if $at-root {
+    html.#{$mode} {
       @content;
+    }
+  } @else {
+    html.#{$mode} & {
+      @content;
+    }
   }
 }
 

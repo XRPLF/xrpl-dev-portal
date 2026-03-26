@@ -1,6 +1,13 @@
 import React, { useState } from 'react';
 import clsx from 'clsx';
 
+/** True when the logo URL is an SVG (file path or data URL) — used for dark neutral monochrome treatment. */
+function isSvgLogoSource(src: string): boolean {
+  if (/^data:image\/svg\+xml/i.test(src)) return true;
+  const path = src.split(/[?#]/)[0].toLowerCase();
+  return path.endsWith('.svg');
+}
+
 export interface TileLogoProps {
   /** Shape variant: 'square' (default) or 'rectangle' */
   shape?: 'square' | 'rectangle';
@@ -92,6 +99,13 @@ export const TileLogo: React.FC<TileLogoProps> = ({
   const handleMouseEnter = () => !disabled && setIsHovered(true);
   const handleMouseLeave = () => setIsHovered(false);
 
+  const imageClassName = clsx(
+    'bds-tile-logo__image',
+    variant === 'neutral' &&
+      isSvgLogoSource(logo) &&
+      'bds-tile-logo__image--monochrome-white'
+  );
+
   // Common content (overlay + logo image)
   const content = (
     <>
@@ -100,7 +114,7 @@ export const TileLogo: React.FC<TileLogoProps> = ({
       <img
         src={logo}
         alt={alt}
-        className="bds-tile-logo__image"
+        className={imageClassName}
         aria-hidden="false"
       />
     </>

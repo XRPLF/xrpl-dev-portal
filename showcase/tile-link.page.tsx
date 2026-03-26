@@ -39,8 +39,9 @@ export default function TileLinkShowcase() {
             <h6 className="eyebrow mb-3">Color Variants</h6>
           </div>
           <p className="mb-6 text-muted">
-            The gray variant uses neutral gray tones. In light mode, it displays with gray-200 background.
-            In dark mode, it uses gray-500 with white text.
+            The gray variant uses neutral gray tones. In light mode, it uses a <code>gray-200</code> background.
+            In dark mode, the tile base is <code>gray-500</code> (<code>#72777E</code>) with white text; the <strong>active (pressed)</strong> overlay is{' '}
+            solid <code>#56595E</code> (opaque—semi-transparent <code>#72777E</code> on the same base would not read as darker).
           </p>
         </section>
 
@@ -78,7 +79,7 @@ export default function TileLinkShowcase() {
         </PageGrid>
         
 
-        <Divider variant="gray" />
+        <Divider color="gray" />
 
         {/* Lilac Variant Section */}
         <section className="container-new py-26">
@@ -125,7 +126,7 @@ export default function TileLinkShowcase() {
           </PageGrid>
         </section>
 
-        <Divider variant="gray" />
+        <Divider color="gray" />
 
         {/* Mixed Variants Section */}
         <section className="container-new py-26">
@@ -171,7 +172,7 @@ export default function TileLinkShowcase() {
           </PageGrid>
         </section>
 
-        <Divider variant="gray" />
+        <Divider color="gray" />
 
         {/* Interactive States Section */}
         <section className="container-new py-26">
@@ -181,10 +182,11 @@ export default function TileLinkShowcase() {
           </div>
           <p className="mb-6 text-muted">
             TileLink supports multiple interaction states: default, hover, focus, pressed, and disabled.
-            Hover over the tiles to see the window shade animation.
+            On viewports <strong>wider than 991px</strong>, hover shows an animated window-shade wipe; at <strong>991px and below</strong>, the overlay
+            appears with no transition. When you Tab to focus, the overlay uses the <strong>same background as hover</strong> (gray and lilac, light and dark), plus the focus ring.
           </p>
 
-          <div className="mb-8">
+          <div className="mb-8 w-100">
             <h6 className="mb-4">Gray Variant States</h6>
             <PageGrid>
               <PageGridRow>
@@ -222,7 +224,7 @@ export default function TileLinkShowcase() {
             </PageGrid>
           </div>
 
-          <div className="mb-8">
+          <div className="mb-8 w-100">
             <h6 className="mb-4">Lilac Variant States</h6>
             <PageGrid>
               <PageGridRow>
@@ -261,7 +263,7 @@ export default function TileLinkShowcase() {
           </div>
         </section>
 
-        <Divider variant="gray" />
+        <Divider color="gray" />
 
         {/* Responsive Behavior Section */}
         <section className="container-new py-26">
@@ -296,7 +298,7 @@ export default function TileLinkShowcase() {
           </PageGrid>
         </section>
 
-        <Divider variant="gray" />
+        <Divider color="gray" />
 
         {/* Large Grid Example */}
         <section className="container-new py-26">
@@ -338,7 +340,7 @@ export default function TileLinkShowcase() {
           </PageGrid>
         </section>
 
-        <Divider variant="gray" />
+        <Divider color="gray" />
 
         {/* Code Examples Section */}
         <section className="container-new py-26">
@@ -347,7 +349,7 @@ export default function TileLinkShowcase() {
             <h6 className="eyebrow mb-3">Implementation</h6>
           </div>
 
-          <div className="mb-8">
+          <div className="mb-8 w-100">
             <h6 className="mb-4">Basic Usage</h6>
             <div className="p-6-sm p-10-until-sm br-8" style={{ backgroundColor: '#1e1e1e', color: '#d4d4d4' }}>
               <pre style={{ margin: 0, overflow: 'auto' }}>
@@ -377,7 +379,7 @@ export default function TileLinkShowcase() {
             </div>
           </div>
 
-          <div className="mb-8">
+          <div className="mb-8 w-100">
             <h6 className="mb-4">Grid Layout with PageGrid</h6>
             <div className="p-6-sm p-10-until-sm br-8" style={{ backgroundColor: '#1e1e1e', color: '#d4d4d4' }}>
               <pre style={{ margin: 0, overflow: 'auto' }}>
@@ -405,7 +407,7 @@ import { TileLink } from 'shared/patterns/TileLinks';
             </div>
           </div>
 
-          <div className="mb-8">
+          <div className="mb-8 w-100">
             <h6 className="mb-4">Props API</h6>
             <div className="p-6-sm p-10-until-sm br-8" style={{ backgroundColor: '#1e1e1e', color: '#d4d4d4' }}>
               <pre style={{ margin: 0, overflow: 'auto' }}>
@@ -433,7 +435,7 @@ import { TileLink } from 'shared/patterns/TileLinks';
           </div>
         </section>
 
-        <Divider variant="gray" />
+        <Divider color="gray" />
 
         {/* Features Section */}
         <section className="container-new py-26">
@@ -455,7 +457,7 @@ import { TileLink } from 'shared/patterns/TileLinks';
             <div className="col-md-6 mb-6">
               <h6 className="mb-3">✨ Animations</h6>
               <ul className="text-muted">
-                <li>Window shade hover effect (bottom-to-top)</li>
+                <li>Window shade on hover (<strong>&gt;991px</strong> only); tablet/mobile use an instant overlay (no clip-path animation)</li>
                 <li>Arrow animation on hover</li>
                 <li>Smooth transitions (200ms cubic-bezier)</li>
               </ul>
@@ -475,7 +477,7 @@ import { TileLink } from 'shared/patterns/TileLinks';
               <ul className="text-muted">
                 <li>Proper ARIA labels and roles</li>
                 <li>Keyboard navigation support</li>
-                <li>Focus states with visible outlines</li>
+                <li><code>:focus-visible</code> shows the same overlay fill as hover, with a visible outline</li>
                 <li>Disabled state handling</li>
               </ul>
             </div>

@@ -209,6 +209,13 @@
     }
   }
 
+  // Left/top-aligned content (e.g. button showcase) — default bordered-col is centered
+  .grid-showcase-bordered-col--start {
+    align-items: flex-start;
+    justify-content: flex-start;
+    text-align: left;
+  }
+
   // Code snippets in PageGrid showcase — black text on light gray (light), light text on dark gray (dark)
   .grid-showcase-code-block {
     padding: 1rem;
@@ -227,6 +234,12 @@
       margin: 0;
       white-space: pre-wrap;
       color: inherit;
+    }
+
+    pre code {
+      color: inherit;
+      font-family: inherit;
+      font-size: inherit;
     }
   }
 
@@ -283,6 +296,22 @@
 
     code {
       color: inherit;
+    }
+  }
+
+  // Four equal columns (e.g. button-primary design spec tables)
+  .grid-showcase-breakpoints-table.grid-showcase-breakpoints-table--4col {
+    .grid-showcase-breakpoints-table__grid {
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      min-width: 640px;
+    }
+  }
+
+  // Three equal columns (e.g. button-secondary comparison table)
+  .grid-showcase-breakpoints-table.grid-showcase-breakpoints-table--3col {
+    .grid-showcase-breakpoints-table__grid {
+      grid-template-columns: 1fr 1fr 1fr;
+      min-width: 480px;
     }
   }
 }

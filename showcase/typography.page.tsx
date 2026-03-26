@@ -30,10 +30,10 @@ export default function TypographyShowcase() {
           <h6 className="eyebrow mb-3">Largest Headlines</h6>
         </div>
         <p className="mb-10 text-muted">
-          Display styles are used for the largest, most prominent headlines. They feature negative letter spacing 
+          Display styles are used for the largest, most prominent headlines. They feature negative letter spacing
           and are optimized for impact at large sizes.
         </p>
-        
+
         <div className="d-flex flex-column gap-10">
           <div>
             <div className="mb-3">
@@ -42,8 +42,24 @@ export default function TypographyShowcase() {
               <span className="text-muted">Booton Light (300)</span>
             </div>
             <div className="display-lg">Display Large</div>
-            <div className="mt-3 text-muted">
-              <small>Mobile: 64px · Tablet: 72px · Desktop: 92px · XL: 112px</small>
+            <div className="mt-4">
+              <table className="w-100" style={{ fontSize: '14px' }}>
+                <thead>
+                  <tr className="text-muted">
+                    <th style={{ fontWeight: 'normal', paddingBottom: '8px' }}>Breakpoint</th>
+                    <th style={{ fontWeight: 'normal', paddingBottom: '8px' }}>Size</th>
+                    <th style={{ fontWeight: 'normal', paddingBottom: '8px' }}>Line Height</th>
+                    <th style={{ fontWeight: 'normal', paddingBottom: '8px' }}>Letter Spacing</th>
+                    <th style={{ fontWeight: 'normal', paddingBottom: '8px' }}>Paragraph Spacing</th>
+                  </tr>
+                </thead>
+                <tbody className="text-muted">
+                  <tr><td>Mobile</td><td>64px</td><td>71px</td><td>-4.5px</td><td>32px</td></tr>
+                  <tr><td>Tablet</td><td>72px</td><td>79px</td><td>-5px</td><td>32px</td></tr>
+                  <tr><td>Desktop</td><td>92px</td><td>112px</td><td>-6px</td><td>32px</td></tr>
+                  <tr><td>XL</td><td>112px</td><td>112px</td><td>-7px</td><td>32px</td></tr>
+                </tbody>
+              </table>
             </div>
           </div>
 
@@ -54,8 +70,23 @@ export default function TypographyShowcase() {
               <span className="text-muted">Tobias Light (300)</span>
             </div>
             <div className="display-md">Display Medium</div>
-            <div className="mt-3 text-muted">
-              <small>Mobile: 48px · Tablet: 60px · Desktop: 72px</small>
+            <div className="mt-4">
+              <table className="w-100" style={{ fontSize: '14px' }}>
+                <thead>
+                  <tr className="text-muted">
+                    <th style={{ fontWeight: 'normal', paddingBottom: '8px' }}>Breakpoint</th>
+                    <th style={{ fontWeight: 'normal', paddingBottom: '8px' }}>Size</th>
+                    <th style={{ fontWeight: 'normal', paddingBottom: '8px' }}>Line Height</th>
+                    <th style={{ fontWeight: 'normal', paddingBottom: '8px' }}>Letter Spacing</th>
+                    <th style={{ fontWeight: 'normal', paddingBottom: '8px' }}>Paragraph Spacing</th>
+                  </tr>
+                </thead>
+                <tbody className="text-muted">
+                  <tr><td>Mobile</td><td>48px</td><td>53px</td><td>-2px</td><td>32px</td></tr>
+                  <tr><td>Tablet</td><td>60px</td><td>66px</td><td>-2px</td><td>32px</td></tr>
+                  <tr><td>Desktop</td><td>72px</td><td>75.6px</td><td>-3px</td><td>32px</td></tr>
+                </tbody>
+              </table>
             </div>
           </div>
 
@@ -66,8 +97,23 @@ export default function TypographyShowcase() {
               <span className="text-muted">Tobias Light (300)</span>
             </div>
             <div className="display-sm">Display Small</div>
-            <div className="mt-3 text-muted">
-              <small>Mobile: 40px · Tablet: 56px · Desktop: 64px</small>
+            <div className="mt-4">
+              <table className="w-100" style={{ fontSize: '14px' }}>
+                <thead>
+                  <tr className="text-muted">
+                    <th style={{ fontWeight: 'normal', paddingBottom: '8px' }}>Breakpoint</th>
+                    <th style={{ fontWeight: 'normal', paddingBottom: '8px' }}>Size</th>
+                    <th style={{ fontWeight: 'normal', paddingBottom: '8px' }}>Line Height</th>
+                    <th style={{ fontWeight: 'normal', paddingBottom: '8px' }}>Letter Spacing</th>
+                    <th style={{ fontWeight: 'normal', paddingBottom: '8px' }}>Paragraph Spacing</th>
+                  </tr>
+                </thead>
+                <tbody className="text-muted">
+                  <tr><td>Mobile</td><td>40px</td><td>46px</td><td>-1px</td><td>16px</td></tr>
+                  <tr><td>Tablet</td><td>56px</td><td>64px</td><td>-1px</td><td>16px</td></tr>
+                  <tr><td>Desktop</td><td>64px</td><td>70.4px</td><td>-1.5px</td><td>32px</td></tr>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
@@ -82,86 +128,129 @@ export default function TypographyShowcase() {
           <h6 className="eyebrow mb-3">Section Headers</h6>
         </div>
         <p className="mb-10 text-muted">
-          Heading styles are used for major section headers and page titles. All headings use the Tobias monospace 
-          font family for a distinctive technical aesthetic.
+          Heading styles are used for major section headers and page titles. All headings use the Tobias monospace
+          font family with Light weight (300) for a distinctive technical aesthetic.
         </p>
 
-        <PageGrid>
-          <PageGridRow>
-            <PageGridCol span={{ base: 4, lg: 4 }}>
-              <div className="mb-6">
-                <div className="mb-3">
-                  <code className="text-muted">heading-lg / .h-lg</code>
-                </div>
-                <div className="h-lg">Heading Large</div>
-                <div className="mt-3 text-muted">
-                  <small>Mobile: 36px · Tablet: 42px · Desktop: 48px</small>
-                </div>
-              </div>
-            </PageGridCol>
+        <div className="d-flex flex-column gap-10">
+          <div>
+            <div className="mb-3">
+              <code className="text-muted">heading-lg / .h-lg</code>
+              <span className="text-muted mx-2">·</span>
+              <span className="text-muted">Tobias Light (300)</span>
+            </div>
+            <div className="h-lg">Heading Large</div>
+            <div className="mt-4">
+              <table className="w-100" style={{ fontSize: '14px' }}>
+                <thead>
+                  <tr className="text-muted">
+                    <th style={{ fontWeight: 'normal', paddingBottom: '8px' }}>Breakpoint</th>
+                    <th style={{ fontWeight: 'normal', paddingBottom: '8px' }}>Size</th>
+                    <th style={{ fontWeight: 'normal', paddingBottom: '8px' }}>Line Height</th>
+                    <th style={{ fontWeight: 'normal', paddingBottom: '8px' }}>Letter Spacing</th>
+                    <th style={{ fontWeight: 'normal', paddingBottom: '8px' }}>Paragraph Spacing</th>
+                  </tr>
+                </thead>
+                <tbody className="text-muted">
+                  <tr><td>Mobile</td><td>36px</td><td>41px</td><td>-0.25px</td><td>16px</td></tr>
+                  <tr><td>Tablet</td><td>42px</td><td>48px</td><td>-0.5px</td><td>16px</td></tr>
+                  <tr><td>Desktop</td><td>48px</td><td>52.8px</td><td>-1px</td><td>32px</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
 
-            <PageGridCol span={{ base: 4, lg: 4 }}>
-              <div className="mb-6">
-                <div className="mb-3">
-                  <code className="text-muted">heading-md / .h-md</code>
-                </div>
-                <div className="h-md">Heading Medium</div>
-                <div className="mt-3 text-muted">
-                  <small>Mobile: 32px · Tablet: 36px · Desktop: 40px</small>
-                </div>
-              </div>
-            </PageGridCol>
+          <div>
+            <div className="mb-3">
+              <code className="text-muted">heading-md / .h-md</code>
+              <span className="text-muted mx-2">·</span>
+              <span className="text-muted">Tobias Light (300)</span>
+            </div>
+            <div className="h-md">Heading Medium</div>
+            <div className="mt-4">
+              <table className="w-100" style={{ fontSize: '14px' }}>
+                <thead>
+                  <tr className="text-muted">
+                    <th style={{ fontWeight: 'normal', paddingBottom: '8px' }}>Breakpoint</th>
+                    <th style={{ fontWeight: 'normal', paddingBottom: '8px' }}>Size</th>
+                    <th style={{ fontWeight: 'normal', paddingBottom: '8px' }}>Line Height</th>
+                    <th style={{ fontWeight: 'normal', paddingBottom: '8px' }}>Letter Spacing</th>
+                    <th style={{ fontWeight: 'normal', paddingBottom: '8px' }}>Paragraph Spacing</th>
+                  </tr>
+                </thead>
+                <tbody className="text-muted">
+                  <tr><td>Mobile</td><td>32px</td><td>40px</td><td>0px</td><td>16px</td></tr>
+                  <tr><td>Tablet</td><td>36px</td><td>45px</td><td>-0.5px</td><td>16px</td></tr>
+                  <tr><td>Desktop</td><td>40px</td><td>46px</td><td>-1px</td><td>16px</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
 
-            <PageGridCol span={{ base: 4, lg: 4 }}>
-              <div className="mb-6">
-                <div className="mb-3">
-                  <code className="text-muted">heading-sm / .h-sm</code>
-                </div>
-                <div className="h-sm">Heading Small</div>
-                <div className="mt-3 text-muted">
-                  <small>Mobile: 24px · Tablet: 28px · Desktop: 32px</small>
-                </div>
-              </div>
-            </PageGridCol>
-          </PageGridRow>
-        </PageGrid>
+          <div>
+            <div className="mb-3">
+              <code className="text-muted">heading-sm / .h-sm</code>
+              <span className="text-muted mx-2">·</span>
+              <span className="text-muted">Tobias Light (300)</span>
+            </div>
+            <div className="h-sm">Heading Small</div>
+            <div className="mt-4">
+              <table className="w-100" style={{ fontSize: '14px' }}>
+                <thead>
+                  <tr className="text-muted">
+                    <th style={{ fontWeight: 'normal', paddingBottom: '8px' }}>Breakpoint</th>
+                    <th style={{ fontWeight: 'normal', paddingBottom: '8px' }}>Size</th>
+                    <th style={{ fontWeight: 'normal', paddingBottom: '8px' }}>Line Height</th>
+                    <th style={{ fontWeight: 'normal', paddingBottom: '8px' }}>Letter Spacing</th>
+                    <th style={{ fontWeight: 'normal', paddingBottom: '8px' }}>Paragraph Spacing</th>
+                  </tr>
+                </thead>
+                <tbody className="text-muted">
+                  <tr><td>Mobile</td><td>24px</td><td>35px</td><td>-0.25px</td><td>16px</td></tr>
+                  <tr><td>Tablet</td><td>28px</td><td>35px</td><td>-0.25px</td><td>16px</td></tr>
+                  <tr><td>Desktop</td><td>32px</td><td>40px</td><td>-0.5px</td><td>16px</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
 
         <div className="mt-10">
           <h5 className="mb-4">Legacy H1-H6 Styles</h5>
           <p className="mb-6 text-muted">
-            Traditional semantic HTML heading tags are also supported with responsive sizing.
+            Traditional semantic HTML heading tags using Tobias Regular (400). These are legacy styles maintained for backward compatibility.
           </p>
-          
+
           <div className="d-flex flex-column gap-6">
             <div>
               <code className="text-muted mb-2 d-block">h1, .h1</code>
               <h1 className="mb-2">The quick brown fox jumps</h1>
-              <small className="text-muted">Desktop: 62px / Mobile: 42px</small>
+              <small className="text-muted">Desktop: 62px (line: 70px) · Mobile: 42px (line: 48px)</small>
             </div>
             <div>
               <code className="text-muted mb-2 d-block">h2, .h2</code>
               <h2 className="mb-2">The quick brown fox jumps</h2>
-              <small className="text-muted">Desktop: 56px / Mobile: 28px</small>
+              <small className="text-muted">Desktop: 56px (line: 62px) · Mobile: 28px (line: 34px)</small>
             </div>
             <div>
               <code className="text-muted mb-2 d-block">h3, .h3</code>
               <h3 className="mb-2">The quick brown fox jumps</h3>
-              <small className="text-muted">Desktop: 48px / Mobile: 24px</small>
+              <small className="text-muted">Desktop: 48px (line: 52px) · Mobile: 24px (line: 28px)</small>
             </div>
             <div>
               <code className="text-muted mb-2 d-block">h4, .h4</code>
               <h4 className="mb-2">The quick brown fox jumps over the lazy dog</h4>
-              <small className="text-muted">Desktop: 32px / Mobile: 20px</small>
+              <small className="text-muted">Desktop: 32px (line: 38px) · Mobile: 20px (line: 26px)</small>
             </div>
             <div>
               <code className="text-muted mb-2 d-block">h5, .h5</code>
               <h5 className="mb-2">The quick brown fox jumps over the lazy dog</h5>
-              <small className="text-muted">Desktop: 24px / Mobile: 18px</small>
+              <small className="text-muted">Desktop: 24px (line: 32px) · Mobile: 18px (line: 26px)</small>
             </div>
             <div>
               <code className="text-muted mb-2 d-block">h6, .h6</code>
               <h6 className="mb-2">The quick brown fox jumps over the lazy dog</h6>
-              <small className="text-muted">Desktop: 20px / Mobile: 16px</small>
+              <small className="text-muted">Desktop: 20px (line: 26px) · Mobile: 16px (line: 24px)</small>
             </div>
           </div>
         </div>
@@ -176,32 +265,58 @@ export default function TypographyShowcase() {
           <h6 className="eyebrow mb-3">Supporting Headers</h6>
         </div>
         <p className="mb-10 text-muted">
-          Subheads provide intermediate hierarchy between headings and body text. Available in two weights: 
-          Regular (400) for emphasis and Light (300) for subtler styling.
+          Subheads provide intermediate hierarchy between headings and body text. All subheads use the Booton
+          sans-serif font family. Available in two weights: Regular (400) for emphasis and Light (300) for subtler styling.
         </p>
 
         <div className="d-flex flex-column gap-10">
           {/* Large Subheads */}
           <div>
-            <h5 className="mb-6">Large Subheads</h5>
+            <h5 className="mb-6">Large Subheads · Booton</h5>
             <PageGrid>
               <PageGridRow>
                 <PageGridCol span={{ base: 4, lg: 6 }}>
                   <div className="p-6-sm p-10-until-sm br-8" style={{ backgroundColor: '#f5f5f7' }}>
                     <code className="text-muted mb-3 d-block">subhead-lg-r / .sh-lg-r</code>
-                    <div className="sh-lg-r">Regular Weight Subhead</div>
-                    <div className="mt-3 text-muted">
-                      <small>Mobile: 24px · Tablet: 28px · Desktop: 32px · Weight: 400</small>
-                    </div>
+                    <div className="sh-lg-r mb-4">Regular Weight Subhead</div>
+                    <table className="w-100" style={{ fontSize: '12px' }}>
+                      <thead>
+                        <tr className="text-muted">
+                          <th style={{ fontWeight: 'normal', paddingBottom: '4px' }}>BP</th>
+                          <th style={{ fontWeight: 'normal', paddingBottom: '4px' }}>Size</th>
+                          <th style={{ fontWeight: 'normal', paddingBottom: '4px' }}>Line</th>
+                          <th style={{ fontWeight: 'normal', paddingBottom: '4px' }}>Letter</th>
+                          <th style={{ fontWeight: 'normal', paddingBottom: '4px' }}>P-Space</th>
+                        </tr>
+                      </thead>
+                      <tbody className="text-muted">
+                        <tr><td>Mobile</td><td>24px</td><td>30px</td><td>-1px</td><td>16px</td></tr>
+                        <tr><td>Tablet</td><td>28px</td><td>35px</td><td>-0.75px</td><td>16px</td></tr>
+                        <tr><td>Desktop</td><td>32px</td><td>40px</td><td>-0.5px</td><td>16px</td></tr>
+                      </tbody>
+                    </table>
                   </div>
                 </PageGridCol>
                 <PageGridCol span={{ base: 4, lg: 6 }}>
                   <div className="p-6-sm p-10-until-sm br-8" style={{ backgroundColor: '#f5f5f7' }}>
                     <code className="text-muted mb-3 d-block">subhead-lg-l / .sh-lg-l</code>
-                    <div className="sh-lg-l">Light Weight Subhead</div>
-                    <div className="mt-3 text-muted">
-                      <small>Mobile: 24px · Tablet: 28px · Desktop: 32px · Weight: 300</small>
-                    </div>
+                    <div className="sh-lg-l mb-4">Light Weight Subhead</div>
+                    <table className="w-100" style={{ fontSize: '12px' }}>
+                      <thead>
+                        <tr className="text-muted">
+                          <th style={{ fontWeight: 'normal', paddingBottom: '4px' }}>BP</th>
+                          <th style={{ fontWeight: 'normal', paddingBottom: '4px' }}>Size</th>
+                          <th style={{ fontWeight: 'normal', paddingBottom: '4px' }}>Line</th>
+                          <th style={{ fontWeight: 'normal', paddingBottom: '4px' }}>Letter</th>
+                          <th style={{ fontWeight: 'normal', paddingBottom: '4px' }}>P-Space</th>
+                        </tr>
+                      </thead>
+                      <tbody className="text-muted">
+                        <tr><td>Mobile</td><td>24px</td><td>30px</td><td>-1px</td><td>16px</td></tr>
+                        <tr><td>Tablet</td><td>28px</td><td>35px</td><td>-1px</td><td>16px</td></tr>
+                        <tr><td>Desktop</td><td>32px</td><td>40px</td><td>-1px</td><td>16px</td></tr>
+                      </tbody>
+                    </table>
                   </div>
                 </PageGridCol>
               </PageGridRow>
@@ -210,25 +325,51 @@ export default function TypographyShowcase() {
 
           {/* Medium Subheads */}
           <div>
-            <h5 className="mb-6">Medium Subheads</h5>
+            <h5 className="mb-6">Medium Subheads · Booton</h5>
             <PageGrid>
               <PageGridRow>
                 <PageGridCol span={{ base: 4, lg: 6 }}>
                   <div className="p-6-sm p-10-until-sm br-8" style={{ backgroundColor: '#f5f5f7' }}>
                     <code className="text-muted mb-3 d-block">subhead-md-r / .sh-md-r</code>
-                    <div className="sh-md-r">Regular Weight Subhead</div>
-                    <div className="mt-3 text-muted">
-                      <small>Mobile: 24px · Tablet: 26px · Desktop: 28px · Weight: 400</small>
-                    </div>
+                    <div className="sh-md-r mb-4">Regular Weight Subhead</div>
+                    <table className="w-100" style={{ fontSize: '12px' }}>
+                      <thead>
+                        <tr className="text-muted">
+                          <th style={{ fontWeight: 'normal', paddingBottom: '4px' }}>BP</th>
+                          <th style={{ fontWeight: 'normal', paddingBottom: '4px' }}>Size</th>
+                          <th style={{ fontWeight: 'normal', paddingBottom: '4px' }}>Line</th>
+                          <th style={{ fontWeight: 'normal', paddingBottom: '4px' }}>Letter</th>
+                          <th style={{ fontWeight: 'normal', paddingBottom: '4px' }}>P-Space</th>
+                        </tr>
+                      </thead>
+                      <tbody className="text-muted">
+                        <tr><td>Mobile</td><td>24px</td><td>30px</td><td>-1px</td><td>16px</td></tr>
+                        <tr><td>Tablet</td><td>26px</td><td>33px</td><td>-1px</td><td>16px</td></tr>
+                        <tr><td>Desktop</td><td>28px</td><td>35px</td><td>-1px</td><td>16px</td></tr>
+                      </tbody>
+                    </table>
                   </div>
                 </PageGridCol>
                 <PageGridCol span={{ base: 4, lg: 6 }}>
                   <div className="p-6-sm p-10-until-sm br-8" style={{ backgroundColor: '#f5f5f7' }}>
                     <code className="text-muted mb-3 d-block">subhead-md-l / .sh-md-l</code>
-                    <div className="sh-md-l">Light Weight Subhead</div>
-                    <div className="mt-3 text-muted">
-                      <small>Mobile: 24px · Tablet: 26px · Desktop: 28px · Weight: 300</small>
-                    </div>
+                    <div className="sh-md-l mb-4">Light Weight Subhead</div>
+                    <table className="w-100" style={{ fontSize: '12px' }}>
+                      <thead>
+                        <tr className="text-muted">
+                          <th style={{ fontWeight: 'normal', paddingBottom: '4px' }}>BP</th>
+                          <th style={{ fontWeight: 'normal', paddingBottom: '4px' }}>Size</th>
+                          <th style={{ fontWeight: 'normal', paddingBottom: '4px' }}>Line</th>
+                          <th style={{ fontWeight: 'normal', paddingBottom: '4px' }}>Letter</th>
+                          <th style={{ fontWeight: 'normal', paddingBottom: '4px' }}>P-Space</th>
+                        </tr>
+                      </thead>
+                      <tbody className="text-muted">
+                        <tr><td>Mobile</td><td>24px</td><td>30px</td><td>-1px</td><td>16px</td></tr>
+                        <tr><td>Tablet</td><td>26px</td><td>33px</td><td>-1px</td><td>16px</td></tr>
+                        <tr><td>Desktop</td><td>28px</td><td>35px</td><td>-1px</td><td>16px</td></tr>
+                      </tbody>
+                    </table>
                   </div>
                 </PageGridCol>
               </PageGridRow>
@@ -237,25 +378,51 @@ export default function TypographyShowcase() {
 
           {/* Small Subheads */}
           <div>
-            <h5 className="mb-6">Small Subheads</h5>
+            <h5 className="mb-6">Small Subheads · Booton</h5>
             <PageGrid>
               <PageGridRow>
                 <PageGridCol span={{ base: 4, lg: 6 }}>
                   <div className="p-6-sm p-10-until-sm br-8" style={{ backgroundColor: '#f5f5f7' }}>
                     <code className="text-muted mb-3 d-block">subhead-sm-r / .sh-sm-r</code>
-                    <div className="sh-sm-r">Regular Weight Subhead</div>
-                    <div className="mt-3 text-muted">
-                      <small>Mobile: 18px · Tablet: 18px · Desktop: 24px · Weight: 400</small>
-                    </div>
+                    <div className="sh-sm-r mb-4">Regular Weight Subhead</div>
+                    <table className="w-100" style={{ fontSize: '12px' }}>
+                      <thead>
+                        <tr className="text-muted">
+                          <th style={{ fontWeight: 'normal', paddingBottom: '4px' }}>BP</th>
+                          <th style={{ fontWeight: 'normal', paddingBottom: '4px' }}>Size</th>
+                          <th style={{ fontWeight: 'normal', paddingBottom: '4px' }}>Line</th>
+                          <th style={{ fontWeight: 'normal', paddingBottom: '4px' }}>Letter</th>
+                          <th style={{ fontWeight: 'normal', paddingBottom: '4px' }}>P-Space</th>
+                        </tr>
+                      </thead>
+                      <tbody className="text-muted">
+                        <tr><td>Mobile</td><td>18px</td><td>23px</td><td>-0.5px</td><td>16px</td></tr>
+                        <tr><td>Tablet</td><td>18px</td><td>23px</td><td>-0.5px</td><td>16px</td></tr>
+                        <tr><td>Desktop</td><td>24px</td><td>30px</td><td>-1px</td><td>16px</td></tr>
+                      </tbody>
+                    </table>
                   </div>
                 </PageGridCol>
                 <PageGridCol span={{ base: 4, lg: 6 }}>
                   <div className="p-6-sm p-10-until-sm br-8" style={{ backgroundColor: '#f5f5f7' }}>
                     <code className="text-muted mb-3 d-block">subhead-sm-l / .sh-sm-l</code>
-                    <div className="sh-sm-l">Light Weight Subhead</div>
-                    <div className="mt-3 text-muted">
-                      <small>Mobile: 18px · Tablet: 18px · Desktop: 24px · Weight: 300</small>
-                    </div>
+                    <div className="sh-sm-l mb-4">Light Weight Subhead</div>
+                    <table className="w-100" style={{ fontSize: '12px' }}>
+                      <thead>
+                        <tr className="text-muted">
+                          <th style={{ fontWeight: 'normal', paddingBottom: '4px' }}>BP</th>
+                          <th style={{ fontWeight: 'normal', paddingBottom: '4px' }}>Size</th>
+                          <th style={{ fontWeight: 'normal', paddingBottom: '4px' }}>Line</th>
+                          <th style={{ fontWeight: 'normal', paddingBottom: '4px' }}>Letter</th>
+                          <th style={{ fontWeight: 'normal', paddingBottom: '4px' }}>P-Space</th>
+                        </tr>
+                      </thead>
+                      <tbody className="text-muted">
+                        <tr><td>Mobile</td><td>18px</td><td>23px</td><td>-0.5px</td><td>16px</td></tr>
+                        <tr><td>Tablet</td><td>18px</td><td>23px</td><td>-0.5px</td><td>16px</td></tr>
+                        <tr><td>Desktop</td><td>24px</td><td>30px</td><td>-1px</td><td>16px</td></tr>
+                      </tbody>
+                    </table>
                   </div>
                 </PageGridCol>
               </PageGridRow>
@@ -273,63 +440,86 @@ export default function TypographyShowcase() {
           <h6 className="eyebrow mb-3">Content Typography</h6>
         </div>
         <p className="mb-10 text-muted">
-          Body text styles are used for the main content areas. Available in Regular (400) for standard text 
-          and Light (300) for less prominent content.
+          Body text styles use the Booton sans-serif font family for main content areas. Available in Regular (400)
+          for standard text and Light (300) for less prominent content.
         </p>
 
         <PageGrid>
           <PageGridRow>
             <PageGridCol span={{ base: 4, lg: 6 }}>
               <div className="p-6-sm p-10-until-sm br-8" style={{ backgroundColor: '#f5f5f7' }}>
-                <code className="text-muted mb-3 d-block">body-r / .body-r</code>
-                <div className="body-r">
-                  The quick brown fox jumps over the lazy dog. This is the standard body text style 
-                  used throughout the site. It provides good readability at comfortable sizes across 
-                  all devices. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                <code className="text-muted mb-3 d-block">body-r / .body-r · Booton Regular (400)</code>
+                <div className="body-r mb-4">
+                  The quick brown fox jumps over the lazy dog. This is the standard body text style
+                  used throughout the site. It provides good readability at comfortable sizes across
+                  all devices.
                 </div>
-                <div className="mt-4 text-muted">
-                  <small>Mobile: 16px (line: 23.2px) · Desktop: 18px (line: 26.1px) · Weight: 400</small>
-                </div>
+                <table className="w-100" style={{ fontSize: '12px' }}>
+                  <thead>
+                    <tr className="text-muted">
+                      <th style={{ fontWeight: 'normal', paddingBottom: '4px' }}>Breakpoint</th>
+                      <th style={{ fontWeight: 'normal', paddingBottom: '4px' }}>Size</th>
+                      <th style={{ fontWeight: 'normal', paddingBottom: '4px' }}>Line Height</th>
+                      <th style={{ fontWeight: 'normal', paddingBottom: '4px' }}>Letter Spacing</th>
+                      <th style={{ fontWeight: 'normal', paddingBottom: '4px' }}>P-Space</th>
+                    </tr>
+                  </thead>
+                  <tbody className="text-muted">
+                    <tr><td>Mobile/Tablet</td><td>16px</td><td>23.2px</td><td>0px</td><td>16px</td></tr>
+                    <tr><td>Desktop</td><td>18px</td><td>26.1px</td><td>-0.5px</td><td>16px</td></tr>
+                  </tbody>
+                </table>
               </div>
             </PageGridCol>
             <PageGridCol span={{ base: 4, lg: 6 }}>
               <div className="p-6-sm p-10-until-sm br-8" style={{ backgroundColor: '#f5f5f7' }}>
-                <code className="text-muted mb-3 d-block">body-l / .body-l</code>
-                <div className="body-l">
-                  The quick brown fox jumps over the lazy dog. This is the light body text style 
-                  for secondary content. It maintains the same size as regular body but with lighter 
-                  weight for visual hierarchy. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                <code className="text-muted mb-3 d-block">body-l / .body-l · Booton Light (300)</code>
+                <div className="body-l mb-4">
+                  The quick brown fox jumps over the lazy dog. This is the light body text style
+                  for secondary content. It maintains the same size as regular body but with lighter
+                  weight for visual hierarchy.
                 </div>
-                <div className="mt-4 text-muted">
-                  <small>Mobile: 16px (line: 23.2px) · Desktop: 18px (line: 26.1px) · Weight: 300</small>
-                </div>
+                <table className="w-100" style={{ fontSize: '12px' }}>
+                  <thead>
+                    <tr className="text-muted">
+                      <th style={{ fontWeight: 'normal', paddingBottom: '4px' }}>Breakpoint</th>
+                      <th style={{ fontWeight: 'normal', paddingBottom: '4px' }}>Size</th>
+                      <th style={{ fontWeight: 'normal', paddingBottom: '4px' }}>Line Height</th>
+                      <th style={{ fontWeight: 'normal', paddingBottom: '4px' }}>Letter Spacing</th>
+                      <th style={{ fontWeight: 'normal', paddingBottom: '4px' }}>P-Space</th>
+                    </tr>
+                  </thead>
+                  <tbody className="text-muted">
+                    <tr><td>Mobile/Tablet</td><td>16px</td><td>23.2px</td><td>0px</td><td>16px</td></tr>
+                    <tr><td>Desktop</td><td>18px</td><td>26.1px</td><td>-0.5px</td><td>16px</td></tr>
+                  </tbody>
+                </table>
               </div>
             </PageGridCol>
           </PageGridRow>
         </PageGrid>
 
         <div className="mt-10">
-          <h5 className="mb-4">Standard Paragraph</h5>
+          <h5 className="mb-4">Standard Paragraph (Legacy)</h5>
           <div className="p-6-sm p-10-until-sm br-8" style={{ backgroundColor: '#f5f5f7' }}>
             <code className="text-muted mb-3 d-block">p / default paragraph</code>
             <p>
-              The standard paragraph element uses a base size of 16px with a 24px line height. 
-              This is the default for all unstyled paragraph text. The quick brown fox jumps over 
-              the lazy dog. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
-              tempor incididunt ut labore et dolore magna aliqua.
+              The standard paragraph element uses a base size of 16px with a 24px line height.
+              This is the default for all unstyled paragraph text. The quick brown fox jumps over
+              the lazy dog. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
             </p>
             <div className="text-muted">
-              <small>Font-size: 16px · Line-height: 24px</small>
+              <small>Size: 16px · Line Height: 24px · Letter Spacing: 0px</small>
             </div>
           </div>
         </div>
 
         <div className="mt-10">
-          <h5 className="mb-4">Longform Text</h5>
+          <h5 className="mb-4">Longform Text (Legacy)</h5>
           <div className="p-6-sm p-10-until-sm br-8" style={{ backgroundColor: '#f5f5f7' }}>
-            <code className="text-muted mb-3 d-block">.longform</code>
+            <code className="text-muted mb-3 d-block">.longform · Medium Weight (500)</code>
             <div className="longform">
-              Longform text is designed for extended reading experiences with larger sizing and 
+              Longform text is designed for extended reading experiences with larger sizing and
               medium weight. Perfect for article introductions or key content blocks.
             </div>
             <div className="mt-4 text-muted">
@@ -348,34 +538,58 @@ export default function TypographyShowcase() {
           <h6 className="eyebrow mb-3">UI Elements</h6>
         </div>
         <p className="mb-10 text-muted">
-          Label styles are designed for UI elements, form labels, captions, and supplementary text. 
-          Smaller and optimized for clarity at reduced sizes.
+          Label styles use the Booton sans-serif font family. Designed for UI elements, form labels, captions,
+          and supplementary text. Smaller and optimized for clarity at reduced sizes.
         </p>
 
         <PageGrid>
           <PageGridRow>
             <PageGridCol span={{ base: 4, lg: 6 }}>
               <div className="p-6-sm p-10-until-sm br-8" style={{ backgroundColor: '#f5f5f7' }}>
-                <code className="text-muted mb-3 d-block">label-r / .label-r</code>
-                <div className="label-r mb-3">
-                  Regular label text for form inputs, captions, and UI elements. 
+                <code className="text-muted mb-3 d-block">label-r / .label-r · Booton Regular (400)</code>
+                <div className="label-r mb-4">
+                  Regular label text for form inputs, captions, and UI elements.
                   Maintains readability at smaller sizes.
                 </div>
-                <div className="text-muted">
-                  <small>Mobile: 14px (line: 20.1px) · Desktop: 16px (line: 23.2px) · Weight: 400</small>
-                </div>
+                <table className="w-100" style={{ fontSize: '12px' }}>
+                  <thead>
+                    <tr className="text-muted">
+                      <th style={{ fontWeight: 'normal', paddingBottom: '4px' }}>Breakpoint</th>
+                      <th style={{ fontWeight: 'normal', paddingBottom: '4px' }}>Size</th>
+                      <th style={{ fontWeight: 'normal', paddingBottom: '4px' }}>Line Height</th>
+                      <th style={{ fontWeight: 'normal', paddingBottom: '4px' }}>Letter Spacing</th>
+                      <th style={{ fontWeight: 'normal', paddingBottom: '4px' }}>P-Space</th>
+                    </tr>
+                  </thead>
+                  <tbody className="text-muted">
+                    <tr><td>Mobile/Tablet</td><td>14px</td><td>20.1px</td><td>0px</td><td>16px</td></tr>
+                    <tr><td>Desktop</td><td>16px</td><td>23.2px</td><td>0px</td><td>16px</td></tr>
+                  </tbody>
+                </table>
               </div>
             </PageGridCol>
             <PageGridCol span={{ base: 4, lg: 6 }}>
               <div className="p-6-sm p-10-until-sm br-8" style={{ backgroundColor: '#f5f5f7' }}>
-                <code className="text-muted mb-3 d-block">label-l / .label-l</code>
-                <div className="label-l mb-3">
-                  Light label text for secondary UI text, metadata, and supplementary information. 
+                <code className="text-muted mb-3 d-block">label-l / .label-l · Booton Light (300)</code>
+                <div className="label-l mb-4">
+                  Light label text for secondary UI text, metadata, and supplementary information.
                   Provides subtle hierarchy.
                 </div>
-                <div className="text-muted">
-                  <small>Mobile: 14px (line: 20.1px) · Desktop: 16px (line: 23.2px) · Weight: 300</small>
-                </div>
+                <table className="w-100" style={{ fontSize: '12px' }}>
+                  <thead>
+                    <tr className="text-muted">
+                      <th style={{ fontWeight: 'normal', paddingBottom: '4px' }}>Breakpoint</th>
+                      <th style={{ fontWeight: 'normal', paddingBottom: '4px' }}>Size</th>
+                      <th style={{ fontWeight: 'normal', paddingBottom: '4px' }}>Line Height</th>
+                      <th style={{ fontWeight: 'normal', paddingBottom: '4px' }}>Letter Spacing</th>
+                      <th style={{ fontWeight: 'normal', paddingBottom: '4px' }}>P-Space</th>
+                    </tr>
+                  </thead>
+                  <tbody className="text-muted">
+                    <tr><td>Mobile/Tablet</td><td>14px</td><td>20.1px</td><td>0px</td><td>16px</td></tr>
+                    <tr><td>Desktop</td><td>16px</td><td>23.2px</td><td>0px</td><td>16px</td></tr>
+                  </tbody>
+                </table>
               </div>
             </PageGridCol>
           </PageGridRow>
@@ -393,24 +607,26 @@ export default function TypographyShowcase() {
 
         <div className="d-flex flex-column gap-10">
           <div>
-            <h5 className="mb-4">Eyebrow Text</h5>
+            <h5 className="mb-4">Eyebrow Text (Legacy)</h5>
             <div className="p-6-sm p-10-until-sm br-8" style={{ backgroundColor: '#f5f5f7' }}>
               <code className="text-muted mb-3 d-block">.eyebrow</code>
               <div className="eyebrow">Brand Design System</div>
               <p className="mt-4 mb-0 text-muted">
                 Small uppercase labels that appear above headings to provide context or categorization.
+                Uses text-transform: uppercase with letter-spacing for visual distinction.
               </p>
             </div>
           </div>
 
           <div>
-            <h5 className="mb-4">Numbers (Statistics)</h5>
+            <h5 className="mb-4">Numbers (Statistics) (Legacy)</h5>
             <div className="p-6-sm p-10-until-sm br-8" style={{ backgroundColor: '#141414', color: 'white' }}>
               <code className="mb-3 d-block" style={{ color: '#70EE97' }}>.numbers</code>
               <div className="numbers">1,234</div>
-              <p className="mt-4 mb-0" style={{ color: '#C1C1C2' }}>
-                Extra-large bold numbers for statistics and key metrics. Desktop: 96px / Mobile: 62px
-              </p>
+              <div className="mt-4" style={{ color: '#C1C1C2' }}>
+                <p className="mb-2">Extra-large bold numbers for statistics and key metrics.</p>
+                <small>Desktop: 96px (line: 104px) · Mobile: 62px (line: 70px) · Weight: Bold</small>
+              </div>
             </div>
           </div>
         </div>
@@ -469,77 +685,6 @@ export default function TypographyShowcase() {
             </PageGridCol>
           </PageGridRow>
         </PageGrid>
-      </section>
-
-      <Divider color="gray" weight="thin" />
-
-      {/* Typography in Context */}
-      <section className="container-new py-26">
-        <div className="d-flex flex-column-reverse">
-          <h2 className="h4 mb-8">Typography in Context</h2>
-          <h6 className="eyebrow mb-3">Real-World Examples</h6>
-        </div>
-
-        <div className="d-flex flex-column gap-10">
-          {/* Article Layout */}
-          <div>
-            <h5 className="mb-6">Article Layout</h5>
-            <div className="p-6-sm p-10-until-sm br-8" style={{ backgroundColor: '#f5f5f7' }}>
-              <div className="eyebrow mb-3">Documentation</div>
-              <h2 className="h4 mb-4">Understanding the XRP Ledger</h2>
-              <p className="longform mb-6">
-                A comprehensive introduction to the decentralized blockchain that powers fast, 
-                low-cost global payments.
-              </p>
-              <h5 className="mb-3">What is the XRP Ledger?</h5>
-              <p className="mb-4">
-                The XRP Ledger is a decentralized public blockchain. It was built to be a better 
-                blockchain specifically for payments, with a unique design optimized for enterprise 
-                use cases. The XRP Ledger allows anyone to transfer money across borders instantly, 
-                reliably, and for fractions of a penny.
-              </p>
-              <h5 className="mb-3">Key Features</h5>
-              <p className="mb-2">
-                The ledger provides a number of innovative features that make it ideal for financial 
-                applications:
-              </p>
-              <ul>
-                <li>Fast transaction settlement (3-5 seconds)</li>
-                <li>Low transaction costs (fractions of a penny)</li>
-                <li>High throughput (1,500 transactions per second)</li>
-              </ul>
-            </div>
-          </div>
-
-          {/* Hero Section */}
-          <div>
-            <h5 className="mb-6">Hero Section</h5>
-            <div className="p-6-sm p-10-until-sm br-8 text-center" style={{ backgroundColor: '#141414', color: 'white' }}>
-              <div className="eyebrow mb-4" style={{ color: '#70EE97' }}>Blockchain for Payments</div>
-              <div className="display-md mb-6" style={{ color: 'white' }}>
-                Build the Future of Finance
-              </div>
-              <p className="longform col-lg-8 mx-auto mb-0" style={{ color: '#C1C1C2' }}>
-                Join a global community developing on the XRP Ledger—the most sustainable 
-                blockchain optimized for payments and tokenization.
-              </p>
-            </div>
-          </div>
-
-          {/* Card with Stats */}
-          <div>
-            <h5 className="mb-6">Statistics Card</h5>
-            <div className="p-6-sm p-10-until-sm br-8" style={{ backgroundColor: '#141414', color: 'white' }}>
-              <div className="text-center">
-                <div className="numbers" style={{ color: '#21E46B' }}>10+</div>
-                <div className="sh-md-r mb-3">Years of Operation</div>
-                <p className="label-l mb-0" style={{ color: '#C1C1C2' }}>
-                  Reliably processing transactions since 2012
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
       </section>
 
       <Divider color="gray" weight="thin" />
