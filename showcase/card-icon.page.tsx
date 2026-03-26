@@ -223,7 +223,9 @@ export default function CardIconShowcase() {
                     <div className="mt-3 text-center">
                       <strong>Focused</strong>
                       <br />
-                      <code className="small">+ black border</code>
+                      <code className="small">+ focus ring</code>
+                      <br />
+                      <small className="text-muted">html.light: black · html.dark: white</small>
                     </div>
                   </div>
                 </PageGridCol>
@@ -327,7 +329,9 @@ export default function CardIconShowcase() {
                     <div className="mt-3 text-center">
                       <strong>Focused</strong>
                       <br />
-                      <code className="small">+ black border</code>
+                      <code className="small">+ focus ring</code>
+                      <br />
+                      <small className="text-muted">html.light: black · html.dark: white</small>
                     </div>
                   </div>
                 </PageGridCol>
@@ -453,8 +457,20 @@ export default function CardIconShowcase() {
                         <div><code>Hover/Focus: $gray-400</code> <small className="text-muted">#8A919A + white text</small></div>
                       </div>
                       <div className="d-flex flex-row align-items-center gap-3">
-                        <div style={{ width: '32px', height: '32px', backgroundColor: 'rgba(114,119,126,0.7)', borderRadius: '4px', flexShrink: 0, border: '1px solid #ccc' }}></div>
-                        <div><code>Pressed: 70% $gray-500</code></div>
+                        <div
+                          style={{
+                            width: '32px',
+                            height: '32px',
+                            borderRadius: '4px',
+                            flexShrink: 0,
+                            border: '1px solid #ccc',
+                            backgroundColor: '#56595E',
+                          }}
+                        />
+                        <div>
+                          <code>Pressed: $gray-500-pressed-dark</code>{' '}
+                          <small className="text-muted">#56595E (#72777E + 70% black)</small>
+                        </div>
                       </div>
                       <div className="d-flex flex-row align-items-center gap-3">
                         <div style={{ width: '32px', height: '32px', backgroundColor: 'rgba(114,119,126,0.3)', borderRadius: '4px', flexShrink: 0, border: '1px solid #ccc' }}></div>

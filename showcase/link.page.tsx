@@ -207,7 +207,7 @@ export default function LinkShowcase() {
                     <li><strong>Enabled:</strong> Green 400 <code style={{ color: '#0DAA3E' }}>#0DAA3E</code></li>
                     <li><strong>Hover/Focus:</strong> Green 500 <code style={{ color: '#078139' }}>#078139</code> + underline</li>
                     <li><strong>Active:</strong> Green 400 <code style={{ color: '#0DAA3E' }}>#0DAA3E</code> + underline</li>
-                    <li><strong>Visited:</strong> Lilac 400 <code style={{ color: '#7649E3' }}>#7649E3</code></li>
+                    <li><strong>Visited:</strong> No change <small className="text-muted">(stays Green 400)</small></li>
                     <li><strong>Disabled:</strong> Gray 400 <code style={{ color: '#8A919A' }}>#8A919A</code></li>
                     <li><strong>Focus Outline:</strong> Black <code style={{ color: '#141414' }}>#141414</code></li>
                   </ul>
