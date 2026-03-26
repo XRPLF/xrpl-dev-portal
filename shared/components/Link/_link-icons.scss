@@ -54,7 +54,7 @@ a:focus .bds-link-icon--external:not(.bds-link-icon--disabled) svg .arrow-horizo
 
 // Disabled state
 .bds-link-icon--disabled {
-  opacity: 0.5;
+  // opacity: 0.5;
   cursor: not-allowed;
   
   svg {
@@ -81,7 +81,7 @@ html.dark,
 .dark,
 html:not(.light) {
   .bds-link-icon--disabled svg path {
-    stroke: $gray-500;
+    stroke: $gray-400;
   }
 }
 
