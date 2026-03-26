@@ -24,8 +24,9 @@ export interface TileLinkProps {
  * Supports two color variants (Gray and Lilac) with full light/dark mode theming and
  * five interaction states (Default, Hover, Focused, Pressed, Disabled).
  *
- * Features a "window shade" hover animation where the hover color wipes from
- * bottom to top on mouse enter, and top to bottom on mouse leave.
+ * Features a "window shade" hover animation (wide viewports only) where the hover color wipes from
+ * bottom to top on mouse enter; at max-width 991px the overlay has no clip-path transition.
+ * :focus-visible reveals the same overlay color as hover (light and dark, gray and lilac).
  *
  * Responsive Sizing:
  * - Base (< 576px): 64px height, 12px padding, 16px font, 26.1px line-height
