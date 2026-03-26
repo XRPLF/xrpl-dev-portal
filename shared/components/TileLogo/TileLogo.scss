@@ -257,6 +257,11 @@ html.dark {
   .bds-tile-logo--neutral {
     background-color: $gray-500;
 
+    // Logos read as white on gray tile (SVG / raster)
+    .bds-tile-logo__image {
+      filter: brightness(0) invert(1);
+    }
+
     // Overlay color for hover wipe
     .bds-tile-logo__overlay {
       background-color: $gray-400;

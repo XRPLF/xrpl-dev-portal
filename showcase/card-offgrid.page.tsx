@@ -193,11 +193,11 @@ export default function CardOffgridShowcase() {
                       </div>
                     </div>
                     <div className="d-flex flex-row align-items-center gap-3">
-                      <div style={{ width: '60px', height: '40px', backgroundColor: 'rgba(114, 119, 126, 0.7)', borderRadius: '4px', flexShrink: 0, border: '1px solid #444' }}></div>
+                      <div style={{ width: '60px', height: '40px', backgroundColor: '#56595E', borderRadius: '4px', flexShrink: 0, border: '1px solid #444' }}></div>
                       <div>
-                        <strong>Pressed:</strong> <code>rgba($gray-500, 0.7)</code>
+                        <strong>Pressed:</strong> <code>$gray-500-pressed-dark</code>
                         <br />
-                        <small className="text-muted">70% opacity</small>
+                        <small className="text-muted">#56595E (#72777E + 70% black)</small>
                       </div>
                     </div>
                     <div className="d-flex flex-row align-items-center gap-3">
