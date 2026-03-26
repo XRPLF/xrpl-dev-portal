@@ -6,7 +6,7 @@ import { Divider } from "shared/components/Divider";
 export const frontmatter = {
   seo: {
     title: 'CardOffgrid Component Showcase',
-    description: "A comprehensive showcase of all CardOffgrid component variants, states, and interactions in the XRPL.org Design System.",
+    description: "CardOffgrid showcase: neutral and green variants, hover and focus-visible overlays, responsive window-shade animation (wide viewports) vs instant pressed fill (tablet/mobile), and color tokens.",
   }
 };
 
@@ -54,7 +54,9 @@ export default function CardOffgridShowcase() {
             <h1 className="mb-4">CardOffgrid Component</h1>
             <p className="longform">
               A versatile card component for displaying feature highlights with an icon, title, and description.
-              Supports neutral and green color variants with interactive states and bottom-to-top gradient hover animation.
+              Supports neutral and green color variants with hover, pressed, disabled, and keyboard focus states.
+              On wide viewports, a clip-path “window shade” reveals the hover overlay; on tablet and mobile (about 991px and below),
+              that animation is off and hover or focus goes straight to the pressed fill for a cleaner touch experience.
             </p>
           </div>
         </section>
@@ -67,7 +69,7 @@ export default function CardOffgridShowcase() {
               <p className="mb-6">CardOffgrid supports two color variants: <strong>neutral</strong> (default) and <strong>green</strong>.</p>
               
               <div className="d-flex flex-row gap-6 mb-6" style={{ flexWrap: 'wrap' }}>
-                <div>
+                <div className = "me-4">
                   <h6 className="mb-3">Neutral Variant (Default)</h6>
                   <CardOffgrid
                     variant="neutral"
@@ -104,7 +106,10 @@ export default function CardOffgridShowcase() {
           <PageGridRow>
             <PageGridCol span={12}>
               <h2 className="h4 mb-6">Interactive States</h2>
-              <p className="mb-6">Hover, focus, and press the cards below to see the state transitions.</p>
+              <p className="mb-6">
+                Hover, press, and Tab to focus the cards below. On wide screens, focus uses the same overlay fill as hover; on
+                narrow screens, hover and focus snap to the pressed look without the wipe.
+              </p>
               
               {/* Neutral States */}
               <h5 className="mb-4">Neutral Variant States</h5>
@@ -168,6 +173,13 @@ export default function CardOffgridShowcase() {
                 All colors are mapped from <code>styles/_colors.scss</code>. 
                 The site defaults to <strong>dark mode</strong>. Light mode is activated via <code>html.light</code>.
               </p>
+              <p className="mb-6 longform">
+                <strong>How states use these tokens:</strong> On viewports <strong>wider than 991px</strong>, mouse hover and{' '}
+                <code>:focus-visible</code> both reveal the same <strong>hover</strong> overlay (with the wipe animation).{' '}
+                <strong>Pressed</strong> applies while the pointer is active. At <strong>991px and below</strong>, the overlay
+                has no transition; hover and <code>:focus-visible</code> use the <strong>pressed</strong> overlay color immediately
+                (no hover-colored wipe).
+              </p>
               
               {/* Dark Mode Colors */}
               <h5 className="mb-4">Dark Mode (Default)</h5>
@@ -187,7 +199,9 @@ export default function CardOffgridShowcase() {
                     <div className="d-flex flex-row align-items-center gap-3">
                       <div style={{ width: '60px', height: '40px', backgroundColor: '#8A919A', borderRadius: '4px', flexShrink: 0, border: '1px solid #444' }}></div>
                       <div>
-                        <strong>Hover/Focus:</strong> <code>$gray-400</code>
+                        <strong>Hover</strong> <small className="text-muted">(desktop overlay; same fill on <code>:focus-visible</code>)</small>
+                        <br />
+                        <code>$gray-400</code>
                         <br />
                         <small className="text-muted">#8A919A (white text)</small>
                       </div>
@@ -195,9 +209,11 @@ export default function CardOffgridShowcase() {
                     <div className="d-flex flex-row align-items-center gap-3">
                       <div style={{ width: '60px', height: '40px', backgroundColor: '#56595E', borderRadius: '4px', flexShrink: 0, border: '1px solid #444' }}></div>
                       <div>
-                        <strong>Pressed:</strong> <code>$gray-500-pressed-dark</code>
+                        <strong>Pressed</strong> <small className="text-muted">(also hover/focus overlay ≤991px)</small>
                         <br />
-                        <small className="text-muted">#56595E (#72777E + 70% black)</small>
+                        <code>$gray-500-pressed-dark</code>
+                        <br />
+                        <small className="text-muted">#56595E (opaque — rgba on same base is invisible)</small>
                       </div>
                     </div>
                     <div className="d-flex flex-row align-items-center gap-3">
@@ -226,7 +242,9 @@ export default function CardOffgridShowcase() {
                     <div className="d-flex flex-row align-items-center gap-3">
                       <div style={{ width: '60px', height: '40px', backgroundColor: '#70EE97', borderRadius: '4px', flexShrink: 0, border: '1px solid #444' }}></div>
                       <div>
-                        <strong>Hover/Focus:</strong> <code>$green-200</code>
+                        <strong>Hover</strong> <small className="text-muted">(desktop overlay; same fill on <code>:focus-visible</code>)</small>
+                        <br />
+                        <code>$green-200</code>
                         <br />
                         <small className="text-muted">#70EE97 (black text)</small>
                       </div>
@@ -234,7 +252,9 @@ export default function CardOffgridShowcase() {
                     <div className="d-flex flex-row align-items-center gap-3">
                       <div style={{ width: '60px', height: '40px', backgroundColor: '#0DAA3E', borderRadius: '4px', flexShrink: 0, border: '1px solid #444' }}></div>
                       <div>
-                        <strong>Pressed:</strong> <code>$green-400</code>
+                        <strong>Pressed</strong> <small className="text-muted">(also hover/focus overlay ≤991px)</small>
+                        <br />
+                        <code>$green-400</code>
                         <br />
                         <small className="text-muted">#0DAA3E (black text)</small>
                       </div>
@@ -271,15 +291,19 @@ export default function CardOffgridShowcase() {
                     <div className="d-flex flex-row align-items-center gap-3">
                       <div style={{ width: '60px', height: '40px', backgroundColor: '#CAD4DF', borderRadius: '4px', flexShrink: 0, border: '1px solid #ccc' }}></div>
                       <div>
-                        <strong>Hover/Focus:</strong> <code>$gray-300</code>
+                        <strong>Hover</strong> <small className="text-muted">(desktop overlay; <code>:focus-visible</code> matches hover + title goes black)</small>
                         <br />
-                        <small className="text-muted">#CAD4DF (black text)</small>
+                        <code>$gray-300</code>
+                        <br />
+                        <small className="text-muted">#CAD4DF (black text on hover/focus)</small>
                       </div>
                     </div>
                     <div className="d-flex flex-row align-items-center gap-3">
                       <div style={{ width: '60px', height: '40px', backgroundColor: '#8A919A', borderRadius: '4px', flexShrink: 0, border: '1px solid #ccc' }}></div>
                       <div>
-                        <strong>Pressed:</strong> <code>$gray-400</code>
+                        <strong>Pressed</strong> <small className="text-muted">(also hover/focus overlay ≤991px)</small>
+                        <br />
+                        <code>$gray-400</code>
                         <br />
                         <small className="text-muted">#8A919A (black text)</small>
                       </div>
@@ -310,7 +334,9 @@ export default function CardOffgridShowcase() {
                     <div className="d-flex flex-row align-items-center gap-3">
                       <div style={{ width: '60px', height: '40px', backgroundColor: '#21E46B', borderRadius: '4px', flexShrink: 0, border: '1px solid #ccc' }}></div>
                       <div>
-                        <strong>Hover/Focus:</strong> <code>$green-300</code>
+                        <strong>Hover</strong> <small className="text-muted">(desktop overlay; same fill on <code>:focus-visible</code>)</small>
+                        <br />
+                        <code>$green-300</code>
                         <br />
                         <small className="text-muted">#21E46B (black text)</small>
                       </div>
@@ -318,7 +344,9 @@ export default function CardOffgridShowcase() {
                     <div className="d-flex flex-row align-items-center gap-3">
                       <div style={{ width: '60px', height: '40px', backgroundColor: '#0DAA3E', borderRadius: '4px', flexShrink: 0, border: '1px solid #ccc' }}></div>
                       <div>
-                        <strong>Pressed:</strong> <code>$green-400</code>
+                        <strong>Pressed</strong> <small className="text-muted">(also hover/focus overlay ≤991px)</small>
+                        <br />
+                        <code>$green-400</code>
                         <br />
                         <small className="text-muted">#0DAA3E (black text)</small>
                       </div>
@@ -348,24 +376,28 @@ export default function CardOffgridShowcase() {
                 <div style={{ flex: '1 1 300px' }}>
                   <h6 className="mb-3">Timing</h6>
                   <ul className="mb-0">
-                    <li><strong>Duration:</strong> 200ms</li>
+                    <li><strong>Duration:</strong> 200ms (background/opacity on the card; overlay wipe when transition is enabled)</li>
                     <li><strong>Easing:</strong> <code>cubic-bezier(0.98, 0.12, 0.12, 0.98)</code></li>
+                    <li><strong>≤991px:</strong> Overlay <code>transition</code> is <code>none</code> (no wipe)</li>
                   </ul>
                 </div>
                 <div style={{ flex: '1 1 300px' }}>
-                  <h6 className="mb-3">Hover Effect ("Window Shade")</h6>
+                  <h6 className="mb-3">Hover effect (“window shade”)</h6>
                   <ul className="mb-0">
-                    <li><strong>Hover in:</strong> Shade rises up (bottom → top)</li>
-                    <li><strong>Hover out:</strong> Shade falls down (top → bottom)</li>
-                    <li>Darker pressed state on click</li>
+                    <li><strong>Wide only (&gt;991px):</strong> Overlay uses <code>clip-path</code> with 200ms easing</li>
+                    <li><strong>Hover in:</strong> Shade rises (bottom → top)</li>
+                    <li><strong>Hover out:</strong> Shade falls (top → bottom)</li>
+                    <li><strong>≤991px:</strong> No transition; hover / <code>:focus-visible</code> show pressed overlay only</li>
+                    <li><strong>Pressed:</strong> Darker overlay while pointer is down (all widths)</li>
                   </ul>
                 </div>
                 <div style={{ flex: '1 1 300px' }}>
-                  <h6 className="mb-3">State Flow</h6>
+                  <h6 className="mb-3">State flow</h6>
                   <ul className="mb-0">
-                    <li>Default → Hover → Pressed</li>
+                    <li><strong>Desktop:</strong> Default → hover overlay → pressed while active</li>
+                    <li><strong>Desktop:</strong> <code>:focus-visible</code> reveals same overlay as hover + focus ring</li>
+                    <li><strong>Tablet/mobile:</strong> Default → pressed overlay on hover or focus (instant)</li>
                     <li>Full card area is clickable</li>
-                    <li>Focus ring on keyboard navigation</li>
                   </ul>
                 </div>
               </div>
