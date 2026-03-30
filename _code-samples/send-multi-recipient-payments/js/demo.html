@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Send Multi-Recipient XRP Payments – Code Sample</title>
+  <style>
+    body {
+      font-family: monospace;
+      background: #1a1a2e;
+      color: #e0e0e0;
+      padding: 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    h1 { color: #00b8d4; font-size: 1.3rem; }
+    p { color: #aaa; font-size: 0.9rem; }
+    #output {
+      background: #0d0d1a;
+      border: 1px solid #333;
+      border-radius: 6px;
+      padding: 1rem;
+      white-space: pre-wrap;
+      font-size: 0.85rem;
+      line-height: 1.5;
+      max-height: 600px;
+      overflow-y: auto;
+    }
+  </style>
+</head>
+<body>
+  <h1>Send Multi-Recipient XRP Payments</h1>
+  <p>
+    This demo sends XRP to multiple recipients on the Testnet using sequential
+    Payment transactions. Open the browser console for full details, or watch
+    the output below.
+  </p>
+  <div id="output">Starting...\n</div>
+
+  <!-- Load xrpl.js from CDN -->
+  <script src="https://unpkg.com/xrpl@4/build/xrpl-latest-min.js"></script>
+  <script>
+    // Redirect console.log to the page
+    const outputEl = document.getElementById("output")
+    const originalLog = console.log
+    console.log = function (...args) {
+      originalLog.apply(console, args)
+      outputEl.textContent += args.join(" ") + "\n"
+      outputEl.scrollTop = outputEl.scrollHeight
+    }
+  </script>
+  <!-- Load the code sample -->
+  <script src="send-multi-recipient-payments.js"></script>
+</body>
+</html>
