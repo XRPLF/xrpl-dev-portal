@@ -2,7 +2,48 @@ import { useThemeHooks } from "@redocly/theme/core/hooks"
 import { Link } from "@redocly/theme/components/Link/Link"
 import { useState } from "react"
 
-// Maximum number of tutorials to display per section
+type TutorialLanguagesMap = Record<string, string[]>
+
+interface TutorialMetadataItem {
+  path: string
+  title: string
+  description: string
+  lastModified: string
+  category: string
+}
+
+interface Tutorial {
+  title: string
+  body?: string
+  path: string
+  // External community contribution fields (optional)
+  author?: { name: string; url: string }
+  github?: string
+  externalUrl?: string
+}
+
+interface TutorialSection {
+  id: string
+  title: string
+  description: string
+  tutorials: Tutorial[]
+}
+
+// External community contribution - manually curated with author/repo/demo info
+interface PinnedExternalTutorial {
+  title: string
+  description: string
+  author: { name: string; url: string }
+  github: string
+  url?: string
+}
+
+// Pinned tutorial entry:
+// - string: internal path (uses frontmatter title/description)
+// - object with `path`: internal path with optional description override
+// - PinnedExternalTutorial: external community contribution with author/repo/demo
+type PinnedTutorial = string | { path: string; description?: string } | PinnedExternalTutorial
+
 const MAX_WHATS_NEW = 3
 const MAX_TUTORIALS_PER_SECTION = 6
 
@@ -24,38 +65,19 @@ const langIcons: Record<string, { src: string; alt: string }> = {
   xrpl: { src: "/img/logos/xrp-mark.svg", alt: "XRP Ledger" },
 }
 
-// Type for the tutorial languages map from the plugin
-type TutorialLanguagesMap = Record<string, string[]>
-
-// Type for tutorial metadata from the plugin
-interface TutorialMetadataItem {
-  path: string
-  title: string
-  description: string
-  lastModified: string
-  category: string
-}
-
-interface TutorialMetadata {
-  tutorials: TutorialMetadataItem[]
-}
-
-interface Tutorial {
-  title: string
-  body?: string
-  path: string
-}
-
-interface TutorialSection {
-  id: string
-  title: string
-  description: string
-  tutorials: Tutorial[]
-}
-
 // Section configuration - defines display order, titles, and descriptions.
-// Tutorials are auto-populated from the plugin based on their file path category.
+// "whats-new" and "get-started" are rendered separately; the rest are auto-populated category sections.
 const sectionConfig: { id: string; title: string; description: string }[] = [
+  {
+    id: "whats-new",
+    title: "What's New",
+    description: "Recently added/updated tutorials to help you build on the XRP Ledger.",
+  },
+  {
+    id: "get-started",
+    title: "Get Started with SDKs",
+    description: "These tutorials walk you through the basics of building a very simple XRP Ledger-connected application using your favorite programming language.",
+  },
   {
     id: "tokens",
     title: "Tokens",
@@ -83,12 +105,10 @@ const sectionConfig: { id: string; title: string; description: string }[] = [
   },
 ]
 
-// Pinned tutorial entry - can be just a path string, or an object with description override.
-type PinnedTutorial = string | { path: string; description?: string }
 
 // Pinned tutorials - these always appear in their designated sections.
-// New tutorials appear in "What's New" automatically.
 // Use an object with `description` to override the frontmatter description.
+// Use an object with `github` for external community contributions.
 const pinnedTutorials: Record<string, PinnedTutorial[]> = {
   "get-started": [
     { path: "/docs/tutorials/get-started/get-started-javascript/", description: "Using the xrpl.js client library." },
@@ -118,12 +138,19 @@ const pinnedTutorials: Record<string, PinnedTutorial[]> = {
   ],
   "best-practices": [
     "/docs/tutorials/best-practices/api-usage/",
-  ]
+  ],
+  "sample-apps": [
+    {
+      title: "XRPL Lending Protocol Demo",
+      description: "A full-stack web application that demonstrates the end-to-end flow of the Lending Protocol and Single Asset Vaults.",
+      author: { name: "Aaditya-T", url: "https://github.com/Aaditya-T" },
+      github: "https://github.com/Aaditya-T/lending_test",
+      url: "https://lending-test-lovat.vercel.app/",
+    },
+  ],
 }
 
-// Helper to get path from pinned tutorial entry
-const getPinnedPath = (entry: PinnedTutorial): string =>
-  typeof entry === "string" ? entry : entry.path
+// ── Components ──────────────────────────────────────────────────────────────
 
 function TutorialCard({
   tutorial,
@@ -159,6 +186,70 @@ function TutorialCard({
   )
 }
 
+// Inline meta link used in ContributionCard
+function MetaLink({ href, icon, label }: {
+  href: string
+  icon: string
+  label: string
+}) {
+  return (
+    <a href={href} target="_blank" rel="noopener noreferrer" className="meta-link">
+      <i className={`fa fa-${icon}`} aria-hidden="true" />
+      {label}
+    </a>
+  )
+}
+
+// Community Contribution Card 
+function ContributionCard({
+  tutorial,
+  translate,
+}: {
+  tutorial: Tutorial
+  translate: (text: string) => string
+}) {
+  const primaryUrl = tutorial.externalUrl || tutorial.github!
+
+  const handleCardClick = (e: React.MouseEvent | React.KeyboardEvent) => {
+    if ((e.target as HTMLElement).closest(".card-meta-row")) return
+    window.open(primaryUrl, "_blank", "noopener,noreferrer")
+  }
+
+  return (
+    <div
+      className="card contribution-card"
+      onClick={handleCardClick}
+      onKeyDown={(e) => { if (e.key === "Enter") handleCardClick(e) }}
+      role="link"
+      tabIndex={0}
+    >
+      <div className="card-header contribution-header">
+        <span className="circled-logo contribution-icon">
+          <i className="fa fa-users" aria-hidden="true" />
+        </span>
+        <div className="card-meta-row">
+          {tutorial.author && (
+            <>
+              <MetaLink href={tutorial.author.url} icon="user" label={tutorial.author.name} />
+              <span className="meta-dot" aria-hidden="true">·</span>
+            </>
+          )}
+          <MetaLink href={tutorial.github!} icon="github" label={translate("GitHub")} />
+        </div>
+      </div>
+      <div className="card-body">
+        <h4 className="card-title h5">
+          {translate(tutorial.title)}
+          <span className="card-external-icon" aria-label={translate("External link")}>
+            <i className="fa fa-external-link" aria-hidden="true" />
+          </span>
+        </h4>
+        {tutorial.body && <p className="card-text">{translate(tutorial.body)}</p>}
+      </div>
+    </div>
+  )
+}
+
 // Reusable section block for rendering tutorial sections
 function TutorialSectionBlock({
   id,
@@ -190,14 +281,18 @@ function TutorialSectionBlock({
         <p className="mb-4">{translate(description)}</p>
       </div>
       <div className="row tutorial-cards">
-        {displayTutorials.map((tutorial, idx) => (
-          <div key={idx} className="col-lg-4 col-md-6 mb-5">
-            <TutorialCard
-              tutorial={tutorial}
-              detectedLanguages={tutorialLanguages[tutorial.path]}
-              showFooter={showFooter}
-              translate={translate}
-            />
+        {displayTutorials.map((tutorial) => (
+          <div key={tutorial.path} className="col-lg-4 col-md-6 mb-5">
+            {tutorial.github ? (
+              <ContributionCard tutorial={tutorial} translate={translate} />
+            ) : (
+              <TutorialCard
+                tutorial={tutorial}
+                detectedLanguages={tutorialLanguages[tutorial.path]}
+                showFooter={showFooter}
+                translate={translate}
+              />
+            )}
           </div>
         ))}
       </div>
@@ -271,6 +366,8 @@ function QuickReferenceCard({ translate }: { translate: (text: string) => string
   )
 }
 
+// ── Page Component ──────────────────────────────────────────────────────────
+
 export default function TutorialsIndex() {
   const { useTranslate, usePageSharedData } = useThemeHooks()
   const { translate } = useTranslate()
@@ -279,56 +376,12 @@ export default function TutorialsIndex() {
   const tutorialLanguages = usePageSharedData<TutorialLanguagesMap>("tutorial-languages") || {}
 
   // Get tutorial metadata from the tutorial-metadata plugin.
-  const tutorialMetadata = usePageSharedData<TutorialMetadata>("tutorial-metadata")
+  const tutorialMetadata = usePageSharedData<{ tutorials: TutorialMetadataItem[] }>("tutorial-metadata")
   const allTutorials = tutorialMetadata?.tutorials || []
-
-  // Helper to convert tutorial metadata to Tutorial type.
-  const toTutorial = (
-    t: TutorialMetadataItem,
-    descriptionOverride?: string
-  ): Tutorial => ({
-    title: t.title,
-    body: descriptionOverride || t.description,
-    path: t.path,
-  })
-
-  // Helper to build tutorials from pinned entries.
-  const buildPinnedTutorials = (entries: PinnedTutorial[]): Tutorial[] =>
-    entries
-      .map((entry) => {
-        const path = getPinnedPath(entry)
-        const descOverride = typeof entry === "string" ? undefined : entry.description
-        const metadata = allTutorials.find((t) => t.path === path)
-        return metadata ? toTutorial(metadata, descOverride) : null
-      })
-      .filter((t): t is Tutorial => t !== null)
-
-  // Collect ALL pinned paths across all sections (to avoid duplicates in auto-population).
-  const allPinnedPaths = new Set(
-    Object.values(pinnedTutorials).flat().map(getPinnedPath)
-  )
-
-  // Build sections: pinned tutorials first, then auto-populated from category.
-  const sections: TutorialSection[] = sectionConfig.map((config) => {
-    const pinnedTutorialSection = buildPinnedTutorials(pinnedTutorials[config.id] || [])
-
-    // Auto-populate remaining tutorials from this category.
-    // Excludes tutorials pinned anywhere (not just this section) to avoid duplicates.
-    // Sorted by lastModified (most recent first).
-    const autoTutorials = allTutorials
-      .filter((t) => t.category === config.id && !allPinnedPaths.has(t.path))
-      .sort((a, b) => new Date(b.lastModified).getTime() - new Date(a.lastModified).getTime())
-      .map((t) => toTutorial(t))
-
-    return {
-      ...config,
-      tutorials: [...pinnedTutorialSection, ...autoTutorials],
-    }
-  }).filter((section) => section.tutorials.length > 0)
 
   // Build Get Started tutorials from pinned config.
   const getStartedPinnedEntries = pinnedTutorials["get-started"] || []
-  const getStartedTutorials = buildPinnedTutorials(getStartedPinnedEntries)
+  const getStartedTutorials = buildPinnedTutorials(getStartedPinnedEntries, allTutorials)
 
   // Get Started paths to exclude from "What's New".
   const getStartedPaths = new Set(getStartedPinnedEntries.map(getPinnedPath))
@@ -340,6 +393,26 @@ export default function TutorialsIndex() {
     .filter((t) => !getStartedPaths.has(t.path))
     .slice(0, MAX_WHATS_NEW)
     .map((t) => toTutorial(t))
+
+  // Build category sections: pinned tutorials first, then auto-populated.
+  const categorySectionIds = new Set(["whats-new", "get-started"])
+  const allPinnedPaths = new Set(
+    Object.values(pinnedTutorials).flat().map(getPinnedPath)
+  )
+  const sections: TutorialSection[] = sectionConfig
+    .filter((config) => !categorySectionIds.has(config.id))
+    .map((config) => {
+      const pinned = buildPinnedTutorials(pinnedTutorials[config.id] || [], allTutorials)
+      // allTutorials is already sorted by lastModified (newest first) from the plugin.
+      const autoTutorials = allTutorials
+        .filter((t) => t.category === config.id && !allPinnedPaths.has(t.path))
+        .map((t) => toTutorial(t))
+      return { ...config, tutorials: [...pinned, ...autoTutorials] }
+    })
+    .filter((section) => section.tutorials.length > 0)
+
+  const whatsNewConfig = getSectionConfig("whats-new")
+  const getStartedConfig = getSectionConfig("get-started")
 
   return (
     <main className="landing page-tutorials landing-builtin-bg">
@@ -356,10 +429,10 @@ export default function TutorialsIndex() {
             <nav className="mt-4">
               <ul className="page-toc no-sideline d-flex flex-wrap gap-2 mb-0">
                 {whatsNewTutorials.length > 0 && (
-                  <li><a href="#whats-new">{translate("What's New")}</a></li>
+                  <li><a href={`#${whatsNewConfig.id}`}>{translate(whatsNewConfig.title)}</a></li>
                 )}
                 {getStartedTutorials.length > 0 && (
-                  <li><a href="#get-started">{translate("Get Started with SDKs")}</a></li>
+                  <li><a href={`#${getStartedConfig.id}`}>{translate(getStartedConfig.title)}</a></li>
                 )}
                 {sections.map((section) => (
                   <li key={section.id}><a href={`#${section.id}`}>{translate(section.title)}</a></li>
@@ -376,9 +449,9 @@ export default function TutorialsIndex() {
       {/* What's New */}
       {whatsNewTutorials.length > 0 && (
         <TutorialSectionBlock
-          id="whats-new"
-          title="What's New"
-          description="Recently added/updated tutorials to help you build on the XRP Ledger."
+          id={whatsNewConfig.id}
+          title={whatsNewConfig.title}
+          description={whatsNewConfig.description}
           tutorials={whatsNewTutorials}
           tutorialLanguages={tutorialLanguages}
           showFooter
@@ -390,9 +463,9 @@ export default function TutorialsIndex() {
       {/* Get Started */}
       {getStartedTutorials.length > 0 && (
         <TutorialSectionBlock
-          id="get-started"
-          title="Get Started with SDKs"
-          description="These tutorials walk you through the basics of building a very simple XRP Ledger-connected application using your favorite programming language."
+          id={getStartedConfig.id}
+          title={getStartedConfig.title}
+          description={getStartedConfig.description}
           tutorials={getStartedTutorials}
           tutorialLanguages={tutorialLanguages}
           showFooter
@@ -416,4 +489,52 @@ export default function TutorialsIndex() {
       ))}
     </main>
   )
+}
+
+// ── Helpers ──────────────────────────────────────────────────────────────────
+
+/** Look up a section's config by id */
+function getSectionConfig(id: string) {
+  return sectionConfig.find((s) => s.id === id)!
+}
+
+/** Type guard for external community contributions */
+function isExternalContribution(entry: PinnedTutorial): entry is PinnedExternalTutorial {
+  return typeof entry !== "string" && "github" in entry
+}
+
+/** Get path from pinned tutorial entry (external contributions return their github URL) */
+function getPinnedPath(entry: PinnedTutorial): string {
+  return typeof entry === "string" ? entry : isExternalContribution(entry) ? entry.github : entry.path
+}
+
+/** Convert tutorial metadata to the common Tutorial type */
+function toTutorial(t: TutorialMetadataItem, descriptionOverride?: string): Tutorial {
+  return {
+    title: t.title,
+    body: descriptionOverride || t.description,
+    path: t.path,
+  }
+}
+
+/** Build Tutorial objects from pinned entries, resolving metadata for internal paths */
+function buildPinnedTutorials(entries: PinnedTutorial[], allTutorials: TutorialMetadataItem[]): Tutorial[] {
+  return entries
+    .map((entry): Tutorial | null => {
+      if (isExternalContribution(entry)) {
+        return {
+          title: entry.title,
+          body: entry.description,
+          path: entry.url || entry.github,
+          author: entry.author,
+          github: entry.github,
+          externalUrl: entry.url,
+        }
+      }
+      const path = getPinnedPath(entry)
+      const descOverride = typeof entry === "string" ? undefined : entry.description
+      const metadata = allTutorials.find((t) => t.path === path)
+      return metadata ? toTutorial(metadata, descOverride) : null
+    })
+    .filter((t): t is Tutorial => t !== null)
 }

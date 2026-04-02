@@ -27,7 +27,7 @@ $whats-new-footers: (
     flex-direction: column;
     height: 100%;
     width: 100%;
-    min-height: 280px;
+    min-height: 300px;
     transition: all 0.35s ease-out;
     cursor: pointer;
 
@@ -86,6 +86,83 @@ $whats-new-footers: (
 // Light mode: invert HTTP/WebSocket icon
 .light .page-tutorials .tutorial-cards .circled-logo img[alt="HTTP / WebSocket"] {
   filter: invert(1);
+}
+
+// Contribution Card - community contribution with meta links
+.page-tutorials .tutorial-cards .contribution-card {
+  .contribution-header {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .contribution-icon {
+    background: rgba($blue-purple-500, 0.15);
+    color: $blue-purple-300;
+    font-size: 26px;
+  }
+
+  .card-external-icon {
+    font-size: 0.85rem;
+    margin-left: 0.35rem;
+    color: $gray-500;
+    vertical-align: middle;
+  }
+
+  .card-meta-row {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.8rem;
+    flex-wrap: wrap;
+    margin-left: auto;
+    margin-top: -4px;
+
+    .meta-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      color: $gray-300;
+      text-decoration: none;
+      transition: color 0.15s ease;
+
+      .fa {
+        font-size: 0.8rem;
+      }
+
+      &:hover {
+        color: $blue-purple-300;
+      }
+    }
+
+    .meta-dot {
+      color: $gray-500;
+      font-weight: bold;
+      user-select: none;
+    }
+  }
+}
+
+// Light mode: Contribution Card
+.light .page-tutorials .tutorial-cards .contribution-card {
+  .contribution-icon {
+    background: rgba($blue-purple-500, 0.1);
+    color: $blue-purple-600;
+  }
+
+  .card-meta-row {
+    .meta-link {
+      color: $gray-600;
+
+      &:hover {
+        color: $blue-purple-600;
+      }
+    }
+
+    .meta-dot {
+      color: $gray-500;
+    }
+  }
 }
 
 // TOC navigation buttons
