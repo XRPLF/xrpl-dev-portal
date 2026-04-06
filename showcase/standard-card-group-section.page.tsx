@@ -49,9 +49,7 @@ const CodeDemo = ({
       <div
         style={{
           border: "1px dashed #ccc",
-          padding: "16px",
           backgroundColor: "#f9f9f9",
-          borderRadius: "8px",
         }}
       >
         {children}
