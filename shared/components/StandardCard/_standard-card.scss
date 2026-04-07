@@ -27,6 +27,10 @@
 
   &#{&}--neutral {
     background-color: $gray-200;
+
+    @include bds-theme-mode(dark) {
+      background-color: $gray-300;
+    }
   }
 
   &#{&}--green {
