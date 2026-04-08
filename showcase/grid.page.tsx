@@ -1,5 +1,8 @@
 import * as React from "react";
+import clsx from "clsx";
 import { PageGrid, PageGridRow, PageGridCol } from "shared/components/PageGrid/page-grid";
+
+type BorderedColProps = React.ComponentProps<typeof PageGridCol>;
 
 export const frontmatter = {
   seo: {
@@ -19,36 +22,22 @@ const GridDemo = ({ title, description, children, code }: {
     <h3 className="h4 mb-4">{title}</h3>
     {description && <p className="mb-6">{description}</p>}
     {code && (
-      <div className="mb-6 p-4 bg-light br-4 text-black" style={{ fontFamily: 'monospace', fontSize: '14px', overflow: 'auto' }}>
-        <pre style={{ margin: 0, whiteSpace: 'pre-wrap', color: '#000' }}>{code}</pre>
+      <div className={clsx("mb-6 br-4", "grid-showcase-code-block")}>
+        <pre>{code}</pre>
       </div>
     )}
-    <div style={{ 
-      border: '1px dashed #ccc', 
-      padding: '16px', 
-      backgroundColor: '#f9f9f9',
-      borderRadius: '8px'
-    }}>
+    <div className="grid-showcase-demo">
       {children}
     </div>
   </div>
 );
 
-// Bordered column component for visualization
-const BorderedCol = ({ children, ...props }: { children: React.ReactNode } & any) => (
-  <PageGridCol 
+// Bordered column component for visualization (theme styles: .grid-showcase-bordered-col in _landings.scss)
+const BorderedCol = ({ children, className, style, ...props }: BorderedColProps) => (
+  <PageGridCol
     {...props}
-    style={{
-      border: '1px solid #0069ff',
-      backgroundColor: 'rgba(0, 105, 255, 0.05)',
-      padding: '16px',
-      minHeight: '60px',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      textAlign: 'center',
-      ...props.style
-    }}
+    className={clsx("grid-showcase-bordered-col", className)}
+    style={style}
   >
     {children}
   </PageGridCol>
@@ -277,50 +266,43 @@ export default function GridShowcase() {
               <p className="mb-6">
                 The PageGrid system uses the following breakpoints:
               </p>
-              <div style={{ width: '100%', backgroundColor: '#FFFFFF', borderRadius: '4px', overflow: 'hidden', border: '1px solid #EEE', marginBottom: '24px' }}>
-                {/* Header */}
-                <div style={{
-                  display: 'grid',
-                  gridTemplateColumns: '1.2fr 1fr 1fr 1.5fr',
-                  borderBottom: '2px solid #E0E0E1',
-                  background: '#FAFAFA'
-                }}>
-                  <div style={{ padding: '12px', fontWeight: 600 }}>Breakpoint</div>
-                  <div style={{ padding: '12px', fontWeight: 600 }}>Min Width</div>
-                  <div style={{ padding: '12px', fontWeight: 600 }}>Columns</div>
-                  <div style={{ padding: '12px', fontWeight: 600 }}>Container Padding</div>
+              <div className={clsx("grid-showcase-breakpoints-table", "mb-6")}>
+                <div className="grid-showcase-breakpoints-table__grid grid-showcase-breakpoints-table__header">
+                  <div className="grid-showcase-breakpoints-table__cell">Breakpoint</div>
+                  <div className="grid-showcase-breakpoints-table__cell">Min Width</div>
+                  <div className="grid-showcase-breakpoints-table__cell">Columns</div>
+                  <div className="grid-showcase-breakpoints-table__cell">Container Padding</div>
                 </div>
 
-                {/* Rows */}
-                <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr 1fr 1.5fr', borderBottom: '1px solid #E0E0E1' }}>
-                  <div style={{ padding: '12px' }}><code>base</code></div>
-                  <div style={{ padding: '12px' }}>0px</div>
-                  <div style={{ padding: '12px' }}>4 columns</div>
-                  <div style={{ padding: '12px' }}>16px</div>
+                <div className="grid-showcase-breakpoints-table__grid grid-showcase-breakpoints-table__row">
+                  <div className="grid-showcase-breakpoints-table__cell"><code>base</code></div>
+                  <div className="grid-showcase-breakpoints-table__cell">0px</div>
+                  <div className="grid-showcase-breakpoints-table__cell">4 columns</div>
+                  <div className="grid-showcase-breakpoints-table__cell">16px</div>
                 </div>
-                <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr 1fr 1.5fr', borderBottom: '1px solid #E0E0E1' }}>
-                  <div style={{ padding: '12px' }}><code>sm</code></div>
-                  <div style={{ padding: '12px' }}>576px</div>
-                  <div style={{ padding: '12px' }}>8 columns</div>
-                  <div style={{ padding: '12px' }}>24px</div>
+                <div className="grid-showcase-breakpoints-table__grid grid-showcase-breakpoints-table__row">
+                  <div className="grid-showcase-breakpoints-table__cell"><code>sm</code></div>
+                  <div className="grid-showcase-breakpoints-table__cell">576px</div>
+                  <div className="grid-showcase-breakpoints-table__cell">8 columns</div>
+                  <div className="grid-showcase-breakpoints-table__cell">24px</div>
                 </div>
-                <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr 1fr 1.5fr', borderBottom: '1px solid #E0E0E1' }}>
-                  <div style={{ padding: '12px' }}><code>md</code></div>
-                  <div style={{ padding: '12px' }}>576px</div>
-                  <div style={{ padding: '12px' }}>8 columns</div>
-                  <div style={{ padding: '12px' }}>24px</div>
+                <div className="grid-showcase-breakpoints-table__grid grid-showcase-breakpoints-table__row">
+                  <div className="grid-showcase-breakpoints-table__cell"><code>md</code></div>
+                  <div className="grid-showcase-breakpoints-table__cell">576px</div>
+                  <div className="grid-showcase-breakpoints-table__cell">8 columns</div>
+                  <div className="grid-showcase-breakpoints-table__cell">24px</div>
                 </div>
-                <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr 1fr 1.5fr', borderBottom: '1px solid #E0E0E1' }}>
-                  <div style={{ padding: '12px' }}><code>lg</code></div>
-                  <div style={{ padding: '12px' }}>992px</div>
-                  <div style={{ padding: '12px' }}>12 columns</div>
-                  <div style={{ padding: '12px' }}>32px</div>
+                <div className="grid-showcase-breakpoints-table__grid grid-showcase-breakpoints-table__row">
+                  <div className="grid-showcase-breakpoints-table__cell"><code>lg</code></div>
+                  <div className="grid-showcase-breakpoints-table__cell">992px</div>
+                  <div className="grid-showcase-breakpoints-table__cell">12 columns</div>
+                  <div className="grid-showcase-breakpoints-table__cell">32px</div>
                 </div>
-                <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr 1fr 1.5fr' }}>
-                  <div style={{ padding: '12px' }}><code>xl</code></div>
-                  <div style={{ padding: '12px' }}>1280px</div>
-                  <div style={{ padding: '12px' }}>12 columns</div>
-                  <div style={{ padding: '12px' }}>112px (max-width: 1440px)</div>
+                <div className="grid-showcase-breakpoints-table__grid grid-showcase-breakpoints-table__row">
+                  <div className="grid-showcase-breakpoints-table__cell"><code>xl</code></div>
+                  <div className="grid-showcase-breakpoints-table__cell">1280px</div>
+                  <div className="grid-showcase-breakpoints-table__cell">12 columns</div>
+                  <div className="grid-showcase-breakpoints-table__cell">112px (max-width: 1440px)</div>
                 </div>
               </div>
             </div>
@@ -334,13 +316,13 @@ export default function GridShowcase() {
               <h2 className="h3 mb-6">Usage</h2>
               
               <h4 className="h5 mb-4">Import</h4>
-              <div className="p-4 bg-light br-4 mb-6" style={{ fontFamily: 'monospace', fontSize: '14px' }}>
-                <pre style={{ margin: 0, color: '#000' }}>{`import { PageGrid, PageGridRow, PageGridCol } from "shared/components/PageGrid/page-grid";`}</pre>
+              <div className={clsx("mb-6 br-4", "grid-showcase-code-block")}>
+                <pre>{`import { PageGrid, PageGridRow, PageGridCol } from "shared/components/PageGrid/page-grid";`}</pre>
               </div>
 
               <h4 className="h5 mb-4">Basic Example</h4>
-              <div className="p-4 bg-light br-4 mb-6" style={{ fontFamily: 'monospace', fontSize: '14px', overflow: 'auto' }}>
-                <pre style={{ margin: 0, whiteSpace: 'pre-wrap', color: '#000' }}>{`<PageGrid>
+              <div className={clsx("mb-6 br-4", "grid-showcase-code-block")}>
+                <pre>{`<PageGrid>
   <PageGrid.Row>
     <PageGrid.Col span={6}>
       Column 1
