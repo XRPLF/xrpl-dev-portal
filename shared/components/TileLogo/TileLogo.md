@@ -65,6 +65,28 @@ Use to highlight featured or primary partners. Creates visual hierarchy and draw
 - Important collaborations
 - Creating visual emphasis
 
+### Theme and interactive colors
+
+Tiles are styled for **light mode** (`html.light`) and **dark mode** (`html.dark`). Hover uses a bottom-to-top “window shade” overlay; **focus-visible** matches the hover overlay color; **pressed** (`:active`) uses the active fill.
+
+**Neutral**
+
+| State | Light mode | Dark mode |
+| --- | --- | --- |
+| Default (tile background) | Gray 200 | Gray 500 |
+| Hover / focus overlay | Gray 300 | Gray 400 |
+| Pressed overlay | Gray 400 | Gray pressed token (`#56595E`) |
+
+**Green**
+
+| State | Light mode | Dark mode |
+| --- | --- | --- |
+| Default (tile background) | Green 200 | Green 300 |
+| Hover / focus overlay | Green 300 | Green 200 |
+| Pressed overlay | Green 400 | Green 400 |
+
+On viewports ≤991px, the wipe animation is disabled and hover / focus-visible use a solid full overlay immediately. Values follow `TileLogo.scss` (for example, dark-mode green uses green-200 for that overlay, matching desktop hover—not green-400 pressed).
+
 ---
 
 ## Component API
