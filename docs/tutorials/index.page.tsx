@@ -1,6 +1,6 @@
 import { useThemeHooks } from "@redocly/theme/core/hooks"
 import { Link } from "@redocly/theme/components/Link/Link"
-import { useState } from "react"
+import { useRef, useState } from "react"
 
 type TutorialLanguagesMap = Record<string, string[]>
 
@@ -99,6 +99,21 @@ const sectionConfig: { id: string; title: string; description: string }[] = [
     description: "Learn recommended patterns for building reliable, secure applications on the XRP Ledger.",
   },
   {
+    id: "compliance-features",
+    title: "Compliance",
+    description: "Implement compliance controls like destination tags, credentials, and permissioned domains.",
+  },
+  {
+    id: "programmability",
+    title: "Programmability",
+    description: "Set up cross-chain bridges and submit interoperability transactions.",
+  },
+  {
+    id: "advanced-developer-topics",
+    title: "Advanced Developer Topics",
+    description: "Explore advanced topics like WebSocket monitoring and testing devnet features.",
+  },
+  {
     id: "sample-apps",
     title: "Sample Apps",
     description: "Build complete, end-to-end applications like wallets and credential services.",
@@ -122,10 +137,10 @@ const pinnedTutorials: Record<string, PinnedTutorial[]> = {
     { path: "/docs/tutorials/tokens/mpts/issue-a-multi-purpose-token/", description: "Issue new tokens using the v2 fungible token standard." },
     { path: "/docs/tutorials/tokens/fungible-tokens/issue-a-fungible-token/", description: "Issue new tokens using the v1 fungible token standard."},
     { path: "/docs/tutorials/tokens/nfts/mint-and-burn-nfts-js/", description: "Create new NFTs, retrieve existing tokens, and burn the ones you no longer need." },
+    "/docs/tutorials/tokens/mpts/sending-mpts-in-javascript/",
   ],
   payments: [
     "/docs/tutorials/payments/send-xrp/",
-    "/docs/tutorials/tokens/mpts/sending-mpts-in-javascript/",
     "/docs/tutorials/payments/create-trust-line-send-currency-in-javascript/",
     "/docs/tutorials/payments/send-a-conditional-escrow/",
     "/docs/tutorials/payments/send-a-timed-escrow/",
@@ -273,11 +288,24 @@ function TutorialSectionBlock({
   translate: (text: string) => string
 }) {
   const [expanded, setExpanded] = useState(false)
+  const sectionRef = useRef<HTMLElement>(null)
   const hasMore = maxTutorials ? tutorials.length > maxTutorials : false
   const displayTutorials = maxTutorials && !expanded ? tutorials.slice(0, maxTutorials) : tutorials
 
+  const handleToggle = () => {
+    if (expanded && sectionRef.current) {
+      const offsetTop = sectionRef.current.getBoundingClientRect().top + window.scrollY
+      setExpanded(false)
+      requestAnimationFrame(() => {
+        window.scrollTo({ top: offsetTop - 20 })
+      })
+    } else {
+      setExpanded(true)
+    }
+  }
+
   return (
-    <section className={`container-new pt-10 pb-14 ${className}`.trim()} id={id}>
+    <section ref={sectionRef} className={`container-new pt-10 pb-14 ${className}`.trim()} id={id}>
       <div className="col-12 col-xl-8 p-0">
         <h3 className="h4 mb-3">{translate(title)}</h3>
         <p className="mb-4">{translate(description)}</p>
@@ -302,7 +330,7 @@ function TutorialSectionBlock({
         <div className="explore-more-wrapper">
           <button
             className="explore-more-link"
-            onClick={() => setExpanded(!expanded)}
+            onClick={handleToggle}
           >
             {expanded ? translate("Show less") : translate("Explore more")} {expanded ? "↑" : "→"}
           </button>

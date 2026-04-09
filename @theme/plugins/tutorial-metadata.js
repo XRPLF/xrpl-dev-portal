@@ -1,6 +1,6 @@
 // @ts-check
 
-import { getInnerText } from '@redocly/realm/dist/server/plugins/markdown/markdoc/helpers/get-inner-text.js';
+import { getInnerText } from '@redocly/realm/dist/markdoc/helpers/get-inner-text.js';
 
 /**
  * Plugin to extract tutorial metadata including last modified dates.
