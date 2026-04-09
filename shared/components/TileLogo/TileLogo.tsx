@@ -38,6 +38,11 @@ export interface TileLogoProps {
  * Features a "window shade" hover animation where the hover color wipes from
  * bottom to top on mouse enter, and top to bottom on mouse leave.
  *
+ * Colors are defined in `TileLogo.scss` and follow `html.light` / `html.dark`.
+ * Green variant tokens: light mode uses green-200 (default), green-300 (hover /
+ * focus overlay), green-400 (pressed); dark mode uses green-300 (default),
+ * green-200 (hover / focus overlay), green-400 (pressed).
+ *
  * Shape sizes are responsive and change based on breakpoints:
  * - Square: 1:1 aspect ratio, width controlled by parent (use PageGridCol with span 2/2/3)
  * - Rectangle: 9:5 aspect ratio, width controlled by parent (use PageGridCol with span 2/2/3)
