@@ -42,6 +42,7 @@ $bds-card-text-icon-gap-lg: $bds-padding-card-lg;
   box-sizing: border-box;
   border-left: 1px solid $gray-300;
   margin-bottom: $bds-space-2xl;
+  color: $black;
   // When used standalone (not as grid column), take full width
   &:not(.bds-card-text-icon-card--grid-col) {
     width: 100%;
@@ -117,14 +118,47 @@ $bds-card-text-icon-gap-lg: $bds-padding-card-lg;
   color: inherit;
   min-width: 0; 
   position: relative;
+  color: $black;
 
   a {
-    color: inherit;
-    text-decoration: underline;
-    text-underline-offset: 2px;
+    font-weight: 400 !important;
+    color: $green-400 !important;
 
     &:hover {
-      text-decoration-thickness: 2px;
+      color: $green-500 !important;
+      text-decoration: underline !important;
+    }
+    &:active {
+      color: $green-400 !important;
+    }
+    &:visited {
+      color: $lilac-400 !important;
+    }
+    &:focus {
+      outline: 2px solid $black;
+      outline-offset: 1px;
+    }
+  }
+
+  @include bds-theme-mode(dark) {
+    color: $white;
+    a {
+      color: $green-300 !important;
+  
+      &:hover {
+        color: $green-200 !important;
+        text-decoration: underline !important;
+      }
+      &:active {
+        color: $green-300 !important;
+      }
+      &:visited {
+        color: $lilac-300 !important;
+      }
+      &:focus {
+        outline: 2px solid $white;
+        outline-offset: 1px;
+      }
     }
   }
 }
