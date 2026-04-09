@@ -28,23 +28,23 @@ $bds-cmb-variants: (
   'default': (
     light-bg: $white,           // #FFFFFF
     light-text: $black,         // #141414
-    dark-bg: $gray-800,         // #232325
-    dark-text: $white           // #FFFFFF
+    dark-bg: $black,            // #141414
+    dark-text: $white,           // #FFFFFF
   ),
   'light-gray': (
     light-bg: $gray-200,        // #E6EAF0
     light-text: $black,         // #141414
-    dark-bg: $gray-700,         // #343437
-    dark-text: $white           // #FFFFFF
+    dark-bg: $gray-300,         // #CAD4DF
+    dark-text: $black           // #141414
   ),
   'lilac': (
-    light-bg: $lilac-300,       // #C0A7FF
+    light-bg: $lilac-200,       // #D9CAFF
     light-text: $black,         // #141414
-    dark-bg: $lilac-400,        // #7649E3
-    dark-text: $white           // #FFFFFF
+    dark-bg: $lilac-200,        // #D9CAFF
+    dark-text: $black           // #141414
   ),
   'green': (
-    light-bg: $green-200,       // #70EE97
+    light-bg: $green-300,       // #21E46B
     light-text: $black,         // #141414
     dark-bg: $green-300,        // #21E46B
     dark-text: $black           // #141414
@@ -52,8 +52,8 @@ $bds-cmb-variants: (
   'gray': (
     light-bg: $gray-300,        // #CAD4DF
     light-text: $black,         // #141414
-    dark-bg: $gray-600,         // #454549
-    dark-text: $white           // #FFFFFF
+    dark-bg: $gray-400,         // #8A919A
+    dark-text: $black           // #141414
   )
 );
 
