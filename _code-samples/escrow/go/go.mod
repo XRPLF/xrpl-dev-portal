@@ -19,5 +19,5 @@ require (
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/stevenroose/asn1 v0.0.0-20170613173945-a0d410e3f79f // indirect
 	github.com/ugorji/go/codec v1.2.11 // indirect
-	golang.org/x/crypto v0.44.0 // indirect
+	golang.org/x/crypto v0.45.0 // indirect
 )
