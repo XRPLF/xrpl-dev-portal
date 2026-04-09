@@ -1,19 +1,27 @@
-import React from 'react';
-import clsx from 'clsx';
-import { PageGrid, PageGridCol, PageGridRow } from 'shared/components/PageGrid/page-grid';
-import { ButtonGroup, ButtonConfig, validateButtonGroup } from 'shared/patterns/ButtonGroup/ButtonGroup';
+import React from "react";
+import clsx from "clsx";
+import {
+  PageGrid,
+  PageGridCol,
+  PageGridRow,
+} from "shared/components/PageGrid/page-grid";
+import {
+  ButtonGroup,
+  ButtonConfig,
+  validateButtonGroup,
+} from "shared/patterns/ButtonGroup/ButtonGroup";
 
 export interface CalloutMediaBannerProps {
   /** Color variant - determines background color (ignored if backgroundImage is provided) */
-  variant?: 'default' | 'light-gray' | 'lilac' | 'green' | 'gray';
+  variant?: "default" | "light-gray" | "lilac" | "green" | "gray";
   /** Background image URL - overrides variant color when provided */
   backgroundImage?: string;
   /** Text color for image variant - fixes text color across light/dark modes (only applicable when backgroundImage is provided) */
-  textColor?: 'white' | 'black';
+  textColor?: "white" | "black";
   /** Main heading text */
   heading?: string;
   /** Heading element type - h1 through h6 (defaults to h6) */
-  headingAs?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+  headingAs?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
   /** Subheading/description text */
   subheading: string;
   /** Button configurations (1-2 buttons supported) */
@@ -71,14 +79,14 @@ export interface CalloutMediaBannerProps {
  * />
  */
 export const CalloutMediaBanner: React.FC<CalloutMediaBannerProps> = ({
-  variant = 'default',
+  variant = "default",
   backgroundImage,
-  textColor = 'white',
+  textColor = "white",
   heading,
-  headingAs = 'h6',
+  headingAs = "h6",
   subheading,
   buttons,
-  className = '',
+  className = "",
 }) => {
   // Validate buttons if provided (max 2 buttons supported)
   const buttonValidation = validateButtonGroup(buttons, 2);
@@ -88,21 +96,23 @@ export const CalloutMediaBanner: React.FC<CalloutMediaBannerProps> = ({
   const shouldCenter = !hasButtons || (!heading && hasButtons);
 
   // Determine button color: black for all variants except 'default' and 'image'
-  const buttonColor: 'green' | 'black' = 
-    !backgroundImage && variant !== 'default' ? 'black' : 'green';
+  const buttonColor: "green" | "black" =
+    !backgroundImage && variant !== "default" ? "black" : "green";
 
   // Build class names using BEM with bds namespace
   const classNames = clsx(
-    'bds-callout-media-banner',
+    "bds-callout-media-banner",
     // Only apply variant class if NO backgroundImage is provided
     !backgroundImage && `bds-callout-media-banner--${variant}`,
     // Add image class when backgroundImage is provided
-    backgroundImage && 'bds-callout-media-banner--image',
+    backgroundImage && "bds-callout-media-banner--image",
     // Add text color modifier for image variant
-    backgroundImage && textColor === 'black' && 'bds-callout-media-banner--image-text-black',
+    backgroundImage &&
+      textColor === "black" &&
+      "bds-callout-media-banner--image-text-black",
     // Add centered class when content should be centered
-    shouldCenter && 'bds-callout-media-banner--centered',
-    className
+    shouldCenter && "bds-callout-media-banner--centered",
+    className,
   );
 
   // Inline style for background image (when provided)
@@ -116,12 +126,18 @@ export const CalloutMediaBanner: React.FC<CalloutMediaBannerProps> = ({
   return (
     <PageGrid containerType="wide">
       <PageGridRow className={classNames} style={inlineStyle}>
-        <PageGridCol span={{base: 4, md: 6, lg: 8}}>
+        <PageGridCol span={{ base: 4, md: 6, lg: 8 }}>
           <div className="bds-callout-media-banner__content">
             {/* Text Content */}
             <div className="bds-callout-media-banner__text">
-              {heading && <HeadingElement className="bds-callout-media-banner__heading">{heading}</HeadingElement>}
-              <p className="bds-callout-media-banner__subheading">{subheading}</p>
+              {heading && (
+                <HeadingElement className="bds-callout-media-banner__heading">
+                  {heading}
+                </HeadingElement>
+              )}
+              <p className="bds-callout-media-banner__subheading">
+                {subheading}
+              </p>
             </div>
 
             {/* Buttons */}
@@ -130,6 +146,7 @@ export const CalloutMediaBanner: React.FC<CalloutMediaBannerProps> = ({
                 buttons={buttonValidation.buttons}
                 color={buttonColor}
                 gap="none"
+                forceColor={true}
               />
             )}
           </div>
@@ -140,4 +157,3 @@ export const CalloutMediaBanner: React.FC<CalloutMediaBannerProps> = ({
 };
 
 export default CalloutMediaBanner;
-
