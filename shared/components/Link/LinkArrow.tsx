@@ -130,23 +130,17 @@ export const LinkArrow: React.FC<LinkArrowProps> = ({
       aria-hidden="true"
       {...svgProps}
     >
-      {/* Corner bracket - horizontal line (static) */}
+      {/* Corner bracket: single path so the (19,2) corner uses stroke join (avoids butt-cap gap) */}
       <path
-        d="M4.0031 2L19 2"
+        d="M4 2L19 2L19 17"
         stroke={color}
         strokeWidth="2"
         strokeMiterlimit="10"
-      />
-      {/* Corner bracket - vertical line (static) */}
-      <path
-        d="M19 2V17"
-        stroke={color}
-        strokeWidth="2"
-        strokeMiterlimit="10"
+        strokeLinejoin="miter"
       />
       {/* Diagonal arrow line (animates away on hover) */}
       <path
-        d="M18.9963 2L1 20"
+        d="M19 2L1 20"
         stroke={color}
         strokeWidth="2"
         strokeMiterlimit="10"
