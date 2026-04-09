@@ -16,7 +16,7 @@
 // Color states from Figma (Light Mode):
 // - Green: Default $green-200, Hover $green-300, Pressed $green-400
 // - NeutralLight: Default $gray-200, Hover $gray-300, Pressed $gray-400
-// - NeutralDark: Default $gray-300, Hover $gray-400, Pressed $gray-500
+// - NeutralDark: Default $gray-300, Hover $gray-200, Pressed $gray-400
 // - Lilac: Default $lilac-200, Hover $lilac-300, Pressed $lilac-400
 // - Yellow: Default $yellow-100, Hover $yellow-200, Pressed $yellow-300
 // - Blue: Default $blue-100, Hover $blue-200, Pressed $blue-300
@@ -101,14 +101,21 @@ $bds-text-color: $black; // #141414 - Neutral black
 // =============================================================================
 // Color Variants - Light Mode
 // =============================================================================
+// Desktop interaction (lg+): hover → overlay; active → pressed overlay; mouse
+// release while still hovering → hover again (:hover + :focus:not(:focus-visible)).
+// Keyboard: :focus-visible uses the same surface as hover for neutrals.
+// Visited links: default surface + overlay hidden when not hovering/active.
 
 // Green Variant
 // Default: $green-200, Hover: $green-300, Pressed: $green-400
 .bds-text-card--green {
   background-color: $green-200;
 
-  // Preserve background on focus (overrides light theme transparent rule)
-  &:focus {
+  &:focus-visible {
+    background-color: $green-200;
+  }
+
+  &:focus:not(:focus-visible) {
     background-color: $green-200;
   }
 
@@ -125,13 +132,16 @@ $bds-text-color: $black; // #141414 - Neutral black
 }
 
 // Neutral Light Variant (Light Mode)
-// Default: $gray-200, Hover: $gray-300, Focus: $gray-300, Pressed: $gray-400
+// Default: $gray-200, Hover: $gray-300, Focus (keyboard): $gray-300, Pressed: $gray-400
 .bds-text-card--neutral-light {
   background-color: $gray-200;
 
-  // Focus uses hover color ($gray-300)
-  &:focus {
+  &:focus-visible {
     background-color: $gray-300;
+  }
+
+  &:focus:not(:focus-visible) {
+    background-color: $gray-200;
   }
 
   .bds-text-card__overlay {
@@ -147,13 +157,16 @@ $bds-text-color: $black; // #141414 - Neutral black
 }
 
 // Neutral Dark Variant (Light Mode)
-// Default: $gray-300, Hover: $gray-200, Focus: $gray-200, Pressed: $gray-400
+// Default: $gray-300, Hover: $gray-200, Focus (keyboard): $gray-200, Pressed: $gray-400
 .bds-text-card--neutral-dark {
   background-color: $gray-300;
 
-  // Focus uses hover color ($gray-200)
-  &:focus {
+  &:focus-visible {
     background-color: $gray-200;
+  }
+
+  &:focus:not(:focus-visible) {
+    background-color: $gray-300;
   }
 
   .bds-text-card__overlay {
@@ -173,8 +186,11 @@ $bds-text-color: $black; // #141414 - Neutral black
 .bds-text-card--lilac {
   background-color: $lilac-200;
 
-  // Preserve background on focus (overrides light theme transparent rule)
-  &:focus {
+  &:focus-visible {
+    background-color: $lilac-200;
+  }
+
+  &:focus:not(:focus-visible) {
     background-color: $lilac-200;
   }
 
@@ -195,8 +211,11 @@ $bds-text-color: $black; // #141414 - Neutral black
 .bds-text-card--yellow {
   background-color: $yellow-100;
 
-  // Preserve background on focus (overrides light theme transparent rule)
-  &:focus {
+  &:focus-visible {
+    background-color: $yellow-100;
+  }
+
+  &:focus:not(:focus-visible) {
     background-color: $yellow-100;
   }
 
@@ -217,8 +236,11 @@ $bds-text-color: $black; // #141414 - Neutral black
 .bds-text-card--blue {
   background-color: $blue-100;
 
-  // Preserve background on focus (overrides light theme transparent rule)
-  &:focus {
+  &:focus-visible {
+    background-color: $blue-100;
+  }
+
+  &:focus:not(:focus-visible) {
     background-color: $blue-100;
   }
 
@@ -277,23 +299,82 @@ $bds-text-color: $black; // #141414 - Neutral black
 // This rule has higher specificity, so we need html.light scoped rules
 
 html.light {
-  a.bds-text-card.bds-text-card--green:focus {
+  a.bds-text-card.bds-text-card--green:focus-visible,
+  a.bds-text-card.bds-text-card--green:focus:not(:focus-visible) {
     background-color: $green-200;
   }
-  a.bds-text-card.bds-text-card--neutral-light:focus {
+  a.bds-text-card.bds-text-card--neutral-light:focus-visible {
     background-color: $gray-300;
   }
-  a.bds-text-card.bds-text-card--neutral-dark:focus {
+  a.bds-text-card.bds-text-card--neutral-light:focus:not(:focus-visible) {
     background-color: $gray-200;
   }
-  a.bds-text-card.bds-text-card--lilac:focus {
+  a.bds-text-card.bds-text-card--neutral-dark:focus-visible {
+    background-color: $gray-200;
+  }
+  a.bds-text-card.bds-text-card--neutral-dark:focus:not(:focus-visible) {
+    background-color: $gray-300;
+  }
+  a.bds-text-card.bds-text-card--lilac:focus-visible,
+  a.bds-text-card.bds-text-card--lilac:focus:not(:focus-visible) {
     background-color: $lilac-200;
   }
-  a.bds-text-card.bds-text-card--yellow:focus {
+  a.bds-text-card.bds-text-card--yellow:focus-visible,
+  a.bds-text-card.bds-text-card--yellow:focus:not(:focus-visible) {
     background-color: $yellow-100;
   }
-  a.bds-text-card.bds-text-card--blue:focus {
+  a.bds-text-card.bds-text-card--blue:focus-visible,
+  a.bds-text-card.bds-text-card--blue:focus:not(:focus-visible) {
     background-color: $blue-100;
+  }
+
+  // Visited (scoped to light theme so neutral grays match light-mode card defaults)
+  a.bds-text-card.bds-text-card--green:visited:not(:hover):not(:active) {
+    background-color: $green-200;
+
+    .bds-text-card__overlay {
+      clip-path: inset(100% 0 0 0);
+    }
+  }
+
+  a.bds-text-card.bds-text-card--neutral-light:visited:not(:hover):not(:active) {
+    background-color: $gray-200;
+
+    .bds-text-card__overlay {
+      clip-path: inset(100% 0 0 0);
+    }
+  }
+
+  a.bds-text-card.bds-text-card--neutral-dark:visited:not(:hover):not(:active) {
+    background-color: $gray-300;
+
+    .bds-text-card__overlay {
+      clip-path: inset(100% 0 0 0);
+    }
+  }
+
+  a.bds-text-card.bds-text-card--lilac:visited:not(:hover):not(:active) {
+    background-color: $lilac-200;
+
+    .bds-text-card__overlay {
+      clip-path: inset(100% 0 0 0);
+    }
+  }
+
+  a.bds-text-card.bds-text-card--yellow:visited:not(:hover):not(:active) {
+    background-color: $yellow-100;
+
+    .bds-text-card__overlay {
+      clip-path: inset(100% 0 0 0);
+    }
+  }
+
+  a.bds-text-card.bds-text-card--blue:visited:not(:hover):not(:active) {
+    background-color: $blue-100;
+
+    .bds-text-card__overlay {
+      clip-path: inset(100% 0 0 0);
+    }
   }
 
   // Disabled state in light mode: $gray-100 background, $gray-500 text
@@ -328,16 +409,20 @@ html.dark {
     }
   }
 
-  // Green — same default / hover / pressed as light mode (TextCard.md); overlay must match hover ($green-300)
+  // Green — same tokens as light mode (TextCard.md)
   .bds-text-card--green {
-    background-color: $green-300;
+    background-color: $green-200;
 
-    &:focus {
-      background-color: $green-300;
+    &:focus-visible {
+      background-color: $green-200;
+    }
+
+    &:focus:not(:focus-visible) {
+      background-color: $green-200;
     }
 
     .bds-text-card__overlay {
-      background-color: $green-200;
+      background-color: $green-300;
     }
 
     &:active {
@@ -349,12 +434,16 @@ html.dark {
   }
 
   // Neutral Light in dark mode
-  // Default: $gray-300, Hover: $gray-200, Focus: $gray-200, Pressed: $gray-400
+  // Default: $gray-300, Hover: $gray-200, Focus (keyboard): $gray-200, Pressed: $gray-400
   .bds-text-card--neutral-light {
     background-color: $gray-300;
 
-    &:focus {
+    &:focus-visible {
       background-color: $gray-200;
+    }
+
+    &:focus:not(:focus-visible) {
+      background-color: $gray-300;
     }
 
     .bds-text-card__overlay {
@@ -370,12 +459,16 @@ html.dark {
   }
 
   // Neutral Dark in dark mode
-  // Default: $gray-400, Hover: $gray-300, Focus: $gray-300, Pressed: $gray-500
+  // Default: $gray-400, Hover: $gray-300, Focus (keyboard): $gray-300, Pressed: $gray-500
   .bds-text-card--neutral-dark {
     background-color: $gray-400;
 
-    &:focus {
+    &:focus-visible {
       background-color: $gray-300;
+    }
+
+    &:focus:not(:focus-visible) {
+      background-color: $gray-400;
     }
 
     .bds-text-card__overlay {
@@ -391,16 +484,74 @@ html.dark {
   }
 
   // Focus overrides for dark mode (to override light theme rules)
-  a.bds-text-card.bds-text-card--green:focus {
+  a.bds-text-card.bds-text-card--green:focus-visible,
+  a.bds-text-card.bds-text-card--green:focus:not(:focus-visible) {
     background-color: $green-200;
   }
 
-  a.bds-text-card.bds-text-card--neutral-light:focus {
+  a.bds-text-card.bds-text-card--neutral-light:focus-visible {
     background-color: $gray-200;
   }
 
-  a.bds-text-card.bds-text-card--neutral-dark:focus {
+  a.bds-text-card.bds-text-card--neutral-light:focus:not(:focus-visible) {
     background-color: $gray-300;
+  }
+
+  a.bds-text-card.bds-text-card--neutral-dark:focus-visible {
+    background-color: $gray-300;
+  }
+
+  a.bds-text-card.bds-text-card--neutral-dark:focus:not(:focus-visible) {
+    background-color: $gray-400;
+  }
+
+  // Visited: use dark-mode card defaults (must live under html.dark — not global :visited)
+  a.bds-text-card.bds-text-card--green:visited:not(:hover):not(:active) {
+    background-color: $green-200;
+
+    .bds-text-card__overlay {
+      clip-path: inset(100% 0 0 0);
+    }
+  }
+
+  a.bds-text-card.bds-text-card--neutral-light:visited:not(:hover):not(:active) {
+    background-color: $gray-300;
+
+    .bds-text-card__overlay {
+      clip-path: inset(100% 0 0 0);
+    }
+  }
+
+  a.bds-text-card.bds-text-card--neutral-dark:visited:not(:hover):not(:active) {
+    background-color: $gray-400;
+
+    .bds-text-card__overlay {
+      clip-path: inset(100% 0 0 0);
+    }
+  }
+
+  a.bds-text-card.bds-text-card--lilac:visited:not(:hover):not(:active) {
+    background-color: $lilac-200;
+
+    .bds-text-card__overlay {
+      clip-path: inset(100% 0 0 0);
+    }
+  }
+
+  a.bds-text-card.bds-text-card--yellow:visited:not(:hover):not(:active) {
+    background-color: $yellow-100;
+
+    .bds-text-card__overlay {
+      clip-path: inset(100% 0 0 0);
+    }
+  }
+
+  a.bds-text-card.bds-text-card--blue:visited:not(:hover):not(:active) {
+    background-color: $blue-100;
+
+    .bds-text-card__overlay {
+      clip-path: inset(100% 0 0 0);
+    }
   }
 
   // Disabled state in dark mode: $gray-500 background with 30% opacity
@@ -413,3 +564,62 @@ html.dark {
   }
 }
 
+// =============================================================================
+// Tablet + mobile: no clip-path wipe (quick taps outrun the animation)
+// Same intent as TileLogo — below lg, overlay transition off; hover / focus-visible
+// jump straight to the pressed overlay color (full clip-path).
+// =============================================================================
+@include media-breakpoint-down(lg) {
+  .bds-text-card__overlay {
+    transition: none;
+  }
+
+  .bds-text-card--green:not(.bds-text-card--disabled) {
+    &:hover .bds-text-card__overlay,
+    &:focus-visible .bds-text-card__overlay {
+      background-color: $green-400;
+      clip-path: inset(0 0 0 0);
+    }
+  }
+
+  .bds-text-card--neutral-light:not(.bds-text-card--disabled) {
+    &:hover .bds-text-card__overlay,
+    &:focus-visible .bds-text-card__overlay {
+      background-color: $gray-400;
+      clip-path: inset(0 0 0 0);
+    }
+  }
+
+  // Neutral-dark: use pressed $gray-500 so it differs from neutral-light ($gray-400) on tap
+  .bds-text-card--neutral-dark:not(.bds-text-card--disabled) {
+    &:hover .bds-text-card__overlay,
+    &:focus-visible .bds-text-card__overlay {
+      background-color: $gray-500;
+      clip-path: inset(0 0 0 0);
+    }
+  }
+
+  .bds-text-card--lilac:not(.bds-text-card--disabled) {
+    &:hover .bds-text-card__overlay,
+    &:focus-visible .bds-text-card__overlay {
+      background-color: $lilac-400;
+      clip-path: inset(0 0 0 0);
+    }
+  }
+
+  .bds-text-card--yellow:not(.bds-text-card--disabled) {
+    &:hover .bds-text-card__overlay,
+    &:focus-visible .bds-text-card__overlay {
+      background-color: $yellow-300;
+      clip-path: inset(0 0 0 0);
+    }
+  }
+
+  .bds-text-card--blue:not(.bds-text-card--disabled) {
+    &:hover .bds-text-card__overlay,
+    &:focus-visible .bds-text-card__overlay {
+      background-color: $blue-300;
+      clip-path: inset(0 0 0 0);
+    }
+  }
+}

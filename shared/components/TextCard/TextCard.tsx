@@ -3,10 +3,10 @@ import clsx from 'clsx';
 
 /**
  * Color variants for the TextCard component
- * Maps to Figma design tokens (Light Mode):
+ * Maps to Figma design tokens (Light Mode; hover/pressed are overlay fills):
  * - green: Default $green-200, Hover $green-300, Pressed $green-400
  * - neutral-light: Default $gray-200, Hover $gray-300, Pressed $gray-400
- * - neutral-dark: Default $gray-300, Hover $gray-400, Pressed $gray-500
+ * - neutral-dark: Default $gray-300, Hover $gray-200, Pressed $gray-400
  * - lilac: Default $lilac-200, Hover $lilac-300, Pressed $lilac-400
  * - yellow: Default $yellow-100, Hover $yellow-200, Pressed $yellow-300
  * - blue: Default $blue-100, Hover $blue-200, Pressed $blue-300

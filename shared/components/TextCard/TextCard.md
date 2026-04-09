@@ -5,10 +5,13 @@ A card component with a title at the top and description at the bottom. Used wit
 ## Features
 
 - **6 Color Variants**: Green, neutral-light, neutral-dark, lilac, yellow, and blue backgrounds
-- **Interactive States**: Default, hover (window shade animation), focus, and pressed states
+- **Window shade overlay**: On **desktop (≥992px)**, hover animates a bottom-up overlay; **active** (`:active`) shows the pressed overlay color
+- **Focus**: Keyboard **Tab** (`:focus-visible`) uses the same card surface as hover for neutral variants; mouse click (`:focus` without `:focus-visible`) keeps the **default** surface so that after release, **hover** still shows the overlay when the pointer is still over the card
+- **Visited links** (`<a>` with `href`): When a link has been visited, **default** card colors and a **hidden** overlay apply until hover or active (see [Visited state](#visited-state)); rules are scoped to **`html.light`** and **`html.dark`** so neutrals match each theme
+- **Tablet & mobile** (`<992px`): Overlay **transition is off**; hover / focus-visible **jump** to the pressed overlay (same idea as TileLogo). **neutral-light** uses `$gray-400`; **neutral-dark** uses **`$gray-500`** so the two grays stay distinct on tap
 - **Responsive Design**: Adapts height and padding across breakpoints
-- **Optional Link**: Can be made clickable with an `href` prop
-- **Flexible Content**: Title and description support ReactNode
+- **Optional Link**: `href` renders an `<a>`; otherwise an `<article>`
+- **Flexible Content**: Title and description support `ReactNode`
 
 ## Usage
 
@@ -37,7 +40,7 @@ import { TextCard } from 'shared/components/TextCard';
 |------|------|---------|-------------|
 | `title` | `ReactNode` | *required* | Card title (heading-lg typography) |
 | `description` | `ReactNode` | - | Card description (body-l typography) |
-| `href` | `string` | - | Optional link URL (makes card clickable) |
+| `href` | `string` | - | Optional link URL (renders `<a>` instead of `<article>`) |
 | `color` | `TextCardColor` | `'neutral-light'` | Background color variant |
 | `disabled` | `boolean` | `false` | Whether the card is disabled |
 | `className` | `string` | - | Additional CSS classes |
@@ -53,34 +56,52 @@ type TextCardColor = 'green' | 'neutral-light' | 'neutral-dark' | 'lilac' | 'yel
 | Breakpoint | Height | Padding |
 |------------|--------|---------|
 | Desktop (≥992px) | 340px | 24px |
-| Tablet (576-991px) | 309px | 20px |
+| Tablet (576–991px) | 309px | 20px |
 | Mobile (<576px) | 274px | 16px |
+
+## Interaction model
+
+- **Default**: Card background color from the variant; overlay is clipped off (shade “up”).
+- **Hover** (desktop): Window shade reveals the **hover** overlay color (see tables below).
+- **Active** (`:active`): Overlay uses the **pressed** color; shade stays fully revealed while the pointer is down.
+- **Keyboard focus** (`:focus-visible`): For **neutral-light** and **neutral-dark**, the **card** background matches the hover surface token; overlay behavior matches hover. Other variants keep the default card background; outline follows focus rules below.
+- **Mouse focus** (`:focus` without `:focus-visible`): Neutral variants keep the **default** card background so releasing a click while still hovering does **not** paint the whole card as hover-only— the **overlay** continues to show hover via `:hover`.
+- **Tablet / mobile** (`max-width` below `lg`): No clip-path animation; hover/focus-visible shows the **pressed** overlay color immediately. Neutral-dark uses **`$gray-500`** on tap; neutral-light uses **`$gray-400`**.
+
+## Visited state
+
+For linked cards (`href` set), after the URL is visited:
+
+- **Light theme** (`html.light`): `a` **visited** styles reset to the **light-mode default** background for that variant and **hide** the overlay until `:hover` or `:active`.
+- **Dark theme** (`html.dark`): Same idea with **dark-mode default** surfaces (e.g. neutral-light **`$gray-300`**, neutral-dark **`$gray-400`**).
+
+Implementation: `TextCard.scss` — visited rules live **only** under `html.light { … }` and `html.dark { … }` so neutral grays never mix themes.
 
 ## Color Variants & States
 
-Each color variant has four interactive states with a "window shade" hover animation.
+Colors below refer to the **card** default background, **overlay** fill (hover / focus ring of the shade), and **pressed** overlay. The overlay is the animated layer; default column is the base card color.
 
 ### Light Mode
 
-| Variant | Default | Hover | Focus | Pressed |
-|---------|---------|-------|-------|---------|
-| `green` | `$green-200` (#70EE97) | `$green-300` (#21E46B) | `$green-300` (#21E46B) | `$green-400` (#0DAA3E) |
-| `neutral-light` | `$gray-200` (#E6EAF0) | `$gray-300` (#CAD4DF) | `$gray-300` (#CAD4DF) | `$gray-400` (#8A919A) |
-| `neutral-dark` | `$gray-300` (#CAD4DF) | `$gray-200` (#E6EAF0) | `$gray-200` (#E6EAF0) | `$gray-400` (#8A919A) |
-| `lilac` | `$lilac-200` (#D9CAFF) | `$lilac-300` (#C0A7FF) | `$lilac-300` (#C0A7FF) | `$lilac-400` (#7649E3) |
-| `yellow` | `$yellow-100` (#F3F1EB) | `$yellow-200` (#E6F1A7) | `$yellow-200` (#E6F1A7) | `$yellow-300` (#DBF15E) |
-| `blue` | `$blue-100` (#EDF4FF) | `$blue-200` (#93BFF1) | `$blue-200` (#93BFF1) | `$blue-300` (#428CFF) |
+| Variant | Default | Hover (overlay) | Focus keyboard (neutral) / overlay others | Pressed (overlay) |
+|---------|---------|-----------------|-------------------------------------------|---------------------|
+| `green` | `$green-200` (#70EE97) | `$green-300` (#21E46B) | `$green-300` | `$green-400` (#0DAA3E) |
+| `neutral-light` | `$gray-200` (#E6EAF0) | `$gray-300` (#CAD4DF) | Card bg `$gray-300` | `$gray-400` (#8A919A) |
+| `neutral-dark` | `$gray-300` (#CAD4DF) | `$gray-200` (#E6EAF0) | Card bg `$gray-200` | `$gray-400` (#8A919A) |
+| `lilac` | `$lilac-200` (#D9CAFF) | `$lilac-300` (#C0A7FF) | `$lilac-300` | `$lilac-400` (#7649E3) |
+| `yellow` | `$yellow-100` (#F3F1EB) | `$yellow-200` (#E6F1A7) | `$yellow-200` | `$yellow-300` (#DBF15E) |
+| `blue` | `$blue-100` (#EDF4FF) | `$blue-200` (#93BFF1) | `$blue-200` | `$blue-300` (#428CFF) |
 
 ### Dark Mode
 
-| Variant | Default | Hover | Focus | Pressed |
-|---------|---------|-------|-------|---------|
-| `green` | `$green-200` (#70EE97) | `$green-300` (#21E46B) | `$green-300` (#21E46B) | `$green-400` (#0DAA3E) |
-| `neutral-light` | `$gray-300` (#CAD4DF) | `$gray-200` (#E6EAF0) | `$gray-200` (#E6EAF0) | `$gray-400` (#8A919A) |
-| `neutral-dark` | `$gray-400` (#8A919A) | `$gray-300` (#CAD4DF) | `$gray-300` (#CAD4DF) | `$gray-500` (#72777E) |
-| `lilac` | `$lilac-200` (#D9CAFF) | `$lilac-300` (#C0A7FF) | `$lilac-300` (#C0A7FF) | `$lilac-400` (#7649E3) |
-| `yellow` | `$yellow-100` (#F3F1EB) | `$yellow-200` (#E6F1A7) | `$yellow-200` (#E6F1A7) | `$yellow-300` (#DBF15E) |
-| `blue` | `$blue-100` (#EDF4FF) | `$blue-200` (#93BFF1) | `$blue-200` (#93BFF1) | `$blue-300` (#428CFF) |
+| Variant | Default | Hover (overlay) | Focus keyboard (neutral) / overlay others | Pressed (overlay) |
+|---------|---------|-----------------|-------------------------------------------|---------------------|
+| `green` | `$green-200` (#70EE97) | `$green-300` (#21E46B) | `$green-300` | `$green-400` (#0DAA3E) |
+| `neutral-light` | `$gray-300` (#CAD4DF) | `$gray-200` (#E6EAF0) | Card bg `$gray-200` | `$gray-400` (#8A919A) |
+| `neutral-dark` | `$gray-400` (#8A919A) | `$gray-300` (#CAD4DF) | Card bg `$gray-300` | `$gray-500` (#72777E) |
+| `lilac` | `$lilac-200` (#D9CAFF) | `$lilac-300` (#C0A7FF) | `$lilac-300` | `$lilac-400` (#7649E3) |
+| `yellow` | `$yellow-100` (#F3F1EB) | `$yellow-200` (#E6F1A7) | `$yellow-200` | `$yellow-300` (#DBF15E) |
+| `blue` | `$blue-100` (#EDF4FF) | `$blue-200` (#93BFF1) | `$blue-200` | `$blue-300` (#428CFF) |
 
 ### Disabled State
 
@@ -106,11 +127,10 @@ Each color variant has four interactive states with a "window shade" hover anima
 .bds-text-card--lilac             // Lilac variant
 .bds-text-card--yellow            // Yellow variant
 .bds-text-card--blue              // Blue variant
-.bds-text-card__overlay           // Hover animation overlay
-.bds-text-card__header            // Title container
-.bds-text-card__title             // Title element
-.bds-text-card__footer            // Description container
-.bds-text-card__description       // Description element
+.bds-text-card--disabled         // Disabled modifier
+.bds-text-card__overlay           // Window shade overlay
+.bds-text-card__title             // Title (h3)
+.bds-text-card__description       // Description (p)
 ```
 
 ## Typography
@@ -151,7 +171,7 @@ Each color variant has four interactive states with a "window shade" hover anima
 ### Within CardsTwoColumn Pattern
 
 ```tsx
-import { CardsTwoColumn } from 'shared/patterns/CardsTwoColumn';
+import { CardsTwoColumn } from 'shared/sections/CardsTwoColumn';
 
 <CardsTwoColumn
   title="Section Title"
@@ -168,16 +188,16 @@ import { CardsTwoColumn } from 'shared/patterns/CardsTwoColumn';
 ## Files
 
 - `TextCard.tsx` - Component implementation
-- `TextCard.scss` - Styles with color variants and responsive breakpoints
+- `TextCard.scss` - Styles (variants, `html.light` / `html.dark`, visited, breakpoint behavior)
 - `index.ts` - Barrel exports
 - `TextCard.md` - This documentation
 
 ## Related Components
 
-- **CardsTwoColumn**: Pattern that uses TextCard in a 2×2 grid layout
+- **CardsTwoColumn**: Pattern that uses TextCard in a 2×2 grid (`shared/sections/CardsTwoColumn`)
 
 ## Design References
 
 - **Figma Design**: [Section Cards - Two Column](https://www.figma.com/design/MP5gjNp7yPBnKBKleb8LRL/Section-Cards---Two-Column)
+- **Showcase**: `/showcase/cards-two-column` (see `showcase/cards-two-column.page.tsx`)
 - **Component Location**: `shared/components/TextCard/`
-
