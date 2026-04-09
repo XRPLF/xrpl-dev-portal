@@ -14,7 +14,7 @@ interface TutorialMetadataItem {
 
 interface Tutorial {
   title: string
-  body?: string
+  description?: string
   path: string
   // External community contribution fields (optional)
   author?: { name: string; url: string }
@@ -105,10 +105,10 @@ const sectionConfig: { id: string; title: string; description: string }[] = [
   },
 ]
 
-
-// Pinned tutorials - these always appear in their designated sections.
-// Use an object with `description` to override the frontmatter description.
-// Use an object with `github` for external community contributions.
+// Pinned tutorials - featured tutorials that appear first in their section.
+// - string: uses frontmatter title and description as-is.
+// - { path, description? }: internal tutorial with optional description override.
+// - { title, description, author, github, url? }: external community contribution.
 const pinnedTutorials: Record<string, PinnedTutorial[]> = {
   "get-started": [
     { path: "/docs/tutorials/get-started/get-started-javascript/", description: "Using the xrpl.js client library." },
@@ -163,7 +163,7 @@ function TutorialCard({
   showFooter?: boolean
   translate: (text: string) => string
 }) {
-  // Get icons from auto-detected languages, fallback to XRPL icon
+  // Get icons from auto-detected languages, or fallback to XRPL icon.
   const icons = detectedLanguages && detectedLanguages.length > 0
     ? detectedLanguages.map((lang) => langIcons[lang]).filter(Boolean)
     : [langIcons.xrpl]
@@ -179,7 +179,7 @@ function TutorialCard({
       </div>
       <div className="card-body">
         <h4 className="card-title h5">{translate(tutorial.title)}</h4>
-        {tutorial.body && <p className="card-text">{translate(tutorial.body)}</p>}
+        {tutorial.description && <p className="card-text">{translate(tutorial.description)}</p>}
       </div>
       {showFooter && <div className="card-footer"></div>}
     </Link>
@@ -244,7 +244,7 @@ function ContributionCard({
             <i className="fa fa-external-link" aria-hidden="true" />
           </span>
         </h4>
-        {tutorial.body && <p className="card-text">{translate(tutorial.body)}</p>}
+        {tutorial.description && <p className="card-text">{translate(tutorial.description)}</p>}
       </div>
     </div>
   )
@@ -272,7 +272,9 @@ function TutorialSectionBlock({
   className?: string
   translate: (text: string) => string
 }) {
-  const displayTutorials = maxTutorials ? tutorials.slice(0, maxTutorials) : tutorials
+  const [expanded, setExpanded] = useState(false)
+  const hasMore = maxTutorials ? tutorials.length > maxTutorials : false
+  const displayTutorials = maxTutorials && !expanded ? tutorials.slice(0, maxTutorials) : tutorials
 
   return (
     <section className={`container-new pt-10 pb-14 ${className}`.trim()} id={id}>
@@ -296,6 +298,16 @@ function TutorialSectionBlock({
           </div>
         ))}
       </div>
+      {hasMore && (
+        <div className="explore-more-wrapper">
+          <button
+            className="explore-more-link"
+            onClick={() => setExpanded(!expanded)}
+          >
+            {expanded ? translate("Show less") : translate("Explore more")} {expanded ? "↑" : "→"}
+          </button>
+        </div>
+      )}
     </section>
   )
 }
@@ -484,6 +496,7 @@ export default function TutorialsIndex() {
           tutorials={section.tutorials}
           tutorialLanguages={tutorialLanguages}
           maxTutorials={MAX_TUTORIALS_PER_SECTION}
+          className="category-section"
           translate={translate}
         />
       ))}
@@ -503,7 +516,7 @@ function isExternalContribution(entry: PinnedTutorial): entry is PinnedExternalT
   return typeof entry !== "string" && "github" in entry
 }
 
-/** Get path from pinned tutorial entry (external contributions return their github URL) */
+/** Get path from pinned tutorial entry*/
 function getPinnedPath(entry: PinnedTutorial): string {
   return typeof entry === "string" ? entry : isExternalContribution(entry) ? entry.github : entry.path
 }
@@ -512,7 +525,7 @@ function getPinnedPath(entry: PinnedTutorial): string {
 function toTutorial(t: TutorialMetadataItem, descriptionOverride?: string): Tutorial {
   return {
     title: t.title,
-    body: descriptionOverride || t.description,
+    description: descriptionOverride || t.description,
     path: t.path,
   }
 }
@@ -524,7 +537,7 @@ function buildPinnedTutorials(entries: PinnedTutorial[], allTutorials: TutorialM
       if (isExternalContribution(entry)) {
         return {
           title: entry.title,
-          body: entry.description,
+          description: entry.description,
           path: entry.url || entry.github,
           author: entry.author,
           github: entry.github,

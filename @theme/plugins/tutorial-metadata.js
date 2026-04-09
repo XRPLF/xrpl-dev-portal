@@ -17,11 +17,9 @@ export function tutorialMetadata() {
         const tutorials = [];
         const allFiles = await fs.scan();
 
-        // Find all markdown files in tutorials directory (excluding the main landing page)
+        // Find all markdown files in tutorials directory
         const tutorialFiles = allFiles.filter((file) =>
-          file.relativePath.match(/^docs[\/\\]tutorials[\/\\].*\.md$/) &&
-          file.relativePath !== 'docs/tutorials/index.md' &&
-          file.relativePath !== 'docs\\tutorials\\index.md'
+          file.relativePath.match(/^docs[\/\\]tutorials[\/\\].*\.md$/)
         );
 
         for (const { relativePath } of tutorialFiles) {

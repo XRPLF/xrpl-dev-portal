@@ -165,6 +165,35 @@ $whats-new-footers: (
   }
 }
 
+// Tutorial category section spacing
+.page-tutorials .category-section + .category-section {
+  margin-top: 2rem;
+}
+
+// Explore more link
+.page-tutorials .explore-more-wrapper {
+  margin-top: -1.5rem;
+  margin-bottom: 1.5rem;
+
+  .explore-more-link {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 1.05rem;
+    color: $blue-purple-300;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.light .page-tutorials .explore-more-wrapper .explore-more-link {
+  color: $blue-purple-600;
+}
+
 // TOC navigation buttons
 .page-tutorials .page-toc.no-sideline {
   border-left: none;
