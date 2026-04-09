@@ -22577,6 +22577,19 @@ html.light .bds-carousel-card-list--green .bds-carousel-card-list__description {
     margin-right: auto;
   }
 }
+.bds-carousel-featured > .bds-grid__row {
+  gap: 24px;
+}
+@media (min-width: 576px) {
+  .bds-carousel-featured > .bds-grid__row {
+    gap: 32px;
+  }
+}
+@media (min-width: 992px) {
+  .bds-carousel-featured > .bds-grid__row {
+    gap: 8px;
+  }
+}
 html.dark .bds-carousel-featured--bg-grey {
   background-color: #CAD4DF;
 }
@@ -22727,6 +22740,8 @@ html.dark .bds-carousel-featured--bg-yellow .bds-carousel-button--black:active:n
   display: flex;
   flex-direction: column;
   width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 .bds-carousel-featured__feature {

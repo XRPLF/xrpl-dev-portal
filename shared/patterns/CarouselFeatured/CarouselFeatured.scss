@@ -167,6 +167,7 @@ $bds-carousel-featured-variants-light: (
   // Default background - dark mode default (grey variant)
   background-color: $gray-300;
 
+
   // Mobile (default)
   padding: $bds-carousel-featured-padding-sm;
 
@@ -185,6 +186,16 @@ $bds-carousel-featured-variants-light: (
     max-width: 1280px;
     margin-left: auto;
     margin-right: auto;
+  }
+
+  & > .bds-grid__row {
+    gap: $bds-space-2xl;
+    @include media-breakpoint-up(md) {
+      gap: $bds-space-3xl;
+    }
+    @include media-breakpoint-up(lg) {
+      gap: $bds-space-sm;
+    }
   }
 
   // ---------------------------------------------------------------------------
@@ -305,6 +316,8 @@ $bds-carousel-featured-variants-light: (
   display: flex;
   flex-direction: column;
   width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 .bds-carousel-featured__feature {
