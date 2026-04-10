@@ -4,7 +4,8 @@
 // Naming Convention: BEM with 'bds' namespace
 // .bds-button-group                - Base component
 // .bds-button-group--gap-none      - No gap between buttons on tablet+ (0px)
-// .bds-button-group--gap-small     - Small gap between buttons on tablet+ (8px)
+// .bds-button-group--gap-small     - Small gap between buttons on tablet+ (4px)
+// .bds-button-group--gap-medium    - Medium gap: 16px mobile/tablet, 24px desktop (lg+)
 // .bds-button-group--block         - Block layout for 3+ buttons (all tertiary)
 //
 // Note: Uses centralized spacing tokens from _spacing.scss.
@@ -42,6 +43,14 @@
   // Tablet breakpoint - 4px gap
   @include media-breakpoint-up(md) {
     gap: $bds-space-xs; // 4px - spacing('xs')
+  }
+}
+
+.bds-button-group--gap-medium {
+  gap: $bds-space-lg; // 16px - spacing('lg')
+
+  @include media-breakpoint-up(lg) {
+    gap: $bds-space-2xl; // 24px - spacing('2xl')
   }
 }
 

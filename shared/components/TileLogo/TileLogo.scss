@@ -285,11 +285,11 @@ html.dark {
   // Green Variant - Dark Mode
   // ---------------------------------------------------------------------------
   .bds-tile-logo--green {
-    background-color: $green-200;
+    background-color: $green-300;
 
     // Overlay color for hover wipe
     .bds-tile-logo__overlay {
-      background-color: $green-300;
+      background-color: $green-200;
     }
 
     // Pressed state
@@ -421,7 +421,7 @@ html.light {
     .bds-tile-logo--green:not(.bds-tile-logo--disabled) {
       &.bds-tile-logo--hovered .bds-tile-logo__overlay,
       &:focus-visible .bds-tile-logo__overlay {
-        background-color: $green-400;
+        background-color: $green-200;
         clip-path: inset(0 0 0 0);
       }
     }

@@ -1,7 +1,10 @@
 import React, { forwardRef, memo, useEffect } from "react";
 import clsx from "clsx";
 import { PageGrid } from "shared/components/PageGrid/page-grid";
-import { ButtonGroup, validateButtonGroup } from "shared/patterns/ButtonGroup/ButtonGroup";
+import {
+  ButtonGroup,
+  validateButtonGroup,
+} from "shared/patterns/ButtonGroup/ButtonGroup";
 import { isEmpty, isEnvironment } from "shared/utils";
 import {
   DesignConstrainedImageProps,
@@ -42,7 +45,10 @@ export type HeaderHeroMedia =
   | VideoMediaProps
   | CustomMediaProps;
 
-export interface HeaderHeroPrimaryMediaProps extends React.ComponentPropsWithoutRef<"header">, DesignConstrainedLinksProps {
+export interface HeaderHeroPrimaryMediaProps
+  extends
+    React.ComponentPropsWithoutRef<"header">,
+    DesignConstrainedLinksProps {
   /** Hero title text (display-md typography) */
   headline: React.ReactNode;
   /** Hero subtitle text (subhead-sm-l typography) */
@@ -106,13 +112,16 @@ const HeaderHeroPrimaryMedia = forwardRef<
   HTMLElement,
   HeaderHeroPrimaryMediaProps
 >((props, ref) => {
-  const { headline, subtitle, links, media, className, ...restProps } =
-    props;
+  const { headline, subtitle, links, media, className, ...restProps } = props;
 
   const buttonValidation = validateButtonGroup(
-    (links ?? []).map((l) => ({ label: l.label, href: l.href, forceColor: true })),
+    (links ?? []).map((l) => ({
+      label: l.label,
+      href: l.href,
+      forceColor: true,
+    })),
     2,
-    isEnvironment(["development", "test"])
+    isEnvironment(["development", "test"]),
   );
 
   // Headline is critical - exit early if missing
@@ -172,7 +181,7 @@ const HeaderHeroPrimaryMedia = forwardRef<
                     buttons={buttonValidation.buttons}
                     color="green"
                     forceColor
-                    gap="small"
+                    gap="medium"
                   />
                 </div>
               )}
