@@ -126,8 +126,8 @@ export interface ButtonGroupProps {
   color?: 'green' | 'black';
   /** Whether to force the color to remain constant regardless of theme mode */
   forceColor?: boolean;
-  /** Gap between buttons on tablet+ (0px or 4px) */
-  gap?: 'none' | 'small';
+  /** Gap between buttons: `none` / `small` follow base mobile spacing then adjust at md+; `medium` is 16px through tablet, 24px at lg+ */
+  gap?: 'none' | 'small' | 'medium';
   /** Additional CSS classes */
   className?: string;
   /** Override variant for single button (default: 'primary', can be 'secondary') */
