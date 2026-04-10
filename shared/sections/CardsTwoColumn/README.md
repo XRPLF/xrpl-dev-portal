@@ -1,16 +1,16 @@
 # CardsTwoColumn Pattern
 
-A section pattern featuring a header with title and description, plus a 2×2 grid of TextCard components. Designed for showcasing multiple related content areas with visual variety through 6 color variants.
+A section pattern featuring a header with title and description, plus a 2×2 grid of TextCard components. Designed for showcasing multiple related content areas with visual variety through six color variants.
 
 ## Features
 
 - **Header Section**: Title (heading-md) with optional description (body-l, muted)
 - **4-Card Grid**: 2×2 layout on desktop, single column stacked on tablet/mobile
 - **6 Color Variants**: Green, neutral-light, neutral-dark, lilac, yellow, and blue
-- **Interactive States**: Hover (window shade animation), focus, and pressed states
+- **TextCard behavior**: Hover (window shade on desktop), focus, pressed, visited, and tablet/mobile behavior are defined on **TextCard** — see [`shared/components/TextCard/TextCard.md`](../../components/TextCard/TextCard.md)
 - **Disabled State**: Cards can be disabled with appropriate styling for light/dark modes
 - **Responsive Design**: Adapts layout and spacing across all breakpoints
-- **Dark Mode Support**: Full dark mode styling via `html.dark`
+- **Dark Mode Support**: Section chrome and cards follow `html.light` / `html.dark`
 
 ## Usage
 
@@ -58,13 +58,15 @@ import { CardsTwoColumn } from 'shared/sections/CardsTwoColumn';
 - Section padding: 40px vertical, 32px horizontal
 - Gap between header and cards: 40px
 - Card height: 340px, padding: 24px
+- TextCard: full window-shade hover animation (see TextCard docs)
 
-### Tablet (576-991px)
+### Tablet (576–991px)
 - Header: Stacked (title above description)
 - Cards: Single column, stacked vertically with 8px gap
 - Section padding: 32px vertical, 24px horizontal
 - Gap between header and cards: 32px
 - Card height: 309px, padding: 20px
+- TextCard: below `lg`, overlay uses instant “pressed” color (no wipe animation)
 
 ### Mobile (<576px)
 - Header: Stacked (title above description)
@@ -73,50 +75,23 @@ import { CardsTwoColumn } from 'shared/sections/CardsTwoColumn';
 - Gap between header and cards: 24px
 - Card height: 274px, padding: 16px
 
-## Color Variants & States
+## Color & interaction (cards)
 
-Each color variant has four interactive states with a "window shade" hover animation.
+Detailed token tables, **visited** link behavior (`html.light` / `html.dark`), **focus** (keyboard vs mouse), and **tablet/mobile** neutral differentiation are documented in:
 
-### Light Mode
-
-| Variant | Default | Hover | Focus | Pressed |
-|---------|---------|-------|-------|---------|
-| `green` | `$green-200` (#70EE97) | `$green-300` (#21E46B) | `$green-300` (#21E46B) | `$green-400` (#0DAA3E) |
-| `neutral-light` | `$gray-200` (#E6EAF0) | `$gray-300` (#CAD4DF) | `$gray-300` (#CAD4DF) | `$gray-400` (#8A919A) |
-| `neutral-dark` | `$gray-300` (#CAD4DF) | `$gray-200` (#E6EAF0) | `$gray-200` (#E6EAF0) | `$gray-400` (#8A919A) |
-| `lilac` | `$lilac-200` (#D9CAFF) | `$lilac-300` (#C0A7FF) | `$lilac-300` (#C0A7FF) | `$lilac-400` (#7649E3) |
-| `yellow` | `$yellow-100` (#F3F1EB) | `$yellow-200` (#E6F1A7) | `$yellow-200` (#E6F1A7) | `$yellow-300` (#DBF15E) |
-| `blue` | `$blue-100` (#EDF4FF) | `$blue-200` (#93BFF1) | `$blue-200` (#93BFF1) | `$blue-300` (#428CFF) |
-
-### Dark Mode
-
-| Variant | Default | Hover | Focus | Pressed |
-|---------|---------|-------|-------|---------|
-| `green` | `$green-200` (#70EE97) | `$green-300` (#21E46B) | `$green-300` (#21E46B) | `$green-400` (#0DAA3E) |
-| `neutral-light` | `$gray-300` (#CAD4DF) | `$gray-200` (#E6EAF0) | `$gray-200` (#E6EAF0) | `$gray-400` (#8A919A) |
-| `neutral-dark` | `$gray-400` (#8A919A) | `$gray-300` (#CAD4DF) | `$gray-300` (#CAD4DF) | `$gray-500` (#72777E) |
-| `lilac` | `$lilac-200` (#D9CAFF) | `$lilac-300` (#C0A7FF) | `$lilac-300` (#C0A7FF) | `$lilac-400` (#7649E3) |
-| `yellow` | `$yellow-100` (#F3F1EB) | `$yellow-200` (#E6F1A7) | `$yellow-200` (#E6F1A7) | `$yellow-300` (#DBF15E) |
-| `blue` | `$blue-100` (#EDF4FF) | `$blue-200` (#93BFF1) | `$blue-200` (#93BFF1) | `$blue-300` (#428CFF) |
-
-### Disabled State
-
-| Mode | Background | Text |
-|------|------------|------|
-| Light | `$gray-100` (#F0F3F7) | `$gray-500` (#72777E) |
-| Dark | `rgba($gray-500, 0.3)` | Default text color |
+**[`shared/components/TextCard/TextCard.md`](../../components/TextCard/TextCard.md)**
 
 ## CSS Classes
 
 ```
 .bds-cards-two-column                    // Section container
-.bds-cards-two-column__container         // Inner container with max-width
-.bds-cards-two-column__header            // Header section
-.bds-cards-two-column__header-left       // Left side (title)
-.bds-cards-two-column__header-right      // Right side (description)
+.bds-cards-two-column__container         // PageGrid container (vertical padding)
+.bds-cards-two-column__header            // Header row
+.bds-cards-two-column__header-left       // Title column
+.bds-cards-two-column__header-right      // Description column
 .bds-cards-two-column__title             // Section title
 .bds-cards-two-column__description       // Section description
-.bds-cards-two-column__cards             // Cards grid container
+.bds-cards-two-column__cards             // Cards row (grid)
 ```
 
 ## Typography Tokens
@@ -126,41 +101,37 @@ Each color variant has four interactive states with a "window shade" hover anima
   - Tablet: 36px / 45px line-height
   - Mobile: 32px / 40px line-height
 
-- **Section Description**: Uses `body-l` (Booton Light), color: `$gray-500`
+- **Section Description**: Uses `body-l` (Booton Light), color: `$gray-500` (light section context)
   - All breakpoints: 18px / 26.1px line-height
 
-- **Card Title**: Uses `h-lg` (heading-lg, Tobias Light)
-  - Desktop: 48px / 52.8px line-height
-  - Tablet: 42px / 46.2px line-height
-  - Mobile: 36px / 39.6px line-height
-
-- **Card Description**: Uses `body-l` (Booton Light)
-  - All breakpoints: 18px / 26.1px line-height
+- **Card Title**: Uses `h-lg` (heading-lg, Tobias Light) — see TextCard
+- **Card Description**: Uses `body-l` (Booton Light) — see TextCard
 
 ## Files
 
 - `CardsTwoColumn.tsx` - Main pattern component
-- `CardsTwoColumn.scss` - Styles with responsive breakpoints
+- `CardsTwoColumn.scss` - Section layout and spacing
 - `index.ts` - Barrel exports
 - `README.md` - This documentation
 
 ## Related Components
 
-- **TextCard**: Core component for individual cards within the grid (`shared/components/TextCard`)
-- **PageGrid**: Can be used alongside for additional layout needs
+- **TextCard**: Core component for individual cards (`shared/components/TextCard`)
+- **PageGrid**: Layout wrapper for the section
 
 ## Design References
 
 - **Figma Design**: [Section Cards - Two Column](https://www.figma.com/design/MP5gjNp7yPBnKBKleb8LRL/Section-Cards---Two-Column)
-- **Showcase Page**: `/about/cards-two-column-showcase`
+- **Showcase Page**: `/showcase/cards-two-column`
 - **Component Location**: `shared/sections/CardsTwoColumn/`
 
 ## Version History
 
 - **January 2026**: Initial implementation
   - Header section with title and description
-  - 2×2 card grid with 6 color variants (green, neutral-light, neutral-dark, lilac, yellow, blue)
-  - Window shade hover animation
+  - 2×2 card grid with six color variants
+  - Window shade hover animation (desktop); instant pressed overlay below `lg`
   - Full responsive design
-  - Dark mode support with correct color mappings for neutral-light and neutral-dark
+  - Dark mode support for section and cards
   - Disabled state support for light and dark modes
+- **April 2026**: Documentation aligned with TextCard (visited, focus, tablet/mobile neutrals); showcase path corrected
