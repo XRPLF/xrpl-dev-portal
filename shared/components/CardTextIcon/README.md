@@ -42,6 +42,8 @@ CardTextIconCard displays an icon at the top, followed by a heading and descript
 />
 ```
 
+Inline `<a>` tags in the description share the card’s description styles in `CardTextIconCard.scss`. In **light** mode, global `html.light` link rules can compete with those styles; use **`BdsLink`** with the design-system `bds-link` class if you need consistent BDS link behavior, or see `CardTextIconCard.scss` for `.bds-card-text-icon-card__description` link styling.
+
 ### With Aspect Ratio
 
 ```tsx

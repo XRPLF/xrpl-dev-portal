@@ -110,7 +110,7 @@ export default function CardsTwoColumnShowcase() {
             {
               title: "Developers",
               description: "Build decentralized applications with comprehensive documentation, tutorials, and developer tools.",
-              href: "#developers",
+              href: "#dev",
               color: "neutral-light"
             },
             {
