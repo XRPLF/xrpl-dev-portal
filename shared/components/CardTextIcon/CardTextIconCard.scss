@@ -115,50 +115,58 @@ $bds-card-text-icon-gap-lg: $bds-padding-card-lg;
 
 .bds-card-text-icon-card__description {
   margin: 0;
-  color: inherit;
   min-width: 0; 
   position: relative;
   color: $black;
 
-  a {
-    font-weight: 400 !important;
-    color: $green-400 !important;
-
-    &:hover {
-      color: $green-500 !important;
-      text-decoration: underline !important;
-    }
-    &:active {
-      color: $green-400 !important;
-    }
-    &:visited {
-      color: $lilac-400 !important;
-    }
-    &:focus {
-      outline: 2px solid $black;
-      outline-offset: 1px;
-    }
-  }
-
   @include bds-theme-mode(dark) {
     color: $white;
-    a {
-      color: $green-300 !important;
-  
-      &:hover {
-        color: $green-200 !important;
-        text-decoration: underline !important;
-      }
-      &:active {
-        color: $green-300 !important;
-      }
-      &:visited {
-        color: $lilac-300 !important;
-      }
-      &:focus {
-        outline: 2px solid $white;
-        outline-offset: 1px;
-      }
-    }
+  }
+}
+
+// =============================================================================
+// Description Link Styles (themed)
+// Scoped to html.light/html.dark to match global link rule specificity
+// =============================================================================
+
+// The 3rd light-theme selector includes :not([role="button"]) (an attribute :not), giving it (0,6,1).
+// Adding the BEM parent brings ours to (0,7,1), cleanly winning without !important.
+html.light .bds-card-text-icon-card .bds-card-text-icon-card__description a:not(.bds-link):not(.bds-card-offgrid):not(.bds-card-icon):not(.bds-btn) {
+  font-weight: 400;
+  color: $green-400;
+
+  &:hover {
+    color: $green-500;
+    text-decoration: underline;
+  }
+  &:active {
+    color: $green-400;
+  }
+  &:visited {
+    color: $lilac-400;
+  }
+  &:focus {
+    outline: 2px solid $black;
+    outline-offset: 1px;
+  }
+}
+
+html.dark .bds-card-text-icon-card .bds-card-text-icon-card__description a:not(.bds-link):not(.bds-card-offgrid):not(.bds-card-icon):not(.bds-btn) {
+  font-weight: 400;
+  color: $green-300;
+
+  &:hover {
+    color: $green-200;
+    text-decoration: underline;
+  }
+  &:active {
+    color: $green-300;
+  }
+  &:visited {
+    color: $lilac-300;
+  }
+  &:focus {
+    outline: 2px solid $white;
+    outline-offset: 1px;
   }
 }

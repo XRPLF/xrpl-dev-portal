@@ -22989,46 +22989,48 @@ html.dark .bds-card-text-icon-card {
 
 .bds-card-text-icon-card__description {
   margin: 0;
-  color: inherit;
   min-width: 0;
   position: relative;
   color: #141414;
 }
-.bds-card-text-icon-card__description a {
-  font-weight: 400 !important;
-  color: #0DAA3E !important;
-}
-.bds-card-text-icon-card__description a:hover {
-  color: #078139 !important;
-  text-decoration: underline !important;
-}
-.bds-card-text-icon-card__description a:active {
-  color: #0DAA3E !important;
-}
-.bds-card-text-icon-card__description a:visited {
-  color: #7649E3 !important;
-}
-.bds-card-text-icon-card__description a:focus {
-  outline: 2px solid #141414;
-  outline-offset: 1px;
-}
 html.dark .bds-card-text-icon-card__description {
   color: #FFFFFF;
 }
-html.dark .bds-card-text-icon-card__description a {
-  color: #21E46B !important;
+
+html.light .bds-card-text-icon-card .bds-card-text-icon-card__description a:not(.bds-link):not(.bds-card-offgrid):not(.bds-card-icon):not(.bds-btn) {
+  font-weight: 400;
+  color: #0DAA3E;
 }
-html.dark .bds-card-text-icon-card__description a:hover {
-  color: #70EE97 !important;
-  text-decoration: underline !important;
+html.light .bds-card-text-icon-card .bds-card-text-icon-card__description a:not(.bds-link):not(.bds-card-offgrid):not(.bds-card-icon):not(.bds-btn):hover {
+  color: #078139;
+  text-decoration: underline;
 }
-html.dark .bds-card-text-icon-card__description a:active {
-  color: #21E46B !important;
+html.light .bds-card-text-icon-card .bds-card-text-icon-card__description a:not(.bds-link):not(.bds-card-offgrid):not(.bds-card-icon):not(.bds-btn):active {
+  color: #0DAA3E;
 }
-html.dark .bds-card-text-icon-card__description a:visited {
-  color: #C0A7FF !important;
+html.light .bds-card-text-icon-card .bds-card-text-icon-card__description a:not(.bds-link):not(.bds-card-offgrid):not(.bds-card-icon):not(.bds-btn):visited {
+  color: #7649E3;
 }
-html.dark .bds-card-text-icon-card__description a:focus {
+html.light .bds-card-text-icon-card .bds-card-text-icon-card__description a:not(.bds-link):not(.bds-card-offgrid):not(.bds-card-icon):not(.bds-btn):focus {
+  outline: 2px solid #141414;
+  outline-offset: 1px;
+}
+
+html.dark .bds-card-text-icon-card .bds-card-text-icon-card__description a:not(.bds-link):not(.bds-card-offgrid):not(.bds-card-icon):not(.bds-btn) {
+  font-weight: 400;
+  color: #21E46B;
+}
+html.dark .bds-card-text-icon-card .bds-card-text-icon-card__description a:not(.bds-link):not(.bds-card-offgrid):not(.bds-card-icon):not(.bds-btn):hover {
+  color: #70EE97;
+  text-decoration: underline;
+}
+html.dark .bds-card-text-icon-card .bds-card-text-icon-card__description a:not(.bds-link):not(.bds-card-offgrid):not(.bds-card-icon):not(.bds-btn):active {
+  color: #21E46B;
+}
+html.dark .bds-card-text-icon-card .bds-card-text-icon-card__description a:not(.bds-link):not(.bds-card-offgrid):not(.bds-card-icon):not(.bds-btn):visited {
+  color: #C0A7FF;
+}
+html.dark .bds-card-text-icon-card .bds-card-text-icon-card__description a:not(.bds-link):not(.bds-card-offgrid):not(.bds-card-icon):not(.bds-btn):focus {
   outline: 2px solid #FFFFFF;
   outline-offset: 1px;
 }
