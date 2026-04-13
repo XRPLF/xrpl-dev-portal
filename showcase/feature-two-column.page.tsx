@@ -1,16 +1,22 @@
-import { PageGrid, PageGridRow, PageGridCol } from 'shared/components/PageGrid/page-grid';
-import { FeatureTwoColumn } from 'shared/sections/FeatureTwoColumn';
+import {
+  PageGrid,
+  PageGridRow,
+  PageGridCol,
+} from "shared/components/PageGrid/page-grid";
+import { FeatureTwoColumn } from "shared/sections/FeatureTwoColumn";
 
 export const frontmatter = {
   seo: {
-    title: 'FeatureTwoColumn Pattern Showcase',
-    description: 'Interactive showcase of the FeatureTwoColumn pattern with all color variants, arrangements, and button configurations.',
+    title: "FeatureTwoColumn Pattern Showcase",
+    description:
+      "Interactive showcase of the FeatureTwoColumn pattern with all color variants, arrangements, and button configurations.",
   },
 };
 
 export default function FeatureTwoColumnShowcase() {
   // Placeholder image
-  const placeholderImage = '/img/demo-bg.png';
+  const placeholderImage =
+    "https://cdn.sanity.io/images/ior4a5y3/production/6e150606bc0a051a83b90aa830cc32854cc3f7df-2928x1920.jpg";
 
   return (
     <div className="landing">
@@ -21,9 +27,10 @@ export default function FeatureTwoColumnShowcase() {
             <h6 className="eyebrow mb-3">Pattern Showcase</h6>
             <h1 className="mb-4">FeatureTwoColumn Pattern</h1>
             <p className="longform">
-              A feature section pattern that pairs editorial content with a media element
-              in a two-column layout. Supports four color themes, left/right arrangements,
-              and automatic button configuration based on link count.
+              A feature section pattern that pairs editorial content with a
+              media element in a two-column layout. Supports four color themes,
+              left/right arrangements, and automatic button configuration based
+              on link count.
             </p>
           </div>
         </section>
@@ -34,12 +41,21 @@ export default function FeatureTwoColumnShowcase() {
             <PageGridCol span={12}>
               <h2 className="h4 mb-6">Button Behavior</h2>
               <p className="mb-4">
-                The component uses the ButtonGroup pattern which automatically adjusts button rendering based on the number of links provided:
+                The component uses the ButtonGroup pattern which automatically
+                adjusts button rendering based on the number of links provided:
               </p>
               <ul className="mb-6">
-                <li><strong>1 link:</strong> Secondary button</li>
-                <li><strong>2 links:</strong> Primary + Tertiary buttons (responsive layout)</li>
-                <li><strong>3+ links:</strong> All Tertiary buttons in block layout (vertical on all screen sizes)</li>
+                <li>
+                  <strong>1 link:</strong> Secondary button
+                </li>
+                <li>
+                  <strong>2 links:</strong> Primary + Tertiary buttons
+                  (responsive layout)
+                </li>
+                <li>
+                  <strong>3+ links:</strong> All Tertiary buttons in block
+                  layout (vertical on all screen sizes)
+                </li>
               </ul>
             </PageGridCol>
           </PageGridRow>
@@ -53,7 +69,9 @@ export default function FeatureTwoColumnShowcase() {
                 <div className="mb-3">
                   <strong>1 Link</strong> - Secondary Button
                   <br />
-                  <small className="text-muted">Single action rendered as a secondary (outline) button.</small>
+                  <small className="text-muted">
+                    Single action rendered as a secondary (outline) button.
+                  </small>
                 </div>
               </PageGridCol>
             </PageGridRow>
@@ -63,9 +81,7 @@ export default function FeatureTwoColumnShowcase() {
             arrange="left"
             title="Institutions"
             description="Banks, asset managers, PSPs, and fintechs use XRPL to build financial products and DeFi solutions efficiently and with more flexibility."
-            links={[
-              { label: "Secondary Link", href: "#link1" }
-            ]}
+            links={[{ label: "Secondary Link", href: "#link1" }]}
             media={{ src: placeholderImage, alt: "Feature illustration" }}
           />
         </div>
@@ -78,7 +94,9 @@ export default function FeatureTwoColumnShowcase() {
                 <div className="mb-3">
                   <strong>2 Links</strong> - Primary + Tertiary Buttons
                   <br />
-                  <small className="text-muted">Primary action with a secondary tertiary link.</small>
+                  <small className="text-muted">
+                    Primary action with a secondary tertiary link.
+                  </small>
                 </div>
               </PageGridCol>
             </PageGridRow>
@@ -90,7 +108,7 @@ export default function FeatureTwoColumnShowcase() {
             description="Banks, asset managers, PSPs, and fintechs use XRPL to build financial products and DeFi solutions efficiently and with more flexibility."
             links={[
               { label: "Primary Link", href: "#link1" },
-              { label: "Tertiary Link", href: "#link2" }
+              { label: "Tertiary Link", href: "#link2" },
             ]}
             media={{ src: placeholderImage, alt: "Feature illustration" }}
           />
@@ -104,7 +122,10 @@ export default function FeatureTwoColumnShowcase() {
                 <div className="mb-3">
                   <strong>5 Links</strong> - Multiple Links Configuration
                   <br />
-                  <small className="text-muted">Primary + Tertiary in first row, Secondary below, remaining as Tertiary list.</small>
+                  <small className="text-muted">
+                    For 3+ links, ButtonGroup renders all actions as tertiary
+                    buttons in block layout.
+                  </small>
                 </div>
               </PageGridCol>
             </PageGridRow>
@@ -119,7 +140,7 @@ export default function FeatureTwoColumnShowcase() {
               { label: "Tertiary Link", href: "#link2" },
               { label: "Secondary Link", href: "#link3" },
               { label: "Tertiary Link", href: "#link4" },
-              { label: "Tertiary Link", href: "#link5" }
+              { label: "Tertiary Link", href: "#link5" },
             ]}
             media={{ src: placeholderImage, alt: "Feature illustration" }}
           />
@@ -147,7 +168,8 @@ export default function FeatureTwoColumnShowcase() {
                   <strong>Neutral</strong> - <code>color="neutral"</code>
                   <br />
                   <small className="text-muted">
-                    Light: <code>$gray-100</code> (#F0F3F7) | Dark: <code>$gray-200</code> (#E6EAF0)
+                    Light: <code>$gray-100</code> (#F0F3F7) | Dark:{" "}
+                    <code>$gray-200</code> (#E6EAF0)
                     <br />
                     From <code>styles/_colors.scss</code>
                   </small>
@@ -162,7 +184,7 @@ export default function FeatureTwoColumnShowcase() {
             description="Banks, asset managers, PSPs, and fintechs use XRPL to build financial products and DeFi solutions efficiently and with more flexibility."
             links={[
               { label: "Get Started", href: "#start" },
-              { label: "Learn More", href: "#learn" }
+              { label: "Learn More", href: "#learn" },
             ]}
             media={{ src: placeholderImage, alt: "Neutral theme" }}
           />
@@ -177,7 +199,8 @@ export default function FeatureTwoColumnShowcase() {
                   <strong>Lilac</strong> - <code>color="lilac"</code>
                   <br />
                   <small className="text-muted">
-                    Light: <code>$lilac-200</code> (#D9CAFF) | Dark: <code>$lilac-200</code> (#D9CAFF)
+                    Light: <code>$lilac-200</code> (#D9CAFF) | Dark:{" "}
+                    <code>$lilac-200</code> (#D9CAFF)
                     <br />
                     From <code>styles/_colors.scss</code>
                   </small>
@@ -192,7 +215,7 @@ export default function FeatureTwoColumnShowcase() {
             description="Banks, asset managers, PSPs, and fintechs use XRPL to build financial products and DeFi solutions efficiently and with more flexibility."
             links={[
               { label: "Get Started", href: "#start" },
-              { label: "Learn More", href: "#learn" }
+              { label: "Learn More", href: "#learn" },
             ]}
             media={{ src: placeholderImage, alt: "Lilac theme" }}
           />
@@ -207,7 +230,8 @@ export default function FeatureTwoColumnShowcase() {
                   <strong>Yellow</strong> - <code>color="yellow"</code>
                   <br />
                   <small className="text-muted">
-                    Light: <code>$yellow-100</code> (#F3F1EB) | Dark: <code>$yellow-100</code> (#F3F1EB)
+                    Light: <code>$yellow-100</code> (#F3F1EB) | Dark:{" "}
+                    <code>$yellow-100</code> (#F3F1EB)
                     <br />
                     From <code>styles/_colors.scss</code>
                   </small>
@@ -222,7 +246,7 @@ export default function FeatureTwoColumnShowcase() {
             description="Banks, asset managers, PSPs, and fintechs use XRPL to build financial products and DeFi solutions efficiently and with more flexibility."
             links={[
               { label: "Get Started", href: "#start" },
-              { label: "Learn More", href: "#learn" }
+              { label: "Learn More", href: "#learn" },
             ]}
             media={{ src: placeholderImage, alt: "Yellow theme" }}
           />
@@ -237,7 +261,8 @@ export default function FeatureTwoColumnShowcase() {
                   <strong>Green</strong> - <code>color="green"</code>
                   <br />
                   <small className="text-muted">
-                    Light: <code>$green-300</code> (#21E46B) | Dark: <code>$green-300</code> (#21E46B)
+                    Light: <code>$green-300</code> (#21E46B) | Dark:{" "}
+                    <code>$green-300</code> (#21E46B)
                     <br />
                     From <code>styles/_colors.scss</code>
                   </small>
@@ -252,7 +277,7 @@ export default function FeatureTwoColumnShowcase() {
             description="Banks, asset managers, PSPs, and fintechs use XRPL to build financial products and DeFi solutions efficiently and with more flexibility."
             links={[
               { label: "Get Started", href: "#start" },
-              { label: "Learn More", href: "#learn" }
+              { label: "Learn More", href: "#learn" },
             ]}
             media={{ src: placeholderImage, alt: "Green theme" }}
           />
@@ -264,14 +289,24 @@ export default function FeatureTwoColumnShowcase() {
             <PageGridCol span={12}>
               <h2 className="h4 mb-6">Arrangement Variants</h2>
               <p className="mb-6">
-                Control content position with the <code>arrange</code> prop.
-                Use alternating arrangements for visual variety on pages with multiple sections.
+                Control content position with the <code>arrange</code> prop. Use
+                alternating arrangements for visual variety on pages with
+                multiple sections.
               </p>
-              <div className="mb-4 p-3" style={{ backgroundColor: '#f0f3f7', borderRadius: '8px' }}>
+              <div
+                className="mb-4 p-3"
+                style={{ backgroundColor: "#f0f3f7", borderRadius: "8px" }}
+              >
                 <strong>📱 Responsive Behavior:</strong>
                 <ul className="mb-0 mt-2">
-                  <li><code>arrange="left"</code>: Content above media on mobile/tablet, content left on desktop</li>
-                  <li><code>arrange="right"</code>: Media above content on mobile/tablet, content right on desktop</li>
+                  <li>
+                    <code>arrange="left"</code>: Content above media on
+                    mobile/tablet, content left on desktop
+                  </li>
+                  <li>
+                    <code>arrange="right"</code>: Media above content on
+                    mobile/tablet, content right on desktop
+                  </li>
                 </ul>
               </div>
             </PageGridCol>
@@ -284,10 +319,12 @@ export default function FeatureTwoColumnShowcase() {
             <PageGridRow>
               <PageGridCol span={12}>
                 <div className="mb-3">
-                  <strong>Arrange Left (Default)</strong> - <code>arrange="left"</code>
+                  <strong>Arrange Left (Default)</strong> -{" "}
+                  <code>arrange="left"</code>
                   <br />
                   <small className="text-muted">
-                    Desktop: Content left, media right | Mobile/Tablet: Content above media
+                    Desktop: Content left, media right | Mobile/Tablet: Content
+                    above media
                   </small>
                 </div>
               </PageGridCol>
@@ -300,7 +337,7 @@ export default function FeatureTwoColumnShowcase() {
             description="This content appears on the left side of the layout on desktop, and above the media on mobile/tablet. This is the default arrangement."
             links={[
               { label: "Primary", href: "#primary" },
-              { label: "Learn More", href: "#secondary" }
+              { label: "Learn More", href: "#secondary" },
             ]}
             media={{ src: placeholderImage, alt: "Left arrangement" }}
           />
@@ -315,7 +352,8 @@ export default function FeatureTwoColumnShowcase() {
                   <strong>Arrange Right</strong> - <code>arrange="right"</code>
                   <br />
                   <small className="text-muted">
-                    Desktop: Content right, media left | Mobile/Tablet: Media above content
+                    Desktop: Content right, media left | Mobile/Tablet: Media
+                    above content
                   </small>
                 </div>
               </PageGridCol>
@@ -328,7 +366,7 @@ export default function FeatureTwoColumnShowcase() {
             description="This content appears on the right side on desktop, and below the media on mobile/tablet. The media-first approach works well for visual hierarchy."
             links={[
               { label: "Primary", href: "#primary" },
-              { label: "Learn More", href: "#secondary" }
+              { label: "Learn More", href: "#secondary" },
             ]}
             media={{ src: placeholderImage, alt: "Right arrangement" }}
           />
@@ -340,7 +378,8 @@ export default function FeatureTwoColumnShowcase() {
             <PageGridCol span={12}>
               <h2 className="h4 mb-6">Alternating Pattern</h2>
               <p className="mb-6">
-                Use alternating arrangements and colors to create visual rhythm on feature-heavy pages.
+                Use alternating arrangements and colors to create visual rhythm
+                on feature-heavy pages.
               </p>
             </PageGridCol>
           </PageGridRow>
@@ -362,7 +401,7 @@ export default function FeatureTwoColumnShowcase() {
           description="Build powerful applications on XRPL with comprehensive documentation and tools."
           links={[
             { label: "Get Started", href: "#start" },
-            { label: "Documentation", href: "#docs" }
+            { label: "Documentation", href: "#docs" },
           ]}
           media={{ src: placeholderImage, alt: "Second feature" }}
         />
@@ -374,7 +413,7 @@ export default function FeatureTwoColumnShowcase() {
           description="Scale your business with blockchain technology and enterprise-grade solutions."
           links={[
             { label: "Contact Sales", href: "#contact" },
-            { label: "View Plans", href: "#plans" }
+            { label: "View Plans", href: "#plans" },
           ]}
           media={{ src: placeholderImage, alt: "Third feature" }}
         />
@@ -387,7 +426,7 @@ export default function FeatureTwoColumnShowcase() {
           links={[
             { label: "Start Building", href: "#build" },
             { label: "Tutorials", href: "#tutorials" },
-            { label: "API Reference", href: "#api" }
+            { label: "API Reference", href: "#api" },
           ]}
           media={{ src: placeholderImage, alt: "Fourth feature" }}
         />
@@ -399,22 +438,25 @@ export default function FeatureTwoColumnShowcase() {
               <h2 className="h4 mb-6">Design References</h2>
               <div className="d-flex flex-column gap-3">
                 <div>
-                  <strong>Figma Design:</strong>{' '}
-                  <a href="https://www.figma.com/design/3tmqxMrEvOVvpYhgOCxv2D/Pattern-Feature---Two-Column?node-id=20017-3501&m=dev" target="_blank" rel="noopener noreferrer">
+                  <strong>Figma Design:</strong>{" "}
+                  <a
+                    href="https://www.figma.com/design/3tmqxMrEvOVvpYhgOCxv2D/Pattern-Feature---Two-Column?node-id=20017-3501&m=dev"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     Pattern - Feature - Two Column (Figma)
                   </a>
                 </div>
                 <div>
-                  <strong>Component Location:</strong>{' '}
+                  <strong>Component Location:</strong>{" "}
                   <code>shared/sections/FeatureTwoColumn/</code>
                 </div>
                 <div>
-                  <strong>Color Tokens:</strong>{' '}
+                  <strong>Color Tokens:</strong>{" "}
                   <code>styles/_colors.scss</code>
                 </div>
                 <div>
-                  <strong>Typography:</strong>{' '}
-                  <code>styles/_font.scss</code>
+                  <strong>Typography:</strong> <code>styles/_font.scss</code>
                 </div>
               </div>
             </PageGridCol>
@@ -424,4 +466,3 @@ export default function FeatureTwoColumnShowcase() {
     </div>
   );
 }
-
