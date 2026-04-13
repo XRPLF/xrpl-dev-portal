@@ -88,7 +88,6 @@ export const LogoSquareGrid: React.FC<LogoSquareGridProps> = ({
             buttons={buttonValidation.buttons}
             color="green"
             gap="small"
-            className="bds-logo-square-grid__button-group"
           />
         )}
       </SectionHeader>
