@@ -73,15 +73,30 @@ function extractLanguagesFromAst(ast) {
   const languages = new Set()
 
   visit(ast, (node) => {
-    // Look for tab nodes with a label attribute
-    if (isNode(node) && node.type === 'tag' && node.tag === 'tab') {
+    if (!isNode(node)) return
+
+    // Detect languages from tab labels
+    if (node.type === 'tag' && node.tag === 'tab') {
       const label = node.attributes?.label
       if (label) {
-        const normalizedLang = normalizeLanguage(label)
-        if (normalizedLang) {
-          languages.add(normalizedLang)
-        }
+        const normalized = normalizeLanguage(label)
+        if (normalized) languages.add(normalized)
       }
+    }
+
+    // Detect languages from code-snippet language attributes
+    if (node.type === 'tag' && node.tag === 'code-snippet') {
+      const lang = node.attributes?.language
+      if (lang) {
+        const normalized = normalizeLanguage(lang)
+        if (normalized) languages.add(normalized)
+      }
+    }
+
+    // Detect languages from fenced code blocks (```js, ```python, etc.)
+    if (node.type === 'fence' && node.attributes?.language) {
+      const normalized = normalizeLanguage(node.attributes.language)
+      if (normalized) languages.add(normalized)
     }
   })
 
