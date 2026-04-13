@@ -139,7 +139,9 @@ MPTs can be configured with different levels of transferability controls by adju
 
 - **Can Transfer:** If this flag is enabled, holders can transfer the token to each other. Otherwise, the MPT is non-transferable, meaning it can only be sent directly back to the issuer.
 - **Require Auth:** If this flag is enabled, holders must get explicit approval from the issuer before they can hold this token—in other words, it uses allow-listing. Otherwise, anyone can hold the token if they are willing.
-- **Can Trade:** If this flag is enabled, holders can trade the token on the [Decentralized Exchange (DEX)](../decentralized-exchange/index.md). **Can Transfer** must also be enabled, since non-transferable tokens cannot be traded. When **Can Trade** is disabled, the issuer can only directly receive tokens from holders. {% amendment-disclaimer name="MPTokensV2" mode="updated" /%}
+- **Can Trade:** If this flag is enabled, holders can trade the token on the [Decentralized Exchange (DEX)](../decentralized-exchange/index.md). **Can Transfer** must also be enabled, since non-transferable tokens cannot be traded. When **Can Trade** is disabled, the issuer can only directly receive tokens from holders. 
+_(Requires the [MPTokensV2 amendment](https://xls.xrpl.org/xls/XLS-0082-mpt-dex.html) {% not-enabled /%})_
+<!-- {% amendment-disclaimer name="MPTokensV2" mode="updated" /%} -->
 - **Can Escrow:** If this flag is enabled, holders are allowed to place the token in escrow. Otherwise, the token cannot be escrowed. {% amendment-disclaimer name="TokenEscrow" /%}
 
 ### Supply Cap
