@@ -102,6 +102,7 @@ $bds-link-text-card-content-width-md: calc(75% - 2px);
   }
   @include bds-theme-mode(dark) {
     color: $white;
+    p { color: $white; }
   }
 }
 
@@ -128,5 +129,6 @@ $bds-link-text-card-content-width-md: calc(75% - 2px);
   }
   @include bds-theme-mode(dark) {
     color: $white;
+    p { color: $white; }
   }
 }
