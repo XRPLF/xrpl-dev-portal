@@ -37,6 +37,15 @@
   @include bds-theme-mode(dark) {
     color: $white;
   }
+  .bds-button-group {
+    margin-top: $bds-space-sm;
+    @include media-breakpoint-up(md) {
+      margin-top: $bds-space-lg;
+    }
+    @include media-breakpoint-up(lg) {
+      margin-top: $bds-space-2xl;
+    }
+  }
 }
 
 .bds-section-header__heading {
