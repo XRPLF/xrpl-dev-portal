@@ -27,6 +27,7 @@ interface TutorialSection {
   title: string
   description: string
   tutorials: Tutorial[]
+  showFooter?: boolean
 }
 
 // External community contribution - manually curated with author/repo/demo info
@@ -65,104 +66,87 @@ const langIcons: Record<string, { src: string; alt: string }> = {
   xrpl: { src: "/img/logos/xrp-mark.svg", alt: "XRP Ledger" },
 }
 
-// Section configuration - defines display order, titles, and descriptions.
-// "whats-new" and "get-started" are rendered separately; the rest are auto-populated category sections.
-const sectionConfig: { id: string; title: string; description: string }[] = [
-  {
-    id: "whats-new",
+// ── Section configuration -----------------------------------------------------------
+// Categories and their titles are auto-detected by the tutorial-metadata plugin.
+// Use the config to customize the category titles, add descriptions, change the default category order, and pin tutorials.
+const sectionConfig: Record<string, {
+  title?: string
+  description?: string
+  pinned?: PinnedTutorial[]
+  showFooter?: boolean
+}> = {
+  "whats-new": {
     title: "What's New",
     description: "Recently added/updated tutorials to help you build on the XRP Ledger.",
   },
-  {
-    id: "get-started",
+  "get-started": {
+    showFooter: true,
     title: "Get Started with SDKs",
     description: "These tutorials walk you through the basics of building a very simple XRP Ledger-connected application using your favorite programming language.",
+    pinned: [
+      { path: "/docs/tutorials/get-started/get-started-javascript/", description: "Using the xrpl.js client library." },
+      { path: "/docs/tutorials/get-started/get-started-python/", description: "Using xrpl.py, a pure Python library." },
+      { path: "/docs/tutorials/get-started/get-started-go/", description: "Using xrpl-go, a pure Go library." },
+      { path: "/docs/tutorials/get-started/get-started-java/", description: "Using xrpl4j, a pure Java library." },
+      { path: "/docs/tutorials/get-started/get-started-php/", description: "Using the XRPL_PHP client library." },
+      { path: "/docs/tutorials/get-started/get-started-http-websocket-apis/", description: "Access the XRP Ledger directly through the APIs of its core server." },
+    ],
   },
-  {
-    id: "tokens",
-    title: "Tokens",
+  "tokens": {
     description: "Create and manage tokens on the XRP Ledger.",
+    pinned: [
+      { path: "/docs/tutorials/tokens/mpts/issue-a-multi-purpose-token/", description: "Issue new tokens using the v2 fungible token standard." },
+      { path: "/docs/tutorials/tokens/fungible-tokens/issue-a-fungible-token/", description: "Issue new tokens using the v1 fungible token standard." },
+      { path: "/docs/tutorials/tokens/nfts/mint-and-burn-nfts-js/", description: "Create new NFTs, retrieve existing tokens, and burn the ones you no longer need." },
+      "/docs/tutorials/tokens/mpts/sending-mpts-in-javascript/",
+    ],
   },
-  {
-    id: "payments",
-    title: "Payments",
+  "payments": {
     description: "Transfer XRP and issued currencies using various payment types.",
+    pinned: [
+      "/docs/tutorials/payments/send-xrp/",
+      "/docs/tutorials/payments/create-trust-line-send-currency-in-javascript/",
+      "/docs/tutorials/payments/send-a-conditional-escrow/",
+      "/docs/tutorials/payments/send-a-timed-escrow/",
+    ],
   },
-  {
-    id: "defi",
-    title: "DeFi",
+  "defi": {
     description: "Trade, provide liquidity, and lend using native XRP Ledger DeFi features.",
+    pinned: [
+      "/docs/tutorials/defi/dex/create-an-automated-market-maker/",
+      "/docs/tutorials/defi/dex/trade-in-the-decentralized-exchange/",
+      "/docs/tutorials/defi/lending/use-the-lending-protocol/create-a-loan/",
+      "/docs/tutorials/defi/lending/use-single-asset-vaults/create-a-single-asset-vault/",
+    ],
   },
-  {
-    id: "best-practices",
-    title: "Best Practices",
+  "best-practices": {
     description: "Learn recommended patterns for building reliable, secure applications on the XRP Ledger.",
+    pinned: [
+      "/docs/tutorials/best-practices/api-usage/",
+    ],
   },
-  {
-    id: "compliance-features",
+  "compliance-features": {
     title: "Compliance",
     description: "Implement compliance controls like destination tags, credentials, and permissioned domains.",
   },
-  {
-    id: "programmability",
-    title: "Programmability",
+  "programmability": {
     description: "Set up cross-chain bridges and submit interoperability transactions.",
   },
-  {
-    id: "advanced-developer-topics",
-    title: "Advanced Developer Topics",
-    description: "Explore advanced topics like WebSocket monitoring and testing devnet features.",
+  "advanced-developer-topics": {
+    description: "Explore advanced topics like WebSocket monitoring and testing Devnet features.",
   },
-  {
-    id: "sample-apps",
-    title: "Sample Apps",
+  "sample-apps": {
     description: "Build complete, end-to-end applications like wallets and credential services.",
+    pinned: [
+      {
+        title: "XRPL Lending Protocol Demo",
+        description: "A full-stack web application that demonstrates the end-to-end flow of the Lending Protocol and Single Asset Vaults.",
+        author: { name: "Aaditya-T", url: "https://github.com/Aaditya-T" },
+        github: "https://github.com/Aaditya-T/lending_test",
+        url: "https://lending-test-lovat.vercel.app/",
+      },
+    ],
   },
-]
-
-// Pinned tutorials - featured tutorials that appear first in their section.
-// - string: uses frontmatter title and description as-is.
-// - { path, description? }: internal tutorial with optional description override.
-// - { title, description, author, github, url? }: external community contribution.
-const pinnedTutorials: Record<string, PinnedTutorial[]> = {
-  "get-started": [
-    { path: "/docs/tutorials/get-started/get-started-javascript/", description: "Using the xrpl.js client library." },
-    { path: "/docs/tutorials/get-started/get-started-python/", description: "Using xrpl.py, a pure Python library." },
-    { path: "/docs/tutorials/get-started/get-started-go/", description: "Using xrpl-go, a pure Go library." },
-    { path: "/docs/tutorials/get-started/get-started-java/", description: "Using xrpl4j, a pure Java library." },
-    { path: "/docs/tutorials/get-started/get-started-php/", description: "Using the XRPL_PHP client library." },
-    { path: "/docs/tutorials/get-started/get-started-http-websocket-apis/", description: "Access the XRP Ledger directly through the APIs of its core server." },
-  ],
-  tokens: [
-    { path: "/docs/tutorials/tokens/mpts/issue-a-multi-purpose-token/", description: "Issue new tokens using the v2 fungible token standard." },
-    { path: "/docs/tutorials/tokens/fungible-tokens/issue-a-fungible-token/", description: "Issue new tokens using the v1 fungible token standard."},
-    { path: "/docs/tutorials/tokens/nfts/mint-and-burn-nfts-js/", description: "Create new NFTs, retrieve existing tokens, and burn the ones you no longer need." },
-    "/docs/tutorials/tokens/mpts/sending-mpts-in-javascript/",
-  ],
-  payments: [
-    "/docs/tutorials/payments/send-xrp/",
-    "/docs/tutorials/payments/create-trust-line-send-currency-in-javascript/",
-    "/docs/tutorials/payments/send-a-conditional-escrow/",
-    "/docs/tutorials/payments/send-a-timed-escrow/",
-  ],
-  defi: [
-    "/docs/tutorials/defi/dex/create-an-automated-market-maker/",
-    "/docs/tutorials/defi/dex/trade-in-the-decentralized-exchange/",
-    "/docs/tutorials/defi/lending/use-the-lending-protocol/create-a-loan/",
-    "/docs/tutorials/defi/lending/use-single-asset-vaults/create-a-single-asset-vault/",
-  ],
-  "best-practices": [
-    "/docs/tutorials/best-practices/api-usage/",
-  ],
-  "sample-apps": [
-    {
-      title: "XRPL Lending Protocol Demo",
-      description: "A full-stack web application that demonstrates the end-to-end flow of the Lending Protocol and Single Asset Vaults.",
-      author: { name: "Aaditya-T", url: "https://github.com/Aaditya-T" },
-      github: "https://github.com/Aaditya-T/lending_test",
-      url: "https://lending-test-lovat.vercel.app/",
-    },
-  ],
 }
 
 // ── Components ──────────────────────────────────────────────────────────────
@@ -215,7 +199,7 @@ function MetaLink({ href, icon, label }: {
   )
 }
 
-// Community Contribution Card 
+// Community Contribution Card
 function ContributionCard({
   tutorial,
   translate,
@@ -415,44 +399,26 @@ export default function TutorialsIndex() {
   // Get auto-detected languages from the plugin (maps tutorial paths to language arrays).
   const tutorialLanguages = usePageSharedData<TutorialLanguagesMap>("tutorial-languages") || {}
 
-  // Get tutorial metadata from the tutorial-metadata plugin.
-  const tutorialMetadata = usePageSharedData<{ tutorials: TutorialMetadataItem[] }>("tutorial-metadata")
+  // Get tutorial metadata and sidebar categories from the tutorial-metadata plugin.
+  const tutorialMetadata = usePageSharedData<{
+    tutorials: TutorialMetadataItem[]
+    categories: { id: string; title: string }[]
+  }>("tutorial-metadata")
   const allTutorials = tutorialMetadata?.tutorials || []
+  const sidebarCategories = tutorialMetadata?.categories || []
 
-  // Build Get Started tutorials from pinned config.
-  const getStartedPinnedEntries = pinnedTutorials["get-started"] || []
-  const getStartedTutorials = buildPinnedTutorials(getStartedPinnedEntries, allTutorials)
-
-  // Get Started paths to exclude from "What's New".
-  const getStartedPaths = new Set(getStartedPinnedEntries.map(getPinnedPath))
-
-  // Get recent tutorials for "What's New" section.
-  // Shows the most recently modified tutorials (excluding only Get Started).
-  // Pinned tutorials in other sections CAN appear here if recently updated.
-  const whatsNewTutorials: Tutorial[] = allTutorials
-    .filter((t) => !getStartedPaths.has(t.path))
-    .slice(0, MAX_WHATS_NEW)
-    .map((t) => toTutorial(t))
-
-  // Build category sections: pinned tutorials first, then auto-populated.
-  const categorySectionIds = new Set(["whats-new", "get-started"])
-  const allPinnedPaths = new Set(
-    Object.values(pinnedTutorials).flat().map(getPinnedPath)
+  // What's New: most recently modified tutorials, excluding Get Started.
+  const whatsNewConfig = sectionConfig["whats-new"]!
+  const getStartedPaths = new Set(
+    (sectionConfig["get-started"]?.pinned || []).map(getPinnedPath)
   )
-  const sections: TutorialSection[] = sectionConfig
-    .filter((config) => !categorySectionIds.has(config.id))
-    .map((config) => {
-      const pinned = buildPinnedTutorials(pinnedTutorials[config.id] || [], allTutorials)
-      // allTutorials is already sorted by lastModified (newest first) from the plugin.
-      const autoTutorials = allTutorials
-        .filter((t) => t.category === config.id && !allPinnedPaths.has(t.path))
-        .map((t) => toTutorial(t))
-      return { ...config, tutorials: [...pinned, ...autoTutorials] }
-    })
-    .filter((section) => section.tutorials.length > 0)
+  const whatsNewTutorials: Tutorial[] = allTutorials
+    .filter((tutorial) => !getStartedPaths.has(tutorial.path))
+    .slice(0, MAX_WHATS_NEW)
+    .map((tutorial) => toTutorial(tutorial))
 
-  const whatsNewConfig = getSectionConfig("whats-new")
-  const getStartedConfig = getSectionConfig("get-started")
+  // Category sections (including Get Started): ordered by sectionConfig, then any new sidebar categories.
+  const sections = buildCategorySections(sidebarCategories, allTutorials)
 
   return (
     <main className="landing page-tutorials landing-builtin-bg">
@@ -469,13 +435,10 @@ export default function TutorialsIndex() {
             <nav className="mt-4">
               <ul className="page-toc no-sideline d-flex flex-wrap gap-2 mb-0">
                 {whatsNewTutorials.length > 0 && (
-                  <li><a href={`#${whatsNewConfig.id}`}>{translate(whatsNewConfig.title)}</a></li>
-                )}
-                {getStartedTutorials.length > 0 && (
-                  <li><a href={`#${getStartedConfig.id}`}>{translate(getStartedConfig.title)}</a></li>
+                  <li><Link to="#whats-new">{translate(whatsNewConfig.title)}</Link></li>
                 )}
                 {sections.map((section) => (
-                  <li key={section.id}><a href={`#${section.id}`}>{translate(section.title)}</a></li>
+                  <li key={section.id}><Link to={`#${section.id}`}>{translate(section.title)}</Link></li>
                 ))}
               </ul>
             </nav>
@@ -489,9 +452,9 @@ export default function TutorialsIndex() {
       {/* What's New */}
       {whatsNewTutorials.length > 0 && (
         <TutorialSectionBlock
-          id={whatsNewConfig.id}
-          title={whatsNewConfig.title}
-          description={whatsNewConfig.description}
+          id="whats-new"
+          title={whatsNewConfig.title!}
+          description={whatsNewConfig.description!}
           tutorials={whatsNewTutorials}
           tutorialLanguages={tutorialLanguages}
           showFooter
@@ -500,21 +463,7 @@ export default function TutorialsIndex() {
         />
       )}
 
-      {/* Get Started */}
-      {getStartedTutorials.length > 0 && (
-        <TutorialSectionBlock
-          id={getStartedConfig.id}
-          title={getStartedConfig.title}
-          description={getStartedConfig.description}
-          tutorials={getStartedTutorials}
-          tutorialLanguages={tutorialLanguages}
-          showFooter
-          className="pb-20"
-          translate={translate}
-        />
-      )}
-
-      {/* Other Tutorials */}
+      {/* Tutorial Sections */}
       {sections.map((section) => (
         <TutorialSectionBlock
           key={section.id}
@@ -523,8 +472,9 @@ export default function TutorialsIndex() {
           description={section.description}
           tutorials={section.tutorials}
           tutorialLanguages={tutorialLanguages}
-          maxTutorials={MAX_TUTORIALS_PER_SECTION}
-          className="category-section"
+          maxTutorials={section.showFooter ? undefined : MAX_TUTORIALS_PER_SECTION}
+          showFooter={section.showFooter}
+          className={section.showFooter ? "pb-20" : "category-section"}
           translate={translate}
         />
       ))}
@@ -533,11 +483,6 @@ export default function TutorialsIndex() {
 }
 
 // ── Helpers ──────────────────────────────────────────────────────────────────
-
-/** Look up a section's config by id */
-function getSectionConfig(id: string) {
-  return sectionConfig.find((s) => s.id === id)!
-}
 
 /** Type guard for external community contributions */
 function isExternalContribution(entry: PinnedTutorial): entry is PinnedExternalTutorial {
@@ -578,4 +523,36 @@ function buildPinnedTutorials(entries: PinnedTutorial[], allTutorials: TutorialM
       return metadata ? toTutorial(metadata, descOverride) : null
     })
     .filter((t): t is Tutorial => t !== null)
+}
+
+/** Build category sections ordered by sectionConfig, with new sidebar categories appended */
+function buildCategorySections(
+  sidebarCategories: { id: string; title: string }[],
+  allTutorials: TutorialMetadataItem[],
+): TutorialSection[] {
+  const specialIds = new Set(["whats-new"])
+  const sidebarMap = new Map(sidebarCategories.map((category) => [category.id, category]))
+  const allPinnedPaths = new Set(
+    Object.values(sectionConfig).flatMap((config) => (config.pinned || []).map(getPinnedPath))
+  )
+
+  // Sections follow sectionConfig key order. New sidebar categories not in sectionConfig are appended at the end.
+  const configIds = Object.keys(sectionConfig).filter((id) => !specialIds.has(id))
+  const newIds = sidebarCategories
+    .filter((category) => !specialIds.has(category.id) && !sectionConfig[category.id])
+    .map((category) => category.id)
+
+  return [...configIds, ...newIds]
+    .filter((id) => sidebarMap.has(id))
+    .map((id) => {
+      const config = sectionConfig[id]
+      const title = config?.title || sidebarMap.get(id)!.title
+      const description = config?.description || ""
+      const pinned = buildPinnedTutorials(config?.pinned || [], allTutorials)
+      const remaining = allTutorials
+        .filter((t) => t.category === id && !allPinnedPaths.has(t.path))
+        .map((t) => toTutorial(t))
+      return { id, title, description, tutorials: [...pinned, ...remaining], showFooter: config?.showFooter }
+    })
+    .filter((section) => section.tutorials.length > 0)
 }
