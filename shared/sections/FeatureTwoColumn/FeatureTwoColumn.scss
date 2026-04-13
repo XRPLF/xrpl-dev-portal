@@ -194,9 +194,6 @@ $bds-feature-mobile-content-gap: $bds-space-2xl; // 24px - spacing('2xl')
     gap: $bds-space-2xl; // 24px - spacing('2xl')
     justify-content: flex-start;
 
-    @include media-breakpoint-up(md) {
-      gap: 0;
-    }
 
     @include media-breakpoint-up(lg) {
       justify-content: space-between;
