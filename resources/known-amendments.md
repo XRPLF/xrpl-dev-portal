@@ -23,6 +23,10 @@ The following is a list of [amendments](../docs/concepts/networks-and-servers/am
 |:----------------------------------|:------------------------------------------|:-------------------------------|
 | [Hooks][]                         | {% badge %}In Development: TBD{% /badge %} | [XRPL Hooks](https://hooks.xrpl.org/) |
 | [InvariantsV1_1][]                | {% badge %}In Development: TBD{% /badge %} |  |
+| [DynamicMPT][]                    | {% badge %}In Development: TBD{% /badge %} | [XLS-94 Dynamic MPTs](https://opensource.ripple.com/docs/xls-94-dynamic-mpts) |
+| [ConfidentialTransfer][]          | {% badge %}In Development: TBD{% /badge %} | [XLS-96 Confidential Transfers](https://opensource.ripple.com/docs/xls-96-confidential-transfers) |
+| [MPTokensV2][]                    | {% badge %}In Development: TBD{% /badge %} | [XLS-82 MPT DEX Integration](https://opensource.ripple.com/docs/xls-82-mpt-dex) |
+| [Sponsor][]                       | {% badge %}In Development: TBD{% /badge %} | [XLS-68 Sponsored Fees and Reserves](https://opensource.ripple.com/docs/xls-68-sponsored-fees-and-reserves) |
 
 {% admonition type="success" name="Tip" %}
 This list is updated manually. If you're working on an amendment and have a private network to test the changes, you can edit this page to add your in-development amendment to this list. For more information on contributing to the XRP Ledger, see [Contribute Code to the XRP Ledger](contribute-code/index.md).
@@ -203,7 +207,22 @@ Modifies an existing type of ledger entry:
 
 Also extends the `deposit_authorized` API method to check for credential-based auth and extends the `ledger_entry` method to allow lookup of Credential entries.
 
-For more details, see the [XLS-70: Credentials specification](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0070-credentials).
+For more details, see [XLS-70: Credentials specification](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0070-credentials).
+
+
+### ConfidentialTransfer
+[ConfidentialTransfer]: #confidentialtransfer
+
+| Amendment    | ConfidentialTransfer |
+|:-------------|:---------------------|
+| Amendment ID | 2110E4A19966E2EF517C0A8C56A5F35099D7665B0BB89D7B126B30D50B86AAD5 |
+| Status       | In Development |
+| Default Vote (Latest stable release) | No |
+| Pre-amendment functionality retired? | No |
+
+Provides institutional-grade privacy for Multi-Purpose Tokens (MPTs) using advanced cryptography (EC-ElGamal and ZKPs). Individual balances and transfer amounts remain shielded from the public ledger while maintaining compliance mechanisms for authorized parties (issuers, auditors, or designated entities) to verify total supply and meet regulatory obligations.
+
+For more details, see [XLS-96: Confidential Transfers](https://opensource.ripple.com/docs/xls-96-confidential-transfers).
 
 
 ### CryptoConditions
@@ -369,6 +388,21 @@ Adds functionality to update the `URI` field of an `NFToken` ledger entry. This 
 
 1. `NFTokenModify`: New transaction type that updates the `URI` field of an NFT.
 2. `tfMutable`: New flag that enables authorized accounts to modify the `URI` of an NFT. This flag must be enabled when the NFT is initially minted.
+
+
+### DynamicMPT
+[DynamicMPT]: #dynamicmpt
+
+| Amendment    | DynamicMPT |
+|:-------------|:-----------|
+| Amendment ID | 58E92F338758479C06084E1B6BA366BAD8F75E5329A7F0EEAFFFDA51E5106B7F |
+| Status       | In Development |
+| Default Vote (Latest stable release) | No |
+| Pre-amendment functionality retired? | No |
+
+Extends Multi-Purpose Tokens to allow issuers to designate specific properties as mutable during token creation, enabling selected attributes to be updated later as business needs change.
+
+For more details, see [XLS-94: Dynamic MPTs](https://opensource.ripple.com/docs/xls-94-dynamic-mpts).
 
 
 ### EnforceInvariants
@@ -1532,6 +1566,21 @@ Implements a new type of fungible token, called a _Multi-Purpose Token_ (MPT). T
 - (Updated) `ledger_entry` method - Can look up MPToken and MPTokenIssuance ledger entry types.
 
 
+### MPTokensV2
+[MPTokensV2]: #mptokensv2
+
+| Amendment    | MPTokensV2 |
+|:-------------|:-----------|
+| Amendment ID | BE2D87DF21B690ED1497B593FDC013CC04276302380B1BD50A033DCF8DEFB2EB |
+| Status       | In Development |
+| Default Vote (Latest stable release) | No |
+| Pre-amendment functionality retired? | No |
+
+Extends the XRPL's Decentralized Exchange to natively support Multi-Purpose Tokens (MPTs) as a tradeable asset class. MPTs can be paired with XRP, Trust Line tokens, or other MPTs across existing DEX transactions such as OfferCreate, Payment, AMM, and Checks.
+
+For more details, see [XLS-82: MPT DEX Integration](https://opensource.ripple.com/docs/xls-82-mpt-dex).
+
+
 ### MultiSign
 [MultiSign]: #multisign
 
@@ -1826,6 +1875,21 @@ Creates a structure for aggregating assets from multiple depositors. This is int
 
 Specification: [XLS-65](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0065-single-asset-vault).
 
+### SmartEscrows
+[SmartEscrows]: #smartescrows
+
+| Amendment    | SmartEscrows |
+|:-------------|:-------------|
+| Amendment ID | TBD |
+| Status       | In Development |
+| Default Vote (Latest stable release) | No |
+| Pre-amendment functionality retired? | No |
+
+Extends the existing escrow functionality on the XRPL with programmable conditions using FinishScript. Smart Escrows allow escrows to be released based on custom logic encoded in scripts, enabling more complex conditional payment scenarios beyond the current crypto-condition and time-based releases.
+
+For more details, see the [XLS-100: Smart Escrows specification](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0100-smart-escrows).
+
+
 ### SortedDirectories
 [SortedDirectories]: #sorteddirectories
 
@@ -1839,6 +1903,21 @@ Specification: [XLS-65](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-
 Sorts the entries in [DirectoryNode ledger objects](../docs/references/protocol/ledger-data/ledger-entry-types/directorynode.md) and fixes a bug that occasionally caused pages of owner directories not to be deleted when they should have been.
 
 {% admonition type="danger" name="Warning" %}Older versions of `rippled` that do not know about this amendment may crash when they find a DirectoryNode sorted by the new rules. To avoid this problem, [upgrade](../docs/infrastructure/installation/index.md) to `rippled` version 0.80.0 or later.{% /admonition %}
+
+
+### Sponsor
+[Sponsor]: #sponsor
+
+| Amendment    | Sponsor |
+|:-------------|:--------|
+| Amendment ID | BE1F90581635DBCEBFC4678C4B54FEDDC1A17B50FD02CFE765A4132A342126AC |
+| Status       | In Development |
+| Default Vote (Latest stable release) | No |
+| Pre-amendment functionality retired? | No |
+
+The Sponsor amendment removes onboarding friction by allowing companies, token issuers, and other entities to subsidize transaction costs and reserve requirements for end users. Sponsors can co-sign transactions or pre-fund sponsorships, covering fees and reserves, while sponsees retain full control of their accounts and keys.
+
+For more details, see [XLS-68: Sponsored Fees and Reserves](https://opensource.ripple.com/docs/xls-68-sponsored-fees-and-reserves).
 
 
 ### SusPay
