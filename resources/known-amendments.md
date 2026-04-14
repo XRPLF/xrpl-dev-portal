@@ -27,6 +27,7 @@ The following is a list of [amendments](../docs/concepts/networks-and-servers/am
 | [ConfidentialTransfer][]          | {% badge %}In Development: TBD{% /badge %} | [XLS-96 Confidential Transfers](https://opensource.ripple.com/docs/xls-96-confidential-transfers) |
 | [MPTokensV2][]                    | {% badge %}In Development: TBD{% /badge %} | [XLS-82 MPT DEX Integration](https://opensource.ripple.com/docs/xls-82-mpt-dex) |
 | [Sponsor][]                       | {% badge %}In Development: TBD{% /badge %} | [XLS-68 Sponsored Fees and Reserves](https://opensource.ripple.com/docs/xls-68-sponsored-fees-and-reserves) |
+| [SmartEscrow][]                 | {% badge %}In Development: TBD{% /badge %} | [XLS-100 Smart Escrows](https://opensource.ripple.com/docs/xls-100-smart-escrows) |
 
 {% admonition type="success" name="Tip" %}
 This list is updated manually. If you're working on an amendment and have a private network to test the changes, you can edit this page to add your in-development amendment to this list. For more information on contributing to the XRP Ledger, see [Contribute Code to the XRP Ledger](contribute-code/index.md).
@@ -1875,19 +1876,19 @@ Creates a structure for aggregating assets from multiple depositors. This is int
 
 Specification: [XLS-65](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0065-single-asset-vault).
 
-### SmartEscrows
-[SmartEscrows]: #smartescrows
+### SmartEscrow
+[SmartEscrow]: #smartescrow
 
-| Amendment    | SmartEscrows |
-|:-------------|:-------------|
-| Amendment ID | TBD |
+| Amendment    | SmartEscrow   |
+|:-------------|:--------------|
+| Amendment ID | 78ECD9CE17B0BF5B83BB3B275921FB5F5E0F672E9D24BD2E848B7C6277AE296E |
 | Status       | In Development |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
-Extends the existing escrow functionality on the XRPL with programmable conditions using FinishScript. Smart Escrows allow escrows to be released based on custom logic encoded in scripts, enabling more complex conditional payment scenarios beyond the current crypto-condition and time-based releases.
+The Smart Escrows amendment introduces a new programmability layer to the XRPL, powered by a WebAssembly (WASM) engine. Developers can write custom functions that control when an escrow can be finished.
 
-For more details, see the [XLS-100: Smart Escrows specification](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0100-smart-escrows).
+For more details, see [XLS-100: Smart Escrows](https://opensource.ripple.com/docs/xls-100-smart-escrows).
 
 
 ### SortedDirectories
