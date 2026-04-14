@@ -153,9 +153,7 @@ $bds-single-topic-mobile-title-description-gap: $bds-space-4xl; // 40px - spacin
   }
 
   // Title - Heading MD from styles/_font.scss
-  // Font: Tobias (secondary/monospace), Size: 40px, Weight: 300, Line-height: 46px, Letter-spacing: -1px
   &__title {
-    @include type(heading-md);
     color: $bds-single-topic-title-color;
     margin: 0;
   }
@@ -172,9 +170,7 @@ $bds-single-topic-mobile-title-description-gap: $bds-space-4xl; // 40px - spacin
   }
 
   // Description - Label L from styles/_font.scss
-  // Font: Booton (primary/sans-serif), Size: 16px, Weight: 300 (light), Line-height: 23.2px
   &__description {
-    @include type(label-l);
     color: $bds-single-topic-description-color;
     margin: 0;
   }
