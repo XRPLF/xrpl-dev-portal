@@ -106,8 +106,6 @@ $bds-feature-mobile-content-gap: $bds-space-2xl; // 24px - spacing('2xl')
       width: 50%;
       min-width: 0;
       padding: $bds-feature-desktop-py 0;
-      // Match height of media column (which has aspect-ratio 1/1)
-      aspect-ratio: 1 / 1;
     }
   }
 
