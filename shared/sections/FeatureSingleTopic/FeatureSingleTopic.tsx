@@ -85,11 +85,11 @@ export const FeatureSingleTopic: React.FC<FeatureSingleTopicProps> = ({
   const renderContent = () => (
     <div className="bds-feature-single-topic__content">
       <div className="bds-feature-single-topic__title-section">
-        <h2 className="bds-feature-single-topic__title">{title}</h2>
+        <h2 className="bds-feature-single-topic__title heading-md">{title}</h2>
       </div>
       <div className="bds-feature-single-topic__description-section">
       {description && (
-        <p className="bds-feature-single-topic__description">{description}</p>
+        <p className="bds-feature-single-topic__description label-l">{description}</p>
       )}
       {hasButtons && (
         <ButtonGroup
