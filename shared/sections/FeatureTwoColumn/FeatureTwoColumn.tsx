@@ -1,7 +1,10 @@
-import React from 'react';
-import clsx from 'clsx';
-import { PageGrid } from '../../components/PageGrid/page-grid';
-import { ButtonGroup, ButtonConfig, validateButtonGroup } from 'shared/patterns/ButtonGroup/ButtonGroup';
+import React from "react";
+import clsx from "clsx";
+import {
+  ButtonGroup,
+  ButtonConfig,
+  validateButtonGroup,
+} from "shared/patterns/ButtonGroup/ButtonGroup";
 
 export interface FeatureTwoColumnLink {
   /** Link label text */
@@ -12,9 +15,9 @@ export interface FeatureTwoColumnLink {
 
 export interface FeatureTwoColumnProps {
   /** Color theme variant */
-  color?: 'neutral' | 'lilac' | 'yellow' | 'green';
+  color?: "neutral" | "lilac" | "yellow" | "green";
   /** Content arrangement - left places content on left side, right places content on right side */
-  arrange?: 'left' | 'right';
+  arrange?: "left" | "right";
   /** Feature title text (heading-md typography) */
   title: string;
   /** Feature description text (body-l typography) */
@@ -40,10 +43,10 @@ export interface FeatureTwoColumnProps {
  * A feature section pattern that pairs editorial content with a media element
  * in a two-column layout. Designed for showcasing features, products, or use cases.
  *
- * Uses the PageGrid component system for responsive layout:
- * - Mobile: Stacked layout (content above media)
- * - Tablet: Stacked layout (content above media)
- * - Desktop: Side-by-side (6/12 columns each)
+ * Responsive layout (single flex row/column):
+ * - Mobile / tablet: media always on top, then content (`arrange` ignored) for consistent
+ *   rhythm when multiple sections stack (media, content; media, content; …).
+ * - Desktop (≥992px): side-by-side (50% / 50%); `arrange` controls left vs right placement.
  *
  * Button behavior based on link count:
  * - 1 link: Secondary button
@@ -51,8 +54,8 @@ export interface FeatureTwoColumnProps {
  * - 3-5 links: All tertiary buttons (first is filled, rest are text-only)
  */
 export const FeatureTwoColumn: React.FC<FeatureTwoColumnProps> = ({
-  color = 'neutral',
-  arrange = 'left',
+  color = "neutral",
+  arrange = "left",
   title,
   description,
   links = [],
@@ -61,11 +64,11 @@ export const FeatureTwoColumn: React.FC<FeatureTwoColumnProps> = ({
 }) => {
   // Determine button color based on background
   // Rule: Black buttons must be used for all backgrounds (including neutral)
-  const buttonColor = 'black';
+  const buttonColor = "black";
   const forceColor = true;
 
   // Convert links to ButtonConfig format
-  const buttonConfigs: ButtonConfig[] = links.map(link => ({
+  const buttonConfigs: ButtonConfig[] = links.map((link) => ({
     label: link.label,
     href: link.href,
     forceColor: forceColor,
@@ -75,98 +78,55 @@ export const FeatureTwoColumn: React.FC<FeatureTwoColumnProps> = ({
   const buttonValidation = validateButtonGroup(buttonConfigs, 5);
   const hasButtons = buttonValidation.hasButtons;
 
-  // Build root class names
   const rootClasses = clsx(
-    'bds-feature-two-column',
+    "bds-feature-two-column",
     `bds-feature-two-column--${color}`,
     `bds-feature-two-column--${arrange}`,
-    className
+    className,
   );
 
-  // Render content section with ButtonGroup
-  const renderContent = () => {
-    // Determine content class based on validated button count
-    const contentClass = clsx(
-      'bds-feature-two-column__content',
-      {
-        'bds-feature-two-column__content--multiple': hasButtons && buttonValidation.buttons.length >= 3,
-      }
-    );
-
-    return (
-      <div className={contentClass}>
-        <div className="bds-feature-two-column__text-group">
-          <h2 className="bds-feature-two-column__title">{title}</h2>
-          <p className="bds-feature-two-column__description">{description}</p>
-        </div>
-        {hasButtons && (
-          <ButtonGroup
-            buttons={buttonValidation.buttons}
-            color={buttonColor}
-            forceColor={forceColor}
-            singleButtonVariant="secondary"
-          />
-        )}
-      </div>
-    );
-  };
-
-  // Render media section (for mobile/tablet stacked layout)
-  const renderMedia = () => (
-    <div className="bds-feature-two-column__media">
-      <img
-        src={media.src}
-        alt={media.alt}
-        className="bds-feature-two-column__media-img"
-      />
-    </div>
-  );
+  const contentClass = clsx("bds-feature-two-column__content", {
+    "bds-feature-two-column__content--multiple":
+      hasButtons && buttonValidation.buttons.length >= 3,
+  });
 
   return (
     <section className={rootClasses}>
-      {/* Desktop layout - simple two-column flex with background image */}
-      <div className="bds-feature-two-column__desktop-layout">
+      <div className="bds-feature-two-column__layout">
         <div className="bds-feature-two-column__content-col">
           <div className="bds-feature-two-column__content-grid">
             <div className="bds-feature-two-column__content-wrapper">
-              {renderContent()}
+              <div className={contentClass}>
+                <div className="bds-feature-two-column__text-group">
+                  <h2 className="bds-feature-two-column__title">{title}</h2>
+                  <p className="bds-feature-two-column__description">
+                    {description}
+                  </p>
+                </div>
+                {hasButtons && (
+                  <ButtonGroup
+                    buttons={buttonValidation.buttons}
+                    color={buttonColor}
+                    forceColor={forceColor}
+                    singleButtonVariant="secondary"
+                  />
+                )}
+              </div>
             </div>
           </div>
         </div>
-        <div
-          className="bds-feature-two-column__media-col"
-          style={{ backgroundImage: `url(${media.src})` }}
-          role="img"
-          aria-label={media.alt}
-        />
-      </div>
-
-      {/* Mobile/Tablet layout - stacked with PageGrid */}
-      <div className="bds-feature-two-column__mobile-layout">
-        <PageGrid className="bds-feature-two-column__container" containerType="wide">
-          <PageGrid.Row className="bds-feature-two-column__row">
-            <PageGrid.Col
-              span={{ base: 4, md: 8 }}
-              className="bds-feature-two-column__content-col"
-            >
-              <div className="bds-feature-two-column__content-grid">
-                <div className="bds-feature-two-column__content-wrapper">
-                  {renderContent()}
-                </div>
-              </div>
-            </PageGrid.Col>
-            <PageGrid.Col
-              span={{ base: 4, md: 8 }}
-              className="bds-feature-two-column__media-col--mobile"
-            >
-              {renderMedia()}
-            </PageGrid.Col>
-          </PageGrid.Row>
-        </PageGrid>
+        <div className="bds-feature-two-column__media-col">
+          <div className="bds-feature-two-column__media">
+            <img
+              src={media.src}
+              alt={media.alt}
+              className="bds-feature-two-column__media-img"
+            />
+          </div>
+        </div>
       </div>
     </section>
   );
 };
 
 export default FeatureTwoColumn;
-
