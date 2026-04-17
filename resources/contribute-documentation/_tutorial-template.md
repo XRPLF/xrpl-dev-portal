@@ -19,7 +19,7 @@ By following this tutorial, you should learn how to:
 To complete this tutorial, you should:
 
 - Have a basic understanding of the XRP Ledger.
-- Have an XRP Ledger client library, such as **xrpl.js**, installed.
+- Have an [XRP Ledger client library](../../references/client-libraries.md), such as **xrpl.js**, installed.
 - ***TODO: add and adjust prerequisites as required.***
 
 

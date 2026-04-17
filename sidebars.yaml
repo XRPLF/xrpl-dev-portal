@@ -220,7 +220,7 @@
                 - page: docs/tutorials/defi/dex/create-an-automated-market-maker.md
                 - page: docs/tutorials/defi/dex/add-assets-to-amm-in-javascript.md
                 - page: docs/tutorials/defi/dex/trade-in-the-decentralized-exchange.md
-                - page: docs/tutorials/defi/dex/trade-with-auction-slot-in-javascript.md
+                - page: docs/tutorials/defi/dex/use-amm-auction-slot-for-lower-fees.md
             - group: Set Up Lending
               groupTranslationKey: sidebar.docs.tutorials.defi.setUpLending
               expanded: false

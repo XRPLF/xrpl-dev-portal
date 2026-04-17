@@ -1,4 +1,4 @@
-const BigNumber = require('bignumber.js')
+import BigNumber from 'bignumber.js'
 
 /* Convert a trading fee to a value that can be multiplied
  * by a total to "subtract" the fee from the total.
@@ -50,7 +50,7 @@ function feeDecimal(tFee) {
  *                      theoretical input to the pool, it should be rounded 
  *                      up (ceiling) to preserve the pool's constant product.
  */
-function swapOut(asset_out_bn, pool_in_bn, pool_out_bn, trading_fee) {
+export function swapOut(asset_out_bn, pool_in_bn, pool_out_bn, trading_fee) {
     return ( ( pool_in_bn.multipliedBy(pool_out_bn) ).dividedBy(
                 pool_out_bn.minus(asset_out_bn)
              ).minus(pool_in_bn)
@@ -76,7 +76,7 @@ function solveQuadraticEq(a,b,c) {
  * @param trading_fee int - The trading fee as an integer {0,1000} where 1000
  *                          represents a 1% fee.
  */
-function ammAssetIn(pool_in, lpt_balance, desired_lpt, trading_fee) {
+export function ammAssetIn(pool_in, lpt_balance, desired_lpt, trading_fee) {
     // convert inputs to BigNumber
     const lpTokens = BigNumber(desired_lpt)
     const lptAMMBalance = BigNumber(lpt_balance)
@@ -100,7 +100,7 @@ function ammAssetIn(pool_in, lpt_balance, desired_lpt, trading_fee) {
  * XLS-30 section 4.1.1, but factors in the increase in the minimum bid as a 
  * result of having new LP Tokens issued to you from your deposit.
  */
-function auctionDeposit(old_bid, time_interval, trading_fee, lpt_balance) {
+export function auctionDeposit(old_bid, time_interval, trading_fee, lpt_balance) {
     const tfee_decimal = feeDecimal(trading_fee)
     const lptokens = BigNumber(lpt_balance)
     const b = BigNumber(old_bid)
@@ -133,7 +133,7 @@ function auctionDeposit(old_bid, time_interval, trading_fee, lpt_balance) {
  * 
  * @returns BigNumber - the minimum amount of LP tokens to win the auction slot
  */
-function auctionPrice(old_bid, time_interval, trading_fee, lpt_balance) {
+export function auctionPrice(old_bid, time_interval, trading_fee, lpt_balance) {
     const tfee_decimal = feeDecimal(trading_fee)
     const lptokens = BigNumber(lpt_balance)
     const min_bid = lptokens.multipliedBy(tfee_decimal).dividedBy(25)
@@ -153,11 +153,4 @@ function auctionPrice(old_bid, time_interval, trading_fee, lpt_balance) {
     const rounded_bid = new_bid.plus(lptokens).precision(15, BigNumber.CEILING
                               ).minus(lptokens).precision(15, BigNumber.FLOOR)
     return rounded_bid
-}
-
-module.exports = {
-    "auctionDeposit": auctionDeposit,
-    "auctionPrice": auctionPrice,
-    "ammAssetIn": ammAssetIn,
-    "swapOut": swapOut,
 }

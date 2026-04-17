@@ -1,6 +1,7 @@
 # Docs redirects for moved pages -----------------------------------------------
 # (not associated with a major reorg)
-
+/docs/tutorials/defi/dex/trade-with-auction-slot-in-javascript/:
+    to: /docs/tutorials/defi/dex/use-amm-auction-slot-for-lower-fees/
 /resources/contribute-documentation/tutorial-structure/:
     to: /resources/contribute-documentation/tutorial-guidelines/
 /docs/tutorials/how-tos/use-specialized-payment-types/use-escrows/use-an-escrow-as-a-smart-contract:
