@@ -87,6 +87,15 @@
     padding-left: 20px;
   }
 
+  // [[Source]] renders as its own <p> after the heading (Redocly 0.131.0+).
+  // overflow: hidden creates a block formatting context so the <p> contains
+  // its floated child instead of collapsing to zero height and bleeding into
+  // the next paragraph.
+  p:has(> a[title="Source"]),
+  p:has(> a[title="ソース"]) {
+    overflow: hidden;
+  }
+
   // Make "invisible" headers take up no space either, so we can use them
   // to add additional anchors (e.g. for translated pages)
   h1.invisible,
