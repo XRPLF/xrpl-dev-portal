@@ -280,7 +280,7 @@ xrp-ledger-rpc-tool.html:
 xrp-ledger-toml-checker.html:
     to: /resources/dev-tools/xrp-ledger-toml-checker
 domain-verification-checker.html:
-    to: /resources/dev-tools/domain-verification-checker
+    to: /resources/dev-tools/domain-verifier
 websocket-api-tool.html:
     to: /resources/dev-tools/websocket-api-tool
 xrp-testnet-faucet.html:
@@ -618,7 +618,7 @@ send-payments-using-python.html:
 py-create-accounts-send-xrp.html:
     to: /docs/tutorials/payments/send-xrp/
 py-create-trustline-send-currency.html:
-    to: /docs/tutorials/python/send-payments/create-trustline-send-currency
+    to: /docs/tutorials/payments/create-trust-line-send-currency-in-python/
 py-create-time-based-escrows.html:
     to: /docs/tutorials/payments/send-a-timed-escrow/
 py-mint-and-burn-nfts.html:
@@ -626,11 +626,11 @@ py-mint-and-burn-nfts.html:
 py-transfer-nfts.html:
     to: /docs/tutorials/tokens/nfts/transfer-nfts-py/
 py-broker-sale.html:
-    to: /docs/tutorials/python/nfts/broker-sale
+    to: /docs/tutorials/tokens/nfts/broker-an-nft-sale-py
 py-authorize-minter.html:
-    to: /docs/tutorials/python/nfts/authorize-minter
+    to: /docs/tutorials/tokens/nfts/assign-an-authorized-minter-py
 py-batch-minting.html:
-    to: /docs/tutorials/python/nfts/batch-minting
+    to: /docs/tutorials/tokens/nfts/batch-mint-nfts-py
 build-a-desktop-wallet-in-python.html:
     to: /docs/tutorials/sample-apps/build-a-desktop-wallet-in-python/
 javascript.html:
@@ -652,13 +652,13 @@ send-payments-using-javascript.html:
 create-accounts-send-xrp-using-javascript.html:
     to: /docs/tutorials/payments/send-xrp/
 create-trustline-send-currency-using-javascript.html:
-    to: /docs/tutorials/javascript/send-payments/create-trustline-send-currency
+    to: /docs/tutorials/payments/create-trust-line-send-currency-in-javascript
 create-time-based-escrows-using-javascript.html:
     to: /docs/tutorials/payments/send-a-timed-escrow/
 create-conditional-escrows-using-javascript.html:
     to: /docs/tutorials/payments/send-a-conditional-escrow/
 nfts-using-javascript.html:
-    to: /docs/tutorials/javascript/nfts-using-javascript/
+    to: /docs/tutorials/
 nfts-using-python.html:
     to: /docs/tutorials/
 mint-and-burn-nfts-using-javascript.html:
@@ -738,7 +738,7 @@ use-complex-payment-types.html:
 use-escrows.html:
     to: /docs/tutorials/
 send-a-time-held-escrow.html:
-    to: /docs/tutorials/how-tos/use-specialized-payment-types/use-escrows/send-a-time-held-escrow
+    to: /docs/tutorials/payments/send-a-timed-escrow
 send-a-conditionally-held-escrow.html:
     to: /docs/tutorials/payments/send-a-conditional-escrow/
 cancel-an-expired-escrow.html:
@@ -750,7 +750,7 @@ use-an-escrow-as-a-smart-contract.html:
 use-payment-channels.html:
     to: /docs/tutorials/payments/use-payment-channels/
 open-a-payment-channel-to-enable-an-inter-exchange-network.html:
-    to: /docs/tutorials/how-tos/use-specialized-payment-types/open-a-payment-channel-to-enable-an-inter-exchange-network
+    to: /docs/tutorials/payments/use-payment-channels
 use-checks.html:
     to: /docs/tutorials/how-tos/use-specialized-payment-types/use-checks/use-checks
 send-a-check.html:
@@ -1350,7 +1350,7 @@ tutorial-guidelines.html:
 tutorial-structure.html:
     to: /resources/contribute-documentation/tutorial-guidelines
 report-a-scam.html:
-    to: /contributing/report-a-scam
+    to: /community/report-a-scam
 wallets.html:
     to: /docs/introduction/crypto-wallets
 
