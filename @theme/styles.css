@@ -233,6 +233,7 @@ ul.nav.navbar-nav {
   --footer-title-text-color: var(--color-gray-6);
 
   --menu-item-padding-horizontal: 0px;
+  --menu-item-bg-color-active: var(--color-gray-2);
 
   --md-list-left-padding: 40px;
   --md-list-margin: 0 0 20px 0;
@@ -278,12 +279,15 @@ ul.nav.navbar-nav {
   --bg-color-raised: var(--color-gray-8);
   --button-content-color-link: black;
 
+  --menu-item-bg-color-active: var(--color-gray-8);
+
   --md-table-header-bg-color: var(--color-gray-8);
   --md-table-border-color: var(--color-gray-8);
 
   --bg-color: var(--color-gray-8);
   --code-panel-bg-color: var(--color-blue-7);
   --layer-color-hover: var(--color-gray-9);
+
 
   --code-block-text-color: var(--color-gray-1);
   --code-block-tokens-comment-color: var(--color-gray-4);
