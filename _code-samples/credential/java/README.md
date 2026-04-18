@@ -26,7 +26,7 @@ The first run downloads `xrpl4j` and its transitive dependencies from Maven Cent
 Run any sample by passing its class name as the `exec.mainClass` property:
 
 ```
-mvn exec:java -Dexec.mainClass=ManageCredentials
+mvn exec:java -Dexec.mainClass=com.example.xrpl.ManageCredentials
 ```
 
 ## Related docs

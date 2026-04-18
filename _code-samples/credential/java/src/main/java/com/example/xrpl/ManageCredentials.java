@@ -1,3 +1,5 @@
+package com.example.xrpl;
+
 import com.google.common.primitives.UnsignedInteger;
 import okhttp3.HttpUrl;
 import org.xrpl.xrpl4j.client.XrplClient;
@@ -30,12 +32,6 @@ import org.xrpl.xrpl4j.model.transactions.Transaction;
  * to the subject, have the subject accept it, then delete it.
  *
  * <p>As of 2026, Credentials are enabled on Testnet and Devnet.
- *
- * <p>Required Maven dependencies (xrpl4j 6.0.0 or later):
- * <ul>
- *   <li>org.xrpl:xrpl4j-client</li>
- *   <li>org.xrpl:xrpl4j-core</li>
- * </ul>
  */
 public class ManageCredentials {
 
