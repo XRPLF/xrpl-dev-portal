@@ -60,12 +60,14 @@ An example of the request format:
 
 The request includes the following parameters:
 
-| `Field`       | Type             | Required? | Description |
-|:--------------|:-----------------|:----------|-------------|
-| `account`     | String - [Address][] | No    | Show only LP Tokens held by this liquidity provider. |
-| `amm_account` | String - [Address][] | No    | The address of the AMM's special AccountRoot. (This is the `issuer` of the AMM's LP Tokens.) |
-| `asset`       | Object           | No        | One of the assets of the AMM to look up, as an object with `currency` and `issuer` fields (omit `issuer` for XRP), like [currency amounts][Currency Amount]. |
-| `asset2`      | Object           | No        | The other of the assets of the AMM, as an object with `currency` and `issuer` fields (omit `issuer` for XRP), like [currency amounts][Currency Amount]. |
+| `Field`        | Type                 | Required? | Description |
+|:---------------|:---------------------|:----------|-------------|
+| `account`      | String - [Address][] | No        | Show only LP Tokens held by this liquidity provider. |
+| `amm_account`  | String - [Address][] | No        | The address of the AMM's special AccountRoot. (This is the `issuer` of the AMM's LP Tokens.) |
+| `asset`        | Object               | No        | One of the assets of the AMM to look up, as an object with `currency` and `issuer` fields (omit `issuer` for XRP), like [currency amounts][Currency Amount]. |
+| `asset2`       | Object               | No        | The other of the assets of the AMM, as an object with `currency` and `issuer` fields (omit `issuer` for XRP), like [currency amounts][Currency Amount]. |
+| `ledger_hash`  | String               | No        | The unique hash of the ledger version to use. See [Specifying Ledgers][]. |
+| `ledger_index` | Number or String     | No        | The [ledger index][] of the ledger to use, or a shortcut string to choose a ledger automatically. See [Specifying Ledgers][]. |
 
 You must specify _either_ `amm_account` or both `asset` and `asset2`.
 
