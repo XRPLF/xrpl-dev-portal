@@ -267,7 +267,8 @@ $whats-new-footers: (
 }
 
 // Quick Reference Card
-.page-tutorials .quick-ref-card {
+.page-tutorials .quick-ref-card,
+.page-faucet .quick-ref-card {
   background: rgba($gray-800, 0.7);
   border: 1px solid $gray-700;
   border-left: 3px solid $blue-purple-500;
@@ -294,6 +295,7 @@ $whats-new-footers: (
     letter-spacing: 0.08em;
     color: $blue-purple-300;
     margin-bottom: 0.75rem;
+    text-transform: uppercase;
   }
 
   .quick-ref-group {
@@ -425,7 +427,8 @@ $whats-new-footers: (
 }
 
 // Light mode: Quick Reference Card
-.light .page-tutorials .quick-ref-card {
+.light .page-tutorials .quick-ref-card,
+.light .page-faucet .quick-ref-card {
   background: rgba($white, 0.95);
   border-color: $gray-300;
   border-left: 3px solid $blue-purple-500;

@@ -1,6 +1,7 @@
 import { useThemeHooks } from "@redocly/theme/core/hooks"
 import { Link } from "@redocly/theme/components/Link/Link"
 import { useRef, useState } from "react"
+import CopyableUrl from "../../@theme/components/CopyableUrl"
 
 type TutorialLanguagesMap = Record<string, string[]>
 
@@ -324,39 +325,12 @@ function TutorialSectionBlock({
   )
 }
 
-// Copyable URL component with click-to-copy functionality
-function CopyableUrl({ url, translate }: { url: string; translate: (text: string) => string }) {
-  const [copied, setCopied] = useState(false)
-
-  const handleCopy = async () => {
-    try {
-      await navigator.clipboard.writeText(url)
-      setCopied(true)
-      setTimeout(() => setCopied(false), 2000)
-    } catch (err) {
-      console.error("Failed to copy:", err)
-    }
-  }
-
-  return (
-    <button
-      type="button"
-      className={`quick-ref-value-btn ${copied ? "copied" : ""}`}
-      onClick={handleCopy}
-      title={copied ? translate("Copied!") : translate("Click to copy")}
-    >
-      <code className="quick-ref-value">{url}</code>
-      <span className="copy-icon">{copied ? "✓" : ""}</span>
-    </button>
-  )
-}
-
 // Quick reference card showing public server URLs and faucet link
 function QuickReferenceCard({ translate }: { translate: (text: string) => string }) {
   return (
     <div className="quick-ref-card">
       <div className="quick-ref-section">
-        <span className="quick-ref-label">{translate("PUBLIC SERVERS")}</span>
+        <span className="quick-ref-label">{translate("Public Servers")}</span>
         <div className="quick-ref-group">
           <span className="quick-ref-key"><strong>{translate("Mainnet")}</strong></span>
           <div className="quick-ref-urls">
