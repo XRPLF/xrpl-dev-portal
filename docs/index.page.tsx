@@ -1,424 +1,470 @@
 import * as React from 'react';
-import { useThemeHooks } from '@redocly/theme/core/hooks';
-import { NavList } from "shared/components/nav-list";
-import { Link } from "@redocly/theme/components/Link/Link";
+import HeaderHeroPrimaryMedia from 'shared/sections/HeaderHeroPrimaryMedia/HeaderHeroPrimaryMedia';
+import { CarouselCardList } from 'shared/sections/CarouselCardList/CarouselCardList';
+import { CardsTextGrid } from 'shared/sections/CardsTextGrid/CardsTextGrid';
+import FeaturedVideoHero from 'shared/sections/FeaturedVideoHero/FeaturedVideoHero';
+import { LinkSmallGrid } from 'shared/sections/LinkSmallGrid/LinkSmallGrid';
+import { LinkTextDirectory } from 'shared/sections/LinkTextDirectory/LinkTextDirectory';
+import { FeatureTwoColumn } from 'shared/sections/FeatureTwoColumn/FeatureTwoColumn';
+import { SmallTilesSection } from 'shared/sections/SmallTilesSection/SmallTilesSection';
+import { CardsIconGrid } from 'shared/sections/CardsIconGrid/CardsIconGrid';
+import { StandardCardGroupSection } from 'shared/sections/StandardCardGroupSection/StandardCardGroupSection';
 
 export const frontmatter = {
   seo: {
     title: 'XRP Ledger Documentation & Developer Resources',
-    description: "Explore XRP Ledger documentation and other blockchain developer resources needed to start building and integrating with the ledger.",
-  }
+    description:
+      'Explore XRP Ledger documentation and other blockchain developer resources needed to start building and integrating with the ledger.',
+  },
 };
 
-const recommendedPages = [
-  {
-    description: 'Public API Methods',
-    link: '/docs/references/http-websocket-apis/public-api-methods/',
-  },
-  {
-    description: 'Run a Validator',
-    link: '/docs/infrastructure/configuration/server-modes/run-rippled-as-a-validator/',
-  },
-  {
-    description: 'Reserves',
-    link: '/docs/concepts/accounts/reserves/',
-  },
-  {
-    description: 'Transaction Types',
-    link: '/docs/references/protocol/transactions/types/',
-  }
-];
-
-const useCases = [
-  {
-    title: 'On-Chain Finance',
-    id: 'on-chain-finance-use-cases',
-    imgClass: 'wallet-illustration',
-    subItems: [
-      {
-        description: 'Algorithmic Trading',
-        link: '/docs/use-cases/defi/algorithmic-trading/',
-      },
-      {
-        description: 'List XRP as an Exchange',
-        link: '/docs/use-cases/defi/list-xrp-as-an-exchange/',
-      },
-      {
-        description: 'Payment Types',
-        link: '/docs/concepts/payment-types/',
-      },
-    ],
-  },
-  {
-    title: 'Tokens',
-    id: 'token-use-cases',
-    imgClass: 'token-illustration',
-    subItems: [
-      {
-        description: 'Stablecoin Issuer',
-        link: '/docs/use-cases/tokenization/stablecoin-issuer/',
-      },
-      {
-        description: 'NFT Marketplace',
-        link: '/docs/use-cases/tokenization/nft-mkt-overview/',
-      },
-      {
-        description: 'Digital Artist',
-        link: '/docs/use-cases/tokenization/digital-artist/',
-      },
-    ],
-  },
-  {
-    title: 'Payments',
-    id: 'payments-use-cases',
-    imgClass: 'connections-illustration',
-    subItems: [
-      {
-        description: 'Peer-to-Peer Payments',
-        link: '/docs/use-cases/payments/peer-to-peer-payments-uc/',
-      },
-      {
-        description: 'Cross-Currency Payments',
-        link: '/docs/concepts/payment-types/cross-currency-payments/',
-      },
-      {
-        description: 'Smart Contracts',
-        link: '/docs/use-cases/payments/smart-contracts-uc/',
-      },
-    ],
-  },
-];
-const intermediateVideos = [
-  {
-    src: require('../static/img/backgrounds/docs-advanced-payment-features@2x.png'),
-    title: 'Advanced Payment Features',
-    url: 'https://www.youtube.com/embed/e2Iwsk37LMk?rel=0&amp;showinfo=0&amp;autoplay=1',
-  },
-  {
-    src: require('../static/img/backgrounds/docs-governance@2x.png'),
-    title: 'Governance and the Amendment Process',
-    url: 'https://www.youtube.com/embed/4GbRdanHoR4?rel=0&amp;showinfo=0&amp;autoplay=1',
-  },
-  {
-    src: require('../static/img/backgrounds/docs-sidechains@2x.png'),
-    title: 'Federated Sidechains',
-    url: 'https://www.youtube.com/embed/NhH4LM8NxgY?rel=0&amp;showinfo=0&amp;autoplay=1',
-  },
-];
-const getStartedVideos = [
-  {
-    src: require('../static/img/backgrounds/docs-intro-to-XRP-ledger@2x.png'),
-    title: 'Intro to XRP Ledger',
-    url: 'https://www.youtube.com/embed/sVTybJ3cNyo?rel=0&amp;showinfo=0&amp;autoplay=1',
-  },
-  {
-    src: require('../static/img/backgrounds/docs-accounts@2x.png'),
-    title: 'Accounts',
-    url: 'https://www.youtube.com/embed/eO8jE6PftX8?rel=0&amp;showinfo=0&amp;autoplay=1',
-  },
-  {
-    src: require('../static/img/backgrounds/docs-decentralized-exchange@2x.png'),
-    title: 'Decentralized Exchange',
-    url: 'https://www.youtube.com/embed/VWNrHBDfXvA?rel=0&amp;showinfo=0&amp;autoplay=1',
-  },
-  {
-    src: require('../static/img/backgrounds/docs-tokenization@2x.png'),
-    title: 'Tokenization',
-    url: 'https://www.youtube.com/embed/Oj4cWOiWf4A?rel=0&amp;showinfo=0&amp;autoplay=1',
-  },
-];
-
-const devTools = [
-  {
-    title: 'XRP Faucets',
-    link: '/resources/dev-tools/xrp-faucets',
-    description: 'Get credentials and test-XRP for XRP Ledger Testnet or Devnet.',
-  },
-  {
-    title: 'WebSocket Tool',
-    link: '/resources/dev-tools/websocket-api-tool',
-    description: 'Send sample requests and get responses from the rippled API.',
-  },
-  {
-    title: 'XRP Ledger Explorer',
-    link: 'https://livenet.xrpl.org',
-    description:
-      'View validations of new ledger versions in real-time, chart the location of servers in the XRP Ledger.',
-  },
-  {
-    title: 'Transaction Sender',
-    link: '/resources/dev-tools/tx-sender',
-    description:
-      'Test how your code handles various XRP Ledger transactions by sending them over the Testnet to the address.',
-  },
-];
-
-function UseCasesCard(props: {
-  useCase: {
-    id: string;
-    title: string;
-    imgClass: string;
-    subItems: { description: string; link: string }[];
-  };
-}) {
-  const { useCase } = props;
-  const { useTranslate } = useThemeHooks();
-  const { translate } = useTranslate();
-  return (
-    <div className="col">
-      <img className={'use-cases-img img-fluid mb-2 shadow ' + useCase.imgClass} alt={useCase.title} id={useCase.id} />
-      <h5 className="mt-4">{translate(useCase.title)}</h5>
-      <NavList pages={useCase.subItems} />
-    </div>
-  );
-}
-
-function FlatCard(props: { href: string; title: string; description: string; linkText: string; imgClass }) {
-  const { title, description, linkText, href, imgClass } = props;
-  return (
-    <Link to={href} className="card flat-card float-up-on-hover">
-      <img className={'mb-2 ' + imgClass} alt={title} />
-      <h5 className="row">
-        <div className="nav-link">{title}</div>
-      </h5>
-      <p className="row faded-text flat-card-padding">{description}</p>
-      <div className="col align-button-on-bottom">
-        <div className="btn btn-primary btn-arrow" id={href + '-button'}>
-          {linkText}
-        </div>
-      </div>
-    </Link>
-  );
-}
-
-function VideoCard(props: { url: string; title: string; src: string }) {
-  const { url, title, src } = props;
-  return (
-    <div className="col float-up-on-hover">
-      <a href={url} id="playvideo" className="btn1" data-url={url}>
-        <img alt={title} className="get-started-img video-image" id={title} src={src} />
-        <h6 className="pt-3">{title}</h6>
-      </a>
-    </div>
-  );
-}
-
-function DevToolCard(props: { link: string; title: string; description: string }) {
-  const { link, title, description } = props;
-  return (
-    <Link to={link} className="col dev-tools-link">
-      <h6 className="btn-arrow">{title}</h6>
-      <p> {description}</p>
-    </Link>
-  );
-}
-
-function PrimaryButton(props: { href: string; text: string; isArrowUp: boolean }) {
-  const { href, text, isArrowUp } = props;
-  return (
-    <Link className={`btn btn-primary ${isArrowUp ? 'btn-arrow-out' : 'btn-arrow'}`} id={href + '-button'} to={href}>
-      {text}
-    </Link>
-  );
-}
-
 export default function Docs() {
-  const { useTranslate } = useThemeHooks();
-  const { translate } = useTranslate();
-
   return (
-    <div className="landing page-docs page-docs-index landing-builtin-bg overflow-hidden styled-page">
-      <div>
-        <section className="text-center title-space">
-          <div className="col-lg-9 mx-auto text-center">
-            <div className="d-flex flex-column-reverse">
-              <h1>{translate('Documentation')}</h1>
-              <h6 className="eyebrow mb-3">{translate('XRP Ledger Developer Resources')}</h6>
-            </div>
-          </div>
-        </section>
+    <div className="landing page-docs page-docs-index">
 
-        <section className="container-new ">
-          <div className="nav card-grid flat-card-grid card-grid-3xN">
-            <div className="col">
-              <FlatCard
-                href="/docs/concepts/"
-                title={translate('Concepts')}
-                description={translate('Learn the "what" and the "why" behind fundamental aspects of the XRP Ledger.')}
-                linkText={translate('Read the Docs')}
-                imgClass="concepts-doc-illustration"
-              />
-            </div>
-            <div className="col">
-              <FlatCard
-                href="/docs/tutorials/"
-                title={translate('Tutorials')}
-                description={translate('Get step-by-step guidance to perform common tasks with the XRP Ledger.')}
-                linkText={translate('View Tutorials')}
-                imgClass="tutorial-illustration"
-              />
-            </div>
-            <div className="col">
-              <FlatCard
-                href="/docs/references/"
-                title={translate('References')}
-                description={translate(
-                  'Look up reference documentation for the XRP Ledger protocol, API methods, and more.'
-                )}
-                linkText={translate('View References')}
-                imgClass="ref-book-illustration"
-              />
-            </div>
-          </div>
-        </section>
-        <section className="container-new">
-          <h4 className="pb-4">{translate('Use Cases')}</h4>
-          <div className="card-grid card-grid-3xN use-cases">
-            {useCases.map(useCase => (
-              <UseCasesCard useCase={useCase} key={useCase.id} />
-            ))}
-          </div>
-        </section>
-        <section className="container-new ">
-          <h4 className="pb-4">{translate('Getting Started')}</h4>
-          <div className="card-grid card-grid-2xN quickstart-card">
-            <div className="col">
-              <Link to="/docs/introduction/" className="card float-up-on-hover">
-                <h5 className="mt-7">{translate('Introduction to the XRP Ledger')}</h5>
-                <p className="mb-8 mt-4">{translate('An introduction to fundamental aspects of the XRP Ledger.')}</p>
-                <div className="dg-lg-block mb-3">
-                  <div className="btn btn-primary btn-arrow get-started-button">{translate('Introduction')}</div>
-                </div>
-                <img alt="quick-start" id="quick-start-img" className="quickstart-image" />
-              </Link>
-            </div>
-            <div className="col">
-              <div className="card-grid card-grid-2xN video-grid">
-                {getStartedVideos.map(video => (
-                  <VideoCard url={video.url} title={translate(video.title)} src={video.src} key={video.url} />
-                ))}
-              </div>
-              <div className="align-button-on-bottom">
-                <PrimaryButton
-                  href="https://www.youtube.com/playlist?list=PLJQ55Tj1hIVZtJ_JdTvSum2qMTsedWkNi"
-                  text={translate('Watch Full Series')}
-                  isArrowUp={true}
-                />
-              </div>
-            </div>
-          </div>
-        </section>
-        <section className="container-new ">
-          <div className="d-flex flex-column-reverse col-sm-8 p-0">
-            <h3 className="h4 h2-sm">{translate('Interact with the XRP Ledger in a language of your choice')}</h3>
-            <h6 className="eyebrow mb-3">{translate('Explore SDKs')}</h6>
-          </div>
-          <div className="card-grid card-grid-2xN">
-            <div className="col">
-              <div className="card-grid langs-cards card-grid-2xN mt-10" id="langs-cards">
-                <div className="col langs">
-                  <Link to="/docs/tutorials/javascript/">
-                    <img alt="Javascript Logo" src={require('../static/img/logos/javascript.svg')} className="circled-logo" />
-                    <h5 className="btn-arrow">{translate('Javascript')}</h5>
-                  </Link>
-                </div>
-                <div className="col langs">
-                  <Link to="/docs/tutorials/python/">
-                    <img alt="Python Logo" src={require('../static/img/logos/python.svg')} className="circled-logo" />
-                    <h5 className="btn-arrow">{translate('Python')}</h5>
-                  </Link>
-                </div>
-                <div className="col langs">
-                  <Link to="/docs/tutorials/java/build-apps/get-started/">
-                    <img alt="Java Logo" src={require('../static/img/logos/java.svg')} className="circled-logo" />
-                    <h5 className="btn-arrow">{translate('Java')}</h5>
-                  </Link>
-                </div>
-                <div className="col langs">
-                  <Link to="/docs/tutorials/go/">
-                    <img
-                      alt="Go Logo"
-                      src={require("../static/img/logos/golang.svg")}
-                      className="circled-logo"
-                    />
-                    <h5 className="btn-arrow">{translate("GoLang")}</h5>
-                  </Link>
-                </div>
-              </div>
-            </div>
-            <div className="col center-image">
-              <img className="img-fluid sdk-img" />
-            </div>
-          </div>
-        </section>
-        <section className="container-new ">
-          <h4 className="pb-4">{translate('Intermediate Learning Sources')}</h4>
-          <div className="card-grid card-grid-3xN">
-            {intermediateVideos.map(video => (
-              <VideoCard url={video.url} title={translate(video.title)} src={video.src} key={video.url} />
-            ))}
-          </div>
-        </section>
-        <section className="container-new ">
-          <div className="card-grid card-grid-2xN">
-            <div className="col d-flex align-items-center justify-content-center">
-              <img className="dev-tools-img" />
-            </div>
-            <div className="col explore-links">
-              <div className="d-flex flex-column-reverse w-100">
-                <h4 className="mb-10">{translate('Explore, Test, Verify')}</h4>
-                <h6 className="mb-3">{translate('Explore Dev Tools')}</h6>
-              </div>
-              <p className="mb-20">
-                {translate(
-                  'Use these web-based tools to assist during all stages of development, from getting your first payment to testing your implementation for best practices.'
-                )}
-              </p>
-              <div className="card-grid card-grid-2xN">
-                {devTools.map(card => (
-                  <DevToolCard
-                    link={card.link}
-                    title={translate(card.title)}
-                    description={translate(card.description)}
-                    key={card.link}
-                  />
-                ))}
-              </div>
-              <PrimaryButton href="/resources/dev-tools" text={translate('View All tools')} isArrowUp={false} />
-            </div>
-          </div>
-        </section>
-        <section className="container-new " id="docs-browse-by">
-          <div className="row card-grid card-grid-2xN">
-            <div className="col" id="popular-topics">
-              <h2 className="h4">{translate('Browse By Recommended Pages')}</h2>
-              <NavList pages={recommendedPages} />
-            </div>
-            <div className="col">
-              <div className="card cta-card p-8-sm p-10-until-sm br-8">
-                <div className="z-index-1 position-relative">
-                  <h2 className="h4 mb-8-sm mb-10-until-sm">{translate('Get Free Test XRP')}</h2>
-                  <p className="mb-10">
-                    {translate(
-                      'Connect to the XRP Ledger Testnet network to develop and test your apps built on the XRP Ledger, without risking real money or impacting production XRP Ledger users.'
-                    )}
-                  </p>
-                  <Link className="btn btn-primary btn-arrow" to="/resources/dev-tools/xrp-faucets/">
-                    {translate('Generate Testnet Credentials')}
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-        {/* full docs index isn't ported to Redocly
-        <section className="container-new">
-          <a href="/docs/full-index" className="btn-arrow arrow-purple documentation-index mr-auto">
-            {translate('See full documentation index')}
-          </a>
-        </section>
-        */}
-      </div>
+      {/* 1. Hero */}
+      <HeaderHeroPrimaryMedia
+        headline="XRP Ledger (XRPL) Documentation"
+        subtitle="Explore XRPL documentation with our essential guide for developers and admins who want to start building and integrating with the XRP Ledger."
+        media={{ type: 'image', src: require('../static/img/bds-2026/HeroMedia.jpg'), alt: 'XRPL Documentation' }}
+      />
+
+      {/* 2. Get Started Carousel */}
+      <CarouselCardList
+        variant="green"
+        buttonVariant="green"
+        heading="Get Started: XRPL Developer & Admin Resources"
+        description="Learn your way. Read docs, watch videos, or get hands-on with code samples. Explore different ways to learn on the XRP Ledger."
+        cards={[
+          {
+            icon: '',
+            title: 'Ready-to-Use Code Samples',
+            description:
+              'Run complete code snippets to understand XRPL integration in seconds.',
+            href: '/docs/tutorials/',
+          },
+          {
+            icon: '',
+            title: 'Launch Your First Project',
+            description:
+              'Explore funding and development opportunities for your project on the XRPL.',
+            href: '/resources/grant-funding/',
+          },
+          {
+            icon: '',
+            title: 'Step-by-Step Tutorials',
+            description:
+              'Follow guided walkthroughs to master XRPL fundamentals and industry best practices.',
+            href: '/docs/tutorials/',
+          },
+        ]}
+      />
+
+      {/* 3. Core Concepts Text Grid */}
+      <CardsTextGrid
+        heading="Dig Into Core Concepts & Tools"
+        cards={[
+          {
+            heading: 'XRPL Fundamentals',
+            description: (
+              <>
+                Discover the basics of the XRPL by learning about accounts,
+                transactions, and the ledger structure.{' '}<br/><br/>
+                <a href="/docs/concepts/">Read More</a>
+              </>
+            ),
+          },
+          {
+            heading: 'Advanced XRPL Topics: Go Deeper',
+            description: (
+              <>
+                Implement real-world solutions by combining XRPL primitives for
+                lending, token issuance, DEX trading, and more.{' '}<br/><br/>
+                <a href="/docs/use-cases/">Read More</a>
+              </>
+            ),
+          },
+        ]}
+      />
+
+      {/* 4. Featured Video — Advanced Payment Features */}
+      <FeaturedVideoHero
+        headline="Advanced Payment Features"
+        subtitle="Master sophisticated movement of value through features such as escrows, checks, or payment channels."
+        video={{
+          source: {
+            type: 'embed',
+            embedUrl: 'https://www.youtube.com/embed/e2Iwsk37LMk',
+          },
+        }}
+        links={[
+          {
+            label: 'Watch Now',
+            href: 'https://youtube.com/playlist?list=PLJQ55Tj1hIVZtJ_JdTvSum2qMTsedWkNi',
+          },
+        ]}
+      />
+
+      {/* 5. Featured Video — Governance */}
+      <FeaturedVideoHero
+        headline="Governance and the Amendment Process"
+        subtitle="Understand how the decentralized network evolves through validator voting and how new features are activated."
+        video={{
+          source: {
+            type: 'embed',
+            embedUrl: 'https://www.youtube.com/embed/4GbRdanHoR4',
+          },
+        }}
+        links={[
+          {
+            label: 'Watch Now',
+            href: 'https://youtube.com/playlist?list=PLJQ55Tj1hIVZtJ_JdTvSum2qMTsedWkNi',
+          },
+        ]}
+      />
+
+      {/* 6. Developer Reference Links */}
+      <LinkSmallGrid
+        variant="gray"
+        heading="Developers"
+        description="Master the Protocol: Essential References"
+        links={[
+          {
+            label: 'Transaction Types',
+            href: '/docs/references/protocol/transactions/types',
+          },
+          {
+            label: 'Account Methods',
+            href: '/docs/references/http-websocket-apis/public-api-methods/account-methods',
+          },
+          {
+            label: 'Ledger Entry Types',
+            href: '/docs/references/protocol/ledger-data/ledger-entry-types',
+          },
+          {
+            label: 'Transaction Methods',
+            href: '/docs/references/http-websocket-apis/public-api-methods/transaction-methods',
+          },
+          {
+            label: 'Basic Data Types',
+            href: '/docs/references/protocol/data-types/basic-data-types',
+          },
+          {
+            label: 'Path and Orderbook Methods',
+            href: '/docs/references/http-websocket-apis/public-api-methods/path-and-order-book-methods',
+          },
+        ]}
+      />
+
+      {/* 7. Server Admin Reference Links */}
+      <LinkSmallGrid
+        variant="gray"
+        heading="Server Admins"
+        description="Master the Protocol: Essential References"
+        links={[
+          {
+            label: 'Commandline Usage',
+            href: '/docs/infrastructure/commandline-usage',
+          },
+          {
+            label: 'Admin API Methods',
+            href: '/docs/references/http-websocket-apis/admin-api-methods',
+          },
+        ]}
+      />
+
+      {/* 8. Dev Tools Directory */}
+      <LinkTextDirectory
+        heading="Tools to Test & Deploy"
+        cards={[
+          {
+            heading: 'Get Test XRP (Faucets)',
+            description:
+              'Get credentials and test-XRP for XRP Ledger Testnet or Devnet.',
+            buttons: [
+              { label: 'Access Here', href: '/resources/dev-tools/xrp-faucets' },
+            ],
+          },
+          {
+            heading: 'Send Test Transactions',
+            description:
+              'Test how your code handles various XRP Ledger transactions by sending them over the Testnet to the address.',
+            buttons: [
+              { label: 'Access Here', href: '/resources/dev-tools/tx-sender' },
+            ],
+          },
+          {
+            heading: 'Explore WebSocket API',
+            description:
+              'Send sample requests and get responses from the rippled API.',
+            buttons: [
+              {
+                label: 'Access Here',
+                href: '/resources/dev-tools/websocket-api-tool',
+              },
+            ],
+          },
+          {
+            heading: 'Monitor the XRP Ledger',
+            description:
+              'View validations of new ledger versions in real-time, chart the location of servers in the XRP Ledger.',
+            buttons: [
+              { label: 'Access Here', href: 'https://livenet.xrpl.org/' },
+            ],
+          },
+        ]}
+      />
+
+      {/* 9a. Use Cases — Payments */}
+      <FeatureTwoColumn
+        color="lilac"
+        arrange="left"
+        title="Payments"
+        description=""
+        media={{ src: require('../static/img/bds-2026/FeatureMedia-1.jpg'), alt: 'Payments' }}
+        links={[
+          {
+            label: 'Peer-to-Peer Payments',
+            href: '/docs/use-cases/payments/peer-to-peer-payments-uc',
+          },
+          {
+            label: 'Cross-Currency Payments',
+            href: '/docs/concepts/payment-types/cross-currency-payments',
+          },
+          {
+            label: 'Smart Contracts',
+            href: '/docs/use-cases/payments/smart-contracts-uc',
+          },
+        ]}
+      />
+
+      {/* 9b. Use Cases — Tokens */}
+      <FeatureTwoColumn
+        color="lilac"
+        arrange="right"
+        title="Tokens"
+        description=""
+        media={{ src: require('../static/img/bds-2026/FeatureMedia-2.jpg'), alt: 'Tokens' }}
+        links={[
+          {
+            label: 'Stablecoin Issuer',
+            href: '/docs/use-cases/tokenization/stablecoin-issuer',
+          },
+          {
+            label: 'NFT Marketplace',
+            href: '/docs/use-cases/tokenization/nft-mkt-overview',
+          },
+          {
+            label: 'Digital Artist',
+            href: '/docs/use-cases/tokenization/digital-artist',
+          },
+        ]}
+      />
+
+      {/* 9c. Use Cases — On-Chain Finance */}
+      <FeatureTwoColumn
+        color="lilac"
+        arrange="left"
+        title="On-Chain Finance"
+        description=""
+        media={{ src: require('../static/img/bds-2026/FeatureMedia-3.jpg'), alt: 'On-Chain Finance' }}
+        links={[
+          {
+            label: 'List XRP as an Exchange',
+            href: '/docs/use-cases/defi/list-xrp-as-an-exchange',
+          },
+          {
+            label: 'Trade with an Auction Slot',
+            href: '/docs/tutorials/javascript/amm/trade-with-auction-slot',
+          },
+        ]}
+      />
+
+      {/* 9d. Use Cases — Compliance Features */}
+      <FeatureTwoColumn
+        color="lilac"
+        arrange="right"
+        title="Compliance Features"
+        description=""
+        media={{ src: require('../static/img/bds-2026/FeatureMedia.jpg'), alt: 'Compliance Features' }}
+        links={[
+          {
+            label: 'Build a Credential Issuing Service',
+            href: '/docs/tutorials/javascript/build-apps/credential-issuing-service',
+          },
+          {
+            label: 'Create a Permissioned Domain',
+            href: '/docs/tutorials/javascript/compliance/create-permissioned-domains',
+          },
+        ]}
+      />
+
+      {/* 10. SDK Tiles */}
+      <SmallTilesSection
+        headline="Build with SDKs"
+        cardVariant="neutral"
+        cards={[
+          {
+            icon: require('../static/img/logos/javascript.svg'),
+            iconAlt: 'JavaScript',
+            label: 'Get Started with Javascript',
+            href: '/docs/tutorials/javascript',
+          },
+          {
+            icon: require('../static/img/logos/python.svg'),
+            iconAlt: 'Python',
+            label: 'Python',
+            href: '/docs/tutorials/python',
+          },
+          {
+            icon: require('../static/img/logos/java.svg'),
+            iconAlt: 'Java',
+            label: 'Java',
+            href: '/docs/tutorials/java/build-apps/get-started',
+          },
+          {
+            icon: require('../static/img/logos/golang.svg'),
+            iconAlt: 'Go',
+            label: 'Go',
+            href: '/docs/tutorials/go',
+          },
+          {
+            icon: '',
+            iconAlt: 'PHP',
+            label: 'PHP',
+            href: '/docs/tutorials/php',
+          },
+        ]}
+      />
+
+      {/* 11. Infrastructure Cards */}
+      <CardsIconGrid
+        heading="XRPL Infrastructure: Running a Server"
+        cards={[
+          {
+            icon: '',
+            iconAlt: 'Server',
+            heading: 'Install Your XRPL Server: Rippled & Clio',
+            description: (
+              <>
+                Take ownership of your connection to the blockchain with a core
+                server that can submit transactions, read balances, and store a
+                complete copy of the ledger data.{' '}
+                <a href="/docs/infrastructure/installation">Learn More</a>
+              </>
+            ),
+          },
+          {
+            icon: '',
+            iconAlt: 'Network',
+            heading: 'Node Configuration',
+            description: (
+              <>
+                Customize your server configuration for your use case, including
+                data retention, network connectivity, and performance tuning.{' '}
+                <a href="/docs/infrastructure/configuration">Learn More</a>
+              </>
+            ),
+          },
+          {
+            icon: '',
+            iconAlt: 'Tools',
+            heading: 'Troubleshooting Your Node',
+            description: (
+              <>
+                Diagnose and solve problems with your server to maximize uptime
+                and reliability.{' '}
+                <a href="/docs/infrastructure/troubleshooting">Learn More</a>
+              </>
+            ),
+          },
+        ]}
+      />
+
+      {/* 12. Contribute Cards */}
+      <StandardCardGroupSection
+        headline="Get Involved: Contribute to the XRP Ledger"
+        description=""
+        variant="neutral"
+        cards={[
+          {
+            headline: 'Contribute to the Protocol',
+            callsToAction: [
+              { children: 'Contribute Now', href: '/resources/contribute-code' },
+            ],
+            children:
+              'Have you identified gaps, edge cases, or improvements through real-world use? Contribute code or proposals and help shape the future of XRPL at the protocol level.',
+          },
+          {
+            headline: 'Contribute to Docs',
+            callsToAction: [
+              {
+                children: 'Contribute Now',
+                href: '/resources/contribute-documentation',
+              },
+            ],
+            children: (
+              <>
+                Contribute to{' '}
+                <a href="https://xrpl.org/" target="_blank" rel="noreferrer">
+                  XRPL.org
+                </a>
+                , the go-to resource for all things XRP Ledger.
+              </>
+            ),
+          },
+          {
+            headline: 'Contribute a Blog Post',
+            callsToAction: [
+              {
+                children: 'Contribute Now',
+                href: '/resources/contribute-blog',
+              },
+            ],
+            children:
+              'Share how you solved a real-world problem using the XRP Ledger, including your architecture decisions, workflows, tradeoffs, and lessons learned. Contribute a blog post to help other developers build faster.',
+          },
+        ]}
+      />
+
+      {/* 13. Continuous Learning Cards */}
+      <StandardCardGroupSection
+        headline="Continuous Learning: Additional XRPL Resources"
+        description=""
+        variant="neutral"
+        cards={[
+          {
+            headline: 'XRPL Learning Portal',
+            callsToAction: [
+              { children: 'Learn More', href: 'https://learn.xrpl.org/' },
+            ],
+            children:
+              'From blockchain fundamentals to building on the XRPL, create your own learning journey and progress at your own pace.',
+          },
+          {
+            headline: 'Aquarium Residency Program',
+            callsToAction: [
+              {
+                children: 'Learn More',
+                href: 'https://www.xrpl-commons.org/residency',
+              },
+            ],
+            children:
+              'A hands-on residency program helping teams build, test, and launch real-world solutions on the XRP Ledger.',
+          },
+          {
+            headline: 'Developer Community Forum',
+            callsToAction: [
+              {
+                children: 'Learn More',
+                href: 'https://discord.gg/sfX3ERAMjH',
+              },
+            ],
+            children:
+              'Join the XRPL developer community on Discord! Ask questions, share tips, and collaborate with builders turning ideas into real-world projects.',
+          },
+        ]}
+      />
     </div>
   );
 }
