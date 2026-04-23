@@ -27,7 +27,6 @@ import org.xrpl.xrpl4j.model.transactions.CredentialAccept;
 import org.xrpl.xrpl4j.model.transactions.CredentialCreate;
 import org.xrpl.xrpl4j.model.transactions.CredentialDelete;
 import org.xrpl.xrpl4j.model.transactions.CredentialType;
-import org.xrpl.xrpl4j.model.transactions.Hash256;
 import org.xrpl.xrpl4j.model.transactions.Transaction;
 import org.xrpl.xrpl4j.model.transactions.TransactionResultCodes;
 import org.xrpl.xrpl4j.model.transactions.XrpCurrencyAmount;
@@ -51,6 +50,8 @@ public class ManageCredentials {
     try {
       run();
     } catch (Exception e) {
+      // Unwrap CompletionException so async failures print the same clean message
+      // as sync failures. CompletableFuture.join() wraps exceptions in CompletionException
       Throwable cause = (e instanceof CompletionException && e.getCause() != null)
         ? e.getCause() : e;
       System.err.println("Error: " + cause.getMessage());
@@ -59,10 +60,11 @@ public class ManageCredentials {
   }
 
   private static void run() {
-    // ----- Connect to the testnet network and fund accounts -----
-    XrplClient xrplClient = new XrplClient(NETWORK_URL);
 
-    System.out.println("\n=== Funding issuer and subject accounts from the Testnet faucet ===\n");
+    // ----- Connect to Testnet and fund accounts -----
+    XrplClient xrplClient = new XrplClient(NETWORK_URL);
+    System.out.println("\n=== Funding issuer and subject accounts on Testnet ===\n");
+
     CompletableFuture<KeyPair> issuerFuture = CompletableFuture.supplyAsync(
       () -> createAndFundWallet(xrplClient));
     CompletableFuture<KeyPair> subjectFuture = CompletableFuture.supplyAsync(
@@ -76,8 +78,9 @@ public class ManageCredentials {
     System.out.println("Issuer:  " + issuerAddress);
     System.out.println("Subject: " + subjectAddress);
 
-    // ----- Issue credential -----
+    // ----- Prepare CredentialCreate transaction -----
     System.out.println("\n=== Preparing CredentialCreate transaction ===\n");
+
     CredentialCreate createTx = CredentialCreate.builder()
       .account(issuerAddress)
       .subject(subjectAddress)
@@ -89,13 +92,17 @@ public class ManageCredentials {
       .build();
     printTransactionJson(createTx);
 
+    // ----- Sign, submit, and wait for CredentialCreate validation -----
     System.out.println("\n=== Submitting CredentialCreate transaction ===\n");
+
     TransactionResult<CredentialCreate> createResult = signSubmitAndWait(
       xrplClient, issuer, createTx, CredentialCreate.class);
-    printFinalResult("Credential issued", createResult.hash());
 
-    // ----- Subject accepts credential -----
+    requireSuccess(createResult);
+
+    // ----- Prepare CredentialAccept transaction -----
     System.out.println("\n=== Preparing CredentialAccept transaction ===\n");
+
     CredentialAccept acceptTx = CredentialAccept.builder()
       .account(subjectAddress)
       .issuer(issuerAddress)
@@ -107,13 +114,17 @@ public class ManageCredentials {
       .build();
     printTransactionJson(acceptTx);
 
+    // ----- Sign, Submit, and wait for CredentialAccept validation -----
     System.out.println("\n=== Submitting CredentialAccept transaction ===\n");
+
     TransactionResult<CredentialAccept> acceptResult = signSubmitAndWait(
       xrplClient, subject, acceptTx, CredentialAccept.class);
-    printFinalResult("Credential accepted", acceptResult.hash());
 
-    // ----- Subject deletes credential -----
+    requireSuccess(acceptResult);
+
+    // ----- Prepare CredentialDelete transaction -----
     System.out.println("\n=== Preparing CredentialDelete transaction ===\n");
+
     CredentialDelete deleteTx = CredentialDelete.builder()
       .account(subjectAddress)
       .issuer(issuerAddress)
@@ -125,10 +136,13 @@ public class ManageCredentials {
       .build();
     printTransactionJson(deleteTx);
 
+    // ----- Sign, Submit, and wait for CredentialDelete validation -----
     System.out.println("\n=== Submitting CredentialDelete transaction ===\n");
+
     TransactionResult<CredentialDelete> deleteResult = signSubmitAndWait(
       xrplClient, subject, deleteTx, CredentialDelete.class);
-    printFinalResult("Credential deleted", deleteResult.hash());
+
+    requireSuccess(deleteResult);
   }
 
   // ===== Helper functions =====
@@ -153,7 +167,7 @@ public class ManageCredentials {
           Thread.sleep(1_000L);
         } catch (InterruptedException e) {
           Thread.currentThread().interrupt();
-          throw new RuntimeException("Funding interrupted for " + address, e);
+          throw new RuntimeException("Account polling interrupted for " + address + ". " + e.getMessage(), e);
         }
       }
     }
@@ -170,7 +184,7 @@ public class ManageCredentials {
         .build());
       return info.accountData().sequence();
     } catch (JsonRpcClientErrorException e) {
-      throw new RuntimeException("Failed to fetch account sequence for " + address, e);
+      throw new RuntimeException("Failed to fetch account sequence for " + address + ". " + e.getMessage(), e);
     }
   }
 
@@ -180,7 +194,7 @@ public class ManageCredentials {
     try {
       return FeeUtils.computeNetworkFees(xrplClient.fee()).recommendedFee();
     } catch (JsonRpcClientErrorException e) {
-      throw new RuntimeException("Failed to fetch network fee", e);
+      throw new RuntimeException("Failed to fetch network fee. " + e.getMessage(), e);
     }
   }
 
@@ -195,7 +209,7 @@ public class ManageCredentials {
         .unsignedIntegerValue();
       return validatedLedger.plus(UnsignedInteger.valueOf(20));
     } catch (JsonRpcClientErrorException e) {
-      throw new RuntimeException("Failed to compute LastLedgerSequence", e);
+      throw new RuntimeException("Failed to compute LastLedgerSequence. " + e.getMessage(), e);
     }
   }
 
@@ -204,7 +218,7 @@ public class ManageCredentials {
     try {
       System.out.println(ObjectMapperFactory.create().writerWithDefaultPrettyPrinter().writeValueAsString(tx));
     } catch (JsonProcessingException e) {
-      throw new RuntimeException("Failed to serialize transaction JSON", e);
+      throw new RuntimeException("Failed to serialize transaction JSON. " + e.getMessage(), e);
     }
   }
 
@@ -228,7 +242,7 @@ public class ManageCredentials {
 
       if (!TransactionResultCodes.TES_SUCCESS.equals(submit.engineResult())) {
         throw new IllegalStateException(
-          "Submit rejected: " + submit.engineResult() + " — " + submit.engineResultMessage());
+          "Submission rejected. " + submit.engineResult() + " — " + submit.engineResultMessage());
       }
 
       while (true) {
@@ -253,19 +267,26 @@ public class ManageCredentials {
           .unsignedIntegerValue();
         if (currentLedger.compareTo(lastLedgerSequence) > 0) {
           throw new IllegalStateException("Transaction expired. Current ledger " + currentLedger
-            + " passed LastLedgerSequence " + lastLedgerSequence + ".");
+            + " passed LastLedgerSequence " + lastLedgerSequence);
         }
       }
     } catch (InterruptedException e) {
       Thread.currentThread().interrupt();
-      throw new RuntimeException("Transaction wait interrupted", e);
+      throw new RuntimeException("Transaction polling interrupted. " + e.getMessage(), e);
     } catch (JsonRpcClientErrorException | JsonProcessingException e) {
-      throw new RuntimeException("Transaction processing failed: " + e.getMessage(), e);
+      throw new RuntimeException("Transaction processing failed. " + e.getMessage(), e);
     }
   }
 
-  private static void printFinalResult(String label, Hash256 hash) {
-    System.out.println(label + " successfully.");
-    System.out.println("Explorer: " + EXPLORER_BASE + hash);
+  // Checks for a tesSUCCESS result code. If true, prints an explorer
+  // link. Otherwise, throws an error.
+  private static void requireSuccess(TransactionResult<?> result) {
+    String code = result.metadata().get().transactionResult();
+    String txType = result.transaction().transactionType().value();
+    if (!TransactionResultCodes.TES_SUCCESS.equals(code)) {
+      throw new IllegalStateException(txType + " failed with error code " + code);
+    }
+    System.out.println(txType + " succeeded!");
+    System.out.println("Explorer: " + EXPLORER_BASE + result.hash());
   }
 }
