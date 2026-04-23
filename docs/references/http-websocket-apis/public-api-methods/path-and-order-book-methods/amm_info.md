@@ -32,7 +32,8 @@ An example of the request format:
     "asset2": {
       "currency": "TST",
       "issuer": "rP9jPyP5kyvFRb6ZiRghAGw5u8SGAmU4bd"
-    }
+    },
+    "ledger_index": "validated"
 }
 ```
 {% /tab %}
@@ -48,7 +49,8 @@ An example of the request format:
       "asset2": {
         "currency": "TST",
         "issuer": "rP9jPyP5kyvFRb6ZiRghAGw5u8SGAmU4bd"
-      }
+      },
+      "ledger_index": "validated"
     }]
 }
 ```
