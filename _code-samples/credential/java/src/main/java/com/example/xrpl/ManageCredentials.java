@@ -33,6 +33,7 @@ import org.xrpl.xrpl4j.model.transactions.TransactionResultCodes;
 import org.xrpl.xrpl4j.model.transactions.XrpCurrencyAmount;
 
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionException;
 
 /**
  * This code sample demonstrates the Credential lifecycle on the XRPL.
@@ -50,32 +51,22 @@ public class ManageCredentials {
     try {
       run();
     } catch (Exception e) {
-      System.err.println("Error: " + e.getMessage());
+      Throwable cause = (e instanceof CompletionException && e.getCause() != null)
+        ? e.getCause() : e;
+      System.err.println("Error: " + cause.getMessage());
       System.exit(1);
     }
   }
 
-  private static void run() throws Exception {
+  private static void run() {
     // ----- Connect to the testnet network and fund accounts -----
     XrplClient xrplClient = new XrplClient(NETWORK_URL);
 
     System.out.println("\n=== Funding issuer and subject accounts from the Testnet faucet ===\n");
-    CompletableFuture<KeyPair> issuerFuture = CompletableFuture.supplyAsync(() -> {
-      try {
-        return createAndFundWallet(xrplClient);
-      } catch (InterruptedException e) {
-        Thread.currentThread().interrupt();
-        throw new RuntimeException(e);
-      }
-    });
-    CompletableFuture<KeyPair> subjectFuture = CompletableFuture.supplyAsync(() -> {
-      try {
-        return createAndFundWallet(xrplClient);
-      } catch (InterruptedException e) {
-        Thread.currentThread().interrupt();
-        throw new RuntimeException(e);
-      }
-    });
+    CompletableFuture<KeyPair> issuerFuture = CompletableFuture.supplyAsync(
+      () -> createAndFundWallet(xrplClient));
+    CompletableFuture<KeyPair> subjectFuture = CompletableFuture.supplyAsync(
+      () -> createAndFundWallet(xrplClient));
     CompletableFuture.allOf(issuerFuture, subjectFuture).join();
 
     KeyPair issuer = issuerFuture.join();
@@ -144,7 +135,7 @@ public class ManageCredentials {
 
   // Generates a new Ed25519 keypair, funds it from the Testnet faucet, and
   // returns the keypair once the account is visible on a validated ledger.
-  private static KeyPair createAndFundWallet(XrplClient xrplClient) throws InterruptedException {
+  private static KeyPair createAndFundWallet(XrplClient xrplClient) {
     KeyPair keyPair = Seed.ed25519Seed().deriveKeyPair();
     Address address = keyPair.publicKey().deriveAddress();
     FaucetClient faucetClient = FaucetClient.construct(FAUCET_URL);
@@ -158,7 +149,12 @@ public class ManageCredentials {
           .build());
         return keyPair;
       } catch (JsonRpcClientErrorException notYetVisible) {
-        Thread.sleep(1_000L);
+        try {
+          Thread.sleep(1_000L);
+        } catch (InterruptedException e) {
+          Thread.currentThread().interrupt();
+          throw new RuntimeException("Funding interrupted for " + address, e);
+        }
       }
     }
     throw new IllegalStateException("Faucet funding for " + address + " did not confirm in time.");
@@ -166,37 +162,50 @@ public class ManageCredentials {
 
   // Fetches the next transaction sequence number of an address from
   // the latest validated ledger.
-  private static UnsignedInteger accountSequence(XrplClient xrplClient, Address address)
-      throws JsonRpcClientErrorException {
-    AccountInfoResult info = xrplClient.accountInfo(AccountInfoRequestParams.builder()
-      .account(address)
-      .ledgerSpecifier(LedgerSpecifier.VALIDATED)
-      .build());
-    return info.accountData().sequence();
+  private static UnsignedInteger accountSequence(XrplClient xrplClient, Address address) {
+    try {
+      AccountInfoResult info = xrplClient.accountInfo(AccountInfoRequestParams.builder()
+        .account(address)
+        .ledgerSpecifier(LedgerSpecifier.VALIDATED)
+        .build());
+      return info.accountData().sequence();
+    } catch (JsonRpcClientErrorException e) {
+      throw new RuntimeException("Failed to fetch account sequence for " + address, e);
+    }
   }
 
   // Fetches the current network fee and returns the recommended fee for
   // a standard (non-multisig, non-batch) transaction.
-  private static XrpCurrencyAmount recommendedFee(XrplClient xrplClient)
-      throws JsonRpcClientErrorException {
-    return FeeUtils.computeNetworkFees(xrplClient.fee()).recommendedFee();
+  private static XrpCurrencyAmount recommendedFee(XrplClient xrplClient) {
+    try {
+      return FeeUtils.computeNetworkFees(xrplClient.fee()).recommendedFee();
+    } catch (JsonRpcClientErrorException e) {
+      throw new RuntimeException("Failed to fetch network fee", e);
+    }
   }
 
   // Computes a safe LastLedgerSequence for a new transaction. The
   // latest validated ledger index plus a small buffer (20 ledgers).
-  private static UnsignedInteger lastLedgerSequence(XrplClient xrplClient)
-      throws JsonRpcClientErrorException {
-    UnsignedInteger validatedLedger = xrplClient.ledger(LedgerRequestParams.builder()
-        .ledgerSpecifier(LedgerSpecifier.VALIDATED)
-        .build())
-      .ledgerIndexSafe()
-      .unsignedIntegerValue();
-    return validatedLedger.plus(UnsignedInteger.valueOf(20));
+  private static UnsignedInteger lastLedgerSequence(XrplClient xrplClient) {
+    try {
+      UnsignedInteger validatedLedger = xrplClient.ledger(LedgerRequestParams.builder()
+          .ledgerSpecifier(LedgerSpecifier.VALIDATED)
+          .build())
+        .ledgerIndexSafe()
+        .unsignedIntegerValue();
+      return validatedLedger.plus(UnsignedInteger.valueOf(20));
+    } catch (JsonRpcClientErrorException e) {
+      throw new RuntimeException("Failed to compute LastLedgerSequence", e);
+    }
   }
 
   // Prints a transaction as a formatted JSON.
-  private static void printTransactionJson(Transaction tx) throws JsonProcessingException {
-    System.out.println(ObjectMapperFactory.create().writerWithDefaultPrettyPrinter().writeValueAsString(tx));
+  private static void printTransactionJson(Transaction tx) {
+    try {
+      System.out.println(ObjectMapperFactory.create().writerWithDefaultPrettyPrinter().writeValueAsString(tx));
+    } catch (JsonProcessingException e) {
+      throw new RuntimeException("Failed to serialize transaction JSON", e);
+    }
   }
 
   // Signs and submits a transaction, then polls the network until
@@ -206,51 +215,57 @@ public class ManageCredentials {
     KeyPair signer,
     T transaction,
     Class<T> transactionType
-  ) throws JsonRpcClientErrorException, JsonProcessingException, InterruptedException {
+  ) {
     SignatureService<PrivateKey> signatureService = new BcSignatureService();
 
     UnsignedInteger lastLedgerSequence = transaction.lastLedgerSequence()
       .orElseThrow(() -> new IllegalArgumentException(
         "Must set LastLedgerSequence for polling expiration"));
 
-    SingleSignedTransaction<T> signed = signatureService.sign(signer.privateKey(), transaction);
-    SubmitResult<T> submit = xrplClient.submit(signed);
+    try {
+      SingleSignedTransaction<T> signed = signatureService.sign(signer.privateKey(), transaction);
+      SubmitResult<T> submit = xrplClient.submit(signed);
 
-    if (!TransactionResultCodes.TES_SUCCESS.equals(submit.engineResult())) {
-      throw new IllegalStateException(
-        "Submit rejected: " + submit.engineResult() + " — " + submit.engineResultMessage());
-    }
+      if (!TransactionResultCodes.TES_SUCCESS.equals(submit.engineResult())) {
+        throw new IllegalStateException(
+          "Submit rejected: " + submit.engineResult() + " — " + submit.engineResultMessage());
+      }
 
-    while (true) {
-      Thread.sleep(1_000L);
+      while (true) {
+        Thread.sleep(1_000L);
 
-      // Poll network for validated status using tx hash
-      try {
-        TransactionResult<T> result = xrplClient.transaction(
-          TransactionRequestParams.of(signed.hash()), transactionType);
-        if (result.validated()) {
-          return result;
+        // Poll network for validated status using tx hash
+        try {
+          TransactionResult<T> result = xrplClient.transaction(
+            TransactionRequestParams.of(signed.hash()), transactionType);
+          if (result.validated()) {
+            return result;
+          }
+        } catch (JsonRpcClientErrorException e) {
+          // Transaction not found; keep polling.
         }
-      } catch (JsonRpcClientErrorException e) {
-        // Transaction not found; keep polling.
-      }
 
-      // Check if transaction expired before polling again
-      UnsignedInteger currentLedger = xrplClient.ledger(LedgerRequestParams.builder()
-          .ledgerSpecifier(LedgerSpecifier.VALIDATED)
-          .build())
-        .ledgerIndexSafe()
-        .unsignedIntegerValue();
-      if (currentLedger.compareTo(lastLedgerSequence) > 0) {
-        throw new IllegalStateException("Transaction expired: current ledger " + currentLedger
-          + " passed LastLedgerSequence " + lastLedgerSequence + ".");
+        // Check if transaction expired before polling again
+        UnsignedInteger currentLedger = xrplClient.ledger(LedgerRequestParams.builder()
+            .ledgerSpecifier(LedgerSpecifier.VALIDATED)
+            .build())
+          .ledgerIndexSafe()
+          .unsignedIntegerValue();
+        if (currentLedger.compareTo(lastLedgerSequence) > 0) {
+          throw new IllegalStateException("Transaction expired. Current ledger " + currentLedger
+            + " passed LastLedgerSequence " + lastLedgerSequence + ".");
+        }
       }
+    } catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new RuntimeException("Transaction wait interrupted", e);
+    } catch (JsonRpcClientErrorException | JsonProcessingException e) {
+      throw new RuntimeException("Transaction processing failed: " + e.getMessage(), e);
     }
   }
 
   private static void printFinalResult(String label, Hash256 hash) {
     System.out.println(label + " successfully.");
-    System.out.println("Hash:     " + hash);
     System.out.println("Explorer: " + EXPLORER_BASE + hash);
   }
 }
