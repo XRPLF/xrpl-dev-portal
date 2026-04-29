@@ -1,9 +1,12 @@
 ---
 seo:
-    description: Deletes a `LoanBroker` ledger entry.
+    description: Delete a loan broker.
 labels:
-  - Transactions
-  - Lending Protocol
+    - Transactions
+    - Lending Protocol
+    - DEX
+requiredAmendment: LendingProtocol
+txIcon: cancel
 status: not_enabled
 ---
 # LoanBrokerDelete

@@ -4,6 +4,9 @@ seo:
 labels:
     - Utilities
     - Troubleshooting
+    - Other Transactions
+requiredAmendment: fixNFTokenPageLinks
+txIcon: other
 ---
 # LedgerStateFix
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/LedgerStateFix.cpp "Source")

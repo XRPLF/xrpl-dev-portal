@@ -3,6 +3,8 @@ seo:
     description: Add, remove, or modify an account's regular key pair.
 labels:
     - Security
+    - Accounts
+txIcon: modify
 ---
 # SetRegularKey
 

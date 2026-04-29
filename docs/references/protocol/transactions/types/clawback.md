@@ -3,6 +3,8 @@ seo:
     description: Claw back tokens you've issued.
 labels:
     - Tokens
+requiredAmendment: Clawback
+txIcon: cancel
 ---
 # Clawback
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/Clawback.cpp "Source")

@@ -3,7 +3,10 @@ seo:
     description: Create and submit a batch of up to 8 transactions that succeed or fail atomically.
 labels:
     - Transaction Sending
+    - Other Transactions
+requiredAmendment: Batch
 status: not_enabled
+txIcon: other
 ---
 # Batch
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/Batch.cpp "Source")

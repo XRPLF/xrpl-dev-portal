@@ -2,8 +2,11 @@
 seo:
     description: Make a payment on an active loan.
 labels:
-  - Transactions
-  - Lending Protocol
+    - Transactions
+    - Lending Protocol
+    - DEX
+requiredAmendment: LendingProtocol
+txIcon: send
 status: not_enabled
 ---
 # LoanPay

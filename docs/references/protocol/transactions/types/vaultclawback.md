@@ -4,7 +4,10 @@ seo:
 labels:
   - Transactions
   - Single Asset Vault
+  - DEX
 status: not_enabled
+requiredAmendment: SingleAssetVault
+txIcon: cancel
 ---
 
 # VaultClawback

@@ -3,6 +3,9 @@ seo:
     description: Claim funds from a payment channel.
 labels:
     - Payment Channels
+    - Payments
+requiredAmendment: PayChan
+txIcon: finish
 ---
 # PaymentChannelClaim
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/PayChan.cpp "Source")

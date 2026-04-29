@@ -1,9 +1,12 @@
 ---
 seo:
-    description: Withdraws first-loss capital from a `LoanBroker` ledger entry.
+    description: Withdraw first-loss capital from a loan broker.
 labels:
-  - Transactions
-  - Lending Protocol
+    - Transactions
+    - Lending Protocol
+    - DEX
+requiredAmendment: LendingProtocol
+txIcon: send
 status: not_enabled
 ---
 # LoanBrokerCoverWithdraw

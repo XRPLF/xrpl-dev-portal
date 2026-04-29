@@ -3,12 +3,14 @@ seo:
     description: Start a cross-chain transfer of value.
 labels:
     - Interoperability
+requiredAmendment: XChainBridge
 status: not_enabled
+txIcon: send
 ---
 # XChainCommit
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/XChainBridge.cpp "Source")
 
-Do the second step in a [cross-chain transfer](../../../../concepts/xrpl-sidechains/cross-chain-bridges.md). This transaciton has two modes:
+Do the second step in a [cross-chain transfer](../../../../concepts/xrpl-sidechains/cross-chain-bridges.md). This transaction has two modes:
 
 - Put assets into trust on the locking chain so that they can be wrapped on the issuing chain.
 - Burns wrapped assets on the issuing chain so that they can be returned on the locking chain.

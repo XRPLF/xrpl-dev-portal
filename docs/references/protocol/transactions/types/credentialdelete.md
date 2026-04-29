@@ -1,6 +1,10 @@
 ---
 seo:
     description: Remove a credential from the ledger, effectively revoking it.
+labels:
+    - Decentralized Storage
+requiredAmendment: Credentials
+txIcon: cancel
 ---
 # CredentialDelete
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/Credentials.cpp "Source")

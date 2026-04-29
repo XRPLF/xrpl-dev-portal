@@ -3,6 +3,9 @@ seo:
     description: Create a check.
 labels:
     - Checks
+    - Payments
+txIcon: create
+requiredAmendment: Checks
 ---
 # CheckCreate
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/CreateCheck.cpp "Source")

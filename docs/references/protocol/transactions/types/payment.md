@@ -2,10 +2,11 @@
 seo:
     description: Send funds to another account, convert between currencies, or create a new account by sending it XRP.
 labels:
+   - Accounts
    - Payments
    - XRP
    - Cross-Currency
-   - Tokens
+txIcon: send
 ---
 # Payment
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/Payment.cpp "Source")

@@ -1,9 +1,12 @@
 ---
 seo:
-    description: Creates a new `Loan` ledger entry to represent a loan agreement between a Loan Broker and Borrower.
+    description: Create a new loan agreement between a loan broker and borrower.
 labels:
-  - Transactions
-  - Lending Protocol
+    - Transactions
+    - Lending Protocol
+    - DEX
+requiredAmendment: LendingProtocol
+txIcon: modify
 status: not_enabled
 ---
 # LoanSet

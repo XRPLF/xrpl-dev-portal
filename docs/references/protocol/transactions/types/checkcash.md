@@ -3,6 +3,9 @@ seo:
     description: Redeem a check.
 labels:
     - Checks
+    - Payments
+txIcon: finish
+requiredAmendment: Checks
 ---
 # CheckCash
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/CashCheck.cpp "Source")

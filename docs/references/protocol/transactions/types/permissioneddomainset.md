@@ -4,6 +4,9 @@ seo:
 labels:
     - Compliance
     - Permissioned Domains
+    - Decentralized Storage
+requiredAmendment: PermissionedDomains
+txIcon: create
 status: not_enabled
 ---
 # PermissionedDomainSet

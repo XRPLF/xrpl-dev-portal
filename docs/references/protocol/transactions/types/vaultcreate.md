@@ -1,9 +1,12 @@
 ---
 seo:
-    description: Creates a new vault object in the ledger.
+    description: Create a new vault in the ledger.
 labels:
-  - Transactions
-  - Single Asset Vault
+    - Transactions
+    - Single Asset Vault
+    - DEX
+requiredAmendment: SingleAssetVault
+txIcon: create
 ---
 
 # VaultCreate
