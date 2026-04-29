@@ -2,7 +2,10 @@
 seo:
     description: 新しいペイメントチャネルを作成します。
 labels:
-    - Payment Channel
+    - Payment Channels
+    - Payments
+requiredAmendment: PayChan
+txIcon: create
 ---
 # PaymentChannelCreate
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/PayChan.cpp "ソース")

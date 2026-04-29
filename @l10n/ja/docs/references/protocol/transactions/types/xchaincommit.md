@@ -1,19 +1,18 @@
 ---
-html: xchaincommit.html 
-parent: transaction-types.html
 seo:
     description: クロスチェーンでの価値移転を開始します。
 labels:
-  - 相互運用性
+    - Interoperability
+requiredAmendment: XChainBridge
 status: not_enabled
+txIcon: send
 ---
 # XChainCommit
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/TxFormats.cpp#L408-L416 "ソース")
 
-_（[XChainBridge Amendment][] {% not-enabled /%} が必要です）_
+クロスチェーン送金の2番目のステップです。`XChainCommit`は発行チェーンでラップできるようにロックチェーンで資産を保管したり、ロックチェーンで返却できるように発行チェーンでラップされた資産をバーンしたりします。
 
-`XChainCommit`はクロスチェーン送金の2番目のステップです。`XChainCommit`は発行チェーンでラップできるようにロックチェーンで資産を保管したり、ロックチェーンで返却できるように発行チェーンでラップされた資産をバーンしたりします。
-
+{% amendment-disclaimer name="XChainBridge" /%}
 
 ## XChainCommit JSONの例
 

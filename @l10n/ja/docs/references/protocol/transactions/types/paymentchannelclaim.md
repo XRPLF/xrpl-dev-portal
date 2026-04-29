@@ -2,7 +2,10 @@
 seo:
     description: Payment Channelに対しXRPを請求します。
 labels:
-    - Payment Channel
+    - Payment Channels
+    - Payments
+requiredAmendment: PayChan
+txIcon: finish
 ---
 # PaymentChannelClaim
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/PayChan.cpp "Source")

@@ -1,10 +1,12 @@
 ---
-html: nftokencanceloffer.html
-parent: transaction-types.html
 seo:
     description: NFTokenの売買のための既存のトークンへのオファーをキャンセルする。
 labels:
-  - NFT, 非代替性トークン
+    - Non-fungible Tokens, NFTs
+    - Tokens
+    - DEX
+requiredAmendment: NonFungibleTokensV1_1
+txIcon: cancel
 ---
 # NFTokenCancelOffer
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/NFTokenCancelOffer.cpp "ソース")

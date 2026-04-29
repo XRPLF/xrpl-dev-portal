@@ -2,7 +2,10 @@
 seo:
     description: Payment ChannelにXRPを追加します。
 labels:
-    - Payment Channel
+    - Payment Channels
+    - Payments
+requiredAmendment: PayChan
+txIcon: modify
 ---
 # PaymentChannelFund
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/PayChan.cpp "Source")

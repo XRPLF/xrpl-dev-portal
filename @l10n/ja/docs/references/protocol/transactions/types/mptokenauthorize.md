@@ -2,9 +2,11 @@
 seo:
     description: アカウントが特定のMPTの残高を保持することを許可します。
 labels:
- - Multi-Purpose Token, MPT
+    - Multi-purpose Tokens, MPTs
+    - Tokens
+requiredAmendment: MPTokensV1
+txIcon: modify
 ---
-
 # MPTokenAuthorize
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/MPTokenAuthorize.cpp "ソース")
 

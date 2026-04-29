@@ -2,7 +2,7 @@
 seo:
     description: アカウントの削除
 labels:
-  - アカウント
+  - Accounts
 ---
 # AccountDelete
 
