@@ -78,8 +78,8 @@ Clawback is disabled by default:
 
 | Field     | JSON Type            | [Internal Type][] | Required | Description |
 |:----------|:---------------------|:------------------|:---------|:------------------|
-| `Asset`   | Object               | Issue             | Yes      | Specifies the asset that the issuer wants to claw back from the AMM pool. The asset can be XRP, or a fungible token. See [Specifying Without Amounts][]. |
-| `Asset2`  | Object               | Issue             | Yes      | Specifies the other asset in the AMM's pool. The asset can be XRP or a fungible token. See  [Specifying Without Amounts][]. |
+| `Asset`   | Object               | Issue             | Yes      | Specifies the asset that the issuer wants to claw back from the AMM pool. The asset must be a fungible token as XRP cannot be clawed back. See [Specifying Without Amounts][]. |
+| `Asset2`  | Object               | Issue             | Yes      | Specifies the other asset in the AMM's pool. The asset can be XRP or a fungible token. See [Specifying Without Amounts][]. |
 | `Amount`  | [Currency Amount][]  | Amount            | No       | The maximum amount to claw back from the AMM account. The `currency` and `issuer` subfields should match the `Asset` subfields. If this field isn't specified, or the `value` subfield exceeds the holder's available tokens in the AMM, all of the holder's tokens are clawed back. |
 | `Holder`  | String - [Address][] | AccountID         | Yes      | The account holding the asset to be clawed back. |
 

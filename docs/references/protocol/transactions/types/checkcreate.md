@@ -76,10 +76,12 @@ Besides errors that can occur for all transactions, {% $frontmatter.seo.title %}
 | `tecDIR_FULL` | Either the sender or the destination of the Check cannot own more objects in the ledger.<br>This error is effectively impossible to receive if {% amendment-disclaimer name="fixDirectoryLimit" compact=true /%} is enabled. |
 | `tecDST_TAG_NEEDED` | The `Destination` account has the `RequireDest` flag enabled but the transaction does not include a `DestinationTag` field. |
 | `tecEXPIRED` | The `Expiration` of the transaction is in the past. |
-| `tecFROZEN` | `SendMax` specifies a token which is [frozen](../../../../concepts/tokens/fungible-tokens/freezes.md). For MPTs, this occurs when the `MPTLock` flag is set on the `MPTokenIssuance` or on the sender's `MPToken` object. |
+| `tecFROZEN` | `SendMax` specifies a token which is [frozen](../../../../concepts/tokens/fungible-tokens/freezes.md). |
 | `tecINSUFFICIENT_RESERVE` | The sender does not have enough XRP to meet the [owner reserve](../../../../concepts/accounts/reserves.md#owner-reserves) after adding the Check. |
+| `tecLOCKED` | `SendMax` specifies an MPT that is currently [locked](../../../../concepts/tokens/fungible-tokens/deep-freeze.md#how-does-mpt-freezelock-behavior-differ-from-iou) at the issuance or individual token level. |
+| `tecNO_AUTH` | `SendMax` specifies an MPT whose **Can Transfer** flag is not enabled on the `MPTokenIssuance`, and neither the sender nor the destination is the issuer. |
 | `tecNO_DST` | The `Destination` [account](../../../../concepts/accounts/index.md) does not exist in the ledger. |
-| `tecNO_PERMISSION` | The `Destination` account is blocking incoming Checks. {% amendment-disclaimer name="DisallowIncoming" /%}<br>For MPTs, this also occurs when the `MPTCanTrade` flag is not set on the `MPTokenIssuance`. |
+| `tecNO_PERMISSION` | The `Destination` account is blocking incoming Checks. {% amendment-disclaimer name="DisallowIncoming" /%} |
 | `tecOBJECT_NOT_FOUND` | The `MPTokenIssuance` object for the MPT specified in `SendMax` does not exist. |
 | `temDISABLED` | `SendMax` specifies an MPT but the [MPTokensV2 amendment][] is not enabled. |
 | `temREDUNDANT` | The `Destination` is the sender of the transaction. |

@@ -97,10 +97,10 @@ Besides errors that can occur for all transactions, {% $frontmatter.seo.title %}
 | `tecFROZEN`         | At least one of the deposit assets (`Amount` or `Amount2`) is a [frozen](../../../../concepts/tokens/fungible-tokens/freezes.md) Trust Line Token. |
 | `tecINSUF_RESERVE_LINE` | The sender of this transaction does meet the increased [reserve requirement](../../../../concepts/accounts/reserves.md) of processing this transaction, probably because they need a new trust line to hold the LP Tokens, and they don't have enough XRP to meet the additional owner reserve for a new trust line. |
 | `tecLOCKED`         | At least one of the deposit assets is an MPT that is currently [locked](../../../../concepts/tokens/fungible-tokens/deep-freeze.md#how-does-mpt-freezelock-behavior-differ-from-iou). |
-| `tecNO_AUTH`        | At least one of the deposit assets uses [authorized trust lines](../../../../concepts/tokens/fungible-tokens/authorized-trust-lines.md) and the sender does not have authorization to hold that asset. |
+| `tecNO_AUTH`        | The sender is not authorized to hold one of the deposit assets. This can occur when:<ul><li>The Trust Line Token's issuer uses [Authorized Trust Lines](../../../../concepts/tokens/fungible-tokens/authorized-trust-lines.md) and the sender's trust line does not exist, or has not been authorized.</li><li>The sender is not authorized to hold the MPT.</li><li>The MPT's **Can Transfer** flag is not enabled and the sender is not the issuer.</li></ul> |
 | `tecNO_ISSUER`      | The issuer account of at least one MPT does not exist. |
 | `tecNO_LINE`        | The sender does not have a trust line for at least one of the deposit assets. |
-| `tecNO_PERMISSION`  | At least one of the MPT deposit assets does not have **Can Trade** or **Can Transfer** enabled. |
+| `tecNO_PERMISSION`  | At least one of the MPT deposit assets does not have **Can Trade** enabled. |
 | `tecOBJECT_NOT_FOUND` | At least one of the MPT issuances does not exist. |
 | `tecUNFUNDED_AMM`   | The sender does not hold enough of the assets specified in `Amount` and `Amount2` to fund the AMM. |
 | `temDISABLED`       | At least one of the amounts is an MPT, but the [MPTokensV2 amendment][] is not enabled. |

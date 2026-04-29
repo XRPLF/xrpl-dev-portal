@@ -8,7 +8,7 @@ labels:
 ---
 # Offers
 
-In the XRP Ledger's [decentralized exchange](index.md), trade orders are called "Offers". Offers can trade XRP with [tokens](../index.md), or tokens for other tokens. For Trust Line Tokens, this includes tokens with the same currency code but different issuers, which can also sometimes be exchanged through [rippling](../fungible-tokens/rippling.md). For MPTs, each issuance has a unique `mpt_issuance_id`, so different MPTs  can be traded against each other.
+In the XRP Ledger's [decentralized exchange](index.md), trade orders are called "Offers". Offers can trade XRP with [tokens](../index.md), or tokens for other tokens. For Trust Line Tokens, this includes tokens with the same currency code but different issuers, which can also sometimes be exchanged through [rippling](../fungible-tokens/rippling.md). For MPTs, each issuance has a unique `mpt_issuance_id`, so different MPTs can be traded against each other.
 
 - To create an Offer, send an [OfferCreate transaction][].
 - Offers that aren't fully filled immediately become [Offer objects](../../../references/protocol/ledger-data/ledger-entry-types/offer.md) in the ledger data. Later Offers and Payments can consume the Offer object from the ledger.

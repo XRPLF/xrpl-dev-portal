@@ -11,7 +11,7 @@ txIcon: create
 Place an [offer](../../../../concepts/tokens/decentralized-exchange/offers.md) to trade in the [decentralized exchange](../../../../concepts/tokens/decentralized-exchange/index.md).
 
 {% admonition type="info" name="Note" %}
-If an offer is filled with a Multi-Purpose Token (MPT) the owner doesn't already hold, the transaction automatically creates and authorizes an `MPToken` object for that account.
+If an offer is placed with an MPT the owner doesn't already hold, this transaction automatically creates an [MPToken entry][] for that account without requiring a separate [MPTokenAuthorize transaction][].
 {% /admonition %}
 
 <!-- TODO: Add {% amendment-disclaimer name="MPTokensV2" mode="updated" /%} badge. -->
@@ -72,7 +72,7 @@ If an offer is filled with a Multi-Purpose Token (MPT) the owner doesn't already
 | `TakerGets`      | [Currency Amount][] | Amount            | Yes       | The amount and type of currency being sold. |
 | `TakerPays`      | [Currency Amount][] | Amount            | Yes       | The amount and type of currency being bought. |
 
-When crossing offers with MPT amounts (`TakerGets` or `TakerPays`), the tokens can only be transferred if the **Can Transfer** flag is enabled on the MPT issuance, or if the sender or recipient is the issuer.
+When crossing offers with MPT amounts (`TakerGets` or `TakerPays`), the **Can Trade** flag must be enabled on the `MPTokenIssuance`.
 
 {% admonition type="info" name="Note" %}
 MPT amounts are not adjusted for `TickSize`.
@@ -97,13 +97,15 @@ Transactions of the OfferCreate type support additional values in the [`Flags` f
 |:-------------------------|:--------------------------------------------------|
 | `tecDIR_FULL`            | The owner owns too many items in the ledger, or the order book contains too many Offers at the same exchange rate already.<br>This error is effectively impossible to receive if {% amendment-disclaimer name="fixDirectoryLimit" compact=true /%} is enabled. |
 | `tecEXPIRED`             | The transaction specifies an `Expiration` time that has already passed. |
-| `tecFROZEN`              | The transaction involves a token on a [frozen](../../../../concepts/tokens/fungible-tokens/freezes.md) trust line (including local and global freezes), or, the MPT is locked. The `TakerPays` (buy amount) token has been deep-frozen by the issuer. |
+| `tecFROZEN`              | The transaction involves a token on a [frozen](../../../../concepts/tokens/fungible-tokens/freezes.md) trust line (including local and global freezes). The `TakerPays` (buy amount) token has been deep-frozen by the issuer. |
 | `tecINSUF_RESERVE_OFFER` | The owner does not have enough XRP to meet the reserve requirement of adding a new offer ledger entry, and the transaction did not convert any currency. (If the transaction successfully traded any amount, the transaction succeeds with the result code `tesSUCCESS`, but does not create an offer ledger entry for the remainder.) |
 | `tecKILLED`              | The transaction specifies `tfFillOrKill`, and the full amount cannot be filled. If the _[ImmediateOfferKilled amendment][]_ is enabled, this result code also occurs when the transaction specifies `tfImmediateOrCancel` and executes without moving funds (previously, an Immediate or Cancel offer would return `tesSUCCESS` even if no funds were moved). |
 | `tecNO_AUTH`             | The transaction involves a token whose issuer uses [Authorized Trust Lines](../../../../concepts/tokens/fungible-tokens/authorized-trust-lines.md) and the the trust line that would receive the tokens exists but has not been authorized. Or, the sender is not authorized to hold the MPT. |
 | `tecNO_ISSUER`           | The transaction specifies a token whose `issuer` value is not a funded account in the ledger. |
 | `tecNO_LINE`             | The transaction involves a token whose issuer uses [Authorized Trust Lines](../../../../concepts/tokens/fungible-tokens/authorized-trust-lines.md) and the necessary trust line does not exist. |
-| `tecNO_PERMISSION`       | The transaction uses a `DomainID` but the sender is not a member of that domain. {% amendment-disclaimer name="PermissionedDEX" /%} |
+| `tecLOCKED`              | The transaction involves an MPT that is currently [locked](../../../../concepts/tokens/fungible-tokens/deep-freeze.md#how-does-mpt-freezelock-behavior-differ-from-iou) at the issuance or individual token level. |
+| `tecNO_PERMISSION`       | The transaction lacks the required permissions. This can occur when:<ul><li>The **Can Trade** flag is not enabled on the `MPTokenIssuance` for one of the MPTs in the offer.</li><li>The transaction uses a `DomainID` but the sender is not a member of that domain. {% amendment-disclaimer name="PermissionedDEX" /%}</li></ul> |
+| `tecOBJECT_NOT_FOUND`    | The `MPTokenIssuance` for one of the MPTs in the offer does not exist. |
 | `tecUNFUNDED_OFFER`      | The owner does not hold a positive amount of the `TakerGets` currency. (Exception: if `TakerGets` specifies a token that the owner issues, the transaction can succeed.) |
 | `temBAD_CURRENCY`        | The transaction specifies a fungible token incorrectly, such as a fungible token with the currency code "XRP". |
 | `temBAD_EXPIRATION`      | The transaction contains an `Expiration` field that is not validly formatted. |

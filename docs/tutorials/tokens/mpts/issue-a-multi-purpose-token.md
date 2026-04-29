@@ -220,6 +220,8 @@ The decoding utility function converts the metadata back to a JSON object and ex
 
 - **Concepts**:
 	- [Multi-Purpose Tokens (MPT)](../../../concepts/tokens/fungible-tokens/multi-purpose-tokens.md)
+- **Tutorials**:
+  - [Sending MPTs in JavaScript](./sending-mpts-in-javascript.md)
 - **References**:
 	- [MPTokenIssuance entry][]
 	- [MPTokenIssuanceCreate transaction][]

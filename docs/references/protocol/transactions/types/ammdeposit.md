@@ -88,8 +88,8 @@ You can't deposit either asset into an AMM if:
 
 | Field         | JSON Type           | [Internal Type][] | Required? | Description |
 |:--------------|:--------------------|:------------------|:----------|:------------|
-| `Asset`       | Object              | Issue             | Yes       | The definition for one of the assets in the AMM's pool. The asset can be XRP, a token, or an MPT (see: [Specifying Without Amounts][]). |
-| `Asset2`      | Object              | Issue             | Yes       | The definition for the other asset in the AMM's pool. The asset can be XRP, a token, or an MPT (see: [Specifying Without Amounts][]). |
+| `Asset`       | Object              | Issue             | Yes       | The definition for one of the assets in the AMM's pool. The asset can be XRP or a fungible token (see: [Specifying Without Amounts][]). |
+| `Asset2`      | Object              | Issue             | Yes       | The definition for the other asset in the AMM's pool. The asset can be XRP or a fungible token (see: [Specifying Without Amounts][]). |
 | `Amount`      | [Currency Amount][] | Amount            | No        | The amount of one asset to deposit to the AMM. If present, this must match the type of one of the assets (tokens or XRP) in the AMM's pool. |
 | `Amount2`     | [Currency Amount][] | Amount            | No        | The amount of another asset to add to the AMM. If present, this must match the type of the other asset in the AMM's pool and cannot be the same asset as `Amount`. |
 | `EPrice`      | [Currency Amount][] | Amount            | No        | The maximum effective price, in the deposit asset, to pay for each LP Token received. |
@@ -176,8 +176,9 @@ Besides errors that can occur for all transactions, {% $frontmatter.seo.title %}
 | `tecFROZEN`             | The transaction tried to deposit a [frozen](../../../../concepts/tokens/fungible-tokens/freezes.md) Trust Line Token, or at least one of the paired tokens is frozen. |
 | `tecINSUF_RESERVE_LINE` | The sender of this transaction does meet the increased [reserve requirement](../../../../concepts/accounts/reserves.md) of processing this transaction, probably because they need a new trust line to hold the LP Tokens, and they don't have enough XRP to meet the additional owner reserve for a new trust line. |
 | `tecLOCKED`             | At least one of the assets is an MPT that is currently [locked](../../../../concepts/tokens/fungible-tokens/deep-freeze.md#how-does-mpt-freezelock-behavior-differ-from-iou). |
+| `tecNO_AUTH`            | The sender is not authorized to hold one of the deposit assets. This can occur when:<ul><li>The Trust Line token's issuer uses [Authorized Trust Lines](../../../../concepts/tokens/fungible-tokens/authorized-trust-lines.md) and the sender's trust line does not exist, or has not been authorized.</li><li>The sender is not authorized to hold the MPT.</li><li>The MPT's **Can Transfer** flag is not enabled and the sender is not the issuer.</li></ul> |
 | `tecNO_ISSUER`          | The issuer account of at least one MPT does not exist. |
-| `tecNO_PERMISSION`      | At least one of the MPT assets does not have **Can Trade** or **Can Transfer** enabled. |
+| `tecNO_PERMISSION`      | At least one of the MPT assets does not have **Can Trade** enabled. |
 | `tecOBJECT_NOT_FOUND`   | At least one of the MPT issuances does not exist. |
 | `tecUNFUNDED_AMM`       | The sender does not have a high enough balance to make the specified deposit. |
 | `temDISABLED`           | At least one of the assets or amounts is an MPT, but the [MPTokensV2 amendment][] is not enabled. |

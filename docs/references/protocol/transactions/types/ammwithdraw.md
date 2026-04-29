@@ -83,8 +83,8 @@ If you withdraw an MPT but don't already have an [MPToken entry][] for it, this 
 
 | Field        | JSON Type           | [Internal Type][] | Required? | Description |
 |:-------------|:--------------------|:------------------|:----------|:------------|
-| `Asset`      | Object              | Issue             | Yes       | The definition for one of the assets in the AMM's pool. The asset can be XRP, a token, or an MPT (see: [Specifying Without Amounts][]). |
-| `Asset2`     | Object              | Issue             | Yes       | The definition for the other asset in the AMM's pool. The asset can be XRP, a token, or an MPT (see: [Specifying Without Amounts][]). |
+| `Asset`      | Object              | Issue             | Yes       | The definition for one of the assets in the AMM's pool. The asset can be XRP or a fungible token (see: [Specifying Without Amounts][]). |
+| `Asset2`     | Object              | Issue             | Yes       | The definition for the other asset in the AMM's pool. The asset can be XRP or a fungible token (see: [Specifying Without Amounts][]). |
 | `Amount`     | [Currency Amount][] | Amount            | No        | The amount of one asset to withdraw from the AMM. This must match the type of one of the assets (tokens or XRP) in the AMM's pool. |
 | `Amount2`    | [Currency Amount][] | Amount            | No        | The amount of another asset to withdraw from the AMM. If present, this must match the type of the other asset in the AMM's pool and cannot be the same type as `Amount`. |
 | `EPrice`     | [Currency Amount][] | Amount            | No        | The minimum effective price, in LP Token returned, to pay per unit of the asset to withdraw. |
@@ -158,9 +158,9 @@ Besides errors that can occur for all transactions, {% $frontmatter.seo.title %}
 | `tecFROZEN`             | The transaction tried to withdraw a [frozen](../../../../concepts/tokens/fungible-tokens/freezes.md) Trust Line Token. |
 | `tecINSUF_RESERVE_LINE` | The sender of this transaction does not meet the increased [reserve requirement](../../../../concepts/accounts/reserves.md) of processing this transaction, probably because they need at least one new trust line to hold one of the assets to be withdrawn, and they don't have enough XRP to meet the additional owner reserve for a new trust line. |
 | `tecLOCKED`             | At least one of the withdrawal assets is an MPT that is currently [locked](../../../../concepts/tokens/fungible-tokens/deep-freeze.md#how-does-mpt-freezelock-behavior-differ-from-iou). |
-| `tecNO_AUTH`            | The sender is not authorized to hold one of the AMM assets. |
+| `tecNO_AUTH`            | The sender is not authorized to hold one of the withdrawal assets. This can occur when:<ul><li>The Trust Line token's issuer uses [Authorized Trust Lines](../../../../concepts/tokens/fungible-tokens/authorized-trust-lines.md) and the sender's trust line does not exist, or has not been authorized.</li><li>The sender is not authorized to hold the MPT.</li><li>The MPT's **Can Transfer** flag is not enabled and the sender is not the issuer.</li></ul> |
 | `tecNO_ISSUER`          | The issuer account of at least one MPT does not exist. |
-| `tecNO_PERMISSION`      | At least one of the MPT withdrawal assets does not have **Can Trade** or **Can Transfer** enabled. |
+| `tecNO_PERMISSION`      | At least one of the MPT withdrawal assets does not have **Can Trade** enabled. |
 | `tecOBJECT_NOT_FOUND`   | At least one of the MPT issuances does not exist. |
 | `temDISABLED`           | At least one of the assets or amounts is an MPT, but the [MPTokensV2 amendment][] is not enabled. |
 | `temMALFORMED`          | The transaction specified an invalid combination of fields. See [AMMWithdraw Modes](#ammwithdraw-modes). (This error can also occur if the transaction is malformed in other ways.) |
