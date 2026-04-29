@@ -13,6 +13,8 @@ import org.xrpl.xrpl4j.crypto.keys.Seed;
 import org.xrpl.xrpl4j.crypto.signing.SignatureService;
 import org.xrpl.xrpl4j.crypto.signing.SingleSignedTransaction;
 import org.xrpl.xrpl4j.crypto.signing.bc.BcSignatureService;
+import org.xrpl.xrpl4j.model.client.Finality;
+import org.xrpl.xrpl4j.model.client.FinalityStatus;
 import org.xrpl.xrpl4j.model.client.accounts.AccountInfoRequestParams;
 import org.xrpl.xrpl4j.model.client.accounts.AccountInfoResult;
 import org.xrpl.xrpl4j.model.client.common.LedgerSpecifier;
@@ -245,31 +247,28 @@ public class ManageCredentials {
           "Submission rejected. " + submit.engineResult() + " — " + submit.engineResultMessage());
       }
 
-      while (true) {
+      Finality finality;
+      do {
         Thread.sleep(1_000L);
+        finality = xrplClient.isFinal(
+          signed.hash(),
+          submit.validatedLedgerIndex(),
+          lastLedgerSequence,
+          transaction.sequence(),
+          signer.publicKey().deriveAddress()
+        );
+      } while (finality.finalityStatus() == FinalityStatus.NOT_FINAL);
 
-        // Poll network for validated status using tx hash
-        try {
-          TransactionResult<T> result = xrplClient.transaction(
-            TransactionRequestParams.of(signed.hash()), transactionType);
-          if (result.validated()) {
-            return result;
-          }
-        } catch (JsonRpcClientErrorException e) {
-          // Transaction not found; keep polling.
-        }
-
-        // Check if transaction expired before polling again
-        UnsignedInteger currentLedger = xrplClient.ledger(LedgerRequestParams.builder()
-            .ledgerSpecifier(LedgerSpecifier.VALIDATED)
-            .build())
-          .ledgerIndexSafe()
-          .unsignedIntegerValue();
-        if (currentLedger.compareTo(lastLedgerSequence) > 0) {
-          throw new IllegalStateException("Transaction expired. Current ledger " + currentLedger
-            + " passed LastLedgerSequence " + lastLedgerSequence);
-        }
+      if (finality.finalityStatus() != FinalityStatus.VALIDATED_SUCCESS) {
+        throw new IllegalStateException(
+          "Transaction failed with status " + finality.finalityStatus()
+            + ". Result code: " + finality.resultCode().orElse("unknown"));
       }
+
+      // Retrieve the transaction result; isFinal() only returns finality status
+      return xrplClient.transaction(
+        TransactionRequestParams.of(signed.hash()), transactionType);
+
     } catch (InterruptedException e) {
       Thread.currentThread().interrupt();
       throw new RuntimeException("Transaction polling interrupted. " + e.getMessage(), e);

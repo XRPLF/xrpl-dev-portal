@@ -57,7 +57,9 @@ To get started, import the necessary libraries and instantiate a client to conne
 - `OkHttp`, `Guava`, `Jackson`: Used for HTTP URL construction, unsigned integer arithmetic, and JSON serialization.
 - `java.util.concurrent`: Used for async operations.
 
-{% code-snippet file="/_code-samples/credential/java/src/main/java/com/example/xrpl/ManageCredentials.java" language="java" before="// ----- Prepare CredentialCreate" /%}
+{% code-snippet file="/_code-samples/credential/java/src/main/java/com/example/xrpl/ManageCredentials.java" language="java" before="/**" /%}
+
+{% code-snippet file="/_code-samples/credential/java/src/main/java/com/example/xrpl/ManageCredentials.java" language="java" from="/**" before="// ----- Prepare CredentialCreate" /%}
 
 The `createAndFundWallet()` helper generates an Ed25519 keypair, funds it from the Testnet faucet, and polls Testnet until the account is visible on a validated ledger.
 
