@@ -262,7 +262,9 @@ ul.nav.navbar-nav {
   --code-block-bg-color: var(--color-gray-8);
   --code-block-controls-bg-color: var(--color-gray-8);
   --code-block-controls-border: none;
+
   --md-tabs-active-tab-bg-color: var(--color-gray-7);
+  --md-tabs-hover-tab-bg-color: var(--color-gray-8);
 
   --inline-code-bg-color: var(--color-gray-8);
 
@@ -322,6 +324,9 @@ ul.nav.navbar-nav {
   --code-block-tokens-keyword-color: var(--color-magenta-8);
   --code-block-tokens-string-color: var(--color-blue-8);
 
+  --md-tabs-active-tab-bg-color: var(--color-gray-4);
+  --md-tabs-hover-tab-bg-color: var(--color-gray-3);
+
   --code-panel-bg-color: var(--color-blue-3);
   --layer-color-hover: var(--color-gray-3);
   --bg-raised-gradient: "";
@@ -329,6 +334,12 @@ ul.nav.navbar-nav {
 
 :root .form-control-plaintext {
   color: var(--text-color);
+}
+
+/* Keep active tab visually static on hover */
+button[role="tab"].active {
+  --md-tabs-hover-tab-bg-color: var(--md-tabs-active-tab-bg-color);
+  --md-tabs-hover-tab-text-color: var(--md-tabs-active-tab-text-color);
 }
 
 /* Fix unnecessary horizontal scrolling of tables in Japanese */
