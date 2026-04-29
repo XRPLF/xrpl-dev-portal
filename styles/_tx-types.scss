@@ -1,0 +1,40 @@
+.tx-type-list {
+    border-radius: $border-radius-lg;
+    overflow: hidden; // Cut off inner blocks' corners
+    display: flex;
+    flex-direction: column;
+
+    .tx-type {
+        background-color: $gray-800;
+        padding: 0.5rem 1rem;
+
+        a.tx-title {
+            font-size: 18px;
+            text-decoration: none;
+            font-weight: 600;
+            color: $purple;
+
+            &:hover, &:visited:hover {
+                color: $blue-purple-300;
+                text-decoration: none;
+            }
+            &:visited {
+                color: $purple;
+            }
+            img {
+                display: inline-block;
+                height: 1rem;
+                width: 1rem;
+                filter: invert(1.0);
+            }
+        }
+
+        .required-amendment {
+            float: right;
+            font-size: 12px;
+        }
+    }
+    .tx-type:nth-child(even) {
+        background-color: $gray-700;
+    }
+}

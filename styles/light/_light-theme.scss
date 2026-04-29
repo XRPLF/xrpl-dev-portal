@@ -1484,3 +1484,25 @@ main article .card-grid {
 
 
 }
+
+.tx-type-list .tx-type {
+  background-color: $gray-200;
+  color: $gray-800;
+
+  &:nth-child(even) {
+    background-color: $gray-100;
+  }
+
+  a.tx-title {
+    color: $blue-purple-600;
+    &:visited {
+      color: $blue-purple-600;
+    }
+    &:hover, &:visited:hover {
+      color: $light-link-hover-color
+    }
+    img {
+      filter: brightness(0.1);
+    }
+  }
+}
