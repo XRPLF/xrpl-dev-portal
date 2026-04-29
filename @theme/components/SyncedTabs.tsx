@@ -1,5 +1,5 @@
-// This component replaces the default Redocly Tabs functionality.
-// Original Tabs styling is preserved, but this adds full-page tab
+// Replaces Redocly's built-in {% tabs %} component.
+// Uses the existing Tabs styling, but adds full-page tab
 // switching and preserves tab preferences between pages.
 
 import React, { useRef, useState, useEffect, useCallback, useMemo } from 'react'

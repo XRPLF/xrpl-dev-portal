@@ -1,3 +1,10 @@
+// The purpose of this plugin is to get a list of pages that are "children" of
+// the current page and pass along their frontmatter as well as the path that
+// can be used to link to those pages from other components.
+// It uses experimental Redocly plugin interface stuff that is expected
+// to be exposed in a "nicer" way in some theoretical future release.
+// The ts-ignore and TODOs are more for Redocly's notes than for XRPLF.
+
 // @ts-check
 import { readSharedData } from '@redocly/realm/dist/server/utils/shared-data.js'; // TODO: export function from root package
 const INDEX_PAGE_INFO_DATA_KEY = 'index-page-items';
@@ -26,14 +33,21 @@ export function indexPages() {
 
         const item = findItemDeep(sidebar.items, route.fsPath);
         const childrenPaths = (item.items || [])
-          .map((item) => item.fsPath)
+          .map(
+            // @ts-ignore
+            (item) => item.fsPath
+          )
           .filter(Boolean);
 
-        const childRoutes = childrenPaths.map((fsPath) =>
+        const childRoutes = childrenPaths.map(
+          // @ts-ignore
+          (fsPath) =>
           actions.getRouteByFsPath(fsPath),
         );
         const childRoutesData = await Promise.all(
-          childRoutes.map(async (route) => {
+          childRoutes.map(
+            // @ts-ignore
+            async (route) => {
             const { data } = await cache.load(
               route.fsPath,
               'markdown-frontmatter',
@@ -63,6 +77,7 @@ export function indexPages() {
   return instance;
 }
 
+// @ts-ignore
 function findItemDeep(items, fsPath) {
   for (const item of items) {
     if (item.fsPath === fsPath) {
@@ -70,6 +85,7 @@ function findItemDeep(items, fsPath) {
     }
 
     if (item.items) {
+      // @ts-ignore
       const found = findItemDeep(item.items, fsPath);
       if (found) {
         return found;

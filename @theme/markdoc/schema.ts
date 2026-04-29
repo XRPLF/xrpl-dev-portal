@@ -1,8 +1,8 @@
 import { Schema, Tag } from '@markdoc/markdoc';
 
-export const indexPageList: Schema & { tagName: string } = {
+export const childPages: Schema & { tagName: string } = {
   tagName: 'child-pages',
-  render: 'IndexPageItems',
+  render: 'ChildPages',
   selfClosing: true,
 };
 
@@ -243,3 +243,15 @@ export const amendmentDisclaimer: Schema &  { tagName: string } = {
   render: 'AmendmentDisclaimer',
   selfClosing: true
 }
+
+export const txCategory: Schema & { tagName: string } = {
+  tagName: 'tx-category',
+  attributes: {
+    name: {
+      type: 'String',
+      required: true
+    }
+  },
+  render: 'TxCategory',
+  selfClosing: true,
+};

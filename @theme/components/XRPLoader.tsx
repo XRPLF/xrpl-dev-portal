@@ -1,4 +1,4 @@
-import * as React from 'react';
+// Loading animation component used in various custom pages.
 
 export interface XRPLoaderProps {
     message?: string

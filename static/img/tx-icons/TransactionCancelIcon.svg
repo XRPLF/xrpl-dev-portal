@@ -1,0 +1,21 @@
+<svg
+        width="11"
+        height="11"
+        viewBox="0 0 11 11"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+>
+    <g>
+        <rect
+                x="1"
+                y="1.26489"
+                width="8.47044"
+                height="8.47044"
+                rx="4.23522"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+        />
+        <path d="M2.66895 2.72778L7.68262 7.74242" stroke="currentColor" stroke-width="2"/>
+    </g>
+</svg>
