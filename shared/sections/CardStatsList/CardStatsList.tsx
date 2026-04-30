@@ -1,8 +1,8 @@
-import React from 'react';
-import clsx from 'clsx';
-import { CardStat, CardStatProps } from '../../components/CardStat';
-import { PageGrid } from '../../components/PageGrid/page-grid';
-import { SectionHeader } from 'shared/patterns/SectionHeader';
+import React from "react";
+import clsx from "clsx";
+import { CardStat, CardStatProps } from "../../components/CardStat";
+import { PageGrid } from "../../components/PageGrid/page-grid";
+import { SectionHeader } from "shared/patterns/SectionHeader";
 
 /**
  * Configuration for a single stat card in the CardStats pattern
@@ -12,7 +12,7 @@ export type CardStatsCardConfig = CardStatProps;
 /**
  * Props for the CardStats pattern component
  */
-export interface CardStatsProps extends React.ComponentPropsWithoutRef<'section'> {
+export interface CardStatsProps extends React.ComponentPropsWithoutRef<"section"> {
   /** Section heading text */
   heading: React.ReactNode;
   /** Optional section description text */
@@ -64,31 +64,35 @@ export const CardStats = React.forwardRef<HTMLElement, CardStatsProps>(
 
     // Early return for empty cards array
     if (cards.length === 0) {
-      console.warn('CardStats: No cards provided');
+      console.warn("CardStats: No cards provided");
       return null;
     }
 
     return (
-      <PageGrid ref={ref as React.Ref<HTMLDivElement>}
-        className={clsx('bds-card-stats', className)}
+      <PageGrid
+        ref={ref as React.Ref<HTMLDivElement>}
+        className={clsx("bds-card-stats", className)}
         {...rest}
       >
-        <SectionHeader heading={heading} description={description} span={{ base: 4, md: 6, lg: 8 }} />
+        <SectionHeader
+          heading={heading}
+          description={description}
+          span={{ base: 4, md: 6, lg: 8 }}
+        />
         <PageGrid.Row as="ul">
           {cards.map((cardConfig, index) => (
             <CardStat
               key={index}
               {...cardConfig}
-              span={cardConfig.span ?? { base: 4, md: 4, lg: 4 }}
+              span={cardConfig.span ?? { base: 4, md: 4, lg: 6 }}
             />
           ))}
         </PageGrid.Row>
       </PageGrid>
     );
-  }
+  },
 );
 
-CardStats.displayName = 'CardStats';
+CardStats.displayName = "CardStats";
 
 export default CardStats;
-
