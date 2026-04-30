@@ -1506,3 +1506,11 @@ main article .card-grid {
     }
   }
 }
+
+.tx-icon-legend {
+  border-color: $black;
+
+  .tx-legend-item img.tx-type-icon {
+    filter: none;
+  }
+}

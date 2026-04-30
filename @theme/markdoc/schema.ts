@@ -255,3 +255,9 @@ export const txCategory: Schema & { tagName: string } = {
   render: 'TxCategory',
   selfClosing: true,
 };
+
+export const txIconLegend: Schema & { tagName: string } = {
+  tagName: 'tx-icon-legend',
+  render: 'TxIconLegend',
+  selfClosing: true,
+};

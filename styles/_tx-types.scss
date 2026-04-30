@@ -38,3 +38,35 @@
         background-color: $gray-700;
     }
 }
+
+.tx-icon-legend {
+    border: 1px solid $white;
+    border-radius: $border-radius-lg;
+    padding: 0.5rem;
+    margin-top: 2rem;
+    
+    > .flex-wrap {
+        gap: 1rem;
+    }
+
+    h4.tx-icon-title {
+        font-size: 1.25rem;
+        font-weight: 600;
+        line-height: 1;
+        margin: 0;
+
+        &::before {
+            display:none;
+        }
+    }
+
+    .tx-legend-item {
+        text-transform: capitalize;
+
+        img.tx-type-icon {
+            display: inline;
+            margin-right: 2px;
+            filter: invert(1.0);
+        }
+    }
+}

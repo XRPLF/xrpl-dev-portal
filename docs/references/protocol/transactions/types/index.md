@@ -12,6 +12,8 @@ The `TransactionType` field determines what operation a transaction performs. Al
 
 The following tables list all transaction types, grouped by feature area.
 
+{% tx-icon-legend /%}
+
 ## Accounts
 
 {% tx-category name="Accounts" /%}

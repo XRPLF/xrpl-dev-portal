@@ -62,3 +62,21 @@ function TxTypeLink(props: {page: any}) {
     </div>
   )
 }
+
+export function TxIconLegend() {
+  return (
+    <div className="tx-icon-legend">
+      <h4 className="tx-icon-title">Icon Legend</h4>
+      <div className="d-flex flex-wrap">
+        { Object.entries(txIcons).map( ([iconName, txIcon]) => {
+          return (
+            <div className="tx-legend-item" key={iconName}>
+              <img className="tx-type-icon" src={txIcon} alt="" />
+              {iconName}
+            </div>
+          )
+        })}
+      </div>
+    </div>
+  )
+}
