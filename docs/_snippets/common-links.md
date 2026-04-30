@@ -373,6 +373,7 @@
 [get_counts command]: /docs/references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/get_counts.md
 [get_counts method]: /docs/references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/get_counts.md
 [Get Started Using Go]: /docs/tutorials/get-started/get-started-go.md
+[Get Started Using Java]: /docs/tutorials/get-started/get-started-java.md
 [Get Started Using JavaScript]: /docs/tutorials/get-started/get-started-javascript.md
 [Get Started Using Python]: /docs/tutorials/get-started/get-started-python.md
 [hexadecimal]: https://en.wikipedia.org/wiki/Hexadecimal
@@ -491,6 +492,7 @@
 [vault_info method]: /docs/references/http-websocket-apis/public-api-methods/vault-methods/vault_info.md
 [wallet_propose command]: /docs/references/http-websocket-apis/admin-api-methods/key-generation-methods/wallet_propose.md
 [wallet_propose method]: /docs/references/http-websocket-apis/admin-api-methods/key-generation-methods/wallet_propose.md
+[xrpl4j library]: https://github.com/XRPLF/xrpl4j
 [xrpl-go library]: https://github.com/XRPLF/xrpl-go
 [xrpl.js library]: https://github.com/XRPLF/xrpl.js
 [xrpl-py library]: https://github.com/XRPLF/xrpl-py
