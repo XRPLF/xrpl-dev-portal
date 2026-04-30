@@ -243,6 +243,45 @@ The values you can provide to the `server` parameter are as follows:
 | `testnet` | The `s.devnet.rippletest.net` cluster of Devnet servers. |
 
 
+### Tx Category
+
+Display a group of transaction types in a rich table. This tag is only intended for use in the [Transaction Type Reference](/docs/references/protocol/transactions/types/).  Example usage:
+
+<pre><code>
+{% tx-category name="Payments" /%}
+</code></pre>
+
+Screenshot of example output:
+![A table of payment transaction types, with alternating background colors, icons, and amendment status badges](/docs/img/contributing-tx-category-tag.png)
+
+This tag requires the following parameter:
+
+| Parameter | Required? | Description |
+|---|---|---|
+| `name` | Yes | Display transaction types whose labels include this one (case-sensitive). |
+
+This tag requires specific metadata to work correctly. First, the transaction types landing needs to be marked as an index page in its own frontmatter, since this relies on the same plugin as the [Child Pages](#child-pages) tag:
+
+```
+metadata:
+    indexPage: true
+```
+
+Then, each transaction type page needs the following frontmatter fields:
+
+| Field | Description |
+|---|---|
+| `labels` | A list of label strings for the transaction type; to appear on the transaction index page, it should include at least one label named by a `tx-category` tag on the transaction index page. You can provide extra labels but they are not currently used. To ensure consistency when some pages are translated and some aren't yet, use the English-language labels even in translated files. (The labels currently don't display directly to the user, but if they ever do, we can use translation keys to ensure the appropriately localized version displays.) Labels are case-sensitive. A page can be listed by multiple `tx-category` markdoc tags if it has labels matching each of them. |
+| `requiredAmendment` | If provided, must be the name of an amendment that is required for this transaction. Causes `tx-category` to display an [amendment status badge](#amendment-disclaimer) in the row for this page, representing the status of the amendment on Mainnet. |
+| `txIcon` | Control which icon displays next to the transaction type name in the table. Valid options are `create`, `modify`, `cancel`, `finish`, `send`, and `other` (case-insensitive). If omitted, use the `other` icon. Choose the icon that best represents the type of action this transaction typically does. |
+
+Frontmatter fields are technically always optional, but it's **strongly recommended** to provide these for each transaction type page, so that the transaction type displays correctly on the transaction reference. 
+
+{% admonition type="danger" name="Warning" %}
+If any of these fields are omitted, or contain a typo, this typically results in the field being ignored, with no error message. This can cause a transaction type to be omitted from the landing page, display the default "other" icon, or not display the amendment status badge.
+{% /admonition %}
+
+
 ### Tx Example
 
 Link to the WebSocket tool, as a button, with a body pre-filled to look up a specific example transaction. The text of the button is normally "Query example transaction" in English, and can be translated by setting the `component.queryexampletx` key in the localization's `translations.yaml` file. This tag is self-closing.
@@ -263,3 +302,18 @@ This tag takes the following parameters:
 |---|---|---|
 | `txid` | Yes | The unique hash of the transaction to look up. |
 | `server` | No | A specific server to use for the request. Possible values are the same as `{% try-it %}` as defined above. For example, you may need to specify `devnet` to show a transaction added by an amendment that isn't enabled on Mainnet. |
+
+
+### Tx Icon Legend
+
+Display a legend of the icons used by the [Tx Category](#tx-category) tables.
+
+Example usage:
+
+<pre><code>
+{% tx-icon-legend /%}
+</code></pre>
+
+Demonstration:
+
+{% tx-icon-legend /%}
