@@ -35,9 +35,9 @@
 // Note: Uses centralized spacing tokens from _spacing.scss.
 
 // Spacing
-$bds-carousel-featured-padding-sm: $bds-space-2xl $bds-space-lg;   // 24px 16px
-$bds-carousel-featured-padding-md: $bds-space-3xl $bds-space-2xl;  // 32px 24px
-$bds-carousel-featured-padding-lg: $bds-space-4xl $bds-space-3xl;  // 40px 32px
+$bds-carousel-featured-padding-sm: $bds-space-2xl $bds-space-lg; // 24px 16px
+$bds-carousel-featured-padding-md: $bds-space-3xl $bds-space-2xl; // 32px 24px
+$bds-carousel-featured-padding-lg: $bds-space-4xl $bds-space-3xl; // 40px 32px
 
 // Content gap between image and content columns
 $bds-carousel-featured-column-gap: $bds-space-sm; // 8px - spacing('sm')
@@ -51,55 +51,55 @@ $bds-carousel-featured-transition: 400ms cubic-bezier(0.4, 0, 0.2, 1);
 
 // Define all background variants with their color properties (Dark Mode)
 $bds-carousel-featured-variants: (
-  'grey': (
-    'bg-color': $gray-300,
-    'text-color': $black,
-    'divider-color': $black,
-    'button-variant': 'black',
-    'button-bg': $black,
-    'button-color': $white,
-    'button-hover': $gray-500,
-    'button-active': $black
+  "grey": (
+    "bg-color": $gray-300,
+    "text-color": $black,
+    "divider-color": $black,
+    "button-variant": "black",
+    "button-bg": $black,
+    "button-color": $white,
+    "button-hover": $gray-500,
+    "button-active": $black,
   ),
-  'neutral': (
-    'bg-color': $black,
-    'text-color': $white,
-    'divider-color': $white,
-    'button-variant': 'green',
-    'button-bg': $green-300,
-    'button-color': $black,
-    'button-hover': $green-200,
-    'button-active': $green-300
+  "neutral": (
+    "bg-color": $black,
+    "text-color": $white,
+    "divider-color": $white,
+    "button-variant": "green",
+    "button-bg": $green-300,
+    "button-color": $black,
+    "button-hover": $green-200,
+    "button-active": $green-300,
   ),
-  'yellow': (
-    'bg-color': $yellow-100,
-    'text-color': $black,
-    'divider-color': $black,
-    'button-variant': 'black',
-    'button-bg': $black,
-    'button-color': $white,
-    'button-hover': $gray-500,
-    'button-active': $black
-  )
+  "yellow": (
+    "bg-color": $yellow-100,
+    "text-color": $black,
+    "divider-color": $black,
+    "button-variant": "black",
+    "button-bg": $black,
+    "button-color": $white,
+    "button-hover": $gray-500,
+    "button-active": $black,
+  ),
 );
 
 // Define light mode variant overrides
 $bds-carousel-featured-variants-light: (
-  'grey': (
-    'bg-color': $gray-200,
-    'text-color': $black,
-    'divider-color': $black
+  "grey": (
+    "bg-color": $gray-200,
+    "text-color": $black,
+    "divider-color": $black,
   ),
-  'neutral': (
-    'bg-color': $white,
-    'text-color': $black,
-    'divider-color': $black
+  "neutral": (
+    "bg-color": $white,
+    "text-color": $black,
+    "divider-color": $black,
   ),
-  'yellow': (
-    'bg-color': $yellow-100,
-    'text-color': $black,
-    'divider-color': $black
-  )
+  "yellow": (
+    "bg-color": $yellow-100,
+    "text-color": $black,
+    "divider-color": $black,
+  ),
 );
 
 // =============================================================================
@@ -109,32 +109,32 @@ $bds-carousel-featured-variants-light: (
 // Full variant mixin (for dark mode with button styles)
 @mixin carousel-featured-variant($variant-name, $config) {
   &--bg-#{$variant-name} {
-    background-color: map-get($config, 'bg-color');
+    background-color: map-get($config, "bg-color");
 
     // Text colors
     .bds-carousel-featured__heading,
     .bds-carousel-featured__feature-title,
     .bds-carousel-featured__feature-description {
-      color: map-get($config, 'text-color');
+      color: map-get($config, "text-color");
     }
 
     // Divider color
     .bds-divider {
-      background-color: map-get($config, 'divider-color');
+      background-color: map-get($config, "divider-color");
     }
 
     // Carousel nav buttons - enabled states only
     // Disabled states are handled by CarouselButton component styles
-    .bds-carousel-button--#{map-get($config, 'button-variant')} {
-      background-color: map-get($config, 'button-bg');
-      color: map-get($config, 'button-color');
+    .bds-carousel-button--#{map-get($config, "button-variant")} {
+      background-color: map-get($config, "button-bg");
+      color: map-get($config, "button-color");
 
       &:hover:not(:disabled) {
-        background-color: map-get($config, 'button-hover');
+        background-color: map-get($config, "button-hover");
       }
 
       &:active:not(:disabled) {
-        background-color: map-get($config, 'button-active');
+        background-color: map-get($config, "button-active");
       }
     }
   }
@@ -143,16 +143,16 @@ $bds-carousel-featured-variants-light: (
 // Light mode variant mixin (only colors, no button states)
 @mixin carousel-featured-variant-light($variant-name, $config) {
   .bds-carousel-featured--bg-#{$variant-name} {
-    background-color: map-get($config, 'bg-color');
+    background-color: map-get($config, "bg-color");
 
     .bds-carousel-featured__heading,
     .bds-carousel-featured__feature-title,
     .bds-carousel-featured__feature-description {
-      color: map-get($config, 'text-color');
+      color: map-get($config, "text-color");
     }
 
     .bds-divider {
-      background-color: map-get($config, 'divider-color');
+      background-color: map-get($config, "divider-color");
     }
   }
 }
@@ -164,9 +164,9 @@ $bds-carousel-featured-variants-light: (
 .bds-carousel-featured {
   width: 100%;
   overflow: hidden;
+  position: relative;
   // Default background - dark mode default (grey variant)
   background-color: $gray-300;
-
 
   // Mobile (default)
   padding: $bds-carousel-featured-padding-sm;
@@ -260,6 +260,8 @@ $bds-carousel-featured-variants-light: (
   // Dark mode default: light text on dark background
   color: $white;
   max-width: 392px;
+
+  @include wordbreak("break-word");
 }
 
 // =============================================================================
@@ -288,24 +290,24 @@ $bds-carousel-featured-variants-light: (
   display: flex;
   gap: $bds-space-sm; // 8px - spacing('sm')
   flex-shrink: 0;
+  z-index: 2;
+  padding: inherit;
 
-  // Desktop nav (in header row)
-  &--desktop {
-    display: none;
+  // @include media-breakpoint-up(lg) {
+  //   top: 0;
+  //   bottom: auto;
+  // }
 
-    @include media-breakpoint-up(lg) {
-      display: flex;
-    }
+  &.clickable {
+    position: absolute;
+    right: 0;
+    top: 0;
   }
+}
 
-  // Mobile/Tablet nav (in CTA row)
-  &--mobile {
-    display: flex;
-
-    @include media-breakpoint-up(lg) {
-      display: none;
-    }
-  }
+.bds-carousel-featured__nav-buttons-placeholder {
+  visibility: hidden;
+  pointer-events: none;
 }
 
 // =============================================================================
@@ -399,24 +401,33 @@ $bds-carousel-featured-variants-light: (
   flex: 0 0 100%;
   width: 100%;
   position: relative;
+}
 
-  // Mobile: 343/193 aspect ratio
+.bds-carousel-featured__slide > .bds-grid__row {
+  gap: $bds-space-2xl;
+  @include media-breakpoint-up(md) {
+    gap: $bds-space-3xl;
+  }
+  @include media-breakpoint-up(lg) {
+    gap: $bds-space-sm;
+  }
+}
+
+.bds-carousel-featured__media {
+  position: relative;
+  width: 100%;
   aspect-ratio: 343 / 193;
 
-  // Tablet: 16/9 aspect ratio
   @include media-breakpoint-up(md) {
     aspect-ratio: 16 / 9;
   }
 
-  // Desktop: Square aspect ratio (604x604)
   @include media-breakpoint-up(lg) {
     aspect-ratio: 1 / 1;
   }
 }
 
 .bds-carousel-featured__image {
-  position: absolute;
-  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -448,4 +459,3 @@ html.light {
     @include carousel-featured-variant-light($variant-name, $config);
   }
 }
-
