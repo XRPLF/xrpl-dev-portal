@@ -2,8 +2,10 @@
 seo:
     description: 自動マーケットメーカープールに発行済みトークンを預け入れた保有者から、トークンを回収する。
 labels:
-  - AMM
-  - Tokens
+    - AMM
+    - DEX
+requiredAmendment: AMMClawback
+txIcon: cancel
 ---
 # AMMClawback
 

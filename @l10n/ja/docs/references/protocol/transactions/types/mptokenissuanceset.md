@@ -2,7 +2,10 @@
 seo:
     description: MPTの変更可能なプロパティを設定します。
 labels:
- - Multi-Purpose Token, MPT
+    - Multi-purpose Tokens, MPTs
+    - Tokens
+requiredAmendment: MPTokensV1
+txIcon: modify
 ---
 # MPTokenIssuanceSet
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/MPTokenIssuanceSet.cpp "ソース")

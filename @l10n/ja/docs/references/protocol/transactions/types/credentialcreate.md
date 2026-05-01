@@ -1,12 +1,18 @@
 ---
 seo:
     description: アカウントに対して暫定的に資格情報を発行します。
-    status: not_enabled
+labels:
+    - Decentralized Storage
+    - Credentials
+requiredAmendment: Credentials
+txIcon: create
 ---
 
 # CredentialCreate
 
 CredentialCreateトランザクションは、レジャーにCredentialを作成します。Credential(資格情報)の発行者はこのトランザクションを使用して、暫定的に資格情報を発行します。Credentialは、その対象アカウントが[CredentialAcceptトランザクション][]で承認するまで有効になりません。
+
+{% amendment-disclaimer name="Credentials" /%}
 
 ## CredentialCreate JSONの例
 

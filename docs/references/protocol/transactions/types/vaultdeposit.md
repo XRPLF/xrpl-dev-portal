@@ -2,9 +2,12 @@
 seo:
     description: Deposits a specified number of assets into a vault in exchange for shares.
 labels:
-  - Transactions
-  - Single Asset Vault
+    - Transactions
+    - Single Asset Vault
+    - Lending Protocol
+requiredAmendment: SingleAssetVault
 status: not_enabled
+txIcon: send
 ---
 
 # VaultDeposit

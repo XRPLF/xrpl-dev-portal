@@ -2,14 +2,17 @@
 seo:
     description: ダイナミックNFTを変更します。
 labels:
-  - 非代替性トークン, トークン, NFT
-title:
-  - NFTokenModify
+    - Non-fungible Tokens, NFTs
+    - Tokens
+requiredAmendment: DynamicNFT
+txIcon: modify
 ---
 # NFTokenModify
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/NFTokenModify.cpp "ソース")
 
 `NFTokenModify`は、NFTの`URI`フィールドを別のURIに変更し、NFTのサポートデータを更新するために使用されます。NFTは、`tfMutable`フラグが設定された状態でミントされている必要があります。[ダイナミックNFT](../../../../concepts/tokens/nfts/dynamic-nfts.md)をご覧ください。
+
+{% amendment-disclaimer name="DynamicNFT" /%}
 
 ## {% $frontmatter.seo.title %} JSONの例
 

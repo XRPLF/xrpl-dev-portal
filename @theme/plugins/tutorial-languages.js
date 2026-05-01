@@ -13,8 +13,9 @@ import { getInnerText } from '@redocly/realm/dist/markdoc/helpers/get-inner-text
  * This creates shared data that maps tutorial paths to their supported languages.
  */
 export function tutorialLanguages() {
-  /** @type {import("@redocly/realm/dist/server/plugins/types").PluginInstance } */
+  /** @type {import("@redocly/realm/dist/server/types").ExternalPlugin } */
   const instance = {
+    id: 'tutorial-languages',
     processContent: async (actions, { fs, cache }) => {
       try {
         /** @type {Record<string, string[]>} */

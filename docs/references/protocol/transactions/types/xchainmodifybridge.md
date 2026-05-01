@@ -3,7 +3,9 @@ seo:
     description: Modify the parameters of a cross-chain bridge.
 labels:
     - Interoperability
+requiredAmendment: XChainBridge
 status: not_enabled
+txIcon: modify
 ---
 # XChainModifyBridge
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/XChainBridge.cpp "Source")

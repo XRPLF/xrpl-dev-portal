@@ -1,4 +1,6 @@
-import * as React from "react";
+// Replaces the top navbar with our custom XRPL.org top navbar
+
+import React from 'react'
 import { useThemeConfig, useThemeHooks } from "@redocly/theme/core/hooks";
 import { LanguagePicker } from "@redocly/theme/components/LanguagePicker/LanguagePicker";
 import { slugify } from "../../helpers";

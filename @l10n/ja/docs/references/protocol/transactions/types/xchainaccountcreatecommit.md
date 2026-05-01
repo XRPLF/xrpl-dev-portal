@@ -1,23 +1,20 @@
 ---
-html: xchainaccountcreatecommit.html 
-parent: transaction-types.html
 seo:
     description: ブリッジが接続するチェーンの一つでアカウントを作成します。このアカウントがそのチェーンのブリッジの入り口となります。
 labels:
-  - 相互運用性
+    - Interoperability
+requiredAmendment: XChainBridge
 status: not_enabled
+txIcon: create
 ---
 # XChainAccountCreateCommit
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/TxFormats.cpp#L466-L474 "ソース")
 
-_（[XChainBridge Amendment][] {% not-enabled /%} が必要です）_
-
-このトランザクションはXRP-XRPブリッジにのみ使用できます。
-
-`XChainAccountCreateCommit`トランザクションは、発行チェーンにトランザクションを送信するために、Witnessサーバ用の新しいアカウントを作成します。
+発行チェーンにトランザクションを送信するために、Witnessサーバ用の新しいアカウントを作成します。このトランザクションはXRP-XRPブリッジにのみ使用できます。
 
 {% admonition type="warning" name="注意" %}このトランザクションは、Witnessの証明書が送信先チェーンに確実に送信される場合にのみ実行されるべきです。署名が送信されない場合、証明書が受信されるまでアカウント作成はブロックされます。XRP-XRPブリッジでこのトランザクションを無効にするには、ブリッジの`MinAccountCreateAmount`フィールドを省略します。{% /admonition %}
 
+{% amendment-disclaimer name="XChainBridge" /%}
 
 ## XChainAccountCreateCommit JSONの例
 

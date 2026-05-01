@@ -2,7 +2,10 @@
 seo:
     description: DepositPreauthトランザクションは別のアカウントに対し、このトランザクションの送信者に支払いを送金することを事前承認します。
 labels:
-  - セキュリティ
+    - Accounts
+    - Security
+requiredAmendment: DepositPreauth
+txIcon: modify
 ---
 # DepositPreauth
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/DepositPreauth.cpp "Source")

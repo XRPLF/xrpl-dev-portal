@@ -3,7 +3,9 @@ seo:
     description: Complete a cross-chain transfer of value by claiming the value on the destination chain.
 labels:
     - Interoperability
+requiredAmendment: XChainBridge
 status: not_enabled
+txIcon: finish
 ---
 # XChainClaim
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/XChainBridge.cpp "Source")

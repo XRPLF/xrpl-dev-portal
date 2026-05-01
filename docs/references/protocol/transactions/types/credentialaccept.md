@@ -1,6 +1,10 @@
 ---
 seo:
     description: Accept a credential provisionally issued to your account.
+labels:
+    - Decentralized Storage
+requiredAmendment: Credentials
+txIcon: finish
 ---
 # CredentialAccept
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/Credentials.cpp "Source")

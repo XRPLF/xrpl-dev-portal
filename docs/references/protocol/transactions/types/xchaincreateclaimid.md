@@ -3,7 +3,9 @@ seo:
     description: Create a cross-chain claim ID that is used for a cross-chain transfer.
 labels:
     - Interoperability
+requiredAmendment: XChainBridge
 status: not_enabled
+txIcon: create
 ---
 # XChainCreateClaimID
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/XChainBridge.cpp "Source")

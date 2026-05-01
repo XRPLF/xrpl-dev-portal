@@ -1,10 +1,13 @@
 ---
 seo:
-    description: Modifies a single asset vault that you own.
+    description: Modify a single asset vault that you own.
 labels:
-  - Transactions
-  - Single Asset Vault
+    - Transactions
+    - Single Asset Vault
+    - Lending Protocol
+requiredAmendment: SingleAssetVault
 status: not_enabled
+txIcon: modify
 ---
 
 # VaultSet

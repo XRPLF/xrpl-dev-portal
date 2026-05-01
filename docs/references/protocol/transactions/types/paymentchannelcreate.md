@@ -3,6 +3,9 @@ seo:
     description: Open a new payment channel.
 labels:
     - Payment Channels
+    - Payments
+requiredAmendment: PayChan
+txIcon: create
 ---
 # PaymentChannelCreate
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/PayChan.cpp "Source")

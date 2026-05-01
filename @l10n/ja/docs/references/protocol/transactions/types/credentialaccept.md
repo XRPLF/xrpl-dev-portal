@@ -1,11 +1,17 @@
 ---
 seo:
     description: アカウントに仮発行された資格情報を承認します。
-    status: not_enabled
+labels:
+    - Decentralized Storage
+    - Credentials
+requiredAmendment: Credentials
+txIcon: finish
 ---
 # CredentialAccept
 
 CredentialAcceptトランザクションは資格情報を承認し、その資格情報を有効にします。資格情報の対象者のみがこの操作を実行できます。
+
+{% amendment-disclaimer name="Credentials" /%}
 
 ## CredentialAccept JSONの例
 

@@ -3,6 +3,8 @@ seo:
     description: Delete an account.
 labels:
     - Accounts
+requiredAmendment: DeletableAccounts
+txIcon: cancel
 ---
 # AccountDelete
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/DeleteAccount.cpp "Source")

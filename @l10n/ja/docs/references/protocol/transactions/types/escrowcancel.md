@@ -3,6 +3,9 @@ seo:
     description: Escrowに留保されているXRPを送金元に返金します。
 labels:
     - Escrow
+    - Payments
+requiredAmendment: Escrow
+txIcon: cancel
 ---
 # EscrowCancel
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/Escrow.cpp "Source")

@@ -3,6 +3,9 @@ seo:
     description: Create a new Automated Market Maker for trading a given pair of assets.
 labels:
     - AMM
+    - DEX
+requiredAmendment: AMM
+txIcon: create
 ---
 # AMMCreate
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/AMMCreate.cpp "Source")
