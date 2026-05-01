@@ -112,7 +112,7 @@ export default function XRPFaucets(): React.JSX.Element {
                 </div>
                 )) }
 
-                <h3>{translate("Request how much?")}</h3>
+                <h3>{translate("Request amount")}</h3>
                 <div className="input-group my-2">
                   <input type="number" className="form-control" id="request-xrp-amount" value={requestedAmount} min="1" max="10000"
                    onChange={(e) => setRequestedAmount(e.target.value)} />
