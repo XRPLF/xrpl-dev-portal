@@ -4,7 +4,6 @@ seo:
 labels:
     - Transactions
     - Lending Protocol
-    - DEX
 requiredAmendment: LendingProtocol
 txIcon: cancel
 status: not_enabled

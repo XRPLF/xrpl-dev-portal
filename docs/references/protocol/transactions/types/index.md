@@ -34,6 +34,10 @@ The following tables list all transaction types, grouped by feature area.
 
 {% tx-category name="Decentralized Storage" /%}
 
+## Lending
+
+{% tx-category name="Lending Protocol" /%}
+
 ## XRPL Side Chains
 
 {% tx-category name="Interoperability" /%}

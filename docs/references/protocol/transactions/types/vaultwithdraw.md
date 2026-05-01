@@ -4,7 +4,7 @@ seo:
 labels:
     - Transactions
     - Single Asset Vault
-    - DEX
+    - Lending Protocol
 requiredAmendment: SingleAssetVault
 status: not_enabled
 txIcon: send

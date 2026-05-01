@@ -233,19 +233,35 @@ navigation:
 
 ### status Field
 
-You can add the following field to the frontmatter to mark a page as relating to a feature that's not currently available on the XRP Ledger mainnet (typically, requiring an amendment that's open for voting):
+You can add the following field to the frontmatter to mark a page as relating to a feature that's not currently available on the XRP Ledger Mainnet (typically, requiring an amendment that's open for voting):
 
 ```
-status: not_enabled`
+status: not_enabled
 ```
 
-This causes a yellow flask icon to display next to the page title in some tables of contents, with a tooltip (when a desktop user hovers their mouse over it) with text explaining that the feature is not available yet.
+This causes a yellow flask icon (like this: {% not-enabled /%}) to display next to the page title in some tables of contents, with a tooltip (when a desktop user hovers their mouse over it) with text explaining that the feature is not available yet.
 
 Only use this if the whole page refers to such a feature, not just a sub-section. And, of course, when the feature becomes enabled, you need to manually remove this field.
 
 ### Transaction Types Reference Fields
 
-The [Transaction Types Reference](/docs/references/protocol/transactions/types/) uses a custom Markdoc component to list groups of transactions; this component relies on the pages' frontmatter to control how it displays the transactions. See the [`{% tx-category ... %}` markdoc tag](./markdoc-tags.md#tx-category) for details.
+The [Transaction Types Reference](/docs/references/protocol/transactions/types/) uses a custom Markdoc component to list groups of transactions; this component relies on the pages' frontmatter to control how it displays the transactions. An example of fields in the correct format:
+
+```yaml
+labels:
+    - Payment Channels
+    - Payments
+requiredAmendment: PayChan
+txIcon: finish
+```
+
+See the [`{% tx-category ... %}` markdoc tag](./markdoc-tags.md#tx-category) for details.
+
+## Labels
+
+The `labels` frontmatter field contains a list of labels for the contents of the page. These are currently only used by the blog and the Transaction Types reference page to display pages matching specific categories. In the past these were also used for navigation across broader categories, which may eventually be implemented again someday, so you can add arbitrary labels per page as metadata.
+
+Translated pages should use the English versions of the labels. (In the past, this was not the case, so many legacy pages currently have translated label names.)
 
 ## Graphics
 
