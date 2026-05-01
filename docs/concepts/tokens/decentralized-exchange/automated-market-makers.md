@@ -28,13 +28,7 @@ LP tokens enable liquidity providers to:
 
 ## How the AMM Works
 
-An AMM holds two different assets: at most one of these can be XRP, and one or both of them can be [tokens](../index.md). Valid token combinations are:
-
-- XRP/Trust Line Token
-- Trust Line Token/Trust Line Token
-- XRP/MPT
-- Trust Line Token/MPT
-- MPT/MPT (each with a unique `mpt_issuance_id`)
+An AMM holds a pair of assets: these can be any combination of XRP, [trust line tokens](../fungible-tokens/trust-line-tokens.md), and [MPTs](../fungible-tokens/multi-purpose-tokens.md), as long as the two assets are distinct from one another.
 
 For any given pair of assets, there can be up to one AMM in the ledger. Anyone can create the AMM for an asset pair if it doesn't exist, or deposit to an AMM if it already exists.
 
@@ -54,7 +48,7 @@ The XRP Ledger implements a _geometric mean_ AMM with a weight parameter of 0.5,
 
 ### Token Issuers
 
-Trust Line Tokens with different issuers are considered different assets. This means that there can be an AMM for two Trust Line Tokens with the same currency code but different issuers. For example, _FOO_ issued by WayGate is different than _FOO_ issued by StableFoo. Trust Line Tokens can also have the same issuer but different currency codes. The trade direction doesn't matter; the AMM for FOO.WayGate to XRP is the same as the AMM for XRP to FOO.WayGate.
+Trust line tokens with different issuers are considered different assets. This means that there can be an AMM for two trust line tokens with the same currency code but different issuers. For example, _FOO_ issued by WayGate is different than _FOO_ issued by StableFoo. Trust line tokens can also have the same issuer but different currency codes. The trade direction doesn't matter: the AMM for FOO.WayGate to XRP is the same as the AMM for XRP to FOO.WayGate.
 
 For MPTs, each issuance has a unique `mpt_issuance_id` that identifies it, so there is no ambiguity between issuers.
 
