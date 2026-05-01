@@ -2,7 +2,7 @@ import * as React from 'react';
 
 export interface XRPLoaderProps {
     message?: string
-    show: boolean
+    show?: boolean
 }
 
 export default function XRPLoader(props: XRPLoaderProps) {
