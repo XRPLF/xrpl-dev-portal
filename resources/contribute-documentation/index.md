@@ -257,7 +257,7 @@ txIcon: finish
 
 See the [`{% tx-category ... %}` markdoc tag](./markdoc-tags.md#tx-category) for details.
 
-## Labels
+### Labels
 
 The `labels` frontmatter field contains a list of labels for the contents of the page. These are currently only used by the blog and the Transaction Types reference page to display pages matching specific categories. In the past these were also used for navigation across broader categories, which may eventually be implemented again someday, so you can add arbitrary labels per page as metadata.
 
