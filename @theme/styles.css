@@ -183,9 +183,10 @@ ul.nav.navbar-nav {
   --link-color-visited: white;
   --link-visited-decoration: underline;
 
-  --bg-color: var(--color-gray-10);
+  --bg-color: var(--color-gray-1);  /* was --color-gray-10 */
   --bg-color-raised: var(--color-gray-2);
   --background-color: var(--bg-color);
+ 
 
   --font-family-base: 'Work Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
   --heading-font-family: var(--font-family-base);
@@ -275,6 +276,8 @@ ul.nav.navbar-nav {
   --language-picker-border-color: var(--color-gray-7);
   --language-picker-background-color: var(--color-gray-8);
   --select-list-bg-color: var(--color-gray-8);
+
+  --button-bg-color-secondary: var(--color-gray-8);
 
   --footer-title-text-color: black;
   --bg-color: var(--color-gray-9);

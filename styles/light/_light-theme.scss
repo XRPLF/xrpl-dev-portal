@@ -1120,6 +1120,10 @@ main article .card-grid {
   }
 }
 
+[data-component-name="Markdown/Markdown"] article {
+  border-bottom-color: $gray-500;
+}
+
 .dev-blog {
   .text-bg {
     background-color: $white;
@@ -1513,4 +1517,8 @@ main article .card-grid {
   .tx-legend-item img.tx-type-icon {
     filter: none;
   }
+}  
+
+[data-component-name="Layout/DocumentationLayoutBottom"] {
+  border-top-color: black;
 }
