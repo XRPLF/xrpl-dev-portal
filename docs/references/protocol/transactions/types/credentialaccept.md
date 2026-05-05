@@ -29,8 +29,6 @@ Accept a [credential](../../../../concepts/decentralized-storage/credentials.md)
 
 {% raw-partial file="/docs/_snippets/tx-fields-intro.md" /%}
 
-In addition to the [common fields][], CredentialAccept transactions use the following fields:
-
 | Field            | JSON Type        | [Internal Type][] | Required? | Description |
 |:-----------------|:-----------------|:------------------|:----------|:------------|
 | `Issuer`         | String - [Address][] | AccountID     | Yes       | The address of the issuer that created the credential. |

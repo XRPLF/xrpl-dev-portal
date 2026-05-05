@@ -29,8 +29,6 @@ Remove a [credential](../../../../concepts/decentralized-storage/credentials.md)
 
 {% raw-partial file="/docs/_snippets/tx-fields-intro.md" /%}
 
-In addition to the [common fields][], CredentialDelete transactions use the following fields:
-
 | Field            | JSON Type            | [Internal Type][] | Required? | Description |
 |:-----------------|:---------------------|:------------------|:----------|:------------|
 | `CredentialType` | String - Hexadecimal | Blob              | Yes       | Arbitrary data defining the type of credential to delete. The minimum length is 1 byte and the maximum length is 256 bytes. |
