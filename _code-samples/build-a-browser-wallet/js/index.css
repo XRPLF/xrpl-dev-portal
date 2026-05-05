@@ -112,7 +112,7 @@ body {
 
 button {
   padding: 5px 12px;
-  background: inherit;
+  color: white;
   cursor: pointer;
   border: 1px solid white;
   border-radius: 10px;

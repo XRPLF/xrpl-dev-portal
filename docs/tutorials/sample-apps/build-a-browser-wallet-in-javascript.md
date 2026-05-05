@@ -1,14 +1,8 @@
 ---
-html: build-a-browser-wallet-in-javascript.html
-parent: javascript.html
-targets:
-  - en
-  - ja # TODO: translate this page
 seo:
     description: Build a graphical browser wallet for the XRPL using Javascript.
 ---
 # Build a Browser Wallet in JavaScript
-<!-- STYLE_OVERRIDE: wallet -->
 
 This tutorial demonstrates how to build a browser wallet for the XRP Ledger using the Javascript programming language and various libraries. This application can be used as a starting point for building a more complete and powerful application, as a reference point for building comparable apps, or as a learning experience to better understand how to integrate XRP Ledger functionality into a larger project.
 
@@ -16,9 +10,8 @@ This tutorial demonstrates how to build a browser wallet for the XRP Ledger usin
 
 To complete this tutorial, you should meet the following guidelines:
 
-1. You have [Node.js](https://nodejs.org/en/download/) v14 or higher installed.
-2. You have [Yarn](https://yarnpkg.com/en/docs/install) (v1.17.3 or higher) installed.
-3. You are somewhat familiar with coding with JavaScript and have completed the [Get Started Using JavaScript](../get-started/get-started-javascript.md) tutorial.
+1. You have [Node.js](https://nodejs.org/en/download/) v20.19+ installed.
+2. You are somewhat familiar with coding with JavaScript and have completed the [Get Started Using JavaScript](../get-started/get-started-javascript.md) tutorial.
 
 ## Source Code
 
@@ -52,49 +45,31 @@ Before you begin, make sure you have the prerequisites installed. Check your nod
 1. Navigate to the directory that you want to create the project in.
 2. Create a new Vite project:
 
-```bash
-yarn create vite simple-xrpl-wallet --template vanilla
+```sh
+npm create vite browser-xrpl-wallet --template vanilla
 ```
 
 3. Create or modify the file `package.json` to have the following contents:
 
 {% code-snippet file="/_code-samples/build-a-browser-wallet/js/package.json" language="js" /%}
 
-   - Alternatively you can also do `yarn add <package-name>` for each individual package to add them to your `package.json` file.
-
 4. Install dependencies:
 
 ```bash
-yarn
+npm install
 ```
 
-5. Create a new file `.env` in the root directory of the project and add the following variables:
+5. Create a new file `.env` in the root directory of the project to contain environment variables. You can copy the following values as a starting point:
 
-```bash
-CLIENT="wss://s.altnet.rippletest.net:51233/"
-EXPLORER_NETWORK="testnet"
-SEED="s████████████████████████████"
-```
+{% code-snippet file="/_code-samples/build-a-browser-wallet/js/example.env" language="js" /%}
 
 6. Change the seed to your own seed. You can get credentials from [the Testnet faucet](/resources/dev-tools/xrp-faucets).
 
-7. Set up a Vite bundler. Create a file named `vite.config.js` in the root directory of the project and fill it with the following code:
-
-{% code-snippet file="/_code-samples/build-a-browser-wallet/js/vite.config.js" language="js" /%}
-
-8. Add script to `package.json`
-
-In your `package.json` file, add the following section if it's not there already:
-
-```json
-"scripts": {
-    "dev": "vite"
-}
-```
+{% admonition type="danger" name="Warning" %}The `VITE_` prefix causes the environment variables to be available on the client side. In this example, this is OK because the user is expected to know the wallet seed. However, you cannot use this same architecture for apps where the end-user is not supposed to have full control over the XRPL account in question.{% /admonition %}
 
 ### 2. Create the Home Page (Displaying Account & Ledger Details)
 
-In this step, we create a home page that displays account and ledger details.
+This step creates a home page that displays account and ledger details.
 
 ![Home Page Screenshot](/docs/img/js-wallet-home.png)
 
@@ -108,9 +83,9 @@ In this step, we create a home page that displays account and ledger details.
 
 This basic setup creates a homepage and applies some visual styles. The goal is for the homepage to:
 
-- Display our account info
+- Display account info
 - Show what's happening on the ledger
-- And add a little logo for fun
+- Display a logo, as an example of how to visually customize your app
 
 To make that happen, we need to connect to the XRP Ledger and look up the account and the latest validated ledger.
 
@@ -118,22 +93,20 @@ To make that happen, we need to connect to the XRP Ledger and look up the accoun
 
 {% code-snippet file="/_code-samples/build-a-browser-wallet/js/src/helpers/get-wallet-details.js" language="js" /%}
 
-6. Now, let's add the code to `index.js` file to fetch the account and ledger details and display them on the home page. Copy the code written below to the `index.js` file. Here we render the wallet details using the function we defined in `get-wallet-details.js`. In order to make sure we have up to date ledger data, we are using the [ledger stream](../../references/http-websocket-apis/public-api-methods/subscription-methods/subscribe.md#ledger-stream) to listen for ledger close events.
+6. Now, add the code to `index.js` file to fetch the account and ledger details and display them on the home page. Copy the code written below to the `index.js` file. This renders the wallet details using the function we defined in `get-wallet-details.js`. To get up to date ledger data, it uses the [ledger stream](../../references/http-websocket-apis/public-api-methods/subscription-methods/subscribe.md#ledger-stream) to listen for ledger close events.
 
 {% code-snippet file="/_code-samples/build-a-browser-wallet/js/index.js" language="js" /%}
 
 7. In the `helpers` folder, add {% repo-link path="_code-samples/build-a-browser-wallet/js/src/helpers/render-xrpl-logo.js" %}render-xrpl-logo.js{% /repo-link %} to handle displaying a logo.
 
-8. Finally create a new folder named `assets` in the `src/` directory and add the file {% repo-link path="_code-samples/build-a-browser-wallet/js/src/assets/xrpl.svg" %}`xrpl.svg`{% /repo-link %} there.
+8. Finally create a new folder named `assets` in the `src/` directory and add the file {% repo-link path="_code-samples/build-a-browser-wallet/js/src/assets/xrpl.svg" %}`xrpl.svg`{% /repo-link %} there. These files are used to render the XRPL logo.
 
-These files are used to render the XRPL logo for aesthetic purposes.
-
-The one other thing we do here is add events to two buttons - one to send XRP and one to view transaction history. They won't work just yet — we'll implement them in the next steps.
+The last part is to add events to two buttons: "Send XRP" and "Transaction History". They won't work just yet; the following steps implement those parts.
 
 Now the application is ready to run. You can start it in dev mode using the following command:
 
 ```bash
-yarn dev
+npm run dev
 ```
 
 Your terminal should output a URL which you can use to open your app in a browser. This dev site automatically updates to reflect any changes you make to the code.
