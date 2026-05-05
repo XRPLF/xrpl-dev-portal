@@ -1,24 +1,16 @@
 import React from 'react';
 import clsx from 'clsx';
-import { LinkTextCard } from 'shared/patterns/LinkTextCard';
-import { ButtonConfig } from 'shared/patterns/ButtonGroup';
+import { LinkTextCard, LinkTextCardProps } from 'shared/patterns/LinkTextCard';
 import { PageGrid, PageGridRow, PageGridCol } from 'shared/components/PageGrid/page-grid';
 import { SectionHeader } from 'shared/patterns/SectionHeader';
 
-export interface LinkTextCardData {
-  /** Heading text for the card */
-  heading: string;
-  /** Description text for the card */
-  description: string;
-  /** Array of button configurations (max 2) */
-  buttons: ButtonConfig[];
-}
+export type LinkTextCardData = Omit<LinkTextCardProps, 'index' | 'className'>;
 
 export interface LinkTextDirectoryProps {
   /** Section heading (required) */
   heading: string;
-  /** Optional description text */
-  description?: string;
+  /** Optional description content */
+  description?: React.ReactNode;
   /** Array of card data to display */
   cards: LinkTextCardData[];
   /** Additional CSS classes */
