@@ -7,8 +7,8 @@ export interface LinkTextCardProps {
   index: number;
   /** Heading text (required) */
   heading: string;
-  /** Description text (required) */
-  description: string;
+  /** Description content (required) */
+  description: React.ReactNode;
   /** Array of button configurations (max 2) */
   buttons?: ButtonConfig[];
   /** Additional CSS classes */
@@ -68,7 +68,7 @@ export const LinkTextCard: React.FC<LinkTextCardProps> = ({
         <h5 className="mb-0 sh-lg-l">{heading}</h5>
       </div>
       <div className="bds-link-text-card__content">
-        <p className="mb-0 body-l">{description}</p>
+        <div className="mb-0 body-l">{description}</div>
         {maxButtons.length > 0 && (
           <ButtonGroup buttons={maxButtons} color="green" />
         )}
