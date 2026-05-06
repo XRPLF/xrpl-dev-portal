@@ -8,9 +8,9 @@ labels:
 # book_offers
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/BookOffers.cpp "Source")
 
-<!-- {% amendment-disclaimer name="MPTokensV2" mode="updated" /%} -->
-
 The `book_offers` method retrieves a list of [offers](../../../../concepts/tokens/decentralized-exchange/offers.md) between two currencies, also known as an _order book_. The response omits [unfunded offers](../../../../concepts/tokens/decentralized-exchange/offers.md#lifecycle-of-an-offer) and reports how much of each remaining offer's total is currently funded.
+
+{% amendment-disclaimer name="MPTokensV2" mode="updated" /%}
 
 ## Request Format
 An example of the request format:

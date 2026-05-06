@@ -10,7 +10,7 @@ labels:
 An `AMM` ledger entry describes a single [Automated Market Maker](../../../../concepts/tokens/decentralized-exchange/automated-market-makers.md) (AMM) instance. This is always paired with a [special AccountRoot entry](accountroot.md#special-amm-accountroot-pseudo-account). You can create an AMM by sending an [AMMCreate transaction][].
 
 {% amendment-disclaimer name="AMM" /%}
-<!-- {% amendment-disclaimer name="MPTokensV2" mode="updated" /%} -->
+{% amendment-disclaimer name="MPTokensV2" mode="updated" /%}
 
 
 ## Example AMM JSON

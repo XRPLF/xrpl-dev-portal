@@ -22,7 +22,7 @@ There are three different modes, or sub-commands, of the path_find command. Spec
 
 Although the `rippled` server tries to find the cheapest path or combination of paths for making a payment, it is not guaranteed that the paths returned by this method are, in fact, the best paths. Due to server load, pathfinding may not find the best results. Additionally, you should be careful with the pathfinding results from untrusted servers. A server could be modified to return less-than-optimal paths to earn money for its operators. If you do not have your own server that you can trust with pathfinding, you should compare the results of pathfinding from multiple servers run by different parties, to minimize the risk of a single server returning poor results. (**Note:** A server returning less-than-optimal results is not necessarily proof of malicious behavior; it could also be a symptom of heavy server load.)
 
-<!-- {% amendment-disclaimer name="MPTokensV2" mode="updated" /%} -->
+{% amendment-disclaimer name="MPTokensV2" mode="updated" /%}
 
 ## path_find create
 

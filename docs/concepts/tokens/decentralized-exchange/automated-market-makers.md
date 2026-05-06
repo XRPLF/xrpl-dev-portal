@@ -85,8 +85,8 @@ The diagram below illustrates how an offer interacts with other offers and AMM l
 To prevent misuse, some restrictions apply to the assets used in an AMM. If you try to create an AMM with an asset that does not meet these restrictions, the transaction fails. The rules are as follows:
 
 - The asset must not be an LP token from another AMM.
-- If the asset is a Trust Line Token whose issuer uses [Authorized Trust Lines](../fungible-tokens/authorized-trust-lines.md), the creator of the AMM must be authorized to hold those tokens. Similarly, if the asset is an MPT with the **Require Auth** flag enabled, the creator must be authorized to hold that MPT. Only authorized holders can deposit that token into the AMM or withdraw it; however, you can still deposit or withdraw the other asset.
-- The issuer must not be able to claw back the asset. For Trust Line Tokens, this means the issuer has not enabled **Allow Trust Line Clawback** on their account. For MPTs, the **Can Clawback** flag must not be enabled on the MPT issuance.
+- If the asset is a trust line token whose issuer uses [Authorized Trust Lines](../fungible-tokens/authorized-trust-lines.md), the creator of the AMM must be authorized to hold those tokens. Similarly, if the asset is an MPT with the **Require Auth** flag enabled, the creator must be authorized to hold that MPT. Only authorized holders can deposit that token into the AMM or withdraw it; however, you can still deposit or withdraw the other asset.
+- The issuer must not be able to claw back the asset. For trust line tokens, this means the issuer has not enabled **Allow Trust Line Clawback** on their account. For MPTs, the **Can Clawback** flag must not be enabled on the MPT issuance.
 - If the asset is an MPT, the **Can Trade** flag must be enabled on the issuance, and the **Can Transfer** flag must also be enabled if the account is not the issuer.
 
 ## AMM and LP Tokens
@@ -177,7 +177,7 @@ In the ledger's state data, an AMM consists of multiple [ledger entries](../../.
 
     The address of this AccountRoot is chosen somewhat randomly when the AMM is created, and it is different if the AMM is deleted and re-created. This is to prevent people from funding the AMM account with excess XRP in advance.
 
-- [RippleState entries](../../../references/protocol/ledger-data/ledger-entry-types/ripplestate.md) for any Trust Line Tokens in the AMM's pool, or [MPToken entries](../../../references/protocol/ledger-data/ledger-entry-types/mptoken.md) for any MPTs.
+- [RippleState entries][RippleState entry] for any trust line tokens in the AMM's pool, or [MPToken entries][MPToken entry] for any MPTs.
 
 These ledger entries are not owned by any account, so the [reserve requirement](../../accounts/reserves.md) does not apply to them. However, to prevent spam, the transaction to create an AMM has a special [transaction cost](../../transactions/transaction-cost.md) that requires the sender to burn a larger than usual amount of XRP.
 
@@ -189,7 +189,7 @@ An AMM is deleted when an [AMMWithdraw transaction][] withdraws all assets from 
 - AMM
 - AccountRoot
 - Trust lines for the AMM's LP tokens. Those trust lines would have a balance of 0 but may have other details, such as the limit, set to a non-default value.
-- Trust lines for any Trust Line Tokens that were in the AMM pool, or MPToken objects for any MPTs.
+- Trust lines for any trust line tokens that were in the AMM pool, or MPToken entries for any MPTs.
 
 If there are more than 512 trust lines attached to the AMM account when it would be deleted, the withdraw succeeds and deletes as many as it can, but leaves the AMM in the ledger with no assets in its pool.
 

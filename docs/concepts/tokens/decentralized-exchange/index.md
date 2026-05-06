@@ -15,7 +15,7 @@ The XRP Ledger has possibly the world's oldest _decentralized exchange_ (sometim
 
 {% admonition type="warning" name="Caution" %}Anyone can issue a token ([trust line token](../../../tutorials/tokens/fungible-tokens/issue-a-fungible-token.md) or [MPT](../../../tutorials/tokens/mpts/issue-a-multi-purpose-token.md)) with any currency code or ticker symbol they want and sell it in the decentralized exchange. Always perform due diligence before buying a token, and pay attention to the issuer. Otherwise, you might give up something of value and receive worthless tokens in exchange.{% /admonition %}
 
-<!-- {% amendment-disclaimer name="MPTokensV2" mode="updated" /%} -->
+{% amendment-disclaimer name="MPTokensV2" mode="updated" /%}
 
 ## What is a Decentralized Exchange? 
 

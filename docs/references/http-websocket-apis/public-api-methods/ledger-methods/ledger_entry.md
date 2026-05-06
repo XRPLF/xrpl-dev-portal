@@ -182,7 +182,7 @@ rippled json ledger_entry '{ "amendments": "7DB0788C020F02780A673DC74757F23823FA
 <a id="get-amm-object"></a><!-- legacy ID -->
 
 {% amendment-disclaimer name="AMM" /%}
-<!-- {% amendment-disclaimer name="MPTokensV2" mode="updated" /%} -->
+{% amendment-disclaimer name="MPTokensV2" mode="updated" /%}
 
 Retrieve an Automated Market-Maker (AMM) object from the ledger. This is similar to [amm_info method][], but the `ledger_entry` version returns only the ledger entry as stored.
 

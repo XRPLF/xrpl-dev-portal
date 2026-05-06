@@ -17,10 +17,10 @@ A single Payment transaction in the XRP Ledger can use multiple paths, combining
 
 A path is made of steps that connect the sender to the receiver of the payment. Every step is either:
 
-* Rippling through another address with the same currency (Trust Line Tokens only).
+* Rippling through another address with the same currency (trust line tokens only).
 * Trading tokens or XRP using an order book or AMM.
 
-[Rippling](rippling.md) is the process of exchanging equivalent Trust Line Tokens using the same currency code. In the typical case, rippling through an issuer involves reducing the tokens issued to one party and increasing the tokens issued to another party by an equal amount. The path step specifies which account to ripple through.
+[Rippling](rippling.md) is the process of exchanging equivalent trust line tokens using the same currency code. In the typical case, rippling through an issuer involves reducing the tokens issued to one party and increasing the tokens issued to another party by an equal amount. The path step specifies which account to ripple through.
 
 [Trading tokens and possibly XRP](../decentralized-exchange/index.md) involves going to an order book or AMM and finding the best exchange rate between the assets involved for the amount being sent. The path step specifies which currency to change to, but does not record the state of the Offers in the order book. The canonical order of transactions is not final until a ledger is validated, so you cannot know for certain which Offers or AMMs a transaction will take, until after the transaction has been validated. (You can make an educated guess, since each transaction takes the best available exchange rates at the time it executes in the final ledger.) <!-- STYLE_OVERRIDE: will -->
 
