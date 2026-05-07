@@ -820,8 +820,8 @@ Without this amendment, Checks transactions ([CheckCreate][], [CheckCash][], and
 |:-------------|:------------------------------|
 | Amendment ID | B34C120D3A8882ABB37EC07B65A498B4B17C73A0EE074AC089BAC2515CDA9F67 |
 | Status       | Open for Voting |
-| Default Vote (Latest stable release) | No |
-| Pre-amendment functionality retired? | No |
+| Default Vote (Latest stable release) | Yes |
+| Pre-amendment functionality retired? | No  |
 
 This amendment is a collection of fixes for NFTs, Permissioned Domains, Vaults, and the Lending Protocol:
 
