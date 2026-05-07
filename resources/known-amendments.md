@@ -813,6 +813,26 @@ Changes the way Checks transactions affect account metadata, so that Checks are 
 Without this amendment, Checks transactions ([CheckCreate][], [CheckCash][], and [CheckCancel][]) only update the account history of the sender. With this amendment, those transactions affect both the sending and receiving accounts. This amendment has no effect unless the [Checks amendment](#checks) is also enabled.
 
 
+### fixCleanup_3_1_3
+[fixCleanup_3_1_3]: #fixcleanup_3_1_3
+
+| Amendment    | fixCleanup_3_1_3 |
+|:-------------|:------------------------------|
+| Amendment ID | B34C120D3A8882ABB37EC07B65A498B4B17C73A0EE074AC089BAC2515CDA9F67 |
+| Status       | Open for Voting |
+| Default Vote (Latest stable release) | No |
+| Pre-amendment functionality retired? | No |
+
+This amendment is a collection of fixes for NFTs, Permissioned Domains, Vaults, and the Lending Protocol:
+
+- Fixes an issue with expired `NFTokenOffer` entries remaining on the ledger. With this amendment enabled, using the `NFTokenAcceptOffer` transaction on an expired `NFTokenOffer` now deletes it as part of transaction processing.
+- Adds an invariant check to ensure Permissioned Domains aren't modified by failed transactions.
+- Fixes a trust line token limit check that was skipped when withdrawing vault assets. With this amendment enabled, `VaultWithdraw` transactions that specify either vault shares or vault assets will respect the trust line token limit of the destination address.
+- Fixes loan accounting information not updating in its associated `Loan`, `LoanBroker`, and `Vault` entries if the loan was defaulted, impaired, or unimpaired. 
+- Changes a `LoanPay` error to return `tecNO_PERMISSION` instead of `temINVALID_FLAG` when attempting to overpay on a loan that doesn't permit overpayments.
+- Adds an additional check for `LoanBroker` invariants to ensure the listed `CoverAvailable` exactly matches the assets held in the associated pseudo-account.
+
+
 ### fixDirectoryLimit
 [fixDirectoryLimit]: #fixdirectorylimit
 
