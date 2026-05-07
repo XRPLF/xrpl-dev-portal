@@ -74,10 +74,6 @@ If an offer is placed with an MPT the owner doesn't already hold, this transacti
 
 When crossing offers with MPT amounts (`TakerGets` or `TakerPays`), the **Can Trade** flag must be enabled on the `MPTokenIssuance`.
 
-{% admonition type="info" name="Note" %}
-MPT amounts are not adjusted for `TickSize`.
-{% /admonition %}
-
 ## OfferCreate Flags
 
 Transactions of the OfferCreate type support additional values in the [`Flags` field](../common-fields.md#flags-field), as follows:

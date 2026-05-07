@@ -24,7 +24,7 @@ Create an on-ledger [check](../../../../concepts/payment-types/checks.md), which
 ```json
 {
   "TransactionType": "CheckCreate",
-  "Account": "rUn84CUYbNjRoTQ6mSW7BVJNLb1QLo",
+  "Account": "rUn84CUYbNjRoTQ6mSW7BVJPSVJNLb1QLo",
   "Destination": "rfkE1aSy9G8Upk4JssnwBxhEv5p4mn2KTy",
   "SendMax": "100000000",
   "Expiration": 570113521,
@@ -39,7 +39,7 @@ Create an on-ledger [check](../../../../concepts/payment-types/checks.md), which
 ```json
 {
   "TransactionType": "CheckCreate",
-  "Account": "rUn84CUYbNjRoTQ6mSW7BVJNLb1QLo",
+  "Account": "rUn84CUYbNjRoTQ6mSW7BVJPSVJNLb1QLo",
   "Destination": "rfkE1aSy9G8Upk4JssnwBxhEv5p4mn2KTy",
   "SendMax": {
     "mpt_issuance_id": "00000003430427B80BD2D09D36B70B969E12801065F22308",

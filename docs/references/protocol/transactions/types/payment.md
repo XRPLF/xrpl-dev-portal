@@ -150,7 +150,7 @@ When you send a payment using [MPTs](/docs/concepts/tokens/fungible-tokens/multi
 
 MPTs can be used in direct payments, cross-currency payments, payment paths, and the decentralized exchange.
 
-{% amendment-disclaimer name="MPTokensV2" /%}
+{% amendment-disclaimer name="MPTokensV2" mode="updated" /%}
 
 ### Sample MPT Payment transaction
 

@@ -20,7 +20,7 @@ If you cash a Check for an MPT you've never held before, this transaction automa
 
 {% amendment-disclaimer name="Checks" /%}
 
-<!-- TODO: Add {% amendment-disclaimer name="MPTokensV2" mode="updated" /%} badge. -->
+{% amendment-disclaimer name="MPTokensV2" mode="updated" /%}
 
 ## Example {% $frontmatter.seo.title %} JSON
 
@@ -77,7 +77,7 @@ Besides errors that can occur for all transactions, {% $frontmatter.seo.title %}
 | `tecEXPIRED` | The Check identified by the `CheckID` field has already expired. |
 | `tecFROZEN` | The destination's trust line to the issuer is frozen. |
 | `tecLOCKED` | The check specifies an MPT that is currently [locked](../../../../concepts/tokens/fungible-tokens/deep-freeze.md#how-does-mpt-freezelock-behavior-differ-from-iou) at the issuance or individual token level. |
-| `tecNO_AUTH` | The destination is not authorized to receive the token. This can occur when:<ul><li>The Trust Line token's issuer uses [Authorized Trust Lines](../../../../concepts/tokens/fungible-tokens/authorized-trust-lines.md) and the trust line that would receive the tokens does not exist, or has not been authorized.</li><li>The destination is not authorized to hold the MPT.</li><li>The MPT's **Can Transfer** flag is not enabled and neither the sender nor the destination is the issuer.</li></ul> |
+| `tecNO_AUTH` | The destination is not authorized to receive the token. This can occur when:<ul><li>The trust line token's issuer uses [Authorized Trust Lines](../../../../concepts/tokens/fungible-tokens/authorized-trust-lines.md) and the trust line that would receive the tokens does not exist, or has not been authorized.</li><li>The destination is not authorized to hold the MPT.</li><li>The MPT's **Can Transfer** flag is not enabled and neither the sender nor the destination is the issuer.</li></ul> |
 | `tecNO_ENTRY` | The Check identified by the `CheckID` field does not exist. |
 | `tecNO_PERMISSION` | The sender of the CheckCash transaction is not the `Destination` of the check. |
 | `tecPATH_PARTIAL` | The requested amount exceeds the Check's `SendMax`, the Check owner has insufficient available funds, or the `DeliverMin` amount could not be delivered. |

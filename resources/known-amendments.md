@@ -1576,7 +1576,7 @@ Implements a new type of fungible token, called a _Multi-Purpose Token_ (MPT). T
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
-Extends the XRPL's Decentralized Exchange to natively support Multi-Purpose Tokens (MPTs) as a tradeable asset class. MPTs can be paired with XRP, trust line tokens, or other MPTs across existing DEX transactions such as OfferCreate, Payment, and AMM.
+Extends the XRPL's Decentralized Exchange to natively support Multi-Purpose Tokens (MPTs) as a tradeable asset class. MPTs can be paired with XRP, trust line tokens, or other MPTs across existing DEX transactions such as OfferCreate, Payment, and AMM. Also adds MPT support to Checks.
 
 For more details, see [XLS-82: MPT DEX Integration](https://opensource.ripple.com/docs/xls-82-mpt-dex).
 

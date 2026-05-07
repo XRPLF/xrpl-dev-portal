@@ -79,7 +79,7 @@ Creates both an [AMM entry][] and a [special AccountRoot entry](../../ledger-dat
 
 One or both of `Amount` and `Amount2` can be [fungible tokens](../../../../concepts/tokens/index.md); at most one of them can be [XRP](../../../../introduction/what-is-xrp.md). The assets _cannot_ be LP Tokens for another AMM.
 
-- **Trust Line Tokens:** Cannot have the same currency code and issuer. The issuers must have [Default Ripple](../../../../concepts/tokens/fungible-tokens/rippling.md#the-default-ripple-flag) enabled.
+- **Trust line tokens:** Cannot have the same currency code and issuer. The issuers must have [Default Ripple](../../../../concepts/tokens/fungible-tokens/rippling.md#the-default-ripple-flag) enabled.
 - **MPTs:** Cannot have the same `mpt_issuance_id`. The issuance must have **Can Trade** and **Can Transfer** enabled.
 
 ## Special Transaction Cost
@@ -94,10 +94,10 @@ Besides errors that can occur for all transactions, {% $frontmatter.seo.title %}
 |:--------------------|:---------------------------------------------|
 | `tecAMM_INVALID_TOKENS` | Either `Amount` or `Amount2` has a currency code that is the same as this AMM's LP Tokens would use. (This is very unlikely to occur.) |
 | `tecDUPLICATE`      | There is already another AMM for this currency pair. |
-| `tecFROZEN`         | At least one of the deposit assets (`Amount` or `Amount2`) is a [frozen](../../../../concepts/tokens/fungible-tokens/freezes.md) Trust Line Token. |
+| `tecFROZEN`         | At least one of the deposit assets (`Amount` or `Amount2`) is a [frozen](../../../../concepts/tokens/fungible-tokens/freezes.md) trust line token. |
 | `tecINSUF_RESERVE_LINE` | The sender of this transaction does meet the increased [reserve requirement](../../../../concepts/accounts/reserves.md) of processing this transaction, probably because they need a new trust line to hold the LP Tokens, and they don't have enough XRP to meet the additional owner reserve for a new trust line. |
 | `tecLOCKED`         | At least one of the deposit assets is an MPT that is currently [locked](../../../../concepts/tokens/fungible-tokens/deep-freeze.md#how-does-mpt-freezelock-behavior-differ-from-iou). |
-| `tecNO_AUTH`        | The sender is not authorized to hold one of the deposit assets. This can occur when:<ul><li>The Trust Line Token's issuer uses [Authorized Trust Lines](../../../../concepts/tokens/fungible-tokens/authorized-trust-lines.md) and the sender's trust line does not exist, or has not been authorized.</li><li>The sender is not authorized to hold the MPT.</li><li>The MPT's **Can Transfer** flag is not enabled and the sender is not the issuer.</li></ul> |
+| `tecNO_AUTH`        | The sender is not authorized to hold one of the deposit assets. This can occur when:<ul><li>The trust line token's issuer uses [Authorized Trust Lines](../../../../concepts/tokens/fungible-tokens/authorized-trust-lines.md) and the sender's trust line does not exist, or has not been authorized.</li><li>The sender is not authorized to hold the MPT.</li><li>The MPT's **Can Transfer** flag is not enabled and the sender is not the issuer.</li></ul> |
 | `tecNO_ISSUER`      | The issuer account of at least one MPT does not exist. |
 | `tecNO_LINE`        | The sender does not have a trust line for at least one of the deposit assets. |
 | `tecNO_PERMISSION`  | At least one of the MPT deposit assets does not have **Can Trade** enabled. |
