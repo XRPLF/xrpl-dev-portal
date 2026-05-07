@@ -71,7 +71,7 @@ Besides errors that can occur for all transactions, {% code-page-name /%} transa
 | `temINVALID` | The `LoanID` field is missing or set to zero. |
 | `temBAD_AMOUNT` | The `Amount` field must specify a positive value. |
 | `tecNO_ENTRY` | The loan specified by `LoanID` doesn't exist. |
-| `tecNO_PERMISSION` | - The account submitting the transaction isn't the borrower on the loan.<br>- The loan doesn't permit overpayments. {% amendment-disclaimer name="fixCleanup_3_1_3" /%} |
+| `tecNO_PERMISSION` | The transaction lacks the required permissions. This can occur when:<ul><li>The account submitting the transaction isn't the borrower on the loan.</li><li>The loan doesn't permit overpayments. {% amendment-disclaimer name="fixCleanup_3_1_3" /%}</li></ul> |
 | `tecTOO_SOON` | The loan hasn't started yet. |
 | `tecKILLED` | The loan is already fully paid. |
 | `tecWRONG_ASSET` | The asset specified by `Amount` doesn't match the asset of the loan. |
