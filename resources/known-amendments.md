@@ -813,12 +813,12 @@ Changes the way Checks transactions affect account metadata, so that Checks are 
 Without this amendment, Checks transactions ([CheckCreate][], [CheckCash][], and [CheckCancel][]) only update the account history of the sender. With this amendment, those transactions affect both the sending and receiving accounts. This amendment has no effect unless the [Checks amendment](#checks) is also enabled.
 
 
-### fixCleanup_3_1_3
-[fixCleanup_3_1_3]: #fixcleanup_3_1_3
+### fixCleanup3_1_3
+[fixCleanup3_1_3]: fixcleanup3_1_3
 
-| Amendment    | fixCleanup_3_1_3 |
-|:-------------|:------------------------------|
-| Amendment ID | B34C120D3A8882ABB37EC07B65A498B4B17C73A0EE074AC089BAC2515CDA9F67 |
+| Amendment    | fixCleanup3_1_3 |
+|:-------------|:----------------|
+| Amendment ID | 303ACB16CF8DBD3B5C34F131A9D19A7DE01AE05F480A8A682B869D1B4AAC8CFC |
 | Status       | Open for Voting |
 | Default Vote (Latest stable release) | Yes |
 | Pre-amendment functionality retired? | No  |
