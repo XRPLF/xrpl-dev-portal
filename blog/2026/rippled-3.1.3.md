@@ -13,7 +13,9 @@ markdown:
 ---
 # Introducing XRP Ledger version 3.1.3
 
-Version 3.1.3 of `rippled`, the reference server implementation of the XRP Ledger protocol, is now available. This release introduces the `fixCleanup3_1_3` amendment, which contains a collection of fixes for NFTs, Permissioned Domains, Vaults, and the Lending Protocol. It also adds a `verify_endpoints` parameter to the `rippled` configuration file for local peer network development, as well as various bug fixes and refactors.
+Version 3.1.3 of `rippled`, the reference server implementation of the XRP Ledger protocol, is now available. This release introduces the `fixCleanup3_1_3` amendment, which contains a collection of fixes for NFTs, Permissioned Domains, Vaults, and the Lending Protocol. Due to the importance of the included fixes, the default vote is set to **Yes**.
+
+This release also adds a `verify_endpoints` parameter to the `rippled` configuration file for local peer network development, as well as various bug fixes and refactors.
 
 
 ## Action Required
