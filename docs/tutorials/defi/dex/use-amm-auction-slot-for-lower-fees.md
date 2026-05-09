@@ -33,7 +33,7 @@ To complete this tutorial, you should:
 
 ## Source Code
 
-See {% repo-link path="_code-samples/auction-slot/" %}Code Samples: Auction Slot{% /repo-link %} for the full source code for this tutorial.
+See {% repo-link repo="devportal" path="_code-samples/auction-slot/" %}Code Samples: Auction Slot{% /repo-link %} for the full source code for this tutorial.
 
 
 ## Steps
@@ -225,7 +225,7 @@ The above sample code shows how to use various AMM-related formulas in a particu
 
 {% tabs %}
 {% tab label="JavaScript" %}
-The file {% repo-link path="_code-samples/auction-slot/js/amm-formulas.js" %}`amm-formulas.js`{% /repo-link %} contains the source code for all these formulas.
+The file {% repo-link repo="devportal" path="_code-samples/auction-slot/js/amm-formulas.js" %}`amm-formulas.js`{% /repo-link %} contains the source code for all these formulas.
 {% /tab %}
 {% /tabs %}
 

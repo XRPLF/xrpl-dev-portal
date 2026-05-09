@@ -394,10 +394,10 @@ Alas, if only I had heeded that sage advice, I would not rue the day as I do tod
 このタグは、通常コードサンプルである、このサイトのソースコードリポジトリの特定のファイルへのリンクを作成します。例えば、
 
 <pre><code>
-{% repo-link path="_code-samples/build-a-desktop-wallet/js/1_ledger-index.js" %}`1-ledger-index/index.js`{% /repo-link %}
+{% repo-link repo="devportal" path="_code-samples/get-started" %}Get Started{% /repo-link %}
 </code></pre>
 
-次のようになります: {% repo-link path="_code-samples/build-a-desktop-wallet/js/1_ledger-index.js" %}`1-ledger-index/index.js`{% /repo-link %}
+次のようになります: {% repo-link repo="devportal" path="_code-samples/get-started" %}Get Started{% /repo-link %}
 
 サイトのフォークやブランチで作業している場合、サイト設定の変更で一度にすべてのリンクを更新できます。
 

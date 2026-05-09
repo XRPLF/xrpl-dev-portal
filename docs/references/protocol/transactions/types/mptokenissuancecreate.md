@@ -49,7 +49,7 @@ This example assumes that the issuer of the token is the signer of the transacti
 | `MPTokenMetadata` | String - Hexadecimal | Blob              | No        | Arbitrary metadata about this issuance. The limit for this field is 1024 bytes. By convention, the metadata should decode to JSON data describing what the MPT represents. The [XLS-89 specification](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0089-multi-purpose-token-metadata-schema) defines a recommended format for metadata. |
 
 {% admonition type="success" name="Tip" %}
-For an example of how to encode metadata for the `MPTokenMetadata` field, see {% repo-link path="_code-samples/issue-mpt-with-metadata/" %}Code Sample: Issue MPT with Metadata{% /repo-link %}.
+For an example of how to encode metadata for the `MPTokenMetadata` field, see {% repo-link repo="devportal" path="_code-samples/issue-mpt-with-metadata/" %}Code Sample: Issue MPT with Metadata{% /repo-link %}.
 {% /admonition %}
 
 

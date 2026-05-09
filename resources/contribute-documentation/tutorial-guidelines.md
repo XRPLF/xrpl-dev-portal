@@ -21,7 +21,7 @@ LLMs are increasingly being used in software development. To assist users of the
 
 ## Recommended Tutorial Structure
 
-Use the {% repo-link path="/resources/contribute-documentation/_tutorial-template.md" %}`_tutorial-template.md` file{% /repo-link %} as a starting point with typical headers and contents expected for a new tutorial. See below for recommendations of what type of content to include in each section.
+Use the {% repo-link repo="devportal" path="resources/contribute-documentation/_tutorial-template.md" %}`_tutorial-template.md` file{% /repo-link %} as a starting point with typical headers and contents expected for a new tutorial. See below for recommendations of what type of content to include in each section.
 
 ### Introduction
 

@@ -23,7 +23,7 @@ To send a Check with this tutorial, you need the following:
 
 The complete source code for this tutorial is available in the source repository for this website:
 
-{% repo-link path="_code-samples/checks/js/" %}Checks sample code{% /repo-link %}
+{% repo-link repo="devportal" path="_code-samples/checks/js/" %}Checks sample code{% /repo-link %}
 
 ## Steps
 

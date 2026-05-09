@@ -14,7 +14,7 @@ The following code samples cover essential techniques for working with API respo
 
 * [Markers and Pagination](../../../references/http-websocket-apis/api-conventions/markers-and-pagination): Handle large datasets that span multiple responses by properly using markers to iterate through results without missing data or overloading your application.
 
-* {% repo-link path="_code-samples/normalize-currency-codes/README.md" %}Data Normalization{% /repo-link %}: Convert XRP Ledger data formats into human-readable formats, such as transforming currency codes from hexadecimal to standard representations.
+* {% repo-link repo="devportal" path="_code-samples/normalize-currency-codes/README.md" %}Data Normalization{% /repo-link %}: Convert XRP Ledger data formats into human-readable formats, such as transforming currency codes from hexadecimal to standard representations.
 
 * [Rate Limiting](../../../references/http-websocket-apis/api-conventions/rate-limiting.md): Understand and work within API rate limits to maintain consistent access and avoid service interruptions.
 

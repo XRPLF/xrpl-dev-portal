@@ -155,7 +155,7 @@ Los procesos de derivación de claves descritos aquí están implementados en m�
     - [Definición de semilla](https://github.com/XRPLF/rippled/blob/develop/src/ripple/protocol/Seed.h)
     - [Derivación de clave general & Ed25519](https://github.com/XRPLF/rippled/blob/develop/src/ripple/protocol/impl/SecretKey.cpp)
     - [Derivación de clave secp256k1](https://github.com/XRPLF/rippled/blob/develop/src/ripple/protocol/impl/SecretKey.cpp)
-- En Python 3 en {% repo-link path="_code-samples/key-derivation/py/key_derivation.py" %}esta sección de códigos de ejemplo del repositorio{% /repo-link %}.
+- En Python 3 en {% repo-link repo="devportal" path="_code-samples/key-derivation/py/key_derivation.py" %}esta sección de códigos de ejemplo del repositorio{% /repo-link %}.
 - En JavaScript en el paquete [`ripple-keypairs`](https://github.com/XRPLF/xrpl.js/tree/main/packages/ripple-keypairs).
 
 ### Derivación de clave Ed25519

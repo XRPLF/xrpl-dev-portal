@@ -19,7 +19,7 @@ You can also [cash a check for a flexible amount](./cash-a-check-for-a-flexible-
 
 The complete source code for this tutorial is available in the source repository for this website:
 
-{% repo-link path="_code-samples/checks/js/" %}Checks sample code{% /repo-link %}
+{% repo-link repo="devportal" path="_code-samples/checks/js/" %}Checks sample code{% /repo-link %}
 
 ## Steps
 

@@ -23,7 +23,7 @@ To complete this tutorial, you should meet the following guidelines:
 
 First, download the complete sample code for this tutorial from GitHub:
 
-- {% repo-link path="_code-samples/issue-credentials/js/" %}Credential Issuing Service sample code{% /repo-link %}
+- {% repo-link repo="devportal" path="_code-samples/issue-credentials/js/" %}Credential Issuing Service sample code{% /repo-link %}
 
 Then, in the appropriate directory, install the dependencies:
 
@@ -31,7 +31,7 @@ Then, in the appropriate directory, install the dependencies:
 npm install
 ```
 
-This should install appropriate versions of Express, xrpl.js and a few other dependencies. You can view all dependencies in the {% repo-link path="_code-samples/issue-credentials/js/package.json" %}`package.json`{% /repo-link %} file.
+This should install appropriate versions of Express, xrpl.js and a few other dependencies. You can view all dependencies in the {% repo-link repo="devportal" path="_code-samples/issue-credentials/js/package.json" %}`package.json`{% /repo-link %} file.
 
 To use the API that this microservice provides, you also need an HTTP client such as [Postman](https://www.postman.com/downloads/), [RESTED](https://github.com/RESTEDClient/RESTED), or [cURL](https://curl.se/).
 

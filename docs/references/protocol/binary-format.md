@@ -47,8 +47,8 @@ Both signed and unsigned transactions can be represented in both JSON and binary
 The serialization processes described here are implemented in multiple places and programming languages:
 
 - In C++ [in the `rippled` code base](https://github.com/XRPLF/rippled/blob/master/src/libxrpl/protocol/STObject.cpp).
-- In JavaScript in {% repo-link path="_code-samples/tx-serialization/" %}this repository's code samples section{% /repo-link %}.
-- In Python 3 in {% repo-link path="_code-samples/tx-serialization/" %}this repository's code samples section{% /repo-link %}.
+- In JavaScript in {% repo-link repo="devportal" path="_code-samples/tx-serialization/" %}this repository's code samples section{% /repo-link %}.
+- In Python 3 in {% repo-link repo="devportal" path="_code-samples/tx-serialization/" %}this repository's code samples section{% /repo-link %}.
 
 Additionally, many [client libraries](../client-libraries.md) provide serialization support under permissive open-source licenses, so you can import, use, or adapt the code for your needs.
 
@@ -318,7 +318,7 @@ Blob fields have no further structure to their contents, so they consist of exac
 
 Some fields specify a currency code, which could be a fungible token, the ticker symbol for an off-ledger asset, or some other identifier for a currency. This field type is currently used only in [Price Oracles](../../concepts/decentralized-storage/price-oracles.md).
 
-These fields consist of 160 bits of binary data. If the data matches the ["standard" currency code format](#currency-codes), it may be represented as a three-letter currency code string in JSON. Otherwise, it is represented as hexadecimal. Client libraries _may_ attempt to interpret this as a string of ASCII or UTF-8, but it is not guaranteed to be valid. The {% repo-link path="_code-samples/normalize-currency-codes/" %}Normalize Currency Codes code sample{% /repo-link %} demonstrates best practices for converting most common formats for this data into a string for humans to read.
+These fields consist of 160 bits of binary data. If the data matches the ["standard" currency code format](#currency-codes), it may be represented as a three-letter currency code string in JSON. Otherwise, it is represented as hexadecimal. Client libraries _may_ attempt to interpret this as a string of ASCII or UTF-8, but it is not guaranteed to be valid. The {% repo-link repo="devportal" path="_code-samples/normalize-currency-codes/" %}Normalize Currency Codes code sample{% /repo-link %} demonstrates best practices for converting most common formats for this data into a string for humans to read.
 
 
 ### Issue Fields

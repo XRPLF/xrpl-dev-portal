@@ -157,7 +157,7 @@ The key derivation processes described here are implemented in multiple places a
     - [Seed definition](https://github.com/XRPLF/rippled/blob/master/src/libxrpl/protocol/Seed.cpp)
     - [General & Ed25519 key derivation](https://github.com/XRPLF/rippled/blob/master/src/libxrpl/protocol/SecretKey.cpp)
     - [secp256k1 key derivation](https://github.com/XRPLF/rippled/blob/master/src/libxrpl/protocol/SecretKey.cpp)
-- In Python 3 in {% repo-link path="_code-samples/key-derivation/py/key_derivation.py" %}this repository's code samples section{% /repo-link %}.
+- In Python 3 in {% repo-link repo="devportal" path="_code-samples/key-derivation/py/key_derivation.py" %}this repository's code samples section{% /repo-link %}.
 - In JavaScript in the [`ripple-keypairs`](https://github.com/XRPLF/xrpl.js/tree/main/packages/ripple-keypairs) package.
 
 ### Ed25519 Key Derivation

@@ -38,7 +38,7 @@ When you add redirects to the `redirects.yaml` file at the repository top, also 
 
 ## Where to Start
 
-If you want to translate the XRP Ledger Dev Portal into your native language of choice, start with the {% repo-link path="docs/introduction/what-is-the-xrp-ledger.md" %}"What is the XRP Ledger?" page{% /repo-link %}, which introduces the core concepts behind the XRP Ledger.
+If you want to translate the XRP Ledger Dev Portal into your native language of choice, start with the {% repo-link repo="devportal" path="docs/introduction/what-is-the-xrp-ledger.md" %}"What is the XRP Ledger?" page{% /repo-link %}, which introduces the core concepts behind the XRP Ledger.
 
 Save the file as `@l10n/{language code}/docs/introduction/what-is-the-xrp-ledger.md`, where `{language code}` is the [IETF BCP47](https://tools.ietf.org/html/bcp47) language code. (For example, "es-ES" for Spanish (Spain), "ja" for Japanese, "zh-CN" for Simplified Chinese, "zh-TW" for Traditional Chinese as used in Taiwan, and so on.) Then open a [pull request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests) adding your file to this repository. One of the repository's maintainers can help with the other necessary setup to add the language to the site.
 

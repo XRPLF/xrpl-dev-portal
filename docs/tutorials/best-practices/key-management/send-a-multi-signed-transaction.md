@@ -22,7 +22,7 @@ To complete this tutorial, you should:
 
 ## Source Code
 
-You can find the complete source code for this tutorial's examples in the {% repo-link path="_code-samples/multisigning/" %}code samples section of this website's repository{% /repo-link %}.
+You can find the complete source code for this tutorial's examples in the {% repo-link repo="devportal" path="_code-samples/multisigning/" %}code samples section of this website's repository{% /repo-link %}.
 
 ## Steps
 

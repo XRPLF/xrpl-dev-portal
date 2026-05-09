@@ -57,7 +57,7 @@ curated_anchors:
 
 - C++: [`rippled`コードベース](https://github.com/XRPLF/rippled/blob/develop/src/ripple/protocol/impl/STObject.cpp)
 - JavaScript: [`ripple-binary-codec`](https://github.com/ripple/ripple-binary-codec/)パッケージ
-- Python 3: {% repo-link path="_code-samples/tx-serialization/" %}このリポジトリのコードサンプルセクション{% /repo-link %}
+- Python 3: {% repo-link repo="devportal" path="_code-samples/tx-serialization/" %}このリポジトリのコードサンプルセクション{% /repo-link %}
 
 これらのすべての実装には、一般利用が可能なオープンソースライセンスが提供されているので、学習のためにドキュメントと合わせて使用するだけでなく、必要に応じてコードをインポート、使用、または変更することができます。
 

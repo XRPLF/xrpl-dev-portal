@@ -19,7 +19,7 @@ To complete this tutorial, you should meet the following guidelines:
 
 ## Source Code
 
-You can find the complete source code for all of this tutorial's examples in the {% repo-link path="_code-samples/build-a-desktop-wallet/py/" %}code samples section of this website's repository{% /repo-link %}.
+You can find the complete source code for all of this tutorial's examples in the {% repo-link repo="devportal" path="_code-samples/build-a-desktop-wallet/py/" %}code samples section of this website's repository{% /repo-link %}.
 
 ## Goals
 
@@ -95,7 +95,7 @@ Under the hood, the code makes a JSON-RPC client, connects to a public Testnet s
 
 ### 2. Show Ledger Updates
 
-**Full code for this step:** {% repo-link path="_code-samples/build-a-desktop-wallet/py/2_threaded.py" %}`2_threaded.py`{% /repo-link %}.
+**Full code for this step:** {% repo-link repo="devportal" path="_code-samples/build-a-desktop-wallet/py/2_threaded.py" %}`2_threaded.py`{% /repo-link %}.
 
 You may have noticed that the app in step 1 only shows the latest validated ledger at the time you opened it: the text displayed never changes unless you close the app and reopen it. The actual XRP Ledger is constantly making forward progress, so a more useful app would show it, something like this:
 
@@ -161,7 +161,7 @@ On Windows, open Edge or Chrome and browse to <https://s1.ripple.com>, then clos
 
 ### 3. Display an Account
 
-**Full code for this step:** {% repo-link path="_code-samples/build-a-desktop-wallet/py/3_account.py" %}`3_account.py`{% /repo-link %}
+**Full code for this step:** {% repo-link repo="devportal" path="_code-samples/build-a-desktop-wallet/py/3_account.py" %}`3_account.py`{% /repo-link %}
 
 Now that you have a working, ongoing connection to the XRP Ledger, it's time to start adding some "wallet" functionality that lets you manage an individual account. For this step, you should prompt the user to input their address or master seed, then use that to display information about their account including how much XRP is set aside for the [reserve requirement](../../concepts/accounts/reserves.md).
 
@@ -255,7 +255,7 @@ To test your wallet app with your own test account, first go to the [Testnet Fau
 
 ### 4. Show Account's Transactions
 
-**Full code for this step:** {% repo-link path="_code-samples/build-a-desktop-wallet/py/4_tx_history.py" %}`4_tx_history.py`{% /repo-link %}
+**Full code for this step:** {% repo-link repo="devportal" path="_code-samples/build-a-desktop-wallet/py/4_tx_history.py" %}`4_tx_history.py`{% /repo-link %}
 
 At this point, your wallet shows the account's balance getting updated, but doesn't show you anything about the actual transactions that caused the updates. So, the next step is to display the account's transaction history (and keep it updated).
 
@@ -322,7 +322,7 @@ As before, you can test your wallet app with your own test account if you use th
 
 ### 5. Send XRP
 
-**Full code for this step:** {% repo-link path="_code-samples/build-a-desktop-wallet/py/5_send_xrp.py" %}`5_send_xrp.py`{% /repo-link %}
+**Full code for this step:** {% repo-link repo="devportal" path="_code-samples/build-a-desktop-wallet/py/5_send_xrp.py" %}`5_send_xrp.py`{% /repo-link %}
 
 Until now, you've made the app able to view data from the ledger, and it's capable of showing the transactions an account has received. Now it's finally time to make the app capable of _sending_ transactions. For now, you can stick to sending [direct XRP payments](../../concepts/payment-types/direct-xrp-payments.md) because there are more complexities involved in sending [issued tokens](../../concepts/tokens/index.md).
 
@@ -441,7 +441,7 @@ You can now use your wallet to send XRP! You can even fund an entirely new accou
 
 ### 6. Domain Verification and Polish
 
-**Full code for this step:** {% repo-link path="_code-samples/build-a-desktop-wallet/py/6_verification_and_polish.py" %}`6_verification_and_polish.py`{% /repo-link %}
+**Full code for this step:** {% repo-link repo="devportal" path="_code-samples/build-a-desktop-wallet/py/6_verification_and_polish.py" %}`6_verification_and_polish.py`{% /repo-link %}
 
 One of the biggest shortcomings of the wallet app from the previous step is that it doesn't provide a lot of protections or feedback for users to save them from human error and [DeFi scams](https://learn.xrpl.org/safeguarding-your-crypto-wallet-your-essential-checklist-against-defi-scams/). These sorts of protections are extra important when dealing with the cryptocurrency space, because decentralized systems like the XRP Ledger don't have an admin or support team you can ask to cancel or refund a payment if you made a mistake such as sending it to the wrong address. This step shows how to add some checks on destination addresses to warn the user before sending.
 
@@ -547,7 +547,7 @@ To test X-addresses, try the following addresses:
 Now that you have a functional wallet, you can take it in several new directions. The following are a few ideas:
 
 - You could support more of the XRP Ledger's [transaction types](../../references/protocol/transactions/types/index.md) including [tokens](../../concepts/tokens/index.md) and [cross-currency payments](../../concepts/payment-types/cross-currency-payments.md)
-    - Example code for displaying token balances and other objects: {% repo-link path="_code-samples/build-a-desktop-wallet/py/7_owned_objects.py" %}`7_owned_objects.py`{% /repo-link %}
+    - Example code for displaying token balances and other objects: {% repo-link repo="devportal" path="_code-samples/build-a-desktop-wallet/py/7_owned_objects.py" %}`7_owned_objects.py`{% /repo-link %}
 - Allow the user to trade in the [decentralized exchange](../../concepts/tokens/decentralized-exchange/index.md)
 - Add a way to request payments, such as with QR codes or URIs that open in your wallet.
 - Support better account security including [regular key pairs](../../concepts/accounts/cryptographic-keys.md#regular-key-pair) or [multi-signing](../../concepts/accounts/multi-signing.md).

@@ -196,18 +196,25 @@ Demonstration:
 
 ### Repo Link
 
-Link to a particular file in the source code repository for this site, usually a code sample. If you are working from a fork or branch of the site, all such links can be updated at once with a site configuration change. The contents are the text of the link.
+Link to a particular file in a source code repository. The fork and branch are read from the site configuration (`.env`) based on the `repo` attribute, so all links can be updated at once when those env values change. The contents of the tag are used as the text of the link.
+
+Attributes:
+
+- `repo` (required): Selects which repository to link into. Use `devportal` for this site's own repo. To add a new target repo, define these two env vars in `.env`: `PUBLIC_<REPO>_FORK` and `PUBLIC_<REPO>_BRANCH`.
+- `path` (required): The path to the file or folder within the target repository.
+- `github_fork` (optional): Use a custom fork URL for a single link.
+- `github_branch` (optional): Use a custom branch for a single link.
 
 Example usage:
 
 <pre><code>
-{% repo-link path="_code-samples/build-a-desktop-wallet/js/1_ledger-index.js" %}`1-ledger-index/index.js`{% /repo-link %}
+{% repo-link repo="devportal" path="_code-samples/get-started" %}Get Started{% /repo-link %}
 </code></pre>
 
 
 Demonstration: 
 
-{% repo-link path="_code-samples/build-a-desktop-wallet/js/1_ledger-index.js" %}`1-ledger-index/index.js`{% /repo-link %}
+{% repo-link repo="devportal" path="_code-samples/get-started" %}Get Started{% /repo-link %}
 
 
 ### Try It

@@ -68,6 +68,6 @@ Permission delegation is similar to multi-signing in that it allows other key pa
     - [DelegateSet transaction][] - Grant, update, or revoke permissions to a specific delegate.
     - [Delegate ledger entry][] - Data structure on the ledger that records which permissions have been granted.
 - **Code Samples:**
-    - {% repo-link path="_code-samples/delegate-permissions/" %}**Delegate Permissions**{% /repo-link %}
+    - {% repo-link repo="devportal" path="_code-samples/delegate-permissions/" %}**Delegate Permissions**{% /repo-link %}
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

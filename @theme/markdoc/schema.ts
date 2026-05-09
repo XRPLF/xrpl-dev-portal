@@ -9,6 +9,10 @@ export const childPages: Schema & { tagName: string } = {
 export const repoLink: Schema & { tagName: string } = {
     tagName: 'repo-link',
     attributes: {
+      repo: {
+        type: 'String',
+        required: true,
+      },
       path: {
         type: 'String',
         required: true,
@@ -24,8 +28,10 @@ export const repoLink: Schema & { tagName: string } = {
     },
     transform(node, config) {
         const attributes = node.transformAttributes(config);
-        attributes["github_fork"] = attributes["github_fork"] || config.variables.env.PUBLIC_GITHUB_FORK;
-        attributes["github_branch"] = attributes["github_branch"] || config.variables.env.PUBLIC_GITHUB_BRANCH;
+        const repo = attributes["repo"].toUpperCase();
+        const env = config.variables.env;
+        attributes["github_fork"] = attributes["github_fork"] || env[`PUBLIC_${repo}_FORK`];
+        attributes["github_branch"] = attributes["github_branch"] || env[`PUBLIC_${repo}_BRANCH`];
         const children = node.transformChildren(config);
         return new Tag(this.render, attributes, children);
     },

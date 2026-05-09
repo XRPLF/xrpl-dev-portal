@@ -158,7 +158,7 @@ Now, we have a simple application that:
 2. Connects to the XRP Ledger.
 3. Looks up and prints information about the account you created.
 
-To run the app, you can copy the code from {% repo-link path="_code-samples/get-started/php/" %}this website's GitHub Repository{% /repo-link %} and run it from the command line:
+To run the app, you can copy the code from {% repo-link repo="devportal" path="_code-samples/get-started/php/" %}this website's GitHub Repository{% /repo-link %} and run it from the command line:
 
 ```console
 composer require hardcastle/xrpl_php

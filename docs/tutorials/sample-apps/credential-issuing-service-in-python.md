@@ -11,7 +11,7 @@ This tutorial demonstrates how to build and use a microservice that issues [Cred
 
 First, download the complete sample code for this tutorial from GitHub:
 
-- {% repo-link path="_code-samples/issue-credentials/py/" %}Credential Issuing Service sample code{% /repo-link %}
+- {% repo-link repo="devportal" path="_code-samples/issue-credentials/py/" %}Credential Issuing Service sample code{% /repo-link %}
 
 Then, in the appropriate directory, set up a virtual environment and install dependencies:
 
