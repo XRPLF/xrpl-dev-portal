@@ -25,6 +25,11 @@ export const repoLink: Schema & { tagName: string } = {
         type: 'String',
         required: false,
       },
+      source: {
+        type: 'Boolean',
+        required: false,
+        default: false,
+      },
     },
     transform(node, config) {
         const attributes = node.transformAttributes(config);

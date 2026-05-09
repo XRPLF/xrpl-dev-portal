@@ -200,10 +200,13 @@ Link to a particular file in a source code repository. The fork and branch are r
 
 Attributes:
 
-- `repo` (required): Selects which repository to link into. Use `devportal` for this site's own repo. To add a new target repo, define these two env vars in `.env`: `PUBLIC_<REPO>_FORK` and `PUBLIC_<REPO>_BRANCH`.
-- `path` (required): The path to the file or folder within the target repository.
-- `github_fork` (optional): Use a custom fork URL for a single link.
-- `github_branch` (optional): Use a custom branch for a single link.
+| Attribute       | Type    | Required | Description|
+|:----------------|:--------|:---------|:-----------|
+| `repo`          | String  | Yes      | Selects which repository to link into. Use `devportal` for this site's own repo. To add a new target repo, define these two env vars in `.env`: `PUBLIC_<REPO>_FORK` and `PUBLIC_<REPO>_BRANCH`. |
+| `path`          | String  | Yes      | The path to the file or folder within the target repository. |
+| `github_fork`   | String  | No       | Use a custom fork URL for a single link. |
+| `github_branch` | String  | No       | Use a custom branch for a single link. |
+| `source`        | Boolean | No       | If `true`, applies the `source-link` CSS class so the link floats right of its containing heading. Defaults to `false` for no styling. |
 
 Example usage:
 

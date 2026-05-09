@@ -81,11 +81,9 @@
     margin: 0;
   }
 
-  // "Source" links float right
-  a[title="Source"],
-  a[title="ソース"] {
-    float: right;
-    padding-left: 20px;
+  // "Source" links align right
+  p:has(> a.source-link:only-child) {
+    text-align: right;
   }
 
   // Make "invisible" headers take up no space either, so we can use them
