@@ -8,7 +8,7 @@ requiredAmendment: PayChan
 txIcon: modify
 ---
 # PaymentChannelFund
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/PayChan.cpp "Source")
+{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/PayChan.cpp" source=true %}[Source]{% /repo-link %}
 
 Add an additional amount to an open [payment channel](../../../../concepts/payment-types/payment-channels.md), and optionally update the expiration time of the channel. Only the source account of the channel can use this transaction.
 

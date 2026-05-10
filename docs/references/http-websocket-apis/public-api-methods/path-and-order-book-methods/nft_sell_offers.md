@@ -5,7 +5,7 @@ labels:
     - NFTs
 ---
 # nft_sell_offers
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/NFTOffers.cpp "Source")
+{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/NFTOffers.cpp" source=true %}[Source]{% /repo-link %}
 
 The `nft_sell_offers` method returns a list of sell offers for a given [NFToken][] object.
 

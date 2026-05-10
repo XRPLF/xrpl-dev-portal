@@ -7,7 +7,7 @@ labels:
   - コアサーバ
 ---
 # peers
-[[ソース]](https://github.com/XRPLF/rippled/blob/52f298f150fc1530d201d3140c80d3eaf781cb5f/src/ripple/rpc/handlers/Peers.cpp "Source")
+{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/Peers.cpp" source=true %}[ソース]{% /repo-link %}
 
 `peers`コマンドは、[ピアプロトコル](../../../../concepts/networks-and-servers/peer-protocol.md)でこのサーバに現在接続されているその他のすべての`rippled`サーバのリスト（各サーバの接続状況と同期状況を含む）を返します。
 

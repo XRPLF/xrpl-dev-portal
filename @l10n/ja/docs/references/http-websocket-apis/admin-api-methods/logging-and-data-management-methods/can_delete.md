@@ -7,7 +7,7 @@ labels:
   - データ保持
 ---
 # can_delete
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/CanDelete.cpp "Source")
+{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/CanDelete.cpp" source=true %}[ソース]{% /repo-link %}
 
 `can_delete`メソッドは[指示による削除が有効なオンライン削除](../../../../infrastructure/configuration/data-retention/online-deletion.md#指示による削除)を使用する`rippled`サーバに削除が可能のレジャーバージョンを通知します。指定したレジャーバージョン以前が削除可能になります。指示による削除が有効ではない場合、このメソッドは何も行いません。
 

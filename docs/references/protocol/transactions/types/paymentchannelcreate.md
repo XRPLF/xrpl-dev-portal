@@ -8,7 +8,7 @@ requiredAmendment: PayChan
 txIcon: create
 ---
 # PaymentChannelCreate
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/PayChan.cpp "Source")
+{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/PayChan.cpp" source=true %}[Source]{% /repo-link %}
 
 Create a [payment channel](../../../../concepts/payment-types/payment-channels.md) and fund it. The address sending this transaction becomes the "source address" of the payment channel.
 

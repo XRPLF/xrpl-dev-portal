@@ -12,7 +12,7 @@ txIcon: send
 
 # VaultWithdraw
 
-[[Source]](https://github.com/XRPLF/rippled/blob/release-3.1/src/xrpld/app/tx/detail/VaultWithdraw.cpp "Source")
+{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/VaultWithdraw.cpp" source=true %}[Source]{% /repo-link %}
 
 Redeem vault shares for assets. The amount of assets received depends on the [exchange rate](../../../../concepts/tokens/single-asset-vaults.md#exchange-algorithm), which adjusts based on the vault’s total assets and any [unrealized losses](../../../../concepts/tokens/single-asset-vaults.md#unrealized-loss).
 

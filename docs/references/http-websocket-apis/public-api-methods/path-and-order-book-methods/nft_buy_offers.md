@@ -5,7 +5,7 @@ labels:
     - NFTs
 ---
 # nft_buy_offers
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/NFTOffers.cpp "Source")
+{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/NFTOffers.cpp" source=true %}[Source]{% /repo-link %}
 
 The `nft_buy_offers` method returns a list of buy offers for a given [NFToken][] object.
 

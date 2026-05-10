@@ -9,7 +9,7 @@ txIcon: cancel
 status: not_enabled
 ---
 # LoanBrokerDelete
-[[Source]](https://github.com/XRPLF/rippled/blob/release-3.1/src/xrpld/app/tx/detail/LoanBrokerDelete.cpp "Source")
+{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/LoanBrokerDelete.cpp" source=true %}[Source]{% /repo-link %}
 
 Deletes a `LoanBroker` ledger entry. Only the owner of the `LoanBroker` entry can delete it.
 

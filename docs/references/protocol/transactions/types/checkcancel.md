@@ -8,7 +8,7 @@ txIcon: cancel
 requiredAmendment: Checks
 ---
 # CheckCancel
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/CancelCheck.cpp "Source")
+{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/CancelCheck.cpp" source=true %}[Source]{% /repo-link %}
 
 Cancels an unredeemed [check](../../../../concepts/payment-types/checks.md), removing it from the ledger without sending any money. The source or the destination of the check can cancel a check at any time. If the check has expired, any address can cancel it.
 

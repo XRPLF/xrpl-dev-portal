@@ -8,7 +8,7 @@ requiredAmendment: AMM
 txIcon: cancel
 ---
 # AMMDelete
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/AMMDelete.cpp "Source")
+{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/AMMDelete.cpp" source=true %}[Source]{% /repo-link %}
 
 Delete an empty [Automated Market Maker](../../../../concepts/tokens/decentralized-exchange/automated-market-makers.md) (AMM) instance that could not be fully deleted automatically.
 

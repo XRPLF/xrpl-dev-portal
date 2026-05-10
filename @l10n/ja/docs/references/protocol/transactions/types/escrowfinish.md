@@ -8,7 +8,7 @@ requiredAmendment: Escrow
 txIcon: finish
 ---
 # EscrowFinish
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/Escrow.cpp "Source")
+{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/Escrow.cpp" source=true %}[ソース]{% /repo-link %}
 
 エスクロー(保留中の支払い)から受取人へXRPを送金します。
 

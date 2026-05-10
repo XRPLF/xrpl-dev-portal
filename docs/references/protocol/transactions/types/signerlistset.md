@@ -8,7 +8,7 @@ requiredAmendment: MultiSign
 txIcon: modify
 ---
 # SignerListSet
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/SetSignerList.cpp "Source")
+{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/SetSignerList.cpp" source=true %}[Source]{% /repo-link %}
 
 Create, replace, or remove a list of signers that can be used to [multi-sign](../../../../concepts/accounts/multi-signing.md) a transaction.
 

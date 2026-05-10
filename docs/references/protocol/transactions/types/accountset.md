@@ -6,7 +6,7 @@ labels:
 txIcon: modify
 ---
 # AccountSet
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/SetAccount.cpp "Source")
+{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/SetAccount.cpp" source=true %}[Source]{% /repo-link %}
 
 Modify the settings or properties of an [account in the XRP Ledger](../../../../concepts/accounts/index.md).
 

@@ -10,7 +10,7 @@ requiredAmendment: PermissionDelegation
 txIcon: modify
 ---
 # DelegateSet
-[[Source]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/app/tx/detail/DelegateSet.cpp "Source")
+{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/DelegateSet.cpp" github_branch="1e01cd34f7a216092ed779f291b43324c167167a" source=true %}[Source]{% /repo-link %}
 
 [Delegate permissions](/docs/concepts/accounts/permission-delegation) to another account to send transactions on your behalf. This transaction type can grant, change, or revoke permissions; it creates, modifies, or deletes a [Delegate ledger entry][] accordingly.
 

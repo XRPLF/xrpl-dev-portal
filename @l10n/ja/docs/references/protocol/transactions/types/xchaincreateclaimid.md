@@ -8,7 +8,7 @@ status: not_enabled
 txIcon: create
 ---
 # XChainCreateClaimID
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/TxFormats.cpp#L399-L406 "ソース")
+{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/XChainBridge.cpp" source=true %}[ソース]{% /repo-link %}
 
 `XChainCreateClaimID`トランザクションはクロスチェーン送金に使われる新しいクロスチェーン請求IDを作成します。クロスチェーン請求IDは*1つの*クロスチェーン送金を表します。
 

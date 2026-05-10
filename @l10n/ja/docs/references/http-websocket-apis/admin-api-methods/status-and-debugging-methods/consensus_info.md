@@ -8,7 +8,7 @@ labels:
   - コアサーバ
 ---
 # consensus_info
-[[ソース]](https://github.com/XRPLF/rippled/blob/a61ffab3f9010d8accfaa98aa3cacc7d38e74121/src/ripple/rpc/handlers/ConsensusInfo.cpp "Source")
+{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/ConsensusInfo.cpp" source=true %}[ソース]{% /repo-link %}
 
 `consensus_info`メソッドは、デバッグのための[コンセンサスプロセス](../../../../concepts/consensus-protocol/index.md)に関する情報を返します。
 

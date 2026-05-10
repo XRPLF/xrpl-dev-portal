@@ -38,39 +38,39 @@ labels:
 
 XRP Ledgerは、各トランザクションについて、以下のすべての不変条件をチェックします。
 
-[[ソース]](https://github.com/XRPLF/rippled/blob/023f5704d07d09e70091f38a0d4e5df213a3144b/src/ripple/app/tx/impl/InvariantCheck.h#L92 "ソース")
+{% repo-link repo="xrpld" path="src/ripple/app/tx/impl/InvariantCheck.h#L92" github_branch="023f5704d07d09e70091f38a0d4e5df213a3144b" source=true %}[ソース]{% /repo-link %}
 
 - [トランザクション手数料チェック](#トランザクション手数料チェック)
 
-[[ソース]](https://github.com/XRPLF/rippled/blob/023f5704d07d09e70091f38a0d4e5df213a3144b/src/ripple/app/tx/impl/InvariantCheck.h#L118 "ソース")
+{% repo-link repo="xrpld" path="src/ripple/app/tx/impl/InvariantCheck.h#L118" github_branch="023f5704d07d09e70091f38a0d4e5df213a3144b" source=true %}[ソース]{% /repo-link %}
 
 - [XRPは作成されません](#xrpは作成されません)
 
-[[ソース]](https://github.com/XRPLF/rippled/blob/023f5704d07d09e70091f38a0d4e5df213a3144b/src/ripple/app/tx/impl/InvariantCheck.h#L146 "ソース")
+{% repo-link repo="xrpld" path="src/ripple/app/tx/impl/InvariantCheck.h#L146" github_branch="023f5704d07d09e70091f38a0d4e5df213a3144b" source=true %}[ソース]{% /repo-link %}
 
 - [アカウントルートが削除されていない](#アカウントルートが削除されていない)
 
-[[ソース]](https://github.com/XRPLF/rippled/blob/023f5704d07d09e70091f38a0d4e5df213a3144b/src/ripple/app/tx/impl/InvariantCheck.h#L173 "ソース")
+{% repo-link repo="xrpld" path="src/ripple/app/tx/impl/InvariantCheck.h#L173" github_branch="023f5704d07d09e70091f38a0d4e5df213a3144b" source=true %}[ソース]{% /repo-link %}
 
 - [XRPの残高確認](#xrpの残高確認)
 
-[[ソース]](https://github.com/XRPLF/rippled/blob/023f5704d07d09e70091f38a0d4e5df213a3144b/src/ripple/app/tx/impl/InvariantCheck.h#L197 "ソース")
+{% repo-link repo="xrpld" path="src/ripple/app/tx/impl/InvariantCheck.h#L197" github_branch="023f5704d07d09e70091f38a0d4e5df213a3144b" source=true %}[ソース]{% /repo-link %}
 
 - [レジャーエントリ形式の一致](#レジャーエントリ形式の一致)
 
-[[ソース]](https://github.com/XRPLF/rippled/blob/023f5704d07d09e70091f38a0d4e5df213a3144b/src/ripple/app/tx/impl/InvariantCheck.h#L224 "ソース")
+{% repo-link repo="xrpld" path="src/ripple/app/tx/impl/InvariantCheck.h#L224" github_branch="023f5704d07d09e70091f38a0d4e5df213a3144b" source=true %}[ソース]{% /repo-link %}
 
 - [XRPのトラストラインはありません](#xrpのトラストラインはありません)
 
-[[ソース]](https://github.com/XRPLF/rippled/blob/023f5704d07d09e70091f38a0d4e5df213a3144b/src/ripple/app/tx/impl/InvariantCheck.h#L251 "ソース")
+{% repo-link repo="xrpld" path="src/ripple/app/tx/impl/InvariantCheck.h#L251" github_branch="023f5704d07d09e70091f38a0d4e5df213a3144b" source=true %}[ソース]{% /repo-link %}
 
 - [不正なオファーでない](#不正なオファーでない)
 
-[[ソース]](https://github.com/XRPLF/rippled/blob/023f5704d07d09e70091f38a0d4e5df213a3144b/src/ripple/app/tx/impl/InvariantCheck.h#L275 "ソース")
+{% repo-link repo="xrpld" path="src/ripple/app/tx/impl/InvariantCheck.h#L275" github_branch="023f5704d07d09e70091f38a0d4e5df213a3144b" source=true %}[ソース]{% /repo-link %}
 
 - [0のエスクローでない](#0のエスクローでない)
 
-[[ソース]](https://github.com/XRPLF/rippled/blob/023f5704d07d09e70091f38a0d4e5df213a3144b/src/ripple/app/tx/impl/InvariantCheck.h#L300 "ソース")
+{% repo-link repo="xrpld" path="src/ripple/app/tx/impl/InvariantCheck.h#L300" github_branch="023f5704d07d09e70091f38a0d4e5df213a3144b" source=true %}[ソース]{% /repo-link %}
 
 - [有効な新規アカウントルート](#有効な新規アカウントルート)
 

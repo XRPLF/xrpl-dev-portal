@@ -8,7 +8,7 @@ txIcon: cancel
 requiredAmendment: Escrow
 ---
 # EscrowCancel
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/Escrow.cpp "Source")
+{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/Escrow.cpp" source=true %}[Source]{% /repo-link %}
 
 Return funds from an expired [escrow](../../../../concepts/payment-types/escrow.md) to its sender.
 

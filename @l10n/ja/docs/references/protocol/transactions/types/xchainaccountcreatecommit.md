@@ -8,7 +8,7 @@ status: not_enabled
 txIcon: create
 ---
 # XChainAccountCreateCommit
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/TxFormats.cpp#L466-L474 "ソース")
+{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/XChainBridge.h#L235" github_branch="70d5c624e8cf732a362335642b2f5125ce4b43c1" source=true %}[ソース]{% /repo-link %}
 
 発行チェーンにトランザクションを送信するために、Witnessサーバ用の新しいアカウントを作成します。このトランザクションはXRP-XRPブリッジにのみ使用できます。
 

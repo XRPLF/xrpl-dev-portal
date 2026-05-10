@@ -5,7 +5,7 @@ labels:
     - Core Server
 ---
 # peer_reservations_add
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/Reservations.cpp "Source")
+{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/Reservations.cpp" source=true %}[Source]{% /repo-link %}
 
 The {% code-page-name /%} method adds or updates a reserved slot for a specific peer server in the XRP Ledger [peer-to-peer network](../../../../concepts/networks-and-servers/peer-protocol.md).
 

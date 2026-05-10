@@ -8,7 +8,7 @@ requiredAmendment: MPTokensV1
 txIcon: modify
 ---
 # MPTokenIssuanceSet
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/MPTokenIssuanceSet.cpp "Source")
+{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/MPTokenIssuanceSet.cpp" source=true %}[Source]{% /repo-link %}
 
 Update a mutable property of a [Multi-purpose Token (MPT)](../../../../concepts/tokens/fungible-tokens/multi-purpose-tokens.md) issuance, including locking (freezing) or unlocking the tokens globally or for an individual holder.
 

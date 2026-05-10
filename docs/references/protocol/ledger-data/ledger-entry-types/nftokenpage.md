@@ -5,7 +5,7 @@ labels:
  - Non-fungible Tokens, NFTs
 ---
 # NFTokenPage
-[[Source]](https://github.com/XRPLF/rippled/blob/f64cf9187affd69650907d0d92e097eb29693945/include/xrpl/protocol/detail/ledger_entries.macro#L97-L103 "Source")
+{% repo-link repo="xrpld" path="include/xrpl/protocol/detail/ledger_entries.macro#L97-L103" github_branch="f64cf9187affd69650907d0d92e097eb29693945" source=true %}[Source]{% /repo-link %}
 
 An `NFTokenPage` entry represents a collection of [NFTs](../../../../concepts/tokens/nfts/index.md) owned by the same account. An account can have multiple `NFTokenPage` entries, which form a doubly linked list. NFT directories are automatically updated when an account mints, burns, buys, or sells NFTs.
 

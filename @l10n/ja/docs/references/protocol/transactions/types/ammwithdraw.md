@@ -10,7 +10,7 @@ requiredAmendment: AMM
 txIcon: send
 ---
 # AMMWithdraw
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/AMMWithdraw.cpp "Source")
+{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/AMMWithdraw.cpp" source=true %}[ソース]{% /repo-link %}
 
 AMMの流動性プロバイダトークン（LPトークン）を返却することで、[自動マーケットメーカー](../../../../concepts/tokens/decentralized-exchange/automated-market-makers.md)(AMM)インスタンスから資産を引き出します。
 

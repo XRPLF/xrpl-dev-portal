@@ -7,7 +7,7 @@ labels:
   - Checks
 ---
 # Check
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp#L157-L170 "Source")
+{% repo-link repo="xrpld" path="include/xrpl/protocol/detail/ledger_entries.macro#L50-L63" github_branch="f64cf9187affd69650907d0d92e097eb29693945" source=true %}[ソース]{% /repo-link %}
 
 _（[Checks Amendment][]が必要です）_
 
@@ -65,7 +65,7 @@ _（[Checks Amendment][]が必要です）_
 
 
 ## Check IDのフォーマット
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/Indexes.cpp#L193-L200 "Source")
+{% repo-link repo="xrpld" path="src/libxrpl/protocol/Indexes.cpp#L335-L339" github_branch="70d5c624e8cf732a362335642b2f5125ce4b43c1" source=true %}[ソース]{% /repo-link %}
 
 `Check`オブジェクトのIDは、以下の値がこの順序で連結されている[SHA-512Half][]です。
 

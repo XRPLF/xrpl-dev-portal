@@ -8,7 +8,7 @@ txIcon: cancel
 ---
 # AccountDelete
 
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/DeleteAccount.cpp "Source")
+{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/DeleteAccount.cpp" source=true %}[ソース]{% /repo-link %}
 
 AccountDeleteトランザクションは、XRP Ledgerで[アカウント](../../ledger-data/ledger-entry-types/accountroot.md)と、アカウントが所有するオブジェクトを削除し、可能であれば、アカウントの残りのXRPを指定された送金先アカウントに送信します。アカウントを削除する要件については、[アカウントの削除](../../../../concepts/accounts/deleting-accounts.md)をご覧ください。
 

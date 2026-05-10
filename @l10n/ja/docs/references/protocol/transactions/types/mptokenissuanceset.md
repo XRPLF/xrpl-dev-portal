@@ -8,7 +8,7 @@ requiredAmendment: MPTokensV1
 txIcon: modify
 ---
 # MPTokenIssuanceSet
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/MPTokenIssuanceSet.cpp "ソース")
+{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/MPTokenIssuanceSet.cpp" source=true %}[ソース]{% /repo-link %}
 
 {% partial file="/@l10n/ja/docs/_snippets/mpts-disclaimer.md" /%}
 

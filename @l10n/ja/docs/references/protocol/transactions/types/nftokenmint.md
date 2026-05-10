@@ -8,7 +8,7 @@ requiredAmendment: NonFungibleTokensV1_1
 txIcon: create
 ---
 # NFTokenMint
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/NFTokenMint.cpp "Source")
+{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/NFTokenMint.cpp" source=true %}[ソース]{% /repo-link %}
 
 `NFTokenMint`トランザクションは非代替性トークンを作成し、`NFTokenMinter`に紐付く[NFTokenPageオブジェクト][]に[NFToken][]オブジェクトとして追加します。このトランザクションは`NFTokenMinter`にとって、不変と定義されているトークンフィールド(例えば`Flags`)を設定することができる唯一の方法です。
 

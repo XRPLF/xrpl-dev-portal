@@ -8,7 +8,7 @@ requiredAmendment: Checks
 txIcon: create
 ---
 # CheckCreate
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/CreateCheck.cpp "Source")
+{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/CreateCheck.cpp" source=true %}[ソース]{% /repo-link %}
 
 レジャーにCheckオブジェクトを作成します。これにより指定の送金先は後日換金することができます。このトランザクションの送信者はCheckの送金元です。
 

@@ -7,7 +7,7 @@ labels:
   - コアサーバ
 ---
 # stop
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/Stop.cpp "Source")
+{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/Stop.cpp" source=true %}[ソース]{% /repo-link %}
 
 サーバのグレースフルシャットダウンを行います。
 

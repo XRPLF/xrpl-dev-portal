@@ -7,9 +7,9 @@ labels:
   - トランザクション送信
 ---
 # submit_multisigned
-[[ソース]](https://github.com/XRPLF/rippled/blob/release/src/ripple/rpc/handlers/SubmitMultiSigned.cpp "Source")
+{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/SubmitMultiSigned.cpp" source=true %}[ソース]{% /repo-link %}
 
-`submit_multisigned`コマンドは[マルチシグ](../../../../concepts/accounts/multi-signing.md)トランザクションを適用し、このトランザクションをネットワークに送信して、今後のレジャーに追加します。（[`submit`コマンドを送信専用モードで](submit.md#送信専用モード)使用して、マルチシグトランザクションをバイナリー形式で送信することもできます。)
+`submit_multisigned`コマンドは[マルチシグ](../../../../concepts/accounts/multi-signing.md)トランザクションを適用し、このトランザクションをネットワークに送信して、今後のレジャーに追加します。（[`submit`コマンドを送信専用モードで](submit.md#送信専用モード)使用して、マルチシグトランザクションをバイナリー形式で送信することもできます。
 
 このコマンドを使用するには、[MultiSign Amendment][]が有効になっている必要があります。{% badge href="https://github.com/XRPLF/rippled/releases/tag/0.31.0" %}新規: rippled 0.31.0{% /badge %}
 

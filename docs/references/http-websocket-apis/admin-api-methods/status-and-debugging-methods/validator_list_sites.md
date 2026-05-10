@@ -6,7 +6,7 @@ labels:
     - Blockchain
 ---
 # validator_list_sites
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/ValidatorListSites.cpp "Source")
+{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/ValidatorListSites.cpp" source=true %}[Source]{% /repo-link %}
 
 The `validator_list_sites` command returns status information of sites serving validator lists.
 

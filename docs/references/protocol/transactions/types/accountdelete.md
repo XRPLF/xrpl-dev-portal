@@ -7,7 +7,7 @@ requiredAmendment: DeletableAccounts
 txIcon: cancel
 ---
 # AccountDelete
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/DeleteAccount.cpp "Source")
+{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/DeleteAccount.cpp" source=true %}[Source]{% /repo-link %}
 
 An AccountDelete transaction deletes an [account](../../ledger-data/ledger-entry-types/accountroot.md) and any objects it owns in the XRP Ledger, if possible, sending the account's remaining XRP to a specified destination account. See [Deleting Accounts](../../../../concepts/accounts/deleting-accounts.md) for the requirements to delete an account.
 

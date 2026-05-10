@@ -8,7 +8,7 @@ status: not_enabled
 txIcon: finish
 ---
 # XChainClaim
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/TxFormats.cpp#L418-L427 "ソース")
+{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/XChainBridge.cpp" source=true %}[ソース]{% /repo-link %}
 
 `XChainClaim`トランザクションはクロスチェーンでの価値の移転を完了させます。`XChainClaim`トランザクションにより、ユーザは送信元チェーンでロックされた価値と同等の価値を送信先チェーンで請求することができます。ユーザは、送金元チェーンでロックされた価値に関連付けられたクロスチェーン請求ID（`Account`フィールド）を所有している場合にのみ、その価値を請求することができます。ユーザは誰にでも資金を送ることができます(`Destination`フィールド)。このトランザクションが必要になるのは`XChainCommit`トランザクションで`OtherChainDestination`が指定されていない場合、または自動送金で何か問題が発生した場合のみです。
 

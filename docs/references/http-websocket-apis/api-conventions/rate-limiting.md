@@ -46,7 +46,7 @@ Server is overloaded
 ```
 
 ## Rate Per Request
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/libxrpl/resource/Fees.cpp "Source")
+{% repo-link repo="xrpld" path="src/libxrpl/resource/Fees.cpp" source=true %}[Source]{% /repo-link %}
 
 The server calculates a client's usage rate based on the number of requests made over time, and weighs different types of requests based on approximately how much work the server must do to serve them. Follow-up messages from the server for the [subscribe method][] and [path_find method][] also count towards a client's usage rate.
 

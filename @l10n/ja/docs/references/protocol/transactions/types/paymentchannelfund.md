@@ -8,7 +8,7 @@ requiredAmendment: PayChan
 txIcon: modify
 ---
 # PaymentChannelFund
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/PayChan.cpp "Source")
+{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/PayChan.cpp" source=true %}[ソース]{% /repo-link %}
 
 Payment ChannelにXRPを追加する、有効期限の更新も可能。このトランザクションは、Channelの支払元アドレスだけが使用できます。
 

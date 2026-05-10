@@ -7,7 +7,7 @@ txIcon: modify
 ---
 # AccountSet
 
-[[ソース]](https://github.com/XRPLF/rippled/blob/f65cea66ef99b1de149c02c15f06de6c61abf360/src/ripple/app/transactors/SetAccount.cpp "ソース")
+{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/SetAccount.cpp" source=true %}[ソース]{% /repo-link %}
 
 AccountSetトランザクションは、[XRP Ledgerのアカウント](../../ledger-data/ledger-entry-types/accountroot.md)のプロパティーを修正します。
 

@@ -8,7 +8,7 @@ requiredAmendment: DID
 txIcon: create
 ---
 # DIDSet
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/DID.cpp "ソース")
+{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/DID.cpp" source=true %}[ソース]{% /repo-link %}
 
 新しい[DIDレジャーエントリ](../../ledger-data/ledger-entry-types/did.md)を作成したり、既存の項目を更新したりします。
 

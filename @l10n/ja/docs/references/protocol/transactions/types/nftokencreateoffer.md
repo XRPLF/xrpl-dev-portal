@@ -9,7 +9,7 @@ requiredAmendment: NonFungibleTokensV1_1
 txIcon: create
 ---
 # NFTokenCreateOffer
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/NFTokenCreateOffer.cpp "ソース")
+{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/NFTokenCreateOffer.cpp" source=true %}[ソース]{% /repo-link %}
 
 トランザクションを送信するアカウントが所有する`NFToken`に対する新しい _売却_ オファー、または別のアカウントが所有する`NFToken`に対する新しい _購入_ オファーを作成します。
 

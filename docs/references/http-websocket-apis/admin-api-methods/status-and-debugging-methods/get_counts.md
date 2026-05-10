@@ -5,7 +5,7 @@ labels:
     - Core Server
 ---
 # get_counts
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/GetCounts.cpp "Source")
+{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/GetCounts.cpp" source=true %}[Source]{% /repo-link %}
 
 The `get_counts` command provides various stats about the health of the server, mostly the number of objects of different types that it currently holds in memory.
 

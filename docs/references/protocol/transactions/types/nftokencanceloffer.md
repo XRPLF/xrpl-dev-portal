@@ -9,7 +9,7 @@ requiredAmendment: NonFungibleTokensV1_1
 txIcon: cancel
 ---
 # NFTokenCancelOffer
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/NFTokenCancelOffer.cpp "Source")
+{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/NFTokenCancelOffer.cpp" source=true %}[Source]{% /repo-link %}
 
 Cancel an offer to buy or sell a [non-fungible token (NFT)](../../../../concepts/tokens/nfts/index.md).
 

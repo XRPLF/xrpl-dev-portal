@@ -7,7 +7,7 @@ label:
   - ブロックチェーン
 ---
 # ledger
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/LedgerHandler.cpp "Source")
+{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/LedgerHandler.cpp" source=true %}[ソース]{% /repo-link %}
 
 公開レジャーに関する情報を取得します。
 

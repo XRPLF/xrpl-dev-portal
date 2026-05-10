@@ -7,7 +7,7 @@ requiredAmendment: Credentials
 txIcon: create
 ---
 # CredentialCreate
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/Credentials.cpp "Source")
+{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/Credentials.cpp" source=true %}[Source]{% /repo-link %}
 
 Provisionally issue a [credential](../../../../concepts/decentralized-storage/credentials.md) in the ledger. The credential is not valid until the subject of the credential accepts it with a [CredentialAccept transaction][].
 

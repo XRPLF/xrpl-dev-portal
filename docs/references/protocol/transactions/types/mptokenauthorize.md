@@ -8,7 +8,7 @@ requiredAmendment: MPTokensV1
 txIcon: modify
 ---
 # MPTokenAuthorize
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/MPTokenAuthorize.cpp "Source")
+{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/MPTokenAuthorize.cpp" source=true %}[Source]{% /repo-link %}
 
 Control whether an account can hold a given [Multi-purpose Token (MPT)](../../../../concepts/tokens/fungible-tokens/multi-purpose-tokens.md). This transaction has several uses:
 

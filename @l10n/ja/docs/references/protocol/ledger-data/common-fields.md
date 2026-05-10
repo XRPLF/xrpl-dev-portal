@@ -4,7 +4,7 @@ seo:
     description: これらの共通フィールドは、すべてのレジャーエントリの一部です。
 ---
 # Ledger Entryの共通フィールド
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp)
+{% repo-link repo="xrpld" path="src/libxrpl/protocol/LedgerFormats.cpp" source=true %}[ソース]{% /repo-link %}
 
 [レジャー](../../../concepts/ledgers/index.md)の状態データの各エントリは、同じ共通フィールドのセットと、[レジャーエントリのタイプ](ledger-entry-types/index.md)に基づく追加フィールドを持ちます。フィールド名は大文字と小文字を区別します。すべてのレジャーエントリの共通フィールドは以下の通りです。
 
@@ -19,7 +19,7 @@ seo:
 
 ## Ledger Entry ID
 
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/Indexes.cpp)
+{% repo-link repo="xrpld" path="src/libxrpl/protocol/Indexes.cpp" source=true %}[ソース]{% /repo-link %}
 
 各レジャーエントリには一意のIDがあります。IDは、エントリの重要な内容と[名前空間識別子](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/LedgerFormats.h)をハッシュすることで得られます。[レジャーエントリのタイプ](ledger-entry-types/index.md)は、使用する名前空間識別子と、ハッシュに含めるコンテンツを決定します。これにより、すべてのIDが一意になります。ハッシュ関数は[SHA-512Half][]です。
 

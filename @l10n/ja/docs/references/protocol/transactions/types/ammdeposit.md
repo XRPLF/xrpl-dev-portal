@@ -10,7 +10,7 @@ requiredAmendment: AMM
 txIcon: send
 ---
 # AMMDeposit
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/AMMDeposit.cpp "Source")
+{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/AMMDeposit.cpp" source=true %}[ソース]{% /repo-link %}
 
 [自動マーケットメーカー](../../../../concepts/tokens/decentralized-exchange/automated-market-makers.md)（AMM）インスタンスに資金を預け、AMMの流動性プロバイダートークン（ _LPトークン_ ）を受け取ります。AMMのプールにある資産の一方または両方を預けることができます。
 

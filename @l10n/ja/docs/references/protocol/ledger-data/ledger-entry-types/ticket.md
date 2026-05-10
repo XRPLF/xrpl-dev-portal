@@ -8,7 +8,7 @@ labels:
 ---
 # Ticket
 
-[[ソース]](https://github.com/XRPLF/rippled/blob/76a6956138c4ecd156c5c408f136ed3d6ab7d0c1/src/ripple/protocol/impl/LedgerFormats.cpp#L155-L164)
+{% repo-link repo="xrpld" path="include/xrpl/protocol/detail/ledger_entries.macro#L124-L130" github_branch="f64cf9187affd69650907d0d92e097eb29693945" source=true %}[ソース]{% /repo-link %}
 
 _([TicketBatch amendment][]が必要です)_
 

@@ -7,7 +7,7 @@ labels:
   - トランザクション送信
 ---
 # sign_for
-[[ソース]](https://github.com/XRPLF/rippled/blob/release/src/ripple/rpc/handlers/SignFor.cpp "Source")
+{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/SignFor.cpp" source=true %}[ソース]{% /repo-link %}
 
 `sign_for`コマンドは、[マルチシグトランザクション](../../../../concepts/accounts/multi-signing.md)の署名を1つ提供します。
 

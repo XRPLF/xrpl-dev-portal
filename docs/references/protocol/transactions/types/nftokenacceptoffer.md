@@ -9,7 +9,7 @@ requiredAmendment: NonFungibleTokensV1_1
 txIcon: finish
 ---
 # NFTokenAcceptOffer
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/NFTokenAcceptOffer.cpp "Source")
+{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/NFTokenAcceptOffer.cpp" source=true %}[Source]{% /repo-link %}
 
 Accept an offer to buy or sell a [non-fungible token (NFT)](../../../../concepts/tokens/nfts/index.md). This transaction has two modes:
 

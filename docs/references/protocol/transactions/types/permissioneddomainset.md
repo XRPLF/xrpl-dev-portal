@@ -10,7 +10,7 @@ txIcon: create
 status: not_enabled
 ---
 # PermissionedDomainSet
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/PermissionedDomainSet.cpp "Source")
+{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/PermissionedDomainSet.cpp" source=true %}[Source]{% /repo-link %}
 
 Create a [permissioned domain][], or modify one that you own.
 

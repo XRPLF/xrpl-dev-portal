@@ -6,7 +6,7 @@ labels:
     - Cross-Currency
 ---
 # book_changes
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/BookChanges.h "Source")
+{% repo-link repo="xrpld" path="src/xrpld/rpc/BookChanges.h" source=true %}[Source]{% /repo-link %}
 
 The {% code-page-name /%} method reports information about changes to the order books in the [decentralized exchange (DEX)](../../../../concepts/tokens/decentralized-exchange/index.md) compared with the previous ledger version. This may be useful for building "candlestick" charts.
 

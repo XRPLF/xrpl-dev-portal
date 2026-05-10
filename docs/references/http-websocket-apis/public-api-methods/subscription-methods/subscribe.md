@@ -10,7 +10,7 @@ labels:
   - Smart Contracts
 ---
 # subscribe
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/Subscribe.cpp "Source")
+{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/Subscribe.cpp" source=true %}[Source]{% /repo-link %}
 
 The `subscribe` method requests periodic notifications from the server when certain events happen.
 

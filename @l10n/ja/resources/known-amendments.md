@@ -5,7 +5,7 @@ labels:
   - ブロックチェーン
 ---
 # 既知のAmendment
-[[ソース]](https://github.com/XRPLF/rippled/blob/develop/include/xrpl/protocol/detail/features.macro "Source")
+{% repo-link repo="xrpld" path="include/xrpl/protocol/detail/features.macro" source=true %}[ソース]{% /repo-link %}
 
 以下に示すのは、XRP Ledgerに関する既知のAmendmentのすべてとそのステータスをまとめた総合リストです。
 

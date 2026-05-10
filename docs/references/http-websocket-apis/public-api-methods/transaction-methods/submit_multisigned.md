@@ -5,7 +5,7 @@ labels:
     - Transaction Sending
 ---
 # submit_multisigned
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/SubmitMultiSigned.cpp "Source")
+{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/SubmitMultiSigned.cpp" source=true %}[Source]{% /repo-link %}
 
 The `submit_multisigned` command applies a [multi-signed](../../../../concepts/accounts/multi-signing.md) transaction and sends it to the network to be included in future ledgers. (You can also submit multi-signed transactions in binary form using the [`submit` command in submit-only mode](submit.md#submit-only-mode).)
 

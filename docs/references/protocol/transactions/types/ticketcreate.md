@@ -8,7 +8,7 @@ requiredAmendment: TicketBatch
 txIcon: create
 ---
 # TicketCreate
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/CreateTicket.cpp "Source")
+{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/CreateTicket.cpp" source=true %}[Source]{% /repo-link %}
 
 Set aside one or more [sequence numbers][Sequence Number] as [tickets](../../../../concepts/accounts/tickets.md).
 

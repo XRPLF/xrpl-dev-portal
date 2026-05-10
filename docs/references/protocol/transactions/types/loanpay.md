@@ -9,7 +9,7 @@ txIcon: send
 status: not_enabled
 ---
 # LoanPay
-[[Source]](https://github.com/XRPLF/rippled/blob/release-3.1/src/xrpld/app/tx/detail/LoanPay.cpp "Source")
+{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/LoanPay.cpp" source=true %}[Source]{% /repo-link %}
 
 Makes a payment on an active loan. Only the borrower on the loan can make payments, and payments must meet the minimum amount required for that period.
 

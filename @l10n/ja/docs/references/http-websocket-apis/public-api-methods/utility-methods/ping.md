@@ -7,7 +7,7 @@ labels:
   - コアサーバ
 ---
 # ping
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/Ping.cpp "Source")
+{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/Ping.cpp" source=true %}[ソース]{% /repo-link %}
 
 `ping`コマンドは確認レスポンスを返します。これにより、クライアントは接続のステータスと遅延をテストできます。
 

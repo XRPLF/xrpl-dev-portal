@@ -8,7 +8,7 @@ labels:
   - ブロックチェーン
 ---
 # レジャーヘッダー
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/ledger/ReadView.h#L71 "Source")
+{% repo-link repo="xrpld" path="src/xrpld/app/consensus/RCLCxLedger.h" source=true %}[ソース]{% /repo-link %}
 
 すべてのレジャーバージョンには、その内容を記述する一意のヘッダーが含まれています。[ledgerメソッド][]を使用してレジャーのヘッダー情報を検索できます。レジャーヘッダーの内容を以下に示します。
 

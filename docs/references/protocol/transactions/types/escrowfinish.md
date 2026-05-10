@@ -8,7 +8,7 @@ txIcon: finish
 requiredAmendment: Escrow
 ---
 # EscrowFinish
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/Escrow.cpp "Source")
+{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/Escrow.cpp" source=true %}[Source]{% /repo-link %}
 
 Deliver funds from an [escrow](../../../../concepts/payment-types/escrow.md) to the recipient.
 

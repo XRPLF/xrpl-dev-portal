@@ -7,7 +7,7 @@ labels:
 status: not_enabled
 ---
 # Delegate
-[[Source]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/include/xrpl/protocol/detail/ledger_entries.macro#L475-L482 "Source")
+{% repo-link repo="xrpld" path="include/xrpl/protocol/detail/ledger_entries.macro#L475-L482" github_branch="1e01cd34f7a216092ed779f291b43324c167167a" source=true %}[Source]{% /repo-link %}
 
 A `Delegate` ledger entry stores a set of permissions that an account has delegated to another account. You create a `Delegate` entry by sending a [DelegateSet transaction][].
 

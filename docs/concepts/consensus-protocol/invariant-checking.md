@@ -34,7 +34,7 @@ To include the transaction in the ledger with a `tec`-class code, some minimal p
 
 ## Active Invariants
 
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/InvariantCheck.h "Source")
+{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/InvariantCheck.h" source=true %}[Source]{% /repo-link %}
 
 The XRP Ledger checks all the following invariants on each transaction:
 

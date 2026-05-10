@@ -6,7 +6,7 @@ labels:
   - XRP
 ---
 # account_info
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/AccountInfo.cpp "Source")
+{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/AccountInfo.cpp" source=true %}[Source]{% /repo-link %}
 
 The `account_info` command retrieves information about an account, its activity, and its XRP balance. All information retrieved is relative to a particular version of the ledger.
 

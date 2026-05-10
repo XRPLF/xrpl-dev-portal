@@ -8,7 +8,7 @@ labels:
   - アカウント
 ---
 # wallet_propose
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/WalletPropose.cpp "Source")
+{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/WalletPropose.cpp" source=true %}[ソース]{% /repo-link %}
 
 `wallet_propose`メソッドを使用して、キーペアとXRP Ledgerアドレスを生成します。このコマンドは単にキーとアドレス値を生成し、XRP Ledger自体には何ら影響しません。レジャー上で資金供給済みのアドレスになるには、そのアドレスで、[必要準備金](../../../../concepts/accounts/reserves.md)を満たすのに十分なXRPの[Paymentトランザクションを受け取る](../../../../concepts/accounts/index.md#アカウントの作成)必要があります。
 

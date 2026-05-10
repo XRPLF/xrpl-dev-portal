@@ -5,7 +5,7 @@ labels:
     - Escrow
 ---
 # Escrow
-[[ソース]](https://github.com/XRPLF/rippled/blob/c6b6d82a754fe449cc533e18659df483c10a5c98/src/ripple/protocol/impl/LedgerFormats.cpp#L90-L101 "Source")
+{% repo-link repo="xrpld" path="include/xrpl/protocol/detail/ledger_entries.macro#L344-L359" source=true %}[ソース]{% /repo-link %}
 
 `Escrow`レジャーエントリは特定の条件が満たされるまでXRPを保持する1つの[エスクロー](../../../../concepts/payment-types/escrow.md)を表します。
 

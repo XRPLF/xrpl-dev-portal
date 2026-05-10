@@ -5,7 +5,7 @@ labels:
     - Core Server
 ---
 # connect
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/Connect.cpp "Source")
+{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/Connect.cpp" source=true %}[Source]{% /repo-link %}
 
 The `connect` command forces the `rippled` server to connect to a specific peer server.
 

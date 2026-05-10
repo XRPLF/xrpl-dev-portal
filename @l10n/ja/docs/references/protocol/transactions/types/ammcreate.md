@@ -10,7 +10,7 @@ requiredAmendment: AMM
 txIcon: create
 ---
 # AMMCreate
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/AMMCreate.cpp "Source")
+{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/AMMCreate.cpp" source=true %}[ソース]{% /repo-link %}
 
 {% amendment-disclaimer name="AMM" /%}
 

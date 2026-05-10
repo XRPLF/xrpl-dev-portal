@@ -6,7 +6,7 @@ labels:
     - Accounts
 ---
 # account_tx
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/AccountTx.cpp "Source")
+{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/AccountTx.cpp" source=true %}[Source]{% /repo-link %}
 
 The `account_tx` method retrieves a list of validated transactions that involve a given account.
 

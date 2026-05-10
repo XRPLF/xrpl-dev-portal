@@ -5,7 +5,7 @@ labels:
   - Security
 ---
 # DepositPreauth
-[[Source]](https://github.com/XRPLF/rippled/blob/f64cf9187affd69650907d0d92e097eb29693945/include/xrpl/protocol/detail/ledger_entries.macro#L246-L253 "Source")
+{% repo-link repo="xrpld" path="include/xrpl/protocol/detail/ledger_entries.macro#L246-L253" github_branch="f64cf9187affd69650907d0d92e097eb29693945" source=true %}[Source]{% /repo-link %}
 
 A `DepositPreauth` entry tracks a preauthorization from one account. You can create a preauthorization by sending a [DepositPreauth transaction][], but it has no effect unless you are using [Deposit Authorization](../../../../concepts/accounts/depositauth.md).
 

@@ -5,7 +5,7 @@ labels:
     - Core Server
 ---
 # peers
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/Peers.cpp "Source")
+{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/Peers.cpp" source=true %}[Source]{% /repo-link %}
 
 The `peers` command returns a list of all other `rippled` servers currently connected to this one over the [Peer Protocol](../../../../concepts/networks-and-servers/peer-protocol.md), including information on their connection and sync status.
 

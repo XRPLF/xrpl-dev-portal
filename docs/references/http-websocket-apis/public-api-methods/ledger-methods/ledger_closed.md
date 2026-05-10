@@ -5,7 +5,7 @@ labels:
     - Blockchain
 ---
 # ledger_closed
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/LedgerClosed.cpp "Source")
+{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/LedgerClosed.cpp" source=true %}[Source]{% /repo-link %}
 
 The `ledger_closed` method returns the unique identifiers of the most recently closed ledger. (This ledger is not necessarily validated and immutable yet.)
 

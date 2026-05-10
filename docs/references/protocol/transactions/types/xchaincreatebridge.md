@@ -8,7 +8,7 @@ status: not_enabled
 txIcon: create
 ---
 # XChainCreateBridge
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/XChainBridge.cpp "Source")
+{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/XChainBridge.cpp" source=true %}[Source]{% /repo-link %}
 
 Create a new [cross-chain bridge](../../../../concepts/xrpl-sidechains/cross-chain-bridges.md) on the chain that the transaction is submitted on, providing information about door accounts and assets for the bridge.
 

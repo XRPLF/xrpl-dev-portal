@@ -8,7 +8,7 @@ requiredAmendment: NonFungibleTokensV1_1
 txIcon: create
 ---
 # NFTokenMint
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/NFTokenMint.cpp "Source")
+{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/NFTokenMint.cpp" source=true %}[Source]{% /repo-link %}
 
 Create a [non-fungible token (NFT)](../../../../concepts/tokens/nfts/index.md). This is the only opportunity the minter has to specify any token fields and flags that are immutable. This transaction can be sent by the NFT's issuer or by an [authorized minter](../../../../concepts/tokens/nfts/authorizing-another-minter.md).
 
