@@ -5,7 +5,7 @@ labels:
     - Blockchain
 ---
 # EnableAmendment
-{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/Change.cpp" source=true %}[Source]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/Change.cpp" format="source-link" %}[Source]{% /repo-link %}
 
 An `EnableAmendment` [pseudo-transaction](./index.md) marks a change in the status of a proposed [amendment to the protocol](../../../../concepts/networks-and-servers/amendments.md). The possible status changes are:
 

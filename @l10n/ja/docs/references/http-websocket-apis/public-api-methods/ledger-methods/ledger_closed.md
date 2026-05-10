@@ -7,7 +7,7 @@ label:
   - ブロックチェーン
 ---
 # ledger_closed
-{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/LedgerClosed.cpp" source=true %}[ソース]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/LedgerClosed.cpp" format="source-link" %}[ソース]{% /repo-link %}
 
 `ledger_closed`メソッドは、最新の決済済みレジャーの一意のIDを返します。（このレジャーは必ずしも検証済みで変更不可能ではありません。）
 

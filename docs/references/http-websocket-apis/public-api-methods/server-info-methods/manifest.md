@@ -5,7 +5,7 @@ labels:
     - Blockchain
 ---
 # manifest
-{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/DoManifest.cpp" source=true %}[Source]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/DoManifest.cpp" format="source-link" %}[Source]{% /repo-link %}
 
 The {% code-page-name /%} method reports the current "manifest" information for a given validator public key. The "manifest" is a block of data that authorizes an ephemeral signing key with a signature from the validator's master key pair. {% badge href="https://github.com/XRPLF/rippled/releases/tag/1.7.0" %}Updated in: rippled 1.7.0{% /badge %}
 

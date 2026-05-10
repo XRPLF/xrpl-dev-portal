@@ -8,7 +8,7 @@ requiredAmendment: PriceOracle
 txIcon: create
 ---
 # OracleSet
-{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/SetOracle.cpp" source=true %}[ソース]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/SetOracle.cpp" format="source-link" %}[ソース]{% /repo-link %}
 
 Oracle Document ID を使用して、新しい`Oracle`レジャーエントリを作成するか、既存のフィールドを更新します。
 

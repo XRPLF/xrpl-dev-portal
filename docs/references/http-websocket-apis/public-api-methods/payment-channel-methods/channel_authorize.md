@@ -5,7 +5,7 @@ labels:
     - Payment Channels
 ---
 # channel_authorize
-{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/PayChanClaim.cpp" source=true %}[Source]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/PayChanClaim.cpp" format="source-link" %}[Source]{% /repo-link %}
 
 The `channel_authorize` method creates a signature that can be used to redeem a specific amount of XRP from a payment channel.
 

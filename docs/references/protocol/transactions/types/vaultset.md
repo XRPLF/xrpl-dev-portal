@@ -12,7 +12,7 @@ txIcon: modify
 
 # VaultSet
 
-{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/VaultSet.cpp" source=true %}[Source]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/VaultSet.cpp" format="source-link" %}[Source]{% /repo-link %}
 
 Modifies a single asset vault that you own. This transaction allows the Vault Owner to update certain mutable fields, including vault metadata and the maximum asset amount.
 

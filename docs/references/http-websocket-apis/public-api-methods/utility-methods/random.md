@@ -6,7 +6,7 @@ labels:
 ---
 # random
 
-{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/Random.cpp" source=true %}[Source]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/Random.cpp" format="source-link" %}[Source]{% /repo-link %}
 
 The `random` command provides a random number to be used as a source of entropy for random number generation by clients.
 

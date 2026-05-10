@@ -6,7 +6,7 @@ labels:
   - Accounts
 ---
 # gateway_balances
-{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/GatewayBalances.cpp" source=true %}[Source]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/GatewayBalances.cpp" format="source-link" %}[Source]{% /repo-link %}
 
 The `gateway_balances` command calculates the total balances issued by a given account, optionally excluding amounts held by [operational addresses](../../../../concepts/accounts/account-types.md).
 

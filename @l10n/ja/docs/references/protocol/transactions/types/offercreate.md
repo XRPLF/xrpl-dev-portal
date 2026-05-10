@@ -6,7 +6,7 @@ labels:
 txIcon: create
 ---
 # OfferCreate
-{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/CreateOffer.cpp" source=true %}[ソース]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/CreateOffer.cpp" format="source-link" %}[ソース]{% /repo-link %}
 
 OfferCreateトランザクションは[分散型取引所](../../../../concepts/tokens/decentralized-exchange/index.md)で[注文](../../../../concepts/tokens/decentralized-exchange/offers.md)を作成します。
 

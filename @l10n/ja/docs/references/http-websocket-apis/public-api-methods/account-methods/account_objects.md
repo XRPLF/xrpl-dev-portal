@@ -8,7 +8,7 @@ labels:
   - データ保持
 ---
 # account_objects
-{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/AccountObjects.cpp" source=true %}[ソース]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/AccountObjects.cpp" format="source-link" %}[ソース]{% /repo-link %}
 
 `account_objects`コマンドは、アカウントが所有するすべてのレジャーエントリの生[レジャーフォーマット][]を返します。アカウントのトラストラインと残高の概要については、[account_linesメソッド][]をご覧ください。
 

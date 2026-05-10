@@ -8,7 +8,7 @@ status: not_enabled
 txIcon: create
 ---
 # XChainCreateBridge
-{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/XChainBridge.cpp" source=true %}[ソース]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/XChainBridge.cpp" format="source-link" %}[ソース]{% /repo-link %}
 
 新しい`Bridge`レジャーオブジェクトを作成し、トランザクショ ンが送信されたチェーン上に新しいクロスチェーンブリッジの入り口を定義します。これにはブリッジのドアアカウントと資産に関する情報が含まれます。
 

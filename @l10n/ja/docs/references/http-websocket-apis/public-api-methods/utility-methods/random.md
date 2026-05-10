@@ -7,7 +7,7 @@ labels:
   - コアサーバ
 ---
 # random
-{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/Random.cpp" source=true %}[ソース]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/Random.cpp" format="source-link" %}[ソース]{% /repo-link %}
 
 `random`コマンドは、クライアントが乱数生成のエントロピー生成源として使用する乱数を提供します。
 

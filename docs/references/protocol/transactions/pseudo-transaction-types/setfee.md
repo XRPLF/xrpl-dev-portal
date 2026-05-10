@@ -5,7 +5,7 @@ labels:
     - Fees
 ---
 # SetFee
-{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/Change.cpp" source=true %}[Source]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/Change.cpp" format="source-link" %}[Source]{% /repo-link %}
 
 A `SetFee` [pseudo-transaction](./index.md) marks a change in [transaction cost](../../../../concepts/transactions/transaction-cost.md) or [reserve requirements](../../../../concepts/accounts/reserves.md) as a result of [fee voting](../../../../concepts/consensus-protocol/fee-voting.md).
 

@@ -7,7 +7,7 @@ labels:
   - トークン
 ---
 # account_currencies
-{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/AccountCurrenciesHandler.cpp" source=true %}[ソース]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/AccountCurrenciesHandler.cpp" format="source-link" %}[ソース]{% /repo-link %}
 
 `account_currencies`コマンドは、アカウントのトラストラインに基づいてそのアカウントが送金または受領できる通貨のリストを返します。（このリストは完全に確認されたリストではありませんが、ユーザインターフェイスへの入力に使用できます。）
 

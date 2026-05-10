@@ -9,7 +9,7 @@ txIcon: cancel
 ---
 # AMMClawback
 
-{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/AMMClawback.cpp" source=true %}[ソース]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/AMMClawback.cpp" format="source-link" %}[ソース]{% /repo-link %}
 
 発行したトークンをAMMプールに預け入れた保有者からトークンを回収します。
 

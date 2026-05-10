@@ -7,7 +7,7 @@ labels:
   - コアサーバ
 ---
 # stop
-{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/Stop.cpp" source=true %}[ソース]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/Stop.cpp" format="source-link" %}[ソース]{% /repo-link %}
 
 サーバのグレースフルシャットダウンを行います。
 

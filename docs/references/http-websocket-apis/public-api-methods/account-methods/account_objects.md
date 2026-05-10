@@ -6,7 +6,7 @@ labels:
   - Data Retention
 ---
 # account_objects
-{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/AccountObjects.cpp" source=true %}[Source]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/AccountObjects.cpp" format="source-link" %}[Source]{% /repo-link %}
 
 The `account_objects` command returns _all_ ledger entries owned by an account, in their raw [ledger format][].
 

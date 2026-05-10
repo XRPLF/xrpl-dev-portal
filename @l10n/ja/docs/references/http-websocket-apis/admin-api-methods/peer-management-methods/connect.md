@@ -7,7 +7,7 @@ labels:
   - コアサーバ
 ---
 # connect
-{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/Connect.cpp" source=true %}[ソース]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/Connect.cpp" format="source-link" %}[ソース]{% /repo-link %}
 
 `connect`コマンドは、`rippled`サーバを特定のピア`rippled`サーバに強制的に接続します。
 

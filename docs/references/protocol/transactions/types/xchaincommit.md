@@ -8,7 +8,7 @@ status: not_enabled
 txIcon: send
 ---
 # XChainCommit
-{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/XChainBridge.cpp" source=true %}[Source]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/XChainBridge.cpp" format="source-link" %}[Source]{% /repo-link %}
 
 Do the second step in a [cross-chain transfer](../../../../concepts/xrpl-sidechains/cross-chain-bridges.md). This transaction has two modes:
 

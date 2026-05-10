@@ -7,7 +7,7 @@ labels:
   - コアサーバ
 ---
 # get_counts
-{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/GetCounts.cpp" source=true %}[ソース]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/GetCounts.cpp" format="source-link" %}[ソース]{% /repo-link %}
 
 `get_counts`コマンドは、サーバの健全性に関するさまざまな統計情報を提供します。そのほとんどは、現在メモリーに格納されている各種オブジェクトの数です。
 

@@ -9,7 +9,7 @@ txIcon: modify
 status: not_enabled
 ---
 # LoanBrokerSet
-{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/LoanBrokerSet.cpp" source=true %}[Source]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/LoanBrokerSet.cpp" format="source-link" %}[Source]{% /repo-link %}
 
 Creates or updates a `LoanBroker` ledger entry, configuring protocol parameters and associating it with a `Vault`.
 

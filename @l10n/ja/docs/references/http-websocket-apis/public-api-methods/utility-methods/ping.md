@@ -7,7 +7,7 @@ labels:
   - コアサーバ
 ---
 # ping
-{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/Ping.cpp" source=true %}[ソース]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/Ping.cpp" format="source-link" %}[ソース]{% /repo-link %}
 
 `ping`コマンドは確認レスポンスを返します。これにより、クライアントは接続のステータスと遅延をテストできます。
 

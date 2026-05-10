@@ -8,7 +8,7 @@ requiredAmendment: AMM
 txIcon: send
 ---
 # AMMDeposit
-{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/AMMDeposit.cpp" source=true %}[Source]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/AMMDeposit.cpp" format="source-link" %}[Source]{% /repo-link %}
 
 Deposit funds into an [Automated Market Maker](../../../../concepts/tokens/decentralized-exchange/automated-market-makers.md) (AMM) instance and receive the AMM's liquidity provider tokens (_LP Tokens_) in exchange. You can deposit one or both of the assets in the AMM's pool.
 

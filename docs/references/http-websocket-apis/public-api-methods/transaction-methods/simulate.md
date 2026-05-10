@@ -5,7 +5,7 @@ labels:
   - Transaction Sending
 ---
 # simulate
-{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/Simulate.cpp" source=true %}[Source]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/Simulate.cpp" format="source-link" %}[Source]{% /repo-link %}
 
 The `simulate` method executes a dry run of _any_ transaction type, enabling you to preview the results and metadata of a transaction without committing them to the XRP Ledger. Since this command never submits a transaction to the network, it doesn't incur any fees.
 

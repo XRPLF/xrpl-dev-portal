@@ -5,7 +5,7 @@ labels:
     - Data Retention
 ---
 # ledger_request
-{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/LedgerRequest.cpp" source=true %}[Source]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/LedgerRequest.cpp" format="source-link" %}[Source]{% /repo-link %}
 
 The `ledger_request` command tells server to fetch a specific ledger version from its connected peers. This only works if one of the server's immediately-connected peers has that ledger. You may need to run the command several times to completely fetch a ledger.
 

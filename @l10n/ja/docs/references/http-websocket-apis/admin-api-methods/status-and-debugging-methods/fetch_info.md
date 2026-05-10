@@ -7,7 +7,7 @@ labels:
   - コアサーバ
 ---
 # fetch_info
-{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/FetchInfo.cpp" source=true %}[ソース]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/FetchInfo.cpp" format="source-link" %}[ソース]{% /repo-link %}
 
 `fetch_info`コマンドは、このサーバが現在ネットワークからフェッチしているオブジェクトに関する情報と、その情報を所有しているピアの数を返します。これは現在の取得操作をリセットする場合にも使用できます。
 

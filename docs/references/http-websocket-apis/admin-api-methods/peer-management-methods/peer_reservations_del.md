@@ -5,7 +5,7 @@ labels:
     - Core Server
 ---
 # peer_reservations_del
-{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/Reservations.cpp" source=true %}[Source]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/Reservations.cpp" format="source-link" %}[Source]{% /repo-link %}
 
 The {% code-page-name /%} method removes a specific [peer reservation][], if one exists.
 

@@ -7,7 +7,7 @@ labels:
   - Tokens
 ---
 # account_currencies
-{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/AccountCurrenciesHandler.cpp" source=true %}[Source]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/AccountCurrenciesHandler.cpp" format="source-link" %}[Source]{% /repo-link %}
 
 The `account_currencies` command retrieves a list of currencies that an account can send or receive, based on its trust lines. (This is not a thoroughly confirmed list, but it can be used to populate user interfaces.)
 

@@ -3,7 +3,7 @@ seo:
     description: Retrieve info about all recent transactions.
 ---
 # tx_history
-{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/TxHistory.cpp" source=true %}[Source]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/TxHistory.cpp" format="source-link" %}[Source]{% /repo-link %}
 
 The `tx_history` method retrieves some of the most recent transactions made.
 

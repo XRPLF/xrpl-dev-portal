@@ -8,7 +8,7 @@ requiredAmendment: PayChan
 txIcon: finish
 ---
 # PaymentChannelClaim
-{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/PayChan.cpp" source=true %}[Source]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/PayChan.cpp" format="source-link" %}[Source]{% /repo-link %}
 
 Claim funds from a [payment channel](../../../../concepts/payment-types/payment-channels.md), adjust the payment channel's expiration, or both. This transaction can be used differently depending on the transaction sender's role in the specified channel:
 

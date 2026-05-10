@@ -8,7 +8,7 @@ labels:
   - アカウント
 ---
 # gateway_balances
-{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/GatewayBalances.cpp" source=true %}[ソース]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/GatewayBalances.cpp" format="source-link" %}[ソース]{% /repo-link %}
 
 `gateway_balances`コマンドは、特定のアカウントから発行された残高の合計を計算します。オプションで、[運用アドレス](../../../../concepts/accounts/account-types.md)が保有する額を除外できます。{% badge href="https://github.com/XRPLF/rippled/releases/tag/0.28.2" %}新規: rippled 0.28.2{% /badge %}
 

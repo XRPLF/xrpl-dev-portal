@@ -5,7 +5,7 @@ labels:
     - 手数料
 ---
 # FeeSettings
-{% repo-link repo="xrpld" path="include/xrpl/protocol/detail/ledger_entries.macro#L297-L309" github_branch="f64cf9187affd69650907d0d92e097eb29693945" source=true %}[ソース]{% /repo-link %}
+{% repo-link repo="xrpld" path="include/xrpl/protocol/detail/ledger_entries.macro#L297-L309" github_branch="f64cf9187affd69650907d0d92e097eb29693945" format="source-link" %}[ソース]{% /repo-link %}
 
 `FeeSettings`オブジェク
 トタイプには、現在の基本[トランザクションコスト](../../../../concepts/transactions/transaction-cost.md)と、[手数料投票](../../../../concepts/consensus-protocol/fee-voting.md)により決定する[準備金の額](../../../../concepts/accounts/reserves.md)が含まれています。各レジャーバージョンには**最大で1つの** `FeeSettings`オブジェクトが含まれています。

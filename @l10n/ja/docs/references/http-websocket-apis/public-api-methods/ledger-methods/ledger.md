@@ -7,7 +7,7 @@ label:
   - ブロックチェーン
 ---
 # ledger
-{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/LedgerHandler.cpp" source=true %}[ソース]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/LedgerHandler.cpp" format="source-link" %}[ソース]{% /repo-link %}
 
 公開レジャーに関する情報を取得します。
 

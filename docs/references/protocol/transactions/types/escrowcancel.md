@@ -8,7 +8,7 @@ txIcon: cancel
 requiredAmendment: Escrow
 ---
 # EscrowCancel
-{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/Escrow.cpp" source=true %}[Source]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/Escrow.cpp" format="source-link" %}[Source]{% /repo-link %}
 
 Return funds from an expired [escrow](../../../../concepts/payment-types/escrow.md) to its sender.
 

@@ -8,7 +8,7 @@ labels:
   - Blockchain
 ---
 # Ledger Header
-{% repo-link repo="xrpld" path="src/xrpld/app/consensus/RCLCxLedger.h" source=true %}[Source]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/app/consensus/RCLCxLedger.h" format="source-link" %}[Source]{% /repo-link %}
 
 Every [ledger version](../../../concepts/ledgers/index.md) has a unique header that describes the contents. You can look up a ledger's header information with the [ledger method][]. The contents of the ledger header are as follows:
 

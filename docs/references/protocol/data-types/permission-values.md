@@ -58,7 +58,7 @@ With only the PermissionDelegation amendment, it's possible to assign permission
 {% /admonition %}
 
 ## Granular Permissions
-{% repo-link repo="xrpld" path="include/xrpl/protocol/detail/permissions.macro" source=true %}[Source]{% /repo-link %}
+{% repo-link repo="xrpld" path="include/xrpl/protocol/detail/permissions.macro" format="source-link" %}[Source]{% /repo-link %}
 
 Granular Permissions have numeric types of 65537 and up, corresponding to specific names of permissions. Values that are not defined are not allowed. Each granular permission is a subset of a single transaction type's functionality.
 

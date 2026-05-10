@@ -10,7 +10,7 @@ labels:
   - AMM
 ---
 # amm_info
-{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/AMMInfo.cpp" source=true %}[ソース]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/AMMInfo.cpp" format="source-link" %}[ソース]{% /repo-link %}
 
 {% code-page-name /%}メソッドは、自動マーケットメーカー（AMM）インスタンスに関する情報を取得します。
 

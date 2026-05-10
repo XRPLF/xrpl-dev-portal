@@ -9,7 +9,7 @@ labels:
 txIcon: send
 ---
 # Payment
-{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/Payment.cpp" source=true %}[Source]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/Payment.cpp" format="source-link" %}[Source]{% /repo-link %}
 
 Send value to an account. (Depending on the path taken, this can involve exchanges of several types of funds, all of which occur atomically.) This transaction type can be used for several [types of payments](#types-of-payments).
 

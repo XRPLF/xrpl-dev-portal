@@ -25,10 +25,9 @@ export const repoLink: Schema & { tagName: string } = {
         type: 'String',
         required: false,
       },
-      source: {
-        type: 'Boolean',
+      format: {
+        type: 'String',
         required: false,
-        default: false,
       },
     },
     transform(node, config) {

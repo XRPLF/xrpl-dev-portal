@@ -9,7 +9,7 @@ txIcon: send
 status: not_enabled
 ---
 # LoanBrokerCoverWithdraw
-{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/LoanBrokerCoverWithdraw.cpp" source=true %}[Source]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/LoanBrokerCoverWithdraw.cpp" format="source-link" %}[Source]{% /repo-link %}
 
 Withdraws first-loss capital from a `LoanBroker` ledger entry.
 

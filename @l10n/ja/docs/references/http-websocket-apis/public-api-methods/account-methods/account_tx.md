@@ -8,7 +8,7 @@ labels:
   - 支払い
 ---
 # account_tx
-{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/AccountTx.cpp" source=true %}[ソース]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/AccountTx.cpp" format="source-link" %}[ソース]{% /repo-link %}
 
 `account_tx`メソッドは、指定したアカウントに関連するトランザクションのリストを取得します。
 

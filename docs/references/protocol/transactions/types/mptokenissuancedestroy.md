@@ -8,7 +8,7 @@ requiredAmendment: MPTokensV1
 txIcon: cancel
 ---
 # MPTokenIssuanceDestroy
-{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/MPTokenIssuanceDestroy.cpp" source=true %}[Source]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/MPTokenIssuanceDestroy.cpp" format="source-link" %}[Source]{% /repo-link %}
 
 Delete a [Multi-purpose Token (MPT)](../../../../concepts/tokens/fungible-tokens/multi-purpose-tokens.md) issuance. Only the issuer can delete an MPT issuance, and only if there are no holders of the MPT.
 

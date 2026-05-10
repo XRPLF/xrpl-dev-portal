@@ -9,7 +9,7 @@ requiredAmendment: NonFungibleTokensV1_1
 txIcon: create
 ---
 # NFTokenCreateOffer
-{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/NFTokenCreateOffer.cpp" source=true %}[ソース]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/NFTokenCreateOffer.cpp" format="source-link" %}[ソース]{% /repo-link %}
 
 トランザクションを送信するアカウントが所有する`NFToken`に対する新しい _売却_ オファー、または別のアカウントが所有する`NFToken`に対する新しい _購入_ オファーを作成します。
 

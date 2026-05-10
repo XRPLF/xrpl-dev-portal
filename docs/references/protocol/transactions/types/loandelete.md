@@ -9,7 +9,7 @@ txIcon: cancel
 status: not_enabled
 ---
 # LoanDelete
-{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/LoanDelete.cpp" source=true %}[Source]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/LoanDelete.cpp" format="source-link" %}[Source]{% /repo-link %}
 
 Deletes a `Loan` ledger entry. Only the loan broker or borrower can submit this transaction.
 

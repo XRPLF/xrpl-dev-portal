@@ -5,7 +5,7 @@ labels:
     - Tokens
 ---
 # noripple_check
-{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/NoRippleCheck.cpp" source=true %}[Source]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/NoRippleCheck.cpp" format="source-link" %}[Source]{% /repo-link %}
 
 The `noripple_check` command provides a quick way to check the status of [the Default Ripple field for an account and the No Ripple flag of its trust lines](../../../../concepts/tokens/fungible-tokens/rippling.md), compared with the recommended settings.
 

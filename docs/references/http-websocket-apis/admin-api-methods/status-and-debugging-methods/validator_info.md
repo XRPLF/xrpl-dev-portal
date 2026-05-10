@@ -6,7 +6,7 @@ labels:
     - Blockchain
 ---
 # validator_info
-{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/ValidatorInfo.cpp" source=true %}[Source]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/ValidatorInfo.cpp" format="source-link" %}[Source]{% /repo-link %}
 
 The {% code-page-name /%} method returns the current validator settings of the server, if it is configured as a validator.
 

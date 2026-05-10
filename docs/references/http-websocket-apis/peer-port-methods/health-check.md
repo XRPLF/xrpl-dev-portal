@@ -5,7 +5,7 @@ labels:
     - Core Server
 ---
 # Health Check
-{% repo-link repo="xrpld" path="src/xrpld/overlay/detail/OverlayImpl.cpp#L943-L1038" github_branch="70d5c624e8cf732a362335642b2f5125ce4b43c1" source=true %}[Source]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/overlay/detail/OverlayImpl.cpp#L943-L1038" github_branch="70d5c624e8cf732a362335642b2f5125ce4b43c1" format="source-link" %}[Source]{% /repo-link %}
 
 The Health Check is a special [peer port method](index.md) for reporting on the health of an individual `rippled` server. This method is intended for use in automated monitoring to recognize outages and prompt automated or manual interventions such as restarting the server. {% badge href="https://github.com/XRPLF/rippled/releases/tag/1.6.0" %}New in: rippled 1.6.0{% /badge %}
 

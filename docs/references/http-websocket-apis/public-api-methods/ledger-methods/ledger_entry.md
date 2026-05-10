@@ -6,7 +6,7 @@ labels:
     - Data Retention
 ---
 # ledger_entry
-{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/LedgerEntry.cpp" source=true %}[Source]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/LedgerEntry.cpp" format="source-link" %}[Source]{% /repo-link %}
 
 The `ledger_entry` method returns a single ledger entry from the XRP Ledger in its raw format. See [ledger format][] for information on the different types of entries you can retrieve.
 

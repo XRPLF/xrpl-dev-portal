@@ -8,7 +8,7 @@ labels:
 ---
 # server_state
 
-{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/ServerState.cpp" source=true %}[ソース]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/ServerState.cpp" format="source-link" %}[ソース]{% /repo-link %}
 
 `server_state`コマンドは、サーバに対し`rippled`サーバの現在の状態に関するさまざまな機械可読の情報を問い合わせます。レスポンスは[server_infoメソッド][]の場合とほぼ同じですが、読み取りやすい単位ではなく処理しやすい単位を使用します。（たとえば、XRP値は科学的記数法や10進数値の代わりに整数のdrop数で示され、時刻は秒単位ではなくミリ秒単位で示されます。）
 

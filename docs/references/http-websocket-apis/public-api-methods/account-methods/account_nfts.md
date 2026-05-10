@@ -5,7 +5,7 @@ labels:
     - Non-fungible Tokens, NFTs
 ---
 # account_nfts
-{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/AccountObjects.cpp" source=true %}[Source]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/AccountObjects.cpp" format="source-link" %}[Source]{% /repo-link %}
 
 The `account_nfts` method returns a list of `NFToken` objects for the specified account.
 

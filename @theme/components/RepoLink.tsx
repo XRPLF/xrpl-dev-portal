@@ -11,13 +11,13 @@ export default function RepoLink(props: {
   path: string
   github_fork: string
   github_branch: string
-  source: boolean
+  format?: string
 }) {
   const treeblob = props.path.indexOf(".") >= 0 ? "blob/" : "tree/"
   const sep = props.github_fork[-1] == "/" ? "" : "/"
   const href = props.github_fork+sep+treeblob+props.github_branch+"/"+props.path
 
   return (
-    <Link to={href} className={props.source ? "source-link" : undefined}>{dynamicReact(props.children, React, {})}</Link>
+    <Link to={href} className={props.format}>{dynamicReact(props.children, React, {})}</Link>
   )
 }

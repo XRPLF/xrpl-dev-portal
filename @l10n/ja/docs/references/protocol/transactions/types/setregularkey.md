@@ -8,7 +8,7 @@ txIcon: modify
 ---
 # SetRegularKey
 
-{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/SetRegularKey.cpp" source=true %}[ソース]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/SetRegularKey.cpp" format="source-link" %}[ソース]{% /repo-link %}
 
 `SetRegularKey`トランザクションは、アカウントに関連付けられているレギュラーキーペアの割り当て、変更、削除を行います。
 

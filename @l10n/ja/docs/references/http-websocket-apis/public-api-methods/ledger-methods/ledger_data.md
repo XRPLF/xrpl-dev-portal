@@ -8,7 +8,7 @@ label:
   - データ保持
 ---
 # ledger_data
-{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/LedgerData.cpp" source=true %}[ソース]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/LedgerData.cpp" format="source-link" %}[ソース]{% /repo-link %}
 
 `ledger_data`メソッドは指定されたレジャーの内容を取得します。1つのレジャーバージョンの内容全体を取得するため、複数のコールを繰り返し実行できます。
 

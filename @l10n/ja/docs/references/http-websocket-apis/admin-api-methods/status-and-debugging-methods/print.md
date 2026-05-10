@@ -7,7 +7,7 @@ labels:
   - コアサーバ
 ---
 # print
-{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/Print.cpp" source=true %}[ソース]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/Print.cpp" format="source-link" %}[ソース]{% /repo-link %}
 
 `print`コマンドは、さまざまな内部サブシステム（ピア、レジャークリーナー、リソースマネージャーなど）の現在の状況を返します。
 

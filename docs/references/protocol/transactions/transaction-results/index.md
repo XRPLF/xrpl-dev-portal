@@ -8,7 +8,7 @@ labels:
 ---
 # Transaction Results
 
-{% repo-link repo="xrpld" path="src/libxrpl/protocol/TER.cpp" source=true %}[Source]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/libxrpl/protocol/TER.cpp" format="source-link" %}[Source]{% /repo-link %}
 
 The `rippled` server summarizes transaction results with result codes, which appear in fields such as `engine_result` and `meta.TransactionResult`. These codes are grouped into several categories of with different prefixes:
 

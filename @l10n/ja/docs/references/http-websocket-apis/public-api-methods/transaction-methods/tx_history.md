@@ -5,7 +5,7 @@ seo:
     description: 直近に作成されたトランザクションの一部を取得します。
 ---
 # tx_history
-{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/TxHistory.cpp" source=true %}[ソース]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/TxHistory.cpp" format="source-link" %}[ソース]{% /repo-link %}
 
 `tx_history`メソッドは、直近に作成されたトランザクションの一部を取得します。
 

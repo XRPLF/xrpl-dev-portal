@@ -6,7 +6,7 @@ labels:
   - クロスカレンシー
 ---
 # book_changes
-{% repo-link repo="xrpld" path="src/xrpld/rpc/BookChanges.h" source=true %}[ソース]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/rpc/BookChanges.h" format="source-link" %}[ソース]{% /repo-link %}
 
 {% code-page-name /%} メソッドは、[分散型取引所（DEX）](../../../../concepts/tokens/decentralized-exchange/index.md) のオーダーブックの変更に関する情報を、以前のレジャーバージョンと比較して提供します。これは「ローソク足」チャートの作成に役立つ場合があります。
 

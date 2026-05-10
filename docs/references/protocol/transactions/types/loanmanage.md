@@ -9,7 +9,7 @@ txIcon: modify
 status: not_enabled
 ---
 # LoanManage
-{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/LoanManage.cpp" source=true %}[Source]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/LoanManage.cpp" format="source-link" %}[Source]{% /repo-link %}
 
 Manages the state of a `Loan` ledger entry, including defaulting, impairing, or unimpairing a loan.
 

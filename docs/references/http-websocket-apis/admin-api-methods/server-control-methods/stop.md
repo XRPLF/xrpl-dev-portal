@@ -5,7 +5,7 @@ labels:
     - Core Server
 ---
 # stop
-{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/Stop.cpp" source=true %}[Source]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/Stop.cpp" format="source-link" %}[Source]{% /repo-link %}
 
 Gracefully shuts down the server.
 

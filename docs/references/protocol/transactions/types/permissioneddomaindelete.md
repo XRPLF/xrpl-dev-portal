@@ -9,7 +9,7 @@ requiredAmendment: PermissionedDomains
 txIcon: cancel
 ---
 # PermissionedDomainDelete
-{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/PermissionedDomainDelete.cpp" source=true %}[Source]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/PermissionedDomainDelete.cpp" format="source-link" %}[Source]{% /repo-link %}
 
 Delete a [permissioned domain][] that you own.
 

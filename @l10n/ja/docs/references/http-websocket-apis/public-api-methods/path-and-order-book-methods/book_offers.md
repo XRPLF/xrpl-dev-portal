@@ -6,7 +6,7 @@ labels:
   - クロスカレンシー
 ---
 # book_offers
-{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/BookOffers.cpp" source=true %}[ソース]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/BookOffers.cpp" format="source-link" %}[ソース]{% /repo-link %}
 
 `book_offers`メソッドは、2つの通貨間の[オファー](../../../../concepts/tokens/decentralized-exchange/offers.md)のリストを取得します。これは、_オーダーブック_ とも呼ばれます。レスポンスは、[資金供給のないオファー](../../../../concepts/tokens/decentralized-exchange/offers.md#オファーのライフサイクル)を省略し、残りの各オファーの合計に対して資金供給されている割合を報告します。
 

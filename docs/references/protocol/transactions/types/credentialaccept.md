@@ -7,7 +7,7 @@ requiredAmendment: Credentials
 txIcon: finish
 ---
 # CredentialAccept
-{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/Credentials.cpp" source=true %}[Source]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/Credentials.cpp" format="source-link" %}[Source]{% /repo-link %}
 
 Accept a [credential](../../../../concepts/decentralized-storage/credentials.md), which makes the credential valid. Only the subject of the credential can do this.
 

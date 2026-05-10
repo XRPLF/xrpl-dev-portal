@@ -7,7 +7,7 @@ labels:
   - トランザクション送信
 ---
 # sign
-{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/SignHandler.cpp" source=true %}[ソース]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/SignHandler.cpp" format="source-link" %}[ソース]{% /repo-link %}
 
 `sign`メソッドは[JSONフォーマットのトランザクション](../../../protocol/transactions/index.md)と[シード値](../../../../concepts/accounts/cryptographic-keys.md)を受け取り、トランザクションの署名済みバイナリー表現を返します。[マルチシグトランザクション](../../../../concepts/accounts/multi-signing.md)に署名を付与する場合は、代わりに[sign_forメソッド][]を使用します。
 

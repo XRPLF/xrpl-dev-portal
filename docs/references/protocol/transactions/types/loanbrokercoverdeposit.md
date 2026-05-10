@@ -9,7 +9,7 @@ txIcon: send
 status: not_enabled
 ---
 # LoanBrokerCoverDeposit
-{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/LoanBrokerCoverDeposit.cpp" source=true %}[Source]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/LoanBrokerCoverDeposit.cpp" format="source-link" %}[Source]{% /repo-link %}
 
 Deposits first-loss capital into a `LoanBroker` ledger entry to provide protection for vault depositors.
 

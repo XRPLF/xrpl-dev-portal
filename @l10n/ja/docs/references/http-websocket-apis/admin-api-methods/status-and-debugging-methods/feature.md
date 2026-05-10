@@ -8,7 +8,7 @@ labels:
   - コアサーバ
 ---
 # feature
-{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/Feature1.cpp" source=true %}[ソース]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/Feature1.cpp" format="source-link" %}[ソース]{% /repo-link %}
 
 `feature`コマンドは、[Amendment](../../../../concepts/networks-and-servers/amendments.md)に関してこのサーバが認識している情報（Amendmentが有効であるかどうか、サーバが[Amendmentプロセス](../../../../concepts/networks-and-servers/amendments.md#amendmentプロセス)でこれらのAmendmentに賛成票を投じたかどうかなど）を返します。{% badge href="https://github.com/XRPLF/rippled/releases/tag/0.31.0" %}新規: rippled 0.31.0{% /badge %}
 

@@ -8,7 +8,7 @@ requiredAmendment: Escrow
 txIcon: create
 ---
 # EscrowCreate
-{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/Escrow.cpp" source=true %}[ソース]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/Escrow.cpp" format="source-link" %}[ソース]{% /repo-link %}
 
 Escrowプロセスが終了または取り消されるまでXRPを隔離します。
 

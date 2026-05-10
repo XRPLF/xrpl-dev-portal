@@ -5,7 +5,7 @@ labels:
     - セキュリティ
 ---
 # SignerList
-{% repo-link repo="xrpld" path="include/xrpl/protocol/detail/ledger_entries.macro#L111-L118" github_branch="f64cf9187affd69650907d0d92e097eb29693945" source=true %}[ソース]{% /repo-link %}
+{% repo-link repo="xrpld" path="include/xrpl/protocol/detail/ledger_entries.macro#L111-L118" github_branch="f64cf9187affd69650907d0d92e097eb29693945" format="source-link" %}[ソース]{% /repo-link %}
 
 `SignerList`オブジェクトタイプは、個別アカウントの代わりにグループとしてトランザクション署名をすることが承認されている署名者のリストです。[SignerListSetトランザクション][]を使用して、SignerListを作成、置き換え、または削除できます。
 

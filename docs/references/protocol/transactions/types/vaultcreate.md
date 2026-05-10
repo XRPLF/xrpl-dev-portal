@@ -11,7 +11,7 @@ txIcon: create
 
 # VaultCreate
 
-{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/VaultCreate.cpp" source=true %}[Source]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/VaultCreate.cpp" format="source-link" %}[Source]{% /repo-link %}
 
 Creates a new `Vault` ledger entry, an `MPTokenIssuance` ledger entry for the vault’s shares, and an `AccountRoot` for the vault’s [pseudo-account](../../../../concepts/accounts/pseudo-accounts.md).
 

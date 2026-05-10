@@ -5,7 +5,7 @@ labels:
   - Transaction Sending
 ---
 # Ticket
-{% repo-link repo="xrpld" path="include/xrpl/protocol/detail/ledger_entries.macro#L124-L130" github_branch="f64cf9187affd69650907d0d92e097eb29693945" source=true %}[Source]{% /repo-link %}
+{% repo-link repo="xrpld" path="include/xrpl/protocol/detail/ledger_entries.macro#L124-L130" github_branch="f64cf9187affd69650907d0d92e097eb29693945" format="source-link" %}[Source]{% /repo-link %}
 
 A `Ticket` entry type represents a [Ticket](../../../../concepts/accounts/tickets.md), which tracks an account [sequence number][Sequence Number] that has been set aside for future use. You can create new tickets with a [TicketCreate transaction][].
 

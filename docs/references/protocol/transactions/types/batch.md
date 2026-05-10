@@ -9,7 +9,7 @@ status: not_enabled
 txIcon: other
 ---
 # Batch
-{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/Batch.cpp" source=true %}[Source]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/Batch.cpp" format="source-link" %}[Source]{% /repo-link %}
 
 Submit up to eight transactions as a single [batch](../../../../concepts/transactions/batch-transactions.md). The transactions in the batch are executed atomically in one of four modes: All or Nothing, Only One, Until Failure, or Independent.
 

@@ -7,7 +7,7 @@ labels:
   - トークン
 ---
 # noripple_check
-{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/NoRippleCheck.cpp" source=true %}[ソース]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/NoRippleCheck.cpp" format="source-link" %}[ソース]{% /repo-link %}
 
 `noripple_check`コマンドを使用すると、[アカウントのDefaultRippleフィールドとそのトラストラインのNoRippleフラグ](../../../../concepts/tokens/fungible-tokens/rippling.md)の状態を、推奨される設定と比較して迅速にチェックできます。
 

@@ -8,7 +8,7 @@ labels:
   - ブロックチェーン
 ---
 # validator_info
-{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/ValidatorInfo.cpp" source=true %}[ソース]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/ValidatorInfo.cpp" format="source-link" %}[ソース]{% /repo-link %}
 
 {% code-page-name /%}メソッドは、サーバがバリデータとして設定されている場合に、現在のバリデータの設定を返します。
 

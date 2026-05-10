@@ -8,7 +8,7 @@ labels:
   - コアサーバ
 ---
 # validator_list_sites
-{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/ValidatorListSites.cpp" source=true %}[ソース]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/ValidatorListSites.cpp" format="source-link" %}[ソース]{% /repo-link %}
 
 `validator_list_sites`コマンドは、バリデータリストを処理するサイトのステータス情報を返します。{% badge href="https://github.com/XRPLF/rippled/releases/tag/0.80.1" %}新規: rippled 0.80.1{% /badge %}
 

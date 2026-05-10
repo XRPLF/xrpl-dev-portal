@@ -8,7 +8,7 @@ requiredAmendment: DID
 txIcon: create
 ---
 # DIDSet
-{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/DID.cpp" source=true %}[Source]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/DID.cpp" format="source-link" %}[Source]{% /repo-link %}
 
 Create or update a [decentralized identifier (DID)](../../../../concepts/decentralized-storage/decentralized-identifiers.md).
 

@@ -8,7 +8,7 @@ status: not_enabled
 ---
 
 # Loan
-{% repo-link repo="xrpld" path="include/xrpl/protocol/detail/ledger_entries.macro#L543-L623" source=true %}[Source]{% /repo-link %}
+{% repo-link repo="xrpld" path="include/xrpl/protocol/detail/ledger_entries.macro#L543-L623" format="source-link" %}[Source]{% /repo-link %}
 
 A `Loan` ledger entry defines the state of an on-chain loan agreement between a _Loan Broker_ and a _Borrower_. It contains all the details of the loan, such as fees and interest rates. You can create a `Loan` ledger entry with the [LoanSet transaction][].
 

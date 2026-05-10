@@ -7,7 +7,7 @@ labels:
   - コアサーバ
 ---
 # ledger_accept
-{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/LedgerAccept.cpp" source=true %}[ソース]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/LedgerAccept.cpp" format="source-link" %}[ソース]{% /repo-link %}
 
 `ledger_accept`メソッドは、サーバが現在処理中のレジャーを強制的に終了し、次のレジャー番号に進むようにします。このメソッドはテスト専用であり、`rippled`サーバがスタンドアロンモードで実行されている場合にのみ使用できます。
 

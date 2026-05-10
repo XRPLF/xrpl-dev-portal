@@ -7,7 +7,7 @@ labels:
   - Payment Channel
 ---
 # channel_verify
-{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/PayChanClaim.cpp" source=true %}[ソース]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/PayChanClaim.cpp" format="source-link" %}[ソース]{% /repo-link %}
 
 _（[PayChan Amendment][]が有効になっている必要があります。{% badge href="https://github.com/XRPLF/rippled/releases/tag/0.33.0" %}新規: rippled 0.33.0{% /badge %}）_
 

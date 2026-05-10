@@ -7,7 +7,7 @@ labels:
 status: not_enabled
 ---
 # PermissionedDomain
-{% repo-link repo="xrpld" path="include/xrpl/protocol/detail/ledger_entries.macro#L451-L461" source=true %}[Source]{% /repo-link %}
+{% repo-link repo="xrpld" path="include/xrpl/protocol/detail/ledger_entries.macro#L451-L461" format="source-link" %}[Source]{% /repo-link %}
 
 A `PermissionedDomain` ledger entry describes a single [permissioned domain][] instance. You can create a permissioned domain by sending a [PermissionedDomainSet transaction][].
 

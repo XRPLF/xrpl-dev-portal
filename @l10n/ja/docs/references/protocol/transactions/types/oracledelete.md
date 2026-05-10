@@ -8,7 +8,7 @@ requiredAmendment: PriceOracle
 txIcon: cancel
 ---
 # OracleDelete
-{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/DeleteOracle.cpp" source=true %}[ソース]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/DeleteOracle.cpp" format="source-link" %}[ソース]{% /repo-link %}
 
 既存の`Oracle`レジャーエントリを削除します。
 

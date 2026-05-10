@@ -15,7 +15,7 @@ curated_anchors:
     anchor: "#タイプリスト"
 ---
 # バイナリフォーマット
-{% repo-link repo="xrpld" path="src/libxrpl/protocol/STObject.cpp#L696-L718" source=true %}[ソース]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/libxrpl/protocol/STObject.cpp#L696-L718" format="source-link" %}[ソース]{% /repo-link %}
 
 このページでは、XRP Ledgerのトランザクションとその他のデータの正規バイナリフォーマットについて説明します。このバイナリフォーマットは、トランザクションの内容のデジタル署名を作成および検証するために必要であり、[サーバ間のピアツーピア通信](../../concepts/networks-and-servers/peer-protocol.md)を含む他の用途にも使用されます。通常、[`rippled` API](../http-websocket-apis/index.md)は、JSONを使用してクライアントアプリケーションと通信します。ただしJSONは、同じデータをさまざまな同等の方法で表現できるため、デジタル署名を付与するトランザクションをシリアル化するのに適したフォーマットではありません。
 
@@ -239,7 +239,7 @@ curated_anchors:
 [{% inline-svg file="/docs/img/serialization-amount.ja.svg" /%}](/docs/img/serialization-amount.ja.svg "「非XRP」ビット、符号ビット、および62ビットの精度で構成されるXRPの額。「非XRP」ビット、符号ビット、指数（8ビット）、仮数（54ビット）、通貨コード（160ビット）、イシュアー（160ビット）で構成されるトークンの額。")
 
 #### トークンの数量フォーマット
-{% repo-link repo="xrpld" path="src/libxrpl/protocol/STAmount.cpp" source=true %}[ソース]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/libxrpl/protocol/STAmount.cpp" format="source-link" %}[ソース]{% /repo-link %}
 
 [{% inline-svg file="/docs/img/currency-number-format.ja.svg" /%}](/docs/img/currency-number-format.ja.svg "トークンの数量フォーマットの図")
 

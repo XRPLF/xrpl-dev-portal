@@ -5,7 +5,7 @@ labels:
     - Core Server
 ---
 # connect
-{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/Connect.cpp" source=true %}[Source]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/Connect.cpp" format="source-link" %}[Source]{% /repo-link %}
 
 The `connect` command forces the `rippled` server to connect to a specific peer server.
 

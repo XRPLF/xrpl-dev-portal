@@ -7,7 +7,7 @@ labels:
   - トランザクション送信
 ---
 # submit_multisigned
-{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/SubmitMultiSigned.cpp" source=true %}[ソース]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/SubmitMultiSigned.cpp" format="source-link" %}[ソース]{% /repo-link %}
 
 `submit_multisigned`コマンドは[マルチシグ](../../../../concepts/accounts/multi-signing.md)トランザクションを適用し、このトランザクションをネットワークに送信して、今後のレジャーに追加します。（[`submit`コマンドを送信専用モードで](submit.md#送信専用モード)使用して、マルチシグトランザクションをバイナリー形式で送信することもできます。
 

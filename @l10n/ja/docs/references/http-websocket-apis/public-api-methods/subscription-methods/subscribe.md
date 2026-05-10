@@ -10,7 +10,7 @@ labels:
   - スマートコントラクト
 ---
 # subscribe
-{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/Subscribe.cpp" source=true %}[ソース]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/Subscribe.cpp" format="source-link" %}[ソース]{% /repo-link %}
 
 `subscribe`メソッドは、特定のイベントが発生した場合に、定期的に通知するようサーバにリクエストします。
 

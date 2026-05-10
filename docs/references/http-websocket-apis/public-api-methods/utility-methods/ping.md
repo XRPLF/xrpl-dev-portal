@@ -5,7 +5,7 @@ labels:
     - Core Server
 ---
 # ping
-{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/Ping.cpp" source=true %}[Source]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/Ping.cpp" format="source-link" %}[Source]{% /repo-link %}
 
 The `ping` command returns an acknowledgement, so that clients can test the connection status and latency.
 

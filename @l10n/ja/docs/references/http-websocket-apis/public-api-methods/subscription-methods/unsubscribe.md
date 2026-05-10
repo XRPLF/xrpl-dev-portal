@@ -10,7 +10,7 @@ labels:
   - スマートコントラクト
 ---
 # unsubscribe
-{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/Unsubscribe.cpp" source=true %}[ソース]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/Unsubscribe.cpp" format="source-link" %}[ソース]{% /repo-link %}
 
 `unsubscribe`コマンドはサーバに対して、特定のサブスクリプションまたは一連のサブスクリプションへのメッセージ送信の停止を指示します。
 

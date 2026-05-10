@@ -8,7 +8,7 @@ requiredAmendment: PayChan
 txIcon: finish
 ---
 # PaymentChannelClaim
-{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/PayChan.cpp" source=true %}[ソース]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/PayChan.cpp" format="source-link" %}[ソース]{% /repo-link %}
 
 Payment Channelに対しXRPを請求するか、Payment Channelの有効期限を調整するか、またはこの両方の操作を行います。このトランザクションは、指定されたChannelでのトランザクション送信者の役割に応じてさまざまに利用できます。
 

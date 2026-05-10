@@ -7,7 +7,7 @@ labels:
   - データ保持
 ---
 # log_level
-{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/LogLevel.cpp" source=true %}[ソース]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/LogLevel.cpp" format="source-link" %}[ソース]{% /repo-link %}
 
 `log_level`コマンドは`rippled`サーバのログ詳細レベルを変更するか、各ログメッセージカテゴリ（_パーティション_）の現在のログレベルを返します。
 

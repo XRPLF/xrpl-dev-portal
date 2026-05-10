@@ -7,7 +7,7 @@ labels:
   - トークン
 ---
 # account_lines
-{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/AccountLines.cpp" source=true %}[ソース]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/AccountLines.cpp" format="source-link" %}[ソース]{% /repo-link %}
 
 `account_lines`メソッドは、アカウントのトラストラインに関する情報（XRP以外のあらゆる通貨の残高と資産など）を返します。取得された情報はすべて、特定バージョンのレジャーに関連付けられています。
 

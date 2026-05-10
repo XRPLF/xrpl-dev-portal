@@ -8,7 +8,7 @@ txIcon: create
 requiredAmendment: Checks
 ---
 # CheckCreate
-{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/CreateCheck.cpp" source=true %}[Source]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/CreateCheck.cpp" format="source-link" %}[Source]{% /repo-link %}
 
 Create an on-ledger [check](../../../../concepts/payment-types/checks.md), which is a deferred payment that can be cashed by its intended destination. The sender of this transaction is the sender of the check.
 

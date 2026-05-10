@@ -8,7 +8,7 @@ txIcon: cancel
 ---
 # Clawback
 
-{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/Clawback.cpp" source=true %}[ソース]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/Clawback.cpp" format="source-link" %}[ソース]{% /repo-link %}
 
 あなたのアカウントが発行したトークンを回収します。
 

@@ -206,7 +206,7 @@ Attributes:
 | `path`          | String  | Yes      | The path to the file or folder within the target repository. |
 | `github_fork`   | String  | No       | Use a custom fork URL for a single link. |
 | `github_branch` | String  | No       | Use a custom branch for a single link. |
-| `source`        | Boolean | No       | If `true`, applies the `source-link` CSS class so the link floats right of its containing heading. Defaults to `false` for no styling. |
+| `format`        | String  | No       | A CSS class applied to the rendered link. |
 
 Example usage:
 

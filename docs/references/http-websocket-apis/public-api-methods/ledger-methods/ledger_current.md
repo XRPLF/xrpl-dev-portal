@@ -5,7 +5,7 @@ labels:
     - Blockchain
 ---
 # ledger_current
-{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/LedgerCurrent.cpp" source=true %}[Source]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/LedgerCurrent.cpp" format="source-link" %}[Source]{% /repo-link %}
 
 The `ledger_current` method returns the unique identifiers of the current in-progress [ledger](../../../../concepts/ledgers/index.md). This command is mostly useful for testing, because the ledger returned is still in flux.
 

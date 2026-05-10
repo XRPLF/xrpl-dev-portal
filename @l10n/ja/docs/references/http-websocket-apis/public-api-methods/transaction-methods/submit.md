@@ -8,7 +8,7 @@ labels:
   - 支払い
 ---
 # submit
-{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/Submit.cpp" source=true %}[ソース]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/Submit.cpp" format="source-link" %}[ソース]{% /repo-link %}
 
 `submit`メソッドは[トランザクション](../../../protocol/transactions/index.md)を適用し、トランザクションの確認と将来のレジャーへの記録が行われるように、ネットワークに送信します。
 

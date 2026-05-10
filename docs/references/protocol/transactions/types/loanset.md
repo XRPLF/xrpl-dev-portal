@@ -9,7 +9,7 @@ txIcon: modify
 status: not_enabled
 ---
 # LoanSet
-{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/LoanSet.cpp" source=true %}[Source]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/LoanSet.cpp" format="source-link" %}[Source]{% /repo-link %}
 
 Creates a new `Loan` ledger entry, representing a loan agreement between a _Loan Broker_ and _Borrower_.
 

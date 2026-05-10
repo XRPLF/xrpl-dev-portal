@@ -9,7 +9,7 @@ status: not_enabled
 
 # Vault
 
-{% repo-link repo="xrpld" path="include/xrpl/protocol/detail/ledger_entries.macro#L493-L511" source=true %}[Source]{% /repo-link %}
+{% repo-link repo="xrpld" path="include/xrpl/protocol/detail/ledger_entries.macro#L493-L511" format="source-link" %}[Source]{% /repo-link %}
 
 A {% code-page-name /%} object defines the state of a tokenized vault. It contains key details such as available assets, shares, total value, and other relevant information. You can create a {% code-page-name /%} object with the [VaultCreate](../../transactions/types/vaultcreate.md) transaction.
 

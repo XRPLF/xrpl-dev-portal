@@ -8,7 +8,7 @@ requiredAmendment: MultiSign
 txIcon: modify
 ---
 # SignerListSet
-{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/SetSignerList.cpp" source=true %}[ソース]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/SetSignerList.cpp" format="source-link" %}[ソース]{% /repo-link %}
 
 SignerListSetトランザクションは、トランザクションの[マルチシグ](../../../../concepts/accounts/multi-signing.md)に使用できる署名者のリストを作成、置換、削除します。このトランザクションタイプは[MultiSign Amendment][]により導入されました。
 

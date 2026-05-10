@@ -6,7 +6,7 @@ labels:
     - Core Server
 ---
 # consensus_info
-{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/ConsensusInfo.cpp" source=true %}[Source]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/ConsensusInfo.cpp" format="source-link" %}[Source]{% /repo-link %}
 
 The `consensus_info` command provides information about the [consensus process](../../../../concepts/consensus-protocol/index.md) for debugging purposes.
 

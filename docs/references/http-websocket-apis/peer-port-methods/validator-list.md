@@ -6,7 +6,7 @@ labels:
     - Blockchain
 ---
 # Validator List Method
-{% repo-link repo="xrpld" path="src/xrpld/overlay/detail/OverlayImpl.cpp#L875-L940" github_branch="70d5c624e8cf732a362335642b2f5125ce4b43c1" source=true %}[Source]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/overlay/detail/OverlayImpl.cpp#L875-L940" github_branch="70d5c624e8cf732a362335642b2f5125ce4b43c1" format="source-link" %}[Source]{% /repo-link %}
 
 The validator list method is a special API endpoint that fetches a current, trusted validator list a `rippled` server is using. This often represents the exact list of validators a server trusts.
 
@@ -44,7 +44,7 @@ The JSON object has the following fields:
 | `public_key`     | String | The public key used to verify this validator list data, in hexadecimal. This is a 32-byte Ed25519 public key prefixed with the byte `0xED`.  |
 
 ### Manifest Data
-{% repo-link repo="xrpld" path="src/xrpld/app/misc/detail/Manifest.cpp#L54-L82" github_branch="8d1b3b39940eca2735a0e9279bdd92b0748fd84c" source=true %}[Source]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/app/misc/detail/Manifest.cpp#L54-L82" github_branch="8d1b3b39940eca2735a0e9279bdd92b0748fd84c" format="source-link" %}[Source]{% /repo-link %}
 
 A "manifest" contains information uniquely identifying a person or organization involved in the consensus process, either a **validator** or a **list publisher**. A validator's manifest contains the _public_ information from that [validator's token](../../../infrastructure/configuration/server-modes/run-rippled-as-a-validator.md#3-enable-validation-on-your-rippled-server). A list publisher's manifest provides information about the list publisher. Both are typically encoded to binary in the XRP Ledger's standard [binary serialization format](../../protocol/binary-format.md). (There is no standard JSON representation of a manifest.)
 

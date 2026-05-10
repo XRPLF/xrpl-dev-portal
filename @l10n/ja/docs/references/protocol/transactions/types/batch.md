@@ -9,7 +9,7 @@ status: not_enabled
 txIcon: other
 ---
 # Batch
-{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/Batch.cpp" source=true %}[ソース]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/Batch.cpp" format="source-link" %}[ソース]{% /repo-link %}
 
 `Batch`トランザクションは、最大8つのトランザクションを単一のバッチで送信します。各トランザクションは、4つのモード(全て成功または全て失敗（All or Nothing）、一つのみ成功（Only One）、失敗まで継続（Until Failure）、および独立実行（Independent）)のいずれかでアトミックに実行されます。
 

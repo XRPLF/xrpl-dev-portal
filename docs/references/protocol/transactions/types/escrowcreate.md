@@ -8,7 +8,7 @@ txIcon: create
 requiredAmendment: Escrow
 ---
 # EscrowCreate
-{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/Escrow.cpp" source=true %}[Source]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/Escrow.cpp" format="source-link" %}[Source]{% /repo-link %}
 
 Set aside funds in an [escrow](../../../../concepts/payment-types/escrow.md) that delivers them to a predetermined recipient when certain conditions are met. If the escrow has an expiration, the funds can also be returned to the sender after it expires.
 

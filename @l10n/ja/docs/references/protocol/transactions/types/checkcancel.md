@@ -8,7 +8,7 @@ requiredAmendment: Checks
 txIcon: cancel
 ---
 # CheckCancel
-{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/CancelCheck.cpp" source=true %}[ソース]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/CancelCheck.cpp" format="source-link" %}[ソース]{% /repo-link %}
 
 未清算のCheckを取り消し、送金を行わずにレジャーから削除します。Checkの送金元または送金先は、いつでもこのトランザクションタイプを使用してCheckを取り消すことができます。有効期限切れのCheckはすべてのアドレスが取り消すことができます。
 

@@ -28,7 +28,7 @@ seo:
 
 
 ### ハッシュプレフィクス
-{% repo-link repo="xrpld" path="include/xrpl/protocol/HashPrefix.h" source=true %}[ソース]{% /repo-link %}
+{% repo-link repo="xrpld" path="include/xrpl/protocol/HashPrefix.h" format="source-link" %}[ソース]{% /repo-link %}
 
 多くの場合、XRP Ledgerではオブジェクトのバイナリデータに4バイトのプレフィクスを付けてからハッシュを計算するため、異なるタイプのオブジェクトが同じバイナリフォーマットである場合でも、異なるハッシュが設定されます。既存の4バイトコードは、ASCIIでエンコードされた英字3文字の後に0バイトが続く構成となっています。
 

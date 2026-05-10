@@ -5,7 +5,7 @@ labels:
     - Core Server
 ---
 # server_info (rippled)
-{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/ServerInfo.cpp" source=true %}[Source]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/ServerInfo.cpp" format="source-link" %}[Source]{% /repo-link %}
 
 The `server_info` command asks the server for a human-readable version of various information about [the `rippled` server](../../../../concepts/networks-and-servers/index.md) being queried. For [Clio servers](../../../../concepts/networks-and-servers/the-clio-server.md), see [`server_info` (Clio)](../clio-methods/server_info-clio.md) instead.
 

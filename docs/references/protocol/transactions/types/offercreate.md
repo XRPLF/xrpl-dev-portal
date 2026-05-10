@@ -6,7 +6,7 @@ labels:
 txIcon: create
 ---
 # OfferCreate
-{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/CreateOffer.cpp" source=true %}[Source]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/CreateOffer.cpp" format="source-link" %}[Source]{% /repo-link %}
 
 Place an [offer](../../../../concepts/tokens/decentralized-exchange/offers.md) to trade in the [decentralized exchange](../../../../concepts/tokens/decentralized-exchange/index.md).
 

@@ -5,7 +5,7 @@ labels:
     - Core Server
 ---
 # fetch_info
-{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/FetchInfo.cpp" source=true %}[Source]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/FetchInfo.cpp" format="source-link" %}[Source]{% /repo-link %}
 
 The `fetch_info` command returns information about objects that this server is currently fetching from the network, and how many peers have that information. It can also be used to reset current fetches.
 

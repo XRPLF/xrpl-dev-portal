@@ -7,7 +7,7 @@ labels:
   - コアサーバ
 ---
 # ヘルスチェック
-{% repo-link repo="xrpld" path="src/xrpld/overlay/detail/OverlayImpl.cpp#L943-L1038" github_branch="70d5c624e8cf732a362335642b2f5125ce4b43c1" source=true %}[ソース]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/overlay/detail/OverlayImpl.cpp#L943-L1038" github_branch="70d5c624e8cf732a362335642b2f5125ce4b43c1" format="source-link" %}[ソース]{% /repo-link %}
 
 ヘルスチェックは、個々の`rippled`サーバの状態を報告するための特別な[peer portメソッド](index.md)です。このメソッドは、自動化された監視において、機能停止を認識し、サーバの再起動のような自動または手動による介入を促すために使用することを意図しています。{% badge href="https://github.com/XRPLF/rippled/releases/tag/1.6.0" %}新規: rippled 1.6.0{% /badge %}
 

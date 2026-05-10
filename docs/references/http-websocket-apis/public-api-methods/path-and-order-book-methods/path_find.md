@@ -6,7 +6,7 @@ labels:
     - Tokens
 ---
 # path_find
-{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/PathFind.cpp" source=true %}[Source]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/PathFind.cpp" format="source-link" %}[Source]{% /repo-link %}
 
 {% admonition type="warning" name="Caution" %}
 WebSocket API only!

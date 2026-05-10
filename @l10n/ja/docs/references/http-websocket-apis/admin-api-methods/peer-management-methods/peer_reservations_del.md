@@ -8,7 +8,7 @@ labels:
 ---
 # peer_reservations_del
 
-{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/Reservations.cpp" source=true %}[ソース]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/Reservations.cpp" format="source-link" %}[ソース]{% /repo-link %}
 
 {% code-page-name /%}メソッドは、特定の[ピアリザベーション][]を削除します（存在する場合）。{% badge href="https://github.com/XRPLF/rippled/releases/tag/1.4.0" %}新規: rippled 1.4.0{% /badge %}
 

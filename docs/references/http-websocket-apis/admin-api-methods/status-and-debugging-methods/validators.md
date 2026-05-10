@@ -6,7 +6,7 @@ labels:
     - Blockchain
 ---
 # validators
-{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/Validators.cpp" source=true %}[Source]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/Validators.cpp" format="source-link" %}[Source]{% /repo-link %}
 
 The `validators` command returns human readable information about the current list of published and [trusted validators](../../../../concepts/consensus-protocol/index.md#trust-based-validation) used by the server.
 

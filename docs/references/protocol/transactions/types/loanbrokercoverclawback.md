@@ -9,7 +9,7 @@ txIcon: cancel
 status: not_enabled
 ---
 # LoanBrokerCoverClawback
-{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/LoanBrokerCoverClawback.cpp" source=true %}[Source]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/LoanBrokerCoverClawback.cpp" format="source-link" %}[Source]{% /repo-link %}
 
 The `LoanBrokerCoverClawback` transaction claws back first-loss capital from a `LoanBroker` ledger entry. The transaction can only be submitted by the issuer of the asset used in the lending protocol, and can't clawback an amount that would cause the available first-loss capital to drop below the minimum amount defined by the `LoanBroker.CoverRateMinimum` value.
 

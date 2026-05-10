@@ -5,7 +5,7 @@ labels:
   - Blockchain
 ---
 # Amendments
-{% repo-link repo="xrpld" path="include/xrpl/protocol/detail/ledger_entries.macro#L187-L192" github_branch="f64cf9187affd69650907d0d92e097eb29693945" source=true %}[Source]{% /repo-link %}
+{% repo-link repo="xrpld" path="include/xrpl/protocol/detail/ledger_entries.macro#L187-L192" github_branch="f64cf9187affd69650907d0d92e097eb29693945" format="source-link" %}[Source]{% /repo-link %}
 
 The `Amendments` ledger entry type contains a list of [Amendments](../../../../concepts/networks-and-servers/amendments.md) that are currently active. Each ledger version contains **at most one** `Amendments` entry.
 

@@ -8,7 +8,7 @@ requiredAmendment: PriceOracle
 txIcon: create
 ---
 # OracleSet
-{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/SetOracle.cpp" source=true %}[Source]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/SetOracle.cpp" format="source-link" %}[Source]{% /repo-link %}
 
 Create or update a [price oracle](../../../../concepts/decentralized-storage/price-oracles.md). Only the owner of an existing price oracle can update it.
 

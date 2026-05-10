@@ -6,7 +6,7 @@ labels:
   - セキュリティ
 ---
 # deposit_authorized
-{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/DepositAuthorized.cpp" source=true %}[ソース]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/DepositAuthorized.cpp" format="source-link" %}[ソース]{% /repo-link %}
 
 `deposit_authorized`コマンドは、あるアカウントに別のアカウントへ支払を直接送金する権限があるかどうかを示します。アカウントへの送金に承認を義務付ける方法については、[Deposit Authorization](../../../../concepts/accounts/depositauth.md)をご覧ください。
 

@@ -6,7 +6,7 @@ labels:
     - Payments
 ---
 # submit
-{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/Submit.cpp" source=true %}[Source]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/Submit.cpp" format="source-link" %}[Source]{% /repo-link %}
 
 The `submit` method applies a [transaction](../../../protocol/transactions/index.md) and sends it to the network to be confirmed and included in future ledgers.
 

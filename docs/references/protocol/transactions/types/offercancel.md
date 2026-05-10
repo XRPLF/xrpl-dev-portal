@@ -7,7 +7,7 @@ txIcon: cancel
 ---
 # OfferCancel
 
-{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/CancelOffer.cpp" source=true %}[Source]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/CancelOffer.cpp" format="source-link" %}[Source]{% /repo-link %}
 
 Cancel an [offer](../../../../concepts/tokens/decentralized-exchange/offers.md) to trade in the decentralized exchange.
 

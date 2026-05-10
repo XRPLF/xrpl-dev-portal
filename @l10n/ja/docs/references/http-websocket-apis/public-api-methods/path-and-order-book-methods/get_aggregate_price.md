@@ -8,7 +8,7 @@ labels:
 
 _([PriceOracle amendment][])_
 
-{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/GetAggregatePrice.cpp" source=true %}[ソース]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/GetAggregatePrice.cpp" format="source-link" %}[ソース]{% /repo-link %}
 
 
 `get_aggregate_price`メソッドは、指定された`Oracle`オブジェクトの集計価格を取得し、平均値、中央値、整形された平均値の3つの価格情報を返します。

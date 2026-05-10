@@ -46,7 +46,7 @@ Server is overloaded
 ```
 
 ## リクエストあたりのレート
-{% repo-link repo="xrpld" path="src/libxrpl/resource/Fees.cpp" source=true %}[ソース]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/libxrpl/resource/Fees.cpp" format="source-link" %}[ソース]{% /repo-link %}
 
 サーバは時間の経過とともに行われるリクエストの数に基づいてクライアントの使用率を計算し、サーバがリクエストにレスポンスするためにどれだけの作業をしなければならないかに基づいて、異なるタイプのリクエストに重みをつけます。[subscribeメソッド][]と[path_findメソッド][]に対するサーバからの後続メッセージもクライアントの使用率にカウントされます。
 

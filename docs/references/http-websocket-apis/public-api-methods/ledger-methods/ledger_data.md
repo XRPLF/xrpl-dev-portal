@@ -6,7 +6,7 @@ labels:
     - Data Retention
 ---
 # ledger_data
-{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/LedgerData.cpp" source=true %}[Source]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/LedgerData.cpp" format="source-link" %}[Source]{% /repo-link %}
 
 The `ledger_data` method retrieves contents of the specified ledger. You can iterate through several calls to retrieve the entire contents of a single ledger version.
 

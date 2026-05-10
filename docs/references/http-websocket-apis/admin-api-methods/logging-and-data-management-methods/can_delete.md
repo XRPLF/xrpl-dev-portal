@@ -5,7 +5,7 @@ labels:
     - Data Retention
 ---
 # can_delete
-{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/CanDelete.cpp" source=true %}[Source]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/CanDelete.cpp" format="source-link" %}[Source]{% /repo-link %}
 
 The `can_delete` method informs the `rippled` server of the latest ledger version which may be deleted when using [online deletion with advisory deletion enabled](../../../../infrastructure/configuration/data-retention/online-deletion.md#advisory-deletion). If advisory deletion is not enabled, this method does nothing.
 

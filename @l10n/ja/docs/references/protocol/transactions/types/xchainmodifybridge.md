@@ -8,7 +8,7 @@ status: not_enabled
 txIcon: modify
 ---
 # XChainModifyBridge
-{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/XChainBridge.cpp" source=true %}[ソース]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/XChainBridge.cpp" format="source-link" %}[ソース]{% /repo-link %}
 
 `XChainModifyBridge`トランザクションでは、ブリッジ管理者がブリッジの設定を変更することができます。変更できるのは`SignatureReward`と`MinAccountCreateAmount`だけです。
 

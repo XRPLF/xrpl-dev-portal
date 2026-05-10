@@ -8,7 +8,7 @@ txIcon: finish
 requiredAmendment: Checks
 ---
 # CheckCash
-{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/CashCheck.cpp" source=true %}[Source]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/CashCheck.cpp" format="source-link" %}[Source]{% /repo-link %}
 
 Attempts to redeem a [check](../../../../concepts/payment-types/checks.md) to receive up to the amount authorized by the corresponding [CheckCreate transaction][]. Only the `Destination` address of a check can cash it with a CheckCash transaction. Cashing a check this way is similar to executing a [Payment][] initiated by the destination.
 

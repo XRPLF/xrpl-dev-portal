@@ -9,7 +9,7 @@ labels:
 ---
 # tx
 
-{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/Tx.cpp" source=true %}[ソース]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/Tx.cpp" format="source-link" %}[ソース]{% /repo-link %}
 
 `tx`メソッドは1つのトランザクションに関する情報を取得します。
 

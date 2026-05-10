@@ -6,7 +6,7 @@ labels:
 ---
 # version
 
-{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/Version.h" source=true %}[Source]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/Version.h" format="source-link" %}[Source]{% /repo-link %}
 
 The `version` command retrieves the API version information for the rippled server. For `Clio` servers, see [`version` (`clio`)](../clio-methods/version.md) instead.
 

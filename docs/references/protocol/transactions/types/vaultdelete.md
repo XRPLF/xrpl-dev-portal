@@ -12,7 +12,7 @@ txIcon: cancel
 
 # VaultDelete
 
-{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/VaultDelete.cpp" source=true %}[Source]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/VaultDelete.cpp" format="source-link" %}[Source]{% /repo-link %}
 
 Permanently deletes an existing `Vault` object from the ledger, removes all associated ledger entries, and frees up the reserve requirement for the Vault Owner.
 

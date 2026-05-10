@@ -8,7 +8,7 @@ requiredAmendment: AMM
 txIcon: cancel
 ---
 # AMMDelete
-{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/AMMDelete.cpp" source=true %}[ソース]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/AMMDelete.cpp" format="source-link" %}[ソース]{% /repo-link %}
 
 {% amendment-disclaimer name="AMM" /%}
 

@@ -7,7 +7,7 @@ requiredAmendment: Clawback
 txIcon: cancel
 ---
 # Clawback
-{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/Clawback.cpp" source=true %}[Source]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/Clawback.cpp" format="source-link" %}[Source]{% /repo-link %}
 
 [Claw back tokens](../../../../concepts/tokens/fungible-tokens/clawing-back-tokens.md) issued by your account. Issuers can only claw back [trust line tokens](../../../../concepts/tokens/fungible-tokens/trust-line-tokens.md) if they enabled the **Allow Trust Line Clawback** setting before issuing any tokens. Issuers can claw back [MPTs](../../../../concepts/tokens/fungible-tokens/multi-purpose-tokens.md) if the corresponding MPT Issuance has clawback enabled.
 

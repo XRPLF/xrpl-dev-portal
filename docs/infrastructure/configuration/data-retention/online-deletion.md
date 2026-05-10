@@ -8,7 +8,7 @@ labels:
   - Core Server
 ---
 # Online Deletion
-{% repo-link repo="xrpld" path="src/xrpld/app/misc/SHAMapStoreImp.cpp" source=true %}[Source]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/app/misc/SHAMapStoreImp.cpp" format="source-link" %}[Source]{% /repo-link %}
 
 The online deletion feature lets the `rippled` server delete the server's local copy of old ledger versions to keep disk usage from rapidly growing over time. The default config file sets online deletion to run automatically, but online deletion can also be configured to run only when prompted.
 

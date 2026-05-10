@@ -5,7 +5,7 @@ labels:
     - Payment Channel
 ---
 # PayChannel
-{% repo-link repo="xrpld" path="include/xrpl/protocol/detail/ledger_entries.macro#L348-L363" github_branch="f64cf9187affd69650907d0d92e097eb29693945" source=true %}[ソース]{% /repo-link %}
+{% repo-link repo="xrpld" path="include/xrpl/protocol/detail/ledger_entries.macro#L348-L363" github_branch="f64cf9187affd69650907d0d92e097eb29693945" format="source-link" %}[ソース]{% /repo-link %}
 
 `PayChannel`エントリは1つの[支払いチャネル](../../../../concepts/payment-types/payment-channels.md)を表します。
 

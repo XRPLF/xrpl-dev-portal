@@ -8,7 +8,7 @@ requiredAmendment: DepositPreauth
 txIcon: modify
 ---
 # DepositPreauth
-{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/DepositPreauth.cpp" source=true %}[Source]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/DepositPreauth.cpp" format="source-link" %}[Source]{% /repo-link %}
 
 Grant preauthorization to send payments to your account. This is only useful if you are using (or plan to use) [Deposit Authorization](../../../../concepts/accounts/depositauth.md).
 

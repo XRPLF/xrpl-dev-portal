@@ -8,7 +8,7 @@ txIcon: modify
 ---
 # SetRegularKey
 
-{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/SetRegularKey.cpp" source=true %}[Source]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/SetRegularKey.cpp" format="source-link" %}[Source]{% /repo-link %}
 
 Assign, change, or remove the [regular key pair](../../../../concepts/accounts/cryptographic-keys.md) associated with your account.
 

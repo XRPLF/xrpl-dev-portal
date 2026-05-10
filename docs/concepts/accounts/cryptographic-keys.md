@@ -161,7 +161,7 @@ The key derivation processes described here are implemented in multiple places a
 - In JavaScript in the [`ripple-keypairs`](https://github.com/XRPLF/xrpl.js/tree/main/packages/ripple-keypairs) package.
 
 ### Ed25519 Key Derivation
-{% repo-link repo="xrpld" path="src/libxrpl/protocol/SecretKey.cpp#L311-L317" github_branch="70d5c624e8cf732a362335642b2f5125ce4b43c1" source=true %}[Source]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/libxrpl/protocol/SecretKey.cpp#L311-L317" github_branch="70d5c624e8cf732a362335642b2f5125ce4b43c1" format="source-link" %}[Source]{% /repo-link %}
 
 [{% inline-svg file="/docs/img/key-derivation-ed25519.svg" /%}](/docs/img/key-derivation-ed25519.svg "Passphrase → Seed → Secret Key → Prefix + Public Key")
 
@@ -182,7 +182,7 @@ The key derivation processes described here are implemented in multiple places a
     Validator ephemeral keys cannot be Ed25519.
 
 ### secp256k1 Key Derivation
-{% repo-link repo="xrpld" path="src/libxrpl/protocol/SecretKey.cpp" source=true %}[Source]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/libxrpl/protocol/SecretKey.cpp" format="source-link" %}[Source]{% /repo-link %}
 
 [{% inline-svg file="/docs/img/key-derivation-secp256k1.svg" /%}](/docs/img/key-derivation-secp256k1.svg "Passphrase → Seed → Root Key Pair → Intermediate Key Pair → Master Key Pair")
 
@@ -201,7 +201,7 @@ The steps to derive the XRP Ledger's secp256k1 account key pair from a seed valu
 
     2. Calculate the [SHA-512Half][] of the concatenated (seed+root sequence) value.
 
-    3. If the result is not a valid secp256k1 secret key, increment the root sequence by 1 and start over. {% repo-link repo="xrpld" path="src/libxrpl/protocol/SecretKey.cpp#L103-L114" github_branch="70d5c624e8cf732a362335642b2f5125ce4b43c1" source=true %}[Source]{% /repo-link %}
+    3. If the result is not a valid secp256k1 secret key, increment the root sequence by 1 and start over. {% repo-link repo="xrpld" path="src/libxrpl/protocol/SecretKey.cpp#L103-L114" github_branch="70d5c624e8cf732a362335642b2f5125ce4b43c1" format="source-link" %}[Source]{% /repo-link %}
 
         A valid secp256k1 key must not be zero, and it must be numerically less than the _secp256k1 group order_. The secp256k1 group order is the constant value `0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEBAAEDCE6AF48A03BBFD25E8CD0364141`.
 

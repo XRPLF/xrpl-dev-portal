@@ -7,7 +7,7 @@ labels:
   - Decentralized Exchange
 ---
 # account_offers
-{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/AccountOffers.cpp" source=true %}[Source]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/AccountOffers.cpp" format="source-link" %}[Source]{% /repo-link %}
 
 The `account_offers` method retrieves a list of [offers](../../../../concepts/tokens/decentralized-exchange/offers.md) made by a given [account](../../../../concepts/accounts/index.md) that are outstanding as of a particular [ledger version](../../../../concepts/ledgers/index.md).
 

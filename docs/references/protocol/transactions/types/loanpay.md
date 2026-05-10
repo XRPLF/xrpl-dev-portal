@@ -9,7 +9,7 @@ txIcon: send
 status: not_enabled
 ---
 # LoanPay
-{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/LoanPay.cpp" source=true %}[Source]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/LoanPay.cpp" format="source-link" %}[Source]{% /repo-link %}
 
 Makes a payment on an active loan. Only the borrower on the loan can make payments, and payments must meet the minimum amount required for that period.
 

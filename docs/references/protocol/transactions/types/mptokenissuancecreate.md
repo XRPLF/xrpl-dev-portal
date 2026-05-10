@@ -8,7 +8,7 @@ requiredAmendment: MPTokensV1
 txIcon: create
 ---
 # MPTokenIssuanceCreate
-{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/MPTokenIssuanceCreate.cpp" source=true %}[Source]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/MPTokenIssuanceCreate.cpp" format="source-link" %}[Source]{% /repo-link %}
 
 Creates a new [Multi-purpose Token (MPT)](../../../../concepts/tokens/fungible-tokens/multi-purpose-tokens.md) issuance, which defines the properties of those MPTs. This is a prerequisite to actually issuing the tokens.
 

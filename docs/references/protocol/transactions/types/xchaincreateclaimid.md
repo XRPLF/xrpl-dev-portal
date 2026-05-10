@@ -8,7 +8,7 @@ status: not_enabled
 txIcon: create
 ---
 # XChainCreateClaimID
-{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/XChainBridge.cpp" source=true %}[Source]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/XChainBridge.cpp" format="source-link" %}[Source]{% /repo-link %}
 
 Create a new cross-chain claim ID that is used for a [cross-chain transfer](../../../../concepts/xrpl-sidechains/cross-chain-bridges.md). A cross-chain claim ID represents *one* cross-chain transfer of value. 
 

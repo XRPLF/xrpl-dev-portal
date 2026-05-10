@@ -8,7 +8,7 @@ labels:
   - コアサーバ
 ---
 # consensus_info
-{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/ConsensusInfo.cpp" source=true %}[ソース]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/ConsensusInfo.cpp" format="source-link" %}[ソース]{% /repo-link %}
 
 `consensus_info`メソッドは、デバッグのための[コンセンサスプロセス](../../../../concepts/consensus-protocol/index.md)に関する情報を返します。
 

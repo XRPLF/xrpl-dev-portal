@@ -7,7 +7,7 @@ labels:
   - ブロックチェーン
 ---
 # LedgerHashes
-{% repo-link repo="xrpld" path="include/xrpl/protocol/detail/ledger_entries.macro#L202-L206" github_branch="f64cf9187affd69650907d0d92e097eb29693945" source=true %}[ソース]{% /repo-link %}
+{% repo-link repo="xrpld" path="include/xrpl/protocol/detail/ledger_entries.macro#L202-L206" github_branch="f64cf9187affd69650907d0d92e097eb29693945" format="source-link" %}[ソース]{% /repo-link %}
 
 （レジャーバージョンを一意に示す[「ledger hash」文字列データ型][ハッシュ]と混同しないでください。このセクションでは、`LedgerHashes`レジャーオブジェクトタイプについて説明します。）
 
@@ -65,7 +65,7 @@ labels:
 「過去の履歴」`LedgerHashes`オブジェクトは[スキップリスト](https://en.wikipedia.org/wiki/Skip_list)として機能するので、任意の履歴フラッグレジャーのハッシュをそのインデックスから取得できます。さらに、フラッグレジャーの「最近の履歴」オブジェクトを使用してその他のレジャーのハッシュを取得できます。
 
 ## LedgerHashes IDのフォーマット
-{% repo-link repo="xrpld" path="src/libxrpl/protocol/Indexes.cpp#L195-L211" github_branch="70d5c624e8cf732a362335642b2f5125ce4b43c1" source=true %}[ソース]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/libxrpl/protocol/Indexes.cpp#L195-L211" github_branch="70d5c624e8cf732a362335642b2f5125ce4b43c1" format="source-link" %}[ソース]{% /repo-link %}
 
 `LedgerHashes`オブジェクトIDには2種類のフォーマットがあります。これは、オブジェクトのサブタイプが「最近の履歴」と「過去の履歴」のいずれであるかに応じて決まります。
 

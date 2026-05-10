@@ -5,7 +5,7 @@ labels:
   - Security
 ---
 # SignerList
-{% repo-link repo="xrpld" path="include/xrpl/protocol/detail/ledger_entries.macro#L111-L118" github_branch="f64cf9187affd69650907d0d92e097eb29693945" source=true %}[Source]{% /repo-link %}
+{% repo-link repo="xrpld" path="include/xrpl/protocol/detail/ledger_entries.macro#L111-L118" github_branch="f64cf9187affd69650907d0d92e097eb29693945" format="source-link" %}[Source]{% /repo-link %}
 
 A `SignerList` entry represents a list of parties that, as a group, are authorized to sign a transaction in place of an individual account by [multi-signing](../../../../concepts/accounts/multi-signing.md). You can create, replace, or remove a signer list using a [SignerListSet transaction][].
 

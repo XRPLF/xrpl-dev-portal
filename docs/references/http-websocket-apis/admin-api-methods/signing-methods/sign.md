@@ -5,7 +5,7 @@ labels:
     - Transaction Sending
 ---
 # sign
-{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/SignHandler.cpp" source=true %}[Source]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/SignHandler.cpp" format="source-link" %}[Source]{% /repo-link %}
 
 The `sign` method takes a [transaction in JSON format](../../../protocol/transactions/index.md) and a [seed value](../../../../concepts/accounts/cryptographic-keys.md), and returns a signed binary representation of the transaction. To contribute one signature to a [multi-signed transaction](../../../../concepts/accounts/multi-signing.md), use the [sign_for method][] instead.
 

@@ -8,7 +8,7 @@ requiredAmendment: NonFungibleTokensV1_1
 txIcon: cancel
 ---
 # NFTokenBurn
-{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/NFTokenBurn.cpp" source=true %}[Source]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/NFTokenBurn.cpp" format="source-link" %}[Source]{% /repo-link %}
 
 Burn (destroy) a [non-fungible token (NFT)](../../../../concepts/tokens/nfts/index.md). The NFT's current holder can always burn it, and if the token's **Burnable** flag is enabled, the issuer and their authorized minter (if they have one) can also burn the NFT.
 

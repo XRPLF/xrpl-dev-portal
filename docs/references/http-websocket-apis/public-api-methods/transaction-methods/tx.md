@@ -7,7 +7,7 @@ labels:
 ---
 # tx
 
-{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/Tx.cpp" source=true %}[Source]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/Tx.cpp" format="source-link" %}[Source]{% /repo-link %}
 
 The `tx` method retrieves information on a single [transaction](../../../protocol/transactions/index.md), by its [identifying hash][] or its [CTID](../../api-conventions/ctid.md).
 

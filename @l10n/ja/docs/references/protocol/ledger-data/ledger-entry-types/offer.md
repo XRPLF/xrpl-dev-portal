@@ -7,7 +7,7 @@ labels:
   - 分散型取引所
 ---
 # Offer
-{% repo-link repo="xrpld" path="include/xrpl/protocol/detail/ledger_entries.macro#L242-L255" github_branch="7e24adbdd0b61fb50967c4c6d4b27cc6d81b33f3" source=true %}[ソース]{% /repo-link %}
+{% repo-link repo="xrpld" path="include/xrpl/protocol/detail/ledger_entries.macro#L242-L255" github_branch="7e24adbdd0b61fb50967c4c6d4b27cc6d81b33f3" format="source-link" %}[ソース]{% /repo-link %}
 
 `Offer`レジャーエントリは、XRP Ledgerの[分散型取引所](../../../../concepts/tokens/decentralized-exchange/index.md)で通貨を交換する[オファー](../../../../concepts/tokens/decentralized-exchange/offers.md)を表しています。（金融ではより伝統的に _オーダー_ として知られています）。[OfferCreateトランザクション][]は他のOfferを全額約定できない場合、Offerエントリを作成します。
 

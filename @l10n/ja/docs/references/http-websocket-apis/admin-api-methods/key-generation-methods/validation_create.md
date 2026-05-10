@@ -8,7 +8,7 @@ labels:
   - コアサーバ
 ---
 # validation_create
-{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/ValidationCreate.cpp" source=true %}[ソース]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/ValidationCreate.cpp" format="source-link" %}[ソース]{% /repo-link %}
 
 `validation_create`コマンドキーを使用して、[`rippled`サーバがネットワークに対して自身の身元を識別させるのに使用できる暗号鍵](../../../../concepts/networks-and-servers/peer-protocol.md#ノードキーペア)を生成します。[wallet_proposeメソッド][]と同様に、このメソッドでは適切なフォーマットで一連のキーが単に生成されるだけです。XRP Ledgerのデータやサーバ構成は変更されません。
 

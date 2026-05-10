@@ -6,7 +6,7 @@ labels:
     - Cross-Currency
 ---
 # book_offers
-{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/BookOffers.cpp" source=true %}[Source]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/BookOffers.cpp" format="source-link" %}[Source]{% /repo-link %}
 
 The `book_offers` method retrieves a list of [offers](../../../../concepts/tokens/decentralized-exchange/offers.md) between two currencies, also known as an _order book_. The response omits [unfunded offers](../../../../concepts/tokens/decentralized-exchange/offers.md#lifecycle-of-an-offer) and reports how much of each remaining offer's total is currently funded.
 

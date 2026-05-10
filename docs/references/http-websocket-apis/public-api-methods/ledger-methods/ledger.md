@@ -5,7 +5,7 @@ labels:
     - Blockchain
 ---
 # ledger
-{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/LedgerHandler.cpp" source=true %}[Source]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/LedgerHandler.cpp" format="source-link" %}[Source]{% /repo-link %}
 
 Retrieve information about the public [ledger](../../../../concepts/ledgers/index.md).
 

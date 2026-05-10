@@ -6,7 +6,7 @@ labels:
     - Core Server
 ---
 # feature
-{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/Feature1.cpp" source=true %}[Source]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/Feature1.cpp" format="source-link" %}[Source]{% /repo-link %}
 
 The `feature` command returns information about [amendments](../../../../concepts/networks-and-servers/amendments.md) this server knows about, including whether they are enabled and whether the server is voting in favor of those amendments in the [amendment process](../../../../concepts/networks-and-servers/amendments.md#amendment-process).
 

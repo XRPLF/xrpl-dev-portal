@@ -7,7 +7,7 @@ labels:
   - トランザクション送信
 ---
 # transaction_entry
-{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/TransactionEntry.cpp" source=true %}[ソース]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/rpc/handlers/TransactionEntry.cpp" format="source-link" %}[ソース]{% /repo-link %}
 
 `transaction_entry`メソッドは、特定のレジャーバージョンから1つのトランザクションに関する情報を取得します。（これに対して、[txメソッド][]はすべてのレジャーから指定のトランザクションを検索します。txメソッドの使用をお勧めします。）
 

@@ -5,7 +5,7 @@ labels:
     - Blockchain
 ---
 # UNLModify
-{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/Change.cpp" source=true %}[Source]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/Change.cpp" format="source-link" %}[Source]{% /repo-link %}
 
 A `UNLModify` [pseudo-transaction](./index.md) marks a change to the [Negative UNL](../../../../concepts/consensus-protocol/negative-unl.md), indicating that a trusted validator has gone offline or come back online.
 

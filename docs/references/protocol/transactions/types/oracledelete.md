@@ -8,7 +8,7 @@ requiredAmendment: PriceOracle
 txIcon: cancel
 ---
 # OracleDelete
-{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/DeleteOracle.cpp" source=true %}[Source]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/DeleteOracle.cpp" format="source-link" %}[Source]{% /repo-link %}
 
 Delete a [price oracle](../../../../concepts/decentralized-storage/price-oracles.md). Only the owner of the price oracle can send this transaction.
 

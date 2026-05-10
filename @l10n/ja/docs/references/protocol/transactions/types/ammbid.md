@@ -8,7 +8,7 @@ requiredAmendment: AMM
 txIcon: modify
 ---
 # AMMBid
-{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/AMMBid.cpp" source=true %}[ソース]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/AMMBid.cpp" format="source-link" %}[ソース]{% /repo-link %}
 
 {% amendment-disclaimer name="AMM" /%}
 

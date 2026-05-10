@@ -5,7 +5,7 @@ labels:
     - ブロックチェーン
 ---
 # Amendments
-{% repo-link repo="xrpld" path="include/xrpl/protocol/detail/ledger_entries.macro#L187-L192" github_branch="f64cf9187affd69650907d0d92e097eb29693945" source=true %}[ソース]{% /repo-link %}
+{% repo-link repo="xrpld" path="include/xrpl/protocol/detail/ledger_entries.macro#L187-L192" github_branch="f64cf9187affd69650907d0d92e097eb29693945" format="source-link" %}[ソース]{% /repo-link %}
 
 `Amendments`オブジェクトタイプには、現在アクティブな[Amendment](../../../../concepts/networks-and-servers/amendments.md)のリストが含まれています。各レジャーバージョンには**最大で1つの**`Amendments`オブジェクトが含まれています。
 

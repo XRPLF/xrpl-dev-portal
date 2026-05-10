@@ -8,7 +8,7 @@ requiredAmendment: DynamicNFT
 txIcon: modify
 ---
 # NFTokenModify
-{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/NFTokenModify.cpp" source=true %}[Source]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/NFTokenModify.cpp" format="source-link" %}[Source]{% /repo-link %}
 
 Change the `URI` field of a [dynamic NFT](../../../../concepts/tokens/nfts/dynamic-nfts.md) to update the supporting data for the NFT. Only the issuer, or their authorized minter, can modify an NFT, and only if it was minted with the **Mutable** flag enabled.
 

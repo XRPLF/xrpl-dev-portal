@@ -8,7 +8,7 @@ status: not_enabled
 txIcon: modify
 ---
 # XChainModifyBridge
-{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/XChainBridge.cpp" source=true %}[Source]{% /repo-link %}
+{% repo-link repo="xrpld" path="src/xrpld/app/tx/detail/XChainBridge.cpp" format="source-link" %}[Source]{% /repo-link %}
 
 Modify the parameters of a [cross-chain bridge](../../../../concepts/xrpl-sidechains/cross-chain-bridges.md). Only managers can send this transaction, and they can only change the `SignatureReward` and the `MinAccountCreateAmount`.
 
