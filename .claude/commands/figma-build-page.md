@@ -20,20 +20,34 @@ Extract from `$ARGUMENTS`:
 ### Step 2 — Understand the design structure
 
 Run in parallel:
-1. Call `mcp__claude_ai_Figma__get_metadata` with the `fileKey` and `nodeId` (use `0:1` to get the full page if no nodeId given) to get the full section list
-2. Read the current target page file to understand what already exists
-3. Run `find shared/sections -name "*.tsx"` and `find shared/components -name "*.tsx"` to inventory available components
-4. Run `find static/img/icons/2026 static/img/logos/black static/img/bds-2026 -type f` to inventory existing assets so the build can reuse them instead of re-exporting duplicates
+1. Read the current target page file to understand what already exists
+2. Run `find shared/sections -name "*.tsx"` and `find shared/components -name "*.tsx"` to inventory available components
+3. Run `find static/img/icons/2026 static/img/logos/black static/img/bds-2026 -type f` to inventory existing assets so the build can reuse them instead of re-exporting duplicates
+4. Call `mcp__claude_ai_Figma__get_metadata` on the **page root** (the parent of the `nodeId` you were given) — pass `nodeId="0:1"` if you don't know the page id, otherwise walk up one level from the given node. The goal is to see ALL sibling frames on the canvas, not just the LG/MD/SM page mockups. Section frames alone are not enough — designers also park reference data in sibling frames.
 
-**Locate the Assets frame.** Designers frequently park clean, isolated versions of the page's icons and media in a sibling frame on the same canvas — typically named `Assets`, `Assets Library`, `Exports`, or similar. From the metadata in step 1, identify any such frame (it lives outside the main `LG`/`MD`/`SM` page frames, often to the right). Record:
+#### Step 2A — Locate the Assets frame (REQUIRED, do this before anything else design-side)
+
+Designers park clean, isolated versions of the page's icons, logos, photos, and **canonical card/list content** in a sibling frame on the same canvas — typically named `Assets`, `Assets Library`, `Exports`, `Resources`, `Content`, or similar. It lives outside the main `LG`/`MD`/`SM` page frames, usually far to the right or below them.
+
+From the page-root metadata, find any frame whose name matches `/asset|export|library|resource|content/i` OR whose x/y position places it clearly outside the LG/MD/SM stack. Record:
 - Its `nodeId` and name
-- The `nodeId` and layer name of every child node (each child is usually a single icon, photo, or component instance ready to export)
+- Every child node's `nodeId`, layer name, and visual role (icon vs photo vs logo vs card content)
 
-This Assets frame becomes the **preferred source** for asset exports in Step 7 because its children are isolated (no surrounding section chrome) and rendered at canonical export sizes. The main page frames often reference these via instances, so a node found inline may just be a thumbnail — the Assets frame holds the real artwork.
+**Then immediately call `mcp__claude_ai_Figma__get_design_context` on the Assets frame** to extract its contents — child layer names, image asset URLs, and any text labels. Do this BEFORE fetching the section contexts in Step 3, because the Assets frame is the source of truth for:
+- **Real partner/customer logos** — the LG frame typically shows placeholder logos (e.g. the same logo repeated 8×); the Assets frame holds the real brand SVGs.
+- **Full carousel card sets** — the LG frame may only show 3-4 visible slides (with duplicates as overflow placeholders); the Assets frame holds the full N-card list with no duplicates.
+- **Canonical icon artwork** — the icon inside a section is often a low-fidelity instance of the master icon in the Assets frame.
+- **Per-card hrefs, hidden subtitles, alt text, video URLs** — content the section mockup doesn't have room to show.
 
-### Step 3 — Fetch design context for each section
+Build an **Assets Index**: `{ layerName, nodeId, role, imageAssetUrl?, associatedSectionHint? }` for every child. Use the layer name to associate each asset with a section (e.g. layer `RWA Partner — Archax` belongs in the logo grid; layer `Carousel Card 04 — Onchain Trading` belongs in the carousel).
 
-For every top-level section frame found in the metadata, call `mcp__claude_ai_Figma__get_design_context` in parallel batches (max 3 at a time). Focus on:
+**If the page also has annotations pointing at the Assets frame** (e.g. `data-annotations="Logo - see right side asset frame"`, `"Full list in Assets"`, `"Cards continue in Assets frame"`), treat that as a hard contract: the Assets frame is the authoritative content for that section, and the LG mockup is just a visual stub.
+
+**Fail-loud if no Assets frame is found:** if you can't find a sibling frame and the page has more than one media/logo/icon, surface this to the user before continuing — e.g. "I didn't find an Assets/Exports frame on this canvas. The LG mockup shows N placeholder logos and a 3-card carousel — proceed treating those as the final content, or point me at the Assets frame?" Don't silently fall back to the LG mockup when the design clearly references external content.
+
+### Step 3 — Fetch design context for each section (cross-reference with Assets frame)
+
+For every top-level section frame found in the metadata, call `mcp__claude_ai_Figma__get_design_context` in parallel batches (max 3 at a time). For each section, gather:
 - The heading/title text
 - Any body/description text
 - All link labels and their annotation `href` values (from `data-annotations`)
@@ -41,7 +55,13 @@ For every top-level section frame found in the metadata, call `mcp__claude_ai_Fi
 - The arrangement (left/right, content vs media position)
 - Every distinct image/icon node — capture its Figma `nodeId`, layer name, fill color, and visual role (icon vs photo, monochrome vs colored)
 
-**Important:** Note any Figma annotations that say content should be removed or changed.
+**Then cross-reference against the Assets Index from Step 2A:**
+- For carousels/lists: if the LG mockup shows fewer cards than the Assets frame, USE THE ASSETS-FRAME COUNT and content. If cards in the mockup look like exact duplicates (same icon + same text), treat them as overflow placeholders and drop them in favor of the Assets-frame set.
+- For logo grids: if the mockup repeats the same logo, IGNORE that and use the distinct logos from the Assets frame.
+- For media: if the section's media node and an Assets-frame node share a layer name or visible image, prefer the Assets-frame node — it's higher fidelity and isolated from section chrome.
+- For icons: if a section icon has a matching layer name in the Assets frame, export from the Assets frame, not the section instance.
+
+**Important:** Note any Figma annotations that say content should be removed or changed, OR that redirect to the Assets frame ("see right side asset frame", "real logos in assets", etc.) — annotations override what the mockup shows.
 
 ### Step 4 — Map sections to existing components
 
@@ -83,15 +103,18 @@ Match Figma background colors to component variant props:
 
 For every image/icon node identified in Step 3, decide:
 
-**A) Reuse vs export:** If a visually-equivalent asset already exists in the inventory from Step 2 (same role, same color), reuse its path and skip export. Otherwise schedule a new export.
+**A) Source node — always prefer the Assets frame:** For each asset slot in the page, look up the matching node in the Assets Index from Step 2A by layer name or visual match. **Export from the Assets-frame node, not the section instance.** Section instances are often scaled-down thumbnails or shared placeholders; the Assets frame holds the master artwork at its intended export size. Only fall back to the section instance if the Assets frame genuinely doesn't have a counterpart.
 
-**B) Target folder** — route by section type and asset role:
+**B) Reuse vs export:** If a visually-equivalent asset already exists in the inventory from Step 2 (same role, same color), reuse its path and skip export. Otherwise schedule a new export.
+
+**C) Target folder** — route by section type and asset role:
 
 | Section / role | Folder | Format |
 |---|---|---|
 | `CarouselCardList` card icons (monochrome glyphs) | `static/img/icons/2026/black/` | `.svg` |
 | `CardsIconGrid` card icons (colored glyphs) | `static/img/icons/2026/color/<color>/` | `.svg` |
 | `SmallTilesSection` card icons (SDK / language logos) | `static/img/logos/black/` | `.svg` |
+| `LogoRectangleGrid` partner logos (rendered from inner `Logo` frame, 1.5× scale) | `static/img/logos/black/` | `.png` |
 | `HeaderHeroPrimaryMedia` hero media (photo) | `static/img/bds-2026/` | `.jpg` |
 | `FeatureTwoColumn` media (photo) | `static/img/bds-2026/` | `.jpg` |
 | `FeaturedVideoHero` poster (if used) | `static/img/bds-2026/` | `.jpg` |
@@ -100,7 +123,7 @@ For every image/icon node identified in Step 3, decide:
 
 For the colored-icon folders, pick `<color>` from the Figma fill on the icon (or, if the icon inherits color from a parent component, the parent section's variant prop). Existing folders: `lilac`. Create a new sibling folder (`green`, `yellow`, etc.) if the design uses a new color — never dump differently-colored icons into the wrong folder.
 
-**C) Filename — always kebab-case:**
+**D) Filename — always kebab-case:**
 
 1. Start from the Figma layer name.
 2. Lowercase, replace spaces / underscores / camelCase boundaries with `-`, strip non-`[a-z0-9-]`.
@@ -114,17 +137,28 @@ Examples:
 - Figma layer `XRPL Server` (CardsIconGrid icon, lilac fill) → `static/img/icons/2026/color/lilac/xrpl-server.svg`
 - Figma layer `Hero Image` on `docs/index.page.tsx` → `static/img/bds-2026/docs-hero-media.jpg`
 - Figma layer `Feature 02` on `resources/about.page.tsx` → `static/img/bds-2026/resources-about-feature-media-2.jpg`
+- Figma frame `Logo_Circle` → `Logo` (inner, LogoRectangleGrid partner) → `static/img/logos/black/circle.png` (1.5× PNG, see Step 7)
+- Figma frame `Logo_Ondo` → `Logo` (inner, LogoRectangleGrid partner) → `static/img/logos/black/ondo.png`
 
 ### Step 7 — Export the assets from Figma
 
-For each scheduled export from Step 6:
+For each scheduled export from Step 6 (sourced from the Assets frame per Step 6A whenever possible):
 
 1. Ensure the target folder exists (`mkdir -p` it if not).
-2. Attempt to export the asset from Figma via the MCP:
-   - **SVG icons:** call `mcp__claude_ai_Figma__get_design_context` on the icon node and look for inline SVG markup in the response; if present, write it to the target path. If not, fall back to step 4 below.
-   - **Photographic media (JPG):** call `mcp__claude_ai_Figma__get_screenshot` on the node with a sensible scale and save the returned image to the target path as `.jpg`.
-3. If the MCP returns a URL/binary reference rather than raw content, download it with `curl -L -o <target> <url>`.
-4. **Fallback when export fails or returns nothing usable:** create a zero-byte placeholder file at the target path AND record `{ figmaNodeId, layerName, targetPath, reason }` in a `MISSING_ASSETS` list. Do not silently drop the asset.
+2. **Get the raw Figma asset URL.** Calling `mcp__claude_ai_Figma__get_design_context` on a frame returns inline TS that declares `const imgXxx = "https://www.figma.com/api/mcp/asset/<uuid>"` constants — one per leaf image/icon node. These URLs serve the **raw underlying asset** (SVG for vector icons, PNG for photos/rasters), NOT a re-rendered screenshot of the surrounding chrome. Pull the URL for the specific Assets-frame child you mapped to this slot.
+3. **Download with `curl -sL`.** Examples:
+   - SVG icons / vector logos → `curl -sL <url> -o <target>.svg` — Figma serves the actual SVG markup for vector nodes, so no conversion is needed.
+   - Photographic media → `curl -sL <url> -o /tmp/<name>.bin && sips -s format jpeg -s formatOptions 88 /tmp/<name>.bin --out <target>.jpg` — Figma serves PNG for raster nodes; convert to JPG with `sips` (macOS) at quality 88. Don't skip the conversion — the `.jpg` extension matters.
+   - Verify the format with `file <path>` after downloading the first one of each type, in case Figma serves something unexpected.
+4. **LogoRectangleGrid partner logos — special procedure.** Multi-layer brand logos (Circle, Zeconomy, DB Schenker, etc.) decompose into many vector pieces under `get_design_context`, so the raw-asset-URL technique above gives you fragments, not a composite. Use this instead:
+   1. Target the **inner `Logo` frame** (the 170×96 child of `Logo_<Name>`), not the gray-tile parent (`Logo_<Name>`) and not the bottom-most leaf layer (e.g. `Ondo finance`, `DB Schenker_Logo_0 1`).
+   2. Call `mcp__claude_ai_Figma__get_screenshot` on that inner Logo frame with `contentsOnly: true` and `maxDimension: 256` to request the longer-edge at ~1.5× the native 170 px. Note that Figma's MCP does not supersample beyond a frame's native render size, so the returned PNG is typically still 170×96 — that's expected, not an error.
+   3. Download the PNG: `curl -sL <image_url> -o /tmp/<name>.png`.
+   4. Upscale to the 1.5× target dimensions (255×144) using `sips`: `sips -z 144 255 /tmp/<name>.png --out static/img/logos/black/<name>.png`. This gives a crisper-on-retina raster at the design's intended display proportion, even if the resampled pixels don't add new detail.
+   5. Save as `.png` (not `.svg` — partner logos in the grid are raster). Filename is kebab-case of the layer name with the `Logo_` prefix stripped (e.g. `Logo_DBS` → `db-schenker.png` — use the visually-recognized brand name, not the literal Figma slug if it's an abbreviation).
+   6. **Surface logo-files annotations.** Designers often annotate one of the logo frames (e.g. `Logo_Circle`) with `data-assets-annotations` text like `"Need logo files"` plus a Google Drive link. When present, add a `MISSING_ASSETS` entry: `{ note: "Partner logos are placeholder reproductions — final brand-approved files pending from <Drive URL>", affects: [list of logo paths] }`. The exports are still useful as stand-ins until the user swaps in real assets.
+5. **Do NOT use `get_screenshot` on the section frame** to capture media — that re-renders the whole section (chrome, text, padding) and the resulting image cannot be used as a clean media src. Use `get_screenshot` only as a last resort when an asset has no underlying image node, AND target the leaf media node directly (not the parent section).
+6. **Fallback when export fails or returns nothing usable:** create a zero-byte placeholder file at the target path AND record `{ figmaNodeId, layerName, targetPath, reason }` in a `MISSING_ASSETS` list. Do not silently drop the asset.
 
 After all attempted exports, run `ls -la` on each unique target folder so the user can see what landed.
 
@@ -134,7 +168,8 @@ Present a plan first showing:
 - All sections in order with their mapped component
 - The full content (text, links, variants) for each section
 - Any content removed per Figma annotations
-- **The asset manifest**: for every image/icon, show `figma layer → target path → status (exported | reused | missing)`
+- **For each list/grid/carousel section, the canonical item count and source** — e.g. "Logo grid: 8 distinct partner logos from Assets frame (LG mockup showed 8× placeholder, ignored)" or "Carousel: 5 cards from Assets frame (LG mockup showed 3 + 2 duplicates, kept 5)". Make it explicit that the Assets frame won, so the user can spot if something was missed.
+- **The asset manifest**: for every image/icon, show `figma layer → source (assets-frame node / section-instance fallback) → target path → status (exported | reused | missing)`
 
 After approval, write the full `.page.tsx`:
 1. Keep the existing `frontmatter` export (SEO metadata)
@@ -189,8 +224,11 @@ End the run by printing:
 
 - **Never install Tailwind** — the project uses SCSS + Bootstrap
 - **Never create new components** — only use what exists in `shared/sections/` and `shared/components/`
+- **The Assets frame is the source of truth.** Before fetching any section context, find and read the sibling Assets/Exports/Library/Resources frame on the page canvas. Use it for: real partner logos (not LG mockup placeholders), full carousel/list item sets (not the truncated visible cards), master icon artwork, and per-item hrefs the mockup hides. If you can't find an Assets frame and the design references one (via annotations or repeated placeholders), surface that to the user before guessing.
+- **Carousel and logo-grid item counts come from the Assets frame.** If the LG mockup shows repeated identical cards/logos, treat them as overflow placeholders and use the Assets-frame count instead.
+- **Export from Assets-frame nodes, not section instances.** Section instances are usually thumbnails of the master artwork in the Assets frame.
 - **Always apply links** from Figma annotations to make lists navigable
-- **Respect Figma notes** — if a section is annotated for removal, skip it
+- **Respect Figma notes** — if a section is annotated for removal, skip it; if it's annotated to redirect content to the Assets frame ("see right side asset frame", "logos in assets", etc.), follow that pointer rather than using the visible mockup content
 - **Light mode only** — follow the light mode variant of any design that shows both
 - **Always use `require('../static/img/...')` for images** — every image/icon prop must point at a real path under `static/img/` following the folder routing in Step 6. Never pass `src=""` and never inline a remote URL.
 - **Kebab-case all new asset filenames.** Shared photographic media in `bds-2026/` must be prefixed with the page slug; icons and logos are not page-prefixed.
