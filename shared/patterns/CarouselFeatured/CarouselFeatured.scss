@@ -253,6 +253,11 @@ $bds-carousel-featured-variants-light: (
   justify-content: space-between;
   align-items: flex-start;
   width: 100%;
+  flex-direction: column-reverse;
+
+  @include media-breakpoint-up(md) {
+    flex-direction: row;
+  }
 }
 
 .bds-carousel-featured__heading {
