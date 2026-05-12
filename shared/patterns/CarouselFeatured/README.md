@@ -8,18 +8,21 @@ A featured image carousel pattern with a two-column layout on desktop (image lef
 import { CarouselFeatured } from '@/shared/patterns/CarouselFeatured';
 
 <CarouselFeatured
-  heading="Powered by Developers"
-  features={[
-    { title: "Easy-to-Integrate APIs", description: "Build with common languages..." },
-    { title: "Full Lifecycle Support", description: "From dev tools to deployment..." },
-  ]}
-  buttons={[
-    { label: "Get Started", href: "/docs" },
-    { label: "Learn More", href: "/about" }
-  ]}
   slides={[
-    { id: 1, imageSrc: '/image1.jpg', imageAlt: 'Slide 1' },
-    { id: 2, imageSrc: '/image2.jpg', imageAlt: 'Slide 2' },
+    {
+      id: 1,
+      heading: "Powered by Developers",
+      features: [
+        { title: "Easy-to-Integrate APIs", description: "Build with common languages..." },
+        { title: "Full Lifecycle Support", description: "From dev tools to deployment..." },
+      ],
+      buttons: [
+        { label: "Get Started", href: "/docs" },
+        { label: "Learn More", href: "/about" }
+      ],
+      imageSrc: '/image1.jpg',
+      imageAlt: 'Slide 1'
+    },
   ]}
   background="grey"
 />
@@ -31,15 +34,12 @@ import { CarouselFeatured } from '@/shared/patterns/CarouselFeatured';
 
 | Prop | Type | Description |
 |------|------|-------------|
-| `heading` | `string` | Heading text displayed at the top of the content area |
-| `features` | `CarouselFeatureItem[]` | Array of feature items with title and description |
 | `slides` | `CarouselSlide[]` | Array of slides to display in the carousel |
 
 ### Optional Props
 
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
-| `buttons` | `ButtonConfig[]` | `undefined` | Array of button configurations (1-2 buttons supported, uses ButtonGroup) |
 | `background` | `'grey' \| 'neutral' \| 'yellow'` | `'grey'` | Background color variant |
 
 ## Type Definitions
@@ -49,6 +49,9 @@ import { CarouselFeatured } from '@/shared/patterns/CarouselFeatured';
 ```tsx
 interface CarouselSlide {
   id: string | number;  // Unique identifier for the slide
+  heading: string;      // Heading text for the slide
+  features: CarouselFeatureItem[]; // Slide feature list
+  buttons?: ButtonConfig[]; // Optional slide buttons
   imageSrc: string;     // Image source URL
   imageAlt: string;     // Alt text for the image
 }
@@ -58,8 +61,8 @@ interface CarouselSlide {
 
 ```tsx
 interface CarouselFeatureItem {
-  title: string;        // Feature title
-  description: string;  // Feature description
+  title: React.ReactNode;        // Feature title node
+  description: React.ReactNode;  // Feature description node
 }
 ```
 

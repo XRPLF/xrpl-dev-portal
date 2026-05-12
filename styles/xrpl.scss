@@ -149,6 +149,10 @@ $line-height-base: 1.5;
 @import "_docs-landing.scss";
 @import "_osano.scss";
 
+// Import sections
+@import "../pages/home/sections/HomeHero/HomeHero.scss";
+
+
 // Light/Dark theme settings ---------------------------------------------------
 // Option to only change theme on user system settings.  No toggle.
 

@@ -273,7 +273,7 @@ $bds-feature-mobile-content-gap: $bds-space-2xl; // 24px - spacing('2xl')
 // Dark Mode Theme Overrides
 // =============================================================================
 
-html.dark {
+@include bds-theme-mode(dark, $at-root: true) {
   .bds-feature-two-column {
     &__title {
       color: $bds-feature-title-color-dark;

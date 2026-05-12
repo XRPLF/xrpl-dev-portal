@@ -156,6 +156,7 @@ $bds-single-topic-mobile-title-description-gap: $bds-space-4xl; // 40px - spacin
   &__title {
     color: $bds-single-topic-title-color;
     margin: 0;
+    @include type(heading-md);
   }
 
   // Description section - at the bottom, contains description + ButtonGroup

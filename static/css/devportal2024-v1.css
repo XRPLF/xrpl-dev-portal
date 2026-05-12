@@ -13644,6 +13644,9 @@ html.light .bds-carousel-button--black.bds-carousel-button--disabled, html.light
   }
 }
 .bds-card-stat__statistic {
+  word-break: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
   margin-bottom: 0;
 }
 .bds-card-stat__statistic sup {
@@ -21381,12 +21384,6 @@ html.light .bds-callout-media-banner--gray {
 html.light .bds-callout-media-banner--gray .bds-callout-media-banner__text {
   color: #141414;
 }
-html.light .bds-callout-media-banner--image .bds-callout-media-banner__text {
-  color: #FFFFFF;
-}
-html.light .bds-callout-media-banner--image-text-black .bds-callout-media-banner__text {
-  color: #141414 !important;
-}
 
 .bds-card-stats {
   padding-top: 24px;
@@ -21582,6 +21579,7 @@ html.light .bds-carousel-card-list--green .bds-carousel-card-list__description {
 .bds-carousel-featured {
   width: 100%;
   overflow: hidden;
+  position: relative;
   background-color: #CAD4DF;
   padding: 24px 16px;
 }
@@ -21715,12 +21713,21 @@ html.dark .bds-carousel-featured--bg-yellow .bds-carousel-button--black:active:n
   justify-content: space-between;
   align-items: flex-start;
   width: 100%;
+  flex-direction: column-reverse;
+}
+@media (min-width: 576px) {
+  .bds-carousel-featured__header {
+    flex-direction: row;
+  }
 }
 
 .bds-carousel-featured__heading {
   margin: 0;
   color: #FFFFFF;
   max-width: 392px;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 
 .bds-carousel-featured__bottom {
@@ -21743,22 +21750,18 @@ html.dark .bds-carousel-featured--bg-yellow .bds-carousel-button--black:active:n
   display: flex;
   gap: 8px;
   flex-shrink: 0;
+  z-index: 2;
+  padding: inherit;
 }
-.bds-carousel-featured__nav--desktop {
-  display: none;
+.bds-carousel-featured__nav.clickable {
+  position: absolute;
+  right: 0;
+  top: 0;
 }
-@media (min-width: 992px) {
-  .bds-carousel-featured__nav--desktop {
-    display: flex;
-  }
-}
-.bds-carousel-featured__nav--mobile {
-  display: flex;
-}
-@media (min-width: 992px) {
-  .bds-carousel-featured__nav--mobile {
-    display: none;
-  }
+
+.bds-carousel-featured__nav-buttons-placeholder {
+  visibility: hidden;
+  pointer-events: none;
 }
 
 .bds-carousel-featured__features {
@@ -21832,22 +21835,39 @@ html.dark .bds-carousel-featured--bg-yellow .bds-carousel-button--black:active:n
   flex: 0 0 100%;
   width: 100%;
   position: relative;
+}
+
+.bds-carousel-featured__slide > .bds-grid__row {
+  gap: 24px;
+}
+@media (min-width: 576px) {
+  .bds-carousel-featured__slide > .bds-grid__row {
+    gap: 32px;
+  }
+}
+@media (min-width: 992px) {
+  .bds-carousel-featured__slide > .bds-grid__row {
+    gap: 8px;
+  }
+}
+
+.bds-carousel-featured__media {
+  position: relative;
+  width: 100%;
   aspect-ratio: 343/193;
 }
 @media (min-width: 576px) {
-  .bds-carousel-featured__slide {
+  .bds-carousel-featured__media {
     aspect-ratio: 16/9;
   }
 }
 @media (min-width: 992px) {
-  .bds-carousel-featured__slide {
+  .bds-carousel-featured__media {
     aspect-ratio: 1/1;
   }
 }
 
 .bds-carousel-featured__image {
-  position: absolute;
-  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -22397,6 +22417,28 @@ html.dark .bds-feature-two-column--green {
 .bds-feature-single-topic__title {
   color: #141414;
   margin: 0;
+  font-family: "Tobias", "Noto Serif", monospace;
+  font-weight: 300;
+  font-size: 32px;
+  line-height: 40px;
+  letter-spacing: 0px;
+  margin-bottom: 16px;
+}
+@media (min-width: 576px) {
+  .bds-feature-single-topic__title {
+    font-size: 36px;
+    line-height: 45px;
+    letter-spacing: -0.5px;
+    margin-bottom: 16px;
+  }
+}
+@media (min-width: 992px) {
+  .bds-feature-single-topic__title {
+    font-size: 40px;
+    line-height: 46px;
+    letter-spacing: -1px;
+    margin-bottom: 16px;
+  }
 }
 .bds-feature-single-topic__description-section {
   display: flex;
@@ -22836,6 +22878,10 @@ html.dark .bds-link-text-card__header p {
   color: #FFFFFF;
 }
 
+.bds-link-text-card .bds-link-text-card__content ul {
+  list-style: initial;
+}
+
 .bds-link-text-card__content {
   display: flex;
   flex-direction: column;
@@ -22855,10 +22901,26 @@ html.dark .bds-link-text-card__header p {
 .bds-link-text-card__content p {
   color: #72777E;
 }
+.bds-link-text-card__content ul {
+  padding-inline-start: 20px;
+  padding-left: 20px !important;
+}
+.bds-link-text-card__content li {
+  padding-inline-start: 8px;
+  padding-left: 8px;
+}
+.bds-link-text-card__content ul::marker, .bds-link-text-card__content li::marker {
+  content: "→ ";
+  color: #72777E;
+}
 html.dark .bds-link-text-card__content {
   color: #FFFFFF;
 }
 html.dark .bds-link-text-card__content p {
+  color: #FFFFFF;
+}
+html.dark .bds-link-text-card__content ul::marker, html.dark .bds-link-text-card__content li::marker {
+  content: "→ ";
   color: #FFFFFF;
 }
 
@@ -29187,6 +29249,67 @@ html.light .page-dev-tools #trasaction-sender .card-footer {
   .osano-cm-widget {
     right: 32px;
   }
+}
+
+.bds-home-hero__content {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding: 16px;
+}
+@media (min-width: 576px) {
+  .bds-home-hero__content {
+    padding: 24px;
+  }
+}
+@media (min-width: 992px) {
+  .bds-home-hero__content {
+    padding: 40px 32px;
+  }
+}
+.bds-home-hero__header {
+  font-family: "Tobias", "Noto Serif", monospace;
+  font-weight: 300;
+  font-size: 40px;
+  line-height: 46px;
+  letter-spacing: -1px;
+  margin-bottom: 16px;
+}
+@media (min-width: 576px) {
+  .bds-home-hero__header {
+    font-size: 56px;
+    line-height: 64px;
+    letter-spacing: -1px;
+    margin-bottom: 16px;
+  }
+}
+@media (min-width: 992px) {
+  .bds-home-hero__header {
+    font-size: 64px;
+    line-height: 70.4px;
+    letter-spacing: -1.5px;
+    margin-bottom: 32px;
+  }
+}
+.bds-home-hero__header {
+  font-family: "Booton", "Noto Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  margin: 0;
+  color: inherit !important;
+  text-align: center;
+}
+.bds-home-hero__header .bds-home-hero__subtitle {
+  font-family: "Tobias", "Noto Serif", monospace !important;
+}
+.bds-home-hero__description {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.bds-home-hero__media {
+  width: auto;
+  height: auto;
+  display: block;
+  object-fit: contain;
 }
 
 html.light article p code,

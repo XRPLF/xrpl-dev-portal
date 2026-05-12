@@ -115,9 +115,13 @@ For every image/icon node identified in Step 3, decide:
 | `CardsIconGrid` card icons (colored glyphs) | `static/img/icons/2026/color/<color>/` | `.svg` |
 | `SmallTilesSection` card icons (SDK / language logos) | `static/img/logos/black/` | `.svg` |
 | `LogoRectangleGrid` partner logos (rendered from inner `Logo` frame, 1.5× scale) | `static/img/logos/black/` | `.png` |
-| `HeaderHeroPrimaryMedia` hero media (photo) | `static/img/bds-2026/` | `.jpg` |
-| `FeatureTwoColumn` media (photo) | `static/img/bds-2026/` | `.jpg` |
-| `FeaturedVideoHero` poster (if used) | `static/img/bds-2026/` | `.jpg` |
+| `HeaderHeroPrimaryMedia` hero media (photo) | `static/img/bds-2026/` | `.jpg` (screenshot media frame at 1.5×, see Step 7) |
+| `HeaderHeroSplitMedia` hero media (photo) | `static/img/bds-2026/` | `.jpg` (screenshot media frame at 1.5×, see Step 7) |
+| `FeatureTwoColumn` media (photo) | `static/img/bds-2026/` | `.jpg` (screenshot media frame at 1.5×, see Step 7) |
+| `FeatureSingleTopic` media (photo) | `static/img/bds-2026/` | `.jpg` (screenshot media frame at 1.5×, see Step 7) |
+| `CardsFeatured` / `logoRectangleGrid`-as-image-cards card media | `static/img/bds-2026/` | `.jpg` (screenshot card-image frame at 1.5×, see Step 7) |
+| `FeaturedVideoHero` poster (if used) | `static/img/bds-2026/` | `.jpg` (screenshot media frame at 1.5×, see Step 7) |
+| `CarouselFeatured` slide HeroMedia (photo) | `static/img/bds-2026/` | `.jpg` (screenshot media frame at 1.5×, see Step 7) |
 | Any other colored decorative icon | `static/img/icons/2026/color/<color>/` | `.svg` |
 | Any other monochrome icon | `static/img/icons/2026/black/` | `.svg` |
 
@@ -146,10 +150,31 @@ For each scheduled export from Step 6 (sourced from the Assets frame per Step 6A
 
 1. Ensure the target folder exists (`mkdir -p` it if not).
 2. **Get the raw Figma asset URL.** Calling `mcp__claude_ai_Figma__get_design_context` on a frame returns inline TS that declares `const imgXxx = "https://www.figma.com/api/mcp/asset/<uuid>"` constants — one per leaf image/icon node. These URLs serve the **raw underlying asset** (SVG for vector icons, PNG for photos/rasters), NOT a re-rendered screenshot of the surrounding chrome. Pull the URL for the specific Assets-frame child you mapped to this slot.
-3. **Download with `curl -sL`.** Examples:
+3. **Download with `curl -sL`** for raw vector assets that render as-is with no framing chrome — typically SVG icons and SDK/language logos:
    - SVG icons / vector logos → `curl -sL <url> -o <target>.svg` — Figma serves the actual SVG markup for vector nodes, so no conversion is needed.
-   - Photographic media → `curl -sL <url> -o /tmp/<name>.bin && sips -s format jpeg -s formatOptions 88 /tmp/<name>.bin --out <target>.jpg` — Figma serves PNG for raster nodes; convert to JPG with `sips` (macOS) at quality 88. Don't skip the conversion — the `.jpg` extension matters.
    - Verify the format with `file <path>` after downloading the first one of each type, in case Figma serves something unexpected.
+
+3a. **Photographic media with backgrounds — composite the raw image onto the design's background color, save as JPG at native size.** Most media nodes in the design system (hero media, FeatureTwoColumn media, FeatureSingleTopic media, FeaturedVideoHero poster, CardsFeatured card image, CarouselFeatured slide hero) live inside a wrapper frame named `HeroMedia` / `FeatureMedia` / similar. In Figma, that wrapper frame may have a background fill (e.g. `bg-neutral/100` = `#f0f3f7`, `bg-neutral/200` = `#e6eaf0`) BEHIND a foreground illustration. The raw `imgXxx` URL gives you the foreground image only — strips the background, leaves transparent edges. When the JPG converter then flattens to white, the image looks "floating on white" instead of "sitting on the gray tile" the designer intended.
+
+   To capture the composited image + background fill as a flat JPG **at the source image's native size** (no upscale):
+
+   1. **Pull the asset URL from the Assets frame.** This is the priority. Calling `get_design_context` on the Assets frame returns the master `imgXxx = "https://www.figma.com/api/mcp/asset/<uuid>"` constants — clean, isolated, full-size. Only fall back to the section instance's asset URL when the Assets frame has no counterpart.
+
+   2. **Inspect the design context to find the background color** the image sits on. Look at the wrapper frame around the `<img>` for a sibling/child div with `bg-[var(--neutral\/100,#f0f3f7)]`, `bg-[var(--neutral\/200,#e6eaf0)]`, or similar. If there's no bg div, use `#ffffff`.
+
+   3. **Download the raw asset:** `curl -sL <imgXxx-url> -o /tmp/<name>.png`. Most photo nodes return PNG with alpha (illustrations / partial photos); some return JPEG (full-bleed photos with no alpha).
+
+   4. **Composite onto the background color and save as JPG using ImageMagick** (install once with `brew install imagemagick`):
+      ```
+      magick /tmp/<name>.png -background "<hex>" -alpha remove -alpha off -quality 85 <target>.jpg
+      ```
+      **No `-resize` flag** — preserve the source's native dimensions. (For very large source PNGs above ~2000px, you may add `-resize "1500x1500>"` to cap size for web, but otherwise leave the native size alone — the designer chose it.) The `-alpha remove -alpha off` flattens alpha onto the `-background` color BEFORE the JPEG encoder strips alpha to white, giving the correct background instead of white.
+
+   5. Save with the `<page-slug>-feature-media-N.jpg` (or `-hero-media.jpg`, `-video-poster.jpg`, etc.) naming convention from Step 6.
+
+   **DO NOT use `get_screenshot` on the media frame** — instance children inside design-system components have IDs like `I<sectionId>;<...>` which are not screenshotable, and the MCP rejects them. The composite-from-raw-asset approach above works for all cases.
+
+   **Sanity-check the first one.** After exporting the first media of each kind, eyeball the JPG: the foreground illustration should sit on a uniform colored tile (`#f0f3f7` light gray, `#e6eaf0` slightly darker gray, etc.) — NOT on white when the design called for gray. If it's still white-flat, you used the wrong `-background` hex; re-read the Figma frame's `bg-` value.
 4. **LogoRectangleGrid partner logos — special procedure.** Multi-layer brand logos (Circle, Zeconomy, DB Schenker, etc.) decompose into many vector pieces under `get_design_context`, so the raw-asset-URL technique above gives you fragments, not a composite. Use this instead:
    1. Target the **inner `Logo` frame** (the 170×96 child of `Logo_<Name>`), not the gray-tile parent (`Logo_<Name>`) and not the bottom-most leaf layer (e.g. `Ondo finance`, `DB Schenker_Logo_0 1`).
    2. Call `mcp__claude_ai_Figma__get_screenshot` on that inner Logo frame with `contentsOnly: true` and `maxDimension: 256` to request the longer-edge at ~1.5× the native 170 px. Note that Figma's MCP does not supersample beyond a frame's native render size, so the returned PNG is typically still 170×96 — that's expected, not an error.
@@ -157,7 +182,7 @@ For each scheduled export from Step 6 (sourced from the Assets frame per Step 6A
    4. Upscale to the 1.5× target dimensions (255×144) using `sips`: `sips -z 144 255 /tmp/<name>.png --out static/img/logos/black/<name>.png`. This gives a crisper-on-retina raster at the design's intended display proportion, even if the resampled pixels don't add new detail.
    5. Save as `.png` (not `.svg` — partner logos in the grid are raster). Filename is kebab-case of the layer name with the `Logo_` prefix stripped (e.g. `Logo_DBS` → `db-schenker.png` — use the visually-recognized brand name, not the literal Figma slug if it's an abbreviation).
    6. **Surface logo-files annotations.** Designers often annotate one of the logo frames (e.g. `Logo_Circle`) with `data-assets-annotations` text like `"Need logo files"` plus a Google Drive link. When present, add a `MISSING_ASSETS` entry: `{ note: "Partner logos are placeholder reproductions — final brand-approved files pending from <Drive URL>", affects: [list of logo paths] }`. The exports are still useful as stand-ins until the user swaps in real assets.
-5. **Do NOT use `get_screenshot` on the section frame** to capture media — that re-renders the whole section (chrome, text, padding) and the resulting image cannot be used as a clean media src. Use `get_screenshot` only as a last resort when an asset has no underlying image node, AND target the leaf media node directly (not the parent section).
+5. **Do NOT use `get_screenshot` on the section frame** to capture media — that re-renders the whole section (chrome, text, padding) and the resulting image cannot be used as a clean media src. The right target for media is the **named media frame inside the section** (e.g. `HeroMedia`, `FeatureMedia`, the `CardImage` media child) per Step 3a above, not the section itself and not the leaf `<img>` (which would strip the background fill).
 6. **Fallback when export fails or returns nothing usable:** create a zero-byte placeholder file at the target path AND record `{ figmaNodeId, layerName, targetPath, reason }` in a `MISSING_ASSETS` list. Do not silently drop the asset.
 
 After all attempted exports, run `ls -la` on each unique target folder so the user can see what landed.
