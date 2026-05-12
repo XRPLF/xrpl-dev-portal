@@ -20566,6 +20566,10 @@ html.dark .bds-standard-card.bds-standard-card--neutral {
   }
 }
 
+.bds-small-tiles-section {
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
 .bds-small-tiles-section__headline {
   margin-bottom: 8px;
 }
@@ -21402,6 +21406,8 @@ html.light .bds-callout-media-banner--image-text-black .bds-callout-media-banner
 }
 
 .bds-carousel-card-list {
+  padding-top: 40px;
+  padding-bottom: 40px;
   width: 100%;
 }
 @media (min-width: 1280px) {

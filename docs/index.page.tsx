@@ -37,21 +37,21 @@ export default function Docs() {
         description="Learn your way. Read docs, watch videos, or get hands-on with code samples. Explore different ways to learn on the XRP Ledger."
         cards={[
           {
-            icon: '',
+            icon: require('../static/img/icons/2026/black/Ready-to-Use-Code-Samples.svg'),
             title: 'Ready-to-Use Code Samples',
             description:
               'Run complete code snippets to understand XRPL integration in seconds.',
             href: '/docs/tutorials/',
           },
           {
-            icon: '',
+            icon: require('../static/img/icons/2026/black/Launch-Your-First-Project.svg'),
             title: 'Launch Your First Project',
             description:
               'Explore funding and development opportunities for your project on the XRPL.',
             href: '/resources/grant-funding/',
           },
           {
-            icon: '',
+            icon: require('../static/img/icons/2026/black/Step-by-Step-Tutorials.svg'),
             title: 'Step-by-Step Tutorials',
             description:
               'Follow guided walkthroughs to master XRPL fundamentals and industry best practices.',
@@ -305,31 +305,31 @@ export default function Docs() {
         cardVariant="neutral"
         cards={[
           {
-            icon: require('../static/img/logos/javascript.svg'),
+            icon: require('../static/img/logos/black/js.svg'),
             iconAlt: 'JavaScript',
             label: 'Get Started with Javascript',
             href: '/docs/tutorials/javascript',
           },
           {
-            icon: require('../static/img/logos/python.svg'),
+            icon: require('../static/img/logos/black/python.svg'),
             iconAlt: 'Python',
             label: 'Python',
             href: '/docs/tutorials/python',
           },
           {
-            icon: require('../static/img/logos/java.svg'),
+            icon: require('../static/img/logos/black/java.svg'),
             iconAlt: 'Java',
             label: 'Java',
             href: '/docs/tutorials/java/build-apps/get-started',
           },
           {
-            icon: require('../static/img/logos/golang.svg'),
+            icon: require('../static/img/logos/black/go.svg'),
             iconAlt: 'Go',
             label: 'Go',
             href: '/docs/tutorials/go',
           },
           {
-            icon: '',
+            icon: require('../static/img/logos/black/php.svg'),
             iconAlt: 'PHP',
             label: 'PHP',
             href: '/docs/tutorials/php',
@@ -342,7 +342,7 @@ export default function Docs() {
         heading="XRPL Infrastructure: Running a Server"
         cards={[
           {
-            icon: '',
+            icon: require('../static/img/icons/2026/color/lilac/xrpl-server.svg'),
             iconAlt: 'Server',
             heading: 'Install Your XRPL Server: Rippled & Clio',
             description: (
@@ -355,7 +355,7 @@ export default function Docs() {
             ),
           },
           {
-            icon: '',
+            icon: require('../static/img/icons/2026/color/lilac/node-configuration.svg'),
             iconAlt: 'Network',
             heading: 'Node Configuration',
             description: (
@@ -367,7 +367,7 @@ export default function Docs() {
             ),
           },
           {
-            icon: '',
+            icon: require('../static/img/icons/2026/color/lilac/troubleshooting-node.svg'),
             iconAlt: 'Tools',
             heading: 'Troubleshooting Your Node',
             description: (
