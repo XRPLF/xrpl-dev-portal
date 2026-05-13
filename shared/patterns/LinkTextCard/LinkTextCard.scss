@@ -13,28 +13,28 @@
 // =============================================================================
 
 // Header gap (between number and heading)
-$bds-link-text-card-header-gap-base: $bds-space-sm;   // 8px - spacing('sm')
-$bds-link-text-card-header-gap-md: $bds-space-md;     // 12px - spacing('md')
-$bds-link-text-card-header-gap-lg: $bds-space-lg;     // 16px - spacing('lg')
+$bds-link-text-card-header-gap-base: $bds-space-sm; // 8px - spacing('sm')
+$bds-link-text-card-header-gap-md: $bds-space-md; // 12px - spacing('md')
+$bds-link-text-card-header-gap-lg: $bds-space-lg; // 16px - spacing('lg')
 
 // Content gap (between description and buttons)
-$bds-link-text-card-content-gap-base: $bds-space-lg;   // 16px - spacing('lg')
-$bds-link-text-card-content-gap-md: $bds-space-2xl;   // 24px - spacing('2xl')
-$bds-link-text-card-content-gap-lg: $bds-space-3xl;   // 32px - spacing('3xl')
+$bds-link-text-card-content-gap-base: $bds-space-lg; // 16px - spacing('lg')
+$bds-link-text-card-content-gap-md: $bds-space-2xl; // 24px - spacing('2xl')
+$bds-link-text-card-content-gap-lg: $bds-space-3xl; // 32px - spacing('3xl')
 
 // Card gap (between header and content sections)
-$bds-link-text-card-gap-base: $bds-gap-section-sm;   // 24px - spacing('2xl')
-$bds-link-text-card-gap-md: $bds-gap-section-md;     // 32px - spacing('3xl')
-$bds-link-text-card-gap-lg: $bds-gap-section-lg;     // 40px - spacing('4xl')
+$bds-link-text-card-gap-base: $bds-gap-section-sm; // 24px - spacing('2xl')
+$bds-link-text-card-gap-md: $bds-gap-section-md; // 32px - spacing('3xl')
+$bds-link-text-card-gap-lg: $bds-gap-section-lg; // 40px - spacing('4xl')
 
 // Padding
-$bds-link-text-card-padding-top-base: $bds-space-sm;   // 8px - spacing('sm')
-$bds-link-text-card-padding-top-md: $bds-space-md;     // 12px - spacing('md')
-$bds-link-text-card-padding-top-lg: $bds-space-lg;     // 16px - spacing('lg')
+$bds-link-text-card-padding-top-base: $bds-space-sm; // 8px - spacing('sm')
+$bds-link-text-card-padding-top-md: $bds-space-md; // 12px - spacing('md')
+$bds-link-text-card-padding-top-lg: $bds-space-lg; // 16px - spacing('lg')
 
-$bds-link-text-card-padding-bottom-base: $bds-space-2xl;   // 24px - spacing('2xl')
-$bds-link-text-card-padding-bottom-md: $bds-space-3xl;     // 32px - spacing('3xl')
-$bds-link-text-card-padding-bottom-lg: $bds-space-4xl;     // 40px - spacing('4xl')
+$bds-link-text-card-padding-bottom-base: $bds-space-2xl; // 24px - spacing('2xl')
+$bds-link-text-card-padding-bottom-md: $bds-space-3xl; // 32px - spacing('3xl')
+$bds-link-text-card-padding-bottom-lg: $bds-space-4xl; // 40px - spacing('4xl')
 
 // Border
 $bds-link-text-card-border-width: 1px;
@@ -42,6 +42,11 @@ $bds-link-text-card-border-color: $gray-300;
 
 // Text color
 $bds-link-text-card-number-color: $gray-500;
+
+// List styling
+$bds-link-text-card-list-padding-inline-start: $bds-space-xl; // 16px - spacing('xl')
+$bds-link-text-card-list-item-padding-inline-start: $bds-space-sm; // 8px - spacing('sm')
+$bds-link-text-card-list-marker-symbol: "\2192\00a0"; // right arrow + non-breaking space
 
 // Content width at MD+
 $bds-link-text-card-content-width-md: calc(75% - 2px);
@@ -53,7 +58,8 @@ $bds-link-text-card-content-width-md: calc(75% - 2px);
 .bds-link-text-card {
   display: flex;
   flex-direction: column;
-  border-top: $bds-link-text-card-border-width solid $bds-link-text-card-border-color;
+  border-top: $bds-link-text-card-border-width solid
+    $bds-link-text-card-border-color;
   padding-top: $bds-link-text-card-padding-top-base;
   padding-bottom: $bds-link-text-card-padding-bottom-base;
   gap: $bds-link-text-card-gap-base;
@@ -102,13 +108,19 @@ $bds-link-text-card-content-width-md: calc(75% - 2px);
   }
   @include bds-theme-mode(dark) {
     color: $white;
-    p { color: $white; }
+    p {
+      color: $white;
+    }
   }
 }
 
 // =============================================================================
 // Content Section (Description + Buttons)
 // =============================================================================
+
+.bds-link-text-card .bds-link-text-card__content ul {
+  list-style: initial;
+}
 
 .bds-link-text-card__content {
   display: flex;
@@ -127,8 +139,35 @@ $bds-link-text-card-content-width-md: calc(75% - 2px);
   p {
     color: $bds-link-text-card-number-color;
   }
+
+  & ul {
+    // logical padding improves support for RTL/writing modes
+    padding-inline-start: $bds-link-text-card-list-padding-inline-start;
+    // fallback for browsers/rulesets that ignore logical properties
+    padding-left: $bds-link-text-card-list-padding-inline-start !important;
+  }
+
+  & li {
+    // creates explicit spacing between marker and list item text
+    padding-inline-start: $bds-link-text-card-list-item-padding-inline-start;
+    padding-left: $bds-link-text-card-list-item-padding-inline-start;
+  }
+
+  & ul::marker,
+  & li::marker {
+    content: $bds-link-text-card-list-marker-symbol;
+    color: $bds-link-text-card-number-color;
+  }
+
   @include bds-theme-mode(dark) {
     color: $white;
-    p { color: $white; }
+    p {
+      color: $white;
+    }
+    & ul::marker,
+    & li::marker {
+      content: $bds-link-text-card-list-marker-symbol;
+      color: $white;
+    }
   }
 }

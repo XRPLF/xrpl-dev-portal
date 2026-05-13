@@ -25,6 +25,18 @@
   @extend .d-flex;
   @extend .flex-column;
   @extend .w-100;
+  padding-bottom: $bds-space-2xl;
+  margin-bottom: $bds-space-2xl;
+
+  @include media-breakpoint-up(md) {
+    padding-bottom: $bds-space-3xl;
+    margin-bottom: $bds-space-3xl;
+  }
+
+  @include media-breakpoint-up(lg) {
+    padding-bottom: $bds-space-4xl;
+    margin-bottom: $bds-space-4xl;
+  }
 }
 
 // =============================================================================

@@ -1,24 +1,20 @@
-import React from 'react';
-import clsx from 'clsx';
-import { LinkTextCard } from 'shared/patterns/LinkTextCard';
-import { ButtonConfig } from 'shared/patterns/ButtonGroup';
-import { PageGrid, PageGridRow, PageGridCol } from 'shared/components/PageGrid/page-grid';
-import { SectionHeader } from 'shared/patterns/SectionHeader';
+import React from "react";
+import clsx from "clsx";
+import { LinkTextCard, LinkTextCardProps } from "shared/patterns/LinkTextCard";
+import {
+  PageGrid,
+  PageGridRow,
+  PageGridCol,
+} from "shared/components/PageGrid/page-grid";
+import { SectionHeader } from "shared/patterns/SectionHeader";
 
-export interface LinkTextCardData {
-  /** Heading text for the card */
-  heading: string;
-  /** Description text for the card */
-  description: string;
-  /** Array of button configurations (max 2) */
-  buttons: ButtonConfig[];
-}
+export type LinkTextCardData = Omit<LinkTextCardProps, "index" | "className">;
 
 export interface LinkTextDirectoryProps {
   /** Section heading (required) */
   heading: string;
-  /** Optional description text */
-  description?: string;
+  /** Optional description content */
+  description?: React.ReactNode;
   /** Array of card data to display */
   cards: LinkTextCardData[];
   /** Additional CSS classes */
@@ -75,25 +71,29 @@ export const LinkTextDirectory: React.FC<LinkTextDirectoryProps> = ({
   className,
 }) => {
   return (
-    <PageGrid className={clsx('bds-link-text-directory', className)}>
-      <SectionHeader heading={heading} description={description} span={{ base: 12, md: 6, lg: 8 }} />
+    <PageGrid className={clsx("bds-link-text-directory", className)}>
+      <SectionHeader
+        heading={heading}
+        description={description}
+        span={{ base: 12, md: 6, lg: 8 }}
+      />
 
       {/* Cards List */}
       <PageGridRow className="bds-link-text-directory__list">
-        <PageGridCol span={{ base: 12, md: 8, lg: 8}} offset={{ lg: 4 }}>
+        <PageGridCol span={{ base: 12, md: 8, lg: 8 }} offset={{ lg: 4 }}>
           <ul className="list-none pl-0">
-          {cards.map((card, index) => (
-            <LinkTextCard
-              key={card.heading || index}
-              index={index}
-              heading={card.heading}
-              description={card.description}
-              buttons={card.buttons}
-            />
-          ))}
+            {cards.map((card, index) => (
+              <LinkTextCard
+                key={card.heading || index}
+                index={index}
+                heading={card.heading}
+                description={card.description}
+                buttons={card.buttons ?? []}
+              />
+            ))}
           </ul>
         </PageGridCol>
-      </PageGridRow >
+      </PageGridRow>
     </PageGrid>
   );
 };

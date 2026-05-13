@@ -24,55 +24,80 @@
 
 // Color variants map - centralizes all variant configurations
 // Structure: variant-name: (light-bg, light-text, dark-bg, dark-text)
+//
+// Note: the "default" variant inherits its background from its parent
+// (`inherit`) so the banner blends into whatever section wraps it. Only
+// the text colors are themed per mode. If you need an explicit white/black
+// background, use one of the named variants below or pass an `image`.
 $bds-cmb-variants: (
-  'default': (
-    light-bg: $white,           // #FFFFFF
-    light-text: $black,         // #141414
-    dark-bg: $black,            // #141414
-    dark-text: $white,           // #FFFFFF
+  "default": (
+    light-bg: inherit,
+    // inherits from parent (was $white / #FFFFFF)
+    light-text: $black,
+    // #141414
+    dark-bg: inherit,
+    // inherits from parent (was $black / #141414)
+    dark-text: $white,
+    // #FFFFFF
   ),
-  'light-gray': (
-    light-bg: $gray-200,        // #E6EAF0
-    light-text: $black,         // #141414
-    dark-bg: $gray-300,         // #CAD4DF
-    dark-text: $black           // #141414
+  "light-gray": (
+    light-bg: $gray-200,
+    // #E6EAF0
+    light-text: $black,
+    // #141414
+    dark-bg: $gray-300,
+    // #CAD4DF
+    dark-text: $black,
+    // #141414
   ),
-  'lilac': (
-    light-bg: $lilac-200,       // #D9CAFF
-    light-text: $black,         // #141414
-    dark-bg: $lilac-200,        // #D9CAFF
-    dark-text: $black           // #141414
+  "lilac": (
+    light-bg: $lilac-200,
+    // #D9CAFF
+    light-text: $black,
+    // #141414
+    dark-bg: $lilac-200,
+    // #D9CAFF
+    dark-text: $black,
+    // #141414
   ),
-  'green': (
-    light-bg: $green-300,       // #21E46B
-    light-text: $black,         // #141414
-    dark-bg: $green-300,        // #21E46B
-    dark-text: $black           // #141414
+  "green": (
+    light-bg: $green-300,
+    // #21E46B
+    light-text: $black,
+    // #141414
+    dark-bg: $green-300,
+    // #21E46B
+    dark-text: $black,
+    // #141414
   ),
-  'gray': (
-    light-bg: $gray-300,        // #CAD4DF
-    light-text: $black,         // #141414
-    dark-bg: $gray-400,         // #8A919A
-    dark-text: $black           // #141414
-  )
+  "gray": (
+    light-bg: $gray-300,
+    // #CAD4DF
+    light-text: $black,
+    // #141414
+    dark-bg: $gray-400,
+    // #8A919A
+    dark-text: $black,
+    // #141414
+  ),
 );
 
 // Spacing tokens - responsive
 // Note: Uses centralized spacing tokens from _spacing.scss where applicable.
 // Mobile (<768px)
-$bds-cmb-gap-mobile: $bds-space-5xl;       // 48px - spacing('5xl')
-$bds-cmb-padding-mobile: $bds-space-lg;    // 16px - spacing('lg')
+$bds-cmb-gap-mobile: $bds-space-5xl; // 48px - spacing('5xl')
+$bds-cmb-padding-mobile: $bds-space-lg; // 16px - spacing('lg')
 
 // Tablet (768px-1023px)
-$bds-cmb-gap-tablet: $bds-space-6xl;       // 64px - spacing('6xl')
-$bds-cmb-padding-tablet: $bds-space-2xl;   // 24px - spacing('2xl')
+$bds-cmb-gap-tablet: $bds-space-6xl; // 64px - spacing('6xl')
+$bds-cmb-padding-tablet: $bds-space-2xl; // 24px - spacing('2xl')
 
 // Desktop (≥1024px)
-$bds-cmb-gap-desktop: $bds-space-8xl;      // 80px - spacing('8xl')
+$bds-cmb-gap-desktop: $bds-space-8xl; // 80px - spacing('8xl')
 $bds-cmb-padding-desktop: $bds-space-4xl $bds-space-3xl; // 40px 32px
 
 // Button spacing
-$bds-cmb-button-gap: $bds-space-2xl;       // 24px - spacing('2xl')
+$bds-cmb-button-gap: $bds-space-2xl; // 24px - spacing('2xl')
 
 // Image overlay for readability
 $bds-cmb-image-overlay: rgba(0, 0, 0, 0.3);
@@ -88,30 +113,30 @@ $bds-cmb-image-overlay: rgba(0, 0, 0, 0.3);
   @extend .flex-row;
   @extend .w-100;
   @extend .align-items-stretch;
-  
+
   // Custom properties not covered by Bootstrap
   box-sizing: border-box;
   min-height: 280px;
-  
+
   // Ensure PageGridCol stretches to full height
   > [class*="bds-grid__col"] {
     @extend .d-flex;
     @extend .flex-column;
   }
-  
+
   // Background positioning for image variant
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  
+
   // Mobile-first padding and gap (default)
   padding: $bds-cmb-padding-mobile;
-  
+
   // Tablet breakpoint
   @include media-breakpoint-up(md) {
     padding: $bds-cmb-padding-tablet;
   }
-  
+
   // Desktop breakpoint
   @include media-breakpoint-up(lg) {
     padding: $bds-cmb-padding-desktop;
@@ -131,15 +156,15 @@ $bds-cmb-image-overlay: rgba(0, 0, 0, 0.3);
   @extend .w-100;
   @extend .h-100;
   @extend .justify-content-between;
-  
+
   // Mobile-first gap
   gap: $bds-cmb-gap-mobile;
-  
+
   // Tablet breakpoint
   @include media-breakpoint-up(md) {
     gap: $bds-cmb-gap-tablet;
   }
-  
+
   // Desktop breakpoint
   @include media-breakpoint-up(xl) {
     gap: $bds-cmb-gap-desktop;
@@ -215,10 +240,10 @@ $bds-cmb-image-overlay: rgba(0, 0, 0, 0.3);
 .bds-callout-media-banner--image {
   // No background-color (image takes precedence)
   background-color: transparent;
-  
+
   // Add overlay gradient for text readability (default: dark overlay for white text)
   &::before {
-    content: '';
+    content: "";
     @extend .position-absolute;
     top: 0;
     left: 0;
@@ -248,7 +273,7 @@ $bds-cmb-image-overlay: rgba(0, 0, 0, 0.3);
       rgba(255, 255, 255, 0.1) 100%
     );
   }
-  
+
   // Force black text in both light and dark modes
   .bds-callout-media-banner__text {
     color: $black !important;
@@ -265,20 +290,20 @@ html.dark {
   @each $variant-name, $variant-colors in $bds-cmb-variants {
     .bds-callout-media-banner--#{$variant-name} {
       background-color: map-get($variant-colors, dark-bg);
-      
+
       .bds-callout-media-banner__text {
         color: map-get($variant-colors, dark-text);
       }
     }
   }
-  
+
   // Image variant with white text remains white
   .bds-callout-media-banner--image {
     .bds-callout-media-banner__text {
       color: $white;
     }
   }
-  
+
   // Image variant with black text remains black (fixed across modes)
   .bds-callout-media-banner--image-text-black {
     .bds-callout-media-banner__text {
@@ -297,25 +322,10 @@ html.light {
   @each $variant-name, $variant-colors in $bds-cmb-variants {
     .bds-callout-media-banner--#{$variant-name} {
       background-color: map-get($variant-colors, light-bg);
-      
+
       .bds-callout-media-banner__text {
         color: map-get($variant-colors, light-text);
       }
     }
   }
-  
-  // Image variant with white text remains white
-  .bds-callout-media-banner--image {
-    .bds-callout-media-banner__text {
-      color: $white;
-    }
-  }
-  
-  // Image variant with black text remains black (fixed across modes)
-  .bds-callout-media-banner--image-text-black {
-    .bds-callout-media-banner__text {
-      color: $black !important;
-    }
-  }
 }
-
