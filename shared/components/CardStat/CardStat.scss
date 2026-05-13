@@ -84,6 +84,7 @@ $bds-card-stat-transition-timing: $bds-transition-timing;
   // Statistic (large number)
   &__statistic {
     @include type(display-lg);
+    @include wordbreak('break-word');
     margin-bottom: 0;
 
     sup {

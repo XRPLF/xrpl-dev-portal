@@ -3,6 +3,8 @@
 // $bds-grid-gutter is defined in _spacing.scss (8px).
 
 .bds-small-tiles-section {
+    padding-top: $bds-space-4xl; // 40px - spacing('4xl')
+    padding-bottom: $bds-space-4xl; // 40px - spacing('4xl')
 
     &__headline {
         margin-bottom: $bds-space-sm; // 8px - spacing('sm')

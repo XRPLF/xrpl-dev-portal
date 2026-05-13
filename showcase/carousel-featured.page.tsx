@@ -12,26 +12,6 @@ export const frontmatter = {
 // Sample image URL for demonstration
 const SAMPLE_IMAGE = "/img/demo-bg.png";
 
-// Sample slides data
-const sampleSlides: CarouselSlide[] = [
-  {
-    id: 1,
-    imageSrc: SAMPLE_IMAGE,
-    imageAlt: "Featured slide 1 - XRPL Overview",
-  },
-  {
-    id: 2,
-    imageSrc: SAMPLE_IMAGE,
-    imageAlt: "Featured slide 2 - Developer Tools",
-  },
-  {
-    id: 3,
-    imageSrc: SAMPLE_IMAGE,
-    imageAlt: "Featured slide 3 - Enterprise Solutions",
-  },
-];
-
-// Sample features data (matching Figma design)
 const sampleFeatures: CarouselFeatureItem[] = [
   {
     title: "Easy-to-Integrate APIs",
@@ -44,6 +24,43 @@ const sampleFeatures: CarouselFeatureItem[] = [
   {
     title: "Enterprise-Grade Security",
     description: "Battle-tested infrastructure with 12+ years of continuous uptime",
+  },
+];
+
+// Sample slides data
+const sampleSlides: CarouselSlide[] = [
+  {
+    id: 1,
+    heading: "Powered by Developers",
+    features: sampleFeatures,
+    buttons: [
+      { label: "Get Started", href: "#get-started" },
+      { label: "Learn More", href: "#learn-more" }
+    ],
+    imageSrc: SAMPLE_IMAGE,
+    imageAlt: "Featured slide 1 - XRPL Overview",
+  },
+  {
+    id: 2,
+    heading: "Platform Updates",
+    features: sampleFeatures,
+    buttons: [
+      { label: "View Updates", href: "#updates" },
+      { label: "See All", href: "#all" }
+    ],
+    imageSrc: SAMPLE_IMAGE,
+    imageAlt: "Featured slide 2 - Developer Tools",
+  },
+  {
+    id: 3,
+    heading: "Community Highlights",
+    features: sampleFeatures,
+    buttons: [
+      { label: "Join Community", href: "#community" },
+      { label: "Learn More", href: "#learn" }
+    ],
+    imageSrc: SAMPLE_IMAGE,
+    imageAlt: "Featured slide 3 - Enterprise Solutions",
   },
 ];
 
@@ -126,12 +143,6 @@ export default function CarouselFeaturedShowcase() {
           </PageGrid>
           <CarouselFeatured
             background="grey"
-            heading="Powered by Developers"
-            features={sampleFeatures}
-            buttons={[
-              { label: "Get Started", href: "#get-started" },
-              { label: "Learn More", href: "#learn-more" }
-            ]}
             slides={sampleSlides.slice(0,1)}
           />
         </section>
@@ -153,12 +164,6 @@ export default function CarouselFeaturedShowcase() {
           </PageGrid>
           <CarouselFeatured
             background="neutral"
-            heading="Platform Updates"
-            features={sampleFeatures}
-            buttons={[
-              { label: "View Updates", href: "#updates" },
-              { label: "See All", href: "#all" }
-            ]}
             slides={sampleSlides}
           />
         </section>
@@ -180,12 +185,6 @@ export default function CarouselFeaturedShowcase() {
           </PageGrid>
           <CarouselFeatured
             background="yellow"
-            heading="Community Highlights"
-            features={sampleFeatures}
-            buttons={[
-              { label: "Join Community", href: "#community" },
-              { label: "Learn More", href: "#learn" }
-            ]}
             slides={sampleSlides}
           />
         </section>
@@ -207,12 +206,11 @@ export default function CarouselFeaturedShowcase() {
           </PageGrid>
           <CarouselFeatured
             background="grey"
-            heading="Single Button Example"
-            features={sampleFeatures}
-            buttons={[
-              { label: "Get Started", href: "#get-started" }
-            ]}
-            slides={sampleSlides}
+            slides={sampleSlides.map((slide) => ({
+              ...slide,
+              heading: "Single Button Example",
+              buttons: [{ label: "Get Started", href: "#get-started" }],
+            }))}
           />
         </section>
 
@@ -232,30 +230,6 @@ export default function CarouselFeaturedShowcase() {
                   <div style={{ width: '100px', flexShrink: 0 }}><strong>Default</strong></div>
                   <div style={{ flex: '1 1 0', minWidth: 0 }}><strong>Description</strong></div>
                 </div>
-
-                <div className="d-flex flex-row py-3" style={{ gap: '1rem' }}>
-                  <div style={{ width: '140px', flexShrink: 0 }}><code>heading</code></div>
-                  <div style={{ flex: '1 1 0', minWidth: 0 }}><code>string</code></div>
-                  <div style={{ width: '100px', flexShrink: 0 }}>required</div>
-                  <div style={{ flex: '1 1 0', minWidth: 0 }}>Section heading text</div>
-                </div>
-                <Divider weight="thin" color="gray" />
-
-                <div className="d-flex flex-row py-3" style={{ gap: '1rem' }}>
-                  <div style={{ width: '140px', flexShrink: 0 }}><code>features</code></div>
-                  <div style={{ flex: '1 1 0', minWidth: 0 }}><code>CarouselFeatureItem[]</code></div>
-                  <div style={{ width: '100px', flexShrink: 0 }}>required</div>
-                  <div style={{ flex: '1 1 0', minWidth: 0 }}>Array of feature items with title and description</div>
-                </div>
-                <Divider weight="thin" color="gray" />
-
-                <div className="d-flex flex-row py-3" style={{ gap: '1rem' }}>
-                  <div style={{ width: '140px', flexShrink: 0 }}><code>buttons</code></div>
-                  <div style={{ flex: '1 1 0', minWidth: 0 }}><code>ButtonConfig[]</code></div>
-                  <div style={{ width: '100px', flexShrink: 0 }}>optional</div>
-                  <div style={{ flex: '1 1 0', minWidth: 0 }}>Array of button configurations (1-2 buttons supported, uses ButtonGroup)</div>
-                </div>
-                <Divider weight="thin" color="gray" />
 
                 <div className="d-flex flex-row py-3" style={{ gap: '1rem' }}>
                   <div style={{ width: '140px', flexShrink: 0 }}><code>slides</code></div>
@@ -291,6 +265,30 @@ export default function CarouselFeaturedShowcase() {
                 <Divider weight="thin" color="gray" />
 
                 <div className="d-flex flex-row py-3" style={{ gap: '1rem' }}>
+                  <div style={{ width: '120px', flexShrink: 0 }}><code>heading</code></div>
+                  <div style={{ flex: '1 1 0', minWidth: 0 }}><code>string</code></div>
+                  <div style={{ width: '100px', flexShrink: 0 }}>Yes</div>
+                  <div style={{ flex: '1 1 0', minWidth: 0 }}>Slide heading text</div>
+                </div>
+                <Divider weight="thin" color="gray" />
+
+                <div className="d-flex flex-row py-3" style={{ gap: '1rem' }}>
+                  <div style={{ width: '120px', flexShrink: 0 }}><code>features</code></div>
+                  <div style={{ flex: '1 1 0', minWidth: 0 }}><code>CarouselFeatureItem[]</code></div>
+                  <div style={{ width: '100px', flexShrink: 0 }}>Yes</div>
+                  <div style={{ flex: '1 1 0', minWidth: 0 }}>Feature items shown for this slide</div>
+                </div>
+                <Divider weight="thin" color="gray" />
+
+                <div className="d-flex flex-row py-3" style={{ gap: '1rem' }}>
+                  <div style={{ width: '120px', flexShrink: 0 }}><code>buttons</code></div>
+                  <div style={{ flex: '1 1 0', minWidth: 0 }}><code>ButtonConfig[]</code></div>
+                  <div style={{ width: '100px', flexShrink: 0 }}>No</div>
+                  <div style={{ flex: '1 1 0', minWidth: 0 }}>Optional slide button configurations (1-2 buttons supported)</div>
+                </div>
+                <Divider weight="thin" color="gray" />
+
+                <div className="d-flex flex-row py-3" style={{ gap: '1rem' }}>
                   <div style={{ width: '120px', flexShrink: 0 }}><code>imageSrc</code></div>
                   <div style={{ flex: '1 1 0', minWidth: 0 }}><code>string</code></div>
                   <div style={{ width: '100px', flexShrink: 0 }}>Yes</div>
@@ -317,17 +315,17 @@ export default function CarouselFeaturedShowcase() {
 
                 <div className="d-flex flex-row py-3" style={{ gap: '1rem' }}>
                   <div style={{ width: '120px', flexShrink: 0 }}><code>title</code></div>
-                  <div style={{ flex: '1 1 0', minWidth: 0 }}><code>string</code></div>
+                  <div style={{ flex: '1 1 0', minWidth: 0 }}><code>React.ReactNode</code></div>
                   <div style={{ width: '100px', flexShrink: 0 }}>Yes</div>
-                  <div style={{ flex: '1 1 0', minWidth: 0 }}>Feature title text</div>
+                  <div style={{ flex: '1 1 0', minWidth: 0 }}>Feature title content</div>
                 </div>
                 <Divider weight="thin" color="gray" />
 
                 <div className="d-flex flex-row py-3" style={{ gap: '1rem' }}>
                   <div style={{ width: '120px', flexShrink: 0 }}><code>description</code></div>
-                  <div style={{ flex: '1 1 0', minWidth: 0 }}><code>string</code></div>
+                  <div style={{ flex: '1 1 0', minWidth: 0 }}><code>React.ReactNode</code></div>
                   <div style={{ width: '100px', flexShrink: 0 }}>Yes</div>
-                  <div style={{ flex: '1 1 0', minWidth: 0 }}>Feature description text</div>
+                  <div style={{ flex: '1 1 0', minWidth: 0 }}>Feature description content</div>
                 </div>
               </div>
             </PageGridCol>

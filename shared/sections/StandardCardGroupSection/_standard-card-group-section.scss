@@ -46,18 +46,5 @@ $bds-standard-card-group-section-padding-y-lg: $bds-space-8xl;   // 80px - spaci
     padding-top: $bds-standard-card-group-section-padding-y-lg;
     padding-bottom: $bds-standard-card-group-section-padding-y-lg;
   }
-
-  @include bds-theme-mode(light) {
-    background-color: $white;
-  }
-
-  @include bds-theme-mode(dark) {
-    background-color: $black;
-  }
 }
 
-// Header section uses SectionHeader component
-
-.bds-standard-card-group-section__cards {
-  // Section gap handled by SectionHeader margin-bottom
-}

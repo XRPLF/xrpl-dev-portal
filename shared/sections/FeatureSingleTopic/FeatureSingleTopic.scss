@@ -46,7 +46,7 @@ $bds-single-topic-mobile-title-description-gap: $bds-space-4xl; // 40px - spacin
 // =============================================================================
 .bds-feature-single-topic {
   width: 100%;
-  background-color: $bds-single-topic-bg;
+  background-color: inherit;
 
   // Container - uses PageGrid with vertical padding
   &__container {
@@ -156,6 +156,7 @@ $bds-single-topic-mobile-title-description-gap: $bds-space-4xl; // 40px - spacin
   &__title {
     color: $bds-single-topic-title-color;
     margin: 0;
+    @include type(heading-md);
   }
 
   // Description section - at the bottom, contains description + ButtonGroup
@@ -220,7 +221,7 @@ $bds-single-topic-dark-description-color: $white; // #FFFFFF - description is wh
 
 html.dark {
   .bds-feature-single-topic {
-    background-color: $bds-single-topic-dark-bg;
+    background-color: inherit;
 
     &__title {
       color: $white; // White title on dark background for default variant
