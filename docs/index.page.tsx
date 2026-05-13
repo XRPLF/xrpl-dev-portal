@@ -30,7 +30,7 @@ export default function Docs() {
       <HeaderHeroPrimaryMedia
         headline={translate("XRP Ledger (XRPL) Documentation")}
         subtitle={translate("Explore XRPL documentation with our essential guide for developers and admins who want to start building and integrating with the XRP Ledger.")}
-        media={{ type: 'image', src: require('../static/img/bds-2026/HeroMedia.jpg'), alt: translate('XRPL Documentation') }}
+        media={{ type: 'image', src: require('../static/img/bds-2026/docs-hero-media.jpg'), alt: translate('XRPL Documentation') }}
       />
 
       {/* 2. Get Started Carousel */}
@@ -230,7 +230,7 @@ export default function Docs() {
         arrange="left"
         title={translate("Payments")}
         description=""
-        media={{ src: require('../static/img/bds-2026/FeatureMedia-1.jpg'), alt: translate('Payments') }}
+        media={{ src: require('../static/img/bds-2026/docs-feature-media-1.jpg'), alt: translate('Payments') }}
         links={[
           {
             label: translate('Peer-to-Peer Payments'),
@@ -253,7 +253,7 @@ export default function Docs() {
         arrange="right"
         title={translate("Tokens")}
         description=""
-        media={{ src: require('../static/img/bds-2026/FeatureMedia-2.jpg'), alt: translate('Tokens') }}
+        media={{ src: require('../static/img/bds-2026/docs-feature-media-2.jpg'), alt: translate('Tokens') }}
         links={[
           {
             label: translate('Stablecoin Issuer'),
@@ -276,7 +276,7 @@ export default function Docs() {
         arrange="left"
         title={translate("On-Chain Finance")}
         description=""
-        media={{ src: require('../static/img/bds-2026/FeatureMedia-3.jpg'), alt: translate('On-Chain Finance') }}
+        media={{ src: require('../static/img/bds-2026/docs-feature-media-3.jpg'), alt: translate('On-Chain Finance') }}
         links={[
           {
             label: translate('List XRP as an Exchange'),
@@ -295,7 +295,7 @@ export default function Docs() {
         arrange="right"
         title={translate("Compliance Features")}
         description=""
-        media={{ src: require('../static/img/bds-2026/FeatureMedia.jpg'), alt: translate('Compliance Features') }}
+        media={{ src: require('../static/img/bds-2026/docs-feature-media.jpg'), alt: translate('Compliance Features') }}
         links={[
           {
             label: translate('Build a Credential Issuing Service'),

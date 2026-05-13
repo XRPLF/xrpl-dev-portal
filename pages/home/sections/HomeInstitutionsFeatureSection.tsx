@@ -17,12 +17,12 @@ export function HomeInstitutionsFeatureSection() {
       links={[
         {
           label: translate("Explore Institutional Use Cases"),
-          href: "https://www.figma.com/design/NVcAUZVHKIbYFdKCeOz0lq/Homepage?node-id=1079-885&m=dev",
+          href: "/docs/use-cases/",
         },
       ]}
       media={{
         src: "/img/home/xrpl-building-institutions.jpg",
-        alt: translate("Image of institutions uisng XRPL"),
+        alt: translate("Image of institutions using XRPL"),
       }}
     />
   );

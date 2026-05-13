@@ -24,14 +24,19 @@
 
 // Color variants map - centralizes all variant configurations
 // Structure: variant-name: (light-bg, light-text, dark-bg, dark-text)
+//
+// Note: the "default" variant inherits its background from its parent
+// (`inherit`) so the banner blends into whatever section wraps it. Only
+// the text colors are themed per mode. If you need an explicit white/black
+// background, use one of the named variants below or pass an `image`.
 $bds-cmb-variants: (
   "default": (
     light-bg: inherit,
-    // #FFFFFF
+    // inherits from parent (was $white / #FFFFFF)
     light-text: $black,
     // #141414
     dark-bg: inherit,
-    // #141414
+    // inherits from parent (was $black / #141414)
     dark-text: $white,
     // #FFFFFF
   ),

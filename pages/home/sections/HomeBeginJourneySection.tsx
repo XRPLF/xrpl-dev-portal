@@ -17,7 +17,7 @@ export function HomeBeginJourneySection() {
           "Access the documentation you need to get started working with the XRPL.",
         ),
         callsToAction: [
-          { children: translate(" Documentation"), href: "/docs" },
+          { children: translate("Documentation"), href: "/docs" },
         ] as const,
       },
       {
@@ -45,33 +45,33 @@ export function HomeBeginJourneySection() {
         headline: translate("Client Libraries"),
         children: (
           <span>
-            Find tools, documentation, and sample code in{" "}
+            {translate("Find tools, documentation, and sample code in")}{" "}
             <BdsLink
               variant="inline"
               href="/docs/tutorials/get-started/get-started-python"
             >
-              Python
+              {translate("Python")}
             </BdsLink>
             ,{" "}
             <BdsLink
               variant="inline"
               href="/docs/tutorials/get-started/get-started-java"
             >
-              Java
+              {translate("Java")}
             </BdsLink>
             ,{" "}
             <BdsLink
               variant="inline"
               href="/docs/tutorials/get-started/get-started-javascript?environment=Node"
             >
-              JavaScript
+              {translate("JavaScript")}
             </BdsLink>
-            , or use
+            {translate(", or use")}{" "}
             <BdsLink
               variant="inline"
               href="/docs/tutorials/get-started/get-started-http-websocket-apis"
             >
-              HTTP APIs
+              {translate("HTTP APIs")}
             </BdsLink>
             .
           </span>
@@ -99,22 +99,22 @@ export function HomeBeginJourneySection() {
         headline: translate("XRPL Learning Portal"),
         children: (
           <span>
-            Start with the basics and then learn about{" "}
+            {translate("Start with the basics and then learn about")}{" "}
             <BdsLink variant="inline" href="/docs/use-cases/defi">
-              DeFi
+              {translate("DeFi")}
             </BdsLink>
             ,{" "}
             <BdsLink variant="inline" href="/docs/use-cases/tokenization">
-              tokenization
+              {translate("tokenization")}
             </BdsLink>
             ,{" "}
             <BdsLink
               variant="inline"
               href="/docs/concepts/tokens/decentralized-exchange"
             >
-              DEX
+              {translate("DEX")}
             </BdsLink>{" "}
-            trading, or how to issue stablecoins.
+            {translate("trading, or how to issue stablecoins.")}
           </span>
         ),
         callsToAction: [

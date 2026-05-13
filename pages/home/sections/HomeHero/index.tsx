@@ -20,7 +20,7 @@ export function HomeHero() {
               <div className="bds-home-hero__description">
                 <img
                   className="bds-home-hero__media"
-                  src="/img/home/RIPPLE_ICON_TIMED_00193.png"
+                  src="/img/home/ripple-icon-timed.png"
                   alt="XRPL home"
                   width={1280}
                   height={458}

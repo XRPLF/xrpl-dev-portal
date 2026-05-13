@@ -31,11 +31,11 @@ export default function Develop() {
         )}
         primaryCta={{
           label: translate("Start Building"),
-          href: "https://xrpl.org/docs",
+          href: "/docs",
         }}
         secondaryCta={{
           label: translate("Explore Tools"),
-          href: "https://xrpl.org/resources/dev-tools",
+          href: "/resources/dev-tools",
         }}
         media={{
           src: require("../static/img/bds-2026/develop-hero-media.jpg"),
@@ -57,7 +57,7 @@ export default function Develop() {
               "Access everything you need to get started on the XRPL."
             ),
             buttonLabel: translate("Documentation"),
-            href: "https://xrpl.org/docs",
+            href: "/docs",
           },
           {
             image: require("../static/img/bds-2026/develop-feature-media-2.jpg"),
@@ -67,7 +67,7 @@ export default function Develop() {
               "Follow step-by-step guides for frequent tasks."
             ),
             buttonLabel: translate("Tutorials"),
-            href: "https://xrpl.org/docs/tutorials",
+            href: "/docs/tutorials",
           },
           {
             image: require("../static/img/bds-2026/develop-feature-media-3.jpg"),
@@ -77,7 +77,7 @@ export default function Develop() {
               "Read about the XRPL's foundational concepts."
             ),
             buttonLabel: translate("Concepts"),
-            href: "https://xrpl.org/docs/concepts",
+            href: "/docs/concepts",
           },
         ]}
       />
@@ -97,7 +97,7 @@ export default function Develop() {
             callsToAction: [
               {
                 children: translate("Access Here"),
-                href: "https://xrpl.org/docs/references/client-libraries",
+                href: "/docs/references/client-libraries",
               },
             ],
           },
@@ -109,7 +109,7 @@ export default function Develop() {
             callsToAction: [
               {
                 children: translate("Access Here"),
-                href: "https://xrpl.org/resources/code-samples",
+                href: "/resources/code-samples",
               },
             ],
           },
@@ -121,7 +121,7 @@ export default function Develop() {
             callsToAction: [
               {
                 children: translate("Access Here"),
-                href: "https://xrpl.org/resources/dev-tools",
+                href: "/resources/dev-tools",
               },
             ],
           },
@@ -137,7 +137,7 @@ export default function Develop() {
         buttons={[
           {
             label: translate("See What You Can Build"),
-            href: "https://xrpl.org/about/uses",
+            href: "/about/uses",
           },
         ]}
         logos={[
@@ -205,7 +205,7 @@ export default function Develop() {
         links={[
           {
             label: translate("Testnet Faucet"),
-            href: "https://xrpl.org/resources/dev-tools/xrp-faucets",
+            href: "/resources/dev-tools/xrp-faucets",
           },
         ]}
         media={{
@@ -224,7 +224,7 @@ export default function Develop() {
         links={[
           {
             label: translate("Simulate"),
-            href: "https://xrpl.org/docs/references/http-websocket-apis/public-api-methods/transaction-methods/simulate",
+            href: "/docs/references/http-websocket-apis/public-api-methods/transaction-methods/simulate",
           },
         ]}
         media={{
@@ -247,7 +247,7 @@ export default function Develop() {
             buttons: [
               {
                 label: translate("Access Here"),
-                href: "https://xrpl.org/resources/known-amendments",
+                href: "/resources/known-amendments",
               },
             ],
           },
@@ -259,7 +259,7 @@ export default function Develop() {
             buttons: [
               {
                 label: translate("Explore Here"),
-                href: "https://xrpl.org/about/uses",
+                href: "/about/uses",
               },
             ],
           },
@@ -283,7 +283,7 @@ export default function Develop() {
             buttons: [
               {
                 label: translate("Read Here"),
-                href: "https://xrpl.org/blog",
+                href: "/blog",
               },
             ],
           },
@@ -299,7 +299,7 @@ export default function Develop() {
         buttons={[
           {
             label: translate("Events"),
-            href: "https://xrpl.org/community/events",
+            href: "/community/events",
           },
           {
             label: translate("Contribute"),

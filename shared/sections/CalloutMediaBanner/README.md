@@ -29,7 +29,7 @@ The component automatically adapts its spacing and typography based on viewport 
 
 | Variant | Background | Text Color | Button Color |
 |---------|------------|------------|--------------|
-| `default` | White (#FFFFFF) | Black (#141414) | Green |
+| `default` | Inherits from parent | Black (#141414) | Green |
 | `light-gray` | Gray 200 (#E6EAF0) | Black (#141414) | Black |
 | `lilac` | Lilac 300 (#C0A7FF) | Black (#141414) | Black |
 | `green` | Green 200 (#70EE97) | Black (#141414) | Black |
@@ -41,7 +41,7 @@ The component automatically adapts its spacing and typography based on viewport 
 
 | Variant | Background | Text Color | Button Color |
 |---------|------------|------------|--------------|
-| `default` | Gray 800 (#232325) | White (#FFFFFF) | Green |
+| `default` | Inherits from parent | White (#FFFFFF) | Green |
 | `light-gray` | Gray 700 (#343437) | White (#FFFFFF) | Black |
 | `lilac` | Lilac 400 (#7649E3) | White (#FFFFFF) | Black |
 | `green` | Green 300 (#21E46B) | Black (#141414) | Black |
@@ -213,7 +213,7 @@ The component **already wraps content in PageGrid structure**. Do not nest it in
 
 ```scss
 .bds-callout-media-banner                    // Base banner
-.bds-callout-media-banner--default           // White background variant
+.bds-callout-media-banner--default           // Inherits parent background; only text color is themed
 .bds-callout-media-banner--light-gray        // Light gray variant
 .bds-callout-media-banner--lilac             // Lilac variant
 .bds-callout-media-banner--green             // Green variant
@@ -246,14 +246,14 @@ All colors are sourced from `styles/_colors.scss`:
 
 ```scss
 // Backgrounds
-$white        // Default variant
+inherit       // Default variant (transparent — picks up parent's background)
 $gray-200     // Light Gray variant
 $lilac-300    // Lilac variant
 $green-200    // Green variant
 $gray-300     // Gray variant
 
 // Dark mode backgrounds
-$gray-800     // Default (dark)
+inherit       // Default (dark) — also inherits from parent
 $gray-700     // Light Gray (dark)
 $lilac-400    // Lilac (dark)
 $green-300    // Green (dark)
@@ -272,7 +272,7 @@ $gray-600     // Gray (dark)
 
 ### When to Use Each Variant
 
-- **Default**: General-purpose banners, clean and neutral
+- **Default**: Transparent banner that inherits its background from the surrounding section — use when you want the banner to blend into the page rather than introduce its own surface
 - **Light Gray**: Subtle emphasis, softer than default
 - **Lilac**: Special announcements, feature highlights
 - **Green**: Primary brand messaging, featured content

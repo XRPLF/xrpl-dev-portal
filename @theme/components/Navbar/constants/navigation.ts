@@ -41,13 +41,13 @@ export const developSubmenuData: {
     },
     {
       label: "Client Libraries",
-      href: "#",
+      href: "/docs/tutorials",
       icon: "client_lib",
       children: [
-        { label: "JavaScript", href: "#" },
-        { label: "Python", href: "#" },
-        { label: "PHP", href: "#" },
-        { label: "Go", href: "#" },
+        { label: "JavaScript", href: "/docs/tutorials/get-started/get-started-javascript" },
+        { label: "Python", href: "/docs/tutorials/get-started/get-started-python" },
+        { label: "PHP", href: "/docs/tutorials/get-started/get-started-php" },
+        { label: "Go", href: "/docs/tutorials/get-started/get-started-go" },
       ],
     },
   ],

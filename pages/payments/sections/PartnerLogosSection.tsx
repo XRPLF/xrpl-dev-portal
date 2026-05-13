@@ -13,7 +13,7 @@ const PARTNER_LOGOS: LogoItem[] = [
     href: "https://xrpl.org/blog/2025/coinpayments-xrpl-case-study-payment-processing",
   },
   {
-    logo: "/img/payments/Ripple - blueblack 1.svg",
+    logo: "/img/payments/ripple-blueblack.svg",
     alt: "Ripple",
     href: "https://ripple.com/solutions/cross-border-payments/",
   },
