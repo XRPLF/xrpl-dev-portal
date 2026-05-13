@@ -9,12 +9,13 @@ export function HomeDevelopersFeatureSection() {
   return (
     <FeatureTwoColumn
       arrange="right"
+      color="yellow"
       title={translate("Developers")}
       description={translate(
         "Open-source tools, SDKs in multiple languages, and a thriving global community make XRPL the ideal environment to build.",
       )}
       media={{
-        src: "/img/home/xrpl-building-developers.png",
+        src: "/img/home/xrpl-building-developers.jpg",
         alt: translate("Image of developers using XRPL"),
       }}
       links={[

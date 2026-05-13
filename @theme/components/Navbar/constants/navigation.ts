@@ -33,9 +33,9 @@ export const developSubmenuData: {
       href: "/docs",
       icon: "docs",
       children: [
-        { label: "API Reference", href: "/references" },
+        { label: "API Reference", href: "/docs/references" },
         { label: "Tutorials", href: "/docs/tutorials" },
-        { label: "Concepts", href: "/concepts" },
+        { label: "Concepts", href: "/docs/concepts" },
         { label: "Infrastructure", href: "/docs/infrastructure" },
       ],
     },

@@ -26,11 +26,11 @@
 // Structure: variant-name: (light-bg, light-text, dark-bg, dark-text)
 $bds-cmb-variants: (
   "default": (
-    light-bg: $white,
+    light-bg: inherit,
     // #FFFFFF
     light-text: $black,
     // #141414
-    dark-bg: $black,
+    dark-bg: inherit,
     // #141414
     dark-text: $white,
     // #FFFFFF

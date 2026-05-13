@@ -21,7 +21,7 @@ export function HomeInstitutionsFeatureSection() {
         },
       ]}
       media={{
-        src: "/img/home/xrpl-building-institutions.png",
+        src: "/img/home/xrpl-building-institutions.jpg",
         alt: translate("Image of institutions uisng XRPL"),
       }}
     />

@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__claude_ai_Figma__get_design_context",
+      "mcp__claude_ai_Figma__get_metadata",
+      "mcp__claude_ai_Figma__get_screenshot",
+      "mcp__claude_ai_Figma__whoami",
+      "Bash(curl *)",
+      "Bash(sips *)",
+      "Bash(mkdir -p *)",
+      "Bash(magick *)"
+    ]
+  }
+}

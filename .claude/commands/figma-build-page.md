@@ -115,13 +115,13 @@ For every image/icon node identified in Step 3, decide:
 | `CardsIconGrid` card icons (colored glyphs) | `static/img/icons/2026/color/<color>/` | `.svg` |
 | `SmallTilesSection` card icons (SDK / language logos) | `static/img/logos/black/` | `.svg` |
 | `LogoRectangleGrid` partner logos (rendered from inner `Logo` frame, 1.5× scale) | `static/img/logos/black/` | `.png` |
-| `HeaderHeroPrimaryMedia` hero media (photo) | `static/img/bds-2026/` | `.jpg` (screenshot media frame at 1.5×, see Step 7) |
-| `HeaderHeroSplitMedia` hero media (photo) | `static/img/bds-2026/` | `.jpg` (screenshot media frame at 1.5×, see Step 7) |
-| `FeatureTwoColumn` media (photo) | `static/img/bds-2026/` | `.jpg` (screenshot media frame at 1.5×, see Step 7) |
-| `FeatureSingleTopic` media (photo) | `static/img/bds-2026/` | `.jpg` (screenshot media frame at 1.5×, see Step 7) |
+| `HeaderHeroPrimaryMedia` hero media (photo) | `static/img/bds-2026/` | `.jpg` (composite raw asset onto Figma bg color at native size, see Step 7) |
+| `HeaderHeroSplitMedia` hero media (photo) | `static/img/bds-2026/` | `.jpg` (composite raw asset onto Figma bg color at native size, see Step 7) |
+| `FeatureTwoColumn` media (photo) | `static/img/bds-2026/` | `.jpg` (composite raw asset onto Figma bg color at native size, see Step 7) |
+| `FeatureSingleTopic` media (photo) | `static/img/bds-2026/` | `.jpg` (composite raw asset onto Figma bg color at native size, see Step 7) |
 | `CardsFeatured` / `logoRectangleGrid`-as-image-cards card media | `static/img/bds-2026/` | `.jpg` (screenshot card-image frame at 1.5×, see Step 7) |
-| `FeaturedVideoHero` poster (if used) | `static/img/bds-2026/` | `.jpg` (screenshot media frame at 1.5×, see Step 7) |
-| `CarouselFeatured` slide HeroMedia (photo) | `static/img/bds-2026/` | `.jpg` (screenshot media frame at 1.5×, see Step 7) |
+| `FeaturedVideoHero` poster (if used) | `static/img/bds-2026/` | `.jpg` (composite raw asset onto Figma bg color at native size, see Step 7) |
+| `CarouselFeatured` slide HeroMedia (photo) | `static/img/bds-2026/` | `.jpg` (composite raw asset onto Figma bg color at native size, see Step 7) |
 | Any other colored decorative icon | `static/img/icons/2026/color/<color>/` | `.svg` |
 | Any other monochrome icon | `static/img/icons/2026/black/` | `.svg` |
 
