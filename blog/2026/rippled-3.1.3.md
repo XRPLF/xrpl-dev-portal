@@ -1,6 +1,6 @@
 ---
 category: 2026
-date: "2026-05-07"
+date: "2026-05-14"
 template: '../../@theme/templates/blogpost'
 seo:
     title: Introducing XRP Ledger version 3.1.3
