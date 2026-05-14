@@ -15,7 +15,7 @@ export const HeroSection: React.FC = () => {
         "The XRP Ledger Payments Infrastructure is a payments solution for use cases including stablecoin payments, cross-border remittance, B2B payment rails, and merchant settlement.",
       )}
       media={{
-        src: "/img/payments/payments-infrastructure-hero.png",
+        src: "/img/payments/payments-infrastructure-hero.jpg",
         alt: translate("Payments Infrastructure"),
       }}
     />

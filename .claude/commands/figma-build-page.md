@@ -170,6 +170,12 @@ For each scheduled export from Step 6 (sourced from the Assets frame per Step 6A
       ```
       **No `-resize` flag** — preserve the source's native dimensions. (For very large source PNGs above ~2000px, you may add `-resize "1500x1500>"` to cap size for web, but otherwise leave the native size alone — the designer chose it.) The `-alpha remove -alpha off` flattens alpha onto the `-background` color BEFORE the JPEG encoder strips alpha to white, giving the correct background instead of white.
 
+   **Size budget — ≤250 KB per non-hero photo, ≤500 KB for the hero.** After step 4, check the JPG size. If a non-hero photo lands above ~250 KB (a hero may go to ~500 KB), re-encode at lower quality:
+      ```
+      magick <target>.jpg -resize "1500x1500>" -quality 78 /tmp/recomp.jpg && mv /tmp/recomp.jpg <target>.jpg
+      ```
+      Why: cumulative image weight across a single page's `require()` calls (often 5–10 images at ~250 KB) plus the rest of the bundle pushes Redocly's cloud builder close to its memory cap. Three outlier 600–670 KB photos on one branch contributed to an OOM build failure; consistent ≤250 KB compression keeps headroom.
+
    5. Save with the `<page-slug>-feature-media-N.jpg` (or `-hero-media.jpg`, `-video-poster.jpg`, etc.) naming convention from Step 6.
 
    **DO NOT use `get_screenshot` on the media frame** — instance children inside design-system components have IDs like `I<sectionId>;<...>` which are not screenshotable, and the MCP rejects them. The composite-from-raw-asset approach above works for all cases.
