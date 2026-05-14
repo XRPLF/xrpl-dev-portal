@@ -129,7 +129,6 @@ The following RippleX teams and GitHub users contributed to this release:
 - RippleX Engineering
 - RippleX Docs
 - RippleX Product
-- @Copilot
 - @Kassaking7
 - @janibakin
 - @tequdev
