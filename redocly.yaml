@@ -6,6 +6,11 @@ ignore:
   - _code-samples/create-amm/ts/tsconfig.json
   - resources/contribute-blog/_blog-template.md
   - resources/contribute-documentation/_tutorial-template.md
+  # Internal design-system showcase pages — keep out of production builds.
+  # These ~32 component demos widen the module graph and contributed to a
+  # Redocly cloud OOM build failure. They remain usable in `realm develop`.
+  - showcase/**/*.page.tsx
+  - showcase/**/*.md
 l10n:
   defaultLocale: en-US
   locales:
