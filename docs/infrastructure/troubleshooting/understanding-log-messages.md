@@ -127,7 +127,7 @@ The entry contains the IP address of the client that exceeded its rate limit, an
 
 If you see frequent messages from the same IP address, you may want to block those IP addresses from your network to reduce the load on your server's public API. (For example, you may be able to configure your firewall to block those IP addresses.)
 
-To avoid being dropped by rate limiting on your own server, [connect as an admin](../../tutorials/http-websocket-apis/build-apps/get-started.md#admin-access).
+To avoid being dropped by rate limiting on your own server, [connect as an admin](../../tutorials/get-started/get-started-http-websocket-apis.md#admin-access).
 
 ## InboundLedger 11 timeouts for ledger
 

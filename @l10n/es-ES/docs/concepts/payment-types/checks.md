@@ -49,18 +49,18 @@ Para más información sobre Cheques en el XRP Ledger, ver:
     - [CheckCreate][]
     - [CheckCash][]
     - [CheckCancel][]
-- [Tutoriales de cheques](../../tutorials/how-tos/use-specialized-payment-types/use-checks/index.md)
-    - [Enviar un cheque](../../tutorials/how-tos/use-specialized-payment-types/use-checks/send-a-check.md)
-    - [Buscar cheques](../../tutorials/how-tos/use-specialized-payment-types/use-checks/look-up-checks.md)
-    - [Canjear un cheque por la cantidad exacta](../../tutorials/how-tos/use-specialized-payment-types/use-checks/cash-a-check-for-an-exact-amount.md)
-    - [Canjear un cheque por una cantidad flexible](../../tutorials/how-tos/use-specialized-payment-types/use-checks/cash-a-check-for-a-flexible-amount.md)
-    - [Cancelar un cheque](../../tutorials/how-tos/use-specialized-payment-types/use-checks/cancel-a-check.md)
+- **Tutoriales de cheques:**
+    - [Enviar un cheque](/docs/tutorials/payments/send-a-check.md)
+    - [Buscar cheques](/docs/tutorials/payments/look-up-checks.md)
+    - [Canjear un cheque por la cantidad exacta](/docs/tutorials/payments/cash-a-check-for-an-exact-amount.md)
+    - [Canjear un cheque por una cantidad flexible](/docs/tutorials/payments/cash-a-check-for-a-flexible-amount.md)
+    - [Cancelar un cheque](/docs/tutorials/payments/cancel-a-check.md)
 - [Enmienda Cheques][]
 
 Para más información sobre funciones relacionadas, ver:
 
 * [Autorización de deposito](../accounts/depositauth.md)
 * [Escrow](escrow.md)
-* [Tutorial de canales de pago](../../tutorials/how-tos/use-specialized-payment-types/use-payment-channels/index.md)
+* [Tutorial de canales de pago](../../tutorials/payments/use-payment-channels.md)
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

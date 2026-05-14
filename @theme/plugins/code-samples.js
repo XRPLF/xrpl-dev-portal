@@ -1,12 +1,13 @@
 // @ts-check
 
-import { getInnerText } from '@redocly/realm/dist/server/plugins/markdown/markdoc/helpers/get-inner-text.js';
+import { getInnerText } from '@redocly/realm/dist/markdoc/helpers/get-inner-text.js';
 
 import { dirname, relative, join as joinPath } from 'path';
 
 export function codeSamples() {
-  /** @type {import("@redocly/realm/dist/server/plugins/types").PluginInstance } */
+  /** @type {import("@redocly/realm/dist/server/types").ExternalPlugin } */
   const instance = {
+    id: 'code-samples',
     processContent: async (actions, { fs, cache }) => {
       try {
         const samples = [];

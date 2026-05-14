@@ -1,9 +1,11 @@
 ---
 seo:
-    description: Withdraws first-loss capital from a `LoanBroker` ledger entry.
+    description: Withdraw first-loss capital from a loan broker.
 labels:
-  - Transactions
-  - Lending Protocol
+    - Transactions
+    - Lending Protocol
+requiredAmendment: LendingProtocol
+txIcon: send
 status: not_enabled
 ---
 # LoanBrokerCoverWithdraw
@@ -40,11 +42,12 @@ Only the owner of the associated `LoanBroker` entry can initiate this transactio
 
 In addition to the [common fields][], {% code-page-name /%} transactions use the following fields:
 
-| Field Name     | JSON Type           | Internal Type | Required? | Description |
-|:-------------- |:--------------------|:--------------|:----------|:------------|
-| `LoanBrokerID` | String              | Hash256       | Yes       | The ID of the `LoanBroker` ledger entry to withdraw from. |
-| `Amount`       | [Currency Amount][] | Amount        | Yes       | The amount of first-loss capital to withdraw. |
-| `Destination`  | String              | AccountID     | No        | An account to receive the assets. |
+| Field Name       | JSON Type           | Internal Type | Required? | Description |
+|:---------------- |:--------------------|:--------------|:----------|:------------|
+| `LoanBrokerID`   | String              | Hash256       | Yes       | The ID of the `LoanBroker` ledger entry to withdraw from. |
+| `Amount`         | [Currency Amount][] | Amount        | Yes       | The amount of first-loss capital to withdraw. |
+| `Destination`    | String              | AccountID     | No        | An account to receive the assets. |
+| `DestinationTag` | Number              | UInt32        | No        | An arbitrary tag identifying the reason for the transaction to the destination. |
 
 
 ## Error Cases

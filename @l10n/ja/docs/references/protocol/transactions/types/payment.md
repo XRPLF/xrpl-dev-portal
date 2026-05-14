@@ -1,11 +1,12 @@
 ---
 seo:
-    description: アカウント間での価値の移動します。
+    description: アカウント間での価値の移動します、またはアカウントを作成する。
 labels:
-  - 支払い
-  - XRP
-  - クロスカレンシー
-  - トークン
+   - Accounts
+   - Payments
+   - XRP
+   - Cross-Currency
+txIcon: send
 ---
 # Payment
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/Payment.cpp "ソース")

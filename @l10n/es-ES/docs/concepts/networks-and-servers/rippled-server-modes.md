@@ -12,7 +12,7 @@ El software del servidor `rippled` puede ejecutarse en varios modos dependiendo 
 
 - [**Modo P2P**](#modo-p2p) - Este es el modo principal del servidor: sigue la red peer-to-peer, procesa transacciones, y mantiene cierta cantidad de [histórico del ledger](ledger-history.md). Este modo se puede configurar para alguno o todos los siguientes roles:
     - [**Validador**](#validadores) - Ayuda a asegurar la red participando en el consenso.
-    - [**Servidor API**](#servidores-api) - Proporciona [acceso API](../../tutorials/http-websocket-apis/build-apps/get-started.md) para leer datos del ledger compartido, enviar transacciones, y mirar la actividad en el ledger. Opcionalmente, puede ser un [**servidor full history**](#servidores-full-history), el cual guarda un registro completo de transacciones y el histórico del ledger.
+    - [**Servidor API**](#servidores-api) - Proporciona [acceso API](/docs/tutorials/get-started/get-started-http-websocket-apis.md) para leer datos del ledger compartido, enviar transacciones, y mirar la actividad en el ledger. Opcionalmente, puede ser un [**servidor full history**](#servidores-full-history), el cual guarda un registro completo de transacciones y el histórico del ledger.
     - [**Servidor hub**](#hubs-públicos) - Transmite mensajes entre muchos otros miembros de la red peer-to-peer.
 - [**Modo solitario**](#modo-solitario) - Un modo offline para pruebas. No se conecta a la red peer-to-peer ni usa consenso.
 

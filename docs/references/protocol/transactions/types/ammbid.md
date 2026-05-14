@@ -3,6 +3,9 @@ seo:
     description: Bid on an Automated Market Maker's auction slot, which grants a discounted fee.
 labels:
     - AMM
+    - DEX
+requiredAmendment: AMM
+txIcon: modify
 ---
 # AMMBid
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/AMMBid.cpp "Source")

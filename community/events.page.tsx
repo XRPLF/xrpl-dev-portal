@@ -1372,6 +1372,61 @@ const events = [
     image: require("../static/img/events/meetup-london.png"),
     end_date: "February 18, 2026",
   },
+  {
+    name: "XRP Ledger Meetup Poland: The Builder's Foundation",
+    description:
+      "XRPL Commons brings its ecosystem to Warsaw with a first pilot event alongside Neti. Join us at EXPO XXI during Polish Blockchain Week for a high-impact session with developers and founders shaping the next wave of the Agentic Web.",
+    type: "meetup",
+    link: "https://luma.com/boucntsh",
+    location: "Warsaw, Poland",
+    date: "March 24, 2026",
+    image: require("../static/img/events/xrp-ledger-meetup-poland.jpg"),
+    end_date: "March 24, 2026",
+  },
+  {
+    name: "XRPL Aquarium Demo Day #8 Social Impact",
+    description:
+      "The Aquarium Residency is a 12-week program for entrepreneurs & developers building on the XRP Ledger blockchain. Join us at our Paris HQ to connect with our residents, discover their projects focused on Social Impact, and engage with the XRPL community.",
+    type: "meetup",
+    link: "https://luma.com/2feub5uj",
+    location: "Paris, France",
+    date: "March 25, 2026",
+    image: require("../static/img/events/aquarium-demo-day-8.jpg"),
+    end_date: "March 25, 2026",
+  },
+  {
+    name: "XRPL & GDF Stablecoins Round table",
+    description:
+      "Invite-only Executive Roundtable on Stablecoins in Paris, hosted by XRPL Commons and Global Digital Finance. Senior leaders from finance, policy, and tech will explore institutional use cases, regulation, and real-world deployments shaping the future of digital money.",
+    type: "conference",
+    link: "https://luma.com/tgg0id1d",
+    location: "Paris, France",
+    date: "April 7, 2026",
+    image: require("../static/img/events/gdf-stablecoins-roundtable.jpg"),
+    end_date: "April 7, 2026",
+  },
+  {
+    name: "HACK THE BLOCK 2026 Paris Blockchain Week XRPL Hackathon",
+    description:
+      "The flagship hackathon of Paris Blockchain Week, a 36-hour sprint where developers from around the world turn ideas into real on-chain solutions, backed by leading ecosystems and judged by Europe's top tech entrepreneurs and investors. Teams don't just compete, they get discovered.",
+    type: "hackathon",
+    link: "https://luma.com/Hacktheblock2026-PBW-XRPL",
+    location: "Paris, France",
+    date: "April 11, 2026",
+    image: require("../static/img/events/hack-the-block-2026.jpg"),
+    end_date: "April 12, 2026",
+  },
+  {
+    name: "XRPL Zone Paris",
+    description:
+      "Connecting XRPL Builders at Paris Blockchain Week 2026. XRPL Commons invites core ecosystem projects & builders to gather at our headquarters in the heart of Paris for a special edition of XRPL Zone Paris.",
+    type: "zone",
+    link: "https://luma.com/780xhfr7",
+    location: "Paris, France",
+    date: "April 14, 2026",
+    image: require("../static/img/events/xrpl-zone-paris.jpg"),
+    end_date: "April 14, 2026",
+  },
 ];
 
 
@@ -1442,40 +1497,65 @@ export default function Events() {
       </section>
       <section className="container-new py-26">
         <div className="event-hero card-grid card-grid-2xN">
-          <div className="pe-2 col">
+          <div className="pr-2 col">
             <img
               alt="xrp ledger events hero"
-              src={require("../static/img/events/xrp-community-night.png")}
+              src={require("../static/img/events/xrp-community-night-paris.png")}
               className="w-100"
             />
           </div>
-          <div className="pt-5 pe-2 col">
+          <div className="pt-5 pr-2 col">
             <div className="d-flex flex-column-reverse">
               <h2 className="mb-8 h4 h2-sm">
-                {translate("XRP Community Night NYC")}
+                {translate("XRP Community Night Paris")}
               </h2>
               <h6 className="mb-3 eyebrow">{translate("Save the Date")}</h6>
             </div>
             <p className="mb-4">
               {translate(
-                "Join the XRP community in NYC—meet builders, users, and projects innovating on the XRP Ledger."
+                "Attending Paris Blockchain Week? ​Join us for an evening with the XRP community in Paris. Connect with the users, builders and projects innovating with and utilizing XRP."
               )}
             </p>
             <div className=" my-3 event-small-gray">
-              {translate("Location: New York, NY")}
+              {translate("Location: Paris, France")}
             </div>
             <div className="py-2 my-3 event-small-gray">
-              {translate("November 5, 2025")}
+              {translate("April 15, 2026")}
             </div>
             <div className="d-lg-block">
               <a
                 className="btn btn-primary btn-arrow-out"
                 target="_blank"
-                href="https://lu.ma/g5uja58m?utm_source=xrpleventspage"
+                href="https://luma.com/wnkqmmqy?utm_source=xprlorg"
               >
                 {translate("Register Now")}
               </a>
             </div>
+          </div>
+        </div>
+      </section>
+      {/* Upcoming Events */}
+      <section className="container-new py-26" id="upcoming-events">
+        <div className="p-0 pb-2 mb-4 d-flex flex-column-reverse col-lg-6 pr-lg-5">
+          <h3 className="h4 h2-sm">
+            {translate(
+              "Join the XRP community in NYC—meet builders, users, and projects innovating on the XRP Ledger."
+            )}
+          </h3>
+          <div className=" my-3 event-small-gray">
+            {translate("Location: New York, NY")}
+          </div>
+          <div className="py-2 my-3 event-small-gray">
+            {translate("November 5, 2025")}
+          </div>
+          <div className="d-lg-block">
+            <a
+              className="btn btn-primary btn-arrow-out"
+              target="_blank"
+              href="https://lu.ma/g5uja58m?utm_source=xrpleventspage"
+            >
+              {translate("Register Now")}
+            </a>
           </div>
         </div>
       </section>

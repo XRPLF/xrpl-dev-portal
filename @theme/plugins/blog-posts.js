@@ -1,14 +1,15 @@
 // @ts-check
 
-import { getInnerText } from '@redocly/realm/dist/server/plugins/markdown/markdoc/helpers/get-inner-text.js';
+import { getInnerText } from '@redocly/realm/dist/markdoc/helpers/get-inner-text.js';
 
 import { dirname, relative, join as joinPath } from 'path';
 import markdoc from '@markdoc/markdoc';
 import moment from "moment";
 
 export function blogPosts() {
-  /** @type {import("@redocly/realm/dist/server/plugins/types").PluginInstance } */
+  /** @type {import("@redocly/realm/dist/server/types").ExternalPlugin } */
   const instance = {
+    id: 'blog-posts',
     processContent: async (actions, { fs, cache }) => {
       try {
         const posts = [];

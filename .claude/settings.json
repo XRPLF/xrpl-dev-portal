@@ -5,6 +5,9 @@
       "mcp__claude_ai_Figma__get_metadata",
       "mcp__claude_ai_Figma__get_screenshot",
       "mcp__claude_ai_Figma__whoami"
+    ],
+    "deny": [
+      "Bash(git push *)"
     ]
   }
 }

@@ -1,18 +1,18 @@
 ---
-html: ticketcreate.html
-parent: transaction-types.html
 seo:
     description: チケットとして1つ以上のシーケンス番号を確保する。
 labels:
-  - Transaction Sending
+    - Transaction Sending
+    - Accounts
+requiredAmendment: TicketBatch
+txIcon: create
 ---
 # TicketCreate
-
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/CreateTicket.cpp "Source")
 
-_([TicketBatch amendment][]が必要です)_
-
 TicketCreateトランザクションは、1つまたは複数の[シーケンス番号](../../data-types/basic-data-types.md#アカウントシーケンス)を[Tickets](../../ledger-data/ledger-entry-types/ticket.md)として確保します。
+
+{% amendment-disclaimer name="TicketBatch" /%}
 
 ## {% $frontmatter.seo.title %}JSONの例
 
@@ -27,9 +27,6 @@ TicketCreateトランザクションは、1つまたは複数の[シーケンス
 ```
 
 {% tx-example txid="738AEF36B48CA4A2D85C2B74910DC34DDBBCA4C83643F2DB84A58785ED5AD3E3" /%}
-
-{% raw-partial file="/@l10n/ja/docs/_snippets/tx-fields-intro.md" /%}
-<!--{# fix md highlighting_ #}-->
 
 | フィールド         | JSONの型          | [内部の型][]       | 説明                |
 |:-----------------|:-----------------|:------------------|:-------------------|

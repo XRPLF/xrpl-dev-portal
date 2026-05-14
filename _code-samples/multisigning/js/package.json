@@ -1,0 +1,9 @@
+{
+    "name": "multisigning",
+    "version": "3.0.0",
+    "license": "MIT",
+    "dependencies": {
+        "xrpl": "^4.5.0"
+    },
+    "type": "module"
+}

@@ -1,6 +1,10 @@
 ---
 seo:
     description: Provisionally issue a credential to a subject account.
+labels:
+    - Decentralized Storage
+requiredAmendment: Credentials
+txIcon: create
 ---
 # CredentialCreate
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/Credentials.cpp "Source")
@@ -24,8 +28,6 @@ Provisionally issue a [credential](../../../../concepts/decentralized-storage/cr
 ```
 
 {% raw-partial file="/docs/_snippets/tx-fields-intro.md" /%}
-
-In addition to the [common fields][], CredentialCreate transactions use the following fields:
 
 | Field            | JSON Type            | [Internal Type][] | Required? | Description |
 |:-----------------|:---------------------|:------------------|:----------|:------------|

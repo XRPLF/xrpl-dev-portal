@@ -82,13 +82,13 @@ reference_fee * (signer_count + 33 + (fulfillment_bytes / 16))
 
 XRP LedgerのEscrowの詳細は、以下をご覧ください:
 
-- [Escrowチュートリアル](../../tutorials/how-tos/use-specialized-payment-types/use-escrows/index.md)
+- [時間ベースのEscrowの送金](../../tutorials/payments/send-a-timed-escrow.md)
 - [トランザクションのリファレンス](../../references/protocol/transactions/index.md)
     - [EscrowCreateトランザクション][]
     - [EscrowFinishトランザクション][]
     - [EscrowCancelトランザクション][]
 - [レジャーリファレンス](../../references/protocol/ledger-data/index.md)
-    - [Escrowオブジェクト](../../references/protocol/ledger-data/ledger-entry-types/escrow.md)
+    - [Escrowエントリ][]
 
 
 Rippleによる550億XRPのロックアップについては、[Ripple's Insights Blog](https://ripple.com/insights/ripple-to-place-55-billion-xrp-in-escrow-to-ensure-certainty-into-total-xrp-supply/)をご覧ください。

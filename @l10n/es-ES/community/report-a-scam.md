@@ -24,7 +24,7 @@ Si piensas que has sido estafado, asegúrate de recoleccionar toda la informaci�
     - [Uphold](https://support.uphold.com/hc/en-us/requests/new)
     - [Bitrue](https://www.bitrue.com/exchange-web/footer/contactus.html)
 
-4. Si el estafador intercambió XRP por otro token en el XRP Ledger, contacta con el emisor del token. El emisor podría ser capaz [congelar la línea de confianza del estafador]((../docs/tutorials/how-tos/use-tokens/freeze-a-trust-line.md) de prevenir que el estafador pueda enviar esos tokens a otras personas.
+4. Si el estafador intercambió XRP por otro token en el XRP Ledger, contacta con el emisor del token. El emisor podría ser capaz [congelar la línea de confianza del estafador]((../docs/tutorials/tokens/fungible-tokens/freeze-a-trust-line.md) de prevenir que el estafador pueda enviar esos tokens a otras personas.
 
 Para más detalles sobre reportar estafadores, consultar [Ayuda de Xrplorer Forensics](https://xrplorer.com/forensics/help).
 

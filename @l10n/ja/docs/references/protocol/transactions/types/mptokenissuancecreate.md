@@ -2,7 +2,10 @@
 seo:
     description: 新しいMulti-Purpose Tokenを発行します。
 labels:
- - Multi-Purpose Token, MPT
+    - Multi-purpose Tokens, MPTs
+    - Tokens
+requiredAmendment: MPTokensV1
+txIcon: create
 ---
 
 # MPTokenIssuanceCreate

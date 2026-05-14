@@ -2,7 +2,8 @@
 seo:
     description: Offer to trade currencies in the decentralized exchange; create a limit order.
 labels:
-    - Decentralized Exchange
+    - DEX
+txIcon: create
 ---
 # OfferCreate
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/CreateOffer.cpp "Source")

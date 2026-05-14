@@ -82,7 +82,7 @@ reference_fee * (signer_count + 33 + (fulfillment_bytes / 16))
 
 Para más información sobre Escrow en el XRP Ledger, consulta lo siguiente:
 
-- [Tutoriales Escrow](../../tutorials/how-tos/use-specialized-payment-types/use-escrows/index.md)
+<!-- TODO: add links to individual Escrow tutorials with translated names -->
 - [Referencia de transacciones](../../references/protocol/transactions/index.md)
     - [Transacción EscrowCreate][]
     - [Transacción EscrowFinish][]

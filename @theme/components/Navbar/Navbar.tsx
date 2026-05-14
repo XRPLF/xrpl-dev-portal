@@ -1,6 +1,16 @@
 import * as React from "react";
 import { useSearchDialog } from "@redocly/theme/core/hooks";
 import { SearchDialog } from "@redocly/theme/components/Search/SearchDialog";
+// Replaces the top navbar with our custom XRPL.org top navbar
+
+import { useThemeConfig, useThemeHooks } from "@redocly/theme/core/hooks";
+import { LanguagePicker } from "@redocly/theme/components/LanguagePicker/LanguagePicker";
+import { slugify } from "../../helpers";
+import { Link } from "@redocly/theme/components/Link/Link";
+import { ColorModeSwitcher } from "@redocly/theme/components/ColorModeSwitcher/ColorModeSwitcher";
+import { Search } from "@redocly/theme/components/Search/Search";
+import arrowUpRight from "../../../static/img/icons/arrow-up-right-custom.svg";
+import moment from "moment-timezone";
 
 // Import from modular components
 import { AlertBanner } from "./components/AlertBanner";

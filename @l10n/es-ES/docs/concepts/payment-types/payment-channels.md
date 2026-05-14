@@ -39,8 +39,7 @@ El siguiente diagrama resume el ciclo de vida de un canal de pago:
 - **Conceptos relacionados:**
     - [Escrow](escrow.md), una función similar para pagos XRP condicionales de mayor valor y menor velocidad.
 - **Tutoriales y casos de uso:**
-    - [Utilizar canales de pago](../../tutorials/how-tos/use-specialized-payment-types/use-payment-channels/index.md), un tutorial que guía a través del proceso de utilizar un canal de pago.
-    - [Abrir un canal de pago para activar una red de intercambio](../../tutorials/how-tos/use-specialized-payment-types/use-payment-channels/open-a-payment-channel-to-enable-an-inter-exchange-network.md)
+    - [Utilizar canales de pago](../../tutorials/payments/use-payment-channels.md), un tutorial que guía a través del proceso de utilizar un canal de pago.
 - **Referencias:**
     - [Método channel_authorize][]
     - [Método channel_verify][]

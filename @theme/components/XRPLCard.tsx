@@ -1,3 +1,7 @@
+// Components for creating grids of cards in the current site style.
+// Used in both custom .page.tsx files as well as markdoc tags {% card-grid %}
+// and {% xrpl-card %}.
+
 import * as React from 'react';
 import dynamicReact from '@markdoc/markdoc/dist/react';
 import { Link } from '@redocly/theme/components/Link/Link';

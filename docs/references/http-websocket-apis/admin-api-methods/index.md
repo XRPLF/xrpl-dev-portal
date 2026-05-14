@@ -8,7 +8,7 @@ labels:
 
 Administer a `rippled` server using these admin API methods. Admin methods are meant only for trusted personnel in charge of keeping the server operational. Admin methods include commands for managing, monitoring, and debugging the server.
 
-Admin commands are available only if you connect to `rippled` on a host and port that the `rippled.cfg` file identifies as admin. By default, the commandline client uses an admin connection. For more information on connecting to `rippled`, see [Getting Started with the `rippled` API](../../../tutorials/http-websocket-apis/build-apps/get-started.md).
+Admin commands are available only if you connect to `rippled` on a host and port that the `rippled.cfg` file identifies as admin. By default, the commandline client uses an admin connection. For more information on connecting to `rippled`, see [Getting Started with the `rippled` API](../../../tutorials/get-started/get-started-http-websocket-apis.md).
 
 
 ## [Key Generation Methods](key-generation-methods/index.md)
@@ -45,7 +45,7 @@ Use these methods to sign transactions.
 * **[`sign_for`](signing-methods/sign_for.md)** - Contribute to a multi-signature.
 * **[`channel_authorize`](../public-api-methods/payment-channel-methods/channel_authorize.md)** - Sign a claim for money from a payment channel.
 
-By default, these methods are [admin-only](../../../tutorials/http-websocket-apis/build-apps/get-started.md#admin-access). They can be used as public methods if the server admin has [enabled public signing](../../../infrastructure/configuration/enable-public-signing.md).
+By default, these methods are [admin-only](../../../tutorials/get-started/get-started-http-websocket-apis.md#admin-access). They can be used as public methods if the server admin has [enabled public signing](../../../infrastructure/configuration/enable-public-signing.md).
 
 ## [Peer Management Methods](peer-management-methods/index.md)
 

@@ -1,56 +1,66 @@
-'use strict'
-const xrpl = require('xrpl')
+import xrpl from 'xrpl'
+import { execSync } from 'child_process'
+import fs from 'fs'
 
-// Define parameters. Edit this snippet with your values before running it.
-const secret = "s████████████████████████████" // Replace with your secret
-const check_id = "" // Replace with your Check ID
+// Looks for setup data required to run the checks tutorials.
+// If missing, checks-setup.js will generate the data.
 
-async function main() {
-  try {
-      
-    // Connect ----------------------------------------------------------------
-    const client = new xrpl.Client('wss://s.altnet.rippletest.net:51233');
-    await client.connect();
-
-    // Instantiate wallet from secret. ----------------------------------------
-    const wallet = await xrpl.Wallet.fromSeed(secret)
-    console.log("Wallet address: ", wallet.address)
-
-    // Check if the check ID is provided --------------------------------------
-    if (check_id.length === 0) {
-      console.log("Please edit this snippet to provide a check ID. You can get a check ID by running create-check.js.");
-      return;
-    }
-    
-    // Prepare the transaction ------------------------------------------------
-    const checkcancel = {
-        "TransactionType": "CheckCancel",
-        "Account": wallet.address,
-        "CheckID": check_id
-    };
-
-    // Submit the transaction -------------------------------------------------
-    const tx = await client.submitAndWait(
-      checkcancel, 
-      { autofill: true, 
-          wallet: wallet }
-    )
-    
-    // Confirm results --------------------------------------------------------
-    console.log(`Transaction result: ${JSON.stringify(tx, null, 2)}`)
-
-    if (tx.result.meta.TransactionResult === "tesSUCCESS") {
-      // submitAndWait() only returns when the transaction's outcome is final,
-      // so you don't also have to check for validated: true.
-      console.log("Transaction was successful.")
-    }
-
-    // Disconnect -------------------------------------------------------------
-    await client.disconnect()
-
-  } catch (error) {
-      console.error(`Error: ${error}`)
-  }
+if (!fs.existsSync('checks-setup.json')) {
+  console.log(`\n=== Checks tutorial data doesn't exist. Running setup script... ===\n`)
+  execSync('node checks-setup.js', { stdio: 'inherit' })
 }
 
-main()
+// Load setup data --------------------------------------------------------
+
+const setupData = JSON.parse(fs.readFileSync('checks-setup.json', 'utf8'))
+const wallet = xrpl.Wallet.fromSeed(setupData.sender.seed)
+const checkID = setupData.checkIDs.cancel
+
+console.log(`Wallet address: ${wallet.address}`)
+console.log(`Check ID to cancel: ${checkID}`)
+
+// Connect to Testnet -----------------------------------------------------
+
+const client = new xrpl.Client('wss://s.altnet.rippletest.net:51233')
+await client.connect()
+
+// Prepare the transaction ------------------------------------------------
+
+console.log(`\n=== Preparing CheckCancel transaction ===\n`)
+const checkCancel = {
+  TransactionType: 'CheckCancel',
+  Account: wallet.address,
+  CheckID: checkID
+}
+
+// Validate the transaction before submitting -----------------------------
+
+xrpl.validate(checkCancel)
+console.log(JSON.stringify(checkCancel, null, 2))
+
+// Submit the transaction -------------------------------------------------
+
+console.log(`\n=== Submitting CheckCancel transaction ===\n`)
+const tx = await client.submitAndWait(
+  checkCancel,
+  { autofill: true,
+    wallet }
+)
+
+// Confirm transaction result ---------------------------------------------
+
+const resultCode = tx.result.meta.TransactionResult
+if (resultCode !== 'tesSUCCESS') {
+  console.error('Unable to cancel check:', resultCode)
+  await client.disconnect()
+  process.exit(1)
+}
+
+const deletedCheck = tx.result.meta.AffectedNodes.find(node =>
+  node.DeletedNode?.LedgerEntryType === 'Check')
+console.log(`Check canceled successfully.`)
+console.log(`Deleted check:\n`, JSON.stringify(deletedCheck.DeletedNode.FinalFields, null, 2))
+
+// Disconnect -------------------------------------------------------------
+
+await client.disconnect()

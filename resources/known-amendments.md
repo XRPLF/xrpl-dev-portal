@@ -23,6 +23,11 @@ The following is a list of [amendments](../docs/concepts/networks-and-servers/am
 |:----------------------------------|:------------------------------------------|:-------------------------------|
 | [Hooks][]                         | {% badge %}In Development: TBD{% /badge %} | [XRPL Hooks](https://hooks.xrpl.org/) |
 | [InvariantsV1_1][]                | {% badge %}In Development: TBD{% /badge %} |  |
+| [DynamicMPT][]                    | {% badge %}In Development: TBD{% /badge %} | [XLS-94 Dynamic MPTs](https://opensource.ripple.com/docs/xls-94-dynamic-mpts) |
+| [ConfidentialTransfer][]          | {% badge %}In Development: TBD{% /badge %} | [XLS-96 Confidential Transfers](https://opensource.ripple.com/docs/xls-96-confidential-transfers) |
+| [MPTokensV2][]                    | {% badge %}In Development: TBD{% /badge %} | [XLS-82 MPT DEX Integration](https://opensource.ripple.com/docs/xls-82-mpt-dex) |
+| [Sponsor][]                       | {% badge %}In Development: TBD{% /badge %} | [XLS-68 Sponsored Fees and Reserves](https://opensource.ripple.com/docs/xls-68-sponsored-fees-and-reserves) |
+| [SmartEscrow][]                 | {% badge %}In Development: TBD{% /badge %} | [XLS-100 Smart Escrows](https://opensource.ripple.com/docs/xls-100-smart-escrows) |
 
 {% admonition type="success" name="Tip" %}
 This list is updated manually. If you're working on an amendment and have a private network to test the changes, you can edit this page to add your in-development amendment to this list. For more information on contributing to the XRP Ledger, see [Contribute Code to the XRP Ledger](contribute-code/index.md).
@@ -35,6 +40,8 @@ The following is a list of known [amendments](../docs/concepts/networks-and-serv
 
 | Name                              | Introduced | Status                        |
 |:----------------------------------|:-----------|:------------------------------|
+| [fixBatchInnerSigs]               | v3.1.0     | {% badge href="https://xrpl.org/blog/2026/rippled-3.1.1" %}Obsolete: Removed in v3.1.1{% /badge %} |
+| [Batch]                           | v2.5.0     | {% badge href="https://xrpl.org/blog/2026/rippled-3.1.1" %}Obsolete: Removed in v3.1.1{% /badge %} |
 | [PermissionDelegation]            | v2.5.0     | {% badge href="https://xrpl.org/blog/2025/rippled-2.6.1" %}Obsolete: Removed in v2.6.1{% /badge %} |
 | [fixNFTokenNegOffer][]            | v1.9.2     | {% badge %}Obsolete: To Be Removed{% /badge %} |
 | [fixNFTokenDirV1][]               | v1.9.1     | {% badge %}Obsolete: To Be Removed{% /badge %} |
@@ -105,11 +112,15 @@ For details, see the [XLS-73: AMMClawback specification](https://github.com/XRPL
 | Amendment    | Batch |
 |:-------------|:------|
 | Amendment ID | 894646DD5284E97DECFE6674A6D6152686791C4A95F8C132CCA9BAF9E5812FB6 |
-| Status       | Open for Voting |
+| Status       | Obsolete |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
 Allows multiple transactions to be bundled into a batch that's processed all together. Standard: [XLS-56](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0056-batch)
+
+{% admonition type="danger" name="Warning" %}
+This amendment was disabled in v3.1.1 due to a bug. It will be replaced by `BatchV1_1` in a future release.
+{% /admonition %}
 
 
 ### CheckCashMakesTrustLine
@@ -197,7 +208,22 @@ Modifies an existing type of ledger entry:
 
 Also extends the `deposit_authorized` API method to check for credential-based auth and extends the `ledger_entry` method to allow lookup of Credential entries.
 
-For more details, see the [XLS-70: Credentials specification](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0070-credentials).
+For more details, see [XLS-70: Credentials specification](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0070-credentials).
+
+
+### ConfidentialTransfer
+[ConfidentialTransfer]: #confidentialtransfer
+
+| Amendment    | ConfidentialTransfer |
+|:-------------|:---------------------|
+| Amendment ID | 2110E4A19966E2EF517C0A8C56A5F35099D7665B0BB89D7B126B30D50B86AAD5 |
+| Status       | In Development |
+| Default Vote (Latest stable release) | No |
+| Pre-amendment functionality retired? | No |
+
+Provides institutional-grade privacy for Multi-Purpose Tokens (MPTs) using advanced cryptography (EC-ElGamal and ZKPs). Individual balances and transfer amounts remain shielded from the public ledger while maintaining compliance mechanisms for authorized parties (issuers, auditors, or designated entities) to verify total supply and meet regulatory obligations.
+
+For more details, see [XLS-96: Confidential Transfers](https://opensource.ripple.com/docs/xls-96-confidential-transfers).
 
 
 ### CryptoConditions
@@ -363,6 +389,21 @@ Adds functionality to update the `URI` field of an `NFToken` ledger entry. This 
 
 1. `NFTokenModify`: New transaction type that updates the `URI` field of an NFT.
 2. `tfMutable`: New flag that enables authorized accounts to modify the `URI` of an NFT. This flag must be enabled when the NFT is initially minted.
+
+
+### DynamicMPT
+[DynamicMPT]: #dynamicmpt
+
+| Amendment    | DynamicMPT |
+|:-------------|:-----------|
+| Amendment ID | 58E92F338758479C06084E1B6BA366BAD8F75E5329A7F0EEAFFFDA51E5106B7F |
+| Status       | In Development |
+| Default Vote (Latest stable release) | No |
+| Pre-amendment functionality retired? | No |
+
+Extends Multi-Purpose Tokens to allow issuers to designate specific properties as mutable during token creation, enabling selected attributes to be updated later as business needs change.
+
+For more details, see [XLS-94: Dynamic MPTs](https://opensource.ripple.com/docs/xls-94-dynamic-mpts).
 
 
 ### EnforceInvariants
@@ -746,11 +787,15 @@ Adds several fixes to Automated Market Maker code, specifically:
 | Amendment    | fixBatchInnerSigs |
 |:-------------|:----------------|
 | Amendment ID | 267624F8F744C4A4F1B5821A7D54410BCEBABE987F0172EE89E5FC4B6EDBC18A |
-| Status       | Open for Voting |
+| Status       | Obsolete |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
 This amendment fixes an issue where inner transactions of a `Batch` transaction would be flagged as having valid signatures. Since inner transactions aren't signed directly, they should never have valid signatures.
+
+{% admonition type="danger" name="Warning" %}
+This amendment was disabled in v3.1.1 due to a bug. It will be replaced by `BatchV1_1` in a future release.
+{% /admonition %}
 
 
 ### fixCheckThreading
@@ -1487,7 +1532,7 @@ This amendment adds several new invariants to protect the ledger against bugs in
 
 The Lending Protocol enables on-chain, fixed-term, uncollateralized loans using pooled funds from a Single Asset Vault. This implementation relies on off-chain underwriting and risk management to assess the creditworthiness of borrowers, but offers configurable, peer-to-peer loans.
 
-Specification: [XLS-66](https://github.com/Tapanito/XRPL-Standards/tree/xls-66-lending-protocol/XLS-0066-lending-protocol).
+Specification: [XLS-66](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0066-lending-protocol).
 
 
 ### MPTokensV1
@@ -1520,6 +1565,21 @@ Implements a new type of fungible token, called a _Multi-Purpose Token_ (MPT). T
 
 - (New) `mpt_holders` method - Returns a list of accounts that hold a specific MPT issuance.
 - (Updated) `ledger_entry` method - Can look up MPToken and MPTokenIssuance ledger entry types.
+
+
+### MPTokensV2
+[MPTokensV2]: #mptokensv2
+
+| Amendment    | MPTokensV2 |
+|:-------------|:-----------|
+| Amendment ID | BE2D87DF21B690ED1497B593FDC013CC04276302380B1BD50A033DCF8DEFB2EB |
+| Status       | In Development |
+| Default Vote (Latest stable release) | No |
+| Pre-amendment functionality retired? | No |
+
+Extends the XRPL's Decentralized Exchange to natively support Multi-Purpose Tokens (MPTs) as a tradeable asset class. MPTs can be paired with XRP, Trust Line tokens, or other MPTs across existing DEX transactions such as OfferCreate, Payment, AMM, and Checks.
+
+For more details, see [XLS-82: MPT DEX Integration](https://opensource.ripple.com/docs/xls-82-mpt-dex).
 
 
 ### MultiSign
@@ -1686,7 +1746,7 @@ Creates "Payment Channels" for XRP. Payment channels are a tool for facilitating
 
 Creates three new transaction types: [PaymentChannelCreate][], [PaymentChannelClaim][], and [PaymentChannelFund][]. Creates a new ledger object type, [PayChannel](../docs/references/protocol/ledger-data/ledger-entry-types/paychannel.md). Defines an off-ledger data structure called a `Claim`; the PaymentChannelClaim uses a signature for this data structure. Creates new `rippled` API methods: [`channel_authorize`](../docs/references/http-websocket-apis/public-api-methods/payment-channel-methods/channel_authorize.md) (creates a signed Claim), [`channel_verify`](../docs/references/http-websocket-apis/public-api-methods/payment-channel-methods/channel_verify.md) (verifies a signed Claim), and [`account_channels`](../docs/references/http-websocket-apis/public-api-methods/account-methods/account_channels.md) (lists Channels associated with an account).
 
-For more information, see the [Payment Channels Tutorial](../docs/tutorials/how-tos/use-specialized-payment-types/use-payment-channels/index.md).
+For more information, see the [Payment Channels Tutorial](../docs/tutorials/payments/use-payment-channels.md).
 
 
 ### PermissionDelegation
@@ -1699,9 +1759,11 @@ For more information, see the [Payment Channels Tutorial](../docs/tutorials/how-
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
-Allows accounts to delegate some permissions to other accounts. This amendment was disabled in v2.6.1 due to a bug. It will be replaced by `PermissionDelegationV1_1` in a future release.
+Allows accounts to delegate some permissions to other accounts. Specification: [XLS-75](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0075-permission-delegation).
 
-Specification: [XLS-75](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0075-permission-delegation).
+{% admonition type="danger" name="Warning" %}
+This amendment was disabled in v2.6.1 due to a bug. It will be replaced by `PermissionDelegationV1_1` in a future release.
+{% /admonition %}
 
 
 ### PermissionedDEX
@@ -1814,6 +1876,21 @@ Creates a structure for aggregating assets from multiple depositors. This is int
 
 Specification: [XLS-65](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0065-single-asset-vault).
 
+### SmartEscrow
+[SmartEscrow]: #smartescrow
+
+| Amendment    | SmartEscrow   |
+|:-------------|:--------------|
+| Amendment ID | 78ECD9CE17B0BF5B83BB3B275921FB5F5E0F672E9D24BD2E848B7C6277AE296E |
+| Status       | In Development |
+| Default Vote (Latest stable release) | No |
+| Pre-amendment functionality retired? | No |
+
+The Smart Escrows amendment introduces a new programmability layer to the XRPL, powered by a WebAssembly (WASM) engine. Developers can write custom functions that control when an escrow can be finished.
+
+For more details, see [XLS-100: Smart Escrows](https://opensource.ripple.com/docs/xls-100-smart-escrows).
+
+
 ### SortedDirectories
 [SortedDirectories]: #sorteddirectories
 
@@ -1827,6 +1904,21 @@ Specification: [XLS-65](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-
 Sorts the entries in [DirectoryNode ledger objects](../docs/references/protocol/ledger-data/ledger-entry-types/directorynode.md) and fixes a bug that occasionally caused pages of owner directories not to be deleted when they should have been.
 
 {% admonition type="danger" name="Warning" %}Older versions of `rippled` that do not know about this amendment may crash when they find a DirectoryNode sorted by the new rules. To avoid this problem, [upgrade](../docs/infrastructure/installation/index.md) to `rippled` version 0.80.0 or later.{% /admonition %}
+
+
+### Sponsor
+[Sponsor]: #sponsor
+
+| Amendment    | Sponsor |
+|:-------------|:--------|
+| Amendment ID | BE1F90581635DBCEBFC4678C4B54FEDDC1A17B50FD02CFE765A4132A342126AC |
+| Status       | In Development |
+| Default Vote (Latest stable release) | No |
+| Pre-amendment functionality retired? | No |
+
+The Sponsor amendment removes onboarding friction by allowing companies, token issuers, and other entities to subsidize transaction costs and reserve requirements for end users. Sponsors can co-sign transactions or pre-fund sponsorships, covering fees and reserves, while sponsees retain full control of their accounts and keys.
+
+For more details, see [XLS-68: Sponsored Fees and Reserves](https://opensource.ripple.com/docs/xls-68-sponsored-fees-and-reserves).
 
 
 ### SusPay

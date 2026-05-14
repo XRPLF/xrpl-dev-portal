@@ -54,7 +54,7 @@ XRP Ledgerでは、スパムや悪意のある使用によって、共有グロ�
 
 アカウントの所有者準備金を決定するには、増分準備金にアカウントが所有するオブジェクトの数を掛けます。アカウントが所有しているオブジェクトの数を調べるには、[account_infoメソッド][]を呼び出し、`account_data.OwnerCount`を取得します。
 
-アドレスの必要となる合計準備金を計算するには、`OwnerCount`に`reserve_inc_xrp`を掛け、次に`reserve_base_xrp`を加えます。[この計算をPythonで行うデモ](../../tutorials/python/build-apps/build-a-desktop-wallet-in-python.md#codeblock-17)があります。
+アドレスの必要となる合計準備金を計算するには、`OwnerCount`に`reserve_inc_xrp`を掛け、次に`reserve_base_xrp`を加えます。[この計算をPythonで行うデモ](/docs/tutorials/sample-apps/build-a-desktop-wallet-in-python.md#codeblock-17)があります。
 
 
 ## 必要準備金を下回る
@@ -76,6 +76,6 @@ XRP Ledgerには、準備金要件を調整する仕組みがあります。こ�
 - [AccountRootオブジェクト][]
 - [手数料の投票](../consensus-protocol/fee-voting.md)
 - [SetFee疑似トランザクション][]疑似トランザクション
-- [チュートリアル: 必要準備金の計算と表示（Python）](../../tutorials/python/build-apps/build-a-desktop-wallet-in-python.md#3-display-an-account)
+- [チュートリアル: 必要準備金の計算と表示（Python）](/docs/tutorials/sample-apps/build-a-desktop-wallet-in-python.md#3-display-an-account)
 
 {% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

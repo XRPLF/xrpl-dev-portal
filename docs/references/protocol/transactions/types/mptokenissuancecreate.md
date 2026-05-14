@@ -3,6 +3,9 @@ seo:
     description: Define the properties of a new Multi-Purpose Token (MPT).
 labels:
     - Multi-purpose Tokens, MPTs
+    - Tokens
+requiredAmendment: MPTokensV1
+txIcon: create
 ---
 # MPTokenIssuanceCreate
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/MPTokenIssuanceCreate.cpp "Source")

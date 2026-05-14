@@ -1,0 +1,9 @@
+{
+  "name": "calculate-reserves",
+  "version": "1.0.0",
+  "license": "MIT",
+  "type": "module",
+  "dependencies": {
+    "xrpl": "^4.4.0"
+  }
+}

@@ -63,7 +63,7 @@ La forma típica de obtener una cuenta en el XRP Ledger es la siguiente:
     - [Transacción Payment][]
     - [Objeto AccountRoot](../../references/protocol/ledger-data/ledger-entry-types/accountroot.md)
 - **Tutoriales:**
-    - [Administrar configuración de la cuenta (Categoría)](../../tutorials/how-tos/manage-account-settings/index.md)
-    - [Monitorizar pagos entrantes con WebSocket](../../tutorials/http-websocket-apis/build-apps/monitor-incoming-payments-with-websocket.md)
+    - [Administrar configuración de la cuenta (Categoría)](/docs/tutorials/best-practices/key-management/assign-a-regular-key-pair.md)
+    - [Monitorizar pagos entrantes con WebSocket](/docs/tutorials/advanced-developer-topics/client-library-development/monitor-incoming-payments-with-websocket.md)
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

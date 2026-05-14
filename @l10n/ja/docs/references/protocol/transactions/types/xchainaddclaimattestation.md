@@ -1,18 +1,16 @@
 ---
-html: xchainaddclaimattestation.html 
-parent: transaction-types.html
 seo:
     description: 送信元チェーンで発生したイベントを、送信先チェーンに証明(アテスト)します。
 labels:
-  - 相互運用性
+    - Interoperability
+requiredAmendment: XChainBridge
 status: not_enabled
+txIcon: modify
 ---
 # XChainAddClaimAttestation
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/TxFormats.cpp#L429-L445 "ソース")
 
-_（[XChainBridge Amendment][] {% not-enabled /%} が必要です）_
-
-`XChainAddClaimAttestation`トランザクションは`XChainCommit`トランザクションを証明するWitnessサーバの署名を提供します。
+`XChainCommit`トランザクションを証明するWitnessサーバの署名を提供します。
 
 この署名は、署名が提出された時点のドアの署名者リストにある鍵の一つでなければなりません。ただし、署名が提出されてから定足数に達するまでの間に署名者リストが変更された場合は、新しい署名セットが使用され、現在収集されている署名の一部が削除されることがあります。
 
@@ -20,6 +18,7 @@ _（[XChainBridge Amendment][] {% not-enabled /%} が必要です）_
 
 {% admonition type="info" name="注記" %}報酬は現在のリストにある鍵を持っているアカウントにのみ送られます。署名者の定足数は`SignatureReward`に一致する必要があります。より大きな報酬を得ようとして、一つのWitnessサーバがこの値に不正な値を指定することはできません。{% /admonition %}
 
+{% amendment-disclaimer name="XChainBridge" /%}
 
 ## XChainAddClaimAttestation JSONの例
 

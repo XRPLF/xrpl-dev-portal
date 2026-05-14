@@ -573,6 +573,10 @@ pre {
   #wallet-joey {
     content: url("../img/wallets/lightmode/joey.svg");
   }
+
+  #wallet-bitget {
+    content: url("../img/wallets/lightmode/bitget.svg");
+  }  
 }
 
 
@@ -669,6 +673,7 @@ pre {
     'ripples-on-demand-liquidity': 'svg',
     'xumm-wallet': 'svg',
     'bifrost-wallet': 'svg',
+    'bitget-wallet': 'svg',
     'sologenic-dex': 'svg',
     'joey-wallet': 'svg',
     'Crossmark': 'png'
@@ -1115,6 +1120,10 @@ main article .card-grid {
   }
 }
 
+[data-component-name="Markdown/Markdown"] article {
+  border-bottom-color: $gray-500;
+}
+
 .dev-blog {
   .text-bg {
     background-color: $white;
@@ -1478,4 +1487,38 @@ main article .card-grid {
   }
 
 
+}
+
+.tx-type-list .tx-type {
+  background-color: $gray-200;
+  color: $gray-800;
+
+  &:nth-child(even) {
+    background-color: $white;
+  }
+
+  a.tx-title {
+    color: $blue-purple-500;
+    &:visited {
+      color: $blue-purple-500;
+    }
+    &:hover, &:visited:hover {
+      color: $light-link-hover-color
+    }
+    img {
+      filter: brightness(0.1);
+    }
+  }
+}
+
+.tx-icon-legend {
+  border-color: $black;
+
+  .tx-legend-item img.tx-type-icon {
+    filter: none;
+  }
+}  
+
+[data-component-name="Layout/DocumentationLayoutBottom"] {
+  border-top-color: black;
 }

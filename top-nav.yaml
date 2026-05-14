@@ -60,7 +60,7 @@
         - page: ./docs/concepts/index.md
           label: Concepts
           labelTranslationKey: topnav.docs.concepts
-        - page: ./docs/tutorials/index.md
+        - page: ./docs/tutorials/index.page.tsx
           label: Tutorials
           labelTranslationKey: topnav.docs.tutorials
         - page: ./docs/references/index.md
@@ -84,12 +84,18 @@
     - group: Get Started
       groupTranslationKey: topnav.docs.get-started
       items:
-        - page: ./docs/tutorials/javascript/index.md
-        - page: ./docs/tutorials/python/index.md
-        - page: ./docs/tutorials/java/index.md
-        - page: ./docs/tutorials/php/index.md
-        - page: ./docs/tutorials/go/index.md
-        - page: ./docs/tutorials/http-websocket-apis/index.md
+        - page: ./docs/tutorials/get-started/get-started-javascript.md
+          label: JavaScript
+        - page: ./docs/tutorials/get-started/get-started-python.md
+          label: Python
+        - page: ./docs/tutorials/get-started/get-started-java.md
+          label: Java
+        - page: ./docs/tutorials/get-started/get-started-php.md
+          label: PHP
+        - page: ./docs/tutorials/get-started/get-started-go.md
+          label: Go
+        - page: ./docs/tutorials/get-started/get-started-http-websocket-apis.md
+          label: HTTP / WebSocket
 
 - group: Resources
   groupTranslationKey: navbar.resources

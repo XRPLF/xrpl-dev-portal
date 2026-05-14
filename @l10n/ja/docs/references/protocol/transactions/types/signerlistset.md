@@ -1,16 +1,18 @@
 ---
-html: signerlistset.html
-parent: transaction-types.html
 seo:
     description: トランザクションのマルチシグに使用できる署名者のリストを作成、置換、削除します。
 labels:
-  - セキュリティ
+    - Security
+    - Accounts
+requiredAmendment: MultiSign
+txIcon: modify
 ---
 # SignerListSet
-
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/SetSignerList.cpp "ソース")
 
 SignerListSetトランザクションは、トランザクションの[マルチシグ](../../../../concepts/accounts/multi-signing.md)に使用できる署名者のリストを作成、置換、削除します。このトランザクションタイプは[MultiSign Amendment][]により導入されました。
+
+{% amendment-disclaimer name="MultiSign" /%}
 
 ## {% $frontmatter.seo.title %}のJSONの例
 

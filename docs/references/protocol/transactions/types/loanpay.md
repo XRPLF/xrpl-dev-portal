@@ -2,8 +2,10 @@
 seo:
     description: Make a payment on an active loan.
 labels:
-  - Transactions
-  - Lending Protocol
+    - Transactions
+    - Lending Protocol
+requiredAmendment: LendingProtocol
+txIcon: send
 status: not_enabled
 ---
 # LoanPay
@@ -20,7 +22,7 @@ A loan payment has four types, depending on the amount and timing of the payment
 - **Early Full Payment**: A payment that covers the outstanding principal of the loan. A `CloseInterestRate` is charged on the outstanding principal.
 - **Overpayment**: A payment that exceeds the required minimum payment amount.
 
-To see how loan payment transactions are calculated, see [transaction pseudo-code](https://github.com/Tapanito/XRPL-Standards/tree/xls-66-lending-protocol/XLS-0066-lending-protocol#a-3-loanpay-implementation-reference).
+To see how loan payment transactions are calculated, see [LoanPay Implementation Reference](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0066-lending-protocol#a-3-loanpay-implementation-reference).
 
 
 ## Example {% $frontmatter.seo.title %} JSON

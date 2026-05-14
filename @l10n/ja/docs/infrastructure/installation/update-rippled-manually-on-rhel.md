@@ -56,7 +56,6 @@ labels:
     - [`rippled`サーバ](../../concepts/networks-and-servers/index.md)
     - [コンセンサスについて](../../concepts/consensus-protocol/index.md)
 - **チュートリアル:**
-    - [`rippled` v1.3.xへの移行手順](rippled-1-3-migration-instructions.md) <!-- Note: remove when versions older than v1.3 are basically extinct -->
     - [rippledのトラブルシューティング](../troubleshooting/index.md)
 - **リファレンス:**
     - [rippled APIリファレンス](../../references/http-websocket-apis/index.md)

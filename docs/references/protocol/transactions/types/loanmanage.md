@@ -1,9 +1,11 @@
 ---
 seo:
-    description: Manages the state of a loan, including defaulting, impairing, or unimpairing a loan.
+    description: Manage the state of a loan, including defaulting, impairing, or unimpairing a loan.
 labels:
-  - Transactions
-  - Lending Protocol
+    - Transactions
+    - Lending Protocol
+requiredAmendment: LendingProtocol
+txIcon: modify
 status: not_enabled
 ---
 # LoanManage

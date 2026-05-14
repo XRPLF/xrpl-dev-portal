@@ -4,7 +4,10 @@ parent: transaction-types.html
 seo:
     description: 自動マーケットメーカーに資金を預け、LPTokenを受け取ります。
 labels:
-  - AMM
+    - AMM
+    - DEX
+requiredAmendment: AMM
+txIcon: send
 ---
 # AMMDeposit
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/AMMDeposit.cpp "Source")

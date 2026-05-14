@@ -1,12 +1,10 @@
 # XRPL Dev Portal
 
-The [XRP Ledger Dev Portal](https://xrpl.org) is the authoritative source for XRP Ledger documentation, including the `rippled` server, client libraries, and other open-source XRP Ledger software.
+The [XRP Ledger Dev Portal](https://xrpl.org) is the authoritative source for XRP Ledger documentation, including the core server, client libraries, and other open-source XRP Ledger software.
 
 The site is built and published using Redocly. 
 
-NOTE: The toolchain used to build and publish the site has recently been migrated from Dactyl to Redocly. 
-
-Before you proceed, make sure you have Node version >= 18 LTS.
+Before you proceed, make sure you have Node.js and NPM installed. The site is tested with the current LTS release of each.
 
 To build the site locally:
 
@@ -26,58 +24,18 @@ To build the site locally:
 
         npm start
 
-For more details, see the [contribution guidelines (EN)](CONTRIBUTING.md) ([日本語](CONTRIBUTING.ja.md)) and the [contributor Code of Conduct (EN)](CODE-OF-CONDUCT.md) ([日本語](CODE-OF-CONDUCT.ja.md)).
-
-## Domain Verification Checker
-
-If you make changes to the [Domain Verification Checker](https://xrpl.org/validator-domain-verifier.html) tool and edit the domain-verifier-checker.js file, you will need to do the following:
-
-1. Install [webpack](https://webpack.js.org/) and required libraries via npm:
-
-        npm install webpack webpack-cli --save-dev
-        npm install ripple-binary-codec ripple-address-codec ripple-keypairs
-
-2. From the project root directory (this step may be different depending on how you installed webpack)
-
-        cd assets/js
-        webpack-cli domain-verifier-checker.js --optimize-minimize -o domain-verifier-bundle.js
-
-3. Build the site:
-
-        npm start
+For more details, see the [contribution guidelines (EN)](CONTRIBUTING.md) ([日本語](@l10n/ja/CONTRIBUTING.md)) and the [contributor Code of Conduct (EN)](CODE-OF-CONDUCT.md) ([日本語](@l10n/ja/CODE-OF-CONDUCT.md)).
 
 
-### Internationalization 
+### Localization / Translations
 
-This repo includes English (en) and Japanese (ja) locales. 
-
-This is done by setting up the internationalization (@l10n) folders, adding the `i18n` configuration to your `redocly.yaml` file, and adding the translated content in the respective language directory under the @l10n directory.
-
-To add support for a new language:
-
-1. Create a new subdirectory in the @l10n directory of the portal. For example, to add support for Spanish, create a new subdirectory "es-ES".
-
-2. Update the i18n configuration in your `redocly.yaml` file defining the display labels for the different languages you support.
-
-        l10n:
-          defaultLocale: en-US
-          locales:
-            - code: en-US
-              name: English
-            - code: ja
-              name: 日本語
-            - code: es-ES
-              name: Spanish
-
-3. Add the translated content in the respective language directory under the @l10n directory. 
-
-    The relative path from the language directory to the translated file must be the same as the relative path from the root of the portal to the file in the default language. For example, if you originally had a file with path `path/to/my/markdown.md`, the file translated to Spanish must be /`@l10n/es-ES/path/to/my/markdown.md`.
+The documentation in this repository is created in English first, then translated into other languages by community contributors. Currently, only the Japanese translations are live on the site; Spanish translation efforts are incomplete and not actively used. For information on the process of adding and maintaining translated files, see [Translations](https://xrpl.org/resources/contribute-documentation/documentation-translations).
 
 ## Issues, Projects, and Project Boards
 
 Use GitHub Issues under the [`xrpl-dev-portal`](https://github.com/XRPLF/xrpl-dev-portal) repository to report bugs, feature requests, and suggestions for the XRP Ledger Documentation or the `xrpl.org` website. 
 
-For issues related to `rippled` or client libraries (`xrpl.js`, `xrpl-py`, and others), use the respective source repository under [`https://github.com/XRPLF`](https://github.com/XRPLF).
+For issues related to `xrpld`/`rippled`, Clio, or client libraries (`xrpl.js`, `xrpl-py`, and others), use the respective source repository under [`https://github.com/XRPLF`](https://github.com/XRPLF).
 
 If you are a contributor, use GitHub Projects and Project Boards to plan and track updates to xrpl.org. 
 

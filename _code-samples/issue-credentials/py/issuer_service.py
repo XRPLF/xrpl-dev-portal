@@ -26,7 +26,7 @@ def init_wallet():
 wallet = init_wallet()
 print("Starting credential issuer with XRPL address", wallet.address)
 
-client = JsonRpcClient("https://s.devnet.rippletest.net:51234/")
+client = JsonRpcClient("https://s.altnet.rippletest.net:51234/")
 
 # Define Flask app ------------------------------------------------------------
 app = Flask(__name__)

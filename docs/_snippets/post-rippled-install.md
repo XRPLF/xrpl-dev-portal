@@ -1,6 +1,6 @@
 It can take several minutes to sync with the rest of the XRP Ledger network, during which time the server outputs various warnings. For information about log messages, see [Understanding Log Messages](../infrastructure/troubleshooting/understanding-log-messages.md).
 
-You can use the [`rippled` commandline interface](../tutorials/http-websocket-apis/build-apps/get-started.md#commandline) to see if your server is synced with the network:
+You can use the [`rippled` commandline interface](../tutorials/get-started/get-started-http-websocket-apis.md#commandline) to see if your server is synced with the network:
 
 ```sh
 rippled server_info

@@ -1,16 +1,14 @@
 ---
-html: xchainmodifybridge.html 
-parent: transaction-types.html
 seo:
     description: ブリッジの設定を変更します。
 labels:
-  - 相互運用性
+    - Interoperability
+requiredAmendment: XChainBridge
 status: not_enabled
+txIcon: modify
 ---
 # XChainModifyBridge
 [[ソース]](https://github.com/XRPLF/rippled/blob/develop/src/ripple/protocol/impl/TxFormats.cpp#L390-L397 "ソース")
-
-_（[XChainBridge Amendment][] {% not-enabled /%} が必要です）_
 
 `XChainModifyBridge`トランザクションでは、ブリッジ管理者がブリッジの設定を変更することができます。変更できるのは`SignatureReward`と`MinAccountCreateAmount`だけです。
 
@@ -18,6 +16,7 @@ _（[XChainBridge Amendment][] {% not-enabled /%} が必要です）_
 
 {% admonition type="info" name="注記" %}このトランザクションでブリッジの署名者リストを変更することはできません。署名者リストはドアアカウント自体にあり、署名者リストがアカウント上で変更されるのと同じ方法で変更されます（`SignerListSet`トランザクションを利用）。{% /admonition %}
 
+{% amendment-disclaimer name="XChainBridge" /%}
 
 ## XChainModifyBridge JSONの例
 

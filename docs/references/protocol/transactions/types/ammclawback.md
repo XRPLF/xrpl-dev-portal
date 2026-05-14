@@ -3,7 +3,9 @@ seo:
     description: Claw back tokens from a holder who has deposited your issued tokens into an Automated Market Maker pool.
 labels:
     - AMM
-    - Tokens
+    - DEX
+requiredAmendment: AMMClawback
+txIcon: cancel
 ---
 # AMMClawback
 
@@ -45,9 +47,8 @@ Clawback is disabled by default. To use clawback, you must send an [AccountSet t
 
 | Field     | JSON Type            | [Internal Type][] | Required | Description |
 |:----------|:---------------------|:------------------|:---------|:------------------|
-| `Account` | String - [Address][] | AccountID         | Yes      | The issuer of the asset being clawed back. Only the issuer can submit this transaction. |
-| `Asset`   | Object               | Issue             | Yes      | Specifies the asset that the issuer wants to claw back from the AMM pool. The asset can be XRP, a token, or an MPT (see: [Specifying Without Amounts][]). The `issuer` field must match with `Account`. |
-| `Asset2`  | Object               | Issue             | Yes      | Specifies the other asset in the AMM's pool. The asset can be XRP, a token, or an MPT (see: [Specifying Without Amounts][]). |
+| `Asset`   | Object               | Issue             | Yes      | The asset to claw back, which can be a trust line token or MPT (see: [Specifying Without Amounts][]). The issuer must be the sender of this transaction. |
+| `Asset2`  | Object               | Issue             | Yes      | The other asset of the AMM pool to claw back from. The asset can be XRP, a trust line token, or an MPT (see: [Specifying Without Amounts][]). |
 | `Amount`  | [Currency Amount][]  | Amount            | No       | The maximum amount to claw back from the AMM account. The `currency` and `issuer` subfields should match the `Asset` subfields. If this field isn't specified, or the `value` subfield exceeds the holder's available tokens in the AMM, all of the holder's tokens are clawed back. |
 | `Holder`  | String - [Address][] | AccountID         | Yes      | The account holding the asset to be clawed back. |
 

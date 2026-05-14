@@ -1,10 +1,10 @@
 ---
-html: setregularkey.html
-parent: transaction-types.html
 seo:
     description: アカウントに関連付けられているレギュラーキーペアの割り当て、変更、削除を行います。
 labels:
-  - セキュリティ
+    - Security
+    - Accounts
+txIcon: modify
 ---
 # SetRegularKey
 
@@ -29,7 +29,6 @@ labels:
 {% tx-example txid="6AA6F6EAAAB56E65F7F738A9A2A8A7525439D65BA990E9BA08F6F4B1C2D349B4" /%}
 
 {% raw-partial file="/@l10n/ja/docs/_snippets/tx-fields-intro.md" /%}
-<!--{# fix md highlighting_ #}-->
 
 | フィールド    | JSONの型  | [内部の型][]       | 説明                          |
 |:-------------|:----------|:------------------|:------------------------------|
@@ -39,7 +38,7 @@ labels:
 
 レギュラーキーペアとマスターキーペアの詳細は、[暗号鍵](../../../../concepts/accounts/cryptographic-keys.md)をご覧ください。
 
-アカウントへのレギュラーキーペアの割り当てについてのチュートリアルは、[レギュラーキーペアの操作](../../../../tutorials/how-tos/manage-account-settings/assign-a-regular-key-pair.md)をご覧ください。
+アカウントへのレギュラーキーペアの割り当てについてのチュートリアルは、[レギュラーキーペアの操作](../../../../tutorials/best-practices/key-management/assign-a-regular-key-pair.md)をご覧ください。
 
 セキュリティを強化するために[マルチシグ](../../../../concepts/accounts/multi-signing.md)を使用できますが、マルチシグを使用する場合には[トランザクションコスト][]および[準備金](../../../../concepts/accounts/reserves.md)に追加のXRPが必要となります。
 

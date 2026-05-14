@@ -3,7 +3,7 @@
 import xrpl from 'xrpl'
 import fs from 'fs'
 
-process.stdout.write('Setting up tutorial: 0/6\r')
+process.stdout.write('Setting up tutorial: 0/7\r')
 
 const client = new xrpl.Client('wss://s.devnet.rippletest.net:51233')
 await client.connect()
@@ -21,10 +21,45 @@ const [
   client.fundWallet()
 ])
 
-process.stdout.write('Setting up tutorial: 1/6\r')
+process.stdout.write('Setting up tutorial: 1/7\r')
+
+// Create tickets for parallel transactions
+const extractTickets = (response) =>
+  response.result.meta.AffectedNodes
+    .filter(node => node.CreatedNode?.LedgerEntryType === 'Ticket')
+    .map(node => node.CreatedNode.NewFields.TicketSequence)
+
+const [ciTicketResponse, lbTicketResponse, brTicketResponse, dpTicketResponse] = await Promise.all([
+  client.submitAndWait({
+    TransactionType: 'TicketCreate',
+    Account: credentialIssuer.address,
+    TicketCount: 4
+  }, { wallet: credentialIssuer, autofill: true }),
+  client.submitAndWait({
+    TransactionType: 'TicketCreate',
+    Account: loanBroker.address,
+    TicketCount: 4
+  }, { wallet: loanBroker, autofill: true }),
+  client.submitAndWait({
+    TransactionType: 'TicketCreate',
+    Account: borrower.address,
+    TicketCount: 2
+  }, { wallet: borrower, autofill: true }),
+  client.submitAndWait({
+    TransactionType: 'TicketCreate',
+    Account: depositor.address,
+    TicketCount: 2
+  }, { wallet: depositor, autofill: true })
+])
+
+const ciTickets = extractTickets(ciTicketResponse)
+const lbTickets = extractTickets(lbTicketResponse)
+const brTickets = extractTickets(brTicketResponse)
+const dpTickets = extractTickets(dpTicketResponse)
+
+process.stdout.write('Setting up tutorial: 2/7\r')
 
 // Issue MPT with depositor
-// Create tickets for later use with loanBroker
 // Set up credentials and domain with credentialIssuer
 const credentialType = xrpl.convertStringToHex('KYC-Verified')
 const mptData = {
@@ -56,12 +91,7 @@ const mptData = {
   }
 }
 
-const [ticketCreateResponse, mptIssuanceResponse] = await Promise.all([
-  client.submitAndWait({
-    TransactionType: 'TicketCreate',
-    Account: loanBroker.address,
-    TicketCount: 2
-  }, { wallet: loanBroker, autofill: true }),
+const [mptIssuanceResponse, domainSetResponse] = await Promise.all([
   client.submitAndWait({
     TransactionType: 'MPTokenIssuanceCreate',
     Account: depositor.address,
@@ -74,104 +104,87 @@ const [ticketCreateResponse, mptIssuanceResponse] = await Promise.all([
     MPTokenMetadata: xrpl.encodeMPTokenMetadata(mptData)
   }, { wallet: depositor, autofill: true }),
   client.submitAndWait({
-    TransactionType: 'Batch',
+    TransactionType: 'PermissionedDomainSet',
     Account: credentialIssuer.address,
-    Flags: xrpl.BatchFlags.tfAllOrNothing,
-    RawTransactions: [
+    AcceptedCredentials: [
       {
-        RawTransaction: {
-          TransactionType: 'CredentialCreate',
-          Account: credentialIssuer.address,
-          Subject: loanBroker.address,
-          CredentialType: credentialType,
-          Flags: xrpl.GlobalFlags.tfInnerBatchTxn
-        }
-      },
-      {
-        RawTransaction: {
-          TransactionType: 'CredentialCreate',
-          Account: credentialIssuer.address,
-          Subject: borrower.address,
-          CredentialType: credentialType,
-          Flags: xrpl.GlobalFlags.tfInnerBatchTxn
-        }
-      },
-      {
-        RawTransaction: {
-          TransactionType: 'CredentialCreate',
-          Account: credentialIssuer.address,
-          Subject: depositor.address,
-          CredentialType: credentialType,
-          Flags: xrpl.GlobalFlags.tfInnerBatchTxn
-        }
-      },
-      {
-        RawTransaction: {
-          TransactionType: 'PermissionedDomainSet',
-          Account: credentialIssuer.address,
-          AcceptedCredentials: [
-            {
-              Credential: {
-                Issuer: credentialIssuer.address,
-                CredentialType: credentialType
-              }
-            }
-          ],
-          Flags: xrpl.GlobalFlags.tfInnerBatchTxn
+        Credential: {
+          Issuer: credentialIssuer.address,
+          CredentialType: credentialType
         }
       }
-    ]
+    ],
+    Sequence: 0,
+    TicketSequence: ciTickets[0]
+  }, { wallet: credentialIssuer, autofill: true }),
+  client.submitAndWait({
+    TransactionType: 'CredentialCreate',
+    Account: credentialIssuer.address,
+    Subject: loanBroker.address,
+    CredentialType: credentialType,
+    Sequence: 0,
+    TicketSequence: ciTickets[1]
+  }, { wallet: credentialIssuer, autofill: true }),
+  client.submitAndWait({
+    TransactionType: 'CredentialCreate',
+    Account: credentialIssuer.address,
+    Subject: borrower.address,
+    CredentialType: credentialType,
+    Sequence: 0,
+    TicketSequence: ciTickets[2]
+  }, { wallet: credentialIssuer, autofill: true }),
+  client.submitAndWait({
+    TransactionType: 'CredentialCreate',
+    Account: credentialIssuer.address,
+    Subject: depositor.address,
+    CredentialType: credentialType,
+    Sequence: 0,
+    TicketSequence: ciTickets[3]
   }, { wallet: credentialIssuer, autofill: true })
 ])
-
-// Extract ticket sequence numbers
-const tickets = ticketCreateResponse.result.meta.AffectedNodes
-  .filter(node => node.CreatedNode?.LedgerEntryType === 'Ticket')
-  .map(node => node.CreatedNode.NewFields.TicketSequence)
 
 // Extract MPT issuance ID
 const mptID = mptIssuanceResponse.result.meta.mpt_issuance_id
 
-// Get domain ID
-const credentialIssuerObjects = await client.request({
-  command: 'account_objects',
-  account: credentialIssuer.address,
-  ledger_index: 'validated'
-})
-const domainID = credentialIssuerObjects.result.account_objects.find(node =>
-  node.LedgerEntryType === 'PermissionedDomain'
-).index
+// Extract domain ID
+const domainID = domainSetResponse.result.meta.AffectedNodes.find(node =>
+  node.CreatedNode?.LedgerEntryType === 'PermissionedDomain'
+).CreatedNode.LedgerIndex
 
-process.stdout.write('Setting up tutorial: 2/6\r')
+process.stdout.write('Setting up tutorial: 3/7\r')
 
 // Accept credentials and authorize MPT for each account
 await Promise.all([
-  ...([loanBroker, borrower].map(wallet =>
-    client.submitAndWait({
-      TransactionType: 'Batch',
-      Account: wallet.address,
-      Flags: xrpl.BatchFlags.tfAllOrNothing,
-      RawTransactions: [
-        {
-          RawTransaction: {
-            TransactionType: 'CredentialAccept',
-            Account: wallet.address,
-            Issuer: credentialIssuer.address,
-            CredentialType: credentialType,
-            Flags: xrpl.GlobalFlags.tfInnerBatchTxn
-          }
-        },
-        {
-          RawTransaction: {
-            TransactionType: 'MPTokenAuthorize',
-            Account: wallet.address,
-            MPTokenIssuanceID: mptID,
-            Flags: xrpl.GlobalFlags.tfInnerBatchTxn
-          }
-        }
-      ]
-    }, { wallet, autofill: true })
-  )),
+  client.submitAndWait({
+    TransactionType: 'CredentialAccept',
+    Account: loanBroker.address,
+    Issuer: credentialIssuer.address,
+    CredentialType: credentialType,
+    Sequence: 0,
+    TicketSequence: lbTickets[0]
+  }, { wallet: loanBroker, autofill: true }),
+  client.submitAndWait({
+    TransactionType: 'MPTokenAuthorize',
+    Account: loanBroker.address,
+    MPTokenIssuanceID: mptID,
+    Sequence: 0,
+    TicketSequence: lbTickets[1]
+  }, { wallet: loanBroker, autofill: true }),
+  client.submitAndWait({
+    TransactionType: 'CredentialAccept',
+    Account: borrower.address,
+    Issuer: credentialIssuer.address,
+    CredentialType: credentialType,
+    Sequence: 0,
+    TicketSequence: brTickets[0]
+  }, { wallet: borrower, autofill: true }),
+  client.submitAndWait({
+    TransactionType: 'MPTokenAuthorize',
+    Account: borrower.address,
+    MPTokenIssuanceID: mptID,
+    Sequence: 0,
+    TicketSequence: brTickets[1]
+  }, { wallet: borrower, autofill: true }),
   // Depositor only needs to accept credentials
   client.submitAndWait({
     TransactionType: 'CredentialAccept',
@@ -181,7 +194,7 @@ await Promise.all([
   }, { wallet: depositor, autofill: true })
 ])
 
-process.stdout.write('Setting up tutorial: 3/6\r')
+process.stdout.write('Setting up tutorial: 4/7\r')
 
 // Create private vault and distribute MPT to accounts
 const [vaultCreateResponse] = await Promise.all([
@@ -195,35 +208,26 @@ const [vaultCreateResponse] = await Promise.all([
     DomainID: domainID
   }, { wallet: loanBroker, autofill: true }),
   client.submitAndWait({
-    TransactionType: 'Batch',
+    TransactionType: 'Payment',
     Account: depositor.address,
-    Flags: xrpl.BatchFlags.tfAllOrNothing,
-    RawTransactions: [
-      {
-        RawTransaction: {
-          TransactionType: 'Payment',
-          Account: depositor.address,
-          Destination: loanBroker.address,
-          Amount: {
-            mpt_issuance_id: mptID,
-            value: '5000'
-          },
-          Flags: xrpl.GlobalFlags.tfInnerBatchTxn
-        }
-      },
-      {
-        RawTransaction: {
-          TransactionType: 'Payment',
-          Account: depositor.address,
-          Destination: borrower.address,
-          Amount: {
-            mpt_issuance_id: mptID,
-            value: '2500'
-          },
-          Flags: xrpl.GlobalFlags.tfInnerBatchTxn
-        }
-      }
-    ]
+    Destination: loanBroker.address,
+    Amount: {
+      mpt_issuance_id: mptID,
+      value: '5000'
+    },
+    Sequence: 0,
+    TicketSequence: dpTickets[0]
+  }, { wallet: depositor, autofill: true }),
+  client.submitAndWait({
+    TransactionType: 'Payment',
+    Account: depositor.address,
+    Destination: borrower.address,
+    Amount: {
+      mpt_issuance_id: mptID,
+      value: '2500'
+    },
+    Sequence: 0,
+    TicketSequence: dpTickets[1]
   }, { wallet: depositor, autofill: true })
 ])
 
@@ -231,7 +235,7 @@ const vaultID = vaultCreateResponse.result.meta.AffectedNodes.find(node =>
   node.CreatedNode?.LedgerEntryType === 'Vault'
 ).CreatedNode.LedgerIndex
 
-process.stdout.write('Setting up tutorial: 4/6\r')
+process.stdout.write('Setting up tutorial: 5/7\r')
 
 // Create LoanBroker and deposit MPT into vault
 const [loanBrokerSetResponse] = await Promise.all([
@@ -255,7 +259,7 @@ const loanBrokerID = loanBrokerSetResponse.result.meta.AffectedNodes.find(node =
   node.CreatedNode?.LedgerEntryType === 'LoanBroker'
 ).CreatedNode.LedgerIndex
 
-process.stdout.write('Setting up tutorial: 5/6\r')
+process.stdout.write('Setting up tutorial: 6/7\r')
 
 // Create 2 identical loans with complete repayment due in 30 days
 
@@ -289,8 +293,8 @@ async function createLoan (ticketSequence) {
 }
 
 const [submitResponse1, submitResponse2] = await Promise.all([
-  createLoan(tickets[0]),
-  createLoan(tickets[1])
+  createLoan(lbTickets[2]),
+  createLoan(lbTickets[3])
 ])
 
 const loanID1 = submitResponse1.result.meta.AffectedNodes.find(node =>
@@ -301,7 +305,7 @@ const loanID2 = submitResponse2.result.meta.AffectedNodes.find(node =>
   node.CreatedNode?.LedgerEntryType === 'Loan'
 ).CreatedNode.LedgerIndex
 
-process.stdout.write('Setting up tutorial: 6/6\r')
+process.stdout.write('Setting up tutorial: 7/7\r')
 
 // Write setup data to JSON file
 const setupData = {

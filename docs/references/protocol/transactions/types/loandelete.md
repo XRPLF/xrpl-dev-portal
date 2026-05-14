@@ -1,9 +1,11 @@
 ---
 seo:
-    description: Delete a `Loan` ledger entry.
+    description: Delete a loan.
 labels:
-  - Transactions
-  - Lending Protocol
+    - Transactions
+    - Lending Protocol
+requiredAmendment: LendingProtocol
+txIcon: cancel
 status: not_enabled
 ---
 # LoanDelete
