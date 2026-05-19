@@ -21,7 +21,6 @@ The following is a list of [amendments](../docs/concepts/networks-and-servers/am
 
 | Name                              | Status                                    | Additional Information         |
 |:----------------------------------|:------------------------------------------|:-------------------------------|
-| [Hooks][]                         | {% badge %}In Development: TBD{% /badge %} | [XRPL Hooks](https://hooks.xrpl.org/) |
 | [InvariantsV1_1][]                | {% badge %}In Development: TBD{% /badge %} |  |
 | [DynamicMPT][]                    | {% badge %}In Development: TBD{% /badge %} | [XLS-94 Dynamic MPTs](https://opensource.ripple.com/docs/xls-94-dynamic-mpts) |
 | [ConfidentialTransfer][]          | {% badge %}In Development: TBD{% /badge %} | [XLS-96 Confidential Transfers](https://opensource.ripple.com/docs/xls-96-confidential-transfers) |
@@ -1503,11 +1502,13 @@ Allows validators to include a new optional field in their validations to attest
 | Amendment    | Hooks |
 |:-------------|:------|
 | Amendment ID | ECE6819DBA5DB528F1A241695F5A9811EF99467CDE22510954FD357780BBD078 |
-| Status       | In Development |
-| Default Vote (Latest stable release) | No |
-| Pre-amendment functionality retired? | No |
+| Status       | Inactive |
+| Default Vote (Latest stable release) | N/A |
+| Pre-amendment functionality retired? | N/A |
 
 Adds on-chain smart contracts in the form of small pieces of code that can run on an account before or after transactions. For more information, see the [Hooks Documentation](https://xrpl-hooks.readme.io/).
+
+{% admonition type="info" name="Note" %}Active development has ceased on this feature. It was never introduced for voting.{% /admonition %}
 
 
 ### ImmediateOfferKilled
