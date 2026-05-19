@@ -2,14 +2,18 @@
 seo:
     description: 最大8件のトランザクションをまとめて作成・送信し、それらがすべて成功するか、すべて失敗するようにアトミックに処理されるようにします。
 labels:
-  - Batch
-  - Transaction Sending
+    - Transaction Sending
+    - Other Transactions
+requiredAmendment: Batch
 status: not_enabled
+txIcon: other
 ---
 # Batch
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/Batch.cpp "Source")
 
 `Batch`トランザクションは、最大8つのトランザクションを単一のバッチで送信します。各トランザクションは、4つのモード(全て成功または全て失敗（All or Nothing）、一つのみ成功（Only One）、失敗まで継続（Until Failure）、および独立実行（Independent）)のいずれかでアトミックに実行されます。
+
+{% amendment-disclaimer name="Batch" /%}
 
 ## {% $frontmatter.seo.title %} JSONの例
 

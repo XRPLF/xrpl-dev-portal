@@ -3,6 +3,10 @@ seo:
     description: Accept an offer to buy or sell an NFT.
 labels:
     - NFTs, Non-fungible Tokens
+    - Tokens
+    - DEX
+requiredAmendment: NonFungibleTokensV1_1
+txIcon: finish
 ---
 # NFTokenAcceptOffer
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/NFTokenAcceptOffer.cpp "Source")
@@ -63,7 +67,7 @@ The transaction fails with a [`tec`-class code](../transaction-results/tec-codes
 
 - The buyer already owns the `NFToken`.
 - The seller is not the current owner of the `NFToken`.
-- One or both offers in the transaction have already expired.
+- One or both offers in the transaction have already expired. The `NFTokenOffer` entry is deleted afterward. {% amendment-disclaimer name="fixCleanup3_1_3" /%}
 - The sell offer specifies a specific destination account, and the sender of the transaction is not that account.
 - The sender of this transaction owns the buy or sell offer.
 

@@ -3,6 +3,9 @@ seo:
     description: Create or update a price oracle.
 labels:
     - Oracle
+    - Decentralized Storage
+requiredAmendment: PriceOracle
+txIcon: create
 ---
 # OracleSet
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/SetOracle.cpp "Source")
@@ -105,23 +108,25 @@ Create or update a [price oracle](../../../../concepts/decentralized-storage/pri
 | Field               | JSON Type | Internal Type | Required? | Description |
 |---------------------|-----------|---------------|-----------|-------------|
 | `BaseAsset`         | String    | Currency      | Yes       | The primary asset in a trading pair. Any valid identifier, such as a stock symbol, bond CUSIP, or currency code is allowed. For example, in the BTC/USD pair, BTC is the base asset; in 912810RR9/BTC, 912810RR9 is the base asset. |
-| `QuoteAsset`        | String    | Currency      | Yes       | The quote asset in a trading pair. The quote asset denotes the price of one unit of the base asset. For example, in the BTC/USD pair, BTC is the base asset; in 912810RR9/BTC, 912810RR9 is the base asset. |
-| `AssetPrice`        | String    | UInt64        | No        | The asset price after applying the `Scale` precision level. It's not included if the last update transaction didn't include the `BaseAsset`/`QuoteAsset` pair. It's recommended you provide this value as a hexadecimal, but [client libraries](https://xrpl.org/docs/references#client-libraries) will accept decimal numbers and convert to hexadecimal strings. |
-| `Scale`             | Number    | UInt8         | No        | The scaling factor to apply to an asset price. For example, if `Scale` is 6 and original price is 0.155, then the scaled price is 155000. Valid scale ranges are 0-10. It's not included if the last update transaction didn't include the `BaseAsset`/`QuoteAsset` pair.|
+| `QuoteAsset`        | String    | Currency      | Yes       | The quote asset in a trading pair. The quote asset denotes the price of one unit of the base asset. For example, in the BTC/USD pair, USD is the quote asset; in 912810RR9/BTC, BTC is the quote asset. |
+| `AssetPrice`        | String    | UInt64        | No        | The asset price after applying the `Scale` precision level. It's recommended you provide this value as a hexadecimal, but [client libraries](https://xrpl.org/docs/references#client-libraries) will accept decimal numbers and convert to hexadecimal strings. |
+| `Scale`             | Number    | UInt8         | No        | The scaling factor to apply to an asset price. For example, if `Scale` is 6 and original price is 0.155, then the scaled price is 155000. Valid scale ranges are 0-10. |
 
-`PriceData` is created or updated, following these rules:
+`PriceData` is created or updated based on whether the token pair is new or already exists on the oracle entry, and which fields are included in the `OracleSet` transaction. The table below describes the possible outcomes:
 
-- New token pairs in the transaction are added to the object.
-- Token pairs in the transaction overwrite corresponding token pairs in the object.
-- Token pairs in the transaction with a missing `AssetPrice` field delete corresponding token pairs in the object.
-- Token pairs that only appear in the object have `AssetPrice` and `Scale` removed to signify that the price is outdated.
+| Token pair state and transaction fields                 | Outcome |
+|:--------------------------------------------------------|:--------|
+| New pair, including `AssetPrice`                        | The asset pair is added to the oracle entry with `AssetPrice`. `Scale` is set with a default value of `0` if not set. |
+| New pair, excluding `AssetPrice`                        | `temMALFORMED` if creating a new oracle entry; `tecTOKEN_PAIR_NOT_FOUND` if updating an existing oracle entry. |
+| Existing pair, including `AssetPrice` and `Scale`       | `AssetPrice` and `Scale` are updated for the asset pair. |
+| Existing pair, including `AssetPrice` but _not_ `Scale` | `AssetPrice` is updated. `Scale` is reset to the default value of 0. |
+| Existing pair, excluding `AssetPrice`                   | The asset pair is deleted from the oracle entry. |
+| Existing pair excluded from the transaction             | The existing asset pair remains in the oracle entry, but its `AssetPrice` and `Scale` are cleared to signal the price is outdated. |
 
-When updating fewer entries than the existing oracle contains, the `LastUpdateTime` applies to all entries. Entries not included in the update have their prices removed to indicate they are out of date for the given `LastUpdateTime`. To access historical price data for these entries, you can:
+The `LastUpdateTime` field applies to all entries in the `PriceDataSeries` array. Existing asset pairs not included in an `OracleSet` update transaction have their prices removed to indicate they are out of date for the given `LastUpdateTime`. To access historical price data for these entries, you can:
 
 - Use the `ledger_entry` method with `PreviousTxnLgrSeq` to traverse previous Oracle objects
 - Use the `tx` method with `PreviousTxnID` to find historical transactions
-
-This design choice saves space by having a single `LastUpdateTime` for all entries rather than tracking update times per token pair.
 
 {% admonition type="info" name="Note" %}
 The order of token pairs in the transaction isn't important because each token pair uniquely identifies the location of the `PriceData` object in the `PriceDataSeries`.

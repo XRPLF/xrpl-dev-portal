@@ -1,21 +1,20 @@
 ---
-html: diddelete.html
-parent: transaction-types.html
 seo:
     description: DIDを削除する。
 labels:
-  - DID
+    - DID
+    - Decentralized Storage
+requiredAmendment: DID
+txIcon: cancel
 ---
 # DIDDelete
-
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/DID.cpp "ソース")
-
-_([DID Amendment][])_
 
 指定した`Account`フィールドに関連付けられている[DIDレジャーエントリ](../../ledger-data/ledger-entry-types/did.md)を削除します。
 
 {% admonition type="info" name="注記" %}このトランザクションは[共通フィールド][]のみ利用します。{% /admonition %}
 
+{% amendment-disclaimer name="DID" /%}
 
 ## {% $frontmatter.seo.title %} JSONの例
 

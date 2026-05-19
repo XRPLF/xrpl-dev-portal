@@ -286,7 +286,8 @@
           "asset2": {
             "currency": "TST",
             "issuer": "rP9jPyP5kyvFRb6ZiRghAGw5u8SGAmU4bd"
-          }
+          },
+          "ledger_index": "validated"
         }
       },
       {

@@ -3,6 +3,9 @@ seo:
     description: Set aside one or more sequence numbers as tickets.
 labels:
     - Transaction Sending
+    - Accounts
+requiredAmendment: TicketBatch
+txIcon: create
 ---
 # TicketCreate
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/CreateTicket.cpp "Source")

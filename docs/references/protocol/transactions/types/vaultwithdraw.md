@@ -2,9 +2,12 @@
 seo:
     description: Redeem vault shares for assets.
 labels:
-  - Transactions
-  - Single Asset Vault
+    - Transactions
+    - Single Asset Vault
+    - Lending Protocol
+requiredAmendment: SingleAssetVault
 status: not_enabled
+txIcon: send
 ---
 
 # VaultWithdraw

@@ -1,10 +1,11 @@
 ---
-html: ammdelete.html
-parent: transaction-types.html
 seo:
     description: 空のプールを持つ自動マーケットメーカーのインスタンスを削除します。
 labels:
-  - AMM
+    - AMM
+    - DEX
+requiredAmendment: AMM
+txIcon: cancel
 ---
 # AMMDelete
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/AMMDelete.cpp "Source")

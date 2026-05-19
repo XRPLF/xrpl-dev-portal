@@ -1,16 +1,14 @@
 ---
-html: xchaincreateclaimid.html 
-parent: transaction-types.html
 seo:
     description: クロスチェーン送金に使用するクロスチェーン請求IDを作成します。
 labels:
-  - 相互運用性
+    - Interoperability
+requiredAmendment: XChainBridge
 status: not_enabled
+txIcon: create
 ---
 # XChainCreateClaimID
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/TxFormats.cpp#L399-L406 "ソース")
-
-_（[XChainBridge Amendment][] {% not-enabled /%} が必要です）_
 
 `XChainCreateClaimID`トランザクションはクロスチェーン送金に使われる新しいクロスチェーン請求IDを作成します。クロスチェーン請求IDは*1つの*クロスチェーン送金を表します。
 
@@ -18,6 +16,7 @@ _（[XChainBridge Amendment][] {% not-enabled /%} が必要です）_
 
 また、送金元チェーン上の資金をロックまたはバーンする送金元チェーン上のアカウントも含まれます。
 
+{% amendment-disclaimer name="XChainBridge" /%}
 
 ## XChainCreateClaimID JSONの例
 

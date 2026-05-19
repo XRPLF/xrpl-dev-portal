@@ -1,10 +1,12 @@
 ---
-html: nftokencreateoffer.html
-parent: transaction-types.html
 seo:
     description: NFTの売買のオファーを作成する。
 labels:
-  - 非代替性トークン, NFT
+    - Non-fungible Tokens, NFTs
+    - Tokens
+    - DEX
+requiredAmendment: NonFungibleTokensV1_1
+txIcon: create
 ---
 # NFTokenCreateOffer
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/NFTokenCreateOffer.cpp "ソース")

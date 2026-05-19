@@ -1,21 +1,20 @@
 ---
-html: xchainclaim.html 
-parent: transaction-types.html
 seo:
     description: 送信先チェーンで金額を請求することで、クロスチェーンでの価値移転を完了させます。
 labels:
-  - 相互運用性
+    - Interoperability
+requiredAmendment: XChainBridge
 status: not_enabled
+txIcon: finish
 ---
 # XChainClaim
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/TxFormats.cpp#L418-L427 "ソース")
-
-_（[XChainBridge Amendment][] {% not-enabled /%} が必要です）_
 
 `XChainClaim`トランザクションはクロスチェーンでの価値の移転を完了させます。`XChainClaim`トランザクションにより、ユーザは送信元チェーンでロックされた価値と同等の価値を送信先チェーンで請求することができます。ユーザは、送金元チェーンでロックされた価値に関連付けられたクロスチェーン請求ID（`Account`フィールド）を所有している場合にのみ、その価値を請求することができます。ユーザは誰にでも資金を送ることができます(`Destination`フィールド)。このトランザクションが必要になるのは`XChainCommit`トランザクションで`OtherChainDestination`が指定されていない場合、または自動送金で何か問題が発生した場合のみです。
 
 トランザクションによって送金に成功すると、対象の`XChainOwnedClaimID`レジャーオブジェクトは削除されます。これはトランザクションのリプレイを防ぎます。トランザクションが失敗した場合、`XChainOwnedClaimID`は削除されず、異なるパラメータでトランザクションを再実行できます。
 
+{% amendment-disclaimer name="XChainBridge" /%}
 
 ## XChainClaim JSONの例
 

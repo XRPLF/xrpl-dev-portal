@@ -428,7 +428,7 @@ Retrieve a [DepositPreauth entry](../../../protocol/ledger-data/ledger-entry-typ
 | `deposit_preauth`            | Object or String     | Yes       | Specify the DepositPreauth to retrieve. If a string, must be the [ledger entry ID][] of the DepositPreauth entry, as hexadecimal. If an object, requires `owner` sub-field and either `authorized` or `authorize_credentials` sub-field. |
 | `deposit_preauth.owner`      | String - [Address][] | Yes       | The account that provided the preauthorization. |
 | `deposit_preauth.authorized` | String - [Address][] | No        | The account that received the preauthorization. |
-| `deposit_preauth.authorized_credentials` | Array    | No        | A set of credentials that received the preauthorization. |
+| `deposit_preauth.authorized_credentials` | Array    | No        | A set of 1 to 8 credentials that received the preauthorization. |
 
 Each member of the `deposit_preauth.authorized_credentials` array, if provided, must include the following nested fields:
 

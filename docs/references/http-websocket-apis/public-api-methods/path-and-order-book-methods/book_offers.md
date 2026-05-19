@@ -67,15 +67,15 @@ rippled book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6
 
 The request includes the following parameters:
 
-| `Field`        | Type             | Required? | Description |
-|:---------------|:-----------------|:----------|-------------|
-| `taker_gets`   | Object           | Yes       | The asset the account taking the offer would receive, as a [currency without an amount](../../../protocol/data-types/currency-formats.md#specifying-without-amounts). |
-| `taker_pays`   | Object           | Yes       | The asset the account taking the offer would pay, as a [currency without an amount](../../../protocol/data-types/currency-formats.md#specifying-without-amounts). |
-| `domain`       | [Hash][]         | No        | The ledger entry ID of a permissioned domain. If provided, return offers from the corresponding [permissioned DEX](../../../../concepts/tokens/decentralized-exchange/permissioned-dexes.md) instead of using the open DEX. {% amendment-disclaimer name="PermissionedDEX" /%} |
-| `ledger_hash`  | [Hash][]         | No        | The unique hash of the ledger version to use. (See [Specifying Ledgers][]) |
-| `ledger_index` | [Ledger Index][] | No        | The [ledger index][] of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
-| `limit`        | Number           | No        | The maximum number of offers to return. The response may include fewer results. |
-| `taker`        | String           | No        | The [Address][] of an account to use as a perspective. The response includes this account's Offers even if they are unfunded. (You can use this to see what Offers are above or below yours in the order book.) |
+| `Field`        | Type                      | Required? | Description |
+|:---------------|:--------------------------|:----------|-------------|
+| `taker_gets`   | Object                    | Yes       | The asset the account taking the offer would receive, as a [currency without an amount](../../../protocol/data-types/currency-formats.md#specifying-without-amounts). |
+| `taker_pays`   | Object                    | Yes       | The asset the account taking the offer would pay, as a [currency without an amount](../../../protocol/data-types/currency-formats.md#specifying-without-amounts). |
+| `domain`       | [Hash][]                  | No        | The ledger entry ID of a permissioned domain. If provided, return offers from the corresponding [permissioned DEX](../../../../concepts/tokens/decentralized-exchange/permissioned-dexes.md) instead of using the open DEX. {% amendment-disclaimer name="PermissionedDEX" /%} |
+| `ledger_hash`  | [Hash][]                  | No        | The unique hash of the ledger version to use. (See [Specifying Ledgers][]) |
+| `ledger_index` | [Ledger Index][]          | No        | The [ledger index][] of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
+| `limit`        | Number (Positive Integer) | No        | The maximum number of offers to return. The response may include fewer results. |
+| `taker`        | String                    | No        | The [Address][] of an account to use as a perspective. The response includes this account's Offers even if they are unfunded. (You can use this to see what Offers are above or below yours in the order book.) |
 
 
 ## Response Format

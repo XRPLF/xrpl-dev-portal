@@ -3,7 +3,9 @@ seo:
     description: Create a bridge between two chains.
 labels:
     - Interoperability
+requiredAmendment: XChainBridge
 status: not_enabled
+txIcon: create
 ---
 # XChainCreateBridge
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/XChainBridge.cpp "Source")

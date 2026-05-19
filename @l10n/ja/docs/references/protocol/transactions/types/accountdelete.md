@@ -2,7 +2,9 @@
 seo:
     description: アカウントの削除
 labels:
-  - アカウント
+    - Accounts
+requiredAmendment: DeletableAccounts
+txIcon: cancel
 ---
 # AccountDelete
 
@@ -10,7 +12,7 @@ labels:
 
 AccountDeleteトランザクションは、XRP Ledgerで[アカウント](../../ledger-data/ledger-entry-types/accountroot.md)と、アカウントが所有するオブジェクトを削除し、可能であれば、アカウントの残りのXRPを指定された送金先アカウントに送信します。アカウントを削除する要件については、[アカウントの削除](../../../../concepts/accounts/deleting-accounts.md)をご覧ください。
 
-_[DeletableAccounts Amendment][]が必要です。_
+{% amendment-disclaimer name="DeletableAccounts" /%}
 
 ## {% $frontmatter.seo.title %} JSONの例
 

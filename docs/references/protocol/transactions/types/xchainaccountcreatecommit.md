@@ -3,7 +3,9 @@ seo:
     description: Create an account on another chain to serve as a door account for a cross-chain bridge.
 labels:
     - Interoperability
+requiredAmendment: XChainBridge
 status: not_enabled
+txIcon: create
 ---
 # XChainAccountCreateCommit
 [[Source]](https://github.com/XRPLF/rippled/blob/70d5c624e8cf732a362335642b2f5125ce4b43c1/src/xrpld/app/tx/detail/XChainBridge.h#L235 "Source")

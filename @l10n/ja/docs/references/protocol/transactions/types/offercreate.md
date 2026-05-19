@@ -2,10 +2,10 @@
 seo:
     description: 通貨交換の注文を作成します。
 labels:
-  - 分散型取引所
+    - DEX
+txIcon: create
 ---
 # OfferCreate
-
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/CreateOffer.cpp "ソース")
 
 OfferCreateトランザクションは[分散型取引所](../../../../concepts/tokens/decentralized-exchange/index.md)で[注文](../../../../concepts/tokens/decentralized-exchange/offers.md)を作成します。

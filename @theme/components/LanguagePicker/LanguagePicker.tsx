@@ -1,4 +1,5 @@
-import React from 'react';
+// Replaces Redocly's built-in language picker with our custom language picker component.
+
 import styled from 'styled-components';
 
 import { DropdownMenu } from '@redocly/theme/components/Dropdown/DropdownMenu';

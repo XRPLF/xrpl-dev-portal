@@ -1,18 +1,16 @@
 ---
-html: xchainaddaccountcreateattestation.html
-parent: transaction-types.html
 seo:
     description: XChainAddAccountCreateAttestationトランザクションは他のチェーンでXChainAccountCreateCommitトランザクションが発生した証明をWitnessサーバから提示します。
 labels:
-  - 相互運用性
+    - Interoperability
+requiredAmendment: XChainBridge
 status: not_enabled
+txIcon: create
 ---
 # XChainAddAccountCreateAttestation
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/TxFormats.cpp#L447-L464 "ソース")
 
-_（[XChainBridge Amendment][] {% not-enabled /%} が必要です）_
-
-`XChainAddAccountCreateAttestation`トランザクションは、`XChainAccountCreateCommit`トランザクションがもう一方のチェーンで発生したというWitnessサーバからの証明を提示します。
+`XChainAccountCreateCommit`トランザクションがもう一方のチェーンで発生したというWitnessサーバからの証明を提示します。
 
 この署名は署名が提供された時点のドアの署名者リストにある鍵の一つでなければなりません。署名が提出されてから定足数に達するまでの間に署名者リストが変更された場合、新しい署名セットが使用され、現在収集されている署名の一部が削除される可能性があります。
 
@@ -20,6 +18,7 @@ _（[XChainBridge Amendment][] {% not-enabled /%} が必要です）_
 
 {% admonition type="info" name="注記" %}報酬は現在のリストにある鍵を持っているアカウントにのみ送られます。署名者の定足数は`SignatureReward`に一致する必要があります。より大きな報酬を得ようとして、一つのWitnessサーバがこの値に不正な値を指定することはできません。{% /admonition %}
 
+{% amendment-disclaimer name="XChainBridge" /%}
 
 ## XChainAddAccountCreateAttestation JSONの例
 

@@ -1,9 +1,11 @@
 ---
 seo:
-    description: Creates or updates an existing `LoanBroker` ledger entry.
+    description: Create or update an existing loan broker.
 labels:
-  - Transactions
-  - Lending Protocol
+    - Transactions
+    - Lending Protocol
+requiredAmendment: LendingProtocol
+txIcon: modify
 status: not_enabled
 ---
 # LoanBrokerSet

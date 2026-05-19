@@ -1,18 +1,16 @@
 ---
-html: xchaincreatebridge.html 
-parent: transaction-types.html
 seo:
     description: 2つのチェーン間にブリッジを作成します。
 labels:
-  - 相互運用性
+    - Interoperability
+requiredAmendment: XChainBridge
 status: not_enabled
+txIcon: create
 ---
 # XChainCreateBridge
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/TxFormats.cpp#L381-L388 "ソース")
 
-_（[XChainBridge Amendment][] {% not-enabled /%} が必要です）_
-
-`XChainCreateBridge`トランザクションは新しい`Bridge`レジャーオブジェクトを作成し、トランザクショ ンが送信されたチェーン上に新しいクロスチェーンブリッジの入り口を定義します。これにはブリッジのドアアカウントと資産に関する情報が含まれます。
+新しい`Bridge`レジャーオブジェクトを作成し、トランザクショ ンが送信されたチェーン上に新しいクロスチェーンブリッジの入り口を定義します。これにはブリッジのドアアカウントと資産に関する情報が含まれます。
 
 このトランザクションは、ロックチェーンのドアアカウントが最初に送信する必要があります。有効なブリッジをセットアップするには、Witnessサーバのセットアップに加えて、両チェーンのドアアカウントがこのトランザクションを送信しなければなりません。
 
@@ -20,6 +18,7 @@ _（[XChainBridge Amendment][] {% not-enabled /%} が必要です）_
 
 {% admonition type="info" name="注記" %}各ドアアカウントは1つのブリッジしか持つことができません。これにより、同じ資産に対して複数のブリッジが作成され、いずれかのチェーンで資産が不一致となるのを防ぐことができます。{% /admonition %}
 
+{% amendment-disclaimer name="XChainBridge" /%}
 
 ## XChainCreateBridge JSONの例
 

@@ -1,10 +1,10 @@
 ---
-html: setregularkey.html
-parent: transaction-types.html
 seo:
     description: アカウントに関連付けられているレギュラーキーペアの割り当て、変更、削除を行います。
 labels:
-  - セキュリティ
+    - Security
+    - Accounts
+txIcon: modify
 ---
 # SetRegularKey
 
@@ -29,7 +29,6 @@ labels:
 {% tx-example txid="6AA6F6EAAAB56E65F7F738A9A2A8A7525439D65BA990E9BA08F6F4B1C2D349B4" /%}
 
 {% raw-partial file="/@l10n/ja/docs/_snippets/tx-fields-intro.md" /%}
-<!--{# fix md highlighting_ #}-->
 
 | フィールド    | JSONの型  | [内部の型][]       | 説明                          |
 |:-------------|:----------|:------------------|:------------------------------|

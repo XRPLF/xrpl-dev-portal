@@ -4,7 +4,10 @@ parent: transaction-types.html
 seo:
     description: LPトークを自動マーケットメーカーに返却し、プールが保有する資産の一部と引き換えマス。
 labels:
-  - AMM
+    - AMM
+    - DEX
+requiredAmendment: AMM
+txIcon: send
 ---
 # AMMWithdraw
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/AMMWithdraw.cpp "Source")

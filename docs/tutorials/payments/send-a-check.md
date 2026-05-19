@@ -49,16 +49,18 @@ For example, imagine you were asked to pay a company named Grand Payments for so
 
 Send the transaction and wait for it to be validated by the consensus process, as normal:
 
-{% code-snippet file="/_code-samples/checks/js/create-check.js" language="js" from="// Submit the transaction" before="// Get transaction result" /%}
+{% code-snippet file="/_code-samples/checks/js/create-check.js" language="js" from="// Submit the transaction" before="// Confirm transaction result and get check ID" /%}
 
 
 ### 3. Confirm transaction result
 
 If the transaction succeeded, it should have a `"TransactionResult": "tesSUCCESS"` field in the metadata, and the field `"validated": true` in the result, indicating that this result is final.
 
+{% code-snippet file="/_code-samples/checks/js/create-check.js" language="js" from="// Confirm transaction result and get check ID" before="// Disconnect" /%}
+
 {% admonition type="success" name="Tip" %}The `submitAndWait()` method in xrpl.js only returns when the transaction's result is final, so you can assume that the transaction is validated if it returns a result code of `tesSUCCESS`.{% /admonition %}
 
-To cash or cancel the Check later, you'll need the Check ID. You can find this in the transaction's metadata by looking for a `CreatedNode` entry with a `LedgerEntryType` of `"Check"`. This indicates that the transaction created a [Check ledger entry](../../references/protocol/ledger-data/ledger-entry-types/check.md). The `LedgerIndex` of this object is the ID of the Check. This should be a [hash][] value such as `84C61BE9B39B2C4A2267F67504404F1EC76678806C1B901EA781D1E3B4CE0CD9`.
+To cash or cancel the Check later, you'll need the Check ID printed above.
 
 At this point, it is up to the recipient to cash the Check.
 
