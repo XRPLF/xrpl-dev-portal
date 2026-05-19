@@ -83,7 +83,7 @@ Before you can disable the master key pair, your account must have another way o
 {% /tab %}
 {% /tabs %}
 
-{% admonition type="success" name="Tip" %}If your goal is to make the account a [black hole](/docs/concepts/accounts/addresses#special-addresses) that cannot send transactions at all, you still need to set a regular key. Instead of generating a key pair, use a known black hole address such as **rrrrrrrrrrrrrrrrrrrrrhoLvTp**.{% /admonition %}
+{% admonition type="success" name="Tip" %}If your goal is to make the account a [blackhole](/docs/concepts/accounts/blackholed-accounts) that cannot send transactions at all, you still need to set a regular key. Instead of generating a key pair, use a known blackhole address such as **rrrrrrrrrrrrrrrrrrrrrhoLvTp**.{% /admonition %}
 
 ### 4. Disable the master key pair
 
