@@ -1,0 +1,10 @@
+# Known broken links file. Syntax:
+# One fully-qualified http: or https: URL per line.
+# Lines starting with # are ignored
+# * may be used as a wildcard AT THE END OF LINKS ONLY
+# Matching URLs will not be checked by the link checker and won't be
+# flagged/reported as broken.
+https://x.com/*
+https://www.gnu.org/software/screen/manual/screen.html
+https://www.coindesk.com/markets/2015/04/02/1-million-legal-fight-ensnares-ripple-bitstamp-and-jed-mccaleb/
+https://www.coindesk.com/markets/2016/02/12/ripple-settles-1-million-lawsuit-with-former-executive-and-founder/
