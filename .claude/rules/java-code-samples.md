@@ -7,8 +7,6 @@ paths:
 
 Java samples currently exist only in tutorial form. If a setup-style script is added later, mirror the speed-first conventions from the other language rules (parallelism, minimal output, no transaction printing) and update this rule.
 
----
-
 ## Project & build
 
 - Maven (not Gradle); each sample is a self-contained Maven project under its language folder (e.g., `_code-samples/credential/java/`)

@@ -14,8 +14,6 @@ Code samples come in **two flavors** with very different conventions. Identify w
 
 If a file isn't clearly one or the other, default to tutorial conventions.
 
----
-
 ## Shared across both flavors
 
 - Library: `xrpl ^4.6.0` in `package.json`
@@ -28,8 +26,6 @@ If a file isn't clearly one or the other, default to tutorial conventions.
 - Transaction object keys are XRPL native PascalCase (`TransactionType`, `Account`, `Amount`) — never transform them
 - Setup JSON keys use `camelCase` (`loanBroker`, `credentialIssuer`, `mptID`, `vaultID`, `loanBrokerID`)
 - End with `await client.disconnect()`
-
----
 
 ## Tutorial files
 
@@ -82,8 +78,6 @@ const decoded = xrpl.decode(brokerSigned.tx_blob)
 const fullySigned = xrpl.signLoanSetByCounterparty(borrower, decoded)
 await client.submitAndWait(fullySigned.tx)
 ```
-
----
 
 ## Setup files
 

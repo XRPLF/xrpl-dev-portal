@@ -14,8 +14,6 @@ Code samples come in **two flavors** with very different conventions. Identify w
 
 If a file isn't clearly one or the other, default to tutorial conventions.
 
----
-
 ## Shared across both flavors
 
 - Library: `github.com/Peersyst/xrpl-go v0.1.17` in `go.mod`
@@ -33,8 +31,6 @@ For any `main.go` that sets optional pointer fields, include this helper near th
 // used for setting optional transaction fields in Go.
 func ptr[T any](v T) *T { return &v }
 ```
-
----
 
 ## Tutorial files
 
@@ -91,8 +87,6 @@ func ptr[T any](v T) *T { return &v }
   }
   ```
 - Use `panic(err)` for unexpected errors (network/marshal failures), `os.Exit(1)` for expected protocol failures with a printed message
-
----
 
 ## Setup files
 

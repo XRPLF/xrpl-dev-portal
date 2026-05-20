@@ -14,16 +14,12 @@ Code samples come in **two flavors** with very different conventions. Identify w
 
 If a file isn't clearly one or the other, default to tutorial conventions.
 
----
-
 ## Shared across both flavors
 
 - Library: `xrpl-py>=4.5.0` in `requirements.txt`
 - File names use `snake_case`
 - Variables use `snake_case` (e.g., `loan_broker`, `mpt_id`, `vault_id`, `loan_broker_id`)
 - Tutorial scripts read setup data; setup scripts write it. Both use the same JSON key style (`snake_case`: `loan_broker`, `credential_issuer`, `mpt_id`, `domain_id`, `loan_broker_id`).
-
----
 
 ## Tutorial files
 
@@ -63,8 +59,6 @@ If a file isn't clearly one or the other, default to tutorial conventions.
       sys.exit(1)
   ```
 - Don't wrap in try/except — let failures be visible
-
----
 
 ## Setup files
 
