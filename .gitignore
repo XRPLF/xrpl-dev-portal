@@ -14,3 +14,7 @@ _code-samples/*/*/*[Ss]etup.json
 
 # PHP
 composer.lock
+
+# Link checker artifacts
+linkinator-report.csv
+realm.log

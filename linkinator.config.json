@@ -1,0 +1,22 @@
+{
+  "recurse": true,
+  "retry": true,
+  "timeout": 20000,
+  "concurrency": 5,
+  "skip": [
+    "http://localhost:4000/@l10n/(?!en-US)",
+    "^https?://(twitter|x)\\.com",
+    "^https?://(www\\.)?linkedin\\.com",
+    "^https?://chat\\.openai\\.com",
+    "^https?://chatgpt\\.com",
+    "^https?://claude\\.ai",
+    "^https?://(www\\.)?medium\\.com"
+  ],
+  "headers": {
+    "*": {
+      "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Safari/605.1.15",
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+      "Accept-Language": "en-US,en;q=0.9"
+    }
+  }
+}

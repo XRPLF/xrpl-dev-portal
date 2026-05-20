@@ -41,13 +41,7 @@ jobs:
       - name: Crawl and check links
         run: |
           npx --yes linkinator@^6 "$BASE_URL" \
-            --recurse \
-            --retry \
-            --timeout 20000 \
-            --concurrency 5 \
-            --skip "$BASE_URL/@l10n/(?!en-US)" \
-            --skip "^https?://(twitter|x)\.com" \
-            --skip "^https?://(www\.)?linkedin\.com" \
+            --config linkinator.config.json \
             --format csv > linkinator-report.csv
 
       - name: Stop Realm server
