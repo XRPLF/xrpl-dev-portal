@@ -1,0 +1,66 @@
+name: Link check
+
+on:
+  pull_request:
+    branches: [master]
+  workflow_dispatch:
+
+concurrency:
+  group: link-check-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  link-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      PORT: 4000
+      BASE_URL: http://localhost:4000
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+          cache: npm
+
+      - run: npm ci
+
+      - name: Build CSS
+        run: npm run build-css
+
+      - name: Start Realm dev server
+        run: |
+          npx realm develop --port "$PORT" > realm.log 2>&1 &
+          echo $! > realm.pid
+
+      - name: Wait for server
+        run: npx --yes wait-on "$BASE_URL" --timeout 180000
+
+      - name: Crawl and check links
+        run: |
+          npx --yes linkinator@^6 "$BASE_URL" \
+            --recurse \
+            --retry \
+            --timeout 20000 \
+            --concurrency 5 \
+            --skip "$BASE_URL/@l10n/(?!en-US)" \
+            --skip "^https?://(twitter|x)\.com" \
+            --skip "^https?://(www\.)?linkedin\.com" \
+            --format csv > linkinator-report.csv
+
+      - name: Stop Realm server
+        if: always()
+        run: |
+          if [ -f realm.pid ]; then kill "$(cat realm.pid)" 2>/dev/null || true; fi
+
+      - name: Upload report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: link-check-report
+          path: |
+            linkinator-report.csv
+            realm.log
+          if-no-files-found: warn
