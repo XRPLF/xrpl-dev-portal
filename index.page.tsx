@@ -89,12 +89,15 @@ const cards3 = [
 const features = [
   {
     chip: 'In Development',
-    title: 'Smart Contracts',
-    description:
-    <>
-      Hooks are small, efficient WebAssembly modules designed specifically for the XRPL. Check out the <a href='https://hooks-testnet.xrpl-labs.com/' target='_blank'>hooks amendment and public testnet</a> that enable smart contract functionality.
-    </>,
-    href: 'https://hooks-testnet.xrpl-labs.com/',
+    title: 'Confidential Transfers',
+    description: "Keep MPT balances and transaction amounts private on the public ledger, while enabling MPT issuers and designated auditors to decrypt these values offchain.",
+    href: 'https://opensource.ripple.com/docs/xls-96-confidential-transfers/',
+  },
+  {
+    chip: 'Open for Voting',
+    title: 'Lending Protocol',
+    description: "The XRPL-native lending protocol offers on-chain, fixed-term loans, utilizing pooled funds from single-asset vaults.",
+    href: '/docs/concepts/tokens/lending-protocol/',
   },
   {
     chip: 'Enabled',

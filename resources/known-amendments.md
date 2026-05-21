@@ -1496,21 +1496,6 @@ This is a previous version of the [Flow](#flow) amendment. It was [rejected due 
 Allows validators to include a new optional field in their validations to attest to the hash of the latest ledger that the validator considers to be fully validated. The consensus process can use this information to increase the robustness of consensus.
 
 
-### Hooks
-[Hooks]: #hooks
-
-| Amendment    | Hooks |
-|:-------------|:------|
-| Amendment ID | ECE6819DBA5DB528F1A241695F5A9811EF99467CDE22510954FD357780BBD078 |
-| Status       | Inactive |
-| Default Vote (Latest stable release) | N/A |
-| Pre-amendment functionality retired? | N/A |
-
-Adds on-chain smart contracts in the form of small pieces of code that can run on an account before or after transactions. For more information, see the [Hooks Documentation](https://xrpl-hooks.readme.io/).
-
-{% admonition type="info" name="Note" %}Active development has ceased on this feature. It was never introduced for voting.{% /admonition %}
-
-
 ### ImmediateOfferKilled
 [ImmediateOfferKilled]: #immediateofferkilled
 
