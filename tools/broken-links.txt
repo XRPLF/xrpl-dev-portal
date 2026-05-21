@@ -1,10 +1,40 @@
-# Known broken links file. Syntax:
-# One fully-qualified http: or https: URL per line.
-# Lines starting with # are ignored
-# * may be used as a wildcard AT THE END OF LINKS ONLY
+# "Known broken" links file. 
 # Matching URLs will not be checked by the link checker and won't be
 # flagged/reported as broken.
+# Typically, these are sites that block crawlers so are falsely reported as
+# broken by the link checker, or tend to be slow / unreliable but are generally
+# still the proper, official link.
+#
+# Syntax:
+# One fully-qualified http: or https: URL per line.
+# Lines starting with # are ignored (comments), but # in the middle of a line is
+# treated as part of the URL and parsed as normal.
+# * may be used as a wildcard AT THE END OF LINKS ONLY
+
+# These sites block crawlers (often using Cloudflare) with a 403 but typically
+# work when accessed from an actual browser:
 https://x.com/*
 https://www.gnu.org/software/screen/manual/screen.html
 https://www.coindesk.com/markets/2015/04/02/1-million-legal-fight-ensnares-ripple-bitstamp-and-jed-mccaleb/
 https://www.coindesk.com/markets/2016/02/12/ripple-settles-1-million-lawsuit-with-former-executive-and-founder/
+https://bsaaml.ffiec.gov/manual/Introduction/01
+https://www.sec.gov/oiea/investor-alerts-and-bulletins/ib_coinofferings
+https://www.npmjs.com/*
+https://go.dev/dl/
+https://search.maven.org/artifact/org.xrpl/xrpl4j-parent
+https://xrp.cafe/
+https://medium.com/*
+
+# Redocly adds links to claude & ChatGPT to every page. No need to check them
+# with a unique query every time:
+https://chat.openai.com/?*
+https://claude.ai/new?*
+
+# wxPython is still in active development, but their site appears to be dead.
+# Maybe it'll come back online, in which case we can remove these:
+https://wxpython.org/
+https://docs.wxpython.org/*
+
+# The WebSocket tool uses the anchors portion of the URL even though it doesn't
+# have a corresponding element by ID, so links to it aren't actually broken:
+http://localhost:4000/resources/dev-tools/websocket-api-tool*

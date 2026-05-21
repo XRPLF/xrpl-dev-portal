@@ -1,15 +1,19 @@
 #!/usr/bin/env python
 """
-Check markdown files for broken external links.
+Check markdown files for broken links.
 
 Usage (from repo root):
 tools/check-external-links.py [folder/to/check/]
 
 If [folder/to/check] is omitted, check ./docs/
 
-Prints a report of broken links. Doesn't check relative (in-site) links.
+Prints a report of broken links. In the default mode, checks external links in
+Markdown files only. Pass --live to test against a local Redocly dev server,
+which checks *all* links, including anchors and markdoc tags; assumes the 
+server is already up and running on localhost:4000.
 
-Requires: Beautiful Soup 4, python-markdown, requests
+Requires: beautifulsoup4, markdown, requests
+For live mode, selenium and Chrome are also required.
 
 Links & sites that often report false-positives can be added to broken-links.txt
 to have the link checker skip them.
@@ -19,12 +23,16 @@ import argparse
 import json
 import logging
 import os
+import re
 from time import time, sleep
 
 import requests
 from requests.adapters import HTTPAdapter, Retry
 from markdown import markdown
 from bs4 import BeautifulSoup
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.common.exceptions import StaleElementReferenceException, NoSuchElementException
 
 CHECK_IN_INTERVAL = 30 # Seconds before printing *something* as a keep-alive
 DEFAULT_SKIP_PATHS = [
@@ -33,6 +41,10 @@ DEFAULT_SKIP_PATHS = [
     ".venv",
     ".claude",
     "__pycache__",
+    "_snippets",
+    "_code-samples", # Debatably, we might want to link-check the READMEs here
+    "_api-examples",
+    "_sources",
 ]
 MAX_RETRIES = 1 # Times to retry if a link doesn't work
 TIMEOUT_SECONDS = 8 # Seconds before giving up on a link
@@ -43,6 +55,8 @@ DEFAULT_CACHE_FILE = "link-cache.json"
 CACHE_FILE_FOLDER = "tools" # Check this folder for cache file
 KNOWN_BROKEN_LINKS_FILE = "broken-links.txt" # List of links that work "normally" but report false-positives in this link checker
 USER_AGENT = "xrpl-dev-portal-link-checker/0.1" # Identify self to websites
+REDOCLY_DEV_BASE = "http://localhost:4000/"
+UNMATCHED_REFLINK_REGEX = re.compile(r"(\[[^\]]+)?\]\[(\w| )*\]")
 
 logger = logging.getLogger(__name__)
 logger.addHandler(logging.StreamHandler())
@@ -52,17 +66,20 @@ class LinkChecker:
     def __init__(self, topdir,
             skip_paths = DEFAULT_SKIP_PATHS,
             cache_file = DEFAULT_CACHE_FILE,
-            known_broken = KNOWN_BROKEN_LINKS_FILE
+            known_broken = KNOWN_BROKEN_LINKS_FILE,
+            live = False
         ):
         self.topdir = topdir
         self.skip_paths = skip_paths
         self.last_checkin = time()
         self.last_cache_update = 0
+        self.live = live
         self.setup_sessions()
         self.init_cache(cache_file)
         self.init_known_broken(known_broken)
 
     def init_cache(self, cache_file: str):
+        self.anchor_cache = {}
         if not cache_file:
             logger.debug("No cache file, not loading anything.")
             self.cache = {}
@@ -87,6 +104,10 @@ class LinkChecker:
             was_good, time_checked = result
             if not was_good or time() - time_checked > RECHECK_INTERVAL:
                 invalidate_keys.append(href)
+            if self.trim_trackers(href) != href:
+                # Probably a cached entry including tracking parameters from
+                # before changing what tracking parameters get removed
+                invalidate_keys.append(href)
         for href in invalidate_keys:
             del self.cache[href]
         logger.debug(f"Removed {len(invalidate_keys)} items from cache")
@@ -108,6 +129,14 @@ class LinkChecker:
         self.h.headers.update({"User-Agent": USER_AGENT})
         self.s.headers.update({"User-Agent": USER_AGENT})
         self.last_host_called = None
+
+        if self.live:
+            options = webdriver.ChromeOptions()
+            options.add_argument("--headless=new")
+            self.chrome = webdriver.Chrome(options=options)
+            # Make a second one so we can check for anchors without resetting
+            # all the references we have in the page the link comes from
+            self.chrome2 = webdriver.Chrome(options=options)
 
     def init_known_broken(self, known_broken):
         self.exact_known_broken = []
@@ -143,7 +172,7 @@ class LinkChecker:
             self.write_cache()
 
     def walk(self):
-        logger.info(f"Checking *.md files in {os.path.abspath(self.topdir)}")
+        logger.info(f"Checking files in {os.path.abspath(self.topdir)}")
         externalCache = []
         broken_links = []
         total_links_checked = 0
@@ -158,7 +187,14 @@ class LinkChecker:
                 in_file = os.path.join(dirpath, fname)
 
                 if in_file.endswith(".md"):
-                    newly_checked, newly_broken = self.check_file(in_file)
+                    if self.live:
+                        newly_checked, newly_broken = self.check_file_live(in_file)
+                    else:
+                        newly_checked, newly_broken = self.check_file(in_file)
+                    broken_links += newly_broken
+                    total_links_checked += newly_checked
+                if in_file.endswith(".page.tsx") and self.live:
+                    newly_checked, newly_broken = self.check_file_live(in_file)
                     broken_links += newly_broken
                     total_links_checked += newly_checked
         self.report(broken_links, total_links_checked)
@@ -185,14 +221,79 @@ class LinkChecker:
             if "href" not in link.attrs:
                 # probably an <a name> type anchor, skip
                 continue
-            if (link["href"].startswith("//") or
-                link["href"].startswith("https://") or
+            if (link["href"].startswith("https://") or
                 link["href"].startswith("http://")):
                 was_checked, was_good = self.check_link(link["href"])
                 num_checked += was_checked
                 if not was_good:
                     broken.append( (in_file, link["href"]) )
         return num_checked, broken
+    
+    def check_file_live(self, in_file: str):
+        """
+        Given a specific .md file, fetch it from the Redocly dev server and
+        check for links in it.
+        """
+        suffixes = ["/index.md", ".md", "/index.page.tsx", ".page.tsx"] # order matters
+        for suffix in suffixes:
+            if in_file.endswith(suffix):
+                path = in_file[:-len(suffix)]
+                break
+        else:
+            logger.warning(f"Not checking path that's not an md or page.tsx file: {in_file}")
+            return (0, [])
+        url = REDOCLY_DEV_BASE + path
+        code = self.fetch(url)
+        if code < 200 or code >= 400:
+            logger.warning(f"Failed to get page from dev server for file {in_file}")
+            return 0, []
+
+        broken = []
+        num_checked = 0
+        logger.info(f"Checking path {path}")
+        self.chrome.get(REDOCLY_DEV_BASE+path)
+        # sleep(0.2) # give it a moment in case hydration fails or something
+        rootlayout = self.chrome.find_element(By.CSS_SELECTOR, '[data-component-name="layouts/RootLayout"]')
+        try:
+            links = rootlayout.find_elements(By.CSS_SELECTOR, "a")
+            pagetext = rootlayout.text
+            hrefs = [link.get_attribute("href") for link in links]
+        except StaleElementReferenceException:
+            # This can happen when hydration fails or the page is updated
+            # asynchronously, for example by fetching amendment status.
+            # Try again and hopefully it works this time.
+            sleep(0.2)
+            rootlayout = self.chrome.find_element(By.CSS_SELECTOR, '[data-component-name="layouts/RootLayout"]')
+            pagetext = rootlayout.text
+            links = rootlayout.find_elements(By.CSS_SELECTOR, "a")
+            hrefs = [link.get_attribute("href") for link in links]
+        for href in hrefs:
+            self.checkin(f"link: {href}")
+            if not href:
+                # Probably a name anchor something, skip
+                continue
+            if href.startswith(REDOCLY_DEV_BASE):
+                was_checked, was_good = self.check_dev_link(href)
+                num_checked += was_checked
+                if not was_good:
+                    broken.append( (in_file, href) )
+            elif href.startswith("http://") or href.startswith("https://"):
+                was_checked, was_good = self.check_link(href)
+                num_checked += was_checked
+                if not was_good:
+                    broken.append( (in_file, href) )
+        broken_reflinks = self.check_for_unparsed_reflinks(pagetext)
+        for brl in broken_reflinks:
+            broken.append( (in_file, brl) )
+        return num_checked, broken
+    
+    def check_for_unparsed_reflinks(self, text: str):
+        unparsed_links = []
+        matches = UNMATCHED_REFLINK_REGEX.finditer(text)
+        for m in matches:
+            logger.warning(f"... ... Unparsed reference link: {m.group(0)}")
+            unparsed_links.append(m.group(0))
+        return unparsed_links
 
     def is_known_broken(self, href: str):
         if href in self.exact_known_broken:
@@ -231,7 +332,13 @@ class LinkChecker:
 
         return code
 
-    def check_link(self, href):
+    def trim_trackers(self, href: str):
+        if "?__hstc=" in href:
+            return href[:href.find("?__hstc=")]
+        return href
+
+    def check_link(self, href: str):
+        href = self.trim_trackers(href)
         if href in self.cache.keys():
             logger.debug(f"... Skipping (cached): {href}")
             was_good, time_checked = self.cache[href]
@@ -248,6 +355,34 @@ class LinkChecker:
         logger.info("... ... success.")
         self.cache[href] = (True, time())
         return (1, True)
+    
+    def check_dev_link(self, href: str):
+        """
+        Check a local dev link; if it has an anchor, use the Chrome driver to 
+        check for the presence of an element with a matching ID, otherwise fall
+        back to just checking that the page exists.
+        """
+        if self.is_known_broken(href):
+            logger.debug(f"... Skipping (known broken): {href}")
+            return (0, True)
+        if "#" in href and href.split("#",1)[1].strip():
+            if href in self.anchor_cache.keys():
+                return (1, self.anchor_cache[href])
+            id = href.split("#",1)[1].strip()
+            # Use the selenium driver to check for the exact anchor
+            self.chrome2.get(href)
+            sleep(0.3) # delay to give it time for hydration failures
+            try:
+                el = self.chrome2.find_element(By.ID, id)
+            except NoSuchElementException:
+                el = None
+            if el:
+                self.anchor_cache[href] = True
+                return (1, True)
+            else:
+                self.anchor_cache[href] = False
+                return (1, False)
+        return self.check_link(href)
 
     def report(self, broken_links: list, total_links_checked: int):
         print("---------------------------------------------------------------")
@@ -266,6 +401,8 @@ if __name__ == "__main__":
             help="Suppress informational status messages")
     noisiness.add_argument("--debug", "-d", action="store_true",
             help="Print debug-level log messages")
+    parser.add_argument("--live", "-l", action="store_true", 
+            help="Use a Selenium-powered browser session to get rendered docs")
     parser.add_argument("path", type=str, nargs="?", default="docs/",
             help="Check *.md files in this directory (including subdirs)")
 
@@ -277,7 +414,7 @@ if __name__ == "__main__":
     else:
         logger.setLevel(logging.INFO)
 
-    l = LinkChecker(cli_args.path)
+    l = LinkChecker(cli_args.path, live=cli_args.live)
     try:
         l.walk()
     except (KeyboardInterrupt) as e:
