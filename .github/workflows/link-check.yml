@@ -12,7 +12,7 @@ concurrency:
 jobs:
   link-check:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 60
     env:
       PORT: 4000
       BASE_URL: http://localhost:4000
