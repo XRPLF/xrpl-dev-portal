@@ -11,6 +11,8 @@ labels:
 
 This tutorial walks through creating a batch of Tickets, using one in a transaction, and applying the same pattern to multi-signed workflows.
 
+{% amendment-disclaimer name="TicketBatch" /%}
+
 ## Goals
 
 By the end of this tutorial, you will be able to:
@@ -26,7 +28,6 @@ To complete this tutorial, you need:
 - A basic understanding of how [Sequence numbers](../../../references/protocol/data-types/basic-data-types.md#account-sequence) work in transactions.
 - An XRP Ledger [client library](../../../references/client-libraries.md) set up.
 - (Optional) A basic understanding of [multi-signing](../../../concepts/accounts/multi-signing.md), if you plan to combine it with Tickets.
-- {% amendment-disclaimer name="TicketBatch" /%}
 
 ## Source Code
 
