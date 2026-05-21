@@ -1,5 +1,5 @@
-# Tickets
+# Use Tickets
 
-Create a Ticket and use it to send a transaction out of the usual Sequence order.
+Create a batch of Tickets and use one to send a transaction outside the normal Sequence order.
 
-For more context, see the interactive [Use Tickets tutorial](https://xrpl.org/use-tickets.html).
+For more context, see the [Use Tickets tutorial](https://xrpl.org/docs/tutorials/best-practices/transaction-sending/use-tickets).

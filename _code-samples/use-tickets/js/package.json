@@ -1,4 +1,5 @@
 {
+  "type": "module",
   "dependencies": {
     "xrpl": "^4.0.0"
   }

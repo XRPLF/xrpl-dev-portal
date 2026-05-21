@@ -1,4 +1,4 @@
-# Use Tickets (Python)
+# Use Tickets (Go)
 
 Demonstrates how to use Tickets for out-of-order transaction submission on the XRP Ledger.
 
@@ -7,19 +7,11 @@ For more context, see the [Use Tickets tutorial](https://xrpl.org/docs/tutorials
 ## Setup
 
 ```sh
-python -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
+go mod download
 ```
 
 ## Basic Ticket Usage
 
 ```sh
-python use-tickets.py
-```
-
-## Tickets with Multi-Signing
-
-```sh
-python use-tickets-to-multisign.py
+go run main.go
 ```

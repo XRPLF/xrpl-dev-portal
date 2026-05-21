@@ -1,66 +1,44 @@
 from xrpl.clients import JsonRpcClient
-from xrpl.models.transactions import TicketCreate, AccountSet
-from xrpl.transaction import sign_and_submit
+from xrpl.models.requests import AccountObjects, AccountObjectType
+from xrpl.models.transactions import AccountSet, TicketCreate
+from xrpl.transaction import submit_and_wait
 from xrpl.wallet import generate_faucet_wallet
-from xrpl.models.requests.account_objects import AccountObjects, AccountObjectType
 
-# Connect to a testnet node
+# Set up client and account
 JSON_RPC_URL = "https://s.altnet.rippletest.net:51234/"
 client = JsonRpcClient(JSON_RPC_URL)
 
-# Generate a wallet and request faucet
-test_wallet = generate_faucet_wallet(client=client)
-myAddr = test_wallet.address
+# Fund wallet
+print("Getting a wallet from the faucet...")
+wallet = generate_faucet_wallet(client=client)
 
-# Construct a TicketCreate transaction, 2 ticket created for future use
-tx = TicketCreate(
-    account=myAddr,
-    ticket_count=2
+# Create Tickets
+ticket_create = TicketCreate(
+    account=wallet.address,
+    ticket_count=10,
 )
+print("Submitting TicketCreate transaction...")
+ticket_create_result = submit_and_wait(ticket_create, client, wallet)
+print(f"TicketCreate hash: {ticket_create_result.result['hash']}, validated: {ticket_create_result.result['validated']}")
 
-# Sign transaction locally and submit
-my_tx_payment_signed = sign_and_submit(transaction=tx, client=client, wallet=test_wallet)
+# Check Available Tickets
+tickets_response = client.request(AccountObjects(
+    account=wallet.address,
+    type=AccountObjectType.TICKET,
+))
+tickets = tickets_response.result["account_objects"]
+print(f"Found {len(tickets)} Tickets")
 
-# Get a Ticket Sequence
-get_ticket_sequence = AccountObjects(
-    account=myAddr,
-    type=AccountObjectType.TICKET
-)
+# Choose an arbitrary Ticket to use
+use_ticket = tickets[0]["TicketSequence"]
+print(f"Using Ticket Sequence: {use_ticket}")
 
-response = client.request(get_ticket_sequence)
-
-# Since we created 2 Tickets previously, you're able to choose which Ticket you're going to use
-ticket1_sequence = response.result["account_objects"][0]["TicketSequence"]
-ticket2_sequence = response.result["account_objects"][1]["TicketSequence"]
-
-print(f"Ticket 1: {ticket1_sequence}\n"
-      f"Ticket 2: {ticket2_sequence}")
-
-ticket_sequence = int(input("Pick a ticket sequence to use for your next transaction: "))
-
-# Construct Transaction using a Ticket
-tx_1 = AccountSet(
-    account=myAddr,
-    fee="10",
+# Use a Ticket
+ticketed_tx = AccountSet(
+    account=wallet.address,
+    ticket_sequence=use_ticket,
     sequence=0,
-    last_ledger_sequence=None,
-    ticket_sequence=ticket_sequence
 )
-
-# Send transaction (w/ Ticket)
-tx_result = sign_and_submit(transaction=tx_1, client=client, wallet=test_wallet)
-result = tx_result.result["engine_result"]
-
-print(f"Account: {myAddr}")
-if result == "tesSUCCESS":
-    print("Transaction successful!")
-elif result == "terPRE_TICKET":
-    print("The provided Ticket Sequence does not exist in the ledger")
-elif result == "tefMAX_LEDGER":
-    print("Transaction failed to achieve consensus")
-elif result == "tefPAST_SEQ":
-    print("The sequence number is lower than the current sequence number of the account")
-elif result == "unknown":
-    print("Transaction status unknown")
-else:
-    print(f"Transaction failed with code {result}")
+print("Submitting ticketed AccountSet transaction...")
+ticketed_result = submit_and_wait(ticketed_tx, client, wallet)
+print(f"Ticketed AccountSet hash: {ticketed_result.result['hash']}, validated: {ticketed_result.result['validated']}")
