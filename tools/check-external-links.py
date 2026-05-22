@@ -398,6 +398,15 @@ class LinkChecker:
 
         if broken_links:
             self.write_broken_links_report(broken_links, total_links_checked)
+        else:
+            # Clean up any stale report from a previous run so the file's
+            # presence is a reliable signal for "broken links exist."
+            report_path = BROKEN_LINKS_REPORT_FILE
+            if os.path.basename(os.getcwd()) != CACHE_FILE_FOLDER:
+                report_path = os.path.join(CACHE_FILE_FOLDER, report_path)
+            if os.path.exists(report_path):
+                os.remove(report_path)
+                logger.info(f"Removed stale {report_path} (no broken links this run).")
 
     def write_broken_links_report(self, broken_links: list, total_links_checked: int):
         """
