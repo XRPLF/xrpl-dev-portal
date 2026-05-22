@@ -326,7 +326,7 @@ class LinkChecker:
         except Exception as e:
             logger.debug(f"Error getting {href}: {e}")
             try:
-                code = sess.get(href, timeout=TIMEOUT_SECONDS)
+                code = sess.get(href, timeout=TIMEOUT_SECONDS).status_code
             except Exception as e2:
                 logger.debug(f"Error getting {href}: {e2}")
                 code = 500
