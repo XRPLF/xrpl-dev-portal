@@ -3,6 +3,8 @@ name: Selenium link check
 on:
   pull_request:
     branches: [master]
+  schedule:
+    - cron: '0 8 * * 0'    # Sundays 00:00 PST / 01:00 PDT — warms master cache for the week
   workflow_dispatch:
 
 concurrency:
@@ -12,7 +14,10 @@ concurrency:
 jobs:
   link-check:
     runs-on: ubuntu-latest
-    timeout-minutes: 240
+    timeout-minutes: 360
+    permissions:
+      contents: read
+      pull-requests: write
     env:
       PORT: 4000
       BASE_URL: http://localhost:4000
@@ -45,9 +50,10 @@ jobs:
           restore-keys: |
             selenium-link-cache-${{ github.ref_name }}-
             selenium-link-cache-master-
-            selenium-link-cache-
 
       - name: Start Realm dev server
+        env:
+          NO_COLOR: '1'
         run: |
           npx realm develop --port "$PORT" > realm.log 2>&1 &
           echo $! > realm.pid
@@ -57,11 +63,8 @@ jobs:
 
       - name: Run Selenium link checker
         run: |
+          set -eo pipefail
           python tools/check-external-links.py --live docs/ 2>&1 | tee selenium-link-check.log
-          if grep -E "^[1-9][0-9]* broken links found" selenium-link-check.log > /dev/null; then
-            echo "::error::Broken links detected — see report artifact"
-            exit 1
-          fi
 
       - name: Stop Realm server
         if: always()
@@ -69,12 +72,75 @@ jobs:
           if [ -f realm.pid ]; then kill "$(cat realm.pid)" 2>/dev/null || true; fi
 
       - name: Upload report
+        id: upload
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: selenium-link-check-report
+          retention-days: 14
           path: |
             selenium-link-check.log
-            tools/link-cache.json
             realm.log
+            tools/broken-links-report.md
+            tools/link-cache.json
           if-no-files-found: warn
+
+      - name: Post link-check status to PR
+        if: always() && github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const marker = '<!-- selenium-link-check-report -->';
+            const reportFile = 'tools/broken-links-report.md';
+            const artifactUrl = '${{ steps.upload.outputs.artifact-url }}';
+
+            const { data: comments } = await github.rest.issues.listComments({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+            });
+            const existing = comments.find(c => c.body?.startsWith(marker));
+
+            let body;
+            if (fs.existsSync(reportFile)) {
+              const report = fs.readFileSync(reportFile, 'utf-8');
+              body = [marker, report, '', `_[Download report zip](${artifactUrl})._`].join('\n');
+            } else if (existing) {
+              body = [
+                marker,
+                '# Broken links report',
+                '',
+                '✅ Broken links fixed',
+                '',
+                `_[Download report zip](${artifactUrl})._`,
+              ].join('\n');
+            } else {
+              core.info('No broken links and no prior sticky comment — skipping.');
+              return;
+            }
+
+            if (existing) {
+              await github.rest.issues.updateComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                comment_id: existing.id,
+                body,
+              });
+            } else {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                body,
+              });
+            }
+
+      - name: Fail if broken links were found
+        if: always()
+        run: |
+          if [ -f tools/broken-links-report.md ]; then
+            echo "::error::Broken links detected — see PR comment or tools/broken-links-report.md artifact"
+            cat tools/broken-links-report.md
+            exit 1
+          fi
