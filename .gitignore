@@ -11,6 +11,10 @@ _code-samples/*/js/package-lock.json
 _code-samples/*/go/go.sum
 _code-samples/*/java/target/
 _code-samples/*/*/*[Ss]etup.json
+
+# Link checker files
 tools/link-cache.json
+tools/broken-links-report.md
+
 # PHP
 composer.lock

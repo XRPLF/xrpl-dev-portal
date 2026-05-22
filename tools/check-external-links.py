@@ -54,6 +54,7 @@ SAME_HOST_DELAY = 0.5 # Seconds to wait before calling the same host again
 DEFAULT_CACHE_FILE = "link-cache.json"
 CACHE_FILE_FOLDER = "tools" # Check this folder for cache file
 KNOWN_BROKEN_LINKS_FILE = "broken-links.txt" # List of links that work "normally" but report false-positives in this link checker
+BROKEN_LINKS_REPORT_FILE = "broken-links-report.md" # Generated only when broken links are found
 USER_AGENT = "xrpl-dev-portal-link-checker/0.1" # Identify self to websites
 REDOCLY_DEV_BASE = "http://localhost:4000/"
 UNMATCHED_REFLINK_REGEX = re.compile(r"(\[[^\]]+)?\]\[(\w| )*\]")
@@ -394,6 +395,43 @@ class LinkChecker:
                 print("File:", in_file)
                 last_printed_in_file = in_file
             print("  Link:", href)
+
+        if broken_links:
+            self.write_broken_links_report(broken_links, total_links_checked)
+
+    def write_broken_links_report(self, broken_links: list, total_links_checked: int):
+        """
+        Write a Markdown report of broken links to BROKEN_LINKS_REPORT_FILE,
+        grouped by the file that contained each link. Only called when at
+        least one broken link was found.
+        """
+        by_file = {}
+        for in_file, href in broken_links:
+            by_file.setdefault(in_file, []).append(href)
+
+        lines = []
+        lines.append("# Broken links report")
+        lines.append("")
+        lines.append(
+            f"**{len(broken_links)} broken link(s) found** in {len(by_file)} file(s) "
+            f"(out of {total_links_checked} total links checked)."
+        )
+        lines.append("")
+
+        for in_file in sorted(by_file):
+            lines.append(f"### `{in_file}`")
+            for href in by_file[in_file]:
+                lines.append(f"- {href}")
+            lines.append("")
+
+        # Mirror cache-file path resolution: tools/<name> when run from repo root,
+        # bare <name> when already cd'd into tools/.
+        out_path = BROKEN_LINKS_REPORT_FILE
+        if os.path.basename(os.getcwd()) != CACHE_FILE_FOLDER:
+            out_path = os.path.join(CACHE_FILE_FOLDER, out_path)
+
+        with open(out_path, "w") as f:
+            f.write("\n".join(lines))
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="XRPL Dev Portal link checker")
