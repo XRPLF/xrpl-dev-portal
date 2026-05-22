@@ -180,6 +180,7 @@ class LinkChecker:
         total_links_checked = 0
         last_checkin = time()
         for dirpath, dirnames, filenames in os.walk(self.topdir):
+            dirnames[:] = [d for d in dirnames if d not in self.skip_paths]
             self.checkin(f"dir: {dirpath}")
             if dirpath in self.skip_paths:
                 logger.debug(f"Skipping ignored path {dirpath}")

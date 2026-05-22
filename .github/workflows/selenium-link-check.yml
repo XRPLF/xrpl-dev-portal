@@ -52,6 +52,8 @@ jobs:
             selenium-link-cache-master-
 
       - name: Start Realm dev server
+        env:
+          NO_COLOR: '1'
         run: |
           npx realm develop --port "$PORT" > realm.log 2>&1 &
           echo $! > realm.pid
