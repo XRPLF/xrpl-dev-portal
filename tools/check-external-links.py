@@ -119,6 +119,7 @@ class LinkChecker:
             return
         with open(self.cache_file, "w") as f:
             json.dump(self.cache, f)
+        self.last_cache_update = time()
 
     def setup_sessions(self):
         retries = Retry(total=MAX_RETRIES, backoff_factor=1, status_forcelist=[ 502, 503, 504 ])
