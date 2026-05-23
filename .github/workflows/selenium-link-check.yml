@@ -112,18 +112,35 @@ jobs:
             if (fs.existsSync(reportFile)) {
               const report = fs.readFileSync(reportFile, 'utf-8');
               body = [marker, report, '', `_[Download report zip](${artifactUrl})._`].join('\n');
-            } else if (existing) {
-              body = [
-                marker,
-                '# Broken links report',
-                '',
-                '✅ Broken links fixed',
-                '',
-                `_[Download report zip](${artifactUrl})._`,
-              ].join('\n');
             } else {
-              core.info('No broken links and no prior sticky comment — skipping.');
-              return;
+              // If no report file, determine whether the script actually completed
+              // by checking the log for the final summary line (no crash or cancellation).
+              let scriptCompleted = false;
+              try {
+                const log = fs.readFileSync('selenium-link-check.log', 'utf-8');
+                scriptCompleted = /^\d+ broken links found among \d+ total links\.$/m.test(log);
+              } catch (e) {
+                // Log file is missing entirely
+              }
+
+              if (!scriptCompleted) {
+                core.info('Script did not complete (cancelled or crashed) — preserving existing comment.');
+                return;
+              }
+
+              if (existing) {
+                body = [
+                  marker,
+                  '# Broken links report',
+                  '',
+                  '✅ Broken links fixed',
+                  '',
+                  `_[Download report zip](${artifactUrl})._`,
+                ].join('\n');
+              } else {
+                core.info('No broken links and no prior sticky comment — skipping.');
+                return;
+              }
             }
 
             if (existing) {
