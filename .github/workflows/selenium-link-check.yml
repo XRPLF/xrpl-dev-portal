@@ -50,6 +50,7 @@ jobs:
           restore-keys: |
             selenium-link-cache-${{ github.ref_name }}-
             selenium-link-cache-master-
+          save-always: true
 
       - name: Start Realm dev server
         run: |
