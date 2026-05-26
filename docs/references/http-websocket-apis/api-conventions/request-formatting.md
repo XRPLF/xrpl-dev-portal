@@ -80,7 +80,7 @@ The object inside the `params` array can contain the following fields:
 
 | Field               | Type      | Description                                |
 |:--------------------|:----------|:-------------------------------------------|
-| `api_version`       | Number    | _(Optional)_ The API version to use. For details, see [API Versioning](#api-versioning). |
+| `api_version`       | Number    | _(Optional)_ The API version to use. For details, see [API Versioning](../index.md#api-versioning). |
 | (Method Parameters) | (Various) | Provide any parameters to the method here. |
 
 See [Response Formatting](response-formatting.md) for the response from the server.
@@ -91,7 +91,7 @@ Put the API method name after any normal (dash-prefaced) commandline options, fo
 
 The commandline calls JSON-RPC, so its responses always match the JSON-RPC [response format](response-formatting.md).
 
-The commandline always uses the latest [API version](./index.md#api-versioning).
+The commandline always uses the latest [API version](../index.md#api-versioning).
 
 {% admonition type="warning" name="Caution" %}The commandline interface is intended for administrative purposes only and is _not a supported API_. New versions of `rippled` may introduce breaking changes to the commandline API without warning!{% /admonition %}
 
