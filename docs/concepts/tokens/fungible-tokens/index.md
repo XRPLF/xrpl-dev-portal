@@ -54,7 +54,6 @@ If you are creating a new token on the XRP Ledger, it may be confusing that ther
 
 - For most new tokens, MPTs are preferred.
 - Specific cases where you might prefer trust line tokens include:
-    - If you need **compatibility with the DEX**. <!-- Note: revisit this when MPT DEX compatibility is closer to being available. -->
     - Your use case is **community credit**.
     - You need compatibility with legacy software, such as an integration that already works with trust line tokens.
     - You need to be able to represent very large and very small quantities of the same token (20 orders of magnitude apart).

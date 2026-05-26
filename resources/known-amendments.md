@@ -1572,7 +1572,6 @@ Implements a new type of fungible token, called a _Multi-Purpose Token_ (MPT). T
 - (New) `mpt_holders` method - Returns a list of accounts that hold a specific MPT issuance.
 - (Updated) `ledger_entry` method - Can look up MPToken and MPTokenIssuance ledger entry types.
 
-
 ### MPTokensV2
 [MPTokensV2]: #mptokensv2
 
@@ -1583,7 +1582,7 @@ Implements a new type of fungible token, called a _Multi-Purpose Token_ (MPT). T
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
-Extends the XRPL's Decentralized Exchange to natively support Multi-Purpose Tokens (MPTs) as a tradeable asset class. MPTs can be paired with XRP, Trust Line tokens, or other MPTs across existing DEX transactions such as OfferCreate, Payment, AMM, and Checks.
+Extends the XRPL's Decentralized Exchange to natively support Multi-Purpose Tokens (MPTs) as a tradeable asset class. MPTs can be paired with XRP, trust line tokens, or other MPTs across existing DEX transactions such as OfferCreate, Payment, and AMM. Also adds MPT support to Checks.
 
 For more details, see [XLS-82: MPT DEX Integration](https://opensource.ripple.com/docs/xls-82-mpt-dex).
 
@@ -1993,14 +1992,14 @@ Introduces a `TickSize` field to accounts, which can be set with the [AccountSet
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
-Extends escrow functionality to fungible tokens, enabling Trust Line Tokens and Multi-Purpose Tokens (MPTs) to be held in escrow. Issuers can control whether their tokens can be escrowed through flags. To issue Trust Line Tokens, issuers must enable the **Allow TrustLine Locking** flag on their account, or the **Can Escrow** and **Can Transfer** flags for an MPT issuance.
+Extends escrow functionality to fungible tokens, enabling trust line tokens and Multi-Purpose Tokens (MPTs) to be held in escrow. Issuers can control whether their tokens can be escrowed through flags. To issue trust line tokens, issuers must enable the **Allow TrustLine Locking** flag on their account, or the **Can Escrow** and **Can Transfer** flags for an MPT issuance.
 
 Modifies existing transactions:
 
 - EscrowCreate - Can now escrow fungible tokens in addition to XRP.
 - EscrowFinish - Can now deliver escrowed fungible tokens to recipients.
 - EscrowCancel - Can now return escrowed fungible tokens to senders.
-- AccountSet - Can now enable the **Allow Trust Line Locking** flag to allow Trust Line Tokens issued by an account to be escrowed.
+- AccountSet - Can now enable the **Allow Trust Line Locking** flag to allow trust line tokens issued by an account to be escrowed.
 
 Updates existing ledger entry types:
 

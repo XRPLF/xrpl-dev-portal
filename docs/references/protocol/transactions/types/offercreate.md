@@ -10,8 +10,17 @@ txIcon: create
 
 Place an [offer](../../../../concepts/tokens/decentralized-exchange/offers.md) to trade in the [decentralized exchange](../../../../concepts/tokens/decentralized-exchange/index.md).
 
+{% admonition type="info" name="Note" %}
+If an offer is placed with an MPT the owner doesn't already hold, this transaction automatically creates an [MPToken entry][] for that account without requiring a separate [MPTokenAuthorize transaction][].
+{% /admonition %}
+
+<!-- TODO: Add {% amendment-disclaimer name="MPTokensV2" mode="updated" /%} badge. -->
+
 ## Example {% $frontmatter.seo.title %} JSON
 
+{% tabs %}
+
+{% tab label="XRP to Trust Line Token" %}
 ```json
 {
     "TransactionType": "OfferCreate",
@@ -28,6 +37,27 @@ Place an [offer](../../../../concepts/tokens/decentralized-exchange/offers.md) t
     }
 }
 ```
+{% /tab %}
+
+{% tab label="XRP to MPT" %}
+```json
+{
+    "TransactionType": "OfferCreate",
+    "Account": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
+    "Fee": "12",
+    "Flags": 0,
+    "LastLedgerSequence": 7108682,
+    "Sequence": 8,
+    "TakerGets": "6000000",
+    "TakerPays": {
+      "mpt_issuance_id": "000004C463C52827307480341125DA0577DEFC38405B0E3E",
+      "value": "100"
+    }
+}
+```
+{% /tab %}
+
+{% /tabs %}
 
 {% tx-example txid="0CD69FD1F0A890CC57CDA430213FD294F7D65FF4A0F379A0D09D07A222D324E6" /%}
 
@@ -41,6 +71,8 @@ Place an [offer](../../../../concepts/tokens/decentralized-exchange/offers.md) t
 | `OfferSequence`  | Number              | UInt32            | No        | An Offer to delete first, specified in the same way as [OfferCancel][]. |
 | `TakerGets`      | [Currency Amount][] | Amount            | Yes       | The amount and type of currency being sold. |
 | `TakerPays`      | [Currency Amount][] | Amount            | Yes       | The amount and type of currency being bought. |
+
+When crossing offers with MPT amounts (`TakerGets` or `TakerPays`), the **Can Trade** flag must be enabled on the `MPTokenIssuance`.
 
 ## OfferCreate Flags
 
@@ -64,16 +96,19 @@ Transactions of the OfferCreate type support additional values in the [`Flags` f
 | `tecFROZEN`              | The transaction involves a token on a [frozen](../../../../concepts/tokens/fungible-tokens/freezes.md) trust line (including local and global freezes). The `TakerPays` (buy amount) token has been deep-frozen by the issuer. |
 | `tecINSUF_RESERVE_OFFER` | The owner does not have enough XRP to meet the reserve requirement of adding a new offer ledger entry, and the transaction did not convert any currency. (If the transaction successfully traded any amount, the transaction succeeds with the result code `tesSUCCESS`, but does not create an offer ledger entry for the remainder.) |
 | `tecKILLED`              | The transaction specifies `tfFillOrKill`, and the full amount cannot be filled. If the _[ImmediateOfferKilled amendment][]_ is enabled, this result code also occurs when the transaction specifies `tfImmediateOrCancel` and executes without moving funds (previously, an Immediate or Cancel offer would return `tesSUCCESS` even if no funds were moved). |
-| `tecNO_AUTH`             | The transaction involves a token whose issuer uses [Authorized Trust Lines](../../../../concepts/tokens/fungible-tokens/authorized-trust-lines.md) and the the trust line that would receive the tokens exists but has not been authorized. |
+| `tecNO_AUTH`             | The transaction involves a token whose issuer uses [Authorized Trust Lines](../../../../concepts/tokens/fungible-tokens/authorized-trust-lines.md) and the the trust line that would receive the tokens exists but has not been authorized. Or, the sender is not authorized to hold the MPT. |
 | `tecNO_ISSUER`           | The transaction specifies a token whose `issuer` value is not a funded account in the ledger. |
 | `tecNO_LINE`             | The transaction involves a token whose issuer uses [Authorized Trust Lines](../../../../concepts/tokens/fungible-tokens/authorized-trust-lines.md) and the necessary trust line does not exist. |
-| `tecNO_PERMISSION`       | The transaction uses a `DomainID` but the sender is not a member of that domain. {% amendment-disclaimer name="PermissionedDEX" /%} |
+| `tecLOCKED`              | The transaction involves an MPT that is currently [locked](../../../../concepts/tokens/fungible-tokens/deep-freeze.md#how-does-mpt-freezelock-behavior-differ-from-iou) at the issuance or individual token level. |
+| `tecNO_PERMISSION`       | The transaction lacks the required permissions. This can occur when:<ul><li>The **Can Trade** flag is not enabled on the `MPTokenIssuance` for one of the MPTs in the offer.</li><li>The transaction uses a `DomainID` but the sender is not a member of that domain. {% amendment-disclaimer name="PermissionedDEX" /%}</li></ul> |
+| `tecOBJECT_NOT_FOUND`    | The `MPTokenIssuance` for one of the MPTs in the offer does not exist. |
 | `tecUNFUNDED_OFFER`      | The owner does not hold a positive amount of the `TakerGets` currency. (Exception: if `TakerGets` specifies a token that the owner issues, the transaction can succeed.) |
 | `temBAD_CURRENCY`        | The transaction specifies a fungible token incorrectly, such as a fungible token with the currency code "XRP". |
 | `temBAD_EXPIRATION`      | The transaction contains an `Expiration` field that is not validly formatted. |
 | `temBAD_ISSUER`          | The transaction specifies a token with an invalid `issuer` value. |
 | `temBAD_OFFER`           | The offer tries to trade XRP for XRP, or tries to trade an invalid or negative amount of a token. |
 | `temBAD_SEQUENCE`        | The transaction contains an `OfferSequence` that is not validly formatted, or is higher than the transaction's own `Sequence` number. |
+| `temDISABLED`            | `TakerGets` or `TakerPays` specifies an MPT but the [MPTokensV2 amendment][] is not enabled. |
 | `temINVALID_FLAG`        | The transaction specifies an invalid flag combination, such as both `tfImmediateOrCancel` and `tfFillOrKill`, or the transaction uses `tfHybrid` but omits the `DomainID` field. |
 | `temREDUNDANT`           | The transaction would trade a token for the same token (same issuer and currency code). |
 
