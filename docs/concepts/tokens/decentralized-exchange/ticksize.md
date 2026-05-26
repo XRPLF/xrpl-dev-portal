@@ -9,11 +9,27 @@ labels:
 ---
 # Tick Size
 
-When an Offer is placed into an order book, its exchange rate is truncated based on the `TickSize` values set by the issuers of the currencies involved in the Offer. When trading XRP and a token, the `TickSize` from the token's issuer applies. When trading two tokens, the Offer uses the smaller `TickSize` value (that is, the one with fewer significant digits). If neither token has a `TickSize` set, the default behavior applies.
+When an Offer is placed into an order book, its exchange rate is truncated based on the `TickSize` values set by the issuers of any trust line tokens involved in the Offer. Unlike tick sizes in traditional finance, the XRP Ledger's `TickSize` applies to the **exchange rate's significant digits**, not the trade amounts directly. After truncating the exchange rate, the ledger recalculates one of the amounts to match the new rate:
 
-The `TickSize` value truncates the number of _significant digits_ in the exchange rate of an offer when it gets placed in an order book. Issuers can set `TickSize` to an integer from `3` to `15` using an [AccountSet transaction][]. The exchange rate is represented as significant digits and an exponent; the `TickSize` does not affect the exponent. This allows the XRP Ledger to represent exchange rates between assets that vary greatly in value (for example, a highly inflated currency compared to a rare commodity). The lower the `TickSize` an issuer sets, the larger the increment traders must offer to be considered a higher exchange rate than the existing Offers.
+- **Buy offers** recalculate the `TakerGets` amount.
+- **Sell offers** recalculate the `TakerPays` amount.
 
-The `TickSize` does not affect the part of an Offer that can be executed immediately. (For that reason, OfferCreate transactions with `tfImmediateOrCancel` are unaffected by `TickSize` values.) If the Offer cannot be fully executed, the transaction processing engine calculates the exchange rate and truncates it based on `TickSize`. Then, the engine rounds the remaining amount of the Offer from the "less important" side to match the truncated exchange rate. For a default OfferCreate transaction (a "buy" Offer), the `TakerPays` amount (the amount being bought) gets rounded. If the `tfSell` flag is enabled (a "sell" Offer) the `TakerGets` amount (the amount being sold) gets rounded.
+Because buy and sell offers adjust different sides, two offers that appear to have matching prices may not actually cross. This can be more problematic than the price discovery issues that `TickSize` is meant to solve.
+
+{% admonition type="warning" name="Warning" %}
+Consider carefully whether your use case benefits from a `TickSize`. In particular, stablecoins and other currency-like tokens may be better off without one, since they trade in narrow price ranges where precise matching matters more than preventing competitive price improvements.
+{% /admonition %}
+
+The `TickSize` that applies depends on the assets being traded:
+
+- **XRP and a trust line token**: The `TickSize` from the trust line token's issuer applies. Either amount may be adjusted based on buy/sell direction. If the issuer has not set a tick size, the exchange rate uses its maximum precision.
+- **MPT and a trust line token**: The `TickSize` from the trust line token's issuer applies. Only the trust line token amount is adjusted; MPT amounts are never adjusted for tick size. If the trust line token's issuer has not set a tick size, the exchange rate uses its maximum precision.
+- **Two trust line tokens**: The smaller `TickSize` value (fewer significant digits) applies. Either amount may be adjusted based on buy/sell direction. If neither issuer has set a tick size, the exchange rate uses its maximum precision.
+- **XRP/MPT or MPT/MPT**: The exchange rate always uses its maximum precision. XRP and MPTs do not support `TickSize`.
+
+Trust line token issuers can set `TickSize` to an integer from `3` to `15` using an [AccountSet transaction][]. The exchange rate is represented as significant digits and an exponent; the `TickSize` does not affect the exponent. This allows the XRP Ledger to represent exchange rates between assets that vary greatly in value (for example, a highly inflated currency compared to a rare commodity). The lower the `TickSize` an issuer sets, the larger the increment traders must offer to be considered a higher exchange rate than the existing Offers.
+
+The `TickSize` does not affect the part of an offer that can be executed immediately. For this reason, OfferCreate transactions with `tfImmediateOrCancel` are unaffected by `TickSize` values.
 
 When an issuer enables, disables, or changes the `TickSize`, Offers that were placed under the previous setting are unaffected.
 
