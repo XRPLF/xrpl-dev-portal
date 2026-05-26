@@ -892,7 +892,7 @@ After finishing this step the application should look like this:
 
 1. In the project root, create a new folder `bootstrap` and add the following files into that directory:
 {% repo-link path="_code-samples/build-a-desktop-wallet/js/bootstrap/bootstrap.bundle.min.js" %}`bootstrap.bundle.min.js`{% /repo-link %},
-{% repo-link path="_code-samples/build-a-desktop-wallet/js/bootstrap/bootstrap.bundle.min.css" %}`bootstrap.min.css`{% /repo-link %},
+{% repo-link path="_code-samples/build-a-desktop-wallet/js/bootstrap/bootstrap.min.css" %}`bootstrap.min.css`{% /repo-link %},
 {% repo-link path="_code-samples/build-a-desktop-wallet/js/bootstrap/custom.css" %}`custom.css`{% /repo-link %},
 {% repo-link path="_code-samples/build-a-desktop-wallet/js/bootstrap/XRPLedger_DevPortal-white.svg" %}`XRPLedger_DevPortal-white.svg`{% /repo-link %}
 
