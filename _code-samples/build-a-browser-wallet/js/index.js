@@ -6,7 +6,7 @@ import getWalletDetails from './src/helpers/get-wallet-details.js';
 // Optional: Render the XRPL logo
 addXrplLogo();
 
-const client = new Client(process.env.CLIENT); // Get the client from the environment variables
+const client = new Client(import.meta.env.VITE_CLIENT); // Get the client from the environment variables
 
 // Get the elements from the DOM
 const sendXrpButton = document.querySelector('#send_xrp_button');
@@ -51,7 +51,7 @@ txHistoryButton.addEventListener('click', () => {
 
         // Redirect on View More link click
         walletElement.querySelector('#view_more_button').addEventListener('click', () => {
-            window.open(`https://${process.env.EXPLORER_NETWORK}.xrpl.org/accounts/${address}`, '_blank');
+            window.open(`https://${import.meta.env.VITE_EXPLORER_NETWORK}.xrpl.org/accounts/${address}`, '_blank');
         });
         
         walletLoadingDiv.style.display = 'none';

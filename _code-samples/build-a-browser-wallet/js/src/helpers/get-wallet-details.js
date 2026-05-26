@@ -1,7 +1,7 @@
 import { Wallet, classicAddressToXAddress } from 'xrpl';
 
 export default async function getWalletDetails({ client }) {
-    const wallet = Wallet.fromSeed(process.env.SEED);
+    const wallet = Wallet.fromSeed(import.meta.env.VITE_SEED);
 
     // Get the wallet details
     const {

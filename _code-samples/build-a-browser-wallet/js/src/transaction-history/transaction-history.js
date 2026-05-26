@@ -78,8 +78,8 @@ async function fetchTxHistory() {
     try {
         loadMore.textContent = 'Loading...';
         loadMore.disabled = true;
-        const wallet = Wallet.fromSeed(process.env.SEED);
-        const client = new Client(process.env.CLIENT);
+        const wallet = Wallet.fromSeed(import.meta.env.VITE_SEED);
+        const client = new Client(import.meta.env.VITE_CLIENT);
 
         // Wait for the client to connect
         await client.connect();
@@ -137,7 +137,7 @@ async function fetchTxHistory() {
                 ${renderAmount(value.delivered)}
                 ${value.TransactionType ? `<td>${value.TransactionType}</td>` : '-'}
                 ${value.result ? `<td>${value.result}</td>` : '-'}
-                ${value.Hash ? `<td><a href="https://${process.env.EXPLORER_NETWORK}.xrpl.org/transactions/${value.Hash}" target="_blank">View</a></td>` : '-'}`;
+                ${value.Hash ? `<td><a href="https://${import.meta.env.VITE_EXPLORER_NETWORK}.xrpl.org/transactions/${value.Hash}" target="_blank">View</a></td>` : '-'}`;
                 // Add the row to the table
                 txHistoryElement.appendChild(row);
             });
