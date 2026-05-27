@@ -23,26 +23,8 @@ import sys
 from datetime import date, datetime
 
 
-# Emails to exclude from credits (Ripple employees not using @ripple.com).
-# Commits from @ripple.com addresses are already filtered automatically.
-EXCLUDED_EMAILS = {
-    "3maisons@gmail.com",                                   # Luc des Trois Maisons
-    "a1q123456@users.noreply.github.com",                   # Jingchen Wu
-    "bthomee@users.noreply.github.com",                     # Bart Thomee
-    "21219765+ckeshava@users.noreply.github.com",           # Chenna Keshava B S
-    "gregtatcam@users.noreply.github.com",                  # Gregory Tsipenyuk
-    "kuzzz99@gmail.com",                                    # Sergey Kuznetsov
-    "legleux@users.noreply.github.com",                     # Michael Legleux
-    "mathbunnyru@users.noreply.github.com",                 # Ayaz Salikhov
-    "mvadari@gmail.com",                                    # Mayukha Vadari
-    "115580134+oleks-rip@users.noreply.github.com",         # Oleksandr Pidskopnyi
-    "3397372+pratikmankawde@users.noreply.github.com",      # Pratik Mankawde
-    "35279399+shawnxie999@users.noreply.github.com",        # Shawn Xie
-    "5780819+Tapanito@users.noreply.github.com",            # Vito Tumas
-    "13349202+vlntb@users.noreply.github.com",              # Valentin Balaschenko
-    "129996061+vvysokikh1@users.noreply.github.com",        # Vladislav Vysokikh
-    "vvysokikh@gmail.com",                                  # Vladislav Vysokikh
-}
+# Repo root, so paths resolve correctly regardless of where the script is invoked from.
+REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 # Pre-compiled patterns for skipping version commits
@@ -52,6 +34,7 @@ SKIP_PATTERNS = [
     re.compile(r"bump version to", re.IGNORECASE),
     re.compile(r"^Merge tag ", re.IGNORECASE),
 ]
+
 
 # Patterns for normalizing commit titles when detecting cherry-pick duplicates.
 # Strips trailing "(#NNNN)" PR-number suffixes and conventional-commit prefixes.
@@ -376,6 +359,39 @@ def fetch_prs_graphql(pr_numbers):
     return results
 
 
+def filter_to_ripple_members(logins, org="ripple"):
+    """Return the subset of `logins` that are members of ripple, batched via GraphQL.
+
+    Uses the authenticated viewer's privileges, so this part of the script probably won't
+    work for non-Ripple org members. In this case most Ripple org members will show up
+    in the credits section.
+    """
+    if not logins:
+        return set()
+
+    members = set()
+    batch_size = 50
+    target = org.lower()
+    logins = list(logins)
+
+    for i in range(0, len(logins), batch_size):
+        batch = logins[i:i + batch_size]
+        fragments = [
+            f'u{idx}: user(login: "{l}") {{ organizations(first: 20) {{ nodes {{ login }} }} }}'
+            for idx, l in enumerate(batch)
+        ]
+        data = run_gh_graphql("{ " + " ".join(fragments) + " }")
+        nodes = data.get("data") or {}
+        for idx, l in enumerate(batch):
+            user = nodes.get(f"u{idx}")
+            if not user:
+                continue
+            orgs = {n["login"].lower() for n in user.get("organizations", {}).get("nodes", [])}
+            if target in orgs:
+                members.add(l)
+    return members
+
+
 # --- Utilities ---
 
 def clean_pr_body(text):
@@ -575,7 +591,11 @@ def main():
     print(f"Version: {version}")
 
     year = args.date.split("-")[0]
-    output_path = args.output or f"blog/{year}/rippled-{version}.md"
+    # Resolve --output relative to REPO_ROOT (not CWD). Absolute paths pass through unchanged.
+    if args.output:
+        output_path = args.output if os.path.isabs(args.output) else os.path.join(REPO_ROOT, args.output)
+    else:
+        output_path = os.path.join(REPO_ROOT, "blog", year, f"rippled-{version}.md")
 
     print(f"Fetching commits: {args.from_ref}...{args.to_ref}")
     commits = fetch_commits(args.from_ref, args.to_ref)
@@ -593,7 +613,9 @@ def main():
     dupe_pr_shas = {}
     dupe_pr_bodies = {}
     dupe_orphan_commits = []
-    authors = set()
+    # Contributors are collected here and filtered against the Ripple org
+    contributor_logins = set()
+    contributors_without_login = set()
 
     for commit in commits:
         full_message = commit["commit"]["message"]
@@ -601,16 +623,16 @@ def main():
         body = "\n".join(full_message.split("\n")[1:]).strip()
         sha = commit["sha"]
         author = commit["commit"]["author"]["name"]
-        email = commit["commit"]["author"].get("email", "")
 
-        # Skip Ripple employees from credits and skip potential-dupe commits entirely
+        # Collect contributors for the credits section. Dupe commits and bots are skipped.
         if not commit.get("_potential_dupe"):
-            login = (commit.get("author") or {}).get("login")
-            if not email.lower().endswith("@ripple.com") and email not in EXCLUDED_EMAILS:
+            github_user = commit.get("author") or {}
+            if github_user.get("type") != "Bot":
+                login = github_user.get("login")
                 if login:
-                    authors.add(f"@{login}")
+                    contributor_logins.add(login)
                 else:
-                    authors.add(author)
+                    contributors_without_login.add(author)
 
         if should_skip(message):
             continue
@@ -745,6 +767,15 @@ def main():
             entry = format_commit_entry(sha, title, orphan["body"], files)
             entries.append(entry)
 
+    # Build the credits list.
+    print(f"Checking Ripple org membership for {len(contributor_logins)} contributor login(s)...")
+    ripple_members = filter_to_ripple_members(contributor_logins)
+    authors = set()
+    for login in contributor_logins:
+        if login not in ripple_members:
+            authors.add(f"@{login}")
+    authors |= contributors_without_login
+
     # Generate markdown
     markdown = generate_markdown(version, args.date, amendment_diff, amendment_unchanged, amendment_entries, entries, authors, version_commit)
 
@@ -755,11 +786,16 @@ def main():
 
     print(f"\nRelease notes written to: {output_path}")
 
-    # Update blog/sidebars.yaml
-    sidebars_path = "blog/sidebars.yaml"
-    # Derive sidebar path and year from actual output path
-    relative_path = output_path.removeprefix("blog/")
-    sidebar_year = relative_path.split("/")[0]
+    # Update blog/sidebars.yaml only if the output actually lives under blog/.
+    # Custom --output paths outside blog/ are skipped.
+    sidebars_path = os.path.join(REPO_ROOT, "blog", "sidebars.yaml")
+    blog_dir = os.path.join(REPO_ROOT, "blog")
+    abs_output = os.path.abspath(output_path)
+    if not abs_output.startswith(blog_dir + os.sep):
+        print(f"Output {output_path} is outside {blog_dir} — skipping sidebar update.")
+        return
+    relative_path = os.path.relpath(abs_output, blog_dir)
+    sidebar_year = relative_path.split(os.sep)[0]
     new_entry = f"        - page: {relative_path}"
     try:
         with open(sidebars_path, "r") as f:
