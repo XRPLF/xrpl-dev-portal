@@ -1,0 +1,184 @@
+<svg viewBox="0 0 940 830" xmlns="http://www.w3.org/2000/svg" role="img" font-family="'Inter','Helvetica Neue',Arial,sans-serif">
+  <title>X402 Payment Flow on the XRP Ledger</title>
+  <desc>Sequence diagram: 12-step X402 payment flow between Agent (Payer), Merchant (X402 Service), XRP Ledger (Settlement Layer), and Facilitator (T54). Phases: Discover (steps 1-2), Pay (steps 3-4), Verify (steps 5-8), Deliver (steps 9-12).</desc>
+
+  <rect width="940" height="830" fill="#F6F8FC" rx="10"/>
+
+  <!-- Title -->
+  <text x="460" y="30" text-anchor="middle" fill="#0B0D1E" font-size="13" font-weight="700" letter-spacing="0.4">X402 Payment Flow — XRP Ledger</text>
+  <line x1="60" y1="43" x2="880" y2="43" stroke="#D4DCF0" stroke-width="1"/>
+
+  <!-- ── PARTICIPANTS ── -->
+  <rect x="18" y="53" width="138" height="40" rx="6" fill="#EDF6FC" stroke="#0094C4" stroke-width="1.5"/>
+  <text x="87" y="71" text-anchor="middle" fill="#0076A8" font-size="11" font-weight="700">Agent</text>
+  <text x="87" y="85" text-anchor="middle" fill="#4A8AAE" font-size="9">(Payer)</text>
+
+  <rect x="228" y="53" width="148" height="40" rx="6" fill="#F0F4FA" stroke="#8A9DC0" stroke-width="1.5"/>
+  <text x="302" y="71" text-anchor="middle" fill="#2A3C60" font-size="11" font-weight="700">Merchant</text>
+  <text x="302" y="85" text-anchor="middle" fill="#5A6888" font-size="9">(X402 Service)</text>
+
+  <rect x="470" y="49" width="152" height="48" rx="6" fill="#EDF6FC" stroke="#0094C4" stroke-width="2"/>
+  <text x="546" y="70" text-anchor="middle" fill="#0076A8" font-size="11" font-weight="700">XRP Ledger</text>
+  <text x="546" y="85" text-anchor="middle" fill="#0094C4" font-size="9" font-weight="600">Settlement Layer</text>
+
+  <rect x="738" y="53" width="150" height="40" rx="6" fill="#F0F4FA" stroke="#8A9DC0" stroke-width="1.5"/>
+  <text x="813" y="71" text-anchor="middle" fill="#2A3C60" font-size="11" font-weight="700">Facilitator</text>
+  <text x="813" y="85" text-anchor="middle" fill="#5A6888" font-size="9">(T54)</text>
+
+  <!-- ── LIFELINES ── -->
+  <line x1="87"  y1="93" x2="87"  y2="800" stroke="#0094C4" stroke-width="1"   stroke-dasharray="4,5" opacity="0.35"/>
+  <line x1="302" y1="93" x2="302" y2="800" stroke="#8A9DC0" stroke-width="1"   stroke-dasharray="4,5" opacity="0.3"/>
+  <line x1="546" y1="97" x2="546" y2="800" stroke="#0094C4" stroke-width="1.5" stroke-dasharray="4,5" opacity="0.45"/>
+  <line x1="813" y1="93" x2="813" y2="800" stroke="#8A9DC0" stroke-width="1"   stroke-dasharray="4,5" opacity="0.3"/>
+
+  <!-- ── ARROW MARKERS ── -->
+  <defs>
+    <marker id="ab"  markerWidth="7" markerHeight="7" refX="5.5" refY="3.5" orient="auto"><polygon points="0 0.5,6 3.5,0 6.5" fill="#0094C4"/></marker>
+    <marker id="ag"  markerWidth="7" markerHeight="7" refX="5.5" refY="3.5" orient="auto"><polygon points="0 0.5,6 3.5,0 6.5" fill="#16A34A"/></marker>
+    <marker id="aa"  markerWidth="7" markerHeight="7" refX="5.5" refY="3.5" orient="auto"><polygon points="0 0.5,6 3.5,0 6.5" fill="#D97706"/></marker>
+    <marker id="agr" markerWidth="7" markerHeight="7" refX="5.5" refY="3.5" orient="auto"><polygon points="0 0.5,6 3.5,0 6.5" fill="#7A90B4"/></marker>
+  </defs>
+
+  <!-- ── PHASE BANDS ── -->
+  <rect x="0" y="115" width="940" height="82"  fill="#EDF6FC" opacity="0.4"/>
+  <rect x="0" y="222" width="940" height="118" fill="#F0FDF4" opacity="0.4"/>
+  <rect x="0" y="355" width="940" height="192" fill="#FFFBEB" opacity="0.4"/>
+  <rect x="0" y="562" width="940" height="215" fill="#F0F4FA" opacity="0.35"/>
+
+  <!-- ── PHASE LABELS ── -->
+  <rect x="898" y="130" width="38" height="52" rx="4" fill="#EDF6FC" stroke="#C8D8EC" stroke-width="1"/>
+  <text x="917" y="150" text-anchor="middle" fill="#0076A8" font-size="8" font-weight="700">DIS</text>
+  <text x="917" y="162" text-anchor="middle" fill="#0076A8" font-size="8" font-weight="700">COV</text>
+  <text x="917" y="174" text-anchor="middle" fill="#0076A8" font-size="8" font-weight="700">ER</text>
+
+  <rect x="898" y="236" width="38" height="36" rx="4" fill="#F0FDF4" stroke="#C8E8D0" stroke-width="1"/>
+  <text x="917" y="249" text-anchor="middle" fill="#16A34A" font-size="8" font-weight="700">PAY</text>
+  <text x="917" y="264" text-anchor="middle" fill="#3A8058" font-size="7.5">3–5 s</text>
+
+  <rect x="898" y="368" width="38" height="62" rx="4" fill="#FFFBEB" stroke="#E8D8B0" stroke-width="1"/>
+  <text x="917" y="385" text-anchor="middle" fill="#D97706" font-size="8" font-weight="700">VER</text>
+  <text x="917" y="397" text-anchor="middle" fill="#D97706" font-size="8" font-weight="700">IFY</text>
+  <text x="917" y="422" text-anchor="middle" fill="#997030" font-size="7">&amp; SIGN</text>
+
+  <rect x="898" y="576" width="38" height="62" rx="4" fill="#F0F4FA" stroke="#C8D4E8" stroke-width="1"/>
+  <text x="917" y="594" text-anchor="middle" fill="#2A3C60" font-size="8" font-weight="700">DEL</text>
+  <text x="917" y="606" text-anchor="middle" fill="#2A3C60" font-size="8" font-weight="700">IVE</text>
+  <text x="917" y="618" text-anchor="middle" fill="#2A3C60" font-size="8" font-weight="700">R</text>
+  <text x="917" y="630" text-anchor="middle" fill="#5A6888" font-size="7">200 OK</text>
+
+  <!-- ════════════════════════════════════════════════════
+       STEP 1 — Agent → Merchant: GET /hello
+  ═════════════════════════════════════════════════════ -->
+  <text x="194" y="128" text-anchor="middle" fill="#0076A8" font-size="10.5" font-weight="600">GET /hello</text>
+  <line x1="92" y1="140" x2="295" y2="140" stroke="#0094C4" stroke-width="1.5" marker-end="url(#ab)"/>
+  <circle cx="32" cy="140" r="8" fill="#EDF6FC" stroke="#0094C4" stroke-width="1"/>
+  <text x="32" y="144" text-anchor="middle" fill="#0076A8" font-size="8" font-weight="700">1</text>
+
+  <!-- ════════════════════════════════════════════════════
+       STEP 2 — Merchant → Agent: 402 Payment Required
+  ═════════════════════════════════════════════════════ -->
+  <text x="194" y="178" text-anchor="middle" fill="#D97706" font-size="10.5" font-weight="600">402 Payment Required</text>
+  <line x1="297" y1="190" x2="94" y2="190" stroke="#D97706" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#aa)"/>
+  <text x="194" y="204" text-anchor="middle" fill="#997030" font-size="9">{ price, payTo, facilitatorUrl }</text>
+  <circle cx="32" cy="190" r="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1"/>
+  <text x="32" y="194" text-anchor="middle" fill="#D97706" font-size="8" font-weight="700">2</text>
+
+  <!-- ════════════════════════════════════════════════════
+       STEP 3 — Agent → XRP Ledger: Payment Transaction
+  ═════════════════════════════════════════════════════ -->
+  <text x="316" y="242" text-anchor="middle" fill="#16A34A" font-size="10.5" font-weight="700">Payment Transaction</text>
+  <line x1="92" y1="254" x2="539" y2="254" stroke="#16A34A" stroke-width="2" marker-end="url(#ag)"/>
+  <text x="316" y="268" text-anchor="middle" fill="#3A8058" font-size="9">amount: 1000 drops · destination: payTo</text>
+  <circle cx="32" cy="254" r="8" fill="#F0FDF4" stroke="#16A34A" stroke-width="1"/>
+  <text x="32" y="258" text-anchor="middle" fill="#16A34A" font-size="8" font-weight="700">3</text>
+
+  <!-- XRP Ledger activation box -->
+  <rect x="538" y="254" width="16" height="60" rx="2" fill="#0094C4" opacity="0.18"/>
+
+  <!-- ════════════════════════════════════════════════════
+       STEP 4 — XRP Ledger → Agent: tesSUCCESS + hash
+  ═════════════════════════════════════════════════════ -->
+  <text x="316" y="298" text-anchor="middle" fill="#16A34A" font-size="10.5" font-weight="700">tesSUCCESS · tx hash</text>
+  <line x1="539" y1="310" x2="94" y2="310" stroke="#16A34A" stroke-width="2" stroke-dasharray="6,3" marker-end="url(#ag)"/>
+  <text x="316" y="324" text-anchor="middle" fill="#3A8058" font-size="9">Confirmed in 3–5 seconds — deterministic finality</text>
+  <circle cx="32" cy="310" r="8" fill="#F0FDF4" stroke="#16A34A" stroke-width="1"/>
+  <text x="32" y="314" text-anchor="middle" fill="#16A34A" font-size="8" font-weight="700">4</text>
+
+  <!-- ════════════════════════════════════════════════════
+       STEP 5 — Agent → Facilitator: Verify Payment
+  ═════════════════════════════════════════════════════ -->
+  <text x="449" y="372" text-anchor="middle" fill="#0076A8" font-size="10.5" font-weight="600">Verify Payment</text>
+  <line x1="92" y1="384" x2="806" y2="384" stroke="#0094C4" stroke-width="1.5" marker-end="url(#ab)"/>
+  <text x="449" y="398" text-anchor="middle" fill="#4A8AAE" font-size="9">{ txHash, payTo, amount }</text>
+  <circle cx="32" cy="384" r="8" fill="#EDF6FC" stroke="#0094C4" stroke-width="1"/>
+  <text x="32" y="388" text-anchor="middle" fill="#0076A8" font-size="8" font-weight="700">5</text>
+
+  <!-- ════════════════════════════════════════════════════
+       STEP 6 — Facilitator → XRP Ledger: Confirm
+  ═════════════════════════════════════════════════════ -->
+  <text x="679" y="434" text-anchor="middle" fill="#5A7098" font-size="10" font-weight="600">Confirm on-chain settlement</text>
+  <line x1="807" y1="446" x2="553" y2="446" stroke="#7A90B4" stroke-width="1.5" marker-end="url(#agr)"/>
+  <circle cx="32" cy="446" r="8" fill="#F0F4FA" stroke="#7A90B4" stroke-width="1"/>
+  <text x="32" y="450" text-anchor="middle" fill="#5A7098" font-size="8" font-weight="700">6</text>
+
+  <!-- ════════════════════════════════════════════════════
+       STEP 7 — XRP Ledger → Facilitator: Confirmed
+  ═════════════════════════════════════════════════════ -->
+  <text x="679" y="483" text-anchor="middle" fill="#5A7098" font-size="10" font-weight="600">Settlement confirmed</text>
+  <line x1="553" y1="495" x2="807" y2="495" stroke="#7A90B4" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#agr)"/>
+  <circle cx="32" cy="495" r="8" fill="#F0F4FA" stroke="#7A90B4" stroke-width="1"/>
+  <text x="32" y="499" text-anchor="middle" fill="#5A7098" font-size="8" font-weight="700">7</text>
+
+  <!-- ════════════════════════════════════════════════════
+       STEP 8 — Facilitator → Agent: Signed Receipt
+  ═════════════════════════════════════════════════════ -->
+  <text x="449" y="536" text-anchor="middle" fill="#D97706" font-size="10.5" font-weight="600">Signed Receipt</text>
+  <line x1="807" y1="548" x2="94" y2="548" stroke="#D97706" stroke-width="1.5" stroke-dasharray="6,3" marker-end="url(#aa)"/>
+  <text x="449" y="562" text-anchor="middle" fill="#997030" font-size="9">Cryptographically signed by facilitator</text>
+  <circle cx="32" cy="548" r="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1"/>
+  <text x="32" y="552" text-anchor="middle" fill="#D97706" font-size="8" font-weight="700">8</text>
+
+  <!-- ════════════════════════════════════════════════════
+       STEP 9 — Agent → Merchant: Retry with receipt
+  ═════════════════════════════════════════════════════ -->
+  <text x="194" y="598" text-anchor="middle" fill="#0076A8" font-size="10.5" font-weight="700">GET /hello  +  X-PAYMENT header</text>
+  <line x1="92" y1="610" x2="295" y2="610" stroke="#0094C4" stroke-width="2" marker-end="url(#ab)"/>
+  <text x="194" y="624" text-anchor="middle" fill="#4A8AAE" font-size="9">X-PAYMENT: { receipt }</text>
+  <circle cx="32" cy="610" r="8" fill="#EDF6FC" stroke="#0094C4" stroke-width="1"/>
+  <text x="32" y="614" text-anchor="middle" fill="#0076A8" font-size="8" font-weight="700">9</text>
+
+  <!-- ════════════════════════════════════════════════════
+       STEP 10 — Merchant → Facilitator: Verify receipt
+  ═════════════════════════════════════════════════════ -->
+  <text x="557" y="664" text-anchor="middle" fill="#5A7098" font-size="10" font-weight="600">Verify receipt signature</text>
+  <line x1="307" y1="676" x2="806" y2="676" stroke="#7A90B4" stroke-width="1.5" marker-end="url(#agr)"/>
+  <circle cx="32" cy="676" r="8" fill="#F0F4FA" stroke="#7A90B4" stroke-width="1"/>
+  <text x="30" y="680" text-anchor="middle" fill="#5A7098" font-size="7.5" font-weight="700">10</text>
+
+  <!-- ════════════════════════════════════════════════════
+       STEP 11 — Facilitator → Merchant: Valid
+  ═════════════════════════════════════════════════════ -->
+  <text x="557" y="712" text-anchor="middle" fill="#5A7098" font-size="10" font-weight="600">Receipt valid</text>
+  <line x1="807" y1="724" x2="309" y2="724" stroke="#7A90B4" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#agr)"/>
+  <circle cx="32" cy="724" r="8" fill="#F0F4FA" stroke="#7A90B4" stroke-width="1"/>
+  <text x="30" y="728" text-anchor="middle" fill="#5A7098" font-size="7.5" font-weight="700">11</text>
+
+  <!-- ════════════════════════════════════════════════════
+       STEP 12 — Merchant → Agent: 200 OK
+  ═════════════════════════════════════════════════════ -->
+  <text x="194" y="757" text-anchor="middle" fill="#16A34A" font-size="10.5" font-weight="700">200 OK — Resource delivered</text>
+  <line x1="297" y1="769" x2="94" y2="769" stroke="#16A34A" stroke-width="2" stroke-dasharray="6,3" marker-end="url(#ag)"/>
+  <text x="194" y="783" text-anchor="middle" fill="#3A8058" font-size="9">{ "message": "Hello World! Thanks for the payment." }</text>
+  <circle cx="32" cy="769" r="8" fill="#F0FDF4" stroke="#16A34A" stroke-width="1"/>
+  <text x="30" y="773" text-anchor="middle" fill="#16A34A" font-size="7.5" font-weight="700">12</text>
+
+  <!-- ── LEGEND ── -->
+  <line x1="22"  y1="812" x2="42"  y2="812" stroke="#0094C4" stroke-width="1.5"/>
+  <text x="46"  y="816" fill="#6A80A0" font-size="8.5">Request</text>
+  <line x1="96"  y1="812" x2="116" y2="812" stroke="#D97706" stroke-width="1.5" stroke-dasharray="4,2"/>
+  <text x="120" y="816" fill="#6A80A0" font-size="8.5">402 / Receipt (response)</text>
+  <line x1="238" y1="812" x2="258" y2="812" stroke="#16A34A" stroke-width="2"/>
+  <text x="262" y="816" fill="#6A80A0" font-size="8.5">Payment / Success</text>
+  <line x1="372" y1="812" x2="392" y2="812" stroke="#7A90B4" stroke-width="1.5" stroke-dasharray="4,2"/>
+  <text x="396" y="816" fill="#6A80A0" font-size="8.5">Internal verification</text>
+</svg>
