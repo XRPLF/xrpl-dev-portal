@@ -58,7 +58,7 @@ The XRP Ledger's deterministic finality means step 3 is reliable: the agent know
 within 3–5 seconds whether the payment confirmed, and a clean expiry means no ambiguous
 state to handle.
 
-![X402 payment sequence diagram showing the 12-step flow between Agent, Merchant, XRP Ledger, and Facilitator](./x402-sequence-light.svg)
+![X402 payment sequence diagram showing the 12-step flow between Agent, Merchant, XRP Ledger, and Facilitator](../img/x402-sequence-light.svg)
 
 <!-- For dark mode, swap to x402-sequence-dark.svg via a <picture> element once the
 dark variant is available. Pattern: same as agentic-payment-loop diagram. -->
@@ -184,7 +184,7 @@ RESOURCE_URL=http://localhost:8000/hello               # The paid endpoint to ca
 ```
 
 > **Never commit your wallet seed to version control.** Use environment variables or a
-> secrets manager. See [Step 4: Securely store your keys](/docs/tutorials/getting-started-for-agents/#step-4-securely-store-your-keys)
+> secrets manager. See [Step 4: Securely store your keys](/docs/agents/getting-started-with-agentic-transactions/#step-4-securely-store-your-keys)
 > for guidance.
 
 ### Step 3: Create your client
@@ -307,12 +307,12 @@ difference transparently.
 
 ## Where to go next
 
-- [Getting Started with Agentic Transactions](/docs/tutorials/getting-started-for-agents/) —
+- [Getting Started with Agentic Transactions](/docs/agents/getting-started-with-agentic-transactions/) —
   The full tutorial for setting up the XRPL skills and sending your first payment.
-- [Track and Measure Agent Behavior](/docs/use-cases/agentic-transactions/#track-and-measure-agent-behavior) —
+<!-- - [Track and Measure Agent Behavior](/docs/use-cases/agentic-transactions/#track-and-measure-agent-behavior) —
   Using `SourceTag` and `Memos` to attribute and audit agent payments.
 - [For Institutional Developers](/docs/use-cases/agentic-transactions/#for-institutional-developers) —
-  Spending controls, key management, and compliance logging for production deployments.
+  Spending controls, key management, and compliance logging for production deployments. -->
 - [T54 X402 Documentation](https://xrpl-x402.t54.ai/docs) — The full X402 reference for
   the XRPL implementation, including the exact payment scheme and facilitator API.
 - [X402 Protocol Repository](#) — *(⚠️ FOLLOW-UP: Add the official X402 repo link once

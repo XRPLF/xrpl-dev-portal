@@ -782,17 +782,17 @@ foundational primitives for building on the XRP Ledger with an LLM agent.
 
 **Use case guides:**
 
-- [Agentic Payments with X402](/docs/use-cases/agentic-transactions/agentic-payments-x402/) —
+- [Agentic Payments with X402](/docs/agents/agentic-payments-x402.md) —
   Enable your agent to pay for and monetize HTTP-based services using the X402 protocol
   on the XRP Ledger.
 
 **AI tooling reference:**
 
-- [XRPL Skill Reference](/.claude/skills/xrpl-skills)) — Full reference for the XRPL skills: every function,
+- [XRPL Skill Reference](https://github.com/XRPLF/xrpl-dev-portal/tree/master/.claude/skills) — Full reference for the XRPL skills: every function,
   parameter, and convention.
 - [AI Tooling](/resources/dev-tools/ai-tools) — MCP servers, Skills files, and other
   AI tools for the XRP Ledger.
-- [Agentic Transactions on the XRP Ledger](/docs/use-cases/agentic-transactions/) —
+- [Agentic Transactions on the XRP Ledger](agentic-transactions.tsx) —
   The canonical page for the Agentic Transactions on XRPL including an overview and the broader architecture.
 
 **Go deeper on XRP Ledger features:**
