@@ -141,6 +141,7 @@ Use the following words and phrases as described:
 | Term              | Terms to Avoid | Notes |
 |-------------------|----------------|-------|
 | API, APIs         | API's, RPC | Application Programming Interface, a set of functions and definitions for software to connect to other software. |
+| blackhole, blackholed, blackholing | black hole, black-hole | An account is blackholed when its signing authority has been permanently and verifiably removed, so that no one can ever send transactions from it again. Always one word. |
 | core server, core XRP Ledger server | `rippled` | The `rippled` name is probably going to be retired in the near future, so it's better to refer to it by the more generic name. When necessary, refer to `rippled` in all lowercase and code font. (It's pronounced "ripple dee", and the "d" stands for "daemon" per UNIX tradition.)
 | financial institution | bank, FI, PSP (payment services provider) | This term encompasses a wider range of businesses than just _bank_ or other terms and does not rely on an understanding of industry jargon. |
 | ledger entry      | ledger object, node | A single object inside the state data of the XRP Ledger. The term _ledger object_ could refer to one of these or to the whole ledger. The term _node_ was sometimes used for this case because the ledger's state data can be envisioned as a graph, but this is confusing because _node_ has other uses. |
