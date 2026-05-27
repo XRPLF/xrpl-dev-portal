@@ -31,7 +31,7 @@ To complete this tutorial, you need:
 
 ## Source Code
 
-You can find the complete source code for this tutorial's examples in the [code samples section of this website's repository](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/use-tickets/).
+You can find the complete source code for this tutorial's examples in the {% repo-link path="_code-samples/use-tickets/" %}code samples section of this website's repository{% /repo-link %}.
 
 ## Steps
 
@@ -102,7 +102,7 @@ Submit the transaction and wait for validation. For example, to create 10 Ticket
 {% /tabs %}
 
 {% admonition type="info" name="Note" %}
-A transaction is not final until it is validated by [consensus](../../../concepts/consensus-protocol/index.md), which typically occurs 4-7 seconds after submission. The submit-and-wait call above (`submitAndWait` in xrpl.js, `submit_and_wait` in xrpl-py, `SubmitTxAndWait` in xrpl-go) blocks until validation completes, so the validated result is already available.
+A transaction is not final until it is validated by [consensus](../../../concepts/consensus-protocol/index.md), which typically occurs 4-7 seconds after submission. The submit-and-wait call above blocks until validation completes, so the validated result is already available.
 
 For production code that needs to handle longer waits or transaction expiration, see [Reliable Transaction Submission](../../../concepts/transactions/reliable-transaction-submission.md).
 {% /admonition %}
@@ -147,7 +147,7 @@ The following example uses an [AccountSet transaction][] with no fields set, mak
 {% /tab %}
 {% /tabs %}
 
-After the transaction is validated, the Ticket is consumed and removed from the ledger. To verify, re-run step 4, and the Ticket you used should no longer appear in the result.
+After the transaction is validated, the Ticket is consumed and removed from the ledger. The available Ticket count drops by one.
 
 {% admonition type="success" name="Tip" %}
 You can use this same pattern to cancel an unused Ticket — just send a no-op AccountSet using the Ticket you no longer need.
