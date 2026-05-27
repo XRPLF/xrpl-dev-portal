@@ -36,7 +36,7 @@ The script will:
 ## Step 2: Review the generated file
 
 Read the output file (path shown in script output). Note the **Full Changelog** structure:
-- **Amendments section**: Contains auto-sorted entries and an HTML comment listing which amendments to include or remove
+- **Amendments section**: Contains auto-sorted entries and an HTML comment listing which amendments to include or remove. Entries are auto-sorted here by touching `features.macro`, so the section sometimes catches PRs that aren't actually about a specific amendment (e.g. macro renames, list-sorting, formatting cleanups).
 - **Empty subsections**: Features, Breaking Changes, Bug Fixes, Refactors, Documentation, Testing, CI/Build
 - **Unsorted entries**: After the **Bug Bounties and Responsible Disclosures** section is an unsorted list of entries with title, link, labels, files, and description for context
 - **Potential duplicates**: Some entries are prefixed with `[POTENTIAL DUPE — VERIFY]`. These are reviewer scaffolding and must be handled in Step 3 before sorting.
@@ -69,6 +69,8 @@ By the end of this step, **every** `[POTENTIAL DUPE — VERIFY]` entry must be r
 Handle Amendments first, before sorting other entries.
 
 1. **Process the auto-sorted Amendments subsection**:
+  If an entry's title and description don't introduce, enable, retire, or fix a named amendment, it was auto-sorted here by mistake — move it to the appropriate other section (typically Refactors or CI/Build) instead of applying the rules below.
+
   The HTML comment contains three lists — follow them exactly:
   - **Include**: Keep these entries.
   - **Exclude**: Remove these entries.
