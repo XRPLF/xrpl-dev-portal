@@ -13,7 +13,7 @@ This skill generates a draft release notes blog post for a new rippled version, 
 ## Execution constraints
 
 - **Do NOT write scripts** to sort or process the file. Prefer the Edit tool for targeted changes. Use Write only when replacing large sections that are impractical to edit incrementally.
-- **Output progress**: Before each major step (generating raw release notes, reviewing file, processing amendments, sorting entries, reformatting, cleanup), output a brief status message so the user can see progress.
+- **Output progress**: Before each major step (generating raw release notes, reviewing file, verifying potential duplicates, processing amendments, sorting entries, reformatting, cleanup), output a brief status message so the user can see progress.
 
 ## Step 1: Generate the raw release notes
 
@@ -39,8 +39,32 @@ Read the output file (path shown in script output). Note the **Full Changelog** 
 - **Amendments section**: Contains auto-sorted entries and an HTML comment listing which amendments to include or remove
 - **Empty subsections**: Features, Breaking Changes, Bug Fixes, Refactors, Documentation, Testing, CI/Build
 - **Unsorted entries**: After the **Bug Bounties and Responsible Disclosures** section is an unsorted list of entries with title, link, labels, files, and description for context
+- **Potential duplicates**: Some entries are prefixed with `[POTENTIAL DUPE — VERIFY]`. These are reviewer scaffolding and must be handled in Step 3 before sorting.
 
-## Step 3: Process amendments
+## Step 3: Verify and remove potential duplicate entries
+
+Some entries are prefixed with `[POTENTIAL DUPE — VERIFY]` at the start of their title. They represent changes that already shipped in an earlier release. They are scaffolding for the reviewer only — they must NOT appear in the published release notes.
+
+Their purpose is to help spot cherry-picked commits that already went into an earlier release, but their original commits may falsely show up again as a new change.
+
+For each entry with the `[POTENTIAL DUPE — VERIFY]` prefix:
+
+1. Read its title (the text after the dupe marker).
+2. Scan the other (unmarked) entries for one that describes the same logical change with a slightly different title. Consider:
+   - Typos or missing words (e.g. `overwriting` vs `overwritting`, missing `the`)
+   - Different PR-number suffixes from a backport (e.g. `(#6217)` vs `(#6217) (#6957)`)
+   - Same PR number with reworded title
+   - Same author and same general topic
+   - Use additional context provided in dupe and comparison entry if the title match is borderline
+3. **If a match is found**:
+   - Delete the `[POTENTIAL DUPE — VERIFY]` entry.
+   - **Also delete the matched entry** — it represents a change that already shipped in a previous release, so it does NOT belong in this release's notes.
+4. **If no match is found**:
+   - Delete the `[POTENTIAL DUPE — VERIFY]` entry only.
+
+By the end of this step, **every** `[POTENTIAL DUPE — VERIFY]` entry must be removed.
+
+## Step 4: Process amendments
 
 Handle Amendments first, before sorting other entries.
 
@@ -55,7 +79,7 @@ Search through ALL unsorted entries for titles, labels, descriptions, or files t
 
 **3c. If you disagree with any amendment decisions, make a note to the user but do NOT deviate from the rules.**
 
-## Step 4: Sort remaining unsorted entries into subsections
+## Step 5: Sort remaining unsorted entries into subsections
 
 Move each remaining unsorted entry into the appropriate subsection.
 
@@ -84,7 +108,7 @@ Use these signals to categorize:
 Additional sorting guidance:
 - Watch for revert pairs: If a PR was committed and then reverted (or vice versa), check that the net effect is accounted for — don't include both.
 
-## Step 5: Reformat sorted entries
+## Step 6: Reformat sorted entries
 
 After sorting, reformat each entry to match the release notes style.
 
@@ -107,7 +131,7 @@ After sorting, reformat each entry to match the release notes style.
 ```
 - Copy the PR title as-is. Only fix capitalization, remove conventional commit prefixes (fix:, feat:, ci:, refactor:, docs:, test:, chore:, build:), and adjust to past tense if needed. Do NOT rewrite, paraphrase, or summarize.
 
-## Step 6: Clean up
+## Step 7: Clean up
 
 - Add a short and generic description of changes to the existing `seo.description` frontmatter, e.g., "This version introduces new amendments and bug fixes." Do not create long lists of detailed changes.
 - Add a more detailed summary of the release to the existing "Introducing XRP Ledger Version X.Y.Z" section. Include amendment names (organized in a list if more than 2), featuress, and breaking changes. Limit this to 1 paragraph.
