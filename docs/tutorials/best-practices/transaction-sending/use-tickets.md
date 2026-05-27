@@ -37,17 +37,15 @@ You can find the complete source code for this tutorial's examples in the {% rep
 
 ### 1. Install dependencies
 
+Install dependencies for your language from the code sample folder.
+
 {% tabs %}
 {% tab label="JavaScript" %}
-From the `_code-samples/use-tickets/js/` folder, use `npm` to install dependencies:
-
 ```sh
 npm install
 ```
 {% /tab %}
 {% tab label="Python" %}
-From the `_code-samples/use-tickets/py/` folder, set up a virtual environment and use `pip` to install dependencies:
-
 ```sh
 python -m venv .venv
 source .venv/bin/activate
@@ -55,8 +53,6 @@ pip install -r requirements.txt
 ```
 {% /tab %}
 {% tab label="Go" %}
-From the `_code-samples/use-tickets/go/` folder, install dependencies with Go modules:
-
 ```sh
 go mod download
 ```
