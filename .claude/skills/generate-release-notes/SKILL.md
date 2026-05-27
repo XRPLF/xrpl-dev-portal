@@ -51,16 +51,16 @@ For each entry with the `[POTENTIAL DUPE — VERIFY]` prefix:
 
 1. Read its title (the text after the dupe marker).
 2. Scan the other (unmarked) entries for one that describes the same logical change with a slightly different title. Consider:
-   - Typos or missing words (e.g. `overwriting` vs `overwritting`, missing `the`)
-   - Different PR-number suffixes from a backport (e.g. `(#6217)` vs `(#6217) (#6957)`)
-   - Same PR number with reworded title
-   - Same author and same general topic
-   - Use additional context provided in dupe and comparison entry if the title match is borderline
+  - Typos or missing words (e.g. `overwriting` vs `overwritting`, missing `the`)
+  - Different PR-number suffixes from a backport (e.g. `(#6217)` vs `(#6217) (#6957)`)
+  - Same PR number with reworded title
+  - Same author and same general topic
+  - Use additional context provided in dupe and comparison entry if the title match is borderline
 3. **If a match is found**:
-   - Delete the `[POTENTIAL DUPE — VERIFY]` entry.
-   - **Also delete the matched entry** — it represents a change that already shipped in a previous release, so it does NOT belong in this release's notes.
+  - Delete the `[POTENTIAL DUPE — VERIFY]` entry.
+  - **Also delete the matched entry** — it represents a change that already shipped in a previous release, so it does NOT belong in this release's notes.
 4. **If no match is found**:
-   - Delete the `[POTENTIAL DUPE — VERIFY]` entry only.
+  - Delete the `[POTENTIAL DUPE — VERIFY]` entry only.
 
 By the end of this step, **every** `[POTENTIAL DUPE — VERIFY]` entry must be removed.
 
@@ -68,16 +68,16 @@ By the end of this step, **every** `[POTENTIAL DUPE — VERIFY]` entry must be r
 
 Handle Amendments first, before sorting other entries.
 
-**3a. Process the auto-sorted Amendments subsection:**
-The HTML comment contains three lists — follow them exactly:
-- **Include**: Keep these entries.
-- **Exclude**: Remove these entries.
-- Entries on **neither** list: Remove these entries.
+1. **Process the auto-sorted Amendments subsection**:
+  The HTML comment contains three lists — follow them exactly:
+  - **Include**: Keep these entries.
+  - **Exclude**: Remove these entries.
+  - Entries on **neither** list: Remove these entries.
 
-**3b. Scan unsorted entries for unreleased amendment work:**
-Search through ALL unsorted entries for titles, labels, descriptions, or files that reference amendments on the "Exclude" or "Other amendments not part of this release" lists. Remove entries that directly implement, enable, fix, or refactor these amendments. Keep entries that are general changes that merely reference the amendment as motivation — if the code change is useful on its own regardless of whether the amendment ships, keep it.
+2. **Scan unsorted entries for unreleased amendment work**:
+  Search through ALL unsorted entries for titles, labels, descriptions, or files that reference amendments on the "Exclude" or "Other amendments not part of this release" lists. Remove entries that directly implement, enable, fix, or refactor these amendments. Keep entries that are general changes that merely reference the amendment as motivation — if the code change is useful on its own regardless of whether the amendment ships, keep it.
 
-**3c. If you disagree with any amendment decisions, make a note to the user but do NOT deviate from the rules.**
+3. If you disagree with any amendment decisions, make a note to the user but do NOT deviate from the rules.
 
 ## Step 5: Sort remaining unsorted entries into subsections
 
@@ -134,7 +134,7 @@ After sorting, reformat each entry to match the release notes style.
 ## Step 7: Clean up
 
 - Add a short and generic description of changes to the existing `seo.description` frontmatter, e.g., "This version introduces new amendments and bug fixes." Do not create long lists of detailed changes.
-- Add a more detailed summary of the release to the existing "Introducing XRP Ledger Version X.Y.Z" section. Include amendment names (organized in a list if more than 2), featuress, and breaking changes. Limit this to 1 paragraph.
+- Add a more detailed summary of the release to the existing "Introducing XRP Ledger version X.Y.Z" section. Include amendment names (organized in a list if more than 2), features, and breaking changes. Limit this to 1 paragraph.
 - Do NOT delete the **Credits** or **Bug Bounties and Responsible Disclosures** sections
 - Remove empty subsections that have no entries
 - Remove all HTML comments (sorting instructions)
