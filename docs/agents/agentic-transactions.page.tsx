@@ -17,36 +17,42 @@ const whyCards = [
     title: 'Deterministic Finality',
     description:
       'Every transaction either confirms with tesSUCCESS or expires cleanly — no hanging states, no retry loops. Agents know the outcome in 3–5 seconds and can move on.',
-  },
+    image: require('../../static/img/icons/performance.svg'),
+    },
   {
     id: 'costs',
     title: 'Predictable Transaction Costs',
     description:
       'Transaction costs are tiny and stable — fractions of a cent. Agents can plan and budget autonomously without worrying about gas spikes disrupting operations.',
-  },
+    image: require('../../static/img/icons/low-cost.svg'),
+    },
   {
     id: 'multicurrency',
     title: 'Native Multi-Currency & DEX',
     description:
       'Send XRP, RLUSD, or any issued token. The built-in DEX enables atomic cross-currency settlement without bridges or third-party swap contracts.',
+    image: require('../../static/img/icons/nft.svg'),
   },
   {
     id: 'uptime',
     title: '14 Years of Uninterrupted Uptime',
     description:
       'The XRP Ledger has processed transactions continuously since 2012. Agents can rely on always-on infrastructure with no planned downtime.',
-  },
+    image: require('../../static/img/icons/reliability.svg'),
+    },
   {
     id: 'no-smart-contracts',
     title: 'No Smart Contract Risk',
     description:
       'Core payment and escrow logic lives at the protocol layer — not in user-deployed contracts. There is no bytecode to audit, no upgrade risk, and no re-entrancy vulnerability.',
+    image: require('../../static/img/icons/public.svg'),
   },
   {
     id: 'compliance',
     title: 'Compliance-Friendly Controls',
     description:
       'DepositAuth, multi-sig, escrow with time locks, SourceTag for agent attribution, and the Memo field for audit trails are all built in — ready for institutional workflows.',
+    image: require('../../static/img/icons/streamlined.svg'),
   },
 ];
 
@@ -196,7 +202,7 @@ export default function AgenticTransactions() {
         eyebrow={translate('Purpose-Built for Autonomous Finance')}
         title={translate('Why AI Agents Choose the XRP Ledger')}
         cards={whyCards}
-        showImages={false}
+        showImages={true}
       />
 
       {/* ── HOW AGENTIC PAYMENTS WORK ────────────────────────────────────── */}
@@ -214,6 +220,19 @@ export default function AgenticTransactions() {
             'Every agent-initiated payment follows the same deterministic loop. The XRP Ledger guarantees a binary outcome every time — no polling, no retry logic, no stuck transactions.'
           )}
         </p>
+
+        {/* Agentic payment loop diagram */}
+        <div className="img-center mb-10">
+          <source
+            srcSet={require('../../static/img/xrpl-agentic-payment-loop.svg')}
+            media="(prefers-color-scheme: dark)"
+          />
+          <img
+            src={require('../../static/img/xrpl-agentic-payment-loop-light.svg')}
+            alt="The Agentic Payment Loop: five steps — Trigger, Decision, Transaction, XRP Ledger Validation (tesSUCCESS or clean expiry), and Logging."
+            className="mw-100"
+          />
+        </div>
 
         {/* Step-by-step breakdown */}
         <div className="row row-cols-1 row-cols-md-5 card-deck mt-6">
