@@ -741,7 +741,7 @@
             - page: docs/infrastructure/troubleshooting/server-is-amendment-blocked.md
             - page: docs/infrastructure/troubleshooting/server-wont-start.md
             - page: docs/infrastructure/troubleshooting/fix-sqlite-tx-db-page-size-issue.md
-    - page: docs/agents/agentic-transactions.tsx
+    - page: docs/agents/agentic-transactions.page.tsx
       label: Agentic Transactions
       labelTranslationKey: sidebar.docs.agenticTransactions
       expanded: false

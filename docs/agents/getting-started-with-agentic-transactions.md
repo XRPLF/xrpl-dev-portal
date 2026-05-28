@@ -792,7 +792,7 @@ foundational primitives for building on the XRP Ledger with an LLM agent.
   parameter, and convention.
 - [AI Tooling](/resources/dev-tools/ai-tools) — MCP servers, Skills files, and other
   AI tools for the XRP Ledger.
-- [Agentic Transactions on the XRP Ledger](agentic-transactions.tsx) —
+- [Agentic Transactions on the XRP Ledger](/docs/agents/agentic-transactions) —
   The canonical page for the Agentic Transactions on XRPL including an overview and the broader architecture.
 
 **Go deeper on XRP Ledger features:**

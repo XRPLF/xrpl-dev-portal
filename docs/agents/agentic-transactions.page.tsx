@@ -171,9 +171,15 @@ export default function AgenticTransactions() {
           <div className="d-flex flex-wrap justify-content-center gap-3">
             <Link
               className="btn btn-primary btn-arrow"
-              to="/docs/tutorials/get-started-with-llms/"
+              to="/docs/agents/getting-started-with-agentic-transactions/"
             >
               {translate('Get Started')}
+            </Link>
+            <Link
+              className="btn btn-outline-secondary"
+              to="/docs/agents/agentic-payments-x402/"
+            >
+              {translate('Agentic Payments with x402')}
             </Link>
             <Link
               className="btn btn-outline-secondary"
@@ -208,21 +214,6 @@ export default function AgenticTransactions() {
             'Every agent-initiated payment follows the same deterministic loop. The XRP Ledger guarantees a binary outcome every time — no polling, no retry logic, no stuck transactions.'
           )}
         </p>
-
-        {/* Diagram: dark/light variants via <picture> */}
-        <div className="mb-10">
-          <picture>
-            <source
-              srcSet={require('./static/img/agentic-payment-loop-dark.svg')}
-              media="(prefers-color-scheme: dark)"
-            />
-            <img
-              src={require('./static/img/agentic-payment-loop-light.svg')}
-              alt="The Agentic Payment Loop: five steps — Trigger, Decision, Transaction, XRP Ledger Validation (tesSUCCESS or clean expiry), and Logging."
-              className="mw-100"
-            />
-          </picture>
-        </div>
 
         {/* Step-by-step breakdown */}
         <div className="row row-cols-1 row-cols-md-5 card-deck mt-6">
@@ -323,18 +314,6 @@ export default function AgenticTransactions() {
       {/* ── CTA ──────────────────────────────────────────────────────────── */}
       <section className="container-new py-26">
         <div className="col-lg-6 offset-lg-3 p-8-sm p-10-until-sm br-8 cta-card">
-          <img
-            src={require('./static/img/backgrounds/cta-home-purple.svg')}
-            className="d-none-sm cta cta-top-left"
-            alt=""
-            aria-hidden="true"
-          />
-          <img
-            src={require('./static/img/backgrounds/cta-home-green.svg')}
-            className="cta cta-bottom-right"
-            alt=""
-            aria-hidden="true"
-          />
           <div className="z-index-1 position-relative">
             <h2 className="h4 mb-8-sm mb-10-until-sm">
               {translate('Build your first agentic payment in minutes')}
