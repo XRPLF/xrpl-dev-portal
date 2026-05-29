@@ -44,14 +44,10 @@ receipt the merchant trusts).
 The complete flow:
 
 1. **Agent requests a resource** — the agent calls a protected HTTP endpoint.
-2. **Merchant returns 402** — the response includes the price, the payment address, and
-   the facilitator URL in a structured header.
-3. **Agent pays on-chain** — the agent submits an XRP Ledger transaction to the
-   merchant's wallet address for the required amount.
-4. **Agent obtains a receipt** — the agent submits the transaction hash to the
-   facilitator, which verifies the on-chain payment and issues a signed receipt.
-5. **Agent retries with receipt** — the agent re-sends the original request with the
-   receipt in the `X-PAYMENT` header.
+2. **Merchant returns 402** — the response includes the price, the payment address, and the facilitator URL in a structured header.
+3. **Agent sends a presigned on-chain transaction** — the agent submits a presigned XRP Ledger Payment transaction from the client to the merchant's wallet address for the required amount.
+4. **Agent obtains a receipt** — the agent submits the transaction hash to the facilitator, which verifies the on-chain payment and issues a signed receipt.
+5. **Agent retries with receipt** — the agent re-sends the original request with the receipt in the `X-PAYMENT` header.
 6. **Merchant delivers** — the merchant verifies the receipt and returns the resource.
 
 The XRP Ledger's deterministic finality means step 3 is reliable: the agent knows
