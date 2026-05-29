@@ -67,12 +67,13 @@
   <text x="917" y="630" text-anchor="middle" fill="#5A6888" font-size="7">200 OK</text>
 
   <!-- ════════════════════════════════════════════════════
-       STEP 1 — Agent → Merchant: GET /hello
+       STEP 1 — Agent → Merchant: GET /hello + X-PAYMENT header
   ═════════════════════════════════════════════════════ -->
-  <text x="194" y="128" text-anchor="middle" fill="#0076A8" font-size="10.5" font-weight="600">GET /hello</text>
-  <line x1="92" y1="140" x2="295" y2="140" stroke="#0094C4" stroke-width="1.5" marker-end="url(#ab)"/>
-  <circle cx="32" cy="140" r="8" fill="#EDF6FC" stroke="#0094C4" stroke-width="1"/>
-  <text x="32" y="144" text-anchor="middle" fill="#0076A8" font-size="8" font-weight="700">1</text>
+  <text x="194" y="125" text-anchor="middle" fill="#0076A8" font-size="10.5" font-weight="600">GET /hello  +  X-PAYMENT header</text>
+  <line x1="92" y1="137" x2="295" y2="137" stroke="#0094C4" stroke-width="1.5" marker-end="url(#ab)"/>
+  <text x="194" y="151" text-anchor="middle" fill="#4A8AAE" font-size="9">X-PAYMENT: — (no prior payment)</text>
+  <circle cx="32" cy="137" r="8" fill="#EDF6FC" stroke="#0094C4" stroke-width="1"/>
+  <text x="32" y="141" text-anchor="middle" fill="#0076A8" font-size="8" font-weight="700">1</text>
 
   <!-- ════════════════════════════════════════════════════
        STEP 2 — Merchant → Agent: 402 Payment Required
@@ -88,7 +89,7 @@
   ═════════════════════════════════════════════════════ -->
   <text x="316" y="242" text-anchor="middle" fill="#16A34A" font-size="10.5" font-weight="700">Payment Transaction</text>
   <line x1="92" y1="254" x2="539" y2="254" stroke="#16A34A" stroke-width="2" marker-end="url(#ag)"/>
-  <text x="316" y="268" text-anchor="middle" fill="#3A8058" font-size="9">amount: 1000 drops · destination: payTo</text>
+  <text x="316" y="268" text-anchor="middle" fill="#3A8058" font-size="9">amount: 1000 drops · destination: payTo · Memo: { requestId, payTo }</text>
   <circle cx="32" cy="254" r="8" fill="#F0FDF4" stroke="#16A34A" stroke-width="1"/>
   <text x="32" y="258" text-anchor="middle" fill="#16A34A" font-size="8" font-weight="700">3</text>
 

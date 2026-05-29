@@ -236,6 +236,11 @@ export default function AgenticTransactions() {
           color: #7c1fff;
         }
 
+        /* Agentic payment loop diagram — swap to dark SVG in dark mode */
+        html:not(.light) .agentic-loop-diagram {
+          content: url(${require('../../static/img/xrpl-agentic-payment-loop.svg')});
+        }
+
         /* Benefit cards: 3-col grid */
         .benefit-card-grid {
           display: grid;
@@ -340,18 +345,11 @@ export default function AgenticTransactions() {
           )}
         </p>
 
-        {/* Dark/light diagram variants */}
-        <picture>
-          <source
-            srcSet={require('../../static/img/xrpl-agentic-payment-loop.svg')}
-            media="(prefers-color-scheme: dark)"
-          />
-          <img
-            src={require('../../static/img/xrpl-agentic-payment-loop-light.svg')}
-            alt="The Agentic Payment Loop: five steps — Trigger, Decision, Transaction, XRP Ledger Validation (tesSUCCESS or clean expiry), and Logging."
-            className="mw-100"
-          />
-        </picture>
+        <img
+          src={require('../../static/img/xrpl-agentic-payment-loop-light.svg')}
+          alt="The Agentic Payment Loop: five steps — Trigger, Decision, Transaction, XRP Ledger Validation (tesSUCCESS or clean expiry), and Logging."
+          className="mw-100 agentic-loop-diagram"
+        />
       </section>
 
       {/* ── SEE IT FIRST ─────────────────────────────────────────────────── */}
