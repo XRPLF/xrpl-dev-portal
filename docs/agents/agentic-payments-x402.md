@@ -63,7 +63,7 @@ dark variant is available. Pattern: same as agentic-payment-loop diagram. -->
 
 ## Prerequisites
 
-- Python 3.9+
+- Python 3.11+
 - An XRPL wallet with a testnet balance. If you do not have one, use the
   [XRPL Testnet Faucet](https://xrpl.org/resources/dev-tools/xrp-faucets) to create
   and fund one in seconds.

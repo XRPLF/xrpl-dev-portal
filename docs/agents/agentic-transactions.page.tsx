@@ -266,7 +266,7 @@ export default function AgenticTransactions() {
             {translate('XRPL AI Starter Kit')}
           </div>
           <h1 className="mb-10">
-            {translate('Agentic Transactions on the XRP Ledger')}
+            {translate('Agentic Transactions')}
           </h1>
           <p className="mb-10 longform">
             {translate(
@@ -300,7 +300,7 @@ export default function AgenticTransactions() {
       <section className="container-new py-26">
         <div className="d-flex flex-column-reverse col-sm-8 p-0 mb-10">
           <h2 className="h3 h2-sm">
-            {translate('Why AI Agents Choose the XRP Ledger')}
+            {translate('What Makes XRPL Agent-Ready')}
           </h2>
           <h6 className="eyebrow mb-3">
             {translate('Purpose-Built for Autonomous Finance')}
