@@ -62,7 +62,7 @@ jobs:
       - name: Run Selenium link checker
         run: |
           set -eo pipefail
-          python tools/check-external-links.py --live docs/ 2>&1 | tee selenium-link-check.log
+          python tools/check-links.py docs/ 2>&1 | tee selenium-link-check.log
 
       - name: Stop Realm server
         if: always()

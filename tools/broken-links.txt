@@ -12,12 +12,14 @@
 # * may be used as a wildcard AT THE END OF LINKS ONLY
 
 # These sites block crawlers (often using Cloudflare) with a 403 but typically
-# work when accessed from an actual browser:
+# work when accessed from an actual browser. It's a good idea to re-check them
+# manually every once in a while to make sure they really do still work.
 https://x.com/*
 https://www.gnu.org/software/screen/manual/screen.html
 https://www.coindesk.com/markets/2015/04/02/1-million-legal-fight-ensnares-ripple-bitstamp-and-jed-mccaleb/
 https://www.coindesk.com/markets/2016/02/12/ripple-settles-1-million-lawsuit-with-former-executive-and-founder/
 https://bsaaml.ffiec.gov/manual/Introduction/01
+https://bsaaml.ffiec.gov/manual/AssessingComplianceWithBSARegulatoryRequirements/04
 https://www.sec.gov/oiea/investor-alerts-and-bulletins/ib_coinofferings
 https://www.npmjs.com/*
 https://go.dev/dl/
