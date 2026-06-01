@@ -90,6 +90,7 @@ Create a `.env` file with your merchant configuration:
 XRPL_FACILITATOR_URL=https://xrpl-facilitator-testnet.t54.ai
 XRPL_PAY_TO=rYourWalletAddress   # Your wallet address to receive payments.
 XRPL_PRICE_DROPS=1000            # Price in drops (1 XRP = 1,000,000 drops).
+XRPL_SOURCE_TAG=20260601         # Stamped on every on-chain payment for this endpoint.
 ```
 
 The `XRPL_FACILITATOR_URL` above is T54's public testnet facilitator. For Mainnet,
@@ -114,6 +115,11 @@ app = FastAPI()
 # Protect the /hello endpoint with the x402 payment middleware.
 # Requests that do not include a valid payment receipt receive a 402 response
 # containing the payment requirements.
+#
+# extra={"sourceTag": ...} stamps every on-chain Payment that pays this
+# endpoint with the given SourceTag, so you can filter and measure usage via
+# any XRPL data API or block explorer.
+# See /docs/use-cases/agentic-transactions/track-agent-behavior/ for more.
 app.middleware("http")(
     require_payment(
         path="/hello",
@@ -123,6 +129,7 @@ app.middleware("http")(
         network="xrpl:1",   # xrpl:1 = Testnet, xrpl:0 = Mainnet
         asset="XRP",
         description="A paid hello world endpoint",
+        extra={"sourceTag": int(os.getenv("XRPL_SOURCE_TAG", "20260601"))},
     )
 )
 
@@ -177,7 +184,6 @@ Create a `.env` file with your wallet and target endpoint:
 XRPL_BUYER_SEED=sYourWalletSeed                        # Your wallet seed — keep secret.
 XRPL_TESTNET_RPC_URL=https://s.altnet.rippletest.net:51234/
 RESOURCE_URL=http://localhost:8000/hello               # The paid endpoint to call.
-XRPL_SOURCE_TAG=20260601                                    # Tags every on-chain payment for telemetry.
 ```
 
 > **Never commit your wallet seed to version control.** Use environment variables or a
@@ -201,20 +207,16 @@ load_dotenv()
 buyer = Wallet.from_seed(os.getenv("XRPL_BUYER_SEED"))
 print(f"Buyer address: {buyer.classic_address}")
 
-# SOURCE_TAG identifies every on-chain payment from this tutorial so you can
-# filter and measure Testnet usage via any XRPL data API or block explorer.
-# See /docs/use-cases/agentic-transactions/track-agent-behavior/ for more.
-SOURCE_TAG = int(os.getenv("XRPL_SOURCE_TAG", "20260601"))
-
 # x402_requests wraps the standard requests library.
 # It automatically handles any 402 response: signs the required payment,
 # includes it in the retry, and returns the final response to your code.
+# The SourceTag stamped on the on-chain Payment is the one the merchant
+# declares in its payment requirements (see Merchant Step 3 above).
 session = x402_requests(
     buyer,
     rpc_url=os.getenv("XRPL_TESTNET_RPC_URL"),
     network_filter=None,      # Accept any network declared by the server.
     scheme_filter="exact",    # Use the exact payment scheme.
-    source_tag=SOURCE_TAG,    # Tags every on-chain payment for telemetry.    
 )
 
 # Make the request. If the server returns 402, the session handles it transparently.
