@@ -177,6 +177,7 @@ Create a `.env` file with your wallet and target endpoint:
 XRPL_BUYER_SEED=sYourWalletSeed                        # Your wallet seed — keep secret.
 XRPL_TESTNET_RPC_URL=https://s.altnet.rippletest.net:51234/
 RESOURCE_URL=http://localhost:8000/hello               # The paid endpoint to call.
+XRPL_SOURCE_TAG=20260601                                    # Tags every on-chain payment for telemetry.
 ```
 
 > **Never commit your wallet seed to version control.** Use environment variables or a
@@ -200,6 +201,11 @@ load_dotenv()
 buyer = Wallet.from_seed(os.getenv("XRPL_BUYER_SEED"))
 print(f"Buyer address: {buyer.classic_address}")
 
+# SOURCE_TAG identifies every on-chain payment from this tutorial so you can
+# filter and measure Testnet usage via any XRPL data API or block explorer.
+# See /docs/use-cases/agentic-transactions/track-agent-behavior/ for more.
+SOURCE_TAG = int(os.getenv("XRPL_SOURCE_TAG", "20260601"))
+
 # x402_requests wraps the standard requests library.
 # It automatically handles any 402 response: signs the required payment,
 # includes it in the retry, and returns the final response to your code.
@@ -208,6 +214,7 @@ session = x402_requests(
     rpc_url=os.getenv("XRPL_TESTNET_RPC_URL"),
     network_filter=None,      # Accept any network declared by the server.
     scheme_filter="exact",    # Use the exact payment scheme.
+    source_tag=SOURCE_TAG,    # Tags every on-chain payment for telemetry.    
 )
 
 # Make the request. If the server returns 402, the session handles it transparently.

@@ -389,7 +389,7 @@ submit_and_wait(escrow_finish, client, recipient_wallet)
 Set a consistent 32-bit unsigned integer on every transaction your agent submits. This lets you filter on-chain volume by agent, report on agentic activity, and separate it from human-initiated transactions.
 
 ```python
-AGENT_SOURCE_TAG = 20260530   # pick a consistent value; register with your team
+AGENT_SOURCE_TAG = 20260530  
 
 payment = Payment(
     account=wallet.address,
