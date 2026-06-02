@@ -1,0 +1,23 @@
+<svg width="100%" viewBox="0 0 680 180" role="img" xmlns="http://www.w3.org/2000/svg">
+  <title>How XRP got its name</title>
+  <desc>XRP = X (non-national currency prefix, ISO 4217) + RP (ripple credits)</desc>
+
+  <!-- X -->
+  <text x="120" y="100" text-anchor="middle" fill="#21E46B" font-family="Inter, 'Helvetica Neue', sans-serif" font-size="48" font-weight="700">X</text>
+  <text x="120" y="122" text-anchor="middle" fill="#8A919A" font-family="Inter, 'Helvetica Neue', sans-serif" font-size="11">Non-national currency</text>
+  <text x="120" y="136" text-anchor="middle" fill="#8A919A" font-family="Inter, 'Helvetica Neue', sans-serif" font-size="11">prefix (ISO 4217)</text>
+
+  <!-- + -->
+  <text x="230" y="96" text-anchor="middle" fill="#CAD4DF" font-family="Inter, 'Helvetica Neue', sans-serif" font-size="32">+</text>
+
+  <!-- RP -->
+  <text x="340" y="100" text-anchor="middle" fill="#CAD4DF" font-family="Inter, 'Helvetica Neue', sans-serif" font-size="48" font-weight="700">RP</text>
+  <text x="340" y="122" text-anchor="middle" fill="#8A919A" font-family="Inter, 'Helvetica Neue', sans-serif" font-size="11">Ripple credits</text>
+
+  <!-- = -->
+  <text x="450" y="96" text-anchor="middle" fill="#CAD4DF" font-family="Inter, 'Helvetica Neue', sans-serif" font-size="32">=</text>
+
+  <!-- XRP -->
+  <text x="570" y="100" text-anchor="middle" fill="#21E46B" font-family="Inter, 'Helvetica Neue', sans-serif" font-size="48" font-weight="700">XRP</text>
+
+</svg>

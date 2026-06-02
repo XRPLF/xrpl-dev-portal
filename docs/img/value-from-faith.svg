@@ -1,0 +1,41 @@
+<svg width="100%" viewBox="0 0 680 280" role="img" xmlns="http://www.w3.org/2000/svg">
+  <title>Value from collective agreement vs value from faith</title>
+  <desc>Gold is valuable because of collective agreement. XRP is valuable because of faith placed in the currency.</desc>
+
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+
+  <!-- LEFT: Gold -->
+  <ellipse cx="148" cy="56" rx="34" ry="22" fill="#D4C02D"/>
+  <ellipse cx="138" cy="48" rx="13" ry="9" fill="#E1DB26" opacity="0.65"/>
+  <text x="148" y="96" text-anchor="middle" fill="#8A919A" font-family="Inter, 'Helvetica Neue', sans-serif" font-size="11">Gold</text>
+  <line x1="148" y1="104" x2="148" y2="130" stroke="#CAD4DF" stroke-width="1" marker-end="url(#arr)"/>
+  <text x="148" y="150" text-anchor="middle" fill="#8A919A" font-family="Inter, 'Helvetica Neue', sans-serif" font-size="11">VALUE FROM COLLECTIVE AGREEMENT</text>
+
+  <circle cx="88" cy="186" r="13" fill="#CAD4DF"/>
+  <path d="M64,228 Q64,208 88,208 Q112,208 112,228" fill="#CAD4DF"/>
+  <circle cx="148" cy="186" r="13" fill="#CAD4DF"/>
+  <path d="M124,228 Q124,208 148,208 Q172,208 172,228" fill="#CAD4DF"/>
+  <circle cx="208" cy="186" r="13" fill="#CAD4DF"/>
+  <path d="M184,228 Q184,208 208,208 Q232,208 232,228" fill="#CAD4DF"/>
+
+  <!-- RIGHT: XRP brand mark, 211x180 native scaled to 66x56, centered at 508,56 -->
+  <g transform="translate(475, 28) scale(0.313)">
+    <path fill="#CAD4DF" d="M135.007 43.7415C127.265 51.6966 117.426 56.0898 105.496 56.0898C93.5668 56.0898 83.7273 51.6966 75.9853 43.7415L34.1255 0H0.00763497L57.7784 57.7678C70.5469 70.5356 87.2893 78.6966 105.504 78.6966C123.718 78.6966 140.461 70.5356 153.229 57.7678L211 0H176.882L135.022 43.7415H135.007ZM176.874 180H210.992L153.222 122.232C140.453 109.464 123.711 101.303 105.496 101.303C87.2817 101.303 70.5393 109.464 57.7708 122.232L0 180H34.1179L75.9777 136.258C83.7196 128.303 93.5591 123.91 105.489 123.91C117.418 123.91 127.258 128.303 134.999 136.258L176.859 180H176.874Z"/>
+  </g>
+
+  <text x="508" y="96" text-anchor="middle" fill="#8A919A" font-family="Inter, 'Helvetica Neue', sans-serif" font-size="11">XRP</text>
+  <line x1="508" y1="104" x2="508" y2="130" stroke="#CAD4DF" stroke-width="1" marker-end="url(#arr)"/>
+  <text x="508" y="150" text-anchor="middle" fill="#8A919A" font-family="Inter, 'Helvetica Neue', sans-serif" font-size="11">VALUE FROM FAITH IN THE CURRENCY</text>
+
+  <circle cx="448" cy="186" r="13" fill="#CAD4DF"/>
+  <path d="M424,228 Q424,208 448,208 Q472,208 472,228" fill="#CAD4DF"/>
+  <circle cx="508" cy="186" r="13" fill="#CAD4DF"/>
+  <path d="M484,228 Q484,208 508,208 Q532,208 532,228" fill="#CAD4DF"/>
+  <circle cx="568" cy="186" r="13" fill="#CAD4DF"/>
+  <path d="M544,228 Q544,208 568,208 Q592,208 592,228" fill="#CAD4DF"/>
+
+</svg>
