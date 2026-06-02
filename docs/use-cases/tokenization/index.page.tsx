@@ -27,6 +27,10 @@ const useCases = [
     link: "/docs/use-cases/tokenization/creating-an-asset-backed-multi-purpose-token"
   },
   {
+    description: "Migrate from Trust Line Tokens to MPTs",
+    link: "/docs/use-cases/tokenization/migrating-from-trust-lines-to-mpts/",
+  },
+  {
     description: "Authorized Minter",
     link: "/docs/use-cases/tokenization/authorized-minter/",
   },
