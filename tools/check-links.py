@@ -22,14 +22,15 @@ import json
 import logging
 import os
 import re
-import threading
+from threading import Lock
+from concurrent.futures import ThreadPoolExecutor, wait, ALL_COMPLETED
 from time import time, sleep
 
 import requests
 from requests.adapters import HTTPAdapter, Retry
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.common.exceptions import StaleElementReferenceException, NoSuchElementException
+from selenium.common.exceptions import StaleElementReferenceException, NoSuchElementException, TimeoutException
 
 CHECK_IN_INTERVAL = 30 # Seconds before printing *something* as a keep-alive
 DEFAULT_SKIP_PATHS = [
@@ -112,7 +113,16 @@ class CheckerSession:
         return code
     
     def get_page_hrefs_and_text(self, href: str):
-        self.chrome.get(href)
+        try:
+            self.chrome.get(href)
+        except TimeoutException:
+            logger.debug(f"Timed out while fetching {href}; retrying")
+            sleep(0.5)
+            try:
+                self.chrome.get(href)
+            except TimeoutException:
+                logger.warning(f"Retry timed out fetching {href}")
+                return [], ""
         rootlayout = self.chrome.find_element(By.CSS_SELECTOR, '[data-component-name="layouts/RootLayout"]')
         try:
             links = rootlayout.find_elements(By.CSS_SELECTOR, "a")
@@ -135,7 +145,16 @@ class CheckerSession:
         matching element is found. Uses the second chrome driver to avoid
         messing with the first driver's view of the page the link is from
         """
-        self.chrome2.get(href)
+        try:
+            self.chrome2.get(href)
+        except TimeoutException:
+            logger.debug(f"Timed out while fetching {href}; retrying")
+            sleep(0.5)
+            try:
+                self.chrome2.get(href)
+            except TimeoutException:
+                logger.warning(f"Retry timed out fetching {href}")
+                return None
         sleep(0.3) # delay to give it time for hydration failures
         try:
             el = self.chrome2.find_element(By.ID, id)
@@ -155,6 +174,7 @@ class LinkChecker:
         self.last_cache_update = 0
         self.init_cache(cache_file)
         self.init_known_broken(known_broken)
+        self.thread_exceptions = []
 
     def init_cache(self, cache_file: str):
         """
@@ -165,7 +185,7 @@ class LinkChecker:
         The cache uses a lock so that multiple threads don't write to it at the
         same time, but reading from the cache doesn't require the lock.
         """
-        self.cache_lock = threading.Lock()
+        self.cache_lock = Lock()
         self.anchor_cache = {}
         if not cache_file:
             logger.debug("No cache file, not loading anything.")
@@ -256,25 +276,29 @@ class LinkChecker:
         Walk all folders in the top dir and check for
         broken links, paralellizing as possible.
         """
-        threads = []
         self.broken_links = []
         self.total_links_checked = 0
-        self.report_lock = threading.Lock()
+        self.report_lock = Lock()
         dirnames = [d.name for d in os.scandir(self.topdir) if d.is_dir()]
         dirnames[:] = [d for d in dirnames if d not in self.skip_paths]
-        for dirpath in dirnames:
-            dirpath = os.path.join(self.topdir, dirpath)
-            t = threading.Thread(target=self.check_dir, args=(dirpath,))
-            threads.append(t)
-        top_dir_thread = threading.Thread(target=self.check_dir, 
-                                        args=(self.topdir, False))
-        threads.append(top_dir_thread)
-        logger.info(f"Checking dirs: {'\n  '.join(dirnames)}")
-        logger.info(f"Starting {len(threads)} threads to check links...")
-        for t in threads:
-            t.start()
-        for t in threads:
-            t.join()
+
+        with ThreadPoolExecutor() as executor:
+            threads = []
+            for dirpath in dirnames:
+                dirpath = os.path.join(self.topdir, dirpath)
+                threads.append(executor.submit(self.check_dir, dirpath))
+            top_dir_thread = executor.submit(self.check_dir, self.topdir, False)
+            threads.append(top_dir_thread)
+
+            logger.info(f"Checking dirs: {'\n  '.join(dirnames)}")
+            logger.info(f"Started {len(threads)} threads to check links...")
+            wait(threads, return_when=ALL_COMPLETED)
+            for t in threads:
+                try:
+                    t.result()
+                except Exception as e:
+                    logger.warning(f"Thread threw an exception: {e}")
+                    self.thread_exceptions.append(e)
         self.report()
     
     def record_broken(self, broken_links: list, num_checked: int):
@@ -448,7 +472,7 @@ class LinkChecker:
                 last_printed_in_file = in_file
             print("  Link:", href)
 
-        if self.broken_links:
+        if self.broken_links or self.thread_exceptions:
             self.write_broken_links_report()
         else:
             # Clean up any stale report from a previous run so the file's
@@ -483,6 +507,17 @@ class LinkChecker:
             lines.append(f"### `{in_file}`")
             for href in by_file[in_file]:
                 lines.append(f"- {href}")
+            lines.append("")
+
+        if self.thread_exceptions:
+            lines.append("## Exceptions thrown")
+            lines.append("")
+            lines.append("While the link checker was running, "
+                        f"{len(self.thread_exceptions)} threads failed, with "
+                         "the following exceptions:")
+            lines.append("")
+            for te in self.thread_exceptions:
+                lines.append(f"* `{te}`")
             lines.append("")
 
         # Mirror cache-file path resolution: tools/<name> when run from repo root,
