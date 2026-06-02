@@ -30,6 +30,7 @@
           expanded: false
           items:
             - page: docs/use-cases/tokenization/stablecoin-issuer.md
+            - page: docs/use-cases/tokenization/migrating-from-trust-lines-to-mpts.md
             - page: docs/use-cases/tokenization/nft-mkt-overview.md
               expanded: false
               items:
@@ -133,7 +134,6 @@
                 - page: docs/concepts/tokens/fungible-tokens/rippling.md
                 - page: docs/concepts/tokens/fungible-tokens/transfer-fees.md
                 - page: docs/concepts/tokens/fungible-tokens/demurrage.md
-                - page: docs/concepts/tokens/fungible-tokens/migrate-from-trust-lines-to-mpts.md
             - page: docs/concepts/tokens/nfts/index.md
               expanded: false
               items:
