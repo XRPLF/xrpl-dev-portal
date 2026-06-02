@@ -70,6 +70,7 @@ Before you install `rippled`, you must meet the [System Requirements](system-req
     - `bookworm` for **Debian 12 Bookworm**
     - `jammy` for **Ubuntu 22.04 Jammy Jellyfish**
     - `noble` for **Ubuntu 24.04 Noble Numbat**
+    - `resolute` for **Ubuntu 26.04 Resolute Raccoon**
 
     If you want access to development or pre-release versions of `rippled`, use one of the following instead of `stable`:
 
