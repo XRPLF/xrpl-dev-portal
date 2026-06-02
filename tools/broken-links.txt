@@ -31,6 +31,7 @@ https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4133897
 https://www.usenix.org/conference/usenixsecurity21/presentation/torres
 https://linux.die.net/man/8/logrotate
 https://jsfiddle.net/*
+https://www.investopedia.com/*
 
 # Redocly adds links to claude & ChatGPT to every page. No need to check them
 # with a unique query every time:

@@ -90,7 +90,7 @@ For troubleshooting purposes, the most important fields are (from most commonly 
 
 - **`peers`** - This field indicates how many other servers in the XRP Ledger peer-to-peer network your server is connected to. Healthy servers typically show between 5 and 50 peers, unless explicitly configured to connect only to certain peers.
 
-    - If you have 0 peers, your server may be unable to contact the network, or your system clock may be wrong. (Ripple recommends running an [NTP](http://www.ntp.org/) daemon on all servers to keep their clocks synced.)
+    - If you have 0 peers, your server may be unable to contact the network, or your system clock may be wrong. (Ripple recommends running an [NTP](https://www.ntp.org/) daemon on all servers to keep their clocks synced.)
 
     - If you have exactly 10 peers, that may indicate that your `rippled` is unable to receive incoming connections through a router using [NAT](https://en.wikipedia.org/wiki/Network_address_translation). You can improve connectivity by configuring your router's firewall to forward the port used for peer-to-peer connections (port 51235 [by default](https://github.com/XRPLF/rippled/blob/8429dd67e60ba360da591bfa905b58a35638fda1/cfg/rippled-example.cfg#L1065)).
 
