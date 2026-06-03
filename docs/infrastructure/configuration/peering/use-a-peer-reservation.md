@@ -111,7 +111,7 @@ Connecting to 127.0.0.1:5005
 
 ### 4. Communicate the hub server's current IP address and peer port
 
-The administrator of the hub server must tell their server's current IP address and peer port to the administrator of the stock server. If the hub server is behind a firewall that does network address translation (NAT), use the server's _external_ IP address. The default config file uses port 51235 for the peer protocol.
+The administrator of the hub server must tell their server's current IP address and peer port to the administrator of the stock server. If the hub server is behind a firewall that does network address translation (NAT), use the server's _external_ IP address. The default config file uses port 2459 for the peer protocol.
 
 ### 5. (Stock Server) Connect to the peer server
 
@@ -126,7 +126,7 @@ Use the [connect method][] to connect your server to the hub server. For example
 {
     "command": "connect",
     "ip": "169.54.2.151",
-    "port": 51235
+    "port": 2459
 }
 ```
 {% /tab %}
@@ -138,7 +138,7 @@ Use the [connect method][] to connect your server to the hub server. For example
     "params": [
         {
             "ip": "169.54.2.151",
-            "port": 51235
+            "port": 2459
         }
     ]
 }
@@ -147,7 +147,7 @@ Use the [connect method][] to connect your server to the hub server. For example
 
 {% tab label="Commandline" %}
 ```
-rippled connect 169.54.2.151 51235
+rippled connect 169.54.2.151 2459
 ```
 {% /tab %}
 
