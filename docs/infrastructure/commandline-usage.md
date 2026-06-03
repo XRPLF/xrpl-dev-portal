@@ -17,6 +17,7 @@ The `rippled` executable usually runs as a daemon that powers the XRP Ledger, al
     - **Help** - Use `-h` or `--help` to print a usage statement.
     - **Unit Tests** - Use `-u` or `--unittest` to run unit tests and print a summary of results. This can be helpful to confirm that you have compiled `rippled` successfully.
     - **Version statement** - Use `--version` to have `rippled` print its version number, Git commit hash, and Git build branch.
+    - **Definitions** - Use `--definitions` to print the XRP Ledger protocol definitions (the same data returned by the [server_definitions method][]) as JSON, then exit. This lets you obtain updated definitions early in development. {% badge href="https://xrpl.org/blog/2026/rippled-3.2.0" %}New in: rippled 3.2.0{% /badge %}
 
 ## Generic Options
 

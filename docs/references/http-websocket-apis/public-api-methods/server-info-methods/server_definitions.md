@@ -12,6 +12,8 @@ labels:
 
 The `server_definitions` command returns an SDK-compatible `definitions.json`, generated from the `rippled` instance currently running. You can use this to query a node in a network, quickly receiving the definitions necessary to serialize/deserialize its binary data.
 
+You can also generate the same definitions without a running server using the [`--definitions`](../../../../infrastructure/commandline-usage.md) command-line flag.
+
 
 ## Request Format
 An example of the request format:
