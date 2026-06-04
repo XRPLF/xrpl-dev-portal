@@ -199,7 +199,7 @@ print(f"Balance : 1000 XRP")  # Testnet faucet provides 1000 XRP
 {% /tabs %}
 
 The account is now active on the ledger. An XRPL account requires a minimum
-balance of 10 XRP (the base reserve) to exist — the faucet covers this.
+balance of 1 XRP (the base reserve) to exist — the faucet covers this.
 
 ---
 
