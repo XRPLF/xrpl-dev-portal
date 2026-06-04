@@ -86,7 +86,7 @@ What XRPL network are you targeting by default, and what is the base
 reserve for a new account?
 ```
 
-Claude should confirm the Testnet endpoint, the 10 XRP base reserve, and that
+Claude should confirm the Testnet endpoint, the 1 XRP base reserve, and that
 it will preview all transactions before signing. If the response is vague,
 re-run the install commands.
 

@@ -119,7 +119,7 @@ app = FastAPI()
 # extra={"sourceTag": ...} stamps every on-chain Payment that pays this
 # endpoint with the given SourceTag, so you can filter and measure usage via
 # any XRPL data API or block explorer.
-# See /docs/use-cases/agentic-transactions/track-agent-behavior/ for more.
+# See /docs/agents/track-agent-behavior/ for more.
 app.middleware("http")(
     require_payment(
         path="/hello",
@@ -187,7 +187,7 @@ RESOURCE_URL=http://localhost:8000/hello               # The paid endpoint to ca
 ```
 
 > **Never commit your wallet seed to version control.** Use environment variables or a
-> secrets manager. See [Step 4: Securely store your keys](/docs/agents/getting-started-with-agentic-transactions/#step-4-securely-store-your-keys)
+> secrets manager. See [Step 3: Secure your keys](/docs/agents/getting-started-with-agentic-transactions/#step-3-secure-your-keys)
 > for guidance.
 
 ### Step 3: Create your client

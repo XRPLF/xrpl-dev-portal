@@ -150,7 +150,7 @@ export XRPL_SEED="sYourWalletSeedHere"
 ```
 
 For production, configure an external signer adapter instead. See
-[Securely store your keys](/docs/agents/getting-started-with-agentic-transactions/#step-4-securely-store-your-keys).
+[Secure your keys](/docs/agents/getting-started-with-agentic-transactions/#step-3-secure-your-keys).
 
 ### Step 2: Send a payment
 

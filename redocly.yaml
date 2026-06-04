@@ -80,7 +80,7 @@ seo:
       - title: Agentic Transactions
         description: XRPL AI Starter Kit to help autonomous agents discover, set up, and execute agentic transactions on the XRP Ledger.
         includeFiles:
-          - docs/agents/**/*.*          
+          - docs/agents/**/*.*
       - title: Concepts
         description: Core concepts including accounts, tokens, transactions, consensus, and more.
         includeFiles:
