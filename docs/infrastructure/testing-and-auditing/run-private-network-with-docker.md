@@ -137,9 +137,9 @@ mkdir -p xrpl-private-network/{validator_1/config,validator_2/config,validator_3
 
 For each validator node, follow these steps:
 
-1. In the validator's `config` directory, create a `rippled.cfg` file.
+1. In the validator's `config` directory, create a `xrpld.cfg` file.
 
-2. Copy the information from the `rippled.cfg` template below into the file.
+2. Copy the information from the `xrpld.cfg` template below into the file.
 
     ```
     [server]

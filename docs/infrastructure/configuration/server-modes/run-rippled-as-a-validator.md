@@ -63,7 +63,7 @@ For more information, see [Install `rippled`](../../installation/index.md).
 
 ## 3. Enable validation on your `rippled` server
 
-Enabling validation on your `rippled` server means providing a validator token in your server's `rippled.cfg` file. You can use the `validator-keys` tool (included in `rippled` packages) to securely generate and manage your validator keys and tokens.
+Enabling validation on your `rippled` server means providing a validator token in your server's `xrpld.cfg` file. You can use the `validator-keys` tool (included in `rippled` packages) to securely generate and manage your validator keys and tokens.
 
 In a secure location **not** on your validator:
 
@@ -107,7 +107,7 @@ In a secure location **not** on your validator:
     Sample output:
 
     ```
-    Update rippled.cfg file with these values:
+    Update xrpld.cfg file with these values:
 
     # validator public key: nHUtNnLVx7odrz5dnfb2xpIgbEeJPbzJWfdicSkGyVw1eE5GpjQr
 
@@ -124,9 +124,9 @@ In a secure location **not** on your validator:
 
 On your validator:
 
-1. Add `[validator_token]` and its value to your validator's `rippled.cfg` file.
+1. Add `[validator_token]` and its value to your validator's `xrpld.cfg` file.
 
-    If you previously configured your validator without the `validator-keys` tool, delete `[validation_seed]` and its value from your `rippled.cfg` file. This changes your validator public key.
+    If you previously configured your validator without the `validator-keys` tool, delete `[validation_seed]` and its value from your `xrpld.cfg` file. This changes your validator public key.
 
 2. Restart `rippled`.
 
@@ -144,7 +144,7 @@ On your validator:
 
       - The `server_state` value should be _**proposing**_.
 
-**Security Tip:** Change the permissions on your `rippled.cfg` file to be more restrictive. On Linux it is recommended to be `0600`. You can do this with `chmod 0600 rippled.cfg`
+**Security Tip:** Change the permissions on your `xrpld.cfg` file to be more restrictive. On Linux it is recommended to be `0600`. You can do this with `chmod 0600 xrpld.cfg`
 
 ## 4. Connect to the network
 
@@ -163,7 +163,7 @@ For a comparison of these approaches, see [Pros and Cons of Peering Configuratio
 
 This configuration connects your validator to the XRP Ledger network using [discovered peers](../../../concepts/networks-and-servers/peer-protocol.md#peer-discovery). This is the default behavior for `rippled` servers.
 
-_**To connect your validator to the XRP Ledger network using discovered peers,**_ omit the `[peer_private]` stanza or set it to `0` in your validator's `rippled.cfg` file. The [example `rippled.cfg` file](https://github.com/XRPLF/rippled/blob/develop/cfg/rippled-example.cfg) is delivered with this configuration.
+_**To connect your validator to the XRP Ledger network using discovered peers,**_ omit the `[peer_private]` stanza or set it to `0` in your validator's `xrpld.cfg` file. The [example `xrpld.cfg` file](https://github.com/XRPLF/rippled/blob/develop/cfg/xrpld-example.cfg) is delivered with this configuration.
 
 
 ### Connect using proxies
@@ -176,7 +176,7 @@ _**To connect your validator to the XRP Ledger network using proxies:**_
 
 2. Configure your validator and stock `rippled` servers to run in a [cluster](../peering/cluster-rippled-servers.md).
 
-3. In your validator's `rippled.cfg` file, set `[peer_private]` to `1`. This prevents your validator's IP address from being forwarded. For more information, see [Private Peers](../../../concepts/networks-and-servers/peer-protocol.md#private-peers). It also prevents your validator from connecting to servers other than those defined in the `[ips_fixed]` stanza you defined to run your validator in a cluster.
+3. In your validator's `xrpld.cfg` file, set `[peer_private]` to `1`. This prevents your validator's IP address from being forwarded. For more information, see [Private Peers](../../../concepts/networks-and-servers/peer-protocol.md#private-peers). It also prevents your validator from connecting to servers other than those defined in the `[ips_fixed]` stanza you defined to run your validator in a cluster.
 
     {% admonition type="danger" name="Warning" %}Be sure that you don't publish your validator's IP address in other ways.{% /admonition %}
 
@@ -207,7 +207,7 @@ This configuration connects your validator to the network using three [public hu
 
 _**To connect your validator to the network using public hubs:**_
 
-1. In your validator's `rippled.cfg` file, include the following `[ips_fixed]` stanza. This stanza tells `rippled` to always attempt to maintain peer connections with these public hubs. 
+1. In your validator's `xrpld.cfg` file, include the following `[ips_fixed]` stanza. This stanza tells `rippled` to always attempt to maintain peer connections with these public hubs. 
 
     ```
     [ips_fixed]
@@ -218,7 +218,7 @@ _**To connect your validator to the network using public hubs:**_
     ```
 
 {% admonition type="info" name="Note" %}
-The above list may evolve over time. To ensure you're using the most current set of public hubs, refer to the official [`rippled-example.cfg`](https://github.com/XRPLF/rippled/blob/develop/cfg/rippled-example.cfg) maintained by XRPLF.
+The above list may evolve over time. To ensure you're using the most current set of public hubs, refer to the official [`xrpld-example.cfg`](https://github.com/XRPLF/rippled/blob/develop/cfg/xrpld-example.cfg) maintained by XRPLF.
 {% /admonition %}
 
 
@@ -232,7 +232,7 @@ The above list may evolve over time. To ensure you're using the most current set
       - Not try to crash your server.
       - Not publish your IP address to strangers.
 
-2. Also in your validator's `rippled.cfg` file, include the following `[peer_private]` stanza and set it to `1`. This instructs your validator’s peers not to broadcast your validator’s IP address. This setting also instructs your validator to connect to only the peers configured in your `[ips_fixed]` stanza. This ensures that your validator connects to and shares its IP with only peer `rippled` servers you know and trust.
+2. Also in your validator's `xrpld.cfg` file, include the following `[peer_private]` stanza and set it to `1`. This instructs your validator’s peers not to broadcast your validator’s IP address. This setting also instructs your validator to connect to only the peers configured in your `[ips_fixed]` stanza. This ensures that your validator connects to and shares its IP with only peer `rippled` servers you know and trust.
 
     ```
     [peer_private]

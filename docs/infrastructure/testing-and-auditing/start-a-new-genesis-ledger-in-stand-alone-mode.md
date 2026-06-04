@@ -13,7 +13,7 @@ In stand-alone mode, you can have `rippled` create a new genesis ledger. This pr
 * To start `rippled` in stand-alone mode with a new genesis ledger, use the `-a` and `--start` options:
 
 ```
-rippled -a --start --conf=/path/to/rippled.cfg
+rippled -a --start --conf=/path/to/xrpld.cfg
 ```
 
 For more information on the options you can use when starting `rippled` in stand-alone mode, see [Commandline Usage: Stand-Alone Mode Options](../commandline-usage.md#stand-alone-mode-options).

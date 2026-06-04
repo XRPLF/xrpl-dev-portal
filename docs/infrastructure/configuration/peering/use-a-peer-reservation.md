@@ -45,7 +45,7 @@ If you have already configured your server with a permanent node key pair value,
     ```
     rippled validation_create
 
-    Loading: "/etc/rippled.cfg"
+    Loading: "/etc/xrpld.cfg"
     Connecting to 127.0.0.1:5005
     {
        "result" : {
@@ -62,7 +62,7 @@ If you have already configured your server with a permanent node key pair value,
 2. Edit your `rippled`'s config file.
 
     ```
-    vim /etc/opt/ripple/rippled.cfg
+    vim /etc/opt/ripple/xrpld.cfg
     ```
 
     {% partial file="/docs/_snippets/conf-file-location.md" /%}
@@ -97,7 +97,7 @@ Use the [peer_reservations_add method][] to add a reservation using the node pub
 ```sh
 $ rippled peer_reservations_add n9Mxf6qD4J55XeLSCEpqaePW4GjoCR5U1ZeGZGJUCNe3bQa4yQbG "Description here"
 
-Loading: "/etc/opt/ripple/rippled.cfg"
+Loading: "/etc/opt/ripple/xrpld.cfg"
 Connecting to 127.0.0.1:5005
 
 {

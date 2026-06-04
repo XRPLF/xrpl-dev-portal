@@ -16,7 +16,7 @@ Example of a `server_info` result (trimmed) showing only 10 peers, likely becaus
 
 ```json
 $ ./rippled server_info
-Loading: "/etc/opt/ripple/rippled.cfg"
+Loading: "/etc/opt/ripple/xrpld.cfg"
 2019-Dec-23 22:15:09.343961928 HTTPClient:NFO Connecting to 127.0.0.1:5005
 
 {

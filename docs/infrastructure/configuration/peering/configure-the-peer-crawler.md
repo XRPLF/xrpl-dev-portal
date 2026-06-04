@@ -23,7 +23,7 @@ To configure how much information your server provides in response to peer crawl
 1. Edit your `rippled`'s config file.
 
     ```
-    vim /etc/opt/ripple/rippled.cfg
+    vim /etc/opt/ripple/xrpld.cfg
     ```
 
     {% partial file="/docs/_snippets/conf-file-location.md" /%}
@@ -54,7 +54,7 @@ To disable the peer crawler API on your server, so it does not respond to peer c
 1. Edit your `rippled`'s config file.
 
     ```
-    vim /etc/opt/ripple/rippled.cfg
+    vim /etc/opt/ripple/xrpld.cfg
     ```
 
     {% partial file="/docs/_snippets/conf-file-location.md" /%}

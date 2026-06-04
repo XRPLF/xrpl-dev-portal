@@ -26,7 +26,7 @@ To enable public signing, perform the following steps:
 1. Edit your `rippled`'s config file.
 
     ```
-    vim /etc/opt/ripple/rippled.cfg
+    vim /etc/opt/ripple/xrpld.cfg
     ```
 
     {% partial file="/docs/_snippets/conf-file-location.md" /%}

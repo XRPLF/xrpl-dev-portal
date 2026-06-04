@@ -51,7 +51,7 @@ Examples of successful responses:
 
 {% tab label="Commandline (set log level)" %}
 ```json
-Loading: "/etc/rippled.cfg"
+Loading: "/etc/xrpld.cfg"
 Connecting to 127.0.0.1:5005
 
 {
@@ -64,7 +64,7 @@ Connecting to 127.0.0.1:5005
 
 {% tab label="Commandline (check log levels)" %}
 ```json
-Loading: "/etc/rippled.cfg"
+Loading: "/etc/xrpld.cfg"
 Connecting to 127.0.0.1:5005
 
 {

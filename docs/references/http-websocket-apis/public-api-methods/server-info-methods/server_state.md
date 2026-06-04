@@ -195,7 +195,7 @@ Headers
 
 {% tab label="Commandline" %}
 ```json
-Loading: "/etc/opt/ripple/rippled.cfg"
+Loading: "/etc/opt/ripple/xrpld.cfg"
 2020-Mar-24 01:30:08.646201720 UTC HTTPClient:NFO Connecting to 127.0.0.1:5005
 
 Headers

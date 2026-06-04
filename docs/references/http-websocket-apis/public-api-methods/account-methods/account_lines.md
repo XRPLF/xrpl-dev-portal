@@ -83,7 +83,7 @@ An example of a successful response:
 {% /tab %}
 
 {% tab label="Commandline" %}
-{% code-snippet file="/_api-examples/account_lines/jsonrpc-response.json" language="json" prefix="Loading: \"/etc/opt/ripple/rippled.cfg\"\n2025-Apr-09 21:10:16.085500844 UTC HTTPClient:NFO Connecting to 127.0.0.1:5005\n\n" /%}
+{% code-snippet file="/_api-examples/account_lines/jsonrpc-response.json" language="json" prefix="Loading: \"/etc/opt/ripple/xrpld.cfg\"\n2025-Apr-09 21:10:16.085500844 UTC HTTPClient:NFO Connecting to 127.0.0.1:5005\n\n" /%}
 {% /tab %}
 
 {% /tabs %}

@@ -19,7 +19,7 @@ You should consider these factors to ensure that your server has the capacity to
 
 The default configuration file contains settings for a broad range of common use cases. You can get better performance by customizing the settings for your specific hardware and intended usage pattern.
 
-The settings in this section are parameters in the `rippled.cfg` file. You can access an example config file, `rippled-example.cfg`, in the [`cfg` directory](https://github.com/XRPLF/rippled/blob/develop/cfg/rippled-example.cfg) in the `rippled` GitHub repo. The settings in the example config file match the default config installed alongside the server.
+The settings in this section are parameters in the `xrpld.cfg` file. You can access an example config file, `xrpld-example.cfg`, in the [`cfg` directory](https://github.com/XRPLF/rippled/blob/develop/cfg/xrpld-example.cfg) in the `rippled` GitHub repo. The settings in the example config file match the default config installed alongside the server.
 
 
 ### Node Size
@@ -38,7 +38,7 @@ To tune your server, it may be useful to start with `tiny` and increase the size
 |:--------------|:------------------|:-----------------------------------------|
 | < 8 GB        | `tiny`            | **Not recommended.** A server with this setting may not sync to a busy network. |
 | 8 GB          | `small`           | Recommended for test servers that only need to run occasionally. |
-| 16 GB         | `medium`          | The `rippled-example.cfg` file uses this value. |
+| 16 GB         | `medium`          | The `xrpld-example.cfg` file uses this value. |
 | 32 GB         | `large`           | **Not recommended.** In practice, this setting performs worse than `huge` in most circumstances. Always use `huge` if you want stability. |
 | 64 GB         | `huge`            | Recommended for production servers.      |
 
@@ -47,13 +47,13 @@ If you set the `[node_size]` parameter to an invalid value, the [server fails to
 
 ### Node DB Type
 
-The `type` field in the `[node_db]` stanza of the `rippled.cfg` file sets the type of key-value store that `rippled` uses to hold the ledger store.
+The `type` field in the `[node_db]` stanza of the `xrpld.cfg` file sets the type of key-value store that `rippled` uses to hold the ledger store.
 
 For almost all purposes, use `NuDB`. A fast SSD is required. [Learn more](#more-about-using-nudb)
 
 The `RocksDB` setting is available for legacy purposes, but is generally not recommended. [Learn more](#more-about-using-rocksdb)
 
-The example `rippled-example.cfg` file has the `type` field in the `[node_db]` stanza set to `NuDB`.
+The example `xrpld-example.cfg` file has the `type` field in the `[node_db]` stanza set to `NuDB`.
 
 #### More About Using RocksDB
 
@@ -86,7 +86,7 @@ NuDB has nearly constant performance and memory footprints regardless of the [am
 
 Production servers should be configured to use NuDB and to store the amount of historical data required for your use case.
 
-NuDB does not have performance-related configuration options available in `rippled.cfg`. Here is the recommended `[node_db]` configuration for a `rippled` server using NuDB:
+NuDB does not have performance-related configuration options available in `xrpld.cfg`. Here is the recommended `[node_db]` configuration for a `rippled` server using NuDB:
 
 ```
 [node_db]
@@ -101,7 +101,7 @@ Adjust the `path` to the directory where you want to keep the ledger store on di
 
 ### Log Level
 
-The example `rippled-example.cfg` file sets the logging verbosity to `warning` in the `[rpc_startup]` stanza. This setting greatly reduces disk space and I/O requirements over more verbose logging. However, more verbose logging provides increased visibility for troubleshooting.
+The example `xrpld-example.cfg` file sets the logging verbosity to `warning` in the `[rpc_startup]` stanza. This setting greatly reduces disk space and I/O requirements over more verbose logging. However, more verbose logging provides increased visibility for troubleshooting.
 
 {% admonition type="warning" name="Caution" %}If you omit the `log_level` command from the `[rpc_startup]` stanza, the server writes logs to disk at the `debug` level and outputs `warning` level logs to the console. Logging at the `debug` level requires several more GB of disk space per day than `warning` level, depending on transaction volumes and client activity.{% /admonition %}
 

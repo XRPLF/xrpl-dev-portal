@@ -104,7 +104,7 @@ The sample code in the previous section shows you how to connect to the Testnet,
     XrplClient xrplClient = new XrplClient(rippledUrl);
     ```
 
-    See the example [core server config file](https://github.com/XRPLF/rippled/blob/c0a0b79d2d483b318ce1d82e526bd53df83a4a2c/cfg/rippled-example.cfg#L1562) for more information about default values.
+    See the example [core server config file](https://github.com/XRPLF/rippled/blob/c0a0b79d2d483b318ce1d82e526bd53df83a4a2c/cfg/xrpld-example.cfg#L1562) for more information about default values.
 
 * By using one of the available [public servers][]:
 
