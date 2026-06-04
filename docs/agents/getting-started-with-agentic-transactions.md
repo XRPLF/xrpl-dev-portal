@@ -70,12 +70,28 @@ pip install xrpl-py
 
 ## Step 1: Install the skills
 
+`npx` is an open source command-line tool by Vercel that acts as the "package manager" for the open AI Agent Skills ecosystem.
+
 ```sh
 npx skills add https://github.com/XRPLF/xrpl-dev-portal/tree/master/.claude/skills/xrpl-skills/xrpl-agent-wallet --agent claude-code
 npx skills add https://github.com/XRPLF/xrpl-dev-portal/tree/master/.claude/skills/xrpl-skills/xrpl-payments --agent claude-code
 ```
 
-Verify both loaded by asking Claude:
+Verify that your skill has been installed correctly by asking Claude to list skills: 
+
+```
+/skills
+```
+
+You should see both the skills listed along with any other skills you may have installed previously.
+
+```
+Project skills (.claude/skills)                                
+  xrpl-agent-wallet                                                                         
+  xrpl-payments 
+```
+
+You can also verify that both skills are loaded by asking Claude:
 
 ```
 What XRPL network are you targeting by default, and what is the base
@@ -124,10 +140,26 @@ wallet. Store it before you continue.
 The XRPL Agent Wallet skill enforces one rule without exception: the seed must
 never appear in code, logs, chat output, or error messages.
 
-**For local development**, an environment variable is sufficient:
+**For local development**, store the seed in a `.env` file and load it with
+`dotenv`:
 
 ```sh
-export XRPL_SEED="sYourSeedHere"
+# .env  — never commit this file
+XRPL_SEED="sYourSeedHere"
+```
+
+Create the file and add it to `.gitignore` before your first commit:
+
+```sh
+echo "XRPL_SEED=" > .env
+echo ".env" >> .gitignore
+```
+
+Then load it at runtime:
+
+```sh
+# Terminal (one-time, for the current shell session)
+export $(cat .env | xargs)
 ```
 
 {% tabs %}
@@ -191,9 +223,9 @@ from xrpl.clients import JsonRpcClient
 from xrpl.wallet import generate_faucet_wallet
 
 client = JsonRpcClient("https://s.altnet.rippletest.net:51234")
-wallet = generate_faucet_wallet(client, debug=True)
+wallet = generate_faucet_wallet(client, wallet, debug=True)
 print(f"Address : {wallet.classic_address}")
-print(f"Balance : 1000 XRP")  # Testnet faucet provides 1000 XRP
+print(f"Balance : { balance } XRP")  # Testnet faucet provides 1000 XRP
 ```
 {% /tab %}
 {% /tabs %}
