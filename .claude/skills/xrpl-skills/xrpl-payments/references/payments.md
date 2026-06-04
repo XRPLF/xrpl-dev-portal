@@ -156,14 +156,14 @@ RLUSD is Ripple's USD stablecoin on the XRP Ledger. Use it for dollar-denominate
 # Hex-encoded currency code — "RLUSD" in ASCII padded to 40 hex chars
 RLUSD_CURRENCY = "524C555344000000000000000000000000000000"
 
-# Issuer addresses — confirm at https://xrpl.org/docs before production use
-RLUSD_ISSUER_TESTNET = "rQhWct2fv4Vc4KRjRgMrxa8xPN9Zx9iLKV"  # ⚠️ confirm
-RLUSD_ISSUER_MAINNET = "rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De"  # ⚠️ confirm
+# Issuer addresses — confirm before production use
+RLUSD_ISSUER_TESTNET = "rQhWct2fv4Vc4KRjRgMrxa8xPN9Zx9iLKV"  
+RLUSD_ISSUER_MAINNET = "rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De"  
 ```
 
 ```typescript
 const RLUSD_CURRENCY = "524C555344000000000000000000000000000000";
-const RLUSD_ISSUER_TESTNET = "rQhWct2fv4Vc4KRjRgMrxa8xPN9Zx9iLKV"; // ⚠️ confirm
+const RLUSD_ISSUER_TESTNET = "rQhWct2fv4Vc4KRjRgMrxa8xPN9Zx9iLKV"; 
 ```
 
 ### Step 1: Set up the trust line (one-time per wallet)

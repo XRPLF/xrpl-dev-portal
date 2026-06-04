@@ -71,13 +71,9 @@ pip install xrpl-py
 ## Step 1: Install the skills
 
 ```sh
-npx skills add https://github.com/XRPLF/xrpl-dev-portal/tree/agentic-txns-xrpl/.claude/skills/xrpl-skills/xrpl-agent-wallet
-npx skills add https://github.com/XRPLF/xrpl-dev-portal/tree/agentic-txns-xrpl/.claude/skills/xrpl-skills/xrpl-payments
+npx skills add https://github.com/XRPLF/xrpl-dev-portal/tree/master/.claude/skills/xrpl-skills/xrpl-agent-wallet
+npx skills add https://github.com/XRPLF/xrpl-dev-portal/tree/master/.claude/skills/xrpl-skills/xrpl-payments
 ```
-
-<!-- ⚠️ FOLLOW-UP: Confirm exact install commands and registry paths before
-publishing. Also confirm whether Claude.ai / desktop app use a settings UI
-instead. -->
 
 Verify both loaded by asking Claude:
 

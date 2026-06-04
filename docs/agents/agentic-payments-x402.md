@@ -320,7 +320,6 @@ difference transparently.
   Spending controls, key management, and compliance logging for production deployments. -->
 - [T54 X402 Documentation](https://xrpl-x402.t54.ai/docs) — The full X402 reference for
   the XRPL implementation, including the exact payment scheme and facilitator API.
-- [X402 Protocol Repository](#) — *(⚠️ FOLLOW-UP: Add the official X402 repo link once
-  the T54 PR is merged.)*
+- [X402 Protocol Repository](https://github.com/x402-foundation/x402) — The official X402 repository.
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}
