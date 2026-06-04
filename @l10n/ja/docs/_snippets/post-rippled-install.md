@@ -16,11 +16,11 @@ rippled APIを使用した`rippled`サーバとの通信について詳しくは
 
 ### その他の構成
 
-`rippled`は、デフォルト構成でXRP Ledgerに接続する必要があります。ただし、`rippled.cfg`ファイルを編集すれば、設定を変更できます。推奨される構成設定については、[容量の計画](../infrastructure/installation/capacity-planning.md)をご覧ください。
+`rippled`は、デフォルト構成でXRP Ledgerに接続する必要があります。ただし、`xrpld.cfg`ファイルを編集すれば、設定を変更できます。推奨される構成設定については、[容量の計画](../infrastructure/installation/capacity-planning.md)をご覧ください。
 
 {% partial file="/@l10n/ja/docs/_snippets/conf-file-location.md" /%}
 
-すべての構成オプションの説明については、[`rippled` GitHubリポジトリー](https://github.com/XRPLF/rippled/blob/master/cfg/rippled-example.cfg)をご覧ください。
+すべての構成オプションの説明については、[`rippled` GitHubリポジトリー](https://github.com/XRPLF/rippled/blob/master/cfg/xrpld-example.cfg)をご覧ください。
 
 構成の変更を有効にするには、`rippled`を再起動する必要があります。
 

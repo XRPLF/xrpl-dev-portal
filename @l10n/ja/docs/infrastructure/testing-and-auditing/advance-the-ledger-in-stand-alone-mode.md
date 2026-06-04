@@ -11,7 +11,7 @@ labels:
 スタンドアロンモードでは`rippled`はピアツーピアネットワークの他のメンバーと通信せず、またコンセンサスプロセスに参加しません。このため、[ledger_acceptメソッド][]を使用してレジャーインデックスを手動で進める必要があります。
 
 ```
-rippled ledger_accept --conf=/path/to/rippled.cfg
+rippled ledger_accept --conf=/path/to/xrpld.cfg
 ```
 
 スタンドアロンモードでは`rippled`は「閉鎖済み」レジャーバージョンと「検証済み」レジャーバージョンは区別されません。（これらのバージョンの違いについての詳細は、[XRP Ledgerコンセンサスプロセス](../../concepts/consensus-protocol/index.md)をご覧ください。）
