@@ -42,3 +42,19 @@ paths:
 | The default is (value). | <ul><li>Defaults to (value).</li><li>Default: (value).</li></ul> |
 | <ul><li>Preferred: instance</li><li>Acceptable: server or node</li></ul> | |
 | Preferred: We recommend | <ul><li>Ripple recommends</li><li>It is recommended</li></ul> |
+
+## Frontmatter
+
+Every doc page begins with a YAML frontmatter block. Use the example below as a copy-paste template, then consult the field reference for what each key controls.
+
+```yaml
+---
+seo:
+  description: Create a loan broker on the XRP Ledger.    # one-sentence summary of the page
+metadata:
+  indexPage: true                                         # set to enable the {% child-pages /%} component for this page
+labels:
+  - Lending Protocol                                      # topic tags; match the spelling of existing labels (no central registry)
+status: not_enabled                                       # omit if the feature is enabled on Mainnet; only valid value is not_enabled
+---
+```
