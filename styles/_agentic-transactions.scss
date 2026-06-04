@@ -1,0 +1,134 @@
+// Styles for the Agentic Transactions landing page
+// (docs/agents/agentic-transactions.page.tsx).
+
+.page-agentic-transactions {
+  // Used by the hero button row (d-flex … gap-3).
+  .gap-3 {
+    gap: 1rem;
+
+    // The arrow button (btn-arrow) is taller than the plain outline buttons,
+    // so flex-stretch grows the outline buttons to match — leaving their
+    // single line of text pinned to the top. Center each button's own
+    // content so all three labels sit centered, like Get Started.
+    .btn-outline-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  // ── Eyebrow chips (hero + See It First cards) ─────────────────────────────
+  // Self-contained pills using the design-system chip palette. We avoid the
+  // shared .label class because it has several conflicting definitions in the
+  // codebase (font-size, padding-left, display:block !important) that distort
+  // the pill in this context.
+  .chip-green,
+  .chip-blue {
+    display: inline-block;
+    padding: 7px 16px;
+    border-radius: 16px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    line-height: 1.2;
+  }
+  .chip-green { background-color: #145C35; color: #84F0B6; }
+  .chip-blue  { background-color: #002E4C; color: #80CCFF; }
+
+  // ── Icon circles (benefit cards) ──────────────────────────────────────────
+  .benefit-icon-wrap {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    flex-shrink: 0;
+
+    img {
+      width: 28px;
+      height: 28px;
+    }
+    // Accent dot
+    &::after {
+      content: '';
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      top: 0;
+      right: -1px;
+    }
+  }
+
+  // Dark-mode icon circle backgrounds (default) + accent dots
+  .icon-circle-blue   { background-color: #0D2040; &::after { background-color: #19A3FF; } }
+  .icon-circle-green  { background-color: #0D2A18; &::after { background-color: #32E685; } }
+  .icon-circle-orange { background-color: #2A1400; &::after { background-color: #FF6719; } }
+  .icon-circle-purple { background-color: #1E0A40; &::after { background-color: #9A52FF; } }
+  .icon-circle-pink   { background-color: #2A0018; &::after { background-color: #FF198B; } }
+  .icon-circle-yellow { background-color: #262200; &::after { background-color: #FAFF19; } }
+
+  // ── Requirement cards ─────────────────────────────────────────────────────
+  .req-number {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+    color: #84f0b6;
+  }
+  // Linked variant gets a purple accent border
+  .card.req-linked {
+    border-color: rgba(154, 82, 255, 0.5) !important;
+  }
+  // Card footer arrow for linked cards
+  .req-arrow {
+    color: #9a52ff;
+    font-size: 1rem;
+    line-height: 1;
+  }
+
+  // ── Benefit cards: 3-col grid ─────────────────────────────────────────────
+  .benefit-card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+
+    @include media-breakpoint-down(lg) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @include media-breakpoint-down(sm) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .card-deck {
+    margin-bottom: -1.5rem;
+  }
+  .card-deck .card {
+    margin-bottom: 1.5rem;
+  }
+}
+
+// ── Light-mode overrides (.light sits on <html>, above the page wrapper) ──────
+.light .page-agentic-transactions {
+  .icon-circle-blue   { background-color: #EBF5FF; }
+  .icon-circle-green  { background-color: #EDFAF3; }
+  .icon-circle-orange { background-color: #FFF1E8; }
+  .icon-circle-purple { background-color: #F3EEFF; }
+  .icon-circle-pink   { background-color: #FFEBF4; }
+  .icon-circle-yellow { background-color: #FFFBE6; }
+
+  .chip-green { background-color: #ADF5CE; color: #145C35; }
+  .chip-blue  { background-color: #B2E0FF; color: #004D80; }
+
+  .req-number { color: #145c35; }
+  .card.req-linked { border-color: rgba(124, 31, 255, 0.4) !important; }
+  .req-arrow { color: #7c1fff; }
+}
+
+// ── Agentic payment loop diagram: swap to dark SVG in dark mode ───────────────
+// Path is relative to the compiled CSS (static/css/), matching other url(../img/…).
+html:not(.light) .page-agentic-transactions .agentic-loop-diagram {
+  content: url(../img/xrpl-agentic-payment-loop.svg);
+}
