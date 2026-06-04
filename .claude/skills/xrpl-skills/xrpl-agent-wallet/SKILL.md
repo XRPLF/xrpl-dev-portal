@@ -1,5 +1,5 @@
 ---
-name: xrpl-agent-wallet 
+name: xrpl-agent-wallet
 description: Use this skill whenever an agent needs to sign or submit a transaction to the XRP Ledger (XRPL) on a user's behalf. This skill is the wallet layer — it handles key loading, the signing ceremony, human confirmation, and reliable submission. It does NOT construct transactions; a separate XRPL transactions skill (or the developer) provides the transaction object. Trigger this skill any time you see wallet.sign, submitAndWait, submit, xrpl.Wallet, a seed/secret being loaded, a tx_blob being produced, or any phrase like "send XRP", "sign this transaction", "submit to the ledger", "have the agent pay", "let the agent transact" — even when the user does not explicitly say "wallet". If an XRPL transaction is going to be signed by code you're writing or driving, this skill applies.
 ---
 
@@ -86,7 +86,7 @@ Rules for the preview:
 5. Sign
 Only after an explicit affirmative from the human (or under an active auto-sign override — see below):
 
-```typecript
+```typescript
 const signed = wallet.sign(prepared);
 // signed.tx_blob  — the binary transaction to submit
 // signed.hash     — persist this NOW, before submitting
@@ -98,7 +98,7 @@ Log the hash to wherever the developer's audit trail lives. At minimum, print it
 
 6. Submit and wait
 
-```typecript
+```typescript
 const result = await client.submitAndWait(signed.tx_blob);
 ```
 
