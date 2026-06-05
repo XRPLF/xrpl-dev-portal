@@ -177,7 +177,7 @@ Before creating or updating a sample code file, confirm with the user:
     node.CreatedNode?.LedgerEntryType === 'LoanBroker'
   )
   console.log(`LoanBroker ID: ${loanBrokerNode.CreatedNode.LedgerIndex}`)
-  console.log(`LoanBroker Psuedo-Account Address: ${loanBrokerNode.CreatedNode.NewFields.Account}`)
+  console.log(`LoanBroker Pseudo-Account Address: ${loanBrokerNode.CreatedNode.NewFields.Account}`)
   ```
 
 ## Setup files
