@@ -5,8 +5,6 @@ paths:
 
 # XRPL Go Code Sample Conventions
 
-These are not concrete rules. If the user gives you directions that contradict these rules, note it to the user but their instructions take priority.
-
 Code samples come in **two flavors** with very different conventions. Identify which you're writing first.
 
 | Flavor | Folder pattern | Audience | Priority |
@@ -72,7 +70,7 @@ module github.com/XRPLF
 
 go 1.24.3
 
-require github.com/Peersyst/xrpl-go v0.1.17
+require github.com/Peersyst/xrpl-go v<latest-stable>
 ```
 
 `go mod tidy` populates the indirect dependency block at the bottom — that block is auto-managed and shouldn't be hand-edited.
@@ -90,10 +88,6 @@ func ptr[T any](v T) *T { return &v }
 ## Tutorial files
 
 **WebSocket client** — `github.com/Peersyst/xrpl-go/xrpl/websocket`. Always wrap with `defer client.Disconnect()` right after `NewClient` so the connection closes on any exit path.
-
-Before creating or updating a sample code file, confirm with the user:
-1. High-level steps required
-2. Which network to use. Devnet (`wss://s.devnet.rippletest.net:51233`) or Testnet (`wss://s.altnet.rippletest.net:51233`)
 
 ### Structure
 

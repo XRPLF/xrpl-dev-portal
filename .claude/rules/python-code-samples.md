@@ -5,8 +5,6 @@ paths:
 
 # XRPL Python Code Sample Conventions
 
-These are not concrete rules. If the user gives you directions that contradict these rules, note it to the user but their instructions take priority.
-
 Code samples come in **two flavors** with very different conventions. Identify which you're writing first.
 
 | Flavor | Filename pattern | Audience | Priority |
@@ -70,7 +68,7 @@ The expected-output blocks document the golden path. Update them when a script's
 Minimal — pin only what's needed:
 
 ```
-xrpl-py>=4.5.0
+xrpl-py>=<latest-stable>
 ```
 
 Add other deps only when a sample requires them.
@@ -78,10 +76,6 @@ Add other deps only when a sample requires them.
 ## Tutorial files
 
 **Sync API only** — `xrpl.clients.JsonRpcClient`, `xrpl.transaction.submit_and_wait`, `xrpl.wallet.Wallet`, `xrpl.wallet.generate_faucet_wallet`. No `asyncio`, no `main()` wrapper, no `if __name__ == "__main__":` — scripts run top-to-bottom and exit.
-
-Before creating or updating a sample code file, confirm with the user:
-1. High-level steps required
-2. Which network to use. Devnet (`https://s.devnet.rippletest.net:51234`) or Testnet (`https://s.altnet.rippletest.net:51234`)
 
 ### Structure
 

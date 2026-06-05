@@ -5,8 +5,6 @@ paths:
 
 # XRPL JavaScript Code Sample Conventions
 
-These are not concrete rules. If the user gives you directions that contradict these rules, note it to the user but their instructions take priority.
-
 Code samples come in **two flavors** with very different conventions. Identify which you're writing first.
 
 | Flavor | Filename pattern | Audience | Priority |
@@ -70,17 +68,13 @@ Minimal — no `scripts`, no `devDependencies`, no `version` unless an external 
   "name": "<topic>-examples",
   "description": "Example code for <one-line summary>.",
   "dependencies": {
-    "xrpl": "^4.6.0"
+    "xrpl": "^<latest-stable>"
   },
   "type": "module"
 }
 ```
 
 ## Tutorial files
-
-Before creating or updating a sample code file, confirm with the user:
-1. High-level steps required
-2. Which network to use. Devnet (`wss://s.devnet.rippletest.net:51233`) or Testnet (`wss://s.altnet.rippletest.net:51233`)
 
 ### Structure
 

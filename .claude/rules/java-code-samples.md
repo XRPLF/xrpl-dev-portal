@@ -5,8 +5,6 @@ paths:
 
 # XRPL Java Code Sample Conventions
 
-These are conventions, not hard rules. If the user gives you directions that contradict these conventions, note it to the user but their instructions take priority.
-
 Java samples currently exist only in **tutorial form**.
 
 ## Style
@@ -69,7 +67,7 @@ Java 11, UTF-8, single xrpl4j dependency, exec plugin for `mvn exec:java`:
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.example</groupId>
-  <artifactId><topic>-samples</artifactId> <!-- e.g., credential-samples; change per directory -->
+  <artifactId>{topic}-samples</artifactId> <!-- e.g., credential-samples; change per directory -->
   <version>1.0.0</version>
   <packaging>jar</packaging>
 
@@ -92,7 +90,7 @@ Java 11, UTF-8, single xrpl4j dependency, exec plugin for `mvn exec:java`:
     <dependency>
       <groupId>org.xrpl</groupId>
       <artifactId>xrpl4j-client</artifactId>
-      <version>6.0.0</version>
+      <version>{latest-stable}</version>
     </dependency>
   </dependencies>
 </project>
@@ -124,11 +122,6 @@ Java 11, UTF-8, single xrpl4j dependency, exec plugin for `mvn exec:java`:
 ## Tutorial files
 
 **xrpl4j sync client** — `org.xrpl.xrpl4j.client.XrplClient`. Use `CompletableFuture.supplyAsync` + `allOf().join()` for parallel work (e.g., funding multiple accounts).
-
-Before creating or updating a sample code file, confirm with the user:
-1. Topic directory name (e.g., `credential`) and class name(s) (e.g., `ManageCredentials`)
-2. High-level steps required
-3. Which network to use. Devnet (`https://s.devnet.rippletest.net:51234`) or Testnet (`https://s.altnet.rippletest.net:51234`)
 
 ### Structure
 
