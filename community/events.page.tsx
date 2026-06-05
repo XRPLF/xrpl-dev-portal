@@ -1431,7 +1431,7 @@ const events = [
   {
     name: "XRPL Developer Training",
     description:
-      "​XRPL Commons is hosting an online training open to everyone, whether you are a developer or not. Over two days, dive into the XRP Ledger, one of the world’s leading blockchains,  designed for real-world applications and known for its low carbon footprint and efficiency.",
+      "​XRPL Commons is hosting an online training open to everyone, whether you are a developer or not. Over two days, dive into the XRP Ledger, one of the world’s leading blockchains, designed for real-world applications and known for its low carbon footprint and efficiency.",
     type: "conference",
     link: "https://luma.com/building-on-the-xrpl",
     location: "Online",
@@ -1442,7 +1442,7 @@ const events = [
   {
     name: "Blockchain Research Summit",
     description:
-      "​Two days. Three communities. One shared question: what does the next generation  of ledger technology look like — and how do we build it responsibly?",
+      "​Two days. Three communities. One shared question: what does the next generation of ledger technology look like — and how do we build it responsibly?",
     type: "conference",
     link: "https://luma.com/XRPL-Blockchain-Research-Summit",
     location: "Paris, France",
@@ -1453,7 +1453,7 @@ const events = [
   {
     name: "XRPL Meetup Lisbon",
     description:
-      "Calling all Portuguese blockchain enthusiasts! Join XRPL Meetups to share knowledge,  build real-life connections, and foster communities centered around blockchain  and XRP Ledger. We're establishing local “XRPL Hubs” across Europe, and we want  you to be a part of it!",
+      "Calling all Portuguese blockchain enthusiasts! Join XRPL Meetups to share knowledge, build real-life connections, and foster communities centered around blockchain and XRP Ledger. We're establishing local “XRPL Hubs” across Europe, and we want  you to be a part of it!",
     type: "meetup",
     link: "https://luma.com/xrpl-meetup-lisbon",
     location: "Lisbon, Portugal",
