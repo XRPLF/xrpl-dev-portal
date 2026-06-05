@@ -54,7 +54,7 @@ The XRP Ledger's deterministic finality means step 3 is reliable: the agent know
 within 3–5 seconds whether the payment confirmed, and a clean expiry means no ambiguous
 state to handle.
 
-![X402 payment sequence diagram showing the 12-step flow between Agent, Merchant, XRP Ledger, and Facilitator](../img/x402-sequence-light.svg)
+![X402 payment sequence diagram showing the end-to-end flow between Agent, Merchant, XRP Ledger, and Facilitator](../img/x402-sequence-light.svg)
 
 <!-- For dark mode, swap to x402-sequence-dark.svg via a <picture> element once the
 dark variant is available. Pattern: same as agentic-payment-loop diagram. -->
@@ -187,7 +187,7 @@ RESOURCE_URL=http://localhost:8000/hello               # The paid endpoint to ca
 ```
 
 > **Never commit your wallet seed to version control.** Use environment variables or a
-> secrets manager. See [Step 3: Secure your keys](/docs/agents/getting-started-with-agentic-transactions/#step-3-secure-your-keys)
+> secrets manager. See [Step 2: Generate and secure your wallet](/docs/agents/getting-started-with-agentic-transactions/#step-2-generate-and-secure-your-wallet)
 > for guidance.
 
 ### Step 3: Create your client
@@ -302,8 +302,8 @@ Switching from testnet to Mainnet requires three changes:
 1. **Network parameter** — change `network="xrpl:1"` to `network="xrpl:0"` in both
    merchant and client configuration.
 2. **Facilitator URL** — replace the testnet facilitator URL with the Mainnet endpoint.
-3. **Wallet** — fund a Mainnet wallet with real XRP and update `XRPL_PAY_TO` and
-   `XRPL_SEED` accordingly.
+3. **Wallet** — fund a Mainnet wallet with real XRP and update `XRPL_PAY_TO`
+   (merchant) and `XRPL_BUYER_SEED` (payer) accordingly.
 
 No other code changes are required. The `x402-xrpl` package handles the network
 difference transparently.

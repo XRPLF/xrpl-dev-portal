@@ -1,5 +1,52 @@
 # Payments, Escrow & Agentic Patterns
 
+> **Architecture note — who submits.** In the two-skill setup, this Payments
+> skill *constructs* the transaction object; the **XRPL Agent Wallet skill**
+> owns the final steps — autofill, human preview, local signing, and
+> `submitAndWait`. The `submit_and_wait` / `submitAndWait` (and the `autofill`
+> in the simulate example) shown below are included so each snippet runs
+> standalone for a developer exploring the API. In the agentic flow, stop at
+> object construction and hand the object to the Wallet skill instead of calling
+> `submit_and_wait` yourself. See the Wallet skill for the signing ceremony.
+
+## The build -> hand-off flow
+
+This is the shape of every agentic payment in the two-skill setup: this skill
+builds the object and stops; the Wallet skill does everything after.
+
+```python
+# 1. This skill: construct the transaction object.
+from xrpl.models.transactions import Payment
+from xrpl.utils import xrp_to_drops
+
+payment = Payment(
+    account=wallet.address,
+    destination="rDestinationAddress",
+    amount=xrp_to_drops(25),
+    source_tag=AGENT_SOURCE_TAG,
+)
+
+# 2. Hand `payment` to the XRPL Agent Wallet skill, which runs the ceremony:
+#       autofill -> preview to the human -> confirm -> sign locally -> submitAndWait
+#    Do NOT autofill, sign, or submit here.
+```
+
+```typescript
+// 1. This skill: construct the transaction object.
+import { Payment, xrpToDrops } from "xrpl";
+
+const payment: Payment = {
+  TransactionType: "Payment",
+  Account: wallet.address,
+  Destination: "rDestinationAddress",
+  Amount: xrpToDrops("25"),
+  SourceTag: AGENT_SOURCE_TAG,
+};
+
+// 2. Hand `payment` to the XRPL Agent Wallet skill, which autofills, previews,
+//    signs locally, and submitAndWaits. Do NOT autofill, sign, or submit here.
+```
+
 ## Account Setup
 
 ### Generate and fund a testnet wallet
@@ -13,7 +60,8 @@ client = JsonRpcClient(TESTNET_URL)
 
 wallet = generate_faucet_wallet(client, debug=True)
 print(f"Address : {wallet.address}")
-print(f"Seed    : {wallet.seed}")  # store securely — never hardcode
+# Persist wallet.seed to a secret store (e.g. .env / KMS) — never print or log it.
+# Wallet generation and key handling belong to the XRPL Agent Wallet skill.
 ```
 
 ```typescript
@@ -23,7 +71,8 @@ const client = new Client("wss://s.altnet.rippletest.net:51233");
 await client.connect();
 const { wallet } = await client.fundWallet();
 console.log("Address:", wallet.address);
-console.log("Seed   :", wallet.seed);
+// Persist wallet.seed to a secret store (e.g. .env / KMS) — never print or log it.
+// Wallet generation and key handling belong to the XRPL Agent Wallet skill.
 await client.disconnect();
 ```
 
@@ -33,11 +82,11 @@ await client.disconnect();
 import os
 from xrpl.wallet import Wallet
 
-wallet = Wallet.from_seed(os.environ["XRPL_WALLET_SEED"])
+wallet = Wallet.from_seed(os.environ["XRPL_SEED"])
 ```
 
 ```typescript
-const wallet = Wallet.fromSeed(process.env.XRPL_WALLET_SEED!);
+const wallet = Wallet.fromSeed(process.env.XRPL_SEED!);
 ```
 
 ### Check balance
@@ -119,6 +168,43 @@ payment = Payment(
     destination_tag=987654,   # required if destination has asfRequireDestTag set
     source_tag=AGENT_SOURCE_TAG,
 )
+```
+
+#### Check whether a destination requires a tag
+
+Sending to an account that has `asfRequireDestTag` set without a
+`destination_tag` fails with `tecDST_TAG_NEEDED`. Detect it first by inspecting
+the destination's account-root flags, and require a tag before building the
+payment.
+
+```python
+from xrpl.models.requests import AccountInfo
+
+LSF_REQUIRE_DEST_TAG = 0x00020000  # account-root flag: destination tag required
+
+def requires_dest_tag(address: str) -> bool:
+    info = client.request(AccountInfo(account=address, ledger_index="validated"))
+    flags = info.result["account_data"].get("Flags", 0)
+    return bool(flags & LSF_REQUIRE_DEST_TAG)
+
+if requires_dest_tag("rExchangeAddress"):
+    # Don't build the payment without a destination_tag, or it fails with
+    # tecDST_TAG_NEEDED. Get the tag from the recipient (exchange memo line, etc).
+    ...
+```
+
+```typescript
+import { AccountRootFlags } from "xrpl";
+
+async function requiresDestTag(address: string): Promise<boolean> {
+  const info = await client.request({
+    command: "account_info",
+    account: address,
+    ledger_index: "validated",
+  });
+  const flags = info.result.account_data.Flags ?? 0;
+  return (flags & AccountRootFlags.lsfRequireDestTag) !== 0;
+}
 ```
 
 ### Partial payments
@@ -604,11 +690,11 @@ Every XRPL account must maintain a minimum XRP balance (the base reserve) plus a
 
 | Object | Reserve cost |
 |--------|-------------|
-| Account activation | 10 XRP base reserve |
-| Each trust line | +2 XRP owner reserve |
-| Each escrow | +2 XRP owner reserve |
-| Each open offer (DEX) | +2 XRP owner reserve |
-| Each payment channel | +2 XRP owner reserve |
+| Account activation | 1 XRP base reserve |
+| Each trust line | +0.2 XRP owner reserve |
+| Each escrow | +0.2 XRP owner reserve |
+| Each open offer (DEX) | +0.2 XRP owner reserve |
+| Each payment channel | +0.2 XRP owner reserve |
 
 ```python
 # Check spendable balance (total minus locked reserves)
@@ -617,8 +703,8 @@ data = response.result["account_data"]
 total_drops = int(data["Balance"])
 owner_count = int(data["OwnerCount"])
 
-BASE_RESERVE_DROPS   = 10_000_000   # 10 XRP
-OWNER_RESERVE_DROPS  =  2_000_000   # 2 XRP per object
+BASE_RESERVE_DROPS   = 1_000_000   # 1 XRP
+OWNER_RESERVE_DROPS  =  200_000   # 0.2 XRP per object
 
 locked_drops    = BASE_RESERVE_DROPS + (owner_count * OWNER_RESERVE_DROPS)
 spendable_drops = total_drops - locked_drops

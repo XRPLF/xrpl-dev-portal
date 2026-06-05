@@ -29,15 +29,16 @@ wallet, and send a payment — all driven by natural-language prompts.
 XRPL agent skills are layered: one shared foundation, one domain skill per use
 case. This tutorial uses the payments combination.
 
-| Skill | Role | What it does |
+| Skill | Role | When it applies |
 | :---- | :---- | :---- |
-| **XRPL Agent Wallet** | Shared foundation | Handles key loading, the signing ceremony (autofill → preview → confirm → sign → submit), and reliable submission. Used by every XRPL agent skill. |
-| **XRPL Payments** | Domain skill | Gives Claude accurate, up-to-date knowledge of XRPL payment operations: XRP and token payments, trust lines, escrow, agentic best practices, and error handling. |
+| **XRPL Agent Wallet** | Shared foundation | From the start — owns wallet creation, key loading, and the full signing ceremony (autofill -> preview -> confirm -> sign -> submit). Installed first. |
+| **XRPL Payments** | Domain skill | At transaction time — gives Claude accurate knowledge of XRPL payment operations: XRP and token payments, trust lines, escrow, agentic best practices, and error handling. |
 
-The Payments skill constructs the right transaction object; the Wallet skill
-signs and submits it safely. Claude coordinates the handoff — you do not need to
-manage it manually. Other domain skills (trading, and more) follow the same
-pattern and work with the same Wallet skill.
+The Wallet skill owns the wallet from day one, including first-time setup. The
+Payments skill constructs the right transaction object; the Wallet skill signs
+and submits it. Claude coordinates the handoff — you do not need to manage it
+manually. Other domain skills (trading, and more) follow the same pattern and
+work with the same Wallet skill.
 
 **Evaluating before you build?** Read [The XRPL Agent Wallet Skill](/docs/agents/xrpl-agent-wallet-skill/) first — it covers the security model and the eight guarantees the skill enforces on every transaction.
 
@@ -68,12 +69,60 @@ pip install xrpl-py
 
 ---
 
-## Step 1: Install the skills
+## Step 1: Install the Wallet skill
 
-`npx` is an open source command-line tool by Vercel that acts as the "package manager" for the open AI Agent Skills ecosystem.
+Install the Wallet skill first. It owns wallet setup and security from the
+start — including generating your first wallet without exposing the seed.
+
+Note: `npx` is an open source command-line tool by Vercel that acts as the "package manager" for the open AI Agent Skills ecosystem.
 
 ```sh
 npx skills add https://github.com/XRPLF/xrpl-dev-portal/tree/master/.claude/skills/xrpl-skills/xrpl-agent-wallet --agent claude-code
+```
+
+---
+
+## Step 2: Generate and secure your wallet
+
+Ask Claude to create a wallet. The Wallet skill writes the seed directly to
+`.env` — it never appears in chat.
+
+```
+Generate a new XRPL testnet wallet and save the seed securely.
+```
+
+Claude will confirm:
+
+```
+✓ Wallet created.
+Address : rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh
+Seed    : saved to .env as XRPL_SEED — never shown in chat
+```
+
+The skill also adds `.env` to `.gitignore` automatically if a git repo is
+detected. Your address is public and safe to share. The seed never leaves
+`.env`.
+
+**If you already have a wallet**, add the seed to `.env` manually:
+
+```sh
+echo 'XRPL_SEED="sYourExistingSeedHere"' > .env
+echo ".env" >> .gitignore
+```
+
+**For production**, use a KMS or HSM instead of an environment variable. The
+Wallet skill supports an external-signer pattern where the key never enters
+the agent's process memory. See
+[The XRPL Agent Wallet Skill](/docs/agents/xrpl-agent-wallet-skill/)
+for the full external-signer interface.
+
+---
+
+## Step 3: Install the Payments skill
+
+With your wallet secured, add the Payments skill for XRPL transaction knowledge:
+
+```sh
 npx skills add https://github.com/XRPLF/xrpl-dev-portal/tree/master/.claude/skills/xrpl-skills/xrpl-payments --agent claude-code
 ```
 
@@ -87,11 +136,11 @@ You should see both the skills listed along with any other skills you may have i
 
 ```
 Project skills (.claude/skills)                                
-  xrpl-agent-wallet                                                                         
+  xrpl-agent-wallet                                                                      
   xrpl-payments 
 ```
 
-You can also verify that both skills are loaded by asking Claude:
+Verify both skills are loaded:
 
 ```
 What XRPL network are you targeting by default, and what is the base
@@ -104,96 +153,7 @@ re-run the install commands.
 
 ---
 
-## Step 2: Generate an account
-
-```
-Generate a new XRP Ledger testnet account. Show me the classic address and
-the seed.
-```
-
-{% tabs %}
-{% tab label="JavaScript" %}
-```js
-const xrpl = require('xrpl')
-const wallet = xrpl.Wallet.generate()
-console.log('Address:', wallet.classicAddress)
-console.log('Seed   :', wallet.seed)  // Store securely — see Step 3.
-```
-{% /tab %}
-{% tab label="Python" %}
-```python
-from xrpl.wallet import Wallet
-wallet = Wallet.create()
-print(f"Address : {wallet.classic_address}")
-print(f"Seed    : {wallet.seed}")  # Store securely — see Step 3.
-```
-{% /tab %}
-{% /tabs %}
-
-Your address is public — safe to share. Your seed is the master secret for this
-wallet. Store it before you continue.
-
----
-
-## Step 3: Secure your keys
-
-The XRPL Agent Wallet skill enforces one rule without exception: the seed must
-never appear in code, logs, chat output, or error messages.
-
-**For local development**, store the seed in a `.env` file and load it with
-`dotenv`:
-
-```sh
-# .env  — never commit this file
-XRPL_SEED="sYourSeedHere"
-```
-
-Create the file and add it to `.gitignore` before your first commit:
-
-```sh
-echo "XRPL_SEED=" > .env
-echo ".env" >> .gitignore
-```
-
-Then load it at runtime:
-
-```sh
-# Terminal (one-time, for the current shell session)
-export $(cat .env | xargs)
-```
-
-{% tabs %}
-{% tab label="JavaScript" %}
-```js
-const wallet = xrpl.Wallet.fromSeed(process.env.XRPL_SEED)
-```
-{% /tab %}
-{% tab label="Python" %}
-```python
-import os
-from xrpl.wallet import Wallet
-wallet = Wallet.from_seed(os.environ["XRPL_SEED"])
-```
-{% /tab %}
-{% /tabs %}
-
-**For production**, use a KMS or HSM (AWS KMS, GCP KMS, HashiCorp Vault). The
-Wallet skill supports an external-signer pattern where the key never enters the
-agent's process memory at all. See
-[The XRPL Agent Wallet Skill](/docs/agents/xrpl-agent-wallet-skill/)
-for the full external-signer interface.
-
-**Hard rules — no exceptions:**
-
-- Never commit a seed to a git repository, even a private one. Add `.env` to
-  `.gitignore` before your first commit.
-- Never paste a seed into Claude, a Slack message, or a support ticket.
-- Use testnet accounts for learning. If you later move to Mainnet, generate
-  fresh keys — never reuse testnet seeds on Mainnet.
-
----
-
-## Step 4: Fund the account
+## Step 4: Fund your wallet
 
 Ask Claude to fund your account from the Testnet faucet and verify the balance:
 
@@ -219,13 +179,20 @@ main()
 {% /tab %}
 {% tab label="Python" %}
 ```python
+import os
 from xrpl.clients import JsonRpcClient
-from xrpl.wallet import generate_faucet_wallet
+from xrpl.wallet import Wallet, generate_faucet_wallet
+from xrpl.account import get_balance
 
 client = JsonRpcClient("https://s.altnet.rippletest.net:51234")
-wallet = generate_faucet_wallet(client, wallet, debug=True)
-print(f"Address : {wallet.classic_address}")
-print(f"Balance : { balance } XRP")  # Testnet faucet provides 1000 XRP
+
+# Load the wallet you saved to .env, then fund that existing account.
+wallet = Wallet.from_seed(os.environ["XRPL_SEED"])
+generate_faucet_wallet(client, wallet=wallet)
+
+balance_drops = get_balance(wallet.address, client)
+print(f"Address : {wallet.address}")
+print(f"Balance : {balance_drops / 1_000_000} XRP")
 ```
 {% /tab %}
 {% /tabs %}
@@ -334,8 +301,8 @@ capture, and `submitAndWait` all still run on every transaction.
 
 **Use case guides**
 
-- [Agentic Payments with X402](/docs/agents/agentic-payments-x402/) —
-  Enable your agent to pay for and monetize HTTP-based services autonomously.
+- [Agentic Payments with X402](/docs/agents/agentic-payments-x402/) — Enable your agent to pay for and monetize HTTP-based services autonomously.
+- [Track and Measure Agent Behavior](/docs/agents/track-agent-behavior/) — Use SourceTag, Memos, and WebSocket monitoring to attribute and audit every agent transaction.
 
 **Go deeper on XRPL features**
 
