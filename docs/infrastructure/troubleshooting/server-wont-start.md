@@ -67,7 +67,7 @@ Possible solutions:
 
 - Check that the config file exists (the default location is `/etc/opt/ripple/xrpld.cfg`) and the user that runs your `rippled` process (usually `rippled`) has read permissions to the file.
 
-- Create a config file that can be read by the `rippled` user at `$HOME/.config/ripple/xrpld.cfg` (where `$HOME` points to the `rippled` user's home directory).
+- Create a config file that can be read by the `rippled` user at `$HOME/.config/xrpld/xrpld.cfg` (where `$HOME` points to the `rippled` user's home directory).
 
     {% admonition type="success" name="Tip" %}The `rippled` repository contains [an example `xrpld.cfg` file](https://github.com/XRPLF/rippled/blob/master/cfg/xrpld-example.cfg) which is provided as the default config when you do an installation from a binary package. If you do not have the file, you can copy it from there.{% /admonition %}
 
@@ -78,8 +78,8 @@ Possible solutions:
 If `rippled` crashes on startup with an error such as the following, it means it can read its primary config file, but that config file specifies a separate validators config file (typically named `validators.txt`), which `rippled` cannot read.
 
 ```text
-Loading: "/home/rippled/.config/ripple/xrpld.cfg"
-Terminating thread rippled: main: unhandled St13runtime_error 'The file specified in [validators_file] does not exist: /home/rippled/.config/ripple/validators.txt'
+Loading: "/home/rippled/.config/xrpld/xrpld.cfg"
+Terminating thread rippled: main: unhandled St13runtime_error 'The file specified in [validators_file] does not exist: /home/rippled/.config/xrpld/validators.txt'
 Aborted (core dumped)
 ```
 
@@ -107,12 +107,12 @@ Possible solutions:
 If `rippled` crashes on startup with an error such as the following, it means the server does not have write permissions to the `[database_path]` from its config file.
 
 ```text
-Loading: "/home/rippled/.config/ripple/xrpld.cfg"
+Loading: "/home/rippled/.config/xrpld/xrpld.cfg"
 Terminating thread rippled: main: unhandled St13runtime_error 'Can not create "/var/lib/rippled/db"'
 Aborted (core dumped)
 ```
 
-The paths to the configuration file (`/home/rippled/.config/ripple/xrpld.cfg`) and the database path (`/var/lib/rippled/db`) may vary depending on your system.
+The paths to the configuration file (`/home/rippled/.config/xrpld/xrpld.cfg`) and the database path (`/var/lib/rippled/db`) may vary depending on your system.
 
 Possible solutions:
 
