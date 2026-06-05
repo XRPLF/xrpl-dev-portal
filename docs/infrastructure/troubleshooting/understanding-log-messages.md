@@ -15,19 +15,27 @@ This is an important step in [Diagnosing Problems](diagnosing-problems.md) with 
 The following shows the format of the log file:
 
 ```text
-2020-Jul-08 20:10:17.372178946 UTC Peer:WRN [236] onReadMessage from n9J2CP7hZypxDJ27ZSxoy4VjbaSgsCNaRRJtJkNJM5KMdGaLdRy7 at 197.27.127.136:53046: stream truncated
-2020-Jul-08 20:11:13.582438263 UTC PeerFinder:ERR Logic testing     52.196.126.86:13308 with error, Connection timed out
-2020-Jul-08 20:11:57.728448343 UTC Peer:WRN [242] onReadMessage from n9J2CP7hZypxDJ27ZSxoy4VjbaSgsCNaRRJtJkNJM5KMdGaLdRy7 at 197.27.127.136:53366: stream truncated
-2020-Jul-08 20:12:12.075081020 UTC LoadMonitor:WRN Job: sweep run: 1172ms wait: 0ms
+2026-Jul-08 20:10:17.372178946 UTC Peer:WRN [IP Address: 197.27.127.136:53046, Public Key: n9J2CP7hZypxDJ27ZSxoy4VjbaSgsCNaRRJtJkNJM5KMdGaLdRy7, Id: 236] onReadMessage: stream truncated
+2026-Jul-08 20:11:13.582438263 UTC PeerFinder:ERR Logic testing     52.196.126.86:13308 with error, Connection timed out
+2026-Jul-08 20:11:57.728448343 UTC Peer:WRN [IP Address: 197.27.127.136:53366, Public Key: n9J2CP7hZypxDJ27ZSxoy4VjbaSgsCNaRRJtJkNJM5KMdGaLdRy7, Id: 242] onReadMessage: stream truncated
+2026-Jul-08 20:12:12.075081020 UTC LoadMonitor:WRN Job: sweep run: 1172ms wait: 0ms
 ```
 
 Each line represents one log entry, with the following parts in order, separated by spaces:
 
-1. The date the log entry was written, such as `2020-Jul-08`.
+1. The date the log entry was written, such as `2026-Jul-08`.
 2. The time the log entry was written, such as `20:12:12.075081020`.
 3. The time zone indicator `UTC`. (Log dates are always in UTC.)
 4. The log partition and severity, such as `LoadMonitor:WRN`.
 5. The log message, such as `Job: sweep run: 1172ms wait: 0ms`.
+
+Log entries about a peer-to-peer connection (such as those from the `Peer` partition) also include a bracketed identifier between the partition/severity and the message. {% badge href="https://xrpl.org/blog/2026/rippled-3.2.0" %}New in: rippled 3.2.0{% /badge %}
+
+It contains the following fields:
+
+- `IP Address`: The peer's IP address and port, such as `197.27.127.136:53046`.
+- `Public Key`: The base58-encoded [node public key](../../concepts/networks-and-servers/peer-protocol.md#node-key-pair) the peer uses to sign peer protocol messages, such as `n9J2CP7hZypxDJ27ZSxoy4VjbaSgsCNaRRJtJkNJM5KMdGaLdRy7`. This field is omitted if the peer's public key is not yet known, such as before the connection's handshake completes.
+- `Id`: The numeric ID the server assigns to the peer connection, such as `236`.
 
 For simplicity, the examples in this page omit the date, time, and time zone indicator.
 
@@ -104,7 +112,7 @@ This is not strictly a problem, but an old server version is likely to become [a
 The following log message indicates that a peer `rippled` server closed a connection:
 
 ```text
-Peer:WRN [012] onReadMessage: Connection reset by peer
+Peer:WRN [IP Address: 197.27.127.136:53046, Public Key: n9J2CP7hZypxDJ27ZSxoy4VjbaSgsCNaRRJtJkNJM5KMdGaLdRy7, Id: 12] onReadMessage: Connection reset by peer
 ```
 
 Losing connections from time to time is normal for any peer-to-peer network. **Occasional messages of this kind do not indicate a problem.**
