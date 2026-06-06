@@ -10,8 +10,8 @@ export const frontmatter = {
 };
 
 // ── Why XRPL ──────────────────────────────────────────────────────────────────
-// iconClass drives the tinted circle background (dark + light rules below).
-// accentColor is the small dot overlaid on the icon circle.
+// Each card shows a bare icon (dark/light SVG pair). Styles live in
+// styles/_agentic-transactions.scss.
 const whyCards = [
   {
     id: 'finality',
@@ -20,8 +20,6 @@ const whyCards = [
       'Every transaction either confirms with tesSUCCESS or expires cleanly — no hanging states, no retry loops. Agents know the outcome in 3–5 seconds and can move on.',
     image: require('../../static/img/icons/performance.svg'),
     imageLight: require('../../static/img/icons/lightmode/performance.svg'),
-    iconClass: 'icon-circle-blue',
-    accentColor: '#19A3FF',
   },
   {
     id: 'costs',
@@ -30,8 +28,6 @@ const whyCards = [
       'Transaction costs are tiny and stable — fractions of a cent. Agents can plan and budget autonomously without worrying about gas spikes disrupting operations.',
     image: require('../../static/img/icons/low-cost.svg'),
     imageLight: require('../../static/img/icons/lightmode/low-cost.svg'),
-    iconClass: 'icon-circle-green',
-    accentColor: '#32E685',
   },
   {
     id: 'multicurrency',
@@ -40,8 +36,6 @@ const whyCards = [
       'Send XRP, RLUSD, or any issued token. The built-in DEX enables atomic cross-currency settlement without bridges or third-party swap contracts.',
     image: require('../../static/img/icons/nft.svg'),
     imageLight: require('../../static/img/icons/lightmode/nft.svg'),
-    iconClass: 'icon-circle-orange',
-    accentColor: '#FF6719',
   },
   {
     id: 'uptime',
@@ -50,8 +44,6 @@ const whyCards = [
       'The XRP Ledger has been processing transactions since 2012. With over a decade of production history, it provides the battle-tested infrastructure agents need for high-stakes financial automation.',
     image: require('../../static/img/icons/reliability.svg'),
     imageLight: require('../../static/img/icons/lightmode/reliability.svg'),
-    iconClass: 'icon-circle-purple',
-    accentColor: '#9A52FF',
   },
   {
     id: 'no-smart-contracts',
@@ -60,8 +52,6 @@ const whyCards = [
       'Core payment and escrow logic lives at the protocol layer — not in user-deployed contracts. There is no bytecode to audit, no upgrade risk, and no re-entrancy vulnerability.',
     image: require('../../static/img/icons/public.svg'),
     imageLight: require('../../static/img/icons/lightmode/public.svg'),
-    iconClass: 'icon-circle-pink',
-    accentColor: '#FF198B',
   },
   {
     id: 'compliance',
@@ -70,8 +60,6 @@ const whyCards = [
       'DepositAuth, multi-sig, escrow with time locks, SourceTag for agent attribution, and the Memo field for audit trails are all built in — ready for institutional workflows.',
     image: require('../../static/img/icons/streamlined.svg'),
     imageLight: require('../../static/img/icons/lightmode/streamlined.svg'),
-    iconClass: 'icon-circle-yellow',
-    accentColor: '#FAFF19',
   },
 ];
 
@@ -141,124 +129,6 @@ export default function AgenticTransactions() {
   return (
     <div className="landing page-agentic-transactions">
 
-      {/* ── Per-page styles: icon circles + chip-blue (dark & light modes) ── */}
-      <style>{`
-        /* Icon circle base */
-        .benefit-icon-wrap {
-          position: relative;
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          width: 52px;
-          height: 52px;
-          border-radius: 50%;
-          flex-shrink: 0;
-        }
-        .benefit-icon-wrap img {
-          width: 28px;
-          height: 28px;
-        }
-        /* Accent dot */
-        .benefit-icon-wrap::after {
-          content: '';
-          position: absolute;
-          width: 12px;
-          height: 12px;
-          border-radius: 50%;
-          top: 0px;
-          right: -1px;
-        }
-
-        /* Dark mode icon circle backgrounds */
-        .icon-circle-blue   { background-color: #0D2040; }
-        .icon-circle-blue::after   { background-color: #19A3FF; }
-        .icon-circle-green  { background-color: #0D2A18; }
-        .icon-circle-green::after  { background-color: #32E685; }
-        .icon-circle-orange { background-color: #2A1400; }
-        .icon-circle-orange::after { background-color: #FF6719; }
-        .icon-circle-purple { background-color: #1E0A40; }
-        .icon-circle-purple::after { background-color: #9A52FF; }
-        .icon-circle-pink   { background-color: #2A0018; }
-        .icon-circle-pink::after   { background-color: #FF198B; }
-        .icon-circle-yellow { background-color: #262200; }
-        .icon-circle-yellow::after { background-color: #FAFF19; }
-
-        /* Light mode icon circle backgrounds */
-        html.light .icon-circle-blue   { background-color: #EBF5FF; }
-        html.light .icon-circle-green  { background-color: #EDFAF3; }
-        html.light .icon-circle-orange { background-color: #FFF1E8; }
-        html.light .icon-circle-purple { background-color: #F3EEFF; }
-        html.light .icon-circle-pink   { background-color: #FFEBF4; }
-        html.light .icon-circle-yellow { background-color: #FFFBE6; }
-
-        /* chip-blue variant (mirrors chip-green structure) */
-        .chip-blue {
-          background-color: #0a1e40;
-          color: #7cc8ff;
-          display: inline-block;
-          padding: 4px 12px;
-          border-radius: 16px;
-          font-size: 0.8rem;
-          font-weight: 500;
-        }
-        html.light .chip-blue {
-          background-color: #d6eeff;
-          color: #0055aa;
-        }
-
-        /* Requirement card: number badge */
-        .req-number {
-          font-size: 0.7rem;
-          font-weight: 600;
-          letter-spacing: 0.05em;
-          margin-bottom: 0.5rem;
-          color: #84f0b6;
-        }
-        html.light .req-number {
-          color: #145c35;
-        }
-
-        /* Requirement card: linked variant gets a purple accent border */
-        .card.req-linked {
-          border-color: rgba(154, 82, 255, 0.5) !important;
-        }
-        html.light .card.req-linked {
-          border-color: rgba(124, 31, 255, 0.4) !important;
-        }
-
-        /* Requirement card footer arrow for linked cards */
-        .req-arrow {
-          color: #9a52ff;
-          font-size: 1rem;
-          line-height: 1;
-        }
-        html.light .req-arrow {
-          color: #7c1fff;
-        }
-
-        /* Agentic payment loop diagram — swap to dark SVG in dark mode */
-        html:not(.light) .agentic-loop-diagram {
-          content: url(${require('../../static/img/xrpl-agentic-payment-loop.svg')});
-        }
-
-        /* Benefit cards: 3-col grid */
-        .benefit-card-grid {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 1.5rem;
-        }
-        @media (max-width: 991px) {
-          .benefit-card-grid {
-            grid-template-columns: repeat(2, 1fr);
-          }
-        }
-        @media (max-width: 575px) {
-          .benefit-card-grid {
-            grid-template-columns: 1fr;
-          }
-        }
-      `}</style>
-
       {/* ── HERO ─────────────────────────────────────────────────────────── */}
       <section className="container-new pb-26-until-sm mt-10 mb-10-sm text-center">
         <div className="col-lg-8 offset-lg-2">
@@ -311,15 +181,20 @@ export default function AgenticTransactions() {
           {whyCards.map((card) => (
             <div className="card" key={card.id}>
               <div className="card-body">
-                {/* Icon circle with tinted background + accent dot */}
-                <div className={`benefit-icon-wrap ${card.iconClass} mb-6`}>
-                  <picture>
-                    <source
-                      srcSet={card.image}
-                      media="(prefers-color-scheme: dark)"
-                    />
-                    <img src={card.imageLight} alt="" aria-hidden="true" />
-                  </picture>
+                {/* Icon — dark/light SVG pair, swapped by the .light theme class */}
+                <div className="benefit-icon-wrap mb-6">
+                  <img
+                    className="benefit-icon-img benefit-icon-img--dark"
+                    src={card.image}
+                    alt=""
+                    aria-hidden="true"
+                  />
+                  <img
+                    className="benefit-icon-img benefit-icon-img--light"
+                    src={card.imageLight}
+                    alt=""
+                    aria-hidden="true"
+                  />
                 </div>
                 <h4 className="card-title h5">{translate(card.title)}</h4>
                 <p className="card-text">{translate(card.description)}</p>
@@ -373,9 +248,9 @@ export default function AgenticTransactions() {
             <div className="card" key={card.id}>
               <div className="card-body">
                 {/* Eyebrow chip — green for XRP, blue for RLUSD */}
-                <p className={`${card.eyebrowClass} mb-6`}>
+                <div className={`${card.eyebrowClass} d-inline-block mb-6`}>
                   {translate(card.eyebrow)}
-                </p>
+                </div>
                 <h5 className="card-title h6 text-muted mb-2">
                   {translate('Prompt')}
                 </h5>

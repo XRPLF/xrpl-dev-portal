@@ -34,40 +34,19 @@
   .chip-green { background-color: #145C35; color: #84F0B6; }
   .chip-blue  { background-color: #002E4C; color: #80CCFF; }
 
-  // ── Icon circles (benefit cards) ──────────────────────────────────────────
+  // ── Benefit-card icons ─────────────────────────────────────────────────────
   .benefit-icon-wrap {
-    position: relative;
     display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 52px;
-    height: 52px;
-    border-radius: 50%;
     flex-shrink: 0;
 
     img {
-      width: 28px;
-      height: 28px;
+      width: 40px;
+      height: 40px;
+      display: block;
     }
-    // Accent dot
-    &::after {
-      content: '';
-      position: absolute;
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      top: 0;
-      right: -1px;
-    }
+    // Default theme is dark: hide the light-mode icon.
+    .benefit-icon-img--light { display: none; }
   }
-
-  // Dark-mode icon circle backgrounds (default) + accent dots
-  .icon-circle-blue   { background-color: #0D2040; &::after { background-color: #19A3FF; } }
-  .icon-circle-green  { background-color: #0D2A18; &::after { background-color: #32E685; } }
-  .icon-circle-orange { background-color: #2A1400; &::after { background-color: #FF6719; } }
-  .icon-circle-purple { background-color: #1E0A40; &::after { background-color: #9A52FF; } }
-  .icon-circle-pink   { background-color: #2A0018; &::after { background-color: #FF198B; } }
-  .icon-circle-yellow { background-color: #262200; &::after { background-color: #FAFF19; } }
 
   // ── Requirement cards ─────────────────────────────────────────────────────
   .req-number {
@@ -112,12 +91,9 @@
 
 // ── Light-mode overrides (.light sits on <html>, above the page wrapper) ──────
 .light .page-agentic-transactions {
-  .icon-circle-blue   { background-color: #EBF5FF; }
-  .icon-circle-green  { background-color: #EDFAF3; }
-  .icon-circle-orange { background-color: #FFF1E8; }
-  .icon-circle-purple { background-color: #F3EEFF; }
-  .icon-circle-pink   { background-color: #FFEBF4; }
-  .icon-circle-yellow { background-color: #FFFBE6; }
+  // Swap the benefit-card icon art to its light-mode variant.
+  .benefit-icon-img--dark  { display: none; }
+  .benefit-icon-img--light { display: block; }
 
   .chip-green { background-color: #ADF5CE; color: #145C35; }
   .chip-blue  { background-color: #B2E0FF; color: #004D80; }
