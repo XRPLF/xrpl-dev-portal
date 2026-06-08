@@ -35,15 +35,9 @@ trading, escrow, and any domain skill built on the shared Wallet skill.
 
 ## SourceTag — agent attribution
 
-Every XRP Ledger transaction supports a `SourceTag` field: a 32-bit unsigned
-integer that identifies the originating application or workflow. Setting a
-consistent value on all agent-initiated transactions lets you filter on-chain
-volume by agent, separate it from human-initiated transactions, and report on
-agent activity across any block explorer or data pipeline that indexes the
-ledger.
+Every XRP Ledger transaction supports a `SourceTag` field: a 32-bit unsigned integer that identifies the originating application or workflow. The XRPL Agent Wallet skill applies a default SourceTag (`20260530`) automatically to every transaction that passes through the signing ceremony — you do not need to set it manually. All domain skills (Payments, and future skills) are tagged consistently without any per-skill configuration.
 
-Choose a value that is meaningful to your team and register it internally so
-different agents, environments, and workflows use distinct tags.
+To use a custom value — for example, to distinguish transactions from different agents in the same deployment — set `SourceTag` on the transaction object before passing it to the Wallet skill. The skill respects any value already present and only applies the default when the field is absent. Setting `SourceTag` to `0` explicitly suppresses the default.
 
 {% tabs %}
 {% tab label="Python" %}
@@ -52,13 +46,15 @@ from xrpl.models.transactions import Payment
 from xrpl.utils import xrp_to_drops
 from xrpl.transaction import submit_and_wait
 
-AGENT_SOURCE_TAG = 20260530  # Consistent across all transactions from this agent.
+# Override only when you need a custom tag — the Wallet skill sets
+# 20260530 automatically when SourceTag is absent.
+CUSTOM_SOURCE_TAG = 99991234  # your team's registered value
 
 payment = Payment(
     account=wallet.address,
     amount=xrp_to_drops(10),
     destination=DESTINATION,
-    source_tag=AGENT_SOURCE_TAG,
+    source_tag=CUSTOM_SOURCE_TAG,
 )
 response = submit_and_wait(payment, client, wallet)
 print(f"Hash: {response.result['hash']}")
@@ -66,7 +62,9 @@ print(f"Hash: {response.result['hash']}")
 {% /tab %}
 {% tab label="JavaScript" %}
 ```js
-const AGENT_SOURCE_TAG = 20260530; // Consistent across all transactions from this agent.
+// Override only when you need a custom tag — the Wallet skill sets
+ // 20260530 automatically when SourceTag is absent.
+const CUSTOM_SOURCE_TAG = 99991234; // your team's registered value
 
 const result = await client.submitAndWait(
   {
@@ -74,7 +72,7 @@ const result = await client.submitAndWait(
     Account: wallet.classicAddress,
     Amount: xrpl.xrpToDrops('10'),
     Destination: DESTINATION,
-    SourceTag: AGENT_SOURCE_TAG,
+    SourceTag: CUSTOM_SOURCE_TAG,
   },
   { wallet }
 )
@@ -83,8 +81,7 @@ console.log('Hash:', result.result.hash)
 {% /tab %}
 {% /tabs %}
 
-Once `SourceTag` is set consistently, you can filter the ledger for all
-transactions from a specific agent using any XRPL data API or block explorer.
+The default tag (`20260530`) lets you filter all XRPL AI Starter Kit agentic transactions on-chain using any XRPL data API or block explorer, across every domain skill. Use a custom tag when you need per-agent or per-deployment attribution beyond the default.
 
 ---
 

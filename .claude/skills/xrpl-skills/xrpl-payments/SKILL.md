@@ -17,14 +17,9 @@ description: >
 
 The XRP Ledger is purpose-built for fast, reliable value transfer. The same properties that make it reliable for institutional payments make it well-suited for AI agents: **3–5 second deterministic finality**, predictable fees, and no ambiguous pending state — a transaction either confirms (`tesSUCCESS`) or expires. No retry loops required.
 
-The XRPL Payments skill is the domain knowledge layer for payment operations on
-the XRP Ledger. It gives Claude accurate, up-to-date knowledge of XRPL payment
-patterns so it can construct the right transaction object for any payment task —
-XRP transfers, RLUSD, cross-currency, escrow, and more.
+The XRPL Payments skill is the domain knowledge layer for payment operations on the XRP Ledger. It gives Claude accurate, up-to-date knowledge of XRPL payment patterns so it can construct the right transaction object for any payment task — XRP transfers, RLUSD, cross-currency, escrow, and more.
 
-This skill constructs the right transaction object for any payment task — XRP transfers,
-RLUSD, cross-currency, escrow, and more — and hands that object to the
-**XRPL Agent Wallet skill** for signing and submission. Both skills are required for a complete agentic payment workflow.
+This skill constructs the right transaction object for any payment task — XRP transfers, RLUSD, cross-currency, escrow, and more — and hands that object to the **XRPL Agent Wallet skill** for signing and submission. Both skills are required for a complete agentic payment workflow.
 
 
 ## What this Skill covers
@@ -65,10 +60,7 @@ skills pair with the same shared Wallet skill. See
   `submitAndWait` directly.
 - **Amount handling:** Always `xrp_to_drops()` / `drops_to_xrp()` from `xrpl.utils`. Never pass raw XRP floats to the ledger.
 - **Network:** Testnet (`https://s.altnet.rippletest.net:51234`) by default. Switching to mainnet is a one-line URL change.
-- **Key storage:** Env vars for development, KMS/HSM for production. Never hardcode seeds.
-- **Agent tagging:** Set `source_tag` / `SourceTag` on every agent-initiated
-  transaction. This enables on-chain volume tracking and separates agentic
-  activity from human-initiated transactions.
+- **Agent tagging:** `source_tag` / `SourceTag` enables on-chain volume tracking and separates agentic activity from human-initiated transactions. The XRPL Agent Wallet skill automatically applies `SourceTag = 20260530` to every transaction that passes through the signing ceremony. Override by setting `SourceTag` on the transaction object before handoff; the wallet skill respects any value already present.  
 - **Simulate before submit:** For new payment flows, the skill calls `simulate`
   on the raw transaction object before handing it to the Wallet skill. This catches
   malformed transactions, missing trust lines, and reserve errors without

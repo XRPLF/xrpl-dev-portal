@@ -242,7 +242,6 @@ const result = await client.submitAndWait(
     Account: sender.classicAddress,
     Amount: xrpl.xrpToDrops('10'),
     Destination: receiver.classicAddress,
-    SourceTag: 20260530,  // tag every agentic transaction for on-chain tracking
   },
   { wallet: sender }
 )
@@ -260,7 +259,6 @@ payment = Payment(
     account=sender.classic_address,
     destination=receiver.classic_address,
     amount=xrp_to_drops(10),
-    source_tag=20260530,  # tag every agentic transaction for on-chain tracking
 )
 response = submit_and_wait(payment, client, sender)
 print(f"Result : {response.result['meta']['TransactionResult']}")
