@@ -222,11 +222,11 @@ class LinkChecker:
             was_good, time_checked = result
             if not was_good or time() - time_checked > RECHECK_INTERVAL:
                 invalidate_keys.append(href)
-            if self.trim_trackers(href) != href:
+            elif self.trim_trackers(href) != href:
                 # Probably a cached entry including tracking parameters from
                 # before changing what tracking parameters get removed
                 invalidate_keys.append(href)
-            if href.startswith(REDOCLY_DEV_BASE):
+            elif href.startswith(REDOCLY_DEV_BASE):
                 # Local links should not be in the saved cache
                 invalidate_keys.append(href)
         for href in invalidate_keys:
