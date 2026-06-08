@@ -1458,7 +1458,7 @@ const events = [
     link: "https://luma.com/xrpl-meetup-lisbon",
     location: "Lisbon, Portugal",
     date: "June 4, 2026",
-    image: require("../static/img/events/commons-lisbon.jpg"),
+    image: require("../static/img/events/commons-lisbon.png"),
     end_date: "June 4, 2026",
   },
   
