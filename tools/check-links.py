@@ -8,7 +8,7 @@ tools/check-external-links.py [folder/to/check/]
 If [folder/to/check] is omitted, check ./docs/
 
 Prints a report of broken links. Tests against a local Redocly dev server,
-and checks *all* links, including anchors and markdoc tags; assumes the 
+and checks *all* links, including anchors and markdoc tags; assumes the
 server is already up and running on localhost:4000.
 
 Requires: requests, selenium (w/ Chrome WebDriver)
@@ -85,7 +85,7 @@ class CheckerSession:
         # Make a second one so we can check for anchors without resetting
         # all the references we have in the page the link comes from
         self.chrome2 = webdriver.Chrome(options=options)
-    
+
     def fetch_code(self, href: str):
         """
         Get status code of a URL, using saved sessions & retries, automatically
@@ -111,7 +111,7 @@ class CheckerSession:
                 logger.debug(f"Error getting {href}: {e2}")
                 code = 500
         return code
-    
+
     def get_page_hrefs_and_text(self, href: str):
         try:
             self.chrome.get(href)
@@ -138,7 +138,7 @@ class CheckerSession:
             links = rootlayout.find_elements(By.CSS_SELECTOR, "a")
             hrefs = [link.get_attribute("href") for link in links]
         return hrefs, pagetext
-    
+
     def find_id_in_page(self, href: str, id: str):
         """
         Return the element with a given unique ID in the DOM, or None if no
@@ -162,11 +162,21 @@ class CheckerSession:
             el = None
         return el
 
+    def close(self):
+        """
+        Close sessions so that resources can be freed up.
+        """
+        self.chrome.close()
+        self.chrome2.close()
+        self.h.close()
+        self.s.close()
+
 class LinkChecker:
     def __init__(self, paths,
             skip_paths = DEFAULT_SKIP_PATHS,
             cache_file = DEFAULT_CACHE_FILE,
-            known_broken = KNOWN_BROKEN_LINKS_FILE
+            known_broken = KNOWN_BROKEN_LINKS_FILE,
+            max_threads = None,
         ):
         self.paths = paths
         self.skip_paths = skip_paths
@@ -175,6 +185,7 @@ class LinkChecker:
         self.init_cache(cache_file)
         self.init_known_broken(known_broken)
         self.thread_exceptions = []
+        self.max_threads = max_threads
 
     def init_cache(self, cache_file: str):
         """
@@ -298,44 +309,42 @@ class LinkChecker:
                 check_dirs.append(path)
             else:
                 raise FileNotFoundError(f"Path {path} is neither file nor dir")
-        
+
         logger.info(f"Checking explicitly-specified files: {'\n  '.join(check_files)}")
-        with ThreadPoolExecutor() as executor:
-            threads = []
+        with ThreadPoolExecutor(max_workers=self.max_threads) as executor:
+            jobs = []
             for fpath in check_files:
-                threads.append(executor.submit(self.do_check_file, fpath))
-            logger.info(f"Started {len(threads)} threads to check files...")
-            wait(threads, return_when=ALL_COMPLETED)
-            for t in threads:
+                jobs.append(executor.submit(self.do_check_file, fpath))
+            wait(jobs, return_when=ALL_COMPLETED)
+            for j in jobs:
                 try:
-                    t.result()
+                    j.result()
                 except Exception as e:
                     logger.warning(f"Thread threw an exception: {e}")
                     self.thread_exceptions.append(e)
-        
+
         for topdir in check_dirs:
             dirnames = [d.name for d in os.scandir(topdir) if d.is_dir()]
             dirnames[:] = [d for d in dirnames if d not in self.skip_paths]
 
-            with ThreadPoolExecutor() as executor:
-                threads = []
+            logger.info(f"Checking {topdir} and subdirs: {'\n  '.join(dirnames)}")
+            with ThreadPoolExecutor(max_workers=self.max_threads) as executor:
+                jobs = []
                 for dirpath in dirnames:
                     dirpath = os.path.join(topdir, dirpath)
-                    threads.append(executor.submit(self.check_dir, dirpath))
+                    jobs.append(executor.submit(self.check_dir, dirpath))
                 top_dir_thread = executor.submit(self.check_dir, topdir, False)
-                threads.append(top_dir_thread)
+                jobs.append(top_dir_thread)
 
-                logger.info(f"Checking dirs: {'\n  '.join(dirnames)}")
-                logger.info(f"Started {len(threads)} threads to check links...")
-                wait(threads, return_when=ALL_COMPLETED)
-                for t in threads:
+                wait(jobs, return_when=ALL_COMPLETED)
+                for j in jobs:
                     try:
-                        t.result()
+                        j.result()
                     except Exception as e:
                         logger.warning(f"Thread threw an exception: {e}")
                         self.thread_exceptions.append(e)
         self.report()
-    
+
     def record_broken(self, broken_links: list, num_checked: int):
         """
         Helper for checker threads to report to the main thread with their
@@ -372,6 +381,7 @@ class LinkChecker:
                     logger.debug(f"Not checking non-page file {in_file}")
             if not recurse:
                 break
+        sess.close()
         self.record_broken(broken_links, total_links_checked)
 
     def do_check_file(self, in_file: str):
@@ -380,6 +390,7 @@ class LinkChecker:
         """
         sess = CheckerSession()
         num_checked, broken = self.check_file(in_file, sess)
+        sess.close()
         self.record_broken(broken, num_checked)
 
     def check_file(self, in_file: str, sess: CheckerSession):
@@ -424,7 +435,7 @@ class LinkChecker:
         for brl in broken_reflinks:
             broken.append( (in_file, brl) )
         return num_checked, broken
-    
+
     def check_for_unparsed_reflinks(self, text: str):
         """
         Given text of a page, find patterns like [Hash][] that should have been
@@ -479,10 +490,10 @@ class LinkChecker:
         with self.cache_lock:
             self.cache[href] = (True, int(time()))
         return (1, True)
-    
+
     def check_dev_link(self, href: str, sess: CheckerSession):
         """
-        Check a local dev link; if it has an anchor, use the Chrome driver to 
+        Check a local dev link; if it has an anchor, use the Chrome driver to
         check for the presence of an element with a matching ID, otherwise fall
         back to just checking that the page exists.
         """
@@ -579,6 +590,9 @@ if __name__ == "__main__":
             help="Suppress informational status messages")
     noisiness.add_argument("--debug", "-d", action="store_true",
             help="Print debug-level log messages")
+    parser.add_argument("--max_threads", "-t", type=int,
+            help="Limit link checker to at most this many threads. Otherwise, "
+                 "use an automatic number of threads based on hardware specs.")
     parser.add_argument("paths", type=str, nargs="*", default=["docs/"],
             help="List of files and folders to check")
 
@@ -590,7 +604,7 @@ if __name__ == "__main__":
     else:
         logger.setLevel(logging.INFO)
 
-    l = LinkChecker(cli_args.paths)
+    l = LinkChecker(cli_args.paths, max_threads=cli_args.max_threads)
     try:
         l.walk()
     except (KeyboardInterrupt) as e:
