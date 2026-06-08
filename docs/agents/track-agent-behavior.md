@@ -117,7 +117,7 @@ payment = Payment(
     account=wallet.address,
     amount=xrp_to_drops(25),
     destination=DESTINATION,
-    source_tag=AGENT_SOURCE_TAG,
+    source_tag=CUSTOM_SOURCE_TAG,
     memos=[build_memo(
         agent_id="invoice-agent-v1",
         session_id="sess-abc123",
@@ -144,7 +144,7 @@ const result = await client.submitAndWait(
     Account: wallet.classicAddress,
     Amount: xrpl.xrpToDrops('25'),
     Destination: DESTINATION,
-    SourceTag: AGENT_SOURCE_TAG,
+    SourceTag: CUSTOM_SOURCE_TAG,
     Memos: [buildMemo('invoice-agent-v1', 'sess-abc123', 'pay_invoice', 'inv-00789')],
   },
   { wallet }

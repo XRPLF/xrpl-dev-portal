@@ -71,7 +71,7 @@ skills pair with the same shared Wallet skill. See
 
 1. **Identify the payment type** — XRP, RLUSD, IOU, or cross-currency. Check [payments.md](references/payments.md).
 2. **Check prerequisites** — Trust line set up? Destination has reserve? Sufficient balance including fees?
-3. **Build** — Construct the transaction object. Set `source_tag` and `Memos` on every agent-initiated transaction. Do not set `Fee`, `Sequence`, or `LastLedgerSequence` — the Wallet skill's autofill step populates these from the live node.
+3. **Build** — Construct the transaction object. Set `Memos` on every agent-initiated transaction. Do not set `Fee`, `Sequence`, or `LastLedgerSequence` — the Wallet skill's autofill step populates these from the live node.
 4. **Simulate** — Call `simulate` on the raw (un-autofilled) transaction before handing off. Catches malformed transactions, missing trust lines, and reserve errors without touching the ledger or triggering the signing ceremony. See simulate pattern in [payments.md](references/payments.md).
 5. **Hand off to the Wallet skill** — Pass the transaction object to the XRPL Agent Wallet skill. It will autofill, show the human a preview, collect confirmation, sign locally, and submit via `submitAndWait`. Do not call `submit_and_wait` or `submitAndWait` from this skill.
 6. **Handle errors explicitly** — `tec*` codes indicate a fee was charged. `tef*`/`tem*` indicate no fee was charged. See error table in [payments.md](references/payments.md).
