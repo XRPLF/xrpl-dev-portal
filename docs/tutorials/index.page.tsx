@@ -99,16 +99,15 @@ const sectionConfig: Record<string, {
       { path: "/docs/tutorials/tokens/mpts/issue-a-multi-purpose-token/", description: "Issue new tokens using the v2 fungible token standard." },
       { path: "/docs/tutorials/tokens/fungible-tokens/issue-a-fungible-token/", description: "Issue new tokens using the v1 fungible token standard." },
       { path: "/docs/tutorials/tokens/nfts/mint-and-burn-nfts-js/", description: "Create new NFTs, retrieve existing tokens, and burn the ones you no longer need." },
-      "/docs/tutorials/tokens/mpts/sending-mpts-in-javascript/",
     ],
   },
   "payments": {
     description: "Transfer XRP and issued currencies using various payment types.",
     pinned: [
       "/docs/tutorials/payments/send-xrp/",
-      "/docs/tutorials/payments/create-trust-line-send-currency-in-javascript/",
-      "/docs/tutorials/payments/send-a-conditional-escrow/",
-      "/docs/tutorials/payments/send-a-timed-escrow/",
+      "/docs/tutorials/payments/send-an-mpt/",
+      "/docs/tutorials/payments/send-fungible-token-escrows/",
+      "/docs/tutorials/payments/send-a-check/",
     ],
   },
   "defi": {

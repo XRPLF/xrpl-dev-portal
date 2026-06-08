@@ -1,0 +1,8 @@
+{
+  "name": "send-an-mpt-examples",
+  "description": "Example code for sending a Multi-Purpose Token (MPT) on the XRP Ledger.",
+  "dependencies": {
+    "xrpl": "^5.0.0"
+  },
+  "type": "module"
+}
