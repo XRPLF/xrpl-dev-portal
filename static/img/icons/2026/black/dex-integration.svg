@@ -1,13 +1,7 @@
-<svg preserveAspectRatio="none" width="100%" height="100%" overflow="visible" style="display: block;" viewBox="0 0 41.4117 49.8845" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g id="file-doc--file-doc-extension-application-program">
-<path id="Rectangle 843" d="M39.4117 29.0196V12.3921L29.0196 2H2V29.0196" stroke="var(--stroke-0, #141414)" stroke-width="4"/>
-<g id="Group 1000008762">
-<path id="Vector 3_2" d="M2.00028 35.2549V47.7255H8.49537C9.49977 47.7255 10.314 46.9112 10.314 45.9069V37.0736C10.314 36.0693 9.49977 35.2549 8.49537 35.2549H2.00028Z" stroke="var(--stroke-0, #141414)" stroke-width="4"/>
-<path id="Vector 2" d="M24.8625 35.2549H16.5488V47.7255H24.8625M16.5488 40.9706H23.8233" stroke="var(--stroke-0, #141414)" stroke-width="4"/>
-<g id="Group 8">
-<path id="Vector 2_2" d="M29.291 34.216L39.7786 48.7122" stroke="var(--stroke-0, #141414)" stroke-width="4" stroke-linejoin="round"/>
-<path id="Vector 3_2_2" d="M39.1427 34.2158L28.6552 48.7121" stroke="var(--stroke-0, #141414)" stroke-width="4" stroke-linejoin="round"/>
-</g>
-</g>
-</g>
+<svg width="42" height="50" viewBox="0 0 42 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M39.4117 29.0196V12.3921L29.0196 2H2V29.0196" stroke="#141414" stroke-width="4"/>
+<path d="M2.00024 35.2551V47.7257H8.49533C9.49973 47.7257 10.314 46.9114 10.314 45.9071V37.0738C10.314 36.0695 9.49973 35.2551 8.49533 35.2551H2.00024Z" stroke="#141414" stroke-width="4"/>
+<path d="M24.8625 35.2551H16.5488V47.7257H24.8625M16.5488 40.9708H23.8233" stroke="#141414" stroke-width="4"/>
+<path d="M29.291 34.2161L39.7786 48.7123" stroke="#141414" stroke-width="4" stroke-linejoin="round"/>
+<path d="M39.1425 34.2158L28.655 48.712" stroke="#141414" stroke-width="4" stroke-linejoin="round"/>
 </svg>

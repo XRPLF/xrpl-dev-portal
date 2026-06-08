@@ -1,8 +1,9 @@
 import { useThemeHooks } from "@redocly/theme/core/hooks";
+import { PageWrapper } from "shared/components/PageWrapper";
 import { HeaderHeroSplitMedia } from "shared/sections/HeaderHeroSplitMedia/HeaderHeroSplitMedia";
 import { CardsFeatured } from "shared/sections/CardsFeatured/CardsFeatured";
 import { LinkTextDirectory } from "shared/sections/LinkTextDirectory/LinkTextDirectory";
-import { FeatureTwoColumn } from "shared/sections/FeatureTwoColumn/FeatureTwoColumn";
+import { FeatureTwoColumn, FeatureTwoColumnWrapper } from "shared/sections/FeatureTwoColumn";
 import { FeatureSingleTopic } from "shared/sections/FeatureSingleTopic/FeatureSingleTopic";
 
 export const frontmatter = {
@@ -21,10 +22,10 @@ export default function Resources() {
   const { translate } = useTranslate();
 
   return (
-    <div className="landing">
+    <PageWrapper className="landing">
       <HeaderHeroSplitMedia
         title={translate("Everything you need in One Place.")}
-        subtitle={translate(
+        description={translate(
           "Whether you’re exploring the XRP Ledger for the first time or scaling an enterprise solution, here you'll find the essential blockchain and crypto resources developers need to build, learn, and stay ahead."
         )}
         primaryCta={{
@@ -44,7 +45,7 @@ export default function Resources() {
         )}
         cards={[
           {
-            image: require("../static/img/bds-2026/resources-feature-media-1.jpg"),
+            image: require("../static/img/bds-2026/resources-feature-media-2.jpg"),
             imageAlt: translate("Documentation"),
             title: translate("Documentation"),
             subtitle: translate(
@@ -54,7 +55,7 @@ export default function Resources() {
             href: "https://xrpl.org/docs",
           },
           {
-            image: require("../static/img/bds-2026/resources-feature-media-2.jpg"),
+            image: require("../static/img/bds-2026/resources-feature-media-3.jpg"),
             imageAlt: translate("Guided Tutorials"),
             title: translate("Guided Tutorials"),
             subtitle: translate(
@@ -64,7 +65,7 @@ export default function Resources() {
             href: "https://xrpl.org/docs/tutorials",
           },
           {
-            image: require("../static/img/bds-2026/resources-feature-media-3.jpg"),
+            image: require("../static/img/bds-2026/resources-feature-media-4.jpg"),
             imageAlt: translate("Fundamentals"),
             title: translate("Fundamentals"),
             subtitle: translate(
@@ -74,7 +75,7 @@ export default function Resources() {
             href: "https://xrpl.org/docs/introduction",
           },
           {
-            image: require("../static/img/bds-2026/resources-feature-media-4.jpg"),
+            image: require("../static/img/bds-2026/resources-feature-media-6.jpg"),
             imageAlt: translate("Languages"),
             title: translate("Languages"),
             subtitle: translate(
@@ -163,66 +164,68 @@ export default function Resources() {
         ]}
       />
 
-      <FeatureTwoColumn
-        color="green"
-        arrange="left"
-        title={translate("XRPL Grants & Accelerator")}
-        description={translate(
-          "Apply for funding and guidance to bring your ideas to life and help them scale."
-        )}
-        links={[
-          {
-            label: translate("Funding and Guidance"),
-            href: "https://xrplgrants.org/",
-          },
-        ]}
-        media={{
-          src: require("../static/img/bds-2026/resources-feature-media-7.jpg"),
-          alt: translate("XRPL Grants & Accelerator"),
-        }}
-      />
+      <FeatureTwoColumnWrapper>
+        <FeatureTwoColumn
+          color="green"
+          arrange="left"
+          title={translate("XRPL Grants & Accelerator")}
+          description={translate(
+            "Apply for funding and guidance to bring your ideas to life and help them scale."
+          )}
+          links={[
+            {
+              label: translate("Funding and Guidance"),
+              href: "https://xrplgrants.org/",
+            },
+          ]}
+          media={{
+            src: require("../static/img/bds-2026/resources-feature-media-8.jpg"),
+            alt: translate("XRPL Grants & Accelerator"),
+          }}
+        />
 
-      <FeatureTwoColumn
-        color="green"
-        arrange="right"
-        title={translate("XRPL Commons")}
-        description={translate(
-          "Utilize the Core Dev Bootcamp to level up your blockchain journey and join The Aquarium Residency if you’re ready for launch."
-        )}
-        links={[
-          {
-            label: translate("Core Dev Bootcamp"),
-            href: "https://www.xrpl-commons.org/build/core-dev-online-bootcamp",
-          },
-          {
-            label: translate("The Aquarium Residency"),
-            href: "https://www.xrpl-commons.org/residency",
-          },
-        ]}
-        media={{
-          src: require("../static/img/bds-2026/resources-feature-media-8.jpg"),
-          alt: translate("XRPL Commons"),
-        }}
-      />
+        <FeatureTwoColumn
+          color="green"
+          arrange="right"
+          title={translate("XRPL Commons")}
+          description={translate(
+            "Utilize the Core Dev Bootcamp to level up your blockchain journey and join The Aquarium Residency if you’re ready for launch."
+          )}
+          links={[
+            {
+              label: translate("Core Dev Bootcamp"),
+              href: "https://www.xrpl-commons.org/build/core-dev-online-bootcamp",
+            },
+            {
+              label: translate("The Aquarium Residency"),
+              href: "https://www.xrpl-commons.org/residency",
+            },
+          ]}
+          media={{
+            src: require("../static/img/bds-2026/resources-feature-media-9.jpg"),
+            alt: translate("XRPL Commons"),
+          }}
+        />
 
-      <FeatureTwoColumn
-        color="green"
-        arrange="left"
-        title={translate("Hackathons & Events")}
-        description={translate(
-          "Compete, connect, and contribute at upcoming global developer events."
-        )}
-        links={[
-          {
-            label: translate("Global Developer Events"),
-            href: "https://xrpl.org/community/events",
-          },
-        ]}
-        media={{
-          src: require("../static/img/bds-2026/resources-feature-media-9.jpg"),
-          alt: translate("Hackathons & Events"),
-        }}
-      />
+        <FeatureTwoColumn
+          color="green"
+          arrange="left"
+          title={translate("Hackathons & Events")}
+          description={translate(
+            "Compete, connect, and contribute at upcoming global developer events."
+          )}
+          links={[
+            {
+              label: translate("Global Developer Events"),
+              href: "https://xrpl.org/community/events",
+            },
+          ]}
+          media={{
+            src: require("../static/img/bds-2026/resources-feature-media-10.jpg"),
+            alt: translate("Hackathons & Events"),
+          }}
+        />
+      </FeatureTwoColumnWrapper>
 
       <FeatureSingleTopic
         orientation="left"
@@ -237,10 +240,10 @@ export default function Resources() {
           },
         ]}
         media={{
-          src: require("../static/img/bds-2026/resources-feature-media-10.jpg"),
+          src: require("../static/img/bds-2026/resources-feature-media-11.png"),
           alt: translate("Building on XRPL Starts Here"),
         }}
       />
-    </div>
+    </PageWrapper>
   );
 }

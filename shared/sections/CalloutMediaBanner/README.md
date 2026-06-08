@@ -6,6 +6,7 @@ A full-width banner component featuring a heading, subheading, and optional acti
 
 - **5 Color Variants**: Default (white), Light Gray, Lilac, Green, and Gray
 - **Background Image Support**: Optional image with gradient overlay for text readability
+- **Mode-Aware Background Images**: Optional separate image per color scheme (light vs dark)
 - **Responsive Design**: Adapts across mobile, tablet, and desktop breakpoints
 - **Flexible Buttons**: Supports primary, tertiary, both, or no buttons
 - **Automatic Button Styling**: Intelligently selects button colors based on variant
@@ -55,8 +56,16 @@ The component automatically adapts its spacing and typography based on viewport 
 interface CalloutMediaBannerProps {
   /** Color variant - determines background color (ignored if backgroundImage is provided) */
   variant?: 'default' | 'light-gray' | 'lilac' | 'green' | 'gray';
-  /** Background image URL - overrides variant color when provided */
+  /**
+   * Background image URL. Overrides `variant` when provided.
+   * Used in light mode, and also in dark mode unless `backgroundImageDark` is provided.
+   */
   backgroundImage?: string;
+  /**
+   * Optional background image URL used when the site is in dark mode
+   * (i.e. `<html class="dark">`). Falls back to `backgroundImage` if omitted.
+   */
+  backgroundImageDark?: string;
   /** Text color for image variant - fixes text color across light/dark modes (only applicable when backgroundImage is provided) */
   textColor?: 'white' | 'black';
   /** Main heading text */
@@ -127,6 +136,25 @@ import { CalloutMediaBanner } from 'shared/sections/CalloutMediaBanner';
   primaryButton={{ label: "Start Building", onClick: handleClick }}
 />
 ```
+
+### With Mode-Aware Background Images
+
+Pass a separate image for each color scheme. The component swaps them purely
+in CSS (no JS re-render), so the change is instant when the user toggles
+between light and dark mode.
+
+```tsx
+<CalloutMediaBanner
+  backgroundImage="/img/backgrounds/callout-light.jpg"
+  backgroundImageDark="/img/backgrounds/callout-dark.jpg"
+  heading="Build on XRPL"
+  subheading="Start building your next project on the XRP Ledger."
+  primaryButton={{ label: "Start Building", href: "/docs" }}
+/>
+```
+
+If you provide only `backgroundImage`, that single image is used in both
+modes (backward-compatible default).
 
 ### Single Button
 

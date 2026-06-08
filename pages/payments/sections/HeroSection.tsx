@@ -10,7 +10,6 @@ export const HeroSection: React.FC = () => {
     <HeaderHeroSplitMedia
       layout="content-left"
       title={translate("Payments Infrastructure")}
-      subtitle=""
       description={translate(
         "The XRP Ledger Payments Infrastructure is a payments solution for use cases including stablecoin payments, cross-border remittance, B2B payment rails, and merchant settlement.",
       )}

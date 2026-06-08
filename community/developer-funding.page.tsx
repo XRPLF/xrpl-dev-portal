@@ -1,13 +1,14 @@
 import * as React from "react";
 import { useThemeHooks } from "@redocly/theme/core/hooks";
+import { PageWrapper } from "shared/components/PageWrapper";
 import { HeaderHeroSplitMedia } from "shared/sections/HeaderHeroSplitMedia/HeaderHeroSplitMedia";
 import {
   CarouselFeatured,
   type CarouselSlide,
 } from "shared/patterns/CarouselFeatured/CarouselFeatured";
 import { LogoSquareGrid } from "shared/sections/LogoSquareGrid";
-import FeaturedVideoHero from "shared/sections/FeaturedVideoHero/FeaturedVideoHero";
 import { LinkTextDirectory } from "shared/sections/LinkTextDirectory/LinkTextDirectory";
+import { FeatureSingleTopic } from "shared/sections/FeatureSingleTopic/FeatureSingleTopic";
 
 export const frontmatter = {
   seo: {
@@ -143,7 +144,7 @@ export default function Funding() {
   ];
 
   return (
-    <div className="landing">
+    <PageWrapper className="landing">
       <HeaderHeroSplitMedia
         title={translate("Bring Your Vision to Life")}
         subtitle={translate(
@@ -193,22 +194,16 @@ export default function Funding() {
         ]}
       />
 
-      <FeaturedVideoHero
-        headline={translate(
+      <FeatureSingleTopic
+        title={translate(
           "Unveil Your Project at an XRPL Accelerator Demo Day"
         )}
-        video={{
-          source: {
-            type: "embed",
-            embedUrl:
-              "https://www.youtube.com/embed/videoseries?list=PLJQ55Tj1hIVZtJ_JdTvSum2qMTsedWkNi",
-          },
-          coverImage: {
-            src: require("../static/img/bds-2026/community-developer-funding-video-poster.jpg"),
-            alt: translate("XRPL Accelerator Demo Day"),
-          },
+        orientation="right"
+        media={{
+          src: require("../static/img/bds-2026/community-developer-funding-video-poster.jpg"),
+          alt: translate("XRPL Accelerator Demo Day"),
         }}
-        links={[
+        buttons={[
           {
             label: translate("Read More"),
             href: "https://dev.to/ripplexdev/inside-xrpl-accelerators-demo-day-at-the-dubai-fintech-summit-1be9",
@@ -266,6 +261,6 @@ export default function Funding() {
           },
         ]}
       />
-    </div>
+    </PageWrapper>
   );
 }

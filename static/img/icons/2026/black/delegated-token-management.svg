@@ -1,8 +1,9 @@
-<svg preserveAspectRatio="none" width="100%" height="100%" overflow="visible" style="display: block;" viewBox="0 0 76.5 60.25" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g id="credit-card-1--credit-pay-payment-debit-card-finance-plastic-money-atm">
-<path id="Vector 1760" d="M2.5 57.75V2.5H74V57.75H2.5Z" stroke="var(--stroke-0, #141414)" stroke-width="5"/>
-<path id="Vector 2331" d="M2.49852 15.4999L73.9985 15.4999" stroke="var(--stroke-0, #141414)" stroke-width="5"/>
-<path id="Vector 2333" d="M2.49852 28.5004H73.9985" stroke="var(--stroke-0, #141414)" stroke-width="5"/>
-<path id="Vector 2332" d="M47.9987 43.1252H60.9987" stroke="var(--stroke-0, #141414)" stroke-width="5"/>
-</g>
+<svg width="65" height="70" viewBox="0 0 65 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M26.5 54.7722H38.5V66.7722H26.5V54.7722Z" stroke="#141414" stroke-width="5"/>
+<path d="M2.5 54.7722H14.5V66.7722H2.5V54.7722Z" stroke="#141414" stroke-width="5"/>
+<path d="M50.499 54.7722H62.499V66.7722H50.499V54.7722Z" stroke="#141414" stroke-width="5"/>
+<path d="M32.5 42.7718V54.7718" stroke="#141414" stroke-width="5"/>
+<path d="M8.5 54.7718V42.7718H56.5V54.7718" stroke="#141414" stroke-width="5"/>
+<path d="M18.1743 33.7548V26.0989C22.6006 24.3172 27.4354 23.3366 32.4994 23.3366C37.5634 23.3366 42.3982 24.3172 46.8244 26.0989V33.7548" stroke="#141414" stroke-width="5"/>
+<path d="M25.9873 9.013C25.9873 10.7404 26.6735 12.397 27.8949 13.6184C29.1163 14.8398 30.7729 15.526 32.5003 15.526C34.2277 15.526 35.8843 14.8398 37.1057 13.6184C38.3271 12.397 39.0133 10.7404 39.0133 9.013C39.0133 7.28565 38.3271 5.62904 37.1057 4.40761C35.8843 3.18619 34.2277 2.5 32.5003 2.5C30.7729 2.5 29.1163 3.18619 27.8949 4.40761C26.6735 5.62904 25.9873 7.28565 25.9873 9.013Z" stroke="#141414" stroke-width="5"/>
 </svg>

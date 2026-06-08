@@ -1,4 +1,5 @@
 import { useThemeHooks } from "@redocly/theme/core/hooks";
+import { PageWrapper } from "shared/components/PageWrapper";
 import { HeaderHeroSplitMedia } from "shared/sections/HeaderHeroSplitMedia/HeaderHeroSplitMedia";
 import FeaturedVideoHero from "shared/sections/FeaturedVideoHero/FeaturedVideoHero";
 import { LinkTextDirectory } from "shared/sections/LinkTextDirectory/LinkTextDirectory";
@@ -20,10 +21,9 @@ export default function Trading() {
   const { translate } = useTranslate();
 
   return (
-    <div className="landing">
+    <PageWrapper className="landing">
       <HeaderHeroSplitMedia
         title={translate("Trading on the XRP Ledger")}
-        subtitle=""
         description={translate(
           "Institutional DeFi (iDeFi) on the XRPL delivers high-speed, low-cost, compliance-first infrastructure for crypto trading and liquidity. Built for financial institutions, Web2 platforms, and crypto-native businesses, XRPL’s DEX and protocol ecosystem reduces complexity while preserving trust, transparency, and scale."
         )}
@@ -259,6 +259,6 @@ export default function Trading() {
           },
         ]}
       />
-    </div>
+    </PageWrapper>
   );
 }

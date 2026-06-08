@@ -116,7 +116,7 @@ $bds-cmb-image-overlay: rgba(0, 0, 0, 0.3);
 
   // Custom properties not covered by Bootstrap
   box-sizing: border-box;
-  min-height: 280px;
+  // min-height: 280px;
 
   // Ensure PageGridCol stretches to full height
   > [class*="bds-grid__col"] {
@@ -140,7 +140,7 @@ $bds-cmb-image-overlay: rgba(0, 0, 0, 0.3);
   // Desktop breakpoint
   @include media-breakpoint-up(lg) {
     padding: $bds-cmb-padding-desktop;
-    min-height: 360px;
+    // min-height: 360px;
   }
 }
 
@@ -235,30 +235,44 @@ $bds-cmb-image-overlay: rgba(0, 0, 0, 0.3);
 // =============================================================================
 // Image Variant
 // =============================================================================
-// When backgroundImage is provided, add an overlay for text readability
+// When a background image is provided, the image takes precedence over any
+// solid color. The image URLs are passed in via CSS custom properties so we
+// can swap between a light- and dark-mode image purely in CSS:
+//
+//   --bds-cmb-bg-image-light : URL used in light mode
+//   --bds-cmb-bg-image-dark  : URL used in dark mode (falls back to -light)
+//
+// Either property may be unset; when both are unset, no image is rendered.
 
 .bds-callout-media-banner--image {
   // No background-color (image takes precedence)
   background-color: transparent;
 
-  // Add overlay gradient for text readability (default: dark overlay for white text)
-  &::before {
-    content: "";
-    @extend .position-absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    inset: 0;
-    background: linear-gradient(
-      135deg,
-      rgba(0, 0, 0, 0.4) 0%,
-      rgba(0, 0, 0, 0.2) 50%,
-      rgba(0, 0, 0, 0.1) 100%
-    );
-    z-index: 0;
-    pointer-events: none;
-  }
+  // Default / light-mode image. Falls back to the dark image if a consumer
+  // only supplied a dark image (rare but handled for symmetry).
+  background-image: var(
+    --bds-cmb-bg-image-light,
+    var(--bds-cmb-bg-image-dark, none)
+  );
+
+  // // Add overlay gradient for text readability (default: dark overlay for white text)
+  // &::before {
+  //   content: "";
+  //   @extend .position-absolute;
+  //   top: 0;
+  //   left: 0;
+  //   right: 0;
+  //   bottom: 0;
+  //   inset: 0;
+  //   background: linear-gradient(
+  //     135deg,
+  //     rgba(0, 0, 0, 0.4) 0%,
+  //     rgba(0, 0, 0, 0.2) 50%,
+  //     rgba(0, 0, 0, 0.1) 100%
+  //   );
+  //   z-index: 0;
+  //   pointer-events: none;
+  // }
 }
 
 // Image variant with black text modifier
@@ -299,6 +313,13 @@ html.dark {
 
   // Image variant with white text remains white
   .bds-callout-media-banner--image {
+    // Swap to the dark-mode background image if one was provided. Falls
+    // back to the light-mode image when only one URL is supplied.
+    background-image: var(
+      --bds-cmb-bg-image-dark,
+      var(--bds-cmb-bg-image-light, none)
+    );
+
     .bds-callout-media-banner__text {
       color: $white;
     }

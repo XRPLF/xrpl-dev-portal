@@ -86,7 +86,7 @@ export function NavItems({ activeSubmenu, onSubmenuEnter, onSubmenuClose }: NavI
           <button
             key={item.label}
             type="button"
-            className={`bds-navbar__item ${activeItem === item.label || activeSubmenu === item.label ? 'bds-navbar__item--active' : ''}`}
+            className={`label-r bds-navbar__item ${activeItem === item.label || activeSubmenu === item.label ? 'bds-navbar__item--active' : ''}`}
             onMouseEnter={() => handleMouseEnter(item.label, true)}
             onMouseLeave={() => handleMouseLeave(true)}
             onKeyDown={(e) => handleKeyDown(e, item.label)}
@@ -99,7 +99,7 @@ export function NavItems({ activeSubmenu, onSubmenuEnter, onSubmenuClose }: NavI
           <BdsLink
             key={item.label}
             href={item.href}
-            className={`bds-navbar__item ${activeItem === item.label ? 'bds-navbar__item--active' : ''}`}
+            className={`label-r bds-navbar__item ${activeItem === item.label ? 'bds-navbar__item--active' : ''}`}
             onMouseEnter={() => handleMouseEnter(item.label, false)}
             onMouseLeave={() => handleMouseLeave(false)}
             variant="inline"

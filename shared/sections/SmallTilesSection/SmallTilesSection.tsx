@@ -151,7 +151,7 @@ export const SmallTilesSection = forwardRef<
               lg: 8,
             }}
           >
-            <h2 className="bds-small-tiles-section__headline h4">{headline}</h2>
+            <h2 className="bds-small-tiles-section__headline h-md">{headline}</h2>
             {subtitle && (
               <p className="bds-small-tiles-section__subtitle body-r">
                 {subtitle}

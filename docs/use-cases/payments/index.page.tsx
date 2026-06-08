@@ -1,4 +1,5 @@
 import React from 'react';
+import { PageWrapper } from 'shared/components/PageWrapper';
 import {
   HeroSection,
   WhyChooseSection,
@@ -21,7 +22,7 @@ export const frontmatter = {
 
 export default function PaymentsPage() {
   return (
-    <div className="landing">
+    <PageWrapper className="landing">
       <HeroSection />
       <WhyChooseSection />
       <AdvancedFeaturesSection />
@@ -31,6 +32,6 @@ export default function PaymentsPage() {
       <FlexibleIntegrationSection />
       <DeveloperSpotlightSection />
       <StayConnectedSection />
-    </div>
+    </PageWrapper>
   );
 }

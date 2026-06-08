@@ -1,12 +1,13 @@
 import * as React from 'react';
 import { useThemeHooks } from '@redocly/theme/core/hooks';
+import { PageWrapper } from 'shared/components/PageWrapper';
 import HeaderHeroPrimaryMedia from 'shared/sections/HeaderHeroPrimaryMedia/HeaderHeroPrimaryMedia';
 import { CarouselCardList } from 'shared/sections/CarouselCardList/CarouselCardList';
 import { CardsTextGrid } from 'shared/sections/CardsTextGrid/CardsTextGrid';
 import FeaturedVideoHero from 'shared/sections/FeaturedVideoHero/FeaturedVideoHero';
 import { LinkSmallGrid } from 'shared/sections/LinkSmallGrid/LinkSmallGrid';
 import { LinkTextDirectory } from 'shared/sections/LinkTextDirectory/LinkTextDirectory';
-import { FeatureTwoColumn } from 'shared/sections/FeatureTwoColumn/FeatureTwoColumn';
+import { FeatureTwoColumn, FeatureTwoColumnWrapper } from 'shared/sections/FeatureTwoColumn';
 import { SmallTilesSection } from 'shared/sections/SmallTilesSection/SmallTilesSection';
 import { CardsIconGrid } from 'shared/sections/CardsIconGrid/CardsIconGrid';
 import { StandardCardGroupSection } from 'shared/sections/StandardCardGroupSection/StandardCardGroupSection';
@@ -24,7 +25,7 @@ export default function Docs() {
   const { translate } = useTranslate();
 
   return (
-    <div className="landing page-docs page-docs-index">
+    <PageWrapper className="landing page-docs page-docs-index">
 
       {/* 1. Hero */}
       <HeaderHeroPrimaryMedia
@@ -224,89 +225,91 @@ export default function Docs() {
         ]}
       />
 
-      {/* 9a. Use Cases — Payments */}
-      <FeatureTwoColumn
-        color="lilac"
-        arrange="left"
-        title={translate("Payments")}
-        description=""
-        media={{ src: require('../static/img/bds-2026/docs-feature-media-1.jpg'), alt: translate('Payments') }}
-        links={[
-          {
-            label: translate('Peer-to-Peer Payments'),
-            href: '/docs/use-cases/payments/peer-to-peer-payments-uc',
-          },
-          {
-            label: translate('Cross-Currency Payments'),
-            href: '/docs/concepts/payment-types/cross-currency-payments',
-          },
-          {
-            label: translate('Smart Contracts'),
-            href: '/docs/use-cases/payments/smart-contracts-uc',
-          },
-        ]}
-      />
+      <FeatureTwoColumnWrapper>
+        {/* 9a. Use Cases — Payments */}
+        <FeatureTwoColumn
+          color="lilac"
+          arrange="left"
+          title={translate("Payments")}
+          description=""
+          media={{ src: require('../static/img/bds-2026/docs-feature-media-1.jpg'), alt: translate('Payments') }}
+          links={[
+            {
+              label: translate('Peer-to-Peer Payments'),
+              href: '/docs/use-cases/payments/peer-to-peer-payments-uc',
+            },
+            {
+              label: translate('Cross-Currency Payments'),
+              href: '/docs/concepts/payment-types/cross-currency-payments',
+            },
+            {
+              label: translate('Smart Contracts'),
+              href: '/docs/use-cases/payments/smart-contracts-uc',
+            },
+          ]}
+        />
 
-      {/* 9b. Use Cases — Tokens */}
-      <FeatureTwoColumn
-        color="lilac"
-        arrange="right"
-        title={translate("Tokens")}
-        description=""
-        media={{ src: require('../static/img/bds-2026/docs-feature-media-2.jpg'), alt: translate('Tokens') }}
-        links={[
-          {
-            label: translate('Stablecoin Issuer'),
-            href: '/docs/use-cases/tokenization/stablecoin-issuer',
-          },
-          {
-            label: translate('NFT Marketplace'),
-            href: '/docs/use-cases/tokenization/nft-mkt-overview',
-          },
-          {
-            label: translate('Digital Artist'),
-            href: '/docs/use-cases/tokenization/digital-artist',
-          },
-        ]}
-      />
+        {/* 9b. Use Cases — Tokens */}
+        <FeatureTwoColumn
+          color="lilac"
+          arrange="right"
+          title={translate("Tokens")}
+          description=""
+          media={{ src: require('../static/img/bds-2026/docs-feature-media-2.jpg'), alt: translate('Tokens') }}
+          links={[
+            {
+              label: translate('Stablecoin Issuer'),
+              href: '/docs/use-cases/tokenization/stablecoin-issuer',
+            },
+            {
+              label: translate('NFT Marketplace'),
+              href: '/docs/use-cases/tokenization/nft-mkt-overview',
+            },
+            {
+              label: translate('Digital Artist'),
+              href: '/docs/use-cases/tokenization/digital-artist',
+            },
+          ]}
+        />
 
-      {/* 9c. Use Cases — On-Chain Finance */}
-      <FeatureTwoColumn
-        color="lilac"
-        arrange="left"
-        title={translate("On-Chain Finance")}
-        description=""
-        media={{ src: require('../static/img/bds-2026/docs-feature-media-3.jpg'), alt: translate('On-Chain Finance') }}
-        links={[
-          {
-            label: translate('List XRP as an Exchange'),
-            href: '/docs/use-cases/defi/list-xrp-as-an-exchange',
-          },
-          {
-            label: translate('Trade with an Auction Slot'),
-            href: '/docs/tutorials/javascript/amm/trade-with-auction-slot',
-          },
-        ]}
-      />
+        {/* 9c. Use Cases — On-Chain Finance */}
+        <FeatureTwoColumn
+          color="lilac"
+          arrange="left"
+          title={translate("On-Chain Finance")}
+          description=""
+          media={{ src: require('../static/img/bds-2026/docs-feature-media-3.jpg'), alt: translate('On-Chain Finance') }}
+          links={[
+            {
+              label: translate('List XRP as an Exchange'),
+              href: '/docs/use-cases/defi/list-xrp-as-an-exchange',
+            },
+            {
+              label: translate('Trade with an Auction Slot'),
+              href: '/docs/tutorials/javascript/amm/trade-with-auction-slot',
+            },
+          ]}
+        />
 
-      {/* 9d. Use Cases — Compliance Features */}
-      <FeatureTwoColumn
-        color="lilac"
-        arrange="right"
-        title={translate("Compliance Features")}
-        description=""
-        media={{ src: require('../static/img/bds-2026/docs-feature-media.jpg'), alt: translate('Compliance Features') }}
-        links={[
-          {
-            label: translate('Build a Credential Issuing Service'),
-            href: '/docs/tutorials/javascript/build-apps/credential-issuing-service',
-          },
-          {
-            label: translate('Create a Permissioned Domain'),
-            href: '/docs/tutorials/javascript/compliance/create-permissioned-domains',
-          },
-        ]}
-      />
+        {/* 9d. Use Cases — Compliance Features */}
+        <FeatureTwoColumn
+          color="lilac"
+          arrange="right"
+          title={translate("Compliance Features")}
+          description=""
+          media={{ src: require('../static/img/bds-2026/docs-feature-media.jpg'), alt: translate('Compliance Features') }}
+          links={[
+            {
+              label: translate('Build a Credential Issuing Service'),
+              href: '/docs/tutorials/javascript/build-apps/credential-issuing-service',
+            },
+            {
+              label: translate('Create a Permissioned Domain'),
+              href: '/docs/tutorials/javascript/compliance/create-permissioned-domains',
+            },
+          ]}
+        />
+      </FeatureTwoColumnWrapper>
 
       {/* 10. SDK Tiles */}
       <SmallTilesSection
@@ -475,6 +478,6 @@ export default function Docs() {
           },
         ]}
       />
-    </div>
+    </PageWrapper>
   );
 }

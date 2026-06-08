@@ -1,4 +1,5 @@
 import { useThemeHooks } from "@redocly/theme/core/hooks";
+import { PageWrapper } from "shared/components/PageWrapper";
 import { HeaderHeroSplitMedia } from "shared/sections/HeaderHeroSplitMedia/HeaderHeroSplitMedia";
 import { LinkTextDirectory } from "shared/sections/LinkTextDirectory/LinkTextDirectory";
 import { CardsFeatured } from "shared/sections/CardsFeatured/CardsFeatured";
@@ -20,7 +21,7 @@ export default function Community() {
   const { translate } = useTranslate();
 
   return (
-    <div className="landing">
+    <PageWrapper className="landing">
       <HeaderHeroSplitMedia
         title={translate("Build. Connect. Contribute.")}
         subtitle={translate(
@@ -150,6 +151,6 @@ export default function Community() {
           alt: translate("Join the Community"),
         }}
       />
-    </div>
+    </PageWrapper>
   );
 }

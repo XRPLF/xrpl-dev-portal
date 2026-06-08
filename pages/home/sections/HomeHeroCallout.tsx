@@ -12,6 +12,7 @@ export function HomeHeroCallout() {
       heading={translate("XRP Ledger")}
       headingAs="h2"
       backgroundImage={"/img/backgrounds/callout-light.jpg"}
+      backgroundImageDark={"/img/backgrounds/callout-dark.jpg"}
       subheading={translate(
         "A decentralized public Layer 1 blockchain for creating, transferring, and exchanging digital assets with a focus on compliance. ",
       )}

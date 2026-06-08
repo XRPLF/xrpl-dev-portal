@@ -11,7 +11,7 @@ export interface HeaderHeroSplitMediaProps {
   /** Hero title text (display-md typography) */
   title: string;
   /** Hero subtitle text (subhead-sm-l typography) */
-  subtitle: string;
+  subtitle?: string;
   /** Description text below title section (body-l typography) */
   description?: string;
   /** Primary CTA button configuration */
@@ -96,7 +96,7 @@ export const HeaderHeroSplitMedia: React.FC<HeaderHeroSplitMediaProps> = ({
       <div className="bds-hero-split-media__title-surface">
         <div className="bds-hero-split-media__title-group">
           <h1 className="bds-hero-split-media__title">{title}</h1>
-          <p className="bds-hero-split-media__subtitle">{subtitle}</p>
+          {subtitle && <p className="bds-hero-split-media__subtitle">{subtitle}</p>}
         </div>
       </div>
 

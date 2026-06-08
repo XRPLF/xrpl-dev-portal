@@ -1,9 +1,10 @@
 import { useThemeHooks } from "@redocly/theme/core/hooks";
+import { PageWrapper } from "shared/components/PageWrapper";
 import { HeaderHeroSplitMedia } from "shared/sections/HeaderHeroSplitMedia/HeaderHeroSplitMedia";
 import { CardsFeatured } from "shared/sections/CardsFeatured/CardsFeatured";
 import { StandardCardGroupSection } from "shared/sections/StandardCardGroupSection/StandardCardGroupSection";
 import { LogoSquareGrid } from "shared/sections/LogoSquareGrid";
-import { FeatureTwoColumn } from "shared/sections/FeatureTwoColumn/FeatureTwoColumn";
+import { FeatureTwoColumn, FeatureTwoColumnWrapper } from "shared/sections/FeatureTwoColumn";
 import { LinkTextDirectory } from "shared/sections/LinkTextDirectory/LinkTextDirectory";
 import { FeatureSingleTopic } from "shared/sections/FeatureSingleTopic/FeatureSingleTopic";
 
@@ -20,7 +21,7 @@ export default function Develop() {
   const { translate } = useTranslate();
 
   return (
-    <div className="landing">
+    <PageWrapper className="landing">
       <HeaderHeroSplitMedia
         title={translate("XRPL Developer Portal")}
         subtitle={translate(
@@ -176,62 +177,64 @@ export default function Develop() {
         ]}
       />
 
-      <FeatureTwoColumn
-        color="yellow"
-        arrange="left"
-        title={translate("XRPL Explorer")}
-        description={translate(
-          "Search, track, and understand XRP Ledger transactions through an open-source explorer."
-        )}
-        links={[
-          {
-            label: translate("XRPL Explorer"),
-            href: "https://livenet.xrpl.org/",
-          },
-        ]}
-        media={{
-          src: require("../static/img/bds-2026/develop-feature-media-4.jpg"),
-          alt: translate("XRPL Explorer"),
-        }}
-      />
+      <FeatureTwoColumnWrapper>
+        <FeatureTwoColumn
+          color="yellow"
+          arrange="left"
+          title={translate("XRPL Explorer")}
+          description={translate(
+            "Search, track, and understand XRP Ledger transactions through an open-source explorer."
+          )}
+          links={[
+            {
+              label: translate("XRPL Explorer"),
+              href: "https://livenet.xrpl.org/",
+            },
+          ]}
+          media={{
+            src: require("../static/img/bds-2026/develop-feature-media-4.jpg"),
+            alt: translate("XRPL Explorer"),
+          }}
+        />
 
-      <FeatureTwoColumn
-        color="yellow"
-        arrange="right"
-        title={translate("Testnet Faucet")}
-        description={translate(
-          "Use testnets to trial XRPL updates and apps safely, without putting real funds at risk"
-        )}
-        links={[
-          {
-            label: translate("Testnet Faucet"),
-            href: "/resources/dev-tools/xrp-faucets",
-          },
-        ]}
-        media={{
-          src: require("../static/img/bds-2026/develop-feature-media-5.jpg"),
-          alt: translate("Testnet Faucet"),
-        }}
-      />
+        <FeatureTwoColumn
+          color="yellow"
+          arrange="right"
+          title={translate("Testnet Faucet")}
+          description={translate(
+            "Use testnets to trial XRPL updates and apps safely, without putting real funds at risk"
+          )}
+          links={[
+            {
+              label: translate("Testnet Faucet"),
+              href: "/resources/dev-tools/xrp-faucets",
+            },
+          ]}
+          media={{
+            src: require("../static/img/bds-2026/develop-feature-media-5.jpg"),
+            alt: translate("Testnet Faucet"),
+          }}
+        />
 
-      <FeatureTwoColumn
-        color="yellow"
-        arrange="left"
-        title={translate("Simulate")}
-        description={translate(
-          "The simulate method executes a dry run of any transaction type, enabling you to preview the results and metadata of a transaction without committing them to the XRP Ledger."
-        )}
-        links={[
-          {
-            label: translate("Simulate"),
-            href: "/docs/references/http-websocket-apis/public-api-methods/transaction-methods/simulate",
-          },
-        ]}
-        media={{
-          src: require("../static/img/bds-2026/develop-feature-media-6.jpg"),
-          alt: translate("Simulate"),
-        }}
-      />
+        <FeatureTwoColumn
+          color="yellow"
+          arrange="left"
+          title={translate("Simulate")}
+          description={translate(
+            "The simulate method executes a dry run of any transaction type, enabling you to preview the results and metadata of a transaction without committing them to the XRP Ledger."
+          )}
+          links={[
+            {
+              label: translate("Simulate"),
+              href: "/docs/references/http-websocket-apis/public-api-methods/transaction-methods/simulate",
+            },
+          ]}
+          media={{
+            src: require("../static/img/bds-2026/develop-feature-media-6.jpg"),
+            alt: translate("Simulate"),
+          }}
+        />
+      </FeatureTwoColumnWrapper>
 
       <LinkTextDirectory
         heading={translate("Developer Resources")}
@@ -315,6 +318,6 @@ export default function Develop() {
           alt: translate("Join the Community"),
         }}
       />
-    </div>
+    </PageWrapper>
   );
 }

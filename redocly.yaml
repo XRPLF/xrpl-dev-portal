@@ -147,6 +147,9 @@ feedback:
     rightScaleLabel: Very helpful
 scripts:
   head:
+    # Loaded first so the persisted color scheme is applied before first paint
+    # and survives across page navigations. See static/js/theme-switch.js.
+    - src: ./static/js/theme-switch.js
     - src: https://cmp.osano.com/AzyjT6TIZMlgyLyy8/f11f7772-8ed5-4b73-bd17-c0814edcc440/osano.js
     - src: ./static/js/xrpl-2.11.0.min.js
     # - src: ./static/vendor/jquery-3.7.1.min.js

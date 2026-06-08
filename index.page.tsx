@@ -1,3 +1,4 @@
+import { PageWrapper } from "shared/components/PageWrapper";
 import {
   HomeBeginJourneySection,
   HomeBlockchainStatsSection,
@@ -11,6 +12,7 @@ import {
   HomeHero,
   HomeCarousel,
 } from "pages/home/sections";
+import { FeatureTwoColumnWrapper } from "shared/sections/FeatureTwoColumn";
 
 export const frontmatter = {
   seo: {
@@ -22,20 +24,20 @@ export const frontmatter = {
 
 export default function Index() {
   return (
-    <div className="landing page-home">
-      <div className="overflow-hidden">
-        <HomeHero />
-        <HomeHeroCallout />
-        <HomeBlockchainStatsSection />
-        <HomeCarousel />
-        <HomeComplianceDirectorySection />
-        <HomeFutureFinanceCallout />
+    <PageWrapper className="landing page-home overflow-hidden">
+      <HomeHero />
+      <HomeHeroCallout />
+      <HomeBlockchainStatsSection />
+      <HomeCarousel />
+      <HomeComplianceDirectorySection />
+      <HomeFutureFinanceCallout />
+      <FeatureTwoColumnWrapper>
         <HomeInstitutionsFeatureSection />
         <HomeDevelopersFeatureSection />
-        <HomePartnerLogosSection />
-        <HomeBeginJourneySection />
-        <HomeStayConnectedSection />
-      </div>
-    </div>
+      </FeatureTwoColumnWrapper>
+      <HomePartnerLogosSection />
+      <HomeBeginJourneySection />
+      <HomeStayConnectedSection />
+    </PageWrapper>
   );
 }

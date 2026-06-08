@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useThemeHooks } from '@redocly/theme/core/hooks';
+import { PageWrapper } from 'shared/components/PageWrapper';
 import { HeaderHeroSplitMedia } from 'shared/sections/HeaderHeroSplitMedia/HeaderHeroSplitMedia';
 import { CarouselCardList } from 'shared/sections/CarouselCardList/CarouselCardList';
 import { LogoRectangleGrid } from 'shared/sections/LogoRectangleGrid/LogoRectangleGrid';
@@ -21,13 +22,12 @@ export default function Tokenization() {
   const { translate } = useTranslate();
 
   return (
-    <div className="landing page-use-cases page-use-cases-tokenization">
+    <PageWrapper className="landing page-use-cases page-use-cases-tokenization">
 
       {/* 1. Hero */}
       <HeaderHeroSplitMedia
         layout="content-left"
         title={translate('Real-World Asset (RWA) Tokenization')}
-        subtitle=""
         description={translate(
           'Learn how to issue crypto tokens and build tokenization solutions with developer tools and APIs.'
         )}
@@ -56,7 +56,7 @@ export default function Tokenization() {
             ),
           },
           {
-            icon: require('../../../static/img/icons/2026/black/onchain-metadata.svg'),
+            icon: require('../../../static/img/icons/2026/black/onchain-metadata-2.svg'),
             title: translate('Onchain Metadata'),
             description: translate(
               'Easily store key asset information or link to off-chain data using simple APIs, giving token holders more transparency and functionality.'
@@ -313,6 +313,6 @@ export default function Tokenization() {
         }}
       />
 
-    </div>
+    </PageWrapper>
   );
 }
