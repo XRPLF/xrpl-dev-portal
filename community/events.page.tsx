@@ -1436,7 +1436,7 @@ const events = [
     link: "https://luma.com/building-on-the-xrpl",
     location: "Online",
     date: "June 22-23, 2026",
-    image: require("../static/img/events/commons-online.jpg"),
+    image: require("../static/img/events/commons-online.png"),
     end_date: "June 23, 2026",
   },
   {
@@ -1447,7 +1447,7 @@ const events = [
     link: "https://luma.com/XRPL-Blockchain-Research-Summit",
     location: "Paris, France",
     date: "June 16-17, 2026",
-    image: require("../static/img/events/commons-online.jpg"),
+    image: require("../static/img/events/commons-online.png"),
     end_date: "June 17, 2026",
   },
   {
