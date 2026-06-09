@@ -244,7 +244,7 @@ RLUSD_CURRENCY = "524C555344000000000000000000000000000000"
 
 # Issuer addresses — confirm before production use
 RLUSD_ISSUER_TESTNET = "rQhWct2fv4Vc4KRjRgMrxa8xPN9Zx9iLKV"
-RLUSD_ISSUER_MAINNET = "rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De"
+RLUSD_ISSUER_MAINNET = "rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De" # Verify at https://ripple.com/rlusd before production use
 ```
 
 ```typescript
@@ -253,7 +253,7 @@ const RLUSD_CURRENCY = "524C555344000000000000000000000000000000";
 
 // Issuer addresses — confirm before production use
 const RLUSD_ISSUER_TESTNET = "rQhWct2fv4Vc4KRjRgMrxa8xPN9Zx9iLKV";
-const RLUSD_ISSUER_MAINNET = "rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De";
+const RLUSD_ISSUER_MAINNET = "rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De"; # Verify at https://ripple.com/rlusd before production use
 ```
 
 ### Step 1: Set up the trust line (one-time per wallet)
@@ -717,7 +717,7 @@ print(f"Spendable: {drops_to_xrp(str(spendable_drops))} XRP")
 
 ---
 
-## Testnet → Mainnet Checklist
+## Testnet -> Mainnet Checklist
 
 - [ ] Replace testnet URL with `https://xrplcluster.com` (RPC) or `wss://xrplcluster.com` (WS)
 - [ ] Use a funded mainnet wallet — not a faucet wallet

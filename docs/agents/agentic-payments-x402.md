@@ -14,23 +14,15 @@ labels:
 
 # Agentic Payments with X402 on the XRP Ledger
 
-X402 is an open protocol for HTTP-native machine-to-machine payments. It extends the
-existing HTTP 402 Payment Required status code into a complete payment flow: a service
-responds with its payment requirements, a client fulfills them with an on-chain
-transaction, and the service delivers the resource.
+X402 is an open protocol for HTTP-native machine-to-machine payments. It extends the existing HTTP 402 Payment Required status code into a complete payment flow: a service responds with its payment requirements, a client fulfills them with an on-chain transaction, and the service delivers the resource.
 
-For AI agents, X402 means that paying for an API call or AI model inference is just
-another HTTP request — no human in the loop, no billing dashboard, no API key rotation.
-An agent can discover a paywall, pay for access, and retry, all in a single workflow
-step.
+For AI agents, X402 means that paying for an API call or AI model inference is just another HTTP request — no human in the loop, no billing dashboard, no API key rotation. An agent can discover a paywall, pay for access, and retry, all in a single workflow step.
 
-The XRP Ledger is a supported settlement chain in the X402 ecosystem via an
-implementation contributed by T54. This means agents using the XRP Ledger can pay for
-X402-gated services using XRP or RLUSD on day one.
+The XRP Ledger is a supported settlement chain in the X402 ecosystem via an implementation contributed by T54. This means agents using the XRP Ledger can pay for X402-gated services using XRP or RLUSD on day one.
 
-<!-- ⚠️ FOLLOW-UP: Confirm that the T54 X402 PR has been merged into the official X402
-repository and that the XRP Ledger appears as a supported chain in X402 public
-documentation before publishing this page. -->
+**About the `x402-xrpl` package**
+
+The `x402-xrpl` package is maintained by [T54](https://xrpl-x402.t54.ai) and is the reference implementation of X402 for the XRP Ledger. It is available on [PyPI](https://pypi.org/project/x402-xrpl/). The package is early-stage; review the [T54 changelog](https://xrpl-x402.t54.ai/docs) and pin a specific version in production rather than installing latest. The testnet facilitator at `xrpl-facilitator-testnet.t54.ai` is operated by T54 on a best-effort basis with no committed SLA; do not build production systems against it.
 
 ---
 

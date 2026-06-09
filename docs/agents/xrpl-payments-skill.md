@@ -91,9 +91,10 @@ skills pair with the same shared Wallet skill. See
 - **Construct non-payment transactions on its own initiative.** The skill
   responds to developer and user instructions; it does not propose transactions
   unprompted.
-- **Guarantee RLUSD issuer addresses are current.** Issuer addresses are
-  included as a reference but should be confirmed at
-  [xrpl.org/docs](https://xrpl.org/docs) before production use.
+- **Guarantee the mainnet RLUSD issuer address is current.** The testnet issuer
+  (`rQhWct2fv4Vc4KRjRgMrxa8xPN9Zx9iLKV`) is confirmed. The mainnet issuer
+  (`rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De`) should be verified at
+  [RLUSD official Documentation](https://docs.ripple.com/products/stablecoin/developer-resources/rlusd-on-the-xrpl) before production use.
   
 ## Reference files
 
