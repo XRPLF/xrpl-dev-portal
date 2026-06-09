@@ -70,15 +70,22 @@ You can also use the [server_definitions API method](../http-websocket-apis/publ
 
 The following table defines the top-level fields from the definitions file:
 
-| Field                 | Contents                                             |
-|:----------------------|:-----------------------------------------------------|
-| `TYPES`               | Map of data types to their ["type code"](#type-codes) for constructing field IDs and sorting fields in canonical order. Codes below 1 should not appear in actual data; codes above 10000 represent special "high-level" object types such as "Transaction" that cannot be serialized inside other objects. See the [Type List](#type-list) for details of how to serialize each type. |
-| `LEDGER_ENTRY_TYPES`  | Map of [ledger objects](ledger-data/ledger-entry-types/index.md) to their data type. These appear in ledger state data, and in the "affected nodes" section of processed transactions' [metadata](transactions/metadata.md). |
-| `FIELDS`              | A sorted array of tuples representing all fields that may appear in transactions, ledger objects, or other data. The first member of each tuple is the string name of the field and the second member is an object with that field's properties. (See the "Field properties" table below for definitions of those fields.) |
-| `TRANSACTION_RESULTS` | Map of [transaction result codes](transactions/transaction-results/index.md) to their numeric values. Result types not included in ledgers have negative values; `tesSUCCESS` has numeric value 0; [`tec`-class codes](transactions/transaction-results/tec-codes.md) represent failures that are included in ledgers. |
-| `TRANSACTION_TYPES`   | Map of all [transaction types](transactions/types/index.md) to their numeric values. |
+| Field                  | Contents                                              |
+|:-----------------------|:------------------------------------------------------|
+| `TYPES`                | Map of data types to their ["type code"](#type-codes) for constructing field IDs and sorting fields in canonical order. Codes below 1 should not appear in actual data; codes above 10000 represent special "high-level" object types such as "Transaction" that cannot be serialized inside other objects. See the [Type List](#type-list) for details of how to serialize each type. |
+| `LEDGER_ENTRY_TYPES`   | Map of [ledger objects](ledger-data/ledger-entry-types/index.md) to their data type. These appear in ledger state data, and in the "affected nodes" section of processed transactions' [metadata](transactions/metadata.md). |
+| `FIELDS`               | A sorted array of tuples representing all fields that may appear in transactions, ledger objects, or other data. The first member of each tuple is the string name of the field and the second member is an object with that field's properties. (See [Field properties](#field-properties) for definitions of those fields.) |
+| `TRANSACTION_RESULTS`  | Map of [transaction result codes](transactions/transaction-results/index.md) to their numeric values. Result types not included in ledgers have negative values; `tesSUCCESS` has numeric value 0; [`tec`-class codes](transactions/transaction-results/tec-codes.md) represent failures that are included in ledgers. |
+| `TRANSACTION_TYPES`    | Map of all [transaction types](transactions/types/index.md) to their numeric values. |
+| `TRANSACTION_FORMATS`  | Map of each [transaction type](transactions/types/index.md) to an array of objects describing that type's fields and whether each is required. (See [Format field objects](#format-field-objects) for the properties of each object.) {% badge href="https://github.com/XRPLF/rippled/releases/tag/3.2.0" %}New in: rippled 3.2.0{% /badge %} |
+| `LEDGER_ENTRY_FORMATS` | Map of each [ledger object type](ledger-data/ledger-entry-types/index.md) to an array of objects describing that type's fields and whether each is required. (See [Format field objects](#format-field-objects) for the properties of each object.) {% badge href="https://github.com/XRPLF/rippled/releases/tag/3.2.0" %}New in: rippled 3.2.0{% /badge %} |
+| `TRANSACTION_FLAGS`    | Map of each [transaction type](transactions/types/index.md) to an object mapping the names of its supported [transaction flags](transactions/common-fields.md#flags-field) to their numeric values. The `universal` entry lists the flags that apply to all transaction types. {% badge href="https://github.com/XRPLF/rippled/releases/tag/3.2.0" %}New in: rippled 3.2.0{% /badge %} |
+| `LEDGER_ENTRY_FLAGS`   | Map of each [ledger object type](ledger-data/ledger-entry-types/index.md) to an object mapping the names of that type's flags to their numeric values. {% badge href="https://github.com/XRPLF/rippled/releases/tag/3.2.0" %}New in: rippled 3.2.0{% /badge %} |
+| `ACCOUNT_SET_FLAGS`    | Map of [AccountSet flag](transactions/types/accountset.md#accountset-flags) (`asf`) names to their numeric values, for use in the `SetFlag` and `ClearFlag` fields of an [AccountSet transaction](transactions/types/accountset.md). {% badge href="https://github.com/XRPLF/rippled/releases/tag/3.2.0" %}New in: rippled 3.2.0{% /badge %} |
 
 For purposes of serializing transactions for signing and submitting, the `FIELDS`, `TYPES`, and `TRANSACTION_TYPES` fields are necessary.
+
+#### Field properties
 
 The field definition objects in the `FIELDS` array have the following fields:
 
@@ -89,6 +96,25 @@ The field definition objects in the `FIELDS` array have the following fields:
 | `isSerialized`   | Boolean | If `true`, this field should be encoded into serialized binary data. When this field is `false`, the field is typically reconstructed on demand rather than stored. |
 | `isSigningField` | Boolean | If `true` this field should be serialized when preparing a transaction for signing. If `false`, this field should be omitted from the data to be signed. (It may not be part of transactions at all.) |
 | `type`           | String  | The internal data type of this field. This maps to a key in the `TYPES` map, which gives the [type code](#type-codes) for this field. |
+
+#### Format field objects
+
+Each `TRANSACTION_FORMATS` and `LEDGER_ENTRY_FORMATS` array contains one entry per field specific to that transaction or ledger object type. Each entry has these properties:
+
+| Field         | Type   | Contents                                          |
+|:--------------|:-------|:--------------------------------------------------|
+| `name`        | String | The name of the field. This matches the field name in the `FIELDS` array. |
+| `optionality` | Number | A code indicating whether the field is required when creating this transaction or ledger object type. (See [Optionality values](#optionality-values) for the meaning of each value.) |
+
+#### Optionality values
+
+The `optionality` field uses the following values:
+
+| Value | Meaning                                                          |
+|:------|:----------------------------------------------------------------|
+| `0`   | **Required.** The field must be present.                        |
+| `1`   | **Optional.** The field may be omitted.                         |
+| `2`   | **Default.** The field is optional and can be omitted to use the default. If included, it must be set to a non-default value. |
 
 ### Field IDs
 
