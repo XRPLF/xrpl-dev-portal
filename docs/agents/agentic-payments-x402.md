@@ -278,11 +278,7 @@ X402 prices on the XRP Ledger are expressed in **drops** (the smallest unit of X
 | Standard data query | 1,000–10,000 drops | ~$0.0003–$0.003 |
 | Compute-intensive / AI inference | 10,000–100,000 drops | ~$0.003–$0.03 |
 
-For dollar-denominated pricing with price stability, RLUSD support in `x402-xrpl` is
-on the roadmap. Use XRP for all testnet development today.
-
-<!-- ⚠️ FOLLOW-UP: Confirm RLUSD support status in x402-xrpl and update this section
-when available. -->
+For dollar-denominated pricing with price stability, `x402-xrpl` supports RLUSD.
 
 ---
 
