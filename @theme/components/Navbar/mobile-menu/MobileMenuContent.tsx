@@ -7,6 +7,8 @@ export type MobileMenuKey = 'Develop' | 'Use Cases' | 'Community' | 'Network';
 interface MobileMenuContentProps {
   /** Which menu section to render */
   menuKey: MobileMenuKey;
+  /** Invoked when a child link is clicked — propagates up so the mobile menu closes on SPA navigation */
+  onClose?: () => void;
 }
 
 /** Get flattened menu items based on menu key */
@@ -27,13 +29,13 @@ function getMenuItems(menuKey: MobileMenuKey): (SubmenuItem | SubmenuItemWithChi
  * Unified Mobile Menu Content component.
  * Renders accordion content for any menu section.
  */
-export function MobileMenuContent({ menuKey }: MobileMenuContentProps) {
+export function MobileMenuContent({ menuKey, onClose }: MobileMenuContentProps) {
   const items = getMenuItems(menuKey);
 
   return (
     <div className="bds-mobile-menu__tier-list">
       {items.map((item) => (
-        <MobileMenuSection key={item.label} item={item} />
+        <MobileMenuSection key={item.label} item={item} onClose={onClose} />
       ))}
     </div>
   );

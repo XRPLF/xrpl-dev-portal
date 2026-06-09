@@ -149,19 +149,34 @@ export const CardOffgrid: React.FC<CardOffgridProps> = ({
     );
   }
 
-  // Render as button for onClick or disabled state
+  // Render as button when an onClick handler exists (or the card is disabled and
+  // needs to be visible as a disabled control).
+  if (onClick || disabled) {
+    return (
+      <button
+        type="button"
+        className={classNames}
+        onClick={disabled ? undefined : onClick}
+        disabled={disabled}
+        aria-disabled={disabled}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
+        {content}
+      </button>
+    );
+  }
+
+  // Static (non-interactive) card — no href, no onClick. Render a plain div so
+  // the card isn't focusable / announced as a control.
   return (
-    <button
-      type="button"
+    <div
       className={classNames}
-      onClick={disabled ? undefined : onClick}
-      disabled={disabled}
-      aria-disabled={disabled}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
       {content}
-    </button>
+    </div>
   );
 };
 

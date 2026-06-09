@@ -123,9 +123,15 @@ h6,
 
 // Navigation ------------------------------------------------------------------
 
-a:not(.bds-link):not(.bds-card-offgrid):not(.bds-card-icon):not(.bds-btn),
-nav a:not(.bds-link):not(.bds-card-offgrid):not(.bds-card-icon):not(.bds-btn),
-a:not([role="button"]):not(.bds-link):not(.bds-card-offgrid):not(.bds-card-icon):not(.bds-btn) {
+// `:where(:not(...))` wraps the exclusion chain at ZERO specificity so this
+// generic anchor styling can't override more specific component-level rules
+// (e.g. `.page-tutorials .page-toc.no-sideline li a:hover`). Without `:where()`,
+// each `:not()` adds to specificity, inflating to (0,6,2) and beating most
+// component rules. With `:where()` the selectors are (0,0,1) / (0,0,2), so
+// any page- or component-scoped class chain wins as expected.
+a:where(:not(.bds-link):not(.bds-card-offgrid):not(.bds-card-icon):not(.bds-btn)),
+nav a:where(:not(.bds-link):not(.bds-card-offgrid):not(.bds-card-icon):not(.bds-btn)),
+a:where(:not([role="button"]):not(.bds-link):not(.bds-card-offgrid):not(.bds-card-icon):not(.bds-btn)) {
   color: $light-fg;
 
   &.btn-primary {
@@ -143,7 +149,7 @@ a:not([role="button"]):not(.bds-link):not(.bds-card-offgrid):not(.bds-card-icon)
     color: $light-link-hover-color;
   }
 
-  &:not(.btn):not(.bds-text-card):focus {
+  &:where(:not(.btn):not(.bds-text-card)):focus {
     background-color: transparent;
   }
 }
@@ -1498,9 +1504,9 @@ main article .card-grid {
   }
 
   a.tx-title {
-    color: $blue-purple-600;
+    color: $blue-purple-500;
     &:visited {
-      color: $blue-purple-600;
+      color: $blue-purple-500;
     }
     &:hover, &:visited:hover {
       color: $light-link-hover-color

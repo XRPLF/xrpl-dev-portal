@@ -19,21 +19,21 @@ export function HomeComplianceDirectorySection() {
         description: translate(
           "Tokenization solutions that make it easy to bring financial markets on-chain and enable dynamic, transparent and efficient financing",
         ),
-        buttons: [{ label: translate("Find Out More"), href: "/tokenization" }],
+        buttons: [{ label: translate("Find Out More"), href: "/docs/use-cases/tokenization" }],
       },
       {
         heading: translate("Payments"),
         description: translate(
           "Simple APIs and built-in compliance and custody infrastructure for Fintechs and PSPs to integrate, launch and scale stablecoin payments",
         ),
-        buttons: [{ label: translate("Find Out More"), href: "/payments" }],
+        buttons: [{ label: translate("Find Out More"), href: "/docs/use-cases/payments" }],
       },
       {
-        heading: translate("Trading"),
+        heading: translate("Trading (Coming Soon)"),
         description: translate(
           "Built-in trading infrastructure that blends order book precision with AMM efficiency and gives institutions the efficiency they need, with the control they expect",
         ),
-        buttons: [{ label: translate("Find Out More"), href: "/trading" }],
+        // buttons: [{ label: translate("Find Out More"), href: "/docs/use-cases/trading" }],
       },
       {
         heading: translate("Lending (Coming Soon)"),

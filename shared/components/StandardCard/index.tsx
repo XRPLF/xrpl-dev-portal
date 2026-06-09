@@ -41,7 +41,7 @@ const StandardCard = forwardRef<HTMLElement, StandardCardProps>(
     const {
       headline,
       variant = "neutral",
-      callsToAction,
+      callsToAction = [],
       className,
       children,
       ...rest

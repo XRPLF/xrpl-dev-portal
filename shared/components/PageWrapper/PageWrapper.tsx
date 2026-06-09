@@ -1,7 +1,7 @@
 import React from "react";
 import clsx from "clsx";
 
-export type PageWrapperProps = React.HTMLAttributes<HTMLElement>;
+export type PageWrapperProps = React.HTMLAttributes<HTMLDivElement>;
 
 /**
  * PageWrapper
@@ -23,9 +23,9 @@ export type PageWrapperProps = React.HTMLAttributes<HTMLElement>;
  * it to retain that class's existing typography and base layout rules; the
  * new `.bds-page-wrapper` only contributes the section gap.
  */
-export const PageWrapper = React.forwardRef<HTMLElement, PageWrapperProps>(
+export const PageWrapper = React.forwardRef<HTMLDivElement, PageWrapperProps>(
   ({ className, ...rest }, ref) => (
-    <main ref={ref} className={clsx("bds-page-wrapper", className)} {...rest} />
+    <div ref={ref} className={clsx("bds-page-wrapper", className)} {...rest} />
   ),
 );
 

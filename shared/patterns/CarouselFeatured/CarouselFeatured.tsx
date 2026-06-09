@@ -1,13 +1,9 @@
-import React, { useState, useCallback, useMemo } from "react";
+import React, { useState, useCallback } from "react";
 import clsx from "clsx";
 import { CarouselButton } from "../../components/CarouselButton";
 import { Divider } from "../../components/Divider";
 import { PageGrid, PageGridRow, PageGridCol } from "../../components/PageGrid";
-import {
-  ButtonGroup,
-  ButtonConfig,
-  validateButtonGroup,
-} from "../ButtonGroup/ButtonGroup";
+import { ButtonGroup, ButtonConfig } from "../ButtonGroup/ButtonGroup";
 
 /**
  * Props for a single slide in the CarouselFeatured component
@@ -108,37 +104,16 @@ export const CarouselFeatured = React.forwardRef<
     }
   }, [canGoNext]);
 
-  // Early return for empty slides
-  if (slides.length === 0) {
-    console.warn("CarouselFeatured: No slides provided");
-    return null;
-  }
-
   // Determine carousel nav button variant based on background
   // grey/yellow → black (always), neutral → green (always)
   const buttonVariant = background === "neutral" ? "green" : "black";
   const currentSlide = slides[currentIndex];
 
-  const NavigationButtons = useMemo(() => {
-    return (
-      <div className="bds-carousel-featured__nav">
-        <CarouselButton
-          direction="prev"
-          variant={buttonVariant}
-          disabled={!canGoPrev}
-          onClick={goToPrev}
-          aria-label="Previous slide"
-        />
-        <CarouselButton
-          direction="next"
-          variant={buttonVariant}
-          disabled={!canGoNext}
-          onClick={goToNext}
-          aria-label="Next slide"
-        />
-      </div>
-    );
-  }, [buttonVariant, canGoPrev, canGoNext, goToPrev, goToNext]);
+  // Early return for empty slides
+  if (slides.length === 0) {
+    console.warn("CarouselFeatured: No slides provided");
+    return null;
+  }
 
   return (
     <PageGrid
@@ -162,11 +137,7 @@ export const CarouselFeatured = React.forwardRef<
           className="bds-carousel-featured__slide-track"
           style={{ transform: `translateX(-${currentIndex * 100}%)` }}
         >
-          {slides.map((slide, index) => {
-            const slideButtonValidation = validateButtonGroup(slide.buttons, 2);
-            const slideHasButtons = slideButtonValidation.hasButtons;
-
-            return (
+          {slides.map((slide, index) => (
               <div
                 key={slide.id}
                 className={clsx("bds-carousel-featured__slide", {
@@ -187,11 +158,6 @@ export const CarouselFeatured = React.forwardRef<
                         <h2 className="bds-carousel-featured__heading h-md">
                           {slide.heading}
                         </h2>
-                        {slides.length > 1 && (
-                          <div className="bds-carousel-featured__nav-buttons-placeholder">
-                            {NavigationButtons}
-                          </div>
-                        )}
                       </div>
 
                       {/* Bottom section: features + CTA grouped together */}
@@ -217,9 +183,10 @@ export const CarouselFeatured = React.forwardRef<
                         {/* CTA section with buttons */}
                         <div className="bds-carousel-featured__cta">
                           {/* Buttons wrapper - groups primary and tertiary together */}
-                          {slideHasButtons && (
+                          {slide.buttons && slide.buttons.length > 0 && (
                             <ButtonGroup
-                              buttons={slideButtonValidation.buttons}
+                              buttons={slide.buttons}
+                              maxButtons={2}
                               color="black"
                               forceColor={background !== "neutral"}
                               className="bds-carousel-featured__buttons"
@@ -246,8 +213,7 @@ export const CarouselFeatured = React.forwardRef<
                   </PageGridCol>
                 </PageGridRow>
               </div>
-            );
-          })}
+          ))}
         </div>
       </div>
 

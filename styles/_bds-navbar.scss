@@ -136,6 +136,7 @@ $bds-navbar-padding-mobile: 0 20px;
     gap: 24px;
     font-family: $font-family-sans-serif;
     font-weight: 400;
+    margin-bottom: 0;
 
     // Tablet - show nav items
     @include media-breakpoint-up(md) {
@@ -1234,7 +1235,7 @@ html.dark:has(.bds-navbar) {
     flex-direction: column;
     justify-content: flex-end;
     gap: 4px;
-    padding-bottom: 16px;
+    // padding-bottom: 16px;
     width: 100%;
     margin-top: auto;
   }
@@ -1284,11 +1285,12 @@ html.dark:has(.bds-navbar) {
     align-items: center;
     gap: 16px;
     color: $black;
-    text-decoration: none;
-    font-family: $font-family-sans-serif;
-    font-size: 16px;
-    font-weight: 400; // Regular weight by default
-    line-height: 23.2px;
+    // text-decoration: none;
+    // font-family: $font-family-sans-serif;
+    // font-size: 16px;
+    // font-weight: 400; // Regular weight by default
+    // line-height: 23.2px;
+    margin-bottom: 0;
     white-space: nowrap;
     transition: color 0.2s ease;
 

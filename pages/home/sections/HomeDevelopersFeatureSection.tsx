@@ -21,7 +21,7 @@ export function HomeDevelopersFeatureSection() {
       links={[
         {
           label: translate("Explore the Developer Hub"),
-          href: "/developers",
+          href: "/develop",
         },
       ]}
     />

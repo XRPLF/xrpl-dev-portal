@@ -3,7 +3,7 @@ $base-size: 1rem;
 body {
   // font-feature-settings: "liga", "kern";
   text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
+  -webkit-font-smoothing: auto;
 }
 
 pre, code {
@@ -11,10 +11,11 @@ pre, code {
   </ doesn't become a diagonal arrow. */
   font-feature-settings: "liga" 0;
   font-variant-ligatures: none;
+  font-family: $font-family-sans-serif;
 }
 
 .h1, .h2, .h3, .h4, .h5, .h6 {
-  font-family: $font-family-monospace;
+  font-family: $font-family-sans-serif;
   font-weight: 400;
 }
 

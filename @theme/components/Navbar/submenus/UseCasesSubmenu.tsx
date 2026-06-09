@@ -11,6 +11,6 @@ interface UseCasesSubmenuProps {
  * Wrapper for unified Submenu component with 'use-cases' variant.
  */
 export function UseCasesSubmenu({ isActive, isClosing, onClose }: UseCasesSubmenuProps) {
-  return <Submenu variant="use-cases" isActive={isActive} isClosing={isClosing} onClose={onClose} />;
+  return <Submenu id="bds-submenu-use-cases" variant="use-cases" isActive={isActive} isClosing={isClosing} onClose={onClose} />;
 }
 

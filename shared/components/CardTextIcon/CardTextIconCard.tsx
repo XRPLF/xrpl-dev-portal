@@ -10,6 +10,9 @@ export interface CardTextIconCardProps {
   iconAlt?: string;
   /** Card heading */
   heading: string;
+  /** Semantic heading element. Defaults to `'h3'` so cards enter the document outline.
+   *  Use a heading level that fits the page hierarchy (typically one below the section heading). */
+  headingAs?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
   /** Card description; accepts rich content (e.g., text with inline links) */
   description: React.ReactNode | string;
   /** Optional aspect ratio for future use; applied via CSS variable */
@@ -55,15 +58,18 @@ export interface CardTextIconCardProps {
  */
 const cardContent = (
   heading: string,
+  headingAs: NonNullable<CardTextIconCardProps['headingAs']>,
   description: React.ReactNode | string,
   icon?: string,
   iconAlt?: string,
   iconHeight?: number,
   iconWidth?: number
-) => (
+) => {
+  const HeadingElement = headingAs;
+  return (
   <>
     <div className="bds-card-text-icon-card__icon">
-      {icon && (  
+      {icon && (
       <img
         src={icon}
         alt={iconAlt}
@@ -72,18 +78,20 @@ const cardContent = (
         className="bds-card-text-icon-card__icon-img"
       />
       )}
-      <strong className="bds-card-text-icon-card__heading sh-md-r">{heading}</strong>
+      <HeadingElement className="bds-card-text-icon-card__heading sh-md-r">{heading}</HeadingElement>
     </div>
     <p className="bds-card-text-icon-card__description body-l">
       {description}
     </p>
   </>
-);
+  );
+};
 
 export const CardTextIconCard: React.FC<CardTextIconCardProps> = ({
   icon,
   iconAlt = '',
   heading,
+  headingAs = 'h3',
   description,
   aspectRatio,
   gridColSpan,
@@ -103,7 +111,7 @@ export const CardTextIconCard: React.FC<CardTextIconCardProps> = ({
         className={clsx('bds-card-text-icon-card', 'bds-card-text-icon-card--grid-col', className)}
         style={style}
       >
-        {cardContent(heading, description, icon, iconAlt, height, width)}
+        {cardContent(heading, headingAs, description, icon, iconAlt, height, width)}
       </PageGrid.Col>
     );
   }

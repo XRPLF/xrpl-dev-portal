@@ -15,9 +15,7 @@ import { alertBanner } from "./constants/navigation";
 export { AlertBanner } from "./components/AlertBanner";
 
 // Props interface for Navbar (extensible for future use)
-interface NavbarProps {
-  className?: string;
-}
+interface NavbarProps extends React.HTMLAttributes<HTMLElement> {}
 
 /**
  * Main Navbar Component.
@@ -28,12 +26,23 @@ interface NavbarProps {
  * - Control buttons (search, theme toggle, language)
  * - Mobile menu
  */
-export function Navbar(_props: NavbarProps = {}) {
+export function Navbar({
+  className,
+  onMouseLeave,
+  ...headerProps
+}: NavbarProps = {}) {
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
   const [activeSubmenu, setActiveSubmenu] = React.useState<string | null>(null);
   const [closingSubmenu, setClosingSubmenu] = React.useState<string | null>(null);
   const submenuTimeoutRef = React.useRef<NodeJS.Timeout | null>(null);
   const closingTimeoutRef = React.useRef<NodeJS.Timeout | null>(null);
+  // Mirror `activeSubmenu` in a ref so the (memoized) closeSubmenu callback
+  // can read the latest value without going stale and without triggering
+  // side-effects from inside a setState updater (which React may replay).
+  const activeSubmenuRef = React.useRef<string | null>(null);
+  React.useEffect(() => {
+    activeSubmenuRef.current = activeSubmenu;
+  }, [activeSubmenu]);
 
   // Use Redocly's search dialog hook - shared across navbar and mobile menu
   const { isOpen: isSearchOpen, onOpen: onSearchOpen, onClose: onSearchClose } = useSearchDialog();
@@ -61,44 +70,75 @@ export function Navbar(_props: NavbarProps = {}) {
     setActiveSubmenu(itemLabel);
   };
 
-  const handleSubmenuMouseLeave = () => {
-    submenuTimeoutRef.current = setTimeout(() => {
-      // Start closing animation
-      const currentSubmenu = activeSubmenu;
-      if (currentSubmenu) {
-        setClosingSubmenu(currentSubmenu);
-        setActiveSubmenu(null);
+  const closeSubmenu = React.useCallback(() => {
+    if (submenuTimeoutRef.current) {
+      clearTimeout(submenuTimeoutRef.current);
+      submenuTimeoutRef.current = null;
+    }
+    if (closingTimeoutRef.current) {
+      clearTimeout(closingTimeoutRef.current);
+      closingTimeoutRef.current = null;
+    }
 
-        // After animation completes (300ms), clear closing state
-        closingTimeoutRef.current = setTimeout(() => {
-          setClosingSubmenu(null);
-        }, 350); // Slightly longer than animation to ensure completion
-      }
+    // Snapshot the previously-active submenu so we can trigger its fade-out
+    // animation as a separate state update — keeps the setState updaters pure.
+    const previouslyActive = activeSubmenuRef.current;
+    setActiveSubmenu(null);
+    if (previouslyActive !== null) {
+      setClosingSubmenu(previouslyActive);
+    }
+
+    closingTimeoutRef.current = setTimeout(() => {
+      setClosingSubmenu(null);
+      closingTimeoutRef.current = null;
+    }, 350);
+  }, []);
+
+  const handleSubmenuMouseLeave = () => {
+    if (submenuTimeoutRef.current) {
+      clearTimeout(submenuTimeoutRef.current);
+      submenuTimeoutRef.current = null;
+    }
+    submenuTimeoutRef.current = setTimeout(() => {
+      submenuTimeoutRef.current = null;
+      closeSubmenu();
     }, 150);
   };
 
   const handleSubmenuClose = () => {
-    // Close submenu immediately (for keyboard navigation)
-    if (activeSubmenu) {
-      setClosingSubmenu(activeSubmenu);
-      setActiveSubmenu(null);
-
-      // After animation completes, clear closing state
-      closingTimeoutRef.current = setTimeout(() => {
-        setClosingSubmenu(null);
-      }, 350);
-    }
+    closeSubmenu();
   };
 
-  // Handle scroll lock when submenu is open or closing
+  // Handle scroll lock + inert page content while a submenu is open.
+  // `inert` prevents Tab from reaching links/buttons in the page behind the
+  // open submenu. Scoped to the page wrappers + footer so the navbar itself
+  // stays interactive. Cleared when the submenu fully closes (no closingSubmenu).
   React.useEffect(() => {
-    if (activeSubmenu || closingSubmenu) {
+    const isSubmenuVisible = Boolean(activeSubmenu || closingSubmenu);
+    const isFullyOpen = Boolean(activeSubmenu); // only inert while truly open, not during closing animation
+
+    if (isSubmenuVisible) {
       document.body.classList.add('bds-submenu-open');
     } else {
       document.body.classList.remove('bds-submenu-open');
     }
+
+    const inertTargets = document.querySelectorAll<HTMLElement>(
+      'main, .bds-page-wrapper, footer'
+    );
+    inertTargets.forEach((el) => {
+      if (isFullyOpen) {
+        el.setAttribute('inert', '');
+      } else {
+        el.removeAttribute('inert');
+      }
+    });
+
     return () => {
       document.body.classList.remove('bds-submenu-open');
+      document
+        .querySelectorAll<HTMLElement>('main, .bds-page-wrapper, footer')
+        .forEach((el) => el.removeAttribute('inert'));
     };
   }, [activeSubmenu, closingSubmenu]);
 
@@ -115,7 +155,8 @@ export function Navbar(_props: NavbarProps = {}) {
 
   const navbarClasses = [
     "bds-navbar",
-    alertBanner.show ? "bds-navbar--with-banner" : ""
+    alertBanner.show ? "bds-navbar--with-banner" : "",
+    className ?? ""
   ].filter(Boolean).join(" ");
 
   return (
@@ -124,17 +165,21 @@ export function Navbar(_props: NavbarProps = {}) {
       {/* Backdrop blur overlay when submenu is open or closing */}
       <div 
         className={`bds-submenu-backdrop ${activeSubmenu || closingSubmenu ? 'bds-submenu-backdrop--active' : ''}`}
-        onClick={() => setActiveSubmenu(null)}
+        onClick={closeSubmenu}
       />
       <header 
+        {...headerProps}
         className={navbarClasses}
-        onMouseLeave={handleSubmenuMouseLeave}
+        onMouseLeave={(event) => {
+          onMouseLeave?.(event);
+          handleSubmenuMouseLeave();
+        }}
       >
         <div className="bds-navbar__content">
           <NavLogo />
           <NavItems activeSubmenu={activeSubmenu} onSubmenuEnter={handleSubmenuMouseEnter} onSubmenuClose={handleSubmenuClose} />
           <NavControls onSearch={onSearchOpen} />
-          <HamburgerButton onClick={handleHamburgerClick} />
+          <HamburgerButton onClick={handleHamburgerClick} isOpen={mobileMenuOpen} />
         </div>
         {/* Submenus positioned relative to navbar */}
         <div onMouseEnter={() => activeSubmenu && handleSubmenuMouseEnter(activeSubmenu)}>

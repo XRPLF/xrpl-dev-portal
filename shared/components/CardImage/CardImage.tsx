@@ -27,6 +27,37 @@ export interface CardImageProps {
   backgroundColor?: string;
 }
 
+const CtaArrowIcon: React.FC = () => (
+  <svg
+    className="bds-btn__icon"
+    width="15"
+    height="14"
+    viewBox="0 0 15 14"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    aria-hidden="true"
+  >
+    <line
+      className="bds-btn__icon-line"
+      x1="0"
+      y1="7"
+      x2="14"
+      y2="7"
+      stroke="currentColor"
+      strokeWidth="1.3"
+      strokeMiterlimit="10"
+    />
+    <path
+      className="bds-btn__icon-chevron"
+      d="M8.16755 1.16743L14.0005 7.00038L8.16755 12.8333"
+      stroke="currentColor"
+      strokeWidth="1.3"
+      strokeMiterlimit="10"
+      fill="none"
+    />
+  </svg>
+);
+
 /**
  * BDS CardImage Component
  *
@@ -97,33 +128,31 @@ export const CardImage: React.FC<CardImageProps> = ({
     className
   );
 
-  // Handle card click for linked cards
-  const handleCardClick = useCallback(
-    (e: React.MouseEvent) => {
-      // If clicking the button directly, don't navigate via card
-      if ((e.target as HTMLElement).closest('.bds-btn')) {
-        return;
-      }
-      if (href && !disabled) {
-        window.location.href = href;
-      }
-    },
-    [href, disabled]
-  );
-
   // Handle button click
   const handleButtonClick = useCallback(() => {
-    if (href) {
-      window.location.href = href;
-    } else if (onClick) {
-      onClick();
-    }
-  }, [href, onClick]);
+    onClick?.();
+  }, [onClick]);
 
   // Build inline style for image container background color
   const imageContainerStyle = backgroundColor
     ? { '--bds-card-image-bg': backgroundColor } as React.CSSProperties
     : undefined;
+
+  const cta = href && !disabled ? (
+    <span className="bds-btn bds-btn--primary bds-btn--green">
+      <span className="bds-btn__label">{buttonLabel}</span>
+      <CtaArrowIcon />
+    </span>
+  ) : (
+    <Button
+      variant="primary"
+      color="green"
+      disabled={disabled}
+      onClick={handleButtonClick}
+    >
+      {buttonLabel}
+    </Button>
+  );
 
   // Common content structure
   const content = (
@@ -144,37 +173,30 @@ export const CardImage: React.FC<CardImageProps> = ({
           <p className="bds-card-image__subtitle body-l">{subtitle}</p>
         </div>
 
-        <Button
-          variant="primary"
-          color="green"
-          disabled={disabled}
-          onClick={handleButtonClick}
-        >
-          {buttonLabel}
-        </Button>
+        {cta}
       </div>
     </>
   );
 
-  // Render as clickable div (card itself handles navigation)
+  if (href && !disabled) {
+    return (
+      <a
+        href={href}
+        className={classNames}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        onClick={onClick ? () => onClick() : undefined}
+      >
+        {content}
+      </a>
+    );
+  }
+
   return (
     <div
       className={classNames}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      onClick={href ? handleCardClick : undefined}
-      role={href ? 'link' : undefined}
-      tabIndex={href && !disabled ? 0 : undefined}
-      onKeyDown={
-        href && !disabled
-          ? (e) => {
-              if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                window.location.href = href;
-              }
-            }
-          : undefined
-      }
       aria-disabled={disabled}
     >
       {content}

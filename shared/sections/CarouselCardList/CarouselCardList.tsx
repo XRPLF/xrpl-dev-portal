@@ -1,8 +1,10 @@
 import React, { useRef, useState, useCallback, useEffect } from 'react';
 import clsx from 'clsx';
+import { useThemeHooks } from '@redocly/theme/core/hooks';
 import { CardOffgrid, CardOffgridProps } from '../../components/CardOffgrid';
 import { CarouselButton } from '../../components/CarouselButton';
 import type { ButtonProps } from '../../components/Button';
+import { isEnvironment } from '../../utils';
 
 /**
  * Configuration for a single card in the CarouselCardList pattern
@@ -63,6 +65,8 @@ const getCardKey = (card: CarouselCardConfig, index: number): string | number =>
 export const CarouselCardList = React.forwardRef<HTMLElement, CarouselCardListProps>(
   (props, ref) => {
     const { variant = 'neutral', buttonVariant = 'neutral', heading, description, cards, className, ...rest } = props;
+    const { useTranslate } = useThemeHooks();
+    const { translate } = useTranslate();
 
     const scrollContainerRef = useRef<HTMLDivElement>(null);
     const [canScrollPrev, setCanScrollPrev] = useState(false);
@@ -114,7 +118,9 @@ export const CarouselCardList = React.forwardRef<HTMLElement, CarouselCardListPr
 
     // Early return for empty cards
     if (cards.length === 0) {
-      console.warn('CarouselCardList: No cards provided');
+      if (isEnvironment(['development', 'test'])) {
+        console.warn('CarouselCardList: No cards provided');
+      }
       return null;
     }
 
@@ -138,7 +144,7 @@ export const CarouselCardList = React.forwardRef<HTMLElement, CarouselCardListPr
                 variant={buttonVariant}
                 disabled={direction === 'prev' ? !canScrollPrev : !canScrollNext}
                 onClick={() => scroll(direction)}
-                aria-label={direction === 'prev' ? 'Previous cards' : 'Next cards'}
+                aria-label={translate(direction === 'prev' ? 'Previous cards' : 'Next cards')}
               />
             ))}
           </div>
@@ -150,7 +156,7 @@ export const CarouselCardList = React.forwardRef<HTMLElement, CarouselCardListPr
             ref={scrollContainerRef}
             className="bds-carousel-card-list__track"
             role="region"
-            aria-label="Card carousel"
+            aria-label={translate('Card carousel')}
             tabIndex={0}
           >
             {cards.map((card, index) => (

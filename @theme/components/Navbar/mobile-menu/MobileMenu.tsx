@@ -5,6 +5,7 @@ import { CloseIcon, ChevronIcon } from "../icons";
 import { xrpSymbolBlack, globeIcon, chevronDown, modeToggleIcon, searchIcon } from "../constants/icons";
 import { navItems } from "../constants/navigation";
 import { MobileMenuContent, type MobileMenuKey } from "./MobileMenuContent";
+import { MOBILE_MENU_ID } from "../controls/HamburgerButton";
 
 interface MobileMenuProps {
   isOpen: boolean;
@@ -56,13 +57,17 @@ export function MobileMenu({ isOpen, onClose, onSearch }: MobileMenuProps) {
     // All nav items with submenus use the unified MobileMenuContent
     const validKeys: MobileMenuKey[] = ['Develop', 'Use Cases', 'Community', 'Network'];
     if (validKeys.includes(label as MobileMenuKey)) {
-      return <MobileMenuContent menuKey={label as MobileMenuKey} />;
+      return <MobileMenuContent menuKey={label as MobileMenuKey} onClose={onClose} />;
     }
     return null;
   };
 
   return (
-    <div className={`bds-mobile-menu ${isOpen ? 'bds-mobile-menu--open' : ''}`}>
+    <div
+      id={MOBILE_MENU_ID}
+      className={`bds-mobile-menu ${isOpen ? 'bds-mobile-menu--open' : ''}`}
+      aria-hidden={!isOpen}
+    >
       {/* Header */}
       <div className="bds-mobile-menu__header">
         <BdsLink href="/" className="bds-navbar__logo" aria-label={translate("XRP Ledger Home")} onClick={onClose} variant="inline">
@@ -83,44 +88,35 @@ export function MobileMenu({ isOpen, onClose, onSearch }: MobileMenuProps) {
         <div className="bds-mobile-menu__accordion">
           {navItems.map((item) => (
             <React.Fragment key={item.label}>
-              <button
-                type="button"
-                className="bds-mobile-menu__accordion-header"
-                onClick={() => item.hasSubmenu ? toggleAccordion(item.label) : null}
-                aria-expanded={expandedItem === item.label}
-              >
-                {item.hasSubmenu ? (
-                  <>
-                    <span>{translate(item.labelTranslationKey, item.label)}</span>
-                    <ChevronIcon expanded={expandedItem === item.label} />
-                  </>
-                ) : (
-                  <BdsLink
-                    href={item.href}
-                    onClick={onClose}
-                    variant="inline"
-                    style={{ 
-                      display: 'flex', 
-                      width: '100%', 
-                      justifyContent: 'space-between',
-                      alignItems: 'center',
-                      color: 'inherit',
-                      textDecoration: 'none'
-                    }}
+              {item.hasSubmenu ? (
+                <>
+                  <button
+                    type="button"
+                    className="bds-mobile-menu__accordion-header"
+                    onClick={() => toggleAccordion(item.label)}
+                    aria-expanded={expandedItem === item.label}
                   >
                     <span>{translate(item.labelTranslationKey, item.label)}</span>
-                    <ChevronIcon expanded={false} />
-                  </BdsLink>
-                )}
-              </button>
-              {item.hasSubmenu && (
-                <div
-                  className={`bds-mobile-menu__accordion-content ${
-                    expandedItem === item.label ? 'bds-mobile-menu__accordion-content--expanded' : ''
-                  }`}
+                    <ChevronIcon expanded={expandedItem === item.label} />
+                  </button>
+                  <div
+                    className={`bds-mobile-menu__accordion-content ${
+                      expandedItem === item.label ? 'bds-mobile-menu__accordion-content--expanded' : ''
+                    }`}
+                  >
+                    {renderAccordionContent(item.label)}
+                  </div>
+                </>
+              ) : (
+                <BdsLink
+                  href={item.href}
+                  className="bds-mobile-menu__accordion-header"
+                  onClick={onClose}
+                  variant="inline"
                 >
-                  {renderAccordionContent(item.label)}
-                </div>
+                  <span>{translate(item.labelTranslationKey, item.label)}</span>
+                  <ChevronIcon expanded={false} />
+                </BdsLink>
               )}
             </React.Fragment>
           ))}

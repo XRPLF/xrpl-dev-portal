@@ -26,7 +26,7 @@ export function HomeBeginJourneySection() {
           "Follow step-by-step tutorials for frequent tasks.",
         ),
         callsToAction: [
-          { children: translate("Start Tutorials"), href: "/tutorials" },
+          { children: translate("Start Tutorials"), href: "/docs/tutorials" },
         ] as const,
       },
       {
@@ -37,7 +37,7 @@ export function HomeBeginJourneySection() {
         callsToAction: [
           {
             children: translate("Foundational Concepts"),
-            href: "/fundamentals",
+            href: "/docs/introduction",
           },
         ] as const,
       },
@@ -91,7 +91,7 @@ export function HomeBeginJourneySection() {
         callsToAction: [
           {
             children: translate("Built on the XRPL"),
-            href: "/showcase",
+            href: "/docs/use-cases",
           },
         ] as const,
       },
@@ -120,7 +120,7 @@ export function HomeBeginJourneySection() {
         callsToAction: [
           {
             children: translate("Learn Now"),
-            href: "/introduction",
+            href: "/docs/introduction",
           },
         ] as const,
       },

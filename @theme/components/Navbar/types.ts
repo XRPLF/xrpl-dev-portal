@@ -2,12 +2,14 @@
 
 export interface SubmenuChild {
   label: string;
+  labelTranslationKey?: string;
   href: string;
   active?: boolean;
 }
 
 export interface SubmenuItemBase {
   label: string;
+  labelTranslationKey?: string;
   href: string;
   icon: string;
 }
@@ -21,6 +23,7 @@ export type SubmenuItem = SubmenuItemBase | SubmenuItemWithChildren;
 // Network submenu section with decorative images
 export interface NetworkSubmenuSection {
   label: string;
+  labelTranslationKey?: string;
   href: string;
   icon: string;
   children: SubmenuChild[];

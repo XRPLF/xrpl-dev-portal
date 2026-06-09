@@ -72,6 +72,7 @@ export const LogoRectangleGrid: React.FC<LogoRectangleGridProps> = ({
   const classNames = clsx(
     'bds-logo-rectangle-grid',
     `bds-logo-rectangle-grid--${variant}`,
+    className,
   );
 
   // Memoize offset calculations - only recalculate when logos array changes

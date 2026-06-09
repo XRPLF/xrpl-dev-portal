@@ -9,6 +9,8 @@ import type { SubmenuItem, SubmenuItemWithChildren, NetworkSubmenuSection } from
 export type SubmenuVariant = 'develop' | 'use-cases' | 'community' | 'network';
 
 interface SubmenuProps {
+  /** Stable id used by nav trigger aria-controls */
+  id?: string;
   /** Which submenu variant to render */
   variant: SubmenuVariant;
   /** Whether this submenu is currently active (visible) */
@@ -66,7 +68,7 @@ function getNextNavItem(): HTMLElement | null {
  * Handles all submenu variants (develop, use-cases, community, network).
  * ARIA compliant with full keyboard navigation support.
  */
-export function Submenu({ variant, isActive, isClosing, onClose }: SubmenuProps) {
+export function Submenu({ id, variant, isActive, isClosing, onClose }: SubmenuProps) {
   const submenuRef = React.useRef<HTMLDivElement>(null);
 
   // Handle keyboard events for accessibility
@@ -125,7 +127,7 @@ export function Submenu({ variant, isActive, isClosing, onClose }: SubmenuProps)
 
   // Network submenu needs special handling for theme-aware patterns
   if (variant === 'network') {
-    return <NetworkSubmenuContent isActive={isActive} isClosing={isClosing} onClose={onClose} />;
+    return <NetworkSubmenuContent id={id} isActive={isActive} isClosing={isClosing} onClose={onClose} />;
   }
 
   const data = getSubmenuData(variant);
@@ -142,6 +144,7 @@ export function Submenu({ variant, isActive, isClosing, onClose }: SubmenuProps)
 
   return (
     <div
+      id={id}
       ref={submenuRef}
       className={classNames}
       role="menu"
@@ -162,7 +165,7 @@ export function Submenu({ variant, isActive, isClosing, onClose }: SubmenuProps)
 }
 
 /** Network submenu with pattern images (same for light and dark mode) */
-function NetworkSubmenuContent({ isActive, isClosing, onClose }: { isActive: boolean; isClosing: boolean; onClose?: () => void }) {
+function NetworkSubmenuContent({ id, isActive, isClosing, onClose }: { id?: string; isActive: boolean; isClosing: boolean; onClose?: () => void }) {
   const { useTranslate } = useThemeHooks();
   const { translate } = useTranslate();
 
@@ -234,15 +237,15 @@ function NetworkSubmenuContent({ isActive, isClosing, onClose }: { isActive: boo
   ].filter(Boolean).join(' ');
 
   return (
-    <div className={classNames} role="menu" aria-hidden={!isActive}>
+    <div id={id} className={classNames} role="menu" aria-hidden={!isActive}>
       {networkSubmenuData.map((section: NetworkSubmenuSection) => (
         <div key={section.label} className="bds-submenu__section">
           <a href={section.href} className="bds-submenu__tier1 bds-submenu__parent-link">
             <span className="bds-submenu__icon">
-              <img src={navIcons[section.icon]} alt={translate(section.label)} />
+              <img src={navIcons[section.icon]} alt="" />
             </span>
             <span className="bds-submenu__link bds-submenu__link--bold">
-              {translate(section.label)}
+              {translate(section.labelTranslationKey ?? section.label, section.label)}
               <span className="bds-submenu__arrow">
                 <ArrowIcon animated />
               </span>
@@ -254,11 +257,11 @@ function NetworkSubmenuContent({ isActive, isClosing, onClose }: { isActive: boo
                 <a
                   key={child.label}
                   href={child.href}
-                  className="bds-submenu__sublink"
+                  className="bds-submenu__sublink label-l"
                   target={child.href.startsWith('http') ? '_blank' : undefined}
                   rel={child.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                 >
-                  {translate(child.label)}
+                  {translate(child.labelTranslationKey ?? child.label, child.label)}
                   <span className="bds-submenu__sublink-arrow">
                     <ArrowIcon animated={false} />
                   </span>

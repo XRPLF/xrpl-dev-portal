@@ -11,6 +11,6 @@ interface DevelopSubmenuProps {
  * Wrapper for unified Submenu component with 'develop' variant.
  */
 export function DevelopSubmenu({ isActive, isClosing, onClose }: DevelopSubmenuProps) {
-  return <Submenu variant="develop" isActive={isActive} isClosing={isClosing} onClose={onClose} />;
+  return <Submenu id="bds-submenu-develop" variant="develop" isActive={isActive} isClosing={isClosing} onClose={onClose} />;
 }
 

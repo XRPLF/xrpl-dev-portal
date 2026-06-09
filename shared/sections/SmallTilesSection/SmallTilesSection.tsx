@@ -80,14 +80,6 @@ export const SmallTilesSection = forwardRef<
 
   const cardsCount = cards.length;
 
-  // Early return for empty cards array
-  if (cardsCount === 0) {
-    if (isEnvironment("development")) {
-      console.warn("SmallTilesSection: No cards provided");
-    }
-    return null;
-  }
-
   // Memoize spacer calculation
   const needsSpacer = useMemo(
     () => cardsCount <= SPACER_THRESHOLD,
@@ -135,6 +127,14 @@ export const SmallTilesSection = forwardRef<
       )),
     [cards, cardVariant]
   );
+
+  // Early return for empty cards array
+  if (cardsCount === 0) {
+    if (isEnvironment("development")) {
+      console.warn("SmallTilesSection: No cards provided");
+    }
+    return null;
+  }
 
   return (
     <section

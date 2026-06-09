@@ -71,6 +71,15 @@ $bds-card-image-transition-timing: $bds-transition-timing;
   background-color: $bds-card-image-bg;
   cursor: pointer;
 
+  // Suppress the default <a> underline (the card renders as an <a> when `href` is set)
+  // so the title/subtitle never pick up the global anchor hover underline.
+  &,
+  &:hover,
+  &:focus,
+  &:active {
+    text-decoration: none;
+  }
+
   // When inside a grid column, fill the column width
   .bds-grid__col & {
     flex: 1 1 auto;

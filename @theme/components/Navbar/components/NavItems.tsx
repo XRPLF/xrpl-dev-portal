@@ -9,6 +9,13 @@ interface NavItemsProps {
   onSubmenuClose?: () => void;
 }
 
+const submenuIdByLabel: Record<string, string> = {
+  Develop: "bds-submenu-develop",
+  "Use Cases": "bds-submenu-use-cases",
+  Community: "bds-submenu-community",
+  Network: "bds-submenu-network",
+};
+
 /**
  * Nav Items Component.
  * Centered navigation links with submenu support.
@@ -92,6 +99,7 @@ export function NavItems({ activeSubmenu, onSubmenuEnter, onSubmenuClose }: NavI
             onKeyDown={(e) => handleKeyDown(e, item.label)}
             aria-expanded={activeSubmenu === item.label}
             aria-haspopup="menu"
+            aria-controls={submenuIdByLabel[item.label]}
           >
             {translate(item.labelTranslationKey, item.label)}
           </button>

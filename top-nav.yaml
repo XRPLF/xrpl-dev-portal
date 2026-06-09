@@ -5,91 +5,54 @@
 #   link: https://github.com/ripple/xrpl-org-dev-portal
 
 # nav:
-- group: About
-  groupTranslationKey: navbar.about
-  items:
-    - group: XRP Ledger
-      groupTranslationKey: topnav.about.xrp-ledger
-      items:
-        - page: ./about/index.page.tsx
-          label: XRPL Overview
-          labelTranslationKey: topnav.about.xrpl-overview
-        - page: ./about/uses.page.tsx
-          label: Use Cases & Featured Projects
-          labelTranslationKey: topnav.about.use-cases-featured-projects
-        - page: ./about/history.page.tsx
-          label: History
-          labelTranslationKey: topnav.about.history
-    - group: XRP
-      groupTranslationKey: topnav.about.xrp
-      items:
-        - page: ./about/xrp.page.tsx
-          label: XRP Overview
-          labelTranslationKey: topnav.about.xrp-overview
-    - group: Sustainability
-      groupTranslationKey: topnav.about.sustainability
-      items:
-        - page: ./about/impact.page.tsx
-          label: Impact
-          labelTranslationKey: topnav.about.impact
-    - group: About
-      groupTranslationKey: topnav.about.about
-      items:
-        - label: XRPL Foundation
-          labelTranslationKey: topnav.about.xrpl-foundation
-          href: https://xrpl.foundation
-          external: true
-        - page: ./about/faq.md
-          label: FAQ
-          labelTranslationKey: topnav.about.faq
-        - page: ./about/privacy-policy.md
-          label: Privacy Policy
-          labelTranslationKey: topnav.about.privacy-policy
+# Mirrors @theme/components/Navbar/constants/navigation.ts (the BDS-2026
+# React navbar). Top-level items: Develop, Use Cases, Community, Network.
+# Each top-level item's submenu groups are flattened from the navigation.ts
+# left/right columns — the yaml renderer doesn't support the React navbar's
+# 2-column layout, but the same items and links are present.
 
-- group: Docs
-  groupTranslationKey: navbar.docs
+- group: Develop
+  groupTranslationKey: navbar.develop
   items:
     - icon: ./static/img/icons/docs.svg
-    # Note: arbitrary keys are dropped from these items, so the label & description are split on " || "
-      label: Documentation || Dive into XRP Ledger technology and start integrating.
-      labelTranslationKey: topnav.docs.title || topnav.docs.description
-      page: ./docs/index.page.tsx
-    - group: Article Types
-      groupTranslationKey: topnav.docs.article-types
+      label: Developer's Home || Your all-in-one blockchain developer portal.
+      labelTranslationKey: topnav.develop.title || topnav.develop.description
+      page: ./develop/index.page.tsx
+    - group: Get Started
+      groupTranslationKey: topnav.develop.get-started
       items:
-        - page: ./docs/concepts/index.md
-          label: Concepts
-          labelTranslationKey: topnav.docs.concepts
+        - label: XRPL Learning Portal
+          labelTranslationKey: topnav.develop.learn
+          href: https://learn.xrpl.org
+          external: true
+        - label: Code Samples
+          labelTranslationKey: topnav.develop.code-samples
+          href: /resources/code-samples
+    - group: Docs
+      groupTranslationKey: topnav.develop.docs
+      items:
+        - page: ./docs/index.page.tsx
+          label: Documentation
+          labelTranslationKey: topnav.develop.documentation
+        - page: ./docs/references/index.md
+          label: API Reference
+          labelTranslationKey: topnav.develop.api-reference
         - page: ./docs/tutorials/index.page.tsx
           label: Tutorials
-          labelTranslationKey: topnav.docs.tutorials
-        - page: ./docs/references/index.md
-          label: References
-          labelTranslationKey: topnav.docs.references
+          labelTranslationKey: topnav.develop.tutorials
+        - page: ./docs/concepts/index.md
+          label: Concepts
+          labelTranslationKey: topnav.develop.concepts
         - page: ./docs/infrastructure/index.md
           label: Infrastructure
-          labelTranslationKey: topnav.docs.infrastructure
-    - group: Use Cases
-      groupTranslationKey: topnav.docs.use-cases
-      items:
-        - page: ./docs/use-cases/payments/index.page.tsx
-          label: Payments
-          labelTranslationKey: topnav.docs.payments
-        - page: ./docs/use-cases/tokenization/index.page.tsx
-          label: Tokenization
-          labelTranslationKey: topnav.docs.tokenization
-        - page: ./docs/use-cases/defi/index.md
-          label: Decentralized Finance
-          labelTranslationKey: topnav.docs.defi
-    - group: Get Started
-      groupTranslationKey: topnav.docs.get-started
+          labelTranslationKey: topnav.develop.infrastructure
+    - group: Client Libraries
+      groupTranslationKey: topnav.develop.client-libraries
       items:
         - page: ./docs/tutorials/get-started/get-started-javascript.md
           label: JavaScript
         - page: ./docs/tutorials/get-started/get-started-python.md
           label: Python
-        - page: ./docs/tutorials/get-started/get-started-java.md
-          label: Java
         - page: ./docs/tutorials/get-started/get-started-php.md
           label: PHP
         - page: ./docs/tutorials/get-started/get-started-go.md
@@ -97,83 +60,128 @@
         - page: ./docs/tutorials/get-started/get-started-http-websocket-apis.md
           label: HTTP / WebSocket
 
-- group: Resources
-  groupTranslationKey: navbar.resources
+- group: Use Cases
+  groupTranslationKey: navbar.usecases
   items:
-    - group: Development
-      groupTranslationKey: topnav.resources.development
+    - group: Payments
+      groupTranslationKey: topnav.usecases.payments
       items:
-        - label: Code Samples
-          labelTranslationKey: topnav.resources.code-samples
-          href: /resources/code-samples
-        - page: ./resources/dev-tools/index.page.tsx
-          label: Dev Tools
-          labelTranslationKey: topnav.resources.dev-tools
-        - label: XRPL Learning Portal
-          labelTranslationKey: topnav.resources.xrpl-learning-portal
-          href: https://learn.xrpl.org/
-          external: true
-        - label: XRPL Brand Kit
-          labelTranslationKey: topnav.resources.xrpl-brand-kit
-          href: /XRPL_Brand_Kit.zip
-          external: true
-    - group: Current Status
-      groupTranslationKey: topnav.resources.current-status
+        - page: ./docs/use-cases/payments/index.page.tsx
+          label: Overview
+          labelTranslationKey: topnav.usecases.payments-overview
+        - label: Direct XRP Payments
+          labelTranslationKey: topnav.usecases.direct-xrp-payments
+          href: /docs/use-cases/payments/direct-xrp-payments
+        - label: Cross-currency Payments
+          labelTranslationKey: topnav.usecases.cross-currency-payments
+          href: /docs/use-cases/payments/cross-currency-payments
+        - label: Escrow
+          labelTranslationKey: topnav.usecases.escrow
+          href: /docs/use-cases/payments/escrow
+        - label: Checks
+          labelTranslationKey: topnav.usecases.checks
+          href: /docs/use-cases/payments/checks
+    - group: Tokenization
+      groupTranslationKey: topnav.usecases.tokenization
       items:
-        - label: Ledger Explorer
-          labelTranslationKey: topnav.resources.explorer
-          href: https://livenet.xrpl.org/
-          external: true
-        - label: Known Amendments
-          labelTranslationKey: topnav.resources.known-amendments
-          href: /resources/known-amendments
-    - group: Join In
-      groupTranslationKey: topnav.resources.join-in
+        - page: ./docs/use-cases/tokenization/index.page.tsx
+          label: Overview
+          labelTranslationKey: topnav.usecases.tokenization-overview
+        - label: Stablecoin
+          labelTranslationKey: topnav.usecases.stablecoin
+          href: /docs/use-cases/tokenization/stablecoin
+        - label: NFT
+          labelTranslationKey: topnav.usecases.nft
+          href: /docs/use-cases/tokenization/nft
+    - group: Credit
+      groupTranslationKey: topnav.usecases.credit
       items:
-        - label: Contribute Code
-          labelTranslationKey: topnav.resources.contribute-code
-          href: /resources/contribute-code
-        - label: Contribute Documentation
-          labelTranslationKey: topnav.resources.contribute-documentation
-          href: /resources/contribute-documentation
-        - label: Contribute Blog
-          labelTranslationKey: topnav.resources.contribute-blog
-          href: /resources/contribute-blog
+        - label: Overview
+          labelTranslationKey: topnav.usecases.credit-overview
+          href: /docs/use-cases/credit
+        - label: Lending
+          labelTranslationKey: topnav.usecases.lending
+          href: /docs/use-cases/credit/lending
+        - label: Collateralization
+          labelTranslationKey: topnav.usecases.collateralization
+          href: /docs/use-cases/credit/collateralization
+        - label: Sustainability
+          labelTranslationKey: topnav.usecases.sustainability
+          href: /docs/use-cases/credit/sustainability
+    - group: Trading
+      groupTranslationKey: topnav.usecases.trading
+      items:
+        - page: ./docs/use-cases/trading/index.page.tsx
+          label: Overview
+          labelTranslationKey: topnav.usecases.trading-overview
+        - label: DEX
+          labelTranslationKey: topnav.usecases.dex
+          href: /docs/use-cases/trading/dex
+        - label: Permissioned Trading
+          labelTranslationKey: topnav.usecases.permissioned-trading
+          href: /docs/use-cases/trading/permissioned-trading
+        - label: AMM
+          labelTranslationKey: topnav.usecases.amm
+          href: /docs/use-cases/trading/amm
 
 - group: Community
   groupTranslationKey: navbar.community
   items:
     - icon: ./static/img/icons/contribute.svg
-      label: Contribute to the XRPL Community || Join the conversation
+      label: Community || Join the conversation
       labelTranslationKey: topnav.community.title || topnav.community.description
-      href: /community/
-    - group: Get Involved
-      groupTranslationKey: topnav.community.get-involved
+      page: ./community/index.page.tsx
+    - group: Community
+      groupTranslationKey: topnav.community.community-group
       items:
-      - page: ./community/events.page.tsx
-        label: Events
-        labelTranslationKey: topnav.community.events
-      - page: ./community/ambassadors.page.tsx
-        label: Ambassadors
-        labelTranslationKey: topnav.community.ambassadors
-      - page: ./community/developer-funding.page.tsx
-        label: Developer Funding
-        labelTranslationKey: topnav.community.developer-funding
-      - label: XRPL Jobs
-        labelTranslationKey: topnav.community.xrpl-jobs
-        href: https://jobs.xrpl.org/
-        external: true
-      - label: Dev Blog
-        labelTranslationKey: topnav.community.dev-blog
-        href: /blog/
-      - label: XRPL Grants
-        labelTranslationKey: topnav.community.xrpl-grants
-        href: https://xrplgrants.org/
-        external: true
-      - label: GitHub
-        labelTranslationKey: topnav.community.github
-        href: https://github.com/XRPLF/
-        external: true
-      - page: ./community/report-a-scam.md
-        label: Report a Scam
-        labelTranslationKey: topnav.community.report-a-scam
+        - page: ./community/events.page.tsx
+          label: Events
+          labelTranslationKey: topnav.community.events
+        - label: Blog
+          labelTranslationKey: topnav.community.blog
+          href: /blog
+    - group: Funding
+      groupTranslationKey: topnav.community.funding
+      items:
+        - page: ./community/developer-funding.page.tsx
+          label: Developer Funding
+          labelTranslationKey: topnav.community.developer-funding
+    - group: Contribute
+      groupTranslationKey: topnav.community.contribute
+      items:
+        - label: Bug Bounty
+          labelTranslationKey: topnav.community.bug-bounty
+          href: /blog/2020/rippled-1.5.0#bug-bounties-and-responsible-disclosures
+        - label: Research
+          labelTranslationKey: topnav.community.research
+          href: https://xls.xrpl.org/
+          external: true
+    - group: Ecosystem
+      groupTranslationKey: topnav.community.ecosystem
+      items:
+        - page: ./about/uses.page.tsx
+          label: Ecosystem Map
+          labelTranslationKey: topnav.community.ecosystem-map
+
+- group: Network
+  groupTranslationKey: navbar.network
+  items:
+    - group: Resources
+      groupTranslationKey: topnav.network.resources
+      items:
+        - page: ./about/history.page.tsx
+          label: About
+          labelTranslationKey: topnav.network.about
+        - label: XRPL Brand Kit
+          labelTranslationKey: topnav.network.brand-kit
+          href: /community/brand-kit
+    - group: Insights
+      groupTranslationKey: topnav.network.insights
+      items:
+        - label: Explorer
+          labelTranslationKey: topnav.network.explorer
+          href: https://livenet.xrpl.org
+          external: true
+        - label: Amendment Voting Status
+          labelTranslationKey: topnav.network.amendments
+          href: /resources/known-amendments

@@ -1,5 +1,6 @@
 import React from "react";
 import clsx from "clsx";
+import { useThemeHooks } from "@redocly/theme/core/hooks";
 import { PageGrid } from "../../components/PageGrid/page-grid";
 import { SectionHeader } from 'shared/patterns/SectionHeader';
 import StandardCard, {
@@ -64,6 +65,8 @@ export const StandardCardGroupSection = React.forwardRef<
   StandardCardGroupSectionProps
 >((props, ref) => {
   const { headline, description, variant, cards, className, ...rest } = props;
+  const { useTranslate } = useThemeHooks();
+  const { translate } = useTranslate();
 
   // Early return for empty cards array
   if (cards.length === 0) {
@@ -87,8 +90,8 @@ export const StandardCardGroupSection = React.forwardRef<
           role="list"
           aria-label={
             typeof headline === "string"
-              ? `List of ${headline.toLowerCase()} items`
-              : "List of items"
+              ? `${translate("List of")} ${headline} ${translate("items")}`
+              : translate("List of items")
           }
           className="bds-standard-card-group-section__cards"
         >

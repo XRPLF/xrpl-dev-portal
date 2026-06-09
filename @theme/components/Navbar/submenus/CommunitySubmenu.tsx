@@ -11,6 +11,6 @@ interface CommunitySubmenuProps {
  * Wrapper for unified Submenu component with 'community' variant.
  */
 export function CommunitySubmenu({ isActive, isClosing, onClose }: CommunitySubmenuProps) {
-  return <Submenu variant="community" isActive={isActive} isClosing={isClosing} onClose={onClose} />;
+  return <Submenu id="bds-submenu-community" variant="community" isActive={isActive} isClosing={isClosing} onClose={onClose} />;
 }
 

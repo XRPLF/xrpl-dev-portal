@@ -28,10 +28,10 @@ export function SubmenuSection({ item, showChildren = true }: SubmenuSectionProp
     <div className="bds-submenu__section">
       <a href={item.href} className="bds-submenu__tier1 bds-submenu__parent-link">
         <span className="bds-submenu__icon">
-          <img src={navIcons[item.icon]} alt={translate(item.label)} />
+          <img src={navIcons[item.icon]} alt="" />
         </span>
         <span className="bds-submenu__link bds-submenu__link--bold">
-          {translate(item.label)}
+          {translate(item.labelTranslationKey ?? item.label, item.label)}
           <span className="bds-submenu__arrow">
             <ArrowIcon animated />
           </span>
@@ -43,11 +43,11 @@ export function SubmenuSection({ item, showChildren = true }: SubmenuSectionProp
             <a
               key={child.label}
               href={child.href}
-              className="bds-submenu__sublink"
+              className="bds-submenu__sublink label-l"
               target={child.href.startsWith('http') ? '_blank' : undefined}
               rel={child.href.startsWith('http') ? 'noopener noreferrer' : undefined}
             >
-              {translate(child.label)}
+              {translate(child.labelTranslationKey ?? child.label, child.label)}
               <span className="bds-submenu__sublink-arrow">
                 <ArrowIcon animated={false} />
               </span>

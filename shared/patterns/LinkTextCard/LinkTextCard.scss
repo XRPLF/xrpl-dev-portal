@@ -159,6 +159,18 @@ $bds-link-text-card-content-width-md: calc(75% - 2px);
     color: $bds-link-text-card-number-color;
   }
 
+  a {
+    color: $lilac-400;
+    text-decoration: underline;
+    &:hover {
+      color: $lilac-500;
+      text-decoration: underline;
+    }
+    &:active {
+      color: $lilac-400;
+    }
+  }
+
   @include bds-theme-mode(dark) {
     color: $white;
     p {
@@ -168,6 +180,15 @@ $bds-link-text-card-content-width-md: calc(75% - 2px);
     & li::marker {
       content: $bds-link-text-card-list-marker-symbol;
       color: $white;
+    }
+    a {
+      color: $lilac-300;
+      &:hover {
+        color: $lilac-400;
+      }
+      &:active {
+        color: $lilac-300;
+      }
     }
   }
 }

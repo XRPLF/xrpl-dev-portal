@@ -91,6 +91,26 @@ export default function Community() {
               },
             ],
           },
+          {
+            heading: translate("Report a Vulnerability"),
+            description: (
+              <>
+                {translate(
+                  "Found a security issue in rippled or another core XRPL project? Disclose it confidentially via email — encrypted with our "
+                )}
+                <a href="https://ripple.com/files/bug-bounty.asc">
+                  {translate("PGP public key")}
+                </a>
+                .
+              </>
+            ),
+            buttons: [
+              {
+                label: translate("Email Security Team"),
+                href: "mailto:bugs@ripple.com",
+              },
+            ],
+          },
         ]}
       />
 

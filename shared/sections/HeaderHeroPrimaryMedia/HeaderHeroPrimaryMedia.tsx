@@ -124,14 +124,6 @@ const HeaderHeroPrimaryMedia = forwardRef<
     isEnvironment(["development", "test"]),
   );
 
-  // Headline is critical - exit early if missing
-  if (!headline) {
-    if (isEnvironment("development")) {
-      console.error("Headline is required for HeaderHeroPrimaryMedia");
-    }
-    return null;
-  }
-
   // Validate other props and log warnings for missing optional/required fields
   // Note: These props log warnings but don't prevent rendering
   useEffect(() => {
@@ -151,6 +143,14 @@ const HeaderHeroPrimaryMedia = forwardRef<
       }
     });
   }, [subtitle, links, media]);
+
+  // Headline is critical - exit early if missing
+  if (!headline) {
+    if (isEnvironment("development")) {
+      console.error("Headline is required for HeaderHeroPrimaryMedia");
+    }
+    return null;
+  }
 
   return (
     <header

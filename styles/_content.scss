@@ -4,6 +4,13 @@
   padding-bottom: 50px;
   border-bottom: 1px solid $gray-400;
 
+  p code,
+  table code,
+  li > code {
+    background-color: $green-500;
+    color: $green-200;
+  }
+
   a {
     text-decoration: underline;
   }

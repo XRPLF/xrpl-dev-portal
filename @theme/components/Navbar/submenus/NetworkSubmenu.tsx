@@ -11,6 +11,6 @@ interface NetworkSubmenuProps {
  * Wrapper for unified Submenu component with 'network' variant.
  */
 export function NetworkSubmenu({ isActive, isClosing, onClose }: NetworkSubmenuProps) {
-  return <Submenu variant="network" isActive={isActive} isClosing={isClosing} onClose={onClose} />;
+  return <Submenu id="bds-submenu-network" variant="network" isActive={isActive} isClosing={isClosing} onClose={onClose} />;
 }
 

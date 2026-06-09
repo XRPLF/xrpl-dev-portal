@@ -88,7 +88,7 @@ export default function Funding() {
       buttons: [
         {
           label: translate("Access Now"),
-          href: "https://xrpl.org/community/ambassadors",
+          href: "/community/developer-funding",
         },
       ],
       imageSrc: require("../static/img/bds-2026/community-developer-funding-carousel-2.jpg"),
