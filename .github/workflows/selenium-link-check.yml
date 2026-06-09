@@ -1,10 +1,12 @@
 name: Selenium link check
 
 on:
-  pull_request:
-    branches: [master]
+  ## Currently too slow to run on PRs — eventually, we should have it run
+  ## on just the changed files in a PR.
+  # pull_request:
+  #   branches: [master]
   schedule:
-    - cron: '0 8 * * 0'    # Sundays 00:00 PST / 01:00 PDT — warms master cache for the week
+    - cron: '0 8 * * 0'    # Sundays 00:00 PST / 01:00 PDT
   workflow_dispatch:
 
 concurrency:
