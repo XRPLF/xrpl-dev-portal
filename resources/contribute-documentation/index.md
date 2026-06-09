@@ -141,6 +141,7 @@ Use the following words and phrases as described:
 | Term              | Terms to Avoid | Notes |
 |-------------------|----------------|-------|
 | API, APIs         | API's, RPC | Application Programming Interface, a set of functions and definitions for software to connect to other software. |
+| blackhole, blackholed, blackholing | black hole, black-hole | An account is blackholed when its signing authority has been permanently and verifiably removed, so that no one can ever send transactions from it again. Always one word. |
 | core server, core XRP Ledger server | `rippled` | The `rippled` name is probably going to be retired in the near future, so it's better to refer to it by the more generic name. When necessary, refer to `rippled` in all lowercase and code font. (It's pronounced "ripple dee", and the "d" stands for "daemon" per UNIX tradition.)
 | financial institution | bank, FI, PSP (payment services provider) | This term encompasses a wider range of businesses than just _bank_ or other terms and does not rely on an understanding of industry jargon. |
 | ledger entry      | ledger object, node | A single object inside the state data of the XRP Ledger. The term _ledger object_ could refer to one of these or to the whole ledger. The term _node_ was sometimes used for this case because the ledger's state data can be envisioned as a graph, but this is confusing because _node_ has other uses. |
@@ -230,6 +231,38 @@ navigation:
     hide: true
 ---
 ```
+
+### status Field
+
+You can add the following field to the frontmatter to mark a page as relating to a feature that's not currently available on the XRP Ledger Mainnet (typically, requiring an amendment that's open for voting):
+
+```
+status: not_enabled
+```
+
+This causes a yellow flask icon (like this: {% not-enabled /%}) to display next to the page title in some tables of contents, with a tooltip (when a desktop user hovers their mouse over it) with text explaining that the feature is not available yet.
+
+Only use this if the whole page refers to such a feature, not just a sub-section. And, of course, when the feature becomes enabled, you need to manually remove this field.
+
+### Transaction Types Reference Fields
+
+The [Transaction Types Reference](/docs/references/protocol/transactions/types/) uses a custom Markdoc component to list groups of transactions; this component relies on the pages' frontmatter to control how it displays the transactions. An example of fields in the correct format:
+
+```yaml
+labels:
+    - Payment Channels
+    - Payments
+requiredAmendment: PayChan
+txIcon: finish
+```
+
+See the [`{% tx-category ... %}` markdoc tag](./markdoc-tags.md#tx-category) for details.
+
+### Labels
+
+The `labels` frontmatter field contains a list of labels for the contents of the page. These are currently only used by the blog and the Transaction Types reference page to display pages matching specific categories. In the past these were also used for navigation across broader categories, which may eventually be implemented again someday, so you can add arbitrary labels per page as metadata.
+
+Translated pages should use the English versions of the labels. (In the past, this was not the case, so many legacy pages currently have translated label names.)
 
 ## Graphics
 

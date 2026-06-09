@@ -1,8 +1,8 @@
-import * as React from 'react';
+// Loading animation component used in various custom pages.
 
 export interface XRPLoaderProps {
     message?: string
-    show: boolean
+    show?: boolean
 }
 
 export default function XRPLoader(props: XRPLoaderProps) {

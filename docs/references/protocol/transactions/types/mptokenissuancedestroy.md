@@ -3,6 +3,9 @@ seo:
     description: Delete a Multi-Purpose Token definition.
 labels:
     - Multi-purpose Tokens, MPTs
+    - Tokens
+requiredAmendment: MPTokensV1
+txIcon: cancel
 ---
 # MPTokenIssuanceDestroy
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/MPTokenIssuanceDestroy.cpp "Source")

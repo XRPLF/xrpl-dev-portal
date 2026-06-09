@@ -2,15 +2,17 @@
 seo:
     description: 既存の価格オラクルを削除します。
 labels:
-  - オラクル
+    - Oracle
+    - Decentralized Storage
+requiredAmendment: PriceOracle
+txIcon: cancel
 ---
 # OracleDelete
-_([PriceOracle Amendment][])_
-
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/DeleteOracle.cpp "ソース")
 
 既存の`Oracle`レジャーエントリを削除します。
 
+{% amendment-disclaimer name="PriceOracle" /%}
 
 ## OracleDeleteのJSONの例
 

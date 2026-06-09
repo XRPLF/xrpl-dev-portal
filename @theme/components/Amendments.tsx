@@ -1,3 +1,5 @@
+// Components related to XRPL Amendment previews and statuses
+
 import * as React from 'react'
 import { Link } from '@redocly/theme/components/Link/Link'
 import { useThemeHooks } from '@redocly/theme/core/hooks'

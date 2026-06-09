@@ -3,7 +3,9 @@ seo:
     description: Provide an attestation that an XChainCommit transaction occurred on another chain, for a cross-chain bridge.
 labels:
     - Interoperability
+requiredAmendment: XChainBridge
 status: not_enabled
+txIcon: modify
 ---
 # XChainAddClaimAttestation
 [[Source]](https://github.com/XRPLF/rippled/blob/70d5c624e8cf732a362335642b2f5125ce4b43c1/src/xrpld/app/tx/detail/XChainBridge.h#L169 "Source")

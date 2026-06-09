@@ -1,16 +1,15 @@
 ---
-html: offercancel.html
-parent: transaction-types.html
 seo:
-    description: XRP LedgerからOfferオブジェクトを削除します。
+    description: 分散型取引所からオファーを削除します。
 labels:
-  - 分散型取引所
+    - DEX
+txIcon: cancel
 ---
 # OfferCancel
 
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/CancelOffer.cpp "Source")
 
-OfferCancelトランザクションは、XRP LedgerからOfferオブジェクトを削除します。
+[分散型取引所](../../../../concepts/tokens/decentralized-exchange/index.md)からオファーを削除します。
 
 ## {% $frontmatter.seo.title %}のJSONの例
 

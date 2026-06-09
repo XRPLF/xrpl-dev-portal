@@ -21,7 +21,6 @@ The following is a list of [amendments](../docs/concepts/networks-and-servers/am
 
 | Name                              | Status                                    | Additional Information         |
 |:----------------------------------|:------------------------------------------|:-------------------------------|
-| [Hooks][]                         | {% badge %}In Development: TBD{% /badge %} | [XRPL Hooks](https://hooks.xrpl.org/) |
 | [InvariantsV1_1][]                | {% badge %}In Development: TBD{% /badge %} |  |
 | [DynamicMPT][]                    | {% badge %}In Development: TBD{% /badge %} | [XLS-94 Dynamic MPTs](https://opensource.ripple.com/docs/xls-94-dynamic-mpts) |
 | [ConfidentialTransfer][]          | {% badge %}In Development: TBD{% /badge %} | [XLS-96 Confidential Transfers](https://opensource.ripple.com/docs/xls-96-confidential-transfers) |
@@ -813,6 +812,26 @@ Changes the way Checks transactions affect account metadata, so that Checks are 
 Without this amendment, Checks transactions ([CheckCreate][], [CheckCash][], and [CheckCancel][]) only update the account history of the sender. With this amendment, those transactions affect both the sending and receiving accounts. This amendment has no effect unless the [Checks amendment](#checks) is also enabled.
 
 
+### fixCleanup3_1_3
+[fixCleanup3_1_3]: fixcleanup3_1_3
+
+| Amendment    | fixCleanup3_1_3 |
+|:-------------|:----------------|
+| Amendment ID | 303ACB16CF8DBD3B5C34F131A9D19A7DE01AE05F480A8A682B869D1B4AAC8CFC |
+| Status       | Open for Voting |
+| Default Vote (Latest stable release) | Yes |
+| Pre-amendment functionality retired? | No  |
+
+This amendment is a collection of fixes for NFTs, Permissioned Domains, Vaults, and the Lending Protocol:
+
+- Fixes an issue with expired `NFTokenOffer` entries remaining on the ledger. With this amendment enabled, using the `NFTokenAcceptOffer` transaction on an expired `NFTokenOffer` now deletes it as part of transaction processing.
+- Adds an invariant check to ensure Permissioned Domains aren't modified by failed transactions.
+- Fixes a trust line token limit check that was skipped when withdrawing vault assets. With this amendment enabled, `VaultWithdraw` transactions that specify either vault shares or vault assets will respect the trust line token limit of the destination address.
+- Fixes loan accounting information not updating in its associated `Loan`, `LoanBroker`, and `Vault` entries if the loan was defaulted, impaired, or unimpaired. 
+- Changes a `LoanPay` error to return `tecNO_PERMISSION` instead of `temINVALID_FLAG` when attempting to overpay on a loan that doesn't permit overpayments.
+- Adds an additional check for `LoanBroker` invariants to ensure the listed `CoverAvailable` exactly matches the assets held in the associated pseudo-account.
+
+
 ### fixDirectoryLimit
 [fixDirectoryLimit]: #fixdirectorylimit
 
@@ -1023,7 +1042,7 @@ Adds flag checks for `CredentialCreate`, `CredentialAccept`, `CredentialDelete`,
 
 Fixes a bug where accounts can set their regular key pair to match their master key pair, but cannot send transactions signed by the key if the master key is disabled.
 
-Without this fix, a user can unintentionally "black hole" their account by setting the regular key to match the master key, then disabling the master key. The network rejects transactions signed with the both-master-and-regular key pair because the code interprets them as being signed with the disabled master key before it recognizes that they are signed by the currently-enabled regular key.
+Without this fix, a user can unintentionally [blackhole](../docs/concepts/accounts/blackholed-accounts.md) their account by setting the regular key to match the master key, then disabling the master key. The network rejects transactions signed with the both-master-and-regular key pair because the code interprets them as being signed with the disabled master key before it recognizes that they are signed by the currently-enabled regular key.
 
 With this amendment enabled, a SetRegularKey transaction cannot set the regular key to match the master key; such a transaction results in the transaction code `temBAD_REGKEY`. Additionally, this amendment changes the signature verification code so that accounts which _already_ have their regular key set to match their master key can send transactions successfully using the key pair.
 
@@ -1475,19 +1494,6 @@ This is a previous version of the [Flow](#flow) amendment. It was [rejected due 
 | Pre-amendment functionality retired? | No |
 
 Allows validators to include a new optional field in their validations to attest to the hash of the latest ledger that the validator considers to be fully validated. The consensus process can use this information to increase the robustness of consensus.
-
-
-### Hooks
-[Hooks]: #hooks
-
-| Amendment    | Hooks |
-|:-------------|:------|
-| Amendment ID | ECE6819DBA5DB528F1A241695F5A9811EF99467CDE22510954FD357780BBD078 |
-| Status       | In Development |
-| Default Vote (Latest stable release) | No |
-| Pre-amendment functionality retired? | No |
-
-Adds on-chain smart contracts in the form of small pieces of code that can run on an account before or after transactions. For more information, see the [Hooks Documentation](https://xrpl-hooks.readme.io/).
 
 
 ### ImmediateOfferKilled

@@ -2,15 +2,18 @@
 seo:
     description: 許可型ドメインのレジャーエントリを削除する
 labels:
-  - コンプライアンス
-  - 許可型ドメイン
+    - Compliance
+    - Permissioned Domains
+    - Decentralized Storage
+requiredAmendment: PermissionedDomains
+txIcon: cancel
 ---
 # PermissionedDomainDelete
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/PermissionedDomainDelete.cpp "ソース")
 
 所有する[許可型ドメイン][]を削除します。
 
-_([PermissionedDomains amendment][]が必要です {% not-enabled /%})_
+{% amendment-disclaimer name="PermissionedDomains" /%}
 
 ## {% $frontmatter.seo.title %}のJSONの例
 

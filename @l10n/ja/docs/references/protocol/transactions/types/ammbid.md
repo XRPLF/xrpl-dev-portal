@@ -1,10 +1,11 @@
 ---
-html: ammbid.html
-parent: transaction-types.html
 seo:
     description: 自動マーケットメーカーのオークションスロットに入札することで、手数料の割引を受けることができます。
 labels:
-  - AMM
+    - AMM
+    - DEX
+requiredAmendment: AMM
+txIcon: modify
 ---
 # AMMBid
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/AMMBid.cpp "Source")

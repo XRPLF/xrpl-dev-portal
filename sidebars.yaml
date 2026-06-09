@@ -164,6 +164,7 @@
             - page: docs/concepts/accounts/account-types.md
             - page: docs/concepts/accounts/configuring-accounts.md
             - page: docs/concepts/accounts/deleting-accounts.md
+            - page: docs/concepts/accounts/blackholed-accounts.md
             - page: docs/concepts/accounts/reserves.md
             - page: docs/concepts/accounts/addresses.md
             - page: docs/concepts/accounts/cryptographic-keys.md
@@ -220,7 +221,7 @@
                 - page: docs/tutorials/defi/dex/create-an-automated-market-maker.md
                 - page: docs/tutorials/defi/dex/add-assets-to-amm-in-javascript.md
                 - page: docs/tutorials/defi/dex/trade-in-the-decentralized-exchange.md
-                - page: docs/tutorials/defi/dex/trade-with-auction-slot-in-javascript.md
+                - page: docs/tutorials/defi/dex/use-amm-auction-slot-for-lower-fees.md
             - group: Set Up Lending
               groupTranslationKey: sidebar.docs.tutorials.defi.setUpLending
               expanded: false
@@ -297,6 +298,7 @@
           expanded: false
           items:
             - page: docs/tutorials/compliance-features/require-destination-tags.md
+            - page: docs/tutorials/compliance-features/manage-credentials.md
             - page: docs/tutorials/compliance-features/verify-credentials.md
             - page: docs/tutorials/compliance-features/create-permissioned-domains-in-javascript.md
         - group: Programmability
@@ -751,6 +753,7 @@
       page: resources/dev-tools/index.page.tsx
       expanded: false
       items:
+        - page: resources/dev-tools/ai-tools.md
         - label: RPC Tool
           labelTranslationKey: sidebar.resources.dev-tools.rpc-tool
           page: resources/dev-tools/rpc-tool.page.tsx

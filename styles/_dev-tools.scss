@@ -86,3 +86,19 @@
 .form-text a {
   text-decoration: underline;
 }
+
+.page-faucet {
+  input:invalid {
+    box-shadow: inset 0 0 5px 5px $danger;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+    line-height: 1;
+    margin-top: 1.5rem;
+  }
+
+  .right-sidebar .quick-ref-card {
+    margin-left: 0;
+  }
+}

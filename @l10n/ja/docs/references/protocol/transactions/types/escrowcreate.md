@@ -3,6 +3,9 @@ seo:
     description: Escrowプロセスが終了または取り消されるまでXRPを隔離します。
 labels:
     - Escrow
+    - Payments
+requiredAmendment: Escrow
+txIcon: create
 ---
 # EscrowCreate
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/Escrow.cpp "Source")

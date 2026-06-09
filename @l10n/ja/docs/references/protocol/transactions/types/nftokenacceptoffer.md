@@ -2,7 +2,11 @@
 seo:
     description: NFTokenの購入または売却のオファーを受け入れる。
 labels:
-  - NFT, 非代替性トークン
+    - Non-fungible Tokens, NFTs
+    - Tokens
+    - DEX
+requiredAmendment: NonFungibleTokensV1_1
+txIcon: finish
 ---
 # NFTokenAcceptOffer
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/NFTokenAcceptOffer.cpp "ソース")

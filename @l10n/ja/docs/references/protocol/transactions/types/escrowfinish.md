@@ -3,6 +3,9 @@ seo:
     description: エスクローされたXRPを受取人へ送金します。
 labels:
     - Escrow
+    - Payments
+requiredAmendment: Escrow
+txIcon: finish
 ---
 # EscrowFinish
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/Escrow.cpp "Source")

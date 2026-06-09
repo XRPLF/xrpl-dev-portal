@@ -8,14 +8,14 @@ import submitTransaction from '../helpers/submit-transaction';
 renderXrplLogo();
 
  // Get the client from the environment variables
-const client = new Client(process.env.CLIENT);
+const client = new Client(import.meta.env.VITE_CLIENT);
 
 // Self-invoking function to connect to the client
 (async () => {
     try {
         await client.connect();
         
-        const wallet = Wallet.fromSeed(process.env.SEED);
+        const wallet = Wallet.fromSeed(import.meta.env.VITE_SEED);
 
         // Subscribe to account transaction stream
         await client.request({

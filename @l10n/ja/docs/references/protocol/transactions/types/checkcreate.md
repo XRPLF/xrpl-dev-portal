@@ -1,17 +1,18 @@
 ---
-html: checkcreate.html
-parent: transaction-types.html
 seo:
     description: レジャーにCheckオブジェクトを作成します
 labels:
-  - Checks
+    - Checks
+    - Payments
+requiredAmendment: Checks
+txIcon: create
 ---
 # CheckCreate
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/CreateCheck.cpp "Source")
 
 レジャーにCheckオブジェクトを作成します。これにより指定の送金先は後日換金することができます。このトランザクションの送信者はCheckの送金元です。
 
-_（[Checks Amendment][]が必要です）_
+{% amendment-disclaimer name="Checks" /%}
 
 ## {% $frontmatter.seo.title %} JSONの例
 

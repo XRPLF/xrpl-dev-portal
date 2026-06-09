@@ -22,7 +22,7 @@ Every [ledger version](../../../concepts/ledgers/index.md) has a unique header t
 | `close_time_resolution`       | Number    | Uint8             | An integer in the range \[2,120\] indicating the maximum number of seconds by which the `close_time` could be rounded. |
 | `closed`                      | Boolean   | Boolean           | If `true`, this ledger version is no longer accepting new transactions. (However, unless this ledger version is validated, it might be replaced by a different ledger version with a different set of transactions.) |
 | `parent_hash`                 | String    | UInt256           | The `ledger_hash` value of the previous ledger version that is the direct predecessor of this one. If there are different versions of the previous ledger index, this indicates from which one the ledger was derived. |
-| `total_coins`                 | String    | UInt64            | The total number of [drops of XRP][] owned by accounts in the ledger. This omits XRP that has been destroyed by transaction fees. The actual amount of XRP in circulation is lower because some accounts are "black holes" whose keys are not known by anyone. |
+| `total_coins`                 | String    | UInt64            | The total number of [drops of XRP][] owned by accounts in the ledger. This omits XRP that has been destroyed by transaction fees. The actual amount of XRP in circulation is lower because some accounts are [blackholes](../../../concepts/accounts/blackholed-accounts.md) whose keys are not known by anyone. |
 | `transaction_hash`            | String    | UInt256           | The [SHA-512Half][] of the transactions included in this ledger. |
 
 

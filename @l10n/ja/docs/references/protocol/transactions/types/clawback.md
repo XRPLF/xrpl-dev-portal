@@ -2,7 +2,9 @@
 seo:
     description: 発行したトークンを取り戻します。
 labels:
-  - トークン
+    - Tokens
+requiredAmendment: Clawback
+txIcon: cancel
 ---
 # Clawback
 

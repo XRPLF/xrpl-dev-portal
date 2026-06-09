@@ -4,7 +4,9 @@ seo:
 labels:
     - Compliance
     - Permissioned Domains
-status: not_enabled
+    - Decentralized Storage
+requiredAmendment: PermissionedDomains
+txIcon: cancel
 ---
 # PermissionedDomainDelete
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/PermissionedDomainDelete.cpp "Source")

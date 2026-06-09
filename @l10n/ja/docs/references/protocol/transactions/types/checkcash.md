@@ -1,10 +1,11 @@
 ---
-html: checkcash.html
-parent: transaction-types.html
 seo:
     description: レジャーでCheckオブジェクトの清算を試みます。
 labels:
-  - Checks
+    - Checks
+    - Payments
+requiredAmendment: Checks
+txIcon: finish
 ---
 # CheckCash
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/CashCheck.cpp "Source")
@@ -13,7 +14,7 @@ labels:
 
 Checkに相当する資金があるとは保証されないため、送金元に十分な残高がないか、または資金を送金できるだけの十分な流動性がないことが原因で、Checkの清算が失敗することがあります。このような状況が発生した場合、Checkはレジャーに残り、送金先は後でこのCheckの換金を再試行するか、または異なる額で換金を試みることができます。
 
-_（[Checks Amendment][]が必要です）_
+{% amendment-disclaimer name="Checks" /%}
 
 ## {% $frontmatter.seo.title %} JSONの例
 
