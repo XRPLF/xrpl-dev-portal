@@ -1,0 +1,177 @@
+name: Selenium link check
+
+on:
+  ## Currently too slow to run on PRs — eventually, we should have it run
+  ## on just the changed files in a PR.
+  # pull_request:
+  #   branches: [master]
+  schedule:
+    - cron: '0 8 * * 0'    # Sundays 00:00 PST / 01:00 PDT
+  workflow_dispatch:
+
+concurrency:
+  group: selenium-link-check-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  link-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    permissions:
+      contents: read
+      pull-requests: write
+    env:
+      PORT: 4000
+      BASE_URL: http://localhost:4000
+
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: lts/*
+          cache: npm
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+
+      - run: npm ci
+
+      - name: Build CSS
+        run: npm run build-css
+
+      - name: Install Python dependencies
+        run: pip install selenium beautifulsoup4 markdown requests
+
+      - name: Restore link cache
+        uses: actions/cache/restore@v5
+        with:
+          path: tools/link-cache.json
+          key: selenium-link-cache-${{ github.ref_name }}-${{ github.run_id }}
+          restore-keys: |
+            selenium-link-cache-${{ github.ref_name }}-
+            selenium-link-cache-master-
+
+      - name: Start Realm dev server
+        run: |
+          npx realm develop --port "$PORT" > realm.log 2>&1 &
+          echo $! > realm.pid
+
+      - name: Wait for server
+        run: npx --yes wait-on "$BASE_URL" --timeout 180000
+
+      - name: Run Selenium link checker
+        run: |
+          set -eo pipefail
+          python tools/check-links.py -t 2 docs/ 2>&1 | tee selenium-link-check.log
+
+      - name: Stop Realm server
+        if: always()
+        run: |
+          if [ -f realm.pid ]; then kill "$(cat realm.pid)" 2>/dev/null || true; fi
+
+      - name: Strip ANSI color codes from realm.log
+        if: always()
+        run: |
+          if [ -f realm.log ]; then
+            sed -i 's/\x1b\[[0-9;]*m//g' realm.log
+          fi
+
+      - name: Upload report
+        id: upload
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: selenium-link-check-report
+          retention-days: 14
+          path: |
+            selenium-link-check.log
+            realm.log
+            tools/broken-links-report.md
+            tools/link-cache.json
+          if-no-files-found: warn
+
+      - name: Post link-check status to PR
+        if: always() && github.event_name == 'pull_request'
+        uses: actions/github-script@v9
+        with:
+          script: |
+            const fs = require('fs');
+            const marker = '<!-- selenium-link-check-report -->';
+            const reportFile = 'tools/broken-links-report.md';
+            const artifactUrl = '${{ steps.upload.outputs.artifact-url }}';
+
+            const { data: comments } = await github.rest.issues.listComments({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+            });
+            const existing = comments.find(c => c.body?.startsWith(marker));
+
+            let body;
+            if (fs.existsSync(reportFile)) {
+              const report = fs.readFileSync(reportFile, 'utf-8');
+              body = [marker, report, '', `_[Download report zip](${artifactUrl})._`].join('\n');
+            } else {
+              // If no report file, determine whether the script actually completed
+              // by checking the log for the final summary line (no crash or cancellation).
+              let scriptCompleted = false;
+              try {
+                const log = fs.readFileSync('selenium-link-check.log', 'utf-8');
+                scriptCompleted = /^\d+ broken links found among \d+ total links\.$/m.test(log);
+              } catch (e) {
+                // Log file is missing entirely
+              }
+
+              if (!scriptCompleted) {
+                core.info('Script did not complete (cancelled or crashed) — preserving existing comment.');
+                return;
+              }
+
+              if (existing) {
+                body = [
+                  marker,
+                  '# Broken links report',
+                  '',
+                  '✅ Broken links fixed',
+                  '',
+                  `_[Download report zip](${artifactUrl})._`,
+                ].join('\n');
+              } else {
+                core.info('No broken links and no prior sticky comment — skipping.');
+                return;
+              }
+            }
+
+            if (existing) {
+              await github.rest.issues.updateComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                comment_id: existing.id,
+                body,
+              });
+            } else {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                body,
+              });
+            }
+
+      - name: Save link cache
+        if: always()
+        uses: actions/cache/save@v5
+        with:
+          path: tools/link-cache.json
+          key: selenium-link-cache-${{ github.ref_name }}-${{ github.run_id }}
+
+      - name: Fail if broken links were found
+        if: always()
+        run: |
+          if [ -f tools/broken-links-report.md ]; then
+            echo "::error::Broken links detected — see PR comment or tools/broken-links-report.md artifact"
+            cat tools/broken-links-report.md
+            exit 1
+          fi
