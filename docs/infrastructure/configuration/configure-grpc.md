@@ -35,7 +35,23 @@ To enable gRPC on your server, complete the following steps:
 
     {% partial file="/docs/_snippets/conf-file-location.md" /%}
 
-2. Start (or restart) the `rippled` service.
+2. _(Optional)_ To secure gRPC connections with TLS, add the following settings to the `[port_grpc]` stanza. All certificate and key files must be in PEM format.
+
+    ```
+    [port_grpc]
+    port = 50051
+    ip = 127.0.0.1
+    ssl_cert = /etc/ssl/certs/grpc-server.crt
+    ssl_key = /etc/ssl/private/grpc-server.key
+    ssl_cert_chain = /etc/ssl/certs/grpc-intermediate-ca.crt
+    ssl_client_ca = /etc/ssl/certs/grpc-client-ca.crt
+    ```
+
+    - `ssl_cert` and `ssl_key` define the paths to the server's TLS certificate and private key. Set both to enable TLS.
+    - `ssl_cert_chain` _(optional)_ defines the path to a file of intermediate CA certificates.
+    - `ssl_client_ca` _(optional)_ defines the path to a CA certificate used to verify client certificates, enabling mutual TLS (mTLS).
+
+3. Start (or restart) the `rippled` service.
 
     ```
     sudo systemctl restart rippled
