@@ -241,8 +241,7 @@ The client automatically:
 4. Retries the original request with the payment receipt
 5. Returns the response once the server verifies settlement
 
-<!-- ⚠️ FOLLOW-UP: Add JavaScript client quickstart once T54 publishes the
-x402-xrpl JavaScript client documentation. -->
+> Note: This guide currently includes Python examples only.
 
 
 ---

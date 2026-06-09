@@ -743,7 +743,7 @@
             - page: docs/infrastructure/troubleshooting/fix-sqlite-tx-db-page-size-issue.md
     - page: docs/agents/agentic-transactions.page.tsx
       label: Agentic Transactions
-      labelTranslationKey: sidebar.docs.agenticTransactions
+      labelTranslationKey: sidebar.docs.agentic-transactions
       expanded: false
       items:
         - page: docs/agents/getting-started-with-agentic-transactions.md

@@ -1,9 +1,9 @@
 ---
 name: xrpl-agent-wallet
 description: > 
-  Use this skill whenever an agent needs to create, load, sign, or submit a transaction to the XRP Ledger (XRPL) on a user's behalf. This skill owns the full wallet lifecycle - first-time wallet generation (writing the seed safely to .env, never to chat), key loading, the signing ceremony, human confirmation, and reliable submission. 
+  Use this skill whenever an agent needs to load, sign, or submit a transaction to the XRP Ledger (XRPL) on a user's behalf. This skill owns the full wallet lifecycle - first-time wallet generation (writing the seed safely to .env, never to chat), key loading, the signing ceremony, human confirmation, and reliable submission. 
   
-  It does NOT construct transactions; a separate XRPL transactions skill (or the developer) provides the transaction object. Trigger on signing phrases: wallet.sign, submitAndWait, submit, xrpl.Wallet,a seed/secret being loaded, a tx_blob being produced, "send XRP", "sign this transaction", "submit to the ledger", "have the agent pay", "let the agent transact".
+  It does NOT construct transactions; a separate XRPL transactions skill (or the developer) provides the transaction object. Trigger on signing phrases: wallet.sign, submitAndWait, submit, xrpl.Wallet, a seed/secret being loaded, a tx_blob being produced, "send XRP", "sign this transaction", "submit to the ledger", "have the agent pay", "let the agent transact".
   
   Also trigger on onboarding phrases: "create a wallet", "generate a wallet", "I need a wallet", "set up a wallet", "get started with XRPL", "new account", "testnet wallet", or any request to produce an XRPL address for the first time.
   
@@ -33,31 +33,13 @@ const wallet = Wallet.generate();
 // wallet.seed            — secret, must NEVER appear in chat output
 ```
 
-### Step 2 — Write the seed to .env immediately
+### Step 2 — Add .env to .gitignore
 
-Write the seed to `.env` in the working directory **before doing anything else with it**. Never store it in a variable that persists beyond this write.
 
-```typescript
-import * as fs from 'fs';
+### Step 3 — Write the seed to .env
 
-const envLine = `XRPL_SEED="${wallet.seed}"\n`;
-fs.appendFileSync('.env', envLine, { encoding: 'utf8' });
-```
+Write the seed to `.env` in the working directory **before doing anything else with it**. Never store it in a variable that persists beyond this write. If a `.env` file already exists, check whether `XRPL_SEED` is already set. If it is, ask the user whether to create a second wallet or load the existing one.
 
-If a `.env` file already exists, check whether `XRPL_SEED` is already set. If it is, do not overwrite it — ask the user whether to create a second wallet or load the existing one.
-
-### Step 3 — Add .env to .gitignore
-
-```typescript
-const gitignorePath = '.gitignore';
-const gitignoreContent = fs.existsSync(gitignorePath)
-  ? fs.readFileSync(gitignorePath, 'utf8')
-  : '';
-
-if (!gitignoreContent.includes('.env')) {
-  fs.appendFileSync(gitignorePath, '\n.env\n', { encoding: 'utf8' });
-}
-```
 
 ### Step 4 — Report to the user
 
