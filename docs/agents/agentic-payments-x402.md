@@ -48,9 +48,6 @@ state to handle.
 
 ![X402 payment sequence diagram showing the end-to-end flow between Agent, Merchant, XRP Ledger, and Facilitator](../img/x402-sequence-light.svg)
 
-<!-- For dark mode, swap to x402-sequence-dark.svg via a <picture> element once the
-dark variant is available. Pattern: same as agentic-payment-loop diagram. -->
-
 ---
 
 ## Prerequisites
@@ -178,9 +175,7 @@ XRPL_TESTNET_RPC_URL=https://s.altnet.rippletest.net:51234/
 RESOURCE_URL=http://localhost:8000/hello               # The paid endpoint to call.
 ```
 
-> **Never commit your wallet seed to version control.** Use environment variables or a
-> secrets manager. See [Step 2: Generate and secure your wallet](/docs/agents/getting-started-with-agentic-transactions/#step-2-generate-and-secure-your-wallet)
-> for guidance.
+NOTE: **Never commit your wallet seed to version control.** Use environment variables or a secrets manager. See [Step 2: Generate and secure your wallet](/docs/agents/getting-started-with-agentic-transactions/#step-2-generate-and-secure-your-wallet) for guidance.
 
 ### Step 3: Create your client
 
@@ -301,9 +296,9 @@ difference transparently.
 
 - [Getting Started with Agentic Transactions](/docs/agents/getting-started-with-agentic-transactions/) —
   The full tutorial for setting up the XRPL skills and sending your first payment.
-<!-- - [Track and Measure Agent Behavior](/docs/use-cases/agentic-transactions/#track-and-measure-agent-behavior) —
+- [Track and Measure Agent Behavior](/docs/agents/track-agent-behavior) —
   Using `SourceTag` and `Memos` to attribute and audit agent payments.
-- [For Institutional Developers](/docs/use-cases/agentic-transactions/#for-institutional-developers) —
+<!-- - [For Institutional Developers](/docs/use-cases/agentic-transactions/#for-institutional-developers) —
   Spending controls, key management, and compliance logging for production deployments. -->
 - [T54 X402 Documentation](https://xrpl-x402.t54.ai/docs) — The full X402 reference for
   the XRPL implementation, including the exact payment scheme and facilitator API.
