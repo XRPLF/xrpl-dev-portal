@@ -43,7 +43,6 @@ DEFAULT_SKIP_PATHS = [
     "_code-samples", # Debatably, we might want to link-check the READMEs here
     "_api-examples",
     "_sources",
-    "_snippets",
     "img",
 ]
 MAX_RETRIES = 1 # Times to retry if a link doesn't work
