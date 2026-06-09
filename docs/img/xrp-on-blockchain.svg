@@ -55,6 +55,6 @@
     <path fill="#F0F3F7" d="M135.007 43.7415C127.265 51.6966 117.426 56.0898 105.496 56.0898C93.5668 56.0898 83.7273 51.6966 75.9853 43.7415L34.1255 0H0.00763497L57.7784 57.7678C70.5469 70.5356 87.2893 78.6966 105.504 78.6966C123.718 78.6966 140.461 70.5356 153.229 57.7678L211 0H176.882L135.022 43.7415H135.007ZM176.874 180H210.992L153.222 122.232C140.453 109.464 123.711 101.303 105.496 101.303C87.2817 101.303 70.5393 109.464 57.7708 122.232L0 180H34.1179L75.9777 136.258C83.7196 128.303 93.5591 123.91 105.489 123.91C117.418 123.91 127.258 128.303 134.999 136.258L176.859 180H176.874Z"/>
   </g>
 
-  <text x="340" y="205" text-anchor="middle" fill="#8A919A" font-family="Inter, 'Helvetica Neue', sans-serif" font-size="11">Each block contains a transaction linked to the one before it</text>
+  <text x="340" y="205" text-anchor="middle" fill="currentColor" opacity="0.75" font-family="Inter, 'Helvetica Neue', sans-serif" font-size="11">Each block contains a transaction linked to the one before it</text>
 
 </svg>

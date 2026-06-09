@@ -15,9 +15,9 @@ XRP is the cryptocurrency supported by the XRP Ledger.
 
 A cryptocurrency is a digital or virtual currency that is secured by cryptography and tracked using a blockchain. The security and integrity of cryptocurrency makes it nearly impossible to counterfeit or double-spend.
 
-![XRP on the blockchain](/docs/img/xrp-on-blockchain.svg)
+[{% inline-svg file="/docs/img/xrp-on-blockchain.svg" /%}](/docs/img/xrp-on-blockchain.svg)
 
-Cryptocurrencies, digital currencies, and digital assets all fall into the same general category. They are:
+Cryptocurrencies, digital currencies, and digital assets all fall into the same general category. They have these properties in common:
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/dist/tabler-icons.min.css"/>
 <style>
@@ -25,8 +25,8 @@ Cryptocurrencies, digital currencies, and digital assets all fall into the same 
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 1px;
-  background: #CAD4DF;
-  border: 1px solid #CAD4DF;
+  background: #343437;
+  border: 1px solid #343437;
   border-radius: 8px;
   overflow: hidden;
   margin: 1.5rem 0;
@@ -37,7 +37,7 @@ Cryptocurrencies, digital currencies, and digital assets all fall into the same 
   align-items: center;
   gap: 10px;
   padding: 28px 16px;
-  background: #F0F3F7;
+  background: #232325;
 }
 .xrp-benefits-grid .ti {
   font-size: 28px;
@@ -45,11 +45,17 @@ Cryptocurrencies, digital currencies, and digital assets all fall into the same 
 }
 .xrp-benefits-grid span {
   font-size: 11px;
-  color: #72777E;
+  color: #C1C1C2;
   text-align: center;
   line-height: 1.4;
   font-family: 'Inter', 'Helvetica Neue', sans-serif;
 }
+/* Light theme: lighten the cells and darken the text/icons for contrast. */
+html.light .xrp-benefits-grid,
+html.light .xrp-benefits-grid .cell { background: #F0F3F7; }
+html.light .xrp-benefits-grid { background: #CAD4DF; border-color: #CAD4DF; }
+html.light .xrp-benefits-grid .ti { color: #1E8A50; }
+html.light .xrp-benefits-grid span { color: #72777E; }
 </style>
 <div class="xrp-benefits-grid">
   <div class="cell"><i class="ti ti-world"></i><span>Built for the internet</span></div>
@@ -74,7 +80,7 @@ Cryptocurrencies are compelling for investors and developers because no single e
 
 ## But Why Is It Valuable?
 
-![Value from collective agreement vs value from faith](/docs/img/value-from-faith.svg)
+[{% inline-svg file="/docs/img/value-from-faith.svg" /%}](/docs/img/value-from-faith.svg)
 
 It might seem strange that cryptocurrency is based solely on computer data, and not on any sort of tangible commodity such as precious metal. Traditionally, currencies have been based on cattle, sea shells, rare metals, stones, or other physical objects. But these items have value only because there was agreement between people in a culture.
 
@@ -87,7 +93,7 @@ The value of cryptocurrency comes from the faith that holders place in the curre
 
 The XRP Ledger was built over 2011 – early 2012 by Jed McCaleb, Arthur Britto and David Schwartz. At the time of its creation, there were 100 billion XRP. In September 2012, Jed and Arthur, along with Chris Larsen formed Ripple (the company, called OpenCoin Inc. at the time) and decided to gift 80 billion XRP to Ripple in exchange for Ripple developing on the XRP Ledger.
 
-![XRP supply timeline](/docs/img/xrp-supply-timeline.svg)
+[{% inline-svg file="/docs/img/xrp-supply-timeline.svg" /%}](/docs/img/xrp-supply-timeline.svg)
 
 Since then, the company has regularly sold XRP, used it to strengthen XRP markets and improve network liquidity, and incentivized development of the greater ecosystem. In 2017, the company placed [55 billion XRP in escrow](https://ripple.com/insights/ripple-escrows-55-billion-xrp-for-supply-predictability/?__hstc=78174987.8aa695b6d0420a940041f1842edfd8a6.1692378128025.1692644550213.1692652561840.8&__hssc=78174987.3.1692652561840&__hsfp=3379522993)  to ensure that the amount entering the general supply [grows predictably](https://ripple.com/insights/ripple-to-place-55-billion-xrp-in-escrow-to-ensure-certainty-into-total-xrp-supply/?__hstc=78174987.8aa695b6d0420a940041f1842edfd8a6.1692378128025.1692644550213.1692652561840.8&__hssc=78174987.3.1692652561840&__hsfp=3379522993)  for the foreseeable future. Ripple's [XRP Market Performance site](https://ripple.com/xrp/?__hstc=78174987.8aa695b6d0420a940041f1842edfd8a6.1692378128025.1692644550213.1692652561840.8&__hssc=78174987.3.1692652561840&__hsfp=3379522993) reports how much XRP the company has available and locked in escrow at present.
 
@@ -95,7 +101,9 @@ Since then, the company has regularly sold XRP, used it to strengthen XRP market
 
 Originally, the XRP Ledger was called "Ripple" for the way the technology allowed payments [to ripple through multiple hops and currencies](../concepts/tokens/fungible-tokens/rippling.md). For the native asset built into the ledger, the creators chose the ticker symbol "XRP" from the term "ripple credits" or "ripples" and the X prefix for non-national currencies in the [ISO 4217](https://www.iso.org/iso-4217-currency-codes.html) standard.
 
-![How XRP got its name](/docs/img/xrp-naming.svg) The company registered itself as "Ripple Labs". The name "XRP" came to be used to refer to the asset in all contexts, to avoid confusion with the similar names for the technology and company, and eventually the company shortened its own name to "Ripple". In May 2018, [the community selected a new "X" symbol](https://twitter.com/xrpsymbol/status/1006925937571713025) to represent XRP to differentiate it from the triskelion logo that had previously been used for both the company and the digital asset.
+[{% inline-svg file="/docs/img/xrp-naming.svg" /%}](/docs/img/xrp-naming.svg)
+
+The company registered itself as "Ripple Labs". The name "XRP" came to be used to refer to the asset in all contexts, to avoid confusion with the similar names for the technology and company, and eventually the company shortened its own name to "Ripple". In May 2018, [the community selected a new "X" symbol](https://twitter.com/xrpsymbol/status/1006925937571713025) to represent XRP to differentiate it from the triskelion logo that had previously been used for both the company and the digital asset.
 
 | XRP "X" Logo                           | Ripple triskelion                   |
 |:---------------------------------------|:------------------------------------|
