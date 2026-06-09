@@ -29,7 +29,7 @@ Each line represents one log entry, with the following parts in order, separated
 4. The log partition and severity, such as `LoadMonitor:WRN`.
 5. The log message, such as `Job: sweep run: 1172ms wait: 0ms`.
 
-Log entries about a peer-to-peer connection (such as those from the `Peer` partition) also include a bracketed identifier between the partition/severity and the message. {% badge href="https://xrpl.org/blog/2026/rippled-3.2.0" %}New in: rippled 3.2.0{% /badge %}
+Log entries about a peer-to-peer connection (such as those from the `Peer` partition) also include a bracketed identifier between the partition/severity and the message. {% badge href="https://xrpl.org/blog/2026/xrpld-3.2.0" %}New in: xrpld 3.2.0{% /badge %}
 
 It contains the following fields:
 
