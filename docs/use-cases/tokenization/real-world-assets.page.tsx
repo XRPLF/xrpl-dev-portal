@@ -459,10 +459,6 @@ export default function RwaTokenization() {
           text: "Join the Developer Discord",
           url: "https://discord.gg/sfX3ERAMjH",
         },
-        {
-          text: "Sign up for the Newsletter",
-          url: "https://xrplresources.org/subscribe",
-        },
       ],
       backgroundClass: "learn-stay-updated",
     },
