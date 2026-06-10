@@ -24,5 +24,5 @@ export default function SourceLink(props: {
 }) {
   const href = buildSourceHref(props.path, props.xrpld_release)
 
-  return <Link to={href}>[Source]</Link>
+  return <Link to={href} className="source-link">[Source]</Link>
 }
