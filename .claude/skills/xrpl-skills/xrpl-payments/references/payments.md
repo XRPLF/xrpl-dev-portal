@@ -253,7 +253,7 @@ const RLUSD_CURRENCY = "524C555344000000000000000000000000000000";
 
 // Issuer addresses — confirm before production use
 const RLUSD_ISSUER_TESTNET = "rQhWct2fv4Vc4KRjRgMrxa8xPN9Zx9iLKV";
-const RLUSD_ISSUER_MAINNET = "rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De"; // Verify at https://ripple.com/rlusd before production use
+const RLUSD_ISSUER_MAINNET = "rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De"; // Verify at [docs.ripple.com](https://docs.ripple.com/products/stablecoin/developer-resources/rlusd-on-the-xrpl)
 ```
 
 ### Step 1: Set up the trust line (one-time per wallet)
