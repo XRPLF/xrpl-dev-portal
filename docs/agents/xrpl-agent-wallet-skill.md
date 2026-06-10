@@ -55,16 +55,13 @@ if (!ignoredLines.includes('.env')) {
 
 ### Step 3 — Write the seed to .env
 
-Write the seed to `.env` in the working directory **before doing anything else with it**. Never store it in a variable that persists beyond this write.
+Write the seed to `.env` in the working directory **before doing anything else with it**. Never store it in a variable that persists beyond this write. If a `.env` file already exists, check whether `XRPL_SEED` is already set. If it is, ask the user whether to create a second wallet or load the existing one.
 
 ```typescript
-import * as fs from 'fs';
-
-const envLine = `XRPL_SEED="${wallet.seed}"\n`;
-fs.appendFileSync('.env', envLine, { encoding: 'utf8' });
+const existing = fs.existsSync('.env') ? fs.readFileSync('.env', 'utf8') : '';
+const prefix = existing.length && !existing.endsWith('\n') ? '\n' : '';
+fs.appendFileSync('.env', `${prefix}XRPL_SEED="${wallet.seed}"\n`, { encoding: 'utf8' });
 ```
-
-If a `.env` file already exists, check whether `XRPL_SEED` is already set. If it is, do not overwrite it — ask the user whether to create a second wallet or load the existing one.
 
 ### Step 4 — Report to the user
 
