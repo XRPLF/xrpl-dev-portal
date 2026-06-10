@@ -66,7 +66,7 @@ Besides errors that can occur for all transactions, `AMMClawback` transactions c
 
 | Error Code         | Description |
 |:-------------------|:------------|
-| `tecNO_PERMISSION` | Occurs if you attempt to claw back tokens from an AMM without the `lsfAllowTrustlineClawback` flag enabled, or the `tfClawTwoAssets` flag is enabled when you didn't issue both assets in the AMM. Also occurs if the `Asset` issuer doesn't match `Account`. |
+| `tecNO_PERMISSION` | Occurs if you attempt to claw back tokens from an AMM without the `lsfAllowTrustLineClawback` flag enabled, or the `tfClawTwoAssets` flag is enabled when you didn't issue both assets in the AMM. Also occurs if the `Asset` issuer doesn't match `Account`. |
 | `tecAMM_BALANCE`   | Occurs if the `Holder` doesn't hold any LP tokens from the AMM pool. |
 | `temDISABLED`      | Occurs if the [AMMClawback amendment][] is not enabled. |
 | `temBAD_AMOUNT`    | Occurs if the `Amount` field in the `AMMClawback` transaction is less than or equal to 0, or the `currency` and `issuer` subfields don't match between `Amount` and `Asset`. |

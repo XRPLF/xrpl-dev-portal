@@ -94,7 +94,7 @@ For reference, here are the corresponding ledger flags for each AccountSet flag:
 | AccountSet Flag Name              | Corresponding Ledger Flag         |
 |:----------------------------------|:----------------------------------|
 | `asfAccountTxnID`                 | (None)                            |
-| `asfAllowTrustLineClawback`       | `lsfAllowTrustlineClawback`       |
+| `asfAllowTrustLineClawback`       | `lsfAllowTrustLineClawback`       |
 | `asfAuthorizedNFTokenMinter`      | (None)                            |
 | `asfDefaultRipple`                | `lsfDefaultRipple`                |
 | `asfDepositAuth`                  | `lsfDepositAuth`                  |

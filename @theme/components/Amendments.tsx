@@ -12,6 +12,7 @@ type Amendment = {
   date?: string
   id: string
   eta?: string
+  deprecated?: boolean
 }
 
 type AmendmentsResponse = {
@@ -51,6 +52,14 @@ function writeAmendmentsCache(amendments: Amendment[]) {
   } catch {
     // Ignore quota or serialization errors
   }
+}
+
+// Obsolete amendments (deprecated and never enabled, e.g. Batch) are documented
+// in the "Obsolete and Retired Amendments" section, not the live Mainnet Status
+// table, so filter them out here. Deprecated amendments that are enabled keep
+// their functionality and remain in the table as Enabled.
+function isObsolete(amendment: Amendment): boolean {
+  return Boolean(amendment.deprecated) && !amendment.tx_hash
 }
 
 // Sort amendments table by status, then chronologically, then alphabetically
@@ -100,7 +109,7 @@ export function AmendmentsTable() {
         const cached = readAmendmentsCache()
 
         if (cached) {
-          setAmendments(sortAmendments(cached))
+          setAmendments(sortAmendments(cached.filter(a => !isObsolete(a))))
           return // Use current cache (fresh)
         }
         // 2. Fetch new data if cache is stale
@@ -113,7 +122,7 @@ export function AmendmentsTable() {
         const data: AmendmentsResponse = await response.json()
         writeAmendmentsCache(data.amendments)
 
-        setAmendments(sortAmendments(data.amendments))
+        setAmendments(sortAmendments(data.amendments.filter(a => !isObsolete(a))))
       } catch (err) {
         setError(err instanceof Error ? err.message : 'Failed to fetch amendments')
       } finally {

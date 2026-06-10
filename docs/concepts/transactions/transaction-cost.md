@@ -30,9 +30,10 @@ Some transactions have different transaction costs:
 | [Key Reset Transaction](#key-reset-transaction) | 0 |
 | [Multi-signed Transaction](../accounts/multi-signing.md) | 10 drops × (1 + Number of Signatures Provided) |
 | [EscrowFinish Transaction with Fulfillment](../../references/protocol/transactions/types/escrowfinish.md) | 10 drops × (33 + (Fulfillment size in bytes ÷ 16)) |
-| [AccountDelete Transaction](../accounts/deleting-accounts.md) | 2,000,000 drops |
-| [AMMCreate Transaction](../tokens/decentralized-exchange/automated-market-makers.md) | 2,000,000 drops |
+| [AccountDelete Transaction](../accounts/deleting-accounts.md) | 200,000 drops |
+| [AMMCreate Transaction](../tokens/decentralized-exchange/automated-market-makers.md) | 200,000 drops |
 
+<!-- RESERVES_REMINDER: update cost in drops if reserves change -->
 
 ## Beneficiaries of the Transaction Cost
 
