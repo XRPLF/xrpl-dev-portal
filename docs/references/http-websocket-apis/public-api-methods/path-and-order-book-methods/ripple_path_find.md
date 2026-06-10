@@ -14,6 +14,8 @@ Although the `rippled` server tries to find the cheapest path or combination of 
 
 {% admonition type="warning" name="Caution" %}Be careful with the pathfinding results from untrusted servers. A server could be modified to return less-than-optimal paths to earn money for its operators. A server may also return poor results when under heavy load. If you do not have your own server that you can trust with pathfinding, you should compare the results of pathfinding from multiple servers run by different parties, to minimize the risk of a single server returning poor results.{% /admonition %}
 
+{% amendment-disclaimer name="MPTokensV2" mode="updated" /%}
+
 ## Request Format
 An example of the request format:
 
@@ -77,6 +79,21 @@ rippled ripple_path_find '{"source_account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59
 ```
 {% /tab %}
 
+{% tab label="WebSocket - MPT" %}
+```json
+{
+  "command": "ripple_path_find",
+  "destination_account": "rPMh7Pi9ct699iZUTWaytJUoHcJ7cgyziK",
+  "destination_amount": {
+    "mpt_issuance_id": "000000045C488AAC5813270850685FFD89F4A4A8F4CD4C83",
+    "value": "-1"
+  },
+  "send_max": "100000000000000",
+  "source_account": "rG1QQv2nh2gr7RCZ1P8YYcBUKCCN633jCn"
+}
+```
+{% /tab %}
+
 {% /tabs %}
 
 {% try-it method="ripple_path_find" /%}
@@ -92,7 +109,7 @@ The request includes the following parameters:
 | `ledger_hash`         | String - [Hash][]    | No        | The unique hash of the ledger version to use. (See [Specifying Ledgers][]) |
 | `ledger_index`        | [Ledger Index][]     | No        | The ledger index of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
 | `send_max`            | [Currency Amount][]  | No        | Maximum amount that would be spent. Cannot be used with `source_currencies`. |
-| `source_currencies`   | Array                | No        | Array of currencies that the source account might want to spend. Each entry in the array should be a JSON object with a mandatory `currency` field and optional `issuer` field, like how [currency amounts][Currency Amount] are specified. Cannot contain more than **18** source currencies. By default, uses all source currencies available up to a maximum of **88** different currency/issuer pairs. |
+| `source_currencies`   | Array                | No        | Array of currencies that the source account might want to spend. Each entry in the array should be a JSON object specifying a [currency without an amount][Specifying Without Amounts]. Cannot contain more than **18** source currencies. By default, uses all source currencies available up to a maximum of **88** different currency/issuer pairs. |
 
 ## Response Format
 
