@@ -36,13 +36,17 @@ const wallet = Wallet.generate();
 ### Step 2 — Add .env to .gitignore
 
 ```typescript
+import * as fs from 'fs';
+
 const gitignorePath = '.gitignore';
 const gitignoreContent = fs.existsSync(gitignorePath)
   ? fs.readFileSync(gitignorePath, 'utf8')
   : '';
 
-if (!gitignoreContent.includes('.env')) {
-  fs.appendFileSync(gitignorePath, '\n.env\n', { encoding: 'utf8' });
+const ignoredLines = gitignoreContent.split('\n').map(l => l.trim());
+if (!ignoredLines.includes('.env')) {
+  const gPrefix = gitignoreContent.length && !gitignoreContent.endsWith('\n') ? '\n' : '';
+  fs.appendFileSync(gitignorePath, `${gPrefix}.env\n`, { encoding: 'utf8' });
 }
 ```
 
