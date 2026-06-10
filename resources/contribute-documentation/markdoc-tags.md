@@ -210,6 +210,22 @@ Demonstration:
 {% repo-link path="_code-samples/build-a-desktop-wallet/js/1_ledger-index.js" %}`1-ledger-index/index.js`{% /repo-link %}
 
 
+### Source Link
+
+Link to an `xrpld` source code file. The link is built using a `path` parameter and `PUBLIC_XRPLD_RELEASE` variable in this repository's `.env` file.
+
+Example usage:
+
+<pre><code>
+{% source-link path="src/xrpld/app/tx/detail/DeleteAccount.cpp" /%}
+</code></pre>
+
+
+Demonstration: 
+
+{% source-link path="src/xrpld/app/tx/detail/DeleteAccount.cpp" /%}
+
+
 ### Try It
 
 Link to the WebSocket tool as a button. The text of the button is normally "Try it!" in English, and can be translated by setting the `component.tryit` key in the localization's `translations.yaml` file. This tag is self-closing.
