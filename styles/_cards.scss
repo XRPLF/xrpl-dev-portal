@@ -185,6 +185,12 @@ a.card:hover h3 {
     }
   }
 
+  &.row-cols-lg-2 .card {
+  @include media-breakpoint-up(lg) {
+    flex-basis: calc(50% - #{(2 * $card-deck-margin)});
+  }
+}
+
   &.row-cols-lg-3 {
     @include media-breakpoint-up(xl) {
       // Double the card deck margin on larger desktops

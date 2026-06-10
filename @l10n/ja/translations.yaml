@@ -81,6 +81,8 @@ topnav.docs.use-cases: ユースケース
 topnav.docs.payments: 支払い
 topnav.docs.tokenization: トークン化
 topnav.docs.defi: DeFi(分散型金融)
+topnav.docs.agentic-transactions: エージェントトランザクション
+sidebar.docs.agenticTransactions: エージェントトランザクション
 topnav.docs.get-started: はじめよう
 topnav.resources.development: 開発
 topnav.resources.code-samples: サンプルコード
