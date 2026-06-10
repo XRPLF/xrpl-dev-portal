@@ -19,12 +19,12 @@ You should consider these factors to ensure that your server has the capacity to
 
 The default configuration file contains settings for a broad range of common use cases. You can get better performance by customizing the settings for your specific hardware and intended usage pattern.
 
-The settings in this section are parameters in the `rippled.cfg` file. You can access an example config file, `rippled-example.cfg`, in the [`cfg` directory](https://github.com/XRPLF/rippled/blob/develop/cfg/rippled-example.cfg) in the `rippled` GitHub repo. The settings in the example config file match the default config installed alongside the server.
+The settings in this section are parameters in the `rippled.cfg` file. You can access an example config file, `rippled-example.cfg`, in the [`cfg` directory](https://github.com/XRPLF/rippled/blob/release-3.1/cfg/rippled-example.cfg) in the `rippled` GitHub repo. The settings in the example config file match the default config installed alongside the server.
 
 
 ### Node Size
 
-The `[node_size]` parameter should match the overall hardware capacity of your server. You can omit this parameter to have the server automatically choose an appropriate setting based on the system's total RAM and number of CPU threads. You can set this value explicitly if the automatic setting is wrong for your system, for example if some of the system's RAM or threads need to be set aside for other software, or the amounts reported by the operating system are inaccurate. (This can occur in some containers.) {% badge href="https://github.com/XRPLF/rippled/releases/tag/1.8.1" %}Updated in: rippled 1.8.1{% /badge %}
+The `[node_size]` parameter should match the overall hardware capacity of your server. You can omit this parameter to have the server automatically choose an appropriate setting based on the system's total RAM and number of CPU threads. You can set this value explicitly if the automatic setting is wrong for your system, for example if some of the system's RAM or threads need to be set aside for other software, or the amounts reported by the operating system are inaccurate. (This can occur in some containers.)
 
 As a general rule, you should always use the largest node size your available RAM can support. See the following table for recommended settings.
 

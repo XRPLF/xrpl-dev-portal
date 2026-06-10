@@ -160,6 +160,9 @@
 [NFTokenMint transaction]: /docs/references/protocol/transactions/types/nftokenmint.md
 [NFTokenMint transactions]: /docs/references/protocol/transactions/types/nftokenmint.md
 [NFTokenMint]: /docs/references/protocol/transactions/types/nftokenmint.md
+[NFTokenModify transaction]: /docs/references/protocol/transactions/types/nftokenmodify.md
+[NFTokenModify transactions]: /docs/references/protocol/transactions/types/nftokenmodify.md
+[NFTokenModify]: /docs/references/protocol/transactions/types/nftokenmodify.md
 [NFTokenOffer entry]: /docs/references/protocol/ledger-data/ledger-entry-types/nftokenoffer.md
 [NFTokenOffer object]: /docs/references/protocol/ledger-data/ledger-entry-types/nftokenoffer.md
 [NFTokenPage entry]: /docs/references/protocol/ledger-data/ledger-entry-types/nftokenpage.md

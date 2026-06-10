@@ -10,7 +10,7 @@ labels:
 
 [[Source]](https://github.com/XRPLF/clio/blob/develop/src/rpc/handlers/NFTHistory.cpp "Source")
 
-The `nft_history` command asks the Clio server for past transaction metadata for the [NFT](../../../../concepts/tokens/nfts/index.md) being queried. {% badge href="https://github.com/XRPLF/clio/releases/tag/1.1.0" %}New in: Clio v1.1.0{% /badge %}
+The `nft_history` command asks the Clio server for past transaction metadata for the [NFT](../../../../concepts/tokens/nfts/index.md) being queried. {% badge href="https://github.com/XRPLF/clio/releases/tag/2.0.0" %}New in: Clio v2.0.0{% /badge %}
 
 {% admonition type="info" name="Note" %}`nft_history` returns only _successful_ transactions associated with the NFT.{% /admonition %}
 

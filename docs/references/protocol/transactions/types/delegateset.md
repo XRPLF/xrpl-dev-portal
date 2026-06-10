@@ -73,7 +73,7 @@ Besides errors that can occur for all transactions, {% $frontmatter.seo.title %}
 | `tecNO_PERMISSION`        | At least one permission in the `Permissions` list is not delegatable. See [Permission Values](../../data-types/permission-values.md) for which permissions are not delegatable. |
 | `tecNO_TARGET`            | The account specified in the `Authorize` field does not exist in the ledger. |
 | `temARRAY_TOO_LARGE`      | The `Permissions` list is too large. It cannot contain more than 10 entries. |
-| `temDISABLED`             | The [Permission Delegation amendment][] is not enabled. |
+| `temDISABLED`             | The [PermissionDelegation amendment][] is not enabled. |
 | `temMALFORMED`            | The transaction was invalid. For example, the `Authorize` account is the same as the sender of the transaction, the `Permissions` list contains duplicate entries, or one of the permissions in the list is not a valid permission. |
 
 ## See Also

@@ -52,7 +52,7 @@ Running a permissioned DEX involves several steps:
 
 1. **[Select a credential issuer.](#select-a-credential-issuer)**
 2. **[Create a permissioned domain.](#create-a-permissioned-domain)**
-3. **[Use the domain ID in payments & offers.](#use-the-domain-id-in-payments-and-offers)**
+3. **[Use the domain ID in payments & offers.](#use-the-permissioned-dex-to-facilitate-payments-and-offers)**
 
 ### Select a credential issuer
 
