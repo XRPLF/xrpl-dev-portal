@@ -138,9 +138,13 @@ rippled json ledger_entry '{ "account_root": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59
 
 Retrieve the [Amendments entry][], which contains a list of all enabled amendments on the network.
 
-| Field        | Type   | Required? | Description |
-|--------------|--------|----------|-------------|
-| `amendments` | String | Yes      | The `Amendments` entry. This value must be `7DB0788C020F02780A673DC74757F23823FA3014C1866E72CC4CD8B226CD6EF4`. |
+| Field        | Type              | Required? | Description |
+|:-------------|:------------------|:----------|:------------|
+| `amendments` | Boolean or String | Yes       | Specify `true` to retrieve the `Amendments` entry, or provide its [ledger entry ID][] as a string, which is always `7DB0788C020F02780A673DC74757F23823FA3014C1866E72CC4CD8B226CD6EF4`. {% badge href="https://github.com/XRPLF/rippled/releases/tag/3.2.0" %}New in: rippled 3.2.0{% /badge %} |
+
+{% admonition type="info" name="Note" %}
+As an alternative, you can specify `"index": "amendments"` to look up this entry. This shortcut requires [API version](../../index.md#api-versioning) 3 or higher.
+{% /admonition %}
 
 {% tabs %}
 
@@ -149,7 +153,7 @@ Retrieve the [Amendments entry][], which contains a list of all enabled amendmen
 {
   "id": "example_get_amendments",
   "command": "ledger_entry",
-  "amendments": "7DB0788C020F02780A673DC74757F23823FA3014C1866E72CC4CD8B226CD6EF4",
+  "amendments": true,
   "ledger_index": "validated"
 }
 ```
@@ -160,7 +164,7 @@ Retrieve the [Amendments entry][], which contains a list of all enabled amendmen
 {
   "method": "ledger_entry",
   "params" : [{
-      "amendments": "7DB0788C020F02780A673DC74757F23823FA3014C1866E72CC4CD8B226CD6EF4",
+      "amendments": true,
       "ledger_index": "validated"
   }]
 }
@@ -169,7 +173,7 @@ Retrieve the [Amendments entry][], which contains a list of all enabled amendmen
 
 {% tab label="Commandline" %}
 ```sh
-rippled json ledger_entry '{ "amendments": "7DB0788C020F02780A673DC74757F23823FA3014C1866E72CC4CD8B226CD6EF4", "ledger_index": "validated" }'
+rippled json ledger_entry '{ "amendments": true, "ledger_index": "validated" }'
 ```
 {% /tab %}
 
@@ -636,9 +640,13 @@ rippled json ledger_entry '{ "escrow": { "owner": "rL4fPHi2FWGwRGRQSH7gBcxkuo2b9
 
 Retrieve the [FeeSettings entry][], which contains the current base [transaction cost][] and [reserves][] determined by [fee voting][].
 
-| Field | Type   | Required? | Description |
-|:------|:-------|:----------|:------------|
-| `fee` | String | Yes       | The `FeeSettings` entry. This value must be `4BC50C9B0D8515D3EAAE1E74B29A95804346C491EE1A95BF25E4AAB854A6A651`. |
+| Field | Type              | Required? | Description |
+|:------|:------------------|:----------|:------------|
+| `fee` | Boolean or String | Yes       | Specify `true` to retrieve the `FeeSettings` entry, or provide its [ledger entry ID][] as a string, which is always `4BC50C9B0D8515D3EAAE1E74B29A95804346C491EE1A95BF25E4AAB854A6A651`. {% badge href="https://github.com/XRPLF/rippled/releases/tag/3.2.0" %}New in: rippled 3.2.0{% /badge %} |
+
+{% admonition type="info" name="Note" %}
+As an alternative, you can specify `"index": "fee"` to look up this entry. This shortcut requires [API version](../../index.md#api-versioning) 3 or higher.
+{% /admonition %}
 
 {% tabs %}
 
@@ -647,7 +655,7 @@ Retrieve the [FeeSettings entry][], which contains the current base [transaction
 {
   "id": "example_get_feesettings",
   "command": "ledger_entry",
-  "fee": "4BC50C9B0D8515D3EAAE1E74B29A95804346C491EE1A95BF25E4AAB854A6A651",
+  "fee": true,
   "ledger_index": "validated"
 }
 ```
@@ -658,7 +666,7 @@ Retrieve the [FeeSettings entry][], which contains the current base [transaction
 {
   "method": "ledger_entry",
   "params" : [{
-      "fee": "4BC50C9B0D8515D3EAAE1E74B29A95804346C491EE1A95BF25E4AAB854A6A651",
+      "fee": true,
       "ledger_index": "validated"
   }]
 }
@@ -667,7 +675,7 @@ Retrieve the [FeeSettings entry][], which contains the current base [transaction
 
 {% tab label="Commandline" %}
 ```sh
-rippled json ledger_entry '{ "fee": "4BC50C9B0D8515D3EAAE1E74B29A95804346C491EE1A95BF25E4AAB854A6A651", "ledger_index": "validated" }'
+rippled json ledger_entry '{ "fee": true, "ledger_index": "validated" }'
 ```
 {% /tab %}
 
@@ -678,11 +686,15 @@ rippled json ledger_entry '{ "fee": "4BC50C9B0D8515D3EAAE1E74B29A95804346C491EE1
 
 ### Get LedgerHashes Entry
 
-Retrieve the [LedgerHashes entry][], which contains a history of prior ledgers that led up to this ledger version, in the form of their hashes.
+Retrieve a [LedgerHashes entry][], which contains a history of prior ledgers that led up to this ledger version, in the form of their hashes.
 
-| Field    | Type   | Required | Description |
-|----------|--------|----------|-------------|
-| `hashes` | String | Yes      | The `LedgerHashes` entry. This value must be `B4979A36CDC7F3D3D5C31A4EAE2AC7D7209DDA877588B9AFC66799692AB0D66B`. |
+| Field    | Type                       | Required? | Description |
+|:---------|:---------------------------|:----------|:------------|
+| `hashes` | Boolean, Number, or String | Yes       | Specify `true` to retrieve the recent-history `LedgerHashes` entry, whose [ledger entry ID][] is always `B4979A36CDC7F3D3D5C31A4EAE2AC7D7209DDA877588B9AFC66799692AB0D66B`. To retrieve an older entry, specify a [ledger index][] (Number) to look up the `LedgerHashes` entry that records that ledger's hash. You can also provide a [ledger entry ID][] directly as a string. {% badge href="https://github.com/XRPLF/rippled/releases/tag/3.2.0" %}New in: rippled 3.2.0{% /badge %} |
+
+{% admonition type="info" name="Note" %}
+As an alternative, you can specify `"index": "hashes"` to look up the recent-history entry. This shortcut requires [API version](../../index.md#api-versioning) 3 or higher.
+{% /admonition %}
 
 {% tabs %}
 
@@ -691,7 +703,7 @@ Retrieve the [LedgerHashes entry][], which contains a history of prior ledgers t
 {
   "id": "example_get_ledgerhashes",
   "command": "ledger_entry",
-  "hashes": "B4979A36CDC7F3D3D5C31A4EAE2AC7D7209DDA877588B9AFC66799692AB0D66B",
+  "hashes": true,
   "ledger_index": "validated"
 }
 ```
@@ -702,7 +714,7 @@ Retrieve the [LedgerHashes entry][], which contains a history of prior ledgers t
 {
   "method": "ledger_entry",
   "params" : [{
-      "hashes": "B4979A36CDC7F3D3D5C31A4EAE2AC7D7209DDA877588B9AFC66799692AB0D66B",
+      "hashes": true,
       "ledger_index": "validated"
   }]
 }
@@ -711,7 +723,42 @@ Retrieve the [LedgerHashes entry][], which contains a history of prior ledgers t
 
 {% tab label="Commandline" %}
 ```sh
-rippled json ledger_entry '{ "hashes": "B4979A36CDC7F3D3D5C31A4EAE2AC7D7209DDA877588B9AFC66799692AB0D66B", "ledger_index": "validated" }'
+rippled json ledger_entry '{ "hashes": true, "ledger_index": "validated" }'
+```
+{% /tab %}
+
+{% /tabs %}
+
+To retrieve an older `LedgerHashes` entry, specify the [ledger index][] of the ledger whose hash you want to look up:
+
+{% tabs %}
+
+{% tab label="WebSocket" %}
+```json
+{
+  "id": "example_get_ledgerhashes_historical",
+  "command": "ledger_entry",
+  "hashes": 131072,
+  "ledger_index": "validated"
+}
+```
+{% /tab %}
+
+{% tab label="JSON-RPC" %}
+```json
+{
+  "method": "ledger_entry",
+  "params" : [{
+      "hashes": 131072,
+      "ledger_index": "validated"
+  }]
+}
+```
+{% /tab %}
+
+{% tab label="Commandline" %}
+```sh
+rippled json ledger_entry '{ "hashes": 131072, "ledger_index": "validated" }'
 ```
 {% /tab %}
 
@@ -930,9 +977,13 @@ rippled json ledger_entry '{ "mpt_issuance": "05EECEBE97A7D635DE2393068691A015FE
 
 Retrieve the [NegativeUNL entry][], which contains the current status of the [Negative UNL][]. If no validators are currently disabled or scheduled to be disabled, there is no `NegativeUNL` entry.
 
-| Field  | Type   | Required? | Description |
-|:-------|:-------|:----------|:------------|
-| `nunl` | String | Yes       | The `NegativeUNL` entry. This value must be `2E8A59AA9D3B5B186B0B9E0F62E6C02587CA74A4D778938E957B6357D364B244`. |
+| Field  | Type              | Required? | Description |
+|:-------|:------------------|:----------|:------------|
+| `nunl` | Boolean or String | Yes       | Specify `true` to retrieve the `NegativeUNL` entry, or provide its [ledger entry ID][] as a string, which is always `2E8A59AA9D3B5B186B0B9E0F62E6C02587CA74A4D778938E957B6357D364B244`. {% badge href="https://github.com/XRPLF/rippled/releases/tag/3.2.0" %}New in: rippled 3.2.0{% /badge %} |
+
+{% admonition type="info" name="Note" %}
+As an alternative, you can specify `"index": "nunl"` to look up this entry. This shortcut requires [API version](../../index.md#api-versioning) 3 or higher.
+{% /admonition %}
 
 {% tabs %}
 
@@ -941,7 +992,7 @@ Retrieve the [NegativeUNL entry][], which contains the current status of the [Ne
 {
   "id": "example_get_negativeunl",
   "command": "ledger_entry",
-  "nunl": "2E8A59AA9D3B5B186B0B9E0F62E6C02587CA74A4D778938E957B6357D364B244",
+  "nunl": true,
   "ledger_index": "validated"
 }
 ```
@@ -952,7 +1003,7 @@ Retrieve the [NegativeUNL entry][], which contains the current status of the [Ne
 {
   "method": "ledger_entry",
   "params" : [{
-      "nunl": "2E8A59AA9D3B5B186B0B9E0F62E6C02587CA74A4D778938E957B6357D364B244",
+      "nunl": true,
       "ledger_index": "validated"
   }]
 }
@@ -961,7 +1012,7 @@ Retrieve the [NegativeUNL entry][], which contains the current status of the [Ne
 
 {% tab label="Commandline" %}
 ```sh
-rippled json ledger_entry '{ "nunl": "2E8A59AA9D3B5B186B0B9E0F62E6C02587CA74A4D778938E957B6357D364B244", "ledger_index": "validated" }'
+rippled json ledger_entry '{ "nunl": true, "ledger_index": "validated" }'
 ```
 {% /tab %}
 
@@ -1418,7 +1469,7 @@ Retrieve a [Ticket entry](../../../protocol/ledger-data/ledger-entry-types/ticke
 
 {% tab label="Commandline" %}
 ```sh
-rippled json ledger_entry '{ "ticket": { "account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", "ticket_seq: 389 }, "ledger_index": "validated" }'
+rippled json ledger_entry '{ "ticket": { "account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", "ticket_seq": 389 }, "ledger_index": "validated" }'
 ```
 {% /tab %}
 

@@ -6,7 +6,7 @@ labels:
 ---
 # Commandline Usage
 
-The `xrpld` executable usually runs as a daemon that powers the XRP Ledger, although it can also run in other modes. It was renamed from `rippled` to `xrpld`. {% badge href="https://xrpl.org/blog/2026/rippled-3.2.0" %}New in: rippled 3.2.0{% /badge %}
+The `xrpld` executable usually runs as a daemon that powers the XRP Ledger, although it can also run in other modes. It was renamed from `rippled` to `xrpld`. {% badge href="https://xrpl.org/blog/2026/xrpld-3.2.0" %}New in: xrpld 3.2.0{% /badge %}
 
 The former name, `rippled`, still works as a symlink to `xrpld`, so existing scripts and automation continue to work during the transition.
 
@@ -21,7 +21,7 @@ This page describes all the options you can pass to `xrpld` when running it from
     - **Help** - Use `-h` or `--help` to print a usage statement.
     - **Unit Tests** - Use `-u` or `--unittest` to run unit tests and print a summary of results. This can be helpful to confirm that you have compiled `xrpld` successfully.
     - **Version statement** - Use `--version` to have `xrpld` print its version number, Git commit hash, and Git build branch.
-    - **Definitions** - Use `--definitions` to print the XRP Ledger protocol definitions (the same data returned by the [server_definitions method][]) as JSON, then exit. This lets you obtain updated definitions early in development. {% badge href="https://xrpl.org/blog/2026/rippled-3.2.0" %}New in: rippled 3.2.0{% /badge %}
+    - **Definitions** - Use `--definitions` to print the XRP Ledger protocol definitions (the same data returned by the [server_definitions method][]) as JSON, then exit. This lets you obtain updated definitions early in development. {% badge href="https://xrpl.org/blog/2026/xrpld-3.2.0" %}New in: xrpld 3.2.0{% /badge %}
 
 ## Generic Options
 

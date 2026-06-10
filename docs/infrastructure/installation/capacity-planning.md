@@ -55,6 +55,32 @@ The `RocksDB` setting is available for legacy purposes, but is generally not rec
 
 The example `rippled-example.cfg` file has the `type` field in the `[node_db]` stanza set to `NuDB`.
 
+#### More About Using NuDB
+
+[NuDB](https://github.com/vinniefalco/nudb#introduction) is an append-only key-value store that is optimized for SSD drives.
+
+NuDB has nearly constant performance and memory footprints regardless of the [amount of data being stored](#disk-space). NuDB _requires_ a solid-state drive. Scalability testing has shown that NuDB has equivalent or better performance than RocksDB in production and comparable configurations.
+
+Production servers should be configured to use NuDB and to store the amount of historical data required for your use case.
+
+Here is the recommended `[node_db]` configuration for a `rippled` server using NuDB:
+
+```
+[node_db]
+type=NuDB
+path=/var/lib/rippled/db/nudb
+online_delete=2000
+advisory_delete=0
+```
+
+Adjust the `path` to the directory where you want to keep the ledger store on disk. Adjust the `online_delete` and `advisory_delete` settings as desired for your configuration. For more details about these settings, see [Configure Online Deletion](../configuration/data-retention/configure-online-deletion.md) and [Configure Advisory Deletion](../configuration/data-retention/configure-advisory-deletion.md).
+
+NuDB uses a 4096-byte (4K) block size by default. You can change the block size with the optional `nudb_block_size` field, using any power of 2 between `4096` and `32768` bytes. {% badge href="https://github.com/XRPLF/rippled/releases/tag/3.2.0" %}New in: rippled 3.2.0{% /badge %}
+
+Test non-default block sizes to find what works best for your hardware before using them in production.
+
+{% admonition type="warning" name="Caution" %}You can only set the block size when NuDB creates a new database. To change it afterward, you must delete the existing ledger store and let the server rebuild it.{% /admonition %}
+
 #### More About Using RocksDB
 
 [RocksDB](https://rocksdb.org/docs/getting-started.html) is a persistent key-value store built into `rippled`. **Support for RocksDB is considered legacy.** Servers using RocksDB usually struggle to maintain sync with the Mainnet due to the memory requirements of maintaining a large database. Generally, you should use NuDB instead.
@@ -77,26 +103,6 @@ advisory_delete=0
 ```
 
 (Adjust the `path` to the directory where you want to keep the ledger store on disk. Adjust the `online_delete` and `advisory_delete` settings as desired for your configuration.)
-
-#### More About Using NuDB
-
-[NuDB](https://github.com/vinniefalco/nudb#introduction) is an append-only key-value store that is optimized for SSD drives.
-
-NuDB has nearly constant performance and memory footprints regardless of the [amount of data being stored](#disk-space). NuDB _requires_ a solid-state drive. Scalability testing has shown that NuDB has equivalent or better performance than RocksDB in production and comparable configurations.
-
-Production servers should be configured to use NuDB and to store the amount of historical data required for your use case.
-
-NuDB does not have performance-related configuration options available in `rippled.cfg`. Here is the recommended `[node_db]` configuration for a `rippled` server using NuDB:
-
-```
-[node_db]
-type=NuDB
-path=/var/lib/rippled/db/nudb
-online_delete=2000
-advisory_delete=0
-```
-
-Adjust the `path` to the directory where you want to keep the ledger store on disk. Adjust the `online_delete` and `advisory_delete` settings as desired for your configuration. For more details about these settings, see [Configure Online Deletion](../configuration/data-retention/configure-online-deletion.md) and [Configure Advisory Deletion](../configuration/data-retention/configure-advisory-deletion.md).
 
 
 ### Log Level
