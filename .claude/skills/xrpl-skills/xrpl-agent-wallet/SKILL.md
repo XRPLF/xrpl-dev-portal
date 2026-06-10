@@ -35,10 +35,29 @@ const wallet = Wallet.generate();
 
 ### Step 2 — Add .env to .gitignore
 
+```typescript
+const gitignorePath = '.gitignore';
+const gitignoreContent = fs.existsSync(gitignorePath)
+  ? fs.readFileSync(gitignorePath, 'utf8')
+  : '';
+
+if (!gitignoreContent.includes('.env')) {
+  fs.appendFileSync(gitignorePath, '\n.env\n', { encoding: 'utf8' });
+}
+```
 
 ### Step 3 — Write the seed to .env
 
-Write the seed to `.env` in the working directory **before doing anything else with it**. Never store it in a variable that persists beyond this write. If a `.env` file already exists, check whether `XRPL_SEED` is already set. If it is, ask the user whether to create a second wallet or load the existing one.
+Write the seed to `.env` in the working directory **before doing anything else with it**. Never store it in a variable that persists beyond this write.
+
+```typescript
+import * as fs from 'fs';
+
+const envLine = `XRPL_SEED="${wallet.seed}"\n`;
+fs.appendFileSync('.env', envLine, { encoding: 'utf8' });
+```
+
+If a `.env` file already exists, check whether `XRPL_SEED` is already set. If it is, do not overwrite it — ask the user whether to create a second wallet or load the existing one.
 
 
 ### Step 4 — Report to the user

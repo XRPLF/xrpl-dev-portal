@@ -236,8 +236,9 @@ The client automatically:
 4. Retries the original request with the payment receipt
 5. Returns the response once the server verifies settlement
 
-> Note: This guide currently includes Python examples only.
-
+{% admonition type="info" name="Note" %}
+This guide currently includes Python examples only.
+{% /admonition %}
 
 ---
 
@@ -298,8 +299,6 @@ difference transparently.
   The full tutorial for setting up the XRPL skills and sending your first payment.
 - [Track and Measure Agent Behavior](/docs/agents/track-agent-behavior) —
   Using `SourceTag` and `Memos` to attribute and audit agent payments.
-<!-- - [For Institutional Developers](/docs/use-cases/agentic-transactions/#for-institutional-developers) —
-  Spending controls, key management, and compliance logging for production deployments. -->
 - [T54 X402 Documentation](https://xrpl-x402.t54.ai/docs) — The full X402 reference for
   the XRPL implementation, including the exact payment scheme and facilitator API.
 - [X402 Protocol Repository](https://github.com/x402-foundation/x402) — The official X402 repository.
