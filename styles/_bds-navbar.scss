@@ -136,7 +136,6 @@ $bds-navbar-padding-mobile: 0 20px;
     gap: 24px;
     font-family: $font-family-sans-serif;
     font-weight: 400;
-    margin-bottom: 0;
 
     // Tablet - show nav items
     @include media-breakpoint-up(md) {
@@ -165,6 +164,7 @@ $bds-navbar-padding-mobile: 0 20px;
     cursor: pointer;
     transition: color 0.2s ease;
     padding: 4px 0;
+    margin-bottom: 0;
 
     &:hover,
     &--active {
