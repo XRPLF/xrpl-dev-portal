@@ -75,7 +75,7 @@ advisory_delete=0
 
 Adjust the `path` to the directory where you want to keep the ledger store on disk. Adjust the `online_delete` and `advisory_delete` settings as desired for your configuration. For more details about these settings, see [Configure Online Deletion](../configuration/data-retention/configure-online-deletion.md) and [Configure Advisory Deletion](../configuration/data-retention/configure-advisory-deletion.md).
 
-NuDB uses a 4096-byte (4K) block size by default. You can change the block size with the optional `nudb_block_size` field, using any power of 2 between `4096` and `32768` bytes. {% badge href="https://github.com/XRPLF/rippled/releases/tag/3.2.0" %}New in: rippled 3.2.0{% /badge %}
+NuDB uses a 4096-byte (4K) block size by default. You can change the block size with the optional `nudb_block_size` field, using any power of 2 between `4096` and `32768` bytes. {% badge href="https://github.com/XRPLF/rippled/releases/tag/3.2.0" %}New in: xrpld 3.2.0{% /badge %}
 
 Test non-default block sizes to find what works best for your hardware before using them in production.
 
