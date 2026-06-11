@@ -106,6 +106,7 @@ const sectionConfig: Record<string, {
     pinned: [
       "/docs/tutorials/payments/send-xrp/",
       "/docs/tutorials/payments/send-an-mpt/",
+      "/docs/tutorials/payments/send-a-trust-line-token/",
       "/docs/tutorials/payments/send-fungible-token-escrows/",
       "/docs/tutorials/payments/send-a-check/",
     ],
