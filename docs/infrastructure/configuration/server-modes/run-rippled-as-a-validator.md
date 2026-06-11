@@ -39,7 +39,7 @@ Strive to have your validator embody the following properties. Being a good vali
 
 - **In agreement**
 
-    A good validator's votes match the outcome of the consensus process as often as possible. To do otherwise could indicate that your validator's software is outdated, buggy, or intentionally biased. Always run the [latest `rippled` release](https://github.com/XRPLF/rippled/tree/release) without modifications. [Watch `rippled` releases](https://github.com/XRPLF/rippled/releases) and subscribe to the [Google Group](https://groups.google.com/g/ripple-server) to be notified of new releases.
+    A good validator's votes match the outcome of the consensus process as often as possible. To do otherwise could indicate that your validator's software is outdated, buggy, or intentionally biased. Always run the latest stable release without modifications. [Watch `rippled` releases](https://github.com/XRPLF/rippled/releases) and subscribe to the [Google Group](https://groups.google.com/g/ripple-server) to be notified of new releases.
 
 - **Issuing prompt votes**
 
@@ -51,7 +51,7 @@ Strive to have your validator embody the following properties. Being a good vali
 
     A good validator has a clearly identified owner. Providing [domain verification](#6-provide-domain-verification) is a good start. Ideally, XRP Ledger network UNLs include validators run by different owners in multiple legal jurisdictions and geographic areas. This reduces the chance that any localized events could interfere with the impartial operations of trusted validators. <!-- STYLE_OVERRIDE: clearly -->
 
-It is strongly recommended that operators use the list providers that are present in this [example file](https://github.com/XRPLF/rippled/blob/develop/cfg/validators-example.txt).
+It is strongly recommended that operators use the list providers that are present in this [example file](https://github.com/XRPLF/rippled/blob/release-3.1/cfg/validators-example.txt).
 
 
 
@@ -163,7 +163,7 @@ For a comparison of these approaches, see [Pros and Cons of Peering Configuratio
 
 This configuration connects your validator to the XRP Ledger network using [discovered peers](../../../concepts/networks-and-servers/peer-protocol.md#peer-discovery). This is the default behavior for `rippled` servers.
 
-_**To connect your validator to the XRP Ledger network using discovered peers,**_ omit the `[peer_private]` stanza or set it to `0` in your validator's `xrpld.cfg` file. The [example `xrpld.cfg` file](https://github.com/XRPLF/rippled/blob/develop/cfg/xrpld-example.cfg) is delivered with this configuration.
+_**To connect your validator to the XRP Ledger network using discovered peers,**_ omit the `[peer_private]` stanza or set it to `0` in your validator's `xrpld.cfg` file. The [example `xrpld.cfg` file](https://github.com/XRPLF/rippled/blob/master/cfg/xrpld-example.cfg) is delivered with this configuration.
 
 
 ### Connect using proxies
@@ -218,7 +218,7 @@ _**To connect your validator to the network using public hubs:**_
     ```
 
 {% admonition type="info" name="Note" %}
-The above list may evolve over time. To ensure you're using the most current set of public hubs, refer to the official [`xrpld-example.cfg`](https://github.com/XRPLF/rippled/blob/develop/cfg/xrpld-example.cfg) maintained by XRPLF.
+The above list may evolve over time. To ensure you're using the most current set of public hubs, refer to the official [`xrpld-example.cfg`](https://github.com/XRPLF/rippled/blob/master/cfg/xrpld-example.cfg) maintained by XRPLF.
 {% /admonition %}
 
 
@@ -285,7 +285,7 @@ To provide domain verification:
 
 2. Serve an [`xrp-ledger.toml`](../../../references/xrp-ledger-toml.md) file at your domain, and complete the [domain verification](../../../references/xrp-ledger-toml.md#domain-verification) steps. Once you have completed these steps, your validator should be visible to the livenet [explorer](https://livenet.xrpl.org/network/validators) or any other site that monitors the validator network and supports decetralized domain verification.
 
-3. Share your validator's public key with the public, especially other `rippled` operators. For example, you can share your validator's public key on your website, on social media, in the [XRPChat community forum](https://www.xrpchat.com/), or in a press release.
+3. Share your validator's public key with the public, especially other `rippled` operators. For example, you can share your validator's public key on your website, on social media, or in a press release.
 
 
 ## Revoke validator keys

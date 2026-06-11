@@ -42,7 +42,7 @@ Create a [permissioned domain][], or modify one that you own.
 | Field                 | JSON Type         | [Internal Type][] | Required? | Description |
 |:----------------------|:------------------|:------------------|:----------|:------------|
 | `DomainID`            | String - [Hash][] | UInt256           | No        | The ledger entry ID of an existing permissioned domain to modify. If omitted, creates a new permissioned domain. |
-| `AcceptedCredentials` | Array             | Array             | Yes       | A list of 1 to 10 [**Accepted Credentials objects**](#accepted-credentials-objects) that grant access to this domain. The list does not need to be sorted, but it cannot contain duplicates. When modifying an existing domain, this list replaces the existing list. |
+| `AcceptedCredentials` | Array             | Array             | Yes       | A list of 1 to 10 [**Accepted Credentials objects**](#acceptedcredentials-objects) that grant access to this domain. The list does not need to be sorted, but it cannot contain duplicates. When modifying an existing domain, this list replaces the existing list. |
 
 ### AcceptedCredentials Objects
 

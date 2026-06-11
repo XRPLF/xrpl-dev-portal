@@ -102,7 +102,7 @@ Before you install Clio, you must meet the following requirements.
     If you want access to development or pre-release versions, use one of the following instead of `stable`:
 
     - `unstable` - Pre-release builds such as betas or release candidates
-    - `nightly` - Nightly development builds based on the [`develop` branch](https://github.com/XRPLF/Clio/tree/develop))
+    - `nightly` - Nightly development builds
 
 6. Fetch the Ripple repository.
 

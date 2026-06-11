@@ -23,26 +23,8 @@ import sys
 from datetime import date, datetime
 
 
-# Emails to exclude from credits (Ripple employees not using @ripple.com).
-# Commits from @ripple.com addresses are already filtered automatically.
-EXCLUDED_EMAILS = {
-    "3maisons@gmail.com",                                   # Luc des Trois Maisons
-    "a1q123456@users.noreply.github.com",                   # Jingchen Wu
-    "bthomee@users.noreply.github.com",                     # Bart Thomee
-    "21219765+ckeshava@users.noreply.github.com",           # Chenna Keshava B S
-    "gregtatcam@users.noreply.github.com",                  # Gregory Tsipenyuk
-    "kuzzz99@gmail.com",                                    # Sergey Kuznetsov
-    "legleux@users.noreply.github.com",                     # Michael Legleux
-    "mathbunnyru@users.noreply.github.com",                 # Ayaz Salikhov
-    "mvadari@gmail.com",                                    # Mayukha Vadari
-    "115580134+oleks-rip@users.noreply.github.com",         # Oleksandr Pidskopnyi
-    "3397372+pratikmankawde@users.noreply.github.com",      # Pratik Mankawde
-    "35279399+shawnxie999@users.noreply.github.com",        # Shawn Xie
-    "5780819+Tapanito@users.noreply.github.com",            # Vito Tumas
-    "13349202+vlntb@users.noreply.github.com",              # Valentin Balaschenko
-    "129996061+vvysokikh1@users.noreply.github.com",        # Vladislav Vysokikh
-    "vvysokikh@gmail.com",                                  # Vladislav Vysokikh
-}
+# Repo root, so paths resolve correctly regardless of where the script is invoked from.
+REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 # Pre-compiled patterns for skipping version commits
@@ -52,6 +34,16 @@ SKIP_PATTERNS = [
     re.compile(r"bump version to", re.IGNORECASE),
     re.compile(r"^Merge tag ", re.IGNORECASE),
 ]
+
+
+# Patterns for normalizing commit titles when detecting cherry-pick duplicates.
+# Strips trailing "(#NNNN)" PR-number suffixes and conventional-commit prefixes.
+PR_NUM_RE = re.compile(r"\s*\(#\d+\)")
+CONV_COMMIT_RE = re.compile(
+    r"^(fix|feat|refactor|chore|docs|test|tests|ci|build|style|perf|revert|release|bugfix)"
+    r"(\([^)]*\))?\s*:\s*",
+    re.IGNORECASE,
+)
 
 
 # --- API helpers ---
@@ -164,19 +156,54 @@ def fetch_version_info(ref):
 
 
 def fetch_commits(from_ref, to_ref):
-    """Fetch all commits between two refs using the GitHub compare API."""
-    commits = []
-    page = 1
-    while True:
-        data = run_gh_rest(
-            f"repos/XRPLF/rippled/compare/{from_ref}...{to_ref}?per_page=250&page={page}"
-        )
-        batch = data.get("commits", [])
-        commits.extend(batch)
-        if len(batch) < 250:
-            break
-        page += 1
-    return commits
+    """Fetch commits between two refs, filtering out incoming cherry-pick duplicates."""
+
+    def key(c):
+        t = c["commit"]["message"].split("\n")[0]
+        t = PR_NUM_RE.sub("", t)
+        t = CONV_COMMIT_RE.sub("", t)
+        return re.sub(r"\s+", " ", t).strip().lower()
+
+    def paginate(base, head):
+        results, page = [], 1
+        while True:
+            data = run_gh_rest(
+                f"repos/XRPLF/rippled/compare/{base}...{head}?per_page=250&page={page}"
+            )
+            batch = data.get("commits", [])
+            results.extend(batch)
+            if len(batch) < 250:
+                break
+            page += 1
+        return results
+
+    incoming = paginate(from_ref, to_ref)
+    shipped = paginate(to_ref, from_ref)
+    incoming_keys = {key(c) for c in incoming}
+    shipped_keys = {key(c) for c in shipped}
+
+    before = len(incoming)
+    deduped = [c for c in incoming if key(c) not in shipped_keys]
+    dropped = before - len(deduped)
+    if dropped:
+        print(f"  Filtered {dropped} cherry-pick duplicates.")
+
+    # Surface backward-diff commits with no forward-diff match. These are
+    # either real release-branch originals or cherry-pick dupes that drifted
+    # enough to escape matching.
+    unmatched = [
+        c for c in shipped
+        if key(c) not in incoming_keys
+        and not should_skip(c["commit"]["message"].split("\n")[0])
+    ]
+    for c in unmatched:
+        c["_potential_dupe"] = True
+    if unmatched:
+        print(f"  Adding {len(unmatched)} unmatched {from_ref} commit(s) to draft "
+              f"flagged as [POTENTIAL DUPE — VERIFY].")
+    deduped.extend(unmatched)
+
+    return deduped
 
 
 def parse_features_macro(text):
@@ -330,6 +357,39 @@ def fetch_prs_graphql(pr_numbers):
                     }
 
     return results
+
+
+def filter_to_ripple_members(logins, org="ripple"):
+    """Return the subset of `logins` that are members of ripple, batched via GraphQL.
+
+    Uses the authenticated viewer's privileges, so this part of the script probably won't
+    work for non-Ripple org members. In this case most Ripple org members will show up
+    in the credits section.
+    """
+    if not logins:
+        return set()
+
+    members = set()
+    batch_size = 50
+    target = org.lower()
+    logins = list(logins)
+
+    for i in range(0, len(logins), batch_size):
+        batch = logins[i:i + batch_size]
+        fragments = [
+            f'u{idx}: user(login: "{l}") {{ organizations(first: 20) {{ nodes {{ login }} }} }}'
+            for idx, l in enumerate(batch)
+        ]
+        data = run_gh_graphql("{ " + " ".join(fragments) + " }")
+        nodes = data.get("data") or {}
+        for idx, l in enumerate(batch):
+            user = nodes.get(f"u{idx}")
+            if not user:
+                continue
+            orgs = {n["login"].lower() for n in user.get("organizations", {}).get("nodes", [])}
+            if target in orgs:
+                members.add(l)
+    return members
 
 
 # --- Utilities ---
@@ -531,7 +591,11 @@ def main():
     print(f"Version: {version}")
 
     year = args.date.split("-")[0]
-    output_path = args.output or f"blog/{year}/rippled-{version}.md"
+    # Resolve --output relative to REPO_ROOT (not CWD). Absolute paths pass through unchanged.
+    if args.output:
+        output_path = args.output if os.path.isabs(args.output) else os.path.join(REPO_ROOT, args.output)
+    else:
+        output_path = os.path.join(REPO_ROOT, "blog", year, f"rippled-{version}.md")
 
     print(f"Fetching commits: {args.from_ref}...{args.to_ref}")
     commits = fetch_commits(args.from_ref, args.to_ref)
@@ -542,7 +606,16 @@ def main():
     pr_shas = {}       # PR/issue number → commit SHA (for file lookups on Issues)
     pr_bodies = {}     # PR/issue number → commit body (for fallback descriptions)
     orphan_commits = []  # Commits with no PR/Issues link
-    authors = set()
+    # Potential dupe commits are kept in their own parallel buckets so they
+    # don't collide with real entries by PR number. They go through the same
+    # PR-enrichment pipeline to give reviewers full side-by-side context.
+    dupe_pr_numbers = {}
+    dupe_pr_shas = {}
+    dupe_pr_bodies = {}
+    dupe_orphan_commits = []
+    # Contributors are collected here and filtered against the Ripple org
+    contributor_logins = set()
+    contributors_without_login = set()
 
     for commit in commits:
         full_message = commit["commit"]["message"]
@@ -550,20 +623,30 @@ def main():
         body = "\n".join(full_message.split("\n")[1:]).strip()
         sha = commit["sha"]
         author = commit["commit"]["author"]["name"]
-        email = commit["commit"]["author"].get("email", "")
 
-        # Skip Ripple employees from credits
-        login = (commit.get("author") or {}).get("login")
-        if not email.lower().endswith("@ripple.com") and email not in EXCLUDED_EMAILS:
-            if login:
-                authors.add(f"@{login}")
-            else:
-                authors.add(author)
+        # Collect contributors for the credits section. Dupe commits and bots are skipped.
+        if not commit.get("_potential_dupe"):
+            github_user = commit.get("author") or {}
+            if github_user.get("type") != "Bot":
+                login = github_user.get("login")
+                if login:
+                    contributor_logins.add(login)
+                else:
+                    contributors_without_login.add(author)
 
         if should_skip(message):
             continue
 
         pr_number = extract_pr_number(message)
+        if commit.get("_potential_dupe"):
+            if pr_number:
+                dupe_pr_numbers[pr_number] = message
+                dupe_pr_shas[pr_number] = sha
+                dupe_pr_bodies[pr_number] = body
+            else:
+                dupe_orphan_commits.append({"sha": sha, "message": message, "body": body})
+            continue
+
         if pr_number:
             pr_numbers[pr_number] = message
             pr_shas[pr_number] = sha
@@ -586,12 +669,14 @@ def main():
 
     print(f"Building changelog entries...")
 
-    # Fetch all PR details in batches via GraphQL
-    pr_details = fetch_prs_graphql(list(pr_numbers.keys()))
+    # Fetch all PR details in batches via GraphQL.
+    all_pr_numbers = list(set(pr_numbers.keys()) | set(dupe_pr_numbers.keys()))
+    pr_details = fetch_prs_graphql(all_pr_numbers)
 
     # Build entries, sorting amendments automatically
     amendment_entries = []
     entries = []
+    DUPE_MARKER = "[POTENTIAL DUPE — VERIFY]"
     for pr_number, commit_msg in pr_numbers.items():
         pr_data = pr_details.get(pr_number)
 
@@ -638,6 +723,59 @@ def main():
             entry = format_commit_entry(sha, orphan["message"], orphan["body"], files)
             entries.append(entry)
 
+    # Build entries for potential dupes
+    for pr_number, commit_msg in dupe_pr_numbers.items():
+        sha = dupe_pr_shas[pr_number]
+        pr_data = pr_details.get(pr_number)
+        print(f"  Building potential-dupe entry for #{pr_number} ({sha[:7]})...")
+
+        if pr_data:
+            title = f"{DUPE_MARKER} {pr_data['title']}"
+            body = pr_data.get("body", "")
+            labels = pr_data.get("labels", [])
+            files = pr_data.get("files", [])
+            link_type = pr_data.get("type", "pull")
+            if not files:
+                files = fetch_commit_files(sha)
+            if is_amendment(files) and amendment_diff:
+                entry = format_uncategorized_entry(pr_number, title, labels, body, link_type=link_type)
+                amendment_entries.append(entry)
+            else:
+                entry = format_uncategorized_entry(pr_number, title, labels, body, files, link_type)
+                entries.append(entry)
+        else:
+            # PR/Issue lookup failed — fall back to commit-only entry
+            files = fetch_commit_files(sha)
+            title = f"{DUPE_MARKER} {commit_msg}"
+            if is_amendment(files) and amendment_diff:
+                entry = format_commit_entry(sha, title, dupe_pr_bodies[pr_number])
+                amendment_entries.append(entry)
+            else:
+                entry = format_commit_entry(sha, title, dupe_pr_bodies[pr_number], files)
+                entries.append(entry)
+
+    # Potential dupe orphans (no PR link at all)
+    for orphan in dupe_orphan_commits:
+        sha = orphan["sha"]
+        print(f"  Building potential-dupe orphan entry for {sha[:7]}...")
+        files = fetch_commit_files(sha)
+        title = f"{DUPE_MARKER} {orphan['message']}"
+        if is_amendment(files) and amendment_diff:
+            entry = format_commit_entry(sha, title, orphan["body"])
+            amendment_entries.append(entry)
+        else:
+            entry = format_commit_entry(sha, title, orphan["body"], files)
+            entries.append(entry)
+
+    # Build the credits list.
+    print(f"Checking Ripple org membership for {len(contributor_logins)} contributor login(s)...")
+    ripple_members = filter_to_ripple_members(contributor_logins)
+    authors = set()
+    for login in contributor_logins:
+        if login not in ripple_members:
+            authors.add(f"@{login}")
+    authors |= contributors_without_login
+
     # Generate markdown
     markdown = generate_markdown(version, args.date, amendment_diff, amendment_unchanged, amendment_entries, entries, authors, version_commit)
 
@@ -648,11 +786,16 @@ def main():
 
     print(f"\nRelease notes written to: {output_path}")
 
-    # Update blog/sidebars.yaml
-    sidebars_path = "blog/sidebars.yaml"
-    # Derive sidebar path and year from actual output path
-    relative_path = output_path.removeprefix("blog/")
-    sidebar_year = relative_path.split("/")[0]
+    # Update blog/sidebars.yaml only if the output actually lives under blog/.
+    # Custom --output paths outside blog/ are skipped.
+    sidebars_path = os.path.join(REPO_ROOT, "blog", "sidebars.yaml")
+    blog_dir = os.path.join(REPO_ROOT, "blog")
+    abs_output = os.path.abspath(output_path)
+    if not abs_output.startswith(blog_dir + os.sep):
+        print(f"Output {output_path} is outside {blog_dir} — skipping sidebar update.")
+        return
+    relative_path = os.path.relpath(abs_output, blog_dir)
+    sidebar_year = relative_path.split(os.sep)[0]
     new_entry = f"        - page: {relative_path}"
     try:
         with open(sidebars_path, "r") as f:

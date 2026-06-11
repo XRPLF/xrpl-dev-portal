@@ -243,7 +243,7 @@ The payee should check that the parameters of the payment channel are suitable f
 Since there can be multiple channels between the same two parties, it is important for the payee to check the qualities of the correct channel. If there is any chance of confusion, the payer should clarify the Channel ID (`channel_id`) of the channel to use.
 
 
-## 3. The payer creates one or more signed _claims_ for the XRP in the channel.
+## 3. The payer creates one or more signed claims for the XRP in the channel.
 
 The amounts of these claims depends on the specific goods or services the payer wants to pay for.
 

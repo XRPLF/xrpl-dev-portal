@@ -21,9 +21,9 @@ Before you install `rippled`, you must meet the [System Requirements](system-req
 
     Choose the appropriate RPM repository for the stability of releases you want:
 
-    - `stable` for the latest production release (`master` branch)
-    - `unstable` for pre-release builds (`release` branch)
-    - `nightly` for experimental/development builds (`develop` branch)
+    - `stable` - The latest stable release
+    - `unstable` - Pre-release builds such as betas or release candidates
+    - `nightly` - Nightly development builds
 
     {% tabs %}
 

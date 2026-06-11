@@ -13,9 +13,11 @@ markdown:
 ---
 # Introducing XRP Ledger version 3.1.3
 
-Version 3.1.3 of `rippled`, the reference server implementation of the XRP Ledger protocol, is now available. This release introduces the `fixCleanup3_1_3` amendment, which contains a collection of fixes for NFTs, Permissioned Domains, Vaults, and the Lending Protocol. Due to the importance of the included fixes, the default vote is set to **Yes**.
+Version 3.1.3 of `rippled`, the reference server implementation of the XRP Ledger protocol, is now available. This release introduced the `fixCleanup3_1_3` amendment, which contained a collection of fixes for NFTs, Permissioned Domains, Vaults, the Lending Protocol, and MPTs.
 
-This release also adds a `verify_endpoints` parameter to the `rippled` configuration file for local peer network development, as well as various bug fixes and refactors.
+Due to the severity of the bugs, development took place in both the public `rippled` repo and a private repo to keep the details of the issues confidential and prevent malicious actors from exploiting them before fixes shipped. To address all of the issues quickly, they were bundled under a single `fixCleanup3_1_3` amendment, and UNL validators were contacted to update immediately. The amendment shipped with a default vote of **Yes**, so validators upgrading their software automatically cast a yes vote to speed up applying the fixes.
+
+In addition to the fix amendment, this release also added a `verify_endpoints` parameter to the `rippled` configuration file for local peer network development, less-severe bug fixes, and refactors.
 
 
 ## Action Required
@@ -48,13 +50,29 @@ Date:   Wed May 6 15:37:35 2026 -0400
 
 ### Amendments
 
-- **fixCleanup3_1_3**: This amendment is a collection of fixes for NFTs, Permissioned Domains, Vaults, and the Lending Protocol. [`4539bb0`](https://github.com/XRPLF/rippled/commit/4539bb07)
-  - Fixes an issue with expired `NFTokenOffer` entries remaining on the ledger. With this amendment enabled, using the `NFTokenAcceptOffer` transaction on an expired `NFTokenOffer` now deletes it as part of transaction processing.
-  - Adds an invariant check to ensure Permissioned Domains aren't modified by failed transactions.
-  - Fixes a trust line token limit check that was skipped when withdrawing vault assets. With this amendment enabled, `VaultWithdraw` transactions that specify either vault shares or vault assets will respect the trust line token limit of the destination address.
-  - Fixes loan accounting information not updating in its associated `Loan`, `LoanBroker`, and `Vault` entries if the loan was defaulted, impaired, or unimpaired. 
-  - Changes a `LoanPay` error to return `tecNO_PERMISSION` instead of `temINVALID_FLAG` when attempting to overpay on a loan that doesn't permit overpayments.
-  - Adds an additional check for `LoanBroker` invariants to ensure the listed `CoverAvailable` exactly matches the assets held in the associated pseudo-account.
+**fixCleanup3_1_3**: This amendment introduced a collection of fixes for NFTs, Permissioned Domains, Vaults, the Lending Protocol, MPTs, and miscellaneous issues:
+  - **NFTs**
+    - Fixed an issue with expired `NFTokenOffer` entries remaining on the ledger. The `NFTokenAcceptOffer` transaction now deletes expired offers as part of transaction processing. ([#5707](https://github.com/XRPLF/rippled/pull/5707))
+  - **Permissioned Domains**
+    - Fixed a keylet collision crash when using permissioned domains with ticketed transactions. ([#7129](https://github.com/XRPLF/rippled/pull/7129))
+    - Added an invariant check to ensure Permissioned Domains aren't modified by failed transactions. ([#6134](https://github.com/XRPLF/rippled/pull/6134))
+  - **Single Asset Vaults**
+    - Clamped `VaultClawback` to `assetsAvailable` for zero-amount ("all") clawbacks, fixing a bug that allowed clawing back more assets than were available on outstanding loans. ([#6646](https://github.com/XRPLF/rippled/pull/6646))
+    - Fixed a trust line token limit check that was skipped when withdrawing vault assets. `VaultWithdraw` transactions that specify either vault shares or vault assets now respect the trust line token limit of the destination address. ([#6645](https://github.com/XRPLF/rippled/pull/6645))
+  - **Lending Protocol**
+    - Fixed a fee calculation issue by capping the base fee for `LoanPay`. ([#6969](https://github.com/XRPLF/rippled/pull/6969))
+    - Fixed an inaccurate assertion in `LoanPay` transactions by improving IOU rounding accuracy. ([#6231](https://github.com/XRPLF/rippled/pull/6231))
+    - Added several Lending Protocol fixes. ([#6678](https://github.com/XRPLF/rippled/pull/6678))
+      - Fixed loan accounting information not updating in its associated `Loan`, `LoanBroker`, and `Vault` entries when the loan was defaulted, impaired, or unimpaired.
+      - Changed a `LoanPay` error to return `tecNO_PERMISSION` instead of `temINVALID_FLAG` when attempting to overpay on a loan that doesn't permit overpayments.
+      - Added an additional check for `LoanBroker` invariants to ensure the listed `CoverAvailable` exactly matches the assets held in the associated pseudo-account.
+  - **MPTs**
+    - Prevented the deletion of MPTs with an active escrow. ([#6635](https://github.com/XRPLF/rippled/pull/6635))
+    - Enforced aggregate `MaximumAmount` checks in multi-send MPT transactions. ([#6644](https://github.com/XRPLF/rippled/pull/6644))
+  - **Miscellaneous Issues**
+    - Fixed a bug where boolean results could be overwritten by multiple calls to `visitEntry`. ([#6609](https://github.com/XRPLF/rippled/pull/6609))
+    - Added a check for empty `sfAdditionalBooks` arrays in hybrid offer invariants. ([#6716](https://github.com/XRPLF/rippled/pull/6716))
+    - Stopped transaction processing and returned an error code when deleting expired credentials failed. ([#6715](https://github.com/XRPLF/rippled/pull/6715))
 
 
 ### Features
@@ -70,7 +88,6 @@ Date:   Wed May 6 15:37:35 2026 -0400
 ### Bug Fixes
 
 - Improved loan invariant message. ([#6668](https://github.com/XRPLF/rippled/pull/6668))
-- Enforced aggregate `MaximumAmount` in multi-send MPT. ([#6644](https://github.com/XRPLF/rippled/pull/6644))
 - Fixed `account_tx` limit parameter validation for malformed values. ([#5891](https://github.com/XRPLF/rippled/pull/5891))
 - Fixed array size check. ([#6030](https://github.com/XRPLF/rippled/pull/6030))
 - Corrected index for limit in `book_offers` CLI. ([#6043](https://github.com/XRPLF/rippled/pull/6043))
@@ -85,19 +102,10 @@ Date:   Wed May 6 15:37:35 2026 -0400
 - Made assorted Permissioned Domain fixes. ([#6587](https://github.com/XRPLF/rippled/pull/6587))
 - Removed fatal assertion on Linux thread name truncation. ([#6690](https://github.com/XRPLF/rippled/pull/6690))
 - Changed `Tuning::bookOffers` minimum limit to 1. ([#6812](https://github.com/XRPLF/rippled/pull/6812))
-- Prevented deletion of MPTokens with active escrow. ([#6635](https://github.com/XRPLF/rippled/pull/6635))
-- Checked trustline limits for share-denominated vault withdrawals. ([#6645](https://github.com/XRPLF/rippled/pull/6645))
-- Clamped `VaultClawback` to `assetsAvailable` for zero-amount clawback. ([#6646](https://github.com/XRPLF/rippled/pull/6646))
-- Added assorted Lending Protocol fixes. ([#6678](https://github.com/XRPLF/rippled/pull/6678))
-- Fixed touchy "funds are conserved" assertion in `LoanPay`. ([#6231](https://github.com/XRPLF/rippled/pull/6231))
 - Added rounding to Vault invariants. ([#6217](https://github.com/XRPLF/rippled/pull/6217))
-- Stopped tx processing if failed to delete expired credentials. ([#6715](https://github.com/XRPLF/rippled/pull/6715))
-- Checked for empty `sfAdditionalBooks` array in hybrid offer invariant. ([#6716](https://github.com/XRPLF/rippled/pull/6716))
-- Prevented overwriting a bool value in an invariant. ([#6609](https://github.com/XRPLF/rippled/pull/6609))
 - Capped the base fee for `LoanPay`. ([#6969](https://github.com/XRPLF/rippled/pull/6969))
 - Checked network ID in `transactionSignFor`. ([`2ddef8c`](https://github.com/XRPLF/rippled/commit/2ddef8c8))
-- Improved JSON parsing of currency issuers. ([`af7e5ef`](https://github.com/XRPLF/rippled/commit/af7e5ef9))
-- Used transaction sequence numbers in permissioned domains. ([`dde7ca9`](https://github.com/XRPLF/rippled/commit/dde7ca9f))
+- Improved JSON parsing of currency issuers. ([#7110](https://github.com/XRPLF/rippled/pull/7110))
 
 
 ### Refactors
@@ -106,12 +114,12 @@ Date:   Wed May 6 15:37:35 2026 -0400
 - Enforced 15-char limit and simplified thread naming labels. ([#6212](https://github.com/XRPLF/rippled/pull/6212))
 - Improved RPC variable naming and handling. ([`56a9d69`](https://github.com/XRPLF/rippled/commit/56a9d69b))
 - Removed erroneous `base_uint` constructor from container. ([`5aa3d5e`](https://github.com/XRPLF/rippled/commit/5aa3d5e2))
-- Limited JSON array size. ([`377b155`](https://github.com/XRPLF/rippled/commit/377b155d))
-- Filled `txJson` based on `apiVersion`. ([`066e395`](https://github.com/XRPLF/rippled/commit/066e3956))
-- Used named constant for leaf item size. ([`bc16845`](https://github.com/XRPLF/rippled/commit/bc168453))
-- Improved `Forwarded` header field parsing. ([`024c9c5`](https://github.com/XRPLF/rippled/commit/024c9c57))
-- Moved unhex lookup table out of function. ([`406b534`](https://github.com/XRPLF/rippled/commit/406b5346))
-- Prevented dry-run transactions from being queued. ([`3004e04`](https://github.com/XRPLF/rippled/commit/3004e049))
+- Limited JSON array size. ([#7112](https://github.com/XRPLF/rippled/pull/7112))
+- Filled `txJson` based on `apiVersion`. ([#7109](https://github.com/XRPLF/rippled/pull/7109))
+- Used named constant for leaf item size. ([#7130](https://github.com/XRPLF/rippled/pull/7130))
+- Improved `Forwarded` header field parsing. ([#7126](https://github.com/XRPLF/rippled/pull/7126))
+- Moved unhex lookup table out of function. ([#7104](https://github.com/XRPLF/rippled/pull/7104))
+- Prevented dry-run transactions from being queued. ([#7131](https://github.com/XRPLF/rippled/pull/7131))
 
 
 ### CI/Build
