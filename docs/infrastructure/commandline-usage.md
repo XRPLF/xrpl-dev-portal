@@ -8,7 +8,9 @@ labels:
 
 The `xrpld` executable usually runs as a daemon that powers the XRP Ledger, although it can also run in other modes. It was renamed from `rippled` to `xrpld`. {% badge href="https://xrpl.org/blog/2026/xrpld-3.2.0" %}New in: xrpld 3.2.0{% /badge %}
 
+{% admonition type="info" name="Backward compatibility" %}
 The former name, `rippled`, still works as a symlink to `xrpld`, so existing scripts and automation continue to work during the transition.
+{% /admonition %}
 
 This page describes all the options you can pass to `xrpld` when running it from the command line.
 
