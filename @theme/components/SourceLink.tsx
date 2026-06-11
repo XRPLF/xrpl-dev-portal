@@ -15,7 +15,7 @@ function buildSourceHref(path: string, release: string): string {
 // SourceLink for rendered page link
 export function sourceLinkForLlms(node: Node): string {
   const release = process.env.PUBLIC_XRPLD_RELEASE || ''
-  return `[Source] ${buildSourceHref(node.attributes.path, release)}`
+  return `[Source](${buildSourceHref(node.attributes.path, release)})`
 }
 
 export default function SourceLink(props: {
