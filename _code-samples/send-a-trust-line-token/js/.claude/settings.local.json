@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(gh api *)",
+      "Bash(python scripts/diagnose.py --network testnet account r9hubmAsLytrAiAF9oN6rNHdqPitkRCoQv)",
+      "Bash(python3 scripts/diagnose.py --network testnet account r9hubmAsLytrAiAF9oN6rNHdqPitkRCoQv)",
+      "Bash(python3 -c \"import xrpl; print\\('xrpl-py', xrpl.__version__\\)\")",
+      "Bash(curl -s -X POST https://s.altnet.rippletest.net:51234/ -H 'Content-Type: application/json' -d '{\"method\":\"account_info\",\"params\":[{\"account\":\"r9hubmAsLytrAiAF9oN6rNHdqPitkRCoQv\",\"ledger_index\":\"validated\"}]}')",
+      "Bash(python3 -m json.tool)",
+      "Bash(curl -s -X POST https://s.altnet.rippletest.net:51234/ -H 'Content-Type: application/json' -d '{\"method\":\"account_tx\",\"params\":[{\"account\":\"r9hubmAsLytrAiAF9oN6rNHdqPitkRCoQv\",\"ledger_index_min\":-1,\"ledger_index_max\":-1,\"limit\":10,\"binary\":false}]}')",
+      "Bash(python3 -c ' *)",
+      "Bash(python3 -c \"import json;d=json.load\\(open\\('setup.json'\\)\\);print\\('issuer  ',d['issuer']['address']\\);print\\('sender  ',d['sender']['address']\\);print\\('receiver',d['receiver']['address']\\)\")"
+    ]
+  },
+  "enabledMcpjsonServers": [
+    "context7",
+    "xrpl-dev-portal"
+  ]
+}
