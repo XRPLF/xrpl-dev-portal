@@ -56,6 +56,12 @@ html.light .xrp-benefits-grid .cell { background: #F0F3F7; }
 html.light .xrp-benefits-grid { background: #CAD4DF; border-color: #CAD4DF; }
 html.light .xrp-benefits-grid .ti { color: #1E8A50; }
 html.light .xrp-benefits-grid span { color: #72777E; }
+/* Drop to 3 columns on narrow screens so the grid fits on mobile. */
+@media screen and (max-width: 500px) {
+  .xrp-benefits-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
 </style>
 <div class="xrp-benefits-grid">
   <div class="cell"><i class="ti ti-world"></i><span>Built for the internet</span></div>
