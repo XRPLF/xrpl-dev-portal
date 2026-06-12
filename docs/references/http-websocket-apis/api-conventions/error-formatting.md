@@ -1,6 +1,4 @@
 ---
-html: error-formatting.html
-parent: api-conventions.html
 seo:
     description: Error formats and common error codes for WebSocket, JSON-RPC, and Commandline interfaces.
 labels:
@@ -111,7 +109,7 @@ All methods can potentially return any of the following values for the `error` c
 
 - `amendmentBlocked` - The server is [amendment blocked](../../../concepts/networks-and-servers/amendments.md#amendment-blocked-servers) and needs to be updated to the latest version to stay synced with the XRP Ledger network.
 - `failedToForward` - (Clio servers only) The server tried to forward this request to a `rippled` server, but the connection failed.
-- `invalid_API_version` - The server does not support the [API version number](request-formatting.md#api-versioning) from the request.
+- `invalid_API_version` - The server does not support the [API version number](../index.md#api-versioning) from the request.
 - `jsonInvalid` - (WebSocket only) The request is not a proper JSON object.
     - JSON-RPC returns a 400 Bad Request HTTP error in this case instead.
 - `missingCommand` - (WebSocket only) The request did not specify a `command` field.

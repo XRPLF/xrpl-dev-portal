@@ -45,9 +45,9 @@ When you're working with the XRP Ledger, there are a few things you'll need to m
 
 Here are the basic steps you'll need to cover for almost any XRP Ledger project:
 
-1. [Connect to the XRP Ledger.](#1.-connect-to-the-xrp-ledger)
-2. [Get an account.](#2.-get-account)
-3. [Query the XRP Ledger.](#3.-query-the-xrp-ledger)
+1. [Connect to the XRP Ledger.](#1-connect-to-the-xrp-ledger)
+2. [Get an account.](#2-get-account)
+3. [Query the XRP Ledger.](#3-query-the-xrp-ledger)
 
 ### 1. Connect to the XRP Ledger
 
@@ -79,7 +79,7 @@ The sample code in the previous section shows you how to connect to the Testnet,
   }
   ```
 
-  See the example [core server config file](https://github.com/XRPLF/rippled/blob/c0a0b79d2d483b318ce1d82e526bd53df83a4a2c/cfg/rippled-example.cfg#L1562) for more information about default values.
+  See the example [core server config file](https://github.com/XRPLF/rippled/blob/develop/cfg/xrpld-example.cfg#L1469) for more information about default values.
 
 - By using one of the available [public servers][]:
 

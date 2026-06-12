@@ -13,7 +13,7 @@ To use the XRP Ledger effectively, you need to be able to understand [transactio
 
 The XRP Ledger is a shared system, with all data recorded publicly and carefully, securely updated with each new [ledger version](../../ledgers/index.md). Anyone can look up the exact outcome of any transaction and read the [transaction metadata](../../../references/protocol/transactions/metadata.md) to see what it did.
 
-This document describes, at a low level, how to know why a transaction reached the outcome it did. For an end-user, it is easier to look at a processed view of a transaction. For example, you can [use XRP Charts to get an English-language description of any recorded transaction](https://xrpcharts.ripple.com/#/transactions/).
+This document describes, at a low level, how to know why a transaction reached the outcome it did. For an end-user, it is easier to look at a processed view of a transaction. For example, you can [use XRP Charts to get an English-language description of any recorded transaction](https://livenet.xrpl.org/transactions/transactions/).
 
 ## Prerequisites
 
@@ -241,7 +241,7 @@ The [`QualityIn` and `QualityOut` settings of trust lines](../../../references/p
 
 If the amount to be sent or received is outside of the [token precision](../../../references/protocol/data-types/currency-formats.md#token-precision), it is possible that one side may be debited for an amount that is rounded to nothing on the other side of the transaction. As a result, when two parties transact while their balances are different by a factor of 10<sup>16</sup>, it is possible that rounding may effectively "create" or "destroy" small amounts of the token. (XRP is never rounded, so this is not possible with XRP.)
 
-Depending on the length of the [paths](../../tokens/fungible-tokens/paths.md), the metadata for cross-currency payments can be _long_. For example, [transaction 8C55AFC2A2AA42B5CE624AEECDB3ACFDD1E5379D4E5BF74A8460C5E97EF8706B](https://xrpcharts.ripple.com/#/transactions/8C55AFC2A2AA42B5CE624AEECDB3ACFDD1E5379D4E5BF74A8460C5E97EF8706B) delivered 2.788 GCB issued by `rHaaans...`, spending XRP but passing through USD from 2 issuers, paying XRP to 2 accounts, removing an unfunded offer from `r9ZoLsJ...` to trade EUR for ETH, plus bookkeeping for a total of 17 different ledger objects modified. <!-- SPELLING_IGNORE: gcb -->
+Depending on the length of the [paths](../../tokens/fungible-tokens/paths.md), the metadata for cross-currency payments can be _long_. For example, [transaction 8C55AFC2A2AA42B5CE624AEECDB3ACFDD1E5379D4E5BF74A8460C5E97EF8706B](https://livenet.xrpl.org/transactions/transactions/8C55AFC2A2AA42B5CE624AEECDB3ACFDD1E5379D4E5BF74A8460C5E97EF8706B) delivered 2.788 GCB issued by `rHaaans...`, spending XRP but passing through USD from 2 issuers, paying XRP to 2 accounts, removing an unfunded offer from `r9ZoLsJ...` to trade EUR for ETH, plus bookkeeping for a total of 17 different ledger objects modified. <!-- SPELLING_IGNORE: gcb -->
 
 #### Using AMM Liquidity
 
@@ -326,7 +326,7 @@ Of course, an EscrowFinish can only be successful if it meets the conditions of 
 
 Escrow transactions also do normal [bookkeeping](#general-purpose-bookkeeping) for adjusting the sender's owner reserve and the directories of the accounts involved.
 
-In the following excerpt, we see that `r9UUEX...`'s balance increases by 1 billion XRP and its owner count decreases by 1 because an escrow from that account to itself finished successfully. The `Sequence` number does not change because [a third party completed the escrow](https://xrpcharts.ripple.com/#/transactions/C4FE7F5643E20E7C761D92A1B8C98320614DD8B8CD8A04CFD990EBC5A39DDEA2):
+In the following excerpt, we see that `r9UUEX...`'s balance increases by 1 billion XRP and its owner count decreases by 1 because an escrow from that account to itself finished successfully. The `Sequence` number does not change because [a third party completed the escrow](https://livenet.xrpl.org/transactions/transactions/C4FE7F5643E20E7C761D92A1B8C98320614DD8B8CD8A04CFD990EBC5A39DDEA2):
 
 ```json
 {

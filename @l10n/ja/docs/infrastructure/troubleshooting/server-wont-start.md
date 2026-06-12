@@ -51,24 +51,24 @@ limit the number of simultaneous connections.
     ```
 
 
-## /etc/opt/ripple/rippled.cfgを開くことができない
+## /etc/opt/ripple/xrpld.cfgを開くことができない
 
 `rippled`が起動時にクラッシュし、以下のようなエラーが出力される場合は、`rippled`が構成ファイルを読み取ることができません。
 
 ```text
-Loading: "/etc/opt/ripple/rippled.cfg"
-Failed to open '"/etc/opt/ripple/rippled.cfg"'.
+Loading: "/etc/opt/ripple/xrpld.cfg"
+Failed to open '"/etc/opt/ripple/xrpld.cfg"'.
 Terminating thread rippled: main: unhandled St13runtime_error 'Can not create "/var/opt/ripple"'
 Aborted (core dumped)
 ```
 
 考えられる解決策:
 
-- 構成ファイル（デフォルトのロケーションは`/etc/opt/ripple/rippled.cfg`）が存在しており、`rippled`プロセスを実行するユーザ（通常は`rippled`）にこのファイルの読み取り権限があることを確認します。
+- 構成ファイル（デフォルトのロケーションは`/etc/opt/ripple/xrpld.cfg`）が存在しており、`rippled`プロセスを実行するユーザ（通常は`rippled`）にこのファイルの読み取り権限があることを確認します。
 
-- `rippled`ユーザが読み取ることができる構成ファイルを`$HOME/.config/ripple/rippled.cfg`に作成します（`$HOME`は`rippled`ユーザのホームディレクトリを指しています）。
+- `rippled`ユーザが読み取ることができる構成ファイルを`$HOME/.config/xrpld/xrpld.cfg`に作成します（`$HOME`は`rippled`ユーザのホームディレクトリを指しています）。
 
-    {% admonition type="success" name="ヒント" %}`rippled`リポジトリには、パケージのインストール時にデフォルトの構成として提供される[`rippled.cfg`サンプルファイル](https://github.com/XRPLF/rippled/blob/master/cfg/rippled-example.cfg)が含まれています。このファイルがない場合は、上記のリンク先からコピーできます。{% /admonition %}
+    {% admonition type="success" name="ヒント" %}`rippled`リポジトリには、パケージのインストール時にデフォルトの構成として提供される[`xrpld.cfg`サンプルファイル](https://github.com/XRPLF/rippled/blob/master/cfg/xrpld-example.cfg)が含まれています。このファイルがない場合は、上記のリンク先からコピーできます。{% /admonition %}
 
 - `--conf`[コマンドラインオプション](../commandline-usage.md)を使用して、使用する構成ファイルのパスを指定します。
 
@@ -77,8 +77,8 @@ Aborted (core dumped)
 `rippled`が起動時にクラッシュし、以下のようなエラーが出力される場合は、`rippled`はプライマリ構成ファイルを読み取ることはできても、この構成ファイルに指定されている別のバリデータ構成ファイル（通常は`validators.txt`）を読み取ることができません。
 
 ```text
-Loading: "/home/rippled/.config/ripple/rippled.cfg"
-Terminating thread rippled: main: unhandled St13runtime_error 'The file specified in [validators_file] does not exist: /home/rippled/.config/ripple/validators.txt'
+Loading: "/home/rippled/.config/xrpld/xrpld.cfg"
+Terminating thread rippled: main: unhandled St13runtime_error 'The file specified in [validators_file] does not exist: /home/rippled/.config/xrpld/validators.txt'
 Aborted (core dumped)
 ```
 
@@ -88,9 +88,9 @@ Aborted (core dumped)
 
     {% admonition type="success" name="ヒント" %}`rippled`リポジトリには、パケージのインストール時にデフォルトの構成として提供される[`validators.txt`サンプルファイル](https://github.com/XRPLF/rippled/blob/master/cfg/validators-example.txt)が含まれています。このファイルがない場合は、上記のリンク先からコピーできます。{% /admonition %}
 
-- `rippled.cfg`ファイルを編集し、`[validators_file]`設定を変更して、`validators.txt`ファイル（またはこれに相当するファイル）の正しいパスを指定します。ファイル名の前後に余分な空白があるかどうかを確認します。
+- `xrpld.cfg`ファイルを編集し、`[validators_file]`設定を変更して、`validators.txt`ファイル（またはこれに相当するファイル）の正しいパスを指定します。ファイル名の前後に余分な空白があるかどうかを確認します。
 
-- `rippled.cfg`ファイルを編集し、`[validators_file]`設定を削除します。バリデータ設定を`rippled.cfg`ファイルに直接追加します。例:
+- `xrpld.cfg`ファイルを編集し、`[validators_file]`設定を削除します。バリデータ設定を`xrpld.cfg`ファイルに直接追加します。例:
 
     ```
     [validator_list_sites]
@@ -106,18 +106,18 @@ Aborted (core dumped)
 `rippled`が起動時にクラッシュし、以下のようなエラーが出力される場合は、その構成ファイルの`[database_path]`への書き込み権限がサーバにありません。
 
 ```text
-Loading: "/home/rippled/.config/ripple/rippled.cfg"
+Loading: "/home/rippled/.config/xrpld/xrpld.cfg"
 Terminating thread rippled: main: unhandled St13runtime_error 'Can not create "/var/lib/rippled/db"'
 Aborted (core dumped)
 ```
 
-構成ファイルのパス（`/home/rippled/.config/ripple/rippled.cfg`）とデータベースのパス（`/var/lib/rippled/db`）は、システムによっては異なる可能性があります。
+構成ファイルのパス（`/home/rippled/.config/xrpld/xrpld.cfg`）とデータベースのパス（`/var/lib/rippled/db`）は、システムによっては異なる可能性があります。
 
 考えられる解決策:
 
 - エラーメッセージに出力されているデータベースパスへの書き込み権限を持つ別のユーザとして`rippled`を実行します。
 
-- `rippled.cfg`ファイルを編集し、`[database_path]`設定を変更して、`rippled`ユーザに書き込み権限があるパスを使用します。
+- `xrpld.cfg`ファイルを編集し、`[database_path]`設定を変更して、`rippled`ユーザに書き込み権限があるパスを使用します。
 
 - `rippled`ユーザに対し、設定されているデータベースパスへの書き込み権限を付与します。
 
@@ -164,7 +164,7 @@ path=/var/lib/rippled/custom_nudb_path
 
 ## オンライン削除の値がレジャー履歴の値よりも少ない
 
-以下のようなエラーメッセージが出力される場合、`rippled.cfg`ファイルの`[ledger_history]`と`online_delete`に矛盾する値が指定されています。
+以下のようなエラーメッセージが出力される場合、`xrpld.cfg`ファイルの`[ledger_history]`と`online_delete`に矛盾する値が指定されています。
 
 ```text
 Terminating thread rippled: main: unhandled St13runtime_error 'online_delete must not be less than ledger_history (currently 3000)
@@ -172,12 +172,12 @@ Terminating thread rippled: main: unhandled St13runtime_error 'online_delete mus
 
 `[ledger_history]`設定は、サーバが埋め戻す履歴のレジャー数を表します。`online_delete`フィールド（`[node_db]`スタンザ）は、古い履歴を削除するときに維持する履歴のレジャー数を示します。サーバがダウンロードしようとしている履歴レジャーを削除しないようにするため、`online_delete`の値は`[ledger_history]`以上でなければなりません。
 
-この問題を修正するには、`rippled.cfg`ファイルを編集し、`[ledger_history]`オプションまたは`online_delete`オプションのいずれかを変更または削除します。（`[ledger_history]`を省略すると、デフォルトの256レジャーバージョンに設定されるので、`online_delete`を残して指定する場合は256よりも大きな値にする必要があります。`online_delete`を省略すると、古いレジャーバージョンの自動削除が無効になります。）
+この問題を修正するには、`xrpld.cfg`ファイルを編集し、`[ledger_history]`オプションまたは`online_delete`オプションのいずれかを変更または削除します。（`[ledger_history]`を省略すると、デフォルトの256レジャーバージョンに設定されるので、`online_delete`を残して指定する場合は256よりも大きな値にする必要があります。`online_delete`を省略すると、古いレジャーバージョンの自動削除が無効になります。）
 
 
 ## node_sizeの値が正しくない
 
-以下のようなエラーが出力される場合は、`rippled.cfg`ファイルの`node_size`設定の値が誤っています。
+以下のようなエラーが出力される場合は、`xrpld.cfg`ファイルの`node_size`設定の値が誤っています。
 
 ```text
 Terminating thread rippled: main: unhandled N5beast14BadLexicalCastE 'std::bad_cast'

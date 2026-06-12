@@ -70,11 +70,12 @@ Before you install `rippled`, you must meet the [System Requirements](system-req
     - `bookworm` for **Debian 12 Bookworm**
     - `jammy` for **Ubuntu 22.04 Jammy Jellyfish**
     - `noble` for **Ubuntu 24.04 Noble Numbat**
+    - `resolute` for **Ubuntu 26.04 Resolute Raccoon**
 
     If you want access to development or pre-release versions of `rippled`, use one of the following instead of `stable`:
 
-    - `unstable` - Pre-release builds ([`release` branch](https://github.com/XRPLF/rippled/tree/release))
-    - `nightly` - Experimental/development builds ([`develop` branch](https://github.com/XRPLF/rippled/tree/develop))
+    - `unstable` - Pre-release builds such as betas or release candidates
+    - `nightly` - Nightly development builds
 
     {% admonition type="danger" name="Warning" %}Unstable and nightly builds may be broken at any time. Do not use these builds for production servers.{% /admonition %}
 

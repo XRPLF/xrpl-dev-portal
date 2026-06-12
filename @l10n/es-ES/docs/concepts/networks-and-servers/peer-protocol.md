@@ -37,7 +37,7 @@ Para participar en el XRP Ledger, los servidores `rippled` conectan con pares ar
 
 Idealmente, el servidor debería poder enviar _y_ recibir conexiones en el puerto de pares. Debes [redireccionar el puerto utilizado por el protocolo de pares a través de tu firewall](../../infrastructure/configuration/peering/forward-ports-for-peering.md) para el servidor `rippled`.
 
-IANA [ha asignado el puerto **2459**](https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml?search=2459) para el protocolo de pares del XRP Ledger, pero para la compatibilidad con sistemas antiguos, el [fichero de configuración por defecto de `rippled`](https://github.com/XRPLF/rippled/blob/master/cfg/rippled-example.cfg) escucha las conexiones entrantes de pares con el **port 51235** en todas las interfaces de la red. Si ejecutas un servidor, puedes configurar qué puerto(s) escucha tu servidor utilizando el fichero `rippled.cfg`.
+IANA [ha asignado el puerto **2459**](https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml?search=2459) para el protocolo de pares del XRP Ledger, pero para la compatibilidad con sistemas antiguos, el [fichero de configuración por defecto de `rippled`](https://github.com/XRPLF/rippled/blob/master/cfg/xrpld-example.cfg) escucha las conexiones entrantes de pares con el **port 51235** en todas las interfaces de la red. Si ejecutas un servidor, puedes configurar qué puerto(s) escucha tu servidor utilizando el fichero `xrpld.cfg`.
 
 Ejemplo:
 

@@ -139,9 +139,9 @@ mkdir -p xrpl-private-network/{validator_1/config,validator_2/config,validator_3
 
 各バリデータノードについて、以下の手順を実行します。
 
-1. バリデータの`config`ディレクトリに`rippled.cfg`ファイルを作成します。
+1. バリデータの`config`ディレクトリに`xrpld.cfg`ファイルを作成します。
 
-2. 以下の`rippled.cfg`テンプレートの情報をファイルにコピーします。
+2. 以下の`xrpld.cfg`テンプレートの情報をファイルにコピーします。
 
     ```
     [server]

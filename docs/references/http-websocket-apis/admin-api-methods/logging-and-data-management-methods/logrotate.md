@@ -26,12 +26,12 @@ The following script is a sample that can be created as `/etc/logrotate.d/ripple
   compressoptions -n19 ionice -c3 gzip
   compressext .gz
   postrotate
-    /opt/ripple/bin/rippled --conf /opt/ripple/etc/rippled.cfg logrotate
+    /opt/ripple/bin/rippled --conf /opt/ripple/etc/xrpld.cfg logrotate
   endscript
 }
 ```
 
-You can configure parameters such as `minsize` and `rotate` depending on the amount of logs you keep. Use the `log_level` setting in your `rippled.cfg` file to configure how verbose your server's logs are. This sample script is based on standard `log_level` and stores approximately 2 weeks worth of logs in a compressed format.
+You can configure parameters such as `minsize` and `rotate` depending on the amount of logs you keep. Use the `log_level` setting in your `xrpld.cfg` file to configure how verbose your server's logs are. This sample script is based on standard `log_level` and stores approximately 2 weeks worth of logs in a compressed format.
 
 The official packages [for CentOS/Red Hat](../../../../infrastructure/installation/install-rippled-on-rhel.md) and [Ubuntu or Debian](../../../../infrastructure/installation/install-rippled-on-ubuntu.md) provide the script `/etc/logrotate.d/rippled` by default. You can make modifications to this as required. Your modifications will not be overwritten on package upgrades. <!-- STYLE_OVERRIDE: will -->
 
@@ -86,7 +86,7 @@ An example of a successful response:
 
 {% tab label="Commandline" %}
 ```json
-Loading: "/etc/rippled.cfg"
+Loading: "/etc/xrpld.cfg"
 Connecting to 127.0.0.1:5005
 
 {

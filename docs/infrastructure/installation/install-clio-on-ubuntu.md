@@ -102,7 +102,7 @@ Before you install Clio, you must meet the following requirements.
     If you want access to development or pre-release versions, use one of the following instead of `stable`:
 
     - `unstable` - Pre-release builds such as betas or release candidates
-    - `nightly` - Nightly development builds based on the [`develop` branch](https://github.com/XRPLF/Clio/tree/develop))
+    - `nightly` - Nightly development builds
 
 6. Fetch the Ripple repository.
 
@@ -145,7 +145,7 @@ Before you install Clio, you must meet the following requirements.
 
         The [example config file](https://github.com/XRPLF/clio/blob/develop/docs/examples/config/example-config.json) accesses the `rippled` server running on the local loopback network (127.0.0.1), with the WebSocket (WS) on port 6005 and gRPC on port 50051.
 
-    2. Update the `rippled` server's config file to allow the Clio server to connect to it. The package installs this file at `/etc/opt/ripple/rippled.cfg`.
+    2. Update the `rippled` server's config file to allow the Clio server to connect to it. The package installs this file at `/etc/opt/ripple/xrpld.cfg`.
 
         * Open a port to accept unencrypted, non-admin WebSocket connections.
 

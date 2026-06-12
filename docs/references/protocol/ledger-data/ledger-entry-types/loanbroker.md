@@ -84,10 +84,10 @@ There are no flags defined for {% code-page-name /%} ledger entries.
 
 ## {% $frontmatter.seo.title %} ID Format
 
-The ID of a `LoanBroker` entry is the [SHA512-Half][] of the following values, concatenated in order:
+The ID of a `LoanBroker` entry is the [SHA-512Half][] of the following values, concatenated in order:
 
 - The `LoanBroker` space key `0x006C`.
 - The [AccountID][] of the account submitting the `LoanBrokerSet` transaction.
-- The transaction `Sequence` number. If the transaction used a [Ticket][], the `TicketSequence` value is used instead.
+- The transaction `Sequence` number. If the transaction used a [ticket](/docs/concepts/accounts/tickets.md), the `TicketSequence` value is used instead.
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

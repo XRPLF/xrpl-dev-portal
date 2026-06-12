@@ -60,7 +60,7 @@ labels:
     このコマンドの実行には[`rippled`コマンドラインインターフェイス](/docs/tutorials/get-started/get-started-http-websocket-apis.md#コマンドライン)を使用できます。例:
 
     ```
-    $ rippled --conf=/etc/opt/ripple/rippled.cfg can_delete now
+    $ rippled --conf=/etc/opt/ripple/xrpld.cfg can_delete now
     ```
 
     レスポンスは、サーバがそのレジャーストアーから削除するレジャーインデックスの最大値を示します。たとえば、以下のメッセージはレジャーインデックス43633667以下のレジャーバージョンを削除できることを示します。
@@ -87,7 +87,7 @@ labels:
     以下の例では、サーバ時刻で毎日1:05 AMにサーバが削除を実行するように設定されています。
 
     ```
-    5 1 * * * rippled --conf /etc/opt/ripple/rippled.cfg can_delete now
+    5 1 * * * rippled --conf /etc/opt/ripple/xrpld.cfg can_delete now
     ```
 
     サーバで設定されているタイムゾーンに基づいてコマンドが実行されるようにスケジュールしてください。

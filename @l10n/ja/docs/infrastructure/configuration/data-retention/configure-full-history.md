@@ -86,7 +86,7 @@ labels:
     `[Import_db]`で構成されている読み取り対象データベースダンプがある場合は、`--import` [コマンドラインオプション](../../commandline-usage.md#デーモンモードのオプション)を指定してサーバを明示的に起動します。
 
     ```
-    $ /opt/ripple/bin/rippled --conf /etc/opt/ripple/rippled.cfg --import
+    $ /opt/ripple/bin/rippled --conf /etc/opt/ripple/xrpld.cfg --import
     ```
 
     大量のデータベースダンプのインポートには数分から数時間かかることがあります。インポート中はサーバは完全には起動せず、ネットワークと同期しません。インポートの状況を確認するには、サーバログをご覧ください。

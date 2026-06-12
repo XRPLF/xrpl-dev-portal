@@ -77,7 +77,7 @@ The ID of an `Oracle` object is the [SHA-512Half][] of the following values, con
 
 ## Currency Internal Format
 
-The `Currency` field type contains 160 bits of arbitrary data representing a currency or asset code. If the data matches the XRPL's standard format for [currency codes][], the API displays it as a string such as `"USD"`; otherwise, it displays as 40 characters of hexadecimal. The following JSON example represents the `912810RR9/USD` trading pair. The `BaseAsset` is a CUSIP code `912810RR9` represented as a hexadecimal string, and the `QuoteAsset` is a standard `USD` currency code:
+The `Currency` field type contains 160 bits of arbitrary data representing a currency or asset code. If the data matches the XRPL's standard format for [currency codes][Currency Code], the API displays it as a string such as `"USD"`; otherwise, it displays as 40 characters of hexadecimal. The following JSON example represents the `912810RR9/USD` trading pair. The `BaseAsset` is a CUSIP code `912810RR9` represented as a hexadecimal string, and the `QuoteAsset` is a standard `USD` currency code:
 
 ```json
 {

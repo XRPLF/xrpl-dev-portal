@@ -20,7 +20,7 @@ To connect your `rippled` server to the XRP Testnet or Devnet, complete these st
 
 ## 1. Configure your server to connect to the right hub.
 
-Edit your `rippled.cfg` file.
+Edit your `xrpld.cfg` file.
 
 {% partial file="/docs/_snippets/conf-file-location.md" /%}
 <!--{_ }-->
@@ -80,7 +80,7 @@ Edit your `rippled.cfg` file.
 
 ## 2. Set your trusted validator list.
 
-Edit your `validators.txt` file. This file is located in the same folder as your `rippled.cfg` file and defines which validators your server trusts not to collude.
+Edit your `validators.txt` file. This file is located in the same folder as your `xrpld.cfg` file and defines which validators your server trusts not to collude.
 
 1. Uncomment or add the `[validator_list_sites]` and `[validator_list_keys]` stanzas for the network you want to connect to:
 

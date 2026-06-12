@@ -1427,6 +1427,41 @@ const events = [
     image: require("../static/img/events/xrpl-zone-paris.jpg"),
     end_date: "April 14, 2026",
   },
+
+  {
+    name: "XRPL Developer Training",
+    description:
+      "​XRPL Commons is hosting an online training open to everyone, whether you are a developer or not. Over two days, dive into the XRP Ledger, one of the world’s leading blockchains, designed for real-world applications and known for its low carbon footprint and efficiency.",
+    type: "conference",
+    link: "https://luma.com/building-on-the-xrpl",
+    location: "Online",
+    date: "June 22-23, 2026",
+    image: require("../static/img/events/commons-online.png"),
+    end_date: "June 23, 2026",
+  },
+  {
+    name: "Blockchain Research Summit",
+    description:
+      "​Two days. Three communities. One shared question: what does the next generation of ledger technology look like — and how do we build it responsibly?",
+    type: "conference",
+    link: "https://luma.com/XRPL-Blockchain-Research-Summit",
+    location: "Paris, France",
+    date: "June 16-17, 2026",
+    image: require("../static/img/events/commons-online.png"),
+    end_date: "June 17, 2026",
+  },
+  {
+    name: "XRPL Meetup Lisbon",
+    description:
+      "Calling all Portuguese blockchain enthusiasts! Join XRPL Meetups to share knowledge, build real-life connections, and foster communities centered around blockchain and XRP Ledger. We're establishing local “XRPL Hubs” across Europe, and we want  you to be a part of it!",
+    type: "meetup",
+    link: "https://luma.com/xrpl-meetup-lisbon",
+    location: "Lisbon, Portugal",
+    date: "June 4, 2026",
+    image: require("../static/img/events/commons-lisbon.png"),
+    end_date: "June 4, 2026",
+  },
+  
 ];
 
 

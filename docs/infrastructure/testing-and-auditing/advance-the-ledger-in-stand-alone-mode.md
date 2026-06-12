@@ -11,7 +11,7 @@ labels:
 In [stand-alone mode][], `rippled` does not communicate to other members of the peer-to-peer network or participate in a consensus process. Since there is no consensus process in this mode, you must manually advance the ledger index using the [ledger_accept method][]:
 
 ```
-rippled ledger_accept --conf=/path/to/rippled.cfg
+rippled ledger_accept --conf=/path/to/xrpld.cfg
 ```
 
 In stand-alone mode, `rippled` makes no distinction between a "closed" ledger version and a "validated" ledger version. (For more information about the difference, see [The XRP Ledger Consensus Process](../../concepts/consensus-protocol/index.md).)

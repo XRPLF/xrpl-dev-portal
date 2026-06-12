@@ -88,6 +88,13 @@
     padding-left: 20px;
   }
 
+  // source-link component right-aligned
+  .source-link {
+    display: block;
+    width: fit-content;
+    margin-left: auto;
+  }
+
   // Make "invisible" headers take up no space either, so we can use them
   // to add additional anchors (e.g. for translated pages)
   h1.invisible,

@@ -55,7 +55,7 @@ A failure response indicates the status of fetching the ledger. A successful res
 
 {% tab label="Commandline (failure)" %}
 ```json
-Loading: "/etc/rippled.cfg"
+Loading: "/etc/xrpld.cfg"
 Connecting to 127.0.0.1:5005
 
 {
@@ -81,7 +81,7 @@ Connecting to 127.0.0.1:5005
 
 {% tab label="Commandline (in-progress)" %}
 ```json
-Loading: "/etc/rippled.cfg"
+Loading: "/etc/xrpld.cfg"
 Connecting to 127.0.0.1:5005
 
 {
@@ -128,7 +128,7 @@ Connecting to 127.0.0.1:5005
 
 {% tab label="Commandline (success)" %}
 ```json
-Loading: "/etc/rippled.cfg"
+Loading: "/etc/xrpld.cfg"
 Connecting to 127.0.0.1:5005
 
 {

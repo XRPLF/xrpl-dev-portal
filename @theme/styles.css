@@ -18,6 +18,16 @@ ul.nav.navbar-nav {
 	border-radius: var(--border-radius);
 }
 
+#content .heading-anchor h1,
+#content .heading-anchor h2,
+#content .heading-anchor h3,
+#content .heading-anchor h4,
+#content .heading-anchor h5,
+#content .heading-anchor h6 {
+  /* Fix left-alignment of headers in md content */
+  gap: 0;
+}
+
 :root, :root.dark {
   --navbar-height: 80px;
 
@@ -177,7 +187,7 @@ ul.nav.navbar-nav {
   --link-decoration: underline;
   --link-font-weight: var(--font-weight-regular);
 
-  --link-color-primary-hover: var(--color-purple-7)
+  --link-color-primary-hover: var(--color-purple-7);
   --link-decoration-hover: underline;
 
   --link-color-visited: white;
@@ -235,6 +245,7 @@ ul.nav.navbar-nav {
 
   --menu-item-padding-horizontal: 0px;
   --menu-item-bg-color-active: var(--color-gray-2);
+  --menu-item-bg-color-active-hover: var(--color-gray-3);
 
   --md-list-left-padding: 40px;
   --md-list-margin: 0 0 20px 0;
@@ -285,6 +296,7 @@ ul.nav.navbar-nav {
   --button-content-color-link: black;
 
   --menu-item-bg-color-active: var(--color-gray-8);
+  --menu-item-bg-color-active-hover: var(--color-gray-7);
 
   --md-table-header-bg-color: var(--color-gray-8);
   --md-table-border-color: var(--color-gray-8);
