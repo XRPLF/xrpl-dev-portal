@@ -9,7 +9,7 @@ labels:
 ---
 # カスタムトランザクタの作成
 
-_トランザクタ_ はトランザクションを処理し、XRP Ledgerを変更するコードです。カスタムトランザクタを作成することで、`rippled`に新しい機能を追加することができます。このチュートリアルではトランザクタのコーディングについて説明しますが、それをXRPLに追加するにはAmendmentプロセスを経る必要があります。 [XRP Ledgerのコードへの貢献](index.md)をご覧ください。
+_トランザクタ_ はトランザクションを処理し、XRP Ledgerを変更するコードです。カスタムトランザクタを作成することで、`xrpld`に新しい機能を追加することができます。このチュートリアルではトランザクタのコーディングについて説明しますが、それをXRPLに追加するにはAmendmentプロセスを経る必要があります。 [XRP Ledgerのコードへの貢献](index.md)をご覧ください。
 
 トランザクタは 基本的な処理順序に則って処理されます。
 
@@ -81,7 +81,7 @@ public:
     - [`LedgerFormats.cpp`](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp)
     - [`TxFormats.cpp`](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/TxFormats.cpp)
 
--` rippled` はトランザクションの結果を結果コードで表します。[トランザクションの結果](../../docs/references/protocol/transactions/transaction-results/index.md)をご覧ください。
+-` xrpld` はトランザクションの結果を結果コードで表します。[トランザクションの結果](../../docs/references/protocol/transactions/transaction-results/index.md)をご覧ください。
 
 ```c++
 CreateCheck::preflight(PreflightContext const& ctx)

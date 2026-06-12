@@ -22,7 +22,7 @@ Algunas direcciones tienen un significado especial, o usos históricos, en el XR
 
 | Dirección                     | Nombre | Significado | ¿Black Hole? |
 |-------------------------------|--------|-------------|--------------|
-| `rrrrrrrrrrrrrrrrrrrrrhoLvTp` | ACCOUNT\_ZERO | Una dirección que es la codificación en [base58][] en el XRP Ledger del valor `0`. En comunicaciones peer-to-peer, `rippled` utiliza esta dirección como el emisor de XRP. | Sí |
+| `rrrrrrrrrrrrrrrrrrrrrhoLvTp` | ACCOUNT\_ZERO | Una dirección que es la codificación en [base58][] en el XRP Ledger del valor `0`. En comunicaciones peer-to-peer, `xrpld` utiliza esta dirección como el emisor de XRP. | Sí |
 | `rrrrrrrrrrrrrrrrrrrrBZbvji`  | ACCOUNT\_ONE | Una dirección que es la codificación en [base58][] en el XRP Ledger del valor `1`. En el ledger, las [entradas RippleState](../../references/protocol/ledger-data/ledger-entry-types/ripplestate.md) utilizan esta dirección como marcador de posición para el emisor de un balance de una trust line. | Sí |
 | `rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh` | La cuenta génesis | Cuando `rippled` inicia un nuevo ledger génesis desde el principio (por ejemplo, en modo solitario), esta cuenta contiene todo el XRP. Esta cuenta es generada con el valor semilla `masterpassphrase` el cual está [hard-coded](https://github.com/XRPLF/rippled/blob/94ed5b3a53077d815ad0dd65d490c8d37a147361/src/ripple/app/ledger/Ledger.cpp#L184). | No |
 | `rrrrrrrrrrrrrrrrrNAMEtxvNvQ` | black hole de reserva de nombre de Ripple | En el pasado, Ripple pedía a los usuarios enviar XRP a esta cuenta para reservar nombres Ripple.| Sí |

@@ -153,7 +153,7 @@ submit 1200002280000000240000000361D4838D7EA4C6800000000000000000000000000055534
 {% tab label="コマンドライン" %}
 ```sh
 #Syntax: submit secret json [offline]
-rippled submit s████████████████████████████ '{"Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", "DeliverMax": { "currency": "USD", "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", "value": "1" }, "Destination": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX", "TransactionType": "Payment", "Fee": "10000"}'
+xrpld submit s████████████████████████████ '{"Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", "DeliverMax": { "currency": "USD", "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", "value": "1" }, "Destination": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX", "TransactionType": "Payment", "Fee": "10000"}'
 ```
 {% /tab %}
 
@@ -314,7 +314,7 @@ Connecting to 127.0.0.1:5005
 ## 考えられるエラー
 
 * いずれかの[汎用エラータイプ][]。
-* `amendmentBlocked` - `rippled`サーバでの[修正がブロックされている](../../../../concepts/networks-and-servers/amendments.md#amendment-blocked)ため、トランザクションをネットワークに送信できません。
+* `amendmentBlocked` - `xrpld`サーバでの[修正がブロックされている](../../../../concepts/networks-and-servers/amendments.md#amendment-blocked)ため、トランザクションをネットワークに送信できません。
 * `highFee` - `fee_mult_max`パラメーターが指定されましたが、サーバの現在の手数料の乗数が指定値を超えています（署名と送信モードのみ）。
 * `internalJson` - トランザクションをJSONへとシリアル化するときに、内部エラーが発生しました。このエラーは、無効な署名や一部フィールドの形式の誤りなど、トランザクションのさまざまな側面が原因となって発生する可能性があります。
 * `internalSubmit` - トランザクションを送信するときに内部エラーが発生しました。このエラーは、無効な署名や一部フィールドの形式の誤りなど、トランザクションのさまざまな側面が原因となって発生する可能性があります。

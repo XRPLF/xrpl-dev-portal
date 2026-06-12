@@ -69,7 +69,7 @@ labels:
     - [準備金](../accounts/reserves.md)
     - [トランザクションキュー](../transactions/transaction-queue.md)
 - **チュートリアル:**
-    - [rippledの設定](../../infrastructure/configuration/index.md)
+    - [xrpldの設定](../../infrastructure/configuration/index.md)
 - **リファレンス:**
     - [feeメソッド][]
     - [server_infoメソッド][]

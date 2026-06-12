@@ -2,14 +2,14 @@
 html: update-rippled-manually-on-centos-rhel.html
 parent: install-xrpld.html
 seo:
-    description: CentOSまたはRed Hat Enterprise Linuxでrippledを手動更新します。
+    description: CentOSまたはRed Hat Enterprise Linuxでxrpldを手動更新します。
 labels:
   - コアサーバ
   - セキュリティ
 ---
 # CentOS/Red Hatでの手動更新
 
-このページでは、CentOSまたはRed Hat Enterprise Linuxで最新リリースの`rippled`に手動で更新する手順を説明します。可能であれば手動更新ではなく[自動更新](update-xrpld-automatically-on-linux.md)を設定することが推奨されます。
+このページでは、CentOSまたはRed Hat Enterprise Linuxで最新リリースの`xrpld`に手動で更新する手順を説明します。可能であれば手動更新ではなく[自動更新](update-xrpld-automatically-on-linux.md)を設定することが推奨されます。
 
 以下の手順は、[`rippled`がすでに`yum`リポジトリからインストール](install-xrpld-on-rhel.md)されていることを前提としています。
 
@@ -17,7 +17,7 @@ labels:
 
 手動で更新するには、以下の手順を実行します。
 
-1. `rippled` 1.7.0にその以前のバージョンから更新する場合は、リポジトリを再度追加して、Rippleの更新されたGPGキーを取得します。それ以外の場合は、この手順をスキップしてください。
+1. `xrpld` 1.7.0にその以前のバージョンから更新する場合は、リポジトリを再度追加して、Rippleの更新されたGPGキーを取得します。それ以外の場合は、この手順をスキップしてください。
 
     ```
     cat << REPOFILE | sudo tee /etc/yum.repos.d/ripple.repo
@@ -31,10 +31,10 @@ labels:
     REPOFILE
     ```
 
-1. 最新の`rippled`パッケージをダウンロードしてインストールします。
+1. 最新の`xrpld`パッケージをダウンロードしてインストールします。
 
     ```
-    sudo yum update rippled
+    sudo yum update xrpld
     ```
 
 2. `systemd`ユニットファイルを再度読み込みます。
@@ -43,7 +43,7 @@ labels:
     sudo systemctl daemon-reload
     ```
 
-3. `rippled`サービスを再起動します。
+3. `xrpld`サービスを再起動します。
 
     ```
     sudo systemctl restart rippled.service
@@ -53,13 +53,13 @@ labels:
 ## 関連項目
 
 - **コンセプト:**
-    - [`rippled`サーバ](../../concepts/networks-and-servers/index.md)
+    - [`xrpld`サーバ](../../concepts/networks-and-servers/index.md)
     - [コンセンサスについて](../../concepts/consensus-protocol/index.md)
 - **チュートリアル:**
-    - [rippledのトラブルシューティング](../troubleshooting/index.md)
+    - [xrpldのトラブルシューティング](../troubleshooting/index.md)
 - **リファレンス:**
-    - [rippled APIリファレンス](../../references/http-websocket-apis/index.md)
-      - [`rippled`コマンドラインの使用](../commandline-usage.md)
+    - [xrpld APIリファレンス](../../references/http-websocket-apis/index.md)
+      - [`xrpld`コマンドラインの使用](../commandline-usage.md)
       - [server_infoメソッド][]
 
 {% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

@@ -40,7 +40,7 @@ labels:
 {% tab label="コマンドライン" %}
 ```sh
 #Syntax: book_changes [<ledger hash|id>]
-rippled book_changes 88530953
+xrpld book_changes 88530953
 ```
 {% /tab %}
 
@@ -56,7 +56,7 @@ rippled book_changes 88530953
 | `ledger_index` | [レジャーインデックス][] | いいえ | 使用するレジャーの[レジャーインデックス][]、または自動的にレジャーを選択するためのショートカット文字列。([レジャーの指定][]) |
 
 {% admonition type="warning" name="既知の問題" %}
-`rippled`のこのメソッドにいくつかの既知の問題があります。
+`xrpld`のこのメソッドにいくつかの既知の問題があります。
 
 - デフォルトまたはショートカット文字列を使用する代わりに、`ledger_index`または`ledger_hash`を明示的に指定する必要があります。([Issue #5034](https://github.com/XRPLF/rippled/issues/5034))
 - JSON-RPC APIのレスポンスは、検証済みのレジャーをクエリする場合でも`validated`フィールドが欠落する可能性があります。([#5035](https://github.com/XRPLF/rippled/issues/5035))

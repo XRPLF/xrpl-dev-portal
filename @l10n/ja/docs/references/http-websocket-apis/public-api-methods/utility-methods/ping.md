@@ -39,7 +39,7 @@ labels:
 {% tab label="コマンドライン" %}
 ```sh
 #Syntax: ping
-rippled ping
+xrpld ping
 ```
 {% /tab %}
 

@@ -2,7 +2,7 @@
 html: forward-ports-for-peering.html
 parent: configure-peering.html
 seo:
-    description: 受信ピアがrippledサーバに接続できるようにファイアウォールを設定します。
+    description: 受信ピアがxrpldサーバに接続できるようにファイアウォールを設定します。
 labels:
   - コアサーバ
 ---
@@ -10,12 +10,12 @@ labels:
 
 XRP Ledgerのピアツーピアネットワーク内にあるサーバは、[ピアプロトコル](../../../concepts/networks-and-servers/peer-protocol.md)を介して通信します。セキュリティとネットワークの他の部分との接続を両立させるために、ファイアウォールを使用して、サーバをほとんどのポートから保護し、ピアプロトコルポートだけを開放するか転送するようにする必要があります。
 
-`rippled`サーバの稼動中に、[server_infoメソッド][]を実行すると、いくつのピアがあるか確認することができます。`info`オブジェクトの`peers`フィールドは、サーバに現在接続しているピアの数を示します。この数が10または11の場合、通常はファイアウォールが着信接続をブロックしていることを示します。
+`xrpld`サーバの稼動中に、[server_infoメソッド][]を実行すると、いくつのピアがあるか確認することができます。`info`オブジェクトの`peers`フィールドは、サーバに現在接続しているピアの数を示します。この数が10または11の場合、通常はファイアウォールが着信接続をブロックしていることを示します。
 
 ファイアウォールが着信ピア接続をブロックしていると思われるためピアが10個しかないことを示している`server_info`の結果の例（一部省略）は次のとおりです。
 
 ```json
-$ ./rippled server_info
+$ ./xrpld server_info
 Loading: "/etc/opt/ripple/xrpld.cfg"
 2019-Dec-23 22:15:09.343961928 HTTPClient:NFO Connecting to 127.0.0.1:5005
 
@@ -51,10 +51,10 @@ $ sudo firewall-cmd --add-forward-port=port=51235:proto=tcp:toport=51235
 
 - **コンセプト:**
   - [ピアプロトコル](../../../concepts/networks-and-servers/peer-protocol.md)
-  - [`rippled`サーバ](../../../concepts/networks-and-servers/index.md)
+  - [`xrpld`サーバ](../../../concepts/networks-and-servers/index.md)
 - **チュートリアル:**
   - [容量の計画](../../installation/capacity-planning.md)
-  - [`rippled`サーバのトラブルシューティング](../../troubleshooting/index.md)
+  - [`xrpld`サーバのトラブルシューティング](../../troubleshooting/index.md)
 - **リファレンス:**
   - [connectメソッド][]
   - [peersメソッド][]

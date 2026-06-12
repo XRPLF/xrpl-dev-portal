@@ -23,7 +23,7 @@ _（[XChainBridge Amendment][] {% not-enabled /%} が必要です）_
 
 **ノート:**
 
-  - サイドチェーンは独自のバリデータを使い、メインチェーンの `rippled` UNL とは別のUNLを必要とします。
+  - サイドチェーンは独自のバリデータを使い、メインチェーンの `xrpld` UNL とは別のUNLを必要とします。
   - メインチェーンとサイドチェーンのノードはお互いを認識していません。
 
 {% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

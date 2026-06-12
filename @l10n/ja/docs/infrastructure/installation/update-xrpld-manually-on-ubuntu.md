@@ -2,14 +2,14 @@
 html: update-xrpld-manually-on-ubuntu.html
 parent: install-xrpld.html
 seo:
-    description: Ubuntu Linuxでrippledを手動更新します。
+    description: Ubuntu Linuxでxrpldを手動更新します。
 labels:
   - コアサーバ
   - セキュリティ
 ---
 # UbuntuまたはDebianでの手動更新
 
-このページでは、Ubuntu Linuxで最新リリースの`rippled`に手動で更新する手順を説明します。以下の手順は、[`rippled`がすでにネイティブパッケージを使用してインストール](install-xrpld-on-ubuntu.md)されていることを前提としています。可能であれば手動更新ではなく[自動更新](update-xrpld-automatically-on-linux.md)を設定することが推奨されます。
+このページでは、Ubuntu Linuxで最新リリースの`xrpld`に手動で更新する手順を説明します。以下の手順は、[`xrpld`がすでにネイティブパッケージを使用してインストール](install-xrpld-on-ubuntu.md)されていることを前提としています。可能であれば手動更新ではなく[自動更新](update-xrpld-automatically-on-linux.md)を設定することが推奨されます。
 
 手動で更新するには、以下の手順を実行します。
 
@@ -19,10 +19,10 @@ labels:
     sudo apt -y update
     ```
 
-2. `rippled`パッケージをアップグレードします。
+2. `xrpld`パッケージをアップグレードします。
 
     ```
-    sudo apt -y upgrade rippled
+    sudo apt -y upgrade xrpld
     ```
 
 3. `systemd`ユニットファイルを再度読み込みます。
@@ -31,23 +31,23 @@ labels:
     sudo systemctl daemon-reload
     ```
 
-4. `rippled`サービスを再起動します。
+4. `xrpld`サービスを再起動します。
 
     ```
-    sudo service rippled restart
+    sudo service xrpld restart
     ```
 
 
 ## 関連項目
 
 - **コンセプト:**
-    - [`rippled`サーバ](../../concepts/networks-and-servers/index.md)
+    - [`xrpld`サーバ](../../concepts/networks-and-servers/index.md)
     - [コンセンサスについて](../../concepts/consensus-protocol/index.md)
 - **チュートリアル:**
-    - [rippledのトラブルシューティング](../troubleshooting/index.md)
+    - [xrpldのトラブルシューティング](../troubleshooting/index.md)
 - **リファレンス:**
-    - [rippled APIリファレンス](../../references/http-websocket-apis/index.md)
-      - [`rippled`コマンドラインの使用](../commandline-usage.md)
+    - [xrpld APIリファレンス](../../references/http-websocket-apis/index.md)
+      - [`xrpld`コマンドラインの使用](../commandline-usage.md)
       - [server_infoメソッド][]
 
 {% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

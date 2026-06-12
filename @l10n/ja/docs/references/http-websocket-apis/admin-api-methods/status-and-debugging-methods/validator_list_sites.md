@@ -42,7 +42,7 @@ labels:
 {% tab label="コマンドライン" %}
 ```sh
 #Syntax: validator_list_sites
-rippled validator_list_sites
+xrpld validator_list_sites
 ```
 {% /tab %}
 

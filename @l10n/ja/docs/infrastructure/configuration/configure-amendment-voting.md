@@ -42,7 +42,7 @@ labels:
 
 {% tab label="コマンドライン" %}
 ```sh
-rippled feature SHAMapV2 reject
+xrpld feature SHAMapV2 reject
 ```
 {% /tab %}
 

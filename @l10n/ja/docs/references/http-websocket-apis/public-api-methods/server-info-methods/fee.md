@@ -39,7 +39,7 @@ labels:
 {% tab label="コマンドライン" %}
 ```sh
 #Syntax: fee
-rippled fee
+xrpld fee
 ```
 {% /tab %}
 

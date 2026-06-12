@@ -6,9 +6,9 @@ seo:
 labels:
   - コアサーバ
 ---
-# rippledサーバのクラスター化
+# xrpldサーバのクラスター化
 
-1つのデータセンターで複数の`rippled`サーバを稼働している場合は、これらのサーバを[クラスター](../../../concepts/networks-and-servers/clustering.md)に構成して、効率を最大化できます。クラスター構成の設定は次のとおりです。
+1つのデータセンターで複数の`xrpld`サーバを稼働している場合は、これらのサーバを[クラスター](../../../concepts/networks-and-servers/clustering.md)に構成して、効率を最大化できます。クラスター構成の設定は次のとおりです。
 
 1. 各サーバのIPアドレスをメモします。
 
@@ -17,7 +17,7 @@ labels:
     コマンドラインインターフェイスを使用する場合の例を以下に示します。
 
     ```
-    $ rippled validation_create
+    $ xrpld validation_create
 
     Loading: "/etc/xrpld.cfg"
     Connecting to 127.0.0.1:5005
@@ -64,7 +64,7 @@ labels:
 
         この例は、サーバがクラスターのメンバーを認識するために使用するキーペアを定義しています。
 
-4. 構成ファイルを保存した後、各サーバで`rippled`を再起動します。
+4. 構成ファイルを保存した後、各サーバで`xrpld`を再起動します。
 
     ```
     # systemctl restart rippled
@@ -75,7 +75,7 @@ labels:
     コマンドラインインターフェイスを使用する場合の例を以下に示します。
 
     ```
-    $ rippled peers
+    $ xrpld peers
 
     Loading: "/etc/xrpld.cfg"
     Connecting to 127.0.0.1:5005

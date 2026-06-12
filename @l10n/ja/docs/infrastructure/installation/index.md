@@ -4,11 +4,11 @@ parent: infrastructure.html
 metadata:
   indexPage: true
 seo:
-    description: rippledサーバをインストールして更新します。
+    description: xrpldサーバをインストールして更新します。
 ---
-# rippledのインストール
+# xrpldのインストール
 
-rippledサーバをインストールして更新します。
+xrpldサーバをインストールして更新します。
 
 
 {% child-pages /%}

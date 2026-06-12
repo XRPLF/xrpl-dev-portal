@@ -10,7 +10,7 @@ labels:
 
 # プライベートネットワークをDockerで構築する
 
-このチュートリアルでは、[Docker](https://docs.docker.com/get-docker/)と最新バージョンの[rippled](https://hub.docker.com/r/xrpllabsofficial/xrpld)を使って、あなたのコンピュータ上でプライベートなXRP Ledgerネットワークを実行する方法を説明します。
+このチュートリアルでは、[Docker](https://docs.docker.com/get-docker/)と最新バージョンの[xrpld](https://hub.docker.com/r/xrpllabsofficial/xrpld)を使って、あなたのコンピュータ上でプライベートなXRP Ledgerネットワークを実行する方法を説明します。
 
 公開されているXRPテストネットのサーバを利用することは簡単ですが、プライベートネットワークを実行することは、XRP Ledgerの仕組みを理解しようとするときや、新しい機能を単独でテストするときに便利です。
 
@@ -20,7 +20,7 @@ labels:
 
 このチュートリアルでは、次のことを学びます：
 
-- 3つの`rippled`バリデータノードを持つ _小規模な_ ネットワークのセットアップと設定方法(各ノードの鍵の生成方法を含む)
+- 3つの`xrpld`バリデータノードを持つ _小規模な_ ネットワークのセットアップと設定方法(各ノードの鍵の生成方法を含む)
 
 - [Docker Compose](https://docs.docker.com/compose/)でネットワークを動かす方法.
 
@@ -36,9 +36,9 @@ labels:
 
 ## バリデータキーの生成
 
-`rippled`で提供されている`validator-keys`ツールを使って、バリデータノードの**それぞれ**のキーを生成します。生成されたキーは、後で使用するためにコンピュータのテキストファイルに保存しておく必要があります。
+`xrpld`で提供されている`validator-keys`ツールを使って、バリデータノードの**それぞれ**のキーを生成します。生成されたキーは、後で使用するためにコンピュータのテキストファイルに保存しておく必要があります。
 
-1. ターミナルで以下を実行し、`rippled`のDockerコンテナシェル内でコマンドを実行します：
+1. ターミナルで以下を実行し、`xrpld`のDockerコンテナシェル内でコマンドを実行します：
 
     ```
     docker run -it --entrypoint /bin/bash xrpllabsofficial/xrpld:latest
@@ -278,7 +278,7 @@ mkdir -p xrpl-private-network/{validator_1/config,validator_2/config,validator_3
 
 Docker Composeを使用すると、簡単な`yaml`ファイルの設定でコンピュータ上の複数のコンテナを管理することができます。このセクションでは、Docker Composeでネットワークを実行する方法と、ネットワークが正常に実行されていることを確認する方法について説明します。
 
-{% admonition type="info" name="注記" %}Docker Composeはデフォルトでコンテナが同じDocker仮想ネットワークに属していることを保証するので、`rippled`コンテナ同士が通信するために追加の手順を踏む必要はありません。{% /admonition %}
+{% admonition type="info" name="注記" %}Docker Composeはデフォルトでコンテナが同じDocker仮想ネットワークに属していることを保証するので、`xrpld`コンテナ同士が通信するために追加の手順を踏む必要はありません。{% /admonition %}
 
 プライベートネットワークの使用を始めるには、次の手順を実行します。
 
@@ -343,7 +343,7 @@ Docker Composeを使用すると、簡単な`yaml`ファイルの設定でコン
 2. 
 
 ```
-rippled server_info | grep server_state
+xrpld server_info | grep server_state
 ```
 
 ```
@@ -357,7 +357,7 @@ rippled server_info | grep server_state
 3. バリデータに接続しているピア数を確認します。
 
 ```
-    rippled server_info | grep peers
+    xrpld server_info | grep peers
 
 出力の例:
 
@@ -367,7 +367,7 @@ rippled server_info | grep server_state
 4. 以下のコマンドを実行して、genesisのアカウント情報を確認します。
 
 ```
-    rippled account_info rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh validated strict
+    xrpld account_info rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh validated strict
 
 出力の例:
 
@@ -402,7 +402,7 @@ rippled server_info | grep server_state
 
     ```
     docker exec -it validator_1 \
-        rippled submit 'snoPBrXtMeMyMHUVTgbuqAfg1SUTb' '{ "Account": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh", "Amount": "1000000000", "Destination": "r9wRwVgL2vWVnKhTPdtxva5vdH7FNw1zPs", "TransactionType": "Payment", "Fee": "10" }'
+        xrpld submit 'snoPBrXtMeMyMHUVTgbuqAfg1SUTb' '{ "Account": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh", "Amount": "1000000000", "Destination": "r9wRwVgL2vWVnKhTPdtxva5vdH7FNw1zPs", "TransactionType": "Payment", "Fee": "10" }'
     ```
 
     出力の例:
@@ -435,7 +435,7 @@ rippled server_info | grep server_state
 
     ```
     docker exec -it validator_1 \
-        rippled account_info r9wRwVgL2vWVnKhTPdtxva5vdH7FNw1zPs validated strict
+        xrpld account_info r9wRwVgL2vWVnKhTPdtxva5vdH7FNw1zPs validated strict
     ```
 
     出力の例:

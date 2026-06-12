@@ -8,9 +8,9 @@ labels:
 ---
 # ログメッセージについて
 
-以下のセクションでは、[`rippled`サーバ](../../concepts/networks-and-servers/index.md)のデバッグログに出力される最も一般的なログメッセージタイプとその解釈を説明します。
+以下のセクションでは、[`xrpld`サーバ](../../concepts/networks-and-servers/index.md)のデバッグログに出力される最も一般的なログメッセージタイプとその解釈を説明します。
 
-これは、`rippled`の[問題を診断する](diagnosing-problems.md)上で重要なステップです。
+これは、`xrpld`の[問題を診断する](diagnosing-problems.md)上で重要なステップです。
 
 ## クラッシュ
 
@@ -26,11 +26,11 @@ Terminating thread rippled: main: unhandled St13runtime_error
 
 サーバが起動時に常にクラッシュする場合は、[サーバが起動しない](server-wont-start.md)で考えられる原因をご覧ください。
 
-サーバが稼働中にランダムにクラッシュする場合、または特定のコマンドを実行するとクラッシュする場合は、`rippled`が最新バージョンに[更新](../installation/index.md)されていることを確認してください。最新バージョンに更新済で、サーバがクラッシュする場合は、以下の点を確認してください。
+サーバが稼働中にランダムにクラッシュする場合、または特定のコマンドを実行するとクラッシュする場合は、`xrpld`が最新バージョンに[更新](../installation/index.md)されていることを確認してください。最新バージョンに更新済で、サーバがクラッシュする場合は、以下の点を確認してください。
 
-- サーバのメモリーが不足していませんか。一部のシステムでは、OOM（Out Of Memory）Killerやその他の監視プロセスによって`rippled`が終了されることがあります。
+- サーバのメモリーが不足していませんか。一部のシステムでは、OOM（Out Of Memory）Killerやその他の監視プロセスによって`xrpld`が終了されることがあります。
 - サーバが共有環境で稼働している場合、他のユーザや管理者によってマシンまたはサービスが再起動されますか。たとえば、一部のホステッドプロバイダーは、長期にわたって共有マシンのリソースを大量に消費するサービスを自動的に終了します。
-- サーバは`rippled`を実行するための[最小要件](../installation/system-requirements.md)を満たしていますか。[本番環境サーバに関する推奨事項](../installation/system-requirements.md#推奨される仕様)を適用していますか。
+- サーバは`xrpld`を実行するための[最小要件](../installation/system-requirements.md)を満たしていますか。[本番環境サーバに関する推奨事項](../installation/system-requirements.md#推奨される仕様)を適用していますか。
 
 上記のいずれにも該当しない場合は、その問題をセキュリティ上重要なバグとしてRippleに報告してください。Rippleでクラッシュを再現できる場合は、報奨を受領できる可能性があります。詳細は<https://ripple.com/bug-bounty/>をご覧ください。
 
@@ -52,7 +52,7 @@ Terminating thread rippled: main: unhandled St13runtime_error
 
 ## Connection reset by peer
 
-以下のメッセージは、ピア`rippled`サーバによって接続が閉じられたことを示します。
+以下のメッセージは、ピア`xrpld`サーバによって接続が閉じられたことを示します。
 
 ```text
 2018-Aug-28 22:55:41.738765510 Peer:WRN [012] onReadMessage: Connection reset by peer
@@ -74,7 +74,7 @@ InboundLedger:WRN 11 timeouts for ledger 8265938
 
 これは、サーバがそのピアに対して特定のレジャーデータをリクエストする際に問題が発生していることを示しています。
 
-これは厳密には問題ではありませんが、レジャー履歴を迅速に取得したい場合は、`[ips_fixed]`構成スタンザを追加または編集してからサーバを再起動することで、すべての履歴が記録されたピアに接続するように`rippled`を構成できます。たとえば、すべての履歴が記録されたRippleのサーバに常に接続するには、以下のようにします。
+これは厳密には問題ではありませんが、レジャー履歴を迅速に取得したい場合は、`[ips_fixed]`構成スタンザを追加または編集してからサーバを再起動することで、すべての履歴が記録されたピアに接続するように`xrpld`を構成できます。たとえば、すべての履歴が記録されたRippleのサーバに常に接続するには、以下のようにします。
 
 ```
 [ips_fixed]
@@ -114,9 +114,9 @@ InboundLedger:WRN Want: 5AE53B5E39E6388DBACD0959E5F5A0FCAF0E0DCBA45D9AB15120E8CD
 
 サーバ起動後の**最初の数分間**にこの種類のメッセージがいくつか発生することは**特に異常な動作ではありません**。
 
-サーバの起動後5分以上にわたってこれらのメッセージが継続する場合、特に`run`時間が1000msを大きく上回る場合は、**サーバに十分なリソース（ディスクI/O、RAM、CPUなど）がない**可能性があります。この原因として、使用しているハードウェアの性能が不十分であること、または同じハードウェアで実行されている他のプロセスがリソースをめぐって`rippled`と競合していることが考えられます。（`rippled`とリソースをめぐって競合する可能性のある他のプロセスの例としては、スケジュール済みバックアップ、ウィルススキャナー、定期的なデータベースクリーナーなどがあります。）
+サーバの起動後5分以上にわたってこれらのメッセージが継続する場合、特に`run`時間が1000msを大きく上回る場合は、**サーバに十分なリソース（ディスクI/O、RAM、CPUなど）がない**可能性があります。この原因として、使用しているハードウェアの性能が不十分であること、または同じハードウェアで実行されている他のプロセスがリソースをめぐって`xrpld`と競合していることが考えられます。（`xrpld`とリソースをめぐって競合する可能性のある他のプロセスの例としては、スケジュール済みバックアップ、ウィルススキャナー、定期的なデータベースクリーナーなどがあります。）
 
-考えられるもう1つの原因として、回転型ハードディスクでNuDBの使用を試みていることが挙げられます。NuDBはソリッドステートドライブ（SSD）でのみ使用してください。`rippled`のデータベースには常にSSDストレージの使用が推奨されますが、RocksDBを使用する回転型ディスクで`rippled`を正常に稼働できる _可能性があります_ 。回転型ディスクを使用している場合は、`[node_db]`がRocksDBを使用するように設定されていることを確認してください。例:
+考えられるもう1つの原因として、回転型ハードディスクでNuDBの使用を試みていることが挙げられます。NuDBはソリッドステートドライブ（SSD）でのみ使用してください。`xrpld`のデータベースには常にSSDストレージの使用が推奨されますが、RocksDBを使用する回転型ディスクで`xrpld`を正常に稼働できる _可能性があります_ 。回転型ディスクを使用している場合は、`[node_db]`がRocksDBを使用するように設定されていることを確認してください。例:
 
 ```
 [node_db]
@@ -182,14 +182,14 @@ NetworkOPs:WRN We are not running on the consensus ledger
 ## 関連項目
 
 - **コンセプト:**
-    - [`rippled`サーバ](../../concepts/networks-and-servers/index.md)
+    - [`xrpld`サーバ](../../concepts/networks-and-servers/index.md)
     - [技術に関するよくある質問](/about/faq.md)
 - **チュートリアル:**
     - [問題の診断](diagnosing-problems.md)
     - [容量の計画](../installation/capacity-planning.md)
 - **リファレンス:**
-    - [rippled APIリファレンス](../../references/http-websocket-apis/index.md)
-      - [`rippled`コマンドラインの使用](../commandline-usage.md)
+    - [xrpld APIリファレンス](../../references/http-websocket-apis/index.md)
+      - [`xrpld`コマンドラインの使用](../commandline-usage.md)
       - [server_infoメソッド][]
 
 {% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

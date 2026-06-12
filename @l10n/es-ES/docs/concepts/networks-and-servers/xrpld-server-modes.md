@@ -2,13 +2,13 @@
 html: xrpld-server-modes.html
 parent: networks-and-servers.html
 seo:
-    description: Aprende sobre los modos de servidor rippled, incluyendo servidores stock, servidores validadores y servidores que se ejecutan en modo solitario.
+    description: Aprende sobre los modos de servidor xrpld, incluyendo servidores stock, servidores validadores y servidores que se ejecutan en modo solitario.
 labels:
   - Servidor principal
 ---
-# Modos de servidor rippled
+# Modos de servidor xrpld
 
-El software del servidor `rippled` puede ejecutarse en varios modos dependiendo de su configuración, incluyendo:
+El software del servidor `xrpld` puede ejecutarse en varios modos dependiendo de su configuración, incluyendo:
 
 - [**Modo P2P**](#modo-p2p) - Este es el modo principal del servidor: sigue la red peer-to-peer, procesa transacciones, y mantiene cierta cantidad de [histórico del ledger](ledger-history.md). Este modo se puede configurar para alguno o todos los siguientes roles:
     - [**Validador**](#validadores) - Ayuda a asegurar la red participando en el consenso.
@@ -16,14 +16,14 @@ El software del servidor `rippled` puede ejecutarse en varios modos dependiendo 
     - [**Servidor hub**](#hubs-públicos) - Transmite mensajes entre muchos otros miembros de la red peer-to-peer.
 - [**Modo solitario**](#modo-solitario) - Un modo offline para pruebas. No se conecta a la red peer-to-peer ni usa consenso.
 
-Tambien puedes ejecutar el ejecutable `rippled` como una aplicación cliente para acceder [APIs `rippled`](../../references/http-websocket-apis/index.md) localmente. (Dos instancias del mismo binario pueden ejecutarse uno al lado del otro en este caso; uno como un servidor, y el otro ejecutándose brevemente como cliente y luego apagarlo.)
+Tambien puedes ejecutar el ejecutable `xrpld` como una aplicación cliente para acceder [APIs `xrpld`](../../references/http-websocket-apis/index.md) localmente. (Dos instancias del mismo binario pueden ejecutarse uno al lado del otro en este caso; uno como un servidor, y el otro ejecutándose brevemente como cliente y luego apagarlo.)
 
-Para más información sobre los comandos que ejecutar `rippled` en cada uno de estos modos, ver la [Referencia de línea de comandos](../../infrastructure/commandline-usage.md).
+Para más información sobre los comandos que ejecutar `xrpld` en cada uno de estos modos, ver la [Referencia de línea de comandos](../../infrastructure/commandline-usage.md).
 
 
 ## Modo P2P
 
-El Modo P2P es el modo principal y predeterminado del servidor `rippled`, y puede manejar casi cualquier cosa que desees que haga tu servidor. Estos servidores forman una red peer-to-peer que procesa transacciones y mantiene el estado compartido del XRP Ledger. Si deseas enviar transacciones, leer datos del ledger o participar de otra manera en la red, tus solicitudes deben pasar por un servidor en Modo P2P en algún momento.
+El Modo P2P es el modo principal y predeterminado del servidor `xrpld`, y puede manejar casi cualquier cosa que desees que haga tu servidor. Estos servidores forman una red peer-to-peer que procesa transacciones y mantiene el estado compartido del XRP Ledger. Si deseas enviar transacciones, leer datos del ledger o participar de otra manera en la red, tus solicitudes deben pasar por un servidor en Modo P2P en algún momento.
 
 Los servidores en Modo P2P también pueden configurarse para proporcionar funcionalidades adicionales. Un servidor ejecutando en Modo P2P con un archivo de configuración mínimamente modificado también se llama un servidor de stock o _stock server_. Otras configuraciones incluyen:
 
@@ -61,9 +61,9 @@ La robustez del XRP Ledger depende de una red interconectada de _validadores_ qu
 
 La validación utiliza solo una pequeña cantidad de recursos informáticos, pero no hay mucho beneficio para una sola entidad u organización en ejecutar varios validadores porque hacerlo no proporciona más protecciones contra las colisiones. Cada validador se identifica con un par de claves criptográficas único que debe ser gestionado cuidadosamente; múltiples validadores no deben compartir un par de claves. Por estas razones, la validación está desactivada de forma predeterminada.
 
-Puedes habilitar de forma segura la validación en un servidor que también se utiliza para otros fines; este tipo de configuración se llama un _servidor multiuso_. Alternativamente, puedes ejecutar un _validador dedicado_ que no realice otras tareas, posiblemente en un [cluster](clustering.md) con otros servidores `rippled` en Modo P2P.
+Puedes habilitar de forma segura la validación en un servidor que también se utiliza para otros fines; este tipo de configuración se llama un _servidor multiuso_. Alternativamente, puedes ejecutar un _validador dedicado_ que no realice otras tareas, posiblemente en un [cluster](clustering.md) con otros servidores `xrpld` en Modo P2P.
 
-Para más información sobre como ejecutar un validador, ver [Ejecutar `rippled` como un validador](../../infrastructure/configuration/server-modes/run-xrpld-as-a-validator.md).
+Para más información sobre como ejecutar un validador, ver [Ejecutar `xrpld` como un validador](../../infrastructure/configuration/server-modes/run-xrpld-as-a-validator.md).
 
 
 ## Modo solitario
@@ -78,7 +78,7 @@ En el modo solitario, el servidor opera sin conectarse a la red y sin participar
 ## Ver también
 
 - **Tutoriales:**
-    - [Configurar `rippled`](../../infrastructure/configuration/index.md)
-    - [Usar rippled en modo solitario](../../infrastructure/testing-and-auditing/index.md)
+    - [Configurar `xrpld`](../../infrastructure/configuration/index.md)
+    - [Usar xrpld en modo solitario](../../infrastructure/testing-and-auditing/index.md)
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

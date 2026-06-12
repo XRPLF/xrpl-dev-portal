@@ -8,7 +8,7 @@ labels:
 ---
 # レート制限
 
-`rippled`サーバはAPIクライアントが公開APIにリクエストできるレートを制限できます。レート制限はクライアントのIPアドレスに基づいて行われるため、[ネットワークアドレス変換](https://ja.wikipedia.org/wiki/ネットワークアドレス変換)の背後にいるクライアントは公開IPアドレスに基づく制限を共有します。
+`xrpld`サーバはAPIクライアントが公開APIにリクエストできるレートを制限できます。レート制限はクライアントのIPアドレスに基づいて行われるため、[ネットワークアドレス変換](https://ja.wikipedia.org/wiki/ネットワークアドレス変換)の背後にいるクライアントは公開IPアドレスに基づく制限を共有します。
 
 {% admonition type="success" name="ヒント" %}レート制限は、クライアントが[管理者](/docs/tutorials/get-started/get-started-http-websocket-apis.md#管理者アクセス権限)として接続されているときには適用されません{% /admonition %}
 
@@ -55,13 +55,13 @@ Server is overloaded
 ## 関連項目
 
 - **コンセプト:**
-    - [`rippled`サーバ](../../../concepts/networks-and-servers/index.md)
+    - [`xrpld`サーバ](../../../concepts/networks-and-servers/index.md)
     - [ソフトウェアエコシステム](../../../introduction/software-ecosystem.md)
 - **チュートリアル:**
     - [XRP Ledger APIの使用開始](/docs/tutorials/get-started/get-started-http-websocket-apis.md)
-    - [rippledのトラブルシューティング](../../../infrastructure/troubleshooting/index.md)
+    - [xrpldのトラブルシューティング](../../../infrastructure/troubleshooting/index.md)
 - **リファレンス:**
-    - [rippled APIリファレンス](../index.md)
+    - [xrpld APIリファレンス](../index.md)
         - [エラーのフォーマット](error-formatting.md)
 
 {% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

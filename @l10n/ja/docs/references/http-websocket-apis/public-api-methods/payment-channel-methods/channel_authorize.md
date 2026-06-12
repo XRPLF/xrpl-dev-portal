@@ -51,7 +51,7 @@ Content-Type: application/json
 {% tab label="コマンドライン" %}
 ```sh
 #Syntax: channel_authorize <private_key> [<key_type>] <channel_id> <drops>
-rippled channel_authorize s████████████████████████████ secp256k1 5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3 1000000
+xrpld channel_authorize s████████████████████████████ secp256k1 5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3 1000000
 ```
 {% /tab %}
 

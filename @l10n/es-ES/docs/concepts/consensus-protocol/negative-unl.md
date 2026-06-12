@@ -167,8 +167,8 @@ El siguiente ejemplo demuestra cómo afecta la UNL negativa al proceso de consen
 - **Conceptos:**
     - [Protocolo de consenso](index.md)
 - **Tutoriales:**
-    - [Conecta tu `rippled` a la red paralela](../../infrastructure/configuration/connect-your-xrpld-to-the-xrp-test-net.md)
-    - [Ejecuta `rippled` como validador](../../infrastructure/configuration/server-modes/run-xrpld-as-a-validator.md)
+    - [Conecta tu `xrpld` a la red paralela](../../infrastructure/configuration/connect-your-xrpld-to-the-xrp-test-net.md)
+    - [Ejecuta `xrpld` como validador](../../infrastructure/configuration/server-modes/run-xrpld-as-a-validator.md)
 - **Referencias:**
     - [Objeto NegativeUNL](../../references/protocol/ledger-data/ledger-entry-types/negativeunl.md)
     - [Pseudo-transacción UNLModify][]

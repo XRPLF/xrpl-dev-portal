@@ -54,7 +54,7 @@ labels:
 
 ```bash
 #Syntax: deposit_authorized <source_account> <destination_account> [<ledger>]
-rippled deposit_authorized rEhxGqkqPPSxQ3P25J66ft5TwpzV14k2de rsUiUMpnrgxQp24dJYZDhmV4bE3aBtQyt8 validated
+xrpld deposit_authorized rEhxGqkqPPSxQ3P25J66ft5TwpzV14k2de rsUiUMpnrgxQp24dJYZDhmV4bE3aBtQyt8 validated
 ```
 {% /tab %}
 {% /tabs %}

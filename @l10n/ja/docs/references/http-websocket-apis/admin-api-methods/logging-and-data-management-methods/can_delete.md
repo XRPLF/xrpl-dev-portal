@@ -9,7 +9,7 @@ labels:
 # can_delete
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/CanDelete.cpp "Source")
 
-`can_delete`メソッドは[指示による削除が有効なオンライン削除](../../../../infrastructure/configuration/data-retention/online-deletion.md#指示による削除)を使用する`rippled`サーバに削除が可能のレジャーバージョンを通知します。指定したレジャーバージョン以前が削除可能になります。指示による削除が有効ではない場合、このメソッドは何も行いません。
+`can_delete`メソッドは[指示による削除が有効なオンライン削除](../../../../infrastructure/configuration/data-retention/online-deletion.md#指示による削除)を使用する`xrpld`サーバに削除が可能のレジャーバージョンを通知します。指定したレジャーバージョン以前が削除可能になります。指示による削除が有効ではない場合、このメソッドは何も行いません。
 
 _`can_delete`メソッドは、権限のないユーザは実行できない[管理メソッド](../index.md)です。_
 
@@ -45,7 +45,7 @@ _`can_delete`メソッドは、権限のないユーザは実行できない[管
 {% tab label="コマンドライン" %}
 ```sh
 #Syntax: can_delete [<ledger_index>|<ledger_hash>|now|always|never]
-rippled can_delete 11320417
+xrpld can_delete 11320417
 ```
 {% /tab %}
 

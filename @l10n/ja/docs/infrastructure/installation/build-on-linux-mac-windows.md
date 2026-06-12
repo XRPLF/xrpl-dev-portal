@@ -2,15 +2,15 @@
 html: build-on-linux-mac-windows.html
 parent: install-xrpld.html
 seo:
-    description: Linux、Mac（macOS）、Windows上でrippledをビルドします。
+    description: Linux、Mac（macOS）、Windows上でxrpldをビルドします。
 labels:
   - コアサーバ
   - ブロックチェーン
 top_nav_grouping: 人気ページ
 ---
-# Linux、Mac（macOS）、Windows上でのrippledのビルド
+# Linux、Mac（macOS）、Windows上でのxrpldのビルド
 
-Windows、Linux、macOSなど様々なプラットフォームで`rippled`をビルドするには、C++開発環境が必要です。Git、Python、Conan、CMake、そして適切なC++コンパイラなどのツールが必要です。
+Windows、Linux、macOSなど様々なプラットフォームで`xrpld`をビルドするには、C++開発環境が必要です。Git、Python、Conan、CMake、そして適切なC++コンパイラなどのツールが必要です。
 
 続きを読むには、[GitHubの最新の`rippled`ビルド手順](https://github.com/XRPLF/rippled/blob/develop/BUILD.md)をご覧ください。
 

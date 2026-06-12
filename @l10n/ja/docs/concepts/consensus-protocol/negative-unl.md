@@ -167,7 +167,7 @@ V<sub>a</sub>は、サーバ側のコンセンサス見解と一致した過去2
     - [コンセンサスプロトコル](index.md)
 - **チュートリアル:**
     - [Testnetや別の並列ネットワークへ接続する](../../infrastructure/configuration/connect-your-xrpld-to-the-xrp-test-net.md)
-    - [バリデータとしての`rippled`の実行](../../infrastructure/configuration/server-modes/run-xrpld-as-a-validator.md)
+    - [バリデータとしての`xrpld`の実行](../../infrastructure/configuration/server-modes/run-xrpld-as-a-validator.md)
 - **リファレンス:**
     - [negativeUNL オブジェクト](../../references/protocol/ledger-data/ledger-entry-types/negativeunl.md)
     - [UNLModify pseudo-transaction][]

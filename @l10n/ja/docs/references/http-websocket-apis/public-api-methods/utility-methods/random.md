@@ -39,7 +39,7 @@ labels:
 {% tab label="コマンドライン" %}
 ```sh
 #Syntax: random
-rippled random
+xrpld random
 ```
 {% /tab %}
 

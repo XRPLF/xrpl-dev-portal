@@ -9,7 +9,7 @@ labels:
 # Amendmentのテスト
 
 
-本番ネットワークでAmendmentが完全に有効になる前に、スタンドアロンモードを使って`rippled` の動作をテストすることができます。
+本番ネットワークでAmendmentが完全に有効になる前に、スタンドアロンモードを使って`xrpld` の動作をテストすることができます。
 
 {% admonition type="warning" name="注意" %}これは開発目的の利用を想定しています。{% /admonition %}
 

@@ -86,11 +86,11 @@ labels:
 | `consensus`             | `consensusPhase`     | サーバがコンセンサスサイクルのフェーズを変更するたびにメッセージを送信します。 |
 | `ledger`                | `ledgerClosed`       | コンセンサスプロセスで新しい検証済みレジャーが宣言されるたびにメッセージを送信します。 |
 | `manifests`             | `manifestReceived`   | バリデータのephemeral署名鍵の更新を受け取るたびにメッセージを送信します。 |
-| `peer_status`           | `peerStatusChange`   | **(管理者専用)** 接続している`rippled`のピアサーバに関する情報（特にコンセンサスプロセスに関する情報）。 |
+| `peer_status`           | `peerStatusChange`   | **(管理者専用)** 接続している`xrpld`のピアサーバに関する情報（特にコンセンサスプロセスに関する情報）。 |
 | `transactions`          | `transaction`        | 閉鎖済みレジャーにトランザクションが追加されるたびにメッセージを送信します。 |
 | `transactions_proposed` | `transaction`        | 閉鎖済みレジャーにトランザクションが追加される場合や、検証済みレジャーにまだ追加されておらず、今後も追加される見込みのない一部のトランザクションが検証済みレジャーに追加される場合に、メッセージを送信します。提案されたすべてのトランザクションが検証前に表示されるわけではありません。 {% admonition type="info" name="注記" %}[成功しなかったトランザクション](../../../protocol/transactions/transaction-results/index.md) 成功しなかったトランザクションも、スパム対策取引手数料を取るため、検証済みレジャーに含まれます。{% /admonition %} |
-| `server`                | `serverStatus`       | `rippled`サーバのステータス（ネットワーク接続など）が変更されるたびにメッセージを送信します。 |
-| `validations`           | `validationReceived` | サーバがバリデータを信頼しているか否かにかかわらず、サーバが検証メッセージを受信するたびに、メッセージを送信します。（個々の`rippled`は、サーバが少なくとも定数の信頼できるバリデータから検証メッセージを受信した時点で、レジャーが検証済みであると宣言します。） |
+| `server`                | `serverStatus`       | `xrpld`サーバのステータス（ネットワーク接続など）が変更されるたびにメッセージを送信します。 |
+| `validations`           | `validationReceived` | サーバがバリデータを信頼しているか否かにかかわらず、サーバが検証メッセージを受信するたびに、メッセージを送信します。（個々の`xrpld`は、サーバが少なくとも定数の信頼できるバリデータから検証メッセージを受信した時点で、レジャーが検証済みであると宣言します。） |
 
 {% admonition type="info" name="注記" %}以下のストリームは Clioおよび[レポートモード][]の`rippled`サーバからは利用できません: `server`、`peer_status`、`consensus`。これらのストリームを要求すると、どちらも`reportingUnsupported`エラーを返します。 {% badge href="https://github.com/XRPLF/rippled/releases/tag/1.8.1" %}更新: rippled 1.8.1{% /badge %} {% badge href="https://github.com/XRPLF/clio/releases/tag/2.0.0" %}新規: Clio v2.0{% /badge %}{% /admonition %}
 
@@ -228,7 +228,7 @@ labels:
 | `ledger_hash`           | 文字列        | 提案されたレジャーの識別ハッシュを検証中です。 |
 | `ledger_index`          | 文字列 - 整数 | 提案されたレジャーの[レジャーインデックス][]。 |
 | `load_fee`              | 整数          | （省略される場合があります）このバリデータにより現在施行されているローカルの負荷スケーリングされたトランザクションコスト（手数料単位）。 |
-| `master_key`            | 文字列        | _（省略される場合があります）_ バリデータのマスター公開鍵（バリデータがXRP Ledgerの[base58][]フォーマットのバリデータトークンを使用している場合）。（関連項目: [`rippled`サーバで検証を有効化](../../../../infrastructure/configuration/server-modes/run-xrpld-as-a-validator.md#3-rippledサーバで検証を有効化)。） |
+| `master_key`            | 文字列        | _（省略される場合があります）_ バリデータのマスター公開鍵（バリデータがXRP Ledgerの[base58][]フォーマットのバリデータトークンを使用している場合）。（関連項目: [`xrpld`サーバで検証を有効化](../../../../infrastructure/configuration/server-modes/run-xrpld-as-a-validator.md#3-xrpldサーバで検証を有効化)。） |
 | `reserve_base`          | 整数          | （省略される場合があります）このバリデータが[手数料投票](../../../../concepts/consensus-protocol/fee-voting.md)による設定を希望する最低必要準備金（`account_reserve`値）。 |
 | `reserve_inc`           | 整数          | （省略される場合があります）このバリデータが[手数料投票](../../../../concepts/consensus-protocol/fee-voting.md)による設定を希望する必要準備金（`owner_reserve`値）の増分。 |
 | `server_version`        | 文字列 - 数値 | _(省略される場合があります)_ バリデータサーバのバージョン番号を表す 64 ビットの整数。例えば`「1745990410175512576」`。256レジャーに一度だけ提供されます。 {% badge href="https://github.com/XRPLF/rippled/releases/tag/1.8.1" %}新規: rippled 1.8.1{% /badge %} |
@@ -376,7 +376,7 @@ labels:
 
 ## ピアステータスストリーム
 
-管理者専用の`peer_status`ストリームは、このサーバが接続している他の`rippled`サーバの活動に関する大量の情報、特にコンセンサスプロセスでのサーバのステータスを報告します。
+管理者専用の`peer_status`ストリームは、このサーバが接続している他の`xrpld`サーバの活動に関する大量の情報、特にコンセンサスプロセスでのサーバのステータスを報告します。
 
 ピアステータスストリームメッセージの例:
 
@@ -392,7 +392,7 @@ labels:
 }
 ```
 
-ピアステータスストリームメッセージは、`rippled`ピアサーバのステータスが変化したイベントを表します。これらのメッセージは、次のフィールドを持つJSONオブジェクトです。
+ピアステータスストリームメッセージは、`xrpld`ピアサーバのステータスが変化したイベントを表します。これらのメッセージは、次のフィールドを持つJSONオブジェクトです。
 
 | フィールド         | 値     | 説明 |
 | :----------------- | :----- | ---- |

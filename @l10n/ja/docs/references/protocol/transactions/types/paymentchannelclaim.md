@@ -54,7 +54,7 @@ Channelの**宛先アドレス**は以下の操作を実行できます。
 | `Balance`       | 文字列       | Amount       | いいえ | このクレームの処理後にこのChannelから送金される[XRPのdrop数][]。XRPを送金する場合に必須です。Channelからこれまでに送金された総額よりも大きく、署名済みクレームの`Amount`よりも少ない額である必要があります。Channelを閉鎖する場合を除き、指定する必要があります。 |
 | `Channel`       | 文字列       | UInt256      | はい   | Channelの一意のID(64文字の16進文字列) |
 | `CredentialIDs` | 文字列の配列 | Vector256    | いいえ | このトランザクションによる入金を承認するための資格情報のセット。配列の各要素は、レジャーのCredentialエントリのレジャエントリIDでなければなりません。詳細は、[Credential ID](./payment.md#credential-id)をご覧ください。 |
-| `PublicKey`     | 文字列       | Blob         | いいえ | 署名に使用する公開鍵(16進数)。公開鍵はレジャーに保管されているこのChannelの`PublicKey`と一致している必要があります。トランザクションの送信者がChannelの支払元アドレスでない場合には必須です。また`Signature`フィールドは省略されます。(`rippled`がトランザクションをレジャーに適用する前に署名の有効性をチェックできるように、トランザクションにPubKeyが指定されています。) |
+| `PublicKey`     | 文字列       | Blob         | いいえ | 署名に使用する公開鍵(16進数)。公開鍵はレジャーに保管されているこのChannelの`PublicKey`と一致している必要があります。トランザクションの送信者がChannelの支払元アドレスでない場合には必須です。また`Signature`フィールドは省略されます。(`xrpld`がトランザクションをレジャーに適用する前に署名の有効性をチェックできるように、トランザクションにPubKeyが指定されています。) |
 | `Signature`     | 文字列       | Blob         | いいえ | クレームの署名(16進数)。署名付きメッセージには、Channel IDとクレームの額が含まれています。トランザクションの送信者がChannelの支払元アドレスでない場合には必須です。 |
 
 [DeletableAccounts Amendment](/resources/known-amendments.md#deletableaccounts)が有効であり、 _かつ_ Payment Channelの作成時に[fixPayChanRecipientOwnerDir Amendment](/resources/known-amendments.md#fixpaychanrecipientownerdir)が有効でなかった場合は、Payment Channelの送金先が[削除](../../../../concepts/accounts/deleting-accounts.md)され、現在レジャーに存在しない可能性があります。宛先が削除されている場合、支払元アカウントはチャネルから宛先にXRPを送金できません。トランザクションは`tecNO_DST`で失敗します。宛先アカウントが削除されている場合に、このトランザクションタイプを他の用途(チャネルの有効期限の調整、XRPのないチャネルのクローズ、有効期限を過ぎたチャネルの削除など)で使用しても影響はありません。

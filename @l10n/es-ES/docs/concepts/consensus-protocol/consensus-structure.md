@@ -59,11 +59,11 @@ Hay otras clases de códigos de resultado además de **`tes`** y **`tec`**. Cual
 
 Cuando se trabaja con [APIs del XRP Ledger](../../references/http-websocket-apis/index.md), las aplicaciones deben distinguir entre transacciones candidatas propuestas para la inclusión en un ledger y transacciones validadas que están incluidas en un ledger. Solo los resultados de transacciones encontrados en un ledger validado son inmutables. Una transacción candidata puede eventualmente estar incluida en un leger validado, o puede que no.
 
-Importante: Algunas [APIs `rippled`](../../references/http-websocket-apis/index.md) proporcionan resultados provisionales, basados en transacciones candidatas <a href="#footnote_2" id="from_footnote_2"><sup>2</sup></a>. Las aplicaciones nunca deben  basarse en resultados provisionales para determinar el resultado final de una transacción. La única forma de conocer si finalmente una transacción se ha realizado correctamente, es comprobar el estado de la transacción hasta que esté en un ledger validado y además tenga el código de resultado `tesSUCCESS`. Si la transacción está en un ledger validado con otro código de resultado, ha fallado. Si el ledger especificado en [`LastLedgerSequence`](../../references/protocol/transactions/common-fields.md) en una transacción ha sido validado, pero la transacción no aparece en ese ledger o en alguno anterior, entonces esa transacción ha fallado y nunca aparecerá en ningún ledger. Un resultado es definitivo solo para transacciones en un ledger validado o nunca podrán aparecer por las restricciones de `LastLedgerSequence` explicadas más adelante en este documento.
+Importante: Algunas [APIs `xrpld`](../../references/http-websocket-apis/index.md) proporcionan resultados provisionales, basados en transacciones candidatas <a href="#footnote_2" id="from_footnote_2"><sup>2</sup></a>. Las aplicaciones nunca deben  basarse en resultados provisionales para determinar el resultado final de una transacción. La única forma de conocer si finalmente una transacción se ha realizado correctamente, es comprobar el estado de la transacción hasta que esté en un ledger validado y además tenga el código de resultado `tesSUCCESS`. Si la transacción está en un ledger validado con otro código de resultado, ha fallado. Si el ledger especificado en [`LastLedgerSequence`](../../references/protocol/transactions/common-fields.md) en una transacción ha sido validado, pero la transacción no aparece en ese ledger o en alguno anterior, entonces esa transacción ha fallado y nunca aparecerá en ningún ledger. Un resultado es definitivo solo para transacciones en un ledger validado o nunca podrán aparecer por las restricciones de `LastLedgerSequence` explicadas más adelante en este documento.
 
 ## El protocolo XRP Ledger – Consenso y validación
 
-La red peer-to-peer XRP Ledger consiste en muchos servidores independientes XRP Ledger (normalmente ejecutando [`rippled`](../networks-and-servers/index.md)) que aceptan y procesan transacciones. Las aplicaciones cliente firman y envían transacciones a servidores XRP Ledger, que transmiten estas transacciones candidatas a través de la red de procesamiento. Ejemplos de aplicaciones cliente incluyen carteras web y móvil, conexiones con instituciones financieras, y plataformas de trading electrónicas.
+La red peer-to-peer XRP Ledger consiste en muchos servidores independientes XRP Ledger (normalmente ejecutando [`xrpld`](../networks-and-servers/index.md)) que aceptan y procesan transacciones. Las aplicaciones cliente firman y envían transacciones a servidores XRP Ledger, que transmiten estas transacciones candidatas a través de la red de procesamiento. Ejemplos de aplicaciones cliente incluyen carteras web y móvil, conexiones con instituciones financieras, y plataformas de trading electrónicas.
 
 [{% inline-svg file="/docs/img/xrp-ledger-network.svg" /%}](/docs/img/xrp-ledger-network.svg "Figura 4: Participantes en el Protocolo XRP Ledger")
 
@@ -158,7 +158,7 @@ El ciclo de vida de una sola transacción es el siguiente:
     - Si una ronda de consenso falla, el proceso de consenso se repita hasta que es exitoso.
 - El ledger validado incluye la transacción y esta afecta al estado del ledger.
 
-Las aplicaciones deben solo confiar en información de ledgers validados, no en resultados provisionales de transacciones candidatas. Algunas [APIs de `rippled`](../../references/http-websocket-apis/index.md) devuelven inicialmente unos resultados provisionales para las transacciones. Los resultados de una transacción se convierten en inmutables solo si la transacción es incluida en un ledger validado, o la transacción incluye `LastLedgerSequence` y no aparece en ningún ledger validado con ese ledger index o menor.
+Las aplicaciones deben solo confiar en información de ledgers validados, no en resultados provisionales de transacciones candidatas. Algunas [APIs de `xrpld`](../../references/http-websocket-apis/index.md) devuelven inicialmente unos resultados provisionales para las transacciones. Los resultados de una transacción se convierten en inmutables solo si la transacción es incluida en un ledger validado, o la transacción incluye `LastLedgerSequence` y no aparece en ningún ledger validado con ese ledger index o menor.
 
 Buenas prácticas para aplicaciones enviando transsacciones incluyen:
 
@@ -178,7 +178,7 @@ Buenas prácticas para aplicaciones enviando transsacciones incluyen:
     - [El mecanismo del consenso (YouTube)](https://www.youtube.com/watch?v=k6VqEkqRTmk&list=PLJQ55Tj1hIVZtJ_JdTvSum2qMTsedWkNi&index=2)
 - **Tutoriales:**
     - [Envío de transacciones de forma correcta](../transactions/reliable-transaction-submission.md)
-    - [Ejecutar `rippled` como un validator](../../infrastructure/configuration/server-modes/run-xrpld-as-a-validator.md)
+    - [Ejecutar `xrpld` como un validator](../../infrastructure/configuration/server-modes/run-xrpld-as-a-validator.md)
 - **Referencias:**
     - [Referencia del fromato del ledger](../../references/protocol/ledger-data/index.md)
     - [Referencia del formato de la transacción](../../references/protocol/transactions/index.md)
@@ -210,6 +210,6 @@ Buenas prácticas para aplicaciones enviando transsacciones incluyen:
 
 <a href="#from_footnote_9" id="footnote_9"><sup>9</sup></a> – En la práctica, el XRP Ledger corre más eficientemente empezando una nueva ronda de consenso al mismo timepo, antes de que la validación se haya completado.
 
-<a href="#from_footnote_10" id="footnote_10"><sup>10</sup></a> – Un servidor `rippled` puede responder a las peticiones API incluso sin tener un histórico del ledger completo. Interrupciones en el servicio o en la conectividad de la red puede llevar a ledgers perdidos, o a lagunas, en el histórico del ledger del servidor. Con el tiempo, si se configura así, `rippled` llena los vacíos en su histórico. Cuando prueba transacciones perdidas, es importante verificar contra un servidor con ledgers completos continuos desde que la transacción que se ha enviado hasta su `LastLedgerSequence`. Utiliza el [método server_info][] para determinar qué ledgers están disponibles para un servidor en partícular.
+<a href="#from_footnote_10" id="footnote_10"><sup>10</sup></a> – Un servidor `xrpld` puede responder a las peticiones API incluso sin tener un histórico del ledger completo. Interrupciones en el servicio o en la conectividad de la red puede llevar a ledgers perdidos, o a lagunas, en el histórico del ledger del servidor. Con el tiempo, si se configura así, `xrpld` llena los vacíos en su histórico. Cuando prueba transacciones perdidas, es importante verificar contra un servidor con ledgers completos continuos desde que la transacción que se ha enviado hasta su `LastLedgerSequence`. Utiliza el [método server_info][] para determinar qué ledgers están disponibles para un servidor en partícular.
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

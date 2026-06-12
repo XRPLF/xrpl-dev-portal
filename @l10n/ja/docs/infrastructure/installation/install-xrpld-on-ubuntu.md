@@ -2,20 +2,20 @@
 html: install-xrpld-on-ubuntu.html
 parent: install-xrpld.html
 seo:
-    description: プリコンパイル済みのrippledバイナリーをUbuntu Linuxにインストールします。
+    description: プリコンパイル済みのxrpldバイナリーをUbuntu Linuxにインストールします。
 labels:
   - コアサーバ
 ---
 # UbuntuまたはDebian Linuxへのインストール
 
-このページでは、[`apt`](https://ubuntu.com/server/docs)ユーティリティを使用して、**Ubuntu Linux 18.04以降**または**Debian 10** に`rippled`の安定した最新バージョンをインストールする場合の推奨手順を説明します。
+このページでは、[`apt`](https://ubuntu.com/server/docs)ユーティリティを使用して、**Ubuntu Linux 18.04以降**または**Debian 10** に`xrpld`の安定した最新バージョンをインストールする場合の推奨手順を説明します。
 
 以下の手順では、Rippleによってコンパイルされたバイナリーをインストールします。
 
 
 ## 前提条件
 
-`rippled`をインストールする前に、[システム要件](system-requirements.md)を満たす必要があります。
+`xrpld`をインストールする前に、[システム要件](system-requirements.md)を満たす必要があります。
 
 
 ## インストール手順
@@ -52,7 +52,7 @@ labels:
     gpg: WARNING: no command supplied.  Trying to guess what you mean ...
     pub   ed25519 2026-02-16 [SC] [expires: 2033-02-14]
         E057C1CF72B0DF1A4559E8577DEE9236AB06FAA6
-    uid   TechOps Team at Ripple <techops+rippled@ripple.com>
+    uid   TechOps Team at Ripple <techops+xrpld@ripple.com>
     sub   ed25519 2026-02-16 [S] [expires: 2029-02-15]
     ```
 
@@ -72,7 +72,7 @@ labels:
     - `bullseye` for **Debian 11 Bullseye**
     - `jammy` for **Ubuntu 22.04 Jammy Jellyfish**
 
-   `rippled`の開発バージョンまたはプレリリースバージョンにアクセスするには、`stable`ではなく次のいずれかを使用します。
+   `xrpld`の開発バージョンまたはプレリリースバージョンにアクセスするには、`stable`ではなく次のいずれかを使用します。
 
    - `unstable` - プレインストールビルド（[`release`ブランチ](https://github.com/XRPLF/rippled/tree/release)）
    - `nightly` - 実験/開発ビルド（[`develop`ブランチ](https://github.com/XRPLF/rippled/tree/develop)）
@@ -85,19 +85,19 @@ labels:
     sudo apt -y update
     ```
 
-7. `rippled`ソフトウェアパッケージをインストールします。
+7. `xrpld`ソフトウェアパッケージをインストールします。
 
     ```
     sudo apt -y install rippled
     ```
 
-8. `rippled`サービスのステータスをチェックします。
+8. `xrpld`サービスのステータスをチェックします。
 
     ```
     systemctl status rippled.service
     ```
 
-   `rippled`サービスが自動的に開始します。開始しない場合は、手動で開始できます。
+   `xrpld`サービスが自動的に開始します。開始しない場合は、手動で開始できます。
 
     ```
     sudo systemctl start rippled.service
@@ -112,15 +112,15 @@ labels:
 ## 関連項目
 
 - **コンセプト:**
-    - [`rippled`サーバ](../../concepts/networks-and-servers/index.md)
+    - [`xrpld`サーバ](../../concepts/networks-and-servers/index.md)
     - [コンセンサスについて](../../concepts/consensus-protocol/index.md)
 - **チュートリアル:**
-    - [rippledの構成](../configuration/index.md)
-    - [rippledのトラブルシューティング](../troubleshooting/index.md)
-    - [rippled APIの使用開始](../../tutorials/get-started/get-started-http-websocket-apis.md)
+    - [xrpldの構成](../configuration/index.md)
+    - [xrpldのトラブルシューティング](../troubleshooting/index.md)
+    - [xrpld APIの使用開始](../../tutorials/get-started/get-started-http-websocket-apis.md)
 - **リファレンス:**
-    - [rippled APIリファレンス](../../references/http-websocket-apis/index.md)
-      - [`rippled`コマンドラインの使用](../commandline-usage.md)
+    - [xrpld APIリファレンス](../../references/http-websocket-apis/index.md)
+      - [`xrpld`コマンドラインの使用](../commandline-usage.md)
       - [server_infoメソッド][]
 
 {% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

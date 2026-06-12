@@ -74,14 +74,14 @@ DefaultRippleフラグは、デフォルトで着信トラストラインでのR
 
 トラストライン上のNoRippleフラグは、トラストライン上のアドレスの残高がプラスまたはゼロの場合に限り、有効にできます。これにより、この機能を悪用してトラストラインの残高に示される債務を不履行にすることができなくなります。（ただし、アドレスを放棄すれば債務を不履行にできます。）
 
-[`rippled` API](../../../references/http-websocket-apis/index.md)でNoRippleフラグを有効にするには、`tfSetNoRipple`フラグを設定した[TrustSetトランザクション][]を送信します。NoRippleを無効にする（Ripplingを有効にする）には、`tfClearNoRipple`フラグを使用します。
+[`xrpld` API](../../../references/http-websocket-apis/index.md)でNoRippleフラグを有効にするには、`tfSetNoRipple`フラグを設定した[TrustSetトランザクション][]を送信します。NoRippleを無効にする（Ripplingを有効にする）には、`tfClearNoRipple`フラグを使用します。
 
 
 ### NoRippleステータスの確認
 
 相互に信頼し合っている2つのアカウントの場合、NoRippleフラグはアカウントごとに管理されます。
 
-[`rippled` API](../../../references/http-websocket-apis/index.md)でアドレスに関連付けられているトラストラインを確認するには、[account_linesメソッド][]を使用します。各トラストラインの`no_ripple`フィールドには、現在のアドレスがそのトラストラインに対してNoRippleフラグを有効にしているか否かが表示され、`no_ripple_peer`フィールドには、取引相手がNoRippleフラグを有効にしているか否かが表示されます。
+[`xrpld` API](../../../references/http-websocket-apis/index.md)でアドレスに関連付けられているトラストラインを確認するには、[account_linesメソッド][]を使用します。各トラストラインの`no_ripple`フィールドには、現在のアドレスがそのトラストラインに対してNoRippleフラグを有効にしているか否かが表示され、`no_ripple_peer`フィールドには、取引相手がNoRippleフラグを有効にしているか否かが表示されます。
 
 
 ## 関連項目

@@ -2,15 +2,15 @@
 html: server-doesnt-sync.html
 parent: troubleshoot-the-xrpld-server.html
 seo:
-    description: rippledサーバがXRP Ledgerの他の部分と同期できない問題のトラブルシューティング。
+    description: xrpldサーバがXRP Ledgerの他の部分と同期できない問題のトラブルシューティング。
 labels:
   - コアサーバ
 ---
-# rippledサーバが同期しない
+# xrpldサーバが同期しない
 
-このページでは、[`rippled`サーバ](../../concepts/networks-and-servers/index.md)が正常に起動したのに、ネットワークに完全に接続できずに[「connected」状態](../../references/http-websocket-apis/api-conventions/xrpld-server-states.md)のままになっている場合の原因について説明します。（サーバが起動中または起動直後にクラッシュした場合は、[サーバが起動しない](server-wont-start.md)をご覧ください。）
+このページでは、[`xrpld`サーバ](../../concepts/networks-and-servers/index.md)が正常に起動したのに、ネットワークに完全に接続できずに[「connected」状態](../../references/http-websocket-apis/api-conventions/xrpld-server-states.md)のままになっている場合の原因について説明します。（サーバが起動中または起動直後にクラッシュした場合は、[サーバが起動しない](server-wont-start.md)をご覧ください。）
 
-以下の手順では、サポートされているプラットフォームに[`rippled`がインストール](../installation/index.md)されていることを前提としています。
+以下の手順では、サポートされているプラットフォームに[`xrpld`がインストール](../installation/index.md)されていることを前提としています。
 
 
 ## 通常の同期動作
@@ -30,7 +30,7 @@ labels:
 
 多くの同期の問題は、サーバを再起動することで解決できます。最初に同期が失敗した原因がどのようなものであっても、2回目では成功する場合があります。
 
-[server_infoメソッド][]で[`server_state`](../../references/http-websocket-apis/api-conventions/xrpld-server-states.md)が`proposing`または`full`以外の状態であると示され、`server_state_duration_us`が`900000000`（15分のマイクロ秒表記）より大きい場合は、`rippled`サービスをシャットダウンしてから数秒間待ち、再起動してください。場合によっては、マシン全体を再起動します。
+[server_infoメソッド][]で[`server_state`](../../references/http-websocket-apis/api-conventions/xrpld-server-states.md)が`proposing`または`full`以外の状態であると示され、`server_state_duration_us`が`900000000`（15分のマイクロ秒表記）より大きい場合は、`xrpld`サービスをシャットダウンしてから数秒間待ち、再起動してください。場合によっては、マシン全体を再起動します。
 
 問題が解決しない場合は、このページに記載されている他の原因を確認してください。いずれも当てはまらないと思われる場合は、[`rippled`リポジトリに問題を登録](https://github.com/XRPLF/rippled/issues)し、「Syncing issue」ラベルを追加します。
 
@@ -66,13 +66,13 @@ labels:
 
 ## データベースの破損
 
-まれに、`rippled`サーバの内部データベースに保存されているデータが破損していることで同期の問題が発生する場合があります。サーバが稼動中でなければ、ほとんどの場合、サーバのデータベースを安全に削除できます。データの破損は、ディスクにコピーまたは書き込みするときに起こった一時的なハードウェア障害や、より深刻なディスク障害、別のプロセスがクラッシュしてディスクの誤った部分に書き込んだなど、さまざまな問題の結果として起こる可能性があります。
+まれに、`xrpld`サーバの内部データベースに保存されているデータが破損していることで同期の問題が発生する場合があります。サーバが稼動中でなければ、ほとんどの場合、サーバのデータベースを安全に削除できます。データの破損は、ディスクにコピーまたは書き込みするときに起こった一時的なハードウェア障害や、より深刻なディスク障害、別のプロセスがクラッシュしてディスクの誤った部分に書き込んだなど、さまざまな問題の結果として起こる可能性があります。
 
 テストとして、十分な空き容量があれば、サーバのデータベースへのパスを一時的に変更することで、現行のレジャーをダウンロードし直して、別の設定を保存できます。
 
 {% admonition type="info" name="注記" %}データベースのパスを変更した場合、サーバはサーバの現在の[ノードキーペア][]や[ピアリザベーション](../../concepts/networks-and-servers/peer-protocol.md#固定ピアとピアリザベーション)など、保存されている一部の設定を読み込めません。データベースのパスを変更することでサーバの同期の問題が解決した場合は、これらの設定の一部を再作成することをお勧めします。{% /admonition %}
 
-1. `rippled`サーバが稼働中の場合は停止します。
+1. `xrpld`サーバが稼働中の場合は停止します。
 
     ```
     $ sudo systemctl stop rippled
@@ -98,7 +98,7 @@ labels:
 
     {% partial file="/@l10n/ja/docs/_snippets/conf-file-location.md" /%}
 
-4. `rippled`サーバを再起動します。
+4. `xrpld`サーバを再起動します。
 
     ```
     $ sudo systemctl start rippled
@@ -110,14 +110,14 @@ labels:
 ## 関連項目
 
 - **コンセプト:**
-    - [`rippled`サーバ](../../concepts/networks-and-servers/index.md)
+    - [`xrpld`サーバ](../../concepts/networks-and-servers/index.md)
     - [ピアプロトコル](../../concepts/networks-and-servers/peer-protocol.md)
     - [技術に関するよくある質問](/about/faq.md)
 - **チュートリアル:**
     - [ログメッセージについて](understanding-log-messages.md)
     - [容量の計画](../installation/capacity-planning.md)
 - **リファレンス:**
-    - [rippled APIリファレンス](../../references/http-websocket-apis/index.md)
+    - [xrpld APIリファレンス](../../references/http-websocket-apis/index.md)
       - [peersメソッド][]
       - [server_infoメソッド][]
       - [validator_list_sitesメソッド][]

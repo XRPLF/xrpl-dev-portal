@@ -11,7 +11,7 @@ labels:
 
 Los validadores pueden votar por cambiar los [costes de transacción](../transactions/transaction-cost.md) básicos como los [requisitos de reserva](../accounts/reserves.md). Si las preferencias en la configuración de un validador son diferentes a los ajustes actuales de la red, el validador expresa sus preferencias a la red periódicamente. Si un cuórum de validadores está de acuerdo en un cambio, pueden aplicar un cambio que se haga efectivo a partir de entonces. Los validadores pueden hacer esto por varias razones, especialmente para adaptarse a cambios en el valor de XRP a largo plazo.
 
-Los operadores de [validadores `rippled`](../../infrastructure/configuration/server-modes/run-xrpld-as-a-validator.md) pueden configurar sus preferencias para el coste de transacción y los requisitos de reserva en el apartado de `[voting]` del fichero `xrpld.cfg`.
+Los operadores de [validadores `xrpld`](../../infrastructure/configuration/server-modes/run-xrpld-as-a-validator.md) pueden configurar sus preferencias para el coste de transacción y los requisitos de reserva en el apartado de `[voting]` del fichero `xrpld.cfg`.
 
 **Atención:** Los requisitos insuficientes, en caso de ser adoptados por un consenso de validadores confiables, podrían exponer a la red peer-to-peer XRP Ledger a ataques de denegación de servicio.
 
@@ -59,7 +59,7 @@ Los valores máximos posibles para las comisiones están limitadas por los tipos
     - [Reservas](../accounts/reserves.md)
     - [Cola de transacción](../transactions/transaction-queue.md)
 - **Tutoriales:**
-    - [Configurar `rippled`](../../infrastructure/configuration/index.md)
+    - [Configurar `xrpld`](../../infrastructure/configuration/index.md)
 - **Referencias:**
     - [Método fee][]
     - [Método server_info][]

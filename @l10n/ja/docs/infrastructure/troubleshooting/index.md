@@ -4,11 +4,11 @@ parent: infrastructure.html
 metadata:
   indexPage: true
 seo:
-    description: rippledサーバのあらゆる種類の問題をトラブルシューティングします。
+    description: xrpldサーバのあらゆる種類の問題をトラブルシューティングします。
 ---
-# rippledのトラブルシューティング
+# xrpldのトラブルシューティング
 
-rippledサーバのあらゆる種類の問題をトラブルシューティングします。
+xrpldサーバのあらゆる種類の問題をトラブルシューティングします。
 
 
 {% child-pages /%}

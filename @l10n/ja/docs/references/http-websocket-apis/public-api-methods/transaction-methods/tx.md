@@ -76,7 +76,7 @@ labels:
 {% tab label="Commandline" %}
 ```sh
 #Syntax: tx transaction [binary]
-rippled tx C53ECF838647FA5A4C780377025FEC7999AB4182590510CA461444B207AB74A9 false
+xrpld tx C53ECF838647FA5A4C780377025FEC7999AB4182590510CA461444B207AB74A9 false
 ```
 {% /tab %}
 
@@ -230,7 +230,7 @@ rippled tx C53ECF838647FA5A4C780377025FEC7999AB4182590510CA461444B207AB74A9 fals
 
 * [汎用エラータイプ][]のすべて。
 * `invalidParams` - 1つ以上のフィールドの指定が正しくないか、1つ以上の必須フィールドが指定されていません。
-* `txnNotFound` - トランザクションが存在しないか、または`rippled`で使用できない古いレジャーバージョンのトランザクションです。
+* `txnNotFound` - トランザクションが存在しないか、または`xrpld`で使用できない古いレジャーバージョンのトランザクションです。
 * `excessiveLgrRange` - リクエストの`min_ledger`と`max_ledger`フィールドの差が1000を超えています。
 * `invalidLgrRange` - 指定された`min_ledger`が`max_ledger`より大きいか、それらのパラメータのいずれかが有効なレジャーインデックスではありません。
 

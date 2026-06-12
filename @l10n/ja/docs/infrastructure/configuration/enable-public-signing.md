@@ -23,7 +23,7 @@ labels:
 
 パブリック署名を有効にするには、以下の手順を実行します。
 
-1. `rippled`の構成ファイルを編集します。
+1. `xrpld`の構成ファイルを編集します。
 
     ```
     vim /etc/opt/ripple/xrpld.cfg
@@ -38,7 +38,7 @@ labels:
     true
     ```
 
-3. `rippled`サーバを再起動します。
+3. `xrpld`サーバを再起動します。
 
     ```
     systemctl restart rippled

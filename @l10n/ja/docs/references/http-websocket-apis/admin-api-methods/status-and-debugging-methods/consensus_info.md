@@ -42,7 +42,7 @@ _`consensus_info`メソッドは、権限のないユーザは実行できない
 {% tab label="コマンドライン" %}
 ```sh
 #Syntax: consensus_info
-rippled consensus_info
+xrpld consensus_info
 ```
 {% /tab %}
 
