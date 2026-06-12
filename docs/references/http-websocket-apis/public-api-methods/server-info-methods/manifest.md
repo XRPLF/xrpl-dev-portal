@@ -39,7 +39,7 @@ An example of the request format:
 {% tab label="Commandline" %}
 ```sh
 #Syntax: {% $frontmatter.seo.title %} public_key
-rippled {% $frontmatter.seo.title %} nHUFE9prPXPrHcG3SkwP1UzAQbSphqyQkQK9ATXLZsfkezhhda3p
+xrpld {% $frontmatter.seo.title %} nHUFE9prPXPrHcG3SkwP1UzAQbSphqyQkQK9ATXLZsfkezhhda3p
 ```
 {% /tab %}
 

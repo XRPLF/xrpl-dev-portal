@@ -37,7 +37,7 @@ An example of the request format:
 {% tab label="Commandline" %}
 ```sh
 #Syntax: ping
-rippled ping
+xrpld ping
 ```
 {% /tab %}
 

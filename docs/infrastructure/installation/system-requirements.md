@@ -1,12 +1,12 @@
 ---
 seo:
-    description: Hardware and software requirements for running rippled or Clio.
+    description: Hardware and software requirements for running xrpld or Clio.
 labels:
   - Core Server
 ---
 # System Requirements
 
-The following system requirements apply to both the core XRP Ledger server, `rippled`, and the Clio server for API access.
+The following system requirements apply to both the core XRP Ledger server, `xrpld`, and the Clio server for API access.
 
 ## Recommended Specifications
 
@@ -39,21 +39,21 @@ Amazon EC2's `i3.2xlarge` VM size may be appropriate depending on your workload.
 
 ## System Time
 
-A `rippled` server relies on maintaining the correct time. It is recommended that the system synchronize time using the Network Time Protocol (NTP) with daemons such as `ntpd` or `chrony`.
+A `xrpld` server relies on maintaining the correct time. It is recommended that the system synchronize time using the Network Time Protocol (NTP) with daemons such as `ntpd` or `chrony`.
 
 
 ## See Also
 
 - **Concepts:**
-    - [The `rippled` Server](../../concepts/networks-and-servers/index.md)
+    - [The `xrpld` Server](../../concepts/networks-and-servers/index.md)
     - [Consensus](../../concepts/consensus-protocol/index.md)
 - **Tutorials:**
     - [Capacity Planning](capacity-planning.md) - More information on the recommended specifications and planning for production needs
-    - [Install `rippled`](index.md)
-    - [Troubleshoot rippled](../troubleshooting/index.md)
+    - [Install `xrpld`](index.md)
+    - [Troubleshoot xrpld](../troubleshooting/index.md)
 - **References:**
-    - [rippled API Reference](../../references/http-websocket-apis/index.md)
-        - [`rippled` Commandline Usage](../commandline-usage.md)
+    - [xrpld API Reference](../../references/http-websocket-apis/index.md)
+        - [`xrpld` Commandline Usage](../commandline-usage.md)
         - [server_info method][]
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

@@ -42,7 +42,7 @@ An example of the request format:
 {% tab label="Commandline" %}
 ```sh
 #Syntax: fetch_info [clear]
-rippled fetch_info
+xrpld fetch_info
 ```
 {% /tab %}
 

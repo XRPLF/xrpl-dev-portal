@@ -8,7 +8,7 @@ labels:
 ---
 # Open, Closed, and Validated Ledgers
 
-The `rippled` server makes a distinction between ledger versions that are _open_, _closed_, and _validated_. A server has one open ledger, any number of closed but unvalidated ledgers, and an immutable history of validated ledgers. The following table summarizes the difference:
+The `xrpld` server makes a distinction between ledger versions that are _open_, _closed_, and _validated_. A server has one open ledger, any number of closed but unvalidated ledgers, and an immutable history of validated ledgers. The following table summarizes the difference:
 
 | Ledger Type:                     | Open                        | Closed                                     | Validated |
 |:---------------------------------|:----------------------------|:-------------------------------------------|:--|

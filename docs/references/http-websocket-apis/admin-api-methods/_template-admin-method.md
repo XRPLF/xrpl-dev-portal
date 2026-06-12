@@ -43,7 +43,7 @@ An example of the request format:
 
 ```sh
 #Syntax: {{currentpage.name}} TODO
-rippled {{currentpage.name}}
+xrpld {{currentpage.name}}
 ```
 
 <!-- MULTICODE_BLOCK_END -->

@@ -40,7 +40,7 @@ An example of the request format:
 {% tab label="Commandline" %}
 ```sh
 #Syntax: book_changes [<ledger hash|id>]
-rippled book_changes 88530953
+xrpld book_changes 88530953
 ```
 {% /tab %}
 

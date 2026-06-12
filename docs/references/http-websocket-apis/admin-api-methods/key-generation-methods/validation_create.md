@@ -1,6 +1,6 @@
 ---
 seo:
-    description: Generate keys for a rippled server to identify itself to the network.
+    description: Generate keys for an xrpld server to identify itself to the network.
 labels:
     - Security
     - Core Server
@@ -8,7 +8,7 @@ labels:
 # validation_create
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/ValidationCreate.cpp "Source")
 
-Use the `validation_create` command to generate [cryptographic keys a `rippled` server can use to identify itself to the network](../../../../concepts/networks-and-servers/peer-protocol.md#node-key-pair). Similar to the [wallet_propose method][], this method only generates a set of keys in the proper format. It does not any makes changes to the XRP Ledger data or server configuration.
+Use the `validation_create` command to generate [cryptographic keys an `xrpld` server can use to identify itself to the network](../../../../concepts/networks-and-servers/peer-protocol.md#node-key-pair). Similar to the [wallet_propose method][], this method only generates a set of keys in the proper format. It does not any makes changes to the XRP Ledger data or server configuration.
 
 _The `validation_create` method is an [admin method](../index.md) that cannot be run by unprivileged users._
 
@@ -48,7 +48,7 @@ An example of the request format:
 {% tab label="Commandline" %}
 ```sh
 #Syntax: validation_create [secret]
-rippled validation_create "BAWL MAN JADE MOON DOVE GEM SON NOW HAD ADEN GLOW TIRE"
+xrpld validation_create "BAWL MAN JADE MOON DOVE GEM SON NOW HAD ADEN GLOW TIRE"
 ```
 {% /tab %}
 

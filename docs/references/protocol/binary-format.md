@@ -8,7 +8,7 @@ labels:
 # Binary Format
 [[Source]](https://github.com/XRPLF/rippled/blob/master/include/xrpl/protocol/SField.h "Source")
 
-This page describes the XRP Ledger's canonical binary format for transactions and other data. This binary format is necessary to create and verify digital signatures of those transactions' contents, and is also used in other places including in the [peer-to-peer communications between servers](../../concepts/networks-and-servers/peer-protocol.md). The [`rippled` APIs](../http-websocket-apis/index.md) typically use JSON to communicate with client applications. However, JSON is unsuitable as a format for serializing transactions for being digitally signed, because JSON can represent the same data in many different but equivalent ways.
+This page describes the XRP Ledger's canonical binary format for transactions and other data. This binary format is necessary to create and verify digital signatures of those transactions' contents, and is also used in other places including in the [peer-to-peer communications between servers](../../concepts/networks-and-servers/peer-protocol.md). The [`xrpld` APIs](../http-websocket-apis/index.md) typically use JSON to communicate with client applications. However, JSON is unsuitable as a format for serializing transactions for being digitally signed, because JSON can represent the same data in many different but equivalent ways.
 
 The process of serializing a transaction from JSON or any other representation into their canonical binary format can be summarized with these steps:
 
@@ -222,7 +222,7 @@ Transactions and ledger entries may contain fields of any of the following types
 
 [Length-prefixed]: #length-prefixing
 
-In the `rippled` source code, some types have an "ST" prefix, which stands for "serialized type". This separates the type definition in the XRP Ledger protocol from data types that may be defined at the programming language level such as arrays or objects.
+In the `xrpld` source code, some types have an "ST" prefix, which stands for "serialized type". This separates the type definition in the XRP Ledger protocol from data types that may be defined at the programming language level such as arrays or objects.
 
 In addition to all of the above field types, the following types may appear in other contexts, such as [ledger objects](ledger-data/ledger-entry-types/index.md) and [transaction metadata](transactions/metadata.md):
 
@@ -304,7 +304,7 @@ At a protocol level, currency codes in the XRP Ledger are arbitrary 160-bit valu
 - The currency code `0x0000000000000000000000005852500000000000` is **always disallowed**. (This is the code "XRP" in the "standard format".)
 - The currency code `0x0000000000000000000000000000000000000000` (all zeroes) is **generally disallowed**. Usually, XRP amounts are not specified with currency codes. However, this code is used to indicate XRP in rare cases where a field must specify a currency code for XRP.
 
-The [`rippled` APIs](../http-websocket-apis/index.md) support a **standard format** for translating three-character ASCII codes to 160-bit hex values as follows:
+The [`xrpld` APIs](../http-websocket-apis/index.md) support a **standard format** for translating three-character ASCII codes to 160-bit hex values as follows:
 
 [{% inline-svg file="/docs/img/currency-code-format.svg" /%}](/docs/img/currency-code-format.svg "Standard Currency Code Format")
 

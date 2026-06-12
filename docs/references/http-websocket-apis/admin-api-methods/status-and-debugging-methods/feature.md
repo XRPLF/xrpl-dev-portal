@@ -56,7 +56,7 @@ An example of the request format:
 {% tab label="Commandline" %}
 ```sh
 #Syntax: feature [<feature_id> [accept|reject]]
-rippled feature 4C97EBA926031A7CF7D7B36FDE3ED66DDA5421192D63DE53FFB46E43B9DC8373 accept
+xrpld feature 4C97EBA926031A7CF7D7B36FDE3ED66DDA5421192D63DE53FFB46E43B9DC8373 accept
 ```
 {% /tab %}
 
@@ -69,7 +69,7 @@ The request includes the following parameters:
 | `feature` | String  | _(Optional)_ The unique ID of an amendment, as hexadecimal; or the short name of the amendment. If provided, limits the response to one amendment. Otherwise, the response lists all amendments. |
 | `vetoed`  | Boolean | _(Optional; ignored unless `feature` also specified)_ If `true`, instructs the server to vote against the amendment specified by `feature`. If false, instructs the server to vote in favor of the amendment. On the commandline, use 'accept' or 'reject rather than 'true' or 'false'. You cannot vote in favor of an amendment that is marked as _obsolete_ in the server's source code. {% badge href="https://github.com/XRPLF/rippled/releases/tag/1.11.0" %}Updated in: rippled 1.11.0{% /badge %} |
 
-{% admonition type="info" name="Note" %}You can configure your server to vote in favor of a new amendment, even if the server does not currently know how to apply that amendment, by specifying the amendment ID in the `feature` field. For example, you might want to do this if you plan to upgrade soon to a new `rippled` version that _does_ support the amendment.{% /admonition %}
+{% admonition type="info" name="Note" %}You can configure your server to vote in favor of a new amendment, even if the server does not currently know how to apply that amendment, by specifying the amendment ID in the `feature` field. For example, you might want to do this if you plan to upgrade soon to a new `xrpld` version that _does_ support the amendment.{% /admonition %}
 
 ### Response Format
 

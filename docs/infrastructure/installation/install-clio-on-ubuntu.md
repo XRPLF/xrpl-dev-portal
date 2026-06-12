@@ -24,7 +24,7 @@ Before you install Clio, you must meet the following requirements.
 - Ensure that your system meets the [system requirements](system-requirements.md).
 
     {% admonition type="info" name="Note" %}
-    Clio has the same system requirements as the `rippled` server, except Clio needs less disk space to store the same amount of ledger history.
+    Clio has the same system requirements as the `xrpld` server, except Clio needs less disk space to store the same amount of ledger history.
     {% /admonition %}
 
 - Access to a Cassandra cluster that is running locally or remote. You can choose to install and configure a Cassandra cluster manually by following the [Cassandra installation instructions](https://cassandra.apache.org/doc/latest/cassandra/getting_started/installing.html), or run Cassandra on a Docker container using one of the following commands.
@@ -42,7 +42,7 @@ Before you install Clio, you must meet the following requirements.
         docker run --rm -it --network=host --name cassandra cassandra:4.0.4
         ```
 
-- You need gRPC access to one or more `rippled` servers in P2P mode. The `rippled` servers can either be local or remote, but you must trust them. The most reliable way to do this is to [install `rippled` yourself](index.md).
+- You need gRPC access to one or more `xrpld` servers in P2P mode. The `xrpld` servers can either be local or remote, but you must trust them. The most reliable way to do this is to [install `xrpld` yourself](index.md).
 
 
 ## Installation Steps
@@ -54,7 +54,7 @@ Before you install Clio, you must meet the following requirements.
     ```
 
     {% admonition type="success" name="Tip" %}
-    If you have already installed an up-to-date version of `rippled` on the same machine, you can skip the following steps for adding Ripple's package repository and signing key, which are the same as in the `rippled` install process. Resume from step 6, "Fetch the Ripple repository."
+    If you have already installed an up-to-date version of `xrpld` on the same machine, you can skip the following steps for adding Ripple's package repository and signing key, which are the same as in the `xrpld` install process. Resume from step 6, "Fetch the Ripple repository."
     {% /admonition %}
 
 2. Install utilities:
@@ -83,7 +83,7 @@ Before you install Clio, you must meet the following requirements.
     gpg: WARNING: no command supplied.  Trying to guess what you mean ...
     pub   ed25519 2026-02-16 [SC] [expires: 2033-02-14]
         E057C1CF72B0DF1A4559E8577DEE9236AB06FAA6
-    uid   TechOps Team at Ripple <techops+rippled@ripple.com>
+    uid   TechOps Team at Ripple <techops+xrpld@ripple.com>
     sub   ed25519 2026-02-16 [S] [expires: 2029-02-15]
     ```
 
@@ -116,9 +116,9 @@ Before you install Clio, you must meet the following requirements.
     sudo apt -y install clio
     ```
 
-8. Modify your config files so that Clio can connect to your `rippled` server(s).
+8. Modify your config files so that Clio can connect to your `xrpld` server(s).
 
-    1. Edit the Clio server's config file to modify the connection information for the `rippled` server. The package installs this file at `/opt/clio/etc/config.json`.
+    1. Edit the Clio server's config file to modify the connection information for the `xrpld` server. The package installs this file at `/opt/clio/etc/config.json`.
 
         ```
         "etl_sources":
@@ -135,17 +135,17 @@ Before you install Clio, you must meet the following requirements.
 
         | Field       | Type   | Description |
         |-------------|--------|-------------|
-        | `ip`        | String | The IP address of the `rippled` server. |
-        | `ws_port`   | String | The port where `rippled` accepts unencrypted (non-admin) WebSocket connections. The Clio server forwards some types of API requests to this port. |
-        | `grpc_port` | String | The port where `rippled` accepts gRPC requests. |
+        | `ip`        | String | The IP address of the `xrpld` server. |
+        | `ws_port`   | String | The port where `xrpld` accepts unencrypted (non-admin) WebSocket connections. The Clio server forwards some types of API requests to this port. |
+        | `grpc_port` | String | The port where `xrpld` accepts gRPC requests. |
 
         {% admonition type="info" name="Note" %}
-        You can use multiple `rippled` servers as a data source by adding more entries to the `etl_sources` section. If you do, Clio load balances requests across all the servers in the list, and can keep up with the network as long as at least one of the `rippled` servers is synced.
+        You can use multiple `xrpld` servers as a data source by adding more entries to the `etl_sources` section. If you do, Clio load balances requests across all the servers in the list, and can keep up with the network as long as at least one of the `xrpld` servers is synced.
         {% /admonition %}
 
-        The [example config file](https://github.com/XRPLF/clio/blob/develop/docs/examples/config/example-config.json) accesses the `rippled` server running on the local loopback network (127.0.0.1), with the WebSocket (WS) on port 6005 and gRPC on port 50051.
+        The [example config file](https://github.com/XRPLF/clio/blob/develop/docs/examples/config/example-config.json) accesses the `xrpld` server running on the local loopback network (127.0.0.1), with the WebSocket (WS) on port 6005 and gRPC on port 50051.
 
-    2. Update the `rippled` server's config file to allow the Clio server to connect to it. The package installs this file at `/etc/opt/ripple/xrpld.cfg`.
+    2. Update the `xrpld` server's config file to allow the Clio server to connect to it. The package installs this file at `/etc/opt/ripple/xrpld.cfg`.
 
         * Open a port to accept unencrypted, non-admin WebSocket connections.
 
@@ -157,7 +157,7 @@ Before you install Clio, you must meet the following requirements.
             ```
 
             {% admonition type="warning" name="Caution" %}
-            Make sure your network firewall is configured not to forward outside requests on this port to your `rippled` server unless you intend to serve API requests to the general public.
+            Make sure your network firewall is configured not to forward outside requests on this port to your `xrpld` server unless you intend to serve API requests to the general public.
             {% /admonition %}
 
         * Open a port to handle gRPC requests and specify the IP(s) of Clio server(s) in the `secure_gateway` entry.
@@ -170,7 +170,7 @@ Before you install Clio, you must meet the following requirements.
             ```
 
             {% admonition type="warning" name="Caution" %}
-            If you are not running Clio on the same machine as `rippled`, change the `secure_gateway` in the example stanza to use the IP address of the Clio server.
+            If you are not running Clio on the same machine as `xrpld`, change the `secure_gateway` in the example stanza to use the IP address of the Clio server.
             {% /admonition %}
 
 9. Enable and start the Clio systemd service.
@@ -179,14 +179,14 @@ Before you install Clio, you must meet the following requirements.
     sudo systemctl enable clio
     ```
 
-10. Start the `rippled` and Clio servers.
+10. Start the `xrpld` and Clio servers.
 
     ```
     sudo systemctl start rippled
     sudo systemctl start clio
     ```
 
-    If you are starting with a fresh database, Clio needs to download the full ledger. This can take some time. If you are starting both servers for the first time, it can take even longer because Clio waits for `rippled` to sync before extracting ledgers.
+    If you are starting with a fresh database, Clio needs to download the full ledger. This can take some time. If you are starting both servers for the first time, it can take even longer because Clio waits for `xrpld` to sync before extracting ledgers.
 
 
 

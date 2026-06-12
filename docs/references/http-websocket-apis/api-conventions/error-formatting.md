@@ -6,7 +6,7 @@ labels:
 ---
 # Error Formatting
 
-It is impossible to list all the possible ways an error can occur. Some may occur in the transport layer (for example, loss of network connectivity), in which case the results vary depending on what client and transport you are using. However, if the `rippled` server successfully receives your request, it tries to respond in a standardized error format.
+It is impossible to list all the possible ways an error can occur. Some may occur in the transport layer (for example, loss of network connectivity), in which case the results vary depending on what client and transport you are using. However, if the `xrpld` server successfully receives your request, it tries to respond in a standardized error format.
 
 {% admonition type="warning" name="Caution" %}When your request results in an error, the entire request is copied back as part of the response, so that you can try to debug the error. However, this also includes any secrets that were passed as part of the request. When sharing error messages, be very careful not to accidentally expose important account secrets to others.{% /admonition %}
 
@@ -108,7 +108,7 @@ For other errors that returned with HTTP status code 200 OK, the responses are f
 All methods can potentially return any of the following values for the `error` code:
 
 - `amendmentBlocked` - The server is [amendment blocked](../../../concepts/networks-and-servers/amendments.md#amendment-blocked-servers) and needs to be updated to the latest version to stay synced with the XRP Ledger network.
-- `failedToForward` - (Clio servers only) The server tried to forward this request to a `rippled` server, but the connection failed.
+- `failedToForward` - (Clio servers only) The server tried to forward this request to an `xrpld` server, but the connection failed.
 - `invalid_API_version` - The server does not support the [API version number](../index.md#api-versioning) from the request.
 - `jsonInvalid` - (WebSocket only) The request is not a proper JSON object.
     - JSON-RPC returns a 400 Bad Request HTTP error in this case instead.
@@ -118,7 +118,7 @@ All methods can potentially return any of the following values for the `error` c
 - `noCurrent` - The server does not know what the current ledger is, due to high load, network problems, validator failures, incorrect configuration, or some other problem.
 - `noNetwork` - The server is having trouble connecting to the rest of the XRP Ledger peer-to-peer network (and is not running in stand-alone mode).
 - `tooBusy` - The server is under too much load to do this command right now. Generally not returned if you are connected as an admin.
-- `unknownCmd` - The request does not contain a [command](../index.md) that the `rippled` server recognizes.
+- `unknownCmd` - The request does not contain a [command](../index.md) that the `xrpld` server recognizes.
 - `wsTextRequired` - (WebSocket only) The request's [opcode](https://tools.ietf.org/html/rfc6455#section-5.2) is not text. <!-- SPELLING_IGNORE: opcode -->
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

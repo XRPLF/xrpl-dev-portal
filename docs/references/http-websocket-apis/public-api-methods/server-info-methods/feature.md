@@ -47,7 +47,7 @@ An example of the request format:
 {% tab label="Commandline" %}
 ```sh
 #Syntax: feature [<feature_id>]
-rippled feature 4C97EBA926031A7CF7D7B36FDE3ED66DDA5421192D63DE53FFB46E43B9DC8373
+xrpld feature 4C97EBA926031A7CF7D7B36FDE3ED66DDA5421192D63DE53FFB46E43B9DC8373
 ```
 {% /tab %}
 

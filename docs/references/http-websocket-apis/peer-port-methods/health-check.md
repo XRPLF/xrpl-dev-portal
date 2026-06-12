@@ -7,7 +7,7 @@ labels:
 # Health Check
 [[Source]](https://github.com/XRPLF/rippled/blob/70d5c624e8cf732a362335642b2f5125ce4b43c1/src/xrpld/overlay/detail/OverlayImpl.cpp#L943-L1038 "Source")
 
-The Health Check is a special [peer port method](index.md) for reporting on the health of an individual `rippled` server. This method is intended for use in automated monitoring to recognize outages and prompt automated or manual interventions such as restarting the server. {% badge href="https://github.com/XRPLF/rippled/releases/tag/1.6.0" %}New in: rippled 1.6.0{% /badge %}
+The Health Check is a special [peer port method](index.md) for reporting on the health of an individual `xrpld` server. This method is intended for use in automated monitoring to recognize outages and prompt automated or manual interventions such as restarting the server. {% badge href="https://github.com/XRPLF/rippled/releases/tag/1.6.0" %}New in: rippled 1.6.0{% /badge %}
 
 This method checks several metrics to see if they are in ranges generally considered healthy. If all metrics are in normal ranges, this method reports that the server is healthy. If any metric is outside normal ranges, this method reports that the server is unhealthy and reports the metric(s) that are unhealthy. Since some metrics may rapidly fluctuate into and out of unhealthy ranges, you should not raise alerts unless the health check fails multiple times in a row.
 
@@ -20,12 +20,12 @@ To request the Health Check information, make the following HTTP request:
 
 - **Protocol:** https
 - **HTTP Method:** GET
-- **Host:** (any `rippled` server, by hostname or IP address)
-- **Port:** (the port number where the `rippled` server uses the Peer Protocol, typically 51235)
+- **Host:** (any `xrpld` server, by hostname or IP address)
+- **Port:** (the port number where the `xrpld` server uses the Peer Protocol, typically 51235)
 - **Path:** `/health`
-- **Security:** Most `rippled` servers use a self-signed certificate to respond to the request. By default, most tools (including web browsers) flag or block such responses for being untrusted. You must ignore the certificate checking (for example, if using cURL, add the `--insecure` flag) to display a response from those servers.
+- **Security:** Most `xrpld` servers use a self-signed certificate to respond to the request. By default, most tools (including web browsers) flag or block such responses for being untrusted. You must ignore the certificate checking (for example, if using cURL, add the `--insecure` flag) to display a response from those servers.
 
-<!-- TODO: link a tutorial for how to run rippled with a non-self-signed TLS cert -->
+<!-- TODO: link a tutorial for how to run xrpld with a non-self-signed TLS cert -->
 
 ## Example Response
 

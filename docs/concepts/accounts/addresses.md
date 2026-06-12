@@ -20,7 +20,7 @@ Some addresses have special meaning, or historical uses, in the XRP Ledger. In m
 
 | Address                       | Name | Meaning | Blackhole? |
 |-------------------------------|------|---------|-------------|
-| `rrrrrrrrrrrrrrrrrrrrrhoLvTp` | ACCOUNT\_ZERO | An address that is the XRP Ledger's [base58][] encoding of the value `0`. In peer-to-peer communications, `rippled` uses this address as the issuer for XRP. | Yes |
+| `rrrrrrrrrrrrrrrrrrrrrhoLvTp` | ACCOUNT\_ZERO | An address that is the XRP Ledger's [base58][] encoding of the value `0`. In peer-to-peer communications, `xrpld` uses this address as the issuer for XRP. | Yes |
 | `rrrrrrrrrrrrrrrrrrrrBZbvji`  | ACCOUNT\_ONE | An address that is the XRP Ledger's [base58][] encoding of the value `1`. In the ledger, [RippleState entries](../../references/protocol/ledger-data/ledger-entry-types/ripplestate.md) use this address as a placeholder for the issuer of a trust line balance. | Yes |
 | `rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh` | The genesis account | When `rippled` starts a new genesis ledger from scratch (for example, in stand-alone mode), this account holds all the XRP. This address is generated from the seed value `masterpassphrase` which is [hard-coded](https://github.com/XRPLF/rippled/blob/70d5c624e8cf732a362335642b2f5125ce4b43c1/src/xrpld/app/ledger/Ledger.cpp#L184). | No |
 | `rrrrrrrrrrrrrrrrrNAMEtxvNvQ` | Ripple Name reservation blackhole | In the past, Ripple asked users to send XRP to this account to reserve Ripple Names.| Yes |

@@ -95,7 +95,7 @@ An example of the request format:
 {% tab label="Commandline" %}
 ```sh
 #Syntax: submit_multisigned <tx_json>
-rippled submit_multisigned '{
+xrpld submit_multisigned '{
     "Account": "rEuLyBCvcw4CFmzv8RepSiAoNgF8tTGJQC",
     "Fee": "30000",
     "Flags": 262144,

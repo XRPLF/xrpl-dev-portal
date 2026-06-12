@@ -8,7 +8,7 @@ labels:
 
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/Version.h "Source")
 
-The `version` command retrieves the API version information for the rippled server. For `Clio` servers, see [`version` (`clio`)](../clio-methods/version.md) instead.
+The `version` command retrieves the API version information for the xrpld server. For `Clio` servers, see [`version` (`clio`)](../clio-methods/version.md) instead.
 
 
 ## Request Format
@@ -38,7 +38,7 @@ An example of the request format:
 {% tab label="Commandline" %}
 ```sh
 #Syntax: version
-rippled version
+xrpld version
 ```
 {% /tab %}
 

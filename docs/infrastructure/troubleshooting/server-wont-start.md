@@ -2,27 +2,27 @@
 html: server-wont-start.html
 parent: troubleshoot-the-rippled-server.html
 seo:
-    description: A collection of problems that would cause a rippled server not to start, and how to fix them.
+    description: A collection of problems that would cause an xrpld server not to start, and how to fix them.
 labels:
   - Core Server
 ---
-# rippled Server Won't Start
+# xrpld Server Won't Start
 
-This page explains possible reasons [the `rippled` server](../../concepts/networks-and-servers/index.md) does not start and how to fix them.
+This page explains possible reasons [the `xrpld` server](../../concepts/networks-and-servers/index.md) does not start and how to fix them.
 
-These instructions assume you have [installed `rippled`](../installation/index.md) on a supported platform.
+These instructions assume you have [installed `xrpld`](../installation/index.md) on a supported platform.
 
 
 ## File Descriptors Limit
 
-On some Linux variants, you may get an error message such as the following when trying to run `rippled`:
+On some Linux variants, you may get an error message such as the following when trying to run `xrpld`:
 
 ```text
 WARNING: There are only 1024 file descriptors (soft limit) available, which
 limit the number of simultaneous connections.
 ```
 
-This occurs because the system has a security limit on the number of files a single process may open, but the limit is set too low for `rippled`. To fix the problem, **root access is required**. Increase the number of files `rippled` is allowed to open with the following steps:
+This occurs because the system has a security limit on the number of files a single process may open, but the limit is set too low for `xrpld`. To fix the problem, **root access is required**. Increase the number of files `xrpld` is allowed to open with the following steps:
 
 1. Add the following lines to the end of your `/etc/security/limits.conf` file:
 
@@ -39,7 +39,7 @@ This occurs because the system has a security limit on the number of files a sin
 
     The command should output `65536`.
 
-3. Try starting `rippled` again.
+3. Try starting `xrpld` again.
 
     ```
     systemctl start rippled
@@ -54,7 +54,7 @@ This occurs because the system has a security limit on the number of files a sin
 
 ## Failed to open /etc/opt/ripple/xrpld.cfg
 
-If `rippled` crashes on startup with an error such as the following, it means that `rippled` cannot read its config file:
+If `xrpld` crashes on startup with an error such as the following, it means that `xrpld` cannot read its config file:
 
 ```text
 Loading: "/etc/opt/ripple/xrpld.cfg"
@@ -67,7 +67,7 @@ Possible solutions:
 
 - Check that the config file exists (the default location is `/etc/opt/ripple/xrpld.cfg`) and the user that runs your `rippled` process (usually `rippled`) has read permissions to the file.
 
-- Create a config file that can be read by the `rippled` user at `$HOME/.config/xrpld/xrpld.cfg` (where `$HOME` points to the `rippled` user's home directory).
+- Create a config file that can be read by the `xrpld` user at `$HOME/.config/xrpld/xrpld.cfg` (where `$HOME` points to the `xrpld` user's home directory).
 
     {% admonition type="success" name="Tip" %}The `rippled` repository contains [an example `xrpld.cfg` file](https://github.com/XRPLF/rippled/blob/master/cfg/xrpld-example.cfg) which is provided as the default config when you do an installation from a binary package. If you do not have the file, you can copy it from there.{% /admonition %}
 
@@ -75,7 +75,7 @@ Possible solutions:
 
 ## Failed to open validators file
 
-If `rippled` crashes on startup with an error such as the following, it means it can read its primary config file, but that config file specifies a separate validators config file (typically named `validators.txt`), which `rippled` cannot read.
+If `xrpld` crashes on startup with an error such as the following, it means it can read its primary config file, but that config file specifies a separate validators config file (typically named `validators.txt`), which `xrpld` cannot read.
 
 ```text
 Loading: "/home/rippled/.config/xrpld/xrpld.cfg"
@@ -85,7 +85,7 @@ Aborted (core dumped)
 
 Possible solutions:
 
-- Check that the `validators.txt` file exists and the `rippled` user has permissions to read it.
+- Check that the `validators.txt` file exists and the `xrpld` user has permissions to read it.
 
     {% admonition type="success" name="Tip" %}The `rippled` repository contains [an example `validators.txt` file](https://github.com/XRPLF/rippled/blob/master/cfg/validators-example.txt) which is provided as the default config when you do an installation from a binary package. If you do not have the file, you can copy it from there.{% /admonition %}
 
@@ -104,7 +104,7 @@ Possible solutions:
 
 ## Cannot create database path
 
-If `rippled` crashes on startup with an error such as the following, it means the server does not have write permissions to the `[database_path]` from its config file.
+If `xrpld` crashes on startup with an error such as the following, it means the server does not have write permissions to the `[database_path]` from its config file.
 
 ```text
 Loading: "/home/rippled/.config/xrpld/xrpld.cfg"
@@ -116,16 +116,16 @@ The paths to the configuration file (`/home/rippled/.config/xrpld/xrpld.cfg`) an
 
 Possible solutions:
 
-- Run `rippled` as a different user that has write permissions to the database path printed in the error message.
+- Run `xrpld` as a different user that has write permissions to the database path printed in the error message.
 
-- Edit your `xrpld.cfg` file and change the `[database_path]` setting to use a path that the `rippled` user has write permissions to.
+- Edit your `xrpld.cfg` file and change the `[database_path]` setting to use a path that the `xrpld` user has write permissions to.
 
-- Grant the `rippled` user write permissions to the configured database path.
+- Grant the `xrpld` user write permissions to the configured database path.
 
 
 ## State DB Error
 
-The following error can occur if the `rippled` server's state database is corrupted. This can occur as the result of being shutdown unexpectedly, or if you change the type of database from RocksDB to NuDB without changing the `path` and `[database_path]` settings in the config file.
+The following error can occur if the `xrpld` server's state database is corrupted. This can occur as the result of being shutdown unexpectedly, or if you change the type of database from RocksDB to NuDB without changing the `path` and `[database_path]` settings in the config file.
 
 ```text
 2018-Aug-21 23:06:38.675117810 SHAMapStore:ERR state db error:
@@ -149,7 +149,7 @@ Or, if you are sure you don't need the databases:
 rm -r /var/lib/rippled/db
 ```
 
-{% admonition type="success" name="Tip" %}It is generally safe to delete the `rippled` databases, because any individual server can re-download ledger history from other servers in the XRP Ledger network.{% /admonition %}
+{% admonition type="success" name="Tip" %}It is generally safe to delete the `xrpld` databases, because any individual server can re-download ledger history from other servers in the XRP Ledger network.{% /admonition %}
 
 Alternatively, you can change the paths to the databases in the config file. For example:
 
@@ -190,14 +190,14 @@ Valid parameters for the `node_size` field are `tiny`, `small`, `medium`, `large
 ## See Also
 
 - **Concepts:**
-    - [The `rippled` Server](../../concepts/networks-and-servers/index.md)
+    - [The `xrpld` Server](../../concepts/networks-and-servers/index.md)
     - [Technical FAQ](/about/faq.md)
 - **Tutorials:**
     - [Understanding Log Messages](understanding-log-messages.md)
     - [Capacity Planning](../installation/capacity-planning.md)
 - **References:**
-    - [rippled API Reference](../../references/http-websocket-apis/index.md)
-        - [`rippled` Commandline Usage](../commandline-usage.md)
+    - [xrpld API Reference](../../references/http-websocket-apis/index.md)
+        - [`xrpld` Commandline Usage](../commandline-usage.md)
         - [server_info method][]
 
 <!-- SPELLING_IGNORE: cfg, node_size -->

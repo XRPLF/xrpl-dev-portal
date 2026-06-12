@@ -2,15 +2,15 @@
 html: server-doesnt-sync.html
 parent: troubleshoot-the-rippled-server.html
 seo:
-    description: Troubleshoot problems that make a rippled server unable to sync with the rest of the XRP Ledger.
+    description: Troubleshoot problems that make an xrpld server unable to sync with the rest of the XRP Ledger.
 labels:
   - Core Server
 ---
-# rippled Server Doesn't Sync
+# xrpld Server Doesn't Sync
 
-This page explains possible reasons [a `rippled` server](../../concepts/networks-and-servers/index.md) may start successfully, but get stuck in a ["connected" state](../../references/http-websocket-apis/api-conventions/rippled-server-states.md) without ever fully connecting to the network. (If the server crashes during or shortly after startup, see [Server Won't Start](server-wont-start.md) instead.)
+This page explains possible reasons [an `xrpld` server](../../concepts/networks-and-servers/index.md) may start successfully, but get stuck in a ["connected" state](../../references/http-websocket-apis/api-conventions/rippled-server-states.md) without ever fully connecting to the network. (If the server crashes during or shortly after startup, see [Server Won't Start](server-wont-start.md) instead.)
 
-These instructions assume you have [installed `rippled`](../installation/index.md) on a supported platform.
+These instructions assume you have [installed `xrpld`](../installation/index.md) on a supported platform.
 
 
 ## Normal Syncing Behavior
@@ -66,13 +66,13 @@ Use the [peers method][] to get information about your server's current peers. I
 
 ## Corrupt Databases
 
-In rare cases, corrupt data saved in your `rippled` server's internal databases could cause it to fail to sync. You can safely delete your server's databases in most circumstances as long as the server is not running. Corrupt data can be the result of a momentary hardware failure when copying or writing to disk, a more serious disk failure, a different process crashing and writing to the wrong part of the disk, or other issues.
+In rare cases, corrupt data saved in your `xrpld` server's internal databases could cause it to fail to sync. You can safely delete your server's databases in most circumstances as long as the server is not running. Corrupt data can be the result of a momentary hardware failure when copying or writing to disk, a more serious disk failure, a different process crashing and writing to the wrong part of the disk, or other issues.
 
 As a test, you can temporarily change the paths to your server's databases as long as you have enough free space to re-download the current ledger and store other settings.
 
 {% admonition type="info" name="Note" %}When you change the database paths, the server does not load some saved settings, such as the server's current [node key pair][] and [peer reservations](../../concepts/networks-and-servers/peer-protocol.md#fixed-peers-and-peer-reservations). If changing the database paths fixes your server' syncing problems, you may want to re-create some of these settings.{% /admonition %}
 
-1. Stop the `rippled` server if it is running.
+1. Stop the `xrpld` server if it is running.
 
     ```
     $ sudo systemctl stop rippled
@@ -98,7 +98,7 @@ As a test, you can temporarily change the paths to your server's databases as lo
 
     {% partial file="/docs/_snippets/conf-file-location.md" /%}
 
-4. Start the `rippled` server again.
+4. Start the `xrpld` server again.
 
     ```
     $ sudo systemctl start rippled
@@ -110,14 +110,14 @@ As a test, you can temporarily change the paths to your server's databases as lo
 ## See Also
 
 - **Concepts:**
-    - [The `rippled` Server](../../concepts/networks-and-servers/index.md)
+    - [The `xrpld` Server](../../concepts/networks-and-servers/index.md)
     - [Peer Protocol](../../concepts/networks-and-servers/peer-protocol.md)
     - [Technical FAQ](/about/faq.md)
 - **Tutorials:**
     - [Understanding Log Messages](understanding-log-messages.md)
     - [Capacity Planning](../installation/capacity-planning.md)
 - **References:**
-    - [rippled API Reference](../../references/http-websocket-apis/index.md)
+    - [xrpld API Reference](../../references/http-websocket-apis/index.md)
         - [peers method][]
         - [server_info method][]
         - [validator_list_sites method][]

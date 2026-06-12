@@ -8,7 +8,7 @@ labels:
 
 # Run a Private Network with Docker
 
-This tutorial describes how to run a private XRP Ledger network on your computer with [Docker](https://docs.docker.com/get-docker/) and the latest version of [rippled](https://hub.docker.com/r/xrpllabsofficial/xrpld).
+This tutorial describes how to run a private XRP Ledger network on your computer with [Docker](https://docs.docker.com/get-docker/) and the latest version of [xrpld](https://hub.docker.com/r/xrpllabsofficial/xrpld).
 
 While you can easily use the public XRP Testnet servers, running a private network can be useful when trying to understand how the XRP Ledger works, or when testing new features in isolation.
 
@@ -18,7 +18,7 @@ While you can easily use the public XRP Testnet servers, running a private netwo
 
 In this tutorial, you will learn:
 
-- How to set up and configure a _small_ network with three `rippled` validator nodes, including how to generate the keys for each node.
+- How to set up and configure a _small_ network with three `xrpld` validator nodes, including how to generate the keys for each node.
 
 - How to run the network with [Docker Compose](https://docs.docker.com/compose/).
 
@@ -34,9 +34,9 @@ To follow along with this tutorial, ensure that you have the latest version of *
 
 ## Generate the Validator Keys
 
-Generate the keys for **each** of your validator nodes by using the `validator-keys` tool provided with `rippled`. The generated keys should be saved in a text file on your computer for later use.
+Generate the keys for **each** of your validator nodes by using the `validator-keys` tool provided with `xrpld`. The generated keys should be saved in a text file on your computer for later use.
 
-1. In your terminal, run the following to execute commands within the `rippled` Docker container shell:
+1. In your terminal, run the following to execute commands within the `xrpld` Docker container shell:
 
     ```
     docker run -it --entrypoint /bin/bash xrpllabsofficial/xrpld:latest
@@ -137,7 +137,7 @@ mkdir -p xrpl-private-network/{validator_1/config,validator_2/config,validator_3
 
 For each validator node, follow these steps:
 
-1. In the validator's `config` directory, create a `xrpld.cfg` file.
+1. In the validator's `config` directory, create an `xrpld.cfg` file.
 
 2. Copy the information from the `xrpld.cfg` template below into the file.
 
@@ -284,7 +284,7 @@ Follow these steps to add validator configuration files to each validator:
 
 Docker Compose lets you manage multiple containers on your computer with a simple `yaml` file configuration. This section describes how to run the network with Docker Compose, and how to verify that the network is running successfully.
 
-{% admonition type="info" name="Note" %} Docker Compose ensures the containers are part of the same Docker virtual network by default, so you don't need to take any additional steps for the `rippled` containers to communicate with each other.{% /admonition %}
+{% admonition type="info" name="Note" %} Docker Compose ensures the containers are part of the same Docker virtual network by default, so you don't need to take any additional steps for the `xrpld` containers to communicate with each other.{% /admonition %}
 
 To start running your private network, follow these steps:
 
@@ -351,10 +351,10 @@ Now that the private ledger network is up, you need to verify that **each** vali
 
    {% admonition type="success" name="Tip" %}You can use the same syntax to execute commands in the other Docker containers. Replace `bin/bash` with the command to run and `validator_1` with the name of the container.{% /admonition %}
 
-3. Run the `rippled server_info` command to check the state of the validator:
+3. Run the `xrpld server_info` command to check the state of the validator:
 
     ```
-    rippled server_info | grep server_state
+    xrpld server_info | grep server_state
     ```
 
     Sample Output:
@@ -368,7 +368,7 @@ Now that the private ledger network is up, you need to verify that **each** vali
 4. Verify the number of peers connected to the validator.
 
     ```
-    rippled server_info | grep peers
+    xrpld server_info | grep peers
     ```
 
     Sample Output:
@@ -380,7 +380,7 @@ Now that the private ledger network is up, you need to verify that **each** vali
 5. Run the following command to check the genesis account information:
 
     ```
-    rippled account_info rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh validated
+    xrpld account_info rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh validated
     ```
 
     Sample Output:
@@ -419,7 +419,7 @@ Perform a **test** transaction to ensure you can send money to an account.
 
     ```
     docker exec -it validator_1 \
-        rippled submit 'snoPBrXtMeMyMHUVTgbuqAfg1SUTb' '{ "Account": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh", "Amount": "1000000000", "Destination": "r9wRwVgL2vWVnKhTPdtxva5vdH7FNw1zPs", "TransactionType": "Payment", "Fee": "10" }'
+        xrpld submit 'snoPBrXtMeMyMHUVTgbuqAfg1SUTb' '{ "Account": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh", "Amount": "1000000000", "Destination": "r9wRwVgL2vWVnKhTPdtxva5vdH7FNw1zPs", "TransactionType": "Payment", "Fee": "10" }'
     ```
 
     Sample Output:
@@ -452,7 +452,7 @@ Perform a **test** transaction to ensure you can send money to an account.
 
     ```
     docker exec -it validator_1 \
-        rippled account_info r9wRwVgL2vWVnKhTPdtxva5vdH7FNw1zPs validated
+        xrpld account_info r9wRwVgL2vWVnKhTPdtxva5vdH7FNw1zPs validated
     ```
 
     Sample Output:

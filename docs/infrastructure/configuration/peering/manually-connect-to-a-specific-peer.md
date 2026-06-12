@@ -2,7 +2,7 @@
 html: manually-connect-to-a-specific-peer.html
 parent: configure-peering.html
 seo:
-    description: Connect your rippled server to a specific peer.
+    description: Connect your xrpld server to a specific peer.
 labels:
   - Core Server
 ---
@@ -52,7 +52,7 @@ To connect, use the [connect method][]. For example:
 
 {% tab label="Commandline" %}
 ```
-rippled connect 169.54.2.151 2459
+xrpld connect 169.54.2.151 2459
 ```
 {% /tab %}
 
@@ -63,10 +63,10 @@ rippled connect 169.54.2.151 2459
 
 - **Concepts:**
     - [Peer Protocol](../../../concepts/networks-and-servers/peer-protocol.md)
-    - [The `rippled` Server](../../../concepts/networks-and-servers/index.md)
+    - [The `xrpld` Server](../../../concepts/networks-and-servers/index.md)
 - **Tutorials:**
     - [Capacity Planning](../../installation/capacity-planning.md)
-    - [Troubleshoot the `rippled` Server](../../troubleshooting/index.md)
+    - [Troubleshoot the `xrpld` Server](../../troubleshooting/index.md)
 - **References:**
     - [connect method][]
     - [peers method][]

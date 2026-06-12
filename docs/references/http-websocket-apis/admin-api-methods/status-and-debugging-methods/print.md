@@ -27,7 +27,7 @@ An example of the request format:
 
 {% tab label="Commandline" %}
 ```
-rippled print
+xrpld print
 ```
 {% /tab %}
 
@@ -231,7 +231,7 @@ Connecting to 127.0.0.1:5005
 
 {% /tabs %}
 
-The response follows the [standard format][]. Additional fields in the result depend on the internal state of the `rippled` server. The results of this command are subject to change without notice.
+The response follows the [standard format][]. Additional fields in the result depend on the internal state of the `xrpld` server. The results of this command are subject to change without notice.
 
 ### Possible Errors
 

@@ -67,7 +67,7 @@ An example of the request format:
 {% tab label="Commandline" %}
 ```sh
 #Syntax: wallet_propose [passphrase]
-rippled wallet_propose masterpassphrase
+xrpld wallet_propose masterpassphrase
 ```
 {% /tab %}
 
@@ -82,7 +82,7 @@ The request can contain the following parameters:
 | `seed`       | String | _(Optional)_ Generate the key pair and address from this seed value in the XRP Ledger's [base58][]-encoded format. Cannot be used with `passphrase` or `seed_hex`. |
 | `seed_hex`   | String | _(Optional)_ Generate the key pair and address from this seed value in [hexadecimal][] format. Cannot be used with `passphrase` or `seed`. |
 
-You must provide **at most one** of the following fields: `passphrase`, `seed`, or `seed_hex`. If you omit all three, `rippled` uses a random seed.
+You must provide **at most one** of the following fields: `passphrase`, `seed`, or `seed_hex`. If you omit all three, `xrpld` uses a random seed.
 
 {% admonition type="info" name="Note" %}The commandline version of this command cannot generate [Ed25519](https://ed25519.cr.yp.to/) keys.{% /admonition %}
 
@@ -93,7 +93,7 @@ For most cases, you should use a seed value generated from a strong source of ra
 Cases where you would specify a known seed include:
 
 * Re-calculating your address when you only know the seed associated with that address
-* Testing `rippled` functionality
+* Testing `xrpld` functionality
 
 If you do specify a seed, you can specify it in any of the following formats:
 
@@ -176,10 +176,10 @@ The response follows the [standard format][], with a successful result containin
 | `key_type`        | String | Which [signing algorithm](../../../../concepts/accounts/cryptographic-keys.md#signing-algorithms) was used to derive this key pair. Valid values are `ed25519` and `secp256k1` (all lower case). |
 | `master_seed`     | String | The [master seed](../../../../concepts/accounts/cryptographic-keys.md#key-components), in the XRP Ledger's [base58][] encoded string format. Typically, you use the key in this format to sign transactions. |
 | `master_seed_hex` | String | The master seed, in hex format. |
-| `master_key`      | String | **DEPRECATED** The master seed, in [RFC-1751][] format. **Note:** The `rippled` implementation reverses the byte order of the key after decoding from RFC-1751 and before encoding to RFC-1751; if you read or write keys for use with the XRP Ledger using a different RFC-1751 implementation, you must do the same to be compatible with `rippled`'s RFC-1751 encoding. |
+| `master_key`      | String | **DEPRECATED** The master seed, in [RFC-1751][] format. **Note:** The `xrpld` implementation reverses the byte order of the key after decoding from RFC-1751 and before encoding to RFC-1751; if you read or write keys for use with the XRP Ledger using a different RFC-1751 implementation, you must do the same to be compatible with `xrpld`'s RFC-1751 encoding. |
 | `account_id`      | String | The [Address][] of the account in the XRP Ledger's [base58][] format. This is not the public key, but a hash-of-a-hash of it. It also has a checksum so a typo almost certainly results in an invalid address rather than a valid, but different address. This is the primary identifier of an account in the XRP Ledger. You tell people this to get paid, and use it in transactions to indicate who you are and who you're paying, trusting, and so forth. [Multi-signing lists](../../../../concepts/accounts/multi-signing.md) also use these to identify other signers. |
 | `public_key`      | String | The public key of the key pair, in the XRP Ledger's [base58][] encoded string format. Derived from the `master_seed`. |
-| `public_key_hex`  | String | This is the public key of the key pair, in hexadecimal. Derived from the `master_seed`. To validate the signature on a transaction, `rippled` needs this public key. That's why the format for a signed transaction includes the public key in the `SigningPubKey` field. |
+| `public_key_hex`  | String | This is the public key of the key pair, in hexadecimal. Derived from the `master_seed`. To validate the signature on a transaction, `xrpld` needs this public key. That's why the format for a signed transaction includes the public key in the `SigningPubKey` field. |
 | `warning`         | String | (May be omitted) If the request specified a seed value, this field provides a warning that it may be insecure. |
 
 You can also use this method to generate a key pair to use as a regular key pair for an account. You assign a regular key pair to an account to be able to sign most transactions with it, while keeping your master key pair offline whenever possible.

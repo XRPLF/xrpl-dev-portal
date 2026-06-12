@@ -1,6 +1,6 @@
 ---
 seo:
-    description: Commandline usage options for the rippled server.
+    description: Commandline usage options for the xrpld server.
 labels:
   - Core Server
 ---
@@ -18,7 +18,7 @@ This page describes all the options you can pass to `xrpld` when running it from
 
 - **Daemon Mode** - The default. Connect to the XRP Ledger to process transactions and build a ledger database.
 - **Stand-Alone Mode** - Use the `-a` or `--standalone` option. Like daemon mode, except it does not connect to other servers. You can use this mode to test transaction processing or other features.
-- **Client Mode** - Specify an API method name to connect to another `rippled` server as a JSON-RPC client, then exit. You can use this to look up server status and ledger data if the executable is already running in another process.
+- **Client Mode** - Specify an API method name to connect to another `xrpld` server as a JSON-RPC client, then exit. You can use this to look up server status and ledger data if the executable is already running in another process.
 - **Other Usage** - Each of the following commands causes the `xrpld` executable to print some information, then exit:
     - **Help** - Use `-h` or `--help` to print a usage statement.
     - **Unit Tests** - Use `-u` or `--unittest` to run unit tests and print a summary of results. This can be helpful to confirm that you have compiled `xrpld` successfully.
@@ -31,7 +31,7 @@ These options apply to most modes:
 
 | Option          | Description                                                |
 |:----------------|:-----------------------------------------------------------|
-| `--conf {FILE}` | Use `{FILE}` as the config file instead of looking for config files in the default locations. If not specified, `xrpld` first checks the local working directory for a `xrpld.cfg` file. On Linux, if that file is not found, `xrpld` next checks for `$XDG_CONFIG_HOME/xrpld/xrpld.cfg`. (Typically, `$XDG_CONFIG_HOME` maps to `$HOME/.config`.) |
+| `--conf {FILE}` | Use `{FILE}` as the config file instead of looking for config files in the default locations. If not specified, `xrpld` first checks the local working directory for an `xrpld.cfg` file. On Linux, if that file is not found, `xrpld` next checks for `$XDG_CONFIG_HOME/xrpld/xrpld.cfg`. (Typically, `$XDG_CONFIG_HOME` maps to `$HOME/.config`.) |
 
 ### Verbosity Options
 
@@ -56,7 +56,7 @@ Daemon mode is the default mode of operation for `xrpld`. In addition to the [Ge
 | Option              | Description                                            |
 |:--------------------|:-------------------------------------------------------|
 | `--fg`              | Run the daemon as a single process in the foreground. Otherwise, `xrpld` forks a second process for the daemon while the first process runs as a monitor. |
-| `--import`          | Before fully starting, import ledger data from another `rippled` server's ledger store. Requires a valid `[import_db]` stanza in the config file. |
+| `--import`          | Before fully starting, import ledger data from another `xrpld` server's ledger store. Requires a valid `[import_db]` stanza in the config file. |
 | `--newnodeid`       | Generate a random node identity for the server. |
 | `--nodeid {VALUE}`  | Specify a node identity. `{VALUE}` can also be a parameter associated with the container or hardware running the server, such as `$HOSTNAME`. |
 | `--quorum {QUORUM}` | This option is intended for starting [test networks](../concepts/networks-and-servers/parallel-networks.md). Override the minimum quorum for validation by requiring an agreement of `{QUORUM}` trusted validators. By default, the quorum for validation is automatically set to a safe number of trusted validators based on how many there are. If some validators are not online, this option can allow progress with a lower than normal quorum. {% admonition type="danger" name="Warning" %}If you set the quorum manually, it may be too low to prevent your server from diverging from the rest of the network. Only use this option if you have a deep understanding of consensus and have a need to use a non-standard configuration.{% /admonition %} |
@@ -78,7 +78,7 @@ The following options determine which ledger to load first when starting up. The
 | Option                | Description                                          |
 |:----------------------|:-----------------------------------------------------|
 | `--ledger {LEDGER}`   | Load the ledger version identified by `{LEDGER}` (either a ledger hash or a ledger index) as the initial ledger. The specified ledger version must be in the server's ledger store. |
-| `--ledgerfile {FILE}` | Load the ledger version from the specified `{FILE}`, which must contain a complete ledger in JSON format. For an example of such a file, see the provided {% repo-link path="_api-examples/rippled-cli/ledger-file.json" %}`ledger-file.json`{% /repo-link %}. |
+| `--ledgerfile {FILE}` | Load the ledger version from the specified `{FILE}`, which must contain a complete ledger in JSON format. For an example of such a file, see the provided {% repo-link path="_api-examples/xrpld-cli/ledger-file.json" %}`ledger-file.json`{% /repo-link %}. |
 | `--load`              | Use only the ledger store on disk when loading the initial ledger. |
 | `--net`               | Use only data from the network when loading the initial ledger. |
 | `--replay`            | Use with `--ledger` to replay a specific ledger. Your server must have the ledger in question and its direct ancestor already in the ledger store. Using the previous ledger as a base, the server processes all the transactions in the specified ledger, resulting in a re-creation of the specified ledger. With a debugger, you can add breakpoints to analyze specific transaction processing logic. |
@@ -91,17 +91,17 @@ The following options determine which ledger to load first when starting up. The
 xrpld [OPTIONS] -- {COMMAND} {COMMAND_PARAMETERS}
 ```
 
-In client mode, the `xrpld` executable acts as a client to another `rippled` service. (The service may be the same executable running in a separate process locally, or it could be a `rippled` server on another server.)
+In client mode, the `xrpld` executable acts as a client to another `xrpld` service. (The service may be the same executable running in a separate process locally, or it could be an `xrpld` server on another server.)
 
-To run in client mode, provide the [commandline syntax](../references/http-websocket-apis/api-conventions/request-formatting.md#commandline-format) for one of the [`rippled` API](../references/http-websocket-apis/index.md) methods.
+To run in client mode, provide the [commandline syntax](../references/http-websocket-apis/api-conventions/request-formatting.md#commandline-format) for one of the [`xrpld` API](../references/http-websocket-apis/index.md) methods.
 
 Besides the individual commands, client mode accepts the [Generic Options](#generic-options) and the following options:
 
 | Option                  | Description                                        |
 |:------------------------|:---------------------------------------------------|
 | `--rpc`                 | Explicitly specify that the server should run in client mode. Not required. |
-| `--rpc_ip {IP_ADDRESS}` | Connect to the `rippled` server at the specified IP Address, optionally including a port number. |
-| `--rpc_port {PORT}`     | **DEPRECATED** Connect to the `rippled` server on the specified port. Specify the port alongside the IP address using `--rpc_ip` instead. |
+| `--rpc_ip {IP_ADDRESS}` | Connect to the `xrpld` server at the specified IP Address, optionally including a port number. |
+| `--rpc_port {PORT}`     | **DEPRECATED** Connect to the `xrpld` server on the specified port. Specify the port alongside the IP address using `--rpc_ip` instead. |
 
 {% admonition type="success" name="Tip" %}Some arguments accept negative numbers as values. To ensure that arguments to API commands are not interpreted as options instead, pass the `--` argument before the command name.{% /admonition %}
 

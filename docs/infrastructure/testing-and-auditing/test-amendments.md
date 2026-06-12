@@ -9,7 +9,7 @@ labels:
 # Test Amendments
 
 
-You can test how `rippled` behaves before proposed amendments are fully enabled on the production network. Since other members of the consensus network won't have the feature enabled, run your server in stand-alone mode.
+You can test how `xrpld` behaves before proposed amendments are fully enabled on the production network. Since other members of the consensus network won't have the feature enabled, run your server in stand-alone mode.
 
 {% admonition type="warning" name="Caution" %}This is intended for development purposes only.{% /admonition %}
 

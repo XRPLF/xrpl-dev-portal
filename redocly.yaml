@@ -109,7 +109,7 @@ seo:
           - docs/references/http-websocket-apis/public-api-methods/*/index.md
           - docs/references/http-websocket-apis/admin-api-methods/*/index.md
       - title: Infrastructure
-        description: Install, configure, and troubleshoot rippled and Clio servers.
+        description: Install, configure, and troubleshoot xrpld and Clio servers.
         includeFiles:
           - docs/infrastructure/**/*.*
         excludeFiles:

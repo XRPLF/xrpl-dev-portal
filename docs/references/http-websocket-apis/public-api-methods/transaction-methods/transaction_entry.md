@@ -45,7 +45,7 @@ An example of the request format:
 {% tab label="Commandline" %}
 ```sh
 #Syntax: transaction_entry transaction_hash ledger_index|ledger_hash
-rippled transaction_entry C53ECF838647FA5A4C780377025FEC7999AB4182590510CA461444B207AB74A9 56865245
+xrpld transaction_entry C53ECF838647FA5A4C780377025FEC7999AB4182590510CA461444B207AB74A9 56865245
 ```
 {% /tab %}
 
