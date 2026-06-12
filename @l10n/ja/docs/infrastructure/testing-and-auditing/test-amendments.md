@@ -13,7 +13,7 @@ labels:
 
 {% admonition type="warning" name="注意" %}これは開発目的の利用を想定しています。{% /admonition %}
 
-機能を強制的に有効にするには、`rippled.cfg` ファイルに `[features]`節とAmendmentの短い名前を追加してください。各Amendmentにはそれぞれ行が必要です。
+機能を強制的に有効にするには、`xrpld.cfg` ファイルに `[features]`節とAmendmentの短い名前を追加してください。各Amendmentにはそれぞれ行が必要です。
 
 {% tabs %}
 

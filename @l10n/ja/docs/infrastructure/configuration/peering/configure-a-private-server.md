@@ -27,7 +27,7 @@ labels:
 1. `rippled`の構成ファイルを編集します。
 
     ```
-    vim /etc/opt/ripple/rippled.cfg
+    vim /etc/opt/ripple/xrpld.cfg
     ```
 
    {% partial file="/@l10n/ja/docs/_snippets/conf-file-location.md" /%}

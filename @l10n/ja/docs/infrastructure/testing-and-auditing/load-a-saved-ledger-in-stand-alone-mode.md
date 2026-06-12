@@ -17,7 +17,7 @@ labels:
 既存のレジャーを読み込むには、最初にネットワークから当該のレジャーを取得する必要があります。`rippled`をオンラインモードで通常の方法で起動します。
 
 ```
-rippled --conf=/path/to/rippled.cfg
+rippled --conf=/path/to/xrpld.cfg
 ```
 
 ## 2. `rippled`が同期されるまで待ちます。
@@ -43,7 +43,7 @@ rippled --conf=/path/to/rippled.cfg
 [stopメソッド][]を使用します。
 
 ```
-rippled stop --conf=/path/to/rippled.cfg
+rippled stop --conf=/path/to/xrpld.cfg
 ```
 
 ## 5. スタンドアロンモードで`rippled`を起動します。
@@ -51,13 +51,13 @@ rippled stop --conf=/path/to/rippled.cfg
 最新のレジャーバージョンを読み込むには、`-a`オプションと`--load`オプションを指定してサーバを起動します。
 
 ```
-rippled -a --load --conf=/path/to/rippled.cfg
+rippled -a --load --conf=/path/to/xrpld.cfg
 ```
 
 特定の履歴レジャーを読み込むには、`--load`パラメーターと`--ledger`パラメーターを使用し、読み込むレジャーバージョンのレジャーインデックスまたは識別用ハッシュを指定してサーバを起動します。
 
 ```
-rippled -a --load --ledger 19860944 --conf=/path/to/rippled.cfg
+rippled -a --load --ledger 19860944 --conf=/path/to/xrpld.cfg
 ```
 
 スタンドアロンモードで`rippled`を起動するときに使用可能なオプションについての詳細は、[コマンドラインの使用: スタンドアロンモードのオプション ](../commandline-usage.md#スタンドアロンモードのオプション)をご覧ください。
@@ -67,7 +67,7 @@ rippled -a --load --ledger 19860944 --conf=/path/to/rippled.cfg
 スタンドアロンモードで`--ledger`を使用してレジャーを読み込むと、読み込まれたレジャーが現行のオープンレジャーになるので、[レジャーを手動で進める](advance-the-ledger-in-stand-alone-mode.md)必要があります。
 
 ```
-rippled ledger_accept --conf=/path/to/rippled.cfg
+rippled ledger_accept --conf=/path/to/xrpld.cfg
 ```
 
 ## 関連項目

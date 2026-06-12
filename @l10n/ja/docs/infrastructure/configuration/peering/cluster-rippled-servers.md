@@ -19,7 +19,7 @@ labels:
     ```
     $ rippled validation_create
 
-    Loading: "/etc/rippled.cfg"
+    Loading: "/etc/xrpld.cfg"
     Connecting to 127.0.0.1:5005
     {
        "result" : {
@@ -33,9 +33,9 @@ labels:
 
     各レスポンスの`validation_seed`パラメーターと`validation_public_key`パラメーターを安全な場所に保存します。
 
-3. 各サーバで[構成ファイル](https://github.com/XRPLF/rippled/blob/master/cfg/rippled-example.cfg)を編集し、以下のセクションを変更します。
+3. 各サーバで[構成ファイル](https://github.com/XRPLF/rippled/blob/master/cfg/xrpld-example.cfg)を編集し、以下のセクションを変更します。
 
-    1. `[ips_fixed]`セクションに、クラスターの _その他の_ 各メンバーのIPアドレスとポートを記入します。各サーバのポート番号は、サーバの `rippled.cfg`に指定されている`protocol = peer`ポート（通常は51235）と一致している必要があります。例:
+    1. `[ips_fixed]`セクションに、クラスターの _その他の_ 各メンバーのIPアドレスとポートを記入します。各サーバのポート番号は、サーバの `xrpld.cfg`に指定されている`protocol = peer`ポート（通常は51235）と一致している必要があります。例:
 
         ```
         [ips_fixed]
@@ -77,7 +77,7 @@ labels:
     ```
     $ rippled peers
 
-    Loading: "/etc/rippled.cfg"
+    Loading: "/etc/xrpld.cfg"
     Connecting to 127.0.0.1:5005
     {
       "result" : {

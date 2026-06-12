@@ -20,7 +20,7 @@ labels:
 
 ## 1. 適切なハブに接続するようにサーバを設定します。
 
-`rippled.cfg`ファイルを編集します。
+`xrpld.cfg`ファイルを編集します。
 
 {% partial file="/@l10n/ja/docs/_snippets/conf-file-location.md" /%}
 <!--{_ }-->
@@ -81,7 +81,7 @@ labels:
 
 ## 2. 信頼できるバリデータリストの設定
 
-`validators.txt`ファイルを編集します。このファイルは`rippled.cfg`ファイルと同じフォルダにあり、どのバリデータが共謀しないと信頼するかを定義します。
+`validators.txt`ファイルを編集します。このファイルは`xrpld.cfg`ファイルと同じフォルダにあり、どのバリデータが共謀しないと信頼するかを定義します。
 
 1. 接続したいネットワークの`[validator_list_sites]`と`[validator_list_keys]`コメントを解除するか、追加します。
 

@@ -57,7 +57,7 @@ rippled ledger_request 13800000
 
 {% tab label="コマンドライン（失敗）" %}
 ```json
-Loading: "/etc/rippled.cfg"
+Loading: "/etc/xrpld.cfg"
 Connecting to 127.0.0.1:5005
 
 {
@@ -83,7 +83,7 @@ Connecting to 127.0.0.1:5005
 
 {% tab label="コマンドライン（進行中）" %}
 ```json
-Loading: "/etc/rippled.cfg"
+Loading: "/etc/xrpld.cfg"
 Connecting to 127.0.0.1:5005
 
 {
@@ -130,7 +130,7 @@ Connecting to 127.0.0.1:5005
 
 {% tab label="コマンドライン（成功）" %}
 ```json
-Loading: "/etc/rippled.cfg"
+Loading: "/etc/xrpld.cfg"
 Connecting to 127.0.0.1:5005
 
 {

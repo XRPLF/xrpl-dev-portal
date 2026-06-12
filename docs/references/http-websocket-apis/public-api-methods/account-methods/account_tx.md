@@ -564,7 +564,7 @@ An example of a successful response:
 
 {% tab label="Commandline" %}
 ```json
-Loading: "/etc/opt/ripple/rippled.cfg"
+Loading: "/etc/opt/ripple/xrpld.cfg"
 2025-Dec-19 03:16:00.638871262 UTC HTTPClient:NFO Connecting to 127.0.0.1:5005
 
 {

@@ -145,7 +145,7 @@ Before you install Clio, you must meet the following requirements.
 
         The [example config file](https://github.com/XRPLF/clio/blob/develop/docs/examples/config/example-config.json) accesses the `rippled` server running on the local loopback network (127.0.0.1), with the WebSocket (WS) on port 6005 and gRPC on port 50051.
 
-    2. Update the `rippled` server's config file to allow the Clio server to connect to it. The package installs this file at `/etc/opt/ripple/rippled.cfg`.
+    2. Update the `rippled` server's config file to allow the Clio server to connect to it. The package installs this file at `/etc/opt/ripple/xrpld.cfg`.
 
         * Open a port to accept unencrypted, non-admin WebSocket connections.
 

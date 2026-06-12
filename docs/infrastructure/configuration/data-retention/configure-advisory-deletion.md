@@ -60,7 +60,7 @@ To configure advisory deletion with a daily schedule, perform the following step
     You can use the [`rippled` commandline interface](../../../tutorials/get-started/get-started-http-websocket-apis.md#commandline) to run this command. For example:
 
     ```
-    $ rippled --conf=/etc/opt/ripple/rippled.cfg can_delete now
+    $ rippled --conf=/etc/opt/ripple/xrpld.cfg can_delete now
     ```
 
     The response indicates the maximum ledger index that the server may delete from its ledger store. For example, the following message indicates that ledger versions up to and including ledger index 43633667 can be deleted:
@@ -87,7 +87,7 @@ To configure advisory deletion with a daily schedule, perform the following step
     The following example sets the server to run deletion at 1:05 AM server time daily:
 
     ```
-    5 1 * * * rippled --conf /etc/opt/ripple/rippled.cfg can_delete now
+    5 1 * * * rippled --conf /etc/opt/ripple/xrpld.cfg can_delete now
     ```
 
     Be sure that you schedule the command to run based on your server's configured time zone.

@@ -45,7 +45,7 @@ lables:
     ```
     rippled validation_create
 
-    Loading: "/etc/rippled.cfg"
+    Loading: "/etc/xrpld.cfg"
     Connecting to 127.0.0.1:5005
     {
        "result" : {
@@ -62,7 +62,7 @@ lables:
 2. `rippled`の構成ファイルを編集します。
 
     ```
-    vim /etc/opt/ripple/rippled.cfg
+    vim /etc/opt/ripple/xrpld.cfg
     ```
 
    {% partial file="/@l10n/ja/docs/_snippets/conf-file-location.md" /%}
@@ -97,7 +97,7 @@ lables:
 ```sh
 $ rippled peer_reservations_add n9Mxf6qD4J55XeLSCEpqaePW4GjoCR5U1ZeGZGJUCNe3bQa4yQbG "Description here"
 
-Loading: "/etc/opt/ripple/rippled.cfg"
+Loading: "/etc/opt/ripple/xrpld.cfg"
 Connecting to 127.0.0.1:5005
 
 {

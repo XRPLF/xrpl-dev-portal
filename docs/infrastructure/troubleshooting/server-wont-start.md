@@ -52,24 +52,24 @@ This occurs because the system has a security limit on the number of files a sin
     ```
 
 
-## Failed to open /etc/opt/ripple/rippled.cfg
+## Failed to open /etc/opt/ripple/xrpld.cfg
 
 If `rippled` crashes on startup with an error such as the following, it means that `rippled` cannot read its config file:
 
 ```text
-Loading: "/etc/opt/ripple/rippled.cfg"
-Failed to open '"/etc/opt/ripple/rippled.cfg"'.
+Loading: "/etc/opt/ripple/xrpld.cfg"
+Failed to open '"/etc/opt/ripple/xrpld.cfg"'.
 Terminating thread rippled: main: unhandled St13runtime_error 'Can not create "/var/opt/ripple"'
 Aborted (core dumped)
 ```
 
 Possible solutions:
 
-- Check that the config file exists (the default location is `/etc/opt/ripple/rippled.cfg`) and the user that runs your `rippled` process (usually `rippled`) has read permissions to the file.
+- Check that the config file exists (the default location is `/etc/opt/ripple/xrpld.cfg`) and the user that runs your `rippled` process (usually `rippled`) has read permissions to the file.
 
-- Create a config file that can be read by the `rippled` user at `$HOME/.config/ripple/rippled.cfg` (where `$HOME` points to the `rippled` user's home directory).
+- Create a config file that can be read by the `rippled` user at `$HOME/.config/xrpld/xrpld.cfg` (where `$HOME` points to the `rippled` user's home directory).
 
-    {% admonition type="success" name="Tip" %}The `rippled` repository contains [an example `rippled.cfg` file](https://github.com/XRPLF/rippled/blob/master/cfg/rippled-example.cfg) which is provided as the default config when you do an installation from a binary package. If you do not have the file, you can copy it from there.{% /admonition %}
+    {% admonition type="success" name="Tip" %}The `rippled` repository contains [an example `xrpld.cfg` file](https://github.com/XRPLF/rippled/blob/master/cfg/xrpld-example.cfg) which is provided as the default config when you do an installation from a binary package. If you do not have the file, you can copy it from there.{% /admonition %}
 
 - Specify the path to your preferred config file using the `--conf` [commandline option](../commandline-usage.md).
 
@@ -78,8 +78,8 @@ Possible solutions:
 If `rippled` crashes on startup with an error such as the following, it means it can read its primary config file, but that config file specifies a separate validators config file (typically named `validators.txt`), which `rippled` cannot read.
 
 ```text
-Loading: "/home/rippled/.config/ripple/rippled.cfg"
-Terminating thread rippled: main: unhandled St13runtime_error 'The file specified in [validators_file] does not exist: /home/rippled/.config/ripple/validators.txt'
+Loading: "/home/rippled/.config/xrpld/xrpld.cfg"
+Terminating thread rippled: main: unhandled St13runtime_error 'The file specified in [validators_file] does not exist: /home/rippled/.config/xrpld/validators.txt'
 Aborted (core dumped)
 ```
 
@@ -89,9 +89,9 @@ Possible solutions:
 
     {% admonition type="success" name="Tip" %}The `rippled` repository contains [an example `validators.txt` file](https://github.com/XRPLF/rippled/blob/master/cfg/validators-example.txt) which is provided as the default config when you do an installation from a binary package. If you do not have the file, you can copy it from there.{% /admonition %}
 
-- Edit your `rippled.cfg` file and modify the `[validators_file]` setting to have the correct path to your `validators.txt` (or equivalent) file. Check for extra whitespace before or after the filename.
+- Edit your `xrpld.cfg` file and modify the `[validators_file]` setting to have the correct path to your `validators.txt` (or equivalent) file. Check for extra whitespace before or after the filename.
 
-- Edit your `rippled.cfg` file and remove the `[validators_file]` setting. Add validator settings directly to your `rippled.cfg` file. For example:
+- Edit your `xrpld.cfg` file and remove the `[validators_file]` setting. Add validator settings directly to your `xrpld.cfg` file. For example:
 
     ```
     [validator_list_sites]
@@ -107,18 +107,18 @@ Possible solutions:
 If `rippled` crashes on startup with an error such as the following, it means the server does not have write permissions to the `[database_path]` from its config file.
 
 ```text
-Loading: "/home/rippled/.config/ripple/rippled.cfg"
+Loading: "/home/rippled/.config/xrpld/xrpld.cfg"
 Terminating thread rippled: main: unhandled St13runtime_error 'Can not create "/var/lib/rippled/db"'
 Aborted (core dumped)
 ```
 
-The paths to the configuration file (`/home/rippled/.config/ripple/rippled.cfg`) and the database path (`/var/lib/rippled/db`) may vary depending on your system.
+The paths to the configuration file (`/home/rippled/.config/xrpld/xrpld.cfg`) and the database path (`/var/lib/rippled/db`) may vary depending on your system.
 
 Possible solutions:
 
 - Run `rippled` as a different user that has write permissions to the database path printed in the error message.
 
-- Edit your `rippled.cfg` file and change the `[database_path]` setting to use a path that the `rippled` user has write permissions to.
+- Edit your `xrpld.cfg` file and change the `[database_path]` setting to use a path that the `rippled` user has write permissions to.
 
 - Grant the `rippled` user write permissions to the configured database path.
 
@@ -165,7 +165,7 @@ path=/var/lib/rippled/custom_nudb_path
 
 ## Online Delete is Less Than Ledger History
 
-An error message such as the following indicates that the `rippled.cfg` file has contradictory values for `[ledger_history]` and `online_delete`.
+An error message such as the following indicates that the `xrpld.cfg` file has contradictory values for `[ledger_history]` and `online_delete`.
 
 ```text
 Terminating thread rippled: main: unhandled St13runtime_error 'online_delete must not be less than ledger_history (currently 3000)
@@ -173,12 +173,12 @@ Terminating thread rippled: main: unhandled St13runtime_error 'online_delete mus
 
 The `[ledger_history]` setting represents how many ledgers of history the server should seek to back-fill. The `online_delete` field (in the `[node_db]` stanza) indicates how many ledgers of history to keep when dropping older history. The `online_delete` value must be equal to or larger than `[ledger_history]` to prevent the server from deleting historical ledgers that it is also trying to download.
 
-To fix the problem, edit the `rippled.cfg` file and change or remove either the `[ledger_history]` or `online_delete` options. (If you omit `[ledger_history]`, it uses a default of 256 ledger versions. If you specify the `online_delete` field, it must be larger than 256. If you omit `online_delete`, it disables automatic deletion of old ledger versions.)
+To fix the problem, edit the `xrpld.cfg` file and change or remove either the `[ledger_history]` or `online_delete` options. (If you omit `[ledger_history]`, it uses a default of 256 ledger versions. If you specify the `online_delete` field, it must be larger than 256. If you omit `online_delete`, it disables automatic deletion of old ledger versions.)
 
 
 ## Bad node_size value
 
-An error such as the following indicates that the `rippled.cfg` file has an improper value for the `node_size` setting:
+An error such as the following indicates that the `xrpld.cfg` file has an improper value for the `node_size` setting:
 
 ```text
 Terminating thread rippled: main: unhandled N5beast14BadLexicalCastE 'std::bad_cast'

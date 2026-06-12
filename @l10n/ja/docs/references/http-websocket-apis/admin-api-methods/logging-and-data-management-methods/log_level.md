@@ -53,7 +53,7 @@ rippled log_level PathRequest debug
 
 {% tab label="コマンドライン（ログレベルの設定）" %}
 ```json
-Loading: "/etc/rippled.cfg"
+Loading: "/etc/xrpld.cfg"
 Connecting to 127.0.0.1:5005
 
 {
@@ -66,7 +66,7 @@ Connecting to 127.0.0.1:5005
 
 {% tab label="コマンドライン（ログレベルの確認）" %}
 ```json
-Loading: "/etc/rippled.cfg"
+Loading: "/etc/xrpld.cfg"
 Connecting to 127.0.0.1:5005
 
 {

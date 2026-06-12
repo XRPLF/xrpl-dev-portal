@@ -19,7 +19,7 @@ Loading a historical ledger version is useful for "replaying" a ledger to verify
 To load an existing ledger, you must first retrieve that ledger from the network. Start `rippled` in online mode as normal:
 
 ```
-rippled --conf=/path/to/rippled.cfg
+rippled --conf=/path/to/xrpld.cfg
 ```
 
 ## 2. Wait until `rippled` is synced.
@@ -45,7 +45,7 @@ If you want to replay a specific historical ledger version, you must fetch both 
 Use the [stop method][]:
 
 ```
-rippled stop --conf=/path/to/rippled.cfg
+rippled stop --conf=/path/to/xrpld.cfg
 ```
 
 ## 5. Start `rippled` in stand-alone mode.
@@ -53,13 +53,13 @@ rippled stop --conf=/path/to/rippled.cfg
 To load the most recent ledger version, start the server with the `-a` and `--load` options:
 
 ```
-rippled -a --load --conf=/path/to/rippled.cfg
+rippled -a --load --conf=/path/to/xrpld.cfg
 ```
 
 To load a specific historical ledger, start the server with the `--load` parameter along with the `--ledger` parameter, providing the ledger index or identifying hash of the ledger version to load:
 
 ```
-rippled -a --load --ledger 19860944 --conf=/path/to/rippled.cfg
+rippled -a --load --ledger 19860944 --conf=/path/to/xrpld.cfg
 ```
 
 This makes the saved ledger version the "current" (open) ledger for the server when it starts.
@@ -71,7 +71,7 @@ For more information on the options you can use when starting `rippled` in stand
 To process the saved ledger, manually advance it with the `ledger_accept` method:
 
 ```
-rippled ledger_accept --conf=/path/to/rippled.cfg
+rippled ledger_accept --conf=/path/to/xrpld.cfg
 ```
 
 This puts the transactions in canonical order and processes them to make a closed ledger.

@@ -90,7 +90,7 @@ To configure your server to acquire and store full history, complete the followi
     If you have a database dump to load configured in `[import_db]`, start the server explicitly and include the `--import` [commandline option](../../commandline-usage.md#daemon-mode-options):
 
     ```
-    $ /opt/ripple/bin/rippled --conf /etc/opt/ripple/rippled.cfg --import
+    $ /opt/ripple/bin/rippled --conf /etc/opt/ripple/xrpld.cfg --import
     ```
 
     Importing a large database dump may take several minutes or even hours. During this time, the server is not fully started and synced with the network. Watch the server logs to see the status of the import.

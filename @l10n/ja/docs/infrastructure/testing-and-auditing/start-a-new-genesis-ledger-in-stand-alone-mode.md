@@ -13,7 +13,7 @@ labels:
 * スタンドアロンモードで新しいジェネシスレジャーを使用して`rippled`を起動するには、`-a`オプションと`--start`オプションを使用します。
 
 ```
-rippled -a --start --conf=/path/to/rippled.cfg
+rippled -a --start --conf=/path/to/xrpld.cfg
 ```
 
 スタンドアロンモードで`rippled`を起動時に使用できるオプションについての詳細は、[コマンドラインの使用リファレンスのスタンドアロンモードのオプション](../commandline-usage.md#スタンドアロンモードのオプション)をご覧ください。
