@@ -1,6 +1,6 @@
 ---
 html: configure-statsd.html
-parent: configure-rippled.html
+parent: configure-xrpld.html
 seo:
     description: StatsDの統計データでrippledサーバを監視します。
 labels:

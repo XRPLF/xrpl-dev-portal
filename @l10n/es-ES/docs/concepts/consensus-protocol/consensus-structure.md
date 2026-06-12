@@ -178,7 +178,7 @@ Buenas prácticas para aplicaciones enviando transsacciones incluyen:
     - [El mecanismo del consenso (YouTube)](https://www.youtube.com/watch?v=k6VqEkqRTmk&list=PLJQ55Tj1hIVZtJ_JdTvSum2qMTsedWkNi&index=2)
 - **Tutoriales:**
     - [Envío de transacciones de forma correcta](../transactions/reliable-transaction-submission.md)
-    - [Ejecutar `rippled` como un validator](../../infrastructure/configuration/server-modes/run-rippled-as-a-validator.md)
+    - [Ejecutar `rippled` como un validator](../../infrastructure/configuration/server-modes/run-xrpld-as-a-validator.md)
 - **Referencias:**
     - [Referencia del fromato del ledger](../../references/protocol/ledger-data/index.md)
     - [Referencia del formato de la transacción](../../references/protocol/transactions/index.md)

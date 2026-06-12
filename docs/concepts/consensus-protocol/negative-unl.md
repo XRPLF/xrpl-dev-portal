@@ -32,7 +32,7 @@ In cases where validators go offline one or two at a time, the remaining validat
 
 If more than 20% of validators suddenly go offline all at once, the remaining servers cannot achieve the quorum necessary to validate a new ledger, so no new ledgers could be validated. However, those servers can still make tentative forward progress through successive consensus rounds. Over time, the remaining validators would continue to apply changes to the Negative UNL to the tentative ledgers and adjust their effective UNLs; eventually, if the situation persists, the network could resume fully validating ledgers by using the adjusted Negative UNL from the tentative ledger versions.
 
-Negative UNL has no effect on [stand-alone mode](../networks-and-servers/rippled-server-modes.md) since the server does not use consensus in stand-alone mode.
+Negative UNL has no effect on [stand-alone mode](../networks-and-servers/xrpld-server-modes.md) since the server does not use consensus in stand-alone mode.
 
 
 ## How It Works
@@ -165,8 +165,8 @@ The following example demonstrates how the Negative UNL affects the consensus pr
 - **Concepts:**
     - [Consensus Protocol](index.md)
 - **Tutorials:**
-    - [Connect Your `rippled` to a Parallel Network](../../infrastructure/configuration/connect-your-rippled-to-the-xrp-test-net.md)
-    - [Run `rippled` as a Validator](../../infrastructure/configuration/server-modes/run-rippled-as-a-validator.md)
+    - [Connect Your `xrpld` to a Parallel Network](../../infrastructure/configuration/connect-your-xrpld-to-the-xrp-test-net.md)
+    - [Run `xrpld` as a Validator](../../infrastructure/configuration/server-modes/run-xrpld-as-a-validator.md)
 - **References:**
     - [NegativeUNL Object](../../references/protocol/ledger-data/ledger-entry-types/negativeunl.md)
     - [UNLModify pseudo-transaction][]

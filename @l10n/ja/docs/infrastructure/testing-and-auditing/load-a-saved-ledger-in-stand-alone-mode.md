@@ -8,7 +8,7 @@ labels:
 ---
 # スタンドアロンモードでの保存済みレジャーの読み込み
 
-以前にディスクに保存していた[履歴レジャーバージョン](../../concepts/ledgers/index.md)を使用して、`rippled`サーバを[スタンドアロンモード](../../concepts/networks-and-servers/rippled-server-modes.md)で起動できます。例えば、以前に`rippled`サーバをXRP Ledgerのピアツーピアネットワーク（[本番Mainnet、Testnet、Devnetなど](../../concepts/networks-and-servers/parallel-networks.md)）と同期していた場合は、過去にサーバで使用できていた任意のレジャーバージョンを読み込むことができます。
+以前にディスクに保存していた[履歴レジャーバージョン](../../concepts/ledgers/index.md)を使用して、`rippled`サーバを[スタンドアロンモード](../../concepts/networks-and-servers/xrpld-server-modes.md)で起動できます。例えば、以前に`rippled`サーバをXRP Ledgerのピアツーピアネットワーク（[本番Mainnet、Testnet、Devnetなど](../../concepts/networks-and-servers/parallel-networks.md)）と同期していた場合は、過去にサーバで使用できていた任意のレジャーバージョンを読み込むことができます。
 
 履歴レジャーバージョンを読み込むことにより、レジャーを「リプレイ」して、トランザクションがネットワークのルールに従って処理されていたか検証したり、異なる[Amendment](../../concepts/networks-and-servers/amendments.md)を有効にした場合のトランザクションセットの処理の結果を比較したりすることができます。万が一、[XRP Ledgerのコンセンサスメカニズムに対する攻撃](../../concepts/consensus-protocol/consensus-protections.md)が発生して共有レジャーの状態に悪影響が及んでも、このプロセスを始めることで、バリデータのコンセンサスを以前の良好だったネットワークの状態に「ロールバック」できる可能性があります。
 
@@ -28,7 +28,7 @@ rippled --conf=/path/to/xrpld.cfg
 * `proposing`
 * `validating`
 
-詳細は、[考えられるサーバの状態](../../references/http-websocket-apis/api-conventions/rippled-server-states.md)をご覧ください。
+詳細は、[考えられるサーバの状態](../../references/http-websocket-apis/api-conventions/xrpld-server-states.md)をご覧ください。
 
 ## 3. （省略可）特定のレジャーバージョンを取得します。
 
@@ -74,7 +74,7 @@ rippled ledger_accept --conf=/path/to/xrpld.cfg
 
 - **コンセプト:**
     - [`rippled`サーバ](../../concepts/networks-and-servers/index.md)
-      - [`rippled`サーバのモード](../../concepts/networks-and-servers/rippled-server-modes.md)
+      - [`rippled`サーバのモード](../../concepts/networks-and-servers/xrpld-server-modes.md)
     - [コンセンサスについて](../../concepts/consensus-protocol/index.md)
     - [Amendment](../../concepts/networks-and-servers/amendments.md)
 - **リファレンス:**

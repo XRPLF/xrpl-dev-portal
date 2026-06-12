@@ -1,6 +1,6 @@
 ---
 html: capacity-planning.html
-parent: install-rippled.html
+parent: install-xrpld.html
 seo:
     description: 本番環境のシステムスペックを計画して、rippledの構成を調整します。
 labels:

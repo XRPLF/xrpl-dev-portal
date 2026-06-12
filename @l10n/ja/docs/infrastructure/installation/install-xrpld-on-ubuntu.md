@@ -1,6 +1,6 @@
 ---
-html: install-rippled-on-ubuntu.html
-parent: install-rippled.html
+html: install-xrpld-on-ubuntu.html
+parent: install-xrpld.html
 seo:
     description: プリコンパイル済みのrippledバイナリーをUbuntu Linuxにインストールします。
 labels:
@@ -105,7 +105,7 @@ labels:
 
 ## 次のステップ
 
-{% partial file="/@l10n/ja/docs/_snippets/post-rippled-install.md" /%}
+{% partial file="/@l10n/ja/docs/_snippets/post-xrpld-install.md" /%}
 
 
 

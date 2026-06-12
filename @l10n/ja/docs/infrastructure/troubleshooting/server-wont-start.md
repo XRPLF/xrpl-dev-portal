@@ -1,6 +1,6 @@
 ---
 html: server-wont-start.html
-parent: troubleshoot-the-rippled-server.html
+parent: troubleshoot-the-xrpld-server.html
 seo:
     description: rippledサーバが起動しない原因となると思われる問題とその解決方法です。
 labels:

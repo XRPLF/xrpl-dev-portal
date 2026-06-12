@@ -10,7 +10,7 @@ labels:
 
 A [peer reservation][] is a setting that makes an `xrpld` server always accept connections from a peer matching the reservation. This page describes how to use peer reservations to keep a consistent peer-to-peer connection between two servers, with the cooperation of the administrators of both servers.
 
-Peer reservations are most useful when the two servers are run by different parties, and the server that receives the incoming connection is a [hub server](../../../concepts/networks-and-servers/rippled-server-modes.md#public-hubs) with many peers. For clarity, these instructions use the following terms:
+Peer reservations are most useful when the two servers are run by different parties, and the server that receives the incoming connection is a [hub server](../../../concepts/networks-and-servers/xrpld-server-modes.md#public-hubs) with many peers. For clarity, these instructions use the following terms:
 
 - The server making the outgoing connection is the **stock server**. This server _uses_ the peer reservation on the hub server.
 - The server receiving the incoming connection is the **hub server**. The administrator _adds_ the peer reservation to this server.
@@ -34,7 +34,7 @@ To use a peer reservation, complete the following steps:
 
 The administrator of the stock server completes this step.
 
-If you have already configured your server with a permanent node key pair value, you can skip ahead to [step 2: Communicate your node public key to the peer's admin](#2-communicate-the-stock-servers-node-public-key). (For example, setting up a permanent node key pair for each server is part of the process of [setting up a server cluster](cluster-rippled-servers.md).)
+If you have already configured your server with a permanent node key pair value, you can skip ahead to [step 2: Communicate your node public key to the peer's admin](#2-communicate-the-stock-servers-node-public-key). (For example, setting up a permanent node key pair for each server is part of the process of [setting up a server cluster](cluster-xrpld-servers.md).)
 
 {% admonition type="success" name="Tip" %}Setting up a permanent node key pair is optional, but makes it easier to keep the peer reservation set up if you need to erase your server's databases or move to a new machine. If you don't want to set up a permanent node key pair, you can use your server's automatically-generated node public key as reported in the `pubkey_node` field of the [server_info method][] response.{% /admonition %}
 

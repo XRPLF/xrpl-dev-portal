@@ -26,7 +26,7 @@ xrpld server_info
 The response to this command has a lot of information, which is documented along with the [server_info method][].
 For troubleshooting purposes, the most important fields are (from most commonly used to least):
 
-- **`server_state`** - Most of the time, this field should show `proposing` for a server that is [configured as a validator](../configuration/server-modes/run-rippled-as-a-validator.md), or `full` for a non-validating server. The value `connected` means that the server can communicate with the rest of the peer-to-peer network, but it does not yet have enough data to track progress of the shared ledger state. Normally, syncing to the state of the rest of the ledger takes about 5-15 minutes after starting.
+- **`server_state`** - Most of the time, this field should show `proposing` for a server that is [configured as a validator](../configuration/server-modes/run-xrpld-as-a-validator.md), or `full` for a non-validating server. The value `connected` means that the server can communicate with the rest of the peer-to-peer network, but it does not yet have enough data to track progress of the shared ledger state. Normally, syncing to the state of the rest of the ledger takes about 5-15 minutes after starting.
 
     - If your server remains in the `connected` state for hours, or returns to the `connected` state after being in the `full` or `proposing` states, that usually indicates that your server cannot keep up with the rest of the network. The most common bottlenecks are disk I/O, network bandwidth, and RAM.
 

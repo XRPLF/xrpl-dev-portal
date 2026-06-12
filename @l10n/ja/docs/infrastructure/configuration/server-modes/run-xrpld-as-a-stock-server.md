@@ -1,5 +1,5 @@
 ---
-html: run-rippled-as-a-stock-server.html
+html: run-xrpld-as-a-stock-server.html
 parent: server-modes.html
 seo:
     description: XRPを統合する人のための汎用的な構成。
@@ -20,7 +20,7 @@ labels:
 - 完全な共有グローバル[レジャー](../../../concepts/ledgers/index.md)のローカルコピーを維持
 
 
-バリデータとして[コンセンサスプロセス](../../../concepts/consensus-protocol/index.md)に参加するには、代わりに[バリデータとしてrippledを実行](run-rippled-as-a-validator.md)してください。
+バリデータとして[コンセンサスプロセス](../../../concepts/consensus-protocol/index.md)に参加するには、代わりに[バリデータとしてrippledを実行](run-xrpld-as-a-validator.md)してください。
 
 
 ## `rippled`のインストールと実行
@@ -40,7 +40,7 @@ labels:
     - [XRP Ledgerの概要](/about/)
     - [`rippled`サーバ](../../../concepts/networks-and-servers/index.md)
 - **チュートリアル:**
-    - [rippledサーバのクラスター化](../peering/cluster-rippled-servers.md)
+    - [rippledサーバのクラスター化](../peering/cluster-xrpld-servers.md)
     - [`rippled`のインストール](../../installation/index.md)
     - [容量の計画](../../installation/capacity-planning.md)
 - **リファレンス:**

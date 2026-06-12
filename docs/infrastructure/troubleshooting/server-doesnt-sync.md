@@ -1,6 +1,6 @@
 ---
 html: server-doesnt-sync.html
-parent: troubleshoot-the-rippled-server.html
+parent: troubleshoot-the-xrpld-server.html
 seo:
     description: Troubleshoot problems that make an xrpld server unable to sync with the rest of the XRP Ledger.
 labels:
@@ -8,7 +8,7 @@ labels:
 ---
 # xrpld Server Doesn't Sync
 
-This page explains possible reasons [an `xrpld` server](../../concepts/networks-and-servers/index.md) may start successfully, but get stuck in a ["connected" state](../../references/http-websocket-apis/api-conventions/rippled-server-states.md) without ever fully connecting to the network. (If the server crashes during or shortly after startup, see [Server Won't Start](server-wont-start.md) instead.)
+This page explains possible reasons [an `xrpld` server](../../concepts/networks-and-servers/index.md) may start successfully, but get stuck in a ["connected" state](../../references/http-websocket-apis/api-conventions/xrpld-server-states.md) without ever fully connecting to the network. (If the server crashes during or shortly after startup, see [Server Won't Start](server-wont-start.md) instead.)
 
 These instructions assume you have [installed `xrpld`](../installation/index.md) on a supported platform.
 
@@ -30,7 +30,7 @@ If the server is unable to keep up with the network while doing these tasks, the
 
 Many syncing issues can be resolved by restarting the server. No matter why it didn't sync the first time, it may succeed on the second try.
 
-If the [server_info method][] shows a [`server_state`](../../references/http-websocket-apis/api-conventions/rippled-server-states.md) other than `proposing` or `full` and a `server_state_duration_us` of more than `900000000` (15 minutes in microseconds), then you should shut down the `rippled` service, wait a few seconds, and start it again. Optionally, restart the entire machine.
+If the [server_info method][] shows a [`server_state`](../../references/http-websocket-apis/api-conventions/xrpld-server-states.md) other than `proposing` or `full` and a `server_state_duration_us` of more than `900000000` (15 minutes in microseconds), then you should shut down the `rippled` service, wait a few seconds, and start it again. Optionally, restart the entire machine.
 
 If the problem persists, check the other possibilities listed on this page. If none of them seem to apply, [open an issue in the `rippled` repository](https://github.com/XRPLF/rippled/issues) and add the "Syncing issue" label.
 

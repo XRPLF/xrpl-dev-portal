@@ -1,5 +1,5 @@
 ---
-html: cluster-rippled-servers.html
+html: cluster-xrpld-servers.html
 parent: configure-peering.html
 seo:
     description: サーバのグループで処理を分担するように設定して効率化します。

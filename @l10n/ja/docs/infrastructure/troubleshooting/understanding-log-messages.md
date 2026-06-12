@@ -1,6 +1,6 @@
 ---
 html: understanding-log-messages.html
-parent: troubleshoot-the-rippled-server.html
+parent: troubleshoot-the-xrpld-server.html
 seo:
     description: デバッグログの警告メッセージとエラーメッセージを解釈して対応します。
 labels:

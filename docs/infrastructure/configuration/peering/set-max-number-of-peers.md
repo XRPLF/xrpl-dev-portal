@@ -31,7 +31,7 @@ To change the maximum number of peers your server allows, complete the following
 
     The only content of the stanza should be an integer indicating the total number of peers to allow. By default, the server attempts to maintain a ratio of about 85% incoming and 15% outgoing peers, but with a minimum of 10 outgoing peers, so any value less than 68 won't increase the number of outgoing peer connections your server makes.
 
-    If the `[peers_max]` value is less than 10, the server still allows a hardcoded minimum of 10 outgoing peers so that it can maintain connectivity with the network. To block all outgoing peer connections, [configure the server as a private peer](../server-modes/run-rippled-as-a-validator.md#connect-using-proxies) instead.
+    If the `[peers_max]` value is less than 10, the server still allows a hardcoded minimum of 10 outgoing peers so that it can maintain connectivity with the network. To block all outgoing peer connections, [configure the server as a private peer](../server-modes/run-xrpld-as-a-validator.md#connect-using-proxies) instead.
 
     {% admonition type="warning" name="Caution" %}The more peer servers you are connected to, the more network bandwidth your `xrpld` server uses. You should only configure large numbers of peer servers if your `xrpld` server has a good network connection and you can afford the costs you may incur for the bandwidth it uses.{% /admonition %}
 

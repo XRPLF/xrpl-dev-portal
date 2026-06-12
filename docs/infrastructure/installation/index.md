@@ -1,5 +1,5 @@
 ---
-html: install-rippled.html
+html: install-xrpld.html
 parent: infrastructure.html
 top_nav_name: Install & Configure
 metadata:

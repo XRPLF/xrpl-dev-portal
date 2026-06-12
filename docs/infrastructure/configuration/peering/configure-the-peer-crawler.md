@@ -80,7 +80,7 @@ To disable the peer crawler API on your server, so it does not respond to peer c
 - **Concepts:**
     - [Peer Protocol](../../../concepts/networks-and-servers/peer-protocol.md)
 - **Tutorials:**
-    - [Manage the rippled Server](../../installation/install-rippled-on-ubuntu.md)
+    - [Manage the xrpld Server](../../installation/install-xrpld-on-ubuntu.md)
 - **References:**
     - [server_info method][]
     - [peers method][]

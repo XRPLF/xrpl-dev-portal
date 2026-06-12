@@ -99,13 +99,13 @@ rippled server_info
 | `ports`                             | 配列        | サーバがAPIコマンドを待ち受けているポートの一覧。配列の各エントリは[ポート記述子オブジェクト](#ポート記述子オブジェクト) となります。 {% badge href="https://github.com/XRPLF/rippled/releases/tag/1.12.0" %}新規: rippled 1.12.0{% /badge %} |
 | `pubkey_node`                       | 文字列      | ピアツーピア通信の中でこのサーバを検証するために使用する公開鍵。この _ノードのキーペア_ は、サーバを初めて起動すると自動的に生成されます。（削除された場合、サーバは新たなキーペアを作成できます。）構成ファイルにて`[node_seed]`設定オプションを使用すると、永続値を設定できます。これは[クラスター化](../../../../concepts/networks-and-servers/clustering.md)に便利です。 |
 | `pubkey_validator`                  | 文字列      |  _（管理者のみ）_ このノードがレジャーの検証の署名に使用する公開鍵。この _検証キーペア_ は、`[validator_token]`または`[validation_seed]`設定フィールドにて生成されます。 |
-| `reporting`                         | オブジェクト | _([レポートモード](../../../../concepts/networks-and-servers/rippled-server-modes.md)サーバのみ)_ このサーバのレポートモード固有の設定に関する情報。 |
-| `reporting.etl_sources`             | 配列        | _([レポートモード](../../../../concepts/networks-and-servers/rippled-server-modes.md)サーバのみ)_ このレポートモードがデータを取得するP2Pモードサーバのリスト。この配列の各エントリは[ETLソースオブジェクト](#etlソースオブジェクト)です。 |
-| `reporting.is_writer`               | 真偽値      | _([レポートモード](../../../../concepts/networks-and-servers/rippled-server-modes.md)サーバのみ)_  `true`の場合、このサーバは外部データベースにレジャーデータを書き込んでいます。`false`の場合、他のレポートモードサーバが共有データベースにデータを書き込んでいるか、読み取り専用に設定されているため、現在は書き込んでいません。 |
-| `reporting.last_publish_time`       | 文字列      | _([レポートモード](../../../../concepts/networks-and-servers/rippled-server-modes.md)サーバのみ)_このサーバが最後に有効なレジャーを[サブスクリプションストリーム](../subscription-methods/subscribe.md)に公開した日時を示すISO 8601タイムスタンプ。 |
-| `server_state`                      | 文字列      | サーバのネットワークへの参加の度合いを示す文字列。詳細は、[考えられるサーバの状態](../../api-conventions/rippled-server-states.md)をご覧ください。 |
+| `reporting`                         | オブジェクト | _([レポートモード](../../../../concepts/networks-and-servers/xrpld-server-modes.md)サーバのみ)_ このサーバのレポートモード固有の設定に関する情報。 |
+| `reporting.etl_sources`             | 配列        | _([レポートモード](../../../../concepts/networks-and-servers/xrpld-server-modes.md)サーバのみ)_ このレポートモードがデータを取得するP2Pモードサーバのリスト。この配列の各エントリは[ETLソースオブジェクト](#etlソースオブジェクト)です。 |
+| `reporting.is_writer`               | 真偽値      | _([レポートモード](../../../../concepts/networks-and-servers/xrpld-server-modes.md)サーバのみ)_  `true`の場合、このサーバは外部データベースにレジャーデータを書き込んでいます。`false`の場合、他のレポートモードサーバが共有データベースにデータを書き込んでいるか、読み取り専用に設定されているため、現在は書き込んでいません。 |
+| `reporting.last_publish_time`       | 文字列      | _([レポートモード](../../../../concepts/networks-and-servers/xrpld-server-modes.md)サーバのみ)_このサーバが最後に有効なレジャーを[サブスクリプションストリーム](../subscription-methods/subscribe.md)に公開した日時を示すISO 8601タイムスタンプ。 |
+| `server_state`                      | 文字列      | サーバのネットワークへの参加の度合いを示す文字列。詳細は、[考えられるサーバの状態](../../api-conventions/xrpld-server-states.md)をご覧ください。 |
 | `server_state_duration_us`          | 数値        | サーバが現在の状態になってから経過したマイクロ秒数。 |
-| `state_accounting`                  | オブジェクト | 各種[サーバ状態](../../api-conventions/rippled-server-states.md)のマップと、サーバが各状態に費やした時間についての情報。これは、サーバのネットワーク接続について長期的な健全性を追跡するのに便利です。 |
+| `state_accounting`                  | オブジェクト | 各種[サーバ状態](../../api-conventions/xrpld-server-states.md)のマップと、サーバが各状態に費やした時間についての情報。これは、サーバのネットワーク接続について長期的な健全性を追跡するのに便利です。 |
 | `state_accounting.*.duration_us`    | 文字列      | サーバがこの状態になってから費やしたマイクロ秒数。（サーバが別の状態に移行するたびに更新されます。） |
 | `state_accounting.*.transitions`    | 文字列      | サーバがこの状態に移行した回数。 |
 | `time`                              | 文字列      | サーバの時計によるUTCでの現在時刻。 |

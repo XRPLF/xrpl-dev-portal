@@ -1,6 +1,6 @@
 ---
 html: system-requirements.html
-parent: install-rippled.html
+parent: install-xrpld.html
 seo:
     description: rippledのハードウェアやソフトウェアのシステム要件
 labels:

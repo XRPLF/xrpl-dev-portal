@@ -1,15 +1,15 @@
 ---
 seo:
-    description: Manually update rippled on Ubuntu Linux.
+    description: Manually update xrpld on Ubuntu Linux.
 labels:
   - Core Server
   - Security
 ---
 # Update Manually on Ubuntu or Debian
 
-This page describes how to manually update to the latest release of `rippled` on Ubuntu Linux. You can also set up [automatic updates](update-rippled-automatically-on-linux.md).
+This page describes how to manually update to the latest release of `xrpld` on Ubuntu Linux. You can also set up [automatic updates](update-xrpld-automatically-on-linux.md).
 
-These instructions assume you have already [installed `rippled` on a supported version of Ubuntu using Ripple's `deb` package](install-rippled-on-ubuntu.md). If you are upgrading from `rippled` 1.6.x or older, remove it and perform a fresh install instead.
+These instructions assume you have already [installed `xrpld` on a supported version of Ubuntu using Ripple's `deb` package](install-xrpld-on-ubuntu.md). If you are upgrading from `xrpld` 1.6.x or older, remove it and perform a fresh install instead.
 
 {% admonition type="success" name="Tip" %}To perform these steps all at once, you can run the `/opt/ripple/bin/update-rippled.sh` script, which is included with the `rippled` package and is compatible with Ubuntu and Debian. This script should be run as a `sudo` user.{% /admonition %}
 
@@ -21,7 +21,7 @@ To update manually, complete the following steps:
     sudo apt -y update
     ```
 
-2. Upgrade the `rippled` package:
+2. Upgrade the `xrpld` package:
 
     ```
     sudo apt -y upgrade rippled
@@ -43,13 +43,13 @@ To update manually, complete the following steps:
 ## See Also
 
 - **Concepts:**
-    - [The `rippled` Server](../../concepts/networks-and-servers/index.md)
+    - [The `xrpld` Server](../../concepts/networks-and-servers/index.md)
     - [Consensus](../../concepts/consensus-protocol/index.md)
 - **Tutorials:**
-    - [Troubleshoot rippled](../troubleshooting/index.md)
+    - [Troubleshoot xrpld](../troubleshooting/index.md)
 - **References:**
-    - [rippled API Reference](../../references/http-websocket-apis/index.md)
-        - [`rippled` Commandline Usage](../commandline-usage.md)
+    - [xrpld API Reference](../../references/http-websocket-apis/index.md)
+        - [`xrpld` Commandline Usage](../commandline-usage.md)
         - [server_info method][]
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

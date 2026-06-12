@@ -1,6 +1,6 @@
 ---
 html: install-clio-on-ubuntu.html
-parent: install-rippled.html
+parent: install-xrpld.html
 seo:
     description: Ubuntu Linuxにコンパイル済みのClioバイナリをインストールします。
 labels:

@@ -79,7 +79,7 @@ The [XRP Ledger Standard 11d](https://github.com/XRPLF/XRPL-Standards/discussion
 - **Concepts:**
     - [Consensus](../consensus-protocol/index.md)
 - **Tutorials:**
-    - [Run rippled as a Validator](../../infrastructure/configuration/server-modes/run-rippled-as-a-validator.md)
+    - [Run xrpld as a Validator](../../infrastructure/configuration/server-modes/run-xrpld-as-a-validator.md)
     - [Configure Amendment Voting](../../infrastructure/configuration/configure-amendment-voting.md)
     - [Contribute Code to the XRP Ledger](/resources/contribute-code/index.md)
 - **References:**

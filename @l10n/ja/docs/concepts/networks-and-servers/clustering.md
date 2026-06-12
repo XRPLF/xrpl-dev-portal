@@ -16,6 +16,6 @@ labels:
 
 バリデータを[プライベートピア](peer-protocol.md#プライベートピア)として実行している場合は、`rippled`サーバのクラスターをプロキシサーバとして使用することが推奨されます。
 
-クラスターでのサーバの設定方法に関するチュートリアルについては、[`rippled`サーバのクラスター化](../../infrastructure/configuration/peering/cluster-rippled-servers.md)をご覧ください。
+クラスターでのサーバの設定方法に関するチュートリアルについては、[`rippled`サーバのクラスター化](../../infrastructure/configuration/peering/cluster-xrpld-servers.md)をご覧ください。
 
 {% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

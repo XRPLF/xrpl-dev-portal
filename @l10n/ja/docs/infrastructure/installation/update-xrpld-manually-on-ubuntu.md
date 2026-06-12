@@ -1,6 +1,6 @@
 ---
-html: update-rippled-manually-on-ubuntu.html
-parent: install-rippled.html
+html: update-xrpld-manually-on-ubuntu.html
+parent: install-xrpld.html
 seo:
     description: Ubuntu Linuxでrippledを手動更新します。
 labels:
@@ -9,7 +9,7 @@ labels:
 ---
 # UbuntuまたはDebianでの手動更新
 
-このページでは、Ubuntu Linuxで最新リリースの`rippled`に手動で更新する手順を説明します。以下の手順は、[`rippled`がすでにネイティブパッケージを使用してインストール](install-rippled-on-ubuntu.md)されていることを前提としています。可能であれば手動更新ではなく[自動更新](update-rippled-automatically-on-linux.md)を設定することが推奨されます。
+このページでは、Ubuntu Linuxで最新リリースの`rippled`に手動で更新する手順を説明します。以下の手順は、[`rippled`がすでにネイティブパッケージを使用してインストール](install-xrpld-on-ubuntu.md)されていることを前提としています。可能であれば手動更新ではなく[自動更新](update-xrpld-automatically-on-linux.md)を設定することが推奨されます。
 
 手動で更新するには、以下の手順を実行します。
 

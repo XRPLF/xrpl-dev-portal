@@ -1,6 +1,6 @@
 ---
 html: fix-sqlite-tx-db-page-size-issue.html
-parent: troubleshoot-the-rippled-server.html
+parent: troubleshoot-the-xrpld-server.html
 seo:
     description: rippledバージョン0.40.0以前で起動された完全履歴サーバでのSQLiteのページサイズに関する問題を解決します。
 ---

@@ -1,6 +1,6 @@
 ---
 html: update-rippled-manually-on-centos-rhel.html
-parent: install-rippled.html
+parent: install-xrpld.html
 seo:
     description: CentOSまたはRed Hat Enterprise Linuxでrippledを手動更新します。
 labels:
@@ -9,9 +9,9 @@ labels:
 ---
 # CentOS/Red Hatでの手動更新
 
-このページでは、CentOSまたはRed Hat Enterprise Linuxで最新リリースの`rippled`に手動で更新する手順を説明します。可能であれば手動更新ではなく[自動更新](update-rippled-automatically-on-linux.md)を設定することが推奨されます。
+このページでは、CentOSまたはRed Hat Enterprise Linuxで最新リリースの`rippled`に手動で更新する手順を説明します。可能であれば手動更新ではなく[自動更新](update-xrpld-automatically-on-linux.md)を設定することが推奨されます。
 
-以下の手順は、[`rippled`がすでに`yum`リポジトリからインストール](install-rippled-on-rhel.md)されていることを前提としています。
+以下の手順は、[`rippled`がすでに`yum`リポジトリからインストール](install-xrpld-on-rhel.md)されていることを前提としています。
 
 {% admonition type="success" name="ヒント" %}これらの手順をすべて一度に実行するには、`rippled`パッケージに含まれている`/opt/ripple/bin/update-rippled.sh`スクリプトを実行します。このスクリプトは`sudo`ユーザとして実行する必要があります。{% /admonition %}
 

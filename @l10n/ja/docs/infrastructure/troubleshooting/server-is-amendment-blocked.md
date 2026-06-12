@@ -1,6 +1,6 @@
 ---
 html: server-is-amendment-blocked.html
-parent: troubleshoot-the-rippled-server.html
+parent: troubleshoot-the-xrpld-server.html
 seo:
     description: Amendmentによる変更を実行できないサーバのトラブルシューティング
 labels:

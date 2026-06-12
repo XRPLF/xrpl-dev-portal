@@ -1,12 +1,12 @@
 ---
 seo:
-    description: Learn about rippled server modes, including stock servers, validator servers, and rippled servers run in stand-alone mode.
+    description: Learn about xrpld server modes, including stock servers, validator servers, and xrpld servers run in stand-alone mode.
 labels:
   - Core Server
 ---
-# rippled Server Modes
+# xrpld Server Modes
 
-The `rippled` server software can run in several modes depending on its configuration, including:
+The `xrpld` server software can run in several modes depending on its configuration, including:
 
 - [**P2P Mode**](#p2p-mode) - This is the main mode of the server: it follows the peer-to-peer network, processes transactions, and maintains some amount of [ledger history](ledger-history.md). This mode can be configured to do any or all of the following roles:
     - [**Validator**](#validators) - Helps secure the network by participating in consensus.
@@ -14,14 +14,14 @@ The `rippled` server software can run in several modes depending on its configur
     - [**Hub Server**](#public-hubs) - Relays messages between many other members of the peer-to-peer network.
 - [**Stand-alone mode**](#stand-alone-mode) - An offline mode for testing. Does not connect to the peer-to-peer network or use consensus.
 
-You can also run the `rippled` executable as a client application for accessing [`rippled` APIs](../../references/http-websocket-apis/index.md) locally. (Two instances of the same binary can run side-by-side in this case; one as a server, and the other running briefly as a client and then terminating.)
+You can also run the `xrpld` executable as a client application for accessing [`xrpld` APIs](../../references/http-websocket-apis/index.md) locally. (Two instances of the same binary can run side-by-side in this case; one as a server, and the other running briefly as a client and then terminating.)
 
-For information on the commands to run `rippled` in each of these modes, see the [Commandline Reference](../../infrastructure/commandline-usage.md).
+For information on the commands to run `xrpld` in each of these modes, see the [Commandline Reference](../../infrastructure/commandline-usage.md).
 
 
 ## P2P Mode
 
-P2P Mode is the main and default mode of the `rippled` server, and it can handle almost anything you might want your server to do. These servers form a peer-to-peer network that processes transactions and maintains the shared state of the XRP Ledger. If you want to submit transactions, read ledger data, or otherwise participate in the network, your requests must go through a P2P Mode server at some point.
+P2P Mode is the main and default mode of the `xrpld` server, and it can handle almost anything you might want your server to do. These servers form a peer-to-peer network that processes transactions and maintains the shared state of the XRP Ledger. If you want to submit transactions, read ledger data, or otherwise participate in the network, your requests must go through a P2P Mode server at some point.
 
 P2P Mode servers can be further configured to provide additional functionality. A server running in P2P Mode with a minimally-modified config file is also called a _stock server_. Other configurations include:
 
@@ -60,9 +60,9 @@ The robustness of the XRP Ledger depends on an interconnected web of _validators
 
 Validation uses only a small amount of computing resources, but there is not much benefit to a single entity or organization running multiple validators because doing so does not provide more protections against collusion. Each validator identifies itself with a unique cryptographic key pair that must be carefully managed; multiple validators must not share a key pair. For these reasons, validation is disabled by default.
 
-You can safely enable validation on a server that is also used for other purposes; this type of configuration is called an _all-purpose server_. Alternatively, you can run a _dedicated validator_ that does not perform other tasks, possibly in a [cluster](clustering.md) with other P2P Mode `rippled` servers.
+You can safely enable validation on a server that is also used for other purposes; this type of configuration is called an _all-purpose server_. Alternatively, you can run a _dedicated validator_ that does not perform other tasks, possibly in a [cluster](clustering.md) with other P2P Mode `xrpld` servers.
 
-For more information about running a validator, see [Run `rippled` as a Validator](../../infrastructure/configuration/server-modes/run-rippled-as-a-validator.md).
+For more information about running a validator, see [Run `xrpld` as a Validator](../../infrastructure/configuration/server-modes/run-xrpld-as-a-validator.md).
 
 
 ## Stand-Alone Mode
@@ -77,7 +77,7 @@ In stand-alone mode, the server operates without connecting to the network and p
 ## See Also
 
 - **Tutorials:**
-    - [Configure `rippled`](../../infrastructure/configuration/index.md)
-    - [Use rippled in Stand-Alone Mode](../../infrastructure/testing-and-auditing/index.md)
+    - [Configure `xrpld`](../../infrastructure/configuration/index.md)
+    - [Use xrpld in Stand-Alone Mode](../../infrastructure/testing-and-auditing/index.md)
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

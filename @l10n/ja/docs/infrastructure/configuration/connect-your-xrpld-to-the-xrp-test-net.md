@@ -1,6 +1,6 @@
 ---
-html: connect-your-rippled-to-the-xrp-test-net.html
-parent: configure-rippled.html
+html: connect-your-xrpld-to-the-xrp-test-net.html
+parent: configure-xrpld.html
 seo:
     description: rippledサーバをTest Netに接続して、模造の資金を使って新しい機能を試したり、機能をテストしたりします。
 labels:
@@ -199,7 +199,7 @@ WebSocketツールの[server_info](/resources/dev-tools/websocket-api-tool#serve
     - [並列ネットワーク](../../concepts/networks-and-servers/parallel-networks.md)
     - [コンセンサス](../../concepts/consensus-protocol/index.md)
 - **チュートリアル:**
-    - [バリデータとしてのrippledの実行](server-modes/run-rippled-as-a-validator.md)
+    - [バリデータとしてのrippledの実行](server-modes/run-xrpld-as-a-validator.md)
     - [オフラインで`rippled`をスタンドアロンモードでテストする](../testing-and-auditing/index.md)
     - [`rippled`のトラブルシューティング](../troubleshooting/index.md)
 - **References:**

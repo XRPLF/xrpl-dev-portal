@@ -81,7 +81,7 @@ Amendmentを有効にすると、修正前の動作のソースコードは`ripp
 - **コンセプト:**
     - [コンセンサスについて](../consensus-protocol/index.md)
 - **チュートリアル:**
-    - [バリデータとしてrippledを実行](../../infrastructure/configuration/server-modes/run-rippled-as-a-validator.md)
+    - [バリデータとしてrippledを実行](../../infrastructure/configuration/server-modes/run-xrpld-as-a-validator.md)
     - [Amendment投票機能の設定](../../infrastructure/configuration/configure-amendment-voting.md)
     - [XRP Ledgerのコードへの貢献](/resources/contribute-code/index.md)
 - **リファレンス:**

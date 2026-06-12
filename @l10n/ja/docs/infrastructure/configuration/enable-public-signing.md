@@ -1,6 +1,6 @@
 ---
 html: enable-public-signing.html
-parent: configure-rippled.html
+parent: configure-xrpld.html
 seo:
     description: 他の人があなたのサーバを使ってトランザクションに署名できるようにします。（非推奨）
 labels:

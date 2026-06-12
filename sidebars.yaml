@@ -52,7 +52,7 @@
         - page: docs/concepts/networks-and-servers/index.md
           expanded: false
           items:
-            - page: docs/concepts/networks-and-servers/rippled-server-modes.md
+            - page: docs/concepts/networks-and-servers/xrpld-server-modes.md
             - page: docs/concepts/networks-and-servers/clustering.md
             - page: docs/concepts/networks-and-servers/ledger-history.md
             - page: docs/concepts/networks-and-servers/peer-protocol.md
@@ -530,7 +530,7 @@
                 - page: docs/references/http-websocket-apis/api-conventions/error-formatting.md
                 - page: docs/references/http-websocket-apis/api-conventions/markers-and-pagination.md
                 - page: docs/references/http-websocket-apis/api-conventions/rate-limiting.md
-                - page: docs/references/http-websocket-apis/api-conventions/rippled-server-states.md
+                - page: docs/references/http-websocket-apis/api-conventions/xrpld-server-states.md
                 - page: docs/references/http-websocket-apis/api-conventions/ctid.md
                 - page: docs/references/http-websocket-apis/api-conventions/ledger-entry-short-names.md
             - page: docs/references/http-websocket-apis/public-api-methods/index.md
@@ -683,12 +683,12 @@
           expanded: false
           items:
             - page: docs/infrastructure/installation/system-requirements.md
-            - page: docs/infrastructure/installation/install-rippled-on-rhel.md
-            - page: docs/infrastructure/installation/install-rippled-on-ubuntu.md
+            - page: docs/infrastructure/installation/install-xrpld-on-rhel.md
+            - page: docs/infrastructure/installation/install-xrpld-on-ubuntu.md
             - page: docs/infrastructure/installation/install-clio-on-ubuntu.md
-            - page: docs/infrastructure/installation/update-rippled-automatically-on-linux.md
-            - page: docs/infrastructure/installation/update-rippled-manually-on-rhel.md
-            - page: docs/infrastructure/installation/update-rippled-manually-on-ubuntu.md
+            - page: docs/infrastructure/installation/update-xrpld-automatically-on-linux.md
+            - page: docs/infrastructure/installation/update-xrpld-manually-on-rhel.md
+            - page: docs/infrastructure/installation/update-xrpld-manually-on-ubuntu.md
             - page: docs/infrastructure/installation/build-on-linux-mac-windows.md
             - page: docs/infrastructure/installation/capacity-planning.md
         - page: docs/infrastructure/configuration/index.md
@@ -697,8 +697,8 @@
             - page: docs/infrastructure/configuration/server-modes/index.md
               expanded: false
               items:
-                - page: docs/infrastructure/configuration/server-modes/run-rippled-as-a-validator.md
-                - page: docs/infrastructure/configuration/server-modes/run-rippled-as-a-stock-server.md
+                - page: docs/infrastructure/configuration/server-modes/run-xrpld-as-a-validator.md
+                - page: docs/infrastructure/configuration/server-modes/run-xrpld-as-a-stock-server.md
             - page: docs/infrastructure/configuration/data-retention/index.md
               expanded: false
               items:
@@ -709,7 +709,7 @@
             - page: docs/infrastructure/configuration/peering/index.md
               expanded: false
               items:
-                - page: docs/infrastructure/configuration/peering/cluster-rippled-servers.md
+                - page: docs/infrastructure/configuration/peering/cluster-xrpld-servers.md
                 - page: docs/infrastructure/configuration/peering/configure-a-private-server.md
                 - page: docs/infrastructure/configuration/peering/configure-the-peer-crawler.md
                 - page: docs/infrastructure/configuration/peering/enable-link-compression.md
@@ -720,7 +720,7 @@
             - page: docs/infrastructure/configuration/configure-amendment-voting.md
             - page: docs/infrastructure/configuration/configure-statsd.md
             - page: docs/infrastructure/configuration/configure-validator-list-threshold.md
-            - page: docs/infrastructure/configuration/connect-your-rippled-to-the-xrp-test-net.md
+            - page: docs/infrastructure/configuration/connect-your-xrpld-to-the-xrp-test-net.md
             - page: docs/infrastructure/configuration/configure-grpc.md
             - page: docs/infrastructure/configuration/enable-public-signing.md
         - page: docs/infrastructure/testing-and-auditing/index.md

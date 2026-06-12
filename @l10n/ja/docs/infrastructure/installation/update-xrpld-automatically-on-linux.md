@@ -1,6 +1,6 @@
 ---
-html: update-rippled-automatically-on-linux.html
-parent: install-rippled.html
+html: update-xrpld-automatically-on-linux.html
+parent: install-xrpld.html
 seo:
     description: Linuxでrippledの自動更新を設定します。
 labels:
@@ -11,11 +11,11 @@ labels:
 
 Linuxでは、`rippled`が1回限りの`cron`構成を使用して最新バージョンに自動的にアップグレードされるように設定できます。可能であれば自動更新を有効にしておくことが推奨されます。
 
-以下の手順では、`rippled`が[`yum`リポジトリから（CentOS/RedHat）](install-rippled-on-rhel.md)、または[`apt`（Ubuntu/Debian）を使用して](install-rippled-on-ubuntu.md)インストールされていることを前提としています。
+以下の手順では、`rippled`が[`yum`リポジトリから（CentOS/RedHat）](install-xrpld-on-rhel.md)、または[`apt`（Ubuntu/Debian）を使用して](install-xrpld-on-ubuntu.md)インストールされていることを前提としています。
 
 自動更新を設定するには、以下の手順に従います。
 
-1. `/opt/ripple/etc/update-rippled-cron`が存在することを確認します。存在しない場合は、（[CentOS/Red Hat](update-rippled-manually-on-rhel.md)または[Ubuntu/Debian](update-rippled-manually-on-ubuntu.md)を）手動で更新します。
+1. `/opt/ripple/etc/update-rippled-cron`が存在することを確認します。存在しない場合は、（[CentOS/Red Hat](update-xrpld-manually-on-rhel.md)または[Ubuntu/Debian](update-xrpld-manually-on-ubuntu.md)を）手動で更新します。
 
 2. `cron.d`フォルダーに、`/opt/ripple/etc/update-rippled-cron`構成ファイルへのsymlinkを作成します。
 

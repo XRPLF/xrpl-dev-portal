@@ -26,7 +26,7 @@ Typically, a server needs to connect to a public hub only once, for a short amou
 
 The [peers method][] shows a list of peers your server is currently connected to.
 
-For certain high-value servers (such as important [validators](rippled-server-modes.md#rippled-server-modes)) you may prefer not to have your server connect to untrusted peers through the peer discovery process. In this case, you can configure your server to use [private peers](#private-peers) only.
+For certain high-value servers (such as important [validators](xrpld-server-modes.md#xrpld-server-modes)) you may prefer not to have your server connect to untrusted peers through the peer discovery process. In this case, you can configure your server to use [private peers](#private-peers) only.
 
 
 ## Peer Protocol Port
@@ -56,7 +56,7 @@ When a server first starts up, it generates a _node key pair_ to use to identify
 
 The node key pair is saved in the database and reused when the server restarts. If you delete the server's databases, it creates a new node key pair, effectively coming online with a different identity. To reuse the same key pair even if the databases are deleted, you can configure the server with a `[node_seed]` stanza. To generate a value suitable for use in the `[node_seed]` stanza, use the [validation_create method][].
 
-The node key pair also identifies other servers for purposes of [clustering](clustering.md) or [reserving peer slots](#fixed-peers-and-peer-reservations). If you have a cluster of servers, you should configure each server in the cluster with a unique `[node_seed]` setting. For more information on setting up a cluster, see [Cluster `rippled` Servers](../../infrastructure/configuration/peering/cluster-rippled-servers.md).
+The node key pair also identifies other servers for purposes of [clustering](clustering.md) or [reserving peer slots](#fixed-peers-and-peer-reservations). If you have a cluster of servers, you should configure each server in the cluster with a unique `[node_seed]` setting. For more information on setting up a cluster, see [Cluster `xrpld` Servers](../../infrastructure/configuration/peering/cluster-xrpld-servers.md).
 
 
 ## Fixed Peers and Peer Reservations
@@ -155,7 +155,7 @@ To configure your server as a private server, set the `[peer_private]` setting t
     - [Consensus](../consensus-protocol/index.md)
     - [Parallel Networks](parallel-networks.md)
 - **Tutorials:**
-    - [Cluster rippled Servers](../../infrastructure/configuration/peering/cluster-rippled-servers.md)
+    - [Cluster xrpld Servers](../../infrastructure/configuration/peering/cluster-xrpld-servers.md)
     - [Configure a Private Server](../../infrastructure/configuration/peering/configure-a-private-server.md)
     - [Configure the Peer Crawler](../../infrastructure/configuration/peering/configure-the-peer-crawler.md)
     - [Forward Ports for Peering](../../infrastructure/configuration/peering/forward-ports-for-peering.md)

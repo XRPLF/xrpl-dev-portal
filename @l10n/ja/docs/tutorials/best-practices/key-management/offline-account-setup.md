@@ -33,7 +33,7 @@ labels:
 
 XRP Ledgerで署名するためのソフトウェアオプションは次のとおりです。
 
-- パッケージ（`.deb`または`.rpm`。使用するLinuxディストリビューションによって異なる）ファイルから[`rippled`をインストール](../../../infrastructure/installation/index.md)し、[スタンドアロンモードで実行します](../../../concepts/networks-and-servers/rippled-server-modes.md)。
+- パッケージ（`.deb`または`.rpm`。使用するLinuxディストリビューションによって異なる）ファイルから[`rippled`をインストール](../../../infrastructure/installation/index.md)し、[スタンドアロンモードで実行します](../../../concepts/networks-and-servers/xrpld-server-modes.md)。
 - [xrpl.js](https://github.com/XRPLF/xrpl.js/)とその依存関係をオフラインでインストールします。例えば、Yarn Package Managerでは、[オフラインでの使用に関して推奨される手順](https://yarnpkg.com/blog/2016/11/24/offline-mirror/)があります。
 - 関連項目: [安全な署名の設定](../../../concepts/transactions/secure-signing.md)
 

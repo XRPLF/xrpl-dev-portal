@@ -1,6 +1,6 @@
 ---
 html: configure-statsd.html
-parent: configure-rippled.html
+parent: configure-xrpld.html
 seo:
     description: Monitor your xrpld server with StatsD metrics.
 labels:

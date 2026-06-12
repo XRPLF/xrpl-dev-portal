@@ -80,7 +80,7 @@ labels:
 - **コンセプト:**
     - [ピアプロトコル](../../../concepts/networks-and-servers/peer-protocol.md)
 - **チュートリアル:**
-    - [rippledサーバの管理](../../installation/install-rippled-on-ubuntu.md)
+    - [rippledサーバの管理](../../installation/install-xrpld-on-ubuntu.md)
 - **リファレンス:**
     - [server_infoメソッド][]
     - [peersメソッド][]

@@ -1,6 +1,6 @@
 ---
 html: install-rippled-on-centos-rhel-with-yum.html
-parent: install-rippled.html
+parent: install-xrpld.html
 seo:
     description: プリコンパイル済みのrippledバイナリーをCentOSまたはRed Hat Enterprise Linuxにインストールします。
 labels:
@@ -69,7 +69,7 @@ labels:
 
 ## 次のステップ
 
-{% partial file="/@l10n/ja/docs/_snippets/post-rippled-install.md" /%}
+{% partial file="/@l10n/ja/docs/_snippets/post-xrpld-install.md" /%}
 
 
 ## 関連項目

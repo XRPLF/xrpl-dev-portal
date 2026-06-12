@@ -1,6 +1,6 @@
 ---
 html: test-amendments.html
-parent: configure-rippled.html
+parent: configure-xrpld.html
 seo:
     description: ネットワーク上で有効になる前に、Amendmentをテストすることができます。
 labels:

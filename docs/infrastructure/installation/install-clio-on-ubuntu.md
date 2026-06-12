@@ -1,6 +1,6 @@
 ---
 html: install-clio-on-ubuntu.html
-parent: install-rippled.html
+parent: install-xrpld.html
 seo:
     description: Install a precompiled Clio binary on Ubuntu Linux.
 labels:

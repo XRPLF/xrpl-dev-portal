@@ -1,6 +1,6 @@
 ---
 html: configure-amendment-voting.html
-parent: configure-rippled.html
+parent: configure-xrpld.html
 seo:
     description: プロトコル修正に伴うサーバの投票を設定する。
 labels:

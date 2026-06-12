@@ -61,11 +61,11 @@ To enable gRPC on your server, complete the following steps:
 
 - **Concepts:**
     - [XRP Ledger Overview](/about/)
-    - [`rippled` Server Modes](../../concepts/networks-and-servers/rippled-server-modes.md)
+    - [`xrpld` Server Modes](../../concepts/networks-and-servers/xrpld-server-modes.md)
 - **Tutorials:**
     - [Get Started Using HTTP / WebSocket APIs](../../tutorials/get-started/get-started-http-websocket-apis.md)
     - [Reliable Transaction Submission](../../concepts/transactions/reliable-transaction-submission.md)
-    - [Manage the rippled Server](../installation/install-rippled-on-ubuntu.md)
+    - [Manage the xrpld Server](../installation/install-xrpld-on-ubuntu.md)
 - **References:**
     - [HTTP / WebSocket API Reference](../../references/http-websocket-apis/index.md)
 

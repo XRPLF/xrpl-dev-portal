@@ -1,6 +1,6 @@
 ---
 html: server-doesnt-sync.html
-parent: troubleshoot-the-rippled-server.html
+parent: troubleshoot-the-xrpld-server.html
 seo:
     description: rippledサーバがXRP Ledgerの他の部分と同期できない問題のトラブルシューティング。
 labels:
@@ -8,7 +8,7 @@ labels:
 ---
 # rippledサーバが同期しない
 
-このページでは、[`rippled`サーバ](../../concepts/networks-and-servers/index.md)が正常に起動したのに、ネットワークに完全に接続できずに[「connected」状態](../../references/http-websocket-apis/api-conventions/rippled-server-states.md)のままになっている場合の原因について説明します。（サーバが起動中または起動直後にクラッシュした場合は、[サーバが起動しない](server-wont-start.md)をご覧ください。）
+このページでは、[`rippled`サーバ](../../concepts/networks-and-servers/index.md)が正常に起動したのに、ネットワークに完全に接続できずに[「connected」状態](../../references/http-websocket-apis/api-conventions/xrpld-server-states.md)のままになっている場合の原因について説明します。（サーバが起動中または起動直後にクラッシュした場合は、[サーバが起動しない](server-wont-start.md)をご覧ください。）
 
 以下の手順では、サポートされているプラットフォームに[`rippled`がインストール](../installation/index.md)されていることを前提としています。
 
@@ -30,7 +30,7 @@ labels:
 
 多くの同期の問題は、サーバを再起動することで解決できます。最初に同期が失敗した原因がどのようなものであっても、2回目では成功する場合があります。
 
-[server_infoメソッド][]で[`server_state`](../../references/http-websocket-apis/api-conventions/rippled-server-states.md)が`proposing`または`full`以外の状態であると示され、`server_state_duration_us`が`900000000`（15分のマイクロ秒表記）より大きい場合は、`rippled`サービスをシャットダウンしてから数秒間待ち、再起動してください。場合によっては、マシン全体を再起動します。
+[server_infoメソッド][]で[`server_state`](../../references/http-websocket-apis/api-conventions/xrpld-server-states.md)が`proposing`または`full`以外の状態であると示され、`server_state_duration_us`が`900000000`（15分のマイクロ秒表記）より大きい場合は、`rippled`サービスをシャットダウンしてから数秒間待ち、再起動してください。場合によっては、マシン全体を再起動します。
 
 問題が解決しない場合は、このページに記載されている他の原因を確認してください。いずれも当てはまらないと思われる場合は、[`rippled`リポジトリに問題を登録](https://github.com/XRPLF/rippled/issues)し、「Syncing issue」ラベルを追加します。
 

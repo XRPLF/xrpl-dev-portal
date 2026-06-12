@@ -9,7 +9,7 @@ labels:
 
 Fee voting is a system for adjusting the fees of using the XRP Ledger, specifically the base [transaction cost](../transactions/transaction-cost.md) and [reserve requirements](../accounts/reserves.md). The purpose of the fees is to protect the network from spam, so fee voting decisions must weigh competing priorities of making the network accessible to more users and use cases versus protecting the network from misuse or overuse. Changes must be made periodically to adjust to long-term changes in the value of XRP and the costs and capabilities of network nodes.
 
-[Validator](../../infrastructure/configuration/server-modes/run-rippled-as-a-validator.md) operators can set their preferred fee settings in the `[voting]` stanza of the `xrpld.cfg` file. Each validator periodically expresses its preferences to the network, about once every 15 minutes. The network automatically adjusts the fee settings to the median of trusted validators' preferences.
+[Validator](../../infrastructure/configuration/server-modes/run-xrpld-as-a-validator.md) operators can set their preferred fee settings in the `[voting]` stanza of the `xrpld.cfg` file. Each validator periodically expresses its preferences to the network, about once every 15 minutes. The network automatically adjusts the fee settings to the median of trusted validators' preferences.
 
 {% admonition type="warning" name="Caution" %}Insufficient requirements, if adopted by a consensus of trusted validators (>50%), could expose the XRP Ledger peer-to-peer network to denial-of-service attacks.{% /admonition %}
 

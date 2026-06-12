@@ -27,7 +27,7 @@ Cada altnet tiene su propia distribución separada de XRP de prueba, que se [reg
 
 El factor principal en determinar qué red sigue un servidor es su UNL configurado-la lista de validadores en los que confía para no colisionar. Cada servidor utiliza su UNL configurada para saber qué ledger aceptar como la verdad. Cuando diferentes grupos de consenso de instancias de `rippled` solo confían en otros miembros del mismo grupo, cada grupo continúa como una red paralela. Incluso si equipos maliciosos o malintencionados se conectan a ambas redes, el proceso de consenso evita la confusión siempre y cuando los miembros de cada red no estén configurados para confiar en miembros de otra red en exceso de su configuración de cuórum.
 
-Ripple ejecuta los servidores principales en la Testnet y Devnet; también puedes [conectar tu propio servidor `rippled` para estas redes](../../infrastructure/configuration/connect-your-rippled-to-the-xrp-test-net.md). La Testnet y Devnet no utilizan conjuntos de validadores diversos y resistentes a la censura. Esto hace posible que Ripple reinicie la Testnet o Devnet en cualquier momento.
+Ripple ejecuta los servidores principales en la Testnet y Devnet; también puedes [conectar tu propio servidor `rippled` para estas redes](../../infrastructure/configuration/connect-your-xrpld-to-the-xrp-test-net.md). La Testnet y Devnet no utilizan conjuntos de validadores diversos y resistentes a la censura. Esto hace posible que Ripple reinicie la Testnet o Devnet en cualquier momento.
 
 
 ## Ver también
@@ -38,7 +38,7 @@ Ripple ejecuta los servidores principales en la Testnet y Devnet; también puede
     - [Consenso](../consensus-protocol/index.md)
     - [Enmiendas](amendments.md)
 - **Tutoriales:**
-    - [Conectar tu `rippled` en laTestnet XRP](../../infrastructure/configuration/connect-your-rippled-to-the-xrp-test-net.md)
+    - [Conectar tu `rippled` en laTestnet XRP](../../infrastructure/configuration/connect-your-xrpld-to-the-xrp-test-net.md)
     - [Usar rippled en modo Stand-Alone](../../infrastructure/testing-and-auditing/index.md)
 - **Referencias:**
     - [método server_info][]

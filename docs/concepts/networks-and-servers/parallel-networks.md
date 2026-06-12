@@ -29,7 +29,7 @@ Each altnet has its own separate supply of test XRP, which is [given away for fr
 
 The main factor in determining which network a server follows is its configured UNL—the list of validators it trusts not to collude. Each server uses its configured UNL to know which ledger to accept as the truth. When different consensus groups of `xrpld` instances only trust other members of the same group, each group continues as a parallel network. Even if malicious or misbehaving computers connect to both networks, the consensus process avoids confusion as long as the members of each network are not configured to trust members of another network in excess of their quorum settings.
 
-Ripple runs the main servers in the Testnet and Devnet; you can also [connect your own `xrpld` server to these networks](../../infrastructure/configuration/connect-your-rippled-to-the-xrp-test-net.md). The Testnet and Devnet do not use diverse, censorship-resistant sets of validators. This makes it possible for Ripple to reset the Testnet or Devnet at any time.
+Ripple runs the main servers in the Testnet and Devnet; you can also [connect your own `xrpld` server to these networks](../../infrastructure/configuration/connect-your-xrpld-to-the-xrp-test-net.md). The Testnet and Devnet do not use diverse, censorship-resistant sets of validators. This makes it possible for Ripple to reset the Testnet or Devnet at any time.
 
 
 ## See Also
@@ -40,7 +40,7 @@ Ripple runs the main servers in the Testnet and Devnet; you can also [connect yo
     - [Consensus](../consensus-protocol/index.md)
     - [Amendments](amendments.md)
 - **Tutorials:**
-    - [Connect Your `rippled` to the XRP Testnet](../../infrastructure/configuration/connect-your-rippled-to-the-xrp-test-net.md)
+    - [Connect Your `xrpld` to the XRP Testnet](../../infrastructure/configuration/connect-your-xrpld-to-the-xrp-test-net.md)
     - [Use xrpld in Stand-Alone Mode](../../infrastructure/testing-and-auditing/index.md)
 - **References:**
     - [server_info method][]

@@ -461,7 +461,7 @@
 [sign_for command]: /docs/references/http-websocket-apis/admin-api-methods/signing-methods/sign_for.md
 [sign_for method]: /docs/references/http-websocket-apis/admin-api-methods/signing-methods/sign_for.md
 [simulate method]: /docs/references/http-websocket-apis/public-api-methods/transaction-methods/simulate.md
-[stand-alone mode]: /docs/concepts/networks-and-servers/rippled-server-modes.md#stand-alone-mode
+[stand-alone mode]: /docs/concepts/networks-and-servers/xrpld-server-modes.md#stand-alone-mode
 [standard format]: /docs/references/http-websocket-apis/api-conventions/response-formatting.md
 [String Number]: /docs/references/protocol/data-types/currency-formats#string-numbers
 [stop command]: /docs/references/http-websocket-apis/admin-api-methods/server-control-methods/stop.md

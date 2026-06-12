@@ -115,7 +115,7 @@ To configure your server to acquire and store full history, complete the followi
 
 - **Concepts:**
     - [Ledger History](../../../concepts/networks-and-servers/ledger-history.md)
-    - [rippled Server Modes](../../../concepts/networks-and-servers/rippled-server-modes.md)
+    - [xrpld Server Modes](../../../concepts/networks-and-servers/xrpld-server-modes.md)
 - **Tutorials:**
     - [Capacity Planning](../../installation/capacity-planning.md), particularly [Disk Space](../../installation/capacity-planning.md#disk-space)
     - [Configure Online Deletion](configure-online-deletion.md)

@@ -1,5 +1,5 @@
 ---
-html: configure-rippled.html
+html: configure-xrpld.html
 parent: infrastructure.html
 metadata:
   indexPage: true

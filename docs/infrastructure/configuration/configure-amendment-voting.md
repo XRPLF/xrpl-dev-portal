@@ -1,6 +1,6 @@
 ---
 html: configure-amendment-voting.html
-parent: configure-rippled.html
+parent: configure-xrpld.html
 seo:
     description: Set your server's votes on protocol amendments.
 labels:

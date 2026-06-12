@@ -1,5 +1,5 @@
 ---
-html: install-rippled.html
+html: install-xrpld.html
 parent: infrastructure.html
 metadata:
   indexPage: true

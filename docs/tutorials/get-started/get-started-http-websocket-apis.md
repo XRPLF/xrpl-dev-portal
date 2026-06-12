@@ -94,7 +94,7 @@ Read more: [Commandline Usage Reference >](../../infrastructure/commandline-usag
 For a full list of API methods, see:
 
 - [Public `xrpld` Methods](../../references/http-websocket-apis/public-api-methods/index.md): Methods available on public servers, including looking up data from the ledger and submitting transactions.
-- [Admin `rippled` Methods](../../references/http-websocket-apis/admin-api-methods/index.md): Methods for [managing](../../infrastructure/installation/install-rippled-on-ubuntu.md) the `xrpld` server.
+- [Admin `xrpld` Methods](../../references/http-websocket-apis/admin-api-methods/index.md): Methods for [managing](../../infrastructure/installation/install-xrpld-on-ubuntu.md) the `xrpld` server.
 
 
 ## See Also
@@ -106,7 +106,7 @@ For a full list of API methods, see:
 - **Tutorials:**
     - [Get Started Using JavaScript](./get-started-javascript.md)
     - [Reliable Transaction Submission](../../concepts/transactions/reliable-transaction-submission.md)
-    - [Manage the rippled Server](../../infrastructure/installation/install-rippled-on-ubuntu.md)
+    - [Manage the xrpld Server](../../infrastructure/installation/install-xrpld-on-ubuntu.md)
 - **References:**
     - [xrpld API Reference](../../references/http-websocket-apis/index.md)
 

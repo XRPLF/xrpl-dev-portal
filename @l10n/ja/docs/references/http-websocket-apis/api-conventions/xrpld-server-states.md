@@ -1,5 +1,5 @@
 ---
-html: rippled-server-states.html
+html: xrpld-server-states.html
 parent: api-conventions.html
 seo:
     description: 一部のAPIメソッドで報告される状態情報の定義です。

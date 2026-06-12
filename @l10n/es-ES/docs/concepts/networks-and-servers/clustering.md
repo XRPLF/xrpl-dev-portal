@@ -19,8 +19,8 @@ Si estás ejecutando un validador como un [par privado](peer-protocol.md#pares-p
 ## Ver también
 
 - **Tutoriales:**
-    - [Cluster de servidores `rippled`](../../infrastructure/configuration/peering/cluster-rippled-servers.md)
-    - [Ejecutar rippled como validador](../../infrastructure/configuration/server-modes/run-rippled-as-a-validator.md)
+    - [Cluster de servidores `rippled`](../../infrastructure/configuration/peering/cluster-xrpld-servers.md)
+    - [Ejecutar rippled como validador](../../infrastructure/configuration/server-modes/run-xrpld-as-a-validator.md)
 - **Referencias:**
     - [método peers][]
     - [método connect][]

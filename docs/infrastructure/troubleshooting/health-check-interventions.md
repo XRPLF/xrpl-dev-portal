@@ -1,6 +1,6 @@
 ---
 html: health-check-interventions.html
-parent: troubleshoot-the-rippled-server.html
+parent: troubleshoot-the-xrpld-server.html
 seo:
     description: Use the xrpld server's health check as part of automated infrastructure monitoring.
 labels:
@@ -44,7 +44,7 @@ The following sections suggest some common interventions you may want to attempt
 
 ### Redirect Traffic
 
-A common reliability technique is to run a pool of redundant servers through one or more load-balancing proxies. You can do this with `xrpld` servers, but should not do this with [validators](../../concepts/networks-and-servers/rippled-server-modes.md). In some cases, the load balancers can monitor the health of servers in their pools and direct traffic only to the servers that are currently reporting themselves as healthy. This allows servers to recover from being temporarily overloaded and automatically rejoin the pool of active servers.
+A common reliability technique is to run a pool of redundant servers through one or more load-balancing proxies. You can do this with `xrpld` servers, but should not do this with [validators](../../concepts/networks-and-servers/xrpld-server-modes.md). In some cases, the load balancers can monitor the health of servers in their pools and direct traffic only to the servers that are currently reporting themselves as healthy. This allows servers to recover from being temporarily overloaded and automatically rejoin the pool of active servers.
 
 Redirecting traffic away from a server that is unhealthy is an appropriate response, especially for servers that report a `health` status of `warning`. Servers in the `critical` range may need more significant interventions.
 

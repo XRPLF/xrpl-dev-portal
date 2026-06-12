@@ -34,7 +34,7 @@ By default, a new genesis ledger has no [amendments](../../concepts/networks-and
 
 - **Concepts:**
     - [The `xrpld` Server](../../concepts/networks-and-servers/index.md)
-        - [`rippled` Server Modes](../../concepts/networks-and-servers/rippled-server-modes.md)
+        - [`xrpld` Server Modes](../../concepts/networks-and-servers/xrpld-server-modes.md)
     - [Parallel Networks](../../concepts/networks-and-servers/parallel-networks.md)
     - [Amendments](../../concepts/networks-and-servers/amendments.md)
     - [Fee Voting](../../concepts/consensus-protocol/fee-voting.md)

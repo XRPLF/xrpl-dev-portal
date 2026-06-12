@@ -28,7 +28,7 @@ Normalmente, un servidor necesita conectarse a un hub público solo una vez, dur
 
 El [método peers][] muestra una lista de pares a los que tu servidor está actualmente conectado.
 
-Para ciertos servidores de alto valor (tan importantes como [validadores](rippled-server-modes.md#modos-de-servidor-rippled)) puedes preferir no conectarte a pares no confiables a través del proceso de descubrimiento de pares. En este caso, puedes configurar tu servidor para usar solo [pares privados](#pares-privados).
+Para ciertos servidores de alto valor (tan importantes como [validadores](xrpld-server-modes.md#modos-de-servidor-rippled)) puedes preferir no conectarte a pares no confiables a través del proceso de descubrimiento de pares. En este caso, puedes configurar tu servidor para usar solo [pares privados](#pares-privados).
 
 
 ## Puerto del protocolo de pares
@@ -56,7 +56,7 @@ Cuando un servidor se inicia por primera vez, genera un _par de claves de nodo_ 
 
 El par de claves de nodo se guarda en la base de datos y se reutiliza cuando el servidor se reinicia. Si eliminas las bases de datos del servidor, crea un nuevo par de claves de nodo, lo que efectivamente le hace iniciar con una identidad diferente. Para reutilizar el mismo par de claves incluso si las bases de datos se eliminan, puedes configurar el servidor en el apartado `[node_seed]`. Para generar un valor adecuado para usar en el apartado `[node_seed]`, utiliza el [método validation_create][].
 
-El par de claves de nodo también identifican otros servidores para propositos de [clustering](clustering.md) o [reservar huecos de pares](#pares-fijos-y-reservas-de-pares). Si tienes un cluster de servidores, debes configurar cada servidor en el cluster con un valor único en el apartado `[node_seed]`. Para más información de cómo configurar un cluster, ver [Servidores `rippled` clusterizados](../../infrastructure/configuration/peering/cluster-rippled-servers.md).
+El par de claves de nodo también identifican otros servidores para propositos de [clustering](clustering.md) o [reservar huecos de pares](#pares-fijos-y-reservas-de-pares). Si tienes un cluster de servidores, debes configurar cada servidor en el cluster con un valor único en el apartado `[node_seed]`. Para más información de cómo configurar un cluster, ver [Servidores `rippled` clusterizados](../../infrastructure/configuration/peering/cluster-xrpld-servers.md).
 
 
 ## Pares fijos y reservas de pares
@@ -155,7 +155,7 @@ Para configurar tu servidor como un servidor privado, establece la opción `[pee
     - [Consenso](../consensus-protocol/index.md)
     - [Redes paralelas](parallel-networks.md)
 - **Tutoriales:**
-    - [Cluster de servidores rippled](../../infrastructure/configuration/peering/cluster-rippled-servers.md)
+    - [Cluster de servidores rippled](../../infrastructure/configuration/peering/cluster-xrpld-servers.md)
     - [Configurar un servidor privado](../../infrastructure/configuration/peering/configure-a-private-server.md)
     - [Configurar el Peer Crawler](../../infrastructure/configuration/peering/configure-the-peer-crawler.md)
     - [Redireccionar puertos para pares](../../infrastructure/configuration/peering/forward-ports-for-peering.md)
