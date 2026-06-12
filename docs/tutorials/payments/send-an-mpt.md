@@ -150,7 +150,7 @@ If the issuance uses allow-listing (the **Require Auth** flag), this step isn't 
 
 ### 4. Check initial balances
 
-Before sending the payment, check each account's MPT holdings using the [ledger_entry method][]. Pass the `mptoken` filter with the holder's `account` and the `mpt_issuance_id` to look up the `MPToken` entry directly. This avoids paginating through the account's owner directory and works reliably for accounts that own many ledger entries.
+Before sending the payment, check each account's MPT holdings using the [ledger_entry method][]. Pass the holder's `account` and the `mpt_issuance_id` in the `mptoken` parameter to look up the `MPToken` entry directly. This avoids paginating through the account's owner directory and works reliably for accounts that own many ledger entries.
 
 {% tabs %}
 {% tab label="JavaScript" %}
