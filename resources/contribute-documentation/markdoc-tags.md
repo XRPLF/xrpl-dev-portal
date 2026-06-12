@@ -212,18 +212,27 @@ Demonstration:
 
 ### Source Link
 
-Link to an `xrpld` source code file. The link is built using a `path` parameter and `PUBLIC_XRPLD_RELEASE` variable in this repository's `.env` file.
+Link to an `xrpld` source code file. The link is built using a `path` parameter and `PUBLIC_XRPLD_RELEASE` variable in this repository's `.env` file. If an optional `name` parameter is provided, the link is styled differently.
 
-Example usage:
+Example usage _without_ `name`:
 
 <pre><code>
 {% source-link path="src/xrpld/app/tx/detail/DeleteAccount.cpp" /%}
 </code></pre>
 
-
-Demonstration: 
+Demonstration:
 
 {% source-link path="src/xrpld/app/tx/detail/DeleteAccount.cpp" /%}
+
+Example usage _with_ `name`:
+
+<pre><code>
+{% source-link name="AccountDelete" path="src/xrpld/app/tx/detail/DeleteAccount.cpp" /%}
+</code></pre>
+
+Demonstration:
+
+This is a plain link to the {% source-link name="AccountDelete" path="src/xrpld/app/tx/detail/DeleteAccount.cpp" /%} source code.
 
 
 ### Try It

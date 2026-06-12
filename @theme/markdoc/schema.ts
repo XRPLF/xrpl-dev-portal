@@ -42,6 +42,10 @@ export const sourceLink: MarkdocTagSchema & { tagName: string } = {
         type: 'String',
         required: true,
       },
+      name: {
+        type: 'String',
+        required: false,
+      },
     },
     transform(node, config) {
         const attributes = node.transformAttributes(config);
