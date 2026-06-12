@@ -316,7 +316,7 @@ contribute.html:
 events.html:
     to: /community/events
 ambassadors.html:
-    to: /community/ambassadors
+    to: /community/developer-funding
 developer-funding.html:
     to: /community/developer-funding
 code-samples.html:

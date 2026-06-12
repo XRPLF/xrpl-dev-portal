@@ -1,0 +1,137 @@
+# CardsTwoColumn Pattern
+
+A section pattern featuring a header with title and description, plus a 2×2 grid of TextCard components. Designed for showcasing multiple related content areas with visual variety through six color variants.
+
+## Features
+
+- **Header Section**: Title (heading-md) with optional description (body-l, muted)
+- **4-Card Grid**: 2×2 layout on desktop, single column stacked on tablet/mobile
+- **6 Color Variants**: Green, neutral-light, neutral-dark, lilac, yellow, and blue
+- **TextCard behavior**: Hover (window shade on desktop), focus, pressed, visited, and tablet/mobile behavior are defined on **TextCard** — see [`shared/components/TextCard/TextCard.md`](../../components/TextCard/TextCard.md)
+- **Disabled State**: Cards can be disabled with appropriate styling for light/dark modes
+- **Responsive Design**: Adapts layout and spacing across all breakpoints
+- **Dark Mode Support**: Section chrome and cards follow `html.light` / `html.dark`
+
+## Usage
+
+```tsx
+import { CardsTwoColumn } from 'shared/sections/CardsTwoColumn';
+
+<CardsTwoColumn
+  title="The Future of Finance is Already Onchain"
+  description="XRP Ledger isn't about bold predictions. It's about delivering value now."
+  secondaryDescription="On XRPL, you're not waiting for the future. You're building it."
+  cards={[
+    { title: "Institutions", description: "Banks, asset managers...", color: "lilac" },
+    { title: "Developers", description: "Build decentralized...", color: "neutral-light" },
+    { title: "Enterprise", description: "Scale your business...", color: "neutral-dark" },
+    { title: "Community", description: "Join the global...", color: "green" }
+  ]}
+/>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `title` | `ReactNode` | *required* | Section title (heading-md typography) |
+| `description` | `ReactNode` | - | Section description (body-l, muted color) |
+| `secondaryDescription` | `ReactNode` | - | Additional description paragraph |
+| `cards` | `[TextCardProps, TextCardProps, TextCardProps, TextCardProps]` | *required* | Array of exactly 4 card configurations |
+| `className` | `string` | - | Additional CSS classes |
+
+### TextCardProps
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `title` | `ReactNode` | *required* | Card title (heading-lg typography) |
+| `description` | `ReactNode` | - | Card description (body-l typography) |
+| `href` | `string` | - | Optional link URL (makes card clickable) |
+| `color` | `'green' \| 'neutral-light' \| 'neutral-dark' \| 'lilac' \| 'yellow' \| 'blue'` | `'neutral-light'` | Background color variant |
+| `disabled` | `boolean` | `false` | Whether the card is disabled |
+
+## Responsive Behavior
+
+### Desktop (≥992px)
+- Header: Two-column layout (title left, description right)
+- Cards: 2×2 grid with 8px gap
+- Section padding: 40px vertical, 32px horizontal
+- Gap between header and cards: 40px
+- Card height: 340px, padding: 24px
+- TextCard: full window-shade hover animation (see TextCard docs)
+
+### Tablet (576–991px)
+- Header: Stacked (title above description)
+- Cards: Single column, stacked vertically with 8px gap
+- Section padding: 32px vertical, 24px horizontal
+- Gap between header and cards: 32px
+- Card height: 309px, padding: 20px
+- TextCard: below `lg`, overlay uses instant “pressed” color (no wipe animation)
+
+### Mobile (<576px)
+- Header: Stacked (title above description)
+- Cards: Single column, stacked vertically with 8px gap
+- Section padding: 24px vertical, 16px horizontal
+- Gap between header and cards: 24px
+- Card height: 274px, padding: 16px
+
+## Color & interaction (cards)
+
+Detailed token tables, **visited** link behavior (`html.light` / `html.dark`), **focus** (keyboard vs mouse), and **tablet/mobile** neutral differentiation are documented in:
+
+**[`shared/components/TextCard/TextCard.md`](../../components/TextCard/TextCard.md)**
+
+## CSS Classes
+
+```
+.bds-cards-two-column                    // Section container
+.bds-cards-two-column__container         // PageGrid container (vertical padding)
+.bds-cards-two-column__header            // Header row
+.bds-cards-two-column__header-left       // Title column
+.bds-cards-two-column__header-right      // Description column
+.bds-cards-two-column__title             // Section title
+.bds-cards-two-column__description       // Section description
+.bds-cards-two-column__cards             // Cards row (grid)
+```
+
+## Typography Tokens
+
+- **Section Title**: Uses `h-md` (heading-md, Tobias Light)
+  - Desktop: 40px / 46px line-height
+  - Tablet: 36px / 45px line-height
+  - Mobile: 32px / 40px line-height
+
+- **Section Description**: Uses `body-l` (Booton Light), color: `$gray-500` (light section context)
+  - All breakpoints: 18px / 26.1px line-height
+
+- **Card Title**: Uses `h-lg` (heading-lg, Tobias Light) — see TextCard
+- **Card Description**: Uses `body-l` (Booton Light) — see TextCard
+
+## Files
+
+- `CardsTwoColumn.tsx` - Main pattern component
+- `CardsTwoColumn.scss` - Section layout and spacing
+- `index.ts` - Barrel exports
+- `README.md` - This documentation
+
+## Related Components
+
+- **TextCard**: Core component for individual cards (`shared/components/TextCard`)
+- **PageGrid**: Layout wrapper for the section
+
+## Design References
+
+- **Figma Design**: [Section Cards - Two Column](https://www.figma.com/design/MP5gjNp7yPBnKBKleb8LRL/Section-Cards---Two-Column)
+- **Showcase Page**: `/showcase/cards-two-column`
+- **Component Location**: `shared/sections/CardsTwoColumn/`
+
+## Version History
+
+- **January 2026**: Initial implementation
+  - Header section with title and description
+  - 2×2 card grid with six color variants
+  - Window shade hover animation (desktop); instant pressed overlay below `lg`
+  - Full responsive design
+  - Dark mode support for section and cards
+  - Disabled state support for light and dark modes
+- **April 2026**: Documentation aligned with TextCard (visited, focus, tablet/mobile neutrals); showcase path corrected

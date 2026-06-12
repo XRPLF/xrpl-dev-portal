@@ -6,7 +6,13 @@ ignore:
   - _code-samples/create-amm/ts/tsconfig.json
   - resources/contribute-blog/_blog-template.md
   - resources/contribute-documentation/_tutorial-template.md
+  # From master: Selenium link-checker tool dir, not part of the site build.
   - tools/*
+  # From branch: Internal design-system showcase pages — keep out of production
+  # builds. These ~32 component demos widen the module graph and contributed to
+  # a Redocly cloud OOM build failure. They remain usable in `realm develop`.
+  - showcase/**/*.page.tsx
+  - showcase/**/*.md
 l10n:
   defaultLocale: en-US
   locales:
@@ -129,8 +135,6 @@ seo:
         description: Developer resources and contribution guidelines.
         includeFiles:
           - resources/**/*.*
-        excludeFiles:
-          - resources/index.md
 analytics:
   gtm:
     includeInDevelopment: true
@@ -147,6 +151,9 @@ feedback:
     rightScaleLabel: Very helpful
 scripts:
   head:
+    # Loaded first so the persisted color scheme is applied before first paint
+    # and survives across page navigations. See static/js/theme-switch.js.
+    - src: ./static/js/theme-switch.js
     - src: https://cmp.osano.com/AzyjT6TIZMlgyLyy8/f11f7772-8ed5-4b73-bd17-c0814edcc440/osano.js
     - src: ./static/js/xrpl-2.11.0.min.js
     - src: ./static/vendor/jquery-3.7.1.min.js
@@ -154,11 +161,7 @@ scripts:
     - src: ./static/js/osano.js
       type: text/javascript
 links:
-  - href: https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700&display=swap
-    rel: stylesheet
-  - href: https://fonts.googleapis.com/css?family=Source+Code+Pro:300,400,600,700&display=swap
-    rel: stylesheet
-  - href: https://fonts.googleapis.com/css?family=Space+Grotesk:300,400,600,700&display=swap
+  - href: https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700&family=Noto+Serif:wght@400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;600;700&display=swap
     rel: stylesheet
   - href: ./static/css/devportal2024-v1.css
     rel: stylesheet
@@ -169,9 +172,18 @@ logo:
   srcSet: ./static/img/XRPLedger_DevPortal-black.svg light ./static/img/XRPLedger_DevPortal-white.svg dark
   altText: XRP Ledger Developer Portal
   link: /
-navbar:
-  items:
-    $ref: top-nav.yaml
+# navbar.items is no longer used — the BDS-2026 React navbar
+# (@theme/components/Navbar) reads its data directly from
+# @theme/components/Navbar/constants/navigation.ts and bypasses
+# themeConfig.navbar entirely. The top-nav.yaml file is kept on disk
+# for now as a safety net while we verify nothing else in Realm
+# (SEO sitemap, search index, mobile fallback, etc.) consumes
+# themeConfig.navbar.items. If a preview build comes back clean,
+# uncomment-and-delete in a follow-up: remove this block AND the
+# top-nav.yaml file.
+# navbar:
+#   items:
+#     $ref: top-nav.yaml
 markdown:
   partialsFolders: ["docs/_snippets", "_code-samples", "_api-examples"]
   editPage:

@@ -8,6 +8,7 @@ yarn-error.log
 *.iml
 .venv/
 _code-samples/*/js/package-lock.json
+*.css.map
 _code-samples/*/go/go.sum
 _code-samples/*/java/target/
 _code-samples/*/*/*[Ss]etup.json
@@ -18,3 +19,4 @@ tools/broken-links-report.md
 
 # PHP
 composer.lock
+.cursor/

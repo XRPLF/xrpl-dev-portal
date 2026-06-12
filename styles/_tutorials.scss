@@ -147,15 +147,15 @@ $whats-new-footers: (
 .light .page-tutorials .tutorial-cards .contribution-card {
   .contribution-icon {
     background: rgba($blue-purple-500, 0.1);
-    color: $blue-purple-600;
+    color: $blue-purple-300;
   }
 
   .card-meta-row {
     .meta-link {
-      color: $gray-600;
+      color: $gray-300;
 
       &:hover {
-        color: $blue-purple-600;
+        color: $blue-purple-300;
       }
     }
 
@@ -191,7 +191,7 @@ $whats-new-footers: (
 }
 
 .light .page-tutorials .explore-more-wrapper .explore-more-link {
-  color: $blue-purple-600;
+  color: $blue-purple-300;
 }
 
 // TOC navigation buttons
@@ -253,15 +253,6 @@ $whats-new-footers: (
       height: 3px;
       background: linear-gradient(90deg, $blue-purple-500, $green-400);
       border-radius: 2px;
-    }
-  }
-
-  // Different footer colors for What's New cards
-  .tutorial-cards {
-    @for $i from 1 through length($whats-new-footers) {
-      > div:nth-child(#{$i}) .card .card-footer {
-        background-image: url("../img/cards/#{nth($whats-new-footers, $i)}.svg");
-      }
     }
   }
 }
@@ -341,7 +332,7 @@ $whats-new-footers: (
 
   .quick-ref-value {
     font-size: 0.75rem;
-    color: $blue-purple-300;
+    color: $blue-purple-500;
     background: rgba($gray-900, 0.5);
     padding: 0.2rem 0.5rem;
     border-radius: 4px;
@@ -435,7 +426,7 @@ $whats-new-footers: (
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
 
   .quick-ref-label {
-    color: $blue-purple-600;
+    color: $blue-purple-400;
   }
 
   .quick-ref-key {
@@ -451,13 +442,13 @@ $whats-new-footers: (
   }
 
   .quick-ref-value {
-    color: $blue-purple-600;
-    background: rgba($gray-300, 0.6);
+    color: $blue-purple-400;
+    background: rgba($gray-300, 0.4);
   }
 
   .quick-ref-value-btn {
     &:hover .quick-ref-value {
-      background: rgba($gray-400, 0.6);
+      background: rgba($gray-300, 0.3);
     }
 
     &.copied .quick-ref-value {
@@ -471,7 +462,7 @@ $whats-new-footers: (
   }
 
   .quick-ref-link {
-    color: $blue-purple-600;
+    color: $blue-purple-500;
   }
 
   .quick-ref-divider {
@@ -482,7 +473,7 @@ $whats-new-footers: (
     color: $gray-900;
 
     &:hover {
-      color: $blue-purple-600;
+      color: $blue-purple-300;
     }
 
     .quick-ref-arrow {

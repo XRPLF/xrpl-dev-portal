@@ -10,12 +10,12 @@ article {
 }
 
 body {
-  background-color: $light-bg;
+  background-color: $white;
   color: $light-fg;
 }
 
 #topnav-theme .custom-theme-toggle {
-  .custom-control-label::before {
+  .form-check-input {
     background-color: transparent;
     background-position: bottom right;
     transform: rotate(-15deg);
@@ -39,7 +39,7 @@ h6,
   }
 
   &.green-500 {
-    color: $green-700;
+    color: $green-400;
     text-shadow: white 0 0 2px, white -1px -1px 2px, white 1px 1px 2px;
   }
 }
@@ -123,9 +123,15 @@ h6,
 
 // Navigation ------------------------------------------------------------------
 
-a,
-nav a,
-a:not([role="button"]) {
+// `:where(:not(...))` wraps the exclusion chain at ZERO specificity so this
+// generic anchor styling can't override more specific component-level rules
+// (e.g. `.page-tutorials .page-toc.no-sideline li a:hover`). Without `:where()`,
+// each `:not()` adds to specificity, inflating to (0,6,2) and beating most
+// component rules. With `:where()` the selectors are (0,0,1) / (0,0,2), so
+// any page- or component-scoped class chain wins as expected.
+a:where(:not(.bds-link):not(.bds-card-offgrid):not(.bds-card-icon):not(.bds-btn)),
+nav a:where(:not(.bds-link):not(.bds-card-offgrid):not(.bds-card-icon):not(.bds-btn)),
+a:where(:not([role="button"]):not(.bds-link):not(.bds-card-offgrid):not(.bds-card-icon):not(.bds-btn)) {
   color: $light-fg;
 
   &.btn-primary {
@@ -143,7 +149,7 @@ a:not([role="button"]) {
     color: $light-link-hover-color;
   }
 
-  &:not(.btn):focus {
+  &:where(:not(.btn):not(.bds-text-card)):focus {
     background-color: transparent;
   }
 }
@@ -407,7 +413,7 @@ aside .card {
 
 // Status labels
 .status.not_enabled {
-  color: $yellow-700;
+  color: $yellow-400;
 }
 
 // Parent ("category") page in label landings
@@ -429,8 +435,8 @@ aside .card {
     }
   }
 
-  p a,
-  .longform a {
+  p a:not(.bds-link),
+  .longform a:not(.bds-link) {
     color: $light-link-hover-color;
   }
 }
@@ -438,19 +444,19 @@ aside .card {
 // Callouts
 .devportal-callout.caution,
 .devportal-callout.注意 {
-  border-color: $yellow-700;
+  border-color: $yellow-400;
 
   >strong:first-child::before {
-    color: $yellow-700;
+    color: $yellow-400;
   }
 }
 
 .devportal-callout.tip,
 .devportal-callout.ヒント {
-  border-color: $green-600;
+  border-color: $green-300;
 
   >strong:first-child::before {
-    color: $green-600;
+    color: $green-300;
   }
 }
 
@@ -495,7 +501,7 @@ pre {
 
 .interactive-block {
   .breadcrumb-item.done a::after {
-    color: $green-900;
+    color: $green-500;
   }
 }
 
@@ -1025,10 +1031,10 @@ $placeholder-color: $gray-600;
     background-image: url(../img/events/event-check.svg);
     background-repeat: no-repeat;
     background-position: center;
-    background-color: $blue-purple-600;
+    background-color: $blue-purple-300;
     border-width: 2px;
     border-style: solid;
-    border-color: $blue-purple-600;
+    border-color: $blue-purple-300;
     border-radius: 4px;
   }
 
@@ -1498,9 +1504,9 @@ main article .card-grid {
   }
 
   a.tx-title {
-    color: $blue-purple-600;
+    color: $blue-purple-500;
     &:visited {
-      color: $blue-purple-600;
+      color: $blue-purple-500;
     }
     &:hover, &:visited:hover {
       color: $light-link-hover-color

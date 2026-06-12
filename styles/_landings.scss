@@ -23,11 +23,6 @@
     }
   }
 
-  section:first-of-type h1:first-child {
-    margin-top: 0;
-    line-height: 1.2;
-  }
-
   .level-1,
   .level-2{
     margin-top: 0;
@@ -72,8 +67,8 @@
     }
   }
 
-  p a,
-  h5 a {
+  p a:not(.bds-link),
+  h5 a:not(.bds-link) {
     color: $blue-purple-400;
     font-weight: 600;
     &:hover {
@@ -180,12 +175,151 @@
     // lighter.
     border-bottom: 1px solid $gray-600;
   }
+
+  // PageGrid showcase (showcase/grid.page.tsx) — demo chrome legible in light & dark
+  .grid-showcase-demo {
+    padding: 16px;
+    border-radius: 8px;
+    border: 1px dashed $gray-400;
+    background-color: $gray-100;
+    color: $black;
+
+    html.dark & {
+      border-color: $gray-600;
+      background-color: $gray-800;
+      color: $gray-100;
+    }
+  }
+
+  .grid-showcase-bordered-col {
+    border: 1px solid #0069ff;
+    background-color: rgba(0, 105, 255, 0.05);
+    padding: 16px;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: $black;
+
+    html.dark & {
+      border-color: $blue-300;
+      background-color: rgba(66, 140, 255, 0.14);
+      color: $gray-100;
+    }
+  }
+
+  // Left/top-aligned content (e.g. button showcase) — default bordered-col is centered
+  .grid-showcase-bordered-col--start {
+    align-items: flex-start;
+    justify-content: flex-start;
+    text-align: left;
+  }
+
+  // Code snippets in PageGrid showcase — black text on light gray (light), light text on dark gray (dark)
+  .grid-showcase-code-block {
+    padding: 1rem;
+    font-family: $font-family-monospace;
+    font-size: 14px;
+    overflow: auto;
+    background-color: $gray-200;
+    color: $black;
+
+    html.dark & {
+      background-color: $gray-800;
+      color: $gray-100;
+    }
+
+    pre {
+      margin: 0;
+      white-space: pre-wrap;
+      color: inherit;
+    }
+
+    pre code {
+      color: inherit;
+      font-family: inherit;
+      font-size: inherit;
+    }
+  }
+
+  // Breakpoints table (showcase/grid.page.tsx)
+  .grid-showcase-breakpoints-table {
+    width: 100%;
+    max-width: 100%;
+    border-radius: 4px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    border: 1px solid $gray-200;
+    background-color: $white;
+    color: $black;
+
+    html.dark & {
+      border-color: $gray-600;
+      background-color: $gray-800;
+      color: $gray-100;
+    }
+
+    &__grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr 1fr 1.5fr;
+      min-width: 520px;
+    }
+
+    &__header {
+      border-bottom: 2px solid $gray-300;
+      background-color: $gray-100;
+      font-weight: 600;
+
+      html.dark & {
+        border-bottom-color: $gray-600;
+        background-color: $gray-900;
+      }
+    }
+
+    &__row {
+      border-bottom: 1px solid $gray-200;
+
+      html.dark & {
+        border-bottom-color: $gray-600;
+      }
+
+      &:last-child {
+        border-bottom: 0;
+      }
+    }
+
+    &__cell {
+      padding: 12px;
+    }
+
+    code {
+      color: inherit;
+    }
+  }
+
+  // Four equal columns (e.g. button-primary design spec tables)
+  .grid-showcase-breakpoints-table.grid-showcase-breakpoints-table--4col {
+    .grid-showcase-breakpoints-table__grid {
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      min-width: 640px;
+    }
+  }
+
+  // Three equal columns (e.g. button-secondary comparison table)
+  .grid-showcase-breakpoints-table.grid-showcase-breakpoints-table--3col {
+    .grid-showcase-breakpoints-table__grid {
+      grid-template-columns: 1fr 1fr 1fr;
+      min-width: 480px;
+    }
+  }
 }
 
 // Alert banners
 .alert-info {
   color: white;
-  background-color: $blue-700;
+  background-color: $blue-400;
   border-width: 0;
 
   a {

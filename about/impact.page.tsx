@@ -32,14 +32,6 @@ export default function Impact() {
   return (
     <div className="landing page-impact">
       <div className="overflow-hidden">
-        <div className="position-relative d-none-sm">
-          <img
-            alt="purple waves"
-            src={require("../static/img/backgrounds/community-purple.svg")}
-            className="landing-bg"
-            id="impact-purple"
-          />
-        </div>
         <section className="container-new py-26 text-lg-center">
           <div className="p-0 col-lg-8 mx-lg-auto">
             <div className="d-flex flex-column-reverse">
@@ -52,13 +44,6 @@ export default function Impact() {
             </div>
           </div>
         </section>
-        <div className="position-relative d-none-sm">
-          <img
-            alt="green waves"
-            src={require("../static/img/backgrounds/home-green.svg")}
-            id="impact-green"
-          />
-        </div>
         {/* World map */}
         <section className="container-new py-10">
           <div className="col-sm-10 col-lg-6 offset-md-3 p-10-until-sm pl-0-sm pr-0-sm">
@@ -133,16 +118,6 @@ export default function Impact() {
         {/* Card */}
         <section className="container-new py-26">
           <div className="col-md-6 offset-md-3 p-6-sm p-10-until-sm br-8 cta-card">
-            <img
-              alt="purple waves"
-              src={require("../static/img/backgrounds/cta-community-purple.svg")}
-              className="cta cta-top-left"
-            />
-            <img
-              alt="green waves"
-              src={require("../static/img/backgrounds/cta-calculator-green.svg")}
-              className="cta cta-bottom-right"
-            />
             <div className="z-index-1 position-relative">
               <div className="d-flex flex-column-reverse">
                 <h2 className="h4 h2-sm mb-10-until-sm mb-8-sm">

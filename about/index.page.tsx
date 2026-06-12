@@ -1,6 +1,7 @@
 import * as React from "react";
 import { useThemeHooks } from '@redocly/theme/core/hooks';
 import { Link } from '@redocly/theme/components/Link/Link';
+import { PageGrid, PageGridCol, PageGridRow } from "shared/components/PageGrid/page-grid";
 
 export const frontmatter = {
   seo: {
@@ -78,14 +79,6 @@ export default function XrplOverview() {
             />
           </div>
         </div>
-        <div className="position-relative">
-          <img
-            alt="purple waves"
-            src={require("../static/img/backgrounds/xrpl-overview-purple.svg")}
-            className="landing-bg"
-            id="xrpl-overview-purple"
-          />
-        </div>
         <section className="py-26 text-center">
           <div className="col-lg-5 mx-auto text-center">
             <div className="d-flex flex-column-reverse">
@@ -100,13 +93,6 @@ export default function XrplOverview() {
             </div>
           </div>
         </section>
-        <div className="position-relative d-none-sm">
-          <img
-            alt="orange waves"
-            src={require("../static/img/backgrounds/xrpl-overview-orange.svg")}
-            id="xrpl-overview-orange"
-          />
-        </div>
         <section className="container-new py-26">
           <div className="card-grid card-grid-2xN">
             <div className="col">
@@ -133,7 +119,7 @@ export default function XrplOverview() {
                   {translate("Read Technical Docs")}
                 </Link>{" "}
                 <a
-                  className="ml-4 video-external-link"
+                  className="ms-4 video-external-link"
                   target="_blank"
                   href="https://www.youtube.com/playlist?list=PLJQ55Tj1hIVZtJ_JdTvSum2qMTsedWkNi"
                 >
@@ -168,7 +154,7 @@ export default function XrplOverview() {
                   {translate("Read Technical Docs")}
                 </Link>{" "}
                 <a
-                  className="ml-4 video-external-link"
+                  className="ms-4 video-external-link"
                   target="_blank"
                   href="https://www.youtube.com/playlist?list=PLJQ55Tj1hIVZtJ_JdTvSum2qMTsedWkNi"
                 >
@@ -178,9 +164,9 @@ export default function XrplOverview() {
             </div>
           </div>
         </section>
-        <section className="container-new py-26">
-          <div className="card-grid card-grid-2xN">
-            <div className="col">
+        <PageGrid className="py-26">
+          <PageGridRow>
+            <PageGrid.Col span={{ base: 4, lg: 6 }}>
               <div className="d-flex flex-column-reverse">
                 <h2 className="h4 h2-sm mb-8">
                   {translate("How the Consensus Protocol works")}
@@ -207,25 +193,23 @@ export default function XrplOverview() {
               <p className="mb-0">
                 {translate('about.index.consensus.ppart1', 'Currently, over 120 ')}
                 <a href="https://livenet.xrpl.org/network/validators" target="_blank">{translate('about.index.consensus.ppart2', 'validators')}</a>
-                   {translate('about.index.consensus.ppart3', ' are active on the ledger, operated by universities, exchanges, businesses, and individuals. As the validator pool grows, the consensus protocol ensures decentralization of the blockchain over time.')}
+                    {translate('about.index.consensus.ppart3', ' are active on the ledger, operated by universities, exchanges, businesses, and individuals. As the validator pool grows, the consensus protocol ensures decentralization of the blockchain over time.')}
               </p>
-            </div>
-            <div className="col mb-16-sm">
-              <img
-                className="mw-100"
-                id="validator-graphic"
-                alt="(Graphic: Validators in Consensus)"
-              />
-            </div>
-          </div>
-        </section>
-        <section className="container-new py-26">
-          <div className="col-md-6 offset-md-3 p-6-sm p-10-until-sm br-8 cta-card">
-            <img
-              alt="green waves"
-              src={require("../static/img/backgrounds/cta-xrpl-overview-green.svg")}
-              className="cta cta-bottom-right"
-            />
+            </PageGrid.Col>
+            <PageGrid.Col span={{ base: 4, lg: 6 }}>
+              <div className="col mb-16-sm">
+                <img
+                  className="mw-100"
+                  id="validator-graphic"
+                  alt="(Graphic: Validators in Consensus)"
+                />
+              </div>
+              </PageGrid.Col>
+            </PageGridRow>
+        </PageGrid>
+        <PageGrid className="py-26">
+          <PageGridRow>
+            <PageGrid.Col span={{ base: 4, lg: 6 }} offset={{ lg: 3 }} className="p-6-sm p-10-until-sm br-8 cta-card">
             <div className="z-index-1 position-relative">
               <h2 className="h4 mb-10-until-sm mb-8-sm">
                 {translate("A Sustainable Blockchain")}
@@ -239,11 +223,13 @@ export default function XrplOverview() {
                 {translate("Learn More")}
               </a>
             </div>
-          </div>
-        </section>
-        <section className="container-new py-26">
-          <div className="card-grid card-grid-2xN">
-            <div className="col">
+            </PageGrid.Col>
+          </PageGridRow>
+        </PageGrid>
+        
+        <PageGrid className="py-26">
+          <PageGridRow>
+            <PageGrid.Col span={{ base: 4, lg: 6 }}>
               <div className="d-flex flex-column-reverse">
                 <h4 className="h4 h2-sm mb-8">
                   {translate("Building with confidence on ")}
@@ -265,8 +251,8 @@ export default function XrplOverview() {
               <a className="btn btn-primary btn-arrow mb-10-sm" href="/about/uses">
                 {translate("Explore More")}
               </a>
-            </div>
-            <div className="col mb-0">
+            </PageGrid.Col>
+            <PageGrid.Col span={{ base: 4, lg: 6 }}>
               <div className="d-flex flex-column-reverse">
                 <h4 className="h4 h2-sm mb-8">
                   {translate("Creating new value for long-term growth")}
@@ -283,11 +269,11 @@ export default function XrplOverview() {
                   "Significant investment in development, along with low transaction costs and energy usage, is fueling growth and opening up a wide variety of use cases at scale."
                 )}
               </p>
-            </div>
-          </div>
-        </section>
+            </PageGrid.Col>
+          </PageGridRow>
+        </PageGrid>
         <section className="container-new py-26">
-          <div className="d-flex flex-column-reverse col-xl-6 mb-lg-4 pl-0 ">
+          <div className="d-flex flex-column-reverse col-xl-6 mb-lg-4 ps-0 ">
             <h2 className="h4 h2-sm">
               {translate(
                 "Watch the explainer video series to learn more about the XRP Ledger"
@@ -375,11 +361,6 @@ export default function XrplOverview() {
         </section>
         <section className="container-new py-26">
           <div className="col-md-6 offset-md-3 p-6-sm p-10-until-sm br-8 cta-card">
-            <img
-              alt="orange waves"
-              src={require("../static/img/backgrounds/cta-xrpl-overview-orange.svg")}
-              className="cta cta-bottom-right"
-            />
             <div className="z-index-1 position-relative">
               <h4 className="h4 mb-10-until-sm mb-8-sm">
                 {translate("Tomorrow’s Blockchain Starts With You")}
@@ -407,7 +388,7 @@ export default function XrplOverview() {
         </section>
         <section className="container-new py-26">
           <div
-            className="col-md-6 offset-md-3 w-100 pl-0 pr-0 mini-faq"
+            className="col-md-10 offset-md-1 col-lg-8 offset-lg-2 ps-0 pe-0 mini-faq"
             id="minifaq-accordion"
           >
             {faqs.map((faq, index) => (
@@ -415,8 +396,8 @@ export default function XrplOverview() {
                 <a
                   href={`#heading${index + 1}`}
                   className="expander collapsed"
-                  data-toggle="collapse"
-                  data-target={`#answer${index + 1}`}
+                  data-bs-toggle="collapse"
+                  data-bs-target={`#answer${index + 1}`}
                   aria-expanded="false"
                   aria-controls={`answer${index + 1}`}
                 >

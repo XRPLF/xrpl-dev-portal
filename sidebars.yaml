@@ -45,6 +45,10 @@
             - page: docs/use-cases/defi/institutional-credit-facilities.md
             - page: docs/use-cases/defi/list-xrp-as-an-exchange.md
             - page: docs/use-cases/defi/enable-compliance-focused-cross-currency-payments-using-a-permissioned-dex.md
+        - page: docs/use-cases/trading/index.page.tsx
+          label: Trading
+          labelTranslationKey: sidebar.docs.use-cases.trading
+          expanded: false
         
     - page: docs/concepts/index.md
       expanded: false
@@ -751,7 +755,7 @@
         - page: docs/agents/xrpl-payments-skill.md
         - page: docs/agents/track-agent-behavior.md
         - page: docs/agents/agentic-payments-x402.md
-- page: resources/index.md
+- page: resources/index.page.tsx
   labelTranslationKey: sidebars.resources
   expanded: false
   items:

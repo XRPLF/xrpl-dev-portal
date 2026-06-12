@@ -146,8 +146,8 @@ export default function DevTools() {
                   <button
                     className="nav-link active dev-tools-tab"
                     id="explorers-tab"
-                    data-toggle="tab"
-                    data-target="#explorers"
+                    data-bs-toggle="tab"
+                    data-bs-target="#explorers"
                     role="tab"
                     aria-controls="explorers"
                     aria-selected="true"
@@ -159,8 +159,8 @@ export default function DevTools() {
                   <button
                     className="nav-link  dev-tools-tab"
                     id="api-access-tab"
-                    data-toggle="tab"
-                    data-target="#api-access"
+                    data-bs-toggle="tab"
+                    data-bs-target="#api-access"
                     role="tab"
                     aria-controls="api-access"
                     aria-selected="false"
@@ -172,8 +172,8 @@ export default function DevTools() {
                   <button
                     className="nav-link  dev-tools-tab"
                     id="other-tab"
-                    data-toggle="tab"
-                    data-target="#other"
+                    data-bs-toggle="tab"
+                    data-bs-target="#other"
                     role="tab"
                     aria-controls="other"
                     aria-selected="false"
@@ -278,16 +278,6 @@ export default function DevTools() {
         </section>
         <section className="container-new py-10 px-0">
           <div className="col-lg-12 p-6-sm p-10-until-sm br-8 cta-card">
-            <img
-              alt="purple waves"
-              src={require("../../static/img/backgrounds/cta-home-purple.svg")}
-              className="d-none-sm cta cta-top-left"
-            />
-            <img
-              alt="green waves"
-              src={require("../../static/img/backgrounds/cta-home-green.svg")}
-              className="cta cta-bottom-right"
-            />
             <div className="z-index-1 position-relative">
               <h2 className="h4 mb-8-sm mb-10-until-sm">
                 {translate("Have an Idea For a Tool?")}
