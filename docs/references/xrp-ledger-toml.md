@@ -222,7 +222,7 @@ You may provide other contact information as desired. (See [Custom Fields](#cust
 
 ### Servers
 
-The servers list provides information about XRP Ledger servers (`rippled`) you run with public access. If present, the servers list MUST BE presented as an array of tables, with each entry using the header `[[SERVERS]]`, including double square brackets. Each entry describes a different server or server cluster. For _each_ `[[SERVERS]]` entry, you MAY provide any of the following fields:
+The servers list provides information about XRP Ledger servers (`xrpld`) you run with public access. If present, the servers list MUST BE presented as an array of tables, with each entry using the header `[[SERVERS]]`, including double square brackets. Each entry describes a different server or server cluster. For _each_ `[[SERVERS]]` entry, you MAY provide any of the following fields:
 
 | Field   | Type   | Description                                              |
 |:--------|:-------|:---------------------------------------------------------|
@@ -312,7 +312,7 @@ Domain verification requires establishing a two-way link between the domain oper
 
     - **In a location not on your validator**, build the [validator-keys-tool](https://github.com/ripple/validator-keys-tool).  
 
-    - Run the following command to generate a new validator token that incorporates your domain and update your `xrp-ledger.toml` and `rippled.cfg` files:
+    - Run the following command to generate a new validator token that incorporates your domain and update your `xrp-ledger.toml` and `xrpld.cfg` files:
 
 
         ```
@@ -336,8 +336,8 @@ attestation="A59AB577E14A7BEC053752FBFE78C3DE
 You should include it in your xrp-ledger.toml file in the
 section for this validator.
 
-You also need to update the rippled.cfg file to add a new
-validator token and restart rippled:
+You also need to update the xrpld.cfg file to add a new
+validator token and restart xrpld:
 
 # validator public key: nHDG5CRUHp17ShsEdRweMc7WsA4csiL7qEjdZbRVTr74wa5QyqoF
 
@@ -352,7 +352,7 @@ NmluOEhBU1FLUHVnQkQ2N2tNYVJGR3ZtcEFUSGxHS0pkdkRGbFdQWXk1QXFEZWRGdj
 VUSmEydzBpMjFlcTNNWXl3TFZKWm5GT3I3QzBrdzJBaVR6U0NqSXpkaXRROD0ifQ==     
 ```
 
-Update [the contents of your `xrp-ledger.toml` file](#contents) with the `attestation` block, and update the `rippled.cfg` file with the `[validator_token]` block from the sample output.
+Update [the contents of your `xrp-ledger.toml` file](#contents) with the `attestation` block, and update the `xrpld.cfg` file with the `[validator_token]` block from the sample output.
 
 
 

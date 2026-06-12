@@ -8,7 +8,7 @@ labels:
 # Binary Format
 [[Source]](https://github.com/XRPLF/rippled/blob/master/include/xrpl/protocol/SField.h "Source")
 
-This page describes the XRP Ledger's canonical binary format for transactions and other data. This binary format is necessary to create and verify digital signatures of those transactions' contents, and is also used in other places including in the [peer-to-peer communications between servers](../../concepts/networks-and-servers/peer-protocol.md). The [`rippled` APIs](../http-websocket-apis/index.md) typically use JSON to communicate with client applications. However, JSON is unsuitable as a format for serializing transactions for being digitally signed, because JSON can represent the same data in many different but equivalent ways.
+This page describes the XRP Ledger's canonical binary format for transactions and other data. This binary format is necessary to create and verify digital signatures of those transactions' contents, and is also used in other places including in the [peer-to-peer communications between servers](../../concepts/networks-and-servers/peer-protocol.md). The [`xrpld` APIs](../http-websocket-apis/index.md) typically use JSON to communicate with client applications. However, JSON is unsuitable as a format for serializing transactions for being digitally signed, because JSON can represent the same data in many different but equivalent ways.
 
 The process of serializing a transaction from JSON or any other representation into their canonical binary format can be summarized with these steps:
 
@@ -46,7 +46,7 @@ Both signed and unsigned transactions can be represented in both JSON and binary
 
 The serialization processes described here are implemented in multiple places and programming languages:
 
-- In C++ [in the `rippled` code base](https://github.com/XRPLF/rippled/blob/master/src/libxrpl/protocol/STObject.cpp).
+- In C++ [in the `xrpld` source code](https://github.com/XRPLF/rippled/blob/master/src/libxrpl/protocol/STObject.cpp).
 - In JavaScript in {% repo-link path="_code-samples/tx-serialization/" %}this repository's code samples section{% /repo-link %}.
 - In Python 3 in {% repo-link path="_code-samples/tx-serialization/" %}this repository's code samples section{% /repo-link %}.
 
@@ -77,11 +77,11 @@ The following table defines the top-level fields from the definitions file:
 | `FIELDS`               | A sorted array of tuples representing all fields that may appear in transactions, ledger objects, or other data. The first member of each tuple is the string name of the field and the second member is an object with that field's properties. (See [Field properties](#field-properties) for definitions of those fields.) |
 | `TRANSACTION_RESULTS`  | Map of [transaction result codes](transactions/transaction-results/index.md) to their numeric values. Result types not included in ledgers have negative values; `tesSUCCESS` has numeric value 0; [`tec`-class codes](transactions/transaction-results/tec-codes.md) represent failures that are included in ledgers. |
 | `TRANSACTION_TYPES`    | Map of all [transaction types](transactions/types/index.md) to their numeric values. |
-| `TRANSACTION_FORMATS`  | Map of each [transaction type](transactions/types/index.md) to an array of objects describing that type's fields and whether each is required. (See [Format field objects](#format-field-objects) for the properties of each object.) {% badge href="https://github.com/XRPLF/rippled/releases/tag/3.2.0" %}New in: rippled 3.2.0{% /badge %} |
-| `LEDGER_ENTRY_FORMATS` | Map of each [ledger object type](ledger-data/ledger-entry-types/index.md) to an array of objects describing that type's fields and whether each is required. (See [Format field objects](#format-field-objects) for the properties of each object.) {% badge href="https://github.com/XRPLF/rippled/releases/tag/3.2.0" %}New in: rippled 3.2.0{% /badge %} |
-| `TRANSACTION_FLAGS`    | Map of each [transaction type](transactions/types/index.md) to an object mapping the names of its supported [transaction flags](transactions/common-fields.md#flags-field) to their numeric values. The `universal` entry lists the flags that apply to all transaction types. {% badge href="https://github.com/XRPLF/rippled/releases/tag/3.2.0" %}New in: rippled 3.2.0{% /badge %} |
-| `LEDGER_ENTRY_FLAGS`   | Map of each [ledger object type](ledger-data/ledger-entry-types/index.md) to an object mapping the names of that type's flags to their numeric values. {% badge href="https://github.com/XRPLF/rippled/releases/tag/3.2.0" %}New in: rippled 3.2.0{% /badge %} |
-| `ACCOUNT_SET_FLAGS`    | Map of [AccountSet flag](transactions/types/accountset.md#accountset-flags) (`asf`) names to their numeric values, for use in the `SetFlag` and `ClearFlag` fields of an [AccountSet transaction](transactions/types/accountset.md). {% badge href="https://github.com/XRPLF/rippled/releases/tag/3.2.0" %}New in: rippled 3.2.0{% /badge %} |
+| `TRANSACTION_FORMATS`  | Map of each [transaction type](transactions/types/index.md) to an array of objects describing that type's fields and whether each is required. (See [Format field objects](#format-field-objects) for the properties of each object.) {% badge href="https://github.com/XRPLF/rippled/releases/tag/3.2.0" %}New in: xrpld 3.2.0{% /badge %} |
+| `LEDGER_ENTRY_FORMATS` | Map of each [ledger object type](ledger-data/ledger-entry-types/index.md) to an array of objects describing that type's fields and whether each is required. (See [Format field objects](#format-field-objects) for the properties of each object.) {% badge href="https://github.com/XRPLF/rippled/releases/tag/3.2.0" %}New in: xrpld 3.2.0{% /badge %} |
+| `TRANSACTION_FLAGS`    | Map of each [transaction type](transactions/types/index.md) to an object mapping the names of its supported [transaction flags](transactions/common-fields.md#flags-field) to their numeric values. The `universal` entry lists the flags that apply to all transaction types. {% badge href="https://github.com/XRPLF/rippled/releases/tag/3.2.0" %}New in: xrpld 3.2.0{% /badge %} |
+| `LEDGER_ENTRY_FLAGS`   | Map of each [ledger object type](ledger-data/ledger-entry-types/index.md) to an object mapping the names of that type's flags to their numeric values. {% badge href="https://github.com/XRPLF/rippled/releases/tag/3.2.0" %}New in: xrpld 3.2.0{% /badge %} |
+| `ACCOUNT_SET_FLAGS`    | Map of [AccountSet flag](transactions/types/accountset.md#accountset-flags) (`asf`) names to their numeric values, for use in the `SetFlag` and `ClearFlag` fields of an [AccountSet transaction](transactions/types/accountset.md). {% badge href="https://github.com/XRPLF/rippled/releases/tag/3.2.0" %}New in: xrpld 3.2.0{% /badge %} |
 
 For purposes of serializing transactions for signing and submitting, the `FIELDS`, `TYPES`, and `TRANSACTION_TYPES` fields are necessary.
 
@@ -222,7 +222,7 @@ Transactions and ledger entries may contain fields of any of the following types
 
 [Length-prefixed]: #length-prefixing
 
-In the `rippled` source code, some types have an "ST" prefix, which stands for "serialized type". This separates the type definition in the XRP Ledger protocol from data types that may be defined at the programming language level such as arrays or objects.
+In the `xrpld` source code, some types have an "ST" prefix, which stands for "serialized type". This separates the type definition in the XRP Ledger protocol from data types that may be defined at the programming language level such as arrays or objects.
 
 In addition to all of the above field types, the following types may appear in other contexts, such as [ledger objects](ledger-data/ledger-entry-types/index.md) and [transaction metadata](transactions/metadata.md):
 
@@ -304,7 +304,7 @@ At a protocol level, currency codes in the XRP Ledger are arbitrary 160-bit valu
 - The currency code `0x0000000000000000000000005852500000000000` is **always disallowed**. (This is the code "XRP" in the "standard format".)
 - The currency code `0x0000000000000000000000000000000000000000` (all zeroes) is **generally disallowed**. Usually, XRP amounts are not specified with currency codes. However, this code is used to indicate XRP in rare cases where a field must specify a currency code for XRP.
 
-The [`rippled` APIs](../http-websocket-apis/index.md) support a **standard format** for translating three-character ASCII codes to 160-bit hex values as follows:
+The [`xrpld` APIs](../http-websocket-apis/index.md) support a **standard format** for translating three-character ASCII codes to 160-bit hex values as follows:
 
 [{% inline-svg file="/docs/img/currency-code-format.svg" /%}](/docs/img/currency-code-format.svg "Standard Currency Code Format")
 

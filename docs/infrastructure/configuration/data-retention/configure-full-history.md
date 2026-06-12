@@ -9,7 +9,7 @@ labels:
 ---
 # Configure Full History
 
-In its default configuration, the `rippled` server automatically deletes outdated history of XRP Ledger state and transactions as new ledger versions become available. This is enough for most servers, which do not need older history to know the current state and process transactions. However, it can be useful for the network if some servers provide as much history of the XRP Ledger as possible.
+In its default configuration, the `xrpld` server automatically deletes outdated history of XRP Ledger state and transactions as new ledger versions become available. This is enough for most servers, which do not need older history to know the current state and process transactions. However, it can be useful for the network if some servers provide as much history of the XRP Ledger as possible.
 
 ## Warnings
 
@@ -26,10 +26,10 @@ You do not need a full history server to participate in the network, validate tr
 
 To configure your server to acquire and store full history, complete the following steps:
 
-1. Stop the `rippled` server if it is running.
+1. Stop the `xrpld` server if it is running.
 
     ```
-    $ sudo systemctl stop rippled
+    $ sudo systemctl stop xrpld
     ```
 
 0. Remove (or comment out) the `online_delete` and `advisory_delete` settings from the `[node_db]` stanza of your server's config file, and change the type to `NuDB` if you haven't already:
@@ -37,7 +37,7 @@ To configure your server to acquire and store full history, complete the followi
     ```
     [node_db]
       type=NuDB
-      path=/var/lib/rippled/db/nudb
+      path=/var/lib/xrpld/db/nudb
       #online_delete=300000
       #advisory_delete=0
     ```
@@ -75,22 +75,22 @@ To configure your server to acquire and store full history, complete the followi
       path=/tmp/full_history_dump/
     ```
 
-0. Remove your server's existing database files, if you have any from previously running `rippled`.
+0. Remove your server's existing database files, if you have any from previously running `xrpld`.
 
     After disabling online deletion, the server ignores any data that was downloaded while online deletion was enabled, so you may as well clear up the disk space. For example:
 
     ```
-    rm -r /var/lib/rippled/db/*
+    rm -r /var/lib/xrpld/db/*
     ```
 
-    {% admonition type="danger" name="Warning" %}Be sure that you have not put any files you want to keep in the folder before you delete it. It is generally safe to delete all of a `rippled` server's database files, but you should only do this if the configured database folder is not used for anything other than `rippled`'s databases.{% /admonition %}
+    {% admonition type="danger" name="Warning" %}Be sure that you have not put any files you want to keep in the folder before you delete it. It is generally safe to delete all of an `xrpld` server's database files, but you should only do this if the configured database folder is not used for anything other than `xrpld`'s databases.{% /admonition %}
 
-0. Start the `rippled` server, importing the database dump if you have one available:
+0. Start the `xrpld` server, importing the database dump if you have one available:
 
     If you have a database dump to load configured in `[import_db]`, start the server explicitly and include the `--import` [commandline option](../../commandline-usage.md#daemon-mode-options):
 
     ```
-    $ /opt/ripple/bin/rippled --conf /etc/opt/ripple/rippled.cfg --import
+    $ /usr/bin/xrpld --conf /etc/xrpld/xrpld.cfg --import
     ```
 
     Importing a large database dump may take several minutes or even hours. During this time, the server is not fully started and synced with the network. Watch the server logs to see the status of the import.
@@ -98,7 +98,7 @@ To configure your server to acquire and store full history, complete the followi
     If you are not importing a database dump, start the server normally:
 
     ```
-    $ sudo systemctl start rippled
+    $ sudo systemctl start xrpld
     ```
 
 0. If you added an `[import_db]` stanza to your server's config file, remove it after the import completes.
@@ -119,12 +119,12 @@ To configure your server to acquire and store full history, complete the followi
 - **Tutorials:**
     - [Capacity Planning](../../installation/capacity-planning.md), particularly [Disk Space](../../installation/capacity-planning.md#disk-space)
     - [Configure Online Deletion](configure-online-deletion.md)
-    - [Diagnosing Problems with rippled](../../troubleshooting/diagnosing-problems.md)
+    - [Diagnosing Problems with xrpld](../../troubleshooting/diagnosing-problems.md)
     - [Understanding Log Messages](../../troubleshooting/understanding-log-messages.md)
 - **References:**
     - [server_info method][]
     - [can_delete method][]
     - [Ledger Data Formats](../../../references/protocol/ledger-data/index.md)
-    - [rippled Commandline Usage Reference](../../commandline-usage.md)
+    - [xrpld Commandline Usage Reference](../../commandline-usage.md)
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

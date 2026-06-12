@@ -2,14 +2,14 @@
 html: use-payment-channels.html
 parent: use-specialized-payment-types.html
 seo:
-    description: Payment Channels are an advanced feature for sending "asynchronous" XRP payments that can be divided into very small increments and settled later. This tutorial walks through the entire process of using a payment channel, with examples using the JSON-RPC API of a local rippled server.
+    description: Payment Channels are an advanced feature for sending "asynchronous" XRP payments that can be divided into very small increments and settled later. This tutorial walks through the entire process of using a payment channel, with examples using the JSON-RPC API of a local xrpld server.
 labels:
   - Payment Channels
   - Smart Contracts
 ---
 # Use Payment Channels
 
-[Payment Channels](../../concepts/payment-types/payment-channels.md) are an advanced feature for sending "asynchronous" XRP payments that can be divided into very small increments and settled later. This tutorial walks through the entire process of using a payment channel, with examples using the [JSON-RPC API](../../references/http-websocket-apis/index.md) of a local [`rippled` server](../../concepts/networks-and-servers/index.md).
+[Payment Channels](../../concepts/payment-types/payment-channels.md) are an advanced feature for sending "asynchronous" XRP payments that can be divided into very small increments and settled later. This tutorial walks through the entire process of using a payment channel, with examples using the [JSON-RPC API](../../references/http-websocket-apis/index.md) of a local [`xrpld` server](../../concepts/networks-and-servers/index.md).
 
 Ideally, to step through this tutorial, you would have two people, each with the keys to a [funded XRP Ledger account](../../concepts/accounts/index.md). However, you can also step through the tutorial as one person managing two XRP Ledger addresses.
 
@@ -26,7 +26,7 @@ The example addresses used in this tutorial are:
 
 {% admonition type="success" name="Tip" %}In this example, the channel's public key is the public key from the payer's master key pair. This is perfectly safe and valid. It is also perfectly safe and valid to use a different key pair, as long as only the payer knows the public and secret keys for that key pair. <!-- Editor's note: We don't have a good page to link to explain key pairs as of time of this writing. -->{% /admonition %}
 
-Additionally, you'll need a `rippled` server to send transactions to. The examples in this tutorial assume a `rippled` server is running on the test machine (`localhost`) with an unencrypted JSON-RPC API endpoint on port **5005**.
+Additionally, you'll need an `xrpld` server to send transactions to. The examples in this tutorial assume an `xrpld` server is running on the test machine (`localhost`) with an unencrypted JSON-RPC API endpoint on port **5005**.
 
 To test without transferring real XRP, you can use [XRP Ledger Testnet](/resources/dev-tools/xrp-faucets) addresses with Testnet XRP. If you do use the Testnet, you can use the Testnet servers' JSON-RPC API by connecting to `https://api.altnet.rippletest.net:51234` instead of `http://localhost:5005/`.
 
@@ -58,7 +58,7 @@ This is a [PaymentChannelCreate transaction][]. As part of this process, the pay
 
 {% admonition type="success" name="Tip" %}The "settlement delay" does not delay the settlement, which can happen as fast as a ledger version closes (3-5 seconds). The "settlement delay" is a forced delay on closing the channel so that the payee has a chance to finish with settlement.{% /admonition %}
 
-The following example shows creation of a payment channel by [submitting](../../references/http-websocket-apis/public-api-methods/transaction-methods/submit.md#sign-and-submit-mode) to a local `rippled` server with the JSON-RPC API. The payment channel allocates 100 XRP from the [example payer](#example-values) (`rN7n7...`) to the [example payee](#example-values) (`rf1Bi...`) with a settlement delay of 1 day. The public key is the example payer's master public key, in hexadecimal.
+The following example shows creation of a payment channel by [submitting](../../references/http-websocket-apis/public-api-methods/transaction-methods/submit.md#sign-and-submit-mode) to a local `xrpld` server with the JSON-RPC API. The payment channel allocates 100 XRP from the [example payer](#example-values) (`rN7n7...`) to the [example payee](#example-values) (`rf1Bi...`) with a settlement delay of 1 day. The public key is the example payer's master public key, in hexadecimal.
 
 {% admonition type="info" name="Note" %}A payment channel counts as one object toward the payer's [owner reserve](../../concepts/accounts/reserves.md#owner-reserves). The owner must keep at least enough XRP to satisfy the reserve after subtracting the XRP allocated to the payment channel.{% /admonition %}
 

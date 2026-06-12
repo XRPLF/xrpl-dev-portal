@@ -7,13 +7,13 @@ status: removed
 ---
 # Fix SQLite Transaction Database Page Size Issue
 
-`rippled` servers with full [ledger history](../../concepts/networks-and-servers/ledger-history.md) (or a very large amount of transaction history) and a database that was initially created with a `rippled` version earlier than 0.40.0 (released January 2017) may encounter a problem with their SQLite database page size that stops the server from operating properly. Servers that store only recent transaction history (the default configuration) and servers whose database files were created with `rippled` version 0.40.0 and later are not likely to have this problem. <!-- STYLE_OVERRIDE: encounter -->
+`xrpld` servers with full [ledger history](../../concepts/networks-and-servers/ledger-history.md) (or a very large amount of transaction history) and a database that was initially created with a `rippled` version earlier than 0.40.0 (released January 2017) may encounter a problem with their SQLite database page size that stops the server from operating properly. Servers that store only recent transaction history (the default configuration) and servers whose database files were created with `rippled` version 0.40.0 and later are not likely to have this problem. <!-- STYLE_OVERRIDE: encounter -->
 
 This document describes steps to detect and correct this problem if it occurs.
 
 ## Background
 
-`rippled` servers store a copy of their transaction history in a SQLite database. Before version 0.40.0, `rippled` configured this database to have a capacity of roughly 2 TB. For most uses, this is plenty. However, full transaction history back to ledger 32570 (the oldest ledger version available in the production XRP Ledger history) is likely to exceed this exceed the SQLite database capacity. `rippled` servers version 0.40.0 and later create their SQLite database files with a larger capacity, so they are unlikely to encounter this problem.
+`xrpld` servers store a copy of their transaction history in a SQLite database. Before version 0.40.0, `xrpld` configured this database to have a capacity of roughly 2 TB. For most uses, this is plenty. However, full transaction history back to ledger 32570 (the oldest ledger version available in the production XRP Ledger history) is likely to exceed this exceed the SQLite database capacity. `xrpld` servers version 0.40.0 and later create their SQLite database files with a larger capacity, so they are unlikely to encounter this problem.
 
 The capacity of the SQLite database is a result of the database's _page size_ parameter, which cannot be easily changed after the database is created. (For more information on SQLite's internals, see [the official SQLite documentation](https://www.sqlite.org/fileformat.html).) The database can reach its capacity even if there is still free space on the disk and filesystem where it is stored. As described in the [Fix](#fix) below, reconfiguring the page size to avoid this problem requires a somewhat time-consuming migration process. <!-- STYLE_OVERRIDE: easily -->
 
@@ -24,16 +24,16 @@ The capacity of the SQLite database is a result of the database's _page size_ pa
 
 If your server is vulnerable to this problem, you can detect it two ways:
 
-- You can detect the problem [proactively](#proactive-detection) (before it causes problems) if your `rippled` server is version 1.1.0 or later.
-- You can identify the problem [reactively](#reactive-detection) (when your server is crashing) on any `rippled` version.
+- You can detect the problem [proactively](#proactive-detection) (before it causes problems) if your `xrpld` server is version 1.1.0 or later.
+- You can identify the problem [reactively](#reactive-detection) (when your server is crashing) on any `xrpld` version.
 
-In both cases, detection of the problem requires access to `rippled`'s server logs.
+In both cases, detection of the problem requires access to `xrpld`'s server logs.
 
-{% admonition type="success" name="Tip" %}The location of the debug log depends on your `rippled` server's config file. The [default configuration](https://github.com/XRPLF/rippled/blob/master/cfg/rippled-example.cfg#L1139-L1142) writes the server's debug log to the file `/var/log/rippled/debug.log`.{% /admonition %}
+{% admonition type="success" name="Tip" %}The location of the debug log depends on your `xrpld` server's config file. The [default configuration](https://github.com/XRPLF/rippled/blob/master/cfg/rippled-example.cfg#L1139-L1142) writes the server's debug log to the file `/var/log/xrpld/debug.log`.{% /admonition %}
 
 ### Proactive Detection
 
-To detect the SQLite page size problem proactively, you must be running **`rippled` 1.1.0 or later**. The `rippled` server writes a message such as the following in its debug log periodically, at least once every 2 minutes. (The exact numeric values from the log entry and the path to your transaction database depend on your environment.)
+To detect the SQLite page size problem proactively, you must be running **`rippled` 1.1.0 or later**. The `xrpld` server writes a message such as the following in its debug log periodically, at least once every 2 minutes. (The exact numeric values from the log entry and the path to your transaction database depend on your environment.)
 
 ```text
 Transaction DB pathname: /opt/rippled/transaction.db; SQLite page size: 1024
@@ -43,25 +43,25 @@ Transaction DB pathname: /opt/rippled/transaction.db; SQLite page size: 1024
 
 The value `SQLite page size: 1024 bytes` indicates that your transaction database is configured with a smaller page size and does not have capacity for full transaction history. If the value is already 4096 bytes or higher, then your SQLite database should already have adequate capacity to store full transaction history and you do not need to perform the migration described in this document.
 
-The `rippled` server halts if the `Free space` described in this log message becomes less than 524288000 bytes (500 MB). If your free space is approaching that threshold, [fix the problem](#fix) to avoid an unexpected outage.
+The `xrpld` server halts if the `Free space` described in this log message becomes less than 524288000 bytes (500 MB). If your free space is approaching that threshold, [fix the problem](#fix) to avoid an unexpected outage.
 
 ### Reactive Detection
 
-If your server's SQLite database capacity has already been exceeded, the `rippled` service writes a log message indicating the problem and halts.
+If your server's SQLite database capacity has already been exceeded, the `xrpld` service writes a log message indicating the problem and halts.
 
 #### rippled 1.1.0 and Later
 
-On `rippled` versions 1.1.0 and later, the server shuts down gracefully with a message such as the following in the server's debug log:
+On `xrpld` versions 1.1.0 and later, the server shuts down gracefully with a message such as the following in the server's debug log:
 
 ```text
-Free SQLite space for transaction db is less than 512MB. To fix this, rippled
+Free SQLite space for transaction db is less than 512MB. To fix this, xrpld
   must be executed with the vacuum <sqlitetmpdir> parameter before restarting.
   Note that this activity can take multiple days, depending on database size.
 ```
 
 #### Earlier than rippled 1.1.0
 
-On `rippled` versions before 1.1.0, the server crashes repeatedly with messages such as the following in the server's debug log:
+On `xrpld` versions before 1.1.0, the server crashes repeatedly with messages such as the following in the server's debug log:
 
 ```text
 Terminating thread doJob: AcquisitionDone: unhandled
@@ -72,26 +72,26 @@ Terminating thread doJob: AcquisitionDone: unhandled
 
 ## Fix
 
-You can fix this issue using `rippled` on supported Linux systems according to the steps described in this document. In the case of a full-history server with system specs approximately matching the [recommended hardware configuration](../installation/capacity-planning.md#recommendation-1), the process may take more than two full days.
+You can fix this issue using `xrpld` on supported Linux systems according to the steps described in this document. In the case of a full-history server with system specs approximately matching the [recommended hardware configuration](../installation/capacity-planning.md#recommendation-1), the process may take more than two full days.
 
 ### Prerequisites
 
 - You must be running **`rippled` version 1.1.0 or later**.
 
-    - [Upgrade rippled](../installation/index.md) to the latest stable version before starting this process.
+    - [Upgrade xrpld](../installation/index.md) to the latest stable version before starting this process.
 
-    - You can check what version of `rippled` you have installed locally by running the following command:
+    - You can check what version of `xrpld` you have installed locally by running the following command:
 
         ```
-        rippled --version
+        xrpld --version
         ```
 
-- You must have enough free space to temporarily store a second copy of the transaction database, in a directory that is writable by the `rippled` user. This free space does not need to be in the same filesystem as the existing transaction database.
+- You must have enough free space to temporarily store a second copy of the transaction database, in a directory that is writable by the `xrpld` user. This free space does not need to be in the same filesystem as the existing transaction database.
 
     The transaction database is stored in the `transaction.db` file in the folder specified by your configuration's `[database_path]` setting. You can check the size of this file to see how much free space you need. For example:
 
     ```
-    ls -l /var/lib/rippled/db/transaction.db
+    ls -l /var/lib/xrpld/db/transaction.db
     ```
 
 ### Migration Process
@@ -106,7 +106,7 @@ To migrate your transaction database to a larger page size, perform the followin
     mkdir /tmp/rippled_txdb_migration
     ```
 
-3. Grant the `rippled` user ownership of the temporary folder so it can write files there. (This is not necessary if your temporary folder is somewhere the `rippled` user already has write access to.)
+3. Grant the `xrpld` user ownership of the temporary folder so it can write files there. (This is not necessary if your temporary folder is somewhere the `xrpld` user already has write access to.)
 
     ```
     chown rippled /tmp/rippled_txdb_migration
@@ -123,10 +123,10 @@ To migrate your transaction database to a larger page size, perform the followin
     /dev/sda2       5.4T  2.6T  2.6T  50% /tmp
     ```
 
-5. If `rippled` is still running, stop it:
+5. If `xrpld` is still running, stop it:
 
     ```
-    sudo systemctl stop rippled
+    sudo systemctl stop xrpld
     ```
 
 6. Open a `screen` session (or other similar tool) so that the process does not stop when you log out:
@@ -135,19 +135,19 @@ To migrate your transaction database to a larger page size, perform the followin
     screen
     ```
 
-7. Become the `rippled` user:
+7. Become the `xrpld` user:
 
     ```
-    sudo su - rippled
+    sudo su - xrpld
     ```
 
-8. Run `rippled` executable directly, providing the `--vacuum` command with the path to the temporary directory:
+8. Run `xrpld` executable directly, providing the `--vacuum` command with the path to the temporary directory:
 
     ```
-    /opt/ripple/bin/rippled -q --vacuum /tmp/rippled_txdb_migration
+    /usr/bin/xrpld -q --vacuum /tmp/rippled_txdb_migration
     ```
 
-    The `rippled` executable immediately displays the following message:
+    The `xrpld` executable immediately displays the following message:
 
     ```
     VACUUM beginning. page_size: 1024
@@ -155,7 +155,7 @@ To migrate your transaction database to a larger page size, perform the followin
 
 9. Wait for the process to complete. This can take more than two full days.
 
-    When the process is complete, the `rippled` executable displays the following message, then exits:
+    When the process is complete, the `xrpld` executable displays the following message, then exits:
 
     ```
     VACUUM finished. page_size: 4096
@@ -175,18 +175,18 @@ To migrate your transaction database to a larger page size, perform the followin
 
     For more information on the `screen` command, see [the official Screen User's Manual](https://www.gnu.org/software/screen/manual/screen.html) or any of the other many resources available online.
 
-10. Restart the `rippled` service.
+10. Restart the `xrpld` service.
 
     ```
-    sudo systemctl start rippled
+    sudo systemctl start xrpld
     ```
 
-11. Confirm that the `rippled` service started successfully.
+11. Confirm that the `xrpld` service started successfully.
 
     You can use the [commandline interface](../../tutorials/get-started/get-started-http-websocket-apis.md#commandline) to check the server status (unless you have configured your server not to accept JSON-RPC requests). For example:
 
     ```
-    /opt/ripple/bin/rippled server_info
+    /usr/bin/xrpld server_info
     ```
 
     For a description of the expected response from this command, see the [server_info method][] documentation.
@@ -194,7 +194,7 @@ To migrate your transaction database to a larger page size, perform the followin
 12. Watch the server's debug log to confirm that the `SQLite page size` is now 4096:
 
     ```
-    tail -F /var/log/rippled/debug.log
+    tail -F /var/log/xrpld/debug.log
     ```
 
     The [periodic log message](#proactive-detection) should also show significantly more free pages and free pages than it did before the migration.
@@ -211,14 +211,14 @@ To migrate your transaction database to a larger page size, perform the followin
 ## See Also
 
 - **Concepts:**
-    - [The `rippled` Server](../../concepts/networks-and-servers/index.md)
+    - [The `xrpld` Server](../../concepts/networks-and-servers/index.md)
     - [Ledger History](../../concepts/networks-and-servers/ledger-history.md)
 - **Tutorials:**
     - [Understanding Log Messages](understanding-log-messages.md)
     - [Configure Full History](../configuration/data-retention/configure-full-history.md)
 - **References:**
-    - [rippled API Reference](../../references/http-websocket-apis/index.md)
-        - [`rippled` Commandline Usage](../commandline-usage.md)
+    - [xrpld API Reference](../../references/http-websocket-apis/index.md)
+        - [`xrpld` Commandline Usage](../commandline-usage.md)
         - [server_info method][]
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

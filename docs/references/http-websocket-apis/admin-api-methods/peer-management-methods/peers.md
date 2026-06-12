@@ -7,7 +7,7 @@ labels:
 # peers
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/Peers.cpp "Source")
 
-The `peers` command returns a list of all other `rippled` servers currently connected to this one over the [Peer Protocol](../../../../concepts/networks-and-servers/peer-protocol.md), including information on their connection and sync status.
+The `peers` command returns a list of all other `xrpld` servers currently connected to this one over the [Peer Protocol](../../../../concepts/networks-and-servers/peer-protocol.md), including information on their connection and sync status.
 
 *The `peers` method is an [admin method](../index.md) that cannot be run by unprivileged users!*
 
@@ -27,7 +27,7 @@ An example of the request format:
 
 {% tab label="Commandline" %}
 ```
-rippled peers
+xrpld peers
 ```
 {% /tab %}
 
@@ -272,7 +272,7 @@ An example of a successful response:
 
 {% tab label="Commandline" %}
 ```json
-Loading: "/etc/rippled.cfg"
+Loading: "/etc/xrpld/xrpld.cfg"
 Connecting to 127.0.0.1:5005
 
 {
@@ -370,10 +370,10 @@ The response follows the [standard format][], with a successful result containin
 
 | `Field`   | Type   | Description                                             |
 |:----------|:-------|:--------------------------------------------------------|
-| `cluster` | Object | Summary of other `rippled` servers in the same cluster, if [configured as a cluster](../../../../concepts/networks-and-servers/clustering.md). |
+| `cluster` | Object | Summary of other `xrpld` servers in the same cluster, if [configured as a cluster](../../../../concepts/networks-and-servers/clustering.md). |
 | `peers`   | Array  | Array of peer objects.                                  |
 
-Each field of the `cluster` object is the public key of that `rippled` server's identifying key pair. (This is the same value that that server returns as `pubkey_node` in the [server_info method][].) The contents of that field are an object with the following fields:
+Each field of the `cluster` object is the public key of that `xrpld` server's identifying key pair. (This is the same value that that server returns as `pubkey_node` in the [server_info method][].) The contents of that field are an object with the following fields:
 
 | `Field` | Type   | Description                                               |
 |:--------|:-------|:----------------------------------------------------------|
@@ -386,9 +386,9 @@ Each member of the `peers` array is a peer object with the following fields:
 | `Field`            | Type    | Description                                   |
 |:-------------------|:--------|:----------------------------------------------|
 | `address`          | String  | The IP address and port where this peer is connected |
-| `cluster`          | Boolean | _(May be omitted)_ If `true`, the current server and the peer server are part of the same `rippled` cluster. |
+| `cluster`          | Boolean | _(May be omitted)_ If `true`, the current server and the peer server are part of the same `xrpld` cluster. |
 | `name`             | String  | _(May be omitted)_ If the peer is part of the same cluster, this is the display name for that server as defined in the config file. |
-| `complete_ledgers` | String  | Range expression indicating the [ledger indexes][ledger index] of the ledger versions the peer `rippled` server has available |
+| `complete_ledgers` | String  | Range expression indicating the [ledger indexes][ledger index] of the ledger versions the peer `xrpld` server has available |
 | `inbound`          | Boolean | _(May be omitted)_ If `true`, the peer is connecting to the local server. |
 | `latency`          | Number  | The network latency to the peer (in milliseconds) |
 | `ledger`           | String  | The identifying [hash][Hash] of the peer's most recently closed ledger |
@@ -398,8 +398,8 @@ Each member of the `peers` array is a peer object with the following fields:
 | `public_key`       | String  | _(May be omitted)_ A public key that can be used to verify the integrity of the peer's messages. This is not the same key that is used for validations, but it follows the same format. |
 | `sanity`           | String  | _(May be omitted)_ Whether this peer is following the same rules and ledger history as the current server. A value of `insane` probably indicates that the peer is part of a [parallel network](../../../../concepts/networks-and-servers/parallel-networks.md). The value `unknown` indicates that the current server is unsure whether the peer is compatible. <!-- STYLE_OVERRIDE: insane --> |
 | `status`           | String  | _(May be omitted)_ The most recent status message from the peer. Could be `connecting`, `connected`, `monitoring`, `validating`, or `shutting`. |
-| `uptime`           | Number  | The number of seconds that your `rippled` server has been continuously connected to this peer. |
-| `version`          | string  | _(May be omitted)_ The `rippled` version number of the peer server |
+| `uptime`           | Number  | The number of seconds that your `xrpld` server has been continuously connected to this peer. |
+| `version`          | string  | _(May be omitted)_ The `xrpld` version number of the peer server |
 
 The `metrics` object contains the following fields:
 

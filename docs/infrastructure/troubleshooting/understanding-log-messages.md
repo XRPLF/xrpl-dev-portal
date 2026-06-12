@@ -6,9 +6,9 @@ labels:
 ---
 # Understanding Log Messages
 
-The following sections describe some of the most common types of log messages that can appear in a [`rippled` server's](../../concepts/networks-and-servers/index.md) debug log and how to interpret them.
+The following sections describe some of the most common types of log messages that can appear in a [`xrpld` server's](../../concepts/networks-and-servers/index.md) debug log and how to interpret them.
 
-This is an important step in [Diagnosing Problems](diagnosing-problems.md) with `rippled`.
+This is an important step in [Diagnosing Problems](diagnosing-problems.md) with `xrpld`.
 
 ## Log Message Structure
 
@@ -54,11 +54,11 @@ Terminating thread rippled: main: unhandled St13runtime_error
 
 If your server always crashes on startup, see [Server Won't Start](server-wont-start.md) for possible cases.
 
-If your server crashes randomly during operation or as a result of particular commands, make sure you are [updated](../installation/index.md) to the latest `rippled` version. If you are on the latest version and your server is still crashing, check the following:
+If your server crashes randomly during operation or as a result of particular commands, make sure you are [updated](../installation/index.md) to the latest `xrpld` version. If you are on the latest version and your server is still crashing, check the following:
 
-- Is your server running out of memory? On some systems, `rippled` may be terminated by the Out Of Memory (OOM) Killer or another monitor process.
+- Is your server running out of memory? On some systems, `xrpld` may be terminated by the Out Of Memory (OOM) Killer or another monitor process.
 - If your server is running in a shared environment, are other users or administrators causing the machine or service to be restarted? For example, some hosted providers automatically kill any service that uses a large amount of a shared machine's resources for an extended period of time.
-- Does your server meet the [minimum requirements](../installation/system-requirements.md) to run `rippled`? What about the [recommendations for production servers](../installation/system-requirements.md#recommended-specifications)?
+- Does your server meet the [minimum requirements](../installation/system-requirements.md) to run `xrpld`? What about the [recommendations for production servers](../installation/system-requirements.md#recommended-specifications)?
 
 If none of the above apply, please report the issue to Ripple as a security-sensitive bug. If Ripple can reproduce the crash, you may be eligible for a bounty. See <https://ripple.com/bug-bounty/> for details.
 
@@ -89,11 +89,11 @@ Collector:ERR async_send failed: Connection refused
 This could mean:
 
 - Your StatsD configuration has the wrong IP address or port.
-- The StatsD server you were attempting to export to was down or not accessible from your `rippled` server.
+- The StatsD server you were attempting to export to was down or not accessible from your `xrpld` server.
 
-Check the `[insight]` stanza in your `rippled`'s config file and confirm that you have network connectivity from your `rippled` server to your StatsD server.
+Check the `[insight]` stanza in your `xrpld`'s config file and confirm that you have network connectivity from your `xrpld` server to your StatsD server.
 
-This error has no other impact on the `rippled` server, which should continue to work as normal except for the sending of StatsD metrics.
+This error has no other impact on the `xrpld` server, which should continue to work as normal except for the sending of StatsD metrics.
 
 
 ## Check for upgrade
@@ -104,12 +104,12 @@ The following message indicates that the server has detected that it is running 
 LedgerMaster:ERR Check for upgrade: A majority of trusted validators are running a newer version.
 ```
 
-This is not strictly a problem, but an old server version is likely to become [amendment blocked](../../concepts/networks-and-servers/amendments.md#amendment-blocked-servers). You should [update `rippled`](../installation/index.md) to the latest stable version. (If you are connected to [devnet](../../concepts/networks-and-servers/parallel-networks.md), update to the latest nightly version instead.)
+This is not strictly a problem, but an old server version is likely to become [amendment blocked](../../concepts/networks-and-servers/amendments.md#amendment-blocked-servers). You should [update `xrpld`](../installation/index.md) to the latest stable version. (If you are connected to [devnet](../../concepts/networks-and-servers/parallel-networks.md), update to the latest nightly version instead.)
 
 
 ## Connection reset by peer
 
-The following log message indicates that a peer `rippled` server closed a connection:
+The following log message indicates that a peer `xrpld` server closed a connection:
 
 ```text
 Peer:WRN [IP Address: 197.27.127.136:53046, Public Key: n9J2CP7hZypxDJ27ZSxoy4VjbaSgsCNaRRJtJkNJM5KMdGaLdRy7, Id: 12] onReadMessage: Connection reset by peer
@@ -145,7 +145,7 @@ InboundLedger:WRN 11 timeouts for ledger 8265938
 
 This indicates that your server is having trouble requesting specific ledger data from its peers.
 
-This is not strictly a problem, but if you want to acquire ledger history faster, you can configure `rippled` to connect to peers with full history by adding or editing the `[ips_fixed]` config stanza and restarting the server. For example, to always try to connect to one of Ripple's full-history servers:
+This is not strictly a problem, but if you want to acquire ledger history faster, you can configure `xrpld` to connect to peers with full history by adding or editing the `[ips_fixed]` config stanza and restarting the server. For example, to always try to connect to one of Ripple's full-history servers:
 
 ```
 [ips_fixed]
@@ -185,9 +185,9 @@ These two types of messages often occur together, when a long-running job causes
 
 It is **normal** to display several messages of these types **during the first few minutes** after starting the server.
 
-If the messages continue for more than 5 minutes after starting the server, especially if the `run` times are well over 1000 ms, that may indicate that **your server does not have enough disk I/O, RAM, or CPU**. This may be caused by not having powerful enough hardware or because other processes running on the same hardware are competing with `rippled` for resources. (Examples of other processes that may compete with `rippled` for resources include scheduled backups, virus scanners, and periodic database cleaners.)
+If the messages continue for more than 5 minutes after starting the server, especially if the `run` times are well over 1000 ms, that may indicate that **your server does not have enough disk I/O, RAM, or CPU**. This may be caused by not having powerful enough hardware or because other processes running on the same hardware are competing with `xrpld` for resources. (Examples of other processes that may compete with `xrpld` for resources include scheduled backups, virus scanners, and periodic database cleaners.)
 
-Another possible cause is trying to use NuDB on rotational hard disks; NuDB should only be used with solid state drives (SSDs). It's **not recommended** to use `rippled` with rotational disks, but you _may_ be able to do so using RocksDB. If you are using rotational disks, make sure both `[node_db]` is configured to use RocksDB. For example:
+Another possible cause is trying to use NuDB on rotational hard disks; NuDB should only be used with solid state drives (SSDs). It's **not recommended** to use `xrpld` with rotational disks, but you _may_ be able to do so using RocksDB. If you are using rotational disks, make sure both `[node_db]` is configured to use RocksDB. For example:
 
 ```
 [node_db]
@@ -270,7 +270,7 @@ Validations:WRN Unable to determine hash of ancestor seq=3 from ledger hash=00B1
 ## [veto_amendments] section in config file ignored
 <!-- SPELLING_IGNORE: veto_amendments -->
 
-Log messages such as the following occur when  your `rippled.cfg` file contains a legacy `[veto_amendments]` stanza. The first time the server starts on version 1.7.0 or higher, it reads the stanza to set amendment votes; on later restarts, it ignores the `[amendments]` and `[veto_amendments]` stanzas and prints this message instead.
+Log messages such as the following occur when  your `xrpld.cfg` file contains a legacy `[veto_amendments]` stanza. The first time the server starts on version 1.7.0 or higher, it reads the stanza to set amendment votes; on later restarts, it ignores the `[amendments]` and `[veto_amendments]` stanzas and prints this message instead.
 
 ```text
 Amendments:WRN [veto_amendments] section in config file ignored in favor of data in db/wallet.db.
@@ -306,14 +306,14 @@ NetworkOPs:WRN We are not running on the consensus ledger
 ## See Also
 
 - **Concepts:**
-    - [The `rippled` Server](../../concepts/networks-and-servers/index.md)
+    - [The `xrpld` Server](../../concepts/networks-and-servers/index.md)
     - [Technical FAQ](/about/faq.md)
 - **Tutorials:**
     - [Diagnosing Problems](diagnosing-problems.md)
     - [Capacity Planning](../installation/capacity-planning.md)
 - **References:**
-    - [rippled API Reference](../../references/http-websocket-apis/index.md)
-        - [`rippled` Commandline Usage](../commandline-usage.md)
+    - [xrpld API Reference](../../references/http-websocket-apis/index.md)
+        - [`xrpld` Commandline Usage](../commandline-usage.md)
         - [server_info method][]
 
 <!-- SPELLING_IGNORE: oom, async_send, statsd, inboundledger, loadmonitor, validatedseq -->

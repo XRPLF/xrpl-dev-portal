@@ -40,7 +40,7 @@ An example of the request format:
 {% tab label="Commandline" %}
 ```sh
 #Syntax: book_changes [<ledger hash|id>]
-rippled book_changes 88530953
+xrpld book_changes 88530953
 ```
 {% /tab %}
 
@@ -70,7 +70,7 @@ An example of a successful response:
 {% /tab %}
 
 {% tab label="Commandline" %}
-{% code-snippet file="/_api-examples/book_changes/jsonrpc-response.json" language="json" prefix="Loading: \"/etc/opt/ripple/rippled.cfg\"\n2024-Jun-07 18:41:45.257772761 UTC HTTPClient:NFO Connecting to 127.0.0.1:5005\n\n" /%}
+{% code-snippet file="/_api-examples/book_changes/jsonrpc-response.json" language="json" prefix="Loading: \"/etc/xrpld/xrpld.cfg\"\n2024-Jun-07 18:41:45.257772761 UTC HTTPClient:NFO Connecting to 127.0.0.1:5005\n\n" /%}
 {% /tab %}
 
 {% /tabs %}

@@ -9,11 +9,11 @@ labels:
 # Test Amendments
 
 
-You can test how `rippled` behaves before proposed amendments are fully enabled on the production network. Since other members of the consensus network won't have the feature enabled, run your server in stand-alone mode.
+You can test how `xrpld` behaves before proposed amendments are fully enabled on the production network. Since other members of the consensus network won't have the feature enabled, run your server in stand-alone mode.
 
 {% admonition type="warning" name="Caution" %}This is intended for development purposes only.{% /admonition %}
 
-To forcibly enable a feature, add a `[features]` stanza with amendment short names to your `rippled.cfg` file. Each amendment needs its own line.
+To forcibly enable a feature, add a `[features]` stanza with amendment short names to your `xrpld.cfg` file. Each amendment needs its own line.
 
 {% tabs %}
 

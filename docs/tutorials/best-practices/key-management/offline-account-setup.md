@@ -18,7 +18,7 @@ A highly secure [signing configuration](../../../concepts/transactions/secure-si
 To use offline signing, you must meet the following prerequisites:
 
 - You must have one computer to use as an offline machine. This machine must be set up with a [supported operating system](../../../infrastructure/installation/system-requirements.md). See your operating system's support for offline setup instructions. (For example, [Red Hat Enterprise Linux DVD ISO installation instructions](https://access.redhat.com/solutions/7227).) Be sure that the software and physical media you use are not infected with malware.
-- You must have a separate computer to use as an online machine. This machine does not need to run `rippled` but it must be able to connect to the XRP Ledger network and receive information about the state of the shared ledger. For example, you can use a [WebSocket connection to a public server](../../get-started/get-started-http-websocket-apis.md).
+- You must have a separate computer to use as an online machine. This machine does not need to run `xrpld` but it must be able to connect to the XRP Ledger network and receive information about the state of the shared ledger. For example, you can use a [WebSocket connection to a public server](../../get-started/get-started-http-websocket-apis.md).
 - You must have a secure way to transfer signed transaction binary data from the offline machine to the online machine.
     - One way to do this is with a QR code generator on the offline machine, and a QR code scanner on the online machine. (In this case, your "online machine" could be a handheld device such as a smartphone.)
     - Another way is to copy files from the offline machine to an online machine using physical media. If you use this method, be sure not to use physical media that could infect your offline machine with malicious software. (For example, do not reuse the same USB drive on both online and offline machines.)
@@ -42,14 +42,14 @@ You may want to set up custom software to help construct transaction instruction
 
 ### 2. Generate cryptographic keys
 
-On the **offline machine**, generate a pair of [cryptographic keys](../../../concepts/accounts/cryptographic-keys.md) to be used with your account. Be sure to generate the keys with a securely random procedure, not from a short passphrase or some other source that does not have enough entropy. For example, you can use the [wallet_propose method][] of `rippled`:
+On the **offline machine**, generate a pair of [cryptographic keys](../../../concepts/accounts/cryptographic-keys.md) to be used with your account. Be sure to generate the keys with a securely random procedure, not from a short passphrase or some other source that does not have enough entropy. For example, you can use the [wallet_propose method][] of `xrpld`:
 
 {% tabs %}
 
-{% tab label="rippled Commandline" %}
+{% tab label="xrpld Commandline" %}
 ```sh
-$ ./rippled wallet_propose
-Loading: "/etc/opt/ripple/rippled.cfg"
+$ ./xrpld wallet_propose
+Loading: "/etc/xrpld/xrpld.cfg"
 2019-Dec-09 22:58:24.110862955 HTTPClient:NFO Connecting to 127.0.0.1:5005
 
 {
@@ -73,7 +73,7 @@ Take note of the following values:
 
 - **`account_id`**. This is the address associated with the key pair, which becomes your **[account](../../../concepts/accounts/index.md) address** in the XRP Ledger after you fund it with XRP (later in this process). It is safe to share your `account_id` publicly.
 - **`master_seed`**. This is the secret seed value for the key pair, which you'll use to sign transactions from the account. For best security, encrypt this value before writing it to disk on the offline machine. As an encryption key, use a secure passphrase that human operators can memorize or write down somewhere physically secure, such as a [diceware passphrase](https://theworld.com/~reinhold/diceware.html) created with properly weighted dice. You may also want to use a physical security key as a second factor. The extent of the precautions to take at this stage is up to you.
-- **`key_type`**. This is the cryptographic algorithm used for this key pair. You need to know what type of key pair you have. The default in `rippled` is `secp256k1`, but some client libraries use `Ed25519` by default.
+- **`key_type`**. This is the cryptographic algorithm used for this key pair. You need to know what type of key pair you have. The default in `xrpld` is `secp256k1`, but some client libraries use `Ed25519` by default.
 
 **Do not** share the `master_key`, `master_seed`, or `master_seed_hex` values anywhere. Any of these can be used to reconstruct the private key associated with this address.
 
@@ -99,11 +99,11 @@ The `Sequence` number of a newly-funded account matches the [ledger index][] whe
 
 {% tabs %}
 
-{% tab label="rippled Commandline" %}
+{% tab label="xrpld Commandline" %}
 ```sh
-$ ./rippled account_info rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn
+$ ./xrpld account_info rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn
 
-Loading: "/etc/opt/ripple/rippled.cfg"
+Loading: "/etc/xrpld/xrpld.cfg"
 2019-Dec-11 01:06:21.728637950 HTTPClient:NFO Connecting to 127.0.0.1:5005
 {
    "result" : {
@@ -157,11 +157,11 @@ Example (enable Require Auth):
 
 {% tabs %}
 
-{% tab label="rippled Commandline" %}
+{% tab label="xrpld Commandline" %}
 ```sh
-$ rippled sign sn3nxiW7v8KXzPzAqzyHXbSSKNuN9 '{"Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", "Fee": "12", "Sequence": 1, "TransactionType": "AccountSet", "SetFlag": 2}' offline
+$ xrpld sign sn3nxiW7v8KXzPzAqzyHXbSSKNuN9 '{"Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", "Fee": "12", "Sequence": 1, "TransactionType": "AccountSet", "SetFlag": 2}' offline
 
-Loading: "/etc/opt/ripple/rippled.cfg"
+Loading: "/etc/xrpld/xrpld.cfg"
 2019-Dec-11 00:18:31.865955978 HTTPClient:NFO Connecting to 127.0.0.1:5005
 {
    "result" : {
@@ -203,11 +203,11 @@ Example of transaction submission:
 
 {% tabs %}
 
-{% tab label="rippled Commandline" %}
+{% tab label="xrpld Commandline" %}
 ```sh
-$ rippled submit 1200032280000000240000000120210000000268400000000000000C7321039543A0D3004CDA0904A09FB3710251C652D69EA338589279BC849D47A7B019A174473045022100D5C92D7705036CD7EBB601C8DFCD90927FA591A62AF832C489E9C898EC8E2FA0022052F1819340EB73E9749B8930A6935727362B8E141D1B2E246B49F912223FFD4381144B4E9C06F24296074F7BC48F92A97916C6DC5EA9
+$ xrpld submit 1200032280000000240000000120210000000268400000000000000C7321039543A0D3004CDA0904A09FB3710251C652D69EA338589279BC849D47A7B019A174473045022100D5C92D7705036CD7EBB601C8DFCD90927FA591A62AF832C489E9C898EC8E2FA0022052F1819340EB73E9749B8930A6935727362B8E141D1B2E246B49F912223FFD4381144B4E9C06F24296074F7BC48F92A97916C6DC5EA9
 
-Loading: "/etc/opt/ripple/rippled.cfg"
+Loading: "/etc/xrpld/xrpld.cfg"
 2019-Dec-11 01:14:25.988839227 HTTPClient:NFO Connecting to 127.0.0.1:5005
 
 {
@@ -246,11 +246,11 @@ For each transaction you submitted, note the transaction's [final outcome](../..
 
 {% tabs %}
 
-{% tab label="rippled Commandline" %}
+{% tab label="xrpld Commandline" %}
 ```sh
-$ ./rippled tx F81C34E7F05423DC1C973CB5008CA41AE984DE142EAA3975A749FABF0D08FA63
+$ ./xrpld tx F81C34E7F05423DC1C973CB5008CA41AE984DE142EAA3975A749FABF0D08FA63
 
-Loading: "/etc/opt/ripple/rippled.cfg"
+Loading: "/etc/xrpld/xrpld.cfg"
 2019-Dec-11 01:38:30.124771464 HTTPClient:NFO Connecting to 127.0.0.1:5005
 {
    "result" : {

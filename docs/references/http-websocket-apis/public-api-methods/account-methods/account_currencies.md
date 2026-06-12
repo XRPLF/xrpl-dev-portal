@@ -44,7 +44,7 @@ An example of the request format:
 {% tab label="Commandline" %}
 ```sh
 #Syntax: account_currencies account [ledger_index|ledger_hash]
-rippled account_currencies rG1QQv2nh2gr7RCZ1P8YYcBUKCCN633jCn validated
+xrpld account_currencies rG1QQv2nh2gr7RCZ1P8YYcBUKCCN633jCn validated
 ```
 {% /tab %}
 

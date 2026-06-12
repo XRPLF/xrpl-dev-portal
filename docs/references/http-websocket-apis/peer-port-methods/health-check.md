@@ -20,12 +20,12 @@ To request the Health Check information, make the following HTTP request:
 
 - **Protocol:** https
 - **HTTP Method:** GET
-- **Host:** (any `rippled` server, by hostname or IP address)
-- **Port:** (the port number where the `rippled` server uses the Peer Protocol, typically 51235)
+- **Host:** (any `xrpld` server, by hostname or IP address)
+- **Port:** (the port number where the `xrpld` server uses the Peer Protocol, typically 51235)
 - **Path:** `/health`
-- **Security:** Most `rippled` servers use a self-signed certificate to respond to the request. By default, most tools (including web browsers) flag or block such responses for being untrusted. You must ignore the certificate checking (for example, if using cURL, add the `--insecure` flag) to display a response from those servers.
+- **Security:** Most `xrpld` servers use a self-signed certificate to respond to the request. By default, most tools (including web browsers) flag or block such responses for being untrusted. You must ignore the certificate checking (for example, if using cURL, add the `--insecure` flag) to display a response from those servers.
 
-<!-- TODO: link a tutorial for how to run rippled with a non-self-signed TLS cert -->
+<!-- TODO: link a tutorial for how to run xrpld with a non-self-signed TLS cert -->
 
 ## Example Response
 

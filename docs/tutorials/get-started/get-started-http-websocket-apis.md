@@ -12,7 +12,7 @@ showcase_icon: assets/img/logos/globe.svg
 ---
 # Get Started Using HTTP / WebSocket APIs
 
-If you don't have or don't want to use a [client library](../../references/client-libraries.md) in your preferred programming language, you can access the XRP Ledger directly through the APIs of its core server software, [`rippled`](../../concepts/networks-and-servers/index.md). The server provides APIs over JSON-RPC and WebSocket protocols. If you don't [run your own instance of `rippled`](../../infrastructure/installation/index.md) you can still use a [public server][public servers].
+If you don't have or don't want to use a [client library](../../references/client-libraries.md) in your preferred programming language, you can access the XRP Ledger directly through the APIs of its core server software, [`xrpld`](../../concepts/networks-and-servers/index.md). The server provides APIs over JSON-RPC and WebSocket protocols. If you don't [run your own instance of `xrpld`](../../infrastructure/installation/index.md) you can still use a [public server][public servers].
 
 {% admonition type="success" name="Tip" %}You can dive right into the API with the [**WebSocket API Tool**](/resources/dev-tools/websocket-api-tool), or use the [XRP Ledger Explorer](https://livenet.xrpl.org/) to watch the progress of the ledger live.{% /admonition %}
 
@@ -35,7 +35,7 @@ The [example config file](https://github.com/XRPLF/rippled/blob/f00f263852c47293
 
 ## WebSocket API
 
-If you are looking to try out some methods on the XRP Ledger, you can skip writing your own WebSocket code and go straight to using the API at the [WebSocket API Tool](/resources/dev-tools/websocket-api-tool). Later on, when you want to connect to your own `rippled` server, you can [build your own client](../advanced-developer-topics/client-library-development/monitor-incoming-payments-with-websocket.md) or use a [client library](../../references/client-libraries.md) with WebSocket support.
+If you are looking to try out some methods on the XRP Ledger, you can skip writing your own WebSocket code and go straight to using the API at the [WebSocket API Tool](/resources/dev-tools/websocket-api-tool). Later on, when you want to connect to your own `xrpld` server, you can [build your own client](../advanced-developer-topics/client-library-development/monitor-incoming-payments-with-websocket.md) or use a [client library](../../references/client-libraries.md) with WebSocket support.
 
 Example WebSocket API request:
 
@@ -53,7 +53,7 @@ Read more: [Request Formatting >](../../references/http-websocket-apis/api-conve
 
 ## JSON-RPC
 
-You can use any HTTP client (like [RESTED for Firefox](https://addons.mozilla.org/en-US/firefox/addon/rested/), [Postman for Chrome](https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop?hl=en) or [Online HTTP client ExtendsClass](https://extendsclass.com/rest-client-online.html)) to make JSON-RPC calls a `rippled` server. Most programming languages have a library for making HTTP requests built in. <!-- SPELLING_IGNORE: extendsclass -->
+You can use any HTTP client (like [RESTED for Firefox](https://addons.mozilla.org/en-US/firefox/addon/rested/), [Postman for Chrome](https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop?hl=en) or [Online HTTP client ExtendsClass](https://extendsclass.com/rest-client-online.html)) to make JSON-RPC calls an `xrpld` server. Most programming languages have a library for making HTTP requests built in. <!-- SPELLING_IGNORE: extendsclass -->
 
 Example JSON-RPC request:
 
@@ -77,24 +77,24 @@ Read more: [Request Formatting >](../../references/http-websocket-apis/api-conve
 
 ## Commandline
 
-The commandline interface connects to the same service as the JSON-RPC one, so the public servers and server configuration are the same. By default, the commandline connects to a `rippled` server running on the same machine.
+The commandline interface connects to the same service as the JSON-RPC one, so the public servers and server configuration are the same. By default, the commandline connects to an `xrpld` server running on the same machine.
 
 Example commandline request:
 
 ```
-rippled --conf=/etc/opt/ripple/rippled.cfg server_info
+xrpld --conf=/etc/xrpld/xrpld.cfg server_info
 ```
 
 Read more: [Commandline Usage Reference >](../../infrastructure/commandline-usage.md)
 
-{% admonition type="warning" name="Caution" %}The commandline interface is intended for administrative purposes only and is _not a supported API_.  New versions of `rippled` may introduce breaking changes to the commandline API without warning!{% /admonition %}
+{% admonition type="warning" name="Caution" %}The commandline interface is intended for administrative purposes only and is _not a supported API_.  New versions of `xrpld` may introduce breaking changes to the commandline API without warning!{% /admonition %}
 
 ## Available Methods
 
 For a full list of API methods, see:
 
-- [Public `rippled` Methods](../../references/http-websocket-apis/public-api-methods/index.md): Methods available on public servers, including looking up data from the ledger and submitting transactions.
-- [Admin `rippled` Methods](../../references/http-websocket-apis/admin-api-methods/index.md): Methods for [managing](../../infrastructure/installation/install-rippled-on-ubuntu.md) the `rippled` server.
+- [Public `xrpld` Methods](../../references/http-websocket-apis/public-api-methods/index.md): Methods available on public servers, including looking up data from the ledger and submitting transactions.
+- [Admin `xrpld` Methods](../../references/http-websocket-apis/admin-api-methods/index.md): Methods for [managing](../../infrastructure/installation/install-rippled-on-ubuntu.md) the `xrpld` server.
 
 
 ## See Also
@@ -108,6 +108,6 @@ For a full list of API methods, see:
     - [Reliable Transaction Submission](../../concepts/transactions/reliable-transaction-submission.md)
     - [Manage the rippled Server](../../infrastructure/installation/install-rippled-on-ubuntu.md)
 - **References:**
-    - [rippled API Reference](../../references/http-websocket-apis/index.md)
+    - [xrpld API Reference](../../references/http-websocket-apis/index.md)
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

@@ -1,13 +1,13 @@
 ---
 seo:
-    description: Force the rippled server to connect to a specific peer.
+    description: Force the xrpld server to connect to a specific peer.
 labels:
     - Core Server
 ---
 # connect
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/Connect.cpp "Source")
 
-The `connect` command forces the `rippled` server to connect to a specific peer server.
+The `connect` command forces the `xrpld` server to connect to a specific peer server.
 
 *The `connect` method is an [admin method](../index.md) that cannot be run by unprivileged users!*
 
@@ -43,7 +43,7 @@ An example of the request format:
 {% tab label="Commandline" %}
 ```sh
 #Syntax: connect ip [port]
-rippled connect 192.170.145.88 51235
+xrpld connect 192.170.145.88 51235
 ```
 {% /tab %}
 
@@ -75,7 +75,7 @@ An example of a successful response:
 
 {% tab label="Commandline" %}
 ```json
-Loading: "/etc/rippled.cfg"
+Loading: "/etc/xrpld/xrpld.cfg"
 Connecting to 127.0.0.1:5005
 
 {

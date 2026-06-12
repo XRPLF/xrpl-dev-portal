@@ -53,7 +53,7 @@ An example of the request format:
 
 {% tab label="Commandline" %}
 ```sh
-rippled json gateway_balances ' {"account": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q", "hotwallet": ["rKm4uWpg9tfwbVSeATv4KxDe6mpE9yPkgJ", "ra7JkEzrgeKHdzKgo4EUUVBnxggY4z37kt"],"ledger_index": "validated","strict": true} '
+xrpld json gateway_balances ' {"account": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q", "hotwallet": ["rKm4uWpg9tfwbVSeATv4KxDe6mpE9yPkgJ", "ra7JkEzrgeKHdzKgo4EUUVBnxggY4z37kt"],"ledger_index": "validated","strict": true} '
 ```
 {% /tab %}
 
@@ -303,7 +303,7 @@ The response follows the [standard format][], with a successful result containin
 * `lgrNotFound` - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.
 
 {% admonition type="info" name="Note" %}
-Due to a discrepancy in behavior between the Clio server and `rippled`, which was fixed in [Clio version 2.3.1](../../../../../blog/2025/clio-2.3.1.md#bug-fixes), the Clio server returns the `invalidParams` error in API v2 instead of `invalidHotWallet` when the `hotwallet` field is invalid. API v1 returns the `invalidHotWallet` error.
+Due to a discrepancy in behavior between the Clio server and `xrpld`, which was fixed in [Clio version 2.3.1](../../../../../blog/2025/clio-2.3.1.md#bug-fixes), the Clio server returns the `invalidParams` error in API v2 instead of `invalidHotWallet` when the `hotwallet` field is invalid. API v1 returns the `invalidHotWallet` error.
 {% /admonition %}
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

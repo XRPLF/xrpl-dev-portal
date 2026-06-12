@@ -40,7 +40,7 @@ An example of the request format:
 {% tab label="Commandline" %}
 ```sh
 #Syntax: validators
-rippled validators
+xrpld validators
 ```
 {% /tab %}
 
@@ -336,7 +336,7 @@ An example of a successful response:
 
 {% tab label="Commandline" %}
 ```json
-Loading: "/etc/rippled.cfg"
+Loading: "/etc/xrpld/xrpld.cfg"
 Connecting to 127.0.0.1:5005
 
 {

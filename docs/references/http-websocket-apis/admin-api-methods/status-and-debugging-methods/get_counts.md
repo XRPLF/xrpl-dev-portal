@@ -42,7 +42,7 @@ An example of the request format:
 {% tab label="Commandline" %}
 ```sh
 #Syntax: get_counts [min_count]
-rippled get_counts 100
+xrpld get_counts 100
 ```
 {% /tab %}
 
@@ -99,7 +99,7 @@ An example of a successful response:
 
 {% tab label="Commandline" %}
 ```json
-Loading: "/etc/rippled.cfg"
+Loading: "/etc/xrpld/xrpld.cfg"
 Connecting to 127.0.0.1:5005
 
 {

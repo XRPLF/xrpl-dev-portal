@@ -6,7 +6,7 @@ metadata:
 ---
 # Server Control Methods
 
-Use these methods to manage the rippled server.
+Use these methods to manage the xrpld server.
 
 
 {% child-pages /%}

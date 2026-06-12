@@ -34,11 +34,11 @@ Here is a sample transaction in JSON format. This transaction transfers 1 XRP fr
 
 Optional fields are available for all transactions, with additional fields available for specific transactions. You can include as many optional fields as you need, but do not have to include every field in every transaction.
 
-You send the transaction to the ledger as a command from JavaScript, Python, the command line, or any compatible service. The rippled servers propose transactions to the XRPL. 
+You send the transaction to the ledger as a command from JavaScript, Python, the command line, or any compatible service. The xrpld servers propose transactions to the XRPL. 
 
 ![Proposed Transacations](/docs/img/introduction17-gather-txns.png)
 
-When 80% of the validators approve a current set of proposed transactions, they are recorded as part of the permanent ledger. The rippled server returns the results of the transaction you sent.
+When 80% of the validators approve a current set of proposed transactions, they are recorded as part of the permanent ledger. The xrpld server returns the results of the transaction you sent.
 
 For more information on Transactions, see [Transactions](../concepts/transactions/index.md).
 
@@ -48,11 +48,11 @@ Requests are used to get information from the ledger, but they do not make chang
 
 The fields you send vary with the type of information you request. They typically have several optional fields, but only a few required fields.
 
-When you submit your request, it might be processed by a rippled server or by a Clio server, a server that is dedicated to responding to requests.
+When you submit your request, it might be processed by an xrpld server or by a Clio server, a server that is dedicated to responding to requests.
 
 ![Clio Server](/docs/img/introduction19-clio.png)
 
-Clio servers take some of the load off the other rippled servers on the XRPL to improve processing speed and reliability.
+Clio servers take some of the load off the other xrpld servers on the XRPL to improve processing speed and reliability.
 
 This is a sample request in JSON format. This request gets the current account information for the account number you provide.
 

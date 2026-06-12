@@ -19,9 +19,9 @@ NFToken Marketplaces act as intermediaries between NFToken creators and collecto
 [![NFT Marketplace Flow](/docs/img/nft-mkt-marketplace.png "NFT Marketplace Flow")](/docs/img/nft-mkt-marketplace.png)
 
 
-## Set up a rippled instance
+## Set up an xrpld instance
 
-When you set up a serious marketplace site with high volume, it justifies the decision to set up your own XRP Ledger server instance. See [Install rippled](../../infrastructure/installation/index.md).
+When you set up a serious marketplace site with high volume, it justifies the decision to set up your own XRP Ledger server instance. See [Install xrpld](../../infrastructure/installation/index.md).
 
 
 ### Setting up a wallet

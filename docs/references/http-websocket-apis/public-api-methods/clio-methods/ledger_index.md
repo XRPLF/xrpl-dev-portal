@@ -9,7 +9,7 @@ labels:
 
 The `ledger_index` command looks up information about the last closed ledger at a given real-world time. This may be useful for correlating events that happened off-chain with historical data in the XRP Ledger. {% badge href="https://github.com/XRPLF/clio/releases/tag/2.3.0" date="TBD" %}New in: Clio v2.3.0{% /badge %}
 
-This method is only available from the Clio server, not `rippled`.
+This method is only available from the Clio server, not `xrpld`.
 
 ## Request Format
 An example of the request format:

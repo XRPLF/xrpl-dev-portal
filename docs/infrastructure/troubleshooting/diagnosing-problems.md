@@ -6,23 +6,23 @@ seo:
 labels:
   - Core Server
 ---
-# Diagnosing Problems with rippled
+# Diagnosing Problems with xrpld
 
-If you are having problems with `rippled`, the first step is to collect more information to accurately characterize the problem. From there, it can be easier to figure out a root cause and a fix.
+If you are having problems with `xrpld`, the first step is to collect more information to accurately characterize the problem. From there, it can be easier to figure out a root cause and a fix.
 
 See the following pages for some common categories of problems, their causes, and fixes:
 
-- If your server does not start (such as crashing or otherwise shutting down automatically), see **[rippled Server Won't Start](server-wont-start.md)**.
-- If your server starts, but does not reliably sync or remain synced to the XRP Ledger network, see **[rippled Server Doesn't Sync](server-doesnt-sync.md)**.
+- If your server does not start (such as crashing or otherwise shutting down automatically), see **[xrpld Server Won't Start](server-wont-start.md)**.
+- If your server starts, but does not reliably sync or remain synced to the XRP Ledger network, see **[xrpld Server Doesn't Sync](server-doesnt-sync.md)**.
 
 The rest of this document suggests steps for diagnosing problems that happen while your server is up and running (including if the process is active but unable to sync with the network).
 
 ## Get the server_info
 
-You can use the commandline to get server status information from the local `rippled` instance. For example:
+You can use the commandline to get server status information from the local `xrpld` instance. For example:
 
 ```
-rippled server_info
+xrpld server_info
 ```
 
 The response to this command has a lot of information, which is documented along with the [server_info method][].
@@ -35,8 +35,8 @@ For troubleshooting purposes, the most important fields are (from most commonly 
     - For example, the following server state information shows a healthy server that took less than 3 minutes to sync (split between the `disconnected`, `connected`, and `syncing` states), and is currently in the fully-synced `proposing` state, where it has remained for approximately 90 minutes:
 
         ```
-        $ ./rippled server_info
-        Loading: "/etc/opt/ripple/rippled.cfg"
+        $ ./xrpld server_info
+        Loading: "/etc/xrpld/xrpld.cfg"
         2020-Jan-03 22:49:32.834134358 HTTPClient:NFO Connecting to 127.0.0.1:5005
 
         {
@@ -81,24 +81,24 @@ For troubleshooting purposes, the most important fields are (from most commonly 
 
     - If you have a disjoint set of complete ledgers such as `"11845721-12133420,12133424-12133858"`, that could indicate that your server has had intermittent outages or has temporarily fallen out of sync with the rest of the network. The most common causes for this are insufficient disk I/O or network bandwidth.
 
-    - Normally, a `rippled` server downloads recent ledger history from its peers. If gaps in your ledger history persist for more than a few hours, you may not be connected to any peers who have the missing data. If this occurs, you can force your server to try and peer with one of Ripple's full-history public servers by adding the following stanza to your config file and restarting:
+    - Normally, an `xrpld` server downloads recent ledger history from its peers. If gaps in your ledger history persist for more than a few hours, you may not be connected to any peers who have the missing data. If this occurs, you can force your server to try and peer with one of Ripple's full-history public servers by adding the following stanza to your config file and restarting:
 
         ```
         [ips_fixed]
         s2.ripple.com 51235
         ```
 
-- **`amendment_blocked`** - This field is normally omitted from the `server_info` response. If this field appears with the value `true`, then the network has approved an [amendment](../../concepts/networks-and-servers/amendments.md) for which your server doesn't have an implementation. Most likely, you can fix this by [updating rippled](../installation/index.md) to the latest version. You can also use the [feature method][] to see what amendment IDs are currently enabled and which one(s) your server does and does not support.
+- **`amendment_blocked`** - This field is normally omitted from the `server_info` response. If this field appears with the value `true`, then the network has approved an [amendment](../../concepts/networks-and-servers/amendments.md) for which your server doesn't have an implementation. Most likely, you can fix this by [updating xrpld](../installation/index.md) to the latest version. You can also use the [feature method][] to see what amendment IDs are currently enabled and which one(s) your server does and does not support.
 
 - **`peers`** - This field indicates how many other servers in the XRP Ledger peer-to-peer network your server is connected to. Healthy servers typically show between 5 and 50 peers, unless explicitly configured to connect only to certain peers.
 
     - If you have 0 peers, your server may be unable to contact the network, or your system clock may be wrong. (Ripple recommends running an [NTP](http://www.ntp.org/) daemon on all servers to keep their clocks synced.)
 
-    - If you have exactly 10 peers, that may indicate that your `rippled` is unable to receive incoming connections through a router using [NAT](https://en.wikipedia.org/wiki/Network_address_translation). You can improve connectivity by configuring your router's firewall to forward the port used for peer-to-peer connections (port 2459 [by default](../../concepts/networks-and-servers/peer-protocol.md#peer-protocol-port)).
+    - If you have exactly 10 peers, that may indicate that your `xrpld` is unable to receive incoming connections through a router using [NAT](https://en.wikipedia.org/wiki/Network_address_translation). You can improve connectivity by configuring your router's firewall to forward the port used for peer-to-peer connections (port 2459 [by default](../../concepts/networks-and-servers/peer-protocol.md#peer-protocol-port)).
 
 ### No Response from Server
 
-The `rippled` executable returns the following message if it wasn't able to connect as a client to the `rippled` server:
+The `xrpld` executable returns the following message if it wasn't able to connect as a client to the `xrpld` server:
 
 ```json
 {
@@ -111,18 +111,18 @@ The `rippled` executable returns the following message if it wasn't able to conn
 
 This generally indicates one of several problems:
 
-- The `rippled` server is starting up, or is not running at all. Check the status of the service; if it is running, wait a few seconds and try again.
-- You may need to pass different [parameters to the `rippled` commandline client](../commandline-usage.md#client-mode-options) to connect to your server.
-- The `rippled` server may be configured not to accept JSON-RPC connections.
+- The `xrpld` server is starting up, or is not running at all. Check the status of the service; if it is running, wait a few seconds and try again.
+- You may need to pass different [parameters to the `xrpld` commandline client](../commandline-usage.md#client-mode-options) to connect to your server.
+- The `xrpld` server may be configured not to accept JSON-RPC connections.
 
 
 ## Check the server log
 
-[By default,](https://github.com/XRPLF/rippled/blob/master/cfg/rippled-example.cfg#L1139-L1142) `rippled` writes the server's debug log to the file `/var/log/rippled/debug.log`. The location of the debug log can differ based on your server's config file. If you start the `rippled` service directly (instead of using `systemctl` or `service` to start it), it also prints log messages to the console by default.
+[By default,](https://github.com/XRPLF/rippled/blob/master/cfg/rippled-example.cfg#L1139-L1142) `rippled` writes the server's debug log to the file `/var/log/xrpld/debug.log`. The location of the debug log can differ based on your server's config file. If you start the `xrpld` service directly (instead of using `systemctl` or `service` to start it), it also prints log messages to the console by default.
 
 The default config file sets the log level to severity "warning" for all categories of log messages by internally using the [log_level method][] during startup. You can control the verbosity of the debug log [using the `--silent` commandline option during startup](../commandline-usage.md#verbosity-options) and with the [log_level method][] while the server is running. (See the `[rpc_startup]` stanza of the config file for settings.)
 
-It is normal for a `rippled` the server to print many warning-level (`WRN`) messages during startup and a few warning-level messages from time to time later on. You can **safely ignore** most warnings in the first 5 to 15 minutes of server startup.
+It is normal for a `xrpld` the server to print many warning-level (`WRN`) messages during startup and a few warning-level messages from time to time later on. You can **safely ignore** most warnings in the first 5 to 15 minutes of server startup.
 
 For a more thorough explanation of various types of log messages, see [Understanding Log Messages](understanding-log-messages.md).
 
@@ -135,13 +135,13 @@ The official package installation (for [Ubuntu/Debian](../installation/install-r
 
 To use the script:
 
-1. Run the script while `rippled` is running.
+1. Run the script while `xrpld` is running.
 
     ```
     $ /opt/ripple/bin/getRippledInfo
 
     ####################################################
-      rippled info has been gathered. Please copy the
+      xrpld info has been gathered. Please copy the
       contents of /tmp/ripple_info.Xo8Xr/rippled_info.md
       to a github gist at https://gist.github.com/
 
@@ -165,20 +165,20 @@ To use the script:
 
 3. Upload the output file where others can see it.
 
-    You can upload the file directly to [GitHub Gist](https://gist.github.com/), [Pastebin](https://pastebin.com/), or a similar service. If you are running `rippled` on a remote server, you may find it easier to first transfer the file to a machine with a web browser, using `scp` or a similar tool. <!-- SPELLING_IGNORE: pastebin -->
+    You can upload the file directly to [GitHub Gist](https://gist.github.com/), [Pastebin](https://pastebin.com/), or a similar service. If you are running `xrpld` on a remote server, you may find it easier to first transfer the file to a machine with a web browser, using `scp` or a similar tool. <!-- SPELLING_IGNORE: pastebin -->
 
 
 ## See Also
 
 - **Concepts:**
-    - [The `rippled` Server](../../concepts/networks-and-servers/index.md)
+    - [The `xrpld` Server](../../concepts/networks-and-servers/index.md)
     - [Amendments](../../concepts/networks-and-servers/amendments.md)
 - **Tutorials:**
     - [Capacity Planning](../installation/capacity-planning.md)
-    - [Configure rippled](../configuration/index.md)
+    - [Configure xrpld](../configuration/index.md)
 - **References:**
-    - [rippled API Reference](../../references/http-websocket-apis/index.md)
-        - [`rippled` Commandline Usage](../commandline-usage.md)
+    - [xrpld API Reference](../../references/http-websocket-apis/index.md)
+        - [`xrpld` Commandline Usage](../commandline-usage.md)
         - [log_level method][]
         - [server_info method][]
 

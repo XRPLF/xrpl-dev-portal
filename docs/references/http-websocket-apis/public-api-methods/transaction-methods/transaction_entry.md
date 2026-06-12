@@ -45,7 +45,7 @@ An example of the request format:
 {% tab label="Commandline" %}
 ```sh
 #Syntax: transaction_entry transaction_hash ledger_index|ledger_hash
-rippled transaction_entry C53ECF838647FA5A4C780377025FEC7999AB4182590510CA461444B207AB74A9 56865245
+xrpld transaction_entry C53ECF838647FA5A4C780377025FEC7999AB4182590510CA461444B207AB74A9 56865245
 ```
 {% /tab %}
 
@@ -324,7 +324,7 @@ An example of a successful response:
 
 {% tab label="Commandline" %}
 ```json
-Loading: "/etc/opt/ripple/rippled.cfg"
+Loading: "/etc/xrpld/xrpld.cfg"
 2025-Dec-19 03:16:00.638871262 UTC HTTPClient:NFO Connecting to 127.0.0.1:5005
 
 {

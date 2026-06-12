@@ -6,7 +6,7 @@ labels:
 ---
 # Configure gRPC
 
-The `rippled` server has a limited [gRPC API](https://grpc.io/) it can provide. Clio servers use this API to retrieve data about the latest validated ledgers and transactions. You can enable the gRPC API on your server with a new configuration stanza.
+The `xrpld` server has a limited [gRPC API](https://grpc.io/) it can provide. Clio servers use this API to retrieve data about the latest validated ledgers and transactions. You can enable the gRPC API on your server with a new configuration stanza.
 
 {% admonition type="warning" name="Caution" %}gRPC support is intended specifically for providing data to Clio servers. Breaking changes to the gRPC API may occur without warning or it may be removed entirely in future versions of the server.{% /admonition %}
 
@@ -14,7 +14,7 @@ The `rippled` server has a limited [gRPC API](https://grpc.io/) it can provide. 
 
 To enable gRPC, you must meet the following prerequisites:
 
-- You must have [installed rippled](../installation/index.md).
+- You must have [installed xrpld](../installation/index.md).
 
 - Your server must be able to bind to the port you choose.
 
@@ -22,7 +22,7 @@ To enable gRPC, you must meet the following prerequisites:
 
 To enable gRPC on your server, complete the following steps:
 
-1. Ensure the `[port_grpc]` stanza is in your `rippled` config file.
+1. Ensure the `[port_grpc]` stanza is in your `xrpld` config file.
 
     ```
     [port_grpc]
@@ -51,10 +51,10 @@ To enable gRPC on your server, complete the following steps:
     - `ssl_cert_chain` _(optional)_ defines the path to a file of intermediate CA certificates.
     - `ssl_client_ca` _(optional)_ defines the path to a CA certificate used to verify client certificates, enabling mutual TLS (mTLS).
 
-3. Start (or restart) the `rippled` service.
+3. Start (or restart) the `xrpld` service.
 
     ```
-    sudo systemctl restart rippled
+    sudo systemctl restart xrpld
     ```
 
 ## See Also

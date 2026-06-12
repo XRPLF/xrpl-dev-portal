@@ -88,7 +88,7 @@ Use these methods to enable the server to push updates to your client when vario
 
 ## [Server Info Methods](server-info-methods/index.md)
 
-Use these methods to retrieve information about the current state of the `rippled` server.
+Use these methods to retrieve information about the current state of the `xrpld` server.
 
 * **[`fee`](server-info-methods/fee.md)** - Get information about transaction cost.
 * **[`feature`](server-info-methods/feature.md)** - Returns information about amendments this server knows about.

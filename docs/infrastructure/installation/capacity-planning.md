@@ -1,6 +1,6 @@
 ---
 seo:
-    description: Plan system specs and tune configuration for rippled in production environments.
+    description: Plan system specs and tune configuration for xrpld in production environments.
 labels:
   - Core Server
   - Data Retention
@@ -19,7 +19,7 @@ You should consider these factors to ensure that your server has the capacity to
 
 The default configuration file contains settings for a broad range of common use cases. You can get better performance by customizing the settings for your specific hardware and intended usage pattern.
 
-The settings in this section are parameters in the `rippled.cfg` file. You can access an example config file, `rippled-example.cfg`, in the [`cfg` directory](https://github.com/XRPLF/rippled/blob/develop/cfg/rippled-example.cfg) in the `rippled` GitHub repo. The settings in the example config file match the default config installed alongside the server.
+The settings in this section are parameters in the `xrpld.cfg` file. You can access an example config file, `rippled-example.cfg`, in the [`cfg` directory](https://github.com/XRPLF/rippled/blob/develop/cfg/rippled-example.cfg) in the `rippled` GitHub repo. The settings in the example config file match the default config installed alongside the server.
 
 
 ### Node Size
@@ -30,7 +30,7 @@ As a general rule, you should always use the largest node size your available RA
 
 #### Recommendation
 
-Each `[node_size]` has a corresponding requirement for available RAM. For example, if you set `[node_size]` to `huge`, you should have at least 32 GB of available RAM to help ensure that `rippled` can run smoothly.
+Each `[node_size]` has a corresponding requirement for available RAM. For example, if you set `[node_size]` to `huge`, you should have at least 32 GB of available RAM to help ensure that `xrpld` can run smoothly.
 
 To tune your server, it may be useful to start with `tiny` and increase the size to `small`, `medium`, and so on as you refine the requirements for your use case.
 
@@ -47,7 +47,7 @@ If you set the `[node_size]` parameter to an invalid value, the [server fails to
 
 ### Node DB Type
 
-The `type` field in the `[node_db]` stanza of the `rippled.cfg` file sets the type of key-value store that `rippled` uses to hold the ledger store.
+The `type` field in the `[node_db]` stanza of the `xrpld.cfg` file sets the type of key-value store that `xrpld` uses to hold the ledger store.
 
 For almost all purposes, use `NuDB`. A fast SSD is required. [Learn more](#more-about-using-nudb)
 
@@ -63,19 +63,19 @@ NuDB has nearly constant performance and memory footprints regardless of the [am
 
 Production servers should be configured to use NuDB and to store the amount of historical data required for your use case.
 
-Here is the recommended `[node_db]` configuration for a `rippled` server using NuDB:
+Here is the recommended `[node_db]` configuration for an `xrpld` server using NuDB:
 
 ```
 [node_db]
 type=NuDB
-path=/var/lib/rippled/db/nudb
+path=/var/lib/xrpld/db/nudb
 online_delete=2000
 advisory_delete=0
 ```
 
 Adjust the `path` to the directory where you want to keep the ledger store on disk. Adjust the `online_delete` and `advisory_delete` settings as desired for your configuration. For more details about these settings, see [Configure Online Deletion](../configuration/data-retention/configure-online-deletion.md) and [Configure Advisory Deletion](../configuration/data-retention/configure-advisory-deletion.md).
 
-NuDB uses a 4096-byte (4K) block size by default. You can change the block size with the optional `nudb_block_size` field, using any power of 2 between `4096` and `32768` bytes. {% badge href="https://github.com/XRPLF/rippled/releases/tag/3.2.0" %}New in: rippled 3.2.0{% /badge %}
+NuDB uses a 4096-byte (4K) block size by default. You can change the block size with the optional `nudb_block_size` field, using any power of 2 between `4096` and `32768` bytes. {% badge href="https://github.com/XRPLF/rippled/releases/tag/3.2.0" %}New in: xrpld 3.2.0{% /badge %}
 
 Test non-default block sizes to find what works best for your hardware before using them in production.
 
@@ -83,7 +83,7 @@ Test non-default block sizes to find what works best for your hardware before us
 
 #### More About Using RocksDB
 
-[RocksDB](https://rocksdb.org/docs/getting-started.html) is a persistent key-value store built into `rippled`. **Support for RocksDB is considered legacy.** Servers using RocksDB usually struggle to maintain sync with the Mainnet due to the memory requirements of maintaining a large database. Generally, you should use NuDB instead.
+[RocksDB](https://rocksdb.org/docs/getting-started.html) is a persistent key-value store built into `xrpld`. **Support for RocksDB is considered legacy.** Servers using RocksDB usually struggle to maintain sync with the Mainnet due to the memory requirements of maintaining a large database. Generally, you should use NuDB instead.
 
 Cases where you might use RocksDB include if you need to load historical data saved in RocksDB format, or if you are storing data on slow SSDs or rotational disks. While rotational disks won't be able to keep up with Mainnet, you can probably run offline tests or small private networks on them.
 
@@ -92,7 +92,7 @@ RocksDB has performance-related configuration options that you can tweak for mor
 ```
 [node_db]
 type=RocksDB
-path=/var/lib/rippled/db/rocksdb
+path=/var/lib/xrpld/db/rocksdb
 open_files=512
 filter_bits=12
 cache_mb=512
@@ -161,14 +161,14 @@ For instructions on how to change the amount of history you keep, see [Configure
 
 The `[database_path]` configures separate bookkeeping databases: these include transaction data as well as some runtime configurations.
 
-As a general rule, you can safely delete the database files (both the ledger store and the bookkeeping databases) for a `rippled` server when it isn't running; this clears any stored ledger history the server has, but it can re-acquire that data from the network. However, if you delete the `wallet.db` file in the `[database_path]`, you must manually reapply runtime configuration changes such as [amendment votes](../configuration/configure-amendment-voting.md) and [peer reservations](../configuration/peering/use-a-peer-reservation.md).
+As a general rule, you can safely delete the database files (both the ledger store and the bookkeeping databases) for an `xrpld` server when it isn't running; this clears any stored ledger history the server has, but it can re-acquire that data from the network. However, if you delete the `wallet.db` file in the `[database_path]`, you must manually reapply runtime configuration changes such as [amendment votes](../configuration/configure-amendment-voting.md) and [peer reservations](../configuration/peering/use-a-peer-reservation.md).
 
 If your config file has a `[shard_db]` stanza, you can safely remove it. This section is obsolete and has no effect. {% badge href="https://github.com/XRPLF/rippled/releases/tag/2.3.0" %}Removed in: rippled 2.3.0{% /badge %}
 
 
 ##### Amazon Web Services
 
-Amazon Web Services (AWS) is a popular virtualized hosting environment. You can run `rippled` in AWS, but do not use Elastic Block Storage (EBS). See [System Requirements](system-requirements.md). <!-- SPELLING_IGNORE: ebs, aws -->
+Amazon Web Services (AWS) is a popular virtualized hosting environment. You can run `xrpld` in AWS, but do not use Elastic Block Storage (EBS). See [System Requirements](system-requirements.md). <!-- SPELLING_IGNORE: ebs, aws -->
 
 AWS instance stores (`ephemeral` storage) provide suitable performance, but you may lose data in some circumstances, including when you start/stop an instance. This may be acceptable, since an individual XRP Ledger server can usually re-acquire lost ledger history from its peers. Configuration settings should be stored on more permanent storage.
 
@@ -191,7 +191,7 @@ Here are examples of observed uncompressed network bandwidth use for common task
 | Process average transaction volumes             | 2 Mbps up, 2 Mbps down |
 | Process peak transaction volumes                | >100 Mbps up           |
 | Serve historical ledger and transaction reports | 100 Mbps up            |
-| Start up `rippled`                              | 20 Mbps down           |
+| Start up `xrpld`                              | 20 Mbps down           |
 
 You can save bandwidth by [enabling compression on peer-to-peer communications](../configuration/peering/enable-link-compression.md), at a cost of higher CPU. Many hardware configurations have spare CPU capacity during normal use, so this can be an economical option if your network bandwidth is limited.
 
@@ -199,15 +199,15 @@ You can save bandwidth by [enabling compression on peer-to-peer communications](
 ## See Also
 
 - **Concepts:**
-    - [The `rippled` Server](../../concepts/networks-and-servers/index.md)
+    - [The `xrpld` Server](../../concepts/networks-and-servers/index.md)
     - [Consensus](../../concepts/consensus-protocol/index.md)
 - **Tutorials:**
-    - [Configure rippled](../configuration/index.md)
+    - [Configure xrpld](../configuration/index.md)
         - [Configure Online Deletion](../configuration/data-retention/configure-online-deletion.md) - Adjust how many historical ledger versions your server should keep at a time.
-    - [Troubleshoot rippled](../troubleshooting/index.md)
+    - [Troubleshoot xrpld](../troubleshooting/index.md)
 - **References:**
-    - [rippled API Reference](../../references/http-websocket-apis/index.md)
-        - [`rippled` Commandline Usage](../commandline-usage.md)
+    - [xrpld API Reference](../../references/http-websocket-apis/index.md)
+        - [`xrpld` Commandline Usage](../commandline-usage.md)
         - [logrotate method][] - Closes and reopens the server's debug log so you can rotate it with standard tools.
         - [server_info method][] - General information about the server including sync status and how many historical ledger versions it has available on disk.
         - [get_counts method][] - Additional health information, especially how many objects of various types it holds in RAM.

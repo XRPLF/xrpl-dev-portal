@@ -40,7 +40,7 @@ Content-Type: application/json
 
 {% tab label="Commandline" %}
 ```sh
-rippled account_info r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
+xrpld account_info r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
 ```
 {% /tab %}
 
@@ -49,7 +49,7 @@ rippled account_info r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
 
 ## WebSocket Format  
 
-After you open a WebSocket to the `rippled` server, you can send commands as a [JSON](https://en.wikipedia.org/wiki/JSON) object with the following fields:
+After you open a WebSocket to the `xrpld` server, you can send commands as a [JSON](https://en.wikipedia.org/wiki/JSON) object with the following fields:
 
 | Field               | Type      | Description                                |
 |:--------------------|:----------|:-------------------------------------------|
@@ -62,7 +62,7 @@ See [Response Formatting](response-formatting.md) for the response from the serv
 
 ## JSON-RPC Format
 
-To make a JSON-RPC request, send an HTTP **POST** request to the root path (`/`) on the port and IP where the `rippled` server is listening for JSON-RPC connections. You can use HTTP/1.0 or HTTP/1.1. If you use HTTPS, you should use TLS version 1.2. For security reasons, `rippled` _does not support_ SSL version 3 or earlier.
+To make a JSON-RPC request, send an HTTP **POST** request to the root path (`/`) on the port and IP where the `xrpld` server is listening for JSON-RPC connections. You can use HTTP/1.0 or HTTP/1.1. If you use HTTPS, you should use TLS version 1.2. For security reasons, `xrpld` _does not support_ SSL version 3 or earlier.
 
 Always include a `Content-Type` header with the value `application/json`.
 
@@ -93,6 +93,6 @@ The commandline calls JSON-RPC, so its responses always match the JSON-RPC [resp
 
 The commandline always uses the latest [API version](./index.md#api-versioning).
 
-{% admonition type="warning" name="Caution" %}The commandline interface is intended for administrative purposes only and is _not a supported API_. New versions of `rippled` may introduce breaking changes to the commandline API without warning!{% /admonition %}
+{% admonition type="warning" name="Caution" %}The commandline interface is intended for administrative purposes only and is _not a supported API_. New versions of `xrpld` may introduce breaking changes to the commandline API without warning!{% /admonition %}
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}
