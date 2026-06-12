@@ -3,7 +3,7 @@
   <desc>A chain of blocks each containing a transaction, hash, and previous hash, linked together and secured by the XRP ledger.</desc>
 
   <!-- Block 1 -->
-  <rect x="32" y="40" width="124" height="140" rx="4" fill="#141414"/>
+  <rect x="32" y="40" width="124" height="140" rx="4" fill="#141414" stroke="#3A4049" stroke-width="1"/>
   <rect x="32" y="40" width="124" height="3" rx="1" fill="#21E46B"/>
   <text x="94" y="72" text-anchor="middle" fill="#8A919A" font-family="Inter, 'Helvetica Neue', sans-serif" font-size="11">Block</text>
   <text x="94" y="88" text-anchor="middle" fill="#21E46B" font-family="Inter, 'Helvetica Neue', sans-serif" font-size="11" font-weight="600">001</text>
@@ -18,7 +18,7 @@
   <circle cx="181" cy="110" r="3" fill="#CAD4DF"/>
 
   <!-- Block 2 -->
-  <rect x="194" y="40" width="124" height="140" rx="4" fill="#141414"/>
+  <rect x="194" y="40" width="124" height="140" rx="4" fill="#141414" stroke="#3A4049" stroke-width="1"/>
   <rect x="194" y="40" width="124" height="3" rx="1" fill="#21E46B"/>
   <text x="256" y="72" text-anchor="middle" fill="#8A919A" font-family="Inter, 'Helvetica Neue', sans-serif" font-size="11">Block</text>
   <text x="256" y="88" text-anchor="middle" fill="#21E46B" font-family="Inter, 'Helvetica Neue', sans-serif" font-size="11" font-weight="600">002</text>
@@ -33,7 +33,7 @@
   <circle cx="343" cy="110" r="3" fill="#CAD4DF"/>
 
   <!-- Block 3 -->
-  <rect x="356" y="40" width="124" height="140" rx="4" fill="#141414"/>
+  <rect x="356" y="40" width="124" height="140" rx="4" fill="#141414" stroke="#3A4049" stroke-width="1"/>
   <rect x="356" y="40" width="124" height="3" rx="1" fill="#21E46B"/>
   <text x="418" y="72" text-anchor="middle" fill="#8A919A" font-family="Inter, 'Helvetica Neue', sans-serif" font-size="11">Block</text>
   <text x="418" y="88" text-anchor="middle" fill="#21E46B" font-family="Inter, 'Helvetica Neue', sans-serif" font-size="11" font-weight="600">003</text>
