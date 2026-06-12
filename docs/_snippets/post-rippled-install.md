@@ -20,7 +20,7 @@ Having trouble getting your server started? See [rippled Server Won't Start](../
 
 {% partial file="/docs/_snippets/conf-file-location.md" /%}
 
-See [the `rippled` GitHub repository](https://github.com/XRPLF/rippled/blob/master/cfg/rippled-example.cfg) for a description of all configuration options.
+See [the `rippled` GitHub repository](https://github.com/XRPLF/rippled/blob/release-3.1/cfg/rippled-example.cfg) for a description of all configuration options.
 
 You must restart `rippled` for any configuration changes to take effect.
 

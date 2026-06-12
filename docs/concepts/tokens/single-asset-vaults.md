@@ -207,7 +207,7 @@ If the transfer succeeds and the payee already holds vault shares, their balance
 
 ### Frozen Assets
 
-The issuer of a vault asset can enact a [freeze](./fungible-tokens/freezes) for trust line tokens or [lock an MPT](./fungible-tokens/deep-freeze#how-does-mpt-freeze/lock-behavior-differ-from-iou). When a vault asset is frozen:
+The issuer of a vault asset can enact a [freeze](./fungible-tokens/freezes) for trust line tokens or [lock an MPT](./fungible-tokens/deep-freeze#how-does-mpt-freezelock-behavior-differ-from-iou). When a vault asset is frozen:
 
 1. Withdrawals can only be made to the asset’s issuer.
 2. The asset cannot be deposited into the vault.

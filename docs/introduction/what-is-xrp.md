@@ -109,7 +109,7 @@ Originally, the XRP Ledger was called "Ripple" for the way the technology allowe
 
 [{% inline-svg file="/docs/img/xrp-naming.svg" /%}](/docs/img/xrp-naming.svg)
 
-The company registered itself as "Ripple Labs". The name "XRP" came to be used to refer to the asset in all contexts, to avoid confusion with the similar names for the technology and company, and eventually the company shortened its own name to "Ripple". In May 2018, [the community selected a new "X" symbol](https://twitter.com/xrpsymbol/status/1006925937571713025) to represent XRP to differentiate it from the triskelion logo that had previously been used for both the company and the digital asset.
+The company registered itself as "Ripple Labs". The name "XRP" came to be used to refer to the asset in all contexts, to avoid confusion with the similar names for the technology and company, and eventually the company shortened its own name to "Ripple". In May 2018, the community selected a new "X" symbol to represent XRP to differentiate it from the triskelion logo that had previously been used for both the company and the digital asset.
 
 | XRP "X" Logo                           | Ripple triskelion                   |
 |:---------------------------------------|:------------------------------------|

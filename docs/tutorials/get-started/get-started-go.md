@@ -45,9 +45,9 @@ When you're working with the XRP Ledger, there are a few things you'll need to m
 
 Here are the basic steps you'll need to cover for almost any XRP Ledger project:
 
-1. [Connect to the XRP Ledger.](#1.-connect-to-the-xrp-ledger)
-2. [Get an account.](#2.-get-account)
-3. [Query the XRP Ledger.](#3.-query-the-xrp-ledger)
+1. [Connect to the XRP Ledger.](#1-connect-to-the-xrp-ledger)
+2. [Get an account.](#2-get-account)
+3. [Query the XRP Ledger.](#3-query-the-xrp-ledger)
 
 ### 1. Connect to the XRP Ledger
 

@@ -741,6 +741,16 @@
             - page: docs/infrastructure/troubleshooting/server-is-amendment-blocked.md
             - page: docs/infrastructure/troubleshooting/server-wont-start.md
             - page: docs/infrastructure/troubleshooting/fix-sqlite-tx-db-page-size-issue.md
+    - page: docs/agents/agentic-transactions.page.tsx
+      label: Agentic Transactions
+      labelTranslationKey: sidebar.docs.agentic-transactions
+      expanded: false
+      items:
+        - page: docs/agents/getting-started-with-agentic-transactions.md
+        - page: docs/agents/xrpl-agent-wallet-skill.md
+        - page: docs/agents/xrpl-payments-skill.md
+        - page: docs/agents/track-agent-behavior.md
+        - page: docs/agents/agentic-payments-x402.md
 - page: resources/index.md
   labelTranslationKey: sidebars.resources
   expanded: false
