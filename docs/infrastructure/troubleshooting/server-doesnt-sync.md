@@ -30,7 +30,7 @@ If the server is unable to keep up with the network while doing these tasks, the
 
 Many syncing issues can be resolved by restarting the server. No matter why it didn't sync the first time, it may succeed on the second try.
 
-If the [server_info method][] shows a [`server_state`](../../references/http-websocket-apis/api-conventions/xrpld-server-states.md) other than `proposing` or `full` and a `server_state_duration_us` of more than `900000000` (15 minutes in microseconds), then you should shut down the `rippled` service, wait a few seconds, and start it again. Optionally, restart the entire machine.
+If the [server_info method][] shows a [`server_state`](../../references/http-websocket-apis/api-conventions/xrpld-server-states.md) other than `proposing` or `full` and a `server_state_duration_us` of more than `900000000` (15 minutes in microseconds), then you should shut down the `xrpld` service, wait a few seconds, and start it again. Optionally, restart the entire machine.
 
 If the problem persists, check the other possibilities listed on this page. If none of them seem to apply, [open an issue in the `rippled` repository](https://github.com/XRPLF/rippled/issues) and add the "Syncing issue" label.
 
@@ -75,14 +75,14 @@ As a test, you can temporarily change the paths to your server's databases as lo
 1. Stop the `xrpld` server if it is running.
 
     ```
-    $ sudo systemctl stop rippled
+    $ sudo systemctl stop xrpld
     ```
 
 2. Create new empty folders to hold the fresh databases.
 
     ```
-    $ mkdir /var/lib/rippled/db_new/
-    $ mkdir /var/lib/rippled/db_new/nudb
+    $ mkdir /var/lib/xrpld/db_new/
+    $ mkdir /var/lib/xrpld/db_new/nudb
     ```
 
 3. Edit the config file to use the new paths. Be sure to change the `path` field of the `[node_db]` stanza **and** the value of the `[database_path]` stanza.
@@ -90,10 +90,10 @@ As a test, you can temporarily change the paths to your server's databases as lo
     ```
     [node_db]
     type=NuDB
-    path=/var/lib/rippled/db_new/nudb
+    path=/var/lib/xrpld/db_new/nudb
 
     [database_path]
-     /var/lib/rippled/db_new
+     /var/lib/xrpld/db_new
     ```
 
     {% partial file="/docs/_snippets/conf-file-location.md" /%}
@@ -101,7 +101,7 @@ As a test, you can temporarily change the paths to your server's databases as lo
 4. Start the `xrpld` server again.
 
     ```
-    $ sudo systemctl start rippled
+    $ sudo systemctl start xrpld
     ```
 
     If the server successfully syncs using the fresh databases, you can delete the folders that hold the old databases. You may also want to check for hardware failures, especially to your disk and RAM.

@@ -58,10 +58,10 @@ The most straightforward intervention is to restart the server. This can resolve
 - `server_state`
 - `validated_ledger`
 
-To restart only the `rippled` service, use `systemctl`:
+To restart only the `xrpld` service, use `systemctl`:
 
 ```
-$ sudo systemctl restart rippled.service
+$ sudo systemctl restart xrpld.service
 ```
 
 A stronger intervention is to restart the entire machine.

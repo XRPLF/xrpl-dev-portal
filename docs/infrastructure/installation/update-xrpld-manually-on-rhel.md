@@ -11,14 +11,14 @@ This page describes how to update manually to the latest release of `xrpld` on R
 
 These instructions assume you have already [installed `xrpld` on a supported version of Red Hat Enterprise Linux using Ripple's `rpm` package distribution](install-xrpld-on-rhel.md). If you are upgrading from `xrpld` 1.6.x or older, remove it and perform a fresh install instead.
 
-{% admonition type="success" name="Tip" %}To perform these steps all at once, you can run the `/opt/ripple/bin/update-rippled.sh` script, which is included with the `rippled` package. This script should be run as a `sudo` user.{% /admonition %}
+{% admonition type="success" name="Tip" %}To perform these steps all at once, you can run the `/opt/ripple/bin/update-rippled.sh` script, which is included with the `xrpld` package. This script should be run as a `sudo` user.{% /admonition %}
 
 To update manually, complete the following steps:
 
 1. Download and install the latest `xrpld` package:
 
     ```
-    sudo yum update rippled
+    sudo yum update xrpld
     ```
 
     This update procedure leaves your existing config files in place.
@@ -29,10 +29,10 @@ To update manually, complete the following steps:
     sudo systemctl daemon-reload
     ```
 
-3. Restart the `rippled` service:
+3. Restart the `xrpld` service:
 
     ```
-    sudo service rippled restart
+    sudo service xrpld restart
     ```
 
 

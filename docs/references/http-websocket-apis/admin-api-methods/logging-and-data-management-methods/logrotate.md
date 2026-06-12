@@ -14,7 +14,7 @@ Most Linux systems come pre-installed with a [`logrotate`](https://linux.die.net
 The following script is a sample that can be created as `/etc/logrotate.d/rippled`
 
 ```logrotate
-/var/log/rippled/*.log {
+/var/log/xrpld/*.log {
   daily
   minsize 200M
   rotate 7
@@ -26,7 +26,7 @@ The following script is a sample that can be created as `/etc/logrotate.d/ripple
   compressoptions -n19 ionice -c3 gzip
   compressext .gz
   postrotate
-    /opt/ripple/bin/rippled --conf /opt/ripple/etc/xrpld.cfg logrotate
+    /usr/bin/xrpld --conf /etc/xrpld/xrpld.cfg logrotate
   endscript
 }
 ```

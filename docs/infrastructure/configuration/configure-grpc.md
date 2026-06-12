@@ -54,7 +54,7 @@ To enable gRPC on your server, complete the following steps:
 3. Start (or restart) the `xrpld` service.
 
     ```
-    sudo systemctl restart rippled
+    sudo systemctl restart xrpld
     ```
 
 ## See Also

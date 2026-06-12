@@ -68,7 +68,7 @@ Here is the recommended `[node_db]` configuration for an `xrpld` server using Nu
 ```
 [node_db]
 type=NuDB
-path=/var/lib/rippled/db/nudb
+path=/var/lib/xrpld/db/nudb
 online_delete=2000
 advisory_delete=0
 ```
@@ -92,7 +92,7 @@ RocksDB has performance-related configuration options that you can tweak for mor
 ```
 [node_db]
 type=RocksDB
-path=/var/lib/rippled/db/rocksdb
+path=/var/lib/xrpld/db/rocksdb
 open_files=512
 filter_bits=12
 cache_mb=512

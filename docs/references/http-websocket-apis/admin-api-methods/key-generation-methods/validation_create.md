@@ -14,7 +14,7 @@ _The `validation_create` method is an [admin method](../index.md) that cannot be
 
 You can configure your server to use the generated key pair to sign validations (validation key pair) or regular peer-to-peer communications ([node key pair](../../../../concepts/networks-and-servers/peer-protocol.md#node-key-pair)).
 
-{% admonition type="success" name="Tip" %}For configuring a robust validator, you should use the `validator-keys` tool (included in the `rippled` package build) to generate validator tokens (which can be rotated) with an offline master key. For more information, see [Validator Setup](../../../../infrastructure/configuration/server-modes/run-xrpld-as-a-validator.md#3-enable-validation-on-your-xrpld-server).{% /admonition %}
+{% admonition type="success" name="Tip" %}For configuring a robust validator, you should use the `validator-keys` tool (included in the `xrpld` package build) to generate validator tokens (which can be rotated) with an offline master key. For more information, see [Validator Setup](../../../../infrastructure/configuration/server-modes/run-xrpld-as-a-validator.md#3-enable-validation-on-your-xrpld-server).{% /admonition %}
 
 
 ### Request Format

@@ -17,7 +17,7 @@ To change the maximum number of peers your server allows, complete the following
 1. Edit your `xrpld`'s config file.
 
     ```
-    $ vim /etc/opt/ripple/xrpld.cfg
+    $ vim /etc/xrpld/xrpld.cfg
     ```
 
     {% partial file="/docs/_snippets/conf-file-location.md" /%}
@@ -38,7 +38,7 @@ To change the maximum number of peers your server allows, complete the following
 3. Restart the `xrpld` server.
 
     ```
-    $ sudo systemctl restart rippled.service
+    $ sudo systemctl restart xrpld.service
     ```
 
 

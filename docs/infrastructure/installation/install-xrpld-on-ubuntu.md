@@ -82,19 +82,19 @@ Before you install `xrpld`, you must meet the [System Requirements](system-requi
 6. Update the package index to include Ripple's repo and install `xrpld`.
 
     ```
-    sudo apt -y update && sudo apt -y install rippled
+    sudo apt -y update && sudo apt -y install xrpld
     ```
 
-7. Check the status of the `rippled` service:
+7. Check the status of the `xrpld` service:
 
     ```
-    systemctl status rippled.service
+    systemctl status xrpld.service
     ```
 
-    The `rippled` service should start automatically. If not, you can start it manually:
+    The `xrpld` service should start automatically. If not, you can start it manually:
 
     ```
-    sudo systemctl start rippled.service
+    sudo systemctl start xrpld.service
     ```
 
 8. Optional: allow `xrpld` to bind to privileged ports.
@@ -102,7 +102,7 @@ Before you install `xrpld`, you must meet the [System Requirements](system-requi
     This allows you to serve incoming API requests on port 80 or 443. (If you want to do so, you must also update the config file's port settings.)
 
     ```
-    sudo setcap 'cap_net_bind_service=+ep' /opt/ripple/bin/rippled
+    sudo setcap 'cap_net_bind_service=+ep' /usr/bin/xrpld
     ```
 
 9. Optional: configure core dumps
@@ -121,10 +121,10 @@ Before you install `xrpld`, you must meet the [System Requirements](system-requi
     LimitCORE=infinity
     ```
 
-    This creates the file `/etc/systemd/system/rippled.service.d/override.conf` and configures the OS to save core dumps, without changing the service file provided by the `rippled` package. If your server crashes, you can find the core dump in `/var/lib/apport/coredump/`. To load the core dump for inspection, use a command such as the following:
+    This creates the file `/etc/systemd/system/xrpld.service.d/override.conf` and configures the OS to save core dumps, without changing the service file provided by the `xrpld` package. If your server crashes, you can find the core dump in `/var/lib/apport/coredump/`. To load the core dump for inspection, use a command such as the following:
 
     ```
-    gdb /opt/ripple/bin/rippled /var/lib/apport/coredump/core
+    gdb /usr/bin/xrpld /var/lib/apport/coredump/core
     ```
 
     {% admonition type="info" name="Note" %}To debug a core file this way, you must have the `xrpld-dbgsym` package installed, and you need permission to read files in the core dump directory.{% /admonition %}

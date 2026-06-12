@@ -82,7 +82,7 @@ The commandline interface connects to the same service as the JSON-RPC one, so t
 Example commandline request:
 
 ```
-rippled --conf=/etc/opt/ripple/xrpld.cfg server_info
+xrpld --conf=/etc/xrpld/xrpld.cfg server_info
 ```
 
 Read more: [Commandline Usage Reference >](../../infrastructure/commandline-usage.md)

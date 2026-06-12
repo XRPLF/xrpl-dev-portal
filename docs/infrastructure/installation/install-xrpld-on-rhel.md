@@ -74,7 +74,7 @@ Before you install `xrpld`, you must meet the [System Requirements](system-requi
 3. Install the new `xrpld` package:
 
     ```
-    sudo yum install rippled
+    sudo yum install xrpld
     ```
 
 4. Reload systemd unit files:
@@ -83,16 +83,16 @@ Before you install `xrpld`, you must meet the [System Requirements](system-requi
     sudo systemctl daemon-reload
     ```
 
-5. Configure the `rippled` service to start on boot:
+5. Configure the `xrpld` service to start on boot:
 
     ```
-    sudo systemctl enable rippled.service
+    sudo systemctl enable xrpld.service
     ```
 
-6. Start the `rippled` service:
+6. Start the `xrpld` service:
 
     ```
-    sudo systemctl start rippled.service
+    sudo systemctl start xrpld.service
     ```
 
 

@@ -131,7 +131,7 @@ On your validator:
 2. Restart `xrpld`.
 
     ```
-    $ sudo systemctl restart rippled.service
+    $ sudo systemctl restart xrpld.service
     ```
 
 3. Use the `server_info` command to get information about your validator to verify that it is running as a validator.
@@ -189,7 +189,7 @@ _**To connect your validator to the XRP Ledger network using proxies:**_
 5. Restart `xrpld`.
 
     ```
-    $ sudo systemctl restart rippled.service
+    $ sudo systemctl restart xrpld.service
     ```
 
 6. Use the [Peer Crawler](../../../references/http-websocket-apis/peer-port-methods/peer-crawler.md) endpoint on one of your stock `xrpld` servers. The response should not include your validator. This verifies that your validator's `[peer_private]` configuration is working. One of the effects of enabling `[peer_private]` on your validator is that your validator's peers do not include it in their Peer Crawler results.
@@ -246,7 +246,7 @@ The above list may evolve over time. To ensure you're using the most current set
 3. Restart `xrpld`.
 
     ```
-    $ sudo systemctl restart rippled.service
+    $ sudo systemctl restart xrpld.service
     ```
 
 

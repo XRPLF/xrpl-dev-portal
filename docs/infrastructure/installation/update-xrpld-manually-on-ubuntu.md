@@ -11,7 +11,7 @@ This page describes how to manually update to the latest release of `xrpld` on U
 
 These instructions assume you have already [installed `xrpld` on a supported version of Ubuntu using Ripple's `deb` package](install-xrpld-on-ubuntu.md). If you are upgrading from `xrpld` 1.6.x or older, remove it and perform a fresh install instead.
 
-{% admonition type="success" name="Tip" %}To perform these steps all at once, you can run the `/opt/ripple/bin/update-rippled.sh` script, which is included with the `rippled` package and is compatible with Ubuntu and Debian. This script should be run as a `sudo` user.{% /admonition %}
+{% admonition type="success" name="Tip" %}To perform these steps all at once, you can run the `/opt/ripple/bin/update-rippled.sh` script, which is included with the `xrpld` package and is compatible with Ubuntu and Debian. This script should be run as a `sudo` user.{% /admonition %}
 
 To update manually, complete the following steps:
 
@@ -24,7 +24,7 @@ To update manually, complete the following steps:
 2. Upgrade the `xrpld` package:
 
     ```
-    sudo apt -y upgrade rippled
+    sudo apt -y upgrade xrpld
     ```
 
 3. Reload the `systemd` unit files:
@@ -33,10 +33,10 @@ To update manually, complete the following steps:
     sudo systemctl daemon-reload
     ```
 
-4. Restart the `rippled` service:
+4. Restart the `xrpld` service:
 
     ```
-    sudo systemctl restart rippled
+    sudo systemctl restart xrpld
     ```
 
 

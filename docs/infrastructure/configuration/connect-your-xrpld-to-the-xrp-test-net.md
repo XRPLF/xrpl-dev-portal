@@ -170,7 +170,7 @@ For some test networks using experimental features, you must also forcefully ena
 ## 4. Restart the server.
 
 ```sh
-$ sudo systemctl restart rippled
+$ sudo systemctl restart xrpld
 ```
 
 ## 5. Verify that your server syncs.

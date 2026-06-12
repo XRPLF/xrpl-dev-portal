@@ -69,7 +69,7 @@ If you run multiple [`xrpld` servers](../../../concepts/networks-and-servers/ind
 4. After saving the config file, restart `xrpld` on each server.
 
     ```
-    # systemctl restart rippled
+    # systemctl restart xrpld
     ```
 
 5. To confirm that each server is now a member of the cluster, use the [peers method][]. The `cluster` field should list the public keys and (if configured) the custom names for each server.

@@ -62,7 +62,7 @@ If you have already configured your server with a permanent node key pair value,
 2. Edit your `xrpld`'s config file.
 
     ```
-    vim /etc/opt/ripple/xrpld.cfg
+    vim /etc/xrpld/xrpld.cfg
     ```
 
     {% partial file="/docs/_snippets/conf-file-location.md" /%}
@@ -81,7 +81,7 @@ If you have already configured your server with a permanent node key pair value,
 4. Restart your `xrpld` server:
 
     ```
-    systemctl restart rippled
+    systemctl restart xrpld
     ```
 
 ### 2. Communicate the stock server's node public key
@@ -97,7 +97,7 @@ Use the [peer_reservations_add method][] to add a reservation using the node pub
 ```sh
 $ xrpld peer_reservations_add n9Mxf6qD4J55XeLSCEpqaePW4GjoCR5U1ZeGZGJUCNe3bQa4yQbG "Description here"
 
-Loading: "/etc/opt/ripple/xrpld.cfg"
+Loading: "/etc/xrpld/xrpld.cfg"
 Connecting to 127.0.0.1:5005
 
 {

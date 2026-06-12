@@ -27,7 +27,7 @@ To set up a specific server as a private peer, complete the following steps:
 1. Edit your `xrpld`'s config file.
 
     ```
-    vim /etc/opt/ripple/xrpld.cfg
+    vim /etc/xrpld/xrpld.cfg
     ```
 
     {% partial file="/docs/_snippets/conf-file-location.md" /%}
@@ -71,13 +71,13 @@ To set up a specific server as a private peer, complete the following steps:
     Restart `xrpld` on the proxies one-by-one. On each proxy server:
 
     ```
-    sudo service systemctl restart rippled
+    sudo service systemctl restart xrpld
     ```
 
 5. Start `xrpld` on the private server.
 
     ```
-    sudo service systemctl start rippled
+    sudo service systemctl start xrpld
     ```
 
 6. Use the [peers method][] to confirm that your private server is connected _only_ to its peers.
