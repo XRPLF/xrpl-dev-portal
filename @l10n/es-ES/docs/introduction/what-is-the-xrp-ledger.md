@@ -51,7 +51,7 @@ Una vez registrados, los datos de cualquier bloque no se pueden modificar retroa
 
 ### ¿Cómo funciona el proceso de consenso federado?
 
-La mayoría de los servidores rippled en XRPL monitorean o proponen transacciones. Un importante subconjunto de servidores se ejecutan como validadores. Estos servidores confiables acumulan listas de nuevas transacciones en una nueva posible instancia del libro contable (ledger) (un nuevo bloque en la blokchain).
+La mayoría de los servidores xrpld en XRPL monitorean o proponen transacciones. Un importante subconjunto de servidores se ejecutan como validadores. Estos servidores confiables acumulan listas de nuevas transacciones en una nueva posible instancia del libro contable (ledger) (un nuevo bloque en la blokchain).
 
 ![Recopilación de transacciones](/docs/img/introduction17-gather-txns.png)
 
@@ -63,7 +63,7 @@ Cuando el 80% de los validadores acuerdan un conjunto de transacciones, crean un
 
 ### ¿Qué redes están disponibles?
 
-El XRPL está abierto a cualquiera que quiera configurar su propia instancia de servidor rippled y conectarse. El nodo puede monitorizar la red, realizar transacciones, o convertirse en validador. La red XRPL activa se denomina normalmente como _Mainnet_.
+El XRPL está abierto a cualquiera que quiera configurar su propia instancia de servidor xrpld y conectarse. El nodo puede monitorizar la red, realizar transacciones, o convertirse en validador. La red XRPL activa se denomina normalmente como _Mainnet_.
 
 Para los desarrolladores o nuevos usuarios que quieran probar las características de XRPL sin invertir sus propios fondos, existen dos entornos para desarrolladores, _Testnet_ y _Devnet_. Los usuarios pueden crear una cuenta con 1.000 XRP (falsos) y conectarse a cualquiera de los entornos para interactuar con el XRPL.
 

@@ -17,7 +17,7 @@ To enable link compression on your server, complete the following steps:
 ### 1. Edit your `xrpld` server's config file.
 
 ```sh
-$ vim /etc/opt/ripple/xrpld.cfg
+$ vim /etc/xrpld/xrpld.cfg
 ```
 
 {% partial file="/docs/_snippets/conf-file-location.md" /%}
@@ -36,7 +36,7 @@ Use `false` to disable compression (the default).
 ### 3. Restart the `xrpld` server
 
 ```sh
-$ sudo systemctl restart rippled.service
+$ sudo systemctl restart xrpld.service
 ```
 
 After the restart, your server automatically uses link compression with other peers that also have link compression enabled.

@@ -192,7 +192,7 @@ export default function XrplOverview() {
                   "about.index.consensus.h5part1",
                   "To uphold performance, XRPL uses a consensus protocol. Designated servers called "
                 )}`}
-                <Link to="/docs/infrastructure/configuration/server-modes/run-rippled-as-a-validator">{translate("about.index.consensus.h5part2", "validators")}</Link>
+                <Link to="/docs/infrastructure/configuration/server-modes/run-xrpld-as-a-validator">{translate("about.index.consensus.h5part2", "validators")}</Link>
                 {`${translate(
                   "about.index.consensus.h5part3",
                   ", which anyone can operate, come to an agreement on the order and outcome of XRP transactions every three to five seconds."

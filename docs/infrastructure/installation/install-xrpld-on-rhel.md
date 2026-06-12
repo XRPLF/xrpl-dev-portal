@@ -1,18 +1,18 @@
 ---
 seo:
-    description: Install a precompiled rippled binary on Red Hat Enterprise Linux.
+    description: Install a precompiled xrpld binary on Red Hat Enterprise Linux.
 labels:
   - Core Server
 ---
 # Install on Red Hat Enterprise Linux
 
-This page describes the recommended instructions for installing the latest stable version of `rippled` on **Red Hat Enterprise Linux**, using a binary that has been compiled and published by Ripple as an `rpm` package.
+This page describes the recommended instructions for installing the latest stable version of `xrpld` on **Red Hat Enterprise Linux**, using a binary that has been compiled and published by Ripple as an `rpm` package.
 
 Currently, **Red Hat Enterprise Linux (RHEL) 9.6 is supported on x86_64 processors**. You may also be able to adapt these instructions to similar Linux distributions including CentOS or Rocky Linux, but other configurations are not officially supported.
 
 ## Prerequisites
 
-Before you install `rippled`, you must meet the [System Requirements](system-requirements.md).
+Before you install `xrpld`, you must meet the [System Requirements](system-requirements.md).
 
 
 ## Installation Steps
@@ -71,10 +71,10 @@ Before you install `rippled`, you must meet the [System Requirements](system-req
     sudo yum -y update
     ```
 
-3. Install the new `rippled` package:
+3. Install the new `xrpld` package:
 
     ```
-    sudo yum install rippled
+    sudo yum install xrpld
     ```
 
 4. Reload systemd unit files:
@@ -83,36 +83,36 @@ Before you install `rippled`, you must meet the [System Requirements](system-req
     sudo systemctl daemon-reload
     ```
 
-5. Configure the `rippled` service to start on boot:
+5. Configure the `xrpld` service to start on boot:
 
     ```
-    sudo systemctl enable rippled.service
+    sudo systemctl enable xrpld.service
     ```
 
-6. Start the `rippled` service:
+6. Start the `xrpld` service:
 
     ```
-    sudo systemctl start rippled.service
+    sudo systemctl start xrpld.service
     ```
 
 
 ## Next Steps
 
-{% partial file="/docs/_snippets/post-rippled-install.md" /%}
+{% partial file="/docs/_snippets/post-xrpld-install.md" /%}
 
 
 ## See Also
 
 - **Concepts:**
-    - [The `rippled` Server](../../concepts/networks-and-servers/index.md)
+    - [The `xrpld` Server](../../concepts/networks-and-servers/index.md)
     - [Consensus](../../concepts/consensus-protocol/index.md)
 - **Tutorials:**
-    - [Configure rippled](../configuration/index.md)
-    - [Troubleshoot rippled](../troubleshooting/index.md)
-    - [Get Started with the rippled API](../../tutorials/get-started/get-started-http-websocket-apis.md)
+    - [Configure xrpld](../configuration/index.md)
+    - [Troubleshoot xrpld](../troubleshooting/index.md)
+    - [Get Started with the xrpld API](../../tutorials/get-started/get-started-http-websocket-apis.md)
 - **References:**
-    - [rippled API Reference](../../references/http-websocket-apis/index.md)
-        - [`rippled` Commandline Usage](../commandline-usage.md)
+    - [xrpld API Reference](../../references/http-websocket-apis/index.md)
+        - [`xrpld` Commandline Usage](../commandline-usage.md)
         - [server_info method][]
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

@@ -69,7 +69,7 @@ The following options have been removed: `--validateShards` {% badge href="https
 xrpld --standalone [OPTIONS]
 xrpld -a [OPTIONS]
 ```
-Run in [stand-alone mode](../concepts/networks-and-servers/rippled-server-modes.md). In this mode, `xrpld` does not connect to the network or perform consensus. (Otherwise, `xrpld` runs in daemon mode.)
+Run in [stand-alone mode](../concepts/networks-and-servers/xrpld-server-modes.md). In this mode, `xrpld` does not connect to the network or perform consensus. (Otherwise, `xrpld` runs in daemon mode.)
 
 ## Initial Ledger Options
 

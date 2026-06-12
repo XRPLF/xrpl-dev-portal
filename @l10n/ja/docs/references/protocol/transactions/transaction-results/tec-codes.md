@@ -46,7 +46,7 @@ labels:
 | `tecNEED_MASTER_KEY`               | 142 | このトランザクションはマスターキーを必要とする変更（[マスターキーの無効化または残高フリーズ能力の放棄](../types/accountset.md#accountsetのフラグ)など）を試みました。|
 | `tecNFTOKEN_BUY_SELL_MISMATCH`     | 155 | [NFTokenAcceptOfferトランザクション][]は、非代替性トークンの購入と売却に関する対応しないオファーをマッチングさせようとしました。 {% amendment-disclaimer name="NonFungibleTokensV1_1" /%} |
 | `tecNFTOKEN_OFFER_TYPE_MISMATCH`   | 156 | トランザクションで指定されたオファーのうち、1つまたは複数について、オファーの種類が適切ではありませんでした。（例えば、`NFTokenSellOffer`フィールドに購入オファーが指定されていました。） {% amendment-disclaimer name="NonFungibleTokensV1_1" /%} |
-| `tecNO_ALTERNATIVE_KEY`            | 130 | トランザクションが唯一の[トランザクション承認](../../../../concepts/transactions/index.md#トランザクションの承認)メソッドを削除しようとしました。これは、レギュラーキーを削除する[SetRegularKeyトランザクション][]、SignerListを削除する[SignerListSetトランザクション][]、またはマスターキーを無効にする[AccountSetトランザクション][]である可能性があります。（`rippled` 0.30.0より前のバージョンでは、このトランザクションは`tecMASTER_DISABLED`と呼ばれていました。） |
+| `tecNO_ALTERNATIVE_KEY`            | 130 | トランザクションが唯一の[トランザクション承認](../../../../concepts/transactions/index.md#トランザクションの承認)メソッドを削除しようとしました。これは、レギュラーキーを削除する[SetRegularKeyトランザクション][]、SignerListを削除する[SignerListSetトランザクション][]、またはマスターキーを無効にする[AccountSetトランザクション][]である可能性があります。（`xrpld` 0.30.0より前のバージョンでは、このトランザクションは`tecMASTER_DISABLED`と呼ばれていました。） |
 | `tecNO_AUTH`                       | 134 | トランザクションはトラストラインの残高を、`lsfRequireAuth`フラグが有効になっているアカウントに追加する必要がありましたが、そのトラストラインが承認されていなかったため、失敗しました。トラストラインが存在しない場合は、代わりに`tecNO_LINE`が発生します。 |
 | `tecNO_DST`                        | 124 | トランザクションの受信側のアカウントが存在しません。これには、PaymentトランザクションタイプやTrustSetトランザクションタイプがあります。（XRPを十分に受信した場合に作成される可能性があります。） |
 | `tecNO_DST_INSUF_XRP`              | 125 | トランザクションの受信側のアカウントが存在しません。トランザクションは、アカウントの作成に十分なXRPを送金していません。 |

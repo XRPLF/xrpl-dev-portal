@@ -1,6 +1,6 @@
 ---
 html: enable-public-signing.html
-parent: configure-rippled.html
+parent: configure-xrpld.html
 seo:
     description: Allow others to use your server to sign transactions. (Not recommended)
 labels:
@@ -26,7 +26,7 @@ To enable public signing, perform the following steps:
 1. Edit your `xrpld`'s config file.
 
     ```
-    vim /etc/opt/ripple/xrpld.cfg
+    vim /etc/xrpld/xrpld.cfg
     ```
 
     {% partial file="/docs/_snippets/conf-file-location.md" /%}
@@ -41,7 +41,7 @@ To enable public signing, perform the following steps:
 3. Restart your `xrpld` server:
 
     ```
-    systemctl restart rippled
+    systemctl restart xrpld
     ```
 
 ## See Also

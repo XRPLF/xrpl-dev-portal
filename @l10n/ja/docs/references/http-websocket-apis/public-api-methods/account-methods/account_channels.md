@@ -46,7 +46,7 @@ _（[PayChan Amendment][]が有効になっている必要があります。{% b
 {% tab label="コマンドライン" %}
 ```bash
 #Syntax: account_channels <account> [<destination_account>] [<ledger>]
-rippled account_channels rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn ra5nK24KXen9AHvsdFTKHSANinZseWnPcX validated
+xrpld account_channels rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn ra5nK24KXen9AHvsdFTKHSANinZseWnPcX validated
 ```
 {% /tab %}
 

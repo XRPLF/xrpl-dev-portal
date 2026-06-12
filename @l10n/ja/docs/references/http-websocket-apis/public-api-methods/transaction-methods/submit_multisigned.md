@@ -99,7 +99,7 @@ labels:
 {% tab label="コマンドライン" %}
 ```sh
 #Syntax: submit_multisigned <tx_json>
-rippled submit_multisigned '{
+xrpld submit_multisigned '{
    "Account": "rEuLyBCvcw4CFmzv8RepSiAoNgF8tTGJQC",
    "Fee": "30000",
    "Flags": 262144,

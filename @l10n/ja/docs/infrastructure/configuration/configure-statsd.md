@@ -1,8 +1,8 @@
 ---
 html: configure-statsd.html
-parent: configure-rippled.html
+parent: configure-xrpld.html
 seo:
-    description: StatsDの統計データでrippledサーバを監視します。
+    description: StatsDの統計データでxrpldサーバを監視します。
 labels:
   - コアサーバ
 ---
@@ -12,7 +12,7 @@ labels:
 
 ## 設定の手順
 
-`rippled`サーバでStatsDを有効にするには、以下の手順を実行します。
+`xrpld`サーバでStatsDを有効にするには、以下の手順を実行します。
 
 1. 別のマシンで`rippledmon`インスタンスをセットアップし、統計情報を受信して集計します。
 
@@ -24,7 +24,7 @@ labels:
 
     上記の手順を実行する際には、[Docker](https://docs.docker.com/)と[DockerCompose](https://docs.docker.com/compose/install/)がマシンにインストールされていることを確認してください。`rippledmon`の設定については、[`rippledmon`リポジトリ](https://github.com/ripple/rippledmon)をご覧ください。
 
-0. `[insight]`を`rippled`の設定ファイルに追加します。
+0. `[insight]`を`xrpld`の設定ファイルに追加します。
 
     ```
     [insight]
@@ -34,14 +34,14 @@ labels:
     ```
 
     - `address`には`rippledmon`が接続しているIPアドレスとポートを指定します。デフォルトでは、このポートは8125です。
-    - `prefix`には設定する`rippled`サーバを識別する名前を指定します。prefixには、空白、コロン":"、または縦棒"|"を含めてはいけません。このprefix(接頭辞)は、このサーバからエクスポートされるすべてのStatsDの統計情報に表示されます。
+    - `prefix`には設定する`xrpld`サーバを識別する名前を指定します。prefixには、空白、コロン":"、または縦棒"|"を含めてはいけません。このprefix(接頭辞)は、このサーバからエクスポートされるすべてのStatsDの統計情報に表示されます。
 
     {% partial file="/@l10n/ja/docs/_snippets/conf-file-location.md" /%}
 
-1. `rippled`サービスを再起動します。
+1. `xrpld`サービスを再起動します。
 
     ```
-    $ sudo systemctl restart rippled
+    $ sudo systemctl restart xrpld
     ```
 
 2. 統計情報がエクスポートされていることを確認します。
@@ -68,9 +68,9 @@ StatsDの各データの説明については、[`rippledmon`リポジトリ](ht
 
 - **コンセプト:**
     - [XRP Ledgerの概要](/about/)
-    - [`rippled`サーバ](../../concepts/networks-and-servers/index.md)
+    - [`xrpld`サーバ](../../concepts/networks-and-servers/index.md)
 - **チュートリアル:**
-    - [`rippled`のインストール](../installation/index.md)
+    - [`xrpld`のインストール](../installation/index.md)
     - [容量の計画](../installation/capacity-planning.md)
 - **リアファレンス:**
     - [server_infoメソッド](../../references/http-websocket-apis/public-api-methods/server-info-methods/server_info.md)

@@ -29,7 +29,7 @@ To configure your server to acquire and store full history, complete the followi
 1. Stop the `xrpld` server if it is running.
 
     ```
-    $ sudo systemctl stop rippled
+    $ sudo systemctl stop xrpld
     ```
 
 0. Remove (or comment out) the `online_delete` and `advisory_delete` settings from the `[node_db]` stanza of your server's config file, and change the type to `NuDB` if you haven't already:
@@ -37,7 +37,7 @@ To configure your server to acquire and store full history, complete the followi
     ```
     [node_db]
       type=NuDB
-      path=/var/lib/rippled/db/nudb
+      path=/var/lib/xrpld/db/nudb
       #online_delete=300000
       #advisory_delete=0
     ```
@@ -80,7 +80,7 @@ To configure your server to acquire and store full history, complete the followi
     After disabling online deletion, the server ignores any data that was downloaded while online deletion was enabled, so you may as well clear up the disk space. For example:
 
     ```
-    rm -r /var/lib/rippled/db/*
+    rm -r /var/lib/xrpld/db/*
     ```
 
     {% admonition type="danger" name="Warning" %}Be sure that you have not put any files you want to keep in the folder before you delete it. It is generally safe to delete all of an `xrpld` server's database files, but you should only do this if the configured database folder is not used for anything other than `xrpld`'s databases.{% /admonition %}
@@ -90,7 +90,7 @@ To configure your server to acquire and store full history, complete the followi
     If you have a database dump to load configured in `[import_db]`, start the server explicitly and include the `--import` [commandline option](../../commandline-usage.md#daemon-mode-options):
 
     ```
-    $ /opt/ripple/bin/rippled --conf /etc/opt/ripple/xrpld.cfg --import
+    $ /usr/bin/xrpld --conf /etc/xrpld/xrpld.cfg --import
     ```
 
     Importing a large database dump may take several minutes or even hours. During this time, the server is not fully started and synced with the network. Watch the server logs to see the status of the import.
@@ -98,7 +98,7 @@ To configure your server to acquire and store full history, complete the followi
     If you are not importing a database dump, start the server normally:
 
     ```
-    $ sudo systemctl start rippled
+    $ sudo systemctl start xrpld
     ```
 
 0. If you added an `[import_db]` stanza to your server's config file, remove it after the import completes.
@@ -115,7 +115,7 @@ To configure your server to acquire and store full history, complete the followi
 
 - **Concepts:**
     - [Ledger History](../../../concepts/networks-and-servers/ledger-history.md)
-    - [rippled Server Modes](../../../concepts/networks-and-servers/rippled-server-modes.md)
+    - [xrpld Server Modes](../../../concepts/networks-and-servers/xrpld-server-modes.md)
 - **Tutorials:**
     - [Capacity Planning](../../installation/capacity-planning.md), particularly [Disk Space](../../installation/capacity-planning.md#disk-space)
     - [Configure Online Deletion](configure-online-deletion.md)

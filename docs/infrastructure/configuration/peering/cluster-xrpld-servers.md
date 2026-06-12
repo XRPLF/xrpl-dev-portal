@@ -1,14 +1,14 @@
 ---
-html: cluster-rippled-servers.html
+html: cluster-xrpld-servers.html
 parent: configure-peering.html
 seo:
     description: Set up a group of servers that share work for higher efficiency.
 labels:
   - Core Server
 ---
-# Cluster rippled Servers
+# Cluster xrpld Servers
 
-If you run multiple [`rippled` servers](../../../concepts/networks-and-servers/index.md) in the same data center, you can configure them in a [cluster](../../../concepts/networks-and-servers/clustering.md) to maximize efficiency. To configure clustering:
+If you run multiple [`xrpld` servers](../../../concepts/networks-and-servers/index.md) in the same data center, you can configure them in a [cluster](../../../concepts/networks-and-servers/clustering.md) to maximize efficiency. To configure clustering:
 
 1. For each of your servers, note the IP address of the server.
 
@@ -17,7 +17,7 @@ If you run multiple [`rippled` servers](../../../concepts/networks-and-servers/i
     For example, using the commandline interface:
 
     ```
-    $ rippled validation_create
+    $ xrpld validation_create
 
     Loading: "/etc/xrpld.cfg"
     Connecting to 127.0.0.1:5005
@@ -66,10 +66,10 @@ If you run multiple [`rippled` servers](../../../concepts/networks-and-servers/i
 
         This defines the key pairs the server uses to recognize members of its cluster.
 
-4. After saving the config file, restart `rippled` on each server.
+4. After saving the config file, restart `xrpld` on each server.
 
     ```
-    # systemctl restart rippled
+    # systemctl restart xrpld
     ```
 
 5. To confirm that each server is now a member of the cluster, use the [peers method][]. The `cluster` field should list the public keys and (if configured) the custom names for each server.
@@ -77,7 +77,7 @@ If you run multiple [`rippled` servers](../../../concepts/networks-and-servers/i
     For example, using the commandline interface:
 
     ```
-    $ rippled peers
+    $ xrpld peers
 
     Loading: "/etc/xrpld.cfg"
     Connecting to 127.0.0.1:5005
@@ -106,7 +106,7 @@ If you run multiple [`rippled` servers](../../../concepts/networks-and-servers/i
 - **Concepts:**
     - [Peer Protocol](../../../concepts/networks-and-servers/peer-protocol.md)
 - **Tutorials:**
-    - [Install rippled](../../installation/index.md)
+    - [Install xrpld](../../installation/index.md)
 - **References:**
     - [validation_create method][]
     - [peers method][]

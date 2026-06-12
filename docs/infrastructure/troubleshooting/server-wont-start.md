@@ -1,6 +1,6 @@
 ---
 html: server-wont-start.html
-parent: troubleshoot-the-rippled-server.html
+parent: troubleshoot-the-xrpld-server.html
 seo:
     description: A collection of problems that would cause an xrpld server not to start, and how to fix them.
 labels:
@@ -42,7 +42,7 @@ This occurs because the system has a security limit on the number of files a sin
 3. Try starting `xrpld` again.
 
     ```
-    systemctl start rippled
+    systemctl start xrpld
     ```
 
 4. If `rippled` still does not start, open `/etc/sysctl.conf` and append the following kernel-level setting:
@@ -52,20 +52,20 @@ This occurs because the system has a security limit on the number of files a sin
     ```
 
 
-## Failed to open /etc/opt/ripple/xrpld.cfg
+## Failed to open /etc/xrpld/xrpld.cfg
 
 If `xrpld` crashes on startup with an error such as the following, it means that `xrpld` cannot read its config file:
 
 ```text
-Loading: "/etc/opt/ripple/xrpld.cfg"
-Failed to open '"/etc/opt/ripple/xrpld.cfg"'.
+Loading: "/etc/xrpld/xrpld.cfg"
+Failed to open '"/etc/xrpld/xrpld.cfg"'.
 Terminating thread rippled: main: unhandled St13runtime_error 'Can not create "/var/opt/ripple"'
 Aborted (core dumped)
 ```
 
 Possible solutions:
 
-- Check that the config file exists (the default location is `/etc/opt/ripple/xrpld.cfg`) and the user that runs your `rippled` process (usually `rippled`) has read permissions to the file.
+- Check that the config file exists (the default location is `/etc/xrpld/xrpld.cfg`) and the user that runs your `rippled` process (usually `rippled`) has read permissions to the file.
 
 - Create a config file that can be read by the `xrpld` user at `$HOME/.config/xrpld/xrpld.cfg` (where `$HOME` points to the `xrpld` user's home directory).
 
@@ -108,11 +108,11 @@ If `xrpld` crashes on startup with an error such as the following, it means the 
 
 ```text
 Loading: "/home/rippled/.config/xrpld/xrpld.cfg"
-Terminating thread rippled: main: unhandled St13runtime_error 'Can not create "/var/lib/rippled/db"'
+Terminating thread rippled: main: unhandled St13runtime_error 'Can not create "/var/lib/xrpld/db"'
 Aborted (core dumped)
 ```
 
-The paths to the configuration file (`/home/rippled/.config/xrpld/xrpld.cfg`) and the database path (`/var/lib/rippled/db`) may vary depending on your system.
+The paths to the configuration file (`/home/rippled/.config/xrpld/xrpld.cfg`) and the database path (`/var/lib/xrpld/db`) may vary depending on your system.
 
 Possible solutions:
 
@@ -130,9 +130,9 @@ The following error can occur if the `xrpld` server's state database is corrupte
 ```text
 2018-Aug-21 23:06:38.675117810 SHAMapStore:ERR state db error:
   writableDbExists false archiveDbExists false
-  writableDb '/var/lib/rippled/db/rocksdb/rippledb.11a9' archiveDb '/var/lib/rippled/db/rocksdb/rippledb.2d73'
+  writableDb '/var/lib/xrpld/db/rocksdb/rippledb.11a9' archiveDb '/var/lib/xrpld/db/rocksdb/rippledb.2d73'
 
-To resume operation, make backups of and remove the files matching /var/lib/rippled/db/state* and contents of the directory /var/lib/rippled/db/rocksdb
+To resume operation, make backups of and remove the files matching /var/lib/xrpld/db/state* and contents of the directory /var/lib/xrpld/db/rocksdb
 
 Terminating thread rippled: main: unhandled St13runtime_error 'state db error'
 ```
@@ -140,13 +140,13 @@ Terminating thread rippled: main: unhandled St13runtime_error 'state db error'
 The easiest way to fix this problem is to delete the databases entirely. You may want to back them up elsewhere instead. For example:
 
 ```sh
-mv /var/lib/rippled/db /var/lib/rippled/db-bak
+mv /var/lib/xrpld/db /var/lib/xrpld/db-bak
 ```
 
 Or, if you are sure you don't need the databases:
 
 ```sh
-rm -r /var/lib/rippled/db
+rm -r /var/lib/xrpld/db
 ```
 
 {% admonition type="success" name="Tip" %}It is generally safe to delete the `xrpld` databases, because any individual server can re-download ledger history from other servers in the XRP Ledger network.{% /admonition %}
@@ -156,10 +156,10 @@ Alternatively, you can change the paths to the databases in the config file. For
 ```
 [node_db]
 type=NuDB
-path=/var/lib/rippled/custom_nudb_path
+path=/var/lib/xrpld/custom_nudb_path
 
 [database_path]
-/var/lib/rippled/custom_sqlite_db_path
+/var/lib/xrpld/custom_sqlite_db_path
 ```
 
 

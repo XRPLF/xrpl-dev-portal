@@ -178,7 +178,7 @@ Best practices for applications submitting transactions include:
     - [The Consensus Mechanism (YouTube)](https://www.youtube.com/watch?v=k6VqEkqRTmk&list=PLJQ55Tj1hIVZtJ_JdTvSum2qMTsedWkNi&index=2)
 - **Tutorials:**
     - [Reliable Transaction Submission](../transactions/reliable-transaction-submission.md)
-    - [Run `rippled` as a Validator](../../infrastructure/configuration/server-modes/run-rippled-as-a-validator.md)
+    - [Run `xrpld` as a Validator](../../infrastructure/configuration/server-modes/run-xrpld-as-a-validator.md)
 - **References:**
     - [Ledger Format Reference](../../references/protocol/ledger-data/index.md)
     - [Transaction Format Reference](../../references/protocol/transactions/index.md)

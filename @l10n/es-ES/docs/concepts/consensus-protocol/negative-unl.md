@@ -34,7 +34,7 @@ En casos donde los validadores se desconecten uno o dos a la vez, los validadore
 
 Si más del 20% de los validadores de repente se desconectan todos a la vez, los servidores restantes no pueden alcanzar el quórum necesario para validar un nuevo ledger, por lo que no se podrían validar nuevos ledgers. Sin embargo, esos servidores aún pueden avanzar tentativamente a través de rondas de consenso sucesivas. Con el tiempo, los validadores restantes continuarían aplicando cambios a la UNL negativa a los ledgers tentativos y ajustarían sus UNL efectivas; eventualmente, si la situación persiste, la red podría reanudar la validación completa de ledgers utilizando la UNL negativa ajustado de las versiones de ledgers tentativas.
 
-La UNL negativa no tiene efecto sobre el modo solitario o [stand-alone mode](../networks-and-servers/rippled-server-modes.md) porque el servidor no utiliza el consenso en el modo solitario.
+La UNL negativa no tiene efecto sobre el modo solitario o [stand-alone mode](../networks-and-servers/xrpld-server-modes.md) porque el servidor no utiliza el consenso en el modo solitario.
 
 
 ## Cómo funciona
@@ -167,8 +167,8 @@ El siguiente ejemplo demuestra cómo afecta la UNL negativa al proceso de consen
 - **Conceptos:**
     - [Protocolo de consenso](index.md)
 - **Tutoriales:**
-    - [Conecta tu `rippled` a la red paralela](../../infrastructure/configuration/connect-your-rippled-to-the-xrp-test-net.md)
-    - [Ejecuta `rippled` como validador](../../infrastructure/configuration/server-modes/run-rippled-as-a-validator.md)
+    - [Conecta tu `xrpld` a la red paralela](../../infrastructure/configuration/connect-your-xrpld-to-the-xrp-test-net.md)
+    - [Ejecuta `xrpld` como validador](../../infrastructure/configuration/server-modes/run-xrpld-as-a-validator.md)
 - **Referencias:**
     - [Objeto NegativeUNL](../../references/protocol/ledger-data/ledger-entry-types/negativeunl.md)
     - [Pseudo-transacción UNLModify][]

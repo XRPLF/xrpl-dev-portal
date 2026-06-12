@@ -39,7 +39,7 @@ label:
 {% tab label="コマンドライン" %}
 ```
 #Syntax: ledger_closed
-rippled ledger_closed
+xrpld ledger_closed
 ```
 {% /tab %}
 

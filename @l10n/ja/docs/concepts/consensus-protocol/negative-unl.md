@@ -34,7 +34,7 @@ XRP Ledgerプロトコルの各サーバは、UNL（Unique Node List）と呼ば
 
 20%以上のバリデータが突然一度にオフラインになった場合、残りのサーバは新しいレジャーを検証するのに必要な定足数を達成できないため、新しいレジャーを検証することができない。しかし、そのようなサーバでも、コンセンサスラウンドを重ねることで暫定的な前進は可能である。時間が経つにつれて、残りのバリデータは暫定的なレジャーにネガティブUNLの変更を適用し、有効なUNLを調整し続ける。最終的に、この状況が続けば、ネットワークは暫定的なレジャーのバージョンから調整後のネガティブUNLを使用して、レジャーの検証を完全に再開することが可能である。
 
-スタンドアロンモードでは、サーバはコンセンサスを使用しないので、ネガティブUNLは[スタンドアロンモード](../networks-and-servers/rippled-server-modes.md)に影響を及ぼさない。
+スタンドアロンモードでは、サーバはコンセンサスを使用しないので、ネガティブUNLは[スタンドアロンモード](../networks-and-servers/xrpld-server-modes.md)に影響を及ぼさない。
 
 ## 仕組み
 
@@ -166,8 +166,8 @@ V<sub>a</sub>は、サーバ側のコンセンサス見解と一致した過去2
 - **コンセンサス:**
     - [コンセンサスプロトコル](index.md)
 - **チュートリアル:**
-    - [Testnetや別の並列ネットワークへ接続する](../../infrastructure/configuration/connect-your-rippled-to-the-xrp-test-net.md)
-    - [バリデータとしての`rippled`の実行](../../infrastructure/configuration/server-modes/run-rippled-as-a-validator.md)
+    - [Testnetや別の並列ネットワークへ接続する](../../infrastructure/configuration/connect-your-xrpld-to-the-xrp-test-net.md)
+    - [バリデータとしての`xrpld`の実行](../../infrastructure/configuration/server-modes/run-xrpld-as-a-validator.md)
 - **リファレンス:**
     - [negativeUNL オブジェクト](../../references/protocol/ledger-data/ledger-entry-types/negativeunl.md)
     - [UNLModify pseudo-transaction][]

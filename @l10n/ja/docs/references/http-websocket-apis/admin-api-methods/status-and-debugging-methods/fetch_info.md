@@ -44,7 +44,7 @@ _`fetch_info`メソッドは、権限のないユーザは実行できない[管
 {% tab label="コマンドライン" %}
 ```sh
 #Syntax: fetch_info [clear]
-rippled fetch_info
+xrpld fetch_info
 ```
 {% /tab %}
 

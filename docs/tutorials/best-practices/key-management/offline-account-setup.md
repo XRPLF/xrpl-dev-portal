@@ -33,7 +33,7 @@ The offline machine needs secure persistent storage (for example, an encrypted d
 
 Software options for signing on the XRP Ledger include:
 
-- [Install `rippled`](../../../infrastructure/installation/index.md) from a package (`.deb` or `.rpm` depending on which Linux distribution you use) file, then [run it in stand-alone mode](../../../concepts/networks-and-servers/rippled-server-modes.md).
+- [Install `xrpld`](../../../infrastructure/installation/index.md) from a package (`.deb` or `.rpm` depending on which Linux distribution you use) file, then [run it in stand-alone mode](../../../concepts/networks-and-servers/xrpld-server-modes.md).
 - Install [xrpl.js](https://github.com/XRPLF/xrpl.js/) (or another [client library](../../../references/client-libraries.md)) and its dependencies offline. The Yarn package manager, for example, has [recommended instructions for offline usage](https://yarnpkg.com/blog/2016/11/24/offline-mirror/).
 - See also: [Set Up Secure Signing](../../../concepts/transactions/secure-signing.md)
 
@@ -49,7 +49,7 @@ On the **offline machine**, generate a pair of [cryptographic keys](../../../con
 {% tab label="xrpld Commandline" %}
 ```sh
 $ ./xrpld wallet_propose
-Loading: "/etc/opt/ripple/xrpld.cfg"
+Loading: "/etc/xrpld/xrpld.cfg"
 2019-Dec-09 22:58:24.110862955 HTTPClient:NFO Connecting to 127.0.0.1:5005
 
 {
@@ -103,7 +103,7 @@ The `Sequence` number of a newly-funded account matches the [ledger index][] whe
 ```sh
 $ ./xrpld account_info rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn
 
-Loading: "/etc/opt/ripple/xrpld.cfg"
+Loading: "/etc/xrpld/xrpld.cfg"
 2019-Dec-11 01:06:21.728637950 HTTPClient:NFO Connecting to 127.0.0.1:5005
 {
    "result" : {
@@ -161,7 +161,7 @@ Example (enable Require Auth):
 ```sh
 $ xrpld sign sn3nxiW7v8KXzPzAqzyHXbSSKNuN9 '{"Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", "Fee": "12", "Sequence": 1, "TransactionType": "AccountSet", "SetFlag": 2}' offline
 
-Loading: "/etc/opt/ripple/xrpld.cfg"
+Loading: "/etc/xrpld/xrpld.cfg"
 2019-Dec-11 00:18:31.865955978 HTTPClient:NFO Connecting to 127.0.0.1:5005
 {
    "result" : {
@@ -207,7 +207,7 @@ Example of transaction submission:
 ```sh
 $ xrpld submit 1200032280000000240000000120210000000268400000000000000C7321039543A0D3004CDA0904A09FB3710251C652D69EA338589279BC849D47A7B019A174473045022100D5C92D7705036CD7EBB601C8DFCD90927FA591A62AF832C489E9C898EC8E2FA0022052F1819340EB73E9749B8930A6935727362B8E141D1B2E246B49F912223FFD4381144B4E9C06F24296074F7BC48F92A97916C6DC5EA9
 
-Loading: "/etc/opt/ripple/xrpld.cfg"
+Loading: "/etc/xrpld/xrpld.cfg"
 2019-Dec-11 01:14:25.988839227 HTTPClient:NFO Connecting to 127.0.0.1:5005
 
 {
@@ -250,7 +250,7 @@ For each transaction you submitted, note the transaction's [final outcome](../..
 ```sh
 $ ./xrpld tx F81C34E7F05423DC1C973CB5008CA41AE984DE142EAA3975A749FABF0D08FA63
 
-Loading: "/etc/opt/ripple/xrpld.cfg"
+Loading: "/etc/xrpld/xrpld.cfg"
 2019-Dec-11 01:38:30.124771464 HTTPClient:NFO Connecting to 127.0.0.1:5005
 {
    "result" : {

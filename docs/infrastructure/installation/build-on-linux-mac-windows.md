@@ -1,6 +1,6 @@
 ---
 html: build-on-linux-mac-windows.html
-parent: install-rippled.html
+parent: install-xrpld.html
 seo:
     description: Build xrpld on Linux, Mac (macOS), or Windows
 labels:

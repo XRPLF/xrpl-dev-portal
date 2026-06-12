@@ -1,7 +1,7 @@
 ### State Accounting Object
 <!-- This nested object definition is identical across server_state and server_info -->
 
-Each field in the `state_accounting` object has a key that refers to a specific [server state](/docs/references/http-websocket-apis/api-conventions/rippled-server-states), and a value that is an object with the following fields:
+Each field in the `state_accounting` object has a key that refers to a specific [server state](/docs/references/http-websocket-apis/api-conventions/xrpld-server-states), and a value that is an object with the following fields:
 
 | Field         | Value           | Description |
 |---------------|-----------------|-------------|

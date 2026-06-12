@@ -8,7 +8,7 @@ labels:
 ---
 # Load a Saved Ledger in Stand-Alone Mode
 
-You can start an `xrpld` server in [Stand-Alone Mode](../../concepts/networks-and-servers/rippled-server-modes.md) using a [historical ledger version](../../concepts/ledgers/index.md) that was previously saved to disk. For example, if your `xrpld` server was previously synced with any XRP Ledger peer-to-peer network including [the production Mainnet, the Testnet, or the Devnet](../../concepts/networks-and-servers/parallel-networks.md), you can load any ledger version your server had available.
+You can start an `xrpld` server in [Stand-Alone Mode](../../concepts/networks-and-servers/xrpld-server-modes.md) using a [historical ledger version](../../concepts/ledgers/index.md) that was previously saved to disk. For example, if your `xrpld` server was previously synced with any XRP Ledger peer-to-peer network including [the production Mainnet, the Testnet, or the Devnet](../../concepts/networks-and-servers/parallel-networks.md), you can load any ledger version your server had available.
 
 Loading a historical ledger version is useful for "replaying" a ledger to verify that transactions were processed according to the rules of the network, or to compare the results of processing transaction sets with different [amendments](../../concepts/networks-and-servers/amendments.md) enabled. In the unlikely event that [an attack against the XRP Ledger's consensus mechanism](../../concepts/consensus-protocol/consensus-protections.md) caused unwanted effects to the shared ledger state, a consensus of validators could "roll back" to a known-good network state starting with this process.
 
@@ -30,7 +30,7 @@ Use the [server_info method][] to check the state of your server relative to the
 * `proposing`
 * `validating`
 
-For more information, see [Possible Server States](../../references/http-websocket-apis/api-conventions/rippled-server-states.md).
+For more information, see [Possible Server States](../../references/http-websocket-apis/api-conventions/xrpld-server-states.md).
 
 ## 3. (Optional) Retrieve specific ledger versions.
 

@@ -1,6 +1,6 @@
 ---
 html: configure-statsd.html
-parent: configure-rippled.html
+parent: configure-xrpld.html
 seo:
     description: Monitor your xrpld server with StatsD metrics.
 labels:
@@ -41,7 +41,7 @@ To enable StatsD on your `xrpld` server, perform the following steps:
 0. Restart the `xrpld` service.
 
     ```
-    $ sudo systemctl restart rippled
+    $ sudo systemctl restart xrpld
     ```
 
 0. Check that the metrics are being exported:

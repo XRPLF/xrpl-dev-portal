@@ -50,7 +50,7 @@ To change the amount of history your server stores, perform the following steps:
 0. Start (or restart) the `xrpld` service.
 
     ```
-    $ sudo systemctl restart rippled
+    $ sudo systemctl restart xrpld
     ```
 
 0. Wait for your server to sync to the network.

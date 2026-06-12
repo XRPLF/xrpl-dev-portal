@@ -1,6 +1,6 @@
 ---
 html: fix-sqlite-tx-db-page-size-issue.html
-parent: troubleshoot-the-rippled-server.html
+parent: troubleshoot-the-xrpld-server.html
 seo:
     description: Fix a problem with the SQLite page size on full-history servers started on rippled version 0.40.0 or earlier.
 status: removed
@@ -31,7 +31,7 @@ If your server is vulnerable to this problem, you can detect it two ways:
 
 In both cases, detection of the problem requires access to `xrpld`'s server logs.
 
-{% admonition type="success" name="Tip" %}The location of the debug log depends on your `xrpld` server's config file. The [default configuration](https://github.com/XRPLF/rippled/blob/master/cfg/xrpld-example.cfg#L1139-L1142) writes the server's debug log to the file `/var/log/rippled/debug.log`.{% /admonition %}
+{% admonition type="success" name="Tip" %}The location of the debug log depends on your `xrpld` server's config file. The [default configuration](https://github.com/XRPLF/rippled/blob/master/cfg/xrpld-example.cfg#L1139-L1142) writes the server's debug log to the file `/var/log/xrpld/debug.log`.{% /admonition %}
 
 ### Proactive Detection
 
@@ -93,7 +93,7 @@ You can fix this issue using `xrpld` on supported Linux systems according to the
     The transaction database is stored in the `transaction.db` file in the folder specified by your configuration's `[database_path]` setting. You can check the size of this file to see how much free space you need. For example:
 
     ```
-    ls -l /var/lib/rippled/db/transaction.db
+    ls -l /var/lib/xrpld/db/transaction.db
     ```
 
 ### Migration Process
@@ -128,7 +128,7 @@ To migrate your transaction database to a larger page size, perform the followin
 5. If `xrpld` is still running, stop it:
 
     ```
-    sudo systemctl stop rippled
+    sudo systemctl stop xrpld
     ```
 
 6. Open a `screen` session (or other similar tool) so that the process does not stop when you log out:
@@ -146,7 +146,7 @@ To migrate your transaction database to a larger page size, perform the followin
 8. Run `xrpld` executable directly, providing the `--vacuum` command with the path to the temporary directory:
 
     ```
-    /opt/ripple/bin/rippled -q --vacuum /tmp/rippled_txdb_migration
+    /usr/bin/xrpld -q --vacuum /tmp/rippled_txdb_migration
     ```
 
     The `xrpld` executable immediately displays the following message:
@@ -180,7 +180,7 @@ To migrate your transaction database to a larger page size, perform the followin
 10. Restart the `xrpld` service.
 
     ```
-    sudo systemctl start rippled
+    sudo systemctl start xrpld
     ```
 
 11. Confirm that the `xrpld` service started successfully.
@@ -188,7 +188,7 @@ To migrate your transaction database to a larger page size, perform the followin
     You can use the [commandline interface](../../tutorials/get-started/get-started-http-websocket-apis.md#commandline) to check the server status (unless you have configured your server not to accept JSON-RPC requests). For example:
 
     ```
-    /opt/ripple/bin/rippled server_info
+    /usr/bin/xrpld server_info
     ```
 
     For a description of the expected response from this command, see the [server_info method][] documentation.
@@ -196,7 +196,7 @@ To migrate your transaction database to a larger page size, perform the followin
 12. Watch the server's debug log to confirm that the `SQLite page size` is now 4096:
 
     ```
-    tail -F /var/log/rippled/debug.log
+    tail -F /var/log/xrpld/debug.log
     ```
 
     The [periodic log message](#proactive-detection) should also show significantly more free pages and free pages than it did before the migration.

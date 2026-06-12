@@ -9,7 +9,7 @@ labels:
 
 手数料投票は、XRP Ledgerの使用料、具体的には基本[トランザクションコスト](../transactions/transaction-cost.md)および[準備金要件](../accounts/reserves.md)を調整するためのシステムです。この手数料の目的は、ネットワークをスパムから保護することにあります。そのため、手数料の投票による決定は、より多くのユーザやユースケースにネットワークを利用可能にするという目的と、ネットワークを悪用や過剰利用から保護するという目的の、競合する優先事項を考慮する必要があります。XRPの価値やネットワークノードのコストおよび機能の長期的な変化に適応するために、定期的な変更が必要です。
 
-[バリデータ](../../infrastructure/configuration/server-modes/run-rippled-as-a-validator.md) の運用者は、`xrpld.cfg` ファイルの `[voting]`セクションで、希望する手数料値を設定することができます。各バリデータは、15分に1回程度の頻度で、ネットワークにその設定値を定期的に伝えます。ネットワークは、信頼されているバリデータの希望の中央値に手数料設定を自動的に調整します。
+[バリデータ](../../infrastructure/configuration/server-modes/run-xrpld-as-a-validator.md) の運用者は、`xrpld.cfg` ファイルの `[voting]`セクションで、希望する手数料値を設定することができます。各バリデータは、15分に1回程度の頻度で、ネットワークにその設定値を定期的に伝えます。ネットワークは、信頼されているバリデータの希望の中央値に手数料設定を自動的に調整します。
 
 {% admonition type="warning" name="注意" %}信頼できるバリデータの合意により不十分な必要準備金が採用された場合、XRP Ledgerピアツーピアネットワークがサービス拒否（DoS）攻撃を受ける可能性があります。{% /admonition %}
 
@@ -69,7 +69,7 @@ labels:
     - [準備金](../accounts/reserves.md)
     - [トランザクションキュー](../transactions/transaction-queue.md)
 - **チュートリアル:**
-    - [rippledの設定](../../infrastructure/configuration/index.md)
+    - [xrpldの設定](../../infrastructure/configuration/index.md)
 - **リファレンス:**
     - [feeメソッド][]
     - [server_infoメソッド][]

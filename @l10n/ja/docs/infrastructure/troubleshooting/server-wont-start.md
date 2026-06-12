@@ -1,27 +1,27 @@
 ---
 html: server-wont-start.html
-parent: troubleshoot-the-rippled-server.html
+parent: troubleshoot-the-xrpld-server.html
 seo:
-    description: rippledサーバが起動しない原因となると思われる問題とその解決方法です。
+    description: xrpldサーバが起動しない原因となると思われる問題とその解決方法です。
 labels:
   - コアサーバ
 ---
-# rippledサーバが起動しない
+# xrpldサーバが起動しない
 
-このページでは、[`rippled`サーバ](../../concepts/networks-and-servers/index.md)が起動しない際に考えられる原因とその修正方法を説明します。
+このページでは、[`xrpld`サーバ](../../concepts/networks-and-servers/index.md)が起動しない際に考えられる原因とその修正方法を説明します。
 
-以下の手順では、サポートされているプラットフォームに[`rippled`がインストール](../installation/index.md)されていることを前提としています。
+以下の手順では、サポートされているプラットフォームに[`xrpld`がインストール](../installation/index.md)されていることを前提としています。
 
 ## ファイル記述子の制限
 
-一部のLinuxバリアントでは、`rippled`を実行しようとすると以下のようなエラーメッセージが出力されることがあります。
+一部のLinuxバリアントでは、`xrpld`を実行しようとすると以下のようなエラーメッセージが出力されることがあります。
 
 ```text
 WARNING: There are only 1024 file descriptors (soft limit) available, which
 limit the number of simultaneous connections.
 ```
 
-これは、セキュリティの点からシステムで1つのプロセスが開くことができるファイルの数に制限があるが、その制限が`rippled`にとっては少なすぎる場合に発生します。この問題を修正するには、**ルートアクセス権限が必要です**。以下の手順に従い、`rippled`が開くことができるファイルの数を増やします。
+これは、セキュリティの点からシステムで1つのプロセスが開くことができるファイルの数に制限があるが、その制限が`xrpld`にとっては少なすぎる場合に発生します。この問題を修正するには、**ルートアクセス権限が必要です**。以下の手順に従い、`xrpld`が開くことができるファイルの数を増やします。
 
 1. 次の行を`/etc/security/limits.conf`ファイルの終わりに追加します。
 
@@ -38,10 +38,10 @@ limit the number of simultaneous connections.
 
    このコマンドの出力は`65536`になるはずです。
 
-3. `rippled`をもう一度起動します。
+3. `xrpld`をもう一度起動します。
 
     ```
-    systemctl start rippled
+    systemctl start xrpld
     ```
 
 4. それでも`rippled`が起動しない場合は、`/etc/sysctl.conf`を開き、以下のカーネルレベル設定を付加します。
@@ -51,22 +51,22 @@ limit the number of simultaneous connections.
     ```
 
 
-## /etc/opt/ripple/xrpld.cfgを開くことができない
+## /etc/xrpld/xrpld.cfgを開くことができない
 
-`rippled`が起動時にクラッシュし、以下のようなエラーが出力される場合は、`rippled`が構成ファイルを読み取ることができません。
+`xrpld`が起動時にクラッシュし、以下のようなエラーが出力される場合は、`xrpld`が構成ファイルを読み取ることができません。
 
 ```text
-Loading: "/etc/opt/ripple/xrpld.cfg"
-Failed to open '"/etc/opt/ripple/xrpld.cfg"'.
+Loading: "/etc/xrpld/xrpld.cfg"
+Failed to open '"/etc/xrpld/xrpld.cfg"'.
 Terminating thread rippled: main: unhandled St13runtime_error 'Can not create "/var/opt/ripple"'
 Aborted (core dumped)
 ```
 
 考えられる解決策:
 
-- 構成ファイル（デフォルトのロケーションは`/etc/opt/ripple/xrpld.cfg`）が存在しており、`rippled`プロセスを実行するユーザ（通常は`rippled`）にこのファイルの読み取り権限があることを確認します。
+- 構成ファイル（デフォルトのロケーションは`/etc/xrpld/xrpld.cfg`）が存在しており、`rippled`プロセスを実行するユーザ（通常は`rippled`）にこのファイルの読み取り権限があることを確認します。
 
-- `rippled`ユーザが読み取ることができる構成ファイルを`$HOME/.config/xrpld/xrpld.cfg`に作成します（`$HOME`は`rippled`ユーザのホームディレクトリを指しています）。
+- `xrpld`ユーザが読み取ることができる構成ファイルを`$HOME/.config/xrpld/xrpld.cfg`に作成します（`$HOME`は`xrpld`ユーザのホームディレクトリを指しています）。
 
     {% admonition type="success" name="ヒント" %}`rippled`リポジトリには、パケージのインストール時にデフォルトの構成として提供される[`xrpld.cfg`サンプルファイル](https://github.com/XRPLF/rippled/blob/master/cfg/xrpld-example.cfg)が含まれています。このファイルがない場合は、上記のリンク先からコピーできます。{% /admonition %}
 
@@ -74,7 +74,7 @@ Aborted (core dumped)
 
 ## バリデータファイルを開くことができない
 
-`rippled`が起動時にクラッシュし、以下のようなエラーが出力される場合は、`rippled`はプライマリ構成ファイルを読み取ることはできても、この構成ファイルに指定されている別のバリデータ構成ファイル（通常は`validators.txt`）を読み取ることができません。
+`xrpld`が起動時にクラッシュし、以下のようなエラーが出力される場合は、`xrpld`はプライマリ構成ファイルを読み取ることはできても、この構成ファイルに指定されている別のバリデータ構成ファイル（通常は`validators.txt`）を読み取ることができません。
 
 ```text
 Loading: "/home/rippled/.config/xrpld/xrpld.cfg"
@@ -84,7 +84,7 @@ Aborted (core dumped)
 
 考えられる解決策:
 
-- `validators.txt`ファイルが存在し、`rippled`ユーザにこのファイルの読み取り権限があることを確認します。
+- `validators.txt`ファイルが存在し、`xrpld`ユーザにこのファイルの読み取り権限があることを確認します。
 
     {% admonition type="success" name="ヒント" %}`rippled`リポジトリには、パケージのインストール時にデフォルトの構成として提供される[`validators.txt`サンプルファイル](https://github.com/XRPLF/rippled/blob/master/cfg/validators-example.txt)が含まれています。このファイルがない場合は、上記のリンク先からコピーできます。{% /admonition %}
 
@@ -103,35 +103,35 @@ Aborted (core dumped)
 
 ## データベースパスを作成できない
 
-`rippled`が起動時にクラッシュし、以下のようなエラーが出力される場合は、その構成ファイルの`[database_path]`への書き込み権限がサーバにありません。
+`xrpld`が起動時にクラッシュし、以下のようなエラーが出力される場合は、その構成ファイルの`[database_path]`への書き込み権限がサーバにありません。
 
 ```text
 Loading: "/home/rippled/.config/xrpld/xrpld.cfg"
-Terminating thread rippled: main: unhandled St13runtime_error 'Can not create "/var/lib/rippled/db"'
+Terminating thread rippled: main: unhandled St13runtime_error 'Can not create "/var/lib/xrpld/db"'
 Aborted (core dumped)
 ```
 
-構成ファイルのパス（`/home/rippled/.config/xrpld/xrpld.cfg`）とデータベースのパス（`/var/lib/rippled/db`）は、システムによっては異なる可能性があります。
+構成ファイルのパス（`/home/rippled/.config/xrpld/xrpld.cfg`）とデータベースのパス（`/var/lib/xrpld/db`）は、システムによっては異なる可能性があります。
 
 考えられる解決策:
 
-- エラーメッセージに出力されているデータベースパスへの書き込み権限を持つ別のユーザとして`rippled`を実行します。
+- エラーメッセージに出力されているデータベースパスへの書き込み権限を持つ別のユーザとして`xrpld`を実行します。
 
-- `xrpld.cfg`ファイルを編集し、`[database_path]`設定を変更して、`rippled`ユーザに書き込み権限があるパスを使用します。
+- `xrpld.cfg`ファイルを編集し、`[database_path]`設定を変更して、`xrpld`ユーザに書き込み権限があるパスを使用します。
 
-- `rippled`ユーザに対し、設定されているデータベースパスへの書き込み権限を付与します。
+- `xrpld`ユーザに対し、設定されているデータベースパスへの書き込み権限を付与します。
 
 
 ## 状態DBエラー
 
-`rippled`サーバの状態データベースが破損している場合に、以下のエラーが発生する可能性があります。これは、予期しないシャットダウンが行われた場合、またはデータベースのタイプをRocksDBからNuDBに変更したが構成ファイルの`path`設定と`[database_path]`設定を変更しなかった場合に発生する可能性があります。
+`xrpld`サーバの状態データベースが破損している場合に、以下のエラーが発生する可能性があります。これは、予期しないシャットダウンが行われた場合、またはデータベースのタイプをRocksDBからNuDBに変更したが構成ファイルの`path`設定と`[database_path]`設定を変更しなかった場合に発生する可能性があります。
 
 ```text
 2018-Aug-21 23:06:38.675117810 SHAMapStore:ERR state db error:
   writableDbExists false archiveDbExists false
-  writableDb '/var/lib/rippled/db/rocksdb/rippledb.11a9' archiveDb '/var/lib/rippled/db/rocksdb/rippledb.2d73'
+  writableDb '/var/lib/xrpld/db/rocksdb/rippledb.11a9' archiveDb '/var/lib/xrpld/db/rocksdb/rippledb.2d73'
 
-To resume operation, make backups of and remove the files matching /var/lib/rippled/db/state* and contents of the directory /var/lib/rippled/db/rocksdb
+To resume operation, make backups of and remove the files matching /var/lib/xrpld/db/state* and contents of the directory /var/lib/xrpld/db/rocksdb
 
 Terminating thread rippled: main: unhandled St13runtime_error 'state db error'
 ```
@@ -139,26 +139,26 @@ Terminating thread rippled: main: unhandled St13runtime_error 'state db error'
 この問題を修正する最も簡単な方法は、データベース全体を削除することです。あるいは、データベースを任意の場所にバックアップすることもできます。例:
 
 ```sh
-mv /var/lib/rippled/db /var/lib/rippled/db-bak
+mv /var/lib/xrpld/db /var/lib/xrpld/db-bak
 ```
 
 あるいは、データベースが必要ではないことが判明している場合は以下のようにします。
 
 ```sh
-rm -r /var/lib/rippled/db
+rm -r /var/lib/xrpld/db
 ```
 
-{% admonition type="success" name="ヒント" %}一般に`rippled`データベースは安全に削除できます。これは、個々のサーバはXRP Ledgerネットワーク内の他のサーバからレジャー履歴を再ダウンロードできるためです。{% /admonition %}
+{% admonition type="success" name="ヒント" %}一般に`xrpld`データベースは安全に削除できます。これは、個々のサーバはXRP Ledgerネットワーク内の他のサーバからレジャー履歴を再ダウンロードできるためです。{% /admonition %}
 
 あるいは、構成ファイルでデータベースのパスを変更できます。例:
 
 ```
 [node_db]
 type=NuDB
-path=/var/lib/rippled/custom_nudb_path
+path=/var/lib/xrpld/custom_nudb_path
 
 [database_path]
-/var/lib/rippled/custom_sqlite_db_path
+/var/lib/xrpld/custom_sqlite_db_path
 ```
 
 
@@ -190,14 +190,14 @@ Terminating thread rippled: main: unhandled N5beast14BadLexicalCastE 'std::bad_c
 ## 関連項目
 
 - **コンセプト:**
-    - [`rippled`サーバ](../../concepts/networks-and-servers/index.md)
+    - [`xrpld`サーバ](../../concepts/networks-and-servers/index.md)
     - [技術に関するよくある質問](/about/faq.md)
 - **チュートリアル:**
     - [ログメッセージについて](understanding-log-messages.md)
     - [容量の計画](../installation/capacity-planning.md)
 - **リファレンス:**
-    - [rippled APIリファレンス](../../references/http-websocket-apis/index.md)
-      - [`rippled`コマンドラインの使用](../commandline-usage.md)
+    - [xrpld APIリファレンス](../../references/http-websocket-apis/index.md)
+      - [`xrpld`コマンドラインの使用](../commandline-usage.md)
       - [server_infoメソッド][]
 
 {% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

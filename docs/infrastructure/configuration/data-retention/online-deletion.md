@@ -56,7 +56,7 @@ The server only counts validated ledger versions when deciding how far back it c
 
 ### Interrupting Online Deletion
 
-Online deletion automatically stops if the [server state](../../../references/http-websocket-apis/api-conventions/rippled-server-states.md) becomes less than `full`. If this happens, the server writes a log message with the prefix `SHAMapStore::WRN`. The server attempts to start online deletion again after the next validated ledger version after becoming fully synced.
+Online deletion automatically stops if the [server state](../../../references/http-websocket-apis/api-conventions/xrpld-server-states.md) becomes less than `full`. If this happens, the server writes a log message with the prefix `SHAMapStore::WRN`. The server attempts to start online deletion again after the next validated ledger version after becoming fully synced.
 
 If you stop the server or it crashes while online deletion is running, online deletion resumes after the server is restarted and the server becomes fully synced.
 

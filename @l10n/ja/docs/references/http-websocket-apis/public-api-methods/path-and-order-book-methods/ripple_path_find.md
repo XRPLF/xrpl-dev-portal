@@ -12,7 +12,7 @@ labels:
 
 `ripple_path_find`メソッドは、[path_findメソッド][]のシンプルなバージョンであり、すぐに利用できる[ペイメントパス](../../../../concepts/tokens/fungible-tokens/paths.md)を含む1つのレスポンスを返します。WebSocket APIとJSON-RPC APIの両方で使用できます。ただし、結果は時間の経過とともに古くなる傾向にあります。最新の状態を維持するために複数のコールを実行する代わりに、可能な場合には[path_findメソッド][]を使用して、継続的な更新をサブスクライブします。
 
-`rippled`サーバは支払いを行うため最も安価なパスまたはパスの組み合わせを探索しますが、このメソッドで返されるパスが最良のパスであることは保証されません。
+`xrpld`サーバは支払いを行うため最も安価なパスまたはパスの組み合わせを探索しますが、このメソッドで返されるパスが最良のパスであることは保証されません。
 
 {% admonition type="warning" name="注意" %}信頼できないサーバからのPathfindingの結果には注意してください。オペレーターの収益となるように、最良ではないパスを返すようにサーバが改ざんされる可能性があります。サーバの負荷が非常に高い場合にも不適切な結果が返される可能性があります。Pathfindingについて信頼できる独自サーバがない場合は、1つのサーバから不適切な結果が返されるリスクを最小限に抑えるため、異なる当事者が実行する複数のサーバからのPathfindingの結果を比較してください。{% /admonition %}
 
@@ -75,7 +75,7 @@ labels:
 {% tab label="コマンドライン" %}
 ```sh
 #Syntax ripple_path_find json ledger_index|ledger_hash
-rippled ripple_path_find '{"source_account":"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59", "source_currencies":[ { "currency":"XRP" }, { "currency":"USD" } ], "destination_account":"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59", "destination_amount":{ "value":"0.001", "currency":"USD", "issuer":"rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B" } }'
+xrpld ripple_path_find '{"source_account":"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59", "source_currencies":[ { "currency":"XRP" }, { "currency":"USD" } ], "destination_account":"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59", "destination_amount":{ "value":"0.001", "currency":"USD", "issuer":"rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B" } }'
 ```
 {% /tab %}
 

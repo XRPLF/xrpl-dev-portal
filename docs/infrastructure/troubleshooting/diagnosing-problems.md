@@ -26,7 +26,7 @@ xrpld server_info
 The response to this command has a lot of information, which is documented along with the [server_info method][].
 For troubleshooting purposes, the most important fields are (from most commonly used to least):
 
-- **`server_state`** - Most of the time, this field should show `proposing` for a server that is [configured as a validator](../configuration/server-modes/run-rippled-as-a-validator.md), or `full` for a non-validating server. The value `connected` means that the server can communicate with the rest of the peer-to-peer network, but it does not yet have enough data to track progress of the shared ledger state. Normally, syncing to the state of the rest of the ledger takes about 5-15 minutes after starting.
+- **`server_state`** - Most of the time, this field should show `proposing` for a server that is [configured as a validator](../configuration/server-modes/run-xrpld-as-a-validator.md), or `full` for a non-validating server. The value `connected` means that the server can communicate with the rest of the peer-to-peer network, but it does not yet have enough data to track progress of the shared ledger state. Normally, syncing to the state of the rest of the ledger takes about 5-15 minutes after starting.
 
     - If your server remains in the `connected` state for hours, or returns to the `connected` state after being in the `full` or `proposing` states, that usually indicates that your server cannot keep up with the rest of the network. The most common bottlenecks are disk I/O, network bandwidth, and RAM.
 
@@ -34,7 +34,7 @@ For troubleshooting purposes, the most important fields are (from most commonly 
 
         ```
         $ ./xrpld server_info
-        Loading: "/etc/opt/ripple/xrpld.cfg"
+        Loading: "/etc/xrpld/xrpld.cfg"
         2020-Jan-03 22:49:32.834134358 HTTPClient:NFO Connecting to 127.0.0.1:5005
 
         {
@@ -116,7 +116,7 @@ This generally indicates one of several problems:
 
 ## Check the server log
 
-[By default,](https://github.com/XRPLF/rippled/blob/master/cfg/xrpld-example.cfg#L1139-L1142) `rippled` writes the server's debug log to the file `/var/log/rippled/debug.log`. The location of the debug log can differ based on your server's config file. If you start the `rippled` service directly (instead of using `systemctl` or `service` to start it), it also prints log messages to the console by default.
+[By default,](https://github.com/XRPLF/rippled/blob/master/cfg/xrpld-example.cfg#L1139-L1142) `rippled` writes the server's debug log to the file `/var/log/xrpld/debug.log`. The location of the debug log can differ based on your server's config file. If you start the `xrpld` service directly (instead of using `systemctl` or `service` to start it), it also prints log messages to the console by default.
 
 The default config file sets the log level to severity "warning" for all categories of log messages by internally using the [log_level method][] during startup. You can control the verbosity of the debug log [using the `--silent` commandline option during startup](../commandline-usage.md#verbosity-options) and with the [log_level method][] while the server is running. (See the `[rpc_startup]` stanza of the config file for settings.)
 

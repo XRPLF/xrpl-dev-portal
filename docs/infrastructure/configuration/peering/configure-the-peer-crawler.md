@@ -23,7 +23,7 @@ To configure how much information your server provides in response to peer crawl
 1. Edit your `xrpld`'s config file.
 
     ```
-    vim /etc/opt/ripple/xrpld.cfg
+    vim /etc/xrpld/xrpld.cfg
     ```
 
     {% partial file="/docs/_snippets/conf-file-location.md" /%}
@@ -43,7 +43,7 @@ To configure how much information your server provides in response to peer crawl
 3. After saving the changes to the config file, restart your `xrpld` server to apply the updated configuration:
 
     ```
-    systemctl restart rippled
+    systemctl restart xrpld
     ```
 
 
@@ -54,7 +54,7 @@ To disable the peer crawler API on your server, so it does not respond to peer c
 1. Edit your `xrpld`'s config file.
 
     ```
-    vim /etc/opt/ripple/xrpld.cfg
+    vim /etc/xrpld/xrpld.cfg
     ```
 
     {% partial file="/docs/_snippets/conf-file-location.md" /%}
@@ -71,7 +71,7 @@ To disable the peer crawler API on your server, so it does not respond to peer c
 3. After saving the changes to the config file, restart your `xrpld` server to apply the updated configuration:
 
     ```
-    systemctl restart rippled
+    systemctl restart xrpld
     ```
 
 
@@ -80,7 +80,7 @@ To disable the peer crawler API on your server, so it does not respond to peer c
 - **Concepts:**
     - [Peer Protocol](../../../concepts/networks-and-servers/peer-protocol.md)
 - **Tutorials:**
-    - [Manage the rippled Server](../../installation/install-rippled-on-ubuntu.md)
+    - [Manage the xrpld Server](../../installation/install-xrpld-on-ubuntu.md)
 - **References:**
     - [server_info method][]
     - [peers method][]

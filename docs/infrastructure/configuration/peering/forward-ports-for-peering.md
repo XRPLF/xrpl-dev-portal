@@ -16,7 +16,7 @@ Example of a `server_info` result (trimmed) showing only 10 peers, likely becaus
 
 ```json
 $ ./xrpld server_info
-Loading: "/etc/opt/ripple/xrpld.cfg"
+Loading: "/etc/xrpld/xrpld.cfg"
 2019-Dec-23 22:15:09.343961928 HTTPClient:NFO Connecting to 127.0.0.1:5005
 
 {
@@ -51,7 +51,7 @@ $ sudo firewall-cmd --zone=public --add-port=2459/tcp
 Then, restart the `xrpld` server:
 
 ```sh
-$ sudo systemctl restart rippled.service
+$ sudo systemctl restart xrpld.service
 ```
 
 To make it permanent:

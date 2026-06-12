@@ -1,6 +1,6 @@
 ---
 html: install-clio-on-ubuntu.html
-parent: install-rippled.html
+parent: install-xrpld.html
 seo:
     description: Install a precompiled Clio binary on Ubuntu Linux.
 labels:
@@ -145,7 +145,7 @@ Before you install Clio, you must meet the following requirements.
 
         The [example config file](https://github.com/XRPLF/clio/blob/develop/docs/examples/config/example-config.json) accesses the `xrpld` server running on the local loopback network (127.0.0.1), with the WebSocket (WS) on port 6005 and gRPC on port 50051.
 
-    2. Update the `xrpld` server's config file to allow the Clio server to connect to it. The package installs this file at `/etc/opt/ripple/xrpld.cfg`.
+    2. Update the `xrpld` server's config file to allow the Clio server to connect to it. The package installs this file at `/etc/xrpld/xrpld.cfg`.
 
         * Open a port to accept unencrypted, non-admin WebSocket connections.
 
@@ -182,7 +182,7 @@ Before you install Clio, you must meet the following requirements.
 10. Start the `xrpld` and Clio servers.
 
     ```
-    sudo systemctl start rippled
+    sudo systemctl start xrpld
     sudo systemctl start clio
     ```
 

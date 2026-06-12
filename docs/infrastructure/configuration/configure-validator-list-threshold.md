@@ -19,7 +19,7 @@ By default, the minimum threshold is calculated as follows:
 
 1. Edit the `validators.txt` file. The recommended installation places this file at:
     ```
-    /etc/opt/ripple/validators.txt
+    /etc/xrpld/validators.txt
     ```
 
 2. Add the following stanza and a valid threshold number.

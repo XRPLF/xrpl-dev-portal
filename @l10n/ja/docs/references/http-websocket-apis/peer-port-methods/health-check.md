@@ -24,12 +24,12 @@ labels:
 
 - **プロトコル:** https
 - **HTTPメソッド:** GET
-- **ホスト:** (任意の`rippled`サーバ(ホスト名またはIPアドレスによる))
-- **ポート:** (`rippled`サーバがピアプロトコルを使用するポート番号、通常は51235です。)
+- **ホスト:** (任意の`xrpld`サーバ(ホスト名またはIPアドレスによる))
+- **ポート:** (`xrpld`サーバがピアプロトコルを使用するポート番号、通常は51235です。)
 - **パス:** `/health`
-- **セキュリティ:** ほとんどの`rippled`サーバはリクエストにレスポンスするために自己署名証明書を使います。デフォルトでは、(Webブラウザを含む)ほとんどのツールは、そのようなレスポンスは信頼できないとしてフラグを立てたりブロックしたりします。これらのサーバからのレスポンスを表示するには、証明書のチェックを無視しなければなりません (たとえば、cURLを使用している場合は`--insecure`フラグを追加します)。
+- **セキュリティ:** ほとんどの`xrpld`サーバはリクエストにレスポンスするために自己署名証明書を使います。デフォルトでは、(Webブラウザを含む)ほとんどのツールは、そのようなレスポンスは信頼できないとしてフラグを立てたりブロックしたりします。これらのサーバからのレスポンスを表示するには、証明書のチェックを無視しなければなりません (たとえば、cURLを使用している場合は`--insecure`フラグを追加します)。
 
-<!-- TODO: link a tutorial for how to run rippled with a non-self-signed TLS cert -->
+<!-- TODO: link a tutorial for how to run xrpld with a non-self-signed TLS cert -->
 
 ## レスポンスの例
 
@@ -105,7 +105,7 @@ Transfer-Encoding: chunked
 | `amendment_blocked` | 真偽値 | _(省略される場合があります)_ `true`の場合、サーバは[amendmentブロック](../../../concepts/networks-and-servers/amendments.md#amendment-blocked-servers)状態で、ネットワークとの同期を維持するためにアップグレードする必要があります。この状態は非常に重要です。サーバがAmendmentブロックされていない場合、このフィールドは省略されます。 |
 | `load_factor`       | 数値   | _(省略される場合があります)_ サーバが受けている全体的な負荷の指標。I/O、CPU、メモリの制限が反映されます。負荷率が100以上の場合はwarning、1000以上の場合はcriticalです。 |
 | `peers`             | 数値   | _(省略される場合があります)_ このサーバが接続している[ピアサーバ](../../../concepts/networks-and-servers/peer-protocol.md)の数。7つ以下のピアに接続されている場合はwarning、0つのピアに接続されている場合はcriticalです。 |
-| `server_state`      | 文字列 | _(省略される場合があります)_ 現在の[サーバの状態](../api-conventions/rippled-server-states.md)。サーバの状態が`tracking`、`syncing`、`connected`の場合はwarningです。サーバが`disconnected`状態の場合はcriticalです。 |
+| `server_state`      | 文字列 | _(省略される場合があります)_ 現在の[サーバの状態](../api-conventions/xrpld-server-states.md)。サーバの状態が`tracking`、`syncing`、`connected`の場合はwarningです。サーバが`disconnected`状態の場合はcriticalです。 |
 | `validated_ledger`  | 数値   | _(省略される場合があります)_ レジャーが最後に[コンセンサス](../../../concepts/consensus-protocol/index.md)によって検証されてから何秒経ったかを表します。検証されたレジャーがない場合([サーバ起動時の初期同期期間](../../../infrastructure/troubleshooting/server-doesnt-sync.md#normal-syncing-behavior))、この値は`-1`となり、warningとみなされます。また、最後に検証されたレジャーが少なくとも7秒前であればwarningとなり、最後に検証されたレジャーが少なくとも20秒前であればcriticalとなります。 |
 
 ## 関連項目

@@ -115,7 +115,7 @@ seo:
         excludeFiles:
           - docs/infrastructure/index.md
           - docs/infrastructure/*/index.md
-          - docs/infrastructure/installation/build-run-rippled-in-reporting-mode.md
+          - docs/infrastructure/installation/build-run-xrpld-in-reporting-mode.md
           - docs/infrastructure/configuration/data-retention/index.md
           - docs/infrastructure/configuration/server-modes/index.md
       - title: Blog (2023+)
