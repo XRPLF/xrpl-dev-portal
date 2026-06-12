@@ -9,7 +9,7 @@ labels:
 ---
 # Enable Public Signing
 
-By default, the signing methods for [`rippled`](../../concepts/networks-and-servers/index.md) are limited to [administrative connections](../../references/http-websocket-apis/admin-api-methods/index.md). If you want to allow signing methods to be used as public API methods (like with versions of `rippled` before v1.1.0), you can enable it with a configuration change.
+By default, the signing methods for [`xrpld`](../../concepts/networks-and-servers/index.md) are limited to [administrative connections](../../references/http-websocket-apis/admin-api-methods/index.md). If you want to allow signing methods to be used as public API methods (like with versions of `xrpld` before v1.1.0), you can enable it with a configuration change.
 
 This enables the following methods to be used on "public" [JSON-RPC and WebSocket connections](../../tutorials/get-started/get-started-http-websocket-apis.md), if your server accepts them:
 
@@ -23,7 +23,7 @@ You **do not** need to enable public signing to use these methods from an admin 
 
 To enable public signing, perform the following steps:
 
-1. Edit your `rippled`'s config file.
+1. Edit your `xrpld`'s config file.
 
     ```
     vim /etc/opt/ripple/xrpld.cfg
@@ -38,7 +38,7 @@ To enable public signing, perform the following steps:
     true
     ```
 
-3. Restart your `rippled` server:
+3. Restart your `xrpld` server:
 
     ```
     systemctl restart rippled

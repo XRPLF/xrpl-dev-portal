@@ -38,7 +38,7 @@ An example of the request format:
 {% tab label="Commandline" %}
 ```sh
 #Syntax: random
-rippled random
+xrpld random
 ```
 {% /tab %}
 

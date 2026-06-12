@@ -37,7 +37,7 @@ An example of the request format:
 {% tab label="Commandline" %}
 ```sh
 #Syntax: ledger_closed
-rippled ledger_closed
+xrpld ledger_closed
 ```
 {% /tab %}
 

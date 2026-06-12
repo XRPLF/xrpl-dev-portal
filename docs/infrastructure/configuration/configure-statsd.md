@@ -2,7 +2,7 @@
 html: configure-statsd.html
 parent: configure-rippled.html
 seo:
-    description: Monitor your rippled server with StatsD metrics.
+    description: Monitor your xrpld server with StatsD metrics.
 labels:
   - Core Server
 ---
@@ -12,7 +12,7 @@ labels:
 
 ## Configuration Steps
 
-To enable StatsD on your `rippled` server, perform the following steps:
+To enable StatsD on your `xrpld` server, perform the following steps:
 
 1. Set up a `rippledmon` instance on another machine to receive and aggregate stats.
 
@@ -24,7 +24,7 @@ To enable StatsD on your `rippled` server, perform the following steps:
 
     Make sure [Docker](https://docs.docker.com/) and [Docker Compose](https://docs.docker.com/compose/install/) are installed on your machine when performing the steps above. For more information about configuring `rippledmon`, see the [`rippledmon` repository](https://github.com/ripple/rippledmon).
 
-0. Add the `[insight]` stanza to your `rippled`'s config file.
+0. Add the `[insight]` stanza to your `xrpld`'s config file.
 
     ```
     [insight]
@@ -34,11 +34,11 @@ To enable StatsD on your `rippled` server, perform the following steps:
     ```
 
     - For the `address`, use the IP address and port where `rippledmon` is listening. By default, this port is 8125.
-    - For the `prefix`, choose a name that identifies the `rippled` server you are configuring. The prefix must not include whitespace, colons ":", or the vertical bar "|". The prefix appears on all of the StatsD metrics exported from this server.
+    - For the `prefix`, choose a name that identifies the `xrpld` server you are configuring. The prefix must not include whitespace, colons ":", or the vertical bar "|". The prefix appears on all of the StatsD metrics exported from this server.
 
     {% partial file="/docs/_snippets/conf-file-location.md" /%}
 
-0. Restart the `rippled` service.
+0. Restart the `xrpld` service.
 
     ```
     $ sudo systemctl restart rippled
@@ -68,9 +68,9 @@ For descriptions of each StatsD metric, see the [`rippledmon` repository](https:
 
 - **Concepts:**
     - [XRP Ledger Overview](/about/)
-    - [The `rippled` Server](../../concepts/networks-and-servers/index.md)
+    - [The `xrpld` Server](../../concepts/networks-and-servers/index.md)
 - **Tutorials:**
-    - [Install `rippled`](../installation/index.md)
+    - [Install `xrpld`](../installation/index.md)
     - [Capacity Planning](../installation/capacity-planning.md)
 - **References:**
     - [server_info method](../../references/http-websocket-apis/public-api-methods/server-info-methods/server_info.md)

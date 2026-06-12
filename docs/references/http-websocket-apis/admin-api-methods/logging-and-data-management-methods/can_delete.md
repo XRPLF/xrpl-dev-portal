@@ -7,7 +7,7 @@ labels:
 # can_delete
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/CanDelete.cpp "Source")
 
-The `can_delete` method informs the `rippled` server of the latest ledger version which may be deleted when using [online deletion with advisory deletion enabled](../../../../infrastructure/configuration/data-retention/online-deletion.md#advisory-deletion). If advisory deletion is not enabled, this method does nothing.
+The `can_delete` method informs the `xrpld` server of the latest ledger version which may be deleted when using [online deletion with advisory deletion enabled](../../../../infrastructure/configuration/data-retention/online-deletion.md#advisory-deletion). If advisory deletion is not enabled, this method does nothing.
 
 _The `can_delete` method is an [admin method](../index.md) that cannot be run by unprivileged users._
 
@@ -43,7 +43,7 @@ An example of the request format:
 {% tab label="Commandline" %}
 ```sh
 #Syntax: can_delete [<ledger_index>|<ledger_hash>|now|always|never]
-rippled can_delete 11320417
+xrpld can_delete 11320417
 ```
 {% /tab %}
 

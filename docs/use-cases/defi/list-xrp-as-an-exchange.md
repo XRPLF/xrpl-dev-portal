@@ -613,7 +613,7 @@ Off-Ledger Balances</td>
     - [Partial Payments](../../concepts/payment-types/partial-payments.md)
     - [Source and Destination Tags](../../concepts/transactions/source-and-destination-tags.md)
 - **Tutorials:**
-    - [Install `rippled`](../../infrastructure/installation/index.md)
+    - [Install `xrpld`](../../infrastructure/installation/index.md)
     - [Send XRP](../../tutorials/payments/send-xrp.md)
     - [Set Up Secure Signing](../../concepts/transactions/secure-signing.md)
     - [Monitor Incoming Payments with WebSocket](../../tutorials/advanced-developer-topics/client-library-development/monitor-incoming-payments-with-websocket.md)

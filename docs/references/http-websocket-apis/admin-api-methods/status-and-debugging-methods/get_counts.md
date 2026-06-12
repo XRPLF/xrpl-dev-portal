@@ -42,7 +42,7 @@ An example of the request format:
 {% tab label="Commandline" %}
 ```sh
 #Syntax: get_counts [min_count]
-rippled get_counts 100
+xrpld get_counts 100
 ```
 {% /tab %}
 

@@ -4,10 +4,10 @@ seo:
 labels:
     - Core Server
 ---
-# server_info (rippled)
+# server_info (xrpld)
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/ServerInfo.cpp "Source")
 
-The `server_info` command asks the server for a human-readable version of various information about [the `rippled` server](../../../../concepts/networks-and-servers/index.md) being queried. For [Clio servers](../../../../concepts/networks-and-servers/the-clio-server.md), see [`server_info` (Clio)](../clio-methods/server_info-clio.md) instead.
+The `server_info` command asks the server for a human-readable version of various information about [the `xrpld` server](../../../../concepts/networks-and-servers/index.md) being queried. For [Clio servers](../../../../concepts/networks-and-servers/the-clio-server.md), see [`server_info` (Clio)](../clio-methods/server_info-clio.md) instead.
 
 ## Request Format
 An example of the request format:
@@ -39,7 +39,7 @@ An example of the request format:
 ```sh
 #Syntax: server_info [counters]
 # counters is an optional boolean value, it is used to display performance metrics
-rippled server_info
+xrpld server_info
 ```
 {% /tab %}
 
@@ -80,14 +80,14 @@ The `info` object may have some arrangement of the following fields:
 | `Field`                             | Type            | Description          |
 |:------------------------------------|:----------------|:---------------------|
 | `amendment_blocked`                 | Boolean         | _(May be omitted)_ If `true`, this server is [amendment blocked](../../../../concepts/networks-and-servers/amendments.md#amendment-blocked-servers). If the server is not amendment blocked, the response omits this field. |
-| `build_version`                     | String          | The version number of the running `rippled` server. |
+| `build_version`                     | String          | The version number of the running `xrpld` server. |
 | `closed_ledger`                     | Object          | _(May be omitted)_ Information on the most recently closed ledger that has not been validated by consensus, as a [Server Ledger Object](#server-ledger-object). If the most recently validated ledger is available, the response omits this field and includes `validated_ledger` instead. |
-| `complete_ledgers`                  | String          | Range expression indicating the sequence numbers of the ledger versions the local `rippled` has in its database. This may be a disjoint sequence such as `24900901-24900984,24901116-24901158`. If the server does not have any complete ledgers (for example, it recently started syncing with the network), this is the string `empty`. |
-| `git`                               | Object          | _(Admin only)_ The Git details of your `rippled` build. |
-| `git.branch`                        | String          | _(Admin only)_ The Git branch used to build your version of `rippled`. |
-| `git.hash`                          | String          | _(Admin only)_ The Git hash of the commit used to build your version of `rippled`. |
-| `hostid`                            | String          | On an admin request, returns the hostname of the server running the `rippled` instance; otherwise, returns a single [RFC-1751][] word based on the [node public key](../../../../concepts/networks-and-servers/peer-protocol.md#node-key-pair). |
-| `io_latency_ms`                     | Number          | Amount of time spent waiting for I/O operations, in milliseconds. If this number is not very, very low, then the `rippled` server is probably having serious load issues. |
+| `complete_ledgers`                  | String          | Range expression indicating the sequence numbers of the ledger versions the local `xrpld` has in its database. This may be a disjoint sequence such as `24900901-24900984,24901116-24901158`. If the server does not have any complete ledgers (for example, it recently started syncing with the network), this is the string `empty`. |
+| `git`                               | Object          | _(Admin only)_ The Git details of your `xrpld` build. |
+| `git.branch`                        | String          | _(Admin only)_ The Git branch used to build your version of `xrpld`. |
+| `git.hash`                          | String          | _(Admin only)_ The Git hash of the commit used to build your version of `xrpld`. |
+| `hostid`                            | String          | On an admin request, returns the hostname of the server running the `xrpld` instance; otherwise, returns a single [RFC-1751][] word based on the [node public key](../../../../concepts/networks-and-servers/peer-protocol.md#node-key-pair). |
+| `io_latency_ms`                     | Number          | Amount of time spent waiting for I/O operations, in milliseconds. If this number is not very, very low, then the `xrpld` server is probably having serious load issues. |
 | `jq_trans_overflow`                 | String - Number | The number of times (since starting up) that this server has had over 250 transactions waiting to be processed at once. A large number here may mean that your server is unable to handle the transaction load of the XRP Ledger network. For detailed recommendations of future-proof server specifications, see [Capacity Planning](../../../../infrastructure/installation/capacity-planning.md). |
 | `last_close`                        | Object          | Information about the last time the server closed a ledger, including the amount of time it took to reach a consensus and the number of trusted validators participating. |
 | `last_close.converge_time_s`          | Number          | The amount of time it took to reach a consensus on the most recently validated ledger version, in seconds. |
@@ -103,7 +103,7 @@ The `info` object may have some arrangement of the following fields:
 | `load_factor_fee_queue`             | Number          | _(May be omitted)_ The current multiplier to the transaction cost that a transaction must pay to get into the queue, if the queue is full. |
 | `load_factor_server`                | Number          | _(May be omitted)_ The current multiplier to the transaction cost based on load to the server, cluster, and network, but not factoring in the open ledger cost. |
 | `network_ledger`                    | String          | _(May be omitted)_ When [starting the server with the `--net` parameter](../../../../infrastructure/commandline-usage.md), this field contains the string `waiting` while the server is syncing to the network. The field is omitted otherwise. |
-| `peers`                             | Number          | How many other `rippled` servers this one is currently connected to. |
+| `peers`                             | Number          | How many other `xrpld` servers this one is currently connected to. |
 | `ports`                             | Array           | A list of ports where the server is listening for API commands. Each entry in the array is a [Port Descriptor object](#port-descriptor-object). {% badge href="https://github.com/XRPLF/rippled/releases/tag/1.12.0" %}New in: rippled 1.12.0{% /badge %} |
 | `pubkey_node`                       | String          | Public key used to verify this server for peer-to-peer communications. This [_node key pair_](../../../../concepts/networks-and-servers/peer-protocol.md#node-key-pair) is automatically generated by the server the first time it starts up. (If deleted, the server can create a new pair of keys.) You can set a persistent value in the config file using the `[node_seed]` config option, which is useful for [clustering](../../../../concepts/networks-and-servers/clustering.md). |
 | `pubkey_validator`                  | String          | _(Admin only)_ Public key used by this node to sign ledger validations. This _validation key pair_ is derived from the `[validator_token]` or `[validation_seed]` config field. |
@@ -136,7 +136,7 @@ The response provides either a `validated_ledger` field or a `closed_ledger` fie
 
 Note that the [server_state method][] provides a similar object with slightly different formatting (using drops of XRP instead of decimal XRP, for example).
 
-{% admonition type="info" name="Note" %}If the `closed_ledger` field is present and has a small `seq` value (less than 8 digits), that indicates `rippled` does not currently have a copy of the validated ledger from the peer-to-peer network. This could mean your server is still syncing. Typically, it takes up to 15 minutes to sync with the network, depending on your connection speed and hardware specs. See [Server Doesn't Sync](/docs/infrastructure/troubleshooting/server-doesnt-sync.md) for troubleshooting information.{% /admonition %}
+{% admonition type="info" name="Note" %}If the `closed_ledger` field is present and has a small `seq` value (less than 8 digits), that indicates `xrpld` does not currently have a copy of the validated ledger from the peer-to-peer network. This could mean your server is still syncing. Typically, it takes up to 15 minutes to sync with the network, depending on your connection speed and hardware specs. See [Server Doesn't Sync](/docs/infrastructure/troubleshooting/server-doesnt-sync.md) for troubleshooting information.{% /admonition %}
 
 ## Possible Errors
 

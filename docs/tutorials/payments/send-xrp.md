@@ -494,7 +494,7 @@ if err := client.Connect(); err != nil {
 
 {% /tabs %}
 
-If you [install `rippled`](../../infrastructure/installation/index.md) yourself, it connects to the production network by default. (You can also [configure it to connect to the test net](../../infrastructure/configuration/connect-your-rippled-to-the-xrp-test-net.md) instead.) After the server has synced (typically within about 15 minutes of starting it up), you can connect to it locally, which has [various benefits](../../concepts/networks-and-servers/index.md). The following example shows how to connect to a server running the default configuration:
+If you [install `xrpld`](../../infrastructure/installation/index.md) yourself, it connects to the production network by default. (You can also [configure it to connect to the test net](../../infrastructure/configuration/connect-your-rippled-to-the-xrp-test-net.md) instead.) After the server has synced (typically within about 15 minutes of starting it up), you can connect to it locally, which has [various benefits](../../concepts/networks-and-servers/index.md). The following example shows how to connect to a server running the default configuration:
 
 {% tabs %}
 

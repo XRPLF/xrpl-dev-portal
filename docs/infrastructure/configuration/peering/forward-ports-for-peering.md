@@ -2,7 +2,7 @@
 html: forward-ports-for-peering.html
 parent: configure-peering.html
 seo:
-    description: Configure your firewall to allow incoming peers to your rippled server.
+    description: Configure your firewall to allow incoming peers to your xrpld server.
 labels:
   - Core Server
 ---
@@ -10,12 +10,12 @@ labels:
 
 Servers in the XRP Ledger peer-to-peer network communicate over the [peer protocol](../../../concepts/networks-and-servers/peer-protocol.md). For the best combination of security and connectivity to the rest of the network, you should use a firewall to protect your server from most ports, but open or forward the peer protocol port.
 
-While your `rippled` server is running, you can check to see how many peers you have by running the [server_info method][]. The `peers` field of the `info` object shows how many peers are currently connected to your server. If this number is exactly 10 or 11, that usually means your firewall is blocking incoming connections.
+While your `xrpld` server is running, you can check to see how many peers you have by running the [server_info method][]. The `peers` field of the `info` object shows how many peers are currently connected to your server. If this number is exactly 10 or 11, that usually means your firewall is blocking incoming connections.
 
 Example of a `server_info` result (trimmed) showing only 10 peers, likely because a firewall is blocking incoming peer connections:
 
 ```json
-$ ./rippled server_info
+$ ./xrpld server_info
 Loading: "/etc/opt/ripple/xrpld.cfg"
 2019-Dec-23 22:15:09.343961928 HTTPClient:NFO Connecting to 127.0.0.1:5005
 
@@ -48,7 +48,7 @@ _Assuming `--zone=public` is your public [zone](https://access.redhat.com/docume
 $ sudo firewall-cmd --zone=public --add-port=2459/tcp
 ```
 
-Then, restart the `rippled` server:
+Then, restart the `xrpld` server:
 
 ```sh
 $ sudo systemctl restart rippled.service
@@ -69,10 +69,10 @@ If you are using a hosting service with a virtual firewall (for example, [AWS Se
 
 - **Concepts:**
     - [Peer Protocol](../../../concepts/networks-and-servers/peer-protocol.md)
-    - [The `rippled` Server](../../../concepts/networks-and-servers/index.md)
+    - [The `xrpld` Server](../../../concepts/networks-and-servers/index.md)
 - **Tutorials:**
     - [Capacity Planning](../../installation/capacity-planning.md)
-    - [Troubleshoot the `rippled` Server](../../troubleshooting/index.md)
+    - [Troubleshoot the `xrpld` Server](../../troubleshooting/index.md)
 - **References:**
     - [connect method][]
     - [peers method][]

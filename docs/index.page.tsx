@@ -137,7 +137,7 @@ const devTools = [
   {
     title: 'WebSocket Tool',
     link: '/resources/dev-tools/websocket-api-tool',
-    description: 'Send sample requests and get responses from the rippled API.',
+    description: 'Send sample requests and get responses from the xrpld API.',
   },
   {
     title: 'XRP Ledger Explorer',

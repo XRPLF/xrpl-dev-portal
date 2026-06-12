@@ -726,7 +726,7 @@ We also added a new constant containing the directory name where we are going to
 Since we are now making this a full-fledged wallet, instead of asking the user for an address we will now be prompting the user for a seed and password to encrypt the seed. If there is already a seed, the user will only be asked for their password.
 
 {% admonition type="danger" name="Warning: Default algorithms" %}
-When using `Wallet.fromSeed(...)` you may get a different address than expected unless you explicitly specify the algorithm that was used when creating the key pair and funding the account. Versions 2.x and earlier of xrpl.js, as well as the `rippled` commandline and various other software, use the secp256k1 algorithm by default, but xrpl.js 3.x and up use Ed25519 by default. If you don't use the same algorithm, you won't be able to look up the correct account or send transactions.
+When using `Wallet.fromSeed(...)` you may get a different address than expected unless you explicitly specify the algorithm that was used when creating the key pair and funding the account. Versions 2.x and earlier of xrpl.js, as well as the `xrpld` commandline and various other software, use the secp256k1 algorithm by default, but xrpl.js 3.x and up use Ed25519 by default. If you don't use the same algorithm, you won't be able to look up the correct account or send transactions.
 {% /admonition %}
 
 3. Then modify the `view/preload.js` file (Note that the `onEnterAccountAddress` function is no longer needed):

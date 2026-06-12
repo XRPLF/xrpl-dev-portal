@@ -56,7 +56,7 @@ An example of the request format:
 {% tab label="Commandline" %}
 ```sh
 #Syntax: logrotate
-rippled logrotate
+xrpld logrotate
 ```
 {% /tab %}
 

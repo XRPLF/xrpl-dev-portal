@@ -46,7 +46,7 @@ An example of an account_info request:
 {% tab label="Commandline" %}
 ```sh
 #Syntax: account_info account [ledger_index|ledger_hash]
-rippled account_info rG1QQv2nh2gr7RCZ1P8YYcBUKCCN633jCn validated
+xrpld account_info rG1QQv2nh2gr7RCZ1P8YYcBUKCCN633jCn validated
 ```
 {% /tab %}
 
@@ -206,7 +206,7 @@ The response follows the [standard format][], with the result containing the req
 | `signer_lists`         | Array   | [API v1][]: _(Omitted unless the request specified `signer_lists` and at least one SignerList is associated with the account.)_ Array of [SignerList ledger objects](../../../protocol/ledger-data/ledger-entry-types/signerlist.md) associated with this account for [Multi-Signing](../../../../concepts/accounts/multi-signing.md). Since an account can own at most one SignerList, this array must have exactly one member if it is present. The field is nested under `account_data`.<br>[API v2][]: Identical to API v1, but the field is returned in the root response instead. [Clio](https://github.com/XRPLF/clio) implements the API v2 behavior in all cases. |
 | `ledger_current_index` | Integer | _(Omitted if `ledger_index` is provided instead)_ The [ledger index][] of the current in-progress ledger, which was used when retrieving this information. |
 | `ledger_index`         | Integer | _(Omitted if `ledger_current_index` is provided instead)_ The [ledger index][] of the ledger version used when retrieving this information. The information does not contain any changes from ledger versions newer than this one. |
-| `queue_data`           | Object  | _(Omitted unless `queue` specified as `true` and querying the current open ledger.)_ Information about [queued transactions](../../../../concepts/transactions/transaction-cost.md#queued-transactions) sent by this account. This information describes the state of the local `rippled` server, which may be different from other servers in the [peer-to-peer XRP Ledger network](../../../../concepts/networks-and-servers/peer-protocol.md). Some fields may be omitted because the values are calculated "lazily" by the queuing mechanism. |
+| `queue_data`           | Object  | _(Omitted unless `queue` specified as `true` and querying the current open ledger.)_ Information about [queued transactions](../../../../concepts/transactions/transaction-cost.md#queued-transactions) sent by this account. This information describes the state of the local `xrpld` server, which may be different from other servers in the [peer-to-peer XRP Ledger network](../../../../concepts/networks-and-servers/peer-protocol.md). Some fields may be omitted because the values are calculated "lazily" by the queuing mechanism. |
 | `validated`            | Boolean | True if this data is from a validated ledger version; if omitted or set to false, this data is not final. |
 
 The `account_flags` field contains the following nested fields:

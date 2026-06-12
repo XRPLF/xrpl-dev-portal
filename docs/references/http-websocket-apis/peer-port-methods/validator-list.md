@@ -8,9 +8,9 @@ labels:
 # Validator List Method
 [[Source]](https://github.com/XRPLF/rippled/blob/70d5c624e8cf732a362335642b2f5125ce4b43c1/src/xrpld/overlay/detail/OverlayImpl.cpp#L875-L940 "Source")
 
-The validator list method is a special API endpoint that fetches a current, trusted validator list a `rippled` server is using. This often represents the exact list of validators a server trusts.
+The validator list method is a special API endpoint that fetches a current, trusted validator list an `xrpld` server is using. This often represents the exact list of validators a server trusts.
 
-Like the [Peer Crawler](peer-crawler.md), the validator list method is available by default on a non-privileged basis through the [Peer Protocol](../../../concepts/networks-and-servers/peer-protocol.md) port, which is also used for `rippled` servers' peer-to-peer communications.
+Like the [Peer Crawler](peer-crawler.md), the validator list method is available by default on a non-privileged basis through the [Peer Protocol](../../../concepts/networks-and-servers/peer-protocol.md) port, which is also used for `xrpld` servers' peer-to-peer communications.
 
 ## Request Format
 
@@ -18,13 +18,13 @@ To request the Validator List information, make the following HTTP request:
 
 - **Protocol:** https
 - **HTTP Method:** GET
-- **Host:** (any `rippled` server, by hostname or IP address)
-- **Port:** (the port number where the `rippled` server uses the Peer Protocol, typically 51235)
+- **Host:** (any `xrpld` server, by hostname or IP address)
+- **Port:** (the port number where the `xrpld` server uses the Peer Protocol, typically 51235)
 - **Path:** `/vl/{public_key}`
 
     The `{public_key}` is the list publisher's public key, in hexadecimal. This key identifies the publisher and is also used to verify that the contents of the list are authentic and complete.
 
-- **Security:** Most `rippled` servers use a self-signed TLS certificate to respond to the request. By default, most tools (including web browsers) flag or block such responses for being untrusted. You must ignore the certificate checking (for example, if using cURL, add the `--insecure` flag) to display a response from those servers.
+- **Security:** Most `xrpld` servers use a self-signed TLS certificate to respond to the request. By default, most tools (including web browsers) flag or block such responses for being untrusted. You must ignore the certificate checking (for example, if using cURL, add the `--insecure` flag) to display a response from those servers.
 
     The validator list contents are signed with a separate cryptographic key, so you can verify their integrity regardless of the TLS certificate used.
 

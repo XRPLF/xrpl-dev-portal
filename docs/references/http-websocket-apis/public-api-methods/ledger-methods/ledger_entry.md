@@ -69,7 +69,7 @@ Retrieve any type of ledger entry by its unique ID.
 
 {% tab label="Commandline" %}
 ```sh
-rippled json ledger_entry '{ "index": "7DB0788C020F02780A673DC74757F23823FA3014C1866E72CC4CD8B226CD6EF4", "ledger_index": "validated" }'
+xrpld json ledger_entry '{ "index": "7DB0788C020F02780A673DC74757F23823FA3014C1866E72CC4CD8B226CD6EF4", "ledger_index": "validated" }'
 ```
 {% /tab %}
 
@@ -125,7 +125,7 @@ Retrieve an [AccountRoot entry](../../../protocol/ledger-data/ledger-entry-types
 
 {% tab label="Commandline" %}
 ```sh
-rippled json ledger_entry '{ "account_root": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59", "ledger_index": "validated" }'
+xrpld json ledger_entry '{ "account_root": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59", "ledger_index": "validated" }'
 ```
 {% /tab %}
 
@@ -173,7 +173,7 @@ As an alternative, you can specify `"index": "amendments"` to look up this entry
 
 {% tab label="Commandline" %}
 ```sh
-rippled json ledger_entry '{ "amendments": true, "ledger_index": "validated" }'
+xrpld json ledger_entry '{ "amendments": true, "ledger_index": "validated" }'
 ```
 {% /tab %}
 
@@ -240,7 +240,7 @@ Retrieve an Automated Market-Maker (AMM) object from the ledger. This is similar
 
 {% tab label="Commandline" %}
 ```sh
-rippled json ledger_entry '{ "amm": { "asset": { "currency": "XRP" }, "asset2": { "currency" : "TST", "issuer" : "rP9jPyP5kyvFRb6ZiRghAGw5u8SGAmU4bd" } }, "ledger_index": "validated" }'
+xrpld json ledger_entry '{ "amm": { "asset": { "currency": "XRP" }, "asset2": { "currency" : "TST", "issuer" : "rP9jPyP5kyvFRb6ZiRghAGw5u8SGAmU4bd" } }, "ledger_index": "validated" }'
 ```
 {% /tab %}
 
@@ -313,7 +313,7 @@ Retrieve a [Bridge entry][], which represents a single cross-chain bridge that c
 
 {% tab label="Commandline" %}
 ```sh
-rippled json ledger_entry '{ "bridge_account": "rf7zCh1aPD2DpeJVo6keG5Cf1TVyAKMFpR", "bridge": { "IssuingChainDoor": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh", "IssuingChainIssue": { "currency": "XRP" }, "LockingChainDoor": "rf7zCh1aPD2DpeJVo6keG5Cf1TVyAKMFpR", "LockingChainIssue": { "currency": "XRP" } }, "ledger_index": "validated" }'
+xrpld json ledger_entry '{ "bridge_account": "rf7zCh1aPD2DpeJVo6keG5Cf1TVyAKMFpR", "bridge": { "IssuingChainDoor": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh", "IssuingChainIssue": { "currency": "XRP" }, "LockingChainDoor": "rf7zCh1aPD2DpeJVo6keG5Cf1TVyAKMFpR", "LockingChainIssue": { "currency": "XRP" } }, "ledger_index": "validated" }'
 ```
 {% /tab %}
 
@@ -358,7 +358,7 @@ Retrieve a [Check entry][], which is a potential payment that can be cashed by i
 
 {% tab label="Commandline" %}
 ```sh
-rippled json ledger_entry '{ "check": "C4A46CCD8F096E994C4B0DEAB6CE98E722FC17D7944C28B95127C2659C47CBEB", "ledger_index": "validated" }'
+xrpld json ledger_entry '{ "check": "C4A46CCD8F096E994C4B0DEAB6CE98E722FC17D7944C28B95127C2659C47CBEB", "ledger_index": "validated" }'
 ```
 {% /tab %}
 
@@ -413,7 +413,7 @@ Retrieve a [Credential entry][], which represents an attestation by one account 
 
 {% tab label="Commandline" %}
 ```bash
-rippled json ledger_entry '{ "credential": {"subject": "rNnsnWZCsakxyMz5GzFrbbMpUnSmiDeKTW", "issuer": "rFtKiHYdvmAiVvxAr6U6TNjcPSrAeANQa", "credential_type": "746573742D63726564656E7469616C"}, "ledger_index": "validated" }'
+xrpld json ledger_entry '{ "credential": {"subject": "rNnsnWZCsakxyMz5GzFrbbMpUnSmiDeKTW", "issuer": "rFtKiHYdvmAiVvxAr6U6TNjcPSrAeANQa", "credential_type": "746573742D63726564656E7469616C"}, "ledger_index": "validated" }'
 ```
 {% /tab %}
 
@@ -474,7 +474,7 @@ Each member of the `deposit_preauth.authorized_credentials` array, if provided, 
 
 {% tab label="Commandline" %}
 ```sh
-rippled json ledger_entry '{ "deposit_preauth": { "owner": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", "authorized": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX" }, "ledger_index": "validated" }'
+xrpld json ledger_entry '{ "deposit_preauth": { "owner": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", "authorized": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX" }, "ledger_index": "validated" }'
 ```
 {% /tab %}
 
@@ -518,7 +518,7 @@ Retrieve a [DID entry][], which holds references to, or data associated with, a 
 
 {% tab label="Commandline" %}
 ```sh
-rippled json ledger_entry '{ "did": "rFtKiHYdvmAiVvxAr6U6TNjcPSrAeANQa", "ledger_index": "validated" }'
+xrpld json ledger_entry '{ "did": "rFtKiHYdvmAiVvxAr6U6TNjcPSrAeANQa", "ledger_index": "validated" }'
 ```
 {% /tab %}
 
@@ -574,7 +574,7 @@ Retrieve a [DirectoryNode](../../../protocol/ledger-data/ledger-entry-types/dire
 
 {% tab label="Commandline" %}
 ```sh
-rippled json ledger_entry '{ "directory": { "owner": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", "sub_index": 0 }, "ledger_index": "validated" }'
+xrpld json ledger_entry '{ "directory": { "owner": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", "sub_index": 0 }, "ledger_index": "validated" }'
 ```
 {% /tab %}
 
@@ -627,7 +627,7 @@ Retrieve an [Escrow entry](../../../protocol/ledger-data/ledger-entry-types/escr
 
 {% tab label="Commandline" %}
 ```sh
-rippled json ledger_entry '{ "escrow": { "owner": "rL4fPHi2FWGwRGRQSH7gBcxkuo2b9NTjKK", "seq": 126 }, "ledger_index": "validated" }'
+xrpld json ledger_entry '{ "escrow": { "owner": "rL4fPHi2FWGwRGRQSH7gBcxkuo2b9NTjKK", "seq": 126 }, "ledger_index": "validated" }'
 ```
 {% /tab %}
 
@@ -675,7 +675,7 @@ As an alternative, you can specify `"index": "fee"` to look up this entry. This 
 
 {% tab label="Commandline" %}
 ```sh
-rippled json ledger_entry '{ "fee": true, "ledger_index": "validated" }'
+xrpld json ledger_entry '{ "fee": true, "ledger_index": "validated" }'
 ```
 {% /tab %}
 
@@ -723,7 +723,7 @@ As an alternative, you can specify `"index": "hashes"` to look up the recent-his
 
 {% tab label="Commandline" %}
 ```sh
-rippled json ledger_entry '{ "hashes": true, "ledger_index": "validated" }'
+xrpld json ledger_entry '{ "hashes": true, "ledger_index": "validated" }'
 ```
 {% /tab %}
 
@@ -758,7 +758,7 @@ To retrieve an older `LedgerHashes` entry, specify the [ledger index][] of the l
 
 {% tab label="Commandline" %}
 ```sh
-rippled json ledger_entry '{ "hashes": 131072, "ledger_index": "validated" }'
+xrpld json ledger_entry '{ "hashes": 131072, "ledger_index": "validated" }'
 ```
 {% /tab %}
 
@@ -812,7 +812,7 @@ Retrieve a [Loan entry][], which defines the state of an on-chain loan agreement
 
 {% tab label="Commandline" %}
 ```sh
-rippled json ledger_entry '{ "loan": { "loan_broker_id": "7430D67254BAE93A8CAD43596D26BBDAAA5BCD2DB7D2FB6E81B302916E8BD48D", "loan_seq": 2 }, "ledger_index": "validated" }'
+xrpld json ledger_entry '{ "loan": { "loan_broker_id": "7430D67254BAE93A8CAD43596D26BBDAAA5BCD2DB7D2FB6E81B302916E8BD48D", "loan_seq": 2 }, "ledger_index": "validated" }'
 ```
 {% /tab %}
 
@@ -866,7 +866,7 @@ Retrieve a [LoanBroker entry][], which defines the configuration and state of a 
 
 {% tab label="Commandline" %}
 ```sh
-rippled json ledger_entry '{ "loan_broker": { "owner": "rsgmF1wgf43LmqmU8MBJ2kzU2akkC1KCG8", "seq": 3213616 }, "ledger_index": "validated" }'
+xrpld json ledger_entry '{ "loan_broker": { "owner": "rsgmF1wgf43LmqmU8MBJ2kzU2akkC1KCG8", "seq": 3213616 }, "ledger_index": "validated" }'
 ```
 {% /tab %}
 
@@ -920,7 +920,7 @@ Return an `MPToken` object.
 
 {% tab label="Commandline" %}
 ```sh
-rippled json ledger_entry '{ "mptoken": {"mpt_issuance_id": "05EECEBE97A7D635DE2393068691A015FED5A89AD203F5AA", "account":"rsNw23ygZatXv7h8QVSgAE4jktY2uW1iZP"} }'
+xrpld json ledger_entry '{ "mptoken": {"mpt_issuance_id": "05EECEBE97A7D635DE2393068691A015FED5A89AD203F5AA", "account":"rsNw23ygZatXv7h8QVSgAE4jktY2uW1iZP"} }'
 ```
 {% /tab %}
 {% /tabs %}
@@ -965,7 +965,7 @@ Return an `MPTokenIssuance` object.
 
 {% tab label="Commandline" %}
 ```sh
-rippled json ledger_entry '{ "mpt_issuance": "05EECEBE97A7D635DE2393068691A015FED5A89AD203F5AA", "ledger_index": "validated" }'
+xrpld json ledger_entry '{ "mpt_issuance": "05EECEBE97A7D635DE2393068691A015FED5A89AD203F5AA", "ledger_index": "validated" }'
 ```
 {% /tab %}
 {% /tabs %}
@@ -1012,7 +1012,7 @@ As an alternative, you can specify `"index": "nunl"` to look up this entry. This
 
 {% tab label="Commandline" %}
 ```sh
-rippled json ledger_entry '{ "nunl": true, "ledger_index": "validated" }'
+xrpld json ledger_entry '{ "nunl": true, "ledger_index": "validated" }'
 ```
 {% /tab %}
 
@@ -1056,7 +1056,7 @@ Return an NFT Page in its raw ledger format.
 
 {% tab label="Commandline" %}
 ```sh
-rippled json ledger_entry '{ "nft_page": "255DD86DDF59D778081A06D02701E9B2C9F4F01DFFFFFFFFFFFFFFFFFFFFFFFF", "ledger_index": "validated" }'
+xrpld json ledger_entry '{ "nft_page": "255DD86DDF59D778081A06D02701E9B2C9F4F01DFFFFFFFFFFFFFFFFFFFFFFFF", "ledger_index": "validated" }'
 ```
 {% /tab %}
 
@@ -1100,7 +1100,7 @@ Retrieve an [NFTokenOffer entry][], which represents an offer to buy, sell, or t
 
 {% tab label="Commandline" %}
 ```sh
-rippled json ledger_entry '{ "nft_offer": "6C4FC85B1F64FF2E30C3F657E41E373E5C1AC007A6B4F936C43B2F38BD8FFC14", "ledger_index": "validated" }'
+xrpld json ledger_entry '{ "nft_offer": "6C4FC85B1F64FF2E30C3F657E41E373E5C1AC007A6B4F936C43B2F38BD8FFC14", "ledger_index": "validated" }'
 ```
 {% /tab %}
 
@@ -1155,7 +1155,7 @@ Retrieve an [Offer entry](../../../protocol/ledger-data/ledger-entry-types/offer
 
 {% tab label="Commandline" %}
 ```sh
-rippled json ledger_entry '{ "offer": { "account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", "seq": 359}, "ledger_index": "validated" }'
+xrpld json ledger_entry '{ "offer": { "account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", "seq": 359}, "ledger_index": "validated" }'
 ```
 {% /tab %}
 
@@ -1212,7 +1212,7 @@ Retrieve an [Oracle entry](../../../protocol/ledger-data/ledger-entry-types/orac
 
 {% tab label="Commandline" %}
 ```sh
-rippled json ledger_entry '{ "oracle": { "account": "rNZ9m6AP9K7z3EVg6GhPMx36V4QmZKeWds", "oracle_document_id": 34 }, "ledger_index": "validated" }'
+xrpld json ledger_entry '{ "oracle": { "account": "rNZ9m6AP9K7z3EVg6GhPMx36V4QmZKeWds", "oracle_document_id": 34 }, "ledger_index": "validated" }'
 ```
 {% /tab %}
 
@@ -1257,7 +1257,7 @@ Retrieve a [PayChannel entry](../../../protocol/ledger-data/ledger-entry-types/p
 
 {% tab label="Commandline" %}
 ```sh
-rippled json ledger_entry '{ "payment_channel": "C7F634794B79DB40E87179A9D1BF05D05797AE7E92DF8E93FD6656E8C4BE3AE7", "ledger_index": "validated" }'
+xrpld json ledger_entry '{ "payment_channel": "C7F634794B79DB40E87179A9D1BF05D05797AE7E92DF8E93FD6656E8C4BE3AE7", "ledger_index": "validated" }'
 ```
 {% /tab %}
 
@@ -1311,7 +1311,7 @@ Retrieve a [PermissionedDomain entry][], which describes a single [permissioned 
 
 {% tab label="Commandline" %}
 ```bash
-rippled json ledger_entry '{ "permissioned_domain": { "account": "rf7zCh1aPD2DpeJVo6keG5Cf1TVyAKMFpR", "seq": 2093655 }, "ledger_index": "validated" }'
+xrpld json ledger_entry '{ "permissioned_domain": { "account": "rf7zCh1aPD2DpeJVo6keG5Cf1TVyAKMFpR", "seq": 2093655 }, "ledger_index": "validated" }'
 ```
 {% /tab %}
 
@@ -1371,7 +1371,7 @@ Retrieve a [RippleState entry][], which tracks a (non-XRP) currency balance betw
 
 {% tab label="Commandline" %}
 ```sh
-rippled json ledger_entry '{ "ripple_state": { "accounts": ["rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW"], "currency": "USD"}, "ledger_index": "validated" }'
+xrpld json ledger_entry '{ "ripple_state": { "accounts": ["rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW"], "currency": "USD"}, "ledger_index": "validated" }'
 ```
 {% /tab %}
 
@@ -1415,7 +1415,7 @@ Retrieve a [SignerList entry][], which contains a list of accounts that, as a gr
 
 {% tab label="Commandline" %}
 ```sh
-rippled json ledger_entry '{ "signer_list": "A9C28A28B85CD533217F5C0A0C7767666B093FA58A0F2D80026FCC4CD932DDC7", "ledger_index": "validated" }'
+xrpld json ledger_entry '{ "signer_list": "A9C28A28B85CD533217F5C0A0C7767666B093FA58A0F2D80026FCC4CD932DDC7", "ledger_index": "validated" }'
 ```
 {% /tab %}
 
@@ -1469,7 +1469,7 @@ Retrieve a [Ticket entry](../../../protocol/ledger-data/ledger-entry-types/ticke
 
 {% tab label="Commandline" %}
 ```sh
-rippled json ledger_entry '{ "ticket": { "account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", "ticket_seq": 389 }, "ledger_index": "validated" }'
+xrpld json ledger_entry '{ "ticket": { "account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", "ticket_seq": 389 }, "ledger_index": "validated" }'
 ```
 {% /tab %}
 
@@ -1542,7 +1542,7 @@ Retrieve an [XChainOwnedClaimID entry][], which represents one transfer of value
 
 {% tab label="Commandline" %}
 ```sh
-rippled json ledger_entry '{ "xchain_owned_claim_id": { "IssuingChainDoor": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh", "IssuingChainIssue": { "currency": "XRP" }, "LockingChainDoor": "rf7zCh1aPD2DpeJVo6keG5Cf1TVyAKMFpR", "LockingChainIssue": { "currency": "XRP" }, "xchain_owned_claim_id": 1 }, "ledger_index": "validated" }'
+xrpld json ledger_entry '{ "xchain_owned_claim_id": { "IssuingChainDoor": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh", "IssuingChainIssue": { "currency": "XRP" }, "LockingChainDoor": "rf7zCh1aPD2DpeJVo6keG5Cf1TVyAKMFpR", "LockingChainIssue": { "currency": "XRP" }, "xchain_owned_claim_id": 1 }, "ledger_index": "validated" }'
 ```
 {% /tab %}
 
@@ -1615,7 +1615,7 @@ Retrieve an [XChainOwnedCreateAccountClaimID entry][], which collects attestatio
 
 {% tab label="Commandline" %}
 ```sh
-rippled json ledger_entry '{ "xchain_owned_create_account_claim_id": { "IssuingChainDoor": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh", "IssuingChainIssue": { "currency": "XRP" }, "LockingChainDoor": "rf7zCh1aPD2DpeJVo6keG5Cf1TVyAKMFpR", "LockingChainIssue": { "currency": "XRP" }, "xchain_owned_create_account_claim_id": 1 }, "ledger_index": "validated" }'
+xrpld json ledger_entry '{ "xchain_owned_create_account_claim_id": { "IssuingChainDoor": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh", "IssuingChainIssue": { "currency": "XRP" }, "LockingChainDoor": "rf7zCh1aPD2DpeJVo6keG5Cf1TVyAKMFpR", "LockingChainIssue": { "currency": "XRP" }, "xchain_owned_create_account_claim_id": 1 }, "ledger_index": "validated" }'
 ```
 {% /tab %}
 
@@ -1663,7 +1663,7 @@ Retrieve a `Vault` entry from the ledger. This is similar to the [vault_info met
 
 {% tab label="Commandline" %}
 ```sh
-rippled json ledger_entry '{ "vault": "9E48171960CD9F62C3A7B6559315A510AE544C3F51E02947B5D4DAC8AA66C3BA", "ledger_index": "validated" }'
+xrpld json ledger_entry '{ "vault": "9E48171960CD9F62C3A7B6559315A510AE544C3F51E02947B5D4DAC8AA66C3BA", "ledger_index": "validated" }'
 ```
 {% /tab %}
 

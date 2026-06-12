@@ -40,7 +40,7 @@ An example of the request format:
 {% tab label="Commandline" %}
 ```sh
 #Syntax: consensus_info
-rippled consensus_info
+xrpld consensus_info
 ```
 {% /tab %}
 

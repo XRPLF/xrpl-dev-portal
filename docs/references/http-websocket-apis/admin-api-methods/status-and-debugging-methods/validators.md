@@ -40,7 +40,7 @@ An example of the request format:
 {% tab label="Commandline" %}
 ```sh
 #Syntax: validators
-rippled validators
+xrpld validators
 ```
 {% /tab %}
 

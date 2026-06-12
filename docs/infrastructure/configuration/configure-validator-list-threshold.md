@@ -7,7 +7,7 @@ labels:
 ---
 # Configure Validator List Threshold
 
-A `rippled` server uses validators that meet a minimum intersection threshold between UNL publishers. This means a server only uses validators that exist on a number of validator lists, as defined by the server owner. {% badge href="https://github.com/XRPLF/rippled/releases/tag/2.4.0" %}New in: rippled 2.4.0{% /badge %}
+A `xrpld` server uses validators that meet a minimum intersection threshold between UNL publishers. This means a server only uses validators that exist on a number of validator lists, as defined by the server owner. {% badge href="https://github.com/XRPLF/rippled/releases/tag/2.4.0" %}New in: rippled 2.4.0{% /badge %}
 
 By default, the minimum threshold is calculated as follows:
 

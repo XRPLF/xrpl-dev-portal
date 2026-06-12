@@ -46,7 +46,7 @@ An example of the request format:
 {% tab label="Commandline" %}
 ```sh
 #Syntax: account_lines <account> [<peer>] [<ledger_index>|<ledger_hash>]
-rippled account_lines r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59
+xrpld account_lines r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59
 ```
 {% /tab %}
 

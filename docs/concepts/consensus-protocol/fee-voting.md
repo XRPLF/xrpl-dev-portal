@@ -69,7 +69,7 @@ On Mainnet and any other networks with the XRPFees amendment enabled, all three 
     - [Reserves](../accounts/reserves.md)
     - [Transaction Queue](../transactions/transaction-queue.md)
 - **Tutorials:**
-    - [Configure `rippled`](../../infrastructure/configuration/index.md)
+    - [Configure `xrpld`](../../infrastructure/configuration/index.md)
 - **References:**
     - [fee method][]
     - [server_info method][]
