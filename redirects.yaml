@@ -82,7 +82,11 @@
 /docs/tutorials/javascript/build-apps/build-a-browser-wallet-in-javascript/:
     to: /docs/tutorials/sample-apps/build-a-browser-wallet-in-javascript/
 /docs/tutorials/javascript/send-payments/sending-mpts/:
-    to: /docs/tutorials/tokens/mpts/sending-mpts-in-javascript/
+    to: /docs/tutorials/payments/send-an-mpt/
+/docs/tutorials/tokens/mpts/sending-mpts-in-javascript/:
+    to: /docs/tutorials/payments/send-an-mpt/
+/docs/tutorials/tokens/mpts/send-an-mpt/:
+    to: /docs/tutorials/payments/send-an-mpt/
 /docs/tutorials/javascript/send-payments/create-offers/:
     to: /docs/tutorials/defi/dex/trade-in-the-decentralized-exchange/
 /docs/tutorials/javascript/compliance/create-permissioned-domains/:
