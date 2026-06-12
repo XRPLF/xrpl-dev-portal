@@ -35,7 +35,7 @@ You should maintain the secrecy of your secret keys at all times, which includes
 
 ## Run xrpld Locally
 
-[{% inline-svg file="/docs/img/secure-signing-local-rippled.svg" /%}](/docs/img/secure-signing-local-rippled.svg "Diagram of using a local xrpld server for signing")
+[{% inline-svg file="/docs/img/secure-signing-local-xrpld.svg" /%}](/docs/img/secure-signing-local-xrpld.svg "Diagram of using a local xrpld server for signing")
 
 In this configuration, you run `xrpld` on the machine that generates the transactions.  Since the secret key never leaves your machine, no one without access to your machine can get access to the secret key. You should, of course, follow industry-standard practices for securing your machine. To use this configuration:
 
@@ -56,7 +56,7 @@ In this configuration, you run `xrpld` on the machine that generates the transac
 
 ## Run xrpld on the same LAN
 
-[{% inline-svg file="/docs/img/secure-signing-lan-rippled.svg" /%}](/docs/img/secure-signing-lan-rippled.svg "Diagram of using an xrpld server over LAN for signing")
+[{% inline-svg file="/docs/img/secure-signing-lan-xrpld.svg" /%}](/docs/img/secure-signing-lan-xrpld.svg "Diagram of using an xrpld server over LAN for signing")
 
 In this configuration, you run an `xrpld` server on a dedicated machine in the same private local area network (LAN) as the machine that generates the transactions to be signed. This configuration lets you assemble transaction instructions on one or more machines with very modest system specs, while using a single dedicated machine for running `xrpld`. This may appeal to you if you run your own datacenter or server room.
 
