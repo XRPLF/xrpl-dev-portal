@@ -90,7 +90,7 @@ rippled server_info
 
   - ピアの数が0の場合、サーバがネットワークに接続できないか、またはシステムクロックが正しくない可能性があります。（サーバのクロックを同期するため、すべてのサーバで[NTP](http://www.ntp.org/)デーモンを実行することが推奨されます。）
 
-  - ピアの数が10の場合、`rippled`が[NAT](https://en.wikipedia.org/wiki/Network_address_translation)を使用したルーター経由での着信接続を受信できていない可能性があります。接続を改善するには、ルーターのファイアウォールがピアツーピア接続に使用するポート（[デフォルトでは](https://github.com/XRPLF/rippled/blob/8429dd67e60ba360da591bfa905b58a35638fda1/cfg/xrpld-example.cfg#L1065)ポート51235）を転送するように設定します。
+  - ピアの数が10の場合、`rippled`が[NAT](https://en.wikipedia.org/wiki/Network_address_translation)を使用したルーター経由での着信接続を受信できていない可能性があります。接続を改善するには、ルーターのファイアウォールがピアツーピア接続に使用するポート（[デフォルトでは](https://github.com/XRPLF/rippled/blob/develop/cfg/xrpld-example.cfg#L1483-L1488)ポート51235）を転送するように設定します。
 
 ### サーバからレスポンスがない場合
 
