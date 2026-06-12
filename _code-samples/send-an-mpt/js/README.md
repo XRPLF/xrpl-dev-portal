@@ -1,4 +1,4 @@
-# Send an MPT Example (JavaScript)
+# Send an MPT (JavaScript)
 
 Example code for sending a Multi-Purpose Token (MPT) between non-issuer holders with [xrpl.js](https://github.com/XRPLF/xrpl.js).
 

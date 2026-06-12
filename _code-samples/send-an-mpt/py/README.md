@@ -1,4 +1,4 @@
-# Send an MPT Example (Python)
+# Send an MPT (Python)
 
 Example code for sending a Multi-Purpose Token (MPT) between non-issuer holders with [xrpl-py](https://github.com/XRPLF/xrpl-py).
 

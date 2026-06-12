@@ -1,13 +1,16 @@
+import asyncio
 import json
 import os
-import subprocess
 import sys
 
-from xrpl.clients import JsonRpcClient
-from xrpl.models import AccountObjects, MPTokenAuthorize, Payment
+from xrpl.clients import JsonRpcClient, XRPLRequestFailureException
+from xrpl.models import LedgerEntry, MPTokenAuthorize, Payment
 from xrpl.models.amounts import MPTAmount
+from xrpl.models.requests.ledger_entry import MPToken
 from xrpl.transaction import submit_and_wait
 from xrpl.wallet import Wallet, generate_faucet_wallet
+
+from send_mpt_setup import main as run_setup
 
 # Set up client ----------------------
 client = JsonRpcClient("https://s.altnet.rippletest.net:51234")
@@ -17,7 +20,7 @@ client = JsonRpcClient("https://s.altnet.rippletest.net:51234")
 # If missing, send_mpt_setup.py will generate it.
 if not os.path.exists("send_mpt_setup.json"):
     print("\n=== Setup data doesn't exist. Running setup script... ===\n")
-    subprocess.run([sys.executable, "send_mpt_setup.py"], check=True)
+    asyncio.run(run_setup())
 
 # Load sender wallet and MPT issuance ID.
 with open("send_mpt_setup.json") as f:
@@ -54,19 +57,18 @@ print(f"Explorer link: https://testnet.xrpl.org/transactions/{authorize_response
 def get_mpt_balance(address, issuance_id):
     """Return the MPTAmount for the given MPT issuance held by an account.
 
-    Queries the validated ledger for the account's MPToken entries and
-    returns the MPTAmount of the entry matching issuance_id, or "0" if
-    the account holds no entry for that issuance.
+    Looks up the holder's MPToken ledger entry directly via ledger_entry.
+    Returns "0" if the entry doesn't exist or has no MPTAmount.
     """
-    response = client.request(AccountObjects(
-        account=address,
+    response = client.request(LedgerEntry(
         ledger_index="validated",
-        type="mptoken",
+        mptoken=MPToken(mpt_issuance_id=issuance_id, account=address),
     ))
-    for node in response.result["account_objects"]:
-        if node["MPTokenIssuanceID"] == issuance_id:
-            return node.get("MPTAmount", "0")
-    return "0"
+    if not response.is_successful():
+        if response.result.get("error") == "entryNotFound":
+            return "0"
+        raise XRPLRequestFailureException(response.result)
+    return response.result.get("node", {}).get("MPTAmount", "0")
 
 print(f"\n=== Checking initial MPT balances for issuance {mpt_issuance_id}... ===\n")
 sender_balance_before = get_mpt_balance(sender.address, mpt_issuance_id)

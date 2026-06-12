@@ -1,6 +1,6 @@
 import xrpl from 'xrpl'
 import fs from 'fs'
-import { execSync } from 'child_process'
+import { setup } from './sendMPTSetup.js'
 
 // Connect to the network ----------------------
 const client = new xrpl.Client('wss://s.altnet.rippletest.net:51233')
@@ -11,7 +11,7 @@ await client.connect()
 // If missing, sendMPTSetup.js will generate it.
 if (!fs.existsSync('sendMPTSetup.json')) {
   console.log(`\n=== Setup data doesn't exist. Running setup script... ===\n`)
-  execSync('node sendMPTSetup.js', { stdio: 'inherit' })
+  await setup()
 }
 
 // Load preconfigured sender wallet and MPT issuance ID.
@@ -54,25 +54,31 @@ console.log(`Explorer link: https://testnet.xrpl.org/transactions/${authorizeRes
 /**
  * Return the MPTAmount for the given MPT issuance held by an account.
  *
- * Queries the validated ledger for the account's MPToken entries and
- * returns the MPTAmount of the entry matching mptIssuanceID, or "0" if
- * the account holds no entry for that issuance.
+ * Looks up the holder's MPToken ledger entry directly via ledger_entry. 
+ * Returns "0" if the entry doesn't exist or has no
+ * MPTAmount.
  *
  * @param {string} address - Classic address of the account to query.
  * @param {string} mptIssuanceID - MPT issuance ID to look up.
  * @returns {Promise<string>} The MPT amount as a string, or "0".
  */
 async function getMPTBalance(address, mptIssuanceID) {
-  const response = await client.request({
-    command: 'account_objects',
-    account: address,
-    ledger_index: 'validated',
-    type: 'mptoken'
-  })
-  const node = response.result.account_objects.find(
-    o => o.MPTokenIssuanceID === mptIssuanceID
-  )
-  return node?.MPTAmount ?? '0'
+  try {
+    const response = await client.request({
+      command: 'ledger_entry',
+      ledger_index: 'validated',
+      mptoken: {
+        mpt_issuance_id: mptIssuanceID,
+        account: address
+      }
+    })
+    return response.result.node?.MPTAmount ?? '0'
+  } catch (e) {
+    if (e.data?.error === 'entryNotFound') {
+      return '0'
+    }
+    throw e
+  }
 }
 
 console.log(`\n=== Checking initial MPT balances for issuance ${mptIssuanceID}... ===\n`)

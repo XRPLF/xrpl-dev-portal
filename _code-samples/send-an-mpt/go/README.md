@@ -1,4 +1,4 @@
-# Send an MPT Examples (Go)
+# Send an MPT (Go)
 
 Example code for sending a Multi-Purpose Token (MPT) between non-issuer holders on testnet with [xrpl-go](https://github.com/Peersyst/xrpl-go).
 

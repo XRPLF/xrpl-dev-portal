@@ -8,14 +8,33 @@ import (
 
 	"github.com/Peersyst/xrpl-go/pkg/crypto"
 	"github.com/Peersyst/xrpl-go/xrpl/faucet"
-	"github.com/Peersyst/xrpl-go/xrpl/queries/account"
 	"github.com/Peersyst/xrpl-go/xrpl/queries/common"
+	"github.com/Peersyst/xrpl-go/xrpl/queries/version"
 	"github.com/Peersyst/xrpl-go/xrpl/transaction"
 	"github.com/Peersyst/xrpl-go/xrpl/transaction/types"
 	"github.com/Peersyst/xrpl-go/xrpl/wallet"
 	"github.com/Peersyst/xrpl-go/xrpl/websocket"
 	wstypes "github.com/Peersyst/xrpl-go/xrpl/websocket/types"
 )
+
+// mptokenFilter targets an MPToken ledger entry by issuance ID and holder.
+type mptokenFilter struct {
+	MPTIssuanceID string `json:"mpt_issuance_id"`
+	Account       string `json:"account"`
+}
+
+// ledgerEntryMPTRequest is a minimal ledger_entry request that looks up an
+// MPToken entry directly. The xrpl-go SDK doesn't ship a typed wrapper for
+// this lookup, so this implements the websocket Request interface inline.
+type ledgerEntryMPTRequest struct {
+	common.BaseRequest
+	LedgerIndex common.LedgerSpecifier `json:"ledger_index,omitempty"`
+	MPToken     mptokenFilter          `json:"mptoken"`
+}
+
+func (*ledgerEntryMPTRequest) Method() string  { return "ledger_entry" }
+func (*ledgerEntryMPTRequest) Validate() error { return nil }
+func (*ledgerEntryMPTRequest) APIVersion() int { return version.RippledAPIV2 }
 
 func main() {
 	// Connect to the network ----------------------
@@ -102,36 +121,29 @@ func main() {
 
 	// Check initial balances ----------------------
 	// getMPTBalance returns the MPTAmount for the given MPT issuance held by
-	// address. It queries the validated ledger for the account's MPToken
-	// entries and returns the MPTAmount of the entry matching mptIssuanceID,
-	// or "0" if the account holds no entry for that issuance.
+	// address. It looks up the holder's MPToken ledger entry directly via ledger_entry.
+	// Returns "0" if the entry doesn't exist or has no MPTAmount.
 	getMPTBalance := func(address types.Address, mptIssuanceID string) (string, error) {
-		holdings, err := client.Request(&account.ObjectsRequest{
-			Account:     address,
-			Type:        account.MPTokenObject,
+		resp, err := client.Request(&ledgerEntryMPTRequest{
 			LedgerIndex: common.Validated,
+			MPToken: mptokenFilter{
+				MPTIssuanceID: mptIssuanceID,
+				Account:       string(address),
+			},
 		})
 		if err != nil {
+			if err.Error() == "entryNotFound" {
+				return "0", nil
+			}
 			return "", err
 		}
 
-		resultJSON, _ := json.Marshal(holdings.Result)
-		var resp account.ObjectsResponse
-		if err := json.Unmarshal(resultJSON, &resp); err != nil {
-			return "", err
+		node, ok := resp.Result["node"].(map[string]any)
+		if !ok {
+			return "0", nil
 		}
-
-		for _, obj := range resp.AccountObjects {
-			objJSON, _ := json.Marshal(obj)
-			var entry map[string]any
-			if err := json.Unmarshal(objJSON, &entry); err != nil {
-				continue
-			}
-			if id, ok := entry["MPTokenIssuanceID"].(string); ok && id == mptIssuanceID {
-				if amt, ok := entry["MPTAmount"].(string); ok {
-					return amt, nil
-				}
-			}
+		if amt, ok := node["MPTAmount"].(string); ok {
+			return amt, nil
 		}
 		return "0", nil
 	}

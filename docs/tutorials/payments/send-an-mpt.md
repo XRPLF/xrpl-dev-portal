@@ -77,7 +77,8 @@ To get started, import the necessary libraries and instantiate a client to conne
 {% tabs %}
 {% tab label="JavaScript" %}
 - `xrpl`: Used for XRPL client connection, transaction submission, and wallet handling.
-- `fs` and `child_process`: Used to run tutorial set up scripts.
+- `fs`: Used to check for and load the tutorial setup data.
+- `./sendMPTSetup.js`: The tutorial set up script, imported and called directly.
 
 {% code-snippet file="/_code-samples/send-an-mpt/js/sendMPT.js" language="js" before="// Load setup data" /%}
 {% /tab %}
@@ -85,7 +86,9 @@ To get started, import the necessary libraries and instantiate a client to conne
 {% tab label="Python" %}
 - `xrpl`: Used for XRPL client connection, transaction submission, and wallet handling.
 - `json`: Used for loading and formatting JSON data.
-- `os`, `subprocess`, and `sys`: Used to run tutorial set up scripts.
+- `os` and `sys`: Used to check for setup data and exit on transaction failures.
+- `asyncio`: Used to run the async tutorial set up function.
+- `send_mpt_setup`: The tutorial set up script, imported and called directly.
 
 {% code-snippet file="/_code-samples/send-an-mpt/py/send_mpt.py" language="py" before="# Load setup data" /%}
 {% /tab %}
@@ -93,7 +96,7 @@ To get started, import the necessary libraries and instantiate a client to conne
 {% tab label="Go" %}
 - `xrpl-go`: Used for XRPL client connection, transaction submission, and wallet handling.
 - `encoding/json` and `fmt`: Used for formatting and printing results to the console.
-- `os` and `os/exec`: Used to run tutorial set up scripts.
+- `os` and `os/exec`: Used to run the tutorial set up script.
 
 {% code-snippet file="/_code-samples/send-an-mpt/go/send-mpt/main.go" language="go" before="// Load setup data" /%}
 {% /tab %}
@@ -147,7 +150,7 @@ If the issuance uses allow-listing (the **Require Auth** flag), this step isn't 
 
 ### 4. Check initial balances
 
-Before sending the payment, check each account's MPT holdings using the [account_objects method][]. For each account, filter by the object type `MPToken` and locate the entry whose `MPTokenIssuanceID` matches this issuance.
+Before sending the payment, check each account's MPT holdings using the [ledger_entry method][]. Pass the `mptoken` filter with the holder's `account` and the `mpt_issuance_id` to look up the `MPToken` entry directly. This avoids paginating through the account's owner directory and works reliably for accounts that own many ledger entries.
 
 {% tabs %}
 {% tab label="JavaScript" %}
@@ -189,7 +192,7 @@ The example MPT has a `TransferFee` of `0`, which means the sender's debit match
 If the payment fails, it could be for one of the following reasons:
 
 - `tecNO_AUTH`: the issuance does not have **Can Transfer** enabled, or (with allow-listing) the issuer hasn't approved the holder.
-- `tecINSUFFICIENT_FUNDS`: the sender's MPT balance is less than the value being sent.
+- `tecPATH_PARTIAL`: the sender doesn't have enough of the MPT to cover the payment. This can also occur if the issuance has a non-zero `TransferFee` and the sender doesn't have enough to cover it.
 - `tecLOCKED`: the issuance, the sender, or the receiver is locked by the issuer (only possible if the issuance has the **Can Lock** flag enabled).
 {% /admonition %}
 
@@ -224,7 +227,7 @@ The sender's `MPTAmount` should have decreased by the value you sent, and the re
 **References**:
   - [MPTokenAuthorize transaction][]
   - [Payment transaction][]
-  - [account_objects method][]
+  - [ledger_entry method][]
   - [MPToken entry][]
   - [MPTokenIssuance entry][]
 

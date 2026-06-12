@@ -19,7 +19,7 @@ import (
 	"github.com/Peersyst/xrpl-go/xrpl/wallet"
 )
 
-const total = 4
+const totalSteps = 4
 
 func main() {
 	cfg, err := rpc.NewClientConfig(
@@ -38,7 +38,7 @@ func main() {
 	step := 1
 
 	// Fund issuer and sender concurrently
-	fmt.Printf("Setting up tutorial: %d/%d\r", step, total)
+	fmt.Printf("Setting up tutorial: %d/%d\r", step, totalSteps)
 	step++
 
 	ch := make(chan wallet.Wallet, 2)
@@ -74,7 +74,7 @@ func main() {
 	sender := <-ch
 
 	// Issue MPT with Can Transfer flag
-	fmt.Printf("Setting up tutorial: %d/%d\r", step, total)
+	fmt.Printf("Setting up tutorial: %d/%d\r", step, totalSteps)
 	step++
 
 	// XLS-89 metadata. The Go SDK has no encode helper, so build the compact
@@ -119,7 +119,7 @@ func main() {
 	mptIssuanceID := string(*issueResp.Meta.MPTIssuanceID)
 
 	// Sender authorizes the MPT
-	fmt.Printf("Setting up tutorial: %d/%d\r", step, total)
+	fmt.Printf("Setting up tutorial: %d/%d\r", step, totalSteps)
 	step++
 
 	authTx := &transaction.MPTokenAuthorize{
@@ -136,7 +136,7 @@ func main() {
 	}
 
 	// Issuer sends sender MPTs
-	fmt.Printf("Setting up tutorial: %d/%d\r", step, total)
+	fmt.Printf("Setting up tutorial: %d/%d\r", step, totalSteps)
 
 	seedTx := &transaction.Payment{
 		BaseTx:      transaction.BaseTx{Account: issuer.ClassicAddress},

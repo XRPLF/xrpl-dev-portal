@@ -14,7 +14,7 @@ from xrpl.models.amounts import MPTAmount
 from xrpl.utils import encode_mptoken_metadata
 
 WSS_URL = "wss://s.altnet.rippletest.net:51233"
-TOTAL = 4
+TOTAL_STEPS = 4
 
 
 async def main():
@@ -22,7 +22,7 @@ async def main():
         step = 1
 
         # Fund issuer and sender in parallel
-        print(f"Setting up tutorial: {step}/{TOTAL}", end="\r")
+        print(f"Setting up tutorial: {step}/{TOTAL_STEPS}", end="\r")
         step += 1
         issuer, sender = await asyncio.gather(
             generate_faucet_wallet(client),
@@ -30,7 +30,7 @@ async def main():
         )
 
         # Issue MPT with Can Transfer flag
-        print(f"Setting up tutorial: {step}/{TOTAL}", end="\r")
+        print(f"Setting up tutorial: {step}/{TOTAL_STEPS}", end="\r")
         step += 1
         # XLS-89 metadata, encoded to hex with the SDK utility.
         metadata = {
@@ -46,7 +46,7 @@ async def main():
                 account=issuer.address,
                 asset_scale=2,
                 maximum_amount="1000000",
-                transfer_fee=0,
+                transfer_fee=30,
                 flags=MPTokenIssuanceCreateFlag.TF_MPT_CAN_TRANSFER,
                 mptoken_metadata=encode_mptoken_metadata(metadata),
             ),
@@ -59,7 +59,7 @@ async def main():
         mpt_issuance_id = issue_resp.result["meta"]["mpt_issuance_id"]
 
         # Sender authorizes the MPT
-        print(f"Setting up tutorial: {step}/{TOTAL}", end="\r")
+        print(f"Setting up tutorial: {step}/{TOTAL_STEPS}", end="\r")
         step += 1
         auth_resp = await submit_and_wait(
             MPTokenAuthorize(
@@ -74,7 +74,7 @@ async def main():
             raise RuntimeError(f"MPTokenAuthorize failed: {auth_resp.result['meta']['TransactionResult']}")
 
         # Issuer sends sender MPTs
-        print(f"Setting up tutorial: {step}/{TOTAL}", end="\r")
+        print(f"Setting up tutorial: {step}/{TOTAL_STEPS}", end="\r")
         seed_resp = await submit_and_wait(
             Payment(
                 account=issuer.address,
@@ -99,4 +99,5 @@ async def main():
             json.dump(setup_data, f, indent=2)
 
 
-asyncio.run(main())
+if __name__ == "__main__":
+    asyncio.run(main())
