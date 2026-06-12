@@ -41,7 +41,7 @@ labels:
 1. `xrpld`サービスを再起動します。
 
     ```
-    $ sudo systemctl restart rippled
+    $ sudo systemctl restart xrpld
     ```
 
 2. 統計情報がエクスポートされていることを確認します。

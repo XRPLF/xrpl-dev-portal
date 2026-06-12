@@ -88,7 +88,7 @@ xrpld ledger current
 {% /tab %}
 
 {% tab label="コマンドライン" %}
-{% code-snippet file="/_api-examples/ledger/jsonrpc-response.json" language="json" prefix="Loading: \"/etc/opt/ripple/xrpld.cfg\"\n2023-Nov-01 21:38:14.638871262 UTC HTTPClient:NFO Connecting to 127.0.0.1:5005\n\n" /%}
+{% code-snippet file="/_api-examples/ledger/jsonrpc-response.json" language="json" prefix="Loading: \"/etc/xrpld/xrpld.cfg\"\n2023-Nov-01 21:38:14.638871262 UTC HTTPClient:NFO Connecting to 127.0.0.1:5005\n\n" /%}
 {% /tab %}
 
 {% /tabs %}

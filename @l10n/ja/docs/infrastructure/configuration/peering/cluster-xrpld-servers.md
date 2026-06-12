@@ -67,7 +67,7 @@ labels:
 4. 構成ファイルを保存した後、各サーバで`xrpld`を再起動します。
 
     ```
-    # systemctl restart rippled
+    # systemctl restart xrpld
     ```
 
 5. 各サーバがクラスターのメンバーになっていることを確認するには、[peersメソッド][]を使用します。`cluster`フィールドに、各サーバの公開鍵とカスタム名（構成している場合）のリストが表示されます。

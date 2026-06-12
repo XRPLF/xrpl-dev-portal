@@ -41,7 +41,7 @@ limit the number of simultaneous connections.
 3. `xrpld`をもう一度起動します。
 
     ```
-    systemctl start rippled
+    systemctl start xrpld
     ```
 
 4. それでも`rippled`が起動しない場合は、`/etc/sysctl.conf`を開き、以下のカーネルレベル設定を付加します。
@@ -51,20 +51,20 @@ limit the number of simultaneous connections.
     ```
 
 
-## /etc/opt/ripple/xrpld.cfgを開くことができない
+## /etc/xrpld/xrpld.cfgを開くことができない
 
 `xrpld`が起動時にクラッシュし、以下のようなエラーが出力される場合は、`xrpld`が構成ファイルを読み取ることができません。
 
 ```text
-Loading: "/etc/opt/ripple/xrpld.cfg"
-Failed to open '"/etc/opt/ripple/xrpld.cfg"'.
+Loading: "/etc/xrpld/xrpld.cfg"
+Failed to open '"/etc/xrpld/xrpld.cfg"'.
 Terminating thread rippled: main: unhandled St13runtime_error 'Can not create "/var/opt/ripple"'
 Aborted (core dumped)
 ```
 
 考えられる解決策:
 
-- 構成ファイル（デフォルトのロケーションは`/etc/opt/ripple/xrpld.cfg`）が存在しており、`rippled`プロセスを実行するユーザ（通常は`rippled`）にこのファイルの読み取り権限があることを確認します。
+- 構成ファイル（デフォルトのロケーションは`/etc/xrpld/xrpld.cfg`）が存在しており、`rippled`プロセスを実行するユーザ（通常は`rippled`）にこのファイルの読み取り権限があることを確認します。
 
 - `xrpld`ユーザが読み取ることができる構成ファイルを`$HOME/.config/xrpld/xrpld.cfg`に作成します（`$HOME`は`xrpld`ユーザのホームディレクトリを指しています）。
 
@@ -107,11 +107,11 @@ Aborted (core dumped)
 
 ```text
 Loading: "/home/rippled/.config/xrpld/xrpld.cfg"
-Terminating thread rippled: main: unhandled St13runtime_error 'Can not create "/var/lib/rippled/db"'
+Terminating thread rippled: main: unhandled St13runtime_error 'Can not create "/var/lib/xrpld/db"'
 Aborted (core dumped)
 ```
 
-構成ファイルのパス（`/home/rippled/.config/xrpld/xrpld.cfg`）とデータベースのパス（`/var/lib/rippled/db`）は、システムによっては異なる可能性があります。
+構成ファイルのパス（`/home/rippled/.config/xrpld/xrpld.cfg`）とデータベースのパス（`/var/lib/xrpld/db`）は、システムによっては異なる可能性があります。
 
 考えられる解決策:
 
@@ -129,9 +129,9 @@ Aborted (core dumped)
 ```text
 2018-Aug-21 23:06:38.675117810 SHAMapStore:ERR state db error:
   writableDbExists false archiveDbExists false
-  writableDb '/var/lib/rippled/db/rocksdb/rippledb.11a9' archiveDb '/var/lib/rippled/db/rocksdb/rippledb.2d73'
+  writableDb '/var/lib/xrpld/db/rocksdb/rippledb.11a9' archiveDb '/var/lib/xrpld/db/rocksdb/rippledb.2d73'
 
-To resume operation, make backups of and remove the files matching /var/lib/rippled/db/state* and contents of the directory /var/lib/rippled/db/rocksdb
+To resume operation, make backups of and remove the files matching /var/lib/xrpld/db/state* and contents of the directory /var/lib/xrpld/db/rocksdb
 
 Terminating thread rippled: main: unhandled St13runtime_error 'state db error'
 ```
@@ -139,13 +139,13 @@ Terminating thread rippled: main: unhandled St13runtime_error 'state db error'
 この問題を修正する最も簡単な方法は、データベース全体を削除することです。あるいは、データベースを任意の場所にバックアップすることもできます。例:
 
 ```sh
-mv /var/lib/rippled/db /var/lib/rippled/db-bak
+mv /var/lib/xrpld/db /var/lib/xrpld/db-bak
 ```
 
 あるいは、データベースが必要ではないことが判明している場合は以下のようにします。
 
 ```sh
-rm -r /var/lib/rippled/db
+rm -r /var/lib/xrpld/db
 ```
 
 {% admonition type="success" name="ヒント" %}一般に`xrpld`データベースは安全に削除できます。これは、個々のサーバはXRP Ledgerネットワーク内の他のサーバからレジャー履歴を再ダウンロードできるためです。{% /admonition %}
@@ -155,10 +155,10 @@ rm -r /var/lib/rippled/db
 ```
 [node_db]
 type=NuDB
-path=/var/lib/rippled/custom_nudb_path
+path=/var/lib/xrpld/custom_nudb_path
 
 [database_path]
-/var/lib/rippled/custom_sqlite_db_path
+/var/lib/xrpld/custom_sqlite_db_path
 ```
 
 

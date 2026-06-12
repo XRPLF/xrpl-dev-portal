@@ -28,7 +28,7 @@ SQLiteデータベースの容量は、データベースの _ページサイズ
 
 いずれの場合でも、問題を検出するには`xrpld`のサーバログへのアクセスが必要です。
 
-{% admonition type="success" name="ヒント" %}このデバッグログの位置は、`rippled`サーバの構成ファイルの設定に応じて異なる可能性があります。[デフォルトの構成](https://github.com/XRPLF/rippled/blob/master/cfg/xrpld-example.cfg#L1139-L1142)では、サーバのデバッグログは`/var/log/rippled/debug.log`ファイルに書き込まれます。{% /admonition %}
+{% admonition type="success" name="ヒント" %}このデバッグログの位置は、`rippled`サーバの構成ファイルの設定に応じて異なる可能性があります。[デフォルトの構成](https://github.com/XRPLF/rippled/blob/master/cfg/xrpld-example.cfg#L1139-L1142)では、サーバのデバッグログは`/var/log/xrpld/debug.log`ファイルに書き込まれます。{% /admonition %}
 
 ### 事前の検出
 
@@ -90,7 +90,7 @@ Terminating thread doJob:AcquisitionDone: unhandled
     トランザクションデータベースは、構成の`[database_path]`設定で指定されるフォルダーの`transaction.db`ファイルに保管されます。このファイルのサイズを調べ、必要な空き容量を確認できます。次に例を示します。
 
     ```
-    ls -l /var/lib/rippled/db/transaction.db
+    ls -l /var/lib/xrpld/db/transaction.db
     ```
 
 ### 移行プロセス
@@ -125,7 +125,7 @@ Terminating thread doJob:AcquisitionDone: unhandled
 5. `xrpld`がまだ稼働している場合は停止します。
 
     ```
-    sudo systemctl stop rippled
+    sudo systemctl stop xrpld
     ```
 
 6. `screen`セッション（または類似のツール）を開き、ログアウトしてもプロセスが停止しないようにします。
@@ -143,7 +143,7 @@ Terminating thread doJob:AcquisitionDone: unhandled
 8. 一時ディレクトリへのパスを指定した`--vacuum`コマンドで、`xrpld`実行可能ファイルを直接実行できます。
 
     ```
-    /opt/ripple/bin/rippled -q --vacuum /tmp/rippled_txdb_migration
+    /usr/bin/xrpld -q --vacuum /tmp/rippled_txdb_migration
     ```
 
     `xrpld`実行可能ファイルにより次のメッセージが即時に表示されます。
@@ -177,7 +177,7 @@ Terminating thread doJob:AcquisitionDone: unhandled
 10. `xrpld`サービスを再起動します。
 
     ```
-    sudo systemctl start rippled
+    sudo systemctl start xrpld
     ```
 
 11. `xrpld`サービスが正常に起動したかどうかを確認します。
@@ -185,7 +185,7 @@ Terminating thread doJob:AcquisitionDone: unhandled
     [コマンドラインインターフェイス](/docs/tutorials/get-started/get-started-http-websocket-apis.md#コマンドライン)を使用してサーバの状況を確認できます（サーバがJSON-RPCリクエストを受け入れないように設定している場合を除く）。次に例を示します。
 
     ```
-    /opt/ripple/bin/rippled server_info
+    /usr/bin/xrpld server_info
     ```
 
     このコマンドの予期されるレスポンスの説明については、[server_infoメソッド][]ドキュメントをご覧ください。
@@ -193,7 +193,7 @@ Terminating thread doJob:AcquisitionDone: unhandled
 12. サーバのデバッグログを参照し、`SQLite page size`が現在4096であることを確認します。
 
     ```
-    tail -F /var/log/rippled/debug.log
+    tail -F /var/log/xrpld/debug.log
     ```
 
     また[定期的なログメッセージ](#事前の検出)には、移行前に比べて非常に多くのフリーページとフリースペースが示されているはずです。

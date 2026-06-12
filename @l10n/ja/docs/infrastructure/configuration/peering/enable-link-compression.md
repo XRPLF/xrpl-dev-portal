@@ -17,7 +17,7 @@ labels:
 ### 1. `xrpld`サーバの設定ファイルを編集します。
 
 ```sh
-$ vim /etc/opt/ripple/xrpld.cfg
+$ vim /etc/xrpld/xrpld.cfg
 ```
 
 {% partial file="/@l10n/ja/docs/_snippets/conf-file-location.md" /%}
@@ -36,7 +36,7 @@ true
 ### 3. `xrpld` サーバを再起動します。
 
 ```sh
-$ sudo systemctl restart rippled.service
+$ sudo systemctl restart xrpld.service
 ```
 
 再起動後、サーバは回線圧縮を有効にしている他のピアとの間で自動的に回線圧縮を使用します。

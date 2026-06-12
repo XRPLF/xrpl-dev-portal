@@ -61,7 +61,7 @@ labels:
 `rippled`サービスのみを再起動するには、`systemctl`を使ってください：
 
 ```
-$ sudo systemctl restart rippled.service
+$ sudo systemctl restart xrpld.service
 ```
 
 より強力な介入は、マシン全体を再起動することです。

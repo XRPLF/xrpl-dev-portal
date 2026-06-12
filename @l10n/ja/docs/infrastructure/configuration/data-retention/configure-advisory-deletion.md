@@ -60,7 +60,7 @@ labels:
     このコマンドの実行には[`xrpld`コマンドラインインターフェイス](/docs/tutorials/get-started/get-started-http-websocket-apis.md#コマンドライン)を使用できます。例:
 
     ```
-    $ rippled --conf=/etc/opt/ripple/xrpld.cfg can_delete now
+    $ xrpld --conf=/etc/xrpld/xrpld.cfg can_delete now
     ```
 
     レスポンスは、サーバがそのレジャーストアーから削除するレジャーインデックスの最大値を示します。たとえば、以下のメッセージはレジャーインデックス43633667以下のレジャーバージョンを削除できることを示します。
@@ -87,7 +87,7 @@ labels:
     以下の例では、サーバ時刻で毎日1:05 AMにサーバが削除を実行するように設定されています。
 
     ```
-    5 1 * * * rippled --conf /etc/opt/ripple/xrpld.cfg can_delete now
+    5 1 * * * xrpld --conf /etc/xrpld/xrpld.cfg can_delete now
     ```
 
     サーバで設定されているタイムゾーンに基づいてコマンドが実行されるようにスケジュールしてください。
@@ -97,7 +97,7 @@ labels:
 4. `xrpld`サービスを起動（または再起動）します。
 
     ```
-    $ sudo systemctl restart rippled
+    $ sudo systemctl restart xrpld
     ```
 
 5. [server_infoメソッド][]を使用してサーバの`complete_ledgers`範囲を定期的に調べ、レジャーがスケジュール通りに削除されていることを確認します。
@@ -112,7 +112,7 @@ labels:
 
 - `cron`ジョブを設定したユーザに、コマンドラインクライアントとして`xrpld`サーバを実行できる権限があることを確認します。
 - cronジョブの構文とこのジョブの実行予定時刻を確認します。
-- `rippled`実行可能ファイルが`cron`設定で指定したパスで使用可能であることを確認します。必要に応じて実行可能ファイルの絶対パス（`/opt/ripple/bin/rippled`など）を指定します。
+- `rippled`実行可能ファイルが`cron`設定で指定したパスで使用可能であることを確認します。必要に応じて実行可能ファイルの絶対パス（`/usr/bin/xrpld`など）を指定します。
 - `xrpld`ログで、`SHAMapStore::WRN`で始まるメッセージを調べます。このメッセージが出力されている場合、サーバがネットワークと同期していない状態になったために[オンライン削除が中断されている](online-deletion.md#オンライン削除の中断)可能性があります。
 
 {% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

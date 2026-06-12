@@ -75,14 +75,14 @@ labels:
 1. `xrpld`サーバが稼働中の場合は停止します。
 
     ```
-    $ sudo systemctl stop rippled
+    $ sudo systemctl stop xrpld
     ```
 
 2. 新しいデータベースを格納するための新しい空のフォルダーを作成します。
 
     ```
-    $ mkdir /var/lib/rippled/db_new/
-    $ mkdir /var/lib/rippled/db_new/nudb
+    $ mkdir /var/lib/xrpld/db_new/
+    $ mkdir /var/lib/xrpld/db_new/nudb
     ```
 
 3. 新しいパスを使用するように構成ファイルを編集します。`[node_db]`スタンザの`path`フィールド**と**`[database_path]`スタンザの値を変更します。
@@ -90,10 +90,10 @@ labels:
     ```
     [node_db]
     type=NuDB
-    path=/var/lib/rippled/db_new/nudb
+    path=/var/lib/xrpld/db_new/nudb
 
     [database_path]
-     /var/lib/rippled/db_new
+     /var/lib/xrpld/db_new
     ```
 
     {% partial file="/@l10n/ja/docs/_snippets/conf-file-location.md" /%}
@@ -101,7 +101,7 @@ labels:
 4. `xrpld`サーバを再起動します。
 
     ```
-    $ sudo systemctl start rippled
+    $ sudo systemctl start xrpld
     ```
 
    新しいデータベースを使用してサーバが同期に成功したら、以前のデータベースを格納していたフォルダーを削除できます。また、ハードウェア障害、特にディスクとRAMの障害を確認することもお勧めします。

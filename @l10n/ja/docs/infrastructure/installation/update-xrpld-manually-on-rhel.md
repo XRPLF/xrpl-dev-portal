@@ -46,7 +46,7 @@ labels:
 3. `xrpld`サービスを再起動します。
 
     ```
-    sudo systemctl restart rippled.service
+    sudo systemctl restart xrpld.service
     ```
 
 

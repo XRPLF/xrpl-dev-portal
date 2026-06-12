@@ -16,7 +16,7 @@ labels:
 次のスクリプトは、`/etc/logrotate.d/rippled`として作成できるサンプルです。
 
 ```logrotate
-/var/log/rippled/*.log {
+/var/log/xrpld/*.log {
   daily
   minsize 200M
   rotate 7
@@ -28,7 +28,7 @@ labels:
   compressoptions -n19 ionice -c3 gzip
   compressext .gz
   postrotate
-    /opt/ripple/bin/rippled --conf /opt/ripple/etc/xrpld.cfg logrotate
+    /usr/bin/xrpld --conf /etc/xrpld/xrpld.cfg logrotate
   endscript
 }
 ```

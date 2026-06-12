@@ -25,7 +25,7 @@ labels:
 1. `xrpld`サーバが稼働中の場合は停止します。
 
     ```
-    $ sudo systemctl stop rippled
+    $ sudo systemctl stop xrpld
     ```
 
 0. サーバの構成ファイルで`[node_db]`スタンザの`online_delete`設定と`advisory_delete`設定を削除（またはコメントアウト）し、タイプをまだ`NuDB`に変更していない場合は変更します。
@@ -33,7 +33,7 @@ labels:
     ```
     [node_db]
       type=NuDB
-      path=/var/lib/rippled/db/nudb
+      path=/var/lib/xrpld/db/nudb
       #online_delete=300000
       #advisory_delete=0
     ```
@@ -76,7 +76,7 @@ labels:
     オンライン削除を無効にすると、サーバはオンライン削除が有効であった間にダウンロードしたデータをすべて無視するため、ディスク容量を空けることができます。次に例を示します。
 
     ```
-    rm -r /var/lib/rippled/db/*
+    rm -r /var/lib/xrpld/db/*
     ```
 
     {% admonition type="danger" name="警告" %}フォルダーを削除する前に、保持したいファイルがそのフォルダーに含まれていないことを確認してください。通常は安全に`xrpld`サーバのデータベースファイルをすべて削除できますが、この操作は、設定されているデータベースフォルダーが`xrpld`のデータベース以外には使用されていない場合にのみ行ってください。{% /admonition %}
@@ -86,7 +86,7 @@ labels:
     `[Import_db]`で構成されている読み取り対象データベースダンプがある場合は、`--import` [コマンドラインオプション](../../commandline-usage.md#デーモンモードのオプション)を指定してサーバを明示的に起動します。
 
     ```
-    $ /opt/ripple/bin/rippled --conf /etc/opt/ripple/xrpld.cfg --import
+    $ /usr/bin/xrpld --conf /etc/xrpld/xrpld.cfg --import
     ```
 
     大量のデータベースダンプのインポートには数分から数時間かかることがあります。インポート中はサーバは完全には起動せず、ネットワークと同期しません。インポートの状況を確認するには、サーバログをご覧ください。
@@ -94,7 +94,7 @@ labels:
     データベースダンプをインポートしない場合は、サーバを通常の方法で起動します。
 
     ```
-    $ sudo systemctl start rippled
+    $ sudo systemctl start xrpld
     ```
 
 0. `[import_db]`スタンザをサーバの構成ファイルに追加した場合は、インポートの完了後にそのスタンザを削除してください。

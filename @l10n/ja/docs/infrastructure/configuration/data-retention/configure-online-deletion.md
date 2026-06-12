@@ -50,7 +50,7 @@ labels:
 0. `xrpld`サービスを起動（または再起動）します。
 
     ```
-    $ sudo systemctl restart rippled
+    $ sudo systemctl restart xrpld
     ```
 
 0. サーバがネットワークと同期するまで待ちます。

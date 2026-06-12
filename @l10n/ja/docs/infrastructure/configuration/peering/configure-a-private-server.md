@@ -27,7 +27,7 @@ labels:
 1. `xrpld`の構成ファイルを編集します。
 
     ```
-    vim /etc/opt/ripple/xrpld.cfg
+    vim /etc/xrpld/xrpld.cfg
     ```
 
    {% partial file="/@l10n/ja/docs/_snippets/conf-file-location.md" /%}
@@ -70,13 +70,13 @@ labels:
    各プロキシで`xrpld`を再起動します。各プロキシサーバで、次のようにします。
 
     ```
-    sudo service systemctl restart rippled
+    sudo service systemctl restart xrpld
     ```
 
 5. プライベートサーバで`xrpld`を起動します。
 
     ```
-    sudo service systemctl start rippled
+    sudo service systemctl start xrpld
     ```
 
 6. [peersメソッド][]を使用して、プライベートサーバが自身のピアに _のみ_ 接続していることを確認します。

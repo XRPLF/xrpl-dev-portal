@@ -88,19 +88,19 @@ labels:
 7. `xrpld`ソフトウェアパッケージをインストールします。
 
     ```
-    sudo apt -y install rippled
+    sudo apt -y install xrpld
     ```
 
 8. `xrpld`サービスのステータスをチェックします。
 
     ```
-    systemctl status rippled.service
+    systemctl status xrpld.service
     ```
 
    `xrpld`サービスが自動的に開始します。開始しない場合は、手動で開始できます。
 
     ```
-    sudo systemctl start rippled.service
+    sudo systemctl start xrpld.service
     ```
 
 ## 次のステップ

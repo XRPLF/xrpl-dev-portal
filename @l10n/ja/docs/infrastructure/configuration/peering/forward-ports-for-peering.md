@@ -16,7 +16,7 @@ XRP Ledgerのピアツーピアネットワーク内にあるサーバは、[ピ
 
 ```json
 $ ./xrpld server_info
-Loading: "/etc/opt/ripple/xrpld.cfg"
+Loading: "/etc/xrpld/xrpld.cfg"
 2019-Dec-23 22:15:09.343961928 HTTPClient:NFO Connecting to 127.0.0.1:5005
 
 {

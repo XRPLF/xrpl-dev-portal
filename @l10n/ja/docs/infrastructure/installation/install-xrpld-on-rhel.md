@@ -43,7 +43,7 @@ labels:
 3. 新しい`xrpld`パッケージをインストールします。
 
     ```
-    $ sudo yum install rippled
+    $ sudo yum install xrpld
     ```
 
    バージョン1.3.1では、構成ファイル（`rippled.cfg`および`validators.txt`）を変更する必要はありません。このアップデート手順では、既存の構成ファイルが現在のまま残ります。
@@ -57,13 +57,13 @@ labels:
 5. 起動時に開始するように、`xrpld`サービスを設定します。
 
     ```
-    $ sudo systemctl enable rippled.service
+    $ sudo systemctl enable xrpld.service
     ```
 
 6. `xrpld`サービスを開始します。
 
     ```
-    $ sudo systemctl start rippled.service
+    $ sudo systemctl start xrpld.service
     ```
 
 

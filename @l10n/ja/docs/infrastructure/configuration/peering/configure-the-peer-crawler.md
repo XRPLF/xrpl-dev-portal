@@ -23,7 +23,7 @@ labels:
 1. `xrpld`の設定ファイルを編集します。
 
     ```
-    vim /etc/opt/ripple/xrpld.cfg
+    vim /etc/xrpld/xrpld.cfg
     ```
 
     {% partial file="/@l10n/ja/docs/_snippets/conf-file-location.md" /%}
@@ -43,7 +43,7 @@ labels:
 3. 設定ファイルに変更を保存したら、`xrpld`サーバを再起動して、更新された設定を適用します。
 
     ```
-    systemctl restart rippled
+    systemctl restart xrpld
     ```
 
 
@@ -54,7 +54,7 @@ labels:
 1. `xrpld`の設定ファイルを編集します。
 
     ```
-    vim /etc/opt/ripple/xrpld.cfg
+    vim /etc/xrpld/xrpld.cfg
     ```
 
     {% partial file="/@l10n/ja/docs/_snippets/conf-file-location.md" /%}
@@ -71,7 +71,7 @@ labels:
 3. 設定ファイルに変更を保存したら、`xrpld`サーバを再起動して、更新された設定を適用します。
 
     ```
-    systemctl restart rippled
+    systemctl restart xrpld
     ```
 
 

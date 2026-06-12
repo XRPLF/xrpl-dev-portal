@@ -171,7 +171,7 @@ labels:
 ## 4. サーバを再起動する
 
 ```sh
-$ sudo systemctl restart rippled
+$ sudo systemctl restart xrpld
 ```
 
 ## 5. サーバの同期を確認します。

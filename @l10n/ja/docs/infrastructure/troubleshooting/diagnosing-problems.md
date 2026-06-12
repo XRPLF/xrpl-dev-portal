@@ -32,7 +32,7 @@ xrpld server_info
 
     ```
     $ ./xrpld server_info
-    Loading: "/etc/opt/ripple/xrpld.cfg"
+    Loading: "/etc/xrpld/xrpld.cfg"
     2020-Jan-03 22:49:32.834134358 HTTPClient:NFO Connecting to 127.0.0.1:5005
 
     {
@@ -113,7 +113,7 @@ xrpld server_info
 
 ## サーバログの確認
 
-[デフォルトでは](https://github.com/XRPLF/rippled/blob/master/cfg/xrpld-example.cfg#L1139-L1142)`rippled`はサーバのデバッグログを`/var/log/rippled/debug.log`ファイルに書き込みます。このデバッグログの位置は、サーバの構成ファイルにより異なる可能性があります。`rippled`サービスを（`systemctl`または`service`を使用して開始するのではなく）直接開始した場合、デフォルトではログメッセージはコンソールにも出力されます。
+[デフォルトでは](https://github.com/XRPLF/rippled/blob/master/cfg/xrpld-example.cfg#L1139-L1142)`rippled`はサーバのデバッグログを`/var/log/xrpld/debug.log`ファイルに書き込みます。このデバッグログの位置は、サーバの構成ファイルにより異なる可能性があります。`rippled`サービスを（`systemctl`または`service`を使用して開始するのではなく）直接開始した場合、デフォルトではログメッセージはコンソールにも出力されます。
 
 デフォルトの構成ファイルでは、起動時に[log_levelメソッド][]を内部で使用して、すべてのログメッセージカテゴリでログレベルの重大度は「警告」に設定されています。デバッグログの詳細レベルを制御するには、[起動時に`--silent`コマンドラインオプションを使用し](../commandline-usage.md#詳細レベルのオプション)、サーバの稼働中に[log_levelメソッド][]を使用します。（設定については構成ファイルの`[rpc_startup]`スタンザをご覧ください。）
 

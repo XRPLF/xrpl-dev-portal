@@ -113,7 +113,7 @@ xrpld tx C53ECF838647FA5A4C780377025FEC7999AB4182590510CA461444B207AB74A9 false
 {% /tab %}
 
 {% tab label="Commandline" %}
-{% code-snippet file="/_api-examples/tx/jsonrpc-response.json" language="json" prefix="Loading: \"/etc/opt/ripple/xrpld.cfg\"\n2025-Dec-19 03:16:00.638871262 UTC HTTPClient:NFO Connecting to 127.0.0.1:5005\n\n" /%}
+{% code-snippet file="/_api-examples/tx/jsonrpc-response.json" language="json" prefix="Loading: \"/etc/xrpld/xrpld.cfg\"\n2025-Dec-19 03:16:00.638871262 UTC HTTPClient:NFO Connecting to 127.0.0.1:5005\n\n" /%}
 {% /tab %}
 
 {% /tabs %}

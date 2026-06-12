@@ -17,7 +17,7 @@ labels:
 1. `xrpld`の構成ファイルを編集します。
 
     ```
-    $ vim /etc/opt/ripple/xrpld.cfg
+    $ vim /etc/xrpld/xrpld.cfg
     ```
 
    {% partial file="/@l10n/ja/docs/_snippets/conf-file-location.md" /%}
@@ -38,7 +38,7 @@ labels:
 3. `xrpld`サーバを再起動します。
 
     ```
-    $ sudo systemctl restart rippled.service
+    $ sudo systemctl restart xrpld.service
     ```
 
 

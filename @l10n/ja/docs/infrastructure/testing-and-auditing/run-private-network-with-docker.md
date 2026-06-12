@@ -191,7 +191,7 @@ mkdir -p xrpl-private-network/{validator_1/config,validator_2/config,validator_3
 
     [node_db]
     type=NuDB
-    path=/var/lib/rippled/db/nudb
+    path=/var/lib/xrpld/db/nudb
     advisory_delete=0
 
     # How many ledgers do we want to keep (history)?
@@ -206,10 +206,10 @@ mkdir -p xrpl-private-network/{validator_1/config,validator_2/config,validator_3
     256
 
     [database_path]
-    /var/lib/rippled/db
+    /var/lib/xrpld/db
 
     [debug_logfile]
-    /var/log/rippled/debug.log
+    /var/log/xrpld/debug.log
 
     [sntp_servers]
     time.windows.com

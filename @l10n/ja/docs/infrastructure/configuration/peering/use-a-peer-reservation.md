@@ -62,7 +62,7 @@ lables:
 2. `xrpld`の構成ファイルを編集します。
 
     ```
-    vim /etc/opt/ripple/xrpld.cfg
+    vim /etc/xrpld/xrpld.cfg
     ```
 
    {% partial file="/@l10n/ja/docs/_snippets/conf-file-location.md" /%}
@@ -81,7 +81,7 @@ lables:
 4. `xrpld`サーバを再起動します。
 
     ```
-    systemctl restart rippled
+    systemctl restart xrpld
     ```
 
 ### 2.ストックサーバのノード公開鍵を連絡する
@@ -97,7 +97,7 @@ lables:
 ```sh
 $ xrpld peer_reservations_add n9Mxf6qD4J55XeLSCEpqaePW4GjoCR5U1ZeGZGJUCNe3bQa4yQbG "Description here"
 
-Loading: "/etc/opt/ripple/xrpld.cfg"
+Loading: "/etc/xrpld/xrpld.cfg"
 Connecting to 127.0.0.1:5005
 
 {
