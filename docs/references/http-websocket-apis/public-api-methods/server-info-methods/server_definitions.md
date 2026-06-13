@@ -12,7 +12,7 @@ labels:
 
 The `server_definitions` command returns an SDK-compatible `definitions.json`, generated from the `xrpld` instance currently running. You can use this to query a node in a network, quickly receiving the definitions necessary to serialize/deserialize its binary data.
 
-The response also includes the `TRANSACTION_FORMATS`, `LEDGER_ENTRY_FORMATS`, `TRANSACTION_FLAGS`, `LEDGER_ENTRY_FLAGS`, and `ACCOUNT_SET_FLAGS` sections, which describe the fields and flags of each transaction and ledger object type. {% badge href="https://github.com/XRPLF/rippled/releases/tag/3.2.0" %}New in: rippled 3.2.0{% /badge %}
+The response also includes the `TRANSACTION_FORMATS`, `LEDGER_ENTRY_FORMATS`, `TRANSACTION_FLAGS`, `LEDGER_ENTRY_FLAGS`, and `ACCOUNT_SET_FLAGS` sections, which describe the fields and flags of each transaction and ledger entry type. {% badge href="https://github.com/XRPLF/rippled/releases/tag/3.2.0" %}New in: xrpld 3.2.0{% /badge %}
 
 You can also generate the same definitions without a running server using the [`--definitions`](../../../../infrastructure/commandline-usage.md) command-line flag.
 

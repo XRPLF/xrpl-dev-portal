@@ -140,7 +140,7 @@ Retrieve the [Amendments entry][], which contains a list of all enabled amendmen
 
 | Field        | Type              | Required? | Description |
 |:-------------|:------------------|:----------|:------------|
-| `amendments` | Boolean or String | Yes       | Specify `true` to retrieve the `Amendments` entry, or provide its [ledger entry ID][] as a string, which is always `7DB0788C020F02780A673DC74757F23823FA3014C1866E72CC4CD8B226CD6EF4`. {% badge href="https://github.com/XRPLF/rippled/releases/tag/3.2.0" %}New in: rippled 3.2.0{% /badge %} |
+| `amendments` | Boolean or String | Yes       | Specify `true` to retrieve the `Amendments` entry, or provide its [ledger entry ID][] as a string, which is always `7DB0788C020F02780A673DC74757F23823FA3014C1866E72CC4CD8B226CD6EF4`. {% badge href="https://github.com/XRPLF/rippled/releases/tag/3.2.0" %}New in: xrpld 3.2.0{% /badge %} |
 
 {% admonition type="info" name="Note" %}
 As an alternative, you can specify `"index": "amendments"` to look up this entry. This shortcut requires [API version](../../index.md#api-versioning) 3 or higher.
@@ -642,7 +642,7 @@ Retrieve the [FeeSettings entry][], which contains the current base [transaction
 
 | Field | Type              | Required? | Description |
 |:------|:------------------|:----------|:------------|
-| `fee` | Boolean or String | Yes       | Specify `true` to retrieve the `FeeSettings` entry, or provide its [ledger entry ID][] as a string, which is always `4BC50C9B0D8515D3EAAE1E74B29A95804346C491EE1A95BF25E4AAB854A6A651`. {% badge href="https://github.com/XRPLF/rippled/releases/tag/3.2.0" %}New in: rippled 3.2.0{% /badge %} |
+| `fee` | Boolean or String | Yes       | Specify `true` to retrieve the `FeeSettings` entry, or provide its [ledger entry ID][] as a string, which is always `4BC50C9B0D8515D3EAAE1E74B29A95804346C491EE1A95BF25E4AAB854A6A651`. {% badge href="https://github.com/XRPLF/rippled/releases/tag/3.2.0" %}New in: xrpld 3.2.0{% /badge %} |
 
 {% admonition type="info" name="Note" %}
 As an alternative, you can specify `"index": "fee"` to look up this entry. This shortcut requires [API version](../../index.md#api-versioning) 3 or higher.
@@ -690,7 +690,7 @@ Retrieve a [LedgerHashes entry][], which contains a history of prior ledgers tha
 
 | Field    | Type                       | Required? | Description |
 |:---------|:---------------------------|:----------|:------------|
-| `hashes` | Boolean, Number, or String | Yes       | Specify `true` to retrieve the recent-history `LedgerHashes` entry, whose [ledger entry ID][] is always `B4979A36CDC7F3D3D5C31A4EAE2AC7D7209DDA877588B9AFC66799692AB0D66B`. To retrieve an older entry, specify a [ledger index][] (Number) to look up the `LedgerHashes` entry that records that ledger's hash. You can also provide a [ledger entry ID][] directly as a string. {% badge href="https://github.com/XRPLF/rippled/releases/tag/3.2.0" %}New in: rippled 3.2.0{% /badge %} |
+| `hashes` | Boolean, Number, or String | Yes       | Specify `true` to retrieve the recent-history `LedgerHashes` entry, whose [ledger entry ID][] is always `B4979A36CDC7F3D3D5C31A4EAE2AC7D7209DDA877588B9AFC66799692AB0D66B`. To retrieve an older entry, specify a [ledger index][] (Number) to look up the `LedgerHashes` entry that records that ledger's hash. You can also provide a [ledger entry ID][] directly as a string. {% badge href="https://github.com/XRPLF/rippled/releases/tag/3.2.0" %}New in: xrpld 3.2.0{% /badge %} |
 
 {% admonition type="info" name="Note" %}
 As an alternative, you can specify `"index": "hashes"` to look up the recent-history entry. This shortcut requires [API version](../../index.md#api-versioning) 3 or higher.
@@ -979,7 +979,7 @@ Retrieve the [NegativeUNL entry][], which contains the current status of the [Ne
 
 | Field  | Type              | Required? | Description |
 |:-------|:------------------|:----------|:------------|
-| `nunl` | Boolean or String | Yes       | Specify `true` to retrieve the `NegativeUNL` entry, or provide its [ledger entry ID][] as a string, which is always `2E8A59AA9D3B5B186B0B9E0F62E6C02587CA74A4D778938E957B6357D364B244`. {% badge href="https://github.com/XRPLF/rippled/releases/tag/3.2.0" %}New in: rippled 3.2.0{% /badge %} |
+| `nunl` | Boolean or String | Yes       | Specify `true` to retrieve the `NegativeUNL` entry, or provide its [ledger entry ID][] as a string, which is always `2E8A59AA9D3B5B186B0B9E0F62E6C02587CA74A4D778938E957B6357D364B244`. {% badge href="https://github.com/XRPLF/rippled/releases/tag/3.2.0" %}New in: xrpld 3.2.0{% /badge %} |
 
 {% admonition type="info" name="Note" %}
 As an alternative, you can specify `"index": "nunl"` to look up this entry. This shortcut requires [API version](../../index.md#api-versioning) 3 or higher.
