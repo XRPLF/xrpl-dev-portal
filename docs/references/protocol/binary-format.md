@@ -28,7 +28,7 @@ The process of serializing a transaction from JSON or any other representation i
 
 The result is a single binary blob that can be signed using well-known signature algorithms such as ECDSA (with the secp256k1 elliptic curve) and Ed25519. For purposes of the XRP Ledger, you must also [hash][Hash] the data with the appropriate prefix (`0x53545800` if single-signing, or `0x534D5400` if multi-signing). After signing, you must re-serialize the transaction with the `TxnSignature` field included. <!--{# TODO: link docs on how to compute a transaction signature. #}-->
 
-{% admonition type="info" name="Note" %}The XRP Ledger uses the same serialization format to represent other types of data, such as [ledger objects](ledger-data/ledger-entry-types/index.md) and processed transactions. However, only certain fields are appropriate for including in a transaction that gets signed. (For example, the `TxnSignature` field, containing the signature itself, should not be present in the binary blob that you sign.) Thus, some fields are designated as "Signing" fields, which are included in objects when those objects are signed, and "non-signing" fields, which are not.{% /admonition %}
+{% admonition type="info" name="Note" %}The XRP Ledger uses the same serialization format to represent other types of data, such as [ledger entries](ledger-data/ledger-entry-types/index.md) and processed transactions. However, only certain fields are appropriate for including in a transaction that gets signed. (For example, the `TxnSignature` field, containing the signature itself, should not be present in the binary blob that you sign.) Thus, some fields are designated as "Signing" fields, which are included in objects when those objects are signed, and "non-signing" fields, which are not.{% /admonition %}
 
 ### Examples
 
@@ -73,14 +73,14 @@ The following table defines the top-level fields from the definitions file:
 | Field                  | Contents                                              |
 |:-----------------------|:------------------------------------------------------|
 | `TYPES`                | Map of data types to their ["type code"](#type-codes) for constructing field IDs and sorting fields in canonical order. Codes below 1 should not appear in actual data; codes above 10000 represent special "high-level" object types such as "Transaction" that cannot be serialized inside other objects. See the [Type List](#type-list) for details of how to serialize each type. |
-| `LEDGER_ENTRY_TYPES`   | Map of [ledger objects](ledger-data/ledger-entry-types/index.md) to their data type. These appear in ledger state data, and in the "affected nodes" section of processed transactions' [metadata](transactions/metadata.md). |
-| `FIELDS`               | A sorted array of tuples representing all fields that may appear in transactions, ledger objects, or other data. The first member of each tuple is the string name of the field and the second member is an object with that field's properties. (See [Field properties](#field-properties) for definitions of those fields.) |
+| `LEDGER_ENTRY_TYPES`   | Map of [ledger entries](ledger-data/ledger-entry-types/index.md) to their data type. These appear in ledger state data, and in the "affected nodes" section of processed transactions' [metadata](transactions/metadata.md). |
+| `FIELDS`               | A sorted array of tuples representing all fields that may appear in transactions, ledger entries, or other data. The first member of each tuple is the string name of the field and the second member is an object with that field's properties. (See [Field properties](#field-properties) for definitions of those fields.) |
 | `TRANSACTION_RESULTS`  | Map of [transaction result codes](transactions/transaction-results/index.md) to their numeric values. Result types not included in ledgers have negative values; `tesSUCCESS` has numeric value 0; [`tec`-class codes](transactions/transaction-results/tec-codes.md) represent failures that are included in ledgers. |
 | `TRANSACTION_TYPES`    | Map of all [transaction types](transactions/types/index.md) to their numeric values. |
 | `TRANSACTION_FORMATS`  | Map of each [transaction type](transactions/types/index.md) to an array of objects describing that type's fields and whether each is required. (See [Format field objects](#format-field-objects) for the properties of each object.) {% badge href="https://github.com/XRPLF/rippled/releases/tag/3.2.0" %}New in: xrpld 3.2.0{% /badge %} |
-| `LEDGER_ENTRY_FORMATS` | Map of each [ledger object type](ledger-data/ledger-entry-types/index.md) to an array of objects describing that type's fields and whether each is required. (See [Format field objects](#format-field-objects) for the properties of each object.) {% badge href="https://github.com/XRPLF/rippled/releases/tag/3.2.0" %}New in: xrpld 3.2.0{% /badge %} |
+| `LEDGER_ENTRY_FORMATS` | Map of each [ledger entry type](ledger-data/ledger-entry-types/index.md) to an array of objects describing that type's fields and whether each is required. (See [Format field objects](#format-field-objects) for the properties of each object.) {% badge href="https://github.com/XRPLF/rippled/releases/tag/3.2.0" %}New in: xrpld 3.2.0{% /badge %} |
 | `TRANSACTION_FLAGS`    | Map of each [transaction type](transactions/types/index.md) to an object mapping the names of its supported [transaction flags](transactions/common-fields.md#flags-field) to their numeric values. The `universal` entry lists the flags that apply to all transaction types. {% badge href="https://github.com/XRPLF/rippled/releases/tag/3.2.0" %}New in: xrpld 3.2.0{% /badge %} |
-| `LEDGER_ENTRY_FLAGS`   | Map of each [ledger object type](ledger-data/ledger-entry-types/index.md) to an object mapping the names of that type's flags to their numeric values. {% badge href="https://github.com/XRPLF/rippled/releases/tag/3.2.0" %}New in: xrpld 3.2.0{% /badge %} |
+| `LEDGER_ENTRY_FLAGS`   | Map of each [ledger entry type](ledger-data/ledger-entry-types/index.md) to an object mapping the names of that type's flags to their numeric values. {% badge href="https://github.com/XRPLF/rippled/releases/tag/3.2.0" %}New in: xrpld 3.2.0{% /badge %} |
 | `ACCOUNT_SET_FLAGS`    | Map of [AccountSet flag](transactions/types/accountset.md#accountset-flags) (`asf`) names to their numeric values, for use in the `SetFlag` and `ClearFlag` fields of an [AccountSet transaction](transactions/types/accountset.md). {% badge href="https://github.com/XRPLF/rippled/releases/tag/3.2.0" %}New in: xrpld 3.2.0{% /badge %} |
 
 For purposes of serializing transactions for signing and submitting, the `FIELDS`, `TYPES`, and `TRANSACTION_TYPES` fields are necessary.
@@ -99,12 +99,12 @@ The field definition objects in the `FIELDS` array have the following fields:
 
 #### Format field objects
 
-Each `TRANSACTION_FORMATS` and `LEDGER_ENTRY_FORMATS` array contains one entry per field specific to that transaction or ledger object type. Each entry has these properties:
+Each `TRANSACTION_FORMATS` and `LEDGER_ENTRY_FORMATS` array contains one entry per field specific to that transaction or ledger entry type. Each entry has these properties:
 
 | Field         | Type   | Contents                                          |
 |:--------------|:-------|:--------------------------------------------------|
 | `name`        | String | The name of the field. This matches the field name in the `FIELDS` array. |
-| `optionality` | Number | A code indicating whether the field is required when creating this transaction or ledger object type. (See [Optionality values](#optionality-values) for the meaning of each value.) |
+| `optionality` | Number | A code indicating whether the field is required when creating this transaction or ledger entry type. (See [Optionality values](#optionality-values) for the meaning of each value.) |
 
 #### Optionality values
 
@@ -224,7 +224,7 @@ Transactions and ledger entries may contain fields of any of the following types
 
 In the `rippled` source code, some types have an "ST" prefix, which stands for "serialized type". This separates the type definition in the XRP Ledger protocol from data types that may be defined at the programming language level such as arrays or objects.
 
-In addition to all of the above field types, the following types may appear in other contexts, such as [ledger objects](ledger-data/ledger-entry-types/index.md) and [transaction metadata](transactions/metadata.md):
+In addition to all of the above field types, the following types may appear in other contexts, such as [ledger entries](ledger-data/ledger-entry-types/index.md) and [transaction metadata](transactions/metadata.md):
 
 | Type Name   | Type Code | [Length-prefixed]? | Description                   |
 |:------------|:----------|:-------------------|:------------------------------|
