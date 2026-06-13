@@ -246,7 +246,7 @@ Although this amendment is enabled, it has no effect unless the [SusPay](#suspay
 | Amendment ID | 86E83A7D2ECE3AD5FA87AB2195AE015C950469ABF0B72EAACED318F74886AE90 |
 | Status       | Obsolete |
 | Default Vote (Latest stable release) | No |
-| Pre-amendment functionality retired? | No |
+| Pre-amendment functionality retired? | Yes |
 
 This amendment was intended to add support for several types of crypto-conditions from the official [crypto-conditions specification](https://tools.ietf.org/html/draft-thomas-crypto-conditions-03) for use in [EscrowCreate][] and [EscrowFinish][] transactions.
 
