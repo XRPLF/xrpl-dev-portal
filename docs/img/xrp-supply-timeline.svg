@@ -1,0 +1,33 @@
+<svg width="100%" viewBox="0 0 680 200" role="img" class="themed-figure" xmlns="http://www.w3.org/2000/svg">
+  <title>XRP supply timeline</title>
+  <desc>Key moments in XRP supply history from 2011 to present.</desc>
+
+  <!-- Spine -->
+  <line x1="40" y1="110" x2="628" y2="110" stroke="#CAD4DF" stroke-width="1.5"/>
+  <polygon points="628,106 638,110 628,114" fill="#CAD4DF"/>
+
+  <!-- Node 1: 2011-12 — gray -->
+  <circle cx="80" cy="110" r="6" fill="#CAD4DF"/>
+  <text x="80" y="132" text-anchor="middle" fill="#8A919A" font-family="Inter, 'Helvetica Neue', sans-serif" font-size="11">2011–12</text>
+  <line x1="80" y1="104" x2="80" y2="72" stroke="#CAD4DF" stroke-width="0.5" stroke-dasharray="3 2"/>
+  <text x="80" y="64" text-anchor="middle" fill="#8A919A" font-family="Inter, 'Helvetica Neue', sans-serif" font-size="11">100B XRP created</text>
+
+  <!-- Node 2: 2012 — green -->
+  <circle cx="240" cy="110" r="6" fill="#21E46B"/>
+  <text x="240" y="132" text-anchor="middle" fill="#21E46B" font-family="Inter, 'Helvetica Neue', sans-serif" font-size="11">2012</text>
+  <line x1="240" y1="104" x2="240" y2="72" stroke="#21E46B" stroke-width="0.5" stroke-dasharray="3 2"/>
+  <text x="240" y="64" text-anchor="middle" fill="#21E46B" font-family="Inter, 'Helvetica Neue', sans-serif" font-size="11">80B to Ripple, 20B to founders</text>
+
+  <!-- Node 3: 2017 — gray -->
+  <circle cx="440" cy="110" r="6" fill="#CAD4DF"/>
+  <text x="440" y="132" text-anchor="middle" fill="#8A919A" font-family="Inter, 'Helvetica Neue', sans-serif" font-size="11">2017</text>
+  <line x1="440" y1="104" x2="440" y2="72" stroke="#CAD4DF" stroke-width="0.5" stroke-dasharray="3 2"/>
+  <text x="440" y="64" text-anchor="middle" fill="#8A919A" font-family="Inter, 'Helvetica Neue', sans-serif" font-size="11">Ripple locks 55B in escrow</text>
+
+  <!-- Node 4: Present — green -->
+  <circle cx="590" cy="110" r="6" fill="#21E46B"/>
+  <text x="590" y="132" text-anchor="middle" fill="#21E46B" font-family="Inter, 'Helvetica Neue', sans-serif" font-size="11">Present</text>
+  <line x1="590" y1="104" x2="590" y2="72" stroke="#21E46B" stroke-width="0.5" stroke-dasharray="3 2"/>
+  <text x="590" y="64" text-anchor="middle" fill="#21E46B" font-family="Inter, 'Helvetica Neue', sans-serif" font-size="11">Escrow releases gradually</text>
+
+</svg>
