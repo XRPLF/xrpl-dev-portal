@@ -16,6 +16,7 @@ This enables the following methods to be used on "public" [JSON-RPC and WebSocke
 - [sign][sign method]
 - [sign_for][sign_for method]
 - [submit][submit method] (in "sign-and-submit" mode)
+- [channel_authorize][channel_authorize method]
 
 You **do not** need to enable public signing to use these methods from an admin connection.
 
