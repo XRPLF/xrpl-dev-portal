@@ -315,8 +315,8 @@
 [book_offers method]: /docs/references/http-websocket-apis/public-api-methods/path-and-order-book-methods/book_offers.md
 [can_delete command]: /docs/references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/can_delete.md
 [can_delete method]: /docs/references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/can_delete.md
-[channel_authorize command]: /docs/references/http-websocket-apis/public-api-methods/payment-channel-methods/channel_authorize.md
-[channel_authorize method]: /docs/references/http-websocket-apis/public-api-methods/payment-channel-methods/channel_authorize.md
+[channel_authorize command]: /docs/references/http-websocket-apis/admin-api-methods/signing-methods/channel_authorize.md
+[channel_authorize method]: /docs/references/http-websocket-apis/admin-api-methods/signing-methods/channel_authorize.md
 [channel_verify command]: /docs/references/http-websocket-apis/public-api-methods/payment-channel-methods/channel_verify.md
 [channel_verify method]: /docs/references/http-websocket-apis/public-api-methods/payment-channel-methods/channel_verify.md
 [common fields]: /docs/references/protocol/transactions/common-fields.md
