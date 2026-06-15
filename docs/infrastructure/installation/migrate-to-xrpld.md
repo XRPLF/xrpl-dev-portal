@@ -6,7 +6,7 @@ labels:
 ---
 # Migrate from rippled to xrpld
 
-As part of [XLS-0095](https://github.com/XRPLF/XRPL-Standards/discussions/249), the core server binary was renamed from `rippled` to `xrpld`, and its config file from `rippled.cfg` to `xrpld.cfg`. {% badge href="https://xrpl.org/blog/2026/xrpld-3.2.0" %}New in: xrpld 3.2.0{% /badge %}
+As part of [XLS-0095](https://xls.xrpl.org/xls/XLS-0095-rename-rippled-to-xrpld.html), the core server binary was renamed from `rippled` to `xrpld`, and its config file from `rippled.cfg` to `xrpld.cfg`. {% badge href="https://xrpl.org/blog/2026/xrpld-3.2.0" %}New in: xrpld 3.2.0{% /badge %}
 
 This page describes how to migrate a node from `rippled` to `xrpld`, upgrading from 3.1.3 to 3.2.0.
 
