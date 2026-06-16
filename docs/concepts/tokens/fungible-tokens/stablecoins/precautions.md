@@ -13,7 +13,7 @@ Processing payments to and from the XRP Ledger naturally comes with some risks, 
 
 ## Infrastructure
 
-For your own security as well as the stability of the network, each XRP Ledger business should [run its own XRP Ledger servers](../../../../infrastructure/installation/index.md), including one [validator](../../../networks-and-servers/rippled-server-modes.md#validators).
+For your own security as well as the stability of the network, each XRP Ledger business should [run its own XRP Ledger servers](../../../../infrastructure/installation/index.md), including one [validator](../../../networks-and-servers/xrpld-server-modes.md#validators).
 
 
 ## Tool Security

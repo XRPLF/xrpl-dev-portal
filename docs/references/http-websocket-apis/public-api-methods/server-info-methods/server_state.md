@@ -8,9 +8,9 @@ labels:
 
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/ServerState.cpp "Source")
 
-The `server_state` command asks the server for various machine-readable information about the `rippled` server's current state. The response is almost the same as the [server_info method][], but uses units that are easier to process instead of easier to read. (For example, XRP values are given in integer drops instead of scientific notation or decimal values, and time is given in milliseconds instead of seconds.)
+The `server_state` command asks the server for various machine-readable information about the `xrpld` server's current state. The response is almost the same as the [server_info method][], but uses units that are easier to process instead of easier to read. (For example, XRP values are given in integer drops instead of scientific notation or decimal values, and time is given in milliseconds instead of seconds.)
 
-The [Clio server](../../../../concepts/networks-and-servers/the-clio-server.md) does not support `server_state` directly, but you can ask for the `server_state` of the `rippled` server that Clio is connected to. Specify `"ledger_index": "current"` (WebSocket) or `"params": [{"ledger_index": "current"}]` (JSON-RPC).
+The [Clio server](../../../../concepts/networks-and-servers/the-clio-server.md) does not support `server_state` directly, but you can ask for the `server_state` of the `xrpld` server that Clio is connected to. Specify `"ledger_index": "current"` (WebSocket) or `"params": [{"ledger_index": "current"}]` (JSON-RPC).
 
 ## Request Format
 An example of the request format:
@@ -41,7 +41,7 @@ An example of the request format:
 {% tab label="Commandline" %}
 ```sh
 #Syntax: server_state
-rippled server_state
+xrpld server_state
 ```
 {% /tab %}
 
@@ -195,7 +195,7 @@ Headers
 
 {% tab label="Commandline" %}
 ```json
-Loading: "/etc/opt/ripple/rippled.cfg"
+Loading: "/etc/xrpld/xrpld.cfg"
 2020-Mar-24 01:30:08.646201720 UTC HTTPClient:NFO Connecting to 127.0.0.1:5005
 
 Headers
@@ -272,10 +272,10 @@ The `state` object may have some arrangement of the following fields:
 | `Field`                          | Type            | Description             |
 |:---------------------------------|:----------------|:------------------------|
 | `amendment_blocked`              | Boolean         | _(May be omitted)_ If `true`, this server is [amendment blocked](../../../../concepts/networks-and-servers/amendments.md#amendment-blocked-servers). If the server is not amendment blocked, the response omits this field. |
-| `build_version`                  | String          | The version number of the running `rippled` version. |
-| `complete_ledgers`               | String          | Range expression indicating the sequence numbers of the ledger versions the local `rippled` has in its database. It is possible to be a disjoint sequence, e.g. "2500-5000,32570-7695432". If the server does not have any complete ledgers (for example, it recently started syncing with the network), this is the string `empty`. |
+| `build_version`                  | String          | The version number of the running `xrpld` version. |
+| `complete_ledgers`               | String          | Range expression indicating the sequence numbers of the ledger versions the local `xrpld` has in its database. It is possible to be a disjoint sequence, e.g. "2500-5000,32570-7695432". If the server does not have any complete ledgers (for example, it recently started syncing with the network), this is the string `empty`. |
 | `closed_ledger`                  | Object          | _(May be omitted)_ Information on the most recently closed ledger that has not been validated by consensus, as a [Server Ledger Object](#server-ledger-object). If the most recently validated ledger is available, the response omits this field and includes `validated_ledger` instead. |
-| `io_latency_ms`                  | Number          | Amount of time spent waiting for I/O operations, in milliseconds. If this number is not very, very low, then the `rippled` server is probably having serious load issues. |
+| `io_latency_ms`                  | Number          | Amount of time spent waiting for I/O operations, in milliseconds. If this number is not very, very low, then the `xrpld` server is probably having serious load issues. |
 | `jq_trans_overflow`              | String - Number | The number of times this server has had over 250 transactions waiting to be processed at once. A large number here may mean that your server is unable to handle the transaction load of the XRP Ledger network. For detailed recommendations of future-proof server specifications, see [Capacity Planning](../../../../infrastructure/installation/capacity-planning.md). |
 | `last_close`                     | Object          | Information about the last time the server closed a ledger, including the amount of time it took to reach a consensus and the number of trusted validators participating. |
 | `last_close.converge_time`       | Number          | The amount of time it took to reach a consensus on the most recently validated ledger version, in milliseconds. |
@@ -290,13 +290,13 @@ The `state` object may have some arrangement of the following fields:
 | `load_factor_fee_reference`      | Number          | _(May be omitted)_ The transaction cost with no load scaling, in fee levels. |
 | `load_factor_server`             | Number          | _(May be omitted)_ The load factor the server is enforcing, based on load to the server, cluster, and network, but not factoring in the open ledger cost. |
 | `network_ledger`                  | String          | _(May be omitted)_ When [starting the server with the `--net` parameter](../../../../infrastructure/commandline-usage.md), this field contains the string `waiting` while the server is syncing to the network. The field is omitted otherwise. |
-| `peers`                          | Number          | How many other `rippled` servers this one is currently connected to. |
+| `peers`                          | Number          | How many other `xrpld` servers this one is currently connected to. |
 | `ports`                          | Array           | A list of ports where the server is listening for API commands. Each entry in the array is a [Port Descriptor object](#port-descriptor-object). {% badge href="https://github.com/XRPLF/rippled/releases/tag/1.12.0" %}New in: rippled 1.12.0{% /badge %} |
 | `pubkey_node`                    | String          | Public key used to verify this server for peer-to-peer communications. This _node key pair_ is automatically generated by the server the first time it starts up. (If deleted, the server can create a new pair of keys.) You can set a persistent value in the config file using the `[node_seed]` config option, which is useful for [clustering](../../../../concepts/networks-and-servers/clustering.md). |
 | `pubkey_validator`               | String          | _(Admin only)_ Public key used by this node to sign ledger validations. This _validation key pair_ is derived from the `[validator_token]` or `[validation_seed]` config field. |
-| `server_state`                   | String          | A string indicating to what extent the server is participating in the network. See [Possible Server States](../../api-conventions/rippled-server-states.md) for more details. |
+| `server_state`                   | String          | A string indicating to what extent the server is participating in the network. See [Possible Server States](../../api-conventions/xrpld-server-states.md) for more details. |
 | `server_state_duration_us`       | Number          | The number of consecutive microseconds the server has been in the current state. |
-| `state_accounting`               | Object          | A map of various [server states](../../api-conventions/rippled-server-states.md) with information about the time the server spends in each. This can be useful for tracking the long-term health of your server's connectivity to the network. The contents of this field are formatted as [State Accounting Objects](#state-accounting-object). |
+| `state_accounting`               | Object          | A map of various [server states](../../api-conventions/xrpld-server-states.md) with information about the time the server spends in each. This can be useful for tracking the long-term health of your server's connectivity to the network. The contents of this field are formatted as [State Accounting Objects](#state-accounting-object). |
 | `time`                           | String          | The current time in UTC, according to the server's clock. |
 | `uptime`                         | Number          | Number of consecutive seconds that the server has been operational. |
 | `validated_ledger`               | Object          | _(May be omitted)_ Information about the most recent fully-validated ledger, as a [Server Ledger Object](#server-ledger-object). If the most recent validated ledger is not available, the response omits this field and includes `closed_ledger` instead. |

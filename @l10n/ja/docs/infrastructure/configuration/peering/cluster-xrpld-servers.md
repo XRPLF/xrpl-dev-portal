@@ -1,14 +1,14 @@
 ---
-html: cluster-rippled-servers.html
+html: cluster-xrpld-servers.html
 parent: configure-peering.html
 seo:
     description: サーバのグループで処理を分担するように設定して効率化します。
 labels:
   - コアサーバ
 ---
-# rippledサーバのクラスター化
+# xrpldサーバのクラスター化
 
-1つのデータセンターで複数の`rippled`サーバを稼働している場合は、これらのサーバを[クラスター](../../../concepts/networks-and-servers/clustering.md)に構成して、効率を最大化できます。クラスター構成の設定は次のとおりです。
+1つのデータセンターで複数の`xrpld`サーバを稼働している場合は、これらのサーバを[クラスター](../../../concepts/networks-and-servers/clustering.md)に構成して、効率を最大化できます。クラスター構成の設定は次のとおりです。
 
 1. 各サーバのIPアドレスをメモします。
 
@@ -17,9 +17,9 @@ labels:
     コマンドラインインターフェイスを使用する場合の例を以下に示します。
 
     ```
-    $ rippled validation_create
+    $ xrpld validation_create
 
-    Loading: "/etc/rippled.cfg"
+    Loading: "/etc/xrpld.cfg"
     Connecting to 127.0.0.1:5005
     {
        "result" : {
@@ -33,9 +33,9 @@ labels:
 
     各レスポンスの`validation_seed`パラメーターと`validation_public_key`パラメーターを安全な場所に保存します。
 
-3. 各サーバで[構成ファイル](https://github.com/XRPLF/rippled/blob/master/cfg/rippled-example.cfg)を編集し、以下のセクションを変更します。
+3. 各サーバで[構成ファイル](https://github.com/XRPLF/rippled/blob/master/cfg/xrpld-example.cfg)を編集し、以下のセクションを変更します。
 
-    1. `[ips_fixed]`セクションに、クラスターの _その他の_ 各メンバーのIPアドレスとポートを記入します。各サーバのポート番号は、サーバの `rippled.cfg`に指定されている`protocol = peer`ポート（通常は51235）と一致している必要があります。例:
+    1. `[ips_fixed]`セクションに、クラスターの _その他の_ 各メンバーのIPアドレスとポートを記入します。各サーバのポート番号は、サーバの `xrpld.cfg`に指定されている`protocol = peer`ポート（通常は51235）と一致している必要があります。例:
 
         ```
         [ips_fixed]
@@ -64,10 +64,10 @@ labels:
 
         この例は、サーバがクラスターのメンバーを認識するために使用するキーペアを定義しています。
 
-4. 構成ファイルを保存した後、各サーバで`rippled`を再起動します。
+4. 構成ファイルを保存した後、各サーバで`xrpld`を再起動します。
 
     ```
-    # systemctl restart rippled
+    # systemctl restart xrpld
     ```
 
 5. 各サーバがクラスターのメンバーになっていることを確認するには、[peersメソッド][]を使用します。`cluster`フィールドに、各サーバの公開鍵とカスタム名（構成している場合）のリストが表示されます。
@@ -75,9 +75,9 @@ labels:
     コマンドラインインターフェイスを使用する場合の例を以下に示します。
 
     ```
-    $ rippled peers
+    $ xrpld peers
 
-    Loading: "/etc/rippled.cfg"
+    Loading: "/etc/xrpld.cfg"
     Connecting to 127.0.0.1:5005
     {
       "result" : {

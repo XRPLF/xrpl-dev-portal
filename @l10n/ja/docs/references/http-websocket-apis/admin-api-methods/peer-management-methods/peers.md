@@ -2,14 +2,14 @@
 html: peers.html
 parent: peer-management-methods.html
 seo:
-    description: ピアプロトコルでこのサーバに現在接続されているその他のすべてのrippledサーバのリストを返します。
+    description: ピアプロトコルでこのサーバに現在接続されているその他のすべてのxrpldサーバのリストを返します。
 labels:
   - コアサーバ
 ---
 # peers
 [[ソース]](https://github.com/XRPLF/rippled/blob/52f298f150fc1530d201d3140c80d3eaf781cb5f/src/ripple/rpc/handlers/Peers.cpp "Source")
 
-`peers`コマンドは、[ピアプロトコル](../../../../concepts/networks-and-servers/peer-protocol.md)でこのサーバに現在接続されているその他のすべての`rippled`サーバのリスト（各サーバの接続状況と同期状況を含む）を返します。
+`peers`コマンドは、[ピアプロトコル](../../../../concepts/networks-and-servers/peer-protocol.md)でこのサーバに現在接続されているその他のすべての`xrpld`サーバのリスト（各サーバの接続状況と同期状況を含む）を返します。
 
 *`peers`リクエストは、権限のないユーザは実行できない[管理メソッド](../index.md)です。*
 
@@ -29,7 +29,7 @@ labels:
 
 {% tab label="コマンドライン" %}
 ```
-rippled peers
+xrpld peers
 ```
 {% /tab %}
 
@@ -273,7 +273,7 @@ rippled peers
 
 {% tab label="コマンドライン" %}
 ```json
-Loading: "/etc/rippled.cfg"
+Loading: "/etc/xrpld.cfg"
 Connecting to 127.0.0.1:5005
 
 {
@@ -386,7 +386,7 @@ Connecting to 127.0.0.1:5005
 | `cluster` | オブジェクト | [クラスターとして構成されている](../../../../concepts/networks-and-servers/clustering.md)場合は、同じクラスター内の他の`rippled`サーバの概要。{% badge href="https://github.com/XRPLF/rippled/releases/tag/0.30.1" %}新規: rippled 0.30.1{% /badge %} |
 | `peers`   | 配列  | peerオブジェクトからなる配列。                                  |
 
-`cluster`オブジェクトの各フィールドは、該当する`rippled`サーバの識別用キーペアの公開鍵です。（これは、[server_infoメソッド][]で当該サーバから`pubkey_node`として返される値と同じです。）そのフィールドの内容は、以下のフィールドを持つオブジェクトです。
+`cluster`オブジェクトの各フィールドは、該当する`xrpld`サーバの識別用キーペアの公開鍵です。（これは、[server_infoメソッド][]で当該サーバから`pubkey_node`として返される値と同じです。）そのフィールドの内容は、以下のフィールドを持つオブジェクトです。
 
 | `Field` | 型   | 説明                                               |
 |:--------|:-------|:----------------------------------------------------------|
@@ -399,9 +399,9 @@ Connecting to 127.0.0.1:5005
 | `Field`            | 型    | 説明                                   |
 |:-------------------|:--------|:----------------------------------------------|
 | `address`          | 文字列  | このピアが接続しているIPアドレスとポート。 |
-| `cluster`          | ブール値 | （省略される場合があります）`true`の場合、現在のサーバとピアサーバは同じ`rippled`クラスターに含まれています。 |
+| `cluster`          | ブール値 | （省略される場合があります）`true`の場合、現在のサーバとピアサーバは同じ`xrpld`クラスターに含まれています。 |
 | `name`             | 文字列  | （省略される場合があります）ピアが同じクラスターに含まれている場合、この名前は構成ファイルで定義されているそのピアサーバの表示名です。 |
-| `complete_ledgers` | 文字列  | ピア`rippled`で利用可能なレジャーバージョンのシーケンス番号を示す範囲式 |
+| `complete_ledgers` | 文字列  | ピア`xrpld`で利用可能なレジャーバージョンのシーケンス番号を示す範囲式 |
 | `inbound`          | ブール値 | （省略される場合があります）`true`の場合は、ピアはローカルサーバに接続しています。 |
 | `latency`          | 数値  | ピアへのネットワーク遅延（ミリ秒単位） |
 | `ledger`           | 文字列  | 最後に閉鎖されたピアのレジャーのハッシュ。 |
@@ -411,7 +411,7 @@ Connecting to 127.0.0.1:5005
 | `sanity`           | 文字列  | （省略される場合があります）このピアが現行サーバと同じルールとレジャーシーケンスに従っているかどうか。値が`insane`の場合、ピアは並列ネットワークの一部である可能性があります。値が`unknown`の場合、現行サーバはピアに互換性があるかどうかを把握していません。 <!-- STYLE_OVERRIDE: insane --> |
 | `status`           | 文字列  | （省略される場合があります）ピアからの最新のステータスメッセージ。`connecting`、`connected`、`monitoring`、`validating`、`shutting`のいずれかです。 |
 | `uptime`           | 数値  | `rippled`サーバがこのピアに継続して接続していた秒数。{% badge href="https://github.com/XRPLF/rippled/releases/tag/0.30.1" %}新規: rippled 0.30.1{% /badge %} |
-| `version`          | 文字列  | （省略される場合があります）ピアサーバの`rippled`バージョン番号 |
+| `version`          | 文字列  | （省略される場合があります）ピアサーバの`xrpld`バージョン番号 |
 
 ### 考えられるエラー
 

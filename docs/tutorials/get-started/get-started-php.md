@@ -77,7 +77,7 @@ Note that PHP has no native support for WebSockets, so the Client does not estab
 
 The sample code in the previous section shows you how to connect to the Testnet, which is one of the available [parallel networks](../../concepts/networks-and-servers/parallel-networks.md). When you're ready to integrate with the production XRP Ledger, you'll need to connect to the Mainnet. You can do that in two ways:
 
-* By [installing the core server](../../infrastructure/installation/index.md) (`rippled`) and running a node yourself. The core server connects to the Mainnet by default, but you can [change the configuration to use Testnet or Devnet](../../infrastructure/configuration/connect-your-rippled-to-the-xrp-test-net.md). [There are good reasons to run your own core server](../../concepts/networks-and-servers/index.md#reasons-to-run-your-own-server). If you run your own server, you can connect to it like so:
+* By [installing the core server](../../infrastructure/installation/index.md) (`xrpld`) and running a node yourself. The core server connects to the Mainnet by default, but you can [change the configuration to use Testnet or Devnet](../../infrastructure/configuration/connect-your-xrpld-to-the-xrp-test-net.md). [There are good reasons to run your own core server](../../concepts/networks-and-servers/index.md#reasons-to-run-your-own-server). If you run your own server, you can connect to it like so:
 
     ```
     use XRPL_PHP\Client\JsonRpcClient;
@@ -86,7 +86,7 @@ The sample code in the previous section shows you how to connect to the Testnet,
     $client = new JsonRpcClient("LOCAL_JSON_RPC_URL");
     ```
 
-    See the example [core server config file](https://github.com/XRPLF/rippled/blob/c0a0b79d2d483b318ce1d82e526bd53df83a4a2c/cfg/rippled-example.cfg#L1562) for more information about default values.
+    See the example [core server config file](https://github.com/XRPLF/rippled/blob/develop/cfg/xrpld-example.cfg#L1469) for more information about default values.
 
 * By using one of the available [public servers][]:
 

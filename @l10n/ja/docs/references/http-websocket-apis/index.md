@@ -6,7 +6,7 @@ metadata:
 ---
 # HTTP / WebSocket API リファレンス
 
-rippledサーバの公開APIを通じて、XRP Ledgerと通信することができます。
+xrpldサーバの公開APIを通じて、XRP Ledgerと通信することができます。
 
 
 現在、APIにはバージョン1とバージョン2の2種類があります{% badge href="https://github.com/XRPLF/rippled/releases/tag/2.0.0" %}新規: rippled 2.0.0{% /badge %}。 サーバは、[`version` APIメソッド](public-api-methods/server-info-methods/version.md)を通じてサポートされているAPIバージョンの範囲を通知します。APIリクエストで使用するバージョンを指定できます。
@@ -16,7 +16,7 @@ rippledサーバの公開APIを通じて、XRP Ledgerと通信することがで
 
 ## デフォルトのAPIバージョン
 
-以下の表は、リクエストでAPIバージョンを指定しない場合に使用される`rippled` APIのバージョンを示しています。
+以下の表は、リクエストでAPIバージョンを指定しない場合に使用される`xrpld` APIのバージョンを示しています。
 
 | リクエスト方式 | APIバージョン | 追加の注意事項 |
 |----------------|---------------|------------------|
@@ -30,7 +30,7 @@ rippledサーバの公開APIを通じて、XRP Ledgerと通信することがで
 Clioは、[API v1][]をデフォルトで使用しますが、[API v2][]のリクエストもサポートしています。
 {% /admonition %}
 
-`rippled`の将来のバージョンでは、破壊的な変更を導入すると、APIバージョン3が導入されます。
+`xrpld`の将来のバージョンでは、破壊的な変更を導入すると、APIバージョン3が導入されます。
 
 ### 破壊的な変更
 

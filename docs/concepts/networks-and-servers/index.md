@@ -2,7 +2,7 @@
 html: networks-and-servers.html
 parent: concepts.html
 seo:
-    description: rippled is the core peer-to-peer server that manages the XRP Ledger.
+    description: xrpld is the core peer-to-peer server that manages the XRP Ledger.
 metadata:
   indexPage: true
 ---
@@ -10,7 +10,7 @@ metadata:
 
 There are two main types of server software that power the XRP Ledger:
 
-- The core server, `rippled`, runs the the peer-to-peer network which processes transactions and reaches a consensus on their outcome.
+- The core server, `xrpld`, runs the the peer-to-peer network which processes transactions and reaches a consensus on their outcome.
 - The API server, [Clio](the-clio-server.md), provides a powerful interface for fetching or querying data from the ledger.
 
 Anyone can run instances of one or both of these types of servers based on their needs.

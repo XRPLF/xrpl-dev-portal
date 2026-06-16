@@ -8,7 +8,7 @@ labels:
 ---
 # 公開サーバ
 
-[自分で`rippled`サーバを運営しない](../infrastructure/installation/index.md)場合は、以下の公開サーバを利用して、トランザクションを送信したり、レジャーからデータを取得したりすることができます。
+[自分で`xrpld`サーバを運営しない](../infrastructure/installation/index.md)場合は、以下の公開サーバを利用して、トランザクションを送信したり、レジャーからデータを取得したりすることができます。
 
 # メインネット
 
@@ -32,7 +32,7 @@ labels:
 [¹]: #footnote-1
 [²]: #footnote-2
 
-<a id="footnote-1"></a>¹ Ripple社の公開サーバは、持続的な利用やビジネスでの利用には適しておらず、いつでも利用できなくなる可能性があります。定期的に使用する場合は、[ご自身で`rippled`サーバを運用する](../concepts/networks-and-servers/index.md)か、信頼できる人と契約してください。Ripple社の公開クラスターには[Clioサーバ](../concepts/networks-and-servers/the-clio-server.md) ([レポートモード][]の後継)が含まれています。
+<a id="footnote-1"></a>¹ Ripple社の公開サーバは、持続的な利用やビジネスでの利用には適しておらず、いつでも利用できなくなる可能性があります。定期的に使用する場合は、[ご自身で`xrpld`サーバを運用する](../concepts/networks-and-servers/index.md)か、信頼できる人と契約してください。Ripple社の公開クラスターには[Clioサーバ](../concepts/networks-and-servers/the-clio-server.md) ([レポートモード][]の後継)が含まれています。
 
 <a id="footnote-2"></a>² `xrpl.ws`は`xrplcluster.com`のエイリアスです。しかし、`.ws` というトップレベルドメインの信頼性は、本番での使用には適さないかもしれません。
 

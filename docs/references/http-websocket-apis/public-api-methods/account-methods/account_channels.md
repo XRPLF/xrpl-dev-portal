@@ -44,7 +44,7 @@ An example of the request format:
 {% tab label="Commandline" %}
 ```bash
 #Syntax: account_channels <account> [<destination_account>] [<ledger>]
-rippled account_channels rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn ra5nK24KXen9AHvsdFTKHSANinZseWnPcX validated
+xrpld account_channels rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn ra5nK24KXen9AHvsdFTKHSANinZseWnPcX validated
 ```
 {% /tab %}
 

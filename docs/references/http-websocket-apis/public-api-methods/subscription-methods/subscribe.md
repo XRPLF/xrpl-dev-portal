@@ -86,11 +86,11 @@ The `streams` parameter provides access to the following default streams of info
 | `consensus`             | `consensusPhase`     | Sends a message whenever the server changes phase in the consensus cycle. |
 | `ledger`                | `ledgerClosed`       | Sends a message whenever the consensus process declares a new validated ledger. |
 | `manifests`             | `manifestReceived`   | Sends a message whenever the server receives an update to a validator's ephemeral signing key. |
-| `peer_status`           | `peerStatusChange`   | **(Admin only)** Information about connected peer `rippled` servers, especially with regards to the consensus process. |
+| `peer_status`           | `peerStatusChange`   | **(Admin only)** Information about connected peer `xrpld` servers, especially with regards to the consensus process. |
 | `transactions`          | `transaction`        | Sends a message whenever a transaction is included in a closed ledger. |
 | `transactions_proposed` | `transaction`        | Sends a message whenever a transaction is included in a closed ledger, as well as some transactions that have not yet been included in a validated ledger and may never be. Not all proposed transactions appear before validation. {% admonition type="info" name="Note" %}[Even some transactions that don't succeed are included](../../../protocol/transactions/transaction-results/index.md) in validated ledgers, because they take the anti-spam transaction fee.{% /admonition %} |
-| `server`                | `serverStatus`       | Sends a message whenever the status of the `rippled` server (for example, network connectivity) changes. |
-| `validations`           | `validationReceived` | Sends a message whenever the server receives a validation message, regardless of if the server trusts the validator. (An individual `rippled` declares a ledger validated when the server receives validation messages from at least a quorum of trusted validators.) |
+| `server`                | `serverStatus`       | Sends a message whenever the status of the `xrpld` server (for example, network connectivity) changes. |
+| `validations`           | `validationReceived` | Sends a message whenever the server receives a validation message, regardless of if the server trusts the validator. (An individual `xrpld` declares a ledger validated when the server receives validation messages from at least a quorum of trusted validators.) |
 
 {% admonition type="info" name="Note" %}The following streams are not available from Clio servers: `server`, `peer_status`, `consensus`. If you request one of these streams, Clio returns the error `reportingUnsupported`. {% badge href="https://github.com/XRPLF/clio/releases/tag/2.0.0" %}New in: Clio v2.0{% /badge %}{% /admonition %}
 
@@ -231,7 +231,7 @@ The fields from a validations stream message are as follows:
 | `ledger_hash`           | String           | The identifying hash of the proposed ledger is being validated. |
 | `ledger_index`          | String - Number  | The [Ledger Index][] of the proposed ledger. |
 | `load_fee`              | Integer          | _(May be omitted)_ The local load-scaled transaction cost this validator is currently enforcing, in fee units. |
-| `master_key`            | String           | _(May be omitted)_ The validator's master public key, if the validator is using a validator token, in the XRP Ledger's [base58][] format. (See also: [Enable Validation on your `rippled` Server](../../../../infrastructure/configuration/server-modes/run-rippled-as-a-validator.md#3-enable-validation-on-your-rippled-server).) |
+| `master_key`            | String           | _(May be omitted)_ The validator's master public key, if the validator is using a validator token, in the XRP Ledger's [base58][] format. (See also: [Enable Validation on your `xrpld` Server](../../../../infrastructure/configuration/server-modes/run-xrpld-as-a-validator.md#3-enable-validation-on-your-xrpld-server).) |
 | `network_id`            | Number           | The [XRPL network](../../../protocol/transactions/common-fields.md#networkid-field) of this stream. {% badge href="https://github.com/XRPLF/rippled/releases/tag/2.6.0" %}New in: rippled 2.6.0{% /badge %} |
 | `reserve_base`          | Integer          | _(May be omitted)_ The minimum reserve requirement (`account_reserve` value) this validator wants to set by [Fee Voting](../../../../concepts/consensus-protocol/fee-voting.md). |
 | `reserve_inc`           | Integer          | _(May be omitted)_ The increment in the reserve requirement (`owner_reserve` value) this validator wants to set by [Fee Voting](../../../../concepts/consensus-protocol/fee-voting.md). |
@@ -380,7 +380,7 @@ Transaction stream messages have the following fields:
 
 ## Peer Status Stream
 
-The admin-only `peer_status` stream reports a large amount of information on the activities of other `rippled` servers to which this server is connected, in particular their status in the consensus process.
+The admin-only `peer_status` stream reports a large amount of information on the activities of other `xrpld` servers to which this server is connected, in particular their status in the consensus process.
 
 Example of a Peer Status stream message:
 
@@ -396,7 +396,7 @@ Example of a Peer Status stream message:
 }
 ```
 
-Peer Status stream messages represent some event where the status of the peer `rippled` server changed. These messages are JSON objects with the following fields:
+Peer Status stream messages represent some event where the status of the peer `xrpld` server changed. These messages are JSON objects with the following fields:
 
 | Field              | Value  | Description                                    |
 |:-------------------|:-------|:-----------------------------------------------|

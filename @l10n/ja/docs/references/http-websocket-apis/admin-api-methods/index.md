@@ -2,22 +2,22 @@
 html: admin-api-methods.html
 parent: http-websocket-apis.html
 seo:
-    description: これらの管理APIメソッドを使用してrippledサーバを管理します。
+    description: これらの管理APIメソッドを使用してxrpldサーバを管理します。
 labels:
   - コアサーバ
 ---
 # 管理APIメソッド
 
-`rippled`サーバと直接通信する際には管理APIメソッドを使用します。管理メソッドは、信頼できるサーバ運用担当者のみを対象としています。管理メソッドには、サーバの管理、監視、デバッグのためのコマンドが含まれています。
+`xrpld`サーバと直接通信する際には管理APIメソッドを使用します。管理メソッドは、信頼できるサーバ運用担当者のみを対象としています。管理メソッドには、サーバの管理、監視、デバッグのためのコマンドが含まれています。
 
-管理コマンドを使用できるのは、管理者として、`rippled.cfg`ファイルに指定されているホストとポートで`rippled`サーバに接続している場合に限られます。デフォルトでは、コマンドラインクライアントが管理接続を使用します。`rippled`への接続についての詳細は、[rippled API入門](/docs/tutorials/get-started/get-started-http-websocket-apis.md)をご覧ください。
+管理コマンドを使用できるのは、管理者として、`xrpld.cfg`ファイルに指定されているホストとポートで`xrpld`サーバに接続している場合に限られます。デフォルトでは、コマンドラインクライアントが管理接続を使用します。`xrpld`への接続についての詳細は、[xrpld API入門](/docs/tutorials/get-started/get-started-http-websocket-apis.md)をご覧ください。
 
 
 ## [キー生成メソッド](key-generation-methods/index.md)
 
 キーを生成および管理するには、以下のメソッドを使用します。
 
-* **[`validation_create`](key-generation-methods/validation_create.md)** - 新しいrippledバリデータのキーを生成します。
+* **[`validation_create`](key-generation-methods/validation_create.md)** - 新しいxrpldバリデータのキーを生成します。
 * **[`wallet_propose`](key-generation-methods/wallet_propose.md)** - 新規アカウントのキーを生成します。
 
 
@@ -34,11 +34,11 @@ labels:
 
 ## [サーバ制御メソッド](server-control-methods/index.md)
 
-rippledサーバの管理には、以下のメソッドを使用します。
+xrpldサーバの管理には、以下のメソッドを使用します。
 
-* **[`connect`](peer-management-methods/connect.md)** - rippledサーバを特定のピアに強制的に接続します。
+* **[`connect`](peer-management-methods/connect.md)** - xrpldサーバを特定のピアに強制的に接続します。
 * **[`ledger_accept`](server-control-methods/ledger_accept.md)** - スタンドアロンモードでレジャーを閉鎖し、次のレジャーに進みます。
-* **[`stop`](server-control-methods/stop.md)** - rippledサーバをシャットダウンします。
+* **[`stop`](server-control-methods/stop.md)** - xrpldサーバをシャットダウンします。
 
 
 ## [ステータスおよびデバッグメソッド](status-and-debugging-methods/index.md)

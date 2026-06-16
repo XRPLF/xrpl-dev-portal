@@ -2,7 +2,7 @@
 html: ledger-history.html
 parent: networks-and-servers.html
 seo:
-    description: rippled servers store a variable amount of transaction and state history locally.
+    description: xrpld servers store a variable amount of transaction and state history locally.
 labels:
   - Data Retention
   - Blockchain
@@ -10,15 +10,15 @@ labels:
 ---
 # Ledger History
 
-The [consensus process](../consensus-protocol/index.md) creates a chain of [validated ledger versions](../ledgers/index.md), each derived from the previous one by applying a set of [transactions](../transactions/index.md). Every [`rippled` server](index.md) stores ledger versions and transaction history locally. The amount of transaction history a server stores depends on how long that server has been online and how much history it is configured to fetch and keep.
+The [consensus process](../consensus-protocol/index.md) creates a chain of [validated ledger versions](../ledgers/index.md), each derived from the previous one by applying a set of [transactions](../transactions/index.md). Every [`xrpld` server](index.md) stores ledger versions and transaction history locally. The amount of transaction history a server stores depends on how long that server has been online and how much history it is configured to fetch and keep.
 
 Servers in the peer-to-peer XRP Ledger network share transactions and other data with each other as part of the consensus process. Each server independently builds each new ledger version and compares results with its trusted validators to ensure consistency. (If a consensus of trusted validators disagrees with a server's results, that server fetches the necessary data from its peers to achieve consistency.) Servers can download older data from their peers to fill gaps in their available history. The structure of the ledger uses cryptographic [hashes](../../references/protocol/data-types/basic-data-types.md#hashes) of the data so that any server can verify the integrity and consistency of the data.
 
 ## Databases
 
-Servers keep ledger state data and transactions in a key-value store called the _ledger store_. Additionally, `rippled` maintains a few SQLite database files for more flexible access to things like transaction history, and to track certain settings changes.
+Servers keep ledger state data and transactions in a key-value store called the _ledger store_. Additionally, `xrpld` maintains a few SQLite database files for more flexible access to things like transaction history, and to track certain settings changes.
 
-It is generally safe to delete all of a `rippled` server's database files when that server is not running. (You may want to do this, for example, if you change the server's storage settings or if you are switching from a test net to the production network.)
+It is generally safe to delete all of an `xrpld` server's database files when that server is not running. (You may want to do this, for example, if you change the server's storage settings or if you are switching from a test net to the production network.)
 
 ## Available History
 
@@ -65,7 +65,7 @@ For instructions on setting up full history, see [Configure Full History](../../
     - [Ledgers](../ledgers/index.md)
     - [Consensus](../consensus-protocol/index.md)
 - **Tutorials:**
-    - [Configure `rippled`](../../infrastructure/configuration/index.md)
+    - [Configure `xrpld`](../../infrastructure/configuration/index.md)
         - [Configure Online Deletion](../../infrastructure/configuration/data-retention/configure-online-deletion.md)
         - [Configure Advisory Deletion](../../infrastructure/configuration/data-retention/configure-advisory-deletion.md)
         - [Configure Full History](../../infrastructure/configuration/data-retention/configure-full-history.md)

@@ -7,7 +7,7 @@ labels:
 # log_level
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/LogLevel.cpp "Source")
 
-The `log_level` command changes the `rippled` server's logging verbosity, or returns the current logging level for each category (called a _partition_) of log messages.
+The `log_level` command changes the `xrpld` server's logging verbosity, or returns the current logging level for each category (called a _partition_) of log messages.
 
 _The `log_level` method is an [admin method](../index.md) that cannot be run by unprivileged users._
 
@@ -30,7 +30,7 @@ An example of the request format:
 {% tab label="Commandline" %}
 ```sh
 #Syntax: log_level [[partition] severity]
-rippled log_level PathRequest debug
+xrpld log_level PathRequest debug
 ```
 {% /tab %}
 
@@ -51,7 +51,7 @@ Examples of successful responses:
 
 {% tab label="Commandline (set log level)" %}
 ```json
-Loading: "/etc/rippled.cfg"
+Loading: "/etc/xrpld.cfg"
 Connecting to 127.0.0.1:5005
 
 {
@@ -64,7 +64,7 @@ Connecting to 127.0.0.1:5005
 
 {% tab label="Commandline (check log levels)" %}
 ```json
-Loading: "/etc/rippled.cfg"
+Loading: "/etc/xrpld.cfg"
 Connecting to 127.0.0.1:5005
 
 {

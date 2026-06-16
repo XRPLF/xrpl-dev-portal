@@ -43,7 +43,7 @@ An example of the request format:
 {% tab label="Commandline" %}
 ```sh
 #Syntax: account_offers account [ledger_index]
-rippled account_offers rpP2JgiMyTF5jR5hLG3xHCPi1knBb1v9cM current
+xrpld account_offers rpP2JgiMyTF5jR5hLG3xHCPi1knBb1v9cM current
 ```
 {% /tab %}
 

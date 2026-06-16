@@ -2,7 +2,7 @@
 html: manually-connect-to-a-specific-peer.html
 parent: configure-peering.html
 seo:
-    description: rippledサーバを特定のピアに接続します。
+    description: xrpldサーバを特定のピアに接続します。
 labels:
   - コアサーバ
 ---
@@ -52,7 +52,7 @@ labels:
 
 {% tab label="コマンドライン" %}
 ```
-rippled connect 169.54.2.151 51235
+xrpld connect 169.54.2.151 51235
 ```
 {% /tab %}
 
@@ -63,10 +63,10 @@ rippled connect 169.54.2.151 51235
 
 - **コンセプト:**
   - [ピアプロトコル](../../../concepts/networks-and-servers/peer-protocol.md)
-  - [`rippled`サーバ](../../../concepts/networks-and-servers/index.md)
+  - [`xrpld`サーバ](../../../concepts/networks-and-servers/index.md)
 - **チュートリアル:**
   - [容量の計画](../../installation/capacity-planning.md)
-  - [`rippled`サーバのトラブルシューティング](../../troubleshooting/index.md)
+  - [`xrpld`サーバのトラブルシューティング](../../troubleshooting/index.md)
 - **リファレンス:**
   - [connectメソッド][]
   - [peersメソッド][]

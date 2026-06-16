@@ -45,7 +45,7 @@ labels:
 {% tab label="コマンドライン" %}
 ```sh
 #Syntax: transaction_entry transaction_hash ledger_index|ledger_hash
-rippled transaction_entry E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDACFCD1698C7 348734
+xrpld transaction_entry E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDACFCD1698C7 348734
 ```
 {% /tab %}
 

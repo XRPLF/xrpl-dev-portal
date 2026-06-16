@@ -1,14 +1,14 @@
 ---
-html: run-rippled-as-a-stock-server.html
+html: run-xrpld-as-a-stock-server.html
 parent: server-modes.html
 seo:
     description: A multipurpose configuration for anyone integrating XRP.
 labels:
   - Core Server
 ---
-# Run rippled as a Stock Server
+# Run xrpld as a Stock Server
 
-A stock server is a multipurpose configuration for `rippled`. With a stock server, you can submit transactions to the XRP Ledger, access ledger history, and use the latest [tools](../../../introduction/software-ecosystem.md) to integrate with XRP and the XRP Ledger. You can connect client applications to the XRP Ledger using this server.
+A stock server is a multipurpose configuration for `xrpld`. With a stock server, you can submit transactions to the XRP Ledger, access ledger history, and use the latest [tools](../../../introduction/software-ecosystem.md) to integrate with XRP and the XRP Ledger. You can connect client applications to the XRP Ledger using this server.
 
 
 A stock server does all of the following:
@@ -20,28 +20,28 @@ A stock server does all of the following:
 - Maintains a local copy of the complete shared global [ledger](../../../concepts/ledgers/index.md)
 
 
-To participate in the [consensus process](../../../concepts/consensus-protocol/index.md) as a validator, [run rippled as a validator](run-rippled-as-a-validator.md) instead.
+To participate in the [consensus process](../../../concepts/consensus-protocol/index.md) as a validator, [run xrpld as a validator](run-xrpld-as-a-validator.md) instead.
 
 
-## Install and run `rippled`
+## Install and run `xrpld`
 
-The default package installation installs a stock server with a small amount of transaction history. For installation steps, see [Install `rippled`](../../installation/index.md).
+The default package installation installs a stock server with a small amount of transaction history. For installation steps, see [Install `xrpld`](../../installation/index.md).
 
 After installation, you can adjust how much history your server stores at a time. For steps on how to do this, see [Configure Online Deletion](../data-retention/configure-online-deletion.md).
 
 ## Troubleshooting
 
-For more information, see [Troubleshooting `rippled`](../../troubleshooting/index.md)
+For more information, see [Troubleshooting `xrpld`](../../troubleshooting/index.md)
 
 
 ## See Also
 
 - **Concepts:**
     - [XRP Ledger Overview](/about/)
-    - [The `rippled` Server](../../../concepts/networks-and-servers/index.md)
+    - [The `xrpld` Server](../../../concepts/networks-and-servers/index.md)
 - **Tutorials:**
-    - [Cluster rippled Servers](../peering/cluster-rippled-servers.md)
-    - [Install `rippled`](../../installation/index.md)
+    - [Cluster xrpld Servers](../peering/cluster-xrpld-servers.md)
+    - [Install `xrpld`](../../installation/index.md)
     - [Capacity Planning](../../installation/capacity-planning.md)
 - **References:**
     - [Validator Keys Tool Guide](https://github.com/ripple/validator-keys-tool/blob/master/doc/validator-keys-tool-guide.md)

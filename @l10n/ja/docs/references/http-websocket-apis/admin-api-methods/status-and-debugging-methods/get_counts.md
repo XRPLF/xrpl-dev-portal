@@ -44,7 +44,7 @@ _`get_counts`メソッドは、権限のないユーザは実行できない[管
 {% tab label="コマンドライン" %}
 ```sh
 #Syntax: get_counts [min_count]
-rippled get_counts 100
+xrpld get_counts 100
 ```
 {% /tab %}
 
@@ -101,7 +101,7 @@ rippled get_counts 100
 
 {% tab label="コマンドライン" %}
 ```json
-Loading: "/etc/rippled.cfg"
+Loading: "/etc/xrpld.cfg"
 Connecting to 127.0.0.1:5005
 
 {

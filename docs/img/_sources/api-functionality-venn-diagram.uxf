@@ -31,7 +31,7 @@
       <w>110</w>
       <h>30</h>
     </coordinates>
-    <panel_attributes>*rippled Server*</panel_attributes>
+    <panel_attributes>*xrpld Server*</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -162,7 +162,7 @@
       <h>80</h>
     </coordinates>
     <panel_attributes>style=wordwrap
-• Serves rippled-exclusive API requests by forwarding</panel_attributes>
+• Serves xrpld-exclusive API requests by forwarding</panel_attributes>
     <additional_attributes/>
   </element>
 </diagram>

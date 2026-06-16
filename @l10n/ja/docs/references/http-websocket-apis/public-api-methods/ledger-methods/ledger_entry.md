@@ -94,7 +94,7 @@ label:
 
 {% tab label="コマンドライン" %}
 ```sh
-rippled json ledger_entry '{ "index": "7DB0788C020F02780A673DC74757F23823FA3014C1866E72CC4CD8B226CD6EF4", "ledger_index": "validated" }'
+xrpld json ledger_entry '{ "index": "7DB0788C020F02780A673DC74757F23823FA3014C1866E72CC4CD8B226CD6EF4", "ledger_index": "validated" }'
 ```
 {% /tab %}
 
@@ -151,7 +151,7 @@ rippled json ledger_entry '{ "index": "7DB0788C020F02780A673DC74757F23823FA3014C
 
 {% tab label="コマンドライン" %}
 ```sh
-rippled json ledger_entry '{ "account_root": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59", "ledger_index": "validated" }'
+xrpld json ledger_entry '{ "account_root": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59", "ledger_index": "validated" }'
 ```
 {% /tab %}
 
@@ -219,7 +219,7 @@ rippled json ledger_entry '{ "account_root": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59
 
 {% tab label="Commandline" %}
 ```sh
-rippled json ledger_entry '{ "amm": { "asset": { "currency": "XRP" }, "asset2": { "currency" : "TST", "issuer" : "rP9jPyP5kyvFRb6ZiRghAGw5u8SGAmU4bd" } }, "ledger_index": "validated" }'
+xrpld json ledger_entry '{ "amm": { "asset": { "currency": "XRP" }, "asset2": { "currency" : "TST", "issuer" : "rP9jPyP5kyvFRb6ZiRghAGw5u8SGAmU4bd" } }, "ledger_index": "validated" }'
 ```
 {% /tab %}
 
@@ -290,7 +290,7 @@ XRP Ledgerを他のブロックチェーンに接続する1つのクロスチェ
 
 {% tab label="コマンドライン" %}
 ```sh
-rippled json ledger_entry '{ "bridge_account": "rnQAXXWoFNN6PEqwqsdTngCtFPCrmfuqFJ", "bridge": { "IssuingChainDoor": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh", "IssuingChainIssue": { "currency": "XRP" }, "LockingChainDoor": "rnQAXXWoFNN6PEqwqsdTngCtFPCrmfuqFJ", "LockingChainIssue": { "currency": "XRP" } }, "ledger_index": "validated" }'
+xrpld json ledger_entry '{ "bridge_account": "rnQAXXWoFNN6PEqwqsdTngCtFPCrmfuqFJ", "bridge": { "IssuingChainDoor": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh", "IssuingChainIssue": { "currency": "XRP" }, "LockingChainDoor": "rnQAXXWoFNN6PEqwqsdTngCtFPCrmfuqFJ", "LockingChainIssue": { "currency": "XRP" } }, "ledger_index": "validated" }'
 ```
 {% /tab %}
 
@@ -344,7 +344,7 @@ JSON-RPC:
 Commandline:
 
 ```bash
-rippled json ledger_entry '{ "credential": {"subject": "rsUiUMpnrgxQp24dJYZDhmV4bE3aBtQyt8", "issuer": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX","credential_type": "6D795F63726564656E7469616C"}, "ledger_index": "validated" }'
+xrpld json ledger_entry '{ "credential": {"subject": "rsUiUMpnrgxQp24dJYZDhmV4bE3aBtQyt8", "issuer": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX","credential_type": "6D795F63726564656E7469616C"}, "ledger_index": "validated" }'
 ```
 
 <!-- TODO: create working example in tool
@@ -399,7 +399,7 @@ rippled json ledger_entry '{ "credential": {"subject": "rsUiUMpnrgxQp24dJYZDhmV4
 
 {% tab label="コマンドライン" %}
 ```sh
-rippled json ledger_entry '{ "directory": { "owner": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", "sub_index": 0 }, "ledger_index": "validated" }'
+xrpld json ledger_entry '{ "directory": { "owner": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", "sub_index": 0 }, "ledger_index": "validated" }'
 ```
 {% /tab %}
 
@@ -455,7 +455,7 @@ rippled json ledger_entry '{ "directory": { "owner": "rf1BiGeXwwQoi8Z2ueFYTEXSwu
 
 {% tab label="コマンドライン" %}
 ```sh
-rippled json ledger_entry '{ "offer": { "account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", "seq": 359}, "ledger_index": "validated" }'
+xrpld json ledger_entry '{ "offer": { "account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", "seq": 359}, "ledger_index": "validated" }'
 ```
 {% /tab %}
 
@@ -510,7 +510,7 @@ _([PriceOracle amendment][]が必要です)_
 
 {% tab label="Commandline" %}
 ```sh
-rippled json ledger_entry '{ "oracle": { "account": "rNZ9m6AP9K7z3EVg6GhPMx36V4QmZKeWds", "oracle_document_id": 34 }, "ledger_index": "validated" }'
+xrpld json ledger_entry '{ "oracle": { "account": "rNZ9m6AP9K7z3EVg6GhPMx36V4QmZKeWds", "oracle_document_id": 34 }, "ledger_index": "validated" }'
 ```
 {% /tab %}
 
@@ -569,7 +569,7 @@ rippled json ledger_entry '{ "oracle": { "account": "rNZ9m6AP9K7z3EVg6GhPMx36V4Q
 
 {% tab label="コマンドライン" %}
 ```sh
-rippled json ledger_entry '{ "ripple_state": { "accounts": ["rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW"], "currency": "USD"}, "ledger_index": "validated" }'
+xrpld json ledger_entry '{ "ripple_state": { "accounts": ["rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW"], "currency": "USD"}, "ledger_index": "validated" }'
 ```
 {% /tab %}
 
@@ -615,7 +615,7 @@ rippled json ledger_entry '{ "ripple_state": { "accounts": ["rf1BiGeXwwQoi8Z2ueF
 
 {% tab label="コマンドライン" %}
 ```sh
-rippled json ledger_entry '{ "check": "C4A46CCD8F096E994C4B0DEAB6CE98E722FC17D7944C28B95127C2659C47CBEB", "ledger_index": "validated" }'
+xrpld json ledger_entry '{ "check": "C4A46CCD8F096E994C4B0DEAB6CE98E722FC17D7944C28B95127C2659C47CBEB", "ledger_index": "validated" }'
 ```
 {% /tab %}
 
@@ -669,7 +669,7 @@ rippled json ledger_entry '{ "check": "C4A46CCD8F096E994C4B0DEAB6CE98E722FC17D79
 
 {% tab label="コマンドライン" %}
 ```sh
-rippled json ledger_entry '{ "escrow": { "owner": "rL4fPHi2FWGwRGRQSH7gBcxkuo2b9NTjKK", "seq": 126 }, "ledger_index": "validated" }'
+xrpld json ledger_entry '{ "escrow": { "owner": "rL4fPHi2FWGwRGRQSH7gBcxkuo2b9NTjKK", "seq": 126 }, "ledger_index": "validated" }'
 ```
 {% /tab %}
 
@@ -714,7 +714,7 @@ rippled json ledger_entry '{ "escrow": { "owner": "rL4fPHi2FWGwRGRQSH7gBcxkuo2b9
 
 {% tab label="コマンドライン" %}
 ```sh
-rippled json ledger_entry '{ "payment_channel": "C7F634794B79DB40E87179A9D1BF05D05797AE7E92DF8E93FD6656E8C4BE3AE7", "ledger_index": "validated" }'
+xrpld json ledger_entry '{ "payment_channel": "C7F634794B79DB40E87179A9D1BF05D05797AE7E92DF8E93FD6656E8C4BE3AE7", "ledger_index": "validated" }'
 ```
 {% /tab %}
 
@@ -775,7 +775,7 @@ rippled json ledger_entry '{ "payment_channel": "C7F634794B79DB40E87179A9D1BF05D
 
 {% tab label="コマンドライン" %}
 ```sh
-rippled json ledger_entry '{ "deposit_preauth": { "owner": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", "authorized": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX" }, "ledger_index": "validated" }'
+xrpld json ledger_entry '{ "deposit_preauth": { "owner": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", "authorized": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX" }, "ledger_index": "validated" }'
 ```
 {% /tab %}
 
@@ -828,7 +828,7 @@ rippled json ledger_entry '{ "deposit_preauth": { "owner": "rf1BiGeXwwQoi8Z2ueFY
 
 {% tab label="コマンドライン" %}
 ```sh
-rippled json ledger_entry '{ "ticket": { "account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", "ticket_seq: 389 }, "ledger_index": "validated" }'
+xrpld json ledger_entry '{ "ticket": { "account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", "ticket_seq: 389 }, "ledger_index": "validated" }'
 ```
 {% /tab %}
 
@@ -873,7 +873,7 @@ NFT ページを生のレジャー形式で取得します。
 
 {% tab label="コマンドライン" %}
 ```sh
-rippled json ledger_entry '{ "nft_page": "255DD86DDF59D778081A06D02701E9B2C9F4F01DFFFFFFFFFFFFFFFFFFFFFFFF", "ledger_index": "validated" }'
+xrpld json ledger_entry '{ "nft_page": "255DD86DDF59D778081A06D02701E9B2C9F4F01DFFFFFFFFFFFFFFFFFFFFFFFF", "ledger_index": "validated" }'
 ```
 {% /tab %}
 
@@ -918,7 +918,7 @@ _([MPTokensV1 amendment][]が必要です。 {% not-enabled /%})_
 
 {% tab label="Commandline" %}
 ```sh
-rippled json ledger_entry '{ "mpt_issuance": "000004C463C52827307480341125DA0577DEFC38405B0E3E", "ledger_index": "validated" }'
+xrpld json ledger_entry '{ "mpt_issuance": "000004C463C52827307480341125DA0577DEFC38405B0E3E", "ledger_index": "validated" }'
 ```
 {% /tab %}
 {% /tabs %}
@@ -973,7 +973,7 @@ _([MPTokensV1 amendment][]が必要です。 {% not-enabled /%})_
 
 {% tab label="Commandline" %}
 ```sh
-rippled json ledger_entry '{ "mptoken": {"mpt_issuance_id": "000002DFA4D893CFBC4DC6AE877EB585F90A3B47528B958D", "account":"r33kves44ksufkHSGg3M6GPPAsoVHEN8C1"} }'
+xrpld json ledger_entry '{ "mptoken": {"mpt_issuance_id": "000002DFA4D893CFBC4DC6AE877EB585F90A3B47528B958D", "account":"r33kves44ksufkHSGg3M6GPPAsoVHEN8C1"} }'
 ```
 {% /tab %}
 {% /tabs %}

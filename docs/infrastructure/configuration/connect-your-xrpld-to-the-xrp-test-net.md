@@ -1,26 +1,26 @@
 ---
-html: connect-your-rippled-to-the-xrp-test-net.html
-parent: configure-rippled.html
+html: connect-your-xrpld-to-the-xrp-test-net.html
+parent: configure-xrpld.html
 seo:
-    description: Connect your rippled server to the test net to try out new features or test functionality with fake money.
+    description: Connect your xrpld server to the test net to try out new features or test functionality with fake money.
 labels:
   - Core Server
   - Blockchain
   - Development
 ---
-# Connect Your rippled to a Parallel Network
+# Connect Your xrpld to a Parallel Network
 
-Various [alternative test and development networks](../../concepts/networks-and-servers/parallel-networks.md) exist for developers to test their apps or experiment with features without risking real money. **The funds used on these networks are not real funds and are intended for testing only.** You can connect your [`rippled` server](../../concepts/networks-and-servers/index.md) to any of these test networks.
+Various [alternative test and development networks](../../concepts/networks-and-servers/parallel-networks.md) exist for developers to test their apps or experiment with features without risking real money. **The funds used on these networks are not real funds and are intended for testing only.** You can connect your [`xrpld` server](../../concepts/networks-and-servers/index.md) to any of these test networks.
 
 {% admonition type="warning" name="Caution" %}On test networks with new and experimental features, you may need to run a pre-production release of the server to sync with the network. See the [Parallel Networks Page](../../concepts/networks-and-servers/parallel-networks.md) for information on what code version each network needs.{% /admonition %}
 
 ## Steps
 
-To connect your `rippled` server to the XRP Testnet or Devnet, complete these steps. You can also use these steps to switch back to the production Mainnet after being on the Testnet or Devnet.
+To connect your `xrpld` server to the XRP Testnet or Devnet, complete these steps. You can also use these steps to switch back to the production Mainnet after being on the Testnet or Devnet.
 
 ## 1. Configure your server to connect to the right hub.
 
-Edit your `rippled.cfg` file.
+Edit your `xrpld.cfg` file.
 
 {% partial file="/docs/_snippets/conf-file-location.md" /%}
 <!--{_ }-->
@@ -80,7 +80,7 @@ Edit your `rippled.cfg` file.
 
 ## 2. Set your trusted validator list.
 
-Edit your `validators.txt` file. This file is located in the same folder as your `rippled.cfg` file and defines which validators your server trusts not to collude.
+Edit your `validators.txt` file. This file is located in the same folder as your `xrpld.cfg` file and defines which validators your server trusts not to collude.
 
 1. Uncomment or add the `[validator_list_sites]` and `[validator_list_keys]` stanzas for the network you want to connect to:
 
@@ -170,19 +170,19 @@ For some test networks using experimental features, you must also forcefully ena
 ## 4. Restart the server.
 
 ```sh
-$ sudo systemctl restart rippled
+$ sudo systemctl restart xrpld
 ```
 
 ## 5. Verify that your server syncs.
 
 It takes about 5 to 15 minutes to sync to the network after a restart. After your server is synced, the [server_info method][] shows a `validated_ledger` object based on the network you are connected to.
 
-To confirm that your `rippled` is connected to the right network, compare the results from your server to [a public server][public servers] on the Testnet or Devnet. The `seq` field of the `validated_ledger` object should be the same on both servers (possibly off by one or two, if it changed as you were checking).
+To confirm that your `xrpld` is connected to the right network, compare the results from your server to [a public server][public servers] on the Testnet or Devnet. The `seq` field of the `validated_ledger` object should be the same on both servers (possibly off by one or two, if it changed as you were checking).
 
 The following example shows how to check your server's latest validated ledger from the commandline:
 
 ```sh
-rippled server_info | grep seq
+xrpld server_info | grep seq
 ```
 
 You can use [server_info in the WebSocket Tool](/resources/dev-tools/websocket-api-tool#server_info) to look up the latest ledger index (`seq`) on the intended network.
@@ -198,9 +198,9 @@ You can use [server_info in the WebSocket Tool](/resources/dev-tools/websocket-a
     - [Parallel Networks](../../concepts/networks-and-servers/parallel-networks.md)
     - [Consensus](../../concepts/consensus-protocol/index.md)
 - **Tutorials:**
-    - [Run rippled as a Validator](server-modes/run-rippled-as-a-validator.md)
-    - [Test `rippled` Offline in Stand-Alone Mode](../testing-and-auditing/index.md)
-    - [Troubleshooting `rippled`](../troubleshooting/index.md)
+    - [Run xrpld as a Validator](server-modes/run-xrpld-as-a-validator.md)
+    - [Test `xrpld` Offline in Stand-Alone Mode](../testing-and-auditing/index.md)
+    - [Troubleshooting `xrpld`](../troubleshooting/index.md)
 - **References:**
     - [server_info method][]
 

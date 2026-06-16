@@ -6,28 +6,36 @@ labels:
 ---
 # Understanding Log Messages
 
-The following sections describe some of the most common types of log messages that can appear in a [`rippled` server's](../../concepts/networks-and-servers/index.md) debug log and how to interpret them.
+The following sections describe some of the most common types of log messages that can appear in a [`xrpld` server's](../../concepts/networks-and-servers/index.md) debug log and how to interpret them.
 
-This is an important step in [Diagnosing Problems](diagnosing-problems.md) with `rippled`.
+This is an important step in [Diagnosing Problems](diagnosing-problems.md) with `xrpld`.
 
 ## Log Message Structure
 
 The following shows the format of the log file:
 
 ```text
-2020-Jul-08 20:10:17.372178946 UTC Peer:WRN [236] onReadMessage from n9J2CP7hZypxDJ27ZSxoy4VjbaSgsCNaRRJtJkNJM5KMdGaLdRy7 at 197.27.127.136:53046: stream truncated
-2020-Jul-08 20:11:13.582438263 UTC PeerFinder:ERR Logic testing     52.196.126.86:13308 with error, Connection timed out
-2020-Jul-08 20:11:57.728448343 UTC Peer:WRN [242] onReadMessage from n9J2CP7hZypxDJ27ZSxoy4VjbaSgsCNaRRJtJkNJM5KMdGaLdRy7 at 197.27.127.136:53366: stream truncated
-2020-Jul-08 20:12:12.075081020 UTC LoadMonitor:WRN Job: sweep run: 1172ms wait: 0ms
+2026-Jul-08 20:10:17.372178946 UTC Peer:WRN [IP Address: 197.27.127.136:53046, Public Key: n9J2CP7hZypxDJ27ZSxoy4VjbaSgsCNaRRJtJkNJM5KMdGaLdRy7, Id: 236] onReadMessage: stream truncated
+2026-Jul-08 20:11:13.582438263 UTC PeerFinder:ERR Logic testing     52.196.126.86:13308 with error, Connection timed out
+2026-Jul-08 20:11:57.728448343 UTC Peer:WRN [IP Address: 197.27.127.136:53366, Public Key: n9J2CP7hZypxDJ27ZSxoy4VjbaSgsCNaRRJtJkNJM5KMdGaLdRy7, Id: 242] onReadMessage: stream truncated
+2026-Jul-08 20:12:12.075081020 UTC LoadMonitor:WRN Job: sweep run: 1172ms wait: 0ms
 ```
 
 Each line represents one log entry, with the following parts in order, separated by spaces:
 
-1. The date the log entry was written, such as `2020-Jul-08`.
+1. The date the log entry was written, such as `2026-Jul-08`.
 2. The time the log entry was written, such as `20:12:12.075081020`.
 3. The time zone indicator `UTC`. (Log dates are always in UTC.)
 4. The log partition and severity, such as `LoadMonitor:WRN`.
 5. The log message, such as `Job: sweep run: 1172ms wait: 0ms`.
+
+Log entries about a peer-to-peer connection (such as those from the `Peer` partition) also include a bracketed identifier between the partition/severity and the message. {% badge href="https://xrpl.org/blog/2026/xrpld-3.2.0" %}New in: xrpld 3.2.0{% /badge %}
+
+It contains the following fields:
+
+- `IP Address`: The peer's IP address and port, such as `197.27.127.136:53046`.
+- `Public Key`: The base58-encoded [node public key](../../concepts/networks-and-servers/peer-protocol.md#node-key-pair) the peer uses to sign peer protocol messages, such as `n9J2CP7hZypxDJ27ZSxoy4VjbaSgsCNaRRJtJkNJM5KMdGaLdRy7`. This field is omitted if the peer's public key is not yet known, such as before the connection's handshake completes.
+- `Id`: The numeric ID the server assigns to the peer connection, such as `236`.
 
 For simplicity, the examples in this page omit the date, time, and time zone indicator.
 
@@ -46,11 +54,11 @@ Terminating thread rippled: main: unhandled St13runtime_error
 
 If your server always crashes on startup, see [Server Won't Start](server-wont-start.md) for possible cases.
 
-If your server crashes randomly during operation or as a result of particular commands, make sure you are [updated](../installation/index.md) to the latest `rippled` version. If you are on the latest version and your server is still crashing, check the following:
+If your server crashes randomly during operation or as a result of particular commands, make sure you are [updated](../installation/index.md) to the latest `xrpld` version. If you are on the latest version and your server is still crashing, check the following:
 
-- Is your server running out of memory? On some systems, `rippled` may be terminated by the Out Of Memory (OOM) Killer or another monitor process.
+- Is your server running out of memory? On some systems, `xrpld` may be terminated by the Out Of Memory (OOM) Killer or another monitor process.
 - If your server is running in a shared environment, are other users or administrators causing the machine or service to be restarted? For example, some hosted providers automatically kill any service that uses a large amount of a shared machine's resources for an extended period of time.
-- Does your server meet the [minimum requirements](../installation/system-requirements.md) to run `rippled`? What about the [recommendations for production servers](../installation/system-requirements.md#recommended-specifications)?
+- Does your server meet the [minimum requirements](../installation/system-requirements.md) to run `xrpld`? What about the [recommendations for production servers](../installation/system-requirements.md#recommended-specifications)?
 
 If none of the above apply, please report the issue to Ripple as a security-sensitive bug. If Ripple can reproduce the crash, you may be eligible for a bounty. See <https://ripple.com/bug-bounty/> for details.
 
@@ -81,11 +89,11 @@ Collector:ERR async_send failed: Connection refused
 This could mean:
 
 - Your StatsD configuration has the wrong IP address or port.
-- The StatsD server you were attempting to export to was down or not accessible from your `rippled` server.
+- The StatsD server you were attempting to export to was down or not accessible from your `xrpld` server.
 
-Check the `[insight]` stanza in your `rippled`'s config file and confirm that you have network connectivity from your `rippled` server to your StatsD server.
+Check the `[insight]` stanza in your `xrpld`'s config file and confirm that you have network connectivity from your `xrpld` server to your StatsD server.
 
-This error has no other impact on the `rippled` server, which should continue to work as normal except for the sending of StatsD metrics.
+This error has no other impact on the `xrpld` server, which should continue to work as normal except for the sending of StatsD metrics.
 
 
 ## Check for upgrade
@@ -96,15 +104,15 @@ The following message indicates that the server has detected that it is running 
 LedgerMaster:ERR Check for upgrade: A majority of trusted validators are running a newer version.
 ```
 
-This is not strictly a problem, but an old server version is likely to become [amendment blocked](../../concepts/networks-and-servers/amendments.md#amendment-blocked-servers). You should [update `rippled`](../installation/index.md) to the latest stable version. (If you are connected to [devnet](../../concepts/networks-and-servers/parallel-networks.md), update to the latest nightly version instead.)
+This is not strictly a problem, but an old server version is likely to become [amendment blocked](../../concepts/networks-and-servers/amendments.md#amendment-blocked-servers). You should [update `xrpld`](../installation/index.md) to the latest stable version. (If you are connected to [devnet](../../concepts/networks-and-servers/parallel-networks.md), update to the latest nightly version instead.)
 
 
 ## Connection reset by peer
 
-The following log message indicates that a peer `rippled` server closed a connection:
+The following log message indicates that a peer `xrpld` server closed a connection:
 
 ```text
-Peer:WRN [012] onReadMessage: Connection reset by peer
+Peer:WRN [IP Address: 197.27.127.136:53046, Public Key: n9J2CP7hZypxDJ27ZSxoy4VjbaSgsCNaRRJtJkNJM5KMdGaLdRy7, Id: 12] onReadMessage: Connection reset by peer
 ```
 
 Losing connections from time to time is normal for any peer-to-peer network. **Occasional messages of this kind do not indicate a problem.**
@@ -137,7 +145,7 @@ InboundLedger:WRN 11 timeouts for ledger 8265938
 
 This indicates that your server is having trouble requesting specific ledger data from its peers.
 
-This is not strictly a problem, but if you want to acquire ledger history faster, you can configure `rippled` to connect to peers with full history by adding or editing the `[ips_fixed]` config stanza and restarting the server. For example, to always try to connect to one of Ripple's full-history servers:
+This is not strictly a problem, but if you want to acquire ledger history faster, you can configure `xrpld` to connect to peers with full history by adding or editing the `[ips_fixed]` config stanza and restarting the server. For example, to always try to connect to one of Ripple's full-history servers:
 
 ```
 [ips_fixed]
@@ -177,9 +185,9 @@ These two types of messages often occur together, when a long-running job causes
 
 It is **normal** to display several messages of these types **during the first few minutes** after starting the server.
 
-If the messages continue for more than 5 minutes after starting the server, especially if the `run` times are well over 1000 ms, that may indicate that **your server does not have enough disk I/O, RAM, or CPU**. This may be caused by not having powerful enough hardware or because other processes running on the same hardware are competing with `rippled` for resources. (Examples of other processes that may compete with `rippled` for resources include scheduled backups, virus scanners, and periodic database cleaners.)
+If the messages continue for more than 5 minutes after starting the server, especially if the `run` times are well over 1000 ms, that may indicate that **your server does not have enough disk I/O, RAM, or CPU**. This may be caused by not having powerful enough hardware or because other processes running on the same hardware are competing with `xrpld` for resources. (Examples of other processes that may compete with `xrpld` for resources include scheduled backups, virus scanners, and periodic database cleaners.)
 
-Another possible cause is trying to use NuDB on rotational hard disks; NuDB should only be used with solid state drives (SSDs). It's **not recommended** to use `rippled` with rotational disks, but you _may_ be able to do so using RocksDB. If you are using rotational disks, make sure both `[node_db]` is configured to use RocksDB. For example:
+Another possible cause is trying to use NuDB on rotational hard disks; NuDB should only be used with solid state drives (SSDs). It's **not recommended** to use `xrpld` with rotational disks, but you _may_ be able to do so using RocksDB. If you are using rotational disks, make sure both `[node_db]` is configured to use RocksDB. For example:
 
 ```
 [node_db]
@@ -195,7 +203,7 @@ Messages such as the following occur when [online deletion is interrupted](../co
 SHAMapStore:WRN Not deleting. state: syncing. age 25s
 ```
 
-The `state` indicates the [server state](../../references/http-websocket-apis/api-conventions/rippled-server-states.md). The `age` indicates how many seconds since the last validated ledger was closed. (A healthy age for the last validated ledger is 7 seconds or less.)
+The `state` indicates the [server state](../../references/http-websocket-apis/api-conventions/xrpld-server-states.md). The `age` indicates how many seconds since the last validated ledger was closed. (A healthy age for the last validated ledger is 7 seconds or less.)
 
 During startup, these messages are normal and can be safely ignored. At other times, messages like this usually indicate that the server does not meet the [system requirements](../installation/system-requirements.md), especially disk I/O, to run online deletion at the same time as everything else the server is doing.
 
@@ -262,7 +270,7 @@ Validations:WRN Unable to determine hash of ancestor seq=3 from ledger hash=00B1
 ## [veto_amendments] section in config file ignored
 <!-- SPELLING_IGNORE: veto_amendments -->
 
-Log messages such as the following occur when  your `rippled.cfg` file contains a legacy `[veto_amendments]` stanza. The first time the server starts on version 1.7.0 or higher, it reads the stanza to set amendment votes; on later restarts, it ignores the `[amendments]` and `[veto_amendments]` stanzas and prints this message instead.
+Log messages such as the following occur when  your `xrpld.cfg` file contains a legacy `[veto_amendments]` stanza. The first time the server starts on version 1.7.0 or higher, it reads the stanza to set amendment votes; on later restarts, it ignores the `[amendments]` and `[veto_amendments]` stanzas and prints this message instead.
 
 ```text
 Amendments:WRN [veto_amendments] section in config file ignored in favor of data in db/wallet.db.
@@ -298,14 +306,14 @@ NetworkOPs:WRN We are not running on the consensus ledger
 ## See Also
 
 - **Concepts:**
-    - [The `rippled` Server](../../concepts/networks-and-servers/index.md)
+    - [The `xrpld` Server](../../concepts/networks-and-servers/index.md)
     - [Technical FAQ](/about/faq.md)
 - **Tutorials:**
     - [Diagnosing Problems](diagnosing-problems.md)
     - [Capacity Planning](../installation/capacity-planning.md)
 - **References:**
-    - [rippled API Reference](../../references/http-websocket-apis/index.md)
-        - [`rippled` Commandline Usage](../commandline-usage.md)
+    - [xrpld API Reference](../../references/http-websocket-apis/index.md)
+        - [`xrpld` Commandline Usage](../commandline-usage.md)
         - [server_info method][]
 
 <!-- SPELLING_IGNORE: oom, async_send, statsd, inboundledger, loadmonitor, validatedseq -->

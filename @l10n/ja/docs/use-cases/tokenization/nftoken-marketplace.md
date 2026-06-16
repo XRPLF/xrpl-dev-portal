@@ -19,9 +19,9 @@ NFTokenマーケットプレイスは、NFTokenクリエイターとコレクタ
 [![NFTマーケットプレイスのフロー](/docs/img/nft-mkt-marketplace.png "NFTマーケットプレイスのフロー")](/docs/img/nft-mkt-marketplace.png)
 
 
-## rippledインスタンスのセットアップ
+## xrpldインスタンスのセットアップ
 
-取引量の多い本格的なマーケットプレイスサイトを立ち上げる場合、独自のXRP Ledgerサーバインスタンスを立ち上げるという判断が当然となります。[rippledのインストール](../../infrastructure/installation/index.md)をご覧ください。
+取引量の多い本格的なマーケットプレイスサイトを立ち上げる場合、独自のXRP Ledgerサーバインスタンスを立ち上げるという判断が当然となります。[xrpldのインストール](../../infrastructure/installation/index.md)をご覧ください。
 
 
 ### ウォレットのセットアップ

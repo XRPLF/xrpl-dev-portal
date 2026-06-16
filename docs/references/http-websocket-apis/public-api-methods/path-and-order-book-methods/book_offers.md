@@ -57,7 +57,7 @@ An example of the request format:
 {% tab label="Commandline" %}
 ```sh
 #Syntax: book_offers taker_pays taker_gets [taker [ledger [limit] ] ]
-rippled book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B'
+xrpld book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B'
 ```
 {% /tab %}
 

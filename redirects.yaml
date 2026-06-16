@@ -23,9 +23,9 @@
 /docs/infrastructure/installation/rippled-1-3-migration-instructions/:
     to: /docs/infrastructure/installation/
 /docs/infrastructure/installation/update-rippled-manually-on-centos-rhel/:
-    to: /docs/infrastructure/installation/update-rippled-manually-on-rhel/
+    to: /docs/infrastructure/installation/update-xrpld-manually-on-rhel/
 /docs/infrastructure/installation/install-rippled-on-centos-rhel-with-yum/:
-    to: /docs/infrastructure/installation/install-rippled-on-rhel/
+    to: /docs/infrastructure/installation/install-xrpld-on-rhel/
 /docs/concepts/xrpl-sidechains/price-oracles/:
     to: /docs/concepts/decentralized-storage/price-oracles/
 /docs/concepts/accounts/decentralized-identifiers/:
@@ -348,7 +348,7 @@ production-readiness.html:
 get-started.html:
     to: /docs/tutorials
 run-rippled-as-a-wallet-server.html:
-    to: /docs/infrastructure/configuration/server-modes/run-rippled-as-a-stock-server
+    to: /docs/infrastructure/configuration/server-modes/run-xrpld-as-a-stock-server
 faq:
     to: /about/faq
 faq.html:
@@ -408,7 +408,7 @@ networks-and-servers.html:
 xrpl-servers.html:
     to: /docs/concepts/networks-and-servers/
 rippled-server-modes.html:
-    to: /docs/concepts/networks-and-servers/rippled-server-modes
+    to: /docs/concepts/networks-and-servers/xrpld-server-modes
 clustering.html:
     to: /docs/concepts/networks-and-servers/clustering
 ledger-history.html:
@@ -1012,7 +1012,7 @@ markers-and-pagination.html:
 rate-limiting.html:
     to: /docs/references/http-websocket-apis/api-conventions/rate-limiting
 rippled-server-states.html:
-    to: /docs/references/http-websocket-apis/api-conventions/rippled-server-states
+    to: /docs/references/http-websocket-apis/api-conventions/xrpld-server-states
 ctid.html:
     to: /docs/references/http-websocket-apis/api-conventions/ctid
 public-api-methods.html:
@@ -1218,21 +1218,21 @@ install-rippled.html:
 system-requirements.html:
     to: /docs/infrastructure/installation/system-requirements
 install-rippled-on-centos-rhel-with-yum.html:
-    to: /docs/infrastructure/installation/install-rippled-on-rhel
+    to: /docs/infrastructure/installation/install-xrpld-on-rhel
 install-rippled-on-ubuntu.html:
-    to: /docs/infrastructure/installation/install-rippled-on-ubuntu
+    to: /docs/infrastructure/installation/install-xrpld-on-ubuntu
 install-clio-on-ubuntu.html:
     to: /docs/infrastructure/installation/install-clio-on-ubuntu
 update-rippled-automatically-on-linux.html:
-    to: /docs/infrastructure/installation/update-rippled-automatically-on-linux
+    to: /docs/infrastructure/installation/update-xrpld-automatically-on-linux
 update-rippled-manually-on-centos-rhel.html:
-    to: /docs/infrastructure/installation/update-rippled-manually-on-rhel
+    to: /docs/infrastructure/installation/update-xrpld-manually-on-rhel
 update-rippled-manually-on-ubuntu.html:
-    to: /docs/infrastructure/installation/update-rippled-manually-on-ubuntu
+    to: /docs/infrastructure/installation/update-xrpld-manually-on-ubuntu
 build-on-linux-mac-windows.html:
     to: /docs/infrastructure/installation/build-on-linux-mac-windows
 build-run-rippled-in-reporting-mode.html:
-    to: /docs/infrastructure/installation/build-run-rippled-in-reporting-mode
+    to: /docs/infrastructure/installation/build-run-xrpld-in-reporting-mode
 capacity-planning.html:
     to: /docs/infrastructure/installation/capacity-planning
 rippled-1-3-migration-instructions.html:
@@ -1242,9 +1242,9 @@ configure-rippled.html:
 server-modes.html:
     to: /docs/infrastructure/configuration/server-modes/
 run-rippled-as-a-validator.html:
-    to: /docs/infrastructure/configuration/server-modes/run-rippled-as-a-validator
+    to: /docs/infrastructure/configuration/server-modes/run-xrpld-as-a-validator
 run-rippled-as-a-stock-server.html:
-    to: /docs/infrastructure/configuration/server-modes/run-rippled-as-a-stock-server
+    to: /docs/infrastructure/configuration/server-modes/run-xrpld-as-a-stock-server
 data-retention.html:
     to: /docs/infrastructure/configuration/data-retention/
 configure-full-history.html:
@@ -1262,7 +1262,7 @@ configure-history-sharding.html:
 configure-peering.html:
     to: /docs/infrastructure/configuration/peering/
 cluster-rippled-servers.html:
-    to: /docs/infrastructure/configuration/peering/cluster-rippled-servers
+    to: /docs/infrastructure/configuration/peering/cluster-xrpld-servers
 configure-a-private-server.html:
     to: /docs/infrastructure/configuration/peering/configure-a-private-server
 configure-the-peer-crawler.html:
@@ -1282,7 +1282,7 @@ configure-amendment-voting.html:
 configure-statsd.html:
     to: /docs/infrastructure/configuration/configure-statsd
 connect-your-rippled-to-the-xrp-test-net.html:
-    to: /docs/infrastructure/configuration/connect-your-rippled-to-the-xrp-test-net
+    to: /docs/infrastructure/configuration/connect-your-xrpld-to-the-xrp-test-net
 configure-grpc.html:
     to: /docs/infrastructure/configuration/configure-grpc
 enable-public-signing.html:
@@ -1316,17 +1316,17 @@ server-wont-start.html:
 fix-sqlite-tx-db-page-size-issue.html:
     to: /docs/infrastructure/troubleshooting/fix-sqlite-tx-db-page-size-issue
 manage-the-rippled-server.html:
-    to: /docs/infrastructure/installation/install-rippled-on-ubuntu
+    to: /docs/infrastructure/installation/install-xrpld-on-ubuntu
 build-run-rippled-ubuntu.html:
     to: /docs/infrastructure/installation/build-on-linux-mac-windows
 build-run-rippled-macos.html:
     to: /docs/infrastructure/installation/build-on-linux-mac-windows
 update-rippled-automatically-on-centos-rhel.html:
-    to: /docs/infrastructure/installation/update-rippled-automatically-on-linux
+    to: /docs/infrastructure/installation/update-xrpld-automatically-on-linux
 install-rippled-on-ubuntu-with-alien.html:
-    to: /docs/infrastructure/installation/install-rippled-on-ubuntu
+    to: /docs/infrastructure/installation/install-xrpld-on-ubuntu
 run-a-rippled-validator.html:
-    to: /docs/infrastructure/configuration/server-modes/run-rippled-as-a-validator
+    to: /docs/infrastructure/configuration/server-modes/run-xrpld-as-a-validator
 list-xrp-in-your-exchange.html:
     to: /docs/use-cases/defi/list-xrp-as-an-exchange
 contribute-code-to-rippled.html:
@@ -1821,3 +1821,29 @@ code_of_conduct.ja/:
     to: /ja/code-of-conduct
 code_of_conduct.ja:
     to: /ja/code-of-conduct
+
+# rippled -> xrpld page renames (3.2.0 wording PR) ------------------------------
+/docs/concepts/networks-and-servers/rippled-server-modes/:
+    to: /docs/concepts/networks-and-servers/xrpld-server-modes/
+/docs/infrastructure/configuration/connect-your-rippled-to-the-xrp-test-net/:
+    to: /docs/infrastructure/configuration/connect-your-xrpld-to-the-xrp-test-net/
+/docs/infrastructure/configuration/peering/cluster-rippled-servers/:
+    to: /docs/infrastructure/configuration/peering/cluster-xrpld-servers/
+/docs/infrastructure/configuration/server-modes/run-rippled-as-a-stock-server/:
+    to: /docs/infrastructure/configuration/server-modes/run-xrpld-as-a-stock-server/
+/docs/infrastructure/configuration/server-modes/run-rippled-as-a-validator/:
+    to: /docs/infrastructure/configuration/server-modes/run-xrpld-as-a-validator/
+/docs/infrastructure/installation/build-run-rippled-in-reporting-mode/:
+    to: /docs/infrastructure/installation/build-run-xrpld-in-reporting-mode/
+/docs/infrastructure/installation/install-rippled-on-rhel/:
+    to: /docs/infrastructure/installation/install-xrpld-on-rhel/
+/docs/infrastructure/installation/install-rippled-on-ubuntu/:
+    to: /docs/infrastructure/installation/install-xrpld-on-ubuntu/
+/docs/infrastructure/installation/update-rippled-automatically-on-linux/:
+    to: /docs/infrastructure/installation/update-xrpld-automatically-on-linux/
+/docs/infrastructure/installation/update-rippled-manually-on-rhel/:
+    to: /docs/infrastructure/installation/update-xrpld-manually-on-rhel/
+/docs/infrastructure/installation/update-rippled-manually-on-ubuntu/:
+    to: /docs/infrastructure/installation/update-xrpld-manually-on-ubuntu/
+/docs/references/http-websocket-apis/api-conventions/rippled-server-states/:
+    to: /docs/references/http-websocket-apis/api-conventions/xrpld-server-states/

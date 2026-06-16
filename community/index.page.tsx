@@ -1086,7 +1086,7 @@ const CommunityPage: React.FC = () => {
               <Link
                 className="com-card-link"
                 target="_blank"
-                to="/docs/infrastructure/configuration/server-modes/run-rippled-as-a-validator/"
+                to="/docs/infrastructure/configuration/server-modes/run-xrpld-as-a-validator/"
               >
                 {translate("Join UNL")}
               </Link>

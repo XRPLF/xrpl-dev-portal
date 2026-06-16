@@ -8,7 +8,7 @@ labels:
 ---
 # Transaction Queue
 
-The `rippled` server uses a transaction queue to help enforce the [open ledger cost](transaction-cost.md#open-ledger-cost). The open ledger cost sets a target number of transactions in a given ledger, and escalates the required transaction cost very quickly when the open ledger surpasses this size. Rather than discarding transactions that cannot pay the escalated transaction cost, `rippled` tries to put them in a transaction queue, which it uses to build the next ledger.
+The `xrpld` server uses a transaction queue to help enforce the [open ledger cost](transaction-cost.md#open-ledger-cost). The open ledger cost sets a target number of transactions in a given ledger, and escalates the required transaction cost very quickly when the open ledger surpasses this size. Rather than discarding transactions that cannot pay the escalated transaction cost, `xrpld` tries to put them in a transaction queue, which it uses to build the next ledger.
 
 ## Transaction Queue and Consensus
 
@@ -34,7 +34,7 @@ The transaction queue plays an important role in selecting the transactions that
 
 ## Queuing Restrictions
 
-The `rippled` server uses a variety of heuristics to estimate which transactions are "likely to be included in a ledger." The current implementation uses the following rules to decide which transactions to queue:
+The `xrpld` server uses a variety of heuristics to estimate which transactions are "likely to be included in a ledger." The current implementation uses the following rules to decide which transactions to queue:
 
 - Transactions must be properly-formed and [authorized](index.md#authorizing-transactions) with valid signatures.
 - Transactions with an `AccountTxnID` field cannot be queued.
@@ -64,7 +64,7 @@ Transactions that were previously proposed in the consensus process but did not 
 
 The precise order of transactions in the queue decides which transactions get added to the next in-progress ledger version in cases where there are more transactions in the queue than the expected size of the next ledger version. The order of the transactions **does not affect the order the transactions are executed within a validated ledger**. In each validated ledger version, the transaction set for that version executes in [canonical order](../consensus-protocol/consensus-structure.md#calculate-and-share-validations).
 
-{% admonition type="info" name="Note" %}When `rippled` queues a transaction, the provisional [transaction response code](../../references/protocol/transactions/transaction-results/index.md) is `terQUEUED`. This means that the transaction is likely to succeed in a future ledger version. As with all provisional response codes, the outcome of the transaction is not final until the transaction is either included in a validated ledger, or [rendered permanently invalid](finality-of-results/index.md).{% /admonition %}
+{% admonition type="info" name="Note" %}When `xrpld` queues a transaction, the provisional [transaction response code](../../references/protocol/transactions/transaction-results/index.md) is `terQUEUED`. This means that the transaction is likely to succeed in a future ledger version. As with all provisional response codes, the outcome of the transaction is not final until the transaction is either included in a validated ledger, or [rendered permanently invalid](finality-of-results/index.md).{% /admonition %}
 
 
 ## See Also

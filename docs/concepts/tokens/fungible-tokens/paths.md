@@ -34,13 +34,13 @@ In both types of steps, each intermediate address gains and loses approximately 
 
 ## Pathfinding
 
-The `rippled` API has two methods that can be used for pathfinding. The [ripple_path_find method][] does a one-time lookup of possible path sets. The [path_find method][] (WebSocket only) expands on the search with follow-up responses whenever a ledger closes or the server finds a better path.
+The `xrpld` API has two methods that can be used for pathfinding. The [ripple_path_find method][] does a one-time lookup of possible path sets. The [path_find method][] (WebSocket only) expands on the search with follow-up responses whenever a ledger closes or the server finds a better path.
 
-You can have `rippled` automatically fill in paths when you sign it, by including the `build_path` field in a request to the [sign method][] or [`submit` command (sign-and-submit mode)](../../../references/http-websocket-apis/public-api-methods/transaction-methods/submit.md#sign-and-submit-mode). However, we recommend pathfinding separately and confirming the results before signing, to avoid surprises.
+You can have `xrpld` automatically fill in paths when you sign it, by including the `build_path` field in a request to the [sign method][] or [`submit` command (sign-and-submit mode)](../../../references/http-websocket-apis/public-api-methods/transaction-methods/submit.md#sign-and-submit-mode). However, we recommend pathfinding separately and confirming the results before signing, to avoid surprises.
 
-{% admonition type="warning" name="Caution" %}Although `rippled` is designed to search for the cheapest paths possible, it may not always find them. Untrustworthy `rippled` instances could also be modified to change this behavior for profit. The actual cost to execute a payment along a path can change between submission and transaction execution.{% /admonition %}
+{% admonition type="warning" name="Caution" %}Although `xrpld` is designed to search for the cheapest paths possible, it may not always find them. Untrustworthy `xrpld` instances could also be modified to change this behavior for profit. The actual cost to execute a payment along a path can change between submission and transaction execution.{% /admonition %}
 
-Finding paths is a very challenging problem that changes slightly every few seconds as new ledgers are validated, so `rippled` is not designed to find the absolute best path. Still, you can find several possible paths and estimate the cost of delivering a particular amount.
+Finding paths is a very challenging problem that changes slightly every few seconds as new ledgers are validated, so `xrpld` is not designed to find the absolute best path. Still, you can find several possible paths and estimate the cost of delivering a particular amount.
 
 
 ## Implied Steps

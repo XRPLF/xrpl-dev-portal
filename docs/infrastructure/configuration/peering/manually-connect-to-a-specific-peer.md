@@ -2,7 +2,7 @@
 html: manually-connect-to-a-specific-peer.html
 parent: configure-peering.html
 seo:
-    description: Connect your rippled server to a specific peer.
+    description: Connect your xrpld server to a specific peer.
 labels:
   - Core Server
 ---
@@ -16,7 +16,7 @@ Use these steps to manually connect your server to a specific [peer](../../../co
 ## Prerequisites
 
 - You must know the IP address of the peer you want to connect to.
-- You must know what port the peer you want to connect to uses for the XRP Ledger [peer protocol](../../../concepts/networks-and-servers/peer-protocol.md). The default config file uses port 51235.
+- You must know what port the peer you want to connect to uses for the XRP Ledger [peer protocol](../../../concepts/networks-and-servers/peer-protocol.md). The default config file uses port 2459.
 - You must have a network connection from your server to the peer. For example, the peer server must [forward the appropriate port through its firewall](forward-ports-for-peering.md).
 - The peer server must have available peer slots. If the peer is already at its maximum number of peers, you can ask the peer server's operator to add a [peer reservation](use-a-peer-reservation.md) for your server.
 
@@ -31,7 +31,7 @@ To connect, use the [connect method][]. For example:
 {
     "command": "connect",
     "ip": "169.54.2.151",
-    "port": 51235
+    "port": 2459
 }
 ```
 {% /tab %}
@@ -43,7 +43,7 @@ To connect, use the [connect method][]. For example:
     "params": [
         {
             "ip": "169.54.2.151",
-            "port": 51235
+            "port": 2459
         }
     ]
 }
@@ -52,7 +52,7 @@ To connect, use the [connect method][]. For example:
 
 {% tab label="Commandline" %}
 ```
-rippled connect 169.54.2.151 51235
+xrpld connect 169.54.2.151 2459
 ```
 {% /tab %}
 
@@ -63,10 +63,10 @@ rippled connect 169.54.2.151 51235
 
 - **Concepts:**
     - [Peer Protocol](../../../concepts/networks-and-servers/peer-protocol.md)
-    - [The `rippled` Server](../../../concepts/networks-and-servers/index.md)
+    - [The `xrpld` Server](../../../concepts/networks-and-servers/index.md)
 - **Tutorials:**
     - [Capacity Planning](../../installation/capacity-planning.md)
-    - [Troubleshoot the `rippled` Server](../../troubleshooting/index.md)
+    - [Troubleshoot the `xrpld` Server](../../troubleshooting/index.md)
 - **References:**
     - [connect method][]
     - [peers method][]

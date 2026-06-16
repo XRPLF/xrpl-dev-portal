@@ -115,7 +115,7 @@
     ><g transform="translate(300,560)"
     ><rect fill="none" x="0.5" width="198.5" height="68.5" y="0.5" clip-path="url(#clipPath6)"
       /><text x="5" font-size="14px" y="18.1094" clip-path="url(#clipPath6)" font-family="sans-serif" stroke="none" xml:space="preserve"
-      >rippled servers</text
+      >xrpld servers</text
       ><text x="5" font-size="14px" y="34.2188" clip-path="url(#clipPath6)" font-family="sans-serif" stroke="none" xml:space="preserve"
       >(direct &amp; indirect peers)</text
     ></g
@@ -191,7 +191,7 @@
     ><g transform="translate(550,540)"
     ><rect fill="none" x="0.5" width="198.5" height="88.5" y="0.5" clip-path="url(#clipPath11)"
       /><text x="5" font-size="14px" y="34.2188" clip-path="url(#clipPath11)" font-family="sans-serif" stroke="none" xml:space="preserve"
-      >rippled server</text
+      >xrpld server</text
     ></g
     ><g stroke-dasharray="1,2" stroke-miterlimit="5" transform="translate(40,480)" stroke-linecap="butt"
     ><path fill="none" d="M10.5 10.5 L810.5 10.5" clip-path="url(#clipPath12)"

@@ -42,11 +42,11 @@ Use these libraries to access the XRP Ledger from your programming language of c
 
 {% card-grid %}
 
-{% xrpl-card title="API Conventions" body="Describes data types and formats of the HTTP APIs (JSON-RPC and WebSocket) as implemented in the rippled server." href="/docs/references/http-websocket-apis/api-conventions/" /%}
+{% xrpl-card title="API Conventions" body="Describes data types and formats of the HTTP APIs (JSON-RPC and WebSocket) as implemented in the xrpld server." href="/docs/references/http-websocket-apis/api-conventions/" /%}
 
 {% xrpl-card title="Public API Methods" body="Public API methods for use by any client attached to the server." href="/docs/references/http-websocket-apis/public-api-methods/" /%}
 
-{% xrpl-card title="Admin API Methods" body="Admin methods for trusted personnel in charge of keeping the rippled server operational." href="/docs/references/http-websocket-apis/admin-api-methods/" /%}
+{% xrpl-card title="Admin API Methods" body="Admin methods for trusted personnel in charge of keeping the xrpld server operational." href="/docs/references/http-websocket-apis/admin-api-methods/" /%}
 
 {% xrpl-card title="Peer Port Methods" body="Special API methods for sharing network topology and status metrics, served on the XRPL Peer Protocol port." href="/docs/references/http-websocket-apis/peer-port-methods/" /%}
 

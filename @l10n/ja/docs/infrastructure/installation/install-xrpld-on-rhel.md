@@ -1,21 +1,21 @@
 ---
 html: install-rippled-on-centos-rhel-with-yum.html
-parent: install-rippled.html
+parent: install-xrpld.html
 seo:
-    description: プリコンパイル済みのrippledバイナリーをCentOSまたはRed Hat Enterprise Linuxにインストールします。
+    description: プリコンパイル済みのxrpldバイナリーをCentOSまたはRed Hat Enterprise Linuxにインストールします。
 labels:
   - コアサーバ
 ---
 # yumを使用したCentOS/Red Hatへのインストール
 
-このページでは、Rippleの[yum](https://en.wikipedia.org/wiki/Yellowdog_Updater,_Modified)リポジトリを使用して、**CentOS 7**または**Red Hat Enterprise Linux 7**に、`rippled`の安定した最新バージョンをインストールする場合の推奨手順を説明します。
+このページでは、Rippleの[yum](https://en.wikipedia.org/wiki/Yellowdog_Updater,_Modified)リポジトリを使用して、**CentOS 7**または**Red Hat Enterprise Linux 7**に、`xrpld`の安定した最新バージョンをインストールする場合の推奨手順を説明します。
 
 以下の手順では、Rippleによってコンパイルされたバイナリーをインストールします。
 
 
 ## 前提条件
 
-`rippled`をインストールする前に、[システム要件](system-requirements.md)を満たす必要があります。
+`xrpld`をインストールする前に、[システム要件](system-requirements.md)を満たす必要があります。
 
 
 ## インストール手順
@@ -40,10 +40,10 @@ labels:
     $ sudo yum -y update
     ```
 
-3. 新しい`rippled`パッケージをインストールします。
+3. 新しい`xrpld`パッケージをインストールします。
 
     ```
-    $ sudo yum install rippled
+    $ sudo yum install xrpld
     ```
 
    バージョン1.3.1では、構成ファイル（`rippled.cfg`および`validators.txt`）を変更する必要はありません。このアップデート手順では、既存の構成ファイルが現在のまま残ります。
@@ -54,36 +54,36 @@ labels:
     $ sudo systemctl daemon-reload
     ```
 
-5. 起動時に開始するように、`rippled`サービスを設定します。
+5. 起動時に開始するように、`xrpld`サービスを設定します。
 
     ```
-    $ sudo systemctl enable rippled.service
+    $ sudo systemctl enable xrpld.service
     ```
 
-6. `rippled`サービスを開始します。
+6. `xrpld`サービスを開始します。
 
     ```
-    $ sudo systemctl start rippled.service
+    $ sudo systemctl start xrpld.service
     ```
 
 
 ## 次のステップ
 
-{% partial file="/@l10n/ja/docs/_snippets/post-rippled-install.md" /%}
+{% partial file="/@l10n/ja/docs/_snippets/post-xrpld-install.md" /%}
 
 
 ## 関連項目
 
 - **コンセプト:**
-    - [`rippled`サーバ](../../concepts/networks-and-servers/index.md)
+    - [`xrpld`サーバ](../../concepts/networks-and-servers/index.md)
     - [コンセンサスについて](../../concepts/consensus-protocol/index.md)
 - **チュートリアル:**
-    - [rippledの構成](../configuration/index.md)
-    - [rippledのトラブルシューティング](../troubleshooting/index.md)
-    - [rippled APIの使用開始](/docs/tutorials/get-started/get-started-http-websocket-apis.md)
+    - [xrpldの構成](../configuration/index.md)
+    - [xrpldのトラブルシューティング](../troubleshooting/index.md)
+    - [xrpld APIの使用開始](/docs/tutorials/get-started/get-started-http-websocket-apis.md)
 - **リファレンス:**
-    - [rippled APIリファレンス](../../references/http-websocket-apis/index.md)
-      - [`rippled`コマンドラインの使用](../commandline-usage.md)
+    - [xrpld APIリファレンス](../../references/http-websocket-apis/index.md)
+      - [`xrpld`コマンドラインの使用](../commandline-usage.md)
       - [server_infoメソッド][]
 
 {% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

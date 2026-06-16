@@ -50,7 +50,7 @@ An example of the request format:
 #Syntax: ledger ledger_index|ledger_hash [full|tx]
 # "full" is equivalent to "full": true
 # "tx" is equivalent to "transactions": true
-rippled ledger validated
+xrpld ledger validated
 ```
 {% /tab %}
 
@@ -88,7 +88,7 @@ An example of a successful response:
 {% /tab %}
 
 {% tab label="Commandline" %}
-{% code-snippet file="/_api-examples/ledger/jsonrpc-response.json" language="json" prefix="Loading: \"/etc/opt/ripple/rippled.cfg\"\n2025-Dec-19 03:16:00.638871262 UTC HTTPClient:NFO Connecting to 127.0.0.1:5005\n\n" /%}
+{% code-snippet file="/_api-examples/ledger/jsonrpc-response.json" language="json" prefix="Loading: \"/etc/xrpld/xrpld.cfg\"\n2025-Dec-19 03:16:00.638871262 UTC HTTPClient:NFO Connecting to 127.0.0.1:5005\n\n" /%}
 {% /tab %}
 
 {% /tabs %}

@@ -38,7 +38,7 @@ An example of the request format:
 {% tab label="Commandline" %}
 ```sh
 #Syntax: {% $frontmatter.seo.title %}
-rippled {% $frontmatter.seo.title %}
+xrpld {% $frontmatter.seo.title %}
 ```
 {% /tab %}
 
@@ -88,7 +88,7 @@ An example of a successful response:
 
 {% tab label="Commandline" %}
 ```json
-Loading: "/etc/rippled.cfg"
+Loading: "/etc/xrpld.cfg"
 Connecting to 127.0.0.1:5005
 
 {
@@ -122,6 +122,6 @@ For more information on validator tokens and key rotation, see the [validator-ke
 ### Possible Errors
 
 - Any of the [universal error types][].
-- `invalidParams` - The server returns this error with `"error_message" : "not a validator"` if the server is not [configured as a validator](../../../../infrastructure/configuration/server-modes/run-rippled-as-a-validator.md).
+- `invalidParams` - The server returns this error with `"error_message" : "not a validator"` if the server is not [configured as a validator](../../../../infrastructure/configuration/server-modes/run-xrpld-as-a-validator.md).
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

@@ -131,7 +131,7 @@ El XRP Ledger soporta los siguientes algoritmos de firma criptográfica:
 | Tipo de clave  | Algoritmo | Descripción |
 |-------------|-----------|---|
 | `secp256k1` | [ECDSA](https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm) usando la curva eliptica [secp256k1](https://en.bitcoin.it/wiki/Secp256k1) | Este es el mismo esquema que utiliza Bitcoin. El XRP Ledger utiliza este tipo de claves por defecto. |
-| `ed25519`   | [EdDSA](https://tools.ietf.org/html/rfc8032) usando la curva elíptica [Ed25519](https://ed25519.cr.yp.to/) | Este es un algoritmo más novedoso que tiene mejor rendimiento y otras propiedades convenientes. Como las claves públicas Ed25519 son un byte menos que las claves secp256k1, `rippled` prefija las claves públicas Ed25519 con el byte `0xED` así ambos tipos de claves públicas son de 33 bytes. |
+| `ed25519`   | [EdDSA](https://tools.ietf.org/html/rfc8032) usando la curva elíptica [Ed25519](https://ed25519.cr.yp.to/) | Este es un algoritmo más novedoso que tiene mejor rendimiento y otras propiedades convenientes. Como las claves públicas Ed25519 son un byte menos que las claves secp256k1, `xrpld` prefija las claves públicas Ed25519 con el byte `0xED` así ambos tipos de claves públicas son de 33 bytes. |
 
 Cuando generas un par de claves con el [método wallet_propose][], puedes especificar el `key_type` para elegir que tipo de algorítmo criptográfico se utiliza para derivar las claves. Si has generado un tipo de clave disitnto al de por defecto, debes especificar también el `key_type` cuando firmas transacciones.
 
@@ -151,7 +151,7 @@ El proceso de derivar un par de claves depende del algoritmo de firma. En todos 
 
 Los procesos de derivación de claves descritos aquí están implementados en múltiples lugares y lenguajes de programación:
 
-- En C++ en el código base de `rippled`:
+- En C++ en el código base de `xrpld`:
     - [Definición de semilla](https://github.com/XRPLF/rippled/blob/develop/src/ripple/protocol/Seed.h)
     - [Derivación de clave general & Ed25519](https://github.com/XRPLF/rippled/blob/develop/src/ripple/protocol/impl/SecretKey.cpp)
     - [Derivación de clave secp256k1](https://github.com/XRPLF/rippled/blob/develop/src/ripple/protocol/impl/SecretKey.cpp)

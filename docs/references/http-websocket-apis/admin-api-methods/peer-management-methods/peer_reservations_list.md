@@ -38,7 +38,7 @@ An example of the request format:
 {% tab label="Commandline" %}
 ```sh
 #Syntax: {% $frontmatter.seo.title %}
-rippled {% $frontmatter.seo.title %}
+xrpld {% $frontmatter.seo.title %}
 ```
 {% /tab %}
 
@@ -95,7 +95,7 @@ An example of a successful response:
 
 {% tab label="Commandline" %}
 ```json
-Loading: "/etc/rippled.cfg"
+Loading: "/etc/xrpld.cfg"
 2019-Dec-27 21:56:07.253260422 HTTPClient:NFO Connecting to 127.0.0.1:5005
 
 {

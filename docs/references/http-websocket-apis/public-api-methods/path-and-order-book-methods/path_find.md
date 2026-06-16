@@ -20,7 +20,7 @@ There are three different modes, or sub-commands, of the path_find command. Spec
 * `close` - Stop sending pathfinding information
 * `status` - Get the information of the currently-open pathfinding request
 
-Although the `rippled` server tries to find the cheapest path or combination of paths for making a payment, it is not guaranteed that the paths returned by this method are, in fact, the best paths. Due to server load, pathfinding may not find the best results. Additionally, you should be careful with the pathfinding results from untrusted servers. A server could be modified to return less-than-optimal paths to earn money for its operators. If you do not have your own server that you can trust with pathfinding, you should compare the results of pathfinding from multiple servers run by different parties, to minimize the risk of a single server returning poor results. (**Note:** A server returning less-than-optimal results is not necessarily proof of malicious behavior; it could also be a symptom of heavy server load.)
+Although the `xrpld` server tries to find the cheapest path or combination of paths for making a payment, it is not guaranteed that the paths returned by this method are, in fact, the best paths. Due to server load, pathfinding may not find the best results. Additionally, you should be careful with the pathfinding results from untrusted servers. A server could be modified to return less-than-optimal paths to earn money for its operators. If you do not have your own server that you can trust with pathfinding, you should compare the results of pathfinding from multiple servers run by different parties, to minimize the risk of a single server returning poor results. (**Note:** A server returning less-than-optimal results is not necessarily proof of malicious behavior; it could also be a symptom of heavy server load.)
 
 ## path_find create
 
@@ -88,7 +88,7 @@ The initial response follows the [standard format](../../api-conventions/respons
 | `destination_account` | String - [Address][] | The account that would receive a transaction. |
 | `destination_amount`  | [Currency Amount][]  | How much the destination would receive in a transaction. |
 | `source_account`      | String - [Address][] | The account that would send a transaction. |
-| `full_reply`          | Boolean              | If `false`, this is the result of an incomplete search. A later reply may have a better path. If `true`, then this is the best path found. (It is still theoretically possible that a better path could exist, but `rippled` won't find it.) Until you close the pathfinding request, `rippled` continues to send updates each time a new ledger closes. |
+| `full_reply`          | Boolean              | If `false`, this is the result of an incomplete search. A later reply may have a better path. If `true`, then this is the best path found. (It is still theoretically possible that a better path could exist, but `xrpld` won't find it.) Until you close the pathfinding request, `xrpld` continues to send updates each time a new ledger closes. |
 
 Each element in the `alternatives` array is an object that represents a path from one possible source currency (held by the initiating account) to the destination account and currency. This object has the following fields:
 
@@ -108,7 +108,7 @@ Each element in the `alternatives` array is an object that represents a path fro
 
 In addition to the initial response, the server sends more messages in a similar format to update on the status of [payment paths](../../../../concepts/tokens/fungible-tokens/paths.md) over time. These messages include the `id` of the original WebSocket request so you can tell which request prompted them, and the field `"type": "path_find"` at the top level to indicate that they are additional responses. The other fields are defined in the same way as the initial response.
 
-If the follow-up includes `"full_reply": true`, then this is the best path that rippled can find as of the current ledger.
+If the follow-up includes `"full_reply": true`, then this is the best path that xrpld can find as of the current ledger.
 
 Here is an example of an asynchronous follow-up from a path_find create request:
 

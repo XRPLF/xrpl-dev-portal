@@ -8,7 +8,7 @@ labels:
 ---
 # Rate Limiting
 
-The `rippled` server limits the rate at which API clients can make requests on public APIs. Rate limiting is based on the IP address of the client, so clients behind [network address translation](https://en.wikipedia.org/wiki/Network_address_translation) share a limit based on their public IP address.
+The `xrpld` server limits the rate at which API clients can make requests on public APIs. Rate limiting is based on the IP address of the client, so clients behind [network address translation](https://en.wikipedia.org/wiki/Network_address_translation) share a limit based on their public IP address.
 
 {% admonition type="success" name="Tip" %}Rate limiting does not apply when the client is connected [as an admin](../../../tutorials/get-started/get-started-http-websocket-apis.md#admin-access).{% /admonition %}
 
@@ -55,13 +55,13 @@ The usage rate drops off exponentially over time, so a client that does not make
 ## See Also
 
 - **Concepts:**
-    - [The `rippled` Server](../../../concepts/networks-and-servers/index.md)
+    - [The `xrpld` Server](../../../concepts/networks-and-servers/index.md)
     - [Software Ecosystem](../../../introduction/software-ecosystem.md)
 - **Tutorials:**
     - [Getting Started with XRP Ledger APIs](../../../tutorials/get-started/get-started-http-websocket-apis.md)
-    - [Troubleshooting rippled](../../../infrastructure/troubleshooting/index.md)
+    - [Troubleshooting xrpld](../../../infrastructure/troubleshooting/index.md)
 - **References:**
-    - [rippled API Reference](../index.md)
+    - [xrpld API Reference](../index.md)
         - [Error Formatting](error-formatting.md)
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

@@ -19,6 +19,7 @@ Transactions with `ter` codes have not been applied to the current ledger and ha
 | `terFUNDS_SPENT` | **DEPRECATED.**                                           |
 | `terINSUF_FEE_B` | The account sending the transaction does not have enough XRP to pay the `Fee` specified in the transaction. |
 | `terLAST`        | Used internally only. This code should never be returned. |
+| `terLOCKED`      | A [Multi-Purpose Token (MPT)](../../../../concepts/tokens/fungible-tokens/multi-purpose-tokens.md) in the payment path is locked. |
 | `terNO_ACCOUNT`  | The address sending the transaction is not funded in the ledger (yet). |
 | `terNO_AMM`      | The AMM-related transaction specifies an asset pair that does not currently have an AMM instance. {% amendment-disclaimer name="AMM" /%} |
 | `terNO_AUTH`     | The transaction would involve adding currency issued by an account with `lsfRequireAuth` enabled to a trust line that is not authorized. For example, you placed an offer to buy a currency you aren't authorized to hold. |

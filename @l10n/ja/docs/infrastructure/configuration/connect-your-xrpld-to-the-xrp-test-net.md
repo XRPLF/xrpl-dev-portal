@@ -1,26 +1,26 @@
 ---
-html: connect-your-rippled-to-the-xrp-test-net.html
-parent: configure-rippled.html
+html: connect-your-xrpld-to-the-xrp-test-net.html
+parent: configure-xrpld.html
 seo:
-    description: rippledサーバをTest Netに接続して、模造の資金を使って新しい機能を試したり、機能をテストしたりします。
+    description: xrpldサーバをTest Netに接続して、模造の資金を使って新しい機能を試したり、機能をテストしたりします。
 labels:
   - コアサーバ
   - ブロックチェーン
   - 開発
 ---
-# rippledを並列ネットワークに接続
+# xrpldを並列ネットワークに接続
 
-様々な[テスト用・開発用の代替ネットワーク](../../concepts/networks-and-servers/parallel-networks.md)が存在しており、開発者は実際の資金をリスクにさらすことなく、アプリのテストや機能の実験を行うことができます。**これらのネットワークで使用される資金は実際の資金ではなく、テスト専用です。**あなたの[`rippled`サーバ](../../concepts/networks-and-servers/index.md)をこれらのテストネットワークのいずれかに接続することができます。
+様々な[テスト用・開発用の代替ネットワーク](../../concepts/networks-and-servers/parallel-networks.md)が存在しており、開発者は実際の資金をリスクにさらすことなく、アプリのテストや機能の実験を行うことができます。**これらのネットワークで使用される資金は実際の資金ではなく、テスト専用です。**あなたの[`xrpld`サーバ](../../concepts/networks-and-servers/index.md)をこれらのテストネットワークのいずれかに接続することができます。
 
 {% admonition type="danger" name="警告" %}新機能や実験的な機能を持つテストネットワークでは、ネットワークと同期するためにサーバの本番リリース前のリリースを実行することが必要になる場合があります。各ネットワークに必要なコードのバージョンについては、[並列ネットワークのページ](../../concepts/networks-and-servers/parallel-networks.md)をご覧ください。{% /admonition %}
 
 ## 手順
 
-あなたの`rippled`サーバをXRPテストネットまたは開発ネットに接続するには、次の手順に従ってください。また、テストネットや開発ネットに接続した後、本番用メインネットに切り替えることもできます。
+あなたの`xrpld`サーバをXRPテストネットまたは開発ネットに接続するには、次の手順に従ってください。また、テストネットや開発ネットに接続した後、本番用メインネットに切り替えることもできます。
 
 ## 1. 適切なハブに接続するようにサーバを設定します。
 
-`rippled.cfg`ファイルを編集します。
+`xrpld.cfg`ファイルを編集します。
 
 {% partial file="/@l10n/ja/docs/_snippets/conf-file-location.md" /%}
 <!--{_ }-->
@@ -81,7 +81,7 @@ labels:
 
 ## 2. 信頼できるバリデータリストの設定
 
-`validators.txt`ファイルを編集します。このファイルは`rippled.cfg`ファイルと同じフォルダにあり、どのバリデータが共謀しないと信頼するかを定義します。
+`validators.txt`ファイルを編集します。このファイルは`xrpld.cfg`ファイルと同じフォルダにあり、どのバリデータが共謀しないと信頼するかを定義します。
 
 1. 接続したいネットワークの`[validator_list_sites]`と`[validator_list_keys]`コメントを解除するか、追加します。
 
@@ -171,19 +171,19 @@ labels:
 ## 4. サーバを再起動する
 
 ```sh
-$ sudo systemctl restart rippled
+$ sudo systemctl restart xrpld
 ```
 
 ## 5. サーバの同期を確認します。
 
 再起動後、ネットワークに同期するのに約5分から15分かかります。サーバの同期が完了すると、[server_infoメソッド][]は接続しているネットワークに基づいた`validated_ledger`オブジェクトを表示します。
 
-自分の`rippled`が正しいネットワークに接続されていることを確認するには、自分のサーバの結果をTestnetまたはDevnet上の[公開サーバ][public servers]と比較してください。`validated_ledger`オブジェクトの`seq`フィールドはどちらのサーバでも同じはずです（チェックしている間に変更された場合は、1つか2つずれている可能性があります）。
+自分の`xrpld`が正しいネットワークに接続されていることを確認するには、自分のサーバの結果をTestnetまたはDevnet上の[公開サーバ][public servers]と比較してください。`validated_ledger`オブジェクトの`seq`フィールドはどちらのサーバでも同じはずです（チェックしている間に変更された場合は、1つか2つずれている可能性があります）。
 
 次の例は、コマンドラインからサーバの最新の検証済みレジャーをチェックする方法を示しています。
 
 ```sh
-rippled server_info | grep seq
+xrpld server_info | grep seq
 ```
 
 WebSocketツールの[server_info](/resources/dev-tools/websocket-api-tool#server_info)を使って、対象のネットワーク上の最新のレジャーインデックス(`seq`)を調べることができます。
@@ -199,9 +199,9 @@ WebSocketツールの[server_info](/resources/dev-tools/websocket-api-tool#serve
     - [並列ネットワーク](../../concepts/networks-and-servers/parallel-networks.md)
     - [コンセンサス](../../concepts/consensus-protocol/index.md)
 - **チュートリアル:**
-    - [バリデータとしてのrippledの実行](server-modes/run-rippled-as-a-validator.md)
-    - [オフラインで`rippled`をスタンドアロンモードでテストする](../testing-and-auditing/index.md)
-    - [`rippled`のトラブルシューティング](../troubleshooting/index.md)
+    - [バリデータとしてのxrpldの実行](server-modes/run-xrpld-as-a-validator.md)
+    - [オフラインで`xrpld`をスタンドアロンモードでテストする](../testing-and-auditing/index.md)
+    - [`xrpld`のトラブルシューティング](../troubleshooting/index.md)
 - **References:**
     - [server_infoメソッド][]
 

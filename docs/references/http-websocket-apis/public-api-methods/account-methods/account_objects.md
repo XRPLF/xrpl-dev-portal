@@ -52,7 +52,7 @@ An example of the request format:
 {% tab label="Commandline" %}
 ```sh
 #Syntax: account_objects <account> [<ledger>]
-rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
+xrpld account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
 ```
 {% /tab %}
 
@@ -89,7 +89,7 @@ An example of a successful response:
 {% /tab %}
 
 {% tab label="Commandline" %}
-{% code-snippet file="/_api-examples/account_objects/jsonrpc-response.json" language="json" prefix="Loading: \"/etc/opt/ripple/rippled.cfg\"\n2025-Aug-14 19:51:30.882061715 UTC HTTPClient:NFO Connecting to 127.0.0.1:5005\n\n" /%}
+{% code-snippet file="/_api-examples/account_objects/jsonrpc-response.json" language="json" prefix="Loading: \"/etc/xrpld/xrpld.cfg\"\n2025-Aug-14 19:51:30.882061715 UTC HTTPClient:NFO Connecting to 127.0.0.1:5005\n\n" /%}
 {% /tab %}
 
 {% /tabs %}

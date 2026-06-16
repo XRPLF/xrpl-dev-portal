@@ -49,6 +49,21 @@ The following permissions cannot be delegated:
 | [AccountDelete][]   | `22` |
 | [LedgerStateFix][]  | `54` |
 | [DelegateSet][]     | `65` |
+| [VaultCreate][VaultCreate transaction] {% amendment-disclaimer name="SingleAssetVault" /%} | `66` |
+| [VaultSet][VaultSet transaction] {% amendment-disclaimer name="SingleAssetVault" /%} | `67` |
+| [VaultDelete][VaultDelete transaction] {% amendment-disclaimer name="SingleAssetVault" /%} | `68` |
+| [VaultDeposit][VaultDeposit transaction] {% amendment-disclaimer name="SingleAssetVault" /%} | `69` |
+| [VaultWithdraw][VaultWithdraw transaction] {% amendment-disclaimer name="SingleAssetVault" /%} | `70` |
+| [VaultClawback][VaultClawback transaction] {% amendment-disclaimer name="SingleAssetVault" /%} | `71` |
+| [LoanBrokerSet][LoanBrokerSet transaction] {% amendment-disclaimer name="LendingProtocol" /%} | `75` |
+| [LoanBrokerDelete][LoanBrokerDelete transaction] {% amendment-disclaimer name="LendingProtocol" /%} | `76` |
+| [LoanBrokerCoverDeposit][LoanBrokerCoverDeposit transaction] {% amendment-disclaimer name="LendingProtocol" /%} | `77` |
+| [LoanBrokerCoverWithdraw][LoanBrokerCoverWithdraw transaction] {% amendment-disclaimer name="LendingProtocol" /%} | `78` |
+| [LoanBrokerCoverClawback][LoanBrokerCoverClawback transaction] {% amendment-disclaimer name="LendingProtocol" /%} | `79` |
+| [LoanSet][LoanSet transaction] {% amendment-disclaimer name="LendingProtocol" /%} | `81` |
+| [LoanDelete][LoanDelete transaction] {% amendment-disclaimer name="LendingProtocol" /%} | `82` |
+| [LoanManage][LoanManage transaction] {% amendment-disclaimer name="LendingProtocol" /%} | `83` |
+| [LoanPay][LoanPay transaction] {% amendment-disclaimer name="LendingProtocol" /%} | `85` |
 | [EnableAmendment][] | `101` |
 | [SetFee][]          | `102` |
 | [UNLModify][]       | `103` |
