@@ -54,7 +54,7 @@ export const sectionConfig: Record<string, {
     description: "Transfer XRP and issued currencies using various payment types.",
     pinned: [
       "/docs/tutorials/payments/send-xrp/",
-      "/docs/tutorials/payments/send-an-mpt"
+      "/docs/tutorials/payments/send-an-mpt/",
       "/docs/tutorials/payments/create-trust-line-send-currency-in-javascript/",
       "/docs/tutorials/payments/send-a-conditional-escrow/",
       "/docs/tutorials/payments/send-a-timed-escrow/",
