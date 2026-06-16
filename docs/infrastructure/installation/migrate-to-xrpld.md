@@ -33,18 +33,78 @@ These steps assume a typical Debian/Ubuntu `rippled` install with:
 
 Run these steps on each host you are migrating and adjust the paths to match your environment.
 
-### 1. Stop and remove rippled
+### 1. Back up
 
-Back up your config and data files (for example, `wallet.db`). Then stop the service and remove the package:
+{% admonition type="warning" name="Back up first - or risk losing your config and data" %}
+`apt-get remove` is *designed* to leave your config and data in place, but one wrong flag or path - `purge` instead of `remove`, a failed disk, an interrupted run - can irreversibly destroy your config, node identity, and validator keys. Copy the files below to a location **off this host** before you continue.
+{% /admonition %}
+
+Back up the following files. In a default install they live here:
+
+**Configuration and identity** (cannot be regenerated - losing these loses your settings and, for validators, your on-ledger identity):
+
+- `/opt/ripple/etc/rippled.cfg` - main server config, including your `[validator_token]` on validators.
+- `/opt/ripple/etc/validators.txt` - your trusted validator list (UNL). Skip if your `[validators]` section lives inside `rippled.cfg`.
+- `/var/lib/rippled/db/wallet.db` - your node's persistent identity (node keypair) and peer reservations.
+- `validator-keys.json` (validators only) - your validator master keys, stored wherever you generated them with `validator-keys-tool` (often kept offline). Without this file you can never renew or rotate your validator token.
+
+**Ledger data** (large, but re-syncable from the network - back up only to skip a long re-sync):
+
+- `/var/lib/rippled/db/nudb/` - the NuDB node store, the bulk of your ledger data.
+- `/var/lib/rippled/db/*.db` - the SQLite databases, such as `transaction.db` and `ledger.db`.
+- `/var/lib/rippled/db/` - the whole data directory covers all of the above in one step.
+
+**Logs** (optional):
+
+- `/var/log/rippled/debug.log`
+
+{% admonition type="info" name="Find your own paths" %}
+The locations above are the defaults. Your real paths are whatever `[database_path]`, `[node_db]`, and `[debug_logfile]` point to in your `rippled.cfg`. If you customized them, back up those locations instead.
+{% /admonition %}
+
+Copy the config and identity files into a backup directory:
+
+```sh
+sudo mkdir -p /root/rippled-backup
+sudo cp /opt/ripple/etc/rippled.cfg     /root/rippled-backup/
+sudo cp /opt/ripple/etc/validators.txt  /root/rippled-backup/   # if present
+sudo cp /var/lib/rippled/db/wallet.db   /root/rippled-backup/
+```
+
+Then copy that directory **off the host**, so a disk failure or a failed migration does not also destroy your backup. For example, pull it to your own machine over SSH:
+
+```sh
+# Replace user@your-node with your SSH login and host
+scp -r user@your-node:/root/rippled-backup ./rippled-backup
+```
+
+{% admonition type="info" name="Optional: full-history and large-history nodes" %}
+This is optional. In Step 6, full-history nodes keep their existing data in place, so the ledger store is preserved - not re-downloaded - and a separate snapshot usually isn't needed.
+
+Still, if you have the disk space and any doubt, take a snapshot first as a safety net. Stop the node so the copy is consistent:
+
+```sh
+sudo systemctl stop rippled
+sudo tar -czf /root/rippled-data-$(hostname).tar.gz -C /var/lib rippled
+```
+
+Validators and small-history nodes (a day or so) can skip this either way - they re-sync from the network in minutes.
+{% /admonition %}
+
+### 2. Stop and remove rippled
+
+Once your backups are safely off the host, stop the service and remove the package:
 
 ```sh
 sudo systemctl stop rippled
 sudo apt-get remove -y rippled
 ```
 
-{% admonition type="info" name="Note" %}`apt-get remove` leaves the config files and your data directory in place.{% /admonition %}
+{% admonition type="info" name="remove keeps your config" %}
+`apt-get remove` leaves your config and data in place. `apt-get purge` would delete the config, which is why you back up first.
+{% /admonition %}
 
-### 2. Install xrpld
+### 3. Install xrpld
 
 For Debian-based distros, run:
 
@@ -60,31 +120,49 @@ sudo yum install xrpld
 
 This installs the `xrpld` binary at `/usr/bin/xrpld`, creates the `xrpld` user and group, and installs a default mainnet config at `/etc/xrpld/xrpld.cfg`. The `xrpld` service starts automatically.
 
-### 3. Migrate the binary config
-
-Your existing `rippled.cfg` already contains your tuning, validators, and peers. Copy it to the new location:
+**Important: stop the auto-started service before continuing.** It is running on the default config and writing into a fresh `/var/lib/xrpld/`. Stop it so nothing changes those directories while you restore your config:
 
 ```sh
-sudo cp /opt/ripple/etc/rippled.cfg /etc/xrpld/xrpld.cfg
+sudo systemctl stop xrpld
 ```
 
-### 4. Migrate the validators config
+### 4. Migrate the binary config
 
-If you keep a separate `validators.txt`, replace the package-shipped copy with yours:
+Restore the config you backed up in Step 1 into the new `xrpld` location. It already holds your tuning, validators, and peers:
 
 ```sh
-sudo cp /opt/ripple/etc/validators.txt /etc/xrpld/validators.txt
+sudo cp /root/rippled-backup/rippled.cfg /etc/xrpld/xrpld.cfg
 ```
 
-{% admonition type="info" name="Note" %}Some operators do not have a separate `validators.txt` file and instead have the `[validators]` and `[validator_xxx]` sections embedded within the `xrpld.cfg` file. In that case, delete the generic config file instead.{% /admonition %}
+{% admonition type="info" name="The original also works" %}
+Because `apt-get remove` leaves the original in place, `sudo cp /opt/ripple/etc/rippled.cfg /etc/xrpld/xrpld.cfg` also works. Restoring from `/root/rippled-backup` keeps the migration self-contained and independent of the old files surviving.
+{% /admonition %}
 
-### 5. Migrate the data directories
+### 5. Migrate the validators config
 
-Follow the scenario that matches your setup.
+If you keep a separate `validators.txt`, restore it from your backup over the package-shipped copy:
 
-#### Connect to the XRPL only
+```sh
+sudo cp /root/rippled-backup/validators.txt /etc/xrpld/validators.txt
+```
 
-Update the following paths in `/etc/xrpld/xrpld.cfg`. These are the same values that appear in the default config.
+{% admonition type="info" name="No separate validators.txt?" %}
+Some operators keep the `[validators]` and `[validator_token]` sections inside `xrpld.cfg` instead of a separate file. In that case there is nothing to restore here - remove the package-shipped list so it cannot override your embedded section:
+
+```sh
+sudo rm /etc/xrpld/validators.txt
+```
+{% /admonition %}
+
+### 6. Migrate the data directories
+
+There are two scenarios, depending on whether you need to keep your ledger data. Pick the one that matches your node.
+
+#### Re-sync small-history nodes and validators from the network
+
+For validators and nodes that keep only a small window of history (a day or so). Re-syncing from peers takes only minutes, so there is no need to carry the old data across - point `xrpld` at the new default paths so it rebuilds from the network.
+
+Set these paths in `/etc/xrpld/xrpld.cfg` (they match the default config):
 
 ```
 [node_db]
@@ -102,33 +180,31 @@ path=/var/lib/xrpld/db/nudb
 /var/log/xrpld/debug.log
 ```
 
-#### Keep your existing data
+#### Keep existing data on full-history nodes
 
-If your data is stored in `/var/lib/rippled/` and your logs in `/var/log/rippled/`, apply the path updates above. Once complete, move the directories to `/var/lib/xrpld/` and `/var/log/xrpld/`, respectively:
-
-```sh
-sudo mv /var/lib/rippled /var/lib/xrpld
-sudo chown -R xrpld:xrpld /var/lib/xrpld
-
-sudo mv /var/log/rippled /var/log/xrpld
-sudo chown -R xrpld:xrpld /var/log/xrpld
-```
-
-If your data or logs are in a non-default location, you only need to update ownership:
+For full-history and large-history nodes, where re-downloading the ledger store from peers would take hours or days. The simplest and safest option is to leave your data where it is and hand ownership to the new `xrpld` user. The config you restored in Step 4 already points at `/var/lib/rippled` and `/var/log/rippled`, so no paths need to change:
 
 ```sh
-sudo chown -R xrpld:xrpld [path to your data directory]
-sudo chown -R xrpld:xrpld [path to your log directory]
+sudo chown -R xrpld:xrpld /var/lib/rippled
+sudo chown -R xrpld:xrpld /var/log/rippled
 ```
 
-### 6. Start xrpld
+`xrpld` reads your existing data in place. The empty `/var/lib/xrpld/` the install created stays unused, and you can remove it whenever you like.
+
+{% admonition type="info" name="Prefer the /var/lib/xrpld naming?" %}
+Moving the data under the new path is optional and cosmetic - the service runs fine either way. If you do move it, update `[node_db]`, `[database_path]`, and `[debug_logfile]` in `/etc/xrpld/xrpld.cfg` to the `/var/lib/xrpld` values shown above, so the config matches where the data now lives. A config that points at the old path after the data has moved is the most common way to break the node on restart.
+{% /admonition %}
+
+### 7. Restart xrpld
+
+You stopped `xrpld` in Step 3 to migrate safely. Bring it up now so it loads your restored config and reads your data with the right ownership:
 
 ```sh
 sudo systemctl daemon-reload
-sudo systemctl start --now xrpld
+sudo systemctl restart xrpld
 ```
 
-### 7. Verify the server
+### 8. Verify the server
 
 Query `server_info` on your server's admin port to check sync status. The port is `5005` by default; if yours differs, check `[port_rpc_admin_local]` in `/etc/xrpld/xrpld.cfg`. A re-sync usually completes within 20 minutes, depending on how long the service was stopped and your database size.
 
