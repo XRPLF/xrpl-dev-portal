@@ -109,7 +109,7 @@ Date:   Mon Jun 15 22:19:38 2026 +0100
 
 ### Breaking Changes
 
-- Renamed the system name from `rippled` to `xrpld`. This changes the default configuration and database directory paths, as well as RPC metadata such as the server's user agent and version string. ([#6347](https://github.com/XRPLF/rippled/pull/6347))
+- Renamed the system name from `rippled` to `xrpld`. This changes the default configuration and database directory paths, as well as RPC metadata such as the server's user agent and version string. See [Migrate from rippled to xrpld](../../docs/infrastructure/installation/migrate-to-xrpld.md) for full migration instructions. ([#6347](https://github.com/XRPLF/rippled/pull/6347))
 
 
 ### Bug Fixes
