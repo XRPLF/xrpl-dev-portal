@@ -93,7 +93,7 @@ Date:   Mon Jun 15 22:19:38 2026 +0100
 - Added a configurable `nudb_block_size` option in the `[node_db]` config section, allowing operators to set NuDB block sizes from 4K to 32K for improved storage performance. ([#5468](https://github.com/XRPLF/rippled/pull/5468))
 - Added peer public keys to log output to aid debugging while keeping IP addresses masked. ([#5678](https://github.com/XRPLF/rippled/pull/5678))
 - Added `ledger_entry` API options to look up the `Amendments`, `FeeSettings`, `NegativeUNL`, and `LedgerHashes` entries by name, and made the request always return the computed index even when the object is not found. ([#5644](https://github.com/XRPLF/rippled/pull/5644))
-- Added these sections to the `server_definitions` API response: ([#6321](https://github.com/XRPLF/rippled/pull/6321))
+- Added the following sections to the `server_definitions` API response: ([#6321](https://github.com/XRPLF/rippled/pull/6321))
     - `TRANSACTION_FORMATS`
     - `LEDGER_ENTRY_FORMATS`
     - `TRANSACTION_FLAGS`
