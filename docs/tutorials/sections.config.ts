@@ -3,8 +3,8 @@ export interface PinnedExternalTutorial {
   title: string
   description: string
   author: { name: string; url: string }
-  github: string
   url?: string
+  github?: string
 }
 
 // Pinned tutorial entry:
@@ -101,7 +101,8 @@ export const sectionConfig: Record<string, {
           title: "Lending Protocol & SAV Reference App",
           description: "A Next.js lending platform template with dashboards for brokers, depositors, and borrowers.",
           author: { name: "Max", url: "https://github.com/krkmu" },
-          github: "https://github.com/RippleDevRel/xls-lending-sav-DAP",
+          // TODO: This has been changed to a private repo for now, update to public repo when available.
+          // github: "https://github.com/RippleDevRel/xls-lending-sav-DAP",
           url: "https://lending.xls-demo.com/",
         }
       ],

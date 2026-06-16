@@ -29,8 +29,8 @@ interface ExternalTutorial {
   kind: "external"
   title: string
   description: string
-  github: string
   url?: string
+  github?: string
   author: { name: string; url: string }
 }
 
@@ -146,8 +146,12 @@ function ContributionCard({
         </span>
         <div className="card-meta-row">
           <MetaLink href={tutorial.author.url} icon="user" label={tutorial.author.name} />
-          <span className="meta-dot" aria-hidden="true">·</span>
-          <MetaLink href={tutorial.github} icon="github" label={translate("GitHub")} />
+          {tutorial.github && (
+            <>
+              <span className="meta-dot" aria-hidden="true">·</span>
+              <MetaLink href={tutorial.github} icon="github" label={translate("GitHub")} />
+            </>
+          )}
         </div>
       </div>
       <div className="card-body">
@@ -269,7 +273,7 @@ function TutorialSectionBlock({
       >
         {displayTutorials.map((tutorial, index) => (
           <div
-            key={`${activeTab}-${index}-${tutorial.kind === "external" ? tutorial.github : tutorial.path}`}
+            key={`${activeTab}-${index}-${tutorial.kind === "external" ? tutorial.url || tutorial.github : tutorial.path}`}
             className="col-lg-4 col-md-6 mb-5"
           >
             {tutorial.kind === "external" ? (
