@@ -10,6 +10,7 @@
     - group: '2026'
       expanded: false
       items:
+        - page: 2026/xrpld-3.2.0.md
         - page: 2026/rippled-3.1.3.md
         - page: 2026/vulnerabilitydisclosurereport-bug-mar2026.md
         - page: 2026/rippled-3.1.2.md
