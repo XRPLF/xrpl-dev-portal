@@ -322,7 +322,7 @@ events.html:
 ambassadors.html:
     to: https://ripple.com/impact/ubri/
 community/ambassadors:
-    to: https://ripple.com/impact/ubri/  
+    to: https://ripple.com/impact/ubri/
 developer-funding.html:
     to: /community/developer-funding
 code-samples.html:
