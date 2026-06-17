@@ -47,7 +47,7 @@ export default function Docs() {
             description: translate(
               'Run complete code snippets to understand XRPL integration in seconds.'
             ),
-            href: '/docs/tutorials/',
+            href: '/resources/code-samples/',
           },
           {
             icon: require('../static/img/icons/2026/black/Launch-Your-First-Project.svg'),
