@@ -20,7 +20,7 @@ Having trouble getting your server started? See [xrpld Server Won't Start](../in
 
 {% partial file="/docs/_snippets/conf-file-location.md" /%}
 
-See {% source-link name="the rippled GitHub repository" path="cfg/xrpld-example.cfg" /%} for a description of all configuration options.
+See {% source-link name="the xrpld GitHub repository" path="cfg/xrpld-example.cfg" /%} for a description of all configuration options.
 
 You must restart `xrpld` for any configuration changes to take effect.
 

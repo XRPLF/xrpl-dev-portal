@@ -20,7 +20,7 @@ xrpld APIを使用した`xrpld`サーバとの通信について詳しくは、[
 
 {% partial file="/@l10n/ja/docs/_snippets/conf-file-location.md" /%}
 
-すべての構成オプションの説明については、{% source-link name="rippled GitHubリポジトリー" path="cfg/xrpld-example.cfg" /%}をご覧ください。
+すべての構成オプションの説明については、{% source-link name="xrpld GitHubリポジトリー" path="cfg/xrpld-example.cfg" /%}をご覧ください。
 
 構成の変更を有効にするには、`xrpld`を再起動する必要があります。
 
