@@ -33,7 +33,7 @@ This skill constructs the right transaction object for any payment task — XRP 
 | **Cross-currency payments** | Single-transaction currency conversion via the built-in DEX |
 | **Escrow** | Time-based and conditional escrow create, finish, and cancel |
 | **Agentic best practices** | `SourceTag` for agent attribution, `Memos` for on-chain audit trails, WebSocket monitoring |
-| **Error handling** | Transaction result codes (`tec*`, `tef*`, `tem*`, `ter*`), reserve requirements, simulation before submit |
+| **Error handling** | Transaction result codes (`tec*`, `tef*`, `tem*`, `ter*`), reserve requirements, simulation before submit — for failed-tx diagnosis, hand off to the **xrpl-errors-diagnostics** skill |
 | **Security** | Key management patterns, spending controls, reserve awareness |
 
 ---
@@ -43,6 +43,7 @@ This skill constructs the right transaction object for any payment task — XRP 
 | Skill | Role |
 | :---- | :---- |
 | **XRPL Agent Wallet** | Required — handles wallet creation, key loading, and signs and submits every transaction this skill constructs |
+| **XRPL Errors & Diagnostics** | Recommended — when a payment returns a non-`tesSUCCESS` result or succeeds with a wrong outcome (partial payment, missing tag, frozen line), hand off to **xrpl-errors-diagnostics** for a numerical, on-ledger diagnosis |
 
 The Payments skill is one of a growing set of XRPL domain skills. All domain
 skills pair with the same shared Wallet skill. See
@@ -74,7 +75,7 @@ skills pair with the same shared Wallet skill. See
 3. **Build** — Construct the transaction object. Set `Memos` on every agent-initiated transaction. Do not set `Fee`, `Sequence`, or `LastLedgerSequence` — the Wallet skill's autofill step populates these from the live node.
 4. **Simulate** — Call `simulate` on the raw (un-autofilled) transaction before handing off. Catches malformed transactions, missing trust lines, and reserve errors without touching the ledger or triggering the signing ceremony. See simulate pattern in [payments.md](references/payments.md).
 5. **Hand off to the Wallet skill** — Pass the transaction object to the XRPL Agent Wallet skill. It will autofill, show the human a preview, collect confirmation, sign locally, and submit via `submitAndWait`. Do not call `submit_and_wait` or `submitAndWait` from this skill.
-6. **Handle errors explicitly** — `tec*` codes indicate a fee was charged. `tef*`/`tem*` indicate no fee was charged. See error table in [payments.md](references/payments.md).
+6. **Handle errors explicitly** — `tec*` codes indicate a fee was charged. `tef*`/`tem*` indicate no fee was charged. See error table in [payments.md](references/payments.md). For deeper diagnosis (specific cause, gap to fix, queries to run), load the **xrpl-errors-diagnostics** skill.
 
 ## What this skill does not do
 

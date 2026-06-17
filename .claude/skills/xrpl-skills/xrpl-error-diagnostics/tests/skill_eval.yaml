@@ -1,0 +1,247 @@
+# Behavioral eval set for the xrpl-error-diagnostics skill.
+#
+# This tests SKILL LIFT, not Python. Each case is run twice — once with the
+# skill loaded, once without — and graded on whether the skill-on answer beats
+# the skill-off answer against the rubric. See README_eval.md for the protocol.
+#
+# A case only earns its place if it DISCRIMINATES: the base model (skill off)
+# should plausibly miss or hand-wave it. Cases the base model passes cold are
+# noise — they're marked `keep: false` with the reason, kept here only so we
+# don't "rediscover" and re-add them later.
+#
+# Fields:
+#   id              stable handle
+#   category        discriminating | adversarial-negative | routing
+#   keep            true if it earns its place; false = documented dead weight
+#   prompt          verbatim user message
+#   expect_reference  which references/*.md the answer's content should reflect
+#   skill_value     the hypothesis: what the skill adds over the base model
+#   must_contain    rubric points a PASS must hit (skill-specific resolution)
+#   must_not_contain  failure markers (generic hand-waving / fabrication)
+#   baseline_note   expected skill-OFF behavior — judge confirms divergence
+
+cases:
+  # ---- DISCRIMINATING: specific numbers, not generic advice -----------------
+  - id: reserve-trustset
+    category: discriminating
+    keep: true
+    prompt: "I got tecINSUFFICIENT_RESERVE submitting a TrustSet. What's wrong?"
+    expect_reference: tec-codes.md
+    skill_value: >
+      Base model recites "you need more reserve." Skill must drive to the LIVE
+      number: ask for the address and run `diagnose.py account <addr>`, then state
+      base + (OwnerCount+1)×inc and the exact gap.
+    must_contain:
+      - "asks for the account address (or says to run diagnose.py account <addr>)"
+      - "reserve formula reserve_base + (OwnerCount+1) × reserve_inc"
+      - "frames the answer as 'get the live figure', not a fixed XRP number from memory"
+    must_not_contain:
+      - "a hardcoded reserve amount stated as current fact (e.g. 'you need 2 XRP') without querying"
+      - "generic 'just add more XRP' with no formula and no account lookup"
+    baseline_note: >
+      Skill off: likely correct in spirit (mentions reserves) but states a
+      possibly-stale fixed number and never asks for the address. Divergence is
+      in resolution and the live-lookup step.
+
+  - id: tx-hash-first
+    category: discriminating
+    keep: true
+    # Real mainnet fixture: Payment that returned tecPATH_DRY (on-ledger forever,
+    # served by s1.ripple.com). Verified with diagnose.py tx. The hash gives no
+    # hint of the cause, so a correct answer MUST fetch before diagnosing.
+    prompt: >
+      Why did this transaction fail?
+      05E37E7369F82500E967899F8A24A49ACFB1124DF2E99FF806C255BE0EC147D0
+    expect_reference: tec-codes.md
+    skill_value: >
+      Skill must run `diagnose.py tx <hash>` to get the ACTUAL on-ledger result
+      (tecPATH_DRY) before explaining anything — not guess from nothing.
+    must_contain:
+      - "runs diagnose.py tx <hash> (or says it needs to) before diagnosing"
+      - "reports the specific returned code (tecPATH_DRY) from the fetch, not a guess"
+      - "explains tecPATH_DRY: no usable path / liquidity to deliver the amount"
+    must_not_contain:
+      - "speculates a cause without fetching the tx (the hash alone reveals nothing)"
+      - "claims a result code other than tecPATH_DRY"
+    baseline_note: >
+      Skill off: cannot know the code from the hash, so it either refuses or
+      guesses generically. Divergence is the fetch-first discipline that yields
+      the actual code.
+
+  - id: relational-context-depth
+    category: discriminating
+    keep: true
+    # Same real tecPATH_DRY fixture. This case tests the "step further": not just
+    # the code's meaning, but the related ledger state behind THIS failure.
+    prompt: >
+      This payment failed and I don't get why — the order book clearly has
+      liquidity. Tx:
+      05E37E7369F82500E967899F8A24A49ACFB1124DF2E99FF806C255BE0EC147D0
+    expect_reference: tec-codes.md
+    skill_value: >
+      Skill must run `diagnose.py explain <hash>`, fetch the SOURCE's trust-line
+      balance, and identify that the source holds 0 of the send currency — so the
+      book's liquidity is irrelevant. This is the dictionary→diagnostician jump.
+    must_contain:
+      - "runs diagnose.py explain (gathers related state: source line, book, AMM)"
+      - "identifies the source holds 0 of the send currency as the real blocker"
+      - "explains the book having liquidity is irrelevant when the source can't supply the asset"
+    must_not_contain:
+      - "stops at 'tecPATH_DRY means no liquidity' without checking the source's holdings"
+      - "blames the order book / market liquidity (the user already ruled that out)"
+    baseline_note: >
+      Skill off: almost certainly recites 'tecPATH_DRY = no liquidity' and cannot
+      know the source balance is 0 without fetching it. Highest-value lift case —
+      it's the entire point of the explain capability.
+
+  # ---- ROUTING: right reference file / right error class -------------------
+  - id: api-vs-tx-class
+    category: routing
+    keep: true
+    prompt: "account_info returns actNotFound for an address I'm sure exists."
+    expect_reference: api-errors.md
+    skill_value: >
+      Must classify this as a METHOD-level API error (not a tx result code) and
+      route to network-mismatch / unfunded-account checks.
+    must_contain:
+      - "names this a method-level / API error, distinct from a tx result code"
+      - "suggests wrong-network (testnet vs mainnet) or unfunded-account as causes"
+    must_not_contain:
+      - "treats actNotFound as a tec/tef transaction result"
+    baseline_note: >
+      Skill off: Opus likely knows actNotFound ≈ unfunded/wrong net. This is
+      BORDERLINE discriminating — keep only as a routing check; if skill-off
+      passes cleanly in grading, demote to keep:false.
+
+  - id: symptom-missing-tag
+    category: routing
+    keep: true
+    prompt: >
+      I sent XRP to an exchange and they say they never got it. The tx shows
+      tesSUCCESS though.
+    expect_reference: semantic-failures.md
+    skill_value: >
+      tesSUCCESS + wrong outcome is the skill's signature case. Must route to
+      semantic-failures (missing DestinationTag) and ask for the tx hash/address.
+    must_contain:
+      - "raises missing DestinationTag as the leading hypothesis"
+      - "asks for the tx hash or destination address to confirm"
+    must_not_contain:
+      - "claims the funds are lost / unrecoverable"
+      - "suggests an on-ledger tec failure (tesSUCCESS means it applied)"
+    baseline_note: >
+      Skill off: may suggest DestinationTag but often also speculates 'maybe it
+      bounced' or 'check the network'. Divergence is the clean route + targeted
+      single question.
+
+  # ---- ADVERSARIAL-NEGATIVE: must NOT fabricate an on-ledger cause ----------
+  - id: amendment-not-a-bug
+    category: adversarial-negative
+    keep: true
+    prompt: >
+      tfImmediateOrCancel offer returns tecKILLED on mainnet but it worked on an
+      older network. Is this a bug?
+    expect_reference: tec-codes.md
+    skill_value: >
+      Must attribute the behavior change to the ImmediateOfferKilled amendment,
+      verify status via the `feature` RPC rather than asserting from memory, and
+      NOT call it a bug.
+    must_contain:
+      - "names the ImmediateOfferKilled amendment as the cause of the changed behavior"
+      - "says to confirm enabled status with the feature RPC on the same node"
+      - "explains pre-amendment that case returned tesSUCCESS with zero fill"
+    must_not_contain:
+      - "calls it a bug"
+      - "asserts the amendment's status as fact without saying to verify"
+    baseline_note: >
+      Skill off: high risk of confidently calling it a bug OR confabulating an
+      amendment name/status. This is the highest-value case.
+
+  - id: client-misconfig-decline
+    category: adversarial-negative
+    keep: true
+    prompt: >
+      My transactions never confirm. I'm connecting to
+      wss://s.altnet.rippletest.net but my account is on mainnet.
+    expect_reference: none
+    skill_value: >
+      The cause is off-ledger (wrong endpoint). Skill must identify the
+      client/network misconfig, say on-ledger state is fine, and STOP — no
+      invented tec/tef diagnosis.
+    must_contain:
+      - "identifies the testnet endpoint vs mainnet account mismatch as the cause"
+      - "states the on-ledger state is fine / nothing failed on-ledger"
+    must_not_contain:
+      - "invents a tec/tef/ter result code as the cause"
+      - "runs or suggests diagnose.py tx as if there were a failed on-ledger tx"
+    baseline_note: >
+      Skill off: may still spot the endpoint mismatch, but also tends to pile on
+      speculative on-ledger causes. Divergence is the discipline to STOP.
+
+  - id: fabricated-code-trap
+    category: adversarial-negative
+    keep: true
+    prompt: "What does tecBALANCE_TOO_LOW mean and how do I fix it?"
+    expect_reference: tec-codes.md
+    skill_value: >
+      tecBALANCE_TOO_LOW is NOT a real XRPL result code. Skill must not invent a
+      definition; it should flag the code as unrecognized and point to the
+      canonical results list / ask for the real code or tx hash.
+    must_contain:
+      - "flags that this is not a recognized XRPL result code (or asks to verify against the canonical list)"
+      - "asks for the actual code or tx hash"
+    must_not_contain:
+      - "confidently defines tecBALANCE_TOO_LOW as if it were real"
+    baseline_note: >
+      Skill off: HIGH risk of confabulating a plausible-sounding definition.
+      Pure hallucination trap.
+
+  - id: queued-not-failed
+    category: adversarial-negative
+    keep: true
+    prompt: "My submit returned terQUEUED and now nothing happens. What failed?"
+    expect_reference: tef-tel-tem-ter-codes.md
+    skill_value: >
+      terQUEUED is not a failure — it's a retry/queue state. Skill must explain
+      it may still apply, route to ter handling, and not diagnose it as a final
+      failure.
+    must_contain:
+      - "explains terQUEUED is not final — the tx may still be applied from the queue"
+      - "points to checking the queue / LastLedgerSequence rather than declaring failure"
+    must_not_contain:
+      - "treats terQUEUED as a permanent failure to be 'fixed'"
+    baseline_note: >
+      Skill off: may misread 'now nothing happens' as a failure and over-diagnose.
+
+  - id: amm-amendment-route
+    category: routing
+    keep: true
+    prompt: "I'm getting tecAMM_INVALID_TOKENS on devnet. Is the AMM broken?"
+    expect_reference: tec-codes.md
+    skill_value: >
+      Must tie tecAMM_* to the AMM amendment and verify it's enabled on the
+      target network via the feature RPC before concluding anything.
+    must_contain:
+      - "links tecAMM_* behavior to the AMM amendment status on that network"
+      - "says to verify amendment status with the feature RPC on the same node"
+    must_not_contain:
+      - "asserts AMM amendment status from memory as fact"
+    baseline_note: >
+      Skill off: may diagnose the token error but skip the amendment-status
+      verification discipline.
+
+  # ---- DOCUMENTED DEAD WEIGHT: base model passes cold ----------------------
+  - id: temBAD_FEE-plain
+    category: discriminating
+    keep: false
+    prompt: "What does temBAD_FEE mean?"
+    expect_reference: tef-tel-tem-ter-codes.md
+    skill_value: "none in practice"
+    must_contain:
+      - "explains the Fee field is malformed / non-numeric"
+    must_not_contain: []
+    baseline_note: >
+      DROP: a bare 'what does X mean' for a well-known tem code is answered
+      identically with the skill off. No lift. Kept here as a marker so we don't
+      re-add it. To make it discriminating, attach an account/tx and demand the
+      live open-ledger fee from diagnose.py.
