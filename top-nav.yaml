@@ -156,9 +156,6 @@
       - page: ./community/events.page.tsx
         label: Events
         labelTranslationKey: topnav.community.events
-      - page: ./community/ambassadors.page.tsx
-        label: Ambassadors
-        labelTranslationKey: topnav.community.ambassadors
       - page: ./community/developer-funding.page.tsx
         label: Developer Funding
         labelTranslationKey: topnav.community.developer-funding

@@ -180,7 +180,7 @@ markdown:
 footer:
   logo:
     hide: true
-  copyrightText: © 2025 XRP Ledger. Open Source.
+  copyrightText: © 2026 XRP Ledger. Open Source.
   items:
     - group: About
       groupTranslationKey: footer.about
@@ -270,9 +270,6 @@ footer:
         - page: community/events.page.tsx
           label: Events
           labelTranslationKey: footer.community.events
-        - page: community/ambassadors.page.tsx
-          label: Ambassadors
-          labelTranslationKey: footer.community.ambassadors
         - page: community/developer-funding.page.tsx
           label: Developer Funding
           labelTranslationKey: footer.community.developer-funding
