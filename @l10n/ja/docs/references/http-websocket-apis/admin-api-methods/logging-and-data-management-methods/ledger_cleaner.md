@@ -7,9 +7,9 @@ labels:
   - データ保持
 ---
 # ledger_cleaner
-[[ソース]](https://github.com/XRPLF/rippled/blob/df54b47cd0957a31837493cd69e4d9aade0b5055/src/ripple/rpc/handlers/LedgerCleaner.cpp "Source")
+{% source-link path="src/xrpld/rpc/handlers/admin/data/LedgerCleaner.cpp" /%}
 
-`ledger_cleaner`コマンドは[レジャークリーナー](https://github.com/XRPLF/rippled/blob/f313caaa73b0ac89e793195dcc2a5001786f916f/src/ripple/app/ledger/README.md#the-ledger-cleaner)を制御します。レジャークリーナーは、`rippled`のレジャーデータベースの破損を検出して修復できる非同期メンテナンスプロセスです。
+`ledger_cleaner`コマンドは{% source-link name="レジャークリーナー" path="src/xrpld/app/ledger/README.md#the-ledger-cleaner" /%}を制御します。レジャークリーナーは、`rippled`のレジャーデータベースの破損を検出して修復できる非同期メンテナンスプロセスです。
 
 _`ledger_cleaner`メソッドは、権限のないユーザは実行できない[管理メソッド](../index.md)です。_
 

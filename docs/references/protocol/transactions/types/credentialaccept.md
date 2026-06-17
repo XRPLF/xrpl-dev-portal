@@ -7,7 +7,7 @@ requiredAmendment: Credentials
 txIcon: finish
 ---
 # CredentialAccept
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/Credentials.cpp "Source")
+{% source-link path="src/libxrpl/tx/transactors/credentials/CredentialAccept.cpp" /%}
 
 Accept a [credential](../../../../concepts/decentralized-storage/credentials.md), which makes the credential valid. Only the subject of the credential can do this.
 

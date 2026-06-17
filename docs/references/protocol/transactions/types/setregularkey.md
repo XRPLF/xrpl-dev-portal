@@ -8,7 +8,7 @@ txIcon: modify
 ---
 # SetRegularKey
 
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/SetRegularKey.cpp "Source")
+{% source-link path="src/libxrpl/tx/transactors/account/SetRegularKey.cpp" /%}
 
 Assign, change, or remove the [regular key pair](../../../../concepts/accounts/cryptographic-keys.md) associated with your account.
 

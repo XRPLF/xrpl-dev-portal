@@ -51,7 +51,7 @@ Strive to have your validator embody the following properties. Being a good vali
 
     A good validator has a clearly identified owner. Providing [domain verification](#6-provide-domain-verification) is a good start. Ideally, XRP Ledger network UNLs include validators run by different owners in multiple legal jurisdictions and geographic areas. This reduces the chance that any localized events could interfere with the impartial operations of trusted validators. <!-- STYLE_OVERRIDE: clearly -->
 
-It is strongly recommended that operators use the list providers that are present in this [example file](https://github.com/XRPLF/rippled/blob/release-3.1/cfg/validators-example.txt).
+It is strongly recommended that operators use the list providers that are present in this {% source-link name="example file" path="cfg/validators-example.txt" /%}.
 
 
 
@@ -163,7 +163,7 @@ For a comparison of these approaches, see [Pros and Cons of Peering Configuratio
 
 This configuration connects your validator to the XRP Ledger network using [discovered peers](../../../concepts/networks-and-servers/peer-protocol.md#peer-discovery). This is the default behavior for `xrpld` servers.
 
-_**To connect your validator to the XRP Ledger network using discovered peers,**_ omit the `[peer_private]` stanza or set it to `0` in your validator's `xrpld.cfg` file. The [example `xrpld.cfg` file](https://github.com/XRPLF/rippled/blob/master/cfg/xrpld-example.cfg) is delivered with this configuration.
+_**To connect your validator to the XRP Ledger network using discovered peers,**_ omit the `[peer_private]` stanza or set it to `0` in your validator's `xrpld.cfg` file. The {% source-link name="example xrpld.cfg file" path="cfg/xrpld-example.cfg" /%} is delivered with this configuration.
 
 
 ### Connect using proxies
@@ -218,7 +218,7 @@ _**To connect your validator to the network using public hubs:**_
     ```
 
 {% admonition type="info" name="Note" %}
-The above list may evolve over time. To ensure you're using the most current set of public hubs, refer to the official [`xrpld-example.cfg`](https://github.com/XRPLF/rippled/blob/master/cfg/xrpld-example.cfg) maintained by XRPLF.
+The above list may evolve over time. To ensure you're using the most current set of public hubs, refer to the official {% source-link name="xrpld-example.cfg" path="cfg/xrpld-example.cfg" /%} maintained by XRPLF.
 {% /admonition %}
 
 

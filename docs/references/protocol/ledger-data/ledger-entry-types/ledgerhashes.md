@@ -5,7 +5,7 @@ labels:
   - Blockchain
 ---
 # LedgerHashes
-[[Source]](https://github.com/XRPLF/rippled/blob/f64cf9187affd69650907d0d92e097eb29693945/include/xrpl/protocol/detail/ledger_entries.macro#L202-L206 "Source")
+{% source-link path="include/xrpl/protocol/detail/ledger_entries.macro#L202-L206" /%}
 
 (Not to be confused with the ["ledger hash" string data type][Hash], which uniquely identifies a ledger version. This page describes the `LedgerHashes` ledger entry type.)
 
@@ -71,7 +71,7 @@ There are no flags defined for {% code-page-name /%} entries.
 
 
 ## LedgerHashes ID Formats
-[[Source]](https://github.com/XRPLF/rippled/blob/70d5c624e8cf732a362335642b2f5125ce4b43c1/src/libxrpl/protocol/Indexes.cpp#L195-L211)
+{% source-link path="src/libxrpl/protocol/Indexes.cpp#L195-L211" /%}
 
 There are two formats for `LedgerHashes` ledger entry IDs, depending on whether the entry is a "recent history" sub-type or a "previous history" sub-type.
 

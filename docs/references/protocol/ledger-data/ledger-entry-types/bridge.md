@@ -6,7 +6,7 @@ labels:
 status: not_enabled
 ---
 # Bridge
-[[Source]](https://github.com/XRPLF/rippled/blob/f64cf9187affd69650907d0d92e097eb29693945/include/xrpl/protocol/detail/ledger_entries.macro#L212-L223 "Source")
+{% source-link path="include/xrpl/protocol/detail/ledger_entries.macro#L212-L223" /%}
 
 The `Bridge` ledger entry represents a single cross-chain bridge that connects the XRP Ledger with another blockchain, such as its sidechain, and enables value in the form of XRP and other tokens (IOUs) to move efficiently between the two blockchains. You can create a bridge by sending an [XChainCreateBridge transaction][].
 

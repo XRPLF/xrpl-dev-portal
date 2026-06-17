@@ -6,7 +6,7 @@ labels:
     - Blockchain
 ---
 # validator_info
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/ValidatorInfo.cpp "Source")
+{% source-link path="src/xrpld/rpc/handlers/admin/status/ValidatorInfo.cpp" /%}
 
 The {% code-page-name /%} method returns the current validator settings of the server, if it is configured as a validator.
 

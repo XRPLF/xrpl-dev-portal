@@ -7,7 +7,7 @@ txIcon: cancel
 ---
 # OfferCancel
 
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/CancelOffer.cpp "Source")
+{% source-link path="src/libxrpl/tx/transactors/dex/OfferCancel.cpp" /%}
 
 [分散型取引所](../../../../concepts/tokens/decentralized-exchange/index.md)からオファーを削除します。
 

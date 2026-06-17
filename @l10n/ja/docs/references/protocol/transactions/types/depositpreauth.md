@@ -8,7 +8,7 @@ requiredAmendment: DepositPreauth
 txIcon: modify
 ---
 # DepositPreauth
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/DepositPreauth.cpp "Source")
+{% source-link path="src/libxrpl/tx/transactors/payment/DepositPreauth.cpp" /%}
 
 
 DepositPreauthトランザクションは、あなたのアカウントへの支払いを送金するための事前承認を付与します。これは、あなたが[Deposit Authorization](../../../../concepts/accounts/depositauth.md)を使用している（または使用する予定がある）場合にのみ有用です。

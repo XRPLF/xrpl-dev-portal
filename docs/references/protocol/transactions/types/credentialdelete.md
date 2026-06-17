@@ -7,7 +7,7 @@ requiredAmendment: Credentials
 txIcon: cancel
 ---
 # CredentialDelete
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/Credentials.cpp "Source")
+{% source-link path="src/libxrpl/tx/transactors/credentials/CredentialDelete.cpp" /%}
 
 Remove a [credential](../../../../concepts/decentralized-storage/credentials.md) from the ledger, effectively revoking it. Users may also want to delete an unwanted credential to reduce their [reserve requirement](../../../../concepts/accounts/reserves.md).
 

@@ -5,7 +5,7 @@ labels:
     - Fees
 ---
 # fee
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/Fee1.cpp "Source")
+{% source-link path="src/xrpld/rpc/handlers/server_info/Fee.cpp" /%}
 
 The `fee` command reports the current state of the open-ledger requirements for the [transaction cost](../../../../concepts/transactions/transaction-cost.md). This requires the [FeeEscalation amendment][] to be enabled.
 

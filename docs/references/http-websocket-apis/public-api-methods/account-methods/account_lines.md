@@ -8,7 +8,7 @@ labels:
 ---
 # account_lines
 
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/AccountLines.cpp "Source")
+{% source-link path="src/xrpld/rpc/handlers/account/AccountLines.cpp" /%}
 
 The `account_lines` method returns information about an account's trust lines, which contain balances in all non-XRP currencies and assets. All information retrieved is relative to a particular version of the ledger.
 

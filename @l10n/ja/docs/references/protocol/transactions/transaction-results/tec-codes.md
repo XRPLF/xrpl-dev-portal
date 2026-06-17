@@ -5,7 +5,7 @@ labels:
     - トランザクション送信
 ---
 # tecコード
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/TER.cpp "ソース")
+{% source-link path="src/libxrpl/protocol/TER.cpp" /%}
 
 これらのコードは、トランザクションは失敗したものの、[トランザクションコスト](../../../../concepts/transactions/transaction-cost.md)を適用するために、このトランザクションがレジャーに適用されたことを示します。100から199までの数値が含まれています。数値ではなくテキストコードの使用が推奨されます。
 

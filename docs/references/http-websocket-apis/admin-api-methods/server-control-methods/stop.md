@@ -5,7 +5,7 @@ labels:
     - Core Server
 ---
 # stop
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/Stop.cpp "Source")
+{% source-link path="src/xrpld/rpc/handlers/admin/server_control/Stop.cpp" /%}
 
 Gracefully shuts down the server.
 

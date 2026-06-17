@@ -7,7 +7,7 @@ labels:
   - ブロックチェーン
 ---
 # manifest
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/Manifest.cpp "ソース")
+{% source-link path="src/xrpld/rpc/handlers/server_info/Manifest.cpp" /%}
 
 {% code-page-name /%}メソッドは、指定したバリデータ公開鍵の現在の"マニフェスト"情報を報告します。"マニフェスト"は、バリデータのマスターキーペアから署名付きの公開鍵(ephemeral signing key)を認証するためのデータブロックです。{% badge href="https://github.com/XRPLF/rippled/releases/tag/1.7.0" %}更新: rippled 1.7.0{% /badge %}.
 

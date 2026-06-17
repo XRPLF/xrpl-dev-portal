@@ -5,7 +5,7 @@ labels:
   - Security
 ---
 # SignerList
-[[Source]](https://github.com/XRPLF/rippled/blob/f64cf9187affd69650907d0d92e097eb29693945/include/xrpl/protocol/detail/ledger_entries.macro#L111-L118 "Source")
+{% source-link path="include/xrpl/protocol/detail/ledger_entries.macro#L111-L118" /%}
 
 A `SignerList` entry represents a list of parties that, as a group, are authorized to sign a transaction in place of an individual account by [multi-signing](../../../../concepts/accounts/multi-signing.md). You can create, replace, or remove a signer list using a [SignerListSet transaction][].
 

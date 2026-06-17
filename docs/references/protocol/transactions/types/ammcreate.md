@@ -8,7 +8,7 @@ requiredAmendment: AMM
 txIcon: create
 ---
 # AMMCreate
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/AMMCreate.cpp "Source")
+{% source-link path="src/libxrpl/tx/transactors/dex/AMMCreate.cpp" /%}
 
 Create a new [Automated Market Maker](../../../../concepts/tokens/decentralized-exchange/automated-market-makers.md) (AMM) instance for trading a pair of assets ([fungible tokens](../../../../concepts/tokens/index.md) or [XRP](../../../../introduction/what-is-xrp.md)).
 

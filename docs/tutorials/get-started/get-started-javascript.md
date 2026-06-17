@@ -115,7 +115,7 @@ The sample code shows you how to connect to the Testnet, which is one of the ava
     await client.connect()
     ```
 
-    See the example [core server config file](https://github.com/XRPLF/rippled/blob/develop/cfg/xrpld-example.cfg#L1469) for more information about default values.
+    See the example {% source-link name="core server config file" path="cfg/xrpld-example.cfg#L1469" /%} for more information about default values.
 
 - By using one of the available [public servers][]:
 

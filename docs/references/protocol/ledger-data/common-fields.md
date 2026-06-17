@@ -3,7 +3,7 @@ seo:
     description: These common fields are part of every ledger entry.
 ---
 # Ledger Entry Common Fields
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/libxrpl/protocol/LedgerFormats.cpp)
+{% source-link path="src/libxrpl/protocol/LedgerFormats.cpp" /%}
 
 Every entry in a [ledger](../../../concepts/ledgers/index.md)'s state data has the same set of common fields, plus additional fields based on the [ledger entry type](ledger-entry-types/index.md). Field names are case-sensitive. The common fields for all ledger entries are:
 
@@ -18,7 +18,7 @@ Every entry in a [ledger](../../../concepts/ledgers/index.md)'s state data has t
 
 ## Ledger Entry ID
 
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/libxrpl/protocol/Indexes.cpp)
+{% source-link path="src/libxrpl/protocol/Indexes.cpp" /%}
 
 Each ledger entry has a unique ID. The ID is derived by hashing important contents of the entry, along with a _namespace identifier_ which is a 16 bit value. The [ledger entry type](ledger-entry-types/index.md) determines the namespace identifier to use and which contents to include in the hash. This ensures every ID is unique. The hash function is [SHA-512Half][].
 

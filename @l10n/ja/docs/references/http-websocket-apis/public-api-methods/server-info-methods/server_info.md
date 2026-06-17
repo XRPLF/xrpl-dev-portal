@@ -7,7 +7,7 @@ labels:
   - コアサーバ
 ---
 # server_info (xrpld)
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/ServerInfo.cpp "Source")
+{% source-link path="src/xrpld/rpc/handlers/server_info/ServerInfo.cpp" /%}
 
 `server_info`コマンドは、問い合わせ中の`xrpld`サーバについての各種情報を、人間が読めるフォーマットでサーバにリクエストします。[Clioサーバ](../../../../concepts/networks-and-servers/the-clio-server.md)については、[`server_info` (Clio)](../clio-methods/server_info-clio.md)をご覧ください。
 

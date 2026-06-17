@@ -8,7 +8,7 @@ status: not_enabled
 txIcon: create
 ---
 # XChainAddAccountCreateAttestation
-[[Source]](https://github.com/XRPLF/rippled/blob/70d5c624e8cf732a362335642b2f5125ce4b43c1/src/xrpld/app/tx/detail/XChainBridge.h#L189 "Source")
+{% source-link path="include/xrpl/tx/transactors/bridge/XChainBridge.h#L189" /%}
 
 Provide an attestation from a [witness server](../../../../concepts/xrpl-sidechains/witness-servers.md) that an `XChainAccountCreateCommit` transaction occurred on the other chain.
 

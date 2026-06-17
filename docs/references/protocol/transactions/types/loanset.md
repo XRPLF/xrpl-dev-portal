@@ -9,7 +9,7 @@ txIcon: modify
 status: not_enabled
 ---
 # LoanSet
-[[Source]](https://github.com/XRPLF/rippled/blob/release-3.1/src/xrpld/app/tx/detail/LoanSet.cpp "Source")
+{% source-link path="src/libxrpl/tx/transactors/lending/LoanSet.cpp" /%}
 
 Creates a new `Loan` ledger entry, representing a loan agreement between a _Loan Broker_ and _Borrower_.
 

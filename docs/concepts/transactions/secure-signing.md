@@ -45,7 +45,7 @@ In this configuration, you run `xrpld` on the machine that generates the transac
 
 2. When you need to sign transactions, connect to your server on `localhost` or `127.0.0.1`. Use the [sign method][] (for single signatures) or [sign_for method][] (for multi-signatures).
 
-    The [example config file](https://github.com/XRPLF/rippled/blob/develop/cfg/xrpld-example.cfg#L1477-L1494) listens for connections on the local loopback network (127.0.0.1), with JSON-RPC (HTTP) on port 5005 and WebSocket (WS) on port 6006, and treats all connected clients as admin.
+    The {% source-link name="example config file" path="cfg/xrpld-example.cfg#L1477-L1494" /%} listens for connections on the local loopback network (127.0.0.1), with JSON-RPC (HTTP) on port 5005 and WebSocket (WS) on port 6006, and treats all connected clients as admin.
 
     {% admonition type="warning" name="Caution" %}Using the [commandline API](../../references/http-websocket-apis/api-conventions/request-formatting.md#commandline-format) for signatures is less secure than [using the Websocket or JSON-RPC APIs](../../tutorials/get-started/get-started-http-websocket-apis.md) through non-commandline clients. When using the commandline syntax, your secret key may be visible to other users in the system's process listing, and your shell history may save the key in plain text.{% /admonition %}
 

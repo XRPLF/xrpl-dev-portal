@@ -12,7 +12,7 @@ txIcon: send
 
 # VaultDeposit
 
-[[Source]](https://github.com/XRPLF/rippled/blob/release-3.1/src/xrpld/app/tx/detail/VaultDeposit.cpp "Source")
+{% source-link path="src/libxrpl/tx/transactors/vault/VaultDeposit.cpp" /%}
 
 Deposits a specified number of assets into a vault in exchange for shares.
 

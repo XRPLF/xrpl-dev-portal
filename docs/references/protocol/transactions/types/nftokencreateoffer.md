@@ -9,7 +9,7 @@ requiredAmendment: NonFungibleTokensV1_1
 txIcon: create
 ---
 # NFTokenCreateOffer
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/NFTokenCreateOffer.cpp "Source")
+{% source-link path="src/libxrpl/tx/transactors/nft/NFTokenCreateOffer.cpp" /%}
 
 Create a new offer to either buy or sell a [non-fungible token (NFT)](../../../../concepts/tokens/nfts/index.md). You can only offer to sell NFTs you own or buy NFTs you don't own.
 

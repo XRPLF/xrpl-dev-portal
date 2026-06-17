@@ -5,7 +5,7 @@ labels:
    - Data Retention
 ---
 # log_level
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/LogLevel.cpp "Source")
+{% source-link path="src/xrpld/rpc/handlers/admin/log/LogLevel.cpp" /%}
 
 The `log_level` command changes the `xrpld` server's logging verbosity, or returns the current logging level for each category (called a _partition_) of log messages.
 

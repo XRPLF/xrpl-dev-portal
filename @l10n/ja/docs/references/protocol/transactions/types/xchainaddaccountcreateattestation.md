@@ -8,7 +8,7 @@ status: not_enabled
 txIcon: create
 ---
 # XChainAddAccountCreateAttestation
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/TxFormats.cpp#L447-L464 "ソース")
+{% source-link path="src/libxrpl/protocol/TxFormats.cpp#L447-L464" /%}
 
 `XChainAccountCreateCommit`トランザクションがもう一方のチェーンで発生したというWitnessサーバからの証明を提示します。
 

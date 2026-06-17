@@ -34,7 +34,7 @@ To include the transaction in the ledger with a `tec`-class code, some minimal p
 
 ## Active Invariants
 
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/InvariantCheck.h "Source")
+{% source-link path="include/xrpl/tx/invariants/InvariantCheck.h" /%}
 
 The XRP Ledger checks all the following invariants on each transaction:
 
@@ -71,7 +71,7 @@ The XRP Ledger checks all the following invariants on each transaction:
 ### XRP Balance Checks
 
 - **Invariant Condition(s):**
-    - An account's XRP balance must be of type XRP, and it cannot be less than 0 or more than [100 billion XRP exactly](https://github.com/XRPLF/rippled/blob/a7792ebcae63db64e9ae3d7704576252837c2512/include/xrpl/protocol/SystemParameters.h#L44-L51).
+    - An account's XRP balance must be of type XRP, and it cannot be less than 0 or more than {% source-link name="100 billion XRP exactly" path="include/xrpl/protocol/SystemParameters.h#L44-L51" /%}.
 
 
 ### Ledger Entry Types Match
@@ -132,9 +132,9 @@ The XRP Ledger checks all the following invariants on each transaction:
     - [Protecting the Ledger: Invariant Checking](/blog/2017/invariant-checking.md)
 
 - **Repository:**
-    - [`InvariantCheck.h`](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/InvariantCheck.h)
-    - [`InvariantCheck.cpp`](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/InvariantCheck.cpp)
-    - [`XRPAmount.h`](https://github.com/XRPLF/rippled/blob/master/include/xrpl/protocol/XRPAmount.h)
+    - {% source-link name="InvariantCheck.h" path="include/xrpl/tx/invariants/InvariantCheck.h" /%}
+    - {% source-link name="InvariantCheck.cpp" path="src/libxrpl/tx/invariants/InvariantCheck.cpp" /%}
+    - {% source-link name="XRPAmount.h" path="include/xrpl/protocol/XRPAmount.h" /%}
 
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

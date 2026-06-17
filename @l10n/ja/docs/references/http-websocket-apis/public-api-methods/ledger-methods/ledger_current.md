@@ -7,7 +7,7 @@ label:
   - ブロックチェーン
 ---
 # ledger_current
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/LedgerCurrent.cpp "Source")
+{% source-link path="src/xrpld/rpc/handlers/ledger/LedgerCurrent.cpp" /%}
 
 `ledger_current`メソッドは、現在進行中のレジャーの一意のIDを返します。このコマンドで返されるレジャーは確定されたものではないため、このコマンドは主にテストに有用です。
 

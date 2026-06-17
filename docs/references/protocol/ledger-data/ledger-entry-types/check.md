@@ -5,7 +5,7 @@ labels:
   - Checks
 ---
 # Check
-[[Source]](https://github.com/XRPLF/rippled/blob/f64cf9187affd69650907d0d92e097eb29693945/include/xrpl/protocol/detail/ledger_entries.macro#L50-L63 "Source")
+{% source-link path="include/xrpl/protocol/detail/ledger_entries.macro#L50-L63" /%}
 
 A `Check` entry describes a [check](../../../../concepts/payment-types/checks.md), similar to a paper personal check, which can be cashed by its destination to get money from its sender. You can create a check by sending a [CheckCreate transaction][].
 
@@ -63,7 +63,7 @@ There are no flags defined for {% code-page-name /%} entries.
 
 
 ## Check ID Format
-[[Source]](https://github.com/XRPLF/rippled/blob/70d5c624e8cf732a362335642b2f5125ce4b43c1/src/libxrpl/protocol/Indexes.cpp#L335-L339 "Source")
+{% source-link path="src/libxrpl/protocol/Indexes.cpp#L335-L339" /%}
 
 The ID of a `Check` entry is the [SHA-512Half][] of the following values, concatenated in order:
 

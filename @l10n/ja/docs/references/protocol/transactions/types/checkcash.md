@@ -8,7 +8,7 @@ requiredAmendment: Checks
 txIcon: finish
 ---
 # CheckCash
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/CashCheck.cpp "Source")
+{% source-link path="src/libxrpl/tx/transactors/check/CheckCash.cpp" /%}
 
 対応する[CheckCreateトランザクション][]で承認された額まで受領するため、レジャーでCheckオブジェクトの清算を試みます。CheckCashトランザクションでCheckを換金できるのは、Checkの`Destination`アドレスだけです。このCheckの換金方法は、送金先により開始される[Payment][]の実行に似ています。
 

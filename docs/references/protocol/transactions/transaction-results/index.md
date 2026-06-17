@@ -8,7 +8,7 @@ labels:
 ---
 # Transaction Results
 
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/libxrpl/protocol/TER.cpp "Source")
+{% source-link path="src/libxrpl/protocol/TER.cpp" /%}
 
 The `xrpld` server summarizes transaction results with result codes, which appear in fields such as `engine_result` and `meta.TransactionResult`. These codes are grouped into several categories of with different prefixes:
 

@@ -9,7 +9,7 @@ txIcon: cancel
 ---
 # AMMClawback
 
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/AMMClawback.cpp "Source")
+{% source-link path="src/libxrpl/tx/transactors/dex/AMMClawback.cpp" /%}
 
 Claw back tokens from a holder who has deposited your issued tokens into an AMM pool.
 

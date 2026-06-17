@@ -9,7 +9,7 @@ requiredAmendment: PermissionedDomains
 txIcon: cancel
 ---
 # PermissionedDomainDelete
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/PermissionedDomainDelete.cpp "ソース")
+{% source-link path="src/libxrpl/tx/transactors/permissioned_domain/PermissionedDomainDelete.cpp" /%}
 
 所有する[許可型ドメイン][]を削除します。
 

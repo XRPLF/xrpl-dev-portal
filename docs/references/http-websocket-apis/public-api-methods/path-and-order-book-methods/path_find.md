@@ -6,7 +6,7 @@ labels:
     - Tokens
 ---
 # path_find
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/PathFind.cpp "Source")
+{% source-link path="src/xrpld/rpc/handlers/orderbook/PathFind.cpp" /%}
 
 {% admonition type="warning" name="Caution" %}
 WebSocket API only!

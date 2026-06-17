@@ -6,7 +6,7 @@ labels:
   - XRP
 ---
 # AccountRoot
-[[Source]](https://github.com/XRPLF/rippled/blob/f64cf9187affd69650907d0d92e097eb29693945/include/xrpl/protocol/detail/ledger_entries.macro#L136-L158 "Source")
+{% source-link path="include/xrpl/protocol/detail/ledger_entries.macro#L136-L158" /%}
 
 An `AccountRoot` ledger entry type describes a single [account](../../../../concepts/accounts/index.md), its settings, and XRP balance. You can create a new account by sending a [Payment transaction][] with enough XRP to a mathematically-valid address.
 
@@ -42,7 +42,7 @@ In addition to the [common fields](../common-fields.md), {% code-page-name /%} e
 | `AMMID`                       | String    | UInt256           | No        | {% amendment-disclaimer name="AMM" /%} The ledger entry ID of the corresponding AMM ledger entry. Set during account creation; cannot be modified. If present, indicates that this is a special AMM [pseudo-account](../../../../concepts/accounts/pseudo-accounts.md) AccountRoot; always omitted on non-AMM accounts. |
 | `Balance`                     | String    | Amount            | No        | The account's current [XRP balance in drops][XRP, in drops], represented as a string. |
 | `BurnedNFTokens`              | Number    | UInt32            | No        | How many total of this account's issued [non-fungible tokens](../../../../concepts/tokens/nfts/index.md) have been burned. This number is always equal or less than `MintedNFTokens`. |
-| `Domain`                      | String    | Blob              | No        | A domain associated with this account. In JSON, this is the hexadecimal for the ASCII representation of the domain. [Cannot be more than 256 bytes in length.](https://github.com/XRPLF/rippled/blob/70d5c624e8cf732a362335642b2f5125ce4b43c1/include/xrpl/protocol/Protocol.h#L98) |
+| `Domain`                      | String    | Blob              | No        | A domain associated with this account. In JSON, this is the hexadecimal for the ASCII representation of the domain. {% source-link name="Cannot be more than 256 bytes in length." path="include/xrpl/protocol/Protocol.h#L98" /%} |
 | `EmailHash`                   | String    | UInt128           | No        | The md5 hash of an email address. Clients can use this to look up an avatar through services such as [Gravatar](https://en.gravatar.com/). |
 | `FirstNFTokenSequence`        | Number    | UInt32            | No        | The account's [Sequence Number][] at the time it minted its first [non-fungible-token](../../../../concepts/tokens/nfts/index.md). {% amendment-disclaimer name="fixNFTokenRemint" /%} |
 | `MessageKey`                  | String    | Blob              | No        | A public key that may be used to send encrypted messages to this account. In JSON, uses hexadecimal. Must be exactly 33 bytes, with the first byte indicating the key type: `0x02` or `0x03` for secp256k1 keys, `0xED` for Ed25519 keys. |

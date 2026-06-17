@@ -5,7 +5,7 @@ labels:
    - Data Retention
 ---
 # logrotate
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/LogRotate.cpp "Source")
+{% source-link path="src/xrpld/rpc/handlers/admin/log/LogRotate.cpp" /%}
 
 The `logrotate` command closes and reopens the log file. This is intended to help with log rotation on Linux file systems.
 

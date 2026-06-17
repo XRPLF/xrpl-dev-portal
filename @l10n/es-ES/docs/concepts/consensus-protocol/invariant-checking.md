@@ -38,39 +38,39 @@ Para incluir la transacción en el ledger con un código de clase `tec`, es nece
 
 El XRP Ledger comprueba todas las siguientes invariantes en cada transación:
 
-[[Fuente]](https://github.com/XRPLF/rippled/blob/023f5704d07d09e70091f38a0d4e5df213a3144b/src/ripple/app/tx/impl/InvariantCheck.h#L92 "Fuente")
+{% source-link path="include/xrpl/tx/invariants/InvariantCheck.h#L92" /%}
 
 - [Comprobación de coste de transacción](#comprobación-de-coste-de-transacción)
 
-[[Fuente]](https://github.com/XRPLF/rippled/blob/023f5704d07d09e70091f38a0d4e5df213a3144b/src/ripple/app/tx/impl/InvariantCheck.h#L118 "Fuente")
+{% source-link path="include/xrpl/tx/invariants/InvariantCheck.h#L118" /%}
 
 - [XRP no creado](#xrp-no-creado)
 
-[[Fuente]](https://github.com/XRPLF/rippled/blob/023f5704d07d09e70091f38a0d4e5df213a3144b/src/ripple/app/tx/impl/InvariantCheck.h#L146 "Fuente")
+{% source-link path="include/xrpl/tx/invariants/InvariantCheck.h#L146" /%}
 
 - [Account Roots no eliminadas](#account-roots-no-eliminadas)
 
-[[Fuente]](https://github.com/XRPLF/rippled/blob/023f5704d07d09e70091f38a0d4e5df213a3144b/src/ripple/app/tx/impl/InvariantCheck.h#L173 "Fuente")
+{% source-link path="include/xrpl/tx/invariants/InvariantCheck.h#L173" /%}
 
 - [Comprobaciones de balance XRP](#comprobaciones-de-balance-XRP)
 
-[[Fuente]](https://github.com/XRPLF/rippled/blob/023f5704d07d09e70091f38a0d4e5df213a3144b/src/ripple/app/tx/impl/InvariantCheck.h#L197 "Fuente")
+{% source-link path="include/xrpl/tx/invariants/InvariantCheck.h#L197" /%}
 
 - [Coincidencia de tipos de entradas ledger](#coincidencia-de-tipos-de-entradas-de-ledger)
 
-[[Fuente]](https://github.com/XRPLF/rippled/blob/023f5704d07d09e70091f38a0d4e5df213a3144b/src/ripple/app/tx/impl/InvariantCheck.h#L224 "Fuente")
+{% source-link path="include/xrpl/tx/invariants/InvariantCheck.h#L224" /%}
 
 - [No XRP Trust Lines](#no-xrp-trust-lines)
 
-[[Fuente]](https://github.com/XRPLF/rippled/blob/023f5704d07d09e70091f38a0d4e5df213a3144b/src/ripple/app/tx/impl/InvariantCheck.h#L251 "Fuente")
+{% source-link path="include/xrpl/tx/invariants/InvariantCheck.h#L251" /%}
 
 - [No malas ofertas](#no-malas-ofertas)
 
-[[Fuente]](https://github.com/XRPLF/rippled/blob/023f5704d07d09e70091f38a0d4e5df213a3144b/src/ripple/app/tx/impl/InvariantCheck.h#L275 "Fuente")
+{% source-link path="include/xrpl/tx/invariants/InvariantCheck.h#L275" /%}
 
 - [No escrow cero](#no-escrow-cero)
 
-[[Fuente]](https://github.com/XRPLF/rippled/blob/023f5704d07d09e70091f38a0d4e5df213a3144b/src/ripple/app/tx/impl/InvariantCheck.h#L300 "Fuente")
+{% source-link path="include/xrpl/tx/invariants/InvariantCheck.h#L300" /%}
 
 - [Nueva Account Root válida](#nueva-account-root-válida)
 
@@ -158,11 +158,11 @@ El XRP Ledger comprueba todas las siguientes invariantes en cada transación:
     - [Protegiendo el ledger: Comprobación de invariantes](https://xrpl.org/blog/2017/invariant-checking.html)
 
 - **Repositorio:**
-    - [Invariant Check.h](https://github.com/XRPLF/rippled/blob/023f5704d07d09e70091f38a0d4e5df213a3144b/src/ripple/app/tx/impl/InvariantCheck.h)
-    - [Invariant Check.cpp](https://github.com/XRPLF/rippled/blob/023f5704d07d09e70091f38a0d4e5df213a3144b/src/ripple/app/tx/impl/InvariantCheck.cpp)
-    - [Parámetros del sistema](https://github.com/XRPLF/rippled/blob/develop/src/ripple/protocol/SystemParameters.h#L43)
-    - [Cantidad XRP](https://github.com/XRPLF/rippled/blob/develop/src/ripple/basics/XRPAmount.h#L244)
-    - [Formatos de ledger](https://github.com/XRPLF/rippled/blob/023f5704d07d09e70091f38a0d4e5df213a3144b/src/ripple/protocol/LedgerFormats.h#L36-L94)
+    - {% source-link name="Invariant Check.h" path="include/xrpl/tx/invariants/InvariantCheck.h" /%}
+    - {% source-link name="Invariant Check.cpp" path="src/libxrpl/tx/invariants/InvariantCheck.cpp" /%}
+    - {% source-link name="Parámetros del sistema" path="include/xrpl/protocol/SystemParameters.h#L43" /%}
+    - {% source-link name="Cantidad XRP" path="include/xrpl/protocol/XRPAmount.h#L244" /%}
+    - {% source-link name="Formatos de ledger" path="include/xrpl/protocol/LedgerFormats.h#L36-L94" /%}
 
 
 - **Otros:**

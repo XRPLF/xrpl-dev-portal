@@ -5,7 +5,7 @@ labels:
     - Blockchain
 ---
 # NegativeUNL
-[[Source]](https://github.com/XRPLF/rippled/blob/f64cf9187affd69650907d0d92e097eb29693945/include/xrpl/protocol/detail/ledger_entries.macro#L85-L91 "Source")
+{% source-link path="include/xrpl/protocol/detail/ledger_entries.macro#L85-L91" /%}
 
 The `NegativeUNL` ledger entry type contains the current status of the [Negative UNL](../../../../concepts/consensus-protocol/negative-unl.md), a list of trusted validators currently believed to be offline.
 

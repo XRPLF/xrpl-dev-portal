@@ -9,7 +9,7 @@ txIcon: create
 ---
 
 # MPTokenIssuanceCreate
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/MPTokenIssuanceCreate.cpp "ソース")
+{% source-link path="src/libxrpl/tx/transactors/token/MPTokenIssuanceCreate.cpp" /%}
 
 {% partial file="/@l10n/ja/docs/_snippets/mpts-disclaimer.md" /%}
 

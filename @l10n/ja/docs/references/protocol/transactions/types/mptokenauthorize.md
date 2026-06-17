@@ -8,7 +8,7 @@ requiredAmendment: MPTokensV1
 txIcon: modify
 ---
 # MPTokenAuthorize
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/MPTokenAuthorize.cpp "ソース")
+{% source-link path="src/libxrpl/tx/transactors/token/MPTokenAuthorize.cpp" /%}
 
 {% partial file="/@l10n/ja/docs/_snippets/mpts-disclaimer.md" /%}
 

@@ -5,7 +5,7 @@ labels:
     - Payment Channels
 ---
 # channel_verify
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/PayChanClaim.cpp "Source")
+{% source-link path="src/xrpld/rpc/handlers/ChannelVerify.cpp" /%}
 
 The `channel_verify` method checks the validity of a signature that can be used to redeem a specific amount of XRP from a payment channel.
 

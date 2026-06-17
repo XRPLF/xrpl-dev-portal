@@ -7,7 +7,7 @@ labels:
   - データ保持
 ---
 # logrotate
-[[ソース]](https://github.com/XRPLF/rippled/blob/743bd6c9175c472814448ea889413be79dfd1c07/src/ripple/rpc/handlers/LogRotate.cpp "Source")
+{% source-link path="src/xrpld/rpc/handlers/admin/log/LogRotate.cpp" /%}
 
 `logrotate`コマンドは、ログファイルを閉じて再度開きます。これは、Linuxファイルシステムでのログローテーションを促進することを目的としています。
 

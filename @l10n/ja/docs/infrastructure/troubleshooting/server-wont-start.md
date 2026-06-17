@@ -68,7 +68,7 @@ Aborted (core dumped)
 
 - `xrpld`ユーザが読み取ることができる構成ファイルを`$HOME/.config/xrpld/xrpld.cfg`に作成します（`$HOME`は`xrpld`ユーザのホームディレクトリを指しています）。
 
-    {% admonition type="success" name="ヒント" %}`rippled`リポジトリには、パケージのインストール時にデフォルトの構成として提供される[`xrpld.cfg`サンプルファイル](https://github.com/XRPLF/rippled/blob/master/cfg/xrpld-example.cfg)が含まれています。このファイルがない場合は、上記のリンク先からコピーできます。{% /admonition %}
+    {% admonition type="success" name="ヒント" %}`rippled`リポジトリには、パケージのインストール時にデフォルトの構成として提供される{% source-link name="xrpld.cfgサンプルファイル" path="cfg/xrpld-example.cfg" /%}が含まれています。このファイルがない場合は、上記のリンク先からコピーできます。{% /admonition %}
 
 - `--conf`[コマンドラインオプション](../commandline-usage.md)を使用して、使用する構成ファイルのパスを指定します。
 
@@ -86,7 +86,7 @@ Aborted (core dumped)
 
 - `validators.txt`ファイルが存在し、`xrpld`ユーザにこのファイルの読み取り権限があることを確認します。
 
-    {% admonition type="success" name="ヒント" %}`rippled`リポジトリには、パケージのインストール時にデフォルトの構成として提供される[`validators.txt`サンプルファイル](https://github.com/XRPLF/rippled/blob/master/cfg/validators-example.txt)が含まれています。このファイルがない場合は、上記のリンク先からコピーできます。{% /admonition %}
+    {% admonition type="success" name="ヒント" %}`rippled`リポジトリには、パケージのインストール時にデフォルトの構成として提供される{% source-link name="validators.txtサンプルファイル" path="cfg/validators-example.txt" /%}が含まれています。このファイルがない場合は、上記のリンク先からコピーできます。{% /admonition %}
 
 - `xrpld.cfg`ファイルを編集し、`[validators_file]`設定を変更して、`validators.txt`ファイル（またはこれに相当するファイル）の正しいパスを指定します。ファイル名の前後に余分な空白があるかどうかを確認します。
 

@@ -6,7 +6,7 @@ labels:
     - Payments
 ---
 # submit
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/Submit.cpp "Source")
+{% source-link path="src/xrpld/rpc/handlers/transaction/Submit.cpp" /%}
 
 The `submit` method applies a [transaction](../../../protocol/transactions/index.md) and sends it to the network to be confirmed and included in future ledgers.
 

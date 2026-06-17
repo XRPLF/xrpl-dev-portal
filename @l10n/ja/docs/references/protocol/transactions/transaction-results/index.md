@@ -8,7 +8,7 @@ labels:
 ---
 # トランザクションの結果
 
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/TER.h "Source")
+{% source-link path="include/xrpl/protocol/TER.h" /%}
 
 `xrpld`サーバは、トランザクション結果の要約を結果コードで示し、結果コードは`engine_result`や`meta.TransactionResult`などのフィールドに記述されます。これらのコードは、それぞれ異なるプレフィクスを付加した複数のカテゴリに分類されます。
 

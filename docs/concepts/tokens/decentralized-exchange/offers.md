@@ -85,7 +85,7 @@ Trust line limits protect you from receiving more of a token as payment than you
 
 Existing Offers are grouped by exchange rate, which is measured as the ratio between `TakerGets` and `TakerPays`. Offers with a higher exchange rate are taken preferentially. (That is, the person accepting the offer receives as much as possible for the amount of currency they pay out.) Offers with the same exchange rate are taken on the basis of which offer was placed first.
 
-When Offers execute in the same ledger block, the order in which they execute is determined by the [canonical order](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/misc/CanonicalTXSet.cpp "Source code: Transaction ordering") in which transactions were applied to the ledger. Transactions that fail initially can be pushed back and retried at the end of the ledger. This behavior is designed to be deterministic, efficient, and hard to game.
+When Offers execute in the same ledger block, the order in which they execute is determined by the {% source-link name="canonical order" path="src/libxrpl/ledger/CanonicalTXSet.cpp" /%} in which transactions were applied to the ledger. Transactions that fail initially can be pushed back and retried at the end of the ledger. This behavior is designed to be deterministic, efficient, and hard to game.
 
 
 ## Offer Expiration

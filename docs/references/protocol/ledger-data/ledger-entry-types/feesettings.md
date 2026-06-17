@@ -5,7 +5,7 @@ labels:
   - Fees
 ---
 # FeeSettings
-[[Source]](https://github.com/XRPLF/rippled/blob/f64cf9187affd69650907d0d92e097eb29693945/include/xrpl/protocol/detail/ledger_entries.macro#L297-L309 "Source")
+{% source-link path="include/xrpl/protocol/detail/ledger_entries.macro#L297-L309" /%}
 
 The `FeeSettings` entry contains the current base [transaction cost](../../../../concepts/transactions/transaction-cost.md) and [reserve amounts](../../../../concepts/accounts/reserves.md) as determined by [fee voting](../../../../concepts/consensus-protocol/fee-voting.md). Each ledger version contains **at most one** `FeeSettings` entry.
 

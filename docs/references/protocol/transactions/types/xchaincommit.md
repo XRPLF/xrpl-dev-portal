@@ -8,7 +8,7 @@ status: not_enabled
 txIcon: send
 ---
 # XChainCommit
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/XChainBridge.cpp "Source")
+{% source-link path="src/libxrpl/tx/transactors/bridge/XChainBridge.cpp" /%}
 
 Do the second step in a [cross-chain transfer](../../../../concepts/xrpl-sidechains/cross-chain-bridges.md). This transaction has two modes:
 

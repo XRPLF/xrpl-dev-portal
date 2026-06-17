@@ -5,7 +5,7 @@ labels:
   - Payment Channels
 ---
 # PayChannel
-[[Source]](https://github.com/XRPLF/rippled/blob/f64cf9187affd69650907d0d92e097eb29693945/include/xrpl/protocol/detail/ledger_entries.macro#L348-L363 "Source")
+{% source-link path="include/xrpl/protocol/detail/ledger_entries.macro#L348-L363" /%}
 
 A `PayChannel` entry represents a [payment channel](../../../../concepts/payment-types/payment-channels.md). You can create a payment channel with a [PaymentChannelCreate transaction][].
 

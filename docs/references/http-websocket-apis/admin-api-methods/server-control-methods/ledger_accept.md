@@ -5,7 +5,7 @@ labels:
     - Core Server
 ---
 # ledger_accept
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/LedgerAccept.cpp "Source")
+{% source-link path="src/xrpld/rpc/handlers/admin/server_control/LedgerAccept.cpp" /%}
 
 The `ledger_accept` method forces the server to close the current-working ledger and move to the next ledger number. This method is intended for testing purposes only, and is only available when the `xrpld` server is running stand-alone mode.
 

@@ -6,7 +6,7 @@ labels:
     - Core Server
 ---
 # validation_create
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/ValidationCreate.cpp "Source")
+{% source-link path="src/xrpld/rpc/handlers/admin/keygen/ValidationCreate.cpp" /%}
 
 Use the `validation_create` command to generate [cryptographic keys an `xrpld` server can use to identify itself to the network](../../../../concepts/networks-and-servers/peer-protocol.md#node-key-pair). Similar to the [wallet_propose method][], this method only generates a set of keys in the proper format. It does not any makes changes to the XRP Ledger data or server configuration.
 

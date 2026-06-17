@@ -7,7 +7,7 @@ labels:
 status: not_enabled
 ---
 # LoanBroker
-[[Source]](https://github.com/XRPLF/rippled/blob/release-3.1/include/xrpl/protocol/detail/ledger_entries.macro#L519-L537 "Source")
+{% source-link path="include/xrpl/protocol/detail/ledger_entries.macro#L519-L537" /%}
 
 A `LoanBroker` ledger entry defines the configuration and state of a lending protocol instance. It tracks details such as fees and first-loss capital cover. You can create a `LoanBroker` object with the [LoanBrokerSet transaction][].
 

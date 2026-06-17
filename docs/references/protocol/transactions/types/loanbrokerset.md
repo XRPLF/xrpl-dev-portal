@@ -9,7 +9,7 @@ txIcon: modify
 status: not_enabled
 ---
 # LoanBrokerSet
-[[Source]](https://github.com/XRPLF/rippled/blob/release-3.1/src/xrpld/app/tx/detail/LoanBrokerSet.cpp "Source")
+{% source-link path="src/libxrpl/tx/transactors/lending/LoanBrokerSet.cpp" /%}
 
 Creates or updates a `LoanBroker` ledger entry, configuring protocol parameters and associating it with a `Vault`.
 
