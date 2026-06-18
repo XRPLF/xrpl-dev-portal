@@ -201,7 +201,7 @@ path=/var/lib/xrpld/db/nudb
 
 #### Keep existing data on full-history nodes
 
-For full-history and large-history nodes, where re-downloading the ledger store from peers would take hours or days. The simplest and safest option is to leave your data where it is and hand ownership to the new `xrpld` user. The config you restored in Step 4 already points at `/var/lib/rippled` and `/var/log/rippled`, so no paths need to change:
+For full-history and large-history nodes, where re-downloading the ledger store from peers can take many months to years - a full-history backfill is impractical to rebuild from scratch. The simplest and safest option is to leave your data where it is and hand ownership to the new `xrpld` user. The config you restored in Step 4 already points at `/var/lib/rippled` and `/var/log/rippled`, so no paths need to change:
 
 ```sh
 sudo chown -R xrpld:xrpld /var/lib/rippled
