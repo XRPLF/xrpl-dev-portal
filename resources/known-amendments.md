@@ -832,6 +832,25 @@ This amendment is a collection of fixes for NFTs, Permissioned Domains, Vaults, 
 - Adds an additional check for `LoanBroker` invariants to ensure the listed `CoverAvailable` exactly matches the assets held in the associated pseudo-account.
 
 
+### fixCleanup3_2_0
+[fixCleanup3_2_0]: fixcleanup3_2_0
+
+| Amendment    | fixCleanup3_2_0 |
+|:-------------|:----------------|
+| Amendment ID | 21B8D2F76F68E11E9C077A43BBBC394136E9987E99DDB73966DD68419467E431 |
+| Status       | Open for Voting |
+| Default Vote (Latest stable release) | No |
+| Pre-amendment functionality retired? | No |
+
+This amendment is a collection of fixes for Single Asset Vaults, the Lending Protocol, the permissioned DEX, Multi-Purpose Tokens, and permissioned domains:
+
+- Adds precision and rounding fixes for Single Asset Vaults and the Lending Protocol.
+- Fixes the `ValidPermissionedDEX` invariant firing on a valid offer deletion.
+- Validates non-canonical Multi-Purpose Token amounts.
+- Adds a zero `DomainID` check for permissioned domains.
+- Adds invariant `AccountRootsDeletedClean`, which checks that a deleted account doesn't leave any directly accessible artifacts behind.
+
+
 ### fixDirectoryLimit
 [fixDirectoryLimit]: #fixdirectorylimit
 
