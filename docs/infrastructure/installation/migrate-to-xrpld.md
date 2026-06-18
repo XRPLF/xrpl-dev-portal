@@ -23,6 +23,14 @@ Before you migrate:
     sudo apt-get upgrade
     ```
 
+    On RHEL-based systems, run:
+
+    ```sh
+    sudo yum update
+    ```
+
+    On RHEL 8 and 9, `dnf` and `yum` are interchangeable - use whichever you prefer.
+
 
 ## Migration Steps
 
@@ -93,15 +101,26 @@ Validators and small-history nodes (a day or so) can skip this either way - they
 
 ### 2. Stop and remove rippled
 
-Once your backups are safely off the host, stop the service and remove the package:
+Once your backups are safely off the host, stop the service:
 
 ```sh
 sudo systemctl stop rippled
+```
+
+Then remove the package. For Debian-based distros:
+
+```sh
 sudo apt-get remove -y rippled
 ```
 
+For RHEL-based distros:
+
+```sh
+sudo yum remove -y rippled
+```
+
 {% admonition type="info" name="remove keeps your config" %}
-`apt-get remove` leaves your config and data in place. `apt-get purge` would delete the config, which is why you back up first.
+`apt-get remove` (and `yum remove`) leaves your config and data in place. `apt-get purge` would delete the config, which is why you back up first.
 {% /admonition %}
 
 ### 3. Install xrpld
@@ -115,7 +134,7 @@ sudo apt-get install -y xrpld
 For RHEL-based distros, run:
 
 ```sh
-sudo yum install xrpld
+sudo yum install -y xrpld
 ```
 
 This installs the `xrpld` binary at `/usr/bin/xrpld`, creates the `xrpld` user and group, and installs a default mainnet config at `/etc/xrpld/xrpld.cfg`. The `xrpld` service starts automatically.
