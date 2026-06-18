@@ -591,30 +591,6 @@
   }
 }
 
-// Ambassadors
-.page-ambassadors {
-  #benefits-list {
-    @each $benefits in "benefits-01", "benefits-02", "benefits-03",
-    "benefits-04", "benefits-05", "benefits-06"
-
-      {
-      ##{$benefits} {
-        content: url("../img/ambassadors/#{$benefits}.svg");
-      }
-    }
-  }
-
-  #eligibility-list {
-    @each $eligibility in "eligibility-01", "eligibility-02", "eligibility-03",
-    "eligibility-04", "eligibility-05"
-
-      {
-      ##{$eligibility} {
-        content: url("../img/ambassadors/#{$eligibility}.svg");
-      }
-    }
-  }
-
   // Button has link out arrow.
   .btn {
     padding: 0.75rem;
@@ -691,7 +667,7 @@
     background-position: left 4px bottom 4px;
     transform: translateX(4px);
   }
-}
+
 
 .autoscroll-content {
   animation: autoscroll 15s linear infinite;
