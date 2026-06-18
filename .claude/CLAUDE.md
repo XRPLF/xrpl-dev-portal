@@ -5,6 +5,7 @@
 - **Framework:** Redocly Realm
 - **Production branch:** `master`
 - **Local preview:** `npm start`
+- **Markdoc tags:** `resources/contribute-documentation/markdoc-tags.md`
 
 ## Localization
 
@@ -30,3 +31,12 @@ Examples of when to flag an issue:
 If the user agrees, apply the changes directly to the file and let the user decide how to commit it.
 
 Before editing, confirm the file is in the project's `.claude/` directory (committed to the repo), not the user-level `~/.claude/` directory. If the correction is more of a personal preference than a project rule, suggest writing it to auto memory instead.
+
+## Token Efficiency
+
+If the conversation has accumulated significant context (~50+ exchange pairs, or you've worked through several distinct subtasks) AND the user moves to a new topic that doesn't depend on prior history, suggest cleaning up context:
+
+- Suggest `/compact` when some prior context (corrections, decisions, preferences) still matters but most of the message bulk is unrelated. Compaction keeps a summary.
+- Suggest `/clear` when the new topic is genuinely standalone and nothing prior carries forward.
+
+Don't suggest either if the conversation is short or if recent turns include user corrections, preferences, or rules-of-the-road that the new topic still benefits from.
