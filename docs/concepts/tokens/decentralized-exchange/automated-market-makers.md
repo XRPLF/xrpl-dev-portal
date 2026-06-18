@@ -11,11 +11,15 @@ labels:
 
 Automated Market Makers (AMMs) provide liquidity in the XRP Ledger's decentralized exchange (DEX). Each AMM holds a pool of two assets. You can swap between the two assets at an exchange rate set by a mathematical formula.
 
-![Automated Market Maker](/docs/img/cpt-amm.png)
+![Automated Market Maker](/docs/img/cpt-amm.svg)
 
 Those who deposit assets into an AMM are called _liquidity providers_. In return, liquidity providers receive _LP tokens_ from the AMM. 
 
-![LP receiving LP Tokens](/docs/img/cpt-amm-lp-receiving-lpts.png)
+<div align="center">
+
+![LP receiving LP Tokens](/docs/img/cpt-amm-lp-receiving-lpts.svg)
+
+</div>
 
 LP tokens enable liquidity providers to:
 
@@ -33,11 +37,11 @@ For any given pair of assets, there can be up to one AMM in the ledger. Anyone c
 
 When you want to trade in the decentralized exchange, your [offers](offers.md) and [cross-currency payments](../../payment-types/cross-currency-payments.md) can automatically use AMMs to complete the trade. A single transaction might execute by matching offers, AMMs, or a mix of both, depending on what's cheaper. You can [read a transaction's metadata](../../transactions/finality-of-results/look-up-transaction-results.md) to see what liquidity it consumed.
 
-![1 Transaction using offers, AMMs, or both.](/docs/img/cpt-amm-or-offer.png)
+![1 Transaction using offers, AMMs, or both.](/docs/img/cpt-amm-or-offer.svg)
 
 An AMM sets its exchange rate based on the balance of assets in the pool. When you trade against an AMM, the exchange rate adjusts based on how much your trade shifts the balance of assets the AMM holds. As its supply of one asset goes down, the price of that asset goes up; as its supply of an asset goes up, the price of that asset goes down.
 
-![As supply increases, prices drop, and vice-versa.](/docs/img/cpt-amm-balance.png)
+![As supply increases, prices drop, and vice-versa.](/docs/img/cpt-amm-balance.svg)
 
 An AMM gives generally better exchange rates when it has larger overall amounts in its pool. This is because any given trade causes a smaller shift in the balance of the AMM's assets. The more a trade unbalances the AMM's supply of the two assets, the more extreme the exchange rate becomes.
 
@@ -59,7 +63,7 @@ AMMs are integrated with the central limit order book (CLOB)-based DEX to enhanc
 
 The diagram below illustrates how an offer interacts with other offers and AMM liquidity in the DEX.
 
-![Offer path through DEX.](/docs/img/amm-clob-diagram.png)
+![Offer path through DEX.](/docs/img/amm-clob-diagram.svg)
 
 <div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/tJ1mQxYpt-A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
@@ -90,8 +94,6 @@ To prevent misuse, some restrictions apply to the assets used in an AMM. If you 
 Whoever creates the AMM becomes the first liquidity provider, and receives LP tokens that represent 100% ownership of assets in the AMM's pool. They can redeem some or all of those LP tokens to withdraw assets from the AMM in proportion to the amounts currently there. (The proportions shift over time as people trade against the AMM.) The AMM does not charge a fee when withdrawing both assets.
 
 For example, if you created an AMM with 5 ETH and 5 USD, and then someone exchanged 1.26 USD for 1 ETH, the pool now has 4 ETH and 6.26 USD in it. You can spend half your LP tokens to withdraw 2 ETH and 3.13 USD.
-
-![Example AMM exchange and LP Token withdrawal](/docs/img/cpt-amm-lp-tokens.png)
 
 Anyone can deposit assets to an existing AMM. When they do, they receive new LP tokens based on how much they deposited. The amount that a liquidity provider can withdraw from an AMM is based on the proportion of the AMM's LP tokens they hold compared to the total number of LP tokens outstanding.
 
