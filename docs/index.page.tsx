@@ -55,7 +55,7 @@ export default function Docs() {
             description: translate(
               'Explore funding and development opportunities for your project on the XRPL.'
             ),
-            href: '/resources/grant-funding/',
+            href: '/community/developer-funding/',
           },
           {
             icon: require('../static/img/icons/2026/black/Step-by-Step-Tutorials.svg'),
