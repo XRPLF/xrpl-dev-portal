@@ -16,7 +16,7 @@ If the tutorial doesn't already link to a specific code sample, prompt the user 
 
 # Tutorial Title
 <!-- RULE: Title should be an imperative task. -->
-This tutorial shows you how to <!-- TODO: 2-3 sentences of what/why/when. Link out to concept docs rather than explaining at length. If the tutorial uses a feature that isn't enabled on mainnet yet, add the {% amendment-disclaimer /%} markdoc tag. You can verify the status of amendments at https://xrpl.org/resources/known-amendments.md -->
+This tutorial shows you how to <!-- TODO: 2-3 sentences of what/why/when. Link out to concept docs rather than explaining at length. If the tutorial uses a feature that isn't enabled on mainnet yet, add the {% amendment-disclaimer /%} markdoc tag in a new line. You can verify the status of amendments at https://xrpl.org/resources/known-amendments.md -->
 
 
 ## Goals
