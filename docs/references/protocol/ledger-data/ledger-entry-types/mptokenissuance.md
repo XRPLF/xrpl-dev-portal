@@ -6,6 +6,7 @@ labels:
 status: not_enabled
 ---
 # MPTokenIssuance
+[[Source]](https://github.com/XRPLF/rippled/blob/a5d238e7d4fa6ef2b539b759d58744d0a1c33c0c/include/xrpl/protocol/detail/ledger_entries.macro#L389-L404 "Source")
 
 An `MPTokenIssuance` entry represents a single [MPT](../../../../concepts/tokens/fungible-tokens/multi-purpose-tokens.md) issuance and holds data associated with the issuance itself. You can create an `MPTokenIssuance` using an [MPTokenIssuanceCreate transaction][], and can delete it with an [MPTokenIssuanceDestroy transaction][].
 

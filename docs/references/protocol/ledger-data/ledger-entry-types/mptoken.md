@@ -6,6 +6,7 @@ labels:
 status: not_enabled
 ---
 # MPToken
+[[Source]](https://github.com/XRPLF/rippled/blob/a5d238e7d4fa6ef2b539b759d58744d0a1c33c0c/include/xrpl/protocol/detail/ledger_entries.macro#L409-L417 "Source")
 
 An `MPToken` entry tracks [MPTs](../../../../concepts/tokens/fungible-tokens/multi-purpose-tokens.md) held by an account that is not the token issuer. You can create or delete an empty `MPToken` entry by sending an [MPTokenAuthorize transaction][]. You can send and receive MPTs using several other transaction types including [Payment][] and [OfferCreate][] transactions.
 
