@@ -38,39 +38,39 @@ Para incluir la transacción en el ledger con un código de clase `tec`, es nece
 
 El XRP Ledger comprueba todas las siguientes invariantes en cada transación:
 
-{% source-link path="include/xrpl/tx/invariants/InvariantCheck.h#L92" /%}
+[[Fuente]](https://github.com/XRPLF/rippled/blob/dcd2ff0b5f2019c40c3f38640e751426df97d3c8/include/xrpl/tx/invariants/InvariantCheck.h#L110 "Fuente")
 
 - [Comprobación de coste de transacción](#comprobación-de-coste-de-transacción)
 
-{% source-link path="include/xrpl/tx/invariants/InvariantCheck.h#L118" /%}
+[[Fuente]](https://github.com/XRPLF/rippled/blob/dcd2ff0b5f2019c40c3f38640e751426df97d3c8/include/xrpl/tx/invariants/InvariantCheck.h#L128 "Fuente")
 
 - [XRP no creado](#xrp-no-creado)
 
-{% source-link path="include/xrpl/tx/invariants/InvariantCheck.h#L146" /%}
+[[Fuente]](https://github.com/XRPLF/rippled/blob/dcd2ff0b5f2019c40c3f38640e751426df97d3c8/include/xrpl/tx/invariants/InvariantCheck.h#L148 "Fuente")
 
 - [Account Roots no eliminadas](#account-roots-no-eliminadas)
 
-{% source-link path="include/xrpl/tx/invariants/InvariantCheck.h#L173" /%}
+[[Fuente]](https://github.com/XRPLF/rippled/blob/dcd2ff0b5f2019c40c3f38640e751426df97d3c8/include/xrpl/tx/invariants/InvariantCheck.h#L194 "Fuente")
 
 - [Comprobaciones de balance XRP](#comprobaciones-de-balance-XRP)
 
-{% source-link path="include/xrpl/tx/invariants/InvariantCheck.h#L197" /%}
+[[Fuente]](https://github.com/XRPLF/rippled/blob/dcd2ff0b5f2019c40c3f38640e751426df97d3c8/include/xrpl/tx/invariants/InvariantCheck.h#L210 "Fuente")
 
 - [Coincidencia de tipos de entradas ledger](#coincidencia-de-tipos-de-entradas-de-ledger)
 
-{% source-link path="include/xrpl/tx/invariants/InvariantCheck.h#L224" /%}
+[[Fuente]](https://github.com/XRPLF/rippled/blob/dcd2ff0b5f2019c40c3f38640e751426df97d3c8/include/xrpl/tx/invariants/InvariantCheck.h#L229 "Fuente")
 
 - [No XRP Trust Lines](#no-xrp-trust-lines)
 
-{% source-link path="include/xrpl/tx/invariants/InvariantCheck.h#L251" /%}
+[[Fuente]](https://github.com/XRPLF/rippled/blob/dcd2ff0b5f2019c40c3f38640e751426df97d3c8/include/xrpl/tx/invariants/InvariantCheck.h#L267 "Fuente")
 
 - [No malas ofertas](#no-malas-ofertas)
 
-{% source-link path="include/xrpl/tx/invariants/InvariantCheck.h#L275" /%}
+[[Fuente]](https://github.com/XRPLF/rippled/blob/dcd2ff0b5f2019c40c3f38640e751426df97d3c8/include/xrpl/tx/invariants/InvariantCheck.h#L283 "Fuente")
 
 - [No escrow cero](#no-escrow-cero)
 
-{% source-link path="include/xrpl/tx/invariants/InvariantCheck.h#L300" /%}
+[[Fuente]](https://github.com/XRPLF/rippled/blob/dcd2ff0b5f2019c40c3f38640e751426df97d3c8/include/xrpl/tx/invariants/InvariantCheck.h#L300 "Fuente")
 
 - [Nueva Account Root válida](#nueva-account-root-válida)
 
@@ -160,9 +160,7 @@ El XRP Ledger comprueba todas las siguientes invariantes en cada transación:
 - **Repositorio:**
     - {% source-link name="Invariant Check.h" path="include/xrpl/tx/invariants/InvariantCheck.h" /%}
     - {% source-link name="Invariant Check.cpp" path="src/libxrpl/tx/invariants/InvariantCheck.cpp" /%}
-    - {% source-link name="Parámetros del sistema" path="include/xrpl/protocol/SystemParameters.h#L43" /%}
-    - {% source-link name="Cantidad XRP" path="include/xrpl/protocol/XRPAmount.h#L244" /%}
-    - {% source-link name="Formatos de ledger" path="include/xrpl/protocol/LedgerFormats.h#L36-L94" /%}
+    - {% source-link name="Cantidad XRP" path="include/xrpl/protocol/XRPAmount.h" /%}
 
 
 - **Otros:**

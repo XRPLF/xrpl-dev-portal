@@ -5,7 +5,7 @@ labels:
     - Payment Channel
 ---
 # PayChannel
-{% source-link path="src/libxrpl/protocol/LedgerFormats.cpp#L180-L198" /%}
+[[ソース]](https://github.com/XRPLF/rippled/blob/a5d238e7d4fa6ef2b539b759d58744d0a1c33c0c/include/xrpl/protocol/detail/ledger_entries.macro#L351-L367 "Source")
 
 `PayChannel`エントリは1つの[支払いチャネル](../../../../concepts/payment-types/payment-channels.md)を表します。
 

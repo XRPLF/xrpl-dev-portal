@@ -7,7 +7,7 @@ labels:
   - Payment Channel
 ---
 # channel_verify
-{% source-link path="src/xrpld/rpc/handlers/ChannelVerify.cpp" /%}
+[[ソース]](https://github.com/XRPLF/rippled/blob/cdee9a675c0e571b5c86dc01550a554a42e6f85c/src/xrpld/rpc/handlers/ChannelVerify.cpp#L30 "Source")
 
 _（[PayChan Amendment][]が有効になっている必要があります。{% badge href="https://github.com/XRPLF/rippled/releases/tag/0.33.0" %}新規: rippled 0.33.0{% /badge %}）_
 

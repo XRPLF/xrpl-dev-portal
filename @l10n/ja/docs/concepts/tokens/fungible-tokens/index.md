@@ -72,7 +72,7 @@ labels:
 **Authorized** の設定は、一度オンにするとオフにできないため、トラストラインの初期状態にはカウントされません。
 
 ## 無料のトラストライン
-{% source-link path="src/libxrpl/tx/transactors/token/TrustSet.cpp#L148-L168" /%}
+[[Source]](https://github.com/XRPLF/rippled/blob/ad7232cbc52ce472d22c86bf5da8a918de4c2add/src/libxrpl/tx/transactors/token/TrustSet.cpp#L347-L367)
 
 トラストラインはXRP Ledgerの強力な機能であるため、アカウントの最初の2つのトラストラインを「無料」にする特別な機能が用意されています。
 

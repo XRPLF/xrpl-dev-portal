@@ -5,7 +5,7 @@ labels:
     - セキュリティ
 ---
 # SignerList
-{% source-link path="src/libxrpl/protocol/LedgerFormats.cpp#L127" /%}
+[[ソース]](https://github.com/XRPLF/rippled/blob/a5d238e7d4fa6ef2b539b759d58744d0a1c33c0c/include/xrpl/protocol/detail/ledger_entries.macro#L103-L111 "Source")
 
 `SignerList`オブジェクトタイプは、個別アカウントの代わりにグループとしてトランザクション署名をすることが承認されている署名者のリストです。[SignerListSetトランザクション][]を使用して、SignerListを作成、置き換え、または削除できます。
 

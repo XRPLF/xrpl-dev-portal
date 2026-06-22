@@ -7,7 +7,7 @@ labels:
   - コアサーバ
 ---
 # peer_reservations_list
-{% source-link path="src/xrpld/rpc/handlers/admin/peer/PeerReservationsList.cpp" /%}
+[[ソース]](https://github.com/XRPLF/rippled/blob/cdee9a675c0e571b5c86dc01550a554a42e6f85c/src/xrpld/rpc/handlers/admin/peer/PeerReservationsList.cpp#L10 "Source")
 
 {% code-page-name /%}メソッドは、[ピアリザベーション][]を一覧表示します。{% badge href="https://github.com/XRPLF/rippled/releases/tag/1.4.0" %}新規: rippled 1.4.0{% /badge %}
 

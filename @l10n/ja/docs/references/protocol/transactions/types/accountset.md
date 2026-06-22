@@ -32,7 +32,7 @@ AccountSetトランザクションは、[XRP Ledgerのアカウント](../../led
 | フィールド         | JSONの型        | [内部の型][] | 説明        |
 |:-----------------|:-----------------|:------------------|:-------------------|
 | [`ClearFlag`](#accountsetのフラグ)    | 数値           | UInt32            |  _（省略可）_ このアカウントについてオプションを無効にするためのフラグの一意識別子。 |
-| [`Domain`](#domain)       | 文字列           | Blob              |  _（省略可）_ このアカウントを保有するドメインのASCII小文字を表現する16進文字列。{% source-link name="256バイトを超える長さは使用できません。" path="include/xrpl/tx/transactors/account/AccountSet.h#L34" /%} |
+| [`Domain`](#domain)       | 文字列           | Blob              |  _（省略可）_ このアカウントを保有するドメインのASCII小文字を表現する16進文字列。[256バイトを超える長さは使用できません。](https://github.com/XRPLF/rippled/blob/5b6e8b6f93b19c1e3f6a3467a25639031d9d9a53/include/xrpl/protocol/Protocol.h#L215) |
 | `EmailHash`        | 文字列           | Hash128           |  _（省略可）_ アバターイメージの生成に使用されるメールアドレスのハッシュ。一般的に、クライアントは[Gravatar](http://en.gravatar.com/site/implement/hash/)を使用してこのイメージを表示しています。 |
 | `MessageKey`       | 文字列           | Blob              |  _（省略可）_ 暗号化されたメッセージをこのアカウントに送信するための公開鍵です。キーを設定するには、正確に33バイトである必要があり、最初のバイトはキーの種類を示します。secp256k1鍵の場合は`0x02`または`0x03`、Ed25519鍵の場合は`0xED`です。キーを削除するには、空の値を使用します。 |
 | `NFTokenMinter`  | 文字列           | Blob              | _(省略可)_ あなたのために[NFTokensをミントする](../../../../tutorials/tokens/nfts/assign-an-authorized-minter-js.md)ことができる別のアカウント。 {% amendment-disclaimer name="NonFungibleTokensV1_1" /%} |
