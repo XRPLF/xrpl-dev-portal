@@ -5,7 +5,7 @@ labels:
   - Blockchain
 ---
 # Amendments
-{% source-link path="include/xrpl/protocol/detail/ledger_entries.macro#L187-L192" /%}
+[[Source]](https://github.com/XRPLF/rippled/blob/a5d238e7d4fa6ef2b539b759d58744d0a1c33c0c/include/xrpl/protocol/detail/ledger_entries.macro#L185-L190 "Source")
 
 The `Amendments` ledger entry type contains a list of [Amendments](../../../../concepts/networks-and-servers/amendments.md) that are currently active. Each ledger version contains **at most one** `Amendments` entry.
 

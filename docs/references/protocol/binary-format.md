@@ -118,8 +118,8 @@ The `optionality` field uses the following values:
 
 ### Field IDs
 
-{% source-link name="[Source - Encoding]" path="src/libxrpl/protocol/Serializer.cpp#L120-L153" /%}
-{% source-link name="[Source - Decoding]" path="src/libxrpl/protocol/Serializer.cpp#L429-L452" /%}
+[[Source - Encoding]](https://github.com/XRPLF/rippled/blob/8995564ed6b9e453e144bb663303072a3c1ba305/src/libxrpl/protocol/Serializer.cpp#L107-L143 "Source")
+[[Source - Decoding]](https://github.com/XRPLF/rippled/blob/8995564ed6b9e453e144bb663303072a3c1ba305/src/libxrpl/protocol/Serializer.cpp#L419-L440 "Source")
 
 When you combine a field's type code and field code, you get the field's unique identifier, which is prefixed before the field in the final serialized blob. The size of the Field ID is one to three bytes depending on the type code and field codes it combines. See the following table:
 
@@ -373,12 +373,12 @@ The following example shows the serialization format for an object (a single `Me
 
 The `Paths` field of a cross-currency [Payment transaction][] is a "PathSet", represented in JSON as an array of arrays. For more information on what paths are used for, see [Paths](../../concepts/tokens/fungible-tokens/paths.md).
 
-A PathSet is serialized as **1 to 6** individual paths in sequence{% source-link path="include/xrpl/tx/transactors/payment/Payment.h#L30" /%}. Each complete path is followed by a byte that indicates what comes next:
+A PathSet is serialized as **1 to 6** individual paths in sequence[[Source]](https://github.com/XRPLF/rippled/blob/5b6e8b6f93b19c1e3f6a3467a25639031d9d9a53/include/xrpl/tx/transactors/payment/Payment.h#L10 "Source"). Each complete path is followed by a byte that indicates what comes next:
 
 - `0xff` indicates another path follows
 - `0x00` indicates the end of the PathSet
 
-Each path consists of **1 to 8** path steps in order{% source-link path="include/xrpl/tx/transactors/payment/Payment.h#L33" /%}. Each step starts with a **type** byte, followed by one or more fields describing the path step. The type indicates which fields are present in that path step through bitwise flags. (For example, the value `0x30` indicates changing both currency and issuer.) If more than one field is present, the fields are always placed in a specific order.
+Each path consists of **1 to 8** path steps in order[[Source]](https://github.com/XRPLF/rippled/blob/5b6e8b6f93b19c1e3f6a3467a25639031d9d9a53/include/xrpl/tx/transactors/payment/Payment.h#L13 "Source"). Each step starts with a **type** byte, followed by one or more fields describing the path step. The type indicates which fields are present in that path step through bitwise flags. (For example, the value `0x30` indicates changing both currency and issuer.) If more than one field is present, the fields are always placed in a specific order.
 
 The following table describes the possible fields and the bitwise flags to set in the type byte to indicate them:
 

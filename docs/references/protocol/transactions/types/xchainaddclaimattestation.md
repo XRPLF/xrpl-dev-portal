@@ -8,7 +8,7 @@ status: not_enabled
 txIcon: modify
 ---
 # XChainAddClaimAttestation
-{% source-link path="include/xrpl/tx/transactors/bridge/XChainBridge.h#L169" /%}
+[[Source]](https://github.com/XRPLF/rippled/blob/5b6e8b6f93b19c1e3f6a3467a25639031d9d9a53/include/xrpl/tx/transactors/bridge/XChainBridge.h#L221 "Source")
 
 Provide proof from a [witness server](../../../../concepts/xrpl-sidechains/witness-servers.md) attesting to an `XChainCommit` transaction.
 

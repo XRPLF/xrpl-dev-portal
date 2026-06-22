@@ -5,7 +5,7 @@ labels:
   - Decentralized Exchange
 ---
 # Oracle
-{% source-link path="include/xrpl/protocol/detail/ledger_entries.macro#L385-L395" /%}
+[[Source]](https://github.com/XRPLF/rippled/blob/a5d238e7d4fa6ef2b539b759d58744d0a1c33c0c/include/xrpl/protocol/detail/ledger_entries.macro#L422-L433 "Source")
 
 An `Oracle` ledger entry holds data associated with a single [price oracle](../../../../concepts/decentralized-storage/price-oracles.md), which can store information on up to 10 asset pairs. You can create or modify a price oracle with an [OracleSet transaction][].
 

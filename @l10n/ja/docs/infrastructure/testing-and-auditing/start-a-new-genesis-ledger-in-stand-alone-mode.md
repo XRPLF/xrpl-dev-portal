@@ -18,7 +18,7 @@ xrpld -a --start --conf=/path/to/xrpld.cfg
 
 スタンドアロンモードで`xrpld`を起動時に使用できるオプションについての詳細は、[コマンドラインの使用リファレンスのスタンドアロンモードのオプション](../commandline-usage.md#スタンドアロンモードのオプション)をご覧ください。
 
-ジェネシスレジャーの[ジェネシスアドレス](../../concepts/accounts/addresses.md#特別なアドレス)は1,000億XRPすべてを保有しています。ジェネシスアドレスのキーは以下のように{% source-link name="ハードコーディング" path="src/libxrpl/ledger/Ledger.cpp#L184" /%}されています。
+ジェネシスレジャーの[ジェネシスアドレス](../../concepts/accounts/addresses.md#特別なアドレス)は1,000億XRPすべてを保有しています。ジェネシスアドレスのキーは以下のように[ハードコーディング](https://github.com/XRPLF/rippled/blob/5b6e8b6f93b19c1e3f6a3467a25639031d9d9a53/src/libxrpl/ledger/Ledger.cpp#L166)されています。
 
 **アドレス:** `rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh`
 

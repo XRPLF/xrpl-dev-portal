@@ -107,7 +107,7 @@ Cuando el proceso de consenso se completa, cada servidor independientemente comp
 
 2. Colocar el conjunto de transacciones acordado en _orden canónico_ para que cada servidor la procese de la misma forma.
 
-    {% source-link name="Orden canónico" path="src/libxrpl/ledger/CanonicalTXSet.cpp#L25-L36" /%} no es el orden de cómo las transacciones fueron recibidas, porque los servidores pueden recibir las mismas transacciones en diferente orden. Para prevenir a los participantes de competir sobre el orden de las trnasacciones, el orden canónico es difícil de manipular.
+    [Orden canónico](https://github.com/XRPLF/rippled/blob/5b6e8b6f93b19c1e3f6a3467a25639031d9d9a53/src/libxrpl/ledger/CanonicalTXSet.cpp#L15-L31) no es el orden de cómo las transacciones fueron recibidas, porque los servidores pueden recibir las mismas transacciones en diferente orden. Para prevenir a los participantes de competir sobre el orden de las trnasacciones, el orden canónico es difícil de manipular.
 
 3. Procesar cada transacción según sus instrucciones, en orden. Actualizar el estado del dato del ledger en consecuencia.
 

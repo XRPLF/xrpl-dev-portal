@@ -342,7 +342,7 @@ EscrowFinish::calculateBaseFee(ReadView const& view, STTx const& tx)
 
 ### `makeTxConsequences`
 
-`rippled` uses a {% source-link name="TxConsequences" path="include/xrpl/tx/applySteps.h#L58" /%} class to describe the outcome to an account when applying a transaction. It tracks the fee, maximum possible XRP spent, and how many sequence numbers are consumed by the transaction. There are three types of consequences:
+`rippled` uses a [`TxConsequences`](https://github.com/XRPLF/rippled/blob/8995564ed6b9e453e144bb663303072a3c1ba305/include/xrpl/tx/applySteps.h#L37) class to describe the outcome to an account when applying a transaction. It tracks the fee, maximum possible XRP spent, and how many sequence numbers are consumed by the transaction. There are three types of consequences:
 
 - **Normal:** The transactor doesn't affect transaction signing and _only_ consumes an XRP fee. Transactions that spend XRP beyond the fee aren't considered normal.
 - **Blocker:** The transactor affects transaction signing, preventing valid transactions from queueing behind it.
