@@ -33,7 +33,7 @@ Algunas direcciones tienen un significado especial, o usos históricos, en el XR
 
 **Consejo:** ¡Estos detalles técnicos son solo relevantse para personas que crean librerias de software de bajo nivel para la compatibilidad con el XRP Ledger!
 
-{% source-link path="src/libxrpl/protocol/AccountID.cpp#L109-L140" /%}
+[[Fuente]](https://github.com/XRPLF/rippled/blob/5b6e8b6f93b19c1e3f6a3467a25639031d9d9a53/src/libxrpl/protocol/AccountID.cpp#L112-L154)
 
 Las direcciones XRP Ledger están codificadas utilizando [base58][] con el _diccionario_ `rpshnaf39wBUDNEGHJKLM4PQRST7VWXYZ2bcdeCg65jkm8oFqi1tuvAxyz`. Como el XRP Ledger codifica varios tipos de claves con base58, antepone los datos codificados con un-byte de "prefijo de tipo" (también conocido como "prefijo de versión") para distinguirlos. El prefijo de tipo hace que las direcciones normalmente comiencen con diferentes letras en formato base58.
 

@@ -80,7 +80,7 @@ If your balance is negative (you are the issuer) or the other side's settings ar
 Since the **Authorized** setting cannot be turned off after it has been turned on, it does not count toward the trust line's default state.
 
 ### Free Trust Lines
-{% source-link path="src/libxrpl/tx/transactors/token/TrustSet.cpp#L387-L407" /%}
+[[Source]](https://github.com/XRPLF/rippled/blob/3c43f4614f87965298773279ff5b85d4c56c637b/src/libxrpl/tx/transactors/token/TrustSet.cpp#L347-L367)
 
 Since trust lines are a powerful feature of the XRP Ledger, there is a special feature to make an account's first two trust lines "free".
 

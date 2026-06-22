@@ -160,7 +160,6 @@ The key derivation processes described here are implemented in multiple places a
 - In JavaScript in the [`ripple-keypairs`](https://github.com/XRPLF/xrpl.js/tree/main/packages/ripple-keypairs) package.
 
 ### Ed25519 Key Derivation
-{% source-link path="src/libxrpl/protocol/SecretKey.cpp#L311-L317" /%}
 
 [{% inline-svg file="/docs/img/key-derivation-ed25519.svg" /%}](/docs/img/key-derivation-ed25519.svg "Passphrase → Seed → Secret Key → Prefix + Public Key")
 
@@ -181,7 +180,6 @@ The key derivation processes described here are implemented in multiple places a
     Validator ephemeral keys cannot be Ed25519.
 
 ### secp256k1 Key Derivation
-{% source-link path="src/libxrpl/protocol/SecretKey.cpp" /%}
 
 [{% inline-svg file="/docs/img/key-derivation-secp256k1.svg" /%}](/docs/img/key-derivation-secp256k1.svg "Passphrase → Seed → Root Key Pair → Intermediate Key Pair → Master Key Pair")
 
@@ -200,7 +198,7 @@ The steps to derive the XRP Ledger's secp256k1 account key pair from a seed valu
 
     2. Calculate the [SHA-512Half][] of the concatenated (seed+root sequence) value.
 
-    3. If the result is not a valid secp256k1 secret key, increment the root sequence by 1 and start over. {% source-link path="src/libxrpl/protocol/SecretKey.cpp#L103-L114" /%}
+    3. If the result is not a valid secp256k1 secret key, increment the root sequence by 1 and start over.
 
         A valid secp256k1 key must not be zero, and it must be numerically less than the _secp256k1 group order_. The secp256k1 group order is the constant value `0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEBAAEDCE6AF48A03BBFD25E8CD0364141`.
 

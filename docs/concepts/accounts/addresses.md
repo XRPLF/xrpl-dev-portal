@@ -31,7 +31,7 @@ Some addresses have special meaning, or historical uses, in the XRP Ledger. In m
 
 {% admonition type="success" name="Tip" %}These technical details are only relevant for people building low-level library software for XRP Ledger compatibility!{% /admonition %}
 
-{% source-link path="src/libxrpl/protocol/AccountID.cpp#L133-L175" /%}
+[[Source]](https://github.com/XRPLF/rippled/blob/5b6e8b6f93b19c1e3f6a3467a25639031d9d9a53/src/libxrpl/protocol/AccountID.cpp#L112-L154)
 
 XRP Ledger addresses are encoded using [base58][] with the _dictionary_ `rpshnaf39wBUDNEGHJKLM4PQRST7VWXYZ2bcdeCg65jkm8oFqi1tuvAxyz`. Since the XRP Ledger encodes several types of keys with base58, it prefixes the encoded data with a one-byte "type prefix" (also called a "version prefix") to distinguish them. The type prefix causes addresses to usually start with different letters in base58 format.
 

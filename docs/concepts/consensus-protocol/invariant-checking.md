@@ -71,7 +71,7 @@ The XRP Ledger checks all the following invariants on each transaction:
 ### XRP Balance Checks
 
 - **Invariant Condition(s):**
-    - An account's XRP balance must be of type XRP, and it cannot be less than 0 or more than {% source-link name="100 billion XRP exactly" path="include/xrpl/protocol/SystemParameters.h#L44-L51" /%}.
+    - An account's XRP balance must be of type XRP, and it cannot be less than 0 or more than [100 billion XRP exactly](https://github.com/XRPLF/rippled/blob/5b6e8b6f93b19c1e3f6a3467a25639031d9d9a53/include/xrpl/protocol/SystemParameters.h#L23-L33).
 
 
 ### Ledger Entry Types Match

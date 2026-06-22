@@ -153,13 +153,11 @@ Los procesos de derivación de claves descritos aquí están implementados en m�
 
 - En C++ en el código base de `xrpld`:
     - {% source-link name="Definición de semilla" path="include/xrpl/protocol/Seed.h" /%}
-    - {% source-link name="Derivación de clave general & Ed25519" path="src/libxrpl/protocol/SecretKey.cpp" /%}
-    - {% source-link name="Derivación de clave secp256k1" path="src/libxrpl/protocol/SecretKey.cpp" /%}
+    - {% source-link name="Derivación de clave" path="src/libxrpl/protocol/SecretKey.cpp" /%}
 - En Python 3 en {% repo-link path="_code-samples/key-derivation/py/key_derivation.py" %}esta sección de códigos de ejemplo del repositorio{% /repo-link %}.
 - En JavaScript en el paquete [`ripple-keypairs`](https://github.com/XRPLF/xrpl.js/tree/main/packages/ripple-keypairs).
 
 ### Derivación de clave Ed25519
-{% source-link path="src/libxrpl/protocol/SecretKey.cpp#L203" /%}
 
 [{% inline-svg file="/docs/img/key-derivation-ed25519.svg" /%}](/docs/img/key-derivation-ed25519.svg "Passphrase → Semilla → Clave secreta → Prefijo + Clave pública")
 
@@ -180,7 +178,6 @@ Los procesos de derivación de claves descritos aquí están implementados en m�
     Las claves efímeras de validador no pueden ser Ed25519.
 
 ### Derivación de clave secp256k1
-{% source-link path="src/libxrpl/protocol/SecretKey.cpp" /%}
 
 [{% inline-svg file="/docs/img/key-derivation-secp256k1.svg" /%}](/docs/img/key-derivation-secp256k1.svg "Passphrase → Semilla → Par de claves inicial (Root Key Pair) → Par de claves intermedias → Par de claves maestras")
 
@@ -199,7 +196,7 @@ Los pasos para derivar par de claves de cuenta XRP Ledger secp256k1 desde un val
 
     2. Calcular el [SHA-512Half][] del valor concatenado ( semilla+secuencia root).
 
-    3. Si el resultado no es una clave secreta válida secp256k1, incrementa la secuencia root en 1 y vuelve a empezar. {% source-link path="src/libxrpl/protocol/SecretKey.cpp" /%}
+    3. Si el resultado no es una clave secreta válida secp256k1, incrementa la secuencia root en 1 y vuelve a empezar.
 
         Una clave válida secp256k1 debe no ser cero, y debe ser numericamente menor que _secp256k1 group order_. El orden grupo secp256k1 es un valor constante `0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEBAAEDCE6AF48A03BBFD25E8CD0364141`.
 
