@@ -15,7 +15,7 @@ curated_anchors:
     anchor: "#タイプリスト"
 ---
 # バイナリフォーマット
-{% source-link path="src/libxrpl/protocol/STObject.cpp#L696-L718" /%}
+{% source-link path="include/xrpl/protocol/SField.h" /%}
 
 このページでは、XRP Ledgerのトランザクションとその他のデータの正規バイナリフォーマットについて説明します。このバイナリフォーマットは、トランザクションの内容のデジタル署名を作成および検証するために必要であり、[サーバ間のピアツーピア通信](../../concepts/networks-and-servers/peer-protocol.md)を含む他の用途にも使用されます。通常、[`xrpld` API](../http-websocket-apis/index.md)は、JSONを使用してクライアントアプリケーションと通信します。ただしJSONは、同じデータをさまざまな同等の方法で表現できるため、デジタル署名を付与するトランザクションをシリアル化するのに適したフォーマットではありません。
 
