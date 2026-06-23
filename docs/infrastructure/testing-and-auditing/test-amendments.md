@@ -1,6 +1,4 @@
 ---
-html: test-amendments.html
-parent: use-stand-alone-mode.html
 seo:
     description: You can test proposed amendments before they're enabled on the network.
 labels:
@@ -9,17 +7,17 @@ labels:
 ---
 # Test Amendments
 
-You can test how the `rippled` server behaves, before amendments are fully enabled on Mainnet, using one of the following approaches:
+You can test how the `xrpld` server behaves, before amendments are fully enabled on Mainnet, using one of the following approaches:
 
-- **Connect to Devnet:** Devnet runs beta `rippled` releases and is the public network where new amendments are previewed before reaching Mainnet.
-- **Stand-Alone Mode:** Run a single `rippled` server in offline mode with the amendment forced on. Does not connect to the peer-to-peer network or use consensus.
+- **Connect to Devnet:** Devnet runs beta `xrpld` releases and is the public network where new amendments are previewed before reaching Mainnet.
+- **Stand-Alone Mode:** Run a single `xrpld` server in offline mode with the amendment forced on. Does not connect to the peer-to-peer network or use consensus.
 - **Private Test Network:** Initialize a self-hosted network with multiple validators where you control how amendments activate.
 
 ## Connect to Devnet
 
 To test an amendment already enabled on Devnet, connect to it directly without setting up your own validators or local server.
 
-Follow [Connect Your rippled to a Parallel Network](../configuration/connect-your-rippled-to-the-xrp-test-net.md), but be sure to skip the `[features]` stanza described in [step 3](../configuration/connect-your-rippled-to-the-xrp-test-net.md#3-enable-or-disable-features). Devnet has its own amendment state, and forcing features causes your server to diverge from the network.
+Follow [Connect Your xrpld to a Parallel Network](../configuration/connect-your-xrpld-to-the-xrp-test-net.md), but be sure to skip the `[features]` stanza described in [step 3](../configuration/connect-your-xrpld-to-the-xrp-test-net.md#3-enable-or-disable-features). Devnet has its own amendment state, and forcing features causes your server to diverge from the network.
 
 Once connected, confirm the amendment is active by inspecting `Amendments` via the [ledger_entry method][].
 
@@ -29,7 +27,7 @@ To test locally without setting up validators or connecting to a network, run yo
 
 {% admonition type="warning" name="Caution" %}This approach uses the `[features]` stanza to force amendments on. Do not use `[features]` while connected to Mainnet, Testnet, or Devnet. Forcing different features than other validators can cause your server to diverge from the network.{% /admonition %}
 
-Two stanzas in `rippled.cfg` interact with amendments: `[amendments]` records which amendments a server votes to support, while `[features]` forces specific features to be treated as enabled, only on the local server. Add a `[features]` stanza with one amendment short name per line:
+Two stanzas in `xrpld.cfg` interact with amendments: `[amendments]` records which amendments a server votes to support, while `[features]` forces specific features to be treated as enabled, only on the local server. Add a `[features]` stanza with one amendment short name per line:
 
 {% tabs %}
 
@@ -43,7 +41,7 @@ TrustSetAuth
 
 {% /tabs %}
 
-To confirm the amendment is active, query the [server_info method][] and look for the amendment under `validated_ledger.features`.
+To confirm the amendment is active, query the `Amendments` ledger entry with the [ledger_entry method][].
 
 ## Private Test Network
 
@@ -56,7 +54,7 @@ If your private network uses a Network ID of 1025 or higher, transactions submit
 Start each validator with the `--start` flag to enable amendments at the genesis ledger. This skips the two-week voting timer entirely.
 
 ```
-rippled --start --net --conf /etc/opt/ripple/rippled.cfg
+xrpld --start --net --conf /etc/opt/ripple/xrpld.cfg
 ```
 
 Once the network is producing ledgers, subsequent restarts don't require `--start`.
@@ -71,7 +69,7 @@ Changing which amendments are enabled requires resetting the network to a new ge
 
 ### Compress the Voting Timer
 
-To exercise the amendment voting and activation flow on a quicker schedule, set `[amendment_majority_time]` in each validator's `rippled.cfg`. This shortens the delay between an amendment reaching majority support and its activation. Do not use it on Mainnet, Testnet, or Devnet.
+To exercise the amendment voting and activation flow on a quicker schedule, set `[amendment_majority_time]` in each validator's `xrpld.cfg`. This shortens the delay between an amendment reaching majority support and its activation. Do not use it on Mainnet, Testnet, or Devnet.
 
 ```
 [amendment_majority_time]
@@ -83,10 +81,10 @@ The format is `<number> <minutes|hours|days|weeks>`. The minimum is 15 minutes d
 Once the network is running, run the following on each validator:
 
 ```
-rippled feature <amendment_name> accept
+xrpld feature <amendment_name> accept
 ```
 
-You can verify the amendment's voting status with `rippled feature`.
+You can verify the amendment's voting status with `xrpld feature`.
 
 ## See Also
 
@@ -95,9 +93,8 @@ You can verify the amendment's voting status with `rippled feature`.
     - [Parallel Networks](../../concepts/networks-and-servers/parallel-networks.md)
 - **References:**
     - [ledger_entry method][]
-    - [server_info method][]
     - [`NetworkID` field](../../references/protocol/transactions/common-fields.md#networkid-field)
-    - [`rippled` Commandline Usage](../commandline-usage.md)
+    - [`xrpld` Commandline Usage](../commandline-usage.md)
 - **Tutorials:**
     - [Run a Private Network with Docker](run-private-network-with-docker.md)
     - [Start a New Genesis Ledger in Stand-Alone Mode](start-a-new-genesis-ledger-in-stand-alone-mode.md)
