@@ -8,7 +8,7 @@ status: not_enabled
 txIcon: create
 ---
 # XChainAccountCreateCommit
-[[Source]](https://github.com/XRPLF/rippled/blob/5b6e8b6f93b19c1e3f6a3467a25639031d9d9a53/include/xrpl/tx/transactors/bridge/XChainBridge.h#L314 "Source")
+{% source-link path="src/libxrpl/tx/transactors/bridge/XChainBridge.cpp" /%}
 
 Create a new account for a [witness server](../../../../concepts/xrpl-sidechains/witness-servers.md) to submit transactions on an issuing chain. This transaction can only be used for XRP-XRP bridges.
 

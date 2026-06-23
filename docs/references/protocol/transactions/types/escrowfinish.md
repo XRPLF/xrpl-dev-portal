@@ -8,7 +8,7 @@ txIcon: finish
 requiredAmendment: Escrow
 ---
 # EscrowFinish
-{% source-link path="src/libxrpl/tx/transactors/escrow/Escrow.cpp" /%}
+{% source-link path="src/libxrpl/tx/transactors/escrow/EscrowFinish.cpp" /%}
 
 Deliver funds from an [escrow](../../../../concepts/payment-types/escrow.md) to the recipient.
 
