@@ -8,7 +8,7 @@ labels:
 ---
 # server_definitions
 
-{% source-link path="src/xrpld/rpc/handlers/server_info/ServerInfo.cpp#L43" /%}
+{% source-link path="src/xrpld/rpc/handlers/server_info/ServerDefinitions.cpp" /%}
 
 `server_definitions`コマンドは実行中の`xrpld`インスタンスから生成されたSDK互換の`definitions.json`を返します。これを使用してネットワーク上のノードにアクセスし、そのバイナリデータをシリアライズ/デシリアライズするために必要な定義を受け取ることができます。
 
