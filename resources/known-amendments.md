@@ -21,7 +21,6 @@ The following is a list of [amendments](../docs/concepts/networks-and-servers/am
 
 | Name                              | Status                                    | Additional Information         |
 |:----------------------------------|:------------------------------------------|:-------------------------------|
-| [Hooks][]                         | {% badge %}In Development: TBD{% /badge %} | [XRPL Hooks](https://hooks.xrpl.org/) |
 | [InvariantsV1_1][]                | {% badge %}In Development: TBD{% /badge %} |  |
 | [DynamicMPT][]                    | {% badge %}In Development: TBD{% /badge %} | [XLS-94 Dynamic MPTs](https://opensource.ripple.com/docs/xls-94-dynamic-mpts) |
 | [ConfidentialTransfer][]          | {% badge %}In Development: TBD{% /badge %} | [XLS-96 Confidential Transfers](https://opensource.ripple.com/docs/xls-96-confidential-transfers) |
@@ -131,7 +130,7 @@ This amendment was disabled in v3.1.1 due to a bug. It will be replaced by `Batc
 | Amendment ID | 98DECF327BF79997AEC178323AD51A830E457BFC6D454DAF3E46E5EC42DC619F |
 | Status       | Enabled |
 | Default Vote (Latest stable release) | No |
-| Pre-amendment functionality retired? | No |
+| Pre-amendment functionality retired? | Yes |
 
 Adjusts the [CheckCash transaction][] so that cashing a [Check](../docs/concepts/payment-types/checks.md) for an issued token automatically creates a [trust line](../docs/concepts/tokens/fungible-tokens/index.md) to hold the token. The new behavior is similar to how the [OfferCreate transaction][] behaves when users buy tokens in the decentralized exchange: the automatic trust line has a limit value of 0. This removes the setup step of setting up a trust line before receiving a token via a Check. (Checks that send XRP are unaffected.)
 
@@ -148,7 +147,7 @@ This amendment does not change the fact that you cannot force anyone to hold tok
 | Amendment ID | 157D2D480E006395B76F948E3E07A45A05FE10230D88A7993C71F97AE4B1F2D1 |
 | Status       | Enabled |
 | Default Vote (Latest stable release) | Yes |
-| Pre-amendment functionality retired? | No |
+| Pre-amendment functionality retired? | Yes |
 
 Introduces "Checks" to the XRP Ledger. Checks work similarly to personal paper checks. The sender signs a transaction to create a Check for a specific maximum amount and destination. Later, the destination can cash the Check to receive up to the specified amount. The actual movement of money only occurs when the Check is cashed, so cashing the Check may fail depending on the sender's current balance and the available liquidity. If cashing the Check fails, the Check object remains in the ledger so it may be successfully cashed later.
 
@@ -247,7 +246,7 @@ Although this amendment is enabled, it has no effect unless the [SusPay](#suspay
 | Amendment ID | 86E83A7D2ECE3AD5FA87AB2195AE015C950469ABF0B72EAACED318F74886AE90 |
 | Status       | Obsolete |
 | Default Vote (Latest stable release) | No |
-| Pre-amendment functionality retired? | No |
+| Pre-amendment functionality retired? | Yes |
 
 This amendment was intended to add support for several types of crypto-conditions from the official [crypto-conditions specification](https://tools.ietf.org/html/draft-thomas-crypto-conditions-03) for use in [EscrowCreate][] and [EscrowFinish][] transactions.
 
@@ -282,7 +281,7 @@ This amendment enables issuers to deep freeze trustlines from interacting with p
 | Amendment ID | 30CD365592B8EE40489BA01AE2F7555CAC9C983145871DC82A42A31CF5BAE7D9 |
 | Status       | Enabled |
 | Default Vote (Latest stable release) | Yes |
-| Pre-amendment functionality retired? | No |
+| Pre-amendment functionality retired? | Yes |
 
 Makes it possible to delete [accounts](../docs/concepts/accounts/index.md).
 
@@ -299,7 +298,7 @@ With this amendment, new accounts start with their `Sequence` numbers equal to t
 | Amendment ID | F64E1EABBE79D55B3BB82020516CEC2C582A98A6BFE20FBE9BB6A0D233418064 |
 | Status       | Enabled |
 | Default Vote (Latest stable release) | Yes |
-| Pre-amendment functionality retired? | No |
+| Pre-amendment functionality retired? | Yes |
 
 Adds a new account flag, `DepositAuth`, which lets an account strictly reject any incoming money from transactions sent by other accounts. Businesses can use this flag to comply with strict regulations that require due diligence before receiving money from any source.
 
@@ -318,7 +317,7 @@ Also fixes a bug in the EscrowCreate and PaymentChannelCreate transactions where
 | Amendment ID | 3CBC5C4E630A1B82380295CDA84B32B49DD066602E74E39B85EF64137FA65194 |
 | Status       | Enabled |
 | Default Vote (Latest stable release) | Yes |
-| Pre-amendment functionality retired? | No |
+| Pre-amendment functionality retired? | Yes |
 
 Provides users of [deposit authorization](../docs/concepts/accounts/depositauth.md) with a way to preauthorize specific senders so those senders are allowed to send payments directly.
 
@@ -359,7 +358,7 @@ Adds several new transaction result codes.
 | Amendment ID | 47C3002ABA31628447E8E9A8B315FAA935CE30183F9A9B86845E469CA2CDC3DF |
 | Status       | Enabled |
 | Default Vote (Latest stable release) | No |
-| Pre-amendment functionality retired? | No |
+| Pre-amendment functionality retired? | Yes |
 
 Provides options to categorically block incoming Checks, Payment Channels, NFTokenOffers, and trust lines from reaching your account. When an account has these options enabled, other accounts cannot create those types of objects with the account as the destination.
 
@@ -452,7 +451,7 @@ Provides "suspended payments" for XRP for escrow within the XRP Ledger, includin
 | Amendment ID | B2A4DB846F0891BF2C76AB2F2ACC8F5B4EC64437135C6E56F3F859DE5FFD5856 |
 | Status       | Enabled |
 | Default Vote (Latest stable release) | No |
-| Pre-amendment functionality retired? | No |
+| Pre-amendment functionality retired? | Yes |
 
 This amendment expands the maximum signer list size and allows each signer to have optional data associated with it. The additional data can be used to identify the signer, which may be useful for smart contracts, or for identifying who controls a key in a large organization: for example, you could store an IPv6 address or the identifier of a Hardware Security Module (HSM).
 
@@ -550,7 +549,7 @@ With this amendment, the transactions fail with a more appropriate result code, 
 | Amendment ID | 67A34F2CF55BFC0F93AACD5B281413176FEE195269FA6D95219A2DF738671172 |
 | Status       | Enabled |
 | Default Vote (Latest stable release) | Yes |
-| Pre-amendment functionality retired? | No |
+| Pre-amendment functionality retired? | Yes |
 
 Fixes a bug that resulted in transaction processing not using new `STAmountCalcSwitchovers` code when the `FeeEscalation` amendment is enabled.
 
@@ -565,7 +564,7 @@ With this amendment, the new `STAmountCalcSwitchovers` code applies, which may c
 | Amendment ID | 5D08145F0A4983F23AFFFF514E83FAD355C5ABFBB6CAB76FB5BC8519FF5F33BE |
 | Status       | Enabled |
 | Default Vote (Latest stable release) | Yes |
-| Pre-amendment functionality retired? | No |
+| Pre-amendment functionality retired? | Yes |
 
 Changes how Payment transactions consume offers to remove a minor difference in how payment processing and offer processing consume liquidity. (Also affects how OfferCreate transactions are processed if [FlowCross][] is enabled.)
 
@@ -614,7 +613,7 @@ This amendment changes how validators negotiate the close time of the consensus 
 | Amendment ID | CA7C02118BA27599528543DFE77BA6838D1B0F43B447D4D7F53523CE6A0E9AC2 |
 | Status       | Enabled |
 | Default Vote (Latest stable release) | Yes |
-| Pre-amendment functionality retired? | No |
+| Pre-amendment functionality retired? | Yes |
 
 Enforces reserved flag ranges on some transaction types that did not correctly enforce them already. Transactions of the affected types are now considered invalid if they enable undefined or unknown flags, or flags from the reserved range. (Transactions unaffected by this change already correctly enforce the same rules.)
 
@@ -634,7 +633,7 @@ The affected transaction types are:
 | Amendment ID | 7117E2EC2DBF119CA55181D69819F1999ECEE1A0225A7FD2B9ED47940968479C |
 | Status       | Enabled |
 | Default Vote (Latest stable release) | Yes |
-| Pre-amendment functionality retired? | No |
+| Pre-amendment functionality retired? | Yes |
 
 Changes Escrow to fix the following issues:
 
@@ -650,7 +649,7 @@ Changes Escrow to fix the following issues:
 | Amendment ID | FBD513F1B893AC765B78F250E6FFA6A11B573209D1842ADC787C850696741288 |
 | Status       | Enabled |
 | Default Vote (Latest stable release) | Yes |
-| Pre-amendment functionality retired? | No |
+| Pre-amendment functionality retired? | Yes |
 
 Changes the result codes returned by two transaction types:
 
@@ -666,7 +665,7 @@ Changes the result codes returned by two transaction types:
 | Amendment ID | 58BE9B5968C4DA7C59BA900961828B113E5490699B21877DEF9A31E9D0FE5D5F |
 | Status       | Enabled |
 | Default Vote (Latest stable release) | Yes |
-| Pre-amendment functionality retired? | No |
+| Pre-amendment functionality retired? | Yes |
 
 Adds delivered amount to metadata for CheckCash transactions cashed for a flexible amount. (Has no effect unless the [Checks](#checks) amendment is enabled.)
 
@@ -683,7 +682,7 @@ The fix1623 amendment has no effect on [CheckCash transactions][] for a fixed am
 | Amendment ID | 25BA44241B3BD880770BFA4DA21C7180576831855368CBEC6A3154FDE4A7676E |
 | Status       | Enabled |
 | Default Vote (Latest stable release) | Yes |
-| Pre-amendment functionality retired? | No |
+| Pre-amendment functionality retired? | Yes |
 
 Fixes a bug where certain XRP endpoints were not checked when detecting circular paths.
 
@@ -700,7 +699,7 @@ With this amendment, those payments fail with the [`temBAD_PATH_LOOP` result cod
 | Amendment ID | 4F46DF03559967AC60F2EB272FEFE3928A7594A45FF774B87A7E540DB0F8F068 |
 | Status       | Enabled |
 | Default Vote (Latest stable release) | Yes |
-| Pre-amendment functionality retired? | No |
+| Pre-amendment functionality retired? | Yes |
 
 Fixes a bug that could cause an amendment to achieve a majority and later activate with support of slightly less than 80% of trusted validators due to rounding semantics.
 
@@ -806,11 +805,50 @@ This amendment was disabled in v3.1.1 due to a bug. It will be replaced by `Batc
 | Amendment ID | 8F81B066ED20DAECA20DF57187767685EEF3980B228E0667A650BAF24426D3B4 |
 | Status       | Enabled |
 | Default Vote (Latest stable release) | Yes |
-| Pre-amendment functionality retired? | No |
+| Pre-amendment functionality retired? | Yes |
 
 Changes the way Checks transactions affect account metadata, so that Checks are properly added to the [account](../docs/concepts/accounts/index.md) history of the receiving account. (Specifically, they update the `PreviousTxnID` and `PreviousTxnLedgerSeq` fields of the receiving account's [AccountRoot object](../docs/references/protocol/ledger-data/ledger-entry-types/accountroot.md), which can be used to trace the "thread" of transactions that affected the account and the objects it owns.)
 
 Without this amendment, Checks transactions ([CheckCreate][], [CheckCash][], and [CheckCancel][]) only update the account history of the sender. With this amendment, those transactions affect both the sending and receiving accounts. This amendment has no effect unless the [Checks amendment](#checks) is also enabled.
+
+
+### fixCleanup3_1_3
+[fixCleanup3_1_3]: fixcleanup3_1_3
+
+| Amendment    | fixCleanup3_1_3 |
+|:-------------|:----------------|
+| Amendment ID | 303ACB16CF8DBD3B5C34F131A9D19A7DE01AE05F480A8A682B869D1B4AAC8CFC |
+| Status       | Open for Voting |
+| Default Vote (Latest stable release) | Yes |
+| Pre-amendment functionality retired? | No  |
+
+This amendment is a collection of fixes for NFTs, Permissioned Domains, Vaults, and the Lending Protocol:
+
+- Fixes an issue with expired `NFTokenOffer` entries remaining on the ledger. With this amendment enabled, using the `NFTokenAcceptOffer` transaction on an expired `NFTokenOffer` now deletes it as part of transaction processing.
+- Adds an invariant check to ensure Permissioned Domains aren't modified by failed transactions.
+- Fixes a trust line token limit check that was skipped when withdrawing vault assets. With this amendment enabled, `VaultWithdraw` transactions that specify either vault shares or vault assets will respect the trust line token limit of the destination address.
+- Fixes loan accounting information not updating in its associated `Loan`, `LoanBroker`, and `Vault` entries if the loan was defaulted, impaired, or unimpaired. 
+- Changes a `LoanPay` error to return `tecNO_PERMISSION` instead of `temINVALID_FLAG` when attempting to overpay on a loan that doesn't permit overpayments.
+- Adds an additional check for `LoanBroker` invariants to ensure the listed `CoverAvailable` exactly matches the assets held in the associated pseudo-account.
+
+
+### fixCleanup3_2_0
+[fixCleanup3_2_0]: fixcleanup3_2_0
+
+| Amendment    | fixCleanup3_2_0 |
+|:-------------|:----------------|
+| Amendment ID | 21B8D2F76F68E11E9C077A43BBBC394136E9987E99DDB73966DD68419467E431 |
+| Status       | Open for Voting |
+| Default Vote (Latest stable release) | No |
+| Pre-amendment functionality retired? | No |
+
+This amendment is a collection of fixes for Single Asset Vaults, the Lending Protocol, the permissioned DEX, Multi-Purpose Tokens, and permissioned domains:
+
+- Adds precision and rounding fixes for Single Asset Vaults and the Lending Protocol.
+- Fixes the `ValidPermissionedDEX` invariant firing on a valid offer deletion.
+- Validates non-canonical Multi-Purpose Token amounts.
+- Adds a zero `DomainID` check for permissioned domains.
+- Adds invariant `AccountRootsDeletedClean`, which checks that a deleted account doesn't leave any directly accessible artifacts behind.
 
 
 ### fixDirectoryLimit
@@ -1019,11 +1057,11 @@ Adds flag checks for `CredentialCreate`, `CredentialAccept`, `CredentialDelete`,
 | Amendment ID | C4483A1896170C66C098DEA5B0E024309C60DC960DE5F01CD7AF986AA3D9AD37 |
 | Status       | Enabled |
 | Default Vote (Latest stable release) | Yes |
-| Pre-amendment functionality retired? | No |
+| Pre-amendment functionality retired? | Yes |
 
 Fixes a bug where accounts can set their regular key pair to match their master key pair, but cannot send transactions signed by the key if the master key is disabled.
 
-Without this fix, a user can unintentionally "black hole" their account by setting the regular key to match the master key, then disabling the master key. The network rejects transactions signed with the both-master-and-regular key pair because the code interprets them as being signed with the disabled master key before it recognizes that they are signed by the currently-enabled regular key.
+Without this fix, a user can unintentionally [blackhole](../docs/concepts/accounts/blackholed-accounts.md) their account by setting the regular key to match the master key, then disabling the master key. The network rejects transactions signed with the both-master-and-regular key pair because the code interprets them as being signed with the disabled master key before it recognizes that they are signed by the currently-enabled regular key.
 
 With this amendment enabled, a SetRegularKey transaction cannot set the regular key to match the master key; such a transaction results in the transaction code `temBAD_REGKEY`. Additionally, this amendment changes the signature verification code so that accounts which _already_ have their regular key set to match their master key can send transactions successfully using the key pair.
 
@@ -1096,7 +1134,7 @@ Without this amendment, it is possible in specific circumstances to delete the l
 | Amendment ID | AE35ABDEFBDE520372B31C957020B34A7A4A9DC3115A69803A44016477C84D6E |
 | Status       | Enabled |
 | Default Vote (Latest stable release) | No |
-| Pre-amendment functionality retired? | No |
+| Pre-amendment functionality retired? | Yes |
 
 Amendment `fixNFTokenRemint` would change the way NFT sequence numbers are constructed to prevent a situation where the same NFT could be minted more than once with the same sequence number, creating a possible collision scenario. This amendment would change the construction of NFT sequence numbers to:
 
@@ -1130,7 +1168,7 @@ This amendment adds a check to the `NFTokenAcceptOffer` transactor to see if the
 | Amendment ID | 73761231F7F3D94EC3D8C63D91BDD0D89045C6F71B917D1925C01253515A6669 |
 | Status       | Enabled |
 | Default Vote (Latest stable release) | No |
-| Pre-amendment functionality retired? | No |
+| Pre-amendment functionality retired? | Yes |
 
 Amendment `fixNonFungibleTokensV1_2` is a combination of bug fixes that have been individually merged into feature/nft-fixes through the pull request process.
 
@@ -1186,7 +1224,7 @@ Without this amendment, transactions can create a payment channel whose `CancelA
 | Amendment ID | 621A0B264970359869E3C0363A899909AAB7A887C8B73519E4ECF952D33258A8 |
 | Status       | Enabled |
 | Default Vote (Latest stable release) | Yes |
-| Pre-amendment functionality retired? | No |
+| Pre-amendment functionality retired? | Yes |
 
 Changes the [PaymentChannelCreate transaction][] type so that it adds new [payment channels](../docs/concepts/payment-types/payment-channels.md) to the recipient's [owner directory](../docs/references/protocol/ledger-data/ledger-entry-types/directorynode.md). Without this amendment, new payment channels are added only to the sender's owner directory; with this amendment enabled, newly-created payment channels are added to both owner directories. Existing payment channels are unchanged.
 
@@ -1233,7 +1271,7 @@ This amendment ensures asset pairs follow a canonical order at all times, so you
 | Amendment ID | 89308AF3B8B10B7192C4E613E1D2E4D9BA64B2EE2D5232402AE82A6A7220D953 |
 | Status       | Enabled |
 | Default Vote (Latest stable release) | Yes |
-| Pre-amendment functionality retired? | No |
+| Pre-amendment functionality retired? | Yes |
 
 Fixes a bug in unused code for estimating the ratio of input to output of individual steps in cross-currency payments.
 
@@ -1248,7 +1286,7 @@ This amendment has no known impact on transaction processing.
 | Amendment ID | 27CD95EE8E1E5A537FF2F89B6CEB7C622E78E9374EBD7DCBEDFAE21CD6F16E0A |
 | Status       | Enabled |
 | Default Vote (Latest stable release) | No |
-| Pre-amendment functionality retired? | No |
+| Pre-amendment functionality retired? | Yes |
 
 Adjusts rounding to prevent order books from being blocked by reduced offers whose exchange rate is affected by rounding of the remaining amounts.
 
@@ -1303,7 +1341,7 @@ This amendment has no effect unless either [NonFungibleTokensV1][] or [NonFungib
 | Amendment ID | B6B3EEDC0267AB50491FDC450A398AF30DBCD977CECED8BEF2499CAB5DAC19E2 |
 | Status       | Enabled |
 | Default Vote (Latest stable release) | Yes |
-| Pre-amendment functionality retired? | No |
+| Pre-amendment functionality retired? | Yes |
 
 This amendment fixes an issue where certain Offers, when almost completely consumed, have a much lower exchange rate than when they were first placed. This occurs when the remaining amounts of one or both assets are so small that they cannot be rounded to a similar ratio as when the Offer was placed.
 
@@ -1320,7 +1358,7 @@ With this amendment, payments and trades can remove these types of Offers the sa
 | Amendment ID | 452F5906C46D46F407883344BFDD90E672B672C5E9943DB4891E3A34FEEEB9DB |
 | Status       | Enabled |
 | Default Vote (Latest stable release) | Yes |
-| Pre-amendment functionality retired? | No |
+| Pre-amendment functionality retired? | Yes |
 
 Fixes an edge case in [deserializing](../docs/references/protocol/binary-format.md) Amount-type fields. Without this amendment, in some rare cases the operation could result in otherwise valid serialized amounts overflowing during deserialization. With this amendment, the XRP Ledger detects error conditions more quickly and eliminates the problematic corner cases.
 
@@ -1333,7 +1371,7 @@ Fixes an edge case in [deserializing](../docs/references/protocol/binary-format.
 | Amendment ID | 2CD5286D8D687E98B41102BDD797198E81EA41DF7BD104E6561FEB104EFF2561 |
 | Status       | Enabled |
 | Default Vote (Latest stable release) | Yes |
-| Pre-amendment functionality retired? | No |
+| Pre-amendment functionality retired? | Yes |
 
 Fixes a bug in [auto-bridging](../docs/concepts/tokens/decentralized-exchange/autobridging.md) that can leave a dry offer in the XRP Ledger. A dry offer is an offer that, if crossed, cannot yield any funds.
 
@@ -1365,7 +1403,7 @@ This amendment ensures that when escrowed MPTs are unlocked, the issuer's locked
 | Amendment ID | F1ED6B4A411D8B872E65B9DCB4C8B100375B0DD3D62D07192E011D6D7F339013 |
 | Status       | Enabled |
 | Default Vote (Latest stable release) | No |
-| Pre-amendment functionality retired? | No |
+| Pre-amendment functionality retired? | Yes |
 
 This amendment removes two trust lines from an account to itself that were created due to an old bug (both on 2013-05-07). When the amendment becomes enabled, it deletes trust lines with the IDs `2F8F21EFCAFD7ACFB07D5BB04F0D2E18587820C7611305BB674A64EAB0FA71E1` and `326035D5C0560A9DA8636545DD5A1B0DFCFF63E68D491B5522B767BB00564B1A` if they exist. After doing so, the amendment does nothing else.
 
@@ -1412,7 +1450,7 @@ This amendment restores the intended rounding behavior. It has no effect unless 
 | Amendment ID | 740352F2412A9909880C23A559FCECEDA3BE2126FED62FC7660D628A06927F11 |
 | Status       | Enabled |
 | Default Vote (Latest stable release) | Yes |
-| Pre-amendment functionality retired? | No |
+| Pre-amendment functionality retired? | Yes |
 
 Replaces the payment processing engine with a more robust and efficient rewrite called the Flow engine. The new version of the payment processing engine is intended to follow the same rules as the old one, but occasionally produces different results due to floating point rounding. This Amendment supersedes the [FlowV2](https://xrpl.org/blog/2016/flowv2-vetoed.html) amendment.
 
@@ -1444,7 +1482,7 @@ Streamlines the offer crossing logic in the XRP Ledger's decentralized exchange.
 | Amendment ID | AF8DF7465C338AE64B1E937D6C8DA138C0D63AD5134A68792BBBE1F63356C422 |
 | Status       | Enabled |
 | Default Vote (Latest stable release) | Yes |
-| Pre-amendment functionality retired? | No |
+| Pre-amendment functionality retired? | Yes |
 
 Improves the payment engine's calculations for finding the most cost-efficient way to execute a cross-currency transaction.
 
@@ -1472,22 +1510,9 @@ This is a previous version of the [Flow](#flow) amendment. It was [rejected due 
 | Amendment ID | 1F4AFA8FA1BC8827AD4C0F682C03A8B671DCDF6B5C4DE36D44243A684103EF88 |
 | Status       | Enabled |
 | Default Vote (Latest stable release) | Yes |
-| Pre-amendment functionality retired? | No |
+| Pre-amendment functionality retired? | Yes |
 
 Allows validators to include a new optional field in their validations to attest to the hash of the latest ledger that the validator considers to be fully validated. The consensus process can use this information to increase the robustness of consensus.
-
-
-### Hooks
-[Hooks]: #hooks
-
-| Amendment    | Hooks |
-|:-------------|:------|
-| Amendment ID | ECE6819DBA5DB528F1A241695F5A9811EF99467CDE22510954FD357780BBD078 |
-| Status       | In Development |
-| Default Vote (Latest stable release) | No |
-| Pre-amendment functionality retired? | No |
-
-Adds on-chain smart contracts in the form of small pieces of code that can run on an account before or after transactions. For more information, see the [Hooks Documentation](https://xrpl-hooks.readme.io/).
 
 
 ### ImmediateOfferKilled
@@ -1498,7 +1523,7 @@ Adds on-chain smart contracts in the form of small pieces of code that can run o
 | Amendment ID | 75A7E01C505DD5A179DFE3E000A9B6F1EDDEB55A12F95579A23E15B15DC8BE5A |
 | Status       | Enabled |
 | Default Vote (Latest stable release) | No |
-| Pre-amendment functionality retired? | No |
+| Pre-amendment functionality retired? | Yes |
 
 Changes OfferCreate transactions so that if an Offer uses `tfImmediateOrCancel` and transaction processing kills the Offer without moving any funds, the transaction uses the result code `tecKILLED` instead of `tesSUCCESS`. If the Offer exchanges any amount of funds, even a small amount, the transaction still uses `tesSUCCESS`. There are no other changes to the processing of the transaction (for example, in terms of whether it cleans up expired and unfunded Offers that were encountered in the ledger during transaction processing).
 
@@ -1617,7 +1642,7 @@ An address with a SignerList can disable the master key even if a regular key is
 | Amendment ID | 586480873651E106F1D6339B0C4A8945BA705A777F3F4524626FF1FC07EFE41D |
 | Status       | Enabled |
 | Default Vote (Latest stable release) | Yes |
-| Pre-amendment functionality retired? | No |
+| Pre-amendment functionality retired? | Yes |
 
 Reduces the [owner reserve](../docs/concepts/accounts/reserves.md#owner-reserves) counted against your XRP Ledger account when it owns a [multi-signing](../docs/concepts/accounts/multi-signing.md) SignerList.
 
@@ -1634,7 +1659,7 @@ With this amendment enabled, the owner reserve for a new SignerList is 5 XRP, re
 | Amendment ID | B4E4F5D2D6FB84DF7399960A732309C9FD530EAE5941838160042833625A6076 |
 | Status       | Enabled |
 | Default Vote (Latest stable release) | Yes |
-| Pre-amendment functionality retired? | No |
+| Pre-amendment functionality retired? | Yes |
 
 Implements a "Negative UNL" system, where the network can track which validators are temporarily offline and disregard those validators for quorum calculations. This can improve the ability of the network to make progress during periods of network instability.
 
@@ -1700,7 +1725,7 @@ It also modifies the [AccountSet transaction][] type to allow you to set the `NF
 | Amendment ID | 32A122F1352A4C7B3A6D790362CC34749C5E57FCE896377BFDC6CCD14F6CD627 |
 | Status       | Enabled |
 | Default Vote (Latest stable release) | No |
-| Pre-amendment functionality retired? | No |
+| Pre-amendment functionality retired? | Yes |
 
 Adds native support for [non-fungible tokens](../docs/concepts/tokens/nfts/index.md), including fixes to several issues that were discovered after [NonFungibleTokensV1][].
 
@@ -1819,7 +1844,7 @@ This amendment creates a new ledger entry type, `PriceOracle`, and new transacti
 | Amendment ID | 00C1FC4A53E60AB02C864641002B3172F38677E29C26C5406685179B37E1EDAC |
 | Status       | Enabled |
 | Default Vote (Latest stable release) | Yes |
-| Pre-amendment functionality retired? | No |
+| Pre-amendment functionality retired? | Yes |
 
 Changes the signature requirements for the XRP Ledger protocol so that non-fully-canonical signatures are no longer valid in any case. This protects against [transaction malleability](../docs/concepts/transactions/finality-of-results/transaction-malleability.md) on _all_ transactions, instead of only transactions with the [`tfFullyCanonicalSig` flag](../docs/references/protocol/transactions/common-fields.md#global-flags) enabled.
 
@@ -1942,7 +1967,7 @@ This amendment was replaced by the [Escrow](../docs/references/protocol/ledger-d
 | Amendment ID | 955DF3FA5891195A9DAEFA1DDC6BB244B545DDE1BAA84CBB25D5F12A8DA68A0C |
 | Status       | Enabled |
 | Default Vote (Latest stable release) | Yes |
-| Pre-amendment functionality retired? | No |
+| Pre-amendment functionality retired? | Yes |
 
 This amendment adds [Tickets](../docs/concepts/accounts/tickets.md) as a way of sending transactions out of the typical sequence number order.
 

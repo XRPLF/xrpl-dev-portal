@@ -6,7 +6,7 @@ seo:
 ---
 # レスポンスのフォーマット
 
-`rippled`APIからのレスポンスのフォーマットは、メソッドが呼び出されたインターフェイス（WebSocket、JSON-RPC、コマンドライン）に応じて多少異なります。コマンドラインインターフェイスがJSON-RPCを呼び出すため、コマンドラインインターフェイスとJSON-RPCインターフェイスは同じフォーマットを使用します。
+`xrpld`APIからのレスポンスのフォーマットは、メソッドが呼び出されたインターフェイス（WebSocket、JSON-RPC、コマンドライン）に応じて多少異なります。コマンドラインインターフェイスがJSON-RPCを呼び出すため、コマンドラインインターフェイスとJSON-RPCインターフェイスは同じフォーマットを使用します。
 
 成功した場合のレスポンスに含まれるフィールドは、以下の通りです。
 
@@ -128,7 +128,7 @@ HTTP Status: 200 OK
 ]
 ```
 
-この警告は、XRP Ledgerプロトコルの1つ以上の[Amendment](../../../concepts/networks-and-servers/amendments.md)が有効になる予定であるが、現在のサーバにはそれらのAmendmentの実装がないことを示しています。これらのAmendmentが有効になると、現在のサーバは[Amendmentブロック](../../../concepts/networks-and-servers/amendments.md#amendment-blocked-servers)されるため、できるだけ早く[最新の`rippled`バージョンにアップグレード](../../../infrastructure/installation/index.md)する必要があります。
+この警告は、XRP Ledgerプロトコルの1つ以上の[Amendment](../../../concepts/networks-and-servers/amendments.md)が有効になる予定であるが、現在のサーバにはそれらのAmendmentの実装がないことを示しています。これらのAmendmentが有効になると、現在のサーバは[Amendmentブロック](../../../concepts/networks-and-servers/amendments.md#amendment-blocked-servers)されるため、できるだけ早く[最新の`xrpld`バージョンにアップグレード](../../../infrastructure/installation/index.md)する必要があります。
 
 サーバは、この警告を送信するのは、クライアントが[管理者として接続している](/docs/tutorials/get-started/get-started-http-websocket-apis.md#admin-access)場合のみです。
 
@@ -157,7 +157,7 @@ HTTP Status: 200 OK
 
 この警告は、サーバが[Amendmentブロック](../../../concepts/networks-and-servers/amendments.md)され、同期を取ることができなくなったことを示しています。
 
-サーバの管理者は、アクティブ化されたAmendmentをサポートするバージョンに[`rippled`をアップグレード](../../../infrastructure/installation/index.md)する必要があります。
+サーバの管理者は、アクティブ化されたAmendmentをサポートするバージョンに[`xrpld`をアップグレード](../../../infrastructure/installation/index.md)する必要があります。
 
 ### 1003. This is a reporting server
 
@@ -184,13 +184,13 @@ HTTP Status: 200 OK
 - [リクエストのフォーマット](request-formatting.md)
 - [エラーのフォーマット](error-formatting.md): APIレスポンスの失敗
 - **コンセプト:**
-    - [`rippled`サーバ](../../../concepts/networks-and-servers/index.md)
+    - [`xrpld`サーバ](../../../concepts/networks-and-servers/index.md)
     - [コンセンサス](../../../concepts/consensus-protocol/index.md)
     - [Amendment](../../../concepts/networks-and-servers/amendments.md)
         - [既知のAmendment](/resources/known-amendments.md)
 - **チュートリアル:**
     - [XRP LedgerのAPIを触ってみよう](/docs/tutorials/get-started/get-started-http-websocket-apis.md)
-    - [`rippled`のインストールと更新](../../../infrastructure/installation/index.md)
+    - [`xrpld`のインストールと更新](../../../infrastructure/installation/index.md)
 - **リファレンス:**
     - [featureメソッド][]
     - [server_infoメソッド][]

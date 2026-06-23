@@ -3,6 +3,9 @@ seo:
     description: Set up your account to receive a specific MPT as a holder; or authorize a holder as an MPT issuer.
 labels:
     - Multi-purpose Tokens, MPTs
+    - Tokens
+requiredAmendment: MPTokensV1
+txIcon: modify
 ---
 # MPTokenAuthorize
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/MPTokenAuthorize.cpp "Source")

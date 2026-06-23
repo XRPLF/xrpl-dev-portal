@@ -6,6 +6,7 @@ ignore:
   - _code-samples/create-amm/ts/tsconfig.json
   - resources/contribute-blog/_blog-template.md
   - resources/contribute-documentation/_tutorial-template.md
+  - tools/*
 l10n:
   defaultLocale: en-US
   locales:
@@ -77,6 +78,10 @@ seo:
         excludeFiles:
           - docs/use-cases/index.md
           - docs/use-cases/defi/index.md
+      - title: Agentic Transactions
+        description: XRPL AI Starter Kit to help autonomous agents discover, set up, and execute agentic transactions on the XRP Ledger.
+        includeFiles:
+          - docs/agents/**/*.*
       - title: Concepts
         description: Core concepts including accounts, tokens, transactions, consensus, and more.
         includeFiles:
@@ -104,13 +109,13 @@ seo:
           - docs/references/http-websocket-apis/public-api-methods/*/index.md
           - docs/references/http-websocket-apis/admin-api-methods/*/index.md
       - title: Infrastructure
-        description: Install, configure, and troubleshoot rippled and Clio servers.
+        description: Install, configure, and troubleshoot xrpld and Clio servers.
         includeFiles:
           - docs/infrastructure/**/*.*
         excludeFiles:
           - docs/infrastructure/index.md
           - docs/infrastructure/*/index.md
-          - docs/infrastructure/installation/build-run-rippled-in-reporting-mode.md
+          - docs/infrastructure/installation/build-run-xrpld-in-reporting-mode.md
           - docs/infrastructure/configuration/data-retention/index.md
           - docs/infrastructure/configuration/server-modes/index.md
       - title: Blog (2023+)
@@ -133,6 +138,13 @@ analytics:
     defaultDataLayer:
       platform: redocly
     enableWebVitalsTracking: true
+feedback:
+  type: scale
+  settings:
+    label: How helpful was this page?
+    submitText: Thanks for your feedback!
+    leftScaleLabel: Not helpful
+    rightScaleLabel: Very helpful
 scripts:
   head:
     - src: https://cmp.osano.com/AzyjT6TIZMlgyLyy8/f11f7772-8ed5-4b73-bd17-c0814edcc440/osano.js
@@ -168,7 +180,7 @@ markdown:
 footer:
   logo:
     hide: true
-  copyrightText: © 2025 XRP Ledger. Open Source.
+  copyrightText: © 2026 XRP Ledger. Open Source.
   items:
     - group: About
       groupTranslationKey: footer.about
@@ -258,9 +270,6 @@ footer:
         - page: community/events.page.tsx
           label: Events
           labelTranslationKey: footer.community.events
-        - page: community/ambassadors.page.tsx
-          label: Ambassadors
-          labelTranslationKey: footer.community.ambassadors
         - page: community/developer-funding.page.tsx
           label: Developer Funding
           labelTranslationKey: footer.community.developer-funding

@@ -58,7 +58,7 @@ _`feature`メソッドは、権限のないユーザは実行できない[管理
 {% tab label="コマンドライン" %}
 ```sh
 #Syntax: feature [<feature_id> [accept|reject]]
-rippled feature 4C97EBA926031A7CF7D7B36FDE3ED66DDA5421192D63DE53FFB46E43B9DC8373 accept
+xrpld feature 4C97EBA926031A7CF7D7B36FDE3ED66DDA5421192D63DE53FFB46E43B9DC8373 accept
 ```
 {% /tab %}
 
@@ -71,7 +71,7 @@ rippled feature 4C97EBA926031A7CF7D7B36FDE3ED66DDA5421192D63DE53FFB46E43B9DC8373
 | `feature` | 文字列  | _（省略可）_ Amendmentの一意のID（16進数）またはAmendmentの短い名前。指定されている場合は、レスポンスが1つのAmendmentに限定されます。それ以外の場合はレスポンスにすべてのAmendmentのリストが表示されます。 |
 | `vetoed`  | ブール値 | （省略可、`feature`が指定されていない場合は無視されます）trueの場合、サーバに対し`feature`で指定されたAmendmentに反対票を投じるように指示します。falseの場合、サーバに対しAmendmentに賛成票を投じるように指示します。 |
 
-{% admonition type="info" name="注記" %}サーバが新しいAmendmentの適用方法を現在認識していない場合でも、`feature`フィールドにAmendment IDを指定すれば、新しいAmendmentに賛成票を投じるようにサーバを設定できます。たとえば、Amendmentをサポートする新しい`rippled`バージョンに _確実に_ アップグレードする予定がある場合などにこのように設定できます。{% /admonition %}
+{% admonition type="info" name="注記" %}サーバが新しいAmendmentの適用方法を現在認識していない場合でも、`feature`フィールドにAmendment IDを指定すれば、新しいAmendmentに賛成票を投じるようにサーバを設定できます。たとえば、Amendmentをサポートする新しい`xrpld`バージョンに _確実に_ アップグレードする予定がある場合などにこのように設定できます。{% /admonition %}
 
 ### レスポンスのフォーマット
 
@@ -163,7 +163,7 @@ rippled feature 4C97EBA926031A7CF7D7B36FDE3ED66DDA5421192D63DE53FFB46E43B9DC8373
 
 {% tab label="コマンドライン" %}
 ```json
-Loading: "/etc/rippled.cfg"
+Loading: "/etc/xrpld.cfg"
 Connecting to 127.0.0.1:5005
 
 {

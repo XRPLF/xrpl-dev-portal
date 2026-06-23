@@ -1,16 +1,16 @@
 ---
 html: server-doesnt-sync.html
-parent: troubleshoot-the-rippled-server.html
+parent: troubleshoot-the-xrpld-server.html
 seo:
-    description: Troubleshoot problems that make a rippled server unable to sync with the rest of the XRP Ledger.
+    description: Troubleshoot problems that make an xrpld server unable to sync with the rest of the XRP Ledger.
 labels:
   - Core Server
 ---
-# rippled Server Doesn't Sync
+# xrpld Server Doesn't Sync
 
-This page explains possible reasons [a `rippled` server](../../concepts/networks-and-servers/index.md) may start successfully, but get stuck in a ["connected" state](../../references/http-websocket-apis/api-conventions/rippled-server-states.md) without ever fully connecting to the network. (If the server crashes during or shortly after startup, see [Server Won't Start](server-wont-start.md) instead.)
+This page explains possible reasons [an `xrpld` server](../../concepts/networks-and-servers/index.md) may start successfully, but get stuck in a ["connected" state](../../references/http-websocket-apis/api-conventions/xrpld-server-states.md) without ever fully connecting to the network. (If the server crashes during or shortly after startup, see [Server Won't Start](server-wont-start.md) instead.)
 
-These instructions assume you have [installed `rippled`](../installation/index.md) on a supported platform.
+These instructions assume you have [installed `xrpld`](../installation/index.md) on a supported platform.
 
 
 ## Normal Syncing Behavior
@@ -30,7 +30,7 @@ If the server is unable to keep up with the network while doing these tasks, the
 
 Many syncing issues can be resolved by restarting the server. No matter why it didn't sync the first time, it may succeed on the second try.
 
-If the [server_info method][] shows a [`server_state`](../../references/http-websocket-apis/api-conventions/rippled-server-states.md) other than `proposing` or `full` and a `server_state_duration_us` of more than `900000000` (15 minutes in microseconds), then you should shut down the `rippled` service, wait a few seconds, and start it again. Optionally, restart the entire machine.
+If the [server_info method][] shows a [`server_state`](../../references/http-websocket-apis/api-conventions/xrpld-server-states.md) other than `proposing` or `full` and a `server_state_duration_us` of more than `900000000` (15 minutes in microseconds), then you should shut down the `xrpld` service, wait a few seconds, and start it again. Optionally, restart the entire machine.
 
 If the problem persists, check the other possibilities listed on this page. If none of them seem to apply, [open an issue in the `rippled` repository](https://github.com/XRPLF/rippled/issues) and add the "Syncing issue" label.
 
@@ -66,23 +66,23 @@ Use the [peers method][] to get information about your server's current peers. I
 
 ## Corrupt Databases
 
-In rare cases, corrupt data saved in your `rippled` server's internal databases could cause it to fail to sync. You can safely delete your server's databases in most circumstances as long as the server is not running. Corrupt data can be the result of a momentary hardware failure when copying or writing to disk, a more serious disk failure, a different process crashing and writing to the wrong part of the disk, or other issues.
+In rare cases, corrupt data saved in your `xrpld` server's internal databases could cause it to fail to sync. You can safely delete your server's databases in most circumstances as long as the server is not running. Corrupt data can be the result of a momentary hardware failure when copying or writing to disk, a more serious disk failure, a different process crashing and writing to the wrong part of the disk, or other issues.
 
 As a test, you can temporarily change the paths to your server's databases as long as you have enough free space to re-download the current ledger and store other settings.
 
 {% admonition type="info" name="Note" %}When you change the database paths, the server does not load some saved settings, such as the server's current [node key pair][] and [peer reservations](../../concepts/networks-and-servers/peer-protocol.md#fixed-peers-and-peer-reservations). If changing the database paths fixes your server' syncing problems, you may want to re-create some of these settings.{% /admonition %}
 
-1. Stop the `rippled` server if it is running.
+1. Stop the `xrpld` server if it is running.
 
     ```
-    $ sudo systemctl stop rippled
+    $ sudo systemctl stop xrpld
     ```
 
 2. Create new empty folders to hold the fresh databases.
 
     ```
-    $ mkdir /var/lib/rippled/db_new/
-    $ mkdir /var/lib/rippled/db_new/nudb
+    $ mkdir /var/lib/xrpld/db_new/
+    $ mkdir /var/lib/xrpld/db_new/nudb
     ```
 
 3. Edit the config file to use the new paths. Be sure to change the `path` field of the `[node_db]` stanza **and** the value of the `[database_path]` stanza.
@@ -90,18 +90,18 @@ As a test, you can temporarily change the paths to your server's databases as lo
     ```
     [node_db]
     type=NuDB
-    path=/var/lib/rippled/db_new/nudb
+    path=/var/lib/xrpld/db_new/nudb
 
     [database_path]
-     /var/lib/rippled/db_new
+     /var/lib/xrpld/db_new
     ```
 
     {% partial file="/docs/_snippets/conf-file-location.md" /%}
 
-4. Start the `rippled` server again.
+4. Start the `xrpld` server again.
 
     ```
-    $ sudo systemctl start rippled
+    $ sudo systemctl start xrpld
     ```
 
     If the server successfully syncs using the fresh databases, you can delete the folders that hold the old databases. You may also want to check for hardware failures, especially to your disk and RAM.
@@ -110,14 +110,14 @@ As a test, you can temporarily change the paths to your server's databases as lo
 ## See Also
 
 - **Concepts:**
-    - [The `rippled` Server](../../concepts/networks-and-servers/index.md)
+    - [The `xrpld` Server](../../concepts/networks-and-servers/index.md)
     - [Peer Protocol](../../concepts/networks-and-servers/peer-protocol.md)
     - [Technical FAQ](/about/faq.md)
 - **Tutorials:**
     - [Understanding Log Messages](understanding-log-messages.md)
     - [Capacity Planning](../installation/capacity-planning.md)
 - **References:**
-    - [rippled API Reference](../../references/http-websocket-apis/index.md)
+    - [xrpld API Reference](../../references/http-websocket-apis/index.md)
         - [peers method][]
         - [server_info method][]
         - [validator_list_sites method][]

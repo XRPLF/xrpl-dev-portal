@@ -1,6 +1,7 @@
 # Docs redirects for moved pages -----------------------------------------------
 # (not associated with a major reorg)
-
+/docs/tutorials/defi/dex/trade-with-auction-slot-in-javascript/:
+    to: /docs/tutorials/defi/dex/use-amm-auction-slot-for-lower-fees/
 /resources/contribute-documentation/tutorial-structure/:
     to: /resources/contribute-documentation/tutorial-guidelines/
 /docs/tutorials/how-tos/use-specialized-payment-types/use-escrows/use-an-escrow-as-a-smart-contract:
@@ -22,9 +23,9 @@
 /docs/infrastructure/installation/rippled-1-3-migration-instructions/:
     to: /docs/infrastructure/installation/
 /docs/infrastructure/installation/update-rippled-manually-on-centos-rhel/:
-    to: /docs/infrastructure/installation/update-rippled-manually-on-rhel/
+    to: /docs/infrastructure/installation/update-xrpld-manually-on-rhel/
 /docs/infrastructure/installation/install-rippled-on-centos-rhel-with-yum/:
-    to: /docs/infrastructure/installation/install-rippled-on-rhel/
+    to: /docs/infrastructure/installation/install-xrpld-on-rhel/
 /docs/concepts/xrpl-sidechains/price-oracles/:
     to: /docs/concepts/decentralized-storage/price-oracles/
 /docs/concepts/accounts/decentralized-identifiers/:
@@ -81,7 +82,11 @@
 /docs/tutorials/javascript/build-apps/build-a-browser-wallet-in-javascript/:
     to: /docs/tutorials/sample-apps/build-a-browser-wallet-in-javascript/
 /docs/tutorials/javascript/send-payments/sending-mpts/:
-    to: /docs/tutorials/tokens/mpts/sending-mpts-in-javascript/
+    to: /docs/tutorials/payments/send-an-mpt/
+/docs/tutorials/tokens/mpts/sending-mpts-in-javascript/:
+    to: /docs/tutorials/payments/send-an-mpt/
+/docs/tutorials/tokens/mpts/send-an-mpt/:
+    to: /docs/tutorials/payments/send-an-mpt/
 /docs/tutorials/javascript/send-payments/create-offers/:
     to: /docs/tutorials/defi/dex/trade-in-the-decentralized-exchange/
 /docs/tutorials/javascript/compliance/create-permissioned-domains/:
@@ -279,7 +284,7 @@ xrp-ledger-rpc-tool.html:
 xrp-ledger-toml-checker.html:
     to: /resources/dev-tools/xrp-ledger-toml-checker
 domain-verification-checker.html:
-    to: /resources/dev-tools/domain-verification-checker
+    to: /resources/dev-tools/domain-verifier
 websocket-api-tool.html:
     to: /resources/dev-tools/websocket-api-tool
 xrp-testnet-faucet.html:
@@ -315,7 +320,9 @@ contribute.html:
 events.html:
     to: /community/events
 ambassadors.html:
-    to: /community/ambassadors
+    to: https://ripple.com/impact/ubri/
+community/ambassadors:
+    to: https://ripple.com/impact/ubri/
 developer-funding.html:
     to: /community/developer-funding
 code-samples.html:
@@ -343,7 +350,7 @@ production-readiness.html:
 get-started.html:
     to: /docs/tutorials
 run-rippled-as-a-wallet-server.html:
-    to: /docs/infrastructure/configuration/server-modes/run-rippled-as-a-stock-server
+    to: /docs/infrastructure/configuration/server-modes/run-xrpld-as-a-stock-server
 faq:
     to: /about/faq
 faq.html:
@@ -403,7 +410,7 @@ networks-and-servers.html:
 xrpl-servers.html:
     to: /docs/concepts/networks-and-servers/
 rippled-server-modes.html:
-    to: /docs/concepts/networks-and-servers/rippled-server-modes
+    to: /docs/concepts/networks-and-servers/xrpld-server-modes
 clustering.html:
     to: /docs/concepts/networks-and-servers/clustering
 ledger-history.html:
@@ -617,7 +624,7 @@ send-payments-using-python.html:
 py-create-accounts-send-xrp.html:
     to: /docs/tutorials/payments/send-xrp/
 py-create-trustline-send-currency.html:
-    to: /docs/tutorials/python/send-payments/create-trustline-send-currency
+    to: /docs/tutorials/payments/create-trust-line-send-currency-in-python/
 py-create-time-based-escrows.html:
     to: /docs/tutorials/payments/send-a-timed-escrow/
 py-mint-and-burn-nfts.html:
@@ -625,11 +632,11 @@ py-mint-and-burn-nfts.html:
 py-transfer-nfts.html:
     to: /docs/tutorials/tokens/nfts/transfer-nfts-py/
 py-broker-sale.html:
-    to: /docs/tutorials/python/nfts/broker-sale
+    to: /docs/tutorials/tokens/nfts/broker-an-nft-sale-py
 py-authorize-minter.html:
-    to: /docs/tutorials/python/nfts/authorize-minter
+    to: /docs/tutorials/tokens/nfts/assign-an-authorized-minter-py
 py-batch-minting.html:
-    to: /docs/tutorials/python/nfts/batch-minting
+    to: /docs/tutorials/tokens/nfts/batch-mint-nfts-py
 build-a-desktop-wallet-in-python.html:
     to: /docs/tutorials/sample-apps/build-a-desktop-wallet-in-python/
 javascript.html:
@@ -651,13 +658,13 @@ send-payments-using-javascript.html:
 create-accounts-send-xrp-using-javascript.html:
     to: /docs/tutorials/payments/send-xrp/
 create-trustline-send-currency-using-javascript.html:
-    to: /docs/tutorials/javascript/send-payments/create-trustline-send-currency
+    to: /docs/tutorials/payments/create-trust-line-send-currency-in-javascript
 create-time-based-escrows-using-javascript.html:
     to: /docs/tutorials/payments/send-a-timed-escrow/
 create-conditional-escrows-using-javascript.html:
     to: /docs/tutorials/payments/send-a-conditional-escrow/
 nfts-using-javascript.html:
-    to: /docs/tutorials/javascript/nfts-using-javascript/
+    to: /docs/tutorials/
 nfts-using-python.html:
     to: /docs/tutorials/
 mint-and-burn-nfts-using-javascript.html:
@@ -737,7 +744,7 @@ use-complex-payment-types.html:
 use-escrows.html:
     to: /docs/tutorials/
 send-a-time-held-escrow.html:
-    to: /docs/tutorials/how-tos/use-specialized-payment-types/use-escrows/send-a-time-held-escrow
+    to: /docs/tutorials/payments/send-a-timed-escrow
 send-a-conditionally-held-escrow.html:
     to: /docs/tutorials/payments/send-a-conditional-escrow/
 cancel-an-expired-escrow.html:
@@ -749,7 +756,7 @@ use-an-escrow-as-a-smart-contract.html:
 use-payment-channels.html:
     to: /docs/tutorials/payments/use-payment-channels/
 open-a-payment-channel-to-enable-an-inter-exchange-network.html:
-    to: /docs/tutorials/how-tos/use-specialized-payment-types/open-a-payment-channel-to-enable-an-inter-exchange-network
+    to: /docs/tutorials/payments/use-payment-channels
 use-checks.html:
     to: /docs/tutorials/how-tos/use-specialized-payment-types/use-checks/use-checks
 send-a-check.html:
@@ -1007,7 +1014,7 @@ markers-and-pagination.html:
 rate-limiting.html:
     to: /docs/references/http-websocket-apis/api-conventions/rate-limiting
 rippled-server-states.html:
-    to: /docs/references/http-websocket-apis/api-conventions/rippled-server-states
+    to: /docs/references/http-websocket-apis/api-conventions/xrpld-server-states
 ctid.html:
     to: /docs/references/http-websocket-apis/api-conventions/ctid
 public-api-methods.html:
@@ -1213,21 +1220,21 @@ install-rippled.html:
 system-requirements.html:
     to: /docs/infrastructure/installation/system-requirements
 install-rippled-on-centos-rhel-with-yum.html:
-    to: /docs/infrastructure/installation/install-rippled-on-rhel
+    to: /docs/infrastructure/installation/install-xrpld-on-rhel
 install-rippled-on-ubuntu.html:
-    to: /docs/infrastructure/installation/install-rippled-on-ubuntu
+    to: /docs/infrastructure/installation/install-xrpld-on-ubuntu
 install-clio-on-ubuntu.html:
     to: /docs/infrastructure/installation/install-clio-on-ubuntu
 update-rippled-automatically-on-linux.html:
-    to: /docs/infrastructure/installation/update-rippled-automatically-on-linux
+    to: /docs/infrastructure/installation/update-xrpld-automatically-on-linux
 update-rippled-manually-on-centos-rhel.html:
-    to: /docs/infrastructure/installation/update-rippled-manually-on-rhel
+    to: /docs/infrastructure/installation/update-xrpld-manually-on-rhel
 update-rippled-manually-on-ubuntu.html:
-    to: /docs/infrastructure/installation/update-rippled-manually-on-ubuntu
+    to: /docs/infrastructure/installation/update-xrpld-manually-on-ubuntu
 build-on-linux-mac-windows.html:
     to: /docs/infrastructure/installation/build-on-linux-mac-windows
 build-run-rippled-in-reporting-mode.html:
-    to: /docs/infrastructure/installation/build-run-rippled-in-reporting-mode
+    to: /docs/infrastructure/installation/build-run-xrpld-in-reporting-mode
 capacity-planning.html:
     to: /docs/infrastructure/installation/capacity-planning
 rippled-1-3-migration-instructions.html:
@@ -1237,9 +1244,9 @@ configure-rippled.html:
 server-modes.html:
     to: /docs/infrastructure/configuration/server-modes/
 run-rippled-as-a-validator.html:
-    to: /docs/infrastructure/configuration/server-modes/run-rippled-as-a-validator
+    to: /docs/infrastructure/configuration/server-modes/run-xrpld-as-a-validator
 run-rippled-as-a-stock-server.html:
-    to: /docs/infrastructure/configuration/server-modes/run-rippled-as-a-stock-server
+    to: /docs/infrastructure/configuration/server-modes/run-xrpld-as-a-stock-server
 data-retention.html:
     to: /docs/infrastructure/configuration/data-retention/
 configure-full-history.html:
@@ -1257,7 +1264,7 @@ configure-history-sharding.html:
 configure-peering.html:
     to: /docs/infrastructure/configuration/peering/
 cluster-rippled-servers.html:
-    to: /docs/infrastructure/configuration/peering/cluster-rippled-servers
+    to: /docs/infrastructure/configuration/peering/cluster-xrpld-servers
 configure-a-private-server.html:
     to: /docs/infrastructure/configuration/peering/configure-a-private-server
 configure-the-peer-crawler.html:
@@ -1277,7 +1284,7 @@ configure-amendment-voting.html:
 configure-statsd.html:
     to: /docs/infrastructure/configuration/configure-statsd
 connect-your-rippled-to-the-xrp-test-net.html:
-    to: /docs/infrastructure/configuration/connect-your-rippled-to-the-xrp-test-net
+    to: /docs/infrastructure/configuration/connect-your-xrpld-to-the-xrp-test-net
 configure-grpc.html:
     to: /docs/infrastructure/configuration/configure-grpc
 enable-public-signing.html:
@@ -1311,17 +1318,17 @@ server-wont-start.html:
 fix-sqlite-tx-db-page-size-issue.html:
     to: /docs/infrastructure/troubleshooting/fix-sqlite-tx-db-page-size-issue
 manage-the-rippled-server.html:
-    to: /docs/infrastructure/installation/install-rippled-on-ubuntu
+    to: /docs/infrastructure/installation/install-xrpld-on-ubuntu
 build-run-rippled-ubuntu.html:
     to: /docs/infrastructure/installation/build-on-linux-mac-windows
 build-run-rippled-macos.html:
     to: /docs/infrastructure/installation/build-on-linux-mac-windows
 update-rippled-automatically-on-centos-rhel.html:
-    to: /docs/infrastructure/installation/update-rippled-automatically-on-linux
+    to: /docs/infrastructure/installation/update-xrpld-automatically-on-linux
 install-rippled-on-ubuntu-with-alien.html:
-    to: /docs/infrastructure/installation/install-rippled-on-ubuntu
+    to: /docs/infrastructure/installation/install-xrpld-on-ubuntu
 run-a-rippled-validator.html:
-    to: /docs/infrastructure/configuration/server-modes/run-rippled-as-a-validator
+    to: /docs/infrastructure/configuration/server-modes/run-xrpld-as-a-validator
 list-xrp-in-your-exchange.html:
     to: /docs/use-cases/defi/list-xrp-as-an-exchange
 contribute-code-to-rippled.html:
@@ -1349,7 +1356,7 @@ tutorial-guidelines.html:
 tutorial-structure.html:
     to: /resources/contribute-documentation/tutorial-guidelines
 report-a-scam.html:
-    to: /contributing/report-a-scam
+    to: /community/report-a-scam
 wallets.html:
     to: /docs/introduction/crypto-wallets
 
@@ -1816,3 +1823,29 @@ code_of_conduct.ja/:
     to: /ja/code-of-conduct
 code_of_conduct.ja:
     to: /ja/code-of-conduct
+
+# rippled -> xrpld page renames (3.2.0 wording PR) ------------------------------
+/docs/concepts/networks-and-servers/rippled-server-modes/:
+    to: /docs/concepts/networks-and-servers/xrpld-server-modes/
+/docs/infrastructure/configuration/connect-your-rippled-to-the-xrp-test-net/:
+    to: /docs/infrastructure/configuration/connect-your-xrpld-to-the-xrp-test-net/
+/docs/infrastructure/configuration/peering/cluster-rippled-servers/:
+    to: /docs/infrastructure/configuration/peering/cluster-xrpld-servers/
+/docs/infrastructure/configuration/server-modes/run-rippled-as-a-stock-server/:
+    to: /docs/infrastructure/configuration/server-modes/run-xrpld-as-a-stock-server/
+/docs/infrastructure/configuration/server-modes/run-rippled-as-a-validator/:
+    to: /docs/infrastructure/configuration/server-modes/run-xrpld-as-a-validator/
+/docs/infrastructure/installation/build-run-rippled-in-reporting-mode/:
+    to: /docs/infrastructure/installation/build-run-xrpld-in-reporting-mode/
+/docs/infrastructure/installation/install-rippled-on-rhel/:
+    to: /docs/infrastructure/installation/install-xrpld-on-rhel/
+/docs/infrastructure/installation/install-rippled-on-ubuntu/:
+    to: /docs/infrastructure/installation/install-xrpld-on-ubuntu/
+/docs/infrastructure/installation/update-rippled-automatically-on-linux/:
+    to: /docs/infrastructure/installation/update-xrpld-automatically-on-linux/
+/docs/infrastructure/installation/update-rippled-manually-on-rhel/:
+    to: /docs/infrastructure/installation/update-xrpld-manually-on-rhel/
+/docs/infrastructure/installation/update-rippled-manually-on-ubuntu/:
+    to: /docs/infrastructure/installation/update-xrpld-manually-on-ubuntu/
+/docs/references/http-websocket-apis/api-conventions/rippled-server-states/:
+    to: /docs/references/http-websocket-apis/api-conventions/xrpld-server-states/

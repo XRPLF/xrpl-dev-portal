@@ -48,7 +48,7 @@ account_infoリクエストの例:
 {% tab label="コマンドライン" %}
 ```sh
 #Syntax: account_info account [ledger_index|ledger_hash]
-rippled account_info rG1QQv2nh2gr7RCZ1P8YYcBUKCCN633jCn validated
+xrpld account_info rG1QQv2nh2gr7RCZ1P8YYcBUKCCN633jCn validated
 ```
 {% /tab %}
 
@@ -208,7 +208,7 @@ rippled account_info rG1QQv2nh2gr7RCZ1P8YYcBUKCCN633jCn validated
 | `signer_lists`         | 配列        | (リクエストに`signer_lists`が指定されていて、少なくとも1つのSignerListがアカウントに関連する場合を除いて省略)[マルチシグ](../../../../concepts/accounts/multi-signing.md)用にアカウントに関連付けられた[SignerListレジャーオブジェクト](../../../protocol/ledger-data/ledger-entry-types/signerlist.md)の配列。アカウントが所有できるSignerListは最大1つであるため、この配列のメンバーは存在するとすれば、1メンバーのみです。 |
 | `ledger_current_index` | 整数        | (`ledger_index`が代わりに指定されている場合は省略) この情報を取得したときに使用されていた最新のレジャーのシーケンス番号。この情報には、これより新しいレジャーの変更は一切含まれません。 |
 | `ledger_index`         | 整数        | (`ledger_current_index`が代わりに指定されている場合は省略) この情報を取得したときに使用されていたレジャーのシーケンス番号。この情報には、これより新しいレジャーの変更は一切含まれません。 |
-| `queue_data`           | オブジェクト  | (`queue`が`true`と指定され、現在開いているレジャーを問い合わせている場合を除いて省略) このアカウントによって送信された[キューに入れられたトランザクション](../../../../concepts/transactions/transaction-cost.md#キューに入れられたトランザクション)についての情報。この情報にはローカル`rippled`サーバの状態が示されますが、コンセンサスネットワーク内の他のサーバとは異なる場合があります。示される値はキューメカニズムによって「大まかに」計算されるため、一部のフィールドは省略される場合があります。 |
+| `queue_data`           | オブジェクト  | (`queue`が`true`と指定され、現在開いているレジャーを問い合わせている場合を除いて省略) このアカウントによって送信された[キューに入れられたトランザクション](../../../../concepts/transactions/transaction-cost.md#キューに入れられたトランザクション)についての情報。この情報にはローカル`xrpld`サーバの状態が示されますが、コンセンサスネットワーク内の他のサーバとは異なる場合があります。示される値はキューメカニズムによって「大まかに」計算されるため、一部のフィールドは省略される場合があります。 |
 | `validated`            | 真偽値       | このデータが検証済みのレジャーバージョンのものである場合はTrueです。省略されているかFalseが設定されている場合、このデータは最終のものではありません。{% badge href="https://github.com/XRPLF/rippled/releases/tag/0.26.0" %}新規: rippled 0.26.0{% /badge %} |
 
 `account_flags`フィールドは以下のネストしたフィールドを含みます：

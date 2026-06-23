@@ -2,7 +2,10 @@
 seo:
     description: NFTokenMintを使用して新規NFTを発行する。
 labels:
-  - 非代替性トークン, NFT
+    - Non-fungible Tokens, NFTs
+    - Tokens
+requiredAmendment: NonFungibleTokensV1_1
+txIcon: create
 ---
 # NFTokenMint
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/NFTokenMint.cpp "Source")

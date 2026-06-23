@@ -1041,29 +1041,6 @@ $placeholder-color: $gray-600;
   }
 }
 
-.page-ambassadors {
-  #benefits-list {
-    @each $benefits in "benefits-01", "benefits-02", "benefits-03",
-    "benefits-04", "benefits-05", "benefits-06"
-
-      {
-      ##{$benefits} {
-        content: url("../img/ambassadors/lightmode/#{$benefits}.svg");
-      }
-    }
-  }
-
-  #eligibility-list {
-    @each $eligibility in "eligibility-01", "eligibility-02", "eligibility-03",
-    "eligibility-04", "eligibility-05"
-
-      {
-      ##{$eligibility} {
-        content: url("../img/ambassadors/lightmode/#{$eligibility}.svg");
-      }
-    }
-  }
-}
 
 .page-funding {
   .funding-list {
@@ -1118,6 +1095,10 @@ main article .card-grid {
       $gray-100 2px 2px 4px, $gray-100 2px 2px 5px, $gray-100 2px 2px 6px, $gray-100 -1px -1px 2px,
       $gray-100 -2px -2px 3px, $gray-100 -2px -2px 4px;
   }
+}
+
+[data-component-name="Markdown/Markdown"] article {
+  border-bottom-color: $gray-500;
 }
 
 .dev-blog {
@@ -1483,4 +1464,38 @@ main article .card-grid {
   }
 
 
+}
+
+.tx-type-list .tx-type {
+  background-color: $gray-200;
+  color: $gray-800;
+
+  &:nth-child(even) {
+    background-color: $white;
+  }
+
+  a.tx-title {
+    color: $blue-purple-600;
+    &:visited {
+      color: $blue-purple-600;
+    }
+    &:hover, &:visited:hover {
+      color: $light-link-hover-color
+    }
+    img {
+      filter: brightness(0.1);
+    }
+  }
+}
+
+.tx-icon-legend {
+  border-color: $black;
+
+  .tx-legend-item img.tx-type-icon {
+    filter: none;
+  }
+}  
+
+[data-component-name="Layout/DocumentationLayoutBottom"] {
+  border-top-color: black;
 }

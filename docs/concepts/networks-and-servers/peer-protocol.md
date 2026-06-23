@@ -1,6 +1,6 @@
 ---
 seo:
-    description: The peer protocol specifies the language rippled servers speak to each other.
+    description: The peer protocol specifies the language xrpld servers speak to each other.
 labels:
     - Core Server
     - Blockchain
@@ -26,16 +26,18 @@ Typically, a server needs to connect to a public hub only once, for a short amou
 
 The [peers method][] shows a list of peers your server is currently connected to.
 
-For certain high-value servers (such as important [validators](rippled-server-modes.md#rippled-server-modes)) you may prefer not to have your server connect to untrusted peers through the peer discovery process. In this case, you can configure your server to use [private peers](#private-peers) only.
+For certain high-value servers (such as important [validators](xrpld-server-modes.md#xrpld-server-modes)) you may prefer not to have your server connect to untrusted peers through the peer discovery process. In this case, you can configure your server to use [private peers](#private-peers) only.
 
 
 ## Peer Protocol Port
 
-To participate in the XRP Ledger, `rippled` servers connect to arbitrary peers using the peer protocol. (All peers are treated as untrusted, unless they are [clustered](clustering.md) with the current server.)
+To participate in the XRP Ledger, `xrpld` servers connect to arbitrary peers using the peer protocol. (All peers are treated as untrusted, unless they are [clustered](clustering.md) with the current server.)
 
-Ideally, the server should be able to send _and_ receive connections on the peer port. You should [forward the port used for the peer protocol through your firewall](../../infrastructure/configuration/peering/forward-ports-for-peering.md) to the `rippled` server.
+Ideally, the server should be able to send _and_ receive connections on the peer port. You should [forward the port used for the peer protocol through your firewall](../../infrastructure/configuration/peering/forward-ports-for-peering.md) to the `xrpld` server.
 
-IANA [has assigned port **2459**](https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml?search=2459) for the XRP Ledger peer protocol, but for compatibility with legacy systems, the [default `rippled` config file](https://github.com/XRPLF/rippled/blob/master/cfg/rippled-example.cfg) listens for incoming peer protocol connections on **port 51235** on all network interfaces. If you run a server, you can configure which port(s) your server listens on using the `rippled.cfg` file.
+IANA [has assigned port **2459**](https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml?search=2459) for the XRP Ledger peer protocol, and you can configure which port(s) your server uses in the `xrpld.cfg` file. The [example config file](https://github.com/XRPLF/rippled/blob/master/cfg/xrpld-example.cfg) now listens for incoming peer protocol connections on **port 2459** on all network interfaces. {% badge href="https://xrpl.org/blog/2026/xrpld-3.2.0" %}Updated in: xrpld 3.2.0{% /badge %}
+
+Older servers may use the previous **port 51235**, so you might see peers on either port.
 
 Example:
 
@@ -54,17 +56,17 @@ When a server first starts up, it generates a _node key pair_ to use to identify
 
 The node key pair is saved in the database and reused when the server restarts. If you delete the server's databases, it creates a new node key pair, effectively coming online with a different identity. To reuse the same key pair even if the databases are deleted, you can configure the server with a `[node_seed]` stanza. To generate a value suitable for use in the `[node_seed]` stanza, use the [validation_create method][].
 
-The node key pair also identifies other servers for purposes of [clustering](clustering.md) or [reserving peer slots](#fixed-peers-and-peer-reservations). If you have a cluster of servers, you should configure each server in the cluster with a unique `[node_seed]` setting. For more information on setting up a cluster, see [Cluster `rippled` Servers](../../infrastructure/configuration/peering/cluster-rippled-servers.md).
+The node key pair also identifies other servers for purposes of [clustering](clustering.md) or [reserving peer slots](#fixed-peers-and-peer-reservations). If you have a cluster of servers, you should configure each server in the cluster with a unique `[node_seed]` setting. For more information on setting up a cluster, see [Cluster `xrpld` Servers](../../infrastructure/configuration/peering/cluster-xrpld-servers.md).
 
 
 ## Fixed Peers and Peer Reservations
 
-Normally, a `rippled` server attempts to maintain a healthy number of peers, and automatically connects to untrusted peers up to a maximum number. You can configure a `rippled` server to remain connected to specific peer servers in several ways:
+Normally, an `xrpld` server attempts to maintain a healthy number of peers, and automatically connects to untrusted peers up to a maximum number. You can configure an `xrpld` server to remain connected to specific peer servers in several ways:
 
 - Use **Fixed Peers** to remain always connected to specific other peers based on their IP addresses. This only works if the peers have fixed IP addresses. Use the `[ips_fixed]` config stanza to configure fixed peers. This is a necessary part of [clustering](clustering.md) or [private peers](#private-peers). Fixed peers are defined in the config file, so changes only apply after restarting the server. Fixed peers are most useful for keeping servers connected if those servers are run by the same person or organization.
 - Use **Peer Reservations** to prioritize specific peers. If your server has a peer reservation for a specific peer, then your server always accepts connection requests from that peer even if your server is already at its maximum number of connected peers. (This can cause your server to go _over_ the maximum number of peers.) You identify a reserved peer by its [node key pair](#node-key-pair), so you can do this even for peers with variable IP addresses. Peer reservations are configured through admin commands and saved in the server databases, so they can be adjusted while the server is online and are saved across restarts. Peer reservations are most useful for connecting servers run by different people or organizations. <!-- STYLE_OVERRIDE: prioritize -->
 
-In the following cases, a `rippled` server does not connect to untrusted peers:
+In the following cases, an `xrpld` server does not connect to untrusted peers:
 
 - If the server is configured as a [private peer](#private-peers), it connects _only_ to its fixed peers.
 - If the server is running in [stand-alone mode][] it does not connect to _any_ peers.
@@ -72,7 +74,7 @@ In the following cases, a `rippled` server does not connect to untrusted peers:
 
 ## Private Peers
 
-You can configure a `rippled` server to act as a "private" server to keep its IP address hidden from the general public. This can be a useful precaution against denial of service attacks and intrusion attempts on important `rippled` servers such as trusted validators. To participate in the peer-to-peer network, a private server must be configured to connect to at least one non-private server, which relays its messages to the rest of the network.
+You can configure an `xrpld` server to act as a "private" server to keep its IP address hidden from the general public. This can be a useful precaution against denial of service attacks and intrusion attempts on important `xrpld` servers such as trusted validators. To participate in the peer-to-peer network, a private server must be configured to connect to at least one non-private server, which relays its messages to the rest of the network.
 
 {% admonition type="warning" name="Caution" %}If you configure a private server without any [fixed peers](#fixed-peers-and-peer-reservations), the server cannot connect to the network, so it cannot know network state, broadcast transactions, or participate in the consensus process.{% /admonition %}
 
@@ -88,10 +90,10 @@ Configuring a server as a private server has several effects:
 
 ### Pros and Cons of Peering Configurations
 
-To be part of the XRP Ledger, a `rippled` server must be connected to the rest of the open peer-to-peer network. Roughly speaking, there are three categories of configurations for how a `rippled` server connects to the network:
+To be part of the XRP Ledger, an `xrpld` server must be connected to the rest of the open peer-to-peer network. Roughly speaking, there are three categories of configurations for how an `xrpld` server connects to the network:
 
 - Using **discovered peers**. The server connects to any untrusted servers it finds and stays connected as long as those servers behave appropriately. (For example, they don't request too much data, their network connections are stable, and they appear to be following the same [network](parallel-networks.md).) This is the default.
-- As a **private server using proxies** run by the same person or organization. The proxies are stock `rippled` servers (also connected to discovered peers) that maintain a fixed peering connection with the private server.
+- As a **private server using proxies** run by the same person or organization. The proxies are stock `xrpld` servers (also connected to discovered peers) that maintain a fixed peering connection with the private server.
 - As a **private server using public hubs**. This is similar to using proxies, but it relies on specific third parties.
 
 The pros and cons of each configuration are as follows:
@@ -109,7 +111,7 @@ The pros and cons of each configuration are as follows:
     <li><p>Lowers the possibility of disconnecting from the network because your server can replace disconnected peers with new ones.</p></li>
   </ul></td>
   <td><ul>
-    <li><p>Doesn't allow you to select your server's peers, which means that you have no idea whether your peers may decide to act maliciously. Although `rippled` servers are designed to protect against malicious peers, there is always a risk that malicious peers could exploit software flaws to affect your server.</p></li>
+    <li><p>Doesn't allow you to select your server's peers, which means that you have no idea whether your peers may decide to act maliciously. Although `xrpld` servers are designed to protect against malicious peers, there is always a risk that malicious peers could exploit software flaws to affect your server.</p></li>
     <li><p>Your server's peers may disconnect or change often.</p></li>
   </ul></td>
 </tr>
@@ -153,7 +155,7 @@ To configure your server as a private server, set the `[peer_private]` setting t
     - [Consensus](../consensus-protocol/index.md)
     - [Parallel Networks](parallel-networks.md)
 - **Tutorials:**
-    - [Cluster rippled Servers](../../infrastructure/configuration/peering/cluster-rippled-servers.md)
+    - [Cluster xrpld Servers](../../infrastructure/configuration/peering/cluster-xrpld-servers.md)
     - [Configure a Private Server](../../infrastructure/configuration/peering/configure-a-private-server.md)
     - [Configure the Peer Crawler](../../infrastructure/configuration/peering/configure-the-peer-crawler.md)
     - [Forward Ports for Peering](../../infrastructure/configuration/peering/forward-ports-for-peering.md)

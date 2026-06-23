@@ -13,7 +13,6 @@ You can also [cash a check for a flexible amount](./cash-a-check-for-a-flexible-
 ## Prerequisites
 
 - You should be familiar with the basics of using the [xrpl.js client library](../get-started/get-started-javascript.md).
-- You need an XRP Ledger account including its secret key. (You can get one on Testnet for free.) See also: [XRP Faucets](/resources/dev-tools/xrp-faucets).
 - You need the ID of a Check ledger entry that you are the recipient of. See also: [Send a Check](./send-a-check.md) and [Look Up Checks](./look-up-checks.md).
 
 ## Source Code
@@ -23,9 +22,12 @@ The complete source code for this tutorial is available in the source repository
 {% repo-link path="_code-samples/checks/js/" %}Checks sample code{% /repo-link %}
 
 ## Steps
+
+Before running these scripts, run `checks-setup.js` once to generate the test wallets and checks used throughout the tutorials.
+
 ### 1. Prepare the CheckCash transaction
 
-Figure out the values of the [CheckCash transaction][] fields. You also need to create a `Wallet` instance for your account's key pair. To cash a check for an exact amount, the following fields are the bare minimum; everything else is either optional or can be [auto-filled](../../references/protocol/transactions/common-fields.md#auto-fillable-fields) when signing:
+Figure out the values of the [CheckCash transaction][] fields. To cash a check for an exact amount, the following fields are the bare minimum; everything else is either optional or can be [auto-filled](../../references/protocol/transactions/common-fields.md#auto-fillable-fields) when signing:
 
 | Field             | Value                | Description                  |
 |:------------------|:---------------------|:-----------------------------|
@@ -34,20 +36,19 @@ Figure out the values of the [CheckCash transaction][] fields. You also need to 
 | `CheckID`         | String               | The ID of the Check to cash. You can get this information from the person who sent you the Check, or by [looking up checks](./look-up-checks.md) where your account is the destination. |
 | `Amount`          | [Currency Amount][]  | The amount to receive. The type of currency (token or XRP) must match the Check object. The quantity in the `value` field must be less than or equal to the amount in the Check object. (For currencies with transfer fees, you must cash the Check for less than its `SendMax` so the transfer fee can be paid by the `SendMax`.) For more information on specifying currency amounts, see [Specifying Currency Amounts][]. |
 
-In the sample code, these values are hard-coded, so you should edit them to match your case:
+This example uses a preconfigured account and check from the `checks-setup.js` script, but you can replace `wallet` and `checkID` with your own values.
 
-{% code-snippet file="/_code-samples/checks/js/cash-check-exact.js" language="js" from="// Define parameters" before="async function main()" /%}
+{% code-snippet file="/_code-samples/checks/js/cash-check-exact.js" language="js" from="// Load setup data" before="// Connect to Testnet" /%}
 
-Then, you use these parameters to fill out the transaction. For example:
+Then, use the loaded values to fill out the transaction:
 
 {% code-snippet file="/_code-samples/checks/js/cash-check-exact.js" language="js" from="// Prepare the transaction" before="// Submit the transaction" /%}
-
 
 ### 2. Submit the transaction
 
 Send the transaction and wait for it to be validated by the consensus process, as normal:
 
-{% code-snippet file="/_code-samples/checks/js/cash-check-exact.js" from="// Submit" before="// Confirm" /%}
+{% code-snippet file="/_code-samples/checks/js/cash-check-exact.js" language="js" from="// Submit the transaction" before="// Confirm transaction result" /%}
 
 
 ### 3. Confirm transaction result
@@ -58,7 +59,7 @@ If the transaction succeeded, it should have a `"TransactionResult": "tesSUCCESS
 
 You can look at the transaction metadata to confirm the balance changes that occurred as a result of delivering the exact amount. The `xrpl.getBalanceChanges()` function can help to summarize this. For example:
 
-{% code-snippet file="/_code-samples/checks/js/cash-check-exact.js" from="// Confirm transaction results" before="// Disconnect" /%}
+{% code-snippet file="/_code-samples/checks/js/cash-check-exact.js" language="js" from="// Confirm transaction result" before="// Disconnect" /%}
 
 Example balance changes output:
 

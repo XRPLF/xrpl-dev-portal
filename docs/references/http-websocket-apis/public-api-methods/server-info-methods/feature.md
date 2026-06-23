@@ -47,7 +47,7 @@ An example of the request format:
 {% tab label="Commandline" %}
 ```sh
 #Syntax: feature [<feature_id>]
-rippled feature 4C97EBA926031A7CF7D7B36FDE3ED66DDA5421192D63DE53FFB46E43B9DC8373
+xrpld feature 4C97EBA926031A7CF7D7B36FDE3ED66DDA5421192D63DE53FFB46E43B9DC8373
 ```
 {% /tab %}
 
@@ -102,7 +102,7 @@ An example of a successful response:
 
 {% tab label="Commandline" %}
 ```json
-Loading: "/etc/rippled.cfg"
+Loading: "/etc/xrpld.cfg"
 Connecting to 127.0.0.1:5005
 
 {

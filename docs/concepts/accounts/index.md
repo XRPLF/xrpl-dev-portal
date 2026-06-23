@@ -36,7 +36,7 @@ An account's core data is stored in an [AccountRoot](../../references/protocol/l
 
 There is not a dedicated "create account" transaction. The [Payment transaction][] automatically creates a new account if the payment sends enough XRP to a mathematically-valid address that does not already have an account. This is called _funding_ an account, and creates an [AccountRoot entry](../../references/protocol/ledger-data/ledger-entry-types/accountroot.md) in the ledger. No other transaction can create an account.
 
-{% admonition type="warning" name="Caution" %}Funding an account **does not** give you any special privileges over that account. Whoever has the secret key corresponding to the account's address has full control over the account and all XRP it contains. For some addresses, it's possible that no one has the secret key, in which case the account is a [black hole](addresses.md#special-addresses) and the XRP is lost forever.{% /admonition %}
+{% admonition type="warning" name="Caution" %}Funding an account **does not** give you any special privileges over that account. Whoever has the secret key corresponding to the account's address has full control over the account and all XRP it contains. For some addresses, it's possible that no one has the secret key, in which case the account is a [blackholed account](blackholed-accounts.md) and the XRP is lost forever.{% /admonition %}
 
 The typical way to get an account in the XRP Ledger is as follows:
 
@@ -56,6 +56,7 @@ The typical way to get an account in the XRP Ledger is as follows:
     - [Reserves](reserves.md)
     - [Cryptographic Keys](cryptographic-keys.md)
     - [Issuing and Operational Addresses](account-types.md)
+    - [Blackholed Accounts](blackholed-accounts.md)
 - **References:**
     - [account_info method][]
     - [wallet_propose method][]

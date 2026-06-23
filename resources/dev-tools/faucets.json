@@ -25,20 +25,20 @@
             "desc": "Hooks (L1 smart contracts) enabled Xahau testnet."
         },
         {
-            "id": "faucet-select-batch-devnet",
-            "wsUrl": "wss://batch.nerdnest.xyz",
-            "jsonRpcUrl": "https://batch.rpc.nerdnest.xyz",
-            "faucetHost": "batch.faucet.nerdnest.xyz",
-            "shortName": "Batch-Devnet",
-            "desc": "Preview of XLS-56d Batch transactions."
-        },
-        {
             "id": "faucet-select-lending-devnet",
             "wsUrl": "wss://lend.devnet.rippletest.net:51233/",
             "jsonRpcUrl": "https://lend.devnet.rippletest.net:51234/",
             "faucetHost": "lend-faucet.devnet.rippletest.net",
             "shortName": "Lending-Devnet",
             "desc": "Preview of XLS-66d Lending Protocol."
+        },
+        {
+            "id": "faucet-select-wasm",
+            "wsUrl": "wss://wasm.devnet.rippletest.net:51233",
+            "jsonRpcUrl": "https://wasm.devnet.rippletest.net:51234",
+            "faucetHost": "wasmfaucet.devnet.rippletest.net",
+            "shortName": "WASM Devnet",
+            "desc": "Preview of XLS-100d Smart Escrows and other WASM-based programmability."
         }
     ]
 }

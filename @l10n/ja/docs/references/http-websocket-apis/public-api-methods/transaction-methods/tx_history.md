@@ -42,7 +42,7 @@ seo:
 {% tab label="コマンドライン" %}
 ```sh
 #Syntax: tx_history [start]
-rippled tx_history 0
+xrpld tx_history 0
 ```
 {% /tab %}
 

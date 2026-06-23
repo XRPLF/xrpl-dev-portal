@@ -8,13 +8,40 @@ labels:
 ---
 # Transaction Types
 
-The type of a transaction (`TransactionType` field) is the most fundamental information about a transaction. This indicates what type of operation the transaction is supposed to do.
+The `TransactionType` field determines what operation a transaction performs. All transactions share [common fields](../common-fields.md), plus fields specific to the transaction type.
 
-All transactions have certain fields in common:
+The following tables list all transaction types, grouped by feature area.
 
-* [Common Fields](../common-fields.md)
+{% tx-icon-legend /%}
 
-Each transaction type has additional fields relevant to the type of action it causes.
+## Accounts
 
+{% tx-category name="Accounts" /%}
 
-{% child-pages /%}
+## Payments
+
+{% tx-category name="Payments" /%}
+
+## Tokens
+
+{% tx-category name="Tokens" /%}
+
+## DEX
+
+{% tx-category name="DEX" /%}
+
+## Decentralized Storage
+
+{% tx-category name="Decentralized Storage" /%}
+
+## Lending
+
+{% tx-category name="Lending Protocol" /%}
+
+## XRPL Side Chains
+
+{% tx-category name="Interoperability" /%}
+
+## Other 
+
+{% tx-category name="Other Transactions" /%}

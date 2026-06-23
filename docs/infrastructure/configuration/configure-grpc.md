@@ -6,7 +6,7 @@ labels:
 ---
 # Configure gRPC
 
-The `rippled` server has a limited [gRPC API](https://grpc.io/) it can provide. Clio servers use this API to retrieve data about the latest validated ledgers and transactions. You can enable the gRPC API on your server with a new configuration stanza.
+The `xrpld` server has a limited [gRPC API](https://grpc.io/) it can provide. Clio servers use this API to retrieve data about the latest validated ledgers and transactions. You can enable the gRPC API on your server with a new configuration stanza.
 
 {% admonition type="warning" name="Caution" %}gRPC support is intended specifically for providing data to Clio servers. Breaking changes to the gRPC API may occur without warning or it may be removed entirely in future versions of the server.{% /admonition %}
 
@@ -14,7 +14,7 @@ The `rippled` server has a limited [gRPC API](https://grpc.io/) it can provide. 
 
 To enable gRPC, you must meet the following prerequisites:
 
-- You must have [installed rippled](../installation/index.md).
+- You must have [installed xrpld](../installation/index.md).
 
 - Your server must be able to bind to the port you choose.
 
@@ -22,7 +22,7 @@ To enable gRPC, you must meet the following prerequisites:
 
 To enable gRPC on your server, complete the following steps:
 
-1. Ensure the `[port_grpc]` stanza is in your `rippled` config file.
+1. Ensure the `[port_grpc]` stanza is in your `xrpld` config file.
 
     ```
     [port_grpc]
@@ -35,21 +35,37 @@ To enable gRPC on your server, complete the following steps:
 
     {% partial file="/docs/_snippets/conf-file-location.md" /%}
 
-2. Start (or restart) the `rippled` service.
+2. _(Optional)_ To secure gRPC connections with TLS, add the following settings to the `[port_grpc]` stanza. All certificate and key files must be in PEM format.
 
     ```
-    sudo systemctl restart rippled
+    [port_grpc]
+    port = 50051
+    ip = 127.0.0.1
+    ssl_cert = /etc/ssl/certs/grpc-server.crt
+    ssl_key = /etc/ssl/private/grpc-server.key
+    ssl_cert_chain = /etc/ssl/certs/grpc-intermediate-ca.crt
+    ssl_client_ca = /etc/ssl/certs/grpc-client-ca.crt
+    ```
+
+    - `ssl_cert` and `ssl_key` define the paths to the server's TLS certificate and private key. Set both to enable TLS.
+    - `ssl_cert_chain` _(optional)_ defines the path to a file of intermediate CA certificates.
+    - `ssl_client_ca` _(optional)_ defines the path to a CA certificate used to verify client certificates, enabling mutual TLS (mTLS).
+
+3. Start (or restart) the `xrpld` service.
+
+    ```
+    sudo systemctl restart xrpld
     ```
 
 ## See Also
 
 - **Concepts:**
     - [XRP Ledger Overview](/about/)
-    - [`rippled` Server Modes](../../concepts/networks-and-servers/rippled-server-modes.md)
+    - [`xrpld` Server Modes](../../concepts/networks-and-servers/xrpld-server-modes.md)
 - **Tutorials:**
     - [Get Started Using HTTP / WebSocket APIs](../../tutorials/get-started/get-started-http-websocket-apis.md)
     - [Reliable Transaction Submission](../../concepts/transactions/reliable-transaction-submission.md)
-    - [Manage the rippled Server](../installation/install-rippled-on-ubuntu.md)
+    - [Manage the xrpld Server](../installation/install-xrpld-on-ubuntu.md)
 - **References:**
     - [HTTP / WebSocket API Reference](../../references/http-websocket-apis/index.md)
 

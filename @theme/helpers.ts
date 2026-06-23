@@ -3,7 +3,7 @@
  */
 import { useEffect, useState } from 'react';
 
-export const useThemeFromClassList = (classNames) => {
+export const useThemeFromClassList = (classNames: Array<string>) => {
   const [currentTheme, setCurrentTheme] = useState(null);
 
   useEffect(() => {
@@ -40,7 +40,7 @@ export const useThemeFromClassList = (classNames) => {
   return currentTheme;
 };
 
-export function slugify(s) {
+export function slugify(s: string) {
   const unacceptable_chars = /[^A-Za-z0-9._ ]+/g;
   const whitespace_regex = /\s+/g;
   s = s.replace(unacceptable_chars, "");

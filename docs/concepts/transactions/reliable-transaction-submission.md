@@ -9,7 +9,7 @@ labels:
 ---
 # Reliable Transaction Submission
 
-Financial institutions and other services using the XRP Ledger should use the best practices described here to make sure that transactions are validated or rejected in a verifiable and prompt way.  You should submit transactions to trusted `rippled` servers.
+Financial institutions and other services using the XRP Ledger should use the best practices described here to make sure that transactions are validated or rejected in a verifiable and prompt way.  You should submit transactions to trusted `xrpld` servers.
 
 The best practices detailed in this document allow applications to submit transactions to the XRP Ledger while achieving:
 
@@ -53,11 +53,11 @@ When you submit a transaction to the XRP Ledger, regardless of whether you used 
 
 APIs may return provisional results based on the result of applying candidate transactions to the current, in-progress ledger. Applications must not confuse these with the final, *immutable*, results of a transaction.  Immutable results are found only in validated ledgers.  Applications may need to query the status of a transaction repeatedly, until the ledger containing the transaction results is validated.
 
-While applying transactions, `rippled` servers use the *last validated ledger*, a snapshot of the ledger state based on transactions the entire network has validated.  The process of consensus and validation apply a set of new transactions to the last validated ledger in canonical order, resulting in a new validated ledger.  This new validated ledger version and the ones that preceded it form the ledger history.
+While applying transactions, `xrpld` servers use the *last validated ledger*, a snapshot of the ledger state based on transactions the entire network has validated.  The process of consensus and validation apply a set of new transactions to the last validated ledger in canonical order, resulting in a new validated ledger.  This new validated ledger version and the ones that preceded it form the ledger history.
 
 Each validated ledger version has a ledger index, which is 1 greater than the ledger index of the previous ledger version. Each ledger also has an identifying hash value, which is uniquely determined from its contents. There may be many different versions of in-progress ledgers, which have the same ledger index but different hash values. Only one version can ever be validated.
 
-Each validated ledger has a canonical order in which transactions apply. This order is deterministic based on the final transaction set of the ledger. In contrast, each `rippled` server's in-progress ledger is calculated incrementally, as transactions are received. The order in which transactions execute provisionally is usually not the same as the order in which transactions execute to build a new validated ledger. This is one reason why the provisional outcome of a transaction may be different than the final result. For example, a payment may achieve a different final exchange rate depending on whether it executes before or after another payment that would consume the same offer.
+Each validated ledger has a canonical order in which transactions apply. This order is deterministic based on the final transaction set of the ledger. In contrast, each `xrpld` server's in-progress ledger is calculated incrementally, as transactions are received. The order in which transactions execute provisionally is usually not the same as the order in which transactions execute to build a new validated ledger. This is one reason why the provisional outcome of a transaction may be different than the final result. For example, a payment may achieve a different final exchange rate depending on whether it executes before or after another payment that would consume the same offer.
 
 
 
@@ -177,9 +177,9 @@ The difference between the two transaction failure cases (labeled (1) and (2) in
 
 If your server does not have continuous ledger history from when the transaction was originally submitted up to and including the ledger identified by `LastLedgerSequence`, you may not know the final outcome of the transaction. (If it was included in one of the ledger versions your server is missing, you do not know whether it succeeded or failed.)
 
-Your `rippled` server should automatically acquire the missing ledger versions when it has spare resources (CPU/RAM/disk IO) to do so, unless the ledgers are older than its [configured amount of history to store](../networks-and-servers/ledger-history.md). Depending on the size of the gap and the resource usage of your server, acquiring missing ledgers should take a few minutes. You can request your server to acquire historical ledger versions using the [ledger_request method][], but even so you may not be able to look up transaction outcomes from ledger versions that are outside of your server's configured history range.
+Your `xrpld` server should automatically acquire the missing ledger versions when it has spare resources (CPU/RAM/disk IO) to do so, unless the ledgers are older than its [configured amount of history to store](../networks-and-servers/ledger-history.md). Depending on the size of the gap and the resource usage of your server, acquiring missing ledgers should take a few minutes. You can request your server to acquire historical ledger versions using the [ledger_request method][], but even so you may not be able to look up transaction outcomes from ledger versions that are outside of your server's configured history range.
 
-Alternatively, you can look up the status of the transaction using a different `rippled` server that already has the needed ledger history, such as Ripple's full-history servers at `s2.ripple.com`. Only use a server you trust for this purpose. A malicious server could be programmed to provide false information about the status and outcome of a transaction.
+Alternatively, you can look up the status of the transaction using a different `xrpld` server that already has the needed ledger history, such as Ripple's full-history servers at `s2.ripple.com`. Only use a server you trust for this purpose. A malicious server could be programmed to provide false information about the status and outcome of a transaction.
 
 
 ## Technical Application
@@ -204,11 +204,11 @@ How the application does these actions depends on the API the application uses. 
 - Other middleware or APIs layered on top of the above APIs
 
 
-### rippled - Submitting and Verifying Transactions
+### xrpld - Submitting and Verifying Transactions
 
 #### Determine the Account Sequence
 
-`rippled` provides the [account_info method][] to learn an account's sequence number in the last validated ledger.
+`xrpld` provides the [account_info method][] to learn an account's sequence number in the last validated ledger.
 
 JSON-RPC Request:
 
@@ -305,7 +305,7 @@ In this example the last validated ledger index is 10268596 (found under `result
 
 #### Construct the Transaction
 
-`rippled` provides the [sign method][] to prepare a transaction for submission.  This method requires an account secret, which should only be passed to trusted `rippled` instances.  This example issues 10 FOO (a made-up currency) to another XRP Ledger address.
+`xrpld` provides the [sign method][] to prepare a transaction for submission.  This method requires an account secret, which should only be passed to trusted `xrpld` instances.  This example issues 10 FOO (a made-up currency) to another XRP Ledger address.
 
 Request:
 
@@ -372,7 +372,7 @@ Applications should persist the transaction's hash before submitting.  The resul
 
 #### Submit the transaction
 
-`rippled` provides the [submit method][], allowing us to submit the signed transaction.  This uses the `tx_blob` parameter that was returned by the `sign` method.
+`xrpld` provides the [submit method][], allowing us to submit the signed transaction.  This uses the `tx_blob` parameter that was returned by the `sign` method.
 
 Request:
 
@@ -498,7 +498,7 @@ Applications must handle cases where a call to the [tx method][] returns a `txnN
 }
 ```
 
-The `txnNotFound` result code occurs in cases where the transaction is not included in any ledger.  However, it could also occur when a `rippled` instance does not have a complete ledger history, or if the transaction has not yet propagated to the `rippled` instance.  Applications should make further queries to determine how to react.
+The `txnNotFound` result code occurs in cases where the transaction is not included in any ledger.  However, it could also occur when an `xrpld` instance does not have a complete ledger history, or if the transaction has not yet propagated to the `xrpld` instance.  Applications should make further queries to determine how to react.
 
 The [server_state method][] (used earlier to determine the last validated ledger) indicates how complete the ledger history is, under `result.state.complete_ledgers`.
 
@@ -533,11 +533,11 @@ The [server_state method][] (used earlier to determine the last validated ledger
 }
 ```
 
-Our example transaction specified `LastLedgerSequence` 10268600, based on the last validated ledger at the time, plus four.  To determine whether our missing transaction has permanently failed, our `rippled` server must have ledgers 10268597 through 10268600.  If the server has those validated ledgers in its history, **and** `tx` returns `txnNotFound`, then the transaction has failed and cannot be included in any future ledger.  In this case, application logic may dictate building and submitting a replacement transaction with the same account sequence and updated `LastLedgerSequence`.
+Our example transaction specified `LastLedgerSequence` 10268600, based on the last validated ledger at the time, plus four.  To determine whether our missing transaction has permanently failed, our `xrpld` server must have ledgers 10268597 through 10268600.  If the server has those validated ledgers in its history, **and** `tx` returns `txnNotFound`, then the transaction has failed and cannot be included in any future ledger.  In this case, application logic may dictate building and submitting a replacement transaction with the same account sequence and updated `LastLedgerSequence`.
 
 The server may report a last validated ledger index less than the specified `LastLedgerSequence`.  If so, the `txnNotFound` indicates either (a) the submitted transaction has not been distributed to the network, or (b) the transaction has been distributed to the network but has not yet been processed.  To handle the former case, applications may submit again the same signed transaction.  Because the transaction has a unique account sequence number, it can be processed at most once.
 
-Finally the server may show one or more gaps in the transaction history. The `completed_ledgers` field shown in the response above indicates that ledgers 10256383 through 10256411 are missing from this rippled instance.  Our example transaction can only appear in ledgers 10268597 - 10268600 (based on when it was submitted and `LastLedgerSequence`), so the gap shown here is not relevant.  However, if the gap indicated a ledger in that range was missing, then an application would need to query another rippled server (or wait for this one to retrieve the missing ledgers) to determine that a `txnNotFound` result is immutable.
+Finally the server may show one or more gaps in the transaction history. The `completed_ledgers` field shown in the response above indicates that ledgers 10256383 through 10256411 are missing from this xrpld instance.  Our example transaction can only appear in ledgers 10268597 - 10268600 (based on when it was submitted and `LastLedgerSequence`), so the gap shown here is not relevant.  However, if the gap indicated a ledger in that range was missing, then an application would need to query another xrpld server (or wait for this one to retrieve the missing ledgers) to determine that a `txnNotFound` result is immutable.
 
 
 ## See Also

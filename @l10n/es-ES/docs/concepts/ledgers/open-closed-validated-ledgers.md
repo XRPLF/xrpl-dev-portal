@@ -8,7 +8,7 @@ labels:
 ---
 # Ledgers abiertos, cerrados, y validados
 
-El servidor `rippled` hace una distinción entre versiones de ledgers que están _abiertas_, _cerradas_, y _validadas_. Un servidor tiene un ledger abierto, cualquier número de ledgers cerrados pero no validados, y un historial inmutable de ledgers validados. La siguiente tabla resume las diferencias:
+El servidor `xrpld` hace una distinción entre versiones de ledgers que están _abiertas_, _cerradas_, y _validadas_. Un servidor tiene un ledger abierto, cualquier número de ledgers cerrados pero no validados, y un historial inmutable de ledgers validados. La siguiente tabla resume las diferencias:
 
 | Tipo de ledger:                     | Abierto                        | Cerrado                                     | Validado |
 |:---------------------------------|:----------------------------|:-------------------------------------------|:--|

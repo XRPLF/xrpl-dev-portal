@@ -2,6 +2,7 @@
 
 [data-component-name="Markdown/Markdown"] article {
   padding-bottom: 50px;
+  border-bottom: 1px solid $gray-400;
 
   p code,
   table code,
@@ -85,6 +86,13 @@
   a[title="ソース"] {
     float: right;
     padding-left: 20px;
+  }
+
+  // source-link component right-aligned
+  .source-link {
+    display: block;
+    width: fit-content;
+    margin-left: auto;
   }
 
   // Make "invisible" headers take up no space either, so we can use them

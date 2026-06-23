@@ -43,7 +43,7 @@ labels:
 {% tab label="コマンドライン" %}
 ```sh
 #Syntax: account_offers account [ledger_index]
-rippled account_offers r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 current
+xrpld account_offers r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 current
 ```
 {% /tab %}
 

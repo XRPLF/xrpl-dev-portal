@@ -4,7 +4,10 @@ seo:
 labels:
   - Transactions
   - Single Asset Vault
+  - Lending Protocol
 status: not_enabled
+requiredAmendment: SingleAssetVault
+txIcon: cancel
 ---
 
 # VaultClawback

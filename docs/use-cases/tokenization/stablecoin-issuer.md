@@ -128,7 +128,7 @@ Each "trust line" is a bidirectional relationship consisting of:
 
 Each trust line is specific to a given currency code. Two accounts can have any number of trust lines between them for different currency codes, but only one shared trust line for any particular currency code.
 
-See [Trust Lines](../../concepts/tokens/fungible-tokens/index.md#trust-lines).
+See [Trust Line Tokens](../../concepts/tokens/fungible-tokens/trust-line-tokens.md).
 
 ### Authorized Trust Lines
 
@@ -179,11 +179,11 @@ See [Partial Payments](../../concepts/payment-types/partial-payments.md).
 
 One way to manage the value of a token is to destroy, or _burn_ tokens, which reduces the number of tokens in circulation. On the XRP Ledger, fungible tokens are automatically "burned" when they are sent to the issuing address. However, the issuer can freely create more tokens.
 
-To ensure a limited supply, you can "black hole" the issuer after issuing tokens, by setting its regular key to an address like `rrrrrrrrrrrrrrrrrrrrrhoLvTp` for which no one knows the private key, and disabling the master key pair.
+To ensure a limited supply, you can blackhole the issuer after issuing tokens, by setting its regular key to an address like `rrrrrrrrrrrrrrrrrrrrrhoLvTp` for which no one knows the private key, and disabling the master key pair.
 
-{% admonition type="danger" name="Warning" %}A black hole account has no way to send transactions of any kind, so you cannot update any settings or do any maintenance on the account afterwards!{% /admonition %}
+{% admonition type="danger" name="Warning" %}A blackhole account has no way to send transactions of any kind, so you cannot update any settings or do any maintenance on the account afterwards!{% /admonition %}
 
-See [Disable Master Key Pair](../../tutorials/best-practices/key-management/disable-master-key-pair.md).
+See [Blackholed Accounts](../../concepts/accounts/blackholed-accounts.md) and [Disable Master Key Pair](../../tutorials/best-practices/key-management/disable-master-key-pair.md).
 
 ### Reliable Transaction Submission
 

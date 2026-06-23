@@ -42,7 +42,7 @@ An example of the request format:
 {% tab label="Commandline" %}
 ```sh
 #Syntax: fetch_info [clear]
-rippled fetch_info
+xrpld fetch_info
 ```
 {% /tab %}
 
@@ -100,7 +100,7 @@ An example of a successful response:
 
 {% tab label="Commandline" %}
 ```json
-Loading: "/etc/rippled.cfg"
+Loading: "/etc/xrpld.cfg"
 Connecting to 127.0.0.1:5005
 
 {

@@ -2,6 +2,8 @@
 
 Demonstrates how to use Tickets for out-of-order transaction submission on the XRP Ledger.
 
+For more context, see the [Use Tickets tutorial](https://xrpl.org/docs/tutorials/best-practices/transaction-sending/use-tickets).
+
 ## Setup
 
 ```sh
@@ -9,12 +11,6 @@ npm install
 ```
 
 ## Basic Ticket Usage
-
-### Browser
-
-Open `demo.html` in a web browser and check the browser console to see the logs.
-
-Alternatively, you can run the code from the command line:
 
 ```sh
 node use-tickets.js

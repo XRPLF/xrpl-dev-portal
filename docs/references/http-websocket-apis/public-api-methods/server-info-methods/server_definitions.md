@@ -2,15 +2,19 @@
 html: server_definitions.html
 parent: server-info-methods.html
 seo:
-    description: Retrieve an SDK-compatible `definitions.json`, generated from the `rippled` instance currently running.
+    description: Retrieve an SDK-compatible `definitions.json`, generated from the `xrpld` instance currently running.
 labels:
   - Core Server
 ---
 # server_definitions
 
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/ServerInfo.cpp#L42 "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/server_info/ServerDefinitions.cpp#L385 "Source")
 
-The `server_definitions` command returns an SDK-compatible `definitions.json`, generated from the `rippled` instance currently running. You can use this to query a node in a network, quickly receiving the definitions necessary to serialize/deserialize its binary data.
+The `server_definitions` command returns an SDK-compatible `definitions.json`, generated from the `xrpld` instance currently running. You can use this to query a node in a network, quickly receiving the definitions necessary to serialize/deserialize its binary data.
+
+The response also includes the `TRANSACTION_FORMATS`, `LEDGER_ENTRY_FORMATS`, `TRANSACTION_FLAGS`, `LEDGER_ENTRY_FLAGS`, and `ACCOUNT_SET_FLAGS` sections, which describe the fields and flags of each transaction and ledger entry type. {% badge href="https://xrpl.org/blog/2026/xrpld-3.2.0" %}New in: xrpld 3.2.0{% /badge %}
+
+You can also generate the same definitions without a running server using the [`--definitions`](../../../../infrastructure/commandline-usage.md) command-line flag.
 
 
 ## Request Format
@@ -99,7 +103,90 @@ An example of a successful response:
         }
       ]
       ...
-    ]
+    ],
+    "TRANSACTION_FORMATS": {
+      "common": [
+        {
+          "name": "TransactionType",
+          "optionality": 0
+        },
+        {
+          "name": "Flags",
+          "optionality": 1
+        },
+        {
+          "name": "SourceTag",
+          "optionality": 1
+        }
+        ...
+      ],
+      "AccountSet": [
+        {
+          "name": "EmailHash",
+          "optionality": 1
+        },
+        ...
+        {
+          "name": "SetFlag",
+          "optionality": 1
+        }
+        ...
+      ]
+      ...
+    },
+    "LEDGER_ENTRY_FORMATS": {
+      "common": [
+        {
+          "name": "LedgerIndex",
+          "optionality": 1
+        },
+        {
+          "name": "LedgerEntryType",
+          "optionality": 0
+        },
+        {
+          "name": "Flags",
+          "optionality": 0
+        }
+      ],
+      "DID": [
+        {
+          "name": "Account",
+          "optionality": 0
+        },
+        {
+          "name": "DIDDocument",
+          "optionality": 1
+        }
+        ...
+      ]
+      ...
+    },
+    "TRANSACTION_FLAGS": {
+      "universal": {
+        "tfFullyCanonicalSig": 2147483648,
+        "tfInnerBatchTxn": 1073741824
+      },
+      "AccountSet": {
+        "tfRequireDestTag": 65536,
+        "tfOptionalDestTag": 131072
+        ...
+      }
+      ...
+    },
+    "LEDGER_ENTRY_FLAGS": {
+      "AccountRoot": {
+        "lsfDisallowXRP": 524288
+        ...
+      }
+      ...
+    },
+    "ACCOUNT_SET_FLAGS": {
+      "asfRequireDest": 1,
+      "asfRequireAuth": 2,
+      "asfDisallowXRP": 3
+      ...
+    }
   }
 }
 ```
@@ -107,7 +194,7 @@ An example of a successful response:
 
 {% /tabs %}
 
-To see a full `definitions.json` file and descriptions of the top-level fields, see: [Definitions File](../../../protocol/binary-format.md#definitions-file).
+To see a full `definitions.json` file and descriptions of the top-level fields—including the `TRANSACTION_FORMATS`, `LEDGER_ENTRY_FORMATS`, `TRANSACTION_FLAGS`, `LEDGER_ENTRY_FLAGS`, and `ACCOUNT_SET_FLAGS` sections—see: [Definitions File](../../../protocol/binary-format.md#definitions-file).
 
 
 ## Possible Errors

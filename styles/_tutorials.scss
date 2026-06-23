@@ -1,0 +1,492 @@
+// Tutorials landing page styles
+
+// Card footer gradient images
+$card-footers: (
+  "3-col-pink",
+  "3col-blue-light-blue",
+  "3-col-light-blue",
+  "3col-blue-green",
+  "3col-magenta",
+  "3-col-orange"
+);
+
+$whats-new-footers: (
+  "3col-green-purple",
+  "3col-purple-blue-green",
+  "3col-green-blue"
+);
+
+// Tutorial cards
+.page-tutorials .tutorial-cards {
+  > div {
+    display: flex;
+  }
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    min-height: 300px;
+    transition: all 0.35s ease-out;
+    cursor: pointer;
+
+    &:hover {
+      transform: translateY(-16px);
+    }
+
+    .card-header {
+      border-bottom: none;
+      background: transparent;
+      padding: 1.5rem 1.5rem 0 2rem;
+    }
+
+    .circled-logo {
+      margin-left: -10px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .card-body {
+      padding: 1rem 1.5rem;
+      flex: 1;
+    }
+
+    .card-title {
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .card-text {
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .card-footer {
+      background-color: transparent;
+      border-top: none;
+      padding: 0;
+      height: 40px;
+      background-size: cover;
+      background-position: bottom;
+      background-repeat: no-repeat;
+      margin-top: auto;
+    }
+  }
+
+  // Apply colored footers to each card
+  @for $i from 1 through length($card-footers) {
+    > div:nth-child(#{$i}) .card .card-footer {
+      background-image: url("../img/cards/#{nth($card-footers, $i)}.svg");
+    }
+  }
+}
+
+// Light mode: invert HTTP/WebSocket icon
+.light .page-tutorials .tutorial-cards .circled-logo img[alt="HTTP / WebSocket"] {
+  filter: invert(1);
+}
+
+// Contribution Card - community contribution with meta links
+.page-tutorials .tutorial-cards .contribution-card {
+  .contribution-header {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .contribution-icon {
+    background: rgba($blue-purple-500, 0.15);
+    color: $blue-purple-300;
+    font-size: 26px;
+  }
+
+  .card-external-icon {
+    font-size: 0.85rem;
+    margin-left: 0.35rem;
+    color: $gray-500;
+    vertical-align: middle;
+  }
+
+  .card-meta-row {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.8rem;
+    flex-wrap: wrap;
+    margin-left: auto;
+    margin-top: -4px;
+
+    .meta-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      color: $gray-300;
+      text-decoration: none;
+      transition: color 0.15s ease;
+
+      .fa {
+        font-size: 0.8rem;
+      }
+
+      &:hover {
+        color: $blue-purple-300;
+      }
+    }
+
+    .meta-dot {
+      color: $gray-500;
+      font-weight: bold;
+      user-select: none;
+    }
+  }
+}
+
+// Light mode: Contribution Card
+.light .page-tutorials .tutorial-cards .contribution-card {
+  .contribution-icon {
+    background: rgba($blue-purple-500, 0.1);
+    color: $blue-purple-600;
+  }
+
+  .card-meta-row {
+    .meta-link {
+      color: $gray-600;
+
+      &:hover {
+        color: $blue-purple-600;
+      }
+    }
+
+    .meta-dot {
+      color: $gray-500;
+    }
+  }
+}
+
+// Tutorial category section spacing
+.page-tutorials .category-section + .category-section {
+  margin-top: 2rem;
+}
+
+// Explore more link
+.page-tutorials .explore-more-wrapper {
+  margin-top: -1.5rem;
+  margin-bottom: 1.5rem;
+
+  .explore-more-link {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 1.05rem;
+    color: $blue-purple-300;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.light .page-tutorials .explore-more-wrapper .explore-more-link {
+  color: $blue-purple-600;
+}
+
+// TOC navigation buttons
+.page-tutorials .page-toc.no-sideline {
+  border-left: none;
+  gap: 0.75rem;
+
+  li {
+    a {
+      border-radius: 100px;
+      padding: 0.5rem 1rem;
+      margin: 0;
+      background-color: $gray-800;
+      color: $gray-200;
+      font-weight: 500;
+      transition: all 0.2s ease;
+
+      &:hover,
+      &:focus,
+      &:active {
+        background-color: $blue-purple-500;
+        color: $white;
+        border-left: none;
+        margin-left: 0;
+      }
+    }
+  }
+}
+
+// Light mode: TOC buttons
+.light .page-tutorials .page-toc.no-sideline {
+  li a {
+    background-color: $gray-200;
+    color: $gray-800;
+
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: $blue-purple-500;
+      color: $white;
+    }
+  }
+}
+
+// What's New section
+.whats-new-section {
+  // Gradient underline on section title
+  h3 {
+    display: inline-block;
+    position: relative;
+    padding-bottom: 8px;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, $blue-purple-500, $green-400);
+      border-radius: 2px;
+    }
+  }
+
+  // Different footer colors for What's New cards
+  .tutorial-cards {
+    @for $i from 1 through length($whats-new-footers) {
+      > div:nth-child(#{$i}) .card .card-footer {
+        background-image: url("../img/cards/#{nth($whats-new-footers, $i)}.svg");
+      }
+    }
+  }
+}
+
+// Quick Reference Card
+.page-tutorials .quick-ref-card,
+.page-faucet .quick-ref-card {
+  background: rgba($gray-800, 0.7);
+  border: 1px solid $gray-700;
+  border-left: 3px solid $blue-purple-500;
+  border-radius: 12px;
+  padding: 1rem 1.5rem;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  margin-left: auto;
+  max-width: 480px;
+
+  @media (max-width: 991px) {
+    margin-left: 0;
+    max-width: 100%;
+  }
+
+  .quick-ref-section {
+    padding: 0.25rem 0;
+  }
+
+  .quick-ref-label {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: $blue-purple-300;
+    margin-bottom: 0.75rem;
+    text-transform: uppercase;
+  }
+
+  .quick-ref-group {
+    margin-bottom: 0.75rem;
+
+    &:last-of-type {
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  .quick-ref-key {
+    display: block;
+    font-size: 0.85rem;
+    color: $gray-300;
+    margin-bottom: 0.35rem;
+
+    strong {
+      font-weight: 700;
+      color: $white;
+    }
+  }
+
+  .quick-ref-urls {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 0.25rem 0.75rem;
+    align-items: center;
+    width: fit-content;
+    max-width: 100%;
+
+    @media (max-width: 576px) {
+      grid-template-columns: 1fr;
+      gap: 0.2rem;
+    }
+  }
+
+  .quick-ref-protocol {
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: $gray-500;
+    letter-spacing: 0.02em;
+  }
+
+  .quick-ref-value {
+    font-size: 0.75rem;
+    color: $blue-purple-300;
+    background: rgba($gray-900, 0.5);
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 100%;
+  }
+
+  .quick-ref-value-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+    max-width: 100%;
+    overflow: hidden;
+
+    &:hover {
+      opacity: 0.8;
+
+      .quick-ref-value {
+        background: rgba($gray-800, 0.8);
+      }
+    }
+
+    &.copied .quick-ref-value {
+      background: rgba($green-500, 0.2);
+      color: $green-400;
+    }
+
+    .copy-icon {
+      font-size: 0.7rem;
+      color: $green-400;
+      min-width: 0.8rem;
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 576px) {
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  .quick-ref-link {
+    display: inline-block;
+    font-size: 0.8rem;
+    color: $blue-purple-300;
+    margin-top: 0.35rem;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .quick-ref-divider {
+    height: 1px;
+    background: $gray-700;
+    margin: 0.5rem 0;
+  }
+
+  .quick-ref-faucet {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: $white;
+    text-decoration: none;
+    padding: 0.25rem 0;
+
+    &:hover {
+      color: $blue-purple-300;
+    }
+
+    .quick-ref-arrow {
+      color: $blue-purple-400;
+    }
+  }
+}
+
+// Light mode: Quick Reference Card
+.light .page-tutorials .quick-ref-card,
+.light .page-faucet .quick-ref-card {
+  background: rgba($white, 0.95);
+  border-color: $gray-300;
+  border-left: 3px solid $blue-purple-500;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+
+  .quick-ref-label {
+    color: $blue-purple-600;
+  }
+
+  .quick-ref-key {
+    color: $gray-700;
+
+    strong {
+      color: $gray-900;
+    }
+  }
+
+  .quick-ref-protocol {
+    color: $gray-500;
+  }
+
+  .quick-ref-value {
+    color: $blue-purple-600;
+    background: rgba($gray-300, 0.6);
+  }
+
+  .quick-ref-value-btn {
+    &:hover .quick-ref-value {
+      background: rgba($gray-400, 0.6);
+    }
+
+    &.copied .quick-ref-value {
+      background: rgba($green-500, 0.15);
+      color: $green-700;
+    }
+
+    .copy-icon {
+      color: $green-600;
+    }
+  }
+
+  .quick-ref-link {
+    color: $blue-purple-600;
+  }
+
+  .quick-ref-divider {
+    background: $gray-200;
+  }
+
+  .quick-ref-faucet {
+    color: $gray-900;
+
+    &:hover {
+      color: $blue-purple-600;
+    }
+
+    .quick-ref-arrow {
+      color: $blue-purple-500;
+    }
+  }
+}

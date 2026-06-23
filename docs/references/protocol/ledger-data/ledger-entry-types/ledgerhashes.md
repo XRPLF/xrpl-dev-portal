@@ -44,7 +44,7 @@ In addition to the [common fields](../common-fields.md), {% code-page-name /%} e
 
 | Name                  | JSON Type        | [Internal Type][] | Required? | Description |
 |:----------------------|:-----------------|:------------------|:----------|:------------|
-| `FirstLedgerSequence` | Number           | UInt32            | No        | **DEPRECATED** Do not use. (The "recent hashes" object on Mainnet has the value `2` in this field as a result of an old software bug. That value gets carried forward as the "recent hashes" object is updated. New "previous history" objects do not have this field, nor do "recent hashes" objects in [parallel networks](../../../../concepts/networks-and-servers/parallel-networks.md) started with more recent versions of `rippled`.) |
+| `FirstLedgerSequence` | Number           | UInt32            | No        | **DEPRECATED** Do not use. (The "recent hashes" object on Mainnet has the value `2` in this field as a result of an old software bug. That value gets carried forward as the "recent hashes" object is updated. New "previous history" objects do not have this field, nor do "recent hashes" objects in [parallel networks](../../../../concepts/networks-and-servers/parallel-networks.md) started with more recent versions of `xrpld`.) |
 | `Hashes`              | Array of Strings | Vector256         | Yes       | An array of up to 256 ledger hashes. The contents depend on which sub-type of `LedgerHashes` object this is. |
 | `LastLedgerSequence`  | Number           | UInt32            | No        | The [Ledger Index][] of the last entry in this object's `Hashes` array. |
 
@@ -58,7 +58,7 @@ Using the "recent history" `LedgerHashes` entry of a given ledger, you can get t
 
 ## Previous History LedgerHashes
 
-The "previous history" `LedgerHashes` entries collectively contain the hash of every 256th ledger version (also called "flag ledgers") in the full history of the ledger. When the child of a flag ledger closes, the flag ledger's hash is added to the `Hashes` array of the newest "previous history" `LedgerHashes` entry. Every 65536 ledgers, `rippled` creates a new `LedgerHashes` entry, so that each "previous history" entry has the hashes of 256 flag ledgers.
+The "previous history" `LedgerHashes` entries collectively contain the hash of every 256th ledger version (also called "flag ledgers") in the full history of the ledger. When the child of a flag ledger closes, the flag ledger's hash is added to the `Hashes` array of the newest "previous history" `LedgerHashes` entry. Every 65536 ledgers, `xrpld` creates a new `LedgerHashes` entry, so that each "previous history" entry has the hashes of 256 flag ledgers.
 
 {% admonition type="info" name="Note" %}The oldest "previous history" `LedgerHashes` entry contains only 255 hashes because the genesis ledger has ledger index 1, not 0.{% /admonition %}
 

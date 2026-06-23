@@ -4,7 +4,10 @@ parent: transaction-types.html
 seo:
     description: 自動マーケットメーカーインスタンスの取引手数料へ投票する。
 labels:
-  - AMM
+    - AMM
+    - DEX
+requiredAmendment: AMM
+txIcon: modify
 ---
 # AMMVote
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/AMMVote.cpp "Source")

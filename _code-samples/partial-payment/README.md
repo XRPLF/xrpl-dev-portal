@@ -1,12 +1,5 @@
 # Send Partial Payments
 
-Send partial payments with money amount less than the amount specified on 2 conditions:
+Send a partial payment, which delivers less than the amount specified. Partial payments are useful for deducting fees and exchange rates from the amount delivered instead of adding them to the amount sent, but they can also lead to exploits if an integration incorrectly assumes a successful payment delivered the whole amount.
 
-- Sender has less money than the aamount specified in the payment Tx.
-- Sender has the tfPartialPayment flag activated.
-
-Other ways to specify flags are by using Hex code and decimal code.
-eg. For partial payment(tfPartialPayment)
-decimal ->131072, hex -> 0x00020000
-
-For more context, see [Partial Payments](https://xrpl.org/partial-payments.html)
+For more context, see [Partial Payments](https://xrpl.org/docs/concepts/payment-types/partial-payments)

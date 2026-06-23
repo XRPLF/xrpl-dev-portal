@@ -14,7 +14,7 @@ labels:
 {% partial file="/@l10n/ja/docs/_snippets/public-signing-note.md" /%}
 
 
-{% admonition type="warning" name="注意" %}独自の`rippled`サーバを運用している場合を除き、このコマンドを使用するのではなく、[クライアントライブラリ](../../../client-libraries.md)を実行してください。詳細については[安全な署名の設定](../../../../concepts/transactions/secure-signing.md)をご覧ください。{% /admonition %}
+{% admonition type="warning" name="注意" %}独自の`xrpld`サーバを運用している場合を除き、このコマンドを使用するのではなく、[クライアントライブラリ](../../../client-libraries.md)を実行してください。詳細については[安全な署名の設定](../../../../concepts/transactions/secure-signing.md)をご覧ください。{% /admonition %}
 
 ## リクエストのフォーマット
 リクエストのフォーマットの例:
@@ -73,7 +73,7 @@ labels:
 {% tab label="コマンドライン" %}
 ```sh
 #Syntax: sign secret tx_json [offline]
-rippled sign s████████████████████████████ '{"TransactionType": "Payment", "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", "Destination": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX", "DeliverMax": { "currency": "USD", "value": "1", "issuer" : "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn" }, "Sequence": 360, "Fee": "10000"}' offline
+xrpld sign s████████████████████████████ '{"TransactionType": "Payment", "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", "Destination": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX", "DeliverMax": { "currency": "USD", "value": "1", "issuer" : "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn" }, "Sequence": 360, "Fee": "10000"}' offline
 ```
 {% /tab %}
 
@@ -178,7 +178,7 @@ rippled sign s██████████████████████
 
 {% tab label="コマンドライン" %}
 ```json
-Loading: "/etc/rippled.cfg"
+Loading: "/etc/xrpld.cfg"
 Connecting to 127.0.0.1:5005
 
 {

@@ -52,7 +52,7 @@
         - page: docs/concepts/networks-and-servers/index.md
           expanded: false
           items:
-            - page: docs/concepts/networks-and-servers/rippled-server-modes.md
+            - page: docs/concepts/networks-and-servers/xrpld-server-modes.md
             - page: docs/concepts/networks-and-servers/clustering.md
             - page: docs/concepts/networks-and-servers/ledger-history.md
             - page: docs/concepts/networks-and-servers/peer-protocol.md
@@ -164,6 +164,7 @@
             - page: docs/concepts/accounts/account-types.md
             - page: docs/concepts/accounts/configuring-accounts.md
             - page: docs/concepts/accounts/deleting-accounts.md
+            - page: docs/concepts/accounts/blackholed-accounts.md
             - page: docs/concepts/accounts/reserves.md
             - page: docs/concepts/accounts/addresses.md
             - page: docs/concepts/accounts/cryptographic-keys.md
@@ -220,7 +221,7 @@
                 - page: docs/tutorials/defi/dex/create-an-automated-market-maker.md
                 - page: docs/tutorials/defi/dex/add-assets-to-amm-in-javascript.md
                 - page: docs/tutorials/defi/dex/trade-in-the-decentralized-exchange.md
-                - page: docs/tutorials/defi/dex/trade-with-auction-slot-in-javascript.md
+                - page: docs/tutorials/defi/dex/use-amm-auction-slot-for-lower-fees.md
             - group: Set Up Lending
               groupTranslationKey: sidebar.docs.tutorials.defi.setUpLending
               expanded: false
@@ -247,6 +248,7 @@
           expanded: false
           items:
             - page: docs/tutorials/payments/send-xrp.md
+            - page: docs/tutorials/payments/send-an-mpt.md
             - page: docs/tutorials/payments/create-trust-line-send-currency-in-javascript.md
             - page: docs/tutorials/payments/create-trust-line-send-currency-in-python.md
             - page: docs/tutorials/payments/send-a-conditional-escrow.md
@@ -291,12 +293,12 @@
               expanded: false
               items:
                 - page: docs/tutorials/tokens/mpts/issue-a-multi-purpose-token.md
-                - page: docs/tutorials/tokens/mpts/sending-mpts-in-javascript.md
         - group: Compliance Features
           groupTranslationKey: sidebar.docs.tutorials.complianceFeatures
           expanded: false
           items:
             - page: docs/tutorials/compliance-features/require-destination-tags.md
+            - page: docs/tutorials/compliance-features/manage-credentials.md
             - page: docs/tutorials/compliance-features/verify-credentials.md
             - page: docs/tutorials/compliance-features/create-permissioned-domains-in-javascript.md
         - group: Programmability
@@ -528,7 +530,7 @@
                 - page: docs/references/http-websocket-apis/api-conventions/error-formatting.md
                 - page: docs/references/http-websocket-apis/api-conventions/markers-and-pagination.md
                 - page: docs/references/http-websocket-apis/api-conventions/rate-limiting.md
-                - page: docs/references/http-websocket-apis/api-conventions/rippled-server-states.md
+                - page: docs/references/http-websocket-apis/api-conventions/xrpld-server-states.md
                 - page: docs/references/http-websocket-apis/api-conventions/ctid.md
                 - page: docs/references/http-websocket-apis/api-conventions/ledger-entry-short-names.md
             - page: docs/references/http-websocket-apis/public-api-methods/index.md
@@ -681,12 +683,13 @@
           expanded: false
           items:
             - page: docs/infrastructure/installation/system-requirements.md
-            - page: docs/infrastructure/installation/install-rippled-on-rhel.md
-            - page: docs/infrastructure/installation/install-rippled-on-ubuntu.md
+            - page: docs/infrastructure/installation/install-xrpld-on-rhel.md
+            - page: docs/infrastructure/installation/install-xrpld-on-ubuntu.md
             - page: docs/infrastructure/installation/install-clio-on-ubuntu.md
-            - page: docs/infrastructure/installation/update-rippled-automatically-on-linux.md
-            - page: docs/infrastructure/installation/update-rippled-manually-on-rhel.md
-            - page: docs/infrastructure/installation/update-rippled-manually-on-ubuntu.md
+            - page: docs/infrastructure/installation/update-xrpld-automatically-on-linux.md
+            - page: docs/infrastructure/installation/update-xrpld-manually-on-rhel.md
+            - page: docs/infrastructure/installation/update-xrpld-manually-on-ubuntu.md
+            - page: docs/infrastructure/installation/migrate-to-xrpld.md
             - page: docs/infrastructure/installation/build-on-linux-mac-windows.md
             - page: docs/infrastructure/installation/capacity-planning.md
         - page: docs/infrastructure/configuration/index.md
@@ -695,8 +698,8 @@
             - page: docs/infrastructure/configuration/server-modes/index.md
               expanded: false
               items:
-                - page: docs/infrastructure/configuration/server-modes/run-rippled-as-a-validator.md
-                - page: docs/infrastructure/configuration/server-modes/run-rippled-as-a-stock-server.md
+                - page: docs/infrastructure/configuration/server-modes/run-xrpld-as-a-validator.md
+                - page: docs/infrastructure/configuration/server-modes/run-xrpld-as-a-stock-server.md
             - page: docs/infrastructure/configuration/data-retention/index.md
               expanded: false
               items:
@@ -707,7 +710,7 @@
             - page: docs/infrastructure/configuration/peering/index.md
               expanded: false
               items:
-                - page: docs/infrastructure/configuration/peering/cluster-rippled-servers.md
+                - page: docs/infrastructure/configuration/peering/cluster-xrpld-servers.md
                 - page: docs/infrastructure/configuration/peering/configure-a-private-server.md
                 - page: docs/infrastructure/configuration/peering/configure-the-peer-crawler.md
                 - page: docs/infrastructure/configuration/peering/enable-link-compression.md
@@ -718,7 +721,7 @@
             - page: docs/infrastructure/configuration/configure-amendment-voting.md
             - page: docs/infrastructure/configuration/configure-statsd.md
             - page: docs/infrastructure/configuration/configure-validator-list-threshold.md
-            - page: docs/infrastructure/configuration/connect-your-rippled-to-the-xrp-test-net.md
+            - page: docs/infrastructure/configuration/connect-your-xrpld-to-the-xrp-test-net.md
             - page: docs/infrastructure/configuration/configure-grpc.md
             - page: docs/infrastructure/configuration/enable-public-signing.md
         - page: docs/infrastructure/testing-and-auditing/index.md
@@ -739,6 +742,16 @@
             - page: docs/infrastructure/troubleshooting/server-is-amendment-blocked.md
             - page: docs/infrastructure/troubleshooting/server-wont-start.md
             - page: docs/infrastructure/troubleshooting/fix-sqlite-tx-db-page-size-issue.md
+    - page: docs/agents/agentic-transactions.page.tsx
+      label: Agentic Transactions
+      labelTranslationKey: sidebar.docs.agentic-transactions
+      expanded: false
+      items:
+        - page: docs/agents/getting-started-with-agentic-transactions.md
+        - page: docs/agents/xrpl-agent-wallet-skill.md
+        - page: docs/agents/xrpl-payments-skill.md
+        - page: docs/agents/track-agent-behavior.md
+        - page: docs/agents/agentic-payments-x402.md
 - page: resources/index.md
   labelTranslationKey: sidebars.resources
   expanded: false
@@ -751,6 +764,7 @@
       page: resources/dev-tools/index.page.tsx
       expanded: false
       items:
+        - page: resources/dev-tools/ai-tools.md
         - label: RPC Tool
           labelTranslationKey: sidebar.resources.dev-tools.rpc-tool
           page: resources/dev-tools/rpc-tool.page.tsx

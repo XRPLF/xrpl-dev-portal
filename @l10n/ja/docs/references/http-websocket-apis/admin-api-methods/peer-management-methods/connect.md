@@ -2,14 +2,14 @@
 html: connect.html
 parent: peer-management-methods.html
 seo:
-    description: 特定のピアrippledサーバに強制的に接続します。
+    description: 特定のピアxrpldサーバに強制的に接続します。
 labels:
   - コアサーバ
 ---
 # connect
 [[ソース]](https://github.com/XRPLF/rippled/blob/a61ffab3f9010d8accfaa98aa3cacc7d38e74121/src/ripple/rpc/handlers/Connect.cpp "Source")
 
-`connect`コマンドは、`rippled`サーバを特定のピア`rippled`サーバに強制的に接続します。
+`connect`コマンドは、`xrpld`サーバを特定のピア`xrpld`サーバに強制的に接続します。
 
 *`connect`リクエストは、権限のないユーザは実行できない[管理メソッド](../index.md)です。*
 
@@ -45,7 +45,7 @@ labels:
 {% tab label="コマンドライン" %}
 ```sh
 #Syntax: connect ip [port]
-rippled connect 192.170.145.88 51235
+xrpld connect 192.170.145.88 51235
 ```
 {% /tab %}
 
@@ -77,7 +77,7 @@ rippled connect 192.170.145.88 51235
 
 {% tab label="コマンドライン" %}
 ```json
-Loading: "/etc/rippled.cfg"
+Loading: "/etc/xrpld.cfg"
 Connecting to 127.0.0.1:5005
 
 {

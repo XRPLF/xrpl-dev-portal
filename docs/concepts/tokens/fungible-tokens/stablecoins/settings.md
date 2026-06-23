@@ -95,4 +95,4 @@ To create a fixed supply:
 1. Create a distribution wallet with settings similar to your issuing wallet.
 2. Set up a trust line between the issuing wallet and the distribution wallet.
 3. Send all tokens from the issuing wallet to the distribution wallet.
-4. Black hole the issuing account.
+4. Blackhole the issuing account.

@@ -8,13 +8,12 @@ labels:
 
 This tutorial shows how to cash a [Check](/docs/concepts/payment-types/checks.md) for a flexible amount. As long as the Check is not expired, the specified recipient can cash it to receive the maximum amount available. You would cash a Check this way if you want to receive as much as possible. When doing this, you set a minimum amount to receive in case the sender does not have enough money to pay the full amount. If the check cannot deliver at least the minimum amount, cashing the check fails but you can try again later.
 
-You can also [cash a check for an exact amount](cash-a-check-for-a-flexible-amount.md).
+You can also [cash a check for an exact amount](cash-a-check-for-an-exact-amount.md).
 
 
 ## Prerequisites
 
 - You should be familiar with the basics of using the [xrpl.js client library](../get-started/get-started-javascript.md).
-- You need an XRP Ledger account including its secret key. (You can get one on Testnet for free.) See also: [XRP Faucets](/resources/dev-tools/xrp-faucets).
 - You need the ID of a Check ledger entry that you are the recipient of. See also: [Send a Check](./send-a-check.md) and [Look Up Checks](./look-up-checks.md).
 
 
@@ -37,11 +36,11 @@ Figure out the values of the [CheckCash transaction][] fields. To cash a check f
 | `CheckID`         | String               | The ID of the Check to cash. You can get this information from the person who sent you the Check, or by [looking up checks](./look-up-checks.md) where your account is the destination. |
 | `DeliverMin`      | [Currency Amount][]  | A minimum amount to receive from the Check. If you cannot receive at least this much, cashing the Check fails, leaving the Check in the ledger so you can try again. For XRP, this must be a string specifying drops of XRP. For tokens, this is an object with `currency`, `issuer`, and `value` fields. The `currency` and `issuer` fields must match the corresponding fields in the Check object, and the `value` must be less than or equal to the amount in the Check object. For more information on specifying currency amounts, see [Specifying Currency Amounts][]. |
 
-In the sample code, these values are hard-coded, so you should edit them to match your case:
+This example uses a preconfigured account and check from the `checks-setup.js` script, but you can replace `wallet` and `checkID` with your own values.
 
-{% code-snippet file="/_code-samples/checks/js/cash-check-flexible.js" language="js" from="// Define parameters" before="async function main()" /%}
+{% code-snippet file="/_code-samples/checks/js/cash-check-flexible.js" language="js" from="// Load setup data" before="// Connect to Testnet" /%}
 
-Then, you use these parameters to fill out the transaction. For example:
+Then, use the loaded values to fill out the transaction:
 
 {% code-snippet file="/_code-samples/checks/js/cash-check-flexible.js" language="js" from="// Prepare the transaction" before="// Submit the transaction" /%}
 
@@ -50,10 +49,10 @@ Then, you use these parameters to fill out the transaction. For example:
 
 Send the transaction and wait for it to be validated by the consensus process, as normal:
 
-{% code-snippet file="/_code-samples/checks/js/cash-check-flexible.js" from="// Submit" before="// Confirm" /%}
+{% code-snippet file="/_code-samples/checks/js/cash-check-flexible.js" language="js" from="// Submit the transaction" before="// Confirm transaction result" /%}
 
 
-## 3. Confirm final result
+### 3. Confirm transaction result
 
 If the transaction succeeded, it should have a `"TransactionResult": "tesSUCCESS"` field in the metadata, and the field `"validated": true` in the result, indicating that this result is final.
 
@@ -61,7 +60,7 @@ If the transaction succeeded, it should have a `"TransactionResult": "tesSUCCESS
 
 If the transaction suceeded, you can assume that it delivered at least the `DeliverMin` amount of this transaction and at most the `SendMax` of the Check. To confirm the exact balance changes that occurred as a result of cashing the check, including how much was actually debited and credited, you must look at the transaction metadata. The `xrpl.getBalanceChanges()` function can help to summarize this. For example:
 
-{% code-snippet file="/_code-samples/checks/js/cash-check-flexible.js" from="// Confirm transaction results" before="// Disconnect" /%}
+{% code-snippet file="/_code-samples/checks/js/cash-check-flexible.js" language="js" from="// Confirm transaction result" before="// Disconnect" /%}
 
 {% admonition type="info" name="Note" %}
 The metadata shows the net balance changes as the result of all of the transactions effects, which may be surprising in some cases. If an account receives exactly the same amount of XRP as it burns, its balance stays the same so it does not even appear in the list of balance changes.
@@ -73,7 +72,7 @@ If you are not using `getBalanceChanges()`, the following guidelines should help
 
     For example, the following `ModifiedNode` shows that the account `rGPnRH1EBpHeTF2QG8DCAgM7z5pb75LAis`, the Check's recipient and the sender of this CheckCash transaction, had its XRP balance change from `9999999970` drops to `10099999960` drops, meaning the recipient was credited a _net_ of 99.99999 XRP as a result of processing the transaction.
 
-    ```
+    ```json
     {
       "ModifiedNode": {
         "FinalFields": {
@@ -97,7 +96,7 @@ If you are not using `getBalanceChanges()`, the following guidelines should help
 
     The net amount of 99.99999 XRP includes deducting the transaction cost that is destroyed to pay for sending this CheckCash transaction. The following part of the transaction instructions shows that the transaction cost (the `Fee` field) was 10 drops of XRP. By adding this to the net balance change, we conclude that the recipient, `rGPnRH1EBpHeTF2QG8DCAgM7z5pb75LAis`, was credited a _gross_ amount of exactly 100 XRP for cashing the Check.
 
-    ```
+    ```json
     "Account" : "rGPnRH1EBpHeTF2QG8DCAgM7z5pb75LAis",
     "TransactionType" : "CheckCash",
     "DeliverMin" : "95000000",

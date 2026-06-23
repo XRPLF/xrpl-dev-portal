@@ -4,7 +4,10 @@ parent: transaction-types.html
 seo:
     description: 指定された資産ペアを取引するための新しい自動マーケットメーカーを作成します。
 labels:
-  - AMM
+    - AMM
+    - DEX
+requiredAmendment: AMM
+txIcon: create
 ---
 # AMMCreate
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/AMMCreate.cpp "Source")

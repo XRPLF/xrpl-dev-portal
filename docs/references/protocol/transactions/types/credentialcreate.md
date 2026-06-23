@@ -1,6 +1,10 @@
 ---
 seo:
     description: Provisionally issue a credential to a subject account.
+labels:
+    - Decentralized Storage
+requiredAmendment: Credentials
+txIcon: create
 ---
 # CredentialCreate
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/Credentials.cpp "Source")

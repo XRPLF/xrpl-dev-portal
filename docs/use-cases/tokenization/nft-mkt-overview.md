@@ -40,7 +40,7 @@ There are 4 essential areas of preparation for starting your NFT business.
 
 If you want to set up a smaller site with fewer transactions, you can work with one of the free XRP Ledger public servers. See [Public servers](../../tutorials/public-servers.md).
 
-If you want to set up a larger site with high volume, it might be worth investing in your own XRP Ledger server instance. See [Install rippled](../../infrastructure/installation/index.md).
+If you want to set up a larger site with high volume, it might be worth investing in your own XRP Ledger server instance. See [Install xrpld](../../infrastructure/installation/index.md).
 
 See also:
 

@@ -51,7 +51,7 @@ Once recorded, the data in any given block cannot be altered retroactively, unle
 
 ### How Does the Federated Consensus Process Work?
 
-Most of the rippled servers in the XRPL monitor or propose transactions. An important subset of servers are run as validators. These trusted servers accumulate lists of new transactions into a new possible ledger instance (a new block in the block chain).
+Most of the xrpld servers in the XRPL monitor or propose transactions. An important subset of servers are run as validators. These trusted servers accumulate lists of new transactions into a new possible ledger instance (a new block in the block chain).
 
 ![Gathering Transactions](/docs/img/introduction17-gather-txns.png)
 
@@ -63,7 +63,7 @@ When 80% of the validators agree on a set of transactions, they create a new led
 
 ### What Networks Are Available?
 
-The XRPL is open to anyone who wants to set up their own instance of the rippled server and connect. The node can monitor the network, perform transactions, or become a validator. The active XRPL network is typically referred to as _Mainnet_.
+The XRPL is open to anyone who wants to set up their own instance of the xrpld server and connect. The node can monitor the network, perform transactions, or become a validator. The active XRPL network is typically referred to as _Mainnet_.
 
 For developers or new users who want to try out the features of XRPL without investing their own funds, there are two developer environments, _Testnet_ and _Devnet_. Users can create an account funded with 1,000 (fake) XRP and connect to either environment to interact with the XRPL.
 

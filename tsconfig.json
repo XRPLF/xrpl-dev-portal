@@ -4,7 +4,7 @@
     "baseUrl": ".",
     "jsx": "react-jsx",
     "resolveJsonModule": true,
-    "module": "es2015",
+    "module": "es2022",
     "moduleResolution": "bundler"
   }
 }

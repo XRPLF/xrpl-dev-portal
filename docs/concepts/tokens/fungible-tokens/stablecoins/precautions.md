@@ -13,7 +13,7 @@ Processing payments to and from the XRP Ledger naturally comes with some risks, 
 
 ## Infrastructure
 
-For your own security as well as the stability of the network, each XRP Ledger business should [run its own XRP Ledger servers](../../../../infrastructure/installation/index.md), including one [validator](../../../networks-and-servers/rippled-server-modes.md#validators).
+For your own security as well as the stability of the network, each XRP Ledger business should [run its own XRP Ledger servers](../../../../infrastructure/installation/index.md), including one [validator](../../../networks-and-servers/xrpld-server-modes.md#validators).
 
 
 ## Tool Security
@@ -24,8 +24,8 @@ There are several interfaces you can use to connect to the XRP Ledger, depending
 
 - [HTTP / WebSocket APIs](../../../../references/http-websocket-apis/index.md) can be used as a low-level interface to all core XRP Ledger functionality.
 - [Client Libraries](../../../../references/client-libraries.md) are available in several programming languages to provide convenient utilities for accessing the XRP Ledger.
-- Other tools such as [xApps](https://xumm.readme.io/docs/xapps) are also available.
-- Third party wallet applications might also be useful, especially for humans in charge of standby addresses.
+- Graphical wallet applications might also be useful, especially for humans in charge of standby addresses.
+    - Some wallets provide extensible functionality like [xApps](https://docs.xaman.dev/environments/xapps-dapps).
 
 However, take care to only use reputable tools from their official distribution channels. Malicious servers, libraries, or apps could be configured to leak secret keys to an attacker.
 

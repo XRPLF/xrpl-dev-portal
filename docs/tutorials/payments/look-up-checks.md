@@ -25,14 +25,14 @@ The complete source code for this tutorial is available in the source repository
 
 To get a list of all incoming and outgoing Checks for an account, use the `account_objects` command and set the `type` field of the request to `checks`. You may need to make multiple requests if the result is [paginated](../../references/http-websocket-apis/api-conventions/markers-and-pagination.md).
 
-{% code-snippet file="/_code-samples/checks/js/get-checks.js" from="// Loop through account objects" before="// Filter results" /%}
+{% code-snippet file="/_code-samples/checks/js/get-checks.js" language="js" from="// Loop through account objects until marker is undefined" before="// Filter results by recipient" /%}
 
 
 ### 2. Filter the responses by recipient
 
 The response may include Checks where the account from the request is the sender or the recipient. Each member of the `account_objects` array of the response represents one Check. For each such Check object, the address in the `Destination` is address of that Check's recipient, such as in the following code:
 
-{% code-snippet file="/_code-samples/checks/js/get-checks.js" from="// Filter results" before="// Disconnect" /%}
+{% code-snippet file="/_code-samples/checks/js/get-checks.js" language="js" from="// Filter results by recipient" before="// Disconnect" /%}
 
 To filter by sender, check the address in the `Account` field of the Check instead.
 

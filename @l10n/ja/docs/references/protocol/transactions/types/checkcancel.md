@@ -1,17 +1,18 @@
 ---
-html: checkcancel.html
-parent: transaction-types.html
 seo:
     description: 未清算のCheckを取り消し、送金を行わずにレジャーから削除します。
 labels:
-  - Checks
+    - Checks
+    - Payments
+requiredAmendment: Checks
+txIcon: cancel
 ---
 # CheckCancel
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/CancelCheck.cpp "Source")
 
 未清算のCheckを取り消し、送金を行わずにレジャーから削除します。Checkの送金元または送金先は、いつでもこのトランザクションタイプを使用してCheckを取り消すことができます。有効期限切れのCheckはすべてのアドレスが取り消すことができます。
 
-_（[Checks Amendment][]が必要です）_
+{% amendment-disclaimer name="Checks" /%}
 
 ## {% $frontmatter.seo.title %} JSONの例
 

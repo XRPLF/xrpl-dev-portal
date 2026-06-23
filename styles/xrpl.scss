@@ -47,7 +47,6 @@ $line-height-base: 1.5;
 @import "_helpers.scss";
 @import "_buttons.scss";
 @import "_tables.scss";
-@import "_tables.scss";
 @import "_use-cases.scss";
 @import "_github-edit.scss";
 @import "_top-nav.scss";
@@ -69,11 +68,14 @@ $line-height-base: 1.5;
 @import "_pages.scss";
 @import "_rpc-tool.scss";
 @import "_blog.scss";
+@import "_tutorials.scss";
 @import "_feedback.scss";
+@import "_tx-types.scss";
 @import "_video.scss";
 @import "_contribute.scss";
 @import "_docs-landing.scss";
 @import "_osano.scss";
+@import "_agentic-transactions.scss";
 // Light/Dark theme settings ---------------------------------------------------
 // Option to only change theme on user system settings.  No toggle.
 

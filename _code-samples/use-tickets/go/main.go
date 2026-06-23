@@ -1,123 +1,113 @@
 package main
 
 import (
-	"encoding/json"
 	"fmt"
 
 	"github.com/Peersyst/xrpl-go/pkg/crypto"
 	"github.com/Peersyst/xrpl-go/xrpl/faucet"
 	"github.com/Peersyst/xrpl-go/xrpl/queries/account"
-	"github.com/Peersyst/xrpl-go/xrpl/rpc"
 	"github.com/Peersyst/xrpl-go/xrpl/transaction"
 	"github.com/Peersyst/xrpl-go/xrpl/wallet"
+	"github.com/Peersyst/xrpl-go/xrpl/websocket"
 )
 
 func main() {
-    cfg, err := rpc.NewClientConfig(
-        "https://s.altnet.rippletest.net:51234/",
-        rpc.WithFaucetProvider(faucet.NewTestnetFaucetProvider()),
-    )
-    if err != nil {
-        panic(err)
-    }
+	// Set up client and account
+	client := websocket.NewClient(
+		websocket.NewClientConfig().
+			WithHost("wss://s.altnet.rippletest.net:51233").
+			WithFaucetProvider(faucet.NewTestnetFaucetProvider()).
+			WithMaxRetries(30),
+	)
+	defer client.Disconnect()
 
-    client := rpc.NewClient(cfg)
+	if err := client.Connect(); err != nil {
+		panic(err)
+	}
 
-    w, err := wallet.New(crypto.ED25519())
-    if err != nil {
-        panic(err)
-    }
+	// Fund wallet
+	w, err := wallet.New(crypto.ED25519())
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println("Getting a wallet from the faucet...")
+	if err := client.FundWallet(&w); err != nil {
+		panic(err)
+	}
+	fmt.Printf("Wallet address: %s\n", w.GetAddress())
+	fmt.Println()
 
-    fmt.Println("Funding wallet...")
-    if err := client.FundWallet(&w); err != nil {
-        panic(err)
-    }
+	// Create Tickets
+	ticketCreate := &transaction.TicketCreate{
+		BaseTx: transaction.BaseTx{
+			Account: w.GetAddress(),
+		},
+		TicketCount: 10,
+	}
+	flatTc := ticketCreate.Flatten()
+	if err := client.Autofill(&flatTc); err != nil {
+		panic(err)
+	}
+	blob, _, err := w.Sign(flatTc)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println("Submitting TicketCreate transaction...")
+	tcResult, err := client.SubmitTxBlobAndWait(blob, false)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Printf("TicketCreate hash: %s, validated: %t\n", tcResult.Hash, tcResult.Validated)
+	fmt.Println()
 
-    fmt.Println("Wallet funded")
-    fmt.Println()
+	// Check Available Tickets
+	fmt.Println("Checking available tickets...")
+	objects, err := client.GetAccountObjects(&account.ObjectsRequest{
+		Account: w.GetAddress(),
+		Type:    account.TicketObject,
+	})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Printf("Found %d Tickets\n", len(objects.AccountObjects))
 
-    info, err := client.GetAccountInfo(&account.InfoRequest{
-        Account: w.GetAddress(),
-    })
-    if err != nil {
-        panic(err)
-    }
+	// Choose an arbitrary Ticket to use
+	useTicket := uint32(objects.AccountObjects[0]["TicketSequence"].(float64))
+	fmt.Printf("Using Ticket Sequence: %d\n", useTicket)
+	fmt.Println()
 
-    fmt.Println("Current wallet sequence:", info.AccountData.Sequence)
-    fmt.Println()
+	// Use a Ticket
+	ticketedTx := &transaction.AccountSet{
+		BaseTx: transaction.BaseTx{
+			Account:        w.GetAddress(),
+			Sequence:       0,
+			TicketSequence: useTicket,
+		},
+	}
+	flatAs := ticketedTx.Flatten()
+	if err := client.Autofill(&flatAs); err != nil {
+		panic(err)
+	}
+	blob, _, err = w.Sign(flatAs)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println("Submitting ticketed AccountSet transaction...")
+	ticketedResult, err := client.SubmitTxBlobAndWait(blob, false)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Printf("Ticketed AccountSet hash: %s, validated: %t\n", ticketedResult.Hash, ticketedResult.Validated)
+	fmt.Println()
 
-    fmt.Println("Submitting TicketCreate transaction...")
-    tc := &transaction.TicketCreate{
-        BaseTx: transaction.BaseTx{
-            Account:  w.GetAddress(),
-            Sequence: info.AccountData.Sequence,
-        },
-        TicketCount: 10,
-    }
-
-    flatTc := tc.Flatten()
-
-    if err := client.Autofill(&flatTc); err != nil {
-        panic(err)
-    }
-
-    blob, _, err := w.Sign(flatTc)
-    if err != nil {
-        panic(err)
-    }
-
-    res, err := client.SubmitTxBlobAndWait(blob, false)
-    if err != nil {
-        panic(err)
-    }
-
-    fmt.Println("TicketCreate transaction submitted")
-    fmt.Printf("Hash: %s\n", res.Hash)
-    fmt.Printf("Validated: %t\n", res.Validated)
-    fmt.Println()
-
-    objects, err := client.GetAccountObjects(&account.ObjectsRequest{
-        Account: w.GetAddress(),
-    })
-    if err != nil {
-        panic(err)
-    }
-
-    fmt.Println("Account objects:", objects.AccountObjects[0]["TicketSequence"])
-
-    seq, err := objects.AccountObjects[0]["TicketSequence"].(json.Number).Int64()
-    if err != nil {
-        panic(err)
-    }
-
-    fmt.Println("Submitting AccountSet transaction...")
-    as := &transaction.AccountSet{
-        BaseTx: transaction.BaseTx{
-            Account:        w.GetAddress(),
-            Sequence:       0,
-            TicketSequence: uint32(seq),
-        },
-    }
-
-    flatAs := as.Flatten()
-
-    if err := client.Autofill(&flatAs); err != nil {
-        panic(err)
-    }
-
-    flatAs["Sequence"] = uint32(0)
-
-    blob, _, err = w.Sign(flatAs)
-    if err != nil {
-        panic(err)
-    }
-
-    res, err = client.SubmitTxBlobAndWait(blob, false)
-    if err != nil {
-        panic(err)
-    }
-
-    fmt.Println("AccountSet transaction submitted")
-    fmt.Printf("Hash: %s\n", res.Hash)
-    fmt.Printf("Validated: %t\n", res.Validated)
+	// Recheck Available Tickets
+	fmt.Println("Rechecking available tickets...")
+	objectsAfter, err := client.GetAccountObjects(&account.ObjectsRequest{
+		Account: w.GetAddress(),
+		Type:    account.TicketObject,
+	})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Printf("Found %d Tickets\n", len(objectsAfter.AccountObjects))
 }

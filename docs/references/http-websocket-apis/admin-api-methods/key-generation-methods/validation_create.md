@@ -1,6 +1,6 @@
 ---
 seo:
-    description: Generate keys for a rippled server to identify itself to the network.
+    description: Generate keys for an xrpld server to identify itself to the network.
 labels:
     - Security
     - Core Server
@@ -8,13 +8,13 @@ labels:
 # validation_create
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/ValidationCreate.cpp "Source")
 
-Use the `validation_create` command to generate [cryptographic keys a `rippled` server can use to identify itself to the network](../../../../concepts/networks-and-servers/peer-protocol.md#node-key-pair). Similar to the [wallet_propose method][], this method only generates a set of keys in the proper format. It does not any makes changes to the XRP Ledger data or server configuration.
+Use the `validation_create` command to generate [cryptographic keys an `xrpld` server can use to identify itself to the network](../../../../concepts/networks-and-servers/peer-protocol.md#node-key-pair). Similar to the [wallet_propose method][], this method only generates a set of keys in the proper format. It does not any makes changes to the XRP Ledger data or server configuration.
 
 _The `validation_create` method is an [admin method](../index.md) that cannot be run by unprivileged users._
 
 You can configure your server to use the generated key pair to sign validations (validation key pair) or regular peer-to-peer communications ([node key pair](../../../../concepts/networks-and-servers/peer-protocol.md#node-key-pair)).
 
-{% admonition type="success" name="Tip" %}For configuring a robust validator, you should use the `validator-keys` tool (included in the `rippled` package build) to generate validator tokens (which can be rotated) with an offline master key. For more information, see [Validator Setup](../../../../infrastructure/configuration/server-modes/run-rippled-as-a-validator.md#3-enable-validation-on-your-rippled-server).{% /admonition %}
+{% admonition type="success" name="Tip" %}For configuring a robust validator, you should use the `validator-keys` tool (included in the `xrpld` package build) to generate validator tokens (which can be rotated) with an offline master key. For more information, see [Validator Setup](../../../../infrastructure/configuration/server-modes/run-xrpld-as-a-validator.md#3-enable-validation-on-your-xrpld-server).{% /admonition %}
 
 
 ### Request Format
@@ -48,7 +48,7 @@ An example of the request format:
 {% tab label="Commandline" %}
 ```sh
 #Syntax: validation_create [secret]
-rippled validation_create "BAWL MAN JADE MOON DOVE GEM SON NOW HAD ADEN GLOW TIRE"
+xrpld validation_create "BAWL MAN JADE MOON DOVE GEM SON NOW HAD ADEN GLOW TIRE"
 ```
 {% /tab %}
 
@@ -83,7 +83,7 @@ An example of a successful response:
 
 {% tab label="Commandline" %}
 ```json
-Loading: "/etc/rippled.cfg"
+Loading: "/etc/xrpld.cfg"
 Connecting to 127.0.0.1:5005
 
 {

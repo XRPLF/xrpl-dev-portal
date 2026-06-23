@@ -14,7 +14,7 @@ XRPはXRP Ledgerにて使用可能な暗号通貨です。
 
 暗号通貨は、暗号技術によって保護され、ブロックチェーンを使用して追跡されるデジタルまたは仮想通貨です。暗号通貨のセキュリティと完全性により、偽造や二重支払いはほぼ不可能です。
 
-![ブロックチェーン上のXRPL](/docs/img/introduction10-xrp-on-chain.png)
+[{% inline-svg file="/docs/img/xrp-on-blockchain.svg" /%}](/docs/img/xrp-on-blockchain.svg)
 
 暗号通貨、デジタル通貨、デジタル資産は、すべて同じ一般的なカテゴリに分類されます。暗号通貨とは次のようなものを指します。
 
@@ -26,8 +26,6 @@ XRPはXRP Ledgerにて使用可能な暗号通貨です。
 - 偽造できない
 - 銀行口座や決済のためのインフラに依存しない
 
-![暗号通貨の利点](/docs/img/introduction11-all-the-things.png)
-
 暗号通貨は _代替可能トークン_ です。 _代替可能_ とは、あるトークンを同じ価値の他のトークンに置き換えることができるという意味です。郵便切手は代替可能（相対的な価値が一致し、交換可能）であるため、手紙を出すのに50セントかかる場合、25セント切手を2枚使うか、10セント切手を5枚使って郵便料金を支払うことが出来ます。
 
 暗号通貨は分散型でもあります。通貨を管理する中央機関がないのです。一度でもトランザクションがブロックチェーンに登録されると、それを変更することはできません。暗号通貨を検閲することは困難です。システムが十分に分散化されている限り、誰もトランザクションをロールバックしたり、残高をフリーズしたり、誰かが分散化されたデジタル資産を使うことをブロックしたりすることはできません。あらゆる参加者の間で大きな合意がなければルールが変更されることはありません。
@@ -36,7 +34,7 @@ XRPはXRP Ledgerにて使用可能な暗号通貨です。
 
 ## しかし、なぜそれが価値あるのでしょうか？
 
-![暗号通貨の利点](/docs/img/introduction12-diamond.png)
+[{% inline-svg file="/docs/img/value-from-faith.svg" /%}](/docs/img/value-from-faith.svg)
 
 暗号通貨がコンピュータのデータのみに基づくものであり、貴金属のような有形の商品には基づかないというのは、一見不思議に思えるかもしれません。歴史的に見ると、通貨は牛や貝殻、希少金属、石などの物理的な物に基づいています。しかし、これらのものは、ある文化圏の人々の間で合意があったからこそ価値を持つものでした。
 
@@ -49,11 +47,11 @@ XRPはXRP Ledgerにて使用可能な暗号通貨です。
 
 XRP Ledgerは、2011年から2012年初頭にかけて、Jed McCaleb、Arthur Britto、David Schwartzによって開発されました。2012年9月、JedとArthurはChris LarsenとともにRippleと名の会社（当時はOpenCoin Inc.という会社）を設立し、Ripple社がXRP Ledger上で開発を行う代わりに、800億XRPをRipple社へ譲渡することを決定しました。
 
-![男性と1XRP](/docs/img/introduction13-x-prefix.png)
+[{% inline-svg file="/docs/img/xrp-naming.svg" /%}](/docs/img/xrp-naming.svg)
 
 それ以来、同社はXRPを定期的に売却し、XRP市場の強化とネットワーク流動性の向上に利用し、より大きなエコシステムの発展を促してきました。2017年、同社は[550億XRPをエスクローに預け](https://ripple.com/insights/ripple-escrows-55-billion-xrp-for-supply-predictability/?__hstc=78174987.8aa695b6d0420a940041f1842edfd8a6.1692378128025.1692644550213.1692652561840.8&__hssc=78174987.3.1692652561840&__hsfp=3379522993)、当面の間、一般供給量に入る量が[予測可能に成長する](https://ripple.com/insights/ripple-to-place-55-billion-xrp-in-escrow-to-ensure-certainty-into-total-xrp-supply/?__hstc=78174987.8aa695b6d0420a940041f1842edfd8a6.1692378128025.1692644550213.1692652561840.8&__hssc=78174987.3.1692652561840&__hsfp=3379522993)ことを保証しました。Ripple社の[XRPマーケットパフォーマンスサイト](https://ripple.com/xrp/?__hstc=78174987.8aa695b6d0420a940041f1842edfd8a6.1692378128025.1692644550213.1692652561840.8&__hssc=78174987.3.1692652561840&__hsfp=3379522993)は、同社が現在利用可能でエスクローにロックされているXRPの量を報告しています。
 
-![1,000億を表す "B "](/docs/img/introduction14-hundred-billion.png)
+[{% inline-svg file="/docs/img/xrp-supply-timeline.svg" /%}](/docs/img/xrp-supply-timeline.svg)
 
 ### 名称
 

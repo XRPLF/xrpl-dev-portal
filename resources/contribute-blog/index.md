@@ -23,6 +23,7 @@ The image files used in blog posts are located in the `blog/img` directory.
 
 The blog posts are grouped by year, so all blog posts published in year 2025 are located in the `blog/2025` directory. 
 
+
 ## Steps to Create a New Blog Post
 
 To create a new post, follow these steps:
@@ -39,4 +40,43 @@ To create a new post, follow these steps:
 
 6. When the draft is ready for review, save and commit your updates.
 
-7. Create a new PR to merge your changes to master. 
+7. Create a new PR to merge your changes to master.
+
+
+### Release Notes
+
+We have streamlined the release notes process with the assistance of **Claude** skills. To create new release notes, follow these steps:
+
+1. Load the `generate-release-notes` skill. **Claude** _should_ auto-load it when you set the working directory to the `xrpl-dev-portal` repository. If not, you can explicitly point to the skill located at `.claude/skills/generate-release-notes/SKILL.md`.
+{% admonition type="info" name="Note" %}Although the skill is optimized for **Claude**, you can give this `SKILL.md` file to any coding agent.{% /admonition %}
+
+2. Run the `generate-release-notes` skill.
+    ```bash
+    /generate-release-notes --from <branch-or-tag> --to <branch-or-tag>
+    ```
+
+    The skill accepts these arguments:
+
+    | Arguments  | Description |
+    |:-----------|:------------|
+    | `--from`   | (required) Base ref. Must match the exact [tag or branch](https://github.com/XRPLF/rippled/branches) the current version of `rippled` is building from. |
+    | `--to`     | (required) Target ref. Must match the exact [tag or branch](https://github.com/XRPLF/rippled/branches) the upcoming version of `rippled` will be built from. |
+    | `--date`   | (optional) Release date in `YYYY-MM-DD` format. Defaults to current date. |
+    | `--output` | (optional) Output file path. Defaults to `blog/<year>/rippled-<version>.md`. |
+
+3. The AI executes these steps:
+    - Runs a Python script that fetches all commits and PR details between the two refs and outputs a draft blog post.
+    - Processes all amendment-related changes, keeping, removing, or merging entries based on which amendments are part of the release.
+    - Sorts remaining entries into subsections (Features, Breaking Changes, Bug Fixes, etc.) based on files touched, PR labels, and descriptions.
+    - Reformats each entry to match the release notes style and writes a summary of the release.
+    - Cleans up empty sections and adds the post to the sidebar.
+
+    {% admonition type="info" name="Note" %}Depending on the size of the release, this process can take upwards of ten minutes.{% /admonition %}
+
+4. Review the final output.
+    - Check the descriptions of any entries in **Amendments**, **Features**, or **Breaking Changes**.
+    - Verify the integrity of the package links and add in the SHA-256 hashes.
+    - Verify the commit linked in the **Install / Upgrade** section points to the version bump commit.
+    - If you didn't pass in the correct release date using the `--date` argument, update the `date` field in the frontmatter.
+
+5. Create a new PR to merge the release notes to `master`.

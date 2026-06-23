@@ -3,6 +3,9 @@ seo:
     description: Create or update a Decentralized Identifier.
 labels:
     - DID
+    - Decentralized Storage
+requiredAmendment: DID
+txIcon: create
 ---
 # DIDSet
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/DID.cpp "Source")

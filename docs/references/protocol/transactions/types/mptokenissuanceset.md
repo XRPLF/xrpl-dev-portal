@@ -3,6 +3,9 @@ seo:
     description: Set mutable properties of a Multi-Purpose Token definition.
 labels:
     - Multi-purpose Tokens, MPTs
+    - Tokens
+requiredAmendment: MPTokensV1
+txIcon: modify
 ---
 # MPTokenIssuanceSet
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/MPTokenIssuanceSet.cpp "Source")

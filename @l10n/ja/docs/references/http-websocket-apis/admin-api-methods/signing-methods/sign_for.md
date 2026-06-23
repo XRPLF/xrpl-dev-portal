@@ -74,8 +74,8 @@ labels:
 
 {% tab label="コマンドライン" %}
 ```sh
-#Syntax: rippled sign_for <signer_address> <signer_secret> [offline]
-rippled sign_for rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW s████████████████████████████ '{
+#Syntax: xrpld sign_for <signer_address> <signer_secret> [offline]
+xrpld sign_for rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW s████████████████████████████ '{
    "TransactionType":"TrustSet",
    "Account":"rEuLyBCvcw4CFmzv8RepSiAoNgF8tTGJQC",
    "Flags":262144,
@@ -189,7 +189,7 @@ rippled sign_for rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW s█████████
 
 {% tab label="コマンドライン" %}
 ```json
-Loading:"/etc/rippled.cfg"
+Loading:"/etc/xrpld.cfg"
 Connecting to 127.0.0.1:5005
 
 {

@@ -2,9 +2,12 @@
 seo:
     description: Deletes an existing Vault object from the ledger.
 labels:
-  - Transactions
-  - Single Asset Vault
+    - Transactions
+    - Single Asset Vault
+    - Lending Protocol
+requiredAmendment: SingleAssetVault
 status: not_enabled
+txIcon: cancel
 ---
 
 # VaultDelete

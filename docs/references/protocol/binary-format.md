@@ -8,7 +8,7 @@ labels:
 # Binary Format
 [[Source]](https://github.com/XRPLF/rippled/blob/master/include/xrpl/protocol/SField.h "Source")
 
-This page describes the XRP Ledger's canonical binary format for transactions and other data. This binary format is necessary to create and verify digital signatures of those transactions' contents, and is also used in other places including in the [peer-to-peer communications between servers](../../concepts/networks-and-servers/peer-protocol.md). The [`rippled` APIs](../http-websocket-apis/index.md) typically use JSON to communicate with client applications. However, JSON is unsuitable as a format for serializing transactions for being digitally signed, because JSON can represent the same data in many different but equivalent ways.
+This page describes the XRP Ledger's canonical binary format for transactions and other data. This binary format is necessary to create and verify digital signatures of those transactions' contents, and is also used in other places including in the [peer-to-peer communications between servers](../../concepts/networks-and-servers/peer-protocol.md). The [`xrpld` APIs](../http-websocket-apis/index.md) typically use JSON to communicate with client applications. However, JSON is unsuitable as a format for serializing transactions for being digitally signed, because JSON can represent the same data in many different but equivalent ways.
 
 The process of serializing a transaction from JSON or any other representation into their canonical binary format can be summarized with these steps:
 
@@ -28,7 +28,7 @@ The process of serializing a transaction from JSON or any other representation i
 
 The result is a single binary blob that can be signed using well-known signature algorithms such as ECDSA (with the secp256k1 elliptic curve) and Ed25519. For purposes of the XRP Ledger, you must also [hash][Hash] the data with the appropriate prefix (`0x53545800` if single-signing, or `0x534D5400` if multi-signing). After signing, you must re-serialize the transaction with the `TxnSignature` field included. <!--{# TODO: link docs on how to compute a transaction signature. #}-->
 
-{% admonition type="info" name="Note" %}The XRP Ledger uses the same serialization format to represent other types of data, such as [ledger objects](ledger-data/ledger-entry-types/index.md) and processed transactions. However, only certain fields are appropriate for including in a transaction that gets signed. (For example, the `TxnSignature` field, containing the signature itself, should not be present in the binary blob that you sign.) Thus, some fields are designated as "Signing" fields, which are included in objects when those objects are signed, and "non-signing" fields, which are not.{% /admonition %}
+{% admonition type="info" name="Note" %}The XRP Ledger uses the same serialization format to represent other types of data, such as [ledger entries](ledger-data/ledger-entry-types/index.md) and processed transactions. However, only certain fields are appropriate for including in a transaction that gets signed. (For example, the `TxnSignature` field, containing the signature itself, should not be present in the binary blob that you sign.) Thus, some fields are designated as "Signing" fields, which are included in objects when those objects are signed, and "non-signing" fields, which are not.{% /admonition %}
 
 ### Examples
 
@@ -70,15 +70,22 @@ You can also use the [server_definitions API method](../http-websocket-apis/publ
 
 The following table defines the top-level fields from the definitions file:
 
-| Field                 | Contents                                             |
-|:----------------------|:-----------------------------------------------------|
-| `TYPES`               | Map of data types to their ["type code"](#type-codes) for constructing field IDs and sorting fields in canonical order. Codes below 1 should not appear in actual data; codes above 10000 represent special "high-level" object types such as "Transaction" that cannot be serialized inside other objects. See the [Type List](#type-list) for details of how to serialize each type. |
-| `LEDGER_ENTRY_TYPES`  | Map of [ledger objects](ledger-data/ledger-entry-types/index.md) to their data type. These appear in ledger state data, and in the "affected nodes" section of processed transactions' [metadata](transactions/metadata.md). |
-| `FIELDS`              | A sorted array of tuples representing all fields that may appear in transactions, ledger objects, or other data. The first member of each tuple is the string name of the field and the second member is an object with that field's properties. (See the "Field properties" table below for definitions of those fields.) |
-| `TRANSACTION_RESULTS` | Map of [transaction result codes](transactions/transaction-results/index.md) to their numeric values. Result types not included in ledgers have negative values; `tesSUCCESS` has numeric value 0; [`tec`-class codes](transactions/transaction-results/tec-codes.md) represent failures that are included in ledgers. |
-| `TRANSACTION_TYPES`   | Map of all [transaction types](transactions/types/index.md) to their numeric values. |
+| Field                  | Contents                                              |
+|:-----------------------|:------------------------------------------------------|
+| `TYPES`                | Map of data types to their ["type code"](#type-codes) for constructing field IDs and sorting fields in canonical order. Codes below 1 should not appear in actual data; codes above 10000 represent special "high-level" object types such as "Transaction" that cannot be serialized inside other objects. See the [Type List](#type-list) for details of how to serialize each type. |
+| `LEDGER_ENTRY_TYPES`   | Map of [ledger entries](ledger-data/ledger-entry-types/index.md) to their data type. These appear in ledger state data, and in the "affected nodes" section of processed transactions' [metadata](transactions/metadata.md). |
+| `FIELDS`               | A sorted array of tuples representing all fields that may appear in transactions, ledger entries, or other data. The first member of each tuple is the string name of the field and the second member is an object with that field's properties. (See [Field properties](#field-properties) for definitions of those fields.) |
+| `TRANSACTION_RESULTS`  | Map of [transaction result codes](transactions/transaction-results/index.md) to their numeric values. Result types not included in ledgers have negative values; `tesSUCCESS` has numeric value 0; [`tec`-class codes](transactions/transaction-results/tec-codes.md) represent failures that are included in ledgers. |
+| `TRANSACTION_TYPES`    | Map of all [transaction types](transactions/types/index.md) to their numeric values. |
+| `TRANSACTION_FORMATS`  | Map of each [transaction type](transactions/types/index.md) to an array of objects describing that type's fields and whether each is required. (See [Format field objects](#format-field-objects) for the properties of each object.) {% badge href="https://xrpl.org/blog/2026/xrpld-3.2.0" %}New in: xrpld 3.2.0{% /badge %} |
+| `LEDGER_ENTRY_FORMATS` | Map of each [ledger entry type](ledger-data/ledger-entry-types/index.md) to an array of objects describing that type's fields and whether each is required. (See [Format field objects](#format-field-objects) for the properties of each object.) {% badge href="https://xrpl.org/blog/2026/xrpld-3.2.0" %}New in: xrpld 3.2.0{% /badge %} |
+| `TRANSACTION_FLAGS`    | Map of each [transaction type](transactions/types/index.md) to an object mapping the names of its supported [transaction flags](transactions/common-fields.md#flags-field) to their numeric values. The `universal` entry lists the flags that apply to all transaction types. {% badge href="https://xrpl.org/blog/2026/xrpld-3.2.0" %}New in: xrpld 3.2.0{% /badge %} |
+| `LEDGER_ENTRY_FLAGS`   | Map of each [ledger entry type](ledger-data/ledger-entry-types/index.md) to an object mapping the names of that type's flags to their numeric values. {% badge href="https://xrpl.org/blog/2026/xrpld-3.2.0" %}New in: xrpld 3.2.0{% /badge %} |
+| `ACCOUNT_SET_FLAGS`    | Map of [AccountSet flag](transactions/types/accountset.md#accountset-flags) (`asf`) names to their numeric values, for use in the `SetFlag` and `ClearFlag` fields of an [AccountSet transaction](transactions/types/accountset.md). {% badge href="https://xrpl.org/blog/2026/xrpld-3.2.0" %}New in: xrpld 3.2.0{% /badge %} |
 
 For purposes of serializing transactions for signing and submitting, the `FIELDS`, `TYPES`, and `TRANSACTION_TYPES` fields are necessary.
+
+#### Field properties
 
 The field definition objects in the `FIELDS` array have the following fields:
 
@@ -89,6 +96,25 @@ The field definition objects in the `FIELDS` array have the following fields:
 | `isSerialized`   | Boolean | If `true`, this field should be encoded into serialized binary data. When this field is `false`, the field is typically reconstructed on demand rather than stored. |
 | `isSigningField` | Boolean | If `true` this field should be serialized when preparing a transaction for signing. If `false`, this field should be omitted from the data to be signed. (It may not be part of transactions at all.) |
 | `type`           | String  | The internal data type of this field. This maps to a key in the `TYPES` map, which gives the [type code](#type-codes) for this field. |
+
+#### Format field objects
+
+Each `TRANSACTION_FORMATS` and `LEDGER_ENTRY_FORMATS` array contains one entry per field specific to that transaction or ledger entry type. Each entry has these properties:
+
+| Field         | Type   | Contents                                          |
+|:--------------|:-------|:--------------------------------------------------|
+| `name`        | String | The name of the field. This matches the field name in the `FIELDS` array. |
+| `optionality` | Number | A code indicating whether the field is required when creating this transaction or ledger entry type. (See [Optionality values](#optionality-values) for the meaning of each value.) |
+
+#### Optionality values
+
+The `optionality` field uses the following values:
+
+| Value | Meaning                                                          |
+|:------|:----------------------------------------------------------------|
+| `0`   | **Required.** The field must be present.                        |
+| `1`   | **Optional.** The field may be omitted.                         |
+| `2`   | **Default.** The field is optional and can be omitted to use the default. If included, it must be set to a non-default value. |
 
 ### Field IDs
 
@@ -196,9 +222,9 @@ Transactions and ledger entries may contain fields of any of the following types
 
 [Length-prefixed]: #length-prefixing
 
-In the `rippled` source code, some types have an "ST" prefix, which stands for "serialized type". This separates the type definition in the XRP Ledger protocol from data types that may be defined at the programming language level such as arrays or objects.
+In the `xrpld` source code, some types have an "ST" prefix, which stands for "serialized type". This separates the type definition in the XRP Ledger protocol from data types that may be defined at the programming language level such as arrays or objects.
 
-In addition to all of the above field types, the following types may appear in other contexts, such as [ledger objects](ledger-data/ledger-entry-types/index.md) and [transaction metadata](transactions/metadata.md):
+In addition to all of the above field types, the following types may appear in other contexts, such as [ledger entries](ledger-data/ledger-entry-types/index.md) and [transaction metadata](transactions/metadata.md):
 
 | Type Name   | Type Code | [Length-prefixed]? | Description                   |
 |:------------|:----------|:-------------------|:------------------------------|
@@ -278,7 +304,7 @@ At a protocol level, currency codes in the XRP Ledger are arbitrary 160-bit valu
 - The currency code `0x0000000000000000000000005852500000000000` is **always disallowed**. (This is the code "XRP" in the "standard format".)
 - The currency code `0x0000000000000000000000000000000000000000` (all zeroes) is **generally disallowed**. Usually, XRP amounts are not specified with currency codes. However, this code is used to indicate XRP in rare cases where a field must specify a currency code for XRP.
 
-The [`rippled` APIs](../http-websocket-apis/index.md) support a **standard format** for translating three-character ASCII codes to 160-bit hex values as follows:
+The [`xrpld` APIs](../http-websocket-apis/index.md) support a **standard format** for translating three-character ASCII codes to 160-bit hex values as follows:
 
 [{% inline-svg file="/docs/img/currency-code-format.svg" /%}](/docs/img/currency-code-format.svg "Standard Currency Code Format")
 

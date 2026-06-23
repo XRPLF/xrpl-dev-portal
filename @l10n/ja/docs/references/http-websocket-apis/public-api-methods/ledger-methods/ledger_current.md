@@ -40,7 +40,7 @@ label:
 {% tab label="コマンドライン" %}
 ```sh
 #Syntax: ledger_current
-rippled ledger_current
+xrpld ledger_current
 ```
 {% /tab %}
 

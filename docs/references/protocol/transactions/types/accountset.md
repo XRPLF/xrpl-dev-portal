@@ -3,6 +3,7 @@ seo:
     description: Set options on an account.
 labels:
     - Accounts
+txIcon: modify
 ---
 # AccountSet
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/SetAccount.cpp "Source")
@@ -93,7 +94,7 @@ For reference, here are the corresponding ledger flags for each AccountSet flag:
 | AccountSet Flag Name              | Corresponding Ledger Flag         |
 |:----------------------------------|:----------------------------------|
 | `asfAccountTxnID`                 | (None)                            |
-| `asfAllowTrustLineClawback`       | `lsfAllowTrustlineClawback`       |
+| `asfAllowTrustLineClawback`       | `lsfAllowTrustLineClawback`       |
 | `asfAuthorizedNFTokenMinter`      | (None)                            |
 | `asfDefaultRipple`                | `lsfDefaultRipple`                |
 | `asfDepositAuth`                  | `lsfDepositAuth`                  |

@@ -1,6 +1,6 @@
 ---
 seo:
-    description: Shut down the rippled server.
+    description: Shut down the xrpld server.
 labels:
     - Core Server
 ---
@@ -39,7 +39,7 @@ An example of the request format:
 {% tab label="Commandline" %}
 ```sh
 #Syntax: stop
-rippled stop
+xrpld stop
 ```
 {% /tab %}
 
@@ -66,7 +66,7 @@ An example of a successful response:
 
 {% tab label="Commandline" %}
 ```json
-Loading: "/etc/rippled.cfg"
+Loading: "/etc/xrpld.cfg"
 Connecting to 127.0.0.1:5005
 
 {

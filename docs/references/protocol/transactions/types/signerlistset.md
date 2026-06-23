@@ -3,6 +3,9 @@ seo:
     description: Add, remove, or modify an account's multi-signing list.
 labels:
     - Security
+    - Accounts
+requiredAmendment: MultiSign
+txIcon: modify
 ---
 # SignerListSet
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/SetSignerList.cpp "Source")
@@ -10,7 +13,6 @@ labels:
 Create, replace, or remove a list of signers that can be used to [multi-sign](../../../../concepts/accounts/multi-signing.md) a transaction.
 
 {% amendment-disclaimer name="MultiSign" /%}
-
 
 ## Example {% $frontmatter.seo.title %} JSON
 

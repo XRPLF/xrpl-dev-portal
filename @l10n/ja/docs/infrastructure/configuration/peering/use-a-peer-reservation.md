@@ -8,9 +8,9 @@ lables:
 ---
 # ピアリザベーションの使用
 
-[ピアリザベーション][]を使用すると、`rippled`サーバが予約とマッチしたピアからの通信を常に受け入れるように設定できます。このページでは、ピアリザベーションを使用して2台のサーバ間のピアツーピア通信を、各サーバの管理者の協力のもと一貫して維持する方法について説明します。
+[ピアリザベーション][]を使用すると、`xrpld`サーバが予約とマッチしたピアからの通信を常に受け入れるように設定できます。このページでは、ピアリザベーションを使用して2台のサーバ間のピアツーピア通信を、各サーバの管理者の協力のもと一貫して維持する方法について説明します。
 
-ピアリザベーションは、2台のサーバが異なる組織によって運用されていて、着信接続を受信するサーバが、多くのピアを持つ[ハブサーバ](../../../concepts/networks-and-servers/rippled-server-modes.md#公開ハブ)である場合に特に便利です。分かりやすいように、これらの手順では次の用語を使用します。
+ピアリザベーションは、2台のサーバが異なる組織によって運用されていて、着信接続を受信するサーバが、多くのピアを持つ[ハブサーバ](../../../concepts/networks-and-servers/xrpld-server-modes.md#公開ハブ)である場合に特に便利です。分かりやすいように、これらの手順では次の用語を使用します。
 
 - **ストックサーバ**は発信接続を行うサーバです。このサーバは、ハブサーバ上のピアリザベーションを _使用_ します。
 - **ハブサーバ**は着信接続を受信するサーバです。管理者は、このサーバにピアリザベーションを _追加_ します。
@@ -21,7 +21,7 @@ lables:
 
 これらの手順を実行するには、次の前提条件を満たしている必要があります。
 
-- 両方のサーバの管理者が`rippled`を[インストール](../../installation/index.md)して実行している。
+- 両方のサーバの管理者が`xrpld`を[インストール](../../installation/index.md)して実行している。
 - 両方のサーバの管理者が協力することに合意し、連絡が取り合える。秘密情報を共有する必要はないため、パブリックな通信チャネルを使用してもかまいません。
 - ハブサーバが着信ピア接続を受信できる。ファイアウォールをそのように設定する手順については、[ピアリングのポート転送](forward-ports-for-peering.md)をご覧ください。
 - 両方のサーバが、同じ[XRP Ledgerネットワーク](../../../concepts/networks-and-servers/parallel-networks.md)（本番XRP Ledger、Testnet、Devnetなど）と同期するように設定されている。
@@ -34,7 +34,7 @@ lables:
 
 ストックサーバの管理者が、以下の手順を実行します。
 
-永続ノードキーペア値をすでにサーバに設定している場合は、[ステップ2: ノード公開鍵をピアの管理者に連絡する](#2ストックサーバのノード公開鍵を連絡する)に進んでください。（例えば、各サーバの永続ノードキーペアは[サーバクラスターの設定](cluster-rippled-servers.md)の一環として設定します。）
+永続ノードキーペア値をすでにサーバに設定している場合は、[ステップ2: ノード公開鍵をピアの管理者に連絡する](#2ストックサーバのノード公開鍵を連絡する)に進んでください。（例えば、各サーバの永続ノードキーペアは[サーバクラスターの設定](cluster-xrpld-servers.md)の一環として設定します。）
 
 {% admonition type="success" name="ヒント" %}永続ノードキーペアの設定は省略可能ですが、この設定をしておけば、サーバのデータベースの消去や新規マシンへの移行が必要となった場合にピア接続の設定を容易に維持することができます。永続ノードキーペアを設定しない場合は、[server_infoメソッド][]のレスポンスの`pubkey_node`フィールドに表示される、サーバが自動生成したノード公開鍵を使用できます。{% /admonition %}
 
@@ -43,9 +43,9 @@ lables:
    例:
 
     ```
-    rippled validation_create
+    xrpld validation_create
 
-    Loading: "/etc/rippled.cfg"
+    Loading: "/etc/xrpld.cfg"
     Connecting to 127.0.0.1:5005
     {
        "result" : {
@@ -59,10 +59,10 @@ lables:
 
    `validation_seed`（ノードシード値）と`validation_public_key`値（ノード公開鍵）を保存します。
 
-2. `rippled`の構成ファイルを編集します。
+2. `xrpld`の構成ファイルを編集します。
 
     ```
-    vim /etc/opt/ripple/rippled.cfg
+    vim /etc/xrpld/xrpld.cfg
     ```
 
    {% partial file="/@l10n/ja/docs/_snippets/conf-file-location.md" /%}
@@ -78,10 +78,10 @@ lables:
 
    {% admonition type="danger" name="警告" %}すべてのサーバの`[node_seed]`値が一意である必要があります。構成ファイルを別のサーバにコピーする場合は、`[node_seed]`値を削除するか、変更してください。`[node_seed]`は公開しないようにします。不正使用者がこの値にアクセスできた場合、それを使用してサーバを偽装し、XRP Ledgerのピアツーピア通信を行う可能性があります。{% /admonition %}
 
-4. `rippled`サーバを再起動します。
+4. `xrpld`サーバを再起動します。
 
     ```
-    systemctl restart rippled
+    systemctl restart xrpld
     ```
 
 ### 2.ストックサーバのノード公開鍵を連絡する
@@ -95,9 +95,9 @@ lables:
 [peer_reservations_addメソッド][]を使用し、前のステップで入手したノード公開鍵を使用して予約を追加します。例:
 
 ```sh
-$ rippled peer_reservations_add n9Mxf6qD4J55XeLSCEpqaePW4GjoCR5U1ZeGZGJUCNe3bQa4yQbG "Description here"
+$ xrpld peer_reservations_add n9Mxf6qD4J55XeLSCEpqaePW4GjoCR5U1ZeGZGJUCNe3bQa4yQbG "Description here"
 
-Loading: "/etc/opt/ripple/rippled.cfg"
+Loading: "/etc/xrpld/xrpld.cfg"
 Connecting to 127.0.0.1:5005
 
 {
@@ -148,7 +148,7 @@ Connecting to 127.0.0.1:5005
 
 {% tab label="コマンドライン" %}
 ```
-rippled connect 169.54.2.151 51235
+xrpld connect 169.54.2.151 51235
 ```
 {% /tab %}
 
@@ -177,7 +177,7 @@ rippled connect 169.54.2.151 51235
   - [並列ネットワーク](../../../concepts/networks-and-servers/parallel-networks.md)
 - **チュートリアル:**
   - [容量の計画](../../installation/capacity-planning.md)
-  - [`rippled`のトラブルシューティング](../../troubleshooting/index.md)
+  - [`xrpld`のトラブルシューティング](../../troubleshooting/index.md)
 - **リファレンス:**
   - [peersメソッド][]
   - [peer_reservations_addメソッド][]

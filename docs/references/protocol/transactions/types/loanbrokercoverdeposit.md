@@ -1,9 +1,11 @@
 ---
 seo:
-    description: Deposits first-loss capital into a `LoanBroker` ledger entry.
+    description: Deposit first-loss capital into a loan broker.
 labels:
-  - Transactions
-  - Lending Protocol
+    - Transactions
+    - Lending Protocol
+requiredAmendment: LendingProtocol
+txIcon: send
 status: not_enabled
 ---
 # LoanBrokerCoverDeposit

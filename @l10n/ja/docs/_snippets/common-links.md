@@ -154,7 +154,7 @@
 [PriceOracle amendment]: /@l10n/ja/resources/known-amendments.md#priceoracle
 [MPTokensV1_1 amendment]: /@l10n/ja/resources/known-amendments.md#priceoracle
 [RFC-1751]: https://tools.ietf.org/html/rfc1751
-[レポートモード]: /@l10n/ja/docs/concepts/networks-and-servers/rippled-server-modes.md#レポートモード
+[レポートモード]: /@l10n/ja/docs/concepts/networks-and-servers/xrpld-server-modes.md#レポートモード
 [RequireFullyCanonicalSig amendment]: /@l10n/ja/resources/known-amendments.md#requirefullycanonicalsig
 [RippleStateエントリ]: /@l10n/ja/docs/references/protocol/ledger-data/ledger-entry-types/ripplestate.md
 [RippleStateオブジェクト]: /@l10n/ja/docs/references/protocol/ledger-data/ledger-entry-types/ripplestate.md
@@ -298,7 +298,7 @@
 [server_stateメソッド]: /@l10n/ja/docs/references/http-websocket-apis/public-api-methods/server-info-methods/server_state.md
 [sign_forメソッド]: /@l10n/ja/docs/references/http-websocket-apis/admin-api-methods/signing-methods/sign_for.md
 [signメソッド]: /@l10n/ja/docs/references/http-websocket-apis/admin-api-methods/signing-methods/sign.md
-[スタンドアロンモード]: /@l10n/ja/docs/concepts/networks-and-servers/rippled-server-modes.md#スタンドアロンモード
+[スタンドアロンモード]: /@l10n/ja/docs/concepts/networks-and-servers/xrpld-server-modes.md#スタンドアロンモード
 [標準フォーマット]: /@l10n/ja/docs/references/http-websocket-apis/api-conventions/response-formatting.md
 [String Number]: /@l10n/ja/docs/references/protocol/data-types/currency-formats#string-numbers
 [stopメソッド]: /@l10n/ja/docs/references/http-websocket-apis/admin-api-methods/server-control-methods/stop.md

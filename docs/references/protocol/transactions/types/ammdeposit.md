@@ -3,6 +3,9 @@ seo:
     description: Deposit funds into an Automated Market Maker in exchange for LPTokens.
 labels:
     - AMM
+    - DEX
+requiredAmendment: AMM
+txIcon: send
 ---
 # AMMDeposit
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/AMMDeposit.cpp "Source")

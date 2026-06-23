@@ -2,7 +2,7 @@
 html: transaction-results.html
 parent: transaction-formats.html
 seo:
-    description: Learn how to interpret rippled server transaction results.
+    description: Learn how to interpret xrpld server transaction results.
 labels:
   - Transaction Sending
 ---
@@ -10,18 +10,18 @@ labels:
 
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/libxrpl/protocol/TER.cpp "Source")
 
-The `rippled` server summarizes transaction results with result codes, which appear in fields such as `engine_result` and `meta.TransactionResult`. These codes are grouped into several categories of with different prefixes:
+The `xrpld` server summarizes transaction results with result codes, which appear in fields such as `engine_result` and `meta.TransactionResult`. These codes are grouped into several categories of with different prefixes:
 
 | Category              | Prefix                    | Description              |
 |:----------------------|:--------------------------|:-------------------------|
 | Claimed cost only     | [`tec`](tec-codes.md)   | The transaction did not achieve its intended purpose, but the [transaction cost](../../../../concepts/transactions/transaction-cost.md) was destroyed. This result is only final in a validated ledger. |
 | Failure               | [`tef`](tef-codes.md)   | The transaction cannot be applied to the server's current (in-progress) ledger or any later one. It may have already been applied, or the condition of the ledger makes it impossible to apply in the future. |
-| Local error           | [`tel`](tel-codes.md)   | The `rippled` server had an error due to local conditions, such as high load. You may get a different response if you resubmit to a different server or at a different time. |
+| Local error           | [`tel`](tel-codes.md)   | The `xrpld` server had an error due to local conditions, such as high load. You may get a different response if you resubmit to a different server or at a different time. |
 | Malformed transaction | [`tem`](tem-codes.md)   | The transaction was not valid, due to improper syntax, conflicting options, a bad signature, or something else. |
 | Retry                 | [`ter`](ter-codes.md)   | The transaction could not be applied, but it could apply successfully in a future ledger. |
 | Success               | [`tes`](tes-success.md) | (Not an error) The transaction succeeded. This result only final in a validated ledger. |
 
-The `rippled` server automatically retries failed transactions. It is important not to assume that a transaction has completely failed based on a tentative failure result. A transaction may later succeed unless its success or failure is [final](../../../../concepts/transactions/finality-of-results/index.md).
+The `xrpld` server automatically retries failed transactions. It is important not to assume that a transaction has completely failed based on a tentative failure result. A transaction may later succeed unless its success or failure is [final](../../../../concepts/transactions/finality-of-results/index.md).
 
 {% admonition type="danger" name="Warning" %}Transactions' provisional result codes may differ than their final result. Transactions that provisionally succeeded may eventually fail and transactions that provisionally failed may eventually succeed. Transactions that provisionally failed may also eventually fail with a different code. See [finality of results](../../../../concepts/transactions/finality-of-results/index.md) for how to know when a transaction's result is final.{% /admonition %}
 
@@ -32,7 +32,7 @@ By contrast, a `tem` error implies that no server anywhere can apply the transac
 
 ## Immediate Response
 
-The response from the [submit method][] contains a provisional result from the `rippled` server indicating what happened during local processing of the transaction.
+The response from the [submit method][] contains a provisional result from the `xrpld` server indicating what happened during local processing of the transaction.
 
 The response from `submit` contains the following fields:
 

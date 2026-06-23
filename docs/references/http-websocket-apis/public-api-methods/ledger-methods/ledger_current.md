@@ -38,7 +38,7 @@ An example of the request format:
 {% tab label="Commandline" %}
 ```sh
 #Syntax: ledger_current
-rippled ledger_current
+xrpld ledger_current
 ```
 {% /tab %}
 

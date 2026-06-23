@@ -66,7 +66,7 @@ In addition to the [common ledger entry fields][], {% code-page-name /%} entries
 | `ManagementFeeRate`   | Number    | UInt16        | No        | The fee charged by the lending protocol, in units of 1/10th basis points. Valid values are 0 to 100000 (inclusive), representing 0% to 100%. |
 | `OwnerCount`          | Number    | UInt32        | Yes       | The number of active loans issued by the LoanBroker. |
 | `DebtTotal`           | String    | Number        | Yes       | The total asset amount the protocol owes the vault, including interest. |
-| `DebtMaximum`         | String    | Number        | Yes       | The maximum amount the protocol can owe the vault. The default value of `0` means there is no limit to the debt. |
+| `DebtMaximum`         | String    | Number        | No        | The maximum amount the protocol can owe the vault. The default value of `0` means there is no limit to the debt. |
 | `CoverAvailable`      | String    | Number        | Yes       | The total amount of first-loss capital deposited into the lending protocol. |
 | `CoverRateMinimum`    | Number    | UInt32        | Yes       | The 1/10th basis point of the `DebtTotal` that the first-loss capital must cover. Valid values are 0 to 100000 (inclusive), representing 0% to 100%. |
 | `CoverRateLiquidation`| Number    | UInt12        | Yes       | The 1/10th basis point of minimum required first-loss capital that is moved to an asset vault to cover a loan default. Valid values are 0 to 100000 (inclusive), representing 0% to 100%. |
@@ -84,10 +84,10 @@ There are no flags defined for {% code-page-name /%} ledger entries.
 
 ## {% $frontmatter.seo.title %} ID Format
 
-The ID of a `LoanBroker` entry is the [SHA512-Half][] of the following values, concatenated in order:
+The ID of a `LoanBroker` entry is the [SHA-512Half][] of the following values, concatenated in order:
 
 - The `LoanBroker` space key `0x006C`.
 - The [AccountID][] of the account submitting the `LoanBrokerSet` transaction.
-- The transaction `Sequence` number. If the transaction used a [Ticket][], the `TicketSequence` value is used instead.
+- The transaction `Sequence` number. If the transaction used a [ticket](/docs/concepts/accounts/tickets.md), the `TicketSequence` value is used instead.
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

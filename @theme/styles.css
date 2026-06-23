@@ -18,6 +18,16 @@ ul.nav.navbar-nav {
 	border-radius: var(--border-radius);
 }
 
+#content .heading-anchor h1,
+#content .heading-anchor h2,
+#content .heading-anchor h3,
+#content .heading-anchor h4,
+#content .heading-anchor h5,
+#content .heading-anchor h6 {
+  /* Fix left-alignment of headers in md content */
+  gap: 0;
+}
+
 :root, :root.dark {
   --navbar-height: 80px;
 
@@ -177,15 +187,16 @@ ul.nav.navbar-nav {
   --link-decoration: underline;
   --link-font-weight: var(--font-weight-regular);
 
-  --link-color-primary-hover: var(--color-purple-7)
+  --link-color-primary-hover: var(--color-purple-7);
   --link-decoration-hover: underline;
 
   --link-color-visited: white;
   --link-visited-decoration: underline;
 
-  --bg-color: var(--color-gray-10);
+  --bg-color: var(--color-gray-1);  /* was --color-gray-10 */
   --bg-color-raised: var(--color-gray-2);
   --background-color: var(--bg-color);
+ 
 
   --font-family-base: 'Work Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
   --heading-font-family: var(--font-family-base);
@@ -233,6 +244,8 @@ ul.nav.navbar-nav {
   --footer-title-text-color: var(--color-gray-6);
 
   --menu-item-padding-horizontal: 0px;
+  --menu-item-bg-color-active: var(--color-gray-2);
+  --menu-item-bg-color-active-hover: var(--color-gray-3);
 
   --md-list-left-padding: 40px;
   --md-list-margin: 0 0 20px 0;
@@ -261,7 +274,9 @@ ul.nav.navbar-nav {
   --code-block-bg-color: var(--color-gray-8);
   --code-block-controls-bg-color: var(--color-gray-8);
   --code-block-controls-border: none;
+
   --md-tabs-active-tab-bg-color: var(--color-gray-7);
+  --md-tabs-hover-tab-bg-color: var(--color-gray-8);
 
   --inline-code-bg-color: var(--color-gray-8);
 
@@ -273,10 +288,15 @@ ul.nav.navbar-nav {
   --language-picker-background-color: var(--color-gray-8);
   --select-list-bg-color: var(--color-gray-8);
 
+  --button-bg-color-secondary: var(--color-gray-8);
+
   --footer-title-text-color: black;
   --bg-color: var(--color-gray-9);
   --bg-color-raised: var(--color-gray-8);
   --button-content-color-link: black;
+
+  --menu-item-bg-color-active: var(--color-gray-8);
+  --menu-item-bg-color-active-hover: var(--color-gray-7);
 
   --md-table-header-bg-color: var(--color-gray-8);
   --md-table-border-color: var(--color-gray-8);
@@ -284,6 +304,7 @@ ul.nav.navbar-nav {
   --bg-color: var(--color-gray-8);
   --code-panel-bg-color: var(--color-blue-7);
   --layer-color-hover: var(--color-gray-9);
+
 
   --code-block-text-color: var(--color-gray-1);
   --code-block-tokens-comment-color: var(--color-gray-4);
@@ -318,6 +339,9 @@ ul.nav.navbar-nav {
   --code-block-tokens-keyword-color: var(--color-magenta-8);
   --code-block-tokens-string-color: var(--color-blue-8);
 
+  --md-tabs-active-tab-bg-color: var(--color-gray-4);
+  --md-tabs-hover-tab-bg-color: var(--color-gray-3);
+
   --code-panel-bg-color: var(--color-blue-3);
   --layer-color-hover: var(--color-gray-3);
   --bg-raised-gradient: "";
@@ -325,6 +349,12 @@ ul.nav.navbar-nav {
 
 :root .form-control-plaintext {
   color: var(--text-color);
+}
+
+/* Keep active tab visually static on hover */
+button[role="tab"].active {
+  --md-tabs-hover-tab-bg-color: var(--md-tabs-active-tab-bg-color);
+  --md-tabs-hover-tab-text-color: var(--md-tabs-active-tab-text-color);
 }
 
 /* Fix unnecessary horizontal scrolling of tables in Japanese */

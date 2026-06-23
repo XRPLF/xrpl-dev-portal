@@ -95,7 +95,7 @@ An example of the request format:
 {% tab label="Commandline" %}
 ```sh
 #Syntax: submit_multisigned <tx_json>
-rippled submit_multisigned '{
+xrpld submit_multisigned '{
     "Account": "rEuLyBCvcw4CFmzv8RepSiAoNgF8tTGJQC",
     "Fee": "30000",
     "Flags": 262144,
@@ -237,7 +237,7 @@ An example of a successful response:
 
 {% tab label="Commandline" %}
 ```
-Loading: "/etc/rippled.cfg"
+Loading: "/etc/xrpld.cfg"
 Connecting to 127.0.0.1:5005
 
 {

@@ -1,8 +1,10 @@
 import { Schema, Tag } from '@markdoc/markdoc';
+import type { MarkdocTagSchema } from '@redocly/theme/markdoc/tags/types';
+import { sourceLinkForLlms } from '../components/SourceLink';
 
-export const indexPageList: Schema & { tagName: string } = {
+export const childPages: Schema & { tagName: string } = {
   tagName: 'child-pages',
-  render: 'IndexPageItems',
+  render: 'ChildPages',
   selfClosing: true,
 };
 
@@ -30,6 +32,28 @@ export const repoLink: Schema & { tagName: string } = {
         return new Tag(this.render, attributes, children);
     },
     render: 'RepoLink',
+};
+
+export const sourceLink: MarkdocTagSchema & { tagName: string } = {
+    tagName: 'source-link',
+    selfClosing: true,
+    attributes: {
+      path: {
+        type: 'String',
+        required: true,
+      },
+      name: {
+        type: 'String',
+        required: false,
+      },
+    },
+    transform(node, config) {
+        const attributes = node.transformAttributes(config);
+        attributes["xrpld_release"] = config.variables.env.PUBLIC_XRPLD_RELEASE;
+        return new Tag(this.render, attributes);
+    },
+    render: 'SourceLink',
+    renderForLlms: sourceLinkForLlms,
 };
 
 export const codePageName: Schema & { tagName: string } = {
@@ -243,3 +267,21 @@ export const amendmentDisclaimer: Schema &  { tagName: string } = {
   render: 'AmendmentDisclaimer',
   selfClosing: true
 }
+
+export const txCategory: Schema & { tagName: string } = {
+  tagName: 'tx-category',
+  attributes: {
+    name: {
+      type: 'String',
+      required: true
+    }
+  },
+  render: 'TxCategory',
+  selfClosing: true,
+};
+
+export const txIconLegend: Schema & { tagName: string } = {
+  tagName: 'tx-icon-legend',
+  render: 'TxIconLegend',
+  selfClosing: true,
+};
