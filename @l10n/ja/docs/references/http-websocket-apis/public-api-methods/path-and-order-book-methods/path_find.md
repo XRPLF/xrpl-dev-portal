@@ -542,7 +542,6 @@ Pathfindingリクエストが正常にクローズされた場合、レスポン
 * `noPathRequest` - Pathfindingリクエストをクローズしようとしましたが、実行中のリクエストがありませんでした。
 
 ## path_find status
-{% source-link path="src/xrpld/rpc/handlers/orderbook/PathFind.cpp#L69-L77" /%}
 
 `path_find`の`status`サブコマンドは、現在実行中のクライアントのPathfindingリクエストの即時更新をリクエストします。
 
