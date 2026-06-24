@@ -1,5 +1,5 @@
 """
-Generate rippled release notes from GitHub commit history.
+Generate xrpld release notes from GitHub commit history.
 
 Usage (from repo root):
     python3 tools/generate-release-notes.py --from release-3.0 --to release-3.1 [--date 2026-03-24] [--output path/to/file.md]
@@ -8,7 +8,7 @@ Arguments:
     --from      (required) Base ref — must match exact tag or branch to compare from.
     --to        (required) Target ref — must match exact tag or branch to compare to.
     --date      (optional) Release date in YYYY-MM-DD format. Defaults to today.
-    --output    (optional) Output file path. Defaults to blog/<year>/rippled-<version>.md.
+    --output    (optional) Output file path. Defaults to blog/<year>/xrpld-<version>.md.
 
 Requires: gh CLI (authenticated)
 """
@@ -465,7 +465,7 @@ def format_uncategorized_entry(pr_number, title, labels, body, files=None, link_
     return "\n".join(parts)
 
 
-def generate_markdown(version, release_date, amendment_diff, amendment_unchanged, amendment_entries, entries, authors, version_commit):
+def generate_markdown(version, release_date, amendment_diff, amendment_unchanged, amendment_entries, entries, authors, version_commit, to_ref):
     """Generate the full markdown release notes."""
     year = release_date.split("-")[0]
     parts = []
@@ -476,16 +476,16 @@ date: "{release_date}"
 template: '../../@theme/templates/blogpost'
 seo:
     title: Introducing XRP Ledger version {version}
-    description: rippled version {version} is now available.
+    description: xrpld version {version} is now available.
 labels:
-    - rippled Release Notes
+    - xrpld Release Notes
 markdown:
     editPage:
         hide: true
 ---
 # Introducing XRP Ledger version {version}
 
-Version {version} of `rippled`, the reference server implementation of the XRP Ledger protocol, is now available.
+Version {version} of `xrpld`, the reference server implementation of the XRP Ledger protocol, is now available.
 
 
 ## Action Required
@@ -495,14 +495,14 @@ If you run an XRP Ledger server, upgrade to version {version} as soon as possibl
 
 ## Install / Upgrade
 
-On supported platforms, see the [instructions on installing or updating `rippled`](../../docs/infrastructure/installation/index.md).
+On supported platforms, see the [instructions on installing or updating `xrpld`](../../docs/infrastructure/installation/index.md).
 
 | Package | SHA-256 |
 |:--------|:--------|
-| [RPM for Red Hat / CentOS (x86-64)](https://repos.ripple.com/repos/rippled-rpm/stable/rippled-{version}-1.el9.x86_64.rpm) | `TODO` |
-| [DEB for Ubuntu / Debian (x86-64)](https://repos.ripple.com/repos/rippled-deb/pool/stable/rippled_{version}-1_amd64.deb) | `TODO` |
+| [RPM for Red Hat / CentOS (x86-64)](https://repos.ripple.com/repos/rippled-rpm/stable/xrpld-{version}-1.el9.x86_64.rpm) | `TODO` |
+| [DEB for Ubuntu / Debian (x86-64)](https://repos.ripple.com/repos/rippled-deb/pool/stable/xrpld_{version}-1_amd64.deb) | `TODO` |
 
-For other platforms, please [build from source](https://github.com/XRPLF/rippled/blob/master/BUILD.md). The most recent commit in the git log should be the change setting the version:
+For other platforms, please [build from source](https://github.com/XRPLF/rippled/blob/{to_ref}/BUILD.md). The most recent commit in the git log should be the change setting the version:
 
 ```text
 {version_commit}
@@ -549,16 +549,16 @@ For other platforms, please [build from source](https://github.com/XRPLF/rippled
     for author in sorted(authors):
         parts.append(f"- {author}")
 
-    parts.append("""
+    parts.append(f"""
 
 ## Bug Bounties and Responsible Disclosures
 
-We welcome reviews of the `rippled` code and urge researchers to responsibly disclose any issues they may find.
+We welcome reviews of the `xrpld` code and urge researchers to responsibly disclose any issues they may find.
 
 For more information, see:
 
 - [Ripple's Bug Bounty Program](https://ripple.com/legal/bug-bounty/)
-- [`rippled` Security Policy](https://github.com/XRPLF/rippled/blob/develop/SECURITY.md)
+- [`xrpld` Security Policy](https://github.com/XRPLF/rippled/blob/{to_ref}/SECURITY.md)
 """)
 
     # Unsorted entries with full context (after all published sections)
@@ -572,11 +572,11 @@ For more information, see:
 # --- Main ---
 
 def main():
-    parser = argparse.ArgumentParser(description="Generate rippled release notes")
+    parser = argparse.ArgumentParser(description="Generate xrpld release notes")
     parser.add_argument("--from", dest="from_ref", required=True, help="Base ref (tag or branch)")
     parser.add_argument("--to", dest="to_ref", required=True, help="Target ref (tag or branch)")
     parser.add_argument("--date", help="Release date (YYYY-MM-DD). Defaults to today.")
-    parser.add_argument("--output", help="Output file path (default: blog/<year>/rippled-<version>.md)")
+    parser.add_argument("--output", help="Output file path (default: blog/<year>/xrpld-<version>.md)")
     args = parser.parse_args()
 
     args.date = args.date or date.today().isoformat()
@@ -595,7 +595,7 @@ def main():
     if args.output:
         output_path = args.output if os.path.isabs(args.output) else os.path.join(REPO_ROOT, args.output)
     else:
-        output_path = os.path.join(REPO_ROOT, "blog", year, f"rippled-{version}.md")
+        output_path = os.path.join(REPO_ROOT, "blog", year, f"xrpld-{version}.md")
 
     print(f"Fetching commits: {args.from_ref}...{args.to_ref}")
     commits = fetch_commits(args.from_ref, args.to_ref)
@@ -777,7 +777,7 @@ def main():
     authors |= contributors_without_login
 
     # Generate markdown
-    markdown = generate_markdown(version, args.date, amendment_diff, amendment_unchanged, amendment_entries, entries, authors, version_commit)
+    markdown = generate_markdown(version, args.date, amendment_diff, amendment_unchanged, amendment_entries, entries, authors, version_commit, args.to_ref)
 
     # Write output
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
