@@ -218,7 +218,7 @@ def parse_features_macro(text):
         r'^XRPL_(FEATURE|FIX)\s*\(\s*(\w+)\s*,\s*Supported::(\w+)\s*,\s*VoteBehavior::(\w+)', text, re.MULTILINE):
         macro_type, name, supported, vote = match.groups()
         key = f"fix{name}" if macro_type == "FIX" else name
-        results[key] = f"{supported}, {vote}"
+        results[key] = f"{supported}, {vote}".lower()
     for match in re.finditer(r'^XRPL_RETIRE(?:_(FEATURE|FIX))?\s*\(\s*(\w+)\s*\)', text, re.MULTILINE):
         macro_type, name = match.groups()
         key = f"fix{name}" if macro_type == "FIX" else name
