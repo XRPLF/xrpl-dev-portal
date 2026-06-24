@@ -212,16 +212,27 @@ def fetch_commits(from_ref, to_ref):
 def parse_features_macro(text):
     """Parse features.macro into {amendment_name: status_string} dict."""
     results = {}
+    # Anchor to line start (re.MULTILINE) so commented-out example lines like
+    # "// XRPL_FEATURE(Example, ...)" in the docs block aren't parsed as real amendments.
     for match in re.finditer(
-        r'XRPL_(FEATURE|FIX)\s*\(\s*(\w+)\s*,\s*Supported::(\w+)\s*,\s*VoteBehavior::(\w+)', text):
+        r'^XRPL_(FEATURE|FIX)\s*\(\s*(\w+)\s*,\s*Supported::(\w+)\s*,\s*VoteBehavior::(\w+)', text, re.MULTILINE):
         macro_type, name, supported, vote = match.groups()
         key = f"fix{name}" if macro_type == "FIX" else name
         results[key] = f"{supported}, {vote}"
-    for match in re.finditer(r'XRPL_RETIRE(?:_(FEATURE|FIX))?\s*\(\s*(\w+)\s*\)', text):
+    for match in re.finditer(r'^XRPL_RETIRE(?:_(FEATURE|FIX))?\s*\(\s*(\w+)\s*\)', text, re.MULTILINE):
         macro_type, name = match.groups()
         key = f"fix{name}" if macro_type == "FIX" else name
         results[key] = "retired"
     return results
+
+
+def is_supported_yes(status):
+    """True if a parsed status string is Supported::Yes (case-insensitive).
+
+    The macro uses `Supported::Yes` (capital Y); matching case-insensitively
+    keeps this robust to capitalization changes in features.macro.
+    """
+    return status.lower().startswith("yes")
 
 
 def fetch_amendment_diff(from_ref, to_ref):
@@ -244,22 +255,22 @@ def fetch_amendment_diff(from_ref, to_ref):
     changes = {}
     for name, to_status in to_amendments.items():
         if name not in from_amendments:
-            # New amendment — include only if Supported::yes
-            changes[name] = to_status.startswith("yes")
+            # New amendment — include only if Supported::Yes
+            changes[name] = is_supported_yes(to_status)
         elif from_amendments[name] != to_status:
             # Include if either old or new status involves yes (voting-ready)
             from_status = from_amendments[name]
-            changes[name] = from_status.startswith("yes") or to_status.startswith("yes")
+            changes[name] = is_supported_yes(from_status) or is_supported_yes(to_status)
 
-    # Removed amendments — include only if they were Supported::yes
+    # Removed amendments — include only if they were Supported::Yes
     for name in from_amendments:
         if name not in to_amendments:
-            changes[name] = from_amendments[name].startswith("yes")
+            changes[name] = is_supported_yes(from_amendments[name])
 
     # Unchanged amendments to also exclude (unreleased work)
     unchanged = sorted(
         name for name, to_status in to_amendments.items()
-        if name not in changes and to_status != "retired" and not to_status.startswith("yes")
+        if name not in changes and to_status != "retired" and not is_supported_yes(to_status)
     )
 
     return changes, unchanged
