@@ -36,7 +36,7 @@ Hay campos opcionales disponibles para todas las transacciones, con campos adici
 
 Puedes enviar la transacción al ledger como un comando de JavaScript, Python, línea de comandos, o cualquier servicio compatible. Los servidores xrpld proponen las transacciones al XRPL. 
 
-![Transacciones propuestas](/docs/img/introduction17-gather-txns.png)
+![Transacciones propuestas](/docs/img/introduction17-gather-txns.svg)
 
 Cuando el 80% de los validadores aprueban un conjunto actual de transacciones propuestas, se registran como parte del ledger permanente. Los servidores xrpld devuelven los resultados de la transacción que enviaste.
 
@@ -49,8 +49,6 @@ Las solicitudes son utilizadas para obtener información del ledger, pero no rea
 Los campos que envías pueden variar según el tipo de información que solicitas. Normalmente tienen varios campos opcionales, pero solo unos pocos son campos obligatorios.
 
 Cuando envías tu solicitud, puede ser procesada por un servidor xrpld o por un servidor Clio, un servidor dedicado para responder solicitudes.
-
-![Servidor Clio](/docs/img/introduction19-clio.png)
 
 Los servidores Clio quitan parte de la carga a los servidores xrpld en el XRPL para mejorar la velocidad de procesamiento y la confiabilidad.
 
