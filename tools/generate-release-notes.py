@@ -15,11 +15,14 @@ Requires: gh CLI (authenticated)
 
 import argparse
 import base64
+import hashlib
 import json
 import os
 import re
 import subprocess
 import sys
+import urllib.error
+import urllib.request
 from datetime import date, datetime
 
 
@@ -427,6 +430,20 @@ def is_amendment(files):
     return any("features.macro" in f for f in files)
 
 
+def compute_sha256(url):
+    """Stream a package and return its SHA-256 hex digest. Returns "TODO" if the download fails."""
+    print(f"  Computing SHA-256 for {url} ...")
+    digest = hashlib.sha256()
+    try:
+        with urllib.request.urlopen(url, timeout=60) as resp:
+            for chunk in iter(lambda: resp.read(1 << 16), b""):
+                digest.update(chunk)
+    except (urllib.error.URLError, TimeoutError) as e:
+        print(f"  Warning: could not download {url} ({e}). Leaving SHA-256 as TODO.", file=sys.stderr)
+        return "TODO"
+    return digest.hexdigest()
+
+
 # --- Formatting ---
 
 def format_commit_entry(sha, title, body="", files=None):
@@ -465,7 +482,7 @@ def format_uncategorized_entry(pr_number, title, labels, body, files=None, link_
     return "\n".join(parts)
 
 
-def generate_markdown(version, release_date, amendment_diff, amendment_unchanged, amendment_entries, entries, authors, version_commit, to_ref):
+def generate_markdown(version, release_date, amendment_diff, amendment_unchanged, amendment_entries, entries, authors, version_commit, to_ref, rpm_url, rpm_sha, deb_url, deb_sha):
     """Generate the full markdown release notes."""
     year = release_date.split("-")[0]
     parts = []
@@ -499,8 +516,8 @@ On supported platforms, see the [instructions on installing or updating `xrpld`]
 
 | Package | SHA-256 |
 |:--------|:--------|
-| [RPM for Red Hat / CentOS (x86-64)](https://repos.ripple.com/repos/rippled-rpm/stable/xrpld-{version}-1.el9.x86_64.rpm) | `TODO` |
-| [DEB for Ubuntu / Debian (x86-64)](https://repos.ripple.com/repos/rippled-deb/pool/stable/xrpld_{version}-1_amd64.deb) | `TODO` |
+| [RPM for Red Hat / CentOS (x86-64)]({rpm_url}) | `{rpm_sha}` |
+| [DEB for Ubuntu / Debian (x86-64)]({deb_url}) | `{deb_sha}` |
 
 For other platforms, please [build from source](https://github.com/XRPLF/rippled/blob/{to_ref}/BUILD.md). The most recent commit in the git log should be the change setting the version:
 
@@ -776,8 +793,15 @@ def main():
             authors.add(f"@{login}")
     authors |= contributors_without_login
 
+    # Compute release packages SHA-256 checksums.
+    rpm_url = f"https://repos.ripple.com/repos/rippled-rpm/stable/xrpld-{version}-1.el9.x86_64.rpm"
+    deb_url = f"https://repos.ripple.com/repos/rippled-deb/pool/stable/xrpld_{version}-1_amd64.deb"
+    print("Computing package checksums...")
+    rpm_sha = compute_sha256(rpm_url)
+    deb_sha = compute_sha256(deb_url)
+
     # Generate markdown
-    markdown = generate_markdown(version, args.date, amendment_diff, amendment_unchanged, amendment_entries, entries, authors, version_commit, args.to_ref)
+    markdown = generate_markdown(version, args.date, amendment_diff, amendment_unchanged, amendment_entries, entries, authors, version_commit, args.to_ref, rpm_url, rpm_sha, deb_url, deb_sha)
 
     # Write output
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
