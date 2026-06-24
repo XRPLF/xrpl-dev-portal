@@ -36,7 +36,7 @@ Optional fields are available for all transactions, with additional fields avail
 
 You send the transaction to the ledger as a command from JavaScript, Python, the command line, or any compatible service. The xrpld servers propose transactions to the XRPL. 
 
-![Proposed Transacations](/docs/img/introduction17-gather-txns.png)
+![Proposed Transacations](/docs/img/introduction17-gather-txns.svg)
 
 When 80% of the validators approve a current set of proposed transactions, they are recorded as part of the permanent ledger. The xrpld server returns the results of the transaction you sent.
 
@@ -49,8 +49,6 @@ Requests are used to get information from the ledger, but they do not make chang
 The fields you send vary with the type of information you request. They typically have several optional fields, but only a few required fields.
 
 When you submit your request, it might be processed by an xrpld server or by a Clio server, a server that is dedicated to responding to requests.
-
-![Clio Server](/docs/img/introduction19-clio.png)
 
 Clio servers take some of the load off the other xrpld servers on the XRPL to improve processing speed and reliability.
 

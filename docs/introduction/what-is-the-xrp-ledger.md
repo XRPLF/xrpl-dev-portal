@@ -53,7 +53,7 @@ Once recorded, the data in any given block cannot be altered retroactively, unle
 
 Most of the xrpld servers in the XRPL monitor or propose transactions. An important subset of servers are run as validators. These trusted servers accumulate lists of new transactions into a new possible ledger instance (a new block in the block chain).
 
-![Gathering Transactions](/docs/img/introduction17-gather-txns.png)
+![Gathering Transactions](/docs/img/introduction17-gather-txns.svg)
 
 They share their lists with all of the other validators. The validators incorporate proposed changes from one another and distribute a new version of the ledger proposal.
 

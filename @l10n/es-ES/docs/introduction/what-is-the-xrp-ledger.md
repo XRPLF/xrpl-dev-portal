@@ -53,7 +53,7 @@ Una vez registrados, los datos de cualquier bloque no se pueden modificar retroa
 
 La mayoría de los servidores xrpld en XRPL monitorean o proponen transacciones. Un importante subconjunto de servidores se ejecutan como validadores. Estos servidores confiables acumulan listas de nuevas transacciones en una nueva posible instancia del libro contable (ledger) (un nuevo bloque en la blokchain).
 
-![Recopilación de transacciones](/docs/img/introduction17-gather-txns.png)
+![Recopilación de transacciones](/docs/img/introduction17-gather-txns.svg)
 
 Los validadores comparten sus listas con el resto de validadores. Los validadores incorporan los cambios propuetos entre sí y distribuyen una nueva versión de la propuesta del libro contable (ledger).
 
