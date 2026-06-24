@@ -9,8 +9,6 @@ labels:
 # channel_authorize
 [[ソース]](https://github.com/XRPLF/rippled/blob/cdee9a675c0e571b5c86dc01550a554a42e6f85c/src/xrpld/rpc/handlers/admin/signing/ChannelAuthorize.cpp#L33 "Source")
 
-_（[PayChan Amendment][]が有効になっている必要があります。{% badge href="https://github.com/XRPLF/rippled/releases/tag/0.33.0" %}新規: rippled 0.33.0{% /badge %}）_
-
 `channel_authorize`メソッドは、特定額のXRPをPayment Channelから清算するときに使用できる署名を作成します。
 
 ## リクエストのフォーマット

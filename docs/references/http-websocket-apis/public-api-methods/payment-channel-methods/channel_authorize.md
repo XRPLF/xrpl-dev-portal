@@ -11,8 +11,6 @@ The `channel_authorize` method creates a signature that can be used to redeem a 
 
 {% partial file="/docs/_snippets/public-signing-note.md" /%}
 
-{% amendment-disclaimer name="PayChan" /%}
-
 ## Request Format
 An example of the request format:
 
