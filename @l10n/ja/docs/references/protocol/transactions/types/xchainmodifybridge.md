@@ -8,7 +8,7 @@ status: not_enabled
 txIcon: modify
 ---
 # XChainModifyBridge
-{% source-link path="src/libxrpl/protocol/TxFormats.cpp#L390-L397" /%}
+{% source-link path="include/xrpl/tx/transactors/bridge/XChainBridge.h#L45-L79" /%}
 
 `XChainModifyBridge`トランザクションでは、ブリッジ管理者がブリッジの設定を変更することができます。変更できるのは`SignatureReward`と`MinAccountCreateAmount`だけです。
 

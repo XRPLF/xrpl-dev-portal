@@ -8,7 +8,7 @@ status: not_enabled
 txIcon: send
 ---
 # XChainCommit
-{% source-link path="src/libxrpl/protocol/TxFormats.cpp#L408-L416" /%}
+{% source-link path="include/xrpl/tx/transactors/bridge/XChainBridge.h#L133-L167" /%}
 
 クロスチェーン送金の2番目のステップです。`XChainCommit`は発行チェーンでラップできるようにロックチェーンで資産を保管したり、ロックチェーンで返却できるように発行チェーンでラップされた資産をバーンしたりします。
 

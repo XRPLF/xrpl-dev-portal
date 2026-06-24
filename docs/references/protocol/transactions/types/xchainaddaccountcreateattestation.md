@@ -8,7 +8,7 @@ status: not_enabled
 txIcon: create
 ---
 # XChainAddAccountCreateAttestation
-{% source-link path="src/libxrpl/tx/transactors/bridge/XChainBridge.cpp" /%}
+{% source-link path="include/xrpl/tx/transactors/bridge/XChainBridge.h#L255-L287" /%}
 
 Provide an attestation from a [witness server](../../../../concepts/xrpl-sidechains/witness-servers.md) that an `XChainAccountCreateCommit` transaction occurred on the other chain.
 

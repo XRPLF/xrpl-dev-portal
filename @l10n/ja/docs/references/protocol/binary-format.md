@@ -157,7 +157,7 @@ curated_anchors:
 
 各フィールドタイプには任意のタイプコードが含まれており、番号が小さいコードから最初にソートされます。これらのコードは{% source-link name="SField.h" path="include/xrpl/protocol/SField.h#L60-L98" /%}で定義されています。
 
-たとえば {% source-link name="UInt32のタイプコードが2である" path="include/xrpl/protocol/SField.h#L67" /%}ので、すべてのUInt32フィールドは、すべての{% source-link name="Amountフィールド（タイプコード6）" path="include/xrpl/protocol/SField.h#L71" /%}よりも前に位置します。
+たとえば {% source-link name="UInt32のタイプコードが2である" path="include/xrpl/protocol/SField.h#L48" /%}ので、すべてのUInt32フィールドは、すべての{% source-link name="Amountフィールド（タイプコード6）" path="include/xrpl/protocol/SField.h#L52" /%}よりも前に位置します。
 
 [定義ファイル](#定義ファイル)には、`TYPES`マップの各タイプのタイプコードがリストされています。
 
@@ -165,7 +165,7 @@ curated_anchors:
 
 各フィールドにはフィールドコードが含まれています。フィールドコードは、同じタイプのフィールドをソートするときに使用され、番号が小さいコードが最初になるようにソートされます。これらのフィールドは{% source-link name="sfields/macro" path="include/xrpl/protocol/detail/sfields.macro" /%}で定義されています。
 
-たとえば[Paymentトランザクション][]の`Account`フィールドの{% source-link name="ソートコードが1である" path="include/xrpl/protocol/detail/sfields.macro#L269" /%}場合、このフィールドは`Destination`フィールド（{% source-link name="ソートコードが3である" path="include/xrpl/protocol/detail/sfields.macro#L271" /%}フィールド）よりも前に位置します。
+たとえば[Paymentトランザクション][]の`Account`フィールドの{% source-link name="ソートコードが1である" path="include/xrpl/protocol/detail/sfields.macro#L304" /%}場合、このフィールドは`Destination`フィールド（{% source-link name="ソートコードが3である" path="include/xrpl/protocol/detail/sfields.macro#L306" /%}フィールド）よりも前に位置します。
 
 フィールドコードは異なるフィールドタイプのフィールドで再利用されますが、同じタイプのフィールドに同じフィールドコードが含まれることはありません。タイプコードとフィールドコードを組み合わせると、フィールドの一意の[フィールドID](#フィールドid)になります。
 
