@@ -7,7 +7,7 @@ labels:
   - Payment Channel
 ---
 # channel_authorize
-[[ソース]](https://github.com/XRPLF/rippled/blob/cdee9a675c0e571b5c86dc01550a554a42e6f85c/src/xrpld/rpc/handlers/admin/signing/ChannelAuthorize.cpp#L33 "Source")
+{% source-link path="src/xrpld/rpc/handlers/admin/signing/ChannelAuthorize.cpp" /%}
 
 `channel_authorize`メソッドは、特定額のXRPをPayment Channelから清算するときに使用できる署名を作成します。
 
