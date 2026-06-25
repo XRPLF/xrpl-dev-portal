@@ -1,0 +1,79 @@
+<svg width="100%" viewBox="0 0 960 480" role="img" xmlns="http://www.w3.org/2000/svg" font-family="'Helvetica Neue',Arial,sans-serif">
+  <title>Custodial vs Non-custodial Wallets</title>
+  <style>
+    /* Title and the center divider sit on the transparent canvas, so they use
+       theme-neutral colors that read on both light and dark page backgrounds.
+       Panels are self-contained, so their colors adapt to the OS color scheme. */
+    .title  { fill: #8a919a; }
+    .panel  { fill: #2a2a2a; }
+    .accent { fill: #4ade80; }
+    .label  { fill: #aaaaaa; }
+    .value  { fill: #e8e8e8; }
+    .divider { stroke: #444444; }
+    @media (prefers-color-scheme: light) {
+      .panel  { fill: #f3f4f6; }
+      .accent { fill: #16a34a; }
+      .label  { fill: #6b7280; }
+      .value  { fill: #1f2937; }
+      .divider { stroke: #d1d5db; }
+    }
+  </style>
+
+  <line x1="480" y1="20" x2="480" y2="478" stroke="#8a919a" stroke-opacity="0.3" stroke-width="1"/>
+
+  <!-- Custodial -->
+  <text class="title" x="240" y="56" font-size="26" font-weight="700" text-anchor="middle">Custodial</text>
+
+  <polygon points="240,78 170,110 310,110" fill="#6b7280"/>
+  <rect x="175" y="110" width="130" height="66" rx="2" fill="#6b7280"/>
+  <rect x="185" y="118" width="14" height="52" rx="1" fill="#4b5563"/>
+  <rect x="208" y="118" width="14" height="52" rx="1" fill="#4b5563"/>
+  <rect x="231" y="118" width="14" height="52" rx="1" fill="#4b5563"/>
+  <rect x="254" y="118" width="14" height="52" rx="1" fill="#4b5563"/>
+  <rect x="277" y="118" width="14" height="52" rx="1" fill="#4b5563"/>
+  <rect x="173" y="176" width="134" height="10" rx="2" fill="#6b7280"/>
+
+  <rect class="panel" x="64" y="200" width="352" height="258" rx="8"/>
+  <rect class="accent" x="64" y="200" width="352" height="5" rx="2"/>
+
+  <text class="label" x="82" y="232" font-size="10" font-weight="600" letter-spacing="0.1em">YOUR KEYS</text>
+  <text class="value" x="82" y="254" font-size="14">Held by the third party</text>
+  <line class="divider" x1="82" y1="266" x2="402" y2="266" stroke-width="0.8"/>
+
+  <text class="label" x="82" y="288" font-size="10" font-weight="600" letter-spacing="0.1em">RECOVERY</text>
+  <text class="value" x="82" y="310" font-size="14">Password reset available</text>
+  <line class="divider" x1="82" y1="322" x2="402" y2="322" stroke-width="0.8"/>
+
+  <text class="label" x="82" y="344" font-size="10" font-weight="600" letter-spacing="0.1em">TRANSACTIONS</text>
+  <text class="value" x="82" y="366" font-size="14">Limited to what they allow on their platform</text>
+  <line class="divider" x1="82" y1="378" x2="402" y2="378" stroke-width="0.8"/>
+
+  <text class="label" x="82" y="400" font-size="10" font-weight="600" letter-spacing="0.1em">SECURITY RISK</text>
+  <text class="value" x="82" y="422" font-size="14">Bigger target, holds many users funds</text>
+
+  <!-- Non-custodial -->
+  <text class="title" x="720" y="56" font-size="26" font-weight="700" text-anchor="middle">Non-custodial</text>
+
+  <circle cx="720" cy="108" r="24" fill="none" stroke="#b0b8c4" stroke-width="10"/>
+  <rect x="716" y="132" width="8" height="44" rx="3" fill="#6b7280"/>
+  <rect x="724" y="145" width="16" height="9" rx="2" fill="#6b7280"/>
+  <rect x="724" y="160" width="11" height="8" rx="2" fill="#6b7280"/>
+
+  <rect class="panel" x="544" y="200" width="352" height="258" rx="8"/>
+  <rect class="accent" x="544" y="200" width="352" height="5" rx="2"/>
+
+  <text class="label" x="562" y="232" font-size="10" font-weight="600" letter-spacing="0.1em">YOUR KEYS</text>
+  <text class="value" x="562" y="254" font-size="14">Only you hold them</text>
+  <line class="divider" x1="562" y1="266" x2="882" y2="266" stroke-width="0.8"/>
+
+  <text class="label" x="562" y="288" font-size="10" font-weight="600" letter-spacing="0.1em">RECOVERY</text>
+  <text class="value" x="562" y="310" font-size="14">No recovery if keys are lost</text>
+  <line class="divider" x1="562" y1="322" x2="882" y2="322" stroke-width="0.8"/>
+
+  <text class="label" x="562" y="344" font-size="10" font-weight="600" letter-spacing="0.1em">TRANSACTIONS</text>
+  <text class="value" x="562" y="366" font-size="14">Any transaction the ledger allows</text>
+  <line class="divider" x1="562" y1="378" x2="882" y2="378" stroke-width="0.8"/>
+
+  <text class="label" x="562" y="400" font-size="10" font-weight="600" letter-spacing="0.1em">SECURITY RISK</text>
+  <text class="value" x="562" y="422" font-size="14">You manage your own key security</text>
+</svg>
