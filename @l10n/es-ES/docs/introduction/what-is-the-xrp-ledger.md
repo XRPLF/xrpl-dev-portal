@@ -12,23 +12,13 @@ El XRP Ledger es una blockchain descentralizada que usa su propia moneda digital
 
 ## ¿Qué es una blockchain?
 
-Una blockchain es una lista de registros en continuo creciemiento. La blockchain comienza con un bloque de datos.
-
-<div align="center">
-
-![Un bloque de datos](/docs/img/blockchain-block-data.svg)
-
-</div>
-
-Un grupo de nodos validadores confiables llega a un consenso de que los datos son válidos.
+Una blockchain es una lista de registros en continuo creciemiento. La blockchain comienza con un bloque de datos. Un grupo de nodos validadores confiables llega a un consenso de que los datos son válidos. Cada nodo validador obtiene su propia copia del bloque de datos. No existe una única autoridad central. Todas las copias son igualmente válidas.
 
 <div align="center">
 
 ![Validadores con copias válidas](/docs/img/validators-valid-copies.svg)
 
 </div>
-
-Cada nodo validador obtiene su propia copia del bloque de datos. No existe una única autoridad central. Todas las copias son igualmente válidas.
 
 El bloque se identifica de forma única con un número hash criptográfico, muy elaborado, complejo, generado por un ordenador, que tiene 64 caracteres hexadecimales. También se identifica con una marca de tiempo (timestamp) con su hora de creación.
 
@@ -60,7 +50,7 @@ La mayoría de los servidores xrpld en XRPL monitorean o proponen transacciones.
 
 <div align="center">
 
-![Recopilación de transacciones](/docs/img/introduction17-gather-txns.svg)
+![Los validadores alcanzan el consenso y registran un nuevo bloque](/docs/img/federated-consensus.svg)
 
 </div>
 
