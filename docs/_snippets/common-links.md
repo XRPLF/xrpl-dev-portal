@@ -355,7 +355,7 @@
 [fixDisallowIncomingV1 amendment]: /resources/known-amendments.md#fixdisallowincomingv1
 [fixEnforceNFTokenTrustlineV2 amendment]: /resources/known-amendments.md#fixenforcenftokentrustlinev2
 [fixFillOrKill amendment]: /resources/known-amendments.md#fixfillorkill
-[fixFrozenLPTokenTransfer]: /resources/known-amendments.md#fixfrozenlptokentransfer
+[fixFrozenLPTokenTransfer amendment]: /resources/known-amendments.md#fixfrozenlptokentransfer
 [fixInvalidTxFlags amendment]: /resources/known-amendments.md#fixinvalidtxflags
 [fixMasterKeyAsRegularKey amendment]: /resources/known-amendments.md#fixmasterkeyasregularkey
 [fixNFTokenDirV1 amendment]: /resources/known-amendments.md#fixnftokendirv1
