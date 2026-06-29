@@ -64,6 +64,34 @@ If your server does not connect to enough [peer servers](../../concepts/networks
 Use the [peers method][] to get information about your server's current peers. If you have exactly 10 or 11 peers, that may indicate that your firewall is blocking incoming peer connections. [Set up port forwarding](../configuration/peering/forward-ports-for-peering.md) to allow more incoming connections. If your server is configured as a private server, double-check the contents and syntax of the `[ips_fixed]` stanza in your config file, and add more proxies or public hubs if possible.
 
 
+## Switch from RocksDB to NuDB
+
+If you are running solid state disks (SSDs) with a RocksDB backend, and your server has been stuck in the [`connected` or `syncing` state](../../references/http-websocket-apis/api-conventions/xrpld-server-states.md) for more than 10 minutes, try switching to NuDB.
+
+1. Check the current state of the server with the [server_info method][].
+
+    ```
+    $ xrpld server_info
+    ```
+
+2. Stop the `xrpld` server (if it is running).
+
+    ```
+    $ sudo systemctl stop xrpld
+    ```
+
+3. Edit the config file to set the `type` field of the `[node_db]` stanza to `NuDB`. Point the `path` field (and, optionally, the `[database_path]` stanza) at a new, empty directory that the user has permission to write to, so there is no existing data to conflict with. For the recommended NuDB settings, see [Capacity Planning](../installation/capacity-planning.md#more-about-using-nudb).
+
+    {% partial file="/docs/_snippets/conf-file-location.md" /%}
+
+4. Start the server again.
+
+    ```
+    $ sudo systemctl start xrpld
+    ```
+
+Typically, the server should reach the `full` state within a few minutes.
+
 ## Corrupt Databases
 
 In rare cases, corrupt data saved in your `xrpld` server's internal databases could cause it to fail to sync. You can safely delete your server's databases in most circumstances as long as the server is not running. Corrupt data can be the result of a momentary hardware failure when copying or writing to disk, a more serious disk failure, a different process crashing and writing to the wrong part of the disk, or other issues.
