@@ -1,27 +1,15 @@
-<svg width="100%" viewBox="0 0 960 520" role="img" xmlns="http://www.w3.org/2000/svg" font-family="'Helvetica Neue',Arial,sans-serif">
+<svg width="100%" viewBox="0 0 960 230" role="img" xmlns="http://www.w3.org/2000/svg" font-family="'Helvetica Neue',Arial,sans-serif">
   <title>Hardware vs Software Wallets</title>
   <style>
-    /* Title and the center divider sit on the transparent canvas, so they use
-       theme-neutral colors that read on both light and dark page backgrounds.
-       Panels are self-contained, so their colors adapt to the OS color scheme. */
-    .title  { fill: #8a919a; }
-    .panel  { fill: #2a2a2a; }
-    .accent { fill: #4ade80; }
-    .label  { fill: #aaaaaa; }
-    .value  { fill: #e8e8e8; }
-    .divider { stroke: #444444; }
-    @media (prefers-color-scheme: light) {
-      .panel  { fill: #f3f4f6; }
-      .accent { fill: #16a34a; }
-      .label  { fill: #6b7280; }
-      .value  { fill: #1f2937; }
-      .divider { stroke: #d1d5db; }
-    }
+    /* Decorative icons only. The comparison details live in the table below this
+       image so they stay legible and reflow on small screens. The title color is
+       theme-neutral so it reads on both light and dark page backgrounds. */
+    .title { fill: #8a919a; }
   </style>
 
-  <line x1="480" y1="20" x2="480" y2="518" stroke="#8a919a" stroke-opacity="0.3" stroke-width="1"/>
+  <line x1="480" y1="20" x2="480" y2="220" stroke="#8a919a" stroke-opacity="0.3" stroke-width="1"/>
 
-  <!-- Hardware -->
+  <!-- Hardware: device -->
   <text class="title" x="240" y="56" font-size="26" font-weight="700" text-anchor="middle">Hardware</text>
 
   <rect x="136" y="101" width="168" height="84" rx="14" fill="#6b7280"/>
@@ -32,25 +20,7 @@
   <rect x="304" y="123" width="30" height="28" rx="3" fill="#4b5563"/>
   <rect x="310" y="129" width="18" height="16" rx="2" fill="#6b7280"/>
 
-  <rect class="panel" x="64" y="230" width="352" height="268" rx="8"/>
-  <rect class="accent" x="64" y="230" width="352" height="5" rx="2"/>
-
-  <text class="label" x="82" y="262" font-size="10" font-weight="600" letter-spacing="0.1em">STORAGE</text>
-  <text class="value" x="82" y="284" font-size="14">Keys stored on a physical device</text>
-  <line class="divider" x1="82" y1="296" x2="402" y2="296" stroke-width="0.8"/>
-
-  <text class="label" x="82" y="318" font-size="10" font-weight="600" letter-spacing="0.1em">SECURITY</text>
-  <text class="value" x="82" y="340" font-size="14">Disconnect from internet when not in use</text>
-  <line class="divider" x1="82" y1="352" x2="402" y2="352" stroke-width="0.8"/>
-
-  <text class="label" x="82" y="374" font-size="10" font-weight="600" letter-spacing="0.1em">ISOLATION</text>
-  <text class="value" x="82" y="396" font-size="14">Keys never touch a computer or smartphone</text>
-  <line class="divider" x1="82" y1="408" x2="402" y2="408" stroke-width="0.8"/>
-
-  <text class="label" x="82" y="430" font-size="10" font-weight="600" letter-spacing="0.1em">EASE OF USE</text>
-  <text class="value" x="82" y="452" font-size="14">Requires carrying a physical device</text>
-
-  <!-- Software -->
+  <!-- Software: laptop -->
   <text class="title" x="720" y="56" font-size="26" font-weight="700" text-anchor="middle">Software</text>
 
   <rect x="643" y="80" width="154" height="102" rx="8" fill="#6b7280"/>
@@ -63,22 +33,4 @@
   <rect x="735" y="133" width="24" height="22" rx="3" fill="#4b5563" opacity="0.3"/>
   <rect x="713" y="182" width="14" height="20" rx="2" fill="#6b7280"/>
   <rect x="686" y="198" width="68" height="8" rx="4" fill="#6b7280"/>
-
-  <rect class="panel" x="544" y="230" width="352" height="268" rx="8"/>
-  <rect class="accent" x="544" y="230" width="352" height="5" rx="2"/>
-
-  <text class="label" x="562" y="262" font-size="10" font-weight="600" letter-spacing="0.1em">STORAGE</text>
-  <text class="value" x="562" y="284" font-size="14">Keys stored digitally on your device</text>
-  <line class="divider" x1="562" y1="296" x2="882" y2="296" stroke-width="0.8"/>
-
-  <text class="label" x="562" y="318" font-size="10" font-weight="600" letter-spacing="0.1em">SECURITY</text>
-  <text class="value" x="562" y="340" font-size="14">Less secure, always internet-connected</text>
-  <line class="divider" x1="562" y1="352" x2="882" y2="352" stroke-width="0.8"/>
-
-  <text class="label" x="562" y="374" font-size="10" font-weight="600" letter-spacing="0.1em">FEATURES</text>
-  <text class="value" x="562" y="396" font-size="14">Additional features to enhance experience</text>
-  <line class="divider" x1="562" y1="408" x2="882" y2="408" stroke-width="0.8"/>
-
-  <text class="label" x="562" y="430" font-size="10" font-weight="600" letter-spacing="0.1em">EASE OF USE</text>
-  <text class="value" x="562" y="452" font-size="14">Easier to use, always accessible</text>
 </svg>
