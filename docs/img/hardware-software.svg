@@ -1,0 +1,36 @@
+<svg width="100%" viewBox="0 0 960 230" role="img" xmlns="http://www.w3.org/2000/svg" font-family="'Helvetica Neue',Arial,sans-serif">
+  <title>Hardware vs Software Wallets</title>
+  <style>
+    /* Decorative icons only. The comparison details live in the table below this
+       image so they stay legible and reflow on small screens. The title color is
+       theme-neutral so it reads on both light and dark page backgrounds. */
+    .title { fill: #8a919a; }
+  </style>
+
+  <line x1="480" y1="20" x2="480" y2="220" stroke="#8a919a" stroke-opacity="0.3" stroke-width="1"/>
+
+  <!-- Hardware: device -->
+  <text class="title" x="240" y="56" font-size="26" font-weight="700" text-anchor="middle">Hardware</text>
+
+  <rect x="136" y="101" width="168" height="84" rx="14" fill="#6b7280"/>
+  <rect x="152" y="115" width="104" height="52" rx="6" fill="#111111"/>
+  <circle cx="186" cy="141" r="6" fill="#4b5563" opacity="0.8"/>
+  <circle cx="206" cy="141" r="6" fill="#4b5563" opacity="0.5"/>
+  <circle cx="226" cy="141" r="6" fill="#4b5563" opacity="0.3"/>
+  <rect x="304" y="123" width="30" height="28" rx="3" fill="#4b5563"/>
+  <rect x="310" y="129" width="18" height="16" rx="2" fill="#6b7280"/>
+
+  <!-- Software: laptop -->
+  <text class="title" x="720" y="56" font-size="26" font-weight="700" text-anchor="middle">Software</text>
+
+  <rect x="643" y="80" width="154" height="102" rx="8" fill="#6b7280"/>
+  <rect x="653" y="90" width="134" height="78" rx="4" fill="#111111"/>
+  <rect x="671" y="103" width="24" height="22" rx="3" fill="#4b5563" opacity="0.55"/>
+  <rect x="703" y="103" width="24" height="22" rx="3" fill="#4b5563" opacity="0.4"/>
+  <rect x="735" y="103" width="24" height="22" rx="3" fill="#4b5563" opacity="0.35"/>
+  <rect x="671" y="133" width="24" height="22" rx="3" fill="#4b5563" opacity="0.4"/>
+  <rect x="703" y="133" width="24" height="22" rx="3" fill="#4b5563" opacity="0.55"/>
+  <rect x="735" y="133" width="24" height="22" rx="3" fill="#4b5563" opacity="0.3"/>
+  <rect x="713" y="182" width="14" height="20" rx="2" fill="#6b7280"/>
+  <rect x="686" y="198" width="68" height="8" rx="4" fill="#6b7280"/>
+</svg>
