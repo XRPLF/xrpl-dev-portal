@@ -6,7 +6,7 @@ labels:
 status: not_enabled
 ---
 # XChainOwnedCreateAccountClaimID
-[[Source]](https://github.com/XRPLF/rippled/blob/f64cf9187affd69650907d0d92e097eb29693945/include/xrpl/protocol/detail/ledger_entries.macro#L315-L323 "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/a5d238e7d4fa6ef2b539b759d58744d0a1c33c0c/include/xrpl/protocol/detail/ledger_entries.macro#L315-L323 "Source")
 
 An `XChainOwnedCreateAccountClaimID` ledger entry collects attestations for creating an account via a cross-chain transfer.
 

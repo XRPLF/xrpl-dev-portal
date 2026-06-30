@@ -6,7 +6,7 @@ labels:
 txIcon: modify
 ---
 # AccountSet
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/SetAccount.cpp "Source")
+{% source-link path="src/libxrpl/tx/transactors/account/AccountSet.cpp" /%}
 
 Modify the settings or properties of an [account in the XRP Ledger](../../../../concepts/accounts/index.md).
 
@@ -31,7 +31,7 @@ Modify the settings or properties of an [account in the XRP Ledger](../../../../
 | Field            | JSON Type        | [Internal Type][] | Description        |
 |:-----------------|:-----------------|:------------------|:-------------------|
 | [`ClearFlag`](#accountset-flags) | Number | UInt32      | Unique identifier of a flag to disable for this account. |
-| [`Domain`](#domain) | String        | Blob              | The domain that owns this account, as a string of hex representing the ASCII for the domain in lowercase. [Cannot be more than 256 bytes in length.](https://github.com/XRPLF/rippled/blob/70d5c624e8cf732a362335642b2f5125ce4b43c1/include/xrpl/protocol/Protocol.h#L98) |
+| [`Domain`](#domain) | String        | Blob              | The domain that owns this account, as a string of hex representing the ASCII for the domain in lowercase. [Cannot be more than 256 bytes in length.](https://github.com/XRPLF/rippled/blob/5b6e8b6f93b19c1e3f6a3467a25639031d9d9a53/include/xrpl/protocol/Protocol.h#L215) |
 | `EmailHash`      | String           | UInt128           | An arbitrary 128-bit value. Conventionally, clients treat this as the md5 hash of an email address to use for displaying a [Gravatar](http://en.gravatar.com/site/implement/hash/) image. |
 | `MessageKey`     | String           | Blob              | Public key for sending encrypted messages to this account. To set the key, it must be exactly 33 bytes, with the first byte indicating the key type: `0x02` or `0x03` for secp256k1 keys, `0xED` for Ed25519 keys. To remove the key, use an empty value. |
 | `NFTokenMinter`  | String - [Address][] | AccountID     | Another account that can [mint NFTokens for you](../../../../tutorials/tokens/nfts/assign-an-authorized-minter-js.md). {% amendment-disclaimer name="NonFungibleTokensV1_1" /%} |

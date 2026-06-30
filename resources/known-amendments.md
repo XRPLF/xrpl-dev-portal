@@ -5,7 +5,7 @@ labels:
   - Blockchain
 ---
 # Known Amendments
-[[Source]](https://github.com/XRPLF/rippled/blob/develop/include/xrpl/protocol/detail/features.macro "Source")
+{% source-link path="include/xrpl/protocol/detail/features.macro" /%}
 
 This page lists all known [amendments](../docs/concepts/networks-and-servers/amendments.md) and their statuses.
 

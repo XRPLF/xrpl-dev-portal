@@ -6,7 +6,7 @@ labels:
 ---
 # version
 
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/Version.h "Source")
+{% source-link path="src/xrpld/rpc/handlers/server_info/Version.h" /%}
 
 The `version` command retrieves the API version information for the xrpld server. For `Clio` servers, see [`version` (`clio`)](../clio-methods/version.md) instead.
 

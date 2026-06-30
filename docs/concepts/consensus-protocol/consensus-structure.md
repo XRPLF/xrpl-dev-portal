@@ -107,7 +107,7 @@ When the consensus process completes, each server independently computes a new l
 
 2. Place the agreed-upon transaction set in _canonical order_ so that every server processes them the same way.
 
-    [Canonical order](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/misc/CanonicalTXSet.cpp) is not the order the transactions were received, because servers may receive the same transactions in different order. To prevent participants from competing over transaction ordering, canonical order is hard to manipulate.
+    {% source-link name="Canonical order" path="src/libxrpl/ledger/CanonicalTXSet.cpp" /%} is not the order the transactions were received, because servers may receive the same transactions in different order. To prevent participants from competing over transaction ordering, canonical order is hard to manipulate.
 
 3. Process each transaction according to its instructions, in order. Update the ledger's state data accordingly.
 

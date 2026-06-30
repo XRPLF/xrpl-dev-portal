@@ -8,7 +8,7 @@ labels:
 ---
 # server_definitions
 
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/server_info/ServerDefinitions.cpp#L385 "Source")
+{% source-link path="src/xrpld/rpc/handlers/server_info/ServerDefinitions.cpp#L385" /%}
 
 The `server_definitions` command returns an SDK-compatible `definitions.json`, generated from the `xrpld` instance currently running. You can use this to query a node in a network, quickly receiving the definitions necessary to serialize/deserialize its binary data.
 

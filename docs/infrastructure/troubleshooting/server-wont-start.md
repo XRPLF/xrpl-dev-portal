@@ -69,7 +69,7 @@ Possible solutions:
 
 - Create a config file that can be read by the `xrpld` user at `$HOME/.config/xrpld/xrpld.cfg` (where `$HOME` points to the `xrpld` user's home directory).
 
-    {% admonition type="success" name="Tip" %}The `rippled` repository contains [an example `xrpld.cfg` file](https://github.com/XRPLF/rippled/blob/master/cfg/xrpld-example.cfg) which is provided as the default config when you do an installation from a binary package. If you do not have the file, you can copy it from there.{% /admonition %}
+    {% admonition type="success" name="Tip" %}The `rippled` repository contains {% source-link name="an example xrpld.cfg file" path="cfg/xrpld-example.cfg" /%} which is provided as the default config when you do an installation from a binary package. If you do not have the file, you can copy it from there.{% /admonition %}
 
 - Specify the path to your preferred config file using the `--conf` [commandline option](../commandline-usage.md).
 
@@ -87,7 +87,7 @@ Possible solutions:
 
 - Check that the `validators.txt` file exists and the `xrpld` user has permissions to read it.
 
-    {% admonition type="success" name="Tip" %}The `rippled` repository contains [an example `validators.txt` file](https://github.com/XRPLF/rippled/blob/master/cfg/validators-example.txt) which is provided as the default config when you do an installation from a binary package. If you do not have the file, you can copy it from there.{% /admonition %}
+    {% admonition type="success" name="Tip" %}The `rippled` repository contains {% source-link name="an example validators.txt file" path="cfg/validators-example.txt" /%} which is provided as the default config when you do an installation from a binary package. If you do not have the file, you can copy it from there.{% /admonition %}
 
 - Edit your `xrpld.cfg` file and modify the `[validators_file]` setting to have the correct path to your `validators.txt` (or equivalent) file. Check for extra whitespace before or after the filename.
 

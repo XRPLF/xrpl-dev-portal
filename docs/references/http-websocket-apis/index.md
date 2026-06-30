@@ -14,7 +14,7 @@ You can communicate directly with the XRP Ledger through HTTP-based APIs provide
 
 Currently, there are two API versions: `1` and `2` {% badge href="https://github.com/XRPLF/rippled/releases/tag/2.0.0" %}New in: rippled 2.0.0{% /badge %}. The server reports the range of supported API versions in the [`version` API method](public-api-methods/server-info-methods/version.md); you can specify which version to use in your API requests.
 
-- For a full list of the differences between API versions, see [API-CHANGELOG on GitHub](https://github.com/XRPLF/rippled/blob/develop/API-CHANGELOG.md).
+- For a full list of the differences between API versions, see {% source-link name="API-CHANGELOG on GitHub" path="API-CHANGELOG.md" /%}.
 - To stay up-to-date with API changes, join the [ripple server mailing list](https://groups.google.com/g/ripple-server).
 
 ### Specifying a Version

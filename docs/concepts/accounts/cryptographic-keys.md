@@ -154,14 +154,12 @@ The process of deriving a key pair depends on the signing algorithm. In all case
 The key derivation processes described here are implemented in multiple places and programming languages:
 
 - In C++ in the `xrpld` code base:
-    - [Seed definition](https://github.com/XRPLF/rippled/blob/master/src/libxrpl/protocol/Seed.cpp)
-    - [General & Ed25519 key derivation](https://github.com/XRPLF/rippled/blob/master/src/libxrpl/protocol/SecretKey.cpp)
-    - [secp256k1 key derivation](https://github.com/XRPLF/rippled/blob/master/src/libxrpl/protocol/SecretKey.cpp)
+    - {% source-link name="Seed definition" path="src/libxrpl/protocol/Seed.cpp" /%}
+    - {% source-link name="Key Derivation" path="src/libxrpl/protocol/SecretKey.cpp" /%}
 - In Python 3 in {% repo-link path="_code-samples/key-derivation/py/key_derivation.py" %}this repository's code samples section{% /repo-link %}.
 - In JavaScript in the [`ripple-keypairs`](https://github.com/XRPLF/xrpl.js/tree/main/packages/ripple-keypairs) package.
 
 ### Ed25519 Key Derivation
-[[Source]](https://github.com/XRPLF/rippled/blob/70d5c624e8cf732a362335642b2f5125ce4b43c1/src/libxrpl/protocol/SecretKey.cpp#L311-L317 "Source")
 
 [{% inline-svg file="/docs/img/key-derivation-ed25519.svg" /%}](/docs/img/key-derivation-ed25519.svg "Passphrase → Seed → Secret Key → Prefix + Public Key")
 
@@ -182,7 +180,6 @@ The key derivation processes described here are implemented in multiple places a
     Validator ephemeral keys cannot be Ed25519.
 
 ### secp256k1 Key Derivation
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/libxrpl/protocol/SecretKey.cpp "Source")
 
 [{% inline-svg file="/docs/img/key-derivation-secp256k1.svg" /%}](/docs/img/key-derivation-secp256k1.svg "Passphrase → Seed → Root Key Pair → Intermediate Key Pair → Master Key Pair")
 
@@ -201,7 +198,7 @@ The steps to derive the XRP Ledger's secp256k1 account key pair from a seed valu
 
     2. Calculate the [SHA-512Half][] of the concatenated (seed+root sequence) value.
 
-    3. If the result is not a valid secp256k1 secret key, increment the root sequence by 1 and start over. [[Source]](https://github.com/XRPLF/rippled/blob/70d5c624e8cf732a362335642b2f5125ce4b43c1/src/libxrpl/protocol/SecretKey.cpp#L103-L114 "Source")
+    3. If the result is not a valid secp256k1 secret key, increment the root sequence by 1 and start over.
 
         A valid secp256k1 key must not be zero, and it must be numerically less than the _secp256k1 group order_. The secp256k1 group order is the constant value `0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEBAAEDCE6AF48A03BBFD25E8CD0364141`.
 

@@ -12,7 +12,7 @@ txIcon: cancel
 
 # VaultDelete
 
-[[Source]](https://github.com/XRPLF/rippled/blob/release-3.1/src/xrpld/app/tx/detail/VaultDelete.cpp "Source")
+{% source-link path="src/libxrpl/tx/transactors/vault/VaultDelete.cpp" /%}
 
 Permanently deletes an existing `Vault` object from the ledger, removes all associated ledger entries, and frees up the reserve requirement for the Vault Owner.
 

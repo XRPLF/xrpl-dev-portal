@@ -8,7 +8,7 @@ txIcon: create
 requiredAmendment: Escrow
 ---
 # EscrowCreate
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/Escrow.cpp "Source")
+{% source-link path="src/libxrpl/tx/transactors/escrow/EscrowCreate.cpp" /%}
 
 Set aside funds in an [escrow](../../../../concepts/payment-types/escrow.md) that delivers them to a predetermined recipient when certain conditions are met. If the escrow has an expiration, the funds can also be returned to the sender after it expires.
 

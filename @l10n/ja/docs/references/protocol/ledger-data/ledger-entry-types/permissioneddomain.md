@@ -6,7 +6,7 @@ labels:
   - 許可型ドメイン
 ---
 # PermissionedDomain
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/include/xrpl/protocol/detail/ledger_entries.macro#L451-L461 "ソース")
+{% source-link path="include/xrpl/protocol/detail/ledger_entries.macro#L451-L461" /%}
 
 `PermissionedDomain`レジャーエントリは、単一の[許可型ドメイン][]インスタンスを記述します。[PermissionedDomainSetトランザクション][]を送信することで、許可型ドメインを作成できます。
 

@@ -9,7 +9,7 @@ requiredAmendment: PermissionedDomains
 txIcon: cancel
 ---
 # PermissionedDomainDelete
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/PermissionedDomainDelete.cpp "Source")
+{% source-link path="src/libxrpl/tx/transactors/permissioned_domain/PermissionedDomainDelete.cpp" /%}
 
 Delete a [permissioned domain][] that you own.
 

@@ -5,7 +5,7 @@ labels:
     - Core Server
 ---
 # print
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/Print.cpp "Source")
+{% source-link path="src/xrpld/rpc/handlers/admin/status/Print.cpp" /%}
 
 The `print` command returns the current status of various internal subsystems, including peers, the ledger cleaner, and the resource manager.
 

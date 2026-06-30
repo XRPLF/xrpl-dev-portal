@@ -12,6 +12,6 @@ top_nav_grouping: 人気ページ
 
 Windows、Linux、macOSなど様々なプラットフォームで`xrpld`をビルドするには、C++開発環境が必要です。Git、Python、Conan、CMake、そして適切なC++コンパイラなどのツールが必要です。
 
-続きを読むには、[GitHubの最新の`rippled`ビルド手順](https://github.com/XRPLF/rippled/blob/develop/BUILD.md)をご覧ください。
+続きを読むには、{% source-link name="GitHubの最新のrippledビルド手順" path="BUILD.md" /%}をご覧ください。
 
 {% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

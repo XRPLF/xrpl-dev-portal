@@ -6,7 +6,7 @@ labels:
 txIcon: modify
 ---
 # TrustSet
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/SetTrust.cpp "Source")
+{% source-link path="src/libxrpl/tx/transactors/token/TrustSet.cpp" /%}
 
 Create or modify a [trust line](../../../../concepts/tokens/fungible-tokens/index.md) linking two accounts.
 

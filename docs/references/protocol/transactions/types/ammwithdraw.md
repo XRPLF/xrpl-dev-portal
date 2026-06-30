@@ -8,7 +8,7 @@ requiredAmendment: AMM
 txIcon: send
 ---
 # AMMWithdraw
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/AMMWithdraw.cpp "Source")
+{% source-link path="src/libxrpl/tx/transactors/dex/AMMWithdraw.cpp" /%}
 
 Withdraw assets from an [Automated Market Maker](../../../../concepts/tokens/decentralized-exchange/automated-market-makers.md) (AMM) instance by returning the AMM's liquidity provider tokens (LP Tokens).
 

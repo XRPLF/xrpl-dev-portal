@@ -8,7 +8,7 @@ labels:
   - ブロックチェーン
 ---
 # validator_info
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/ValidatorInfo.cpp "ソース")
+{% source-link path="src/xrpld/rpc/handlers/admin/status/ValidatorInfo.cpp" /%}
 
 {% code-page-name /%}メソッドは、サーバがバリデータとして設定されている場合に、現在のバリデータの設定を返します。
 

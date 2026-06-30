@@ -5,7 +5,7 @@ labels:
     - Transaction Sending
 ---
 # sign_for
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/SignFor.cpp "Source")
+{% source-link path="src/xrpld/rpc/handlers/admin/signing/SignFor.cpp" /%}
 
 The `sign_for` command provides one signature for a [multi-signed transaction](../../../../concepts/accounts/multi-signing.md).
 

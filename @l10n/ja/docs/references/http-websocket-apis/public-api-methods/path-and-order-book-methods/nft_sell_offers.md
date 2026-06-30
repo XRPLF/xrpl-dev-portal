@@ -7,7 +7,7 @@ labels:
   - 非代替性トークン, NFT, NFToken
 ---
 # nft_sell_offers
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/NFTOffers.cpp "ソース")
+{% source-link path="src/xrpld/rpc/handlers/orderbook/NFTOffersHelpers.h" /%}
 
 `nft_sell_offers`メソッドは、与えられた[NFToken][]オブジェクトに対する売却オファーのリストを返します。
 

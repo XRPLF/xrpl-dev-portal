@@ -8,7 +8,7 @@ labels:
   - 支払い
 ---
 # submit
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/Submit.cpp "ソース")
+{% source-link path="src/xrpld/rpc/handlers/transaction/Submit.cpp" /%}
 
 `submit`メソッドは[トランザクション](../../../protocol/transactions/index.md)を適用し、トランザクションの確認と将来のレジャーへの記録が行われるように、ネットワークに送信します。
 

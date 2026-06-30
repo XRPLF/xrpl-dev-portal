@@ -5,13 +5,11 @@ labels:
     - Payment Channels
 ---
 # channel_authorize
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/PayChanClaim.cpp "Source")
+{% source-link path="src/xrpld/rpc/handlers/admin/signing/ChannelAuthorize.cpp" /%}
 
 The `channel_authorize` method creates a signature that can be used to redeem a specific amount of XRP from a payment channel.
 
 {% partial file="/docs/_snippets/public-signing-note.md" /%}
-
-{% amendment-disclaimer name="PayChan" /%}
 
 ## Request Format
 An example of the request format:

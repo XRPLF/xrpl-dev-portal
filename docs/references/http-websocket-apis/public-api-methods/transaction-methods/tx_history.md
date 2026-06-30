@@ -3,7 +3,7 @@ seo:
     description: Retrieve info about all recent transactions.
 ---
 # tx_history
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/TxHistory.cpp "Source")
+{% source-link path="src/xrpld/rpc/handlers/transaction/TxHistory.cpp" /%}
 
 The `tx_history` method retrieves some of the most recent transactions made.
 

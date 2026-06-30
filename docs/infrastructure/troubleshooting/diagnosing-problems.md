@@ -116,7 +116,7 @@ This generally indicates one of several problems:
 
 ## Check the server log
 
-[By default,](https://github.com/XRPLF/rippled/blob/master/cfg/xrpld-example.cfg#L1139-L1142) `rippled` writes the server's debug log to the file `/var/log/xrpld/debug.log`. The location of the debug log can differ based on your server's config file. If you start the `xrpld` service directly (instead of using `systemctl` or `service` to start it), it also prints log messages to the console by default.
+{% source-link name="By default," path="cfg/xrpld-example.cfg#L1139-L1142" /%} `rippled` writes the server's debug log to the file `/var/log/xrpld/debug.log`. The location of the debug log can differ based on your server's config file. If you start the `xrpld` service directly (instead of using `systemctl` or `service` to start it), it also prints log messages to the console by default.
 
 The default config file sets the log level to severity "warning" for all categories of log messages by internally using the [log_level method][] during startup. You can control the verbosity of the debug log [using the `--silent` commandline option during startup](../commandline-usage.md#verbosity-options) and with the [log_level method][] while the server is running. (See the `[rpc_startup]` stanza of the config file for settings.)
 

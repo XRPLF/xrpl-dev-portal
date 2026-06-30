@@ -8,7 +8,7 @@ status: not_enabled
 txIcon: create
 ---
 # XChainCreateBridge
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/TxFormats.cpp#L381-L388 "ソース")
+{% source-link path="include/xrpl/tx/transactors/bridge/XChainBridge.h#L12-L43" /%}
 
 新しい`Bridge`レジャーオブジェクトを作成し、トランザクショ ンが送信されたチェーン上に新しいクロスチェーンブリッジの入り口を定義します。これにはブリッジのドアアカウントと資産に関する情報が含まれます。
 

@@ -6,7 +6,7 @@ labels:
   - Accounts
 ---
 # gateway_balances
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/GatewayBalances.cpp "Source")
+{% source-link path="src/xrpld/rpc/handlers/account/GatewayBalances.cpp" /%}
 
 The `gateway_balances` command calculates the total balances issued by a given account, optionally excluding amounts held by [operational addresses](../../../../concepts/accounts/account-types.md).
 

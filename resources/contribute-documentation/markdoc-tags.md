@@ -217,22 +217,22 @@ Link to an `xrpld` source code file. The link is built using a `path` parameter 
 Example usage _without_ `name`:
 
 <pre><code>
-{% source-link path="src/xrpld/app/tx/detail/DeleteAccount.cpp" /%}
+{% source-link path="src/libxrpl/tx/transactors/account/AccountDelete.cpp" /%}
 </code></pre>
 
 Demonstration:
 
-{% source-link path="src/xrpld/app/tx/detail/DeleteAccount.cpp" /%}
+{% source-link path="src/libxrpl/tx/transactors/account/AccountDelete.cpp" /%}
 
 Example usage _with_ `name`:
 
 <pre><code>
-{% source-link name="AccountDelete" path="src/xrpld/app/tx/detail/DeleteAccount.cpp" /%}
+{% source-link name="AccountDelete" path="src/libxrpl/tx/transactors/account/AccountDelete.cpp" /%}
 </code></pre>
 
 Demonstration:
 
-This is a plain link to the {% source-link name="AccountDelete" path="src/xrpld/app/tx/detail/DeleteAccount.cpp" /%} source code.
+This is a plain link to the {% source-link name="AccountDelete" path="src/libxrpl/tx/transactors/account/AccountDelete.cpp" /%} source code.
 
 
 ### Try It

@@ -9,7 +9,7 @@ requiredAmendment: fixNFTokenPageLinks
 txIcon: other
 ---
 # LedgerStateFix
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/LedgerStateFix.cpp "Source")
+{% source-link path="src/libxrpl/tx/transactors/system/LedgerStateFix.cpp" /%}
 
 Repair a specific corruption affecting on-ledger data. This transaction type has a different mode for each type of error state or corruption it can fix.
 

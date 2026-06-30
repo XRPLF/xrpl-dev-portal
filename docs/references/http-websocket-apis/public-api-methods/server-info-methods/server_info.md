@@ -5,7 +5,7 @@ labels:
     - Core Server
 ---
 # server_info (xrpld)
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/ServerInfo.cpp "Source")
+{% source-link path="src/xrpld/rpc/handlers/server_info/ServerInfo.cpp" /%}
 
 The `server_info` command asks the server for a human-readable version of various information about [the `xrpld` server](../../../../concepts/networks-and-servers/index.md) being queried. For [Clio servers](../../../../concepts/networks-and-servers/the-clio-server.md), see [`server_info` (Clio)](../clio-methods/server_info-clio.md) instead.
 

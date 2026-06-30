@@ -5,7 +5,7 @@ labels:
  - Non-fungible Tokens, NFTs
 ---
 # NFTokenOffer
-[[Source]](https://github.com/XRPLF/rippled/blob/f64cf9187affd69650907d0d92e097eb29693945/include/xrpl/protocol/detail/ledger_entries.macro#L34-L44 "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/a5d238e7d4fa6ef2b539b759d58744d0a1c33c0c/include/xrpl/protocol/detail/ledger_entries.macro#L26-L36 "Source")
 
 An `NFTokenOffer` entry represents an offer to buy, sell or transfer an [NFT](../../../../concepts/tokens/nfts/index.md). You can create an NFT buy or sell offer by sending an [NFTokenCreateOffer transaction][].
 

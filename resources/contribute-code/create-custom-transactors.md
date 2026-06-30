@@ -19,8 +19,8 @@ Transactors follow a basic order of operations:
 
 This tutorial uses the existing `CreateCheck` transactor as an example. You can view the source files here:
 
-- [Header File](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/CreateCheck.h)
-- [CPP File](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/CreateCheck.cpp)
+- {% source-link name="Header File" path="include/xrpl/tx/transactors/check/CheckCreate.h" /%}
+- {% source-link name="CPP File" path="src/libxrpl/tx/transactors/check/CheckCreate.cpp" /%}
 
 
 ## Header File
@@ -76,8 +76,8 @@ The `preflight` function checks for errors in the transaction itself before acce
     {% admonition type="info" name="Note" %}The `~` symbol returns an optional type.{% /admonition %}
 
 - You can view ledger and transaction schemas here:
-    - [`ledger_entries.macro`](https://github.com/XRPLF/rippled/blob/master/include/xrpl/protocol/detail/ledger_entries.macro)
-    - [`transactions.macro`](https://github.com/XRPLF/rippled/blob/master/include/xrpl/protocol/detail/transactions.macro)
+    - {% source-link name="ledger_entries.macro" path="include/xrpl/protocol/detail/ledger_entries.macro" /%}
+    - {% source-link name="transactions.macro" path="include/xrpl/protocol/detail/transactions.macro" /%}
 
 - `rippled` summarizes transaction results with result codes. See: [Transaction Results](../../docs/references/protocol/transactions/transaction-results/index.md)
 
@@ -342,7 +342,7 @@ EscrowFinish::calculateBaseFee(ReadView const& view, STTx const& tx)
 
 ### `makeTxConsequences`
 
-`rippled` uses a [`TxConsequences`](https://github.com/XRPLF/rippled/blob/70d5c624e8cf732a362335642b2f5125ce4b43c1/src/xrpld/app/tx/applySteps.h#L58) class to describe the outcome to an account when applying a transaction. It tracks the fee, maximum possible XRP spent, and how many sequence numbers are consumed by the transaction. There are three types of consequences:
+`rippled` uses a [`TxConsequences`](https://github.com/XRPLF/rippled/blob/8995564ed6b9e453e144bb663303072a3c1ba305/include/xrpl/tx/applySteps.h#L37) class to describe the outcome to an account when applying a transaction. It tracks the fee, maximum possible XRP spent, and how many sequence numbers are consumed by the transaction. There are three types of consequences:
 
 - **Normal:** The transactor doesn't affect transaction signing and _only_ consumes an XRP fee. Transactions that spend XRP beyond the fee aren't considered normal.
 - **Blocker:** The transactor affects transaction signing, preventing valid transactions from queueing behind it.

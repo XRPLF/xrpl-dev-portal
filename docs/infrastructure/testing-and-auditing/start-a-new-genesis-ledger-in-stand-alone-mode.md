@@ -18,7 +18,7 @@ xrpld -a --start --conf=/path/to/xrpld.cfg
 
 For more information on the options you can use when starting `xrpld` in stand-alone mode, see [Commandline Usage: Stand-Alone Mode Options](../commandline-usage.md#stand-alone-mode-options).
 
-In a genesis ledger, the [genesis address](../../concepts/accounts/addresses.md#special-addresses) holds all 100 billion XRP. The keys of the genesis address are [hardcoded](https://github.com/XRPLF/rippled/blob/70d5c624e8cf732a362335642b2f5125ce4b43c1/src/xrpld/app/ledger/Ledger.cpp#L184) as follows:
+In a genesis ledger, the [genesis address](../../concepts/accounts/addresses.md#special-addresses) holds all 100 billion XRP. The keys of the genesis address are [hardcoded](https://github.com/XRPLF/rippled/blob/5b6e8b6f93b19c1e3f6a3467a25639031d9d9a53/src/libxrpl/ledger/Ledger.cpp#L166) as follows:
 
 **Address:** `rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh`
 

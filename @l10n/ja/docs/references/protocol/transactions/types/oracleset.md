@@ -8,7 +8,7 @@ requiredAmendment: PriceOracle
 txIcon: create
 ---
 # OracleSet
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/SetOracle.cpp "ソース")
+{% source-link path="src/libxrpl/tx/transactors/oracle/OracleSet.cpp" /%}
 
 Oracle Document ID を使用して、新しい`Oracle`レジャーエントリを作成するか、既存のフィールドを更新します。
 

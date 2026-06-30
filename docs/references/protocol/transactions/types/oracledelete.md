@@ -8,7 +8,7 @@ requiredAmendment: PriceOracle
 txIcon: cancel
 ---
 # OracleDelete
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/DeleteOracle.cpp "Source")
+{% source-link path="src/libxrpl/tx/transactors/oracle/OracleDelete.cpp" /%}
 
 Delete a [price oracle](../../../../concepts/decentralized-storage/price-oracles.md). Only the owner of the price oracle can send this transaction.
 

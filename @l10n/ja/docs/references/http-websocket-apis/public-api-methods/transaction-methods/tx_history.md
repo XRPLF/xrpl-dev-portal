@@ -5,7 +5,7 @@ seo:
     description: 直近に作成されたトランザクションの一部を取得します。
 ---
 # tx_history
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/TxHistory.cpp "Source")
+{% source-link path="src/xrpld/rpc/handlers/transaction/TxHistory.cpp" /%}
 
 `tx_history`メソッドは、直近に作成されたトランザクションの一部を取得します。
 

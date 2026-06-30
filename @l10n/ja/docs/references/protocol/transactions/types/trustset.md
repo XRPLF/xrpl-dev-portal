@@ -6,7 +6,7 @@ labels:
 txIcon: modify
 ---
 # TrustSet
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/SetTrust.cpp "Source")
+{% source-link path="src/libxrpl/tx/transactors/token/TrustSet.cpp" /%}
 
 2つのアカウントをリンクする[トラストライン](../../../../concepts/tokens/fungible-tokens/index.md)を作成または変更します。
 

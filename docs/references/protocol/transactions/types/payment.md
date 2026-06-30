@@ -9,7 +9,7 @@ labels:
 txIcon: send
 ---
 # Payment
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/Payment.cpp "Source")
+{% source-link path="src/libxrpl/tx/transactors/payment/Payment.cpp" /%}
 
 Send value to an account. (Depending on the path taken, this can involve exchanges of several types of funds, all of which occur atomically.) This transaction type can be used for several [types of payments](#types-of-payments).
 

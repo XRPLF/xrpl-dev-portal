@@ -5,7 +5,7 @@ labels:
     - Core Server
 ---
 # peer_reservations_list
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/Reservations.cpp "Source")
+{% source-link path="src/xrpld/rpc/handlers/admin/peer/PeerReservationsList.cpp" /%}
 
 The {% code-page-name /%} method lists [peer reservations][].
 

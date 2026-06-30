@@ -28,7 +28,7 @@ SQLiteデータベースの容量は、データベースの _ページサイズ
 
 いずれの場合でも、問題を検出するには`xrpld`のサーバログへのアクセスが必要です。
 
-{% admonition type="success" name="ヒント" %}このデバッグログの位置は、`rippled`サーバの構成ファイルの設定に応じて異なる可能性があります。[デフォルトの構成](https://github.com/XRPLF/rippled/blob/master/cfg/xrpld-example.cfg#L1139-L1142)では、サーバのデバッグログは`/var/log/xrpld/debug.log`ファイルに書き込まれます。{% /admonition %}
+{% admonition type="success" name="ヒント" %}このデバッグログの位置は、`rippled`サーバの構成ファイルの設定に応じて異なる可能性があります。{% source-link name="デフォルトの構成" path="cfg/xrpld-example.cfg#L1139-L1142" /%}では、サーバのデバッグログは`/var/log/xrpld/debug.log`ファイルに書き込まれます。{% /admonition %}
 
 ### 事前の検出
 

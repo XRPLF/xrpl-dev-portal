@@ -7,7 +7,7 @@ labels:
 
 # vault_info
 
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/VaultInfo.cpp "Source")
+{% source-link path="src/xrpld/rpc/handlers/VaultInfo.cpp" /%}
 
 The `vault_info` command retrieves information about a vault, its owner, available assets, and details on issued shares. All information retrieved is relative to a particular version of the ledger. {% badge href="https://github.com/XRPLF/rippled/releases/tag/3.1.0" %}New in: rippled 3.1.0{% /badge %}
 

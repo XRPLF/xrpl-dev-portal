@@ -7,7 +7,7 @@ labels:
   - トークン
 ---
 # RippleState
-[[ソース]](https://github.com/XRPLF/rippled/blob/5d2d88209f1732a0f8d592012094e345cbe3e675/src/ripple/protocol/impl/LedgerFormats.cpp#L70 "Source")
+[[ソース]](https://github.com/XRPLF/rippled/blob/a5d238e7d4fa6ef2b539b759d58744d0a1c33c0c/include/xrpl/protocol/detail/ledger_entries.macro#L277-L289 "Source")
 
 `RippleState`のレジャーエントリは、2つのアカウント間の[トラストライン](../../../../concepts/tokens/fungible-tokens/index.md)を表します。各アカウントは限度額やその他の設定を変更できますが、残高は共通の値です。完全にデフォルトのトラストラインは、存在しないトラストラインと同じとみなされ、自動的に削除されます。
 

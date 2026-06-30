@@ -5,7 +5,7 @@ labels:
     - Core Server
 ---
 # fetch_info
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/FetchInfo.cpp "Source")
+{% source-link path="src/xrpld/rpc/handlers/admin/status/FetchInfo.cpp" /%}
 
 The `fetch_info` command returns information about objects that this server is currently fetching from the network, and how many peers have that information. It can also be used to reset current fetches.
 

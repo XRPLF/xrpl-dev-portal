@@ -5,7 +5,7 @@ labels:
     - Blockchain
 ---
 # ledger
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/LedgerHandler.cpp "Source")
+{% source-link path="src/xrpld/rpc/handlers/ledger/Ledger.cpp" /%}
 
 Retrieve information about the public [ledger](../../../../concepts/ledgers/index.md).
 
