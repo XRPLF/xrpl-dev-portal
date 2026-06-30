@@ -119,8 +119,8 @@ For RHEL-based distros:
 sudo yum remove -y rippled
 ```
 
-{% admonition type="info" name="remove keeps your config" %}
-`apt-get remove` (and `yum remove`) leaves your config and data in place. `apt-get purge` would delete the config, which is why you back up first.
+{% admonition type="info" name="rely on your backup, not on remove" %}
+On Debian-based distros, `apt-get remove` leaves your config and data in place (only `apt-get purge` deletes the config). Other package managers, including `yum`/`dnf`, may handle config and data differently, so don't count on removal to preserve them - the backup you took above is what guarantees you can restore your config, node identity, and keys.
 {% /admonition %}
 
 ### 3. Install xrpld
