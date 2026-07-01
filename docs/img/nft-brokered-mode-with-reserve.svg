@@ -1,0 +1,82 @@
+<svg width="100%" viewBox="0 0 970 210" role="img" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .bg    { fill: #ffffff; }
+    .card  { fill: #f5f5f5; stroke: #e8e8e8; stroke-width: 1; }
+    .accent{ fill: #4ade4a; }
+    .node  { fill: #4ade4a; }
+    .num   { fill: #1a1a1a; }
+    .line  { stroke: #cccccc; stroke-width: 2; }
+    .label { fill: #666666; }
+    .body  { fill: #333333; }
+    .mono  { fill: #777777; }
+    text      { font-family: "Helvetica Neue", Arial, sans-serif; }
+    .mono     { font-family: "Courier New", monospace; }
+    @media (prefers-color-scheme: dark) {
+      .bg    { fill: #1a1a1a; }
+      .card  { fill: #2a2a2a; stroke: none; }
+      .node  { fill: #2a2a2a; }
+      .num   { fill: #4ade4a; }
+      .line  { stroke: #444444; }
+      .label { fill: #8a8a8a; }
+      .body  { fill: #e0e0e0; }
+      .mono  { fill: #8a8a8a; }
+    }
+  </style>
+  <title>NFT Brokered Sale Workflow (with Reserve)</title>
+
+  <rect class="bg" width="960" height="200"/>
+  <line class="line" x1="96" y1="40" x2="864" y2="40"/>
+
+  <!-- Step 1 -->
+  <rect class="card" x="24" y="68" width="144" height="112" rx="6"/>
+  <rect class="accent" x="24" y="68" width="144" height="4" rx="2"/>
+  <circle class="node" cx="96" cy="40" r="16"/>
+  <text class="num" x="96" y="40" text-anchor="middle" dominant-baseline="central" font-size="13" font-weight="700">1</text>
+  <text class="label" x="96" y="88" text-anchor="middle" font-size="10" font-weight="600">SELLER</text>
+  <text class="body" x="96" y="106" text-anchor="middle" font-size="12">Creates the NFT</text>
+  <text class="body" x="96" y="122" text-anchor="middle" font-size="12">using</text>
+  <text class="mono" x="96" y="138" text-anchor="middle" font-size="10">NFTokenMint</text>
+
+  <!-- Step 2 -->
+  <rect class="card" x="216" y="68" width="144" height="112" rx="6"/>
+  <rect class="accent" x="216" y="68" width="144" height="4" rx="2"/>
+  <circle class="node" cx="288" cy="40" r="16"/>
+  <text class="num" x="288" y="40" text-anchor="middle" dominant-baseline="central" font-size="13" font-weight="700">2</text>
+  <text class="label" x="288" y="88" text-anchor="middle" font-size="10" font-weight="600">SELLER</text>
+  <text class="body" x="288" y="106" text-anchor="middle" font-size="12">Sets minimum sale</text>
+  <text class="body" x="288" y="122" text-anchor="middle" font-size="12">price, broker as</text>
+  <text class="body" x="288" y="138" text-anchor="middle" font-size="12">destination using</text>
+  <text class="mono" x="288" y="154" text-anchor="middle" font-size="10">NFTokenCreateOffer</text>
+
+  <!-- Step 3 -->
+  <rect class="card" x="408" y="68" width="144" height="112" rx="6"/>
+  <rect class="accent" x="408" y="68" width="144" height="4" rx="2"/>
+  <circle class="node" cx="480" cy="40" r="16"/>
+  <text class="num" x="480" y="40" text-anchor="middle" dominant-baseline="central" font-size="13" font-weight="700">3</text>
+  <text class="label" x="480" y="88" text-anchor="middle" font-size="10" font-weight="600">BUYERS / BIDDERS</text>
+  <text class="body" x="480" y="106" text-anchor="middle" font-size="12">Make bids, broker</text>
+  <text class="body" x="480" y="122" text-anchor="middle" font-size="12">as destination</text>
+  <text class="body" x="480" y="138" text-anchor="middle" font-size="12">using</text>
+  <text class="mono" x="480" y="154" text-anchor="middle" font-size="10">NFTokenCreateOffer</text>
+
+  <!-- Step 4 -->
+  <rect class="card" x="600" y="68" width="144" height="112" rx="6"/>
+  <rect class="accent" x="600" y="68" width="144" height="4" rx="2"/>
+  <circle class="node" cx="672" cy="40" r="16"/>
+  <text class="num" x="672" y="40" text-anchor="middle" dominant-baseline="central" font-size="13" font-weight="700">4</text>
+  <text class="label" x="672" y="88" text-anchor="middle" font-size="10" font-weight="600">BROKER</text>
+  <text class="body" x="672" y="106" text-anchor="middle" font-size="12">Selects winning bid,</text>
+  <text class="body" x="672" y="122" text-anchor="middle" font-size="12">completes sale,</text>
+  <text class="body" x="672" y="138" text-anchor="middle" font-size="12">takes fee using</text>
+  <text class="mono" x="672" y="154" text-anchor="middle" font-size="10">NFTokenAcceptOffer</text>
+
+  <!-- Step 5 -->
+  <rect class="card" x="792" y="68" width="144" height="112" rx="6"/>
+  <rect class="accent" x="792" y="68" width="144" height="4" rx="2"/>
+  <circle class="node" cx="864" cy="40" r="16"/>
+  <text class="num" x="864" y="40" text-anchor="middle" dominant-baseline="central" font-size="13" font-weight="700">5</text>
+  <text class="label" x="864" y="88" text-anchor="middle" font-size="10" font-weight="600">BROKER</text>
+  <text class="body" x="864" y="106" text-anchor="middle" font-size="12">Cancels remaining</text>
+  <text class="body" x="864" y="122" text-anchor="middle" font-size="12">bids using</text>
+  <text class="mono" x="864" y="138" text-anchor="middle" font-size="10">NFTokenCancelOffer</text>
+</svg>
