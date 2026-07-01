@@ -64,20 +64,20 @@ If your server does not connect to enough [peer servers](../../concepts/networks
 Use the [peers method][] to get information about your server's current peers. If you have exactly 10 or 11 peers, that may indicate that your firewall is blocking incoming peer connections. [Set up port forwarding](../configuration/peering/forward-ports-for-peering.md) to allow more incoming connections. If your server is configured as a private server, double-check the contents and syntax of the `[ips_fixed]` stanza in your config file, and add more proxies or public hubs if possible.
 
 
-## Switch from RocksDB to NuDB
+## Stuck in `connected` or `syncing` State with RocksDB
 
 If you are running solid state disks (SSDs) with a RocksDB backend, and your server has been stuck in the [`connected` or `syncing` state](../../references/http-websocket-apis/api-conventions/xrpld-server-states.md) for more than 10 minutes, try switching to NuDB.
 
 1. Check the current state of the server with the [server_info method][].
 
     ```
-    $ xrpld server_info
+    xrpld server_info
     ```
 
 2. Stop the `xrpld` server (if it is running).
 
     ```
-    $ sudo systemctl stop xrpld
+    sudo systemctl stop xrpld
     ```
 
 3. Edit the config file to set the `type` field of the `[node_db]` stanza to `NuDB`. Point the `path` field (and, optionally, the `[database_path]` stanza) at a new, empty directory that the user has permission to write to, so there is no existing data to conflict with. For the recommended NuDB settings, see [Capacity Planning](../installation/capacity-planning.md#more-about-using-nudb).
@@ -87,7 +87,7 @@ If you are running solid state disks (SSDs) with a RocksDB backend, and your ser
 4. Start the server again.
 
     ```
-    $ sudo systemctl start xrpld
+    sudo systemctl start xrpld
     ```
 
 Typically, the server should reach the `full` state within a few minutes.
@@ -103,14 +103,14 @@ As a test, you can temporarily change the paths to your server's databases as lo
 1. Stop the `xrpld` server if it is running.
 
     ```
-    $ sudo systemctl stop xrpld
+    sudo systemctl stop xrpld
     ```
 
 2. Create new empty folders to hold the fresh databases.
 
     ```
-    $ mkdir /var/lib/xrpld/db_new/
-    $ mkdir /var/lib/xrpld/db_new/nudb
+    mkdir /var/lib/xrpld/db_new/
+    mkdir /var/lib/xrpld/db_new/nudb
     ```
 
 3. Edit the config file to use the new paths. Be sure to change the `path` field of the `[node_db]` stanza **and** the value of the `[database_path]` stanza.
@@ -129,7 +129,7 @@ As a test, you can temporarily change the paths to your server's databases as lo
 4. Start the `xrpld` server again.
 
     ```
-    $ sudo systemctl start xrpld
+    sudo systemctl start xrpld
     ```
 
     If the server successfully syncs using the fresh databases, you can delete the folders that hold the old databases. You may also want to check for hardware failures, especially to your disk and RAM.
