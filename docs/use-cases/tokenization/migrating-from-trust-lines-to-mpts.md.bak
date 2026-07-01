@@ -12,8 +12,6 @@ This page walks through the process of migrating an existing trust line token (v
 
 The guide is structured as a planning and decision reference. It covers the migration process, contrasts the trust line and MPT equivalents, and links to the protocol references and tutorials needed for hands-on implementation.
 
-This guide refers to two roles. The **issuer** is the account that controls the token. An **integrator** is any wallet, explorer, exchange, custodian, or application that handles the token without issuing it. Integrators don't drive the migration, but they need codebase changes before holders can transact through them: re-keying balances and `Amount` fields on the `mpt_issuance_id`, building the new per-issuance authorization into opt-in flows, and removing any logic that assumes balances ripple through the issuer.
-
 {% admonition type="info" name="Note" %}
 The information in this guide is not meant to be exhaustive, and you should refer to the references, concepts, and tutorials for further details.
 {% /admonition %}
@@ -28,7 +26,7 @@ Before migrating, the table below summarizes the key differences between trust l
 | Holder opt-in | Per (issuer, currency) trust line.<br><br>One `TrustSet` opts the holder into that currency from that issuer. | Per-issuance authorization.<br><br>One `MPTokenAuthorize` covers a single issuance. |
 | Payment references | Composite identity.<br><br>`currency` + `issuer` in the `Amount` field. | Single identifier.<br><br>`mpt_issuance_id` in the `Amount` field. |
 | Operational controls | Account-wide scope.<br><br>Freeze, clawback, transfer fee, and require-auth span all the issuer's tokens. | Per-issuance scope.<br><br>Freeze, clawback, transfer fee, and require-auth are set per token. |
-| Rippling behavior | ✅ Balances can ripple through a common issuer, governed by the Default Ripple and No Ripple flags. | ❌ Not supported by design.<br><br>No amendment introduces it; flows that rely on rippling become explicit payments. |
+| Rippling behavior | ✅ Balances can ripple through the issuer. | ❌ MPTs do not support rippling by design. |
 | DEX and AMM trading | ✅ Tradeable on the DEX and in AMMs today. | Requires the `MPTokensV2` amendment.<br><br>Adds MPT support to `OfferCreate`, `Payment`, `AMM`, and `Checks`. |
 | Escrow support | Requires the `TokenEscrow` amendment. | Requires the `TokenEscrow` amendment.<br><br>The same amendment enables escrow for both standards. |
 | Mutable properties | Account-level only.<br><br>Settings like transfer fee and flags change anytime via `AccountSet`, but apply to all the issuer's tokens. | Requires the `DynamicMPT` amendment.<br><br>Fixed at creation by default; fields marked mutable update via `MPTokenIssuanceSet`. |
@@ -47,7 +45,7 @@ The issuer provides liquidity for the pair by placing one-to-one offers on the [
 - **Requirements:** the `MPTokensV2` amendment, which adds MPT support to the DEX and AMMs, and holders who actively place the trade.
 - **Trade-offs:** fully self-service, so there's no per-holder coordination, but the issuer can't force completion. Balances move only as holders choose to swap. {% amendment-disclaimer name="MPTokensV2" /%}
 
-### Clawback and Check
+### Clawback + Check
 
 The issuer claws back the old trust line balance, then delivers the equivalent MPT as a [Check](../../references/protocol/transactions/types/checkcash.md) the holder cashes. Because cashing a Check for an MPT can create the holder's `MPToken`, the holder can accept the new token without opting in first.
 
@@ -65,9 +63,46 @@ The holder returns the old balance and the issuer delivers the MPT as inner tran
 - **Requirements:** the `Batch` amendment, and the holder's signature on their leg of the exchange.
 - **Trade-offs:** the cleanest option, since the exchange is atomic with no window where a holder has given up the old token but not received the new one. It still needs holder cooperation per exchange and the amendment enabled. {% amendment-disclaimer name="Batch" /%}
 
+### Issuer
+
+In practice, the issuer's side of the migration runs as follows:
+
+1. **Create and validate the issuance on a test network.** The flags and fields the issuer chooses at creation are permanent, so its good practice to confirm the configuration on a test network (Devnet/Testnet) before going live.
+2. **Create the issuance on Mainnet.** Once the test configuration is confirmed, the issuer can create the MPT issuance on Mainnet.
+3. **Announce the migration to holders, and decide how it ends.** The timeline the issuer sets here determines how the old token is retired in step 6. Two approaches are common:
+    - A **hard deadline**, after which the issuer stops supporting the trust line token. This sets a fixed completion date, but can strand holders who don't exchange in time.
+    - An **open-ended window**, where the issuer retires the token only once balances reach zero on their own. This avoids stranding holders, but gives the issuer no fixed completion date.
+
+    {% admonition type="info" name="Note" %}
+    A large share of a token's circulating supply is often concentrated in wallets held by centralized exchanges and institutional custodians rather than individual holders. Issuers should coordinate directly with these entities to ensure they support the new token.
+    {% /admonition %}
+4. **Each holder authorizes the new issuance.** Every holder must opt in before they can receive the new MPT, and the issuer can't do this for them. Holders cover the relevant transaction costs themselves.
+
+   To lower friction, the issuer could cover the holder's transaction cost and reserve, though the holder still has to authorize the issuance. {% amendment-disclaimer name="Sponsor" /%}
+5. **Exchange balances.** Each holder swaps their trust line balance for the equivalent amount of the new MPT, in one of two ways:
+    - **A round-trip with the issuer.** The holder sends their trust line balance back to the issuer, who sends back the equivalent amount of the new MPT. Both sides are ordinary payments.
+    - **Swap tokens on the DEX.** The issuer provides liquidity for the pair by placing offers on the DEX or seeding an AMM pool, so holders can trade their old token for the new MPT themselves. {% amendment-disclaimer name="MPTokensV2" /%}
+6. **Retire the old token.** Following the timeline from step 3, the issuer winds down the trust line token. Since the issuer can't zero out balances or close lines for holders, each holder offloads their remaining balance through step 5 and closes their own trust line.
+
+#### Holder Incentives
+
+Issuers can't migrate balances on a holder's behalf, so it could be beneficial to offer incentives that encourage holders to exchange sooner rather than later. The right approach depends on the token's economics and any compliance constraints. Potential incentives may include:
+
+- Time-limited bonus rates for holders who exchange early.
+- Coordinating with wallets and exchanges to streamline or pre-stage the opt-in and exchange.
+- Publishing migration progress so holders can see the old token being wound down.
+
+None of these are set in stone, and the issuer can combine or skip them as the situation dictates.
+
+### Integrator
+
+Integrators have a parallel track. Wallets, exchanges, custodians, and payment services that handle the token without issuing it don't drive the migration, but their work must land before holders can transact through them.
+
+An integrator must update the software that recognizes and moves the token: re-keying balances and `Amount` fields on the `mpt_issuance_id`, building the new per-issuance authorization into opt-in flows, and removing any logic that assumes balances ripple through the issuer. The integrator coordinates this work against the issuer's announced timeline so these systems are ready when holders begin the exchange.
+
 ## Migration Steps
 
-Each step is tagged with who performs it: the **issuer** who controls the token, an **integrator** who builds software that handles it, or the **holder** the issuer and integrator facilitate.
+Steps 1–4 are the required migration actions, in the order the issuer carries them out. Steps 5–8 cover behavioral differences and optional, amendment-gated enhancements: things to be aware of when planning, but not actions required to complete a migration. Each step notes who performs it: the **issuer** who controls the token, an **integrator** who builds software that handles it, or the **holder** whose opt-in and exchange the issuer and integrator facilitate.
 
 ### 1. Issuance Setup
 
@@ -111,8 +146,6 @@ MPTs add two permanent settings that trust lines didn't have. Neither one can be
 #### Flags
 
 Because trust lines have no creation step, there are no token-level flags to set. An MPT instead carries its own control flags, which the issuer chooses at creation, such as **Can Lock**, **Require Auth**, or **Can Escrow**. See the [flags reference](../../references/protocol/transactions/types/mptokenissuancecreate.md#mptokenissuancecreate-flags) for what each flag enables.
-
-One of these flags also gates a [migration mechanism](#migration-mechanisms) and so must be decided here, at creation: **Can Trade** (`tfMPTCanTrade`) is what enables the [DEX Swap](#dex-swap) path covered in [Step 5](#5-dex-and-amm-trading).
 
 Each flag is permanent unless the issuer marks it mutable in `MutableFlags` at creation, which then allows updating it later with `MPTokenIssuanceSet`. {% amendment-disclaimer name="DynamicMPT" /%}
 
@@ -214,11 +247,9 @@ The biggest conceptual shift is scope. With trust lines, the issuer's controls a
 
 #### Freeze
 
-Both standards can freeze balances globally (every holder of the token at once) or individually (a single holder). They differ in how the capability is gated and how an individual freeze behaves.
+For trust lines, the issuer freezes at the account level (**Global Freeze**) or per trust line (**individual freeze**), and can permanently surrender the ability with **No Freeze**, all through account settings.
 
-For trust lines, freezing is available by default. The issuer freezes every holder of a currency with **Global Freeze** (`asfGlobalFreeze` on `AccountSet`), or a single trust line with an **individual freeze** (`tfSetFreeze` on `TrustSet`). A **deep freeze** (`tfSetDeepFreeze`) additionally blocks the frozen holder from sending the token. The issuer can permanently surrender all of these with **No Freeze** (`asfNoFreeze`).
-
-For an MPT, locking (the MPT equivalent of a freeze) is opt-in: the issuer must enable **Can Lock** (`tfMPTCanLock`) at creation, or the issuance can never be locked. When it's enabled, the issuer locks or unlocks with `MPTokenIssuanceSet` using the `tfMPTLock` and `tfMPTUnlock` flags, applying to the whole issuance by default or to a single account by naming a `Holder`. An individual MPT lock always behaves like a trust line deep freeze: the locked holder can neither send nor receive the token.
+For an MPT, locking (the MPT equivalent of a trust line freeze) is per issuance and opt-in. The issuer must enable **Can Lock** (`tfMPTCanLock`) at creation, or the issuance can never be locked. When it's enabled, the issuer locks or unlocks with `MPTokenIssuanceSet` using the `tfMPTLock` and `tfMPTUnlock` flags, either for the whole issuance or for a single account by naming a `Holder`.
 
 #### Require Auth (allow-listing)
 
@@ -238,9 +269,28 @@ For trust lines, clawback is the account-wide **Allow Trust Line Clawback** sett
 
 For an MPT, clawback is the per-issuance **Can Clawback** flag (`tfMPTCanClawback`), chosen at creation. When it's enabled, the issuer claws back with the [Clawback][Clawback transaction] transaction, which for MPTs requires a `Holder` field naming the account to claw back from.
 
-The trust-line side of this is also what gates the [Clawback and Check](#clawback-and-check) migration mechanism, which reclaims the old balance with a clawback before delivering the MPT. That path therefore depends on **Allow Trust Line Clawback** already being set on the issuer's account; the per-issuance **Can Clawback** flag governs the new token but isn't required to claw back the old one.
+### 5. Rippling Behavior
 
-### 5. DEX and AMM Trading
+**Performed by:** Issuer and integrator
+
+**Resources**
+
+- **Concepts:** [Rippling](../../concepts/tokens/fungible-tokens/rippling.md)
+
+---
+
+Rippling is a trust-line-only mechanism. Balances of the same currency can automatically flow ("ripple") through a common issuer to net out obligations between holders, governed by the **Default Ripple** and **No Ripple** flags.
+
+MPTs have no equivalent, and no amendment introduces one. Every MPT movement is an explicit direct payment between two accounts, so there's no setting that turns rippling on. This is a permanent design difference rather than a feature awaiting an amendment.
+
+If any current flows depend on rippling, audit and remove that assumption before migrating. Common cases include:
+
+- Net settlement that relies on balances rippling through the issuer.
+- Pathfinding that routes a payment across multiple trust lines of the same currency.
+
+Under MPTs, each of these becomes a set of explicit payments that the issuer orchestrates directly.
+
+### 6. DEX and AMM Trading
 
 **Performed by:** Issuer (enables trading at creation) and integrator (builds trading flows)
 
@@ -257,6 +307,43 @@ Trust line tokens can be traded on the [DEX](../../concepts/tokens/decentralized
 
 To make an issuance tradeable, enable **Can Trade** (`tfMPTCanTrade`) at creation. Like other control flags, it's permanent once the issuance exists unless the issuer marked it mutable (see [Issuance Setup](#1-issuance-setup)), so decide up-front whether the token will ever need to trade.
 
-Enabling trading is what arms the [DEX Swap](#dex-swap) migration mechanism, where holders trade the old token for the new MPT through issuer-provided offers or an AMM pool. Because the capability is amendment-gated, the issuer sequences the migration around it: if the token must stay tradeable throughout, don't move holders onto an MPT until MPTokensV2 is enabled, or risk stranding liquidity on the trust line side.
+Because this capability is amendment-gated, the issuer sequences the migration around it. If the token must stay tradeable throughout, the issuer shouldn't move holders onto an MPT until MPTokensV2 is enabled, or risk stranding liquidity on the trust line side.
+
+### 7. Escrow Support
+
+**Performed by:** Issuer
+
+**Resources**
+
+- **Transactions:** [EscrowCreate transaction][], [EscrowFinish transaction][]
+- **Concepts:** [Token Escrow](../../concepts/payment-types/escrow.md#token-escrow)
+
+---
+
+{% amendment-disclaimer name="TokenEscrow" /%}
+
+TokenEscrow extends escrow to fungible tokens for both standards, so this is less a v1-to-v2 difference than a shared capability the issuer configures differently on each side.
+
+For an MPT, the issuer must enable both **Can Escrow** (`tfMPTCanEscrow`) and **Can Transfer** (`tfMPTCanTransfer`) at creation; without them, holders can't place the token into escrow. With the flags set, an `EscrowCreate` identifies the amount by `mpt_issuance_id` in its `Amount` field, the same way a [payment does](#3-payment-references).
+
+As with all MPT control flags, these are chosen at creation, so enable them then if escrow is part of the roadmap.
+
+### 8. Confidential Balances
+
+**Performed by:** Holder, supported by the integrator
+
+**Resources**
+
+- **Amendment:** [XLS-96: Confidential Transfers](https://opensource.ripple.com/docs/xls-96-confidential-transfers)
+
+---
+
+{% amendment-disclaimer name="ConfidentialTransfer" /%}
+
+Trust line balances are always public; anyone can read a holder's balance from the ledger. ConfidentialTransfer introduces confidential balances for MPTs, hiding transfer amounts on-chain while still letting validators verify that each transaction is valid.
+
+This is a new MPT capability rather than a migration requirement, and it's opt-in per account. A holder converts part of their public MPT balance into a confidential balance with `ConfidentialMPTConvert`. From there, transfers between confidential balances keep the amount hidden, while the issuance continues to track a public total.
+
+Treat this as an enhancement available after migration: nothing about moving to MPTs requires it, but it becomes possible on the MPT side once the amendment is enabled.
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}
