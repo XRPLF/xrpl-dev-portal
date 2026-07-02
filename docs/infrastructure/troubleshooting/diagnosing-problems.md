@@ -118,11 +118,20 @@ This generally indicates one of several problems:
 
 {% source-link name="By default," path="cfg/xrpld-example.cfg#L1139-L1142" /%} `rippled` writes the server's debug log to the file `/var/log/xrpld/debug.log`. The location of the debug log can differ based on your server's config file. If you start the `xrpld` service directly (instead of using `systemctl` or `service` to start it), it also prints log messages to the console by default.
 
-The default config file sets the log level to severity "warning" for all categories of log messages by internally using the [log_level method][] during startup. You can control the verbosity of the debug log [using the `--silent` commandline option during startup](../commandline-usage.md#verbosity-options) and with the [log_level method][] while the server is running. (See the `[rpc_startup]` stanza of the config file for settings.)
+The default config file sets the log level to severity "warning" for all categories of log messages by internally using the [log_level method][] during startup. You can control the verbosity of the debug log [using the `--silent` commandline option](../commandline-usage.md#verbosity-options) and with the [log_level method][] while the server is running. (See the `[rpc_startup]` stanza of the config file for settings.)
 
 It is normal for an `xrpld` the server to print many warning-level (`WRN`) messages during startup and a few warning-level messages from time to time later on. You can **safely ignore** most warnings in the first 5 to 15 minutes of server startup.
 
 For a more thorough explanation of various types of log messages, see [Understanding Log Messages](understanding-log-messages.md).
+
+{% admonition type="info" name="Logging in containers and process supervisors" %}
+`xrpld` writes ongoing operational logs to two places: the file named in the `[debug_logfile]` config stanza (if set) and the console (standard error). The `--silent` option suppresses the console output for the **entire run**, not only during startup, so under a process supervisor or in a container, `xrpld --silent` emits only the early startup banner to standard output/error and drops all later operational logs from any stdout-based capture (such as a container log driver).
+
+To surface ongoing logs to a container log driver or supervisor, do one of the following:
+
+- Run `xrpld` in the foreground (for example, as PID 1) **without** `--silent`, so its native standard-error output is captured by the container's log stream.
+- Set `[debug_logfile]` to `/dev/stdout` (or `/proc/1/fd/1`, which is more portable across base images). The file log sink keeps writing even when `--silent` is set, because it is gated only on whether a log file is configured.
+{% /admonition %}
 
 
 ## See Also
