@@ -172,7 +172,7 @@ Inner transactions cannot be broadcast (and won't be accepted if they happen to 
 
 ## Limitations
 
-`Batch` transactions are incompatible with the [simulate method][]. `simulate` operates locally as a dry run and does not interact with the peer protocol. Therefore, the transaction is neither applied nor broadcast over the network.
+`Batch` transactions are incompatible with the [simulate method][]. Since `simulate` operates as a dry run for a single transaction only, it cannot simulate the effect of adding inner transactions to the consensus set.
 
 ## Integration Considerations
 
