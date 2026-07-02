@@ -1,12 +1,12 @@
 ignore:
   - docs/references/http-websocket-apis/admin-api-methods/_template-admin-method.md
   - docs/img/_sources/*
-  - _code-samples/*/README.md
   - _code-samples/**/README.md
   - _code-samples/create-amm/ts/tsconfig.json
   - resources/contribute-blog/_blog-template.md
   - resources/contribute-documentation/_tutorial-template.md
   - tools/*
+  - .claude/**
 l10n:
   defaultLocale: en-US
   locales:
