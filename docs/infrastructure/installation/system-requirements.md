@@ -18,7 +18,8 @@ For reliable performance in production environments, it is recommended to run a 
     |---|---|
     | Ubuntu | 22.04 (Jammy), 24.04 (Noble), 26.04 (Resolute) |
     | Debian | 12 (Bookworm), 13 (Trixie) |
-    | Red Hat Enterprise Linux / Rocky Linux / AlmaLinux | 9 |
+    | Rocky Linux | 9 |
+    | AlmaLinux | 9 |
     | Fedora | 42 |
 - CPU: 3+ GHz 64-bit x86_64 processor with 8+ cores.
 - Disk: SSD / NVMe (10,000 IOPS sustained - not burst or peak - or better). Minimum 50 GB for the database partition. Do not use Amazon Elastic Block Store (AWS EBS) because its latency is too high to sync reliably.
