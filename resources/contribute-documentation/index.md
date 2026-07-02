@@ -393,6 +393,22 @@ renders as
   })
 ```
 
+### Commandline Examples
+
+When creating commands to run in a terminal, omit any shell prompt prefixes like `$` or `#`. Bare commands are easier to copy and paste. For example, write:
+
+```sh
+xrpld server_info
+```
+
+instead of:
+
+```sh
+$ xrpld server_info
+```
+
+If a code block shows both a command and its output, add the `$` prefix to each command so readers can distinguish between the input and output. Leave the output unprefixed.
+
 ## Markdoc Tags
 
 The files are processed with [Markdoc](https://markdoc.dev/), which means they can contain special tags in `{% ... %}` syntax. In addition to Redocly's built-in tags, this repository has some custom tags. For details on markdoc tags and their usage, see [Markdoc Tags](./markdoc-tags.md).
