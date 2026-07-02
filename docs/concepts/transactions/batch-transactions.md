@@ -165,9 +165,14 @@ If Alice provides a fully autofilled and signed transaction to Bob, Bob can subm
 If Alice just signs her part of the Batch transaction, Bob can modify his transaction to only provide 1 USD instead, thereby getting his 1000 XRP at a much cheaper rate. Therefore, the entire Batch transaction (and all its inner transactions) must be signed by all parties.
 
 ### Inner Transaction Safety
+
 An inner batch transaction is a special case. It doesn't include a signature or a fee (since those are both included in the outer transaction). Therefore, they must be handled carefully to ensure that someone can't somehow directly submit an inner `Batch` transaction without it being included in an outer transaction.
 
 Inner transactions cannot be broadcast (and won't be accepted if they happen to be broadcast, for example, from a malicious node). They must be generated from the `Batch` outer transaction instead. Inner transactions cannot be directly submitted via the submit RPC.
+
+## Limitations
+
+`Batch` transactions are incompatible with the [simulate method][]. Since `simulate` operates as a dry run for a single transaction only, it cannot simulate the effect of adding inner transactions to the consensus set.
 
 ## Integration Considerations
 
@@ -205,3 +210,5 @@ Explorers and indexers that display `Batch` transactions should:
 - Display the relationship between outer `Batch` transactions and their inner transactions using the `ParentBatchID` field in the inner transaction metadata.
 - Show inner transactions in context with their outer `Batch` transaction, rather than as standalone transactions.
 - Consider grouping inner transactions with their outer transaction in transaction lists for clarity.
+
+{% raw-partial file="/docs/_snippets/common-links.md" /%}
