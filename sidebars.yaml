@@ -686,9 +686,8 @@
             - page: docs/infrastructure/installation/install-xrpld-on-rhel.md
             - page: docs/infrastructure/installation/install-xrpld-on-ubuntu.md
             - page: docs/infrastructure/installation/install-clio-on-ubuntu.md
-            - page: docs/infrastructure/installation/update-xrpld-automatically-on-linux.md
-            - page: docs/infrastructure/installation/update-xrpld-manually-on-rhel.md
-            - page: docs/infrastructure/installation/update-xrpld-manually-on-ubuntu.md
+            - page: docs/infrastructure/installation/update-xrpld-on-rhel.md
+            - page: docs/infrastructure/installation/update-xrpld-on-ubuntu.md
             - page: docs/infrastructure/installation/migrate-to-xrpld.md
             - page: docs/infrastructure/installation/build-on-linux-mac-windows.md
             - page: docs/infrastructure/installation/capacity-planning.md

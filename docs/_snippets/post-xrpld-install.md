@@ -27,8 +27,8 @@ You must restart `xrpld` for any configuration changes to take effect.
 If you change the `[debug_logfile]` or `[database_path]` sections, you may need to grant ownership of the new configured path to the user you run `xrpld` as.
 
 
-### Updates
+### Upgrades
 
-You must update `xrpld` regularly to remain synced with the rest of the XRP Ledger network. You can subscribe to the [xrpld Google Group](https://groups.google.com/forum/#!forum/ripple-server) to receive notifications of new `xrpld` releases.
+You must keep `xrpld` up to date to remain synced with the rest of the XRP Ledger network. You can subscribe to the [xrpld Google Group](https://groups.google.com/forum/#!forum/ripple-server) to receive notifications of new `xrpld` releases.
 
-The `xrpld` package includes a script you can use to [enable automatic updates on Linux](../infrastructure/installation/update-xrpld-automatically-on-linux.md). On other platforms, you must update manually.
+For package-based Linux installations, see the upgrade instructions for [Ubuntu or Debian](../infrastructure/installation/update-xrpld-on-ubuntu.md) or [Red Hat Enterprise Linux](../infrastructure/installation/update-xrpld-on-rhel.md).
