@@ -8,7 +8,15 @@ labels:
 
 This page describes the recommended instructions for installing the latest stable version of `xrpld` on **Red Hat Enterprise Linux**, using a binary that has been compiled and published by Ripple as an `rpm` package.
 
-Currently, **Red Hat Enterprise Linux (RHEL) 9.6 is supported on x86_64 processors**. You may also be able to adapt these instructions to similar Linux distributions including CentOS or Rocky Linux, but other configurations are not officially supported.
+The following distributions are officially supported and recommended (x86_64):
+
+| Distribution | Versions |
+|---|---|
+| Rocky Linux | 9 |
+| AlmaLinux | 9 |
+| Fedora | 42 |
+
+You may also be able to adapt these instructions to Red Hat Enterprise Linux 9 or other compatible RPM-based distributions, but those configurations are not officially recommended.
 
 ## Prerequisites
 

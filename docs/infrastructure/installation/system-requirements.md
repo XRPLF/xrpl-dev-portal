@@ -12,15 +12,7 @@ The following system requirements apply to both the core XRP Ledger server, `xrp
 
 For reliable performance in production environments, it is recommended to run a server on bare metal with the following characteristics or better:
 
-- Operating System: One of the following supported Linux distributions:
-
-    | Distribution | Versions |
-    |---|---|
-    | Ubuntu | 22.04 (Jammy), 24.04 (Noble), 26.04 (Resolute) |
-    | Debian | 12 (Bookworm), 13 (Trixie) |
-    | Rocky Linux | 9 |
-    | AlmaLinux | 9 |
-    | Fedora | 42 |
+- Operating System: A supported Linux distribution. See [Install on Ubuntu or Debian](install-xrpld-on-ubuntu.md) or [Install on RHEL](install-xrpld-on-rhel.md) for the full list of recommended versions.
 - CPU: 3+ GHz 64-bit x86_64 processor with 8+ cores.
 - Disk: SSD / NVMe (10,000 IOPS sustained - not burst or peak - or better). Minimum 50 GB for the database partition. Do not use Amazon Elastic Block Store (AWS EBS) because its latency is too high to sync reliably.
 - RAM: 64 GB.
@@ -34,7 +26,7 @@ For a validator in AWS, consider `z1d.2xlarge` with an extra 1 TB disk for loggi
 
 For testing purposes, you can run an XRP Ledger server on commodity hardware with the following minimum requirements:
 
-- Operating System: macOS, Windows (64-bit), or a supported Linux distribution (see recommended specs above).
+- Operating System: Linux (see recommended specs above), or macOS/Windows (64-bit) for development only.
 - CPU: 64-bit x86_64, 4+ cores.
     - For development purposes, it is also possible to compile `rippled` for some Apple Silicon or ARM processors. See the {% source-link name="Build instructions" path="BUILD.md" /%} for guidance. However, architectures other than x86_64 are not officially supported and are not recommended for production.
 - Disk: SSD / NVMe (10,000 IOPS sustained - not burst or peak - or better). Minimum 50 GB for the database partition. Do not use Amazon Elastic Block Store (AWS EBS) because its latency is too high to sync reliably.
