@@ -271,6 +271,7 @@
               expanded: false
               items:
                 - page: docs/tutorials/tokens/fungible-tokens/issue-a-fungible-token.md
+                - page: docs/tutorials/tokens/fungible-tokens/inspect-trust-line-token.md
                 - page: docs/tutorials/tokens/fungible-tokens/enact-global-freeze.md
                 - page: docs/tutorials/tokens/fungible-tokens/freeze-a-trust-line.md
                 - page: docs/tutorials/tokens/fungible-tokens/enable-no-freeze.md
@@ -293,6 +294,7 @@
               expanded: false
               items:
                 - page: docs/tutorials/tokens/mpts/issue-a-multi-purpose-token.md
+                - page: docs/tutorials/tokens/mpts/inspect-mpt.md
         - group: Compliance Features
           groupTranslationKey: sidebar.docs.tutorials.complianceFeatures
           expanded: false
