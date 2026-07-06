@@ -95,6 +95,7 @@
 [DirectoryNode object]: /docs/references/protocol/ledger-data/ledger-entry-types/directorynode.md
 [DisallowIncoming amendment]: /resources/known-amendments.md#disallowincoming
 [DynamicNFT amendment]: /resources/known-amendments.md#dynamicnft
+[DynamicMPT amendment]: /resources/known-amendments.md#dynamicmpt
 [EnableAmendment pseudo-transaction]: /docs/references/protocol/transactions/pseudo-transaction-types/enableamendment.md
 [EnableAmendment pseudo-transactions]: /docs/references/protocol/transactions/pseudo-transaction-types/enableamendment.md
 [EnableAmendment]: /docs/references/protocol/transactions/pseudo-transaction-types/enableamendment.md

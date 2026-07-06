@@ -22,7 +22,6 @@ The following is a list of [amendments](../docs/concepts/networks-and-servers/am
 | Name                              | Status                                    | Additional Information         |
 |:----------------------------------|:------------------------------------------|:-------------------------------|
 | [InvariantsV1_1][]                | {% badge %}In Development: TBD{% /badge %} |  |
-| [DynamicMPT][]                    | {% badge %}In Development: TBD{% /badge %} | [XLS-94 Dynamic MPTs](https://opensource.ripple.com/docs/xls-94-dynamic-mpts) |
 | [ConfidentialTransfer][]          | {% badge %}In Development: TBD{% /badge %} | [XLS-96 Confidential Transfers](https://opensource.ripple.com/docs/xls-96-confidential-transfers) |
 | [MPTokensV2][]                    | {% badge %}In Development: TBD{% /badge %} | [XLS-82 MPT DEX Integration](https://opensource.ripple.com/docs/xls-82-mpt-dex) |
 | [Sponsor][]                       | {% badge %}In Development: TBD{% /badge %} | [XLS-68 Sponsored Fees and Reserves](https://opensource.ripple.com/docs/xls-68-sponsored-fees-and-reserves) |
@@ -382,13 +381,13 @@ Adds functionality to update the `URI` field of an `NFToken` ledger entry. This 
 | Amendment    | DynamicMPT |
 |:-------------|:-----------|
 | Amendment ID | 58E92F338758479C06084E1B6BA366BAD8F75E5329A7F0EEAFFFDA51E5106B7F |
-| Status       | In Development |
+| Status       | Open for Voting |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
 Extends Multi-Purpose Tokens to allow issuers to designate specific properties as mutable during token creation, enabling selected attributes to be updated later as business needs change.
 
-For more details, see [XLS-94: Dynamic MPTs](https://opensource.ripple.com/docs/xls-94-dynamic-mpts).
+For more details, see [Dynamic MPTs](/docs/concepts/tokens/fungible-tokens/mutable-mpts.md).
 
 
 ### EnforceInvariants

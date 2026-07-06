@@ -115,6 +115,7 @@
               items:
                 - page: docs/concepts/tokens/fungible-tokens/trust-line-tokens.md
                 - page: docs/concepts/tokens/fungible-tokens/multi-purpose-tokens.md
+                - page: docs/concepts/tokens/fungible-tokens/mutable-mpts.md
                 - page: docs/concepts/tokens/fungible-tokens/authorized-trust-lines.md
                 - page: docs/concepts/tokens/fungible-tokens/stablecoins/index.md
                   expanded: false
