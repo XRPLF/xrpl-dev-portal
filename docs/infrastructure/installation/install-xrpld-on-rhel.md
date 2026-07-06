@@ -10,10 +10,11 @@ This page describes the recommended instructions for installing the latest stabl
 
 These packages require glibc 2.31 or later. The following distributions meet this requirement on x86_64:
 
+- Red Hat Enterprise Linux 9 or later
 - Rocky Linux 9 or later
 - AlmaLinux 9 or later
 
-Other RPM-based distributions with glibc >= 2.31, including Red Hat Enterprise Linux 9, may also work but are not officially recommended.
+Other RPM-based distributions with glibc >= 2.31 may also work but are not officially recommended.
 
 ## Prerequisites
 
