@@ -13,7 +13,7 @@ These packages require glibc 2.31 or later. The following distributions meet thi
 - Rocky Linux 9 or later
 - AlmaLinux 9 or later
 
-Other RPM-based distributions with glibc >= 2.31, including Fedora and Red Hat Enterprise Linux 9, may also work but are not officially recommended.
+Other RPM-based distributions with glibc >= 2.31, including Red Hat Enterprise Linux 9, may also work but are not officially recommended.
 
 ## Prerequisites
 
