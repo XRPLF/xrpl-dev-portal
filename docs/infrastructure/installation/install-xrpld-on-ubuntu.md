@@ -10,14 +10,12 @@ labels:
 
 This page describes the recommended instructions for installing the latest stable version of `xrpld` on **Ubuntu Linux**, using a binary that has been compiled and published by Ripple as a `deb` package.
 
-The following distributions are officially supported and recommended (x86_64):
+These packages require glibc 2.31 or later. The following distributions meet this requirement on x86_64:
 
-| Distribution | Versions |
-|---|---|
-| Ubuntu | 22.04 (Jammy), 24.04 (Noble), 26.04 (Resolute) |
-| Debian | 12 (Bookworm), 13 (Trixie) |
+- Ubuntu 20.04 (Focal) or later
+- Debian 11 (Bullseye) or later
 
-You may be able to adapt these instructions to other `apt`-based distributions, but those configurations are not officially recommended.
+Other `apt`-based distributions with glibc >= 2.31 may also work but are not officially recommended.
 
 
 ## Prerequisites
@@ -73,11 +71,13 @@ Before you install `xrpld`, you must meet the [System Requirements](system-requi
 
     The above example is appropriate for **Ubuntu 24.04 Noble Numbat**. For other operating systems, replace the word `noble` with one of the following:
 
-    - `bookworm` for **Debian 12 Bookworm**
-    - `trixie` for **Debian 13 Trixie**
+    - `focal` for **Ubuntu 20.04 Focal Fossa**
     - `jammy` for **Ubuntu 22.04 Jammy Jellyfish**
     - `noble` for **Ubuntu 24.04 Noble Numbat**
     - `resolute` for **Ubuntu 26.04 Resolute Raccoon**
+    - `bullseye` for **Debian 11 Bullseye**
+    - `bookworm` for **Debian 12 Bookworm**
+    - `trixie` for **Debian 13 Trixie**
 
     If you want access to development or pre-release versions of `xrpld`, use one of the following instead of `stable`:
 
