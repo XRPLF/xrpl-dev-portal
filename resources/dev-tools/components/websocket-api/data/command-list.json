@@ -429,6 +429,30 @@
           "mpt_issuance_id": "05EECEBE97A7D635DE2393068691A015FED5A89AD203F5AA",
           "ledger_index": "validated"
         }
+      },
+      {
+        "name": "account_mptokens",
+        "description": "Return the MPTokens held by an account and their balances.",
+        "link": "/docs/references/http-websocket-apis/public-api-methods/clio-methods/account_mptokens",
+        "clio_only": true,
+        "body": {
+          "id": "example_account_mptokens",
+          "command": "account_mptokens",
+          "account": "rLEw4taUYTNLs3ZCv3vyXGmct8PagQ9GcF",
+          "ledger_index": "validated"
+        }
+      },
+      {
+        "name": "account_mptoken_issuances",
+        "description": "Return the MPTokenIssuances created by an account.",
+        "link": "/docs/references/http-websocket-apis/public-api-methods/clio-methods/account_mptoken_issuances",
+        "clio_only": true,
+        "body": {
+          "id": "example_account_mptoken_issuances",
+          "command": "account_mptoken_issuances",
+          "account": "rExB3uFDE92wKYP6vfjt31Lbi6tXpFobUT",
+          "ledger_index": "validated"
+        }
       }
     ]
   },
