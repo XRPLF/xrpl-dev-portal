@@ -1,0 +1,82 @@
+<svg width="100%" viewBox="0 0 1030 600" role="img" xmlns="http://www.w3.org/2000/svg">
+  <style>
+  text { font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; }
+  .card   { fill: #ffffff; stroke: #E0E0E1; stroke-width: 1; }
+  .action { fill: #111112; font-size: 13px; }
+  .num    { fill: #ffffff; font-size: 12px; font-weight: 700; }
+  .tx     { font-size: 11px; font-family: 'Space Mono', 'SFMono-Regular', Consolas, 'Courier New', monospace; }
+  .label  { font-size: 12.5px; font-weight: 700; letter-spacing: 0.04em; }
+  .divider{ stroke: #ECECEC; stroke-width: 1; }
+  .arrow  { fill: none; stroke: #838386; stroke-width: 1.6; }
+  .arrowhead { fill: #838386; }
+  .band   { fill-opacity: 0.06; }
+  .seller { fill: #1E8A50; }
+  .buyer  { fill: #006BB2; }
+  .broker { fill: #9500B2; }
+  @media (prefers-color-scheme: dark) {
+    .card    { fill: #232325; stroke: #343437; }
+    .action  { fill: #E0E0E1; }
+    .divider { stroke: #2F2F31; }
+    .arrow     { stroke: #838386; }
+    .arrowhead { fill: #838386; }
+    .band    { fill-opacity: 0.11; }
+    .seller  { fill: #32E685; }
+    .buyer   { fill: #19A3FF; }
+    .broker  { fill: #D919FF; }
+  }
+  </style>
+  <title>NFT Brokered Sale Workflow (with Reserve)</title>
+  <rect class="band seller" x="8" y="40" width="1014" height="170" rx="8"/>
+  <text class="label seller" x="66" y="120" text-anchor="middle" dominant-baseline="central">SELLER</text>
+  <rect class="band buyer" x="8" y="210" width="1014" height="180" rx="8"/>
+  <text class="label buyer" x="66" y="292" text-anchor="middle" dominant-baseline="central">BUYERS /</text>
+  <text class="label buyer" x="66" y="308" text-anchor="middle" dominant-baseline="central">BIDDERS</text>
+  <rect class="band broker" x="8" y="390" width="1014" height="170" rx="8"/>
+  <text class="label broker" x="66" y="480" text-anchor="middle" dominant-baseline="central">BROKER</text>
+  <line class="divider" x1="8" y1="210" x2="1022" y2="210"/>
+  <line class="divider" x1="8" y1="390" x2="1022" y2="390"/>
+  <path class="arrow" d="M 282 120 H 305"/>
+  <polygon class="arrowhead" points="313,120 304,115.5 304,124.5"/>
+  <path class="arrow" d="M 464 120 H 480 V 300 H 487"/>
+  <polygon class="arrowhead" points="495,300 486,295.5 486,304.5"/>
+  <path class="arrow" d="M 646 300 H 662 V 480 H 669"/>
+  <polygon class="arrowhead" points="677,480 668,475.5 668,484.5"/>
+  <path class="arrow" d="M 828 480 H 851"/>
+  <polygon class="arrowhead" points="859,480 850,475.5 850,484.5"/>
+  <rect class="card" x="132" y="68" width="150" height="104" rx="8"/>
+  <rect class="seller" x="132" y="80" width="4" height="80" rx="2"/>
+  <circle class="seller" cx="264" cy="86" r="11"/>
+  <text class="num" x="264" y="86" text-anchor="middle" dominant-baseline="central">1</text>
+  <text class="action" x="148" y="108">Creates the NFT</text>
+  <text class="tx seller" x="148" y="160">NFTokenMint</text>
+  <rect class="card" x="314" y="68" width="150" height="104" rx="8"/>
+  <rect class="seller" x="314" y="80" width="4" height="80" rx="2"/>
+  <circle class="seller" cx="446" cy="86" r="11"/>
+  <text class="num" x="446" y="86" text-anchor="middle" dominant-baseline="central">2</text>
+  <text class="action" x="330" y="108">Sets minimum sale</text>
+  <text class="action" x="330" y="125">price, broker as</text>
+  <text class="action" x="330" y="142">destination</text>
+  <text class="tx seller" x="330" y="160">NFTokenCreateOffer</text>
+  <rect class="card" x="496" y="248" width="150" height="104" rx="8"/>
+  <rect class="buyer" x="496" y="260" width="4" height="80" rx="2"/>
+  <circle class="buyer" cx="628" cy="266" r="11"/>
+  <text class="num" x="628" y="266" text-anchor="middle" dominant-baseline="central">3</text>
+  <text class="action" x="512" y="288">Makes bids, broker</text>
+  <text class="action" x="512" y="305">as destination</text>
+  <text class="tx buyer" x="512" y="340">NFTokenCreateOffer</text>
+  <rect class="card" x="678" y="428" width="150" height="104" rx="8"/>
+  <rect class="broker" x="678" y="440" width="4" height="80" rx="2"/>
+  <circle class="broker" cx="810" cy="446" r="11"/>
+  <text class="num" x="810" y="446" text-anchor="middle" dominant-baseline="central">4</text>
+  <text class="action" x="694" y="468">Selects winning bid,</text>
+  <text class="action" x="694" y="485">completes sale,</text>
+  <text class="action" x="694" y="502">takes fee</text>
+  <text class="tx broker" x="694" y="520">NFTokenAcceptOffer</text>
+  <rect class="card" x="860" y="428" width="150" height="104" rx="8"/>
+  <rect class="broker" x="860" y="440" width="4" height="80" rx="2"/>
+  <circle class="broker" cx="992" cy="446" r="11"/>
+  <text class="num" x="992" y="446" text-anchor="middle" dominant-baseline="central">5</text>
+  <text class="action" x="876" y="468">Cancels remaining</text>
+  <text class="action" x="876" y="485">bids</text>
+  <text class="tx broker" x="876" y="520">NFTokenCancelOffer</text>
+</svg>

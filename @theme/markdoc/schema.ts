@@ -1,6 +1,7 @@
 import { Schema, Tag } from '@markdoc/markdoc';
 import type { MarkdocTagSchema } from '@redocly/theme/markdoc/tags/types';
 import { sourceLinkForLlms } from '../components/SourceLink';
+import { ResposiveGraphicForLlms } from '../components/ResponsiveGraphic'
 
 export const childPages: Schema & { tagName: string } = {
   tagName: 'child-pages',
@@ -283,5 +284,28 @@ export const txCategory: Schema & { tagName: string } = {
 export const txIconLegend: Schema & { tagName: string } = {
   tagName: 'tx-icon-legend',
   render: 'TxIconLegend',
+  selfClosing: true,
+};
+
+export const responsiveGraphic: Schema & { tagName: string } = {
+  tagName: 'responsive-graphic',
+  attributes: {
+    alt: {
+      type: 'String',
+      required: true
+    },
+    desktop: {
+      type: 'String',
+      required: true,
+      resolver: 'link'
+    },
+    mobile: {
+      type: 'String',
+      required: true,
+      resolver: 'link'
+    }
+  },
+  render: 'ResponsiveGraphic',
+  renderForLlms: ResposiveGraphicForLlms,
   selfClosing: true,
 };
