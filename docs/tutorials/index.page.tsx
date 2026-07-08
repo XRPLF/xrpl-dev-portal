@@ -110,10 +110,10 @@ function MetaLink({ href, icon, label }: {
   label: string
 }) {
   return (
-    <a href={href} target="_blank" rel="noopener noreferrer" className="meta-link">
+    <Link to={href} target="_blank" rel="noopener noreferrer" className="meta-link">
       <i className={`fa fa-${icon}`} aria-hidden="true" />
       {label}
-    </a>
+    </Link>
   )
 }
 
@@ -127,19 +127,20 @@ function ContributionCard({
 }) {
   const primaryUrl = tutorial.url || tutorial.github
 
-  const handleCardClick = (e: React.MouseEvent | React.KeyboardEvent) => {
-    if ((e.target as HTMLElement).closest(".card-meta-row")) return
-    window.open(primaryUrl, "_blank", "noopener,noreferrer")
-  }
+  const bodyContent = (
+    <>
+      <h4 className="card-title h5">
+        {translate(tutorial.title)}
+        <span className="card-external-icon" aria-label={translate("External link")}>
+          <i className="fa fa-external-link" aria-hidden="true" />
+        </span>
+      </h4>
+      {tutorial.description && <p className="card-text">{translate(tutorial.description)}</p>}
+    </>
+  )
 
   return (
-    <div
-      className="card contribution-card"
-      onClick={handleCardClick}
-      onKeyDown={(e) => { if (e.key === "Enter") handleCardClick(e) }}
-      role="link"
-      tabIndex={0}
-    >
+    <div className="card contribution-card">
       <div className="card-header contribution-header">
         <span className="circled-logo contribution-icon">
           <i className="fa fa-users" aria-hidden="true" />
@@ -155,13 +156,18 @@ function ContributionCard({
         </div>
       </div>
       <div className="card-body">
-        <h4 className="card-title h5">
-          {translate(tutorial.title)}
-          <span className="card-external-icon" aria-label={translate("External link")}>
-            <i className="fa fa-external-link" aria-hidden="true" />
-          </span>
-        </h4>
-        {tutorial.description && <p className="card-text">{translate(tutorial.description)}</p>}
+        {primaryUrl ? (
+          <Link
+            to={primaryUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="card-body-link"
+          >
+            {bodyContent}
+          </Link>
+        ) : (
+          bodyContent
+        )}
       </div>
     </div>
   )

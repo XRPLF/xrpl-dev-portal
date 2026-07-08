@@ -90,10 +90,36 @@ $whats-new-footers: (
 
 // Contribution Card - community contribution with meta links
 .page-tutorials .tutorial-cards .contribution-card {
+  // Unlike TutorialCard, the Contribution card isn't a link, so reset the inherited
+  // pointer cursor.
+  cursor: default;
+
   .contribution-header {
     display: flex;
     align-items: center;
     gap: 0.6rem;
+  }
+
+  // Drop the body's own padding and hand it to the link, so the link fills the
+  // entire body box (padding included) and clicks anywhere in the body navigate.
+  .card-body {
+    padding: 0;
+    display: flex;
+  }
+
+  .card-body-link {
+    flex: 1;
+    display: block;
+    padding: 1rem 1.5rem;
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+      color: inherit;
+      text-decoration: none;
+    }
   }
 
   .contribution-icon {
@@ -124,6 +150,7 @@ $whats-new-footers: (
       gap: 0.35rem;
       color: $gray-300;
       text-decoration: none;
+      cursor: pointer;
       transition: color 0.15s ease;
 
       .fa {
