@@ -127,6 +127,7 @@ a.card:hover,
 a:hover .card-new,
 [data-component-name="Markdown/Markdown"] a.card {
   text-decoration: none !important;
+  color: inherit;
 }
 a.card:hover h3 {
   text-decoration: underline;
