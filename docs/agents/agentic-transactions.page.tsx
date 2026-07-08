@@ -91,18 +91,21 @@ const requirementCards = [
     title: 'A Wallet',
     description:
       'An XRPL account with a funded balance. On Testnet, use the faucet. In production, generate a key pair and store it securely in a KMS or HSM.',
+    href: '/docs/introduction/crypto-wallets',
   },
   {
     number: '02',
     title: 'Network Access',
     description:
       'A connection to an XRPL node via JSON-RPC or WebSocket. Public Testnet endpoints are available at altnet.rippletest.net.',
+    href: '/docs/tutorials/public-servers',
   },
   {
     number: '03',
     title: 'A Transaction Library',
     description:
       'xrpl-py (Python) or xrpl.js (JavaScript/TypeScript) handle serialization, signing, and submission. No raw RPC calls required.',
+    href: '/docs/references/client-libraries',
   },
   {
     number: '04',
@@ -110,6 +113,7 @@ const requirementCards = [
     description:
       'The XRPL Docs MCP Server exposes the full developer documentation as tool-callable context, so your LLM always has accurate, up-to-date reference material.',
     href: 'https://context7.com/websites/xrpl',
+    external: true
   },
   {
     number: '05',
@@ -306,7 +310,12 @@ export default function AgenticTransactions() {
               >
                 {inner}
                 <div className="card-footer">
+                { card.external ? (
+                  <span className="req-arrow">↗</span>
+                ) : (
                   <span className="req-arrow">→</span>
+                )
+                }
                 </div>
               </Link>
             ) : (
