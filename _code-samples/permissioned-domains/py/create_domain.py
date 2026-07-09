@@ -12,6 +12,7 @@ from xrpl.wallet import generate_faucet_wallet
 # Get issuer wallet and define constants ---------------------------------------
 client = JsonRpcClient("https://s.altnet.rippletest.net:51234")
 wallet = generate_faucet_wallet(client, debug=True)
+
 issuer_address = wallet.address # Can also use a different credential issuer
 credential_type = str_to_hex("my-credential")
 

@@ -31,16 +31,16 @@ if wallet.address != config_data["owner"]["address"]:
 
 issuer_address = config_data["issuer_address"]
 domain_id = config_data["domain_id"]
-# To demonstrate updating the domain, this tutorial uses a different credential
-# type (issued by the same issuer, unless you modified setup.json)
-credential_type = str_to_hex("new-credential-type")
 
 print("Domain ID:", domain_id)
 print("Domain owner:", wallet.address)
 print("Credential issuer:", issuer_address)
-print("Credential type:", credential_type)
 
 # Modify a permissioned domain ------------------------------------------------
+# To demonstrate updating the domain, this tutorial uses a different credential
+# type (issued by the same issuer, unless you modified setup.json)
+credential_type = str_to_hex("new-credential-type")
+
 p_domain_set = PermissionedDomainSet(
     account=wallet.address,
     domain_id=domain_id,
