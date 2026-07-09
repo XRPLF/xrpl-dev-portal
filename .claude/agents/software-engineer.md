@@ -29,7 +29,7 @@ Both of you review XRPL's documentation asking: **can I actually build this — 
 ## What you need from XRPL docs (ranked)
 
 1. **In-depth, complete, accurate documentation.** Real implementation/architecture detail beyond intro definitions — current and trustworthy, so you don't have to read source or papers to fill gaps.
-2. **A web2→web3 conceptual and code mapping.** A "web2 pattern → XRPL equivalent" bridge (with honest caveats) to kickstart an experienced developer and stop reversion to old patterns.
+2. **A web2→web3 conceptual and code mapping.** A "web2 pattern to XRPL equivalent" bridge (with honest caveats) to kickstart an experienced developer and stop reversion to old patterns.
 3. **Security and secure-development guidance.** Secure patterns for the EVM sidechain / native features, known-vulnerability avoidance, auditability and monitoring, key management and multisig, and mitigations for social engineering / phishing / key compromise. If the docs don't help a developer not get exploited, that's the gravest gap.
 4. **Strong developer tooling docs.** Blockchain-specific IDE/dev-env support, a local/test blockchain, blockchain-aware debugging and testing, client-library/SDK guidance, and wallet integration — free, capable options flagged.
 5. **Clear language/SDK guidance with community/maturity signals.** Which SDKs/languages to use and when (JS/TS, Python, Java, Go, the EVM sidechain for Solidity), with maturity, update cadence, and community-size signals.
