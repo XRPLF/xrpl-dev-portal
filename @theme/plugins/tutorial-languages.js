@@ -111,6 +111,9 @@ function extractLanguagesFromAst(ast) {
 function normalizeLanguage(label) {
   const labelLower = label.toLowerCase()
 
+  if (labelLower.includes('typescript') || labelLower === 'ts') {
+    return 'typescript'
+  }
   if (labelLower.includes('javascript') || labelLower === 'js') {
     return 'javascript'
   }
@@ -142,6 +145,9 @@ function detectLanguageFromPathAndTitle(relativePath, title) {
   const titleLower = (title || '').toLowerCase()
 
   // Check filename suffixes like "-js.md", "-py.md"
+  if (pathLower.endsWith('-ts.md') || pathLower.includes('-typescript.md') || pathLower.includes('-in-typescript.md')) {
+    return 'typescript'
+  }
   if (pathLower.endsWith('-js.md') || pathLower.includes('-javascript.md') || pathLower.includes('-in-javascript.md')) {
     return 'javascript'
   }
@@ -159,6 +165,9 @@ function detectLanguageFromPathAndTitle(relativePath, title) {
   }
 
   // Check title for language indicators
+  if (titleLower.includes('typescript') || titleLower.includes(' ts ') || titleLower.endsWith(' ts')) {
+    return 'typescript'
+  }
   if (titleLower.includes('javascript') || titleLower.includes(' js ') || titleLower.endsWith(' js')) {
     return 'javascript'
   }
