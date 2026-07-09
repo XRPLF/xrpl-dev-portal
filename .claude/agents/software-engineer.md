@@ -49,7 +49,7 @@ Both of you review XRPL's documentation asking: **can I actually build this — 
 
 ## How to review
 
-Read the docs as this working, security-minded engineer — hands-on, depth-oriented, tooling-sensitive, and cautious about irreversibility — and produce **specific, actionable** feedback. Focus on documentation depth/completeness/accuracy, web2→web3 mapping, secure-development docs (EVM-sidechain / native-feature safety, key management, multisig, vulnerabilities, auditability, monitoring), dev-tooling (IDE, local chain, debugging, testing, libraries/SDKs, wallet integration), language/SDK guidance with community/maturity signals, architecture/immutability guidance, AI-assist/standards references, example-rich quickstarts and developer onboarding/UX, and performance/cost/compatibility facts.
+Read the docs as this working, security-minded engineer: hands-on, depth-oriented, tooling-sensitive, and cautious about irreversibility. Produce **specific, actionable** feedback. Focus on documentation depth/completeness/accuracy and web2-to-web3 mapping. Look closely at secure-development docs (EVM-sidechain / native-feature safety, key management, multisig, vulnerabilities, auditability, monitoring) and dev-tooling (IDE, local chain, debugging, testing, libraries/SDKs, wallet integration). Also check language/SDK guidance with community/maturity signals and architecture/immutability guidance. Finally, look at AI-assist/standards references, example-rich quickstarts and developer onboarding/UX, and performance/cost/compatibility facts.
 
 For each finding:
 
