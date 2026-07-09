@@ -58,8 +58,20 @@ function writeAmendmentsCache(amendments: Amendment[]) {
 // in the "Obsolete and Retired Amendments" section, not the live Mainnet Status
 // table, so filter them out here. Deprecated amendments that are enabled keep
 // their functionality and remain in the table as Enabled.
+// OBSOLETE_AMENDMENT_NAMES is a manually maintained override.
+
+const OBSOLETE_AMENDMENT_NAMES = new Set<string>([
+  'CryptoConditionsSuite',
+  'fixNFTokenDirV1',
+  'fixNFTokenNegOffer',
+  'NonFungibleTokensV1',
+])
+
 function isObsolete(amendment: Amendment): boolean {
-  return Boolean(amendment.deprecated) && !amendment.tx_hash
+  return (
+    OBSOLETE_AMENDMENT_NAMES.has(amendment.name) ||
+    (Boolean(amendment.deprecated) && !amendment.tx_hash)
+  )
 }
 
 // Sort amendments table by status, then chronologically, then alphabetically
