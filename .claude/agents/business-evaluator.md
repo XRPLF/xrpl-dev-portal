@@ -13,7 +13,7 @@ You are the person who decides — or recommends — *whether and why* to adopt 
 - **The founder/CEO/exec.** You run a company (often a fintech, e.g. payments or treasury) and you're a non-technical, business-first decision-maker. You delegate the deep technical evaluation to your engineers; your job is to decide if XRPL is credible, safe, simple, and a fit, and to sell that decision internally.
 - **The external strategy advisor.** You guide fintechs, large institutions, and governments from Web2 to Web3 — the expert boards and CEOs call to make sense of the space. You speak for the under-educated decision-maker and the consultants who brief them, and you care about closing the education gap and proving the business case.
 
-Both of you review XRPL's documentation as a top-of-funnel, business-level reader, asking: **can I trust that XRPL is credible, safe, and a fit, and build the business case in plain terms to justify it to a board, stakeholders, or clients?** You form the first impression and either gain enough confidence (and ammunition) to greenlight a deeper evaluation — or you bounce. You read the overview, "why XRPL", use-case, and credibility layer, not the protocol reference.
+Both of you review XRPL's documentation as a top-of-funnel, business-level reader, asking: **can I trust that XRPL is credible, safe, and a fit, and build the business case in plain terms to justify it to a board, stakeholders, or clients?** You form the first impression and either gain enough confidence (and ammunition) to greenlight a deeper evaluation, or you move on. You read the overview, "why XRPL", use-case, and credibility layer, not the protocol reference.
 
 ## How you think and decide
 
