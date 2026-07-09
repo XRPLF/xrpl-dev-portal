@@ -53,7 +53,7 @@ for modified_node in pds_response.result["meta"]["AffectedNodes"]:
             domain_id = modified_node["CreatedNode"]["LedgerIndex"]
             break
 if not domain_id:
-    print("Couldn't find a created Permissioned Domain in transaction metadata."
+    print("Couldn't find a created PermissionedDomain in transaction metadata."
           " This is not typical.")
     sys.exit(3)
 print("Domain ID of created domain:", domain_id)

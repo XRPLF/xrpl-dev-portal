@@ -300,7 +300,7 @@
             - page: docs/tutorials/compliance-features/require-destination-tags.md
             - page: docs/tutorials/compliance-features/manage-credentials.md
             - page: docs/tutorials/compliance-features/verify-credentials.md
-            - page: docs/tutorials/compliance-features/create-permissioned-domains-in-javascript.md
+            - page: docs/tutorials/compliance-features/manage-permissioned-domains.md
         - group: Programmability
           groupTranslationKey: sidebar.docs.tutorials.programmability
           expanded: false

@@ -1,0 +1,8 @@
+{
+  "name": "permissioned-domains",
+  "description": "Sample code for managing permissioned domains on the XRP Ledger.",
+  "dependencies": {
+    "xrpl": "^5.0.0"
+  },
+  "type": "module"
+}

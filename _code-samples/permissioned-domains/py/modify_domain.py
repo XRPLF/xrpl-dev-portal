@@ -24,9 +24,9 @@ with open("setup.json") as f:
 wallet = Wallet.from_seed(config_data["owner"]["seed"])
 if wallet.address != config_data["owner"]["address"]:
     print("ERROR: Address did not match saved value. Did you use the wrong "
-          "cryptographic algorithm?\n"
-          "\tSaved:", config_data["owner"]["address"],
-          "\tGenerated:", wallet.address)
+          "cryptographic algorithm?"
+          "\n\tSaved:", config_data["owner"]["address"],
+          "\n\tGenerated:", wallet.address)
     sys.exit(2)
 
 issuer_address = config_data["issuer_address"]

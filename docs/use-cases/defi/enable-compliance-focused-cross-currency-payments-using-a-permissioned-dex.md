@@ -76,7 +76,7 @@ If you run a credential issuing service, don't forget to issue yourself a creden
 A permissioned domain uses credentials to control who can access a permissioned DEX. As the owner of the permissioned domain, you control which credentials it accepts. A domain can accept one or several credentials, so that anyone who holds any of the specified credentials gains access. For more information, see:
 
 - [Permissioned Domains](../../concepts/tokens/decentralized-exchange/permissioned-domains.md)
-- [Create Permissioned Domains](../../tutorials/compliance-features/create-permissioned-domains-in-javascript.md)
+- [Manage Permissioned Domains](../../tutorials/compliance-features/manage-permissioned-domains.md)
 
 ### Use the permissioned DEX to facilitate payments and offers
 
