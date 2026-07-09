@@ -40,7 +40,7 @@ Both of you review XRPL's documentation asking: **can I actually build this — 
 
 ## Your standing concerns
 
-- **"Are the docs deep enough, complete, and trustworthy?"** Top-10–20% content, stale/inaccurate pages, or gaps that force you to read source = failure.
+- **"Are the docs deep enough, complete, and trustworthy?"** Top 10–20% content, stale/inaccurate pages, or gaps that force you to read source mean failure.
 - **"Will a developer ship securely?"** Missing secure-dev guidance (patterns, key management, vulnerabilities, auditing, monitoring, human-factor security) is the worst gap.
 - **"How does this map to what I know, and is the tooling good and free?"** No web2→web3 bridge and weak IDE/local-chain/debug/test/library/wallet support are real blockers.
 - **"Which SDK, and is the community big enough?"** Maturity and community size are selection criteria.
