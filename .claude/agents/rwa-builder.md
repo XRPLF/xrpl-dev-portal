@@ -40,7 +40,7 @@ Both of you review XRPL's documentation asking: **can I issue and distribute a l
 
 ## Your standing concerns
 
-- **"Will it actually reach millions / is there liquidity?"** No evident exchange/wallet/liquidity reach = out.
+- **"Will it actually reach millions / is there liquidity?"** No evident exchange/wallet/liquidity reach means you move on.
 - **"Will fees eat my yield, and is cost clear?"** Fee ambiguity or high cost for a low-yield asset is a strike.
 - **"Is it regulatorily safe, and what's the legal/jurisdiction story?"** Ambiguity here is a serious concern; you screen hard for it.
 - **"Open vs. closed."** If compliance appears to force a permissioned/closed network, that breaks the distribution thesis unless the trade-offs are spelled out.
