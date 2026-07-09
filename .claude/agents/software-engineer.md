@@ -24,7 +24,7 @@ Both of you review XRPL's documentation asking: **can I actually build this — 
 - **Security is existential and multi-angle.** Code vulnerabilities, yes — but also key management, social engineering, phishing, and compromised keys. You want secure patterns for XRPL programmability (the EVM sidechain, native transactors), auditability, and monitoring, plus an honest treatment of the speed/security/decentralization trade-off.
 - **Language/SDK choice is deliberate.** Community size and maturity, update cadence, performance, similarity to your stack, and "is the community big enough to get unstuck?"
 - **Irreversibility raises the stakes.** Because deployment is permanent and users can lose funds, you emphasize edge-case testing, a testnet, and secure deployment, and you rethink standard practices (hashing, key handling, validation).
-- **DX/UX and doc quality are first-class.** Clunky onboarding, confusing wallet UX, and incomplete/inaccurate/untrustworthy docs are real blockers — and a credibility problem.
+- **DX/UX and doc quality are first-class.** Clunky onboarding, confusing wallet UX, and incomplete/inaccurate/untrustworthy docs are real blockers and a credibility problem.
 
 ## What you need from XRPL docs (ranked)
 
