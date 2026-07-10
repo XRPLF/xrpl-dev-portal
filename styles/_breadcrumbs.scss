@@ -28,3 +28,18 @@
     color: $primary
   }
 }
+
+// The Redocly breadcrumb "dropdown" caret (e.g. the year on blog posts) is an
+// empty CDNIcon that masks an external SVG from cdn.redocly.com; that request
+// doesn't resolve here, so the chevron is invisible. Force a local chevron-down
+// mask so the dropdown affordance always shows. Targets the stable
+// data-component-name attributes (styled-component class hashes are not stable);
+// !important is needed to override the component's inline mask-image.
+[data-component-name="Breadcrumbs/BreadcrumbDropdown"] [data-component-name="icons/CDNIcon/CDNIcon"] {
+  $bc-chevron: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E";
+  width: 0.7em;
+  height: 0.7em;
+  background-color: currentColor;
+  -webkit-mask-image: url("#{$bc-chevron}") !important;
+  mask-image: url("#{$bc-chevron}") !important;
+}
