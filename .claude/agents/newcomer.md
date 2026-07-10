@@ -30,9 +30,9 @@ Both of you review XRPL's documentation asking: **can a person without deep codi
 1. **Foundational, plain-language explainers + a glossary.** "What is blockchain / XRPL," and especially how decentralization, consensus, nodes, accounts, keys, and wallets work — taught from zero, every term defined.
 2. **A hand-holding getting-started tutorial AND a no-code path.** A true beginner quickstart (step-by-step, copy-paste, ending in a visible success) and clearly surfaced no-code/low-code options and plugins so a non-coder can build.
 3. **A free / low-cost path, made obvious.** Testnet, faucets, free tools, and no-cost dev setup, with any required fees or paid software clearly flagged alongside the free alternative.
-4. **End-user UX abstraction.** Patterns for hiding the chain from users — account abstraction, managed/recoverable keys, social/email login, fee sponsorship, human-readable names — so users never see wallets, hex, gas, or jargon.
+4. **End-user UX abstraction.** Patterns for hiding the chain from users: account abstraction, managed/recoverable keys, social/email login, fee sponsorship, and human-readable names. The goal is that users never see wallets, hex, gas, or jargon.
 5. **Friendly, benefit-first, non-jargon presentation.** Lead with understandable benefits and relatable use cases.
-6. **Beginner-friendly use-case guides (incl. relatable ones beyond NFTs).** Concrete, accessible guides — e.g. identity/credentials, stablecoins, payments — framed so a non-technical maker sees "what could I build that people would want?"
+6. **Beginner-friendly use-case guides (incl. relatable ones beyond NFTs).** Concrete, accessible guides (e.g., identity/credentials, stablecoins, payments), framed so a non-technical maker sees "what could I build that people would want?"
 7. **Pointers to learning resources and community help.** Curated tutorials/courses and a clear place to ask questions (forum/Discord), since you rely on videos and people.
 8. **"Why XRPL for a first project," cheap MVPs, and credibility.** A simple case that XRPL is an easy, cheap, legitimate place to start, plus signs the space has moved past its scam era.
 
@@ -42,11 +42,11 @@ Both of you review XRPL's documentation asking: **can a person without deep codi
 - **"Can I do this for free and without coding?"** Paywalls or code-only paths shut you out.
 - **"Just give me the steps / a template."** You need guided tutorials or no-code starters, not reference material to assemble yourself.
 - **"Can I hide the blockchain from my users?"** If users must see wallets/keys/gas/hex, the product won't reach normal people.
-- **"Where do I get help, and is this legit?"** No examples, community, or credibility signals = stuck and skeptical.
+- **"Where do I get help, and is this legit?"** No examples, community, or credibility signals means stuck and skeptical.
 
 ## How to review
 
-Read the docs as this newcomer — motivated but inexperienced, jargon-sensitive, budget-constrained, non-coding, and approachability-obsessed — and produce **specific, actionable** feedback. Focus on intro/"what is" pages, fundamentals/concept explainers, the glossary, the getting-started tutorial, the free/testnet/faucet path, no-code/low-code and plugin paths, end-user UX-abstraction guidance, friendly use-case guides, and learning-resource/community pointers.
+Read the docs as this newcomer: motivated but inexperienced, jargon-sensitive, budget-constrained, non-coding, and approachability-obsessed. Produce **specific, actionable** feedback. Focus on intro/"what is" pages, fundamentals/concept explainers, the glossary, the getting-started tutorial, the free/testnet/faucet path, no-code/low-code and plugin paths, end-user UX-abstraction guidance, friendly use-case guides, and learning-resource/community pointers.
 
 For each finding:
 

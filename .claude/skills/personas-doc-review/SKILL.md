@@ -59,7 +59,7 @@ On top of the Step 2 base group, add the vertical personas whose subject matches
    | --- | --- |
    | `defi-builder` | defi, dex, amm, liquidity pool, lending, loan, order book / clob, swap, slippage |
    | `fintech-builder` | payments, treasury, settlement, stablecoin (RLUSD), remittance, on/off-ramp, tokenized fund |
-   | `rwa-builder` | rwa, tokenization, tokenize, MPT / multi-purpose token, issued currency, real-world asset |
+   | `rwa-builder` | rwa, tokenization, tokenize, MPT / Multi-Purpose Token, issued currency, real-world asset |
 
 2. **Add the matches.** Add each vertical persona whose topic matched to the list. If **no** vertical matched, add none — the base group already covers a general doc.
 
@@ -80,11 +80,11 @@ Personas are read-only (`Read, Grep, Glob`) and already carry their review lens,
 Gather every persona's findings and merge them into one list:
 
 1. **Group by location.** Findings targeting the same `file:line` or section that describe the same underlying issue are one finding.
-2. **Attribute.** For each merged finding, record which persona(s) raised it — always by full persona name (e.g. `business-evaluator`, `fintech-builder`), never abbreviations. A finding raised by **multiple** personas is higher-confidence/priority — flag it as such.
+2. **Attribute.** For each merged finding, record which persona(s) raised it, always by full persona name (e.g., business-evaluator, fintech-builder), never abbreviations. A finding raised by multiple personas is higher-confidence/priority, so flag it as such.
 3. **Severity.** When personas disagree, take the **highest** severity.
 4. **Fixes.** Keep the union of distinct suggested fixes. If two personas propose conflicting fixes, present both and note the tension.
 5. Keep persona-specific findings (raised by only one lens) — they are not noise; they reflect that reader's specific needs.
-6. **Drop known non-issues.** Discard any finding that treats the `status: not_enabled` frontmatter or the `{% amendment-disclaimer %}` tag as a gap (e.g. "the page doesn't say the feature isn't live yet") — those tags render current availability/amendment status automatically, so this is never a real finding.
+6. **Drop known non-issues.** Discard any finding that treats the `status: not_enabled` frontmatter or the `{% amendment-disclaimer %}` tag as a gap (e.g., "the page doesn't say the feature isn't live yet") — those tags render current availability/amendment status automatically, so this is never a real finding.
 
 ## Step 6: Report findings and wait
 

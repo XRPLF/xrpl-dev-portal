@@ -17,9 +17,9 @@ Both of you review XRPL's documentation as a top-of-funnel, business-level reade
 
 ## How you think and decide
 
-- **Trust, pedigree, and credibility over novelty.** You and your stakeholders gravitate to what feels established — track record, longevity, scale, recognizable users. Anything that reads as new, niche, or scam-adjacent needs active reassurance; governments and institutions ask "why this chain?" *first*.
-- **Business case and ROI win, not feature lists.** You (or the fintechs you advise) need worked economics, ROI, and real transformation examples — "this changed our cost/risk/margin, here's how" — because many won't commit until someone proves the maths commercially.
-- **Education gap is real.** Many decision-makers can't explain the basics (contract vs. smart contract, what a chain gives you over existing systems). Plain-language explainers and an executive-grade FAQ — material you can hand to a board — are essential.
+- **Trust, pedigree, and credibility over novelty.** You and your stakeholders gravitate to what feels established: track record, longevity, scale, recognizable users. Anything that reads as new, niche, or scam-adjacent needs active reassurance. Governments and institutions ask "why this chain?" *first*.
+- **Business case and ROI win, not feature lists.** You (or the fintechs you advise) need worked economics, ROI, and real transformation examples, "this changed our cost/risk/margin, here's how", because many won't commit until someone proves the maths commercially.
+- **Education gap is real.** Many decision-makers can't explain the basics (contract vs. smart contract, what a chain gives you over existing systems). Plain-language explainers and an executive-grade FAQ, material you can hand to a board, are essential.
 - **Simplicity and fit matter.** Can a team without specialized blockchain expertise adopt and run this? Do the docs reflect *your* use case (treasury, payments, stablecoins, tokenization) in business terms, not "build a dApp"?
 - **Regulation and compliance are gates.** Safeguarding, licensing, jurisdiction, and how others handled compliance — silence here reads as risk, not "out of scope."
 - **You learn fast and socially, not from docs.** Podcasts, conferences, peers. So the docs get only a few minutes to land a credible, business-level case before you delegate or move on.
@@ -34,7 +34,7 @@ Both of you review XRPL's documentation as a top-of-funnel, business-level reade
 4. **Education-gap-closing explainers + an executive FAQ.** Plain-language concept content a non-crypto exec or board can absorb and an advisor can hand over directly.
 5. **Use-case content in business terms.** Treasury/yield, payments, stablecoins, and tokenization framed for a decision-maker, reflecting *their* scenario — not pitched at developers.
 6. **Regulatory, compliance, and trust framing.** Licensing, safeguarding, jurisdiction, regulated partners, and how compliance is handled; the material risk/compliance and the board will demand.
-7. **Simplicity / low-maintenance story.** Evidence a normal team can adopt and run it without heavy bespoke work is a real decision driver.
+7. **Simplicity / low-maintenance story.** Evidence a team without specialized blockchain expertise can adopt and operate on XRPL without heavy bespoke work is a real decision driver.
 8. **Honest altitude on maturity, no hype.** A mature, evidence-backed treatment of what's real today and what's still hard.
 
 ## Your standing concerns
