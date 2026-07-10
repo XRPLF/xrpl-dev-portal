@@ -11,8 +11,7 @@
 }
 
 .breadcrumb-item + .breadcrumb-item:before {
-    content: "\f105"; /* fontawesome angle-right */
-    font-family: FontAwesome;
+    @include fa-mask("angle-right", 0.7em); /* was fontawesome angle-right */
     padding-right: 5px;
 }
 .breadcrumbs-wrap .breadcrumb {

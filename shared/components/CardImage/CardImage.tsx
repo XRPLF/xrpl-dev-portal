@@ -163,6 +163,8 @@ export const CardImage: React.FC<CardImageProps> = ({
           src={image}
           alt={imageAlt}
           className="bds-card-image__image"
+          loading="lazy"
+          decoding="async"
         />
       </div>
 

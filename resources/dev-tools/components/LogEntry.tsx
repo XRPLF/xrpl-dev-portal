@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { useThemeHooks } from '@redocly/theme/core/hooks';
 import { clsx } from 'clsx'
+import { Icon } from "shared/components/Icon/Icon";
 
 export const CLASS_GOOD = "badge badge-success"
 export const CLASS_BAD = "badge badge-danger"
@@ -68,7 +69,7 @@ export function LogEntry({
             clsx(status.icon?.type === "SUCCESS" && CLASS_GOOD,
             status.icon?.type === "ERROR" && CLASS_BAD)}>
                 {status.icon?.label}
-                {status.icon?.check && <i className="fa fa-check-circle"/>}
+                {status.icon?.check && <Icon name="check-circle" />}
         </span>
     }
 

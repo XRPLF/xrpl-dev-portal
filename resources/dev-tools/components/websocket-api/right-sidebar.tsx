@@ -4,6 +4,7 @@ import { Link } from "@redocly/theme/components/Link/Link";
 import { slugify } from "./slugify";
 import { CommandGroup, CommandMethod } from './types';
 import { ClioOnlyIcon } from './ClioOnly';
+import { Icon } from "shared/components/Icon/Icon";
 
 interface RightSideBarProps {
   commandList: CommandGroup[];
@@ -50,7 +51,7 @@ export const RightSideBar: React.FC<RightSideBarProps> = ({
                       className="status not_enabled"
                       title="This feature is not currently enabled on the production XRP Ledger."
                     >
-                      <i className="fa fa-flask"></i>
+                      <Icon name="flask" />
                     </span>
                   )}
                   {method.clio_only && (

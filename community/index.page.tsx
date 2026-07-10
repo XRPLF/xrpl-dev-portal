@@ -4,6 +4,7 @@ import { HeaderHeroSplitMedia } from "shared/sections/HeaderHeroSplitMedia/Heade
 import { LinkTextDirectory } from "shared/sections/LinkTextDirectory/LinkTextDirectory";
 import { CardsFeatured } from "shared/sections/CardsFeatured/CardsFeatured";
 import { FeatureTwoColumn } from "shared/sections/FeatureTwoColumn/FeatureTwoColumn";
+import { HomeHero } from "shared/sections/HomeHero/HomeHero";
 
 export const frontmatter = {
   seo: {

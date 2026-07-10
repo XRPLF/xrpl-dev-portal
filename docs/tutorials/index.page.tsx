@@ -2,6 +2,7 @@ import { useThemeHooks } from "@redocly/theme/core/hooks"
 import { Link } from "@redocly/theme/components/Link/Link"
 import { useRef, useState } from "react"
 import CopyableUrl from "../../@theme/components/CopyableUrl"
+import { Icon } from "shared/components/Icon/Icon";
 
 type TutorialLanguagesMap = Record<string, string[]>
 
@@ -181,7 +182,6 @@ function TutorialCard({
         <h4 className="card-title h5">{translate(tutorial.title)}</h4>
         {tutorial.description && <p className="card-text">{translate(tutorial.description)}</p>}
       </div>
-      {showFooter && <div className="card-footer"></div>}
     </Link>
   )
 }
@@ -225,7 +225,7 @@ function ContributionCard({
     >
       <div className="card-header contribution-header">
         <span className="circled-logo contribution-icon">
-          <i className="fa fa-users" aria-hidden="true" />
+          <Icon name="users" />
         </span>
         <div className="card-meta-row">
           {tutorial.author && (
@@ -241,7 +241,7 @@ function ContributionCard({
         <h4 className="card-title h5">
           {translate(tutorial.title)}
           <span className="card-external-icon" aria-label={translate("External link")}>
-            <i className="fa fa-external-link" aria-hidden="true" />
+            <Icon name="external-link" />
           </span>
         </h4>
         {tutorial.description && <p className="card-text">{translate(tutorial.description)}</p>}

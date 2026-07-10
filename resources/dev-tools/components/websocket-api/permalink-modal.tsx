@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react';
 import { useThemeHooks } from '@redocly/theme/core/hooks';
 import { Connection } from './types';
 import { Modal, ModalClipboardBtn, ModalCloseBtn } from '../Modal';
+import { Icon } from "shared/components/Icon/Icon";
 
 interface PermaLinkButtonProps {
   currentBody: any;
@@ -67,7 +68,7 @@ export function PermalinkButton ({currentBody, selectedConnection}: PermaLinkBut
       title={translate("Permalink")}
       onClick={() => setShowPermalinkModal(true)}
     >
-      <i className="fa fa-link"></i>
+      <Icon name="link" />
     </button>
     {showPermalinkModal && (
       <PermalinkModal

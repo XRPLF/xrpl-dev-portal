@@ -12,17 +12,19 @@
   height: 100%; // Stretch to fill parent column (ensures equal heights in grid rows)
   // aspect-ratio sets a preferred ratio but allows growth if content requires more space
   // The card will be at least this tall, but can grow taller if needed
-  aspect-ratio: 4/3;
   gap: $bds-space-lg; // 16px - spacing('lg')
 
   @include media-breakpoint-up(md) {
-    aspect-ratio: 1;
     padding: $bds-space-xl; // 20px - spacing('xl')
   }
 
 
   @include media-breakpoint-up(lg) {
     padding: $bds-space-2xl; // 24px - spacing('2xl')
+  }
+
+  @include media-breakpoint-up(xxl) {
+    aspect-ratio: 1;
   }
 
   &#{&}--neutral {

@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react';
 import { useThemeHooks } from '@redocly/theme/core/hooks';
 import { Connection } from './types';
 import { Modal, ModalClipboardBtn, ModalCloseBtn } from '../Modal';
+import { Icon } from "shared/components/Icon/Icon";
 
 interface CurlButtonProps {
   currentBody: any;
@@ -67,7 +68,7 @@ export function CurlButton ({selectedConnection, currentBody}: CurlButtonProps) 
         title={translate("cURL Syntax")}
         onClick={() => setShowCurlModal(true)}
       >
-        <i className="fa fa-terminal"></i>
+        <Icon name="terminal" />
       </button>
       {showCurlModal && (
         <CurlModal

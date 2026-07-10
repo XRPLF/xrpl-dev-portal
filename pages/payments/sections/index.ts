@@ -1,9 +1,0 @@
-export { HeroSection } from './HeroSection';
-export { WhyChooseSection } from './WhyChooseSection';
-export { AdvancedFeaturesSection } from './AdvancedFeaturesSection';
-export { StablecoinsSection } from './StablecoinsSection';
-export { EmbeddedPaymentsSection } from './EmbeddedPaymentsSection';
-export { PartnerLogosSection } from './PartnerLogosSection';
-export { FlexibleIntegrationSection } from './FlexibleIntegrationSection';
-export { DeveloperSpotlightSection } from './DeveloperSpotlightSection';
-export { StayConnectedSection } from './StayConnectedSection';

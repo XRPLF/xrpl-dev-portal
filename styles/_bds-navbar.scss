@@ -381,13 +381,17 @@ body [data-component-name="layouts/RootLayout"]:has(header.bds-navbar) {
   padding-top: 0 !important;
 }
 
-// Ensure full-width layout when BDS navbar is present
+// Ensure full-width layout when BDS navbar is present.
+// Use `overflow-x: clip` (not `hidden`): `hidden` turns these ancestors into
+// scroll containers, which breaks `position: sticky` on the docs page's left
+// sidebar and right table-of-contents. `clip` prevents horizontal overflow
+// without establishing a scroll container, so the sidebars stay sticky.
 html:has(.bds-navbar) {
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 body:has(.bds-navbar) {
-  overflow-x: hidden;
+  overflow-x: clip;
   width: 100%;
   margin: 0;
   padding: 0;
@@ -399,7 +403,25 @@ body:has(.bds-navbar) {
   padding-left: 0 !important;
   padding-right: 0 !important;
   margin: 0;
-  overflow-x: hidden;
+  overflow-x: clip;
+}
+
+// The BDS navbar scrolls away with the page (position: relative, not fixed).
+// The framework pins the docs page's sticky left sidebar and right
+// table-of-contents at `top: calc(var(--navbar-height) + ...)` so they sit
+// below a *fixed* navbar; with a scroll-away navbar that leaves an 80px gap
+// above them once scrolled. Zero the --navbar-height term on just those two
+// sticky elements so they pin flush to the top of the viewport instead.
+// Overriding the custom property (rather than `top`/`height` directly) avoids
+// specificity/source-order battles with the framework's styled-components and
+// keeps the framework's own calc() intact. --banner-height already defaults to
+// 0 in the framework (and our banner scrolls away with the navbar), so it needs
+// no override. Scoped to >=960px, where the framework makes them sticky/visible.
+@media screen and (min-width: 960px) {
+  body:has(.bds-navbar) [data-component-name="Sidebar/Sidebar"],
+  body:has(.bds-navbar) [data-component-name="TableOfContent/TableOfContent"] > div {
+    --navbar-height: 0px;
+  }
 }
 
 // =============================================================================

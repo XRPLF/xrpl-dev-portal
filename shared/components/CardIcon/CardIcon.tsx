@@ -103,6 +103,8 @@ export const CardIcon: React.FC<CardIconProps> = ({
           src={icon}
           alt={iconAlt}
           className="bds-card-icon__icon-img"
+          loading="lazy"
+          decoding="async"
         />
       </div>
 

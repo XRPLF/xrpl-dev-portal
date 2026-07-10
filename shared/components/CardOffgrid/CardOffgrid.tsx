@@ -96,6 +96,8 @@ export const CardOffgrid: React.FC<CardOffgridProps> = ({
           alt=""
           className="bds-card-offgrid__icon-image"
           aria-hidden="true"
+          loading="lazy"
+          decoding="async"
         />
       );
     }

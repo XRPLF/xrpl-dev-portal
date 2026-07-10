@@ -24,6 +24,7 @@ import commandList from "./components/websocket-api/data/command-list.json";
 import connections from "./components/websocket-api/data/connections.json";
 import XRPLoader from '../../@theme/components/XRPLoader';
 import { ClioOnlyNotice } from './components/websocket-api/ClioOnly';
+import { Icon } from "shared/components/Icon/Icon";
 
 export const frontmatter = {
   seo: {
@@ -248,7 +249,7 @@ export function WebsocketApiTool() {
                 />
               </div>
               <div
-                className="btn-toolbar justify-content-between pt-4"
+                className="btn-toolbar justify-content-between pt-4 d-flex"
                 role="toolbar"
               >
                 <div className="btn-group me-3" role="group">
@@ -309,10 +310,10 @@ export function WebsocketApiTool() {
               <h4>{translate("Responses")}</h4>
 
               <div
-                className="btn-toolbar justify-content-between response-options"
+                className="btn-toolbar justify-content-between response-options d-flex"
                 role="toolbar"
               >
-                <div className="input-group">
+                <div className="input-group w-auto">
                   <div className="input-group-prepend">
                     <div
                       className="input-group-text"
@@ -339,7 +340,7 @@ export function WebsocketApiTool() {
                       title={translate("Pause Subscriptions")}
                       onClick={() => setStreamPaused(true)}
                     >
-                      <i className="fa fa-pause"></i>
+                      <Icon name="pause" />
                     </button>
                   )}
                   {streamPaused && (
@@ -348,7 +349,7 @@ export function WebsocketApiTool() {
                       title={translate("Unpause Subscriptions")}
                       onClick={() => setStreamPaused(false)}
                     >
-                      <i className="fa fa-play"></i>
+                      <Icon name="play" />
                     </button>
                   )}
                   <button
@@ -356,7 +357,7 @@ export function WebsocketApiTool() {
                     title={translate("Delete All Responses")}
                     onClick={() => setResponses([])}
                   >
-                    <i className="fa fa-trash"></i>
+                    <Icon name="trash" />
                   </button>
                 </div>
               </div>

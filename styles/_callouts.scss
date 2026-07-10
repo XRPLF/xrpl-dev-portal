@@ -50,32 +50,28 @@ blockquote,
 }
 
 .devportal-callout.tip > strong:first-child:before {
-  content: "\f058"; /* fontawesome check-circle icon */
-  font-family: FontAwesome;
+  @include fa-mask("check-circle"); /* was fontawesome check-circle */
   /* color in scss */
   margin-left: -20px;
   padding-right: 5px;
 }
 
 .devportal-callout.note > strong:first-child:before {
-  content: "\f05a"; /* fontawesome (i) info-circle icon */
-  font-family: FontAwesome;
+  @include fa-mask("info-circle"); /* was fontawesome (i) info-circle */
   /* color in scss */
   margin-left: -20px;
   padding-right: 5px;
 }
 
 .devportal-callout.caution > strong:first-child:before {
-  content: "\f071"; /* fontawesome /!\ exclamation-triangle icon */
-  font-family: FontAwesome;
+  @include fa-mask("exclamation-triangle"); /* was fontawesome /!\ exclamation-triangle */
   /* color in scss */
   margin-left: -20px;
   padding-right: 5px;
 }
 
 .devportal-callout.warning > strong:first-child:before {
-  content: "\f057"; /* fontawesome (x) times-circle icon */
-  font-family: FontAwesome;
+  @include fa-mask("times-circle"); /* was fontawesome (x) times-circle */
   /* color in scss */
   margin-left: -20px;
   padding-right: 5px;

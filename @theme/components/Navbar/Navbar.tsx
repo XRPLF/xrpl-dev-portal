@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useLocation } from "react-router-dom";
 import { useSearchDialog } from "@redocly/theme/core/hooks";
 import { SearchDialog } from "@redocly/theme/components/Search/SearchDialog";
 
@@ -46,6 +47,13 @@ export function Navbar({
 
   // Use Redocly's search dialog hook - shared across navbar and mobile menu
   const { isOpen: isSearchOpen, onOpen: onSearchOpen, onClose: onSearchClose } = useSearchDialog();
+
+  // The Navbar persists across client-side (react-router) navigations, so any
+  // open menu would otherwise stay open after clicking a nav link. Close the
+  // mobile menu and desktop submenus whenever the route changes so the nav
+  // hides on each new page load.
+  const { pathname } = useLocation();
+  const isInitialRender = React.useRef(true);
 
   const handleHamburgerClick = () => {
     setMobileMenuOpen(true);
@@ -153,6 +161,27 @@ export function Navbar({
     };
   }, []);
 
+  // Close all menus on route change (client-side navigation). Skip the initial
+  // render — nothing is open yet — and clear pending submenu timers so no
+  // fade-out animation lingers onto the newly loaded page.
+  React.useEffect(() => {
+    if (isInitialRender.current) {
+      isInitialRender.current = false;
+      return;
+    }
+    if (submenuTimeoutRef.current) {
+      clearTimeout(submenuTimeoutRef.current);
+      submenuTimeoutRef.current = null;
+    }
+    if (closingTimeoutRef.current) {
+      clearTimeout(closingTimeoutRef.current);
+      closingTimeoutRef.current = null;
+    }
+    setMobileMenuOpen(false);
+    setActiveSubmenu(null);
+    setClosingSubmenu(null);
+  }, [pathname]);
+
   const navbarClasses = [
     "bds-navbar",
     alertBanner.show ? "bds-navbar--with-banner" : "",
@@ -161,6 +190,22 @@ export function Navbar({
 
   return (
     <>
+      {/*
+        Preload Booton Regular — the navbar font, used above the fold on every
+        page. Without this the browser can't fetch the font until it has
+        downloaded + parsed the ~775KB devportal2024-v1.css (which declares the
+        `font-family: Booton` usage), so the custom font takes ~1s to swap in.
+        This starts the fetch immediately, in parallel with the CSS. The href
+        is literal (not bundler-resolved) so it matches the `url("../font/...")`
+        the stylesheet resolves to (/font/Booton-Regular.woff2); `crossOrigin`
+        is required because fonts are always fetched in CORS mode.
+        Only Regular (400) is preloaded globally: docs pages (the bulk of the
+        site) render body/headings in system fonts and only use Booton in the
+        navbar, so preloading heavier weights here would waste bandwidth on
+        those pages. Landing-page hero weights (Booton Light 300 / Bold 700,
+        Tobias) should be preloaded per-landing-page instead.
+      */}
+      <link rel="preload" href="/font/Booton-Regular.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
       <AlertBanner {...alertBanner} />
       {/* Backdrop blur overlay when submenu is open or closing */}
       <div 

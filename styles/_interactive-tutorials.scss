@@ -40,13 +40,16 @@
   }
 
   .breadcrumb-item.disabled a {
-    color: $gray-600;
+    color: $gray-300;
+
+    html.light & {
+      color: $gray-600;
+    }
   }
 
   .breadcrumb-item.done a:after {
-    content: "\f058"; /* fontawesome check-circle icon */
-    font-family: FontAwesome;
-    color: $secondary;
+    @include fa-mask("check-circle"); /* was fontawesome check-circle */
+    color: $secondary; // sets currentColor for the mask fill
     padding-right: 5px;
     padding-left: 5px;
   }

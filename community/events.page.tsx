@@ -1,6 +1,10 @@
 import { useState, useMemo } from "react";
 import { useThemeHooks } from "@redocly/theme/core/hooks";
-const moment = require("moment");
+
+// Parse an event `end_date` string (e.g. "September 6, 2024"). The native Date
+// constructor handles this "Month D, YYYY" format reliably; an unparseable
+// value yields an invalid Date (NaN time), which sorts last and is not "past".
+const parseEventDate = (str) => new Date(str);
 const amaImage = require("../static/img/events/AMAs.png");
 const hackathon = require("../static/img/events/Hackathons.png");
 const sanDiego = require("../static/img/events/event-meetup-san-diego@2x.jpg");
@@ -27,19 +31,20 @@ export const frontmatter = {
 };
 export const sortEvents = (arr, asc = true) => {
   return arr.sort((a, b) => {
-    const dateA = moment(a.end_date, "MMMM D, YYYY");
-    const dateB = moment(b.end_date, "MMMM D, YYYY");
-    return asc ? dateB.diff(dateA) : dateA.diff(dateB); // Returns a negative value if dateA is before dateB, positive if after, and 0 if the same
+    const dateA = parseEventDate(a.end_date).getTime();
+    const dateB = parseEventDate(b.end_date).getTime();
+    return asc ? dateB - dateA : dateA - dateB; // Returns a negative value if dateA is before dateB, positive if after, and 0 if the same
   });
 };
 function categorizeDates(arr) {
   const past = [];
   const upcoming = [];
-  const today = moment().startOf("day"); // set the time to midnight
+  const today = new Date();
+  today.setHours(0, 0, 0, 0); // set the time to midnight
 
   arr.forEach((obj) => {
-    const endDate = moment(obj.end_date, "MMMM D, YYYY"); // parse the 'end_date' string into a moment object
-    if (endDate.isBefore(today)) {
+    const endDate = parseEventDate(obj.end_date); // parse the 'end_date' string into a Date object
+    if (endDate < today) {
       obj.type = `${obj.type}-past`;
       past.push(obj);
     } else {
@@ -1535,45 +1540,6 @@ export default function Events() {
           <div className="pe-2 col">
             <img
               alt="xrp ledger events hero"
-              src={require("../static/img/events/xrp-community-night.png")}
-              className="w-100"
-            />
-          </div>
-          <div className="pt-5 pe-2 col">
-            <div className="d-flex flex-column-reverse">
-              <h2 className="mb-8 h4 h2-sm">
-                {translate("XRP Community Night NYC")}
-              </h2>
-              <h6 className="mb-3 eyebrow">{translate("Save the Date")}</h6>
-            </div>
-            <p className="mb-4">
-              {translate(
-                "Join the XRP community in NYC—meet builders, users, and projects innovating on the XRP Ledger."
-              )}
-            </p>
-            <div className=" my-3 event-small-gray">
-              {translate("Location: New York, NY")}
-            </div>
-            <div className="py-2 my-3 event-small-gray">
-              {translate("November 5, 2025")}
-            </div>
-            <div className="d-lg-block">
-              <a
-                className="btn btn-primary btn-arrow-out"
-                target="_blank"
-                href="https://lu.ma/g5uja58m?utm_source=xrpleventspage"
-              >
-                {translate("Register Now")}
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section className="container-new py-26">
-        <div className="event-hero card-grid card-grid-2xN">
-          <div className="pe-2 col">
-            <img
-              alt="xrp ledger events hero"
               src={require("../static/img/events/xrp-community-night-paris.png")}
               className="w-100"
             />
@@ -1716,7 +1682,7 @@ export default function Events() {
           </div>
         </div>
         {/* # Available Types - conference, hackathon, ama, cc, zone, meetup, info  */}
-        <div className="row row-cols-1 row-cols-lg-3 g-4 mt-2">
+        <div className="row row-cols-1 row-cols-lg-3 g-5 mt-2">
           {filteredUpcoming.map((event, i) => (
             <div key={event.name + i} className="col">
               <a
@@ -1851,9 +1817,9 @@ export default function Events() {
             </div>
           </div>
         </div>
-        <div className="row row-cols-1 row-cols-lg-3 g-4 mt-2 mb-0">
+        <div className="row mt-8">
           {filteredPast.map((event, i) => (
-            <div key={event.name + i} className="col">
+            <div key={event.name + i} className="col-span-12 col-md-6 col-lg-4 mb-6">
               <a
                 className={`event-card ${event.type} h-100`}
                 href={event.link}

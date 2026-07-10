@@ -1,4 +1,5 @@
 import { useThemeHooks } from '@redocly/theme/core/hooks';
+import { Icon } from "shared/components/Icon/Icon";
 
 export function ClioOnlyIcon () {
   const { useTranslate } = useThemeHooks()
@@ -8,7 +9,7 @@ export function ClioOnlyIcon () {
         className="status clio_only"
         title={translate("resources.dev-tools.websocket-api.clio-only-tooltip", "This method is only available from the Clio server.")}
       >
-        <i className="fa fa-exclamation-circle"></i>
+        <Icon name="exclamation-circle" />
       </span>
   )
 }

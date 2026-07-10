@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { type Client, type Wallet, type Transaction, type TransactionMetadata, type TxResponse, SubmittableTransaction } from 'xrpl'
 import { clsx } from 'clsx'
+import { Icon } from "shared/components/Icon/Icon";
 
 
 export const TESTNET_URL = "wss://s.altnet.rippletest.net:51233"
@@ -26,10 +27,10 @@ export function logTx(txName: string, hash: string, finalResult: string, setTxHi
     const txLink = "https://testnet.xrpl.org/transactions/" + hash
     if (finalResult === "tesSUCCESS") {
       classes = "text-muted"
-      icon = <i className="fa fa-check-circle"/>
+      icon = <Icon name="check-circle" />
     } else {
       classes = "list-group-item-danger"
-      icon = <i className="fa fa-times-circle"/>
+      icon = <Icon name="times-circle" />
     }
     const li = <li key={hash} className={clsx("list-group-item fade-in p-1", classes)}>
       {icon} {txName}: <a href={txLink} target="_blank" className="external-link">{hash}</a>
