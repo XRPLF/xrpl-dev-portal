@@ -52,7 +52,7 @@ In this tutorial, you'll learn:
 
 To complete this tutorial, you should meet the following guidelines:
 
-- Have some familiarity with writing code in TypeScript or JavaScript.
+- Have some familiarity with writing code in TypeScript.
 - Have installed Node.js **version 20** or later in your development environment.
 - If you want to build a web application, any modern web browser with JavaScript support should work fine.
 
@@ -128,7 +128,7 @@ The sample code shows you how to connect to the Testnet, which is one of the ava
 - By [installing the core server](../../infrastructure/installation/index.md) (`xrpld`) and running a node yourself. The core server connects to the Mainnet by default, but you can [change the configuration to use Testnet or Devnet](../../infrastructure/configuration/connect-your-xrpld-to-the-xrp-test-net.md). [There are good reasons to run your own core server](../../concepts/networks-and-servers/index.md#reasons-to-run-your-own-server). If you run your own server, you can connect to it like so:
 
     ```typescript
-    const MY_SERVER = "ws://localhost:6006/"
+    const MY_SERVER = 'ws://localhost:6006/'
     const client = new Client(MY_SERVER)
     await client.connect()
     ```
@@ -138,7 +138,7 @@ The sample code shows you how to connect to the Testnet, which is one of the ava
 - By using one of the available [public servers][]:
 
     ```typescript
-    const PUBLIC_SERVER = "wss://xrplcluster.com/"
+    const PUBLIC_SERVER = 'wss://xrplcluster.com/'
     const client = new Client(PUBLIC_SERVER)
     await client.connect()
     ```

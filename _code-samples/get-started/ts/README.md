@@ -2,7 +2,7 @@
 
 Connects to the XRP Ledger, gets account information, builds and validates a typed transaction, and subscribes to ledger events using TypeScript and `xrpl.js`.
 
-To download the source code, see [Get Started Using TypeScript Library](https://xrpl.org/docs/tutorials/get-started/get-started-typescript).
+To download the source code, see the [Get Started Using TypeScript tutorial](https://xrpl.org/docs/tutorials/get-started/get-started-typescript) on xrpl.org.
 
 ## Setup
 
