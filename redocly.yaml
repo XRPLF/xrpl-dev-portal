@@ -189,6 +189,8 @@ links:
     rel: stylesheet
   - href: ./static/css/devportal2024-v1.css
     rel: stylesheet
+  - href: ./static/css/font-awesome.min.css
+    rel: stylesheet
 
 logo:
   srcSet: ./static/img/XRPLedger_DevPortal-black.svg light ./static/img/XRPLedger_DevPortal-white.svg dark

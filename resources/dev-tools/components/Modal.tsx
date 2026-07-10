@@ -1,6 +1,5 @@
 import React, { JSX, ReactElement, ReactNode } from 'react';
 import { useThemeHooks } from '@redocly/theme/core/hooks';
-import { Icon } from "shared/components/Icon/Icon";
 
 interface ModalProps {
   id: string // used for targeting animations
@@ -71,7 +70,7 @@ export const ModalClipboardBtn = ({textareaRef}) => {
     className="btn btn-outline-secondary clipboard-btn"
     onClick={() => copyToClipboard(textareaRef)}
   >
-    <Icon name="clipboard" />
+    <i className="fa fa-clipboard"></i>
   </button>
 }
 

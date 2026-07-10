@@ -3,7 +3,6 @@ import { Client } from 'xrpl'
 import React = require("react");
 import { CLASS_GOOD } from "../components/LogEntry";
 import { AccountFields } from "./XrplToml";
-import { Icon } from "shared/components/Icon/Icon";
 
 // Decode a hexadecimal string into a regular string, assuming 8-bit characters.
 // Not proper unicode decoding, but it'll work for domains which are supposed
@@ -144,7 +143,7 @@ export async function getListEntries(fields: Object[], filter?: Function, domain
           domainIsValid.then((wasValidated) => {
             if(wasValidated) {
               displayedFields.push(
-                <li className={CLASS_GOOD} key={`${key}-result`}>DOMAIN VALIDATED <Icon name="check-circle" /></li>
+                <li className={CLASS_GOOD} key={`${key}-result`}>DOMAIN VALIDATED <i className="fa fa-check-circle"/></li>
               )
             }
           })

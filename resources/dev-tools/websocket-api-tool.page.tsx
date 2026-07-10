@@ -24,7 +24,6 @@ import commandList from "./components/websocket-api/data/command-list.json";
 import connections from "./components/websocket-api/data/connections.json";
 import XRPLoader from '../../@theme/components/XRPLoader';
 import { ClioOnlyNotice } from './components/websocket-api/ClioOnly';
-import { Icon } from "shared/components/Icon/Icon";
 
 export const frontmatter = {
   seo: {
@@ -340,7 +339,7 @@ export function WebsocketApiTool() {
                       title={translate("Pause Subscriptions")}
                       onClick={() => setStreamPaused(true)}
                     >
-                      <Icon name="pause" />
+                      <i className="fa fa-pause"></i>
                     </button>
                   )}
                   {streamPaused && (
@@ -349,7 +348,7 @@ export function WebsocketApiTool() {
                       title={translate("Unpause Subscriptions")}
                       onClick={() => setStreamPaused(false)}
                     >
-                      <Icon name="play" />
+                      <i className="fa fa-play"></i>
                     </button>
                   )}
                   <button
@@ -357,7 +356,7 @@ export function WebsocketApiTool() {
                     title={translate("Delete All Responses")}
                     onClick={() => setResponses([])}
                   >
-                    <Icon name="trash" />
+                    <i className="fa fa-trash"></i>
                   </button>
                 </div>
               </div>

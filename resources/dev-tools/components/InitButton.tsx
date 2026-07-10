@@ -4,7 +4,6 @@ import { clsx } from 'clsx'
 
 import { Client, type Wallet, type TxResponse, dropsToXrp } from 'xrpl'
 import { errorNotif, TESTNET_URL } from '../utils'
-import { Icon } from "shared/components/Icon/Icon";
 
 
 export interface InitializationProps {
@@ -192,7 +191,7 @@ export function InitButton({
             title={isInitEnabled ? "" : "done"}>
             {translate("Initialize")}   
         </button>
-        {!isInitEnabled && (<div>&nbsp;<Icon name="check-circle" /></div>)}
+        {!isInitEnabled && (<div>&nbsp;<i className="fa fa-check-circle"></i></div>)}
 
         <small className="form-text text-muted">
             {translate("Set up the necessary Testnet XRP addresses to send test payments.")}

@@ -4,12 +4,11 @@
 // for most cases.
 
 import { useThemeHooks } from '@redocly/theme/core/hooks'
-import { Icon } from "shared/components/Icon/Icon";
 
 export default function NotEnabled() {
   const { useTranslate } = useThemeHooks()
   const { translate } = useTranslate()
   return (
-    <span className="status not_enabled" title={translate("This feature is not currently enabled on the production XRP Ledger.")}><Icon name="flask" /></span>
+    <span className="status not_enabled" title={translate("This feature is not currently enabled on the production XRP Ledger.")}><i className="fa fa-flask"></i></span>
   )
 }

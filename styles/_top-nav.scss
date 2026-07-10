@@ -481,6 +481,7 @@ $banner-height: 0; // Currently no pencil banner.
       &::before,
       &::after {
         border: 0;
+        font-family: FontAwesome;
         color: $blue-purple-400;
         font-size: 0.75rem;
         transition: all 0.2s ease;
@@ -489,11 +490,12 @@ $banner-height: 0; // Currently no pencil banner.
       }
 
       &::before {
-        @include fa-mask("chevron-left"); // legacy top-nav (not rendered)
+        content: "\f053"; // < chevron
+        display: inline-block;
         margin-bottom: -5px; // fix weird placement on Chrome
       }
       &::after {
-        @include fa-mask("chevron-right"); // legacy top-nav (not rendered)
+        content: "\f054"; // > chevron
         position: absolute;
         right: 2rem;
       }

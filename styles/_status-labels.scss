@@ -19,7 +19,8 @@
 
 .labels-wrap {
   ul::before {
-    @include fa-mask("tags"); /* was fontawesome tags */
+    content: "\f02c";
+    font-family: FontAwesome;
     font-size: 1.5rem;
   }
   .list-inline-item {
@@ -30,7 +31,8 @@
   color: $gray-400;
 
   &::after {
-    @include fa-mask("angle-right", 0.7em); /* was fontawesome angle-right */
+    content: "\f105"; /* fontawesome angle-right */
+    font-family: FontAwesome;
     padding-left: 5px;
   }
 }

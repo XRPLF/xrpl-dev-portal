@@ -48,8 +48,9 @@
   }
 
   .breadcrumb-item.done a:after {
-    @include fa-mask("check-circle"); /* was fontawesome check-circle */
-    color: $secondary; // sets currentColor for the mask fill
+    content: "\f058"; /* fontawesome check-circle icon */
+    font-family: FontAwesome;
+    color: $secondary;
     padding-right: 5px;
     padding-left: 5px;
   }
