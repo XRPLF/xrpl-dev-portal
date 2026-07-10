@@ -128,6 +128,7 @@ $line-height-base: 1.5;
 @import "../shared/components/CardTextIcon/CardTextIconCard.scss";
 @import "../shared/sections/CardsIconGrid/CardsIconGrid.scss";
 @import "../shared/sections/CardsTextGrid/CardsTextGrid.scss";
+@import "../shared/sections/HomeHero/HomeHero.scss";
 @import "_code-tabs.scss";
 @import "_code-walkthrough.scss";
 @import "_diagrams.scss";
@@ -152,9 +153,6 @@ $line-height-base: 1.5;
 @import "_docs-landing.scss";
 @import "_osano.scss";
 @import "_agentic-transactions.scss";
-
-// Import sections
-@import "../pages/home/sections/HomeHero/HomeHero.scss";
 
 
 // Light/Dark theme settings ---------------------------------------------------

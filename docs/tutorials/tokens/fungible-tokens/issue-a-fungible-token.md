@@ -23,8 +23,8 @@ Anyone can issue various types of tokens in the XRP Ledger, ranging from informa
     - You can also read along and use the interactive steps in your browser without any setup.
 
 <!-- Source for this specific tutorial's interactive bits: -->
-<script type="application/javascript" src="/js/interactive-tutorial.js"></script>
-<script type="application/javascript" src="/js/tutorials/issue-a-token.js"></script>
+<script type="application/javascript" defer src="/js/interactive-tutorial.js"></script>
+<script type="application/javascript" defer src="/js/tutorials/issue-a-token.js"></script>
 
 ## Example Code
 

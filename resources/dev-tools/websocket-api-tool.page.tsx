@@ -248,7 +248,7 @@ export function WebsocketApiTool() {
                 />
               </div>
               <div
-                className="btn-toolbar justify-content-between pt-4"
+                className="btn-toolbar justify-content-between pt-4 d-flex"
                 role="toolbar"
               >
                 <div className="btn-group me-3" role="group">
@@ -309,10 +309,10 @@ export function WebsocketApiTool() {
               <h4>{translate("Responses")}</h4>
 
               <div
-                className="btn-toolbar justify-content-between response-options"
+                className="btn-toolbar justify-content-between response-options d-flex"
                 role="toolbar"
               >
-                <div className="input-group">
+                <div className="input-group w-auto">
                   <div className="input-group-prepend">
                     <div
                       className="input-group-text"

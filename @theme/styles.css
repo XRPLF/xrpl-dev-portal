@@ -268,6 +268,11 @@ ul.nav.navbar-nav {
 }
 
 :root.light {
+  /* #141414 == Sass $black / $gray-900 (styles/_colors.scss). Hardcoded
+     because this is plain CSS and can't reference Sass vars; defining it on
+     the SCSS side instead gets stripped by PurgeCSS (its var() consumer, the
+     generated link rule, lives in this theme layer, not the SCSS bundle). */
+  --link-color-primary: black;
   --link-color-primary-hover: var(--color-purple-4);
   --link-color-visited: black;
   --text-color-secondary: black;

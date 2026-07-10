@@ -96,10 +96,10 @@
 
   @mixin chip-indigo {
     background-color: $blue-purple-500;
-    color: $blue-purple-300;
+    color: $blue-purple-200;
     .badge-pill {
       color: $blue-purple-500;
-      background-color: $blue-purple-300;
+      background-color: $blue-purple-200;
     }
     &:hover {
       background-color: $blue-purple-400;
@@ -112,10 +112,10 @@
 
     html.light & {
       background-color: $blue-purple-200;
-      color: $blue-purple-400;
+      color: $blue-purple-500;
       .badge-pill {
         color: $blue-purple-200;
-        background-color: $blue-purple-400;
+        background-color: $blue-purple-500;
       }
       &:hover {
         background-color: $blue-purple-300;
@@ -130,7 +130,7 @@
 
   @mixin chip-green {
     background-color: $green-500;
-    color: $green-200;
+    color: $green-100;
     .badge-pill {
       background-color: $green-200;
       color: $green-500;

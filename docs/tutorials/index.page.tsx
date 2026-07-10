@@ -181,7 +181,6 @@ function TutorialCard({
         <h4 className="card-title h5">{translate(tutorial.title)}</h4>
         {tutorial.description && <p className="card-text">{translate(tutorial.description)}</p>}
       </div>
-      {showFooter && <div className="card-footer"></div>}
     </Link>
   )
 }

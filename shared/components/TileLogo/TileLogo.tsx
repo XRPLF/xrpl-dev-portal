@@ -121,6 +121,8 @@ export const TileLogo: React.FC<TileLogoProps> = ({
         alt={alt}
         className={imageClassName}
         aria-hidden="false"
+        loading="lazy"
+        decoding="async"
       />
     </>
   );

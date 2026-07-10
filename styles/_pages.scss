@@ -745,8 +745,9 @@
   }
 
   .event-card {
+    width: 100%;
     max-width: 311px;
-    margin: 32px auto;
+    margin: 0 auto 32px;
     transition: all 0.35s ease-out;
     position: relative;
     display: flex;
@@ -754,6 +755,14 @@
     min-width: 0;
     word-wrap: break-word;
     background-clip: border-box;
+
+    // The events page renders ~126 cards at once; skip rendering the off-screen
+    // ones until they near the viewport. contain-intrinsic-size reserves each
+    // card's space so the scrollbar stays stable (≈ header + body + footer);
+    // `auto` lets the browser remember the real size after first render.
+    // Unsupported browsers ignore this and render as before.
+    content-visibility: auto;
+    contain-intrinsic-size: auto 460px;
 
     background-color: $card-bg;
     box-shadow: 0px 5px 40px $black;
@@ -775,17 +784,22 @@
 
     .event-card-title {
       position: absolute;
+      left: 0;
+      right: 0;
       bottom: 32px;
       padding: 0 32px;
       color: $gray-100;
 
       font-weight: bold;
-      font-size: 20px;
-      line-height: 28px;
+      font-size: 19px;
+      line-height: 26px;
     }
 
     .event-card-body {
       padding: 32px;
+      p {
+        font-size: 15px;
+      }
     }
 
     .event-card-footer {
@@ -811,15 +825,36 @@
   }
 
   //end event card
+  @media (min-width: 576px) {
+    .event-card-header {
+      height: 148px !important;
+    }
+  }
 
   @media (min-width: 992px) {
     .event-card {
-      max-width: 347px;
-      margin: 32px;
+      // Fill the grid column (row-cols-lg-3); spacing between cards comes
+      // from the row gutter (g-5), not card margins. Legacy max-width/margin
+      // here left over from the pre-Bootstrap-5 `card-deck` layout made the
+      // cards too narrow and misaligned inside their columns.
+      max-width: none;
+      margin: 0;
     }
 
     .event-card-header {
-      height: 197px !important;
+      height: 172px !important;
+    }
+
+    .event-card-title {
+      font-size: 17px;
+      line-height: 24px;
+      bottom: 24px;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .event-card-header {
+      height: 220px !important;
     }
   }
 
@@ -1365,29 +1400,6 @@
 }
 
 .page-dev-tools {
-  @each $tool,
-  $card-graphic in ("xrp-explorer": "3-col-orange",
-    "bithomp-explorer": "3-col-light-blue",
-    "xrpscan": "3-col-pink",
-    "token-list": "3-col-pink2",
-    "websocket": "3-col-purple2",
-    "rpc": "3-col-green",
-    "technical-explorer": "3-col-purple-blue",
-    "faucets": "3-col-pink2",
-    "trasaction-sender": "3-col-light-blue2",
-    "domain": "3-col-green-purple",
-    "xrp-ledger": "3-col-dark-blue",
-    "binary-visualizer": "3-col-purple-blue",
-    "token-metadata-lookup": "3-col-pink-purple"
-
-  ) {
-    ##{$tool} {
-      .card-footer {
-        background-image: url("../img/cards/#{$card-graphic}.svg");
-      }
-    }
-  }
-
   .nav-link {
     color: $gray-400;
     background-color: $gray-900;

@@ -2,7 +2,26 @@ import * as React from "react";
 import { useState, useRef, useEffect } from "react";
 import { useThemeHooks } from "@redocly/theme/core/hooks";
 import { Link } from "@redocly/theme/components/Link/Link";
-import moment from "moment";
+
+const MONTHS_SHORT = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+
+// Format a blog post date (stored as "YYYY-MM-DD" by @theme/plugins/blog-posts.js)
+// against a moment-style pattern from translations (tokens: YYYY, MMM, MM, DD, D).
+// Replaces moment() so the date library no longer ships in the blog bundle.
+// Parsed as local time to match moment's date-only parsing (not UTC).
+function formatBlogDate(dateStr: string, pattern: string): string {
+  const iso = /^(\d{4})-(\d{2})-(\d{2})/.exec(dateStr);
+  const d = iso ? new Date(+iso[1], +iso[2] - 1, +iso[3]) : new Date(dateStr);
+  if (isNaN(d.getTime())) return dateStr;
+  const tokens: Record<string, string> = {
+    YYYY: String(d.getFullYear()),
+    MMM: MONTHS_SHORT[d.getMonth()],
+    MM: String(d.getMonth() + 1).padStart(2, "0"),
+    DD: String(d.getDate()).padStart(2, "0"),
+    D: String(d.getDate()),
+  };
+  return pattern.replace(/YYYY|MMM|MM|DD|D/g, (t) => tokens[t]);
+}
 
 export const frontmatter = {
   seo: {
@@ -70,7 +89,7 @@ export default function Index() {
         <section className="container-new">
           <div className="row justify-content-center align-items-lg-center">
             {/* Banner Image */}
-            <div className="image-container">
+            <div className="image-container col-12 col-lg-4">
               <img
                 alt="blog hero"
                 src={require("../static/img/blog/blog-hero.svg")}
@@ -78,14 +97,14 @@ export default function Index() {
               />
             </div>
             {/* Text */}
-            <div className="col">
+            <div className="col-12 col-lg-8">
               <div className="text-bg">
                 <h4 className="mb-3 eyebrow text-uppercase font-weight-light">
                   <span className="hero-post-date pb-2">
-                    {moment(heroPost.date).format(translate("blog.banner.date.part1","MMM"))}
+                    {formatBlogDate(heroPost.date, translate("blog.banner.date.part1","MMM"))}
                   </span>
                   {translate("blog.banner.date.part2", " ")}
-                  {moment(heroPost.date).format(translate("blog.banner.date.part3","DD YYYY"))}
+                  {formatBlogDate(heroPost.date, translate("blog.banner.date.part3","DD YYYY"))}
                 </h4>
                 <div className="pb-8">
                   <div
@@ -205,7 +224,7 @@ export default function Index() {
                   </div>
                   <div>
                     <p className="mb-0 card-date">
-                      {moment(card.date).format(translate("blog.card.date","MMM DD, YYYY"))}
+                      {formatBlogDate(card.date, translate("blog.card.date","MMM DD, YYYY"))}
                       { card.author ? ` by ${card.author}` : ""}
                     </p>
                     <h5 className="mb-2-sm h3-sm">

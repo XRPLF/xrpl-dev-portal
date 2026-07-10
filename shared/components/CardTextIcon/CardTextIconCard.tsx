@@ -76,6 +76,8 @@ const cardContent = (
         {...(iconHeight != null && { height: iconHeight })}
         {...(iconWidth != null && { width: iconWidth })}
         className="bds-card-text-icon-card__icon-img"
+        loading="lazy"
+        decoding="async"
       />
       )}
       <HeadingElement className="bds-card-text-icon-card__heading sh-md-r">{heading}</HeadingElement>

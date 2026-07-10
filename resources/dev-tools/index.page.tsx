@@ -208,7 +208,6 @@ export default function DevTools() {
                         <h4 className="card-title h5">{translate(card.title)}</h4>
                         <p className="card-text">{translate(card.description)}</p>
                       </div>
-                      <div className="card-footer">&nbsp;</div>
                     </Link>
                   ))}
                 </div>
@@ -238,7 +237,6 @@ export default function DevTools() {
                         <h4 className="card-title h5">{translate(card.title)}</h4>
                         <p className="card-text">{translate(card.description)}</p>
                       </div>
-                      <div className="card-footer">&nbsp;</div>
                     </Link>
                   ))}
                 </div>
@@ -268,7 +266,6 @@ export default function DevTools() {
                         <h4 className="card-title h5">{translate(card.title)}</h4>
                         <p className="card-text">{translate(card.description)}</p>
                       </div>
-                      <div className="card-footer">&nbsp;</div>
                     </Link>
                   ))}
                 </div>

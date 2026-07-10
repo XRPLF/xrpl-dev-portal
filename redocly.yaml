@@ -155,12 +155,36 @@ scripts:
     # and survives across page navigations. See static/js/theme-switch.js.
     - src: ./static/js/theme-switch.js
     - src: https://cmp.osano.com/AzyjT6TIZMlgyLyy8/f11f7772-8ed5-4b73-bd17-c0814edcc440/osano.js
+    # xrpl.js / jQuery / Bootstrap are only used by the interactive tool scripts
+    # on a handful of tutorial + dev-tools pages, not by the theme or navbar.
+    # `defer` makes them non-render-blocking on every page; the tool pages' own
+    # inline <script> tags are also deferred so execution order is preserved
+    # (deferred scripts run in document order, after HTML parse).
     - src: ./static/js/xrpl-2.11.0.min.js
+      defer: true
     - src: ./static/vendor/jquery-3.7.1.min.js
+      defer: true
     - src: ./static/vendor/bootstrap.min.js
+      defer: true
     - src: ./static/js/osano.js
       type: text/javascript
 links:
+  # Warm up the Google Fonts connections before the render-blocking stylesheet
+  # below is fetched, saving DNS + TCP + TLS round-trips on every page. (The
+  # primary UI fonts are the local Booton/Tobias; Noto here is a fallback and
+  # the Japanese-locale font.)
+  - href: https://fonts.googleapis.com
+    rel: preconnect
+  - href: https://fonts.gstatic.com
+    rel: preconnect
+    crossorigin: anonymous
+  # Warm up the third-party origins that load on every page (osano cookie-consent
+  # CMP + Google Tag Manager) so their first request skips the DNS/TCP/TLS setup.
+  # These are script fetches, so no `crossorigin`.
+  - href: https://cmp.osano.com
+    rel: preconnect
+  - href: https://www.googletagmanager.com
+    rel: preconnect
   - href: https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700&family=Noto+Serif:wght@400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;600;700&display=swap
     rel: stylesheet
   - href: ./static/css/devportal2024-v1.css

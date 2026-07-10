@@ -177,6 +177,7 @@ export const Video = React.forwardRef<HTMLDivElement, VideoProps>(
             src={embedUrl}
             title="Video"
             className="bds-video__iframe"
+            loading="lazy"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
           />
@@ -209,6 +210,7 @@ export const Video = React.forwardRef<HTMLDivElement, VideoProps>(
                 src={coverImage.src}
                 alt={coverImage.alt}
                 className="bds-video__cover-image"
+                decoding="async"
               />
               <span className="bds-video__play-icon" aria-hidden>
                 <svg
