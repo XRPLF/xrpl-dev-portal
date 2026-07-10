@@ -1,0 +1,56 @@
+name: Update amendments snapshot
+
+# Refreshes @theme/data/amendments-snapshot.json (consumed by the Known Amendments
+# page's Markdown/LLM export) from the live mainnet vote endpoint. Rewrites the
+# snapshot each run with a fresh fetched_at timestamp, so every run commits and
+# triggers a Redocly rebuild that regenerates the export with a current "as of" time.
+
+on:
+  schedule:
+    # Twice daily at 00:17 and 12:17 UTC. Offset from the top of the hour because
+    # scheduled workflows can be delayed during peak-load periods.
+    - cron: '17 */12 * * *'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-amendments-snapshot
+  cancel-in-progress: false
+
+jobs:
+  update-snapshot:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Fetch latest amendment data
+        run: python3 tools/fetch-amendments-snapshot.py
+
+      - name: Commit and push if changed
+        run: |
+          FILE='@theme/data/amendments-snapshot.json'
+          if git diff --quiet -- "$FILE"; then
+            echo "No changes to $FILE; nothing to commit."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- "$FILE"
+          git commit -m "chore(data): update amendments snapshot"
+          # Rebase onto any new commits, then push — retry a few times in case the
+          # branch moved between rebase and push.
+          for attempt in 1 2 3; do
+            if git pull --rebase --autostash origin "$GITHUB_REF_NAME" \
+               && git push origin "HEAD:$GITHUB_REF_NAME"; then
+              echo "Pushed snapshot update."
+              exit 0
+            fi
+            echo "Push attempt $attempt failed; retrying..."
+            sleep 5
+          done
+          echo "::error::Failed to push snapshot update after 3 attempts."
+          exit 1
