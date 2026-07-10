@@ -201,3 +201,18 @@ aside .active-parent > a {
 .command-list li a {
   margin-top: 0;
 }
+
+// Keep the left docs nav sticky on short pages too (e.g. category index pages
+// like /docs/concepts). Redocly gives the sidebar a fixed
+// `height: calc(100vh - navbar - banner)`, which on a short page exactly fills
+// the flex PageLayout container — leaving `position: sticky` no room to travel,
+// so the nav scrolls out of view when you scroll down. Letting the sidebar take
+// its content height (top-aligned) restores the sticky travel; max-height keeps
+// it within the viewport and its inner MenuContainer still scrolls long navs.
+@media screen and (min-width: 960px) {
+  [data-component-name="Layout/PageLayout"] aside[data-component-name="Sidebar/Sidebar"] {
+    align-self: flex-start;
+    height: auto !important;
+    max-height: calc(100vh - var(--navbar-height, 80px) - var(--banner-height, 0px));
+  }
+}

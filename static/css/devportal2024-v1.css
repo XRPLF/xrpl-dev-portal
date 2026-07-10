@@ -11265,6 +11265,13 @@ aside .active-parent > a {
   margin-top: 0;
 }
 
+@media screen and (min-width: 960px) {
+  [data-component-name="Layout/PageLayout"] aside[data-component-name="Sidebar/Sidebar"] {
+    align-self: flex-start;
+    height: auto !important;
+    max-height: calc(100vh - var(--navbar-height, 80px) - var(--banner-height, 0px));
+  }
+}
 /**
  * Theme mode mixin
  * 
