@@ -9,6 +9,7 @@ labels:
 
 This tutorial shows how to create a [permissioned domain](../../concepts/tokens/decentralized-exchange/permissioned-domains.md), which can be used to grant access to specific other features like [Permissioned DEXes](../../concepts/tokens/decentralized-exchange/permissioned-dexes.md) and [Single Asset Vaults](../../concepts/tokens/single-asset-vaults.md). It also shows how to modify a domain to update its set of accepted credentials and how to delete a permissioned domain.
 
+{% amendment-disclaimer name="PermissionedDomains" /%}
 
 ## Goals
 
