@@ -1,222 +1,15 @@
 {
-  "fetched_at": "2026-07-09T21:02:54Z",
+  "fetched_at": "2026-07-10T22:44:51Z",
   "result": "success",
   "count": 101,
   "amendments": [
     {
-      "id": "303ACB16CF8DBD3B5C34F131A9D19A7DE01AE05F480A8A682B869D1B4AAC8CFC",
-      "ledger_index": 104507137,
-      "tx_hash": "C8ADF2BC866F9C81C3ED020F51D437CD4FC8E2588EC815AD44C870AD77DD6227",
-      "date": "2026-05-27T03:51:20.000Z",
-      "name": "fixCleanup3_1_3",
-      "rippled_version": "3.1.3",
-      "deprecated": false
-    },
-    {
-      "id": "FF2D1E13CF6D22427111B967BD504917F63A900CECD320D6FD3AC9FA90344631",
-      "ledger_index": 101852417,
-      "tx_hash": "5BC2395E779502F3D0D90C26FA3D8AF52BE10BB203BD11830951B893B6C928A0",
-      "date": "2026-01-27T22:20:10.000Z",
-      "name": "fixPriceOracleOrder",
-      "rippled_version": "3.0.0",
-      "deprecated": false
-    },
-    {
-      "id": "6143A27B71F7DAF9330ECA7C5EC3D54C8083A4FDEF7016737EEC06AB61E82EE0",
-      "ledger_index": 101852417,
-      "tx_hash": "6D78BF96B28F2A16FF229227A0F0FD555AE25791C64EAAEF6DA0B1AB3D0BA1ED",
-      "date": "2026-01-27T22:20:10.000Z",
-      "name": "fixIncludeKeyletFields",
-      "rippled_version": "3.0.0",
-      "deprecated": false
-    },
-    {
-      "id": "AB8D932A5F338903FE5BCBD80B611FFED70839ABA3170E9CE01D947C0EDEDCF2",
-      "ledger_index": 101852417,
-      "tx_hash": "56B9F029DD5D65888DD9997D690ED1E2AF46B80B7C9B41FE87CE6AFD9B0E6D08",
-      "date": "2026-01-27T22:20:10.000Z",
-      "name": "fixMPTDeliveredAmount",
-      "rippled_version": "3.0.0",
-      "deprecated": false
-    },
-    {
-      "id": "5E9586DB3D765B4C5794658FB6BB385071E9838DF4016027E6E26820C8526724",
-      "ledger_index": 101852417,
-      "tx_hash": "BF67E97DE11F775E9AEEBF3C7D1D20E5D16A35A0F27C2F4CBAF89C4AF2F9FB76",
-      "date": "2026-01-27T22:20:10.000Z",
-      "name": "fixAMMClawbackRounding",
-      "rippled_version": "3.0.0",
-      "deprecated": false
-    },
-    {
-      "id": "32B8614321F7E070419115ABEAB1742EA20F3E3AF34432B5E2F474F8083260DC",
-      "ledger_index": 101852417,
-      "tx_hash": "E3B633906B8A9CA2BC9CB9DD832326001BDA02E5B336A640574E01ADD47058E3",
-      "date": "2026-01-27T22:20:10.000Z",
-      "name": "fixTokenEscrowV1",
-      "rippled_version": "3.0.0",
-      "deprecated": false
-    },
-    {
-      "id": "41765F664A8D67FF03DDB1C1A893DE6273690BA340A6C2B07C8D29D0DD013D3A",
-      "ledger_index": 100961281,
-      "tx_hash": "602A29FE77442A18F56B6A63A5C25FFD1CBB6930BA37FAC712CE2561CA6EAF8E",
-      "date": "2025-12-18T15:08:32.000Z",
-      "name": "fixDirectoryLimit",
-      "rippled_version": "2.6.2",
-      "deprecated": false
-    },
-    {
-      "id": "B32752F7DCC41FB86534118FC4EEC8F56E7BD0A7DB60FD73F93F257233C08E3A",
-      "ledger_index": 98491905,
-      "tx_hash": "2532DC0E750FAA51CC11F58F742A1FB0CDC0F469DEA63EF903EC15D1E39667BE",
-      "date": "2025-08-29T14:50:31.000Z",
-      "name": "fixEnforceNFTokenTrustlineV2",
-      "rippled_version": "2.5.0",
-      "deprecated": false
-    },
-    {
-      "id": "7CA70A7674A26FA517412858659EBC7EDEEF7D2D608824464E6FDEFD06854E14",
-      "ledger_index": 98491905,
-      "tx_hash": "A695CB5E52B1998193AF044CEDB05C1A68EB7F4F811482C85442E8E63EDA4026",
-      "date": "2025-08-29T14:50:31.000Z",
-      "name": "fixAMMv1_3",
-      "rippled_version": "2.5.0",
-      "deprecated": false
-    },
-    {
-      "id": "D3456A862DC07E382827981CA02E21946E641877F19B8889031CC57FDCAC83E2",
-      "ledger_index": 98491905,
-      "tx_hash": "21842CFFCD51428997C78056F2EB9B707E2CED45FEFD302084B08C35965D7DB8",
-      "date": "2025-08-29T14:50:31.000Z",
-      "name": "fixPayChanCancelAfter",
-      "rippled_version": "2.5.0",
-      "deprecated": false
-    },
-    {
-      "id": "677E401A423E3708363A36BA8B3A7D019D21AC5ABD00387BDBEA6BDE4C91247E",
-      "ledger_index": 102328065,
-      "tx_hash": "AE56481023FBF05BE5E6272F5D1E1D7BC5239D0A913B981FBE2E302C389A8002",
-      "date": "2026-02-18T10:58:10.000Z",
-      "name": "PermissionedDEX",
-      "rippled_version": "2.5.0",
-      "deprecated": false
-    },
-    {
-      "id": "138B968F25822EFBF54C00F97031221C47B1EAB8321D93C7C2AEAF85F04EC5DF",
-      "ledger_index": 102204929,
-      "tx_hash": "90A1297408C5F76769626A94242BCBD671E3CCD02ABEF80D92D8C7D7623840D5",
-      "date": "2026-02-12T21:24:40.000Z",
-      "name": "TokenEscrow",
-      "rippled_version": "2.5.0",
-      "deprecated": false
-    },
-    {
-      "id": "DAF3A6EB04FA5DC51E8E4F23E9B7022B693EFA636F23F22664746C77B5786B23",
-      "ledger_index": 95893505,
-      "tx_hash": "976281D793337FF5377A36409F2A1432DADAB64DB5064E12E71B1AC491EA3021",
-      "date": "2025-05-04T12:09:01.000Z",
-      "name": "DeepFreeze",
-      "rippled_version": "2.4.0",
-      "deprecated": false
-    },
-    {
-      "id": "8EC4304A06AF03BE953EA6EDA494864F6F3F30AA002BABA35869FBB8C6AE5D52",
-      "ledger_index": 96126977,
-      "tx_hash": "D53E906A53C46A9AACFEB0093DF26EFD8634C3DAF50A18930D7910C51FFE3E9D",
-      "date": "2025-05-15T01:03:50.000Z",
-      "name": "fixInvalidTxFlags",
-      "rippled_version": "2.4.0",
-      "deprecated": false
-    },
-    {
-      "id": "C1CE18F2A268E6A849C27B3DE485006771B4C01B2FCEC4F18356FE92ECD6BB74",
-      "ledger_index": 96724737,
-      "tx_hash": "CB5D27363B103D74F4018B5099EF9AD818AEB3634E8692D67F9FDF3CBBA778F5",
-      "date": "2025-06-11T00:13:50.000Z",
-      "name": "DynamicNFT",
-      "rippled_version": "2.4.0",
-      "deprecated": false
-    },
-    {
-      "id": "A730EB18A9D4BB52502C898589558B4CCEB4BE10044500EE5581137A2E80E849",
-      "ledger_index": 102017793,
-      "tx_hash": "CC30BAB4CDE71E2B07E73AC980D3464F2515E9FBA51489E0B2C89C39D1A51416",
-      "date": "2026-02-04T10:06:41.000Z",
-      "name": "PermissionedDomains",
-      "rippled_version": "2.4.0",
-      "deprecated": false
-    },
-    {
-      "id": "83FD6594FF83C1D105BD2B41D7E242D86ECB4A8220BD9AF4DA35CB0F69E39B2A",
-      "ledger_index": 96126977,
-      "tx_hash": "34F11D09E15EC3FE78FFB238EB33030A9E2F2B6233716712A4B7A9D13C55C89A",
-      "date": "2025-05-15T01:03:50.000Z",
-      "name": "fixFrozenLPTokenTransfer",
-      "rippled_version": "2.4.0",
-      "deprecated": false
-    },
-    {
-      "id": "9196110C23EA879B4229E51C286180C7D02166DA712559F634372F5264D0EC59",
-      "ledger_index": 93814529,
-      "tx_hash": "426314C8BC64BA339E97E53B278602ADC44F115056274BF7971F694C9A8AF946",
-      "date": "2025-01-30T20:09:41.000Z",
-      "name": "fixInnerObjTemplate2",
-      "rippled_version": "2.3.0",
-      "deprecated": false
-    },
-    {
-      "id": "950AE2EA4654E47F04AA8739C0B214E242097E802FD372D24047A89AB1F5EC38",
-      "ledger_index": 99226369,
-      "tx_hash": "14853FF2D09D198B576A531C50883C59D71474BA9072C1F5C0ED1DD57882B922",
-      "date": "2025-10-01T13:13:10.000Z",
-      "name": "MPTokensV1",
-      "rippled_version": "2.3.0",
-      "deprecated": false
-    },
-    {
-      "id": "C7981B764EC4439123A86CC7CCBA436E9B3FF73B3F10A0AE51882E404522FC41",
-      "ledger_index": 93814529,
-      "tx_hash": "2D9A29768A7FA4BAC01DF1941380077E304785279E5E49267EC269F53ABADF5A",
-      "date": "2025-01-30T20:09:41.000Z",
-      "name": "fixNFTokenPageLinks",
-      "rippled_version": "2.3.0",
-      "deprecated": false
-    },
-    {
-      "id": "EE3CF852F0506782D05E65D49E5DCC3D16D50898CD1B646BAE274863401CC3CE",
-      "ledger_index": 94166785,
-      "tx_hash": "E74C0196A9D4F193DD2A1DB5CCC5E37D3D43A21E2CB6185F6797E9BF2EDBE36C",
-      "date": "2025-02-15T16:33:20.000Z",
-      "name": "NFTokenMintOffer",
-      "rippled_version": "2.3.0",
-      "deprecated": false
-    },
-    {
-      "id": "31E0DA76FB8FB527CADCDF0E61CB9C94120966328EFA9DCA202135BAF319C0BA",
-      "ledger_index": 93815809,
-      "tx_hash": "6D325D5EFF8230F1FECA3EE6418C9678637F3F56B0CA247013F70B3BDCFE75C8",
-      "date": "2025-01-30T21:31:41.000Z",
-      "name": "fixReducedOffersV2",
-      "rippled_version": "2.3.0",
-      "deprecated": false
-    },
-    {
-      "id": "1CB67D082CF7D9102412D34258CEDB400E659352D3B207348889297A6D90F5EF",
-      "ledger_index": 98615297,
-      "tx_hash": "182C9331AB917370E9799C9A2946DE15F3E41D81522FBB55A1508829F8933A16",
-      "date": "2025-09-04T03:55:30.000Z",
-      "name": "Credentials",
-      "rippled_version": "2.3.0",
-      "deprecated": false
-    },
-    {
-      "id": "763C37B352BE8C7A04E810F8E462644C45AFEAD624BF3894A08E5C917CF9FF39",
-      "ledger_index": 93814529,
-      "tx_hash": "606FA84C4BA30F67582C11A39BBFC11A9D994E114CD515E9F63FC7D8701A8ED9",
-      "date": "2025-01-30T20:09:41.000Z",
-      "name": "fixEnforceNFTokenTrustline",
-      "rippled_version": "2.3.0",
+      "id": "8CC0774A3BF66D1D22E76BBDA8E8A232E6B6313834301B3B23E8601196AE6455",
+      "ledger_index": 86795265,
+      "tx_hash": "75F52BB86416717288999523063D54E24290EFEA2E99DF78E80A12BD1C8FAC99",
+      "date": "2024-03-22T20:11:41.000Z",
+      "name": "AMM",
+      "rippled_version": "1.12.0",
       "deprecated": false
     },
     {
@@ -229,120 +22,21 @@
       "deprecated": false
     },
     {
-      "id": "1E7ED950F2F13C4F8E2A54103B74D57D5D298FFDBD005936164EE9E6484C438C",
-      "ledger_index": 93815809,
-      "tx_hash": "71D5031A5BD927BDFE424E51699E69F2784097D615D0852BF20C168BA9B5EA76",
-      "date": "2025-01-30T21:31:41.000Z",
-      "name": "fixAMMv1_2",
-      "rippled_version": "2.3.0",
+      "id": "98DECF327BF79997AEC178323AD51A830E457BFC6D454DAF3E46E5EC42DC619F",
+      "ledger_index": 77310209,
+      "tx_hash": "4C8546305583F72E056120B136EB251E7F45E8DFAAE65FDA33B22181A9CA4557",
+      "date": "2023-01-23T13:09:40.000Z",
+      "name": "CheckCashMakesTrustLine",
+      "rippled_version": "1.8.0",
       "deprecated": false
     },
     {
-      "id": "96FD2F293A519AE1DB6F8BED23E4AD9119342DA7CB6BAFD00953D16C54205D8B",
-      "ledger_index": 91831297,
-      "tx_hash": "05D03F7BF08BF4A915483F7B10EAC7016034656A54A8A6AD4A49A9AD362764A1",
-      "date": "2024-11-02T04:59:10.000Z",
-      "name": "PriceOracle",
-      "rippled_version": "2.2.0",
-      "deprecated": false
-    },
-    {
-      "id": "7BB62DC13EC72B775091E9C71BF8CF97E122647693B50C5E87A80DFD6FCFAC50",
-      "ledger_index": 91038721,
-      "tx_hash": "C7A9804E1F499ABBF38D791BAD25B1479DB1CEA4E9B6C5C08D6D4EF13F41E171",
-      "date": "2024-09-27T16:58:32.000Z",
-      "name": "fixPreviousTxnID",
-      "rippled_version": "2.2.0",
-      "deprecated": false
-    },
-    {
-      "id": "755C971C29971C9F20C6F080F2ED96F87884E40AD19554A5EBECDCEC8A1F77FE",
-      "ledger_index": 91038721,
-      "tx_hash": "A858AE8832981D77A4C5038D633CC9CBD54C9764BD2A3F8CA174E02D1736F472",
-      "date": "2024-09-27T16:58:32.000Z",
-      "name": "fixEmptyDID",
-      "rippled_version": "2.2.0",
-      "deprecated": false
-    },
-    {
-      "id": "35291ADD2D79EB6991343BDA0912269C817D0F094B02226C1C14AD2858962ED4",
-      "ledger_index": 90967553,
-      "tx_hash": "8C8F5566464097BF1BAF7C645BB9E1762986844A052BBA3B9769F6564EEFAB71",
-      "date": "2024-09-24T12:18:31.000Z",
-      "name": "fixAMMv1_1",
-      "rippled_version": "2.2.0",
-      "deprecated": false
-    },
-    {
-      "id": "12523DF04B553A0B1AD74F42DDB741DE8DC06A03FC089A0EF197E2A87F1D8107",
-      "ledger_index": 87232257,
-      "tx_hash": "64144409D991726D108B89D79F9305438D61928A322EF1CD14DC3A5F24CE64BC",
-      "date": "2024-04-11T07:41:50.000Z",
-      "name": "fixAMMOverflowOffer",
-      "rippled_version": "2.1.1",
-      "deprecated": false
-    },
-    {
-      "id": "C393B3AEEBF575E475F0C60D5E4241B2070CC4D0EB6C4846B1A07508FAEFC485",
-      "ledger_index": 87172097,
-      "tx_hash": "EC67D9DF8D06067A76E8F8F43BC036B5E0267568F8D92624A658AC01A8186235",
-      "date": "2024-04-08T15:27:52.000Z",
-      "name": "fixInnerObjTemplate",
-      "rippled_version": "2.1.0",
-      "deprecated": false
-    },
-    {
-      "id": "03BDC0099C4E14163ADA272C1B6F6FABB448CC3E51F522F978041E4B57D9158C",
-      "ledger_index": 87259137,
-      "tx_hash": "D708CF1799A27CB982F16FCE4762DD12738737A61E5850480BA51400280E06C4",
-      "date": "2024-04-12T12:21:20.000Z",
-      "name": "fixNFTokenReserve",
-      "rippled_version": "2.1.0",
-      "deprecated": false
-    },
-    {
-      "id": "DB432C3A09D9D5DFC7859F39AE5FF767ABC59AED0A9FB441E83B814D8946C109",
-      "ledger_index": 91778561,
-      "tx_hash": "7239CF04E6E1EEC606269135DA3C916B82D4B010F5315E7AEB3D5A3B6B5B343D",
-      "date": "2024-10-30T19:57:10.000Z",
-      "name": "DID",
-      "rippled_version": "2.0.0",
-      "deprecated": false
-    },
-    {
-      "id": "15D61F0C6DB6A2F86BCF96F1E2444FEC54E705923339EC175BD3E517C8B3FF91",
-      "ledger_index": 87236609,
-      "tx_hash": "50286B4B9C95331A48D3AD517E1FD3299308C6B696C85E096A73A445E9EB1BFB",
-      "date": "2024-04-11T12:19:50.000Z",
-      "name": "fixDisallowIncomingV1",
-      "rippled_version": "2.0.0",
-      "deprecated": false
-    },
-    {
-      "id": "3318EA0CF0755AF15DAC19F2B5C5BCBFF4B78BDD57609ACCAABE2C41309B051A",
-      "ledger_index": 87236609,
-      "tx_hash": "3209D6B66D375C23EEBE7C3DD3058B361427148D80C570B8E791D4C76555FA7B",
-      "date": "2024-04-11T12:19:50.000Z",
-      "name": "fixFillOrKill",
-      "rippled_version": "2.0.0",
-      "deprecated": false
-    },
-    {
-      "id": "8CC0774A3BF66D1D22E76BBDA8E8A232E6B6313834301B3B23E8601196AE6455",
-      "ledger_index": 86795265,
-      "tx_hash": "75F52BB86416717288999523063D54E24290EFEA2E99DF78E80A12BD1C8FAC99",
-      "date": "2024-03-22T20:11:41.000Z",
-      "name": "AMM",
-      "rippled_version": "1.12.0",
-      "deprecated": false
-    },
-    {
-      "id": "27CD95EE8E1E5A537FF2F89B6CEB7C622E78E9374EBD7DCBEDFAE21CD6F16E0A",
-      "ledger_index": 84145409,
-      "tx_hash": "87723D9D01AFAD8E55C944D7D1598969A8FBD852FCACAE361A40CBF5D4CB3BB1",
-      "date": "2023-11-24T22:24:21.000Z",
-      "name": "fixReducedOffersV1",
-      "rippled_version": "1.12.0",
+      "id": "157D2D480E006395B76F948E3E07A45A05FE10230D88A7993C71F97AE4B1F2D1",
+      "ledger_index": 56219905,
+      "tx_hash": "D88F2DCDFB10023F9F6CBA8DF34C18E321D655CAC8FDB962387A5DB1540242A6",
+      "date": "2020-06-18T00:23:20.000Z",
+      "name": "Checks",
+      "rippled_version": "0.90.0",
       "deprecated": false
     },
     {
@@ -355,30 +49,78 @@
       "deprecated": false
     },
     {
-      "id": "AE35ABDEFBDE520372B31C957020B34A7A4A9DC3115A69803A44016477C84D6E",
-      "ledger_index": 84206081,
-      "tx_hash": "CA4562711E4679FE9317DD767871E90A404C7A8B84FAFD35EC2CF0231F1F6DAF",
-      "date": "2023-11-27T14:44:30.000Z",
-      "name": "fixNFTokenRemint",
-      "rippled_version": "1.11.0",
+      "id": "1CB67D082CF7D9102412D34258CEDB400E659352D3B207348889297A6D90F5EF",
+      "ledger_index": 98615297,
+      "tx_hash": "182C9331AB917370E9799C9A2946DE15F3E41D81522FBB55A1508829F8933A16",
+      "date": "2025-09-04T03:55:30.000Z",
+      "name": "Credentials",
+      "rippled_version": "2.3.0",
       "deprecated": false
     },
     {
-      "id": "F1ED6B4A411D8B872E65B9DCB4C8B100375B0DD3D62D07192E011D6D7F339013",
-      "ledger_index": 81986305,
-      "tx_hash": "4F4C05142CA1DE257CD86513086F0C99FAF06D80932377C6B6C02B3D09623A43",
-      "date": "2023-08-21T05:59:11.000Z",
-      "name": "fixTrustLinesToSelf",
-      "rippled_version": "1.10.0",
+      "id": "1562511F573A19AE9BD103B5D6B9E01B3B46805AEC5D3C4805C902B514399146",
+      "ledger_index": 26718721,
+      "tx_hash": "2ADDE791F38385F165EB656228BB117F20D9E8215C31CC9A6589936C1581A207",
+      "date": "2017-01-03T22:47:40.000Z",
+      "name": "CryptoConditions",
+      "rippled_version": "0.50.0",
+      "deprecated": true
+    },
+    {
+      "id": "86E83A7D2ECE3AD5FA87AB2195AE015C950469ABF0B72EAACED318F74886AE90",
+      "name": "CryptoConditionsSuite",
+      "rippled_version": "0.60.0",
+      "deprecated": false,
+      "threshold": "28/35",
+      "consensus": "0.00%",
+      "voted": {
+        "count": 0,
+        "validators": []
+      }
+    },
+    {
+      "id": "DB432C3A09D9D5DFC7859F39AE5FF767ABC59AED0A9FB441E83B814D8946C109",
+      "ledger_index": 91778561,
+      "tx_hash": "7239CF04E6E1EEC606269135DA3C916B82D4B010F5315E7AEB3D5A3B6B5B343D",
+      "date": "2024-10-30T19:57:10.000Z",
+      "name": "DID",
+      "rippled_version": "2.0.0",
       "deprecated": false
     },
     {
-      "id": "93E516234E35E08CA689FA33A6D38E103881F8DCB53023F728C307AA89D515A7",
-      "ledger_index": 86860289,
-      "tx_hash": "4B6047F84B959B64FDD10E22D9E7CCC1EA0D228387462E8FF975B17F7C779021",
-      "date": "2024-03-25T17:51:32.000Z",
-      "name": "XRPFees",
-      "rippled_version": "1.10.0",
+      "id": "DAF3A6EB04FA5DC51E8E4F23E9B7022B693EFA636F23F22664746C77B5786B23",
+      "ledger_index": 95893505,
+      "tx_hash": "976281D793337FF5377A36409F2A1432DADAB64DB5064E12E71B1AC491EA3021",
+      "date": "2025-05-04T12:09:01.000Z",
+      "name": "DeepFreeze",
+      "rippled_version": "2.4.0",
+      "deprecated": false
+    },
+    {
+      "id": "30CD365592B8EE40489BA01AE2F7555CAC9C983145871DC82A42A31CF5BAE7D9",
+      "ledger_index": 55313921,
+      "tx_hash": "47B90519D31E0CB376B5FEE5D9359FA65EEEB2289F1952F2A3EB71D623B945DE",
+      "date": "2020-05-08T04:29:30.000Z",
+      "name": "DeletableAccounts",
+      "rippled_version": "1.4.0",
+      "deprecated": false
+    },
+    {
+      "id": "F64E1EABBE79D55B3BB82020516CEC2C582A98A6BFE20FBE9BB6A0D233418064",
+      "ledger_index": 37753345,
+      "tx_hash": "902C51270B918B40CD23A622E18D48B4ABB86F0FF4E84D72D9E1907BF3BD4B25",
+      "date": "2018-04-06T01:44:42.000Z",
+      "name": "DepositAuth",
+      "rippled_version": "0.90.0",
+      "deprecated": false
+    },
+    {
+      "id": "3CBC5C4E630A1B82380295CDA84B32B49DD066602E74E39B85EF64137FA65194",
+      "ledger_index": 42114049,
+      "tx_hash": "AD27403CB840AE67CADDB084BC54249D7BD1B403885819B39CCF723DC671F927",
+      "date": "2018-10-09T20:01:11.000Z",
+      "name": "DepositPreauth",
+      "rippled_version": "1.1.0",
       "deprecated": false
     },
     {
@@ -391,49 +133,31 @@
       "deprecated": false
     },
     {
-      "id": "75A7E01C505DD5A179DFE3E000A9B6F1EDDEB55A12F95579A23E15B15DC8BE5A",
-      "ledger_index": 81986305,
-      "tx_hash": "65B8A4068B20696A866A07E5668B2AEB0451564E13B79421356FB962EC9A536B",
-      "date": "2023-08-21T05:59:11.000Z",
-      "name": "ImmediateOfferKilled",
-      "rippled_version": "1.10.0",
+      "id": "C1CE18F2A268E6A849C27B3DE485006771B4C01B2FCEC4F18356FE92ECD6BB74",
+      "ledger_index": 96724737,
+      "tx_hash": "CB5D27363B103D74F4018B5099EF9AD818AEB3634E8692D67F9FDF3CBBA778F5",
+      "date": "2025-06-11T00:13:50.000Z",
+      "name": "DynamicNFT",
+      "rippled_version": "2.4.0",
       "deprecated": false
     },
     {
-      "id": "2E2FB9CF8A44EB80F4694D38AADAE9B8B7ADAFD2F092E10068E61C98C4F092B0",
-      "ledger_index": 81986305,
-      "tx_hash": "EFE82B7155CE5B766AF343D98DAE6662C2713C99E760D610370D02338881B2F3",
-      "date": "2023-08-21T05:59:11.000Z",
-      "name": "fixUniversalNumber",
-      "rippled_version": "1.10.0",
-      "deprecated": false
+      "id": "DC9CA96AEA1DCF83E527D1AFC916EFAF5D27388ECA4060A88817C1238CAEE0BF",
+      "ledger_index": 31054081,
+      "tx_hash": "17593B03F7D3283966F3C0ACAF4984F26E9D884C9A202097DAED0523908E76C6",
+      "date": "2017-07-07T05:42:12.000Z",
+      "name": "EnforceInvariants",
+      "rippled_version": "0.70.0",
+      "deprecated": true
     },
     {
-      "id": "73761231F7F3D94EC3D8C63D91BDD0D89045C6F71B917D1925C01253515A6669",
-      "ledger_index": 81986305,
-      "tx_hash": "3AB0892CAB29F049B9D9E5D522701FD01469D0B97080626F8DD4B489D0B8784E",
-      "date": "2023-08-21T05:59:11.000Z",
-      "name": "fixNonFungibleTokensV1_2",
-      "rippled_version": "1.10.0",
-      "deprecated": false
-    },
-    {
-      "id": "DF8B4536989BDACE3F934F29423848B9F1D76D09BE6A1FCFE7E7F06AA26ABEAD",
-      "ledger_index": 75348737,
-      "tx_hash": "2A67DB4AC65D688281B76334C4B52038FD56931694A6DD873B5CCD9B970AD57C",
-      "date": "2022-10-27T16:09:30.000Z",
-      "name": "fixRemoveNFTokenAutoTrustLine",
-      "rippled_version": "1.9.4",
-      "deprecated": false
-    },
-    {
-      "id": "32A122F1352A4C7B3A6D790362CC34749C5E57FCE896377BFDC6CCD14F6CD627",
-      "ledger_index": 75443457,
-      "tx_hash": "251242639A640CD9287A14A476E7F7C20BA009FDE410570926BAAF29AA05CEDE",
-      "date": "2022-10-31T20:50:50.000Z",
-      "name": "NonFungibleTokensV1_1",
-      "rippled_version": "1.9.2",
-      "deprecated": false
+      "id": "07D43DCE529B15A10827E5E04943B496762F9A88E3268269D69C44BE49E21104",
+      "ledger_index": 28685313,
+      "tx_hash": "C581E0A3F3832FFFEEB13C497658F475566BD7695B0BBA531A774E6739801515",
+      "date": "2017-03-31T06:27:20.000Z",
+      "name": "Escrow",
+      "rippled_version": "0.60.0",
+      "deprecated": true
     },
     {
       "id": "B2A4DB846F0891BF2C76AB2F2ACC8F5B4EC64437135C6E56F3F859DE5FFD5856",
@@ -445,39 +169,30 @@
       "deprecated": false
     },
     {
-      "id": "98DECF327BF79997AEC178323AD51A830E457BFC6D454DAF3E46E5EC42DC619F",
-      "ledger_index": 77310209,
-      "tx_hash": "4C8546305583F72E056120B136EB251E7F45E8DFAAE65FDA33B22181A9CA4557",
-      "date": "2023-01-23T13:09:40.000Z",
-      "name": "CheckCashMakesTrustLine",
-      "rippled_version": "1.8.0",
+      "id": "42426C4D4F1009EE67080A9B7965B44656D7714D104A72F9B4369F97ABF044EE",
+      "ledger_index": 21225473,
+      "tx_hash": "5B1F1E8E791A9C243DD728680F108FEF1F28F21BA3B202B8F66E7833CA71D3C3",
+      "date": "2016-05-19T16:44:51.000Z",
+      "name": "FeeEscalation",
+      "rippled_version": "0.31.0",
+      "deprecated": true
+    },
+    {
+      "id": "740352F2412A9909880C23A559FCECEDA3BE2126FED62FC7660D628A06927F11",
+      "ledger_index": 24970753,
+      "tx_hash": "C06CE3CABA3907389E4DD296C5F31C73B1548CC20BD7B83416C78CD7D4CD38FC",
+      "date": "2016-10-21T19:47:22.000Z",
+      "name": "Flow",
+      "rippled_version": "0.33.0",
       "deprecated": false
     },
     {
-      "id": "B4E4F5D2D6FB84DF7399960A732309C9FD530EAE5941838160042833625A6076",
-      "ledger_index": 67849217,
-      "tx_hash": "1500FADB73E7148191216C53040990E829C7110788B26E7F3246CB3660769EBA",
-      "date": "2021-11-21T18:38:51.000Z",
-      "name": "NegativeUNL",
-      "rippled_version": "1.7.3",
-      "deprecated": false
-    },
-    {
-      "id": "B6B3EEDC0267AB50491FDC450A398AF30DBCD977CECED8BEF2499CAB5DAC19E2",
-      "ledger_index": 67784193,
-      "tx_hash": "1F37BA0502576DD7B5464F47641FA95DEB55735EC2663269DFD47810505478E7",
-      "date": "2021-11-18T17:31:01.000Z",
-      "name": "fixRmSmallIncreasedQOffers",
-      "rippled_version": "1.7.2",
-      "deprecated": false
-    },
-    {
-      "id": "955DF3FA5891195A9DAEFA1DDC6BB244B545DDE1BAA84CBB25D5F12A8DA68A0C",
-      "ledger_index": 67785985,
-      "tx_hash": "111B32EDADDE916206E7315FBEE2DA1521B229F207F65DD314829F13C8D9CA36",
-      "date": "2021-11-18T19:30:22.000Z",
-      "name": "TicketBatch",
-      "rippled_version": "1.7.0",
+      "id": "3012E8230864E95A58C60FD61430D7E1B4D3353195F2981DC12B0C7C0950FFAC",
+      "ledger_index": 57286657,
+      "tx_hash": "44C4B040448D89B6C5A5DEC97C17FEDC2E590BA094BC7DB63B7FDC888B9ED78F",
+      "date": "2020-08-04T16:50:01.000Z",
+      "name": "FlowCross",
+      "rippled_version": "0.70.0",
       "deprecated": false
     },
     {
@@ -486,15 +201,6 @@
       "tx_hash": "1C3D3BD2AFDAF326EBFEA54579A89B024856609DB4310F7140086AAB262D09A1",
       "date": "2021-11-11T23:25:10.000Z",
       "name": "FlowSortStrands",
-      "rippled_version": "1.7.0",
-      "deprecated": false
-    },
-    {
-      "id": "452F5906C46D46F407883344BFDD90E672B672C5E9943DB4891E3A34FEEEB9DB",
-      "ledger_index": 67639553,
-      "tx_hash": "AFF17321A012C756B64FCC3BA0FDF79109F28E244D838A28D5AE8A0384C7C532",
-      "date": "2021-11-11T23:08:00.000Z",
-      "name": "fixSTAmountCanonicalize",
       "rippled_version": "1.7.0",
       "deprecated": false
     },
@@ -508,30 +214,237 @@
       "deprecated": false
     },
     {
-      "id": "4F46DF03559967AC60F2EB272FEFE3928A7594A45FF774B87A7E540DB0F8F068",
-      "ledger_index": 62759681,
-      "tx_hash": "5B3ACE6CAC9C56D2008410F1B0881A0A4A8866FB99D2C2B2261C86C760DC95EF",
-      "date": "2021-04-08T12:46:31.000Z",
-      "name": "fixAmendmentMajorityCalc",
-      "rippled_version": "1.6.0",
+      "id": "75A7E01C505DD5A179DFE3E000A9B6F1EDDEB55A12F95579A23E15B15DC8BE5A",
+      "ledger_index": 81986305,
+      "tx_hash": "65B8A4068B20696A866A07E5668B2AEB0451564E13B79421356FB962EC9A536B",
+      "date": "2023-08-21T05:59:11.000Z",
+      "name": "ImmediateOfferKilled",
+      "rippled_version": "1.10.0",
       "deprecated": false
     },
     {
-      "id": "25BA44241B3BD880770BFA4DA21C7180576831855368CBEC6A3154FDE4A7676E",
-      "ledger_index": 62759681,
-      "tx_hash": "DA59F10201D651B544F65896330AFACA8CA4198904265AD279D56781F655FAFB",
-      "date": "2021-04-08T12:46:31.000Z",
-      "name": "fix1781",
-      "rippled_version": "1.6.0",
+      "id": "565B90CA1AB2B9D42208ED10884188C64F9E19083DECB9634AAF06EB03299509",
+      "name": "LendingProtocol",
+      "rippled_version": "3.1.0",
+      "deprecated": false,
+      "threshold": "28/35",
+      "consensus": "25.71%",
+      "voted": {
+        "count": 22,
+        "validators": [
+          {
+            "signing_key": "n9MngHUqEeJXd8cgeEGsjvm9FqQRm4DwhCrTYCtrfnm5FWGFaR6m",
+            "ledger_index": "105511679",
+            "unl": "vl.ripple.com"
+          },
+          {
+            "signing_key": "n9KE55fz1jF3UAgd4Xbq3LyuqriyAWn8Z6YvvnK8hx3Q3qt5KDFa",
+            "ledger_index": "105511679",
+            "unl": false
+          },
+          {
+            "signing_key": "n9JvsY3yhCdsHe3JsVTwvCtvKnchg2eridHLWdBdWf8VkpZSqqS9",
+            "ledger_index": "105511679",
+            "unl": false
+          },
+          {
+            "signing_key": "n9KbTtoS7T5RR9etSGVWKp6HHHXubdd4fGhDRdN3LdH8ZoGkM8yT",
+            "ledger_index": "105511679",
+            "unl": false
+          },
+          {
+            "signing_key": "n9LBTr3b82CHMtpKKatKPZDcBEit1WX27SUVgmt9AJ6NmbxqycEr",
+            "ledger_index": "105511679",
+            "unl": false
+          },
+          {
+            "signing_key": "n94McSJoA9WXm2vENTZyLpvnvrJKonm2yQ57BSdrftgrNVyVeWCQ",
+            "ledger_index": "105511679",
+            "unl": false
+          },
+          {
+            "signing_key": "n9Kqt3dugvfm59VsS5GfvCXcdoXsTkV3f3Vjz51v9ABpMBd2E8uD",
+            "ledger_index": "105511679",
+            "unl": false
+          },
+          {
+            "signing_key": "n9LXvej28fdWTEENpDCvMLKRDqogZPRT6S6k2Lm1SNTLawuR9awV",
+            "ledger_index": "105511679",
+            "unl": false
+          },
+          {
+            "signing_key": "n9MZ7EVGKypqdyNguP31xSqhFqDBF4V5FESLMmLiGrBJ3khP2AzQ",
+            "ledger_index": "105511679",
+            "unl": "vl.ripple.com"
+          },
+          {
+            "signing_key": "n94JBmHVjAFvpH7UA9YSPwUdZjG93LwTVgN4zzZkhRdkVmP71jBz",
+            "ledger_index": "105511679",
+            "unl": "vl.ripple.com"
+          },
+          {
+            "signing_key": "n9LbM9S5jeGopF5J1vBDoGxzV6rNS8K1T5DzhNynkFLqR9N2fywX",
+            "ledger_index": "105511679",
+            "unl": "vl.ripple.com"
+          },
+          {
+            "signing_key": "n9KbSbvD6AEfhw9QarooW8VHn5vrsY3cyuFpAS3duY7Jfdmb2MTG",
+            "ledger_index": "105511679",
+            "unl": false
+          },
+          {
+            "signing_key": "n9LkAv98aaGupypuLMH5ogjJ3rTEX178s9EnmRvmySL9k3cVuxTu",
+            "ledger_index": "105511679",
+            "unl": "vl.ripple.com"
+          },
+          {
+            "signing_key": "n9Liy4QXp1MpwehmdWhsjKgdVesEsSWwVq9tXugRKBDHXGwyeF91",
+            "ledger_index": "105054463",
+            "unl": false
+          },
+          {
+            "signing_key": "n9KkK4BiTTXjeF31KX4fTJkyVtH89ik4apq4wF7sQzqmbqBYcU3H",
+            "ledger_index": "105511679",
+            "unl": "vl.ripple.com"
+          },
+          {
+            "signing_key": "n94NmYJ5BW9VRZiBziUgEjGXQDm1aP16yDPTVzsmipCsA6315b6F",
+            "ledger_index": "105511679",
+            "unl": false
+          },
+          {
+            "signing_key": "n9KToXL6QaiMMDJWEpnJg5yt26nEoftNnkLjaJYLCikdfaveR2hr",
+            "ledger_index": "105511679",
+            "unl": "vl.ripple.com"
+          },
+          {
+            "signing_key": "n9L996F3HA2t8jL4WhRfkaj55zXJmYnQsAiqoPPCu1WjrYy8C6wm",
+            "ledger_index": "105511679",
+            "unl": false
+          },
+          {
+            "signing_key": "n94QdD6ZAz84rgHJvKXGGNPySYTqPqNnWzvrZrrB3JcdESQNtd8z",
+            "ledger_index": "105511679",
+            "unl": false
+          },
+          {
+            "signing_key": "n9JiXhdJTciGiENZ3xUgo6hGN3ZPpeLSzJiPgwY17exsNxo9yRws",
+            "ledger_index": "105511679",
+            "unl": false
+          },
+          {
+            "signing_key": "n9JgxBLdCHii4xnRNMk7WJhD2qmfJGRvCxmmNNivBZXPRVpeZkH3",
+            "ledger_index": "105511679",
+            "unl": "vl.ripple.com"
+          },
+          {
+            "signing_key": "n9KkB2VrSQuRNF1KpaS7G9i6yz7pinN4XAoREhqKya2aWirjcEXz",
+            "ledger_index": "105511679",
+            "unl": "vl.ripple.com"
+          }
+        ]
+      }
+    },
+    {
+      "id": "950AE2EA4654E47F04AA8739C0B214E242097E802FD372D24047A89AB1F5EC38",
+      "ledger_index": 99226369,
+      "tx_hash": "14853FF2D09D198B576A531C50883C59D71474BA9072C1F5C0ED1DD57882B922",
+      "date": "2025-10-01T13:13:10.000Z",
+      "name": "MPTokensV1",
+      "rippled_version": "2.3.0",
       "deprecated": false
     },
     {
-      "id": "89308AF3B8B10B7192C4E613E1D2E4D9BA64B2EE2D5232402AE82A6A7220D953",
-      "ledger_index": 56691969,
-      "tx_hash": "5F8E9E9B175BB7B95F529BEFE3C84253E78DAF6076078EC450A480C861F6889E",
-      "date": "2020-07-09T05:12:40.000Z",
-      "name": "fixQualityUpperBound",
-      "rippled_version": "1.5.0",
+      "id": "4C97EBA926031A7CF7D7B36FDE3ED66DDA5421192D63DE53FFB46E43B9DC8373",
+      "ledger_index": 22178817,
+      "tx_hash": "168F8B15F643395E59B9977FC99D6310E8708111C85659A9BAF8B9222EEAC5A7",
+      "date": "2016-06-27T23:34:41.000Z",
+      "name": "MultiSign",
+      "rippled_version": "0.31.0",
+      "deprecated": true
+    },
+    {
+      "id": "586480873651E106F1D6339B0C4A8945BA705A777F3F4524626FF1FC07EFE41D",
+      "ledger_index": 46599937,
+      "tx_hash": "C421E1D08EFD78E6B8D06B085F52A34A681D0B51AE62A018527E1B8F54C108FB",
+      "date": "2019-04-17T10:09:00.000Z",
+      "name": "MultiSignReserve",
+      "rippled_version": "1.2.0",
+      "deprecated": false
+    },
+    {
+      "id": "EE3CF852F0506782D05E65D49E5DCC3D16D50898CD1B646BAE274863401CC3CE",
+      "ledger_index": 94166785,
+      "tx_hash": "E74C0196A9D4F193DD2A1DB5CCC5E37D3D43A21E2CB6185F6797E9BF2EDBE36C",
+      "date": "2025-02-15T16:33:20.000Z",
+      "name": "NFTokenMintOffer",
+      "rippled_version": "2.3.0",
+      "deprecated": false
+    },
+    {
+      "id": "B4E4F5D2D6FB84DF7399960A732309C9FD530EAE5941838160042833625A6076",
+      "ledger_index": 67849217,
+      "tx_hash": "1500FADB73E7148191216C53040990E829C7110788B26E7F3246CB3660769EBA",
+      "date": "2021-11-21T18:38:51.000Z",
+      "name": "NegativeUNL",
+      "rippled_version": "1.7.3",
+      "deprecated": false
+    },
+    {
+      "id": "3C43D9A973AA4443EF3FC38E42DD306160FBFFDAB901CD8BAA15D09F2597EB87",
+      "name": "NonFungibleTokensV1",
+      "rippled_version": "1.9.0",
+      "deprecated": false,
+      "threshold": "28/35",
+      "consensus": "0.00%",
+      "voted": {
+        "count": 0,
+        "validators": []
+      }
+    },
+    {
+      "id": "32A122F1352A4C7B3A6D790362CC34749C5E57FCE896377BFDC6CCD14F6CD627",
+      "ledger_index": 75443457,
+      "tx_hash": "251242639A640CD9287A14A476E7F7C20BA009FDE410570926BAAF29AA05CEDE",
+      "date": "2022-10-31T20:50:50.000Z",
+      "name": "NonFungibleTokensV1_1",
+      "rippled_version": "1.9.2",
+      "deprecated": false
+    },
+    {
+      "id": "08DE7D96082187F6E6578530258C77FAABABE4C20474BDB82F04B021F1A68647",
+      "ledger_index": 28685313,
+      "tx_hash": "16135C0B4AB2419B89D4FB4569B8C37FF76B9EF9CE0DD99CCACB5734445AFD7E",
+      "date": "2017-03-31T06:27:20.000Z",
+      "name": "PayChan",
+      "rippled_version": "0.33.0",
+      "deprecated": true
+    },
+    {
+      "id": "677E401A423E3708363A36BA8B3A7D019D21AC5ABD00387BDBEA6BDE4C91247E",
+      "ledger_index": 102328065,
+      "tx_hash": "AE56481023FBF05BE5E6272F5D1E1D7BC5239D0A913B981FBE2E302C389A8002",
+      "date": "2026-02-18T10:58:10.000Z",
+      "name": "PermissionedDEX",
+      "rippled_version": "2.5.0",
+      "deprecated": false
+    },
+    {
+      "id": "A730EB18A9D4BB52502C898589558B4CCEB4BE10044500EE5581137A2E80E849",
+      "ledger_index": 102017793,
+      "tx_hash": "CC30BAB4CDE71E2B07E73AC980D3464F2515E9FBA51489E0B2C89C39D1A51416",
+      "date": "2026-02-04T10:06:41.000Z",
+      "name": "PermissionedDomains",
+      "rippled_version": "2.4.0",
+      "deprecated": false
+    },
+    {
+      "id": "96FD2F293A519AE1DB6F8BED23E4AD9119342DA7CB6BAFD00953D16C54205D8B",
+      "ledger_index": 91831297,
+      "tx_hash": "05D03F7BF08BF4A915483F7B10EAC7016034656A54A8A6AD4A49A9AD362764A1",
+      "date": "2024-11-02T04:59:10.000Z",
+      "name": "PriceOracle",
+      "rippled_version": "2.2.0",
       "deprecated": false
     },
     {
@@ -544,66 +457,303 @@
       "deprecated": false
     },
     {
-      "id": "8F81B066ED20DAECA20DF57187767685EEF3980B228E0667A650BAF24426D3B4",
-      "ledger_index": 55161089,
-      "tx_hash": "74AFEA8C17D25CA883D40F998757CA3B0DB1AC86794335BAA25FF20E00C2C30A",
-      "date": "2020-05-01T08:51:01.000Z",
-      "name": "fixCheckThreading",
-      "rippled_version": "1.4.0",
+      "id": "81BD2619B6B3C8625AC5D0BC01DE17F06C3F0AB95C7C87C93715B87A4FD240D8",
+      "name": "SingleAssetVault",
+      "rippled_version": "3.1.0",
+      "deprecated": false,
+      "threshold": "28/35",
+      "consensus": "28.57%",
+      "voted": {
+        "count": 23,
+        "validators": [
+          {
+            "signing_key": "n9MngHUqEeJXd8cgeEGsjvm9FqQRm4DwhCrTYCtrfnm5FWGFaR6m",
+            "ledger_index": "105511679",
+            "unl": "vl.ripple.com"
+          },
+          {
+            "signing_key": "n9KE55fz1jF3UAgd4Xbq3LyuqriyAWn8Z6YvvnK8hx3Q3qt5KDFa",
+            "ledger_index": "105511679",
+            "unl": false
+          },
+          {
+            "signing_key": "n9KQqPTYJN2qqeNgaqQGNFhJqyiDqxBntp2qbkFsxt9oUqYGXjuc",
+            "ledger_index": "105511679",
+            "unl": false
+          },
+          {
+            "signing_key": "n9JvsY3yhCdsHe3JsVTwvCtvKnchg2eridHLWdBdWf8VkpZSqqS9",
+            "ledger_index": "105511679",
+            "unl": false
+          },
+          {
+            "signing_key": "n9KbTtoS7T5RR9etSGVWKp6HHHXubdd4fGhDRdN3LdH8ZoGkM8yT",
+            "ledger_index": "105511679",
+            "unl": false
+          },
+          {
+            "signing_key": "n94McSJoA9WXm2vENTZyLpvnvrJKonm2yQ57BSdrftgrNVyVeWCQ",
+            "ledger_index": "105511679",
+            "unl": false
+          },
+          {
+            "signing_key": "n9Kqt3dugvfm59VsS5GfvCXcdoXsTkV3f3Vjz51v9ABpMBd2E8uD",
+            "ledger_index": "105511679",
+            "unl": false
+          },
+          {
+            "signing_key": "n9LXvej28fdWTEENpDCvMLKRDqogZPRT6S6k2Lm1SNTLawuR9awV",
+            "ledger_index": "105511679",
+            "unl": false
+          },
+          {
+            "signing_key": "n9MZ7EVGKypqdyNguP31xSqhFqDBF4V5FESLMmLiGrBJ3khP2AzQ",
+            "ledger_index": "105511679",
+            "unl": "vl.ripple.com"
+          },
+          {
+            "signing_key": "n94JBmHVjAFvpH7UA9YSPwUdZjG93LwTVgN4zzZkhRdkVmP71jBz",
+            "ledger_index": "105511679",
+            "unl": "vl.ripple.com"
+          },
+          {
+            "signing_key": "n9LbM9S5jeGopF5J1vBDoGxzV6rNS8K1T5DzhNynkFLqR9N2fywX",
+            "ledger_index": "105511679",
+            "unl": "vl.ripple.com"
+          },
+          {
+            "signing_key": "n9KbSbvD6AEfhw9QarooW8VHn5vrsY3cyuFpAS3duY7Jfdmb2MTG",
+            "ledger_index": "105511679",
+            "unl": false
+          },
+          {
+            "signing_key": "n9LkAv98aaGupypuLMH5ogjJ3rTEX178s9EnmRvmySL9k3cVuxTu",
+            "ledger_index": "105511679",
+            "unl": "vl.ripple.com"
+          },
+          {
+            "signing_key": "n9Liy4QXp1MpwehmdWhsjKgdVesEsSWwVq9tXugRKBDHXGwyeF91",
+            "ledger_index": "105054463",
+            "unl": false
+          },
+          {
+            "signing_key": "n9KkK4BiTTXjeF31KX4fTJkyVtH89ik4apq4wF7sQzqmbqBYcU3H",
+            "ledger_index": "105511679",
+            "unl": "vl.ripple.com"
+          },
+          {
+            "signing_key": "n94NmYJ5BW9VRZiBziUgEjGXQDm1aP16yDPTVzsmipCsA6315b6F",
+            "ledger_index": "105511679",
+            "unl": false
+          },
+          {
+            "signing_key": "n9KToXL6QaiMMDJWEpnJg5yt26nEoftNnkLjaJYLCikdfaveR2hr",
+            "ledger_index": "105511679",
+            "unl": "vl.ripple.com"
+          },
+          {
+            "signing_key": "n9L996F3HA2t8jL4WhRfkaj55zXJmYnQsAiqoPPCu1WjrYy8C6wm",
+            "ledger_index": "105511679",
+            "unl": false
+          },
+          {
+            "signing_key": "n94QdD6ZAz84rgHJvKXGGNPySYTqPqNnWzvrZrrB3JcdESQNtd8z",
+            "ledger_index": "105511679",
+            "unl": false
+          },
+          {
+            "signing_key": "n9JiXhdJTciGiENZ3xUgo6hGN3ZPpeLSzJiPgwY17exsNxo9yRws",
+            "ledger_index": "105511679",
+            "unl": false
+          },
+          {
+            "signing_key": "n9JgxBLdCHii4xnRNMk7WJhD2qmfJGRvCxmmNNivBZXPRVpeZkH3",
+            "ledger_index": "105511679",
+            "unl": "vl.ripple.com"
+          },
+          {
+            "signing_key": "n9KqcU9Qc5k1w8y9mPrTZYy14te3qjo1b1ZiieqC2NggbNrAuLpu",
+            "ledger_index": "105511679",
+            "unl": "vl.ripple.com"
+          },
+          {
+            "signing_key": "n9KkB2VrSQuRNF1KpaS7G9i6yz7pinN4XAoREhqKya2aWirjcEXz",
+            "ledger_index": "105511679",
+            "unl": "vl.ripple.com"
+          }
+        ]
+      }
+    },
+    {
+      "id": "CC5ABAE4F3EC92E94A59B1908C2BE82D2228B6485C00AFF8F22DF930D89C194E",
+      "ledger_index": 34256897,
+      "tx_hash": "6E2309C156EBF94D03B83D282A3914671BF9168FB26463CFECD068C63FFFAB29",
+      "date": "2017-11-14T21:31:02.000Z",
+      "name": "SortedDirectories",
+      "rippled_version": "0.80.0",
+      "deprecated": true
+    },
+    {
+      "id": "532651B4FD58DF8922A49BA101AB3E996E5BFBF95A913B3E392504863E63B164",
+      "ledger_index": 27841793,
+      "tx_hash": "A12430E470BE5C846759EAE3C442FF03374D5D73ECE5815CF4906894B769565E",
+      "date": "2017-02-21T23:02:52.000Z",
+      "name": "TickSize",
+      "rippled_version": "0.50.0",
+      "deprecated": true
+    },
+    {
+      "id": "955DF3FA5891195A9DAEFA1DDC6BB244B545DDE1BAA84CBB25D5F12A8DA68A0C",
+      "ledger_index": 67785985,
+      "tx_hash": "111B32EDADDE916206E7315FBEE2DA1521B229F207F65DD314829F13C8D9CA36",
+      "date": "2021-11-18T19:30:22.000Z",
+      "name": "TicketBatch",
+      "rippled_version": "1.7.0",
       "deprecated": false
     },
     {
-      "id": "621A0B264970359869E3C0363A899909AAB7A887C8B73519E4ECF952D33258A8",
-      "ledger_index": 55161089,
-      "tx_hash": "D2F8E457D08ACB185CDE3BB9BB1989A9052344678566785BACFB9DFDBDEDCF09",
-      "date": "2020-05-01T08:51:01.000Z",
-      "name": "fixPayChanRecipientOwnerDir",
-      "rippled_version": "1.4.0",
+      "id": "138B968F25822EFBF54C00F97031221C47B1EAB8321D93C7C2AEAF85F04EC5DF",
+      "ledger_index": 102204929,
+      "tx_hash": "90A1297408C5F76769626A94242BCBD671E3CCD02ABEF80D92D8C7D7623840D5",
+      "date": "2026-02-12T21:24:40.000Z",
+      "name": "TokenEscrow",
+      "rippled_version": "2.5.0",
       "deprecated": false
     },
     {
-      "id": "30CD365592B8EE40489BA01AE2F7555CAC9C983145871DC82A42A31CF5BAE7D9",
-      "ledger_index": 55313921,
-      "tx_hash": "47B90519D31E0CB376B5FEE5D9359FA65EEEB2289F1952F2A3EB71D623B945DE",
-      "date": "2020-05-08T04:29:30.000Z",
-      "name": "DeletableAccounts",
-      "rippled_version": "1.4.0",
+      "id": "6781F8368C4771B83E8B821D88F580202BCB4228075297B19E4FDC5233F1EFDC",
+      "ledger_index": 22721281,
+      "tx_hash": "0E589DE43C38AED63B64FF3DA87D349A038F1821212D370E403EB304C76D70DF",
+      "date": "2016-07-19T22:10:32.000Z",
+      "name": "TrustSetAuth",
+      "rippled_version": "0.30.0",
+      "deprecated": true
+    },
+    {
+      "id": "C98D98EE9616ACD36E81FDEB8D41D349BF5F1B41DD64A0ABC1FE9AA5EA267E9C",
+      "name": "XChainBridge",
+      "rippled_version": "2.0.0",
+      "deprecated": false,
+      "threshold": "28/35",
+      "consensus": "11.43%",
+      "voted": {
+        "count": 12,
+        "validators": [
+          {
+            "signing_key": "n9MngHUqEeJXd8cgeEGsjvm9FqQRm4DwhCrTYCtrfnm5FWGFaR6m",
+            "ledger_index": "105511679",
+            "unl": "vl.ripple.com"
+          },
+          {
+            "signing_key": "n9KE55fz1jF3UAgd4Xbq3LyuqriyAWn8Z6YvvnK8hx3Q3qt5KDFa",
+            "ledger_index": "105511679",
+            "unl": false
+          },
+          {
+            "signing_key": "n9JvsY3yhCdsHe3JsVTwvCtvKnchg2eridHLWdBdWf8VkpZSqqS9",
+            "ledger_index": "105511679",
+            "unl": false
+          },
+          {
+            "signing_key": "n9Lgkq8mZXY5j4ns6MY2GmTMZjL7C5smsjM3Nmxbzzk5sry9mgD4",
+            "ledger_index": "105511679",
+            "unl": false
+          },
+          {
+            "signing_key": "n9Kqt3dugvfm59VsS5GfvCXcdoXsTkV3f3Vjz51v9ABpMBd2E8uD",
+            "ledger_index": "105511679",
+            "unl": false
+          },
+          {
+            "signing_key": "n9LXvej28fdWTEENpDCvMLKRDqogZPRT6S6k2Lm1SNTLawuR9awV",
+            "ledger_index": "105511679",
+            "unl": false
+          },
+          {
+            "signing_key": "n9LkAv98aaGupypuLMH5ogjJ3rTEX178s9EnmRvmySL9k3cVuxTu",
+            "ledger_index": "105511679",
+            "unl": "vl.ripple.com"
+          },
+          {
+            "signing_key": "n9JiUqAXcHFzNFtdJ9uYeNZsdJTs1LGf4zr98bN7mWHxdtDpijAB",
+            "ledger_index": "105511679",
+            "unl": false
+          },
+          {
+            "signing_key": "n9MSUUgV5hBJGrf2aQyvwMVBzvBNYiSBrsDsDvR88YoTcriQ9XGj",
+            "ledger_index": "105511679",
+            "unl": false
+          },
+          {
+            "signing_key": "n9LvxiHe5wve7yLe1R1MagKboVs5WrWSJMEsXtJrfqtAwCswjKsd",
+            "ledger_index": "105511679",
+            "unl": "vl.ripple.com"
+          },
+          {
+            "signing_key": "n9KAE7DUEB62ZQ3yWzygKWWqsj7ZqchW5rXg63puZA46k7WzGfQu",
+            "ledger_index": "105511679",
+            "unl": "vl.ripple.com"
+          },
+          {
+            "signing_key": "n9LgeaZHS8XBgMrFinacxKNn28mdbknFoP1g1woMJXvtEFoXxivr",
+            "ledger_index": "105511679",
+            "unl": false
+          }
+        ]
+      }
+    },
+    {
+      "id": "93E516234E35E08CA689FA33A6D38E103881F8DCB53023F728C307AA89D515A7",
+      "ledger_index": 86860289,
+      "tx_hash": "4B6047F84B959B64FDD10E22D9E7CCC1EA0D228387462E8FF975B17F7C779021",
+      "date": "2024-03-25T17:51:32.000Z",
+      "name": "XRPFees",
+      "rippled_version": "1.10.0",
       "deprecated": false
     },
     {
-      "id": "C4483A1896170C66C098DEA5B0E024309C60DC960DE5F01CD7AF986AA3D9AD37",
-      "ledger_index": 50428929,
-      "tx_hash": "61096F8B5AFDD8F5BAF7FC7221BA4D1849C4E21B1BA79733E44B12FC8DA6EA20",
-      "date": "2019-10-02T07:37:50.000Z",
-      "name": "fixMasterKeyAsRegularKey",
-      "rippled_version": "1.3.1",
-      "deprecated": false
+      "id": "B4D44CC3111ADD964E846FC57760C8B50FFCD5A82C86A72756F6B058DDDF96AD",
+      "ledger_index": 34256897,
+      "tx_hash": "B1157116DDDDA9D9B1C4A95C029AC335E05DB052CECCC5CA90118A4D46C77C5E",
+      "date": "2017-11-14T21:31:02.000Z",
+      "name": "fix1201",
+      "rippled_version": "0.80.0",
+      "deprecated": true
     },
     {
-      "id": "FBD513F1B893AC765B78F250E6FFA6A11B573209D1842ADC787C850696741288",
-      "ledger_index": 46000641,
-      "tx_hash": "7A80C87F59BCE6973CBDCA91E4DBDB0FC5461D3599A8BC8EAD02FA590A50005D",
-      "date": "2019-03-23T02:27:01.000Z",
-      "name": "fix1578",
-      "rippled_version": "1.2.0",
-      "deprecated": false
+      "id": "E2E6F2866106419B88C50045ACE96368558C345566AC8F2BDF5A5B5587F0E6FA",
+      "ledger_index": 28685313,
+      "tx_hash": "3D20DE5CD19D5966865A7D0405FAC7902A6F623659667D6CB872DF7A94B6EF3F",
+      "date": "2017-03-31T06:27:20.000Z",
+      "name": "fix1368",
+      "rippled_version": "0.60.0",
+      "deprecated": true
     },
     {
-      "id": "2CD5286D8D687E98B41102BDD797198E81EA41DF7BD104E6561FEB104EFF2561",
-      "ledger_index": 46257665,
-      "tx_hash": "C42335E95F1BD2009A2C090EA57BD7FB026AD285B4B85BE15F669BA4F70D11AF",
-      "date": "2019-04-02T21:17:41.000Z",
-      "name": "fixTakerDryOfferRemoval",
-      "rippled_version": "1.2.0",
-      "deprecated": false
+      "id": "42EEA5E28A97824821D4EF97081FE36A54E9593C6E4F20CBAE098C69D2E072DC",
+      "ledger_index": 31053825,
+      "tx_hash": "7EBA3852D111EA19D03469F6870FAAEBF84C64F1B9BAC13B041DDD26E28CA399",
+      "date": "2017-07-07T05:28:10.000Z",
+      "name": "fix1373",
+      "rippled_version": "0.70.0",
+      "deprecated": true
     },
     {
-      "id": "586480873651E106F1D6339B0C4A8945BA705A777F3F4524626FF1FC07EFE41D",
-      "ledger_index": 46599937,
-      "tx_hash": "C421E1D08EFD78E6B8D06B085F52A34A681D0B51AE62A018527E1B8F54C108FB",
-      "date": "2019-04-17T10:09:00.000Z",
-      "name": "MultiSignReserve",
-      "rippled_version": "1.2.0",
+      "id": "6C92211186613F9647A89DFFBAB8F94C99D4C7E956D495270789128569177DA1",
+      "ledger_index": 34256897,
+      "tx_hash": "63F69F59BEFDC1D79DBF1E4060601E05960683AA784926FB74BC55074C4F6647",
+      "date": "2017-11-14T21:31:02.000Z",
+      "name": "fix1512",
+      "rippled_version": "0.80.0",
+      "deprecated": true
+    },
+    {
+      "id": "67A34F2CF55BFC0F93AACD5B281413176FEE195269FA6D95219A2DF738671172",
+      "ledger_index": 37753345,
+      "tx_hash": "57FE540B8B8E2F26CE8B53D1282FEC55E605257E29F5B9EB49E15EA3989FCF6B",
+      "date": "2018-04-06T01:44:42.000Z",
+      "name": "fix1513",
+      "rippled_version": "0.90.0",
       "deprecated": false
     },
     {
@@ -616,101 +766,11 @@
       "deprecated": false
     },
     {
-      "id": "3CBC5C4E630A1B82380295CDA84B32B49DD066602E74E39B85EF64137FA65194",
-      "ledger_index": 42114049,
-      "tx_hash": "AD27403CB840AE67CADDB084BC54249D7BD1B403885819B39CCF723DC671F927",
-      "date": "2018-10-09T20:01:11.000Z",
-      "name": "DepositPreauth",
-      "rippled_version": "1.1.0",
-      "deprecated": false
-    },
-    {
-      "id": "CA7C02118BA27599528543DFE77BA6838D1B0F43B447D4D7F53523CE6A0E9AC2",
-      "ledger_index": 39544065,
-      "tx_hash": "EA6054C9D256657014052F1447216CEA75FFDB1C9342D45EB0F9E372C0F879E6",
-      "date": "2018-06-21T17:37:11.000Z",
-      "name": "fix1543",
-      "rippled_version": "1.0.0",
-      "deprecated": false
-    },
-    {
-      "id": "58BE9B5968C4DA7C59BA900961828B113E5490699B21877DEF9A31E9D0FE5D5F",
-      "ledger_index": 39525377,
-      "tx_hash": "4D218D86A2B33E29F17AA9C25D8DFFEE5D2559F75F7C0B1D016D3F2C2220D3EB",
-      "date": "2018-06-20T22:20:20.000Z",
-      "name": "fix1623",
-      "rippled_version": "1.0.0",
-      "deprecated": false
-    },
-    {
-      "id": "7117E2EC2DBF119CA55181D69819F1999ECEE1A0225A7FD2B9ED47940968479C",
-      "ledger_index": 39498497,
-      "tx_hash": "920AA493E57D991414B614FB3C1D1E2F863211B48129D09BC8CB74C9813C38FC",
-      "date": "2018-06-19T19:14:41.000Z",
-      "name": "fix1571",
-      "rippled_version": "1.0.0",
-      "deprecated": false
-    },
-    {
-      "id": "F64E1EABBE79D55B3BB82020516CEC2C582A98A6BFE20FBE9BB6A0D233418064",
-      "ledger_index": 37753345,
-      "tx_hash": "902C51270B918B40CD23A622E18D48B4ABB86F0FF4E84D72D9E1907BF3BD4B25",
-      "date": "2018-04-06T01:44:42.000Z",
-      "name": "DepositAuth",
-      "rippled_version": "0.90.0",
-      "deprecated": false
-    },
-    {
-      "id": "67A34F2CF55BFC0F93AACD5B281413176FEE195269FA6D95219A2DF738671172",
-      "ledger_index": 37753345,
-      "tx_hash": "57FE540B8B8E2F26CE8B53D1282FEC55E605257E29F5B9EB49E15EA3989FCF6B",
-      "date": "2018-04-06T01:44:42.000Z",
-      "name": "fix1513",
-      "rippled_version": "0.90.0",
-      "deprecated": false
-    },
-    {
-      "id": "157D2D480E006395B76F948E3E07A45A05FE10230D88A7993C71F97AE4B1F2D1",
-      "ledger_index": 56219905,
-      "tx_hash": "D88F2DCDFB10023F9F6CBA8DF34C18E321D655CAC8FDB962387A5DB1540242A6",
-      "date": "2020-06-18T00:23:20.000Z",
-      "name": "Checks",
-      "rippled_version": "0.90.0",
-      "deprecated": false
-    },
-    {
-      "id": "CC5ABAE4F3EC92E94A59B1908C2BE82D2228B6485C00AFF8F22DF930D89C194E",
-      "ledger_index": 34256897,
-      "tx_hash": "6E2309C156EBF94D03B83D282A3914671BF9168FB26463CFECD068C63FFFAB29",
-      "date": "2017-11-14T21:31:02.000Z",
-      "name": "SortedDirectories",
-      "rippled_version": "0.80.0",
-      "deprecated": true
-    },
-    {
       "id": "B9E739B8296B4A1BB29BE990B17D66E21B62A300A909F25AC55C22D6C72E1F9D",
       "ledger_index": 34256897,
       "tx_hash": "97FD0E35654F4B6714010D3CBBAC4038F60D64AD0292693C28A1DF4B796D8469",
       "date": "2017-11-14T21:31:02.000Z",
       "name": "fix1523",
-      "rippled_version": "0.80.0",
-      "deprecated": true
-    },
-    {
-      "id": "B4D44CC3111ADD964E846FC57760C8B50FFCD5A82C86A72756F6B058DDDF96AD",
-      "ledger_index": 34256897,
-      "tx_hash": "B1157116DDDDA9D9B1C4A95C029AC335E05DB052CECCC5CA90118A4D46C77C5E",
-      "date": "2017-11-14T21:31:02.000Z",
-      "name": "fix1201",
-      "rippled_version": "0.80.0",
-      "deprecated": true
-    },
-    {
-      "id": "6C92211186613F9647A89DFFBAB8F94C99D4C7E956D495270789128569177DA1",
-      "ledger_index": 34256897,
-      "tx_hash": "63F69F59BEFDC1D79DBF1E4060601E05960683AA784926FB74BC55074C4F6647",
-      "date": "2017-11-14T21:31:02.000Z",
-      "name": "fix1512",
       "rippled_version": "0.80.0",
       "deprecated": true
     },
@@ -724,112 +784,121 @@
       "deprecated": true
     },
     {
-      "id": "DC9CA96AEA1DCF83E527D1AFC916EFAF5D27388ECA4060A88817C1238CAEE0BF",
-      "ledger_index": 31054081,
-      "tx_hash": "17593B03F7D3283966F3C0ACAF4984F26E9D884C9A202097DAED0523908E76C6",
-      "date": "2017-07-07T05:42:12.000Z",
-      "name": "EnforceInvariants",
-      "rippled_version": "0.70.0",
-      "deprecated": true
-    },
-    {
-      "id": "42EEA5E28A97824821D4EF97081FE36A54E9593C6E4F20CBAE098C69D2E072DC",
-      "ledger_index": 31053825,
-      "tx_hash": "7EBA3852D111EA19D03469F6870FAAEBF84C64F1B9BAC13B041DDD26E28CA399",
-      "date": "2017-07-07T05:28:10.000Z",
-      "name": "fix1373",
-      "rippled_version": "0.70.0",
-      "deprecated": true
-    },
-    {
-      "id": "3012E8230864E95A58C60FD61430D7E1B4D3353195F2981DC12B0C7C0950FFAC",
-      "ledger_index": 57286657,
-      "tx_hash": "44C4B040448D89B6C5A5DEC97C17FEDC2E590BA094BC7DB63B7FDC888B9ED78F",
-      "date": "2020-08-04T16:50:01.000Z",
-      "name": "FlowCross",
-      "rippled_version": "0.70.0",
+      "id": "CA7C02118BA27599528543DFE77BA6838D1B0F43B447D4D7F53523CE6A0E9AC2",
+      "ledger_index": 39544065,
+      "tx_hash": "EA6054C9D256657014052F1447216CEA75FFDB1C9342D45EB0F9E372C0F879E6",
+      "date": "2018-06-21T17:37:11.000Z",
+      "name": "fix1543",
+      "rippled_version": "1.0.0",
       "deprecated": false
     },
     {
-      "id": "E2E6F2866106419B88C50045ACE96368558C345566AC8F2BDF5A5B5587F0E6FA",
-      "ledger_index": 28685313,
-      "tx_hash": "3D20DE5CD19D5966865A7D0405FAC7902A6F623659667D6CB872DF7A94B6EF3F",
-      "date": "2017-03-31T06:27:20.000Z",
-      "name": "fix1368",
-      "rippled_version": "0.60.0",
-      "deprecated": true
-    },
-    {
-      "id": "07D43DCE529B15A10827E5E04943B496762F9A88E3268269D69C44BE49E21104",
-      "ledger_index": 28685313,
-      "tx_hash": "C581E0A3F3832FFFEEB13C497658F475566BD7695B0BBA531A774E6739801515",
-      "date": "2017-03-31T06:27:20.000Z",
-      "name": "Escrow",
-      "rippled_version": "0.60.0",
-      "deprecated": true
-    },
-    {
-      "id": "1562511F573A19AE9BD103B5D6B9E01B3B46805AEC5D3C4805C902B514399146",
-      "ledger_index": 26718721,
-      "tx_hash": "2ADDE791F38385F165EB656228BB117F20D9E8215C31CC9A6589936C1581A207",
-      "date": "2017-01-03T22:47:40.000Z",
-      "name": "CryptoConditions",
-      "rippled_version": "0.50.0",
-      "deprecated": true
-    },
-    {
-      "id": "532651B4FD58DF8922A49BA101AB3E996E5BFBF95A913B3E392504863E63B164",
-      "ledger_index": 27841793,
-      "tx_hash": "A12430E470BE5C846759EAE3C442FF03374D5D73ECE5815CF4906894B769565E",
-      "date": "2017-02-21T23:02:52.000Z",
-      "name": "TickSize",
-      "rippled_version": "0.50.0",
-      "deprecated": true
-    },
-    {
-      "id": "740352F2412A9909880C23A559FCECEDA3BE2126FED62FC7660D628A06927F11",
-      "ledger_index": 24970753,
-      "tx_hash": "C06CE3CABA3907389E4DD296C5F31C73B1548CC20BD7B83416C78CD7D4CD38FC",
-      "date": "2016-10-21T19:47:22.000Z",
-      "name": "Flow",
-      "rippled_version": "0.33.0",
+      "id": "7117E2EC2DBF119CA55181D69819F1999ECEE1A0225A7FD2B9ED47940968479C",
+      "ledger_index": 39498497,
+      "tx_hash": "920AA493E57D991414B614FB3C1D1E2F863211B48129D09BC8CB74C9813C38FC",
+      "date": "2018-06-19T19:14:41.000Z",
+      "name": "fix1571",
+      "rippled_version": "1.0.0",
       "deprecated": false
     },
     {
-      "id": "08DE7D96082187F6E6578530258C77FAABABE4C20474BDB82F04B021F1A68647",
-      "ledger_index": 28685313,
-      "tx_hash": "16135C0B4AB2419B89D4FB4569B8C37FF76B9EF9CE0DD99CCACB5734445AFD7E",
-      "date": "2017-03-31T06:27:20.000Z",
-      "name": "PayChan",
-      "rippled_version": "0.33.0",
-      "deprecated": true
+      "id": "FBD513F1B893AC765B78F250E6FFA6A11B573209D1842ADC787C850696741288",
+      "ledger_index": 46000641,
+      "tx_hash": "7A80C87F59BCE6973CBDCA91E4DBDB0FC5461D3599A8BC8EAD02FA590A50005D",
+      "date": "2019-03-23T02:27:01.000Z",
+      "name": "fix1578",
+      "rippled_version": "1.2.0",
+      "deprecated": false
     },
     {
-      "id": "4C97EBA926031A7CF7D7B36FDE3ED66DDA5421192D63DE53FFB46E43B9DC8373",
-      "ledger_index": 22178817,
-      "tx_hash": "168F8B15F643395E59B9977FC99D6310E8708111C85659A9BAF8B9222EEAC5A7",
-      "date": "2016-06-27T23:34:41.000Z",
-      "name": "MultiSign",
-      "rippled_version": "0.31.0",
-      "deprecated": true
+      "id": "58BE9B5968C4DA7C59BA900961828B113E5490699B21877DEF9A31E9D0FE5D5F",
+      "ledger_index": 39525377,
+      "tx_hash": "4D218D86A2B33E29F17AA9C25D8DFFEE5D2559F75F7C0B1D016D3F2C2220D3EB",
+      "date": "2018-06-20T22:20:20.000Z",
+      "name": "fix1623",
+      "rippled_version": "1.0.0",
+      "deprecated": false
     },
     {
-      "id": "42426C4D4F1009EE67080A9B7965B44656D7714D104A72F9B4369F97ABF044EE",
-      "ledger_index": 21225473,
-      "tx_hash": "5B1F1E8E791A9C243DD728680F108FEF1F28F21BA3B202B8F66E7833CA71D3C3",
-      "date": "2016-05-19T16:44:51.000Z",
-      "name": "FeeEscalation",
-      "rippled_version": "0.31.0",
-      "deprecated": true
+      "id": "25BA44241B3BD880770BFA4DA21C7180576831855368CBEC6A3154FDE4A7676E",
+      "ledger_index": 62759681,
+      "tx_hash": "DA59F10201D651B544F65896330AFACA8CA4198904265AD279D56781F655FAFB",
+      "date": "2021-04-08T12:46:31.000Z",
+      "name": "fix1781",
+      "rippled_version": "1.6.0",
+      "deprecated": false
     },
     {
-      "id": "6781F8368C4771B83E8B821D88F580202BCB4228075297B19E4FDC5233F1EFDC",
-      "ledger_index": 22721281,
-      "tx_hash": "0E589DE43C38AED63B64FF3DA87D349A038F1821212D370E403EB304C76D70DF",
-      "date": "2016-07-19T22:10:32.000Z",
-      "name": "TrustSetAuth",
-      "rippled_version": "0.30.0",
-      "deprecated": true
+      "id": "5E9586DB3D765B4C5794658FB6BB385071E9838DF4016027E6E26820C8526724",
+      "ledger_index": 101852417,
+      "tx_hash": "BF67E97DE11F775E9AEEBF3C7D1D20E5D16A35A0F27C2F4CBAF89C4AF2F9FB76",
+      "date": "2026-01-27T22:20:10.000Z",
+      "name": "fixAMMClawbackRounding",
+      "rippled_version": "3.0.0",
+      "deprecated": false
+    },
+    {
+      "id": "12523DF04B553A0B1AD74F42DDB741DE8DC06A03FC089A0EF197E2A87F1D8107",
+      "ledger_index": 87232257,
+      "tx_hash": "64144409D991726D108B89D79F9305438D61928A322EF1CD14DC3A5F24CE64BC",
+      "date": "2024-04-11T07:41:50.000Z",
+      "name": "fixAMMOverflowOffer",
+      "rippled_version": "2.1.1",
+      "deprecated": false
+    },
+    {
+      "id": "35291ADD2D79EB6991343BDA0912269C817D0F094B02226C1C14AD2858962ED4",
+      "ledger_index": 90967553,
+      "tx_hash": "8C8F5566464097BF1BAF7C645BB9E1762986844A052BBA3B9769F6564EEFAB71",
+      "date": "2024-09-24T12:18:31.000Z",
+      "name": "fixAMMv1_1",
+      "rippled_version": "2.2.0",
+      "deprecated": false
+    },
+    {
+      "id": "1E7ED950F2F13C4F8E2A54103B74D57D5D298FFDBD005936164EE9E6484C438C",
+      "ledger_index": 93815809,
+      "tx_hash": "71D5031A5BD927BDFE424E51699E69F2784097D615D0852BF20C168BA9B5EA76",
+      "date": "2025-01-30T21:31:41.000Z",
+      "name": "fixAMMv1_2",
+      "rippled_version": "2.3.0",
+      "deprecated": false
+    },
+    {
+      "id": "7CA70A7674A26FA517412858659EBC7EDEEF7D2D608824464E6FDEFD06854E14",
+      "ledger_index": 98491905,
+      "tx_hash": "A695CB5E52B1998193AF044CEDB05C1A68EB7F4F811482C85442E8E63EDA4026",
+      "date": "2025-08-29T14:50:31.000Z",
+      "name": "fixAMMv1_3",
+      "rippled_version": "2.5.0",
+      "deprecated": false
+    },
+    {
+      "id": "4F46DF03559967AC60F2EB272FEFE3928A7594A45FF774B87A7E540DB0F8F068",
+      "ledger_index": 62759681,
+      "tx_hash": "5B3ACE6CAC9C56D2008410F1B0881A0A4A8866FB99D2C2B2261C86C760DC95EF",
+      "date": "2021-04-08T12:46:31.000Z",
+      "name": "fixAmendmentMajorityCalc",
+      "rippled_version": "1.6.0",
+      "deprecated": false
+    },
+    {
+      "id": "8F81B066ED20DAECA20DF57187767685EEF3980B228E0667A650BAF24426D3B4",
+      "ledger_index": 55161089,
+      "tx_hash": "74AFEA8C17D25CA883D40F998757CA3B0DB1AC86794335BAA25FF20E00C2C30A",
+      "date": "2020-05-01T08:51:01.000Z",
+      "name": "fixCheckThreading",
+      "rippled_version": "1.4.0",
+      "deprecated": false
+    },
+    {
+      "id": "303ACB16CF8DBD3B5C34F131A9D19A7DE01AE05F480A8A682B869D1B4AAC8CFC",
+      "ledger_index": 104507137,
+      "tx_hash": "C8ADF2BC866F9C81C3ED020F51D437CD4FC8E2588EC815AD44C870AD77DD6227",
+      "date": "2026-05-27T03:51:20.000Z",
+      "name": "fixCleanup3_1_3",
+      "rippled_version": "3.1.3",
+      "deprecated": false
     },
     {
       "id": "21B8D2F76F68E11E9C077A43BBBC394136E9987E99DDB73966DD68419467E431",
@@ -837,608 +906,275 @@
       "rippled_version": "3.2.0",
       "deprecated": false,
       "threshold": "28/35",
-      "consensus": "62.86%",
+      "consensus": "65.71%",
       "voted": {
-        "count": 26,
+        "count": 27,
         "validators": [
           {
-            "signing_key": "n9KbTtoS7T5RR9etSGVWKp6HHHXubdd4fGhDRdN3LdH8ZoGkM8yT",
-            "ledger_index": "105484287",
-            "unl": false
-          },
-          {
-            "signing_key": "n9M5q9FaYgrBYSU5TuV3tATpy1DuAFKdtdjufDAzWUGXLKr3Trfq",
-            "ledger_index": "105484287",
-            "unl": "vl.ripple.com"
-          },
-          {
             "signing_key": "n9MngHUqEeJXd8cgeEGsjvm9FqQRm4DwhCrTYCtrfnm5FWGFaR6m",
-            "ledger_index": "105484287",
-            "unl": "vl.ripple.com"
-          },
-          {
-            "signing_key": "n9KRttNtSJ2NHX7P2RkoYpqf2cxhDfkcGCFswarLqHdjjfjPJFJB",
-            "ledger_index": "105484287",
-            "unl": "vl.ripple.com"
-          },
-          {
-            "signing_key": "n9JeA5Q54JhUQYHieb2j7ZTCg9RTBagDkam3UP2kWQxTXfxFkA8R",
-            "ledger_index": "105484287",
-            "unl": "vl.ripple.com"
-          },
-          {
-            "signing_key": "n9LabXG8Vo7SfrUcZudeDCuFvWXW5TXbhUSYwgqmgYMFpUYuMN87",
-            "ledger_index": "105484287",
-            "unl": "vl.ripple.com"
-          },
-          {
-            "signing_key": "n9LbM9S5jeGopF5J1vBDoGxzV6rNS8K1T5DzhNynkFLqR9N2fywX",
-            "ledger_index": "105484287",
-            "unl": "vl.ripple.com"
-          },
-          {
-            "signing_key": "n94rGrfuwvYTS1HEeWboW2nGvAQgVDpiD8id2pLWSHFVggBRpQRE",
-            "ledger_index": "105484287",
+            "ledger_index": "105511679",
             "unl": "vl.ripple.com"
           },
           {
             "signing_key": "n9Jk38y9XCznqiLq53UjREJQbZWnz4Pvmph55GP5ofUPg3RG8eVr",
-            "ledger_index": "105484287",
+            "ledger_index": "105511679",
             "unl": "vl.ripple.com"
+          },
+          {
+            "signing_key": "n9KbTtoS7T5RR9etSGVWKp6HHHXubdd4fGhDRdN3LdH8ZoGkM8yT",
+            "ledger_index": "105511679",
+            "unl": false
           },
           {
             "signing_key": "n9MZ7EVGKypqdyNguP31xSqhFqDBF4V5FESLMmLiGrBJ3khP2AzQ",
-            "ledger_index": "105484287",
+            "ledger_index": "105511679",
             "unl": "vl.ripple.com"
           },
           {
-            "signing_key": "n9Lqr4YZxk7WYRDTBZjjmoAraikLCjAgAswaPaZ6LaGW6Q4Y2eoo",
-            "ledger_index": "105484287",
+            "signing_key": "n9JeA5Q54JhUQYHieb2j7ZTCg9RTBagDkam3UP2kWQxTXfxFkA8R",
+            "ledger_index": "105511679",
             "unl": "vl.ripple.com"
           },
           {
-            "signing_key": "n9LkAv98aaGupypuLMH5ogjJ3rTEX178s9EnmRvmySL9k3cVuxTu",
-            "ledger_index": "105484287",
+            "signing_key": "n9M5q9FaYgrBYSU5TuV3tATpy1DuAFKdtdjufDAzWUGXLKr3Trfq",
+            "ledger_index": "105511679",
             "unl": "vl.ripple.com"
           },
           {
-            "signing_key": "n9KAE7DUEB62ZQ3yWzygKWWqsj7ZqchW5rXg63puZA46k7WzGfQu",
-            "ledger_index": "105484287",
-            "unl": "vl.ripple.com"
-          },
-          {
-            "signing_key": "n9KaxgJv69FucW5kkiaMhCqS6sAR1wUVxpZaZmLGVXxAcAse9YhR",
-            "ledger_index": "105484287",
+            "signing_key": "n9LbM9S5jeGopF5J1vBDoGxzV6rNS8K1T5DzhNynkFLqR9N2fywX",
+            "ledger_index": "105511679",
             "unl": "vl.ripple.com"
           },
           {
             "signing_key": "n9KQ2DVL7QhgovChk81W8idxm7wDsYzXutDMQzwUBKuxb9WTWBVG",
-            "ledger_index": "105484287",
-            "unl": "vl.ripple.com"
-          },
-          {
-            "signing_key": "n9KkK4BiTTXjeF31KX4fTJkyVtH89ik4apq4wF7sQzqmbqBYcU3H",
-            "ledger_index": "105484287",
-            "unl": "vl.ripple.com"
-          },
-          {
-            "signing_key": "n94NmYJ5BW9VRZiBziUgEjGXQDm1aP16yDPTVzsmipCsA6315b6F",
-            "ledger_index": "105484287",
-            "unl": false
-          },
-          {
-            "signing_key": "n9KToXL6QaiMMDJWEpnJg5yt26nEoftNnkLjaJYLCikdfaveR2hr",
-            "ledger_index": "105484287",
-            "unl": "vl.ripple.com"
-          },
-          {
-            "signing_key": "n9MSTcx1fmfyKpaDTtpXucugcqM7yxpaggmwRxcyA3Nr4pE1pN3x",
-            "ledger_index": "105484287",
-            "unl": "vl.ripple.com"
-          },
-          {
-            "signing_key": "n9JiXhdJTciGiENZ3xUgo6hGN3ZPpeLSzJiPgwY17exsNxo9yRws",
-            "ledger_index": "105484287",
-            "unl": false
-          },
-          {
-            "signing_key": "n9MxDjQMr1DkzW3Z5X1guKJq4QNDEeYFPgqGgHfpzerGbHWGZvj4",
-            "ledger_index": "105484287",
-            "unl": "vl.ripple.com"
-          },
-          {
-            "signing_key": "n9LL7K3Ubnob3ExqmgpigL3AgzKKhTaVvnZiXqsvz85VjbY3KqFp",
-            "ledger_index": "105484287",
-            "unl": "vl.ripple.com"
-          },
-          {
-            "signing_key": "n94a894ARPe5RdcaRgdMBB9gG9ukS5mqsd7q2oNmC1NKqtZqEJnb",
-            "ledger_index": "105484287",
-            "unl": "vl.ripple.com"
-          },
-          {
-            "signing_key": "n9KkB2VrSQuRNF1KpaS7G9i6yz7pinN4XAoREhqKya2aWirjcEXz",
-            "ledger_index": "105484287",
-            "unl": "vl.ripple.com"
-          },
-          {
-            "signing_key": "n94fVBYNon41RvGyvvMAMHF1cnKYFDnoe1iweAU2v1Fp7Sm6EV6A",
-            "ledger_index": "105484287",
-            "unl": false
-          },
-          {
-            "signing_key": "n9LY8MFrFKudddAjrs3BZ33SwqCypV4aYqP7sH3VKgaJSz3aJUwL",
-            "ledger_index": "105484287",
-            "unl": "vl.ripple.com"
-          }
-        ]
-      }
-    },
-    {
-      "id": "565B90CA1AB2B9D42208ED10884188C64F9E19083DECB9634AAF06EB03299509",
-      "name": "LendingProtocol",
-      "rippled_version": "3.1.0",
-      "deprecated": false,
-      "threshold": "28/35",
-      "consensus": "25.71%",
-      "voted": {
-        "count": 22,
-        "validators": [
-          {
-            "signing_key": "n9KbTtoS7T5RR9etSGVWKp6HHHXubdd4fGhDRdN3LdH8ZoGkM8yT",
-            "ledger_index": "105484287",
-            "unl": false
-          },
-          {
-            "signing_key": "n9Liy4QXp1MpwehmdWhsjKgdVesEsSWwVq9tXugRKBDHXGwyeF91",
-            "ledger_index": "105054463",
-            "unl": false
-          },
-          {
-            "signing_key": "n9LBTr3b82CHMtpKKatKPZDcBEit1WX27SUVgmt9AJ6NmbxqycEr",
-            "ledger_index": "105484287",
-            "unl": false
-          },
-          {
-            "signing_key": "n9JvsY3yhCdsHe3JsVTwvCtvKnchg2eridHLWdBdWf8VkpZSqqS9",
-            "ledger_index": "105484287",
-            "unl": false
-          },
-          {
-            "signing_key": "n9MngHUqEeJXd8cgeEGsjvm9FqQRm4DwhCrTYCtrfnm5FWGFaR6m",
-            "ledger_index": "105484287",
-            "unl": "vl.ripple.com"
-          },
-          {
-            "signing_key": "n94McSJoA9WXm2vENTZyLpvnvrJKonm2yQ57BSdrftgrNVyVeWCQ",
-            "ledger_index": "105484287",
-            "unl": false
-          },
-          {
-            "signing_key": "n9Kqt3dugvfm59VsS5GfvCXcdoXsTkV3f3Vjz51v9ABpMBd2E8uD",
-            "ledger_index": "105470207",
-            "unl": false
-          },
-          {
-            "signing_key": "n9KE55fz1jF3UAgd4Xbq3LyuqriyAWn8Z6YvvnK8hx3Q3qt5KDFa",
-            "ledger_index": "105484287",
-            "unl": false
-          },
-          {
-            "signing_key": "n9LXvej28fdWTEENpDCvMLKRDqogZPRT6S6k2Lm1SNTLawuR9awV",
-            "ledger_index": "105484287",
-            "unl": false
-          },
-          {
-            "signing_key": "n9LbM9S5jeGopF5J1vBDoGxzV6rNS8K1T5DzhNynkFLqR9N2fywX",
-            "ledger_index": "105484287",
-            "unl": "vl.ripple.com"
-          },
-          {
-            "signing_key": "n9MZ7EVGKypqdyNguP31xSqhFqDBF4V5FESLMmLiGrBJ3khP2AzQ",
-            "ledger_index": "105484287",
+            "ledger_index": "105511679",
             "unl": "vl.ripple.com"
           },
           {
             "signing_key": "n9LkAv98aaGupypuLMH5ogjJ3rTEX178s9EnmRvmySL9k3cVuxTu",
-            "ledger_index": "105484287",
-            "unl": "vl.ripple.com"
-          },
-          {
-            "signing_key": "n94JBmHVjAFvpH7UA9YSPwUdZjG93LwTVgN4zzZkhRdkVmP71jBz",
-            "ledger_index": "105484287",
-            "unl": "vl.ripple.com"
-          },
-          {
-            "signing_key": "n9KkK4BiTTXjeF31KX4fTJkyVtH89ik4apq4wF7sQzqmbqBYcU3H",
-            "ledger_index": "105484287",
-            "unl": "vl.ripple.com"
-          },
-          {
-            "signing_key": "n94NmYJ5BW9VRZiBziUgEjGXQDm1aP16yDPTVzsmipCsA6315b6F",
-            "ledger_index": "105484287",
-            "unl": false
-          },
-          {
-            "signing_key": "n9KToXL6QaiMMDJWEpnJg5yt26nEoftNnkLjaJYLCikdfaveR2hr",
-            "ledger_index": "105484287",
-            "unl": "vl.ripple.com"
-          },
-          {
-            "signing_key": "n9L996F3HA2t8jL4WhRfkaj55zXJmYnQsAiqoPPCu1WjrYy8C6wm",
-            "ledger_index": "105484287",
-            "unl": false
-          },
-          {
-            "signing_key": "n9KbSbvD6AEfhw9QarooW8VHn5vrsY3cyuFpAS3duY7Jfdmb2MTG",
-            "ledger_index": "105484287",
-            "unl": false
-          },
-          {
-            "signing_key": "n94QdD6ZAz84rgHJvKXGGNPySYTqPqNnWzvrZrrB3JcdESQNtd8z",
-            "ledger_index": "105484287",
-            "unl": false
-          },
-          {
-            "signing_key": "n9JiXhdJTciGiENZ3xUgo6hGN3ZPpeLSzJiPgwY17exsNxo9yRws",
-            "ledger_index": "105484287",
-            "unl": false
-          },
-          {
-            "signing_key": "n9JgxBLdCHii4xnRNMk7WJhD2qmfJGRvCxmmNNivBZXPRVpeZkH3",
-            "ledger_index": "105484287",
-            "unl": "vl.ripple.com"
-          },
-          {
-            "signing_key": "n9KkB2VrSQuRNF1KpaS7G9i6yz7pinN4XAoREhqKya2aWirjcEXz",
-            "ledger_index": "105484287",
-            "unl": "vl.ripple.com"
-          }
-        ]
-      }
-    },
-    {
-      "id": "81BD2619B6B3C8625AC5D0BC01DE17F06C3F0AB95C7C87C93715B87A4FD240D8",
-      "name": "SingleAssetVault",
-      "rippled_version": "3.1.0",
-      "deprecated": false,
-      "threshold": "28/35",
-      "consensus": "28.57%",
-      "voted": {
-        "count": 23,
-        "validators": [
-          {
-            "signing_key": "n9KQqPTYJN2qqeNgaqQGNFhJqyiDqxBntp2qbkFsxt9oUqYGXjuc",
-            "ledger_index": "105484287",
-            "unl": false
-          },
-          {
-            "signing_key": "n9KbTtoS7T5RR9etSGVWKp6HHHXubdd4fGhDRdN3LdH8ZoGkM8yT",
-            "ledger_index": "105484287",
-            "unl": false
-          },
-          {
-            "signing_key": "n9Liy4QXp1MpwehmdWhsjKgdVesEsSWwVq9tXugRKBDHXGwyeF91",
-            "ledger_index": "105054463",
-            "unl": false
-          },
-          {
-            "signing_key": "n9JvsY3yhCdsHe3JsVTwvCtvKnchg2eridHLWdBdWf8VkpZSqqS9",
-            "ledger_index": "105484287",
-            "unl": false
-          },
-          {
-            "signing_key": "n9MngHUqEeJXd8cgeEGsjvm9FqQRm4DwhCrTYCtrfnm5FWGFaR6m",
-            "ledger_index": "105484287",
-            "unl": "vl.ripple.com"
-          },
-          {
-            "signing_key": "n94McSJoA9WXm2vENTZyLpvnvrJKonm2yQ57BSdrftgrNVyVeWCQ",
-            "ledger_index": "105484287",
-            "unl": false
-          },
-          {
-            "signing_key": "n9Kqt3dugvfm59VsS5GfvCXcdoXsTkV3f3Vjz51v9ABpMBd2E8uD",
-            "ledger_index": "105470207",
-            "unl": false
-          },
-          {
-            "signing_key": "n9KE55fz1jF3UAgd4Xbq3LyuqriyAWn8Z6YvvnK8hx3Q3qt5KDFa",
-            "ledger_index": "105484287",
-            "unl": false
-          },
-          {
-            "signing_key": "n9LXvej28fdWTEENpDCvMLKRDqogZPRT6S6k2Lm1SNTLawuR9awV",
-            "ledger_index": "105484287",
-            "unl": false
-          },
-          {
-            "signing_key": "n9LbM9S5jeGopF5J1vBDoGxzV6rNS8K1T5DzhNynkFLqR9N2fywX",
-            "ledger_index": "105484287",
-            "unl": "vl.ripple.com"
-          },
-          {
-            "signing_key": "n9MZ7EVGKypqdyNguP31xSqhFqDBF4V5FESLMmLiGrBJ3khP2AzQ",
-            "ledger_index": "105484287",
-            "unl": "vl.ripple.com"
-          },
-          {
-            "signing_key": "n9LkAv98aaGupypuLMH5ogjJ3rTEX178s9EnmRvmySL9k3cVuxTu",
-            "ledger_index": "105484287",
-            "unl": "vl.ripple.com"
-          },
-          {
-            "signing_key": "n94JBmHVjAFvpH7UA9YSPwUdZjG93LwTVgN4zzZkhRdkVmP71jBz",
-            "ledger_index": "105484287",
-            "unl": "vl.ripple.com"
-          },
-          {
-            "signing_key": "n9KkK4BiTTXjeF31KX4fTJkyVtH89ik4apq4wF7sQzqmbqBYcU3H",
-            "ledger_index": "105484287",
-            "unl": "vl.ripple.com"
-          },
-          {
-            "signing_key": "n94NmYJ5BW9VRZiBziUgEjGXQDm1aP16yDPTVzsmipCsA6315b6F",
-            "ledger_index": "105484287",
-            "unl": false
-          },
-          {
-            "signing_key": "n9KToXL6QaiMMDJWEpnJg5yt26nEoftNnkLjaJYLCikdfaveR2hr",
-            "ledger_index": "105484287",
-            "unl": "vl.ripple.com"
-          },
-          {
-            "signing_key": "n9L996F3HA2t8jL4WhRfkaj55zXJmYnQsAiqoPPCu1WjrYy8C6wm",
-            "ledger_index": "105484287",
-            "unl": false
-          },
-          {
-            "signing_key": "n9KbSbvD6AEfhw9QarooW8VHn5vrsY3cyuFpAS3duY7Jfdmb2MTG",
-            "ledger_index": "105484287",
-            "unl": false
-          },
-          {
-            "signing_key": "n94QdD6ZAz84rgHJvKXGGNPySYTqPqNnWzvrZrrB3JcdESQNtd8z",
-            "ledger_index": "105484287",
-            "unl": false
-          },
-          {
-            "signing_key": "n9JiXhdJTciGiENZ3xUgo6hGN3ZPpeLSzJiPgwY17exsNxo9yRws",
-            "ledger_index": "105484287",
-            "unl": false
-          },
-          {
-            "signing_key": "n9JgxBLdCHii4xnRNMk7WJhD2qmfJGRvCxmmNNivBZXPRVpeZkH3",
-            "ledger_index": "105484287",
-            "unl": "vl.ripple.com"
-          },
-          {
-            "signing_key": "n9KqcU9Qc5k1w8y9mPrTZYy14te3qjo1b1ZiieqC2NggbNrAuLpu",
-            "ledger_index": "105484287",
-            "unl": "vl.ripple.com"
-          },
-          {
-            "signing_key": "n9KkB2VrSQuRNF1KpaS7G9i6yz7pinN4XAoREhqKya2aWirjcEXz",
-            "ledger_index": "105484287",
-            "unl": "vl.ripple.com"
-          }
-        ]
-      }
-    },
-    {
-      "id": "2BF037D90E1B676B17592A8AF55E88DB465398B4B597AE46EECEE1399AB05699",
-      "name": "fixXChainRewardRounding",
-      "rippled_version": "2.2.0",
-      "deprecated": false,
-      "threshold": "28/35",
-      "consensus": "37.14%",
-      "voted": {
-        "count": 26,
-        "validators": [
-          {
-            "signing_key": "n9MSUUgV5hBJGrf2aQyvwMVBzvBNYiSBrsDsDvR88YoTcriQ9XGj",
-            "ledger_index": "105484287",
-            "unl": false
-          },
-          {
-            "signing_key": "n9Lgkq8mZXY5j4ns6MY2GmTMZjL7C5smsjM3Nmxbzzk5sry9mgD4",
-            "ledger_index": "105484287",
-            "unl": false
-          },
-          {
-            "signing_key": "n9KQqPTYJN2qqeNgaqQGNFhJqyiDqxBntp2qbkFsxt9oUqYGXjuc",
-            "ledger_index": "105484287",
-            "unl": false
-          },
-          {
-            "signing_key": "n9Li3nhouMDBu1cw7PDa4Dh8QAQzBLNXoStpMdZ96T5W1bfKWpX2",
-            "ledger_index": "105484287",
-            "unl": false
-          },
-          {
-            "signing_key": "n9JvsY3yhCdsHe3JsVTwvCtvKnchg2eridHLWdBdWf8VkpZSqqS9",
-            "ledger_index": "105484287",
-            "unl": false
-          },
-          {
-            "signing_key": "n9Kqt3dugvfm59VsS5GfvCXcdoXsTkV3f3Vjz51v9ABpMBd2E8uD",
-            "ledger_index": "105470207",
-            "unl": false
-          },
-          {
-            "signing_key": "n9LkWXS9HEY9adzT4y4J4Fbc1EFpKfuLf1gj2sTAktgZRukJcFiS",
-            "ledger_index": "105484287",
+            "ledger_index": "105511679",
             "unl": "vl.ripple.com"
           },
           {
             "signing_key": "n9KRttNtSJ2NHX7P2RkoYpqf2cxhDfkcGCFswarLqHdjjfjPJFJB",
-            "ledger_index": "105484287",
+            "ledger_index": "105511679",
             "unl": "vl.ripple.com"
           },
           {
-            "signing_key": "n9KE55fz1jF3UAgd4Xbq3LyuqriyAWn8Z6YvvnK8hx3Q3qt5KDFa",
-            "ledger_index": "105484287",
-            "unl": false
+            "signing_key": "n9Lqr4YZxk7WYRDTBZjjmoAraikLCjAgAswaPaZ6LaGW6Q4Y2eoo",
+            "ledger_index": "105511679",
+            "unl": "vl.ripple.com"
+          },
+          {
+            "signing_key": "n9KkK4BiTTXjeF31KX4fTJkyVtH89ik4apq4wF7sQzqmbqBYcU3H",
+            "ledger_index": "105511679",
+            "unl": "vl.ripple.com"
           },
           {
             "signing_key": "n9LabXG8Vo7SfrUcZudeDCuFvWXW5TXbhUSYwgqmgYMFpUYuMN87",
-            "ledger_index": "105484287",
-            "unl": "vl.ripple.com"
-          },
-          {
-            "signing_key": "n9LXvej28fdWTEENpDCvMLKRDqogZPRT6S6k2Lm1SNTLawuR9awV",
-            "ledger_index": "105484287",
-            "unl": false
-          },
-          {
-            "signing_key": "n9LvxiHe5wve7yLe1R1MagKboVs5WrWSJMEsXtJrfqtAwCswjKsd",
-            "ledger_index": "105484287",
-            "unl": "vl.ripple.com"
-          },
-          {
-            "signing_key": "n94rGrfuwvYTS1HEeWboW2nGvAQgVDpiD8id2pLWSHFVggBRpQRE",
-            "ledger_index": "105484287",
-            "unl": "vl.ripple.com"
-          },
-          {
-            "signing_key": "n9MhLZsK7Av6ny2gV5SAGLDsnFXE9p85aYR8diD8xvuvuucqad85",
-            "ledger_index": "105484287",
-            "unl": "vl.ripple.com"
-          },
-          {
-            "signing_key": "n9JiUqAXcHFzNFtdJ9uYeNZsdJTs1LGf4zr98bN7mWHxdtDpijAB",
-            "ledger_index": "105484287",
-            "unl": false
-          },
-          {
-            "signing_key": "n9KAE7DUEB62ZQ3yWzygKWWqsj7ZqchW5rXg63puZA46k7WzGfQu",
-            "ledger_index": "105484287",
-            "unl": "vl.ripple.com"
-          },
-          {
-            "signing_key": "n9L3nFdjPppHZe1UT4TSSr8sskJBdAKXsrN8zw8rwytLPaZSPMwV",
-            "ledger_index": "105484287",
-            "unl": false
-          },
-          {
-            "signing_key": "n9McDrz9tPujrQK3vMXJXzuEJv1B8UG3opfZEsFA8t6QxdZh1H6m",
-            "ledger_index": "105484287",
-            "unl": "vl.ripple.com"
-          },
-          {
-            "signing_key": "n9M2UqXLK25h9YEQTskmCXbWPGhQmB1pFVqeXia38UwLaL838VbG",
-            "ledger_index": "105484287",
+            "ledger_index": "105511679",
             "unl": "vl.ripple.com"
           },
           {
             "signing_key": "n94NmYJ5BW9VRZiBziUgEjGXQDm1aP16yDPTVzsmipCsA6315b6F",
-            "ledger_index": "105484287",
+            "ledger_index": "105511679",
             "unl": false
           },
           {
-            "signing_key": "n9LgeaZHS8XBgMrFinacxKNn28mdbknFoP1g1woMJXvtEFoXxivr",
-            "ledger_index": "105484287",
+            "signing_key": "n9KaxgJv69FucW5kkiaMhCqS6sAR1wUVxpZaZmLGVXxAcAse9YhR",
+            "ledger_index": "105511679",
+            "unl": "vl.ripple.com"
+          },
+          {
+            "signing_key": "n9KAE7DUEB62ZQ3yWzygKWWqsj7ZqchW5rXg63puZA46k7WzGfQu",
+            "ledger_index": "105511679",
+            "unl": "vl.ripple.com"
+          },
+          {
+            "signing_key": "n94rGrfuwvYTS1HEeWboW2nGvAQgVDpiD8id2pLWSHFVggBRpQRE",
+            "ledger_index": "105511679",
+            "unl": "vl.ripple.com"
+          },
+          {
+            "signing_key": "n9KeTQ3UyMtaJJD78vT7QiGRMv1GcWHEnhNbwKfdbW2HfRqtvUUt",
+            "ledger_index": "105511679",
+            "unl": "vl.ripple.com"
+          },
+          {
+            "signing_key": "n9KToXL6QaiMMDJWEpnJg5yt26nEoftNnkLjaJYLCikdfaveR2hr",
+            "ledger_index": "105511679",
+            "unl": "vl.ripple.com"
+          },
+          {
+            "signing_key": "n9MSTcx1fmfyKpaDTtpXucugcqM7yxpaggmwRxcyA3Nr4pE1pN3x",
+            "ledger_index": "105511679",
+            "unl": "vl.ripple.com"
+          },
+          {
+            "signing_key": "n9JiXhdJTciGiENZ3xUgo6hGN3ZPpeLSzJiPgwY17exsNxo9yRws",
+            "ledger_index": "105511679",
             "unl": false
           },
           {
-            "signing_key": "n9L996F3HA2t8jL4WhRfkaj55zXJmYnQsAiqoPPCu1WjrYy8C6wm",
-            "ledger_index": "105484287",
+            "signing_key": "n9MxDjQMr1DkzW3Z5X1guKJq4QNDEeYFPgqGgHfpzerGbHWGZvj4",
+            "ledger_index": "105511679",
+            "unl": "vl.ripple.com"
+          },
+          {
+            "signing_key": "n9LL7K3Ubnob3ExqmgpigL3AgzKKhTaVvnZiXqsvz85VjbY3KqFp",
+            "ledger_index": "105511679",
+            "unl": "vl.ripple.com"
+          },
+          {
+            "signing_key": "n94a894ARPe5RdcaRgdMBB9gG9ukS5mqsd7q2oNmC1NKqtZqEJnb",
+            "ledger_index": "105511679",
+            "unl": "vl.ripple.com"
+          },
+          {
+            "signing_key": "n9KkB2VrSQuRNF1KpaS7G9i6yz7pinN4XAoREhqKya2aWirjcEXz",
+            "ledger_index": "105511679",
+            "unl": "vl.ripple.com"
+          },
+          {
+            "signing_key": "n94fVBYNon41RvGyvvMAMHF1cnKYFDnoe1iweAU2v1Fp7Sm6EV6A",
+            "ledger_index": "105511679",
             "unl": false
-          },
-          {
-            "signing_key": "n9JgxBLdCHii4xnRNMk7WJhD2qmfJGRvCxmmNNivBZXPRVpeZkH3",
-            "ledger_index": "105484287",
-            "unl": "vl.ripple.com"
-          },
-          {
-            "signing_key": "n9KqcU9Qc5k1w8y9mPrTZYy14te3qjo1b1ZiieqC2NggbNrAuLpu",
-            "ledger_index": "105484287",
-            "unl": "vl.ripple.com"
-          },
-          {
-            "signing_key": "n94RkpbJYRYQrWUmL8PAVQ1XTVKtfyKkLm8C6SWzWPcKEbuNb6EV",
-            "ledger_index": "105484287",
-            "unl": "vl.ripple.com"
           },
           {
             "signing_key": "n9LY8MFrFKudddAjrs3BZ33SwqCypV4aYqP7sH3VKgaJSz3aJUwL",
-            "ledger_index": "105484287",
+            "ledger_index": "105511679",
             "unl": "vl.ripple.com"
           }
         ]
       }
     },
     {
-      "id": "C98D98EE9616ACD36E81FDEB8D41D349BF5F1B41DD64A0ABC1FE9AA5EA267E9C",
-      "name": "XChainBridge",
+      "id": "41765F664A8D67FF03DDB1C1A893DE6273690BA340A6C2B07C8D29D0DD013D3A",
+      "ledger_index": 100961281,
+      "tx_hash": "602A29FE77442A18F56B6A63A5C25FFD1CBB6930BA37FAC712CE2561CA6EAF8E",
+      "date": "2025-12-18T15:08:32.000Z",
+      "name": "fixDirectoryLimit",
+      "rippled_version": "2.6.2",
+      "deprecated": false
+    },
+    {
+      "id": "15D61F0C6DB6A2F86BCF96F1E2444FEC54E705923339EC175BD3E517C8B3FF91",
+      "ledger_index": 87236609,
+      "tx_hash": "50286B4B9C95331A48D3AD517E1FD3299308C6B696C85E096A73A445E9EB1BFB",
+      "date": "2024-04-11T12:19:50.000Z",
+      "name": "fixDisallowIncomingV1",
       "rippled_version": "2.0.0",
+      "deprecated": false
+    },
+    {
+      "id": "755C971C29971C9F20C6F080F2ED96F87884E40AD19554A5EBECDCEC8A1F77FE",
+      "ledger_index": 91038721,
+      "tx_hash": "A858AE8832981D77A4C5038D633CC9CBD54C9764BD2A3F8CA174E02D1736F472",
+      "date": "2024-09-27T16:58:32.000Z",
+      "name": "fixEmptyDID",
+      "rippled_version": "2.2.0",
+      "deprecated": false
+    },
+    {
+      "id": "763C37B352BE8C7A04E810F8E462644C45AFEAD624BF3894A08E5C917CF9FF39",
+      "ledger_index": 93814529,
+      "tx_hash": "606FA84C4BA30F67582C11A39BBFC11A9D994E114CD515E9F63FC7D8701A8ED9",
+      "date": "2025-01-30T20:09:41.000Z",
+      "name": "fixEnforceNFTokenTrustline",
+      "rippled_version": "2.3.0",
+      "deprecated": false
+    },
+    {
+      "id": "B32752F7DCC41FB86534118FC4EEC8F56E7BD0A7DB60FD73F93F257233C08E3A",
+      "ledger_index": 98491905,
+      "tx_hash": "2532DC0E750FAA51CC11F58F742A1FB0CDC0F469DEA63EF903EC15D1E39667BE",
+      "date": "2025-08-29T14:50:31.000Z",
+      "name": "fixEnforceNFTokenTrustlineV2",
+      "rippled_version": "2.5.0",
+      "deprecated": false
+    },
+    {
+      "id": "3318EA0CF0755AF15DAC19F2B5C5BCBFF4B78BDD57609ACCAABE2C41309B051A",
+      "ledger_index": 87236609,
+      "tx_hash": "3209D6B66D375C23EEBE7C3DD3058B361427148D80C570B8E791D4C76555FA7B",
+      "date": "2024-04-11T12:19:50.000Z",
+      "name": "fixFillOrKill",
+      "rippled_version": "2.0.0",
+      "deprecated": false
+    },
+    {
+      "id": "83FD6594FF83C1D105BD2B41D7E242D86ECB4A8220BD9AF4DA35CB0F69E39B2A",
+      "ledger_index": 96126977,
+      "tx_hash": "34F11D09E15EC3FE78FFB238EB33030A9E2F2B6233716712A4B7A9D13C55C89A",
+      "date": "2025-05-15T01:03:50.000Z",
+      "name": "fixFrozenLPTokenTransfer",
+      "rippled_version": "2.4.0",
+      "deprecated": false
+    },
+    {
+      "id": "6143A27B71F7DAF9330ECA7C5EC3D54C8083A4FDEF7016737EEC06AB61E82EE0",
+      "ledger_index": 101852417,
+      "tx_hash": "6D78BF96B28F2A16FF229227A0F0FD555AE25791C64EAAEF6DA0B1AB3D0BA1ED",
+      "date": "2026-01-27T22:20:10.000Z",
+      "name": "fixIncludeKeyletFields",
+      "rippled_version": "3.0.0",
+      "deprecated": false
+    },
+    {
+      "id": "C393B3AEEBF575E475F0C60D5E4241B2070CC4D0EB6C4846B1A07508FAEFC485",
+      "ledger_index": 87172097,
+      "tx_hash": "EC67D9DF8D06067A76E8F8F43BC036B5E0267568F8D92624A658AC01A8186235",
+      "date": "2024-04-08T15:27:52.000Z",
+      "name": "fixInnerObjTemplate",
+      "rippled_version": "2.1.0",
+      "deprecated": false
+    },
+    {
+      "id": "9196110C23EA879B4229E51C286180C7D02166DA712559F634372F5264D0EC59",
+      "ledger_index": 93814529,
+      "tx_hash": "426314C8BC64BA339E97E53B278602ADC44F115056274BF7971F694C9A8AF946",
+      "date": "2025-01-30T20:09:41.000Z",
+      "name": "fixInnerObjTemplate2",
+      "rippled_version": "2.3.0",
+      "deprecated": false
+    },
+    {
+      "id": "8EC4304A06AF03BE953EA6EDA494864F6F3F30AA002BABA35869FBB8C6AE5D52",
+      "ledger_index": 96126977,
+      "tx_hash": "D53E906A53C46A9AACFEB0093DF26EFD8634C3DAF50A18930D7910C51FFE3E9D",
+      "date": "2025-05-15T01:03:50.000Z",
+      "name": "fixInvalidTxFlags",
+      "rippled_version": "2.4.0",
+      "deprecated": false
+    },
+    {
+      "id": "AB8D932A5F338903FE5BCBD80B611FFED70839ABA3170E9CE01D947C0EDEDCF2",
+      "ledger_index": 101852417,
+      "tx_hash": "56B9F029DD5D65888DD9997D690ED1E2AF46B80B7C9B41FE87CE6AFD9B0E6D08",
+      "date": "2026-01-27T22:20:10.000Z",
+      "name": "fixMPTDeliveredAmount",
+      "rippled_version": "3.0.0",
+      "deprecated": false
+    },
+    {
+      "id": "C4483A1896170C66C098DEA5B0E024309C60DC960DE5F01CD7AF986AA3D9AD37",
+      "ledger_index": 50428929,
+      "tx_hash": "61096F8B5AFDD8F5BAF7FC7221BA4D1849C4E21B1BA79733E44B12FC8DA6EA20",
+      "date": "2019-10-02T07:37:50.000Z",
+      "name": "fixMasterKeyAsRegularKey",
+      "rippled_version": "1.3.1",
+      "deprecated": false
+    },
+    {
+      "id": "0285B7E5E08E1A8E4C15636F0591D87F73CB6A7B6452A932AD72BBC8E5D1CBE3",
+      "name": "fixNFTokenDirV1",
+      "rippled_version": "1.9.1",
       "deprecated": false,
       "threshold": "28/35",
-      "consensus": "11.43%",
+      "consensus": "0.00%",
       "voted": {
-        "count": 12,
-        "validators": [
-          {
-            "signing_key": "n9MSUUgV5hBJGrf2aQyvwMVBzvBNYiSBrsDsDvR88YoTcriQ9XGj",
-            "ledger_index": "105484287",
-            "unl": false
-          },
-          {
-            "signing_key": "n9Lgkq8mZXY5j4ns6MY2GmTMZjL7C5smsjM3Nmxbzzk5sry9mgD4",
-            "ledger_index": "105484287",
-            "unl": false
-          },
-          {
-            "signing_key": "n9JvsY3yhCdsHe3JsVTwvCtvKnchg2eridHLWdBdWf8VkpZSqqS9",
-            "ledger_index": "105484287",
-            "unl": false
-          },
-          {
-            "signing_key": "n9MngHUqEeJXd8cgeEGsjvm9FqQRm4DwhCrTYCtrfnm5FWGFaR6m",
-            "ledger_index": "105484287",
-            "unl": "vl.ripple.com"
-          },
-          {
-            "signing_key": "n9Kqt3dugvfm59VsS5GfvCXcdoXsTkV3f3Vjz51v9ABpMBd2E8uD",
-            "ledger_index": "105470207",
-            "unl": false
-          },
-          {
-            "signing_key": "n9KE55fz1jF3UAgd4Xbq3LyuqriyAWn8Z6YvvnK8hx3Q3qt5KDFa",
-            "ledger_index": "105484287",
-            "unl": false
-          },
-          {
-            "signing_key": "n9LXvej28fdWTEENpDCvMLKRDqogZPRT6S6k2Lm1SNTLawuR9awV",
-            "ledger_index": "105484287",
-            "unl": false
-          },
-          {
-            "signing_key": "n9LvxiHe5wve7yLe1R1MagKboVs5WrWSJMEsXtJrfqtAwCswjKsd",
-            "ledger_index": "105484287",
-            "unl": "vl.ripple.com"
-          },
-          {
-            "signing_key": "n9LkAv98aaGupypuLMH5ogjJ3rTEX178s9EnmRvmySL9k3cVuxTu",
-            "ledger_index": "105484287",
-            "unl": "vl.ripple.com"
-          },
-          {
-            "signing_key": "n9JiUqAXcHFzNFtdJ9uYeNZsdJTs1LGf4zr98bN7mWHxdtDpijAB",
-            "ledger_index": "105484287",
-            "unl": false
-          },
-          {
-            "signing_key": "n9KAE7DUEB62ZQ3yWzygKWWqsj7ZqchW5rXg63puZA46k7WzGfQu",
-            "ledger_index": "105484287",
-            "unl": "vl.ripple.com"
-          },
-          {
-            "signing_key": "n9LgeaZHS8XBgMrFinacxKNn28mdbknFoP1g1woMJXvtEFoXxivr",
-            "ledger_index": "105484287",
-            "unl": false
-          }
-        ]
+        "count": 0,
+        "validators": []
       }
     },
     {
@@ -1454,39 +1190,308 @@
       }
     },
     {
-      "id": "0285B7E5E08E1A8E4C15636F0591D87F73CB6A7B6452A932AD72BBC8E5D1CBE3",
-      "name": "fixNFTokenDirV1",
-      "rippled_version": "1.9.1",
-      "deprecated": false,
-      "threshold": "28/35",
-      "consensus": "0.00%",
-      "voted": {
-        "count": 0,
-        "validators": []
-      }
+      "id": "C7981B764EC4439123A86CC7CCBA436E9B3FF73B3F10A0AE51882E404522FC41",
+      "ledger_index": 93814529,
+      "tx_hash": "2D9A29768A7FA4BAC01DF1941380077E304785279E5E49267EC269F53ABADF5A",
+      "date": "2025-01-30T20:09:41.000Z",
+      "name": "fixNFTokenPageLinks",
+      "rippled_version": "2.3.0",
+      "deprecated": false
     },
     {
-      "id": "3C43D9A973AA4443EF3FC38E42DD306160FBFFDAB901CD8BAA15D09F2597EB87",
-      "name": "NonFungibleTokensV1",
-      "rippled_version": "1.9.0",
-      "deprecated": false,
-      "threshold": "28/35",
-      "consensus": "0.00%",
-      "voted": {
-        "count": 0,
-        "validators": []
-      }
+      "id": "AE35ABDEFBDE520372B31C957020B34A7A4A9DC3115A69803A44016477C84D6E",
+      "ledger_index": 84206081,
+      "tx_hash": "CA4562711E4679FE9317DD767871E90A404C7A8B84FAFD35EC2CF0231F1F6DAF",
+      "date": "2023-11-27T14:44:30.000Z",
+      "name": "fixNFTokenRemint",
+      "rippled_version": "1.11.0",
+      "deprecated": false
     },
     {
-      "id": "86E83A7D2ECE3AD5FA87AB2195AE015C950469ABF0B72EAACED318F74886AE90",
-      "name": "CryptoConditionsSuite",
-      "rippled_version": "0.60.0",
+      "id": "03BDC0099C4E14163ADA272C1B6F6FABB448CC3E51F522F978041E4B57D9158C",
+      "ledger_index": 87259137,
+      "tx_hash": "D708CF1799A27CB982F16FCE4762DD12738737A61E5850480BA51400280E06C4",
+      "date": "2024-04-12T12:21:20.000Z",
+      "name": "fixNFTokenReserve",
+      "rippled_version": "2.1.0",
+      "deprecated": false
+    },
+    {
+      "id": "73761231F7F3D94EC3D8C63D91BDD0D89045C6F71B917D1925C01253515A6669",
+      "ledger_index": 81986305,
+      "tx_hash": "3AB0892CAB29F049B9D9E5D522701FD01469D0B97080626F8DD4B489D0B8784E",
+      "date": "2023-08-21T05:59:11.000Z",
+      "name": "fixNonFungibleTokensV1_2",
+      "rippled_version": "1.10.0",
+      "deprecated": false
+    },
+    {
+      "id": "D3456A862DC07E382827981CA02E21946E641877F19B8889031CC57FDCAC83E2",
+      "ledger_index": 98491905,
+      "tx_hash": "21842CFFCD51428997C78056F2EB9B707E2CED45FEFD302084B08C35965D7DB8",
+      "date": "2025-08-29T14:50:31.000Z",
+      "name": "fixPayChanCancelAfter",
+      "rippled_version": "2.5.0",
+      "deprecated": false
+    },
+    {
+      "id": "621A0B264970359869E3C0363A899909AAB7A887C8B73519E4ECF952D33258A8",
+      "ledger_index": 55161089,
+      "tx_hash": "D2F8E457D08ACB185CDE3BB9BB1989A9052344678566785BACFB9DFDBDEDCF09",
+      "date": "2020-05-01T08:51:01.000Z",
+      "name": "fixPayChanRecipientOwnerDir",
+      "rippled_version": "1.4.0",
+      "deprecated": false
+    },
+    {
+      "id": "7BB62DC13EC72B775091E9C71BF8CF97E122647693B50C5E87A80DFD6FCFAC50",
+      "ledger_index": 91038721,
+      "tx_hash": "C7A9804E1F499ABBF38D791BAD25B1479DB1CEA4E9B6C5C08D6D4EF13F41E171",
+      "date": "2024-09-27T16:58:32.000Z",
+      "name": "fixPreviousTxnID",
+      "rippled_version": "2.2.0",
+      "deprecated": false
+    },
+    {
+      "id": "FF2D1E13CF6D22427111B967BD504917F63A900CECD320D6FD3AC9FA90344631",
+      "ledger_index": 101852417,
+      "tx_hash": "5BC2395E779502F3D0D90C26FA3D8AF52BE10BB203BD11830951B893B6C928A0",
+      "date": "2026-01-27T22:20:10.000Z",
+      "name": "fixPriceOracleOrder",
+      "rippled_version": "3.0.0",
+      "deprecated": false
+    },
+    {
+      "id": "89308AF3B8B10B7192C4E613E1D2E4D9BA64B2EE2D5232402AE82A6A7220D953",
+      "ledger_index": 56691969,
+      "tx_hash": "5F8E9E9B175BB7B95F529BEFE3C84253E78DAF6076078EC450A480C861F6889E",
+      "date": "2020-07-09T05:12:40.000Z",
+      "name": "fixQualityUpperBound",
+      "rippled_version": "1.5.0",
+      "deprecated": false
+    },
+    {
+      "id": "27CD95EE8E1E5A537FF2F89B6CEB7C622E78E9374EBD7DCBEDFAE21CD6F16E0A",
+      "ledger_index": 84145409,
+      "tx_hash": "87723D9D01AFAD8E55C944D7D1598969A8FBD852FCACAE361A40CBF5D4CB3BB1",
+      "date": "2023-11-24T22:24:21.000Z",
+      "name": "fixReducedOffersV1",
+      "rippled_version": "1.12.0",
+      "deprecated": false
+    },
+    {
+      "id": "31E0DA76FB8FB527CADCDF0E61CB9C94120966328EFA9DCA202135BAF319C0BA",
+      "ledger_index": 93815809,
+      "tx_hash": "6D325D5EFF8230F1FECA3EE6418C9678637F3F56B0CA247013F70B3BDCFE75C8",
+      "date": "2025-01-30T21:31:41.000Z",
+      "name": "fixReducedOffersV2",
+      "rippled_version": "2.3.0",
+      "deprecated": false
+    },
+    {
+      "id": "DF8B4536989BDACE3F934F29423848B9F1D76D09BE6A1FCFE7E7F06AA26ABEAD",
+      "ledger_index": 75348737,
+      "tx_hash": "2A67DB4AC65D688281B76334C4B52038FD56931694A6DD873B5CCD9B970AD57C",
+      "date": "2022-10-27T16:09:30.000Z",
+      "name": "fixRemoveNFTokenAutoTrustLine",
+      "rippled_version": "1.9.4",
+      "deprecated": false
+    },
+    {
+      "id": "B6B3EEDC0267AB50491FDC450A398AF30DBCD977CECED8BEF2499CAB5DAC19E2",
+      "ledger_index": 67784193,
+      "tx_hash": "1F37BA0502576DD7B5464F47641FA95DEB55735EC2663269DFD47810505478E7",
+      "date": "2021-11-18T17:31:01.000Z",
+      "name": "fixRmSmallIncreasedQOffers",
+      "rippled_version": "1.7.2",
+      "deprecated": false
+    },
+    {
+      "id": "452F5906C46D46F407883344BFDD90E672B672C5E9943DB4891E3A34FEEEB9DB",
+      "ledger_index": 67639553,
+      "tx_hash": "AFF17321A012C756B64FCC3BA0FDF79109F28E244D838A28D5AE8A0384C7C532",
+      "date": "2021-11-11T23:08:00.000Z",
+      "name": "fixSTAmountCanonicalize",
+      "rippled_version": "1.7.0",
+      "deprecated": false
+    },
+    {
+      "id": "2CD5286D8D687E98B41102BDD797198E81EA41DF7BD104E6561FEB104EFF2561",
+      "ledger_index": 46257665,
+      "tx_hash": "C42335E95F1BD2009A2C090EA57BD7FB026AD285B4B85BE15F669BA4F70D11AF",
+      "date": "2019-04-02T21:17:41.000Z",
+      "name": "fixTakerDryOfferRemoval",
+      "rippled_version": "1.2.0",
+      "deprecated": false
+    },
+    {
+      "id": "32B8614321F7E070419115ABEAB1742EA20F3E3AF34432B5E2F474F8083260DC",
+      "ledger_index": 101852417,
+      "tx_hash": "E3B633906B8A9CA2BC9CB9DD832326001BDA02E5B336A640574E01ADD47058E3",
+      "date": "2026-01-27T22:20:10.000Z",
+      "name": "fixTokenEscrowV1",
+      "rippled_version": "3.0.0",
+      "deprecated": false
+    },
+    {
+      "id": "F1ED6B4A411D8B872E65B9DCB4C8B100375B0DD3D62D07192E011D6D7F339013",
+      "ledger_index": 81986305,
+      "tx_hash": "4F4C05142CA1DE257CD86513086F0C99FAF06D80932377C6B6C02B3D09623A43",
+      "date": "2023-08-21T05:59:11.000Z",
+      "name": "fixTrustLinesToSelf",
+      "rippled_version": "1.10.0",
+      "deprecated": false
+    },
+    {
+      "id": "2E2FB9CF8A44EB80F4694D38AADAE9B8B7ADAFD2F092E10068E61C98C4F092B0",
+      "ledger_index": 81986305,
+      "tx_hash": "EFE82B7155CE5B766AF343D98DAE6662C2713C99E760D610370D02338881B2F3",
+      "date": "2023-08-21T05:59:11.000Z",
+      "name": "fixUniversalNumber",
+      "rippled_version": "1.10.0",
+      "deprecated": false
+    },
+    {
+      "id": "2BF037D90E1B676B17592A8AF55E88DB465398B4B597AE46EECEE1399AB05699",
+      "name": "fixXChainRewardRounding",
+      "rippled_version": "2.2.0",
       "deprecated": false,
       "threshold": "28/35",
-      "consensus": "0.00%",
+      "consensus": "37.14%",
       "voted": {
-        "count": 0,
-        "validators": []
+        "count": 26,
+        "validators": [
+          {
+            "signing_key": "n9KE55fz1jF3UAgd4Xbq3LyuqriyAWn8Z6YvvnK8hx3Q3qt5KDFa",
+            "ledger_index": "105511679",
+            "unl": false
+          },
+          {
+            "signing_key": "n9KQqPTYJN2qqeNgaqQGNFhJqyiDqxBntp2qbkFsxt9oUqYGXjuc",
+            "ledger_index": "105511679",
+            "unl": false
+          },
+          {
+            "signing_key": "n9JvsY3yhCdsHe3JsVTwvCtvKnchg2eridHLWdBdWf8VkpZSqqS9",
+            "ledger_index": "105511679",
+            "unl": false
+          },
+          {
+            "signing_key": "n9Li3nhouMDBu1cw7PDa4Dh8QAQzBLNXoStpMdZ96T5W1bfKWpX2",
+            "ledger_index": "105511679",
+            "unl": false
+          },
+          {
+            "signing_key": "n9LkWXS9HEY9adzT4y4J4Fbc1EFpKfuLf1gj2sTAktgZRukJcFiS",
+            "ledger_index": "105511679",
+            "unl": "vl.ripple.com"
+          },
+          {
+            "signing_key": "n9Lgkq8mZXY5j4ns6MY2GmTMZjL7C5smsjM3Nmxbzzk5sry9mgD4",
+            "ledger_index": "105511679",
+            "unl": false
+          },
+          {
+            "signing_key": "n9Kqt3dugvfm59VsS5GfvCXcdoXsTkV3f3Vjz51v9ABpMBd2E8uD",
+            "ledger_index": "105511679",
+            "unl": false
+          },
+          {
+            "signing_key": "n9LXvej28fdWTEENpDCvMLKRDqogZPRT6S6k2Lm1SNTLawuR9awV",
+            "ledger_index": "105511679",
+            "unl": false
+          },
+          {
+            "signing_key": "n9M2UqXLK25h9YEQTskmCXbWPGhQmB1pFVqeXia38UwLaL838VbG",
+            "ledger_index": "105511679",
+            "unl": "vl.ripple.com"
+          },
+          {
+            "signing_key": "n9JiUqAXcHFzNFtdJ9uYeNZsdJTs1LGf4zr98bN7mWHxdtDpijAB",
+            "ledger_index": "105511679",
+            "unl": false
+          },
+          {
+            "signing_key": "n9KRttNtSJ2NHX7P2RkoYpqf2cxhDfkcGCFswarLqHdjjfjPJFJB",
+            "ledger_index": "105511679",
+            "unl": "vl.ripple.com"
+          },
+          {
+            "signing_key": "n9MhLZsK7Av6ny2gV5SAGLDsnFXE9p85aYR8diD8xvuvuucqad85",
+            "ledger_index": "105511679",
+            "unl": "vl.ripple.com"
+          },
+          {
+            "signing_key": "n9MSUUgV5hBJGrf2aQyvwMVBzvBNYiSBrsDsDvR88YoTcriQ9XGj",
+            "ledger_index": "105511679",
+            "unl": false
+          },
+          {
+            "signing_key": "n9LabXG8Vo7SfrUcZudeDCuFvWXW5TXbhUSYwgqmgYMFpUYuMN87",
+            "ledger_index": "105511679",
+            "unl": "vl.ripple.com"
+          },
+          {
+            "signing_key": "n94NmYJ5BW9VRZiBziUgEjGXQDm1aP16yDPTVzsmipCsA6315b6F",
+            "ledger_index": "105511679",
+            "unl": false
+          },
+          {
+            "signing_key": "n9LvxiHe5wve7yLe1R1MagKboVs5WrWSJMEsXtJrfqtAwCswjKsd",
+            "ledger_index": "105511679",
+            "unl": "vl.ripple.com"
+          },
+          {
+            "signing_key": "n9McDrz9tPujrQK3vMXJXzuEJv1B8UG3opfZEsFA8t6QxdZh1H6m",
+            "ledger_index": "105511679",
+            "unl": "vl.ripple.com"
+          },
+          {
+            "signing_key": "n9KAE7DUEB62ZQ3yWzygKWWqsj7ZqchW5rXg63puZA46k7WzGfQu",
+            "ledger_index": "105511679",
+            "unl": "vl.ripple.com"
+          },
+          {
+            "signing_key": "n94rGrfuwvYTS1HEeWboW2nGvAQgVDpiD8id2pLWSHFVggBRpQRE",
+            "ledger_index": "105511679",
+            "unl": "vl.ripple.com"
+          },
+          {
+            "signing_key": "n9L3nFdjPppHZe1UT4TSSr8sskJBdAKXsrN8zw8rwytLPaZSPMwV",
+            "ledger_index": "105511679",
+            "unl": false
+          },
+          {
+            "signing_key": "n9LgeaZHS8XBgMrFinacxKNn28mdbknFoP1g1woMJXvtEFoXxivr",
+            "ledger_index": "105511679",
+            "unl": false
+          },
+          {
+            "signing_key": "n9L996F3HA2t8jL4WhRfkaj55zXJmYnQsAiqoPPCu1WjrYy8C6wm",
+            "ledger_index": "105511679",
+            "unl": false
+          },
+          {
+            "signing_key": "n9JgxBLdCHii4xnRNMk7WJhD2qmfJGRvCxmmNNivBZXPRVpeZkH3",
+            "ledger_index": "105511679",
+            "unl": "vl.ripple.com"
+          },
+          {
+            "signing_key": "n9KqcU9Qc5k1w8y9mPrTZYy14te3qjo1b1ZiieqC2NggbNrAuLpu",
+            "ledger_index": "105511679",
+            "unl": "vl.ripple.com"
+          },
+          {
+            "signing_key": "n94RkpbJYRYQrWUmL8PAVQ1XTVKtfyKkLm8C6SWzWPcKEbuNb6EV",
+            "ledger_index": "105511679",
+            "unl": "vl.ripple.com"
+          },
+          {
+            "signing_key": "n9LY8MFrFKudddAjrs3BZ33SwqCypV4aYqP7sH3VKgaJSz3aJUwL",
+            "ledger_index": "105511679",
+            "unl": "vl.ripple.com"
+          }
+        ]
       }
     }
   ]
