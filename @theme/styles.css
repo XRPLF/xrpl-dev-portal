@@ -397,7 +397,15 @@ button[role="tab"].active {
   }
 }
 
+:root {
+  --ai-assistant-button-bottom: 16px;
+  --ai-assistant-button-right: 71px; /* align w/ Osano cookie widget (mobile) */
+}
+
 @media screen and (min-width: 990px) {
+  :root {
+      --ai-assistant-button-right: 86px;
+  }
   [data-component-name="LanguagePicker/LanguagePicker"] {
     display: block;
   }
