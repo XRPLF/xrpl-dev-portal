@@ -2,13 +2,11 @@
 """
 Fetch mainnet amendment data and write to @theme/data/amendments-snapshot.json.
 
-Run on a schedule by .github/workflows/update-amendments-snapshot.yml, or locally
-from the repository root with `python3 tools/fetch-amendments-snapshot.py`.
+Run on a schedule by .github/workflows/update-amendments-snapshot.yml
 
 Validates the response before writing, so a failed or malformed fetch never
 writes over a good snapshot. Always rewrites with a fresh fetched_at (even when the
-amendment data is unchanged) so the timestamp reflects the last successful refresh,
-not the last data change -- otherwise a recently-verified snapshot would look stale.
+amendment data is unchanged) so the timestamp reflects data freshness.
 """
 
 import json
@@ -18,7 +16,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 ENDPOINT = "https://vhs.prod.ripplex.io/v1/network/amendments/vote/main/"
-OUT = Path(__file__).resolve().parent.parent / "@theme" / "data" / "amendments-snapshot.json"
+OUT = Path(__file__).resolve().parent.parent / "@theme/data/amendments-snapshot.json"
 
 
 def main():
