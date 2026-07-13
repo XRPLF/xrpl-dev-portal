@@ -10,7 +10,6 @@ amendment data is unchanged) so the timestamp reflects data freshness.
 """
 
 import json
-import sys
 import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
@@ -48,8 +47,4 @@ def main():
 
 
 if __name__ == "__main__":
-    try:
-        main()
-    except Exception as err:
-        print(err, file=sys.stderr)
-        sys.exit(1)
+    main()
