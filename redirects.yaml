@@ -1,5 +1,7 @@
 # Docs redirects for moved pages -----------------------------------------------
 # (not associated with a major reorg)
+/docs/tutorials/payments/issue-and-send-tokens/:
+    to: /docs/tutorials/payments/send-a-trust-line-token/
 /docs/tutorials/defi/dex/trade-with-auction-slot-in-javascript/:
     to: /docs/tutorials/defi/dex/use-amm-auction-slot-for-lower-fees/
 /resources/contribute-documentation/tutorial-structure/:
@@ -60,7 +62,9 @@
 /docs/tutorials/python/send-payments/create-time-based-escrows/:
     to: /docs/tutorials/payments/send-a-timed-escrow/
 /docs/tutorials/python/send-payments/create-trust-line-send-currency/:
-    to: /docs/tutorials/payments/create-trust-line-send-currency-in-python/
+    to: /docs/tutorials/payments/send-a-trust-line-token/
+/docs/tutorials/payments/create-trust-line-send-currency-in-python/:
+    to: /docs/tutorials/payments/send-a-trust-line-token/
 /docs/tutorials/python/send-payments/create-accounts-send-xrp/:
     to: /docs/tutorials/payments/send-xrp/
 /docs/tutorials/python/send-payments/create-conditional-escrows/:
@@ -198,7 +202,9 @@
 /docs/tutorials/javascript/send-payments/create-time-based-escrows/:
     to: /docs/tutorials/payments/send-a-timed-escrow/
 /docs/tutorials/javascript/send-payments/create-trust-line-send-currency/:
-    to: /docs/tutorials/payments/create-trust-line-send-currency-in-javascript/
+    to: /docs/tutorials/payments/send-a-trust-line-token/
+/docs/tutorials/payments/create-trust-line-send-currency-in-javascript/:
+    to: /docs/tutorials/payments/send-a-trust-line-token/
 /docs/tutorials/javascript/send-payments/create-accounts-send-xrp/:
     to: /docs/tutorials/payments/send-xrp/
 /docs/tutorials/javascript/send-payments/create-conditional-escrows/:
@@ -624,7 +630,7 @@ send-payments-using-python.html:
 py-create-accounts-send-xrp.html:
     to: /docs/tutorials/payments/send-xrp/
 py-create-trustline-send-currency.html:
-    to: /docs/tutorials/payments/create-trust-line-send-currency-in-python/
+    to: /docs/tutorials/payments/send-a-trust-line-token/
 py-create-time-based-escrows.html:
     to: /docs/tutorials/payments/send-a-timed-escrow/
 py-mint-and-burn-nfts.html:
@@ -658,7 +664,7 @@ send-payments-using-javascript.html:
 create-accounts-send-xrp-using-javascript.html:
     to: /docs/tutorials/payments/send-xrp/
 create-trustline-send-currency-using-javascript.html:
-    to: /docs/tutorials/payments/create-trust-line-send-currency-in-javascript
+    to: /docs/tutorials/payments/send-a-trust-line-token/
 create-time-based-escrows-using-javascript.html:
     to: /docs/tutorials/payments/send-a-timed-escrow/
 create-conditional-escrows-using-javascript.html:
