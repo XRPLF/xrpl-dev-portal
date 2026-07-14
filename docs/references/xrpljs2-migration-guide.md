@@ -198,7 +198,7 @@ const wallet = xrpl.Wallet.fromSeed('s██████████████
 const tx_json = {
   "Account": wallet.address,
   "TransactionType":"Payment",
-  "Destination":"rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe",
+  "Destination":"r3HhBhd3LDdtatqCyvawXQ21gSRPpuDHX6",
   "Amount":"13000000",
   "Flags":2147483648,
   "LastLedgerSequence":7835923,
