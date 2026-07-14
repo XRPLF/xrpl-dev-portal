@@ -1,6 +1,7 @@
 // Components related to XRPL Amendment previews and statuses
 
 import * as React from 'react'
+import type { Node } from '@markdoc/markdoc'
 import { Link } from '@redocly/theme/components/Link/Link'
 import { useThemeHooks } from '@redocly/theme/core/hooks'
 import amendmentsSnapshot from '../data/amendments-snapshot.json'
@@ -146,6 +147,19 @@ export function amendmentsTableForLlms(): string {
   return lines.join('\n')
 }
 
+// Calculate expected height of amendment table so there's little to no
+// page-height jump when the actual table loads in. This ensures that anchor
+// links go to the correct scroll position even before the amendment statuses
+// have loaded.
+function expectedTableHeight() {
+  const numAmendmentsCached = amendmentsSnapshot.amendments.filter(
+    a => !isObsolete(a)).length
+  const rowHeight = 39 // pixel height per row, including border, based on CSS
+  const headerHeight = 38 // pixel height of table header
+  const wrapperMargin = 41 // extra margin added by the md-table-wrapper element
+  return (numAmendmentsCached * rowHeight) + headerHeight + wrapperMargin
+}
+
 // Generate amendments table with live mainnet data
 export function AmendmentsTable() {
   const [amendments, setAmendments] = React.useState<Amendment[]>([])
@@ -153,6 +167,8 @@ export function AmendmentsTable() {
   const [error, setError] = React.useState<string | null>(null)
   const { useTranslate } = useThemeHooks()
   const { translate } = useTranslate()
+
+  const estimatedHeight = `${expectedTableHeight()}px`
 
   React.useEffect(() => {
     const fetchAmendments = async () => {
@@ -189,7 +205,13 @@ export function AmendmentsTable() {
   // Fancy schmancy loading icon
   if (loading) {
     return (
-      <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', padding: '2rem' }}>
+      <div style={{
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'flex-start',
+        alignItems: 'center',
+        padding: '2rem',
+        height: estimatedHeight }}>
         <div className="spinner-border text-primary" role="status">
           <span className="sr-only">{translate("amendment.loading", "Loading amendments...")}</span>
         </div>
@@ -300,6 +322,7 @@ function AmendmentBadge(props: { amendment: Amendment }) {
 export function AmendmentDisclaimer(props: {
   name: string,
   compact: boolean,
+  statusOnly: boolean,
   mode: string
 }) {
   const [amendmentStatus, setStatus] = React.useState<Amendment | null>(null)
@@ -369,6 +392,12 @@ export function AmendmentDisclaimer(props: {
   }, [props.name])
 
   if (loading) {
+    if (props.statusOnly) {
+      return <>
+        {translate("amendment.loading_status", "Loading...")}
+      </>
+    }
+
     return (
       <p><em>
       {translate("component.amendment-status.requires.1", "Requires the ")}{link()}{translate("component.amendment-status.requires.2", ".")}
@@ -381,6 +410,12 @@ export function AmendmentDisclaimer(props: {
   }
   
   if (error) {
+    if (props.statusOnly) {
+      return <>
+        {translate("amendment.error_status", "Error loading amendment status")}: {error}
+      </>
+    }
+
     return (
       <p><em>
       {translate("component.amendment-status.requires.1", "Requires the ")}{link()}{translate("component.amendment-status.requires.2", ".")}
@@ -389,6 +424,12 @@ export function AmendmentDisclaimer(props: {
         <strong>{translate("amendment.error_status", "Error loading amendment status")}:</strong> {error}
       </span>
       </em></p>
+    )
+  }
+
+  if (props.statusOnly) {
+    return(
+      <AmendmentBadge amendment={amendmentStatus} />
     )
   }
 
@@ -447,6 +488,61 @@ export function AmendmentDisclaimer(props: {
       }
     )</em></p>
   )
+}
+
+export function amendmentDisclaimerForLlms(node: Node): string {
+  const {
+    name,
+    compact,
+    statusOnly,
+    mode } = node.attributes
+  // Note: useThemeHooks() does not work here because it's not a React
+  // function component body. However, we would like to use translation.
+  // For now, shim translate with a placeholder function that does nothing
+  // but matches the syntax of the real translate function, in preparation for
+  // when we can actually use it.
+  // const { useTranslate } = useThemeHooks()
+  // const { translate } = useTranslate()
+  const translate = (key:string, s:string) => s; // Shim version of translate
+
+  let amendment : Amendment | any = amendmentsSnapshot.amendments.find( (a) => a.name === name )
+  let status = "Status Unknown"
+  if (!amendment) {  
+    status = translate("amendment.status.inactive", "Inactive")
+    amendment = {
+      name: name
+    }
+  } else {
+    status = amendmentStatusForLlms(amendment)
+  }
+  if (statusOnly) {
+    return status
+  }
+  const link = `/resources/known-amendments#${name.toLowerCase()}`
+
+  if (compact) {
+    return `[${name}](${link}) (${status})`
+  }
+
+  let text1, text2
+  if (mode === "updated") {
+    if (amendment.date) {
+      text1 = translate("component.amendment-status.updated.1", "Updated by the ")
+      text2 = translate("component.amendment-status.updated.2", ".")
+    } else {
+      text1 = translate("component.amendment-status.requires.1", "Requires the ")
+      text2 = translate("component.amendment-status.requires.2", ".")
+    }
+  } else {
+    if (amendment.date) {
+      text1 = translate("component.amendment-status.added.1", "Added by the ")
+      text2 = translate("component.amendment-status.added.2", ".")
+    } else {
+      text1 = translate("component.amendment-status.requires.1", "Requires the ")
+      text2 = translate("component.amendment-status.requires.2", ".")
+    }
+  }
+  return `_${text1}[${name} amendment](${link})${text2} (${status})_`
 }
 
 function shieldsIoEscape(s: string) {
