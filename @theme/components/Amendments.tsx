@@ -3,6 +3,7 @@
 import * as React from 'react'
 import { Link } from '@redocly/theme/components/Link/Link'
 import { useThemeHooks } from '@redocly/theme/core/hooks'
+import amendmentsSnapshot from '../data/amendments-snapshot.json'
 
 type Amendment = {
   name: string
@@ -58,8 +59,20 @@ function writeAmendmentsCache(amendments: Amendment[]) {
 // in the "Obsolete and Retired Amendments" section, not the live Mainnet Status
 // table, so filter them out here. Deprecated amendments that are enabled keep
 // their functionality and remain in the table as Enabled.
+// OBSOLETE_AMENDMENT_NAMES is a manually maintained override.
+
+const OBSOLETE_AMENDMENT_NAMES = new Set<string>([
+  'CryptoConditionsSuite',
+  'fixNFTokenDirV1',
+  'fixNFTokenNegOffer',
+  'NonFungibleTokensV1',
+])
+
 function isObsolete(amendment: Amendment): boolean {
-  return Boolean(amendment.deprecated) && !amendment.tx_hash
+  return (
+    OBSOLETE_AMENDMENT_NAMES.has(amendment.name) ||
+    (Boolean(amendment.deprecated) && !amendment.tx_hash)
+  )
 }
 
 // Sort amendments table by status, then chronologically, then alphabetically
@@ -91,6 +104,46 @@ function sortAmendments(list: Amendment[]): Amendment[] {
     // 3. Alphabetical
     return a.name.localeCompare(b.name)
   })
+}
+
+// Get amendment status from snapshot data.
+function amendmentStatusForLlms(a: Amendment): string {
+  if (a.tx_hash) {
+    const date = a.date ? new Date(a.date).toISOString().split('T')[0] : ''
+    return date ? `Enabled: ${date}` : 'Enabled'
+  }
+  if (a.eta) return `Expected: ${new Date(a.eta).toISOString().split('T')[0]}`
+  if (a.consensus) return `Open for Voting: ${a.consensus}`
+  return 'Error'
+}
+
+// Build-time Markdown rendering of the amendments table for LLM export.
+export function amendmentsTableForLlms(): string {
+  const { fetched_at, amendments } = amendmentsSnapshot as unknown as {
+    fetched_at?: string
+    amendments?: Amendment[]
+  }
+
+  const asOf = fetched_at || 'unknown'
+
+  if (!Array.isArray(amendments) || amendments.length === 0) {
+    return `Note: Amendment status table is missing or malformed. For live status, visit https://xrpl.org/resources/known-amendments in a browser.\n`
+  }
+
+  const rows = sortAmendments(amendments.filter(a => !isObsolete(a)))
+
+  const lines = [
+    `Note: The amendment status table is a snapshot from ${asOf}. For live status, visit https://xrpl.org/resources/known-amendments in a browser.`,
+    '',
+    '| Name | Introduced | Status |',
+    '|:-----|:-----------|:-------|',
+    ...rows.map(
+      a => `| [${a.name}](#${a.name.toLowerCase()}) | ${a.rippled_version} | ${amendmentStatusForLlms(a)} |`,
+    ),
+    '',
+  ]
+
+  return lines.join('\n')
 }
 
 // Generate amendments table with live mainnet data

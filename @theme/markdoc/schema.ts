@@ -2,6 +2,7 @@ import { Schema, Tag } from '@markdoc/markdoc';
 import type { MarkdocTagSchema } from '@redocly/theme/markdoc/tags/types';
 import { sourceLinkForLlms } from '../components/SourceLink';
 import { ResposiveGraphicForLlms } from '../components/ResponsiveGraphic'
+import { amendmentsTableForLlms } from '../components/Amendments';
 
 export const childPages: Schema & { tagName: string } = {
   tagName: 'child-pages',
@@ -241,10 +242,11 @@ export const txExample: Schema &  { tagName: string } = {
   selfClosing: true
 }
 
-export const amendmentsTable: Schema & { tagName: string } = {
+export const amendmentsTable: MarkdocTagSchema & { tagName: string } = {
   tagName: 'amendments-table',
   render: 'AmendmentsTable',
-  selfClosing: true
+  selfClosing: true,
+  renderForLlms: amendmentsTableForLlms,
 }
 
 export const amendmentDisclaimer: Schema &  { tagName: string } = {

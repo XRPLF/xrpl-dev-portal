@@ -1,0 +1,47 @@
+name: Update amendments snapshot
+
+on:
+  schedule:
+    # Once daily at 00:17 UTC to avoid top of the hour congestion.
+    - cron: '17 0 * * *'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-amendments-snapshot
+  cancel-in-progress: true
+
+jobs:
+  update-snapshot:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 1
+          sparse-checkout: |
+            tools
+            @theme/data
+
+      - name: Fetch latest amendment data
+        run: python3 tools/fetch-amendments-snapshot.py
+
+      - name: Commit and push snapshot
+        run: |
+          FILE='@theme/data/amendments-snapshot.json'
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- "$FILE"
+          git commit -m "chore(data): update amendments snapshot"
+          # Rebase to guard against master advancing between checkout and push
+          for attempt in 1 2 3; do
+            if git pull --rebase origin "$GITHUB_REF_NAME" \
+               && git push origin "HEAD:$GITHUB_REF_NAME"; then
+              echo "Pushed snapshot update."
+              exit 0
+            fi
+            echo "Push raced; retrying (attempt $attempt)..."
+          done
+          echo "::error::Failed to push after 3 attempts."
+          exit 1
