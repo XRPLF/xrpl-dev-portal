@@ -76,7 +76,7 @@ Here is an example of an unsigned [Payment transaction][] in JSON:
 {
   "TransactionType" : "Payment",
   "Account" : "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-  "Destination" : "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
+  "Destination" : "r3HhBhd3LDdtatqCyvawXQ21gSRPpuDHX6",
   "Amount" : {
      "currency" : "USD",
      "value" : "1",
@@ -124,7 +124,7 @@ Example response from the `tx` command:
       "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
       "value": "1"
     },
-    "Destination": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
+    "Destination": "r3HhBhd3LDdtatqCyvawXQ21gSRPpuDHX6",
     "Fee": "10",
     "Flags": 2147483648,
     "Sequence": 2,
