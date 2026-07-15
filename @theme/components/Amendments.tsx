@@ -14,46 +14,96 @@ type Amendment = {
   date?: string
   id: string
   eta?: string
-  deprecated?: boolean
+  deprecated: boolean
 }
 
 type AmendmentsResponse = {
   amendments: Amendment[]
 }
 
-type AmendmentsCachePayload = {
+type AmendmentsCache = {
   timestamp: number
-  amendments: Amendment[]
+  vote: Amendment[]
+  info: Amendment[]
 }
 
 // API data caching
-const amendmentsEndpoint = 'https://vhs.prod.ripplex.io/v1/network/amendments/vote/main/'
+const amendmentsVoteEndpoint = 'https://vhs.prod.ripplex.io/v1/network/amendments/vote/main/'
 const amendmentsInfoEndpoint = 'https://vhs.prod.ripplex.io/v1/network/amendments/info/main/'
 const amendmentsCacheKey = 'xrpl.amendments.mainnet.cache'
 const amendmentsTTL = 15 * 60 * 1000 // 15 minutes in milliseconds
 
-function readAmendmentsCache(): Amendment[] | null {
+function readCache(): AmendmentsCache | null {
   if (typeof window === 'undefined') return null
   try {
     const raw = window.localStorage.getItem(amendmentsCacheKey)
     if (!raw) return null
-    const parsed: AmendmentsCachePayload = JSON.parse(raw)
-    if (!parsed || !Array.isArray(parsed.amendments)) return null
+    const parsed: AmendmentsCache = JSON.parse(raw)
+    if (!parsed || !Array.isArray(parsed.vote) || !Array.isArray(parsed.info)) return null
     const fresh = Date.now() - parsed.timestamp < amendmentsTTL
-    return fresh ? parsed.amendments : null
+    return fresh ? parsed : null
   } catch {
     return null
   }
 }
 
-function writeAmendmentsCache(amendments: Amendment[]) {
+function writeCache(cache: AmendmentsCache) {
   if (typeof window === 'undefined') return
   try {
-    const payload: AmendmentsCachePayload = { timestamp: Date.now(), amendments }
-    window.localStorage.setItem(amendmentsCacheKey, JSON.stringify(payload))
+    window.localStorage.setItem(amendmentsCacheKey, JSON.stringify(cache))
   } catch {
     // Ignore quota or serialization errors
   }
+}
+
+// Fetch a single amendments endpoint (vote or info).
+async function fetchAmendmentList(endpoint: string): Promise<Amendment[]> {
+  const response = await fetch(endpoint)
+  if (!response.ok) {
+    throw new Error(`HTTP error ${response.status} from ${endpoint}`)
+  }
+  const data: AmendmentsResponse = await response.json()
+  return data.amendments
+}
+
+// Deduplicated fetching for the amendment data; concurrent callers share the same promise.
+let inFlight: Promise<AmendmentsCache> | null = null
+
+// Cache-first: return the fresh combined cache, or fetch both endpoints in parallel,
+// stamp them with a single timestamp, and store them under one cache key.
+function getAmendmentsCache(): Promise<AmendmentsCache> {
+  const cached = readCache()
+  if (cached) return Promise.resolve(cached)
+  if (inFlight) return inFlight
+  const request = (async () => {
+    const [vote, info] = await Promise.all([
+      fetchAmendmentList(amendmentsVoteEndpoint),
+      fetchAmendmentList(amendmentsInfoEndpoint),
+    ])
+    const cache: AmendmentsCache = { timestamp: Date.now(), vote, info }
+    writeCache(cache)
+    return cache
+  })()
+  inFlight = request
+  // Release the slot once settled so a later cold load can refresh.
+  const release = () => { if (inFlight === request) inFlight = null }
+  request.then(release, release)
+  return request
+}
+
+// Vote list for the amendments table (the caller filters out obsolete amendments).
+function getAmendments(): Promise<Amendment[]> {
+  return getAmendmentsCache().then(cache => cache.vote)
+}
+
+// Look up a single amendment for a disclaimer: the vote list first, then the info
+// list for obsolete/never-enabled amendments.
+async function findAmendment(name: string): Promise<Amendment> {
+  const { vote, info } = await getAmendmentsCache()
+  const found = vote.find(a => a.name === name) ?? info.find(a => a.name === name)
+  if (found) return found
+
+  throw new Error(`Couldn't find ${name} amendment in status tables.`)
 }
 
 // Obsolete amendments (deprecated and never enabled, e.g. Batch) are documented
@@ -171,35 +221,18 @@ export function AmendmentsTable() {
   const estimatedHeight = `${expectedTableHeight()}px`
 
   React.useEffect(() => {
-    const fetchAmendments = async () => {
-      try {
-        setLoading(true)
-        // 1. Try cache first
-        const cached = readAmendmentsCache()
-
-        if (cached) {
-          setAmendments(sortAmendments(cached.filter(a => !isObsolete(a))))
-          return // Use current cache (fresh)
-        }
-        // 2. Fetch new data if cache is stale
-        const response = await fetch(amendmentsEndpoint)
-        
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`)
-        }
-
-        const data: AmendmentsResponse = await response.json()
-        writeAmendmentsCache(data.amendments)
-
-        setAmendments(sortAmendments(data.amendments.filter(a => !isObsolete(a))))
-      } catch (err) {
-        setError(err instanceof Error ? err.message : 'Failed to fetch amendments')
-      } finally {
-        setLoading(false)
-      }
-    }
-
-    fetchAmendments()
+    let cancelled = false
+    getAmendments()
+      .then(list => {
+        if (!cancelled) setAmendments(sortAmendments(list.filter(a => !isObsolete(a))))
+      })
+      .catch(err => {
+        if (!cancelled) setError(err instanceof Error ? err.message : 'Failed to fetch amendments')
+      })
+      .finally(() => {
+        if (!cancelled) setLoading(false)
+      })
+    return () => { cancelled = true }
   }, [])
 
   // Fancy schmancy loading icon
@@ -334,61 +367,20 @@ export function AmendmentDisclaimer(props: {
   const link = () => <Link to={`/resources/known-amendments#${props.name.toLowerCase()}`}>{props.name}{ props.compact ? "" : " amendment"}</Link>
 
   React.useEffect(() => {
-    const loadAmendment = async () => {
-      try {
-        setLoading(true)
-        // 1. Try cache first
-        const cached = readAmendmentsCache()
-
-        if (cached) {
-          const found = cached.find(a => a.name === props.name)
-            if (found) {
-              setStatus(found)
-              return // amendment successfully found in cache
-            }
-        }
-        // 2. New API request for stale/missing cache. 
-        // Also catches edge case of new amendment appearing
-        // on mainnet within cache TTL window.
-        const response = await fetch(amendmentsEndpoint)
-
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`)
-        }
-
-        const data: AmendmentsResponse = await response.json()
-        writeAmendmentsCache(data.amendments)
-
-        const found = data.amendments.find(a => a.name === props.name)
-        
-        // 3. If not found in live data, try the info endpoint.
-        if (!found) {
-          
-          const infoResponse = await fetch(amendmentsInfoEndpoint)
-          
-          if (!infoResponse.ok) {
-            throw new Error(`HTTP error from info endpoint! Status: ${infoResponse.status}`)
-          }
-          
-          const infoData: AmendmentsResponse = await infoResponse.json()
-          const foundInInfo = infoData.amendments.find(a => a.name === props.name)
-          
-          if (!foundInInfo) {
-            throw new Error(`Couldn't find ${props.name} amendment in status tables.`)
-          }
-          
-          setStatus(foundInInfo)
-          return
-        }
-
-        setStatus(found)
-      } catch (err) {
-        setError(err instanceof Error ? err.message : 'Failed to fetch amendments')
-      } finally {
-        setLoading(false)
-      }
-    };
-    loadAmendment()
+    let cancelled = false
+    setLoading(true)
+    setError(null)
+    findAmendment(props.name)
+      .then(found => {
+        if (!cancelled) setStatus(found)
+      })
+      .catch(err => {
+        if (!cancelled) setError(err instanceof Error ? err.message : 'Failed to fetch amendments')
+      })
+      .finally(() => {
+        if (!cancelled) setLoading(false)
+      })
+    return () => { cancelled = true }
   }, [props.name])
 
   if (loading) {
