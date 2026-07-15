@@ -87,7 +87,7 @@ See:
 
 ## Burning NFTs
 
-There are some workflows where it makes sense for the issuer to retain the right to burn the token at some point in the future, regardless of the current owner. For example, NFTs used for carbon credits can be minted and traded, but once the carbon is captured, the NFT can be burned so that it is no longer transferable. For these scenarios, set the `lsfBurnable` flag when you mint the NFT.
+There are some workflows where it makes sense for the issuer to retain the right to burn the token at some point in the future, regardless of the current owner. For example, NFTs used for carbon credits can be minted and traded, but once the carbon is captured, the NFT can be burned so that it is no longer transferable. For these scenarios, set the `flagBurnable` flag when you mint the NFT.
 
 ![Burning NFTs](/docs/img/uc-nft-burn.png)
 

@@ -1,6 +1,4 @@
 ---
-html: nftoken.html
-parent: basic-data-types.html
 seo:
     description: Introduction to XRPL NFTs.
 labels:
@@ -8,7 +6,7 @@ labels:
 ---
 # NFToken
 
-The `NFToken` object represents a single non-fungible token (NFT). It is not stored on its own, but is contained in a [NFTokenPage object][] alongside other `NFToken` objects.
+A `NFToken` object represents a single non-fungible token (NFT) in the XRP Ledger. It is not stored on its own, but is contained in a [NFTokenPage entry][] alongside other `NFToken` objects.
 
 {% amendment-disclaimer name="NonFungibleTokensV1_1" /%}
 
@@ -16,8 +14,8 @@ The `NFToken` object represents a single non-fungible token (NFT). It is not sto
 
 ```json
 {
-    "NFTokenID": "000B013A95F14B0044F78A264E41713C64B5F89242540EE208C3098E00000D65",
-    "URI": "ipfs://bafybeigdyrzt5sfp7udm7hu76uh7y26nf4dfuylqabf3oclgtqy55fbzdi"
+    "NFTokenID": "000000007EFD66D7DA6C495613C3ABE122007097122045BBBD944ED000000035",
+    "URI": "697066733A2F2F62616679626569647461673467627069657570666774757A666D747232366A777179766837747963716836626F64753569687033377468676F7234"
 }
 ```
 
@@ -25,45 +23,39 @@ Unlike full-fledged [ledger entries](../ledger-data/ledger-entry-types/index.md)
 
 
 ## NFTokenID
-<!-- SPELLING_IGNORE: nftokenid -->
 
-`NFTokenID`, optional, string, UInt256
+This composite field uniquely identifies a token, and consists of the following sections in big-endian format:
 
-This composite field uniquely identifies a token, and consists of the following sections.
+A) 16 bits that identify flags or settings specific to the NFToken.
 
-A) 16 bits that identify flags or settings specific to the NFToken
+B) 16 bits that encode the transfer fee associated with this NFToken, if any.
 
-B) 16 bits that encode the transfer fee associated with this NFToken, if any
+C) A 160-bit account identifier of the issuer.
 
-C) A 160-bit account identifier of the issuer
+D) A 32-bit issuer-specified [`NFTokenTaxon`](https://www.merriam-webster.com/dictionary/taxon).
 
-D) A 32-bit issuer-specified [`NFTokenTaxon`](https://www.merriam-webster.com/dictionary/taxon)
-
-E) An (automatically generated) monotonically increasing 32-bit sequence number.
+E) A monotonically increasing 32-bit sequence number, automatically supplied when minting.
 
 ![Token ID Breakdown](/docs/img/nftoken1.png "Token ID Breakdown")
-
-The 16-bit flags, transfer fee fields, the 32-bit `NFTokenTaxon`, and the sequence number fields are stored in big-endian format.
 
 ## NFToken Flags
 
 Flags are properties or other options associated with the `NFToken` object.
 
 
-| Flag Name         | Flag Value | Description                                 |
-|:------------------|:-----------|:--------------------------------------------|
-| `lsfBurnable`     | `0x0001`   | If enabled, the issuer (or an entity authorized by the issuer) can destroy this `NFToken`. The object's owner can always do so. |
-| `lsfOnlyXRP`      | `0x0002`   | If enabled, this `NFToken` can only be offered or sold for XRP. |
-| `lsfTrustLine`    | `0x0004`   | **DEPRECATED** If enabled, automatically create [trust lines](../../../concepts/tokens/fungible-tokens/index.md) to hold transfer fees. Otherwise, buying or selling this `NFToken` for a fungible token amount fails if the issuer does not have a trust line for that token. The [fixRemoveNFTokenAutoTrustLine amendment][] makes it invalid to enable this flag. |
-| `lsfTransferable` | `0x0008`   | If enabled, this `NFToken` can be transferred from one holder to another. Otherwise, it can only be transferred to or from the issuer. |
-| `lsfReservedFlag` | `0x8000`   | This flag is reserved for future use. Attempts to set this flag fail. |
-| `lsfMutable`      | `0x0010`   | If enabled, the `URI` field of the `NFToken` can be updated using the `NFTokenModify` transaction. |
+| Flag Name          | Flag Value | Description                                 |
+|:-------------------|:-----------|:--------------------------------------------|
+| `flagBurnable`     | `0x0001`   | If enabled, the issuer (or an entity authorized by the issuer) can destroy this `NFToken`. The object's owner can always do so. |
+| `flagOnlyXRP`      | `0x0002`   | If enabled, this `NFToken` can only be offered or sold for XRP. |
+| `flagTrustLine`    | `0x0004`   | **DEPRECATED** If enabled, automatically create [trust lines](../../../concepts/tokens/fungible-tokens/index.md) to hold transfer fees. Otherwise, buying or selling this `NFToken` for a fungible token amount fails if the issuer does not have a trust line for that token. The [fixRemoveNFTokenAutoTrustLine amendment][] makes it invalid to enable this flag. |
+| `flagTransferable` | `0x0008`   | If enabled, this `NFToken` can be transferred from one holder to another. Otherwise, it can only be transferred to or from the issuer. |
+| `flagMutable`      | `0x0010`   | If enabled, the `URI` field of the `NFToken` can be updated using a [NFTokenModify transaction][]. |
 
 `NFToken` flags are immutable: they can only be set during the [NFTokenMint transaction][] and cannot be changed later.
 
 ### Example
 
-The example sets three flags: `lsfBurnable` (`0x0001`), `lsfOnlyXRP` (`0x0002`), `lsfTransferable` (`0x0008`). 1+2+8 = 11, or `0x000B` in big endian format.
+The example sets three flags: `flagBurnable` (`0x0001`), `flagOnlyXRP` (`0x0002`), `flagTransferable` (`0x0008`). 1+2+8 = 11, or `0x000B` in big endian format.
 
 ![Flags](/docs/img/nftokena.png "Flags")
 
