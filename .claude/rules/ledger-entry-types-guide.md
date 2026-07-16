@@ -56,7 +56,7 @@ Pull details from the `xrpld` source file that the `{% source-link /%}` path poi
 
 In addition to the [common ledger entry fields][], {% code-page-name /%} entries have the following fields:
 
-<!-- TODO: Update the fields table using the following format:
+<!-- TODO: Update the fields table using the format below. Omit these common fields: `index` or `LedgerIndex`, `LedgerEntryType`, `Flags`.
 
 | Name                | JSON Type | Internal Type | Required? | Description |
 |:--------------------|:----------|:--------------|:----------|:------------|

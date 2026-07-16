@@ -49,7 +49,7 @@ Pull details from the `xrpld` source file that the `{% source-link /%}` path poi
 
 In addition to the [common fields][], {% code-page-name /%} transactions use the following fields:
 
-<!-- TODO: Update the fields table using the following format:
+<!-- TODO: Update the fields table using the format below. Omit these common fields: `Account`, `TransactionType`, `Fee`, `Sequence`, `AccountTxnID`, `Delegate`, `Flags`, `LastLedgerSequence`, `Memos`, `NetworkID`, `Signers`, `SourceTag`, `SigningPubKey`, `TicketSequence`, `TxnSignature`.
 
 | Field Name             | JSON Type | Internal Type | Required? | Description |
 |:-----------------------|:----------|:--------------|:----------|:------------|
@@ -62,6 +62,24 @@ In addition to the [common fields][], {% code-page-name /%} transactions use the
 | `CoverRateLiquidation` | Number    | UInt32        | No        | The 1/10th basis point of minimum required first-loss capital that is moved to an asset vault to cover a loan default. Valid values range from `0` to `100000` (inclusive), representing 0% to 100%. |
 
 When this transaction modifies an existing `LoanBroker` ledger entry, you can only modify `Flags`, `Data`, and `DebtMaximum`.
+
+-->
+
+
+## {% $frontmatter.seo.title %} Flags
+<!-- RULE: If the transaction doesn't have flags, delete all other content in this section and add this line as-is:
+There are no flags defined for {% code-page-name /%} transactions.
+-->
+
+Transactions of the {% code-page-name /%} type support additional values in the [`Flags` field](../common-fields.md#flags-field), as follows:
+
+<!-- TODO: Update the flags table using the following format:
+
+| Flag Name          | Hex Value    | Decimal Value | Description                  |
+|:-------------------|:-------------|:--------------|:-----------------------------|
+| `tfNoRippleDirect` | `0x00010000` | 65536         | Do not use the default path; only use paths included in the `Paths` field. This is intended to force the transaction to take arbitrage opportunities. Most clients do not need this. |
+| `tfPartialPayment` | `0x00020000` | 131072        | If the specified `Amount` cannot be sent without spending more than `SendMax`, reduce the received amount instead of failing outright. See [Partial Payments](#partial-payments) for more details. |
+| `tfLimitQuality`   | `0x00040000` | 262144        | Only take paths where all the conversions have an input:output ratio that is equal or better than the ratio of `Amount`:`SendMax`. See [Limit Quality](#limit-quality) for details. |
 
 -->
 

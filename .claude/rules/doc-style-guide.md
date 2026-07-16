@@ -41,7 +41,7 @@ paths:
 | <ul><li>Preferred: For more information about (topic), see (xref).</li><li>Acceptable: For more information, see (xref).</li></ul> | <ul><li>See (xref) for more information about (topic).</li><li>For additional information, see (xref).</li></ul> |
 | The default is (value). | <ul><li>Defaults to (value).</li><li>Default: (value).</li></ul> |
 | <ul><li>Preferred: instance</li><li>Acceptable: server or node</li></ul> | |
-| Preferred: We recommend | <ul><li>Ripple recommends</li><li>It is recommended</li></ul> |
+| Preferred: It is recommended | <ul><li>Ripple recommends</li><li>We recommend</li></ul> |
 
 ## Frontmatter
 
