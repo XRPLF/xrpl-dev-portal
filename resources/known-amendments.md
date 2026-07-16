@@ -230,7 +230,7 @@ Although this amendment is enabled, it has no effect unless the [SusPay](#suspay
 | Amendment    | CryptoConditionsSuite |
 |:-------------|:----------------------|
 | Amendment ID | 86E83A7D2ECE3AD5FA87AB2195AE015C950469ABF0B72EAACED318F74886AE90 |
-| Status       | {% badge %}Obsolete: To Be Removed{% /badge %} |
+| Status       | {% amendment-disclaimer name="CryptoConditionsSuite" statusOnly=true /%} |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | Yes |
 
