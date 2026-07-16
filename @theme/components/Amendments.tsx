@@ -5,6 +5,7 @@ import type { Node } from '@markdoc/markdoc'
 import { Link } from '@redocly/theme/components/Link/Link'
 import { useThemeHooks } from '@redocly/theme/core/hooks'
 import amendmentsSnapshot from '../data/amendments-snapshot.json'
+import obsoleteAmendments from '../data/obsolete-amendments.json'
 
 type Amendment = {
   name: string
@@ -15,6 +16,13 @@ type Amendment = {
   id: string
   eta?: string
   deprecated: boolean
+}
+type ObsoleteAmendment = {
+  id: string,
+  name: string,
+  rippled_version: string,
+  status: string
+  href?: string
 }
 
 type AmendmentsResponse = {
@@ -97,33 +105,25 @@ function getAmendments(): Promise<Amendment[]> {
 }
 
 // Look up a single amendment for a disclaimer: the vote list first, then the info
-// list for obsolete/never-enabled amendments.
-async function findAmendment(name: string): Promise<Amendment> {
+// list, then the hard-coded list of obsolete amendments.
+async function findAmendment(name: string): Promise<Amendment|ObsoleteAmendment> {
   const { vote, info } = await getAmendmentsCache()
   const found = vote.find(a => a.name === name) ?? info.find(a => a.name === name)
   if (found) return found
+  const obsolete = isObsolete(name)
+  if (obsolete) return obsolete
 
   throw new Error(`Couldn't find ${name} amendment in status tables.`)
 }
 
-// Obsolete amendments (deprecated and never enabled, e.g. Batch) are documented
-// in the "Obsolete and Retired Amendments" section, not the live Mainnet Status
-// table, so filter them out here. Deprecated amendments that are enabled keep
-// their functionality and remain in the table as Enabled.
-// OBSOLETE_AMENDMENT_NAMES is a manually maintained override.
-
-const OBSOLETE_AMENDMENT_NAMES = new Set<string>([
-  'CryptoConditionsSuite',
-  'fixNFTokenDirV1',
-  'fixNFTokenNegOffer',
-  'NonFungibleTokensV1',
-])
-
-function isObsolete(amendment: Amendment): boolean {
-  return (
-    OBSOLETE_AMENDMENT_NAMES.has(amendment.name) ||
-    (Boolean(amendment.deprecated) && !amendment.tx_hash)
-  )
+// Amendments ultimately become either obsolete (removed & never enabled)
+// or retired (enabled & unconditionalized). A "deprecated" status in the
+// VHS data can refer to either one, depending on if it has a tx_hash indicating
+// that it was enabled on Mainnet.
+// But since VHS data does not include everything, we rely on a manually
+// maintained list of obsolete amendments with status info.
+function isObsolete(amendment_name: string): ObsoleteAmendment|undefined {
+  return obsoleteAmendments.find( (a: ObsoleteAmendment) => a.name == amendment_name )
 }
 
 // Sort amendments table by status, then chronologically, then alphabetically
@@ -158,10 +158,17 @@ function sortAmendments(list: Amendment[]): Amendment[] {
 }
 
 // Get amendment status from snapshot data.
-function amendmentStatusForLlms(a: Amendment): string {
+function amendmentStatusForLlms(a: Amendment|ObsoleteAmendment): string {
+  const obsolete = isObsolete(a.name)
   if (a.tx_hash) {
     const date = a.date ? new Date(a.date).toISOString().split('T')[0] : ''
     return date ? `Enabled: ${date}` : 'Enabled'
+  }
+  if (obsolete) {
+    // Note: update to use translate() when Redocly supports it in renderForLlms
+    // const obsLabel = translate("amendment.status.obsolete", "Obsolete")
+    const obsLabel = "Obsolete"
+    return `${obsLabel}: ${obsolete.status}`
   }
   if (a.eta) return `Expected: ${new Date(a.eta).toISOString().split('T')[0]}`
   if (a.consensus) return `Open for Voting: ${a.consensus}`
@@ -181,7 +188,7 @@ export function amendmentsTableForLlms(): string {
     return `Note: Amendment status table is missing or malformed. For live status, visit https://xrpl.org/resources/known-amendments in a browser.\n`
   }
 
-  const rows = sortAmendments(amendments.filter(a => !isObsolete(a)))
+  const rows = sortAmendments(amendments.filter(a => !isObsolete(a.name)))
 
   const lines = [
     `Note: The amendment status table is a snapshot from ${asOf}. For live status, visit https://xrpl.org/resources/known-amendments in a browser.`,
@@ -203,7 +210,7 @@ export function amendmentsTableForLlms(): string {
 // have loaded.
 function expectedTableHeight() {
   const numAmendmentsCached = amendmentsSnapshot.amendments.filter(
-    a => !isObsolete(a)).length
+    a => !isObsolete(a.name)).length
   const rowHeight = 39 // pixel height per row, including border, based on CSS
   const headerHeight = 38 // pixel height of table header
   const wrapperMargin = 41 // extra margin added by the md-table-wrapper element
@@ -224,7 +231,7 @@ export function AmendmentsTable() {
     let cancelled = false
     getAmendments()
       .then(list => {
-        if (!cancelled) setAmendments(sortAmendments(list.filter(a => !isObsolete(a))))
+        if (!cancelled) setAmendments(sortAmendments(list.filter(a => !isObsolete(a.name))))
       })
       .catch(err => {
         if (!cancelled) setError(err instanceof Error ? err.message : 'Failed to fetch amendments')
@@ -290,7 +297,51 @@ export function AmendmentsTable() {
   )
 }
 
-function AmendmentBadge(props: { amendment: Amendment }) {
+export function ObsoleteAmendmentsTable() {
+  const { useTranslate } = useThemeHooks()
+  const { translate } = useTranslate()
+
+  return (
+    <div className="md-table-wrapper">
+      <table className="md">
+        <thead>
+          <tr>
+            <th align="left" data-label="Name">{translate("amendment.table.name", "Name")}</th>
+            <th align="left" data-label="Introduced">{translate("amendment.table.introduced", "Introduced")}</th>
+            <th align="left" data-label="Status">{translate("amendment.table.status", "Status")}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {obsoleteAmendments.map((amendment) => (
+            <tr key={amendment.id}>
+              <td align="left">
+                <Link to={`#${amendment.name.toLowerCase()}`}>{amendment.name}</Link>
+              </td>
+              <td align="left">{amendment.rippled_version}</td>
+              <td align="left">
+                <AmendmentBadge amendment={amendment} />
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  )
+}
+
+export function obsoleteAmendmentsTableForLlms() {
+  const lines = [
+    '| Name | Introduced | Status |',
+    '|:-----|:-----------|:-------|',
+    ...obsoleteAmendments.map(
+      a => `| [${a.name}](#${a.name.toLowerCase()}) | ${a.rippled_version} | ${amendmentStatusForLlms(a)} |`,
+    ),
+    '',
+  ]
+  return lines.join('\n')
+}
+
+function AmendmentBadge(props: { amendment: Amendment|ObsoleteAmendment}) {
   const [status, setStatus] = React.useState<string>('Loading...')
   const [href, setHref] = React.useState<string | undefined>(undefined)
   const [color, setColor] = React.useState<string>('blue')
@@ -300,8 +351,9 @@ function AmendmentBadge(props: { amendment: Amendment }) {
   const enabledLabel = translate("amendment.status.enabled", "Enabled")
   const votingLabel = translate("amendment.status.openForVoting", "Open for Voting")
   const etaLabel = translate("amendment.status.eta", "Expected")
-  const inactiveLabel = translate("amendment.status.inactive", "Inactive")
-  const inactiveButton = translate("amendment.status.inactiveButton", "Get details")
+  const unknownLabel = translate("amendment.status.unknown", "Unknown")
+  const unknownButton = translate("amendment.status.unknownButton", "Get details")
+  const obsLabel = translate("amendment.status.obsolete", "Obsolete")
 
   React.useEffect(() => {
     const amendment = props.amendment
@@ -312,27 +364,29 @@ function AmendmentBadge(props: { amendment: Amendment }) {
       setStatus(`${enabledLabel}: ${enabledDate}`)
       setColor('green')
       setHref(`https://livenet.xrpl.org/transactions/${amendment.tx_hash}`)
-    } 
-    // Check if expected activation is provided (has eta field)
-    else if (amendment.eta) {
+    } else if (isObsolete(amendment.name)) {
+      const obsAmendment = isObsolete(amendment.name)
+      setStatus(`${obsLabel}: ${obsAmendment.status}`)
+      setColor('red')
+      setHref(obsAmendment.href)
+    } else if (amendment.eta) {
+      // Expected activation is provided (has eta field)
       let etaDate = new Date(amendment.eta).toISOString().split('T')[0]
       setStatus(`${etaLabel}: ${etaDate}`)
       setColor('blue')
       setHref(undefined)
-    }
-    // Check if amendment is currently being voted on (has consensus field)
-    else if (amendment.consensus) {
+    } else if (amendment.consensus) {
+      // Amendment is currently being voted on (has consensus field)
       setStatus(`${votingLabel}: ${amendment.consensus}`)
       setColor('80d0e0')
       setHref(undefined)
-    }
-    // Fallback: amendment is inactive
-    else {
-      setStatus(`${inactiveLabel}: ${inactiveButton}`)
+    } else {
+      // Fallback: status is unknown
+      setStatus(`${unknownLabel}: ${unknownButton}`)
       setColor('lightgrey')
       setHref(`/resources/known-amendments#${amendment.name.toLowerCase()}`)
     }
-  }, [props.amendment, enabledLabel, etaLabel, votingLabel, inactiveLabel])
+  }, [props.amendment, enabledLabel, obsLabel, etaLabel, votingLabel, unknownLabel])
   
   // Split the status at the colon to create two-color badge
   const parts = status.split(':')
@@ -497,7 +551,10 @@ export function amendmentDisclaimerForLlms(node: Node): string {
   // const { translate } = useTranslate()
   const translate = (key:string, s:string) => s; // Shim version of translate
 
-  let amendment : Amendment | any = amendmentsSnapshot.amendments.find( (a) => a.name === name )
+  let amendment : Amendment | ObsoleteAmendment | any = (
+    isObsolete(name) ||
+    amendmentsSnapshot.amendments.find( (a) => a.name === name )
+  )
   let status = "Status Unknown"
   if (!amendment) {  
     status = translate("amendment.status.inactive", "Inactive")
@@ -522,8 +579,8 @@ export function amendmentDisclaimerForLlms(node: Node): string {
       text1 = translate("component.amendment-status.updated.1", "Updated by the ")
       text2 = translate("component.amendment-status.updated.2", ".")
     } else {
-      text1 = translate("component.amendment-status.requires.1", "Requires the ")
-      text2 = translate("component.amendment-status.requires.2", ".")
+      text1 = translate("component.amendment-status.updates.1", "The ")
+      text2 = translate("component.amendment-status.updates.2", " updates this.")
     }
   } else {
     if (amendment.date) {

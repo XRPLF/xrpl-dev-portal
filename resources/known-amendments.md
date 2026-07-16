@@ -26,7 +26,7 @@ The following is a list of [amendments](../docs/concepts/networks-and-servers/am
 | [ConfidentialTransfer][]          | {% badge %}In Development: TBD{% /badge %} | [XLS-96 Confidential Transfers](https://opensource.ripple.com/docs/xls-96-confidential-transfers) |
 | [MPTokensV2][]                    | {% badge %}In Development: TBD{% /badge %} | [XLS-82 MPT DEX Integration](https://opensource.ripple.com/docs/xls-82-mpt-dex) |
 | [Sponsor][]                       | {% badge %}In Development: TBD{% /badge %} | [XLS-68 Sponsored Fees and Reserves](https://opensource.ripple.com/docs/xls-68-sponsored-fees-and-reserves) |
-| [SmartEscrow][]                 | {% badge %}In Development: TBD{% /badge %} | [XLS-100 Smart Escrows](https://opensource.ripple.com/docs/xls-100-smart-escrows) |
+| [SmartEscrow][]                   | {% badge %}In Development: TBD{% /badge %} | [XLS-100 Smart Escrows](https://opensource.ripple.com/docs/xls-100-smart-escrows) |
 
 {% admonition type="success" name="Tip" %}
 This list is updated manually. If you're working on an amendment and have a private network to test the changes, you can edit this page to add your in-development amendment to this list. For more information on contributing to the XRP Ledger, see [Contribute Code to the XRP Ledger](contribute-code/index.md).
@@ -37,21 +37,7 @@ This list is updated manually. If you're working on an amendment and have a priv
 
 The following is a list of known [amendments](../docs/concepts/networks-and-servers/amendments.md) that have been removed in a previous version of the core server, or are obsolete and have been marked for removal.
 
-| Name                              | Introduced | Status                        |
-|:----------------------------------|:-----------|:------------------------------|
-| [fixBatchInnerSigs]               | v3.1.0     | {% badge href="https://xrpl.org/blog/2026/rippled-3.1.1" %}Obsolete: Removed in v3.1.1{% /badge %} |
-| [Batch]                           | v2.5.0     | {% badge href="https://xrpl.org/blog/2026/rippled-3.1.1" %}Obsolete: Removed in v3.1.1{% /badge %} |
-| [PermissionDelegation]            | v2.5.0     | {% badge href="https://xrpl.org/blog/2025/rippled-2.6.1" %}Obsolete: Removed in v2.6.1{% /badge %} |
-| [fixNFTokenNegOffer][]            | v1.9.2     | {% badge %}Obsolete: To Be Removed{% /badge %} |
-| [fixNFTokenDirV1][]               | v1.9.1     | {% badge %}Obsolete: To Be Removed{% /badge %} |
-| [NonFungibleTokensV1][]           | v1.9.0     | {% badge %}Obsolete: To Be Removed{% /badge %} |
-| [CryptoConditionsSuite][]         | v0.60.0    | {% badge %}Obsolete: To Be Removed{% /badge %} |
-| [OwnerPaysFee][]                  | v0.33.0    | {% badge href="https://xrpl.org/blog/2017/rippled-0.80.0" %}Obsolete: Removed in v0.80.0{% /badge %} |
-| [SHAMapV2][]                      | v0.32.1    | {% badge href="https://xrpl.org/blog/2019/rippled-1.4.0.html" %}Obsolete: Removed in v1.4.0{% /badge %} |
-| [Tickets][]                       | v0.30.1    | {% badge href="https://xrpl.org/blog/2018/rippled-0.90.0.html" %}Obsolete: Removed in v0.90.0{% /badge %} |
-| [SusPay][]                        | v0.31.0    | {% badge href="https://xrpl.org/blog/2017/ticksize-voting.html#upcoming-features" %}Obsolete: Removed in v0.60.0{% /badge %} |
-| [FlowV2][]                        | v0.32.1    | {% badge href="https://xrpl.org/blog/2016/flowv2-vetoed.html" %}Obsolete: Removed in v0.33.0{% /badge %} |
-
+{% obsolete-amendments-table /%}
 
 ## Details about Known Amendments
 
@@ -244,7 +230,7 @@ Although this amendment is enabled, it has no effect unless the [SusPay](#suspay
 | Amendment    | CryptoConditionsSuite |
 |:-------------|:----------------------|
 | Amendment ID | 86E83A7D2ECE3AD5FA87AB2195AE015C950469ABF0B72EAACED318F74886AE90 |
-| Status       | {% amendment-disclaimer name="CryptoConditionsSuite" statusOnly=true /%} |
+| Status       | {% badge %}Obsolete: To Be Removed{% /badge %} |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | Yes |
 
@@ -786,14 +772,14 @@ Adds several fixes to Automated Market Maker code, specifically:
 | Amendment    | fixBatchInnerSigs |
 |:-------------|:----------------|
 | Amendment ID | 267624F8F744C4A4F1B5821A7D54410BCEBABE987F0172EE89E5FC4B6EDBC18A |
-| Status       | Obsolete |
-| Default Vote (Latest stable release) | No |
-| Pre-amendment functionality retired? | No |
+| Status       | {% amendment-disclaimer name="fixBatchInnerSigs" statusOnly=true /%} |
+| Default Vote (Latest stable release) | N/A |
+| Pre-amendment functionality retired? | N/A |
 
 This amendment fixes an issue where inner transactions of a `Batch` transaction would be flagged as having valid signatures. Since inner transactions aren't signed directly, they should never have valid signatures.
 
 {% admonition type="danger" name="Warning" %}
-This amendment was disabled in v3.1.1 due to a bug. It will be replaced by `BatchV1_1` in a future release.
+This amendment was disabled in v3.1.1 due to a bug in `Batch`. The `BatchV1_1` amendment in a future release will include this fix.
 {% /admonition %}
 
 
@@ -1085,9 +1071,9 @@ This amendment adds missing `DeliveredAmount` and `delivered_amount` metadata fi
 | Amendment    | fixNFTokenDirV1 |
 |:-------------|:----------------|
 | Amendment ID | 0285B7E5E08E1A8E4C15636F0591D87F73CB6A7B6452A932AD72BBC8E5D1CBE3 |
-| Status       | Obsolete |
-| Default Vote (Latest stable release) | No |
-| Pre-amendment functionality retired? | No |
+| Status       | {% amendment-disclaimer name="fixNFTokenDirV1" statusOnly=true /%} |
+| Default Vote (Latest stable release) | N/A |
+| Pre-amendment functionality retired? | N/A |
 
 This amendment fixes an off-by-one error that occurred in some corner cases when determining which `NFTokenPage` a `NFToken` object belongs on. It also adjusts the constraints of `NFTokenPage` invariant checks, so that certain error cases fail with a suitable error code such as `tecNO_SUITABLE_TOKEN_PAGE` instead of failing with a `tecINVARIANT_FAILED` error code.
 
@@ -1100,7 +1086,7 @@ This amendment has no effect unless the [NonFungibleTokensV1][] amendment is ena
 | Amendment    | fixNFTokenNegOffer |
 |:-------------|:-------------------|
 | Amendment ID | 36799EA497B1369B170805C078AEFE6188345F9B3E324C21E9CA3FF574E3C3D6 |
-| Status       | Obsolete |
+| Status       | {% amendment-disclaimer name="fixNFTokenNegOffer" statusOnly=true /%} |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
@@ -1497,9 +1483,9 @@ Without this change, the engine simulates a payment through each possible path t
 | Amendment    | FlowV2 |
 |:-------------|:-------|
 | Amendment ID | 5CC22CFF2864B020BD79E0E1F048F63EF3594F95E650E43B3F837EF1DF5F4B26 |
-| Status       | Obsolete |
-| Default Vote (Latest stable release) | No |
-| Pre-amendment functionality retired? | No |
+| Status       | {% amendment-disclaimer name="FlowV2" statusOnly=true /%} |
+| Default Vote (Latest stable release) | N/A |
+| Pre-amendment functionality retired? | N/A |
 
 This is a previous version of the [Flow](#flow) amendment. It was [rejected due to a bug](https://xrpl.org/blog/2016/flowv2-vetoed.html) and removed in version 0.33.0.
 
@@ -1693,9 +1679,9 @@ Without this amendment, you must separately send an [NFTokenCreateOffer transact
 | Amendment    | NonFungibleTokensV1 |
 |:-------------|:--------------------|
 | Amendment ID | 3C43D9A973AA4443EF3FC38E42DD306160FBFFDAB901CD8BAA15D09F2597EB87 |
-| Status       | Obsolete |
-| Default Vote (Latest stable release) | No |
-| Pre-amendment functionality retired? | No |
+| Status       | {% amendment-disclaimer name="NonFungibleTokensV1" statusOnly=true /%} |
+| Default Vote (Latest stable release) | N/A |
+| Pre-amendment functionality retired? | N/A |
 
 Adds native support for [non-fungible tokens](../docs/concepts/tokens/nfts/index.md). Standards Draft: [XLS-20d](https://github.com/XRPLF/XRPL-Standards/discussions/46). <!-- SPELLING_IGNORE: xls, 20d -->
 
@@ -1752,9 +1738,9 @@ The [fixRemoveNFTokenAutoTrustLine][] fixes an known issue with this amendment. 
 | Amendment    | OwnerPaysFee |
 |:-------------|:-------------|
 | Amendment ID | 9178256A980A86CF3D70D0260A7DA6402AAFE43632FDBCB88037978404188871 |
-| Status       | Obsolete |
+| Status       | {% amendment-disclaimer name="OwnerPaysFee" statusOnly=true /%} |
 | Default Vote (Latest stable release) | N/A |
-| Pre-amendment functionality retired? | No |
+| Pre-amendment functionality retired? | N/A |
 
 Fixes an inconsistency in the way [transfer fees](../docs/concepts/tokens/fungible-tokens/transfer-fees.md) are calculated between [OfferCreate](../docs/references/protocol/transactions/types/offercreate.md) and [Payment](../docs/references/protocol/transactions/types/payment.md) transaction types. Without this amendment, the holder of the token pays the transfer fee if an offer is executed in offer placement, but the initial sender of a transaction pays the transfer fees for offers that are executed as part of payment processing. With this amendment, the holder of the token always pays the transfer fee, regardless of whether the offer is executed as part of a Payment or an OfferCreate transaction. Offer processing outside of payments is unaffected.
 
@@ -1788,9 +1774,9 @@ For more information, see the [Payment Channels Tutorial](../docs/tutorials/paym
 | Amendment    | PermissionDelegation |
 |:-------------|:---------------------|
 | Amendment ID | AE6AB9028EEB7299EBB03C7CBCC3F2A4F5FBE00EA28B8223AA3118A0B436C1C5 |
-| Status       | Obsolete |
-| Default Vote (Latest stable release) | No |
-| Pre-amendment functionality retired? | No |
+| Status       | {% amendment-disclaimer name="PermissionDelegation" statusOnly=true /%} |
+| Default Vote (Latest stable release) | N/A |
+| Pre-amendment functionality retired? | N/A |
 
 Allows accounts to delegate some permissions to other accounts. Specification: [XLS-75](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0075-permission-delegation).
 
@@ -1869,13 +1855,13 @@ For more information, see [`rippled` issue #3042](https://github.com/XRPLF/rippl
 | Amendment    | SHAMapV2 |
 |:-------------|:---------|
 | Amendment ID | C6970A8B603D8778783B61C0D445C23D1633CCFAEF0D43E7DBCD1521D34BD7C3 |
-| Status       | Obsolete |
-| Default Vote (Latest stable release) | No |
-| Pre-amendment functionality retired? | No |
+| Status       | {% amendment-disclaimer name="SHAMapV2" statusOnly=true /%} |
+| Default Vote (Latest stable release) | N/A |
+| Pre-amendment functionality retired? | N/A |
 
-Changes the hash tree structure that `rippled` uses to represent a ledger. The new structure is more compact and efficient than the previous version. This affects how ledger hashes are calculated, but has no other user-facing consequences.
+Changes the hash tree structure used to represent a ledger. The new structure is more compact and efficient than the previous version. This affects how ledger hashes are calculated, but has no other user-facing consequences.
 
-When this amendment is activated, the XRP Ledger will undergo a brief scheduled unavailability while the network calculates the changes to the hash tree structure. <!-- STYLE_OVERRIDE: will -->
+Activating this amendment would have required the XRP Ledger to undergo scheduled unavailability while the network calculated the changes to the hash tree structure. This amendment was removed because the efficiency gains were judged to be not worth the downtime.
 
 
 ### SingleAssetVault
@@ -1962,9 +1948,9 @@ For more details, see [XLS-68: Sponsored Fees and Reserves](https://opensource.r
 | Amendment    | SusPay |
 |:-------------|:-------|
 | Amendment ID | DA1BD556B42D85EA9C84066D028D355B52416734D3283F85E216EA5DA6DB7E13 |
-| Status       | Obsolete |
-| Default Vote (Latest stable release) | No |
-| Pre-amendment functionality retired? | No |
+| Status       | {% amendment-disclaimer name="SusPay" statusOnly=true /%} |
+| Default Vote (Latest stable release) | N/A |
+| Pre-amendment functionality retired? | N/A |
 
 This amendment was replaced by the [Escrow](../docs/references/protocol/ledger-data/ledger-entry-types/escrow.md) amendment.
 
@@ -1990,9 +1976,9 @@ Standards Draft: [XLS-13d](https://github.com/XRPLF/XRPL-Standards/issues/16). <
 | Amendment    | Tickets |
 |:-------------|:--------|
 | Amendment ID | C1B8D934087225F509BEB5A8EC24447854713EE447D277F69545ABFA0E0FD490 |
-| Status       | Obsolete |
-| Default Vote (Latest stable release) | No |
-| Pre-amendment functionality retired? | No |
+| Status       | {% amendment-disclaimer name="Tickets" statusOnly=true /%} |
+| Default Vote (Latest stable release) | N/A |
+| Pre-amendment functionality retired? | N/A |
 
 This amendment was replaced by the [TicketBatch][] amendment.
 
