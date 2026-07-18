@@ -63,7 +63,7 @@ In addition to the [common ledger entry fields][], {% code-page-name /%} entries
 | `Account`             | String    | AccountID     | Yes       | The address of the `LoanBroker` pseudo-account. |
 | `Owner`               | String    | AccountID     | Yes       | The account address of the vault owner. |
 | `Data`                | String    | Blob          | No        | Arbitrary metadata about the vault. Limited to 256 bytes. |
-| `ManagementFeeRate`   | Number    | UInt16        | No        | The fee charged by the lending protocol, in units of 1/10th basis points. Valid values are 0 to 100000 (inclusive), representing 0% to 100%. |
+| `ManagementFeeRate`   | Number    | UInt16        | No        | The fee charged by the lending protocol on any loan interest, in units of 1/10th basis points. Valid values are 0 to 10000 (inclusive), representing 0% to 10%. |
 | `OwnerCount`          | Number    | UInt32        | Yes       | The number of active loans issued by the LoanBroker. |
 | `DebtTotal`           | String    | Number        | Yes       | The total asset amount the protocol owes the vault, including interest. |
 | `DebtMaximum`         | String    | Number        | No        | The maximum amount the protocol can owe the vault. The default value of `0` means there is no limit to the debt. |
