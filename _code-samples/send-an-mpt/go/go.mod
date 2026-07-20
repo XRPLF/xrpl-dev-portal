@@ -1,6 +1,6 @@
 module github.com/XRPLF
 
-go 1.24.3
+go 1.25.0
 
 require github.com/Peersyst/xrpl-go v0.2.0
 
@@ -15,5 +15,5 @@ require (
 	github.com/modern-go/reflect2 v1.0.2 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/ugorji/go/codec v1.2.11 // indirect
-	golang.org/x/crypto v0.44.0 // indirect
+	golang.org/x/crypto v0.52.0 // indirect
 )
