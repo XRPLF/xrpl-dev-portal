@@ -581,7 +581,6 @@
                 - page: docs/references/http-websocket-apis/public-api-methods/payment-channel-methods/index.md
                   expanded: false
                   items:
-                    - page: docs/references/http-websocket-apis/public-api-methods/payment-channel-methods/channel_authorize.md
                     - page: docs/references/http-websocket-apis/public-api-methods/payment-channel-methods/channel_verify.md
                 - page: docs/references/http-websocket-apis/public-api-methods/subscription-methods/index.md
                   expanded: false
@@ -649,6 +648,7 @@
                   items:
                     - page: docs/references/http-websocket-apis/admin-api-methods/signing-methods/sign.md
                     - page: docs/references/http-websocket-apis/admin-api-methods/signing-methods/sign_for.md
+                    - page: docs/references/http-websocket-apis/admin-api-methods/signing-methods/channel_authorize.md
                 - page: docs/references/http-websocket-apis/admin-api-methods/peer-management-methods/index.md
                   expanded: false
                   items:

@@ -43,7 +43,7 @@ Use these methods to sign transactions.
 
 * **[`sign`](signing-methods/sign.md)** - Cryptographically sign a transaction.
 * **[`sign_for`](signing-methods/sign_for.md)** - Contribute to a multi-signature.
-* **[`channel_authorize`](../public-api-methods/payment-channel-methods/channel_authorize.md)** - Sign a claim for money from a payment channel.
+* **[`channel_authorize`](signing-methods/channel_authorize.md)** - Sign a claim for money from a payment channel.
 
 By default, these methods are [admin-only](../../../tutorials/get-started/get-started-http-websocket-apis.md#admin-access). They can be used as public methods if the server admin has [enabled public signing](../../../infrastructure/configuration/enable-public-signing.md).
 

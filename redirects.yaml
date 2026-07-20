@@ -1086,7 +1086,7 @@ ripple_path_find.html:
 payment-channel-methods.html:
     to: /docs/references/http-websocket-apis/public-api-methods/payment-channel-methods/
 channel_authorize.html:
-    to: /docs/references/http-websocket-apis/public-api-methods/payment-channel-methods/channel_authorize
+    to: /docs/references/http-websocket-apis/admin-api-methods/signing-methods/channel_authorize
 channel_verify.html:
     to: /docs/references/http-websocket-apis/public-api-methods/payment-channel-methods/channel_verify
 subscription-methods.html:
