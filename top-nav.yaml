@@ -89,6 +89,8 @@
       items:
         - page: ./docs/tutorials/get-started/get-started-javascript.md
           label: JavaScript
+        - page: ./docs/tutorials/get-started/get-started-typescript.md
+          label: TypeScript
         - page: ./docs/tutorials/get-started/get-started-python.md
           label: Python
         - page: ./docs/tutorials/get-started/get-started-java.md

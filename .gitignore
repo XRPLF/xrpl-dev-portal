@@ -8,6 +8,8 @@ yarn-error.log
 *.iml
 .venv/
 _code-samples/*/js/package-lock.json
+_code-samples/*/ts/package-lock.json
+_code-samples/*/ts/dist/
 _code-samples/*/go/go.sum
 _code-samples/*/java/target/
 _code-samples/*/*/*[Ss]etup.json

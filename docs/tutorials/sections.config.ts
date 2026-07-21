@@ -35,6 +35,7 @@ export const sectionConfig: Record<string, {
     description: "These tutorials walk you through the basics of building a very simple XRP Ledger-connected application using your favorite programming language.",
     pinned: [
       { path: "/docs/tutorials/get-started/get-started-javascript/", description: "Using the xrpl.js client library." },
+      { path: "/docs/tutorials/get-started/get-started-typescript/", description: "Using xrpl.js with TypeScript's built-in type checking." },
       { path: "/docs/tutorials/get-started/get-started-python/", description: "Using xrpl.py, a pure Python library." },
       { path: "/docs/tutorials/get-started/get-started-go/", description: "Using xrpl-go, a pure Go library." },
       { path: "/docs/tutorials/get-started/get-started-java/", description: "Using xrpl4j, a pure Java library." },

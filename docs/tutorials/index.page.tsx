@@ -59,6 +59,7 @@ export const frontmatter = {
 
 const langIcons: Record<string, { src: string; alt: string }> = {
   javascript: { src: "/img/logos/javascript.svg", alt: "JavaScript" },
+  typescript: { src: "/img/logos/typescript.svg", alt: "TypeScript" },
   python: { src: "/img/logos/python.svg", alt: "Python" },
   java: { src: "/img/logos/java.svg", alt: "Java" },
   go: { src: "/img/logos/golang.svg", alt: "Go" },
