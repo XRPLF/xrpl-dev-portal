@@ -72,7 +72,8 @@ validate(payment as unknown as Record<string, unknown>)
 console.log('\nBuilt and validated a Payment transaction:')
 console.log(JSON.stringify(payment, null, 2))
 // To send it, sign and submit in one call:
-//   await client.submitAndWait(payment, { wallet: testWallet })
+const submitResponse = await client.submitAndWait(payment, { wallet: testWallet })
+console.log(JSON.stringify(submitResponse.result, null, 2))
 // @chunk-end
 
 // @chunk {"steps": ["listen-for-events-tag"]}
