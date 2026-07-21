@@ -1,5 +1,33 @@
 [
     {
+        "id": "36799EA497B1369B170805C078AEFE6188345F9B3E324C21E9CA3FF574E3C3D6",
+        "name": "fixNFTokenNegOffer",
+        "rippled_version": "1.9.2",
+        "status": "Removed in 3.2.0",
+        "href": "https://github.com/XRPLF/rippled/pull/5971"
+    },
+    {
+        "id": "0285B7E5E08E1A8E4C15636F0591D87F73CB6A7B6452A932AD72BBC8E5D1CBE3",
+        "name": "fixNFTokenDirV1",
+        "rippled_version": "1.9.1",
+        "status": "Removed in 3.2.0",
+        "href": "https://github.com/XRPLF/rippled/pull/5971"
+    },
+    {
+        "id": "3C43D9A973AA4443EF3FC38E42DD306160FBFFDAB901CD8BAA15D09F2597EB87",
+        "name": "NonFungibleTokensV1",
+        "rippled_version": "1.9.0",
+        "status": "Removed in 3.2.0",
+        "href": "https://github.com/XRPLF/rippled/pull/5971"
+    },
+    {
+        "id": "86E83A7D2ECE3AD5FA87AB2195AE015C950469ABF0B72EAACED318F74886AE90",
+        "name": "CryptoConditionsSuite",
+        "rippled_version": "0.60.0",
+        "status": "Removed in 3.2.0",
+        "href": "https://github.com/XRPLF/rippled/pull/6036"
+    },
+    {
         "id": "267624F8F744C4A4F1B5821A7D54410BCEBABE987F0172EE89E5FC4B6EDBC18A",
         "name": "fixBatchInnerSigs",
         "rippled_version": "3.1.0",
@@ -18,38 +46,7 @@
         "name": "PermissionDelegation",
         "rippled_version": "2.5.0",
         "status": "Removed in 2.6.1",
-        "href": "https://xrpl.org/blog/2026/rippled-2.6.1"
-    },
-    {
-        "id": "36799EA497B1369B170805C078AEFE6188345F9B3E324C21E9CA3FF574E3C3D6",
-        "name": "fixNFTokenNegOffer",
-        "rippled_version": "1.9.2",
-        "status": "To Be Removed"
-    },
-    {
-        "id": "0285B7E5E08E1A8E4C15636F0591D87F73CB6A7B6452A932AD72BBC8E5D1CBE3",
-        "name": "fixNFTokenDirV1",
-        "rippled_version": "1.9.1",
-        "status": "To Be Removed"
-    },
-    {
-        "id": "3C43D9A973AA4443EF3FC38E42DD306160FBFFDAB901CD8BAA15D09F2597EB87",
-        "name": "NonFungibleTokensV1",
-        "rippled_version": "1.9.0",
-        "status": "To Be Removed"
-    },
-    {
-        "id": "86E83A7D2ECE3AD5FA87AB2195AE015C950469ABF0B72EAACED318F74886AE90",
-        "name": "CryptoConditionsSuite",
-        "rippled_version": "0.60.0",
-        "status": "To Be Removed"
-    },
-    {
-        "id": "9178256A980A86CF3D70D0260A7DA6402AAFE43632FDBCB88037978404188871",
-        "name": "OwnerPaysFee",
-        "rippled_version": "0.33.0",
-        "status": "Removed in 0.80.0",
-        "href": "https://xrpl.org/blog/2017/rippled-0.80.0"
+        "href": "https://xrpl.org/blog/2025/rippled-2.6.1"
     },
     {
         "id": "C6970A8B603D8778783B61C0D445C23D1633CCFAEF0D43E7DBCD1521D34BD7C3",
@@ -64,6 +61,13 @@
         "rippled_version": "0.30.1",
         "status": "Removed in 0.90.0",
         "href": "https://xrpl.org/blog/2018/rippled-0.90.0.html"
+    },
+    {
+        "id": "9178256A980A86CF3D70D0260A7DA6402AAFE43632FDBCB88037978404188871",
+        "name": "OwnerPaysFee",
+        "rippled_version": "0.33.0",
+        "status": "Removed in 0.80.0",
+        "href": "https://xrpl.org/blog/2017/rippled-0.80.0"
     },
     {
         "id": "DA1BD556B42D85EA9C84066D028D355B52416734D3283F85E216EA5DA6DB7E13",

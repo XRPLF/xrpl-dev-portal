@@ -107,11 +107,11 @@ function getAmendments(): Promise<Amendment[]> {
 // Look up a single amendment for a disclaimer: the vote list first, then the info
 // list, then the hard-coded list of obsolete amendments.
 async function findAmendment(name: string): Promise<Amendment|ObsoleteAmendment> {
+  const obsolete = isObsolete(name)
+  if (obsolete) return obsolete
   const { vote, info } = await getAmendmentsCache()
   const found = vote.find(a => a.name === name) ?? info.find(a => a.name === name)
   if (found) return found
-  const obsolete = isObsolete(name)
-  if (obsolete) return obsolete
 
   throw new Error(`Couldn't find ${name} amendment in status tables.`)
 }
