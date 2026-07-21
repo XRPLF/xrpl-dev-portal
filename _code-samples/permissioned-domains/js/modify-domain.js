@@ -8,7 +8,7 @@ await client.connect()
 
 // Load setup data ------------------------------------------------------------
 if (!fs.existsSync('setup.json')) {
-  console.error('Config data not found. Did you run create_domain.py first?')
+  console.error('Config data not found. Did you run create-domain.js first?')
   process.exit(1)
 }
 const configData = JSON.parse(fs.readFileSync('setup.json', 'utf8'))
