@@ -2,7 +2,7 @@ import { Schema, Tag } from '@markdoc/markdoc';
 import type { MarkdocTagSchema } from '@redocly/theme/markdoc/tags/types';
 import { sourceLinkForLlms } from '../components/SourceLink';
 import { ResposiveGraphicForLlms } from '../components/ResponsiveGraphic'
-import { amendmentsTableForLlms } from '../components/Amendments';
+import { amendmentsTableForLlms, amendmentDisclaimerForLlms, obsoleteAmendmentsTableForLlms } from '../components/Amendments';
 
 export const childPages: Schema & { tagName: string } = {
   tagName: 'child-pages',
@@ -249,7 +249,14 @@ export const amendmentsTable: MarkdocTagSchema & { tagName: string } = {
   renderForLlms: amendmentsTableForLlms,
 }
 
-export const amendmentDisclaimer: Schema &  { tagName: string } = {
+export const obsoleteAmendmentsTable: MarkdocTagSchema & { tagName: string } = {
+  tagName: 'obsolete-amendments-table',
+  render: 'ObsoleteAmendmentsTable',
+  selfClosing: true,
+  renderForLlms: obsoleteAmendmentsTableForLlms,
+}
+
+export const amendmentDisclaimer: MarkdocTagSchema &  { tagName: string } = {
   tagName: 'amendment-disclaimer',
   attributes: {
     name: {
@@ -261,6 +268,11 @@ export const amendmentDisclaimer: Schema &  { tagName: string } = {
       required: false,
       default: false
     },
+    statusOnly: {
+      type: 'Boolean',
+      required: false,
+      default: false
+    },
     mode: {
       type: 'String',
       required: false,
@@ -268,6 +280,7 @@ export const amendmentDisclaimer: Schema &  { tagName: string } = {
     }
   },
   render: 'AmendmentDisclaimer',
+  renderForLlms: amendmentDisclaimerForLlms,
   selfClosing: true
 }
 

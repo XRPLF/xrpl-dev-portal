@@ -1,6 +1,6 @@
 export { default as XRPLoader } from '../components/XRPLoader'
 export { XRPLCard, CardGrid } from '../components/XRPLCard'
-export { AmendmentsTable, AmendmentDisclaimer, Badge } from '../components/Amendments'
+export { AmendmentsTable, ObsoleteAmendmentsTable, AmendmentDisclaimer, Badge } from '../components/Amendments'
 export { Tabs } from '../components/SyncedTabs'
 export { default as ChildPages } from '../components/ChildPages'
 export { default as NotEnabled } from '../components/NotEnabled'
