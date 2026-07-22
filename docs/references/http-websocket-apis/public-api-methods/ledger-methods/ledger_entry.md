@@ -1424,6 +1424,58 @@ xrpld json ledger_entry '{ "signer_list": "A9C28A28B85CD533217F5C0A0C7767666B093
 {% try-it method="ledger_entry-signerlist" /%}
 
 
+### Get Sponsorship Entry
+
+Retrieve a [Sponsorship entry][], which tracks a fee or reserve sponsorship between a sponsor and a sponsee. {% amendment-disclaimer name="Sponsor" /%}
+
+| Field                 | Type                 | Required? | Description |
+|:----------------------|:---------------------|:----------|:------------|
+| `sponsorship`         | Object or String     | Yes       | Specify the Sponsorship to retrieve. If a string, must be the [ledger entry ID][] of the Sponsorship entry, as hexadecimal. If an object, requires the `sponsor` and `sponsee` sub-fields. |
+| `sponsorship.sponsor` | String - [Address][] | No        | The address of the sponsor account. |
+| `sponsorship.sponsee` | String - [Address][] | No        | The address of the sponsee account. |
+
+{% tabs %}
+
+{% tab label="WebSocket" %}
+```json
+{
+  "id": "example_get_sponsorship",
+  "command": "ledger_entry",
+  "sponsorship": {
+    "sponsor": "rpUqggHmAvbeWDr3v8QPTds7HgFBPKNkLX",
+    "sponsee": "rEfvNyfG1GC4CXxqe4ct3KJBRz6oW6NPrD"
+  },
+  "ledger_index": "validated"
+}
+```
+{% /tab %}
+
+{% tab label="JSON-RPC" %}
+```json
+{
+  "method": "ledger_entry",
+  "params": [{
+    "sponsorship": {
+      "sponsor": "rpUqggHmAvbeWDr3v8QPTds7HgFBPKNkLX",
+      "sponsee": "rEfvNyfG1GC4CXxqe4ct3KJBRz6oW6NPrD"
+    },
+    "ledger_index": "validated"
+  }]
+}
+```
+{% /tab %}
+
+{% tab label="Commandline" %}
+```sh
+xrpld json ledger_entry '{ "sponsorship": { "sponsor": "rpUqggHmAvbeWDr3v8QPTds7HgFBPKNkLX", "sponsee": "rEfvNyfG1GC4CXxqe4ct3KJBRz6oW6NPrD" }, "ledger_index": "validated" }'
+```
+{% /tab %}
+
+{% /tabs %}
+
+{% try-it method="ledger_entry-sponsorship" server="devnet" /%}
+
+
 ### Get Ticket Entry
 <a id="get-ticket-object"></a><!-- legacy ID -->
 {% amendment-disclaimer name="TicketBatch" /%}
