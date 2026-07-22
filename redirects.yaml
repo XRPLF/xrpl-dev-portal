@@ -1,5 +1,7 @@
 # Docs redirects for moved pages -----------------------------------------------
 # (not associated with a major reorg)
+/docs/tutorials/compliance-features/create-permissioned-domains-in-javascript:
+    to: /docs/tutorials/compliance-features/manage-permissioned-domains/
 /docs/tutorials/defi/dex/trade-with-auction-slot-in-javascript/:
     to: /docs/tutorials/defi/dex/use-amm-auction-slot-for-lower-fees/
 /resources/contribute-documentation/tutorial-structure/:

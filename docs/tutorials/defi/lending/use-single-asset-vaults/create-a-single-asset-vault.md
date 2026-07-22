@@ -181,7 +181,7 @@ This confirms that you have successfully created an empty single asset vault.
 
 **Tutorials**:
   - [Issue Credentials](../../../sample-apps/credential-issuing-service-in-javascript.md)
-  - [Create Permissioned Domain](../../../compliance-features/create-permissioned-domains-in-javascript.md)
+  - [Manage Permissioned Domains](../../../compliance-features/manage-permissioned-domains.md)
   - [Deposit Assets into a Vault](./deposit-into-a-vault.md)
 
 **References**:
