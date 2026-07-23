@@ -197,6 +197,7 @@ The data type that holds MPT balances has a valid range of **0** to **2<sup>63</
 - **Tutorial**
 
     - [Send a Multi-Purpose Token (MPT)](../../../tutorials/payments/send-an-mpt.md)
+    - [Inspect MPT Properties](../../../tutorials/tokens/mpts/inspect-mpt.md)
 
 - **References:**
     - [MPToken](../../../references/protocol/ledger-data/ledger-entry-types/mptoken.md)
