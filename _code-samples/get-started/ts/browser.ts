@@ -73,8 +73,11 @@ const payment: Payment = {
 validate(payment as unknown as Record<string, unknown>)
 output.innerHTML += '<p>Built and validated a Payment transaction:</p>'
 output.innerHTML += `<pre>${JSON.stringify(payment, null, 2)}</pre>`
-// To send it, sign and submit in one call:
-//   await client.submitAndWait(payment, { wallet: testWallet })
+
+// Sign and submit the transaction in one call, then show the result.
+const submitResponse = await client.submitAndWait(payment, { wallet: testWallet })
+output.innerHTML += '<p>Submitted the transaction:</p>'
+output.innerHTML += `<pre>${JSON.stringify(submitResponse.result, null, 2)}</pre>`
 // @chunk-end
 
 // @chunk {"steps": ["listen-for-events-tag"]}

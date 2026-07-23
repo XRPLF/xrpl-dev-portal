@@ -65,6 +65,17 @@ Built and validated a Payment transaction:
   "Destination": "rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe"
 }
 
+Submitted the transaction:
+{
+  "hash": "84AF8035CD41B0E411968FC9BDD52254C662197DB2BE669640F6DF25D79A7E0A",
+  "ledger_index": 19257811,
+  "meta": {
+    "TransactionResult": "tesSUCCESS",
+    "delivered_amount": "22000000"
+  },
+  "validated": true
+}
+
 Listening for ledger close events...
 Ledger #9949269 validated with 0 transactions!
 Ledger #9949270 validated with 0 transactions!
@@ -99,6 +110,17 @@ Built and validated a Payment transaction:
   "Account": "rf7CWJdNssSzQk2GtypYLVhyvGe8oHS3S",
   "Amount": "22000000",
   "Destination": "rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe"
+}
+
+Submitted the transaction:
+{
+  "hash": "84AF8035CD41B0E411968FC9BDD52254C662197DB2BE669640F6DF25D79A7E0A",
+  "ledger_index": 19257811,
+  "meta": {
+    "TransactionResult": "tesSUCCESS",
+    "delivered_amount": "22000000"
+  },
+  "validated": true
 }
 
 Listening for ledger close events...

@@ -175,7 +175,7 @@ Use the Client's [`request()`](https://js.xrpl.org/classes/Client.html#request) 
 
 One of the biggest advantages of TypeScript is turning your own input into a well-formed transaction. Typing an object as a [`Payment`](../../references/protocol/transactions/types/payment.md) makes the compiler require every field and reject values of the wrong type _before_ you run the code. The [`xrpToDrops()`](https://js.xrpl.org/functions/xrpToDrops.html) helper converts an XRP amount into the drops string the ledger expects, and [`validate()`](https://js.xrpl.org/functions/validate.html) runs the same structural checks the server does at runtime.
 
-This example builds and validates the transaction without submitting it. To send it, sign and submit in one call with [`submitAndWait()`](https://js.xrpl.org/classes/Client.html#submitAndWait). Before submitting real transactions, read [Set up Secure Signing](../../concepts/transactions/secure-signing.md).
+This example then signs and submits the transaction in one call with [`submitAndWait()`](https://js.xrpl.org/classes/Client.html#submitAndWait), which waits for the network to validate it and returns the result. Before submitting real transactions, read [Set up Secure Signing](../../concepts/transactions/secure-signing.md).
 {% /step %}
 
 {% step id="listen-for-events-tag" %}
@@ -205,6 +205,8 @@ Finally, in your terminal, compile the TypeScript to JavaScript and run the resu
 npx tsc
 node dist/get-acct-info.js
 ```
+
+{% admonition type="info" name="Note" %}TypeScript is compiled, not run directly. Whenever you change a `.ts` file, re-run `npx tsc` to recompile before running the app again.{% /admonition %}
 
 You should see output similar to the following:
 
@@ -248,6 +250,17 @@ Built and validated a Payment transaction:
   "Destination": "rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe"
 }
 
+Submitted the transaction:
+{
+  "hash": "84AF8035CD41B0E411968FC9BDD52254C662197DB2BE669640F6DF25D79A7E0A",
+  "ledger_index": 19257811,
+  "meta": {
+    "TransactionResult": "tesSUCCESS",
+    "delivered_amount": "22000000"
+  },
+  "validated": true
+}
+
 Listening for ledger close events...
 Ledger #18910119 validated with 0 transactions!
 Ledger #18910120 validated with 1 transactions!
@@ -265,6 +278,8 @@ Compile the TypeScript to JavaScript, then open the `index.html` file in a web b
 ```sh
 npx tsc
 ```
+
+{% admonition type="info" name="Note" %}TypeScript is compiled, not run directly. Whenever you change a `.ts` file, re-run `npx tsc` to recompile before reloading the page.{% /admonition %}
 
 You should see output similar to the following:
 
@@ -304,6 +319,17 @@ Built and validated a Payment transaction:
   "Account": "rf7CWJdNssSzQk2GtypYLVhyvGe8oHS3S",
   "Amount": "22000000",
   "Destination": "rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe"
+}
+
+Submitted the transaction:
+{
+  "hash": "84AF8035CD41B0E411968FC9BDD52254C662197DB2BE669640F6DF25D79A7E0A",
+  "ledger_index": 19257811,
+  "meta": {
+    "TransactionResult": "tesSUCCESS",
+    "delivered_amount": "22000000"
+  },
+  "validated": true
 }
 
 Listening for ledger close events...
