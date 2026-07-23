@@ -812,4 +812,5 @@
         - page: resources/contribute-documentation/creating-diagrams.md
         - page: resources/contribute-documentation/markdoc-tags.md
         - page: resources/contribute-documentation/tutorial-guidelines.md
+        - page: resources/contribute-documentation/realm-upgrade-checklist.md
     - page: resources/contribute-blog/index.md
