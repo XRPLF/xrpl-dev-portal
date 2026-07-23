@@ -25,7 +25,13 @@
 /docs/infrastructure/installation/rippled-1-3-migration-instructions/:
     to: /docs/infrastructure/installation/
 /docs/infrastructure/installation/update-rippled-manually-on-centos-rhel/:
-    to: /docs/infrastructure/installation/update-xrpld-manually-on-rhel/
+    to: /docs/infrastructure/installation/update-xrpld-on-rhel/
+/docs/infrastructure/installation/update-xrpld-automatically-on-linux/:
+    to: /docs/infrastructure/installation/
+/docs/infrastructure/installation/update-xrpld-manually-on-rhel/:
+    to: /docs/infrastructure/installation/update-xrpld-on-rhel/
+/docs/infrastructure/installation/update-xrpld-manually-on-ubuntu/:
+    to: /docs/infrastructure/installation/update-xrpld-on-ubuntu/
 /docs/infrastructure/installation/install-rippled-on-centos-rhel-with-yum/:
     to: /docs/infrastructure/installation/install-xrpld-on-rhel/
 /docs/concepts/xrpl-sidechains/price-oracles/:
@@ -1228,11 +1234,17 @@ install-rippled-on-ubuntu.html:
 install-clio-on-ubuntu.html:
     to: /docs/infrastructure/installation/install-clio-on-ubuntu
 update-rippled-automatically-on-linux.html:
-    to: /docs/infrastructure/installation/update-xrpld-automatically-on-linux
+    to: /docs/infrastructure/installation/
 update-rippled-manually-on-centos-rhel.html:
-    to: /docs/infrastructure/installation/update-xrpld-manually-on-rhel
+    to: /docs/infrastructure/installation/update-xrpld-on-rhel
 update-rippled-manually-on-ubuntu.html:
-    to: /docs/infrastructure/installation/update-xrpld-manually-on-ubuntu
+    to: /docs/infrastructure/installation/update-xrpld-on-ubuntu
+update-xrpld-automatically-on-linux.html:
+    to: /docs/infrastructure/installation/
+update-xrpld-manually-on-rhel.html:
+    to: /docs/infrastructure/installation/update-xrpld-on-rhel
+update-xrpld-manually-on-ubuntu.html:
+    to: /docs/infrastructure/installation/update-xrpld-on-ubuntu
 build-on-linux-mac-windows.html:
     to: /docs/infrastructure/installation/build-on-linux-mac-windows
 build-run-rippled-in-reporting-mode.html:
@@ -1326,7 +1338,7 @@ build-run-rippled-ubuntu.html:
 build-run-rippled-macos.html:
     to: /docs/infrastructure/installation/build-on-linux-mac-windows
 update-rippled-automatically-on-centos-rhel.html:
-    to: /docs/infrastructure/installation/update-xrpld-automatically-on-linux
+    to: /docs/infrastructure/installation/update-xrpld-on-rhel
 install-rippled-on-ubuntu-with-alien.html:
     to: /docs/infrastructure/installation/install-xrpld-on-ubuntu
 run-a-rippled-validator.html:
@@ -1844,10 +1856,10 @@ code_of_conduct.ja:
 /docs/infrastructure/installation/install-rippled-on-ubuntu/:
     to: /docs/infrastructure/installation/install-xrpld-on-ubuntu/
 /docs/infrastructure/installation/update-rippled-automatically-on-linux/:
-    to: /docs/infrastructure/installation/update-xrpld-automatically-on-linux/
+    to: /docs/infrastructure/installation/
 /docs/infrastructure/installation/update-rippled-manually-on-rhel/:
-    to: /docs/infrastructure/installation/update-xrpld-manually-on-rhel/
+    to: /docs/infrastructure/installation/update-xrpld-on-rhel/
 /docs/infrastructure/installation/update-rippled-manually-on-ubuntu/:
-    to: /docs/infrastructure/installation/update-xrpld-manually-on-ubuntu/
+    to: /docs/infrastructure/installation/update-xrpld-on-ubuntu/
 /docs/references/http-websocket-apis/api-conventions/rippled-server-states/:
     to: /docs/references/http-websocket-apis/api-conventions/xrpld-server-states/
