@@ -195,6 +195,7 @@
           groupTranslationKey: sidebar.docs.tutorials.getStarted
           expanded: false
           items:
+            - page: docs/tutorials/get-started/local-dev-sandbox-with-xrpl-up.md
             - page: docs/tutorials/get-started/get-started-javascript.md
             - page: docs/tutorials/get-started/get-started-typescript.md
             - page: docs/tutorials/get-started/get-started-python.md
