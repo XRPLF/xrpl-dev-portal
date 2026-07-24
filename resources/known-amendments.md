@@ -381,7 +381,7 @@ Adds functionality to update the `URI` field of an `NFToken` ledger entry. This 
 | Amendment    | DynamicMPT |
 |:-------------|:-----------|
 | Amendment ID | 58E92F338758479C06084E1B6BA366BAD8F75E5329A7F0EEAFFFDA51E5106B7F |
-| Status       | Open for Voting |
+| Status       | {% amendment-disclaimer name="DynamicMPT" statusOnly=true /%} |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 

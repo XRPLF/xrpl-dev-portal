@@ -97,10 +97,10 @@ Besides errors that can occur for all transactions, {% $frontmatter.seo.title %}
 |:--------------------------|:------------|
 | `tecDIR_FULL`             | The owner directory of the account creating the `MPTokenIssuance` ledger entry is full. |
 | `temBAD_TRANSFER_FEE`     | The transfer fee specified is greater than the maximum allowed value of 50,000. |
-| `temDISABLED`             | Common causes include:<br>- The `MPTokensV1` amendment is disabled.<br>- You include a `DomainID` field in the transaction, but the `PermissionedDomains` and `SingleAssetVault` amendments aren't both enabled.<br>- The `ImmutableFlags` field is present but the `DynamicMPT` amendment is not enabled. {% amendment-disclaimer name="DynamicMPT" mode="updated" /%} |
+| `temDISABLED`             | Common causes include:<br>- The `MPTokensV1` amendment is disabled.<br>- The `DomainID` field is present, but the `PermissionedDomains` and `SingleAssetVault` amendments aren't both enabled.<br>- The `ImmutableFlags` field is present, but the `DynamicMPT` amendment is not enabled. {% amendment-disclaimer name="DynamicMPT" mode="updated" /%} |
 | `temINVALID_FLAG`         | The `ImmutableFlags` field is present but contains no flags or an undefined flag. {% amendment-disclaimer name="DynamicMPT" /%} |
 | `tecINSUFFICIENT_RESERVE` | The account creating the `MPTokenIssuance` ledger entry doesn't have enough XRP to meet the owner reserve. |
-| `temMALFORMED`            | Besides generally malformed transactions, you can receive this error if:<br>- A non-zero transfer fee is set, but the `tfMPTCanTransfer` flag is _not_ set.<br>- The `DomainID` is zero (an empty value), or you include a `DomainID` without setting the `tfMPTRequireAuth` flag.<br>- The `MPTokenMetadata` field is an invalid length (0 or exceeds 1024 bytes).<br>- The `MaximumAmount` field is 0 or exceeds 9,223,372,036,854,775,807 (2^63-1). |
+| `temMALFORMED`            | Besides generally malformed transactions, you can receive this error if:<br>- A non-zero transfer fee is set, but the `tfMPTCanTransfer` flag is _not_ set.<br>- The `DomainID` is zero, or you include a `DomainID` without setting the `tfMPTRequireAuth` flag.<br>- The `MPTokenMetadata` field is an invalid length (0 or exceeds 1024 bytes).<br>- The `MaximumAmount` field is 0 or exceeds 9,223,372,036,854,775,807 (2^63-1). |
 
 
 ## See Also
