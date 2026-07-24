@@ -36,28 +36,31 @@ This example locks the balances of all holders of the specified MPT issuance.
 
 | Field               | JSON Type            | [Internal Type][] | Required? | Description |
 |:--------------------|:---------------------|:------------------|:----------|-------------|
+| `AuditorEncryptionKey` | String               | Blob              | No        | Optional 33-byte EC-ElGamal public key used for regulatory oversight. Must be provided together with `IssuerEncryptionKey` in the same transaction. {% amendment-disclaimer name="ConfidentialTransfer" /%} |
 | `DomainID`          | String - [Hash][]    | UInt256           | No        | The ledger entry ID of a permissioned domain that grants access to the MPT. An empty value or `0` removes the permissioned domain from the MPT issuance so that only users who are explicitly approved by the issuer can send and receive the MPT. You can only set a `DomainID` if the MPT issuance has [**Require Auth**](/docs/concepts/tokens/fungible-tokens/multi-purpose-tokens#transferability-controls) enabled. {% amendment-disclaimer name="PermissionedDomains" /%} {% amendment-disclaimer name="SingleAssetVault" /%} |
-| `MPTokenIssuanceID` | String - Hexadecimal | UInt192           | Yes       | The identifier of the `MPTokenIssuance` to update. |
 | `Holder`            | String - [Address][] | AccountID         | No        | An individual token holder. If provided, apply changes to the given holder's balance of the given MPT issuance. If omitted, apply to all accounts holding the given MPT issuance. |
+| `ImmutableFlags`    | Number               | UInt32            | No        | A bitwise combination of flags declaring which fields and capability-setting flags become immutable and can never be changed again after this transaction. See [MPTokenIssuanceSet Immutable Flags](#mptokenissuanceset-immutable-flags). {% amendment-disclaimer name="DynamicMPT" /%} |
+| `IssuerEncryptionKey`  | String               | Blob              | No        | The 33-byte EC-ElGamal public key used for the issuer's mirror balances. {% amendment-disclaimer name="ConfidentialTransfer" /%} |
+| `MPTokenIssuanceID` | String - Hexadecimal | UInt192           | Yes       | The identifier of the `MPTokenIssuance` to update. |
 | `MPTokenMetadata`   | String - Hexadecimal | Blob              | No        | New metadata to replace the existing value. Setting an empty value removes the field. Mutable by default; can't be updated if the `MPTokenMetadata` field was made immutable. {% amendment-disclaimer name="DynamicMPT" /%} |
 | `TransferFee`       | Number               | UInt16            | No        | The new transfer fee value. Setting this to zero removes the field. Mutable by default; can't be updated if the `TransferFee` field was made immutable. See [Transfer Fee Rules](#transfer-fee-rules). {% amendment-disclaimer name="DynamicMPT" /%} |
-| `ImmutableFlags`    | Number               | UInt32            | No        | A bitwise combination of flags declaring which fields and capability-setting flags become immutable and can never be changed again after this transaction. See [MPTokenIssuanceSet Immutable Flags](#mptokenissuanceset-immutable-flags). {% amendment-disclaimer name="DynamicMPT" /%} |
 
 
 ## MPTokenIssuanceSet Flags
 
 Transactions of the `MPTokenIssuanceSet` type support additional values in the [`Flags` field](../common-fields.md#flags-field), as follows:
 
-| Flag Name             | Hex Value    | Decimal Value | Description |
-|:----------------------|:-------------|:--------------|:------------|
-| `tfMPTLock`           | `0x00000001` | 1             | Lock the balances of this MPT issuance. Can only be combined with a `Holder` or `DomainID` in the same transaction. |
-| `tfMPTUnlock`         | `0x00000002` | 2             | Unlock the balances of this MPT issuance. Can only be combined with a `Holder` or `DomainID` in the same transaction. |
-| `tfMPTSetCanLock`     | `0x00000004` | 4             | Enable the MPT's **Can Lock** flag, which lets the issuer lock and unlock holders' balances. Once enabled, this flag cannot be disabled. {% amendment-disclaimer name="DynamicMPT" /%} |
-| `tfMPTSetRequireAuth` | `0x00000008` | 8             | Enable the MPT's **Require Auth** flag, which requires individual holders to be authorized. Once enabled, this flag cannot be disabled. {% amendment-disclaimer name="DynamicMPT" /%} |
-| `tfMPTSetCanEscrow`   | `0x00000010` | 16            | Enable the MPT's **Can Escrow** flag, which lets holders place their balances into escrow. Once enabled, this flag cannot be disabled. {% amendment-disclaimer name="DynamicMPT" /%} |
-| `tfMPTSetCanTrade`    | `0x00000020` | 32            | Enable the MPT's **Can Trade** flag, which lets holders trade their balances on the XRP Ledger DEX or AMM. Once enabled, this flag cannot be disabled. {% amendment-disclaimer name="DynamicMPT" /%} |
-| `tfMPTSetCanTransfer` | `0x00000040` | 64            | Enable the MPT's **Can Transfer** flag, which lets tokens be transferred to accounts other than the issuer. Once enabled, this flag cannot be disabled. {% amendment-disclaimer name="DynamicMPT" /%} |
-| `tfMPTSetCanClawback` | `0x00000080` | 128           | Enable the MPT's **Can Clawback** flag, which lets the issuer claw back value from individual holders. Once enabled, this flag cannot be disabled. {% amendment-disclaimer name="DynamicMPT" /%} |
+| Flag Name                            | Hex Value    | Decimal Value | Description |
+|:-------------------------------------|:-------------|:--------------|:------------|
+| `tfMPTLock`                          | `0x00000001` | 1             | Lock the balances of this MPT issuance. Can only be combined with a `Holder` or `DomainID` in the same transaction. |
+| `tfMPTUnlock`                        | `0x00000002` | 2             | Unlock the balances of this MPT issuance. Can only be combined with a `Holder` or `DomainID` in the same transaction. |
+| `tfMPTSetCanLock`                    | `0x00000004` | 4             | Enable the MPT's **Can Lock** flag, which lets the issuer lock and unlock holders' balances. Once enabled, this flag cannot be disabled. {% amendment-disclaimer name="DynamicMPT" /%} |
+| `tfMPTSetRequireAuth`                | `0x00000008` | 8             | Enable the MPT's **Require Auth** flag, which requires individual holders to be authorized. Once enabled, this flag cannot be disabled. {% amendment-disclaimer name="DynamicMPT" /%} |
+| `tfMPTSetCanEscrow`                  | `0x00000010` | 16            | Enable the MPT's **Can Escrow** flag, which lets holders place their balances into escrow. Once enabled, this flag cannot be disabled. {% amendment-disclaimer name="DynamicMPT" /%} |
+| `tfMPTSetCanTrade`                   | `0x00000020` | 32            | Enable the MPT's **Can Trade** flag, which lets holders trade their balances on the XRP Ledger DEX or AMM. Once enabled, this flag cannot be disabled. {% amendment-disclaimer name="DynamicMPT" /%} |
+| `tfMPTSetCanTransfer`                | `0x00000040` | 64            | Enable the MPT's **Can Transfer** flag, which lets tokens be transferred to accounts other than the issuer. Once enabled, this flag cannot be disabled. {% amendment-disclaimer name="DynamicMPT" /%} |
+| `tfMPTSetCanClawback`                | `0x00000080` | 128           | Enable the MPT's **Can Clawback** flag, which lets the issuer claw back value from individual holders. Once enabled, this flag cannot be disabled. {% amendment-disclaimer name="DynamicMPT" /%} |
+| `tfMPTSetCanHoldConfidentialBalance`  | `0x00000100` | 256           | Enable confidential transfers for this MPT issuance. This is a one-way operation and cannot be disabled once enabled. {% amendment-disclaimer name="ConfidentialTransfer" /%} |
 
 Note that a single transaction can enable more than one capability-setting flag (`tfMPTSet...`) at once, and can also update the `MPTokenMetadata`, `TransferFee`, and `ImmutableFlags` fields in the same transaction. These changes can't be combined with a `tfMPTLock` or `tfMPTUnlock` flag, or with a `Holder`. {% amendment-disclaimer name="DynamicMPT" /%}
 
@@ -71,16 +74,17 @@ The following flags are set in the `ImmutableFlags` field, which is separate fro
 **Immutability is permanent.** A field or flag declared immutable can never be changed, so declare a property immutable only if you're absolutely sure you don't want to change it in future.
 {% /admonition %}
 
-| Flag Name           | Hex Value    | Decimal Value | Description |
-|:------------------- |:-------------|:--------------|:------------|
-| `tifMPTCanLock`     | `0x00000002` | 2             | If enabled, the **Can Lock** flag, which gives the issuer the power to lock and unlock holders' balances, cannot be changed. |
-| `tifMPTRequireAuth` | `0x00000004` | 4             | If enabled, the **Require Auth** flag, which indicates that individual holders must be authorized, cannot be changed. |
-| `tifMPTCanEscrow`   | `0x00000008` | 8             | If enabled, the **Can Escrow** flag, which indicates that the token can be placed in escrow, cannot be changed. |
-| `tifMPTCanTrade`    | `0x00000010` | 16            | If enabled, the **Can Trade** flag, which indicates that individual holders can trade their balances using the XRP Ledger DEX or AMM, cannot be changed. |
-| `tifMPTCanTransfer` | `0x00000020` | 32            | If enabled, the **Can Transfer** flag, which indicates that tokens held by non-issuers can be transferred to other accounts, cannot be changed. |
-| `tifMPTCanClawback` | `0x00000040` | 64            | If enabled, the **Can Clawback** flag, which indicates that the issuer can claw back value from individual holders, cannot be changed. |
-| `tifMPTMetadata`    | `0x00010000` | 65536         | If enabled, the `MPTokenMetadata` field cannot be modified. |
-| `tifMPTTransferFee` | `0x00020000` | 131072        | If enabled, the `TransferFee` field cannot be modified. |
+| Flag Name                          | Hex Value    | Decimal Value | Description |
+|:-----------------------------------|:-------------|:--------------|:------------|
+| `tifMPTCanLock`                    | `0x00000002` | 2             | If enabled, the **Can Lock** flag, which gives the issuer the power to lock and unlock holders' balances, cannot be changed. |
+| `tifMPTRequireAuth`                | `0x00000004` | 4             | If enabled, the **Require Auth** flag, which indicates that individual holders must be authorized, cannot be changed. |
+| `tifMPTCanEscrow`                  | `0x00000008` | 8             | If enabled, the **Can Escrow** flag, which indicates that the token can be placed in escrow, cannot be changed. |
+| `tifMPTCanTrade`                   | `0x00000010` | 16            | If enabled, the **Can Trade** flag, which indicates that individual holders can trade their balances using the XRP Ledger DEX or AMM, cannot be changed. |
+| `tifMPTCanTransfer`                | `0x00000020` | 32            | If enabled, the **Can Transfer** flag, which indicates that tokens held by non-issuers can be transferred to other accounts, cannot be changed. |
+| `tifMPTCanClawback`                | `0x00000040` | 64            | If enabled, the **Can Clawback** flag, which indicates that the issuer can claw back value from individual holders, cannot be changed. |
+| `tifMPTCanHoldConfidentialBalance`  | `0x00000080` | 128           | If enabled, the **Can Hold Confidential Balance** flag, which indicates that confidential transfers and conversions are enabled for this token issuance, cannot be changed. {% amendment-disclaimer name="ConfidentialTransfer" mode="updated" /%} |
+| `tifMPTMetadata`                   | `0x00010000` | 65536         | If enabled, the `MPTokenMetadata` field cannot be modified. |
+| `tifMPTTransferFee`                | `0x00020000` | 131072        | If enabled, the `TransferFee` field cannot be modified. |
 
 
 ## Transfer Fee Rules

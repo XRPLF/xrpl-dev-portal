@@ -12,6 +12,7 @@ An `MPTokenIssuance` entry represents a single [MPT](../../../../concepts/tokens
 
 {% amendment-disclaimer name="MPTokensV1" /%}
 
+
 ## Example MPTokenIssuance JSON
 
 ```json
@@ -38,19 +39,22 @@ In addition to the [common fields](../common-fields.md), {% code-page-name /%} e
 
 | Field Name          | JSON Type            | Internal Type | Required? | Description |
 |:--------------------|:---------------------|:--------------|:----------|:------------|
-| `AssetScale`        | Number               | UInt8         | Yes       | Where to put the decimal place when displaying amounts of this MPT. More formally, the asset scale is a non-negative integer (0, 1, 2, …) such that one standard unit equals 10^(-scale) of a corresponding fractional unit. For example, if a US Dollar Stablecoin has an asset scale of _2_, then 1 unit of that MPT would equal 0.01 US Dollars. This indicates to how many decimal places the MPT can be subdivided. The default is `0`, meaning that the MPT cannot be divided into smaller than 1 unit. |
-| `DomainID`          | String - [Hash][]    | UInt256       | No        | The ledger entry ID of a permissioned domain that grants access to the MPT. This field is _always_ mutable. {% amendment-disclaimer name="SingleAssetVault" /%} |
-| `ImmutableFlags`    | Number               | UInt32        | No        | Indicates which fields and flags are immutable for this MPT issuance. Any field or flag not represented here remains mutable. See [MPTokenIssuance Immutable Flags](#mptokenissuance-immutable-flags). {% amendment-disclaimer name="DynamicMPT" /%} |
-| `Issuer`            | String - [Address][] | AccountID     | Yes       | The address of the account that controls both the issuance amounts and characteristics of a particular fungible token. |
-| `LockedAmount`      | String - Number      | UInt64        | No        | The amount of tokens currently locked up (for example, in escrow). This amount is already included in the `OutstandingAmount`. {% amendment-disclaimer name="TokenEscrow" /%} |
-| `MaximumAmount`     | String - Number      | UInt64        | No        | The maximum number of MPTs that can exist at one time. If omitted, the maximum is currently limited to 2<sup>63</sup>-1. |
-| `MPTokenMetadata`   | String - Hexadecimal | Blob          | No       | Arbitrary metadata about this issuance, in hex format. The limit for this field is 1024 bytes. <br><br>This field is mutable by default, but can be made immutable. {% amendment-disclaimer name="DynamicMPT" mode="updated" /%}|
-| `OutstandingAmount` | String - Number      | UInt64        | Yes       | The total amount of MPTs of this issuance currently in circulation. This value increases when the issuer sends MPTs to a non-issuer, and decreases whenever the issuer receives MPTs. |
-| `OwnerNode`         | String - Hexadecimal | UInt64        | Yes       | A hint indicating which page of the owner directory links to this entry, in case the directory consists of multiple pages. |
-| `PreviousTxnID`     | String - Hexadecimal | UInt256       | Yes       | The identifying hash of the transaction that most recently modified this entry. |
-| `PreviousTxnLgrSeq` | Number               | UInt32        | Yes       | The [index of the ledger][Ledger Index] that contains the transaction that most recently modified this object. |
-| `Sequence`          | Number               | UInt32        | Yes       | The `Sequence` (or `Ticket`) number of the transaction that created this issuance. This helps to uniquely identify the issuance and distinguish it from any other later MPT issuances created by this account. |
-| `TransferFee`       | Number               | UInt16        | Yes       | This value specifies the fee, in tenths of a basis point, charged by the issuer for secondary sales of the token, if such sales are allowed at all. Valid values for this field are between 0 and 50,000 inclusive. A value of 1 is equivalent to 1/10 of a basis point or 0.001%, allowing transfer rates between 0% and 50%. A `TransferFee` of 50,000 corresponds to 50%. The default value for this field is 0. Any decimals in the transfer fee are rounded down. The fee can be rounded down to zero if the payment is small. Issuers should make sure that their MPT's `AssetScale` is large enough. <br><br>This field is mutable by default, but can be made immutable. {% amendment-disclaimer name="DynamicMPT" mode="updated" /%} |
+| `AssetScale`                    | Number               | UInt8         | Yes       | Where to put the decimal place when displaying amounts of this MPT. More formally, the asset scale is a non-negative integer (0, 1, 2, …) such that one standard unit equals 10^(-scale) of a corresponding fractional unit. For example, if a US Dollar Stablecoin has an asset scale of _2_, then 1 unit of that MPT would equal 0.01 US Dollars. This indicates to how many decimal places the MPT can be subdivided. The default is `0`, meaning that the MPT cannot be divided into smaller than 1 unit. |
+| `AuditorEncryptionKey`          | String               | Blob          | No        | A 33-byte compressed ElGamal public key for an optional on-chain auditor. {% amendment-disclaimer name="ConfidentialTransfer" /%} |
+| `ConfidentialOutstandingAmount` | Number               | UInt64        | No        | The total amount of this token that is currently held in confidential balances. {% amendment-disclaimer name="ConfidentialTransfer" /%} |
+| `DomainID`                      | String - [Hash][]    | UInt256       | No        | The ledger entry ID of a permissioned domain that grants access to the MPT. This field is _always_ mutable. {% amendment-disclaimer name="SingleAssetVault" /%} |
+| `ImmutableFlags`                | Number               | UInt32        | No        | Indicates which fields and flags are immutable for this MPT issuance. Any field or flag not represented here remains mutable. See [MPTokenIssuance Immutable Flags](#mptokenissuance-immutable-flags). {% amendment-disclaimer name="DynamicMPT" /%} |
+| `Issuer`                        | String - [Address][] | AccountID     | Yes       | The address of the account that controls both the issuance amounts and characteristics of a particular fungible token. |
+| `IssuerEncryptionKey`           | String               | Blob          | No        | A 33-byte compressed ElGamal public key for the issuer. {% amendment-disclaimer name="ConfidentialTransfer" /%} |
+| `LockedAmount`                  | String - Number      | UInt64        | No        | The amount of tokens currently locked up (for example, in escrow). This amount is already included in the `OutstandingAmount`. {% amendment-disclaimer name="TokenEscrow" /%} |
+| `MaximumAmount`                 | String - Number      | UInt64        | No        | The maximum number of MPTs that can exist at one time. If omitted, the maximum is currently limited to 2<sup>63</sup>-1. |
+| `MPTokenMetadata`               | String - Hexadecimal | Blob          | No       | Arbitrary metadata about this issuance, in hex format. The limit for this field is 1024 bytes. <br><br>This field is mutable by default, but can be made immutable. {% amendment-disclaimer name="DynamicMPT" mode="updated" /%}|
+| `OutstandingAmount`             | String - Number      | UInt64        | Yes       | The total amount of MPTs of this issuance currently in circulation. This value increases when the issuer sends MPTs to a non-issuer, and decreases whenever the issuer receives MPTs. |
+| `OwnerNode`                     | String - Hexadecimal | UInt64        | Yes       | A hint indicating which page of the owner directory links to this entry, in case the directory consists of multiple pages. |
+| `PreviousTxnID`                 | String - Hexadecimal | UInt256       | Yes       | The identifying hash of the transaction that most recently modified this entry. |
+| `PreviousTxnLgrSeq`             | Number               | UInt32        | Yes       | The [index of the ledger][Ledger Index] that contains the transaction that most recently modified this object. |
+| `Sequence`                      | Number               | UInt32        | Yes       | The `Sequence` (or `Ticket`) number of the transaction that created this issuance. This helps to uniquely identify the issuance and distinguish it from any other later MPT issuances created by this account. |
+| `TransferFee`                   | Number               | UInt16        | Yes       | This value specifies the fee, in tenths of a basis point, charged by the issuer for secondary sales of the token, if such sales are allowed at all. Valid values for this field are between 0 and 50,000 inclusive. A value of 1 is equivalent to 1/10 of a basis point or 0.001%, allowing transfer rates between 0% and 50%. A `TransferFee` of 50,000 corresponds to 50%. The default value for this field is 0. Any decimals in the transfer fee are rounded down. The fee can be rounded down to zero if the payment is small. Issuers should make sure that their MPT's `AssetScale` is large enough. <br><br>This field is mutable by default, but can be made immutable. {% amendment-disclaimer name="DynamicMPT" mode="updated" /%} |
 
 ## MPTokenIssuance Flags
 
@@ -67,6 +71,7 @@ To fix a flag's state permanently, you can declare it immutable. See [MPTokenIss
 | `lsfMPTCanTrade`    | `0x00000010` | If set, indicates that individual holders can trade their balances using the XRP Ledger DEX or AMM. |
 | `lsfMPTCanTransfer` | `0x00000020` | If set, indicates that tokens held by non-issuers can be transferred to other accounts. If not set, indicates that tokens held by non-issuers cannot be transferred except back to the issuer; this enables use cases such as store credit. |
 | `lsfMPTCanClawback` | `0x00000040` | If set, indicates that the issuer may use the `Clawback` transaction to claw back value from individual holders. |
+| `lsfMPTCanHoldConfidentialBalance` | `0x00000080` | If enabled, indicates that confidential transfers and conversions are enabled for this token issuance. {% amendment-disclaimer name="ConfidentialTransfer" /%} |
 
 ## MPTokenIssuance Immutable Flags
 
@@ -74,16 +79,17 @@ To fix a flag's state permanently, you can declare it immutable. See [MPTokenIss
 
 The following flags are stored in the `ImmutableFlags` field, which is separate from the `Flags` field of the `MPTokenIssuance` ledger entry. Each flag indicates that the corresponding field or MPT issuance flag is immutable.
 
-| Flag Name            | Hex Value    | Decimal Value | Description |
-|:---------------------|:-------------|:--------------|:------------|
-| `lsifMPTCanLock`     | `0x00000002` | 2             | If enabled, the **Can Lock** flag, which gives the issuer the power to lock and unlock holders' balances, cannot be changed. |
-| `lsifMPTRequireAuth` | `0x00000004` | 4             | If enabled, the **Require Auth** flag, which indicates that individual holders must be authorized, cannot be changed. |
-| `lsifMPTCanEscrow`   | `0x00000008` | 8             | If enabled, the **Can Escrow** flag, which indicates that the token can be placed in escrow, cannot be changed. |
-| `lsifMPTCanTrade`    | `0x00000010` | 16            | If enabled, the **Can Trade** flag, which indicates that individual holders can trade their balances using the XRP Ledger DEX or AMM, cannot be changed. |
-| `lsifMPTCanTransfer` | `0x00000020` | 32            | If enabled, the **Can Transfer** flag, which indicates that tokens held by non-issuers can be transferred to other accounts, cannot be changed. |
-| `lsifMPTCanClawback` | `0x00000040` | 64            | If enabled, the **Can Clawback** flag, which indicates that the issuer can claw back value from individual holders, cannot be changed. |
-| `lsifMPTMetadata`    | `0x00010000` | 65536         | If enabled, the `MPTokenMetadata` field cannot be modified. |
-| `lsifMPTTransferFee` | `0x00020000` | 131072        | If enabled, the `TransferFee` field cannot be modified. |
+| Flag Name                           | Hex Value    | Decimal Value | Description |
+|:------------------------------------|:-------------|:--------------|:------------|
+| `lsifMPTCanLock`                    | `0x00000002` | 2             | If enabled, the **Can Lock** flag, which gives the issuer the power to lock and unlock holders' balances, cannot be changed. |
+| `lsifMPTRequireAuth`                | `0x00000004` | 4             | If enabled, the **Require Auth** flag, which indicates that individual holders must be authorized, cannot be changed. |
+| `lsifMPTCanEscrow`                  | `0x00000008` | 8             | If enabled, the **Can Escrow** flag, which indicates that the token can be placed in escrow, cannot be changed. |
+| `lsifMPTCanTrade`                   | `0x00000010` | 16            | If enabled, the **Can Trade** flag, which indicates that individual holders can trade their balances using the XRP Ledger DEX or AMM, cannot be changed. |
+| `lsifMPTCanTransfer`                | `0x00000020` | 32            | If enabled, the **Can Transfer** flag, which indicates that tokens held by non-issuers can be transferred to other accounts, cannot be changed. |
+| `lsifMPTCanClawback`                | `0x00000040` | 64            | If enabled, the **Can Clawback** flag, which indicates that the issuer can claw back value from individual holders, cannot be changed. |
+| `lsifMPTCanHoldConfidentialBalance` | `0x00000080` | 128           | If enabled, the **Can Hold Confidential Balance** flag, which indicates that confidential transfers and conversions are enabled for this token issuance, cannot be changed. {% amendment-disclaimer name="ConfidentialTransfer" /%} |
+| `lsifMPTMetadata`                   | `0x00010000` | 65536         | If enabled, the `MPTokenMetadata` field cannot be modified. |
+| `lsifMPTTransferFee`                | `0x00020000` | 131072        | If enabled, the `TransferFee` field cannot be modified. |
 
 ## MPTokenIssuanceID
 

@@ -116,6 +116,7 @@
                 - page: docs/concepts/tokens/fungible-tokens/trust-line-tokens.md
                 - page: docs/concepts/tokens/fungible-tokens/multi-purpose-tokens.md
                 - page: docs/concepts/tokens/fungible-tokens/mutable-mpts.md
+                - page: docs/concepts/tokens/fungible-tokens/confidential-transfers.md
                 - page: docs/concepts/tokens/fungible-tokens/authorized-trust-lines.md
                 - page: docs/concepts/tokens/fungible-tokens/stablecoins/index.md
                   expanded: false
@@ -428,6 +429,11 @@
                     - page: docs/references/protocol/transactions/types/checkcash.md
                     - page: docs/references/protocol/transactions/types/checkcreate.md
                     - page: docs/references/protocol/transactions/types/clawback.md
+                    - page: docs/references/protocol/transactions/types/confidentialmptclawback.md
+                    - page: docs/references/protocol/transactions/types/confidentialmptconvert.md
+                    - page: docs/references/protocol/transactions/types/confidentialmptconvertback.md
+                    - page: docs/references/protocol/transactions/types/confidentialmptmergeinbox.md
+                    - page: docs/references/protocol/transactions/types/confidentialmptsend.md
                     - page: docs/references/protocol/transactions/types/depositpreauth.md
                     - page: docs/references/protocol/transactions/types/delegateset.md
                     - page: docs/references/protocol/transactions/types/diddelete.md

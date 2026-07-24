@@ -16,7 +16,6 @@ If the transaction is successful, it creates an [MPTokenIssuance entry][] where 
 
 {% amendment-disclaimer name="MPTokensV1" /%}
 
-
 ## Example MPTokenIssuanceCreate JSON
 
 This example assumes that the issuer of the token is the signer of the transaction.
@@ -65,6 +64,7 @@ Transactions of the MPTokenIssuanceCreate type support additional values in the 
 | `tfMPTCanTrade`    | `0x00000010` | `16`          | If set, indicates that individual holders can trade their balances using the XRP Ledger DEX. |
 | `tfMPTCanTransfer` | `0x00000020` | `32`          | If set, indicates that tokens can be transferred to other accounts that are not the issuer. |
 | `tfMPTCanClawback` | `0x00000040` | `64`          | If set, indicates that the issuer can use the `Clawback` transaction to claw back value from individual holders. |
+| `tfMPTCanHoldConfidentialBalance` | `0x00000080` | `128` | If set, indicates that the MPT issuance supports confidential transfers. {% amendment-disclaimer name="ConfidentialTransfer" /%} |
 
 
 ## MPTokenIssuanceCreate Immutable Flags

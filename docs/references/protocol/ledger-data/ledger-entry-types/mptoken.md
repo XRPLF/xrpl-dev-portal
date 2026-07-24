@@ -12,6 +12,8 @@ An `MPToken` entry tracks [MPTs](../../../../concepts/tokens/fungible-tokens/mul
 
 {% amendment-disclaimer name="MPTokensV1" /%}
 
+{% amendment-disclaimer name="ConfidentialTransfer" mode="updated" /%}
+
 ## Example MPToken JSON
 
 ```json
@@ -35,6 +37,12 @@ In addition to the [common fields](../common-fields.md), {% code-page-name /%} e
 | `MPTokenIssuanceID` | String - Hexadecimal | UInt192       | Yes       | The `MPTokenIssuance` identifier. |
 | `MPTAmount`         | String - Number      | UInt64        | Yes       | The amount of tokens currently held by the owner. The minimum is 0 and the maximum is 2<sup>63</sup>-1. |
 | `LockedAmount`      | String - Number      | UInt64        | No        | The amount of tokens currently locked up (for example, in escrow). {% amendment-disclaimer name="TokenEscrow" /%} |
+| `HolderEncryptionKey`         | String               | Blob              | No        | The holder's ElGamal public key for confidential balances. Present when the holder has a confidential balance. {% amendment-disclaimer name="ConfidentialTransfer" /%} |
+| `ConfidentialBalanceInbox`    | String               | Blob              | No        | Encrypted inbox balance that receives incoming confidential transfers. Before it can be spent, the holder must merge it into their spending balance using the [ConfidentialMPTMergeInbox transaction][]. Present when the holder has a confidential balance. {% amendment-disclaimer name="ConfidentialTransfer" /%} |
+| `ConfidentialBalanceSpending` | String               | Blob              | No        | Encrypted spending balance used to generate proofs for outgoing transactions. Present when the holder has a confidential balance. {% amendment-disclaimer name="ConfidentialTransfer" /%} |
+| `ConfidentialBalanceVersion`  | Number               | UInt32            | No        | Version number that increments each time the spending balance changes. This version is cryptographically bound to ZKPs in outgoing transactions to prevent replay attacks and ensure proof validity. If the version changes between proof generation and submission, the transaction will fail. {% amendment-disclaimer name="ConfidentialTransfer" /%} |
+| `IssuerEncryptedBalance`      | String               | Blob              | No        | Copy of the holder's total confidential balance encrypted for the issuer to audit supply. Present when the holder has a confidential balance. {% amendment-disclaimer name="ConfidentialTransfer" /%} |
+| `AuditorEncryptedBalance`     | String               | Blob              | No        | The holder's total confidential balance encrypted under the auditor's key for independent auditing. Only present if an auditor is configured. {% amendment-disclaimer name="ConfidentialTransfer" /%} |
 | `PreviousTxnID`     | String - [Hash][]    | UInt256       | Yes       | The identifying hash of the transaction that most recently modified this entry. |
 | `PreviousTxnLgrSeq` | Number               | UInt32        | Yes       | The sequence of the ledger that contains the transaction that most recently modified this object. |
 | `OwnerNode`         | String               | UInt64        | Yes       | A hint indicating which page of the owner directory links to this entry, in case the directory consists of multiple pages. |
