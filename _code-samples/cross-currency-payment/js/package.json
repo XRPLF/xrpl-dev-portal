@@ -1,0 +1,8 @@
+{
+  "name": "cross-currency-payment-examples",
+  "description": "Example code for sending a cross-currency payment on the XRP Ledger.",
+  "dependencies": {
+    "xrpl": "^4.6.0"
+  },
+  "type": "module"
+}
