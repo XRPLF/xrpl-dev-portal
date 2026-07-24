@@ -30,6 +30,7 @@
           expanded: false
           items:
             - page: docs/use-cases/tokenization/stablecoin-issuer.md
+            - page: docs/use-cases/tokenization/migrating-from-trust-lines-to-mpts.md
             - page: docs/use-cases/tokenization/nft-mkt-overview.md
               expanded: false
               items:
