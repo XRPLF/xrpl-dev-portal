@@ -12,6 +12,7 @@ Every entry in a [ledger](../../../concepts/ledgers/index.md)'s state data has t
 | `index` or `LedgerIndex` | String    | UInt256           | No        | The unique ID for this ledger entry. In JSON, this field is represented with different names depending on the context and API method. (Note, even though this is specified as "optional" in the code, every ledger entry should have one unless it's legacy data from very early in the XRP Ledger's history.) |
 | `LedgerEntryType`        | String    | UInt16            | Yes       | The type of ledger entry. Valid [ledger entry types](ledger-entry-types/index.md) include `AccountRoot`, `Offer`, `RippleState`, and others. |
 | `Flags`                  | Number    | UInt32            | Yes       | Set of bit-flags for this ledger entry. |
+| `Sponsor`                | String    | AccountID         | No        | The sponsor paying the owner reserve for this ledger entry. When present, this indicates that the reserve burden for this entry has shifted from the owner to the sponsor. See [Sponsor](#sponsor) for a list of ledger entry types that support sponsorship. {% amendment-disclaimer name="Sponsor" /%} |
 
 {% admonition type="warning" name="Caution" %}In JSON, the ledger entry ID is in the `index` or `LedgerIndex` field. This is not the same as a [ledger index][] in the `ledger_index` field.{% /admonition %}
 
@@ -34,5 +35,24 @@ Offer directories have special IDs, where part of the hash is replaced with the 
 Flags are on/off settings, which are represented as binary values that are combined into a single number using bitwise-OR operations. The bit values for the flags in ledger entries are different than the values used to enable or disable those flags in a transaction. Ledger state flags have names that begin with **`lsf`**.
 
 The possible values for the flags field vary based on the ledger entry type. Some ledger entry types have no flags defined. In these cases, the `Flags` field always has the value `0`.
+
+## Sponsor
+
+{% amendment-disclaimer name="Sponsor" /%}
+
+The `Sponsor` field may appear on the following ledger entry types:
+
+- [AccountRoot entry][]
+- [Check entry][]
+- [Credential entry][]
+- [Delegate ledger entry][]
+- [DepositPreauth entry][]
+- [Escrow entry][]
+- [MPToken entry][]
+- [MPTokenIssuance entry][]
+- [PayChannel entry][]
+- [SignerList entry][]
+
+[RippleState](ledger-entry-types/ripplestate.md) entries also support sponsorship, but use the `HighSponsor` and `LowSponsor` fields instead of `Sponsor`.
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

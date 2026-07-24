@@ -24,7 +24,6 @@ The following is a list of [amendments](../docs/concepts/networks-and-servers/am
 | [InvariantsV1_1][]                | {% badge %}In Development: TBD{% /badge %} |  |
 | [ConfidentialTransfer][]          | {% badge %}In Development: TBD{% /badge %} | [XLS-96 Confidential Transfers](https://opensource.ripple.com/docs/xls-96-confidential-transfers) |
 | [MPTokensV2][]                    | {% badge %}In Development: TBD{% /badge %} | [XLS-82 MPT DEX Integration](https://opensource.ripple.com/docs/xls-82-mpt-dex) |
-| [Sponsor][]                       | {% badge %}In Development: TBD{% /badge %} | [XLS-68 Sponsored Fees and Reserves](https://opensource.ripple.com/docs/xls-68-sponsored-fees-and-reserves) |
 | [SmartEscrow][]                   | {% badge %}In Development: TBD{% /badge %} | [XLS-100 Smart Escrows](https://opensource.ripple.com/docs/xls-100-smart-escrows) |
 
 {% admonition type="success" name="Tip" %}
@@ -1909,7 +1908,7 @@ Older versions of `rippled` that do not know about this amendment may crash when
 | Amendment    | Sponsor |
 |:-------------|:--------|
 | Amendment ID | BE1F90581635DBCEBFC4678C4B54FEDDC1A17B50FD02CFE765A4132A342126AC |
-| Status       | In Development |
+| Status       | Open for Voting |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
