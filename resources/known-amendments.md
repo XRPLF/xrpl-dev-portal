@@ -22,7 +22,6 @@ The following is a list of [amendments](../docs/concepts/networks-and-servers/am
 | Name                              | Status                                    | Additional Information         |
 |:----------------------------------|:------------------------------------------|:-------------------------------|
 | [InvariantsV1_1][]                | {% badge %}In Development: TBD{% /badge %} |  |
-| [ConfidentialTransfer][]          | {% badge %}In Development: TBD{% /badge %} | [XLS-96 Confidential Transfers](https://opensource.ripple.com/docs/xls-96-confidential-transfers) |
 | [MPTokensV2][]                    | {% badge %}In Development: TBD{% /badge %} | [XLS-82 MPT DEX Integration](https://opensource.ripple.com/docs/xls-82-mpt-dex) |
 | [Sponsor][]                       | {% badge %}In Development: TBD{% /badge %} | [XLS-68 Sponsored Fees and Reserves](https://opensource.ripple.com/docs/xls-68-sponsored-fees-and-reserves) |
 | [SmartEscrow][]                   | {% badge %}In Development: TBD{% /badge %} | [XLS-100 Smart Escrows](https://opensource.ripple.com/docs/xls-100-smart-escrows) |
@@ -201,7 +200,7 @@ For more details, see [XLS-70: Credentials specification](https://github.com/XRP
 | Amendment    | ConfidentialTransfer |
 |:-------------|:---------------------|
 | Amendment ID | 2110E4A19966E2EF517C0A8C56A5F35099D7665B0BB89D7B126B30D50B86AAD5 |
-| Status       | In Development |
+| Status       | {% amendment-disclaimer name="ConfidentialTransfer" statusOnly=true /%} |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
