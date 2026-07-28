@@ -2,5 +2,10 @@
   "dependencies": {
     "xrpl": "^4.4.3"
   },
-  "type": "module"
+  "type": "module",
+  "scripts": {
+    "build-local-xrpl": "cd \"$XRPL_JS\" && npm install && npm run build && cd packages/xrpl && npm link",
+    "use-local-xrpl": "npm link xrpl",
+    "use-published-xrpl": "npm unlink --no-save xrpl && npm install"
+  }
 }
