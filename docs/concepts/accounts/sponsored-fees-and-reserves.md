@@ -9,7 +9,7 @@ status: not_enabled
 ---
 # Sponsored Fees and Reserves
 
-The Sponsored Fees and Reserves feature allows an account to pay transaction fees and reserve requirements on behalf of another account. The account that pays is called the _Sponsor_, and the account that benefits is called the _Sponsee_. Sponsees maintain full control over their keys and accounts.
+The Sponsored Fees and Reserves feature allows an account to pay [transaction fees](../transactions/transaction-cost.md) and [reserve requirements](./reserves.md) on behalf of another account. The account that pays is called the _Sponsor_, and the account that benefits is called the _Sponsee_. Sponsees maintain full control over their keys and accounts.
 
 {% admonition type="info" name="Note" %}
 Sponsorship does not transfer XRP to the sponsee's wallet. The sponsor can cover transaction fees, and for reserve sponsorship, the ledger tracks which account is responsible for the reserve. This is not an "onramp" for the sponsee; it is a mechanism for the sponsor to cover costs on the sponsee's behalf.
@@ -44,7 +44,7 @@ For example, consider Spencer (sponsor) who wants to cover costs for Alice (spon
 For a transaction to be sponsored, at least one of the following flags must be enabled:
 
 - `spfSponsorFee`: This flag indicates that the sponsor pays the transaction fee.
-- `spfSponsorReserve`: This flag indicates that the sponsor covers the reserve for objects created in a transaction, such as trust lines, escrows, or payment channels. No XRP is transferred to the sponsee; the sponsor's XRP stays in their own account, and the ledger simply tracks which account is responsible for holding the reserve.
+- `spfSponsorReserve`: This flag indicates that the sponsor covers the reserve for objects created in a transaction, such as trust lines, escrows, or payment channels. No XRP is transferred to the sponsee; the sponsor's XRP stays in their own account, and the ledger tracks which account is responsible for holding the reserve.
 
 If a transaction has **both** flags enabled, the sponsor pays for the fee and any reserves for objects created in the transaction. Additionally, a single transaction cannot have different sponsors for the fee and the reserve; both must come from the same sponsor.
 

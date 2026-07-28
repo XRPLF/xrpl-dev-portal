@@ -258,7 +258,7 @@ If the `SponsorSignature.Signers` field is necessary, the total fee of the trans
 The total fee calculation for signatures is:
 
 ```text
-(1 + |tx.Signers| + |tx.SponsorSignature.Signers|) × base_fee (+ any transaction-specific fees)
+(1 + number_of_signers + number_of_sponsored_signers) × base_fee (+ any transaction-specific fees)
 ```
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

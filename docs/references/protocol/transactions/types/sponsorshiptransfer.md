@@ -41,8 +41,8 @@ In addition to the [common fields](../common-fields.md), {% code-page-name /%} t
 
 | Field Name | JSON Type | [Internal Type][] | Required? | Description |
 | :--------- | :-------- | :---------------- | :-------- | :---------- |
-| `ObjectID` | String    | Hash256           | No        | The ID of the ledger object to transfer sponsorship. Required if the transaction is dealing with a sponsored object, rather than a sponsored account. If omitted, the transaction refers to the `Account` sending the transaction. |
-| `Sponsee`  | String    | AccountID         | No        | The wallet address of the sponsee account. Required if the sponsor is ending a sponsorship on behalf of a sponsee. If omitted, the `Account` field is assumed to be the sponsee. |
+| `ObjectID` | String    | Hash256           | No        | The ID of the ledger entry to transfer sponsorship of. Required if the transaction is dealing with a sponsored entry, rather than a sponsored account. If omitted, the transaction refers to the `Account` sending the transaction. |
+| `Sponsee`  | String    | AccountID         | No        | The address of the sponsee account. Required if the sponsor is ending a sponsorship on behalf of a sponsee. If omitted, the `Account` field is assumed to be the sponsee. |
 
 {% admonition type="info" name="Note" %}
 Which of these fields you must include, and whether they are required, depends on the operation. See [Sponsorship Scenarios](#sponsorship-scenarios) for the exact fields each operation needs.

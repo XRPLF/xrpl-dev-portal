@@ -45,7 +45,7 @@ The `Sponsor` field may appear on the following ledger entry types:
 - [AccountRoot entry][]
 - [Check entry][]
 - [Credential entry][]
-- [Delegate ledger entry][]
+- [Delegate entry][Delegate ledger entry]
 - [DepositPreauth entry][]
 - [Escrow entry][]
 - [MPToken entry][]

@@ -1,6 +1,6 @@
 ---
 seo:
-    description: Create, update, or delete a Sponsorship ledger entry on the XRP Ledger.
+    description: Create, update, or delete a Sponsorship on the XRP Ledger.
 labels:
     - Fees
     - Accounts
@@ -12,11 +12,7 @@ txIcon: modify
 # SponsorshipSet
 {% source-link path="src/libxrpl/tx/transactors/sponsor/SponsorshipSet.cpp" /%}
 
-Create, update, or delete a [Sponsorship ledger entry][] on the XRP Ledger.
-
-{% admonition type="warning" name="Warning" %}
-This transaction requires that you specify either the **CounterpartySponsor** or **Sponsee**, but not both.
-{% /admonition %}
+Create, update, or delete a [Sponsorship](../../../../concepts/accounts/sponsored-fees-and-reserves.md) on the XRP Ledger.
 
 {% amendment-disclaimer name="Sponsor" /%}
 
@@ -43,9 +39,11 @@ In addition to the [common fields](../common-fields.md), {% code-page-name /%} t
 | :-------------------- | :-------- | :---------------- | :-------- | :---------- |
 | `CounterpartySponsor` | String    | AccountID         | No        | The sponsor associated with this relationship. This account also pays for the reserve of this entry. If this field is included, the `Account` is assumed to be the sponsee. |
 | `FeeAmount`           | String    | Amount            | No        | The remaining amount of XRP that the sponsor has provided for the sponsee to use for fees. This value replaces what is currently in the `Sponsorship.FeeAmount` field, if it exists, rather than adding to it. Raising `FeeAmount` deducts the additional XRP from the sponsor, while lowering it refunds the difference back to the sponsor. |
-| `MaxFee`              | String    | Amount            | No        | The maximum fee per transaction that will be sponsored. This prevents abuse or excessive draining of the sponsored fee pool. |
+| `MaxFee`              | String    | Amount            | No        | The maximum fee per sponsored transaction. This prevents abuse or excessive draining of the sponsored fee pool. |
 | `RemainingOwnerCount` | Number    | UInt32            | No        | The remaining amount of reserves that the sponsor has provided for the sponsee to use. This value replaces what is currently in the `Sponsorship.RemainingOwnerCount` field, if it exists. |
 | `Sponsee`             | String    | AccountID         | No        | The sponsee associated with this relationship. If this field is included, the `Account` is assumed to be the sponsor. |
+
+This transaction requires that you specify either the **CounterpartySponsor** or **Sponsee**, but not both.
 
 A sponsorship entry must keep at least some fee budget (`FeeAmount`) or reserve budget (`RemainingOwnerCount`). If you try to create or update the entry with neither, the transaction fails, because an empty entry still consumes an owner reserve while giving the sponsee nothing to draw on.
 
