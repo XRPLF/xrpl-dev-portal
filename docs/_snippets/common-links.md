@@ -246,6 +246,13 @@
 [Specifying Ledgers]: /docs/references/protocol/data-types/basic-data-types.md#specifying-ledgers
 [Specifying Time]: /docs/references/protocol/data-types/basic-data-types.md#specifying-time
 [Specifying Without Amounts]: /docs/references/protocol/data-types/currency-formats.md#specifying-without-amounts
+[Sponsor amendment]: /resources/known-amendments.md#sponsor
+[Sponsorship ledger entry]: /docs/references/protocol/ledger-data/ledger-entry-types/sponsorship.md
+[Sponsorship entry]: /docs/references/protocol/ledger-data/ledger-entry-types/sponsorship.md
+[SponsorshipSet transaction]: /docs/references/protocol/transactions/types/sponsorshipset.md
+[SponsorshipSet]: /docs/references/protocol/transactions/types/sponsorshipset.md
+[SponsorshipTransfer transaction]: /docs/references/protocol/transactions/types/sponsorshiptransfer.md
+[SponsorshipTransfer]: /docs/references/protocol/transactions/types/sponsorshiptransfer.md
 [SusPay amendment]: /resources/known-amendments.md#suspay
 [TickSize amendment]: /resources/known-amendments.md#ticksize
 [Ticket entry]: /docs/references/protocol/ledger-data/ledger-entry-types/ticket.md

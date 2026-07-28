@@ -167,6 +167,7 @@
             - page: docs/concepts/accounts/deleting-accounts.md
             - page: docs/concepts/accounts/blackholed-accounts.md
             - page: docs/concepts/accounts/reserves.md
+            - page: docs/concepts/accounts/sponsored-fees-and-reserves.md
             - page: docs/concepts/accounts/addresses.md
             - page: docs/concepts/accounts/cryptographic-keys.md
             - page: docs/concepts/accounts/multi-signing.md
@@ -400,6 +401,7 @@
                     - page: docs/references/protocol/ledger-data/ledger-entry-types/permissioneddomain.md
                     - page: docs/references/protocol/ledger-data/ledger-entry-types/ripplestate.md
                     - page: docs/references/protocol/ledger-data/ledger-entry-types/signerlist.md
+                    - page: docs/references/protocol/ledger-data/ledger-entry-types/sponsorship.md
                     - page: docs/references/protocol/ledger-data/ledger-entry-types/ticket.md
                     - page: docs/references/protocol/ledger-data/ledger-entry-types/vault.md
                     - page: docs/references/protocol/ledger-data/ledger-entry-types/xchainownedclaimid.md
@@ -467,6 +469,8 @@
                     - page: docs/references/protocol/transactions/types/permissioneddomainset.md
                     - page: docs/references/protocol/transactions/types/setregularkey.md
                     - page: docs/references/protocol/transactions/types/signerlistset.md
+                    - page: docs/references/protocol/transactions/types/sponsorshipset.md
+                    - page: docs/references/protocol/transactions/types/sponsorshiptransfer.md
                     - page: docs/references/protocol/transactions/types/ticketcreate.md
                     - page: docs/references/protocol/transactions/types/trustset.md
                     - page: docs/references/protocol/transactions/types/vaultclawback.md

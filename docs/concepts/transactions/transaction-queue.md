@@ -38,6 +38,7 @@ The `xrpld` server uses a variety of heuristics to estimate which transactions a
 
 - Transactions must be properly-formed and [authorized](index.md#authorizing-transactions) with valid signatures.
 - Transactions with an `AccountTxnID` field cannot be queued.
+- Fee-sponsored transactions (using the `spfSponsorFee` flag) cannot be queued. {% amendment-disclaimer name="Sponsor" /%}
 - A single sending address can have at most 10 transactions queued at the same time.
 - To queue a transaction, the sender must have enough XRP for all of the following:
     - Destroying the XRP [transaction cost](transaction-cost.md) as specified in the `Fee` fields of all the sender's queued transactions. The total amount among queued transactions cannot be more than the base account reserve (currently {% $env.PUBLIC_BASE_RESERVE %}). (Transactions paying significantly more than the minimum transaction cost of 0.00001 XRP typically skip the queue and go straight into the open ledger.)
@@ -45,6 +46,8 @@ The `xrpld` server uses a variety of heuristics to estimate which transactions a
     - Keeping enough XRP to meet the account's [reserve requirements](../accounts/reserves.md).
 - If a transaction affects how the sending address authorizes transactions, no other transactions from the same address can be queued behind it.
 - If a transaction includes a `LastLedgerSequence` field, the value of that field must be at least **the current ledger index + 2**.
+
+If a transaction does not make it into the open ledger, it fails with `telCAN_NOT_QUEUE` instead of entering the queue.
 
 ### Fee Averaging
 
