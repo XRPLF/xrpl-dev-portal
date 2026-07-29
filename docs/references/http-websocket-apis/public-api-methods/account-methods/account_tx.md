@@ -87,7 +87,7 @@ The `delegate` object filters results to transactions where one account (the del
 
 | `Field`           | Type   | Description |
 |:------------------|:-------|:------------|
-| `delegate_filter` | String | _(Required)_ The relationship to filter by. `actor` returns transactions others signed on behalf of the `account` (the account holder's view). `authorizer` returns transactions the `account` signed on behalf of others (the delegatee's view). |
+| `delegate_filter` | String | _(Required)_ The relationship to filter by. `actor` returns transactions others signed on behalf of the `account` (the delegator's view). `authorizer` returns transactions the `account` signed on behalf of others (the delegate's view). |
 | `counter_party`   | String | _(Optional)_ An [address][] to filter by. Use with `delegate_filter`:`actor` to limit results to transactions signed by this delegatee. Use with `delegate_filter`:`authorizer` to limit results to transactions signed on behalf of this delegator. |
 
 
