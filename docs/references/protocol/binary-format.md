@@ -215,7 +215,7 @@ Transactions and ledger entries may contain fields of any of the following types
 | [UInt256][]      | 5         | 256        | No                   | A 256-bit binary value. This usually represents the hash of a transaction, ledger version, or ledger entry. |
 | [UInt384][]      | 22        | 384        | No                   | **UNUSED.** A 384-bit binary value. |
 | [UInt512][]      | 23        | 512        | No                   | **UNUSED.** A 512-bit binary value. |
-| [Int32][]        | 10        | 32         | No                   | **UNUSED.** A 32-bit signed integer. |
+| [Int32][]        | 10        | 32         | No                   | A 32-bit signed integer. The `RemainingOwnerCountDelta` field of the [SponsorshipSet transaction][] is an example of this type. |
 | [Int64][]        | 11        | 64         | No                   | **UNUSED.** A 64-bit signed integer. |
 | [Vector256][]    | 19        | Variable   | Yes                  | A list of 256-bit binary values. This may be a list of ledger entries or other hash values. |
 | [XChainBridge][] | 25        | Variable   | No                   | A bridge between two blockchains, identified by the door accounts and issued assets on both chains. |
@@ -434,8 +434,7 @@ In JSON format, Int32 fields can be represented as:
 - JSON numbers (for values within JavaScript's safe integer range).
 - Strings containing decimal numbers.
 
-Although the protocol supports the Int32 type, no fields currently use it. An Int64 type has also been defined, but is unsupported.
-
+Although the protocol supports the Int64 type, no fields currently use it.
 
 ### Vector256 Fields
 [Vector256]: #vector256-fields
