@@ -45,7 +45,7 @@ Back up the following files. In a default install they live here:
 
 - `/opt/ripple/etc/rippled.cfg` - main server config, including your `[validator_token]` on validators.
 - `/opt/ripple/etc/validators.txt` - your trusted validator list (UNL). Skip if your `[validators]` section lives inside `rippled.cfg`.
-- `/var/lib/rippled/db/wallet.db` - your node's persistent identity (node keypair) and peer reservations.
+- `/var/lib/rippled/db/wallet.db` - your node's peer-layer identity (the node key pair behind `pubkey_node`), your peer reservations, and any amendment votes you set with the `feature` method. This file lives in `[database_path]`, so whether you keep it depends on which option you pick in Step 6. It is *not* your validator's on-ledger identity - that comes from `[validator_token]` and `validator-keys.json`.
 - `validator-keys.json` (validators only) - your validator master keys, stored wherever you generated them with `validator-keys-tool` (often kept offline). Without this file you can never renew or rotate your validator token.
 
 **Ledger data** (large, but re-syncable from the network - back up only to skip a long re-sync):
@@ -62,14 +62,24 @@ Back up the following files. In a default install they live here:
 The locations above are the defaults. Your real paths are whatever `[database_path]`, `[node_db]`, and `[debug_logfile]` point to in your `rippled.cfg`. If you customized them, back up those locations instead.
 {% /admonition %}
 
-Copy the config and identity files into a backup directory:
+First, while the server is still running, note your node's current peer-layer identity. Step 8 uses it to confirm the migration preserved it. The admin port is `5005` by default; if yours differs, check `[port_rpc_admin_local]` in `rippled.cfg`:
 
 ```sh
+curl -s localhost:5005 -d '{"method":"server_info"}' | grep -oP '"pubkey_node":"[^"]+"'
+```
+
+Now copy the config and identity files into a backup directory. Stop the service first, so `wallet.db` is not copied while the server is writing to it - Step 2 stops it anyway, and stopping early is harmless:
+
+```sh
+sudo systemctl stop rippled
 sudo mkdir -p /root/rippled-backup
 sudo cp /opt/ripple/etc/rippled.cfg     /root/rippled-backup/
 sudo cp /opt/ripple/etc/validators.txt  /root/rippled-backup/   # if present
 sudo cp /var/lib/rippled/db/wallet.db   /root/rippled-backup/
+sudo chmod 0600 /root/rippled-backup/wallet.db
 ```
+
+`wallet.db` holds your node's secret key, so keep the backup copy readable only by `root`.
 
 Then copy that directory **off the host**, so a disk failure or a failed migration does not also destroy your backup. For example, pull it to your own machine over SSH:
 
@@ -180,6 +190,34 @@ path=/var/lib/xrpld/db/nudb
 /var/log/xrpld/debug.log
 ```
 
+Then restore `wallet.db` into the new data directory. The ledger data rebuilds from the network, but the contents of `wallet.db` cannot: it lives in `[database_path]`, so pointing that at `/var/lib/xrpld/db` leaves the original behind. If the service auto-started in Step 3, a throwaway `wallet.db` already exists there, and this overwrites it. `xrpld` should still be stopped from Step 3; the `stop` below is a no-op if it already is:
+
+```sh
+sudo systemctl stop xrpld
+sudo install -d -o xrpld -g xrpld /var/lib/xrpld/db
+sudo rm -f /var/lib/xrpld/db/wallet.db-journal
+sudo install -o xrpld -g xrpld -m 0600 \
+  /root/rippled-backup/wallet.db /var/lib/xrpld/db/wallet.db
+```
+
+Use `install` rather than `cp` so the file ends up owned by `xrpld` and not by `root`. The server opens `wallet.db` read-write on every start, so the service account must be able to write to both the file and the directory holding it. Removing `wallet.db-journal` discards any rollback journal belonging to the throwaway database, which SQLite would otherwise replay over the file you just restored.
+
+{% admonition type="warning" name="Skipping this step changes your node's identity" %}
+If you leave `wallet.db` behind, `xrpld` starts with a new one. Nothing fails and nothing in the log identifies the change, so Step 8 still reports a healthy node. What changes:
+
+- Your `pubkey_node` changes. Peer reservations that other operators hold for your node, and any `[cluster_nodes]` entry naming your key, stop matching.
+- Your own peer reservations are gone. They only ever come from the `peer_reservations_add` method, so you have to add them again by hand - see [Use a Peer Reservation](../configuration/peering/use-a-peer-reservation.md).
+- Your amendment votes are reset, including ones declared in the config. `xrpld` imports `[amendments]` and `[veto_amendments]` only into a `wallet.db` with no `FeatureVotes` table yet, so once the Step 3 auto-start has created one, those sections are ignored and every amendment falls back to its built-in default. A veto on an amendment that defaults to voting yes silently becomes an up-vote. When this happens, the log reads `[veto_amendments] section in config file ignored in favor of data in db/wallet.db`.
+{% /admonition %}
+
+Your validator's on-ledger identity is unaffected either way. Validations are signed with the key from `[validator_token]`, which Step 4 carried across, so your validator keeps its place on any UNL, and trusted validator and publisher manifests re-download from the network on their own.
+
+If your config sets `[node_seed]`, your node key pair is derived from that seed instead of from `wallet.db` and survives regardless (see [Node Key Pair](../../concepts/networks-and-servers/peer-protocol.md#node-key-pair)) - but your peer reservations and amendment votes do not.
+
+{% admonition type="warning" name="Do not run two servers on one wallet.db" %}
+A node key pair must be unique per running server. If you are migrating onto a new host, do not start it on the restored `wallet.db` while the old node is still running, or both servers present the same `pubkey_node` to their peers.
+{% /admonition %}
+
 #### Keep existing data on full-history nodes
 
 For full-history and large-history nodes, where re-downloading the ledger store from peers would take hours or days. The simplest and safest option is to leave your data where it is and hand ownership to the new `xrpld` user. The config you restored in Step 4 already points at `/var/lib/rippled` and `/var/log/rippled`, so no paths need to change:
@@ -189,10 +227,10 @@ sudo chown -R xrpld:xrpld /var/lib/rippled
 sudo chown -R xrpld:xrpld /var/log/rippled
 ```
 
-`xrpld` reads your existing data in place. The empty `/var/lib/xrpld/` the install created stays unused, and you can remove it whenever you like.
+`xrpld` reads your existing data in place. `wallet.db` is already inside that `[database_path]`, so your node identity, peer reservations, and `feature` votes carry across with no extra step. The empty `/var/lib/xrpld/` the install created stays unused, and you can remove it whenever you like.
 
 {% admonition type="info" name="Prefer the /var/lib/xrpld naming?" %}
-Moving the data under the new path is optional and cosmetic - the service runs fine either way. If you do move it, update `[node_db]`, `[database_path]`, and `[debug_logfile]` in `/etc/xrpld/xrpld.cfg` to the `/var/lib/xrpld` values shown above, so the config matches where the data now lives. A config that points at the old path after the data has moved is the most common way to break the node on restart.
+Moving the data under the new path is optional - the service runs fine either way. If you do move it, move the whole `[database_path]` directory rather than just the node store: `wallet.db` sits alongside `nudb`, and leaving it behind changes your node's identity as described above. Then update `[node_db]`, `[database_path]`, and `[debug_logfile]` in `/etc/xrpld/xrpld.cfg` to the `/var/lib/xrpld` values shown above, so the config matches where the data now lives. A config that points at the old path after the data has moved is the most common way to break the node on restart.
 {% /admonition %}
 
 ### 7. Restart xrpld
@@ -210,10 +248,10 @@ Query `server_info` on your server's admin port to check sync status. The port i
 
 ```sh
 curl -s localhost:5005 -d '{"method":"server_info"}' | \
-  grep -oP '"(server_state|complete_ledgers)":"[^"]+"'
+  grep -oP '"(server_state|complete_ledgers|pubkey_node)":"[^"]+"'
 ```
 
-In a healthy server, `server_state` reads `full` (or `proposing` for validators), and `complete_ledgers` shows a contiguous range. If `server_state` is `disconnected`, or stays `connected` without progress after a few minutes, check:
+In a healthy server, `server_state` reads `full` (or `proposing` for validators), and `complete_ledgers` shows a contiguous range. `pubkey_node` should match the value you noted in Step 1; if it changed, `wallet.db` did not come across, and you can still fix that by stopping the service and restoring it from your backup as shown in Step 6. If your config sets `[node_seed]`, this check cannot confirm the restore - the seed pins `pubkey_node` either way - so confirm you ran the Step 6 restore and that `peer_reservations_list` returns the reservations you expect. If `server_state` is `disconnected`, or stays `connected` without progress after a few minutes, check:
 
 - `journalctl -u xrpld -n 200` for startup errors.
 - The `debug_logfile` (default `/var/log/xrpld/debug.log`) for runtime errors.
@@ -242,10 +280,14 @@ After switching to `xrpld`, update anything that still references the old paths 
 - **Configuration:**
     - [Configure xrpld](../configuration/index.md)
     - [Run xrpld as a Validator](../configuration/server-modes/run-xrpld-as-a-validator.md)
+    - [Use a Peer Reservation](../configuration/peering/use-a-peer-reservation.md)
+    - [Configure Amendment Voting](../configuration/configure-amendment-voting.md)
 - **Installation:**
     - [Update Manually on Ubuntu or Debian](update-xrpld-manually-on-ubuntu.md)
     - [Update Manually on Red Hat Enterprise Linux](update-xrpld-manually-on-rhel.md)
 - **References:**
     - [server_info method][]
+    - [peer_reservations_add method][]
+    - [feature method][]
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}
