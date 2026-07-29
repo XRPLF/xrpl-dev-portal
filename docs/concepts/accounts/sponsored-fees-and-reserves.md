@@ -85,7 +85,7 @@ Sponsorship includes safeguards to protect both parties from misuse:
 
 - **Co-signed flow**: Both parties must consent to each transaction by providing their signatures. The sponsor signs the entire transaction, including the sponsee's `Account` and `Sequence` fields, which prevents signature replay attacks. The sponsor also approves the `Fee` value and any fields that affect reserve requirements, such as `Destination`.
 
-- **Pre-funded flow**: The sponsor consents once when submitting a `SponsorshipSet` transaction. The sponsee cannot modify the terms or exceed the limits the sponsor set. The sponsor can limit usage with `FeeAmount`, `MaxFee`, and `RemainingOwnerCount`, or require their signature for specific transactions using the `lsfSponsorshipRequireSignForFee` or `lsfSponsorshipRequireSignForReserve` flags.
+- **Pre-funded flow**: The sponsor consents once when submitting a `SponsorshipSet` transaction. The sponsee cannot modify the terms or exceed the limits the sponsor set. The sponsor can add or reduce usage with `FeeAmountDelta` and `RemainingOwnerCountDelta`, cap each sponsored transaction with `MaxFee`, or require their signature for specific transactions using the `lsfSponsorshipRequireSignForFee` or `lsfSponsorshipRequireSignForReserve` flags.
 
 The sponsee cannot unilaterally change the sponsorship type, and the sponsor's funds cannot be used beyond the agreed terms. Only the sponsee can transfer a sponsorship to a new sponsor, and the new sponsor must co-sign the transaction to consent. Either party can exit a sponsorship relationship at any time by submitting a [SponsorshipTransfer transaction][].
 
@@ -129,6 +129,12 @@ A sponsor's account cannot be deleted if it is sponsoring any existing accounts 
   - [Transaction Cost](../transactions/transaction-cost.md)
   - [Reserves](./reserves.md)
   - [Transaction Queue](../transactions/transaction-queue.md)
+
+- **Tutorials**
+  - [Sponsor a Transaction by Co-Signing](../../tutorials/best-practices/account-management/sponsor-a-transaction-by-co-signing.md)
+  - [Sponsor a Transaction with a Pre-funded Pool](../../tutorials/best-practices/account-management/sponsor-a-transaction-with-a-pre-funded-pool.md)
+  - [Manage a Sponsorship Pool](../../tutorials/best-practices/account-management/manage-a-sponsorship-pool.md)
+  - [Transfer a Reserve Sponsorship](../../tutorials/best-practices/account-management/transfer-a-reserve-sponsorship.md)
 
 - **References:**
     - [AccountRoot entry]
