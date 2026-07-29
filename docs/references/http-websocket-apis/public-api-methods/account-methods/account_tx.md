@@ -83,7 +83,7 @@ The request includes the following parameters:
 
 #### `delegate` filter
 
-The `delegate` object filters results to transactions where one account (the delegatee) signed and submitted a transaction on behalf of another account (the delegator). It has the following fields:
+The `delegate` object filters results to transactions where one account (the delegate) signed and submitted a transaction on behalf of another account (the delegator). It has the following fields:
 
 | `Field`           | Type   | Description |
 |:------------------|:-------|:------------|
