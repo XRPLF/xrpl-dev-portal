@@ -70,7 +70,7 @@ Besides errors that can occur for all transactions, {% $frontmatter.seo.title %}
 | `tecDIR_FULL`             | The sender owns too many items in the ledger already.<br>This error is effectively impossible to receive if {% amendment-disclaimer name="fixDirectoryLimit" compact=true /%} is enabled. |
 | `tecINSUFFICIENT_RESERVE` | The sender does not have enough XRP to meet the [reserve requirement](/docs/concepts/accounts/reserves.md) of creating a new Delegate ledger entry. |
 | `tecNO_ENTRY`             | The `Permissions` list is empty but no [Delegate ledger entry][] exists for the delegate. An empty list is only valid for deleting an existing entry. |
-| `tecNO_PERMISSION`        | At least one permission in the `Permissions` list is not delegatable. See [Permission Values](../../data-types/permission-values.md) for which permissions are not delegatable. |
+| `tecNO_PERMISSION`        | At least one permission in the `Permissions` list is not delegatable (see [Permission Values](../../data-types/permission-values.md) for which permissions are not delegatable), or the `Authorize` account is a [pseudo-account](/docs/concepts/accounts/pseudo-accounts.md). |
 | `tecNO_TARGET`            | The account specified in the `Authorize` field does not exist in the ledger. |
 | `temARRAY_TOO_LARGE`      | The `Permissions` list is too large. It cannot contain more than 10 entries. |
 | `temDISABLED`             | The [PermissionDelegation amendment][] is not enabled. |
