@@ -4,7 +4,7 @@ seo:
 labels:
     - Transaction Sending
     - Other Transactions
-requiredAmendment: Batch
+requiredAmendment: BatchV1_1
 status: not_enabled
 txIcon: other
 ---
@@ -13,7 +13,7 @@ txIcon: other
 
 Submit up to eight transactions as a single [batch](../../../../concepts/transactions/batch-transactions.md). The transactions in the batch are executed atomically in one of four modes: All or Nothing, Only One, Until Failure, or Independent.
 
-{% amendment-disclaimer name="Batch" /%}
+{% amendment-disclaimer name="BatchV1_1" /%}
 
 
 ## Example {% $frontmatter.seo.title %} JSON
@@ -140,7 +140,7 @@ Each inner transaction:
 
 ### BatchSigners
 
-This field operates similarly to multi-signing on the XRPL. It is only needed if multiple accounts' transactions are included in the `Batch` transaction; otherwise, the normal transaction signature provides the same security guarantees.
+This field operates similarly to multi-signing on the XRPL. It is only needed if multiple accounts' transactions are included in the `Batch` transaction; otherwise, the normal transaction signature provides the same security guarantees. The entries must be sorted by `Account` in ascending order and must be unique.
 
 | Field           | JSON Type | [Internal Type][] | Required? | Description |
 |:----------------|:----------|:------------------|:----------|:------------|
@@ -173,6 +173,7 @@ A transaction is considered successful if it receives a `tesSUCCESS` result.
 | Error Code                | Description                                       |
 |:--------------------------|:--------------------------------------------------|
 | `temARRAY_EMPTY`          | The batch transaction contains zero or one inner transaction. You must submit at least two inner transactions. |
+| `temBAD_SIGNER`           | The `BatchSigners` array isn't sorted by `Account` in ascending order, or it contains a duplicate entry. |
 | `temINVALID_INNER_BATCH`  | - An inner transaction is malformed.<br>- You are attempting to submit a lending or vault-related transaction, which are currently disabled. Invalid transactions include: `LoanBrokerCoverClawback`, `LoanBrokerCoverDeposit`, `LoanBrokerCoverWithdraw`, `LoanBrokerDelete`, `LoanBrokerSet`, `LoanDelete`, `LoanManage`, `LoanPay`, `LoanSet`, `VaultCreate`, `VaultSet`, `VaultDelete`, `VaultDeposit`, `VaultWithdraw`, and `VaultClawback`. |
 | `temSEQ_AND_TICKET`       | The transaction contains both a `TicketSequence` field and a non-zero `Sequence` value. A transaction can't include both fields, but must have at least one. |
 

@@ -10,7 +10,7 @@ status: not_enabled
 
 XRPL Batch Transactions let you package multiple [transactions](/docs/concepts/transactions) together and execute them as a single unit. It eliminates the risk of partial completion and unexpected outcomes, giving you a more reliable and predictable experience for complex operations. Up to eight transactions can be submitted in a single batch.
 
-{% amendment-disclaimer name="Batch" /%}
+{% amendment-disclaimer name="BatchV1_1" /%}
 
 ## XRPL Batch Use Cases
 
