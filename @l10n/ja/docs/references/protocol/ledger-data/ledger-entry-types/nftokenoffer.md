@@ -8,7 +8,7 @@ labels:
 ---
 # NFTokenOffer
 
-`lsfTransferable`フラグが設定されているトークンは、オファーを使って参加者間で転送することができます。`NFTokenOffer`オブジェクトは`NFToken`オブジェクトの購入、売却、または譲渡のオファーを表します。`NFToken`の所有者は`NFTokenCreateOffer`を使用して売買を行うことができます。
+`flagTransferable`フラグが設定されているトークンは、オファーを使って参加者間で転送することができます。`NFTokenOffer`オブジェクトは`NFToken`オブジェクトの購入、売却、または譲渡のオファーを表します。`NFToken`の所有者は`NFTokenCreateOffer`を使用して売買を行うことができます。
 
 {% amendment-disclaimer name="NonFungibleTokensV1_1" /%}
 
