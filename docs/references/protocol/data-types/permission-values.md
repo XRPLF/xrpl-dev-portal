@@ -12,7 +12,7 @@ status: not_enabled
 - **Transaction Type Permissions** - Permission to send transactions with the specified [transaction type](../transactions/types/index.md).
 - **Granular Permissions** - Permission to send transactions with a specific subset of functionality.
 
-{% amendment-disclaimer name="PermissionDelegation" /%}
+{% amendment-disclaimer name="PermissionDelegationV1_1" /%}
 
 ## Numeric and String Values
 
@@ -35,7 +35,7 @@ Transaction Type Permissions have numeric values from 1 to 65536 (that is, 2<sup
 
 For a mapping of transaction types known by a server and their corresponding numeric transaction type values, check the `TRANSACTION_TYPES` field in the [server_definitions method][].
 
-### List of Non-Delegatable Permissions
+### List of Non-Delegable Permissions
 
 Some transaction types can't be delegated. If you attempt to grant these permissions to a delegate, the transaction fails with a [result code](../transactions/transaction-results/) such as `tecNO_PERMISSION`. This includes all transaction types that can be used to grant other permissions to different key pairs or accounts. Additionally, all [pseudo-transaction types](/docs/references/protocol/transactions/pseudo-transaction-types/pseudo-transaction-types) can't be delegated since they can't be sent by normal accounts anyway.
 
@@ -44,6 +44,7 @@ The following permissions cannot be delegated:
 | Transaction Type    | Permission Value |
 |:--------------------|:-----------------|
 | [AccountSet][]      | `4` |
+| [Batch][]           | `72` |
 | [SetRegularKey][]   | `6` |
 | [SignerListSet][]   | `13` |
 | [AccountDelete][]   | `22` |
@@ -68,8 +69,8 @@ The following permissions cannot be delegated:
 | [SetFee][]          | `102` |
 | [UNLModify][]       | `103` |
 
-{% admonition type="warning" name="Known Issue" %}
-With only the PermissionDelegation amendment, it's possible to assign permissions for transaction types that are reserved, unassigned, or part of amendments that are not currently enabled; it's also possible to assign PermissionValue `0` for full permissions. However, these values do not actually grant any permissions. This is a bug, and a future amendment will prevent assigning values outside of currently-enabled, delegatable transaction types or known granular permissions.
+{% admonition type="info" name="Note" %}
+The `Batch` transaction itself is non-delegable, but a delegate _can_ send inner transactions if they have permissions.
 {% /admonition %}
 
 ## Granular Permissions
