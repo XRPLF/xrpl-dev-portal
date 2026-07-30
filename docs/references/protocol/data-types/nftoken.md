@@ -6,7 +6,7 @@ labels:
 ---
 # NFToken
 
-A `NFToken` object represents a single non-fungible token (NFT) in the XRP Ledger. It is not stored on its own, but is contained in a [NFTokenPage entry][] alongside other `NFToken` objects.
+An `NFToken` object represents a single [non-fungible token](/docs/concepts/tokens/nfts/index.md) (NFT) in the XRP Ledger. It is not stored on its own, but is contained in an [NFTokenPage entry][] alongside other `NFToken` objects.
 
 {% amendment-disclaimer name="NonFungibleTokensV1_1" /%}
 
@@ -55,7 +55,7 @@ Flags are properties or other options associated with the `NFToken` object.
 
 ### Example
 
-The example sets three flags: `flagBurnable` (`0x0001`), `flagOnlyXRP` (`0x0002`), `flagTransferable` (`0x0008`). 1+2+8 = 11, or `0x000B` in big endian format.
+The example sets three flags: `flagBurnable` (`0x0001`), `flagOnlyXRP` (`0x0002`), `flagTransferable` (`0x0008`). 1+2+8 = 11, or `0x000B` in big-endian format.
 
 ![Flags](/docs/img/nftokena.png "Flags")
 
@@ -72,18 +72,18 @@ This value sets the transfer fee to 314, or 0.314%.
 
 ### Issuer Identification
 
-The third section of the `NFTokenID` is a big endian representation of the issuer’s public address.
+The third section of the `NFTokenID` is a big-endian representation of the issuer’s public address.
 
 ![Issuer Address](/docs/img/nftokenc.png "Issuer Address")
 
 ### NFTokenTaxon
 <!-- SPELLING_IGNORE: nftokentaxon -->
 
-The fourth section is a `NFTokenTaxon` created by the issuer.
+The fourth section is an `NFTokenTaxon` created by the issuer.
 
 ![Diagram of `NFTokenTaxon` bits](/docs/img/nftokend.png)
 
-An issuer might issue several `NFToken` objects with the same `NFTokenTaxon`; to ensure that `NFToken` objects are spread across multiple pages, the `NFTokenTaxon` is scrambled using the fifth section, a sequential number, as the seed for a random number generator. The scrambled value is stored with the `NFToken`, but the unscrambled value is the actual `NFTokenTaxon`.
+An issuer might issue several NFTs with the same `NFTokenTaxon`; to ensure that `NFToken` objects are spread across multiple pages, the `NFTokenTaxon` is scrambled using the fifth section, a sequential number, as the seed for a random number generator. The scrambled value is stored with the `NFToken`, but the unscrambled value is the actual `NFTokenTaxon`.
 
 Notice that the scrambled version of the `NFTokenTaxon` is `0xBC8B858E`, the scrambled version of the `NFTokenTaxon` specified by the issuer. But the _actual_ value of the `NFTokenTaxon` is the unscrambled value.
 
