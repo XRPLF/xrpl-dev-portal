@@ -43,30 +43,32 @@ The following permissions cannot be delegated:
 
 | Transaction Type    | Permission Value |
 |:--------------------|:-----------------|
+| [AccountDelete][]   | `22` |
 | [AccountSet][]      | `4` |
 | [Batch][]           | `72` |
-| [SetRegularKey][]   | `6` |
-| [SignerListSet][]   | `13` |
-| [AccountDelete][]   | `22` |
-| [LedgerStateFix][]  | `54` |
+| [ConfidentialMPTConvert][ConfidentialMPTConvert transaction] {% amendment-disclaimer name="ConfidentialTransfer" /%} | `86` |
 | [DelegateSet][]     | `65` |
-| [VaultCreate][VaultCreate transaction] {% amendment-disclaimer name="SingleAssetVault" /%} | `66` |
-| [VaultSet][VaultSet transaction] {% amendment-disclaimer name="SingleAssetVault" /%} | `67` |
-| [VaultDelete][VaultDelete transaction] {% amendment-disclaimer name="SingleAssetVault" /%} | `68` |
-| [VaultDeposit][VaultDeposit transaction] {% amendment-disclaimer name="SingleAssetVault" /%} | `69` |
-| [VaultWithdraw][VaultWithdraw transaction] {% amendment-disclaimer name="SingleAssetVault" /%} | `70` |
-| [VaultClawback][VaultClawback transaction] {% amendment-disclaimer name="SingleAssetVault" /%} | `71` |
-| [LoanBrokerSet][LoanBrokerSet transaction] {% amendment-disclaimer name="LendingProtocol" /%} | `75` |
-| [LoanBrokerDelete][LoanBrokerDelete transaction] {% amendment-disclaimer name="LendingProtocol" /%} | `76` |
+| [EnableAmendment][] | `101` |
+| [LedgerStateFix][]  | `54` |
+| [LoanBrokerCoverClawback][LoanBrokerCoverClawback transaction] {% amendment-disclaimer name="LendingProtocol" /%} | `79` |
 | [LoanBrokerCoverDeposit][LoanBrokerCoverDeposit transaction] {% amendment-disclaimer name="LendingProtocol" /%} | `77` |
 | [LoanBrokerCoverWithdraw][LoanBrokerCoverWithdraw transaction] {% amendment-disclaimer name="LendingProtocol" /%} | `78` |
-| [LoanBrokerCoverClawback][LoanBrokerCoverClawback transaction] {% amendment-disclaimer name="LendingProtocol" /%} | `79` |
-| [LoanSet][LoanSet transaction] {% amendment-disclaimer name="LendingProtocol" /%} | `81` |
+| [LoanBrokerDelete][LoanBrokerDelete transaction] {% amendment-disclaimer name="LendingProtocol" /%} | `76` |
+| [LoanBrokerSet][LoanBrokerSet transaction] {% amendment-disclaimer name="LendingProtocol" /%} | `75` |
 | [LoanDelete][LoanDelete transaction] {% amendment-disclaimer name="LendingProtocol" /%} | `82` |
 | [LoanManage][LoanManage transaction] {% amendment-disclaimer name="LendingProtocol" /%} | `83` |
 | [LoanPay][LoanPay transaction] {% amendment-disclaimer name="LendingProtocol" /%} | `85` |
-| [EnableAmendment][] | `101` |
+| [LoanSet][LoanSet transaction] {% amendment-disclaimer name="LendingProtocol" /%} | `81` |
 | [SetFee][]          | `102` |
+| [SetRegularKey][]   | `6` |
+| [SignerListSet][]   | `13` |
+| [SponsorshipTransfer][SponsorshipTransfer transaction] {% amendment-disclaimer name="Sponsor" /%} | `91` |
+| [VaultClawback][VaultClawback transaction] {% amendment-disclaimer name="SingleAssetVault" /%} | `71` |
+| [VaultCreate][VaultCreate transaction] {% amendment-disclaimer name="SingleAssetVault" /%} | `66` |
+| [VaultDelete][VaultDelete transaction] {% amendment-disclaimer name="SingleAssetVault" /%} | `68` |
+| [VaultDeposit][VaultDeposit transaction] {% amendment-disclaimer name="SingleAssetVault" /%} | `69` |
+| [VaultSet][VaultSet transaction] {% amendment-disclaimer name="SingleAssetVault" /%} | `67` |
+| [VaultWithdraw][VaultWithdraw transaction] {% amendment-disclaimer name="SingleAssetVault" /%} | `70` |
 | [UNLModify][]       | `103` |
 
 {% admonition type="info" name="Note" %}
