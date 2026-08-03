@@ -1752,11 +1752,24 @@ For more information, see the [Payment Channels Tutorial](../docs/tutorials/paym
 | Default Vote (Latest stable release) | N/A |
 | Pre-amendment functionality retired? | N/A |
 
-Allows accounts to delegate some permissions to other accounts. Specification: [XLS-75](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0075-permission-delegation).
+Allows accounts to delegate some permissions to other accounts.
 
 {% admonition type="danger" name="Warning" %}
-This amendment was disabled in v2.6.1 due to a bug. It will be replaced by `PermissionDelegationV1_1` in a future release.
+This amendment was disabled in v2.6.1 due to a bug and replaced by [PermissionDelegationV1_1](#permissiondelegationv1_1).
 {% /admonition %}
+
+
+### PermissionDelegationV1_1
+[PermissionDelegationV1_1]: #permissiondelegationv1_1
+
+| Amendment    | PermissionDelegationV1_1 |
+|:-------------|:---------------------|
+| Amendment ID | 0F48FF561C709540328F31F1C97FD512ACC8B4E42138A161CB0E21ECA292540B |
+| Status       | {% amendment-disclaimer name="PermissionDelegationV1_1" statusOnly=true /%} |
+| Default Vote (Latest stable release) | N/A |
+| Pre-amendment functionality retired? | N/A |
+
+Allows accounts to delegate some permissions to other accounts. This amendment replaces [PermissionDelegation](#permissiondelegation), fixing a critical bug discovered in the original implementation of the feature. Standard: [XLS-75](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0075-permission-delegation).
 
 
 ### PermissionedDEX
