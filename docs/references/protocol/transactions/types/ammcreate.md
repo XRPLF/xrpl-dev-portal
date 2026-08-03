@@ -76,7 +76,7 @@ Besides errors that can occur for all transactions, {% $frontmatter.seo.title %}
 | `tecNO_LINE`        | The sender does not have a trust line for at least one of the deposit assets. |
 | `tecNO_PERMISSION`  | At least one of the deposit assets cannot be used in an AMM. |
 | `tecUNFUNDED_AMM`   | The sender does not hold enough of the assets specified in `Amount` and `Amount2` to fund the AMM. |
-| `tecWRONG_ASSET`    | At least one of `Amount` or `Amount2` is the shares of a [Single Asset Vault](../../../../concepts/tokens/single-asset-vaults.md), which cannot be used as an AMM pool asset. |
+| `tecWRONG_ASSET`    | At least one of `Amount` or `Amount2` is the share token of a [Single Asset Vault](../../../../concepts/tokens/single-asset-vaults.md), which cannot be used as an AMM pool asset. |
 | `terNO_RIPPLE`      | The issuer of at least one of the assets has not enabled the [Default Ripple flag](../../../../concepts/tokens/fungible-tokens/rippling.md#the-default-ripple-flag). |
 | `temAMM_BAD_TOKENS` | The values of `Amount` and `Amount2` are not valid: for example, both refer to the same token. |
 | `temBAD_FEE`        | The `TradingFee` value is invalid. It must be zero or a positive integer and cannot be over 1000. |
