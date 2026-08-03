@@ -63,7 +63,9 @@ Besides errors that can occur for all transactions, {% code-page-name /%} transa
 | `tecWRONG_ASSET`          | The withdrawal asset doesn't match the asset in the vault. |
 | `tecNO_DST`               | The `Destination` provided doesn't exist on the ledger. |
 | `tecDST_TAG_NEEDED`       | The `Destination` account requires a destination tag. |
-| `tecINSUFFICIENT_FUNDS`   | There isn't enough first-loss capital to withdraw. You can also receive this error if the issuer of the asset has frozen the account or placed a global freeze. |
+| `tecINSUFFICIENT_FUNDS`   | There isn't enough first-loss capital to withdraw. |
+| `tecFROZEN`               | The asset is globally frozen, the trust line of the `LoanBroker` pseudo-account is frozen, the sender's trust line is frozen and `Destination` is another account, or the destination's trust line is deep frozen. A regular freeze on the destination alone does not cause this error, and no freeze causes it when the destination is the issuer of the asset. {% amendment-disclaimer name="fixCleanup3_3_0" mode="updated" /%} |
+| `tecLOCKED`               | The MPT asset is globally locked, or locked for the `LoanBroker` pseudo-account, the sender, or the destination account. Unlike a trust line freeze, an MPT lock also blocks a withdrawal to the sender's own account. No lock causes this error when the destination is the issuer of the asset. {% amendment-disclaimer name="fixCleanup3_3_0" mode="updated" /%} |
 | `tecNO_PERMISSION`        | The account sending the transaction isn't the owner of the `LoanBroker` ledger entry. |
 | `tecPATH_DRY`             | The XRP Ledger failed to send the funds to the `Destination`. |
 
