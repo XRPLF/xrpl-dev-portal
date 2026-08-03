@@ -112,6 +112,8 @@
 [NFTokenCreateOfferトランザクション]: /@l10n/ja/docs/references/protocol/transactions/types/nftokencreateoffer.md
 [NFTokenMint]: /@l10n/ja/docs/references/protocol/transactions/types/nftokenmint.md
 [NFTokenMintトランザクション]: /@l10n/ja/docs/references/protocol/transactions/types/nftokenmint.md
+[NFTokenModify]: /@l10n/ja/docs/references/protocol/transactions/types/nftokenmodify.md
+[NFTokenModifyトランザクション]: /@l10n/ja/docs/references/protocol/transactions/types/nftokenmodify.md
 [NFTokenOfferエントリ]: /@l10n/ja/docs/references/protocol/ledger-data/ledger-entry-types/nftokenoffer.md
 [NFTokenOfferオブジェクト]: /@l10n/ja/docs/references/protocol/ledger-data/ledger-entry-types/nftokenoffer.md
 [NFTokenPageエントリ]: /@l10n/ja/docs/references/protocol/ledger-data/ledger-entry-types/nftokenpage.md
