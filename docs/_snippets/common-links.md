@@ -211,7 +211,7 @@
 [PaymentChannelFund transactions]: /docs/references/protocol/transactions/types/paymentchannelfund.md
 [PaymentChannelFund]: /docs/references/protocol/transactions/types/paymentchannelfund.md
 [Payment]: /docs/references/protocol/transactions/types/payment.md
-[PermissionDelegation amendment]: /resources/known-amendments.md#permissiondelegation
+[PermissionDelegation amendment]: /resources/known-amendments.md#permissiondelegationv1_1
 [PermissionedDEX amendment]: /resources/known-amendments.md#permissioneddex
 [Permissioned DEXes]: /docs/concepts/tokens/decentralized-exchange/permissioned-dexes.md
 [PermissionedDomain entry]: /docs/references/protocol/ledger-data/ledger-entry-types/permissioneddomain.md
