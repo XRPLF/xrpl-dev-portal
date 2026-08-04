@@ -98,11 +98,24 @@ For details, see the [XLS-73: AMMClawback specification](https://github.com/XRPL
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
-Allows multiple transactions to be bundled into a batch that's processed all together. Standard: [XLS-56](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0056-batch)
+Allows multiple transactions to be bundled into a batch that's processed all together.
 
 {% admonition type="danger" name="Warning" %}
-This amendment was disabled in v3.1.1 due to a bug. It will be replaced by `BatchV1_1` in a future release.
+This amendment was disabled in v3.1.1 due to a bug and replaced by [BatchV1_1](#batchv1_1).
 {% /admonition %}
+
+
+### BatchV1_1
+[BatchV1_1]: #batchv1_1
+
+| Amendment    | BatchV1_1 |
+|:-------------|:----------|
+| Amendment ID | 9F287AED3CDB50A7BD1ACEC24296A30C9B5230CCD136219317AC790E3B884377 |
+| Status       | {% amendment-disclaimer name="BatchV1_1" statusOnly=true /%} |
+| Default Vote (Latest stable release) | No |
+| Pre-amendment functionality retired? | No |
+
+Allows multiple transactions to be bundled into a batch that's processed all together. This amendment replaces [Batch](#batch), fixing a critical bug discovered in the original implementation of the feature. Standard: [XLS-56](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0056-batch).
 
 
 ### CheckCashMakesTrustLine
@@ -1752,11 +1765,24 @@ For more information, see the [Payment Channels Tutorial](../docs/tutorials/paym
 | Default Vote (Latest stable release) | N/A |
 | Pre-amendment functionality retired? | N/A |
 
-Allows accounts to delegate some permissions to other accounts. Specification: [XLS-75](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0075-permission-delegation).
+Allows accounts to delegate some permissions to other accounts.
 
 {% admonition type="danger" name="Warning" %}
-This amendment was disabled in v2.6.1 due to a bug. It will be replaced by `PermissionDelegationV1_1` in a future release.
+This amendment was disabled in v2.6.1 due to a bug and replaced by [PermissionDelegationV1_1](#permissiondelegationv1_1).
 {% /admonition %}
+
+
+### PermissionDelegationV1_1
+[PermissionDelegationV1_1]: #permissiondelegationv1_1
+
+| Amendment    | PermissionDelegationV1_1 |
+|:-------------|:---------------------|
+| Amendment ID | 0F48FF561C709540328F31F1C97FD512ACC8B4E42138A161CB0E21ECA292540B |
+| Status       | {% amendment-disclaimer name="PermissionDelegationV1_1" statusOnly=true /%} |
+| Default Vote (Latest stable release) | N/A |
+| Pre-amendment functionality retired? | N/A |
+
+Allows accounts to delegate some permissions to other accounts. This amendment replaces [PermissionDelegation](#permissiondelegation), fixing a critical bug discovered in the original implementation of the feature. Standard: [XLS-75](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0075-permission-delegation).
 
 
 ### PermissionedDEX

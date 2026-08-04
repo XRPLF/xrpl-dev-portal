@@ -136,11 +136,11 @@ Each inner transaction:
 - Must contain a `tfInnerBatchTxn` (Decimal Value: `1073741824`, or Hex Value: `0x40000000`) flag.
 - Must have a `Fee` value of `"0"`.
 - Must not be signed (the global transaction is already signed by all relevant parties). They must instead have an empty string (`""`) in the `SigningPubKey`, and the `TxnSignature` field must be omitted.
-- Must include a `TicketSequence` or `Sequence` value greather than zero.
+- Must include either a `TicketSequence` or `Sequence` value greater than zero.
 
 ### BatchSigners
 
-This field operates similarly to multi-signing on the XRPL. It is only needed if multiple accounts' transactions are included in the `Batch` transaction; otherwise, the normal transaction signature provides the same security guarantees. The entries must be sorted by `Account` in ascending order and must be unique.
+This field operates similarly to multi-signing on the XRPL. It is only needed if multiple accounts' transactions are included in the `Batch` transaction; otherwise, the normal transaction signature provides the same security guarantees. When required, it must contain signatures from all accounts whose inner transactions are included, excluding the account signing the outer transaction. The entries must be sorted in ascending order by `Account`, and must be unique.
 
 | Field           | JSON Type | [Internal Type][] | Required? | Description |
 |:----------------|:----------|:------------------|:----------|:------------|
@@ -150,7 +150,7 @@ This field operates similarly to multi-signing on the XRPL. It is only needed if
 | `Signers`       | Array     | Array             | No        | Array of objects that represent a multi-signature which authorizes this transaction. |
 
 {% admonition type="info" name="Note" %}
-If the account submitting the `Batch` transaction is signing with a single signature, they sign the `Flags` field and the hashes of the inner transactions. In this case, only `SigningPubKey` and `TxnSignature` are included. Otherwise, the `Signers` field is used instead for multi-signing; this field holds the signatures for the `Flags` field and the hashes of the inner transactions.
+If the account in a `BatchSigners` entry authorizes with a single signature, only include `SigningPubKey` and `TxnSignature`. Multi-signed accounts use the `Signers` field instead.
 {% /admonition %}
 
 
@@ -168,13 +168,31 @@ Transactions of the `Batch` type support additional values in the [`Flags` field
 A transaction is considered successful if it receives a `tesSUCCESS` result.
 
 
+## Special Transaction Cost
+
+A `Batch` [transaction cost][] is higher than a standard transaction. The fee is calculated as the sum of:
+
+- {% $env.PUBLIC_BASE_FEE %} * 2.
+- An additional {% $env.PUBLIC_BASE_FEE %} for each signature in the outer transaction.
+- The sum of all inner transaction fees.
+
+
 ## Error Cases
 
-| Error Code                | Description                                       |
-|:--------------------------|:--------------------------------------------------|
-| `temARRAY_EMPTY`          | The batch transaction contains zero or one inner transaction. You must submit at least two inner transactions. |
-| `temBAD_SIGNER`           | The `BatchSigners` array isn't sorted by `Account` in ascending order, or it contains a duplicate entry. |
-| `temINVALID_INNER_BATCH`  | - An inner transaction is malformed.<br>- You are attempting to submit a lending or vault-related transaction, which are currently disabled. Invalid transactions include: `LoanBrokerCoverClawback`, `LoanBrokerCoverDeposit`, `LoanBrokerCoverWithdraw`, `LoanBrokerDelete`, `LoanBrokerSet`, `LoanDelete`, `LoanManage`, `LoanPay`, `LoanSet`, `VaultCreate`, `VaultSet`, `VaultDelete`, `VaultDeposit`, `VaultWithdraw`, and `VaultClawback`. |
-| `temSEQ_AND_TICKET`       | The transaction contains both a `TicketSequence` field and a non-zero `Sequence` value. A transaction can't include both fields, but must have at least one. |
+Besides errors that can occur for all transactions, {% $frontmatter.seo.title %} transactions can result in the following [transaction result codes][]:
+
+| Error Code | Description |
+|:-----------|:------------|
+| `tefBAD_AUTH` | A `BatchSigners` entry references a pseudo-account, which can't sign any transactions. |
+| `temARRAY_EMPTY` | There are fewer than two transactions in the `RawTransactions` field. A batch must contain at least two inner transactions. |
+| `temARRAY_TOO_LARGE` | There are more than 8 entries in `RawTransactions`, or more than 24 signatures in `BatchSigners`. |
+| `temBAD_FEE` | One of the inner transactions has a `Fee` greater than `0`. |
+| `temBAD_REGKEY` | One of the inner transactions has a non-empty `SigningPubKey`. |
+| `temBAD_SIGNATURE` | One of the inner transactions includes a `TxnSignature` field. |
+| `temBAD_SIGNER` | <li>One of the inner transactions includes a `Signers` field.</li><li>The `BatchSigners` field contains a signature from the account signing the outer transaction.</li><li>The `BatchSigners` field contains a duplicate signer.</li><li>The `BatchSigners` field isn't sorted in strictly ascending order by `Account`.</li><li>The `BatchSigners` field contains a signature from an account that has no inner transactions.</li><li>The `BatchSigners` field is missing a signature from an account that has inner transactions.</li> |
+| `temINVALID_FLAG` | <li>The `Flags` field isn't set to exactly one of the supported [batch modes](#batch-flags).</li><li>One of the inner transactions doesn't have the `tfInnerBatchTxn` flag set.</li> |
+| `temINVALID_INNER_BATCH` | The `RawTransactions` field contains a disabled or invalid `TransactionType`, such as `Batch`. Currently-disabled transactions include: `LoanBrokerCoverClawback`, `LoanBrokerCoverDeposit`, `LoanBrokerCoverWithdraw`, `LoanBrokerDelete`, `LoanBrokerSet`, `LoanDelete`, `LoanManage`, `LoanPay`, `LoanSet`, `VaultCreate`, `VaultSet`, `VaultDelete`, `VaultDeposit`, `VaultWithdraw`, and `VaultClawback`. |
+| `temREDUNDANT` | There is a duplicate transaction in the `RawTransactions` field. |
+| `temSEQ_AND_TICKET` | One of the inner transactions sets both `TicketSequence` and a non-zero `Sequence`, or sets neither. Only one is required. |
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}
