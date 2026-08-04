@@ -116,7 +116,7 @@ This amendment was disabled in v3.1.1 due to a bug and replaced by [BatchV1_1](#
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
-Allows multiple transactions to be bundled into a batch that's processed all together. This amendment replaces [Batch](#batch), fixing a critical bug discovered in the original implementation of the feature. Standard: [XLS-56](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0056-batch)
+Allows multiple transactions to be bundled into a batch that's processed all together. This amendment replaces [Batch](#batch), fixing a critical bug discovered in the original implementation of the feature. Standard: [XLS-56](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0056-batch).
 
 
 ### CheckCashMakesTrustLine

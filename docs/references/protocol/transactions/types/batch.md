@@ -184,7 +184,8 @@ Besides errors that can occur for all transactions, {% $frontmatter.seo.title %}
 | Error Code | Description |
 |:-----------|:------------|
 | `temARRAY_EMPTY` | There are fewer than two transactions in the `RawTransactions` field. A batch must contain at least two inner transactions. |
-| `temARRAY_TOO_LARGE` | There are more than 8 entries in the `RawTransactions` or `BatchSigners` field. |
+| `temARRAY_TOO_LARGE` | There are more than 8 entries in `RawTransactions`, or more than 24 signatures in `BatchSigners`. |
+| `tefBAD_AUTH` | A `BatchSigners` entry references a pseudo-account, which can't sign any transactions. |
 | `temBAD_FEE` | One of the inner transactions has a `Fee` greater than `0`. |
 | `temBAD_REGKEY` | One of the inner transactions has a non-empty `SigningPubKey`. |
 | `temBAD_SIGNATURE` | One of the inner transactions includes a `TxnSignature` field. |
@@ -192,7 +193,6 @@ Besides errors that can occur for all transactions, {% $frontmatter.seo.title %}
 | `temINVALID_FLAG` | <li>The `Flags` field isn't set to exactly one of the supported [batch modes](#batch-flags).</li><li>One of the inner transactions doesn't have the `tfInnerBatchTxn` flag set.</li> |
 | `temINVALID_INNER_BATCH` | The `RawTransactions` field contains a disabled or invalid `TransactionType`, such as `Batch`. Currently-disabled transactions include: `LoanBrokerCoverClawback`, `LoanBrokerCoverDeposit`, `LoanBrokerCoverWithdraw`, `LoanBrokerDelete`, `LoanBrokerSet`, `LoanDelete`, `LoanManage`, `LoanPay`, `LoanSet`, `VaultCreate`, `VaultSet`, `VaultDelete`, `VaultDeposit`, `VaultWithdraw`, and `VaultClawback`. |
 | `temREDUNDANT` | There is a duplicate transaction in the `RawTransactions` field. |
-| `temSEQ_AND_TICKET` | One of the inner transactions sets both `TicketSequence` and a non-zero `Sequence`, or sets neither. Exactly one is required. |
-| `tefBAD_AUTH` | <li>The `BatchSigners` field is required but isn't present.</li><li>A `BatchSigners` entry references a pseudo-account, which can't sign batch entries.</li> |
+| `temSEQ_AND_TICKET` | One of the inner transactions sets both `TicketSequence` and a non-zero `Sequence`, or sets neither. Only one is required. |
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}
