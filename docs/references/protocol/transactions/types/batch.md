@@ -183,9 +183,9 @@ Besides errors that can occur for all transactions, {% $frontmatter.seo.title %}
 
 | Error Code | Description |
 |:-----------|:------------|
+| `tefBAD_AUTH` | A `BatchSigners` entry references a pseudo-account, which can't sign any transactions. |
 | `temARRAY_EMPTY` | There are fewer than two transactions in the `RawTransactions` field. A batch must contain at least two inner transactions. |
 | `temARRAY_TOO_LARGE` | There are more than 8 entries in `RawTransactions`, or more than 24 signatures in `BatchSigners`. |
-| `tefBAD_AUTH` | A `BatchSigners` entry references a pseudo-account, which can't sign any transactions. |
 | `temBAD_FEE` | One of the inner transactions has a `Fee` greater than `0`. |
 | `temBAD_REGKEY` | One of the inner transactions has a non-empty `SigningPubKey`. |
 | `temBAD_SIGNATURE` | One of the inner transactions includes a `TxnSignature` field. |
