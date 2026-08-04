@@ -27,6 +27,9 @@ The following is a list of [amendments](../docs/concepts/networks-and-servers/am
 | [MPTokensV2][]                    | {% badge %}In Development: TBD{% /badge %} | [XLS-82 MPT DEX Integration](https://opensource.ripple.com/docs/xls-82-mpt-dex) |
 | [Sponsor][]                       | {% badge %}In Development: TBD{% /badge %} | [XLS-68 Sponsored Fees and Reserves](https://opensource.ripple.com/docs/xls-68-sponsored-fees-and-reserves) |
 | [SmartEscrow][]                   | {% badge %}In Development: TBD{% /badge %} | [XLS-100 Smart Escrows](https://opensource.ripple.com/docs/xls-100-smart-escrows) |
+| [BatchV1_1][]                     | {% badge %}In Development: TBD{% /badge %} | [XLS-56 Batch](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0056-batch) |
+| [LendingProtocolV1_1][]           | {% badge %}In Development: TBD{% /badge %} | [XLS-66 Lending Protocol](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0066-lending-protocol) |
+| [fixCleanup3_3_0][]               | {% badge %}In Development: TBD{% /badge %} |  |
 
 {% admonition type="success" name="Tip" %}
 This list is updated manually. If you're working on an amendment and have a private network to test the changes, you can edit this page to add your in-development amendment to this list. For more information on contributing to the XRP Ledger, see [Contribute Code to the XRP Ledger](contribute-code/index.md).
@@ -104,8 +107,21 @@ For details, see the [XLS-73: AMMClawback specification](https://github.com/XRPL
 Allows multiple transactions to be bundled into a batch that's processed all together. Standard: [XLS-56](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0056-batch)
 
 {% admonition type="danger" name="Warning" %}
-This amendment was disabled in v3.1.1 due to a bug. It will be replaced by `BatchV1_1` in a future release.
+This amendment was disabled in v3.1.1 due to a bug. It will be replaced by [BatchV1_1][] in a future release.
 {% /admonition %}
+
+
+### BatchV1_1
+[BatchV1_1]: #batchv1_1
+
+| Amendment    | BatchV1_1 |
+|:-------------|:----------|
+| Amendment ID | 9F287AED3CDB50A7BD1ACEC24296A30C9B5230CCD136219317AC790E3B884377 |
+| Status       | In Development |
+| Default Vote (Latest stable release) | No |
+| Pre-amendment functionality retired? | No |
+
+Reworked version of the [Batch][] amendment, which allows multiple transactions to be bundled into a batch that's processed all together. It replaces the original Batch amendment, which was disabled in v3.1.1 due to a bug in its inner-signature handling. Standard: [XLS-56](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0056-batch)
 
 
 ### CheckCashMakesTrustLine
@@ -779,7 +795,7 @@ Adds several fixes to Automated Market Maker code, specifically:
 This amendment fixes an issue where inner transactions of a `Batch` transaction would be flagged as having valid signatures. Since inner transactions aren't signed directly, they should never have valid signatures.
 
 {% admonition type="danger" name="Warning" %}
-This amendment was disabled in v3.1.1 due to a bug in `Batch`. The `BatchV1_1` amendment in a future release will include this fix.
+This amendment was disabled in v3.1.1 due to a bug in `Batch`. The [BatchV1_1][] amendment in a future release will include this fix.
 {% /admonition %}
 
 
@@ -835,6 +851,22 @@ This amendment is a collection of fixes for Single Asset Vaults, the Lending Pro
 - Validates non-canonical Multi-Purpose Token amounts.
 - Adds a zero `DomainID` check for permissioned domains.
 - Adds invariant `AccountRootsDeletedClean`, which checks that a deleted account doesn't leave any directly accessible artifacts behind.
+
+
+### fixCleanup3_3_0
+[fixCleanup3_3_0]: #fixcleanup3_3_0
+
+| Amendment    | fixCleanup3_3_0 |
+|:-------------|:----------------|
+| Amendment ID | 3298D47E1F3A8A24FECAA30F699B8FE1DD234E072834BA099AD8180FFCE0FEC4 |
+| Status       | In Development |
+| Default Vote (Latest stable release) | No |
+| Pre-amendment functionality retired? | No |
+
+This amendment is a collection of small fixes being developed for a future release, including:
+
+- Rejects a zero `CheckID` in `CheckCancel` and `CheckCash` transactions.
+- Disables AMM creation with Single Asset Vault shares.
 
 
 ### fixDirectoryLimit
@@ -1523,6 +1555,21 @@ This amendment adds several new invariants to protect the ledger against bugs in
 | Pre-amendment functionality retired? | No |
 
 The Lending Protocol enables on-chain, fixed-term, uncollateralized loans using pooled funds from a Single Asset Vault. This implementation relies on off-chain underwriting and risk management to assess the creditworthiness of borrowers, but offers configurable, peer-to-peer loans.
+
+Specification: [XLS-66](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0066-lending-protocol).
+
+
+### LendingProtocolV1_1
+[LendingProtocolV1_1]: #lendingprotocolv1_1
+
+| Amendment    | LendingProtocolV1_1 |
+|:-------------|:--------------------|
+| Amendment ID | A360E2BFD775A5B0DCE1C36C16DF31B72735A57584FD163655D2F9564F8E7AC8 |
+| Status       | In Development |
+| Default Vote (Latest stable release) | No |
+| Pre-amendment functionality retired? | No |
+
+A revision of the [LendingProtocol][] amendment with improvements and fixes, including adding a `MemoData` field to the `VaultDelete` transaction.
 
 Specification: [XLS-66](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0066-lending-protocol).
 
