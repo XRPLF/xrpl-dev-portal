@@ -856,6 +856,8 @@ This amendment is a collection of fixes for Single Asset Vaults, the Lending Pro
 - Adds invariant `ObjectHasPseudoAccount`, which checks that deleting a ledger entry backed by a pseudo-account also deletes that pseudo-account.
 - Adds further precision and rounding fixes for Single Asset Vaults and the Lending Protocol.
 - Changes transactions signed by a pseudo-account to fail with `tefBAD_AUTH`. This check also takes effect if the `LendingProtocol` or `BatchV1_1` amendment is enabled.
+- Changes `CredentialCreate` to reject a pseudo-account in the `Subject` field with `tecPSEUDO_ACCOUNT`.
+- Changes `DepositPreauth` to reject a pseudo-account in the `Authorize` field with `tecPSEUDO_ACCOUNT`.
 
 
 ### fixDirectoryLimit
