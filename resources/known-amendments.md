@@ -383,7 +383,7 @@ Adds functionality to update the `URI` field of an `NFToken` ledger entry. This 
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
-Extends Multi-Purpose Tokens to allow issuers to designate specific properties as mutable during token creation, enabling selected attributes to be updated later as business needs change.
+Extends Multi-Purpose Tokens by making specific properties mutable by default: the on-chain metadata, the transfer fee, and the ability to enable MPT issuance capability flags. Issuers can make any of these properties permanently immutable by declaring them in the `ImmutableFlags` field.
 
 For more details, see [Dynamic MPTs](/docs/concepts/tokens/fungible-tokens/mutable-mpts.md).
 
@@ -776,7 +776,7 @@ Adds several fixes to Automated Market Maker code, specifically:
 This amendment fixes an issue where inner transactions of a `Batch` transaction would be flagged as having valid signatures. Since inner transactions aren't signed directly, they should never have valid signatures.
 
 {% admonition type="danger" name="Warning" %}
-This amendment was disabled in v3.1.1 due to a bug in `Batch`. The `BatchV1_1` amendment in a future release will include this fix.
+This amendment was disabled in v3.1.1 due to a bug in `Batch`. The `BatchV1_1` amendment includes this fix.
 {% /admonition %}
 
 
@@ -850,7 +850,7 @@ This amendment is a collection of fixes for Single Asset Vaults, the Lending Pro
 - Changes `CheckCash` and `CheckCancel` to reject an all-zero `CheckID` with `temMALFORMED` during preflight instead of `tecNO_ENTRY` during processing.
 - Fixes hybrid offers being removed from the open order book when the account that placed them loses access to the permissioned domain.
 - Fixes Automated Market Maker liquidity being included in quality estimates for permissioned DEX order books.
-- Changes `AMMWithdraw` to return `tecAMM_FAILED` instead of dividing by zero when the withdrawal specifies an `EPrice`.
+- Changes `AMMWithdraw` to return `tecAMM_FAILED` instead of dividing by zero for the one `EPrice` value at which the computation's denominator becomes zero. Without this amendment, the division throws and the transaction fails with `tefEXCEPTION`.
 - Adds a precision loss check to `AMMDeposit`, `AMMWithdraw`, and `AMMClawback` when the `fixAMMv1_3` amendment is also enabled.
 - Changes the `ValidAMM` invariant to ensure an AMM can only be deleted by an `AMMWithdraw`, `AMMClawback`, or `AMMDelete` transaction.
 - Adds invariant `ObjectHasPseudoAccount`, which checks that deleting a ledger entry backed by a pseudo-account also deletes that pseudo-account.

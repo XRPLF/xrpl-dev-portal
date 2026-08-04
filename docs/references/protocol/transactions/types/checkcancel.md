@@ -35,7 +35,7 @@ Cancels an unredeemed [check](../../../../concepts/payment-types/checks.md), rem
 
 ## Error Cases
 
-- If the `CheckID` is an all-zero value, the transaction fails with the result `temMALFORMED`. (Requires the {% amendment-disclaimer name="fixCleanup3_3_0" compact=true /%} amendment. Before that amendment is enabled, the transaction instead passes preflight and fails during ledger lookup with `tecNO_ENTRY`.)
+- If the `CheckID` is an all-zero value, the transaction fails with the result `temMALFORMED`. Previously, the transaction would fail with the result `tecNO_ENTRY`. {% amendment-disclaimer name="fixCleanup3_3_0" mode="updated" /%}
 - If the object identified by the `CheckID` does not exist or is not a Check, the transaction fails with the result `tecNO_ENTRY`.
 - If the Check is not expired and the sender of the CheckCancel transaction is not the source or destination of the Check, the transaction fails with the result `tecNO_PERMISSION`.
 
