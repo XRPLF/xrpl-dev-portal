@@ -68,8 +68,8 @@ Besides errors that can occur for all transactions, {% $frontmatter.seo.title %}
 | Error Code                | Description |
 |:--------------------------|:------------|
 | `tecNO_ENTRY`             | The `Permissions` list is empty but no [Delegate ledger entry][] exists for the delegate. An empty list is only valid for deleting an existing entry. |
-| `tecNO_PERMISSION`        | The `Authorize` account is a [pseudo-account](/docs/concepts/accounts/pseudo-accounts.md). |
 | `tecNO_TARGET`            | The account specified in the `Authorize` field does not exist in the ledger. |
+| `tecPSEUDO_ACCOUNT`       | The `Authorize` account is a [pseudo-account](/docs/concepts/accounts/pseudo-accounts.md). |
 | `temARRAY_TOO_LARGE`      | The `Permissions` list is too large. It cannot contain more than 10 entries. |
 | `temMALFORMED`            | The transaction was invalid. For example:<ul><li>The `Authorize` account is the same as the sender of the transaction</li><li>The `Permissions` list contains duplicate entries</li><li>One of the permissions can't be delegated. See: [List of Non-Delegable Permissions](../../data-types/permission-values.md#list-of-non-delegable-permissions).</li></ul> |
 | `temBAD_SIGNER`           | `Delegate` is the same as `Account`. |
