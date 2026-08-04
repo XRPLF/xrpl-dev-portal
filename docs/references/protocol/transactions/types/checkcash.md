@@ -43,6 +43,7 @@ The transaction ***must*** include either `Amount` or `DeliverMin`, but not both
 ## Error Cases
 
 - If the sender of the CheckCash transaction is not the `Destination` of the check, the transaction fails with the result code `tecNO_PERMISSION`.
+- If the `CheckID` is an all-zero value, the transaction fails with the result `temMALFORMED`. (Requires the `fixCleanup3_3_0` amendment. Before that amendment is enabled, the transaction instead passes preflight and fails during ledger lookup with `tecNO_ENTRY`.)
 - If the Check identified by the `CheckID` field does not exist, the transaction fails with the result `tecNO_ENTRY`.
 - If the Check identified by the `CheckID` field has already expired, the transaction fails with the result `tecEXPIRED`.
 - If the destination of the Check has the `RequireDest` flag enabled but the Check, as created, does not have a destination tag, the transaction fails with the result code `tecDST_TAG_NEEDED`.

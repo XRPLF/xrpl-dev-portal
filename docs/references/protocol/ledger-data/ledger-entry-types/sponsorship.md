@@ -38,13 +38,13 @@ In addition to the [common fields](../common-fields.md), a {% code-page-name /%}
 
 | Field Name          | JSON Type | [Internal Type][] | Required? | Description |
 | :------------------ | :-------- | :---------------- | :-------- | :---------- |
-| `FeeAmount`         | String    | Amount            | No        | The remaining amount of XRP that the sponsor has provided for the sponsee to use for transaction fees. |
+| `FeeAmount`         | String    | Amount            | No        | The remaining amount of XRP that the sponsor has provided for the sponsee to use for transaction fees. The sponsor adjusts this amount using the `FeeAmountDelta` field of a [SponsorshipSet transaction][]. |
 | `MaxFee`            | String    | Amount            | No        | The maximum fee per transaction that the sponsor will cover. This field helps prevent excessive draining of the pre-funded fee pool. If the sponsee submits a transaction with a fee exceeding this value, the transaction fails. |
 | `Owner`             | String    | AccountID         | Yes       | The address of the sponsor account. This account pays the reserve for this entry. |
 | `OwnerNode`         | String    | UInt64            | Yes       | A hint indicating which page of the sponsor's owner directory links to this entry, in case the directory consists of multiple pages. |
 | `PreviousTxnID`     | String    | Hash256           | Yes       | The identifying hash of the transaction that most recently modified this entry. |
 | `PreviousTxnLgrSeq` | Number    | UInt32            | Yes       | The [ledger index][] of the ledger that contains the transaction that most recently modified this entry. |
-| `RemainingOwnerCount` | Number    | UInt32            | No        | The remaining number of owner reserves the sponsor has pre-funded for the sponsee. |
+| `RemainingOwnerCount` | Number    | UInt32            | No        | The remaining number of owner reserves the sponsor has pre-funded for the sponsee. The sponsor adjusts this count using the `RemainingOwnerCountDelta` field of a [SponsorshipSet transaction][]. |
 | `Sponsee`           | String    | AccountID         | Yes       | The address of the sponsee account associated with this relationship. |
 | `SponseeNode`       | String    | UInt64            | Yes       | A hint indicating which page of the sponsee's owner directory links to this entry, in case the directory consists of multiple pages. |
 

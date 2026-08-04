@@ -33,6 +33,8 @@ Some transactions have different transaction costs:
 | [AccountDelete Transaction](../accounts/deleting-accounts.md) | 200,000 drops |
 | [AMMCreate Transaction](../tokens/decentralized-exchange/automated-market-makers.md) | 200,000 drops |
 | [Batch Transaction](../transactions/batch-transactions.md) | {% $env.PUBLIC_BASE_FEE %} x (2 + Number of Signatures Provided) + (Sum of Inner Transactions Fees) |
+| [Confidential MPT Transaction](../tokens/fungible-tokens/confidential-transfers.md) (single-signed) {% amendment-disclaimer name="ConfidentialTransfer" /%} | 100 drops |
+| [Confidential MPT Transaction](../tokens/fungible-tokens/confidential-transfers.md) (multi-signed) {% amendment-disclaimer name="ConfidentialTransfer" /%} | 10 drops × (10 + Number of Signatures Provided) |
 
 <!-- RESERVES_REMINDER: update cost in drops if reserves change -->
 

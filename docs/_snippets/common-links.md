@@ -55,6 +55,12 @@
 [Clawback amendment]: /resources/known-amendments.md#clawback
 [Clawback transaction]: /docs/references/protocol/transactions/types/clawback.md
 [Clawback transactions]: /docs/references/protocol/transactions/types/clawback.md
+[ConfidentialMPTClawback transaction]: /docs/references/protocol/transactions/types/confidentialmptclawback.md
+[ConfidentialMPTConvert transaction]: /docs/references/protocol/transactions/types/confidentialmptconvert.md
+[ConfidentialMPTConvertBack transaction]: /docs/references/protocol/transactions/types/confidentialmptconvertback.md
+[ConfidentialMPTMergeInbox transaction]: /docs/references/protocol/transactions/types/confidentialmptmergeinbox.md
+[ConfidentialMPTSend transaction]: /docs/references/protocol/transactions/types/confidentialmptsend.md
+[ConfidentialTransfer amendment]: https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0096-confidential-mpt
 [credentials]: /docs/concepts/decentralized-storage/credentials.md
 [Credentials amendment]: /resources/known-amendments.md#credentials
 [CredentialCreate transaction]: /docs/references/protocol/transactions/types/credentialcreate.md
@@ -205,7 +211,7 @@
 [PaymentChannelFund transactions]: /docs/references/protocol/transactions/types/paymentchannelfund.md
 [PaymentChannelFund]: /docs/references/protocol/transactions/types/paymentchannelfund.md
 [Payment]: /docs/references/protocol/transactions/types/payment.md
-[PermissionDelegation amendment]: /resources/known-amendments.md#permissiondelegation
+[PermissionDelegation amendment]: /resources/known-amendments.md#permissiondelegationv1_1
 [PermissionedDEX amendment]: /resources/known-amendments.md#permissioneddex
 [Permissioned DEXes]: /docs/concepts/tokens/decentralized-exchange/permissioned-dexes.md
 [PermissionedDomain entry]: /docs/references/protocol/ledger-data/ledger-entry-types/permissioneddomain.md
