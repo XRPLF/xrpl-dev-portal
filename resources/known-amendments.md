@@ -160,7 +160,7 @@ Introduces three new transaction types: CheckCreate, CheckCancel, and CheckCash,
 | Amendment ID | 56B241D7A43D40354D02A9DC4C8DF5C7A1F930D92A9035C4E12291B3CA3E1C2B |
 | Status       | {% amendment-disclaimer name="Clawback" statusOnly=true /%} |
 | Default Vote (Latest stable release) | No |
-| Pre-amendment functionality retired? | No |
+| Pre-amendment functionality retired? | Yes |
 
 For regulatory purposes, some issuers must have the ability to recover issued tokens after they are distributed to accounts. For example, if an issuer were to discover that tokens were sent to an account sanctioned for illegal activity, the issuer could recover, or _claw back_ the funds.
 
@@ -396,7 +396,7 @@ Adds functionality to update the `URI` field of an `NFToken` ledger entry. This 
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
-Extends Multi-Purpose Tokens to allow issuers to designate specific properties as mutable during token creation, enabling selected attributes to be updated later as business needs change.
+Extends Multi-Purpose Tokens by making specific properties mutable by default: the on-chain metadata, the transfer fee, and the ability to enable MPT issuance capability flags. Issuers can make any of these properties permanently immutable by declaring them in the `ImmutableFlags` field.
 
 For more details, see [Dynamic MPTs](/docs/concepts/tokens/fungible-tokens/mutable-mpts.md).
 
@@ -789,7 +789,7 @@ Adds several fixes to Automated Market Maker code, specifically:
 This amendment fixes an issue where inner transactions of a `Batch` transaction would be flagged as having valid signatures. Since inner transactions aren't signed directly, they should never have valid signatures.
 
 {% admonition type="danger" name="Warning" %}
-This amendment was disabled in v3.1.1 due to a bug in `Batch`. The `BatchV1_1` amendment in a future release will include this fix.
+This amendment was disabled in v3.1.1 due to a bug in `Batch`. The `BatchV1_1` amendment includes this fix.
 {% /admonition %}
 
 
@@ -847,6 +847,32 @@ This amendment is a collection of fixes for Single Asset Vaults, the Lending Pro
 - Adds invariant `AccountRootsDeletedClean`, which checks that a deleted account doesn't leave any directly accessible artifacts behind.
 
 
+### fixCleanup3_3_0
+[fixCleanup3_3_0]: #fixcleanup3_3_0
+
+| Amendment    | fixCleanup3_3_0 |
+|:-------------|:----------------|
+| Amendment ID | 3298D47E1F3A8A24FECAA30F699B8FE1DD234E072834BA099AD8180FFCE0FEC4 |
+| Status       | {% amendment-disclaimer name="fixCleanup3_3_0" statusOnly=true /%} |
+| Default Vote (Latest stable release) | No |
+| Pre-amendment functionality retired? | No |
+
+This amendment is a collection of fixes for Single Asset Vaults, the Lending Protocol, Automated Market Makers, the permissioned DEX, Checks, and pseudo-accounts:
+
+- Unifies freeze and deep freeze checks for transfers to and from pseudo-accounts in the `VaultDeposit`, `VaultWithdraw`, `AMMDeposit`, `AMMWithdraw`, `LoanBrokerCoverDeposit`, and `LoanBrokerCoverWithdraw` transactions.
+- Changes `CheckCash` and `CheckCancel` to reject an all-zero `CheckID` with `temMALFORMED` during preflight instead of `tecNO_ENTRY` during processing.
+- Fixes hybrid offers being removed from the open order book when the account that placed them loses access to the permissioned domain.
+- Fixes Automated Market Maker liquidity being included in quality estimates for permissioned DEX order books.
+- Changes `AMMWithdraw` to return `tecAMM_FAILED` instead of dividing by zero for the one `EPrice` value at which the computation's denominator becomes zero. Without this amendment, the division throws and the transaction fails with `tefEXCEPTION`.
+- Adds a precision loss check to `AMMDeposit`, `AMMWithdraw`, and `AMMClawback` when the `fixAMMv1_3` amendment is also enabled.
+- Changes the `ValidAMM` invariant to ensure an AMM can only be deleted by an `AMMWithdraw`, `AMMClawback`, or `AMMDelete` transaction.
+- Adds invariant `ObjectHasPseudoAccount`, which checks that deleting a ledger entry backed by a pseudo-account also deletes that pseudo-account.
+- Adds further precision and rounding fixes for Single Asset Vaults and the Lending Protocol.
+- Changes transactions signed by a pseudo-account to fail with `tefBAD_AUTH`. This check also takes effect if the `LendingProtocol` or `BatchV1_1` amendment is enabled.
+- Changes `CredentialCreate` to reject a pseudo-account in the `Subject` field with `tecPSEUDO_ACCOUNT`.
+- Changes `DepositPreauth` to reject a pseudo-account in the `Authorize` field with `tecPSEUDO_ACCOUNT`.
+
+
 ### fixDirectoryLimit
 [fixDirectoryLimit]: #fixdirectorylimit
 
@@ -868,7 +894,7 @@ This amendment removes the directory page limit. Object reserve requirements pro
 | Amendment ID | 15D61F0C6DB6A2F86BCF96F1E2444FEC54E705923339EC175BD3E517C8B3FF91 |
 | Status       | {% amendment-disclaimer name="fixDisallowIncomingV1" statusOnly=true /%} |
 | Default Vote (Latest stable release) | No |
-| Pre-amendment functionality retired? | No |
+| Pre-amendment functionality retired? | Yes |
 
 This amendment fixes an issue with approving trustlines after a user enables the `lsfDisallowIncomingTrustline` flag on their account.
 
@@ -1000,7 +1026,7 @@ The presence of a `Sequence` field on Escrow ledger entries is especially useful
 | Amendment ID | C393B3AEEBF575E475F0C60D5E4241B2070CC4D0EB6C4846B1A07508FAEFC485 |
 | Status       | {% amendment-disclaimer name="fixInnerObjTemplate" statusOnly=true /%} |
 | Default Vote (Latest stable release) | No |
-| Pre-amendment functionality retired? | No |
+| Pre-amendment functionality retired? | Yes |
 
 This amendment fixes an issue with accessing the AMM `sfTradingFee` and `sfDiscountedFee` fields in the inner objects of `sfVoteEntry` and `sfAuctionSlot`.
 
@@ -1153,7 +1179,7 @@ This is a **breaking change** for projects & tools relying on their own locally 
 | Amendment ID | 03BDC0099C4E14163ADA272C1B6F6FABB448CC3E51F522F978041E4B57D9158C |
 | Status       | {% amendment-disclaimer name="fixNFTokenReserve" statusOnly=true /%} |
 | Default Vote (Latest stable release) | No |
-| Pre-amendment functionality retired? | No |
+| Pre-amendment functionality retired? | Yes |
 
 This amendment adds a check to the [NFTokenAcceptOffer transaction][] to see if the buyer's number of objects owned in the ledger changes. Without this amendment, an account could accept an NFT offer even if they did not meet the reserve requirement after doing so. With this amendment, accepting the offer fails if their reserve is below the necessary amount.
 
@@ -1395,7 +1421,7 @@ On test networks that do not have these trust lines, the amendment has no effect
 | Amendment ID | 2E2FB9CF8A44EB80F4694D38AADAE9B8B7ADAFD2F092E10068E61C98C4F092B0 |
 | Status       | {% amendment-disclaimer name="fixUniversalNumber" statusOnly=true /%} |
 | Default Vote (Latest stable release) | No |
-| Pre-amendment functionality retired? | No |
+| Pre-amendment functionality retired? | Yes |
 
 Simplifies and unifies the code for decimal floating point math. In some cases, this provides slightly better accuracy than the previous code, resulting in calculations whose least significant digits are different than when calculated with the previous code. The different results may cause other edge case differences where precise calculations are used, such as ranking of Offers or processing of payments that use several different paths.
 
@@ -1933,7 +1959,7 @@ Older versions of `rippled` that do not know about this amendment may crash when
 | Amendment    | Sponsor |
 |:-------------|:--------|
 | Amendment ID | BE1F90581635DBCEBFC4678C4B54FEDDC1A17B50FD02CFE765A4132A342126AC |
-| Status       | Open for Voting |
+| Status       | {% amendment-disclaimer name="Sponsor" statusOnly=true /%} |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
