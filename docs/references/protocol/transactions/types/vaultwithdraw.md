@@ -81,8 +81,8 @@ Besides errors that can occur for all transactions, {% code-page-name /%} transa
 | `tecNO_PERMISSION`      | The destination account specified does not have permission to receive the asset. |
 | `tecWRONG_ASSET`        | The unit of `Amount` is neither a share or asset of the vault. |
 | `tecINSUFFICIENT_FUNDS` | There is insufficient liquidity in the vault to fill the request. |
-| `tecFROZEN`             | The vault asset is frozen globally, for the vault's pseudo-account, or deep frozen for the destination. A freeze on the sender also causes this error when `Destination` is another account. A regular freeze on the destination alone does not cause it, and no freeze causes it when the destination is the issuer. {% amendment-disclaimer name="fixCleanup3_3_0" mode="updated" /%} |
-| `tecLOCKED`             | The MPT vault asset is locked globally, for the vault's pseudo-account, for the sender, or for the destination account. Unlike a trust line freeze, an MPT lock also blocks a withdrawal to the sender's own account. No lock causes this error when the destination is the issuer. {% amendment-disclaimer name="fixCleanup3_3_0" mode="updated" /%} |
+| `tecFROZEN`             | The vault asset is frozen globally for the vault's pseudo-account, or deep frozen for the destination. A freeze on the sender also causes this error when `Destination` is another account. A regular freeze on the destination alone does not cause this error. {% amendment-disclaimer name="fixCleanup3_3_0" mode="updated" /%} |
+| `tecLOCKED`             | The MPT vault asset is locked globally for the vault's pseudo-account, for the sender, or for the destination account. Unlike a trust line freeze, an MPT lock also blocks a withdrawal to the sender's own account. {% amendment-disclaimer name="fixCleanup3_3_0" mode="updated" /%} |
 | `temMALFORMED`          | The transaction is not validly formatted. For example, the `VaultID` is not provided.  |
 | `temDISABLED`           | The Single Asset Vault amendment is not enabled.  |
 | `temBAD_AMOUNT`         | The `Amount` field of the transaction is invalid. For example, the provided amount is set to 0. |

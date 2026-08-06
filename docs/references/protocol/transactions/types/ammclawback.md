@@ -68,7 +68,7 @@ Besides errors that can occur for all transactions, `AMMClawback` transactions c
 |:--------------------|:------------|
 | `tecNO_PERMISSION`  | Occurs if you attempt to claw back tokens from an AMM without the `lsfAllowTrustLineClawback` flag enabled, or the `tfClawTwoAssets` flag is enabled when you didn't issue both assets in the AMM. Also occurs if the `Asset` issuer doesn't match `Account`. |
 | `tecAMM_BALANCE`    | Occurs if the `Holder` doesn't hold any LP tokens from the AMM pool. |
-| `tecPRECISION_LOSS` | Occurs if the clawback would leave more LP Tokens outstanding than the pool's assets support. Also requires the `fixAMMv1_3` amendment. {% amendment-disclaimer name="fixCleanup3_3_0" /%} |
+| `tecPRECISION_LOSS` | Occurs if the clawback would leave more LP Tokens outstanding than the pool's assets support. {% amendment-disclaimer name="fixAMMv1_3" /%} {% amendment-disclaimer name="fixCleanup3_3_0" /%} |
 | `temDISABLED`       | Occurs if the [AMMClawback amendment][] is not enabled. |
 | `temBAD_AMOUNT`     | Occurs if the `Amount` field in the `AMMClawback` transaction is less than or equal to 0, or the `currency` and `issuer` subfields don't match between `Amount` and `Asset`. |
 | `temINVALID_FLAG`   | Occurs if you try enabling flags besides `tfClawTwoAssets`. |

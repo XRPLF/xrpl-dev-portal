@@ -64,8 +64,8 @@ Besides errors that can occur for all transactions, {% code-page-name /%} transa
 | `tecNO_DST`               | The `Destination` provided doesn't exist on the ledger. |
 | `tecDST_TAG_NEEDED`       | The `Destination` account requires a destination tag. |
 | `tecINSUFFICIENT_FUNDS`   | There isn't enough first-loss capital to withdraw. |
-| `tecFROZEN`               | The asset is frozen globally, for the `LoanBroker` pseudo-account, or deep frozen for the destination. A freeze on the sender also causes this error when `Destination` is another account. A regular freeze on the destination alone does not cause it, and no freeze causes it when the destination is the issuer. {% amendment-disclaimer name="fixCleanup3_3_0" mode="updated" /%} |
-| `tecLOCKED`               | The MPT asset is locked globally, for the `LoanBroker` pseudo-account, for the sender, or for the destination account. Unlike a trust line freeze, an MPT lock also blocks a withdrawal to the sender's own account. No lock causes this error when the destination is the issuer. {% amendment-disclaimer name="fixCleanup3_3_0" mode="updated" /%} |
+| `tecFROZEN`               | The asset is frozen globally for the `LoanBroker` pseudo-account, or deep frozen for the destination. A regular freeze on the destination alone does not cause this error. {% amendment-disclaimer name="fixCleanup3_3_0" mode="updated" /%} |
+| `tecLOCKED`               | The MPT asset is locked globally for the `LoanBroker` pseudo-account, for the sender, or for the destination account. Unlike a trust line freeze, an MPT lock also blocks a withdrawal to the sender's own account. {% amendment-disclaimer name="fixCleanup3_3_0" mode="updated" /%} |
 | `tecNO_PERMISSION`        | The account sending the transaction isn't the owner of the `LoanBroker` ledger entry. |
 | `tecPATH_DRY`             | The XRP Ledger failed to send the funds to the `Destination`. |
 

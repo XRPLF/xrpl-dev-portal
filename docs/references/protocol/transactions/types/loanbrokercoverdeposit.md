@@ -60,7 +60,7 @@ Besides errors that can occur for all transactions, {% code-page-name /%} transa
 | `tecNO_PERMISSION`       | The account sending the transaction isn't the owner of the `LoanBroker` ledger entry. |
 | `tecWRONG_ASSET`         | The asset being deposited doesn't match the asset in the `LoanBroker` vault. |
 | `tecINSUFFICIENT_FUNDS`  | The account depositing first-loss capital doesn't hold enough of the asset. |
-| `tecFROZEN`              | The asset is frozen globally, for the depositing account, or for the `LoanBroker` pseudo-account. Both regular and deep freezes cause this error. {% amendment-disclaimer name="fixCleanup3_3_0" mode="updated" /%} |
+| `tecFROZEN`              | The asset is frozen globally for the depositing account, or for the `LoanBroker` pseudo-account. Both regular and deep freezes cause this error. {% amendment-disclaimer name="fixCleanup3_3_0" mode="updated" /%} |
 | `tecLOCKED`              | The MPT asset is locked globally, for the depositing account, or for the `LoanBroker` pseudo-account. {% amendment-disclaimer name="fixCleanup3_3_0" mode="updated" /%} |
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}
