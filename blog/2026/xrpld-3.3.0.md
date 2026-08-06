@@ -38,8 +38,8 @@ On supported platforms, see the [instructions on installing or updating `xrpld`]
 
 | Package | SHA-256 |
 |:--------|:--------|
-| [RPM for Red Hat / CentOS (x86-64)](https://repos.ripple.com/repos/rippled-rpm/stable/xrpld-3.3.0-1.el9.x86_64.rpm) | `TODO` |
-| [DEB for Ubuntu / Debian (x86-64)](https://repos.ripple.com/repos/rippled-deb/pool/stable/xrpld_3.3.0-1_amd64.deb) | `TODO` |
+| [RPM for Red Hat / CentOS (x86-64)](https://repos.ripple.com/repos/rippled-rpm/stable/xrpld-3.3.0-1.el9.x86_64.rpm) | `41fbe458c5f9f5e7efabe57fd679a7992641ca3ccf27166daeda6c972963b477` |
+| [DEB for Ubuntu / Debian (x86-64)](https://repos.ripple.com/repos/rippled-deb/pool/stable/xrpld_3.3.0-1_amd64.deb) | `d4e9a022741aed2eed1d70639310f90545b4592cc24b6c9aa6a37560d5efd2e0` |
 
 For other platforms, please [build from source](https://github.com/XRPLF/rippled/blob/release/3.3.x/BUILD.md). The most recent commit in the git log should be the change setting the version:
 
