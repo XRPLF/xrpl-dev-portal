@@ -1,25 +1,25 @@
 ---
 category: 2026
-date: "2026-07-27"
+date: "2026-08-06"
 template: '../../@theme/templates/blogpost'
 seo:
-    title: Introducing XRP Ledger version 3.3.0-rc1
-    description: xrpld version 3.3.0-rc1 is now available. This version introduces the BatchV1_1, ConfidentialTransfer, DynamicMPT, PermissionDelegationV1_1, Sponsor, and fixCleanup3_3_0 amendments, retires several long-active amendments, and includes assorted bug fixes.
+    title: Introducing XRP Ledger version 3.3.0
+    description: xrpld version 3.3.0 is now available. This version introduces the BatchV1_1, ConfidentialTransfer, DynamicMPT, PermissionDelegationV1_1, Sponsor, and fixCleanup3_3_0 amendments, retires several long-active amendments, and includes assorted bug fixes.
 labels:
     - xrpld Release Notes
 markdown:
     editPage:
         hide: true
 ---
-# Introducing XRP Ledger version 3.3.0-rc1
+# Introducing XRP Ledger version 3.3.0
 
-Version 3.3.0-rc1 of `xrpld`, the reference server implementation of the XRP Ledger protocol, is now available.
+Version 3.3.0 of `xrpld`, the reference server implementation of the XRP Ledger protocol, is now available.
 
 This release introduces several new amendments alongside bug fixes and build improvements. The new amendments are:
 
 - **BatchV1_1**: Atomic batch transactions (XLS-56).
 - **ConfidentialTransfer**: Privacy-preserving Multi-Purpose Token transfers (XLS-0096).
-- **DynamicMPT**: Mutable Multi-Purpose Token flags configurable at issuance (XLS-94).
+- **DynamicMPT**: Multi-Purpose Token properties that issuers can make permanently immutable (XLS-94).
 - **PermissionDelegationV1_1**: Granular account permission delegation.
 - **Sponsor**: Reserve and transaction sponsoring (XLS-68).
 - **fixCleanup3_3_0**: A bundle of amendment-gated bug fixes.
@@ -29,7 +29,7 @@ It also retires the long-active `Clawback`, `fixDisallowIncomingV1`, `fixInnerOb
 
 ## Action Required
 
-If you run an XRP Ledger server, upgrade to version 3.3.0-rc1 as soon as possible to ensure service continuity.
+If you run an XRP Ledger server, upgrade to version 3.3.0 as soon as possible to ensure service continuity.
 
 
 ## Install / Upgrade
@@ -38,17 +38,17 @@ On supported platforms, see the [instructions on installing or updating `xrpld`]
 
 | Package | SHA-256 |
 |:--------|:--------|
-| [RPM for Red Hat / CentOS (x86-64)](https://repos.ripple.com/repos/rippled-rpm/stable/xrpld-3.3.0-rc1-1.el9.x86_64.rpm) | `TODO` |
-| [DEB for Ubuntu / Debian (x86-64)](https://repos.ripple.com/repos/rippled-deb/pool/stable/xrpld_3.3.0-rc1-1_amd64.deb) | `TODO` |
+| [RPM for Red Hat / CentOS (x86-64)](https://repos.ripple.com/repos/rippled-rpm/stable/xrpld-3.3.0-1.el9.x86_64.rpm) | `TODO` |
+| [DEB for Ubuntu / Debian (x86-64)](https://repos.ripple.com/repos/rippled-deb/pool/stable/xrpld_3.3.0-1_amd64.deb) | `TODO` |
 
-For other platforms, please [build from source](https://github.com/XRPLF/rippled/blob/3.3.0-rc1/BUILD.md). The most recent commit in the git log should be the change setting the version:
+For other platforms, please [build from source](https://github.com/XRPLF/rippled/blob/release/3.3.x/BUILD.md). The most recent commit in the git log should be the change setting the version:
 
 ```text
-commit 18e311e1e245bcc1813363bd1771b94931585d80
-Author: Bart <bthomee@users.noreply.github.com>
-Date:   Thu Jul 16 09:54:12 2026 -0400
+commit 8dce2d03ffd7aca9740f3945b12049141e1a9312
+Author: Ayaz Salikhov <asalikhov@ripple.com>
+Date:   Thu Aug 6 15:34:59 2026 +0100
 
-    chore: Bump version to 3.3.0-rc1 (#7806)
+    chore: Bump version to 3.3.0
 ```
 
 
@@ -58,13 +58,22 @@ Date:   Thu Jul 16 09:54:12 2026 -0400
 ### Amendments
 
 - **BatchV1_1**: Adds the `Batch` transaction (XLS-56), which lets an account submit up to 8 inner transactions that apply atomically as a single unit, enabling patterns such as atomic swaps. This is the bug-fixed replacement for the `Batch` amendment disabled in v3.1.1: signer signatures are now bound to the outer account and sequence, the `tfInnerBatchTxn` flag is rejected from the network regardless of amendment state, batch signers must be strictly ascending and unique, and the raw-transaction array is bounded before hashing. ([#6446](https://github.com/XRPLF/rippled/pull/6446), enabled by [#7698](https://github.com/XRPLF/rippled/pull/7698))
-- **ConfidentialTransfer**: Adds privacy-preserving transfers for Multi-Purpose Tokens (XLS-0096), including the `ConfidentialMPTConvert`, `ConfidentialMPTSend`, `ConfidentialMPTMergeInbox`, `ConfidentialMPTConvertBack`, and `ConfidentialMPTClawback` transactions, encrypted balances, and on-chain cryptographic proof verification (Pedersen commitments, range proofs, and equality proofs) via the `mpt-crypto` library. ([#5860](https://github.com/XRPLF/rippled/pull/5860), enabled by [#7698](https://github.com/XRPLF/rippled/pull/7698))
-- **DynamicMPT**: Lets Multi-Purpose Token issuers mark flags as mutable at issuance (XLS-94). Mutable flags can be turned on by the issuer after the token is created, but become immutable once set. ([#7439](https://github.com/XRPLF/rippled/pull/7439))
+- **ConfidentialTransfer**: Adds privacy-preserving transfers for Multi-Purpose Tokens (XLS-0096), including the `ConfidentialMPTConvert`, `ConfidentialMPTSend`, `ConfidentialMPTMergeInbox`, `ConfidentialMPTConvertBack`, and `ConfidentialMPTClawback` transactions, encrypted balances, and on-chain cryptographic proof verification (Pedersen commitments, range proofs, and equality proofs) via the `mpt-crypto` library. `ConfidentialMPTConvert` cannot be delegated; the other confidential MPT transactions can. ([#5860](https://github.com/XRPLF/rippled/pull/5860), enabled by [#7698](https://github.com/XRPLF/rippled/pull/7698))
+- **DynamicMPT**: Lets Multi-Purpose Token issuers make selected properties permanently immutable (XLS-94), either when creating the issuance or later with an `MPTokenIssuanceSet` transaction. The `ImmutableFlags` field is additive: each declaration adds to the properties already fixed on the issuance and can never be cleared, so an issuer can finalize a token's design in stages. ([#7439](https://github.com/XRPLF/rippled/pull/7439))
 - **PermissionDelegationV1_1**: Enforces a granular permission template for each delegated transaction, so that only specific fields or flags may appear under a granular permission. This is the fixed replacement for the previously disabled permission delegation amendment. ([#6613](https://github.com/XRPLF/rippled/pull/6613))
-- **Sponsor**: Introduces reserve and transaction sponsoring (XLS-68), allowing one account to cover another account's reserve requirements. ([#5887](https://github.com/XRPLF/rippled/pull/5887))
+- **Sponsor**: Introduces fee and reserve sponsoring (XLS-68), letting one account pre-fund another account's transaction costs and reserve requirements. Adds the `SponsorshipSet` and `SponsorshipTransfer` transactions, the `Sponsorship` ledger entry that holds a sponsor's pre-funded budget for a given sponsee, and the `Sponsor`, `SponsorFlags`, and `SponsorSignature` common fields for drawing on that budget. Sponsored ledger entries record their sponsor, so the reserve counts against the sponsor rather than the owner. A `Payment` that creates an account can also sponsor the new account's reserve directly with the `tfSponsorCreatedAccount` flag. `SponsorshipSet` specifies its budgets as deltas, using the `FeeAmountDelta` and `RemainingOwnerCountDelta` fields, so you can top up or draw down a pool without reading its current values first. ([#5887](https://github.com/XRPLF/rippled/pull/5887))
 - **fixCleanup3_3_0**: Bundles amendment-gated bug fixes for the 3.3.0 release.
     - Unifies freeze checks across pseudo-account-backed transactors (Vaults, AMMs, and LoanBrokers) so deposits and withdrawals apply consistent regular-freeze and deep-freeze semantics, and returns the correct error codes. ([#7382](https://github.com/XRPLF/rippled/pull/7382))
     - Rejects an all-zero `CheckID` in `CheckCash` and `CheckCancel` at preflight with `temMALFORMED` instead of failing later with `tecNO_ENTRY`. ([#7685](https://github.com/XRPLF/rippled/pull/7685))
+    - Keeps hybrid offers in the open order book when the account that placed them loses access to the permissioned domain. ([#6843](https://github.com/XRPLF/rippled/pull/6843))
+    - Stops Automated Market Maker liquidity being included in quality estimates for permissioned DEX order books. ([#6853](https://github.com/XRPLF/rippled/pull/6853))
+    - Returns `tecAMM_FAILED` from `AMMWithdraw` instead of dividing by zero when the withdrawal specifies an `EPrice`. ([#6989](https://github.com/XRPLF/rippled/pull/6989))
+    - Adds a precision loss check to `AMMDeposit`, `AMMWithdraw`, and `AMMClawback` when the `fixAMMv1_3` amendment is also enabled.
+    - Changes the `ValidAMM` invariant so an AMM can only be deleted by an `AMMWithdraw`, `AMMClawback`, or `AMMDelete` transaction. ([#7295](https://github.com/XRPLF/rippled/pull/7295))
+    - Adds the `ObjectHasPseudoAccount` invariant, which checks that deleting a ledger entry backed by a pseudo-account also deletes that pseudo-account. ([#7445](https://github.com/XRPLF/rippled/pull/7445))
+    - Adds further precision and rounding fixes for Single Asset Vaults and the Lending Protocol.
+    - Changes transactions signed by a pseudo-account to fail with `tefBAD_AUTH`. This check also takes effect if the `LendingProtocol` or `BatchV1_1` amendment is enabled.
+    - Rejects a [pseudo-account](../../docs/concepts/accounts/pseudo-accounts.md) named in a role it cannot fill, returning `tecPSEUDO_ACCOUNT` where the transaction previously succeeded or returned `tecNO_PERMISSION`. This affects `CredentialCreate`, `DepositPreauth`, `DelegateSet`, and `SponsorshipSet`.
 - The following amendments are retired:
     - `Clawback` ([#7353](https://github.com/XRPLF/rippled/pull/7353))
     - `fixDisallowIncomingV1` ([#7364](https://github.com/XRPLF/rippled/pull/7364))
@@ -76,29 +85,33 @@ Date:   Thu Jul 16 09:54:12 2026 -0400
 ### Features
 
 - Added a `delegate` filter parameter to the `account_tx` method. ([#6126](https://github.com/XRPLF/rippled/pull/6126))
+- Packaged `validator-keys` inside the server distribution.
 
 
 ### Bug Fixes
 
-- Fixed hybrid offers being deleted from the open order book when the owner's domain credential expires. ([#6843](https://github.com/XRPLF/rippled/pull/6843))
 - Added a zero NFT offer ID check for `NFTokenCancelOffer`. ([#7391](https://github.com/XRPLF/rippled/pull/7391))
 - Disabled AMM creation using vault shares as a pool asset. ([#7666](https://github.com/XRPLF/rippled/pull/7666))
 - Rejected delegating permissions to pseudo-accounts. ([#7597](https://github.com/XRPLF/rippled/pull/7597))
 - Blocked delegated transactions from being queued. ([#7640](https://github.com/XRPLF/rippled/pull/7640))
 - Used trust line balance direction to validate IOU `PaymentMint`/`PaymentBurn`. ([#7584](https://github.com/XRPLF/rippled/pull/7584))
 - Strengthened `Clawback` invariant checks for MPT balances. ([#7285](https://github.com/XRPLF/rippled/pull/7285))
-- Fixed AMM quality leaking into the domain `BookStep` for the permissioned DEX. ([#6853](https://github.com/XRPLF/rippled/pull/6853))
-- Improved the `ValidAMM` invariant. ([#7295](https://github.com/XRPLF/rippled/pull/7295))
 - Moved `AMMInvariant` `weakInvariantCheck` logic into the transaction. ([#7032](https://github.com/XRPLF/rippled/pull/7032))
 - Added RPC validation checks on the `amm_info` `account` and `amm_account` fields. ([#7324](https://github.com/XRPLF/rippled/pull/7324))
-- Fixed a possible division by zero in `AMMWithdraw` `singleWithdrawEPrice`. ([#6989](https://github.com/XRPLF/rippled/pull/6989))
-- Added an invariant ensuring object deletion also deletes its pseudo-account. ([#7445](https://github.com/XRPLF/rippled/pull/7445))
 - Added an amendment sponsor for the `AccountRootsDeletedClean` invariant. ([#7801](https://github.com/XRPLF/rippled/pull/7801))
 - Documented and asserted that `after` is never null in invariants. ([#7354](https://github.com/XRPLF/rippled/pull/7354))
 - Handled rounding just above `kMaxRep` more accurately. ([#7389](https://github.com/XRPLF/rippled/pull/7389))
 - Improved `Number` addition and subtraction rounding. ([#7369](https://github.com/XRPLF/rippled/pull/7369))
 - Fixed the `Number` comparison operator. ([#7406](https://github.com/XRPLF/rippled/pull/7406))
 - Refactored `Batch` transaction IDs. ([#7736](https://github.com/XRPLF/rippled/pull/7736))
+- Capped the number of untrusted validator manifests accepted per message and dropped oversized ones. This is the fix released in version 3.2.1. ([#7925](https://github.com/XRPLF/rippled/pull/7925))
+- Increased the validator manifest protocol message size cap and corrected manifest relay.
+<!-- TODO: security team to approve wording/level of detail for the hardening entry below before this post is published -->
+- Hardened peer protocol and RPC request handling against oversized and malformed messages, and bounded several per-connection caches, reducing the memory and processing resources an untrusted peer can consume.
+- Corrected the transaction type check performed before reading `RawTransactions`.
+- Used a weighted median when aggregating close-time offsets.
+- Handled malformed ledger replay responses.
+- Improved lookup performance when assembling ledger deltas.
 - Re-stored nodes missing from both backends during `online_delete` rotation. ([#7763](https://github.com/XRPLF/rippled/pull/7763))
 - Allocated `TaggedCache::getKeys()` memory outside of the lock. ([#7567](https://github.com/XRPLF/rippled/pull/7567))
 - Always charged the peer on the strand. ([#7422](https://github.com/XRPLF/rippled/pull/7422))
@@ -161,7 +174,8 @@ Date:   Thu Jul 16 09:54:12 2026 -0400
 - Added a pragma-once checker. ([#7580](https://github.com/XRPLF/rippled/pull/7580))
 - Aligned `xrpld` RPM packaging with the DEB package. ([#7529](https://github.com/XRPLF/rippled/pull/7529))
 - Updated workflows and conan to use VS2026 and grpc 1.81.0. ([#7550](https://github.com/XRPLF/rippled/pull/7550))
-- Updated `mpt-crypto-lib` to 0.4.0-rc4. ([#7813](https://github.com/XRPLF/rippled/pull/7813))
+- Updated `mpt-crypto` to 1.0.2.
+- Uploaded codecov results for the whole XRPLF organization.
 - Marked secp256k1 and mpt-crypto as transitive headers. ([#7658](https://github.com/XRPLF/rippled/pull/7658))
 - Switched to a new conan XRPLF remote. ([#7622](https://github.com/XRPLF/rippled/pull/7622))
 - Switched to a new conan XRPLF remote, again. ([#7638](https://github.com/XRPLF/rippled/pull/7638))
@@ -251,4 +265,4 @@ We welcome reviews of the `xrpld` code and urge researchers to responsibly discl
 For more information, see:
 
 - [Ripple's Bug Bounty Program](https://ripple.com/legal/bug-bounty/)
-- [`xrpld` Security Policy](https://github.com/XRPLF/rippled/blob/3.3.0-rc1/SECURITY.md)
+- [`xrpld` Security Policy](https://github.com/XRPLF/rippled/blob/develop/SECURITY.md)
