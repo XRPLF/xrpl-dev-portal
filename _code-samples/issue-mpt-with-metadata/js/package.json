@@ -1,11 +1,6 @@
 {
   "dependencies": {
-    "xrpl": "^4.4.3"
+    "xrpl": "^5.1.0-smartescrow.0"
   },
-  "type": "module",
-  "scripts": {
-    "build-local-xrpl": "cd \"$XRPL_JS\" && npm install && npm run build && cd packages/xrpl && npm link",
-    "use-local-xrpl": "npm link xrpl",
-    "use-published-xrpl": "npm unlink --no-save xrpl && npm install"
-  }
+  "type": "module"
 }
