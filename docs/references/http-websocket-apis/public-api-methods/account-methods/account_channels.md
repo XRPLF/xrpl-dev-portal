@@ -1,4 +1,6 @@
 ---
+author: Richard Patterson
+
 seo:
     description: Get a list of payment channels where the account is the source of the channel.
 labels:
