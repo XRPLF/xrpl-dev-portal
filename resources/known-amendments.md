@@ -24,9 +24,7 @@ The following is a list of [amendments](../docs/concepts/networks-and-servers/am
 | [InvariantsV1_1][]                | {% badge %}In Development: TBD{% /badge %} |  |
 | [MPTokensV2][]                    | {% badge %}In Development: TBD{% /badge %} | [XLS-82 MPT DEX Integration](https://opensource.ripple.com/docs/xls-82-mpt-dex) |
 | [SmartEscrow][]                   | {% badge %}In Development: TBD{% /badge %} | [XLS-100 Smart Escrows](https://opensource.ripple.com/docs/xls-100-smart-escrows) |
-| [BatchV1_1][]                     | {% badge %}In Development: TBD{% /badge %} | [XLS-56 Batch](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0056-batch) |
 | [LendingProtocolV1_1][]           | {% badge %}In Development: TBD{% /badge %} | [XLS-66 Lending Protocol](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0066-lending-protocol) |
-| [fixCleanup3_3_0][]               | {% badge %}In Development: TBD{% /badge %} |  |
 
 {% admonition type="success" name="Tip" %}
 This list is updated manually. If you're working on an amendment and have a private network to test the changes, you can edit this page to add your in-development amendment to this list. For more information on contributing to the XRP Ledger, see [Contribute Code to the XRP Ledger](contribute-code/index.md).
