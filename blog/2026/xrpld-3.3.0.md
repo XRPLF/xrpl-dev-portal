@@ -106,8 +106,13 @@ Date:   Thu Aug 6 15:34:59 2026 +0100
 - Refactored `Batch` transaction IDs. ([#7736](https://github.com/XRPLF/rippled/pull/7736))
 - Capped the number of untrusted validator manifests accepted per message and dropped oversized ones. This is the fix released in version 3.2.1. ([#7925](https://github.com/XRPLF/rippled/pull/7925))
 - Increased the validator manifest protocol message size cap and corrected manifest relay.
-<!-- TODO: security team to approve wording/level of detail for the hardening entry below before this post is published -->
-- Hardened peer protocol and RPC request handling against oversized and malformed messages, and bounded several per-connection caches, reducing the memory and processing resources an untrusted peer can consume.
+- Bounded the untrusted validator manifest cache and reduced its cap.
+- Rejected oversized validator manifests before decoding them.
+- Rejected oversized peer protocol ping messages.
+- Bounded and offloaded per-connection subscription cleanup.
+- Computed the validation suppression key over the canonical serialization.
+- Set request size limits and differential pricing for get-object-by-hash calls.
+- Charged the heavy-burden RPC fee in the `channel_verify` method.
 - Corrected the transaction type check performed before reading `RawTransactions`.
 - Used a weighted median when aggregating close-time offsets.
 - Handled malformed ledger replay responses.
