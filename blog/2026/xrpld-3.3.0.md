@@ -73,8 +73,8 @@ Date:   Thu Aug 6 17:34:39 2026 +0100
     - Adds the `ObjectHasPseudoAccount` invariant, which checks that deleting a ledger entry backed by a pseudo-account also deletes that pseudo-account. ([#7445](https://github.com/XRPLF/rippled/pull/7445))
     - Adds further precision and rounding fixes for Single Asset Vaults and the Lending Protocol.
     - Changes transactions signed by a pseudo-account to fail with `tefBAD_AUTH`. This check also takes effect if the `LendingProtocol` or `BatchV1_1` amendment is enabled.
-    - Changes `CredentialCreate` to reject a pseudo-account in the `Subject` field with `tecPSEUDO_ACCOUNT`. ([#7972](https://github.com/XRPLF/rippled/pull/7972))
-    - Changes `DepositPreauth` to reject a pseudo-account in the `Authorize` field with `tecPSEUDO_ACCOUNT`. ([#7972](https://github.com/XRPLF/rippled/pull/7972))
+    - Changes `CredentialCreate` to reject a pseudo-account in the `Subject` field with `tecPSEUDO_ACCOUNT`.
+    - Changes `DepositPreauth` to reject a pseudo-account in the `Authorize` field with `tecPSEUDO_ACCOUNT`.
 - The following amendments are retired:
     - `Clawback` ([#7353](https://github.com/XRPLF/rippled/pull/7353))
     - `fixDisallowIncomingV1` ([#7364](https://github.com/XRPLF/rippled/pull/7364))
@@ -86,7 +86,7 @@ Date:   Thu Aug 6 17:34:39 2026 +0100
 ### Features
 
 - Added a `delegate` filter parameter to the `account_tx` method. ([#6126](https://github.com/XRPLF/rippled/pull/6126))
-- Packaged `validator-keys` inside the server distribution. ([#7972](https://github.com/XRPLF/rippled/pull/7972))
+- Packaged `validator-keys` inside the server distribution.
 
 
 ### Bug Fixes
@@ -106,18 +106,18 @@ Date:   Thu Aug 6 17:34:39 2026 +0100
 - Fixed the `Number` comparison operator. ([#7406](https://github.com/XRPLF/rippled/pull/7406))
 - Refactored `Batch` transaction IDs. ([#7736](https://github.com/XRPLF/rippled/pull/7736))
 - Capped the number of untrusted validator manifests accepted per message and dropped oversized ones. This is the fix released in version 3.2.1. ([#7925](https://github.com/XRPLF/rippled/pull/7925))
-- Increased the validator manifest protocol message size cap and corrected manifest relay. ([#7972](https://github.com/XRPLF/rippled/pull/7972))
-- Bounded the untrusted validator manifest cache and reduced its cap. ([#7972](https://github.com/XRPLF/rippled/pull/7972))
-- Rejected oversized validator manifests before decoding them. ([#7972](https://github.com/XRPLF/rippled/pull/7972))
-- Rejected oversized peer protocol ping messages. ([#7972](https://github.com/XRPLF/rippled/pull/7972))
-- Bounded and offloaded per-connection subscription cleanup. ([#7972](https://github.com/XRPLF/rippled/pull/7972))
-- Computed the validation suppression key over the canonical serialization. ([#7972](https://github.com/XRPLF/rippled/pull/7972))
-- Set request size limits and differential pricing for get-object-by-hash calls. ([#7972](https://github.com/XRPLF/rippled/pull/7972))
-- Charged the heavy-burden RPC fee in the `channel_verify` method. ([#7972](https://github.com/XRPLF/rippled/pull/7972))
-- Corrected the transaction type check performed before reading `RawTransactions`. ([#7972](https://github.com/XRPLF/rippled/pull/7972))
-- Used a weighted median when aggregating close-time offsets. ([#7972](https://github.com/XRPLF/rippled/pull/7972))
-- Handled malformed ledger replay responses. ([#7972](https://github.com/XRPLF/rippled/pull/7972))
-- Improved lookup performance when assembling ledger deltas. ([#7972](https://github.com/XRPLF/rippled/pull/7972))
+- Increased the validator manifest protocol message size cap and corrected manifest relay.
+- Bounded the untrusted validator manifest cache and reduced its cap.
+- Rejected oversized validator manifests before decoding them.
+- Rejected oversized peer protocol ping messages.
+- Bounded and offloaded per-connection subscription cleanup.
+- Computed the validation suppression key over the canonical serialization.
+- Set request size limits and differential pricing for get-object-by-hash calls.
+- Charged the heavy-burden RPC fee in the `channel_verify` method.
+- Corrected the transaction type check performed before reading `RawTransactions`.
+- Used a weighted median when aggregating close-time offsets.
+- Handled malformed ledger replay responses.
+- Improved lookup performance when assembling ledger deltas.
 - Re-stored nodes missing from both backends during `online_delete` rotation. ([#7763](https://github.com/XRPLF/rippled/pull/7763))
 - Allocated `TaggedCache::getKeys()` memory outside of the lock. ([#7567](https://github.com/XRPLF/rippled/pull/7567))
 - Fixed peer resource charges to always run on the peer's strand, so a `Drop` disposition now correctly disconnects the peer. ([#7422](https://github.com/XRPLF/rippled/pull/7422))
@@ -180,8 +180,8 @@ Date:   Thu Aug 6 17:34:39 2026 +0100
 - Added a pragma-once checker. ([#7580](https://github.com/XRPLF/rippled/pull/7580))
 - Aligned `xrpld` RPM packaging with the DEB package. ([#7529](https://github.com/XRPLF/rippled/pull/7529))
 - Updated workflows and conan to use VS2026 and grpc 1.81.0. ([#7550](https://github.com/XRPLF/rippled/pull/7550))
-- Updated `mpt-crypto` to 1.0.2. ([#7972](https://github.com/XRPLF/rippled/pull/7972))
-- Uploaded codecov results for the whole XRPLF organization. ([#7972](https://github.com/XRPLF/rippled/pull/7972))
+- Updated `mpt-crypto` to 1.0.2.
+- Uploaded codecov results for the whole XRPLF organization.
 - Marked secp256k1 and mpt-crypto as transitive headers. ([#7658](https://github.com/XRPLF/rippled/pull/7658))
 - Switched to a new conan XRPLF remote. ([#7622](https://github.com/XRPLF/rippled/pull/7622), [#7638](https://github.com/XRPLF/rippled/pull/7638))
 - Stopped reusing binaries between different C++ versions. ([#7681](https://github.com/XRPLF/rippled/pull/7681))
