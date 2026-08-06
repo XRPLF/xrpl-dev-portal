@@ -24,6 +24,7 @@ The following is a list of [amendments](../docs/concepts/networks-and-servers/am
 | [InvariantsV1_1][]                | {% badge %}In Development: TBD{% /badge %} |  |
 | [MPTokensV2][]                    | {% badge %}In Development: TBD{% /badge %} | [XLS-82 MPT DEX Integration](https://opensource.ripple.com/docs/xls-82-mpt-dex) |
 | [SmartEscrow][]                   | {% badge %}In Development: TBD{% /badge %} | [XLS-100 Smart Escrows](https://opensource.ripple.com/docs/xls-100-smart-escrows) |
+| [LendingProtocolV1_1][]           | {% badge %}In Development: TBD{% /badge %} | [XLS-66 Lending Protocol](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0066-lending-protocol) |
 
 {% admonition type="success" name="Tip" %}
 This list is updated manually. If you're working on an amendment and have a private network to test the changes, you can edit this page to add your in-development amendment to this list. For more information on contributing to the XRP Ledger, see [Contribute Code to the XRP Ledger](contribute-code/index.md).
@@ -98,11 +99,24 @@ For details, see the [XLS-73: AMMClawback specification](https://github.com/XRPL
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
-Allows multiple transactions to be bundled into a batch that's processed all together. Standard: [XLS-56](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0056-batch)
+Allows multiple transactions to be bundled into a batch that's processed all together.
 
 {% admonition type="danger" name="Warning" %}
-This amendment was disabled in v3.1.1 due to a bug. It will be replaced by `BatchV1_1` in a future release.
+This amendment was disabled in v3.1.1 due to a bug and replaced by [BatchV1_1](#batchv1_1).
 {% /admonition %}
+
+
+### BatchV1_1
+[BatchV1_1]: #batchv1_1
+
+| Amendment    | BatchV1_1 |
+|:-------------|:----------|
+| Amendment ID | 9F287AED3CDB50A7BD1ACEC24296A30C9B5230CCD136219317AC790E3B884377 |
+| Status       | {% amendment-disclaimer name="BatchV1_1" statusOnly=true /%} |
+| Default Vote (Latest stable release) | No |
+| Pre-amendment functionality retired? | No |
+
+Allows multiple transactions to be bundled into a batch that's processed all together. This amendment replaces [Batch](#batch), fixing a critical bug discovered in the original implementation of the feature. Standard: [XLS-56](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0056-batch).
 
 
 ### CheckCashMakesTrustLine
@@ -147,7 +161,7 @@ Introduces three new transaction types: CheckCreate, CheckCancel, and CheckCash,
 | Amendment ID | 56B241D7A43D40354D02A9DC4C8DF5C7A1F930D92A9035C4E12291B3CA3E1C2B |
 | Status       | {% amendment-disclaimer name="Clawback" statusOnly=true /%} |
 | Default Vote (Latest stable release) | No |
-| Pre-amendment functionality retired? | No |
+| Pre-amendment functionality retired? | Yes |
 
 For regulatory purposes, some issuers must have the ability to recover issued tokens after they are distributed to accounts. For example, if an issuer were to discover that tokens were sent to an account sanctioned for illegal activity, the issuer could recover, or _claw back_ the funds.
 
@@ -383,7 +397,7 @@ Adds functionality to update the `URI` field of an `NFToken` ledger entry. This 
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
-Extends Multi-Purpose Tokens to allow issuers to designate specific properties as mutable during token creation, enabling selected attributes to be updated later as business needs change.
+Extends Multi-Purpose Tokens by making specific properties mutable by default: the on-chain metadata, the transfer fee, and the ability to enable MPT issuance capability flags. Issuers can make any of these properties permanently immutable by declaring them in the `ImmutableFlags` field.
 
 For more details, see [Dynamic MPTs](/docs/concepts/tokens/fungible-tokens/mutable-mpts.md).
 
@@ -776,7 +790,7 @@ Adds several fixes to Automated Market Maker code, specifically:
 This amendment fixes an issue where inner transactions of a `Batch` transaction would be flagged as having valid signatures. Since inner transactions aren't signed directly, they should never have valid signatures.
 
 {% admonition type="danger" name="Warning" %}
-This amendment was disabled in v3.1.1 due to a bug in `Batch`. The `BatchV1_1` amendment in a future release will include this fix.
+This amendment was disabled in v3.1.1 due to a bug in `Batch`. The `BatchV1_1` amendment includes this fix.
 {% /admonition %}
 
 
@@ -834,6 +848,32 @@ This amendment is a collection of fixes for Single Asset Vaults, the Lending Pro
 - Adds invariant `AccountRootsDeletedClean`, which checks that a deleted account doesn't leave any directly accessible artifacts behind.
 
 
+### fixCleanup3_3_0
+[fixCleanup3_3_0]: #fixcleanup3_3_0
+
+| Amendment    | fixCleanup3_3_0 |
+|:-------------|:----------------|
+| Amendment ID | 3298D47E1F3A8A24FECAA30F699B8FE1DD234E072834BA099AD8180FFCE0FEC4 |
+| Status       | {% amendment-disclaimer name="fixCleanup3_3_0" statusOnly=true /%} |
+| Default Vote (Latest stable release) | No |
+| Pre-amendment functionality retired? | No |
+
+This amendment is a collection of fixes for Single Asset Vaults, the Lending Protocol, Automated Market Makers, the permissioned DEX, Checks, and pseudo-accounts:
+
+- Unifies freeze and deep freeze checks for transfers to and from pseudo-accounts in the `VaultDeposit`, `VaultWithdraw`, `AMMDeposit`, `AMMWithdraw`, `LoanBrokerCoverDeposit`, and `LoanBrokerCoverWithdraw` transactions.
+- Changes `CheckCash` and `CheckCancel` to reject an all-zero `CheckID` with `temMALFORMED` during preflight instead of `tecNO_ENTRY` during processing.
+- Fixes hybrid offers being removed from the open order book when the account that placed them loses access to the permissioned domain.
+- Fixes Automated Market Maker liquidity being included in quality estimates for permissioned DEX order books.
+- Changes `AMMWithdraw` to return `tecAMM_FAILED` instead of dividing by zero for the one `EPrice` value at which the computation's denominator becomes zero. Without this amendment, the division throws and the transaction fails with `tefEXCEPTION`.
+- Adds a precision loss check to `AMMDeposit`, `AMMWithdraw`, and `AMMClawback` when the `fixAMMv1_3` amendment is also enabled.
+- Changes the `ValidAMM` invariant to ensure an AMM can only be deleted by an `AMMWithdraw`, `AMMClawback`, or `AMMDelete` transaction.
+- Adds invariant `ObjectHasPseudoAccount`, which checks that deleting a ledger entry backed by a pseudo-account also deletes that pseudo-account.
+- Adds further precision and rounding fixes for Single Asset Vaults and the Lending Protocol.
+- Changes transactions signed by a pseudo-account to fail with `tefBAD_AUTH`. This check also takes effect if the `LendingProtocol` or `BatchV1_1` amendment is enabled.
+- Changes `CredentialCreate` to reject a pseudo-account in the `Subject` field with `tecPSEUDO_ACCOUNT`.
+- Changes `DepositPreauth` to reject a pseudo-account in the `Authorize` field with `tecPSEUDO_ACCOUNT`.
+
+
 ### fixDirectoryLimit
 [fixDirectoryLimit]: #fixdirectorylimit
 
@@ -855,7 +895,7 @@ This amendment removes the directory page limit. Object reserve requirements pro
 | Amendment ID | 15D61F0C6DB6A2F86BCF96F1E2444FEC54E705923339EC175BD3E517C8B3FF91 |
 | Status       | {% amendment-disclaimer name="fixDisallowIncomingV1" statusOnly=true /%} |
 | Default Vote (Latest stable release) | No |
-| Pre-amendment functionality retired? | No |
+| Pre-amendment functionality retired? | Yes |
 
 This amendment fixes an issue with approving trustlines after a user enables the `lsfDisallowIncomingTrustline` flag on their account.
 
@@ -987,7 +1027,7 @@ The presence of a `Sequence` field on Escrow ledger entries is especially useful
 | Amendment ID | C393B3AEEBF575E475F0C60D5E4241B2070CC4D0EB6C4846B1A07508FAEFC485 |
 | Status       | {% amendment-disclaimer name="fixInnerObjTemplate" statusOnly=true /%} |
 | Default Vote (Latest stable release) | No |
-| Pre-amendment functionality retired? | No |
+| Pre-amendment functionality retired? | Yes |
 
 This amendment fixes an issue with accessing the AMM `sfTradingFee` and `sfDiscountedFee` fields in the inner objects of `sfVoteEntry` and `sfAuctionSlot`.
 
@@ -1140,7 +1180,7 @@ This is a **breaking change** for projects & tools relying on their own locally 
 | Amendment ID | 03BDC0099C4E14163ADA272C1B6F6FABB448CC3E51F522F978041E4B57D9158C |
 | Status       | {% amendment-disclaimer name="fixNFTokenReserve" statusOnly=true /%} |
 | Default Vote (Latest stable release) | No |
-| Pre-amendment functionality retired? | No |
+| Pre-amendment functionality retired? | Yes |
 
 This amendment adds a check to the [NFTokenAcceptOffer transaction][] to see if the buyer's number of objects owned in the ledger changes. Without this amendment, an account could accept an NFT offer even if they did not meet the reserve requirement after doing so. With this amendment, accepting the offer fails if their reserve is below the necessary amount.
 
@@ -1382,7 +1422,7 @@ On test networks that do not have these trust lines, the amendment has no effect
 | Amendment ID | 2E2FB9CF8A44EB80F4694D38AADAE9B8B7ADAFD2F092E10068E61C98C4F092B0 |
 | Status       | {% amendment-disclaimer name="fixUniversalNumber" statusOnly=true /%} |
 | Default Vote (Latest stable release) | No |
-| Pre-amendment functionality retired? | No |
+| Pre-amendment functionality retired? | Yes |
 
 Simplifies and unifies the code for decimal floating point math. In some cases, this provides slightly better accuracy than the previous code, resulting in calculations whose least significant digits are different than when calculated with the previous code. The different results may cause other edge case differences where precise calculations are used, such as ranking of Offers or processing of payments that use several different paths.
 
@@ -1520,6 +1560,21 @@ This amendment adds several new invariants to protect the ledger against bugs in
 | Pre-amendment functionality retired? | No |
 
 The Lending Protocol enables on-chain, fixed-term, uncollateralized loans using pooled funds from a Single Asset Vault. This implementation relies on off-chain underwriting and risk management to assess the creditworthiness of borrowers, but offers configurable, peer-to-peer loans.
+
+Specification: [XLS-66](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0066-lending-protocol).
+
+
+### LendingProtocolV1_1
+[LendingProtocolV1_1]: #lendingprotocolv1_1
+
+| Amendment    | LendingProtocolV1_1 |
+|:-------------|:--------------------|
+| Amendment ID | A360E2BFD775A5B0DCE1C36C16DF31B72735A57584FD163655D2F9564F8E7AC8 |
+| Status       | In Development |
+| Default Vote (Latest stable release) | No |
+| Pre-amendment functionality retired? | No |
+
+A revision of the [LendingProtocol][] amendment with improvements and fixes, including adding a `MemoData` field to the `VaultDelete` transaction.
 
 Specification: [XLS-66](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0066-lending-protocol).
 
@@ -1920,7 +1975,7 @@ Older versions of `rippled` that do not know about this amendment may crash when
 | Amendment    | Sponsor |
 |:-------------|:--------|
 | Amendment ID | BE1F90581635DBCEBFC4678C4B54FEDDC1A17B50FD02CFE765A4132A342126AC |
-| Status       | Open for Voting |
+| Status       | {% amendment-disclaimer name="Sponsor" statusOnly=true /%} |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 

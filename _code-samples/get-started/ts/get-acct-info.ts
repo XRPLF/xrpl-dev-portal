@@ -71,8 +71,10 @@ const payment: Payment = {
 validate(payment as unknown as Record<string, unknown>)
 console.log('\nBuilt and validated a Payment transaction:')
 console.log(JSON.stringify(payment, null, 2))
-// To send it, sign and submit in one call:
+
+// Sign and submit the transaction in one call, then show the result.
 const submitResponse = await client.submitAndWait(payment, { wallet: testWallet })
+console.log('\nSubmitted the transaction:')
 console.log(JSON.stringify(submitResponse.result, null, 2))
 // @chunk-end
 

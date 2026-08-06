@@ -11,7 +11,7 @@ status: not_enabled
 
 A `Delegate` ledger entry stores a set of permissions that an account has delegated to another account. You create a `Delegate` entry by sending a [DelegateSet transaction][].
 
-{% amendment-disclaimer name="PermissionDelegation" /%}
+{% amendment-disclaimer name="PermissionDelegationV1_1" /%}
 
 ## Example {% $frontmatter.seo.title %} JSON
 
@@ -63,7 +63,7 @@ There are no flags defined for {% code-page-name /%} entries.
 
 ## {% $frontmatter.seo.title %} Reserve
 
-{% code-page-name /%} entries count as one item towards the owner reserve of the delegating account, as long as the entry is in the ledger, regardless of how many permissions are delegating. Removing all permissions deletes the entry and frees up the reserve.
+{% code-page-name /%} entries count as one item towards the owner reserve of the delegating account, as long as the entry is in the ledger, regardless of how many permissions are delegated. Removing all permissions deletes the entry and frees up the reserve.
 
 {% code-page-name /%} entries are not deletion blockers. If the owner (delegating) account is deleted, all such ledger entries are deleted along with them. Deleting the `Authorize` (delegate) account removes the entry as well, freeing the delegating account's reserve.
 
