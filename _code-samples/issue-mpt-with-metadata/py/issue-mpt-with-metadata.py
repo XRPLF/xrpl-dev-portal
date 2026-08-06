@@ -9,6 +9,7 @@ from xrpl.models import (
     MPTokenIssuanceCreateFlag,
     MPTokenIssuanceImmutableFlag,
     MPTokenIssuanceSet,
+    MPTokenIssuanceSetFlag,
 )
 
 # Set up client and get a wallet
@@ -62,7 +63,6 @@ mpt_issuance_create = MPTokenIssuanceCreate(
     maximum_amount="50000000",
     transfer_fee=0,
     flags=MPTokenIssuanceCreateFlag.TF_MPT_CAN_TRANSFER |
-          MPTokenIssuanceCreateFlag.TF_MPT_CAN_TRADE |
           MPTokenIssuanceCreateFlag.TF_MPT_CAN_LOCK,
     immutable_flags=MPTokenIssuanceImmutableFlag.TIF_MPT_CAN_CLAWBACK,
     mptoken_metadata=mpt_metadata_hex
@@ -114,6 +114,8 @@ mpt_issuance_update = MPTokenIssuanceSet(
     mptoken_metadata=encode_mptoken_metadata(updated_metadata),
     # A non-zero transfer_fee requires the Can Transfer flag, set at issuance.
     transfer_fee=10,
+    # Enable Can Trade after issuance.
+    flags=MPTokenIssuanceSetFlag.TF_MPT_SET_CAN_TRADE,
     # The metadata update above still applies; immutability takes effect after it.
     # immutable_flags is additive, so TIF_MPT_METADATA is added to the
     # TIF_MPT_CAN_CLAWBACK bit declared at issuance rather than replacing it.

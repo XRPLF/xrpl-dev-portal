@@ -132,7 +132,7 @@ To issue the MPT, create an `MPTokenIssuanceCreate` transaction object with the 
 | `AssetScale`        | Where to put the decimal place when displaying amounts of this MPT. This is set to `4` for this example. |
 | `MaximumAmount`     | The maximum supply of the token to be issued. |
 | `TransferFee`       | The transfer fee to charge for transferring the token. In this example it is set to `0`. |
-| `Flags`             | Flags to set token permissions. For this example, the following flags are configured: <ul><li>**Can Transfer**: A holder can transfer the T-bill MPT to another account.</li><li>**Can Trade**: A holder can trade the T-bill MPT with another account.</li><li>**Can Lock**: The issuer can lock individual balances of the T-bill MPT, or the entire issuance.</li></ul>See [MPTokenIssuanceCreate Flags](../../../references/protocol/transactions/types/mptokenissuancecreate.md#mptokenissuancecreate-flags) for all available flags. |
+| `Flags`             | Flags to set token permissions. For this example, the following flags are configured: <ul><li>**Can Transfer**: A holder can transfer the T-bill MPT to another account.</li><li>**Can Lock**: The issuer can lock individual balances of the T-bill MPT, or the entire issuance.</li></ul>See [MPTokenIssuanceCreate Flags](../../../references/protocol/transactions/types/mptokenissuancecreate.md#mptokenissuancecreate-flags) for all available flags. |
 | `ImmutableFlags`    | Flags declaring which fields and MPT issuance flags can never be changed. This example declares **Can Clawback** immutable, so the issuer can never gain the power to claw back tokens from holders. See [MPTokenIssuanceCreate Immutable Flags](../../../references/protocol/transactions/types/mptokenissuancecreate.md#mptokenissuancecreate-immutable-flags) for all available flags. |
 | `MPTokenMetadata`   | The hex-encoded metadata for the token. |
 
@@ -169,7 +169,7 @@ Some important considerations about token metadata when you submit the transacti
 Sign and submit the `MPTokenIssuanceCreate` transaction to the ledger, then verify that it succeeded and retrieve the MPT issuance ID.
 
 {% admonition type="warning" name="Warning" %}
-The `AssetScale` and `MaximumAmount` values are fixed for the life of the token, as is anything you declare in `ImmutableFlags`. Review these settings carefully before submitting. The metadata, transfer fee, and MPT issuance flags stay mutable unless you declare them immutable, so you can adjust those later.
+The `AssetScale` and `MaximumAmount` values are fixed for the life of the token, as is anything you declare in `ImmutableFlags`. Review these settings carefully before submitting. The metadata and transfer fee stay mutable unless you declare them immutable. Capability flags can also be enabled later if they weren't declared immutable, but enabled flags can't be disabled.
 {% /admonition %}
 
 {% tabs %}
@@ -206,9 +206,9 @@ The decoding utility function converts the metadata back to a JSON object and ex
 
 ### 7. (Optional) Modify the token after issuance
 
-Your token is now issued and ready to use. The `MPTokenMetadata` field, the `TransferFee` field, and the [MPT issuance flags](../../../references/protocol/ledger-data/ledger-entry-types/mptokenissuance.md#mptokenissuance-flags) all stay mutable, so you can change them as your business needs evolve. Use an [MPTokenIssuanceSet transaction][] to update these properties, or to declare them immutable with the `ImmutableFlags` field.
+Your token is now issued and ready to use. The `MPTokenMetadata` and `TransferFee` fields stay mutable, and unset [MPT issuance flags](../../../references/protocol/ledger-data/ledger-entry-types/mptokenissuance.md#mptokenissuance-flags) can still be enabled, so you can adjust the issuance as your business needs evolve. Use an [MPTokenIssuanceSet transaction][] to update these properties, enable capability flags, or declare them immutable with the `ImmutableFlags` field.
 
-The following example updates the interest rate in the token's metadata, sets a 0.01% transfer fee, and makes the metadata immutable, all in a single transaction:
+The following example updates the interest rate in the token's metadata, sets a 0.01% transfer fee, enables **Can Trade**, and makes the metadata immutable, all in a single transaction:
 
 {% tabs %}
 
@@ -225,10 +225,10 @@ The following example updates the interest rate in the token's metadata, sets a 
 Some things to note:
 
 - A metadata update replaces the whole field, so encode the complete object, not only the parts you changed.
-- A single transaction can update a property and declare it immutable, so the metadata here updates to a 4.75% interest rate. Later attempts to change it fail with `tecNO_PERMISSION`.
+- A single transaction can update a property, enable a capability flag, and declare a property immutable. Here, the metadata updates to a 4.75% interest rate, and later attempts to change it will fail with `tecNO_PERMISSION`.
 - `ImmutableFlags` is additive, so each declaration adds to the ones already on the issuance instead of replacing them.
-- A non-zero `TransferFee` requires the **Can Transfer** flag, enabled here at issuance. Otherwise, enable it in the same transaction with `tfMPTSetCanTransfer`. See [Transfer Fee Rules](../../../references/protocol/transactions/types/mptokenissuanceset.md#transfer-fee-rules).
-- Enabling a flag with `tfMPTSet...` is one-way. No later transaction can disable it.
+- A non-zero `TransferFee` requires the **Can Transfer** flag, which this example enabled at issuance. See [Transfer Fee Rules](../../../references/protocol/transactions/types/mptokenissuanceset.md#transfer-fee-rules).
+- Capability flags such as **Can Trade** can be enabled at issuance or later, but once enabled, no later transaction can disable them.
 - You can't combine these updates with a `Holder` field, the `tfMPTLock` or `tfMPTUnlock` flags. Locking holders' balances is a separate operation.
 
 Look up the issuance entry again to confirm the changes:

@@ -1,6 +1,7 @@
 import {
   MPTokenIssuanceCreateFlags,
   MPTokenIssuanceCreateImmutableFlags,
+  MPTokenIssuanceSetFlags,
   Client,
   encodeMPTokenMetadata,
   decodeMPTokenMetadata
@@ -62,7 +63,6 @@ const mptIssuanceCreate = {
   TransferFee: 0,
   Flags:
     MPTokenIssuanceCreateFlags.tfMPTCanTransfer |
-    MPTokenIssuanceCreateFlags.tfMPTCanTrade |
     MPTokenIssuanceCreateFlags.tfMPTCanLock,
   ImmutableFlags: MPTokenIssuanceCreateImmutableFlags.tifMPTCanClawback,
   MPTokenMetadata: mptMetadataHex
@@ -124,6 +124,8 @@ const mptIssuanceUpdate = {
   MPTokenMetadata: encodeMPTokenMetadata(updatedMetadata),
   // A non-zero TransferFee requires the Can Transfer flag, set at issuance.
   TransferFee: 10,
+  // Enable Can Trade after issuance.
+  Flags: MPTokenIssuanceSetFlags.tfMPTSetCanTrade,
   // The metadata update above still applies; immutability takes effect after it.
   // ImmutableFlags is additive, so tifMPTMetadata is added to the
   // tifMPTCanClawback bit declared at issuance rather than replacing it.

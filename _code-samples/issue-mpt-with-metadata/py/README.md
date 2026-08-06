@@ -1,6 +1,6 @@
 # Issue MPT with Metadata (Python)
 
-Creates a sample MPT issuance with metadata encoded as JSON according to the [XLS-89 standard](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0089-multi-purpose-token-metadata-schema), then updates its metadata and transfer fee and declares its metadata immutable.
+Creates a sample MPT issuance with metadata encoded as JSON according to the [XLS-89 standard](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0089-multi-purpose-token-metadata-schema), then updates its metadata and transfer fee, enables **Can Trade**, and declares its metadata immutable.
 
 Quick setup and usage:
 
@@ -15,7 +15,7 @@ The script should output a validated transaction and decoded metadata, similar t
 
 ```sh
 === Funding new wallet from faucet... ===
-Attempting to fund address rpHvmTS46EjWkwEsDqjY8JCDNxyqRuXjBY
+Attempting to fund address rKXDaR9RvSavvowneZSUkbYWMjnNUnhxmq
 Faucet fund successful.
 
 === Encoding metadata...===
@@ -23,9 +23,9 @@ Encoded mpt_metadata_hex: 7B226163223A22727761222C226169223A7B226375736970223A22
 
 === Sending MPTokenIssuanceCreate transaction...===
 {
-  "Account": "rpHvmTS46EjWkwEsDqjY8JCDNxyqRuXjBY",
+  "Account": "rKXDaR9RvSavvowneZSUkbYWMjnNUnhxmq",
   "TransactionType": "MPTokenIssuanceCreate",
-  "Flags": 50,
+  "Flags": 34,
   "SigningPubKey": "",
   "AssetScale": 4,
   "MaximumAmount": "50000000",
@@ -36,8 +36,8 @@ Encoded mpt_metadata_hex: 7B226163223A22727761222C226169223A7B226375736970223A22
 
 === Checking MPTokenIssuanceCreate results... ===
 
-- MPToken created successfully with issuance ID: 003D46BF0E2BA9C5779F83365330738DABB87A5B2715BC88
-- Explorer URL: https://devnet.xrpl.org/mpt/003D46BF0E2BA9C5779F83365330738DABB87A5B2715BC88
+- MPToken created successfully with issuance ID: 0041026CCB28D687DD92788617AFB1E7EF74B9D78596741E
+- Explorer URL: https://devnet.xrpl.org/mpt/0041026CCB28D687DD92788617AFB1E7EF74B9D78596741E
 
 === Confirming MPT Issuance metadata in the validated ledger... ===
 Decoded MPT metadata:
@@ -72,10 +72,11 @@ Decoded MPT metadata:
 
 === Sending MPTokenIssuanceSet transaction to update properties...===
 {
-  "Account": "rpHvmTS46EjWkwEsDqjY8JCDNxyqRuXjBY",
+  "Account": "rKXDaR9RvSavvowneZSUkbYWMjnNUnhxmq",
   "TransactionType": "MPTokenIssuanceSet",
+  "Flags": 32,
   "SigningPubKey": "",
-  "MPTokenIssuanceID": "003D46BF0E2BA9C5779F83365330738DABB87A5B2715BC88",
+  "MPTokenIssuanceID": "0041026CCB28D687DD92788617AFB1E7EF74B9D78596741E",
   "MPTokenMetadata": "7B226163223A22727761222C226169223A7B226375736970223A22393132373936525830222C22696E7465726573745F72617465223A22342E373525222C22696E7465726573745F74797065223A227661726961626C65222C226D617475726974795F64617465223A22323034352D30362D3330222C227969656C645F736F75726365223A22552E532E2054726561737572792042696C6C73227D2C226173223A227472656173757279222C2264223A2241207969656C642D62656172696E6720737461626C65636F696E206261636B65642062792073686F72742D7465726D20552E532E205472656173757269657320616E64206D6F6E6579206D61726B657420696E737472756D656E74732E222C2269223A2268747470733A2F2F6578616D706C652E6F72672F7462696C6C2D69636F6E2E706E67222C22696E223A224578616D706C65205969656C6420436F2E222C226E223A22542D42696C6C205969656C6420546F6B656E222C2274223A225442494C4C222C227573223A5B7B2263223A2277656273697465222C2274223A2250726F647563742050616765222C2275223A2268747470733A2F2F6578616D706C657969656C642E636F2F7462696C6C227D2C7B2263223A22646F6373222C2274223A225969656C6420546F6B656E20446F6373222C2275223A2268747470733A2F2F6578616D706C657969656C642E636F2F646F6373227D5D7D",
   "TransferFee": 10,
   "ImmutableFlags": 65536
