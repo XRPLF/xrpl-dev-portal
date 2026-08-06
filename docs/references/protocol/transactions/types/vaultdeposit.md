@@ -86,8 +86,8 @@ Besides errors that can occur for all transactions, {% code-page-name /%} transa
 | `tecINSUFFICIENT_FUNDS` | The depositor does not have sufficient funds to make a deposit. |
 | `tecLIMIT_EXCEEDED`     | Adding the provided `Amount` to the `AssetsTotal` exceeds the `AssetsMaximum` value. |
 | `tecNO_AUTH`            | Either the vault is private and the depositing account does not have credentials in the share's Permissioned Domain, or the asset is a non-transferable MPT. |
-| `tecFROZEN`             | Either the trust line between the issuer and the depositor is frozen, or the asset is globally frozen.  |
-| `tecLOCKED`             | Either the MPT asset is locked for the depositor, or if the asset is globally locked. |
+| `tecFROZEN`             | The vault asset is frozen globally for the depositor, or for the vault's pseudo-account. Both regular and deep freezes cause this error. {% amendment-disclaimer name="fixCleanup3_3_0" mode="updated" /%} |
+| `tecLOCKED`             | The MPT vault asset is locked globally for the depositor, or for the vault's pseudo-account. {% amendment-disclaimer name="fixCleanup3_3_0" mode="updated" /%} |
 | `temMALFORMED`          | The transaction was not validly formatted. For example, if the `VaultID` is not provided.  |
 | `temDISABLED`           | The Single Asset Vault amendment is not enabled.  |
 | `temBAD_AMOUNT`         | The `Amount` field of the transaction is invalid. |
