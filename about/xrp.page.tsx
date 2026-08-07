@@ -26,6 +26,7 @@ const softwallets = [
   { href: "https://gemwallet.com/", id: "wallet-gem", alt: "Gem Wallet" },
   { href: "https://joeywallet.xyz/", id: "wallet-joey", alt: "Joey Wallet" },
   { href: "https://trustwallet.com/", id: "wallet-trust", alt: "Trust Wallet" },
+  { href: "https://vultisig.com/", id: "wallet-vultisig", alt: "Vultisig" },
   { href: "https://xaman.app/", id: "wallet-xumm", alt: "Xaman" }
 ];
 

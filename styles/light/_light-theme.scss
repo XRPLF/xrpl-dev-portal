@@ -576,7 +576,11 @@ pre {
 
   #wallet-bitget {
     content: url("../img/wallets/lightmode/bitget.svg");
-  }  
+  }
+
+  #wallet-vultisig {
+    content: url("../img/wallets/lightmode/vultisig.svg");
+  }
 }
 
 
@@ -676,7 +680,8 @@ pre {
     'bitget-wallet': 'svg',
     'sologenic-dex': 'svg',
     'joey-wallet': 'svg',
-    'Crossmark': 'png'
+    'Crossmark': 'png',
+    'vultisig': 'svg'
 
   ) {
     #use_case_companies_list {

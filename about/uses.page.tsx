@@ -431,6 +431,15 @@ const cardsData = [
     category_name: "Wallet",
     link: "https://web3.bitget.com/",
   },
+  {
+    id: "vultisig",
+    title: "Vultisig",
+    description:
+      "Vultisig is a seedless, open-source, self-custodial multi-chain wallet. Vaults are secured by MPC threshold signatures split across the user's own devices: no seed phrase, no single point of failure. XRP is supported alongside 36+ chains on iOS, Android, desktop, and browser extension.",
+    category_id: "wallet",
+    category_name: "Wallet",
+    link: "https://vultisig.com/",
+  },
 ];
 
 const featured_categories = {
@@ -477,7 +486,7 @@ const uses = [
   {
     id: "wallet",
     title: "Wallet",
-    number: 7,
+    number: 8,
     description:
       "Build digital wallets to store passwords and interact with various blockchains to send and receive digital assets, including XRP."
   },
