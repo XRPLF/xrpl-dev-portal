@@ -969,6 +969,21 @@
         }
       },
       {
+        "name": "ledger_entry - Sponsorship",
+        "description": "Returns a Sponsorship object in its raw ledger format.",
+        "link": "/docs/references/http-websocket-apis/public-api-methods/ledger-methods/ledger_entry#get-sponsorship-entry",
+        "status": "not_enabled",
+        "body": {
+          "id": "example_get_sponsorship",
+          "command": "ledger_entry",
+          "sponsorship": {
+            "sponsor": "rpUqggHmAvbeWDr3v8QPTds7HgFBPKNkLX",
+            "sponsee": "rEfvNyfG1GC4CXxqe4ct3KJBRz6oW6NPrD"
+          },
+          "ledger_index": "validated"
+        }
+      },
+      {
         "name": "ledger_entry - Ticket",
         "description": "Returns a Ticket object in its raw ledger format.",
         "link": "/docs/references/http-websocket-apis/public-api-methods/ledger-methods/ledger_entry#get-ticket-object",

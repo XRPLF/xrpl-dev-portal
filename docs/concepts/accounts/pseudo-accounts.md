@@ -22,6 +22,12 @@ A pseudo-account is a special type of account that holds assets on behalf of an 
 
 A pseudo-account has strict limitations. It cannot receive payments from other accounts, cannot send transactions since it has no signing authority, and exists solely to store or issue assets.
 
+Because a pseudo-account can't sign, it also can't be authorized to act for another account, or have another account act on its behalf:
+
+- Any transaction signed by a pseudo-account fails with `tefBAD_AUTH`, once any of the `LendingProtocol`, `BatchV1_1`, or `fixCleanup3_3_0` amendments is enabled.
+- A [DelegateSet transaction][] that names a pseudo-account in its `Authorize` field fails with `tecPSEUDO_ACCOUNT`. {% amendment-disclaimer name="PermissionDelegationV1_1" /%}
+- A [SponsorshipSet transaction][] that names a pseudo-account as either the sponsor or the sponsee fails with `tecPSEUDO_ACCOUNT`. {% amendment-disclaimer name="Sponsor" /%}
+
 ## Reserve Requirements
 
 The cost of creating a pseudo-account depends on whether it is owned and controlled by another account:

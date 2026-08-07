@@ -116,6 +116,7 @@ Transactions of the Payment type support additional values in the [`Flags` field
 | `tfNoRippleDirect` | `0x00010000` | 65536         | Do not use the default path; only use paths included in the `Paths` field. This is intended to force the transaction to take arbitrage opportunities. Most clients do not need this. |
 | `tfPartialPayment` | `0x00020000` | 131072        | If the specified `Amount` cannot be sent without spending more than `SendMax`, reduce the received amount instead of failing outright. See [Partial Payments](#partial-payments) for more details. |
 | `tfLimitQuality`   | `0x00040000` | 262144        | Only take paths where all the conversions have an input:output ratio that is equal or better than the ratio of `Amount`:`SendMax`. See [Limit Quality](#limit-quality) for details. |
+| `tfSponsorCreatedAccount` | `0x00080000` | 524288    | Only valid when this Payment [creates a new account](#creating-accounts). If enabled, the `Account` sending the transaction sponsors the reserve of the newly created account. Cannot be combined with `tfNoRippleDirect`, `tfPartialPayment`, or `tfLimitQuality`, and the `Amount` must be XRP. {% amendment-disclaimer name="Sponsor" /%} |
 
 ## Partial Payments
 

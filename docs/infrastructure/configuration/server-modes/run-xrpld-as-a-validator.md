@@ -63,19 +63,18 @@ For more information, see [Install `xrpld`](../../installation/index.md).
 
 ## 3. Enable validation on your `xrpld` server
 
-Enabling validation on your `xrpld` server means providing a validator token in your server's `xrpld.cfg` file. You can use the `validator-keys` tool (included in `xrpld` packages) to securely generate and manage your validator keys and tokens.
+Enabling validation on your `xrpld` server means providing a validator token in your server's `xrpld.cfg` file. You can use the `validator-keys` tool (included in `xrpld` Linux packages) to securely generate and manage your validator keys and tokens. {% badge href="https://github.com/XRPLF/rippled/releases/tag/3.3.0" %}Updated in: xrpld 3.3.0{% /badge %}
+
+{% admonition type="info" name="Note" %}
+`xrpld` 3.2.0 packages do not include the `validator-keys` tool; if you run 3.2.0, build it from source from the [validator-keys-tool repository](https://github.com/ripple/validator-keys-tool). Earlier `rippled` packages installed the tool at `/opt/ripple/bin/validator-keys`. Starting with `xrpld` 3.3.0, packages install it at `/usr/bin/validator-keys`, which is on the `PATH`.
+{% /admonition %}
 
 In a secure location **not** on your validator:
 
-1. Generate a validator key pair using the `validator-keys` tool, which is included in the `xrpld` package:
+1. Generate a validator key pair using the `validator-keys` tool:
 
     ```
-    $ cd /opt/ripple/bin/
-    ```
-    Then run:
-
-    ```
-    $ ./validator-keys create_keys
+    validator-keys create_keys
     ```
 
       Sample output on Ubuntu:
@@ -98,16 +97,16 @@ In a secure location **not** on your validator:
 
       For more information about the `validator-keys` tool and the key pairs it generates, see the [Validator Keys Tool Guide](https://github.com/ripple/validator-keys-tool/blob/master/doc/validator-keys-tool-guide.md).
 
-2. Generate a validator token using the `create_token` command. [Make sure you are at `/opt/ripple/bin/`]
+2. Generate a validator token using the `create_token` command.
 
     ```
-    $ ./validator-keys create_token --keyfile /PATH/TO/YOUR/validator-keys.json
+    validator-keys create_token --keyfile /PATH/TO/YOUR/validator-keys.json
     ```
 
     Sample output:
 
     ```
-    Update xrpld.cfg file with these values:
+    Update xrpld.cfg file with these values and restart xrpld:
 
     # validator public key: nHUtNnLVx7odrz5dnfb2xpIgbEeJPbzJWfdicSkGyVw1eE5GpjQr
 
@@ -131,13 +130,13 @@ On your validator:
 2. Restart `xrpld`.
 
     ```
-    $ sudo systemctl restart xrpld.service
+    sudo systemctl restart xrpld.service
     ```
 
 3. Use the `server_info` command to get information about your validator to verify that it is running as a validator.
 
     ```
-    $ xrpld server_info
+    xrpld server_info
     ```
 
       - The `pubkey_validator` value in the response should match the `public_key` in the `validator-keys.json` file that you generated for use with your validator.
@@ -189,13 +188,13 @@ _**To connect your validator to the XRP Ledger network using proxies:**_
 5. Restart `xrpld`.
 
     ```
-    $ sudo systemctl restart xrpld.service
+    sudo systemctl restart xrpld.service
     ```
 
 6. Use the [Peer Crawler](../../../references/http-websocket-apis/peer-port-methods/peer-crawler.md) endpoint on one of your stock `xrpld` servers. The response should not include your validator. This verifies that your validator's `[peer_private]` configuration is working. One of the effects of enabling `[peer_private]` on your validator is that your validator's peers do not include it in their Peer Crawler results.
 
     ```
-    $ curl --insecure https://STOCK_SERVER_IP_ADDRESS_HERE:51235/crawl | python3 -m json.tool
+    curl --insecure https://STOCK_SERVER_IP_ADDRESS_HERE:51235/crawl | python3 -m json.tool
     ```
 
 <!-- { TODO: Future: add a recommended network architecture diagram to represent the proxy, clustering, and firewall setup: https://ripplelabs.atlassian.net/browse/DOC-2046 }-->
@@ -246,7 +245,7 @@ The above list may evolve over time. To ensure you're using the most current set
 3. Restart `xrpld`.
 
     ```
-    $ sudo systemctl restart xrpld.service
+    sudo systemctl restart xrpld.service
     ```
 
 
