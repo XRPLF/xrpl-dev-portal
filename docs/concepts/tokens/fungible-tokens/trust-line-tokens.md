@@ -94,6 +94,8 @@ When an account owns 3 or more objects in the ledger, the full owner reserve app
 - **Concepts:**
     - [Decentralized Exchange](../decentralized-exchange/index.md)
     - [Rippling](rippling.md)
+- **Tutorials:**
+    - [Inspect Trust Line Token Properties](../../../tutorials/tokens/fungible-tokens/inspect-trust-line-token.md)
 - **References:**
     - [account_lines method][] - Look up trust lines attached to a given account
     - [gateway_balances method][] - Look up an issuer's total balance issued

@@ -73,6 +73,9 @@ Some [client libraries](../../../references/client-libraries.md) have convenienc
     - [Fees (Disambiguation)](../../transactions/fees.md)
     - [Transaction Cost](../../transactions/transaction-cost.md)
     - [Paths](paths.md)
+- **Tutorials:**
+    - [Inspect Trust Line Token Properties](../../../tutorials/tokens/fungible-tokens/inspect-trust-line-token.md) - Read the transfer fee and its history programmatically.
+    - [Inspect MPT Properties](../../../tutorials/tokens/mpts/inspect-mpt.md) - Read the transfer fee on an MPT issuance.
 - **References:**
     - [account_lines method][]
     - [account_info method][]
