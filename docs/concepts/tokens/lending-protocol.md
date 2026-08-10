@@ -199,4 +199,28 @@ Based on the timing and transaction flags, the lending protocol processes the pa
 In scenarios where excess payment amounts are "ignored", the transaction succeeds, but the borrower is only charged on the expected amount.
 {% /admonition %}
 
+## See Also
+
+- **Concepts:**
+    - [Single Asset Vaults](./single-asset-vaults.md)
+- **Tutorials:**
+    - [Claw Back First-Loss Capital](../../tutorials/defi/lending/use-the-lending-protocol/claw-back-cover.md)
+    - [Create a Loan](../../tutorials/defi/lending/use-the-lending-protocol/create-a-loan.md)
+    - [Create a Loan Broker](../../tutorials/defi/lending/use-the-lending-protocol/create-a-loan-broker.md)
+    - [Deposit and Withdraw First-Loss Capital](../../tutorials/defi/lending/use-the-lending-protocol/deposit-and-withdraw-cover.md)
+    - [Manage a Loan](../../tutorials/defi/lending/use-the-lending-protocol/manage-a-loan.md)
+    - [Pay Off a Loan](../../tutorials/defi/lending/use-the-lending-protocol/pay-off-a-loan.md)
+- **References:**
+    - [Loan entry](../../references/protocol/ledger-data/ledger-entry-types/loan.md)
+    - [LoanBroker entry](../../references/protocol/ledger-data/ledger-entry-types/loanbroker.md)
+    - [LoanBrokerCoverClawback transaction](../../references/protocol/transactions/types/loanbrokercoverclawback.md)
+    - [LoanBrokerCoverDeposit transaction](../../references/protocol/transactions/types/loanbrokercoverdeposit.md)
+    - [LoanBrokerCoverWithdraw transaction](../../references/protocol/transactions/types/loanbrokercoverwithdraw.md)
+    - [LoanBrokerDelete transaction](../../references/protocol/transactions/types/loanbrokerdelete.md)
+    - [LoanBrokerSet transaction](../../references/protocol/transactions/types/loanbrokerset.md)
+    - [LoanDelete transaction](../../references/protocol/transactions/types/loandelete.md)
+    - [LoanManage transaction](../../references/protocol/transactions/types/loanmanage.md)
+    - [LoanPay transaction](../../references/protocol/transactions/types/loanpay.md)
+    - [LoanSet transaction](../../references/protocol/transactions/types/loanset.md)
+
 {% raw-partial file="/docs/_snippets/common-links.md" /%}
