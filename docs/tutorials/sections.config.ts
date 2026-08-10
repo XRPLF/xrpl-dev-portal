@@ -102,8 +102,7 @@ export const sectionConfig: Record<string, {
           title: "Lending Protocol & SAV Reference App",
           description: "A Next.js lending platform template with dashboards for brokers, depositors, and borrowers.",
           author: { name: "Max", url: "https://github.com/krkmu" },
-          // TODO: This has been changed to a private repo for now, update to public repo when available.
-          // github: "https://github.com/RippleDevRel/xls-lending-sav-DAP",
+          github: "https://github.com/ripple/xrpl-reference-app-lending-sav",
           url: "https://lending.xls-demo.com/",
         }
       ],
