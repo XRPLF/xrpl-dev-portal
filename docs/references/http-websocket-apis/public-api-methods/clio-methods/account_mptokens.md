@@ -10,7 +10,9 @@ labels:
 
 [[Source]](https://github.com/XRPLF/clio/blob/develop/src/rpc/handlers/AccountMPTokens.cpp "Source")
 
-The `account_mptokens` method returns information about the [MPToken entries][MPToken entry] ledger entries held by a given account, including their balance. This method may return large data sets, so you should expect to implement paging via the `marker` field. This API is only available using Clio, not `xrpld`. {% badge href="https://github.com/XRPLF/clio/releases/tag/2.7.0" %}New in: Clio v2.7.0{% /badge %}
+The `account_mptokens` method returns information about the [MPTs](/docs/concepts/tokens/fungible-tokens/multi-purpose-tokens) held by an account, including their balance. This method may return large data sets, so you should expect to implement [pagination][Marker]. {% badge href="https://github.com/XRPLF/clio/releases/tag/2.7.0" %}New in: Clio v2.7.0{% /badge %}
+
+This method is only available using Clio, not `xrpld`.
 
 ## Request Format
 
@@ -48,11 +50,11 @@ The request contains the following parameters:
 
 | Field          | Type                      | Required? | Description |
 |:---------------|:--------------------------|:----------|-------------|
-| `account`      | String                    | Yes       | The unique identifier of an account, typically the account's address. |
-| `ledger_index` | [Ledger Index][]          | No        | The [Ledger Index][] of the max ledger to use, or a shortcut string to choose a ledger automatically. See [Specifying Ledgers][]. |
+| `account`      | String - [Address][]      | Yes       | Look up MPTs held by this account. |
+| `ledger_index` | [Ledger Index][]          | No        | The [Ledger Index][] of the ledger to use, or a shortcut string to choose a ledger automatically. See [Specifying Ledgers][]. |
 | `ledger_hash`  | String                    | No        | A 32-byte hex string for the ledger version to use. See [Specifying Ledgers][]. |
 | `marker`       | [Marker][]                | No        | Used to continue your query where it left off in paginating. |
-| `limit`        | Number (positive integer) | No        | Specify a limit to the number of `MPTokens` returned. |
+| `limit`        | Number (positive integer) | No        | Specify a limit to the number of MPTs returned. Must be within the inclusive range 10 to 400. Positive values outside this range are replaced with the closest valid option. The default is 200. |
 
 ## Response Format
 
@@ -71,26 +73,26 @@ The response follows the [standard format][], with the result containing the fol
 
 | Field          | Type             | Description |
 |:---------------|:-----------------|:------------|
-| `account`      | String           | The address of the account whose MPTokens were queried. |
-| `mptokens`     | Array            | An array of [MPToken](#mptoken) objects held by the account. |
+| `account`      | [Address][]      | The account whose MPTokens were queried. |
+| `mptokens`     | Array            | An array of [MPT objects](#mpt-objects) held by the account. |
 | `marker`       | [Marker][]       | Used to continue querying where we left off when paginating. Omitted if there are no more entries after this result. |
 | `limit`        | Number           | The limit, as specified in the request. |
-| `ledger_hash`  | String           | The hash of the ledger version used to generate this response. |
+| `ledger_hash`  | [Hash][]         | The hash of the ledger version used to generate this response. |
 | `ledger_index` | [Ledger Index][] | The index of the ledger version used to generate this response. |
 | `validated`    | Boolean          | If `true`, the ledger has been validated by the consensus process and is immutable. Otherwise, the contents of the ledger are not final and may change. In Clio, this is _always_ true as Clio stores and returns validated ledger data. |
 
-#### MPToken
+### MPT objects
 
-Each `MPToken` object has the following fields:
+Each MPT object has the following fields:
 
 | Field             | Type             | Description |
 |:------------------|:-----------------|:------------|
-| `mpt_id`          | String           | The ledger index (key) of the `MPToken` object. |
-| `account`         | String           | The account address of the holder who owns this `MPToken`. |
+| `mpt_id`          | String           | The [ledger entry ID][] of the `MPToken` ledger entry for this MPT. |
+| `account`         | [Address][]      | The holder of this MPT. |
 | `mpt_issuance_id` | String           | The `MPTokenIssuanceID` of the [MPTokenIssuance entry][] that this `MPToken` is associated with. |
 | `mpt_amount`      | Number           | The amount of tokens currently held by the account for this issuance. |
-| `locked_amount`   | Number           | _(May be omitted)_ The amount of tokens currently held in escrow or otherwise locked. Omitted if the `MPToken` has no locked balance. |
-| `mpt_locked`      | Boolean          | _(May be omitted)_ If `true`, the holder's balance of this token is locked. Omitted if not locked. |
+| `locked_amount`   | Number           | _(May be omitted)_ The amount of tokens currently held in [escrow](/docs/concepts/payment-types/escrow). Omitted if the `MPToken` has no escrowed balance. |
+| `mpt_locked`      | Boolean          | _(May be omitted)_ If `true`, the issuer has frozen the holder's balance of this token, so the holder can't send it. This is unrelated to `locked_amount`. Omitted if not frozen. |
 | `mpt_authorized`  | Boolean          | _(May be omitted)_ If `true`, the holder is authorized to hold this token. Omitted if not authorized. |
 
 ## Possible Errors
