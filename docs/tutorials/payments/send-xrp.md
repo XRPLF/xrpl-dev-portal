@@ -138,6 +138,7 @@ Technically, a transaction must contain some additional fields, and certain opti
 - With xrpl4j for Java, you can use the model objects in the `xrpl4j-model` module to construct transactions as Java objects.
     - Unlike the other libraries, you must provide the account `sequence` and the `signingPublicKey` of the source
     account of a `Transaction` at the time of construction, as well as a `fee`.
+- With `xrpl-ruby` for Ruby, build the Payment as a plain Hash (with string keys) and use the `client.autofill(tx)` method to fill in good defaults for the remaining fields (`Sequence`, `Fee`, and `LastLedgerSequence`).
 
 Here's an example of preparing the above payment:
 
@@ -197,7 +198,8 @@ Signing a transaction uses your credentials to authorize the transaction on your
 - **Python:** Use the [`xrpl.transaction.safe_sign_transaction()` method](https://xrpl-py.readthedocs.io/en/latest/source/xrpl.transaction.html#xrpl.transaction.safe_sign_transaction) with a model and `Wallet` object.
 - **Java:** Use a [`SignatureService`](https://javadoc.io/doc/org.xrpl/xrpl4j-crypto-core/latest/org/xrpl/xrpl4j/crypto/signing/SignatureService.html) instance to sign the transaction. For this tutorial, use the [`SingleKeySignatureService`](https://javadoc.io/doc/org.xrpl/xrpl4j-crypto-bouncycastle/latest/org/xrpl/xrpl4j/crypto/signing/SingleKeySignatureService.html).
 - **PHP:** Use a [`sign()` method of a `Wallet` instance](https://alexanderbuzz.github.io/xrpl-php-docs/wallet.html#signing-a-transaction) instance to sign the transaction. The input to this step is a completed array of transaction instructions.
-- **Go:** Use the [`Sign()` method of the `Wallet` package](https://pkg.go.dev/github.com/Peersyst/xrpl-go@v0.1.12/xrpl/wallet) to sign the transaction. 
+- **Go:** Use the [`Sign()` method of the `Wallet` package](https://pkg.go.dev/github.com/Peersyst/xrpl-go@v0.1.12/xrpl/wallet) to sign the transaction.
+- **Ruby:** Use the `sign` method of a `Wallet` instance. The input is a completed (autofilled) transaction Hash; the result is a Hash containing the signed `tx_blob` and the transaction `hash`.
 
 {% tabs %}
 
@@ -234,6 +236,7 @@ The result of the signing operation is a transaction object containing a signatu
 - In xrpl4j, `SignatureService.sign` returns a `SignedTransaction`, which contains the transaction's hash, which you can use to look up the transaction later.
 - In `XRPL_PHP`, the signing API also returns the transaction's ID, or identifying hash, which you can use to look up the transaction later. This is a 64-character hexadecimal string that is unique to this transaction.
 - In `xrpl-go`, the signing API also returns the transaction's ID, or identifying hash, which you can use to look up the transaction later. This is a 64-character hexadecimal string that is unique to this transaction.
+- In `xrpl-ruby`, `wallet.sign` returns a Hash containing `'tx_blob'` and `'hash'` — the transaction's identifying hash, a 64-character hexadecimal string you can use to look up the transaction later.
 
 {% interactive-block label="Sign" steps=$frontmatter.steps %}
 
@@ -253,6 +256,7 @@ Now that you have a signed transaction, you can submit it to an XRP Ledger serve
 - **Java:** Use the [`XrplClient.submit(SignedTransaction)` method](https://javadoc.io/doc/org.xrpl/xrpl4j-client/latest/org/xrpl/xrpl4j/client/XrplClient.html#submit(org.xrpl.xrpl4j.crypto.signing.SignedTransaction)) to submit a transaction to the network. Use the [`XrplClient.ledger()`](https://javadoc.io/doc/org.xrpl/xrpl4j-client/latest/org/xrpl/xrpl4j/client/XrplClient.html#ledger(org.xrpl.xrpl4j.model.client.ledger.LedgerRequestParams)) method to get the latest validated ledger index.
 - **PHP:** Use the [`submitAndWait()` method of the Client](https://alexanderbuzz.github.io/xrpl-php-docs/client.html) to submit a transaction to the network and wait for the response.
 - **Go:** Use [`SubmitTxAndWait()` or `SubmitTxBlobAndWait()` methods os the Client](https://pkg.go.dev/github.com/Peersyst/xrpl-go@v0.1.12/xrpl/websocket#Client.SubmitTxAndWait) to submit a transaction to the network and wait for the response.
+- **Ruby:** Use the `submit_and_wait` method of the client to submit the transaction and wait for its validated result. Because we already autofilled and signed the transaction, we pass `autofill: false`.
 
 {% tabs %}
 
@@ -318,6 +322,7 @@ Most transactions are accepted into the next ledger version after they're submit
 - **PHP:**  If you used the [`.submitAndWait()` method](https://alexanderbuzz.github.io/xrpl-php-docs/client.html), you can wait until the returned Promise resolves. Other, more asynchronous approaches are also possible.
 
 - **Go:** If you used the `SubmitTxAndWait()` or `SubmitTxBlobAndWait()` methods, the client will handle submission and wait until the transaction is confirmed in a ledger. Internally, these methods use a polling mechanism, querying the transaction status with the client's `Request()` method and a `TxRequest`.
+- **Ruby:** If you used `submit_and_wait`, it already blocks until the transaction is in a validated ledger (or its `LastLedgerSequence` has passed), so there's nothing more to do here.
 
 {% tabs %}
 
@@ -365,6 +370,7 @@ To know for sure what a transaction did, you must look up the outcome of the tra
 - **PHP:** Use the response from `submitAndWait()` or call the `tx method` using [`$client->syncRequest()`](https://alexanderbuzz.github.io/xrpl-php-docs/client.html).
 
 - **Go:** Use the response from `SubmitTxAndWait()` or `SubmitTxBlobAndWait()`, or manually query the transaction status using a `TxRequest` with the client's `Request()` method.
+- **Ruby:** Use the response returned by `submit_and_wait` (the validated `tx` result), or look the transaction up by its hash with `client.tx_response(transaction: tx_id)`.
 
 {% tabs %}
 
