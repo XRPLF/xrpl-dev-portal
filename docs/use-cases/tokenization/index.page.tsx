@@ -192,11 +192,7 @@ export default function Tokenization() {
             ],
             buttons: [
               {
-                label: translate('Decentralized exchange (DEX)'),
-                href: '/docs/concepts/tokens/decentralized-exchange',
-              },
-              {
-                label: translate('Escrow functionality'),
+                label: translate('Cross-chain trading'),
                 href: '/docs/concepts/payment-types/escrow',
               },
             ],
