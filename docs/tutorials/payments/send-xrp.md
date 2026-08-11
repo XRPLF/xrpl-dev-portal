@@ -12,7 +12,7 @@ steps: ['Generate', 'Connect', 'Prepare', 'Sign', 'Submit', 'Wait', 'Check']
 ---
 # Send XRP
 
-This tutorial explains how to send a direct XRP Payment using `xrpl.js` for JavaScript, `xrpl-py` for Python, `xrpl4j` for Java or `XRPL_PHP` for PHP. First, we step through the process with the [XRP Ledger Testnet](../../concepts/networks-and-servers/parallel-networks.md). Then, we compare that to the additional requirements for doing the equivalent in production.
+This tutorial explains how to send a direct XRP Payment using `xrpl.js` for JavaScript, `xrpl-py` for Python, `xrpl4j` for Java, `XRPL_PHP` for PHP or `xrpl-ruby` for Ruby. First, we step through the process with the [XRP Ledger Testnet](../../concepts/networks-and-servers/parallel-networks.md). Then, we compare that to the additional requirements for doing the equivalent in production.
 
 {% admonition type="success" name="Tip" %}Check out the [Code Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples) for a complete version of the code used in this tutorial.{% /admonition %}
 
@@ -29,6 +29,7 @@ To interact with the XRP Ledger, you need to set up a dev environment with the n
 - **Java** with the [xrpl4j library](https://github.com/XRPLF/xrpl4j). See [Get Started Using Java](../get-started/get-started-java.md) for setup steps.
 - **PHP** with the [XRPL_PHP library](https://github.com/AlexanderBuzz/xrpl-php). See [Get Started Using PHP](../get-started/get-started-php.md) for setup steps.
 - **Go** with the [xrpl-go library](https://github.com/Peersyst/xrpl-go). See [Get Started Using Go](../get-started/get-started-go.md) for setup steps.
+- **Ruby** with the [xrpl-ruby library](https://github.com/AlexanderBuzz/xrpl-ruby). See [Get Started Using Ruby](../get-started/get-started-ruby.md) for setup steps.
 
 ## Send a Payment on the Test Net
 
@@ -56,6 +57,10 @@ To transact on the XRP Ledger, you need an address and secret key, and some XRP.
 
 {% tab label="Go" %}
 {% code-snippet file="/_code-samples/send-xrp/go/ws/main.go" from="// Example credentials" before="// Funding" language="go" /%}
+{% /tab %}
+
+{% tab label="Ruby" %}
+{% code-snippet file="/_code-samples/send-xrp/ruby/send-xrp.rb" before="# Connect" language="ruby" /%}
 {% /tab %}
 
 {% /tabs %}
@@ -93,6 +98,10 @@ The following code connects to a public Testnet servers:
 
 {% tab label="Go" %}
 {% code-snippet file="/_code-samples/send-xrp/go/ws/main.go" from="func main()" before="if !client.IsConnected() " language="go" /%}
+{% /tab %}
+
+{% tab label="Ruby" %}
+{% code-snippet file="/_code-samples/send-xrp/ruby/send-xrp.rb" from="# Connect" before="# Get credentials" language="ruby" /%}
 {% /tab %}
 
 {% /tabs %}
@@ -154,6 +163,10 @@ Here's an example of preparing the above payment:
 {% code-snippet file="/_code-samples/send-xrp/go/ws/main.go" from="// Prepare " before="// Sign" language="go" /%}
 {% /tab %}
 
+{% tab label="Ruby" %}
+{% code-snippet file="/_code-samples/send-xrp/ruby/send-xrp.rb" from="# Prepare" before="# Sign" language="ruby" /%}
+{% /tab %}
+
 {% /tabs %}
 
 {% interactive-block label="Prepare" steps=$frontmatter.steps %}
@@ -208,6 +221,10 @@ Signing a transaction uses your credentials to authorize the transaction on your
 {% code-snippet file="/_code-samples/send-xrp/go/ws/main.go" from="// Sign" before="// Submit" language="go" /%}
 {% /tab %}
 
+{% tab label="Ruby" %}
+{% code-snippet file="/_code-samples/send-xrp/ruby/send-xrp.rb" from="# Sign" before="# Submit" language="ruby" /%}
+{% /tab %}
+
 {% /tabs %}
 
 The result of the signing operation is a transaction object containing a signature. Typically, XRP Ledger APIs expect a signed transaction to be the hexadecimal representation of the transaction's canonical [binary format](../../references/protocol/binary-format.md), called a "blob".
@@ -257,6 +274,10 @@ Now that you have a signed transaction, you can submit it to an XRP Ledger serve
 
 {% tab label="Go" %}
 {% code-snippet file="/_code-samples/send-xrp/go/ws/main.go" from="// Submit" before="// Wait" language="go" /%}
+{% /tab %}
+
+{% tab label="Ruby" %}
+{% code-snippet file="/_code-samples/send-xrp/ruby/send-xrp.rb" from="# Submit" before="# Wait" language="ruby" /%}
 {% /tab %}
 
 {% /tabs %}
@@ -320,6 +341,10 @@ Most transactions are accepted into the next ledger version after they're submit
 {% code-snippet file="/_code-samples/send-xrp/go/ws/main.go" from="// Wait" before="// Check" language="go" /%}
 {% /tab %}
 
+{% tab label="Ruby" %}
+{% code-snippet file="/_code-samples/send-xrp/ruby/send-xrp.rb" from="# Wait" before="# Check" language="ruby" /%}
+{% /tab %}
+
 {% /tabs %}
 
 {% partial file="/docs/_snippets/interactive-tutorials/wait-step.md" /%}
@@ -361,6 +386,10 @@ To know for sure what a transaction did, you must look up the outcome of the tra
 
 {% tab label="Go" %}
 {% code-snippet file="/_code-samples/send-xrp/go/ws/main.go" from="// Check" language="go" /%}
+{% /tab %}
+
+{% tab label="Ruby" %}
+{% code-snippet file="/_code-samples/send-xrp/ruby/send-xrp.rb" from="# Check" language="ruby" /%}
 {% /tab %}
 
 {% /tabs %}
@@ -436,6 +465,16 @@ fmt.Println("Seed:", wallet.Seed) // Example: sEd7XGFGSWteam777HQHvw7vHypEWy2
 ```
 {% /tab %}
 
+{% tab label="Ruby" %}
+```ruby
+require 'xrpl-ruby'
+
+wallet = Wallet::Wallet.generate
+puts wallet.classic_address # Example: rGCkuB7PBr5tNy68tPEABEtcdno4hE6Y7f
+puts wallet.seed            # Example: sp6JS7f14BuwFY8Mw6bTtLKWauoUs
+```
+{% /tab %}
+
 {% /tabs %}
 
 {% admonition type="danger" name="Warning" %}You should only use an address and secret that you generated securely, on your local machine. If another computer generated the address and secret and sent it to you over a network, it's possible that someone else on the network may see that information. If they do, they'll have as much control over your XRP as you do. It's also recommended not to use the same address for the Testnet and Mainnet, because transactions that you created for use on one network could also be valid to execute on the other network, depending on the parameters you provided.{% /admonition %}
@@ -492,6 +531,14 @@ if err := client.Connect(); err != nil {
 ```
 {% /tab %}
 
+{% tab label="Ruby" %}
+```ruby
+require 'xrpl-ruby'
+client = XRPL::Client.new('wss://xrplcluster.com')
+client.connect!
+```
+{% /tab %}
+
 {% /tabs %}
 
 If you [install `xrpld`](../../infrastructure/installation/index.md) yourself, it connects to the production network by default. (You can also [configure it to connect to the test net](../../infrastructure/configuration/connect-your-xrpld-to-the-xrp-test-net.md) instead.) After the server has synced (typically within about 15 minutes of starting it up), you can connect to it locally, which has [various benefits](../../concepts/networks-and-servers/index.md). The following example shows how to connect to a server running the default configuration:
@@ -539,6 +586,14 @@ if err := client.Connect(); err != nil {
   fmt.Println(err)
   return
 }
+```
+{% /tab %}
+
+{% tab label="Ruby" %}
+```ruby
+require 'xrpl-ruby'
+client = XRPL::Client.new('ws://localhost:6006')
+client.connect!
 ```
 {% /tab %}
 
