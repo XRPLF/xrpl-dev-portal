@@ -12,7 +12,7 @@ labels:
 
 A [Multi-Purpose Token (MPT)](../../../concepts/tokens/fungible-tokens/multi-purpose-tokens.md) lets you quickly access powerful, built-in tokenization features on the XRP Ledger with minimal code.
 
-This tutorial shows you how to issue an MPT with on-chain metadata such as the token's ticker, name, or description, encoded according to the MPT [metadata schema](../../../concepts/tokens/fungible-tokens/multi-purpose-tokens.md#metadata-schema) defined in [XLS-89](https://xls.xrpl.org/xls/XLS-0089-multi-purpose-token-metadata-schema.html). It then shows you how to update the token's [mutable properties](../../../concepts/tokens/fungible-tokens/mutable-mpts.md) and how to declare a property immutable.
+This tutorial shows you how to issue an MPT with on-chain metadata, such as the token's ticker, name, or description, encoded according to the MPT [metadata schema](../../../concepts/tokens/fungible-tokens/multi-purpose-tokens.md#metadata-schema) defined in [XLS-89](https://xls.xrpl.org/xls/XLS-0089-multi-purpose-token-metadata-schema.html). It then shows you how to update the token's [mutable properties](../../../concepts/tokens/fungible-tokens/mutable-mpts.md) and how to declare a property immutable.
 
 {% amendment-disclaimer name="DynamicMPT" mode="updated" /%}
 
@@ -117,7 +117,7 @@ To encode the metadata:
 
 {% /tabs %}
 
-{% admonition type="warning" name="Warning" %}
+{% admonition type="warning" name="Caution" %}
 The encoding function raises an error if the input isn't a valid JSON object.
 {% /admonition %}
 
@@ -168,7 +168,7 @@ Some important considerations about token metadata when you submit the transacti
 
 Sign and submit the `MPTokenIssuanceCreate` transaction to the ledger, then verify that it succeeded and retrieve the MPT issuance ID.
 
-{% admonition type="warning" name="Warning" %}
+{% admonition type="warning" name="Caution" %}
 The `AssetScale` and `MaximumAmount` values are fixed for the life of the token, as is anything you declare in `ImmutableFlags`. Review these settings carefully before submitting. The metadata and transfer fee stay mutable unless you declare them immutable. Capability flags can also be enabled later if they weren't declared immutable, but enabled flags can't be disabled.
 {% /admonition %}
 
@@ -222,14 +222,14 @@ The following example updates the interest rate in the token's metadata, sets a 
 
 {% /tabs %}
 
-Some things to note:
+Note the following:
 
 - A metadata update replaces the whole field, so encode the complete object, not only the parts you changed.
-- A single transaction can update a property, enable a capability flag, and declare a property immutable. Here, the metadata updates to a 4.75% interest rate, and later attempts to change it will fail with `tecNO_PERMISSION`.
+- A single transaction can update a property, enable a capability flag, and declare a property immutable. Here, the metadata updates to a 4.75% interest rate, and any later attempts to change it will fail with `tecNO_PERMISSION`.
 - `ImmutableFlags` is additive, so each declaration adds to the ones already on the issuance instead of replacing them.
 - A non-zero `TransferFee` requires the **Can Transfer** flag, which this example enabled at issuance. See [Transfer Fee Rules](../../../references/protocol/transactions/types/mptokenissuanceset.md#transfer-fee-rules).
-- Capability flags such as **Can Trade** can be enabled at issuance or later, but once enabled, no later transaction can disable them.
-- You can't combine these updates with a `Holder` field, the `tfMPTLock` or `tfMPTUnlock` flags. Locking holders' balances is a separate operation.
+- Capability flags, such as **Can Trade**, can be enabled at issuance or later, but once enabled, no later transaction can disable them.
+- You can't combine these updates with a `Holder` field, `tfMPTLock`, or `tfMPTUnlock`. Locking holders' balances is a separate operation.
 
 Look up the issuance entry again to confirm the changes:
 
@@ -244,10 +244,6 @@ Look up the issuance entry again to confirm the changes:
 {% /tab %}
 
 {% /tabs %}
-
-{% admonition type="warning" name="Caution" %}
-Immutability is permanent. `ImmutableFlags` can never be cleared, so declare a property immutable only when you're certain you'll never need to change it.
-{% /admonition %}
 
 ## See Also
 
