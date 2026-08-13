@@ -4,7 +4,7 @@ import os
 
 from xrpl.clients import JsonRpcClient
 from xrpl.ext.confidential import (
-    MPTCrypto,
+    decrypt_confidential_balance,
     prepare_confidential_merge_inbox,
     prepare_confidential_send,
 )
@@ -25,7 +25,6 @@ from confidential_transfers_setup import main as run_setup
 
 # Connect to the network ----------------------
 client = JsonRpcClient("https://s.devnet.rippletest.net:51234")
-crypto = MPTCrypto()
 
 EXPLORER = "https://devnet.xrpl.org"
 
@@ -74,9 +73,7 @@ holders = (
 holdings = ((fund, seller), (stablecoin, buyer))
 
 for token, holder in holdings:
-    merge_tx = prepare_confidential_merge_inbox(
-        client, holder, token["mptIssuanceID"]
-    )
+    merge_tx = prepare_confidential_merge_inbox(client, holder, token["mptIssuanceID"])
     merge_response = submit_and_wait(merge_tx, client, holder, autofill=True)
     merge_result = merge_response.result["meta"]["TransactionResult"]
     if merge_result != "tesSUCCESS":
@@ -118,12 +115,7 @@ print("=== Prepared confidential payments ===")
 print(f"Payment1 (Fund): {json.dumps(fund_payment.to_xrpl(), indent=2)}")
 print(f"\nPayment2 (Cash): {json.dumps(cash_payment.to_xrpl(), indent=2)}")
 
-# Read the fees the payments carried before overwriting them, because the outer
-# Batch needs them later on.
-inner_fees = int(fund_payment.fee) + int(cash_payment.fee)
-
-# Every inner Batch transaction needs the tfInnerBatchTxn flag and a Fee of 0, so
-# set the flag and overwrite the Fee the helper function filled in.
+# Every inner Batch transaction needs the tfInnerBatchTxn flag and a Fee of 0.
 fund_payment, cash_payment = [
     ConfidentialMPTSend.from_dict(
         {**payment.to_dict(), "fee": "0", "flags": TransactionFlag.TF_INNER_BATCH_TXN}
@@ -132,7 +124,7 @@ fund_payment, cash_payment = [
 ]
 
 # Settle both payments atomically ----------------------
-print("\n=== Submit confidential payments in batch... ===")
+print("=== Submit confidential payments in batch... ===")
 print(f"Seller sends {fund['ticker']} to Buyer.")
 print(f"Buyer sends {stablecoin['ticker']} to Seller.\n")
 
@@ -143,12 +135,6 @@ batch_tx = Batch(
 )
 
 autofilled_batch_tx = autofill(batch_tx, client, 2)
-autofilled_batch_tx = Batch.from_dict(
-    {
-        **autofilled_batch_tx.to_dict(),
-        "fee": str(int(autofilled_batch_tx.fee) + inner_fees),
-    }
-)
 
 seller_batch = sign_multiaccount_batch(seller, autofilled_batch_tx)
 buyer_batch = sign_multiaccount_batch(buyer, autofilled_batch_tx)
@@ -174,12 +160,12 @@ for index, raw_transaction in enumerate(raw_transactions):
         "TransactionResult"
     ]
     print(f"Payment {index + 1}: {inner_result}")
-    print(f"{EXPLORER}/transactions/{inner_hash}\n")
+    print(f"{EXPLORER}/transactions/{inner_hash}")
 
     if inner_result != "tesSUCCESS":
         print(f"Error: An inner payment failed: {inner_result}")
         exit(1)
-print("Payments both successful!")
+print("\nPayments both successful!")
 
 # Merge the received amounts into each spending balance ----------------------
 print("\n=== Merging settled amounts into spending balance... ===")
@@ -209,7 +195,7 @@ for token in tokens:
 
 print("=== Decrypting balances as each holder... ===")
 for name, holder, holder_privkey in holders:
-    print(f"\n{name} reads its own balance as:")
+    print(f"{name} reads its own balance as:")
     for token in tokens:
         mptoken = client.request(
             LedgerEntry(
@@ -218,14 +204,12 @@ for name, holder, holder_privkey in holders:
                 ),
             ),
         ).result["node"]
-        spending_balance = mptoken["ConfidentialBalanceSpending"]
-        balance = crypto.decrypt(
+        balance = decrypt_confidential_balance(
+            mptoken["ConfidentialBalanceSpending"],
             holder_privkey,
-            spending_balance[:66],
-            spending_balance[66:],
             range_high=confidential_supplies[token["mptIssuanceID"]],
         )
-        print(f"     - {balance} {token['ticker']}\n")
+        print(f"     - {balance} {token['ticker']}")
 
 # Decrypt the balances and amounts as the auditor ----------------------
 print("\n=== Decrypting balances and amounts as the auditor... ===")
@@ -239,11 +223,9 @@ for name, holder, _ in holders:
                 ),
             ),
         ).result["node"]
-        auditor_balance = mptoken["AuditorEncryptedBalance"]
-        auditor_view = crypto.decrypt(
+        auditor_view = decrypt_confidential_balance(
+            mptoken["AuditorEncryptedBalance"],
             auditor_privkey,
-            auditor_balance[:66],
-            auditor_balance[66:],
             range_high=confidential_supplies[token["mptIssuanceID"]],
         )
         print(f"     - {auditor_view} {token['ticker']}")
@@ -252,11 +234,9 @@ print("\nAuditor reads the settled amounts as:")
 settled = ((fund, fund_payment), (stablecoin, cash_payment))
 
 for token, payment in settled:
-    auditor_amount = payment.auditor_encrypted_amount
-    settled_amount = crypto.decrypt(
+    settled_amount = decrypt_confidential_balance(
+        payment.auditor_encrypted_amount,
         auditor_privkey,
-        auditor_amount[:66],
-        auditor_amount[66:],
         range_high=confidential_supplies[token["mptIssuanceID"]],
     )
     print(f"     - {settled_amount} {token['ticker']}")

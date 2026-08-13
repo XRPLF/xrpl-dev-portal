@@ -172,19 +172,19 @@ https://devnet.xrpl.org/transactions/9F6A0BE7A6D2B490C0C08E4FB10B06DB431179590C6
 
 === Decrypting balances as each holder... ===
 Seller reads its own balance as:
-     - 700 CTST
-     - 1500 CTUSD
+     - 900 CTST
+     - 500 CTUSD
 Buyer reads its own balance as:
-     - 300 CTST
-     - 98500 CTUSD
+     - 100 CTST
+     - 99500 CTUSD
 
 === Decrypting balances and amounts as the auditor... ===
 Auditor reads the seller's balance as:
-     - 700 CTST
-     - 1500 CTUSD
+     - 900 CTST
+     - 500 CTUSD
 Auditor reads the buyer's balance as:
-     - 300 CTST
-     - 98500 CTUSD
+     - 100 CTST
+     - 99500 CTUSD
 
 Auditor reads the settled amounts as:
      - 100 CTST

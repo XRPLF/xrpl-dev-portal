@@ -109,9 +109,9 @@ In `xrpl.js`, the `deriveConfidentialKeypair` function rebuilds a confidential e
 For testing purposes, the example private keys are stored in a JSON file by the setup script. In production, private keys should be stored in a secure, encrypted key store.
 {% /admonition %}
 
-### 4. Make each holder's balance spendable
+### 3. Make each holder's balance spendable
 
-The starting balances that the setup script distributed are in each holder's `ConfidentialBalanceInbox`, and a confidential payment can only spend from `ConfidentialBalanceSpending`.  
+The starting balances that the setup script distributed are in each holder's `ConfidentialBalanceInbox`, and a confidential payment can only spend from `ConfidentialBalanceSpending`.
 
 Submit a [ConfidentialMPTMergeInbox transaction][] to move those funds into each holder's spending balance.
 
@@ -125,11 +125,11 @@ Submit a [ConfidentialMPTMergeInbox transaction][] to move those funds into each
 {% /tab %}
 {% /tabs %}
 
-### 5. Prepare the ConfidentialMPTSend transactions
+### 4. Prepare the ConfidentialMPTSend transactions
 
 To make a confidential payment, you must submit a [ConfidentialMPTSend transaction][].
 
-Create each transaction with the "prepare confidential send" helper function. The helper encrypts the amount under the four public keys, and generates the Zero-Knowledge Proof in the transaction's `ZKProof` field that the ledger validates the transfer against. Without revealing the amount, the proof shows that:
+Create each transaction with the confidential send helper function: `prepareConfidentialSend` in `xrpl.js`, or `prepare_confidential_send` in `xrpl-py`. The helper encrypts the amount under the four public keys, and generates the Zero-Knowledge Proof in the transaction's `ZKProof` field that the ledger validates the transfer against. Without revealing the amount, the proof shows that:
 
 - Every encrypted amount on the transaction encrypts the same value.
 - The balance being spent is the one the ledger holds for the sender.
@@ -144,32 +144,30 @@ The proof is also bound to the sender's sequence number, so don't submit anythin
 
 {% tab label="Python" %}
 {% code-snippet file="/_code-samples/confidential-transfers/py/send_confidential_payments.py" language="py" from="# Build both confidential payments" before="# Settle both payments atomically" /%}
-
-The `prepare_confidential_send` helper function fills in a `Fee`, so you have to set it back to `0` before adding the confidential payment to a Batch.
 {% /tab %}
 {% /tabs %}
 
-### 6. Submit confidential payments
+### 5. Submit confidential payments
 
-Use a [Batch transaction][] to submit both confidential payments atomically with the `tfAllOrNothing` flag. This ensures that if there is a failure on either side, it reverts the whole transaction.
+Use a [Batch transaction][] to submit both confidential payments atomically with the `tfAllOrNothing` flag. This ensures that if there is a failure on either side, the whole transaction reverts.
 
 Inner transactions must have a `Fee` of `0`, so the outer `Batch` pays for everything inside it. That means 10 times the standard [transaction cost](../../concepts/transactions/transaction-cost.md) for each confidential payment, plus twice the standard cost for the `Batch` itself, plus one standard cost for each signer.
 
+`autofill` covers each payment's full cost, so you only need to tell it how many inner signers to expect.
+
 {% tabs %}
 {% tab label="JavaScript" %}
-`autofill` covers each payment's full cost, so you only need to tell it how many inner signers to expect.
 {% code-snippet file="/_code-samples/confidential-transfers/js/sendConfidentialPayments.js" language="js" from="// Settle both payments atomically" before="// Verify each payment individually" /%}
 {% /tab %}
 
 {% tab label="Python" %}
-`autofill` only charges the standard cost for each inner transaction, so you have to add the rest of each payment's cost to the `Batch` cost.
 {% code-snippet file="/_code-samples/confidential-transfers/py/send_confidential_payments.py" language="py" from="# Settle both payments atomically" before="# Verify each payment individually" /%}
 {% /tab %}
 {% /tabs %}
 
 The _seller_ and _buyer_ sign the Batch for their own inner payment, then the two sets of signers are combined and the _orchestrator_ submits it.
 
-### 7. Verify each payment individually
+### 6. Verify each payment individually
 
 A `tesSUCCESS` on the `Batch` only means the `Batch` itself was well-formed. Each inner payment has its own result, so you must verify the result of each inner transaction.
 
@@ -185,7 +183,7 @@ A `tesSUCCESS` on the `Batch` only means the `Batch` itself was well-formed. Eac
 
 With `tfAllOrNothing`, both inner results are either `tesSUCCESS` or reverted together, so this check confirms the settlement applied as intended.
 
-### 8. Merge the received confidential amounts
+### 7. Merge the received confidential amounts
 
 Now that each confidential payment has settled, each amount is in its recipient's `ConfidentialBalanceInbox`. A holder can decrypt an inbox amount, but can't spend it.
 
@@ -201,7 +199,7 @@ Merge the confidential balances so both holders can spend them later.
 {% /tab %}
 {% /tabs %}
 
-### 9. Decrypt the balances and settled amounts
+### 8. Decrypt the balances and settled amounts
 
 Reading a confidential amount requires an encryption private key, so only the two holders and the auditor can decrypt anything here.
 

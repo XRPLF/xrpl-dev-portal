@@ -3,7 +3,10 @@ import json
 import os
 
 from xrpl.clients import JsonRpcClient
-from xrpl.ext.confidential import MPTCrypto, prepare_confidential_clawback
+from xrpl.ext.confidential import (
+    decrypt_confidential_balance,
+    prepare_confidential_clawback,
+)
 from xrpl.models import LedgerEntry, MPTokenIssuanceSet
 from xrpl.models.requests.ledger_entry import MPToken
 from xrpl.models.transactions import MPTokenIssuanceSetFlag
@@ -14,7 +17,6 @@ from confidential_transfers_setup import main as run_setup
 
 # Connect to the network ----------------------
 client = JsonRpcClient("https://s.devnet.rippletest.net:51234")
-crypto = MPTCrypto()
 
 EXPLORER = "https://devnet.xrpl.org"
 
@@ -80,10 +82,9 @@ holder_mptoken = client.request(
 ).result["node"]
 
 issuer_encrypted_balance = holder_mptoken["IssuerEncryptedBalance"]
-clawback_amount = crypto.decrypt(
+clawback_amount = decrypt_confidential_balance(
+    issuer_encrypted_balance,
     issuer_privkey,
-    issuer_encrypted_balance[:66],
-    issuer_encrypted_balance[66:],
     range_high=confidential_supply,
 )
 
@@ -132,23 +133,17 @@ inbox = holder_mptoken_after["ConfidentialBalanceInbox"]
 issuer_balance = holder_mptoken_after["IssuerEncryptedBalance"]
 auditor_balance = holder_mptoken_after["AuditorEncryptedBalance"]
 
-spending_balance = crypto.decrypt(
-    holder_privkey, spending[:66], spending[66:], range_high=confidential_supply
+spending_balance = decrypt_confidential_balance(
+    spending, holder_privkey, range_high=confidential_supply
 )
-inbox_balance = crypto.decrypt(
-    holder_privkey, inbox[:66], inbox[66:], range_high=confidential_supply
+inbox_balance = decrypt_confidential_balance(
+    inbox, holder_privkey, range_high=confidential_supply
 )
-issuer_view = crypto.decrypt(
-    issuer_privkey,
-    issuer_balance[:66],
-    issuer_balance[66:],
-    range_high=confidential_supply,
+issuer_view = decrypt_confidential_balance(
+    issuer_balance, issuer_privkey, range_high=confidential_supply
 )
-auditor_view = crypto.decrypt(
-    auditor_privkey,
-    auditor_balance[:66],
-    auditor_balance[66:],
-    range_high=confidential_supply,
+auditor_view = decrypt_confidential_balance(
+    auditor_balance, auditor_privkey, range_high=confidential_supply
 )
 print(f"\nHolder reads its spending balance as {spending_balance} {ticker}.")
 print(f"Holder reads its inbox balance as {inbox_balance} {ticker}.\n")
@@ -160,4 +155,6 @@ issuance_after = client.request(
 ).result["node"]
 supply_after = issuance_after["ConfidentialOutstandingAmount"]
 print(f"Confidential supply after the clawback: {supply_after}")
-print(f"Total supply in circulation (public + confidential): {issuance_after['OutstandingAmount']}")
+print(
+    f"Total supply in circulation (public + confidential): {issuance_after['OutstandingAmount']}"
+)

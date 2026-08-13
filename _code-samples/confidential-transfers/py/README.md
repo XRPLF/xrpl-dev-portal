@@ -154,7 +154,6 @@ Payment2 (Cash): {
   "BalanceCommitment": "03A810524CAE5074898EAAA3DDAFAB64E5D82B822A9354BD64F3A88A03A5DAC2EB",
   "AuditorEncryptedAmount": "021420569B97E37B1E51316199FDD3570FFD0E278FD4B82685E364B8040BC8B909023D9908045EE1F530C46977AA0B6E7E0BE5DA067F269EE06FB212D1E6865656BA"
 }
-
 === Submit confidential payments in batch... ===
 Seller sends CTST to Buyer.
 Buyer sends CTUSD to Seller.
@@ -165,7 +164,6 @@ https://devnet.xrpl.org/transactions/1F3CAD06534F81225351649FE211BCA5A7CF6D4594B
 === Verifying both payments... ===
 Payment 1: tesSUCCESS
 https://devnet.xrpl.org/transactions/9EA3AFBDA9EEAE599EF9B57DE51D6E75BE3F9F662E922C224C0D6B601C2D6A01
-
 Payment 2: tesSUCCESS
 https://devnet.xrpl.org/transactions/4C38F1849507AE86F1A03BCECD84980CE19DCA11B327A63E200360D5AACDAEF6
 
@@ -179,18 +177,12 @@ rp39gWeAU9MRFuxEQuj1x5JzeSiQfUDTKu can spend the CTUSD it received.
 https://devnet.xrpl.org/transactions/708302AFCD3511E837788B5F154D954C7AB653C79F27D1B0FFB1770CED4C45C5
 
 === Decrypting balances as each holder... ===
-
 Seller reads its own balance as:
      - 900 CTST
-
      - 500 CTUSD
-
-
 Buyer reads its own balance as:
      - 100 CTST
-
      - 99500 CTUSD
-
 
 === Decrypting balances and amounts as the auditor... ===
 Auditor reads the seller's balance as:

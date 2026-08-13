@@ -174,9 +174,9 @@ Once an auditor is registered, every confidential transaction on the issuance mu
 
 ### 6. Send public tokens to the second account
 
-To introduce confidential tokens into circulation, the issuer must send the required amount to their secondary holder account, and convert it.
+To introduce confidential tokens into circulation, the issuer must send the required amount to their second account, and convert it.
 
-Authorize the second issuer account to hold the MPT with an [MPTokenAuthorize transaction][], then send it the required amount with a [Payment transaction][].
+Authorize the second account to hold the MPT with an [MPTokenAuthorize transaction][], then send it the required amount with a [Payment transaction][].
 
 {% tabs %}
 {% tab label="JavaScript" %}
@@ -200,7 +200,7 @@ Confidential transactions cost 10 times the standard [transaction cost](../../..
 
 {% tabs %}
 {% tab label="JavaScript" %}
-`prepareConfidentialConvert` reads the issuer's and the auditor's registered public keys from the [MPTokenIssuance entry][], so you pass only the holder's own keypair.
+`prepareConfidentialConvert` reads the issuer's and auditor's registered public keys from the [MPTokenIssuance entry][], so you pass only the holder's own keypair.
 
 {% code-snippet file="/_code-samples/confidential-transfers/js/issueConfidentialMPT.js" language="js" from="// Convert the public balance to a confidential balance" before="// Merge the inbox into the spending balance" /%}
 {% /tab %}
@@ -228,7 +228,7 @@ Note that the `MPTAmount` field on a conversion is plaintext. Observers can see 
 
 A confidential balance has two buckets on the [MPToken entry][]:
 
-- `ConfidentialBalanceInbox` receives incoming funds, from conversions and from confidential payments.
+- `ConfidentialBalanceInbox` receives incoming funds, from both conversions and confidential payments.
 - `ConfidentialBalanceSpending` is the only bucket a [ConfidentialMPTSend transaction][] can draw from.
 
 Submit a [ConfidentialMPTMergeInbox transaction][] to move the inbox balance into the spending balance. The two buckets exist so that an incoming payment can't invalidate a proof that the holder is already building against their spending balance.
@@ -294,16 +294,16 @@ The example writes the account seeds and the encryption keypairs to a `keys.json
 ## See Also
 
 - **Concepts**:
-	- [Confidential Transfers](../../../concepts/tokens/fungible-tokens/confidential-transfers.md)
-	- [Multi-Purpose Tokens (MPT)](../../../concepts/tokens/fungible-tokens/multi-purpose-tokens.md)
+  - [Confidential Transfers](../../../concepts/tokens/fungible-tokens/confidential-transfers.md)
+  - [Multi-Purpose Tokens (MPT)](../../../concepts/tokens/fungible-tokens/multi-purpose-tokens.md)
 - **Tutorials**:
-	- [Send Confidential MPT Payments](../../payments/send-confidential-payments.md)
+  - [Send Confidential MPT Payments](../../payments/send-confidential-payments.md)
 - **References**:
-	- [ConfidentialMPTConvert transaction][]
-	- [ConfidentialMPTMergeInbox transaction][]
-	- [MPToken entry][]
-	- [MPTokenIssuance entry][]
-	- [MPTokenIssuanceCreate transaction][]
-	- [MPTokenIssuanceSet transaction][]
+  - [ConfidentialMPTConvert transaction][]
+  - [ConfidentialMPTMergeInbox transaction][]
+  - [MPToken entry][]
+  - [MPTokenIssuance entry][]
+  - [MPTokenIssuanceCreate transaction][]
+  - [MPTokenIssuanceSet transaction][]
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

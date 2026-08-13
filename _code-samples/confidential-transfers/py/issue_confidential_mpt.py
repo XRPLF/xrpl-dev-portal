@@ -3,6 +3,7 @@ import json
 from xrpl.clients import JsonRpcClient
 from xrpl.ext.confidential import (
     MPTCrypto,
+    decrypt_confidential_balance,
     prepare_confidential_convert,
     prepare_confidential_merge_inbox,
 )
@@ -173,9 +174,7 @@ merge_tx = prepare_confidential_merge_inbox(
 )
 print(json.dumps(merge_tx.to_dict(), indent=2))
 
-merge_response = submit_and_wait(
-    merge_tx, client, issuer_second_account, autofill=True
-)
+merge_response = submit_and_wait(merge_tx, client, issuer_second_account, autofill=True)
 if merge_response.result["meta"]["TransactionResult"] != "tesSUCCESS":
     result_code = merge_response.result["meta"]["TransactionResult"]
     print(f"Error: Unable to merge the inbox: {result_code}")
@@ -206,11 +205,9 @@ confidential_supply = int(issuance["ConfidentialOutstandingAmount"])
 
 # Only a party holding the matching private key can decrypt the
 # balance.
-spending_balance = mptoken["ConfidentialBalanceSpending"]
-issuer_second_account_balance = crypto.decrypt(
+issuer_second_account_balance = decrypt_confidential_balance(
+    mptoken["ConfidentialBalanceSpending"],
     issuer_second_account_privkey,
-    spending_balance[:66],
-    spending_balance[66:],
     range_high=confidential_supply,
 )
 print(
@@ -220,11 +217,9 @@ print(
 
 # The auditor reads the same amount from a separate ciphertext on the same
 # entry, using its own private key.
-auditor_balance = mptoken["AuditorEncryptedBalance"]
-auditor_view = crypto.decrypt(
+auditor_view = decrypt_confidential_balance(
+    mptoken["AuditorEncryptedBalance"],
     auditor_privkey,
-    auditor_balance[:66],
-    auditor_balance[66:],
     range_high=confidential_supply,
 )
 print(f"Auditor reads the balance as: {auditor_view} {ticker}")
@@ -260,4 +255,3 @@ keys_data = {
 with open("keys.json", "w") as keys_file:
     json.dump(keys_data, keys_file, indent=2)
 print("Saved keys to file.")
-

@@ -139,9 +139,7 @@ async def main():
                 issuer,
                 f"create the {token['ticker']} issuance",
             )
-            token["mpt_issuance_id"] = create_response.result["meta"][
-                "mpt_issuance_id"
-            ]
+            token["mpt_issuance_id"] = create_response.result["meta"]["mpt_issuance_id"]
 
         await submit(
             Batch(
@@ -231,6 +229,7 @@ async def main():
 
         # 4. Onboard each holder on both issuances ----------------------
         progress()
+
         async def onboard(holder, holder_privkey, holder_pubkey):
             await submit(
                 Batch(
@@ -358,4 +357,3 @@ async def main():
 # Allow running this file directly: `python confidential_transfers_setup.py`
 if __name__ == "__main__":
     asyncio.run(main())
-
