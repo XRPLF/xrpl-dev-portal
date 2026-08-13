@@ -24,6 +24,8 @@ Many features that you'd implement as a smart contract on other chains are suppo
 | Shared/multi-party control of an account | [Multi-signing](../../concepts/accounts/multi-signing.md) |
 | Currency or asset issuance and management | [Issued Tokens](../../concepts/tokens/index.md) / [MPTs](../../concepts/tokens/fungible-tokens/multi-purpose-tokens.md) |
 | On-chain currency conversion | [DEX](../../concepts/tokens/decentralized-exchange/index.md) order book, [AMM](../../concepts/tokens/decentralized-exchange/automated-market-makers.md), and [pathfinding](../../concepts/tokens/fungible-tokens/paths.md) |
+| Rate quoting and price discovery | [Pathfinding](../../concepts/tokens/fungible-tokens/paths.md) and order book queries |
+| Market making and liquidity provision | [DEX offers](../../concepts/tokens/decentralized-exchange/offers.md) and [AMMs](../../concepts/tokens/decentralized-exchange/automated-market-makers.md) |
 | Compliance-gated trading | [Permissioned DEXes](../../concepts/tokens/decentralized-exchange/permissioned-dexes.md) |
 
 For a comprehensive list of built-in transaction types, visit the [Transaction Types](../../references/protocol/transactions/types/index.md) reference. Some primitives depend on recently enabled [amendments](../../concepts/networks-and-servers/amendments.md), so check the [amendment status](/resources/known-amendments.md) on your target network before you design around it.
@@ -34,7 +36,7 @@ Once you've mapped the capabilities to XRP Ledger primitives, you have to decide
 
 - Run your own ([`xrpld`](../../concepts/networks-and-servers/xrpld-server-modes.md) and [Clio](../../concepts/networks-and-servers/the-clio-server.md)): Most control over ledger history, query privacy, and throughput, without third-party dependencies. Requires high operational overhead for hardware and maintaining synced servers. See [Install and Run](../../infrastructure/index.md).
 - Use a managed provider: Fastest way to ship with low upfront costs; someone else runs the nodes while you hold your keys and signing. Provides less control over [history retention](../../concepts/networks-and-servers/ledger-history.md), query privacy, and configuration, and you depend on their SLA.
-- Use a custodial abstraction: Lowest security load and fastest integration by handing the custodian your keys and signing. Provides least control over funds and features, vendor lock-in, and potential compliance implications.
+- Use a custodial abstraction: Lowest security load and fastest integration, with the custodian holding keys and signing on your behalf. Provides least control over funds and features, vendor lock-in, and potential compliance implications.
 
 The best path depends on your team's infrastructure experience and custody preferences. See the [payments overview](../payments/) for build-versus-partner guidance.
 
@@ -42,7 +44,7 @@ The best path depends on your team's infrastructure experience and custody prefe
 
 After selecting your infrastructure, you need to decide which [library](../../references/client-libraries.md) you'll use to build, sign, and submit transactions and read the ledger state.
 
-If you're using a custodial abstraction, the custodian's API is typically your client library, so you can skip ahead to [Step 4](#4-set-up-your-accounts).
+If you're using a custodial abstraction, the custodian's API is typically your client library, so you can skip ahead to [Step 5](#5-build-your-integration).
 
 The best place to start is by matching the library to your backend's primary language. XRPLF maintains `xrpl.js` (JavaScript/TypeScript), `xrpl-py` (Python), and `xrpl4j` (Java), which track new [amendments](../../concepts/networks-and-servers/amendments.md) the fastest.
 
@@ -63,7 +65,7 @@ It routes each operation through the API of the custodian you've configured, so 
 
 With your chosen client library, you can create and fund the accounts your integration will use to submit transactions and hold balances. On the XRP Ledger, a few things about accounts work differently:
 - An account doesn't exist until it's funded. You can generate a [key pair](../../concepts/accounts/cryptographic-keys.md) offline, but the address isn't active on the ledger until it receives the [base reserve](../../concepts/accounts/reserves.md).
-- Its reserve has two parts: a fixed [base reserve](../../concepts/accounts/reserves.md) every account holds, plus an owner reserve that adds a set amount for each object it owns (e.g., a trust line, offer, or escrow). You can't spend below the two combined, which doubles as one of the ledger's anti-spam mechanisms.
+- Its reserve has two parts: a fixed [base reserve](../../concepts/accounts/reserves.md) every account holds, plus an owner reserve that adds a set amount for each ledger entry it owns (e.g., a trust line, offer, or escrow). You can't spend below the two combined, which doubles as one of the ledger's anti-spam mechanisms.
 - To hold or receive an issued currency or [stablecoin](../../concepts/tokens/fungible-tokens/stablecoins/index.md), an account first needs a [trust line](../../concepts/tokens/fungible-tokens/trust-line-tokens.md) to the issuer, and each trust line adds to the account's reserve.
 
 You can fund accounts on Testnet and Devnet using the [faucet](/resources/dev-tools/xrp-faucets). On [Mainnet](../../concepts/networks-and-servers/parallel-networks.md), you fund an account by sending it XRP from an exchange or an already-funded account. See [Accounts](../../concepts/accounts/index.md) for more on account creation and configuration.
@@ -102,6 +104,8 @@ For the guarantees behind these, see [Reliable Transaction Submission](../../con
 
 ### Send a Payment
 
+This example runs the entire payment lifecycle by autofilling `Fee`, `Sequence`, and `LastLedgerSequence`, signing locally, submitting, and waiting for a validated result before reading the outcome from the metadata.
+
 {% tabs %}
 {% tab label="JavaScript" %}
 {% code-snippet file="/_code-samples/send-xrp/js/send-xrp.js" language="js" from="// Prepare transaction" before="// End of main()" /%}
@@ -123,7 +127,7 @@ Both the sending and receiving accounts need a [trust line](../../concepts/token
 
 The ledger automatically routes through the [DEX](../../concepts/tokens/decentralized-exchange/index.md) and [bridges through XRP](../../concepts/tokens/decentralized-exchange/autobridging.md) when that's cheaper. This collapses any external routing and conversion layer into just two fields, so there is no router to integrate.
 
-For regulated flows, a cross-currency payment can name a [domain ID](../../concepts/tokens/decentralized-exchange/permissioned-dexes.md) so it consumes only offers from the matching permissioned DEX, and authorized trust lines keep an unauthorized account from receiving your issued balance in the first place.
+A cross-currency payment can name a [domain ID](../../concepts/tokens/decentralized-exchange/permissioned-dexes.md) so it consumes only offers from the matching permissioned DEX, which keeps the conversion from trading against accounts you haven't approved. Accounts qualify for that domain by holding [credentials](../../tutorials/compliance-features/manage-credentials.md) from an issuer the domain trusts. Authorized trust lines keep an unauthorized account from receiving your issued balance in the first place. A payment that names a domain ID can't use AMM liquidity, so it has less to draw on than an unrestricted conversion.
 
 On-chain conversion draws on both the order book and the [AMM](../../concepts/tokens/decentralized-exchange/automated-market-makers.md), and [pathfinding](../../concepts/tokens/fungible-tokens/paths.md) estimates the route rather than guaranteeing it. Bound each conversion: `SendMax` caps what the source spends, and a `DeliverMin` with the [`tfPartialPayment`](../../concepts/payment-types/partial-payments.md) flag floors what the destination receives.
 
@@ -149,6 +153,12 @@ Handle two XRP Ledger specifics before crediting anyone:
 - **Attribute pooled funds with destination tags.** When many users share one treasury or operating account, require [destination tags](../../concepts/transactions/source-and-destination-tags.md) with [`RequireDest`](../../tutorials/compliance-features/require-destination-tags.md) so each payment maps to the right user.
 {% /admonition %}
 
+### Supply Liquidity
+
+If you supply the liquidity that payments consume, [`ripple_path_find`](../../references/http-websocket-apis/public-api-methods/path-and-order-book-methods/ripple_path_find.md) and [`book_offers`](../../references/http-websocket-apis/public-api-methods/path-and-order-book-methods/book_offers.md) quote a rate, while [`OfferCreate`](../../references/protocol/transactions/types/offercreate.md) and [`OfferCancel`](../../references/protocol/transactions/types/offercancel.md) publish and pull your own offers. You can also supply liquidity passively by depositing into an [AMM](../../concepts/tokens/decentralized-exchange/automated-market-makers.md) pool.
+
+Every offer you leave in the ledger sets aside some XRP toward your [owner reserve](../../concepts/accounts/reserves.md). Issuers can also set a [tick size](../../concepts/tokens/decentralized-exchange/ticksize.md) that limits how many significant digits your offer's exchange rate can have, which sets the minimum increment needed to beat an existing offer. See [Trade in the Decentralized Exchange](../../tutorials/defi/dex/trade-in-the-decentralized-exchange.md) for more information.
+
 ## 6. Test on Testnet or Devnet
 
 Before going live, complete your end-to-end testing on a public test network:
@@ -157,9 +167,14 @@ Before going live, complete your end-to-end testing on a public test network:
 
 Neither uses real money, but both test networks are centralized and can be reset at any time. Don't rely on persistence or treat them like stable environments.
 
-Then exercise the XRP Ledger-specific behaviors that can lose or misattribute funds, such as crediting `delivered_amount` on partial payments, attributing pooled funds with destination tags, enforcing reserve and trust line limits, holding `SendMax`/`DeliverMin` under thin liquidity, and clearing submissions when the fee rises under load.
+Then exercise the XRP Ledger-specific behaviors that can lose or misattribute funds, such as:
+- Crediting `delivered_amount` on partial payments.
+- Attributing pooled funds with destination tags.
+- Enforcing reserve and trust line limits.
+- Holding `SendMax`/`DeliverMin` under thin liquidity.
+- Clearing submissions when the fee rises under load.
 
-A submitted transaction isn't final until it's in a validated ledger, and being included is not the same as succeeding. Only `tesSUCCESS` and `tec` results are final. `tesSUCCESS` indicates that the transaction succeeded, while a `tec` still consumed the `Fee`, so treat it as a failure rather than retrying.
+A submitted transaction isn't final until it's in a validated ledger, and being included is not the same as succeeding. Only `tesSUCCESS` and `tec` results are final. Both consume the `Fee`, but `tesSUCCESS` indicates that the transaction succeeded, while a `tec` indicates failure.
 
 You can resubmit a transaction if it expires without validation. If you use `submitAndWait` and `autofill` (as in the previous step), the library waits for the validated result and sets the bounding fields for you. See [Transaction Results](../../references/protocol/transactions/transaction-results/index.md) and [Reliable Transaction Submission](../../concepts/transactions/reliable-transaction-submission.md).
 
@@ -172,7 +187,10 @@ To do so:
 1. Switch your endpoint from a test network to Mainnet.
 2. Use real, funded Mainnet accounts.
 3. Send real transactions through the same lifecycle (see [Build Your Integration](#5-build-your-integration)) and verify each reached a validated ledger.
-4. Verify on-ledger results against your internal records. Query transaction history with [`account_tx`](../../references/http-websocket-apis/public-api-methods/account-methods/account_tx.md) (or via your Clio server) for reconciliation, and subscribe to [transaction streams](../../references/http-websocket-apis/public-api-methods/subscription-methods/subscribe.md#transaction-streams) for real-time monitoring instead of polling. At volume, page through `account_tx` with the returned `marker`, backfill with a bounded `account_tx` query if a stream disconnects, and make reconciliation idempotent so replaying a ledger range never double-counts. See [Robustly Monitoring for Payments](../../concepts/payment-types/robustly-monitoring-for-payments.md).
+4. Verify on-ledger results against your internal records. Query transaction history with [`account_tx`](../../references/http-websocket-apis/public-api-methods/account-methods/account_tx.md) (or via your Clio server) for reconciliation, and subscribe to [transaction streams](../../references/http-websocket-apis/public-api-methods/subscription-methods/subscribe.md#transaction-streams) for real-time monitoring instead of polling. See [Robustly Monitoring for Payments](../../concepts/payment-types/robustly-monitoring-for-payments.md). At volume:
+   - Page through `account_tx` with the returned `marker`.
+   - Backfill with a bounded `account_tx` query if a stream disconnects.
+   - Make reconciliation idempotent so replaying a ledger range never double-counts.
 5. Enforce any KYC or travel-rule obligations for the corridor. See [Require Destination Tags](../../tutorials/compliance-features/require-destination-tags.md), and use [credentials](../../tutorials/compliance-features/manage-credentials.md) to attest a holder's verified status on-ledger.
 6. Widen scope once verified. If reconciliation fails, delay the cutover and keep your existing rail live as the fallback.
 
@@ -194,6 +212,7 @@ Your payments stack now runs on native XRP Ledger primitives, giving you fewer c
 - **Tutorials:**
     - [Get Started with the XRP Ledger](../../tutorials/get-started/get-started-javascript.md)
     - [Send a Multi-Signed Transaction](../../tutorials/best-practices/key-management/send-a-multi-signed-transaction.md)
+    - [Trade in the Decentralized Exchange](../../tutorials/defi/dex/trade-in-the-decentralized-exchange.md)
 - **References:**
     - [Transaction Types](../../references/protocol/transactions/types/index.md)
     - [Client Libraries](../../references/client-libraries.md)
