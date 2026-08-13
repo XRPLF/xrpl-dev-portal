@@ -3,7 +3,14 @@ from xrpl.utils import encode_mptoken_metadata, decode_mptoken_metadata
 from xrpl.clients import JsonRpcClient
 from xrpl.wallet import generate_faucet_wallet
 from xrpl.transaction import submit_and_wait
-from xrpl.models import LedgerEntry, MPTokenIssuanceCreate, MPTokenIssuanceCreateFlag
+from xrpl.models import (
+    LedgerEntry,
+    MPTokenIssuanceCreate,
+    MPTokenIssuanceCreateFlag,
+    MPTokenIssuanceImmutableFlag,
+    MPTokenIssuanceSet,
+    MPTokenIssuanceSetFlag,
+)
 
 # Set up client and get a wallet
 client = JsonRpcClient("https://s.devnet.rippletest.net:51234")
@@ -56,7 +63,8 @@ mpt_issuance_create = MPTokenIssuanceCreate(
     maximum_amount="50000000",
     transfer_fee=0,
     flags=MPTokenIssuanceCreateFlag.TF_MPT_CAN_TRANSFER |
-          MPTokenIssuanceCreateFlag.TF_MPT_CAN_TRADE,
+          MPTokenIssuanceCreateFlag.TF_MPT_CAN_LOCK,
+    immutable_flags=MPTokenIssuanceImmutableFlag.TIF_MPT_CAN_CLAWBACK,
     mptoken_metadata=mpt_metadata_hex
 )
 
@@ -67,7 +75,6 @@ response = submit_and_wait(mpt_issuance_create, client, issuer, autofill=True)
 
 # Check transaction results
 print("\n=== Checking MPTokenIssuanceCreate results... ===")
-print(json.dumps(response.result, indent=2))
 result_code = response.result["meta"]["TransactionResult"]
 if result_code != "tesSUCCESS":
     print(f"Transaction failed with result code {result_code}.")
@@ -90,3 +97,46 @@ ledger_entry_response = client.request(LedgerEntry(
 metadata_blob = ledger_entry_response.result["node"]["MPTokenMetadata"]
 decoded_metadata = decode_mptoken_metadata(metadata_blob)
 print("Decoded MPT metadata:\n", json.dumps(decoded_metadata, indent=2))
+
+# Update the mutable properties, then make the metadata immutable.
+# MPTokenMetadata and TransferFee were not declared immutable at issuance, so a
+# single MPTokenIssuanceSet transaction can update both. Metadata updates
+# replace the whole field, so encode the complete object, not just the changes.
+updated_metadata = {
+    **mpt_metadata,
+    "additional_info": {**mpt_metadata["additional_info"], "interest_rate": "4.75%"}
+}
+
+print("\n=== Sending MPTokenIssuanceSet transaction to update properties...===")
+mpt_issuance_update = MPTokenIssuanceSet(
+    account=issuer.address,
+    mptoken_issuance_id=issuance_id,
+    mptoken_metadata=encode_mptoken_metadata(updated_metadata),
+    # A non-zero transfer_fee requires the Can Transfer flag, set at issuance.
+    transfer_fee=10,
+    # Enable Can Trade after issuance.
+    flags=MPTokenIssuanceSetFlag.TF_MPT_SET_CAN_TRADE,
+    # The metadata update above still applies; immutability takes effect after it.
+    # immutable_flags is additive, so TIF_MPT_METADATA is added to the
+    # TIF_MPT_CAN_CLAWBACK bit declared at issuance rather than replacing it.
+    immutable_flags=MPTokenIssuanceImmutableFlag.TIF_MPT_METADATA
+)
+print(json.dumps(mpt_issuance_update.to_xrpl(), indent=2))
+update_response = submit_and_wait(mpt_issuance_update, client, issuer, autofill=True)
+result_code = update_response.result["meta"]["TransactionResult"]
+if result_code != "tesSUCCESS":
+    print(f"Update failed with result code {result_code}.")
+    exit(1)
+
+# Confirm the updated MPT Issuance entry
+print("\n=== Confirming the updated MPT Issuance in the validated ledger... ===")
+updated_entry_response = client.request(LedgerEntry(
+    mpt_issuance=issuance_id,
+    ledger_index="validated"
+))
+updated_node = updated_entry_response.result["node"]
+print("TransferFee:", updated_node.get("TransferFee"))
+print("ImmutableFlags:", updated_node.get("ImmutableFlags"))
+print("Decoded MPT metadata:\n", json.dumps(
+    decode_mptoken_metadata(updated_node["MPTokenMetadata"]), indent=2
+))
