@@ -1,3 +1,1 @@
-# xrpl-py==4.3.1
-
-xrpl-py @ git+https://github.com/XRPLF/xrpl-py.git@dynamic-mpt-xls-94d
+xrpl-py @ git+https://github.com/XRPLF/xrpl-py.git@main
