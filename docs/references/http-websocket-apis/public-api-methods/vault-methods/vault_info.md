@@ -7,7 +7,7 @@ labels:
 
 # vault_info
 
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/VaultInfo.cpp "Source")
+{% source-link path="src/xrpld/rpc/handlers/VaultInfo.cpp" /%}
 
 The `vault_info` command retrieves information about a vault, its owner, available assets, and details on issued shares. All information retrieved is relative to a particular version of the ledger. {% badge href="https://github.com/XRPLF/rippled/releases/tag/3.1.0" %}New in: rippled 3.1.0{% /badge %}
 
@@ -42,7 +42,7 @@ An example of the request format:
 {% tab label="Commandline" %}
 ```sh
 #Syntax: vault_info [<vault_id>]
-rippled vault_info 9E48171960CD9F62C3A7B6559315A510AE544C3F51E02947B5D4DAC8AA66C3BA
+xrpld vault_info 9E48171960CD9F62C3A7B6559315A510AE544C3F51E02947B5D4DAC8AA66C3BA
 ```
 {% /tab %}
 
@@ -158,7 +158,7 @@ An example of a successful response:
 
 {% tab label="Commandline" %}
 ```json
-Loading: "/etc/rippled.cfg"
+Loading: "/etc/xrpld.cfg"
 Connecting to 127.0.0.1:5005
 
 {

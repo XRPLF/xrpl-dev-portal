@@ -5,7 +5,7 @@ labels:
     - Transaction Sending
 ---
 # sign_for
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/SignFor.cpp "Source")
+{% source-link path="src/xrpld/rpc/handlers/admin/signing/SignFor.cpp" /%}
 
 The `sign_for` command provides one signature for a [multi-signed transaction](../../../../concepts/accounts/multi-signing.md).
 
@@ -69,8 +69,8 @@ An example of the request format:
 
 {% tab label="Commandline" %}
 ```sh
-#Syntax: rippled sign_for <signer_address> <signer_secret> [offline]
-rippled sign_for rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW s████████████████████████████ '{
+#Syntax: xrpld sign_for <signer_address> <signer_secret> [offline]
+xrpld sign_for rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW s████████████████████████████ '{
     "TransactionType": "TrustSet",
     "Account": "rEuLyBCvcw4CFmzv8RepSiAoNgF8tTGJQC",
     "Flags": 262144,
@@ -186,7 +186,7 @@ An example of a successful response:
 
 {% tab label="Commandline" %}
 ```json
-Loading: "/etc/rippled.cfg"
+Loading: "/etc/xrpld.cfg"
 Connecting to 127.0.0.1:5005
 
 {

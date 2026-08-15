@@ -1,6 +1,6 @@
 ---
 html: test-amendments.html
-parent: configure-rippled.html
+parent: configure-xrpld.html
 seo:
     description: ネットワーク上で有効になる前に、Amendmentをテストすることができます。
 labels:
@@ -9,11 +9,11 @@ labels:
 # Amendmentのテスト
 
 
-本番ネットワークでAmendmentが完全に有効になる前に、スタンドアロンモードを使って`rippled` の動作をテストすることができます。
+本番ネットワークでAmendmentが完全に有効になる前に、スタンドアロンモードを使って`xrpld` の動作をテストすることができます。
 
 {% admonition type="warning" name="注意" %}これは開発目的の利用を想定しています。{% /admonition %}
 
-機能を強制的に有効にするには、`rippled.cfg` ファイルに `[features]`節とAmendmentの短い名前を追加してください。各Amendmentにはそれぞれ行が必要です。
+機能を強制的に有効にするには、`xrpld.cfg` ファイルに `[features]`節とAmendmentの短い名前を追加してください。各Amendmentにはそれぞれ行が必要です。
 
 {% tabs %}
 

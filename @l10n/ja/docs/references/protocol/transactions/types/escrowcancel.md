@@ -8,7 +8,7 @@ requiredAmendment: Escrow
 txIcon: cancel
 ---
 # EscrowCancel
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/Escrow.cpp "Source")
+{% source-link path="src/libxrpl/tx/transactors/escrow/Escrow.cpp" /%}
 
 Escrowに留保されているXRPを送金元に返金します。
 

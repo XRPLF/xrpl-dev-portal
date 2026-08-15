@@ -10,7 +10,7 @@ status: not_enabled
 
 Permission delegation is the function of granting various permissions to another account to send permissions on behalf of your account. You can use permission delegation to enable flexible security paradigms such as role-based access control, instead of or alongside techniques such as [multi-signing](./multi-signing.md).
 
-{% amendment-disclaimer name="PermissionDelegation" /%}
+{% amendment-disclaimer name="PermissionDelegationV1_1" /%}
 
 
 ## Background: The Need for Permission Delegation
@@ -32,6 +32,8 @@ A delegate can send transactions that execute as if they were sent by the delega
 - A regular key pair that the delegate has authorized
 - A multi-signing list that the delegate has authorized
 
+When a delegate multi-signs a transaction, the signatures are validated against their own signer list, not the delegator's. As with any multi-signed transaction, the delegate cannot be one of its own signers.
+
 The delegate can only send transactions that match the permissions it has. Permissions come in two types:
 
 - **Transaction Type Permissions** - Permission to send transactions of a specific [transaction type](/docs/references/protocol/transactions/types/index.md). Some types cannot be delegated.
@@ -41,13 +43,12 @@ For a complete list of transaction types that can or cannot be delegated as well
 
 ### Limitations of Permission Delegation
 
-The main limiting factor on how many delegates you can have is that you must hold enough XRP to meet the [reserve requirement](./reserves.md). Each delegate's permissions are tracked with a [Delegate ledger entry][], which counts as one item towards the delegator's owner reserve.
-
-Each delegate can be granted up to 10 permissions.
-
-Some permissions cannot be delegated, especially permissions that would allow the delegate to change cryptographic keys or grant additional permissions.
-
-The available set of granular permissions is hard-coded, and the permissions cannot be customized. For example, you cannot grant permission to send only certain currencies and not others.
+- The number of delegates you can have is limited by the [reserve requirement](./reserves.md). Each delegate's permissions are tracked with a [Delegate ledger entry][], which counts as one item towards the delegator's owner reserve.
+- Each delegate can be granted up to 10 permissions.
+- Some permissions cannot be delegated, especially permissions that would allow the delegate to change cryptographic keys or grant additional permissions.
+- The set of granular permissions is hard-coded and cannot be customized. For example, you cannot grant permission to send only certain currencies and not others.
+- You cannot delegate permissions to a [pseudo-account](/docs/concepts/accounts/pseudo-accounts.md) (such as an AMM or a Single Asset Vault).
+- Delegated transactions cannot be held in the [transaction queue](/docs/concepts/transactions/transaction-queue.md). A delegated transaction that can't apply to the open ledger immediately fails with `telCAN_NOT_QUEUE` instead of being queued.
 
 ## Comparison with Multi-Signing
 

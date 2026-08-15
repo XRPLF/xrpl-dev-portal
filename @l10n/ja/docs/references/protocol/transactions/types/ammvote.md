@@ -10,7 +10,7 @@ requiredAmendment: AMM
 txIcon: modify
 ---
 # AMMVote
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/AMMVote.cpp "Source")
+{% source-link path="src/libxrpl/tx/transactors/dex/AMMVote.cpp" /%}
 
 [自動マーケットメーカー](../../../../concepts/tokens/decentralized-exchange/automated-market-makers.md)インスタンスの取引手数料を投票します。最大8つのアカウントが、保有するAMMのLPトークンの量に比例して投票することができます。投票を行うごとには、投票の加重平均に基づいてAMMの取引手数料が再計算されます。
 

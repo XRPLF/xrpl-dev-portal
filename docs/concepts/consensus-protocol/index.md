@@ -50,7 +50,7 @@ The main goal of the XRP Ledger Consensus Protocol is to agree on a set of trans
 
 ## Trust-Based Validation
 
-The core principle behind the XRP Ledger's consensus mechanism is that a little trust goes a long way. Each participant in the network chooses a set of _validators_, servers [specifically configured to participate actively in consensus](../../infrastructure/configuration/server-modes/run-rippled-as-a-validator.md), run by different parties who are expected to behave honestly most of the time according to the protocol. More importantly, the set of chosen validators should not be likely to collude with one another to break the rules in the exact same way. This list is called a _Unique Node List_, or UNL.
+The core principle behind the XRP Ledger's consensus mechanism is that a little trust goes a long way. Each participant in the network chooses a set of _validators_, servers [specifically configured to participate actively in consensus](../../infrastructure/configuration/server-modes/run-xrpld-as-a-validator.md), run by different parties who are expected to behave honestly most of the time according to the protocol. More importantly, the set of chosen validators should not be likely to collude with one another to break the rules in the exact same way. This list is called a _Unique Node List_, or UNL.
 
 As the network progresses, each server listens to its trusted validators[³](#footnote-3); as long as a large enough percentage of them agree that a set of transactions should occur and that a given ledger is the result, the server declares a consensus. If they don't agree, validators modify their proposals to more closely match the other validators they trust, repeating the process in several rounds until they reach a consensus.
 

@@ -4,6 +4,6 @@ metadata:
 ---
 # Clio Methods
 
-These API methods are provided only by the Clio server, not `rippled`.
+These API methods are provided only by the Clio server, not `xrpld`.
 
 {% child-pages /%}

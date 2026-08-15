@@ -10,7 +10,7 @@ labels:
 
 {% partial file="/@l10n/ja/docs/_snippets/mpts-disclaimer.md" /%}
 
-指定された`MPTokenIssuanceID`とレジャーシーケンスに対して、`mpt_holders`はそのMPTの全所有者とその残高を返します。このメソッドは非常に大きなデータセットを返す可能性があるため、`marker`フィールドを使用したページングの実装が必要になると考えられます。このAPIはClioでのみ利用可能で、rippledでは利用できません。
+指定された`MPTokenIssuanceID`とレジャーシーケンスに対して、`mpt_holders`はそのMPTの全所有者とその残高を返します。このメソッドは非常に大きなデータセットを返す可能性があるため、`marker`フィールドを使用したページングの実装が必要になると考えられます。このAPIはClioでのみ利用可能で、xrpldでは利用できません。
 
 ## リクエストのフォーマット
 

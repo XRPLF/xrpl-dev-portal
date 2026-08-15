@@ -1,6 +1,6 @@
 ---
 html: configure-amendment-voting.html
-parent: configure-rippled.html
+parent: configure-xrpld.html
 seo:
     description: Set your server's votes on protocol amendments.
 labels:
@@ -42,7 +42,7 @@ For example, to vote against the "SHAMapV2" amendment, run the following command
 
 {% tab label="Commandline" %}
 ```sh
-rippled feature SHAMapV2 reject
+xrpld feature SHAMapV2 reject
 ```
 {% /tab %}
 

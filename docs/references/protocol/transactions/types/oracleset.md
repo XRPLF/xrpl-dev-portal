@@ -8,7 +8,7 @@ requiredAmendment: PriceOracle
 txIcon: create
 ---
 # OracleSet
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/SetOracle.cpp "Source")
+{% source-link path="src/libxrpl/tx/transactors/oracle/OracleSet.cpp" /%}
 
 Create or update a [price oracle](../../../../concepts/decentralized-storage/price-oracles.md). Only the owner of an existing price oracle can update it.
 

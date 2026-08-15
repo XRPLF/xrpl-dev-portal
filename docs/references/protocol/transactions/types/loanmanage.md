@@ -9,7 +9,7 @@ txIcon: modify
 status: not_enabled
 ---
 # LoanManage
-[[Source]](https://github.com/XRPLF/rippled/blob/release-3.1/src/xrpld/app/tx/detail/LoanManage.cpp "Source")
+{% source-link path="src/libxrpl/tx/transactors/lending/LoanManage.cpp" /%}
 
 Manages the state of a `Loan` ledger entry, including defaulting, impairing, or unimpairing a loan.
 

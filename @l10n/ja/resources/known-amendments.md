@@ -5,7 +5,7 @@ labels:
   - ブロックチェーン
 ---
 # 既知のAmendment
-[[ソース]](https://github.com/XRPLF/rippled/blob/develop/include/xrpl/protocol/detail/features.macro "Source")
+{% source-link path="include/xrpl/protocol/detail/features.macro" /%}
 
 以下に示すのは、XRP Ledgerに関する既知のAmendmentのすべてとそのステータスをまとめた総合リストです。
 
@@ -224,7 +224,7 @@ XRP Ledgerを使用して資格情報およびコンプライアンス要件を�
 
 [EscrowCreate][]トランザクションと[EscrowFinish][]トランザクションで使用するために、公式の[Crypto-Conditions仕様](https://tools.ietf.org/html/draft-thomas-crypto-conditions-03)から数種類のCrypto-Conditionsを導入するものでした。
 
-しかし、この修正は実装が完了する前に`rippled` v0.60.0に追加されました。その結果、このAmendment IDは、ほとんど何もしない不完全なコードを参照することになりました。他のcrypto-conditionsのサポートを追加するために既存のAmendmentを変更すると、すでにリリースされたソフトウェアにある古いバージョンの修正案との衝突が発生します。将来のリリースで追加の暗号条件のサポートが追加される場合、新しい別のAmendment IDを使用する必要があります。
+しかし、この修正は実装が完了する前に`xrpld` v0.60.0に追加されました。その結果、このAmendment IDは、ほとんど何もしない不完全なコードを参照することになりました。他のcrypto-conditionsのサポートを追加するために既存のAmendmentを変更すると、すでにリリースされたソフトウェアにある古いバージョンの修正案との衝突が発生します。将来のリリースで追加の暗号条件のサポートが追加される場合、新しい別のAmendment IDを使用する必要があります。
 
 
 ### DeepFreeze
@@ -374,7 +374,7 @@ Adds functionality to update the `URI` field of an `NFToken` ledger entry. This 
 | デフォルトの投票(最新の安定版) | はい |
 | Amendment前の機能は廃止? | はい |
 
-トランザクション処理にサニティーチェックを追加して、所定の条件が常に満たされるようにします。これにより、トランザクション処理時のバグを防ぐ独立した追加のレイヤーができます。このレイヤーがなければXRP Ledgerが脆弱なものとなり悪用される可能性が生じます。`rippled`の将来バージョンでは、Amendmentを追加せずに不変性チェックをさらに追加する予定です。
+トランザクション処理にサニティーチェックを追加して、所定の条件が常に満たされるようにします。これにより、トランザクション処理時のバグを防ぐ独立した追加のレイヤーができます。このレイヤーがなければXRP Ledgerが脆弱なものとなり悪用される可能性が生じます。`xrpld`の将来バージョンでは、Amendmentを追加せずに不変性チェックをさらに追加する予定です。
 
 2つの新しいトランザクションエラーコード、`tecINVARIANT_FAILED`と`tefINVARIANT_FAILED`を導入します。新しいチェックを追加するためにトランザクション処理を変更します。
 
@@ -431,7 +431,7 @@ XRP Ledger内のEscrowにXRPの「仮払い」機能を提供します。これ�
 
 提案されたトランザクションに[トランザクションコスト](../docs/concepts/transactions/transaction-cost.md)を適用する方法を変更します。トランザクションコストの高いトランザクションの優先順位が高くなるよう、コンセンサスプロセスを変更します。
 
-この修正により、前のコンセンサスラウンドに含められなかったトランザクションに固定サイズのトランザクションキューが導入されます。コンセンサスネットワーク内の`rippled`サーバに重い負荷が課されている場合、トランザクションコストの低いトランザクションは後のレジャーのキューに入れられます。各コンセンサスラウンドでは、トランザクションコスト（`Fee`値）が高いキューのトランザクションが優先され、コンセンサスネットワークで処理できる限りのトランザクションが含められます。トランザクションキューが一杯になると、トランザクションコストが最も低いトランザクションから順にキューから完全に除外されます。
+この修正により、前のコンセンサスラウンドに含められなかったトランザクションに固定サイズのトランザクションキューが導入されます。コンセンサスネットワーク内の`xrpld`サーバに重い負荷が課されている場合、トランザクションコストの低いトランザクションは後のレジャーのキューに入れられます。各コンセンサスラウンドでは、トランザクションコスト（`Fee`値）が高いキューのトランザクションが優先され、コンセンサスネットワークで処理できる限りのトランザクションが含められます。トランザクションキューが一杯になると、トランザクションコストが最も低いトランザクションから順にキューから完全に除外されます。
 
 コンセンサスネットワークに重い負荷がかかる一方で、正規のユーザは高めのトランザクションコストを支払い、トランザクションを確実に処理することができます。この状況は、未処理の低コストのトランザクションが完全に処理または除外されるまで続きます。
 
@@ -1018,7 +1018,7 @@ Adds flag checks for `CredentialCreate`, `CredentialAccept`, `CredentialDelete`,
 
 **バーン不可能なNFTの修正**
 
-現在、NFTは500以上のオファーがあるとバーンすることができません。この制限を取り除くため、この修正では、NFTを焼却する際にちょうど500個のオファーを削除し、残りのオファーはそのままにします。これにより、発行者アカウントが`lsfBurnable`フラグを有効にしたNFTを、オファー数が多いために焼却できない問題が解決されます。
+現在、NFTは500以上のオファーがあるとバーンすることができません。この制限を取り除くため、この修正では、NFTを焼却する際にちょうど500個のオファーを削除し、残りのオファーはそのままにします。これにより、発行者アカウントが`flagBurnable`フラグを有効にしたNFTを、オファー数が多いために焼却できない問題が解決されます。
 
 参考: [PR 4346](https://github.com/XRPLF/rippled/pull/4346).
 
@@ -1567,7 +1567,7 @@ NFTの発行処理を変更し、同時にトークンの売却オファーも�
 
 XRPの「Payment Channel」を作成します。Payment Channelは、2名の当事者間で一方向の繰り返しの支払い、またはそれに伴う一時的な貸付を容易に行えるようにするツールです。Rippleは、この機能が[Interledger Protocol](https://interledger.org/)に役立つと期待しています。ある当事者がPayment Channelを作成し、そのチャンネル内に有効期限を事前に設定してXRPをいくらか確保します。次に、レジャー外部の安全な通信を介して、送信者は「クレーム」メッセージを受信者に送信できます。受信者は有効期限の終了前にクレームメッセージを清算することも、支払いが必要ない場合は清算しないことも選択できます。受信者は、クレームを実際にネットワークに分散させてコンセンサスプロセスで清算されるのを待たなくとも、請求を個々に確認してから、有効期限内であれば多数の少額クレームをまとめて後で清算することができます。
 
-新たに作成するトランザクションタイプは次の3つです。[PaymentChannelCreate][]、[PaymentChannelClaim][]、[PaymentChannelFund][]。新たに作成するレジャーオブジェクトタイプは[PayChannel](../docs/references/protocol/ledger-data/ledger-entry-types/paychannel.md)です。レジャー外のデータ構造`Claim`を定義し、ChannelClaimトランザクションに使用します。新たに作成する`rippled`APIメソッドは次のとおりです。[`channel_authorize`](../docs/references/http-websocket-apis/public-api-methods/payment-channel-methods/channel_authorize.md)（署名されたクレームを作成します）、[`channel_verify`](../docs/references/http-websocket-apis/public-api-methods/payment-channel-methods/channel_verify.md)（署名されたクレームを検証します）、[`account_channels`](../docs/references/http-websocket-apis/public-api-methods/account-methods/account_channels.md)（アカウントに関連するチャンネルをリストを作成します）。
+新たに作成するトランザクションタイプは次の3つです。[PaymentChannelCreate][]、[PaymentChannelClaim][]、[PaymentChannelFund][]。新たに作成するレジャーオブジェクトタイプは[PayChannel](../docs/references/protocol/ledger-data/ledger-entry-types/paychannel.md)です。レジャー外のデータ構造`Claim`を定義し、ChannelClaimトランザクションに使用します。新たに作成する`xrpld`APIメソッドは次のとおりです。[`channel_authorize`](../docs/references/http-websocket-apis/public-api-methods/payment-channel-methods/channel_authorize.md)（署名されたクレームを作成します）、[`channel_verify`](../docs/references/http-websocket-apis/public-api-methods/payment-channel-methods/channel_verify.md)（署名されたクレームを検証します）、[`account_channels`](../docs/references/http-websocket-apis/public-api-methods/account-methods/account_channels.md)（アカウントに関連するチャンネルをリストを作成します）。
 
 詳細は、[Payment Channelsのチュートリアル](../docs/tutorials/payments/use-payment-channels.md)をご覧ください。
 
@@ -1661,7 +1661,7 @@ XRP Ledgerプロトコルの署名要件を変更し、いかなる場合にも�
 | デフォルトの投票(最新の安定版) | いいえ |
 | Amendment前の機能は廃止? | いいえ |
 
-`rippled`がレジャーを表示する際に使用するハッシュツリー構造を変更します。新しい構造は以前のバージョンよりもコンパクトで効率的です。この修正はレジャーハッシュの計算方法が変わりますが、その他にユーザに与える影響はありません。
+`xrpld`がレジャーを表示する際に使用するハッシュツリー構造を変更します。新しい構造は以前のバージョンよりもコンパクトで効率的です。この修正はレジャーハッシュの計算方法が変わりますが、その他にユーザに与える影響はありません。
 
 この修正が適用されると、ネットワークでハッシュツリー構造への変更を計算している間、XRP Ledgerはしばらく使用できなくなります。
 
@@ -1693,7 +1693,7 @@ Specification: [XLS-65](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-
 
 [DirectoryNodeレジャーオブジェクト](../docs/references/protocol/ledger-data/ledger-entry-types/directorynode.md)内の項目をソートして、削除されるべき所有者ディレクトリのページが場合によっては削除されないというバグを修正します。
 
-{% admonition type="danger" name="警告" %}このが適用されていない旧バージョンの`rippled`は、新しいルールでソートされたDirectoryNodeによって機能が停止するおそれがあります。この問題を回避するには、`rippled`バージョン0.80.0以降に[アップグレード](../docs/infrastructure/installation/index.md)してください。{% /admonition %}
+{% admonition type="danger" name="警告" %}このが適用されていない旧バージョンの`xrpld`は、新しいルールでソートされたDirectoryNodeによって機能が停止するおそれがあります。この問題を回避するには、`xrpld`バージョン0.80.0以降に[アップグレード](../docs/infrastructure/installation/index.md)してください。{% /admonition %}
 
 
 ### SusPay

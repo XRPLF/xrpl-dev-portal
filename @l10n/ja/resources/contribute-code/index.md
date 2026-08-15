@@ -17,10 +17,10 @@ XRP Ledgerを動かすソフトウェアはオープンソースです。コミ�
 | XRP Ledger ソースコード  |                                                     |
 |:-----------------------|:----------------------------------------------------|
 | リポジトリ               | <https://github.com/XRPLF/rippled>                |
-| ライセンス               | [Multiple; ISC (permissive)](https://github.com/XRPLF/rippled/blob/develop/LICENSE.md) |
+| ライセンス               | {% source-link name="Multiple; ISC (permissive)" path="LICENSE.md" /%} |
 | プログラム言語            | C++                                                 |
 
-何から始めたらいいか分からないという方のために、Dev Null Productionsは、XRP Ledgerサーバ(`rippled`)のコア実装の仕組みや機能を説明した、詳細かつ充実した[**ソースコード・ガイド**](https://xrpintel.com/source)を提供しています。
+何から始めたらいいか分からないという方のために、Dev Null Productionsは、XRP Ledgerサーバ(`xrpld`)のコア実装の仕組みや機能を説明した、詳細かつ充実した[**ソースコード・ガイド**](https://xrpintel.com/source)を提供しています。
 
 
 ## XRP Ledgerの規格
@@ -65,7 +65,7 @@ XLSドラフトを作成した後、その変更にAmendmentが必要かどう�
 
 1. コードを開発するためにはまず、[`rippled` リポジトリ](https://github.com/XRPLF/rippled) をフォークまたはブランチを作成します。
 
-    {% admonition type="success" name="ヒント" %}何から始めたらいいかわからない場合は、_Dev Null Productions_ が詳細かつ充実した [`rippled` ソースコードガイド](https://xrpintel.com/source) を提供しています。{% /admonition %}
+    {% admonition type="success" name="ヒント" %}何から始めたらいいかわからない場合は、_Dev Null Productions_ が詳細かつ充実した [`xrpld` ソースコードガイド](https://xrpintel.com/source) を提供しています。{% /admonition %}
 
 2. 単体テストと統合テストを実行します。独立した環境で作業をテストするにはスタンドアロンモードでサーバを実行するのが良いでしょう。
 

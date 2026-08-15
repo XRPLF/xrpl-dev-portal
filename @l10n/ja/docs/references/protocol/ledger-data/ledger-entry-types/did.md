@@ -7,7 +7,7 @@ labels:
   - DID
 ---
 # DID
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp#L330-L341 "ソース)
+{% source-link path="src/libxrpl/protocol/LedgerFormats.cpp#L330-L341" /%}
 
 _([DID Amendment][])_
 

@@ -1,0 +1,86 @@
+[
+    {
+        "id": "36799EA497B1369B170805C078AEFE6188345F9B3E324C21E9CA3FF574E3C3D6",
+        "name": "fixNFTokenNegOffer",
+        "rippled_version": "1.9.2",
+        "status": "Removed in 3.2.0",
+        "href": "https://github.com/XRPLF/rippled/pull/5971"
+    },
+    {
+        "id": "0285B7E5E08E1A8E4C15636F0591D87F73CB6A7B6452A932AD72BBC8E5D1CBE3",
+        "name": "fixNFTokenDirV1",
+        "rippled_version": "1.9.1",
+        "status": "Removed in 3.2.0",
+        "href": "https://github.com/XRPLF/rippled/pull/5971"
+    },
+    {
+        "id": "3C43D9A973AA4443EF3FC38E42DD306160FBFFDAB901CD8BAA15D09F2597EB87",
+        "name": "NonFungibleTokensV1",
+        "rippled_version": "1.9.0",
+        "status": "Removed in 3.2.0",
+        "href": "https://github.com/XRPLF/rippled/pull/5971"
+    },
+    {
+        "id": "86E83A7D2ECE3AD5FA87AB2195AE015C950469ABF0B72EAACED318F74886AE90",
+        "name": "CryptoConditionsSuite",
+        "rippled_version": "0.60.0",
+        "status": "Removed in 3.2.0",
+        "href": "https://github.com/XRPLF/rippled/pull/6036"
+    },
+    {
+        "id": "267624F8F744C4A4F1B5821A7D54410BCEBABE987F0172EE89E5FC4B6EDBC18A",
+        "name": "fixBatchInnerSigs",
+        "rippled_version": "3.1.0",
+        "status": "Removed in 3.1.1",
+        "href": "https://xrpl.org/blog/2026/rippled-3.1.1"
+    },
+    {
+        "id": "894646DD5284E97DECFE6674A6D6152686791C4A95F8C132CCA9BAF9E5812FB6",
+        "name": "Batch",
+        "rippled_version": "2.5.0",
+        "status": "Removed in 3.1.1",
+        "href": "https://xrpl.org/blog/2026/rippled-3.1.1"
+    },
+    {
+        "id": "AE6AB9028EEB7299EBB03C7CBCC3F2A4F5FBE00EA28B8223AA3118A0B436C1C5",
+        "name": "PermissionDelegation",
+        "rippled_version": "2.5.0",
+        "status": "Removed in 2.6.1",
+        "href": "https://xrpl.org/blog/2025/rippled-2.6.1"
+    },
+    {
+        "id": "C6970A8B603D8778783B61C0D445C23D1633CCFAEF0D43E7DBCD1521D34BD7C3",
+        "name": "SHAMapV2",
+        "rippled_version": "0.32.1",
+        "status": "Removed in 1.4.0",
+        "href": "https://xrpl.org/blog/2019/rippled-1.4.0.html"
+    },
+    {
+        "id": "C1B8D934087225F509BEB5A8EC24447854713EE447D277F69545ABFA0E0FD490",
+        "name": "Tickets",
+        "rippled_version": "0.30.1",
+        "status": "Removed in 0.90.0",
+        "href": "https://xrpl.org/blog/2018/rippled-0.90.0.html"
+    },
+    {
+        "id": "9178256A980A86CF3D70D0260A7DA6402AAFE43632FDBCB88037978404188871",
+        "name": "OwnerPaysFee",
+        "rippled_version": "0.33.0",
+        "status": "Removed in 0.80.0",
+        "href": "https://xrpl.org/blog/2017/rippled-0.80.0"
+    },
+    {
+        "id": "DA1BD556B42D85EA9C84066D028D355B52416734D3283F85E216EA5DA6DB7E13",
+        "name": "SusPay",
+        "rippled_version": "0.31.0",
+        "status": "Removed in 0.60.0",
+        "href": "https://xrpl.org/blog/2017/ticksize-voting.html#upcoming-features"
+    },
+    {
+        "id": "5CC22CFF2864B020BD79E0E1F048F63EF3594F95E650E43B3F837EF1DF5F4B26",
+        "name": "FlowV2",
+        "rippled_version": "0.32.1",
+        "status": "Removed in 0.33.0",
+        "href": "https://xrpl.org/blog/2016/flowv2-vetoed.html"
+    }
+]

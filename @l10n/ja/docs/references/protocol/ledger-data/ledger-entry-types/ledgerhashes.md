@@ -7,7 +7,7 @@ labels:
   - ブロックチェーン
 ---
 # LedgerHashes
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp#L104-L108 "Source")
+{% source-link path="src/libxrpl/protocol/LedgerFormats.cpp#L104-L108" /%}
 
 （レジャーバージョンを一意に示す[「ledger hash」文字列データ型][ハッシュ]と混同しないでください。このセクションでは、`LedgerHashes`レジャーオブジェクトタイプについて説明します。）
 
@@ -45,7 +45,7 @@ labels:
 | 名前              | JSONの型 | [内部の型][] | 説明 |
 |-------------------|-----------|-------------------|-------------|
 | `LedgerEntryType` | 文字列    | UInt16    | 値`0x0068`が文字列`LedgerHashes`にマッピングされている場合は、このオブジェクトがレジャーハッシュのリストであることを示します。 |
-| `FirstLedgerSequence` | 数値 | UInt32   | **廃止予定** 使用しないでください。（本番環境のXRP Ledgerの「最近のハッシュ」オブジェクトでは、このフィールドの値は`2`です。これは、以前の`rippled`ソフトウェアによるものです。この値は「最近のハッシュ」オブジェクトの更新に伴い持ち越されます。このフィールドは新しい「過去の履歴」オブジェクトには含まれていません。また、新しいバージョンの`rippled`で導入された[並列ネットワーク](../../../../concepts/networks-and-servers/parallel-networks.md)の「最近のハッシュ」オブジェクトにも含まれていません。） |
+| `FirstLedgerSequence` | 数値 | UInt32   | **廃止予定** 使用しないでください。（本番環境のXRP Ledgerの「最近のハッシュ」オブジェクトでは、このフィールドの値は`2`です。これは、以前の`xrpld`ソフトウェアによるものです。この値は「最近のハッシュ」オブジェクトの更新に伴い持ち越されます。このフィールドは新しい「過去の履歴」オブジェクトには含まれていません。また、新しいバージョンの`xrpld`で導入された[並列ネットワーク](../../../../concepts/networks-and-servers/parallel-networks.md)の「最近のハッシュ」オブジェクトにも含まれていません。） |
 | `LastLedgerSequence` | 数値 | UInt32 | このオブジェクトの`Hashes`配列の最後の要素の[レジャーインデックス][]。 |
 | `Hashes` | 文字列の配列 | STI_VECTOR256 | 最大256個のレジャーハッシュからなる配列。その内容は、これが`LedgerHashes`オブジェクトのどのサブタイプであるかに応じて異なります。 |
 | `Flags`             | 数値    | UInt32    | このオブジェクトのブールフラグのビットマップ。このタイプではフラグは定義されていません。 |
@@ -58,14 +58,14 @@ labels:
 
 ## 過去の履歴のLedgerHashes
 
-「過去の履歴」の`LedgerHashes`のエントリには、レジャー履歴全体の256個ごとのレジャーバージョン（フラッグレジャー）のハッシュがまとめて含まれています。フラッグレジャーの子が閉鎖すると、最も新しい「過去の履歴」`LedgerHashes`オブジェクトの`Hashes`配列にフラッグレジャーのハッシュが追加されます。65536個のレジャーごとに、`rippled`は新しい`LedgerHashes`オブジェクトを作成します。これにより、各「過去の履歴」オブジェクトには256個のフラッグレジャーのハッシュが含まれます。
+「過去の履歴」の`LedgerHashes`のエントリには、レジャー履歴全体の256個ごとのレジャーバージョン（フラッグレジャー）のハッシュがまとめて含まれています。フラッグレジャーの子が閉鎖すると、最も新しい「過去の履歴」`LedgerHashes`オブジェクトの`Hashes`配列にフラッグレジャーのハッシュが追加されます。65536個のレジャーごとに、`xrpld`は新しい`LedgerHashes`オブジェクトを作成します。これにより、各「過去の履歴」オブジェクトには256個のフラッグレジャーのハッシュが含まれます。
 
 {% admonition type="info" name="注記" %}最も古い「過去の履歴」`LedgerHashes`オブジェクトのエントリ数は255です。これは、ジェネシスレジャーのレジャーインデックスが0ではなく1であるためです。{% /admonition %}
 
 「過去の履歴」`LedgerHashes`オブジェクトは[スキップリスト](https://en.wikipedia.org/wiki/Skip_list)として機能するので、任意の履歴フラッグレジャーのハッシュをそのインデックスから取得できます。さらに、フラッグレジャーの「最近の履歴」オブジェクトを使用してその他のレジャーのハッシュを取得できます。
 
 ## LedgerHashes IDのフォーマット
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/Indexes.cpp#L26-L42)
+{% source-link path="src/libxrpl/protocol/Indexes.cpp#L26-L42" /%}
 
 `LedgerHashes`オブジェクトIDには2種類のフォーマットがあります。これは、オブジェクトのサブタイプが「最近の履歴」と「過去の履歴」のいずれであるかに応じて決まります。
 

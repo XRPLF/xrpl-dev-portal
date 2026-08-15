@@ -119,7 +119,7 @@ El algoritmo de consenso del XRP Ledger provee una alternativa robusta a sistema
     - [Vídeo del mecanismo de consenso del XRPL](https://www.youtube.com/watch?v=k6VqEkqRTmk&list=PLJQ55Tj1hIVZtJ_JdTvSum2qMTsedWkNi&index=2)
 - **Tutoriales:**
     - [Envío de transacciones confiable](../transactions/reliable-transaction-submission.md)
-    - [Ejecutar `rippled` como Validador](../../infrastructure/configuration/server-modes/run-rippled-as-a-validator.md)
+    - [Ejecutar `xrpld` como Validador](../../infrastructure/configuration/server-modes/run-xrpld-as-a-validator.md)
 - **Referencias:**
     - [Referencia del formato ledger](../../references/protocol/ledger-data/index.md)
     - [Referencia del formato de transacción](../../references/protocol/transactions/index.md)

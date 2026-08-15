@@ -7,7 +7,7 @@ labels:
   - コアサーバ
 ---
 # fetch_info
-[[ソース]](https://github.com/XRPLF/rippled/blob/315a8b6b602798a4cff4d8e1911936011e12abdb/src/ripple/rpc/handlers/FetchInfo.cpp "Source")
+{% source-link path="src/xrpld/rpc/handlers/admin/status/FetchInfo.cpp" /%}
 
 `fetch_info`コマンドは、このサーバが現在ネットワークからフェッチしているオブジェクトに関する情報と、その情報を所有しているピアの数を返します。これは現在の取得操作をリセットする場合にも使用できます。
 
@@ -44,7 +44,7 @@ _`fetch_info`メソッドは、権限のないユーザは実行できない[管
 {% tab label="コマンドライン" %}
 ```sh
 #Syntax: fetch_info [clear]
-rippled fetch_info
+xrpld fetch_info
 ```
 {% /tab %}
 
@@ -102,7 +102,7 @@ rippled fetch_info
 
 {% tab label="コマンドライン" %}
 ```json
-Loading: "/etc/rippled.cfg"
+Loading: "/etc/xrpld.cfg"
 Connecting to 127.0.0.1:5005
 
 {

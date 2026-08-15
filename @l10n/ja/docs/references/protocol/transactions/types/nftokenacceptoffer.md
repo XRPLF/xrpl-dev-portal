@@ -9,7 +9,7 @@ requiredAmendment: NonFungibleTokensV1_1
 txIcon: finish
 ---
 # NFTokenAcceptOffer
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/NFTokenAcceptOffer.cpp "ソース")
+{% source-link path="src/libxrpl/tx/transactors/nft/NFTokenAcceptOffer.cpp" /%}
 
 `NFTokenAcceptOffer`トランザクションは`NFToken`の購入または売却のオファーを受け入れるために使用されます。トランザクションは次のいずれかになります。
 

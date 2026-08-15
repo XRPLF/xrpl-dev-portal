@@ -21,7 +21,7 @@ Sidechains can customize the XRP Ledger protocol to the needs of a specific use 
 
 **Notes:**
 
-  - Sidechains use their own validators and require a separate UNL from the mainchain `rippled` UNL.
+  - Sidechains use their own validators and require a separate UNL from the mainchain `xrpld` UNL.
   - Nodes on the mainchain and sidechain have no knowledge of each other.
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

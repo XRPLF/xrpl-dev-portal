@@ -8,7 +8,7 @@ requiredAmendment: TicketBatch
 txIcon: create
 ---
 # TicketCreate
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/CreateTicket.cpp "Source")
+{% source-link path="src/libxrpl/tx/transactors/system/TicketCreate.cpp" /%}
 
 TicketCreateトランザクションは、1つまたは複数の[シーケンス番号](../../data-types/basic-data-types.md#アカウントシーケンス)を[Tickets](../../ledger-data/ledger-entry-types/ticket.md)として確保します。
 

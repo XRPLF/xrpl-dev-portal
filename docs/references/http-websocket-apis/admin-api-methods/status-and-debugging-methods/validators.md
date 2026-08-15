@@ -6,7 +6,7 @@ labels:
     - Blockchain
 ---
 # validators
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/Validators.cpp "Source")
+{% source-link path="src/xrpld/rpc/handlers/admin/status/Validators.cpp" /%}
 
 The `validators` command returns human readable information about the current list of published and [trusted validators](../../../../concepts/consensus-protocol/index.md#trust-based-validation) used by the server.
 
@@ -40,7 +40,7 @@ An example of the request format:
 {% tab label="Commandline" %}
 ```sh
 #Syntax: validators
-rippled validators
+xrpld validators
 ```
 {% /tab %}
 
@@ -336,7 +336,7 @@ An example of a successful response:
 
 {% tab label="Commandline" %}
 ```json
-Loading: "/etc/rippled.cfg"
+Loading: "/etc/xrpld.cfg"
 Connecting to 127.0.0.1:5005
 
 {

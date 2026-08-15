@@ -8,7 +8,7 @@ requiredAmendment: DynamicNFT
 txIcon: modify
 ---
 # NFTokenModify
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/NFTokenModify.cpp "ソース")
+{% source-link path="src/libxrpl/tx/transactors/nft/NFTokenModify.cpp" /%}
 
 `NFTokenModify`は、NFTの`URI`フィールドを別のURIに変更し、NFTのサポートデータを更新するために使用されます。NFTは、`tfMutable`フラグが設定された状態でミントされている必要があります。[ダイナミックNFT](../../../../concepts/tokens/nfts/dynamic-nfts.md)をご覧ください。
 

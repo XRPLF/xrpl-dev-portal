@@ -40,11 +40,11 @@ XRP LedgerリファレンスはXRP LedgerプロトコルやAPIメソッドなど
 
 {% card-grid %}
 
-{% xrpl-card title="APIの規約" body="rippledサーバに実装されているHTTP API(JSON-RPCとWebSocket)のデータタイプとフォーマットの説明" href="/docs/references/http-websocket-apis/api-conventions/" /%}
+{% xrpl-card title="APIの規約" body="xrpldサーバに実装されているHTTP API(JSON-RPCとWebSocket)のデータタイプとフォーマットの説明" href="/docs/references/http-websocket-apis/api-conventions/" /%}
 
 {% xrpl-card title="公開APIメソッド" body="サーバーに接続されたクライアントが使用する公開APIメソッド" href="/docs/references/http-websocket-apis/public-api-methods/" /%}
 
-{% xrpl-card title="管理者APIメソッド" body="rippledサーバを運用する信頼できる管理者のための管理者APIメソッド" href="/docs/references/http-websocket-apis/admin-api-methods/" /%}
+{% xrpl-card title="管理者APIメソッド" body="xrpldサーバを運用する信頼できる管理者のための管理者APIメソッド" href="/docs/references/http-websocket-apis/admin-api-methods/" /%}
 
 {% xrpl-card title="Peer Portメソッド" body="XRPL Peer Protocolポートで提供される、ネットワーク情報とステータス情報を共有するための特別なAPIメソッド" href="/docs/references/http-websocket-apis/peer-port-methods/" /%}
 

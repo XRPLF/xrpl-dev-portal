@@ -7,7 +7,7 @@ labels:
   - データ保持
 ---
 # logrotate
-[[ソース]](https://github.com/XRPLF/rippled/blob/743bd6c9175c472814448ea889413be79dfd1c07/src/ripple/rpc/handlers/LogRotate.cpp "Source")
+{% source-link path="src/xrpld/rpc/handlers/admin/log/LogRotate.cpp" /%}
 
 `logrotate`コマンドは、ログファイルを閉じて再度開きます。これは、Linuxファイルシステムでのログローテーションを促進することを目的としています。
 
@@ -16,7 +16,7 @@ labels:
 次のスクリプトは、`/etc/logrotate.d/rippled`として作成できるサンプルです。
 
 ```logrotate
-/var/log/rippled/*.log {
+/var/log/xrpld/*.log {
   daily
   minsize 200M
   rotate 7
@@ -28,12 +28,12 @@ labels:
   compressoptions -n19 ionice -c3 gzip
   compressext .gz
   postrotate
-    /opt/ripple/bin/rippled --conf /opt/ripple/etc/rippled.cfg logrotate
+    /usr/bin/xrpld --conf /etc/xrpld/xrpld.cfg logrotate
   endscript
 }
 ```
 
-保持するログの量に応じて、`minsize`や`rotate`などのパラメーターを構成できます。`rippled.cfg`ファイルの`log_level`設定を使用して、サーバのログの詳細度を設定します。このサンプルスクリプトは標準の`log_level`に基づいており、約2週間分のログを圧縮形式で保存します。
+保持するログの量に応じて、`minsize`や`rotate`などのパラメーターを構成できます。`xrpld.cfg`ファイルの`log_level`設定を使用して、サーバのログの詳細度を設定します。このサンプルスクリプトは標準の`log_level`に基づいており、約2週間分のログを圧縮形式で保存します。
 
 `rippled` 1.3以降、スクリプト`/etc/logrotate.d/rippled`は、DEBおよびRPMパッケージによって自動的にインストールされます。この設定は、必要に応じて変更できます。パッケージのアップグレード時に変更内容が上書きされることはありません。
 
@@ -58,7 +58,7 @@ _`logrotate`メソッドは、権限のないユーザは実行できない[管�
 {% tab label="コマンドライン" %}
 ```sh
 #Syntax: logrotate
-rippled logrotate
+xrpld logrotate
 ```
 {% /tab %}
 
@@ -88,7 +88,7 @@ rippled logrotate
 
 {% tab label="コマンドライン" %}
 ```json
-Loading: "/etc/rippled.cfg"
+Loading: "/etc/xrpld.cfg"
 Connecting to 127.0.0.1:5005
 
 {

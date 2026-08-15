@@ -13,7 +13,7 @@ XRP Ledgerとの間の決済処理には当然リスクが伴いますので、�
 
 ## インフラストラクチャ
 
-あなた自身のセキュリティとネットワークの安定性のために、XRP Ledgerを利用する事業者は、1つの[バリデータ](../../../networks-and-servers/rippled-server-modes.md#validators)を含む[独自のXRP Ledgerサーバ](../../../../infrastructure/installation/index.md)を実行すべきです。
+あなた自身のセキュリティとネットワークの安定性のために、XRP Ledgerを利用する事業者は、1つの[バリデータ](../../../networks-and-servers/xrpld-server-modes.md#validators)を含む[独自のXRP Ledgerサーバ](../../../../infrastructure/installation/index.md)を実行すべきです。
 
 
 ## ツールのセキュリティ
@@ -24,7 +24,7 @@ XRP Ledgerへの接続方法は、ニーズや既存のソフトウェアに応�
 
 - [HTTP / WebSocket API](../../../../references/http-websocket-apis/index.md)は、XRP Ledgerのすべてのコア機能への低レベルのインターフェースとして使用することができます。
 - [クライアントライブラリ](../../../../references/client-libraries.md)は、いくつかのプログラミング言語で利用でき、XRP Ledgerにアクセスするための便利なユーティリティを提供します。
-- その他、[xApps](https://xumm.readme.io/docs/xapps)などのツールも利用可能です。
+- その他、[xApps](https://docs.xaman.dev/environments/xapps-dapps)などのツールも利用可能です。
 - サードパーティのウォレットアプリケーションも、特に待機アドレスの担当者には便利かもしれません。
 
 ただし、公式な配布チャネルから信頼できるツールだけを使用するように注意してください。悪意のあるサーバ、ライブラリ、アプリは、攻撃者に秘密鍵を漏らすように設定されている可能性があります。

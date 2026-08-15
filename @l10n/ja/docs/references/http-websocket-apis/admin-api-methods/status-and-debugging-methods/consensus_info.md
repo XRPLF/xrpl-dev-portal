@@ -8,7 +8,7 @@ labels:
   - コアサーバ
 ---
 # consensus_info
-[[ソース]](https://github.com/XRPLF/rippled/blob/a61ffab3f9010d8accfaa98aa3cacc7d38e74121/src/ripple/rpc/handlers/ConsensusInfo.cpp "Source")
+{% source-link path="src/xrpld/rpc/handlers/admin/status/ConsensusInfo.cpp" /%}
 
 `consensus_info`メソッドは、デバッグのための[コンセンサスプロセス](../../../../concepts/consensus-protocol/index.md)に関する情報を返します。
 
@@ -42,7 +42,7 @@ _`consensus_info`メソッドは、権限のないユーザは実行できない
 {% tab label="コマンドライン" %}
 ```sh
 #Syntax: consensus_info
-rippled consensus_info
+xrpld consensus_info
 ```
 {% /tab %}
 
@@ -133,7 +133,7 @@ rippled consensus_info
 
 {% tab label="コマンドライン" %}
 ```json
-Loading: "/etc/rippled.cfg"
+Loading: "/etc/xrpld.cfg"
 Connecting to 127.0.0.1:5005
 
 {

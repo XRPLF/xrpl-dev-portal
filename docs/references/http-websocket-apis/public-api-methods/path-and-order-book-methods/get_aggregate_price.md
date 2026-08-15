@@ -5,7 +5,7 @@ labels:
     - Oracle
 ---
 # get_aggregate_price
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/GetAggregatePrice.cpp "Source")
+{% source-link path="src/xrpld/rpc/handlers/orderbook/GetAggregatePrice.cpp" /%}
 
 The `get_aggregate_price` method retrieves the aggregate price of specified `Oracle` objects, returning three price statistics: mean, median, and trimmed mean.
 

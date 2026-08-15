@@ -165,7 +165,7 @@ For this scenario, omit the `LastLedgerSequence` field so that the transaction d
 - **xrpl.js:** Specify `"LastLedgerSequence": null` when auto-filling the transaction.
 - **xrpl-py:** Set `last_ledger_sequence=None` on the transaction.
 - **xrpl-go:** Leave the field unset before signing.
-- **`rippled` directly:** Omit the field from the prepared instructions. The server doesn't provide a default.
+- **`xrpld` directly:** Omit the field from the prepared instructions. The server doesn't provide a default.
 {% /admonition %}
 
 ## See Also

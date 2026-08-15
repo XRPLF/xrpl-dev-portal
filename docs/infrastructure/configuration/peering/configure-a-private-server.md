@@ -9,25 +9,25 @@ labels:
 ---
 # Configure a Private Server
 
-A [private server](../../../concepts/networks-and-servers/peer-protocol.md#private-peers) is a `rippled` server that connects to the network only through specific, trusted peers instead of connecting directly to discovered peers in the open peer-to-peer network. This kind of configuration is an optional precaution most commonly recommended for [validators](../server-modes/run-rippled-as-a-validator.md), but it can be useful for other specific purposes.
+A [private server](../../../concepts/networks-and-servers/peer-protocol.md#private-peers) is an `xrpld` server that connects to the network only through specific, trusted peers instead of connecting directly to discovered peers in the open peer-to-peer network. This kind of configuration is an optional precaution most commonly recommended for [validators](../server-modes/run-xrpld-as-a-validator.md), but it can be useful for other specific purposes.
 
 ## Prerequisites
 
 To use a private server, you must meet the following requirements:
 
-- You must have [`rippled` installed](../../installation/index.md) and updated to the latest version, but not running yet.
+- You must have [`xrpld` installed](../../installation/index.md) and updated to the latest version, but not running yet.
 - You must decide whether to connect through **proxies** you run yourself, or through **public hubs**. For a comparison of these options, see [Pros and Cons of Peering Configurations](../../../concepts/networks-and-servers/peer-protocol.md#pros-and-cons-of-peering-configurations).
-    - If you are using proxies, you must have additional machines with `rippled` installed and running to use as the proxies. These servers must be able to connect to the outside network and to your private server.
+    - If you are using proxies, you must have additional machines with `xrpld` installed and running to use as the proxies. These servers must be able to connect to the outside network and to your private server.
     - For either configuration, you must know the IP addresses and ports of the peers you intend to connect to.
 
 ## Steps
 
 To set up a specific server as a private peer, complete the following steps:
 
-1. Edit your `rippled`'s config file.
+1. Edit your `xrpld`'s config file.
 
     ```
-    vim /etc/opt/ripple/rippled.cfg
+    vim /etc/xrpld/xrpld.cfg
     ```
 
     {% partial file="/docs/_snippets/conf-file-location.md" /%}
@@ -52,7 +52,7 @@ To set up a specific server as a private peer, complete the following steps:
     r.ripple.com 51235
     ```
 
-    If your server connects using **proxies**, the IP addresses and ports should match the configurations of the `rippled` servers you are using as proxies. For each of those servers, the port number should match the `protocol = peer` port in that server's config file (usually 51235). For example, your configuration might look like this:
+    If your server connects using **proxies**, the IP addresses and ports should match the configurations of the `xrpld` servers you are using as proxies. For each of those servers, the port number should match the `protocol = peer` port in that server's config file (usually 51235). For example, your configuration might look like this:
 
     ```
     [ips_fixed]
@@ -66,18 +66,18 @@ To set up a specific server as a private peer, complete the following steps:
 
     If you are using public hubs, skip this step.
 
-    If you are using proxies, [configure the proxies as a cluster](cluster-rippled-servers.md) that includes your private peer. Each member of the cluster should have an `[ips_fixed]` stanza that lists each _other_ member of the cluster. However, **only the private server** should have a `[peer_private]` stanza.
+    If you are using proxies, [configure the proxies as a cluster](cluster-xrpld-servers.md) that includes your private peer. Each member of the cluster should have an `[ips_fixed]` stanza that lists each _other_ member of the cluster. However, **only the private server** should have a `[peer_private]` stanza.
 
-    Restart `rippled` on the proxies one-by-one. On each proxy server:
-
-    ```
-    sudo service systemctl restart rippled
-    ```
-
-5. Start `rippled` on the private server.
+    Restart `xrpld` on the proxies one-by-one. On each proxy server:
 
     ```
-    sudo service systemctl start rippled
+    sudo service systemctl restart xrpld
+    ```
+
+5. Start `xrpld` on the private server.
+
+    ```
+    sudo service systemctl start xrpld
     ```
 
 6. Use the [peers method][] to confirm that your private server is connected _only_ to its peers.

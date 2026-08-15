@@ -2,7 +2,7 @@
 html: networks-and-servers.html
 parent: concepts.html
 seo:
-    description: rippled es el servidor peer-to-peer principal que maneja el XRP Ledger.
+    description: xrpld es el servidor peer-to-peer principal que maneja el XRP Ledger.
 metadata:
   indexPage: true
 ---
@@ -10,7 +10,7 @@ metadata:
 
 Hay dos tipos principales de software de servidores que alimentan el XRP Ledger:
 
-- El servidor principal, `rippled`, ejecuta la red peer-to-peer la cual procesa transacciones y alcanza un consenso en sus resultados.
+- El servidor principal, `xrpld`, ejecuta la red peer-to-peer la cual procesa transacciones y alcanza un consenso en sus resultados.
 - El servidor API, [Clio](the-clio-server.md), proporciona potentes interfaces para obtener o consultar datos desde el ledger.
 
 Cualquiera puede ejecutar instancias de uno o ambos de estos tipos de servidores basado en sus necesidades.

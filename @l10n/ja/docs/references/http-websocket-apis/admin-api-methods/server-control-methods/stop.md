@@ -7,7 +7,7 @@ labels:
   - コアサーバ
 ---
 # stop
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/Stop.cpp "Source")
+{% source-link path="src/xrpld/rpc/handlers/admin/server_control/Stop.cpp" /%}
 
 サーバのグレースフルシャットダウンを行います。
 
@@ -40,7 +40,7 @@ _`stop`リクエストは、権限のないユーザは実行できない*[管�
 
 {% tab label="コマンドライン" %}
 ```
-rippled stop
+xrpld stop
 ```
 {% /tab %}
 
@@ -67,7 +67,7 @@ rippled stop
 
 {% tab label="コマンドライン" %}
 ```json
-Loading: "/etc/rippled.cfg"
+Loading: "/etc/xrpld.cfg"
 Connecting to 127.0.0.1:5005
 
 {

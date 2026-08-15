@@ -204,7 +204,7 @@ export default function Docs() {
           {
             heading: translate('Explore WebSocket API'),
             description: translate(
-              'Send sample requests and get responses from the rippled API.'
+              'Send sample requests and get responses from the xrpld API.'
             ),
             buttons: [
               {

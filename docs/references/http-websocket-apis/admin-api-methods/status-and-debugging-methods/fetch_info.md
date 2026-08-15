@@ -5,7 +5,7 @@ labels:
     - Core Server
 ---
 # fetch_info
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/FetchInfo.cpp "Source")
+{% source-link path="src/xrpld/rpc/handlers/admin/status/FetchInfo.cpp" /%}
 
 The `fetch_info` command returns information about objects that this server is currently fetching from the network, and how many peers have that information. It can also be used to reset current fetches.
 
@@ -42,7 +42,7 @@ An example of the request format:
 {% tab label="Commandline" %}
 ```sh
 #Syntax: fetch_info [clear]
-rippled fetch_info
+xrpld fetch_info
 ```
 {% /tab %}
 
@@ -100,7 +100,7 @@ An example of a successful response:
 
 {% tab label="Commandline" %}
 ```json
-Loading: "/etc/rippled.cfg"
+Loading: "/etc/xrpld.cfg"
 Connecting to 127.0.0.1:5005
 
 {

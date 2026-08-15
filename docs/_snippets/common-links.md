@@ -55,6 +55,12 @@
 [Clawback amendment]: /resources/known-amendments.md#clawback
 [Clawback transaction]: /docs/references/protocol/transactions/types/clawback.md
 [Clawback transactions]: /docs/references/protocol/transactions/types/clawback.md
+[ConfidentialMPTClawback transaction]: /docs/references/protocol/transactions/types/confidentialmptclawback.md
+[ConfidentialMPTConvert transaction]: /docs/references/protocol/transactions/types/confidentialmptconvert.md
+[ConfidentialMPTConvertBack transaction]: /docs/references/protocol/transactions/types/confidentialmptconvertback.md
+[ConfidentialMPTMergeInbox transaction]: /docs/references/protocol/transactions/types/confidentialmptmergeinbox.md
+[ConfidentialMPTSend transaction]: /docs/references/protocol/transactions/types/confidentialmptsend.md
+[ConfidentialTransfer amendment]: https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0096-confidential-mpt
 [credentials]: /docs/concepts/decentralized-storage/credentials.md
 [Credentials amendment]: /resources/known-amendments.md#credentials
 [CredentialCreate transaction]: /docs/references/protocol/transactions/types/credentialcreate.md
@@ -95,6 +101,7 @@
 [DirectoryNode object]: /docs/references/protocol/ledger-data/ledger-entry-types/directorynode.md
 [DisallowIncoming amendment]: /resources/known-amendments.md#disallowincoming
 [DynamicNFT amendment]: /resources/known-amendments.md#dynamicnft
+[DynamicMPT amendment]: /resources/known-amendments.md#dynamicmpt
 [EnableAmendment pseudo-transaction]: /docs/references/protocol/transactions/pseudo-transaction-types/enableamendment.md
 [EnableAmendment pseudo-transactions]: /docs/references/protocol/transactions/pseudo-transaction-types/enableamendment.md
 [EnableAmendment]: /docs/references/protocol/transactions/pseudo-transaction-types/enableamendment.md
@@ -204,7 +211,7 @@
 [PaymentChannelFund transactions]: /docs/references/protocol/transactions/types/paymentchannelfund.md
 [PaymentChannelFund]: /docs/references/protocol/transactions/types/paymentchannelfund.md
 [Payment]: /docs/references/protocol/transactions/types/payment.md
-[PermissionDelegation amendment]: /resources/known-amendments.md#permissiondelegation
+[PermissionDelegation amendment]: /resources/known-amendments.md#permissiondelegationv1_1
 [PermissionedDEX amendment]: /resources/known-amendments.md#permissioneddex
 [Permissioned DEXes]: /docs/concepts/tokens/decentralized-exchange/permissioned-dexes.md
 [PermissionedDomain entry]: /docs/references/protocol/ledger-data/ledger-entry-types/permissioneddomain.md
@@ -245,6 +252,13 @@
 [Specifying Ledgers]: /docs/references/protocol/data-types/basic-data-types.md#specifying-ledgers
 [Specifying Time]: /docs/references/protocol/data-types/basic-data-types.md#specifying-time
 [Specifying Without Amounts]: /docs/references/protocol/data-types/currency-formats.md#specifying-without-amounts
+[Sponsor amendment]: /resources/known-amendments.md#sponsor
+[Sponsorship ledger entry]: /docs/references/protocol/ledger-data/ledger-entry-types/sponsorship.md
+[Sponsorship entry]: /docs/references/protocol/ledger-data/ledger-entry-types/sponsorship.md
+[SponsorshipSet transaction]: /docs/references/protocol/transactions/types/sponsorshipset.md
+[SponsorshipSet]: /docs/references/protocol/transactions/types/sponsorshipset.md
+[SponsorshipTransfer transaction]: /docs/references/protocol/transactions/types/sponsorshiptransfer.md
+[SponsorshipTransfer]: /docs/references/protocol/transactions/types/sponsorshiptransfer.md
 [SusPay amendment]: /resources/known-amendments.md#suspay
 [TickSize amendment]: /resources/known-amendments.md#ticksize
 [Ticket entry]: /docs/references/protocol/ledger-data/ledger-entry-types/ticket.md
@@ -315,8 +329,8 @@
 [book_offers method]: /docs/references/http-websocket-apis/public-api-methods/path-and-order-book-methods/book_offers.md
 [can_delete command]: /docs/references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/can_delete.md
 [can_delete method]: /docs/references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/can_delete.md
-[channel_authorize command]: /docs/references/http-websocket-apis/public-api-methods/payment-channel-methods/channel_authorize.md
-[channel_authorize method]: /docs/references/http-websocket-apis/public-api-methods/payment-channel-methods/channel_authorize.md
+[channel_authorize command]: /docs/references/http-websocket-apis/admin-api-methods/signing-methods/channel_authorize.md
+[channel_authorize method]: /docs/references/http-websocket-apis/admin-api-methods/signing-methods/channel_authorize.md
 [channel_verify command]: /docs/references/http-websocket-apis/public-api-methods/payment-channel-methods/channel_verify.md
 [channel_verify method]: /docs/references/http-websocket-apis/public-api-methods/payment-channel-methods/channel_verify.md
 [common fields]: /docs/references/protocol/transactions/common-fields.md
@@ -355,7 +369,7 @@
 [fixDisallowIncomingV1 amendment]: /resources/known-amendments.md#fixdisallowincomingv1
 [fixEnforceNFTokenTrustlineV2 amendment]: /resources/known-amendments.md#fixenforcenftokentrustlinev2
 [fixFillOrKill amendment]: /resources/known-amendments.md#fixfillorkill
-[fixFrozenLPTokenTransfer]: /resources/known-amendments.md#fixfrozenlptokentransfer
+[fixFrozenLPTokenTransfer amendment]: /resources/known-amendments.md#fixfrozenlptokentransfer
 [fixInvalidTxFlags amendment]: /resources/known-amendments.md#fixinvalidtxflags
 [fixMasterKeyAsRegularKey amendment]: /resources/known-amendments.md#fixmasterkeyasregularkey
 [fixNFTokenDirV1 amendment]: /resources/known-amendments.md#fixnftokendirv1
@@ -461,7 +475,7 @@
 [sign_for command]: /docs/references/http-websocket-apis/admin-api-methods/signing-methods/sign_for.md
 [sign_for method]: /docs/references/http-websocket-apis/admin-api-methods/signing-methods/sign_for.md
 [simulate method]: /docs/references/http-websocket-apis/public-api-methods/transaction-methods/simulate.md
-[stand-alone mode]: /docs/concepts/networks-and-servers/rippled-server-modes.md#stand-alone-mode
+[stand-alone mode]: /docs/concepts/networks-and-servers/xrpld-server-modes.md#stand-alone-mode
 [standard format]: /docs/references/http-websocket-apis/api-conventions/response-formatting.md
 [String Number]: /docs/references/protocol/data-types/currency-formats#string-numbers
 [stop command]: /docs/references/http-websocket-apis/admin-api-methods/server-control-methods/stop.md

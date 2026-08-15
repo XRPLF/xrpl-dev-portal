@@ -1,7 +1,6 @@
 ignore:
   - docs/references/http-websocket-apis/admin-api-methods/_template-admin-method.md
   - docs/img/_sources/*
-  - _code-samples/*/README.md
   - _code-samples/**/README.md
   - _code-samples/create-amm/ts/tsconfig.json
   - resources/contribute-blog/_blog-template.md
@@ -13,6 +12,7 @@ ignore:
   # a Redocly cloud OOM build failure. They remain usable in `realm develop`.
   - showcase/**/*.page.tsx
   - showcase/**/*.md
+  - .claude/**
 l10n:
   defaultLocale: en-US
   locales:
@@ -115,13 +115,13 @@ seo:
           - docs/references/http-websocket-apis/public-api-methods/*/index.md
           - docs/references/http-websocket-apis/admin-api-methods/*/index.md
       - title: Infrastructure
-        description: Install, configure, and troubleshoot rippled and Clio servers.
+        description: Install, configure, and troubleshoot xrpld and Clio servers.
         includeFiles:
           - docs/infrastructure/**/*.*
         excludeFiles:
           - docs/infrastructure/index.md
           - docs/infrastructure/*/index.md
-          - docs/infrastructure/installation/build-run-rippled-in-reporting-mode.md
+          - docs/infrastructure/installation/build-run-xrpld-in-reporting-mode.md
           - docs/infrastructure/configuration/data-retention/index.md
           - docs/infrastructure/configuration/server-modes/index.md
       - title: Blog (2023+)
@@ -154,7 +154,7 @@ scripts:
     # Loaded first so the persisted color scheme is applied before first paint
     # and survives across page navigations. See static/js/theme-switch.js.
     - src: ./static/js/theme-switch.js
-    - src: https://cmp.osano.com/AzyjT6TIZMlgyLyy8/f11f7772-8ed5-4b73-bd17-c0814edcc440/osano.js
+    - src: https://cmp.osano.com/SXt7r81ogd/bbc71a55-7b77-492e-94d7-b9eaa94e8bb2/osano.js
     # xrpl.js / jQuery / Bootstrap are only used by the interactive tool scripts
     # on a handful of tutorial + dev-tools pages, not by the theme or navbar.
     # `defer` makes them non-render-blocking on every page; the tool pages' own
@@ -216,7 +216,7 @@ markdown:
 footer:
   logo:
     hide: true
-  copyrightText: © 2025 XRP Ledger. Open Source.
+  copyrightText: © 2026 XRP Ledger. Open Source.
   items:
     - group: About
       groupTranslationKey: footer.about
@@ -306,9 +306,6 @@ footer:
         - page: community/events.page.tsx
           label: Events
           labelTranslationKey: footer.community.events
-        - page: community/ambassadors.page.tsx
-          label: Ambassadors
-          labelTranslationKey: footer.community.ambassadors
         - page: community/developer-funding.page.tsx
           label: Developer Funding
           labelTranslationKey: footer.community.developer-funding
