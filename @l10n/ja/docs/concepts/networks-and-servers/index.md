@@ -2,7 +2,7 @@
 html: networks-and-servers.html
 parent: concepts.html
 seo:
-    description: rippledは、XRP Ledgerを管理するコアとなるピアツーピアサーバです。
+    description: xrpldは、XRP Ledgerを管理するコアとなるピアツーピアサーバです。
 metadata:
   indexPage: true
 ---
@@ -10,7 +10,7 @@ metadata:
 
 XRP Ledgerを動かすサーバソフトウェアは、主に2種類あります。
 
-- コアサーバである`rippled`は、トランザクションを処理し、その結果についてコンセンサスを得るピアツーピアネットワークを実行します。
+- コアサーバである`xrpld`は、トランザクションを処理し、その結果についてコンセンサスを得るピアツーピアネットワークを実行します。
 - APIサーバである[Clio](the-clio-server.md)は、台帳からデータをフェッチしたりクエリしたりするための強力なインターフェイスを提供します。
 
 誰でも必要に応じて、これらのタイプのサーバの1つまたは両方のインスタンスを実行することができます。

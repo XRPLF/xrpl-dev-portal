@@ -1,14 +1,14 @@
 ---
-html: configure-rippled.html
+html: configure-xrpld.html
 parent: infrastructure.html
 metadata:
   indexPage: true
 seo:
-    description: rippledサーバの構成をカスタマイズします。
+    description: xrpldサーバの構成をカスタマイズします。
 ---
-# rippledの設定
+# xrpldの設定
 
-rippledサーバの構成をカスタマイズします。
+xrpldサーバの構成をカスタマイズします。
 
 
 {% child-pages /%}

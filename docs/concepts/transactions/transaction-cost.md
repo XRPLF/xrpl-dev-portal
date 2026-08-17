@@ -16,9 +16,9 @@ Every transaction must [specify how much XRP to destroy](#specifying-the-transac
 
 ## Current Transaction Cost
 
-The current minimum transaction cost required by the network for a standard transaction is **0.00001 XRP** (10 drops). It sometimes increases due to higher than usual load.
+The current minimum transaction cost required by the network for a standard transaction is {% $env.PUBLIC_BASE_FEE %}. It sometimes increases due to higher than usual load.
 
-You can also [query `rippled` for the current transaction cost](#querying-the-transaction-cost).
+You can also [query `xrpld` for the current transaction cost](#querying-the-transaction-cost).
 
 ### Special Transaction Costs
 
@@ -26,13 +26,17 @@ Some transactions have different transaction costs:
 
 | Transaction           | Cost Before Load Scaling |
 |-----------------------|--------------------------|
-| [Reference Transaction](#reference-transaction-cost) (Most transactions) | 10 drops |
+| [Reference Transaction](#reference-transaction-cost) (Most transactions) | {% $env.PUBLIC_BASE_FEE %} |
 | [Key Reset Transaction](#key-reset-transaction) | 0 |
-| [Multi-signed Transaction](../accounts/multi-signing.md) | 10 drops × (1 + Number of Signatures Provided) |
-| [EscrowFinish Transaction with Fulfillment](../../references/protocol/transactions/types/escrowfinish.md) | 10 drops × (33 + (Fulfillment size in bytes ÷ 16)) |
-| [AccountDelete Transaction](../accounts/deleting-accounts.md) | 2,000,000 drops |
-| [AMMCreate Transaction](../tokens/decentralized-exchange/automated-market-makers.md) | 2,000,000 drops |
+| [Multi-signed Transaction](../accounts/multi-signing.md) | {% $env.PUBLIC_BASE_FEE %} × (1 + Number of Signatures Provided) |
+| [EscrowFinish Transaction with Fulfillment](../../references/protocol/transactions/types/escrowfinish.md) | {% $env.PUBLIC_BASE_FEE %} × (33 + (Fulfillment size in bytes ÷ 16)) |
+| [AccountDelete Transaction](../accounts/deleting-accounts.md) | 200,000 drops |
+| [AMMCreate Transaction](../tokens/decentralized-exchange/automated-market-makers.md) | 200,000 drops |
+| [Batch Transaction](../transactions/batch-transactions.md) | {% $env.PUBLIC_BASE_FEE %} x (2 + Number of Signatures Provided) + (Sum of Inner Transactions Fees) |
+| [Confidential MPT Transaction](../tokens/fungible-tokens/confidential-transfers.md) (single-signed) {% amendment-disclaimer name="ConfidentialTransfer" /%} | 100 drops |
+| [Confidential MPT Transaction](../tokens/fungible-tokens/confidential-transfers.md) (multi-signed) {% amendment-disclaimer name="ConfidentialTransfer" /%} | 10 drops × (10 + Number of Signatures Provided) |
 
+<!-- RESERVES_REMINDER: update cost in drops if reserves change -->
 
 ## Beneficiaries of the Transaction Cost
 
@@ -42,8 +46,8 @@ The transaction cost is not paid to any party: the XRP is irrevocably destroyed.
 
 There are two thresholds for the transaction cost:
 
-* If the transaction cost does not meet a `rippled` server's [load-based transaction cost threshold](#local-load-cost), the server ignores the transaction completely.
-* If the transaction cost does not meet a `rippled` server's [open ledger cost threshold](#open-ledger-cost), the server queues the transaction for a later ledger.
+* If the transaction cost does not meet an `xrpld` server's [load-based transaction cost threshold](#local-load-cost), the server ignores the transaction completely.
+* If the transaction cost does not meet an `xrpld` server's [open ledger cost threshold](#open-ledger-cost), the server queues the transaction for a later ledger.
 
 This divides transactions into roughly three categories:
 
@@ -54,21 +58,21 @@ This divides transactions into roughly three categories:
 
 ## Local Load Cost
 
-Each `rippled` server maintains a cost threshold based on its current load. If you submit a transaction with a `Fee` value that is lower than current load-based transaction cost of the `rippled` server, that server neither applies nor relays the transaction. (**Note:** If you submit a transaction through an [admin connection](../../tutorials/get-started/get-started-http-websocket-apis.md), the server applies and relays the transaction as long as the transaction meets the un-scaled minimum transaction cost.) A transaction is very unlikely to survive [the consensus process](../consensus-protocol/index.md) unless its `Fee` value meets the requirements of a majority of servers.
+Each `xrpld` server maintains a cost threshold based on its current load. If you submit a transaction with a `Fee` value that is lower than current load-based transaction cost of the `xrpld` server, that server neither applies nor relays the transaction. (**Note:** If you submit a transaction through an [admin connection](../../tutorials/get-started/get-started-http-websocket-apis.md), the server applies and relays the transaction as long as the transaction meets the un-scaled minimum transaction cost.) A transaction is very unlikely to survive [the consensus process](../consensus-protocol/index.md) unless its `Fee` value meets the requirements of a majority of servers.
 
 ## Open Ledger Cost
 
-The `rippled` server has a second mechanism for enforcing the transaction cost, called the _open ledger cost_. A transaction can only be included in the open ledger if it meets the open ledger cost requirement in XRP. Transactions that do not meet the open ledger cost may be [queued for a following ledger](#queued-transactions) instead.
+The `xrpld` server has a second mechanism for enforcing the transaction cost, called the _open ledger cost_. A transaction can only be included in the open ledger if it meets the open ledger cost requirement in XRP. Transactions that do not meet the open ledger cost may be [queued for a following ledger](#queued-transactions) instead.
 
 For each new ledger version, the server picks a soft limit on the number of transactions to be included in the open ledger, based on the number of transactions in the previous ledger. The open ledger cost is equal to the minimum un-scaled transaction cost until the number of transactions in the open ledger is equal to the soft limit. After that, the open ledger cost increases exponentially for each transaction included in the open ledger. For the next ledger, the server increases the soft limit if the current ledger contained more transactions than the soft limit, and decreases the soft limit if the consensus process takes more than 5 seconds.
 
 The open ledger cost requirement is [proportional to the normal cost of the transaction](#fee-levels), not the absolute transaction cost. Transaction types that have a higher-than-normal requirement, such as [multi-signed transactions](../accounts/multi-signing.md) must pay more to meet the open ledger cost than transactions which have minimum transaction cost requirements.
 
-See also: [Fee Escalation explanation in `rippled` repository](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/misc/FeeEscalation.md).
+See also: {% source-link name="Fee Escalation explanation in rippled repository" path="src/xrpld/app/misc/FeeEscalation.md" /%}.
 
 ### Queued Transactions
 
-When `rippled` receives a transaction that meets the server's local load cost but not the [open ledger cost](#open-ledger-cost), the server estimates whether the transaction is "likely to be included" in a later ledger. If so, the server adds the transaction to the transaction queue and relays the transaction to other members of the network. Otherwise, the server discards the transaction. The server tries to minimize the amount of network load caused by transactions that would not pay a transaction cost, since [the transaction cost only applies when a transaction is included in a validated ledger](#transaction-costs-and-failed-transactions).
+When `xrpld` receives a transaction that meets the server's local load cost but not the [open ledger cost](#open-ledger-cost), the server estimates whether the transaction is "likely to be included" in a later ledger. If so, the server adds the transaction to the transaction queue and relays the transaction to other members of the network. Otherwise, the server discards the transaction. The server tries to minimize the amount of network load caused by transactions that would not pay a transaction cost, since [the transaction cost only applies when a transaction is included in a validated ledger](#transaction-costs-and-failed-transactions).
 
 For more information on queued transactions, see [Transaction Queue](transaction-queue.md).
 
@@ -87,11 +91,11 @@ _Fee levels_ represent the proportional difference between the minimum cost and 
 | [Key reset transaction](transaction-cost.md#key-reset-transaction) | 0 | (Effectively infinite) | N/A | (Effectively infinite) |
 | [EscrowFinish transaction](../../references/protocol/transactions/types/escrowfinish.md) with 32-byte preimage. | 350 | 256 | 700 | 512 |
 
-{% admonition type="info" name="Note" %}The standard ledger base fee is typically 10 drops, occasionally increased due to high volume. Should the validators vote to increase or lower the base fee, costs based on the standard fee (for example, the EscrowFinish transaction with Fulfillment) are adjusted accordingly.{% /admonition %}
+{% admonition type="info" name="Note" %}The standard ledger base fee is typically {% $env.PUBLIC_BASE_FEE %}, occasionally increased due to high volume. Should the validators vote to increase or lower the base fee, costs based on the standard fee (for example, the EscrowFinish transaction with Fulfillment) are adjusted accordingly.{% /admonition %}
 
 ## Querying the Transaction Cost
 
-The `rippled` APIs have two ways to query the local load-based transaction cost: the `server_info` command (intended for humans) and the `server_state` command (intended for machines).
+The `xrpld` APIs have two ways to query the local load-based transaction cost: the `server_info` command (intended for humans) and the `server_state` command (intended for machines).
 
 You can use the [fee method][] to check the open ledger cost.
 
@@ -104,7 +108,7 @@ The [server_info method][] reports the unscaled minimum XRP cost, as of the prev
 
 ### server_state
 
-The [server_state method][] returns a direct representation of `rippled`'s internal load calculations. In this case, the effective load rate is the ratio of the current `load_factor` to the `load_base`. The `validated_ledger.base_fee` parameter reports the minimum transaction cost in [drops of XRP](../../references/protocol/data-types/basic-data-types.md#specifying-currency-amounts). This design enables `rippled` to calculate the transaction cost using only integer math, while still allowing a reasonable amount of fine-tuning for server load. The actual calculation of the transaction cost is as follows:
+The [server_state method][] returns a direct representation of `xrpld`'s internal load calculations. In this case, the effective load rate is the ratio of the current `load_factor` to the `load_base`. The `validated_ledger.base_fee` parameter reports the minimum transaction cost in [drops of XRP](../../references/protocol/data-types/basic-data-types.md#specifying-currency-amounts). This design enables `xrpld` to calculate the transaction cost using only integer math, while still allowing a reasonable amount of fine-tuning for server load. The actual calculation of the transaction cost is as follows:
 
 **Current Transaction Cost in Drops = (`base_fee` × `load_factor`) ÷ `load_base`**
 
@@ -126,24 +130,24 @@ The `Fee` field is one of the things that can be [auto-filled](../../references/
 - If the network's transaction cost goes up between auto-filling and submitting the transaction, the transaction may not be confirmed.
     - To prevent a transaction from getting stuck in a state of being neither definitively confirmed or rejected, be sure to provide a `LastLedgerSequence` parameter so it eventually expires. Alternatively, you can try to [cancel a stuck transaction](finality-of-results/canceling-a-transaction.md) by reusing the same `Sequence` number. See [reliable transaction submission](reliable-transaction-submission.md) for best practices.
 - You have to be careful that the automatically provided value isn't too high. You don't want to burn a large fee to send a small transaction.
-    - If you are using `rippled`, you can also use the `fee_mult_max` and `fee_div_max` parameters of the [sign method][] to set a limit to the load scaling you are willing to sign.
+    - If you are using `xrpld`, you can also use the `fee_mult_max` and `fee_div_max` parameters of the [sign method][] to set a limit to the load scaling you are willing to sign.
     - Some client libraries (like [xrpl.js](https://js.xrpl.org/) and [xrpl-py](https://xrpl-py.readthedocs.io/)) have configurable maximum `Fee` values, and raise an error instead of signing a transaction whose `Fee` value is higher than the maximum.
 - You cannot auto-fill from an offline machine nor when [multi-signing](../accounts/multi-signing.md).
 
 
 ## Transaction Costs and Failed Transactions
 
-Since the purpose of the transaction cost is to protect the XRP Ledger peer-to-peer network from excessive load, it should apply to any transaction that gets distributed to the network, regardless of whether or not that transaction succeeds. However, to affect the shared global ledger, a transaction must be included in a validated ledger. Thus, `rippled` servers try to include failed transactions in ledgers, with [`tec` status codes](../../references/protocol/transactions/transaction-results/index.md) ("tec" stands for "Transaction Engine - Claimed fee only").
+Since the purpose of the transaction cost is to protect the XRP Ledger peer-to-peer network from excessive load, it should apply to any transaction that gets distributed to the network, regardless of whether or not that transaction succeeds. However, to affect the shared global ledger, a transaction must be included in a validated ledger. Thus, `xrpld` servers try to include failed transactions in ledgers, with [`tec` status codes](../../references/protocol/transactions/transaction-results/index.md) ("tec" stands for "Transaction Engine - Claimed fee only").
 
 The transaction cost is only debited from the sender's XRP balance when the transaction actually becomes included in a validated ledger. This is true whether the transaction is considered successful or fails with a `tec` code.
 
-If a transaction's failure is [final](finality-of-results/index.md), the `rippled` server does not relay it to the network. The transaction does not get included in a validated ledger, so it cannot have any effect on anyone's XRP balance.
+If a transaction's failure is [final](finality-of-results/index.md), the `xrpld` server does not relay it to the network. The transaction does not get included in a validated ledger, so it cannot have any effect on anyone's XRP balance.
 
 ### Insufficient XRP
 
-When a `rippled` server initially evaluates a transaction, it rejects the transaction with the error code `terINSUF_FEE_B` if the sending account does not have a high enough XRP balance to pay the XRP transaction cost. Since this is a `ter` (Retry) code, the `rippled` server retries the transaction without relaying it to the network, until the transaction's outcome is [final](finality-of-results/index.md).
+When an `xrpld` server initially evaluates a transaction, it rejects the transaction with the error code `terINSUF_FEE_B` if the sending account does not have a high enough XRP balance to pay the XRP transaction cost. Since this is a `ter` (Retry) code, the `xrpld` server retries the transaction without relaying it to the network, until the transaction's outcome is [final](finality-of-results/index.md).
 
-When a transaction has already been distributed to the network, but the account does not have enough XRP to pay the transaction cost, the result code `tecINSUFF_FEE` occurs instead. In this case, the account pays all the XRP it can, ending with 0 XRP. This can occur because `rippled` decides whether to relay the transaction to the network based on its in-progress ledger, but transactions may be dropped or reordered when building the consensus ledger.
+When a transaction has already been distributed to the network, but the account does not have enough XRP to pay the transaction cost, the result code `tecINSUFF_FEE` occurs instead. In this case, the account pays all the XRP it can, ending with 0 XRP. This can occur because `xrpld` decides whether to relay the transaction to the network based on its in-progress ledger, but transactions may be dropped or reordered when building the consensus ledger.
 
 
 ## Key Reset Transaction
@@ -154,7 +158,7 @@ This feature is designed to allow you to recover an account if the regular key i
 
 The [`lsfPasswordSpent` flag](../../references/protocol/ledger-data/ledger-entry-types/accountroot.md) starts out disabled. It gets enabled when you send a SetRegularKey transaction signed by the master key pair. It gets disabled again when the account receives a [Payment](../../references/protocol/transactions/types/payment.md) of XRP.
 
-`rippled` prioritizes key reset transactions above other transactions even though the nominal transaction cost of a key reset transaction is zero.
+`xrpld` prioritizes key reset transactions above other transactions even though the nominal transaction cost of a key reset transaction is zero.
 
 
 ## Changing the Transaction Cost

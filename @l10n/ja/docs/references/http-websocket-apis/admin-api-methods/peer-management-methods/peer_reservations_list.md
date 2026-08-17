@@ -7,7 +7,7 @@ labels:
   - コアサーバ
 ---
 # peer_reservations_list
-[[ソース]](https://github.com/XRPLF/rippled/blob/4a1148eb2849513dd1e7ae080288fd47ab57a376/src/ripple/rpc/handlers/Reservations.cpp#L116 "Source")
+[[ソース]](https://github.com/XRPLF/rippled/blob/cdee9a675c0e571b5c86dc01550a554a42e6f85c/src/xrpld/rpc/handlers/admin/peer/PeerReservationsList.cpp#L10 "Source")
 
 {% code-page-name /%}メソッドは、[ピアリザベーション][]を一覧表示します。{% badge href="https://github.com/XRPLF/rippled/releases/tag/1.4.0" %}新規: rippled 1.4.0{% /badge %}
 
@@ -40,7 +40,7 @@ _{% code-page-name /%}メソッドは、権限のないユーザは実行でき�
 {% tab label="コマンドライン" %}
 ```sh
 #Syntax: {% $frontmatter.seo.title %}
-rippled {% $frontmatter.seo.title %}
+xrpld {% $frontmatter.seo.title %}
 ```
 {% /tab %}
 
@@ -97,7 +97,7 @@ rippled {% $frontmatter.seo.title %}
 
 {% tab label="コマンドライン" %}
 ```json
-Loading: "/etc/rippled.cfg"
+Loading: "/etc/xrpld.cfg"
 2019-Dec-27 21:56:07.253260422 HTTPClient:NFO Connecting to 127.0.0.1:5005
 
 {

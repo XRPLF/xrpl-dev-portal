@@ -6,7 +6,7 @@ labels:
   - クロスカレンシー
 ---
 # book_changes
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/BookChanges.h "ソース")
+{% source-link path="src/xrpld/rpc/BookChanges.h" /%}
 
 {% code-page-name /%} メソッドは、[分散型取引所（DEX）](../../../../concepts/tokens/decentralized-exchange/index.md) のオーダーブックの変更に関する情報を、以前のレジャーバージョンと比較して提供します。これは「ローソク足」チャートの作成に役立つ場合があります。
 
@@ -40,7 +40,7 @@ labels:
 {% tab label="コマンドライン" %}
 ```sh
 #Syntax: book_changes [<ledger hash|id>]
-rippled book_changes 88530953
+xrpld book_changes 88530953
 ```
 {% /tab %}
 
@@ -56,7 +56,7 @@ rippled book_changes 88530953
 | `ledger_index` | [レジャーインデックス][] | いいえ | 使用するレジャーの[レジャーインデックス][]、または自動的にレジャーを選択するためのショートカット文字列。([レジャーの指定][]) |
 
 {% admonition type="warning" name="既知の問題" %}
-`rippled`のこのメソッドにいくつかの既知の問題があります。
+`xrpld`のこのメソッドにいくつかの既知の問題があります。
 
 - デフォルトまたはショートカット文字列を使用する代わりに、`ledger_index`または`ledger_hash`を明示的に指定する必要があります。([Issue #5034](https://github.com/XRPLF/rippled/issues/5034))
 - JSON-RPC APIのレスポンスは、検証済みのレジャーをクエリする場合でも`validated`フィールドが欠落する可能性があります。([#5035](https://github.com/XRPLF/rippled/issues/5035))
@@ -81,7 +81,7 @@ rippled book_changes 88530953
 {% /tab %}
 
 {% tab label="コマンドライン" %}
-{% code-snippet file="/_api-examples/book_changes/jsonrpc-response.json" language="json" prefix="Loading: \"/etc/opt/ripple/rippled.cfg\"\n2024-Jun-07 18:41:45.257772761 UTC HTTPClient:NFO Connecting to 127.0.0.1:5005\n\n" /%}
+{% code-snippet file="/_api-examples/book_changes/jsonrpc-response.json" language="json" prefix="Loading: \"/etc/xrpld/xrpld.cfg\"\n2024-Jun-07 18:41:45.257772761 UTC HTTPClient:NFO Connecting to 127.0.0.1:5005\n\n" /%}
 {% /tab %}
 
 {% /tabs %}

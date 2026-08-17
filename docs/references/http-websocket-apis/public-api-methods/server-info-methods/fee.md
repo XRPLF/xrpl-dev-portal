@@ -5,7 +5,7 @@ labels:
     - Fees
 ---
 # fee
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/Fee1.cpp "Source")
+{% source-link path="src/xrpld/rpc/handlers/server_info/Fee.cpp" /%}
 
 The `fee` command reports the current state of the open-ledger requirements for the [transaction cost](../../../../concepts/transactions/transaction-cost.md). This requires the [FeeEscalation amendment][] to be enabled.
 
@@ -37,7 +37,7 @@ An example of the request format:
 {% tab label="Commandline" %}
 ```sh
 #Syntax: fee
-rippled fee
+xrpld fee
 ```
 {% /tab %}
 
@@ -113,7 +113,7 @@ An example of a successful response:
 
 {% tab label="Commandline" %}
 ```json
-Loading: "/etc/rippled.cfg"
+Loading: "/etc/xrpld.cfg"
 Connecting to 127.0.0.1:5005
 
 {

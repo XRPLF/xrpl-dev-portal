@@ -335,4 +335,18 @@ html.light {
       stop-color: $gray-700;
     }
   }
+
+  // Recolor the hand-authored "What is XRP?" figures for light mode -----------
+  // These diagrams are drawn for the dark theme; on a light background the faint
+  // grays and bright green don't have enough contrast, so darken them here.
+  // (The inline-svg filter namespaces the class per file, e.g.
+  // "docs-img-xrp-naming-svg__themed-figure", so match it as a substring.)
+  svg[class*="themed-figure"] {
+    [fill="#8A919A"] { fill: $gray-600; }
+    [stroke="#8A919A"] { stroke: $gray-600; }
+    [fill="#CAD4DF"] { fill: $gray-500; }
+    [stroke="#CAD4DF"] { stroke: $gray-500; }
+    [fill="#21E46B"] { fill: $green-800; }
+    [stroke="#21E46B"] { stroke: $green-800; }
+  }
 }

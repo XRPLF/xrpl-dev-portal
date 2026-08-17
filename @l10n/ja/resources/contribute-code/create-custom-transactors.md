@@ -9,7 +9,7 @@ labels:
 ---
 # カスタムトランザクタの作成
 
-_トランザクタ_ はトランザクションを処理し、XRP Ledgerを変更するコードです。カスタムトランザクタを作成することで、`rippled`に新しい機能を追加することができます。このチュートリアルではトランザクタのコーディングについて説明しますが、それをXRPLに追加するにはAmendmentプロセスを経る必要があります。 [XRP Ledgerのコードへの貢献](index.md)をご覧ください。
+_トランザクタ_ はトランザクションを処理し、XRP Ledgerを変更するコードです。カスタムトランザクタを作成することで、`xrpld`に新しい機能を追加することができます。このチュートリアルではトランザクタのコーディングについて説明しますが、それをXRPLに追加するにはAmendmentプロセスを経る必要があります。 [XRP Ledgerのコードへの貢献](index.md)をご覧ください。
 
 トランザクタは 基本的な処理順序に則って処理されます。
 
@@ -21,8 +21,8 @@ _トランザクタ_ はトランザクションを処理し、XRP Ledgerを変�
 
 このチュートリアルでは、既存の`CreateCheck`トランザクションを例として使用します。ソースファイルはここで確認できます。
 
-- [ヘッダファイル](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/CreateCheck.h)
-- [CPPファイル](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/CreateCheck.cpp)
+- {% source-link name="ヘッダファイル" path="include/xrpl/tx/transactors/check/CheckCreate.h" /%}
+- {% source-link name="CPPファイル" path="src/libxrpl/tx/transactors/check/CheckCreate.cpp" /%}
 
 
 ## ヘッダファイル
@@ -78,10 +78,10 @@ public:
     {% admonition type="info" name="注記" %}`~`記号は optional型を返します。{% /admonition %}
 
 - レジャーとトランザクションのスキーマはこちらから確認できます。
-    - [`LedgerFormats.cpp`](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp)
-    - [`TxFormats.cpp`](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/TxFormats.cpp)
+    - {% source-link name="LedgerFormats.cpp" path="src/libxrpl/protocol/LedgerFormats.cpp" /%}
+    - {% source-link name="TxFormats.cpp" path="src/libxrpl/protocol/TxFormats.cpp" /%}
 
--` rippled` はトランザクションの結果を結果コードで表します。[トランザクションの結果](../../docs/references/protocol/transactions/transaction-results/index.md)をご覧ください。
+-` xrpld` はトランザクションの結果を結果コードで表します。[トランザクションの結果](../../docs/references/protocol/transactions/transaction-results/index.md)をご覧ください。
 
 ```c++
 CreateCheck::preflight(PreflightContext const& ctx)
@@ -344,7 +344,7 @@ EscrowFinish::calculateBaseFee(ReadView const& view, STTx const& tx)
 
 ### `makeTxConsequences`
 
-`rippled`は[`TxConsequences`](https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/applySteps.h#L41-L44)クラスを使用して、トランザクション適用時のアカウントへの結果を記述します。このクラスは手数料、使用可能な最大XRP、トランザクションによって消費されたシーケンス番号の数を追跡します。結果には次の3つのタイプがあります。
+`rippled`は{% source-link name="TxConsequences" path="include/xrpl/tx/applySteps.h#L41-L44" /%}クラスを使用して、トランザクション適用時のアカウントへの結果を記述します。このクラスは手数料、使用可能な最大XRP、トランザクションによって消費されたシーケンス番号の数を追跡します。結果には次の3つのタイプがあります。
 
 - **ノーマル:**トランザクションは署名に影響を与えず、XRP手数料を消費するのみです。手数料を超えてXRPを消費するトランザクションは正常とはみなされません。
 - **ブロッカー:**トランザクションの署名に影響を与え、有効なトランザクションがその後ろにキューイングされるのを防ぎます。

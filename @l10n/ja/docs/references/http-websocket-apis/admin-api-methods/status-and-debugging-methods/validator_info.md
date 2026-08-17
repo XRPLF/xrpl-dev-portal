@@ -8,7 +8,7 @@ labels:
   - ブロックチェーン
 ---
 # validator_info
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/ValidatorInfo.cpp "ソース")
+{% source-link path="src/xrpld/rpc/handlers/admin/status/ValidatorInfo.cpp" /%}
 
 {% code-page-name /%}メソッドは、サーバがバリデータとして設定されている場合に、現在のバリデータの設定を返します。
 
@@ -40,7 +40,7 @@ _{% code-page-name /%}メソッドは[管理メソッド](../index.md)で、権�
 {% tab label="コマンドライン" %}
 ```sh
 #Syntax: {% $frontmatter.seo.title %}
-rippled {% $frontmatter.seo.title %}
+xrpld {% $frontmatter.seo.title %}
 ```
 {% /tab %}
 
@@ -90,7 +90,7 @@ rippled {% $frontmatter.seo.title %}
 
 {% tab label="コマンドライン" %}
 ```json
-Loading: "/etc/rippled.cfg"
+Loading: "/etc/xrpld.cfg"
 Connecting to 127.0.0.1:5005
 
 {
@@ -124,6 +124,6 @@ Connecting to 127.0.0.1:5005
 ### 考えられるエラー
 
 * [汎用エラータイプ][]のすべて。
-- `invalidParams` - サーバが[バリデータとして設定されていない](../../../../infrastructure/configuration/server-modes/run-rippled-as-a-validator.md)場合、サーバはこのエラーを`"error_message" : "not a validator"`と共に返します。
+- `invalidParams` - サーバが[バリデータとして設定されていない](../../../../infrastructure/configuration/server-modes/run-xrpld-as-a-validator.md)場合、サーバはこのエラーを`"error_message" : "not a validator"`と共に返します。
 
 {% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

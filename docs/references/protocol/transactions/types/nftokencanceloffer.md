@@ -9,7 +9,7 @@ requiredAmendment: NonFungibleTokensV1_1
 txIcon: cancel
 ---
 # NFTokenCancelOffer
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/NFTokenCancelOffer.cpp "Source")
+{% source-link path="src/libxrpl/tx/transactors/nft/NFTokenCancelOffer.cpp" /%}
 
 Cancel an offer to buy or sell a [non-fungible token (NFT)](../../../../concepts/tokens/nfts/index.md).
 
@@ -58,7 +58,7 @@ Besides errors that can occur for all transactions, {% $frontmatter.seo.title %}
 | Error Code         | Description                                             |
 |:-------------------|:--------------------------------------------------------|
 | `temDISABLED`      | The [NonFungibleTokensV1 amendment][] is not enabled. |
-| `temMALFORMED`     | The transaction was not validly formatted. For example, the `NFTokenOffers` array was empty or contained more than the maximum number of offers that can be canceled at one time. |
+| `temMALFORMED`     | The transaction was not validly formatted. For example, the `NFTokenOffers` array was empty, contained more than the maximum number of offers that can be canceled at one time, or contained an all-zero offer ID. |
 | `tecNO_PERMISSION` | At least one of the IDs in the `NFTokenOffers` field refers to an object that cannot be canceled. For example, the sender of this transaction is not the owner or `Destination` of the offer, or the object was not an `NFTokenOffer` type object. |
 
 ## See Also

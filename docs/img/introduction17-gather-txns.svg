@@ -1,0 +1,40 @@
+<svg width="100%" viewBox="0 0 680 160" role="img" xmlns="http://www.w3.org/2000/svg" style="">
+  <title style="fill:rgb(0, 0, 0);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto">How transactions work on the XRP Ledger</title>
+  <desc style="fill:rgb(0, 0, 0);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto">You send a transaction, xrpld servers propose it, 80% of validators approve it, and it is recorded permanently to the ledger.</desc>
+
+
+
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="4" markerHeight="4" orient="auto-start-reverse">
+      <path d="M2 1L8 5L2 9" fill="none" stroke="#8A919A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+
+
+  <rect x="35" y="30" width="130" height="100" rx="6" style="fill:rgb(30, 30, 30);stroke:rgb(68, 68, 68);color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+  <rect x="35" y="30" width="130" height="3" rx="1" style="fill:rgb(33, 228, 107);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+  <text x="100" y="78" text-anchor="middle" style="fill:rgb(240, 243, 247);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:Inter, sans-serif;font-size:11px;font-weight:500;text-anchor:middle;dominant-baseline:auto">Send a</text>
+  <text x="100" y="96" text-anchor="middle" style="fill:rgb(240, 243, 247);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:Inter, sans-serif;font-size:11px;font-weight:500;text-anchor:middle;dominant-baseline:auto">transaction</text>
+  <line x1="169" y1="80" x2="199" y2="80" stroke="#8A919A" stroke-width="1" marker-end="url(#arr)" style="fill:rgb(0, 0, 0);stroke:rgb(138, 145, 154);color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+
+
+  <rect x="203" y="30" width="130" height="100" rx="6" style="fill:rgb(30, 30, 30);stroke:rgb(68, 68, 68);color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+  <rect x="203" y="30" width="130" height="3" rx="1" style="fill:rgb(33, 228, 107);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+  <text x="268" y="78" text-anchor="middle" style="fill:rgb(240, 243, 247);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:Inter, sans-serif;font-size:11px;font-weight:500;text-anchor:middle;dominant-baseline:auto">Propose to</text>
+  <text x="268" y="96" text-anchor="middle" style="fill:rgb(240, 243, 247);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:Inter, sans-serif;font-size:11px;font-weight:500;text-anchor:middle;dominant-baseline:auto">validators</text>
+  <line x1="337" y1="80" x2="367" y2="80" stroke="#8A919A" stroke-width="1" marker-end="url(#arr)" style="fill:rgb(0, 0, 0);stroke:rgb(138, 145, 154);color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+
+
+  <rect x="371" y="30" width="130" height="100" rx="6" style="fill:rgb(30, 30, 30);stroke:rgb(68, 68, 68);color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+  <rect x="371" y="30" width="130" height="3" rx="1" style="fill:rgb(33, 228, 107);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+  <text x="436" y="74" text-anchor="middle" style="fill:rgb(33, 228, 107);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:Inter, sans-serif;font-size:18px;font-weight:700;text-anchor:middle;dominant-baseline:auto">80%</text>
+  <text x="436" y="96" text-anchor="middle" style="fill:rgb(240, 243, 247);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:Inter, sans-serif;font-size:11px;font-weight:500;text-anchor:middle;dominant-baseline:auto">must approve</text>
+  <line x1="505" y1="80" x2="535" y2="80" stroke="#8A919A" stroke-width="1" marker-end="url(#arr)" style="fill:rgb(0, 0, 0);stroke:rgb(138, 145, 154);color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+
+
+  <rect x="539" y="30" width="130" height="100" rx="6" style="fill:rgb(30, 30, 30);stroke:rgb(68, 68, 68);color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+  <rect x="539" y="30" width="130" height="3" rx="1" style="fill:rgb(33, 228, 107);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+  <text x="604" y="78" text-anchor="middle" style="fill:rgb(240, 243, 247);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:Inter, sans-serif;font-size:11px;font-weight:500;text-anchor:middle;dominant-baseline:auto">Recorded</text>
+  <text x="604" y="96" text-anchor="middle" style="fill:rgb(240, 243, 247);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:Inter, sans-serif;font-size:11px;font-weight:500;text-anchor:middle;dominant-baseline:auto">permanently</text>
+
+</svg>

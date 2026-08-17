@@ -7,7 +7,7 @@ labels:
   - Tokens
 ---
 # account_currencies
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/AccountCurrenciesHandler.cpp "Source")
+{% source-link path="src/xrpld/rpc/handlers/account/AccountCurrencies.cpp" /%}
 
 The `account_currencies` command retrieves a list of currencies that an account can send or receive, based on its trust lines. (This is not a thoroughly confirmed list, but it can be used to populate user interfaces.)
 
@@ -44,7 +44,7 @@ An example of the request format:
 {% tab label="Commandline" %}
 ```sh
 #Syntax: account_currencies account [ledger_index|ledger_hash]
-rippled account_currencies rG1QQv2nh2gr7RCZ1P8YYcBUKCCN633jCn validated
+xrpld account_currencies rG1QQv2nh2gr7RCZ1P8YYcBUKCCN633jCn validated
 ```
 {% /tab %}
 

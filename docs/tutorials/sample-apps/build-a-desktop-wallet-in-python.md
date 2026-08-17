@@ -144,7 +144,7 @@ Finally, change the code to start the app (at the end of the file) slightly:
 
 Since the app uses a WebSocket client instead of the JSON-RPC client now, the code has to use a WebSocket URL to connect.
 
-{% admonition type="success" name="Tip" %}If you [run your own `rippled` server](../../concepts/networks-and-servers/index.md#reasons-to-run-your-own-server) you can connect to it using `ws://localhost:6006` as the URL. You can also use the WebSocket URLs of [public servers](../public-servers.md) to connect to the Mainnet or other test networks.{% /admonition %}
+{% admonition type="success" name="Tip" %}If you [run your own `xrpld` server](../../concepts/networks-and-servers/index.md#reasons-to-run-your-own-server) you can connect to it using `ws://localhost:6006` as the URL. You can also use the WebSocket URLs of [public servers](../public-servers.md) to connect to the Mainnet or other test networks.{% /admonition %}
 
 #### Troubleshooting SSL Certificate Errors
 

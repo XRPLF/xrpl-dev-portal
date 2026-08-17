@@ -9,7 +9,7 @@ requiredAmendment: NonFungibleTokensV1_1
 txIcon: create
 ---
 # NFTokenCreateOffer
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/NFTokenCreateOffer.cpp "ソース")
+{% source-link path="src/libxrpl/tx/transactors/nft/NFTokenCreateOffer.cpp" /%}
 
 トランザクションを送信するアカウントが所有する`NFToken`に対する新しい _売却_ オファー、または別のアカウントが所有する`NFToken`に対する新しい _購入_ オファーを作成します。
 
@@ -58,7 +58,7 @@ NFTokenCreateOfferタイプのトランザクションは、以下のように[`
 | エラーコード                    | 説明                                          |
 |:---------------------------------|:------------------------------------------|
 | `temDISABLED`                    | [NonFungibleTokensV1 Amendment][]は有効ではありません。 |
-| `temBAD_AMOUNT`                  | `Amount`フィールドが有効ではありません。例えば、購入オファーで金額がゼロであったり、金額はトークンであるが`NFToken`で[`lsfOnlyXRP`フラグ](../../data-types/nftoken.md#nftoken-フラグ)が有効になっている場合などです。 |
+| `temBAD_AMOUNT`                  | `Amount`フィールドが有効ではありません。例えば、購入オファーで金額がゼロであったり、金額はトークンであるが`NFToken`で[`flagOnlyXRP`フラグ](../../data-types/nftoken.md#nftoken-フラグ)が有効になっている場合などです。 |
 | `temBAD_EXPIRATION`              | 指定された`Expiration`は無効です（例：`0`）。 |
 | `tecDIR_FULL`                    | 送信者がレジャーにすでにあまりにも多くのオブジェクトを所有しているか、またはこのトークンの売買のオファーがあまりにも多く存在しています。 |
 | `tecEXPIRED`                     | 指定された`Expiration`の時間は既に経過しています。 |
@@ -67,9 +67,9 @@ NFTokenCreateOfferタイプのトランザクションは、以下のように[`
 | `tecNO_DST`                      | `Destination`に指定されたアカウントがレジャーに存在しません。 |
 | `tecNO_ENTRY`                    | `NFToken`フィールドで指定したアカウントは所有していません。 |
 | `tecNO_ISSUER`                   | `Amount`フィールドで指定した発行者が存在しません。 |
-| `tecNO_LINE`                     | `Amount`フィールドはトークンですが、`NFToken`の発行者はそのトークンのトラストラインを持っておらず、`NFToken`は[`lsfTrustLine`フラグ](../../data-types/nftoken.md#nftoken-フラグ)が有効ではありません。 |
+| `tecNO_LINE`                     | `Amount`フィールドはトークンですが、`NFToken`の発行者はそのトークンのトラストラインを持っておらず、`NFToken`は[`flagTrustLine`フラグ](../../data-types/nftoken.md#nftoken-フラグ)が有効ではありません。 |
 | `tecNO_PERMISSION`               | `Destination`アカウントが着信する NFTokenOffer をブロックします。 {% amendment-disclaimer name="DisallowIncoming" /%}
 | `tecUNFUNDED_OFFER`              | 購入オファーの場合、送信者は`Amount`フィールドで指定された通貨を利用可能です。もし`Amount`がXRPである場合、これは準備不足によるものかもしれません。もし`Amount`がトークンである場合、これは[フリーズ](../../../../concepts/tokens/fungible-tokens/freezes.md)されている可能性があります。 |
-| `tefNFTOKEN_IS_NOT_TRANSFERABLE` | `NFToken`は[`lsfTransferable`フラグ](../../data-types/nftoken.md#nftoken-flags)が無効になっており、このトランザクションでは`NFToken`を発行者に転送したり発行者から転送したりすることはできません。 |
+| `tefNFTOKEN_IS_NOT_TRANSFERABLE` | `NFToken`は[`flagTransferable`フラグ](../../data-types/nftoken.md#nftoken-flags)が無効になっており、このトランザクションでは`NFToken`を発行者に転送したり発行者から転送したりすることはできません。 |
 
 {% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

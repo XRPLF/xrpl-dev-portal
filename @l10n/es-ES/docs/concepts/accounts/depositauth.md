@@ -106,7 +106,7 @@ Puedes utilizar el [método deposit_authorized][] para ver si una cuenta esta au
 
 - La referencia [transación DepositPreauth][].
 - El [tipo de objeto del ledger DepositPreauth](../../references/protocol/ledger-data/ledger-entry-types/depositpreauth.md).
-- El [método deposit_authorized][] de la [API `rippled`](../../references/http-websocket-apis/index.md).
+- El [método deposit_authorized][] de la [API `xrpld`](../../references/http-websocket-apis/index.md).
 - La característica [Authorized Trust Lines](../tokens/fungible-tokens/authorized-trust-lines.md) (`RequireAuth` flag) limita que contrapartes pueden poseer divisas no-XRP en la cuenta.
 - El flag `DisallowXRP` indica que una cuenta no puede recibir XRP. Es una protencción más suave que Deposit Authorization, y no la aplica el XRP Ledger. (Las aplicaciones cliente deberían respetar este flag o al menos avisar de ello.)
 - El flag `RequireDest` indica que una cuenta solo puede recibir cantidades de divisas si se especifica un [Destination Tag](../transactions/source-and-destination-tags.md). Esto protege a usuarios de olvidar incluir el propósito del pago, pero no protege a los destinatarios de remitentes desconocidos que pueden añadir destination tags arbitrarios.

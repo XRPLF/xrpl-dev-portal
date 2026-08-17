@@ -8,7 +8,7 @@ labels:
 ---
 # Rate Limiting
 
-The `rippled` server limits the rate at which API clients can make requests on public APIs. Rate limiting is based on the IP address of the client, so clients behind [network address translation](https://en.wikipedia.org/wiki/Network_address_translation) share a limit based on their public IP address.
+The `xrpld` server limits the rate at which API clients can make requests on public APIs. Rate limiting is based on the IP address of the client, so clients behind [network address translation](https://en.wikipedia.org/wiki/Network_address_translation) share a limit based on their public IP address.
 
 {% admonition type="success" name="Tip" %}Rate limiting does not apply when the client is connected [as an admin](../../../tutorials/get-started/get-started-http-websocket-apis.md#admin-access).{% /admonition %}
 
@@ -46,7 +46,7 @@ Server is overloaded
 ```
 
 ## Rate Per Request
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/libxrpl/resource/Fees.cpp "Source")
+{% source-link path="src/libxrpl/resource/Fees.cpp" /%}
 
 The server calculates a client's usage rate based on the number of requests made over time, and weighs different types of requests based on approximately how much work the server must do to serve them. Follow-up messages from the server for the [subscribe method][] and [path_find method][] also count towards a client's usage rate.
 
@@ -55,13 +55,13 @@ The usage rate drops off exponentially over time, so a client that does not make
 ## See Also
 
 - **Concepts:**
-    - [The `rippled` Server](../../../concepts/networks-and-servers/index.md)
+    - [The `xrpld` Server](../../../concepts/networks-and-servers/index.md)
     - [Software Ecosystem](../../../introduction/software-ecosystem.md)
 - **Tutorials:**
     - [Getting Started with XRP Ledger APIs](../../../tutorials/get-started/get-started-http-websocket-apis.md)
-    - [Troubleshooting rippled](../../../infrastructure/troubleshooting/index.md)
+    - [Troubleshooting xrpld](../../../infrastructure/troubleshooting/index.md)
 - **References:**
-    - [rippled API Reference](../index.md)
+    - [xrpld API Reference](../index.md)
         - [Error Formatting](error-formatting.md)
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

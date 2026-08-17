@@ -8,7 +8,7 @@ txIcon: finish
 requiredAmendment: Checks
 ---
 # CheckCash
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/CashCheck.cpp "Source")
+{% source-link path="src/libxrpl/tx/transactors/check/CheckCash.cpp" /%}
 
 Attempts to redeem a [check](../../../../concepts/payment-types/checks.md) to receive up to the amount authorized by the corresponding [CheckCreate transaction][]. Only the `Destination` address of a check can cash it with a CheckCash transaction. Cashing a check this way is similar to executing a [Payment][] initiated by the destination.
 
@@ -43,6 +43,7 @@ The transaction ***must*** include either `Amount` or `DeliverMin`, but not both
 ## Error Cases
 
 - If the sender of the CheckCash transaction is not the `Destination` of the check, the transaction fails with the result code `tecNO_PERMISSION`.
+- If the `CheckID` is an all-zero value, the transaction fails with the result `temMALFORMED`. Previously, the transaction would fail with the result `tecNO_ENTRY`. {% amendment-disclaimer name="fixCleanup3_3_0" mode="updated" /%}
 - If the Check identified by the `CheckID` field does not exist, the transaction fails with the result `tecNO_ENTRY`.
 - If the Check identified by the `CheckID` field has already expired, the transaction fails with the result `tecEXPIRED`.
 - If the destination of the Check has the `RequireDest` flag enabled but the Check, as created, does not have a destination tag, the transaction fails with the result code `tecDST_TAG_NEEDED`.

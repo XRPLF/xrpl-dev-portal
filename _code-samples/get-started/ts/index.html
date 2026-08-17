@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>xrpl.js TypeScript Base Example</title>
+    <!-- @chunk {"steps": ["import-web-tag"]} -->
+    <!-- The import map resolves the bare 'xrpl' specifier used in browser.ts
+         to a browser-ready ES module build served from a CDN. -->
+    <script type="importmap">
+      { "imports": { "xrpl": "https://esm.sh/xrpl@4" } }
+    </script>
+    <!-- Load the compiled output of browser.ts (created by `npx tsc`). -->
+    <script type="module" src="./dist/browser.js"></script>
+    <!-- @chunk-end -->
+  </head>
+  <body>
+    <h1>xrpl.js TypeScript Get Started</h1>
+    <div id="output"></div>
+  </body>
+</html>

@@ -8,7 +8,7 @@ requiredAmendment: DID
 txIcon: cancel
 ---
 # DIDDelete
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/DID.cpp "ソース")
+{% source-link path="src/libxrpl/tx/transactors/did/DIDDelete.cpp" /%}
 
 指定した`Account`フィールドに関連付けられている[DIDレジャーエントリ](../../ledger-data/ledger-entry-types/did.md)を削除します。
 

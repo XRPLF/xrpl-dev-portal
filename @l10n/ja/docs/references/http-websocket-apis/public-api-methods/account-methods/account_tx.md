@@ -8,7 +8,7 @@ labels:
   - 支払い
 ---
 # account_tx
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/AccountTx.cpp "Source")
+{% source-link path="src/xrpld/rpc/handlers/account/AccountTx.cpp" /%}
 
 `account_tx`メソッドは、指定したアカウントに関連するトランザクションのリストを取得します。
 
@@ -57,7 +57,7 @@ labels:
 ```sh
 # Syntax: account_tx account [ledger_index_min [ledger_index_max]] [limit] [offset] [binary] [count] [descending]
 # For binary/count/descending, use the parameter name for true and omit for false.
-rippled -- account_tx rLNaPoKeeBjZe2qs6x52yVPZpZ8td4dc6w -1 -1 2 0 binary descending
+xrpld -- account_tx rLNaPoKeeBjZe2qs6x52yVPZpZ8td4dc6w -1 -1 2 0 binary descending
 ```
 {% /tab %}
 

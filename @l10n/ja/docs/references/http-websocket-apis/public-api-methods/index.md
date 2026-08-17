@@ -2,13 +2,13 @@
 html: public-api-methods.html
 parent: http-websocket-apis.html
 seo:
-    description: パブリックAPIメソッドを使用して、rippledサーバと直接通信します。
+    description: パブリックAPIメソッドを使用して、xrpldサーバと直接通信します。
 labels:
   - コアサーバ
 top_nav_grouping: 人気ページ
 top_nav_name: APIのメソッド
 ---
-# rippledのパブリックメソッド
+# xrpldのパブリックメソッド
 
 以下のパブリックAPIメソッドを使用して、[XRP Ledgerサーバ](../../../concepts/networks-and-servers/index.md)と直接通信します。パブリックメソッドは必ずしも一般大衆向けに設計されたのではありませんが、サーバに接続されたあらゆるクライアントが使用します。パブリックメソッドは、サーバを運用している組織のメンバーまたは顧客向けのものと考えてください。
 
@@ -82,7 +82,7 @@ Payment Channel は、2名の当事者間での一方向の繰り返しの支払
 
 ## [サーバ情報メソッド](server-info-methods/index.md)
 
-以下のメソッドを使用して、`rippled`サーバの現在の状態についての情報を取得します。
+以下のメソッドを使用して、`xrpld`サーバの現在の状態についての情報を取得します。
 
 * **[`fee`](server-info-methods/fee.md)** - トランザクションコストについての情報を取得します。
 * **[`server_info`](server-info-methods/server_info.md)** - サーバのステータスを人間が読めるフォーマットで取得します。

@@ -86,7 +86,7 @@ No, a formal process for adding validators is not compatible with the XRP Ledger
 
 Publishers of individual default UNLs set their own policies for when to add or remove validators from their lists of recommendations.
 
-For recommendations and best practices, see [Run `rippled` as a Validator](../docs/infrastructure/configuration/server-modes/run-rippled-as-a-validator.md).
+For recommendations and best practices, see [Run `rippled` as a Validator](../docs/infrastructure/configuration/server-modes/run-xrpld-as-a-validator.md).
 
 
 #### If the dUNL has the most influence on the network, then is the XRPL centralized?

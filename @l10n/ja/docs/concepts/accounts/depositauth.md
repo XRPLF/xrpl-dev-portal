@@ -108,7 +108,7 @@ DepositPreauthトランザクションの処理が完了すると、承認済み
 
 - [DepositPreauthトランザクション][]リファレンス。
 - [DepositPreauthレジャーオブジェクトタイプ](../../references/protocol/ledger-data/ledger-entry-types/depositpreauth.md)。
-- [`rippled` API](../../references/http-websocket-apis/index.md)の[deposit_authorizedメソッド][]。
+- [`xrpld` API](../../references/http-websocket-apis/index.md)の[deposit_authorizedメソッド][]。
 - [Authorized Trust Lines](../tokens/fungible-tokens/authorized-trust-lines.md)機能（`RequireAuth`フラグ）により、アカウントが発行したXRP以外の通貨を保有できる取引相手が制限されます。
 - `DisallowXRP`フラグは、アカウントがXRPを受領してはならないことを示します。これはDeposit Authorizationよりもソフトな保護機能であり、XRP Ledgerにより強制されません。（クライアントアプリケーションはこのフラグに従うか、または少なくともこのフラグについて警告します。）
 - 送信トランザクションが[Destinationタグ](../transactions/source-and-destination-tags.md)を指定している場合には、`RequireDest`フラグは、アカウントが通貨額のみを受領できることを示します。これにより、ユーザが支払の目的を指定し忘れることがなくなりますが、恣意的な送金先タグを作成できる不明な送金元から受取人が保護されるわけではありません。

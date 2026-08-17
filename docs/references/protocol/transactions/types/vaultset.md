@@ -12,7 +12,7 @@ txIcon: modify
 
 # VaultSet
 
-[[Source]](https://github.com/XRPLF/rippled/blob/release-3.1/src/xrpld/app/tx/detail/VaultSet.cpp "Source")
+{% source-link path="src/libxrpl/tx/transactors/vault/VaultSet.cpp" /%}
 
 Modifies a single asset vault that you own. This transaction allows the Vault Owner to update certain mutable fields, including vault metadata and the maximum asset amount.
 

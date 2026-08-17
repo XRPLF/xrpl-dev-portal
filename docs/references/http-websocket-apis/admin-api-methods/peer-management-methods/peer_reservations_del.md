@@ -5,7 +5,7 @@ labels:
     - Core Server
 ---
 # peer_reservations_del
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/Reservations.cpp "Source")
+{% source-link path="src/xrpld/rpc/handlers/admin/peer/PeerReservationsDel.cpp" /%}
 
 The {% code-page-name /%} method removes a specific [peer reservation][], if one exists.
 
@@ -43,7 +43,7 @@ An example of the request format:
 {% tab label="Commandline" %}
 ```sh
 #Syntax: {% $frontmatter.seo.title %} <public_key>
-rippled {% $frontmatter.seo.title %} n9Jt8awsPzWLjBCNKVEEDQnw4bQEPjezfcQ4gttD1UzbLT1FoG99
+xrpld {% $frontmatter.seo.title %} n9Jt8awsPzWLjBCNKVEEDQnw4bQEPjezfcQ4gttD1UzbLT1FoG99
 ```
 {% /tab %}
 
@@ -94,7 +94,7 @@ An example of a successful response:
 
 {% tab label="Commandline" %}
 ```json
-Loading: "/etc/rippled.cfg"
+Loading: "/etc/xrpld.cfg"
 Connecting to 127.0.0.1:5005
 
 {

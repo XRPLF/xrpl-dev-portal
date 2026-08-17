@@ -7,9 +7,7 @@ labels:
   - Payment Channel
 ---
 # channel_authorize
-[[ソース]](https://github.com/XRPLF/rippled/blob/d4a56f223a3b80f64ff70b4e90ab6792806929ca/src/ripple/rpc/handlers/PayChanClaim.cpp#L41 "Source")
-
-_（[PayChan Amendment][]が有効になっている必要があります。{% badge href="https://github.com/XRPLF/rippled/releases/tag/0.33.0" %}新規: rippled 0.33.0{% /badge %}）_
+{% source-link path="src/xrpld/rpc/handlers/admin/signing/ChannelAuthorize.cpp" /%}
 
 `channel_authorize`メソッドは、特定額のXRPをPayment Channelから清算するときに使用できる署名を作成します。
 
@@ -51,7 +49,7 @@ Content-Type: application/json
 {% tab label="コマンドライン" %}
 ```sh
 #Syntax: channel_authorize <private_key> [<key_type>] <channel_id> <drops>
-rippled channel_authorize s████████████████████████████ secp256k1 5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3 1000000
+xrpld channel_authorize s████████████████████████████ secp256k1 5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3 1000000
 ```
 {% /tab %}
 

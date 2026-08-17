@@ -233,7 +233,7 @@ xrpl.jsの[Wallet.sign()メソッド](https://js.xrpl.org/classes/Wallet.html#si
 {% /tabs %}
 
 
-{% admonition type="warning" name="注意" %}APIは、まだ検証されていないレジャーバージョンからの暫定的な結果を返す場合があります。例えば、`rippled` APIの[txメソッド][]を使用した場合は、レスポンス内の`"validated": true`を探して、データが検証済みレジャーバージョンからのものであることを確認してください。検証済みレジャーバージョンからのものではないトランザクション結果は、変わる可能性があります。詳細は、[結果のファイナリティー](../../concepts/transactions/finality-of-results/index.md)をご覧ください。{% /admonition %}
+{% admonition type="warning" name="注意" %}APIは、まだ検証されていないレジャーバージョンからの暫定的な結果を返す場合があります。例えば、`xrpld` APIの[txメソッド][]を使用した場合は、レスポンス内の`"validated": true`を探して、データが検証済みレジャーバージョンからのものであることを確認してください。検証済みレジャーバージョンからのものではないトランザクション結果は、変わる可能性があります。詳細は、[結果のファイナリティー](../../concepts/transactions/finality-of-results/index.md)をご覧ください。{% /admonition %}
 
 {% interactive-block label="Check" steps=$frontmatter.steps %}
 

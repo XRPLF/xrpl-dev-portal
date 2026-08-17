@@ -18,7 +18,7 @@ labels:
 {% tab label="コマンドライン" %}
 ```sh
 # Syntax: json method json_stanza
-rippled -q json ledger_closed '{}'
+xrpld -q json ledger_closed '{}'
 ```
 {% /tab %}
 

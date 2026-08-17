@@ -201,11 +201,11 @@ frm_form = tk.Frame(relief=tk.SUNKEN, borderwidth=3)
 frm_form.pack()
 
 # Create the Label and Entry widgets for "Standby Account"
-lbl_standy_seed = tk.Label(master=frm_form, text="Standby Seed")
+lbl_standby_seed = tk.Label(master=frm_form, text="Standby Seed")
 ent_standby_seed = tk.Entry(master=frm_form, width=50)
 lbl_standby_account = tk.Label(master=frm_form, text="Standby Account")
 ent_standby_account = tk.Entry(master=frm_form, width=50)
-lbl_standy_amount = tk.Label(master=frm_form, text="Amount")
+lbl_standby_amount = tk.Label(master=frm_form, text="Amount")
 ent_standby_amount = tk.Entry(master=frm_form, width=50)
 lbl_standby_destination = tk.Label(master=frm_form, text="Destination")
 ent_standby_destination = tk.Entry(master=frm_form, width=50)
@@ -232,11 +232,11 @@ text_standby_results = tk.Text(master=frm_form, height = 20, width = 65)
 
 
 # Place field in a grid.
-lbl_standy_seed.grid(row=0, column=0, sticky="w")
+lbl_standby_seed.grid(row=0, column=0, sticky="w")
 ent_standby_seed.grid(row=0, column=1)
 lbl_standby_account.grid(row=2, column=0, sticky="e")
 ent_standby_account.grid(row=2, column=1)
-lbl_standy_amount.grid(row=3, column=0, sticky="e")
+lbl_standby_amount.grid(row=3, column=0, sticky="e")
 ent_standby_amount.grid(row=3, column=1)
 lbl_standby_destination.grid(row=4, column=0, sticky="e")
 ent_standby_destination.grid(row=4, column=1)

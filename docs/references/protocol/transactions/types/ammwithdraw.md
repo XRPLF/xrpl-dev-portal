@@ -8,7 +8,7 @@ requiredAmendment: AMM
 txIcon: send
 ---
 # AMMWithdraw
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/AMMWithdraw.cpp "Source")
+{% source-link path="src/libxrpl/tx/transactors/dex/AMMWithdraw.cpp" /%}
 
 Withdraw assets from an [Automated Market Maker](../../../../concepts/tokens/decentralized-exchange/automated-market-makers.md) (AMM) instance by returning the AMM's liquidity provider tokens (LP Tokens).
 
@@ -117,9 +117,11 @@ Besides errors that can occur for all transactions, {% $frontmatter.seo.title %}
 | `tecAMM_BALANCE`        | The transaction would withdraw all of one asset from the pool, or rounding would cause a "withdraw all" to leave a nonzero amount behind. |
 | `tecAMM_FAILED`         | The conditions on the withdrawal could not be satisfied; for example, the requested effective price in the `EPrice` field is too low. |
 | `tecAMM_INVALID_TOKENS` | The AMM for this token pair does not exist, or one of the calculations resulted in a withdrawal amount rounding to zero. |
-| `tecFROZEN`             | The transaction tried to withdraw a [frozen](../../../../concepts/tokens/fungible-tokens/freezes.md) token. |
+| `tecFROZEN`             | A token being withdrawn is [frozen](../../../../concepts/tokens/fungible-tokens/freezes.md) globally for the AMM's pseudo-account, or [deep frozen](../../../../concepts/tokens/fungible-tokens/deep-freeze.md) for the sender. A regular freeze on the sender does not cause this error. {% amendment-disclaimer name="fixCleanup3_3_0" mode="updated" /%} |
 | `tecINSUF_RESERVE_LINE` | The sender of this transaction does not meet the increased [reserve requirement](../../../../concepts/accounts/reserves.md) of processing this transaction, probably because they need at least one new trust line to hold one of the assets to be withdrawn, and they don't have enough XRP to meet the additional owner reserve for a new trust line. |
+| `tecLOCKED`             | An MPT being withdrawn is locked globally for the sender, or for the AMM's pseudo-account. {% amendment-disclaimer name="fixCleanup3_3_0" mode="updated" /%} |
 | `tecNO_AUTH`            | The sender is not authorized to hold one of the AMM assets. |
+| `tecPRECISION_LOSS`     | The withdrawal would leave more LP Tokens outstanding than the pool's assets support. Without the `fixCleanup3_3_0` amendment it fails with `tecINVARIANT_FAILED` instead. {% amendment-disclaimer name="fixAMMv1_3" /%} {% amendment-disclaimer name="fixCleanup3_3_0" /%} |
 | `temMALFORMED`          | The transaction specified an invalid combination of fields. See [AMMWithdraw Modes](#ammwithdraw-modes). (This error can also occur if the transaction is malformed in other ways.) |
 | `temBAD_AMM_TOKENS`     | The transaction specified the LP Tokens incorrectly; for example, the `issuer` is not the AMM's associated AccountRoot address or the `currency` is not the currency code for this AMM's LP Tokens, or the transaction specified this AMM's LP Tokens in one of the asset fields.  |
 | `terNO_AMM`             | The Automated Market Maker instance for the asset pair in this transaction does not exist. |

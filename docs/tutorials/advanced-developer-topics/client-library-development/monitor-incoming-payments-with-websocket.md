@@ -19,7 +19,7 @@ WebSocket follows a model where the client and server open one connection, then 
 ## Prerequisites
 
 - The examples in this page use JavaScript and the WebSocket protocol, which are available in all major modern browsers. If you have some JavaScript knowledge and expertise in another programming language with a WebSocket client, you can follow along while adapting the instructions to the language of your choice.
-- You need a stable internet connection and access to an XRP Ledger server. The embedded examples connect to Ripple's pool of public servers. If you [run your own `rippled` or Clio server](../../../infrastructure/installation/index.md), you can also connect to that server locally.
+- You need a stable internet connection and access to an XRP Ledger server. The embedded examples connect to Ripple's pool of public servers. If you [run your own `xrpld` or Clio server](../../../infrastructure/installation/index.md), you can also connect to that server locally.
 - To properly handle XRP values without rounding errors, you need access to a number type that can do math on 64-bit unsigned integers. The examples in this tutorial use [big.js](https://github.com/MikeMcl/big.js/). If you are working with [tokens](../../../concepts/tokens/index.md), you need even more precision. For more information, see [Currency Precision](../../../references/protocol/data-types/currency-formats.md#xrp-precision).
 
 
@@ -40,7 +40,7 @@ function writeToConsole(console_selector, message) {
 
 ## 1. Connect to the XRP Ledger
 
-The first step of monitoring for incoming payments is to connect to the XRP Ledger, specifically a `rippled` server.
+The first step of monitoring for incoming payments is to connect to the XRP Ledger, specifically an `xrpld` server.
 
 The following JavaScript code connects to one of Ripple's public server clusters. It then logs a message to the console, sends a request using the [ping method][] and sets up a handler to log to the console again when it receives any message from the server side.
 
@@ -65,13 +65,13 @@ socket.addEventListener('close', (event) => {
 })
 ```
 
-The above example opens a secure connection (`wss://`) to one of Ripple's public API servers on the [Test Net](/resources/dev-tools/xrp-faucets). To connect to a locally-running `rippled` server with the default configuration instead, open an _unsecured_ connection (`ws://`) on port **6006** locally, using the following first line:
+The above example opens a secure connection (`wss://`) to one of Ripple's public API servers on the [Test Net](/resources/dev-tools/xrp-faucets). To connect to a locally-running `xrpld` server with the default configuration instead, open an _unsecured_ connection (`ws://`) on port **6006** locally, using the following first line:
 
 ```js
 const socket = new WebSocket('ws://localhost:6006')
 ```
 
-{% admonition type="success" name="Tip" %}By default, connecting to a local `rippled` server gives you access to the full set of [admin methods](../../../references/http-websocket-apis/admin-api-methods/index.md) and admin-only data in some responses such as [server_info][server_info method], plus the [public methods](../../../references/http-websocket-apis/public-api-methods/index.md) that are available when you connect to public servers over the internet.{% /admonition %}
+{% admonition type="success" name="Tip" %}By default, connecting to a local `xrpld` server gives you access to the full set of [admin methods](../../../references/http-websocket-apis/admin-api-methods/index.md) and admin-only data in some responses such as [server_info][server_info method], plus the [public methods](../../../references/http-websocket-apis/public-api-methods/index.md) that are available when you connect to public servers over the internet.{% /admonition %}
 
 Example:
 
@@ -117,7 +117,7 @@ $("#connect-socket-button").click((event) => {
 
 ## 2. Dispatch Incoming Messages to Handlers
 
-Since WebSocket connections can have several messages going each way and there is not a strict 1:1 correlation between requests and responses, you need to identify what to do with each incoming message. A good model for coding this is to set up a "dispatcher" function that reads incoming messages and relays each message to the correct code path for handling it. To help dispatch messages appropriately, the `rippled` server provides a `type` field on every WebSocket message:
+Since WebSocket connections can have several messages going each way and there is not a strict 1:1 correlation between requests and responses, you need to identify what to do with each incoming message. A good model for coding this is to set up a "dispatcher" function that reads incoming messages and relays each message to the correct code path for handling it. To help dispatch messages appropriately, the `xrpld` server provides a `type` field on every WebSocket message:
 
 - For any message that is a direct response to a request from the client side, the `type` is the string `response`. In this case, the server also provides the following:
 
@@ -479,7 +479,7 @@ $("#tx_read").click((event) => {
 
 ## Other Programming Languages
 
-Many programming languages have libraries for sending and receiving data over a WebSocket connection. If you want a head-start on communicating with `rippled`'s WebSocket API in a language other than JavaScript, the following examples show how:
+Many programming languages have libraries for sending and receiving data over a WebSocket connection. If you want a head-start on communicating with `xrpld`'s WebSocket API in a language other than JavaScript, the following examples show how:
 
 {% tabs %}
 

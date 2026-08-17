@@ -1,0 +1,39 @@
+<svg width="100%" viewBox="0 0 680 200" role="img" xmlns="http://www.w3.org/2000/svg" style="">
+  <title style="fill:rgb(0, 0, 0);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto">Liquidity Provider receiving LP Tokens</title>
+  <desc style="fill:rgb(0, 0, 0);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto">A liquidity provider deposits assets into the AMM pool and receives LP tokens in return.</desc>
+
+
+
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+
+
+
+  <circle cx="167" cy="72" r="26" style="fill:rgb(202, 212, 223);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+  <path d="M123,130 Q123,100 167,100 Q211,100 211,130" style="fill:rgb(202, 212, 223);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+  <circle cx="195" cy="52" r="14" style="fill:rgb(33, 228, 107);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+  <text x="195" y="57" text-anchor="middle" style="font-family:'Inter',sans-serif; font-size:9px; fill:#141414; font-weight:700;;fill:rgb(20, 20, 20);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:Inter, sans-serif;font-size:9px;font-weight:700;text-anchor:middle;dominant-baseline:auto">LP</text>
+  <text x="167" y="152" text-anchor="middle" style="fill:rgb(114, 119, 126);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:Inter, &quot;Helvetica Neue&quot;, sans-serif;font-size:11px;font-weight:400;text-anchor:middle;dominant-baseline:auto">Liquidity</text>
+  <text x="167" y="166" text-anchor="middle" style="fill:rgb(114, 119, 126);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:Inter, &quot;Helvetica Neue&quot;, sans-serif;font-size:11px;font-weight:400;text-anchor:middle;dominant-baseline:auto">Provider</text>
+
+
+  <line x1="207" y1="82" x2="353" y2="82" stroke-width="1" marker-end="url(#arr)" style="fill:rgb(0, 0, 0);stroke:rgb(20, 20, 20);color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+  <text x="280" y="72" text-anchor="middle" style="fill:rgb(114, 119, 126);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:Inter, &quot;Helvetica Neue&quot;, sans-serif;font-size:10px;font-weight:500;text-anchor:middle;dominant-baseline:auto">ASSETS</text>
+
+
+  <line x1="353" y1="100" x2="207" y2="100" stroke-width="1" marker-end="url(#arr)" style="fill:rgb(0, 0, 0);stroke:rgb(20, 20, 20);color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+  <text x="280" y="116" text-anchor="middle" style="fill:rgb(114, 119, 126);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:Inter, &quot;Helvetica Neue&quot;, sans-serif;font-size:10px;font-weight:500;text-anchor:middle;dominant-baseline:auto">LP TOKENS</text>
+
+
+  <rect x="357" y="50" width="200" height="96" rx="8" style="fill:rgb(30, 30, 30);stroke:rgb(68, 68, 68);color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+  <rect x="357" y="50" width="200" height="3" rx="1" style="fill:rgb(33, 228, 107);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+  <text x="457" y="80" text-anchor="middle" style="fill:rgb(114, 119, 126);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:Inter, sans-serif;font-size:10px;font-weight:500;text-anchor:middle;dominant-baseline:auto">AMM POOL</text>
+  <rect x="375" y="88" width="164" height="40" rx="6" fill="#21E46B" opacity="0.12" style="fill:rgb(33, 228, 107);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.12;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+  <line x1="457" y1="92" x2="457" y2="124" stroke="#21E46B" stroke-width="0.5" opacity="0.4" style="fill:rgb(0, 0, 0);stroke:rgb(33, 228, 107);color:rgb(0, 0, 0);stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.4;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+  <text x="416" y="114" text-anchor="middle" style="fill:rgb(33, 228, 107);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:Inter, sans-serif;font-size:13px;font-weight:600;text-anchor:middle;dominant-baseline:auto">USD</text>
+  <text x="498" y="114" text-anchor="middle" style="fill:rgb(33, 228, 107);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:Inter, sans-serif;font-size:13px;font-weight:600;text-anchor:middle;dominant-baseline:auto">XRP</text>
+
+</svg>

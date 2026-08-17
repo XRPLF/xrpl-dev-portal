@@ -6,9 +6,9 @@ labels:
     - Transaction Sending
 ---
 # Binary Format
-[[Source]](https://github.com/XRPLF/rippled/blob/master/include/xrpl/protocol/SField.h "Source")
+{% source-link path="include/xrpl/protocol/SField.h" /%}
 
-This page describes the XRP Ledger's canonical binary format for transactions and other data. This binary format is necessary to create and verify digital signatures of those transactions' contents, and is also used in other places including in the [peer-to-peer communications between servers](../../concepts/networks-and-servers/peer-protocol.md). The [`rippled` APIs](../http-websocket-apis/index.md) typically use JSON to communicate with client applications. However, JSON is unsuitable as a format for serializing transactions for being digitally signed, because JSON can represent the same data in many different but equivalent ways.
+This page describes the XRP Ledger's canonical binary format for transactions and other data. This binary format is necessary to create and verify digital signatures of those transactions' contents, and is also used in other places including in the [peer-to-peer communications between servers](../../concepts/networks-and-servers/peer-protocol.md). The [`xrpld` APIs](../http-websocket-apis/index.md) typically use JSON to communicate with client applications. However, JSON is unsuitable as a format for serializing transactions for being digitally signed, because JSON can represent the same data in many different but equivalent ways.
 
 The process of serializing a transaction from JSON or any other representation into their canonical binary format can be summarized with these steps:
 
@@ -28,7 +28,7 @@ The process of serializing a transaction from JSON or any other representation i
 
 The result is a single binary blob that can be signed using well-known signature algorithms such as ECDSA (with the secp256k1 elliptic curve) and Ed25519. For purposes of the XRP Ledger, you must also [hash][Hash] the data with the appropriate prefix (`0x53545800` if single-signing, or `0x534D5400` if multi-signing). After signing, you must re-serialize the transaction with the `TxnSignature` field included. <!--{# TODO: link docs on how to compute a transaction signature. #}-->
 
-{% admonition type="info" name="Note" %}The XRP Ledger uses the same serialization format to represent other types of data, such as [ledger objects](ledger-data/ledger-entry-types/index.md) and processed transactions. However, only certain fields are appropriate for including in a transaction that gets signed. (For example, the `TxnSignature` field, containing the signature itself, should not be present in the binary blob that you sign.) Thus, some fields are designated as "Signing" fields, which are included in objects when those objects are signed, and "non-signing" fields, which are not.{% /admonition %}
+{% admonition type="info" name="Note" %}The XRP Ledger uses the same serialization format to represent other types of data, such as [ledger entries](ledger-data/ledger-entry-types/index.md) and processed transactions. However, only certain fields are appropriate for including in a transaction that gets signed. (For example, the `TxnSignature` field, containing the signature itself, should not be present in the binary blob that you sign.) Thus, some fields are designated as "Signing" fields, which are included in objects when those objects are signed, and "non-signing" fields, which are not.{% /admonition %}
 
 ### Examples
 
@@ -46,7 +46,7 @@ Both signed and unsigned transactions can be represented in both JSON and binary
 
 The serialization processes described here are implemented in multiple places and programming languages:
 
-- In C++ [in the `rippled` code base](https://github.com/XRPLF/rippled/blob/master/src/libxrpl/protocol/STObject.cpp).
+- In C++ {% source-link name="in the rippled code base" path="src/libxrpl/protocol/STObject.cpp" /%}.
 - In JavaScript in {% repo-link path="_code-samples/tx-serialization/" %}this repository's code samples section{% /repo-link %}.
 - In Python 3 in {% repo-link path="_code-samples/tx-serialization/" %}this repository's code samples section{% /repo-link %}.
 
@@ -56,7 +56,7 @@ Additionally, many [client libraries](../client-libraries.md) provide serializat
 
 ## Internal Format
 
-Each field has an canonical binary format, or _internal format_ used in the XRP Ledger protocol to represent that field in transactions and ledger data. The binary format is needed for signing, but it is also used in peer-to-peer communications, in ledger storage, and in other places. The binary formats for all fields are defined in the source code of [`SField.h`](https://github.com/XRPLF/rippled/blob/master/include/xrpl/protocol/SField.h). The JSON format for transactions and ledger data is standardized for convenience, but JSON is only used in APIs and client libraries: strictly speaking, only the binary format exists at the level of the XRP Ledger protocol.
+Each field has an canonical binary format, or _internal format_ used in the XRP Ledger protocol to represent that field in transactions and ledger data. The binary format is needed for signing, but it is also used in peer-to-peer communications, in ledger storage, and in other places. The binary formats for all fields are defined in the source code of {% source-link name="SField.h" path="include/xrpl/protocol/SField.h" /%}. The JSON format for transactions and ledger data is standardized for convenience, but JSON is only used in APIs and client libraries: strictly speaking, only the binary format exists at the level of the XRP Ledger protocol.
 
 The [Transaction Format Reference](transactions/index.md) and [Ledger Data Reference](ledger-data/index.md) list both the JSON and the internal (binary) formats for all fields. For example, the `Flags` [common transaction field](transactions/common-fields.md) is a Number in JSON and a UInt32 in binary. Even though the JSON representation uses a data type that can contain decimal places or very large values, the field is limited to values that can be represented as a 32-bit unsigned integer.
 
@@ -70,15 +70,22 @@ You can also use the [server_definitions API method](../http-websocket-apis/publ
 
 The following table defines the top-level fields from the definitions file:
 
-| Field                 | Contents                                             |
-|:----------------------|:-----------------------------------------------------|
-| `TYPES`               | Map of data types to their ["type code"](#type-codes) for constructing field IDs and sorting fields in canonical order. Codes below 1 should not appear in actual data; codes above 10000 represent special "high-level" object types such as "Transaction" that cannot be serialized inside other objects. See the [Type List](#type-list) for details of how to serialize each type. |
-| `LEDGER_ENTRY_TYPES`  | Map of [ledger objects](ledger-data/ledger-entry-types/index.md) to their data type. These appear in ledger state data, and in the "affected nodes" section of processed transactions' [metadata](transactions/metadata.md). |
-| `FIELDS`              | A sorted array of tuples representing all fields that may appear in transactions, ledger objects, or other data. The first member of each tuple is the string name of the field and the second member is an object with that field's properties. (See the "Field properties" table below for definitions of those fields.) |
-| `TRANSACTION_RESULTS` | Map of [transaction result codes](transactions/transaction-results/index.md) to their numeric values. Result types not included in ledgers have negative values; `tesSUCCESS` has numeric value 0; [`tec`-class codes](transactions/transaction-results/tec-codes.md) represent failures that are included in ledgers. |
-| `TRANSACTION_TYPES`   | Map of all [transaction types](transactions/types/index.md) to their numeric values. |
+| Field                  | Contents                                              |
+|:-----------------------|:------------------------------------------------------|
+| `TYPES`                | Map of data types to their ["type code"](#type-codes) for constructing field IDs and sorting fields in canonical order. Codes below 1 should not appear in actual data; codes above 10000 represent special "high-level" object types such as "Transaction" that cannot be serialized inside other objects. See the [Type List](#type-list) for details of how to serialize each type. |
+| `LEDGER_ENTRY_TYPES`   | Map of [ledger entries](ledger-data/ledger-entry-types/index.md) to their data type. These appear in ledger state data, and in the "affected nodes" section of processed transactions' [metadata](transactions/metadata.md). |
+| `FIELDS`               | A sorted array of tuples representing all fields that may appear in transactions, ledger entries, or other data. The first member of each tuple is the string name of the field and the second member is an object with that field's properties. (See [Field properties](#field-properties) for definitions of those fields.) |
+| `TRANSACTION_RESULTS`  | Map of [transaction result codes](transactions/transaction-results/index.md) to their numeric values. Result types not included in ledgers have negative values; `tesSUCCESS` has numeric value 0; [`tec`-class codes](transactions/transaction-results/tec-codes.md) represent failures that are included in ledgers. |
+| `TRANSACTION_TYPES`    | Map of all [transaction types](transactions/types/index.md) to their numeric values. |
+| `TRANSACTION_FORMATS`  | Map of each [transaction type](transactions/types/index.md) to an array of objects describing that type's fields and whether each is required. (See [Format field objects](#format-field-objects) for the properties of each object.) {% badge href="https://xrpl.org/blog/2026/xrpld-3.2.0" %}New in: xrpld 3.2.0{% /badge %} |
+| `LEDGER_ENTRY_FORMATS` | Map of each [ledger entry type](ledger-data/ledger-entry-types/index.md) to an array of objects describing that type's fields and whether each is required. (See [Format field objects](#format-field-objects) for the properties of each object.) {% badge href="https://xrpl.org/blog/2026/xrpld-3.2.0" %}New in: xrpld 3.2.0{% /badge %} |
+| `TRANSACTION_FLAGS`    | Map of each [transaction type](transactions/types/index.md) to an object mapping the names of its supported [transaction flags](transactions/common-fields.md#flags-field) to their numeric values. The `universal` entry lists the flags that apply to all transaction types. {% badge href="https://xrpl.org/blog/2026/xrpld-3.2.0" %}New in: xrpld 3.2.0{% /badge %} |
+| `LEDGER_ENTRY_FLAGS`   | Map of each [ledger entry type](ledger-data/ledger-entry-types/index.md) to an object mapping the names of that type's flags to their numeric values. {% badge href="https://xrpl.org/blog/2026/xrpld-3.2.0" %}New in: xrpld 3.2.0{% /badge %} |
+| `ACCOUNT_SET_FLAGS`    | Map of [AccountSet flag](transactions/types/accountset.md#accountset-flags) (`asf`) names to their numeric values, for use in the `SetFlag` and `ClearFlag` fields of an [AccountSet transaction](transactions/types/accountset.md). {% badge href="https://xrpl.org/blog/2026/xrpld-3.2.0" %}New in: xrpld 3.2.0{% /badge %} |
 
 For purposes of serializing transactions for signing and submitting, the `FIELDS`, `TYPES`, and `TRANSACTION_TYPES` fields are necessary.
+
+#### Field properties
 
 The field definition objects in the `FIELDS` array have the following fields:
 
@@ -90,10 +97,29 @@ The field definition objects in the `FIELDS` array have the following fields:
 | `isSigningField` | Boolean | If `true` this field should be serialized when preparing a transaction for signing. If `false`, this field should be omitted from the data to be signed. (It may not be part of transactions at all.) |
 | `type`           | String  | The internal data type of this field. This maps to a key in the `TYPES` map, which gives the [type code](#type-codes) for this field. |
 
+#### Format field objects
+
+Each `TRANSACTION_FORMATS` and `LEDGER_ENTRY_FORMATS` array contains one entry per field specific to that transaction or ledger entry type. Each entry has these properties:
+
+| Field         | Type   | Contents                                          |
+|:--------------|:-------|:--------------------------------------------------|
+| `name`        | String | The name of the field. This matches the field name in the `FIELDS` array. |
+| `optionality` | Number | A code indicating whether the field is required when creating this transaction or ledger entry type. (See [Optionality values](#optionality-values) for the meaning of each value.) |
+
+#### Optionality values
+
+The `optionality` field uses the following values:
+
+| Value | Meaning                                                          |
+|:------|:----------------------------------------------------------------|
+| `0`   | **Required.** The field must be present.                        |
+| `1`   | **Optional.** The field may be omitted.                         |
+| `2`   | **Default.** The field is optional and can be omitted to use the default. If included, it must be set to a non-default value. |
+
 ### Field IDs
 
-[[Source - Encoding]](https://github.com/XRPLF/rippled/blob/edb4f0342c65bd739fee60b74566f3e771134c6c/src/libxrpl/protocol/Serializer.cpp#L120-L153 "Source")
-[[Source - Decoding]](https://github.com/XRPLF/rippled/blob/edb4f0342c65bd739fee60b74566f3e771134c6c/src/libxrpl/protocol/Serializer.cpp#L429-L452 "Source")
+[[Source - Encoding]](https://github.com/XRPLF/rippled/blob/8995564ed6b9e453e144bb663303072a3c1ba305/src/libxrpl/protocol/Serializer.cpp#L107-L143 "Source")
+[[Source - Decoding]](https://github.com/XRPLF/rippled/blob/8995564ed6b9e453e144bb663303072a3c1ba305/src/libxrpl/protocol/Serializer.cpp#L419-L440 "Source")
 
 When you combine a field's type code and field code, you get the field's unique identifier, which is prefixed before the field in the final serialized blob. The size of the Field ID is one to three bytes depending on the type code and field codes it combines. See the following table:
 
@@ -148,17 +174,17 @@ All fields in a transaction are sorted in a specific order based first on the fi
 
 ### Type Codes
 
-Each field type has an arbitrary type code, with lower codes sorting first. These codes are defined in [`SField.h`](https://github.com/XRPLF/rippled/blob/master/include/xrpl/protocol/SField.h#L60-L98).
+Each field type has an arbitrary type code, with lower codes sorting first. These codes are defined in {% source-link name="SField.h" path="include/xrpl/protocol/SField.h#L60-L98" /%}.
 
-For example, [UInt32 has type code 2](https://github.com/XRPLF/rippled/blob/master/include/xrpl/protocol/SField.h#L67), so all UInt32 fields come before all [Amount fields, which have type code 6](https://github.com/XRPLF/rippled/blob/master/include/xrpl/protocol/SField.h#L71).
+For example, {% source-link name="UInt32 has type code 2" path="include/xrpl/protocol/SField.h#L67" /%}, so all UInt32 fields come before all {% source-link name="Amount fields, which have type code 6" path="include/xrpl/protocol/SField.h#L71" /%}.
 
 The [definitions file](#definitions-file) lists the type codes for each type in the `TYPES` map.
 
 ### Field Codes
 
-Each field has a field code, which is used to sort fields that have the same type as one another, with lower codes sorting first. These fields are defined in [`sfields.macro`](https://github.com/XRPLF/rippled/blob/master/include/xrpl/protocol/detail/sfields.macro).
+Each field has a field code, which is used to sort fields that have the same type as one another, with lower codes sorting first. These fields are defined in {% source-link name="sfields.macro" path="include/xrpl/protocol/detail/sfields.macro" /%}.
 
-For example, the `Account` field of a [Payment transaction][] [has sort code 1](https://github.com/XRPLF/rippled/blob/master/include/xrpl/protocol/detail/sfields.macro#L269), so it comes before the `Destination` field which [has sort code 3](https://github.com/XRPLF/rippled/blob/master/include/xrpl/protocol/detail/sfields.macro#L271).
+For example, the `Account` field of a [Payment transaction][] {% source-link name="has sort code 1" path="include/xrpl/protocol/detail/sfields.macro#L269" /%}, so it comes before the `Destination` field which {% source-link name="has sort code 3" path="include/xrpl/protocol/detail/sfields.macro#L271" /%}.
 
 Field codes are reused for fields of different field types, but fields of the same type never have the same field code. When you combine the type code with the field code, you get the field's unique [Field ID](#field-ids).
 
@@ -189,16 +215,16 @@ Transactions and ledger entries may contain fields of any of the following types
 | [UInt256][]      | 5         | 256        | No                   | A 256-bit binary value. This usually represents the hash of a transaction, ledger version, or ledger entry. |
 | [UInt384][]      | 22        | 384        | No                   | **UNUSED.** A 384-bit binary value. |
 | [UInt512][]      | 23        | 512        | No                   | **UNUSED.** A 512-bit binary value. |
-| [Int32][]        | 10        | 32         | No                   | **UNUSED.** A 32-bit signed integer. |
+| [Int32][]        | 10        | 32         | No                   | A 32-bit signed integer. The `RemainingOwnerCountDelta` field of the [SponsorshipSet transaction][] is an example of this type. |
 | [Int64][]        | 11        | 64         | No                   | **UNUSED.** A 64-bit signed integer. |
 | [Vector256][]    | 19        | Variable   | Yes                  | A list of 256-bit binary values. This may be a list of ledger entries or other hash values. |
 | [XChainBridge][] | 25        | Variable   | No                   | A bridge between two blockchains, identified by the door accounts and issued assets on both chains. |
 
 [Length-prefixed]: #length-prefixing
 
-In the `rippled` source code, some types have an "ST" prefix, which stands for "serialized type". This separates the type definition in the XRP Ledger protocol from data types that may be defined at the programming language level such as arrays or objects.
+In the `xrpld` source code, some types have an "ST" prefix, which stands for "serialized type". This separates the type definition in the XRP Ledger protocol from data types that may be defined at the programming language level such as arrays or objects.
 
-In addition to all of the above field types, the following types may appear in other contexts, such as [ledger objects](ledger-data/ledger-entry-types/index.md) and [transaction metadata](transactions/metadata.md):
+In addition to all of the above field types, the following types may appear in other contexts, such as [ledger entries](ledger-data/ledger-entry-types/index.md) and [transaction metadata](transactions/metadata.md):
 
 | Type Name   | Type Code | [Length-prefixed]? | Description                   |
 |:------------|:----------|:-------------------|:------------------------------|
@@ -258,7 +284,7 @@ The following diagram shows the serialization formats for all three amount forma
 [{% inline-svg file="/docs/img/serialization-amount.svg" /%}](/docs/img/serialization-amount.svg 'The first bit is an amount type bit (0 = XRP or MPT, 1 = fungible token). XRP has a sign bit (always 1 for positive), an MPT indicator bit (0=XRP) and 61 bits of precision. MPTs have a sign bit (always 1 for positive), an MPT indicator bit (1=MPT), 5 reserved bits, 64 bit integer quantity, and a 192 bit MPT Issuance ID which consists of the 32-bit Sequence number followed by 160-bit issuer AccountID. Fungible Token amounts consist start with an amount type bit of 1, a sign bit which can be 1 or 0, an exponent (8 bits), significant digits (54 bits), currency code (160 bits), and issuer (160 bits).')
 
 #### Token Amount Format
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/libxrpl/protocol/STAmount.cpp "Source")
+{% source-link path="src/libxrpl/protocol/STAmount.cpp" /%}
 
 [{% inline-svg file="/docs/img/currency-number-format.svg" /%}](/docs/img/currency-number-format.svg "Token Amount Format diagram")
 
@@ -278,7 +304,7 @@ At a protocol level, currency codes in the XRP Ledger are arbitrary 160-bit valu
 - The currency code `0x0000000000000000000000005852500000000000` is **always disallowed**. (This is the code "XRP" in the "standard format".)
 - The currency code `0x0000000000000000000000000000000000000000` (all zeroes) is **generally disallowed**. Usually, XRP amounts are not specified with currency codes. However, this code is used to indicate XRP in rare cases where a field must specify a currency code for XRP.
 
-The [`rippled` APIs](../http-websocket-apis/index.md) support a **standard format** for translating three-character ASCII codes to 160-bit hex values as follows:
+The [`xrpld` APIs](../http-websocket-apis/index.md) support a **standard format** for translating three-character ASCII codes to 160-bit hex values as follows:
 
 [{% inline-svg file="/docs/img/currency-code-format.svg" /%}](/docs/img/currency-code-format.svg "Standard Currency Code Format")
 
@@ -347,12 +373,12 @@ The following example shows the serialization format for an object (a single `Me
 
 The `Paths` field of a cross-currency [Payment transaction][] is a "PathSet", represented in JSON as an array of arrays. For more information on what paths are used for, see [Paths](../../concepts/tokens/fungible-tokens/paths.md).
 
-A PathSet is serialized as **1 to 6** individual paths in sequence[[Source]](https://github.com/XRPLF/rippled/blob/5e33ca56fd51b02a5490e8e156e2de65937cf88e/src/xrpld/app/tx/detail/Payment.h#L30 "Source"). Each complete path is followed by a byte that indicates what comes next:
+A PathSet is serialized as **1 to 6** individual paths in sequence[[Source]](https://github.com/XRPLF/rippled/blob/5b6e8b6f93b19c1e3f6a3467a25639031d9d9a53/include/xrpl/tx/transactors/payment/Payment.h#L10 "Source"). Each complete path is followed by a byte that indicates what comes next:
 
 - `0xff` indicates another path follows
 - `0x00` indicates the end of the PathSet
 
-Each path consists of **1 to 8** path steps in order[[Source]](https://github.com/XRPLF/rippled/blob/5e33ca56fd51b02a5490e8e156e2de65937cf88e/src/xrpld/app/tx/detail/Payment.h#L33 "Source"). Each step starts with a **type** byte, followed by one or more fields describing the path step. The type indicates which fields are present in that path step through bitwise flags. (For example, the value `0x30` indicates changing both currency and issuer.) If more than one field is present, the fields are always placed in a specific order.
+Each path consists of **1 to 8** path steps in order[[Source]](https://github.com/XRPLF/rippled/blob/5b6e8b6f93b19c1e3f6a3467a25639031d9d9a53/include/xrpl/tx/transactors/payment/Payment.h#L13 "Source"). Each step starts with a **type** byte, followed by one or more fields describing the path step. The type indicates which fields are present in that path step through bitwise flags. (For example, the value `0x30` indicates changing both currency and issuer.) If more than one field is present, the fields are always placed in a specific order.
 
 The following table describes the possible fields and the bitwise flags to set in the type byte to indicate them:
 
@@ -408,8 +434,7 @@ In JSON format, Int32 fields can be represented as:
 - JSON numbers (for values within JavaScript's safe integer range).
 - Strings containing decimal numbers.
 
-Although the protocol supports the Int32 type, no fields currently use it. An Int64 type has also been defined, but is unsupported.
-
+Although the protocol supports the Int64 type, no fields currently use it.
 
 ### Vector256 Fields
 [Vector256]: #vector256-fields

@@ -19,8 +19,6 @@ Una cartera con custodia significa que un tercero tiene tus fondos, normalmente 
 
 Para los pagos del día a día, esto puede ser preferible, ya que este tipo de carteras son fáciles de usar: si te olvidas de tu contraseña, puedes resetearla. Además, si no tienes una cuenta propia en el XRP Ledger, el requisito de tener una reserva en la cuenta no te aplica. El custodio actua como intermediario ante cualquier problema que encuentres en el XRP Ledger, y puede ofrecerte asistencia si no estás seguro de como hacer algo.
 
-![Carteras con custodia vs carteras sin custodia](/docs/img/introduction15-custodial-non-custodial.png)
-
 Una cartera sin custodia, como [Xaman](https://Xaman.app/), es aquella donde tienes las claves secretas (secret keys) de tu cuenta. Esto significa que eres el último reponsable de la administración de la seguridad de tu cuenta.
 
 **Atención:** Si pierdes tus claves, perderás el acceso a tu cuenta del XRP Ledger y no hay opciones de recupereación.
@@ -35,8 +33,6 @@ Tanto los usuarios de carteras con custodia como los usuarios de carteras sin cu
 Otro factor decisivo a la hora de elegir una cartera es elegir entre una cartera de hardware o de software.
 
 Las carteras de hardware son dispositivos físicos que almacenan tus claves privadas/secretas. El beneficio principal de usar carteras de hardware es que puedes proteger tu información desconectándola de Internet cuando no se esté usando; Las carteras de hardware aíslan totalmente sus claves de ordenadores y teléfonos inteligentes más faciles de hackear.
-
-![Carteras de Hardware vs. Software](/docs/img/introduction16-hardware-software.png)
 
 Las carteras de software por el otro lado, son completamente digitales. Mientras esto las hace mucho más fáciles, también las convierte en el método menos seguro de los dos, pero generalmente vienen con funciones adicionales para mejorar la experiencia. Como última instancia, la decisión entre las dos dependerá de tu nivel de comidad y de lo importante que sea para ti la facilidad de uso.
 
