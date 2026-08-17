@@ -47,7 +47,7 @@ export default function Docs() {
             description: translate(
               'Run complete code snippets to understand XRPL integration in seconds.'
             ),
-            href: '/docs/tutorials/',
+            href: '/resources/code-samples/',
           },
           {
             icon: require('../static/img/icons/2026/black/Launch-Your-First-Project.svg'),
@@ -55,7 +55,7 @@ export default function Docs() {
             description: translate(
               'Explore funding and development opportunities for your project on the XRPL.'
             ),
-            href: '/resources/grant-funding/',
+            href: '/community/developer-funding/',
           },
           {
             icon: require('../static/img/icons/2026/black/Step-by-Step-Tutorials.svg'),

@@ -135,10 +135,6 @@ export default function Tokenization() {
                 label: translate('Decentralized exchange (DEX)'),
                 href: '/docs/concepts/tokens/decentralized-exchange',
               },
-              {
-                label: translate('Escrow functionality'),
-                href: '/docs/concepts/payment-types/escrow',
-              },
             ],
             imageSrc: require('../../../static/img/bds-2026/use-cases-tokenization-token-utility-1-trading.jpg'),
             imageAlt: translate('Trading on the XRPL DEX'),
@@ -155,10 +151,6 @@ export default function Tokenization() {
               },
             ],
             buttons: [
-              {
-                label: translate('Decentralized exchange (DEX)'),
-                href: '/docs/concepts/tokens/decentralized-exchange',
-              },
               {
                 label: translate('Escrow functionality'),
                 href: '/docs/concepts/payment-types/escrow',
@@ -180,12 +172,8 @@ export default function Tokenization() {
             ],
             buttons: [
               {
-                label: translate('Decentralized exchange (DEX)'),
-                href: '/docs/concepts/tokens/decentralized-exchange',
-              },
-              {
-                label: translate('Escrow functionality'),
-                href: '/docs/concepts/payment-types/escrow',
+                label: translate('Permission Delegation'),
+                href: '/docs/concepts/accounts/permission-delegation',
               },
             ],
             imageSrc: require('../../../static/img/bds-2026/use-cases-tokenization-token-utility-3-delegated.jpg'),
@@ -204,11 +192,7 @@ export default function Tokenization() {
             ],
             buttons: [
               {
-                label: translate('Decentralized exchange (DEX)'),
-                href: '/docs/concepts/tokens/decentralized-exchange',
-              },
-              {
-                label: translate('Escrow functionality'),
+                label: translate('Cross-chain trading'),
                 href: '/docs/concepts/payment-types/escrow',
               },
             ],
