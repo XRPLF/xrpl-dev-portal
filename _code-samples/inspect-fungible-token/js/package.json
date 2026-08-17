@@ -1,0 +1,8 @@
+{
+  "name": "inspect-fungible-token-examples",
+  "description": "Read-only inspectors for Trust Line and MPT fungible token properties.",
+  "dependencies": {
+    "xrpl": "^5.0.0"
+  },
+  "type": "module"
+}
