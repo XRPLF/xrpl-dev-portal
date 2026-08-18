@@ -132,6 +132,21 @@ export interface ButtonGroupProps {
   className?: string;
   /** Override variant for single button (default: 'primary', can be 'secondary') */
   singleButtonVariant?: 'primary' | 'secondary';
+  /**
+   * Force every button to this variant, overriding the count-based defaults
+   * (and `singleButtonVariant`). Use when a section's design calls for a
+   * uniform treatment regardless of how many buttons are passed — e.g.
+   * `forceVariant="tertiary"` for an all-text-link group.
+   * Layout (inline vs. block) still follows the button count.
+   */
+  forceVariant?: 'primary' | 'secondary' | 'tertiary';
+  /**
+   * Strip button padding and left-align labels, so buttons sit flush with the
+   * surrounding text. Always on for the 3+ block layout; set it explicitly when
+   * forcing a tertiary variant at lower counts, which would otherwise indent the
+   * label by the button's horizontal padding.
+   */
+  forceNoPadding?: boolean;
   /** Maximum number of buttons to render. If more buttons are passed, only the first N will be rendered. */
   maxButtons?: number;
 }
@@ -143,6 +158,9 @@ export interface ButtonGroupProps {
  * - 1 button: Renders with singleButtonVariant (default: primary, can be secondary)
  * - 2 buttons: First as primary, second as tertiary (responsive layout)
  * - 3+ buttons: All tertiary in block layout
+ *
+ * Pass `forceVariant` to opt out of the count-based variants and render every
+ * button the same way; layout still follows the count.
  *
  * @example
  * // Single button
@@ -171,6 +189,14 @@ export interface ButtonGroupProps {
  *   ]}
  *   color="green"
  * />
+ *
+ * @example
+ * // Uniform tertiary treatment regardless of count (flush with surrounding text)
+ * <ButtonGroup
+ *   buttons={[{ label: "Learn More", href: "/learn" }]}
+ *   forceVariant="tertiary"
+ *   forceNoPadding
+ * />
  */
 export const ButtonGroup: React.FC<ButtonGroupProps> = ({
   buttons,
@@ -179,6 +205,8 @@ export const ButtonGroup: React.FC<ButtonGroupProps> = ({
   gap = 'small',
   className = '',
   singleButtonVariant = 'primary',
+  forceVariant,
+  forceNoPadding = false,
   maxButtons,
 }) => {
   // Validate and process buttons
@@ -198,6 +226,9 @@ export const ButtonGroup: React.FC<ButtonGroupProps> = ({
 
   const isMultiButton = buttonList.length >= 3;
 
+  // The block layout is always flush-left, so it implies no padding.
+  const noPadding = forceNoPadding || isMultiButton;
+
   const classNames = clsx(
     'bds-button-group',
     `bds-button-group--gap-${gap}`,
@@ -214,12 +245,12 @@ export const ButtonGroup: React.FC<ButtonGroupProps> = ({
         {buttonList.map((button, index) => (
           <Button
             key={index}
-            variant="tertiary"
+            variant={forceVariant ?? 'tertiary'}
             color={color}
             forceColor={forceColor}
             href={button.href}
             onClick={button.onClick}
-            forceNoPadding
+            forceNoPadding={noPadding}
           >
             {button.label}
           </Button>
@@ -231,7 +262,9 @@ export const ButtonGroup: React.FC<ButtonGroupProps> = ({
   // Render 1-2 buttons
   // Single button: use singleButtonVariant (default: primary, can be secondary)
   // Two buttons: first as primary, second as tertiary
-  const firstButtonVariant = buttonList.length === 1 ? singleButtonVariant : 'primary';
+  const firstButtonVariant =
+    forceVariant ?? (buttonList.length === 1 ? singleButtonVariant : 'primary');
+  const secondButtonVariant = forceVariant ?? 'tertiary';
 
   return (
     <div className={classNames}>
@@ -242,17 +275,19 @@ export const ButtonGroup: React.FC<ButtonGroupProps> = ({
           forceColor={forceColor}
           href={buttonList[0].href}
           onClick={buttonList[0].onClick}
+          forceNoPadding={noPadding}
         >
           {buttonList[0].label}
         </Button>
       )}
       {buttonList[1] && (
         <Button
-          variant="tertiary"
+          variant={secondButtonVariant}
           color={color}
           forceColor={forceColor}
           href={buttonList[1].href}
           onClick={buttonList[1].onClick}
+          forceNoPadding={noPadding}
         >
           {buttonList[1].label}
         </Button>

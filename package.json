@@ -14,11 +14,14 @@
   "keywords": [],
   "license": "MIT",
   "dependencies": {
-    "@codemirror/state": "^6.6.0",
-    "@codemirror/view": "^6.22.2",
+    "@codemirror/lang-javascript": "^6.2.5",
+    "@codemirror/lang-json": "^6.0.2",
+    "@codemirror/lint": "^6.9.7",
+    "@codemirror/state": "^6.7.1",
+    "@codemirror/view": "^6.43.6",
     "@lezer/highlight": "^1.2.0",
     "@redocly/realm": "0.135.2",
-    "@uiw/codemirror-themes": "4.21.21",
+    "@uiw/codemirror-themes": "^4.25.11",
     "@uiw/react-codemirror": "^4.21.21",
     "@xrplf/isomorphic": "^1.0.0-beta.1",
     "clsx": "^2.0.0",
@@ -34,6 +37,8 @@
     "xrpl": "^5.0.0"
   },
   "overrides": {
+    "@codemirror/state": "$@codemirror/state",
+    "@codemirror/view": "$@codemirror/view",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "string-width-cjs": "npm:string-width@^4.2.0",

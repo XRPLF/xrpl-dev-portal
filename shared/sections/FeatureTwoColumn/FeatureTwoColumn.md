@@ -1,10 +1,10 @@
 # FeatureTwoColumn Pattern
 
-A feature section pattern that pairs editorial content with a media element in a two-column layout. Designed for showcasing features, products, or use cases with flexible button configurations based on the number of links.
+A feature section pattern that pairs editorial content with a media element in a two-column layout. Designed for showcasing features, products, or use cases with a uniform tertiary link treatment.
 
 ## Overview
 
-FeatureTwoColumn supports four color theme variants (neutral, lilac, yellow, green) and adapts responsively across desktop, tablet, and mobile breakpoints. The button rendering automatically adjusts based on the number of links provided.
+FeatureTwoColumn supports four color theme variants (neutral, lilac, yellow, green) and adapts responsively across desktop, tablet, and mobile breakpoints. Links always render as tertiary buttons; only their layout adjusts to the number provided.
 
 Layout is implemented as a **single flex structure** (no separate mobile/desktop markup): **below the desktop breakpoint, media always appears above content** so stacked sections read consistently as media → content → media → content. The **`arrange` prop only affects desktop** (≥992px), where it alternates content left vs. content right.
 
@@ -13,7 +13,7 @@ Layout is implemented as a **single flex structure** (no separate mobile/desktop
 - Highlighting a specific feature, product, or use case
 - Presenting content with supporting visual media
 - Creating visual variety with alternating left/right arrangements **on desktop**
-- When 1-5 action links are needed with appropriate button hierarchy
+- When 1-5 action links are needed as a uniform set of text links (no primary/secondary hierarchy)
 
 ## Props
 
@@ -23,7 +23,7 @@ Layout is implemented as a **single flex structure** (no separate mobile/desktop
 | `arrange` | `'left' \| 'right'` | `'left'` | **Desktop only:** content column on the left (`left`) or right (`right`). Below desktop, layout is always media on top, then content. |
 | `title` | `string` | *required* | Feature title text (heading-md typography) |
 | `description` | `string` | *required* | Feature description text (body-l typography) |
-| `links` | `FeatureTwoColumnLink[]` | *required* | Array of 1-5 links (see button behavior below) |
+| `links` | `FeatureTwoColumnLink[]` | *required* | Array of 1-5 links, all rendered as tertiary buttons (see button behavior below) |
 | `media` | `{ src: string; alt: string }` | *required* | Feature media (image) configuration |
 | `className` | `string` | - | Additional CSS classes |
 
@@ -36,13 +36,21 @@ Layout is implemented as a **single flex structure** (no separate mobile/desktop
 
 ## Button Behavior
 
-The component renders a `ButtonGroup` from the links you pass:
+The component renders a `ButtonGroup` from the links you pass.
 
-| Link Count | Button Configuration |
-|------------|---------------------|
-| 1 link | Secondary button (`singleButtonVariant="secondary"`) |
-| 2 links | Primary button (first) + Tertiary button (second) |
-| 3-5 links | All tertiary buttons in block layout (per `ButtonGroup` rules) |
+**Every link renders as a tertiary button, regardless of count.** This section
+pairs its links with editorial copy, so the design calls for one uniform
+text-link treatment rather than `ButtonGroup`'s default count-based mix. It's
+implemented by passing `forceVariant="tertiary"` and `forceNoPadding`, so the
+buttons also sit flush with the title and description instead of being indented
+by the button's horizontal padding.
+
+Only the layout still varies with the count:
+
+| Link Count | Layout |
+|------------|--------|
+| 1-2 links | Inline (stacks on mobile, row at md+), 16px gap / 24px at lg+ |
+| 3-5 links | Vertical block layout on all screen sizes (per `ButtonGroup` rules) |
 
 ## Variants
 
@@ -83,7 +91,7 @@ function MyPage() {
 
 ## Examples
 
-### Single Link (Secondary Button)
+### Single Link
 
 ```tsx
 <FeatureTwoColumn
@@ -96,7 +104,7 @@ function MyPage() {
 />
 ```
 
-### Two Links (Primary + Tertiary)
+### Two Links (inline)
 
 ```tsx
 <FeatureTwoColumn
@@ -112,7 +120,7 @@ function MyPage() {
 />
 ```
 
-### Multiple Links (3-5 Tertiary)
+### Multiple Links (3-5, block layout)
 
 ```tsx
 <FeatureTwoColumn

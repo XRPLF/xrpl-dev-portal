@@ -42,19 +42,34 @@ $bds-carousel-featured-padding-lg: $bds-space-4xl $bds-space-3xl; // 40px 32px
 // Content gap between image and content columns
 $bds-carousel-featured-column-gap: $bds-space-sm; // 8px - spacing('sm')
 
-// Transition
+// Transition - horizontal wipe (default 'slide' variant)
 $bds-carousel-featured-transition: 400ms cubic-bezier(0.4, 0, 0.2, 1);
+
+// Transition - in-place crossfade ('fade' variant)
+$bds-carousel-featured-fade-in: 240ms;
+$bds-carousel-featured-fade-out: 180ms;
+$bds-carousel-featured-fade-stagger: 60ms; // Offset between image, features, buttons
+$bds-carousel-featured-fade-timing: cubic-bezier(0.4, 0, 0.2, 1);
 
 // =============================================================================
 // Color Variant Configuration Map
 // =============================================================================
 
 // Define all background variants with their color properties (Dark Mode)
+//
+// Note on link colors: the green is picked from the VARIANT BACKGROUND, not the
+// theme mode. Only the "neutral" variant is actually dark in dark mode - "grey"
+// and "yellow" stay light in both modes - so a bright green would be unreadable
+// on them. Light backgrounds get $green-500, the dark background gets $green-300.
 $bds-carousel-featured-variants: (
   "grey": (
     "bg-color": $gray-300,
     "text-color": $black,
     "divider-color": $black,
+    "link-color": $green-500,
+    "link-hover": $green-400,
+    "link-visited": $lilac-400,
+    "link-focus": $black,
     "button-variant": "black",
     "button-bg": $black,
     "button-color": $white,
@@ -65,6 +80,10 @@ $bds-carousel-featured-variants: (
     "bg-color": $black,
     "text-color": $white,
     "divider-color": $white,
+    "link-color": $green-300,
+    "link-hover": $green-200,
+    "link-visited": $lilac-300,
+    "link-focus": $white,
     "button-variant": "green",
     "button-bg": $green-300,
     "button-color": $black,
@@ -75,6 +94,10 @@ $bds-carousel-featured-variants: (
     "bg-color": $yellow-100,
     "text-color": $black,
     "divider-color": $black,
+    "link-color": $green-500,
+    "link-hover": $green-400,
+    "link-visited": $lilac-400,
+    "link-focus": $black,
     "button-variant": "black",
     "button-bg": $black,
     "button-color": $white,
@@ -89,22 +112,71 @@ $bds-carousel-featured-variants-light: (
     "bg-color": $gray-200,
     "text-color": $black,
     "divider-color": $black,
+    "link-color": $green-500,
+    "link-hover": $green-400,
+    "link-visited": $lilac-400,
+    "link-focus": $black,
   ),
   "neutral": (
     "bg-color": $white,
     "text-color": $black,
     "divider-color": $black,
+    "link-color": $green-500,
+    "link-hover": $green-400,
+    "link-visited": $lilac-400,
+    "link-focus": $black,
   ),
   "yellow": (
     "bg-color": $yellow-100,
     "text-color": $black,
     "divider-color": $black,
+    "link-color": $green-500,
+    "link-hover": $green-400,
+    "link-visited": $lilac-400,
+    "link-focus": $black,
   ),
 );
 
 // =============================================================================
 // Mixins: Apply Background Variant Styles
 // =============================================================================
+
+// Links inside feature descriptions.
+//
+// Without this, these anchors fall through to the global Bootstrap rule
+// `a { color: rgba(var(--bs-link-color-rgb), ...) }`, where :root sets
+// --bs-link-color-rgb to 255,255,255 - so they render WHITE in both light and
+// dark mode, which is invisible on every carousel background except neutral/dark.
+//
+// The `:not()` chain excludes anchors that already carry their own component
+// styling (BDS links, buttons, card-shaped anchors), and it also lifts our
+// specificity clear of the other global themed link rules in the codebase.
+@mixin carousel-featured-links($config) {
+  .bds-carousel-featured__feature-description {
+    a:not(.bds-link):not(.bds-btn):not(.bds-card-offgrid):not(.bds-card-icon) {
+      color: map-get($config, "link-color");
+      font-weight: 400;
+
+      &:hover {
+        color: map-get($config, "link-hover");
+        text-decoration: underline;
+      }
+
+      &:active {
+        color: map-get($config, "link-color");
+      }
+
+      &:visited {
+        color: map-get($config, "link-visited");
+      }
+
+      &:focus-visible {
+        outline: 2px solid map-get($config, "link-focus");
+        outline-offset: 1px;
+      }
+    }
+  }
+}
 
 // Full variant mixin (for dark mode with button styles)
 @mixin carousel-featured-variant($variant-name, $config) {
@@ -122,6 +194,9 @@ $bds-carousel-featured-variants-light: (
     .bds-divider {
       background-color: map-get($config, "divider-color");
     }
+
+    // Feature description links
+    @include carousel-featured-links($config);
 
     // Carousel nav buttons - enabled states only
     // Disabled states are handled by CarouselButton component styles
@@ -154,6 +229,9 @@ $bds-carousel-featured-variants-light: (
     .bds-divider {
       background-color: map-get($config, "divider-color");
     }
+
+    // Feature description links
+    @include carousel-featured-links($config);
   }
 }
 
@@ -406,6 +484,89 @@ $bds-carousel-featured-variants-light: (
   flex: 0 0 100%;
   width: 100%;
   position: relative;
+}
+
+// =============================================================================
+// Fade Variant - In-Place Crossfade
+// =============================================================================
+// Instead of wiping the track sideways, every slide is stacked in a single grid
+// cell and the content crossfades in place. Because all slides still take part in
+// layout, the carousel keeps sizing to the tallest slide exactly as the flex track
+// does - so slides of differing heights don't cause the carousel to jump.
+
+.bds-carousel-featured--fade {
+  .bds-carousel-featured__slide-track {
+    display: grid;
+    transition: none;
+    will-change: auto;
+  }
+
+  .bds-carousel-featured__slide {
+    grid-area: 1 / 1;
+    // Inactive slides stay in layout but out of reach. The visibility switch is
+    // held until the fade-out finishes so it doesn't cut the transition short.
+    visibility: hidden;
+    transition: visibility 0ms linear $bds-carousel-featured-fade-out;
+  }
+
+  .bds-carousel-featured__slide--active {
+    visibility: visible;
+    transition-delay: 0ms;
+  }
+
+  // The parts that crossfade. The outgoing slide fades out as a single unit; the
+  // stagger below applies only to the incoming slide.
+  .bds-carousel-featured__heading,
+  .bds-carousel-featured__media,
+  .bds-carousel-featured__features,
+  .bds-carousel-featured__cta {
+    opacity: 0;
+    transition: opacity $bds-carousel-featured-fade-out
+      $bds-carousel-featured-fade-timing;
+  }
+
+  .bds-carousel-featured__slide--active {
+    .bds-carousel-featured__heading,
+    .bds-carousel-featured__media {
+      opacity: 1;
+      transition: opacity $bds-carousel-featured-fade-in
+        $bds-carousel-featured-fade-timing;
+    }
+
+    .bds-carousel-featured__features {
+      opacity: 1;
+      transition: opacity $bds-carousel-featured-fade-in
+        $bds-carousel-featured-fade-timing $bds-carousel-featured-fade-stagger;
+    }
+
+    .bds-carousel-featured__cta {
+      opacity: 1;
+      transition: opacity $bds-carousel-featured-fade-in
+        $bds-carousel-featured-fade-timing
+        ($bds-carousel-featured-fade-stagger * 2);
+    }
+  }
+}
+
+// =============================================================================
+// Reduced Motion
+// =============================================================================
+// Both transition styles collapse to an instant swap.
+
+@include bds-reduced-motion {
+  .bds-carousel-featured__slide-track {
+    transition: none;
+  }
+
+  .bds-carousel-featured--fade {
+    .bds-carousel-featured__slide,
+    .bds-carousel-featured__heading,
+    .bds-carousel-featured__media,
+    .bds-carousel-featured__features,
+    .bds-carousel-featured__cta {
+      transition: none;
+    }
+  }
 }
 
 .bds-carousel-featured__slide > .bds-grid__row {
