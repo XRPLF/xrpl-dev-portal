@@ -27656,8 +27656,8 @@ html.light .page-dev-tools #trasaction-sender .card-footer {
 .use-case-payments .token-utility-section .utility-card .utility-description a:hover {
   text-decoration: underline;
 }
-:root.dark .page-rwa-tokenization .token-utility-section .utility-card .utility-description a a,
-:root.dark .use-case-payments .token-utility-section .utility-card .utility-description a a {
+:root.dark .page-rwa-tokenization .token-utility-section .utility-card .utility-description a,
+:root.dark .use-case-payments .token-utility-section .utility-card .utility-description a {
   color: #C0A7FF;
 }
 
