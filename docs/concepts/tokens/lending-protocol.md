@@ -203,6 +203,7 @@ In scenarios where excess payment amounts are "ignored", the transaction succeed
 
 - **Concepts:**
     - [Single Asset Vaults](./single-asset-vaults.md)
+    - [Pseudo-Accounts](../accounts/pseudo-accounts.md)
 - **Tutorials:**
     - [Claw Back First-Loss Capital](../../tutorials/defi/lending/use-the-lending-protocol/claw-back-cover.md)
     - [Create a Loan](../../tutorials/defi/lending/use-the-lending-protocol/create-a-loan.md)
