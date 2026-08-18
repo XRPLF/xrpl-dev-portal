@@ -24,6 +24,12 @@ If you don't [run your own `xrpld` server](../infrastructure/installation/index.
 | [QuickNode](https://www.quicknode.com/chains/xrpl) | Testnet/Mainnet | N/A | QuickNode provides hosted XRPL RPC mainnet and testnet under their free and paid plans, granting flexible and reliable access to the network.
 
 
+## Benchmarks
+
+| Tool | Notes |
+|:-----|:------|
+| [OpenChainBench](https://openchainbench.com/benchmarks/xrp-rpc) | Live latency benchmarks for XRPL public servers. Tracks p50/p90/p99 for Ripple (s1.ripple.com), XRPL Labs (xrplcluster.com) and PublicNode, measured every 60 seconds from US-East, EU-West and Singapore. |
+
 ## Test Networks
 
 | Operator  | [Network][] | JSON-RPC URL | WebSocket URL | Notes                |
