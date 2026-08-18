@@ -3,9 +3,9 @@ import { useThemeHooks } from "@redocly/theme/core/hooks";
 import { PageWrapper } from "shared/components/PageWrapper";
 import { HeaderHeroSplitMedia } from "shared/sections/HeaderHeroSplitMedia/HeaderHeroSplitMedia";
 import {
-  CarouselFeatured,
-  type CarouselSlide,
-} from "shared/patterns/CarouselFeatured/CarouselFeatured";
+  PanelStack,
+  type PanelStackPanel,
+} from "shared/patterns/PanelStack";
 import { LogoSquareGrid } from "shared/sections/LogoSquareGrid";
 import { LinkTextDirectory } from "shared/sections/LinkTextDirectory/LinkTextDirectory";
 import { FeatureSingleTopic } from "shared/sections/FeatureSingleTopic/FeatureSingleTopic";
@@ -22,7 +22,7 @@ export default function Funding() {
   const { useTranslate } = useThemeHooks();
   const { translate } = useTranslate();
 
-  const carouselSlides: CarouselSlide[] = [
+  const carouselSlides: PanelStackPanel[] = [
     {
       id: "xrpl-grants-accelerator",
       heading: translate("Explore XRPL Funding and Builders Programs"),
@@ -156,7 +156,7 @@ export default function Funding() {
         }}
       />
 
-      <CarouselFeatured slides={carouselSlides} background="yellow" />
+      <PanelStack slides={carouselSlides} background="yellow" />
 
       <LogoSquareGrid
         variant="gray"
