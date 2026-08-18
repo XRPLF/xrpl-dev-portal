@@ -356,6 +356,14 @@ ul.nav.navbar-nav {
   color: var(--text-color);
 }
 
+/* CodeMirror font overrides */
+.cm-theme {
+  .cm-scroller {
+    font-family: var(--code-block-font-family) !important;
+    font-size: var(--code-block-font-size) !important;
+  }
+}
+
 /* Keep active tab visually static on hover */
 button[role="tab"].active {
   --md-tabs-hover-tab-bg-color: var(--md-tabs-active-tab-bg-color);
