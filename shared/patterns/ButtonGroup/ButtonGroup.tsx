@@ -226,8 +226,12 @@ export const ButtonGroup: React.FC<ButtonGroupProps> = ({
 
   const isMultiButton = buttonList.length >= 3;
 
-  // The block layout is always flush-left, so it implies no padding.
-  const noPadding = forceNoPadding || isMultiButton;
+  // The 3+ block layout is flush-left, so tertiary buttons in it imply no padding.
+  // Only tertiary, though: forcing a filled variant at 3+ should keep its padding
+  // unless the caller explicitly asks otherwise.
+  const effectiveVariant = forceVariant ?? 'tertiary';
+  const noPadding =
+    forceNoPadding || (isMultiButton && effectiveVariant === 'tertiary');
 
   const classNames = clsx(
     'bds-button-group',
@@ -238,14 +242,14 @@ export const ButtonGroup: React.FC<ButtonGroupProps> = ({
     className
   );
 
-  // Render 3+ buttons: all tertiary in block layout
+  // Render 3+ buttons: block layout, tertiary unless forceVariant says otherwise
   if (isMultiButton) {
     return (
       <div className={classNames}>
         {buttonList.map((button, index) => (
           <Button
             key={index}
-            variant={forceVariant ?? 'tertiary'}
+            variant={effectiveVariant}
             color={color}
             forceColor={forceColor}
             href={button.href}
