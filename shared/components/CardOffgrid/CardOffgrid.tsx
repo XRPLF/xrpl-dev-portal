@@ -76,12 +76,23 @@ export const CardOffgrid: React.FC<CardOffgridProps> = ({
     }
   }, [disabled]);
 
+  // A card with neither `href` nor `onClick` has nothing to activate, so it gets
+  // none of the interactive affordances: no pointer cursor, no color wipe, no
+  // pressed state. Hover tracking is what drives the wipe, so a static card
+  // doesn't even listen for it.
+  const isInteractive = !disabled && Boolean(href || onClick);
+
+  const hoverHandlers = isInteractive
+    ? { onMouseEnter: handleMouseEnter, onMouseLeave: handleMouseLeave }
+    : {};
+
   // Build class names using BEM with bds namespace
   const classNames = clsx(
     'bds-card-offgrid',
     `bds-card-offgrid--${variant}`,
     {
       'bds-card-offgrid--disabled': disabled,
+      'bds-card-offgrid--static': !isInteractive && !disabled,
       'bds-card-offgrid--hovered': isHovered,
     },
     className
@@ -118,8 +129,10 @@ export const CardOffgrid: React.FC<CardOffgridProps> = ({
   // Common content for both button and anchor
   const content = (
     <>
-      {/* Hover color wipe overlay */}
-      <span className="bds-card-offgrid__overlay" aria-hidden="true" />
+      {/* Hover color wipe overlay - interactive cards only */}
+      {isInteractive && (
+        <span className="bds-card-offgrid__overlay" aria-hidden="true" />
+      )}
       
       <span className="bds-card-offgrid__icon-container">
         {renderIcon()}
@@ -143,8 +156,7 @@ export const CardOffgrid: React.FC<CardOffgridProps> = ({
         href={href}
         className={classNames}
         aria-disabled={disabled}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
+        {...hoverHandlers}
       >
         {content}
       </a>
@@ -161,8 +173,7 @@ export const CardOffgrid: React.FC<CardOffgridProps> = ({
         onClick={disabled ? undefined : onClick}
         disabled={disabled}
         aria-disabled={disabled}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
+        {...hoverHandlers}
       >
         {content}
       </button>
@@ -174,8 +185,7 @@ export const CardOffgrid: React.FC<CardOffgridProps> = ({
   return (
     <div
       className={classNames}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
+      {...hoverHandlers}
     >
       {content}
     </div>

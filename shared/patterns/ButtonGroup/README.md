@@ -4,7 +4,7 @@ A responsive button group container that automatically assigns button variants b
 
 ## Features
 
-- **Auto-Variant Assignment**: Automatically assigns Primary/Tertiary/Secondary variants based on button count
+- **Auto-Variant Assignment**: Automatically assigns Primary/Tertiary/Secondary variants based on button count (override with `forceVariant`)
 - **Responsive Layout**: Vertical stack on mobile, horizontal row on tablet+ (for 1-2 buttons)
 - **Block Layout**: 3+ buttons render as all tertiary in a vertical block layout
 - **Customizable Spacing**: Control gap between buttons on tablet+ (none or small)
@@ -20,6 +20,27 @@ The component automatically determines button variants based on count:
 | 1 button | Renders as Primary (or Secondary with `singleButtonVariant="secondary"`) |
 | 2 buttons | First as Primary, second as Tertiary (responsive layout) |
 | 3+ buttons | All as Tertiary in block layout (vertical on all screen sizes) |
+
+### Overriding the variant
+
+Pass `forceVariant` when a section's design calls for one uniform treatment no
+matter how many buttons it receives. It supersedes both the count-based defaults
+and `singleButtonVariant`; layout (inline vs. block) still follows the count.
+
+When forcing `tertiary` at 1-2 buttons, pair it with `forceNoPadding` so the
+labels sit flush with the surrounding text instead of being indented by the
+button's horizontal padding. (The 3+ block layout is always flush, so it sets
+this for you.)
+
+```tsx
+<ButtonGroup
+  buttons={[{ label: 'Learn More', href: '/learn' }]}
+  forceVariant="tertiary"
+  forceNoPadding
+/>
+```
+
+`FeatureTwoColumn` is the reference consumer of this.
 
 ## Usage
 
@@ -81,8 +102,10 @@ import { ButtonGroup } from 'shared/patterns/ButtonGroup';
 | `buttons` | `ButtonConfig[]` | *required* | Array of button configurations |
 | `color` | `'green' \| 'black'` | `'green'` | Button color theme |
 | `forceColor` | `boolean` | `false` | Force color to remain constant across light/dark modes |
-| `gap` | `'none' \| 'small'` | `'small'` | Gap between buttons on tablet+ (0px or 4px) |
+| `gap` | `'none' \| 'small' \| 'medium'` | `'small'` | Gap between buttons: `none`/`small` are 0px/4px on tablet+; `medium` is 16px through tablet, 24px at lg+ |
 | `singleButtonVariant` | `'primary' \| 'secondary'` | `'primary'` | Variant for single button |
+| `forceVariant` | `'primary' \| 'secondary' \| 'tertiary'` | - | Force every button to this variant, overriding the count-based defaults and `singleButtonVariant` |
+| `forceNoPadding` | `boolean` | `false` | Strip button padding and left-align labels (always on for the 3+ block layout) |
 | `maxButtons` | `number` | - | Maximum number of buttons to render |
 | `className` | `string` | `''` | Additional CSS classes |
 

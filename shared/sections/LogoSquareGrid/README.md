@@ -56,18 +56,8 @@ interface LogoSquareGridProps {
   heading?: string;
   /** Optional description text */
   description?: string;
-  /** Primary button configuration */
-  primaryButton?: {
-    label: string;
-    href?: string;
-    onClick?: () => void;
-  };
-  /** Tertiary button configuration */
-  tertiaryButton?: {
-    label: string;
-    href?: string;
-    onClick?: () => void;
-  };
+  /** Button configurations (1-2 buttons supported) */
+  buttons?: ButtonConfig[];
   /** Array of logo items to display in the grid */
   logos: LogoItem[];
   /** Additional CSS classes */
@@ -82,9 +72,25 @@ interface LogoSquareGridProps {
 - `variant`: `'gray'`
 - `heading`: `undefined`
 - `description`: `undefined`
-- `primaryButton`: `undefined`
-- `tertiaryButton`: `undefined`
+- `buttons`: `undefined`
 - `className`: `''`
+
+### ButtonConfig
+
+Imported from the [ButtonGroup pattern](../../patterns/ButtonGroup/README.md).
+
+```tsx
+interface ButtonConfig {
+  label: string;        // Button text
+  href?: string;        // Link destination
+  onClick?: () => void; // Click handler
+  forceColor?: boolean; // Keep the color constant regardless of theme mode
+}
+```
+
+A maximum of 2 buttons is supported. `ButtonGroup` assigns variants by count: a
+single button renders as primary; with two, the first is primary and the second
+tertiary.
 
 ### Required Props
 
@@ -115,8 +121,10 @@ import { LogoSquareGrid } from 'shared/sections/LogoSquareGrid';
   variant="green"
   heading="Developer tools & APIs"
   description="Streamline development and build powerful RWA tokenization solutions with XRP Ledger's comprehensive developer toolset."
-  primaryButton={{ label: "View Documentation", href: "/docs" }}
-  tertiaryButton={{ label: "Explore Tools", href: "/tools" }}
+  buttons={[
+    { label: "View Documentation", href: "/docs" },
+    { label: "Explore Tools", href: "/tools" }
+  ]}
   logos={[
     { logo: "/img/logos/tool1.svg", alt: "Tool 1" },
     { logo: "/img/logos/tool2.svg", alt: "Tool 2" },
@@ -217,7 +225,7 @@ import { LogoSquareGrid } from 'shared/sections/LogoSquareGrid';
   variant="green"
   heading="Featured Integrations"
   description="Connect with leading platforms and services."
-  primaryButton={{ label: "See All Integrations", href: "/integrations" }}
+  buttons={[{ label: "See All Integrations", href: "/integrations" }]}
   logos={[
     { logo: "/img/logos/integration1.svg", alt: "Integration 1" },
     { logo: "/img/logos/integration2.svg", alt: "Integration 2" }
@@ -232,14 +240,16 @@ import { LogoSquareGrid } from 'shared/sections/LogoSquareGrid';
   variant="gray"
   heading="Developer Resources"
   description="Access comprehensive tools and libraries."
-  primaryButton={{
-    label: "Get Started",
-    onClick: () => console.log('Primary clicked')
-  }}
-  tertiaryButton={{
-    label: "Learn More",
-    href: "/learn"
-  }}
+  buttons={[
+    {
+      label: "Get Started",
+      onClick: () => console.log('Primary clicked')
+    },
+    {
+      label: "Learn More",
+      href: "/learn"
+    }
+  ]}
   logos={[
     { logo: "/img/logos/resource1.svg", alt: "Resource 1" }
   ]}
@@ -280,12 +290,11 @@ Logo tiles leverage the TileLogo component's interactive capabilities:
 The header section only renders if at least one of the following is provided:
 - `heading`
 - `description`
-- `primaryButton`
-- `tertiaryButton`
+- `buttons`
 
 ### Button Styling
 
-- Both primary and tertiary buttons use green color scheme
+- Buttons use the green color scheme
 - Buttons stack vertically on mobile, horizontal on tablet+
 - Button spacing: 8px gap on mobile, 4px gap on tablet+
 - Button layout is handled by the shared ButtonGroup component

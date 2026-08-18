@@ -350,6 +350,32 @@ ul.nav.navbar-nav {
   --code-panel-bg-color: var(--color-blue-3);
   --layer-color-hover: var(--color-gray-3);
   --bg-raised-gradient: "";
+
+  /* The base value (--color-gray-4) is tuned for the light background; dark mode
+     needs the inverse end of the scale. gray-6 on gray-1 is 7.41:1, matching light
+     mode's 7.23:1, so breadcrumbs are equally de-emphasized in both themes. */
+  --breadcrumbs-text-color: var(--color-gray-6);
+}
+
+/* The open breadcrumb dropdown menu inherits the generic --dropdown-menu-item-color
+   (--text-color-secondary: gray-9 in dark, black in light), which is brighter than
+   the breadcrumb trail. Re-point the menu at the breadcrumb tokens so the trail, the
+   trigger, and the open menu all read as one color in both themes. Scoped to
+   breadcrumbs so the language picker and nav dropdowns are unaffected.
+
+   Two things this rule has to live with:
+   - It belongs in this theme layer, not the SCSS bundle: PurgeCSS runs with
+     `variables: true`, and these tokens' var() consumers are Redocly's runtime
+     styled-components under node_modules (excluded from its `content`), so a
+     custom-property-only rule in the SCSS bundle gets stripped.
+   - --dropdown-menu-item-color is the token that matters, not
+     --dropdown-menu-text-color. The former is declared at :root as
+     var(--dropdown-menu-text-color), so that var() is substituted in :root's
+     context; redefining only the source token here would silently do nothing. */
+[data-component-name="Breadcrumbs/BreadcrumbDropdown"] {
+  --dropdown-menu-text-color: var(--breadcrumbs-text-color);
+  --dropdown-menu-item-color: var(--breadcrumbs-text-color);
+  --dropdown-menu-item-color-hover: var(--breadcrumbs-text-color-active);
 }
 
 :root .form-control-plaintext {

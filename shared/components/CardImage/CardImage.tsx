@@ -9,7 +9,7 @@ export interface CardImageProps {
   imageAlt: string;
   /** Card title (1 line only) */
   title: string;
-  /** Card subtitle (max 3 lines) */
+  /** Card subtitle (max 3 lines). `\n` renders as a line break; an all-bullet subtitle renders as a list. */
   subtitle: string;
   /** Button label text */
   buttonLabel: string;
@@ -57,6 +57,37 @@ const CtaArrowIcon: React.FC = () => (
     />
   </svg>
 );
+
+// Matches a leading bullet marker on a subtitle line, e.g. "\u2022 ", "- ", "* ".
+const BULLET_MARKER = /^\s*[\u2022\u2023\u25E6\u2043\-*]\s+/;
+
+/**
+ * Renders the subtitle.
+ *
+ * When every line of the subtitle is a bullet (`\n`-separated), it renders as a
+ * real `<ul>` so wrapped text hangs-indents under the first character instead of
+ * running back to the left edge — and so screen readers announce it as a list.
+ * Any other subtitle renders as a paragraph, where `white-space: pre-line` still
+ * turns `\n` into a plain line break.
+ */
+const renderSubtitle = (subtitle: string): React.ReactNode => {
+  const lines = subtitle.split('\n').filter((line) => line.trim() !== '');
+  const isBulletList = lines.length > 0 && lines.every((line) => BULLET_MARKER.test(line));
+
+  if (!isBulletList) {
+    return <p className="bds-card-image__subtitle body-l">{subtitle}</p>;
+  }
+
+  return (
+    <ul className="bds-card-image__subtitle bds-card-image__subtitle--list body-l">
+      {lines.map((line, index) => (
+        <li key={index} className="bds-card-image__subtitle-item">
+          {line.replace(BULLET_MARKER, '')}
+        </li>
+      ))}
+    </ul>
+  );
+};
 
 /**
  * BDS CardImage Component
@@ -172,7 +203,7 @@ export const CardImage: React.FC<CardImageProps> = ({
       <div className="bds-card-image__content">
         <div className="bds-card-image__text">
           <h3 className="bds-card-image__title sh-md-l">{title}</h3>
-          <p className="bds-card-image__subtitle body-l">{subtitle}</p>
+          {renderSubtitle(subtitle)}
         </div>
 
         {cta}
