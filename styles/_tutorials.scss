@@ -2,18 +2,18 @@
 
 // Card footer gradient images
 $card-footers: (
-  "3-col-pink",
-  "3col-blue-light-blue",
-  "3-col-light-blue",
-  "3col-blue-green",
-  "3col-magenta",
-  "3-col-orange"
+  '3-col-pink',
+  '3col-blue-light-blue',
+  '3-col-light-blue',
+  '3col-blue-green',
+  '3col-magenta',
+  '3-col-orange'
 );
 
 $whats-new-footers: (
-  "3col-green-purple",
-  "3col-purple-blue-green",
-  "3col-green-blue"
+  '3col-green-purple',
+  '3col-purple-blue-green',
+  '3col-green-blue'
 );
 
 // Tutorial cards
@@ -78,13 +78,17 @@ $whats-new-footers: (
   // Apply colored footers to each card
   @for $i from 1 through length($card-footers) {
     > div:nth-child(#{$i}) .card .card-footer {
-      background-image: url("../img/cards/#{nth($card-footers, $i)}.svg");
+      background-image: url('../img/cards/#{nth($card-footers, $i)}.svg');
     }
   }
 }
 
 // Light mode: invert HTTP/WebSocket icon
-.light .page-tutorials .tutorial-cards .circled-logo img[alt="HTTP / WebSocket"] {
+.light
+  .page-tutorials
+  .tutorial-cards
+  .circled-logo
+  img[alt='HTTP / WebSocket'] {
   filter: invert(1);
 }
 
@@ -214,7 +218,9 @@ $whats-new-footers: (
     font-size: 0.95rem;
     font-weight: 500;
     cursor: pointer;
-    transition: color 0.15s ease, border-color 0.15s ease;
+    transition:
+      color 0.15s ease,
+      border-color 0.15s ease;
     position: relative;
 
     &:hover {
@@ -322,16 +328,17 @@ $whats-new-footers: (
     cursor: pointer;
     font-family: inherit;
     font-size: 1.05rem;
-    color: $blue-purple-300;
+    color: $blue-purple-400;
+    margin-top: 1rem;
 
     &:hover {
       text-decoration: underline;
     }
-  }
-}
 
-.light .page-tutorials .explore-more-wrapper .explore-more-link {
-  color: $blue-purple-300;
+    :root.dark & {
+      color: $blue-purple-300;
+    }
+  }
 }
 
 // TOC navigation buttons
@@ -385,7 +392,7 @@ $whats-new-footers: (
     padding-bottom: 8px;
 
     &::after {
-      content: "";
+      content: '';
       position: absolute;
       bottom: 0;
       left: 0;
@@ -468,6 +475,10 @@ $whats-new-footers: (
     font-weight: 500;
     color: $gray-500;
     letter-spacing: 0.02em;
+
+    :root.dark & {
+      color: $gray-400;
+    }
   }
 
   .quick-ref-value {

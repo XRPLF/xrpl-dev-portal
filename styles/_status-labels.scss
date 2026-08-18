@@ -19,7 +19,7 @@
 
 .labels-wrap {
   ul::before {
-    content: "\f02c";
+    content: '\f02c';
     font-family: FontAwesome;
     font-size: 1.5rem;
   }
@@ -31,7 +31,7 @@
   color: $gray-400;
 
   &::after {
-    content: "\f105"; /* fontawesome angle-right */
+    content: '\f105'; /* fontawesome angle-right */
     font-family: FontAwesome;
     padding-left: 5px;
   }
@@ -40,7 +40,7 @@
 .label {
   border-radius: 100px;
   border-width: 0;
-  padding: .5rem 1rem;
+  padding: 0.5rem 1rem;
   font-weight: bold;
   text-decoration: none !important;
   text-align: center;
@@ -197,15 +197,15 @@
   }
 
   @mixin chip-yellow {
-    background-color: $yellow-500;
-    color: $yellow-300;
+    background-color: $yellow-600;
+    color: $white;
     .badge-pill {
-      background-color: $yellow-300;
+      background-color: $yellow-600;
       color: $yellow-500;
     }
     &:hover {
-      background-color: $yellow-400;
-      color: $yellow-200;
+      background-color: $yellow-500;
+      color: $white;
       .badge-pill {
         background-color: $yellow-200;
         color: $yellow-400;
@@ -213,15 +213,15 @@
     }
 
     html.light & {
-      background-color: $yellow-200;
-      color: $yellow-500;
+      background-color: $yellow-100;
+      color: $yellow-600;
       .badge-pill {
         color: $yellow-200;
         background-color: $yellow-500;
       }
       &:hover {
-        background-color: $yellow-300;
-        color: $yellow-500;
+        background-color: $yellow-200;
+        color: $yellow-600;
         .badge-pill {
           color: $yellow-300;
           background-color: $yellow-500;
@@ -232,14 +232,14 @@
 
   @mixin chip-blue {
     background-color: $blue-500;
-    color: $blue-300;
+    color: $blue-100;
     .badge-pill {
       background-color: $blue-300;
       color: $blue-500;
     }
     &:hover {
       background-color: $blue-400;
-      color: $blue-200;
+      color: $blue-100;
       .badge-pill {
         background-color: $blue-200;
         color: $blue-400;
@@ -247,14 +247,14 @@
     }
 
     html.light & {
-      background-color: $blue-200;
-      color: $blue-400;
+      background-color: $blue-100;
+      color: $blue-500;
       .badge-pill {
         color: $blue-200;
         background-color: $blue-400;
       }
       &:hover {
-        background-color: $blue-300;
+        background-color: $blue-200;
         color: $blue-500;
         .badge-pill {
           color: $blue-300;
@@ -300,14 +300,14 @@
 
   @mixin chip-magenta {
     background-color: $magenta-500;
-    color: $magenta-300;
+    color: $white;
     .badge-pill {
       background-color: $magenta-300;
       color: $magenta-500;
     }
     &:hover {
       background-color: $magenta-400;
-      color: $magenta-200;
+      color: $white;
       .badge-pill {
         background-color: $magenta-200;
         color: $magenta-400;
@@ -315,14 +315,14 @@
     }
 
     html.light & {
-      background-color: $magenta-200;
-      color: $magenta-400;
+      background-color: $magenta-100;
+      color: $orange-800;
       .badge-pill {
         color: $magenta-200;
         background-color: $magenta-400;
       }
       &:hover {
-        background-color: $magenta-300;
+        background-color: $magenta-200;
         color: $magenta-500;
         .badge-pill {
           color: $magenta-300;
@@ -361,7 +361,7 @@
   &.label-use-interoperability,
   &.label-use-web_monetization,
   &.blog-category-gateway_bulletins,
-  &.chip-purple  {
+  &.chip-purple {
     @include chip-purple;
   }
 
@@ -398,6 +398,7 @@
   &.label-use-wallet,
   &.label-use-sustainability,
   &.blog-category-advisories,
+  &.blog-category-security,
   &.chip-orange {
     @include chip-orange;
   }
@@ -410,7 +411,6 @@
   &.label-データ保持,
   &.label-use-exchanges,
   &.label-use-custody,
-  &.blog-category-security,
   &.chip-magenta {
     @include chip-magenta;
   }

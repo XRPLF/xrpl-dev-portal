@@ -1,9 +1,8 @@
 // General color elements ------------------------------------------------------
 article {
-
   p code,
   table code,
-  li>code {
+  li > code {
     background-color: $gray-200;
     color: $gray-900;
   }
@@ -40,7 +39,10 @@ h6,
 
   &.green-500 {
     color: $green-400;
-    text-shadow: white 0 0 2px, white -1px -1px 2px, white 1px 1px 2px;
+    text-shadow:
+      white 0 0 2px,
+      white -1px -1px 2px,
+      white 1px 1px 2px;
   }
 }
 
@@ -74,7 +76,7 @@ h6,
 }
 
 .arrow-link::after {
-  content: url("../img/lightmode/icon-long-arrow.svg");
+  content: url('../img/lightmode/icon-long-arrow.svg');
 }
 
 // Forms and inputs ------------------------------------------------------------
@@ -109,7 +111,7 @@ h6,
   background-color: $light-bg;
 
   &.disabled {
-    color: $light-fg-disabled;
+    color: $gray-600;
   }
 }
 
@@ -117,7 +119,7 @@ h6,
   background-color: $light-form-bg;
 }
 
-[data-component-name="Search/SearchIcon"]>path {
+[data-component-name='Search/SearchIcon'] > path {
   fill: black;
 }
 
@@ -129,9 +131,18 @@ h6,
 // each `:not()` adds to specificity, inflating to (0,6,2) and beating most
 // component rules. With `:where()` the selectors are (0,0,1) / (0,0,2), so
 // any page- or component-scoped class chain wins as expected.
-a:where(:not(.bds-link):not(.bds-card-offgrid):not(.bds-card-icon):not(.bds-btn)),
-nav a:where(:not(.bds-link):not(.bds-card-offgrid):not(.bds-card-icon):not(.bds-btn)),
-a:where(:not([role="button"]):not(.bds-link):not(.bds-card-offgrid):not(.bds-card-icon):not(.bds-btn)) {
+a:where(
+  :not(.bds-link):not(.bds-card-offgrid):not(.bds-card-icon):not(.bds-btn)
+),
+nav
+  a:where(
+    :not(.bds-link):not(.bds-card-offgrid):not(.bds-card-icon):not(.bds-btn)
+  ),
+a:where(
+  :not([role='button']):not(.bds-link):not(.bds-card-offgrid):not(
+      .bds-card-icon
+    ):not(.bds-btn)
+) {
   color: $light-fg;
 
   &.btn-primary {
@@ -210,11 +221,11 @@ article a.button,
   }
 
   // nav "hero" images
-  #dropdown-hero-for-docs>img {
+  #dropdown-hero-for-docs > img {
     content: url(../img/icons/lightmode/docs.svg);
   }
 
-  #dropdown-hero-for-community>img {
+  #dropdown-hero-for-community > img {
     content: url(../img/icons/lightmode/contribute.svg);
   }
 
@@ -229,7 +240,7 @@ article a.button,
     }
 
     .dropdown-item.dropdown-hero {
-      >img {
+      > img {
         background-color: $gray-050;
       }
 
@@ -259,7 +270,6 @@ article a.button,
   @include media-breakpoint-down(md) {
     .navbar-toggler {
       .navbar-toggler-icon {
-
         &::after,
         &::before,
         div {
@@ -269,7 +279,7 @@ article a.button,
     }
 
     .navbar-nav .nav-link,
-    .navbar-collapse>.nav-item {
+    .navbar-collapse > .nav-item {
       background: $gray-200;
     }
 
@@ -293,8 +303,8 @@ aside a:hover,
 aside .sidenav_cat_title:hover,
 aside a.active,
 aside a.active:hover,
-aside .active>a,
-aside .active>a:hover {
+aside .active > a,
+aside .active > a:hover {
   color: $light-link-hover-color;
 }
 
@@ -307,7 +317,7 @@ aside .active>a:hover {
       border-left-color: $light-link-hover-color;
     }
 
-    .active>.nav-link {
+    .active > .nav-link {
       border-left-color: $light-link-hover-color;
     }
   }
@@ -322,7 +332,6 @@ aside .active>a:hover {
   }
 
   li a {
-
     &:hover,
     .active {
       border-left-color: $light-link-hover-color;
@@ -338,9 +347,16 @@ aside .active>a:hover {
 }
 
 .copyright-license {
-  text-shadow: white 0px 0px 2px, white 1px 1px 2px, white 2px 2px 3px,
-    white 2px 2px 4px, white 2px 2px 5px, white 2px 2px 6px, white -1px -1px 2px,
-    white -2px -2px 3px, white -2px -2px 4px;
+  text-shadow:
+    white 0px 0px 2px,
+    white 1px 1px 2px,
+    white 2px 2px 3px,
+    white 2px 2px 4px,
+    white 2px 2px 5px,
+    white 2px 2px 6px,
+    white -1px -1px 2px,
+    white -2px -2px 3px,
+    white -2px -2px 4px;
 }
 
 // Osano cookie consent overrides
@@ -387,7 +403,7 @@ aside .card {
     color: $light-fg;
     box-shadow: $light-box-shadow;
 
-    >h4 a.expander:hover {
+    > h4 a.expander:hover {
       color: $light-fg;
     }
   }
@@ -395,7 +411,7 @@ aside .card {
 
 .page-community {
   .com-card {
-    background: #FFFFFF;
+    background: #ffffff;
   }
 
   .project-description {
@@ -403,11 +419,11 @@ aside .card {
   }
 
   #platform-stack-overflow {
-    content: url("../img/logos/lightmode/stack-overflow.svg");
+    content: url('../img/logos/lightmode/stack-overflow.svg');
   }
 
   #platform-discord {
-    content: url("../img/logos/lightmode/discord.svg");
+    content: url('../img/logos/lightmode/discord.svg');
   }
 }
 
@@ -430,7 +446,7 @@ aside .card {
   .circled-logo {
     background-color: $gray-200;
 
-    img[src="assets/img/logos/globe.svg"] {
+    img[src='assets/img/logos/globe.svg'] {
       filter: invert(100%);
     }
   }
@@ -446,7 +462,7 @@ aside .card {
 .devportal-callout.注意 {
   border-color: $yellow-400;
 
-  >strong:first-child::before {
+  > strong:first-child::before {
     color: $yellow-400;
   }
 }
@@ -455,7 +471,7 @@ aside .card {
 .devportal-callout.ヒント {
   border-color: $green-300;
 
-  >strong:first-child::before {
+  > strong:first-child::before {
     color: $green-300;
   }
 }
@@ -525,16 +541,15 @@ pre {
 // Homepage
 .page-home {
   #home-hero-graphic {
-    content: url("../img/lightmode/home-hero.svg");
+    content: url('../img/lightmode/home-hero.svg');
   }
 
   #benefits-list {
-    @each $benefit in "public", "streamlined", "performance", "low-cost",
-    "community", "reliability"
-
-      {
+    @each $benefit in 'public', 'streamlined', 'performance', 'low-cost',
+      'community', 'reliability'
+    {
       ##{$benefit} {
-        content: url("../img/icons/lightmode/#{$benefit}.svg");
+        content: url('../img/icons/lightmode/#{$benefit}.svg');
       }
     }
   }
@@ -542,64 +557,63 @@ pre {
 
 // XRPL Overview
 #validator-graphic {
-  content: url("../img/lightmode/validators.svg");
+  content: url('../img/lightmode/validators.svg');
 }
 
 // XRP Overview
 
 #wallets {
   #wallet-xumm {
-    content: url("../img/wallets/lightmode/xumm.svg");
+    content: url('../img/wallets/lightmode/xumm.svg');
   }
 
   #wallet-bifrost {
-    content: url("../img/wallets/lightmode/bifrost.svg");
+    content: url('../img/wallets/lightmode/bifrost.svg');
   }
 
   #wallet-keystone {
-    content: url("../img/wallets/lightmode/keystone.svg");
+    content: url('../img/wallets/lightmode/keystone.svg');
   }
 
   #wallet-dcent {
-    content: url("../img/wallets/lightmode/dcent.svg");
+    content: url('../img/wallets/lightmode/dcent.svg');
   }
 
   #wallet-coin {
-    content: url("../img/wallets/lightmode/coin.svg");
+    content: url('../img/wallets/lightmode/coin.svg');
   }
 
   #wallet-gem {
-    content: url("../img/wallets/lightmode/gem.svg");
+    content: url('../img/wallets/lightmode/gem.svg');
   }
 
   #wallet-crossmark {
-    content: url("../img/wallets/lightmode/crossmark.png");
+    content: url('../img/wallets/lightmode/crossmark.png');
   }
 
   #wallet-joey {
-    content: url("../img/wallets/lightmode/joey.svg");
+    content: url('../img/wallets/lightmode/joey.svg');
   }
 
   #wallet-bitget {
-    content: url("../img/wallets/lightmode/bitget.svg");
-  }  
+    content: url('../img/wallets/lightmode/bitget.svg');
+  }
 }
-
 
 #top-exchanges {
   // Kraken, eToro are OK on both light and dark
 
   // Vector logos
-  @each $exchange in "bitstamp", "cex-io", "liquid", "bitfinex" {
+  @each $exchange in 'bitstamp', 'cex-io', 'liquid', 'bitfinex' {
     #exch-#{$exchange} {
-      content: url("../img/exchanges/lightmode/#{$exchange}.svg");
+      content: url('../img/exchanges/lightmode/#{$exchange}.svg');
     }
   }
 
   // PNG logos
-  @each $exchange in "bittrex", "currency-com", "ftx", "lmax" {
+  @each $exchange in 'bittrex', 'currency-com', 'ftx', 'lmax' {
     #exch-#{$exchange} {
-      content: url("../img/exchanges/lightmode/#{$exchange}.png");
+      content: url('../img/exchanges/lightmode/#{$exchange}.png');
     }
   }
 }
@@ -611,7 +625,6 @@ pre {
 
 // Use Cases & Featured Projects page
 .page-uses {
-
   .card-body {
     background: $white;
     color: $gray-700;
@@ -622,26 +635,13 @@ pre {
     background-color: $gray-050;
   }
 
-
-
-  @each $usecase in "infrastructure",
-  "developer_tooling",
-  "interoperability",
-  "wallet",
-  "nfts",
-  "exchanges",
-  "gaming",
-  "security",
-  "payments",
-  "web_monetization",
-  "sustainability",
-  "cbdc",
-  "custody",
-  "other",
-  "carbon_markets",
-  "defi" {
+  @each $usecase in 'infrastructure', 'developer_tooling', 'interoperability',
+    'wallet', 'nfts', 'exchanges', 'gaming', 'security', 'payments',
+    'web_monetization', 'sustainability', 'cbdc', 'custody', 'other',
+    'carbon_markets', 'defi'
+  {
     ##{$usecase} {
-      content: url("../img/icons/usecases/lightmode/ic_#{$usecase}.png");
+      content: url('../img/icons/usecases/lightmode/ic_#{$usecase}.png');
     }
   }
 
@@ -650,7 +650,7 @@ pre {
   }
 
   .category_count {
-    background: #D2B2FF;
+    background: #d2b2ff;
     color: #350080;
   }
 
@@ -658,38 +658,41 @@ pre {
     color: #000;
   }
 
-  @each $company, $type in ('bitgo': 'svg',
-    'sologenic-nft': 'svg',
-    'carbonland-trust': 'svg',
-    'futureverse': 'png',
-    "moai-finance": "svg",
-    "orchestra-finance": "svg",
-    'x-tokenize': 'svg',
-    'casino-coin': 'svg',
-    'xrp-cafe': 'svg',
-    'coil': 'svg',
-    'xrp-toolkit': 'svg',
-    'first-ledger-bot': 'svg',
-    'cryptum': 'svg',
-    'xrpl-org-ledger-explorer': 'svg',
-    'evernode': 'svg',
-    'xrpl-rosetta': 'svg',
-    'ripples-cbdc-platform': 'svg',
-    'xrpscan': 'svg',
-    'ripples-on-demand-liquidity': 'svg',
-    'xumm-wallet': 'svg',
-    'bifrost-wallet': 'svg',
-    'bitget-wallet': 'svg',
-    'sologenic-dex': 'svg',
-    'joey-wallet': 'svg',
-    'Crossmark': 'png'
-
-  ) {
+  @each $company,
+    $type
+      in (
+        'bitgo': 'svg',
+        'sologenic-nft': 'svg',
+        'carbonland-trust': 'svg',
+        'futureverse': 'png',
+        'moai-finance': 'svg',
+        'orchestra-finance': 'svg',
+        'x-tokenize': 'svg',
+        'casino-coin': 'svg',
+        'xrp-cafe': 'svg',
+        'coil': 'svg',
+        'xrp-toolkit': 'svg',
+        'first-ledger-bot': 'svg',
+        'cryptum': 'svg',
+        'xrpl-org-ledger-explorer': 'svg',
+        'evernode': 'svg',
+        'xrpl-rosetta': 'svg',
+        'ripples-cbdc-platform': 'svg',
+        'xrpscan': 'svg',
+        'ripples-on-demand-liquidity': 'svg',
+        'xumm-wallet': 'svg',
+        'bifrost-wallet': 'svg',
+        'bitget-wallet': 'svg',
+        'sologenic-dex': 'svg',
+        'joey-wallet': 'svg',
+        'Crossmark': 'png'
+      )
+  {
     #use_case_companies_list {
       ##{$company} {
         .biz-logo {
           max-height: 40px;
-          content: url("../img/uses/lightmode/#{$company}.#{$type}");
+          content: url('../img/uses/lightmode/#{$company}.#{$type}');
         }
       }
     }
@@ -699,24 +702,24 @@ pre {
     #threezy {
       .biz-logo {
         max-height: 40px;
-        content: url("../img/uses/lightmode/threezy.png");
+        content: url('../img/uses/lightmode/threezy.png');
       }
     }
   }
 
   .modal-content-uses {
     .first-ledger-bot {
-      content: url("../img/uses/lightmode/first-ledger-bot.svg");
+      content: url('../img/uses/lightmode/first-ledger-bot.svg');
     }
 
     .moai-finance {
-      content: url("../img/uses/lightmode/moai-finance.svg");
+      content: url('../img/uses/lightmode/moai-finance.svg');
     }
 
     .orchestra-finance {
       max-height: 52px;
       margin: 0;
-      content: url("../img/uses/lightmode/orchestra-finance.svg");
+      content: url('../img/uses/lightmode/orchestra-finance.svg');
     }
   }
 
@@ -730,7 +733,6 @@ pre {
       filter: invert(100%);
     }
   }
-
 }
 
 .landing-bg {
@@ -786,7 +788,6 @@ pre {
       filter: invert(100%);
     }
   }
-
 }
 
 // Docs landing page
@@ -826,7 +827,6 @@ pre {
 
   .project-card {
     background-color: transparent;
-
   }
 
   .card-details {
@@ -834,7 +834,7 @@ pre {
   }
 
   .card-image {
-    background: #E0E0E1;
+    background: #e0e0e1;
   }
 
   #community-table tr {
@@ -884,7 +884,7 @@ pre {
   }
 
   .discord-icon {
-    content: url(../img/community/ic_discord_light.png)
+    content: url(../img/community/ic_discord_light.png);
   }
 
   .twitter-icon {
@@ -1023,11 +1023,11 @@ $placeholder-color: $gray-600;
     background: url(../img/events/event-location-light.svg);
   }
 
-  .events-filter[type="checkbox"]::before {
+  .events-filter[type='checkbox']::before {
     background-color: $gray-100;
   }
 
-  .events-filter[type="checkbox"]:not(:disabled):checked:hover::after {
+  .events-filter[type='checkbox']:not(:disabled):checked:hover::after {
     background-image: url(../img/events/event-check.svg);
     background-repeat: no-repeat;
     background-position: center;
@@ -1038,21 +1038,20 @@ $placeholder-color: $gray-600;
     border-radius: 4px;
   }
 
-  .events-filter[type="checkbox"]:not(:disabled):hover::before {
+  .events-filter[type='checkbox']:not(:disabled):hover::before {
     background-color: $gray-100;
   }
 
-  .events-filter[type="checkbox"]:not(:disabled):hover::after {
+  .events-filter[type='checkbox']:not(:disabled):hover::after {
     background-color: $gray-100;
   }
 }
 
-
 .page-funding {
   .funding-list {
-    @each $funding in "funding-01", "funding-02", "funding-03", "funding-04" {
+    @each $funding in 'funding-01', 'funding-02', 'funding-03', 'funding-04' {
       ##{$funding} {
-        content: url("../img/funding/lightmode/#{$funding}.svg");
+        content: url('../img/funding/lightmode/#{$funding}.svg');
       }
     }
   }
@@ -1063,11 +1062,10 @@ $placeholder-color: $gray-600;
 }
 
 .page-impact {
-
   .connect-list {
-    @each $connect in "connect-01", "connect-02", "connect-03", "connect-04" {
+    @each $connect in 'connect-01', 'connect-02', 'connect-03', 'connect-04' {
       ##{$connect} {
-        content: url("../img/impact/lightmode/#{$connect}.svg");
+        content: url('../img/impact/lightmode/#{$connect}.svg');
       }
     }
   }
@@ -1079,7 +1077,6 @@ $placeholder-color: $gray-600;
   #map-dark {
     display: none;
   }
-
 }
 
 main article .card-grid {
@@ -1095,15 +1092,22 @@ main article .card-grid {
   }
 }
 
-[data-component-name="Footer/Footer"] {
-  [data-component-name="Footer/FooterColumn"] {
-    text-shadow: $gray-100 0px 0px 2px, $gray-100 1px 1px 2px, $gray-100 2px 2px 3px,
-      $gray-100 2px 2px 4px, $gray-100 2px 2px 5px, $gray-100 2px 2px 6px, $gray-100 -1px -1px 2px,
-      $gray-100 -2px -2px 3px, $gray-100 -2px -2px 4px;
+[data-component-name='Footer/Footer'] {
+  [data-component-name='Footer/FooterColumn'] {
+    text-shadow:
+      $gray-100 0px 0px 2px,
+      $gray-100 1px 1px 2px,
+      $gray-100 2px 2px 3px,
+      $gray-100 2px 2px 4px,
+      $gray-100 2px 2px 5px,
+      $gray-100 2px 2px 6px,
+      $gray-100 -1px -1px 2px,
+      $gray-100 -2px -2px 3px,
+      $gray-100 -2px -2px 4px;
   }
 }
 
-[data-component-name="Markdown/Markdown"] article {
+[data-component-name='Markdown/Markdown'] article {
   border-bottom-color: $gray-500;
 }
 
@@ -1124,73 +1128,73 @@ main article .card-grid {
     color: $gray-700;
   }
 
-  .blog-filter[type="checkbox"]::before {
+  .blog-filter[type='checkbox']::before {
     background: $gray-100;
   }
 
-  .blog-filter[type="checkbox"]:checked::before {
+  .blog-filter[type='checkbox']:checked::before {
     background: $gray-100;
   }
 
-  .blog-filter[type="checkbox"]:not(:disabled):checked:hover::after {
+  .blog-filter[type='checkbox']:not(:disabled):checked:hover::after {
     background-image: url(../img/blog/blog-check-light-mode.svg);
   }
 
-  .blog-filter[type="checkbox"]:not(:disabled):hover::before {
+  .blog-filter[type='checkbox']:not(:disabled):hover::before {
     background: $gray-100;
   }
 
-  .blog-filter[type="checkbox"]:not(:disabled):hover::after {
+  .blog-filter[type='checkbox']:not(:disabled):hover::after {
     background: $gray-100;
   }
 
   .post-date {
-    text-decoration: overline solid #145C35 10%;
+    text-decoration: overline solid #145c35 10%;
   }
 
   #general-badge {
-    background-color: #FFFFFF;
+    background-color: #ffffff;
     color: #343437;
   }
 
   #release_notes-badge {
-    background-color: #32E685;
-    color: #145C35;
+    background-color: #32e685;
+    color: #145c35;
   }
 
   #advisories-badge {
-    background-color: #FF6719;
-    color: #4C1A00;
+    background-color: #ff6719;
+    color: #4c1a00;
   }
 
   #amendments-badge {
-    background-color: #FAFF19;
-    color: #4B4C00;
+    background-color: #faff19;
+    color: #4b4c00;
   }
 
   #development-badge {
-    background-color: #7919FF;
-    color: #20004C;
+    background-color: #7919ff;
+    color: #20004c;
   }
 
   #developer_reflections-badge {
-    background-color: #19A3FF;
-    color: #002E4C;
+    background-color: #19a3ff;
+    color: #002e4c;
   }
 
   #gateway_bulletins-badge {
-    background-color: #D919FF;
-    color: #40004C;
+    background-color: #d919ff;
+    color: #40004c;
   }
 
   #features-badge {
-    background-color: #32E685;
-    color: #145C35;
+    background-color: #32e685;
+    color: #145c35;
   }
 
   #security-badge {
-    background-color: #FF198B;
-    color: #4C0026;
+    background-color: #ff198b;
+    color: #4c0026;
   }
 
   .dropdown-btn {
@@ -1199,7 +1203,7 @@ main article .card-grid {
     border-color: $gray-200;
 
     img {
-      content: url("../img/icons/lightmode/chevron-arrow-down.svg");
+      content: url('../img/icons/lightmode/chevron-arrow-down.svg');
     }
   }
 
@@ -1218,19 +1222,19 @@ main article .card-grid {
   }
 
   .article-card-background {
-    filter: drop-shadow(0px 1px 18px rgba(24, 24, 24, 0.50));
+    filter: drop-shadow(0px 1px 18px rgba(24, 24, 24, 0.5));
   }
 
   .evernode {
-    content: url("../img/logos/evernode.svg");
+    content: url('../img/logos/evernode.svg');
   }
 
   .prev img {
-    content: url("../img/icons/prev_light.svg");
+    content: url('../img/icons/prev_light.svg');
   }
 
   .next img {
-    content: url("../img/icons/prev_light.svg");
+    content: url('../img/icons/prev_light.svg');
     transform: scaleX(-1);
   }
 
@@ -1244,18 +1248,19 @@ main article .card-grid {
     color: $black;
   }
   .utility-card {
-  .utility-title{
-    color: $black;
+    .utility-title {
+      color: $black;
+    }
+    .utility-description {
+      color: $black;
+    }
   }
-  .utility-description {
-    color: $black;
-  }
- }
   $icons: (
     'low-fees': '../img/tokenization/lightmode/low-fees.png',
     'access': '../img/tokenization/lightmode/cross-chain.png',
     'native-compliance': '../img/tokenization/lightmode/native-compliance.png',
-    'delegated-token-management': '../img/tokenization/lightmode/delegated-token-management.png',
+    'delegated-token-management':
+      '../img/tokenization/lightmode/delegated-token-management.png',
   );
 
   @each $name, $path in $icons {
@@ -1263,7 +1268,6 @@ main article .card-grid {
       background-image: url(#{$path});
     }
   }
-  
 
   $company-logos-light: (
     'open-eden': '../img/tokenization/lightmode/open-eden.png',
@@ -1284,16 +1288,16 @@ main article .card-grid {
   }
   .token-features-section {
     .btn-link {
-      color: #7919FF;
+      color: #7919ff;
     }
   }
   .card-description {
     a {
-      color: #7919FF !important;
+      color: #7919ff !important;
     }
   }
   .developer-tools__image {
-    background-image: url("../img/tokenization/lightmode/graphic.png");
+    background-image: url('../img/tokenization/lightmode/graphic.png');
   }
   .right-arrow-item::after {
     content: url('../img/icons/lightmode/arrow-right-purple.svg');
@@ -1309,7 +1313,7 @@ main article .card-grid {
   }
 
   .benefit-card {
-    background: #FFF;
+    background: #fff;
 
     .benefit-title {
       color: var(--XRPL-Primary-Black, #000);
@@ -1344,7 +1348,7 @@ main article .card-grid {
     color: var(--XRPL-Black-Black-80, #232325);
   }
   .com-card-link {
-    color: #7919FF !important;
+    color: #7919ff !important;
   }
 }
 
@@ -1362,61 +1366,61 @@ main article .card-grid {
 }
  */
 .use-case-payments {
-  .payments-integration-section{
-  .integration-column__title{
-    color: var(--XRPL-Primary-Black, #000);
+  .payments-integration-section {
+    .integration-column__title {
+      color: var(--XRPL-Primary-Black, #000);
+    }
+    .integration-column__subtitle {
+      color: var(--XRPL-Black-Black-80, #232325);
+    }
+    .feature-item__title {
+      color: var(--XRPL-Primary-Black, #000);
+    }
+    .feature-item__divider {
+      background-color: #000;
+    }
   }
-  .integration-column__subtitle{
-    color: var(--XRPL-Black-Black-80, #232325);
-  }
-  .feature-item__title{
-    color: var(--XRPL-Primary-Black, #000);
-  }
-  .feature-item__divider{
-    background-color: #000;
-  }
-}
 
   .payments-project-card {
-   background: #FFF;
-   box-shadow: none;
-   .first-word{
-    color: var(--XRPL-Black-Black-80, #232325);
-   }
-   .rest-text{
-    color: var(--XRPL-Black-Black-80, #232325);
-   }
-   
-   /* Light mode payment logos */
-   .project-logo {
-     img.ripple-usd {
-       content: url('../img/uses/lightmode/payments/rlusd.png');
-     }
-     
-     img.usdc {
-       content: url('../img/uses/lightmode/payments/usdc.png');
-     }
-     
-     img.usdb {
-       content: url('../img/uses/lightmode/payments/usdb.png');
-     }
-     
-     img.europ {
-       content: url('../img/uses/lightmode/payments/erop.png');
-     }
-     
-     img.xsgd {
-       content: url('../img/uses/lightmode/payments/xsgd.png');
-     }
-     
-     img.audd {
-       content: url('../img/uses/lightmode/payments/audd.png');
-     }
-   }
+    background: #fff;
+    box-shadow: none;
+    .first-word {
+      color: var(--XRPL-Black-Black-80, #232325);
+    }
+    .rest-text {
+      color: var(--XRPL-Black-Black-80, #232325);
+    }
+
+    /* Light mode payment logos */
+    .project-logo {
+      img.ripple-usd {
+        content: url('../img/uses/lightmode/payments/rlusd.png');
+      }
+
+      img.usdc {
+        content: url('../img/uses/lightmode/payments/usdc.png');
+      }
+
+      img.usdb {
+        content: url('../img/uses/lightmode/payments/usdb.png');
+      }
+
+      img.europ {
+        content: url('../img/uses/lightmode/payments/erop.png');
+      }
+
+      img.xsgd {
+        content: url('../img/uses/lightmode/payments/xsgd.png');
+      }
+
+      img.audd {
+        content: url('../img/uses/lightmode/payments/audd.png');
+      }
+    }
   }
   .advantages-section {
     .advantage-item {
-      strong{
+      strong {
         color: var(--XRPL-Black-Black-80, #232325);
       }
     }
@@ -1426,50 +1430,48 @@ main article .card-grid {
 /* Light mode embedded payments icons */
 #embedded-payments-list {
   #digital-wallets {
-    content: url("../img/uses/lightmode/payments/digital-wallet.png");
+    content: url('../img/uses/lightmode/payments/digital-wallet.png');
   }
-  
+
   #cross-border-remittance {
-    content: url("../img/uses/lightmode/payments/cross-border.png");
+    content: url('../img/uses/lightmode/payments/cross-border.png');
   }
-  
+
   #regulated-foreign-exchange {
-    content: url("../img/uses/lightmode/payments/regulated.png");
+    content: url('../img/uses/lightmode/payments/regulated.png');
   }
-  
+
   #merchant-settlement {
-    content: url("../img/uses/lightmode/payments/merchant-settlement.png");
+    content: url('../img/uses/lightmode/payments/merchant-settlement.png');
   }
-  
+
   #b2b-payment-rails {
-    content: url("../img/uses/lightmode/payments/b2b-payment.png");
+    content: url('../img/uses/lightmode/payments/b2b-payment.png');
   }
-  
+
   #compliance-first-payment-acceptance {
-    content: url("../img/uses/lightmode/payments/compliance.png");
+    content: url('../img/uses/lightmode/payments/compliance.png');
   }
 }
 
 /* Light mode battle-tested company logos */
 .use-case-payments .battle-tested-section {
   .payments-project-card {
-     background: #FFF !important;
+    background: #fff !important;
     .project-logo img {
       &.coinpayments {
         content: url('../img/uses/lightmode/payments/coinpayments.png');
       }
-      
+
       &.ripple {
         content: url('../img/uses/lightmode/payments/ripple-black.png');
       }
-      
+
       &.friipay {
         content: url('../img/uses/lightmode/payments/friipay.png');
       }
     }
   }
-
-
 }
 
 .tx-type-list .tx-type {
@@ -1485,8 +1487,9 @@ main article .card-grid {
     &:visited {
       color: $blue-purple-500;
     }
-    &:hover, &:visited:hover {
-      color: $light-link-hover-color
+    &:hover,
+    &:visited:hover {
+      color: $light-link-hover-color;
     }
     img {
       filter: brightness(0.1);
@@ -1500,8 +1503,8 @@ main article .card-grid {
   .tx-legend-item img.tx-type-icon {
     filter: none;
   }
-}  
+}
 
-[data-component-name="Layout/DocumentationLayoutBottom"] {
+[data-component-name='Layout/DocumentationLayoutBottom'] {
   border-top-color: black;
 }

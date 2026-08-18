@@ -18,7 +18,6 @@
     padding: $bds-space-xl; // 20px - spacing('xl')
   }
 
-
   @include media-breakpoint-up(lg) {
     padding: $bds-space-2xl; // 24px - spacing('2xl')
   }
@@ -45,6 +44,24 @@
 
   &#{&}--blue {
     background-color: $blue-100;
+
+    a.bds-link {
+      color: $blue-purple-500;
+
+      &:hover {
+        color: $blue-purple-400;
+      }
+    }
+
+    :root.dark & {
+      a.bds-link {
+        color: $blue-purple-500;
+
+        &:hover {
+          color: $blue-purple-400;
+        }
+      }
+    }
   }
 
   &__content {
@@ -53,7 +70,6 @@
     gap: $bds-space-sm; // 8px - spacing('sm')
     width: 100%;
     color: $bds-btn-neutral-black;
-
 
     @include media-breakpoint-up(lg) {
       gap: $bds-space-lg; // 16px - spacing('lg')
@@ -64,10 +80,9 @@
     @include wordbreak('break-word');
     color: $bds-btn-neutral-black;
 
-
     margin: 0;
-    
-    &:before{
+
+    &:before {
       display: none;
     }
   }
@@ -78,14 +93,12 @@
 
   &__buttons {
     display: flex;
-    flex-direction: column;  
+    flex-direction: column;
     width: 100%;
     flex-wrap: wrap;
     align-items: flex-start;
 
-
     @include media-breakpoint-up(lg) {
-  
       flex-direction: row;
       justify-content: flex-start;
       align-items: center;

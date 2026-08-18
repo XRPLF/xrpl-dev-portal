@@ -63,7 +63,7 @@ $bds-card-text-icon-gap-lg: $bds-padding-card-lg;
   }
 
   // Aspect ratio foundation - when CSS variable is set via aspectRatio prop
-  &[style*="--bds-card-text-icon-aspect-ratio"] {
+  &[style*='--bds-card-text-icon-aspect-ratio'] {
     aspect-ratio: var(--bds-card-text-icon-aspect-ratio);
   }
 
@@ -115,7 +115,7 @@ $bds-card-text-icon-gap-lg: $bds-padding-card-lg;
 
 .bds-card-text-icon-card__description {
   margin: 0;
-  min-width: 0; 
+  min-width: 0;
   position: relative;
   color: $black;
 
@@ -131,12 +131,15 @@ $bds-card-text-icon-gap-lg: $bds-padding-card-lg;
 
 // The 3rd light-theme selector includes :not([role="button"]) (an attribute :not), giving it (0,6,1).
 // Adding the BEM parent brings ours to (0,7,1), cleanly winning without !important.
-html.light .bds-card-text-icon-card .bds-card-text-icon-card__description a:not(.bds-link):not(.bds-card-offgrid):not(.bds-card-icon):not(.bds-btn) {
+html.light
+  .bds-card-text-icon-card
+  .bds-card-text-icon-card__description
+  a:not(.bds-link):not(.bds-card-offgrid):not(.bds-card-icon):not(.bds-btn) {
   font-weight: 400;
-  color: $green-400;
+  color: $green-500;
 
   &:hover {
-    color: $green-500;
+    color: $green-400;
     text-decoration: underline;
   }
   &:active {
@@ -151,7 +154,10 @@ html.light .bds-card-text-icon-card .bds-card-text-icon-card__description a:not(
   }
 }
 
-html.dark .bds-card-text-icon-card .bds-card-text-icon-card__description a:not(.bds-link):not(.bds-card-offgrid):not(.bds-card-icon):not(.bds-btn) {
+html.dark
+  .bds-card-text-icon-card
+  .bds-card-text-icon-card__description
+  a:not(.bds-link):not(.bds-card-offgrid):not(.bds-card-icon):not(.bds-btn) {
   font-weight: 400;
   color: $green-300;
 
