@@ -6,19 +6,19 @@
 // Mapping: 100,200→100 | 300,400→200 | 500,600→300 | 700,800→400 | 900,1000→500
 
 // Base colors ----------------------------------------------------
-$white: #ffffff;
-$black: #141414;
-$brand-green: #21e46b;
+$white:    #FFFFFF;
+$black:    #141414;
+$brand-green: #21E46B;
 
-$gray-050: #fcfcfd;
+$gray-050: #FCFCFD;
 // Gray (Neutral) - New Design Tokens
-$gray-100: #f0f3f7; // New design token
-$gray-200: #e6eaf0; // New design token
-$gray-300: #cad4df; // New design token (default)
-$gray-400: #8a919a; // New design token
-$gray-500: #72777e; // New design token
+$gray-100: #F0F3F7;  // New design token
+$gray-200: #E6EAF0;  // New design token
+$gray-300: #CAD4DF;  // New design token (default)
+$gray-400: #8A919A;  // New design token
+$gray-500: #72777E;  // New design token
 // Dark tiles on $gray-500: pressed = neutral/500 + ~70% black tint → reads as #56595E
-$gray-500-pressed-dark: #56595e;
+$gray-500-pressed-dark: #56595E;
 // Legacy gray values (600-900 for dark mode)
 $gray-600: #454549;
 $gray-700: #343437;
@@ -31,30 +31,30 @@ $black-40: $gray-400;
 $black-60: $gray-600;
 
 // Green - New Design Tokens
-$green-100: #eafcf1; // New design token
-$green-200: #70ee97; // New design token
-$green-300: $brand-green; // New design token (default)
-$green-400: #0daa3e; // New design token
-$green-500: #078139; // New design token
+$green-100: #EAFCF1;  // New design token
+$green-200: #70EE97;  // New design token
+$green-300: $brand-green;  // New design token (default)
+$green-400: #0DAA3E;  // New design token
+$green-500: #078139;  // New design token
 $green: $green-500;
-$apex-2023-green: #00ff76; // Special event color - preserved
+$apex-2023-green: #00FF76;  // Special event color - preserved
 $token-2049-purple: #410bb9; // Special event color - preserved
 
 // Blue (Secondary) - New Design Tokens
-$blue-100: #edf4ff; // New design token
-$blue-200: #93bff1; // New design token
-$blue-300: #428cff; // New design token (default)
-$blue-400: #0179e7; // New design token
-$blue-500: #0a4dc0; // New design token
+$blue-100: #EDF4FF;  // New design token
+$blue-200: #93BFF1;  // New design token
+$blue-300: #428CFF;  // New design token (default)
+$blue-400: #0179E7;  // New design token
+$blue-500: #0A4DC0;  // New design token
 $blue: $blue-500;
 $accent-blue-90: #001133; // Special event color - preserved
 
 // Lilac (Primary) - New Design Tokens (replaces blue-purple)
-$lilac-100: #f2edff; // New design token
-$lilac-200: #d9caff; // New design token
-$lilac-300: #c0a7ff; // New design token (default)
-$lilac-400: #7649e3; // New design token
-$lilac-500: #5429a1; // New design token
+$lilac-100: #F2EDFF;  // New design token
+$lilac-200: #D9CAFF;  // New design token
+$lilac-300: #C0A7FF;  // New design token (default)
+$lilac-400: #7649E3;  // New design token
+$lilac-500: #5429A1;  // New design token
 
 // Legacy blue-purple aliases (map to new lilac)
 $blue-purple-100: $lilac-100;
@@ -65,22 +65,22 @@ $blue-purple-500: $lilac-500;
 $purple: $lilac-400;
 
 // Red-purple - Legacy (no design token replacement)
-$red-purple-100: #fbe5ff;
-$red-purple-200: #f2b2ff;
-$red-purple-300: #ea80ff;
-$red-purple-400: #e24cff;
-$red-purple-500: #d919ff;
-$red-purple-600: #c000e5;
-$red-purple-700: #9500b2;
-$red-purple-800: #6b0080;
-$red-purple-900: #40004c;
+$red-purple-100: #FBE5FF;
+$red-purple-200: #F2B2FF;
+$red-purple-300: #EA80FF;
+$red-purple-400: #E24CFF;
+$red-purple-500: #D919FF;
+$red-purple-600: #C000E5;
+$red-purple-700: #9500B2;
+$red-purple-800: #6B0080;
+$red-purple-900: #40004C;
 
 // Pink (Secondary) - New Design Tokens (replaces magenta)
-$pink-100: #fdf1f4; // New design token
-$pink-200: #f2b5c3; // New design token
-$pink-300: #f18da5; // New design token (default)
-$pink-400: #ff577f; // New design token
-$pink-500: #dc466f; // New design token
+$pink-100: #FDF1F4;  // New design token
+$pink-200: #F2B5C3;  // New design token
+$pink-300: #F18DA5;  // New design token (default)
+$pink-400: #FF577F;  // New design token
+$pink-500: #DC466F;  // New design token
 
 // Legacy magenta aliases (map to new pink)
 $magenta-100: $pink-100;
@@ -92,32 +92,32 @@ $magenta: $pink-500;
 $pink: $pink-500;
 
 // Red (Secondary) - New Design Tokens
-$red-100: #fdece7; // New design token
-$red-200: #f27a66; // New design token
-$red-300: #f0643a; // New design token (default)
-$red-400: #da4518; // New design token
-$red-500: #a22514; // New design token
+$red-100: #FDECE7;  // New design token
+$red-200: #F27A66;  // New design token
+$red-300: #F0643A;  // New design token (default)
+$red-400: #DA4518;  // New design token
+$red-500: #A22514;  // New design token
 $red: $red-500;
 
 // Orange - Legacy (no design token replacement)
-$orange-100: #ffeee5;
-$orange-200: #ffccb2;
-$orange-300: #ffaa80;
-$orange-400: #ff884b;
-$orange-500: #ff6719;
-$orange-600: #e54d00;
-$orange-700: #b23c00;
-$orange-800: #802b00;
-$orange-900: #4c1a00;
+$orange-100: #FFEEE5;
+$orange-200: #FFCCB2;
+$orange-300: #FFAA80;
+$orange-400: #FF884B;
+$orange-500: #FF6719;
+$orange-600: #E54D00;
+$orange-700: #B23C00;
+$orange-800: #802B00;
+$orange-900: #4C1A00;
 $orange: $orange-500;
 
 // Yellow (Secondary) - New Design Tokens
-$yellow-100: #f3f1eb; // New design token
-$yellow-200: #e6f1a7; // New design token
-$yellow-300: #dbf15e; // New design token (default)
-$yellow-400: #e1db26; // New design token
-$yellow-500: #d4c02d; // New design token
-$yellow-600: #786c1a; // Darker yellow for a11y contrast (4.70:1 on $yellow-100)
+$yellow-100: #F3F1EB;  // New design token
+$yellow-200: #E6F1A7;  // New design token
+$yellow-300: #DBF15E;  // New design token (default)
+$yellow-400: #E1DB26;  // New design token
+$yellow-500: #D4C02D;  // New design token
+$yellow-600: #786C1A; // Darker yellow for a11y contrast (4.70:1 on $yellow-100)
 $yellow: $yellow-500;
 
 // XRPL Green (Radix 12-step) -----------------------------------------------
@@ -279,29 +279,29 @@ $white-overlay-a11: rgba(255, 255, 255, 0.9);
 $white-overlay-a12: rgba(255, 255, 255, 0.95);
 
 // Common colors & colors used in Bootstrap ------------------------------------
-$primary: $purple;
-$secondary: $gray-200;
-$light: $white;
-$dark: $gray-900;
-$success: $green-500;
-$info: $blue-500;
-$warning: $yellow-500; // "caution" callout style
-$danger: $magenta-500; // "warning" callout style
+$primary:       $purple;
+$secondary:     $gray-200;
+$light:         $white;
+$dark:          $gray-900;
+$success:       $green-500;
+$info:          $blue-500;
+$warning:       $yellow-500; // "caution" callout style
+$danger:        $magenta-500; // "warning" callout style
 
 // Bootstrap elements
-$body-bg: $gray-900;
+$body-bg:         $gray-900;
 $navbar-light-color: $gray-600;
-$code-color: $secondary;
-$body-color: $gray-200;
-$headings-color: $white;
-$text-muted: $gray-200;
+$code-color:      $secondary;
+$body-color:      $gray-200;
+$headings-color:  $white;
+$text-muted:      $gray-200;
 $link-hover-color: $purple;
-$link-color: $white;
+$link-color:      $white;
 
-$breadcrumb-bg: $body-bg;
+$breadcrumb-bg:   $body-bg;
 $breadcrumb-active-color: $gray-400;
 
-$card-bg: $gray-800;
+$card-bg:   $gray-800;
 
 // Link styles - Bootstrap 5 defaults to underlined, we don't want that
 $link-decoration: none;
@@ -310,10 +310,10 @@ $link-hover-decoration: underline;
 $link-shade-percentage: 0%; // Disable auto-shading
 $link-hover-color: $purple; // Explicit hover color
 
-$dropdown-bg: $gray-900;
+$dropdown-bg:     $gray-900;
 $dropdown-divider-bg: $black;
 $dropdown-border-color: $gray-900;
-$dropdown-color: $secondary;
+$dropdown-color:  $secondary;
 $dropdown-link-color: $white;
 $dropdown-link-hover-color: $purple;
 $dropdown-link-hover-bg: $gray-900;

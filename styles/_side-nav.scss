@@ -61,6 +61,7 @@ aside .active-parent > a {
 }
 
 .dactyl-tree-nav {
+
   nav {
     margin-left: 1rem;
     padding-left: 0;
@@ -103,7 +104,7 @@ aside .active-parent > a {
   }
 
   > .nav-item {
-    padding: 0.5rem 0;
+    padding: .5rem 0;
     font-size: 1.125rem;
 
     > .nav-link {
@@ -117,7 +118,9 @@ aside .active-parent > a {
   }
 }
 
+
 /* Right navigation --------------------------------------------------------- */
+
 
 .toc-header {
   font-weight: bold;
@@ -156,13 +159,13 @@ aside .active-parent > a {
     padding: 0;
 
     &.separator {
-      padding: 0.25rem 1rem;
+      padding: .25rem 1rem;
     }
 
     a {
       display: block;
       margin-top: 5px;
-      padding: 0.25rem 1rem;
+      padding: .25rem 1rem;
       font-size: 0.9rem;
 
       &:hover,
@@ -206,11 +209,11 @@ aside .active-parent > a {
     }
   }
 
+
   &.no-sideline {
     border-left: 0;
 
-    a:hover,
-    a.active {
+    a:hover, a.active {
       border-left: 0;
       margin-left: 0;
     }
@@ -229,12 +232,9 @@ aside .active-parent > a {
 // its content height (top-aligned) restores the sticky travel; max-height keeps
 // it within the viewport and its inner MenuContainer still scrolls long navs.
 @media screen and (min-width: 960px) {
-  [data-component-name='Layout/PageLayout']
-    aside[data-component-name='Sidebar/Sidebar'] {
+  [data-component-name="Layout/PageLayout"] aside[data-component-name="Sidebar/Sidebar"] {
     align-self: flex-start;
     height: auto !important;
-    max-height: calc(
-      100vh - var(--navbar-height, 80px) - var(--banner-height, 0px)
-    );
+    max-height: calc(100vh - var(--navbar-height, 80px) - var(--banner-height, 0px));
   }
 }
