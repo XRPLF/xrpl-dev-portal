@@ -44,9 +44,9 @@ export type CarouselFeaturedBackground = "grey" | "neutral" | "yellow";
 
 /**
  * Slide transition style for CarouselFeatured
- * - 'slide': slides wipe horizontally left/right (default)
  * - 'fade': slides crossfade in place, with the image/heading leading and the
- *   feature list and buttons following on a short stagger
+ *   feature list and buttons following on a short stagger (default)
+ * - 'slide': slides wipe horizontally left/right
  */
 export type CarouselFeaturedTransition = "slide" | "fade";
 
@@ -58,7 +58,7 @@ export interface CarouselFeaturedProps extends React.ComponentPropsWithoutRef<"s
   slides: readonly CarouselSlide[];
   /** Background color variant. Defaults to 'grey'. */
   background?: CarouselFeaturedBackground;
-  /** Slide transition style. Defaults to 'slide'. */
+  /** Slide transition style. Defaults to 'fade'. */
   transition?: CarouselFeaturedTransition;
 }
 
@@ -98,7 +98,7 @@ export const CarouselFeatured = React.forwardRef<
   const {
     slides,
     background = "grey",
-    transition = "slide",
+    transition = "fade",
     className,
     children,
     ...rest

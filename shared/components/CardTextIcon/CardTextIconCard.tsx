@@ -123,7 +123,7 @@ export const CardTextIconCard: React.FC<CardTextIconCardProps> = ({
       className={clsx('bds-card-text-icon-card', className)}
       style={style}
     >
-      {cardContent(heading, description, icon, iconAlt, height, width)}
+      {cardContent(heading, headingAs, description, icon, iconAlt, height, width)}
     </div>
   );
 };

@@ -32,6 +32,7 @@ export default function Docs() {
         headline={translate("XRP Ledger (XRPL) Documentation")}
         subtitle={translate("Explore XRPL documentation with our essential guide for developers and admins who want to start building and integrating with the XRP Ledger.")}
         media={{ type: 'image', src: require('../static/img/bds-2026/docs-hero-media.jpg'), alt: translate('XRPL Documentation') }}
+        stacked={true}
       />
 
       {/* 2. Get Started Carousel */}

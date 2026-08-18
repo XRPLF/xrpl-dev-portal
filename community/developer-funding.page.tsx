@@ -156,11 +156,7 @@ export default function Funding() {
         }}
       />
 
-      <CarouselFeatured
-        slides={carouselSlides}
-        background="yellow"
-        transition="fade"
-      />
+      <CarouselFeatured slides={carouselSlides} background="yellow" />
 
       <LogoSquareGrid
         variant="gray"

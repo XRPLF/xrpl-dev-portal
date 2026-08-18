@@ -313,6 +313,7 @@ export default function Index() {
           },
         ]}
         background="grey"
+        transition="fade"
       />
 
       <LinkTextDirectory
