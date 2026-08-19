@@ -1,16 +1,4 @@
 /* HOME STYLINGS */
-#home-purple {
-  position: absolute;
-  left: 0;
-  top: -400px;
-}
-
-#home-green {
-  position: absolute;
-  right: -3px;
-  top: 60px;
-}
-
 .sidelinks {
   &:hover {
     color: $blue-purple-400;
@@ -19,6 +7,16 @@
   &.active {
     color: $blue-purple-400;
     font-weight: bold;
+  }
+
+  :root.dark & {
+    &:hover {
+      color: $blue-purple-300;
+    }
+
+    &.active {
+      color: $blue-purple-300;
+    }
   }
 }
 
@@ -363,13 +361,12 @@
     padding: 2px 16px;
     width: 24px;
     height: 16px;
-    background: $blue-purple-800;
+    background: $blue-purple-400;
     border-radius: 100px;
-
     font-weight: 600;
     font-size: 12px;
     line-height: 16px;
-    color: $blue-purple-300;
+    color: $white;
   }
 
   .category_sidebar {
@@ -734,8 +731,9 @@
   }
 
   .event-card {
+    width: 100%;
     max-width: 311px;
-    margin: 32px auto;
+    margin: 0 auto 32px;
     transition: all 0.35s ease-out;
     position: relative;
     display: flex;
@@ -743,6 +741,14 @@
     min-width: 0;
     word-wrap: break-word;
     background-clip: border-box;
+
+    // The events page renders ~126 cards at once; skip rendering the off-screen
+    // ones until they near the viewport. contain-intrinsic-size reserves each
+    // card's space so the scrollbar stays stable (≈ header + body + footer);
+    // `auto` lets the browser remember the real size after first render.
+    // Unsupported browsers ignore this and render as before.
+    content-visibility: auto;
+    contain-intrinsic-size: auto 460px;
 
     background-color: $card-bg;
     box-shadow: 0px 5px 40px $black;
@@ -764,17 +770,22 @@
 
     .event-card-title {
       position: absolute;
+      left: 0;
+      right: 0;
       bottom: 32px;
       padding: 0 32px;
       color: $gray-100;
 
       font-weight: bold;
-      font-size: 20px;
-      line-height: 28px;
+      font-size: 19px;
+      line-height: 26px;
     }
 
     .event-card-body {
       padding: 32px;
+      p {
+        font-size: 15px;
+      }
     }
 
     .event-card-footer {
@@ -800,15 +811,36 @@
   }
 
   //end event card
+  @media (min-width: 576px) {
+    .event-card-header {
+      height: 148px !important;
+    }
+  }
 
   @media (min-width: 992px) {
     .event-card {
-      max-width: 347px;
-      margin: 32px;
+      // Fill the grid column (row-cols-lg-3); spacing between cards comes
+      // from the row gutter (g-5), not card margins. Legacy max-width/margin
+      // here left over from the pre-Bootstrap-5 `card-deck` layout made the
+      // cards too narrow and misaligned inside their columns.
+      max-width: none;
+      margin: 0;
     }
 
     .event-card-header {
-      height: 197px !important;
+      height: 172px !important;
+    }
+
+    .event-card-title {
+      font-size: 17px;
+      line-height: 24px;
+      bottom: 24px;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .event-card-header {
+      height: 220px !important;
     }
   }
 
@@ -825,6 +857,11 @@
 
   .events-filter h6 {
     font-size: 16px;
+  }
+
+  // Add spacing to filter checkboxes to match Bootstrap 4
+  .form-check-inline {
+    margin-right: 2rem;
   }
 
   .events-filter {
@@ -892,7 +929,7 @@
     background-position: center;
     border-width: 2px;
     border-style: solid;
-    border-color: $blue-purple-600;
+    border-color: $blue-purple-300;
     border-radius: 4px;
   }
 
@@ -907,7 +944,7 @@
     border: none;
     border-width: 2px;
     border-style: solid;
-    border-color: $blue-purple-600;
+    border-color: $blue-purple-300;
     border-radius: 4px;
   }
 }
@@ -951,14 +988,6 @@
 }
 
 .page-faq {
-  &::before {
-    background-image: url(../img/backgrounds/faq-bg.svg);
-
-    @include media-breakpoint-up(md) {
-      background-size: contain;
-    }
-  }
-
   article {
     @include media-breakpoint-up(lg) {
       max-width: 704px;
@@ -1357,29 +1386,6 @@
 }
 
 .page-dev-tools {
-  @each $tool,
-  $card-graphic in ("xrp-explorer": "3-col-orange",
-    "bithomp-explorer": "3-col-light-blue",
-    "xrpscan": "3-col-pink",
-    "token-list": "3-col-pink2",
-    "websocket": "3-col-purple2",
-    "rpc": "3-col-green",
-    "technical-explorer": "3-col-purple-blue",
-    "faucets": "3-col-pink2",
-    "trasaction-sender": "3-col-light-blue2",
-    "domain": "3-col-green-purple",
-    "xrp-ledger": "3-col-dark-blue",
-    "binary-visualizer": "3-col-purple-blue",
-    "token-metadata-lookup": "3-col-pink-purple"
-
-  ) {
-    ##{$tool} {
-      .card-footer {
-        background-image: url("../img/cards/#{$card-graphic}.svg");
-      }
-    }
-  }
-
   .nav-link {
     color: $gray-400;
     background-color: $gray-900;
@@ -1475,7 +1481,6 @@ html.light {
   .token-title {
     color: var(--black-black-0-white, #FFF);
     text-align: center;
-    font-family: "Work Sans";
     font-size: 62px;
     font-style: normal;
     font-weight: 700;
@@ -1505,9 +1510,9 @@ html.light {
         gap: 32px;
         justify-content: center;
         align-items: center;
-  
+
         .internal-link {
-            color: #9a52ff;
+            color: $blue-purple-400;
             font-size: 16px;
             font-style: normal;
             font-weight: 700;
@@ -1517,7 +1522,13 @@ html.light {
             align-items: center;
             background: none !important;
           }
-  
+
+        :root.dark & {
+          .internal-link {
+            color: $blue-purple-300;
+          }
+        }
+
         @media (max-width: 767px) {
           padding-bottom: 0px;
           gap: 16px;
@@ -1573,7 +1584,6 @@ html.light {
 
       p {
         color: var(--black-black-10-gray-200, #E0E0E1);
-        font-family: "Work Sans";
         font-size: 24px;
         font-style: normal;
         font-weight: 400;
@@ -1641,7 +1651,6 @@ html.light {
 
     .cards-title-token {
       color: var(--black-black-0-white, #FFF);
-      font-family: "Work Sans";
       font-size: 32px;
       font-style: normal;
       font-weight: 700;
@@ -1654,7 +1663,6 @@ html.light {
       display: flex;
       flex-direction: column;
       align-items: center;
-      font-family: 'Work Sans', sans-serif;
       overflow: hidden;
     }
 
@@ -1871,7 +1879,6 @@ html.light {
 .token-developer-tools-section,
 .payments-integration-section {
   .developer-tools {
-    font-family: 'Work Sans', sans-serif;
     color: #fff;
   }
 
@@ -1963,7 +1970,6 @@ html.light {
 
 .token-features-section {
   .rwa-tokenization {
-    font-family: 'Work Sans', sans-serif;
     padding: 100px 40px;
     padding-top: 0px;
     color: #fff;
@@ -2163,23 +2169,6 @@ html.light {
         margin-bottom: 0 !important;
         flex: none !important;
       }
-
-      &.developer-spotlight {
-        background-image: url(../img/community/bug-bounty-card-bg.png);
-        background-position: top right;
-        background-size: 169px 88px;
-        background-repeat: no-repeat;
-      }
-      &.learn-stay-updated {
-        background-image: url(../img/community/bug-bounty-card-bg-2.png);
-        background-position: bottom right;
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-size: 136px 177px;
-        @media (max-width: 767px) {
-          background-image: url(../img/community/bug-bounty-card-bg-2-mobile.png);
-        }
-      }
       
       .card-content {
         display: flex;
@@ -2319,6 +2308,12 @@ html.light {
 
         &:hover {
           text-decoration: underline;
+        }
+      }
+
+      :root.dark & {
+        a {
+          color: $blue-purple-300;
         }
       }
     }

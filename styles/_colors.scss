@@ -1,60 +1,70 @@
-// XRP Visual Guidelines 2021 palette
+// XRPL Design Tokens 2026 - Figma Design System
+// https://figma.com/design/zRyhXG4hRP3Lk3B6Owr3eo/XRPL.org-Design-Tokens
+//
+// Migration Strategy: Smart Merge Approach
+// Old 10-level scale (100-1000) consolidated to new 5-level scale (100-500)
+// Mapping: 100,200→100 | 300,400→200 | 500,600→300 | 700,800→400 | 900,1000→500
 
-// Full color palette first ----------------------------------------------------
+// Base colors ----------------------------------------------------
 $white:    #FFFFFF;
+$black:    #141414;
+$brand-green: #21E46B;
+
 $gray-050: #FCFCFD;
-$gray-100: #F5F5F7;
-$gray-200: #E0E0E1;
-$gray-300: #C1C1C2;
-$gray-400: #A2A2A4;
-$gray-500: #838386;
+// Gray (Neutral) - New Design Tokens
+$gray-100: #F0F3F7;  // New design token
+$gray-200: #E6EAF0;  // New design token
+$gray-300: #CAD4DF;  // New design token (default)
+$gray-400: #8A919A;  // New design token
+$gray-500: #72777E;  // New design token
+// Dark tiles on $gray-500: pressed = neutral/500 + ~70% black tint → reads as #56595E
+$gray-500-pressed-dark: #56595E;
+// Legacy gray values (600-900 for dark mode)
 $gray-600: #454549;
 $gray-700: #343437;
 $gray-800: #232325;
-$gray-900: #111112;
-$black:    #000000;
+$gray-900: #141414;
+
+// Legacy aliases
 $black-10: $gray-100;
 $black-40: $gray-400;
 $black-60: $gray-600;
 
-$green-100: #D6FAE7;
-$green-200: #ADF5CE;
-$green-300: #84F0B6;
-$green-400: #5BEB9D;
-$green-500: #32E685;
-$green-600: #2DCF78;
-$green-700: #28B86A;
-$green-800: #1E8A50;
-$green-900: #145C35;
-$green-1000: #0A2E1B;
+// Green - New Design Tokens
+$green-100: #EAFCF1;  // New design token
+$green-200: #70EE97;  // New design token
+$green-300: $brand-green;  // New design token (default)
+$green-400: #0DAA3E;  // New design token
+$green-500: #078139;  // New design token
 $green: $green-500;
-$apex-2023-green: #00FF76;
-$token-2049-purple: #410bb9;
+$apex-2023-green: #00FF76;  // Special event color - preserved
+$token-2049-purple: #410bb9; // Special event color - preserved
 
-$blue-100: #E5F5FF;
-$blue-200: #B2E0FF;
-$blue-300: #80CCFF;
-$blue-400: #4BB7FF;
-$blue-500: #19A3FF;
-$blue-600: #008AE5;
-$blue-700: #006BB2;
-$blue-800: #004D80;
-$blue-900: #002E4C;
+// Blue (Secondary) - New Design Tokens
+$blue-100: #EDF4FF;  // New design token
+$blue-200: #93BFF1;  // New design token
+$blue-300: #428CFF;  // New design token (default)
+$blue-400: #0179E7;  // New design token
+$blue-500: #0A4DC0;  // New design token
 $blue: $blue-500;
+$accent-blue-90: #001133; // Special event color - preserved
 
-$accent-blue-90: #001133; // Used in APEX 2023 banner
+// Lilac (Primary) - New Design Tokens (replaces blue-purple)
+$lilac-100: #F2EDFF;  // New design token
+$lilac-200: #D9CAFF;  // New design token
+$lilac-300: #C0A7FF;  // New design token (default)
+$lilac-400: #7649E3;  // New design token
+$lilac-500: #5429A1;  // New design token
 
-$blue-purple-100: #F0E5FF;
-$blue-purple-200: #D2B2FF;
-$blue-purple-300: #B480FF;
-$blue-purple-400: #9A52FF;
-$blue-purple-500: #7919FF;
-$blue-purple-600: #5F00E5;
-$blue-purple-700: #4A00B2;
-$blue-purple-800: #350080;
-$blue-purple-900: #20004C;
-$purple: $blue-purple-400;
+// Legacy blue-purple aliases (map to new lilac)
+$blue-purple-100: $lilac-100;
+$blue-purple-200: $lilac-200;
+$blue-purple-300: $lilac-300;
+$blue-purple-400: $lilac-400;
+$blue-purple-500: $lilac-500;
+$purple: $lilac-400;
 
+// Red-purple - Legacy (no design token replacement)
 $red-purple-100: #FBE5FF;
 $red-purple-200: #F2B2FF;
 $red-purple-300: #EA80FF;
@@ -65,18 +75,31 @@ $red-purple-700: #9500B2;
 $red-purple-800: #6B0080;
 $red-purple-900: #40004C;
 
-$magenta-100: #FFE5F2;
-$magenta-200: #FFB2D8;
-$magenta-300: #FF80BF;
-$magenta-400: #FF4BA4;
-$magenta-500: #FF198B;
-$magenta-600: #E50071;
-$magenta-700: #B20058;
-$magenta-800: #80003F;
-$magenta-900: #4C0026;
-$magenta: $magenta-500;
-$pink: $magenta-500;
+// Pink (Secondary) - New Design Tokens (replaces magenta)
+$pink-100: #FDF1F4;  // New design token
+$pink-200: #F2B5C3;  // New design token
+$pink-300: #F18DA5;  // New design token (default)
+$pink-400: #FF577F;  // New design token
+$pink-500: #DC466F;  // New design token
 
+// Legacy magenta aliases (map to new pink)
+$magenta-100: $pink-100;
+$magenta-200: $pink-200;
+$magenta-300: $pink-300;
+$magenta-400: $pink-400;
+$magenta-500: $pink-500;
+$magenta: $pink-500;
+$pink: $pink-500;
+
+// Red (Secondary) - New Design Tokens
+$red-100: #FDECE7;  // New design token
+$red-200: #F27A66;  // New design token
+$red-300: #F0643A;  // New design token (default)
+$red-400: #DA4518;  // New design token
+$red-500: #A22514;  // New design token
+$red: $red-500;
+
+// Orange - Legacy (no design token replacement)
 $orange-100: #FFEEE5;
 $orange-200: #FFCCB2;
 $orange-300: #FFAA80;
@@ -88,16 +111,172 @@ $orange-800: #802B00;
 $orange-900: #4C1A00;
 $orange: $orange-500;
 
-$yellow-100: #FEFFE5;
-$yellow-200: #FDFFB2;
-$yellow-300: #FCFF80;
-$yellow-400: #FBFF4C;
-$yellow-500: #FAFF19;
-$yellow-600: #E0E500;
-$yellow-700: #AEB200;
-$yellow-800: #7D8000;
-$yellow-900: #4B4C00;
+// Yellow (Secondary) - New Design Tokens
+$yellow-100: #F3F1EB;  // New design token
+$yellow-200: #E6F1A7;  // New design token
+$yellow-300: #DBF15E;  // New design token (default)
+$yellow-400: #E1DB26;  // New design token
+$yellow-500: #D4C02D;  // New design token
+$yellow-600: #786C1A; // Darker yellow for a11y contrast (4.70:1 on $yellow-100)
 $yellow: $yellow-500;
+
+// XRPL Green (Radix 12-step) -----------------------------------------------
+// Generated from brand Green #21E46B with Radix generateRadixColors.
+// Step 9 is the brand value exactly. Light steps solved against #FFFFFF,
+// dark steps against #141414.
+//
+// Light: only steps 11–12 clear 3:1 vs white; 1–10 are fill/background only.
+// Step 9 is 1.70:1 on white — solid fill, never text, border, or icon.
+// Only step 12 clears 4.5:1 against the neutral greys. Contrast is
+// non-monotonic at step 9 (step 8 is 2.30, step 9 is 1.70) so do not treat
+// step 8 as a hovered border on step 9.
+// Dark: steps 9–12 clear 4.5:1; step 8 clears 3:1.
+// $xrpl-green-contrast is the foreground on step 9 (9.3:1). Do not use white.
+
+// Light solids
+$xrpl-green-1: #fafefb;
+$xrpl-green-2: #f4fbf5;
+$xrpl-green-3: #ddfbe1;
+$xrpl-green-4: #c6f8ce;
+$xrpl-green-5: #b0f0bb;
+$xrpl-green-6: #98e4a7;
+$xrpl-green-7: #7bd48e;
+$xrpl-green-8: #48c16a;
+$xrpl-green-9: $brand-green; // brand green
+$xrpl-green-10: #00d960;
+$xrpl-green-11: #16843d;
+$xrpl-green-12: #1c4425;
+$xrpl-green-contrast: #132717;
+
+// Light alpha (8-digit hex: rrggbbaa)
+$xrpl-green-a1: #00cc3305;
+$xrpl-green-a2: #00a3180b;
+$xrpl-green-a3: #00e11e22;
+$xrpl-green-a4: #00e02439;
+$xrpl-green-a5: #00cf244f;
+$xrpl-green-a6: #00bd2667;
+$xrpl-green-a7: #00ac2584;
+$xrpl-green-a8: #00a930b7;
+$xrpl-green-a9: #00e055de;
+$xrpl-green-a10: #00d960;
+$xrpl-green-a11: #00782be9;
+$xrpl-green-a12: #002d0ae3;
+
+// Dark solids
+$xrpl-green-dark-1: #0f1610;
+$xrpl-green-dark-2: #121c14;
+$xrpl-green-dark-3: #132e19;
+$xrpl-green-dark-4: #0f3d1c;
+$xrpl-green-dark-5: #144b24;
+$xrpl-green-dark-6: #1b592d;
+$xrpl-green-dark-7: #226a37;
+$xrpl-green-dark-8: #267f40;
+$xrpl-green-dark-9: #21e46b; // brand green
+$xrpl-green-dark-10: #00d960;
+$xrpl-green-dark-11: #00db63;
+$xrpl-green-dark-12: #acf4b9;
+$xrpl-green-dark-contrast: $xrpl-green-contrast;
+
+// Dark alpha (8-digit hex: rrggbbaa)
+$xrpl-green-dark-a1: #00be0003;
+$xrpl-green-dark-a2: #00f71509;
+$xrpl-green-dark-a3: #0cf9401d;
+$xrpl-green-dark-a4: #00fd422d;
+$xrpl-green-dark-a5: #15fe583c;
+$xrpl-green-dark-a6: #2cff694b;
+$xrpl-green-dark-a7: #3afd735e;
+$xrpl-green-dark-a8: #3bfd7475;
+$xrpl-green-dark-a9: #23ff77e2;
+$xrpl-green-dark-a10: #00ff6fd6;
+$xrpl-green-dark-a11: #00ff71d8;
+$xrpl-green-dark-a12: #b3fec0f4;
+
+// Sage (Radix 12-step, neutral) --------------------------------------------
+// https://www.radix-ui.com/colors/docs/palette-composition/scales
+// Primitive steps 1–12. Overlays are black/white alpha, not sage-tinted.
+
+// Light solids
+$sage-1: #fbfdfc;
+$sage-2: #f7f9f8;
+$sage-3: #eef1f0;
+$sage-4: #e6e9e8;
+$sage-5: #dfe2e0;
+$sage-6: #d7dad9;
+$sage-7: #cbcfcd;
+$sage-8: #b8bcba;
+$sage-9: #868e8b;
+$sage-10: #7c8481;
+$sage-11: #5f6563;
+$sage-12: #1a211e;
+
+// Light alpha (8-digit hex: rrggbbaa)
+$sage-a1: #00804004;
+$sage-a2: #00402008;
+$sage-a3: #002d1e11;
+$sage-a4: #001f1519;
+$sage-a5: #00180820;
+$sage-a6: #00140d28;
+$sage-a7: #00140a34;
+$sage-a8: #000f0847;
+$sage-a9: #00110b79;
+$sage-a10: #00100a83;
+$sage-a11: #000a07a0;
+$sage-a12: #000805e5;
+
+// Dark solids
+$sage-dark-1: #101211;
+$sage-dark-2: #171918;
+$sage-dark-3: #202221;
+$sage-dark-4: #272a29;
+$sage-dark-5: #2e3130;
+$sage-dark-6: #373b39;
+$sage-dark-7: #444947;
+$sage-dark-8: #5b625f;
+$sage-dark-9: #63706b;
+$sage-dark-10: #717d79;
+$sage-dark-11: #adb5b2;
+$sage-dark-12: #eceeed;
+
+// Dark alpha (8-digit hex: rrggbbaa)
+$sage-dark-a1: #00000000;
+$sage-dark-a2: #f0f2f108;
+$sage-dark-a3: #f3f5f412;
+$sage-dark-a4: #f2fefd1a;
+$sage-dark-a5: #f1fbfa22;
+$sage-dark-a6: #edfbf42d;
+$sage-dark-a7: #edfcf73c;
+$sage-dark-a8: #ebfdf657;
+$sage-dark-a9: #dffdf266;
+$sage-dark-a10: #e5fdf674;
+$sage-dark-a11: #f4fefbb0;
+$sage-dark-a12: #fdfffeed;
+
+// Overlays
+$black-overlay-a1: rgba(0, 0, 0, 0.05);
+$black-overlay-a2: rgba(0, 0, 0, 0.1);
+$black-overlay-a3: rgba(0, 0, 0, 0.15);
+$black-overlay-a4: rgba(0, 0, 0, 0.2);
+$black-overlay-a5: rgba(0, 0, 0, 0.3);
+$black-overlay-a6: rgba(0, 0, 0, 0.4);
+$black-overlay-a7: rgba(0, 0, 0, 0.5);
+$black-overlay-a8: rgba(0, 0, 0, 0.6);
+$black-overlay-a9: rgba(0, 0, 0, 0.7);
+$black-overlay-a10: rgba(0, 0, 0, 0.8);
+$black-overlay-a11: rgba(0, 0, 0, 0.9);
+$black-overlay-a12: rgba(0, 0, 0, 0.95);
+
+$white-overlay-a1: rgba(255, 255, 255, 0.05);
+$white-overlay-a2: rgba(255, 255, 255, 0.1);
+$white-overlay-a3: rgba(255, 255, 255, 0.15);
+$white-overlay-a4: rgba(255, 255, 255, 0.2);
+$white-overlay-a5: rgba(255, 255, 255, 0.3);
+$white-overlay-a6: rgba(255, 255, 255, 0.4);
+$white-a7: rgba(255, 255, 255, 0.5);
+$white-overlay-a8: rgba(255, 255, 255, 0.6);
+$white-overlay-a9: rgba(255, 255, 255, 0.7);
+$white-overlay-a10: rgba(255, 255, 255, 0.8);
+$white-overlay-a11: rgba(255, 255, 255, 0.9);
+$white-overlay-a12: rgba(255, 255, 255, 0.95);
 
 // Common colors & colors used in Bootstrap ------------------------------------
 $primary:       $purple;
@@ -123,6 +302,13 @@ $breadcrumb-bg:   $body-bg;
 $breadcrumb-active-color: $gray-400;
 
 $card-bg:   $gray-800;
+
+// Link styles - Bootstrap 5 defaults to underlined, we don't want that
+$link-decoration: none;
+$link-hover-decoration: underline;
+// Bootstrap 5 uses shade-amount for hover, we want explicit color
+$link-shade-percentage: 0%; // Disable auto-shading
+$link-hover-color: $purple; // Explicit hover color
 
 $dropdown-bg:     $gray-900;
 $dropdown-divider-bg: $black;
@@ -167,4 +353,4 @@ $light-fg-disabled: $gray-400;
 $light-form-bg: $gray-200;
 $light-box-shadow: 0px 5px 20px 0px $gray-300;
 $light-link-hover-color: $blue-purple-500;
-$light-standout-bg: $gray-050;
+$light-standout-bg: $gray-100;

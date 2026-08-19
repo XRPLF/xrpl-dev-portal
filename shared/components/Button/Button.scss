@@ -1,0 +1,1840 @@
+// BDS Button Component Styles
+// Brand Design System - Scalable button component
+// 
+// Naming Convention: BEM with 'bds' namespace
+// .bds-btn              - Base button (shared layout, typography, icon animation)
+// .bds-btn--primary     - Primary variant (solid background)
+// .bds-btn--secondary   - Secondary variant (outline style)
+// .bds-btn--green       - Green color theme (default)
+// .bds-btn--black       - Black color theme
+// .bds-btn--tertiary    - Tertiary variant (text-only style)
+// .bds-btn__label       - Label element
+// .bds-btn__icon        - Icon element (inherits color via currentColor)
+// .bds-btn--disabled    - Disabled state modifier
+// .bds-btn--no-icon     - No icon modifier
+//
+// Note: This file is imported within xrpl.scss after Bootstrap and project
+// variables are loaded, so $grid-breakpoints, colors, and mixins are available.
+
+// =============================================================================
+// Design Tokens
+// =============================================================================
+
+// Neutral Black (used across variants)
+$bds-btn-neutral-black: #141414;
+$bds-btn-neutral-black-15: rgba(20, 20, 20, 0.15);   // 15% black for secondary hover
+
+// Colors - Green Primary Button
+$bds-btn-primary-bg: $green-300;           // #21E46B - Enabled
+$bds-btn-primary-bg-hover: $green-200;     // #70EE97 - Hover/Focus
+$bds-btn-primary-text: $bds-btn-neutral-black;
+$bds-btn-primary-focus-border: $bds-btn-neutral-black;
+
+// Colors - Black Primary Button
+$bds-btn-primary-black-bg: $bds-btn-neutral-black;
+// Must contrast with $bds-btn-primary-black-bg: semi-transparent rgb(20,20,20) over #141414
+// composites to the same color, so the ::before hover fill looked invisible.
+$bds-btn-primary-black-bg-hover: #434343; // #434343 — visible lift on neutral black
+$bds-btn-primary-black-text: $white;
+
+// Colors - Disabled State (Light Mode)
+// Note: Theme overrides use @include bds-theme-mode(light) / (dark) nested under each selector
+$bds-btn-disabled-bg: $gray-200;           // #E6EAF0 (Light mode)
+$bds-btn-disabled-text: $gray-500;         // #72777E
+
+// Colors - Green Secondary Button
+$bds-btn-secondary-text: $green-400;              // #0DAA3E - Enabled
+$bds-btn-secondary-text-hover: $green-500;        // #078139 - Hover/Focus
+$bds-btn-secondary-bg: transparent;
+$bds-btn-secondary-bg-hover: $green-100;          // #EAFCF1 - Hover/Focus fill
+$bds-btn-secondary-border: $green-400;            // #0DAA3E - Enabled
+$bds-btn-secondary-border-hover: $green-500;      // #078139 - Hover/Focus
+$bds-btn-secondary-disabled-text: $gray-400;      // Disabled text
+$bds-btn-secondary-disabled-border: $gray-400;    // Disabled border
+
+// Colors - Tertiary Button
+$bds-btn-tertiary-text: $green-400;              // #0DAA3E - Enabled
+$bds-btn-tertiary-text-hover: $green-500;        // #078139 - Hover/Focus/Active
+$bds-btn-tertiary-bg: transparent;
+$bds-btn-tertiary-focus-outline: $bds-btn-neutral-black;  // #141414 - Focus outline (black)
+$bds-btn-tertiary-disabled-text: $gray-400;       // Disabled text
+
+// Colors - Black Secondary Button
+$bds-btn-secondary-black-text: $bds-btn-neutral-black;
+$bds-btn-secondary-black-bg-hover: $bds-btn-neutral-black-15;
+$bds-btn-secondary-black-border: $bds-btn-neutral-black;
+
+// Colors - Black Tertiary Button
+$bds-btn-tertiary-black-text: $bds-btn-neutral-black;
+$bds-btn-tertiary-black-focus-outline: $bds-btn-neutral-black;
+
+// Black secondary / tertiary — active/pressed only (text + border + icon; defaults stay #141414)
+$bds-btn-black-pressed: #434343;
+
+// Spacing
+$bds-btn-border-radius: 100px;
+$bds-btn-focus-border-width: 2px;
+
+// Transitions
+// Motion: Duration 150ms, Custom bezier for smooth in-out feel
+$bds-btn-transition-duration: 150ms;
+$bds-btn-transition-timing: cubic-bezier(0.98, 0.12, 0.12, 0.98);
+
+// =============================================================================
+// File-local helpers (this stylesheet only)
+// =============================================================================
+
+@mixin bds-btn-anchor-link-decoration-reset {
+  text-decoration: none;
+
+  &:hover,
+  &:focus,
+  &:focus-visible,
+  &:active,
+  &:visited {
+    text-decoration: none;
+  }
+}
+
+@mixin bds-btn-icon-stroke-color($color) {
+  .bds-btn__icon,
+  .bds-btn__icon-line,
+  .bds-btn__icon-chevron {
+    color: $color;
+    stroke: $color;
+  }
+}
+
+@mixin bds-btn-icon-stroke-color-important($color) {
+  .bds-btn__icon,
+  .bds-btn__icon-line,
+  .bds-btn__icon-chevron {
+    color: $color !important;
+    stroke: $color !important;
+  }
+}
+
+// =============================================================================
+// Anchor link buttons — theme overrides
+// Chaining .bds-btn.bds-btn increases specificity without !important
+// =============================================================================
+a.bds-btn.bds-btn {
+  @include bds-theme-mode(light) {
+    @include bds-btn-anchor-link-decoration-reset;
+
+    // Primary green link button
+    &.bds-btn--primary.bds-btn--green {
+      color: $bds-btn-primary-text;
+      background-color: $bds-btn-primary-bg;
+      
+      &:hover,
+      &:focus,
+      &:focus-visible,
+      &:active,
+      &:visited {
+        color: $bds-btn-primary-text;
+        background-color: $bds-btn-primary-bg;
+      }
+    }
+
+    // Primary black link button
+    &.bds-btn--primary.bds-btn--black {
+      color: $bds-btn-primary-black-text;
+      background-color: $bds-btn-primary-black-bg;
+      
+      @include bds-btn-icon-stroke-color($bds-btn-primary-black-text);
+      
+      &:hover,
+      &:focus,
+      &:focus-visible,
+      &:active,
+      &:visited {
+        color: $bds-btn-primary-black-text;
+        background-color: $bds-btn-primary-black-bg;
+        
+        @include bds-btn-icon-stroke-color($bds-btn-primary-black-text);
+      }
+    }
+
+    // Secondary green link button
+    &.bds-btn--secondary.bds-btn--green {
+      color: $bds-btn-secondary-text;
+      background-color: $bds-btn-secondary-bg;
+      
+      &:hover,
+      &:focus,
+      &:focus-visible {
+        color: $bds-btn-secondary-text-hover;
+        background-color: $bds-btn-secondary-bg-hover;
+      }
+      
+      &:active,
+      &:visited {
+        color: $bds-btn-secondary-text;
+        background-color: $bds-btn-secondary-bg;
+      }
+    }
+
+    // Secondary black link button
+    &.bds-btn--secondary.bds-btn--black {
+      color: $bds-btn-secondary-black-text;
+      background-color: transparent;
+      
+      &:hover,
+      &:focus,
+      &:focus-visible {
+        color: $bds-btn-secondary-black-text;
+        background-color: $bds-btn-secondary-black-bg-hover;
+      }
+      
+      &:active {
+        color: $bds-btn-black-pressed;
+        border-color: $bds-btn-black-pressed;
+
+        @include bds-btn-icon-stroke-color($bds-btn-black-pressed);
+      }
+
+      &:visited {
+        color: $bds-btn-secondary-black-text;
+        background-color: transparent;
+      }
+    }
+
+    // Tertiary green link button
+    &.bds-btn--tertiary.bds-btn--green {
+      color: $bds-btn-tertiary-text;
+      background-color: $bds-btn-tertiary-bg;
+      
+      &:hover,
+      &:focus,
+      &:focus-visible {
+        color: $bds-btn-tertiary-text-hover;
+      }
+      
+      &:active,
+      &:visited {
+        color: $bds-btn-tertiary-text;
+        background-color: $bds-btn-tertiary-bg;
+      }
+    }
+
+    // Tertiary black link button
+    &.bds-btn--tertiary.bds-btn--black {
+      color: $bds-btn-tertiary-black-text;
+      background-color: transparent;
+
+      @include bds-btn-icon-stroke-color($bds-btn-tertiary-black-text);
+      
+      &:hover,
+      &:focus,
+      &:focus-visible {
+        color: $bds-btn-tertiary-black-text;
+        background-color: transparent;
+
+        @include bds-btn-icon-stroke-color($bds-btn-tertiary-black-text);
+      }
+
+      &:active {
+        color: $bds-btn-black-pressed;
+        background-color: transparent;
+
+        @include bds-btn-icon-stroke-color($bds-btn-black-pressed);
+      }
+
+      &:visited {
+        color: $bds-btn-tertiary-black-text;
+        background-color: transparent;
+
+        @include bds-btn-icon-stroke-color($bds-btn-tertiary-black-text);
+      }
+    }
+  }
+
+  // ---------------------------------------------------------------------------
+  // Dark mode (anchor)
+  // ---------------------------------------------------------------------------
+  @include bds-theme-mode(dark) {
+    @include bds-btn-anchor-link-decoration-reset;
+
+    // Primary green link button
+    &.bds-btn--primary.bds-btn--green {
+      color: $bds-btn-primary-text;
+      background-color: $bds-btn-primary-bg;
+      
+      &:hover,
+      &:focus,
+      &:focus-visible,
+      &:active,
+      &:visited {
+        color: $bds-btn-primary-text;
+        background-color: $bds-btn-primary-bg;
+      }
+    }
+
+    // Primary black link button - uses GREEN colors in dark mode
+    &.bds-btn--primary.bds-btn--black {
+      color: $bds-btn-primary-text;           // Black text (same as green)
+      background-color: $bds-btn-primary-bg;  // Green 300 (same as green)
+      
+      @include bds-btn-icon-stroke-color($bds-btn-primary-text);
+      
+      &:hover,
+      &:focus,
+      &:focus-visible,
+      &:active,
+      &:visited {
+        color: $bds-btn-primary-text;
+        background-color: $bds-btn-primary-bg;
+        
+        @include bds-btn-icon-stroke-color($bds-btn-primary-text);
+      }
+    }
+
+    // Secondary green link button - dark mode uses different green shades
+    &.bds-btn--secondary.bds-btn--green {
+      color: $green-300;                    // Green 300 in dark mode
+      border-color: $green-300;
+      background-color: transparent;
+      
+      &:hover,
+      &:focus,
+      &:focus-visible {
+        color: $green-200;                  // Green 200 in dark mode
+        border-color: $green-200;
+        background-color: $green-500;       // Green 500 background
+      }
+      
+      &:active,
+      &:visited {
+        color: $green-300;
+        border-color: $green-300;
+        background-color: transparent;
+      }
+    }
+
+    // Secondary black link button - uses GREEN colors in dark mode
+    &.bds-btn--secondary.bds-btn--black {
+      color: $green-300;                    // Green 300 text
+      border-color: $green-300;             // Green 300 border
+      background-color: transparent;
+
+      @include bds-btn-icon-stroke-color($green-300);
+      
+      &:hover,
+      &:focus,
+      &:focus-visible {
+        color: $green-200;                  // Green 200 text
+        border-color: $green-200;           // Green 200 border
+        background-color: $green-500;       // Green 500 background
+
+        @include bds-btn-icon-stroke-color($green-200);
+      }
+      
+      &:active {
+        color: $green-300;
+        border-color: $green-300;
+        background-color: transparent;
+
+        @include bds-btn-icon-stroke-color($green-300);
+      }
+
+      &:visited {
+        color: $green-300;
+        border-color: $green-300;
+        background-color: transparent;
+
+        @include bds-btn-icon-stroke-color($green-300);
+      }
+    }
+
+    // Tertiary green link button - dark mode uses different green shades
+    &.bds-btn--tertiary.bds-btn--green {
+      color: $green-300;
+      background-color: transparent;
+      
+      &:hover,
+      &:focus,
+      &:focus-visible {
+        color: $green-200;
+      }
+      
+      &:active,
+      &:visited {
+        color: $green-300;
+        background-color: transparent;
+      }
+    }
+
+    // Tertiary black link button - uses GREEN colors in dark mode
+    &.bds-btn--tertiary.bds-btn--black {
+      color: $green-300;
+      background-color: transparent;
+      
+      &:hover,
+      &:focus,
+      &:focus-visible {
+        color: $green-200;
+      }
+      
+      &:active,
+      &:visited {
+        color: $green-300;
+        background-color: transparent;
+      }
+    }
+  }
+}
+
+// =============================================================================
+// Dark mode — anchor (green secondary / tertiary links)
+// =============================================================================
+a.bds-btn {
+  @include bds-theme-mode(dark) {
+    // Secondary green link button - dark mode
+    &.bds-btn--secondary.bds-btn--green {
+      color: $green-300;
+      
+      &:hover,
+      &:focus {
+        color: $green-200;
+      }
+      
+      &:active,
+      &:visited {
+        color: $green-300;
+      }
+    }
+
+    // Tertiary green link button - dark mode
+    &.bds-btn--tertiary.bds-btn--green {
+      color: $green-300;
+      
+      &:hover,
+      &:focus {
+        color: $green-200;
+      }
+      
+      &:active,
+      &:visited {
+        color: $green-300;
+      }
+    }
+  }
+}
+
+// =============================================================================
+// Base button + variants (see file header for BEM map)
+// =============================================================================
+.bds-btn {
+  // Layout
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  max-height: 40px;
+  
+  // Typography - Label R token (responsive)
+  // - Desktop (lg+): 16px / 23.2px
+  // - Mobile/Tablet: 14px / 20.1px
+  @include type(label-r);
+  white-space: nowrap;
+  margin-bottom: 0; // Reset paragraph spacing from type mixin
+  
+  // Border
+  border: none;
+  border-radius: $bds-btn-border-radius;
+  
+  // Interaction
+  cursor: pointer;
+  
+  // Required for pseudo-element background animation (shared)
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  
+  // Transitions (shared)
+  transition: color $bds-btn-transition-duration $bds-btn-transition-timing,
+              border-color $bds-btn-transition-duration $bds-btn-transition-timing,
+              padding $bds-btn-transition-duration $bds-btn-transition-timing,
+              gap $bds-btn-transition-duration $bds-btn-transition-timing,
+              transform $bds-btn-transition-duration $bds-btn-transition-timing;
+
+  // Background fill pseudo-element (shared structure)
+  // Each variant sets its own background-color
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    
+    // Start scaled to 0 from bottom - fills bottom-to-top on hover
+    transform: scaleY(0);
+    transform-origin: bottom center;
+    transition: transform $bds-btn-transition-duration $bds-btn-transition-timing;
+  }
+
+  // Hover/Focus state - animate background fill (shared)
+  &:hover:not(:disabled):not(.bds-btn--disabled),
+  &:focus-visible:not(:disabled):not(.bds-btn--disabled) {
+    &::before {
+      transform: scaleY(1);
+    }
+  }
+
+  // Active state - reset background (shared)
+  &:active:not(:disabled):not(.bds-btn--disabled) {
+    &::before {
+      transform: scaleY(0);
+    }
+  }
+
+  // Label element
+  &__label {
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  // Icon element (SVG container)
+  &__icon {
+    width: 15px;
+    height: 14px;
+    flex-shrink: 0;
+    transition: opacity $bds-btn-transition-duration $bds-btn-transition-timing;
+    color: currentColor;
+    overflow: visible;
+    position: relative;
+    z-index: 1;
+  }
+
+  // Arrow horizontal line - shrinks on hover/focus
+  &__icon-line {
+    transform-box: fill-box; // Makes transform-origin relative to element's bounding box
+    transform-origin: right center;
+    transform: scaleX(1);
+    transition: transform $bds-btn-transition-duration $bds-btn-transition-timing;
+  }
+
+  // Arrow chevron - stays visible, shifts via gap change
+  &__icon-chevron {
+    transition: transform $bds-btn-transition-duration $bds-btn-transition-timing;
+  }
+
+  // Hover state - shrink line for all button variants
+  &:hover:not(:disabled):not(.bds-btn--disabled),
+  &:focus-visible:not(:disabled):not(.bds-btn--disabled) {
+    .bds-btn__icon-line {
+      transform: scaleX(0);
+    }
+  }
+
+}
+
+// =============================================================================
+// Primary Variant
+// =============================================================================
+// HOVER ANIMATION: Background fills bottom-to-top (Green 300 → Green 200)
+
+.bds-btn--primary {
+  // Default/Enabled state colors
+  color: $bds-btn-primary-text;
+  background-color: $bds-btn-primary-bg;
+
+  // Set the hover background color for ::before pseudo-element
+  &::before {
+    background-color: $bds-btn-primary-bg-hover;
+  }
+
+  // Desktop padding and gap (default - ≥1024px)
+  padding: 8px 19px 8px 20px;
+  gap: 16px;
+
+  // No icon - symmetric padding
+  &.bds-btn--no-icon {
+    padding: 8px 20px;
+  }
+
+  // ---------------------------------------------------------------------------
+  // Hover State (with icon)
+  // ---------------------------------------------------------------------------
+  &:hover:not(:disabled):not(.bds-btn--disabled):not(.bds-btn--no-icon) {
+    // Background animation handled by shared ::before pseudo-element
+    padding: 8px 13px 8px 20px;
+    gap: 22px;
+  }
+
+  // Hover State (no icon) - background animation only
+  // (no padding/gap changes needed)
+
+  // ---------------------------------------------------------------------------
+  // Focus State (keyboard navigation) - with icon
+  // ---------------------------------------------------------------------------
+  &:focus-visible:not(:disabled):not(.bds-btn--disabled):not(.bds-btn--no-icon) {
+    outline: $bds-btn-focus-border-width solid $bds-btn-primary-focus-border;
+    outline-offset: 2px;
+    padding: 8px 13px 8px 20px;
+    gap: 22px;
+  }
+
+  // Focus State (no icon) - only add outline
+  &:focus-visible:not(:disabled):not(.bds-btn--disabled).bds-btn--no-icon {
+    outline: $bds-btn-focus-border-width solid $bds-btn-primary-focus-border;
+    outline-offset: 2px;
+    padding: 8px 20px;
+  }
+
+  // ---------------------------------------------------------------------------
+  // Disabled State
+  // Note: Icon is hidden via component logic when disabled
+  // ---------------------------------------------------------------------------
+  &:disabled,
+  &.bds-btn--disabled {
+    color: $bds-btn-disabled-text;
+    background-color: $bds-btn-disabled-bg;
+    cursor: not-allowed;
+    pointer-events: none;
+
+    // Disable background animation on disabled
+    &::before {
+      display: none;
+    }
+  }
+
+  // ---------------------------------------------------------------------------
+  // Tablet & Mobile Responsive Styles (<xl breakpoint)
+  // ---------------------------------------------------------------------------
+  @include media-breakpoint-down(xl) {
+    // Default/Enabled padding for smaller screens
+    padding: 8px 15px 8px 16px;
+    gap: 16px;
+
+    // No icon - symmetric padding for smaller screens
+    &.bds-btn--no-icon {
+      padding: 8px 16px;
+    }
+
+    // Hover state - smaller screens (with icon)
+    &:hover:not(:disabled):not(.bds-btn--disabled):not(.bds-btn--no-icon) {
+      padding: 8px 10px 8px 16px;
+      gap: 21px;
+    }
+
+    // Focus state - smaller screens (with icon)
+    &:focus-visible:not(:disabled):not(.bds-btn--disabled):not(.bds-btn--no-icon) {
+      outline: $bds-btn-focus-border-width solid $bds-btn-primary-focus-border;
+      outline-offset: 2px;
+      padding: 8px 10px 8px 16px;
+      gap: 21px;
+    }
+
+    // Focus state - smaller screens (no icon)
+    &:focus-visible:not(:disabled):not(.bds-btn--disabled).bds-btn--no-icon {
+      outline: $bds-btn-focus-border-width solid $bds-btn-primary-focus-border;
+      outline-offset: 2px;
+      padding: 8px 16px;
+    }
+
+  }
+}
+
+// Dark mode — primary button (green variant)
+.bds-btn--primary {
+  @include bds-theme-mode(dark) {
+    // Focus State (keyboard navigation) - with icon - Desktop
+    &:focus-visible:not(:disabled):not(.bds-btn--disabled):not(.bds-btn--no-icon) {
+      outline: $bds-btn-focus-border-width solid $white;
+      outline-offset: 2px;
+      padding: 8px 13px 8px 20px;
+      gap: 22px;
+    }
+
+    // Focus State (no icon) - Desktop
+    &:focus-visible:not(:disabled):not(.bds-btn--disabled).bds-btn--no-icon {
+      outline: $bds-btn-focus-border-width solid $white;
+      outline-offset: 2px;
+      padding: 8px 20px;
+    }
+
+    // ---------------------------------------------------------------------------
+    // Disabled State - Dark Mode
+    // Per Figma: Text = Neutral 500 (#72777E), Background = Neutral 300 (#CAD4DF)
+    // ---------------------------------------------------------------------------
+    &:disabled,
+    &.bds-btn--disabled {
+      color: $gray-300;             // #CAD4DF - Neutral 300
+      background-color: $gray-500;  // #72777E - Neutral 500
+      cursor: not-allowed;
+      pointer-events: none;
+
+      // Disable background animation on disabled
+      &::before {
+        display: none;
+      }
+    }
+
+    // Focus State (keyboard navigation) - with icon - Tablet & Mobile (≤1023px)
+    @include media-breakpoint-down(xl) {
+      &:focus-visible:not(:disabled):not(.bds-btn--disabled):not(.bds-btn--no-icon) {
+        outline: $bds-btn-focus-border-width solid $white;
+        outline-offset: 2px;
+        padding: 8px 10px 8px 16px;
+        gap: 21px;
+      }
+
+      // Focus State (no icon) - Tablet & Mobile
+      &:focus-visible:not(:disabled):not(.bds-btn--disabled).bds-btn--no-icon {
+        outline: $bds-btn-focus-border-width solid $white;
+        outline-offset: 2px;
+        padding: 8px 16px;
+      }
+    }
+  }
+}
+
+// =============================================================================
+// Secondary Variant
+// =============================================================================
+// HOVER ANIMATION: Background fills bottom-to-top (Transparent → Green 100)
+// Text/arrow color fades from green-400 to green-500 via currentColor
+// Animation structure inherited from base .bds-btn class
+
+.bds-btn--secondary {
+  // Default/Enabled state
+  color: $bds-btn-secondary-text;
+  background-color: transparent;
+  border: 2px solid $bds-btn-secondary-border;
+
+  // Set the hover background color for ::before pseudo-element
+  &::before {
+    background-color: $bds-btn-secondary-bg-hover;
+  }
+
+  // Desktop padding and gap (≥1024px) - compensate for 2px border
+  padding: 6px 17px 6px 18px;
+  gap: 16px;
+
+  // No icon - symmetric padding
+  &.bds-btn--no-icon {
+    padding: 6px 18px;
+  }
+
+  // ---------------------------------------------------------------------------
+  // Hover State
+  // ---------------------------------------------------------------------------
+  &:hover:not(:disabled):not(.bds-btn--disabled):not(.bds-btn--no-icon) {
+    color: $bds-btn-secondary-text-hover;
+    border-color: $bds-btn-secondary-border-hover;
+    padding: 6px 11px 6px 18px;
+    gap: 22px;
+    // Background animation handled by shared ::before in base class
+  }
+
+  &:hover:not(:disabled):not(.bds-btn--disabled).bds-btn--no-icon {
+    color: $bds-btn-secondary-text-hover;
+    border-color: $bds-btn-secondary-border-hover;
+  }
+
+  // ---------------------------------------------------------------------------
+  // Focus State (keyboard navigation)
+  // ---------------------------------------------------------------------------
+  &:focus-visible:not(:disabled):not(.bds-btn--disabled):not(.bds-btn--no-icon) {
+    color: $bds-btn-secondary-text-hover;
+    border: none;
+    outline: $bds-btn-focus-border-width solid $bds-btn-primary-focus-border;
+    outline-offset: 2px;
+    // Add 2px padding to compensate for removed border, maintain hover padding
+    padding: 6px 13px 6px 20px;
+    gap: 22px;
+  }
+
+  &:focus-visible:not(:disabled):not(.bds-btn--disabled).bds-btn--no-icon {
+    color: $bds-btn-secondary-text-hover;
+    border: none;
+    outline: $bds-btn-focus-border-width solid $bds-btn-primary-focus-border;
+    outline-offset: 2px;
+    // Add 2px padding to compensate for removed border
+    padding: 6px 20px;
+  }
+
+  // ---------------------------------------------------------------------------
+  // Active State (being pressed) — color + border only (match hover specificity so active wins)
+  // ---------------------------------------------------------------------------
+  &:active:not(:disabled):not(.bds-btn--disabled):not(.bds-btn--no-icon) {
+    color: $bds-btn-secondary-text;
+    border-color: $bds-btn-secondary-border;
+  }
+
+  &:active:not(:disabled):not(.bds-btn--disabled).bds-btn--no-icon {
+    color: $bds-btn-secondary-text;
+    border-color: $bds-btn-secondary-border;
+  }
+
+  // ---------------------------------------------------------------------------
+  // Disabled State
+  // Note: Icon is hidden via component logic when disabled
+  // ---------------------------------------------------------------------------
+  &:disabled,
+  &.bds-btn--disabled {
+    color: $bds-btn-secondary-disabled-text;
+    background-color: transparent;
+    border-color: $bds-btn-secondary-disabled-border;
+    cursor: not-allowed;
+    pointer-events: none;
+
+    // Disable background animation on disabled
+    &::before {
+      display: none;
+    }
+  }
+
+  // ---------------------------------------------------------------------------
+  // Tablet & Mobile Responsive Styles (<xl breakpoint)
+  // ---------------------------------------------------------------------------
+  @include media-breakpoint-down(xl) {
+    padding: 6px 13px 6px 14px;
+    gap: 16px;
+
+    &.bds-btn--no-icon {
+      padding: 6px 14px;
+    }
+
+    &:hover:not(:disabled):not(.bds-btn--disabled):not(.bds-btn--no-icon) {
+      padding: 6px 8px 6px 14px;
+      gap: 21px;
+    }
+
+    &:focus-visible:not(:disabled):not(.bds-btn--disabled):not(.bds-btn--no-icon) {
+      border: none;
+      outline: $bds-btn-focus-border-width solid $bds-btn-primary-focus-border;
+      outline-offset: 2px;
+      // Add 2px padding to compensate for removed border, maintain hover padding
+      padding: 6px 10px 6px 16px;
+      gap: 21px;
+    }
+
+    &:focus-visible:not(:disabled):not(.bds-btn--disabled).bds-btn--no-icon {
+      border: none;
+      outline: $bds-btn-focus-border-width solid $bds-btn-primary-focus-border;
+      outline-offset: 2px;
+      // Add 2px padding to compensate for removed border
+      padding: 6px 16px;
+    }
+
+    &:active:not(:disabled):not(.bds-btn--disabled):not(.bds-btn--no-icon) {
+      color: $bds-btn-secondary-text;
+      border-color: $bds-btn-secondary-border;
+    }
+
+    &:active:not(:disabled):not(.bds-btn--disabled).bds-btn--no-icon {
+      color: $bds-btn-secondary-text;
+      border-color: $bds-btn-secondary-border;
+    }
+  }
+}
+
+// Dark mode — secondary button (green variant only)
+// Based on Figma design: Enabled (Green 300), Hover/Focus (Green 200 text, Green 500 bg, Green 200 border),
+// Active (Green 300), Disabled (Gray 400)
+// Note: Black variant (.bds-btn--black.bds-btn--secondary) uses its own styles defined above
+.bds-btn--secondary:not(.bds-btn--black) {
+  @include bds-theme-mode(dark) {
+    // ---------------------------------------------------------------------------
+    // Enabled State - Desktop
+    // ---------------------------------------------------------------------------
+    color: $green-300;              // Green 300 - Text
+    border-color: $green-300;       // Green 300 - Border
+
+    // Set hover background color for ::before pseudo-element
+    &::before {
+      background-color: $green-500; // Green 500 - Hover/Focus background
+    }
+
+    // ---------------------------------------------------------------------------
+    // Hover State - Desktop
+    // ---------------------------------------------------------------------------
+    &:hover:not(:disabled):not(.bds-btn--disabled):not(.bds-btn--no-icon) {
+      color: $green-200;            // Green 200 - Text
+      border-color: $green-200;     // Green 200 - Border
+      padding: 6px 11px 6px 18px;
+      gap: 22px;
+      // Background animation handled by shared ::before in base class
+    }
+
+    &:hover:not(:disabled):not(.bds-btn--disabled).bds-btn--no-icon {
+      color: $green-200;            // Green 200 - Text
+      border-color: $green-200;     // Green 200 - Border
+    }
+
+    // ---------------------------------------------------------------------------
+    // Focus State (keyboard navigation) - Desktop
+    // ---------------------------------------------------------------------------
+    &:focus-visible:not(:disabled):not(.bds-btn--disabled):not(.bds-btn--no-icon) {
+      color: $green-200;            // Green 200 - Text
+      border: none;
+      outline: $bds-btn-focus-border-width solid $white; // White - Outline (per Figma design)
+      outline-offset: 2px;
+      // Add 2px padding to compensate for removed border, maintain hover padding
+      padding: 6px 13px 6px 20px;
+      gap: 22px;
+    }
+
+    &:focus-visible:not(:disabled):not(.bds-btn--disabled).bds-btn--no-icon {
+      color: $green-200;            // Green 200 - Text
+      border: none;
+      outline: $bds-btn-focus-border-width solid $white; // White - Outline (per Figma design)
+      outline-offset: 2px;
+      // Add 2px padding to compensate for removed border
+      padding: 6px 20px;
+    }
+
+    // ---------------------------------------------------------------------------
+    // Active State (being pressed) - Desktop — color + border only
+    // ---------------------------------------------------------------------------
+    &:active:not(:disabled):not(.bds-btn--disabled):not(.bds-btn--no-icon) {
+      color: $green-300;            // Green 300 - Text
+      border-color: $green-300;     // Green 300 - Border
+    }
+
+    &:active:not(:disabled):not(.bds-btn--disabled).bds-btn--no-icon {
+      color: $green-300;            // Green 300 - Text
+      border-color: $green-300;     // Green 300 - Border
+    }
+
+    // ---------------------------------------------------------------------------
+    // Disabled State
+    // ---------------------------------------------------------------------------
+    &:disabled,
+    &.bds-btn--disabled {
+      color: $gray-400;             // Gray 400 - Text
+      background-color: transparent;
+      border-color: $gray-400;      // Gray 400 - Border
+      cursor: not-allowed;
+      pointer-events: none;
+
+      // Disable background animation on disabled
+      &::before {
+        display: none;
+      }
+    }
+
+    // ---------------------------------------------------------------------------
+    // Tablet & Mobile Responsive Styles (<xl breakpoint)
+    // ---------------------------------------------------------------------------
+    @include media-breakpoint-down(xl) {
+      // Hover state - smaller screens (with icon)
+      &:hover:not(:disabled):not(.bds-btn--disabled):not(.bds-btn--no-icon) {
+        color: $green-200;          // Green 200 - Text
+        border-color: $green-200;   // Green 200 - Border
+        padding: 6px 8px 6px 14px;
+        gap: 21px;
+      }
+
+      // Focus state - smaller screens (with icon)
+      &:focus-visible:not(:disabled):not(.bds-btn--disabled):not(.bds-btn--no-icon) {
+        color: $green-200;          // Green 200 - Text
+        border: none;
+        outline: $bds-btn-focus-border-width solid $white; // White - Outline (per Figma design)
+        outline-offset: 2px;
+        // Add 2px padding to compensate for removed border, maintain hover padding
+        padding: 6px 10px 6px 16px;
+        gap: 21px;
+      }
+
+      // Focus state - smaller screens (no icon)
+      &:focus-visible:not(:disabled):not(.bds-btn--disabled).bds-btn--no-icon {
+        color: $green-200;          // Green 200 - Text
+        border: none;
+        outline: $bds-btn-focus-border-width solid $white; // White - Outline (per Figma design)
+        outline-offset: 2px;
+        // Add 2px padding to compensate for removed border
+        padding: 6px 16px;
+      }
+
+      // Active state - smaller screens — color + border only
+      &:active:not(:disabled):not(.bds-btn--disabled):not(.bds-btn--no-icon) {
+        color: $green-300;          // Green 300 - Text
+        border-color: $green-300;   // Green 300 - Border
+      }
+
+      &:active:not(:disabled):not(.bds-btn--disabled).bds-btn--no-icon {
+        color: $green-300;          // Green 300 - Text
+        border-color: $green-300;   // Green 300 - Border
+      }
+    }
+  }
+}
+
+// =============================================================================
+// Tertiary Variant
+// =============================================================================
+// NOTE: Arrow icon animation is inherited from base .bds-btn class.
+// The icon color automatically follows text color via currentColor.
+// Only define: colors, text decoration, padding, gap, and focus outline.
+
+.bds-btn--tertiary {
+  // Default/Enabled state
+  color: $bds-btn-tertiary-text;
+  background-color: $bds-btn-tertiary-bg;
+  border: none;
+  text-decoration: none;
+
+  // Typography - Body R token (responsive)
+  // - Desktop (lg+): 18px / 26.1px / -0.5px letter-spacing
+  // - Mobile/Tablet: 16px / 23.2px / 0px letter-spacing
+  @include type(body-r);
+  margin-bottom: 0; // Reset paragraph spacing from type mixin
+
+  // Desktop padding and gap (≥1024px)
+  padding: 8px 20px;
+  gap: 16px;
+
+  // No icon - symmetric padding
+  &.bds-btn--no-icon {
+    padding: 8px 20px;
+  }
+
+  // Disable background animation (no ::before needed for tertiary)
+  &::before {
+    display: none;
+  }
+
+  // ---------------------------------------------------------------------------
+  // Hover State
+  // ---------------------------------------------------------------------------
+  &:hover:not(:disabled):not(.bds-btn--disabled):not(.bds-btn--no-icon) {
+    color: $bds-btn-tertiary-text-hover;
+    text-decoration: underline;
+    padding: 8px 14px 8px 20px;
+    gap: 22px;
+  }
+
+  &:hover:not(:disabled):not(.bds-btn--disabled).bds-btn--no-icon {
+    color: $bds-btn-tertiary-text-hover;
+    text-decoration: underline;
+  }
+
+  // ---------------------------------------------------------------------------
+  // Focus State (keyboard navigation)
+  // ---------------------------------------------------------------------------
+  &:focus-visible:not(:disabled):not(.bds-btn--disabled):not(.bds-btn--no-icon) {
+    color: $bds-btn-tertiary-text-hover;
+    text-decoration: underline;
+    border-radius: 0; // Square corners for focus outline
+    outline: 2px solid $bds-btn-tertiary-focus-outline;
+    outline-offset: -2px; // Negative offset brings outline closer to content
+    padding: 8px 14px 8px 20px;
+    gap: 22px;
+  }
+
+  &:focus-visible:not(:disabled):not(.bds-btn--disabled).bds-btn--no-icon {
+    color: $bds-btn-tertiary-text-hover;
+    text-decoration: underline;
+    border-radius: 0; // Square corners for focus outline
+    outline: 2px solid $bds-btn-tertiary-focus-outline;
+    outline-offset: -2px; // Negative offset brings outline closer to content
+  }
+
+  // ---------------------------------------------------------------------------
+  // Active State (being pressed) — text color only (no border on tertiary)
+  // ---------------------------------------------------------------------------
+  &:active:not(:disabled):not(.bds-btn--disabled):not(.bds-btn--no-icon) {
+    color: $bds-btn-tertiary-text;
+  }
+
+  &:active:not(:disabled):not(.bds-btn--disabled).bds-btn--no-icon {
+    color: $bds-btn-tertiary-text;
+  }
+
+  // ---------------------------------------------------------------------------
+  // Disabled State
+  // Note: Icon is hidden via component logic when disabled
+  // ---------------------------------------------------------------------------
+  &:disabled,
+  &.bds-btn--disabled {
+    color: $bds-btn-tertiary-disabled-text;
+    background-color: transparent;
+    text-decoration: none;
+    cursor: not-allowed;
+    pointer-events: none;
+
+    // Disable background animation on disabled
+    &::before {
+      display: none;
+    }
+  }
+
+  // ---------------------------------------------------------------------------
+  // Tablet & Mobile Responsive Styles (<xl breakpoint)
+  // ---------------------------------------------------------------------------
+  @include media-breakpoint-down(xl) {
+    padding: 8px 16px;
+    gap: 16px;
+
+    &.bds-btn--no-icon {
+      padding: 8px 16px;
+    }
+
+    &:hover:not(:disabled):not(.bds-btn--disabled):not(.bds-btn--no-icon) {
+      padding: 8px 11px 8px 16px;
+      gap: 21px;
+    }
+
+    &:focus-visible:not(:disabled):not(.bds-btn--disabled):not(.bds-btn--no-icon) {
+      color: $bds-btn-tertiary-text-hover;
+      text-decoration: underline;
+      border-radius: 0; // Square corners for focus outline
+      outline: 2px solid $bds-btn-tertiary-focus-outline;
+      outline-offset: -2px; // Negative offset brings outline closer to content
+      padding: 8px 11px 8px 16px;
+      gap: 21px;
+    }
+
+    &:focus-visible:not(:disabled):not(.bds-btn--disabled).bds-btn--no-icon {
+      color: $bds-btn-tertiary-text-hover;
+      text-decoration: underline;
+      border-radius: 0; // Square corners for focus outline
+      outline: 2px solid $bds-btn-tertiary-focus-outline;
+      outline-offset: -2px; // Negative offset brings outline closer to content
+    }
+
+    &:active:not(:disabled):not(.bds-btn--disabled):not(.bds-btn--no-icon) {
+      color: $bds-btn-tertiary-text;
+    }
+
+    &:active:not(:disabled):not(.bds-btn--disabled).bds-btn--no-icon {
+      color: $bds-btn-tertiary-text;
+    }
+  }
+}
+
+// Dark mode — tertiary button (green variant only)
+// Based on Figma design: Enabled (Green 300), Hover (Green 200), Focus (Green 200 text, Green 200 outline),
+// Active (Green 300), Disabled (Gray 400)
+// Note: Black variant (.bds-btn--black.bds-btn--tertiary) uses its own styles defined above
+.bds-btn--tertiary:not(.bds-btn--black) {
+  @include bds-theme-mode(dark) {
+    // ---------------------------------------------------------------------------
+    // Enabled State - Desktop
+    // ---------------------------------------------------------------------------
+    color: $green-300;              // Green 300 - Text
+
+    // ---------------------------------------------------------------------------
+    // Hover State - Desktop
+    // ---------------------------------------------------------------------------
+    &:hover:not(:disabled):not(.bds-btn--disabled):not(.bds-btn--no-icon) {
+      color: $green-200;            // Green 200 - Text
+      text-decoration: underline;
+      padding: 8px 14px 8px 20px;
+      gap: 22px;
+    }
+
+    &:hover:not(:disabled):not(.bds-btn--disabled).bds-btn--no-icon {
+      color: $green-200;            // Green 200 - Text
+      text-decoration: underline;
+    }
+
+    // ---------------------------------------------------------------------------
+    // Focus State (keyboard navigation) - Desktop
+    // ---------------------------------------------------------------------------
+    &:focus-visible:not(:disabled):not(.bds-btn--disabled):not(.bds-btn--no-icon) {
+      color: $green-200;            // Green 200 - Text
+      text-decoration: underline;
+      border-radius: 0; // Square corners for focus outline
+      outline: 2px solid $white; // White - Outline (per Figma design)
+      outline-offset: -2px; // Negative offset brings outline closer to content
+      padding: 8px 14px 8px 20px;
+      gap: 22px;
+    }
+
+    &:focus-visible:not(:disabled):not(.bds-btn--disabled).bds-btn--no-icon {
+      color: $green-200;            // Green 200 - Text
+      text-decoration: underline;
+      border-radius: 0; // Square corners for focus outline
+      outline: 2px solid $white; // White - Outline (per Figma design)
+      outline-offset: -2px; // Negative offset brings outline closer to content
+    }
+
+    // ---------------------------------------------------------------------------
+    // Active State (being pressed) - Desktop — text color only
+    // ---------------------------------------------------------------------------
+    &:active:not(:disabled):not(.bds-btn--disabled):not(.bds-btn--no-icon) {
+      color: $green-300;            // Green 300 - Text
+    }
+
+    &:active:not(:disabled):not(.bds-btn--disabled).bds-btn--no-icon {
+      color: $green-300;            // Green 300 - Text
+    }
+
+    // ---------------------------------------------------------------------------
+    // Disabled State
+    // ---------------------------------------------------------------------------
+    &:disabled,
+    &.bds-btn--disabled {
+      color: $gray-400;             // Gray 400 - Text
+      background-color: transparent;
+      text-decoration: none;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+
+    // ---------------------------------------------------------------------------
+    // Tablet & Mobile Responsive Styles (<xl breakpoint)
+    // ---------------------------------------------------------------------------
+    @include media-breakpoint-down(xl) {
+      // Hover state - smaller screens (with icon)
+      &:hover:not(:disabled):not(.bds-btn--disabled):not(.bds-btn--no-icon) {
+        color: $green-200;          // Green 200 - Text
+        text-decoration: underline;
+        padding: 8px 11px 8px 16px;
+        gap: 21px;
+      }
+
+      // Focus state - smaller screens (with icon)
+      &:focus-visible:not(:disabled):not(.bds-btn--disabled):not(.bds-btn--no-icon) {
+        color: $green-200;          // Green 200 - Text
+        text-decoration: underline;
+        border-radius: 0; // Square corners for focus outline
+        outline: 2px solid $white; // White - Outline (per Figma design)
+        outline-offset: -2px; // Negative offset brings outline closer to content
+        padding: 8px 11px 8px 16px;
+        gap: 21px;
+      }
+
+      // Focus state - smaller screens (no icon)
+      &:focus-visible:not(:disabled):not(.bds-btn--disabled).bds-btn--no-icon {
+        color: $green-200;          // Green 200 - Text
+        text-decoration: underline;
+        border-radius: 0; // Square corners for focus outline
+        outline: 2px solid $white; // White - Outline (per Figma design)
+        outline-offset: -2px; // Negative offset brings outline closer to content
+      }
+
+      // Active state - smaller screens — text color only
+      &:active:not(:disabled):not(.bds-btn--disabled):not(.bds-btn--no-icon) {
+        color: $green-300;          // Green 300 - Text
+      }
+
+      &:active:not(:disabled):not(.bds-btn--disabled).bds-btn--no-icon {
+        color: $green-300;          // Green 300 - Text
+      }
+    }
+  }
+}
+
+// =============================================================================
+// Color Themes
+// =============================================================================
+// Green theme (.bds-btn--green) is the default - no overrides needed.
+// Black theme (.bds-btn--black) overrides colors for all variants.
+
+// Black theme - overrides colors for primary, secondary, and tertiary variants
+.bds-btn--black {
+  // ---------------------------------------------------------------------------
+  // Black Primary Button
+  // ---------------------------------------------------------------------------
+  &.bds-btn--primary {
+    color: $bds-btn-primary-black-text;
+    background-color: $bds-btn-primary-black-bg;
+
+    // Set hover background for ::before pseudo-element
+    &::before {
+      background-color: $bds-btn-primary-black-bg-hover;
+    }
+
+    // Hover state - background animates, colors stay same
+    &:hover:not(:disabled):not(.bds-btn--disabled) {
+      color: $bds-btn-primary-black-text;
+    }
+
+    // Focus state
+    &:focus-visible:not(:disabled):not(.bds-btn--disabled) {
+      color: $bds-btn-primary-black-text;
+      outline: $bds-btn-focus-border-width solid $bds-btn-neutral-black;
+      outline-offset: 2px;
+    }
+
+    // Active state
+    &:active:not(:disabled):not(.bds-btn--disabled) {
+      color: $bds-btn-primary-black-text;
+    }
+
+    // Disabled state - same as green disabled
+    &:disabled,
+    &.bds-btn--disabled {
+      color: $bds-btn-disabled-text;
+      background-color: $bds-btn-disabled-bg;
+    }
+  }
+
+  // ---------------------------------------------------------------------------
+  // Black Secondary Button
+  // ---------------------------------------------------------------------------
+  &.bds-btn--secondary {
+    color: $bds-btn-secondary-black-text;
+    border-color: $bds-btn-secondary-black-border;
+
+    // Set hover background for ::before pseudo-element
+    &::before {
+      background-color: $bds-btn-secondary-black-bg-hover;
+    }
+
+    // Hover state - text stays black, background fills with 15% black
+    &:hover:not(:disabled):not(.bds-btn--disabled) {
+      color: $bds-btn-secondary-black-text;
+      border-color: $bds-btn-secondary-black-border;
+    }
+
+    // Focus state
+    &:focus-visible:not(:disabled):not(.bds-btn--disabled) {
+      color: $bds-btn-secondary-black-text;
+      border: none;
+      outline: $bds-btn-focus-border-width solid $bds-btn-neutral-black;
+      outline-offset: 2px;
+    }
+
+    // Active state — pressed text + border + icon (#434343; not default #141414)
+    &:active:not(:disabled):not(.bds-btn--disabled) {
+      color: $bds-btn-black-pressed;
+      border-color: $bds-btn-black-pressed;
+
+      @include bds-btn-icon-stroke-color($bds-btn-black-pressed);
+    }
+
+    // Disabled state
+    &:disabled,
+    &.bds-btn--disabled {
+      color: $bds-btn-disabled-text;
+      border-color: $bds-btn-secondary-disabled-border;
+    }
+  }
+
+  // ---------------------------------------------------------------------------
+  // Black Tertiary Button
+  // ---------------------------------------------------------------------------
+  &.bds-btn--tertiary {
+    color: $bds-btn-tertiary-black-text;
+
+    // Hover state - text stays black, underline appears (override base tertiary green hover)
+    &:hover:not(:disabled):not(.bds-btn--disabled):not(.bds-btn--no-icon) {
+      color: $bds-btn-tertiary-black-text !important; // Ensure black color overrides green
+      text-decoration: underline;
+      padding: 8px 14px 8px 20px; // Match base tertiary hover padding
+      gap: 22px; // Match base tertiary hover gap
+    }
+
+    &:hover:not(:disabled):not(.bds-btn--disabled).bds-btn--no-icon {
+      color: $bds-btn-tertiary-black-text !important; // Ensure black color overrides green
+      text-decoration: underline;
+    }
+
+    // Focus state
+    &:focus-visible:not(:disabled):not(.bds-btn--disabled) {
+      color: $bds-btn-tertiary-black-text !important; // Ensure black color overrides green
+      text-decoration: underline;
+      border-radius: 0; // Square corners for focus outline
+      outline: 2px solid $bds-btn-tertiary-black-focus-outline;
+      outline-offset: -2px; // Negative offset brings outline closer to content
+      // Padding will be inherited from base tertiary focus state
+    }
+
+    // Active state — pressed text + icon (#434343; not default #141414)
+    &:active:not(:disabled):not(.bds-btn--disabled):not(.bds-btn--no-icon) {
+      color: $bds-btn-black-pressed !important;
+
+      @include bds-btn-icon-stroke-color($bds-btn-black-pressed !important);
+    }
+
+    &:active:not(:disabled):not(.bds-btn--disabled).bds-btn--no-icon {
+      color: $bds-btn-black-pressed !important;
+
+      @include bds-btn-icon-stroke-color($bds-btn-black-pressed !important);
+    }
+
+    // Disabled state - same as green disabled
+    &:disabled,
+    &.bds-btn--disabled {
+      color: $bds-btn-disabled-text;
+    }
+
+    // Responsive hover states - ensure black color on mobile too
+    @include media-breakpoint-down(xl) {
+      &:hover:not(:disabled):not(.bds-btn--disabled):not(.bds-btn--no-icon) {
+        color: $bds-btn-tertiary-black-text !important;
+        padding: 8px 11px 8px 16px; // Match base tertiary mobile hover padding
+        gap: 21px;
+      }
+    }
+  }
+}
+
+// =============================================================================
+// Dark Mode - Button Element Overrides (non-anchor)
+// =============================================================================
+// Per Figma design (dark mode):
+// BLACK variant in dark mode uses GREEN colors (same as green variant)
+// - Enabled: Text = Neutral Black (#141414), Background = Green 300 (#21E46B)
+// - Hover: Text = Neutral Black (#141414), Background = Green 200 (#70EE97)
+// - Focus: Text = Neutral Black (#141414), Background = Green 200 (#70EE97)
+// - Active: Text = Neutral Black (#141414), Background = Green 300 (#21E46B)
+// - Disabled: Text = Neutral 500 (#72777E), Background = Neutral 300 (#CAD4DF)
+
+// Primary Black Button - Dark Mode uses GREEN colors
+.bds-btn.bds-btn.bds-btn--primary.bds-btn--primary.bds-btn--black {
+  @include bds-theme-mode(dark) {
+    // Enabled state - GREEN colors (black text on green background)
+    color: $bds-btn-primary-text;              // #141414 - Neutral Black
+    background-color: $bds-btn-primary-bg;     // Green 300
+
+    // Hover background for ::before pseudo-element
+    &::before {
+      background-color: $bds-btn-primary-bg-hover; // Green 200
+    }
+
+    // Icon colors - black to match text
+    @include bds-btn-icon-stroke-color($bds-btn-primary-text);
+
+    // Hover state
+    &:hover:not(:disabled):not(.bds-btn--disabled) {
+      color: $bds-btn-primary-text;
+      
+      @include bds-btn-icon-stroke-color($bds-btn-primary-text);
+    }
+
+    // Focus state - white outline for dark mode
+    &:focus-visible:not(:disabled):not(.bds-btn--disabled) {
+      color: $bds-btn-primary-text;
+      outline: $bds-btn-focus-border-width solid $white;
+      outline-offset: 2px;
+      
+      @include bds-btn-icon-stroke-color($bds-btn-primary-text);
+    }
+
+    // Active state
+    &:active:not(:disabled):not(.bds-btn--disabled) {
+      color: $bds-btn-primary-text;
+      
+      @include bds-btn-icon-stroke-color($bds-btn-primary-text);
+    }
+
+    // Disabled state - Dark Mode specific colors
+    &:disabled,
+    &.bds-btn--disabled {
+      color: $gray-300;             // #CAD4DF - Neutral 300
+      background-color: $gray-500;  // #CAD4DF - Neutral 300
+      cursor: not-allowed;
+      pointer-events: none;
+
+      &::before {
+        display: none;
+      }
+    }
+  }
+}
+
+// Secondary Black Button - Dark Mode uses GREEN colors
+// Per Figma design (dark mode):
+// - Enabled: Text = Green 300, Stroke = Green 300, Background = transparent
+// - Hover: Text = Green 200, Stroke = Green 200, Background = Green 500
+// - Focus: Text = Green 200, Stroke = Green 200, Background = Green 500
+// - Active: Green 300 (same as green secondary dark — not #434343, which reads as disabled on dark bg)
+// - Disabled: Text = Neutral 400, Stroke = Neutral 400, Background = transparent
+.bds-btn.bds-btn.bds-btn--secondary.bds-btn--secondary.bds-btn--black {
+  @include bds-theme-mode(dark) {
+    // Enabled state - GREEN colors
+    color: $green-300;
+    border-color: $green-300;
+    background-color: transparent;
+
+    // Hover background for ::before pseudo-element
+    &::before {
+      background-color: $green-500;
+    }
+
+    // Icon colors
+    @include bds-btn-icon-stroke-color($green-300);
+
+    // Hover state
+    &:hover:not(:disabled):not(.bds-btn--disabled) {
+      color: $green-200;
+      border-color: $green-200;
+      
+      @include bds-btn-icon-stroke-color($green-200);
+    }
+
+    // Focus state
+    &:focus-visible:not(:disabled):not(.bds-btn--disabled) {
+      color: $green-200;
+      border-color: $green-200;
+      outline: $bds-btn-focus-border-width solid $white;
+      outline-offset: 2px;
+      
+      @include bds-btn-icon-stroke-color($green-200);
+    }
+
+    // Active state — match green secondary dark (Green 300), not light-theme pressed gray
+    &:active:not(:disabled):not(.bds-btn--disabled) {
+      color: $green-300;
+      border-color: $green-300;
+
+      @include bds-btn-icon-stroke-color($green-300);
+    }
+
+    // Disabled state
+    &:disabled,
+    &.bds-btn--disabled {
+      color: $gray-400;             // Neutral 400
+      border-color: $gray-400;
+      background-color: transparent;
+      cursor: not-allowed;
+      pointer-events: none;
+
+      @include bds-btn-icon-stroke-color($gray-400);
+
+      &::before {
+        display: none;
+      }
+    }
+  }
+}
+
+// Tertiary Black Button - Dark Mode uses GREEN colors
+// Per Figma design (dark mode):
+// - Enabled: Text = Green 300, Background = transparent
+// - Hover: Text = Green 200, Background = transparent
+// - Focus: Text = Green 200, Background = transparent
+// - Active: Text = Green 300, Background = transparent
+// - Disabled: Text = Neutral 400, Background = transparent
+.bds-btn.bds-btn.bds-btn--tertiary.bds-btn--tertiary.bds-btn--black {
+  @include bds-theme-mode(dark) {
+    // Enabled state - GREEN colors
+    color: $green-300;
+    background-color: transparent;
+
+    // Icon colors
+    @include bds-btn-icon-stroke-color($green-300);
+
+    // Hover state - use !important to override light mode global styles
+    &:hover:not(:disabled):not(.bds-btn--disabled) {
+      color: $green-200 !important;
+
+      @include bds-btn-icon-stroke-color($green-200 !important);
+    }
+
+    // Focus state - use !important to override light mode global styles
+    &:focus-visible:not(:disabled):not(.bds-btn--disabled) {
+      color: $green-200 !important;
+      outline: $bds-btn-focus-border-width solid $white;
+      outline-offset: 2px;
+
+      @include bds-btn-icon-stroke-color($green-200 !important);
+    }
+
+    // Active state - use !important to override light mode global styles
+    &:active:not(:disabled):not(.bds-btn--disabled) {
+      color: $green-300 !important;
+
+      @include bds-btn-icon-stroke-color($green-300 !important);
+    }
+
+    // Disabled state
+    &:disabled,
+    &.bds-btn--disabled {
+      color: $gray-400;             // Neutral 400
+      background-color: transparent;
+      cursor: not-allowed;
+      pointer-events: none;
+
+      @include bds-btn-icon-stroke-color($gray-400);
+    }
+  }
+}
+
+// =============================================================================
+// Force Color Modifier
+// =============================================================================
+// When .bds-btn--force-color is applied, the button color remains constant
+// regardless of theme mode. This is used for buttons on colored backgrounds
+// where black should stay black even in dark mode.
+//
+// Usage: <Button color="black" forceColor />
+// =============================================================================
+
+.bds-btn--force-color {
+  // Black buttons with force-color should maintain black styling in dark mode
+  &.bds-btn--black {
+    // Primary black - force black background
+    &.bds-btn--primary {
+      color: $bds-btn-primary-black-text !important;
+      background-color: $bds-btn-primary-black-bg !important;
+
+      &::before {
+        background-color: $bds-btn-primary-black-bg-hover !important;
+      }
+
+      @include bds-btn-icon-stroke-color($bds-btn-primary-black-text !important);
+
+      &:hover:not(:disabled):not(.bds-btn--disabled),
+      &:focus-visible:not(:disabled):not(.bds-btn--disabled),
+      &:active:not(:disabled):not(.bds-btn--disabled) {
+        color: $bds-btn-primary-black-text !important;
+
+        @include bds-btn-icon-stroke-color($bds-btn-primary-black-text !important);
+      }
+
+      &:focus-visible:not(:disabled):not(.bds-btn--disabled) {
+        outline-color: $bds-btn-neutral-black !important;
+      }
+    }
+
+    // Secondary black - force black text/border
+    &.bds-btn--secondary {
+      color: $bds-btn-secondary-black-text !important;
+      border-color: $bds-btn-secondary-black-border !important;
+
+      &::before {
+        background-color: $bds-btn-secondary-black-bg-hover !important;
+      }
+
+      @include bds-btn-icon-stroke-color($bds-btn-secondary-black-text !important);
+
+      &:hover:not(:disabled):not(.bds-btn--disabled),
+      &:focus-visible:not(:disabled):not(.bds-btn--disabled) {
+        color: $bds-btn-secondary-black-text !important;
+        border-color: $bds-btn-secondary-black-border !important;
+
+        @include bds-btn-icon-stroke-color($bds-btn-secondary-black-text !important);
+      }
+
+      &:active:not(:disabled):not(.bds-btn--disabled) {
+        color: $bds-btn-black-pressed !important;
+        border-color: $bds-btn-black-pressed !important;
+
+        @include bds-btn-icon-stroke-color($bds-btn-black-pressed !important);
+      }
+
+      &:focus-visible:not(:disabled):not(.bds-btn--disabled) {
+        outline-color: $bds-btn-neutral-black !important;
+      }
+    }
+
+    // Tertiary black - force black text
+    &.bds-btn--tertiary {
+      color: $bds-btn-tertiary-black-text !important;
+
+      @include bds-btn-icon-stroke-color($bds-btn-tertiary-black-text !important);
+
+      &:hover:not(:disabled):not(.bds-btn--disabled),
+      &:focus-visible:not(:disabled):not(.bds-btn--disabled) {
+        color: $bds-btn-tertiary-black-text !important;
+
+        @include bds-btn-icon-stroke-color($bds-btn-tertiary-black-text !important);
+      }
+
+      &:active:not(:disabled):not(.bds-btn--disabled) {
+        color: $bds-btn-black-pressed !important;
+
+        @include bds-btn-icon-stroke-color($bds-btn-black-pressed !important);
+      }
+
+      &:focus-visible:not(:disabled):not(.bds-btn--disabled) {
+        outline-color: $bds-btn-tertiary-black-focus-outline !important;
+      }
+    }
+  }
+}
+
+// =============================================================================
+// Force Color Modifier - Dark Mode Overrides
+// =============================================================================
+// These overrides must have higher specificity than the dark mode color swaps
+// to ensure black buttons stay black on colored backgrounds in dark mode.
+// =============================================================================
+
+// Primary black with force-color - override dark mode green swap
+.bds-btn.bds-btn.bds-btn--primary.bds-btn--primary.bds-btn--black.bds-btn--force-color {
+  @include bds-theme-mode(dark) {
+    color: $bds-btn-primary-black-text !important;
+    background-color: $bds-btn-primary-black-bg !important;
+
+    &::before {
+      background-color: $bds-btn-primary-black-bg-hover !important;
+    }
+
+    @include bds-btn-icon-stroke-color($bds-btn-primary-black-text !important);
+
+    &:hover:not(:disabled):not(.bds-btn--disabled),
+    &:focus-visible:not(:disabled):not(.bds-btn--disabled),
+    &:active:not(:disabled):not(.bds-btn--disabled) {
+      color: $bds-btn-primary-black-text !important;
+
+      @include bds-btn-icon-stroke-color($bds-btn-primary-black-text !important);
+    }
+
+    &:focus-visible:not(:disabled):not(.bds-btn--disabled) {
+      outline-color: $white !important; // White outline for visibility on dark backgrounds
+    }
+  }
+}
+
+// Secondary black with force-color - override dark mode green swap
+.bds-btn.bds-btn.bds-btn--secondary.bds-btn--secondary.bds-btn--black.bds-btn--force-color {
+  @include bds-theme-mode(dark) {
+    color: $bds-btn-secondary-black-text !important;
+    border-color: $bds-btn-secondary-black-border !important;
+    background-color: transparent !important;
+
+    &::before {
+      background-color: $bds-btn-secondary-black-bg-hover !important;
+    }
+
+    @include bds-btn-icon-stroke-color($bds-btn-secondary-black-text !important);
+
+    &:hover:not(:disabled):not(.bds-btn--disabled),
+    &:focus-visible:not(:disabled):not(.bds-btn--disabled) {
+      color: $bds-btn-secondary-black-text !important;
+      border-color: $bds-btn-secondary-black-border !important;
+
+      @include bds-btn-icon-stroke-color($bds-btn-secondary-black-text !important);
+    }
+
+    &:active:not(:disabled):not(.bds-btn--disabled) {
+      color: $bds-btn-black-pressed !important;
+      border-color: $bds-btn-black-pressed !important;
+
+      @include bds-btn-icon-stroke-color($bds-btn-black-pressed !important);
+    }
+
+    &:focus-visible:not(:disabled):not(.bds-btn--disabled) {
+      outline-color: $white !important; // White outline for visibility on dark backgrounds
+    }
+  }
+}
+
+// Tertiary black with force-color - override dark mode green swap
+.bds-btn.bds-btn.bds-btn--tertiary.bds-btn--tertiary.bds-btn--black.bds-btn--force-color {
+  @include bds-theme-mode(dark) {
+    color: $bds-btn-tertiary-black-text !important;
+    background-color: transparent !important;
+
+    @include bds-btn-icon-stroke-color($bds-btn-tertiary-black-text !important);
+
+    &:hover:not(:disabled):not(.bds-btn--disabled),
+    &:focus-visible:not(:disabled):not(.bds-btn--disabled) {
+      color: $bds-btn-tertiary-black-text !important;
+
+      @include bds-btn-icon-stroke-color($bds-btn-tertiary-black-text !important);
+    }
+
+    &:active:not(:disabled):not(.bds-btn--disabled) {
+      color: $bds-btn-black-pressed !important;
+
+      @include bds-btn-icon-stroke-color($bds-btn-black-pressed !important);
+    }
+
+    &:focus-visible:not(:disabled):not(.bds-btn--disabled) {
+      outline-color: $white !important; // White outline for visibility on dark backgrounds
+    }
+  }
+}
+
+// Anchor link buttons with force-color - dark mode overrides
+a.bds-btn.bds-btn--force-color {
+  @include bds-theme-mode(dark) {
+    &.bds-btn--primary.bds-btn--black {
+      color: $bds-btn-primary-black-text !important;
+      background-color: $bds-btn-primary-black-bg !important;
+
+      @include bds-btn-icon-stroke-color($bds-btn-primary-black-text !important);
+
+      &:hover,
+      &:focus,
+      &:focus-visible,
+      &:active,
+      &:visited {
+        color: $bds-btn-primary-black-text !important;
+        background-color: $bds-btn-primary-black-bg !important;
+
+        @include bds-btn-icon-stroke-color($bds-btn-primary-black-text !important);
+      }
+    }
+
+    &.bds-btn--secondary.bds-btn--black {
+      color: $bds-btn-secondary-black-text !important;
+      border-color: $bds-btn-secondary-black-border !important;
+      background-color: transparent !important;
+
+      @include bds-btn-icon-stroke-color($bds-btn-secondary-black-text !important);
+
+      &:hover,
+      &:focus,
+      &:focus-visible,
+      &:visited {
+        color: $bds-btn-secondary-black-text !important;
+        border-color: $bds-btn-secondary-black-border !important;
+
+        @include bds-btn-icon-stroke-color($bds-btn-secondary-black-text !important);
+      }
+
+      &:active {
+        color: $bds-btn-black-pressed !important;
+        border-color: $bds-btn-black-pressed !important;
+
+        @include bds-btn-icon-stroke-color($bds-btn-black-pressed !important);
+      }
+    }
+
+    &.bds-btn--tertiary.bds-btn--black {
+      color: $bds-btn-tertiary-black-text !important;
+      background-color: transparent !important;
+
+      @include bds-btn-icon-stroke-color($bds-btn-tertiary-black-text !important);
+
+      &:hover,
+      &:focus,
+      &:focus-visible,
+      &:visited {
+        color: $bds-btn-tertiary-black-text !important;
+
+        @include bds-btn-icon-stroke-color($bds-btn-tertiary-black-text !important);
+      }
+
+      &:active {
+        color: $bds-btn-black-pressed !important;
+
+        @include bds-btn-icon-stroke-color($bds-btn-black-pressed !important);
+      }
+    }
+  }
+}
+
+// =============================================================================
+// No Padding Modifier
+// =============================================================================
+// When .bds-btn--no-padding is applied, removes all padding and left-aligns content.
+// Useful for tertiary buttons in block layouts where left alignment is needed.
+// =============================================================================
+
+.bds-btn--no-padding {
+  padding: 0 !important;
+  justify-content: flex-start !important;
+
+  // Override all state paddings
+  &:hover:not(:disabled):not(.bds-btn--disabled),
+  &:focus-visible:not(:disabled):not(.bds-btn--disabled),
+  &:active:not(:disabled):not(.bds-btn--disabled) {
+    padding: 0 !important;
+  }
+
+  // Responsive overrides
+  @include media-breakpoint-down(xl) {
+    padding: 0 !important;
+
+    &:hover:not(:disabled):not(.bds-btn--disabled),
+    &:focus-visible:not(:disabled):not(.bds-btn--disabled),
+    &:active:not(:disabled):not(.bds-btn--disabled) {
+      padding: 0 !important;
+    }
+  }
+}

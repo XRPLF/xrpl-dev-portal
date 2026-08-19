@@ -40,7 +40,11 @@
   }
 
   .breadcrumb-item.disabled a {
-    color: $gray-600;
+    color: $gray-300;
+
+    html.light & {
+      color: $gray-600;
+    }
   }
 
   .breadcrumb-item.done a:after {

@@ -1,316 +1,312 @@
-import React, { useState } from "react";
-import { useThemeHooks } from "@redocly/theme/core/hooks";
-import { AdvantagesSection } from "shared/components/advantages-section";
-import { ProjectCards } from "shared/components/project-cards";
-import { BenefitsSection } from "shared/components/benefits-section";
-import { DeveloperResourcesSection } from "shared/components/developer-resources-section";
-import { FeatureItem } from "../tokenization/real-world-assets.page";
+import React from 'react';
+import { useThemeHooks } from '@redocly/theme/core/hooks';
+import { PageWrapper } from 'shared/components/PageWrapper';
+import { HeaderHeroSplitMedia } from 'shared/sections/HeaderHeroSplitMedia/HeaderHeroSplitMedia';
+import { LinkTextDirectory } from 'shared/sections/LinkTextDirectory/LinkTextDirectory';
+import FeaturedVideoHero from 'shared/sections/FeaturedVideoHero/FeaturedVideoHero';
+import { StandardCardGroupSection } from 'shared/sections/StandardCardGroupSection/StandardCardGroupSection';
+import type { StandardCardPropsWithoutVariant } from 'shared/sections/StandardCardGroupSection/StandardCardGroupSection';
+import { CardsIconGrid, CardsIconGridProps } from 'shared/sections/CardsIconGrid/CardsIconGrid';
+import { LogoSquareGrid, LogoItem } from 'shared/sections/LogoSquareGrid/LogoSquareGrid';
+import { CardsTextGrid } from 'shared/sections/CardsTextGrid/CardsTextGrid';
+import { FeatureSingleTopic } from 'shared/sections/FeatureSingleTopic/FeatureSingleTopic';
 
 export const frontmatter = {
   seo: {
-    title: 'XRP Ledger Payments Suite',
-    description: "The XRP Ledger Payments Suite is a payments solution for use cases including stablecoin payments, cross-border remittance, B2B payment rails, and merchant settlement.",
-  }
+    title: 'Payments Infrastructure',
+    description:
+      'The XRP Ledger Payments Infrastructure is a payments solution for use cases including stablecoin payments, cross-border remittance, B2B payment rails, and merchant settlement.',
+  },
 };
 
-const PaymentsPage: React.FC = () => {
+const HUBSPOT_NEWSLETTER_FORM =
+  'https://share.hsforms.com/18zNvJDR4QbObGPLDh3n5Bw4vgrs';
+
+const STABLECOIN_CARDS: readonly StandardCardPropsWithoutVariant[] = [
+  {
+    headline: 'RLUSD',
+    children:
+      "Ripple's enterprise-grade stablecoin, is live on XRPL and fully backed by USD deposits. Built for institutions, it enables fast, compliant, low-cost cross-border payments.",
+    callsToAction: [{ children: 'RLUSD', href: 'https://ripple.com/solutions/stablecoin/' }],
+  },
+  {
+    headline: 'USDC',
+    children:
+      "Issued by Circle, is the world's largest regulated dollar stablecoin and now live on XRPL. It unlocks new corridors for enterprise payments, remittances, and DeFi for millions of users and developers.",
+    callsToAction: [{ children: 'USDC', href: 'https://www.circle.com/usdc' }],
+  },
+  {
+    headline: 'USDB',
+    children:
+      'By Braza Group, is a USD-pegged stablecoin backed by U.S. and Brazilian bonds. Built for FX and remittance, it supports both institutional and retail users via the Braza On app.',
+    callsToAction: [{ children: 'USDB', href: 'https://www.brazabank.com.br/en/usdben/' }],
+  },
+  {
+    headline: 'EUROP',
+    children:
+      'Issued by Schuman Financial, is the first MiCA-compliant euro stablecoin on XRPL. With full reserves at leading EU banks, it brings credible euro liquidity to payments, on-chain FX, and DeFi.',
+    callsToAction: [{ children: 'EUROP', href: 'https://schuman.io/europ/' }],
+  },
+  {
+    headline: 'XSGD',
+    children:
+      "From StraitsX, is a Singapore Dollar-backed stablecoin regulated by MAS. Its launch on XRPL enhances fast, low-cost payments in Southeast Asia's digital economy.",
+    callsToAction: [{ children: 'XSGD', href: 'https://www.straitsx.com/xsgd' }],
+  },
+  {
+    headline: 'AUDD',
+    children:
+      "An Australian dollar stablecoin, is live on XRPL and backed 1:1 with AUD. It supports value transfers, remittance, trade, cross-border transactions and DeFi, enabling AUD utility via XRPL's Decentralised Exchange.",
+    callsToAction: [{ children: 'AUDD', href: 'https://www.audd.digital/' }],
+  },
+];
+
+const EMBEDDED_PAYMENTS_CARDS: CardsIconGridProps['cards'] = [
+  {
+    heading: 'Digital Wallets',
+    description:
+      'Offer fast, low-fee stablecoin payments between users and applications.',
+    icon: '/img/payments/filing.svg',
+  },
+  {
+    heading: 'Cross-Border Remittance',
+    description:
+      'Use secure payment channels and the most optimal liquidity pathways for global remittances with RLUSD.',
+    icon: '/img/payments/globe-1.svg',
+  },
+  {
+    heading: 'Regulated Foreign Exchange',
+    description:
+      'Tap into a set of fiat-backed stablecoins, instantaneous swaps for efficient Foreign Exchange.',
+    icon: '/img/payments/wallet-exchange.svg',
+  },
+  {
+    heading: 'Merchant Settlement',
+    description:
+      'Settle daily payments across assets using escrow or checks with compliance-focused features.',
+    icon: '/img/payments/money-hand.svg',
+  },
+  {
+    heading: 'B2B Payment Rails',
+    description:
+      'Build programmable payment flows with conditions and real-time data feeds.',
+    icon: '/img/payments/money-hand.svg',
+  },
+  {
+    heading: 'Compliance-First Payments',
+    description:
+      'Add Deposit Authorization and whitelisting to comply with AML and KYC workflows.',
+    icon: '/img/payments/checklist.svg',
+  },
+];
+
+const PARTNER_LOGOS: LogoItem[] = [
+  {
+    logo: '/img/payments/coinpayments.png',
+    alt: 'CoinPayments',
+    href: 'https://xrpl.org/blog/2025/coinpayments-xrpl-case-study-payment-processing',
+  },
+  {
+    logo: '/img/payments/ripple-blueblack.svg',
+    alt: 'Ripple',
+    href: 'https://ripple.com/solutions/cross-border-payments/',
+  },
+  {
+    logo: '/img/payments/ffii.svg',
+    alt: 'FriiPay',
+    href: 'https://xrpl.org/blog/2025/frii-pay-xrpl-case-study-crypto-payment-solution',
+  },
+  {
+    logo: '/img/payments/brale.png',
+    alt: 'Brale',
+    href: 'https://brale.xyz/blog/brale-goes-live-on-the-xrp-ledger',
+  },
+  {
+    logo: '/img/payments/brazabank.svg',
+    alt: 'BrazaBank',
+    href: 'https://ripple.com/ripple-press/braza-group-announces-launch-of-bbrl-stablecoin-on-the-xrp-ledger/',
+  },
+];
+
+export default function PaymentsPage() {
   const { useTranslate } = useThemeHooks();
   const { translate } = useTranslate();
 
-  const video = {
-    url: "https://www.youtube.com/embed/e2Iwsk37LMk?si=20-m6aQOWpaiQDW7",
-    title: "Payments",
-    src: "https://www.youtube.com/embed/e2Iwsk37LMk?si=20-m6aQOWpaiQDW7",
-  };
-
-  const paymentAdvantages = [
+  const whyChooseCards = [
     {
-      id: "cross-border-stablecoin",
-      title: "Enable Cross-Border Stablecoin Payments",
-      contents: [
-        {
-          subtitle: "RLUSD and USDC support",
-          description: "",
-        },
-        {
-          subtitle: "Easily receive, store, convert, issue and send stablecoins",
-          description: "",
-        },
-      ],
+      heading: translate('Enable Cross-Border Stablecoin Payments'),
+      description: (
+        <ul>
+          <li>{translate('Set of regulated stablecoins RLUSD, AUDD, BBRL, USDC etc live on XRPL')}</li>
+          <li>{translate('Easily receive, store, convert, issue and send stablecoins')}</li>
+        </ul>
+      ),
+      buttons: [],
     },
     {
-      id: "reliable-infrastructure",
-      title: "Access Reliable Payments Infrastructure",
-      contents: [
-        {
-          subtitle: "99.99% uptime since 2012",
-          description: "",
-        },
-        {
-          subtitle: "Over $1.7T+ in value transferred",
-          description: "",
-        },
-      ],
+      heading: translate('Access Reliable Payments Infrastructure'),
+      description: (
+        <ul>
+          <li>{translate('Uninterrupted performance with 99.9% uptime since 2012')}</li>
+          <li>{translate('Over $1T+ in value moving transactions processed to date')}</li>
+        </ul>
+      ),
+      buttons: [],
     },
     {
-      id: "efficient-payments",
-      title: "Move Money Efficiently",
-      contents: [
-        {
-          subtitle: "Transactions settle in 3-5 seconds",
-          description: "",
-        },
-        {
-          subtitle: "Fractions of a cent per transaction",
-          description: "",
-        },
-      ],
+      heading: translate('Move Money Efficiently'),
+      description: (
+        <ul>
+          <li>{translate('Transactions settle atomically, in 3-5 seconds')}</li>
+          <li>{translate('Predictable and ultra-low transaction fees')}</li>
+        </ul>
+      ),
+      buttons: [],
     },
   ];
 
-  const paymentProjects = [
+  const flexibleIntegrationCards = [
     {
-      id: "ripple-usd",
-      label: "Ripple USD",
-      url: "https://ripple.com/solutions/stablecoin/",
-      description: "RLUSD, Ripple's enterprise-grade stablecoin, is live on XRPL and fully backed by USD deposits.",
+      heading: translate('Build It Yourself'),
+      description: (
+        <>
+          <p>{translate('Ideal for seasoned teams with crypto experience')}</p>
+          <ul>
+            <li>
+              {translate('Access open ')}<a href="https://xrpl.org/docs">{translate('documentation')}</a>
+            </li>
+            <li>
+              {translate('Use the Payments APIs + ')}<a href="https://xrpl.org/resources/dev-tools">{translate('XRPL tooling')}</a>
+            </li>
+          </ul>
+        </>
+      ),
     },
     {
-      id: "usdc", 
-      label: "USDC",
-      url: "https://www.circle.com/usdc",
-      description: "USDC, issued by Circle, is the world's largest regulated dollar stablecoin and now live on XRPL.",
+      heading: translate('Work with a Partner'),
+      description: (
+        <>
+          <p>{translate('Ideal for regulated institutions')}</p>
+          <ul>
+            <li>
+              {translate('Connect with the ')}<a href="https://discord.com/invite/KTNmhJDXqa">{translate('Community')}</a>
+            </li>
+            <li>{translate('Get help for more complex use cases')}</li>
+          </ul>
+        </>
+      ),
     },
-    {
-      id: "usdb",
-      label: "USDB", 
-      url: "https://www.brazabank.com.br/en/usdben/",
-      description: "USDB, by Braza Group, is a USD-pegged stablecoin backed by U.S. and Brazilian bonds.",
-    },
-    {
-      id: "europ",
-      label: "EURØP",
-      url: "https://schuman.io/europ/", 
-      description: "EURØP, issued by Schuman Financial, is the first MiCA-compliant euro stablecoin on XRPL.",
-    },
-    {
-      id: "xsgd",
-      label: "XSGD",
-      url: "https://www.straitsx.com/xsgd",
-      description: "XSGD, from StraitsX, is a Singapore Dollar-backed stablecoin regulated by MAS (Monetary Authority of Singapore).",
-    },
-    {
-      id: "audd",
-      label: "AUDD", 
-      url: "https://www.audd.digital/",
-      description: "AUDD, an Australian dollar stablecoin, is live on XRPL and backed 1:1 with AUD.",
-    },
-  ];
-
-  const embeddedPaymentsCards = [
-    {
-      id: 'digital-wallets',
-      title: 'Digital Wallets',
-      description: 'Offer fast, low-fee stablecoin payments between users and applications.',
-    },
-    {
-      id: 'cross-border-remittance',
-      title: 'Cross-Border Remittance',
-      description: 'Use secure payment channels and the most optimal liquidity pathways for global remittances with RLUSD.',
-    },
-    {
-      id: 'regulated-foreign-exchange',
-      title: 'Regulated Foreign Exchange',
-      description: 'Tap into a set of fiat-backed stablecoins, instantaneous swaps for efficient Foreign Exchange.',
-    },
-    {
-      id: 'merchant-settlement',
-      title: 'Merchant Settlement',
-      description: 'Settle daily payments across assets using escrow or checks with compliance-focused features.',
-    },
-    {
-      id: 'b2b-payment-rails',
-      title: 'B2B Payment Rails',
-      description: 'Build programmable payment flows with conditions and real-time data feeds.',
-    },
-    {
-      id: 'compliance-first-payment-acceptance',
-      title: 'Compliance-First Payment Acceptance',
-      description: 'Add Deposit Authorization and whitelisting to comply with AML and KYC workflows.',
-    },
-  ];
-
-  const battleTestedProjects = [
-    {
-      id: "coinpayments",
-      label: "CoinPayments",
-      url: "https://xrpl.org/blog/2025/coinpayments-xrpl-case-study-payment-processing",
-      description: "CoinPayments uses XRPL's fast and low-cost payment rails to enable merchants to accept digital assets globally with near-instant settlement and minimal transaction fees.",
-      buttonText: "Case Study"
-    },
-    {
-      id: "ripple",
-      label: "Ripple",
-      url: "https://ripple.com/solutions/cross-border-payments/",
-      description: "Ripple Payments enables crypto companies, payment service providers and fintech to facilitate real-time cross-border payments using stablecoins, digital assets and local currencies — with XRPL as a foundational transaction layer.",
-      buttonText: "Case Study"
-    },
-    {
-      id: "friipay",
-      label: "FriiPay",
-      url: "https://xrpl.org/blog/2025/frii-pay-xrpl-case-study-crypto-payment-solution",
-      description: "FriiPay connects XRPL-based crypto wallets to point-of-sale terminals, allowing customers to pay with RLUSD or XRP while helping merchants save costs on card processing fees.",
-      buttonText: "Case Study"
-    },
-  ];
-
-  const integrationFeatures = [
-    {
-      title: "Access open documentation",
-      link: "/docs/"
-    },
-    {
-      title: "Use the Payments APIs + XRPL tooling",
-      link: "/resources/dev-tools"
-    },
-  ];
-
-
-  const paymentsResourcesCards = [
-    {
-      title: "Developer Spotlight",
-      description: "Are you building a peer-to-peer payments solution, integrating stablecoins, or exploring RLUSD on the XRP Ledger?",
-      links: [
-        {
-          text: "Share Your Work",
-          url: "https://discord.gg/sfX3ERAMjH"
-        }
-      ],
-      backgroundClass: "developer-spotlight"
-    },
-    {
-      title: "Learn & Stay Updated", 
-      description: "Stay ahead of the curve with the latest developments in XRPL Payments by joining the Developer Discord and signing up for the XRPL Community Newsletter.",
-      links: [
-        {
-          text: "Join the Developer Discord",
-          url: "https://discord.gg/sfX3ERAMjH"
-        }
-      ],
-      backgroundClass: "learn-stay-updated"
-    }
   ];
 
   return (
-    <main className="use-case-payments">
-      <section className="use-case-payments__hero">
-          <div className="video-content">
-              <iframe
-                width="100%"
-                height="100%"
-                src={video.src}
-                title={video.title}
-                frameBorder={0}
-                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              />
-            
-          </div>
-          <div className="text-content">
-            <h6 className="eyebrow mb-3 text-large">
-              {translate("Payments")}
-            </h6>
-            <h2 className="h4 h2-sm mb-10">
-              {translate("Payments Suite")}
-            </h2>
-            <p className="mb-10">
-              {translate(
-                "Helping fintechs and payment providers move money fast, globally, and at low cost - all through simple APIs."
-              )}
-            </p>
-          </div>
-      </section>
-
-      <AdvantagesSection
-        title="Why Choose XRPL Payments Suite for Your Payment Rails?"
-        advantages={paymentAdvantages}
-        useLinks={false}
-        className="payments-advantages-spacing"
-      />
-      <ProjectCards
-        title="Enterprise-Grade Stablecoins, Issued Natively on XRPL"
-        projects={paymentProjects}
-        showCarousel={false}
-        className="mt-12 px-0"
-      />
-             <BenefitsSection
-         title="Unlock New Business Models with Embedded Payments"
-         description="XRPL Payments supports modern fintech use cases with plug-and-play APIs or partner-led deployments."
-         cards={embeddedPaymentsCards}
-         showImages={true}
-         className="embedded-payments-section px-0"
-         listId="embedded-payments-list"
-       />
-      
-      <ProjectCards
-        title="Payments Solution, Battle-Tested by Industry Leaders"
-        projects={battleTestedProjects}
-        showCarousel={false}
-        className="battle-tested-section px-0"
+    <PageWrapper className="landing">
+      <HeaderHeroSplitMedia
+        layout="content-left"
+        title={translate('Payments Infrastructure')}
+        description={translate(
+          'The XRP Ledger Payments Infrastructure is a payments solution for use cases including stablecoin payments, cross-border remittance, B2B payment rails, and merchant settlement.',
+        )}
+        media={{
+          src: '/img/payments/payments-infrastructure-hero.jpg',
+          alt: translate('Payments Infrastructure'),
+        }}
       />
 
-      <section className="payments-integration-section">
-        <div className="developer-tools">
-          <div className="">
-            <header className="developer-tools__header text-center">
-              <h2 className="developer-tools__title">
-                {translate("Flexible Integration: DIY or Partner-Led")}
-              </h2>
-            </header>
-            <div className="row">
-              <div className="col-lg-6">
-                <div className="integration-column">
-                  <h3 className="integration-column__title">
-                    {translate("Build It Yourself")}
-                  </h3>
-                  <p className="integration-column__subtitle">
-                    {translate("Ideal for seasoned teams with crypto experience")}
-                  </p>
-                  <ul className="developer-tools__list">
-                    {integrationFeatures.map((feature, index) => (
-                      <FeatureItem
-                        key={index}
-                        link={feature.link}
-                        title={feature.title}
-                      />
-                    ))}
-                  </ul>
-                </div>
-              </div>
-              <div className="col-lg-6">
-                <div className="integration-column">
-                  <h3 className="integration-column__title">
-                    {translate("Work with a Partner")}
-                  </h3>
-                  <p className="integration-column__subtitle">
-                    {translate("Ideal for regulated institutions")}
-                  </p>
-                  <ul className="developer-tools__list">
-                    <FeatureItem
-                      link="https://discord.com/invite/KTNmhJDXqa"
-                      title="Connect with the Community"
-                    />
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      
-      <DeveloperResourcesSection cards={paymentsResourcesCards} />
-    </main>
+      <LinkTextDirectory
+        heading={translate('Why Choose XRPL Payments Suite for Your Payment Rails?')}
+        cards={whyChooseCards}
+      />
+
+      <FeaturedVideoHero
+        headline={translate('Advanced Payment Features')}
+        subtitle={translate(
+          'Helping fintechs and payment providers move money fast, globally, and at low cost - all through simple APIs.',
+        )}
+        video={{
+          source: {
+            type: 'embed',
+            embedUrl: 'https://www.youtube.com/embed/e2Iwsk37LMk',
+          },
+        }}
+        links={[
+          {
+            label: translate('Learn More'),
+            href: 'https://xrpl.org/docs/concepts/payment-types',
+          },
+        ]}
+      />
+
+      <StandardCardGroupSection
+        headline={translate('Enterprise-Grade Stablecoins, Issued Natively on XRPL')}
+        description=""
+        variant="yellow"
+        cards={STABLECOIN_CARDS}
+      />
+
+      <CardsIconGrid
+        heading={translate('Unlock New Business Models with Embedded Payments')}
+        description={translate(
+          'XRPL Payments supports modern fintech use cases with plug-and-play APIs or partner-led deployments.',
+        )}
+        cards={EMBEDDED_PAYMENTS_CARDS}
+      />
+
+      <LogoSquareGrid
+        variant="gray"
+        heading={translate('Payments Solution, Battle-Tested by Industry Leaders')}
+        logos={PARTNER_LOGOS}
+      />
+
+      <CardsTextGrid
+        heading={translate('Flexible Integration: DIY or Partner-Led')}
+        cards={flexibleIntegrationCards}
+      />
+
+      <FeaturedVideoHero
+        headline={translate('Developer Spotlight')}
+        subtitle={translate(
+          'Are you building a peer-to-peer payments solution, integrating stablecoins, or exploring RLUSD on the XRP Ledger?',
+        )}
+        video={{
+          source: {
+            type: 'embed',
+            embedUrl: 'https://www.youtube.com/embed/e2Iwsk37LMk',
+          },
+          coverImage: {
+            src: '/img/payments/man-writing.jpg',
+            alt: translate('Developer Spotlight'),
+          },
+        }}
+        links={[
+          {
+            label: translate('Share Your Work'),
+            href: 'https://xrpl.org/blog',
+          },
+          {
+            label: translate('View Others'),
+            href: 'https://xrplresources.org/developer-spotlight',
+          },
+        ]}
+      />
+
+      <FeatureSingleTopic
+        orientation="left"
+        title={translate('Stay Connected')}
+        description={translate(
+          'Stay ahead in the world of payments. Subscribe to receive the latest insights, trends, and updates on payment solutions — delivered directly to your inbox.',
+        )}
+        buttons={[
+          {
+            label: translate('Sign Up to Newsletter'),
+            href: HUBSPOT_NEWSLETTER_FORM,
+          },
+        ]}
+        singleButtonVariant="secondary"
+        media={{
+          src: '/img/payments/xrpl-pattern.png',
+          alt: translate('Stay Connected'),
+        }}
+      />
+    </PageWrapper>
   );
-};
-
-export default PaymentsPage;
+}

@@ -1,4 +1,5 @@
 .card, .cta-card, .q-wrapper {
+  position: relative;
   @include media-breakpoint-up(lg) {
     box-shadow: $dropdown-box-shadow;
   }
@@ -169,6 +170,7 @@ a.card:hover h3 {
   .card {
     flex-grow: 0;
     flex-basis: 100%;
+    padding: 0;
     margin: 0 $card-deck-margin (4 * $card-deck-margin) $card-deck-margin;
     background-position: bottom;
     background-repeat: no-repeat;
@@ -302,18 +304,18 @@ main article .card-grid {
       }
     }
 
-    &:nth-of-type(0) {
-      @include card-footer-color(0);
-    }
-    &:nth-of-type(1) {
-      @include card-footer-color(9);
-    }
-    &:nth-of-type(2) {
-      @include card-footer-color(18);
-    }
-    &:nth-of-type(3) {
-      @include card-footer-color(27);
-    }
+    // &:nth-of-type(0) {
+    //   @include card-footer-color(0);
+    // }
+    // &:nth-of-type(1) {
+    //   @include card-footer-color(9);
+    // }
+    // &:nth-of-type(2) {
+    //   @include card-footer-color(18);
+    // }
+    // &:nth-of-type(3) {
+    //   @include card-footer-color(27);
+    // }
   }
 }
 

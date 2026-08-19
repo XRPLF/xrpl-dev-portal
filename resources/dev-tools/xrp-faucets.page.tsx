@@ -250,7 +250,7 @@ function TestCredentials({ selectedFaucet, selectedMode, requestedAmount, refill
   return (
     <div>
       <div className="btn-toolbar" role="toolbar" aria-label="Button"> 
-        <button id="generate-creds-button" onClick={clickGetXrp} className="btn btn-primary mr-2 mb-2">
+        <button id="generate-creds-button" onClick={clickGetXrp} className="btn btn-primary me-2 mb-2">
             {translate('Get Test XRP')}
         </button>
       </div>

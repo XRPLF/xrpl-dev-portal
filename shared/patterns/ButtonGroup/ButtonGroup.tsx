@@ -1,0 +1,303 @@
+import React from 'react';
+import clsx from 'clsx';
+import { Button } from '../../components/Button/Button';
+
+export interface ButtonConfig {
+  /** Button text label */
+  label: string;
+  /** URL to navigate to - renders button as a link */
+  href?: string;
+  /** Force the color to remain constant regardless of theme mode */
+  forceColor?: boolean;
+  /** Click handler - matches Button component's onClick signature */
+  onClick?: () => void;
+}
+
+export interface ButtonGroupValidationResult {
+  /** The validated and potentially trimmed list of buttons */
+  buttons: ButtonConfig[];
+  /** Whether the button list is valid and should render */
+  isValid: boolean;
+  /** True if there are valid buttons to render (convenience flag) */
+  hasButtons: boolean;
+  /** Any warnings generated during validation */
+  warnings: string[];
+}
+
+/**
+ * Validates and processes a ButtonConfig array for ButtonGroup.
+ *
+ * Performs the following validations:
+ * - Applies maxButtons limit if specified
+ * - Checks for empty button arrays
+ * - Validates individual button configs (label required, href or onClick recommended)
+ * - Automatically logs warnings in development mode
+ *
+ * @param buttons - Array of button configurations (can be undefined)
+ * @param maxButtons - Optional maximum number of buttons to render
+ * @param autoLogWarnings - Whether to automatically log warnings in development mode (default: true)
+ * @returns Validation result with processed buttons, validity flag, hasButtons flag, and warnings
+ *
+ * @example
+ * // Basic usage with auto-logging
+ * const validation = validateButtonGroup(buttons, 2);
+ * if (validation.hasButtons) {
+ *   <ButtonGroup buttons={validation.buttons} />
+ * }
+ *
+ * @example
+ * // Disable auto-logging
+ * const validation = validateButtonGroup(buttons, 2, false);
+ * // Handle warnings manually
+ * validation.warnings.forEach(w => customLogger(w));
+ */
+export function validateButtonGroup(
+  buttons: ButtonConfig[] | undefined,
+  maxButtons?: number,
+  autoLogWarnings: boolean = true
+): ButtonGroupValidationResult {
+  // Handle undefined/null buttons
+  if (!buttons || buttons.length === 0) {
+    return {
+      buttons: [],
+      isValid: false,
+      hasButtons: false,
+      warnings: []
+    };
+  }
+  const warnings: string[] = [];
+  let buttonList = [...buttons];
+
+  // Validate individual button configs
+  buttonList.forEach((button, index) => {
+    if (!button.label || button.label.trim() === '') {
+      warnings.push(
+        `[ButtonGroup] Button at index ${index} is missing a label. This button may not render correctly.`
+      );
+    }
+    if (!button.href && !button.onClick) {
+      warnings.push(
+        `[ButtonGroup] Button "${button.label || `at index ${index}`}" has no href or onClick. Consider adding an action.`
+      );
+    }
+  });
+
+  // Apply maxButtons limit if specified
+  if (maxButtons !== undefined && maxButtons > 0 && buttons.length > maxButtons) {
+    warnings.push(
+      `[ButtonGroup] ${buttons.length} buttons were passed but maxButtons is set to ${maxButtons}. ` +
+      `Only the first ${maxButtons} button(s) will be rendered.`
+    );
+    buttonList = buttonList.slice(0, maxButtons);
+  }
+
+  // Check for empty array
+  if (buttonList.length === 0) {
+    warnings.push(
+      `[ButtonGroup] No buttons to render. ` +
+      `Either an empty buttons array was passed or all buttons were removed by maxButtons limit.`
+    );
+
+    // Auto-log warnings in development mode
+    if (autoLogWarnings && process.env.NODE_ENV === 'development' && warnings.length > 0) {
+      warnings.forEach(warning => console.warn(warning));
+    }
+
+    return { buttons: [], isValid: false, hasButtons: false, warnings };
+  }
+
+  // Auto-log warnings in development mode
+  if (autoLogWarnings && process.env.NODE_ENV === 'development' && warnings.length > 0) {
+    warnings.forEach(warning => console.warn(warning));
+  }
+
+  const hasButtons = buttonList.length > 0;
+  return { buttons: buttonList, isValid: true, hasButtons, warnings };
+}
+
+export interface ButtonGroupProps {
+  /** Array of button configurations
+   * - 1 button: renders with singleButtonVariant (default: primary)
+   * - 2 buttons: first as primary, second as tertiary
+   * - 3+ buttons: all tertiary in block layout
+   */
+  buttons: ButtonConfig[];
+  /** Button color theme */
+  color?: 'green' | 'black';
+  /** Whether to force the color to remain constant regardless of theme mode */
+  forceColor?: boolean;
+  /** Gap between buttons: `none` / `small` follow base mobile spacing then adjust at md+; `medium` is 16px through tablet, 24px at lg+ */
+  gap?: 'none' | 'small' | 'medium';
+  /** Additional CSS classes */
+  className?: string;
+  /** Override variant for single button (default: 'primary', can be 'secondary') */
+  singleButtonVariant?: 'primary' | 'secondary';
+  /**
+   * Force every button to this variant, overriding the count-based defaults
+   * (and `singleButtonVariant`). Use when a section's design calls for a
+   * uniform treatment regardless of how many buttons are passed — e.g.
+   * `forceVariant="tertiary"` for an all-text-link group.
+   * Layout (inline vs. block) still follows the button count.
+   */
+  forceVariant?: 'primary' | 'secondary' | 'tertiary';
+  /**
+   * Strip button padding and left-align labels, so buttons sit flush with the
+   * surrounding text. Always on for the 3+ block layout; set it explicitly when
+   * forcing a tertiary variant at lower counts, which would otherwise indent the
+   * label by the button's horizontal padding.
+   */
+  forceNoPadding?: boolean;
+  /** Maximum number of buttons to render. If more buttons are passed, only the first N will be rendered. */
+  maxButtons?: number;
+}
+
+/**
+ * ButtonGroup Component
+ *
+ * A responsive button group container that displays buttons with adaptive layout:
+ * - 1 button: Renders with singleButtonVariant (default: primary, can be secondary)
+ * - 2 buttons: First as primary, second as tertiary (responsive layout)
+ * - 3+ buttons: All tertiary in block layout
+ *
+ * Pass `forceVariant` to opt out of the count-based variants and render every
+ * button the same way; layout still follows the count.
+ *
+ * @example
+ * // Single button
+ * <ButtonGroup
+ *   buttons={[{ label: "Get Started", href: "/start" }]}
+ *   color="green"
+ * />
+ *
+ * @example
+ * // Two buttons (primary + tertiary)
+ * <ButtonGroup
+ *   buttons={[
+ *     { label: "Get Started", href: "/start" },
+ *     { label: "Learn More", href: "/learn" }
+ *   ]}
+ *   color="green"
+ * />
+ *
+ * @example
+ * // Three or more buttons (all tertiary, block layout)
+ * <ButtonGroup
+ *   buttons={[
+ *     { label: "Option 1", href: "/option1" },
+ *     { label: "Option 2", href: "/option2" },
+ *     { label: "Option 3", href: "/option3" }
+ *   ]}
+ *   color="green"
+ * />
+ *
+ * @example
+ * // Uniform tertiary treatment regardless of count (flush with surrounding text)
+ * <ButtonGroup
+ *   buttons={[{ label: "Learn More", href: "/learn" }]}
+ *   forceVariant="tertiary"
+ *   forceNoPadding
+ * />
+ */
+export const ButtonGroup: React.FC<ButtonGroupProps> = ({
+  buttons,
+  color = 'green',
+  forceColor = false,
+  gap = 'small',
+  className = '',
+  singleButtonVariant = 'primary',
+  forceVariant,
+  forceNoPadding = false,
+  maxButtons,
+}) => {
+  // Validate and process buttons
+  const validation = validateButtonGroup(buttons, maxButtons);
+
+  // Log warnings in development mode
+  if (process.env.NODE_ENV === 'development' && validation.warnings.length > 0) {
+    validation.warnings.forEach(warning => console.warn(warning));
+  }
+
+  // Don't render if validation failed
+  if (!validation.isValid) {
+    return null;
+  }
+
+  const buttonList = validation.buttons;
+
+  const isMultiButton = buttonList.length >= 3;
+
+  // The 3+ block layout is flush-left, so tertiary buttons in it imply no padding.
+  // Only tertiary, though: forcing a filled variant at 3+ should keep its padding
+  // unless the caller explicitly asks otherwise.
+  const effectiveVariant = forceVariant ?? 'tertiary';
+  const noPadding =
+    forceNoPadding || (isMultiButton && effectiveVariant === 'tertiary');
+
+  const classNames = clsx(
+    'bds-button-group',
+    `bds-button-group--gap-${gap}`,
+    {
+      'bds-button-group--block': isMultiButton,
+    },
+    className
+  );
+
+  // Render 3+ buttons: block layout, tertiary unless forceVariant says otherwise
+  if (isMultiButton) {
+    return (
+      <div className={classNames}>
+        {buttonList.map((button, index) => (
+          <Button
+            key={index}
+            variant={effectiveVariant}
+            color={color}
+            forceColor={forceColor}
+            href={button.href}
+            onClick={button.onClick}
+            forceNoPadding={noPadding}
+          >
+            {button.label}
+          </Button>
+        ))}
+      </div>
+    );
+  }
+
+  // Render 1-2 buttons
+  // Single button: use singleButtonVariant (default: primary, can be secondary)
+  // Two buttons: first as primary, second as tertiary
+  const firstButtonVariant =
+    forceVariant ?? (buttonList.length === 1 ? singleButtonVariant : 'primary');
+  const secondButtonVariant = forceVariant ?? 'tertiary';
+
+  return (
+    <div className={classNames}>
+      {buttonList[0] && (
+        <Button
+          variant={firstButtonVariant}
+          color={color}
+          forceColor={forceColor}
+          href={buttonList[0].href}
+          onClick={buttonList[0].onClick}
+          forceNoPadding={noPadding}
+        >
+          {buttonList[0].label}
+        </Button>
+      )}
+      {buttonList[1] && (
+        <Button
+          variant={secondButtonVariant}
+          color={color}
+          forceColor={forceColor}
+          href={buttonList[1].href}
+          onClick={buttonList[1].onClick}
+          forceNoPadding={noPadding}
+        >
+          {buttonList[1].label}
+        </Button>
+      )}
+    </div>
+  );
+};
+
+export default ButtonGroup;

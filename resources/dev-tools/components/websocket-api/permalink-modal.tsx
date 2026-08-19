@@ -62,8 +62,8 @@ export function PermalinkButton ({currentBody, selectedConnection}: PermaLinkBut
   return <>
     <button
       className="btn btn-outline-secondary permalink"
-      data-toggle="modal"
-      data-target="#wstool-1-permalink"
+      data-bs-toggle="modal"
+      data-bs-target="#wstool-1-permalink"
       title={translate("Permalink")}
       onClick={() => setShowPermalinkModal(true)}
     >

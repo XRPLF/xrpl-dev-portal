@@ -62,8 +62,8 @@ export function CurlButton ({selectedConnection, currentBody}: CurlButtonProps) 
   return <>
       <button
         className="btn btn-outline-secondary curl"
-        data-toggle="modal"
-        data-target="#wstool-1-curl"
+        data-bs-toggle="modal"
+        data-bs-target="#wstool-1-curl"
         title={translate("cURL Syntax")}
         onClick={() => setShowCurlModal(true)}
       >
