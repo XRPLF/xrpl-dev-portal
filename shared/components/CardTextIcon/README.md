@@ -61,12 +61,54 @@ Inline `<a>` tags in the description share the card’s description styles in `C
 
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
-| `icon` | `string` | Optional | Icon image URL |
-| `iconAlt` | `string` | `''` | Optional | Alt text for the icon image |
+| `icon` | `string` | - | Icon image URL |
+| `iconAlt` | `string` | `''` | Alt text for the icon image |
 | `heading` | `string` | Required | Card heading |
+| `headingAs` | `'h1'`–`'h6'` | `'h3'` | Semantic heading element, so cards enter the document outline. Use a level that fits the page hierarchy (typically one below the section heading). |
 | `description` | `React.ReactNode` | Required | Card description; accepts rich content (e.g., text with inline links) |
 | `aspectRatio` | `number` | - | Optional ratio for future use; applied via CSS variable |
+| `gridColSpan` | `ResponsiveValue<PageGridSpanValue>` | - | When provided, the card renders as `PageGrid.Col as="li"` with this span, becoming the grid column itself. See [Grid integration](#grid-integration). |
+| `height` | `number` | - | Explicit `height` attribute for the icon image |
+| `width` | `number` | - | Explicit `width` attribute for the icon image |
 | `className` | `string` | - | Additional CSS classes |
+
+## Grid integration
+
+The card has two rendering modes:
+
+- **Standalone (default)** — renders a plain `<div class="bds-card-text-icon-card">`.
+  Use this when you're placing the card inside your own layout.
+- **Grid column** — when `gridColSpan` is provided, the card renders as
+  `PageGrid.Col as="li"` with the modifier class
+  `bds-card-text-icon-card--grid-col`. The card *is* the grid column, so it must
+  sit inside a `PageGrid.Row as="ul"`.
+
+This is how [CardsTextGrid](../../sections/CardsTextGrid/README.md) and
+[CardsIconGrid](../../sections/CardsIconGrid/README.md) consume it — both pass
+`gridColSpan={{ base: 4, md: 4, lg: 6 }}`.
+
+```tsx
+<PageGrid.Row as="ul">
+  <CardTextIconCard
+    heading="Documentation"
+    description="Access everything you need."
+    gridColSpan={{ base: 4, md: 4, lg: 6 }}
+  />
+</PageGrid.Row>
+```
+
+### Heading levels
+
+`headingAs` defaults to `'h3'`. Because these cards are usually rendered under a
+section heading, set it explicitly when `h3` would skip a level:
+
+```tsx
+<CardTextIconCard
+  heading="Documentation"
+  headingAs="h4"
+  description="Access everything you need."
+/>
+```
 
 ## Component Structure
 

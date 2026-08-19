@@ -49,6 +49,9 @@ $bds-card-image-gap-sm: $bds-space-lg;            // 16px - Gap between image an
 $bds-card-image-title-gap-sm: $bds-space-sm;      // 8px - Gap between title and subtitle
 $bds-card-image-button-margin-sm: $bds-space-2xl; // 24px - Margin above button
 
+// Bulleted subtitle hanging indent (width of the bullet + its trailing space)
+$bds-card-image-bullet-indent: 0.75em;
+
 // Colors
 $bds-card-image-bg: $white;
 $bds-card-image-image-bg: $gray-100;
@@ -194,12 +197,34 @@ $bds-card-image-transition-timing: $bds-transition-timing;
   color: $bds-card-image-text-color;
   margin: 0;
   text-align: left; // Always left-align, regardless of parent
-  // Subtitle max 3 lines
   display: -webkit-box;
-  -webkit-line-clamp: 3;
-  line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  // Honor explicit `\n` in the subtitle string as a line break, while still
+  // collapsing runs of spaces and wrapping normally.
+  white-space: pre-line;
+}
+
+// Bulleted subtitle: rendered as a <ul> by the component when every `\n`-separated
+// line starts with a bullet marker. The marker sits in its own 1em box so wrapped
+// text hangs-indented under the first character rather than under the bullet.
+.bds-card-image__subtitle--list {
+  display: block; // Override the -webkit-box above, which would break list layout
+  list-style: none;
+  padding: 0;
+  white-space: normal; // Lines are already split into <li> elements
+}
+
+.bds-card-image__subtitle-item {
+  padding-left: $bds-card-image-bullet-indent;
+  text-indent: -$bds-card-image-bullet-indent; // Pull the marker back to the left edge
+
+  &::before {
+    content: "\2022"; // •
+    display: inline-block;
+    width: $bds-card-image-bullet-indent;
+    text-indent: 0;
+  }
 }
 
 // =============================================================================

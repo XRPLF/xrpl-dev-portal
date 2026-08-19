@@ -6,6 +6,7 @@
 // .bds-card-offgrid--neutral         - Neutral gray color variant (default)
 // .bds-card-offgrid--green           - Green color variant
 // .bds-card-offgrid--disabled        - Disabled state
+// .bds-card-offgrid--static          - Non-interactive card (no href / no onClick)
 // .bds-card-offgrid__overlay         - Hover gradient overlay
 // .bds-card-offgrid__icon-container  - Icon wrapper (84x84px)
 // .bds-card-offgrid__icon-image      - Image icon styling
@@ -139,6 +140,19 @@ $bds-card-offgrid-focus-color-light: $gray-900;          // #111112
       clip-path: inset(0 0 0 0);
     }
   }
+}
+
+// =============================================================================
+// Static (Non-Interactive) Modifier
+// =============================================================================
+// Applied when the card has neither `href` nor `onClick` — it renders as a plain
+// <div> with nothing to activate, so the click affordance has to go. The
+// component also skips rendering __overlay for these cards and never attaches
+// the hover listeners, so the color wipe and pressed state can't fire; this
+// block only has to undo the base `cursor: pointer`.
+
+.bds-card-offgrid--static {
+  cursor: default;
 }
 
 // =============================================================================

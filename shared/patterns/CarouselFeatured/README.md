@@ -41,6 +41,19 @@ import { CarouselFeatured } from '@/shared/patterns/CarouselFeatured';
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
 | `background` | `'grey' \| 'neutral' \| 'yellow'` | `'grey'` | Background color variant |
+| `transition` | `'slide' \| 'fade'` | `'fade'` | Slide transition style. See [Transitions](#transitions) |
+
+## Transitions
+
+| Value | Behavior |
+|-------|----------|
+| `'fade'` (default) | Slides crossfade in place with no lateral movement. The image and heading lead, then the feature list, then the buttons, each on a 60ms stagger. Reads best when slides share a heading and only the supporting content changes — a horizontal wipe would drag the identical heading across the screen and set it back down where it started. |
+| `'slide'` | Slides wipe horizontally. Opt into this when each slide is a genuinely distinct panel and the lateral movement communicates that. |
+
+Both styles collapse to an instant swap under `prefers-reduced-motion: reduce`.
+
+`'fade'` stacks every slide in a single CSS grid cell, so the carousel still sizes
+to the tallest slide and won't change height between slides.
 
 ## Type Definitions
 

@@ -43,28 +43,65 @@ function MyComponent() {
 
 The root `PageGrid` component accepts all standard HTML div attributes:
 
-| Prop | Type | Description |
-|------|------|-------------|
-| `className` | `string` | Additional CSS classes to apply |
-| `...rest` | `HTMLDivElement attributes` | Any other HTML div attributes |
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `containerType` | `"standard" \| "wide"` | `"standard"` | Container layout type. See [Container types](#container-types) |
+| `as` | `React.ElementType` | `"div"` | Polymorphic element |
+| `className` | `string` | - | Additional CSS classes to apply |
+| `...rest` | `HTMLDivElement attributes` | - | Any other HTML div attributes |
+
+### Container types
+
+| Value | Behavior |
+|-------|----------|
+| `"standard"` (default) | The standard container width and padding. |
+| `"wide"` | Adds `bds-grid__container--wide`: no horizontal padding below `xl`, 80px at `xl`, then 112px padding with a `1504px` max-width at `xxl`. Use for full-bleed-ish sections that should still align to the grid. |
+
+```tsx
+<PageGrid containerType="wide">
+  <PageGrid.Row>
+    <PageGrid.Col span={12}>Wide section</PageGrid.Col>
+  </PageGrid.Row>
+</PageGrid>
+```
 
 ## PageGrid.Row Props
 
 The `PageGrid.Row` component accepts all standard HTML div attributes:
 
-| Prop | Type | Description |
-|------|------|-------------|
-| `className` | `string` | Additional CSS classes to apply |
-| `...rest` | `HTMLDivElement attributes` | Any other HTML div attributes |
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `as` | `React.ElementType` | `"div"` | Polymorphic element — e.g. `"ul"` for semantic list markup |
+| `className` | `string` | - | Additional CSS classes to apply |
+| `...rest` | `HTMLDivElement attributes` | - | Any other HTML div attributes |
 
 ## PageGrid.Col Props
 
-| Prop | Type | Description |
-|------|------|-------------|
-| `span` | `number \| "auto" \| "fill" \| ResponsiveValue` | Column span width |
-| `offset` | `number \| ResponsiveValue` | Column offset (left margin) |
-| `className` | `string` | Additional CSS classes to apply |
-| `...rest` | `HTMLDivElement attributes` | Any other HTML div attributes |
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `as` | `React.ElementType` | `"div"` | Polymorphic element — e.g. `"li"` for semantic list markup |
+| `span` | `number \| "auto" \| "fill" \| ResponsiveValue` | - | Column span width |
+| `offset` | `number \| ResponsiveValue` | - | Column offset (left margin) |
+| `className` | `string` | - | Additional CSS classes to apply |
+| `...rest` | `HTMLDivElement attributes` | - | Any other HTML div attributes |
+
+### Semantic lists with `as`
+
+When a grid of items is genuinely a list, render the row as `ul` and the columns
+as `li` so the markup carries the right semantics:
+
+```tsx
+<PageGrid.Row as="ul">
+  <PageGrid.Col as="li" span={{ base: 4, lg: 6 }}>Item one</PageGrid.Col>
+  <PageGrid.Col as="li" span={{ base: 4, lg: 6 }}>Item two</PageGrid.Col>
+</PageGrid.Row>
+```
+
+`_page-grid.scss` includes an `li.bds-grid__col` rule that strips list-item
+defaults so flex layout and width calculations still apply. This is the pattern
+[CardsTextGrid](../../sections/CardsTextGrid/README.md) and
+[CardsIconGrid](../../sections/CardsIconGrid/README.md) use, via
+`CardTextIconCard`'s `gridColSpan` prop.
 
 ### Span Values
 
@@ -229,6 +266,7 @@ The component generates the following CSS classes:
 
 ### Container
 - `bds-grid__container`
+- `bds-grid__container--wide` (when `containerType="wide"`)
 
 ### Row
 - `bds-grid__row`
@@ -253,7 +291,21 @@ type ResponsiveValue<T> = T | Partial<Record<PageGridBreakpoint, T>>;
 type PageGridSpanValue = number | "auto" | "fill";
 type PageGridOffsetValue = number;
 
+interface PageGridProps {
+  containerType?: "standard" | "wide";
+  as?: React.ElementType;
+  className?: string;
+  // ... plus all HTMLDivElement attributes
+}
+
+interface PageGridRowProps {
+  as?: React.ElementType;
+  className?: string;
+  // ... plus all HTMLDivElement attributes
+}
+
 interface PageGridColProps {
+  as?: React.ElementType;
   span?: ResponsiveValue<PageGridSpanValue>;
   offset?: ResponsiveValue<PageGridOffsetValue>;
   className?: string;

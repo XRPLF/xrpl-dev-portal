@@ -40,6 +40,7 @@ function MyPage() {
 | `subtitle`      | `React.ReactNode`              | Yes      | Hero subtitle text (label-l typography)                      |
 | `links`        | `DesignConstrainedLink[]`     | No       | Array of `{ label, href }` for ButtonGroup                   |
 | `media`         | `HeaderHeroMedia`              | Yes      | Media element (image, video, or custom)                      |
+| `stacked`       | `boolean`                      | No       | Stack headline, subtitle, and buttons in one column. Defaults to `false`. See [Layout](#layout) |
 | `className`     | `string`                       | No       | Additional CSS classes for the header element                |
 | `...rest`       | `HTMLHeaderElement attributes` | No       | Any other HTML header attributes                             |
 
@@ -50,6 +51,24 @@ The `links` prop accepts an array of `{ label, href }` objects for consistent Bu
 - **First link**: `variant="primary"`, `color="green"`
 - **Second link**: `variant="tertiary"`, `color="green"`
 - Max 2 links supported (ButtonGroup validation)
+
+## Layout
+
+| `stacked` | Layout |
+|-----------|--------|
+| `false` (default) | Two columns: headline on the left (5 of 12 on `lg`), subtitle and buttons on the right. The headline bottom-aligns against the CTA column. |
+| `true` | One column (full width at base, 7 of 8 at `md`, 9 of 12 at `lg` — note this grid is 4/8/12 columns by breakpoint, not 12 throughout): headline, then subtitle, then buttons, with **16px** between the headline and subtitle. The subtitle-to-buttons gap keeps the standard 24px (40px on `lg`). |
+
+```tsx
+<HeaderHeroPrimaryMedia
+  stacked
+  headline="Build on the XRP Ledger"
+  subtitle="Everything you need to get started."
+  media={{ type: "image", src: "/hero.jpg", alt: "Hero" }}
+/>
+```
+
+Media placement is unchanged — it stays full-width below the text in both layouts.
 
 ## Media Types
 
@@ -196,6 +215,8 @@ The component includes development-time validation that logs warnings to the con
 The component generates the following CSS classes:
 
 - `bds-header-hero-primary-media` - Root header element
+- `bds-header-hero-primary-media--stacked` - Root modifier, present when `stacked` is set
+- `bds-header-hero-primary-media__stack` - Single-column wrapper, only rendered when `stacked` is set
 - `bds-header-hero-primary-media__headline` - Headline container
 - `bds-header-hero-primary-media__subtitle` - Subtitle element
 - `bds-header-hero-primary-media__cta-container` - CTA container

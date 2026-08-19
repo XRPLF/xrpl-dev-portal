@@ -43,3 +43,8 @@
   -webkit-mask-image: url("#{$bc-chevron}") !important;
   mask-image: url("#{$bc-chevron}") !important;
 }
+
+// NOTE: the breadcrumb dropdown *menu* colors are set in @theme/styles.css, not
+// here. A custom-property-only rule in this bundle gets stripped: PurgeCSS runs
+// with `variables: true` (postcss.config.cjs) and its var() consumers are Redocly's
+// runtime styled-components under node_modules, which is excluded from `content`.

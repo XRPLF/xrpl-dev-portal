@@ -22,10 +22,9 @@ export interface FeatureTwoColumnProps {
   title: string;
   /** Feature description text (body-l typography) */
   description: string;
-  /** Array of links (1-5 links supported)
-   * - 1 link: renders as secondary button
-   * - 2 links: renders as primary + tertiary buttons
-   * - 3-5 links: renders all as tertiary buttons
+  /** Array of links (1-5 links supported).
+   * Always rendered as tertiary buttons, whatever the count — see the note on
+   * the component below.
    */
   links: FeatureTwoColumnLink[];
   /** Feature media (image) configuration */
@@ -48,10 +47,13 @@ export interface FeatureTwoColumnProps {
  *   rhythm when multiple sections stack (media, content; media, content; …).
  * - Desktop (≥992px): side-by-side (50% / 50%); `arrange` controls left vs right placement.
  *
- * Button behavior based on link count:
- * - 1 link: Secondary button
- * - 2 links: Primary button (first) + Tertiary button (second)
- * - 3-5 links: All tertiary buttons (first is filled, rest are text-only)
+ * Button behavior:
+ * - Every link renders as a tertiary button, regardless of count. This section
+ *   pairs its links with editorial copy, so the design calls for a uniform
+ *   text-link treatment rather than ButtonGroup's default count-based mix
+ *   (1 → secondary, 2 → primary + tertiary, 3+ → tertiary).
+ * - Buttons are flush-left with the title and description (no button padding).
+ * - Layout still follows the count: inline at 1-2 links, stacked block at 3+.
  */
 export const FeatureTwoColumn: React.FC<FeatureTwoColumnProps> = ({
   color = "neutral",
@@ -108,7 +110,12 @@ export const FeatureTwoColumn: React.FC<FeatureTwoColumnProps> = ({
                     buttons={buttonValidation.buttons}
                     color={buttonColor}
                     forceColor={forceColor}
-                    singleButtonVariant="secondary"
+                    // Uniform tertiary treatment for this section, flush with
+                    // the text above it. `singleButtonVariant` is intentionally
+                    // omitted — `forceVariant` supersedes it.
+                    forceVariant="tertiary"
+                    forceNoPadding
+                    gap="medium"
                   />
                 )}
               </div>
