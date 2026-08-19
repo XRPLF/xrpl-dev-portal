@@ -23,7 +23,7 @@ Every entry in a [ledger](../../../concepts/ledgers/index.md)'s state data has t
 
 Each ledger entry has a unique ID. The ID is derived by hashing important contents of the entry, along with a _namespace identifier_ which is a 16 bit value. The [ledger entry type](ledger-entry-types/index.md) determines the namespace identifier to use and which contents to include in the hash. This ensures every ID is unique. The hash function is [SHA-512Half][].
 
-Generally, a ledger entry's ID is returned as the `index` field in JSON, at the same level as the object's contents. In [transaction metadata](../transactions/metadata.md), the ledger object's ID in JSON is `LedgerIndex`.
+Generally, a ledger entry's ID is returned as the `index` field in JSON, at the same level as the object's contents. In [transaction metadata](../transactions/metadata.md), the ledger entry's ID in JSON is `LedgerIndex`.
 
 Offer directories have special IDs, where part of the hash is replaced with the exchange rate of Offers in that directory.
 
