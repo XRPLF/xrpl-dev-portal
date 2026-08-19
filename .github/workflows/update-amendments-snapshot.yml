@@ -1,9 +1,9 @@
 name: Update amendments snapshot
 
 on:
-  schedule:
+  #schedule:
     # Once daily at 00:17 UTC to avoid top of the hour congestion.
-    - cron: '17 0 * * *'
+  #  - cron: '17 0 * * *'
   workflow_dispatch: {}
 
 permissions:
