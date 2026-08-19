@@ -11,9 +11,13 @@ import type {
 
 /**
  * Props for a single panel in the PanelStack component.
- * Same shape as a CarouselFeatured slide.
+ * Extends CarouselSlide but makes heading optional since PanelStack
+ * can display a single heading above all panels.
  */
-export type PanelStackPanel = CarouselSlide;
+export interface PanelStackPanel extends Omit<CarouselSlide, 'heading'> {
+  /** Optional heading for this specific panel. If omitted, only the component-level heading is shown. */
+  heading?: string;
+}
 
 /**
  * Background color options for PanelStack.
@@ -25,11 +29,15 @@ export type PanelStackBackground = CarouselFeaturedBackground;
  * Props for the PanelStack pattern component.
  * Matches CarouselFeatured, minus carousel-only behavior.
  */
-export interface PanelStackProps extends CarouselFeaturedProps {
-  /** Array of panels to display. Same shape as CarouselFeatured slides. */
-  slides: readonly CarouselSlide[];
+export interface PanelStackProps extends Omit<CarouselFeaturedProps, 'slides'> {
+  /** Array of panels to display. Heading is optional for each panel. */
+  slides: readonly PanelStackPanel[];
   /** Background color variant. Defaults to 'grey'. */
   background?: PanelStackBackground;
+  /** Optional heading text displayed above all panels */
+  heading?: string;
+  /** Optional description text displayed below the heading */
+  description?: string;
 }
 
 /**
@@ -64,7 +72,7 @@ export interface PanelStackProps extends CarouselFeaturedProps {
  */
 export const PanelStack = React.forwardRef<HTMLElement, PanelStackProps>(
   (props, ref) => {
-    const { slides, background = "grey", className, children, ...rest } = props;
+    const { slides, background = "grey", heading, description, className, children, ...rest } = props;
 
     if (slides.length === 0) {
       console.warn("PanelStack: No slides provided");
@@ -77,6 +85,18 @@ export const PanelStack = React.forwardRef<HTMLElement, PanelStackProps>(
         className={clsx("bds-panel-stack", className)}
         {...rest}
       >
+        {heading && (
+          <PageGrid className="bds-panel-stack__header">
+            <PageGridRow>
+              <PageGridCol span={{ base: 4, md: 6, lg: 8 }}>
+                <div className="bds-panel-stack__header-text">
+                  <h4 className="h-md mb-0">{heading}</h4>
+                  {description && <p className="body-l mb-0">{description}</p>}
+                </div>
+              </PageGridCol>
+            </PageGridRow>
+          </PageGrid>
+        )}
         {slides.map((slide, index) => (
           <PageGrid
             key={slide.id}
@@ -92,11 +112,13 @@ export const PanelStack = React.forwardRef<HTMLElement, PanelStackProps>(
                 className="bds-carousel-featured__content-col order-1 order-lg-2"
               >
                 <div className="bds-carousel-featured__content">
-                  <div className="bds-carousel-featured__header">
-                    <h2 className="bds-carousel-featured__heading h-md">
-                      {slide.heading}
-                    </h2>
-                  </div>
+                  {slide.heading && (
+                    <div className="bds-carousel-featured__header">
+                      <h2 className="bds-carousel-featured__heading h-md">
+                        {slide.heading}
+                      </h2>
+                    </div>
+                  )}
 
                   <div className="bds-carousel-featured__bottom">
                     <ul className="bds-carousel-featured__features">
@@ -105,7 +127,6 @@ export const PanelStack = React.forwardRef<HTMLElement, PanelStackProps>(
                           key={featureIndex}
                           className="bds-carousel-featured__feature"
                         >
-                          <Divider color="base" weight="regular" />
                           <div className="bds-carousel-featured__feature-title body-r">
                             {feature.title}
                           </div>
