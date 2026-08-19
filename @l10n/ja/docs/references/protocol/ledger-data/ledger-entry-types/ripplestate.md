@@ -7,7 +7,7 @@ labels:
   - トークン
 ---
 # RippleState
-[[ソース]](https://github.com/XRPLF/rippled/blob/5d2d88209f1732a0f8d592012094e345cbe3e675/src/ripple/protocol/impl/LedgerFormats.cpp#L70 "Source")
+[[ソース]](https://github.com/XRPLF/rippled/blob/a5d238e7d4fa6ef2b539b759d58744d0a1c33c0c/include/xrpl/protocol/detail/ledger_entries.macro#L277-L289 "Source")
 
 `RippleState`のレジャーエントリは、2つのアカウント間の[トラストライン](../../../../concepts/tokens/fungible-tokens/index.md)を表します。各アカウントは限度額やその他の設定を変更できますが、残高は共通の値です。完全にデフォルトのトラストラインは、存在しないトラストラインと同じとみなされ、自動的に削除されます。
 
@@ -110,7 +110,7 @@ labels:
 
 2つのNoRippleフラグのデフォルト状態は、対応するAccountRootオブジェクトの[lsfDefaultRippleフラグ](accountroot.md#accountrootのフラグ)の状態によって異なります。DefaultRippleが無効の場合（デフォルト）、アカウントのすべてのトラストラインのlsfNoRippleフラグはデフォルトで _有効_ となります。アカウントがDefaultRippleを有効にすると、アカウントのトラストラインのlsfNoRippleフラグはデフォルトで _無効_ となります（Ripplingが有効になります）。
 
-{% admonition type="info" name="注記" %}`rippled`バージョン0.27.3（2015年3月10日）にてDefaultRippleフラグが導入される前は、すべてのトラストラインはデフォルトで両方のNoRippleフラグが無効になっていました（Ripplingは有効）。{% /admonition %}
+{% admonition type="info" name="注記" %}`xrpld`バージョン0.27.3（2015年3月10日）にてDefaultRippleフラグが導入される前は、すべてのトラストラインはデフォルトで両方のNoRippleフラグが無効になっていました（Ripplingは有効）。{% /admonition %}
 
 XRP Ledgerは遅延評価を使用して所有者準備金を計算しています。つまり、アカウントがDefaultRippleフラグを変更してそのすべてのトラストラインのデフォルト状態を変更しても、変更後しばらくの間はアカウントの準備金が同じ状態で維持されます。アカウントがトラストラインを変更すると、プロトコルは個々のトラストラインがデフォルト状態にあるか否かや、所有者準備金への資金供給の必要性を再評価します。
 

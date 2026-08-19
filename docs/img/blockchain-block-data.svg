@@ -1,0 +1,12 @@
+<svg width="170" height="120" viewBox="255 30 170 120" role="img" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto">
+
+
+  <rect x="265" y="40" width="150" height="100" rx="4" style="fill:rgb(30, 30, 30);stroke:rgb(68, 68, 68);color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+  <rect x="265" y="40" width="150" height="3" rx="1" style="fill:rgb(33, 228, 107);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+  <text x="340" y="72" text-anchor="middle" style="fill:rgb(114, 119, 126);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:Inter, &quot;Helvetica Neue&quot;, sans-serif;font-size:11px;font-weight:400;text-anchor:middle;dominant-baseline:auto">Block</text>
+  <text x="340" y="88" text-anchor="middle" style="fill:rgb(33, 228, 107);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:Inter, &quot;Helvetica Neue&quot;, sans-serif;font-size:11px;font-weight:600;text-anchor:middle;dominant-baseline:auto">001</text>
+  <line x1="281" y1="98" x2="399" y2="98" stroke="#8A919A" stroke-width="0.5" opacity="0.3" style="fill:rgb(0, 0, 0);stroke:rgb(138, 145, 154);color:rgb(0, 0, 0);stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.3;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+  <text x="281" y="113" style="fill:rgb(114, 119, 126);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:Inter, &quot;Helvetica Neue&quot;, sans-serif;font-size:9px;font-weight:500;text-anchor:start;dominant-baseline:auto">DATA</text>
+  <text x="281" y="127" style="fill:rgb(114, 119, 126);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:Inter, &quot;Helvetica Neue&quot;, sans-serif;font-size:9px;font-weight:500;text-anchor:start;dominant-baseline:auto">Transaction</text>
+
+</svg>

@@ -21,7 +21,7 @@ See [NFT Reserve Requirements](reserve-requirements.md).
 
 ## Transfer Fees
 
-As an issuer, you can mint your NFT with a transfer fee to be collected whenever your NFT is traded on the XRPL. If you specify a transfer fee, the NFT can only be traded for tokens for which you have a trust line. See [Trust Lines](../fungible-tokens/index.md#trust-lines).
+As an issuer, you can mint your NFT with a transfer fee to be collected whenever your NFT is traded on the XRPL. If you specify a transfer fee, the NFT can only be traded for tokens for which you have a trust line. See [Trust Line Tokens](../fungible-tokens/trust-line-tokens.md).
 
 ## Sell Offers
 
@@ -67,11 +67,12 @@ Using a broker offers several advantages. For example:
 
 In the most straightforward workflow, a creator mints a new NFT. The creator initiates a sell offer, entering the minimum acceptable sale price and setting the broker as the destination. Potential buyers make bids for the NFT, setting the broker as the destination for the bid. The broker selects a winning bid and completes the transaction, taking a broker’s fee. As a best practice, the broker then cancels any remaining buy offers for the NFT.
 
-![Brokered Mode with Reserve](/docs/img/nft-brokered-mode-with-reserve.png)
+{% responsive-graphic desktop="/docs/img/nft-brokered-mode-with-reserve.svg" mobile="/docs/img/nft-brokered-mode-with-reserve.mobile.svg" alt="Brokered mode with reserve: the seller mints and lists the NFT at a minimum price, buyers bid, and the broker matches the sale, takes a fee, and cancels remaining bids." /%}
+
 
 Another potential workflow would give the creator more control over the sale. In this workflow, the creator mints a new NFT. Bidders create their offers, setting the broker as the destination. The broker selects the winning bid, subtracts their broker fee, and uses `NFTokenCreateOffer` to request that the creator sign off on the offer. The creator signs the requested offer, setting the broker as the destination. The broker completes the sale using `NFTokenAcceptOffer`, retaining the broker fee. The broker cancels any remaining bids for the NFT using `NFTokenCancelOffer`.
 
-![Brokered Mode without Reserve](/docs/img/nft-brokered-mode-without-reserve.png)
+{% responsive-graphic desktop="/docs/img/nft-brokered-mode-without-reserve.svg" mobile="/docs/img/nft-brokered-mode-without-reserve.mobile.svg" alt="Brokered mode without reserve: the seller mints the NFT, bidders make offers, the broker requests seller sign-off, the seller signs, and the broker completes the sale and cancels remaining bids." /%}
 
 The same workflows can be used when an owner resells an NFT created by another account.
 

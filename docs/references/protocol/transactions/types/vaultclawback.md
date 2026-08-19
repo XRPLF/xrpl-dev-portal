@@ -12,7 +12,7 @@ txIcon: cancel
 
 # VaultClawback
 
-[[Source]](https://github.com/XRPLF/rippled/blob/release-3.1/src/xrpld/app/tx/detail/VaultClawback.cpp "Source")
+{% source-link path="src/libxrpl/tx/transactors/vault/VaultClawback.cpp" /%}
 
 Performs a [Clawback](../../../../use-cases/tokenization/stablecoin-issuer#clawback) from the vault, exchanging the shares of an account for assets.
 

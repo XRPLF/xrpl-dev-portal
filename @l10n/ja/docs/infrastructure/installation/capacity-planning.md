@@ -1,8 +1,8 @@
 ---
 html: capacity-planning.html
-parent: install-rippled.html
+parent: install-xrpld.html
 seo:
-    description: 本番環境のシステムスペックを計画して、rippledの構成を調整します。
+    description: 本番環境のシステムスペックを計画して、xrpldの構成を調整します。
 labels:
   - コアサーバ
   - データ保持
@@ -21,7 +21,7 @@ XRP Ledgerのサーバの負荷は、複数の要因によって変化します�
 
 デフォルトの設定ファイルには、一般的なユースケースを幅広くカバーする設定が含まれています。お使いのハードウェアや使用目的に合わせて設定をカスタマイズすることで、より良いパフォーマンスを得ることができます。
 
-本セクションでの設定は、`rippled.cfg`ファイルのパラメータです。設定ファイルの例である `rippled-example.cfg` は、`rippled` GitHubリポジトリ の [`cfg` ディレクトリ](https://github.com/XRPLF/rippled/blob/develop/cfg/rippled-example.cfg)からアクセスできます。サンプル設定ファイルの設定は、サーバと一緒にインストールされたデフォルトの設定と一致しています。
+本セクションでの設定は、`xrpld.cfg`ファイルのパラメータです。設定ファイルの例である `xrpld-example.cfg` は、`rippled` GitHubリポジトリ の {% source-link name="cfg ディレクトリ" path="cfg/xrpld-example.cfg" /%}からアクセスできます。サンプル設定ファイルの設定は、サーバと一緒にインストールされたデフォルトの設定と一致しています。
 
 
 ### ノードサイズ
@@ -32,15 +32,15 @@ XRP Ledgerのサーバの負荷は、複数の要因によって変化します�
 
 #### 推奨事項
 
-それぞれの`[node_size]`には、それに対応する利用可能なRAMの要件があります。例えば、`[node_size]`を`huge`に設定した場合、`rippled`がスムーズに動作するためには、最低でも32GBの利用可能なRAMが必要です。
+それぞれの`[node_size]`には、それに対応する利用可能なRAMの要件があります。例えば、`[node_size]`を`huge`に設定した場合、`xrpld`がスムーズに動作するためには、最低でも32GBの利用可能なRAMが必要です。
 
 サーバを調整するために、まず`tiny`から初め、ユースケースの要件に合わせてサイズを徐々に`small`、`medium`と増やしていくと便利です。
 
-| `rippled`で使用できるRAM      | `node_size` 値    | 注記                        |
+| `xrpld`で使用できるRAM      | `node_size` 値    | 注記                        |
 |:----------------------------|:------------------|:---------------------------|
 | 8GB未満                       | `tiny`            | **非推奨** この設定をしたサーバは、ビジー状態のネットワークに同期しないことがあります。 |
 | 8GB                         | `small`           | テストサーバに推奨。 |
-| 16GB                        | `medium`          | `rippled-example.cfg`ファイルではこの値が使用されます。 |
+| 16GB                        | `medium`          | `xrpld-example.cfg`ファイルではこの値が使用されます。 |
 | 32GB                        | `large`           | **非推奨** 実際には、この設定はほとんどの状況で `huge` よりもパフォーマンスが低下します。安定性を求めるのであれば、常に `huge` を使用してください。 |
 | 64GB                        | `huge`            | 実稼働サーバに推奨。 |
 
@@ -49,7 +49,7 @@ XRP Ledgerのサーバの負荷は、複数の要因によって変化します�
 
 ### ノードDBタイプ
 
-`rippled.cfg`ファイルの`[node_db]`節の`type`フィールドでは、レジャーストアを保持するために`rippled`で使用されるkey-valueストアのタイプを設定します。
+`xrpld.cfg`ファイルの`[node_db]`節の`type`フィールドでは、レジャーストアを保持するために`xrpld`で使用されるkey-valueストアのタイプを設定します。
 
 この設定は、直接RAM設定を構成するわけではありませんが、key-valueストアの選択はRAMの使用に大きな影響をもたらします。これは、テクノロジーによって、高速検索のためにデータをキャッシュし、インデックス付けする方法が異なるためです。
 
@@ -57,7 +57,7 @@ XRP Ledgerのサーバの負荷は、複数の要因によって変化します�
 
 - HDD（非推奨）や、単に遅いSSDを使用している場合でも、`RocksDB`を使用してください。本番サーバではこの設定は避けるべきです。[詳細はこちらをご覧ください。](#rocksdbの使用の詳細)
 
-サンプルの`rippled-example.cfg`ファイルでは、`[node_db]`節の`type`フィールドが`NuDB`に設定されています。
+サンプルの`xrpld-example.cfg`ファイルでは、`[node_db]`節の`type`フィールドが`NuDB`に設定されています。
 
 #### RocksDBの使用の詳細
 
@@ -67,12 +67,12 @@ XRP Ledgerのサーバの負荷は、複数の要因によって変化します�
 
 RocksDBは、SSDまたはHHDでの動作を想定しています。RocksDBは、NuDBに比べて必要とする[ディスク容量](#ディスク容量)が約3分の1少なくてすみ、I/O待ち時間が削減されます。ただし、I/O待ち時間が短い半面、データインデックスを格納するために、RocksDBは大量のRAMを必要とします。
 
-RocksDBには、トランザクション処理のスループットを向上させるために調整できるパフォーマンス関連の設定オプションがあります。以下は、RocksDBを使用する`rippled`の推奨構成です。
+RocksDBには、トランザクション処理のスループットを向上させるために調整できるパフォーマンス関連の設定オプションがあります。以下は、RocksDBを使用する`xrpld`の推奨構成です。
 
 ```
 [node_db]
 type=RocksDB
-path=/var/lib/rippled/db/rocksdb
+path=/var/lib/xrpld/db/rocksdb
 open_files=512
 filter_bits=12
 cache_mb=512
@@ -92,12 +92,12 @@ NuDBは、[格納されているデータ量に関係なく](#ディスク容量
 
 本番サーバは、NuDBを使用してユースケースに必要な履歴データ量を格納するように構成する必要があります。
 
-NuDBには、`rippled.cfg`にパフォーマンス関連の構成オプションがありません。以下は、NuDBを使用する`rippled`における`[node_db]`の推奨構成です。
+NuDBには、`xrpld.cfg`にパフォーマンス関連の構成オプションがありません。以下は、NuDBを使用する`xrpld`における`[node_db]`の推奨構成です。
 
 ```
 [node_db]
 type=NuDB
-path=/var/lib/rippled/db/nudb
+path=/var/lib/xrpld/db/nudb
 online_delete=300000
 advisory_delete=0
 ```
@@ -107,7 +107,7 @@ advisory_delete=0
 
 ### ログレベル
 
-サンプルの`rippled-example.cfg`ファイルの`[rpc_startup]`節では、ロギング詳細レベルが`warning`に設定されています。この設定を使用すると、より詳細なログ比べ、ディスク容量とI/O要件が大幅に緩和されます。ただし、より詳細なログレベルを設定すると、トラブルシューティングの際により細かな情報が得られます。
+サンプルの`xrpld-example.cfg`ファイルの`[rpc_startup]`節では、ロギング詳細レベルが`warning`に設定されています。この設定を使用すると、より詳細なログ比べ、ディスク容量とI/O要件が大幅に緩和されます。ただし、より詳細なログレベルを設定すると、トラブルシューティングの際により細かな情報が得られます。
 
 {% admonition type="warning" name="注意" %}`[rpc_startup]`節で`log_level`コマンドを省略すると、サーバは`debug`レべルでディスクにログを書き込み、`warning`レベルのログをコンソールに出力します。 `debug` レベルのログは、`warning`レベルに比べ、トランザクション量とクライアントアクティビティーに基づいて、一日当たりに必要なディスク容量が数GB多くなります。{% /admonition %}
 
@@ -116,7 +116,7 @@ advisory_delete=0
 
 XRP Ledgerネットワークの各サーバは、ネットワークのすべての取引処理作業を行います。ネットワーク上の総活動量は変動しますが、ほとんどが時間の経過とともに増加していますので、現在のネットワーク活動に必要な容量よりも大きな容量のハードウェアを選択する必要があります。
 
-`rippled`サーバが、これらのネットワーク要件とハードウェア要件を満たすようにすることは、XRP Ledgerネットワーク全体で一貫した優れたパフォーマンスを実現するために役立ちます。
+`xrpld`サーバが、これらのネットワーク要件とハードウェア要件を満たすようにすることは、XRP Ledgerネットワーク全体で一貫した優れたパフォーマンスを実現するために役立ちます。
 
 
 ### 推奨事項
@@ -163,12 +163,12 @@ XRP Ledgerネットワークの各サーバは、ネットワークのすべて�
 
 `[database_path]`では、個別のデータベースを設定します。これらには、トランザクションデータといくつかのランタイム設定が含まれます。
 
-一般的なルールとして、実行されていない`rippled`サーバのデータベースファイル（レジャーストアとデータベースの両方）を安全に削除することができます。これにより、サーバに保存されているレジャーの履歴はすべて消去されますが、そのデータをネットワークから再取得することができます。ただし、`[database_path]`にある`wallet.db`ファイルを削除すると、[Amendment 投票](../configuration/configure-amendment-voting.md)や[ピアリザベーション](../configuration/peering/use-a-peer-reservation.md)などのランタイムの設定変更を手動で再適用しなければなりません。
+一般的なルールとして、実行されていない`xrpld`サーバのデータベースファイル（レジャーストアとデータベースの両方）を安全に削除することができます。これにより、サーバに保存されているレジャーの履歴はすべて消去されますが、そのデータをネットワークから再取得することができます。ただし、`[database_path]`にある`wallet.db`ファイルを削除すると、[Amendment 投票](../configuration/configure-amendment-voting.md)や[ピアリザベーション](../configuration/peering/use-a-peer-reservation.md)などのランタイムの設定変更を手動で再適用しなければなりません。
 
 
 ##### Amazon Web Services
 
-Amazon Web Services（AWS）は、人気のある仮想化ホスト環境です。AWSで`rippled`を実行することはできますが、Elastic Block Storage（EBS）は使用しないでください。詳しくは[システム要件](system-requirements.md)をご覧ください。
+Amazon Web Services（AWS）は、人気のある仮想化ホスト環境です。AWSで`xrpld`を実行することはできますが、Elastic Block Storage（EBS）は使用しないでください。詳しくは[システム要件](system-requirements.md)をご覧ください。
 
 AWSインスタンスストア（`ephemeral`ストレージ）では適切なパフォーマンスが提供されます。しかし、インスタンスを開始/停止するときなど、いくつかの状況でデータが失われる可能性があります。しかし、個々のXRP Ledgerサーバは、通常、失われたレジャーの履歴を他サーバから再取得することができるので、これは許容範囲内でしょう。設定内容は、より信頼性の高いストレージに保存する必要があります。
 
@@ -191,22 +191,22 @@ AWSインスタンスストア（`ephemeral`ストレージ）では適切なパ
 | 現在のトランザクション量を処理する             | 2Mbpsの転送、2Mbpsの受信 |
 | ピーク時のトランザクション量を処理             | 100Mbps以上の転送           |
 | 履歴レジャーとトランザクションレポートを提供する | 100Mbps以上の転送           |
-| `rippled`の起動                           | 20Mbpsの受信             |
+| `xrpld`の起動                           | 20Mbpsの受信             |
 
 [P2P通信で圧縮を有効にする](../configuration/peering/enable-link-compression.md)ことで帯域幅を節約することができますが、その代償としてCPU使用率が高くなります。多くのハードウェア構成では、通常の使用時にはCPUの容量に余裕があるため、ネットワークの帯域幅が限られている場合には、この方法が経済的な選択肢となります。
 
 ## 関連項目
 
 - **コンセプト:**
-    - [`rippled`サーバ](../../concepts/networks-and-servers/index.md)
+    - [`xrpld`サーバ](../../concepts/networks-and-servers/index.md)
     - [コンセンサスについて](../../concepts/consensus-protocol/index.md)
 - **チュートリアル:**
-    - [`rippled`の構成](../configuration/index.md)
+    - [`xrpld`の構成](../configuration/index.md)
         - [オンライ削除の設定](../configuration/data-retention/configure-online-deletion.md) - サーバが一度に保持するレジャー履歴のバージョン数を調整します。
-    - [`rippled`のトラブルシューティング](../troubleshooting/index.md)
+    - [`xrpld`のトラブルシューティング](../troubleshooting/index.md)
 - **リファレンス:**
-    - [rippled APIリファレンス](../../references/http-websocket-apis/index.md)
-      - [`rippled`コマンドラインの使用](../commandline-usage.md)
+    - [xrpld APIリファレンス](../../references/http-websocket-apis/index.md)
+      - [`xrpld`コマンドラインの使用](../commandline-usage.md)
         - [logrotateメソッド][] - サーバのデバッグログを閉じたり再開したりして、標準的なツールでローテーション可能にします。
         - [server_infoメソッド][] - 同期の状態や、ディスク上で利用可能なレジャー履歴のバージョン数など、サーバに関する一般的な情報を取得します。
         - [get_countsメソッド][] - 追加のサーバの正常情報、特にRAM内に様々な種類のオブジェクトをいくつ保持しているかを取得します。

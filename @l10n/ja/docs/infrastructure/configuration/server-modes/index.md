@@ -1,6 +1,6 @@
 ---
 html: server-modes.html
-parent: configure-rippled.html
+parent: configure-xrpld.html
 metadata:
   indexPage: true
 seo:

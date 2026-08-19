@@ -13,18 +13,18 @@ To use the XRP Ledger effectively, you need to be able to understand [transactio
 
 The XRP Ledger is a shared system, with all data recorded publicly and carefully, securely updated with each new [ledger version](../../ledgers/index.md). Anyone can look up the exact outcome of any transaction and read the [transaction metadata](../../../references/protocol/transactions/metadata.md) to see what it did.
 
-This document describes, at a low level, how to know why a transaction reached the outcome it did. For an end-user, it is easier to look at a processed view of a transaction. For example, you can [use XRP Charts to get an English-language description of any recorded transaction](https://xrpcharts.ripple.com/#/transactions/).
+This document describes, at a low level, how to know why a transaction reached the outcome it did. For an end-user, it is easier to look at a processed view of a transaction. For example, you can [use XRP Charts to get an English-language description of any recorded transaction](https://livenet.xrpl.org/transactions/transactions/).
 
 ## Prerequisites
 
 To understand the outcome of a transaction as described in these instructions, you must:
 
 - Know which transaction you want to understand. If you know the transaction's [identifying hash][], you can look it up that way. You can also look at transactions that executed in a recent ledger or the transactions that most recently affected a given account.
-- Have access to a `rippled` server that provides reliable information and has the necessary history for when the transaction was submitted.
+- Have access to an `xrpld` server that provides reliable information and has the necessary history for when the transaction was submitted.
     - For looking up the outcomes of transactions you've recently submitted, the server you submitted through should be enough, as long as it maintains sync with the network during that time.
     - For outcomes of older transactions, you may want to use a [full-history server](../../networks-and-servers/ledger-history.md#full-history).
 
-{% admonition type="success" name="Tip" %}There are other ways of querying for data on transactions from the XRP Ledger, including the [Data API](../../../references/data-api.md) and other exported databases, but those interfaces are non-authoritative. This document describes how to look up data using the `rippled` API directly, for the most direct and authoritative results possible.{% /admonition %}
+{% admonition type="success" name="Tip" %}There are other ways of querying for data on transactions from the XRP Ledger, including the [Data API](../../../references/data-api.md) and other exported databases, but those interfaces are non-authoritative. This document describes how to look up data using the `xrpld` API directly, for the most direct and authoritative results possible.{% /admonition %}
 
 
 ## 1. Get Transaction Status
@@ -34,7 +34,7 @@ Knowing whether a transaction succeeded or failed is a two-part question:
 1. Was the transaction included in a validated ledger?
 2. If so, what changes to the ledger state occurred as a result?
 
-To know whether a transaction was included in a validated ledger, you usually need access to all the ledgers it could possibly be in. The simplest, most foolproof way to do this is to look up the transaction on a [full history server](../../networks-and-servers/ledger-history.md#full-history). Use the [tx method][], [account_tx method][], or other response from `rippled`. Look for `"validated": true` to indicate that this response uses a ledger version that has been validated by consensus.
+To know whether a transaction was included in a validated ledger, you usually need access to all the ledgers it could possibly be in. The simplest, most foolproof way to do this is to look up the transaction on a [full history server](../../networks-and-servers/ledger-history.md#full-history). Use the [tx method][], [account_tx method][], or other response from `xrpld`. Look for `"validated": true` to indicate that this response uses a ledger version that has been validated by consensus.
 
 - If the result does not have `"validated": true`, then the result may be tentative and you must wait for the ledger to be validated to know if the transaction's outcome is final.
 - If the result does not contain the transaction in question, or returns the error `txnNotFound`, then the transaction is not in any ledger that the server has in its available history. This may or may not mean that the transaction failed, depending on whether the transaction could be in a validated ledger version that the server does not have and whether it could be included in a future validated ledger. You can constrain the range of ledgers a transaction can be in by knowing:
@@ -241,7 +241,7 @@ The [`QualityIn` and `QualityOut` settings of trust lines](../../../references/p
 
 If the amount to be sent or received is outside of the [token precision](../../../references/protocol/data-types/currency-formats.md#token-precision), it is possible that one side may be debited for an amount that is rounded to nothing on the other side of the transaction. As a result, when two parties transact while their balances are different by a factor of 10<sup>16</sup>, it is possible that rounding may effectively "create" or "destroy" small amounts of the token. (XRP is never rounded, so this is not possible with XRP.)
 
-Depending on the length of the [paths](../../tokens/fungible-tokens/paths.md), the metadata for cross-currency payments can be _long_. For example, [transaction 8C55AFC2A2AA42B5CE624AEECDB3ACFDD1E5379D4E5BF74A8460C5E97EF8706B](https://xrpcharts.ripple.com/#/transactions/8C55AFC2A2AA42B5CE624AEECDB3ACFDD1E5379D4E5BF74A8460C5E97EF8706B) delivered 2.788 GCB issued by `rHaaans...`, spending XRP but passing through USD from 2 issuers, paying XRP to 2 accounts, removing an unfunded offer from `r9ZoLsJ...` to trade EUR for ETH, plus bookkeeping for a total of 17 different ledger objects modified. <!-- SPELLING_IGNORE: gcb -->
+Depending on the length of the [paths](../../tokens/fungible-tokens/paths.md), the metadata for cross-currency payments can be _long_. For example, [transaction 8C55AFC2A2AA42B5CE624AEECDB3ACFDD1E5379D4E5BF74A8460C5E97EF8706B](https://livenet.xrpl.org/transactions/transactions/8C55AFC2A2AA42B5CE624AEECDB3ACFDD1E5379D4E5BF74A8460C5E97EF8706B) delivered 2.788 GCB issued by `rHaaans...`, spending XRP but passing through USD from 2 issuers, paying XRP to 2 accounts, removing an unfunded offer from `r9ZoLsJ...` to trade EUR for ETH, plus bookkeeping for a total of 17 different ledger objects modified. <!-- SPELLING_IGNORE: gcb -->
 
 #### Using AMM Liquidity
 
@@ -326,7 +326,7 @@ Of course, an EscrowFinish can only be successful if it meets the conditions of 
 
 Escrow transactions also do normal [bookkeeping](#general-purpose-bookkeeping) for adjusting the sender's owner reserve and the directories of the accounts involved.
 
-In the following excerpt, we see that `r9UUEX...`'s balance increases by 1 billion XRP and its owner count decreases by 1 because an escrow from that account to itself finished successfully. The `Sequence` number does not change because [a third party completed the escrow](https://xrpcharts.ripple.com/#/transactions/C4FE7F5643E20E7C761D92A1B8C98320614DD8B8CD8A04CFD990EBC5A39DDEA2):
+In the following excerpt, we see that `r9UUEX...`'s balance increases by 1 billion XRP and its owner count decreases by 1 because an escrow from that account to itself finished successfully. The `Sequence` number does not change because [a third party completed the escrow](https://livenet.xrpl.org/transactions/transactions/C4FE7F5643E20E7C761D92A1B8C98320614DD8B8CD8A04CFD990EBC5A39DDEA2):
 
 ```json
 {

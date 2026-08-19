@@ -138,7 +138,7 @@ Example warning:
 ]
 ```
 
-This warning indicates that the one or more [amendments](../../../concepts/networks-and-servers/amendments.md) to the XRP Ledger protocol are scheduled to become enabled, but the current server does not have an implementation for those amendments. If those amendments become enabled, the current server will become [amendment blocked](../../../concepts/networks-and-servers/amendments.md#amendment-blocked-servers), so you should [upgrade to the latest `rippled` version](../../../infrastructure/installation/index.md) as soon as possible. <!-- STYLE_OVERRIDE: will -->
+This warning indicates that the one or more [amendments](../../../concepts/networks-and-servers/amendments.md) to the XRP Ledger protocol are scheduled to become enabled, but the current server does not have an implementation for those amendments. If those amendments become enabled, the current server will become [amendment blocked](../../../concepts/networks-and-servers/amendments.md#amendment-blocked-servers), so you should [upgrade to the latest `xrpld` version](../../../infrastructure/installation/index.md) as soon as possible. <!-- STYLE_OVERRIDE: will -->
 
 The server only sends this warning if the client is [connected as an admin](../../../tutorials/get-started/get-started-http-websocket-apis.md#admin-access).
 
@@ -167,7 +167,7 @@ Example warning:
 
 This warning indicates that the server is [amendment blocked](../../../concepts/networks-and-servers/amendments.md#amendment-blocked-servers) and can no longer remain synced with the XRP Ledger.
 
-The server administrator must [upgrade `rippled`](../../../infrastructure/installation/index.md) to a version that supports the activated amendments.
+The server administrator must [upgrade `xrpld`](../../../infrastructure/installation/index.md) to a version that supports the activated amendments.
 
 ### 2001. This is a clio server
 
@@ -194,13 +194,13 @@ It is generally safe to ignore this warning.
 - [Request Formatting](request-formatting.md)
 - [Error Formatting](error-formatting.md) for unsuccessful API responses.
 - **Concepts:**
-    - [The `rippled` Server](../../../concepts/networks-and-servers/index.md)
+    - [The `xrpld` Server](../../../concepts/networks-and-servers/index.md)
     - [Consensus](../../../concepts/consensus-protocol/index.md)
     - [Amendments](../../../concepts/networks-and-servers/amendments.md)
         - [Known Amendments](/resources/known-amendments.md)
 - **Tutorials:**
     - [Get Started with XRP Ledger APIs](../../../tutorials/get-started/get-started-http-websocket-apis.md)
-    - [Install and Update `rippled`](../../../infrastructure/installation/index.md)
+    - [Install and Update `xrpld`](../../../infrastructure/installation/index.md)
 - **References:**
     - [feature method][]
     - [server_info method][]

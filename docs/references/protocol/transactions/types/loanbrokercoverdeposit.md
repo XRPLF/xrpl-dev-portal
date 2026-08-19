@@ -9,7 +9,7 @@ txIcon: send
 status: not_enabled
 ---
 # LoanBrokerCoverDeposit
-[[Source]](https://github.com/XRPLF/rippled/blob/release-3.1/src/xrpld/app/tx/detail/LoanBrokerCoverDeposit.cpp "Source")
+{% source-link path="src/libxrpl/tx/transactors/lending/LoanBrokerCoverDeposit.cpp" /%}
 
 Deposits first-loss capital into a `LoanBroker` ledger entry to provide protection for vault depositors.
 
@@ -59,6 +59,8 @@ Besides errors that can occur for all transactions, {% code-page-name /%} transa
 | `tecNO_ENTRY`            | The `LoanBroker` ledger entry doesn't exist. |
 | `tecNO_PERMISSION`       | The account sending the transaction isn't the owner of the `LoanBroker` ledger entry. |
 | `tecWRONG_ASSET`         | The asset being deposited doesn't match the asset in the `LoanBroker` vault. |
-| `tecINSUFFICIENT_FUNDS`  | The account depositing first-loss capital doesn't hold enough of the asset. You can also receive this error if the issuer of the asset has frozen the account or placed a global freeze. |
+| `tecINSUFFICIENT_FUNDS`  | The account depositing first-loss capital doesn't hold enough of the asset. |
+| `tecFROZEN`              | The asset is frozen globally for the depositing account, or for the `LoanBroker` pseudo-account. Both regular and deep freezes cause this error. {% amendment-disclaimer name="fixCleanup3_3_0" mode="updated" /%} |
+| `tecLOCKED`              | The MPT asset is locked globally, for the depositing account, or for the `LoanBroker` pseudo-account. {% amendment-disclaimer name="fixCleanup3_3_0" mode="updated" /%} |
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

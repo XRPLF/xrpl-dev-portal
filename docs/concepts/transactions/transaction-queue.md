@@ -8,7 +8,7 @@ labels:
 ---
 # Transaction Queue
 
-The `rippled` server uses a transaction queue to help enforce the [open ledger cost](transaction-cost.md#open-ledger-cost). The open ledger cost sets a target number of transactions in a given ledger, and escalates the required transaction cost very quickly when the open ledger surpasses this size. Rather than discarding transactions that cannot pay the escalated transaction cost, `rippled` tries to put them in a transaction queue, which it uses to build the next ledger.
+The `xrpld` server uses a transaction queue to help enforce the [open ledger cost](transaction-cost.md#open-ledger-cost). The open ledger cost sets a target number of transactions in a given ledger, and escalates the required transaction cost very quickly when the open ledger surpasses this size. Rather than discarding transactions that cannot pay the escalated transaction cost, `xrpld` tries to put them in a transaction queue, which it uses to build the next ledger.
 
 ## Transaction Queue and Consensus
 
@@ -34,10 +34,12 @@ The transaction queue plays an important role in selecting the transactions that
 
 ## Queuing Restrictions
 
-The `rippled` server uses a variety of heuristics to estimate which transactions are "likely to be included in a ledger." The current implementation uses the following rules to decide which transactions to queue:
+The `xrpld` server uses a variety of heuristics to estimate which transactions are "likely to be included in a ledger." The current implementation uses the following rules to decide which transactions to queue:
 
 - Transactions must be properly-formed and [authorized](index.md#authorizing-transactions) with valid signatures.
 - Transactions with an `AccountTxnID` field cannot be queued.
+- Fee-sponsored transactions (using the `spfSponsorFee` flag) cannot be queued. {% amendment-disclaimer name="Sponsor" /%}
+- [Delegated transactions](../accounts/permission-delegation.md) (those with a `Delegate` field) cannot be queued. {% amendment-disclaimer name="PermissionDelegationV1_1" /%}
 - A single sending address can have at most 10 transactions queued at the same time.
 - To queue a transaction, the sender must have enough XRP for all of the following:
     - Destroying the XRP [transaction cost](transaction-cost.md) as specified in the `Fee` fields of all the sender's queued transactions. The total amount among queued transactions cannot be more than the base account reserve (currently {% $env.PUBLIC_BASE_RESERVE %}). (Transactions paying significantly more than the minimum transaction cost of 0.00001 XRP typically skip the queue and go straight into the open ledger.)
@@ -45,6 +47,8 @@ The `rippled` server uses a variety of heuristics to estimate which transactions
     - Keeping enough XRP to meet the account's [reserve requirements](../accounts/reserves.md).
 - If a transaction affects how the sending address authorizes transactions, no other transactions from the same address can be queued behind it.
 - If a transaction includes a `LastLedgerSequence` field, the value of that field must be at least **the current ledger index + 2**.
+
+If a transaction does not make it into the open ledger, it fails with `telCAN_NOT_QUEUE` instead of entering the queue.
 
 ### Fee Averaging
 
@@ -64,7 +68,7 @@ Transactions that were previously proposed in the consensus process but did not 
 
 The precise order of transactions in the queue decides which transactions get added to the next in-progress ledger version in cases where there are more transactions in the queue than the expected size of the next ledger version. The order of the transactions **does not affect the order the transactions are executed within a validated ledger**. In each validated ledger version, the transaction set for that version executes in [canonical order](../consensus-protocol/consensus-structure.md#calculate-and-share-validations).
 
-{% admonition type="info" name="Note" %}When `rippled` queues a transaction, the provisional [transaction response code](../../references/protocol/transactions/transaction-results/index.md) is `terQUEUED`. This means that the transaction is likely to succeed in a future ledger version. As with all provisional response codes, the outcome of the transaction is not final until the transaction is either included in a validated ledger, or [rendered permanently invalid](finality-of-results/index.md).{% /admonition %}
+{% admonition type="info" name="Note" %}When `xrpld` queues a transaction, the provisional [transaction response code](../../references/protocol/transactions/transaction-results/index.md) is `terQUEUED`. This means that the transaction is likely to succeed in a future ledger version. As with all provisional response codes, the outcome of the transaction is not final until the transaction is either included in a validated ledger, or [rendered permanently invalid](finality-of-results/index.md).{% /admonition %}
 
 
 ## See Also

@@ -9,7 +9,7 @@ labels:
 ---
 # unsubscribe
 
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/Unsubscribe.cpp "Source")
+{% source-link path="src/xrpld/rpc/handlers/subscribe/Unsubscribe.cpp" /%}
 
 The `unsubscribe` command tells the server to stop sending messages for a particular subscription or set of subscriptions.
 

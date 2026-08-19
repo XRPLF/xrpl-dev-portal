@@ -1,5 +1,7 @@
 import {
   MPTokenIssuanceCreateFlags,
+  MPTokenIssuanceCreateImmutableFlags,
+  MPTokenIssuanceSetFlags,
   Client,
   encodeMPTokenMetadata,
   decodeMPTokenMetadata
@@ -61,7 +63,8 @@ const mptIssuanceCreate = {
   TransferFee: 0,
   Flags:
     MPTokenIssuanceCreateFlags.tfMPTCanTransfer |
-    MPTokenIssuanceCreateFlags.tfMPTCanTrade,
+    MPTokenIssuanceCreateFlags.tfMPTCanLock,
+  ImmutableFlags: MPTokenIssuanceCreateImmutableFlags.tifMPTCanClawback,
   MPTokenMetadata: mptMetadataHex
 }
 
@@ -75,7 +78,6 @@ const submitResponse = await client.submitAndWait(mptIssuanceCreate, {
 
 // Check transaction results
 console.log('\n=== Checking MPTokenIssuanceCreate results... ===')
-console.log(JSON.stringify(submitResponse.result, null, 2))
 if (submitResponse.result.meta.TransactionResult !== 'tesSUCCESS') {
   const resultCode = submitResponse.result.meta.TransactionResult
   console.warn(`Transaction failed with result code ${resultCode}.`)
@@ -104,6 +106,54 @@ const ledgerEntryResponse = await client.request({
 const metadataBlob = ledgerEntryResponse.result.node.MPTokenMetadata
 const decodedMetadata = decodeMPTokenMetadata(metadataBlob)
 console.log('Decoded MPT metadata:\n', decodedMetadata)
+
+// Update the mutable properties, then make the metadata immutable.
+// MPTokenMetadata and TransferFee were not declared immutable at issuance, so a
+// single MPTokenIssuanceSet transaction can update both. Metadata updates
+// replace the whole field, so encode the complete object, not just the changes.
+const updatedMetadata = {
+  ...mptMetadata,
+  additional_info: { ...mptMetadata.additional_info, interest_rate: '4.75%' }
+}
+
+console.log('\n=== Sending MPTokenIssuanceSet transaction to update properties...===')
+const mptIssuanceUpdate = {
+  TransactionType: 'MPTokenIssuanceSet',
+  Account: issuer.address,
+  MPTokenIssuanceID: issuanceId,
+  MPTokenMetadata: encodeMPTokenMetadata(updatedMetadata),
+  // A non-zero TransferFee requires the Can Transfer flag, set at issuance.
+  TransferFee: 10,
+  // Enable Can Trade after issuance.
+  Flags: MPTokenIssuanceSetFlags.tfMPTSetCanTrade,
+  // The metadata update above still applies; immutability takes effect after it.
+  // ImmutableFlags is additive, so tifMPTMetadata is added to the
+  // tifMPTCanClawback bit declared at issuance rather than replacing it.
+  ImmutableFlags: MPTokenIssuanceCreateImmutableFlags.tifMPTMetadata
+}
+console.log(JSON.stringify(mptIssuanceUpdate, null, 2))
+const updateResponse = await client.submitAndWait(mptIssuanceUpdate, {
+  wallet: issuer,
+  autofill: true
+})
+if (updateResponse.result.meta.TransactionResult !== 'tesSUCCESS') {
+  const resultCode = updateResponse.result.meta.TransactionResult
+  console.warn(`Update failed with result code ${resultCode}.`)
+  await client.disconnect()
+  process.exit(1)
+}
+
+// Confirm the updated MPT Issuance entry
+console.log('\n=== Confirming the updated MPT Issuance in the validated ledger... ===')
+const updatedEntryResponse = await client.request({
+  command: 'ledger_entry',
+  mpt_issuance: issuanceId,
+  ledger_index: 'validated'
+})
+const updatedNode = updatedEntryResponse.result.node
+console.log('TransferFee:', updatedNode.TransferFee)
+console.log('ImmutableFlags:', updatedNode.ImmutableFlags)
+console.log('Decoded MPT metadata:\n', decodeMPTokenMetadata(updatedNode.MPTokenMetadata))
 
 // Disconnect from the client
 await client.disconnect()

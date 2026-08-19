@@ -47,6 +47,7 @@ Some special cases:
 - Signer lists created before the [MultiSignReserve amendment][] activated in April 2019 count as multiple objects. See also: [Signer Lists and Reserves](../../references/protocol/ledger-data/ledger-entry-types/signerlist.md#signer-lists-and-reserves).
 - An [Owner Directory](../../references/protocol/ledger-data/ledger-entry-types/directorynode.md) is a ledger entry that lists all objects related to an account, including all objects the account owns. However, the owner directory itself does not count towards the reserve.
 - Oracles count as one item for the owner reserve if they contain one to five `PriceData` objects, or two items if they contain six to ten `PriceData` objects.
+- Some ledger entries can be sponsored, meaning their owner reserve counts against a sponsoring account instead of the owner. A sponsored entry names its sponsor in a `Sponsor` field (or `HighSponsor` and `LowSponsor` for trust lines) and the sponsor's `SponsoringOwnerCount` tracks how many entries it covers. An account's base reserve can be sponsored separately, tracked by `SponsoringAccountCount`. See also: [Sponsored Fees and Reserves](sponsored-fees-and-reserves.md). {% amendment-disclaimer name="Sponsor" /%}
 
 ### Looking Up Reserves
 
@@ -59,7 +60,7 @@ Applications can look up the current base and incremental reserve values using t
 
 To determine the owner reserve of an account, multiply the incremental reserve by the number of objects the account owns. To look up the number of objects an account owns, call the [account_info method][] and take `account_data.OwnerCount`.
 
-To calculate an address's total reserve requirement, multiply `OwnerCount` by `reserve_inc_xrp`, then add `reserve_base_xrp`. [Here is a demonstration](../../tutorials/sample-apps/build-a-desktop-wallet-in-python.md#codeblock-17) of this calculation in Python.
+To calculate an address's total reserve requirement, multiply `OwnerCount` by `reserve_inc_xrp`, then add `reserve_base_xrp`. See also: {% repo-link path="_code-samples/calculate-reserves/" %}Code Sample: Calculate Reserves{% /repo-link %}.
 
 
 ## Going Below the Reserve Requirement

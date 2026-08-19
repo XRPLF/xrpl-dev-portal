@@ -11,7 +11,7 @@ txIcon: create
 
 # VaultCreate
 
-[[Source]](https://github.com/XRPLF/rippled/blob/release-3.1/src/xrpld/app/tx/detail/VaultCreate.cpp "Source")
+{% source-link path="src/libxrpl/tx/transactors/vault/VaultCreate.cpp" /%}
 
 Creates a new `Vault` ledger entry, an `MPTokenIssuance` ledger entry for the vault’s shares, and an `AccountRoot` for the vault’s [pseudo-account](../../../../concepts/accounts/pseudo-accounts.md).
 

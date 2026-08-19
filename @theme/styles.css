@@ -380,7 +380,32 @@ button[role="tab"].active {
   line-height: var(--md-table-line-height);
 }
 
+@media screen and (max-width: 959.9px) {
+  [data-component-name="Layout/PageLayout"] {
+    flex-direction: column-reverse;
+  }
+  [data-component-name="Sidebar/Sidebar"] {
+    display: block;
+    position: static;
+    height: auto;
+  }
+  #content {
+    width: auto;
+  }
+  [data-component-name="Menu/MenuContainer"] {
+    overscroll-behavior: auto;
+  }
+}
+
+:root {
+  --ai-assistant-button-bottom: 16px;
+  --ai-assistant-button-right: 71px; /* align w/ Osano cookie widget (mobile) */
+}
+
 @media screen and (min-width: 990px) {
+  :root {
+      --ai-assistant-button-right: 86px;
+  }
   [data-component-name="LanguagePicker/LanguagePicker"] {
     display: block;
   }

@@ -9,7 +9,7 @@ requiredAmendment: PermissionedDomains
 txIcon: create
 ---
 # PermissionedDomainSet
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/PermissionedDomainSet.cpp "ソース")
+{% source-link path="src/libxrpl/tx/transactors/permissioned_domain/PermissionedDomainSet.cpp" /%}
 
 [許可型ドメイン][]を作成するか、所有するドメインを変更します。
 

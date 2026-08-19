@@ -52,7 +52,7 @@ Running a permissioned DEX involves several steps:
 
 1. **[Select a credential issuer.](#select-a-credential-issuer)**
 2. **[Create a permissioned domain.](#create-a-permissioned-domain)**
-3. **[Use the domain ID in payments & offers.](#use-the-domain-id-in-payments-and-offers)**
+3. **[Use the domain ID in payments & offers.](#use-the-permissioned-dex-to-facilitate-payments-and-offers)**
 
 ### Select a credential issuer
 
@@ -76,7 +76,7 @@ If you run a credential issuing service, don't forget to issue yourself a creden
 A permissioned domain uses credentials to control who can access a permissioned DEX. As the owner of the permissioned domain, you control which credentials it accepts. A domain can accept one or several credentials, so that anyone who holds any of the specified credentials gains access. For more information, see:
 
 - [Permissioned Domains](../../concepts/tokens/decentralized-exchange/permissioned-domains.md)
-- [Create Permissioned Domains](../../tutorials/compliance-features/create-permissioned-domains-in-javascript.md)
+- [Manage Permissioned Domains](../../tutorials/compliance-features/manage-permissioned-domains.md)
 
 ### Use the permissioned DEX to facilitate payments and offers
 

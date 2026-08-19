@@ -1,5 +1,5 @@
 """
-Generate rippled release notes from GitHub commit history.
+Generate xrpld release notes from GitHub commit history.
 
 Usage (from repo root):
     python3 tools/generate-release-notes.py --from release-3.0 --to release-3.1 [--date 2026-03-24] [--output path/to/file.md]
@@ -8,41 +8,26 @@ Arguments:
     --from      (required) Base ref — must match exact tag or branch to compare from.
     --to        (required) Target ref — must match exact tag or branch to compare to.
     --date      (optional) Release date in YYYY-MM-DD format. Defaults to today.
-    --output    (optional) Output file path. Defaults to blog/<year>/rippled-<version>.md.
+    --output    (optional) Output file path. Defaults to blog/<year>/xrpld-<version>.md.
 
 Requires: gh CLI (authenticated)
 """
 
 import argparse
 import base64
+import hashlib
 import json
 import os
 import re
 import subprocess
 import sys
+import urllib.error
+import urllib.request
 from datetime import date, datetime
 
 
-# Emails to exclude from credits (Ripple employees not using @ripple.com).
-# Commits from @ripple.com addresses are already filtered automatically.
-EXCLUDED_EMAILS = {
-    "3maisons@gmail.com",                                   # Luc des Trois Maisons
-    "a1q123456@users.noreply.github.com",                   # Jingchen Wu
-    "bthomee@users.noreply.github.com",                     # Bart Thomee
-    "21219765+ckeshava@users.noreply.github.com",           # Chenna Keshava B S
-    "gregtatcam@users.noreply.github.com",                  # Gregory Tsipenyuk
-    "kuzzz99@gmail.com",                                    # Sergey Kuznetsov
-    "legleux@users.noreply.github.com",                     # Michael Legleux
-    "mathbunnyru@users.noreply.github.com",                 # Ayaz Salikhov
-    "mvadari@gmail.com",                                    # Mayukha Vadari
-    "115580134+oleks-rip@users.noreply.github.com",         # Oleksandr Pidskopnyi
-    "3397372+pratikmankawde@users.noreply.github.com",      # Pratik Mankawde
-    "35279399+shawnxie999@users.noreply.github.com",        # Shawn Xie
-    "5780819+Tapanito@users.noreply.github.com",            # Vito Tumas
-    "13349202+vlntb@users.noreply.github.com",              # Valentin Balaschenko
-    "129996061+vvysokikh1@users.noreply.github.com",        # Vladislav Vysokikh
-    "vvysokikh@gmail.com",                                  # Vladislav Vysokikh
-}
+# Repo root, so paths resolve correctly regardless of where the script is invoked from.
+REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 # Pre-compiled patterns for skipping version commits
@@ -52,6 +37,16 @@ SKIP_PATTERNS = [
     re.compile(r"bump version to", re.IGNORECASE),
     re.compile(r"^Merge tag ", re.IGNORECASE),
 ]
+
+
+# Patterns for normalizing commit titles when detecting cherry-pick duplicates.
+# Strips trailing "(#NNNN)" PR-number suffixes and conventional-commit prefixes.
+PR_NUM_RE = re.compile(r"\s*\(#\d+\)")
+CONV_COMMIT_RE = re.compile(
+    r"^(fix|feat|refactor|chore|docs|test|tests|ci|build|style|perf|revert|release|bugfix)"
+    r"(\([^)]*\))?\s*:\s*",
+    re.IGNORECASE,
+)
 
 
 # --- API helpers ---
@@ -164,34 +159,80 @@ def fetch_version_info(ref):
 
 
 def fetch_commits(from_ref, to_ref):
-    """Fetch all commits between two refs using the GitHub compare API."""
-    commits = []
-    page = 1
-    while True:
-        data = run_gh_rest(
-            f"repos/XRPLF/rippled/compare/{from_ref}...{to_ref}?per_page=250&page={page}"
-        )
-        batch = data.get("commits", [])
-        commits.extend(batch)
-        if len(batch) < 250:
-            break
-        page += 1
-    return commits
+    """Fetch commits between two refs, filtering out incoming cherry-pick duplicates."""
+
+    def key(c):
+        t = c["commit"]["message"].split("\n")[0]
+        t = PR_NUM_RE.sub("", t)
+        t = CONV_COMMIT_RE.sub("", t)
+        return re.sub(r"\s+", " ", t).strip().lower()
+
+    def paginate(base, head):
+        results, page = [], 1
+        while True:
+            data = run_gh_rest(
+                f"repos/XRPLF/rippled/compare/{base}...{head}?per_page=250&page={page}"
+            )
+            batch = data.get("commits", [])
+            results.extend(batch)
+            if len(batch) < 250:
+                break
+            page += 1
+        return results
+
+    incoming = paginate(from_ref, to_ref)
+    shipped = paginate(to_ref, from_ref)
+    incoming_keys = {key(c) for c in incoming}
+    shipped_keys = {key(c) for c in shipped}
+
+    before = len(incoming)
+    deduped = [c for c in incoming if key(c) not in shipped_keys]
+    dropped = before - len(deduped)
+    if dropped:
+        print(f"  Filtered {dropped} cherry-pick duplicates.")
+
+    # Surface backward-diff commits with no forward-diff match. These are
+    # either real release-branch originals or cherry-pick dupes that drifted
+    # enough to escape matching.
+    unmatched = [
+        c for c in shipped
+        if key(c) not in incoming_keys
+        and not should_skip(c["commit"]["message"].split("\n")[0])
+    ]
+    for c in unmatched:
+        c["_potential_dupe"] = True
+    if unmatched:
+        print(f"  Adding {len(unmatched)} unmatched {from_ref} commit(s) to draft "
+              f"flagged as [POTENTIAL DUPE — VERIFY].")
+    deduped.extend(unmatched)
+
+    return deduped
 
 
 def parse_features_macro(text):
     """Parse features.macro into {amendment_name: status_string} dict."""
     results = {}
+    # Anchor to line start (re.MULTILINE) so commented-out example lines like
+    # "// XRPL_FEATURE(Example, ...)" in the docs block aren't parsed as real amendments.
     for match in re.finditer(
-        r'XRPL_(FEATURE|FIX)\s*\(\s*(\w+)\s*,\s*Supported::(\w+)\s*,\s*VoteBehavior::(\w+)', text):
+        r'^XRPL_(FEATURE|FIX)\s*\(\s*(\w+)\s*,\s*Supported::(\w+)\s*,\s*VoteBehavior::(\w+)', text, re.MULTILINE):
         macro_type, name, supported, vote = match.groups()
         key = f"fix{name}" if macro_type == "FIX" else name
-        results[key] = f"{supported}, {vote}"
-    for match in re.finditer(r'XRPL_RETIRE(?:_(FEATURE|FIX))?\s*\(\s*(\w+)\s*\)', text):
+        results[key] = f"{supported}, {vote}".lower()
+    for match in re.finditer(r'^XRPL_RETIRE(?:_(FEATURE|FIX))?\s*\(\s*(\w+)\s*\)', text, re.MULTILINE):
         macro_type, name = match.groups()
         key = f"fix{name}" if macro_type == "FIX" else name
         results[key] = "retired"
     return results
+
+
+def is_supported_yes(status):
+    """True if a parsed status string is Supported::Yes (case-insensitive).
+
+    The macro uses `Supported::Yes` (capital Y); matching case-insensitively
+    keeps this robust to capitalization changes in features.macro.
+    """
+    return status.lower().startswith("yes")
 
 
 def fetch_amendment_diff(from_ref, to_ref):
@@ -214,22 +255,22 @@ def fetch_amendment_diff(from_ref, to_ref):
     changes = {}
     for name, to_status in to_amendments.items():
         if name not in from_amendments:
-            # New amendment — include only if Supported::yes
-            changes[name] = to_status.startswith("yes")
+            # New amendment — include only if Supported::Yes
+            changes[name] = is_supported_yes(to_status)
         elif from_amendments[name] != to_status:
             # Include if either old or new status involves yes (voting-ready)
             from_status = from_amendments[name]
-            changes[name] = from_status.startswith("yes") or to_status.startswith("yes")
+            changes[name] = is_supported_yes(from_status) or is_supported_yes(to_status)
 
-    # Removed amendments — include only if they were Supported::yes
+    # Removed amendments — include only if they were Supported::Yes
     for name in from_amendments:
         if name not in to_amendments:
-            changes[name] = from_amendments[name].startswith("yes")
+            changes[name] = is_supported_yes(from_amendments[name])
 
     # Unchanged amendments to also exclude (unreleased work)
     unchanged = sorted(
         name for name, to_status in to_amendments.items()
-        if name not in changes and to_status != "retired" and not to_status.startswith("yes")
+        if name not in changes and to_status != "retired" and not is_supported_yes(to_status)
     )
 
     return changes, unchanged
@@ -332,6 +373,39 @@ def fetch_prs_graphql(pr_numbers):
     return results
 
 
+def filter_to_ripple_members(logins, org="ripple"):
+    """Return the subset of `logins` that are members of ripple, batched via GraphQL.
+
+    Uses the authenticated viewer's privileges, so this part of the script probably won't
+    work for non-Ripple org members. In this case most Ripple org members will show up
+    in the credits section.
+    """
+    if not logins:
+        return set()
+
+    members = set()
+    batch_size = 50
+    target = org.lower()
+    logins = list(logins)
+
+    for i in range(0, len(logins), batch_size):
+        batch = logins[i:i + batch_size]
+        fragments = [
+            f'u{idx}: user(login: "{l}") {{ organizations(first: 20) {{ nodes {{ login }} }} }}'
+            for idx, l in enumerate(batch)
+        ]
+        data = run_gh_graphql("{ " + " ".join(fragments) + " }")
+        nodes = data.get("data") or {}
+        for idx, l in enumerate(batch):
+            user = nodes.get(f"u{idx}")
+            if not user:
+                continue
+            orgs = {n["login"].lower() for n in user.get("organizations", {}).get("nodes", [])}
+            if target in orgs:
+                members.add(l)
+    return members
+
+
 # --- Utilities ---
 
 def clean_pr_body(text):
@@ -365,6 +439,20 @@ def should_skip(title):
 def is_amendment(files):
     """Check if any file in the list is features.macro."""
     return any("features.macro" in f for f in files)
+
+
+def compute_sha256(url):
+    """Stream a package and return its SHA-256 hex digest. Returns "TODO" if the download fails."""
+    print(f"  Computing SHA-256 for {url} ...")
+    digest = hashlib.sha256()
+    try:
+        with urllib.request.urlopen(url, timeout=60) as resp:
+            for chunk in iter(lambda: resp.read(1 << 16), b""):
+                digest.update(chunk)
+    except (urllib.error.URLError, TimeoutError) as e:
+        print(f"  Warning: could not download {url} ({e}). Leaving SHA-256 as TODO.", file=sys.stderr)
+        return "TODO"
+    return digest.hexdigest()
 
 
 # --- Formatting ---
@@ -405,7 +493,7 @@ def format_uncategorized_entry(pr_number, title, labels, body, files=None, link_
     return "\n".join(parts)
 
 
-def generate_markdown(version, release_date, amendment_diff, amendment_unchanged, amendment_entries, entries, authors, version_commit):
+def generate_markdown(version, release_date, amendment_diff, amendment_unchanged, amendment_entries, entries, authors, version_commit, to_ref, rpm_url, rpm_sha, deb_url, deb_sha):
     """Generate the full markdown release notes."""
     year = release_date.split("-")[0]
     parts = []
@@ -416,16 +504,16 @@ date: "{release_date}"
 template: '../../@theme/templates/blogpost'
 seo:
     title: Introducing XRP Ledger version {version}
-    description: rippled version {version} is now available.
+    description: xrpld version {version} is now available.
 labels:
-    - rippled Release Notes
+    - xrpld Release Notes
 markdown:
     editPage:
         hide: true
 ---
 # Introducing XRP Ledger version {version}
 
-Version {version} of `rippled`, the reference server implementation of the XRP Ledger protocol, is now available.
+Version {version} of `xrpld`, the reference server implementation of the XRP Ledger protocol, is now available.
 
 
 ## Action Required
@@ -435,14 +523,14 @@ If you run an XRP Ledger server, upgrade to version {version} as soon as possibl
 
 ## Install / Upgrade
 
-On supported platforms, see the [instructions on installing or updating `rippled`](../../docs/infrastructure/installation/index.md).
+On supported platforms, see the [instructions on installing or updating `xrpld`](../../docs/infrastructure/installation/index.md).
 
 | Package | SHA-256 |
 |:--------|:--------|
-| [RPM for Red Hat / CentOS (x86-64)](https://repos.ripple.com/repos/rippled-rpm/stable/rippled-{version}-1.el9.x86_64.rpm) | `TODO` |
-| [DEB for Ubuntu / Debian (x86-64)](https://repos.ripple.com/repos/rippled-deb/pool/stable/rippled_{version}-1_amd64.deb) | `TODO` |
+| [RPM for Red Hat / CentOS (x86-64)]({rpm_url}) | `{rpm_sha}` |
+| [DEB for Ubuntu / Debian (x86-64)]({deb_url}) | `{deb_sha}` |
 
-For other platforms, please [build from source](https://github.com/XRPLF/rippled/blob/master/BUILD.md). The most recent commit in the git log should be the change setting the version:
+For other platforms, please [build from source](https://github.com/XRPLF/rippled/blob/{to_ref}/BUILD.md). The most recent commit in the git log should be the change setting the version:
 
 ```text
 {version_commit}
@@ -489,16 +577,16 @@ For other platforms, please [build from source](https://github.com/XRPLF/rippled
     for author in sorted(authors):
         parts.append(f"- {author}")
 
-    parts.append("""
+    parts.append(f"""
 
 ## Bug Bounties and Responsible Disclosures
 
-We welcome reviews of the `rippled` code and urge researchers to responsibly disclose any issues they may find.
+We welcome reviews of the `xrpld` code and urge researchers to responsibly disclose any issues they may find.
 
 For more information, see:
 
 - [Ripple's Bug Bounty Program](https://ripple.com/legal/bug-bounty/)
-- [`rippled` Security Policy](https://github.com/XRPLF/rippled/blob/develop/SECURITY.md)
+- [`xrpld` Security Policy](https://github.com/XRPLF/rippled/blob/{to_ref}/SECURITY.md)
 """)
 
     # Unsorted entries with full context (after all published sections)
@@ -512,11 +600,11 @@ For more information, see:
 # --- Main ---
 
 def main():
-    parser = argparse.ArgumentParser(description="Generate rippled release notes")
+    parser = argparse.ArgumentParser(description="Generate xrpld release notes")
     parser.add_argument("--from", dest="from_ref", required=True, help="Base ref (tag or branch)")
     parser.add_argument("--to", dest="to_ref", required=True, help="Target ref (tag or branch)")
     parser.add_argument("--date", help="Release date (YYYY-MM-DD). Defaults to today.")
-    parser.add_argument("--output", help="Output file path (default: blog/<year>/rippled-<version>.md)")
+    parser.add_argument("--output", help="Output file path (default: blog/<year>/xrpld-<version>.md)")
     args = parser.parse_args()
 
     args.date = args.date or date.today().isoformat()
@@ -531,7 +619,11 @@ def main():
     print(f"Version: {version}")
 
     year = args.date.split("-")[0]
-    output_path = args.output or f"blog/{year}/rippled-{version}.md"
+    # Resolve --output relative to REPO_ROOT (not CWD). Absolute paths pass through unchanged.
+    if args.output:
+        output_path = args.output if os.path.isabs(args.output) else os.path.join(REPO_ROOT, args.output)
+    else:
+        output_path = os.path.join(REPO_ROOT, "blog", year, f"xrpld-{version}.md")
 
     print(f"Fetching commits: {args.from_ref}...{args.to_ref}")
     commits = fetch_commits(args.from_ref, args.to_ref)
@@ -542,7 +634,16 @@ def main():
     pr_shas = {}       # PR/issue number → commit SHA (for file lookups on Issues)
     pr_bodies = {}     # PR/issue number → commit body (for fallback descriptions)
     orphan_commits = []  # Commits with no PR/Issues link
-    authors = set()
+    # Potential dupe commits are kept in their own parallel buckets so they
+    # don't collide with real entries by PR number. They go through the same
+    # PR-enrichment pipeline to give reviewers full side-by-side context.
+    dupe_pr_numbers = {}
+    dupe_pr_shas = {}
+    dupe_pr_bodies = {}
+    dupe_orphan_commits = []
+    # Contributors are collected here and filtered against the Ripple org
+    contributor_logins = set()
+    contributors_without_login = set()
 
     for commit in commits:
         full_message = commit["commit"]["message"]
@@ -550,20 +651,30 @@ def main():
         body = "\n".join(full_message.split("\n")[1:]).strip()
         sha = commit["sha"]
         author = commit["commit"]["author"]["name"]
-        email = commit["commit"]["author"].get("email", "")
 
-        # Skip Ripple employees from credits
-        login = (commit.get("author") or {}).get("login")
-        if not email.lower().endswith("@ripple.com") and email not in EXCLUDED_EMAILS:
-            if login:
-                authors.add(f"@{login}")
-            else:
-                authors.add(author)
+        # Collect contributors for the credits section. Dupe commits and bots are skipped.
+        if not commit.get("_potential_dupe"):
+            github_user = commit.get("author") or {}
+            if github_user.get("type") != "Bot":
+                login = github_user.get("login")
+                if login:
+                    contributor_logins.add(login)
+                else:
+                    contributors_without_login.add(author)
 
         if should_skip(message):
             continue
 
         pr_number = extract_pr_number(message)
+        if commit.get("_potential_dupe"):
+            if pr_number:
+                dupe_pr_numbers[pr_number] = message
+                dupe_pr_shas[pr_number] = sha
+                dupe_pr_bodies[pr_number] = body
+            else:
+                dupe_orphan_commits.append({"sha": sha, "message": message, "body": body})
+            continue
+
         if pr_number:
             pr_numbers[pr_number] = message
             pr_shas[pr_number] = sha
@@ -586,12 +697,14 @@ def main():
 
     print(f"Building changelog entries...")
 
-    # Fetch all PR details in batches via GraphQL
-    pr_details = fetch_prs_graphql(list(pr_numbers.keys()))
+    # Fetch all PR details in batches via GraphQL.
+    all_pr_numbers = list(set(pr_numbers.keys()) | set(dupe_pr_numbers.keys()))
+    pr_details = fetch_prs_graphql(all_pr_numbers)
 
     # Build entries, sorting amendments automatically
     amendment_entries = []
     entries = []
+    DUPE_MARKER = "[POTENTIAL DUPE — VERIFY]"
     for pr_number, commit_msg in pr_numbers.items():
         pr_data = pr_details.get(pr_number)
 
@@ -638,8 +751,68 @@ def main():
             entry = format_commit_entry(sha, orphan["message"], orphan["body"], files)
             entries.append(entry)
 
+    # Build entries for potential dupes
+    for pr_number, commit_msg in dupe_pr_numbers.items():
+        sha = dupe_pr_shas[pr_number]
+        pr_data = pr_details.get(pr_number)
+        print(f"  Building potential-dupe entry for #{pr_number} ({sha[:7]})...")
+
+        if pr_data:
+            title = f"{DUPE_MARKER} {pr_data['title']}"
+            body = pr_data.get("body", "")
+            labels = pr_data.get("labels", [])
+            files = pr_data.get("files", [])
+            link_type = pr_data.get("type", "pull")
+            if not files:
+                files = fetch_commit_files(sha)
+            if is_amendment(files) and amendment_diff:
+                entry = format_uncategorized_entry(pr_number, title, labels, body, link_type=link_type)
+                amendment_entries.append(entry)
+            else:
+                entry = format_uncategorized_entry(pr_number, title, labels, body, files, link_type)
+                entries.append(entry)
+        else:
+            # PR/Issue lookup failed — fall back to commit-only entry
+            files = fetch_commit_files(sha)
+            title = f"{DUPE_MARKER} {commit_msg}"
+            if is_amendment(files) and amendment_diff:
+                entry = format_commit_entry(sha, title, dupe_pr_bodies[pr_number])
+                amendment_entries.append(entry)
+            else:
+                entry = format_commit_entry(sha, title, dupe_pr_bodies[pr_number], files)
+                entries.append(entry)
+
+    # Potential dupe orphans (no PR link at all)
+    for orphan in dupe_orphan_commits:
+        sha = orphan["sha"]
+        print(f"  Building potential-dupe orphan entry for {sha[:7]}...")
+        files = fetch_commit_files(sha)
+        title = f"{DUPE_MARKER} {orphan['message']}"
+        if is_amendment(files) and amendment_diff:
+            entry = format_commit_entry(sha, title, orphan["body"])
+            amendment_entries.append(entry)
+        else:
+            entry = format_commit_entry(sha, title, orphan["body"], files)
+            entries.append(entry)
+
+    # Build the credits list.
+    print(f"Checking Ripple org membership for {len(contributor_logins)} contributor login(s)...")
+    ripple_members = filter_to_ripple_members(contributor_logins)
+    authors = set()
+    for login in contributor_logins:
+        if login not in ripple_members:
+            authors.add(f"@{login}")
+    authors |= contributors_without_login
+
+    # Compute release packages SHA-256 checksums.
+    rpm_url = f"https://repos.ripple.com/repos/rippled-rpm/stable/xrpld-{version}-1.el9.x86_64.rpm"
+    deb_url = f"https://repos.ripple.com/repos/rippled-deb/pool/stable/xrpld_{version}-1_amd64.deb"
+    print("Computing package checksums...")
+    rpm_sha = compute_sha256(rpm_url)
+    deb_sha = compute_sha256(deb_url)
+
     # Generate markdown
-    markdown = generate_markdown(version, args.date, amendment_diff, amendment_unchanged, amendment_entries, entries, authors, version_commit)
+    markdown = generate_markdown(version, args.date, amendment_diff, amendment_unchanged, amendment_entries, entries, authors, version_commit, args.to_ref, rpm_url, rpm_sha, deb_url, deb_sha)
 
     # Write output
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
@@ -648,11 +821,16 @@ def main():
 
     print(f"\nRelease notes written to: {output_path}")
 
-    # Update blog/sidebars.yaml
-    sidebars_path = "blog/sidebars.yaml"
-    # Derive sidebar path and year from actual output path
-    relative_path = output_path.removeprefix("blog/")
-    sidebar_year = relative_path.split("/")[0]
+    # Update blog/sidebars.yaml only if the output actually lives under blog/.
+    # Custom --output paths outside blog/ are skipped.
+    sidebars_path = os.path.join(REPO_ROOT, "blog", "sidebars.yaml")
+    blog_dir = os.path.join(REPO_ROOT, "blog")
+    abs_output = os.path.abspath(output_path)
+    if not abs_output.startswith(blog_dir + os.sep):
+        print(f"Output {output_path} is outside {blog_dir} — skipping sidebar update.")
+        return
+    relative_path = os.path.relpath(abs_output, blog_dir)
+    sidebar_year = relative_path.split(os.sep)[0]
     new_entry = f"        - page: {relative_path}"
     try:
         with open(sidebars_path, "r") as f:

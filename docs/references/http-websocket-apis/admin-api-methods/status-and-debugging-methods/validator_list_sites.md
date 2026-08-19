@@ -6,7 +6,7 @@ labels:
     - Blockchain
 ---
 # validator_list_sites
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/ValidatorListSites.cpp "Source")
+{% source-link path="src/xrpld/rpc/handlers/admin/status/ValidatorListSites.cpp" /%}
 
 The `validator_list_sites` command returns status information of sites serving validator lists.
 
@@ -40,7 +40,7 @@ An example of the request format:
 {% tab label="Commandline" %}
 ```sh
 #Syntax: validator_list_sites
-rippled validator_list_sites
+xrpld validator_list_sites
 ```
 {% /tab %}
 
@@ -97,7 +97,7 @@ An example of a successful response:
 
 {% tab label="Commandline" %}
 ```json
-Loading: "/etc/rippled.cfg"
+Loading: "/etc/xrpld.cfg"
 Connecting to 127.0.0.1:5005
 
 {
@@ -141,7 +141,7 @@ The `last_refresh_status` field can have the following values:
 |:----------------------|:-----------------------------------------------------|
 | `accepted`            | The site provided a valid list, which your server is now using. |
 | `same_sequence`       | The site provided a list with the same sequence number as your existing list, so your server continued using its existing list. |
-| `unsupported_version` | The site provided a list, but your server does not support the list format version number in the list. You might need to [update `rippled`](../../../../infrastructure/installation/index.md) to a newer software version. |
+| `unsupported_version` | The site provided a list, but your server does not support the list format version number in the list. You might need to [update `xrpld`](../../../../infrastructure/installation/index.md) to a newer software version. |
 | `untrusted`           | The site provided a list from the site that is signed by a cryptographic key pair your server is not configured to trust. You may want to check for typos in your `validators.txt` file and check to see if the list publisher changed their cryptographic keys. |
 | `stale`               | The site provided a list with a lower sequence number than the list your server is already using. |
 | `invalid`             | The site provided a list or signature that was not validly formed. |

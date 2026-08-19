@@ -7,7 +7,7 @@ labels:
   - トランザクション送信
 ---
 # transaction_entry
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/TransactionEntry.cpp "Source")
+{% source-link path="src/xrpld/rpc/handlers/transaction/TransactionEntry.cpp" /%}
 
 `transaction_entry`メソッドは、特定のレジャーバージョンから1つのトランザクションに関する情報を取得します。（これに対して、[txメソッド][]はすべてのレジャーから指定のトランザクションを検索します。txメソッドの使用をお勧めします。）
 
@@ -45,7 +45,7 @@ labels:
 {% tab label="コマンドライン" %}
 ```sh
 #Syntax: transaction_entry transaction_hash ledger_index|ledger_hash
-rippled transaction_entry E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDACFCD1698C7 348734
+xrpld transaction_entry E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDACFCD1698C7 348734
 ```
 {% /tab %}
 

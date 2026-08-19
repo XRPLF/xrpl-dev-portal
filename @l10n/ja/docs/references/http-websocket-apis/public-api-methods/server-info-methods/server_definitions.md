@@ -2,15 +2,15 @@
 html: server_definitions.html
 parent: server-info-methods.html
 seo:
-    description: 実行中の`rippled`インスタンスから生成されるSDK互換の`definitions.json`を取得します。
+    description: 実行中の`xrpld`インスタンスから生成されるSDK互換の`definitions.json`を取得します。
 labels:
   - コアサーバ
 ---
 # server_definitions
 
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/ServerInfo.cpp#L43 "ソース")
+{% source-link path="src/xrpld/rpc/handlers/server_info/ServerDefinitions.cpp" /%}
 
-`server_definitions`コマンドは実行中の`rippled`インスタンスから生成されたSDK互換の`definitions.json`を返します。これを使用してネットワーク上のノードにアクセスし、そのバイナリデータをシリアライズ/デシリアライズするために必要な定義を受け取ることができます。
+`server_definitions`コマンドは実行中の`xrpld`インスタンスから生成されたSDK互換の`definitions.json`を返します。これを使用してネットワーク上のノードにアクセスし、そのバイナリデータをシリアライズ/デシリアライズするために必要な定義を受け取ることができます。
 
 
 ## リクエストのフォーマット

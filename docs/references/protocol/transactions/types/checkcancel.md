@@ -8,7 +8,7 @@ txIcon: cancel
 requiredAmendment: Checks
 ---
 # CheckCancel
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/CancelCheck.cpp "Source")
+{% source-link path="src/libxrpl/tx/transactors/check/CheckCancel.cpp" /%}
 
 Cancels an unredeemed [check](../../../../concepts/payment-types/checks.md), removing it from the ledger without sending any money. The source or the destination of the check can cancel a check at any time. If the check has expired, any address can cancel it.
 
@@ -35,6 +35,7 @@ Cancels an unredeemed [check](../../../../concepts/payment-types/checks.md), rem
 
 ## Error Cases
 
+- If the `CheckID` is an all-zero value, the transaction fails with the result `temMALFORMED`. Previously, the transaction would fail with the result `tecNO_ENTRY`. {% amendment-disclaimer name="fixCleanup3_3_0" mode="updated" /%}
 - If the object identified by the `CheckID` does not exist or is not a Check, the transaction fails with the result `tecNO_ENTRY`.
 - If the Check is not expired and the sender of the CheckCancel transaction is not the source or destination of the Check, the transaction fails with the result `tecNO_PERMISSION`.
 

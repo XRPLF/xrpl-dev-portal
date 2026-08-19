@@ -90,10 +90,36 @@ $whats-new-footers: (
 
 // Contribution Card - community contribution with meta links
 .page-tutorials .tutorial-cards .contribution-card {
+  // Unlike TutorialCard, the Contribution card isn't a link, so reset the inherited
+  // pointer cursor.
+  cursor: default;
+
   .contribution-header {
     display: flex;
     align-items: center;
     gap: 0.6rem;
+  }
+
+  // Drop the body's own padding and hand it to the link, so the link fills the
+  // entire body box (padding included) and clicks anywhere in the body navigate.
+  .card-body {
+    padding: 0;
+    display: flex;
+  }
+
+  .card-body-link {
+    flex: 1;
+    display: block;
+    padding: 1rem 1.5rem;
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+      color: inherit;
+      text-decoration: none;
+    }
   }
 
   .contribution-icon {
@@ -124,6 +150,7 @@ $whats-new-footers: (
       gap: 0.35rem;
       color: $gray-300;
       text-decoration: none;
+      cursor: pointer;
       transition: color 0.15s ease;
 
       .fa {
@@ -163,6 +190,114 @@ $whats-new-footers: (
       color: $gray-500;
     }
   }
+}
+
+// Tabbed section (used by Sample Apps to split xrpl.org vs. community)
+.page-tutorials .tutorial-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  width: 100%;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid $gray-700;
+
+  .tutorial-tab {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border: none;
+    background-color: transparent;
+    color: $gray-300;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: -1px;
+    border-bottom: 3px solid transparent;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: color 0.15s ease, border-color 0.15s ease;
+    position: relative;
+
+    &:hover {
+      color: $white;
+      border-bottom-color: rgba($blue-purple-500, 0.4);
+    }
+
+    &:focus-visible {
+      outline: 2px solid $blue-purple-500;
+      outline-offset: -2px;
+      color: $white;
+    }
+
+    &.is-active {
+      color: $white;
+      border-bottom-color: $blue-purple-500;
+      font-weight: 600;
+    }
+
+    .tutorial-tab-count {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 1.5rem;
+      padding: 0 0.45rem;
+      height: 1.35rem;
+      font-size: 0.72rem;
+      font-weight: 700;
+      border-radius: 100px;
+      background-color: rgba($gray-500, 0.3);
+      color: $gray-200;
+    }
+
+    &.is-active .tutorial-tab-count {
+      background-color: rgba($blue-purple-500, 0.25);
+      color: $white;
+    }
+  }
+}
+
+.page-tutorials .tutorial-tab-description {
+  width: 100%;
+  margin: -0.5rem 0 1.5rem;
+  max-width: 720px;
+  color: $gray-200;
+}
+
+// Light mode: tabs
+.light .page-tutorials .tutorial-tabs {
+  border-bottom-color: $gray-300;
+
+  .tutorial-tab {
+    color: $gray-700;
+
+    &:hover {
+      color: $blue-purple-600;
+      border-bottom-color: rgba($blue-purple-500, 0.4);
+    }
+
+    &:focus-visible {
+      outline-color: $blue-purple-600;
+      color: $blue-purple-600;
+    }
+
+    &.is-active {
+      color: $blue-purple-600;
+      border-bottom-color: $blue-purple-500;
+    }
+
+    .tutorial-tab-count {
+      background-color: rgba($gray-500, 0.15);
+      color: $gray-700;
+    }
+
+    &.is-active .tutorial-tab-count {
+      background-color: rgba($blue-purple-500, 0.15);
+      color: $blue-purple-700;
+    }
+  }
+}
+
+.light .page-tutorials .tutorial-tab-description {
+  color: $gray-700;
 }
 
 // Tutorial category section spacing

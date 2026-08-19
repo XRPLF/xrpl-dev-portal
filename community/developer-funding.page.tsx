@@ -418,13 +418,6 @@ export default function Funding() {
             </div>
           </div>
         </section>
-        <div className="position-relative d-none-sm">
-          <img
-            alt="orange waves"
-            src={require("../static/img/backgrounds/funding-orange.svg")}
-            id="funding-orange"
-          />
-        </div>
       </div>
     </div>
   );

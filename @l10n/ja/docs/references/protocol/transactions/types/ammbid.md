@@ -8,7 +8,7 @@ requiredAmendment: AMM
 txIcon: modify
 ---
 # AMMBid
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/AMMBid.cpp "Source")
+{% source-link path="src/libxrpl/tx/transactors/dex/AMMBid.cpp" /%}
 
 {% amendment-disclaimer name="AMM" /%}
 

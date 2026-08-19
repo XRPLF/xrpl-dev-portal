@@ -5,7 +5,7 @@ labels:
   - Decentralized Exchange
 ---
 # Oracle
-[[Source]](https://github.com/XRPLF/rippled/blob/f64cf9187affd69650907d0d92e097eb29693945/include/xrpl/protocol/detail/ledger_entries.macro#L385-L395 "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/a5d238e7d4fa6ef2b539b759d58744d0a1c33c0c/include/xrpl/protocol/detail/ledger_entries.macro#L422-L433 "Source")
 
 An `Oracle` ledger entry holds data associated with a single [price oracle](../../../../concepts/decentralized-storage/price-oracles.md), which can store information on up to 10 asset pairs. You can create or modify a price oracle with an [OracleSet transaction][].
 
@@ -77,7 +77,7 @@ The ID of an `Oracle` object is the [SHA-512Half][] of the following values, con
 
 ## Currency Internal Format
 
-The `Currency` field type contains 160 bits of arbitrary data representing a currency or asset code. If the data matches the XRPL's standard format for [currency codes][], the API displays it as a string such as `"USD"`; otherwise, it displays as 40 characters of hexadecimal. The following JSON example represents the `912810RR9/USD` trading pair. The `BaseAsset` is a CUSIP code `912810RR9` represented as a hexadecimal string, and the `QuoteAsset` is a standard `USD` currency code:
+The `Currency` field type contains 160 bits of arbitrary data representing a currency or asset code. If the data matches the XRPL's standard format for [currency codes][Currency Code], the API displays it as a string such as `"USD"`; otherwise, it displays as 40 characters of hexadecimal. The following JSON example represents the `912810RR9/USD` trading pair. The `BaseAsset` is a CUSIP code `912810RR9` represented as a hexadecimal string, and the `QuoteAsset` is a standard `USD` currency code:
 
 ```json
 {

@@ -195,7 +195,7 @@ send_reliable_submission(custom_tx, client, wallet)
 ### Considerations
 
 - **Testing**: Utilize the XRPL Testnet or Devnet for testing new transaction types.
-- **Updates**: Regularly update your `rippled` and XRPL library clones to include the latest features and fixes.
+- **Updates**: Regularly update your `xrpld` and XRPL library clones to include the latest features and fixes.
 - **Custom Types and Serialization**: If your transaction involves new data structures, ensure they are correctly defined and serialized according to [XRPL standards](../../../references/protocol/transactions/index.md).
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

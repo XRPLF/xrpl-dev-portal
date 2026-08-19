@@ -16,7 +16,7 @@ The bridge between the locking chain and the issuing chain includes the followin
 * Witness servers that monitor transactions on the bridge. You can choose one or more witness servers. 
 * Fee for witness servers for their service.
 
-Anyone can run a witness server. However, the burden is on the participants of the issuing chain to evaluate the reliability of witness servers. If you run a witness server, you must also run a `rippled` node and sync it to the chain the witness server needs access to.
+Anyone can run a witness server. However, the burden is on the participants of the issuing chain to evaluate the reliability of witness servers. If you run a witness server, you must also run an `xrpld` node and sync it to the chain the witness server needs access to.
 
 {% admonition type="info" name="Note" %}Issuing chains may choose to configure a bridge with only one witness server initially and run the witness server itself. This strategy is helpful in the initial period, when the issuing chain hasn't established itself yet in the marketplace.{% /admonition %}
 
@@ -104,7 +104,7 @@ The witness server takes a JSON configuration file, specified using the `--conf`
 
 | Field Name      | JSON Type | Required? | Description |
 |-----------------|-----------|-----------|-------------|
-| `Endpoint`      | Object    | Yes       | The websocket endpoint of a `rippled` node synced with the chain. **Note:** The same person needs to control the `rippled` node and witness server. |
+| `Endpoint`      | Object    | Yes       | The websocket endpoint of an `xrpld` node synced with the chain. **Note:** The same person needs to control the `xrpld` node and witness server. |
 | `TxnSubmit`     | Object    | Yes       | The parameters for transaction submission on the chain. |
 | `RewardAccount` | String    | Yes       | The account that should receive the witness's share of the `SignatureReward` on the chain. |
 
@@ -113,7 +113,7 @@ The witness server takes a JSON configuration file, specified using the `--conf`
 
 | Field Name | JSON Type | Required? | Description |
 |------------|-----------|-----------|-------------|
-| `Host`     | String    | Yes       | The IP address of the `rippled` node. **Note:** This accepts an IPv4 address or URL. |
+| `Host`     | String    | Yes       | The IP address of the `xrpld` node. **Note:** This accepts an IPv4 address or URL. |
 | `Port`     | String    | Yes       | The port used for the websocket endpoint. |
 
 

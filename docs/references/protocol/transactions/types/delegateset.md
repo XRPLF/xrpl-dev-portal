@@ -6,15 +6,15 @@ labels:
   - Permissions
   - Delegate
 status: not_enabled
-requiredAmendment: PermissionDelegation
+requiredAmendment: PermissionDelegationV1_1
 txIcon: modify
 ---
 # DelegateSet
-[[Source]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/app/tx/detail/DelegateSet.cpp "Source")
+{% source-link path="src/libxrpl/tx/transactors/delegate/DelegateSet.cpp" /%}
 
 [Delegate permissions](/docs/concepts/accounts/permission-delegation) to another account to send transactions on your behalf. This transaction type can grant, change, or revoke permissions; it creates, modifies, or deletes a [Delegate ledger entry][] accordingly.
 
-{% amendment-disclaimer name="PermissionDelegation" /%}
+{% amendment-disclaimer name="PermissionDelegationV1_1" /%}
 
 ## Example {% $frontmatter.seo.title %} JSON
 
@@ -44,9 +44,9 @@ txIcon: modify
 | Field         | Required? | JSON Type            | Internal Type | Description |
 |:--------------|-----------|----------------------|---------------|-------------|
 | `Authorize`   | Yes       | String - [Address][] | AccountID     | The account being granted permissions, also called the _delegate_. |
-| `Permissions` | Yes       | Array                | Array         | A list of up to 10 [Permission objects](#permission-objects) each specifying a different permission granted to the delegate. The delegate's permissions are updated to match this set of permissions exactly. To revoke all permissions, use an empty array. |
+| `Permissions` | Yes       | Array                | Array         | A list of up to 10 [Permission objects](#permission-objects) each specifying a different permission granted to the delegate. The delegate's permissions are updated to match this set of permissions exactly. To revoke all permissions, use an empty array; this is only valid when a [Delegate ledger entry][] already exists for the delegate. |
 
-If a [Delegate ledger entry][] does not exist to record the granted permissions, this transaction creates one. If it already exists, the transaction updates the set of permissions to match the list in the transaction: any permissions not listed are revoked. If all permissions are revoked, the transaction deletes the Delegate ledger entry.
+If a [Delegate ledger entry][] does not exist to record the granted permissions, this transaction creates one. If it already exists, the transaction updates the set of permissions to match the list in the transaction: any permissions not listed are revoked. If all permissions are revoked, the transaction deletes the Delegate ledger entry. An empty `Permissions` list is only valid for deleting an existing Delegate ledger entry; if no such entry exists, the transaction fails with `tecNO_ENTRY`.
 
 {% admonition type="success" name="Tip" %}
 If you want to delegate more than 10 permissions, consider using [multi-signing](/docs/concepts/accounts/multi-signing.md) instead.
@@ -67,13 +67,12 @@ Besides errors that can occur for all transactions, {% $frontmatter.seo.title %}
 
 | Error Code                | Description |
 |:--------------------------|:------------|
-| `tecDIR_FULL`             | The sender owns too many items in the ledger already.<br>This error is effectively impossible to receive if {% amendment-disclaimer name="fixDirectoryLimit" compact=true /%} is enabled. |
-| `tecINSUFFICIENT_RESERVE` | The sender does not have enough XRP to meet the [reserve requirement](/docs/concepts/accounts/reserves.md) of creating a new Delegate ledger entry. |
-| `tecNO_PERMISSION`        | At least one permission in the `Permissions` list is not delegatable. See [Permission Values](../../data-types/permission-values.md) for which permissions are not delegatable. |
+| `tecNO_ENTRY`             | The `Permissions` list is empty but no [Delegate ledger entry][] exists for the delegate. An empty list is only valid for deleting an existing entry. |
 | `tecNO_TARGET`            | The account specified in the `Authorize` field does not exist in the ledger. |
+| `tecPSEUDO_ACCOUNT`       | The `Authorize` account is a [pseudo-account](/docs/concepts/accounts/pseudo-accounts.md). |
 | `temARRAY_TOO_LARGE`      | The `Permissions` list is too large. It cannot contain more than 10 entries. |
-| `temDISABLED`             | The [Permission Delegation amendment][] is not enabled. |
-| `temMALFORMED`            | The transaction was invalid. For example, the `Authorize` account is the same as the sender of the transaction, the `Permissions` list contains duplicate entries, or one of the permissions in the list is not a valid permission. |
+| `temMALFORMED`            | The transaction was invalid. For example:<ul><li>The `Authorize` account is the same as the sender of the transaction</li><li>The `Permissions` list contains duplicate entries</li><li>One of the permissions can't be delegated. See: [List of Non-Delegable Permissions](../../data-types/permission-values.md#list-of-non-delegable-permissions).</li></ul> |
+| `temBAD_SIGNER`           | `Delegate` is the same as `Account`. |
 
 ## See Also
 

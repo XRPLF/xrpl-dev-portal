@@ -105,7 +105,7 @@ With {% amendment-disclaimer name="TokenEscrow" compact=true /%}, escrows can se
 
 ### 6. Display information about the escrows
 
-Each entry in the list you built earlier should be an [Escrow ledger entry][] sent either to or from the account whose address you specified when looking them up. Use the fields of those objects to display more information about the escrows.
+Each entry in the list you built earlier should be an [Escrow entry][] sent either to or from the account whose address you specified when looking them up. Use the fields of those objects to display more information about the escrows.
 
 For the `FinishAfter` (maturity time) and `CancelAfter` (expiration time) fields, compare them to the official close time of the most recently validated ledger to see if the escrow has matured or expired, respectively. These fields are formatted natively as [seconds since the Ripple Epoch][], so be sure to convert them to a more human-readable format for display.
 

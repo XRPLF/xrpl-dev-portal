@@ -54,7 +54,7 @@ If your PR is not yet ready to be merged, [mark it as a draft](https://github.bl
 
 ## Redocly Setup
 
-The portal is built using Redocly Realm, which is currently in closed beta. Installing it for local development requires Node.js (version 20 recommended) and NPM.
+The portal is built using Redocly Realm, which is currently in closed beta. Installing it for local development requires Node.js (version 22 or later) and NPM. Earlier versions, including Node.js 20, fail at startup because Realm relies on `Promise.withResolvers`, which is only available in Node.js 22+.
 
 You can install Realm and other necessary dependencies using NPM from the repository top:
 
@@ -392,6 +392,22 @@ renders as
     "Destination": standbyDestinationField.value
   })
 ```
+
+### Commandline Examples
+
+When creating commands to run in a terminal, omit any shell prompt prefixes like `$` or `#`. Bare commands are easier to copy and paste. For example, write:
+
+```sh
+xrpld server_info
+```
+
+instead of:
+
+```sh
+$ xrpld server_info
+```
+
+If a code block shows both a command and its output, add the `$` prefix to each command so readers can distinguish between the input and output. Leave the output unprefixed.
 
 ## Markdoc Tags
 

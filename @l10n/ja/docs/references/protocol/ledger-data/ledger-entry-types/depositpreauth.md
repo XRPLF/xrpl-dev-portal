@@ -7,7 +7,7 @@ labels:
   - セキュリティ
 ---
 # DepositPreauth
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp#L172-L178 "Source")
+{% source-link path="src/libxrpl/protocol/LedgerFormats.cpp#L172-L178" /%}
 
 `DepositPreauth`エントリは、1つのアカウントからの事前承認を追跡します。常に[DepositPreauthトランザクション][]を送信することで事前承認を作成できますが、[Deposit Authorization](../../../../concepts/accounts/depositauth.md)を使用していない限り、効果はありません。
 

@@ -2,7 +2,7 @@
 html: ledgers.html
 parent: concepts.html
 seo:
-    description: XRP Ledgerは、rippledによって内部データベースに保持されている一連の個別レジャー(レジャーバージョン)で構成されています。これらのレジャーの構造と内容について説明します。
+    description: XRP Ledgerは、xrpldによって内部データベースに保持されている一連の個別レジャー(レジャーバージョン)で構成されています。これらのレジャーの構造と内容について説明します。
 labels:
   - ブロックチェーン
   - データ保持

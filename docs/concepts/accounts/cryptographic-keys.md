@@ -19,7 +19,7 @@ To make a digital signature, you use a cryptographic key pair associated with th
 
 Many [client libraries](../../references/client-libraries.md) and applications can generate a key pair suitable for use with the XRP Ledger. However, you should only use key pairs that were generated with devices and software you trust. Compromised applications can expose your secret to malicious users who can then send transactions from your account later.
 
-Note: Different tools have different defaults. Many client libraries (such as xrpl.js) use Ed25519 as the default cryptographic algorithm, but `rippled`'s [wallet_propose](../../references/http-websocket-apis/admin-api-methods/key-generation-methods/wallet_propose.md) admin RPC command uses secp256k1 as the default. This means that you may get a different address if you instantiate a wallet from the same seed using a different tool, unless you specify the algorithm explicitly.
+Note: Different tools have different defaults. Many client libraries (such as xrpl.js) use Ed25519 as the default cryptographic algorithm, but `xrpld`'s [wallet_propose](../../references/http-websocket-apis/admin-api-methods/key-generation-methods/wallet_propose.md) admin RPC command uses secp256k1 as the default. This means that you may get a different address if you instantiate a wallet from the same seed using a different tool, unless you specify the algorithm explicitly.
 
 
 ## Key Components
@@ -39,7 +39,7 @@ For more technical details of how key derivation works, see [Key Derivation](#ke
 
 ### Passphrase
 
-You can, optionally, use a passphrase or some other input as a way of choosing a seed or private key. This is less secure than choosing the seed or private key completely at random, but there are some rare cases where you want to do this. (For example, in 2018 "XRPuzzler" gave away XRP to the first person [to solve a puzzle](https://bitcoinexchangeguide.com/cryptographic-puzzle-creator-xrpuzzler-offers-137-xrp-reward-to-anyone-who-can-solve-it/); he used the puzzle's solution as the passphrase to an account holding the prize XRP.)  <!-- SPELLING_IGNORE: xrpuzzler -->
+You can, optionally, use a passphrase or some other input as a way of choosing a seed or private key. This is less secure than choosing the seed or private key completely at random, but there are some rare cases where you want to do this. (For example, in 2018 "XRPuzzler" gave away XRP to the first person to solve a puzzle; he used the puzzle's solution as the passphrase to an account holding the prize XRP.)  <!-- SPELLING_IGNORE: xrpuzzler -->
 
 The passphrase is secret information, so you must protect it very carefully. Anyone who knows an address's passphrase has effectively full control over the address.
 
@@ -133,7 +133,7 @@ The XRP Ledger supports the following cryptographic signing algorithms:
 | Key Type    | Algorithm | Description |
 |-------------|-----------|---|
 | `secp256k1` | [ECDSA](https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm) using the elliptic curve [secp256k1](https://en.bitcoin.it/wiki/Secp256k1) | This is the same scheme Bitcoin uses. The XRP Ledger uses these key types by default. |
-| `ed25519`   | [EdDSA](https://tools.ietf.org/html/rfc8032) using the elliptic curve [Ed25519](https://ed25519.cr.yp.to/) | This is a newer algorithm which has better performance and other convenient properties. Since Ed25519 public keys are one byte shorter than secp256k1 keys, `rippled` prefixes Ed25519 public keys with the byte `0xED` so both types of public key are 33 bytes. |
+| `ed25519`   | [EdDSA](https://tools.ietf.org/html/rfc8032) using the elliptic curve [Ed25519](https://ed25519.cr.yp.to/) | This is a newer algorithm which has better performance and other convenient properties. Since Ed25519 public keys are one byte shorter than secp256k1 keys, `xrpld` prefixes Ed25519 public keys with the byte `0xED` so both types of public key are 33 bytes. |
 
 When you generate a key pair with the [wallet_propose method][], you can specify the `key_type` to choose which cryptographic signing algorithm to use to derive the keys. If you generated a key type other than the default, you must also specify the `key_type` when signing transactions.
 
@@ -153,15 +153,13 @@ The process of deriving a key pair depends on the signing algorithm. In all case
 
 The key derivation processes described here are implemented in multiple places and programming languages:
 
-- In C++ in the `rippled` code base:
-    - [Seed definition](https://github.com/XRPLF/rippled/blob/master/src/libxrpl/protocol/Seed.cpp)
-    - [General & Ed25519 key derivation](https://github.com/XRPLF/rippled/blob/master/src/libxrpl/protocol/SecretKey.cpp)
-    - [secp256k1 key derivation](https://github.com/XRPLF/rippled/blob/master/src/libxrpl/protocol/SecretKey.cpp)
+- In C++ in the `xrpld` code base:
+    - {% source-link name="Seed definition" path="src/libxrpl/protocol/Seed.cpp" /%}
+    - {% source-link name="Key Derivation" path="src/libxrpl/protocol/SecretKey.cpp" /%}
 - In Python 3 in {% repo-link path="_code-samples/key-derivation/py/key_derivation.py" %}this repository's code samples section{% /repo-link %}.
 - In JavaScript in the [`ripple-keypairs`](https://github.com/XRPLF/xrpl.js/tree/main/packages/ripple-keypairs) package.
 
 ### Ed25519 Key Derivation
-[[Source]](https://github.com/XRPLF/rippled/blob/70d5c624e8cf732a362335642b2f5125ce4b43c1/src/libxrpl/protocol/SecretKey.cpp#L311-L317 "Source")
 
 [{% inline-svg file="/docs/img/key-derivation-ed25519.svg" /%}](/docs/img/key-derivation-ed25519.svg "Passphrase → Seed → Secret Key → Prefix + Public Key")
 
@@ -182,7 +180,6 @@ The key derivation processes described here are implemented in multiple places a
     Validator ephemeral keys cannot be Ed25519.
 
 ### secp256k1 Key Derivation
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/libxrpl/protocol/SecretKey.cpp "Source")
 
 [{% inline-svg file="/docs/img/key-derivation-secp256k1.svg" /%}](/docs/img/key-derivation-secp256k1.svg "Passphrase → Seed → Root Key Pair → Intermediate Key Pair → Master Key Pair")
 
@@ -201,7 +198,7 @@ The steps to derive the XRP Ledger's secp256k1 account key pair from a seed valu
 
     2. Calculate the [SHA-512Half][] of the concatenated (seed+root sequence) value.
 
-    3. If the result is not a valid secp256k1 secret key, increment the root sequence by 1 and start over. [[Source]](https://github.com/XRPLF/rippled/blob/70d5c624e8cf732a362335642b2f5125ce4b43c1/src/libxrpl/protocol/SecretKey.cpp#L103-L114 "Source")
+    3. If the result is not a valid secp256k1 secret key, increment the root sequence by 1 and start over.
 
         A valid secp256k1 key must not be zero, and it must be numerically less than the _secp256k1 group order_. The secp256k1 group order is the constant value `0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEBAAEDCE6AF48A03BBFD25E8CD0364141`.
 

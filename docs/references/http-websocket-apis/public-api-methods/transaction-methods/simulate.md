@@ -5,7 +5,7 @@ labels:
   - Transaction Sending
 ---
 # simulate
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/Simulate.cpp "Source")
+{% source-link path="src/xrpld/rpc/handlers/transaction/Simulate.cpp" /%}
 
 The `simulate` method executes a dry run of _any_ transaction type, enabling you to preview the results and metadata of a transaction without committing them to the XRP Ledger. Since this command never submits a transaction to the network, it doesn't incur any fees.
 
@@ -190,6 +190,7 @@ The response follows the [standard format][], with a successful result containin
 ## Possible Errors
 
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
+* `notImpl` - The transaction type is not supported by the `simulate` method (for example, `Batch` transactions).
 * `transactionSigned` - The transaction was signed. The simulated transaction must be unsigned.
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

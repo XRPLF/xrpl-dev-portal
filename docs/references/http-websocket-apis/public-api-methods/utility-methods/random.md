@@ -6,7 +6,7 @@ labels:
 ---
 # random
 
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/Random.cpp "Source")
+{% source-link path="src/xrpld/rpc/handlers/utility/Random.cpp" /%}
 
 The `random` command provides a random number to be used as a source of entropy for random number generation by clients.
 
@@ -38,7 +38,7 @@ An example of the request format:
 {% tab label="Commandline" %}
 ```sh
 #Syntax: random
-rippled random
+xrpld random
 ```
 {% /tab %}
 

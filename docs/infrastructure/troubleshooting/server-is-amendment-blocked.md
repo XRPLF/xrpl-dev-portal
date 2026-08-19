@@ -1,16 +1,16 @@
 ---
 html: server-is-amendment-blocked.html
-parent: troubleshoot-the-rippled-server.html
+parent: troubleshoot-the-xrpld-server.html
 seo:
     description: Troubleshoot a server that can't implement amendment changes.
 labels:
   - Core Server
 ---
-# rippled Server is Amendment Blocked
+# xrpld Server is Amendment Blocked
 
 Servers which are amendment blocked can't determine the validity of a ledger, submit or process transactions, or participate in the consensus process.
 
-One of the first signs that your `rippled` server is [amendment blocked](../../concepts/networks-and-servers/amendments.md#amendment-blocked-servers) is an `amendmentBlocked` error that is returned when you submit a transaction. Here's an example `amendmentBlocked` error:
+One of the first signs that your `xrpld` server is [amendment blocked](../../concepts/networks-and-servers/amendments.md#amendment-blocked-servers) is an `amendmentBlocked` error that is returned when you submit a transaction. Here's an example `amendmentBlocked` error:
 
 ```json
 {
@@ -27,13 +27,13 @@ One of the first signs that your `rippled` server is [amendment blocked](../../c
 }
 ```
 
-The following `rippled` log message also indicates that your server is amendment blocked:
+The following `xrpld` log message also indicates that your server is amendment blocked:
 
 ```
 2018-Feb-12 19:38:30 LedgerMaster:ERR One or more unsupported amendments activated: server blocked.
 ```
 
-You can verify that your `rippled` server is amendment blocked using the `server_info` command. In the response, look for `result.info.amendment_blocked`. If `amendment_blocked` is set to `true`, your server is amendment blocked.
+You can verify that your `xrpld` server is amendment blocked using the `server_info` command. In the response, look for `result.info.amendment_blocked`. If `amendment_blocked` is set to `true`, your server is amendment blocked.
 
 **Example JSON-RPC Response:**
 
@@ -60,13 +60,13 @@ You can verify that your `rippled` server is amendment blocked using the `server
 
 ## Unblock Servers
 
-The easiest solution is to update to the latest version of `rippled`, but depending on the scenario, you may want to update to an older version with the amendment blocking your server.
+The easiest solution is to update to the latest version of `xrpld`, but depending on the scenario, you may want to update to an older version with the amendment blocking your server.
 
-{% admonition type="danger" name="Warning" %}If the newest `rippled` version provides security or other urgent fixes, you should upgrade to the newest version as soon as possible.{% /admonition %}
+{% admonition type="danger" name="Warning" %}If the newest `xrpld` version provides security or other urgent fixes, you should upgrade to the newest version as soon as possible.{% /admonition %}
 
-To determine if you can unblock your `rippled` server by upgrading to a version older than the newest version, find out which features are blocking your server and then look up the `rippled` version that supports the blocking features.
+To determine if you can unblock your `xrpld` server by upgrading to a version older than the newest version, find out which features are blocking your server and then look up the `xrpld` version that supports the blocking features.
 
-To find out which features are blocking your `rippled` server, use the [`feature`](../../references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/feature.md) admin command. Look for features that have:
+To find out which features are blocking your `xrpld` server, use the [`feature`](../../references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/feature.md) admin command. Look for features that have:
 
 ```
 "enabled" : true
@@ -122,7 +122,7 @@ These values mean the amendment is required in the latest ledger, but your serve
 }
 ```
 
-In this example, conflicts with the following features are causing your `rippled` server to be amendment blocked:
+In this example, conflicts with the following features are causing your `xrpld` server to be amendment blocked:
 
 * `157D2D480E006395B76F948E3E07A45A05FE10230D88A7993C71F97AE4B1F2D1`
 
@@ -130,4 +130,4 @@ In this example, conflicts with the following features are causing your `rippled
 
 * `F64E1EABBE79D55B3BB82020516CEC2C582A98A6BFE20FBE9BB6A0D233418064`
 
-To look up which `rippled` version supports these features, see [Known Amendments](/resources/known-amendments.md).
+To look up which `xrpld` version supports these features, see [Known Amendments](/resources/known-amendments.md).

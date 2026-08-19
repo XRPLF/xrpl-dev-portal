@@ -1497,3 +1497,20 @@ body,
     }
   }
 }
+
+// Smart contracts page diagrams --------------------------------------------
+// The markup points at the dark SVGs, so light mode swaps in the -light pair.
+// Paths are relative to the compiled CSS (static/css/), matching the logos above.
+html.light {
+  .uc-smart-contract-condition-diagram {
+    content: url(../img/uc-smart-contract-condition-light.svg);
+  }
+
+  .uc-escrow-flow-diagram {
+    content: url(../img/uc-conditional-escrow-flow-light.svg);
+  }
+
+  .uc-escrow-oracle-diagram {
+    content: url(../img/uc-escrow-oracle-light.svg);
+  }
+}

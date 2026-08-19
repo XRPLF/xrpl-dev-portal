@@ -1,0 +1,194 @@
+<svg viewBox="0 0 940 775" xmlns="http://www.w3.org/2000/svg" role="img" font-family="'Inter','Helvetica Neue',Arial,sans-serif">
+  <title>X402 Payment Flow on the XRP Ledger</title>
+  <desc>Sequence diagram: 12-step X402 payment flow. Agent requests resource, receives 402, creates payment payload, retries with PAYMENT-SIGNATURE. Merchant verifies and settles via Facilitator (T54), who submits the on-chain transaction to XRP Ledger. Merchant returns 200 OK with PAYMENT-RESPONSE and content.</desc>
+
+  <rect width="940" height="775" fill="#F6F8FC" rx="10"/>
+
+  <!-- Title -->
+  <text x="470" y="30" text-anchor="middle" fill="#0B0D1E" font-size="13" font-weight="700" letter-spacing="0.4">X402 Payment Flow — XRP Ledger</text>
+  <line x1="60" y1="43" x2="880" y2="43" stroke="#D4DCF0" stroke-width="1"/>
+
+  <!-- ── PARTICIPANTS ── -->
+  <rect x="18"  y="53" width="138" height="40" rx="6" fill="#EDF6FC" stroke="#0094C4" stroke-width="1.5"/>
+  <text x="87"  y="71" text-anchor="middle" fill="#0076A8" font-size="11" font-weight="700">Agent</text>
+  <text x="87"  y="85" text-anchor="middle" fill="#4A8AAE" font-size="9">(Payer)</text>
+
+  <rect x="228" y="53" width="164" height="40" rx="6" fill="#F0F4FA" stroke="#8A9DC0" stroke-width="1.5"/>
+  <text x="310" y="71" text-anchor="middle" fill="#2A3C60" font-size="11" font-weight="700">Merchant</text>
+  <text x="310" y="85" text-anchor="middle" fill="#5A6888" font-size="9">(X402 Service)</text>
+
+  <rect x="500" y="49" width="176" height="48" rx="6" fill="#EDF6FC" stroke="#0094C4" stroke-width="2"/>
+  <text x="588" y="70" text-anchor="middle" fill="#0076A8" font-size="11" font-weight="700">Facilitator</text>
+  <text x="588" y="85" text-anchor="middle" fill="#0094C4" font-size="9" font-weight="600">(T54)</text>
+
+  <rect x="756" y="53" width="166" height="40" rx="6" fill="#EDF6FC" stroke="#0094C4" stroke-width="1.5"/>
+  <text x="839" y="71" text-anchor="middle" fill="#0076A8" font-size="11" font-weight="700">XRP Ledger</text>
+  <text x="839" y="85" text-anchor="middle" fill="#4A8AAE" font-size="9">Settlement Layer</text>
+
+  <!-- Facilitator note -->
+  <rect x="502" y="106" width="172" height="62" rx="4" fill="#FFFBEB" stroke="#E8D8B0" stroke-width="1"/>
+  <text x="588" y="121" text-anchor="middle" fill="#92400E" font-size="7.5" font-weight="700">Note:</text>
+  <text x="588" y="134" text-anchor="middle" fill="#92400E" font-size="7">Facilitators are optional.</text>
+  <text x="588" y="146" text-anchor="middle" fill="#92400E" font-size="7">Server can handle all steps when</text>
+  <text x="588" y="158" text-anchor="middle" fill="#92400E" font-size="7">accepting stablecoins or crypto.</text>
+
+  <!-- ── LIFELINES ── -->
+  <line x1="87"  y1="93" x2="87"  y2="738" stroke="#0094C4" stroke-width="1"   stroke-dasharray="4,5" opacity="0.35"/>
+  <line x1="310" y1="93" x2="310" y2="738" stroke="#8A9DC0" stroke-width="1"   stroke-dasharray="4,5" opacity="0.3"/>
+  <line x1="588" y1="97" x2="588" y2="738" stroke="#0094C4" stroke-width="1.5" stroke-dasharray="4,5" opacity="0.45"/>
+  <line x1="839" y1="93" x2="839" y2="738" stroke="#0094C4" stroke-width="1"   stroke-dasharray="4,5" opacity="0.3"/>
+
+  <!-- ── ARROW MARKERS ── -->
+  <defs>
+    <marker id="ab"  markerWidth="7" markerHeight="7" refX="5.5" refY="3.5" orient="auto"><polygon points="0 0.5,6 3.5,0 6.5" fill="#0094C4"/></marker>
+    <marker id="ag"  markerWidth="7" markerHeight="7" refX="5.5" refY="3.5" orient="auto"><polygon points="0 0.5,6 3.5,0 6.5" fill="#16A34A"/></marker>
+    <marker id="aa"  markerWidth="7" markerHeight="7" refX="5.5" refY="3.5" orient="auto"><polygon points="0 0.5,6 3.5,0 6.5" fill="#D97706"/></marker>
+    <marker id="agr" markerWidth="7" markerHeight="7" refX="5.5" refY="3.5" orient="auto"><polygon points="0 0.5,6 3.5,0 6.5" fill="#7A90B4"/></marker>
+  </defs>
+
+  <!-- ── PHASE BANDS ── -->
+  <rect x="0" y="178" width="940" height="72"  fill="#EDF6FC" opacity="0.4"/>
+  <rect x="0" y="255" width="940" height="110" fill="#F0FDF4" opacity="0.4"/>
+  <rect x="0" y="370" width="940" height="148" fill="#FFFBEB" opacity="0.4"/>
+  <rect x="0" y="523" width="940" height="158" fill="#F5F3FF" opacity="0.35"/>
+  <rect x="0" y="686" width="940" height="60"  fill="#F0FDF4" opacity="0.35"/>
+
+  <!-- ── PHASE LABELS ── -->
+  <rect x="898" y="190" width="38" height="48" rx="4" fill="#EDF6FC" stroke="#C8D8EC" stroke-width="1"/>
+  <text x="917" y="207" text-anchor="middle" fill="#0076A8" font-size="7.5" font-weight="700">DIS</text>
+  <text x="917" y="218" text-anchor="middle" fill="#0076A8" font-size="7.5" font-weight="700">COV</text>
+  <text x="917" y="229" text-anchor="middle" fill="#0076A8" font-size="7.5" font-weight="700">ER</text>
+
+  <rect x="898" y="267" width="38" height="42" rx="4" fill="#F0FDF4" stroke="#C8E8D0" stroke-width="1"/>
+  <text x="917" y="282" text-anchor="middle" fill="#16A34A" font-size="7.5" font-weight="700">PAY</text>
+  <text x="917" y="295" text-anchor="middle" fill="#3A8058" font-size="7">+ sign</text>
+
+  <rect x="898" y="382" width="38" height="52" rx="4" fill="#FFFBEB" stroke="#E8D8B0" stroke-width="1"/>
+  <text x="917" y="398" text-anchor="middle" fill="#D97706" font-size="7.5" font-weight="700">VER</text>
+  <text x="917" y="409" text-anchor="middle" fill="#D97706" font-size="7.5" font-weight="700">IFY</text>
+  <text x="917" y="423" text-anchor="middle" fill="#997030" font-size="7">&amp; work</text>
+
+  <rect x="898" y="536" width="38" height="52" rx="4" fill="#F5F3FF" stroke="#DDD6FE" stroke-width="1"/>
+  <text x="917" y="552" text-anchor="middle" fill="#7C3AED" font-size="7.5" font-weight="700">SET</text>
+  <text x="917" y="563" text-anchor="middle" fill="#7C3AED" font-size="7.5" font-weight="700">TLE</text>
+  <text x="917" y="577" text-anchor="middle" fill="#7C3AED" font-size="7">on-chain</text>
+
+  <rect x="898" y="697" width="38" height="34" rx="4" fill="#F0FDF4" stroke="#C8E8D0" stroke-width="1"/>
+  <text x="917" y="712" text-anchor="middle" fill="#16A34A" font-size="7.5" font-weight="700">DEL</text>
+  <text x="917" y="723" text-anchor="middle" fill="#16A34A" font-size="7.5" font-weight="700">IVER</text>
+
+  <!-- ════════════════════════════════════════════════════
+       STEP 1 — Agent → Merchant: GET /api
+  ═════════════════════════════════════════════════════ -->
+  <text x="198" y="185" text-anchor="middle" fill="#0076A8" font-size="10.5" font-weight="600">GET /api</text>
+  <line x1="92" y1="197" x2="303" y2="197" stroke="#0094C4" stroke-width="1.5" marker-end="url(#ab)"/>
+  <circle cx="32" cy="197" r="8" fill="#EDF6FC" stroke="#0094C4" stroke-width="1"/>
+  <text x="32" y="201" text-anchor="middle" fill="#0076A8" font-size="8" font-weight="700">1</text>
+
+  <!-- ════════════════════════════════════════════════════
+       STEP 2 — Merchant → Agent: 402 PAYMENT-REQUIRED
+  ═════════════════════════════════════════════════════ -->
+  <text x="198" y="224" text-anchor="middle" fill="#D97706" font-size="10.5" font-weight="600">402 PAYMENT-REQUIRED: {..}</text>
+  <line x1="303" y1="236" x2="93" y2="236" stroke="#D97706" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#aa)"/>
+  <circle cx="32" cy="236" r="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1"/>
+  <text x="32" y="240" text-anchor="middle" fill="#D97706" font-size="8" font-weight="700">2</text>
+
+  <!-- ════════════════════════════════════════════════════
+       STEP 3 — Agent self-loop: Create payment payload
+  ═════════════════════════════════════════════════════ -->
+  <polyline points="87,262 138,262 138,292 92,292" stroke="#6B7280" stroke-width="1.5" fill="none"/>
+  <polygon points="97,288 87,292 97,296" fill="#6B7280"/>
+  <text x="143" y="274" fill="#4B5563" font-size="9.5" font-weight="600">Create payment</text>
+  <text x="143" y="288" fill="#4B5563" font-size="9.5" font-weight="600">payload</text>
+  <circle cx="32" cy="277" r="8" fill="#F9FAFB" stroke="#6B7280" stroke-width="1"/>
+  <text x="32" y="281" text-anchor="middle" fill="#4B5563" font-size="8" font-weight="700">3</text>
+
+  <!-- ════════════════════════════════════════════════════
+       STEP 4 — Agent → Merchant: GET /api + PAYMENT-SIGNATURE
+  ═════════════════════════════════════════════════════ -->
+  <text x="198" y="322" text-anchor="middle" fill="#0076A8" font-size="10.5" font-weight="600">GET /api</text>
+  <line x1="92" y1="334" x2="303" y2="334" stroke="#0094C4" stroke-width="2" marker-end="url(#ab)"/>
+  <text x="198" y="348" text-anchor="middle" fill="#4A8AAE" font-size="9">PAYMENT-SIGNATURE: {..}</text>
+  <circle cx="32" cy="334" r="8" fill="#EDF6FC" stroke="#0094C4" stroke-width="1"/>
+  <text x="32" y="338" text-anchor="middle" fill="#0076A8" font-size="8" font-weight="700">4</text>
+
+  <!-- ════════════════════════════════════════════════════
+       STEP 5 — Merchant → Facilitator: POST /verify
+  ═════════════════════════════════════════════════════ -->
+  <text x="448" y="380" text-anchor="middle" fill="#5A7098" font-size="10" font-weight="600">POST /verify</text>
+  <line x1="315" y1="392" x2="581" y2="392" stroke="#7A90B4" stroke-width="1.5" marker-end="url(#agr)"/>
+  <text x="448" y="406" text-anchor="middle" fill="#6B7A94" font-size="9">PAYMENT-SIGNATURE · PAYMENT-REQUIRED</text>
+  <circle cx="32" cy="392" r="8" fill="#F0F4FA" stroke="#7A90B4" stroke-width="1"/>
+  <text x="32" y="396" text-anchor="middle" fill="#5A7098" font-size="8" font-weight="700">5</text>
+
+  <!-- ════════════════════════════════════════════════════
+       STEP 6 — Facilitator → Merchant: 200 Verification
+  ═════════════════════════════════════════════════════ -->
+  <text x="448" y="430" text-anchor="middle" fill="#16A34A" font-size="10.5" font-weight="600">200 Verification: {..}</text>
+  <line x1="582" y1="442" x2="316" y2="442" stroke="#16A34A" stroke-width="1.5" stroke-dasharray="6,3" marker-end="url(#ag)"/>
+  <circle cx="32" cy="442" r="8" fill="#F0FDF4" stroke="#16A34A" stroke-width="1"/>
+  <text x="32" y="446" text-anchor="middle" fill="#16A34A" font-size="8" font-weight="700">6</text>
+
+  <!-- ════════════════════════════════════════════════════
+       STEP 7 — Merchant self-loop: Do work
+  ═════════════════════════════════════════════════════ -->
+  <polyline points="310,462 362,462 362,492 315,492" stroke="#6B7280" stroke-width="1.5" fill="none"/>
+  <polygon points="320,488 310,492 320,496" fill="#6B7280"/>
+  <text x="367" y="481" fill="#4B5563" font-size="9.5" font-weight="600">Do work</text>
+  <circle cx="32" cy="477" r="8" fill="#F9FAFB" stroke="#6B7280" stroke-width="1"/>
+  <text x="32" y="481" text-anchor="middle" fill="#4B5563" font-size="8" font-weight="700">7</text>
+
+  <!-- ════════════════════════════════════════════════════
+       STEP 8 — Merchant → Facilitator: POST /settle
+  ═════════════════════════════════════════════════════ -->
+  <text x="448" y="524" text-anchor="middle" fill="#5A7098" font-size="10" font-weight="600">POST /settle</text>
+  <line x1="315" y1="536" x2="581" y2="536" stroke="#7A90B4" stroke-width="1.5" marker-end="url(#agr)"/>
+  <text x="448" y="550" text-anchor="middle" fill="#6B7A94" font-size="9">PAYMENT-SIGNATURE · PAYMENT-REQUIRED</text>
+  <circle cx="32" cy="536" r="8" fill="#F0F4FA" stroke="#7A90B4" stroke-width="1"/>
+  <text x="32" y="540" text-anchor="middle" fill="#5A7098" font-size="8" font-weight="700">8</text>
+
+  <!-- ════════════════════════════════════════════════════
+       STEP 9 — Facilitator → XRP Ledger: Submit tx
+  ═════════════════════════════════════════════════════ -->
+  <text x="713" y="576" text-anchor="middle" fill="#16A34A" font-size="10.5" font-weight="600">Submit tx</text>
+  <line x1="593" y1="588" x2="832" y2="588" stroke="#16A34A" stroke-width="2" marker-end="url(#ag)"/>
+  <circle cx="32" cy="588" r="8" fill="#F0FDF4" stroke="#16A34A" stroke-width="1"/>
+  <text x="32" y="592" text-anchor="middle" fill="#16A34A" font-size="8" font-weight="700">9</text>
+
+  <!-- ════════════════════════════════════════════════════
+       STEP 10 — XRP Ledger → Facilitator: tx confirmed
+  ═════════════════════════════════════════════════════ -->
+  <text x="713" y="614" text-anchor="middle" fill="#16A34A" font-size="10.5" font-weight="600">tx confirmed</text>
+  <line x1="833" y1="626" x2="594" y2="626" stroke="#16A34A" stroke-width="2" stroke-dasharray="6,3" marker-end="url(#ag)"/>
+  <circle cx="32" cy="626" r="8" fill="#F0FDF4" stroke="#16A34A" stroke-width="1"/>
+  <text x="30" y="630" text-anchor="middle" fill="#16A34A" font-size="7.5" font-weight="700">10</text>
+
+  <!-- ════════════════════════════════════════════════════
+       STEP 11 — Facilitator → Merchant: 200 Settled, tx_hash
+  ═════════════════════════════════════════════════════ -->
+  <text x="448" y="653" text-anchor="middle" fill="#16A34A" font-size="10.5" font-weight="600">200 Settled, tx_hash</text>
+  <line x1="582" y1="665" x2="316" y2="665" stroke="#16A34A" stroke-width="1.5" stroke-dasharray="6,3" marker-end="url(#ag)"/>
+  <circle cx="32" cy="665" r="8" fill="#F0FDF4" stroke="#16A34A" stroke-width="1"/>
+  <text x="30" y="669" text-anchor="middle" fill="#16A34A" font-size="7.5" font-weight="700">11</text>
+
+  <!-- ════════════════════════════════════════════════════
+       STEP 12 — Merchant → Agent: 200 Ok + PAYMENT-RESPONSE + Content
+  ═════════════════════════════════════════════════════ -->
+  <text x="198" y="695" text-anchor="middle" fill="#16A34A" font-size="10.5" font-weight="700">200 Ok</text>
+  <line x1="304" y1="707" x2="93" y2="707" stroke="#16A34A" stroke-width="2" stroke-dasharray="6,3" marker-end="url(#ag)"/>
+  <text x="198" y="721" text-anchor="middle" fill="#3A8058" font-size="9">PAYMENT-RESPONSE · Content</text>
+  <circle cx="32" cy="707" r="8" fill="#F0FDF4" stroke="#16A34A" stroke-width="1"/>
+  <text x="30" y="711" text-anchor="middle" fill="#16A34A" font-size="7.5" font-weight="700">12</text>
+
+  <!-- ── LEGEND ── -->
+  <line x1="22"  y1="754" x2="42"  y2="754" stroke="#0094C4" stroke-width="1.5"/>
+  <text x="46"  y="758" fill="#6A80A0" font-size="8.5">Request</text>
+  <line x1="104" y1="754" x2="124" y2="754" stroke="#D97706" stroke-width="1.5" stroke-dasharray="4,2"/>
+  <text x="128" y="758" fill="#6A80A0" font-size="8.5">402 response</text>
+  <line x1="228" y1="754" x2="248" y2="754" stroke="#16A34A" stroke-width="2"/>
+  <text x="252" y="758" fill="#6A80A0" font-size="8.5">Settlement / Success</text>
+  <line x1="390" y1="754" x2="410" y2="754" stroke="#7A90B4" stroke-width="1.5"/>
+  <text x="414" y="758" fill="#6A80A0" font-size="8.5">Internal verification</text>
+  <line x1="554" y1="754" x2="574" y2="754" stroke="#6B7280" stroke-width="1.5"/>
+  <text x="578" y="758" fill="#6A80A0" font-size="8.5">Internal processing</text>
+</svg>

@@ -5,7 +5,7 @@ labels:
   - トランザクション送信
 ---
 # simulate
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/Simulate.cpp "ソース")
+{% source-link path="src/xrpld/rpc/handlers/transaction/Simulate.cpp" /%}
 
 `simulate` メソッドは、あらゆる トランザクションを仮実行し、XRP Ledger に反映することなく、その結果やメタデータを事前に確認できます。このコマンドはネットワークにトランザクションを送信しないため、手数料は発生しません。
 

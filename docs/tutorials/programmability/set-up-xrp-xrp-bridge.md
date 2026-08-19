@@ -35,7 +35,7 @@ const xchainbridge = {
   "LockingChainIssue": {
     "currency": "XRP"
   },
-  "IssuingChainDoor": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh", // Use the genesis address hardcoded in rippled
+  "IssuingChainDoor": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh", // Use the genesis address hardcoded in xrpld
   "IssuingChainIssue": {
     "currency": "XRP"
   }
@@ -111,7 +111,7 @@ const disablekey_lockingchain = await client_lockingchain.submitAndWait({
 ### 5. Submit an `XChainCreateBridge` transaction from the genesis account on the issuing chain.
 
 ```javascript
-  const wallet_issuingchain = xrpl.Wallet.fromSeed('snoPBrXtMeMyMHUVTgbuqAfg1SUTb') // Use the genesis secret hardcoded in rippled.
+  const wallet_issuingchain = xrpl.Wallet.fromSeed('snoPBrXtMeMyMHUVTgbuqAfg1SUTb') // Use the genesis secret hardcoded in xrpld.
   const xchaincreatebridge_issuingchain = await client_issuingchain.submitAndWait({
     "TransactionType": "XChainCreateBridge",
     "Account": wallet_issuingchain.address,

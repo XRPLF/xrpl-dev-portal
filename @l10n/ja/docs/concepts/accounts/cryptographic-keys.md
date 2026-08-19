@@ -19,7 +19,7 @@ XRP Ledgerでは、[トランザクション](../transactions/index.md)による
 
 多くの[クライアントライブラリ](../../references/client-libraries.md)やアプリケーションは、XRP Ledgerでの使用に合わせてキーペアを生成できます。もちろん、信頼できるデバイスやソフトウェアで生成されたキーペアのみを使用する必要があります。悪意のあるアプリケーションは、あなたの秘密情報を悪意のあるユーザに公開する可能性があり、そのユーザはあなたのアカウントから後でトランザクションを送信することができます。
 
-注：ツールによってデフォルト値が異なります。多くのクライアントライブラリ（xrpl.jsなど）は、デフォルトの暗号化アルゴリズムとしてEd25519を使用していますが、rippledの管理者向けRPCコマンドである[wallet_propose](../../references/http-websocket-apis/admin-api-methods/key-generation-methods/wallet_propose.md)は、デフォルトとしてsecp256k1を使用しています。つまり、アルゴリズムを明示的に指定しない限り、同じシードから別のツールを使用してウォレットを生成すると、異なるアドレスが生成される可能性があります。
+注：ツールによってデフォルト値が異なります。多くのクライアントライブラリ（xrpl.jsなど）は、デフォルトの暗号化アルゴリズムとしてEd25519を使用していますが、xrpldの管理者向けRPCコマンドである[wallet_propose](../../references/http-websocket-apis/admin-api-methods/key-generation-methods/wallet_propose.md)は、デフォルトとしてsecp256k1を使用しています。つまり、アルゴリズムを明示的に指定しない限り、同じシードから別のツールを使用してウォレットを生成すると、異なるアドレスが生成される可能性があります。
 
 
 ## キーの構成要素
@@ -45,7 +45,7 @@ _図: 暗号鍵の値の関係を簡略化した図_
 
 ### シード
 
-_シード_ 値は、アカウントの実際の秘密鍵と公開鍵を[導出](#鍵導出)するために使用される、コンパクトな値です。[wallet_proposeメソッド][]のレスポンスでは、`master_key`,`master_seed`,`master_seed_hex`はすべて同一のシード値を様々な形式で表現します。これらの形式はいずれも、[`rippled` API](../../references/http-websocket-apis/index.md)やいくつかの[他のXRP Ledgerソフトウェア](../../introduction/software-ecosystem.md)で[トランザクションの署名](../transactions/index.md#トランザクションへの署名とトランザクションの送信)に使用することができます。`master_`という接頭辞がついていますが、このシードが表す鍵は必ずしもアカウントのマスターキーではありません。この鍵ペアはレギュラーキーとして、あるいはマルチシグリストのメンバーとして使用することもできます。
+_シード_ 値は、アカウントの実際の秘密鍵と公開鍵を[導出](#鍵導出)するために使用される、コンパクトな値です。[wallet_proposeメソッド][]のレスポンスでは、`master_key`,`master_seed`,`master_seed_hex`はすべて同一のシード値を様々な形式で表現します。これらの形式はいずれも、[`xrpld` API](../../references/http-websocket-apis/index.md)やいくつかの[他のXRP Ledgerソフトウェア](../../introduction/software-ecosystem.md)で[トランザクションの署名](../transactions/index.md#トランザクションへの署名とトランザクションの送信)に使用することができます。`master_`という接頭辞がついていますが、このシードが表す鍵は必ずしもアカウントのマスターキーではありません。この鍵ペアはレギュラーキーとして、あるいはマルチシグリストのメンバーとして使用することもできます。
 
 シード値は秘密情報であるため、非常に厳重に保管する必要があります。あるアドレスのシード値を知っている人は、そのアドレスを実質的に完全にコントロールすることができます。
 
@@ -133,7 +133,7 @@ XRP Ledgerでは次の暗号化署名アルゴリズムがサポートされて�
 | キータイプ | アルゴリズム | 説明 |
 |-------------|-----------|---|
 | `secp256k1` | 楕円曲線[secp256k1](https://en.bitcoin.it/wiki/Secp256k1)を使用する[ECDSA](https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm) | これはBitcoinで使用されているスキームです。XRP Ledgerではデフォルトでこのキータイプが使用されます。 |
-| `ed25519` | 楕円曲線[Ed25519](https://ed25519.cr.yp.to/)を使用する[EdDSA](https://tools.ietf.org/html/rfc8032) | パフォーマンスに優れ、その他の便利な特性を備えた新しいアルゴリズムです。Ed25519公開鍵はsecp256k1鍵よりも1バイト短いため、`rippled`ではEd25519公開鍵の先頭に`0xED`バイトが追加されます。これにより、両方の公開鍵タイプは33バイトになります。 |
+| `ed25519` | 楕円曲線[Ed25519](https://ed25519.cr.yp.to/)を使用する[EdDSA](https://tools.ietf.org/html/rfc8032) | パフォーマンスに優れ、その他の便利な特性を備えた新しいアルゴリズムです。Ed25519公開鍵はsecp256k1鍵よりも1バイト短いため、`xrpld`ではEd25519公開鍵の先頭に`0xED`バイトが追加されます。これにより、両方の公開鍵タイプは33バイトになります。 |
 
 [wallet_proposeメソッド][]を使用してキーペアを生成するときには、キーの生成に使用する暗号化署名アルゴリズムを選択するため`key_type`を指定できます。デフォルト以外のキータイプを生成した場合は、トランザクションに署名する際に`key_type`も指定する必要があります。
 
@@ -153,15 +153,13 @@ XRP Ledgerでは、サポートされているさまざまなタイプのキー�
 
 ここで説明する鍵導出プロセスは、さまざまなプログラミング言語で複数の場所に実装されています。
 
-- C++: `rippled`コードベース:
-    - [シード定義](https://github.com/XRPLF/rippled/blob/develop/src/ripple/protocol/Seed.h)
-    - [汎用キー & Ed25519鍵導出](https://github.com/XRPLF/rippled/blob/develop/src/ripple/protocol/impl/SecretKey.cpp)
-    - [secp256k1鍵導出](https://github.com/XRPLF/rippled/blob/develop/src/ripple/protocol/impl/SecretKey.cpp)
+- C++: `xrpld`コードベース:
+    - {% source-link name="シード定義" path="include/xrpl/protocol/Seed.h" /%}
+    - {% source-link name="鍵導出" path="src/libxrpl/protocol/SecretKey.cpp" /%}
 - Python 3: {% repo-link path="_code-samples/key-derivation/py/key_derivation.py" %}このリポジトリのコードサンプルセクション{% /repo-link %}
 - JavaScript: [`ripple-keypairs`](https://github.com/XRPLF/xrpl.js/tree/main/packages/ripple-keypairs)パッケージ
 
 ### Ed25519鍵導出
-[[ソース]](https://github.com/XRPLF/rippled/blob/fc7ecd672a3b9748bfea52ce65996e324553c05f/src/ripple/protocol/impl/SecretKey.cpp#L203 "Source")
 
 [{% inline-svg file="/docs/img/key-derivation-ed25519.ja.svg" /%}](/docs/img/key-derivation-ed25519.ja.svg "パスフレーズ → シード → 秘密鍵 → プレフィクス + 公開鍵")
 
@@ -182,7 +180,6 @@ XRP Ledgerでは、サポートされているさまざまなタイプのキー�
     バリデータの一時キーにEd25519を使用することはできません。
 
 ### secp256k1鍵導出
-[[ソース]](https://github.com/XRPLF/rippled/blob/develop/src/ripple/protocol/impl/SecretKey.cpp "Source")
 
 [{% inline-svg file="/docs/img/key-derivation-secp256k1.ja.svg" /%}](/docs/img/key-derivation-secp256k1.ja.svg "パスフレーズ → シード → ルートキーペア → 仲介銀行（機関）キーペア → マスターキーペア")
 
@@ -201,7 +198,7 @@ XRP Ledgerアカウントキーでのsecp256k1鍵導出に、Ed25519鍵導出よ
 
     2. 連結された（シード+ルートシーケンス）値の[SHA-512Half][]を計算します。
 
-    3. 結果が有効なsecp256k1秘密鍵でない場合は、ルートシーケンスを1増やして最初からやり直します。[[ソース]](https://github.com/XRPLF/rippled/blob/fc7ecd672a3b9748bfea52ce65996e324553c05f/src/ripple/crypto/impl/GenerateDeterministicKey.cpp#L103 "Source")
+    3. 結果が有効なsecp256k1秘密鍵でない場合は、ルートシーケンスを1増やして最初からやり直します。
 
         有効なsecp256k1鍵は0であってはならず、 _secp256k1グループ_ の数値順よりも低くなければなりません。secp256k1グループの順序は、定数`0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEBAAEDCE6AF48A03BBFD25E8CD0364141`です。
 

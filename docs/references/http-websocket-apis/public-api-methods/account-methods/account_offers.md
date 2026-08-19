@@ -7,7 +7,7 @@ labels:
   - Decentralized Exchange
 ---
 # account_offers
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/AccountOffers.cpp "Source")
+{% source-link path="src/xrpld/rpc/handlers/account/AccountOffers.cpp" /%}
 
 The `account_offers` method retrieves a list of [offers](../../../../concepts/tokens/decentralized-exchange/offers.md) made by a given [account](../../../../concepts/accounts/index.md) that are outstanding as of a particular [ledger version](../../../../concepts/ledgers/index.md).
 
@@ -43,7 +43,7 @@ An example of the request format:
 {% tab label="Commandline" %}
 ```sh
 #Syntax: account_offers account [ledger_index]
-rippled account_offers rpP2JgiMyTF5jR5hLG3xHCPi1knBb1v9cM current
+xrpld account_offers rpP2JgiMyTF5jR5hLG3xHCPi1knBb1v9cM current
 ```
 {% /tab %}
 

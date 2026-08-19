@@ -6,7 +6,7 @@ labels:
     - Security
 ---
 # deposit_authorized
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/DepositAuthorized.cpp "Source")
+{% source-link path="src/xrpld/rpc/handlers/orderbook/DepositAuthorized.cpp" /%}
 
 The `deposit_authorized` command indicates whether one account is authorized to send payments directly to another. See [Deposit Authorization](../../../../concepts/accounts/depositauth.md) for information on how to require authorization to deliver money to your account.
 
@@ -54,7 +54,7 @@ An example of the request format:
 
 ```bash
 #Syntax: deposit_authorized <source_account> <destination_account> [<ledger>]
-rippled deposit_authorized rEhxGqkqPPSxQ3P25J66ft5TwpzV14k2de rsUiUMpnrgxQp24dJYZDhmV4bE3aBtQyt8 validated
+xrpld deposit_authorized rEhxGqkqPPSxQ3P25J66ft5TwpzV14k2de rsUiUMpnrgxQp24dJYZDhmV4bE3aBtQyt8 validated
 ```
 {% /tab %}
 {% /tabs %}
@@ -123,7 +123,7 @@ An example of a successful response:
 
 {% tab label="Commandline" %}
 ```json
-Loading: "/etc/rippled.cfg"
+Loading: "/etc/xrpld.cfg"
 2018-Jul-30 20:07:38.771658157 HTTPClient:NFO Connecting to 127.0.0.1:5005
 
 {

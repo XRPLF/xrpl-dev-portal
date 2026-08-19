@@ -6,7 +6,7 @@ labels:
     - Core Server
 ---
 # consensus_info
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/ConsensusInfo.cpp "Source")
+{% source-link path="src/xrpld/rpc/handlers/admin/status/ConsensusInfo.cpp" /%}
 
 The `consensus_info` command provides information about the [consensus process](../../../../concepts/consensus-protocol/index.md) for debugging purposes.
 
@@ -40,7 +40,7 @@ An example of the request format:
 {% tab label="Commandline" %}
 ```sh
 #Syntax: consensus_info
-rippled consensus_info
+xrpld consensus_info
 ```
 {% /tab %}
 
@@ -131,7 +131,7 @@ An example of a successful response:
 
 {% tab label="Commandline" %}
 ```json
-Loading: "/etc/rippled.cfg"
+Loading: "/etc/xrpld.cfg"
 Connecting to 127.0.0.1:5005
 
 {

@@ -16,9 +16,9 @@ You can learn more in the tutorial [Assign an Authorized Minter](../../tutorials
 
 [![Authorized Minter Flow](/docs/img/nft-mkt-auth-minter.png "Authorized Minter Flow")](/docs/img/nft-mkt-auth-minter.png)
 
-## Set up a rippled instance
+## Set up an xrpld instance
 
-If you want to set up a larger site with high volume, it might be worth investing in your own XRP Ledger server instance. See [Install rippled](../../infrastructure/installation/index.md).
+If you want to set up a larger site with high volume, it might be worth investing in your own XRP Ledger server instance. See [Install xrpld](../../infrastructure/installation/index.md).
 
 ## Set up your marketplace
 

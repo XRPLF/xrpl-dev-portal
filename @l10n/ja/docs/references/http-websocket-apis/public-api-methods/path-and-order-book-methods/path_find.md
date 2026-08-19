@@ -8,7 +8,7 @@ labels:
   - トークン
 ---
 # path_find
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/PathFind.cpp "Source")
+{% source-link path="src/xrpld/rpc/handlers/orderbook/PathFind.cpp" /%}
 
 *WebSocket APIのみ。*`path_find`メソッドは、トランザクションが実行される可能性のある[パス](../../../../concepts/tokens/fungible-tokens/paths.md)を探索し、時間の経過とともにパスが変化する場合に更新を定期的に送信します。JSON-RPCでサポートされているシンプルなバージョンについては、[ripple_path_findメソッド][]をご覧ください。完全にXRPで行われる支払いの場合、XRPはどのアカウントにも直接送金できるためパスを探索する必要はありません。
 
@@ -18,10 +18,9 @@ path_findコマンドには3種類のモード（サブコマンド）があり�
 * `close` - Pathfinding情報の送信を停止します
 * `status` - 現在処理中のPathfindingリクエストに関する情報を取得します
 
-`rippled`サーバは支払いを行うにあたり最も安価なパスまたはパスの組み合わせを探索しますが、このメソッドで返されるパスが最良のパスであることは保証されません。サーバの負荷が原因で、Pathfindingで最良のパスを検出できないことがあります。また、信頼できないサーバからのPathfindingの結果には注意する必要があります。オペレーターの収益となるように、最良ではないパスを返すようにサーバが改ざんされる可能性があります。Pathfindingについて信頼できる独自サーバがない場合は、1つのサーバから不適切な結果が返されるリスクを最小限に抑えるため、異なる当事者が実行する複数のサーバからのPathfindingの結果を比較してください。（**注記:** サーバから最良ではない結果が返されても、必ずしも悪意のある振る舞いの証拠とはなりません。サーバの負荷が高い場合の症状である可能性もあります。）
+`xrpld`サーバは支払いを行うにあたり最も安価なパスまたはパスの組み合わせを探索しますが、このメソッドで返されるパスが最良のパスであることは保証されません。サーバの負荷が原因で、Pathfindingで最良のパスを検出できないことがあります。また、信頼できないサーバからのPathfindingの結果には注意する必要があります。オペレーターの収益となるように、最良ではないパスを返すようにサーバが改ざんされる可能性があります。Pathfindingについて信頼できる独自サーバがない場合は、1つのサーバから不適切な結果が返されるリスクを最小限に抑えるため、異なる当事者が実行する複数のサーバからのPathfindingの結果を比較してください。（**注記:** サーバから最良ではない結果が返されても、必ずしも悪意のある振る舞いの証拠とはなりません。サーバの負荷が高い場合の症状である可能性もあります。）
 
 ## path_find create
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/PathFind.cpp#L50-L56 "Source")
 
 `path_find`の`create`サブコマンドは、指定された特定アカウントから支払トランザクションを実行できるパスを探索する継続的なリクエストを作成し、別のアカウントが何らかの通貨で希望する額を受領できるようにします。初期レスポンスには2つのアドレス間で提案されるパスが含まれています。このパスにより、希望する額を受領できます。その後サーバは、`"type": "path_find"`で有効なパスの更新を含む追加メッセージを送信します。更新の頻度はサーバにより決定されますが、新しいレジャーバージョンがある場合には通常、数秒間に1回です。
 
@@ -471,7 +470,7 @@ path_findコマンドには3種類のモード（サブコマンド）があり�
 
 サーバからは初期レスポンスの他に、時間の経過にともなう[ペイメントパス](../../../../concepts/tokens/fungible-tokens/paths.md)のステータスを更新するため類似したフォーマットでさらにメッセージが送信されます。これらのメッセージには、元のWebSocketリクエストの`id`が含まれているので、どのリクエストからメッセージが送信されたかを確認できます。また、最上位レベルの`"type": "path_find"`フィールドは、追加レスポンスであることを示します。その他のフィールドは、初期レスポンスと同じ方法で定義されます。
 
-フォローアップに`"full_reply": true`が含まれている場合、これは現行レジャーの時点でrippledが検出できる最良のパスです。
+フォローアップに`"full_reply": true`が含まれている場合、これは現行レジャーの時点でxrpldが検出できる最良のパスです。
 
 path_find createリクエストからの非同期フォローアップの例を次に示します。
 
@@ -499,7 +498,6 @@ path_find createリクエストからの非同期フォローアップの例を�
 {% /tabs %}
 
 ## path_find close
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/PathFind.cpp#L58-L67 "Source")
 
 `path_find`の`close`サブコマンドは、サーバに対して現在実行中のPathfindingリクエストに関する情報の送信を停止するように指示します。
 
@@ -544,7 +542,6 @@ Pathfindingリクエストが正常にクローズされた場合、レスポン
 * `noPathRequest` - Pathfindingリクエストをクローズしようとしましたが、実行中のリクエストがありませんでした。
 
 ## path_find status
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/PathFind.cpp#L69-L77 "Source")
 
 `path_find`の`status`サブコマンドは、現在実行中のクライアントのPathfindingリクエストの即時更新をリクエストします。
 

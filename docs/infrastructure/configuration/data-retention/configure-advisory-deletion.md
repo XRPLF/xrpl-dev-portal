@@ -9,7 +9,7 @@ labels:
 ---
 # Configure Advisory Deletion
 
-The default config file sets [`rippled`](../../../concepts/networks-and-servers/index.md) to automatically delete outdated [history](../../../concepts/networks-and-servers/ledger-history.md) of XRP Ledger state and transactions as new ledger versions become available. If your server uses most of its hardware resources during peak hours, you can configure the server to delete ledgers only when prompted by a command scheduled to run during off-peak hours, so that online deletion is less likely to impact [server performance](../../installation/capacity-planning.md).
+The default config file sets [`xrpld`](../../../concepts/networks-and-servers/index.md) to automatically delete outdated [history](../../../concepts/networks-and-servers/ledger-history.md) of XRP Ledger state and transactions as new ledger versions become available. If your server uses most of its hardware resources during peak hours, you can configure the server to delete ledgers only when prompted by a command scheduled to run during off-peak hours, so that online deletion is less likely to impact [server performance](../../installation/capacity-planning.md).
 
 ## Prerequisites
 
@@ -17,7 +17,7 @@ This tutorial assumes your server meets the following prerequisites:
 
 - You are on a supported operating system: Ubuntu Linux, Red Hat Enterprise Linux (RHEL), or CentOS.
 
-- The `rippled` server is already [installed](../../installation/index.md) and [online deletion](online-deletion.md) is enabled.
+- The `xrpld` server is already [installed](../../installation/index.md) and [online deletion](online-deletion.md) is enabled.
 
     The default config file enables online deletion after 2000 ledger versions.
 
@@ -41,7 +41,7 @@ This tutorial assumes your server meets the following prerequisites:
 
 To configure advisory deletion with a daily schedule, perform the following steps:
 
-1. Enable `advisory_delete` in the `[node_db]` stanza of your `rippled`'s config file.
+1. Enable `advisory_delete` in the `[node_db]` stanza of your `xrpld`'s config file.
 
     ```
     [node_db]
@@ -57,10 +57,10 @@ To configure advisory deletion with a daily schedule, perform the following step
 
 2. Test running the [can_delete method][] to prompt the server to run online deletion.
 
-    You can use the [`rippled` commandline interface](../../../tutorials/get-started/get-started-http-websocket-apis.md#commandline) to run this command. For example:
+    You can use the [`xrpld` commandline interface](../../../tutorials/get-started/get-started-http-websocket-apis.md#commandline) to run this command. For example:
 
     ```
-    $ rippled --conf=/etc/opt/ripple/rippled.cfg can_delete now
+    $ xrpld --conf=/etc/xrpld/xrpld.cfg can_delete now
     ```
 
     The response indicates the maximum ledger index that the server may delete from its ledger store. For example, the following message indicates that ledger versions up to and including ledger index 43633667 can be deleted:
@@ -87,17 +87,17 @@ To configure advisory deletion with a daily schedule, perform the following step
     The following example sets the server to run deletion at 1:05 AM server time daily:
 
     ```
-    5 1 * * * rippled --conf /etc/opt/ripple/rippled.cfg can_delete now
+    5 1 * * * xrpld --conf /etc/xrpld/xrpld.cfg can_delete now
     ```
 
     Be sure that you schedule the command to run based on your server's configured time zone.
 
-    {% admonition type="success" name="Tip" %}You do not need to schedule a `cron` job to run online deletion if you have `advisory_delete` disabled. In that case, `rippled` runs online deletion automatically when the difference between the server's oldest and current validated ledger versions is at least the value of `online_delete`.{% /admonition %}
+    {% admonition type="success" name="Tip" %}You do not need to schedule a `cron` job to run online deletion if you have `advisory_delete` disabled. In that case, `xrpld` runs online deletion automatically when the difference between the server's oldest and current validated ledger versions is at least the value of `online_delete`.{% /admonition %}
 
-4. Start (or restart) the `rippled` service.
+4. Start (or restart) the `xrpld` service.
 
     ```
-    $ sudo systemctl restart rippled
+    $ sudo systemctl restart xrpld
     ```
 
 5. Periodically check your server's `complete_ledgers` range using the [server_info method][] to confirm that ledgers are being deleted as scheduled.
@@ -110,10 +110,10 @@ To configure advisory deletion with a daily schedule, perform the following step
 
 If online deletion does not seem to be running after configuring it, try the following:
 
-- Check that the user who configured the `cron` job has permissions to run the `rippled` server as a commandline client.
+- Check that the user who configured the `cron` job has permissions to run the `xrpld` server as a commandline client.
 - Check the syntax of your `cron` job and the time when it is supposed to run.
-- Check that the `rippled` executable is available at the path specified in your `cron` configuration. If necessary, specify the absolute path to the executable, such as `/opt/ripple/bin/rippled`.
-- Check your `rippled` logs for messages that begin with `SHAMapStore::WRN`. This can indicate that [online deletion is being interrupted](online-deletion.md#interrupting-online-deletion) because your server fell out of sync with the network.
+- Check that the `xrpld` executable is available at the path specified in your `cron` configuration. If necessary, specify the absolute path to the executable, such as `/usr/bin/xrpld`.
+- Check your `xrpld` logs for messages that begin with `SHAMapStore::WRN`. This can indicate that [online deletion is being interrupted](online-deletion.md#interrupting-online-deletion) because your server fell out of sync with the network.
 
 ## See Also
 
@@ -122,7 +122,7 @@ If online deletion does not seem to be running after configuring it, try the fol
         - [Online Deletion](online-deletion.md)
 - **Tutorials:**
     - [Configure Online Deletion](configure-online-deletion.md)
-    - [Diagnosing Problems with rippled](../../troubleshooting/diagnosing-problems.md)
+    - [Diagnosing Problems with xrpld](../../troubleshooting/diagnosing-problems.md)
     - [Understanding Log Messages](../../troubleshooting/understanding-log-messages.md)
 - **References:**
     - [server_info method][]

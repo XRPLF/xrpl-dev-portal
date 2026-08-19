@@ -26,7 +26,7 @@ Después de que el código para una enmienda se incluye en una versión de softw
 
 Cada 256º ledger se llama **flag** ledger. El flag ledger no tiene contenidos especiales, pero el proceso de enmienda ocurre alrededor suyo.
 
-1. **Flag Ledger -1:** Cuando los validadores `rippled` envían mensajes de validación, también envían sus votos sobre enmiendas.
+1. **Flag Ledger -1:** Cuando los validadores `xrpld` envían mensajes de validación, también envían sus votos sobre enmiendas.
 2. **Flag Ledger:** Los servidores interpretan los votos de los validadores confiables.
 3. **Flag Ledger +1:** Los servidores insertan la pseudo transacción `EnableAmendment` y marcan dependiendo de lo que piensan que ha pasado:
     * El flag (o marca) `tfGotMajority` significa que la enmienda tiene más del 80% del apoyo.
@@ -40,7 +40,7 @@ Cada 256º ledger se llama **flag** ledger. El flag ledger no tiene contenidos e
 
 ## Votación de enmienda
 
-Cada versión de `rippled` es compilada con una lista de [enmiendas conocidas](/resources/known-amendments.md) y el código para implementar esas enmiendas. Los operadores de los validadores `rippled` configuran sus servidores para votar en cada enmienda y cambiarlo en cada momento. Si un operador no elige un voto, el servidor por defecto tiene un voto definido en el códido fuente.
+Cada versión de `xrpld` es compilada con una lista de [enmiendas conocidas](/resources/known-amendments.md) y el código para implementar esas enmiendas. Los operadores de los validadores `xrpld` configuran sus servidores para votar en cada enmienda y cambiarlo en cada momento. Si un operador no elige un voto, el servidor por defecto tiene un voto definido en el códido fuente.
 
 **Nota:** El voto por defecto cambia entre las publicaciones del software. {% badge href="https://github.com/XRPLF/rippled/releases/tag/1.8.1" %}Actualizado en: rippled 1.8.1{% /badge %}
 
@@ -52,16 +52,16 @@ Las enmiendas que hayan tenido su código fuente removido sin haberse activado o
 ## Servidores bloqueados por enmienda
 <a id="amendment-blocked"></a>
 
-El bloqueo por enmienda es una característica de seguridad para proteger la precisión de los datos del XRP Ledger. Cuando una enmienda se activa, los servidores ejecutando versiones anteriores de `rippled` sin el código fuente de la enmienda ya no consiguen entender las reglas de la red. En vez de adivinar y malinterpretar los datos del ledger, estos servidores se convierten en servidores **bloqueados por enmienda** y no pueden:
+El bloqueo por enmienda es una característica de seguridad para proteger la precisión de los datos del XRP Ledger. Cuando una enmienda se activa, los servidores ejecutando versiones anteriores de `xrpld` sin el código fuente de la enmienda ya no consiguen entender las reglas de la red. En vez de adivinar y malinterpretar los datos del ledger, estos servidores se convierten en servidores **bloqueados por enmienda** y no pueden:
 
 * Determinar la validez de un ledger.
 * Enviar o procesar transacciones.
 * Participar en el proceso de consenso.
 * Votar sobre futuras enmiendas.
 
-La configuración de votación de un servidor `rippled` no tiene impacto en convertirse en un servidor bloqueado por enmienda. Un servidor `rippled` siempre sigue las enmiendas activadas por el resto de la red, por lo que los bloqueos solo se basan en tener el código para entender los cambios de reglas. Esto significa que tu también te puedes convertir en alguien bloqueado por enmienda si conectas tu servidor a una red paralela con enmiendas activadas. Por ejemplo, La Devnet de XRP normalmente tiene enmiendas experimentales activadas. Si estás utilizando la última publicación o release en producción, tu servidor no tendrá ese código de esas enmiendas experimentales.
+La configuración de votación de un servidor `xrpld` no tiene impacto en convertirse en un servidor bloqueado por enmienda. Un servidor `xrpld` siempre sigue las enmiendas activadas por el resto de la red, por lo que los bloqueos solo se basan en tener el código para entender los cambios de reglas. Esto significa que tu también te puedes convertir en alguien bloqueado por enmienda si conectas tu servidor a una red paralela con enmiendas activadas. Por ejemplo, La Devnet de XRP normalmente tiene enmiendas experimentales activadas. Si estás utilizando la última publicación o release en producción, tu servidor no tendrá ese código de esas enmiendas experimentales.
 
-Puedes debloquear servidores bloqueados por enmienda actualizando a la última versión de `rippled`.
+Puedes debloquear servidores bloqueados por enmienda actualizando a la última versión de `xrpld`.
 
 ### Servidores Clio bloqueados por enmienda
 
@@ -69,7 +69,7 @@ Los servidores Clio pueden bloquearse por enmienda si se encuentran un tipo de c
 
 ## Retiro de enmiendas
 
-Cuando las enmiendas son activadas, el código fuente de comportamientos previos a la enmienda permanece en `rippled`. Mientras hay casos de uso para mantener el código antiguo, como la reconstrucción de resultados de los ledgers para verificación, el seguimiento de enmiendas y código heredado agrega complejidad con el tiempo.
+Cuando las enmiendas son activadas, el código fuente de comportamientos previos a la enmienda permanece en `xrpld`. Mientras hay casos de uso para mantener el código antiguo, como la reconstrucción de resultados de los ledgers para verificación, el seguimiento de enmiendas y código heredado agrega complejidad con el tiempo.
 
 El [Estándar 11d de XRP Ledger](https://github.com/XRPLF/XRPL-Standards/discussions/19) define un proceso para retirar enmiendas antiguas y código asociado previo a la enmienda. Después de que una enmienda haya sido activada en Mainnet por dos años, puede ser retirado. Retirar una enmienda la convierte en parte del protocolo central incondicionalmente; ya no se sigue ni se trata como una enmienda, y todo el código anterior a la enmienda es eliminado.
 
@@ -79,7 +79,7 @@ El [Estándar 11d de XRP Ledger](https://github.com/XRPLF/XRPL-Standards/discuss
 - **Conceptos:**
     - [Consenso](../consensus-protocol/index.md)
 - **Tutoriales:**
-    - [Ejecutar rippled como un validador](../../infrastructure/configuration/server-modes/run-rippled-as-a-validator.md)
+    - [Ejecutar xrpld como un validador](../../infrastructure/configuration/server-modes/run-xrpld-as-a-validator.md)
     - [Configurar votación de enmiendas](../../infrastructure/configuration/configure-amendment-voting.md)
     - [Contribuir al código del XRP Ledger](/resources/contribute-code/index.md)
 - **Referencias:**

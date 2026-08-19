@@ -8,7 +8,7 @@ status: not_enabled
 txIcon: modify
 ---
 # XChainAddClaimAttestation
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/TxFormats.cpp#L429-L445 "ソース")
+{% source-link path="include/xrpl/tx/transactors/bridge/XChainBridge.h#L221-L253" /%}
 
 `XChainCommit`トランザクションを証明するWitnessサーバの署名を提供します。
 

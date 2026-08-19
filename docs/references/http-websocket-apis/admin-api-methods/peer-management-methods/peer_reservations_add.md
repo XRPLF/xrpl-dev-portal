@@ -5,7 +5,7 @@ labels:
     - Core Server
 ---
 # peer_reservations_add
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/Reservations.cpp "Source")
+{% source-link path="src/xrpld/rpc/handlers/admin/peer/PeerReservationsAdd.cpp" /%}
 
 The {% code-page-name /%} method adds or updates a reserved slot for a specific peer server in the XRP Ledger [peer-to-peer network](../../../../concepts/networks-and-servers/peer-protocol.md).
 
@@ -44,7 +44,7 @@ An example of the request format:
 {% tab label="Commandline" %}
 ```sh
 #Syntax: {% $frontmatter.seo.title %} <public_key> [<description>]
-rippled {% $frontmatter.seo.title %} n9Jt8awsPzWLjBCNKVEEDQnw4bQEPjezfcQ4gttD1UzbLT1FoG99 "Ripple s1 server 'WOOL'"
+xrpld {% $frontmatter.seo.title %} n9Jt8awsPzWLjBCNKVEEDQnw4bQEPjezfcQ4gttD1UzbLT1FoG99 "Ripple s1 server 'WOOL'"
 ```
 {% /tab %}
 
@@ -97,7 +97,7 @@ An example of a successful response:
 
 {% tab label="Commandline" %}
 ```json
-Loading: "/etc/rippled.cfg"
+Loading: "/etc/xrpld.cfg"
 Connecting to 127.0.0.1:5005
 
 {
