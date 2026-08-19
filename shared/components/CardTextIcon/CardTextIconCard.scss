@@ -133,10 +133,10 @@ $bds-card-text-icon-gap-lg: $bds-padding-card-lg;
 // Adding the BEM parent brings ours to (0,7,1), cleanly winning without !important.
 html.light .bds-card-text-icon-card .bds-card-text-icon-card__description a:not(.bds-link):not(.bds-card-offgrid):not(.bds-card-icon):not(.bds-btn) {
   font-weight: 400;
-  color: $green-400;
+  color: $green-500;
 
   &:hover {
-    color: $green-500;
+    color: $green-400;
     text-decoration: underline;
   }
   &:active {

@@ -8,6 +8,16 @@
     color: $blue-purple-400;
     font-weight: bold;
   }
+
+  :root.dark & {
+    &:hover {
+      color: $blue-purple-300;
+    }
+
+    &.active {
+      color: $blue-purple-300;
+    }
+  }
 }
 
 .page-home {
@@ -353,11 +363,10 @@
     height: 16px;
     background: $blue-purple-400;
     border-radius: 100px;
-
     font-weight: 600;
     font-size: 12px;
     line-height: 16px;
-    color: $blue-purple-300;
+    color: $white;
   }
 
   .category_sidebar {
@@ -1501,9 +1510,9 @@ html.light {
         gap: 32px;
         justify-content: center;
         align-items: center;
-  
+
         .internal-link {
-            color: #9a52ff;
+            color: $blue-purple-400;
             font-size: 16px;
             font-style: normal;
             font-weight: 700;
@@ -1513,7 +1522,13 @@ html.light {
             align-items: center;
             background: none !important;
           }
-  
+
+        :root.dark & {
+          .internal-link {
+            color: $blue-purple-300;
+          }
+        }
+
         @media (max-width: 767px) {
           padding-bottom: 0px;
           gap: 16px;
@@ -2293,6 +2308,12 @@ html.light {
 
         &:hover {
           text-decoration: underline;
+        }
+      }
+
+      :root.dark & {
+        a {
+          color: $blue-purple-300;
         }
       }
     }

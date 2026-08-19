@@ -109,7 +109,7 @@ h6,
   background-color: $light-bg;
 
   &.disabled {
-    color: $light-fg-disabled;
+    color: $gray-600;
   }
 }
 
@@ -611,6 +611,10 @@ pre {
 
 // Use Cases & Featured Projects page
 .page-uses {
+
+  a.btn[data-bs-target="#categoryFilterModal"] {
+    color: $light-fg;
+  }
 
   .card-body {
     background: $white;

@@ -45,6 +45,24 @@
 
   &#{&}--blue {
     background-color: $blue-100;
+
+    a.bds-link {
+      color: $blue-purple-500;
+
+      &:hover {
+        color: $blue-purple-400;
+      }
+    }
+
+    :root.dark & {
+      a.bds-link {
+        color: $blue-purple-500;
+
+        &:hover {
+          color: $blue-purple-400;
+        }
+      }
+    }
   }
 
   &__content {

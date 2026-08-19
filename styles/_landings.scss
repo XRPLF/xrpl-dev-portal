@@ -76,6 +76,13 @@
     }
   }
 
+  :root.dark & {
+    p a:not(.bds-link),
+    h5 a:not(.bds-link) {
+      color: $blue-purple-300;
+    }
+  }
+
   /* Misc. ------------------------------------------------------------------ */
 
   .display-4 {

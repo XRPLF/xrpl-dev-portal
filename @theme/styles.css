@@ -276,7 +276,7 @@ ul.nav.navbar-nav {
   --link-color-primary-hover: var(--color-purple-4);
   --link-color-visited: black;
   --text-color-secondary: black;
-  --code-block-bg-color: var(--color-gray-8);
+  --code-block-bg-color: var(--color-gray-9);
   --code-block-controls-bg-color: var(--color-gray-8);
   --code-block-controls-border: none;
 
@@ -307,7 +307,7 @@ ul.nav.navbar-nav {
   --md-table-border-color: var(--color-gray-8);
 
   --bg-color: var(--color-gray-8);
-  --code-panel-bg-color: var(--color-blue-7);
+  --code-panel-bg-color: var(--color-blue-4);
   --layer-color-hover: var(--color-gray-9);
 
 
@@ -315,9 +315,9 @@ ul.nav.navbar-nav {
   --code-block-tokens-comment-color: var(--color-gray-4);
   --code-block-tokens-constant-color: var(--color-gray-1);
   --code-block-tokens-function-color: var(--color-red-4);
-  --code-block-tokens-keyword-color: var(--color-magenta-5);
+  --code-block-tokens-keyword-color: var(--color-magenta-4);
   --code-block-tokens-operator-color: black;
-  --code-block-tokens-string-color: var(--color-green-3);
+  --code-block-tokens-string-color: var(--color-green-2);
 
   --bg-raised-gradient: "";
   --text-color-helper: var(--color-gray-4);

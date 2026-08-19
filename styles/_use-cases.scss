@@ -299,10 +299,14 @@ html.light {
   font-weight: 600;
   font-size: 12px;
   line-height: 16px;
-  color: #7919ff;
+  color: $blue-purple-400;
   position: relative;
   top: -9px;
   right: 27px;
+}
+
+:root.dark .explore-projects {
+  color: $blue-purple-300;
 }
 
 .section-separator {

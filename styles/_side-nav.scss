@@ -24,6 +24,15 @@ aside .active-parent > a {
   font-weight: 700;
 }
 
+:root.dark {
+  aside a.active,
+  aside a.active:hover,
+  aside .active > a,
+  aside .active > a:hover {
+    color: $blue-purple-300;
+  }
+}
+
 .page-toc .level-1 a,
 .command-list .separator {
   font-weight: 700;
@@ -172,6 +181,19 @@ aside .active-parent > a {
       border-left: 2px solid $link-hover-color;
       padding-left: calc(1rem - 1px);
       margin-left: -1px;
+    }
+  }
+
+  :root.dark & {
+    .level-3 {
+      border-left-color: $blue-purple-300;
+    }
+
+    li a {
+      &:hover,
+      .active {
+        border-left-color: $blue-purple-300;
+      }
     }
   }
 

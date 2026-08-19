@@ -37,6 +37,10 @@
   }
 
   .card-date {
+    color: $gray-500;
+  }
+
+  :root.dark & .card-date {
     color: $gray-400;
   }
 
