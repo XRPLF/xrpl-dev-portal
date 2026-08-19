@@ -89,7 +89,7 @@ Each MPT object has the following fields:
 |:------------------|:-----------------|:------------|
 | `mpt_id`          | String           | The [ledger entry ID][] of the `MPToken` ledger entry for this MPT. |
 | `account`         | [Address][]      | The holder of this MPT. |
-| `mpt_issuance_id` | String           | The `MPTokenIssuanceID` of the [MPTokenIssuance entry][] that this `MPToken` is associated with. |
+| `mpt_issuance_id` | String           | The 192-bit `MPTokenIssuanceID`, as hexadecimal, of the [MPTokenIssuance entry][] that this `MPToken` is associated with. |
 | `mpt_amount`      | Number           | The amount of tokens currently held by the account for this issuance. |
 | `locked_amount`   | Number           | _(May be omitted)_ The amount of tokens currently held in [escrow](/docs/concepts/payment-types/escrow). Omitted if the `MPToken` has no escrowed balance. |
 | `mpt_locked`      | Boolean          | _(May be omitted)_ If `true`, the issuer has frozen the holder's balance of this token, so the holder can't send it. This is unrelated to `locked_amount`. Omitted if not frozen. |
