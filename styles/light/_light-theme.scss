@@ -612,6 +612,10 @@ pre {
 // Use Cases & Featured Projects page
 .page-uses {
 
+  a.btn[data-bs-target="#categoryFilterModal"] {
+    color: $light-fg;
+  }
+
   .card-body {
     background: $white;
     color: $gray-700;
