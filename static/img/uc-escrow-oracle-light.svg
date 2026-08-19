@@ -1,11 +1,10 @@
 <svg viewBox="0 0 840 572" width="840" height="572" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system,BlinkMacSystemFont,'Helvetica Neue',Helvetica,Arial,sans-serif">
-  <rect width="840" height="572" fill="#FFFFFF"/>
 
   <!-- Oracle card, top center -->
   <defs>
     <clipPath id="oraclecardclip"><rect x="300" y="30" width="240" height="170" rx="8"/></clipPath>
   </defs>
-  <rect x="300.5" y="30.5" width="239" height="169" rx="7.5" fill="#F0F3F7" stroke="#CAD4DF" stroke-width="1"/>
+  <rect x="300.5" y="30.5" width="239" height="169" rx="7.5" fill="#FFFFFF" stroke="#CAD4DF" stroke-width="1"/>
   <rect x="300" y="30" width="240" height="4" fill="#21E46B" clip-path="url(#oraclecardclip)"/>
   <text x="420" y="83" text-anchor="middle" font-size="24" font-weight="700" fill="#141414">Oracle</text>
   <text x="420" y="108" text-anchor="middle" font-size="13" fill="#454549">Neutral Third Party</text>
@@ -58,6 +57,6 @@
   <text x="666" y="450" text-anchor="middle" font-size="13" fill="#141414">Recipient</text>
 
   <!-- legend pill: emphasis by weight, since bright green text would not read here -->
-  <rect x="264" y="505" width="312" height="43" rx="21.5" fill="#F0F3F7" stroke="#CAD4DF" stroke-width="1"/>
+  <rect x="264" y="505" width="312" height="43" rx="21.5" fill="#FFFFFF" stroke="#CAD4DF" stroke-width="1"/>
   <text x="420" y="531" text-anchor="middle" font-size="15" fill="#454549"><tspan font-weight="700" fill="#141414">Condition</tspan> = Lock &#160;&#183;&#160; <tspan font-weight="700" fill="#141414">Fulfillment</tspan> = Key</text>
 </svg>

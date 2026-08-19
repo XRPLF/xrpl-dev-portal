@@ -1,5 +1,4 @@
 <svg viewBox="0 0 840 460" width="840" height="460" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system,BlinkMacSystemFont,'Helvetica Neue',Helvetica,Arial,sans-serif">
-  <rect width="840" height="460" fill="#FFFFFF"/>
 
   <!-- Sender -->
   <circle cx="94" cy="220" r="44" fill="#E6EAF0"/>
@@ -18,7 +17,7 @@
   <defs>
     <clipPath id="cardclip"><rect x="310" y="100" width="220" height="220" rx="8"/></clipPath>
   </defs>
-  <rect x="310.5" y="100.5" width="219" height="219" rx="7.5" fill="#F0F3F7" stroke="#CAD4DF" stroke-width="1"/>
+  <rect x="310.5" y="100.5" width="219" height="219" rx="7.5" fill="#FFFFFF" stroke="#CAD4DF" stroke-width="1"/>
   <rect x="310" y="100" width="220" height="4" fill="#21E46B" clip-path="url(#cardclip)"/>
   <text x="420" y="143" text-anchor="middle" font-size="14" fill="#454549">Escrow</text>
   <text x="420" y="174" text-anchor="middle" font-size="26" font-weight="700" fill="#141414">Held</text>
@@ -47,6 +46,6 @@
   <text x="746" y="286" text-anchor="middle" font-size="13" fill="#141414">Recipient</text>
 
   <!-- legend pill: emphasis by weight, since bright green text would not read here -->
-  <rect x="264" y="393" width="312" height="43" rx="21.5" fill="#F0F3F7" stroke="#CAD4DF" stroke-width="1"/>
+  <rect x="264" y="393" width="312" height="43" rx="21.5" fill="#FFFFFF" stroke="#CAD4DF" stroke-width="1"/>
   <text x="420" y="419" text-anchor="middle" font-size="15" fill="#454549"><tspan font-weight="700" fill="#141414">Condition</tspan> = Lock &#160;&#183;&#160; <tspan font-weight="700" fill="#141414">Fulfillment</tspan> = Key</text>
 </svg>
