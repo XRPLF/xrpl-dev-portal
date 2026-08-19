@@ -15455,6 +15455,16 @@ body,
   }
 }
 
+html.light .uc-smart-contract-condition-diagram {
+  content: url(../img/uc-smart-contract-condition-light.svg);
+}
+html.light .uc-escrow-flow-diagram {
+  content: url(../img/uc-conditional-escrow-flow-light.svg);
+}
+html.light .uc-escrow-oracle-diagram {
+  content: url(../img/uc-escrow-oracle-light.svg);
+}
+
 .dark [data-component-name="Breadcrumbs/Breadcrumbs"] + div > a > svg > rect {
   fill: transparent;
 }
