@@ -47,6 +47,12 @@ interface ButtonProps {
   href?: string;
   /** Link target - only applies when href is provided */
   target?: '_self' | '_blank';
+  /**
+   * Force no padding and left-align text.
+   * When true, removes all padding and aligns content to the left.
+   * Useful for tertiary buttons in block layouts where left alignment is needed.
+   */
+  forceNoPadding?: boolean;
 }
 ```
 
@@ -62,6 +68,25 @@ interface ButtonProps {
 - `ariaLabel`: (derived from children text)
 - `href`: `undefined`
 - `target`: `'_self'`
+- `forceNoPadding`: `false`
+
+### Force No Padding
+
+`forceNoPadding` adds the `bds-btn--no-padding` class, which strips the button's
+padding and left-aligns its content. Use it for tertiary buttons in block layouts
+that need to sit flush with surrounding text rather than indented by button
+padding.
+
+```tsx
+<Button variant="tertiary" forceNoPadding href="/docs">
+  Read the docs
+</Button>
+```
+
+[ButtonGroup](../../patterns/ButtonGroup/README.md) applies this automatically in
+its 3+ button block layout when the resolved variant is tertiary, since that layout
+is flush-left. A forced filled variant at 3+ keeps its padding unless you opt out
+explicitly. So you rarely need to set this by hand when going through that pattern.
 
 ## Variants
 

@@ -1033,10 +1033,16 @@
                     gap: 8px;
                 }
                 
+                :root.dark & {
+                    .com-card-link {
+                        color: $blue-purple-300;
+                    }
+                }
+
                 .com-card-link {
                     text-decoration: none;
                     cursor: pointer;
-                    color: #9A52FF;
+                    color: $blue-purple-400;
                     font-size: 16px;
                     font-style: normal;
                     font-weight: 600;

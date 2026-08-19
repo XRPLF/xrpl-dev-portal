@@ -83,6 +83,14 @@
   }
 }
 
+.form-text {
+  color: $gray-500;
+
+  :root.dark & {
+    color: $gray-400;
+  }
+}
+
 .form-text a {
   text-decoration: underline;
 }

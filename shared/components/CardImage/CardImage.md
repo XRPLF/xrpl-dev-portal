@@ -22,7 +22,7 @@ interface CardImageProps {
   imageAlt: string;
   /** Card title (1 line only) */
   title: string;
-  /** Card subtitle (max 3 lines) */
+  /** Card subtitle (max 3 lines). `\n` renders as a line break; an all-bullet subtitle renders as a list. */
   subtitle: string;
   /** Button label text */
   buttonLabel: string;
@@ -34,6 +34,10 @@ interface CardImageProps {
   disabled?: boolean;
   /** Optional className for custom styling */
   className?: string;
+  /** When true, image fills entire container with object-fit: cover (no visible background) */
+  fullBleed?: boolean;
+  /** Custom background color for image container (defaults to gray-100) */
+  backgroundColor?: string;
 }
 ```
 
@@ -41,6 +45,44 @@ interface CardImageProps {
 
 - `disabled`: `false`
 - `className`: `''`
+- `fullBleed`: `false`
+- `backgroundColor`: `undefined` (falls back to the gray-100 image background)
+
+## Subtitle Formatting
+
+`subtitle` is a plain string, but it is not rendered blindly:
+
+- Lines are split on `\n`, and blank lines are dropped.
+- If **every** line begins with a bullet marker (`•`, `-`, or `*`), the subtitle
+  renders as a `<ul>` (`bds-card-image__subtitle--list`) with one `<li>` per line.
+- Anything else renders as a single `<p>`, where `white-space: pre-line` means
+  `\n` still produces a visible line break.
+
+```tsx
+// Renders as a bulleted list
+<CardImage subtitle={"• Fast settlement\n• Low fees\n• Built-in DEX"} ... />
+
+// Renders as a paragraph with a line break
+<CardImage subtitle={"Fast settlement.\nLow fees."} ... />
+```
+
+## Image Sizing
+
+By default the image sits in a fixed-height container against a gray-100
+background, preserving its aspect ratio.
+
+- **`fullBleed`** — sets `bds-card-image--full-bleed`, which drops the card's
+  fixed height (`height: auto`) and makes the image fill the container using a
+  1:1 aspect ratio with `object-fit: cover`. Use this when the image is the whole
+  visual and you don't want letterboxing.
+- **`backgroundColor`** — sets the `--bds-card-image-bg` custom property on the
+  image container, overriding the gray-100 default. Has no visible effect
+  alongside `fullBleed`, since the image covers the container.
+
+```tsx
+<CardImage fullBleed image="/images/hero.png" ... />
+<CardImage backgroundColor="#F3F1EB" image="/images/logo.svg" ... />
+```
 
 ## Responsive Variants
 

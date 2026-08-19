@@ -43,6 +43,14 @@ export interface CarouselFeatureItem {
 export type CarouselFeaturedBackground = "grey" | "neutral" | "yellow";
 
 /**
+ * Slide transition style for CarouselFeatured
+ * - 'fade': slides crossfade in place, with the image/heading leading and the
+ *   feature list and buttons following on a short stagger (default)
+ * - 'slide': slides wipe horizontally left/right
+ */
+export type CarouselFeaturedTransition = "slide" | "fade";
+
+/**
  * Props for the CarouselFeatured pattern component
  */
 export interface CarouselFeaturedProps extends React.ComponentPropsWithoutRef<"section"> {
@@ -50,6 +58,8 @@ export interface CarouselFeaturedProps extends React.ComponentPropsWithoutRef<"s
   slides: readonly CarouselSlide[];
   /** Background color variant. Defaults to 'grey'. */
   background?: CarouselFeaturedBackground;
+  /** Slide transition style. Defaults to 'fade'. */
+  transition?: CarouselFeaturedTransition;
 }
 
 /**
@@ -85,7 +95,16 @@ export const CarouselFeatured = React.forwardRef<
   HTMLElement,
   CarouselFeaturedProps
 >((props, ref) => {
-  const { slides, background = "grey", className, children, ...rest } = props;
+  const {
+    slides,
+    background = "grey",
+    transition = "fade",
+    className,
+    children,
+    ...rest
+  } = props;
+
+  const isFade = transition === "fade";
 
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -121,6 +140,7 @@ export const CarouselFeatured = React.forwardRef<
       className={clsx(
         "bds-carousel-featured",
         `bds-carousel-featured--bg-${background}`,
+        `bds-carousel-featured--${transition}`,
         className,
       )}
       aria-roledescription="carousel"
@@ -135,7 +155,13 @@ export const CarouselFeatured = React.forwardRef<
       >
         <div
           className="bds-carousel-featured__slide-track"
-          style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+          // The fade variant stacks all slides in one grid cell, so there is no
+          // track to move — the crossfade is driven entirely by the --active class.
+          style={
+            isFade
+              ? undefined
+              : { transform: `translateX(-${currentIndex * 100}%)` }
+          }
         >
           {slides.map((slide, index) => (
               <div
@@ -145,6 +171,9 @@ export const CarouselFeatured = React.forwardRef<
                     index === currentIndex,
                 })}
                 aria-hidden={index !== currentIndex}
+                // Keeps focus and pointer events out of inactive slides, which are
+                // still rendered (off-track for 'slide', stacked underneath for 'fade')
+                inert={index !== currentIndex}
               >
                 <PageGridRow>
                   {/* Content Column - Right on desktop, top on mobile */}

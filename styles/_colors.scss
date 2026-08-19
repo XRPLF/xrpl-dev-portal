@@ -8,6 +8,7 @@
 // Base colors ----------------------------------------------------
 $white:    #FFFFFF;
 $black:    #141414;
+$brand-green: #21E46B;
 
 $gray-050: #FCFCFD;
 // Gray (Neutral) - New Design Tokens
@@ -32,7 +33,7 @@ $black-60: $gray-600;
 // Green - New Design Tokens
 $green-100: #EAFCF1;  // New design token
 $green-200: #70EE97;  // New design token
-$green-300: #21E46B;  // New design token (default)
+$green-300: $brand-green;  // New design token (default)
 $green-400: #0DAA3E;  // New design token
 $green-500: #078139;  // New design token
 $green: $green-500;
@@ -116,7 +117,166 @@ $yellow-200: #E6F1A7;  // New design token
 $yellow-300: #DBF15E;  // New design token (default)
 $yellow-400: #E1DB26;  // New design token
 $yellow-500: #D4C02D;  // New design token
+$yellow-600: #786C1A; // Darker yellow for a11y contrast (4.70:1 on $yellow-100)
 $yellow: $yellow-500;
+
+// XRPL Green (Radix 12-step) -----------------------------------------------
+// Generated from brand Green #21E46B with Radix generateRadixColors.
+// Step 9 is the brand value exactly. Light steps solved against #FFFFFF,
+// dark steps against #141414.
+//
+// Light: only steps 11–12 clear 3:1 vs white; 1–10 are fill/background only.
+// Step 9 is 1.70:1 on white — solid fill, never text, border, or icon.
+// Only step 12 clears 4.5:1 against the neutral greys. Contrast is
+// non-monotonic at step 9 (step 8 is 2.30, step 9 is 1.70) so do not treat
+// step 8 as a hovered border on step 9.
+// Dark: steps 9–12 clear 4.5:1; step 8 clears 3:1.
+// $xrpl-green-contrast is the foreground on step 9 (9.3:1). Do not use white.
+
+// Light solids
+$xrpl-green-1: #fafefb;
+$xrpl-green-2: #f4fbf5;
+$xrpl-green-3: #ddfbe1;
+$xrpl-green-4: #c6f8ce;
+$xrpl-green-5: #b0f0bb;
+$xrpl-green-6: #98e4a7;
+$xrpl-green-7: #7bd48e;
+$xrpl-green-8: #48c16a;
+$xrpl-green-9: $brand-green; // brand green
+$xrpl-green-10: #00d960;
+$xrpl-green-11: #16843d;
+$xrpl-green-12: #1c4425;
+$xrpl-green-contrast: #132717;
+
+// Light alpha (8-digit hex: rrggbbaa)
+$xrpl-green-a1: #00cc3305;
+$xrpl-green-a2: #00a3180b;
+$xrpl-green-a3: #00e11e22;
+$xrpl-green-a4: #00e02439;
+$xrpl-green-a5: #00cf244f;
+$xrpl-green-a6: #00bd2667;
+$xrpl-green-a7: #00ac2584;
+$xrpl-green-a8: #00a930b7;
+$xrpl-green-a9: #00e055de;
+$xrpl-green-a10: #00d960;
+$xrpl-green-a11: #00782be9;
+$xrpl-green-a12: #002d0ae3;
+
+// Dark solids
+$xrpl-green-dark-1: #0f1610;
+$xrpl-green-dark-2: #121c14;
+$xrpl-green-dark-3: #132e19;
+$xrpl-green-dark-4: #0f3d1c;
+$xrpl-green-dark-5: #144b24;
+$xrpl-green-dark-6: #1b592d;
+$xrpl-green-dark-7: #226a37;
+$xrpl-green-dark-8: #267f40;
+$xrpl-green-dark-9: #21e46b; // brand green
+$xrpl-green-dark-10: #00d960;
+$xrpl-green-dark-11: #00db63;
+$xrpl-green-dark-12: #acf4b9;
+$xrpl-green-dark-contrast: $xrpl-green-contrast;
+
+// Dark alpha (8-digit hex: rrggbbaa)
+$xrpl-green-dark-a1: #00be0003;
+$xrpl-green-dark-a2: #00f71509;
+$xrpl-green-dark-a3: #0cf9401d;
+$xrpl-green-dark-a4: #00fd422d;
+$xrpl-green-dark-a5: #15fe583c;
+$xrpl-green-dark-a6: #2cff694b;
+$xrpl-green-dark-a7: #3afd735e;
+$xrpl-green-dark-a8: #3bfd7475;
+$xrpl-green-dark-a9: #23ff77e2;
+$xrpl-green-dark-a10: #00ff6fd6;
+$xrpl-green-dark-a11: #00ff71d8;
+$xrpl-green-dark-a12: #b3fec0f4;
+
+// Sage (Radix 12-step, neutral) --------------------------------------------
+// https://www.radix-ui.com/colors/docs/palette-composition/scales
+// Primitive steps 1–12. Overlays are black/white alpha, not sage-tinted.
+
+// Light solids
+$sage-1: #fbfdfc;
+$sage-2: #f7f9f8;
+$sage-3: #eef1f0;
+$sage-4: #e6e9e8;
+$sage-5: #dfe2e0;
+$sage-6: #d7dad9;
+$sage-7: #cbcfcd;
+$sage-8: #b8bcba;
+$sage-9: #868e8b;
+$sage-10: #7c8481;
+$sage-11: #5f6563;
+$sage-12: #1a211e;
+
+// Light alpha (8-digit hex: rrggbbaa)
+$sage-a1: #00804004;
+$sage-a2: #00402008;
+$sage-a3: #002d1e11;
+$sage-a4: #001f1519;
+$sage-a5: #00180820;
+$sage-a6: #00140d28;
+$sage-a7: #00140a34;
+$sage-a8: #000f0847;
+$sage-a9: #00110b79;
+$sage-a10: #00100a83;
+$sage-a11: #000a07a0;
+$sage-a12: #000805e5;
+
+// Dark solids
+$sage-dark-1: #101211;
+$sage-dark-2: #171918;
+$sage-dark-3: #202221;
+$sage-dark-4: #272a29;
+$sage-dark-5: #2e3130;
+$sage-dark-6: #373b39;
+$sage-dark-7: #444947;
+$sage-dark-8: #5b625f;
+$sage-dark-9: #63706b;
+$sage-dark-10: #717d79;
+$sage-dark-11: #adb5b2;
+$sage-dark-12: #eceeed;
+
+// Dark alpha (8-digit hex: rrggbbaa)
+$sage-dark-a1: #00000000;
+$sage-dark-a2: #f0f2f108;
+$sage-dark-a3: #f3f5f412;
+$sage-dark-a4: #f2fefd1a;
+$sage-dark-a5: #f1fbfa22;
+$sage-dark-a6: #edfbf42d;
+$sage-dark-a7: #edfcf73c;
+$sage-dark-a8: #ebfdf657;
+$sage-dark-a9: #dffdf266;
+$sage-dark-a10: #e5fdf674;
+$sage-dark-a11: #f4fefbb0;
+$sage-dark-a12: #fdfffeed;
+
+// Overlays
+$black-overlay-a1: rgba(0, 0, 0, 0.05);
+$black-overlay-a2: rgba(0, 0, 0, 0.1);
+$black-overlay-a3: rgba(0, 0, 0, 0.15);
+$black-overlay-a4: rgba(0, 0, 0, 0.2);
+$black-overlay-a5: rgba(0, 0, 0, 0.3);
+$black-overlay-a6: rgba(0, 0, 0, 0.4);
+$black-overlay-a7: rgba(0, 0, 0, 0.5);
+$black-overlay-a8: rgba(0, 0, 0, 0.6);
+$black-overlay-a9: rgba(0, 0, 0, 0.7);
+$black-overlay-a10: rgba(0, 0, 0, 0.8);
+$black-overlay-a11: rgba(0, 0, 0, 0.9);
+$black-overlay-a12: rgba(0, 0, 0, 0.95);
+
+$white-overlay-a1: rgba(255, 255, 255, 0.05);
+$white-overlay-a2: rgba(255, 255, 255, 0.1);
+$white-overlay-a3: rgba(255, 255, 255, 0.15);
+$white-overlay-a4: rgba(255, 255, 255, 0.2);
+$white-overlay-a5: rgba(255, 255, 255, 0.3);
+$white-overlay-a6: rgba(255, 255, 255, 0.4);
+$white-a7: rgba(255, 255, 255, 0.5);
+$white-overlay-a8: rgba(255, 255, 255, 0.6);
+$white-overlay-a9: rgba(255, 255, 255, 0.7);
+$white-overlay-a10: rgba(255, 255, 255, 0.8);
+$white-overlay-a11: rgba(255, 255, 255, 0.9);
+$white-overlay-a12: rgba(255, 255, 255, 0.95);
 
 // Common colors & colors used in Bootstrap ------------------------------------
 $primary:       $purple;

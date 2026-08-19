@@ -322,16 +322,17 @@ $whats-new-footers: (
     cursor: pointer;
     font-family: inherit;
     font-size: 1.05rem;
-    color: $blue-purple-300;
+    color: $blue-purple-400;
+    margin-top: 1rem;
 
     &:hover {
       text-decoration: underline;
     }
-  }
-}
 
-.light .page-tutorials .explore-more-wrapper .explore-more-link {
-  color: $blue-purple-300;
+    :root.dark & {
+      color: $blue-purple-300;
+    }
+  }
 }
 
 // TOC navigation buttons
@@ -468,6 +469,10 @@ $whats-new-footers: (
     font-weight: 500;
     color: $gray-500;
     letter-spacing: 0.02em;
+
+    :root.dark & {
+      color: $gray-400;
+    }
   }
 
   .quick-ref-value {

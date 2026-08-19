@@ -55,6 +55,13 @@ export interface HeaderHeroPrimaryMediaProps
   subtitle: React.ReactNode;
   /** Media element - supports image, video, or custom React element */
   media: HeaderHeroMedia;
+  /**
+   * When true, the headline, subtitle, and buttons stack vertically in a single
+   * column (full width at base, 7 of 8 at md, 9 of 12 at lg) with 16px between
+   * the headline and subtitle, instead of the default two-column layout
+   * (headline left, subtitle + buttons right).
+   */
+  stacked?: boolean;
 }
 
 /**
@@ -112,7 +119,15 @@ const HeaderHeroPrimaryMedia = forwardRef<
   HTMLElement,
   HeaderHeroPrimaryMediaProps
 >((props, ref) => {
-  const { headline, subtitle, links, media, className, ...restProps } = props;
+  const {
+    headline,
+    subtitle,
+    links,
+    media,
+    stacked = false,
+    className,
+    ...restProps
+  } = props;
 
   const buttonValidation = validateButtonGroup(
     (links ?? []).map((l) => ({
@@ -152,41 +167,71 @@ const HeaderHeroPrimaryMedia = forwardRef<
     return null;
   }
 
+  // Shared between both layouts so the two arrangements can't drift apart
+  const headlineElement = (
+    <h1 className="bds-header-hero-primary-media__headline display-md">
+      <span>{headline}</span>
+    </h1>
+  );
+
+  const ctaElement = (
+    <div className="bds-header-hero-primary-media__cta-container">
+      {!isEmpty(subtitle) && (
+        <div className="bds-header-hero-primary-media__subtitle body-l">
+          {subtitle}
+        </div>
+      )}
+      {buttonValidation.hasButtons && (
+        <div className="bds-header-hero-primary-media__cta-buttons">
+          <ButtonGroup
+            buttons={buttonValidation.buttons}
+            color="green"
+            forceColor
+            gap="medium"
+          />
+        </div>
+      )}
+    </div>
+  );
+
   return (
     <header
-      className={clsx("bds-header-hero-primary-media", className)}
+      className={clsx(
+        "bds-header-hero-primary-media",
+        stacked && "bds-header-hero-primary-media--stacked",
+        className,
+      )}
       ref={ref}
       {...restProps}
     >
       <PageGrid>
         <PageGrid.Row>
-          <PageGrid.Col
-            span={{ base: 12, md: 6, lg: 5 }}
-            className="bds-header-hero-primary-media__headline-container"
-          >
-            <h1 className="bds-header-hero-primary-media__headline display-md">
-              <span>{headline}</span>
-            </h1>
-          </PageGrid.Col>
-          <PageGrid.Col offset={{ base: 0, lg: 1 }} span={{ base: 12, lg: 5 }}>
-            <div className="bds-header-hero-primary-media__cta-container">
-              {!isEmpty(subtitle) && (
-                <div className="bds-header-hero-primary-media__subtitle body-l">
-                  {subtitle}
-                </div>
-              )}
-              {buttonValidation.hasButtons && (
-                <div className="bds-header-hero-primary-media__cta-buttons">
-                  <ButtonGroup
-                    buttons={buttonValidation.buttons}
-                    color="green"
-                    forceColor
-                    gap="medium"
-                  />
-                </div>
-              )}
-            </div>
-          </PageGrid.Col>
+          {stacked ? (
+            // Stacked: headline, subtitle, and buttons in one column
+            <PageGrid.Col
+              span={{ base: 12, md: 7, lg: 9 }}
+              className="bds-header-hero-primary-media__stack"
+            >
+              {headlineElement}
+              {ctaElement}
+            </PageGrid.Col>
+          ) : (
+            // Default: headline left, subtitle + buttons right
+            <>
+              <PageGrid.Col
+                span={{ base: 12, md: 6, lg: 5 }}
+                className="bds-header-hero-primary-media__headline-container"
+              >
+                {headlineElement}
+              </PageGrid.Col>
+              <PageGrid.Col
+                offset={{ base: 0, lg: 1 }}
+                span={{ base: 12, lg: 5 }}
+              >
+                {ctaElement}
+              </PageGrid.Col>
+            </>
+          )}
         </PageGrid.Row>
         {/* Media */}
         {!isEmpty(media) && (

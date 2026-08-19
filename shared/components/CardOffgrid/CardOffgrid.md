@@ -135,6 +135,25 @@
 />
 ```
 
+### Static (Presentational) Cards
+
+Omit both `onClick` and `href` to render a purely presentational card. It has no
+click target, so the component drops every interactive affordance: no pointer
+cursor, no hover color wipe, and no pressed state. It renders as a plain `<div>`
+and isn't focusable or announced as a control.
+
+Use this for cards that only communicate information — e.g. a "why XRPL" feature
+carousel where none of the cards link anywhere.
+
+```tsx
+<CardOffgrid
+  variant="green"
+  icon="/icons/metadata.svg"
+  title="Onchain Metadata"
+  description="Easily store key asset information."
+/>
+```
+
 ### Disabled State
 
 Use `disabled` when:
@@ -212,6 +231,7 @@ For hero sections or featured highlights:
 The component automatically renders as:
 - `<button>` when using `onClick`
 - `<a>` when using `href`
+- `<div>` when neither is provided (static card — not focusable, not announced as a control)
 
 This ensures proper semantic meaning for screen readers.
 
@@ -347,6 +367,7 @@ Use green variant for primary features, neutral for supporting:
 - Ensure icon fits within 68×68px bounds
 
 **Hover animation not working:**
+- Confirm the card has an `onClick` or `href` — static cards intentionally have no hover animation
 - Check browser supports CSS `clip-path`
 - Verify no conflicting CSS is overriding transitions
 - Test in different browsers

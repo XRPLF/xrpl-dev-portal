@@ -102,6 +102,33 @@
 
 
 
+  // ---------------------------------------------------------------------------
+  // Stacked Variant
+  // ---------------------------------------------------------------------------
+  // Headline, subtitle, and buttons in a single full-width column instead of the
+  // default two-column split.
+
+  &__stack {
+    display: flex;
+    flex-direction: column;
+    gap: $bds-space-lg; // 16px - spacing('lg') between headline and subtitle
+  }
+
+  &--stacked {
+    // The default headline bottom-aligns itself against the adjacent CTA column.
+    // Stacked has no adjacent column, so it flows normally.
+    .bds-header-hero-primary-media__headline {
+      display: block;
+      height: auto;
+    }
+
+    // Likewise, the CTA block no longer needs to stretch and bottom-align.
+    .bds-header-hero-primary-media__cta-container {
+      min-height: 0;
+      justify-content: flex-start;
+    }
+  }
+
   &__media-container {
     width: 100%;
     aspect-ratio: 16 / 9; // Design requirement: 16/9 aspect ratio

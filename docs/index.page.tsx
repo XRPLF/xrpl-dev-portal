@@ -32,6 +32,7 @@ export default function Docs() {
         headline={translate("XRP Ledger (XRPL) Documentation")}
         subtitle={translate("Explore XRPL documentation with our essential guide for developers and admins who want to start building and integrating with the XRP Ledger.")}
         media={{ type: 'image', src: require('../static/img/bds-2026/docs-hero-media.jpg'), alt: translate('XRPL Documentation') }}
+        stacked={true}
       />
 
       {/* 2. Get Started Carousel */}
@@ -359,7 +360,9 @@ export default function Docs() {
             heading: translate('Install Your XRPL Server: Rippled & Clio'),
             description: (
               <>
-                {translate("Take ownership of your connection to the blockchain with a core server that can submit transactions, read balances, and store a complete copy of the ledger data.")}{' '}
+                {translate("Take ownership of your connection to the blockchain with a core server that can submit transactions, read balances, and store a complete copy of the ledger data.")}
+                <br />
+                <br />
                 <a href="/docs/infrastructure/installation">{translate("Learn More")}</a>
               </>
             ),
@@ -370,7 +373,9 @@ export default function Docs() {
             heading: translate('Node Configuration'),
             description: (
               <>
-                {translate("Customize your server configuration for your use case, including data retention, network connectivity, and performance tuning.")}{' '}
+                {translate("Customize your server configuration for your use case, including data retention, network connectivity, and performance tuning.")}
+                <br />
+                <br />
                 <a href="/docs/infrastructure/configuration">{translate("Learn More")}</a>
               </>
             ),
@@ -381,7 +386,9 @@ export default function Docs() {
             heading: translate('Troubleshooting Your Node'),
             description: (
               <>
-                {translate("Diagnose and solve problems with your server to maximize uptime and reliability.")}{' '}
+                {translate("Diagnose and solve problems with your server to maximize uptime and reliability.")}
+                <br />
+                <br />
                 <a href="/docs/infrastructure/troubleshooting">{translate("Learn More")}</a>
               </>
             ),

@@ -8,7 +8,7 @@ A full-width banner component featuring a heading, subheading, and optional acti
 - **Background Image Support**: Optional image with gradient overlay for text readability
 - **Mode-Aware Background Images**: Optional separate image per color scheme (light vs dark)
 - **Responsive Design**: Adapts across mobile, tablet, and desktop breakpoints
-- **Flexible Buttons**: Supports primary, tertiary, both, or no buttons
+- **Flexible Buttons**: Pass 0, 1, or 2 button configs; variants are assigned by count
 - **Automatic Button Styling**: Intelligently selects button colors based on variant
 - **Dark Mode Support**: Full light and dark mode compatibility
 - **Grid Integration**: Built-in PageGrid wrapper with wide container support
@@ -70,20 +70,12 @@ interface CalloutMediaBannerProps {
   textColor?: 'white' | 'black';
   /** Main heading text */
   heading?: string;
+  /** Heading element type - h1 through h6 (defaults to h6) */
+  headingAs?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
   /** Subheading/description text */
   subheading: string;
-  /** Primary button configuration */
-  primaryButton?: {
-    label: string;
-    href?: string;
-    onClick?: () => void;
-  };
-  /** Tertiary button configuration */
-  tertiaryButton?: {
-    label: string;
-    href?: string;
-    onClick?: () => void;
-  };
+  /** Button configurations (1-2 buttons supported) */
+  buttons?: ButtonConfig[];
   /** Additional CSS classes */
   className?: string;
 }
@@ -94,9 +86,24 @@ interface CalloutMediaBannerProps {
 - `variant`: `'default'`
 - `backgroundImage`: `undefined`
 - `textColor`: `'white'` (only used when `backgroundImage` is provided)
-- `primaryButton`: `undefined`
-- `tertiaryButton`: `undefined`
+- `headingAs`: `'h6'`
+- `buttons`: `undefined`
 - `className`: `''`
+
+### ButtonConfig
+
+Imported from the [ButtonGroup pattern](../../patterns/ButtonGroup/README.md).
+
+```tsx
+interface ButtonConfig {
+  label: string;        // Button text
+  href?: string;        // Link destination
+  onClick?: () => void; // Click handler
+  forceColor?: boolean; // Keep the color constant regardless of theme mode
+}
+```
+
+A maximum of 2 buttons is supported; the array is validated by `validateButtonGroup`.
 
 ## Usage Examples
 
@@ -109,8 +116,10 @@ import { CalloutMediaBanner } from 'shared/sections/CalloutMediaBanner';
   variant="green"
   heading="The Compliant Ledger Protocol"
   subheading="A decentralized public Layer 1 blockchain for creating, transferring, and exchanging digital assets with a focus on compliance."
-  primaryButton={{ label: "Get Started", href: "/docs" }}
-  tertiaryButton={{ label: "Learn More", href: "/about" }}
+  buttons={[
+    { label: "Get Started", href: "/docs" },
+    { label: "Learn More", href: "/about" }
+  ]}
 />
 ```
 
@@ -121,7 +130,7 @@ import { CalloutMediaBanner } from 'shared/sections/CalloutMediaBanner';
   backgroundImage="/images/hero-bg.jpg"
   heading="Build on XRPL"
   subheading="Start building your next project on the XRP Ledger."
-  primaryButton={{ label: "Start Building", onClick: handleClick }}
+  buttons={[{ label: "Start Building", onClick: handleClick }]}
 />
 ```
 
@@ -133,7 +142,7 @@ import { CalloutMediaBanner } from 'shared/sections/CalloutMediaBanner';
   textColor="black"
   heading="Build on XRPL"
   subheading="Start building your next project on the XRP Ledger with black text that remains consistent across light and dark modes."
-  primaryButton={{ label: "Start Building", onClick: handleClick }}
+  buttons={[{ label: "Start Building", onClick: handleClick }]}
 />
 ```
 
@@ -149,7 +158,7 @@ between light and dark mode.
   backgroundImageDark="/img/backgrounds/callout-dark.jpg"
   heading="Build on XRPL"
   subheading="Start building your next project on the XRP Ledger."
-  primaryButton={{ label: "Start Building", href: "/docs" }}
+  buttons={[{ label: "Start Building", href: "/docs" }]}
 />
 ```
 
@@ -163,7 +172,7 @@ modes (backward-compatible default).
   variant="light-gray"
   heading="Developer Resources"
   subheading="Access comprehensive documentation and tutorials."
-  primaryButton={{ label: "View Docs", href: "/docs" }}
+  buttons={[{ label: "View Docs", href: "/docs" }]}
 />
 ```
 
@@ -184,11 +193,13 @@ modes (backward-compatible default).
   variant="default"
   heading="Join the Community"
   subheading="Connect with developers, validators, and enthusiasts."
-  primaryButton={{ 
-    label: "Join Discord", 
-    onClick: () => window.open('https://discord.gg/xrpl', '_blank')
-  }}
-  tertiaryButton={{ label: "View Events", href: "/events" }}
+  buttons={[
+    {
+      label: "Join Discord",
+      onClick: () => window.open('https://discord.gg/xrpl', '_blank')
+    },
+    { label: "View Events", href: "/events" }
+  ]}
 />
 ```
 
@@ -312,7 +323,7 @@ $gray-600     // Gray (dark)
 - **Heading**: Keep concise (1-2 short lines), use sentence case
 - **Subheading**: Provide context (2-3 lines max), complete sentences
 - **Buttons**: Use action-oriented labels ("Get Started" not "Click Here")
-- **Button Count**: Primary for main action, tertiary for secondary action
+- **Button Count**: `ButtonGroup` assigns variants by count — a single button renders as primary, and with two buttons the first is primary and the second tertiary
 
 ### Image Guidelines
 
@@ -334,7 +345,7 @@ $gray-600     // Gray (dark)
 
 ## Related Components
 
-- **Button**: Used for primary and tertiary action buttons
+- **ButtonGroup**: Renders the `buttons` array and assigns each button's variant by count
 - **PageGrid**: Used internally for grid structure and wide container support
 
 ## Design References
