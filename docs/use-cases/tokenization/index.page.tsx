@@ -4,7 +4,7 @@ import { PageWrapper } from 'shared/components/PageWrapper';
 import { HeaderHeroSplitMedia } from 'shared/sections/HeaderHeroSplitMedia/HeaderHeroSplitMedia';
 import { CarouselCardList } from 'shared/sections/CarouselCardList/CarouselCardList';
 import { LogoRectangleGrid } from 'shared/sections/LogoRectangleGrid/LogoRectangleGrid';
-import { CarouselFeatured } from 'shared/patterns/CarouselFeatured/CarouselFeatured';
+import { PanelStack } from 'shared/patterns/PanelStack';
 import { SmallTilesSection } from 'shared/sections/SmallTilesSection/SmallTilesSection';
 import { LinkTextDirectory } from 'shared/sections/LinkTextDirectory/LinkTextDirectory';
 import { FeatureTwoColumn } from 'shared/sections/FeatureTwoColumn/FeatureTwoColumn';
@@ -116,7 +116,7 @@ export default function Tokenization() {
       />
 
       {/* 5. Token Utility and Market Integration — Carousel Featured (4 slides from Assets frame) */}
-      <CarouselFeatured
+      <PanelStack
         background="neutral"
         slides={[
           {
