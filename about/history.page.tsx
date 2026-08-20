@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useThemeHooks } from '@redocly/theme/core/hooks';
-import { Link } from '@redocly/theme/components/Link/Link';
+import { Link as XrplLink } from 'shared/components/Link';
 
 export const frontmatter = {
   seo: {
@@ -70,8 +70,9 @@ export default function History() {
                       "about.history.2011.part1",
                       "In early 2011, three developers—David Schwartz, Jed McCaleb, and Arthur Britto—were fascinated with Bitcoin but observed the waste inherent in mining. They sought to create a more sustainable system for sending value (an idea outlined in a "
                     )}
-                    <a
+                    <XrplLink
                       href="https://bitcointalk.org/index.php?topic=10193.0"
+                      intention="brand"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
@@ -79,7 +80,7 @@ export default function History() {
                         "about.history.2011.part2",
                         "May 2011 forum post: “Bitcoin without mining”"
                       )}
-                    </a>
+                    </XrplLink>
                     {translate("about.history.2011.part3", ").")}
                   </p>
                   <a
@@ -214,24 +215,26 @@ export default function History() {
                   </div>
                   <p>
                     {translate("about.history.xrplf.part1", "")}
-                    <a
+                    <XrplLink
                       href="https://foundation.xrpl.org/2020/09/24/xrp-ledger-foundation-launches-to-drive-growth-and-development-of-the-core-xrp-ledger-and-community/"
+                      intention="brand"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
                       {translate("about.history.xrplf.part2", "Founded")}
-                    </a>
+                    </XrplLink>
                     {translate(
                       "about.history.xrplf.part3",
                       " September 24, 2020, the XRPL Foundation is an independent and nonprofit entity with a mission to accelerate the development and adoption of the decentralized XRP Ledger. The Foundation received an initial donation of over $6.5M from Coil, Ripple, and Gatehub to fund the Foundation’s work in service of the growing number of developers and other "
                     )}
-                    <Link
-                      to="/community"
+                    <XrplLink
+                      href="/community"
+                      intention="brand"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
                       {translate("about.history.xrplf.part4", "global blockchain community")}
-                    </Link>
+                    </XrplLink>
                     {translate("about.history.xrplf.part5", " members building on the XRP Ledger.")}
                   </p>
                 </div>

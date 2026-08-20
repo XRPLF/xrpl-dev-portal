@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useThemeHooks, useLanguagePicker } from "@redocly/theme/core/hooks";
-import { BdsLink } from "../../../../shared/components/Link/Link";
+import { Link } from "../../../../shared/components/Link/Link";
 import { CloseIcon, ChevronIcon } from "../icons";
 import { xrpSymbolBlack, globeIcon, chevronDown, modeToggleIcon, searchIcon } from "../constants/icons";
 import { navItems } from "../constants/navigation";
@@ -70,9 +70,9 @@ export function MobileMenu({ isOpen, onClose, onSearch }: MobileMenuProps) {
     >
       {/* Header */}
       <div className="bds-mobile-menu__header">
-        <BdsLink href="/" className="bds-navbar__logo" aria-label={translate("XRP Ledger Home")} onClick={onClose} variant="inline">
+        <Link href="/" className="bds-navbar__logo" aria-label={translate("XRP Ledger Home")} onClick={onClose} variation="inline">
           <img src={xrpSymbolBlack} alt={translate("XRP Ledger")} className="bds-navbar__logo-symbol" style={{ width: 33, height: 28 }} />
-        </BdsLink>
+        </Link>
         <button
           type="button"
           className="bds-mobile-menu__close"
@@ -108,15 +108,15 @@ export function MobileMenu({ isOpen, onClose, onSearch }: MobileMenuProps) {
                   </div>
                 </>
               ) : (
-                <BdsLink
+                <Link
                   href={item.href}
                   className="bds-mobile-menu__accordion-header"
                   onClick={onClose}
-                  variant="inline"
+                  variation="inline"
                 >
                   <span>{translate(item.labelTranslationKey, item.label)}</span>
                   <ChevronIcon expanded={false} />
-                </BdsLink>
+                </Link>
               )}
             </React.Fragment>
           ))}

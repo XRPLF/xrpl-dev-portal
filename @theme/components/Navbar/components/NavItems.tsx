@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useThemeHooks } from "@redocly/theme/core/hooks";
-import { BdsLink } from "../../../../shared/components/Link/Link";
+import { Link } from "../../../../shared/components/Link/Link";
 import { navItems } from "../constants/navigation";
 
 interface NavItemsProps {
@@ -104,16 +104,16 @@ export function NavItems({ activeSubmenu, onSubmenuEnter, onSubmenuClose }: NavI
             {translate(item.labelTranslationKey, item.label)}
           </button>
         ) : (
-          <BdsLink
+          <Link
             key={item.label}
             href={item.href}
             className={`label-r bds-navbar__item ${activeItem === item.label ? 'bds-navbar__item--active' : ''}`}
             onMouseEnter={() => handleMouseEnter(item.label, false)}
             onMouseLeave={() => handleMouseLeave(false)}
-            variant="inline"
+            variation="inline"
           >
             {translate(item.labelTranslationKey, item.label)}
-          </BdsLink>
+          </Link>
         )
       ))}
     </nav>

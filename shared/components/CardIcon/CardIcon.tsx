@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import clsx from 'clsx';
-import { LinkArrow } from '../Link/LinkArrow';
+import { LinkArrow } from '../Link/legacy/LinkArrow';
 
 export interface CardIconProps {
   /** Color variant: 'neutral' (default) or 'green' */

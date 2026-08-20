@@ -1,4 +1,5 @@
 import { useThemeHooks } from "@redocly/theme/core/hooks";
+import { Link } from "shared/components/Link";
 import { PageWrapper } from "shared/components/PageWrapper";
 import { HeaderHeroSplitMedia } from "shared/sections/HeaderHeroSplitMedia/HeaderHeroSplitMedia";
 import FeaturedVideoHero from "shared/sections/FeaturedVideoHero/FeaturedVideoHero";
@@ -232,13 +233,13 @@ export default function Trading() {
                 )}
                 <br />
                 <br />
-                <a href="https://xrpl.org/docs/tutorials/how-tos/use-tokens/trade-in-the-decentralized-exchange">
+                <Link href="https://xrpl.org/docs/tutorials/how-tos/use-tokens/trade-in-the-decentralized-exchange" intention="neutral">
                   {translate("Read the Documentation")}
-                </a>
+                </Link>
                 {" • "}
-                <a href="https://discord.gg/sfX3ERAMjH">
+                <Link href="https://discord.gg/sfX3ERAMjH" intention="neutral">
                   {translate("Join the Developer Community")}
-                </a>
+                </Link>
               </>
             ),
           },
@@ -251,9 +252,9 @@ export default function Trading() {
                 )}
                 <br />
                 <br />
-                <a href="https://xrpl.org/about/uses">
+                <Link href="https://xrpl.org/about/uses" intention="neutral">
                   {translate("Explore Partners")}
-                </a>
+                </Link>
               </>
             ),
           },

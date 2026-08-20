@@ -5,6 +5,7 @@ import mapLight from "../static/js/impact/mapLight.json";
 import { useLottie } from "lottie-react";
 import { useThemeFromClassList } from "../@theme/helpers";
 import { Link } from "@redocly/theme/components/Link/Link";
+import { Link as XrplLink } from "shared/components/Link";
 
 export const frontmatter = {
   seo: {
@@ -63,7 +64,7 @@ export default function Impact() {
                 "about.impact.feature.ppart1",
                 "Open and decentralized, blockchain and crypto are seeing an increase in adoption across the financial services industry, from retail and institutional investment to "
               )}`}
-              <Link to="/about/uses">{translate("about.impact.feature.ppart2", "commercial use cases ")}</Link>
+              <XrplLink href="/about/uses" intention="brand">{translate("about.impact.feature.ppart2", "commercial use cases ")}</XrplLink>
               {`${translate("about.impact.feature.ppart3", "like CBDCs, NFTs, and cross-border payments.")}`}
             </p>
           </div>
@@ -173,9 +174,9 @@ export default function Impact() {
                       <h6 className="mb-3">{translate("Blog")}</h6>
                       <p>
                         {`${translate("about.impact.blog.ppart1", "Check out the ")}`}
-                        <Link to="/blog">
+                        <XrplLink href="/blog" intention="brand">
                           {translate("about.impact.blog.ppart2", "XRPL dev blog ")}
-                        </Link>
+                        </XrplLink>
                         {`${translate(
                           "about.impact.blog.ppart3", 
                           "to stay up-to-date on the latest innovations and developments in the XRPL community."
@@ -190,9 +191,9 @@ export default function Impact() {
                       <h6 className="mb-3">{translate("Events")}</h6>
                       <p>
                         {`${translate("about.impact.events.ppart1", "Attend ")}`}
-                        <Link to="/community/events">
+                        <XrplLink href="/community/events" intention="brand">
                           {translate("about.impact.events.ppart2", "meetups, hackathons, and conferences ")}
-                        </Link>
+                        </XrplLink>
                         {`${translate(
                           "about.impact.events.ppart3",
                           "to meet other members of the community."
@@ -206,12 +207,13 @@ export default function Impact() {
                       <h6 className="mb-3">{translate("Code")}</h6>
                       <p>
                         {`${translate("about.impact.code.ppart1", "View the ")}`}
-                        <a
+                        <XrplLink
                           href="https://github.com/XRPLF/xrpl-dev-portal/"
+                          intention="brand"
                           target="_blank"
                         >
                           {translate("about.impact.code.ppart2", "Github repositories ")}
-                        </a>
+                        </XrplLink>
                         {`${translate(
                           "about.impact.code.ppart3",
                           "to find blockchain projects to see how you can contribute."
@@ -243,9 +245,9 @@ export default function Impact() {
                         <h6 className="mb-3">{translate("Events")}</h6>
                         <p>
                           {`${translate("about.impact.events.ppart1", "Attend ")}`}
-                          <Link to="/community/events">
+                          <XrplLink href="/community/events" intention="brand">
                             {translate("about.impact.events.ppart2", "meetups, hackathons, and conferences ")}
-                          </Link>
+                          </XrplLink>
                           {`${translate(
                             "about.impact.events.ppart3",
                             "to meet other members of the community."

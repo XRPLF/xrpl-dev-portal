@@ -187,7 +187,8 @@ ul.nav.navbar-nav {
   --link-decoration: underline;
   --link-font-weight: var(--font-weight-regular);
 
-  --link-color-primary-hover: var(--color-purple-7);
+  /* See :root.dark below for the contrast rationale. */
+  --link-color-primary-hover: var(--color-purple-8);
   --link-decoration-hover: underline;
 
   --link-color-visited: white;
@@ -332,7 +333,8 @@ ul.nav.navbar-nav {
 :root.dark {
   --link-color-primary: white;
   --link-color-visited: white;
-  --link-color-primary-hover: var(--color-purple-7);
+  /* purple-7 was ~4.5:1 against the dark background, right at the AA line; purple-8 is ~6.7:1. */
+  --link-color-primary-hover: var(--color-purple-8);
 
   --navbar-bg-color: var(--color-gray-2); /* controls search box bg */
   --modal-bg-color: var(--color-gray-2); /* controls search modal bg */
