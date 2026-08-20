@@ -1499,6 +1499,16 @@ body,
 }
 
 // Smart contracts page diagrams --------------------------------------------
+// Raw <img> tags in markdown are not wrapped in a <p>, so they get no
+// paragraph margin of their own. The SVGs are also transparent, so they blend
+// into the page background in both themes.
+.uc-smart-contract-condition-diagram,
+.uc-escrow-flow-diagram,
+.uc-escrow-oracle-diagram {
+  display: block;
+  margin: 1rem auto;
+}
+
 // The markup points at the dark SVGs, so light mode swaps in the -light pair.
 // Paths are relative to the compiled CSS (static/css/), matching the logos above.
 html.light {

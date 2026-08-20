@@ -1,8 +1,7 @@
 <svg viewBox="0 0 840 460" width="840" height="460" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system,BlinkMacSystemFont,'Helvetica Neue',Helvetica,Arial,sans-serif">
-  <rect width="840" height="460" fill="#141414"/>
 
   <!-- Sender -->
-  <circle cx="94" cy="220" r="44" fill="#343437"/>
+  <circle cx="94" cy="220" r="44" fill="#343437" stroke="#72777E" stroke-width="1"/>
   <g transform="translate(78,204) scale(1.3333)">
     <circle cx="12" cy="8" r="4" fill="none" stroke="#F0F3F7" stroke-width="1.6"/>
     <path d="M4 20c0-4.4 3.6-7 8-7s8 2.6 8 7" fill="none" stroke="#F0F3F7" stroke-width="1.6"/>
@@ -18,7 +17,7 @@
   <defs>
     <clipPath id="cardclip"><rect x="310" y="100" width="220" height="220" rx="8"/></clipPath>
   </defs>
-  <rect x="310.5" y="100.5" width="219" height="219" rx="7.5" fill="#232325" stroke="#343437" stroke-width="1"/>
+  <rect x="310.5" y="100.5" width="219" height="219" rx="7.5" fill="#232325" stroke="#72777E" stroke-width="1"/>
   <rect x="310" y="100" width="220" height="4" fill="#21E46B" clip-path="url(#cardclip)"/>
   <text x="420" y="143" text-anchor="middle" font-size="14" fill="#8A919A">Escrow</text>
   <text x="420" y="174" text-anchor="middle" font-size="26" font-weight="700" fill="#F0F3F7">Held</text>
@@ -37,7 +36,7 @@
   </g>
 
   <!-- Recipient -->
-  <circle cx="746" cy="220" r="44" fill="#343437"/>
+  <circle cx="746" cy="220" r="44" fill="#343437" stroke="#72777E" stroke-width="1"/>
   <g transform="translate(730,204) scale(1.3333)">
     <circle cx="12" cy="8" r="4" fill="none" stroke="#F0F3F7" stroke-width="1.6"/>
     <path d="M4 20c0-4.4 3.6-7 8-7s8 2.6 8 7" fill="none" stroke="#F0F3F7" stroke-width="1.6"/>
@@ -45,6 +44,6 @@
   <text x="746" y="286" text-anchor="middle" font-size="13" fill="#F0F3F7">Recipient</text>
 
   <!-- legend pill -->
-  <rect x="264" y="393" width="312" height="43" rx="21.5" fill="#232325" stroke="#343437" stroke-width="1"/>
+  <rect x="264" y="393" width="312" height="43" rx="21.5" fill="#232325" stroke="#72777E" stroke-width="1"/>
   <text x="420" y="419" text-anchor="middle" font-size="15" fill="#F0F3F7"><tspan font-weight="700" fill="#21E46B">Condition</tspan> = Lock &#160;&#183;&#160; <tspan font-weight="700" fill="#21E46B">Fulfillment</tspan> = Key</text>
 </svg>
