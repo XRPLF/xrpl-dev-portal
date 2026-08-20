@@ -346,6 +346,11 @@ Some fields specify a currency code, which could be a fungible token, the ticker
 
 These fields consist of 160 bits of binary data. If the data matches the ["standard" currency code format](#currency-codes), it may be represented as a three-letter currency code string in JSON. Otherwise, it is represented as hexadecimal. Client libraries _may_ attempt to interpret this as a string of ASCII or UTF-8, but it is not guaranteed to be valid. The {% repo-link path="_code-samples/normalize-currency-codes/" %}Normalize Currency Codes code sample{% /repo-link %} demonstrates best practices for converting most common formats for this data into a string for humans to read.
 
+Even though both Currency and [UInt160][] fields write 160 bits when serialized, they represent different types:
+
+- Field Usage: UInt160 is used only in the `TakerPaysCurrency`, `TakerPaysIssuer`, `TakerGetsCurrency`, and `TakerGetsIssuer` fields of [Offer directories](ledger-data/ledger-entry-types/directorynode.md). Currency is used only in the `BaseAsset` and `QuoteAsset` fields of [Price Oracles](../../concepts/decentralized-storage/price-oracles.md).
+- Type Codes: The two types have different type codes, and a field's type code is included in its serialized form. Because the type code contributes to an entry's hash, consolidating the two types would alter the hashes of entries already recorded in ledger history.
+- JSON Representation: UInt160 fields are always represented in hexadecimal (even when containing an Account ID), whereas Currency fields can also use standard three-letter currency codes.
 
 ### Issue Fields
 [Issue]: #issue-fields
@@ -417,6 +422,8 @@ The following example shows the serialization format for a PathSet:
 The XRP Ledger has several unsigned integer types: UInt8, UInt16, UInt32, UInt64, UInt128, UInt160, and UInt256. All of these are standard big-endian binary unsigned integers with the specified number of bits. The larger types such as UInt128, UInt160, and UInt256 were previously named `Hash128`, `Hash160`, and `Hash256` because they often contain hash function outputs. (These names are still used in the definitions file.)
 
 When representing these fields in JSON, these fields may be represented as JSON numbers, strings containing hexadecimal, or as strings containing decimal numbers, depending on the bit size and intended use of the data. UInt64 and up are never converted to JSON numbers, because some JSON decoders may try to represent them as "double precision" floating point numbers, which cannot represent all distinct UInt64 values with full precision. UInt128 and UInt256 typically represent hash values or arbitrary data, so they are typically represented in JSON as hexadecimal.
+
+Some UInt160 fields hold a currency code or an account ID, but they are not [Currency][] or [AccountID][] fields. See [Currency Fields](#currency-fields) for how these types differ.
 
 The types UInt96, UInt384, and UInt512 are currently defined but not used.
 
