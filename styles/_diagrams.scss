@@ -350,3 +350,16 @@ html.light {
     [stroke="#21E46B"] { stroke: $green-800; }
   }
 }
+
+// Auto-bridging combined order book diagram ----------------------------------
+// Same pattern as the Smart Contracts diagrams: raw <img> tags in markdown get
+// no paragraph margin, and the markup points at the dark SVG so light mode
+// swaps in the -light pair. Paths are relative to the compiled CSS (static/css/).
+.autobridging-diagram {
+  display: block;
+  margin: 1rem auto;
+}
+
+html.light .autobridging-diagram {
+  content: url(../img/autobridging-light.svg);
+}
