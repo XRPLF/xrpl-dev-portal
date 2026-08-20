@@ -108,7 +108,7 @@ Create a [Payment transaction][] with the `tfSponsorCreatedAccount` flag enabled
 {% /tab %}
 {% /tabs %}
 
-### 5. Create the pre-funded pool
+### 5. Prepare the SponsorshipSet transaction
 
 To create the pre-funded pool ([Sponsorship entry][Sponsorship ledger entry]), prepare a [SponsorshipSet transaction][].
 
@@ -133,7 +133,9 @@ The two delta fields are amounts to add to the pool's current values (`FeeAmount
 - A negative `FeeAmountDelta` returns the unspent XRP to the sponsor.
 - A negative `RemainingOwnerCountDelta` lowers how many owner reserves the pool covers.
 
-A negative delta is a subtraction, so the pool never goes below zero. If the amount you subtract is larger than what the pool has left, the pool empties instead.
+A negative delta is a subtraction, so neither field goes below zero. If you subtract more than a field has left, that field drops to zero instead, as long as the other one stays positive. A subtraction that would leave both at zero fails with `tecNO_PERMISSION`.
+
+### 6. Submit the SponsorshipSet transaction
 
 Sign and submit the SponsorshipSet transaction.
 
@@ -155,7 +157,7 @@ Each pool is a single Sponsorship entry that serves one sponsee. To fund several
 By default, the sponsee can spend from the pool without further sponsor approval. A sponsor can also require a signature on each use by enabling the `tfSponsorshipSetRequireSignForFee` and `tfSponsorshipSetRequireSignForReserve` flags. In that variation, transactions still draw from the pre-funded pool, but each sponsored transaction must also include the sponsor's signature.
 {% /admonition %}
 
-### 6. Submit the sponsored transaction
+### 7. Sponsor a transaction
 
 Submit the sponsored transaction and wait for validation.
 
@@ -172,7 +174,7 @@ The `addPreFundedSponsor` helper adds the `Sponsor` and `SponsorFlags` fields fo
 
 In this example, the sponsee submits a [DepositPreauth transaction][] without a signature from the sponsor. The transaction draws its transaction fee and the new ledger entry's reserve from the pool. Many other transaction types can also be sponsored; see [SponsorFlags field](../../../references/protocol/transactions/common-fields.md#sponsorflags-field) to learn more.
 
-### 7. Validate the sponsorship
+### 8. Validate the sponsorship
 
 Inspect the affected nodes to verify the `Sponsor` field is on the new [DepositPreauth entry][], and compare the Sponsorship entry's fields before and after to see what the pool spent.
 

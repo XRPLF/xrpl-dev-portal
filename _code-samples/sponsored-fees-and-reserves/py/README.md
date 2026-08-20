@@ -1,6 +1,6 @@
 # Sponsored Fees and Reserves (Python)
 
-Shows how one account can pay the transaction fees and reserve requirements of another account, using the co-signed and pre-funded sponsorship flows. It also shows how to manage a sponsorship pool and transfer a reserve sponsorship.
+Shows how one account can pay the transaction fees and reserve requirements of another account, using the co-signed and pre-funded sponsorship flows. Also shows how to manage a sponsorship pool and transfer a reserve sponsorship.
 
 Quick setup:
 
@@ -19,65 +19,61 @@ python sponsor_a_transaction.py
 You should see output similar to this:
 
 ```sh
-=== Creating the sponsor and sponsee wallets ===
+=== Creating the sponsor and sponsee wallets... ===
+Sponsor address: rUZBDKMmUvQTjRzjrCvN25TAZAzmbk2wUr
+Sponsee address: rE6xJKN6YskBej95nTnkMiNqeW7Kxmrt4m
 
-Sponsor address: rNyigV6W3Uu16CmyJGFxgv7e5CkxFiN6LC
-Sponsee address: rKeMpUToZq6bHFHarVb3chpEt5svca5Pht
-
-=== Preparing Payment transaction to create the sponsee's account ===
-
+=== Preparing Payment transaction to create the sponsee's account... ===
 {
-  "Account": "rNyigV6W3Uu16CmyJGFxgv7e5CkxFiN6LC",
+  "Account": "rUZBDKMmUvQTjRzjrCvN25TAZAzmbk2wUr",
   "TransactionType": "Payment",
   "Flags": 524288,
   "SigningPubKey": "",
   "Amount": "1",
-  "Destination": "rKeMpUToZq6bHFHarVb3chpEt5svca5Pht"
+  "Destination": "rE6xJKN6YskBej95nTnkMiNqeW7Kxmrt4m"
 }
 
-=== Submitting Payment transaction ===
-
+=== Submitting Payment transaction... ===
 Sponsee account created successfully!
-Account reserve sponsored by: rNyigV6W3Uu16CmyJGFxgv7e5CkxFiN6LC
+Account reserve sponsored by: rUZBDKMmUvQTjRzjrCvN25TAZAzmbk2wUr
+Transaction URL: https://devnet.xrpl.org/transactions/CA34F92D79AE74011790069CD1FAE5B1E548C6AEECA9932F6759A187B0C4A0E2
 
-=== Preparing sponsored DepositPreauth transaction ===
-
+=== Preparing sponsored DepositPreauth transaction... ===
 {
-  "Account": "rKeMpUToZq6bHFHarVb3chpEt5svca5Pht",
+  "Account": "rE6xJKN6YskBej95nTnkMiNqeW7Kxmrt4m",
   "TransactionType": "DepositPreauth",
   "Fee": "1",
-  "Sequence": 4278708,
-  "LastLedgerSequence": 4278728,
+  "Sequence": 4658908,
+  "LastLedgerSequence": 4658928,
   "SigningPubKey": "",
-  "Sponsor": "rNyigV6W3Uu16CmyJGFxgv7e5CkxFiN6LC",
+  "Sponsor": "rUZBDKMmUvQTjRzjrCvN25TAZAzmbk2wUr",
   "SponsorFlags": 3,
-  "Authorize": "rNyigV6W3Uu16CmyJGFxgv7e5CkxFiN6LC"
+  "Authorize": "rUZBDKMmUvQTjRzjrCvN25TAZAzmbk2wUr"
 }
 
-=== Submitting sponsored DepositPreauth transaction ===
-
+=== Submitting sponsored DepositPreauth transaction... ===
 {
-  "Account": "rKeMpUToZq6bHFHarVb3chpEt5svca5Pht",
+  "Account": "rE6xJKN6YskBej95nTnkMiNqeW7Kxmrt4m",
   "TransactionType": "DepositPreauth",
   "Fee": "1",
-  "Sequence": 4278708,
-  "LastLedgerSequence": 4278728,
-  "SigningPubKey": "ED14DD8DE5B94CD3007BEB70281C76FC6199C1B67593CD4BB7DD72210718DF59AB",
-  "TxnSignature": "E7D737BD9D42FD5DD9FFBE6E59364451E29B2F5DBD00914FBC03FB1499797F717F91A9F5657B4350D716569E1E86937B257C68BFB61896782353565450FFC80B",
-  "Sponsor": "rNyigV6W3Uu16CmyJGFxgv7e5CkxFiN6LC",
+  "Sequence": 4658908,
+  "LastLedgerSequence": 4658928,
+  "SigningPubKey": "ED09F6101225BBE8411259E88A5980ABEB68484731B181FA48FD222B8EB4BE4C27",
+  "TxnSignature": "4AEAB6303792FC4C1FE884A0AB7AAAEAD8312E318D2201DC4B269434755CDF43A1CC5ABB43A4E9251755903657305358450EFD65F60DDF379DB8C685BA56960D",
+  "Sponsor": "rUZBDKMmUvQTjRzjrCvN25TAZAzmbk2wUr",
   "SponsorFlags": 3,
   "SponsorSignature": {
-    "SigningPubKey": "EDE49E1400F65ECAF702F2125B8CA689D4A310806F7CAB252458847A58EF2B24E5",
-    "TxnSignature": "8898969E9FE18D3347646512710AD14E27DD4D3A94AC81F46BD7D55311E003CF4270D5FEFDBB85A31F6EF075A6701F76F88C6B0973AE61C720FBA1EBD97EC20C"
+    "SigningPubKey": "EDF2CC2229F5E1F8A2FA147BFFD9D16FC613E76F873E4239677B3D3B4764B996AD",
+    "TxnSignature": "489E4E2F3709BC1398519DD51BB0EA42A12FC8EFC379D97DCD9684CEDDC0EEFEB824EEF5B18F0190BF179992FA4089D2FC1B9442FD8A43FD6D8BD993CC92B301"
   },
-  "Authorize": "rNyigV6W3Uu16CmyJGFxgv7e5CkxFiN6LC"
+  "Authorize": "rUZBDKMmUvQTjRzjrCvN25TAZAzmbk2wUr"
 }
 Transaction sponsored successfully!
+Transaction URL: https://devnet.xrpl.org/transactions/C276168D0F9300872F0CB53FC9D3BAA93F8F699F2B380CCC8A798EC0AB47A702
 
 === Sponsorship Information ===
-
-DepositPreauth ID: E8F64C27C5A3F593F4785634B9E15305D65252290320EB05EC469C8A4EC71E4B
-DepositPreauth reserve sponsored by: rNyigV6W3Uu16CmyJGFxgv7e5CkxFiN6LC
+DepositPreauth ID: BCC289E1336B7F6143A6580BA43568AD3FFA15DA9D0DE9EB0536215BCF23D480
+DepositPreauth reserve sponsored by: rUZBDKMmUvQTjRzjrCvN25TAZAzmbk2wUr
 
 Sponsee fee paid: 0 drops
 Sponsee balance:  1 drops
@@ -97,62 +93,57 @@ python sponsor_with_pre_funded_pool.py
 You should see output similar to this:
 
 ```sh
-=== Creating the sponsor and sponsee wallets ===
+=== Creating the sponsor and sponsee wallets... ===
+Sponsor address: rs9WfdA442ECu3H6cKRTNdi8RzoRgzEY2k
+Sponsee address: r3juxgV44dmTtiEUBpjpde5Q53qQvdebE7
 
-Sponsor address: rnLJPmVysiUnRSXfFEk3S24Aw66uEGEiin
-Sponsee address: rK3iBZhTy4g7jF4C739jcHUk42jF1ndRo8
-
-=== Preparing Payment transaction to create the sponsee's account ===
-
+=== Preparing Payment transaction to create the sponsee's account... ===
 {
-  "Account": "rnLJPmVysiUnRSXfFEk3S24Aw66uEGEiin",
+  "Account": "rs9WfdA442ECu3H6cKRTNdi8RzoRgzEY2k",
   "TransactionType": "Payment",
   "Flags": 524288,
   "SigningPubKey": "",
   "Amount": "1",
-  "Destination": "rK3iBZhTy4g7jF4C739jcHUk42jF1ndRo8"
+  "Destination": "r3juxgV44dmTtiEUBpjpde5Q53qQvdebE7"
 }
 
-=== Submitting Payment transaction ===
-
+=== Submitting Payment transaction... ===
 Sponsee account created successfully!
+Transaction URL: https://devnet.xrpl.org/transactions/E74AF5B34FDA3C356BD6F7CFB4F92C0BBEA374666CDDAAD1C71E5A2874D50787
 
-=== Preparing SponsorshipSet transaction ===
-
+=== Preparing SponsorshipSet transaction... ===
 {
-  "Account": "rnLJPmVysiUnRSXfFEk3S24Aw66uEGEiin",
+  "Account": "rs9WfdA442ECu3H6cKRTNdi8RzoRgzEY2k",
   "TransactionType": "SponsorshipSet",
   "SigningPubKey": "",
-  "Sponsee": "rK3iBZhTy4g7jF4C739jcHUk42jF1ndRo8",
+  "Sponsee": "r3juxgV44dmTtiEUBpjpde5Q53qQvdebE7",
   "FeeAmountDelta": "1000000",
   "MaxFee": "1000",
   "RemainingOwnerCountDelta": 5
 }
 
-=== Submitting SponsorshipSet transaction ===
-
+=== Submitting SponsorshipSet transaction... ===
 Sponsorship created successfully!
-Sponsorship ID: A343B8BBE6614A6B849F10AB1391A3EA82D8D070AA2936325F427FB4FA37263B
+Sponsorship ID: 3A8C48CB9FB10804803C66FF96DB910F71BB38EBA031D313E9EF722A4735FD0F
+Transaction URL: https://devnet.xrpl.org/transactions/B91120941063C808E731F18867BCE4E04297F5EE43E1B4F82A1BECEE2C379847
 
-=== Preparing sponsored DepositPreauth transaction ===
-
+=== Preparing sponsored DepositPreauth transaction... ===
 {
-  "Account": "rK3iBZhTy4g7jF4C739jcHUk42jF1ndRo8",
+  "Account": "r3juxgV44dmTtiEUBpjpde5Q53qQvdebE7",
   "TransactionType": "DepositPreauth",
   "SigningPubKey": "",
-  "Sponsor": "rnLJPmVysiUnRSXfFEk3S24Aw66uEGEiin",
+  "Sponsor": "rs9WfdA442ECu3H6cKRTNdi8RzoRgzEY2k",
   "SponsorFlags": 3,
-  "Authorize": "rnLJPmVysiUnRSXfFEk3S24Aw66uEGEiin"
+  "Authorize": "rs9WfdA442ECu3H6cKRTNdi8RzoRgzEY2k"
 }
 
-=== Submitting sponsored DepositPreauth transaction ===
-
+=== Submitting sponsored DepositPreauth transaction... ===
 Transaction sponsored successfully!
+Transaction URL: https://devnet.xrpl.org/transactions/D5708AAFC60E52750B26A22233E7E2AF53951D5E383981C6FB51159CD0C02CFF
 
 === Sponsorship Pool information ===
-
-DepositPreauth ID: 277317B184278C483779721031A5189401A8BEFFC818A63A1744F41181D48577
-DepositPreauth reserve sponsored by: rnLJPmVysiUnRSXfFEk3S24Aw66uEGEiin
+DepositPreauth ID: D5D0BF35C372AB04D652BA6BB3C4F942095051E4D02B762980DEE30C0D5D09F2
+DepositPreauth reserve sponsored by: rs9WfdA442ECu3H6cKRTNdi8RzoRgzEY2k
 
 Fee spent from the pool: 1 drops
 Fee remaining in the pool: 999999 drops
@@ -169,68 +160,63 @@ python manage_sponsorship_pool.py
 You should see output similar to this:
 
 ```sh
-=== Creating the sponsor and sponsee wallets ===
+=== Creating the sponsor and sponsee wallets... ===
+Sponsor address: rfXfPXJ8HpYDW4ubyXeSiSAhmxS7SVYrLE
+Sponsee address: rfMh63FHS2Xsy4BArFhi6h6PaN5sRWSbk5
 
-Sponsor address: rfhJ7RWiiuHsWJzE72yBiSN9EWFzzbciqm
-Sponsee address: rpiPHnM6heNapJERNFGtkH7f2RUkuA7Yfy
-
-=== Preparing SponsorshipSet transaction ===
-
+=== Preparing SponsorshipSet transaction... ===
 {
-  "Account": "rfhJ7RWiiuHsWJzE72yBiSN9EWFzzbciqm",
+  "Account": "rfXfPXJ8HpYDW4ubyXeSiSAhmxS7SVYrLE",
   "TransactionType": "SponsorshipSet",
   "SigningPubKey": "",
-  "Sponsee": "rpiPHnM6heNapJERNFGtkH7f2RUkuA7Yfy",
+  "Sponsee": "rfMh63FHS2Xsy4BArFhi6h6PaN5sRWSbk5",
   "FeeAmountDelta": "1000000",
   "MaxFee": "1000",
   "RemainingOwnerCountDelta": 5
 }
 
-=== Submitting SponsorshipSet transaction ===
-
+=== Submitting SponsorshipSet transaction... ===
 Sponsorship created successfully!
-Sponsorship ID: BC41EBF0F94FD7610EE9831A1AFC8E13FDE217BCDF018DE52274FFE3F0042A07
+Sponsorship ID: FFAD9709AF26F11AB0AC85DD111F01956D9DC5273399D2FD1F2B3E59DE2E212C
+Transaction URL: https://devnet.xrpl.org/transactions/CDA7144962D4E7401C93C0E8925F50962DA88C9CF504A8768953C33B348707F4
 
-=== Submitting sponsored DepositPreauth transaction ===
-
+=== Submitting sponsored DepositPreauth transaction... ===
 Sponsorship pool:
   Fee amount:            999999 drops
   Owner reserves count:  4
+Transaction URL: https://devnet.xrpl.org/transactions/40CD5EF5D260D6CEC65D726A2F379F09A7007D9E9137110BF65935AB4FF4052E
 
-=== Preparing SponsorshipSet transaction to top up sponsorship pool ===
-
+=== Preparing SponsorshipSet transaction to top up sponsorship pool... ===
 {
-  "Account": "rfhJ7RWiiuHsWJzE72yBiSN9EWFzzbciqm",
+  "Account": "rfXfPXJ8HpYDW4ubyXeSiSAhmxS7SVYrLE",
   "TransactionType": "SponsorshipSet",
   "SigningPubKey": "",
-  "Sponsee": "rpiPHnM6heNapJERNFGtkH7f2RUkuA7Yfy",
+  "Sponsee": "rfMh63FHS2Xsy4BArFhi6h6PaN5sRWSbk5",
   "FeeAmountDelta": "1000000",
   "MaxFee": "1000",
   "RemainingOwnerCountDelta": 5
 }
 
-=== Submitting SponsorshipSet transaction ===
-
+=== Submitting SponsorshipSet transaction... ===
 Sponsorship pool topped up successfully:
   Fee amount:            1999999 drops
   Owner reserves count:  9
+Transaction URL: https://devnet.xrpl.org/transactions/EEE76998F0460C69B538CE9BBD3FC5CA5865BB70AC58E068DA67136F9F1290A2
 
-=== Preparing SponsorshipSet transaction to delete the sponsorship ===
-
+=== Preparing SponsorshipSet transaction to delete the sponsorship... ===
 {
-  "Account": "rfhJ7RWiiuHsWJzE72yBiSN9EWFzzbciqm",
+  "Account": "rfXfPXJ8HpYDW4ubyXeSiSAhmxS7SVYrLE",
   "TransactionType": "SponsorshipSet",
   "Flags": 1048576,
   "SigningPubKey": "",
-  "Sponsee": "rpiPHnM6heNapJERNFGtkH7f2RUkuA7Yfy"
+  "Sponsee": "rfMh63FHS2Xsy4BArFhi6h6PaN5sRWSbk5"
 }
 
-=== Submitting SponsorshipSet transaction ===
-
+=== Submitting SponsorshipSet transaction... ===
 Sponsorship deleted successfully!
+Transaction URL: https://devnet.xrpl.org/transactions/5B2FD9B785A73796DA5002FACA5EFCC47E9482E0055573AEFFF048588559CA94
 
 === Reclaimed Funds ===
-
 Unspent fee amount returned from pool: 1999999 drops
 Sponsor balance "before" deletion:     97999998 drops
 Sponsor balance "after" deletion:      99999996 drops
@@ -246,69 +232,65 @@ python transfer_reserve_sponsorship.py
 You should see output similar to this:
 
 ```sh
-=== Creating the sponsor and sponsee wallets ===
+=== Creating the sponsor and sponsee wallets... ===
+Sponsor A address: r4Z4ofLNfJJfRverLXiwEdjkynjxeU7YTS
+Sponsor B address: roN6ooZcG2oULERieUryT4uwZCBhXg9QL
+Sponsee address:   rhx2iqm6PndpJS2yEMTsnjcjuU5zjb5WVc
 
-Sponsor A address: raiNxmUnLnJ6spd3ZuYr5McojfMZXAFG2q
-Sponsor B address: rpVJDsR8DP2AbLgjKMyeZirHw6ppeVm95a
-Sponsee address:   rG5QVv9vJbdhKShWmp4bu5VEqyYwRqjc4S
-
-=== Submitting unsponsored DepositPreauth transaction ===
-
+=== Submitting unsponsored DepositPreauth transaction... ===
 DepositPreauth created successfully, with its reserve paid by the sponsee.
-DepositPreauth ID: 6A5468141C6277BC3BE01EB988EE7B267D7C5EE269D7F801C8B81E68ECB51287
+DepositPreauth ID: F2EE779E76C14B217CB43190A7C84611DE01BE9527C664411E03044E581CE523
+Transaction URL: https://devnet.xrpl.org/transactions/58C547F2A0EBAE6F4B4827BAAFD2B21CAC8F6E48E9368334FA8066DE7D6E7856
 
-=== Preparing SponsorshipTransfer transaction to start the sponsorship ===
-
+=== Preparing SponsorshipTransfer transaction to start the sponsorship... ===
 {
-  "Account": "rG5QVv9vJbdhKShWmp4bu5VEqyYwRqjc4S",
+  "Account": "rhx2iqm6PndpJS2yEMTsnjcjuU5zjb5WVc",
   "TransactionType": "SponsorshipTransfer",
   "Fee": "1",
-  "Sequence": 4278747,
+  "Sequence": 4658892,
   "Flags": 131072,
-  "LastLedgerSequence": 4278769,
+  "LastLedgerSequence": 4658914,
   "SigningPubKey": "",
-  "Sponsor": "raiNxmUnLnJ6spd3ZuYr5McojfMZXAFG2q",
+  "Sponsor": "r4Z4ofLNfJJfRverLXiwEdjkynjxeU7YTS",
   "SponsorFlags": 2,
-  "ObjectID": "6A5468141C6277BC3BE01EB988EE7B267D7C5EE269D7F801C8B81E68ECB51287"
+  "ObjectID": "F2EE779E76C14B217CB43190A7C84611DE01BE9527C664411E03044E581CE523"
 }
 
-=== Submitting SponsorshipTransfer transaction ===
-
+=== Submitting SponsorshipTransfer transaction... ===
 Sponsorship started successfully!
-DepositPreauth reserve now sponsored by: raiNxmUnLnJ6spd3ZuYr5McojfMZXAFG2q
+DepositPreauth reserve now sponsored by: r4Z4ofLNfJJfRverLXiwEdjkynjxeU7YTS
+Transaction URL: https://devnet.xrpl.org/transactions/FEF55DCAD6FD6AB9D5FE90F8418340C17F6DBBF6CEC1D7B4F0B8B16ADE893BAF
 
-=== Preparing SponsorshipTransfer transaction to reassign the sponsorship ===
-
+=== Preparing SponsorshipTransfer transaction to reassign the sponsorship... ===
 {
-  "Account": "rG5QVv9vJbdhKShWmp4bu5VEqyYwRqjc4S",
+  "Account": "rhx2iqm6PndpJS2yEMTsnjcjuU5zjb5WVc",
   "TransactionType": "SponsorshipTransfer",
   "Fee": "1",
-  "Sequence": 4278748,
+  "Sequence": 4658893,
   "Flags": 262144,
-  "LastLedgerSequence": 4278772,
+  "LastLedgerSequence": 4658916,
   "SigningPubKey": "",
-  "Sponsor": "rpVJDsR8DP2AbLgjKMyeZirHw6ppeVm95a",
+  "Sponsor": "roN6ooZcG2oULERieUryT4uwZCBhXg9QL",
   "SponsorFlags": 2,
-  "ObjectID": "6A5468141C6277BC3BE01EB988EE7B267D7C5EE269D7F801C8B81E68ECB51287"
+  "ObjectID": "F2EE779E76C14B217CB43190A7C84611DE01BE9527C664411E03044E581CE523"
 }
 
-=== Submitting SponsorshipTransfer transaction ===
-
+=== Submitting SponsorshipTransfer transaction... ===
 Sponsorship reassigned successfully!
-DepositPreauth reserve now sponsored by: rpVJDsR8DP2AbLgjKMyeZirHw6ppeVm95a
+DepositPreauth reserve now sponsored by: roN6ooZcG2oULERieUryT4uwZCBhXg9QL
+Transaction URL: https://devnet.xrpl.org/transactions/10BA7735C46A54DD49AD732AF02DD08673ECB177CEBBDD019CF9AE6DF7D8C2C8
 
-=== Preparing SponsorshipTransfer transaction to end the sponsorship ===
-
+=== Preparing SponsorshipTransfer transaction to end the sponsorship... ===
 {
-  "Account": "rG5QVv9vJbdhKShWmp4bu5VEqyYwRqjc4S",
+  "Account": "rhx2iqm6PndpJS2yEMTsnjcjuU5zjb5WVc",
   "TransactionType": "SponsorshipTransfer",
   "Flags": 65536,
   "SigningPubKey": "",
-  "ObjectID": "6A5468141C6277BC3BE01EB988EE7B267D7C5EE269D7F801C8B81E68ECB51287"
+  "ObjectID": "F2EE779E76C14B217CB43190A7C84611DE01BE9527C664411E03044E581CE523"
 }
 
-=== Submitting SponsorshipTransfer transaction ===
-
+=== Submitting SponsorshipTransfer transaction... ===
 Sponsorship ended successfully!
 The sponsee now pays the DepositPreauth entry's owner reserve again.
+Transaction URL: https://devnet.xrpl.org/transactions/8E66CCBFBE1F4ACEFA1B01CB8A38E4ED50A5BE1D14ADCC5D659EE1C8D586AADE
 ```

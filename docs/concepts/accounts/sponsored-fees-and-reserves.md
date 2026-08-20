@@ -12,7 +12,7 @@ status: not_enabled
 The Sponsored Fees and Reserves feature allows an account to pay [transaction fees](../transactions/transaction-cost.md) and [reserve requirements](./reserves.md) on behalf of another account. The account that pays is called the _Sponsor_, and the account that benefits is called the _Sponsee_. Sponsees maintain full control over their keys and accounts.
 
 {% admonition type="info" name="Note" %}
-Sponsorship does not transfer XRP to the sponsee's wallet. The sponsor can cover transaction fees, and for reserve sponsorship, the ledger tracks which account is responsible for the reserve. This is not an "onramp" for the sponsee; it is a mechanism for the sponsor to cover costs on the sponsee's behalf.
+Sponsorship does not transfer XRP to the sponsee's wallet. The sponsor can cover transaction fees, and the ledger tracks which account is responsible for any sponsored reserve. This is not an "onramp" for the sponsee; it is a mechanism for the sponsor to cover costs on the sponsee's behalf.
 {% /admonition %}
 
 Without sponsorship, accounts must self-fund both transaction fees and reserves before they can transact on the XRP Ledger. Sponsorship provides a mechanism for entities with established XRP balances to subsidize these costs while maintaining strong on-chain accountability.

@@ -110,7 +110,7 @@ Create a [Payment transaction][] with the `tfSponsorCreatedAccount` flag enabled
 
 ### 5. Prepare the sponsored transaction
 
-Prepare the sponsored transaction. In this example, the sponsee submits a [DepositPreauth transaction][], but many other transaction types can also be sponsored; see [SponsorFlags field](../../../references/protocol/transactions/common-fields.md#sponsorflags-field) to learn more.
+In this example, the sponsee submits a [DepositPreauth transaction][], but many other transaction types can also be sponsored; see [SponsorFlags field](../../../references/protocol/transactions/common-fields.md#sponsorflags-field) to learn more.
 
 {% tabs %}
 {% tab label="JavaScript" %}

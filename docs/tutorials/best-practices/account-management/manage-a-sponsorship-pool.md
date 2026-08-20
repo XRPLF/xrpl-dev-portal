@@ -145,7 +145,7 @@ Send another SponsorshipSet transaction for the same sponsee to change the pool'
 `FeeAmountDelta` and `RemainingOwnerCountDelta` apply changes to the current allowances. Positive deltas add budget and negative deltas reduce it. `MaxFee` remains an absolute per-transaction cap.
 
 {% admonition type="info" name="Note" %}
-The pool doesn't automatically regain `RemainingOwnerCount` when a sponsored ledger entry is deleted or reassigned. Those actions free the sponsor's reserve and lower its `SponsoringOwnerCount`, but the pool's spent reserve allowance stays spent. Top the pool up with `RemainingOwnerCountDelta` to sponsor more ledger entries.
+The pool doesn't automatically regain `RemainingOwnerCount` when a sponsored ledger entry is deleted or reassigned. Those actions free the sponsor's reserve and lower its `SponsoringOwnerCount`, but the pool's spent reserve allowance remains spent. Top the pool up with `RemainingOwnerCountDelta` to sponsor more ledger entries.
 {% /admonition %}
 
 {% tabs %}
@@ -172,7 +172,7 @@ The sponsor submits the update, and the metadata shows the entry's raised `FeeAm
 
 ### 7. Delete the pool
 
-Submit a SponsorshipSet transaction with the `tfDeleteObject` flag enabled to delete the Sponsorship entry and return the unspent `FeeAmount` to the sponsor. Check the sponsor's balance first so you can compare it afterwards.
+Submit a SponsorshipSet transaction with the `tfDeleteObject` flag enabled to delete the Sponsorship entry and return the unspent `FeeAmount` to the sponsor. The example looks up the sponsor's balance with the [account_info method][] first, so it can compare the balance after the deletion.
 
 {% tabs %}
 {% tab label="JavaScript" %}
@@ -202,7 +202,7 @@ Deleting a pool does not revoke sponsorship on ledger entries that already consu
 
 ### 8. Verify the sponsor reclaimed XRP
 
-Compare the sponsor's balance before and after the deletion. The sponsor gets the pool's unspent `FeeAmount` back, minus the transaction fee paid to submit the delete transaction.
+Send another [account_info method][] request to compare the sponsor's balance before and after the deletion. The sponsor gets the pool's unspent `FeeAmount` back, minus the transaction fee paid to submit the delete transaction.
 
 Deleting the Sponsorship entry also releases the sponsor's owner reserve requirement, but that does not appear as an XRP balance increase. The balance check only shows the returned `FeeAmount` minus the delete transaction fee.
 

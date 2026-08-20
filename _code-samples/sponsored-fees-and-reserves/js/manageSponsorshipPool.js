@@ -63,8 +63,10 @@ const depositPreauthTx = {
   Account: sponsee.address,
   Authorize: sponsor.address,
   Sponsor: sponsor.address,
-  SponsorFlags: SponsorFlags.tfSponsorFee | SponsorFlags.tfSponsorReserve
+  SponsorFlags: SponsorFlags.spfSponsorFee | SponsorFlags.spfSponsorReserve
 }
+validate(depositPreauthTx)
+
 const depositPreauthResponse = await client.submitAndWait(depositPreauthTx, {
   wallet: sponsee,
   autofill: true
@@ -129,7 +131,8 @@ console.log(`Transaction URL: https://devnet.xrpl.org/transactions/${updateRespo
 console.log(`\n=== Preparing SponsorshipSet transaction to delete the sponsorship... ===`)
 const balanceBeforeResponse = await client.request({
   command: 'account_info',
-  account: sponsor.address
+  account: sponsor.address,
+  ledger_index: 'validated'
 })
 const sponsorBalanceBefore = BigInt(
   balanceBeforeResponse.result.account_data.Balance
@@ -169,7 +172,8 @@ console.log(`Transaction URL: https://devnet.xrpl.org/transactions/${deleteRespo
 console.log(`\n=== Reclaimed Funds ===`)
 const balanceAfterResponse = await client.request({
   command: 'account_info',
-  account: sponsor.address
+  account: sponsor.address,
+  ledger_index: 'validated'
 })
 const sponsorBalanceAfter = BigInt(
   balanceAfterResponse.result.account_data.Balance

@@ -47,6 +47,7 @@ preauth_id = preauth_node["CreatedNode"]["LedgerIndex"]
 
 print("DepositPreauth created successfully, with its reserve paid by the sponsee.")
 print(f"DepositPreauth ID: {preauth_id}")
+print(f"Transaction URL: https://devnet.xrpl.org/transactions/{deposit_preauth_response.result['hash']}")
 
 # Prepare SponsorshipTransfer transaction to start the sponsorship ----------------------
 print("\n=== Preparing SponsorshipTransfer transaction to start the sponsorship... ===")
@@ -78,6 +79,7 @@ fields = next(
 )
 print("Sponsorship started successfully!")
 print(f"DepositPreauth reserve now sponsored by: {fields['Sponsor']}")
+print(f"Transaction URL: https://devnet.xrpl.org/transactions/{create_response.result['hash']}")
 
 # Prepare SponsorshipTransfer transaction to reassign the sponsorship ----------------
 # tfSponsorshipReassign moves the reserve to Sponsor B in one transaction. Only the
@@ -95,7 +97,7 @@ reassign_tx = autofill(reassign_tx, client)
 print(json.dumps(reassign_tx.to_xrpl(), indent=2))
 
 # Sign as the sponsee, then co-sign as Sponsor B ----------------------
-print("\n=== Submitting SponsorshipTransfer transaction ===\n")
+print("\n=== Submitting SponsorshipTransfer transaction... ===")
 reassign_signed_tx = sign_as_sponsor(sponsor_b, sign(reassign_tx, sponsee))
 reassign_response = submit_and_wait(reassign_signed_tx.tx, client)
 
@@ -111,6 +113,7 @@ fields = next(
 )
 print("Sponsorship reassigned successfully!")
 print(f"DepositPreauth reserve now sponsored by: {fields['Sponsor']}")
+print(f"Transaction URL: https://devnet.xrpl.org/transactions/{reassign_response.result['hash']}")
 
 # Prepare SponsorshipTransfer transaction to end the sponsorship ----------------------
 # tfSponsorshipEnd takes no Sponsor field and needs no co-signature. If it
@@ -145,3 +148,4 @@ if "Sponsor" in fields:
 
 print("Sponsorship ended successfully!")
 print("The sponsee now pays the DepositPreauth entry's owner reserve again.")
+print(f"Transaction URL: https://devnet.xrpl.org/transactions/{end_response.result['hash']}")

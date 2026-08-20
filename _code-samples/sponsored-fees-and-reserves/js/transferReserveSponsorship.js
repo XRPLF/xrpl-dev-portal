@@ -58,7 +58,7 @@ const createTx = {
   ObjectID: preauthID,
   Flags: SponsorshipTransferFlags.tfSponsorshipCreate,
   Sponsor: sponsorA.address,
-  SponsorFlags: SponsorFlags.tfSponsorReserve
+  SponsorFlags: SponsorFlags.spfSponsorReserve
 }
 
 validate(createTx)
@@ -95,7 +95,7 @@ const reassignTx = {
   ObjectID: preauthID,
   Flags: SponsorshipTransferFlags.tfSponsorshipReassign,
   Sponsor: sponsorB.address,
-  SponsorFlags: SponsorFlags.tfSponsorReserve
+  SponsorFlags: SponsorFlags.spfSponsorReserve
 }
 
 validate(reassignTx)

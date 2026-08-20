@@ -119,7 +119,9 @@ print(f"Transaction URL: https://devnet.xrpl.org/transactions/{update_response.r
 # pool already paid reserves for stay sponsored until they're transferred or deleted.
 print("\n=== Preparing SponsorshipSet transaction to delete the sponsorship... ===")
 sponsor_balance_before = int(
-    client.request(AccountInfo(account=sponsor.address)).result["account_data"]["Balance"]
+    client.request(
+        AccountInfo(account=sponsor.address, ledger_index="validated")
+    ).result["account_data"]["Balance"]
 )
 
 delete_pool_tx = SponsorshipSet(
@@ -149,7 +151,9 @@ print(f"Transaction URL: https://devnet.xrpl.org/transactions/{delete_response.r
 # Show the reclaimed XRP ----------------------
 print("\n=== Reclaimed Funds ===")
 sponsor_balance_after = int(
-    client.request(AccountInfo(account=sponsor.address)).result["account_data"]["Balance"]
+    client.request(
+        AccountInfo(account=sponsor.address, ledger_index="validated")
+    ).result["account_data"]["Balance"]
 )
 delete_fee = int(delete_response.result["tx_json"]["Fee"])
 

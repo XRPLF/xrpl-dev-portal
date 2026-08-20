@@ -94,7 +94,7 @@ Fund three accounts: **Sponsor A**, **Sponsor B**, and the **sponsee**.
 
 ### 4. Create an unsponsored ledger entry
 
-Submit an unsponsored transaction, for this example a [DepositPreauth transaction][].
+Submit an unsponsored transaction. For this example, a [DepositPreauth transaction][].
 
 {% tabs %}
 {% tab label="JavaScript" %}
@@ -162,7 +162,7 @@ Only the sponsee can reassign a sponsorship, because the sponsee chooses which s
 
 ### 7. End the sponsorship
 
-You can end a sponsorship by submitting a SponsorshipTransfer transaction with the `tfSponsorshipEnd` flag enabled. Either party can end a sponsorship; this example has the sponsee submit the transaction. When the sponsor submits instead, it must also include the `Sponsee` field. If it succeeds, the `Sponsor` field is removed and the sponsee becomes responsible for the entry's reserve again.
+You can end a sponsorship by submitting a SponsorshipTransfer transaction with the `tfSponsorshipEnd` flag enabled. Either party can end a sponsorship, but this example has the sponsee submit the transaction. When the sponsor submits instead, it must also include the `Sponsee` field. If it succeeds, the `Sponsor` field is removed and the sponsee becomes responsible for the entry's reserve again.
 
 {% tabs %}
 {% tab label="JavaScript" %}
@@ -194,7 +194,7 @@ If the sponsored ledger entry is deleted instead, you don't need to end the spon
 
 ## Targeting an Account Instead of a Ledger Entry
 
-Each step above passes an `ObjectID` to identify the `DepositPreauth` entry. To create, reassign, or end the sponsorship on an account's own reserve, omit `ObjectID` entirely: the transaction then applies to the account in the `Account` field. Two differences apply when the target is an account:
+Each step above passes an `ObjectID` to identify the `DepositPreauth` entry. To create, reassign, or end the sponsorship on an account's own reserve, omit `ObjectID` entirely: the transaction then applies to the account in the `Account` field. The following differences apply when the target is an account:
 
 - The sponsor's `SponsorSignature` is required when creating or reassigning, not optional.
 - The counters the transaction moves are `SponsoringAccountCount` rather than `SponsoringOwnerCount` and `SponsoredOwnerCount`.

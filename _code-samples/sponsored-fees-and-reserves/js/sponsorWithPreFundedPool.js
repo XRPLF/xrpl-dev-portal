@@ -91,7 +91,7 @@ const depositPreauthTx = addPreFundedSponsor(
     Authorize: sponsor.address
   },
   sponsor.address,
-  SponsorFlags.tfSponsorFee | SponsorFlags.tfSponsorReserve
+  SponsorFlags.spfSponsorFee | SponsorFlags.spfSponsorReserve
 )
 validate(depositPreauthTx)
 console.log(JSON.stringify(depositPreauthTx, null, 2))

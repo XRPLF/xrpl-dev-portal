@@ -66,7 +66,7 @@ const depositPreauthTx = {
   Account: sponsee.address,
   Authorize: sponsor.address,
   Sponsor: sponsor.address,
-  SponsorFlags: SponsorFlags.tfSponsorFee | SponsorFlags.tfSponsorReserve
+  SponsorFlags: SponsorFlags.spfSponsorFee | SponsorFlags.spfSponsorReserve
 }
 validate(depositPreauthTx)
 
