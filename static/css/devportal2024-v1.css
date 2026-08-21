@@ -18299,39 +18299,39 @@ html.dark .bds-lang-dropdown .bds-lang-dropdown__item--active:active {
   background-color: #078139;
   color: #EAFCF1;
 }
-html.light [data-component-name="Markdown/Markdown"] article a:not(.xrpl-link) {
+html.light [data-component-name="Markdown/Markdown"] article a:not(.xrpl-link):not(.btn) {
   color: #000000;
   text-decoration-color: currentColor;
 }
-html.dark [data-component-name="Markdown/Markdown"] article a:not(.xrpl-link) {
+html.dark [data-component-name="Markdown/Markdown"] article a:not(.xrpl-link):not(.btn) {
   color: #FFFFFF;
   text-decoration-color: currentColor;
 }
-html.light [data-component-name="Markdown/Markdown"] article a:not(.xrpl-link):hover, html.light [data-component-name="Markdown/Markdown"] article a:not(.xrpl-link):active, html.light [data-component-name="Markdown/Markdown"] article a:not(.xrpl-link):focus {
+html.light [data-component-name="Markdown/Markdown"] article a:not(.xrpl-link):not(.btn):hover, html.light [data-component-name="Markdown/Markdown"] article a:not(.xrpl-link):not(.btn):active, html.light [data-component-name="Markdown/Markdown"] article a:not(.xrpl-link):not(.btn):focus {
   color: #000000;
   text-decoration-color: currentColor;
 }
-html.dark [data-component-name="Markdown/Markdown"] article a:not(.xrpl-link):hover, html.dark [data-component-name="Markdown/Markdown"] article a:not(.xrpl-link):active, html.dark [data-component-name="Markdown/Markdown"] article a:not(.xrpl-link):focus {
+html.dark [data-component-name="Markdown/Markdown"] article a:not(.xrpl-link):not(.btn):hover, html.dark [data-component-name="Markdown/Markdown"] article a:not(.xrpl-link):not(.btn):active, html.dark [data-component-name="Markdown/Markdown"] article a:not(.xrpl-link):not(.btn):focus {
   color: #FFFFFF;
   text-decoration-color: currentColor;
 }
-html.light [data-component-name="Markdown/Markdown"] article a:not(.xrpl-link):visited {
+html.light [data-component-name="Markdown/Markdown"] article a:not(.xrpl-link):not(.btn):visited {
   color: #000000;
   text-decoration-color: currentColor;
 }
-html.dark [data-component-name="Markdown/Markdown"] article a:not(.xrpl-link):visited {
+html.dark [data-component-name="Markdown/Markdown"] article a:not(.xrpl-link):not(.btn):visited {
   color: #FFFFFF;
   text-decoration-color: currentColor;
 }
-[data-component-name="Markdown/Markdown"] article a:not(.xrpl-link) {
+[data-component-name="Markdown/Markdown"] article a:not(.xrpl-link):not(.btn) {
   text-decoration: underline;
   text-underline-offset: 0.25em;
 }
-html.light [data-component-name="Markdown/Markdown"] article a:not(.xrpl-link):focus-visible {
+html.light [data-component-name="Markdown/Markdown"] article a:not(.xrpl-link):not(.btn):focus-visible {
   outline: 2px solid #111111;
   outline-offset: 2px;
 }
-html.dark [data-component-name="Markdown/Markdown"] article a:not(.xrpl-link):focus-visible {
+html.dark [data-component-name="Markdown/Markdown"] article a:not(.xrpl-link):not(.btn):focus-visible {
   outline: 2px solid #FFFFFF;
   outline-offset: 2px;
 }
@@ -22295,6 +22295,10 @@ html.light .bds-carousel-card-list--green .bds-carousel-card-list__description {
   color: #141414;
 }
 
+.bds-carousel-featured .bds-carousel-featured__feature-description .xrpl-link.xrpl-link--neutral {
+  color: inherit;
+}
+
 .bds-carousel-featured {
   width: 100%;
   overflow: hidden;
@@ -22343,21 +22347,21 @@ html.dark .bds-carousel-featured--bg-grey .bds-carousel-featured__feature-descri
 html.dark .bds-carousel-featured--bg-grey .bds-divider {
   background-color: #141414;
 }
-html.dark .bds-carousel-featured--bg-grey .bds-carousel-featured__feature-description a:not(.bds-link):not(.bds-btn):not(.bds-card-offgrid):not(.bds-card-icon) {
+html.dark .bds-carousel-featured--bg-grey .bds-carousel-featured__feature-description a:not(.bds-link):not(.bds-btn):not(.bds-card-offgrid):not(.bds-card-icon):not(.xrpl-link) {
   color: #078139;
   font-weight: 400;
 }
-html.dark .bds-carousel-featured--bg-grey .bds-carousel-featured__feature-description a:not(.bds-link):not(.bds-btn):not(.bds-card-offgrid):not(.bds-card-icon):hover {
+html.dark .bds-carousel-featured--bg-grey .bds-carousel-featured__feature-description a:not(.bds-link):not(.bds-btn):not(.bds-card-offgrid):not(.bds-card-icon):not(.xrpl-link):hover {
   color: #0DAA3E;
   text-decoration: underline;
 }
-html.dark .bds-carousel-featured--bg-grey .bds-carousel-featured__feature-description a:not(.bds-link):not(.bds-btn):not(.bds-card-offgrid):not(.bds-card-icon):active {
+html.dark .bds-carousel-featured--bg-grey .bds-carousel-featured__feature-description a:not(.bds-link):not(.bds-btn):not(.bds-card-offgrid):not(.bds-card-icon):not(.xrpl-link):active {
   color: #078139;
 }
-html.dark .bds-carousel-featured--bg-grey .bds-carousel-featured__feature-description a:not(.bds-link):not(.bds-btn):not(.bds-card-offgrid):not(.bds-card-icon):visited {
+html.dark .bds-carousel-featured--bg-grey .bds-carousel-featured__feature-description a:not(.bds-link):not(.bds-btn):not(.bds-card-offgrid):not(.bds-card-icon):not(.xrpl-link):visited {
   color: #7649E3;
 }
-html.dark .bds-carousel-featured--bg-grey .bds-carousel-featured__feature-description a:not(.bds-link):not(.bds-btn):not(.bds-card-offgrid):not(.bds-card-icon):focus-visible {
+html.dark .bds-carousel-featured--bg-grey .bds-carousel-featured__feature-description a:not(.bds-link):not(.bds-btn):not(.bds-card-offgrid):not(.bds-card-icon):not(.xrpl-link):focus-visible {
   outline: 2px solid #141414;
   outline-offset: 1px;
 }
@@ -22382,21 +22386,21 @@ html.dark .bds-carousel-featured--bg-neutral .bds-carousel-featured__feature-des
 html.dark .bds-carousel-featured--bg-neutral .bds-divider {
   background-color: #FFFFFF;
 }
-html.dark .bds-carousel-featured--bg-neutral .bds-carousel-featured__feature-description a:not(.bds-link):not(.bds-btn):not(.bds-card-offgrid):not(.bds-card-icon) {
+html.dark .bds-carousel-featured--bg-neutral .bds-carousel-featured__feature-description a:not(.bds-link):not(.bds-btn):not(.bds-card-offgrid):not(.bds-card-icon):not(.xrpl-link) {
   color: #21E46B;
   font-weight: 400;
 }
-html.dark .bds-carousel-featured--bg-neutral .bds-carousel-featured__feature-description a:not(.bds-link):not(.bds-btn):not(.bds-card-offgrid):not(.bds-card-icon):hover {
+html.dark .bds-carousel-featured--bg-neutral .bds-carousel-featured__feature-description a:not(.bds-link):not(.bds-btn):not(.bds-card-offgrid):not(.bds-card-icon):not(.xrpl-link):hover {
   color: #70EE97;
   text-decoration: underline;
 }
-html.dark .bds-carousel-featured--bg-neutral .bds-carousel-featured__feature-description a:not(.bds-link):not(.bds-btn):not(.bds-card-offgrid):not(.bds-card-icon):active {
+html.dark .bds-carousel-featured--bg-neutral .bds-carousel-featured__feature-description a:not(.bds-link):not(.bds-btn):not(.bds-card-offgrid):not(.bds-card-icon):not(.xrpl-link):active {
   color: #21E46B;
 }
-html.dark .bds-carousel-featured--bg-neutral .bds-carousel-featured__feature-description a:not(.bds-link):not(.bds-btn):not(.bds-card-offgrid):not(.bds-card-icon):visited {
+html.dark .bds-carousel-featured--bg-neutral .bds-carousel-featured__feature-description a:not(.bds-link):not(.bds-btn):not(.bds-card-offgrid):not(.bds-card-icon):not(.xrpl-link):visited {
   color: #C0A7FF;
 }
-html.dark .bds-carousel-featured--bg-neutral .bds-carousel-featured__feature-description a:not(.bds-link):not(.bds-btn):not(.bds-card-offgrid):not(.bds-card-icon):focus-visible {
+html.dark .bds-carousel-featured--bg-neutral .bds-carousel-featured__feature-description a:not(.bds-link):not(.bds-btn):not(.bds-card-offgrid):not(.bds-card-icon):not(.xrpl-link):focus-visible {
   outline: 2px solid #FFFFFF;
   outline-offset: 1px;
 }
@@ -22421,21 +22425,21 @@ html.dark .bds-carousel-featured--bg-yellow .bds-carousel-featured__feature-desc
 html.dark .bds-carousel-featured--bg-yellow .bds-divider {
   background-color: #141414;
 }
-html.dark .bds-carousel-featured--bg-yellow .bds-carousel-featured__feature-description a:not(.bds-link):not(.bds-btn):not(.bds-card-offgrid):not(.bds-card-icon) {
+html.dark .bds-carousel-featured--bg-yellow .bds-carousel-featured__feature-description a:not(.bds-link):not(.bds-btn):not(.bds-card-offgrid):not(.bds-card-icon):not(.xrpl-link) {
   color: #078139;
   font-weight: 400;
 }
-html.dark .bds-carousel-featured--bg-yellow .bds-carousel-featured__feature-description a:not(.bds-link):not(.bds-btn):not(.bds-card-offgrid):not(.bds-card-icon):hover {
+html.dark .bds-carousel-featured--bg-yellow .bds-carousel-featured__feature-description a:not(.bds-link):not(.bds-btn):not(.bds-card-offgrid):not(.bds-card-icon):not(.xrpl-link):hover {
   color: #0DAA3E;
   text-decoration: underline;
 }
-html.dark .bds-carousel-featured--bg-yellow .bds-carousel-featured__feature-description a:not(.bds-link):not(.bds-btn):not(.bds-card-offgrid):not(.bds-card-icon):active {
+html.dark .bds-carousel-featured--bg-yellow .bds-carousel-featured__feature-description a:not(.bds-link):not(.bds-btn):not(.bds-card-offgrid):not(.bds-card-icon):not(.xrpl-link):active {
   color: #078139;
 }
-html.dark .bds-carousel-featured--bg-yellow .bds-carousel-featured__feature-description a:not(.bds-link):not(.bds-btn):not(.bds-card-offgrid):not(.bds-card-icon):visited {
+html.dark .bds-carousel-featured--bg-yellow .bds-carousel-featured__feature-description a:not(.bds-link):not(.bds-btn):not(.bds-card-offgrid):not(.bds-card-icon):not(.xrpl-link):visited {
   color: #7649E3;
 }
-html.dark .bds-carousel-featured--bg-yellow .bds-carousel-featured__feature-description a:not(.bds-link):not(.bds-btn):not(.bds-card-offgrid):not(.bds-card-icon):focus-visible {
+html.dark .bds-carousel-featured--bg-yellow .bds-carousel-featured__feature-description a:not(.bds-link):not(.bds-btn):not(.bds-card-offgrid):not(.bds-card-icon):not(.xrpl-link):focus-visible {
   outline: 2px solid #141414;
   outline-offset: 1px;
 }
@@ -22715,21 +22719,21 @@ html.light .bds-carousel-featured--bg-grey .bds-carousel-featured__feature-descr
 html.light .bds-carousel-featured--bg-grey .bds-divider {
   background-color: #141414;
 }
-html.light .bds-carousel-featured--bg-grey .bds-carousel-featured__feature-description a:not(.bds-link):not(.bds-btn):not(.bds-card-offgrid):not(.bds-card-icon) {
+html.light .bds-carousel-featured--bg-grey .bds-carousel-featured__feature-description a:not(.bds-link):not(.bds-btn):not(.bds-card-offgrid):not(.bds-card-icon):not(.xrpl-link) {
   color: #078139;
   font-weight: 400;
 }
-html.light .bds-carousel-featured--bg-grey .bds-carousel-featured__feature-description a:not(.bds-link):not(.bds-btn):not(.bds-card-offgrid):not(.bds-card-icon):hover {
+html.light .bds-carousel-featured--bg-grey .bds-carousel-featured__feature-description a:not(.bds-link):not(.bds-btn):not(.bds-card-offgrid):not(.bds-card-icon):not(.xrpl-link):hover {
   color: #0DAA3E;
   text-decoration: underline;
 }
-html.light .bds-carousel-featured--bg-grey .bds-carousel-featured__feature-description a:not(.bds-link):not(.bds-btn):not(.bds-card-offgrid):not(.bds-card-icon):active {
+html.light .bds-carousel-featured--bg-grey .bds-carousel-featured__feature-description a:not(.bds-link):not(.bds-btn):not(.bds-card-offgrid):not(.bds-card-icon):not(.xrpl-link):active {
   color: #078139;
 }
-html.light .bds-carousel-featured--bg-grey .bds-carousel-featured__feature-description a:not(.bds-link):not(.bds-btn):not(.bds-card-offgrid):not(.bds-card-icon):visited {
+html.light .bds-carousel-featured--bg-grey .bds-carousel-featured__feature-description a:not(.bds-link):not(.bds-btn):not(.bds-card-offgrid):not(.bds-card-icon):not(.xrpl-link):visited {
   color: #7649E3;
 }
-html.light .bds-carousel-featured--bg-grey .bds-carousel-featured__feature-description a:not(.bds-link):not(.bds-btn):not(.bds-card-offgrid):not(.bds-card-icon):focus-visible {
+html.light .bds-carousel-featured--bg-grey .bds-carousel-featured__feature-description a:not(.bds-link):not(.bds-btn):not(.bds-card-offgrid):not(.bds-card-icon):not(.xrpl-link):focus-visible {
   outline: 2px solid #141414;
   outline-offset: 1px;
 }
@@ -22744,21 +22748,21 @@ html.light .bds-carousel-featured--bg-neutral .bds-carousel-featured__feature-de
 html.light .bds-carousel-featured--bg-neutral .bds-divider {
   background-color: #141414;
 }
-html.light .bds-carousel-featured--bg-neutral .bds-carousel-featured__feature-description a:not(.bds-link):not(.bds-btn):not(.bds-card-offgrid):not(.bds-card-icon) {
+html.light .bds-carousel-featured--bg-neutral .bds-carousel-featured__feature-description a:not(.bds-link):not(.bds-btn):not(.bds-card-offgrid):not(.bds-card-icon):not(.xrpl-link) {
   color: #078139;
   font-weight: 400;
 }
-html.light .bds-carousel-featured--bg-neutral .bds-carousel-featured__feature-description a:not(.bds-link):not(.bds-btn):not(.bds-card-offgrid):not(.bds-card-icon):hover {
+html.light .bds-carousel-featured--bg-neutral .bds-carousel-featured__feature-description a:not(.bds-link):not(.bds-btn):not(.bds-card-offgrid):not(.bds-card-icon):not(.xrpl-link):hover {
   color: #0DAA3E;
   text-decoration: underline;
 }
-html.light .bds-carousel-featured--bg-neutral .bds-carousel-featured__feature-description a:not(.bds-link):not(.bds-btn):not(.bds-card-offgrid):not(.bds-card-icon):active {
+html.light .bds-carousel-featured--bg-neutral .bds-carousel-featured__feature-description a:not(.bds-link):not(.bds-btn):not(.bds-card-offgrid):not(.bds-card-icon):not(.xrpl-link):active {
   color: #078139;
 }
-html.light .bds-carousel-featured--bg-neutral .bds-carousel-featured__feature-description a:not(.bds-link):not(.bds-btn):not(.bds-card-offgrid):not(.bds-card-icon):visited {
+html.light .bds-carousel-featured--bg-neutral .bds-carousel-featured__feature-description a:not(.bds-link):not(.bds-btn):not(.bds-card-offgrid):not(.bds-card-icon):not(.xrpl-link):visited {
   color: #7649E3;
 }
-html.light .bds-carousel-featured--bg-neutral .bds-carousel-featured__feature-description a:not(.bds-link):not(.bds-btn):not(.bds-card-offgrid):not(.bds-card-icon):focus-visible {
+html.light .bds-carousel-featured--bg-neutral .bds-carousel-featured__feature-description a:not(.bds-link):not(.bds-btn):not(.bds-card-offgrid):not(.bds-card-icon):not(.xrpl-link):focus-visible {
   outline: 2px solid #141414;
   outline-offset: 1px;
 }
@@ -22773,21 +22777,21 @@ html.light .bds-carousel-featured--bg-yellow .bds-carousel-featured__feature-des
 html.light .bds-carousel-featured--bg-yellow .bds-divider {
   background-color: #141414;
 }
-html.light .bds-carousel-featured--bg-yellow .bds-carousel-featured__feature-description a:not(.bds-link):not(.bds-btn):not(.bds-card-offgrid):not(.bds-card-icon) {
+html.light .bds-carousel-featured--bg-yellow .bds-carousel-featured__feature-description a:not(.bds-link):not(.bds-btn):not(.bds-card-offgrid):not(.bds-card-icon):not(.xrpl-link) {
   color: #078139;
   font-weight: 400;
 }
-html.light .bds-carousel-featured--bg-yellow .bds-carousel-featured__feature-description a:not(.bds-link):not(.bds-btn):not(.bds-card-offgrid):not(.bds-card-icon):hover {
+html.light .bds-carousel-featured--bg-yellow .bds-carousel-featured__feature-description a:not(.bds-link):not(.bds-btn):not(.bds-card-offgrid):not(.bds-card-icon):not(.xrpl-link):hover {
   color: #0DAA3E;
   text-decoration: underline;
 }
-html.light .bds-carousel-featured--bg-yellow .bds-carousel-featured__feature-description a:not(.bds-link):not(.bds-btn):not(.bds-card-offgrid):not(.bds-card-icon):active {
+html.light .bds-carousel-featured--bg-yellow .bds-carousel-featured__feature-description a:not(.bds-link):not(.bds-btn):not(.bds-card-offgrid):not(.bds-card-icon):not(.xrpl-link):active {
   color: #078139;
 }
-html.light .bds-carousel-featured--bg-yellow .bds-carousel-featured__feature-description a:not(.bds-link):not(.bds-btn):not(.bds-card-offgrid):not(.bds-card-icon):visited {
+html.light .bds-carousel-featured--bg-yellow .bds-carousel-featured__feature-description a:not(.bds-link):not(.bds-btn):not(.bds-card-offgrid):not(.bds-card-icon):not(.xrpl-link):visited {
   color: #7649E3;
 }
-html.light .bds-carousel-featured--bg-yellow .bds-carousel-featured__feature-description a:not(.bds-link):not(.bds-btn):not(.bds-card-offgrid):not(.bds-card-icon):focus-visible {
+html.light .bds-carousel-featured--bg-yellow .bds-carousel-featured__feature-description a:not(.bds-link):not(.bds-btn):not(.bds-card-offgrid):not(.bds-card-icon):not(.xrpl-link):focus-visible {
   outline: 2px solid #141414;
   outline-offset: 1px;
 }

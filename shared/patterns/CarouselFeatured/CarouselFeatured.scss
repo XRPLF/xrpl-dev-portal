@@ -153,7 +153,7 @@ $bds-carousel-featured-variants-light: (
 // specificity clear of the other global themed link rules in the codebase.
 @mixin carousel-featured-links($config) {
   .bds-carousel-featured__feature-description {
-    a:not(.bds-link):not(.bds-btn):not(.bds-card-offgrid):not(.bds-card-icon) {
+    a:not(.bds-link):not(.bds-btn):not(.bds-card-offgrid):not(.bds-card-icon):not(.xrpl-link) {
       color: map-get($config, "link-color");
       font-weight: 400;
 
@@ -176,6 +176,17 @@ $bds-carousel-featured-variants-light: (
       }
     }
   }
+}
+
+// A neutral Link here needs to match THIS PANEL's own text color, not the
+// site theme: "grey" and "yellow" stay light-colored (text stays black) in
+// both light and dark mode, so the sitewide neutral color (black light /
+// white dark) goes white-on-light-yellow in dark mode. Inheriting tracks
+// whichever color the surrounding text already resolves to, correct for
+// every variant, without a per-variant override. Brand links are unaffected
+// -- they already carry their own fixed-per-variant green above.
+.bds-carousel-featured .bds-carousel-featured__feature-description .xrpl-link.xrpl-link--neutral {
+  color: inherit;
 }
 
 // Full variant mixin (for dark mode with button styles)
