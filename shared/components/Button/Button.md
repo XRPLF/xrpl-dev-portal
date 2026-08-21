@@ -95,11 +95,12 @@ Bootstrap's, the theme's, and any container styling its own anchors.
 `Button.scss` §5 out-specifies them with a doubled class,
 `a.bds-btn.bds-btn:link` and the other four link pseudo-classes.
 
-**Do not collapse those into `:is()`.** PurgeCSS drops any rule whose selector
-contains `:is()` or `:where()`, so the tidy form compiles, works in
-`realm develop`, and vanishes from the production bundle — leaving anchor
-buttons painted as links. §5 is also deliberately unlayered, since everything
-above it sits in `@layer bds-btn.*`.
+**Do not collapse those into `:is()`.** PurgeCSS drops a rule when the argument
+to `:is()` or `:where()` is a pseudo-class list or a `:not()` chain, so the tidy
+form compiles, works in `realm develop`, and vanishes from the production bundle
+— leaving anchor buttons painted as links. A plain selector argument is fine,
+which is why `:where(html.dark)` in §4 survives. §5 is also deliberately
+unlayered, since everything above it sits in `@layer bds-btn.*`.
 
 ## Not from the token set
 
