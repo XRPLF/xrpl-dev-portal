@@ -339,6 +339,10 @@
               expanded: false
               items:
                 - page: docs/tutorials/best-practices/account-management/calculate-reserves.md
+                - page: docs/tutorials/best-practices/account-management/sponsor-a-transaction-by-co-signing.md
+                - page: docs/tutorials/best-practices/account-management/sponsor-a-transaction-with-a-pre-funded-pool.md
+                - page: docs/tutorials/best-practices/account-management/manage-a-sponsorship-pool.md
+                - page: docs/tutorials/best-practices/account-management/transfer-a-reserve-sponsorship.md
         - group: Advanced Developer Topics
           groupTranslationKey: sidebar.docs.tutorials.advancedDeveloperTopics
           expanded: false
