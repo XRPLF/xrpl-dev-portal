@@ -1,5 +1,6 @@
 import React from 'react';
 import clsx from 'clsx';
+import { XrplArrowInternalLinkIcon, XrplArrowExternalLinkIcon } from '../Icons';
 
 // Anchors that don't use this component (raw <a> in markdown, tag components
 // like {% child-pages %}) don't get these styles automatically -- they fall
@@ -27,38 +28,6 @@ export type LinkProps = LinkColorProps &
     children: React.ReactNode;
   };
 
-const ICON_VIEWBOX_SIZE = 24;
-
-// The one documented trailing arrow -- no internal/external distinction yet.
-// Sized entirely by CSS (see .xrpl-link__icon in _link.scss).
-const LinkIcon: React.FC = () => {
-  return (
-    <span className="xrpl-link__icon" aria-hidden="true">
-      <svg
-        viewBox={`0 0 ${ICON_VIEWBOX_SIZE} ${ICON_VIEWBOX_SIZE}`}
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M13 2L21 12L13 22"
-          stroke="var(--link-icon-color, currentColor)"
-          strokeWidth="2"
-          strokeMiterlimit="10"
-          strokeLinecap="round"
-        />
-        <path
-          d="M21 12H3"
-          stroke="var(--link-icon-color, currentColor)"
-          strokeWidth="2"
-          strokeMiterlimit="10"
-          strokeLinecap="round"
-          className="xrpl-link__icon-line"
-        />
-      </svg>
-    </span>
-  );
-};
-
 function colorGroup(intention: LinkIntention, context: LinkContext): string {
   if (context === 'on-inverse') return `${intention}-on-inverse`;
   if (context === 'on-saturated') return `${intention}-on-saturated`;
@@ -84,8 +53,6 @@ export function linkClassName({
   );
 }
 
-export { LinkIcon };
-
 // Navigational anchor. Always renders <a>. A control that acts rather than
 // navigates is a Button, even when styled to look understated.
 export const Link: React.FC<LinkProps> = ({
@@ -100,6 +67,9 @@ export const Link: React.FC<LinkProps> = ({
   ...rest
 }) => {
   const showIcon = variation === 'standalone' && iconEnd;
+  // target="_blank" is this codebase's existing signal for "leaves the site" --
+  // picks which of the two shared arrow icons to render, not just its color.
+  const isExternal = rest.target === '_blank';
 
   return (
     <a
@@ -108,7 +78,11 @@ export const Link: React.FC<LinkProps> = ({
       {...rest}
     >
       {children}
-      {showIcon && <LinkIcon />}
+      {showIcon &&
+        // Must be a direct child of this <a>, not wrapped in a span: the
+        // bds-icon-engaged mixin (triggered on hover/focus-visible below)
+        // emits `> .bds-icon`, so anything between them breaks the animation.
+        (isExternal ? <XrplArrowExternalLinkIcon /> : <XrplArrowInternalLinkIcon />)}
     </a>
   );
 };

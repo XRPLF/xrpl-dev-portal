@@ -39,7 +39,7 @@ even if it's meant to look like a link.
 | `context` | `on-theme` \| `on-inverse` \| `on-saturated` | `on-theme` | Which surface the link sits on — controls both color group and focus-ring color. `neutral` + `on-saturated` is a compile-time type error (no such combination exists in the spec). |
 | `variation` | `inline` \| `standalone` | `inline` | `inline` sits inside running text: no fixed size (inherits the parent's font-size/line-height), no icon, `display: inline` so it wraps. `standalone` is a link acting as its own element (a card's "Read More", a CTA under a paragraph): fixed size, optional trailing icon, `display: inline-flex`. |
 | `size` | `sm` \| `md` \| `lg` | `md` | Only affects `standalone` — `inline` always inherits from its parent. |
-| `iconEnd` | `boolean` | `false` | Trailing chevron. Only rendered when `variation="standalone"`; ignored on `inline`. |
+| `iconEnd` | `boolean` | `false` | Trailing arrow, from the shared icon set (`shared/components/Icons`) -- `XrplArrowInternalLinkIcon`, or `XrplArrowExternalLinkIcon` when `target="_blank"` is set. Only rendered when `variation="standalone"`; ignored on `inline`. |
 | `href` | `string` | — | Required. |
 
 Everything else (`target`, `rel`, `onClick`, `aria-*`, ...) passes through to
@@ -142,8 +142,9 @@ mixins.
 
 ## Files
 
-- `Link.tsx` — component, types, `linkClassName()` helper, icon SVG
-- `_link.scss` — geometry, typography, display, icon animation
+- `Link.tsx` — component, types, `linkClassName()` helper
+- `_link.scss` — geometry, typography, display, triggers the icon's built-in motion (see below)
+- `../Icons` — `XrplArrowInternalLinkIcon` / `XrplArrowExternalLinkIcon`, the trailing arrow itself: artwork, sizing (`1em`, tracks this element's own font-size), and the hover/focus-visible motion, none of which lives in this component. See `shared/components/Icons/shared.scss` for the `bds-icon-engaged` contract and `/icon-demo` for a live reference.
 - `../../../styles/_link-tokens.scss` — color/underline/focus mixins (shared with the fallback)
 - `../../../@theme/components/MarkdownLink.tsx` — markdown `[text](url)` override
 - `../../../styles/_content.scss` — raw-HTML-in-markdown fallback

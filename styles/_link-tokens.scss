@@ -20,9 +20,9 @@ $link-focus-on-saturated-dark: $true-black;
 // content-link fallback that resolves to (0,1,2) specificity (the `html.light`
 // prefix sits outside :where(), so it isn't zeroed out). An unscoped
 // `.xrpl-link--brand { color: ... }` is only (0,1,0) and loses to it in light
-// mode -- that was a real bug (link text rendering black in light mode while
-// --link-icon-color, untouched by that rule, stayed correct). Wrapping light
-// the same way as dark brings both branches to (0,2,1), which wins.
+// mode -- that was a real bug (link text rendering black in light mode
+// regardless of intention). Wrapping light the same way as dark brings both
+// branches to (0,2,1), which wins.
 
 // Label + icon color for rest/hover/visited, light and dark, per color group.
 // hover and pressed (:active) share a value in every group -- not an omission.
@@ -41,12 +41,10 @@ $link-focus-on-saturated-dark: $true-black;
     @include bds-theme-mode(light) {
       color: $xrpl-green-11;
       text-decoration-color: currentColor;
-      --link-icon-color: #{$xrpl-green-11};
     }
     @include bds-theme-mode(dark) {
       color: $xrpl-green-dark-11;
       text-decoration-color: currentColor;
-      --link-icon-color: #{$xrpl-green-dark-11};
     }
 
     // :focus (not just :focus-visible) is included here because
@@ -60,12 +58,10 @@ $link-focus-on-saturated-dark: $true-black;
       @include bds-theme-mode(light) {
         color: $xrpl-green-12;
         text-decoration-color: currentColor;
-        --link-icon-color: #{$xrpl-green-12};
       }
       @include bds-theme-mode(dark) {
         color: $xrpl-green-dark-12;
         text-decoration-color: currentColor;
-        --link-icon-color: #{$xrpl-green-dark-12};
       }
     }
 
@@ -73,24 +69,20 @@ $link-focus-on-saturated-dark: $true-black;
       @include bds-theme-mode(light) {
         color: $sage-12;
         text-decoration-color: currentColor;
-        --link-icon-color: #{$sage-12};
       }
       @include bds-theme-mode(dark) {
         color: $sage-dark-12;
         text-decoration-color: currentColor;
-        --link-icon-color: #{$sage-dark-12};
       }
     }
   } @else if $group == neutral {
     @include bds-theme-mode(light) {
       color: $link-neutral-black;
       text-decoration-color: currentColor;
-      --link-icon-color: #{$link-neutral-black};
     }
     @include bds-theme-mode(dark) {
       color: $white;
       text-decoration-color: currentColor;
-      --link-icon-color: #{$white};
     }
 
     // :focus (not just :focus-visible) is included here because
@@ -104,12 +96,10 @@ $link-focus-on-saturated-dark: $true-black;
       @include bds-theme-mode(light) {
         color: $link-neutral-black;
         text-decoration-color: currentColor;
-        --link-icon-color: #{$link-neutral-black};
       }
       @include bds-theme-mode(dark) {
         color: $white;
         text-decoration-color: currentColor;
-        --link-icon-color: #{$white};
       }
     }
 
@@ -119,24 +109,20 @@ $link-focus-on-saturated-dark: $true-black;
       @include bds-theme-mode(light) {
         color: $link-neutral-black;
         text-decoration-color: currentColor;
-        --link-icon-color: #{$link-neutral-black};
       }
       @include bds-theme-mode(dark) {
         color: $white;
         text-decoration-color: currentColor;
-        --link-icon-color: #{$white};
       }
     }
   } @else if $group == brand-on-inverse {
     @include bds-theme-mode(light) {
       color: $xrpl-green-dark-11;
       text-decoration-color: currentColor;
-      --link-icon-color: #{$xrpl-green-dark-11};
     }
     @include bds-theme-mode(dark) {
       color: $xrpl-green-11;
       text-decoration-color: currentColor;
-      --link-icon-color: #{$xrpl-green-11};
     }
 
     // :focus (not just :focus-visible) is included here because
@@ -150,12 +136,10 @@ $link-focus-on-saturated-dark: $true-black;
       @include bds-theme-mode(light) {
         color: $xrpl-green-dark-12;
         text-decoration-color: currentColor;
-        --link-icon-color: #{$xrpl-green-dark-12};
       }
       @include bds-theme-mode(dark) {
         color: $xrpl-green-12;
         text-decoration-color: currentColor;
-        --link-icon-color: #{$xrpl-green-12};
       }
     }
 
@@ -163,24 +147,20 @@ $link-focus-on-saturated-dark: $true-black;
       @include bds-theme-mode(light) {
         color: $xrpl-green-1;
         text-decoration-color: currentColor;
-        --link-icon-color: #{$xrpl-green-1};
       }
       @include bds-theme-mode(dark) {
         color: $xrpl-green-dark-1;
         text-decoration-color: currentColor;
-        --link-icon-color: #{$xrpl-green-dark-1};
       }
     }
   } @else if $group == neutral-on-inverse {
     @include bds-theme-mode(light) {
       color: $sage-1;
       text-decoration-color: currentColor;
-      --link-icon-color: #{$sage-1};
     }
     @include bds-theme-mode(dark) {
       color: $sage-12;
       text-decoration-color: currentColor;
-      --link-icon-color: #{$sage-12};
     }
 
     // :focus (not just :focus-visible) is included here because
@@ -194,12 +174,10 @@ $link-focus-on-saturated-dark: $true-black;
       @include bds-theme-mode(light) {
         color: $sage-1;
         text-decoration-color: currentColor;
-        --link-icon-color: #{$sage-1};
       }
       @include bds-theme-mode(dark) {
         color: $sage-12;
         text-decoration-color: currentColor;
-        --link-icon-color: #{$sage-12};
       }
     }
 
@@ -207,12 +185,10 @@ $link-focus-on-saturated-dark: $true-black;
       @include bds-theme-mode(light) {
         color: $sage-7;
         text-decoration-color: currentColor;
-        --link-icon-color: #{$sage-7};
       }
       @include bds-theme-mode(dark) {
         color: $sage-dark-7;
         text-decoration-color: currentColor;
-        --link-icon-color: #{$sage-dark-7};
       }
     }
   } @else if $group == brand-on-saturated {
@@ -223,12 +199,10 @@ $link-focus-on-saturated-dark: $true-black;
     @include bds-theme-mode(light) {
       color: $black;
       text-decoration-color: currentColor;
-      --link-icon-color: #{$black};
     }
     @include bds-theme-mode(dark) {
       color: $black;
       text-decoration-color: currentColor;
-      --link-icon-color: #{$black};
     }
 
     &:hover,
@@ -238,12 +212,10 @@ $link-focus-on-saturated-dark: $true-black;
       @include bds-theme-mode(light) {
         color: $xrpl-green-12;
         text-decoration-color: currentColor;
-        --link-icon-color: #{$xrpl-green-12};
       }
       @include bds-theme-mode(dark) {
         color: $xrpl-green-12;
         text-decoration-color: currentColor;
-        --link-icon-color: #{$xrpl-green-12};
       }
     }
   } @else {
