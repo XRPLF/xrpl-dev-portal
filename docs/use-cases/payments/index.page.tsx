@@ -1,5 +1,6 @@
 import React from 'react';
 import { useThemeHooks } from '@redocly/theme/core/hooks';
+import { Link } from 'shared/components/Link';
 import { PageWrapper } from 'shared/components/PageWrapper';
 import { HeaderHeroSplitMedia } from 'shared/sections/HeaderHeroSplitMedia/HeaderHeroSplitMedia';
 import { LinkTextDirectory } from 'shared/sections/LinkTextDirectory/LinkTextDirectory';
@@ -173,10 +174,10 @@ export default function PaymentsPage() {
           <p>{translate('Ideal for seasoned teams with crypto experience')}</p>
           <ul>
             <li>
-              {translate('Access open ')}<a href="https://xrpl.org/docs">{translate('documentation')}</a>
+              {translate('Access open ')}<Link href="https://xrpl.org/docs" intention="neutral">{translate('documentation')}</Link>
             </li>
             <li>
-              {translate('Use the Payments APIs + ')}<a href="https://xrpl.org/resources/dev-tools">{translate('XRPL tooling')}</a>
+              {translate('Use the Payments APIs + ')}<Link href="https://xrpl.org/resources/dev-tools" intention="neutral">{translate('XRPL tooling')}</Link>
             </li>
           </ul>
         </>
@@ -189,7 +190,7 @@ export default function PaymentsPage() {
           <p>{translate('Ideal for regulated institutions')}</p>
           <ul>
             <li>
-              {translate('Connect with the ')}<a href="https://discord.com/invite/KTNmhJDXqa">{translate('Community')}</a>
+              {translate('Connect with the ')}<Link href="https://discord.com/invite/KTNmhJDXqa" intention="neutral">{translate('Community')}</Link>
             </li>
             <li>{translate('Get help for more complex use cases')}</li>
           </ul>

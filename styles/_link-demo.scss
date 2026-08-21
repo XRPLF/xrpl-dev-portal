@@ -1,0 +1,116 @@
+// Layout for /link-demo (shared/components/Link reference page). Not part of
+// the design system -- just a QA/reference page, safe to delete along with
+// link-demo.page.tsx if it's no longer needed.
+
+.link-demo {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 40px 24px 120px;
+
+  &__intro {
+    margin-bottom: 40px;
+  }
+
+  &__group {
+    margin-bottom: 56px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid $gray-400;
+  }
+
+  &__group-title {
+    font-family: monospace;
+    margin-bottom: 4px;
+  }
+
+  &__group-note {
+    color: $gray-500;
+    margin-bottom: 20px;
+  }
+
+  &__table {
+    width: 100%;
+    border-collapse: collapse;
+
+    th,
+    td {
+      text-align: left;
+      vertical-align: top;
+      padding: 12px 16px 12px 0;
+      border-bottom: 1px solid $gray-300;
+    }
+
+    th {
+      font-family: monospace;
+      font-weight: 400;
+      color: $gray-500;
+    }
+  }
+
+  &__cell {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    align-items: flex-start;
+  }
+
+  &__caption {
+    font-family: monospace;
+    font-size: 0.75rem;
+    color: $gray-500;
+  }
+
+  // "on-inverse": a block inverted against the current mode -- dark panel in
+  // light mode, light panel in dark mode. See navigation.link colorMatrix.
+  //
+  // th/code overrides are wrapped in bds-theme-mode() rather than left as an
+  // unscoped default -- there's a sitewide `html.light code { color: ... }`
+  // rule at (0,1,2) specificity (html + code = 2 elements, .light = 1 class)
+  // that beats an unscoped `.link-demo__panel--inverse code` at (0,1,1). This
+  // is the same category of bug fixed in _link-tokens.scss: the html.light/
+  // html.dark prefix has to be on both branches, not just the override one.
+  &__panel--inverse {
+    background: $sage-dark-2;
+    color: $sage-1;
+    padding: 24px;
+    border-radius: 8px;
+
+    @include bds-theme-mode(light) {
+      th,
+      code {
+        color: $sage-8;
+      }
+    }
+
+    @include bds-theme-mode(dark) {
+      background: $sage-2;
+      color: $sage-12;
+
+      th,
+      code {
+        color: $sage-9;
+      }
+    }
+  }
+
+  // "on-saturated": the solid brand-green block, same in both modes.
+  &__panel--saturated {
+    background: $brand-green;
+    color: $black;
+    padding: 24px;
+    border-radius: 8px;
+
+    @include bds-theme-mode(light) {
+      th,
+      code {
+        color: $sage-dark-8;
+      }
+    }
+
+    @include bds-theme-mode(dark) {
+      th,
+      code {
+        color: $sage-dark-8;
+      }
+    }
+  }
+}

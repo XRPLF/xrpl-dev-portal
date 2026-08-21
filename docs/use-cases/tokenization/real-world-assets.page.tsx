@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useThemeHooks } from "@redocly/theme/core/hooks";
 import { Link } from "@redocly/theme/components/Link/Link";
+import { Link as XrplLink } from "shared/components/Link";
 import { DeveloperResourcesSection } from "shared/components/developer-resources-section";
 
 export const frontmatter = {
@@ -273,15 +274,15 @@ const marketIntegrationData = [
     description: (
       <>
         Utilize XRP Ledger's native{" "}
-        <Link to="/docs/concepts/tokens/decentralized-exchange">
+        <XrplLink href="/docs/concepts/tokens/decentralized-exchange" intention="brand">
           decentralized exchange (DEX)
-        </Link>{" "}
+        </XrplLink>{" "}
         with integrated{" "}
-        <Link to="/docs/concepts/tokens/decentralized-exchange/automated-market-makers">
+        <XrplLink href="/docs/concepts/tokens/decentralized-exchange/automated-market-makers" intention="brand">
           Automated Market Makers (AMM)
-        </Link>{" "}
+        </XrplLink>{" "}
         and onchain 24/7 order books, providing a developer-friendly environment
-        to create <Link to="/docs/use-cases/defi">DeFi solutions</Link> for
+        to create <XrplLink href="/docs/use-cases/defi" intention="brand">DeFi solutions</XrplLink> for
         traditional finance applications.
       </>
     ),
@@ -291,9 +292,9 @@ const marketIntegrationData = [
     description: (
       <>
         Issuers can enable{" "}
-        <Link target="_blank" to="/docs/concepts/payment-types/escrow">
+        <XrplLink target="_blank" href="/docs/concepts/payment-types/escrow" intention="brand">
           escrow functionality
-        </Link>{" "}
+        </XrplLink>{" "}
         to lock tokens and facilitate secure, conditional transfers of assets
         based on time-locks or other conditions to enable automated financial
         use cases onchain.

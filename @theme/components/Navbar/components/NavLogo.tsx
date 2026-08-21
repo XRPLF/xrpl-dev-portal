@@ -1,5 +1,5 @@
 import { useThemeHooks } from "@redocly/theme/core/hooks";
-import { BdsLink } from "../../../../shared/components/Link/Link";
+import { Link } from "../../../../shared/components/Link/Link";
 import { xrpSymbolBlack, xrpLogotypeBlack, xrpLedgerNav } from "../constants/icons";
 
 /**
@@ -12,7 +12,7 @@ export function NavLogo() {
   const { translate } = useTranslate();
 
   return (
-    <BdsLink href="/" className="bds-navbar__logo" aria-label={translate("XRP Ledger Home")} variant="inline">
+    <Link href="/" className="bds-navbar__logo" aria-label={translate("XRP Ledger Home")} variation="inline">
       <img
         src={xrpSymbolBlack}
         alt={translate("XRP Ledger")}
@@ -28,7 +28,7 @@ export function NavLogo() {
         alt={translate("XRP Ledger")}
         className="bds-navbar__logo-full"
       />
-    </BdsLink>
+    </Link>
   );
 }
 

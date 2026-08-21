@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import clsx from 'clsx';
-import { LinkArrow } from '../../components/Link/LinkArrow';
+import { LinkArrow } from '../../components/Link/legacy/LinkArrow';
 
 export interface TileLinkProps {
   /** Color variant: 'gray' (default) or 'lilac' */
