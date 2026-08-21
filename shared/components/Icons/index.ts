@@ -8,6 +8,8 @@
 //     the PurgeCSS safelist key on
 //   - it is aria-hidden by default; a control whose only content is an icon
 //     must supply its own accessible name
+//   - it takes `className` and `style`, and nothing else. The two link arrows
+//     add `engaged`; that is the only difference in the set.
 //
 // Adding an icon means adding it here too, otherwise consumers cannot reach it.
 

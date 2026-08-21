@@ -1,6 +1,7 @@
-export const PlusIcon: React.FC<{ className?: string }> = ({
-  className = "",
-}) => {
+export const PlusIcon: React.FC<{
+  className?: string;
+  style?: React.CSSProperties;
+}> = ({ className = "", style }) => {
   return (
     <svg
       width="1em"
@@ -9,6 +10,7 @@ export const PlusIcon: React.FC<{ className?: string }> = ({
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       className={`bds-icon ${className}`.trim()}
+      style={style}
       aria-hidden="true"
       focusable="false"
     >

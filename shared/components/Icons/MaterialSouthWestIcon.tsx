@@ -25,9 +25,9 @@
  *      (and which therefore defaults to black), so the icon inherits its
  *      colour from context instead of carrying its own.
  *   4. Dropped the deprecated `enable-background` attribute.
- *   5. Added the `bds-icon` base class and a `className` passthrough. The
- *      base class is the hook the icon-motion contract in `shared.scss` keys
- *      on; it changes nothing about the drawing.
+ *   5. Added the `bds-icon` base class and `className` / `style` passthroughs.
+ *      The base class is the hook the icon-motion contract in `shared.scss`
+ *      keys on; none of this changes the drawing.
  *   6. Added `aria-hidden="true"` and `focusable="false"` — decorative by
  *      default. A caller using this as the only content of a control must
  *      supply an accessible name on the control.
@@ -35,9 +35,10 @@
  * The `d` attribute below is byte-for-byte the upstream path data. Nothing
  * about the drawing has been altered, optimised or re-exported.
  */
-export const MaterialSouthWestIcon: React.FC<{ className?: string }> = ({
-  className = "",
-}) => {
+export const MaterialSouthWestIcon: React.FC<{
+  className?: string;
+  style?: React.CSSProperties;
+}> = ({ className = "", style }) => {
   return (
     <svg
       width="1em"
@@ -46,6 +47,7 @@ export const MaterialSouthWestIcon: React.FC<{ className?: string }> = ({
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       className={`bds-icon ${className}`.trim()}
+      style={style}
       aria-hidden="true"
       focusable="false"
     >
