@@ -4,7 +4,7 @@ date: "2026-08-20"
 template: '../../@theme/templates/blogpost'
 seo:
     title: Introducing Clio version 2.8.0
-    description: Version 2.8.0 of Clio, an XRP Ledger API server optimized for HTTP and WebSocket API calls, is now available. This release adds support for the Lending Protocol and Confidential Transfers, new features, and bug fixes.
+    description: Version 2.8.0 of Clio, an XRP Ledger API server optimized for HTTP and WebSocket API calls, is now available. This release adds support for several new amendments alongside bug fixes and build improvements.
 labels:
     - Clio Release Notes
 markdown:
