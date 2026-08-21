@@ -25,7 +25,6 @@ export default function Funding() {
   const carouselSlides: PanelStackPanel[] = [
     {
       id: "xrpl-grants-accelerator",
-      heading: translate("Explore XRPL Funding and Builders Programs"),
       features: [
         {
           title: translate("XRPL Grants & XRPL Accelerator"),
@@ -61,7 +60,6 @@ export default function Funding() {
     },
     {
       id: "xrpl-student-builder-residency",
-      heading: translate("Explore XRPL Funding and Builders Programs"),
       features: [
         {
           title: translate("XRPL Student Builder Residency"),
@@ -96,7 +94,6 @@ export default function Funding() {
     },
     {
       id: "xrpl-commons",
-      heading: translate("Explore XRPL Funding and Builders Programs"),
       features: [
         {
           title: translate("XRPL Commons"),
@@ -156,7 +153,11 @@ export default function Funding() {
         }}
       />
 
-      <PanelStack slides={carouselSlides} background="yellow" />
+      <PanelStack 
+        heading={translate("Explore XRPL Funding and Builders Programs")}
+        slides={carouselSlides} 
+        background="yellow" 
+      />
 
       <LogoSquareGrid
         variant="gray"
