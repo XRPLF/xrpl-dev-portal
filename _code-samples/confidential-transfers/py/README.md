@@ -126,7 +126,7 @@ https://devnet.xrpl.org/transactions/F73C0EA746069709C617E30EDCD205FF7E20C25885C
 Payment1 (Fund): {
   "Account": "rp39gWeAU9MRFuxEQuj1x5JzeSiQfUDTKu",
   "TransactionType": "ConfidentialMPTSend",
-  "Fee": "10",
+  "Sequence": 4660039,
   "SigningPubKey": "",
   "Destination": "rJ1ggTj72sQnybqj78CuT2TctnNVs11ZRn",
   "MPTokenIssuanceID": "0040EA9991511338EC6855D292EA3DF8295CAF91933A91AC",
@@ -142,7 +142,7 @@ Payment1 (Fund): {
 Payment2 (Cash): {
   "Account": "rJ1ggTj72sQnybqj78CuT2TctnNVs11ZRn",
   "TransactionType": "ConfidentialMPTSend",
-  "Fee": "10",
+  "Sequence": 4660039,
   "SigningPubKey": "",
   "Destination": "rp39gWeAU9MRFuxEQuj1x5JzeSiQfUDTKu",
   "MPTokenIssuanceID": "0040EA9A91511338EC6855D292EA3DF8295CAF91933A91AC",
@@ -154,6 +154,7 @@ Payment2 (Cash): {
   "BalanceCommitment": "03A810524CAE5074898EAAA3DDAFAB64E5D82B822A9354BD64F3A88A03A5DAC2EB",
   "AuditorEncryptedAmount": "021420569B97E37B1E51316199FDD3570FFD0E278FD4B82685E364B8040BC8B909023D9908045EE1F530C46977AA0B6E7E0BE5DA067F269EE06FB212D1E6865656BA"
 }
+
 === Submit confidential payments in batch... ===
 Seller sends CTST to Buyer.
 Buyer sends CTUSD to Seller.

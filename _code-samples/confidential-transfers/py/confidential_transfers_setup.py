@@ -9,9 +9,8 @@ import sys
 from xrpl.asyncio.clients import AsyncWebsocketClient
 from xrpl.asyncio.transaction import autofill, submit_and_wait
 from xrpl.asyncio.wallet import generate_faucet_wallet
-from xrpl.ext.confidential import MPTCrypto
-
-from xrpl.ext.confidential.transaction_builders import (
+from xrpl.ext.confidential import (
+    MPTCrypto,
     prepare_confidential_convert_async,
     prepare_confidential_merge_inbox_async,
     prepare_confidential_send_async,

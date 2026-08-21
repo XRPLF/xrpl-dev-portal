@@ -124,7 +124,7 @@ fund_payment, cash_payment = [
 ]
 
 # Settle both payments atomically ----------------------
-print("=== Submit confidential payments in batch... ===")
+print("\n=== Submit confidential payments in batch... ===")
 print(f"Seller sends {fund['ticker']} to Buyer.")
 print(f"Buyer sends {stablecoin['ticker']} to Seller.\n")
 
