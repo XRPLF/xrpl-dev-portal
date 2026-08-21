@@ -81,6 +81,10 @@ module.exports = {
                 // where PurgeCSS does not look, so nothing here is ever found as
                 // a literal in the content it scans.
                 /^bds-icon/,
+                // RebrandButton - the group/emphasis/context classes are composed
+                // from props at runtime and emitted from a Sass @each loop, so
+                // neither side of the build ever contains them as literals
+                /^rb-btn/,
 
                 /^g-/, // Gap utilities
                 /^p-/, // Padding utilities

@@ -90,8 +90,11 @@ $line-height-base: 1.5;
 @import "../shared/components/Icons/XrplArrowInternalLinkIcon.scss";
 @import "../shared/components/Icons/XrplArrowExternalLinkIcon.scss";
 @import "../shared/components/Icons/LoaderIcon.scss";
+@import "../shared/components/RebrandButton/RebrandButton.scss";
 // The icon reference page at /icon-demo. Needs the mixin above.
 @import "_icon-demo.scss";
+// The bakeoff harness page. Needs the icon mixin above; goes when it is decided.
+@import "_rebrand-button-comparison.scss";
 
 @import "../shared/components/CarouselButton/CarouselButton.scss";
 @import "../shared/components/CardStat/CardStat.scss";
