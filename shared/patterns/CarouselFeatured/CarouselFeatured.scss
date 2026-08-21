@@ -309,12 +309,7 @@ $bds-carousel-featured-variants-light: (
   flex-direction: column;
   width: 100%;
   gap: 0; // Use space-between instead
-  min-height: 500px; // Mobile min height
   justify-content: space-between; // Header at top, features+CTA at bottom
-
-  @include media-breakpoint-up(md) {
-    min-height: 440px; // Tablet min height
-  }
 
   @include media-breakpoint-up(lg) {
     flex: 1;
@@ -332,6 +327,10 @@ $bds-carousel-featured-variants-light: (
   align-items: flex-start;
   width: 100%;
   flex-direction: column-reverse;
+
+  @include media-breakpoint-down(lg) {
+    margin-bottom: $bds-space-xl;
+  }
 
   @include media-breakpoint-up(md) {
     flex-direction: row;

@@ -13,7 +13,7 @@ import { FeatureSingleTopic } from "shared/sections/FeatureSingleTopic";
 import type { StandardCardPropsWithoutVariant } from "shared/components/StandardCard";
 import { Link } from "shared/components/Link";
 import { HomeHero } from "shared/sections/HomeHero/HomeHero";
-import { CarouselFeatured } from "shared/patterns/CarouselFeatured";
+import { PanelStack } from "shared/patterns/PanelStack";
 
 export const frontmatter = {
   seo: {
@@ -231,7 +231,7 @@ export default function Index() {
         cards={blockchainCardStats}
       />
 
-      <CarouselFeatured
+      <PanelStack
         slides={[
           {
             id: 0,

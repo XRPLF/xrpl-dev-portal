@@ -76,6 +76,12 @@ module.exports = {
                 // BDS BEM modifier classes - applied dynamically via template literals (e.g. bds-callout-media-banner--green)
                 // Required: PurgeCSS cannot find these in TSX/SCSS due to interpolation
                 /^bds-[a-z0-9-]+--/,
+
+                // Icon classes. Referenced only from inside the SVG components,
+                // where PurgeCSS does not look, so nothing here is ever found as
+                // a literal in the content it scans.
+                /^bds-icon/,
+
                 /^g-/, // Gap utilities
                 /^p-/, // Padding utilities
                 /^m-/, // Margin utilities  
