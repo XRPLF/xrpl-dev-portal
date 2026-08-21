@@ -63,8 +63,22 @@
   flex-direction: column !important;
   gap: $bds-space-lg !important; // 16px - spacing('lg')
 
-  // All buttons should be full width in block layout
   .bds-btn {
     width: 100%;
+    justify-content: flex-start;
   }
+}
+
+// Pull an all-subtle set back by the button's own horizontal padding, so labels
+// sit flush with the text above them.
+//
+// The compensation is here rather than on the button because button.md fixes
+// geometry across every emphasis, and stripping a subtle button's padding leaves
+// it indistinguishable from a Link — geometry is one of only two things that
+// tell them apart. So the button keeps its box and the container absorbs it.
+//
+// Applies at any count, not just the 3+ block layout: a section can force
+// subtle with one or two links and wants the same flush edge.
+.bds-button-group--flush {
+  margin-left: -$bds-btn-pad-x;
 }

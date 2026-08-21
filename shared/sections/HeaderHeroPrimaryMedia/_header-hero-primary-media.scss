@@ -89,15 +89,6 @@
       gap: $bds-space-2xl; // 24px - spacing('2xl')
     }
 
-    & .bds-btn--tertiary {
-      padding: 0; // Design requires this button in this use-case to be overwritten with no padding
-
-      &:hover,
-      &:focus-visible,
-      &:focus {
-        padding: 0 !important;
-      }
-    }
   }
 
 

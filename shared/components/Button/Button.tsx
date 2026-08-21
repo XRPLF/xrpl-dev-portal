@@ -1,179 +1,219 @@
 import React from 'react';
 import clsx from 'clsx';
 import { Link } from '@redocly/theme/components/Link/Link';
+import { XrplArrowInternalLinkIcon, LoaderIcon } from '../Icons';
 
-export interface ButtonProps {
-  /** Button variant - determines visual style */
-  variant?: 'primary' | 'secondary' | 'tertiary';
-  /** Color theme - green (default) or black */
-  color?: 'green' | 'black';
-  /**
-   * Force the color to remain constant regardless of theme mode.
-   * When true, the button color will not change between light/dark modes.
-   * Use this for buttons on colored backgrounds where black should stay black.
-   */
-  forceColor?: boolean;
-  /** Button content/label */
+/**
+ * Button — built from the Figma-derived specification.
+ *
+ * Source: github.com/samiamdesigns/pd-xrpl-developer-docs
+ *   components/button.md           the axes and the reasoning
+ *   components/button.json         every value resolved per mode
+ *   components/button-examples.md  the acceptance checklist
+ *
+ * See Button.md for how this differs from the current Button, and for
+ * the two places the spec is deliberately not followed.
+ */
+
+export type ButtonEmphasis = 'strong' | 'standard' | 'subtle';
+export type ButtonIntention = 'brand' | 'neutral';
+export type ButtonContext = 'on-theme' | 'on-inverse' | 'on-saturated';
+
+/**
+ * The styling axes, as a union rather than three independent enums.
+ *
+ * `neutral` + `on-saturated` is absent because it has no tokens —
+ * `mode-color.neutral.on-saturated` is not in the set, since nothing on a solid
+ * brand block is neutral-coloured. Expressing the axes this way makes that
+ * combination fail to compile instead of failing at runtime, so you do not have
+ * to open Figma to find out which combinations are real.
+ *
+ * Note: button.md prints these members with `intention` required, which would
+ * reject `<Button>Get started</Button>` — the zero-prop default
+ * its own examples show. button.json records `"default": "brand"`, so the
+ * examples and the JSON agree and the printed union is the outlier. `intention`
+ * is optional here. Reported upstream.
+ */
+export type ButtonSurface =
+  // brand on an ordinary page (the default)
+  | { intention?: 'brand'; context?: 'on-theme' }
+  // brand on an inverted block, or on solid brand green
+  | { intention?: 'brand'; context: 'on-inverse' | 'on-saturated' }
+  // neutral — no on-saturated group exists
+  | { intention: 'neutral'; context?: 'on-theme' | 'on-inverse' };
+
+/**
+ * Emphasis is orthogonal: all three exist in every group, so it is intersected
+ * across the union rather than repeated in each member. Keeping the pair
+ * separable also lets a wrapper forward the surface as one value — spreading
+ * two independently-typed variables would lose the correlation the union
+ * exists to enforce.
+ */
+type ButtonVariant = ButtonSurface & { emphasis?: ButtonEmphasis };
+
+export type ButtonProps = ButtonVariant & {
+  /** Visible label. Always required. */
   children: React.ReactNode;
-  /** Click handler */
-  onClick?: () => void;
-  /** Disabled state */
+  /** Decorative, aria-hidden. Not used in current XRPL designs. */
+  iconStart?: React.ReactNode;
+  /** Decorative. Defaults to the XRPL internal-link arrow; hidden while loading. */
+  iconEnd?: React.ReactNode;
+  /** Suppress the default trailing arrow entirely. */
+  hideIconEnd?: boolean;
+  /** Action in flight: aria-busy, activation suppressed, indicator shown. */
+  loading?: boolean;
+  /** Non-interactive but still focusable and still in the accessibility tree. */
+  inactive?: boolean;
+  /** Native disabled. Leaves the tab order. */
   disabled?: boolean;
-  /** Button type attribute */
-  type?: 'button' | 'submit' | 'reset';
-  /** Additional CSS classes */
-  className?: string;
-  /** Whether to show the arrow icon */
-  showIcon?: boolean;
-  /** Accessibility label - defaults to button text if not provided */
-  ariaLabel?: string;
-  /** URL to navigate to - renders as a Link instead of button */
+  /** Renders an <a> instead of a <button>. */
   href?: string;
-  /** Link target - only applies when href is provided */
   target?: '_self' | '_blank';
-  /**
-   * Force no padding and left-align text.
-   * When true, removes all padding and aligns content to the left.
-   * Useful for tertiary buttons in block layouts where left alignment is needed.
-   */
-  forceNoPadding?: boolean;
-}
+  className?: string;
+} & Omit<
+    React.ButtonHTMLAttributes<HTMLButtonElement>,
+    'disabled' | 'children'
+  >;
 
 /**
- * Animated Arrow Icon Component
- * The horizontal line shrinks from left to right on hover/focus,
- * while the chevron shifts right via the gap change.
+ * intention and context select ONE token group, because that is how the token
+ * set groups them — `brand-onInverse` is a group, not brand plus a modifier.
+ * kebab-cased here; the camelCase in the source files is a find-and-replace aid
+ * there and is deliberately not normalised upstream.
  */
-const ArrowIcon: React.FC = () => (
-  <svg
-    className="bds-btn__icon"
-    width="15"
-    height="14"
-    viewBox="0 0 15 14"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    aria-hidden="true"
-  >
-    {/* Horizontal line - shrinks on hover */}
-    <line
-      className="bds-btn__icon-line"
-      x1="0"
-      y1="7"
-      x2="14"
-      y2="7"
-      stroke="currentColor"
-      strokeWidth="1.3"
-      strokeMiterlimit="10"
-    />
-    {/* Chevron - stays visible */}
-    <path
-      className="bds-btn__icon-chevron"
-      d="M8.16755 1.16743L14.0005 7.00038L8.16755 12.8333"
-      stroke="currentColor"
-      strokeWidth="1.3"
-      strokeMiterlimit="10"
-      fill="none"
-    />
-  </svg>
-);
-
-/**
- * BDS Button Component
- * 
- * A scalable button component following the XRPL Brand Design System.
- * Supports Primary, Secondary, and Tertiary variants with green (default) or black color themes.
- * 
- * @example
- * <Button variant="primary" onClick={handleClick}>Get Started</Button>
- * <Button variant="secondary" onClick={handleClick}>Learn More</Button>
- * <Button variant="tertiary" onClick={handleClick}>View Details</Button>
- * <Button variant="primary" color="black" onClick={handleClick}>Dark Button</Button>
- */
-/**
- * Helper function to extract text content from ReactNode
- */
-const getTextFromChildren = (children: React.ReactNode): string => {
-  if (typeof children === 'string' || typeof children === 'number') {
-    return String(children);
-  }
-  if (Array.isArray(children)) {
-    return children.map(getTextFromChildren).join('');
-  }
-  if (React.isValidElement(children)) {
-    const props = children.props as { children?: React.ReactNode };
-    if (props.children) {
-      return getTextFromChildren(props.children);
-    }
-  }
-  return '';
-};
+const groupClass = (intention: ButtonIntention, context: ButtonContext) =>
+  context === 'on-theme' ? intention : `${intention}-${context}`;
 
 export const Button: React.FC<ButtonProps> = ({
-  variant = 'primary',
-  color = 'green',
-  forceColor = false,
+  intention = 'brand',
+  context = 'on-theme',
+  emphasis = 'strong',
   children,
-  onClick,
+  iconStart,
+  iconEnd,
+  hideIconEnd = false,
+  loading = false,
+  inactive = false,
   disabled = false,
-  type = 'button',
-  className = '',
-  showIcon = true,
-  ariaLabel,
   href,
   target = '_self',
-  forceNoPadding = false,
+  className,
+  onClick,
+  type = 'button',
+  ...rest
 }) => {
-  // Hide icon when disabled (per design spec)
-  const shouldShowIcon = showIcon && !disabled;
-
-  // Default ariaLabel to button text if not provided
-  const buttonAriaLabel = ariaLabel || getTextFromChildren(children);
-
-  // Build class names using BEM with bds namespace
   const classNames = clsx(
     'bds-btn',
-    `bds-btn--${variant}`,
-    `bds-btn--${color}`,
+    `bds-btn--${groupClass(intention, context)}`,
+    `bds-btn--${emphasis}`,
+    // The context class carries the focus-ring colour and the disabled group,
+    // both of which are chosen by context alone.
+    `bds-btn--${context}`,
     {
+      'bds-btn--loading': loading,
       'bds-btn--disabled': disabled,
-      'bds-btn--no-icon': !shouldShowIcon,
-      'bds-btn--force-color': forceColor,
-      'bds-btn--no-padding': forceNoPadding,
     },
     className
   );
 
-  // Inner content shared between button and link
+  /**
+   * Three non-interactive states, three code paths. They resolve identical
+   * colours in several combinations, so appearance will not tell you which one
+   * you built — what distinguishes them is behaviour.
+   *
+   *              element     ARIA              tab order   activates
+   *   loading    <button>    aria-busy         in          no (suppressed)
+   *   inactive   <button>    aria-disabled     in          no (suppressed)
+   *   disabled   <button>    native disabled   OUT         no (native)
+   *
+   * Collapsing inactive into disabled removes it from the tab order, and a
+   * screen-reader user can then no longer find it.
+   */
+  const suppressed = loading || inactive;
+
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    if (suppressed) {
+      event.preventDefault();
+      event.stopPropagation();
+      return;
+    }
+    onClick?.(event);
+  };
+
+  // The loader replacing icon-end in Figma is representation, not contract —
+  // the spec explicitly allows toggling visibility instead. The glyph is a
+  // placeholder in the design; LoaderIcon is our choice and is reportable back.
+  // It spins on its own — the button neither starts nor configures it.
+  const trailing = loading ? (
+    <span className="bds-btn__icon" aria-hidden="true">
+      <LoaderIcon />
+    </span>
+  ) : hideIconEnd ? null : (
+    <span className="bds-btn__icon" aria-hidden="true">
+      {iconEnd ?? <XrplArrowInternalLinkIcon />}
+    </span>
+  );
+
+  // No focus-indicator element and no slot element. Both are Figma authoring
+  // devices; building either ships a stray node that no token can remove.
   const content = (
     <>
+      {iconStart && (
+        <span className="bds-btn__icon" aria-hidden="true">
+          {iconStart}
+        </span>
+      )}
       <span className="bds-btn__label">{children}</span>
-      {shouldShowIcon && <ArrowIcon />}
+      {trailing}
     </>
   );
 
-  // Render as Link when href is provided
-  if (href && !disabled) {
+  // disabled always renders a <button>, even with href, so there is nothing to
+  // navigate to.
+  if (href && !disabled && !suppressed) {
     return (
       <Link
         to={href}
         target={target}
         className={classNames}
-        onClick={onClick}
-        aria-label={buttonAriaLabel}
+        // Redocly's LinkProps narrows onClick to `() => void`. It spreads
+        // straight onto react-router's Link, which forwards the event, so a
+        // handler taking one still receives it. Only reached when not
+        // suppressed, so no event guarding depends on this.
+        onClick={onClick as unknown as (() => void) | undefined}
       >
         {content}
       </Link>
     );
   }
 
+  // A suppressed link keeps anchor semantics and stays focusable, but drops
+  // href entirely rather than relying on preventDefault — so neither a click
+  // nor Enter can navigate, and no handler has to hold the line. This is what
+  // "non-interactive but still in the accessibility tree" means for an <a>.
+  if (href && !disabled) {
+    return (
+      <a
+        role="link"
+        tabIndex={0}
+        className={classNames}
+        aria-busy={loading || undefined}
+        aria-disabled="true"
+      >
+        {content}
+      </a>
+    );
+  }
+
   return (
     <button
+      {...rest}
       type={type}
       className={classNames}
-      onClick={onClick}
+      onClick={handleClick}
       disabled={disabled}
-      aria-disabled={disabled}
-      aria-label={buttonAriaLabel}
+      aria-busy={loading || undefined}
+      aria-disabled={inactive || undefined}
     >
       {content}
     </button>

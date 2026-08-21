@@ -100,9 +100,9 @@ export const CardStat: React.FC<CardStatProps> = ({
         <div className="bds-card-stat__buttons">
           {primaryButton && (
             <Button
-              forceColor
-              variant="primary"
-              color="black"
+              emphasis="strong"
+              intention="brand"
+              context="on-saturated"
               href={primaryButton.href}
               onClick={primaryButton.onClick}
             >
@@ -111,9 +111,9 @@ export const CardStat: React.FC<CardStatProps> = ({
           )}
           {secondaryButton && (
             <Button
-              forceColor
-              variant="secondary"
-              color="black"
+              emphasis="standard"
+              intention="brand"
+              context="on-saturated"
               href={secondaryButton.href}
               onClick={secondaryButton.onClick}
             >

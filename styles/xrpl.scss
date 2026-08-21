@@ -82,7 +82,6 @@ $line-height-base: 1.5;
 @import "_side-nav.scss";
 @import "_helpers.scss";
 @import "_buttons.scss";
-@import "../shared/components/Button/Button.scss";
 
 // Icons. The shared contract first — it declares the rest value every icon
 // stylesheet below depends on — then one file per icon that has motion.
@@ -90,11 +89,13 @@ $line-height-base: 1.5;
 @import "../shared/components/Icons/XrplArrowInternalLinkIcon.scss";
 @import "../shared/components/Icons/XrplArrowExternalLinkIcon.scss";
 @import "../shared/components/Icons/LoaderIcon.scss";
-@import "../shared/components/RebrandButton/RebrandButton.scss";
+
+// Button consumes the icon mixin above, so it must be imported after it.
+@import "../shared/components/Button/Button.scss";
 // The icon reference page at /icon-demo. Needs the mixin above.
 @import "_icon-demo.scss";
-// The bakeoff harness page. Needs the icon mixin above; goes when it is decided.
-@import "_rebrand-button-comparison.scss";
+// The Button reference page at /button-demo.
+@import "_button-demo.scss";
 
 @import "../shared/components/CarouselButton/CarouselButton.scss";
 @import "../shared/components/CardStat/CardStat.scss";

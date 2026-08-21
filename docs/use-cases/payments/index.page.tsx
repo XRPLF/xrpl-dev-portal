@@ -301,7 +301,7 @@ export default function PaymentsPage() {
             href: HUBSPOT_NEWSLETTER_FORM,
           },
         ]}
-        singleButtonVariant="secondary"
+        singleButtonEmphasis="standard"
         media={{
           src: '/img/payments/xrpl-pattern.png',
           alt: translate('Stay Connected'),

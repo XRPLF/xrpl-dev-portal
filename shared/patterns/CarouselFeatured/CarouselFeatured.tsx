@@ -216,8 +216,11 @@ export const CarouselFeatured = React.forwardRef<
                             <ButtonGroup
                               buttons={slide.buttons}
                               maxButtons={2}
-                              color="black"
-                              forceColor={background !== "neutral"}
+                              surface={
+                                background === "neutral"
+                                  ? { intention: "neutral" }
+                                  : { context: "on-saturated" }
+                              }
                               className="bds-carousel-featured__buttons"
                             />
                           )}

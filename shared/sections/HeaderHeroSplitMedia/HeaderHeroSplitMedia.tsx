@@ -114,7 +114,7 @@ export const HeaderHeroSplitMedia: React.FC<HeaderHeroSplitMediaProps> = ({
             <div className="bds-hero-split-media__cta">
               {primaryCta && (
                 <Button
-                  variant="primary"
+                  emphasis="strong"
                   href={primaryCta.href}
                 >
                   {primaryCta.label}
@@ -122,7 +122,7 @@ export const HeaderHeroSplitMedia: React.FC<HeaderHeroSplitMediaProps> = ({
               )}
               {secondaryCta && (
                 <Button
-                  variant="tertiary"
+                  emphasis="subtle"
                   href={secondaryCta.href}
                 >
                   {secondaryCta.label}

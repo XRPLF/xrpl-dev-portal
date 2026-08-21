@@ -2,8 +2,8 @@ import { ButtonProps } from "../components/Button/Button";
 
 /**
  * Button props with design constraints applied.
- * Omits 'variant' and 'color' props which are typically controlled
- * at the component/section level for design consistency.
+ * Omits the styling axes, which are controlled at the component/section level
+ * for design consistency.
  *
  * @example
  * const buttonProps: DesignConstrainedButtonProps = {
@@ -14,7 +14,7 @@ import { ButtonProps } from "../components/Button/Button";
  */
 export type DesignConstrainedButtonProps = Omit<
   ButtonProps,
-  "variant" | "color"
+  "intention" | "context" | "emphasis"
 >;
 
 export type DesignConstrainedCallsToActions = [

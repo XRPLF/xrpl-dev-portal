@@ -81,17 +81,17 @@ const StandardCard = forwardRef<HTMLElement, StandardCardProps>(
             {primaryButton && (
               <Button
                 {...primaryButton}
-                variant="primary"
-                color="black"
-                forceColor={true}
+                emphasis="strong"
+                intention="brand"
+                context="on-saturated"
               />
             )}
             {secondaryButton && (
               <Button
                 {...secondaryButton}
-                variant="tertiary"
-                color="black"
-                forceColor={true}
+                emphasis="subtle"
+                intention="brand"
+                context="on-saturated"
               />
             )}
           </div>

@@ -170,14 +170,14 @@ export const CardImage: React.FC<CardImageProps> = ({
     : undefined;
 
   const cta = href && !disabled ? (
-    <span className="bds-btn bds-btn--primary bds-btn--green">
+    <span className="bds-btn bds-btn--brand bds-btn--strong bds-btn--on-theme">
       <span className="bds-btn__label">{buttonLabel}</span>
       <CtaArrowIcon />
     </span>
   ) : (
     <Button
-      variant="primary"
-      color="green"
+      emphasis="strong"
+      intention="brand"
       disabled={disabled}
       onClick={handleButtonClick}
     >
