@@ -1,27 +1,27 @@
 // The icon motion contract. Imported before the per-icon stylesheets.
 
-$xrpl-icon-duration: 150ms;
-$xrpl-icon-easing: cubic-bezier(0.98, 0.12, 0.12, 0.98);
+$bds-icon-duration: 150ms;
+$bds-icon-easing: cubic-bezier(0.98, 0.12, 0.12, 0.98);
 
-// Icons with built-in motion will advance based on the --xrpl-icon-engaged variable.
+// Icons with built-in motion will advance based on the --bds-icon-engaged variable.
 // The rule that sets it must select the icon itself, not just the container.
 
 // Direct child only, so it reaches the icons you own and stops there.
 // Include it on whatever element the icon actually sits in, which is not always
 // the element carrying the state:
 //
-//   .card:hover { @include xrpl-icon-engaged; } // direct child icon
-//   .btn:hover .btn__icon { @include xrpl-icon-engaged; } // wrapped icon
+//   .card:hover { @include bds-icon-engaged; } // direct child icon
+//   .btn:hover .btn__icon { @include bds-icon-engaged; } // wrapped icon
 
-@mixin xrpl-icon-engaged($value: 1) {
-  > .xrpl-icon {
-    --xrpl-icon-engaged: #{$value};
+@mixin bds-icon-engaged($value: 1) {
+  > .bds-icon {
+    --bds-icon-engaged: #{$value};
   }
 }
 
 // Block inherited engagement from ancestors. Without this, a container that
 // incorrectly sets the property directly instead of using the mixin would engage
 // every icon beneath it, including the arrow in any descendant button.
-.xrpl-icon {
-  --xrpl-icon-engaged: 0;
+.bds-icon {
+  --bds-icon-engaged: 0;
 }

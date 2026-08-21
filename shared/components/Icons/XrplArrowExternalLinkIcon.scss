@@ -1,6 +1,6 @@
 // Motion for XrplArrowExternalLinkIcon.tsx
 //
-// Driven by --xrpl-icon-engaged, the same property the internal arrow
+// Driven by --bds-icon-engaged, the same property the internal arrow
 // reads; see shared.scss for the contract. One trigger drives either.
 //
 // Same two motions as the internal arrow — travel plus a tail that retracts to
@@ -12,11 +12,11 @@
 // advancing; the head keeps its vertical position and only moves forward.
 // The bracket spans x 9..19 in a 24-wide viewBox, so 5 units puts it flush
 // against the right edge, which is the whole budget the artwork allows.
-$xrpl-icon-arrow-out-travel: 5px;
+$bds-icon-arrow-out-travel: 5px;
 
-.xrpl-icon-arrow-out__travel {
+.bds-icon-arrow-out__travel {
   transform: translateX(
-    calc(var(--xrpl-icon-engaged, 0) * #{$xrpl-icon-arrow-out-travel})
+    calc(var(--bds-icon-engaged, 0) * #{$bds-icon-arrow-out-travel})
   );
 }
 
@@ -25,16 +25,16 @@ $xrpl-icon-arrow-out-travel: 5px;
 // length while holding its thickness — a uniform scale would thin it instead.
 // The origin is the bar's head end, in fill-box units: the bar's bounding box
 // is 4,5.6 -> 18.4,20 and the end edge's midpoint is 17.7,6.3.
-.xrpl-icon-arrow-out__tail {
+.bds-icon-arrow-out__tail {
   transform-box: fill-box;
   transform-origin: 13.7px 0.7px;
-  transform: rotate(-45deg) scaleX(calc(1 - var(--xrpl-icon-engaged, 0)))
+  transform: rotate(-45deg) scaleX(calc(1 - var(--bds-icon-engaged, 0)))
     rotate(45deg);
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .xrpl-icon-arrow-out__travel,
-  .xrpl-icon-arrow-out__tail {
-    transition: transform $xrpl-icon-duration $xrpl-icon-easing;
+  .bds-icon-arrow-out__travel,
+  .bds-icon-arrow-out__tail {
+    transition: transform $bds-icon-duration $bds-icon-easing;
   }
 }

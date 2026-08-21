@@ -80,7 +80,7 @@ module.exports = {
                 // Icon classes. Referenced only from inside the SVG components,
                 // where PurgeCSS does not look, so nothing here is ever found as
                 // a literal in the content it scans.
-                /^xrpl-icon/,
+                /^bds-icon/,
 
                 /^g-/, // Gap utilities
                 /^p-/, // Padding utilities

@@ -26,7 +26,7 @@ export const XrplArrowInternalLinkIcon: React.FC<{
       ? style
       : ({
           ...style,
-          "--xrpl-icon-engaged": engaged ? 1 : 0,
+          "--bds-icon-engaged": engaged ? 1 : 0,
         } as React.CSSProperties);
 
   return (
@@ -36,19 +36,19 @@ export const XrplArrowInternalLinkIcon: React.FC<{
       viewBox="0 0 24 24"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className={`xrpl-icon xrpl-icon-arrow ${className}`.trim()}
+      className={`bds-icon bds-icon-arrow ${className}`.trim()}
       style={engagedStyle}
       aria-hidden="true"
       focusable="false"
     >
-      <g className="xrpl-icon-arrow__travel">
+      <g className="bds-icon-arrow__travel">
         <path
-          className="xrpl-icon-arrow__tail"
+          className="bds-icon-arrow__tail"
           d="M0.688256 11.3117L20 11.3094L20 13.3092L0.688256 13.3115Z"
           fill="currentColor"
         />
         <path
-          className="xrpl-icon-arrow__head"
+          className="bds-icon-arrow__head"
           d="M22.3116 12.3116L13.1842 21.4391L11.77 20.0249L19.5 12.3116L18.4814 11.3096L11.7713 4.59973L13.1855 3.18552L22.3116 12.3116Z"
           fill="currentColor"
         />

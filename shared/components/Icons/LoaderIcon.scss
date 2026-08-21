@@ -16,17 +16,17 @@
 //   12 o'clock, so the bright end is the head and the fade is the tail. Turning
 //   clockwise would drive the head into its own trail.
 
-$xrpl-icon-loader-ticks: 8;
-$xrpl-icon-loader-cycle: 800ms; // 100ms per tick
+$bds-icon-loader-ticks: 8;
+$bds-icon-loader-cycle: 800ms; // 100ms per tick
 
-.xrpl-icon-loader {
+.bds-icon-loader {
   transform-origin: center;
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .xrpl-icon-loader {
-    animation: xrpl-icon-loader-spin $xrpl-icon-loader-cycle
-      steps($xrpl-icon-loader-ticks) infinite;
+  .bds-icon-loader {
+    animation: bds-icon-loader-spin $bds-icon-loader-cycle
+      steps($bds-icon-loader-ticks) infinite;
   }
 }
 
@@ -44,15 +44,15 @@ $xrpl-icon-loader-cycle: 800ms; // 100ms per tick
 // announces NOTHING; see the accessibility note in LoaderIcon.tsx for what the
 // consumer has to supply.
 @media (prefers-reduced-motion: reduce) {
-  .xrpl-icon-loader {
-    animation: xrpl-icon-loader-spin ($xrpl-icon-loader-cycle * 3)
-      steps($xrpl-icon-loader-ticks) infinite;
+  .bds-icon-loader {
+    animation: bds-icon-loader-spin ($bds-icon-loader-cycle * 3)
+      steps($bds-icon-loader-ticks) infinite;
   }
 }
 
 // Negative, so the ring turns counter-clockwise. With steps(8) this resolves to
 // 0, -45, -90 … -315 and then loops — eight stops, each on a tick.
-@keyframes xrpl-icon-loader-spin {
+@keyframes bds-icon-loader-spin {
   to {
     transform: rotate(-360deg);
   }

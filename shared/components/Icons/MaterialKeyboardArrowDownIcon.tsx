@@ -27,7 +27,7 @@
  *   4. Dropped the transparent 24x24 bounding-box path upstream ships as
  *      its first element; the viewBox already establishes those bounds and
  *      the extra node is inert.
- *   5. Added the `xrpl-icon` base class and a `className` passthrough. The
+ *   5. Added the `bds-icon` base class and a `className` passthrough. The
  *      base class is the hook the icon-motion contract in `shared.scss` keys
  *      on; it changes nothing about the drawing.
  *   6. Added `aria-hidden="true"` and `focusable="false"` — decorative by
@@ -47,7 +47,7 @@ export const MaterialKeyboardArrowDownIcon: React.FC<{ className?: string }> = (
       viewBox="0 0 24 24"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className={`xrpl-icon ${className}`.trim()}
+      className={`bds-icon ${className}`.trim()}
       aria-hidden="true"
       focusable="false"
     >

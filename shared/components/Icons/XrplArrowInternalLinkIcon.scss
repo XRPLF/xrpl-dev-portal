@@ -1,6 +1,6 @@
 // Motion for XrplArrowInternalLinkIcon.tsx
 //
-// Driven by --xrpl-icon-engaged; see shared.scss for the contract.
+// Driven by --bds-icon-engaged; see shared.scss for the contract.
 //
 // Two motions compose into "the arrow moves forward":
 //   the artwork slides ahead inside the viewBox, and the tail retracts into the
@@ -19,26 +19,26 @@
 // em. The value is the whole budget the artwork allows: the tip sits at
 // x=22.3116 in a 24-wide viewBox, so 1.6884 puts it flush against the right
 // edge and anything more would clip it.
-$xrpl-icon-arrow-travel: 1.6884px;
+$bds-icon-arrow-travel: 1.6884px;
 
-.xrpl-icon-arrow__travel {
+.bds-icon-arrow__travel {
   transform: translateX(
-    calc(var(--xrpl-icon-engaged, 0) * #{$xrpl-icon-arrow-travel})
+    calc(var(--bds-icon-engaged, 0) * #{$bds-icon-arrow-travel})
   );
 }
 
-.xrpl-icon-arrow__tail {
+.bds-icon-arrow__tail {
   // fill-box so the origin is the tail's own right edge rather than the
   // viewBox's, which is what makes it retract into the head instead of toward
   // the icon's corner.
   transform-box: fill-box;
   transform-origin: right center;
-  transform: scaleX(calc(1 - var(--xrpl-icon-engaged, 0)));
+  transform: scaleX(calc(1 - var(--bds-icon-engaged, 0)));
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .xrpl-icon-arrow__travel,
-  .xrpl-icon-arrow__tail {
-    transition: transform $xrpl-icon-duration $xrpl-icon-easing;
+  .bds-icon-arrow__travel,
+  .bds-icon-arrow__tail {
+    transition: transform $bds-icon-duration $bds-icon-easing;
   }
 }

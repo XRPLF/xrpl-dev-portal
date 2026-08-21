@@ -6,7 +6,7 @@
 // renders it unstyled for no visible reason. A few KB of unused CSS is cheaper.
 //
 // Imported after shared/components/Icons/shared.scss, which is where
-// xrpl-icon-engaged comes from.
+// bds-icon-engaged comes from.
 //
 // Everything here is drawn with currentColor and opacity rather than palette
 // tokens, so the page follows the site's light/dark control without knowing
@@ -226,14 +226,14 @@
 
   &:hover,
   &:focus-visible {
-    @include xrpl-icon-engaged;
+    @include bds-icon-engaged;
   }
 }
 
 // 2. A card. The state is on the card, but the icon is further in, so the mixin
 //    goes on the icon's own parent — the footer — inside the card's hover rule.
 //    This is the case people get wrong: putting it on `.icond-card:hover`
-//    directly would emit `.icond-card:hover > .xrpl-icon`, which matches
+//    directly would emit `.icond-card:hover > .bds-icon`, which matches
 //    nothing, and the icon would sit still with no error anywhere.
 .icond-card {
   @include icond-hairline;
@@ -255,30 +255,30 @@
 
   &:hover &__footer,
   &:focus-within &__footer {
-    @include xrpl-icon-engaged;
+    @include bds-icon-engaged;
   }
 }
 
 // -----------------------------------------------------------------------------
 // The guard.
 // -----------------------------------------------------------------------------
-// This container sets --xrpl-icon-engaged directly instead of using the mixin.
+// This container sets --bds-icon-engaged directly instead of using the mixin.
 // It is deliberately wrong, and the point is that it does nothing: the rest
-// value declared on `.xrpl-icon` in shared.scss is set on the icon element
+// value declared on `.bds-icon` in shared.scss is set on the icon element
 // itself, so an inherited value from any ancestor loses to it.
 //
 // Without that guard, this rule would engage every icon underneath — including
 // icons belonging to unrelated components nested inside.
 .icond-guard-wrong {
   &:hover {
-    --xrpl-icon-engaged: 1;
+    --bds-icon-engaged: 1;
   }
 }
 
 // The same container written correctly, for side-by-side comparison.
 .icond-guard-right {
   &:hover {
-    @include xrpl-icon-engaged;
+    @include bds-icon-engaged;
   }
 }
 

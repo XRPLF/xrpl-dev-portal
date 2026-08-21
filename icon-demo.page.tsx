@@ -35,11 +35,13 @@ export const frontmatter = {
  * Reference page for shared/components/Icons.
  *
  * The page ships but is linked from nowhere — not in sidebars.yaml, not
- * reachable by navigation.
+ * reachable by navigation. `excludeFromSearch` in its frontmatter keeps it out
+ * of site search and, through the same flag, out of sitemap.xml.
  *
- * It is deliberately NOT in the `ignore` list in redocly.yaml. That list does
- * not mean "production only": an ignored page 404s under `realm develop` too,
- * which would leave no way to look at this one while working on the icons.
+ * It is deliberately NOT in the `ignore` list in redocly.yaml, so that it stays
+ * reachable while working on the icons. Ignoring it instead is a reasonable
+ * call to make later; check first what that does to `realm develop`, since the
+ * icons cannot be worked on through a page that does not render.
  *
  * Its styling is not stripped from the bundle either. Doing that is possible —
  * a PurgeCSS blocklist on the class prefix works — but it makes the page's
@@ -55,7 +57,7 @@ export const frontmatter = {
  * ---------------------------------------------------------------------------
  * The contract itself is in shared/components/Icons/shared.scss. What bites:
  *
- *   1. The mixin emits `> .xrpl-icon`. Include it on the element the icon
+ *   1. The mixin emits `> .bds-icon`. Include it on the element the icon
  *      actually sits in, which is not always the element carrying the state.
  *      The card demo below is the case people get wrong: the state is on the
  *      card, the icon is in the footer, so the mixin goes on the footer.
@@ -66,8 +68,8 @@ export const frontmatter = {
  *      more than one level down. If one needs to move, that component has to
  *      expose the state itself.
  *
- *   3. Never set --xrpl-icon-engaged on a container. The rest value declared
- *      on `.xrpl-icon` sits on the icon element itself, so an inherited value
+ *   3. Never set --bds-icon-engaged on a container. The rest value declared
+ *      on `.bds-icon` sits on the icon element itself, so an inherited value
  *      loses to it and the rule is inert. That guard is what stops one
  *      container engaging every arrow beneath it, including arrows belonging
  *      to components it does not own.
@@ -118,8 +120,8 @@ const RAMPS = [
 ] as const;
 
 const GUARDS = [
-  ["Sets the property directly (doesn't work)", "icond-guard-wrong", "--xrpl-icon-engaged: 1;"],
-  ["Uses the mixin", "icond-guard-right", "@include xrpl-icon-engaged;"],
+  ["Sets the property directly (doesn't work)", "icond-guard-wrong", "--bds-icon-engaged: 1;"],
+  ["Uses the mixin", "icond-guard-right", "@include bds-icon-engaged;"],
 ] as const;
 
 export default function IconDemo() {
@@ -189,10 +191,10 @@ export default function IconDemo() {
       </div>
 
       {/* --------------------------------------------------------------- */}
-      <h2>Engaging an icon</h2>
+      <h2 id="engaging-an-icon">Engaging an icon</h2>
       <p>
         The container names its own state; what "engaged" means is the icon's
-        business. The mixin emits <code>&gt; .xrpl-icon</code>, so it belongs on
+        business. The mixin emits <code>&gt; .bds-icon</code>, so it belongs on
         the icon's own parent — which is not always the element carrying the
         state.
       </p>
@@ -207,7 +209,7 @@ export default function IconDemo() {
           </div>
           <pre className="icond-code">{`.icond-link:hover,
 .icond-link:focus-visible {
-  @include xrpl-icon-engaged;
+  @include bds-icon-engaged;
 }`}</pre>
         </div>
 
@@ -224,7 +226,7 @@ export default function IconDemo() {
           <pre className="icond-code">{`.icond-card {
   // on the footer, not the card
   &:hover &__footer {
-    @include xrpl-icon-engaged;
+    @include bds-icon-engaged;
   }
 }`}</pre>
         </div>
@@ -252,7 +254,7 @@ export default function IconDemo() {
 
       <h3>The guard</h3>
       <p>
-        Setting <code>--xrpl-icon-engaged</code> on a container is inert — the
+        Setting <code>--bds-icon-engaged</code> on a container is inert — the
         rest value sits on the icon itself, so an inherited value loses to it.
         That is what stops one container engaging every icon beneath it. Hover
         both: only the second moves, and neither reaches the nested icon.

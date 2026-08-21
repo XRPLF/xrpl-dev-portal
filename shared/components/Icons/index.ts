@@ -4,7 +4,7 @@
 // Every icon shares one contract, described in full in shared.scss:
 //   - it renders at 1em and inherits `color`, so size and colour come from
 //     whatever it sits in and never from the icon
-//   - it carries the `xrpl-icon` class, which is what the motion contract and
+//   - it carries the `bds-icon` class, which is what the motion contract and
 //     the PurgeCSS safelist key on
 //   - it is aria-hidden by default; a control whose only content is an icon
 //     must supply its own accessible name
@@ -14,13 +14,23 @@
 // -----------------------------------------------------------------------------
 // XRPL icons — drawn by design, and the ones that carry motion.
 // -----------------------------------------------------------------------------
-// These two respond to --xrpl-icon-engaged: the arrow advances and sheds its
+// These two respond to --bds-icon-engaged: the arrow advances and sheds its
 // tail. They are drawn as separate head and tail elements on purpose; a
 // single-path replacement renders correctly and silently loses the animation.
 //
-// A CSS container drives them with the `xrpl-icon-engaged` mixin. React drives
-// them with the optional `engaged` prop, which writes nothing when omitted —
-// see the prop's own docs for why `false` and `undefined` differ.
+// A CSS container drives them with the `bds-icon-engaged` mixin. Where the
+// trigger is React state instead, there is no pseudo-class to hang the mixin
+// off, so the arrows take an optional `engaged` prop.
+//
+// Omitted and `false` are NOT the same, and the difference is a trap:
+//
+//   <Icon />                  nothing written; CSS is in sole charge
+//   <Icon engaged={false} />  writes an inline 0, which outranks every
+//                             stylesheet rule and so pins the icon still —
+//                             defeating any hover rule on the container
+//
+// So `engaged={isActive}` on an icon that should also move on hover kills the
+// hover. Use `engaged={isActive || undefined}` to have both.
 export { XrplArrowInternalLinkIcon } from "./XrplArrowInternalLinkIcon";
 export { XrplArrowExternalLinkIcon } from "./XrplArrowExternalLinkIcon";
 
