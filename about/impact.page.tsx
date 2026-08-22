@@ -5,6 +5,8 @@ import mapLight from "../static/js/impact/mapLight.json";
 import { useLottie } from "lottie-react";
 import { useThemeFromClassList } from "../@theme/helpers";
 import { Link } from "@redocly/theme/components/Link/Link";
+import Button from "shared/components/Button";
+import { XrplArrowInternalLinkIcon } from "shared/components/Icons";
 
 export const frontmatter = {
   seo: {
@@ -134,9 +136,14 @@ export default function Impact() {
                   "Learn more about companies and developers who are using the XRP Ledger to solve interesting problems efficiently and sustainably."
                 )}
               </p>
-              <Link to="/about/uses" className="btn btn-primary btn-arrow">
+              <Button
+                intention="brand"
+                emphasis="strong"
+                href="/about/uses"
+                iconEnd={<XrplArrowInternalLinkIcon />}
+              >
                 {translate("See More")}
-              </Link>
+              </Button>
             </div>
           </div>
         </section>
@@ -158,9 +165,14 @@ export default function Impact() {
                 )}
               </p>
               <div className="d-none d-lg-block py-lg-3">
-                <Link className="btn btn-primary btn-arrow" to="/resources/contribute-code">
+                <Button
+                  intention="brand"
+                  emphasis="standard"
+                  href="/resources/contribute-code"
+                  iconEnd={<XrplArrowInternalLinkIcon />}
+                >
                   {translate("Join the Community")}
-                </Link>
+                </Button>
               </div>
             </div>
             <div className="order-2 col-lg-6 px-0 pl-lg-3">

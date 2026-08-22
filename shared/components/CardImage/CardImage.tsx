@@ -1,6 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import clsx from 'clsx';
 import { Button } from '../Button';
+import { XrplArrowInternalLinkIcon } from '../Icons';
 
 export interface CardImageProps {
   /** Image source URL */
@@ -180,6 +181,7 @@ export const CardImage: React.FC<CardImageProps> = ({
       intention="brand"
       disabled={disabled}
       onClick={handleButtonClick}
+      iconEnd={<XrplArrowInternalLinkIcon />}
     >
       {buttonLabel}
     </Button>

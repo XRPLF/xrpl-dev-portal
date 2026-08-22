@@ -1,7 +1,7 @@
 import React from 'react';
 import clsx from 'clsx';
 import { Link } from '@redocly/theme/components/Link/Link';
-import { XrplArrowInternalLinkIcon, LoaderIcon } from '../Icons';
+import { LoaderIcon } from '../Icons';
 
 /**
  * Button — built from the Figma-derived specification.
@@ -56,10 +56,8 @@ export type ButtonProps = ButtonVariant & {
   children: React.ReactNode;
   /** Decorative, aria-hidden. Not used in current XRPL designs. */
   iconStart?: React.ReactNode;
-  /** Decorative. Defaults to the XRPL internal-link arrow; hidden while loading. */
+  /** Decorative, aria-hidden. Replaced by the loader while loading. */
   iconEnd?: React.ReactNode;
-  /** Suppress the default trailing arrow entirely. */
-  hideIconEnd?: boolean;
   /** Action in flight: aria-busy, activation suppressed, indicator shown. */
   loading?: boolean;
   /** Non-interactive but still focusable and still in the accessibility tree. */
@@ -91,7 +89,6 @@ export const Button: React.FC<ButtonProps> = ({
   children,
   iconStart,
   iconEnd,
-  hideIconEnd = false,
   loading = false,
   inactive = false,
   disabled = false,
@@ -148,11 +145,11 @@ export const Button: React.FC<ButtonProps> = ({
     <span className="bds-btn__icon" aria-hidden="true">
       <LoaderIcon />
     </span>
-  ) : hideIconEnd ? null : (
+  ) : iconEnd ? (
     <span className="bds-btn__icon" aria-hidden="true">
-      {iconEnd ?? <XrplArrowInternalLinkIcon />}
+      {iconEnd}
     </span>
-  );
+  ) : null;
 
   // No focus-indicator element and no slot element. Both are Figma authoring
   // devices; building either ships a stray node that no token can remove.

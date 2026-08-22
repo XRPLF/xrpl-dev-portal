@@ -2,6 +2,7 @@ import React from 'react';
 import clsx from 'clsx';
 import { Button } from '../../components/Button/Button';
 import type { ButtonEmphasis, ButtonSurface } from '../../components/Button';
+import { XrplArrowInternalLinkIcon } from '../../components/Icons';
 
 export interface ButtonConfig {
   /** Button text label */
@@ -254,6 +255,7 @@ export const ButtonGroup: React.FC<ButtonGroupProps> = ({
             {...surface}
             href={button.href}
             onClick={button.onClick}
+            iconEnd={<XrplArrowInternalLinkIcon />}
           >
             {button.label}
           </Button>
@@ -277,6 +279,7 @@ export const ButtonGroup: React.FC<ButtonGroupProps> = ({
           {...surface}
           href={buttonList[0].href}
           onClick={buttonList[0].onClick}
+          iconEnd={<XrplArrowInternalLinkIcon />}
         >
           {buttonList[0].label}
         </Button>
@@ -287,6 +290,7 @@ export const ButtonGroup: React.FC<ButtonGroupProps> = ({
           {...surface}
           href={buttonList[1].href}
           onClick={buttonList[1].onClick}
+          iconEnd={<XrplArrowInternalLinkIcon />}
         >
           {buttonList[1].label}
         </Button>

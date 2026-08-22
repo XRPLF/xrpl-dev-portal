@@ -1,9 +1,8 @@
-import * as React from "react";
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 import { useThemeHooks } from "@redocly/theme/core/hooks";
 import { Link } from "@redocly/theme/components/Link/Link";
-import { Button as RedoclyButton} from "@redocly/theme";
 import Button from "shared/components/Button";
+import { XrplArrowInternalLinkIcon } from "shared/components/Icons";
 
 const MONTHS_SHORT = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 
@@ -126,6 +125,7 @@ export default function Index() {
                     intention="neutral"
                     emphasis="strong"
                     href={`/blog/${heroPost.link}`}
+                    iconEnd={<XrplArrowInternalLinkIcon />}
                   >
                     {translate("Read More")}
                   </Button>

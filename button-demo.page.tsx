@@ -167,6 +167,7 @@ export default function ButtonDemo() {
                 intention: group.intention,
                 context: group.context,
                 emphasis,
+                iconEnd: <XrplArrowInternalLinkIcon />,
               } as React.ComponentProps<typeof Button>;
 
               return (
@@ -220,28 +221,34 @@ export default function ButtonDemo() {
       {/* --------------------------------------------------------------- */}
       <h2>Icons</h2>
       <p>
-        The trailing arrow is the default and needs no prop.{" "}
-        <code>hideIconEnd</code> removes it; <code>iconStart</code> and{" "}
-        <code>iconEnd</code> replace it. Icons are decorative and{" "}
-        <code>aria-hidden</code>, so a button whose only content is an icon must
-        carry its own accessible name.
+        Both icon slots are opt-in: a Button with neither prop renders its label
+        alone, with no reserved space where an icon would have gone. Icons are
+        decorative and <code>aria-hidden</code>, so a button whose only content
+        is an icon must carry its own accessible name.
       </p>
 
       <div className="btnd-panel">
-        <Row label="default">
+        <Row label="no icons">
           <Button>Get started</Button>
         </Row>
-        <Row label="hideIconEnd">
-          <Button hideIconEnd>Get started</Button>
+        <Row label="iconEnd">
+          <Button iconEnd={<XrplArrowInternalLinkIcon />}>Get started</Button>
         </Row>
         <Row label="iconStart">
           <Button iconStart={<PlusIcon />}>Add a token</Button>
         </Row>
         <Row label="both">
-          <Button iconStart={<MaterialDownloadIcon />}>Download</Button>
+          <Button
+            iconStart={<MaterialDownloadIcon />}
+            iconEnd={<XrplArrowInternalLinkIcon />}
+          >
+            Download
+          </Button>
         </Row>
-        <Row label="loading replaces it">
-          <Button loading>Submitting</Button>
+        <Row label="loading replaces iconEnd">
+          <Button loading iconEnd={<XrplArrowInternalLinkIcon />}>
+            Submitting
+          </Button>
         </Row>
       </div>
 
@@ -270,16 +277,22 @@ export default function ButtonDemo() {
 
       <div className="btnd-panel">
         <Row label="all three emphases">
-          <Button emphasis="strong">Strong</Button>
-          <Button emphasis="standard">Standard</Button>
-          <Button emphasis="subtle">Subtle</Button>
+          <Button emphasis="strong" iconEnd={<XrplArrowInternalLinkIcon />}>
+            Strong
+          </Button>
+          <Button emphasis="standard" iconEnd={<XrplArrowInternalLinkIcon />}>
+            Standard
+          </Button>
+          <Button emphasis="subtle" iconEnd={<XrplArrowInternalLinkIcon />}>
+            Subtle
+          </Button>
         </Row>
         <Row label="shortest possible label">
-          <Button hideIconEnd>OK</Button>
-          <Button hideIconEnd>1</Button>
+          <Button>OK</Button>
+          <Button>1</Button>
         </Row>
         <Row label="long label">
-          <Button>
+          <Button iconEnd={<XrplArrowInternalLinkIcon />}>
             A label long enough to show that the button never wraps
           </Button>
         </Row>

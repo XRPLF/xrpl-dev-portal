@@ -28,6 +28,7 @@ mismatch.
 <Button intention="neutral" emphasis="standard">Learn more</Button>
 <Button context="on-saturated">On a green block</Button>
 <Button href="/docs" target="_blank">Read the docs</Button>
+<Button iconEnd={<XrplArrowInternalLinkIcon />}>Read more</Button>
 <Button loading>Submitting…</Button>
 ```
 
@@ -40,8 +41,7 @@ mismatch.
 | `inactive` | boolean — `aria-disabled`, **stays in the tab order** | `false` |
 | `disabled` | boolean — native `disabled`, leaves the tab order | `false` |
 | `href` / `target` | renders an `<a>` | — |
-| `iconStart` / `iconEnd` | decorative, `aria-hidden` | `iconEnd` = the XRPL arrow |
-| `hideIconEnd` | boolean — suppress the trailing arrow | `false` |
+| `iconStart` / `iconEnd` | decorative, `aria-hidden` — either slot omitted renders no icon and reserves no space | — |
 
 ### `context` is the axis to get right
 

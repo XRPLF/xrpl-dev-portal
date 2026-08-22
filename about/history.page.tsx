@@ -1,6 +1,7 @@
 import * as React from "react";
 import { useThemeHooks } from '@redocly/theme/core/hooks';
 import { Link } from '@redocly/theme/components/Link/Link';
+import Button from "shared/components/Button";
 
 export const frontmatter = {
   seo: {
@@ -82,14 +83,14 @@ export default function History() {
                     </a>
                     {translate("about.history.2011.part3", ").")}
                   </p>
-                  <a
-                    className={`btn btn-primary read-more mt-10 ${
-                      openSections["section-1"] && "d-none"
-                    }`}
+                  <Button
+                    intention="neutral"
+                    emphasis="strong"
                     onClick={() => toggleSection("section-1")}
+                    style={ openSections["section-1"] ? { display: "none" } : {} }
                   >
                     {translate("Read More")}
-                  </a>
+                  </Button>
                   <div
                     className={`hidden-section ${
                       openSections["section-1"] && "show"
@@ -118,15 +119,14 @@ export default function History() {
                       "The trio of developers continued the work to build a distributed ledger that improved upon these fundamental limitations of Bitcoin, originally naming the code Ripple. The ledger included a digital asset that would originally be called “ripples” (XRP as the currency code) to follow the same naming convention as Bitcoin (BTC). At the time, the name Ripple stood for the open-source project, the unique consensus ledger (Ripple Consensus Ledger), transaction protocol (Ripple Transaction Protocol or RTXP), the network (Ripple network), and the digital asset (known as “ripples”)."
                     )}
                   </p>
-                  <a
-                    className={`btn btn-primary read-more mt-10 ${
-                      openSections["section-2"] && "d-none"
-                    }`}
-                    data-target="section-2"
+                  <Button
+                    intention="neutral"
+                    emphasis="strong"
                     onClick={() => toggleSection("section-2")}
+                    style={openSections["section-2"] ? { display: "none" } : { }}
                   >
                     {translate("Read More")}
-                  </a>
+                  </Button>
                   <div
                     className={`hidden-section ${
                       openSections["section-2"] && "show"
@@ -170,20 +170,14 @@ export default function History() {
                       "Since the early days, OpenCoin set out to revolutionize the global financial system. Despite the revolutionary ideals of many of Bitcoin’s early believers, Larsen never thought blockchain technology should be used to overthrow the existing financial system. He believed that history’s most transformative innovations have always relied on the great ideas that came before them—not displacing them."
                     )}
                   </p>
-                  <a
-                    className={`btn btn-primary read-more mt-10 ${
-                      openSections["section-3"] && "d-none"
-                    }`}
-                    data-target="section-3"
-                    style={{
-                      display: openSections["section-3"]
-                        ? "none"
-                        : "inline-block",
-                    }}
+                  <Button
+                    intention="neutral"
+                    emphasis="strong"
                     onClick={() => toggleSection("section-3")}
+                    style={openSections["section-3"] ? { display: "none" } : { }}
                   >
                     {translate("Read More")}
-                  </a>
+                  </Button>
                   <div
                     className={`hidden-section ${
                       openSections["section-3"] && "show"

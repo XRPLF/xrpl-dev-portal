@@ -1,6 +1,7 @@
 import React from 'react';
 import clsx from 'clsx';
 import { Button } from '../../components/Button/Button';
+import { XrplArrowInternalLinkIcon } from '../../components/Icons';
 import { PageGrid } from '../../components/PageGrid/page-grid';
 
 export interface HeaderHeroSplitMediaProps {
@@ -116,6 +117,7 @@ export const HeaderHeroSplitMedia: React.FC<HeaderHeroSplitMediaProps> = ({
                 <Button
                   emphasis="strong"
                   href={primaryCta.href}
+                  iconEnd={<XrplArrowInternalLinkIcon />}
                 >
                   {primaryCta.label}
                 </Button>
@@ -124,6 +126,7 @@ export const HeaderHeroSplitMedia: React.FC<HeaderHeroSplitMediaProps> = ({
                 <Button
                   emphasis="subtle"
                   href={secondaryCta.href}
+                  iconEnd={<XrplArrowInternalLinkIcon />}
                 >
                   {secondaryCta.label}
                 </Button>
