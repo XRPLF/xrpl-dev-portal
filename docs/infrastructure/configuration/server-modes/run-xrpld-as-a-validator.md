@@ -191,7 +191,9 @@ _**To connect your validator to the XRP Ledger network using proxies:**_
     sudo systemctl restart xrpld.service
     ```
 
-6. Use the [Peer Crawler](../../../references/http-websocket-apis/peer-port-methods/peer-crawler.md) endpoint on one of your stock `xrpld` servers. The response should not include your validator. This verifies that your validator's `[peer_private]` configuration is working. One of the effects of enabling `[peer_private]` on your validator is that your validator's peers do not include it in their Peer Crawler results.
+6. Use the [peers method][] on your validator to confirm that `[peer_private]` is working. The `peers` array should contain _only_ the stock `xrpld` servers you configured: no inbound connections, and no `address` outside the `[ips_fixed]` stanza. If other peers appear, double-check your config file and restart the validator.
+
+    {% admonition type="info" name="Note" %}The [Peer Crawler](../../../references/http-websocket-apis/peer-port-methods/peer-crawler.md) does not confirm this setting. A server's `ip` and `port` are omitted from crawler results if it is configured **as a validator _or_ as a private peer**, so your validator's address is suppressed whether or not `[peer_private]` is set.{% /admonition %}
 
     ```
     curl --insecure https://STOCK_SERVER_IP_ADDRESS_HERE:51235/crawl | python3 -m json.tool
@@ -306,6 +308,7 @@ For information about how to revoke a master key pair you generated for your val
 - **References:**
     - [Validator Keys Tool Guide](https://github.com/ripple/validator-keys-tool/blob/master/doc/validator-keys-tool-guide.md)
     - [consensus_info method][]
+    - [peers method][]
     - [validator_list_sites method][]
     - [validators method][]
 
