@@ -2,6 +2,8 @@ import * as React from "react";
 import { useState, useRef, useEffect } from "react";
 import { useThemeHooks } from "@redocly/theme/core/hooks";
 import { Link } from "@redocly/theme/components/Link/Link";
+import { Button as RedoclyButton} from "@redocly/theme";
+import Button from "shared/components/Button";
 
 const MONTHS_SHORT = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 
@@ -120,12 +122,13 @@ export default function Index() {
                 </h4>
                 <p className="mb-4">{translate(`${heroPost.description}`)}</p>
                 <div className="d-lg-block">
-                  <Link
-                    className="btn btn-primary btn-arrow"
-                    to={`/blog/${heroPost.link}`}
+                  <Button
+                    intention="neutral"
+                    emphasis="strong"
+                    href={`/blog/${heroPost.link}`}
                   >
                     {translate("Read More")}
-                  </Link>
+                  </Button>
                 </div>
               </div>
             </div>
