@@ -186,6 +186,10 @@ Token holders can manage confidential balances through four operations:
 
 - **Concepts:**
   - [Multi-Purpose Tokens](./multi-purpose-tokens.md)
+- **Tutorials:**
+  - [Issue an MPT for Confidential Transfers](../../../tutorials/tokens/mpts/issue-mpt-for-confidential-transfers.md)
+  - [Send Confidential MPT Payments](../../../tutorials/payments/send-confidential-payments.md)
+  - [Claw Back Confidential Balances](../../../tutorials/tokens/mpts/claw-back-confidential-balances.md)
 - **References:**
   - [MPToken entry][]
   - [MPTokenIssuance entry][]

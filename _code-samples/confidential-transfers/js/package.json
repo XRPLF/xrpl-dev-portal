@@ -1,0 +1,8 @@
+{
+  "name": "confidential-transfers-examples",
+  "description": "Example code for confidential transfers of Multi-Purpose Tokens.",
+  "dependencies": {
+    "xrpl": "^4.3.0"
+  },
+  "type": "module"
+}
