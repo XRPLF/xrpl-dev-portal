@@ -79,7 +79,7 @@ export default function Docs() {
             description: (
               <>
                 {translate("Discover the basics of the XRPL by learning about accounts, transactions, and the ledger structure.")}{' '}<br/><br/>
-                <Link href="/docs/concepts/" intention="brand" variation="standalone">{translate("Read More")}</Link>
+                <Link href="/docs/concepts/" intention="brand" variation="standalone" iconEnd>{translate("Read More")}</Link>
               </>
             ),
           },
@@ -88,7 +88,7 @@ export default function Docs() {
             description: (
               <>
                 {translate("Implement real-world solutions by combining XRPL primitives for lending, token issuance, DEX trading, and more.")}{' '}<br/><br/>
-                <Link href="/docs/use-cases/" intention="brand" variation="standalone">{translate("Read More")}</Link>
+                <Link href="/docs/use-cases/" intention="brand" variation="standalone" iconEnd>{translate("Read More")}</Link>
               </>
             ),
           },

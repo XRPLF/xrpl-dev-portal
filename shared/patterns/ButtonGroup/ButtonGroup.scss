@@ -62,23 +62,20 @@
   // Override default flex layout - force column layout on all screen sizes
   flex-direction: column !important;
   gap: $bds-space-lg !important; // 16px - spacing('lg')
-
-  .bds-btn {
-    width: 100%;
-    justify-content: flex-start;
-  }
+  // The base group switches to `center` for its md+ row layout, which this
+  // column inherits. Each button sizes to its own label, so without this the
+  // stack would centre rather than sit flush with the text above it.
+  align-items: flex-start;
 }
 
-// Pull an all-subtle set back by the button's own horizontal padding, so labels
-// sit flush with the text above them.
+// An all-subtle set renders as Links rather than Buttons — see the note on
+// `isFlush` in ButtonGroup.tsx. A Link carries no horizontal padding, so its
+// label already sits flush with the text above it and the group needs no
+// offset; the negative margin this modifier used to carry existed only to
+// cancel a button's padding.
 //
-// The compensation is here rather than on the button because button.md fixes
-// geometry across every emphasis, and stripping a subtle button's padding leaves
-// it indistinguishable from a Link — geometry is one of only two things that
-// tell them apart. So the button keeps its box and the container absorbs it.
-//
-// Applies at any count, not just the 3+ block layout: a section can force
-// subtle with one or two links and wants the same flush edge.
-.bds-button-group--flush {
-  margin-left: -$bds-btn-pad-x;
+// Left as a hook: the group is a flex container either way, and link sets are
+// the ones likely to want their own spacing later.
+.bds-button-group--links {
+  align-items: flex-start;
 }

@@ -2,6 +2,8 @@ import React from 'react';
 import clsx from 'clsx';
 import { Button } from '../../components/Button/Button';
 import type { ButtonEmphasis, ButtonSurface } from '../../components/Button';
+import { Link } from '../../components/Link';
+import type { LinkContext, LinkIntention } from '../../components/Link';
 import { XrplArrowInternalLinkIcon } from '../../components/Icons';
 
 export interface ButtonConfig {
@@ -229,9 +231,19 @@ export const ButtonGroup: React.FC<ButtonGroupProps> = ({
   // alignment from the container instead; see ButtonGroup.scss.
   const effectiveEmphasis = forceEmphasis ?? 'subtle';
 
-  // Every button in the set is subtle — either forced, or the 3+ default. Only
-  // then does the group sit flush with the text above it; a mixed set keeps its
-  // natural left edge because the leading button is filled.
+  // Every entry in the set is subtle — either forced, or the 3+ default — so
+  // the set sits flush with the text above it. A mixed set keeps its natural
+  // left edge because the leading button is filled.
+  //
+  // Flush is what makes these Links rather than Buttons. button.md: a subtle
+  // Button and a resting Link are byte-identical in colour and both underlined,
+  // and geometry is one of only two things telling them apart — so a subtle
+  // Button pulled flush with the copy beside it has given up the difference.
+  // These navigate, so they render as what they are. See
+  // components/Button/button-vs-link-candidates.md.
+  //
+  // No negative margin comes with it any more: that offset existed to cancel
+  // the button's own padding, and a Link has none to cancel.
   const isFlush = forceEmphasis === 'subtle' || (isMultiButton && !forceEmphasis);
 
   const classNames = clsx(
@@ -239,27 +251,72 @@ export const ButtonGroup: React.FC<ButtonGroupProps> = ({
     `bds-button-group--gap-${gap}`,
     {
       'bds-button-group--block': isMultiButton,
-      'bds-button-group--flush': isFlush,
+      'bds-button-group--links': isFlush,
     },
     className
   );
+
+  // `surface` is a ButtonSurface, whose members are the same intention/context
+  // pairs Link accepts — including the shared rule that neutral + on-saturated
+  // does not exist. The cast re-labels those two fields for Link's own union;
+  // it cannot introduce a combination Button would have rejected.
+  const linkSurface = surface as { intention?: LinkIntention; context?: LinkContext };
+
+  /**
+   * One entry, as a Link when the set is flush and the entry navigates.
+   *
+   * An `onClick` entry with no `href` has nothing to navigate to, so it stays a
+   * Button — `Link` requires an `href` and would have nowhere to point.
+   */
+  const renderAction = (
+    button: ButtonConfig,
+    key: number,
+    emphasis: ButtonEmphasis
+  ) => {
+    if (isFlush && button.href) {
+      return (
+        <Link
+          key={key}
+          href={button.href}
+          variation="standalone"
+          iconEnd
+          intention={linkSurface.intention}
+          context={linkSurface.context}
+        >
+          {button.label}
+        </Link>
+      );
+    }
+
+    if (isFlush && process.env.NODE_ENV === 'development') {
+      console.warn(
+        `[ButtonGroup] "${button.label}" has no href, so it stays a Button in a ` +
+        `set that otherwise renders as Links. Give it an href, or move the ` +
+        `action out of a flush group.`
+      );
+    }
+
+    return (
+      <Button
+        key={key}
+        emphasis={emphasis}
+        {...surface}
+        href={button.href}
+        onClick={button.onClick}
+        iconEnd={<XrplArrowInternalLinkIcon />}
+      >
+        {button.label}
+      </Button>
+    );
+  };
 
   // Render 3+ buttons: block layout, subtle unless forceEmphasis says otherwise
   if (isMultiButton) {
     return (
       <div className={classNames}>
-        {buttonList.map((button, index) => (
-          <Button
-            key={index}
-            emphasis={effectiveEmphasis}
-            {...surface}
-            href={button.href}
-            onClick={button.onClick}
-            iconEnd={<XrplArrowInternalLinkIcon />}
-          >
-            {button.label}
-          </Button>
-        ))}
+        {buttonList.map((button, index) =>
+          renderAction(button, index, effectiveEmphasis)
+        )}
       </div>
     );
   }
@@ -273,28 +330,8 @@ export const ButtonGroup: React.FC<ButtonGroupProps> = ({
 
   return (
     <div className={classNames}>
-      {buttonList[0] && (
-        <Button
-          emphasis={firstButtonEmphasis}
-          {...surface}
-          href={buttonList[0].href}
-          onClick={buttonList[0].onClick}
-          iconEnd={<XrplArrowInternalLinkIcon />}
-        >
-          {buttonList[0].label}
-        </Button>
-      )}
-      {buttonList[1] && (
-        <Button
-          emphasis={secondButtonEmphasis}
-          {...surface}
-          href={buttonList[1].href}
-          onClick={buttonList[1].onClick}
-          iconEnd={<XrplArrowInternalLinkIcon />}
-        >
-          {buttonList[1].label}
-        </Button>
-      )}
+      {buttonList[0] && renderAction(buttonList[0], 0, firstButtonEmphasis)}
+      {buttonList[1] && renderAction(buttonList[1], 1, secondButtonEmphasis)}
     </div>
   );
 };
