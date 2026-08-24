@@ -103,15 +103,13 @@ $link-focus-on-saturated-dark: $true-black;
       }
     }
 
-    // No distinct visited color, per design direction -- matches rest, not
-    // the spec's sage-11.
     &:visited {
       @include bds-theme-mode(light) {
-        color: $link-neutral-black;
+        color: $sage-11;
         text-decoration-color: currentColor;
       }
       @include bds-theme-mode(dark) {
-        color: $white;
+        color: $sage-dark-11;
         text-decoration-color: currentColor;
       }
     }

@@ -35,7 +35,7 @@ even if it's meant to look like a link.
 
 | Prop | Values | Default | Notes |
 |---|---|---|---|
-| `intention` | `brand` \| `neutral` | `brand` | `brand` = XRPL green. `neutral` = black/white, no distinct hover, no distinct visited. |
+| `intention` | `brand` \| `neutral` | `brand` | `brand` = XRPL green. `neutral` = black/white, no distinct hover, sage `:visited`. |
 | `context` | `on-theme` \| `on-inverse` \| `on-saturated` | `on-theme` | Which surface the link sits on — controls both color group and focus-ring color. `neutral` + `on-saturated` is a compile-time type error (no such combination exists in the spec). |
 | `variation` | `inline` \| `standalone` | `inline` | `inline` sits inside running text: no fixed size (inherits the parent's font-size/line-height), no icon, `display: inline` so it wraps. `standalone` is a link acting as its own element (a card's "Read More", a CTA under a paragraph): fixed size, optional trailing icon, `display: inline-flex`. |
 | `size` | `sm` \| `md` \| `lg` | `md` | Only affects `standalone` — `inline` always inherits from its parent. |
@@ -56,7 +56,7 @@ that can't be followed shouldn't render as a link.
 | `brand` | `on-theme` | XRPL green rest/hover, sage `:visited` |
 | `brand` | `on-inverse` | Green-on-dark-surface variant (e.g. a link inside a dark card on a light page) |
 | `brand` | `on-saturated` | Black-on-green (e.g. a link inside a solid-green banner) |
-| `neutral` | `on-theme` | Black (light) / white (dark), flat across hover/active/visited |
+| `neutral` | `on-theme` | Black (light) / white (dark), flat across hover/active, sage `:visited` |
 | `neutral` | `on-inverse` | Neutral tuned for a dark card on a light page |
 
 Every resolved value lives in one place: [`styles/_link-tokens.scss`](../../../styles/_link-tokens.scss)'s
@@ -66,12 +66,16 @@ Every resolved value lives in one place: [`styles/_link-tokens.scss`](../../../s
 hardcodes a color itself. Change a token once here and both `Link` and the
 sitewide fallback (below) pick it up.
 
-`neutral`'s `:hover`/`:active`/`:visited` are intentionally flattened to match
-its rest color — that's a deliberate design decision (a black link doesn't get
-a color change), not an incomplete state. `brand`'s `:visited` legitimately
-looks near-black/near-white (`$sage-12`/`$sage-dark-12`) — that's correct
-per spec, not a bug, and it can only be seen with real browsing history (not
-in an incognito/sandboxed browser).
+`neutral`'s `:hover`/`:active` are intentionally flattened to match its rest
+color — that's a deliberate design decision (a black link doesn't get a color
+change on hover), not an incomplete state. `:visited` is not flattened for
+either group and follows the spec's sage values: `neutral` uses `$sage-11`/
+`$sage-dark-11` (a muted gray, clearly distinct from rest), `brand` uses
+`$sage-12`/`$sage-dark-12` (legitimately near-black/near-white). Both are
+correct per spec, not bugs, and can only be seen with real browsing history —
+not in an incognito/sandboxed browser, and not on `/link-demo`'s links
+directly (see the reset button there, which points every demo link at a
+fresh, never-visited URL instead).
 
 ## What plain `<a>` tags get (the fallback)
 

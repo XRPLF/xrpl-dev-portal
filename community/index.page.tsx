@@ -100,7 +100,7 @@ export default function Community() {
                 {translate(
                   "Found a security issue in rippled or another core XRPL project? Disclose it confidentially via email — encrypted with our "
                 )}
-                <Link href="https://ripple.com/files/bug-bounty.asc" intention="neutral">
+                <Link href="https://ripple.com/files/bug-bounty.asc" intention="brand">
                   {translate("PGP public key")}
                 </Link>
                 .

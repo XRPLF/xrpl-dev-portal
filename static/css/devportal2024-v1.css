@@ -18316,11 +18316,11 @@ html.dark [data-component-name="Markdown/Markdown"] article a:not(.xrpl-link):no
   text-decoration-color: currentColor;
 }
 html.light [data-component-name="Markdown/Markdown"] article a:not(.xrpl-link):not(.btn):visited {
-  color: #000000;
+  color: #5f6563;
   text-decoration-color: currentColor;
 }
 html.dark [data-component-name="Markdown/Markdown"] article a:not(.xrpl-link):not(.btn):visited {
-  color: #FFFFFF;
+  color: #adb5b2;
   text-decoration-color: currentColor;
 }
 [data-component-name="Markdown/Markdown"] article a:not(.xrpl-link):not(.btn) {
@@ -19430,11 +19430,11 @@ html.dark .xrpl-link.xrpl-link--neutral:hover, html.dark .xrpl-link.xrpl-link--n
   text-decoration-color: currentColor;
 }
 html.light .xrpl-link.xrpl-link--neutral:visited {
-  color: #000000;
+  color: #5f6563;
   text-decoration-color: currentColor;
 }
 html.dark .xrpl-link.xrpl-link--neutral:visited {
-  color: #FFFFFF;
+  color: #adb5b2;
   text-decoration-color: currentColor;
 }
 html.light .xrpl-link.xrpl-link--brand-on-inverse {
@@ -19533,6 +19533,19 @@ html.dark .xrpl-link.xrpl-link--ctx-on-saturated:focus-visible {
 }
 .link-demo__intro {
   margin-bottom: 40px;
+}
+.link-demo__reset-btn {
+  font-family: monospace;
+  font-size: 0.875rem;
+  padding: 8px 12px;
+  border: 1px solid #8A919A;
+  border-radius: 4px;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+.link-demo__reset-btn:hover {
+  border-color: #72777E;
 }
 .link-demo__group {
   margin-bottom: 56px;

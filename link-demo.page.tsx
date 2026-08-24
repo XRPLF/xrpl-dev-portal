@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "shared/components/Link";
 import type { LinkIntention, LinkContext, LinkSize } from "shared/components/Link";
 
@@ -54,7 +54,13 @@ const SIZES: { size: LinkSize; fontSize: number }[] = [
   { size: "lg", fontSize: 20 },
 ];
 
-function GroupSection({ group }: { group: Group }) {
+function GroupSection({
+  group,
+  demoHref,
+}: {
+  group: Group;
+  demoHref: (id: string) => string;
+}) {
   const table = (
     <table className="link-demo__table">
       <thead>
@@ -78,7 +84,13 @@ function GroupSection({ group }: { group: Group }) {
                     is what actually sets the size, not the size prop. */}
                 <p style={{ fontSize, margin: 0 }}>
                   Read the{" "}
-                  <Link href="#" intention={group.intention} context={group.context} variation="inline" size={size}>
+                  <Link
+                    href={demoHref(`${group.key}-${size}-inline`)}
+                    intention={group.intention}
+                    context={group.context}
+                    variation="inline"
+                    size={size}
+                  >
                     documentation
                   </Link>{" "}
                   for more.
@@ -90,7 +102,13 @@ function GroupSection({ group }: { group: Group }) {
             </td>
             <td>
               <div className="link-demo__cell">
-                <Link href="#" intention={group.intention} context={group.context} variation="standalone" size={size}>
+                <Link
+                  href={demoHref(`${group.key}-${size}-standalone`)}
+                  intention={group.intention}
+                  context={group.context}
+                  variation="standalone"
+                  size={size}
+                >
                   View docs
                 </Link>
                 <span className="link-demo__caption">variation=standalone</span>
@@ -99,7 +117,7 @@ function GroupSection({ group }: { group: Group }) {
             <td>
               <div className="link-demo__cell">
                 <Link
-                  href="#"
+                  href={demoHref(`${group.key}-${size}-standalone-icon`)}
                   intention={group.intention}
                   context={group.context}
                   variation="standalone"
@@ -130,7 +148,36 @@ function GroupSection({ group }: { group: Group }) {
   );
 }
 
+// A fresh value each time -- never in this browser's history. Combined with a
+// per-link id (below) to give every demo link its OWN distinct href, so
+// clicking one only visits that one -- not every link on the page, which is
+// what a single shared href would do (:visited is keyed by URL, and browsers
+// don't distinguish "the same URL, but a different <a>"). Regenerating the
+// nonce (the reset button) points every link at a brand-new, unvisited
+// fragment at once, which is the only way to "un-visit" a link: browsers
+// don't expose any API to remove a URL from :visited history, and they
+// intentionally block scripts from reading it, so the sole lever available
+// here is making each link point somewhere that's never been visited.
+function freshNonce(): string {
+  return `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 8)}`;
+}
+
 export default function LinkDemoPage() {
+  // Starts as a fixed, non-random value so server and client render the same
+  // markup on the first pass -- generating the real (random) nonce here
+  // instead would mismatch between the server's render and the client's,
+  // since each would call Date.now()/Math.random() independently. The real
+  // nonce is assigned client-side only, after mount, via the effect below.
+  const [nonce, setNonce] = useState("initial");
+
+  useEffect(() => {
+    setNonce(freshNonce());
+  }, []);
+
+  // id should be stable and unique per link (e.g. "brand-sm-inline") so the
+  // same link keeps the same href across re-renders that don't touch nonce.
+  const demoHref = (id: string) => `#demo-${nonce}-${id}`;
+
   return (
     <div className="link-demo">
       <h1>Link component reference</h1>
@@ -142,14 +189,24 @@ export default function LinkDemoPage() {
           both.
         </p>
         <p>
-          Hover a link to see its hover state. <code>:visited</code> can&apos;t be demoed here --
-          every link below points to <code>#</code>, and browsers only apply <code>:visited</code>{" "}
-          to URLs you&apos;ve actually visited. Tab through the page to check focus rings.
+          Hover a link to see its hover state. Every link below points to its own unique
+          fragment, generated fresh on load, so they all start <strong>unvisited</strong> --
+          click one (or tab to it and press Enter) to see just that link&apos;s <code>:visited</code>{" "}
+          color, without affecting the others. Use the button below to point every link at a
+          brand-new, never-visited fragment again, undoing whichever ones you&apos;ve clicked,
+          without needing a new incognito window. Tab through the page to check focus rings.
         </p>
+        <button
+          type="button"
+          className="link-demo__reset-btn"
+          onClick={() => setNonce(freshNonce())}
+        >
+          Reset demo links (undo :visited)
+        </button>
       </div>
 
       {GROUPS.map((group) => (
-        <GroupSection key={group.key} group={group} />
+        <GroupSection key={group.key} group={group} demoHref={demoHref} />
       ))}
 
       <section className="link-demo__group">
@@ -165,7 +222,7 @@ export default function LinkDemoPage() {
           <article>
             {SIZES.map(({ size, fontSize }) => (
               <p key={size} style={{ fontSize }}>
-                Read the <a href="#">documentation</a> for more.{" "}
+                Read the <a href={demoHref(`generic-${size}`)}>documentation</a> for more.{" "}
                 <span className="link-demo__caption">
                   ({size}, inherits {fontSize}px)
                 </span>

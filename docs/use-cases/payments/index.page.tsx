@@ -174,10 +174,10 @@ export default function PaymentsPage() {
           <p>{translate('Ideal for seasoned teams with crypto experience')}</p>
           <ul>
             <li>
-              {translate('Access open ')}<Link href="https://xrpl.org/docs" intention="neutral">{translate('documentation')}</Link>
+              {translate('Access open ')}<Link href="https://xrpl.org/docs" intention="brand">{translate('documentation')}</Link>
             </li>
             <li>
-              {translate('Use the Payments APIs + ')}<Link href="https://xrpl.org/resources/dev-tools" intention="neutral">{translate('XRPL tooling')}</Link>
+              {translate('Use the Payments APIs + ')}<Link href="https://xrpl.org/resources/dev-tools" intention="brand">{translate('XRPL tooling')}</Link>
             </li>
           </ul>
         </>
@@ -190,7 +190,7 @@ export default function PaymentsPage() {
           <p>{translate('Ideal for regulated institutions')}</p>
           <ul>
             <li>
-              {translate('Connect with the ')}<Link href="https://discord.com/invite/KTNmhJDXqa" intention="neutral">{translate('Community')}</Link>
+              {translate('Connect with the ')}<Link href="https://discord.com/invite/KTNmhJDXqa" intention="brand">{translate('Community')}</Link>
             </li>
             <li>{translate('Get help for more complex use cases')}</li>
           </ul>

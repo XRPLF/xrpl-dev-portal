@@ -11,6 +11,21 @@
     margin-bottom: 40px;
   }
 
+  &__reset-btn {
+    font-family: monospace;
+    font-size: 0.875rem;
+    padding: 8px 12px;
+    border: 1px solid $gray-400;
+    border-radius: 4px;
+    background: transparent;
+    color: inherit;
+    cursor: pointer;
+
+    &:hover {
+      border-color: $gray-500;
+    }
+  }
+
   &__group {
     margin-bottom: 56px;
     padding-bottom: 40px;
