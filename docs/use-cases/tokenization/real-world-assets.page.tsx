@@ -2,6 +2,11 @@ import React, { useEffect } from "react";
 import { useThemeHooks } from "@redocly/theme/core/hooks";
 import { Link } from "@redocly/theme/components/Link/Link";
 import { DeveloperResourcesSection } from "shared/components/developer-resources-section";
+import Button from "shared/components/Button";
+import {
+  MaterialSaveAltIcon,
+  XrplArrowInternalLinkIcon,
+} from "shared/components/Icons";
 
 export const frontmatter = {
   seo: {
@@ -367,15 +372,18 @@ function TokenVideoSection() {
           )}
         </p>
         <div className="d-lg-block small-100 __button-container">
-          <a
-            className="btn btn-primary d-block d-md-inline-block small-100"
+          <Button
+            intention="neutral"
+            emphasis="strong"
+            className="small-100"
             href="/static/pdf/Whitepaper_the_future_of_asset_tokenization.pdf"
             target="_blank"
             rel="noopener"
             download
+            iconEnd={<MaterialSaveAltIcon />}
           >
             {translate("Download White Paper")}
-          </a>
+          </Button>
         </div>
       </div>
     </section>
@@ -404,19 +412,23 @@ function TokenHeroSection() {
           {translate("Real-World Asset (RWA) Tokenization")}
         </h1>
         <div className="button-container">
-          <Link
-            className="btn btn-primary p-12 btn-arrow-out"
+          <Button
+            intention="brand"
+            emphasis="strong"
             target="_blank"
-            to="/static/pdf/Whitepaper_the_future_of_asset_tokenization.pdf"
+            href="/static/pdf/Whitepaper_the_future_of_asset_tokenization.pdf"
+            iconEnd={<XrplArrowInternalLinkIcon />}
           >
             {translate("Get Started Now")}
-          </Link>
-          <Link
-            className="internal-link"
-            to="/docs/use-cases/tokenization/creating-an-asset-backed-multi-purpose-token"
+          </Button>
+          <Button
+            intention="neutral"
+            emphasis="standard"
+            href="/docs/use-cases/tokenization/creating-an-asset-backed-multi-purpose-token"
+            iconEnd={<XrplArrowInternalLinkIcon />}
           >
             {translate("Explore Institutional Solutions")}
-          </Link>
+          </Button>
         </div>
       </div>
     </section>

@@ -67,6 +67,14 @@ export type ButtonProps = ButtonVariant & {
   /** Renders an <a> instead of a <button>. */
   href?: string;
   target?: '_self' | '_blank';
+  /**
+   * Save the target rather than navigating to it. Forces a plain <a>: a file
+   * download is never a client-side route, and react-router's Link intercepts
+   * the click and cancels the download unless target="_blank" happens to make
+   * it bail out first. Depending on that coincidence is how this breaks later.
+   */
+  download?: boolean | string;
+  rel?: string;
   className?: string;
 } & Omit<
     React.ButtonHTMLAttributes<HTMLButtonElement>,
@@ -94,6 +102,8 @@ export const Button: React.FC<ButtonProps> = ({
   disabled = false,
   href,
   target = '_self',
+  download,
+  rel,
   className,
   onClick,
   type = 'button',
@@ -167,11 +177,27 @@ export const Button: React.FC<ButtonProps> = ({
 
   // disabled always renders a <button>, even with href, so there is nothing to
   // navigate to.
+  if (href && !disabled && !suppressed && download) {
+    return (
+      <a
+        href={href}
+        target={target}
+        download={download}
+        rel={rel}
+        className={classNames}
+        onClick={onClick}
+      >
+        {content}
+      </a>
+    );
+  }
+
   if (href && !disabled && !suppressed) {
     return (
       <Link
         to={href}
         target={target}
+        rel={rel}
         className={classNames}
         // Redocly's LinkProps narrows onClick to `() => void`. It spreads
         // straight onto react-router's Link, which forwards the event, so a

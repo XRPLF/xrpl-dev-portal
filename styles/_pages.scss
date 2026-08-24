@@ -1507,47 +1507,21 @@ html.light {
       .button-container {
         display: flex;
         flex-wrap: wrap;
-        gap: 32px;
+        gap: 16px;
         justify-content: center;
         align-items: center;
 
-        .internal-link {
-            color: $blue-purple-400;
-            font-size: 16px;
-            font-style: normal;
-            font-weight: 700;
-            text-decoration: none;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            background: none !important;
-          }
-
-        :root.dark & {
-          .internal-link {
-            color: $blue-purple-300;
-          }
-        }
-
         @media (max-width: 767px) {
           padding-bottom: 0px;
-          gap: 16px;
           flex-direction: column;
           width: 100%;
-          
-          .btn-primary.p-12 {
+
+          // The pair goes full-width when it stacks. Width is not part of the
+          // button's own geometry, so setting it here leaves the spec's
+          // padding, height and border untouched.
+          .bds-btn {
             width: 100%;
           }
-          
-          .internal-link {
-            width: 100%;
-            text-align: center;
-            white-space: normal;
-          }
-        }
-  
-        .btn-primary.p-12 {
-          padding: 12px;
         }
       }
     }
