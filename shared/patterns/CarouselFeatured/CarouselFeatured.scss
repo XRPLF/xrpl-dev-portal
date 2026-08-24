@@ -185,8 +185,27 @@ $bds-carousel-featured-variants-light: (
 // whichever color the surrounding text already resolves to, correct for
 // every variant, without a per-variant override. Brand links are unaffected
 // -- they already carry their own fixed-per-variant green above.
-.bds-carousel-featured .bds-carousel-featured__feature-description .xrpl-link.xrpl-link--neutral {
+//
+// Every state needs its own selector here, not just rest: the sitewide
+// neutral mixin's :hover/:active/:focus/:visited blocks are separate,
+// equally (or more) specific rules that this rest-only override doesn't
+// touch, so without repeating it per state, hover/focus stayed white in dark
+// mode even after rest was fixed.
+.bds-carousel-featured .bds-carousel-featured__feature-description .xrpl-link.xrpl-link--neutral,
+.bds-carousel-featured .bds-carousel-featured__feature-description .xrpl-link.xrpl-link--neutral:hover,
+.bds-carousel-featured .bds-carousel-featured__feature-description .xrpl-link.xrpl-link--neutral:active,
+.bds-carousel-featured .bds-carousel-featured__feature-description .xrpl-link.xrpl-link--neutral:focus,
+.bds-carousel-featured .bds-carousel-featured__feature-description .xrpl-link.xrpl-link--neutral:visited {
   color: inherit;
+}
+
+// Same problem, same fix, for the focus ring: .xrpl-link--ctx-on-theme's
+// outline color also flips with the site theme (black light / white dark),
+// not this panel's own fixed-light background. $black matches the brand
+// links' own "link-focus" color for grey/yellow above, so both intentions
+// get the same outline here.
+.bds-carousel-featured .bds-carousel-featured__feature-description .xrpl-link.xrpl-link--ctx-on-theme:focus-visible {
+  outline-color: $black;
 }
 
 // Full variant mixin (for dark mode with button styles)
