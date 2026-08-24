@@ -311,7 +311,7 @@ export default function ButtonDemo() {
         <code>.interactive-block .btn.btn-primary {`{ @include bds-button(neutral, strong, on-theme); }`}</code>
       </p>
       <p className="btn-panel interactive-block">
-        <button className="btn btn-primary">Confirm Balances</button>
+        <button id="confirm-balances-button" className="btn btn-primary">Confirm Balances</button>
       </p>
     </div>
   );
