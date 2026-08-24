@@ -1,5 +1,6 @@
 import * as React from "react";
 import { useThemeHooks } from "@redocly/theme/core/hooks";
+import { Link } from "shared/components/Link";
 import { PageWrapper } from "shared/components/PageWrapper";
 import { HeaderHeroSplitMedia } from "shared/sections/HeaderHeroSplitMedia/HeaderHeroSplitMedia";
 import {
@@ -25,7 +26,6 @@ export default function Funding() {
   const carouselSlides: PanelStackPanel[] = [
     {
       id: "xrpl-grants-accelerator",
-      heading: translate("Explore XRPL Funding and Builders Programs"),
       features: [
         {
           title: translate("XRPL Grants & XRPL Accelerator"),
@@ -61,7 +61,6 @@ export default function Funding() {
     },
     {
       id: "xrpl-student-builder-residency",
-      heading: translate("Explore XRPL Funding and Builders Programs"),
       features: [
         {
           title: translate("XRPL Student Builder Residency"),
@@ -96,7 +95,6 @@ export default function Funding() {
     },
     {
       id: "xrpl-commons",
-      heading: translate("Explore XRPL Funding and Builders Programs"),
       features: [
         {
           title: translate("XRPL Commons"),
@@ -118,13 +116,13 @@ export default function Funding() {
               )}
               <br />
               →{" "}
-              <a href="https://www.xrpl-commons.org/residency">
+              <Link href="https://www.xrpl-commons.org/residency" intention="neutral">
                 {translate("The Aquarium Residency")}
-              </a>{" "}
+              </Link>{" "}
               {translate("- 12-week onsite entrepreneurial program in Paris")}
               <br />
               →{" "}
-              <a href="https://glow.xrpl-commons.org/">{translate("GLOW")}</a>{" "}
+              <Link href="https://glow.xrpl-commons.org/" intention="neutral">{translate("GLOW")}</Link>{" "}
               {translate(
                 "– rewards program for recognizing developer contributions to the XRPL"
               )}
@@ -156,7 +154,11 @@ export default function Funding() {
         }}
       />
 
-      <PanelStack slides={carouselSlides} background="yellow" />
+      <PanelStack 
+        heading={translate("Explore XRPL Funding and Builders Programs")}
+        slides={carouselSlides} 
+        background="yellow" 
+      />
 
       <LogoSquareGrid
         variant="gray"

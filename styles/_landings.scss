@@ -67,8 +67,10 @@
     }
   }
 
-  p a:not(.bds-link),
-  h5 a:not(.bds-link) {
+  // :not(.xrpl-link) so the Link component's own brand/on-theme styling
+  // (used for these same links now) isn't overridden by this rule.
+  p a:not(.bds-link):not(.xrpl-link),
+  h5 a:not(.bds-link):not(.xrpl-link) {
     color: $blue-purple-400;
     font-weight: 600;
     &:hover {
@@ -77,8 +79,8 @@
   }
 
   :root.dark & {
-    p a:not(.bds-link),
-    h5 a:not(.bds-link) {
+    p a:not(.bds-link):not(.xrpl-link),
+    h5 a:not(.bds-link):not(.xrpl-link) {
       color: $blue-purple-300;
     }
   }

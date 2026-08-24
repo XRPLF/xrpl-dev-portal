@@ -11,8 +11,14 @@
     color: $green-100;
   }
 
-  a {
-    text-decoration: underline;
+  // Content links that don't carry .xrpl-link: raw HTML <a> in a .md file,
+  // and tag components like {% child-pages %} that render their own <a>
+  // (see ChildPages.tsx). Matches MarkdownLink's neutral (black) treatment.
+  a:not(.xrpl-link):not(.btn) {
+    @include xrpl-link-colors(neutral);
+    @include xrpl-link-underline;
+    @include xrpl-link-focus(on-theme);
+    border-radius: 2px; // matches .xrpl-link's own geometry, so the focus outline's corners aren't square here while rounded everywhere else
   }
 
   h1 {

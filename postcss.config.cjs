@@ -86,6 +86,9 @@ module.exports = {
                 // neither side of the build ever contains them as literals
                 /^rb-btn/,
 
+                // XRPL Link classes
+                /^xrpl-link--/,
+
                 /^g-/, // Gap utilities
                 /^p-/, // Padding utilities
                 /^m-/, // Margin utilities  

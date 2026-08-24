@@ -1,168 +1,119 @@
 import React from 'react';
 import clsx from 'clsx';
-import { LinkArrow, LinkArrowVariant } from './LinkArrow';
+import { Link as RouterLink } from '@redocly/theme/components/Link/Link';
+import { XrplArrowInternalLinkIcon, XrplArrowExternalLinkIcon } from '../Icons';
 
-export type LinkVariant = 'internal' | 'external' | 'inline';
-export type LinkSize = 'small' | 'medium' | 'large';
-export type LinkIconType = 'arrow' | 'external' | null;
+// Anchors that don't use this component (raw <a> in markdown, tag components
+// like {% child-pages %}) don't get these styles automatically -- they fall
+// back to the generic content-link CSS in styles/_content.scss, which mirrors
+// this component's neutral/on-theme look but isn't driven by it.
 
-export interface BdsLinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
-  /**
-   * Link variant - internal, external, or inline
-   * @default 'internal'
-   */
-  variant?: LinkVariant;
-  
-  /**
-   * Size of the link
-   * @default 'medium'
-   */
-  size?: LinkSize;
-  
-  /**
-   * Icon type - arrow, external, or null
-   * If null, icon is determined by variant (internal/external)
-   * Arrow icons animate to chevron shape on hover
-   * @default null
-   */
-  icon?: LinkIconType;
-  
-  /**
-   * Disabled state - prevents navigation and applies disabled styles
-   * @default false
-   */
-  disabled?: boolean;
-  
-  /**
-   * Link URL (required)
-   */
-  href: string;
-  
-  /**
-   * Link text content
-   */
-  children: React.ReactNode;
+export type LinkIntention = 'brand' | 'neutral';
+export type LinkContext = 'on-theme' | 'on-inverse' | 'on-saturated';
+export type LinkVariation = 'standalone' | 'inline';
+export type LinkSize = 'sm' | 'md' | 'lg';
+
+// No neutral+on-saturated group exists, so make that combination a type error.
+type LinkColorProps =
+  | { intention?: 'brand'; context?: LinkContext }
+  | { intention: 'neutral'; context?: Extract<LinkContext, 'on-theme' | 'on-inverse'> };
+
+export type LinkProps = LinkColorProps &
+  Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, 'href' | 'children'> & {
+    /** inline never carries an icon. */
+    variation?: LinkVariation;
+    size?: LinkSize;
+    /** Trailing arrow. standalone only. */
+    iconEnd?: boolean;
+    href: string;
+    children: React.ReactNode;
+  };
+
+function colorGroup(intention: LinkIntention, context: LinkContext): string {
+  if (context === 'on-inverse') return `${intention}-on-inverse`;
+  if (context === 'on-saturated') return `${intention}-on-saturated`;
+  return intention;
 }
 
-/**
- * BdsLink Component
- * 
- * A comprehensive link component supporting multiple sizes, icon types, and states.
- * Arrow icons animate to chevron shape on hover.
- * 
- * Color states are handled automatically via CSS per theme:
- * 
- * Light Mode:
- * - Enabled: Green 400 (#0DAA3E)
- * - Hover/Focus: Green 500 (#078139) + underline + arrow animates to chevron
- * - Active: Green 400 (#0DAA3E) + underline
- * - Visited: No change (stays Green 400)
- * - Disabled: Gray 400 (#8A919A)
- * - Focus outline: Black (#141414)
- *
- * Dark Mode:
- * - Enabled: Green 300 (#21E46B)
- * - Hover/Focus: Green 200 (#70EE97) + underline + arrow animates to chevron
- * - Active: Green 300 (#21E46B) + underline
- * - Visited: Lilac 300 (#C0A7FF)
- * - Disabled: Gray 400 (#8A919A)
- * - Focus outline: White (#FFFFFF)
- * 
- * @see Link.md for full documentation
- * 
- * @example
- * ```tsx
- * // Basic internal link (arrow animates to chevron on hover)
- * <BdsLink href="/docs" size="medium">
- *   View documentation
- * </BdsLink>
- * 
- * // External link
- * <BdsLink href="https://example.com" variant="external" size="large">
- *   External resource
- * </BdsLink>
- * 
- * // Disabled link
- * <BdsLink href="#" disabled>
- *   Coming soon
- * </BdsLink>
- * 
- * // Inline link (no icon)
- * <BdsLink href="/docs" variant="inline">
- *   Learn more
- * </BdsLink>
- * ```
- */
-export const BdsLink: React.FC<BdsLinkProps> = ({
-  variant = 'internal',
-  size = 'medium',
-  icon = null,
-  disabled = false,
+// Exported so other <a> renderers (e.g. the MarkdownLink markdoc override)
+// can reuse Link's class scheme without duplicating it.
+export function linkClassName({
+  intention = 'brand',
+  context = 'on-theme',
+  variation = 'inline',
+  size = 'md',
+  className,
+}: Pick<LinkProps, 'intention' | 'context' | 'variation' | 'size'> & { className?: string }): string {
+  return clsx(
+    'xrpl-link',
+    `xrpl-link--${variation}`,
+    `xrpl-link--${size}`,
+    `xrpl-link--${colorGroup(intention as LinkIntention, context as LinkContext)}`,
+    `xrpl-link--ctx-${context}`,
+    className
+  );
+}
+
+// Matches @redocly/realm's own Link (shared/components/Link/../../../@theme
+// wiring aside, see node_modules/@redocly/realm's client Link.js): anything
+// that isn't http(s)/mailto or a bare #fragment is routed through Redocly's
+// own Link, not a plain <a>. That's not cosmetic -- Redocly's Link resolves
+// relative paths against the current route, rewrites the path for the
+// current locale (a hardcoded /docs/... on a /ja/... page would otherwise
+// silently bounce a Japanese visitor to the English page), and drives
+// client-side navigation + hover prefetch instead of a full page load. A
+// plain <a> has none of that. External links and #-only anchors (e.g. the
+// nonces link-demo.page.tsx uses to demo :visited) don't need any of it, so
+// they stay plain <a> -- matching what Redocly's own Link does for them too.
+const EXTERNAL_HREF_RE = /^(https?:\/\/|mailto:)/;
+
+// Navigational anchor. Always renders <a> (directly, or via Redocly's Link,
+// which also renders <a>). A control that acts rather than navigates is a
+// Button, even when styled to look understated.
+export const Link: React.FC<LinkProps> = ({
+  intention = 'brand',
+  context = 'on-theme',
+  variation = 'inline',
+  size = 'md',
+  iconEnd = false,
   href,
   children,
   className,
-  onClick,
   ...rest
 }) => {
-  // Determine icon type based on variant if not explicitly provided
-  const getIconType = (): LinkArrowVariant | null => {
-    if (icon === null) {
-      // Auto-determine icon based on variant
-      if (variant === 'external') {
-        return 'external';
-      }
-      if (variant === 'internal') {
-        return 'internal'; // Default to internal arrow for internal variant
-      }
-      return null; // Inline links have no icon
-    }
-    
-    // Map icon prop to LinkArrow variant
-    if (icon === 'arrow') return 'internal';
-    if (icon === 'external') return 'external';
-    return null;
-  };
+  const showIcon = variation === 'standalone' && iconEnd;
+  // target="_blank" is this codebase's existing signal for "leaves the site" --
+  // picks which of the two shared arrow icons to render, not just its color.
+  const isExternalTarget = rest.target === '_blank';
+  const linkClass = linkClassName({ intention, context, variation, size, className });
+  const icon =
+    showIcon &&
+    // Must be a direct child of the rendered <a>, not wrapped in a span: the
+    // bds-icon-engaged mixin (triggered on hover/focus-visible below) emits
+    // `> .bds-icon`, so anything between them breaks the animation.
+    (isExternalTarget ? <XrplArrowExternalLinkIcon /> : <XrplArrowInternalLinkIcon />);
 
-  const iconType = getIconType();
-  const shouldShowIcon = variant !== 'inline' && iconType !== null;
-
-  const classes = clsx(
-    'bds-link',
-    `bds-link--${variant}`,
-    `bds-link--${size}`,
-    {
-      'bds-link--disabled': disabled,
-    },
-    className
-  );
-
-  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    if (disabled) {
-      e.preventDefault();
-      e.stopPropagation();
-      return;
-    }
-    onClick?.(e);
-  };
+  if (EXTERNAL_HREF_RE.test(href) || href.startsWith('#')) {
+    return (
+      <a href={href} className={linkClass} {...rest}>
+        {children}
+        {icon}
+      </a>
+    );
+  }
 
   return (
-    <a
-      href={disabled ? '#' : href}
-      className={classes}
-      onClick={handleClick}
-      aria-disabled={disabled}
-      {...rest}
-    >
+    // RouterLink's onClick contract is () => void, unlike <a>'s -- it's
+    // never called with the click event (see @redocly/realm's Link.js), so
+    // a caller-supplied handler that reads the event wouldn't get one here
+    // regardless of how this prop is typed.
+    <RouterLink to={href} className={linkClass} {...(rest as Record<string, unknown>)}>
       {children}
-      {shouldShowIcon && (
-        <LinkArrow
-          variant={iconType as LinkArrowVariant}
-          size={size}
-          disabled={disabled}
-        />
-      )}
-    </a>
+      {icon}
+    </RouterLink>
   );
 };
 
-BdsLink.displayName = 'BdsLink';
+Link.displayName = 'Link';
+
+export default Link;

@@ -1,5 +1,6 @@
 import * as React from "react";
 import { useThemeHooks } from '@redocly/theme/core/hooks';
+import { Link } from 'shared/components/Link';
 import briefcaseIcon from "../static/img/icons/briefcase.svg";
 import userIcon from "../static/img/icons/user.svg";
 export const frontmatter = {
@@ -145,13 +146,14 @@ export default function XrpOverview() {
                   "about.xrp.what-is-xrp.ppart1",
                   "XRP is a digital asset that’s native to the XRP Ledger—an open-source, permissionless and decentralized ",
                 )}
-                <a
+                <Link
                   href="https://www.distributedagreement.com/2018/09/24/what-is-a-blockchain/"
+                  intention="brand"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   {translate("about.xrp.what-is-xrp.ppart2", "blockchain technology.")}
-                </a>
+                </Link>
                 {translate("about.xrp.what-is-xrp.ppart3", " ")}
               </h5>
 
@@ -271,12 +273,13 @@ export default function XrpOverview() {
                     "about.xrp.xrp-in-trading.ppart1",
                   "XRP’s low transaction fees, reliability and high-speed enable traders to use the digital asset as high-speed, cost-efficient and reliable collateral across trading venues—"
                 )}
-                <a
+                <Link
                   href="https://ripple.com/insights/xrp-a-preferred-base-currency-for-arbitrage-trading/"
+                  intention="brand"
                   target="_blank"
                 >
                   {translate("about.xrp.xrp-in-trading.ppart2","seizing arbitrage opportunities")}
-                </a>
+                </Link>
                 {translate(
                     "about.xrp.xrp-in-trading.ppart3",
                   ", servicing margin calls and managing general trading inventory in real time."
@@ -296,9 +299,9 @@ export default function XrpOverview() {
                 )}
               </h2>
               <h5 className="longform mb-10">
-                <a href="https://ripple.com" target="_blank">
+                <Link href="https://ripple.com" intention="brand" target="_blank">
                   {translate("Ripple")}
-                </a>
+                </Link>
                 {translate(
                   " is a technology company that makes it easier to build a high-performance, global payments business. XRP is a digital asset independent of this."
                 )}

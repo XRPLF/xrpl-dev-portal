@@ -1,4 +1,5 @@
 import { useThemeHooks } from "@redocly/theme/core/hooks";
+import { Link } from "shared/components/Link";
 import { PageWrapper } from "shared/components/PageWrapper";
 import { HeaderHeroSplitMedia } from "shared/sections/HeaderHeroSplitMedia/HeaderHeroSplitMedia";
 import { LinkTextDirectory } from "shared/sections/LinkTextDirectory/LinkTextDirectory";
@@ -99,9 +100,9 @@ export default function Community() {
                 {translate(
                   "Found a security issue in rippled or another core XRPL project? Disclose it confidentially via email — encrypted with our "
                 )}
-                <a href="https://ripple.com/files/bug-bounty.asc">
+                <Link href="https://ripple.com/files/bug-bounty.asc" intention="brand">
                   {translate("PGP public key")}
-                </a>
+                </Link>
                 .
               </>
             ),

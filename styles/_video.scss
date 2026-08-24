@@ -65,39 +65,6 @@
   height: 100%;
 }
 
-.video-external-link {
-  color: $blue-purple-400;
-  font-weight: 600;
-
-  &::after {
-    content: "\00a0";
-    background-image: url(../img/icons/arrow-up-right.svg);
-    background-repeat: no-repeat;
-    display: inline-block;
-    background-size: 24px;
-    padding: 9px 4px 0 8px;
-    width: 2rem;
-    background-position: left 8px bottom 0px;
-    transition: background-position 100ms ease-in-out;
-  }
-
-  &.video-external-link:hover::after {
-    background-position: left 12px bottom 8px;
-  }
-}
-
-:root.light {
-  .video-external-link {
-    color: $blue-purple-400;
-  }
-}
-
-:root.dark {
-  .video-external-link {
-    color: $blue-purple-300;
-  }
-}
-
 .video-title{
   line-height: 1.2;
 

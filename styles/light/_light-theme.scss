@@ -435,8 +435,10 @@ aside .card {
     }
   }
 
-  p a:not(.bds-link),
-  .longform a:not(.bds-link) {
+  // :not(.xrpl-link) so the Link component's own brand/on-theme styling
+  // isn't overridden by this rule (see also styles/_landings.scss).
+  p a:not(.bds-link):not(.xrpl-link),
+  .longform a:not(.bds-link):not(.xrpl-link) {
     color: $light-link-hover-color;
   }
 }
@@ -1096,14 +1098,6 @@ main article .card-grid {
   .card-icon-container,
   &.card-grid-3xN .card-icon-container {
     background: $gray-300;
-  }
-}
-
-[data-component-name="Footer/Footer"] {
-  [data-component-name="Footer/FooterColumn"] {
-    text-shadow: $gray-100 0px 0px 2px, $gray-100 1px 1px 2px, $gray-100 2px 2px 3px,
-      $gray-100 2px 2px 4px, $gray-100 2px 2px 5px, $gray-100 2px 2px 6px, $gray-100 -1px -1px 2px,
-      $gray-100 -2px -2px 3px, $gray-100 -2px -2px 4px;
   }
 }
 

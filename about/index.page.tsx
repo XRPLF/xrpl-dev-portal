@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useThemeHooks } from '@redocly/theme/core/hooks';
-import { Link } from '@redocly/theme/components/Link/Link';
+import { Link as XrplLink } from 'shared/components/Link';
 import { PageGrid, PageGridCol, PageGridRow } from "shared/components/PageGrid/page-grid";
 import Button from "shared/components/Button";
 import {
@@ -29,7 +29,7 @@ const faqs = [
   {
     question: "How can a blockchain be sustainable?",
     answer:
-      "It’s been widely reported that Bitcoin’s energy consumption, as of 2021, is equivalent to that used by Argentina, with much of the electricity Bitcoin miners use coming from polluting sources. The XRP Ledger confirms transactions through a “consensus” mechanism - which does not waste energy like proof of work does - and leverages carbon offsets to be <a href='https://ripple.com/ripple-press/ripple-leads-sustainability-agenda-to-achieve-carbon-neutrality-by-2030/' target='_blank'>one of the first truly carbon neutral blockchains</a>.",
+      "It’s been widely reported that Bitcoin’s energy consumption, as of 2021, is equivalent to that used by Argentina, with much of the electricity Bitcoin miners use coming from polluting sources. The XRP Ledger confirms transactions through a “consensus” mechanism - which does not waste energy like proof of work does - and leverages carbon offsets to be <a href='https://ripple.com/ripple-press/ripple-leads-sustainability-agenda-to-achieve-carbon-neutrality-by-2030/' target='_blank' class='xrpl-link xrpl-link--inline xrpl-link--md xrpl-link--brand xrpl-link--ctx-on-theme'>one of the first truly carbon neutral blockchains</a>.",
   },
 ];
 
@@ -197,7 +197,7 @@ export default function XrplOverview() {
                   "about.index.consensus.h5part1",
                   "To uphold performance, XRPL uses a consensus protocol. Designated servers called "
                 )}`}
-                <Link to="/docs/infrastructure/configuration/server-modes/run-xrpld-as-a-validator">{translate("about.index.consensus.h5part2", "validators")}</Link>
+                <XrplLink href="/docs/infrastructure/configuration/server-modes/run-xrpld-as-a-validator" intention="brand">{translate("about.index.consensus.h5part2", "validators")}</XrplLink>
                 {`${translate(
                   "about.index.consensus.h5part3",
                   ", which anyone can operate, come to an agreement on the order and outcome of XRP transactions every three to five seconds."
@@ -211,7 +211,7 @@ export default function XrplOverview() {
               </p>
               <p className="mb-0">
                 {translate('about.index.consensus.ppart1', 'Currently, over 120 ')}
-                <a href="https://livenet.xrpl.org/network/validators" target="_blank">{translate('about.index.consensus.ppart2', 'validators')}</a>
+                <XrplLink href="https://livenet.xrpl.org/network/validators" intention="brand" target="_blank">{translate('about.index.consensus.ppart2', 'validators')}</XrplLink>
                     {translate('about.index.consensus.ppart3', ' are active on the ledger, operated by universities, exchanges, businesses, and individuals. As the validator pool grows, the consensus protocol ensures decentralization of the blockchain over time.')}
               </p>
             </PageGrid.Col>
@@ -406,9 +406,9 @@ export default function XrplOverview() {
                   "about.index.tomorrow.ppart1",
                   "XRP Ledger’s innovation relies on the shared community experience of builders like you. If you’re ready to start your next big blockchain project, explore the XRPL now and consider applying for funding on your next"
                 )}`}
-                <Link to="/community/developer-funding">
+                <XrplLink href="/community/developer-funding" intention="brand">
                   {translate("about.index.tomorrow.ppart2", " blockchain project")}
-                </Link>
+                </XrplLink>
                 {translate("about.index.tomorrow.ppart3", ".")}
               </p>
 
