@@ -28,37 +28,6 @@ export interface CardImageProps {
   backgroundColor?: string;
 }
 
-const CtaArrowIcon: React.FC = () => (
-  <svg
-    className="bds-btn__icon"
-    width="15"
-    height="14"
-    viewBox="0 0 15 14"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    aria-hidden="true"
-  >
-    <line
-      className="bds-btn__icon-line"
-      x1="0"
-      y1="7"
-      x2="14"
-      y2="7"
-      stroke="currentColor"
-      strokeWidth="1.3"
-      strokeMiterlimit="10"
-    />
-    <path
-      className="bds-btn__icon-chevron"
-      d="M8.16755 1.16743L14.0005 7.00038L8.16755 12.8333"
-      stroke="currentColor"
-      strokeWidth="1.3"
-      strokeMiterlimit="10"
-      fill="none"
-    />
-  </svg>
-);
-
 // Matches a leading bullet marker on a subtitle line, e.g. "\u2022 ", "- ", "* ".
 const BULLET_MARKER = /^\s*[\u2022\u2023\u25E6\u2043\-*]\s+/;
 
@@ -170,10 +139,17 @@ export const CardImage: React.FC<CardImageProps> = ({
     ? { '--bds-card-image-bg': backgroundColor } as React.CSSProperties
     : undefined;
 
+  // A link card is one link end to end, so the CTA is painted rather than built:
+  // a <Button href> here would nest an <a> inside the card's own <a>, which the
+  // HTML parser rewrites on the way back in from SSR. The class list and the
+  // label/icon slots mirror Button's own output — see Button.tsx — so the icon
+  // meets the motion contract in Icons/shared.scss and engages with the card.
   const cta = href && !disabled ? (
     <span className="bds-btn bds-btn--brand bds-btn--strong bds-btn--on-theme">
       <span className="bds-btn__label">{buttonLabel}</span>
-      <CtaArrowIcon />
+      <span className="bds-btn__icon" aria-hidden="true">
+        <XrplArrowInternalLinkIcon />
+      </span>
     </span>
   ) : (
     <Button
