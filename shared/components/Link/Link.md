@@ -27,9 +27,18 @@ import { Link as XrplLink } from 'shared/components/Link';
 </p>
 ```
 
-`Link` always renders a real `<a href>`. It's for navigation. A clickable
-control that performs an action rather than going somewhere is a `Button`,
-even if it's meant to look like a link.
+`Link` always renders a real `<a href>` — but for anything that isn't an
+external URL (`http(s):`/`mailto:`) or a bare `#fragment`, that `<a>` comes
+from Redocly's own routing `Link` (`@redocly/theme/components/Link/Link`),
+not a plain one. This matters, not just cosmetically: Redocly's `Link`
+resolves relative paths against the current route, rewrites the path for the
+current locale (so `href="/docs/concepts/"` correctly becomes
+`/ja/docs/concepts/` for a `/ja/...` visitor instead of silently bouncing
+them to the English page), and drives client-side navigation plus
+hover-prefetch instead of a full page load. Writing `href="/docs/concepts/"`
+gets all of that automatically — there's no separate "internal" prop to set.
+A control that acts rather than navigates is a `Button`, even if it's meant
+to look like a link.
 
 ## Props
 

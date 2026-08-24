@@ -1,5 +1,6 @@
 import React from 'react';
 import clsx from 'clsx';
+import { Link as RouterLink } from '@redocly/theme/components/Link/Link';
 import { XrplArrowInternalLinkIcon, XrplArrowExternalLinkIcon } from '../Icons';
 
 // Anchors that don't use this component (raw <a> in markdown, tag components
@@ -53,8 +54,22 @@ export function linkClassName({
   );
 }
 
-// Navigational anchor. Always renders <a>. A control that acts rather than
-// navigates is a Button, even when styled to look understated.
+// Matches @redocly/realm's own Link (shared/components/Link/../../../@theme
+// wiring aside, see node_modules/@redocly/realm's client Link.js): anything
+// that isn't http(s)/mailto or a bare #fragment is routed through Redocly's
+// own Link, not a plain <a>. That's not cosmetic -- Redocly's Link resolves
+// relative paths against the current route, rewrites the path for the
+// current locale (a hardcoded /docs/... on a /ja/... page would otherwise
+// silently bounce a Japanese visitor to the English page), and drives
+// client-side navigation + hover prefetch instead of a full page load. A
+// plain <a> has none of that. External links and #-only anchors (e.g. the
+// nonces link-demo.page.tsx uses to demo :visited) don't need any of it, so
+// they stay plain <a> -- matching what Redocly's own Link does for them too.
+const EXTERNAL_HREF_RE = /^(https?:\/\/|mailto:)/;
+
+// Navigational anchor. Always renders <a> (directly, or via Redocly's Link,
+// which also renders <a>). A control that acts rather than navigates is a
+// Button, even when styled to look understated.
 export const Link: React.FC<LinkProps> = ({
   intention = 'brand',
   context = 'on-theme',
@@ -69,21 +84,33 @@ export const Link: React.FC<LinkProps> = ({
   const showIcon = variation === 'standalone' && iconEnd;
   // target="_blank" is this codebase's existing signal for "leaves the site" --
   // picks which of the two shared arrow icons to render, not just its color.
-  const isExternal = rest.target === '_blank';
+  const isExternalTarget = rest.target === '_blank';
+  const linkClass = linkClassName({ intention, context, variation, size, className });
+  const icon =
+    showIcon &&
+    // Must be a direct child of the rendered <a>, not wrapped in a span: the
+    // bds-icon-engaged mixin (triggered on hover/focus-visible below) emits
+    // `> .bds-icon`, so anything between them breaks the animation.
+    (isExternalTarget ? <XrplArrowExternalLinkIcon /> : <XrplArrowInternalLinkIcon />);
+
+  if (EXTERNAL_HREF_RE.test(href) || href.startsWith('#')) {
+    return (
+      <a href={href} className={linkClass} {...rest}>
+        {children}
+        {icon}
+      </a>
+    );
+  }
 
   return (
-    <a
-      href={href}
-      className={linkClassName({ intention, context, variation, size, className })}
-      {...rest}
-    >
+    // RouterLink's onClick contract is () => void, unlike <a>'s -- it's
+    // never called with the click event (see @redocly/realm's Link.js), so
+    // a caller-supplied handler that reads the event wouldn't get one here
+    // regardless of how this prop is typed.
+    <RouterLink to={href} className={linkClass} {...(rest as Record<string, unknown>)}>
       {children}
-      {showIcon &&
-        // Must be a direct child of this <a>, not wrapped in a span: the
-        // bds-icon-engaged mixin (triggered on hover/focus-visible below)
-        // emits `> .bds-icon`, so anything between them breaks the animation.
-        (isExternal ? <XrplArrowExternalLinkIcon /> : <XrplArrowInternalLinkIcon />)}
-    </a>
+      {icon}
+    </RouterLink>
   );
 };
 
