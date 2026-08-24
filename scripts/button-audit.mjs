@@ -103,6 +103,8 @@ Button spec audit for the XRPL dev portal.
   --base <url>        Preview server (default http://localhost:4000)
   --pages <p> [p...]  Paths to audit (required)
   --themes <l,d>      Themes to check (default light,dark)
+  --viewport <v>      desktop | mobile | both (default both). Buttons hidden at
+                      a width are reported as skipped, never as passing.
   --no-synthetic      Skip the disabled and inactive states
   --selector <css>    What counts as a button (default .bds-btn)
   --verbose           Print every measurement, not only the failures
@@ -345,6 +347,20 @@ const STATES = ['rest', 'hover', 'active', 'focus-visible'];
 const SYNTHETIC_STATES = ['disabled', 'inactive'];
 
 /**
+ * Both widths by default, matching contrast-check.mjs. A page often ships two
+ * copies of the same CTA behind `d-none d-lg-block` / `d-lg-none`, and auditing
+ * one width leaves half of them permanently unmeasured while still printing a
+ * clean summary.
+ */
+const VIEWPORTS = { desktop: { width: 1440, height: 900 }, mobile: { width: 390, height: 844 } };
+const VIEWPORT_NAMES = (() => {
+  const v = val('--viewport', 'both');
+  if (v === 'both') return Object.keys(VIEWPORTS);
+  if (!VIEWPORTS[v]) fail(`Unknown --viewport "${v}". Use desktop, mobile or both.`);
+  return [v];
+})();
+
+/**
  * Read everything the audit compares, for the button at `index`, right now.
  * One evaluate per measurement: the forced pseudo-state lives in the browser,
  * so the read has to happen while it is applied.
@@ -388,6 +404,21 @@ const MEASURE = ({ s, i }) => {
       height: Math.round(box.height * 100) / 100,
     },
     matchesFocusVisible: el.matches(':focus-visible'),
+    /**
+     * Whether the element generates a box at THIS viewport.
+     *
+     * A button whose own `display` is correct can still be unrendered because
+     * an ancestor is hidden -- `d-lg-none` wrappers put the mobile copy of a
+     * CTA in exactly that state at desktop width. getComputedStyle still
+     * answers for such an element, but the answers are meaningless: the
+     * ::before has no layout so its transform reads `none`, the outline
+     * properties sit at their initial values because :focus-visible can never
+     * match, and every one of those looks like a defect.
+     *
+     * getClientRects() is the test rather than `display`, because the element's
+     * own display is not where the truth is.
+     */
+    rendered: el.getClientRects().length > 0,
   };
 };
 
@@ -451,13 +482,21 @@ async function auditPage(browser, url) {
     const cdp = await ctx.newCDPSession(page);
     await cdp.send('DOM.enable');
     await cdp.send('CSS.enable');
-    const { root } = await cdp.send('DOM.getDocument', { depth: -1 });
-    const { nodeIds } = await cdp.send('DOM.querySelectorAll', { nodeId: root.nodeId, selector: SELECTOR });
 
+    let nodeIds = [];
     const force = async (i, classes) => {
       if (!nodeIds[i]) return;
       await cdp.send('CSS.forcePseudoState', { nodeId: nodeIds[i], forcedPseudoClasses: classes });
     };
+
+    for (const vp of VIEWPORT_NAMES) {
+      await page.setViewportSize(VIEWPORTS[vp]);
+      await page.waitForTimeout(400);
+
+      // Re-resolve after the resize. Node ids survive a viewport change today,
+      // but re-querying costs one round trip and removes the assumption.
+      const { root } = await cdp.send('DOM.getDocument', { depth: -1 });
+      ({ nodeIds } = await cdp.send('DOM.querySelectorAll', { nodeId: root.nodeId, selector: SELECTOR }));
 
     for (const theme of THEMES) {
       const mode = theme;
@@ -492,7 +531,16 @@ async function auditPage(browser, url) {
 
         const mod = n => info.classes.filter(x => x.startsWith('bds-btn--')).map(x => x.slice(9)).find(x => n.includes(x));
         const group = mod(GROUPS), emphasis = mod(EMPHASES), context = mod(CONTEXTS);
-        const id = { url, theme, index: i, label: info.label, tag: info.tag, group, emphasis, context };
+        const id = { url, theme, vp, index: i, label: info.label, tag: info.tag, group, emphasis, context };
+
+        // Not rendered here -- an ancestor is hidden at this width. Measuring it
+        // yields a page of mismatches that describe the browser's initial
+        // values, not the component. Record the skip so a green run cannot be
+        // read as "everything was checked".
+        if (!(await page.evaluate(({ s, i }) => document.querySelectorAll(s)[i].getClientRects().length > 0, { s: SELECTOR, i }))) {
+          findings.push({ ...id, kind: 'skipped', reason: `not rendered at ${vp}` });
+          continue;
+        }
 
         if (!group || !emphasis || !context) {
           findings.push({
@@ -657,6 +705,7 @@ async function auditPage(browser, url) {
         findings.push({ ...id, kind: 'measured', states: Object.keys(geometries).length });
       }
     }
+    }
   } catch (e) {
     findings.push({ url, kind: 'error', reason: e.message });
   } finally {
@@ -711,19 +760,29 @@ for (const url of urls) {
     const mark = problems.length ? red('✗') : green('✓');
     console.log(`  ${mark} ${cyan(`[${bi}]`)} ${first.label || dim('(no label)')}  ${dim(`<${first.tag}>`)} ${axes}`);
 
-    for (const theme of THEMES) {
-      const t = problems.filter(f => f.theme === theme);
-      if (!t.length) continue;
-      console.log(`      ${bold(theme)}`);
-      for (const f of t) {
-        if (f.kind !== 'mismatch') {
-          console.log(`        ${red('!')} ${f.state ? `${f.state}: ` : ''}${f.reason}`);
-          continue;
+    // A button hidden at one width is not a pass there. Say so on its own
+    // line, once per viewport, rather than letting the ✓ imply full coverage.
+    const skips = [...new Set(rows.filter(f => f.kind === 'skipped').map(f => f.vp))];
+    for (const vp of skips) {
+      const measuredElsewhere = rows.some(f => f.kind === 'measured' && f.vp !== vp);
+      console.log(`      ${dim(`skipped at ${vp} — not rendered${measuredElsewhere ? '' : yellow(' (never measured at any width)')}`)}`);
+    }
+
+    for (const vp of VIEWPORT_NAMES) {
+      for (const theme of THEMES) {
+        const t = problems.filter(f => f.theme === theme && f.vp === vp);
+        if (!t.length) continue;
+        console.log(`      ${bold(theme)} ${dim(`· ${vp}`)}`);
+        for (const f of t) {
+          if (f.kind !== 'mismatch') {
+            console.log(`        ${red('!')} ${f.state ? `${f.state}: ` : ''}${f.reason}`);
+            continue;
+          }
+          const tag = f.synthetic ? dim(' SYNTHETIC') : '';
+          console.log(`        ${red('✗')} ${yellow(f.state)}${tag}  ${f.what}`);
+          console.log(`            want ${swatch(f.expected)} ${f.expected}`);
+          console.log(`            got  ${swatch(f.actual)} ${magenta(f.actual)}`);
         }
-        const tag = f.synthetic ? dim(' SYNTHETIC') : '';
-        console.log(`        ${red('✗')} ${yellow(f.state)}${tag}  ${f.what}`);
-        console.log(`            want ${swatch(f.expected)} ${f.expected}`);
-        console.log(`            got  ${swatch(f.actual)} ${magenta(f.actual)}`);
       }
     }
   }
@@ -735,9 +794,19 @@ for (const e of errors.filter(f => f.index === undefined)) {
 }
 
 const buttonsSeen = new Set(all.filter(f => f.index !== undefined).map(f => `${f.url}#${f.index}`)).size;
+
+// A button skipped at every viewport was never actually checked. That has to
+// reach the summary line, or a run that measured nothing reads as a pass.
+const measuredAnywhere = new Set(all.filter(f => f.kind === 'measured').map(f => `${f.url}#${f.index}`));
+const neverMeasured = [...new Set(all.filter(f => f.kind === 'skipped').map(f => `${f.url}#${f.index}`))]
+  .filter(k => !measuredAnywhere.has(k));
+if (neverMeasured.length) {
+  console.log(`${yellow('!')} ${neverMeasured.length} button${neverMeasured.length === 1 ? ' was' : 's were'} never rendered at any audited width, so ${neverMeasured.length === 1 ? 'it was' : 'they were'} not checked.\n`);
+}
+
 const summary = mismatches.length
   ? red(`${mismatches.length} mismatch${mismatches.length === 1 ? '' : 'es'}`)
   : green('no mismatches');
-console.log(`${bold('Summary')}  ${buttonsSeen} button${buttonsSeen === 1 ? '' : 's'} · ${THEMES.length} theme${THEMES.length === 1 ? '' : 's'} · ${STATES.length + (SYNTHETIC ? SYNTHETIC_STATES.length : 0)} states · ${summary}\n`);
+console.log(`${bold('Summary')}  ${buttonsSeen} button${buttonsSeen === 1 ? '' : 's'} · ${VIEWPORT_NAMES.join('+')} · ${THEMES.length} theme${THEMES.length === 1 ? '' : 's'} · ${STATES.length + (SYNTHETIC ? SYNTHETIC_STATES.length : 0)} states · ${summary}\n`);
 
 process.exit(mismatches.length || errors.length ? 1 : 0);

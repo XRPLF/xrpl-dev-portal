@@ -1,5 +1,7 @@
 import * as React from "react";
 import { useThemeHooks } from '@redocly/theme/core/hooks';
+import Button from "shared/components/Button";
+import { XrplArrowInternalLinkIcon } from "shared/components/Icons";
 import numLight from "../static/js/ecosystem/numbers-animation-light.json";
 import numDark from "../static/js/ecosystem/numbers-animation.json";
 import arrow from "../static/js/ecosystem/arrow-animation.json";
@@ -838,13 +840,15 @@ export default function Uses() {
                 {translate('Join the XRPL Ecosystem and showcase your XRPL project, application, or product. Get featured on the Developer Reflections blog or Ecosystem page.')}
               </span>
               <div className="mt-10">
-                <a
+                <Button
+                  intention="neutral"
+                  emphasis="strong"
                   target="_blank"
-                  className="btn btn-primary btn-arrow"
                   href="https://xrplresources.org/developer-spotlight"
+                  iconEnd={<XrplArrowInternalLinkIcon />}
                 >
                   {translate("Submit Your Project")}
-                </a>
+                </Button>
               </div>
             </div>
           </section>
