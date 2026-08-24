@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useThemeHooks } from '@redocly/theme/core/hooks';
+import { Link } from 'shared/components/Link';
 
 export const frontmatter = {
   seo: {
@@ -83,9 +84,9 @@ export default function CodeSamples() {
                 <h5 className="pb-4 pt-md-5">{translate('Fork and clone')}</h5>
                 <p className="pb-4">
                   {translate('resources.contribute.1.part1', 'Fork the ')}
-                  <a href="https://github.com/XRPLF/xrpl-dev-portal">
+                  <Link href="https://github.com/XRPLF/xrpl-dev-portal" intention="brand">
                     {translate('resources.contribute.1.part2', 'xrpl-dev-portal repo')}
-                  </a>
+                  </Link>
                   {translate('resources.contribute.1.part3', '. Using git, clone the fork to your computer.')}
                 </p>
               </div>

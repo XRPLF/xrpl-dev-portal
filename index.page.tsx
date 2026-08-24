@@ -11,7 +11,7 @@ import { LogoSquareGrid } from "shared/sections/LogoSquareGrid";
 import { StandardCardGroupSection } from "shared/sections/StandardCardGroupSection/StandardCardGroupSection";
 import { FeatureSingleTopic } from "shared/sections/FeatureSingleTopic";
 import type { StandardCardPropsWithoutVariant } from "shared/components/StandardCard";
-import { BdsLink } from "shared/components/Link";
+import { Link } from "shared/components/Link";
 import { HomeHero } from "shared/sections/HomeHero/HomeHero";
 import { PanelStack } from "shared/patterns/PanelStack";
 
@@ -117,33 +117,33 @@ export default function Index() {
       children: (
         <span>
           {translate("Find tools, documentation, and sample code in")}{" "}
-          <BdsLink
-            variant="inline"
+          <Link
+            variation="inline"
             href="/docs/tutorials/get-started/get-started-python"
           >
             {translate("Python")}
-          </BdsLink>
+          </Link>
           ,{" "}
-          <BdsLink
-            variant="inline"
+          <Link
+            variation="inline"
             href="/docs/tutorials/get-started/get-started-java"
           >
             {translate("Java")}
-          </BdsLink>
+          </Link>
           ,{" "}
-          <BdsLink
-            variant="inline"
+          <Link
+            variation="inline"
             href="/docs/tutorials/get-started/get-started-javascript?environment=Node"
           >
             {translate("JavaScript")}
-          </BdsLink>
+          </Link>
           {translate(", or use")}{" "}
-          <BdsLink
-            variant="inline"
+          <Link
+            variation="inline"
             href="/docs/tutorials/get-started/get-started-http-websocket-apis"
           >
             {translate("HTTP APIs")}
-          </BdsLink>
+          </Link>
           .
         </span>
       ),
@@ -169,20 +169,20 @@ export default function Index() {
       children: (
         <span>
           {translate("Start with the basics and then learn about")}{" "}
-          <BdsLink variant="inline" href="/docs/use-cases/defi">
+          <Link variation="inline" href="/docs/use-cases/defi">
             {translate("DeFi")}
-          </BdsLink>
+          </Link>
           ,{" "}
-          <BdsLink variant="inline" href="/docs/use-cases/tokenization">
+          <Link variation="inline" href="/docs/use-cases/tokenization">
             {translate("tokenization")}
-          </BdsLink>
+          </Link>
           ,{" "}
-          <BdsLink
-            variant="inline"
+          <Link
+            variation="inline"
             href="/docs/concepts/tokens/decentralized-exchange"
           >
             {translate("DEX")}
-          </BdsLink>{" "}
+          </Link>{" "}
           {translate("trading, or how to issue stablecoins.")}
         </span>
       ),

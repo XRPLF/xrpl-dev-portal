@@ -1,0 +1,258 @@
+// Link design tokens, shared by the Link component and the generic <a>
+// fallback, so a token change only has to happen here. Resolved from the BDS
+// Link spec (https://github.com/samiamdesigns/pd-xrpl-developer-docs/blob/main/components/link.json).
+// Requires _colors.scss and _helpers.scss (bds-theme-mode) to be imported first.
+
+// True black -- "neutral" is #000000 exactly or $true-black, not $black (#141414).
+$link-neutral-black: $true-black;
+
+// Focus ring colors by context.
+$link-focus-on-theme-light: $off-black;
+$link-focus-on-theme-dark: $white;
+$link-focus-on-inverse-light: $white;
+$link-focus-on-inverse-dark: $true-black;
+$link-focus-on-saturated-light: $off-black;
+$link-focus-on-saturated-dark: $true-black;
+
+// Both light and dark are wrapped in an explicit html.light/html.dark
+// bds-theme-mode() selector -- neither is left as an unscoped "default".
+// styles/light/_light-theme.scss has a generic `html.light a:where(...)`
+// content-link fallback that resolves to (0,1,2) specificity (the `html.light`
+// prefix sits outside :where(), so it isn't zeroed out). An unscoped
+// `.xrpl-link--brand { color: ... }` is only (0,1,0) and loses to it in light
+// mode -- that was a real bug (link text rendering black in light mode
+// regardless of intention). Wrapping light the same way as dark brings both
+// branches to (0,2,1), which wins.
+
+// Label + icon color for rest/hover/visited, light and dark, per color group.
+// hover and pressed (:active) share a value in every group -- not an omission.
+//
+// Every state block also pins text-decoration-color: currentColor. Redocly's
+// own Markdown wrapper (compiled to a hashed class, e.g. .eMIPih) sets its
+// own `a:visited { text-decoration: var(--link-decoration-visited); ... }`
+// (a purple underline) at (0,3,1) specificity. Our :visited color rules below
+// already win their own specificity fight (see note above), but text-decoration
+// is a different property -- without an explicit text-decoration-color here,
+// it falls through to Redocly's shorthand and the underline stays purple even
+// though the text color is correct. currentColor keeps it in sync with
+// whatever `color` this same block sets, with no value to duplicate.
+@mixin xrpl-link-colors($group: brand) {
+  @if $group == brand {
+    @include bds-theme-mode(light) {
+      color: $xrpl-green-11;
+      text-decoration-color: currentColor;
+    }
+    @include bds-theme-mode(dark) {
+      color: $xrpl-green-dark-11;
+      text-decoration-color: currentColor;
+    }
+
+    // :focus (not just :focus-visible) is included here because
+    // @redocly/theme's own Markdown wrapper groups its default `:hover` and
+    // `:focus` styling together -- without matching that grouping, a link
+    // that receives keyboard focus but isn't also hovered would fall through
+    // to their default (purple) color instead of this state.
+    &:hover,
+    &:active,
+    &:focus {
+      @include bds-theme-mode(light) {
+        color: $xrpl-green-12;
+        text-decoration-color: currentColor;
+      }
+      @include bds-theme-mode(dark) {
+        color: $xrpl-green-dark-12;
+        text-decoration-color: currentColor;
+      }
+    }
+
+    &:visited {
+      @include bds-theme-mode(light) {
+        color: $sage-12;
+        text-decoration-color: currentColor;
+      }
+      @include bds-theme-mode(dark) {
+        color: $sage-dark-12;
+        text-decoration-color: currentColor;
+      }
+    }
+  } @else if $group == neutral {
+    @include bds-theme-mode(light) {
+      color: $link-neutral-black;
+      text-decoration-color: currentColor;
+    }
+    @include bds-theme-mode(dark) {
+      color: $white;
+      text-decoration-color: currentColor;
+    }
+
+    // :focus (not just :focus-visible) is included here because
+    // @redocly/theme's own Markdown wrapper groups its default `:hover` and
+    // `:focus` styling together -- without matching that grouping, a link
+    // that receives keyboard focus but isn't also hovered would fall through
+    // to their default (purple) color instead of this state.
+    &:hover,
+    &:active,
+    &:focus {
+      @include bds-theme-mode(light) {
+        color: $link-neutral-black;
+        text-decoration-color: currentColor;
+      }
+      @include bds-theme-mode(dark) {
+        color: $white;
+        text-decoration-color: currentColor;
+      }
+    }
+
+    &:visited {
+      @include bds-theme-mode(light) {
+        color: $sage-11;
+        text-decoration-color: currentColor;
+      }
+      @include bds-theme-mode(dark) {
+        color: $sage-dark-11;
+        text-decoration-color: currentColor;
+      }
+    }
+  } @else if $group == brand-on-inverse {
+    @include bds-theme-mode(light) {
+      color: $xrpl-green-dark-11;
+      text-decoration-color: currentColor;
+    }
+    @include bds-theme-mode(dark) {
+      color: $xrpl-green-11;
+      text-decoration-color: currentColor;
+    }
+
+    // :focus (not just :focus-visible) is included here because
+    // @redocly/theme's own Markdown wrapper groups its default `:hover` and
+    // `:focus` styling together -- without matching that grouping, a link
+    // that receives keyboard focus but isn't also hovered would fall through
+    // to their default (purple) color instead of this state.
+    &:hover,
+    &:active,
+    &:focus {
+      @include bds-theme-mode(light) {
+        color: $xrpl-green-dark-12;
+        text-decoration-color: currentColor;
+      }
+      @include bds-theme-mode(dark) {
+        color: $xrpl-green-12;
+        text-decoration-color: currentColor;
+      }
+    }
+
+    &:visited {
+      @include bds-theme-mode(light) {
+        color: $xrpl-green-1;
+        text-decoration-color: currentColor;
+      }
+      @include bds-theme-mode(dark) {
+        color: $xrpl-green-dark-1;
+        text-decoration-color: currentColor;
+      }
+    }
+  } @else if $group == neutral-on-inverse {
+    @include bds-theme-mode(light) {
+      color: $sage-1;
+      text-decoration-color: currentColor;
+    }
+    @include bds-theme-mode(dark) {
+      color: $sage-12;
+      text-decoration-color: currentColor;
+    }
+
+    // :focus (not just :focus-visible) is included here because
+    // @redocly/theme's own Markdown wrapper groups its default `:hover` and
+    // `:focus` styling together -- without matching that grouping, a link
+    // that receives keyboard focus but isn't also hovered would fall through
+    // to their default (purple) color instead of this state.
+    &:hover,
+    &:active,
+    &:focus {
+      @include bds-theme-mode(light) {
+        color: $sage-1;
+        text-decoration-color: currentColor;
+      }
+      @include bds-theme-mode(dark) {
+        color: $sage-12;
+        text-decoration-color: currentColor;
+      }
+    }
+
+    &:visited {
+      @include bds-theme-mode(light) {
+        color: $sage-7;
+        text-decoration-color: currentColor;
+      }
+      @include bds-theme-mode(dark) {
+        color: $sage-dark-7;
+        text-decoration-color: currentColor;
+      }
+    }
+  } @else if $group == brand-on-saturated {
+    // Mode-invariant: the saturated surface is the same green in both modes.
+    // Still wrapped per-mode (rather than left unscoped) so both resolve to
+    // the same (0,2,1) specificity as every other group, for the same reason
+    // documented above.
+    @include bds-theme-mode(light) {
+      color: $black;
+      text-decoration-color: currentColor;
+    }
+    @include bds-theme-mode(dark) {
+      color: $black;
+      text-decoration-color: currentColor;
+    }
+
+    &:hover,
+    &:active,
+    &:focus,
+    &:visited {
+      @include bds-theme-mode(light) {
+        color: $xrpl-green-12;
+        text-decoration-color: currentColor;
+      }
+      @include bds-theme-mode(dark) {
+        color: $xrpl-green-12;
+        text-decoration-color: currentColor;
+      }
+    }
+  } @else {
+    @error "Unknown xrpl-link-colors group: #{$group}";
+  }
+}
+
+// Persistent underline, every state -- required by WCAG 1.4.1 since color
+// alone (dark-mode brand green) doesn't separate a link from body text.
+@mixin xrpl-link-underline {
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
+}
+
+// :focus-visible outline, colored by which surface the link sits on. Wrapped
+// per-mode for the same specificity reason as xrpl-link-colors above.
+@mixin xrpl-link-focus($context: on-theme) {
+  $light-color: $link-focus-on-theme-light;
+  $dark-color: $link-focus-on-theme-dark;
+
+  @if $context == on-inverse {
+    $light-color: $link-focus-on-inverse-light;
+    $dark-color: $link-focus-on-inverse-dark;
+  } @else if $context == on-saturated {
+    $light-color: $link-focus-on-saturated-light;
+    $dark-color: $link-focus-on-saturated-dark;
+  }
+
+  @include bds-theme-mode(light) {
+    &:focus-visible {
+      outline: 2px solid $light-color;
+      outline-offset: 2px;
+    }
+  }
+
+  @include bds-theme-mode(dark) {
+    &:focus-visible {
+      outline: 2px solid $dark-color;
+      outline-offset: 2px;
+    }
+  }
+}

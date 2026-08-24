@@ -82,6 +82,9 @@ module.exports = {
                 // a literal in the content it scans.
                 /^bds-icon/,
 
+                // XRPL Link classes
+                /^xrpl-link--/,
+
                 /^g-/, // Gap utilities
                 /^p-/, // Padding utilities
                 /^m-/, // Margin utilities  

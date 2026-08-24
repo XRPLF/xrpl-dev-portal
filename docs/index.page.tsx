@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useThemeHooks } from '@redocly/theme/core/hooks';
+import { Link } from 'shared/components/Link';
 import { PageWrapper } from 'shared/components/PageWrapper';
 import HeaderHeroPrimaryMedia from 'shared/sections/HeaderHeroPrimaryMedia/HeaderHeroPrimaryMedia';
 import { CarouselCardList } from 'shared/sections/CarouselCardList/CarouselCardList';
@@ -78,7 +79,7 @@ export default function Docs() {
             description: (
               <>
                 {translate("Discover the basics of the XRPL by learning about accounts, transactions, and the ledger structure.")}{' '}<br/><br/>
-                <a href="/docs/concepts/">{translate("Read More")}</a>
+                <Link href="/docs/concepts/" intention="brand" variation="standalone">{translate("Read More")}</Link>
               </>
             ),
           },
@@ -87,7 +88,7 @@ export default function Docs() {
             description: (
               <>
                 {translate("Implement real-world solutions by combining XRPL primitives for lending, token issuance, DEX trading, and more.")}{' '}<br/><br/>
-                <a href="/docs/use-cases/">{translate("Read More")}</a>
+                <Link href="/docs/use-cases/" intention="brand" variation="standalone">{translate("Read More")}</Link>
               </>
             ),
           },
@@ -363,7 +364,7 @@ export default function Docs() {
                 {translate("Take ownership of your connection to the blockchain with a core server that can submit transactions, read balances, and store a complete copy of the ledger data.")}
                 <br />
                 <br />
-                <a href="/docs/infrastructure/installation">{translate("Learn More")}</a>
+                <Link href="/docs/infrastructure/installation" intention="brand" variation="standalone">{translate("Learn More")}</Link>
               </>
             ),
           },
@@ -376,7 +377,7 @@ export default function Docs() {
                 {translate("Customize your server configuration for your use case, including data retention, network connectivity, and performance tuning.")}
                 <br />
                 <br />
-                <a href="/docs/infrastructure/configuration">{translate("Learn More")}</a>
+                <Link href="/docs/infrastructure/configuration" intention="brand" variation="standalone">{translate("Learn More")}</Link>
               </>
             ),
           },
@@ -389,7 +390,7 @@ export default function Docs() {
                 {translate("Diagnose and solve problems with your server to maximize uptime and reliability.")}
                 <br />
                 <br />
-                <a href="/docs/infrastructure/troubleshooting">{translate("Learn More")}</a>
+                <Link href="/docs/infrastructure/troubleshooting" intention="brand" variation="standalone">{translate("Learn More")}</Link>
               </>
             ),
           },
@@ -422,9 +423,9 @@ export default function Docs() {
             children: (
               <>
                 {translate("Contribute to")}{' '}
-                <a href="https://xrpl.org/" target="_blank" rel="noreferrer">
+                <Link href="https://xrpl.org/" intention="neutral" target="_blank" rel="noreferrer">
                   {translate("XRPL.org")}
-                </a>
+                </Link>
                 {translate(", the go-to resource for all things XRP Ledger.")}
               </>
             ),

@@ -121,18 +121,20 @@
 // anchor resolves to black, which reads but is indistinguishable from the
 // surrounding copy.
 //
-// Fix: pin description links to the card's own text color in both themes and
-// let the underline — not the color — mark them as links, so the :visited state
-// stays legible on every variant. Hover/focus uses lilac-500, which is the
-// global light-theme link hover color and clears 4.5:1 on all four card
-// backgrounds (5.6:1 against $green-300, the darkest of them).
+// Fix: pin description links to the card's own text color in every state and
+// every theme -- i.e. the "neutral" treatment, same as navigation.link's own
+// neutral group (no distinct hover/pressed color; per WCAG 1.4.11 nothing
+// requires one). Only the underline marks them as links. This also removes
+// the lilac-500 hover color a previous pass used, which read as an
+// off-brand purple and wasn't reachable via any Link `intention` prop -- see
+// StandardCard's use of Link, which renders `intention="brand"` by default;
+// this override replaces that entirely rather than relying on the prop.
 //
 // Specificity: this has to beat `html.dark a.bds-link:visited:not(...)` (0,4,2)
 // and the theme's `a:not([role="button"]):visited` (0,3,1). Repeating the block
 // parent plus the :not() chain lands at (0,6,2)+, winning without !important.
 
 $bds-standard-card-link-color: $bds-btn-neutral-black;
-$bds-standard-card-link-hover-color: $lilac-500; // == $light-link-hover-color
 
 html.light .bds-standard-card .bds-standard-card__description,
 html.dark .bds-standard-card .bds-standard-card__description {
@@ -142,18 +144,14 @@ html.dark .bds-standard-card .bds-standard-card__description {
 
     // The state this exists for: without it, visited links inherit black
     // (light) / white (dark) from --link-color-visited.
-    &:visited {
-      color: $bds-standard-card-link-color;
-      text-decoration: underline;
-    }
-
+    &:visited,
     &:hover,
     &:focus,
     &:active,
     &:visited:hover,
     &:visited:focus,
     &:visited:active {
-      color: $bds-standard-card-link-hover-color;
+      color: $bds-standard-card-link-color;
       text-decoration: underline;
     }
 
