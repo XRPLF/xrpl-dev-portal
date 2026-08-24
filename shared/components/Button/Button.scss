@@ -349,8 +349,7 @@ $bds-btn-ring: (
 // Everything above is data; everything below is one loop over it. Adding a
 // group or an emphasis means adding a map entry — no new rules to write.
 //
-// The dark selector is `:where(html.dark)`, and that is load-bearing rather
-// than stylistic. A bare `html.dark .bds-btn--brand.bds-btn--strong` scores
+// The dark selector is `:where(html.dark)`. A bare `html.dark .bds-btn--brand.bds-btn--strong` scores
 // (0,3,1), which outranks the disabled swap in §5 at (0,2,0) — so a disabled
 // button kept its resting fill in dark mode ONLY, because in light mode the
 // same rule scores (0,2,0) and loses to source order. `:where()` contributes
@@ -421,11 +420,13 @@ $bds-btn-ring: (
 // =============================================================================
 // 4. Structure
 // =============================================================================
-// Layout, state swaps and motion. Nothing below names a colour.
+// Layout, state swaps and motion.
 
-.bds-btn {
-  // inline-flex is load-bearing, not cosmetic: the two 40px minimums and the
-  // gap are all inert on a non-replaced inline box.
+// The body of the component as a mixin rather than a rule, so that markup
+// which cannot use the React component can still BE the component rather than
+// imitate it. `.bds-btn` includes it immediately below and is the only consumer
+// on the site; `bds-button()` at the end of this file is the other entry point.
+@mixin bds-btn-structure {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -528,6 +529,10 @@ $bds-btn-ring: (
   }
 }
 
+.bds-btn {
+  @include bds-btn-structure;
+}
+
 // Subtle is the only emphasis with its own type treatment: heavier, tracked out
 // and underlined. Note this makes it identical to a resting brand Link — if the
 // two ever appear in the same block of content, that is a design question.
@@ -572,8 +577,8 @@ $bds-btn-ring: (
 // as a defect. The loader's own keyframes are guarded where they live, in
 // shared/components/Icons/LoaderIcon.scss — this file does not animate it.
 
-@media (prefers-reduced-motion: no-preference) {
-  .bds-btn {
+@mixin bds-btn-motion {
+  @media (prefers-reduced-motion: no-preference) {
     transition:
       color $bds-btn-duration $bds-btn-easing,
       border-color $bds-btn-duration $bds-btn-easing;
@@ -582,6 +587,10 @@ $bds-btn-ring: (
       transition: transform $bds-btn-duration $bds-btn-easing;
     }
   }
+}
+
+.bds-btn {
+  @include bds-btn-motion;
 }
 
 // =============================================================================
@@ -624,4 +633,85 @@ a.bds-btn--subtle.bds-btn--subtle:hover,
 a.bds-btn--subtle.bds-btn--subtle:focus,
 a.bds-btn--subtle.bds-btn--subtle:active {
   text-decoration: underline;
+}
+
+// =============================================================================
+// 6. bds-button() — the component, for markup that cannot use the component
+// =============================================================================
+// For `<button>` elements the site does not author in React: the interactive
+// tutorial controls in docs/ are raw HTML inside Markdown, wired to jQuery by
+// `id` and by classes like `previous-steps-required`, so they cannot become
+// `<Button>` without rewriting the tutorial engine.
+//
+// The alternative was hand-writing `class="bds-btn bds-btn--neutral …"` into
+// Markdown. That copies this file's class contract into content, where it
+// cannot be type-checked and will drift the first time a class is renamed —
+// and the audit would not catch the drift, because it also matches on classes.
+//
+// This mixin selects a variant; it never restates a value. Everything it emits
+// comes from §2's maps and §4's structure, so those controls track the
+// component the same way `.bds-btn` does.
+//
+// SCOPE: the `<button>` path only. §5's doubled-class anchor armour is not
+// included, because it exists to beat Bootstrap's `a { color }` and every
+// caller here is a real <button>. Applying this to an anchor would paint
+// correctly at rest and lose the label colour on hover — use the React
+// component for links.
+//
+//   .interactive-block .btn.btn-primary { @include bds-button(neutral, strong); }
+//
+@mixin bds-button($group: brand, $emphasis: strong, $context: on-theme) {
+  $emphases: map-get($bds-btn-palette, $group);
+  @if not $emphases {
+    @error "bds-button(): unknown group '#{$group}'. One of: #{map-keys($bds-btn-palette)}.";
+  }
+  $states: map-get($emphases, $emphasis);
+  @if not $states {
+    @error "bds-button(): unknown emphasis '#{$emphasis}'. One of: #{map-keys($emphases)}.";
+  }
+  $disabled: map-get($bds-btn-disabled, $context);
+  @if not $disabled {
+    @error "bds-button(): unknown context '#{$context}'. One of: #{map-keys($bds-btn-disabled)}.";
+  }
+
+  // The variant, both modes — the work §3's loop does for the class form.
+  @include rb-group-vars($states, 1);
+  @include rb-triplet('disabled-', $disabled, 1);
+  --bds-btn-ring: #{nth(map-get($bds-btn-ring, $context), 1)};
+
+  :where(html.dark) & {
+    @include rb-group-vars($states, 2);
+    @include rb-triplet('disabled-', $disabled, 2);
+    --bds-btn-ring: #{nth(map-get($bds-btn-ring, $context), 2)};
+  }
+
+  // Which of disabled's colours get painted, per emphasis. Mirrors §3.
+  @if $emphasis == 'standard' or $emphasis == 'subtle' {
+    --bds-btn-disabled-bg: transparent;
+  }
+  @if $emphasis == 'subtle' {
+    --bds-btn-disabled-bd: transparent;
+  }
+  @if $emphasis == 'strong' and map-has-key($disabled, strong-bd) {
+    --bds-btn-disabled-bd: #{nth(map-get($disabled, strong-bd), 1)};
+
+    :where(html.dark) & {
+      --bds-btn-disabled-bd: #{nth(map-get($disabled, strong-bd), 2)};
+    }
+  }
+
+  @include bds-btn-structure;
+  @include bds-btn-motion;
+
+  // Subtle's type treatment, which is a separate class in the component form.
+  @if $emphasis == 'subtle' {
+    font-weight: 500;
+    letter-spacing: 0.025em;
+    text-decoration: underline;
+  }
+
+  // §5's paint, without the anchor pseudo-classes. See SCOPE above.
+  color: var(--bds-btn-fg);
+  background-color: var(--bds-btn-bg);
+  border-color: var(--bds-btn-bd);
 }

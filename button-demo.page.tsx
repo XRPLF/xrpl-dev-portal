@@ -303,6 +303,16 @@ export default function ButtonDemo() {
         <strong>not</strong> scale with font size — text scales, targets do not.
         The single-character button above is the one to measure.
       </p>
+
+      {/* --------------------------------------------------------------- */}
+      <h2>Via SCSS mixins</h2>
+      <p>You can also use the SCSS mixins to apply button styles. This is how we apply it across existing interactive blocks in markdown without risking breaking changes. This implementation does not support icons, but these call sites are not specced to use icons.</p>
+      <p>
+        <code>.interactive-block .btn.btn-primary {`{ @include bds-button(neutral, strong, on-theme); }`}</code>
+      </p>
+      <p className="btn-panel interactive-block">
+        <button className="btn btn-primary">Confirm Balances</button>
+      </p>
     </div>
   );
 }

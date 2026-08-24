@@ -107,6 +107,10 @@ Button spec audit for the XRPL dev portal.
                       a width are reported as skipped, never as passing.
   --no-synthetic      Skip the disabled and inactive states
   --selector <css>    What counts as a button (default .bds-btn)
+  --assume <g/e/c>    Axes for buttons with no bds-btn--* classes, e.g.
+                      neutral/strong/on-theme. Needed for markup styled by the
+                      bds-button() Sass mixin, which has no variant classes to
+                      read. Classes still win where present.
   --verbose           Print every measurement, not only the failures
   --json              Emit findings as JSON instead of a report
   --inject <css>      Add this CSS after load. Use it to prove the audit can
@@ -128,6 +132,25 @@ const VERBOSE = has('--verbose');
 const AS_JSON = has('--json');
 const SYNTHETIC = !has('--no-synthetic');
 const INJECT = val('--inject', null);
+
+/**
+ * Fallback axes for buttons carrying no `bds-btn--*` classes.
+ *
+ * The Sass mixin form of the component sets the same custom properties as the
+ * class form but leaves no classes behind to read them back from, so the axes
+ * have to be supplied. Deliberately explicit rather than guessed: assuming a
+ * default would silently check a `standard` button against `strong`'s palette
+ * and report a wall of colour mismatches that describe the wrong expectation.
+ */
+const ASSUME = (() => {
+  const v = val('--assume', null);
+  if (!v) return null;
+  const [group, emphasis, context] = v.split('/').map(s => s && s.trim());
+  if (!group || !emphasis || !context) {
+    fail(`--assume needs group/emphasis/context, e.g. neutral/strong/on-theme (got "${v}")`);
+  }
+  return { group, emphasis, context };
+})();
 const THEMES = val('--themes', 'light,dark').split(',').map(s => s.trim()).filter(Boolean);
 
 let urls = [];
@@ -210,6 +233,14 @@ const SPEC = loadSpec();
 const GROUPS = Object.keys(SPEC.palette);
 const EMPHASES = ['strong', 'standard', 'subtle'];
 const CONTEXTS = Object.keys(SPEC.disabled);
+
+// Validate --assume against the spec now rather than letting an unknown axis
+// surface later as a null expectation and a crash mid-run.
+if (ASSUME) {
+  if (!GROUPS.includes(ASSUME.group)) fail(`--assume group "${ASSUME.group}" is not one of: ${GROUPS.join(', ')}`);
+  if (!EMPHASES.includes(ASSUME.emphasis)) fail(`--assume emphasis "${ASSUME.emphasis}" is not one of: ${EMPHASES.join(', ')}`);
+  if (!CONTEXTS.includes(ASSUME.context)) fail(`--assume context "${ASSUME.context}" is not one of: ${CONTEXTS.join(', ')}`);
+}
 
 // -------------------------------------------------------------- freshness
 
@@ -484,9 +515,28 @@ async function auditPage(browser, url) {
     await cdp.send('CSS.enable');
 
     let nodeIds = [];
+    const resolveNodes = async () => {
+      const { root } = await cdp.send('DOM.getDocument', { depth: -1 });
+      ({ nodeIds } = await cdp.send('DOM.querySelectorAll', { nodeId: root.nodeId, selector: SELECTOR }));
+    };
+
+    /**
+     * Node ids go stale when the page re-renders under us -- a late hydration
+     * pass, or a websocket-driven tutorial widget replacing its own DOM. CDP
+     * then answers "Could not find node with given id" and, before this retry,
+     * that killed the whole page's audit. Re-resolve once and try again;
+     * failing twice is a real problem worth surfacing.
+     */
     const force = async (i, classes) => {
       if (!nodeIds[i]) return;
-      await cdp.send('CSS.forcePseudoState', { nodeId: nodeIds[i], forcedPseudoClasses: classes });
+      try {
+        await cdp.send('CSS.forcePseudoState', { nodeId: nodeIds[i], forcedPseudoClasses: classes });
+      } catch (e) {
+        if (!/Could not find node/.test(e.message)) throw e;
+        await resolveNodes();
+        if (!nodeIds[i]) return;
+        await cdp.send('CSS.forcePseudoState', { nodeId: nodeIds[i], forcedPseudoClasses: classes });
+      }
     };
 
     for (const vp of VIEWPORT_NAMES) {
@@ -495,8 +545,7 @@ async function auditPage(browser, url) {
 
       // Re-resolve after the resize. Node ids survive a viewport change today,
       // but re-querying costs one round trip and removes the assumption.
-      const { root } = await cdp.send('DOM.getDocument', { depth: -1 });
-      ({ nodeIds } = await cdp.send('DOM.querySelectorAll', { nodeId: root.nodeId, selector: SELECTOR }));
+      await resolveNodes();
 
     for (const theme of THEMES) {
       const mode = theme;
@@ -524,13 +573,21 @@ async function auditPage(browser, url) {
             classes: [...el.classList],
             tag: el.tagName.toLowerCase(),
             href: el.getAttribute('href'),
-            alreadyDisabled: el.hasAttribute('disabled') || el.classList.contains('bds-btn--disabled'),
+            // The PROPERTY, not the attribute. Markup may ship
+            // `disabled="disabled"`, but the tutorial engine sets it with
+            // jQuery's .prop("disabled", true), which never writes an
+            // attribute -- so hasAttribute() misses every JS-gated control.
+            alreadyDisabled: el.disabled === true || el.classList.contains('bds-btn--disabled'),
             alreadyInactive: el.getAttribute('aria-disabled') === 'true',
           };
         }, { s: SELECTOR, i });
 
+        // Classes win where present; --assume fills in only what is missing, so
+        // a run can mix component-rendered and mixin-styled buttons.
         const mod = n => info.classes.filter(x => x.startsWith('bds-btn--')).map(x => x.slice(9)).find(x => n.includes(x));
-        const group = mod(GROUPS), emphasis = mod(EMPHASES), context = mod(CONTEXTS);
+        const group = mod(GROUPS) || ASSUME?.group;
+        const emphasis = mod(EMPHASES) || ASSUME?.emphasis;
+        const context = mod(CONTEXTS) || ASSUME?.context;
         const id = { url, theme, vp, index: i, label: info.label, tag: info.tag, group, emphasis, context };
 
         // Not rendered here -- an ancestor is hidden at this width. Measuring it
@@ -545,7 +602,8 @@ async function auditPage(browser, url) {
         if (!group || !emphasis || !context) {
           findings.push({
             ...id, kind: 'unclassified',
-            reason: `cannot resolve axes from classes: ${info.classes.join(' ')}`,
+            reason: `cannot resolve axes from classes: ${info.classes.join(' ')}`
+              + (ASSUME ? '' : ' — pass --assume group/emphasis/context if this is mixin-styled'),
           });
           continue;
         }
@@ -560,12 +618,22 @@ async function auditPage(browser, url) {
         wanted.add(SPEC.ring[context][mode]);
         const norm = await page.evaluate(NORMALISE, [...wanted]);
 
-        const states = [...STATES, ...(SYNTHETIC ? SYNTHETIC_STATES : [])];
+        /**
+         * A button that is ALREADY disabled has exactly one reachable state.
+         *
+         * §4 excludes disabled from the engaged swap
+         * (`&:hover:not(:disabled)`), and a disabled control is out of the tab
+         * order, so hover, active and focus-visible cannot occur. Measuring
+         * them anyway compares the disabled palette against rest's and reports
+         * a wall of mismatches that say nothing -- which is exactly what the
+         * first genuinely-disabled button on the site produced.
+         */
+        const states = info.alreadyDisabled
+          ? ['disabled']
+          : [...STATES, ...(SYNTHETIC ? SYNTHETIC_STATES : [])];
         const geometries = {};
 
         for (const state of states) {
-          if (state === 'disabled' && info.alreadyDisabled) { /* real, not synthetic */ }
-          if (state === 'inactive' && info.alreadyInactive) { /* real, not synthetic */ }
 
           // --- put the button in the state -----------------------------------
           let cleanup = null;
@@ -576,7 +644,7 @@ async function auditPage(browser, url) {
             // programmatic and :focus-visible never matches.
             await page.keyboard.press('Tab');
             await page.evaluate(({ s, i }) => document.querySelectorAll(s)[i].focus(), { s: SELECTOR, i });
-          } else if (state === 'disabled') {
+          } else if (state === 'disabled' && !info.alreadyDisabled) {
             await page.evaluate(({ s, i }) => document.querySelectorAll(s)[i].classList.add('bds-btn--disabled'), { s: SELECTOR, i });
             cleanup = () => page.evaluate(({ s, i }) => document.querySelectorAll(s)[i].classList.remove('bds-btn--disabled'), { s: SELECTOR, i });
           } else if (state === 'inactive') {
@@ -653,7 +721,13 @@ async function auditPage(browser, url) {
         // are identical on every combination and every state." Checked against
         // the spec once, then for invariance across the rest -- a hover rule
         // that changes padding is a different defect from a wrong constant.
-        const rest = geometries.rest;
+        // Normally `rest` is the baseline. An already-disabled button never has
+        // one -- disabled is its only reachable state -- so fall back to
+        // whichever single state was measured. Geometry is invariant across
+        // states by spec, so any of them is a valid baseline.
+        const baseline = geometries.rest ? 'rest' : Object.keys(geometries)[0];
+        const rest = geometries[baseline];
+        if (!rest) continue;
         const px = v => (v.endsWith('rem') ? `${parseFloat(v) * 16}px` : v);
         const labelPx = parseFloat(px(SPEC.geometry['label-size']));
         const geoWant = {
@@ -672,7 +746,7 @@ async function auditPage(browser, url) {
         };
         for (const [k, v] of Object.entries(geoWant)) {
           if (rest.geometry[k] !== v) {
-            findings.push({ ...id, kind: 'mismatch', state: 'rest', what: `geometry: ${k}`, expected: v, actual: rest.geometry[k] });
+            findings.push({ ...id, kind: 'mismatch', state: baseline, what: `geometry: ${k}`, expected: v, actual: rest.geometry[k] });
           }
         }
         // The border is on every variant, including the ones whose stroke
@@ -687,7 +761,7 @@ async function auditPage(browser, url) {
           }
         });
         for (const [state, other] of Object.entries(geometries)) {
-          if (state === 'rest') continue;
+          if (state === baseline) continue;
           for (const k of Object.keys(rest.geometry)) {
             if (other.geometry[k] !== rest.geometry[k]) {
               findings.push({
