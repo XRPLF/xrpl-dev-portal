@@ -597,41 +597,44 @@ $bds-btn-ring: (
 // 5. Paint
 // =============================================================================
 // One block, because every value is a custom property — light and dark need no
-// separate pass. The doubled class and the anchor pseudo-classes exist to beat
-// Bootstrap's and Redocly's `a { color }` rules, and container rules that style
-// their own anchors — `.bds-link-text-card__content a` is (0,1,1) and would
-// otherwise repaint an href button. That is the only reason specificity is
-// raised at all.
+// separate pass. Specificity is raised only to survive rules that repaint
+// content anchors:
 //
-// The pseudo-classes are written out rather than collapsed into `:is()`.
-// PurgeCSS drops any rule whose selector contains `:is()` or `:where()`, so the
-// collapsed form compiles, ships in the dev build, and silently vanishes from
-// the production bundle — leaving every anchor button unpainted.
+//   Bootstrap        `a` and `a:hover`
+//   Redocly theme    a styled-components rule at (0,3,1), injected at runtime
+//                    so it also wins ties on source order
+//   container rules  e.g. `.bds-link-text-card__content a`
+//   Markdown content see `:not(.bds-btn)` in styles/_content.scss
+//
+// The class is repeated three times — (0,4,1) — to beat all of them outright.
+//
+// Do not collapse the pseudo-classes into `:is()`: PurgeCSS drops such rules,
+// so the tidy form works in dev and vanishes from the production bundle.
 
 .bds-btn,
-a.bds-btn.bds-btn:link,
-a.bds-btn.bds-btn:visited,
-a.bds-btn.bds-btn:hover,
-a.bds-btn.bds-btn:focus,
-a.bds-btn.bds-btn:active {
+a.bds-btn.bds-btn.bds-btn:link,
+a.bds-btn.bds-btn.bds-btn:visited,
+a.bds-btn.bds-btn.bds-btn:hover,
+a.bds-btn.bds-btn.bds-btn:focus,
+a.bds-btn.bds-btn.bds-btn:active {
   color: var(--bds-btn-fg);
   background-color: var(--bds-btn-bg);
   border-color: var(--bds-btn-bd);
 }
 
-a.bds-btn.bds-btn:link,
-a.bds-btn.bds-btn:visited,
-a.bds-btn.bds-btn:hover,
-a.bds-btn.bds-btn:focus,
-a.bds-btn.bds-btn:active {
+a.bds-btn.bds-btn.bds-btn:link,
+a.bds-btn.bds-btn.bds-btn:visited,
+a.bds-btn.bds-btn.bds-btn:hover,
+a.bds-btn.bds-btn.bds-btn:focus,
+a.bds-btn.bds-btn.bds-btn:active {
   text-decoration: none;
 }
 
-a.bds-btn--subtle.bds-btn--subtle:link,
-a.bds-btn--subtle.bds-btn--subtle:visited,
-a.bds-btn--subtle.bds-btn--subtle:hover,
-a.bds-btn--subtle.bds-btn--subtle:focus,
-a.bds-btn--subtle.bds-btn--subtle:active {
+a.bds-btn--subtle.bds-btn--subtle.bds-btn--subtle:link,
+a.bds-btn--subtle.bds-btn--subtle.bds-btn--subtle:visited,
+a.bds-btn--subtle.bds-btn--subtle.bds-btn--subtle:hover,
+a.bds-btn--subtle.bds-btn--subtle.bds-btn--subtle:focus,
+a.bds-btn--subtle.bds-btn--subtle.bds-btn--subtle:active {
   text-decoration: underline;
 }
 
