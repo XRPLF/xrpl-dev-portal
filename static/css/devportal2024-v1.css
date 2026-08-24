@@ -18335,6 +18335,9 @@ html.dark [data-component-name="Markdown/Markdown"] article a:not(.xrpl-link):no
   outline: 2px solid #FFFFFF;
   outline-offset: 2px;
 }
+[data-component-name="Markdown/Markdown"] article a:not(.xrpl-link):not(.btn) {
+  border-radius: 2px;
+}
 [data-component-name="Markdown/Markdown"] article h1, [data-component-name="Markdown/Markdown"] article .h1 {
   font-size: 3rem;
   margin-top: 32px;

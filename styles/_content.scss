@@ -18,6 +18,7 @@
     @include xrpl-link-colors(neutral);
     @include xrpl-link-underline;
     @include xrpl-link-focus(on-theme);
+    border-radius: 2px; // matches .xrpl-link's own geometry, so the focus outline's corners aren't square here while rounded everywhere else
   }
 
   h1 {
