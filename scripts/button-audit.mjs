@@ -343,6 +343,19 @@ async function launchBrowser() {
  * fill is delivered by the ::before rise, not by the element's own background.
  * Asserting the element turns green on hover would be wrong, and would hide the
  * real failure mode -- a ::before that never scales.
+ *
+ * `on-saturated` + `strong` is the exception, and inverts all three of those.
+ * Its engaged fill is `rgba(0, 0, 0, 0.6)`, which button.md reads as "black at
+ * 60% over green" and measures at 7.0517 -- a figure only reachable if the soft
+ * fill composites against the block BEHIND the button. Painted over the resting
+ * #141414 the way the rise paints everything else, it resolves to #080808 and
+ * measures 17.18, so the two layers swap for that combination: the element
+ * carries the soft fill and the rise carries the solid one, collapsing upward
+ * to uncover it. See §4 of Button.scss.
+ *
+ * The stroke swaps with them. It is `transparent` in both states, so it shows
+ * whatever the element paints -- now the soft fill -- and is pinned to the
+ * resting fill to close the 1px ring that would otherwise sit around the pill.
  */
 function expectedFor({ group, emphasis, context, mode }, state) {
   const P = SPEC.palette[group]?.[emphasis];
@@ -363,12 +376,18 @@ function expectedFor({ group, emphasis, context, mode }, state) {
   }
 
   const engagedState = state === 'hover' || state === 'active' || state === 'focus-visible';
+  const inverted = context === 'on-saturated' && emphasis === 'strong';
+
   return {
     color: engagedState ? engaged.fg[mode] : rest.fg[mode],
-    background: rest.bg[mode],
-    border: engagedState ? engaged.bd[mode] : rest.bd[mode],
-    beforeBg: engagedBg,
-    rise: engagedState ? 'up' : 'down',
+    background: inverted ? engagedBg : rest.bg[mode],
+    border: inverted && !engagedState
+      ? rest.bg[mode]
+      : engagedState ? engaged.bd[mode] : rest.bd[mode],
+    beforeBg: inverted ? rest.bg[mode] : engagedBg,
+    // The rise still means "the engaged fill is showing"; inverted, that is the
+    // rise being DOWN, because the solid fill it carries has collapsed away.
+    rise: engagedState === !inverted ? 'up' : 'down',
   };
 }
 

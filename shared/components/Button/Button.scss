@@ -427,6 +427,10 @@ $bds-btn-ring: (
 // imitate it. `.bds-btn` includes it immediately below and is the only consumer
 // on the site; `bds-button()` at the end of this file is the other entry point.
 @mixin bds-btn-structure {
+  // Which fill each paint layer reads. on-saturated + strong swaps them.
+  --bds-btn-base-fill: var(--bds-btn-bg);
+  --bds-btn-rise-fill: var(--bds-btn-engaged-bg);
+
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -468,7 +472,7 @@ $bds-btn-ring: (
     position: absolute;
     inset: 0;
     z-index: -1;
-    background-color: var(--bds-btn-engaged-bg);
+    background-color: var(--bds-btn-rise-fill);
     transform: scaleY(0);
     transform-origin: bottom center;
   }
@@ -531,6 +535,42 @@ $bds-btn-ring: (
 
 .bds-btn {
   @include bds-btn-structure;
+}
+
+// --- on-saturated + strong: the rise reveals rather than overlays ------------
+// This engaged fill is `rgba(0, 0, 0, 0.6)`, which button.md measures at 7.0517
+// as "black at 60% over green" — i.e. composited against the block, not over the
+// resting fill. Overlaid the usual way it lands on #141414 instead, giving
+// #080808: a 12/255 shift, so the button appears to have no hover state.
+//
+// So the layers swap here: the element carries the soft fill and the rise
+// carries the solid one, collapsing upward to uncover it (the same motion on
+// screen). `--bds-btn-bd` pins the otherwise-transparent stroke to the resting
+// fill, closing the 1px soft-fill ring that would show around the pill; §4's
+// engaged block returns it to transparent. Disabled is excluded rather than
+// overridden, since its own block would lose to this one on source order.
+//
+// Does not generalise: `standard`/`subtle` have a `transparent` resting fill,
+// which cannot mask the soft fill underneath.
+.bds-btn--on-saturated.bds-btn--strong:not(:disabled):not(.bds-btn--disabled) {
+  --bds-btn-base-fill: var(--bds-btn-engaged-bg);
+  --bds-btn-rise-fill: var(--bds-btn-bg);
+  --bds-btn-bd: var(--bds-btn-bg);
+
+  &::before {
+    transform: scaleY(1);
+    transform-origin: top center;
+  }
+
+  // Mirrors §4's engaged selector list.
+  &:hover:not(:disabled):not([aria-disabled='true']),
+  &:active:not(:disabled):not([aria-disabled='true']),
+  &:focus-visible:not(:disabled):not([aria-disabled='true']),
+  &.bds-btn--loading {
+    &::before {
+      transform: scaleY(0);
+    }
+  }
 }
 
 // Subtle is the only emphasis with its own type treatment: heavier, tracked out
@@ -618,7 +658,7 @@ a.bds-btn.bds-btn.bds-btn:hover,
 a.bds-btn.bds-btn.bds-btn:focus,
 a.bds-btn.bds-btn.bds-btn:active {
   color: var(--bds-btn-fg);
-  background-color: var(--bds-btn-bg);
+  background-color: var(--bds-btn-base-fill);
   border-color: var(--bds-btn-bd);
 }
 
@@ -715,6 +755,6 @@ a.bds-btn--subtle.bds-btn--subtle.bds-btn--subtle:active {
 
   // §5's paint, without the anchor pseudo-classes. See SCOPE above.
   color: var(--bds-btn-fg);
-  background-color: var(--bds-btn-bg);
+  background-color: var(--bds-btn-base-fill);
   border-color: var(--bds-btn-bd);
 }
