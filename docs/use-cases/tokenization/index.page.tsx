@@ -118,10 +118,10 @@ export default function Tokenization() {
       {/* 5. Token Utility and Market Integration — Carousel Featured (4 slides from Assets frame) */}
       <PanelStack
         background="neutral"
+        heading={translate('Token Utility and Market Integration')}
         slides={[
           {
             id: 'token-utility-trading',
-            heading: translate('Token Utility and Market Integration'),
             features: [
               {
                 title: translate('Trading'),
@@ -141,7 +141,6 @@ export default function Tokenization() {
           },
           {
             id: 'token-utility-collateral',
-            heading: translate('Token Utility and Market Integration'),
             features: [
               {
                 title: translate('Collateral Mobility'),
@@ -161,7 +160,6 @@ export default function Tokenization() {
           },
           {
             id: 'token-utility-delegated',
-            heading: translate('Token Utility and Market Integration'),
             features: [
               {
                 title: translate('Delegated Distribution'),
@@ -181,7 +179,6 @@ export default function Tokenization() {
           },
           {
             id: 'token-utility-crosschain',
-            heading: translate('Token Utility and Market Integration'),
             features: [
               {
                 title: translate('Cross-Chain Markets'),
