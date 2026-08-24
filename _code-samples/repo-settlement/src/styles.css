@@ -1,0 +1,430 @@
+:root {
+  --line: var(--mantine-color-gray-3);
+  --accent: var(--mantine-color-teal-8);
+  --accent-soft: var(--mantine-color-teal-0);
+}
+
+body {
+  background: var(--mantine-color-gray-0);
+}
+
+/* ------------------------------------------------------------------- layout */
+
+/* The app is exactly the viewport, and nothing outside the two cards scrolls:
+   the reader's scroll always lands in the step or the ledger, never on the
+   page. dvh, not vh, so mobile browser chrome doesn't push the cards under it. */
+html,
+body,
+#root {
+  height: 100dvh;
+  overflow: hidden;
+}
+
+/* A flex chain from the viewport to the cards. Each link passes its height
+   down, so the chrome above takes what it needs and the panels take the rest
+   without anything measuring anything: the browser does the arithmetic. */
+/* The gutter grows with the window rather than stepping at a breakpoint: 4vw
+   is a hairline on a phone and a comfortable margin on a wide display, and the
+   clamp keeps both ends sane. This overrides Container's fixed md padding. */
+.app-shell {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding-inline: clamp(12px, 4vw, 56px);
+}
+
+.chrome {
+  flex: none;
+}
+
+/* Grid nests an inner wrapper inside its root, so the height has to pass
+   through both. The root is a plain block, so it's made a flex column too:
+   otherwise the inner has no flex parent, sizes to its content, and the cards
+   grow past the viewport instead of scrolling. */
+.panel-row {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* The row fills the height the chrome leaves, so both cards are one fixed
+   height for the whole run: the balances panel no longer grows and shrinks as
+   the step beside it changes length, which moved a party's row under the
+   reader's eye between steps. Overflow goes to each card's own scroll region,
+   so the page stays pinned. The cap stops a tall display from stretching the
+   pair into two mostly-empty columns. */
+.panel-row-inner {
+  flex: 1;
+  min-height: 0;
+  max-height: 760px;
+}
+
+/* Both columns are the full row height, so the two cards are always level and
+   neither can be grown by its own content: content overflows into the card's
+   own scroll region instead of resizing the card or the page. */
+.panel-col {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.panel-col > .step-card,
+.panel-col > .ledger-card {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Only the body scrolls: each card's heading stays put as its own anchor. */
+.panel-scroll {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  /* Room for a scrollbar without the text reflowing when one appears. */
+  scrollbar-gutter: stable;
+}
+
+/* The extra width on a wide display goes to the JSON and the ledger, not to the
+   prose: a description spanning the whole card is hard to track back to the
+   start of the next line. The timeline is outside this, so transactions still
+   get every pixel. */
+.step-narrative {
+  max-width: 78ch;
+}
+
+/* The ledger's five parties must fit without scrolling, so they are separated
+   by whitespace alone: a rule between each pair cost more height than the gap
+   it drew, and the party's own tinted badge already marks where a row starts.
+   The scroll region stays as a safety valve for very short windows. */
+.ledger-card .party-row + .party-row {
+  margin-top: 10px;
+}
+
+/* Stacked below the md breakpoint, where a split screen would leave each panel
+   too short to read: the container scrolls instead, one panel after the other.
+   The page is still pinned, so the scroll stays inside the app. */
+@media (max-width: 62em) {
+  .app-shell {
+    overflow-y: auto;
+  }
+
+  .panel-row {
+    flex: none;
+    display: block;
+  }
+
+  .panel-row-inner {
+    flex: none;
+  }
+
+  .panel-col {
+    height: auto;
+  }
+
+  .panel-scroll {
+    overflow-y: visible;
+  }
+}
+
+/* The phase names are the coarse progress bar, so they stay on one line and
+   shrink rather than wrap into a second row of chrome. */
+.phase-stepper .mantine-Stepper-steps {
+  flex-wrap: nowrap;
+}
+
+.phase-stepper .mantine-Stepper-stepLabel {
+  white-space: nowrap;
+}
+
+/* One dot per step under its phase name: the fine-grained half of the progress
+   bar. They sit in the step's description slot, so they add a single short row
+   to the chrome rather than a control of their own. */
+.phase-stepper .mantine-Stepper-stepDescription {
+  margin-top: 2px;
+  margin-bottom: 0;
+}
+
+.step-dots {
+  display: flex;
+  /* Negative, to cancel the transparent ring each dot reserves. */
+  gap: 1px;
+  align-items: center;
+  margin-inline-start: -2px;
+}
+
+/* The dots carry two independent facts, so each gets one channel and they
+   never stack into a blob: the fill is progress, the ring is which step is on
+   screen. Both stay inside the row's height, so the chrome doesn't grow. */
+.step-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--line);
+  cursor: pointer;
+  /* The ring is drawn in the border, transparent until it's the viewed step,
+     so gaining it doesn't move the dot or the ones beside it. */
+  border: 2px solid transparent;
+  background-clip: content-box;
+  box-sizing: content-box;
+  transition: border-color 120ms ease;
+}
+
+.step-dot[data-state='done'],
+.step-dot[data-state='live'] {
+  background-color: var(--accent);
+}
+
+/* Not reachable yet, so it reads as inert and doesn't invite the click. */
+.step-dot[data-state='locked'] {
+  cursor: default;
+}
+
+.step-dot[data-viewing] {
+  border-color: var(--accent);
+}
+
+.step-dot:not([data-state='locked']):not([data-viewing]):hover {
+  border-color: var(--line);
+}
+
+@keyframes pulse {
+  50% {
+    box-shadow: 0 0 0 5px rgba(12, 133, 100, 0.15);
+  }
+}
+
+/* ----------------------------------------------------------------- actions */
+
+/* The active action expands into a console themed in the acting party's
+   color: identity on the left, one button on the right. */
+.action-console {
+  padding: 14px 16px;
+  border: 2px solid var(--party-strong);
+  border-radius: var(--mantine-radius-md);
+  background: var(--party-soft);
+  box-shadow: var(--mantine-shadow-sm);
+  /* Room left above and below when the console scrolls itself into view, so it
+     never lands flush against an edge. */
+  scroll-margin: 16px 0;
+}
+
+.your-move {
+  color: var(--party-strong);
+}
+
+.pointer {
+  display: inline-block;
+  animation: nudge 1.1s ease-in-out infinite;
+}
+
+@keyframes nudge {
+  50% {
+    transform: translateX(4px);
+  }
+}
+
+/* ---------------------------------------------------------- action results */
+
+/* A finished action's results slide in, and its checkmark pops, so the
+   moment of success is visible without leaving the page. */
+.action-result {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 6px;
+  animation: result-in 0.35s ease-out;
+}
+
+.action-result .success-check {
+  display: inline-block;
+  animation: check-pop 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes result-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+}
+
+@keyframes check-pop {
+  0% {
+    transform: scale(0);
+  }
+  70% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* --------------------------------------------------------- action timeline */
+
+.action-timeline .t-bullet {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  font-size: 9px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.action-timeline .t-bullet.locked {
+  color: var(--mantine-color-gray-6);
+}
+
+/* The marker beside a panel heading that holds its explanation. Sized to the
+   heading's cap height so it reads as part of the title, not a control. */
+.panel-hint {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  font-size: 9px;
+  font-weight: 700;
+  color: var(--mantine-color-gray-6);
+  cursor: help;
+}
+
+.panel-hint:hover,
+.panel-hint:focus-visible {
+  border-color: var(--accent);
+  color: var(--accent);
+  outline: none;
+}
+
+/* -------------------------------------------------------------- ledger room */
+
+.party-row {
+  border-left: 3px solid transparent;
+  padding: 4px 0 5px 8px;
+  margin-left: -8px;
+  border-radius: var(--mantine-radius-sm);
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+/* Every row is a button: clicking a party makes it "you". */
+.party-row.clickable {
+  cursor: pointer;
+}
+
+.party-row.clickable:hover,
+.party-row.clickable:focus-visible {
+  background: var(--party-soft);
+  outline: none;
+}
+
+.party-row.is-you {
+  border-left-color: var(--mantine-color-dark-5);
+}
+
+.party-row.acting {
+  border-left-color: var(--party-strong);
+  background: var(--party-soft);
+}
+
+.acting-label {
+  color: var(--party-strong);
+  animation: pulse 1.4s ease-in-out infinite;
+}
+
+/* Pushes the address to the end of the party's line, so the addresses form a
+   right-hand column rather than sitting after roles of varying length. */
+.party-spacer {
+  flex: 1;
+  min-width: 4px;
+}
+
+/* Head and tail with the middle elided, which is how an r-address is
+   recognized. An address is read character by character to check it, so it gets
+   full contrast and letter-spacing, and the same gray pill as the endpoint in
+   the header: both are a fixed piece of network identity rather than a figure
+   that moves. */
+.party-address {
+  flex: none;
+  padding: 1px 6px;
+  border-radius: var(--mantine-radius-sm);
+  background: var(--mantine-color-gray-1);
+  font-size: 11px;
+  letter-spacing: 0.02em;
+  color: var(--mantine-color-gray-7);
+  user-select: all;
+}
+
+/* Label and figure on one line, in a bordered pill: the same information as the
+   old stacked block in half the height, which is what lets all five parties
+   share the panel without a scroll. */
+.bal-chip {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 5px;
+  flex: none;
+  padding: 1px 6px;
+  border: 1px solid var(--line);
+  border-radius: var(--mantine-radius-sm);
+  background: #fff;
+  white-space: nowrap;
+}
+
+.bal-chip-label {
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--mantine-color-gray-6);
+}
+
+.bal-chip-value {
+  font-size: 12px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.bal-chip-value.dim-value {
+  color: var(--mantine-color-gray-5);
+  font-weight: 400;
+}
+
+.bal-chip-value.locked-value {
+  color: var(--mantine-color-red-7);
+}
+
+/* A funded inbox pulses to draw the eye to the pending sweep. */
+.has-funds {
+  border-color: var(--mantine-color-orange-4);
+  background: var(--mantine-color-orange-0);
+  animation: pulse-orange 1.4s ease-in-out infinite;
+}
+
+.wallet-arrow {
+  color: var(--mantine-color-gray-4);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.wallet-arrow.active {
+  color: var(--mantine-color-orange-6);
+  animation: nudge 1.1s ease-in-out infinite;
+}
+
+@keyframes pulse-orange {
+  50% {
+    box-shadow: 0 0 0 4px rgba(232, 145, 45, 0.15);
+  }
+}
+
+/* Tinted by the enclosing .party-row's party variables. One line, like the
+   holder wallets above it, so gaining the lawful view doesn't resize the row. */
+.issuer-view {
+  padding: 2px 6px;
+  border-left: 2px solid var(--party-strong, var(--accent));
+  background: var(--mantine-color-gray-0);
+  border-radius: 0 var(--mantine-radius-sm) var(--mantine-radius-sm) 0;
+}
