@@ -1,0 +1,37 @@
+{
+  "name": "confidential-repo-settlement",
+  "version": "0.1.0",
+  "description": "Demo: an atomic, Repo trade settled on the XRP Ledger with Confidential MPTs, Batch, and Sponsored Fees.",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview",
+    "cy:open": "cypress open",
+    "test:e2e": "start-server-and-test dev http://localhost:5173 'cypress run --e2e'",
+    "test:e2e:devnet": "start-server-and-test dev http://localhost:5173 'cypress run --e2e --env devnet=1'"
+  },
+  "dependencies": {
+    "@mantine/core": "^9.5.1",
+    "@mantine/hooks": "^9.5.1",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "xrpl": "^5.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^26.2.0",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.4",
+    "@vitejs/plugin-react": "^4.3.4",
+    "cypress": "^15.21.1",
+    "start-server-and-test": "^3.0.12",
+    "tsx": "^4.19.2",
+    "typescript": "^5.6.3",
+    "vite": "^5.4.11"
+  },
+  "allowScripts": {
+    "esbuild@0.28.2": true,
+    "esbuild@0.21.5": true,
+    "cypress@15.21.1": true
+  }
+}
