@@ -1509,7 +1509,7 @@ html.light {
       .button-container {
         display: flex;
         flex-wrap: wrap;
-        gap: 16px;
+        gap: spacing('lg');
         justify-content: center;
         align-items: center;
 
