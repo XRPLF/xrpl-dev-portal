@@ -51,7 +51,8 @@ export type ButtonSurface =
  */
 type ButtonVariant = ButtonSurface & { emphasis?: ButtonEmphasis };
 
-export type ButtonProps = ButtonVariant & {
+/** The component's own props — the same whichever element ends up rendered. */
+type ButtonOwnProps = ButtonVariant & {
   /** Visible label. Always required. */
   children: React.ReactNode;
   /** Decorative, aria-hidden. Not used in current XRPL designs. */
@@ -64,22 +65,31 @@ export type ButtonProps = ButtonVariant & {
   inactive?: boolean;
   /** Native disabled. Leaves the tab order. */
   disabled?: boolean;
-  /** Renders an <a> instead of a <button>. */
-  href?: string;
-  target?: '_self' | '_blank';
-  /**
-   * Save the target rather than navigating to it. Forces a plain <a>: a file
-   * download is never a client-side route, and react-router's Link intercepts
-   * the click and cancels the download unless target="_blank" happens to make
-   * it bail out first. Depending on that coincidence is how this breaks later.
-   */
-  download?: boolean | string;
-  rel?: string;
   className?: string;
-} & Omit<
-    React.ButtonHTMLAttributes<HTMLButtonElement>,
-    'disabled' | 'children'
-  >;
+};
+
+/**
+ * Everything not declared above is forwarded to the rendered element, so which
+ * element that is decides which attributes are legal. `href` is the switch, and
+ * making it the discriminant lets the compiler carry that decision: the button
+ * member pins `href` to `never`, so a `formAction` and an `href` on the same
+ * call cannot type-check, and the pass-through narrows to one attribute set on
+ * an `href` check with nothing filtered at runtime.
+ */
+type ButtonAsButton = ButtonOwnProps &
+  Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, keyof ButtonOwnProps> & {
+    href?: never;
+    download?: never;
+  };
+
+type ButtonAsLink = ButtonOwnProps &
+  Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, keyof ButtonOwnProps | 'href' | 'target' | 'download'> & {
+    href: string;
+    target?: '_self' | '_blank';
+    download?: boolean | string;
+  };
+
+export type ButtonProps = ButtonAsButton | ButtonAsLink;
 
 /**
  * intention and context select ONE token group, because that is how the token
@@ -100,13 +110,7 @@ export const Button: React.FC<ButtonProps> = ({
   loading = false,
   inactive = false,
   disabled = false,
-  href,
-  target = '_self',
-  download,
-  rel,
   className,
-  onClick,
-  type = 'button',
   ...rest
 }) => {
   const classNames = clsx(
@@ -138,15 +142,6 @@ export const Button: React.FC<ButtonProps> = ({
    */
   const suppressed = loading || inactive;
 
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    if (suppressed) {
-      event.preventDefault();
-      event.stopPropagation();
-      return;
-    }
-    onClick?.(event);
-  };
-
   // The loader replacing icon-end in Figma is representation, not contract —
   // the spec explicitly allows toggling visibility instead. The glyph is a
   // placeholder in the design; LoaderIcon is our choice and is reportable back.
@@ -175,48 +170,64 @@ export const Button: React.FC<ButtonProps> = ({
     </>
   );
 
-  // disabled always renders a <button>, even with href, so there is nothing to
-  // navigate to.
-  if (href && !disabled && !suppressed && download) {
+  // Render as an <a> if href is present, otherwise as a <button>.
+  if (rest.href !== undefined) {
+    const { href, target = '_self', download, onClick, ...anchorRest } = rest;
+
+    // disabled always renders a <button>, even with href
+    if (disabled) {
+      return (
+        <button
+          {...(anchorRest as React.ButtonHTMLAttributes<HTMLButtonElement>)}
+          type="button"
+          className={classNames}
+          disabled
+          aria-busy={loading || undefined}
+        >
+          {content}
+        </button>
+      );
+    }
+
+    if (!suppressed && download) {
+      return (
+        <a
+          {...anchorRest}
+          href={href}
+          target={target}
+          download={download}
+          className={classNames}
+          onClick={onClick}
+        >
+          {content}
+        </a>
+      );
+    }
+
+    if (!suppressed) {
+      return (
+        <Link
+          {...(anchorRest as Record<string, unknown>)}
+          to={href}
+          target={target}
+          className={classNames}
+          // Redocly's LinkProps narrows onClick to `() => void`. It spreads
+          // straight onto react-router's Link, which forwards the event, so a
+          // handler taking one still receives it. Only reached when not
+          // suppressed, so no event guarding depends on this.
+          onClick={onClick as unknown as (() => void) | undefined}
+        >
+          {content}
+        </Link>
+      );
+    }
+
+    // A suppressed link keeps anchor semantics and stays focusable, but drops
+    // href entirely rather than relying on preventDefault — so neither a click
+    // nor Enter can navigate. Non-interactive but still in the accessibility tree.
     return (
       <a
-        href={href}
-        target={target}
-        download={download}
-        rel={rel}
-        className={classNames}
-        onClick={onClick as React.MouseEventHandler<HTMLAnchorElement> | undefined}
-      >
-        {content}
-      </a>
-    );
-  }
-
-  if (href && !disabled && !suppressed) {
-    return (
-      <Link
-        to={href}
-        target={target}
-        rel={rel}
-        className={classNames}
-        // Redocly's LinkProps narrows onClick to `() => void`. It spreads
-        // straight onto react-router's Link, which forwards the event, so a
-        // handler taking one still receives it. Only reached when not
-        // suppressed, so no event guarding depends on this.
-        onClick={onClick as unknown as (() => void) | undefined}
-      >
-        {content}
-      </Link>
-    );
-  }
-
-  // A suppressed link keeps anchor semantics and stays focusable, but drops
-  // href entirely rather than relying on preventDefault — so neither a click
-  // nor Enter can navigate, and no handler has to hold the line. This is what
-  // "non-interactive but still in the accessibility tree" means for an <a>.
-  if (href && !disabled) {
-    return (
-      <a
+        {...anchorRest}
         role="link"
         tabIndex={0}
         className={classNames}
@@ -228,9 +239,20 @@ export const Button: React.FC<ButtonProps> = ({
     );
   }
 
+  const { type = 'button', onClick, ...buttonRest } = rest;
+
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    if (suppressed) {
+      event.preventDefault();
+      event.stopPropagation();
+      return;
+    }
+    onClick?.(event);
+  };
+
   return (
     <button
-      {...rest}
+      {...buttonRest}
       type={type}
       className={classNames}
       onClick={handleClick}

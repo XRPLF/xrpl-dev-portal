@@ -1,6 +1,18 @@
 import { ButtonProps } from "../components/Button/Button";
 
 /**
+ * Omit, applied to each member of a union rather than to the union as a whole.
+ *
+ * The built-in Omit collapses a union into one object whose members are unions
+ * of the originals. ButtonProps is a union over which element gets rendered, so
+ * collapsing it pairs an anchor's event handlers with a button's — a shape
+ * neither member accepts, and the omitted keys are not the ones at fault.
+ */
+type DistributiveOmit<T, K extends PropertyKey> = T extends unknown
+  ? Omit<T, K>
+  : never;
+
+/**
  * Button props with design constraints applied.
  * Omits the styling axes, which are controlled at the component/section level
  * for design consistency.
@@ -12,7 +24,7 @@ import { ButtonProps } from "../components/Button/Button";
  *   onClick: () => console.log('clicked')
  * };
  */
-export type DesignConstrainedButtonProps = Omit<
+export type DesignConstrainedButtonProps = DistributiveOmit<
   ButtonProps,
   "intention" | "context" | "emphasis"
 >;

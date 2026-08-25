@@ -1,5 +1,9 @@
 import * as React from "react";
 import { Button } from "./shared/components/Button";
+import type {
+  ButtonEmphasis,
+  ButtonSurface,
+} from "./shared/components/Button";
 import {
   XrplArrowInternalLinkIcon,
   XrplArrowExternalLinkIcon,
@@ -168,7 +172,14 @@ export default function ButtonDemo() {
                 context: group.context,
                 emphasis,
                 iconEnd: <XrplArrowInternalLinkIcon />,
-              } as React.ComponentProps<typeof Button>;
+                // GROUPS is a flat list, so intention and context arrive as
+                // independent literals. ButtonSurface is the correlated pair —
+                // casting to it, rather than to the whole prop type, keeps the
+                // spread valid against both members of the href union.
+              } as ButtonSurface & {
+                emphasis: ButtonEmphasis;
+                iconEnd: React.ReactNode;
+              };
 
               return (
                 <Row
