@@ -806,7 +806,7 @@ export default function Uses() {
                     }}
                   >
                     <div className="circle-content">
-                      <img className="circle-img" id={use.id} alt="use-logos" />
+                      <img className="circle-img" id={use.id} alt="" />
                       <p className="circle-text">{translate(use.title)}</p>
                       <div className="pill-box">
                         <span className="pill-number">{use.number}</span>
