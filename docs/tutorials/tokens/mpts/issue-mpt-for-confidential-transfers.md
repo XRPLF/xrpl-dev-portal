@@ -69,7 +69,6 @@ To get started, import the necessary libraries and instantiate a client to conne
 {% tab label="JavaScript" %}
 - `fs`: Used to write the generated accounts and keys to a local file.
 - `xrpl`: Used for XRPL client connection, transaction submission, and wallet handling.
-- `xrpl/confidential`: Used for key derivation, confidential transaction builders, and balance decryption.
 
 {% code-snippet file="/_code-samples/confidential-transfers/js/issueConfidentialMPT.js" language="js" before="// Fund the accounts" /%}
 {% /tab %}

@@ -9,15 +9,13 @@ import {
   Client,
   GlobalFlags,
   MPTokenIssuanceCreateFlags,
-  encodeMPTokenMetadata,
-  signMultiBatch
-} from 'xrpl'
-import {
   deriveConfidentialKeypair,
+  encodeMPTokenMetadata,
   prepareConfidentialConvert,
   prepareConfidentialMergeInbox,
-  prepareConfidentialSend
-} from 'xrpl/confidential'
+  prepareConfidentialSend,
+  signMultiBatch
+} from 'xrpl'
 
 const TOTAL_STEPS = 6
 const ASSET_SCALE = 0

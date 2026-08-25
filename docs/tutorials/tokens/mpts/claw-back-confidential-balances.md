@@ -68,7 +68,6 @@ To get started, import the necessary libraries and instantiate a client to conne
 {% tab label="JavaScript" %}
 - `fs`: Used to check for and load the tutorial setup data.
 - `xrpl`: Used for XRPL client connection, transaction submission, and wallet handling.
-- `xrpl/confidential`: Used for key derivation, ledger entry lookups, the confidential clawback builder, and decryption.
 - `./confidentialTransfersSetup.js`: The tutorial setup script, imported and called directly.
 
 {% code-snippet file="/_code-samples/confidential-transfers/js/clawbackConfidentialMPT.js" language="js" before="// Load setup data" /%}
@@ -77,7 +76,7 @@ To get started, import the necessary libraries and instantiate a client to conne
 {% tab label="Python" %}
 - `asyncio`: Used to run the async tutorial setup function.
 - `json`, `os`: Used to check for and load the tutorial setup data.
-- `xrpl`: Used for XRPL client connection, transaction submission, ledger entry lookups, and wallet handling.
+- `xrpl`: Used for XRPL client connection, transaction submission, and wallet handling.
 - `xrpl.ext.confidential`: Used for the confidential clawback builder and decryption.
 - `confidential_transfers_setup`: The tutorial setup script, imported and called directly.
 

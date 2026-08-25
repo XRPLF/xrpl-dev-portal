@@ -5,19 +5,17 @@ import {
   GlobalFlags,
   Wallet,
   combineBatchSigners,
-  hashes,
-  signMultiBatch,
-  validate
-} from 'xrpl'
-import {
   deriveConfidentialKeypair,
   fetchMPToken,
   fetchMPTokenIssuance,
   getConfidentialBalance,
+  hashes,
   loadMptCrypto,
   prepareConfidentialMergeInbox,
-  prepareConfidentialSend
-} from 'xrpl/confidential'
+  prepareConfidentialSend,
+  signMultiBatch,
+  validate
+} from 'xrpl'
 
 import { setup } from './confidentialTransfersSetup.js'
 

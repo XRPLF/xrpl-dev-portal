@@ -1,12 +1,14 @@
 import fs from 'fs'
-import { Client, MPTokenIssuanceSetFlags, Wallet } from 'xrpl'
 import {
+  Client,
+  MPTokenIssuanceSetFlags,
+  Wallet,
   deriveConfidentialKeypair,
   fetchMPToken,
   fetchMPTokenIssuance,
   loadMptCrypto,
   prepareConfidentialClawback
-} from 'xrpl/confidential'
+} from 'xrpl'
 
 import { setup } from './confidentialTransfersSetup.js'
 

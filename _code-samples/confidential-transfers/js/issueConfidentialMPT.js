@@ -2,16 +2,14 @@ import fs from 'fs'
 import {
   Client,
   MPTokenIssuanceCreateFlags,
-  encodeMPTokenMetadata
-} from 'xrpl'
-import {
   deriveConfidentialKeypair,
+  encodeMPTokenMetadata,
   fetchMPToken,
   fetchMPTokenIssuance,
   loadMptCrypto,
   prepareConfidentialConvert,
   prepareConfidentialMergeInbox
-} from 'xrpl/confidential'
+} from 'xrpl'
 
 // Connect to the network ----------------------
 const client = new Client('wss://s.devnet.rippletest.net:51233')

@@ -71,8 +71,7 @@ To get started, import the necessary libraries and instantiate a client to conne
 {% tabs %}
 {% tab label="JavaScript" %}
 - `fs`: Used to check for and load the tutorial setup data.
-- `xrpl`: Used for XRPL client connection, transaction submission, wallet handling, `Batch` validation and signing, and hashing each inner transaction of the `Batch`.
-- `xrpl/confidential`: Used for key generation, confidential transaction builders, and decryption.
+- `xrpl`: Used for XRPL client connection, transaction submission, and wallet handling.
 - `./confidentialTransfersSetup.js`: The tutorial setup script, imported and called directly.
 
 {% code-snippet file="/_code-samples/confidential-transfers/js/sendConfidentialPayments.js" language="js" before="// Load setup data" /%}
@@ -81,7 +80,7 @@ To get started, import the necessary libraries and instantiate a client to conne
 {% tab label="Python" %}
 - `asyncio`: Used to run the async tutorial setup function.
 - `json`, `os`: Used to check for and load the tutorial setup data.
-- `xrpl`: Used for XRPL client connection, transaction submission, wallet handling, `Batch` signing, and hashing each inner transaction of the `Batch`.
+- `xrpl`: Used for XRPL client connection, transaction submission, and wallet handling.
 - `xrpl.ext.confidential`: Used for key generation, confidential transaction builders, and decryption.
 - `confidential_transfers_setup`: The tutorial setup script, imported and called directly.
 
