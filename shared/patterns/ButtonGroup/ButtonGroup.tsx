@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import { Button } from '../../components/Button/Button';
 import type { ButtonEmphasis, ButtonSurface } from '../../components/Button';
 import { Link } from '../../components/Link';
-import type { LinkContext, LinkIntention } from '../../components/Link';
+import type { LinkColorProps } from '../../components/Link';
 import { XrplArrowInternalLinkIcon } from '../../components/Icons';
 
 export interface ButtonConfig {
@@ -258,9 +258,11 @@ export const ButtonGroup: React.FC<ButtonGroupProps> = ({
 
   // `surface` is a ButtonSurface, whose members are the same intention/context
   // pairs Link accepts — including the shared rule that neutral + on-saturated
-  // does not exist. The cast re-labels those two fields for Link's own union;
-  // it cannot introduce a combination Button would have rejected.
-  const linkSurface = surface as { intention?: LinkIntention; context?: LinkContext };
+  // does not exist. The cast is between the two unions, not to a flat object:
+  // splitting them into independent fields would let `neutral` pair with
+  // `on-saturated`, which is the one combination both unions exist to reject.
+  // Spread as a unit for the same reason.
+  const linkSurface = surface as LinkColorProps;
 
   /**
    * One entry, as a Link when the set is flush and the entry navigates.
@@ -280,8 +282,7 @@ export const ButtonGroup: React.FC<ButtonGroupProps> = ({
           href={button.href}
           variation="standalone"
           iconEnd
-          intention={linkSurface.intention}
-          context={linkSurface.context}
+          {...linkSurface}
         >
           {button.label}
         </Link>

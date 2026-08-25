@@ -185,7 +185,7 @@ export const Button: React.FC<ButtonProps> = ({
         download={download}
         rel={rel}
         className={classNames}
-        onClick={onClick}
+        onClick={onClick as React.MouseEventHandler<HTMLAnchorElement> | undefined}
       >
         {content}
       </a>

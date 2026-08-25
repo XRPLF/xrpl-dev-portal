@@ -1,5 +1,5 @@
 export { Link } from './Link';
-export type { LinkProps, LinkIntention, LinkContext, LinkVariation, LinkSize } from './Link';
+export type { LinkProps, LinkColorProps, LinkIntention, LinkContext, LinkVariation, LinkSize } from './Link';
 
 // Legacy component, kept intact but unused in production. See legacy/BdsLink.md.
 export { BdsLink } from './legacy/BdsLink';
