@@ -396,7 +396,7 @@ export default function XrplOverview() {
           </div>
         </section>
         <section className="container-new py-26">
-          <div className="col-md-6 offset-md-3 p-6-sm p-10-until-sm br-8 cta-card">
+          <div className="col-lg-6 offset-lg-3 p-6-sm p-10-until-sm br-8 cta-card">
             <div className="z-index-1 position-relative">
               <h4 className="h4 mb-10-until-sm mb-8-sm">
                 {translate("Tomorrow’s Blockchain Starts With You")}
