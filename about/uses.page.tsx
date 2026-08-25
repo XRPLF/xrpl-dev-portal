@@ -1,10 +1,13 @@
 import * as React from "react";
 import { useThemeHooks } from '@redocly/theme/core/hooks';
 import Button from "shared/components/Button";
-import { XrplArrowInternalLinkIcon } from "shared/components/Icons";
+import { Link } from "shared/components/Link";
+import {
+  MaterialArrowDownwardIcon,
+  XrplArrowInternalLinkIcon,
+} from "shared/components/Icons";
 import numLight from "../static/js/ecosystem/numbers-animation-light.json";
 import numDark from "../static/js/ecosystem/numbers-animation.json";
-import arrow from "../static/js/ecosystem/arrow-animation.json";
 
 export const frontmatter = {
   seo: {
@@ -636,16 +639,6 @@ export default function Uses() {
   });
   const { View } = useLottie(options);
 
-  //arrow
-  const optionsArrow = React.useMemo(() => {
-    return {
-      animationData: arrow,
-      loop: true,
-    };
-  }, [theme]);
-
-  const arrowView = useLottie(optionsArrow);
-  const arrowAnimation = arrowView.View;
   const UpdateModalContent = ({ id, title, description, logos }) => {
     const logoArray = logos[id] || [];
     const createLogoElement = (logoClassName, title, id) => {
@@ -764,12 +757,15 @@ export default function Uses() {
             <div className="col-lg-5 p-3">
               <div className="d-flex flex-column-reverse">
                 <div className="d-flex justify-content-start align-items-center">
-                  <div className="arrow-animation" id="arrowAnimation">
-                    {arrowAnimation}
-                  </div>
-                  <span className="explore-projects">
+                  <Link
+                    href="#use_case_companies_list"
+                    intention="neutral"
+                    variation="standalone"
+                    size="lg"
+                  >
                     {translate('Explore Featured Projects')}
-                  </span>
+                    <MaterialArrowDownwardIcon />
+                  </Link>
                 </div>
                 <p className="text-sm">
                   {translate(

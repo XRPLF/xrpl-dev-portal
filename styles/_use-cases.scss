@@ -287,28 +287,6 @@ html.light {
   height: 96px;
 }
 
-.arrow-animation {
-  position: relative;
-  right: 23px;
-  top: -11px;
-  width: 60px !important;
-}
-
-.explore-projects {
-  font-style: normal;
-  font-weight: 600;
-  font-size: 12px;
-  line-height: 16px;
-  color: $blue-purple-400;
-  position: relative;
-  top: -9px;
-  right: 27px;
-}
-
-:root.dark .explore-projects {
-  color: $blue-purple-300;
-}
-
 .section-separator {
   width: 50%;
   border: 0;
