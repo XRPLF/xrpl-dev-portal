@@ -27,6 +27,13 @@ $link-focus-on-saturated-dark: $true-black;
 // Label + icon color for rest/hover/visited, light and dark, per color group.
 // hover and pressed (:active) share a value in every group -- not an omission.
 //
+// State order is LVHA: every group emits :visited BEFORE :hover/:active/:focus.
+// All of these selectors resolve to the same (0,4,1) specificity, so source
+// order alone decides which wins on a link that is both visited and hovered.
+// With :visited last, a visited link keeps its sage color through hover and
+// press -- the interaction states become invisible on every link the reader
+// has already followed. Keep :visited first when adding or editing a group.
+//
 // Every state block also pins text-decoration-color: currentColor. Redocly's
 // own Markdown wrapper (compiled to a hashed class, e.g. .eMIPih) sets its
 // own `a:visited { text-decoration: var(--link-decoration-visited); ... }`
@@ -47,6 +54,17 @@ $link-focus-on-saturated-dark: $true-black;
       text-decoration-color: currentColor;
     }
 
+    &:visited {
+      @include bds-theme-mode(light) {
+        color: $sage-12;
+        text-decoration-color: currentColor;
+      }
+      @include bds-theme-mode(dark) {
+        color: $sage-dark-12;
+        text-decoration-color: currentColor;
+      }
+    }
+
     // :focus (not just :focus-visible) is included here because
     // @redocly/theme's own Markdown wrapper groups its default `:hover` and
     // `:focus` styling together -- without matching that grouping, a link
@@ -64,17 +82,6 @@ $link-focus-on-saturated-dark: $true-black;
         text-decoration-color: currentColor;
       }
     }
-
-    &:visited {
-      @include bds-theme-mode(light) {
-        color: $sage-12;
-        text-decoration-color: currentColor;
-      }
-      @include bds-theme-mode(dark) {
-        color: $sage-dark-12;
-        text-decoration-color: currentColor;
-      }
-    }
   } @else if $group == neutral {
     @include bds-theme-mode(light) {
       color: $link-neutral-black;
@@ -83,6 +90,17 @@ $link-focus-on-saturated-dark: $true-black;
     @include bds-theme-mode(dark) {
       color: $white;
       text-decoration-color: currentColor;
+    }
+
+    &:visited {
+      @include bds-theme-mode(light) {
+        color: $sage-11;
+        text-decoration-color: currentColor;
+      }
+      @include bds-theme-mode(dark) {
+        color: $sage-dark-11;
+        text-decoration-color: currentColor;
+      }
     }
 
     // :focus (not just :focus-visible) is included here because
@@ -102,17 +120,6 @@ $link-focus-on-saturated-dark: $true-black;
         text-decoration-color: currentColor;
       }
     }
-
-    &:visited {
-      @include bds-theme-mode(light) {
-        color: $sage-11;
-        text-decoration-color: currentColor;
-      }
-      @include bds-theme-mode(dark) {
-        color: $sage-dark-11;
-        text-decoration-color: currentColor;
-      }
-    }
   } @else if $group == brand-on-inverse {
     @include bds-theme-mode(light) {
       color: $xrpl-green-dark-11;
@@ -121,6 +128,17 @@ $link-focus-on-saturated-dark: $true-black;
     @include bds-theme-mode(dark) {
       color: $xrpl-green-11;
       text-decoration-color: currentColor;
+    }
+
+    &:visited {
+      @include bds-theme-mode(light) {
+        color: $xrpl-green-1;
+        text-decoration-color: currentColor;
+      }
+      @include bds-theme-mode(dark) {
+        color: $xrpl-green-dark-1;
+        text-decoration-color: currentColor;
+      }
     }
 
     // :focus (not just :focus-visible) is included here because
@@ -140,17 +158,6 @@ $link-focus-on-saturated-dark: $true-black;
         text-decoration-color: currentColor;
       }
     }
-
-    &:visited {
-      @include bds-theme-mode(light) {
-        color: $xrpl-green-1;
-        text-decoration-color: currentColor;
-      }
-      @include bds-theme-mode(dark) {
-        color: $xrpl-green-dark-1;
-        text-decoration-color: currentColor;
-      }
-    }
   } @else if $group == neutral-on-inverse {
     @include bds-theme-mode(light) {
       color: $sage-1;
@@ -159,6 +166,17 @@ $link-focus-on-saturated-dark: $true-black;
     @include bds-theme-mode(dark) {
       color: $sage-12;
       text-decoration-color: currentColor;
+    }
+
+    &:visited {
+      @include bds-theme-mode(light) {
+        color: $sage-7;
+        text-decoration-color: currentColor;
+      }
+      @include bds-theme-mode(dark) {
+        color: $sage-dark-7;
+        text-decoration-color: currentColor;
+      }
     }
 
     // :focus (not just :focus-visible) is included here because
@@ -175,17 +193,6 @@ $link-focus-on-saturated-dark: $true-black;
       }
       @include bds-theme-mode(dark) {
         color: $sage-12;
-        text-decoration-color: currentColor;
-      }
-    }
-
-    &:visited {
-      @include bds-theme-mode(light) {
-        color: $sage-7;
-        text-decoration-color: currentColor;
-      }
-      @include bds-theme-mode(dark) {
-        color: $sage-dark-7;
         text-decoration-color: currentColor;
       }
     }
