@@ -394,6 +394,10 @@ html.light {
   border-radius: 50%;
   margin-bottom: 30px;
   cursor: pointer;
+  background-color: transparent;
+  font: inherit;
+  color: inherit;
+  padding: 0;
 
   // Media query for medium screens
   @include media-breakpoint-up(md) {
