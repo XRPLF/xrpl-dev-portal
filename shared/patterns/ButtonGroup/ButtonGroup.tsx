@@ -239,8 +239,7 @@ export const ButtonGroup: React.FC<ButtonGroupProps> = ({
   // Button and a resting Link are byte-identical in colour and both underlined,
   // and geometry is one of only two things telling them apart — so a subtle
   // Button pulled flush with the copy beside it has given up the difference.
-  // These navigate, so they render as what they are. See
-  // components/Button/button-vs-link-candidates.md.
+  // These navigate, so they render as what they are.
   //
   // No negative margin comes with it any more: that offset existed to cancel
   // the button's own padding, and a Link has none to cancel.
@@ -280,6 +279,7 @@ export const ButtonGroup: React.FC<ButtonGroupProps> = ({
         <Link
           key={key}
           href={button.href}
+          onClick={button.onClick}
           variation="standalone"
           iconEnd
           {...linkSurface}
