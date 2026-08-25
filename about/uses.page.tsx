@@ -790,7 +790,7 @@ export default function Uses() {
               id="use-case-card-grid"
             >
               {uses.map((use, index) => (
-                <li key={use.id} className="col ls-none p-3">
+                <li key={use.id} className="col ls-none p-3 use-case-circle-parent">
                   <button
                     type="button"
                     className="use-case-circle open-modal"
