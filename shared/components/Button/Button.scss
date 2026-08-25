@@ -63,8 +63,7 @@ $bds-btn-easing: cubic-bezier(0.98, 0.12, 0.12, 0.98);
 
 // Focus. accessibility/focus-indicators.md, specified once for the whole system.
 // The ring's border-radius is deliberately NOT implemented: `outline` follows
-// the element's own radius automatically. The 10001px value in the token set is
-// a Figma authoring device, because Figma has no outline primitive.
+// the element's own radius automatically.
 $bds-btn-focus-width: 2px;
 $bds-btn-focus-offset: 2px; // outward. An inset ring must contrast every state's
 // fill instead of the page, which is how the current
@@ -73,34 +72,19 @@ $bds-btn-focus-offset: 2px; // outward. An inset ring must contrast every state'
 // =============================================================================
 // 2. Palette — the data
 // =============================================================================
-// Every slot names a variable from styles/_colors.scss. There is not one hex
-// literal below, so the button tracks the palette instead of pinning a copy.
-//
-// This works because _colors.scss already carries the generated Radix scales
-// the design tokens are built from — $xrpl-green-* (generated from brand green
-// #21E46B) and $sage-*, each with light, dark and alpha variants. The spec's
-// resolved values ARE those scales.
-//
-// Each value is a (light, dark) pair, so the modes are stated together and
-// cannot drift apart in review. The pairs double as the clearest documentation
-// in the file: ($sage-12, $sage-dark-12) reads as "step 12 of the neutral
-// scale, per mode", and the on-inverse groups visibly swap the two.
+// Every slot names a variable from styles/_colors.scss. 
+
+// Each value is a (lightmode, darkmode) pair, so the modes are stated together and
+// cannot drift apart in review.
 //
 // `rest` also serves `inactive`, and `engaged` serves `hover`, `pressed` and
-// `loading`. That collapse is verified, not assumed: those states resolve
-// identically in all 15 combinations in both modes. They stay separate code
-// paths in the TSX because they differ in ARIA and in activation.
+// `loading`.
 //
 // The -on-inverse groups are bound literally rather than derived by swapping
-// the base group's modes. 104 of their 108 values would survive that shortcut
-// and 4 border values would not — a 96%-correct derivation is worse than none.
+// the base group's modes due to subtle border differences.
 //
 // ON ALPHA: button.json rounds alpha to two decimals where _colors.scss carries
-// the generated 8-digit value, so rgba(0, 224, 36, 0.22) binds $xrpl-green-a4
-// at 0.2235. The variable is the truer number — button.md is explicit that
-// button.json is hand-written and that a disagreement means re-resolving rather
-// than picking a file. Largest divergence anywhere is 1/255 of alpha.
-
+// the generated 8-digit value, which is more accurate.
 $bds-btn-palette: (
   brand: (
     strong: (
@@ -328,14 +312,8 @@ $bds-btn-disabled: (
 // stored there. Same `context` as the fills, from mode-color.focus-indicator.*.
 // A button that takes context="on-inverse" for its paint and leaves the ring at
 // its default renders perfectly and is wrong. Nothing catches it.
-
-// The three ring colours are the one thing here with no _colors.scss
-// counterpart: they come from mode-color.focus-indicator.*, a different token
-// family from the button palette, and #111111 / #000000 are not in any scale
-// the site carries ($sage-dark-1 is #101211 — close, and not the same colour).
-// White is ours, so it binds.
-$bds-btn-focus-near-black: #111111; // mode-color.focus-indicator, light backdrops
-$bds-btn-focus-true-black: #000000; // mode-color.focus-indicator, dark/saturated
+$bds-btn-focus-near-black: $off-black; // mode-color.focus-indicator, light backdrops
+$bds-btn-focus-true-black: $true-black; // mode-color.focus-indicator, dark/saturated
 
 $bds-btn-ring: (
   on-theme: ($bds-btn-focus-near-black, $white),
@@ -422,13 +400,36 @@ $bds-btn-ring: (
 // =============================================================================
 // Layout, state swaps and motion.
 
+// The four selectors that mean "engaged". hover, pressed and loading are ONE
+// treatment: button.md is explicit that a visually distinct pressed state would
+// need a third rung in the swap chain, and that inventing one is a design
+// decision rather than a missing value. The list is needed in two places, so it
+// is written once — a copy of it is what lets the two drift apart.
+@mixin bds-btn-engaged {
+  &:hover:not(:disabled):not([aria-disabled='true']),
+  &:active:not(:disabled):not([aria-disabled='true']),
+  &:focus-visible:not(:disabled):not([aria-disabled='true']),
+  &.bds-btn--loading {
+    @content;
+  }
+}
+
 // The body of the component as a mixin rather than a rule, so that markup
 // which cannot use the React component can still BE the component rather than
 // imitate it. `.bds-btn` includes it immediately below and is the only consumer
 // on the site; `bds-button()` at the end of this file is the other entry point.
 @mixin bds-btn-structure {
-  // Which fill each paint layer reads. on-saturated + strong swaps them.
-  --bds-btn-base-fill: var(--bds-btn-bg);
+  // The two paint layers.
+  //
+  // The BACKDROP is the element's own background-color, and it is not merely the
+  // resting fill by another name: `background-color` paints to the BORDER box,
+  // so every alpha stroke in §2 ($xrpl-green-a4, $sage-a11, $sage-dark-a2 …)
+  // composites over it. The rise layer reaches only the padding box, so dropping
+  // the backdrop would leave those strokes compositing against the page instead.
+  //
+  // The RISE FILL is the lower half of the gradient in the ::before below — what
+  // slides into view on engage.
+  --bds-btn-backdrop: var(--bds-btn-bg);
   --bds-btn-rise-fill: var(--bds-btn-engaged-bg);
 
   display: inline-flex;
@@ -467,24 +468,28 @@ $bds-btn-ring: (
   // The spec says hover swaps the whole triplet to the engaged treatment; this
   // is only *how* the fill half of that swap arrives. Label and border colours
   // cross-fade underneath it.
+  //
+  // ONE layer, twice the height, holding both fills as hard gradient stops. It
+  // translates by exactly half itself, so the boundary between the stops sweeps
+  // up through the pill.
   &::before {
     content: '';
     position: absolute;
-    inset: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 200%;
     z-index: -1;
-    background-color: var(--bds-btn-rise-fill);
-    transform: scaleY(0);
-    transform-origin: bottom center;
+    background-image: linear-gradient(
+      to bottom,
+      var(--bds-btn-bg) 0 50%,
+      var(--bds-btn-rise-fill) 50% 100%
+    );
+    transform: translateY(0);
   }
 
   // --- Engaged --------------------------------------------------------------
-  // hover, pressed and loading are ONE treatment. button.md is explicit that a
-  // visually distinct pressed state would need a third rung in the swap chain,
-  // and that inventing one is a design decision rather than a missing value.
-  &:hover:not(:disabled):not([aria-disabled='true']),
-  &:active:not(:disabled):not([aria-disabled='true']),
-  &:focus-visible:not(:disabled):not([aria-disabled='true']),
-  &.bds-btn--loading {
+  @include bds-btn-engaged {
     --bds-btn-bd: var(--bds-btn-engaged-bd);
     --bds-btn-fg: var(--bds-btn-engaged-fg);
 
@@ -497,7 +502,7 @@ $bds-btn-ring: (
     }
 
     &::before {
-      transform: scaleY(1);
+      transform: translateY(-50%);
     }
   }
 
@@ -537,47 +542,20 @@ $bds-btn-ring: (
   @include bds-btn-structure;
 }
 
-// --- on-saturated + strong: the rise reveals rather than overlays ------------
-// This engaged fill is `rgba(0, 0, 0, 0.6)`, which button.md measures at 7.0517
-// as "black at 60% over green" — i.e. composited against the block, not over the
-// resting fill. Overlaid the usual way it lands on #141414 instead, giving
-// #080808: a 12/255 shift, so the button appears to have no hover state.
-//
-// So the layers swap here: the element carries the soft fill and the rise
-// carries the solid one, collapsing upward to uncover it (the same motion on
-// screen). `--bds-btn-bd` pins the otherwise-transparent stroke to the resting
-// fill, closing the 1px soft-fill ring that would show around the pill; §4's
-// engaged block returns it to transparent. Disabled is excluded rather than
-// overridden, since its own block would lose to this one on source order.
-//
-// Does not generalise: `standard`/`subtle` have a `transparent` resting fill,
-// which cannot mask the soft fill underneath.
-//
-// A mixin, not a bare rule, because `bds-button()` needs the same swap and this
-// is the half of the paint that is chosen by the group rather than restated:
-// duplicating it is what lets the two forms drift apart.
+// --- on-saturated + strong: the rise uncovers rather than overlays -----------
+// The one variant in §2 whose engaged fill is TRANSLUCENT over an OPAQUE resting
+// fill. Everywhere else the pair is opaque-over-opaque or opaque-over-transparent,
+// and the compositing base does not matter; here it decides the colour.
 @mixin bds-btn-saturated-swap {
   &:not(:disabled):not(.bds-btn--disabled) {
-    --bds-btn-base-fill: var(--bds-btn-engaged-bg);
-    --bds-btn-rise-fill: var(--bds-btn-bg);
+    --bds-btn-backdrop: var(--bds-btn-engaged-bg);
+    --bds-btn-rise-fill: transparent;
     --bds-btn-bd: var(--bds-btn-bg);
 
-    &::before {
-      transform: scaleY(1);
-      transform-origin: top center;
-    }
-
-    // Mirrors §4's engaged selector list.
-    &:hover:not(:disabled):not([aria-disabled='true']),
-    &:active:not(:disabled):not([aria-disabled='true']),
-    &:focus-visible:not(:disabled):not([aria-disabled='true']),
-    &.bds-btn--loading {
-      // Return the stroke to transparent in this special case
+    // This rule and §4's engaged block both score (0,4,0); source order would
+    // hand the tie to this one and pin the stroke through hover.
+    @include bds-btn-engaged {
       --bds-btn-bd: var(--bds-btn-engaged-bd);
-
-      &::before {
-        transform: scaleY(0);
-      }
     }
   }
 }
@@ -629,7 +607,6 @@ $bds-btn-ring: (
 // unguarded keyframe animation; button-examples.md lists carrying that forward
 // as a defect. The loader's own keyframes are guarded where they live, in
 // shared/components/Icons/LoaderIcon.scss — this file does not animate it.
-
 @mixin bds-btn-motion {
   @media (prefers-reduced-motion: no-preference) {
     transition:
@@ -671,7 +648,7 @@ a.bds-btn.bds-btn.bds-btn:hover,
 a.bds-btn.bds-btn.bds-btn:focus,
 a.bds-btn.bds-btn.bds-btn:active {
   color: var(--bds-btn-fg);
-  background-color: var(--bds-btn-base-fill);
+  background-color: var(--bds-btn-backdrop);
   border-color: var(--bds-btn-bd);
 }
 
@@ -773,6 +750,6 @@ a.bds-btn--subtle.bds-btn--subtle.bds-btn--subtle:active {
 
   // §5's paint, without the anchor pseudo-classes. See SCOPE above.
   color: var(--bds-btn-fg);
-  background-color: var(--bds-btn-base-fill);
+  background-color: var(--bds-btn-backdrop);
   border-color: var(--bds-btn-bd);
 }

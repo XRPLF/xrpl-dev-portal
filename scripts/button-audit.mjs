@@ -55,8 +55,8 @@
  * WHAT IS CHECKED, PER STATE
  *
  *   colour     label, background, all four border sides
- *   ::before   background-color and transform -- the rise IS the hover fill, so
- *              a ::before that does not scale is a hover state that never
+ *   ::before   gradient stops and transform -- the rise IS the hover fill, so
+ *              a ::before that does not translate is a hover state that never
  *              arrives, and nothing else would show it
  *   outline    focus-visible only: width, style, offset and the ring colour.
  *              The ring is chosen by `context` alone, and Button.md is explicit
@@ -350,17 +350,21 @@ async function launchBrowser() {
  * Asserting the element turns green on hover would be wrong, and would hide the
  * real failure mode -- a ::before that never scales.
  *
- * `on-saturated` + `strong` is the exception, and inverts all three of those.
+ * `on-saturated` + `strong` is the exception, and it re-points two of those.
  * Its engaged fill is `rgba(0, 0, 0, 0.6)`, which button.md reads as "black at
  * 60% over green" and measures at 7.0517 -- a figure only reachable if the soft
  * fill composites against the block BEHIND the button. Painted over the resting
  * #141414 the way the rise paints everything else, it resolves to #080808 and
- * measures 17.18, so the two layers swap for that combination: the element
- * carries the soft fill and the rise carries the solid one, collapsing upward
- * to uncover it. See §4 of Button.scss.
+ * measures 17.18. So for that combination the element carries the soft fill and
+ * the rise's lower stop goes `transparent`, uncovering it. See §4 of Button.scss.
  *
- * The stroke swaps with them. It is `transparent` in both states, so it shows
- * whatever the element paints -- now the soft fill -- and is pinned to the
+ * The MOTION does not vary: every variant slides the same gradient the same way
+ * in the same direction, so `rise` is read straight off the state. A direction
+ * that depends on the variant is the thing this expectation used to encode and
+ * no longer should.
+ *
+ * The stroke moves with the fills. It is `transparent` in both states, so it
+ * shows whatever the element paints -- now the soft fill -- and is pinned to the
  * resting fill to close the 1px ring that would otherwise sit around the pill.
  */
 function expectedFor({ group, emphasis, context, mode }, state) {
@@ -378,7 +382,7 @@ function expectedFor({ group, emphasis, context, mode }, state) {
     if (emphasis === 'standard') bg = 'transparent';
     if (emphasis === 'subtle') { bg = 'transparent'; bd = 'transparent'; }
     if (emphasis === 'strong' && D['strong-bd']) bd = D['strong-bd'][mode];
-    return { color: D.fg[mode], background: bg, border: bd, beforeBg: null, rise: 'none' };
+    return { color: D.fg[mode], background: bg, border: bd, riseStops: null, rise: 'none' };
   }
 
   const engagedState = state === 'hover' || state === 'active' || state === 'focus-visible';
@@ -390,10 +394,12 @@ function expectedFor({ group, emphasis, context, mode }, state) {
     border: inverted && !engagedState
       ? rest.bg[mode]
       : engagedState ? engaged.bd[mode] : rest.bd[mode],
-    beforeBg: inverted ? rest.bg[mode] : engagedBg,
-    // The rise still means "the engaged fill is showing"; inverted, that is the
-    // rise being DOWN, because the solid fill it carries has collapsed away.
-    rise: engagedState === !inverted ? 'up' : 'down',
+    // The ::before is ONE layer at twice the height holding both fills as hard
+    // stops: the resting fill on top, the engaged fill below. `inverted` empties
+    // the lower stop so the slide uncovers the element's own soft fill instead
+    // of stacking a second copy of it over the solid one.
+    riseStops: [rest.bg[mode], inverted ? 'transparent' : engagedBg],
+    rise: engagedState ? 'up' : 'down',
   };
 }
 
@@ -433,7 +439,8 @@ const MEASURE = ({ s, i }) => {
     borders: [cs.borderTopColor, cs.borderRightColor, cs.borderBottomColor, cs.borderLeftColor],
     borderWidths: [cs.borderTopWidth, cs.borderRightWidth, cs.borderBottomWidth, cs.borderLeftWidth],
     beforeContent: before.content,
-    beforeBg: before.backgroundColor,
+    beforeImage: before.backgroundImage,
+    beforeHeight: parseFloat(before.height),
     beforeTransform: before.transform,
     outline: [cs.outlineWidth, cs.outlineStyle, cs.outlineColor, cs.outlineOffset],
     textDecoration: cs.textDecorationLine,
@@ -639,7 +646,7 @@ async function auditPage(browser, url) {
         for (const st of [...STATES, ...SYNTHETIC_STATES]) {
           const e = expectedFor({ group, emphasis, context, mode }, st === 'inactive' ? 'rest' : st);
           if (!e) continue;
-          for (const v of [e.color, e.background, e.border, e.beforeBg]) if (v) wanted.add(v);
+          for (const v of [e.color, e.background, e.border, ...(e.riseStops || [])]) if (v) wanted.add(v);
         }
         wanted.add(SPEC.ring[context][mode]);
         const norm = await page.evaluate(NORMALISE, [...wanted]);
@@ -744,14 +751,24 @@ async function auditPage(browser, url) {
               push('::before (disabled must remove it)', 'none', m.beforeContent);
             }
           } else {
-            if (m.beforeBg !== norm[exp.beforeBg]) push('::before background', norm[exp.beforeBg], m.beforeBg);
-            // scaleY(0) serialises as matrix(1,0,0,0,0,0); scaleY(1) as `none`
-            // or matrix(1,0,0,1,0,0) depending on whether the transform is still
-            // declared. Compare the y-scale itself rather than the string.
-            const y = parseTransformY(m.beforeTransform);
-            const wantY = exp.rise === 'up' ? 1 : 0;
-            if (Math.abs(y - wantY) > 0.01) {
-              push(`::before rise (scaleY)`, String(wantY), `${y} — "${m.beforeTransform}"`);
+            // Both stops, in order. Chrome may or may not expand a double-position
+            // stop into two, so compare the first and last colours rather than the
+            // serialised string.
+            const got = gradientStops(m.beforeImage);
+            const want = exp.riseStops.map(c => norm[c]);
+            if (got.length < 2) {
+              push('::before gradient', want.join(' → '), m.beforeImage);
+            } else if (got[0] !== want[0] || got[got.length - 1] !== want[1]) {
+              push('::before gradient', want.join(' → '), `${got[0]} → ${got[got.length - 1]}`);
+            }
+            // The layer is 200% tall and slides by exactly half itself, so the
+            // ratio is the variant-independent signal: 0 at rest, -0.5 engaged.
+            // Compare the ratio, not the px, because it scales with the button.
+            const ty = parseTranslateY(m.beforeTransform);
+            const ratio = m.beforeHeight ? ty / m.beforeHeight : NaN;
+            const wantRatio = exp.rise === 'up' ? -0.5 : 0;
+            if (!(Math.abs(ratio - wantRatio) < 0.01)) {
+              push(`::before rise (translateY)`, String(wantRatio), `${ratio} — "${m.beforeTransform}"`);
             }
           }
 
@@ -837,14 +854,20 @@ async function auditPage(browser, url) {
   return findings;
 }
 
-/** scaleY out of a computed transform matrix. `none` means no transform at all. */
-function parseTransformY(t) {
-  if (!t || t === 'none') return 1;
+/** translateY in px out of a computed transform matrix. `none` means zero. */
+function parseTranslateY(t) {
+  if (!t || t === 'none') return 0;
   const m = /^matrix\(([^)]+)\)$/.exec(t);
-  if (m) return parseFloat(m[1].split(',')[3]);
+  if (m) return parseFloat(m[1].split(',')[5]);
   const m3 = /^matrix3d\(([^)]+)\)$/.exec(t);
-  if (m3) return parseFloat(m3[1].split(',')[5]);
+  if (m3) return parseFloat(m3[1].split(',')[13]);
   return NaN;
+}
+
+/** Every colour stop, in order, out of a computed linear-gradient(). */
+function gradientStops(img) {
+  if (!img || img === 'none') return [];
+  return img.match(/rgba?\([^)]*\)/g) || [];
 }
 
 // ------------------------------------------------------------------- report
