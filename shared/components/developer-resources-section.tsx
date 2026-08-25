@@ -44,6 +44,7 @@ export const DeveloperResourcesSection: React.FC<DeveloperResourcesSectionProps>
                     className={clsx({ "mt-16": linkIndex === 0 })}
                     intention="brand"
                     variation="standalone"
+                    size="lg"
                     iconEnd
                     target={link.target || "_blank"}
                     href={link.url}

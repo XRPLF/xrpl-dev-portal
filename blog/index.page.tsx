@@ -244,6 +244,7 @@ export default function Index() {
                       href={`/blog/${card.link}`}
                       intention="neutral"
                       variation="standalone"
+                      size="lg"
                       iconEnd
                     >
                       {translate("Read More")}

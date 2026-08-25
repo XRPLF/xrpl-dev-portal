@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from 'react';
 import { useLocation } from "react-router-dom";
 import { useThemeHooks } from '@redocly/theme/core/hooks';
-import { Link } from "@redocly/theme/components/Link/Link";
+import { Link } from "shared/components/Link";
 import {
   JsonParam,
   StringParam,
@@ -213,8 +213,9 @@ export function WebsocketApiTool() {
             <div className="api-method-description-wrapper">
               <h3>
                 <Link
-                  to={currentMethod.link}
+                  href={currentMethod.link}
                   className="selected_command"
+                  intention="neutral"
                 >
                   {currentMethod.name}
                 </Link>
@@ -231,8 +232,12 @@ export function WebsocketApiTool() {
               )}
               {currentMethod.link && (
                 <Link
-                  className="btn btn-outline-secondary api-readmore"
-                  to={currentMethod.link}
+                  className="api-readmore"
+                  href={currentMethod.link}
+                  intention="neutral"
+                  variation="standalone"
+                  size="lg"
+                  iconEnd
                 >
                   {translate("Read more")}
                 </Link>
