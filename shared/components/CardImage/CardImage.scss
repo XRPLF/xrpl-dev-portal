@@ -256,13 +256,28 @@ $bds-card-image-transition-timing: $bds-transition-timing;
   .bds-card-image__image {
     transform: scale(1.1);
   }
+
+  // The CTA is a painted span, not a control, so it has no engaged state of its
+  // own to inherit — the card publishes the state on its behalf. Included on the
+  // icon slot rather than on the card, because that is the element the mixin
+  // reaches down from. See Icons/shared.scss.
+  .bds-btn__icon {
+    @include bds-icon-engaged;
+  }
 }
 
 // =============================================================================
 // Focus State
 // =============================================================================
 // Focus styles are handled by base card styles (outline)
-// Button focus state is independent
+
+// Keyboard focus lands on the card, never on the painted CTA inside it, so the
+// icon is engaged from here as well as from hover.
+.bds-card-image:focus-visible:not(.bds-card-image--disabled) {
+  .bds-btn__icon {
+    @include bds-icon-engaged;
+  }
+}
 
 // =============================================================================
 // Disabled State

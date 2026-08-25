@@ -69,7 +69,6 @@ const FeaturedVideoHero = forwardRef<HTMLElement, FeaturedVideoHeroProps>(
       .map((link) => ({
         label: link.label,
         href: link.href,
-        forceColor: true,
       }));
 
     // Validate buttons (max 2 CTAs supported)
@@ -108,8 +107,6 @@ const FeaturedVideoHero = forwardRef<HTMLElement, FeaturedVideoHeroProps>(
                   {hasLinks && (
                     <ButtonGroup
                       buttons={buttonValidation.buttons}
-                      color="green"
-                      forceColor
                       gap="small"
                     />
                   )}

@@ -1,8 +1,12 @@
 import * as React from "react";
 import { useThemeHooks } from '@redocly/theme/core/hooks';
-import { Link } from '@redocly/theme/components/Link/Link';
 import { Link as XrplLink } from 'shared/components/Link';
 import { PageGrid, PageGridCol, PageGridRow } from "shared/components/PageGrid/page-grid";
+import Button from "shared/components/Button";
+import {
+  XrplArrowExternalLinkIcon,
+  XrplArrowInternalLinkIcon,
+} from "shared/components/Icons";
 
 export const frontmatter = {
   seo: {
@@ -115,20 +119,24 @@ export default function XrplOverview() {
                   "The peer-to-peer network that manages the ledger is open to everyone. The XRP Ledger is maintained by software engineers, server operators, users, and businesses–a global community working to solve problems and create real-world value."
                 )}
               </p>
-              <div className="d-none d-lg-block">
-                <Link className="btn btn-primary btn-arrow" to="/docs">
-                  {translate("Read Technical Docs")}
-                </Link>{" "}
-                <XrplLink
-                  className="ms-4"
+              <div className="d-none d-lg-flex flex-wrap gap-3">
+                <Button
                   intention="brand"
-                  variation="standalone"
-                  iconEnd
+                  emphasis="strong"
+                  href="/docs"
+                  iconEnd={<XrplArrowInternalLinkIcon />}
+                >
+                  {translate("Read Technical Docs")}
+                </Button>
+                <Button
+                  intention="neutral"
+                  emphasis="standard"
                   target="_blank"
                   href="https://www.youtube.com/playlist?list=PLJQ55Tj1hIVZtJ_JdTvSum2qMTsedWkNi"
+                  iconEnd={<XrplArrowExternalLinkIcon />}
                 >
                   {translate("Watch Explainer Videos")}
-                </XrplLink>
+                </Button>
               </div>
             </div>
             <div className="col">
@@ -153,20 +161,24 @@ export default function XrplOverview() {
                   />
                 </a>
               )}
-              <div className="text-center d-lg-none">
-                <Link className="btn btn-primary btn-arrow mt-5 mb-4" to="/docs">
-                  {translate("Read Technical Docs")}
-                </Link>{" "}
-                <XrplLink
-                  className="ms-4"
+              <div className="d-flex d-lg-none flex-wrap justify-content-center gap-3 mt-5 mb-4">
+                <Button
                   intention="brand"
-                  variation="standalone"
-                  iconEnd
+                  emphasis="strong"
+                  href="/docs"
+                  iconEnd={<XrplArrowInternalLinkIcon />}
+                >
+                  {translate("Read Technical Docs")}
+                </Button>
+                <Button
+                  intention="neutral"
+                  emphasis="standard"
                   target="_blank"
                   href="https://www.youtube.com/playlist?list=PLJQ55Tj1hIVZtJ_JdTvSum2qMTsedWkNi"
+                  iconEnd={<XrplArrowExternalLinkIcon />}
                 >
                   {translate("Watch Explainer Videos")}
-                </XrplLink>
+                </Button>
               </div>
             </div>
           </div>
@@ -226,9 +238,14 @@ export default function XrplOverview() {
                   "Unlike most other blockchains, the XRP Ledger requires no mining and uses negligible energy, key to long-term growth and stability."
                 )}
               </p>
-              <a className="btn btn-primary btn-arrow" href="/about/impact">
+              <Button
+                intention="brand"
+                emphasis="strong"
+                href="/about/impact"
+                iconEnd={<XrplArrowInternalLinkIcon />}
+              >
                 {translate("Learn More")}
-              </a>
+              </Button>
             </div>
             </PageGrid.Col>
           </PageGridRow>
@@ -255,9 +272,19 @@ export default function XrplOverview() {
                   "With the XRPL, these developers are building innovative blockchain projects and applications across use cases including tokenization of assets, online gaming, asset custody, NFTs, and DeFi."
                 )}
               </p>
-              <a className="btn btn-primary btn-arrow mb-10-sm" href="/about/uses">
-                {translate("Explore More")}
-              </a>
+              {/* The margin sits on a wrapper: `.bds-btn` resets margin-bottom
+                  and imports after _helpers.scss, so `mb-10-sm` on the button
+                  itself would lose the cascade and silently do nothing. */}
+              <div className="mb-10-sm">
+                <Button
+                  intention="brand"
+                  emphasis="standard"
+                  href="/about/uses"
+                  iconEnd={<XrplArrowInternalLinkIcon />}
+                >
+                  {translate("Explore More")}
+                </Button>
+              </div>
             </PageGrid.Col>
             <PageGrid.Col span={{ base: 4, lg: 6 }}>
               <div className="d-flex flex-column-reverse">
@@ -357,17 +384,19 @@ export default function XrplOverview() {
             </div>
           </div>
           <div className="pt-5 w-100">
-            <a
-              className="btn btn-primary btn-arrow"
+            <Button
+              intention="neutral"
+              emphasis="standard"
               target="_blank"
               href="https://www.youtube.com/channel/UC6zTJdNCBI-TKMt5ubNc_Gg"
+              iconEnd={<XrplArrowExternalLinkIcon />}
             >
               {translate("Watch Full Series on YouTube")}
-            </a>
+            </Button>
           </div>
         </section>
         <section className="container-new py-26">
-          <div className="col-md-6 offset-md-3 p-6-sm p-10-until-sm br-8 cta-card">
+          <div className="col-lg-6 offset-lg-3 p-6-sm p-10-until-sm br-8 cta-card">
             <div className="z-index-1 position-relative">
               <h4 className="h4 mb-10-until-sm mb-8-sm">
                 {translate("Tomorrow’s Blockchain Starts With You")}
@@ -383,13 +412,15 @@ export default function XrplOverview() {
                 {translate("about.index.tomorrow.ppart3", ".")}
               </p>
 
-              <a
-                className="btn btn-primary btn-arrow"
+              <Button
+                intention="brand"
+                emphasis="strong"
                 href="https://xrplgrants.org/"
                 target="_blank"
+                iconEnd={<XrplArrowInternalLinkIcon />}
               >
                 {translate("Explore XRPL Developer Funding")}
-              </a>
+              </Button>
             </div>
           </div>
         </section>
@@ -426,9 +457,15 @@ export default function XrplOverview() {
               </div>
             ))}
             <center>
-              <a className="btn btn-primary btn-arrow mt-20" href="/about/faq">
+              <Button
+                intention="neutral"
+                emphasis="standard"
+                className="mt-20"
+                href="/about/faq"
+                iconEnd={<XrplArrowExternalLinkIcon />}
+              >
                 {translate("View Full FAQ")}
-              </a>
+              </Button>
             </center>
           </div>
         </section>

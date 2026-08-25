@@ -31,6 +31,15 @@
   border-color: $success;
 }
 
+// The WebSocket tool's selected-command heading is a Link for its neutral
+// color, but it reads as a heading: no underline, the h3's own weight, and no
+// horizontal padding so it stays flush with the description below.
+h3 > .selected_command.xrpl-link {
+  padding: 0;
+  font-weight: inherit;
+  text-decoration: none;
+}
+
 .api-input-area .btn-group > .send-request.btn {
   // This button is part of a toolbar with a loader animation, which causes the
   // right edges to not be rounded even though the loader is usually invisible.

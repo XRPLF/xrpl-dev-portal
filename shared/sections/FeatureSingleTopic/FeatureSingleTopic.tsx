@@ -19,7 +19,7 @@ export interface FeatureSingleTopicProps {
   /** Feature description text (label-l typography) */
   description?: string;
   /** Array of links (1-5 links supported)
-   * - 1 link: renders as primary or secondary button (based on singleButtonVariant)
+   * - 1 link: renders as strong or standard button (based on singleButtonEmphasis)
    * - 2 links: renders as primary + tertiary buttons side by side
    * - 3+ links: all tertiary buttons stacked
    */
@@ -28,7 +28,7 @@ export interface FeatureSingleTopicProps {
    * - 'primary': Primary button (default)
    * - 'secondary': Secondary button
    */
-  singleButtonVariant?: 'primary' | 'secondary';
+  singleButtonEmphasis?: 'strong' | 'standard';
   /** Feature media (image) configuration */
   media: {
     src: string;
@@ -55,7 +55,7 @@ export const FeatureSingleTopic: React.FC<FeatureSingleTopicProps> = ({
   title,
   description,
   buttons = [],
-  singleButtonVariant = 'primary',
+  singleButtonEmphasis = 'strong',
   media,
   className,
 }) => {
@@ -64,8 +64,6 @@ export const FeatureSingleTopic: React.FC<FeatureSingleTopicProps> = ({
   const hasButtons = buttonValidation.hasButtons;
 
   // Button color is always green for this component
-  const buttonColor = 'green';
-  const forceColor = false;
 
   // Build root class names
   const rootClasses = clsx(
@@ -94,9 +92,7 @@ export const FeatureSingleTopic: React.FC<FeatureSingleTopicProps> = ({
       {hasButtons && (
         <ButtonGroup
           buttons={buttonValidation.buttons}
-          color={buttonColor}
-          forceColor={forceColor}
-          singleButtonVariant={singleButtonVariant}
+          singleButtonEmphasis={singleButtonEmphasis}
         />
       )}
       </div>

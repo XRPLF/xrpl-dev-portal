@@ -289,6 +289,14 @@ aside .sidenav_cat_title {
   color: $black;
 }
 
+// The command list's method links carry no color of their own, so in light
+// mode they fell through to `aside li a`'s $white (styles/_side-nav.scss),
+// which isn't theme-scoped -- white on white. Kept at two classes so the
+// hover/active rule below still outranks it on source order.
+.command-list a {
+  color: $light-fg;
+}
+
 aside a:hover,
 aside .sidenav_cat_title:hover,
 aside a.active,

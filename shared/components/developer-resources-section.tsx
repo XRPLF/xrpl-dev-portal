@@ -1,7 +1,7 @@
 import React from "react";
 import clsx from "clsx";
 import { useThemeHooks } from "@redocly/theme/core/hooks";
-import { Link } from "@redocly/theme/components/Link/Link";
+import { Link } from "./Link";
 
 export interface DeveloperResourcesCard {
   title: string;
@@ -41,9 +41,13 @@ export const DeveloperResourcesSection: React.FC<DeveloperResourcesSectionProps>
                 {card.links.map((link, linkIndex) => (
                   <Link
                     key={linkIndex}
-                    className={clsx("com-card-link", { "mt-16": linkIndex === 0 })}
+                    className={clsx({ "mt-16": linkIndex === 0 })}
+                    intention="brand"
+                    variation="standalone"
+                    size="lg"
+                    iconEnd
                     target={link.target || "_blank"}
-                    to={link.url}
+                    href={link.url}
                   >
                     {translate(link.text)}
                   </Link>

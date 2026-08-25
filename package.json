@@ -6,6 +6,7 @@
   "description": "The XRP Ledger Dev Portal is the authoritative source for XRP Ledger documentation, including the core server, client libraries, and other open-source XRP Ledger software.",
   "scripts": {
     "analyze-css": "node scripts/analyze-css.js",
+    "button-audit": "node scripts/button-audit.mjs",
     "contrast-check": "node scripts/contrast-check.mjs",
     "build-css": "sass --load-path styles/scss --load-path . styles/xrpl.scss ./static/css/devportal2024-v1.tmp.css && NODE_ENV=production postcss ./static/css/devportal2024-v1.tmp.css -o ./static/css/devportal2024-v1.css && rm -f ./static/css/devportal2024-v1.tmp.css",
     "build-css:dev": "sass --load-path styles/scss --load-path . styles/xrpl.scss ./static/css/devportal2024-v1.tmp.css --source-map && postcss ./static/css/devportal2024-v1.tmp.css -o ./static/css/devportal2024-v1.css && rm -f ./static/css/devportal2024-v1.tmp.css",

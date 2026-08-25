@@ -52,11 +52,9 @@ function MyPage() {
 
 ### Links (ButtonGroup)
 
-The `links` prop is optional. When provided, at least one non-empty link (`label` and `href`) is required to show the button section. Uses `{ label, href }` format for consistent ButtonGroup rendering; `variant` and `color` are set by the component:
+The `links` prop is optional. When provided, at least one non-empty link (`label` and `href`) is required to show the button section. Uses `{ label, href }` format for consistent ButtonGroup rendering; emphasis is set by the component:
 
-- **First link**: `variant="primary"`, `color="green"`, `forceColor={true}`
-- **Second link**: `variant="tertiary"`, `color="green"`, `forceColor={true}`
-- Max 2 links supported (ButtonGroup validation)
+- Max 2 links: first `strong`, second `subtle`
 
 ### Video Element
 

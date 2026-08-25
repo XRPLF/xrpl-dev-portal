@@ -66,14 +66,11 @@ export const FeatureTwoColumn: React.FC<FeatureTwoColumnProps> = ({
 }) => {
   // Determine button color based on background
   // Rule: Black buttons must be used for all backgrounds (including neutral)
-  const buttonColor = "black";
-  const forceColor = true;
 
   // Convert links to ButtonConfig format
   const buttonConfigs: ButtonConfig[] = links.map((link) => ({
     label: link.label,
     href: link.href,
-    forceColor: forceColor,
   }));
 
   // Validate buttons (FeatureTwoColumn supports 1-5 links per design spec)
@@ -108,13 +105,11 @@ export const FeatureTwoColumn: React.FC<FeatureTwoColumnProps> = ({
                 {hasButtons && (
                   <ButtonGroup
                     buttons={buttonValidation.buttons}
-                    color={buttonColor}
-                    forceColor={forceColor}
+                    surface={{ context: "on-saturated" }}
                     // Uniform tertiary treatment for this section, flush with
                     // the text above it. `singleButtonVariant` is intentionally
                     // omitted — `forceVariant` supersedes it.
-                    forceVariant="tertiary"
-                    forceNoPadding
+                    forceEmphasis="subtle"
                     gap="medium"
                   />
                 )}

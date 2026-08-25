@@ -70,7 +70,7 @@
     flex-direction: column;
     gap: $bds-space-sm; // 8px - spacing('sm')
     width: 100%;
-    color: $bds-btn-neutral-black;
+    color: $black;
 
 
     @include media-breakpoint-up(lg) {
@@ -80,7 +80,7 @@
 
   &__headline {
     @include wordbreak('break-word');
-    color: $bds-btn-neutral-black;
+    color: $black;
 
 
     margin: 0;
@@ -134,7 +134,8 @@
 // and the theme's `a:not([role="button"]):visited` (0,3,1). Repeating the block
 // parent plus the :not() chain lands at (0,6,2)+, winning without !important.
 
-$bds-standard-card-link-color: $bds-btn-neutral-black;
+$bds-standard-card-link-color: $black;
+$bds-standard-card-link-hover-color: $lilac-500; // == $light-link-hover-color
 
 html.light .bds-standard-card .bds-standard-card__description,
 html.dark .bds-standard-card .bds-standard-card__description {

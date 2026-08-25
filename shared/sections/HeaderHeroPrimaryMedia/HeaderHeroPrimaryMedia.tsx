@@ -133,7 +133,6 @@ const HeaderHeroPrimaryMedia = forwardRef<
     (links ?? []).map((l) => ({
       label: l.label,
       href: l.href,
-      forceColor: true,
     })),
     2,
     isEnvironment(["development", "test"]),
@@ -185,8 +184,6 @@ const HeaderHeroPrimaryMedia = forwardRef<
         <div className="bds-header-hero-primary-media__cta-buttons">
           <ButtonGroup
             buttons={buttonValidation.buttons}
-            color="green"
-            forceColor
             gap="medium"
           />
         </div>

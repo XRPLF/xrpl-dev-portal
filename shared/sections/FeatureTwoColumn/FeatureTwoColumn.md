@@ -38,12 +38,11 @@ Layout is implemented as a **single flex structure** (no separate mobile/desktop
 
 The component renders a `ButtonGroup` from the links you pass.
 
-**Every link renders as a tertiary button, regardless of count.** This section
-pairs its links with editorial copy, so the design calls for one uniform
-text-link treatment rather than `ButtonGroup`'s default count-based mix. It's
-implemented by passing `forceVariant="tertiary"` and `forceNoPadding`, so the
-buttons also sit flush with the title and description instead of being indented
-by the button's horizontal padding.
+**Every link renders the same, regardless of count.** This section pairs its
+links with editorial copy, so the design calls for one uniform text-link
+treatment rather than `ButtonGroup`'s default count-based mix. It passes
+`forceEmphasis="subtle"`, which renders the set as `Link`s sitting flush with
+the title and description.
 
 Only the layout still varies with the count:
 

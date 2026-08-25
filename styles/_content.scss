@@ -14,7 +14,15 @@
   // Content links that don't carry .xrpl-link: raw HTML <a> in a .md file,
   // and tag components like {% child-pages %} that render their own <a>
   // (see ChildPages.tsx). Matches MarkdownLink's neutral (black) treatment.
-  a:not(.xrpl-link):not(.btn) {
+  //
+  // The exclusions are components that paint their own anchors. .bds-btn is
+  // there for the same reason as .btn, which it replaces: an anchor Button
+  // inside Markdown ({% try-it %} renders one) would otherwise be repainted as
+  // a content link — black label, underline, in every state. Button.scss §5
+  // out-specifies Bootstrap, but this rule scores (0,4,3) and wins, so the
+  // component cannot defend itself here. Excluding it is the fix; raising §5's
+  // specificity to outrank a page rule would just start an arms race.
+  a:not(.xrpl-link):not(.btn):not(.bds-btn) {
     @include xrpl-link-colors(neutral);
     @include xrpl-link-underline;
     @include xrpl-link-focus(on-theme);

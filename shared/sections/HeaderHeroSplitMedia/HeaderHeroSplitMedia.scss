@@ -255,11 +255,14 @@ $bds-hero-mobile-content-gap: $bds-space-3xl;         // 32px - spacing('3xl')
     display: flex;
     flex-direction: column;
     align-items: flex-start; // Prevent buttons from stretching to full width on mobile
+    // Matches .bds-button-group--gap-small — see patterns/ButtonGroup.
+    gap: $bds-space-sm; // 8px - spacing('sm')
 
     // Tablet & Desktop - horizontal layout
     @include media-breakpoint-up(md) {
       flex-direction: row;
       align-items: center;
+      gap: $bds-space-xs; // 4px - spacing('xs')
     }
   }
 
