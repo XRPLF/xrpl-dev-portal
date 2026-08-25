@@ -85,6 +85,11 @@ module.exports = {
                 // XRPL Link classes
                 /^xrpl-link--/,
 
+                // Use-case category chips on /about/uses. Composed with a
+                // template literal in about/uses.page.tsx, so PurgeCSS never
+                // sees the finished class name.
+                /^label-use-/,
+
                 /^g-/, // Gap utilities
                 /^p-/, // Padding utilities
                 /^m-/, // Margin utilities  
