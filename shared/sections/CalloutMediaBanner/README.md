@@ -99,7 +99,6 @@ interface ButtonConfig {
   label: string;        // Button text
   href?: string;        // Link destination
   onClick?: () => void; // Click handler
-  forceColor?: boolean; // Keep the color constant regardless of theme mode
 }
 ```
 

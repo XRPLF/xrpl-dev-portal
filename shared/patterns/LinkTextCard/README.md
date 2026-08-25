@@ -92,9 +92,8 @@ LinkTextCard is a pattern component designed for sequential content presentation
 | `label` | `string` | Required | Button text |
 | `href` | `string` | - | Link destination (renders as anchor) |
 | `onClick` | `() => void` | - | Click handler (renders as button) |
-| `forceColor` | `boolean` | `false` | Force color regardless of theme |
 
-**Note**: Only the first 2 buttons will be rendered. Button color is fixed to 'green'.
+**Note**: Only the first 2 buttons will be rendered.
 
 ## Component Structure
 
@@ -106,7 +105,7 @@ LinkTextCard is a pattern component designed for sequential content presentation
   </div>
   <div className="bds-link-text-card__content">
     <p className="body-l">Settle transactions in 3-5 seconds...</p>
-    <ButtonGroup buttons={[...]} color="green" />
+    <ButtonGroup buttons={[...]} />
   </div>
 </li>
 ```

@@ -86,7 +86,6 @@ interface ButtonConfig {
   label: string;        // Button text
   href?: string;        // Optional link URL
   onClick?: () => void; // Optional click handler
-  forceColor?: boolean; // Force button color override
 }
 ```
 

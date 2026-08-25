@@ -567,6 +567,9 @@ $bds-btn-ring: (
   &:active:not(:disabled):not([aria-disabled='true']),
   &:focus-visible:not(:disabled):not([aria-disabled='true']),
   &.bds-btn--loading {
+    // Return the stroke to transparent in this special case
+    --bds-btn-bd: var(--bds-btn-engaged-bd);
+
     &::before {
       transform: scaleY(0);
     }

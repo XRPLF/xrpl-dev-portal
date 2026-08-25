@@ -46,6 +46,12 @@
  * cascade is real, but the page never puts the button in that state on its own.
  * Pass --no-synthetic to measure only what the page actually renders.
  *
+ * Markup that already pins the appearance is honoured rather than forced:
+ * a `.bds-btn--loading` button is compared against ENGAGED in every state (§4
+ * lists loading alongside :hover), an `aria-disabled="true"` button against
+ * REST (§4's engaged selectors exclude it), and an already-disabled button is
+ * measured only in `disabled`, its one reachable state.
+ *
  * WHAT IS CHECKED, PER STATE
  *
  *   colour     label, background, all four border sides
@@ -597,6 +603,7 @@ async function auditPage(browser, url) {
             // jQuery's .prop("disabled", true), which never writes an
             // attribute -- so hasAttribute() misses every JS-gated control.
             alreadyDisabled: el.disabled === true || el.classList.contains('bds-btn--disabled'),
+            alreadyLoading: el.classList.contains('bds-btn--loading'),
             alreadyInactive: el.getAttribute('aria-disabled') === 'true',
           };
         }, { s: SELECTOR, i });
@@ -678,7 +685,30 @@ async function auditPage(browser, url) {
           // `inactive` is specified to be indistinguishable from rest; that is
           // the point of it existing separately from disabled, so it is compared
           // against rest rather than getting its own row in the palette.
-          const exp = expectedFor({ group, emphasis, context, mode }, state === 'inactive' ? 'rest' : state);
+          //
+          // Two markup states PIN the appearance, so which pseudo-class we force
+          // stops mattering. Both were reported as defects before this existed,
+          // and in both cases the component was right and the audit was wrong —
+          // the measured values came out exactly inverted from the expectation,
+          // which is the signature of modelling a state that does not apply:
+          //
+          //   .bds-btn--loading      §4 lists it alongside :hover/:active in the
+          //                          engaged selector, so a loading button is
+          //                          engaged at rest and stays engaged. Compare
+          //                          every non-disabled state against engaged.
+          //   aria-disabled="true"   §4's engaged selectors all carry
+          //                          :not([aria-disabled='true']), so hover,
+          //                          active and focus never engage. Compare
+          //                          every non-disabled state against rest.
+          //
+          // `disabled` still resolves to the disabled group in both cases: §4's
+          // disabled block out-ranks the engaged one, and a disabled button is
+          // neither loading nor inactive as far as paint is concerned.
+          const pinned = info.alreadyLoading ? 'hover' : info.alreadyInactive ? 'rest' : null;
+          const expState = state === 'disabled'
+            ? 'disabled'
+            : pinned || (state === 'inactive' ? 'rest' : state);
+          const exp = expectedFor({ group, emphasis, context, mode }, expState);
           const want = k => norm[exp[k]];
 
           const push = (what, expected, actual) => findings.push({
