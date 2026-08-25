@@ -552,28 +552,38 @@ $bds-btn-ring: (
 //
 // Does not generalise: `standard`/`subtle` have a `transparent` resting fill,
 // which cannot mask the soft fill underneath.
-.bds-btn--on-saturated.bds-btn--strong:not(:disabled):not(.bds-btn--disabled) {
-  --bds-btn-base-fill: var(--bds-btn-engaged-bg);
-  --bds-btn-rise-fill: var(--bds-btn-bg);
-  --bds-btn-bd: var(--bds-btn-bg);
-
-  &::before {
-    transform: scaleY(1);
-    transform-origin: top center;
-  }
-
-  // Mirrors §4's engaged selector list.
-  &:hover:not(:disabled):not([aria-disabled='true']),
-  &:active:not(:disabled):not([aria-disabled='true']),
-  &:focus-visible:not(:disabled):not([aria-disabled='true']),
-  &.bds-btn--loading {
-    // Return the stroke to transparent in this special case
-    --bds-btn-bd: var(--bds-btn-engaged-bd);
+//
+// A mixin, not a bare rule, because `bds-button()` needs the same swap and this
+// is the half of the paint that is chosen by the group rather than restated:
+// duplicating it is what lets the two forms drift apart.
+@mixin bds-btn-saturated-swap {
+  &:not(:disabled):not(.bds-btn--disabled) {
+    --bds-btn-base-fill: var(--bds-btn-engaged-bg);
+    --bds-btn-rise-fill: var(--bds-btn-bg);
+    --bds-btn-bd: var(--bds-btn-bg);
 
     &::before {
-      transform: scaleY(0);
+      transform: scaleY(1);
+      transform-origin: top center;
+    }
+
+    // Mirrors §4's engaged selector list.
+    &:hover:not(:disabled):not([aria-disabled='true']),
+    &:active:not(:disabled):not([aria-disabled='true']),
+    &:focus-visible:not(:disabled):not([aria-disabled='true']),
+    &.bds-btn--loading {
+      // Return the stroke to transparent in this special case
+      --bds-btn-bd: var(--bds-btn-engaged-bd);
+
+      &::before {
+        transform: scaleY(0);
+      }
     }
   }
+}
+
+.bds-btn--on-saturated.bds-btn--strong {
+  @include bds-btn-saturated-swap;
 }
 
 // Subtle is the only emphasis with its own type treatment: heavier, tracked out
@@ -748,6 +758,11 @@ a.bds-btn--subtle.bds-btn--subtle.bds-btn--subtle:active {
 
   @include bds-btn-structure;
   @include bds-btn-motion;
+
+  // §5's layer swap, selected by the same pair that selects it there.
+  @if $emphasis == 'strong' and $context == 'on-saturated' {
+    @include bds-btn-saturated-swap;
+  }
 
   // Subtle's type treatment, which is a separate class in the component form.
   @if $emphasis == 'subtle' {
