@@ -2162,6 +2162,10 @@ html.light {
         
         .card-links {
           margin-top: auto;
+          // .page-community makes this a flex column, which stretches each
+          // standalone Link to the card's full width -- keep them sized to
+          // their own label and arrow.
+          align-items: flex-start;
           
           @media (max-width: 767px) {
             margin-top: 16px;
