@@ -12,7 +12,7 @@ status: not_enabled
 The Sponsored Fees and Reserves feature allows an account to pay [transaction fees](../transactions/transaction-cost.md) and [reserve requirements](./reserves.md) on behalf of another account. The account that pays is called the _Sponsor_, and the account that benefits is called the _Sponsee_. Sponsees maintain full control over their keys and accounts.
 
 {% admonition type="info" name="Note" %}
-Sponsorship does not transfer XRP to the sponsee's wallet. The sponsor can cover transaction fees, and for reserve sponsorship, the ledger tracks which account is responsible for the reserve. This is not an "onramp" for the sponsee; it is a mechanism for the sponsor to cover costs on the sponsee's behalf.
+Sponsorship does not transfer XRP to the sponsee's wallet. The sponsor can cover transaction fees, and the ledger tracks which account is responsible for any sponsored reserve. This is not an "onramp" for the sponsee; it is a mechanism for the sponsor to cover costs on the sponsee's behalf.
 {% /admonition %}
 
 Without sponsorship, accounts must self-fund both transaction fees and reserves before they can transact on the XRP Ledger. Sponsorship provides a mechanism for entities with established XRP balances to subsidize these costs while maintaining strong on-chain accountability.
@@ -85,7 +85,7 @@ Sponsorship includes safeguards to protect both parties from misuse:
 
 - **Co-signed flow**: Both parties must consent to each transaction by providing their signatures. The sponsor signs the entire transaction, including the sponsee's `Account` and `Sequence` fields, which prevents signature replay attacks. The sponsor also approves the `Fee` value and any fields that affect reserve requirements, such as `Destination`.
 
-- **Pre-funded flow**: The sponsor consents once when submitting a `SponsorshipSet` transaction. The sponsee cannot modify the terms or exceed the limits the sponsor set. The sponsor can limit usage with `FeeAmount`, `MaxFee`, and `RemainingOwnerCount`, or require their signature for specific transactions using the `lsfSponsorshipRequireSignForFee` or `lsfSponsorshipRequireSignForReserve` flags.
+- **Pre-funded flow**: The sponsor consents once when submitting a `SponsorshipSet` transaction. The sponsee cannot modify the terms or exceed the limits the sponsor set. The sponsor can add or reduce usage with `FeeAmountDelta` and `RemainingOwnerCountDelta`, cap each sponsored transaction with `MaxFee`, or require their signature for specific transactions using the `lsfSponsorshipRequireSignForFee` or `lsfSponsorshipRequireSignForReserve` flags.
 
 The sponsee cannot unilaterally change the sponsorship type, and the sponsor's funds cannot be used beyond the agreed terms. Only the sponsee can transfer a sponsorship to a new sponsor, and the new sponsor must co-sign the transaction to consent. Either party can exit a sponsorship relationship at any time by submitting a [SponsorshipTransfer transaction][].
 
@@ -129,6 +129,12 @@ A sponsor's account cannot be deleted if it is sponsoring any existing accounts 
   - [Transaction Cost](../transactions/transaction-cost.md)
   - [Reserves](./reserves.md)
   - [Transaction Queue](../transactions/transaction-queue.md)
+
+- **Tutorials**
+  - [Sponsor a Transaction by Co-Signing](../../tutorials/best-practices/account-management/sponsor-a-transaction-by-co-signing.md)
+  - [Sponsor a Transaction with a Pre-funded Pool](../../tutorials/best-practices/account-management/sponsor-a-transaction-with-a-pre-funded-pool.md)
+  - [Manage a Sponsorship Pool](../../tutorials/best-practices/account-management/manage-a-sponsorship-pool.md)
+  - [Transfer a Reserve Sponsorship](../../tutorials/best-practices/account-management/transfer-a-reserve-sponsorship.md)
 
 - **References:**
     - [AccountRoot entry]
