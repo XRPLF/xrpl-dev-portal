@@ -36,13 +36,13 @@ import {
   readAccountXrp,
   readTokenBalance,
   signBatchCopy,
-  submit,
   submitBatch,
-  submitSponsored,
+  submitMaybeSponsored,
   verifyBatchInners,
   type BatchSignerEntry,
   type ConfidentialAccount,
   type IssuanceOptions,
+  type SponsorOptions,
   type TokenBalance,
   type TxRecord,
 } from './xrpl'
@@ -81,6 +81,7 @@ function issuanceOptions(
   issuer: string,
   token: TokenInfo,
   requireAuth: boolean,
+  sponsor?: string,
 ): IssuanceOptions {
   return {
     issuer,
@@ -90,6 +91,7 @@ function issuanceOptions(
     maximumAmount: token.maximumAmount,
     metadata: token.metadata,
     requireAuth,
+    sponsor,
   }
 }
 
@@ -176,6 +178,19 @@ export class RepoLedger {
     return direction === 'near' ? this.nearLeg : this.farLeg
   }
 
+  /**
+   * How another party covers one transaction's cost. `feeOnly` is required for
+   * transactions that create no ledger object, such as a convert or a merge.
+   */
+  private sponsorOptions(
+    sponsor: PartyKey | undefined,
+    feeOnly = false,
+  ): SponsorOptions | undefined {
+    return sponsor == null
+      ? undefined
+      : { sponsor: this.party(sponsor).wallet, feeOnly }
+  }
+
   // ----------------------------------------------------------- token issuance
 
   /** Create one of the deal's two token issuances and record its ID. */
@@ -184,13 +199,20 @@ export class RepoLedger {
     which: IssuanceKey,
     requireAuth: boolean,
     label: string,
+    sponsor?: PartyKey,
   ): Promise<{ record: TxRecord; issuanceID: string }> {
     const issuer = this.party(token.issuer)
     const { record, mptIssuanceID } = await createIssuance(
       this.client,
       issuer.wallet,
-      issuanceOptions(issuer.wallet.address, token, requireAuth),
+      issuanceOptions(
+        issuer.wallet.address,
+        token,
+        requireAuth,
+        sponsor ? this.address(sponsor) : undefined,
+      ),
       label,
+      this.sponsorOptions(sponsor),
     )
     if (which === 'collateral') {
       this.collateralIssuanceID = mptIssuanceID
@@ -205,17 +227,20 @@ export class RepoLedger {
     token: TokenInfo,
     which: IssuanceKey,
     label: string,
+    sponsor?: PartyKey,
   ): Promise<TxRecord> {
     const issuer = this.party(token.issuer)
-    return submit(
+    return submitMaybeSponsored(
       this.client,
       buildIssuerEncryptionKey(
         issuer.wallet.address,
         this.requireIssuance(which),
         issuer.confidentialKeys.publicKey,
+        sponsor ? this.address(sponsor) : undefined,
       ),
       issuer.wallet,
       label,
+      this.sponsorOptions(sponsor),
     )
   }
 
@@ -229,16 +254,13 @@ export class RepoLedger {
     label: string,
     options: { holder?: PartyKey; sponsor?: PartyKey } = {},
   ): Promise<TxRecord> {
-    const tx = this.buildAuthorize(actor, which, options)
-    return options.sponsor
-      ? submitSponsored(
-          this.client,
-          tx,
-          this.party(actor).wallet,
-          this.party(options.sponsor).wallet,
-          label,
-        )
-      : submit(this.client, tx, this.party(actor).wallet, label)
+    return submitMaybeSponsored(
+      this.client,
+      this.buildAuthorize(actor, which, options),
+      this.party(actor).wallet,
+      label,
+      this.sponsorOptions(options.sponsor),
+    )
   }
 
   /** Pay a public (unencrypted) MPT amount from one party to another. */
@@ -248,17 +270,20 @@ export class RepoLedger {
     which: IssuanceKey,
     units: bigint,
     label: string,
+    sponsor?: PartyKey,
   ): Promise<TxRecord> {
-    return submit(
+    return submitMaybeSponsored(
       this.client,
       buildMPTPayment(
         this.address(from),
         this.address(to),
         this.requireIssuance(which),
         units,
+        sponsor ? this.address(sponsor) : undefined,
       ),
       this.party(from).wallet,
       label,
+      this.sponsorOptions(sponsor),
     )
   }
 
@@ -270,6 +295,7 @@ export class RepoLedger {
     which: IssuanceKey,
     units: bigint,
     label: string,
+    sponsor?: PartyKey,
   ): Promise<TxRecord> {
     return convertToConfidential(
       this.client,
@@ -277,6 +303,7 @@ export class RepoLedger {
       this.requireIssuance(which),
       units,
       label,
+      this.sponsorOptions(sponsor, true),
     )
   }
 
@@ -285,12 +312,14 @@ export class RepoLedger {
     actor: PartyKey,
     which: IssuanceKey,
     label: string,
+    sponsor?: PartyKey,
   ): Promise<TxRecord> {
     return mergeInbox(
       this.client,
       this.party(actor).wallet,
       this.requireIssuance(which),
       label,
+      this.sponsorOptions(sponsor, true),
     )
   }
 
@@ -493,17 +522,31 @@ export class RepoLedger {
     })
   }
 
-  previewCreateIssuance(token: TokenInfo, requireAuth: boolean): unknown {
+  previewCreateIssuance(
+    token: TokenInfo,
+    requireAuth: boolean,
+    sponsor?: PartyKey,
+  ): unknown {
     return buildIssuanceCreate(
-      issuanceOptions(this.address(token.issuer), token, requireAuth),
+      issuanceOptions(
+        this.address(token.issuer),
+        token,
+        requireAuth,
+        sponsor ? this.address(sponsor) : undefined,
+      ),
     )
   }
 
-  previewRegisterIssuerKey(token: TokenInfo, which: IssuanceKey): unknown {
+  previewRegisterIssuerKey(
+    token: TokenInfo,
+    which: IssuanceKey,
+    sponsor?: PartyKey,
+  ): unknown {
     return buildIssuerEncryptionKey(
       this.address(token.issuer),
       this.requireIssuance(which),
       this.encryptionKey(token.issuer),
+      sponsor ? this.address(sponsor) : undefined,
     )
   }
 
@@ -520,25 +563,41 @@ export class RepoLedger {
     to: PartyKey,
     which: IssuanceKey,
     units: bigint,
+    sponsor?: PartyKey,
   ): unknown {
     return buildMPTPayment(
       this.address(from),
       this.address(to),
       this.requireIssuance(which),
       units,
+      sponsor ? this.address(sponsor) : undefined,
     )
   }
 
-  previewConvert(actor: PartyKey, which: IssuanceKey, units: bigint): unknown {
+  previewConvert(
+    actor: PartyKey,
+    which: IssuanceKey,
+    units: bigint,
+    sponsor?: PartyKey,
+  ): unknown {
     return convertIntent(
       this.party(actor),
       this.requireIssuance(which),
       units,
+      sponsor ? this.address(sponsor) : undefined,
     )
   }
 
-  previewMergeInbox(actor: PartyKey, which: IssuanceKey): unknown {
-    return buildMergeInbox(this.address(actor), this.requireIssuance(which))
+  previewMergeInbox(
+    actor: PartyKey,
+    which: IssuanceKey,
+    sponsor?: PartyKey,
+  ): unknown {
+    return buildMergeInbox(
+      this.address(actor),
+      this.requireIssuance(which),
+      sponsor ? this.address(sponsor) : undefined,
+    )
   }
 
   /**

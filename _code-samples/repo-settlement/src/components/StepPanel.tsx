@@ -16,7 +16,7 @@ import { useEffect, useRef } from 'react'
 
 import { explorerTxUrl } from '../config'
 import type { RunnableStep, StepAction } from '../steps'
-import type { StepResult } from '../types'
+import type { StepCallout, StepResult } from '../types'
 import { type PartyKey } from '../variables'
 import { ActionConsole } from './ActionConsole'
 import { JsonView } from './JsonView'
@@ -48,6 +48,14 @@ const NEXT_READS: { label: string; href: string }[] = [
     href: 'https://xrpl.org/docs/concepts/accounts/sponsored-fees-and-reserves',
   },
 ]
+
+/** A step's callouts as a list, whether it declared one or several. */
+function calloutList(callout: RunnableStep['callout']): StepCallout[] {
+  if (callout == null) {
+    return []
+  }
+  return Array.isArray(callout) ? callout : [callout]
+}
 
 /** Transactions, notes, and artifacts produced by one completed action. */
 function ActionResult({ result }: { result: StepResult }) {
@@ -388,16 +396,17 @@ export function StepPanel({
             {step.description}
           </Text>
 
-          {step.callout && (
+          {calloutList(step.callout).map((callout) => (
             <Alert
+              key={callout.title}
               mt="sm"
               p="sm"
-              color={step.callout.kind === 'warn' ? 'yellow' : 'blue'}
-              title={step.callout.title}
+              color={callout.kind === 'warn' ? 'yellow' : 'blue'}
+              title={callout.title}
             >
-              <Text size="sm">{step.callout.text}</Text>
+              <Text size="sm">{callout.text}</Text>
             </Alert>
-          )}
+          ))}
 
           {/* Same Alert as the callout above it, so the two kinds of aside read
               as one family and differ only in color and heading. */}

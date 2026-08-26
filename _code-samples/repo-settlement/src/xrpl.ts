@@ -201,15 +201,34 @@ export async function submit(
   return toRecord(response, label)
 }
 
-/** The fields that hand a transaction's fee and reserve to another account. */
-export function sponsorFields(sponsor: string): {
+/**
+ * The fields that hand a transaction's cost to another account.
+ *
+ * `spfSponsorReserve` is only valid on transactions that create a ledger
+ * object, so pass `feeOnly` for the ones that do not — a convert or a merge
+ * moves value inside an `MPToken` that already exists, and asking to sponsor
+ * its reserve is rejected outright.
+ */
+export function sponsorFields(
+  sponsor: string,
+  feeOnly = false,
+): {
   Sponsor: string
   SponsorFlags: number
 } {
   return {
     Sponsor: sponsor,
-    SponsorFlags: SponsorFlags.spfSponsorFee | SponsorFlags.spfSponsorReserve,
+    SponsorFlags: feeOnly
+      ? SponsorFlags.spfSponsorFee
+      : SponsorFlags.spfSponsorFee | SponsorFlags.spfSponsorReserve,
   }
+}
+
+/** How another account covers one transaction's cost. */
+export interface SponsorOptions {
+  sponsor: Wallet
+  /** Set for transactions that create no ledger object. */
+  feeOnly?: boolean
 }
 
 /**
@@ -222,17 +241,30 @@ export async function submitSponsored(
   client: Client,
   tx: SubmittableTransaction,
   sender: Wallet,
-  sponsor: Wallet,
+  options: SponsorOptions,
   label: string,
 ): Promise<TxRecord> {
   const prepared = await client.autofill({
     ...tx,
-    ...sponsorFields(sponsor.address),
+    ...sponsorFields(options.sponsor.address, options.feeOnly),
   })
   const senderSigned = sender.sign(prepared)
-  const coSigned = signAsSponsor(sponsor, senderSigned.tx_blob)
+  const coSigned = signAsSponsor(options.sponsor, senderSigned.tx_blob)
   const response = await client.submitAndWait(coSigned.tx_blob)
   return { ...toRecord(response, label), sponsored: true }
+}
+
+/** Submit as the sender, or sponsored when another account covers the cost. */
+export async function submitMaybeSponsored(
+  client: Client,
+  tx: SubmittableTransaction,
+  sender: Wallet,
+  label: string,
+  options?: SponsorOptions,
+): Promise<TxRecord> {
+  return options == null
+    ? submit(client, tx, sender, label)
+    : submitSponsored(client, tx, sender, options, label)
 }
 
 // ------------------------------------------------------------ token issuance
@@ -251,6 +283,8 @@ export interface IssuanceOptions {
   metadata: Omit<MPTokenMetadata, 'ticker' | 'name'>
   /** Gate holders: each one needs the issuer's approval before it can hold. */
   requireAuth?: boolean
+  /** Another account to pay the fee and reserve. */
+  sponsor?: string
 }
 
 /**
@@ -277,6 +311,7 @@ export function buildIssuanceCreate(
       name: options.name,
       ...options.metadata,
     }),
+    ...(options.sponsor ? sponsorFields(options.sponsor) : {}),
   }
 }
 
@@ -289,12 +324,14 @@ export function buildIssuerEncryptionKey(
   issuer: string,
   mptIssuanceID: string,
   encryptionKey: string,
+  sponsor?: string,
 ): MPTokenIssuanceSet {
   return {
     TransactionType: 'MPTokenIssuanceSet',
     Account: issuer,
     MPTokenIssuanceID: mptIssuanceID,
     IssuerEncryptionKey: encryptionKey,
+    ...(sponsor ? sponsorFields(sponsor) : {}),
   }
 }
 
@@ -323,12 +360,14 @@ export function buildMPTPayment(
   to: string,
   mptIssuanceID: string,
   units: bigint,
+  sponsor?: string,
 ): Payment {
   return {
     TransactionType: 'Payment',
     Account: from,
     Destination: to,
     Amount: { mpt_issuance_id: mptIssuanceID, value: units.toString() },
+    ...(sponsor ? sponsorFields(sponsor) : {}),
   }
 }
 
@@ -338,12 +377,14 @@ export async function createIssuance(
   issuer: Wallet,
   options: IssuanceOptions,
   label: string,
+  sponsor?: SponsorOptions,
 ): Promise<{ record: TxRecord; mptIssuanceID: string }> {
-  const record = await submit(
+  const record = await submitMaybeSponsored(
     client,
     buildIssuanceCreate(options),
     issuer,
     label,
+    sponsor,
   )
 
   // The issuance ID is assigned by the ledger; read it back from the metadata.
@@ -393,9 +434,10 @@ export async function convertToConfidential(
   mptIssuanceID: string,
   units: bigint,
   label: string,
+  sponsor?: SponsorOptions,
 ): Promise<TxRecord> {
   const tx = await buildConvert(client, holder, mptIssuanceID, units)
-  return submit(client, tx, holder.wallet, label)
+  return submitMaybeSponsored(client, tx, holder.wallet, label, sponsor)
 }
 
 /**
@@ -407,6 +449,7 @@ export function convertIntent(
   holder: ConfidentialAccount,
   mptIssuanceID: string,
   units: bigint,
+  sponsor?: string,
 ): Pick<
   ConfidentialMPTConvert,
   | 'TransactionType'
@@ -414,6 +457,8 @@ export function convertIntent(
   | 'MPTokenIssuanceID'
   | 'MPTAmount'
   | 'HolderEncryptionKey'
+  | 'Sponsor'
+  | 'SponsorFlags'
 > {
   return {
     TransactionType: 'ConfidentialMPTConvert',
@@ -421,6 +466,7 @@ export function convertIntent(
     MPTokenIssuanceID: mptIssuanceID,
     MPTAmount: units.toString(),
     HolderEncryptionKey: holder.confidentialKeys.publicKey,
+    ...(sponsor ? sponsorFields(sponsor, true) : {}),
   }
 }
 
@@ -432,11 +478,13 @@ export function convertIntent(
 export function buildMergeInbox(
   account: string,
   mptIssuanceID: string,
+  sponsor?: string,
 ): ConfidentialMPTMergeInbox {
   return {
     TransactionType: 'ConfidentialMPTMergeInbox',
     Account: account,
     MPTokenIssuanceID: mptIssuanceID,
+    ...(sponsor ? sponsorFields(sponsor, true) : {}),
   }
 }
 
@@ -445,12 +493,13 @@ export async function mergeInbox(
   holder: Wallet,
   mptIssuanceID: string,
   label: string,
+  sponsor?: SponsorOptions,
 ): Promise<TxRecord> {
   const tx = await prepareConfidentialMergeInbox(client, {
     account: holder.address,
     mptIssuanceID,
   })
-  return submit(client, tx, holder, label)
+  return submitMaybeSponsored(client, tx, holder, label, sponsor)
 }
 
 // ------------------------------------------------------------------- batches

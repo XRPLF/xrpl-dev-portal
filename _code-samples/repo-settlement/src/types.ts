@@ -18,6 +18,12 @@ export interface StepResult {
   artifacts?: StepArtifact[]
 }
 
+export interface StepCallout {
+  kind: 'info' | 'warn'
+  title: string
+  text: string
+}
+
 export interface StepDefinition {
   id: string
   phase: string
@@ -25,7 +31,8 @@ export interface StepDefinition {
   actors: PartyKey[]
   /** Narrative shown on the step card. */
   description: string
-  callout?: { kind: 'info' | 'warn'; title: string; text: string }
+  /** One aside, or several when a step has more than one thing to warn about. */
+  callout?: StepCallout | StepCallout[]
   /** One sentence on what the XRP Ledger contributes in this step. */
   learn?: string
 }
