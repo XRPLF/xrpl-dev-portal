@@ -10,16 +10,23 @@
   padding: 0;
 }
 
+.breadcrumb-item:first-of-type {
+  padding-left: var(--bs-breadcrumb-item-padding-x);
+}
+
 .breadcrumb-item + .breadcrumb-item:before {
     content: "\f105"; /* fontawesome angle-right */
+    color: $gray-500;
     font-family: FontAwesome;
     padding-right: 5px;
 }
+
 .breadcrumbs-wrap .breadcrumb {
   padding: 0;
   margin-bottom: 0;
   font-size: 0.833em;
 }
+
 .breadcrumb-item a {
   color: $gray-200;
   text-decoration: none;
@@ -27,6 +34,15 @@
   &:hover {
     color: $primary
   }
+}
+
+// overrides for visited breadcrumb links in light and dark modes
+html.light .breadcrumb-item a:visited {
+  color: $true-black !important;
+}
+
+html.dark .breadcrumb-item a:visited {
+  color: $white !important;
 }
 
 // The Redocly breadcrumb "dropdown" caret (e.g. the year on blog posts) is an
