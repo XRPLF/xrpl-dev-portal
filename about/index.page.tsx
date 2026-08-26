@@ -406,7 +406,7 @@ export default function XrplOverview() {
                   "about.index.tomorrow.ppart1",
                   "XRP Ledger’s innovation relies on the shared community experience of builders like you. If you’re ready to start your next big blockchain project, explore the XRPL now and consider applying for funding on your next"
                 )}`}
-                <XrplLink href="/community/developer-funding" intention="brand">
+                <XrplLink href="/community/developer-funding" intention="neutral">
                   {translate("about.index.tomorrow.ppart2", " blockchain project")}
                 </XrplLink>
                 {translate("about.index.tomorrow.ppart3", ".")}
