@@ -30,7 +30,7 @@ export default function Resources() {
         )}
         primaryCta={{
           label: translate("Explore Solutions"),
-          href: "http://xrpl.org/develop",
+          href: "/develop",
         }}
         media={{
           src: require("../static/img/bds-2026/resources-hero-media.jpg"),

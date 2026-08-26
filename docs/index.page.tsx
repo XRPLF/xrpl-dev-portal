@@ -142,24 +142,24 @@ export default function Docs() {
             href: '/docs/references/protocol/transactions/types',
           },
           {
-            label: translate('Account Methods'),
-            href: '/docs/references/http-websocket-apis/public-api-methods/account-methods',
-          },
-          {
             label: translate('Ledger Entry Types'),
             href: '/docs/references/protocol/ledger-data/ledger-entry-types',
           },
           {
-            label: translate('Transaction Methods'),
-            href: '/docs/references/http-websocket-apis/public-api-methods/transaction-methods',
-          },
-          {
             label: translate('Basic Data Types'),
             href: '/docs/references/protocol/data-types/basic-data-types',
+          },          
+          {
+            label: translate('Public API Methods'),
+            href: '/docs/references/http-websocket-apis/public-api-methods',
           },
           {
-            label: translate('Path and Orderbook Methods'),
-            href: '/docs/references/http-websocket-apis/public-api-methods/path-and-order-book-methods',
+            label: translate('Transaction Result Codes'),
+            href: '/docs/references/protocol/transactions/transaction-results',
+          },
+          {
+            label: translate('Transaction Metadata'),
+            href: '/docs/references/protocol/transactions/transaction-metadata',
           },
         ]}
       />

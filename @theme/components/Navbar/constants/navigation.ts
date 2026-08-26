@@ -42,7 +42,7 @@ export const developSubmenuData: {
     {
       label: "Client Libraries",
       labelTranslationKey: "navbar.develop.client-libraries",
-      href: "/docs/tutorials",
+      href: "/docs/references/client-libraries",
       icon: "client_lib",
       children: [
         { label: "JavaScript", labelTranslationKey: "navbar.develop.client-libraries.javascript", href: "/docs/tutorials/get-started/get-started-javascript" },
@@ -162,7 +162,7 @@ export const networkSubmenuData: NetworkSubmenuSection[] = [
     icon: "insights",
     children: [
       { label: "Explorer", labelTranslationKey: "navbar.network.insights.explorer", href: "https://livenet.xrpl.org" },
-      { label: "Amendment Voting Status", labelTranslationKey: "navbar.network.insights.amendment-voting-status", href: "https://xrpl.org/resources/known-amendments" },
+      { label: "Amendment Voting Status", labelTranslationKey: "navbar.network.insights.amendment-voting-status", href: "/resources/known-amendments" },
     ],
     patternColor: 'green',
   },

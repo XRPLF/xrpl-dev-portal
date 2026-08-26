@@ -236,7 +236,7 @@ export default function Tokenization() {
 
       {/* 7. Defining Features on XRPL — Link Text Directory */}
       <LinkTextDirectory
-        heading={translate('Defining Features on XRPL')}
+        heading={translate('Defining Features of XRPL')}
         cards={[
           {
             heading: translate('Proven Open-Source Technology'),

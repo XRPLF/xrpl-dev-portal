@@ -98,18 +98,9 @@
     - group: Credit
       groupTranslationKey: topnav.usecases.credit
       items:
-        - label: Overview
-          labelTranslationKey: topnav.usecases.credit-overview
-          href: /docs/use-cases/credit
         - label: Lending
           labelTranslationKey: topnav.usecases.lending
           href: /docs/use-cases/credit/lending
-        - label: Collateralization
-          labelTranslationKey: topnav.usecases.collateralization
-          href: /docs/use-cases/credit/collateralization
-        - label: Sustainability
-          labelTranslationKey: topnav.usecases.sustainability
-          href: /docs/use-cases/credit/sustainability
     - group: Trading
       groupTranslationKey: topnav.usecases.trading
       items:
