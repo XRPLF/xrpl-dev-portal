@@ -40,7 +40,8 @@
 
 .contribute {
   position: relative;
-  
+  --timeline-direction: to right;
+
   &::before {
     content:"";
     display: block;
@@ -63,9 +64,10 @@
   }
 
   @include media-breakpoint-down(lg) {
+    --timeline-direction: to bottom;
+
     &::before {
       left: -10px;
-      // transform: rotate(90deg);
       height: 100%;
       width: 2px;
       top: 15px;
@@ -79,7 +81,7 @@
 
 .contribute_1 {
   &::before {
-    background: -webkit-linear-gradient(left, rgba(254, 255, 1, 1), rgba(255, 45, 154, 1) );
+    background: linear-gradient(var(--timeline-direction), rgba(254, 255, 1, 1), rgba(255, 45, 154, 1));
   }
   .dot {
     border-color: #FBFF4C;
@@ -87,7 +89,7 @@
 }
 .contribute_2 {
   &::before {
-    background: -webkit-linear-gradient(left,  rgba(255, 45, 154, 1), rgba(226, 76, 255, 1));
+    background: linear-gradient(var(--timeline-direction), rgba(255, 45, 154, 1), rgba(226, 76, 255, 1));
   }
   .dot {
     border-color: #FF198B;
@@ -95,7 +97,7 @@
 }
 .contribute_3 {
   &::before {
-    background: -webkit-linear-gradient(left, rgba(226, 76, 255, 1),rgba(154, 82, 255, 1)    );
+    background: linear-gradient(var(--timeline-direction), rgba(226, 76, 255, 1), rgba(154, 82, 255, 1));
   }
   .dot {
     border-color: #C000E5;
@@ -103,7 +105,7 @@
 }
 .contribute_4 {
   &::before {
-    background: -webkit-linear-gradient(left, rgba(154, 82, 255, 1),rgba(154, 82, 255, 1)    );
+    background: linear-gradient(var(--timeline-direction), rgba(154, 82, 255, 1), rgba(154, 82, 255, 1));
   }
   .dot {
     border-color: #9A52FF;
