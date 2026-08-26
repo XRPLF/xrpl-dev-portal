@@ -169,7 +169,7 @@ export default function Index() {
       children: (
         <span>
           {translate("Start with the basics and then learn about")}{" "}
-          <Link variation="inline" href="/docs/use-cases/defi">
+          <Link variation="inline" href="https://learn.xrpl.org/">
             {translate("DeFi")}
           </Link>
           ,{" "}

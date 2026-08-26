@@ -145,34 +145,42 @@ export default function Develop() {
           {
             logo: require("../static/img/logos/black/archax.svg"),
             alt: translate("Archax"),
+            href: "https://archax.com/",
           },
           {
             logo: require("../static/img/logos/black/zoniqx.png"),
             alt: translate("Zoniqx"),
+            href: "https://www.zoniqx.com/",
           },
           {
             logo: require("../static/img/logos/black/hidden-road.png"),
             alt: translate("Hidden Road"),
+            href: "https://ripple.com/products/prime-brokerage/",
           },
           {
             logo: require("../static/img/logos/black/coinpayments.png"),
             alt: translate("Coinpayments"),
+            href: "https://www.coinpayments.net/",
           },
           {
             logo: require("../static/img/logos/black/ripple.png"),
             alt: translate("Ripple"),
+            href: "https://ripple.com/",
           },
           {
             logo: require("../static/img/logos/black/frii.png"),
             alt: translate("Frii"),
+            href: "https://friipay.io/",
           },
           {
             logo: require("../static/img/logos/black/sologenic.png"),
             alt: translate("Sologenic"),
+            href: "https://sologenic.org/",
           },
           {
             logo: require("../static/img/logos/black/first-ledger.png"),
             alt: translate("First Ledger"),
+            href: "https://www.firstledger.net/",
           },
         ]}
       />
