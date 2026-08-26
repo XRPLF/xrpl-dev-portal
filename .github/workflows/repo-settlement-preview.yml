@@ -1,0 +1,133 @@
+name: Repo settlement demo preview
+
+# Builds the repo-settlement demo and publishes it to the pushing repo's own
+# GitHub Pages site, so a reviewer can click through the flow instead of
+# reading the diff. Link the resulting URL from the upstream PR by hand.
+#
+# This runs on push, not pull_request, because a PR raised against XRPLF runs
+# in that repo's context with a read-only token and cannot publish anywhere.
+# Pushing to a branch on a fork you own is what grants the write access.
+
+on:
+  push:
+    branches-ignore: [master, gh-pages]
+    paths:
+      - '_code-samples/repo-settlement/**'
+      - '.github/workflows/repo-settlement-preview.yml'
+  workflow_dispatch: {}
+
+# Serialize per branch: publishing pushes to the Pages branch, and two pushes
+# racing on it fail. Don't cancel in progress — a cancelled run can leave the
+# preview directory half-written.
+concurrency:
+  group: repo-settlement-preview-${{ github.ref }}
+  cancel-in-progress: false
+
+defaults:
+  run:
+    working-directory: _code-samples/repo-settlement
+
+env:
+  DEMO_DIR: _code-samples/repo-settlement
+  # A dedicated orphan branch holding nothing but previews. Pages uploads the
+  # whole branch as a single artifact against a 1 GB limit, so this must not
+  # share a branch with a full portal build.
+  PAGES_BRANCH: demo-preview
+
+jobs:
+  deploy:
+    # Only publishes where the token can write and Pages is configured. Upstream
+    # has neither, so the job no-ops there rather than failing every push.
+    if: github.repository != 'XRPLF/xrpl-dev-portal'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: lts/*
+          cache: npm
+          cache-dependency-path: _code-samples/repo-settlement/package-lock.json
+
+      - run: npm ci
+
+      # A Pages project site is served from /<repo>/, and the preview sits in a
+      # subdirectory of that. Vite bakes asset URLs in at build time, so the
+      # full base path has to be known now — assets 404 without it.
+      #
+      # Slashes are legal in a branch name but not in a path segment, so
+      # flatten the ref before using it as a directory.
+      - name: Resolve the preview path
+        working-directory: .
+        run: |
+          set -euo pipefail
+          slug=$(echo "${GITHUB_REF_NAME}" | tr '/' '-' | tr -cd 'a-zA-Z0-9._-')
+          owner=$(echo "${GITHUB_REPOSITORY_OWNER}" | tr 'A-Z' 'a-z')
+          repo=${GITHUB_REPOSITORY#*/}
+          echo "PREVIEW_PATH=${slug}" >> "$GITHUB_ENV"
+          echo "PREVIEW_URL=https://${owner}.github.io/${repo}/${slug}/" >> "$GITHUB_ENV"
+
+      # No VITE_*_SEED is set here on purpose. Vite inlines env vars into the
+      # bundle, so any seed would be readable in the published JavaScript. The
+      # preview funds itself from the Devnet faucet instead.
+      - name: Build
+        run: npm run build -- --base="/${GITHUB_REPOSITORY#*/}/${PREVIEW_PATH}/"
+
+      - name: Publish to ${{ env.PAGES_BRANCH }}
+        working-directory: .
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          if git ls-remote --exit-code origin "$PAGES_BRANCH" >/dev/null 2>&1; then
+            git fetch -q origin "$PAGES_BRANCH" --depth 1
+            git worktree add -q pages "origin/$PAGES_BRANCH"
+            git -C pages switch -q -c "$PAGES_BRANCH" --track "origin/$PAGES_BRANCH" 2>/dev/null \
+              || git -C pages switch -q "$PAGES_BRANCH"
+          else
+            git worktree add -q --orphan -b "$PAGES_BRANCH" pages
+          fi
+
+          # Tells Pages to serve the tree as-is instead of running Jekyll,
+          # which would skip the underscore-prefixed paths in a Vite build.
+          touch "pages/.nojekyll"
+
+          rm -rf "pages/$PREVIEW_PATH"
+          mkdir -p "pages/$PREVIEW_PATH"
+          cp -R "$DEMO_DIR/dist/." "pages/$PREVIEW_PATH/"
+
+          cd pages
+          git add -A
+          if git diff --cached --quiet; then
+            echo "Preview unchanged; nothing to push."
+          else
+            git commit -qm "preview: repo settlement demo for $GITHUB_REF_NAME"
+            pushed=false
+            for attempt in 1 2 3; do
+              if git pull -q --rebase origin "$PAGES_BRANCH" \
+                 && git push -q origin "HEAD:$PAGES_BRANCH"; then
+                pushed=true
+                break
+              fi
+              echo "Push raced; retrying (attempt $attempt)..."
+            done
+            if [ "$pushed" != true ]; then
+              echo "::error::Failed to push the preview after 3 attempts."
+              exit 1
+            fi
+          fi
+
+          {
+            echo "### Repo settlement demo preview"
+            echo
+            echo "[$PREVIEW_URL]($PREVIEW_URL)"
+            echo
+            echo "Built from \`$GITHUB_SHA\`. Runs against XRPL Devnet with faucet"
+            echo "wallets, so the first step takes a moment to fund. Pages can take"
+            echo "a minute to serve a new deploy."
+          } >> "$GITHUB_STEP_SUMMARY"
