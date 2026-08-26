@@ -790,26 +790,29 @@ export default function Uses() {
               id="use-case-card-grid"
             >
               {uses.map((use, index) => (
-                <li
-                  key={use.id}
-                  className="col use-case-circle ls-none p-3 open-modal"
-                  data-id={use.id}
-                  data-title={use.title}
-                  data-description={use.description}
-                  data-number={use.number}
-                  onClick={() => {
-                    setModalData(use);
-                    setDisplayModal(true);
-                    setCurrentIndex(index);
-                  }}
-                >
-                  <div className="circle-content">
-                    <img className="circle-img" id={use.id} alt="use-logos" />
-                    <p className="circle-text">{translate(use.title)}</p>
-                    <div className="pill-box">
-                      <span className="pill-number">{use.number}</span>
+                <li key={use.id} className="col ls-none p-3 use-case-circle-parent">
+                  <button
+                    type="button"
+                    className="use-case-circle open-modal"
+                    data-id={use.id}
+                    data-title={use.title}
+                    data-description={use.description}
+                    data-number={use.number}
+                    aria-haspopup="dialog"
+                    onClick={() => {
+                      setModalData(use);
+                      setDisplayModal(true);
+                      setCurrentIndex(index);
+                    }}
+                  >
+                    <div className="circle-content">
+                      <img className="circle-img" id={use.id} alt="" />
+                      <p className="circle-text">{translate(use.title)}</p>
+                      <div className="pill-box">
+                        <span className="pill-number">{use.number}</span>
+                      </div>
                     </div>
-                  </div>
+                  </button>
                 </li>
               ))}
             </ul>
