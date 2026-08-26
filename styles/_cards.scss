@@ -39,6 +39,8 @@
 }
 
 .contribute {
+  position: relative;
+  
   &::before {
     content:"";
     display: block;
@@ -60,9 +62,9 @@
     left: -6px;
   }
 
-  @include media-breakpoint-down(md) {
+  @include media-breakpoint-down(lg) {
     &::before {
-      left: 0;
+      left: -10px;
       // transform: rotate(90deg);
       height: 100%;
       width: 2px;
@@ -70,7 +72,7 @@
     }
     .dot {
       top: 5px;
-      left: -6px;
+      left: -16px;
     }
   }
 }
