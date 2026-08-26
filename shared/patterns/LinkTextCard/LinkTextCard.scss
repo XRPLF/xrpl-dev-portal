@@ -159,7 +159,9 @@ $bds-link-text-card-content-width-md: calc(75% - 2px);
     color: $bds-link-text-card-number-color;
   }
 
-  a:not(.bds-btn) {
+  // <Link> carries its own intention colors (see shared/components/Link);
+  // excluding it keeps this card's lilac off those, in both modes.
+  a:not(.bds-btn):not(.xrpl-link) {
     color: $lilac-400;
     text-decoration: underline;
     &:hover {
@@ -181,7 +183,7 @@ $bds-link-text-card-content-width-md: calc(75% - 2px);
       content: $bds-link-text-card-list-marker-symbol;
       color: $white;
     }
-    a:not(.bds-btn) {
+    a:not(.bds-btn):not(.xrpl-link) {
       color: $lilac-300;
       &:hover {
         color: $lilac-400;
