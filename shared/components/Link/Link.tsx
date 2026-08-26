@@ -14,7 +14,7 @@ export type LinkVariation = 'standalone' | 'inline';
 export type LinkSize = 'sm' | 'md' | 'lg';
 
 // No neutral+on-saturated group exists, so make that combination a type error.
-type LinkColorProps =
+export type LinkColorProps =
   | { intention?: 'brand'; context?: LinkContext }
   | { intention: 'neutral'; context?: Extract<LinkContext, 'on-theme' | 'on-inverse'> };
 

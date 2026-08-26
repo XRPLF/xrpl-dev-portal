@@ -84,13 +84,12 @@ interface ButtonConfig {
   label: string;        // Button text
   href?: string;        // Link destination
   onClick?: () => void; // Click handler
-  forceColor?: boolean; // Keep the color constant regardless of theme mode
 }
 ```
 
-A maximum of 2 buttons is supported. `ButtonGroup` assigns variants by count: a
-single button renders as primary; with two, the first is primary and the second
-tertiary.
+A maximum of 2 buttons is supported. `ButtonGroup` assigns emphasis by count: a
+lone button renders `strong`; with two, the first is `strong` and the second
+`subtle`.
 
 ### Required Props
 

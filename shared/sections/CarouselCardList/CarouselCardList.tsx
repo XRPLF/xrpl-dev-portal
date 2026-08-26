@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import { useThemeHooks } from '@redocly/theme/core/hooks';
 import { CardOffgrid, CardOffgridProps } from '../../components/CardOffgrid';
 import { CarouselButton } from '../../components/CarouselButton';
-import type { ButtonProps } from '../../components/Button';
+import type { CarouselButtonProps } from '../../components/CarouselButton';
 import { isEnvironment } from '../../utils';
 
 /**
@@ -22,7 +22,7 @@ export interface CarouselCardListProps extends React.ComponentPropsWithoutRef<'s
   /** Color variant of the cards */
   variant?: 'neutral' | 'green';
   /** Color variant of the navigation buttons (independent of card color). Defaults to 'neutral'. Derived from Button color prop. */
-  buttonVariant?: ButtonProps['color'] | 'neutral';
+  buttonVariant?: CarouselButtonProps['variant'];
   /** Section heading text */
   heading: React.ReactNode;
   /** Section description text */

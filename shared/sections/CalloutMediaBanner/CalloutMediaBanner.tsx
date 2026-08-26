@@ -10,6 +10,7 @@ import {
   ButtonConfig,
   validateButtonGroup,
 } from "shared/patterns/ButtonGroup/ButtonGroup";
+import type { ButtonSurface } from "shared/components/Button";
 
 export interface CalloutMediaBannerProps {
   /** Color variant - determines background color (ignored if backgroundImage is provided) */
@@ -123,9 +124,12 @@ export const CalloutMediaBanner: React.FC<CalloutMediaBannerProps> = ({
   // for either mode.
   const hasImage = Boolean(backgroundImage || backgroundImageDark);
 
-  // Determine button color: black for all variants except 'default' and 'image'
-  const buttonColor: "green" | "black" =
-    !hasImage && variant !== "default" ? "black" : "green";
+  // Coloured, non-flipping panels need the mode-invariant group; the default
+  // and image variants sit on the ordinary page surface.
+  const buttonSurface: ButtonSurface =
+    !hasImage && variant !== "default"
+      ? { context: "on-saturated" }
+      : { context: "on-theme" };
 
   // Build class names using BEM with bds namespace
   const classNames = clsx(
@@ -181,9 +185,8 @@ export const CalloutMediaBanner: React.FC<CalloutMediaBannerProps> = ({
             {hasButtons && (
               <ButtonGroup
                 buttons={buttonValidation.buttons}
-                color={buttonColor}
+                surface={buttonSurface}
                 gap="none"
-                forceColor={true}
               />
             )}
           </div>

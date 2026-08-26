@@ -1,6 +1,7 @@
 import React, { forwardRef } from "react";
 import clsx from "clsx";
 import Button from "../Button/Button";
+import { XrplArrowInternalLinkIcon } from "../Icons";
 import {
   DesignConstrainedButtonProps,
   isEnvironment,
@@ -80,18 +81,20 @@ const StandardCard = forwardRef<HTMLElement, StandardCardProps>(
           <div className="bds-standard-card__buttons">
             {primaryButton && (
               <Button
+                iconEnd={<XrplArrowInternalLinkIcon />}
                 {...primaryButton}
-                variant="primary"
-                color="black"
-                forceColor={true}
+                emphasis="strong"
+                intention="brand"
+                context="on-saturated"
               />
             )}
             {secondaryButton && (
               <Button
+                iconEnd={<XrplArrowInternalLinkIcon />}
                 {...secondaryButton}
-                variant="tertiary"
-                color="black"
-                forceColor={true}
+                emphasis="subtle"
+                intention="brand"
+                context="on-saturated"
               />
             )}
           </div>

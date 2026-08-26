@@ -42,7 +42,7 @@ import { FeatureSingleTopic } from 'shared/sections/FeatureSingleTopic';
 | `title` | `string` | *required* | Feature title (heading-md typography) |
 | `description` | `string` | - | Feature description (label-l typography) |
 | `buttons` | `ButtonConfig[]` | `[]` | Array of button configurations (1-5 supported) |
-| `singleButtonVariant` | `'primary' \| 'secondary'` | `'primary'` | Button variant for single button configuration |
+| `singleButtonEmphasis` | `'strong' \| 'standard'` | `'strong'` | Emphasis for a lone button |
 | `media` | `{ src: string; alt: string }` | *required* | Image configuration |
 | `className` | `string` | - | Additional CSS classes |
 
@@ -53,7 +53,6 @@ interface ButtonConfig {
   label: string;
   href?: string;
   onClick?: () => void;
-  forceColor?: boolean;
 }
 ```
 
@@ -61,13 +60,13 @@ interface ButtonConfig {
 
 ## Button Behavior
 
-The component automatically determines button variants based on count:
+Emphasis follows the button count:
 
 | Count | Layout |
 |-------|--------|
-| 1 button | Primary or Secondary button (configurable via `singleButtonVariant` prop) |
-| 2 buttons | Primary + Tertiary side by side |
-| 3-5 buttons | All Tertiary buttons stacked |
+| 1 button | `singleButtonEmphasis` (default `strong`) |
+| 2 buttons | `strong` + `subtle`, side by side |
+| 3-5 buttons | all `subtle`, stacked |
 
 **Note:** The component supports a maximum of 5 buttons. Additional buttons beyond 5 will trigger a validation warning in development mode and will be ignored. On mobile, the first two buttons (Primary + Tertiary) remain side by side.
 

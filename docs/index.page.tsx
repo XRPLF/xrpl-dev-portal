@@ -79,7 +79,7 @@ export default function Docs() {
             description: (
               <>
                 {translate("Discover the basics of the XRPL by learning about accounts, transactions, and the ledger structure.")}{' '}<br/><br/>
-                <Link href="/docs/concepts/" intention="brand" variation="standalone">{translate("Read More")}</Link>
+                <Link href="/docs/concepts/" intention="brand" variation="standalone" iconEnd>{translate("Read More")}</Link>
               </>
             ),
           },
@@ -88,7 +88,7 @@ export default function Docs() {
             description: (
               <>
                 {translate("Implement real-world solutions by combining XRPL primitives for lending, token issuance, DEX trading, and more.")}{' '}<br/><br/>
-                <Link href="/docs/use-cases/" intention="brand" variation="standalone">{translate("Read More")}</Link>
+                <Link href="/docs/use-cases/" intention="brand" variation="standalone" iconEnd>{translate("Read More")}</Link>
               </>
             ),
           },
@@ -364,7 +364,7 @@ export default function Docs() {
                 {translate("Take ownership of your connection to the blockchain with a core server that can submit transactions, read balances, and store a complete copy of the ledger data.")}
                 <br />
                 <br />
-                <Link href="/docs/infrastructure/installation" intention="brand" variation="standalone">{translate("Learn More")}</Link>
+                <Link href="/docs/infrastructure/installation" intention="brand" variation="standalone" iconEnd>{translate("Learn More")}</Link>
               </>
             ),
           },
@@ -377,7 +377,7 @@ export default function Docs() {
                 {translate("Customize your server configuration for your use case, including data retention, network connectivity, and performance tuning.")}
                 <br />
                 <br />
-                <Link href="/docs/infrastructure/configuration" intention="brand" variation="standalone">{translate("Learn More")}</Link>
+                <Link href="/docs/infrastructure/configuration" intention="brand" variation="standalone" iconEnd>{translate("Learn More")}</Link>
               </>
             ),
           },
@@ -390,7 +390,7 @@ export default function Docs() {
                 {translate("Diagnose and solve problems with your server to maximize uptime and reliability.")}
                 <br />
                 <br />
-                <Link href="/docs/infrastructure/troubleshooting" intention="brand" variation="standalone">{translate("Learn More")}</Link>
+                <Link href="/docs/infrastructure/troubleshooting" intention="brand" variation="standalone" iconEnd>{translate("Learn More")}</Link>
               </>
             ),
           },

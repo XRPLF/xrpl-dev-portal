@@ -1,7 +1,8 @@
-import * as React from "react";
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 import { useThemeHooks } from "@redocly/theme/core/hooks";
-import { Link } from "@redocly/theme/components/Link/Link";
+import { Link } from "shared/components/Link";
+import Button from "shared/components/Button";
+import { XrplArrowInternalLinkIcon } from "shared/components/Icons";
 
 const MONTHS_SHORT = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 
@@ -114,18 +115,20 @@ export default function Index() {
                   </div>
                 </div>
                 <h4 className="mb-8 h2-sm font-weight-bold">
-                  <Link to={`/blog/${heroPost.link}`}>
+                  <Link href={`/blog/${heroPost.link}`} intention="neutral">
                     {translate(`${heroPost.title}`)}
                   </Link>
                 </h4>
                 <p className="mb-4">{translate(`${heroPost.description}`)}</p>
                 <div className="d-lg-block">
-                  <Link
-                    className="btn btn-primary btn-arrow"
-                    to={`/blog/${heroPost.link}`}
+                  <Button
+                    intention="neutral"
+                    emphasis="strong"
+                    href={`/blog/${heroPost.link}`}
+                    iconEnd={<XrplArrowInternalLinkIcon />}
                   >
                     {translate("Read More")}
-                  </Link>
+                  </Button>
                 </div>
               </div>
             </div>
@@ -228,8 +231,8 @@ export default function Index() {
                       { card.author ? ` by ${card.author}` : ""}
                     </p>
                     <h5 className="mb-2-sm h3-sm">
-                      <Link to={`/blog/${card.link}`}>
-                      {translate(card.title)}
+                      <Link href={`/blog/${card.link}`} intention="neutral">
+                        {translate(card.title)}
                       </Link>
                     </h5>
                   </div>
@@ -238,8 +241,11 @@ export default function Index() {
                   </div>
                   <div className="d-lg-block">
                     <Link
-                      className="btn btn-primary btn-arrow"
-                      to={`/blog/${card.link}`}
+                      href={`/blog/${card.link}`}
+                      intention="neutral"
+                      variation="standalone"
+                      size="lg"
+                      iconEnd
                     >
                       {translate("Read More")}
                     </Link>

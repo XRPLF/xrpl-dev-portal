@@ -1,5 +1,7 @@
 import { useState, useMemo } from "react";
 import { useThemeHooks } from "@redocly/theme/core/hooks";
+import Button from "shared/components/Button";
+import { XrplArrowExternalLinkIcon } from "shared/components/Icons";
 
 // Parse an event `end_date` string (e.g. "September 6, 2024"). The native Date
 // constructor handles this "Month D, YYYY" format reliably; an unparseable
@@ -1563,13 +1565,15 @@ export default function Events() {
               {translate("April 15, 2026")}
             </div>
             <div className="d-lg-block">
-              <a
-                className="btn btn-primary btn-arrow-out"
+              <Button
+                intention="neutral"
+                emphasis="strong"
                 target="_blank"
                 href="https://luma.com/wnkqmmqy?utm_source=xprlorg"
+                iconEnd={<XrplArrowExternalLinkIcon />}
               >
                 {translate("Register Now")}
-              </a>
+              </Button>
             </div>
           </div>
         </div>

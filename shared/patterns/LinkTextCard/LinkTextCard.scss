@@ -159,7 +159,7 @@ $bds-link-text-card-content-width-md: calc(75% - 2px);
     color: $bds-link-text-card-number-color;
   }
 
-  a {
+  a:not(.bds-btn) {
     color: $lilac-400;
     text-decoration: underline;
     &:hover {
@@ -181,7 +181,7 @@ $bds-link-text-card-content-width-md: calc(75% - 2px);
       content: $bds-link-text-card-list-marker-symbol;
       color: $white;
     }
-    a {
+    a:not(.bds-btn) {
       color: $lilac-300;
       &:hover {
         color: $lilac-400;

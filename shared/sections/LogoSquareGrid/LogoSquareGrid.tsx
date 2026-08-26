@@ -86,7 +86,6 @@ export const LogoSquareGrid: React.FC<LogoSquareGridProps> = ({
         {hasButtons && (
           <ButtonGroup
             buttons={buttonValidation.buttons}
-            color="green"
             gap="small"
           />
         )}

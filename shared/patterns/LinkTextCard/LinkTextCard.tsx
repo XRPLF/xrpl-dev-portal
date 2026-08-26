@@ -70,7 +70,7 @@ export const LinkTextCard: React.FC<LinkTextCardProps> = ({
       <div className="bds-link-text-card__content">
         <div className="mb-0 body-l">{description}</div>
         {maxButtons.length > 0 && (
-          <ButtonGroup buttons={maxButtons} color="green" />
+          <ButtonGroup buttons={maxButtons} />
         )}
       </div>
     </li>

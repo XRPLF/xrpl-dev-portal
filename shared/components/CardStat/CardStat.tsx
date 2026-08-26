@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button } from '../Button';
+import { XrplArrowInternalLinkIcon } from '../Icons';
 import { PageGridCol } from '../PageGrid/page-grid';
 import type { PageGridBreakpoint } from '../PageGrid/page-grid';
 
@@ -100,22 +101,24 @@ export const CardStat: React.FC<CardStatProps> = ({
         <div className="bds-card-stat__buttons">
           {primaryButton && (
             <Button
-              forceColor
-              variant="primary"
-              color="black"
+              emphasis="strong"
+              intention="brand"
+              context="on-saturated"
               href={primaryButton.href}
               onClick={primaryButton.onClick}
+              iconEnd={<XrplArrowInternalLinkIcon />}
             >
               {primaryButton.label}
             </Button>
           )}
           {secondaryButton && (
             <Button
-              forceColor
-              variant="secondary"
-              color="black"
+              emphasis="standard"
+              intention="brand"
+              context="on-saturated"
               href={secondaryButton.href}
               onClick={secondaryButton.onClick}
+              iconEnd={<XrplArrowInternalLinkIcon />}
             >
               {secondaryButton.label}
             </Button>

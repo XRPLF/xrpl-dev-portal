@@ -1,6 +1,8 @@
 import * as React from "react";
 import { useThemeHooks } from '@redocly/theme/core/hooks';
 import { Link } from "@redocly/theme/components/Link/Link";
+import Button from "shared/components/Button";
+import { XrplArrowExternalLinkIcon } from "shared/components/Icons";
 
 export const frontmatter = {
   seo: {
@@ -284,12 +286,14 @@ export default function DevTools() {
                   "Contribute to the XRP Ledger community by submitting your idea for a tool or open a pull request if you've developed a tool."
                 )}
               </p>
-              <a
-                className="btn btn-primary btn-arrow-out"
+              <Button
+                intention="neutral"
+                emphasis="strong"
                 href="https://github.com/XRPLF/xrpl-dev-portal/"
+                iconEnd={<XrplArrowExternalLinkIcon />}
               >
                 {translate("Open a pull Request")}
-              </a>
+              </Button>
             </div>
           </div>
         </section>
