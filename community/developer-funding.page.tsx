@@ -25,10 +25,11 @@ export default function Funding() {
 
   const carouselSlides: PanelStackPanel[] = [
     {
-      id: "xrpl-grants-accelerator",
+      id: "ripplex-ecosystem-programs",
+      heading: translate("Explore XRPL Funding and Builders Programs"),
       features: [
         {
-          title: translate("XRPL Grants & XRPL Accelerator"),
+          title: translate("RippleX Ecosystem Programs"),
           description: (
             <>
               {translate(
@@ -36,19 +37,16 @@ export default function Funding() {
               )}
               <br />
               <br />
-              {translate("→ Up to $200K in milestone-based funding")}
+              {translate("→ Non-dilutive milestone- or incentive-based grants funding")}
               <br />
-              {translate("→ Open to global teams building with XRPL")}
+              {translate("→ Technical mentorship and integration support to go live on XRPL")}
               <br />
-              {translate("→ Focused on DeFi, RWA, payments, trade finance")}
-              <br />
-              {translate("→ Grants available for MVPs")}
-              <br />
-              {translate("→ Unified application for all XRPL programs")}
+              {translate("→ Hackathons and builder competitions")}
               <br />
               {translate(
-                "→ A 12-week, hybrid accelerator program supporting startups and institutional builders."
-              )}
+                "→ 6-12 weeks global accelerator programs")}
+              <br />
+              {translate("→ Ecosystem partnerships - co-marketing, distribution, and strategic alignment")}
             </>
           ),
         },
@@ -60,25 +58,26 @@ export default function Funding() {
       imageAlt: translate("XRPL Grants and Accelerator"),
     },
     {
-      id: "xrpl-student-builder-residency",
+      id: "ubri",
+      heading: translate("Explore XRPL Funding and Builders Programs"),
       features: [
         {
-          title: translate("XRPL Student Builder Residency"),
+          title: translate("University Blockchain Residency Initiative (UBRI)"),
           description: (
             <>
               {translate(
-                "Inviting highly motivated University Builders from technical disciplines to build on the XRPL in a 4-week accelerated learning program."
+                " Supporting a diverse portfolio of blockchain research, technical development, and innovation at universities around the world."
               )}
               <br />
               <br />
-              {translate("→ Deploy and scale high-impact dApps on the XRPL")}
+              {translate("→ University Digital Xcelerator (UDAX)")}
               <br />
               {translate(
-                "→ Engage in one-on-one mentorship with expert blockchain developers"
+                "→ The Student Builder Residency"
               )}
               <br />
               {translate(
-                "→ Expand your network within the XRPL community and beyond"
+                "→ Research, education, and opportunities headquartered at 60+ universities around the world"
               )}
             </>
           ),
@@ -87,7 +86,7 @@ export default function Funding() {
       buttons: [
         {
           label: translate("Access Now"),
-          href: "/community/developer-funding",
+          href: "https://xrpl.org/community/ambassadors",
         },
       ],
       imageSrc: require("../static/img/bds-2026/community-developer-funding-carousel-2.jpg"),
@@ -101,18 +100,18 @@ export default function Funding() {
           description: (
             <>
               {translate(
-                "Supporting the global XRPL community through education, innovation, and social impact."
+                "The builder hub for XRPL: education, acceleration, and funding to launch and grow."
               )}
               <br />
               <br />
-              {translate("→ In-person builder support at XRPL Commons hub")}
+              {translate("→ Learn with XRPL Academy, a platform with courses for developers and founders, including a core dev track")}
               <br />
               {translate(
-                "→ Programming for startups, researchers, NGOs, and investors"
+                "→ Programs, grants, and open-source support to fast-track projects to Mainnet and growth."
               )}
               <br />
               {translate(
-                "→ Partnerships with universities and corporations underway"
+                "→ Education, innovation, social impact, and partnerships with universities and corporations."
               )}
               <br />
               →{" "}
@@ -166,22 +165,17 @@ export default function Funding() {
         description={translate(
           "Explore some of the innovative teams and how they are making a real-world difference in the financial landscape today."
         )}
-        buttons={[
-          {
-            label: translate("Explore Awardees"),
-            href: "https://xrplgrants.org/awardees",
-          },
-        ]}
+
         logos={[
           {
-            logo: require("../static/img/logos/black/link.png"),
-            alt: translate("LINK"),
-            href: "https://www.linkio.world/",
+            logo: require("../static/img/logos/black/lantern.svg"),
+            alt: translate("LANTERN"),
+            href: "https://lantern.finance/",
           },
           {
-            logo: require("../static/img/logos/black/propto.png"),
-            alt: translate("Propto"),
-            href: "https://www.propto.com/",
+            logo: require("../static/img/logos/black/soil.svg"),
+            alt: translate("SOIL"),
+            href: "https://soil.co/",
           },
           {
             logo: require("../static/img/logos/black/t54.png"),
@@ -189,77 +183,14 @@ export default function Funding() {
             href: "https://www.t54.ai/",
           },
           {
-            logo: require("../static/img/logos/black/anodos.png"),
-            alt: translate("Anodos"),
-            href: "https://anodos.finance/",
-          },
-        ]}
-      />
-
-      <FeatureSingleTopic
-        title={translate(
-          "Unveil Your Project at an XRPL Accelerator Demo Day"
-        )}
-        orientation="right"
-        media={{
-          src: require("../static/img/bds-2026/community-developer-funding-video-poster.jpg"),
-          alt: translate("XRPL Accelerator Demo Day"),
-        }}
-        buttons={[
-          {
-            label: translate("Read More"),
-            href: "https://dev.to/ripplexdev/inside-xrpl-accelerators-demo-day-at-the-dubai-fintech-summit-1be9",
-          },
-        ]}
-      />
-
-      <LinkTextDirectory
-        heading={translate(
-          "Explore Opportunities to Build and Get Started Today"
-        )}
-        description={translate(
-          "XRP Ledger is a compliance-focused blockchain where financial applications come to life."
-        )}
-        cards={[
-          {
-            heading: translate(
-              "Get XRPL Grants Updates Delivered to Your Inbox"
-            ),
-            description: translate(
-              "Sign up to ensure you get the very latest Grants updates."
-            ),
-            buttons: [
-              {
-                label: translate("Sign Up"),
-                href: "https://xrpl.org/docs/tutorials/how-tos/use-tokens/trade-in-the-decentralized-exchange",
-              },
-            ],
+            logo: require("../static/img/logos/black/blockvault.png"),
+            alt: translate("BlockVault"),
+            href: "https://block.vault/",
           },
           {
-            heading: translate(
-              "Get Your Questions Answered by XRPL Commons"
-            ),
-            description: translate(
-              "Do you have burning questions related to XRPL Commons?"
-            ),
-            buttons: [
-              {
-                label: translate("Contact"),
-                href: "https://discord.gg/sfX3ERAMjH",
-              },
-            ],
-          },
-          {
-            heading: translate("Explore Previous Awardees"),
-            description: translate(
-              "Learn about what it takes to get comprehensive support!"
-            ),
-            buttons: [
-              {
-                label: translate("Explore"),
-                href: "https://xrpl.org/about/uses",
-              },
-            ],
+            logo: require("../static/img/logos/black/lobstr.svg"),
+            alt: translate("LOBSTR"),
+            href: "https://lobstr/",
           },
         ]}
       />
