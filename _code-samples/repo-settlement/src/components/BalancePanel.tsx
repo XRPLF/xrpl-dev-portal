@@ -26,10 +26,8 @@ function xrp (drops: bigint | null): string {
   return dropsToXrp(drops.toString()).toFixed(2)
 }
 
-/* A label and its value side by side rather than stacked, so every figure in
-   the panel costs one line: five parties then fit without the reader scrolling
-   the ledger to check a balance. The label is optional, for a figure that has
-   no counterpart to be distinguished from. */
+/* A label and its value side by side rather than stacked, so every figure
+   costs one line and five parties fit without scrolling. */
 function Chip ({
   label,
   className,
@@ -108,7 +106,7 @@ function Pot ({
   )
 }
 
-/** A holder's wallet for one token: the plain balance, then the two encrypted
+/** A holder's wallet for one token: the public balance, then the two encrypted
     pots. Only the pots carry a label, since a bare figure is the public one. */
 function WalletRow ({
   token,
@@ -214,11 +212,9 @@ function IssuerView ({
 }
 
 /**
- * The room: every party's state, always visible next to the flow. Clicking a
- * party makes it "you" — that's the only way to switch identity, so choosing
- * who acts happens where the parties live. The party whose move is next
- * glows. Confidential pots show ciphertexts until a key switch decrypts them;
- * issuers get their own lawful-view switch.
+ * Every party's state, always visible next to the flow. Clicking a party makes
+ * it "you", which is the only way to switch identity. Confidential pots show
+ * ciphertexts until that switch supplies a key that decrypts them.
  */
 export function BalancePanel ({
   balances,
@@ -244,11 +240,7 @@ export function BalancePanel ({
 
   return (
     <Card withBorder shadow='sm' padding='sm' className='ledger-card'>
-      {/* The heading is the panel's label, so it stays while the parties
-          scroll: the card is the same height as the step panel. How the panel
-          works sits behind the marker beside it rather than in a standing
-          paragraph — it is read once, and the two lines it took were two lines
-          of balances. */}
+      {/* Outside the scroll area, so it stays while the parties scroll. */}
       <Group gap={6} align='center' mb={8}>
         <Text fw={700} size='sm'>
           Account balances
@@ -285,11 +277,6 @@ export function BalancePanel ({
               onClick={() => onSelect(key)}
               onKeyDown={(event) => keyActivate(event, key)}
             >
-              {/* Who the party is, then its address at the end of the same
-                  line: the address identifies the party, so it belongs beside
-                  the name rather than in the column of amounts below. Every
-                  balance then shares the ticker column underneath, XRP
-                  included. */}
               <Group align='center' gap={6} wrap='nowrap' mb={4}>
                 <PartyBadge party={key} />
                 {viewer === key && (
@@ -324,7 +311,7 @@ export function BalancePanel ({
               ) : (
                 <Stack gap={6}>
                   {/* XRP first, so it shares the ticker column with the tokens
-                      below and all the figures read as one column. */}
+                      below and every figure reads as one column. */}
                   <Group gap={6} wrap='nowrap'>
                     <Text size='xs' ff='monospace' fw={700} w={40}>
                       XRP
@@ -337,9 +324,7 @@ export function BalancePanel ({
                   </Group>
 
                   {/* A sponsored reserve is locked, not spent, so it never
-                      appears in the balance above. The XRP amount is what the
-                      sponsor actually gives up the use of, so it is stated
-                      beside the count the ledger reports. */}
+                      appears in the balance above. */}
                   {(partyBalances.sponsoringOwnerCount ?? 0) > 0 && (
                     <Tooltip
                       label='Owner reserves this account covers for other accounts. The XRP stays in the balance above but cannot be spent while the sponsorships stand.'

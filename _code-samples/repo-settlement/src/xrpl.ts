@@ -8,10 +8,10 @@
  * then call these functions from your own app.
  *
  * The pieces used, and their specs:
- *   XLS-33 / XLS-89  Multi-Purpose Tokens
- *   XLS-96           Confidential Transfers (encrypted amounts, ZK proofs)
- *   XLS-56           Batch (atomic all-or-nothing settlement)
- *   XLS-68           Sponsored fees and reserves
+ *   XLS-33 / XLS-89  Multi-Purpose Tokens (MPTs)
+ *   XLS-96           Confidential Transfers (encrypted amounts, ZKPs)
+ *   XLS-56           Batch Transactions (atomic all-or-nothing settlement)
+ *   XLS-68           Sponsored Fees and Reserves
  */
 
 import {
@@ -46,10 +46,12 @@ import {
   type TxResponse
 } from 'xrpl'
 
-/** An account, plus the second keypair confidential balances need (XLS-96). */
+/**
+ * An account, plus the ElGamal-style encryption key pair that confidential
+ * balances are stored under (XLS-96).
+ */
 export interface ConfidentialAccount {
   wallet: Wallet
-  /** ElGamal-style encryption keypair for confidential balances (XLS-96). */
   confidentialKeys: ConfidentialKeypair
 }
 
@@ -93,10 +95,8 @@ export const NO_TOKEN_BALANCE: TokenBalance = {
   issuerView: null
 }
 
-/** One entry of a Batch's BatchSigners array: who authorized the batch. */
 export type BatchSignerEntry = BatchSigner['BatchSigner']
 
-/** A ledger interaction that failed, carrying the hash when there is one. */
 export class LedgerError extends Error {
   constructor (
     message: string,
@@ -115,7 +115,6 @@ export class LedgerError extends Error {
  */
 const SUBMIT_WINDOW_LEDGERS = 600
 
-/** The engine result code of a validated transaction, from its metadata. */
 function resultCode (response: TxResponse): string {
   const meta = response.result.meta
   return typeof meta === 'object' && meta != null
@@ -128,7 +127,6 @@ export function batchSignerEntries (batch: Batch): BatchSignerEntry[] {
   return batch.BatchSigners?.map((entry) => entry.BatchSigner) ?? []
 }
 
-/** Decode a combined batch blob back into a Batch, for reading or signing. */
 export function decodeBatchBlob (blob: string): Batch {
   return decode(blob) as unknown as Batch
 }
@@ -158,7 +156,7 @@ export async function disconnect (client: Client): Promise<void> {
 
 /**
  * Load an account from a seed, or fund a fresh one from the faucet, and derive
- * the encryption keypair its confidential balances are stored under.
+ * the encryption key pair its confidential balances are stored under.
  *
  * Deriving the encryption key from the account's own seed means one backup
  * recovers both keys, which is why this demo does it. The SDK recommends a
@@ -190,7 +188,6 @@ function toRecord (response: TxResponse, label: string): TxRecord {
   return { label, hash, result: code, txJson: response.result }
 }
 
-/** Sign with one wallet, submit, and fail loudly on any non-success code. */
 async function submitSigned (
   client: Client,
   tx: SubmittableTransaction,
@@ -224,7 +221,6 @@ function sponsorFields (
   }
 }
 
-/** How another account covers one transaction's cost. */
 export interface SponsorOptions {
   sponsor: Wallet
   /** Set for transactions that create no ledger object. */
@@ -254,7 +250,6 @@ async function submitSponsored (
   return { ...toRecord(response, label), sponsored: true }
 }
 
-/** Submit as the sender, or sponsored when another account covers the cost. */
 export async function submit (
   client: Client,
   tx: SubmittableTransaction,
@@ -387,7 +382,6 @@ export async function createIssuance (
     sponsor
   )
 
-  // The issuance ID is assigned by the ledger; read it back from the metadata.
   const created: TxResponse<MPTokenIssuanceCreate> = await client.request({
     command: 'tx',
     transaction: record.hash
@@ -406,8 +400,8 @@ export async function createIssuance (
 // ----------------------------------------------------- confidential balances
 
 /**
- * Encrypt a public balance. The transaction carries a zero-knowledge proof,
- * generated locally, that the plaintext matches the ciphertext.
+ * Encrypt a public balance. The transaction carries a Zero-Knowledge Proof
+ * (ZKP), generated locally, that the plaintext matches the ciphertext.
  *
  * A converted amount lands in the holder's confidential *inbox*, not its
  * spendable balance, so every convert is followed by a merge. A zero-amount
@@ -557,12 +551,10 @@ export function signBatchCopy (wallet: Wallet, unsigned: Batch): Batch {
   return copy
 }
 
-/** Combine each counterparty's signed copy into one submittable blob. */
 export function combineSignedBatches (copies: Batch[]): string {
   return combineBatchSigners(copies)
 }
 
-/** Submit a combined batch, with the assembler signing the outer transaction. */
 export async function submitBatch (
   client: Client,
   combined: string,

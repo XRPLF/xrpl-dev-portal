@@ -46,9 +46,9 @@ export interface StepAction {
   id: string
   /** Who acts. Undefined = the demo harness (for example, the faucet). */
   party?: PartyKey
-  /** What happens, e.g. "Sign the batch". */
+  /** What happens, for example "Sign the batch". */
   label: string
-  /** Short verb for the action button, e.g. "Sign". */
+  /** Short verb for the action button, for example "Sign". */
   cta: string
   /** One line on what happens at this exact point in the flow. */
   detail: string
@@ -90,7 +90,7 @@ export interface RunnableStep extends StepDefinition {
  * confidential state, which happens when the action runs.
  */
 const CONVERT_CAVEAT =
-  'The encrypted amount, blinding factor, and zero-knowledge proof are generated against live ledger state when you click, so they cannot be shown yet. Everything above is sent as-is.'
+  'The encrypted amount, blinding factor, and Zero-Knowledge Proof (ZKP) are generated against live ledger state when you click, so they cannot be shown yet. Everything above is sent as-is.'
 
 /** Why a batch cannot be shown in full before it is constructed. */
 const BATCH_CAVEAT =
@@ -222,7 +222,6 @@ function approve (holder: PartyKey, token: IssuanceKey): StepAction {
   })
 }
 
-/** A public MPT payment from one party to another. */
 function pay (
   from: PartyKey,
   to: PartyKey,
@@ -242,7 +241,6 @@ function pay (
   })
 }
 
-/** Merge one party's confidential inbox into its spendable balance. */
 function mergeInbox (
   actor: Counterparty,
   token: IssuanceKey,
@@ -259,7 +257,6 @@ function mergeInbox (
   })
 }
 
-/** Sign a constructed leg as one counterparty. */
 function signLeg (
   ledger: RepoLedger,
   direction: LegDirection,
@@ -296,7 +293,6 @@ function coSignActions (
   }))
 }
 
-/** Combine both counterparties' signatures into one submittable batch. */
 function combineLeg (ledger: RepoLedger, direction: LegDirection): StepResult {
   const accounts = ledger.combineLeg(direction, COUNTERPARTIES)
   return {
@@ -409,11 +405,7 @@ export function buildSteps (deal: DealTerms): RunnableStep[] {
     combineLeg(ledger, direction)
   }
 
-  /**
-   * The orchestrator's construct action for one leg. Both legs build the same
-   * way, so only the wording differs; the preview shows the plan the same
-   * declaration builds from.
-   */
+  /** Both legs build the same way, so only the wording differs. */
   function constructAction (
     direction: LegDirection,
     copy: { label: string, detail: string }
@@ -436,16 +428,16 @@ export function buildSteps (deal: DealTerms): RunnableStep[] {
       title: 'Fund the five accounts',
       actors: PARTY_KEYS,
       learn:
-        'An account and a keypair are all a party needs to join. In production each party holds its own keys with its own custodian; no single machine sees all five.',
+        'An account and a key pair are all a party needs to join. In production each party holds its own keys with its own custodian; no single machine sees all five.',
       description:
-        'Each party needs a funded XRPL account and an encryption keypair. The encryption keypair is what later encrypts that party’s confidential balances.',
+        'Each party needs a funded XRP Ledger account and an encryption key pair. The Devnet faucet funds each account with test XRP, which has no real-world value. The encryption key pair is what later encrypts that party’s confidential balances.',
       actions: [
         {
           id: 'fund',
           label: 'Fund all five wallets',
           cta: 'Fund',
           detail:
-            'Each party gets a funded account and an encryption keypair for its confidential balances.',
+            'The Devnet faucet funds each account, and each party derives an encryption key pair for its confidential balances.',
           async execute (ledger) {
             await ledger.connect()
             await Promise.all(
@@ -479,7 +471,7 @@ export function buildSteps (deal: DealTerms): RunnableStep[] {
       title: `Issue ${COLLATERAL.ticker}, the collateral`,
       actors: ['alphaFund', 'xSecurities'],
       description:
-        `AlphaFund creates ${COLLATERAL.ticker} as a Multi-Purpose Token with three flags. RequireAuth gates who may hold it, CanTransfer allows holder-to-holder transfers, and CanHoldConfidentialBalance enables encrypted balances. Registering AlphaFund’s encryption key switches confidential transfers on and gives the issuer a lawful view of encrypted balances.`,
+        `AlphaFund creates ${COLLATERAL.ticker} as a Multi-Purpose Token (MPT) with three flags. RequireAuth gates who may hold it, CanTransfer allows holder-to-holder transfers, and CanHoldConfidentialBalance enables encrypted balances. Registering AlphaFund’s encryption key switches confidential transfers on and gives the issuer a lawful view of encrypted balances.`,
       callout: {
         kind: 'info',
         title: 'xSecurities pays from here on',
@@ -601,7 +593,7 @@ export function buildSteps (deal: DealTerms): RunnableStep[] {
       title: 'InvestCo goes confidential',
       actors: ['investCo', 'xSecurities'],
       description:
-        `InvestCo encrypts both positions, the ${collateralAmt} it lends out and the ${operatingAmt} cash it pays interest from. Each conversion carries a zero-knowledge proof, generated in your browser when you click.`,
+        `InvestCo encrypts both positions, the ${collateralAmt} it lends out and the ${operatingAmt} cash it pays interest from. Each conversion carries a ZKP, generated in your browser when you click.`,
       callout: {
         kind: 'warn',
         title: 'Convert lands in the inbox',
@@ -655,7 +647,7 @@ export function buildSteps (deal: DealTerms): RunnableStep[] {
       title: 'Construct the near leg',
       actors: ['xSecurities'],
       description:
-        'xSecurities builds one all-or-nothing Batch with two confidential sends. Each inner transaction carries an encrypted amount and a zero-knowledge proof that the sender has sufficient balance. Nothing is submitted yet.',
+        'xSecurities builds one all-or-nothing Batch with two confidential sends. Each inner transaction carries an encrypted amount and a ZKP that the sender has sufficient balance. Nothing is submitted yet.',
       callout: {
         kind: 'warn',
         title: 'Proofs are perishable',

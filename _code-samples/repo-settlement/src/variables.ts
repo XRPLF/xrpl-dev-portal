@@ -17,7 +17,6 @@ export type PartyRole = 'counterparty' | 'orchestrator' | 'issuer'
 export interface PartyInfo {
   name: string
   role: PartyRole
-  /** How the role is described in the UI. */
   roleLabel: string
   blurb: string
   /** Mantine palette color, used wherever the party is themed. */
@@ -97,7 +96,6 @@ function partiesPlaying<R extends PartyRole> (role: R): Array<PartyPlaying<R>> {
   ) as Array<PartyPlaying<R>>
 }
 
-/** A party to the repo itself, as opposed to an issuer or the orchestrator. */
 export type Counterparty = PartyPlaying<'counterparty'>
 
 /** The two who trade: they sign every batch and hold every confidential pot. */
@@ -167,13 +165,11 @@ export const TOKENS = {
   }
 } satisfies Record<string, TokenInfo>
 
-/** Which of the deal's tokens an operation, balance, or row refers to. */
 export type IssuanceKey = keyof typeof TOKENS
 
 /** Every token, in the order the UI lists them. */
 export const TOKEN_KEYS = Object.keys(TOKENS) as IssuanceKey[]
 
-/** The token this party issues, if it issues one. */
 export function issuedToken (party: PartyKey): IssuanceKey | undefined {
   return TOKEN_KEYS.find((key) => TOKENS[key].issuer === party)
 }

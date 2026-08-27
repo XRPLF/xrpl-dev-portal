@@ -84,7 +84,7 @@ const TERMS: Array<{
 /** The whole deal on one line, for the collapsed ticket. */
 function DealSummary ({ deal }: { deal: DealTerms }) {
   return (
-    <Text size='sm' data-testid='deal-summary'>
+    <Text size='sm'>
       {formatUnits(deal.collateralUnits, COLLATERAL.assetScale)}{' '}
       {COLLATERAL.ticker} ↔ {formatUnits(deal.cashUnits, CASH.assetScale)}{' '}
       {CASH.ticker} · {deal.tenorDays.toString()} days @{' '}
@@ -97,13 +97,10 @@ function DealSummary ({ deal }: { deal: DealTerms }) {
 }
 
 /**
- * The deal ticket: the reader sets the trade's economics before the flow
- * starts, and the interest math updates live, making it obvious that the repo
- * rate is an off-chain agreement the orchestrator turns into an amount. The
- * terms freeze once the first transaction is signed, because the flow's
- * amounts are baked into every step from then on. It starts collapsed to its
- * one-line summary: the defaults are a working deal, so the flow takes the
- * screen unless the reader chooses to change the terms.
+ * The trade's economics, set before the flow starts. The interest math updates
+ * live, making it plain that the repo rate is an off-chain agreement the
+ * orchestrator turns into an amount. Terms freeze once the first transaction is
+ * signed, because the flow's amounts are baked into every step from then on.
  */
 export function DealTicket ({
   deal,
@@ -124,14 +121,11 @@ export function DealTicket ({
     }
   }, [locked])
 
-  // Collapsed, the ticket is two short lines, so it costs the least in the
-  // state the reader spends the flow in.
   return (
     <Card
       withBorder
       shadow='sm'
       padding={open ? 'md' : 'xs'}
-      data-testid='deal-ticket'
     >
       <Group justify='space-between' wrap='nowrap'>
         <Group gap='sm' wrap='nowrap'>
@@ -147,21 +141,17 @@ export function DealTicket ({
           color='gray'
           aria-label={open ? 'Collapse deal ticket' : 'Expand deal ticket'}
           aria-expanded={open}
-          data-testid='deal-toggle'
           onClick={() => setOpen((value) => !value)}
         >
           {open ? '▲' : '▼'}
         </ActionIcon>
       </Group>
 
-      {/* Under the heading rather than beside it: the card is now a column of
-          the top row, too narrow to hold the whole summary on one line. */}
       {!open && <DealSummary deal={deal} />}
 
       <Collapse expanded={open}>
-        {/* The ticket shares its row with the title, so the four terms divide
-            whatever width that leaves rather than each claiming a fixed one,
-            and fold to two rows before any of them gets too narrow to read. */}
+        {/* The four terms divide whatever width the row leaves rather than each
+            claiming a fixed one, and fold before any gets too narrow to read. */}
         <Group gap={locked ? 24 : 'xs'} align='flex-start' wrap='wrap' mt='sm'>
           {TERMS.map((term) =>
             locked
@@ -217,7 +207,7 @@ function TicketMath ({ deal }: { deal: DealTerms }) {
   const operating = operatingCashUnits(deal)
   return (
     <Stack gap={2} mt='sm'>
-      <Text size='xs' c='dimmed' data-testid='interest-math'>
+      <Text size='xs' c='dimmed'>
         Interest = {formatUnits(deal.cashUnits, CASH.assetScale)} ×{' '}
         {(Number(deal.interestRateBps) / 100).toFixed(2)}% ×{' '}
         {deal.tenorDays.toString()}/365 ={' '}
