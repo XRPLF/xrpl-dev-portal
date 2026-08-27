@@ -617,6 +617,7 @@ export default function Uses() {
   const [displayModal, setDisplayModal] = React.useState(false);
   const [currentIndex, setCurrentIndex] = React.useState(0);
   const [modalPortalTarget, setModalPortalTarget] = React.useState<HTMLElement | null>(null);
+  const [filterModalOpen, setFilterModalOpen] = React.useState(false);
   const filterButtonRef = React.useRef<HTMLButtonElement>(null);
   const categoryFilterModalRef = React.useRef<HTMLDivElement>(null);
   React.useEffect(() => {
@@ -627,12 +628,23 @@ export default function Uses() {
     if (!modal) {
       return;
     }
-    const returnFocusToOpener = () => {
+    const onShow = () => {
+      setFilterModalOpen(true);
+    };
+    const onHide = () => {
+      // Move focus out before Bootstrap sets aria-hidden on this subtree.
       filterButtonRef.current?.focus();
     };
-    modal.addEventListener("hidden.bs.modal", returnFocusToOpener);
+    const onHidden = () => {
+      setFilterModalOpen(false);
+    };
+    modal.addEventListener("show.bs.modal", onShow);
+    modal.addEventListener("hide.bs.modal", onHide);
+    modal.addEventListener("hidden.bs.modal", onHidden);
     return () => {
-      modal.removeEventListener("hidden.bs.modal", returnFocusToOpener);
+      modal.removeEventListener("show.bs.modal", onShow);
+      modal.removeEventListener("hide.bs.modal", onHide);
+      modal.removeEventListener("hidden.bs.modal", onHidden);
     };
   }, [modalPortalTarget]);
   const defaultSelectedCategories = new Set(Object.keys(featured_categories));
@@ -958,6 +970,7 @@ export default function Uses() {
               data-bs-target="#categoryFilterModal"
               aria-haspopup="dialog"
               aria-controls="categoryFilterModal"
+              aria-expanded={filterModalOpen}
             >
               <span className="me-3">
                 <svg
@@ -990,12 +1003,17 @@ export default function Uses() {
                     className="modal fade"
                     id="categoryFilterModal"
                     tabIndex={-1}
+                    role="dialog"
+                    aria-modal={filterModalOpen}
                     aria-labelledby="categoryFilterModalLabel"
-                    aria-hidden="true"
+                    aria-hidden={!filterModalOpen}
                   >
                     <div className="modal-dialog">
                       <div className="modal-content">
                         <div className="modal-body">
+                          <h2 id="categoryFilterModalLabel" className="visually-hidden">
+                            {translate("Filter by Categories")}
+                          </h2>
                           <div className="p-3">
                             <CategoryFilterForm
                               idPrefix="input_mobile"
