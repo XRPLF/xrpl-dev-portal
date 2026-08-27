@@ -290,12 +290,27 @@
   .modal-footer {
     border: none;
     background: $gray-900;
-    box-shadow: 0px -1px 2px $black;
+    box-shadow: none;
 
     align-items: unset;
     padding: 0.75rem;
     flex-direction: column;
     flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  [data-bs-target="#categoryFilterModal"] {
+    .category-filter-icon {
+      color: $white;
+
+      rect {
+        fill: $black;
+      }
+    }
+
+    &:focus-visible {
+      outline: revert;
+    }
   }
 
   .card-title {

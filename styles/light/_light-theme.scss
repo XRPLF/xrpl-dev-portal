@@ -623,8 +623,16 @@ pre {
 // Use Cases & Featured Projects page
 .page-uses {
 
-  a.btn[data-bs-target="#categoryFilterModal"] {
+  [data-bs-target="#categoryFilterModal"] {
     color: $light-fg;
+
+    .category-filter-icon {
+      color: $black;
+
+      rect {
+        fill: $white;
+      }
+    }
   }
 
   .card-body {
