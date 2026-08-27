@@ -40,7 +40,7 @@ const STABLECOIN_CARDS: readonly StandardCardPropsWithoutVariant[] = [
     headline: 'USDB',
     children:
       'By Braza Group, is a USD-pegged stablecoin backed by U.S. and Brazilian bonds. Built for FX and remittance, it supports both institutional and retail users via the Braza On app.',
-    callsToAction: [{ children: 'USDB', href: 'https://www.brazabank.com.br/en/usdben/' }],
+    callsToAction: [{ children: 'USDB', href: 'https://www.brazabank.com.br/' }],
   },
   {
     headline: 'EUROP',

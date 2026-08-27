@@ -87,12 +87,10 @@ export const useCasesSubmenuData: {
     {
       label: "Credit",
       labelTranslationKey: "navbar.usecases.credit",
-      href: "/docs/use-cases/credit",
+      href: "/docs/use-cases/defi/institutional-credit-facilities",
       icon: "credit",
       children: [
-        { label: "Lending", labelTranslationKey: "navbar.usecases.credit.lending", href: "/docs/use-cases/credit/lending" },
-        { label: "Collateralization", labelTranslationKey: "navbar.usecases.credit.collateralization", href: "/docs/use-cases/credit/collateralization" },
-        { label: "Sustainability", labelTranslationKey: "navbar.usecases.credit.sustainability", href: "/docs/use-cases/credit/sustainability" },
+        { label: "Lending", labelTranslationKey: "navbar.usecases.credit.lending", href: "/docs/use-cases/defi/institutional-credit-facilities#solution-lending-on-the-xrpl" },
       ],
     },
     {
