@@ -628,20 +628,38 @@ export default function Uses() {
     if (!modal) {
       return;
     }
+    const stripAriaHidden = () => {
+      modal.removeAttribute("aria-hidden");
+    };
+    const returnFocusToOpener = () => {
+      const active = document.activeElement;
+      if (active instanceof HTMLElement && modal.contains(active)) {
+        active.blur();
+      }
+      filterButtonRef.current?.focus();
+    };
     const onShow = () => {
+      stripAriaHidden();
+      modal.removeAttribute("inert");
       setFilterModalOpen(true);
     };
     const onHide = () => {
-      // Move focus out before Bootstrap sets aria-hidden on this subtree.
-      filterButtonRef.current?.focus();
+      returnFocusToOpener();
     };
     const onHidden = () => {
+      returnFocusToOpener();
+      stripAriaHidden();
+      modal.setAttribute("inert", "");
       setFilterModalOpen(false);
     };
+    stripAriaHidden();
+    const observer = new MutationObserver(stripAriaHidden);
+    observer.observe(modal, { attributes: true, attributeFilter: ["aria-hidden"] });
     modal.addEventListener("show.bs.modal", onShow);
     modal.addEventListener("hide.bs.modal", onHide);
     modal.addEventListener("hidden.bs.modal", onHidden);
     return () => {
+      observer.disconnect();
       modal.removeEventListener("show.bs.modal", onShow);
       modal.removeEventListener("hide.bs.modal", onHide);
       modal.removeEventListener("hidden.bs.modal", onHidden);
@@ -1006,7 +1024,7 @@ export default function Uses() {
                     role="dialog"
                     aria-modal={filterModalOpen}
                     aria-labelledby="categoryFilterModalLabel"
-                    aria-hidden={!filterModalOpen}
+                    inert={!filterModalOpen}
                   >
                     <div className="modal-dialog">
                       <div className="modal-content">
