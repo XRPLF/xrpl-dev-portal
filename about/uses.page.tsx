@@ -1,4 +1,5 @@
 import * as React from "react";
+import { createPortal } from "react-dom";
 import { useThemeHooks } from '@redocly/theme/core/hooks';
 import Button from "shared/components/Button";
 import { Link } from "shared/components/Link";
@@ -548,12 +549,77 @@ const uses = [
   },
 ];
 
+function CategoryFilterForm({
+  idPrefix,
+  featuredCount,
+  otherCount,
+  selectedCategories,
+  toggleCategory,
+  translate,
+}: {
+  idPrefix: string;
+  featuredCount: number;
+  otherCount: number;
+  selectedCategories: Set<string>;
+  toggleCategory: (category: string) => void;
+  translate: (key: string, defaultValue?: string) => string;
+}) {
+  return (
+    <form>
+      <p className="category-header mb-4">
+        {translate("Featured Categories")}{" "}
+        <span className="featured_count category_count">{featuredCount}</span>
+      </p>
+      {Object.keys(featured_categories).map((item) => (
+        <div key={item} className="cat_checkbox category-checkbox pb-2">
+          <input
+            className={`events-filter input_${item}`}
+            type="checkbox"
+            name="categories"
+            id={`${idPrefix}_${item}`}
+            value={item}
+            onChange={() => toggleCategory(item)}
+            checked={selectedCategories.has(item)}
+          />
+          <label className="font-weight-bold" htmlFor={`${idPrefix}_${item}`}>
+            {translate(featured_categories[item])}
+          </label>
+        </div>
+      ))}
+      <p className="category-header pt-5 mt-3 mb-4">
+        {translate("Other Categories")}{" "}
+        <span className="other_count category_count">{otherCount}</span>
+      </p>
+      {Object.keys(other_categories).map((item) => (
+        <div key={item} className="cat_checkbox category-checkbox pb-2">
+          <input
+            className={`events-filter input_${item}`}
+            type="checkbox"
+            name="categories"
+            id={`${idPrefix}_${item}`}
+            value={item}
+            onChange={() => toggleCategory(item)}
+            checked={selectedCategories.has(item)}
+          />
+          <label htmlFor={`${idPrefix}_${item}`}>
+            {translate(other_categories[item])}
+          </label>
+        </div>
+      ))}
+    </form>
+  );
+}
+
 export default function Uses() {
   const theme = useThemeFromClassList(["dark", "light"]);
   const { useTranslate } = useThemeHooks();
   const { translate } = useTranslate();
   const [displayModal, setDisplayModal] = React.useState(false);
   const [currentIndex, setCurrentIndex] = React.useState(0);
+  const [modalPortalTarget, setModalPortalTarget] = React.useState<HTMLElement | null>(null);
+  React.useEffect(() => {
+    setModalPortalTarget(document.body);
+  }, []);
   const defaultSelectedCategories = new Set(Object.keys(featured_categories));
 
   const [selectedCategories, setSelectedCategories] = React.useState(
@@ -869,84 +935,91 @@ export default function Uses() {
                 )}
               </p>
             </div>
-            <a
+            <button
+              type="button"
               className="btn d-block d-lg-none"
               data-bs-toggle="modal"
               data-bs-target="#categoryFilterModal"
             >
               <span className="me-3">
-                <img
-                  src={require("../static/img/uses/usecase-filter.svg")}
-                  alt="Filter button"
-                />
+                <svg
+                  className="category-filter-icon"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                >
+                  <line x1="4" y1="6.375" x2="20" y2="6.375" stroke="currentColor"/>
+                  <line x1="4" y1="12" x2="20" y2="12" stroke="currentColor"/>
+                  <line x1="4" y1="17.75" x2="20" y2="17.75" stroke="currentColor"/>
+                  <rect x="9.5" y="10.25" width="3.5" height="3.5" rx="0.5" fill="white" stroke="currentColor"/>
+                  <rect x="13.625" y="16" width="3.5" height="3.5" rx="0.5" fill="white" stroke="currentColor"/>
+                  <rect x="14.375" y="4.5" width="3.5" height="3.5" rx="0.5" fill="white" stroke="currentColor"/>
+                </svg>
               </span>
               {translate("Filter by Categories")}
-              <span className="ms-3 total_count category_count">2</span>
-            </a>
+              <span className="ms-3 total_count category_count">
+                {selectedCategories.size}
+              </span>
+            </button>
+            {modalPortalTarget &&
+              createPortal(
+                <div className="page-uses" style={{ display: "contents" }}>
+                  <div
+                    className="modal fade"
+                    id="categoryFilterModal"
+                    tabIndex={-1}
+                    aria-labelledby="categoryFilterModalLabel"
+                    aria-hidden="true"
+                  >
+                    <div className="modal-dialog">
+                      <div className="modal-content">
+                        <div className="modal-body">
+                          <div className="p-3">
+                            <CategoryFilterForm
+                              idPrefix="input_mobile"
+                              featuredCount={featuredCount}
+                              otherCount={otherCount}
+                              selectedCategories={selectedCategories}
+                              toggleCategory={toggleCategory}
+                              translate={translate}
+                            />
+                          </div>
+                        </div>
+                        <div className="modal-footer">
+                    <Button type="button" data-bs-dismiss="modal">
+                      {translate("Apply")}
+                    </Button>
+                    <Button
+                      type="button"
+                      intention="neutral"
+                      emphasis="subtle"
+                      data-bs-dismiss="modal"
+                    >
+                      {translate("Cancel")}
+                    </Button>
+                  </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>,
+                modalPortalTarget
+              )}
             {/* Start company cards */}
             <div className="row col-12 m-0 p-0 mt-4 pt-2">
               <div className="left col-3 m-0 p-0 mt-2 d-none d-lg-block">
                 {/* Side bar Desktop.  */}
                 <div className="p-3 category_sidebar">
-                  <form>
-                    <p className="category-header mb-4">
-                      {translate("Featured Categories")}{" "}
-                      <span
-                        id="featured_count_old"
-                        className="featured_count category_count"
-                      >
-                        {featuredCount}
-                      </span>
-                    </p>
-                    {Object.keys(featured_categories).map((item) => (
-                      <div
-                        key={item}
-                        className="cat_checkbox category-checkbox pb-2"
-                      >
-                        <input
-                          className={`events-filter input_${item}`}
-                          type="checkbox"
-                          name="categories"
-                          id={`input_${item}`}
-                          defaultValue={`${item}`}
-                          onChange={() => toggleCategory(item)}
-                          defaultChecked
-                        />
-                        <label
-                          className="font-weight-bold"
-                          htmlFor={`input_${item}`}
-                        >
-                          {translate(featured_categories[item])}
-                        </label>
-                      </div>
-                    ))}
-                    <p className="category-header pt-5 mt-3 mb-4">
-                      {translate("Other Categories")}{" "}
-                      <span
-                        id="other_count_old"
-                        className="other_count category_count"
-                      >
-                        {otherCount}
-                      </span>
-                    </p>
-                    {Object.keys(other_categories).map((item) => (
-                      <div
-                        key={item}
-                        className="cat_checkbox category-checkbox pb-2"
-                      >
-                        <input
-                          className={`events-filter input_${item}`}
-                          type="checkbox"
-                          name="categories"
-                          id={`input_${item}`}
-                          onChange={() => toggleCategory(item)}
-                        />
-                        <label htmlFor={`input_${item}`}>
-                          {translate(other_categories[item])}
-                        </label>
-                      </div>
-                    ))}
-                  </form>
+                  <CategoryFilterForm
+                    idPrefix="input"
+                    featuredCount={featuredCount}
+                    otherCount={otherCount}
+                    selectedCategories={selectedCategories}
+                    toggleCategory={toggleCategory}
+                    translate={translate}
+                  />
                 </div>
                 {/* End sidebar desktop */}
               </div>
