@@ -76,13 +76,13 @@ export default function Resources() {
           },
           {
             image: require("../static/img/bds-2026/resources-feature-media-6.jpg"),
-            imageAlt: translate("Languages"),
-            title: translate("Languages"),
+            imageAlt: translate("Client Libraries"),
+            title: translate("Client Libraries"),
             subtitle: translate(
               "Find tools, documentation, and sample code in Python, Java, JavaScript, or use HTTP APIs."
             ),
-            buttonLabel: translate("Languages"),
-            href: "https://xrpl.org/docs/tutorials/python",
+            buttonLabel: translate("Client Libraries"),
+            href: "/docs/references/client-libraries",
           },
           {
             image: require("../static/img/bds-2026/resources-feature-media-5.jpg"),
@@ -101,7 +101,7 @@ export default function Resources() {
             subtitle: translate(
               "Start with the basics and then learn about tokenization, DEX trading, or how to issue stablecoins."
             ),
-            buttonLabel: translate("Tokenization"),
+            buttonLabel: translate("Learning Portal"),
             href: "https://learn.xrpl.org/course/tokenization-and-real-world-assets-on-the-xrpl/",
           },
         ]}

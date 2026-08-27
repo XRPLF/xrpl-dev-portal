@@ -190,7 +190,7 @@ export default function Tokenization() {
             buttons: [
               {
                 label: translate('Cross-chain trading'),
-                href: '/docs/concepts/payment-types/escrow',
+                href: '/docs/use-cases/defi/enable-compliance-focused-cross-currency-payments-using-a-permissioned-dex',
               },
             ],
             imageSrc: require('../../../static/img/bds-2026/use-cases-tokenization-token-utility-4-crosschain.jpg'),

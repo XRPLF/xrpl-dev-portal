@@ -52,20 +52,20 @@ export default function Docs() {
             href: '/resources/code-samples/',
           },
           {
-            icon: require('../static/img/icons/2026/black/Launch-Your-First-Project.svg'),
-            title: translate('Launch Your First Project'),
-            description: translate(
-              'Explore funding and development opportunities for your project on the XRPL.'
-            ),
-            href: '/community/developer-funding/',
-          },
-          {
             icon: require('../static/img/icons/2026/black/Step-by-Step-Tutorials.svg'),
             title: translate('Step-by-Step Tutorials'),
             description: translate(
               'Follow guided walkthroughs to master XRPL fundamentals and industry best practices.'
             ),
             href: '/docs/tutorials/',
+          },
+          {
+            icon: require('../static/img/icons/2026/black/Launch-Your-First-Project.svg'),
+            title: translate('Launch Your First Project'),
+            description: translate(
+              'Explore funding and development opportunities for your project on the XRPL.'
+            ),
+            href: '/community/developer-funding/',
           },
         ]}
       />
@@ -159,7 +159,7 @@ export default function Docs() {
           },
           {
             label: translate('Transaction Metadata'),
-            href: '/docs/references/protocol/transactions/transaction-metadata',
+            href: '/docs/references/protocol/transactions/metadata',
           },
         ]}
       />
@@ -322,31 +322,31 @@ export default function Docs() {
             icon: require('../static/img/logos/black/js.svg'),
             iconAlt: translate('JavaScript'),
             label: translate('Get Started with Javascript'),
-            href: '/docs/tutorials/javascript',
+            href: '/docs/tutorials/get-started/get-started-javascript',
           },
           {
             icon: require('../static/img/logos/black/python.svg'),
             iconAlt: translate('Python'),
             label: translate('Python'),
-            href: '/docs/tutorials/python',
+            href: '/docs/tutorials/get-started/get-started-python',
           },
           {
             icon: require('../static/img/logos/black/java.svg'),
             iconAlt: translate('Java'),
             label: translate('Java'),
-            href: '/docs/tutorials/java/build-apps/get-started',
+            href: '/docs/tutorials/get-started/get-started-java',
           },
           {
             icon: require('../static/img/logos/black/go.svg'),
             iconAlt: translate('Go'),
             label: translate('Go'),
-            href: '/docs/tutorials/go',
+            href: '/docs/tutorials/get-started/get-started-go',
           },
           {
             icon: require('../static/img/logos/black/php.svg'),
             iconAlt: translate('PHP'),
             label: translate('PHP'),
-            href: '/docs/tutorials/php',
+            href: '/docs/tutorials/get-started/get-started-php',
           },
         ]}
       />
