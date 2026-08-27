@@ -12,9 +12,9 @@ const env: Record<string, string | undefined> =
       (globalThis as { process?: { env: Record<string, string | undefined> } })
         .process?.env ?? {}
 
-function optional(value: string | undefined): string | undefined {
+function optional (value: string | undefined): string | undefined {
   const trimmed = value?.trim()
-  return trimmed ? trimmed : undefined
+  return trimmed || undefined
 }
 
 export const CONFIG = {
@@ -25,10 +25,10 @@ export const CONFIG = {
    * party names its own variable, so adding a party needs no change here.
    */
   seeds: Object.fromEntries(
-    PARTY_KEYS.map((key) => [key, optional(env[PARTIES[key].seedEnv])]),
-  ) as Record<PartyKey, string | undefined>,
+    PARTY_KEYS.map((key) => [key, optional(env[PARTIES[key].seedEnv])])
+  ) as Record<PartyKey, string | undefined>
 } as const
 
-export function explorerTxUrl(hash: string): string {
+export function explorerTxUrl (hash: string): string {
   return `${CONFIG.explorerUrl}/transactions/${hash}`
 }

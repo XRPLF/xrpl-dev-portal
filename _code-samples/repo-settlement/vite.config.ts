@@ -12,21 +12,21 @@ const require = createRequire(import.meta.url)
  * glue fetches `mpt_crypto.wasm` from a URL relative to its own chunk. Emit the
  * binary next to the built JS chunks so that fetch resolves in production.
  */
-function copyMptCryptoWasm(): Plugin {
+function copyMptCryptoWasm (): Plugin {
   return {
     name: 'copy-mpt-crypto-wasm',
     apply: 'build',
-    generateBundle() {
+    generateBundle () {
       const wasmPath = join(
         dirname(require.resolve('@xrplf/mpt-crypto/wasm')),
-        'mpt_crypto.wasm',
+        'mpt_crypto.wasm'
       )
       this.emitFile({
         type: 'asset',
         fileName: 'assets/mpt_crypto.wasm',
-        source: readFileSync(wasmPath),
+        source: readFileSync(wasmPath)
       })
-    },
+    }
   }
 }
 
@@ -36,6 +36,6 @@ export default defineConfig({
     // Pre-bundle the CommonJS xrpl build, but leave the ESM wasm wrapper
     // untouched so its import.meta.url-relative wasm fetch keeps working in dev.
     include: ['xrpl'],
-    exclude: ['@xrplf/mpt-crypto'],
-  },
+    exclude: ['@xrplf/mpt-crypto']
+  }
 })

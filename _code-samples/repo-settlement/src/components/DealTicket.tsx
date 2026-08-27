@@ -7,7 +7,7 @@ import {
   NumberInput,
   Stack,
   Text,
-  Tooltip,
+  Tooltip
 } from '@mantine/core'
 import { useEffect, useState } from 'react'
 
@@ -17,7 +17,7 @@ import {
   formatUnits,
   interestUnits,
   operatingCashUnits,
-  type DealTerms,
+  type DealTerms
 } from '../variables'
 
 const COLLATERAL = TOKENS.collateral
@@ -29,7 +29,7 @@ const CASH = TOKENS.cash
  * and 500n basis points at scale 2 (5.00%). One table drives both the editable
  * inputs and the locked read-only view.
  */
-const TERMS: {
+const TERMS: Array<{
   field: keyof DealTerms
   label: string
   description: string
@@ -38,7 +38,7 @@ const TERMS: {
   min: number
   max: number
   step: number
-}[] = [
+}> = [
   {
     field: 'collateralUnits',
     label: `Collateral (${COLLATERAL.ticker})`,
@@ -47,7 +47,7 @@ const TERMS: {
     scale: COLLATERAL.assetScale,
     min: 1,
     max: 100_000,
-    step: 10,
+    step: 10
   },
   {
     field: 'cashUnits',
@@ -57,7 +57,7 @@ const TERMS: {
     scale: CASH.assetScale,
     min: 1,
     max: 1_000_000,
-    step: 100,
+    step: 100
   },
   {
     field: 'tenorDays',
@@ -67,7 +67,7 @@ const TERMS: {
     scale: 0,
     min: 1,
     max: 365,
-    step: 1,
+    step: 1
   },
   {
     field: 'interestRateBps',
@@ -77,19 +77,19 @@ const TERMS: {
     scale: 2,
     min: 0,
     max: 25,
-    step: 0.25,
-  },
+    step: 0.25
+  }
 ]
 
 /** The whole deal on one line, for the collapsed ticket. */
-function DealSummary({ deal }: { deal: DealTerms }) {
+function DealSummary ({ deal }: { deal: DealTerms }) {
   return (
-    <Text size="sm" data-testid="deal-summary">
+    <Text size='sm' data-testid='deal-summary'>
       {formatUnits(deal.collateralUnits, COLLATERAL.assetScale)}{' '}
       {COLLATERAL.ticker} ↔ {formatUnits(deal.cashUnits, CASH.assetScale)}{' '}
       {CASH.ticker} · {deal.tenorDays.toString()} days @{' '}
       {(Number(deal.interestRateBps) / 100).toFixed(2)}% · far leg returns{' '}
-      <Text span fw={600} c="teal.8">
+      <Text span fw={600} c='teal.8'>
         {formatUnits(farLegCashUnits(deal), CASH.assetScale)} {CASH.ticker}
       </Text>
     </Text>
@@ -105,10 +105,10 @@ function DealSummary({ deal }: { deal: DealTerms }) {
  * one-line summary: the defaults are a working deal, so the flow takes the
  * screen unless the reader chooses to change the terms.
  */
-export function DealTicket({
+export function DealTicket ({
   deal,
   onChange,
-  locked,
+  locked
 }: {
   deal: DealTerms
   onChange: (deal: DealTerms) => void
@@ -129,25 +129,25 @@ export function DealTicket({
   return (
     <Card
       withBorder
-      shadow="sm"
+      shadow='sm'
       padding={open ? 'md' : 'xs'}
-      data-testid="deal-ticket"
+      data-testid='deal-ticket'
     >
-      <Group justify="space-between" wrap="nowrap">
-        <Group gap="sm" wrap="nowrap">
-          <Text fw={700} size="sm">
+      <Group justify='space-between' wrap='nowrap'>
+        <Group gap='sm' wrap='nowrap'>
+          <Text fw={700} size='sm'>
             Deal ticket
           </Text>
-          <Badge variant="light" size="sm" color={locked ? 'gray' : 'teal'}>
+          <Badge variant='light' size='sm' color={locked ? 'gray' : 'teal'}>
             {locked ? 'Terms locked' : 'Set your terms, then run step 1'}
           </Badge>
         </Group>
         <ActionIcon
-          variant="subtle"
-          color="gray"
+          variant='subtle'
+          color='gray'
           aria-label={open ? 'Collapse deal ticket' : 'Expand deal ticket'}
           aria-expanded={open}
-          data-testid="deal-toggle"
+          data-testid='deal-toggle'
           onClick={() => setOpen((value) => !value)}
         >
           {open ? '▲' : '▼'}
@@ -162,43 +162,45 @@ export function DealTicket({
         {/* The ticket shares its row with the title, so the four terms divide
             whatever width that leaves rather than each claiming a fixed one,
             and fold to two rows before any of them gets too narrow to read. */}
-        <Group gap={locked ? 24 : 'xs'} align="flex-start" wrap="wrap" mt="sm">
+        <Group gap={locked ? 24 : 'xs'} align='flex-start' wrap='wrap' mt='sm'>
           {TERMS.map((term) =>
-            locked ? (
-              <Stack key={term.field} gap={0} style={{ minWidth: 0 }}>
-                <Text size="xs" fw={600} tt="uppercase" c="dimmed" lts="0.05em">
-                  {term.label}
-                </Text>
-                <Text size="sm" fw={700}>
-                  {formatUnits(deal[term.field], term.scale)}
-                  {term.suffix}
-                </Text>
-              </Stack>
-            ) : (
-              <NumberInput
-                key={term.field}
-                label={term.label}
-                description={term.description}
-                size="xs"
-                value={Number(deal[term.field]) / 10 ** term.scale}
-                onChange={(value) => {
-                  const num = typeof value === 'number' ? value : Number(value)
-                  if (!Number.isFinite(num) || num < term.min || num > term.max) {
-                    return
-                  }
-                  onChange({
-                    ...deal,
-                    [term.field]: BigInt(Math.round(num * 10 ** term.scale)),
-                  })
-                }}
-                min={term.min}
-                max={term.max}
-                step={term.step}
-                decimalScale={term.scale}
-                allowDecimal={term.scale > 0}
-                style={{ flex: '1 1 108px', minWidth: 0 }}
-              />
-            ),
+            locked
+              ? (
+                <Stack key={term.field} gap={0} style={{ minWidth: 0 }}>
+                  <Text size='xs' fw={600} tt='uppercase' c='dimmed' lts='0.05em'>
+                    {term.label}
+                  </Text>
+                  <Text size='sm' fw={700}>
+                    {formatUnits(deal[term.field], term.scale)}
+                    {term.suffix}
+                  </Text>
+                </Stack>
+                )
+              : (
+                <NumberInput
+                  key={term.field}
+                  label={term.label}
+                  description={term.description}
+                  size='xs'
+                  value={Number(deal[term.field]) / 10 ** term.scale}
+                  onChange={(value) => {
+                    const num = typeof value === 'number' ? value : Number(value)
+                    if (!Number.isFinite(num) || num < term.min || num > term.max) {
+                      return
+                    }
+                    onChange({
+                      ...deal,
+                      [term.field]: BigInt(Math.round(num * 10 ** term.scale))
+                    })
+                  }}
+                  min={term.min}
+                  max={term.max}
+                  step={term.step}
+                  decimalScale={term.scale}
+                  allowDecimal={term.scale > 0}
+                  style={{ flex: '1 1 108px', minWidth: 0 }}
+                />
+                )
           )}
         </Group>
 
@@ -209,33 +211,33 @@ export function DealTicket({
 }
 
 /** The interest math the terms imply, shown under them. */
-function TicketMath({ deal }: { deal: DealTerms }) {
+function TicketMath ({ deal }: { deal: DealTerms }) {
   const interest = interestUnits(deal)
   const farTotal = farLegCashUnits(deal)
   const operating = operatingCashUnits(deal)
   return (
-    <Stack gap={2} mt="sm">
-      <Text size="xs" c="dimmed" data-testid="interest-math">
+    <Stack gap={2} mt='sm'>
+      <Text size='xs' c='dimmed' data-testid='interest-math'>
         Interest = {formatUnits(deal.cashUnits, CASH.assetScale)} ×{' '}
         {(Number(deal.interestRateBps) / 100).toFixed(2)}% ×{' '}
         {deal.tenorDays.toString()}/365 ={' '}
-        <Text span fw={600} c="teal.8">
+        <Text span fw={600} c='teal.8'>
           {formatUnits(interest, CASH.assetScale)} {CASH.ticker}
         </Text>
       </Text>
-      <Text size="xs" c="dimmed">
+      <Text size='xs' c='dimmed'>
         Far leg: InvestCo returns{' '}
-        <Text span fw={600} c="teal.8">
+        <Text span fw={600} c='teal.8'>
           {formatUnits(farTotal, CASH.assetScale)} {CASH.ticker}
         </Text>{' '}
         for its {formatUnits(deal.collateralUnits, COLLATERAL.assetScale)}{' '}
         {COLLATERAL.ticker} ·{' '}
         <Tooltip
-          label="The far leg returns principal plus interest, so InvestCo carries cash to pay it (twice the interest, with a 10.00 floor)."
+          label='The far leg returns principal plus interest, so InvestCo carries cash to pay it (twice the interest, with a 10.00 floor).'
           multiline
           w={300}
         >
-          <Text span td="underline dotted" style={{ cursor: 'help' }}>
+          <Text span td='underline dotted' style={{ cursor: 'help' }}>
             operating balance {formatUnits(operating, CASH.assetScale)}{' '}
             {CASH.ticker}
           </Text>

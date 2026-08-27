@@ -15,11 +15,11 @@ import {
   issuedToken,
   type IssuanceKey,
   type PartyKey,
-  type TokenInfo,
+  type TokenInfo
 } from '../variables'
 import { PartyBadge, partyVars } from './PartyBadge'
 
-function xrp(drops: bigint | null): string {
+function xrp (drops: bigint | null): string {
   if (drops == null) {
     return '—'
   }
@@ -30,10 +30,10 @@ function xrp(drops: bigint | null): string {
    the panel costs one line: five parties then fit without the reader scrolling
    the ledger to check a balance. The label is optional, for a figure that has
    no counterpart to be distinguished from. */
-function Chip({
+function Chip ({
   label,
   className,
-  children,
+  children
 }: {
   label?: string
   className?: string
@@ -41,45 +41,45 @@ function Chip({
 }) {
   return (
     <span className={`bal-chip ${className ?? ''}`}>
-      {label != null && <span className="bal-chip-label">{label}</span>}
+      {label != null && <span className='bal-chip-label'>{label}</span>}
       {children}
     </span>
   )
 }
 
 /** Render a decryption outcome: an amount, an explicit failure, or zero. */
-function DecryptedValue({
+function DecryptedValue ({
   value,
-  assetScale,
+  assetScale
 }: {
   value: Decrypted
   assetScale: number
 }) {
   if (value == null) {
-    return <span className="bal-chip-value">0</span>
+    return <span className='bal-chip-value'>0</span>
   }
   if ('failed' in value) {
     return (
       <Tooltip label="A ciphertext exists but this key can't decrypt it. Not the same as a zero balance.">
-        <span className="bal-chip-value locked-value">⚠ locked</span>
+        <span className='bal-chip-value locked-value'>⚠ locked</span>
       </Tooltip>
     )
   }
   return (
-    <span className="bal-chip-value">
+    <span className='bal-chip-value'>
       {formatUnits(value.units, assetScale)}
     </span>
   )
 }
 
 /** One pot of a holder's confidential wallet: locked ciphertext or a value. */
-function Pot({
+function Pot ({
   label,
   cipher,
   value,
   assetScale,
   unlocked,
-  highlight,
+  highlight
 }: {
   label: string
   cipher?: string
@@ -90,28 +90,30 @@ function Pot({
 }) {
   return (
     <Chip label={label} className={highlight ? 'has-funds' : undefined}>
-      {!unlocked && cipher != null ? (
-        <Tooltip
-          label={`On-ledger ciphertext: ${cipher.slice(0, 40)}…`}
-          multiline
-        >
-          <Code c="dimmed" fz={10} px={4}>
-            {cipher.slice(0, 6)}…
-          </Code>
-        </Tooltip>
-      ) : (
-        <DecryptedValue value={value} assetScale={assetScale} />
-      )}
+      {!unlocked && cipher != null
+        ? (
+          <Tooltip
+            label={`On-ledger ciphertext: ${cipher.slice(0, 40)}…`}
+            multiline
+          >
+            <Code c='dimmed' fz={10} px={4}>
+              {cipher.slice(0, 6)}…
+            </Code>
+          </Tooltip>
+          )
+        : (
+          <DecryptedValue value={value} assetScale={assetScale} />
+          )}
     </Chip>
   )
 }
 
 /** A holder's wallet for one token: the plain balance, then the two encrypted
     pots. Only the pots carry a label, since a bare figure is the public one. */
-function WalletRow({
+function WalletRow ({
   token,
   balance,
-  unlocked,
+  unlocked
 }: {
   token: TokenInfo
   balance: TokenBalance
@@ -124,25 +126,27 @@ function WalletRow({
       ? balance.inbox.units > 0n
       : false
   return (
-    <Group gap={6} wrap="nowrap">
-      <Text size="xs" ff="monospace" fw={700} w={40}>
+    <Group gap={6} wrap='nowrap'>
+      <Text size='xs' ff='monospace' fw={700} w={40}>
         {token.ticker}
       </Text>
-      {balance.publicUnits == null ? (
-        <Text size="xs" c="dimmed">
-          not opted in
-        </Text>
-      ) : (
-        <Chip>
-          <span className="bal-chip-value">
-            {formatUnits(balance.publicUnits, token.assetScale)}
-          </span>
-        </Chip>
-      )}
+      {balance.publicUnits == null
+        ? (
+          <Text size='xs' c='dimmed'>
+            not opted in
+          </Text>
+          )
+        : (
+          <Chip>
+            <span className='bal-chip-value'>
+              {formatUnits(balance.publicUnits, token.assetScale)}
+            </span>
+          </Chip>
+          )}
       {balance.publicUnits != null && hasConfidential && (
         <>
           <Pot
-            label="📥 Inbox"
+            label='📥 Inbox'
             cipher={balance.inboxCipher}
             value={balance.inbox}
             assetScale={token.assetScale}
@@ -156,7 +160,7 @@ function WalletRow({
             →
           </span>
           <Pot
-            label="🔐 Spend"
+            label='🔐 Spend'
             cipher={balance.spendableCipher}
             value={balance.spendable}
             assetScale={token.assetScale}
@@ -173,21 +177,21 @@ function WalletRow({
  * holder's new balance under the issuer's key, so an issuer can always read
  * the balances of its own token, and only its own token.
  */
-function IssuerView({
+function IssuerView ({
   token,
-  balances,
+  balances
 }: {
   token: IssuanceKey
   balances: BalanceSnapshot
 }) {
   const info = TOKENS[token]
   return (
-    <Group gap={6} wrap="nowrap" className="issuer-view">
+    <Group gap={6} wrap='nowrap' className='issuer-view'>
       <Tooltip
         label={`Your issuer key reads every ${info.ticker} balance.`}
         multiline
       >
-        <Text size="xs" c="dimmed" style={{ whiteSpace: 'nowrap' }}>
+        <Text size='xs' c='dimmed' style={{ whiteSpace: 'nowrap' }}>
           🔎 {info.ticker} view
         </Text>
       </Tooltip>
@@ -195,11 +199,13 @@ function IssuerView({
         const view = balances[holder]?.tokens[token]?.issuerView
         return (
           <Chip key={holder} label={PARTIES[holder].name}>
-            {view == null ? (
-              <span className="bal-chip-value dim-value">—</span>
-            ) : (
-              <DecryptedValue value={view} assetScale={info.assetScale} />
-            )}
+            {view == null
+              ? (
+                <span className='bal-chip-value dim-value'>—</span>
+                )
+              : (
+                <DecryptedValue value={view} assetScale={info.assetScale} />
+                )}
           </Chip>
         )
       })}
@@ -214,12 +220,12 @@ function IssuerView({
  * glows. Confidential pots show ciphertexts until a key switch decrypts them;
  * issuers get their own lawful-view switch.
  */
-export function BalancePanel({
+export function BalancePanel ({
   balances,
   identities,
   turnParty,
   viewer,
-  onSelect,
+  onSelect
 }: {
   balances: BalanceSnapshot | null
   identities: IdentityBook
@@ -237,28 +243,28 @@ export function BalancePanel({
   }
 
   return (
-    <Card withBorder shadow="sm" padding="sm" className="ledger-card">
+    <Card withBorder shadow='sm' padding='sm' className='ledger-card'>
       {/* The heading is the panel's label, so it stays while the parties
           scroll: the card is the same height as the step panel. How the panel
           works sits behind the marker beside it rather than in a standing
           paragraph — it is read once, and the two lines it took were two lines
           of balances. */}
-      <Group gap={6} align="center" mb={8}>
-        <Text fw={700} size="sm">
+      <Group gap={6} align='center' mb={8}>
+        <Text fw={700} size='sm'>
           Account balances
         </Text>
         <Tooltip
-          label="Every account on the ledger, live. Click an account to act as that party."
+          label='Every account on the ledger, live. Click an account to act as that party.'
           multiline
           w={280}
         >
-          <span className="panel-hint" tabIndex={0} aria-label="About this panel">
+          <span className='panel-hint' tabIndex={0} aria-label='About this panel'>
             ?
           </span>
         </Tooltip>
       </Group>
 
-      <Stack gap={0} className="panel-scroll">
+      <Stack gap={0} className='panel-scroll'>
         {PARTY_KEYS.map((key) => {
           const partyBalances = balances?.[key]
           const identity = identities[key]
@@ -272,7 +278,7 @@ export function BalancePanel({
                 viewer === key ? 'is-you' : ''
               }`}
               style={partyVars(key)}
-              role="button"
+              role='button'
               tabIndex={0}
               aria-pressed={viewer === key}
               data-party={key}
@@ -284,47 +290,47 @@ export function BalancePanel({
                   the name rather than in the column of amounts below. Every
                   balance then shares the ticker column underneath, XRP
                   included. */}
-              <Group align="center" gap={6} wrap="nowrap" mb={4}>
+              <Group align='center' gap={6} wrap='nowrap' mb={4}>
                 <PartyBadge party={key} />
                 {viewer === key && (
-                  <Badge size="xs" variant="filled" color="dark">
+                  <Badge size='xs' variant='filled' color='dark'>
                     you
                   </Badge>
                 )}
-                <Text size="xs" c="dimmed" truncate style={{ minWidth: 0 }}>
+                <Text size='xs' c='dimmed' truncate style={{ minWidth: 0 }}>
                   {PARTIES[key].roleLabel}
                 </Text>
                 {acting && (
                   <Text
-                    size="xs"
+                    size='xs'
                     fw={700}
-                    className="acting-label"
+                    className='acting-label'
                     style={{ whiteSpace: 'nowrap' }}
                   >
                     ● next
                   </Text>
                 )}
-                <span className="party-spacer" />
+                <span className='party-spacer' />
                 {identity != null && (
-                  <Text ff="monospace" className="party-address">
+                  <Text ff='monospace' className='party-address'>
                     {identity.address.slice(0, 8)}…{identity.address.slice(-4)}
                   </Text>
                 )}
               </Group>
               {partyBalances == null ? (
-                <Text size="xs" c="dimmed">
+                <Text size='xs' c='dimmed'>
                   No account yet — run the first step to fund it.
                 </Text>
               ) : (
                 <Stack gap={6}>
                   {/* XRP first, so it shares the ticker column with the tokens
                       below and all the figures read as one column. */}
-                  <Group gap={6} wrap="nowrap">
-                    <Text size="xs" ff="monospace" fw={700} w={40}>
+                  <Group gap={6} wrap='nowrap'>
+                    <Text size='xs' ff='monospace' fw={700} w={40}>
                       XRP
                     </Text>
                     <Chip>
-                      <span className="bal-chip-value">
+                      <span className='bal-chip-value'>
                         {xrp(partyBalances.xrpDrops)}
                       </span>
                     </Chip>
@@ -336,11 +342,11 @@ export function BalancePanel({
                       beside the count the ledger reports. */}
                   {(partyBalances.sponsoringOwnerCount ?? 0) > 0 && (
                     <Tooltip
-                      label="Owner reserves this account covers for other accounts. The XRP stays in the balance above but cannot be spent while the sponsorships stand."
+                      label='Owner reserves this account covers for other accounts. The XRP stays in the balance above but cannot be spent while the sponsorships stand.'
                       multiline
                       w={280}
                     >
-                      <Text size="xs" c="teal.8" fw={600}>
+                      <Text size='xs' c='teal.8' fw={600}>
                         Sponsoring {partyBalances.sponsoringOwnerCount} owner
                         reserves
                         {partyBalances.sponsoredReserveDrops != null &&

@@ -6,11 +6,11 @@ import { Code, Paper, ScrollArea, Text, type PaperProps } from '@mantine/core'
  * ciphertexts is part of what is being signed, so it is shown in full. The
  * only change is `bigint` to string, which JSON cannot represent otherwise.
  */
-function replacer(_key: string, value: unknown): unknown {
+function replacer (_key: string, value: unknown): unknown {
   return typeof value === 'bigint' ? value.toString() : value
 }
 
-export function JsonView({
+export function JsonView ({
   label,
   value,
   defaultOpen = false,
@@ -22,21 +22,21 @@ export function JsonView({
 } & PaperProps) {
   return (
     <Paper
-      component="details"
+      component='details'
       withBorder
-      radius="md"
+      radius='md'
       mt={6}
       open={defaultOpen}
       style={{ overflow: 'hidden' }}
       {...paperProps}
     >
       <Text
-        component="summary"
-        size="xs"
+        component='summary'
+        size='xs'
         fw={600}
         px={12}
         py={7}
-        bg="gray.0"
+        bg='gray.0'
         style={{ cursor: 'pointer', userSelect: 'none' }}
       >
         {label}

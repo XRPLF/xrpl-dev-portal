@@ -41,7 +41,7 @@ export const PARTIES = {
     /* Pink, not teal: teal is the app's own accent, so a teal party badge sat
        the same color as the ✓, the done badge, and the chrome. */
     color: 'pink',
-    seedEnv: 'VITE_INVESTCO_SEED',
+    seedEnv: 'VITE_INVESTCO_SEED'
   },
   tradeDesk: {
     name: 'TradeDesk',
@@ -50,7 +50,7 @@ export const PARTIES = {
     blurb:
       'Repo counterparty. Pays USD for TMMF in the near leg and returns the collateral in the far leg.',
     color: 'orange',
-    seedEnv: 'VITE_TRADEDESK_SEED',
+    seedEnv: 'VITE_TRADEDESK_SEED'
   },
   alphaFund: {
     name: 'AlphaFund',
@@ -59,7 +59,7 @@ export const PARTIES = {
     blurb:
       'Asset manager. Issues TMMF, a tokenized money market fund, and gates who may hold it. Not a repo participant.',
     color: 'violet',
-    seedEnv: 'VITE_ALPHAFUND_SEED',
+    seedEnv: 'VITE_ALPHAFUND_SEED'
   },
   stableCorp: {
     name: 'StableCorp',
@@ -68,7 +68,7 @@ export const PARTIES = {
     blurb:
       'Stablecoin issuer. Issues USD and distributes it to TradeDesk. Not active after setup.',
     color: 'blue',
-    seedEnv: 'VITE_STABLECORP_SEED',
+    seedEnv: 'VITE_STABLECORP_SEED'
   },
   xSecurities: {
     name: 'xSecurities',
@@ -77,8 +77,8 @@ export const PARTIES = {
     blurb:
       'Constructs the atomic swap batches, collects signatures, submits, and sponsors fees. Holds no assets.',
     color: 'gray',
-    seedEnv: 'VITE_XSECURITIES_SEED',
-  },
+    seedEnv: 'VITE_XSECURITIES_SEED'
+  }
 } satisfies Record<string, PartyInfo>
 
 export type PartyKey = keyof typeof PARTIES
@@ -91,10 +91,10 @@ export type PartyPlaying<R extends PartyRole> = {
   [K in PartyKey]: (typeof PARTIES)[K]['role'] extends R ? K : never
 }[PartyKey]
 
-function partiesPlaying<R extends PartyRole>(role: R): PartyPlaying<R>[] {
+function partiesPlaying<R extends PartyRole> (role: R): Array<PartyPlaying<R>> {
   return PARTY_KEYS.filter(
-    (key) => PARTIES[key].role === role,
-  ) as PartyPlaying<R>[]
+    (key) => PARTIES[key].role === role
+  ) as Array<PartyPlaying<R>>
 }
 
 /** A party to the repo itself, as opposed to an issuer or the orchestrator. */
@@ -147,8 +147,8 @@ export const TOKENS = {
       icon: 'https://example.org/tmmf-icon.png',
       asset_class: 'rwa',
       asset_subclass: 'treasury',
-      issuer_name: 'AlphaFund Asset Management',
-    },
+      issuer_name: 'AlphaFund Asset Management'
+    }
   },
   cash: {
     ticker: 'USD',
@@ -162,9 +162,9 @@ export const TOKENS = {
       icon: 'https://example.org/usd-icon.png',
       asset_class: 'rwa',
       asset_subclass: 'stablecoin',
-      issuer_name: 'StableCorp Inc.',
-    },
-  },
+      issuer_name: 'StableCorp Inc.'
+    }
+  }
 } satisfies Record<string, TokenInfo>
 
 /** Which of the deal's tokens an operation, balance, or row refers to. */
@@ -174,7 +174,7 @@ export type IssuanceKey = keyof typeof TOKENS
 export const TOKEN_KEYS = Object.keys(TOKENS) as IssuanceKey[]
 
 /** The token this party issues, if it issues one. */
-export function issuedToken(party: PartyKey): IssuanceKey | undefined {
+export function issuedToken (party: PartyKey): IssuanceKey | undefined {
   return TOKEN_KEYS.find((key) => TOKENS[key].issuer === party)
 }
 
@@ -197,7 +197,7 @@ export const DEFAULT_DEAL: DealTerms = {
   collateralUnits: 100n,
   cashUnits: 100_000n,
   tenorDays: 10n,
-  interestRateBps: 500n,
+  interestRateBps: 500n
 }
 
 /**
@@ -205,14 +205,14 @@ export const DEFAULT_DEAL: DealTerms = {
  * With the defaults: 1,000.00 × 5% × 10/365 = 1.37 USD. Computed off-chain
  * by the orchestrator; the ledger itself never calculates interest.
  */
-export function interestUnits(deal: DealTerms): bigint {
+export function interestUnits (deal: DealTerms): bigint {
   const numerator = deal.cashUnits * deal.interestRateBps * deal.tenorDays
   const denominator = 10_000n * DAYS_PER_YEAR
   return (numerator + denominator / 2n) / denominator
 }
 
 /** Far leg: InvestCo returns principal plus interest. */
-export function farLegCashUnits(deal: DealTerms): bigint {
+export function farLegCashUnits (deal: DealTerms): bigint {
   return deal.cashUnits + interestUnits(deal)
 }
 
@@ -222,13 +222,13 @@ export function farLegCashUnits(deal: DealTerms): bigint {
  * a detail term sheets gloss over but settlement cannot. Twice the interest,
  * with a 10.00 floor.
  */
-export function operatingCashUnits(deal: DealTerms): bigint {
+export function operatingCashUnits (deal: DealTerms): bigint {
   const doubled = 2n * interestUnits(deal)
   return doubled > 1_000n ? doubled : 1_000n
 }
 
 /** Format integer base units as a decimal amount, e.g. 100137n @ scale 2 → "1,001.37". */
-export function formatUnits(units: bigint, assetScale: number): string {
+export function formatUnits (units: bigint, assetScale: number): string {
   const negative = units < 0n
   const abs = negative ? -units : units
   const divisor = 10n ** BigInt(assetScale)
@@ -241,6 +241,6 @@ export function formatUnits(units: bigint, assetScale: number): string {
 }
 
 /** An amount with its ticker, e.g. "1,001.37 USD". */
-export function formatAmount(units: bigint, token: TokenInfo): string {
+export function formatAmount (units: bigint, token: TokenInfo): string {
   return `${formatUnits(units, token.assetScale)} ${token.ticker}`
 }

@@ -10,7 +10,7 @@ import {
   Text,
   Timeline,
   Title,
-  Tooltip,
+  Tooltip
 } from '@mantine/core'
 import { useEffect, useRef } from 'react'
 
@@ -30,27 +30,27 @@ export interface ActionSlot {
 type RowState = 'done' | 'running' | 'next' | 'locked'
 
 /** Where to read about each mechanism the flow used, in the order it used it. */
-const NEXT_READS: { label: string; href: string }[] = [
+const NEXT_READS: Array<{ label: string, href: string }> = [
   {
     label: 'Multi-purpose tokens',
-    href: 'https://xrpl.org/docs/concepts/tokens/fungible-tokens/multi-purpose-tokens',
+    href: 'https://xrpl.org/docs/concepts/tokens/fungible-tokens/multi-purpose-tokens'
   },
   {
     label: 'Confidential transfers',
-    href: 'https://xrpl.org/docs/concepts/tokens/fungible-tokens/confidential-transfers',
+    href: 'https://xrpl.org/docs/concepts/tokens/fungible-tokens/confidential-transfers'
   },
   {
     label: 'Batch transactions',
-    href: 'https://xrpl.org/docs/concepts/transactions/batch-transactions',
+    href: 'https://xrpl.org/docs/concepts/transactions/batch-transactions'
   },
   {
     label: 'Sponsored fees and reserves',
-    href: 'https://xrpl.org/docs/concepts/accounts/sponsored-fees-and-reserves',
-  },
+    href: 'https://xrpl.org/docs/concepts/accounts/sponsored-fees-and-reserves'
+  }
 ]
 
 /** A step's callouts as a list, whether it declared one or several. */
-function calloutList(callout: RunnableStep['callout']): StepCallout[] {
+function calloutList (callout: RunnableStep['callout']): StepCallout[] {
   if (callout == null) {
     return []
   }
@@ -58,39 +58,39 @@ function calloutList(callout: RunnableStep['callout']): StepCallout[] {
 }
 
 /** Transactions, notes, and artifacts produced by one completed action. */
-function ActionResult({ result }: { result: StepResult }) {
+function ActionResult ({ result }: { result: StepResult }) {
   return (
-    <div className="action-result" data-testid="action-result">
+    <div className='action-result' data-testid='action-result'>
       {result.txs.map((tx) => (
         <div key={tx.hash}>
-          <Group gap={8} wrap="nowrap" align="baseline">
-            <Text size="sm" c="teal.8" fw={700} className="success-check">
+          <Group gap={8} wrap='nowrap' align='baseline'>
+            <Text size='sm' c='teal.8' fw={700} className='success-check'>
               ✓
             </Text>
-            <Text size="sm" style={{ flex: 1 }}>
+            <Text size='sm' style={{ flex: 1 }}>
               {tx.label}
               {tx.sponsored && (
-                <Badge component="span" size="xs" variant="light" color="gray" ml={6}>
+                <Badge component='span' size='xs' variant='light' color='gray' ml={6}>
                   sponsored
                 </Badge>
               )}
               {tx.inner && (
-                <Badge component="span" size="xs" variant="light" color="blue" ml={6}>
+                <Badge component='span' size='xs' variant='light' color='blue' ml={6}>
                   inner tx
                 </Badge>
               )}
             </Text>
-            <Tooltip label="The engine result the validators recorded for this transaction.">
-              <Badge size="xs" variant="light" color="teal" ff="monospace" tt="none">
+            <Tooltip label='The engine result the validators recorded for this transaction.'>
+              <Badge size='xs' variant='light' color='teal' ff='monospace' tt='none'>
                 {tx.result}
               </Badge>
             </Tooltip>
             <Anchor
               href={explorerTxUrl(tx.hash)}
-              target="_blank"
-              rel="noreferrer"
-              size="xs"
-              ff="monospace"
+              target='_blank'
+              rel='noreferrer'
+              size='xs'
+              ff='monospace'
               title={tx.hash}
             >
               {tx.hash.slice(0, 8)}…
@@ -98,7 +98,7 @@ function ActionResult({ result }: { result: StepResult }) {
           </Group>
           {tx.txJson != null && (
             <JsonView
-              label="What the ledger recorded (validated transaction and metadata)"
+              label='What the ledger recorded (validated transaction and metadata)'
               value={tx.txJson}
               ml={22}
             />
@@ -106,7 +106,7 @@ function ActionResult({ result }: { result: StepResult }) {
         </div>
       ))}
       {result.notes.map((note) => (
-        <Text key={note} size="sm" c="dimmed">
+        <Text key={note} size='sm' c='dimmed'>
           · {note}
         </Text>
       ))}
@@ -118,7 +118,7 @@ function ActionResult({ result }: { result: StepResult }) {
 }
 
 /** The ordered actions of one step, as a timeline the reader walks down. */
-function ActionTimeline({
+function ActionTimeline ({
   step,
   slots,
   completedActions,
@@ -128,7 +128,7 @@ function ActionTimeline({
   preview,
   actor,
   onRunAction,
-  onBecome,
+  onBecome
 }: {
   step: RunnableStep
   slots: ActionSlot[]
@@ -168,28 +168,30 @@ function ActionTimeline({
           : 'locked'
 
   const rowTitle = (action: StepAction, state: RowState) =>
-    state === 'next' || state === 'running' ? undefined : (
-      <Group gap={8} wrap="nowrap">
-        {action.party && <PartyBadge party={action.party} size="xs" />}
-        <Text size="sm" fw={500} c={state === 'locked' ? 'dimmed' : undefined}>
-          {action.label}
-        </Text>
-        {state === 'done' && (
-          <Badge size="xs" variant="light" color="teal">
-            done
-          </Badge>
-        )}
-      </Group>
-    )
+    state === 'next' || state === 'running'
+      ? undefined
+      : (
+        <Group gap={8} wrap='nowrap'>
+          {action.party && <PartyBadge party={action.party} size='xs' />}
+          <Text size='sm' fw={500} c={state === 'locked' ? 'dimmed' : undefined}>
+            {action.label}
+          </Text>
+          {state === 'done' && (
+            <Badge size='xs' variant='light' color='teal'>
+              done
+            </Badge>
+          )}
+        </Group>
+        )
 
   return (
     <Timeline
-      mt="md"
+      mt='md'
       active={completedActions - 1}
       bulletSize={26}
       lineWidth={2}
-      color="teal"
-      className="action-timeline"
+      color='teal'
+      className='action-timeline'
     >
       {step.actions.map((action, actionIndex) => {
         const state = rowState(actionIndex)
@@ -207,7 +209,7 @@ function ActionTimeline({
             title={rowTitle(action, state)}
           >
             {state !== 'next' && state !== 'running' && (
-              <Text size="xs" c="dimmed">
+              <Text size='xs' c='dimmed'>
                 {action.detail}
               </Text>
             )}
@@ -225,7 +227,7 @@ function ActionTimeline({
                 />
               </div>
             )}
-            {slots[actionIndex].result && (
+            {(slots[actionIndex].result != null) && (
               <ActionResult result={slots[actionIndex].result} />
             )}
           </Timeline.Item>
@@ -240,33 +242,33 @@ function ActionTimeline({
  * they just ran. Brief by design — it replaces the continue footer, and the
  * back arrow above it still works, so nothing here closes the flow off.
  */
-function CompletionView() {
+function CompletionView () {
   return (
     <>
-      <Divider mt="md" />
-      <Group justify="space-between" align="center" mt={12} gap="sm" wrap="wrap">
-        <Text size="sm" c="teal.9" fw={600}>
+      <Divider mt='md' />
+      <Group justify='space-between' align='center' mt={12} gap='sm' wrap='wrap'>
+        <Text size='sm' c='teal.9' fw={600}>
           ✓ Repo settled. That's the whole lifecycle.
         </Text>
-        <Group gap={4} wrap="wrap" justify="flex-end">
-          <Text size="sm" fw={700} c="dimmed">
+        <Group gap={4} wrap='wrap' justify='flex-end'>
+          <Text size='sm' fw={700} c='dimmed'>
             Resources:
           </Text>
           {NEXT_READS.map((read, index) => (
-            <Text size="sm" key={read.href}>
+            <Text size='sm' key={read.href}>
               {/* Blue, not the teal primary: teal carries state in this UI
                   (balances, completion), so links get their own color. */}
               <Anchor
                 href={read.href}
-                target="_blank"
-                rel="noreferrer"
-                c="blue.7"
-                underline="always"
+                target='_blank'
+                rel='noreferrer'
+                c='blue.7'
+                underline='always'
               >
                 {read.label}
               </Anchor>
               {index < NEXT_READS.length - 1 && (
-                <Text span c="dimmed">
+                <Text span c='dimmed'>
                   {' · '}
                 </Text>
               )}
@@ -286,7 +288,7 @@ function CompletionView() {
  * party's console, and completed actions keep their results inline, so cause
  * stays next to effect.
  */
-export function StepPanel({
+export function StepPanel ({
   step,
   eyebrow,
   slots,
@@ -303,7 +305,7 @@ export function StepPanel({
   onContinue,
   flowComplete,
   onRunAction,
-  onBecome,
+  onBecome
 }: {
   step: RunnableStep
   eyebrow: string
@@ -341,22 +343,22 @@ export function StepPanel({
   return (
     <Card
       withBorder
-      shadow="sm"
-      padding="md"
-      aria-live="polite"
-      className="step-card"
+      shadow='sm'
+      padding='md'
+      aria-live='polite'
+      className='step-card'
     >
       {/* The heading and the arrows stay put; the narrative below them scrolls,
           so the reader always knows which step they're in. */}
-      <Group justify="space-between" align="flex-start" mb={4} wrap="nowrap">
+      <Group justify='space-between' align='flex-start' mb={4} wrap='nowrap'>
         <div>
           <Text
-            size="xs"
+            size='xs'
             fw={700}
-            tt="uppercase"
-            c="teal.8"
-            lts="0.06em"
-            data-testid="step-eyebrow"
+            tt='uppercase'
+            c='teal.8'
+            lts='0.06em'
+            data-testid='step-eyebrow'
           >
             {eyebrow}
           </Text>
@@ -364,22 +366,22 @@ export function StepPanel({
             {step.title}
           </Title>
         </div>
-        <Group gap={6} wrap="nowrap">
+        <Group gap={6} wrap='nowrap'>
           <ActionIcon
-            variant="default"
-            size="lg"
-            aria-label="Previous step"
-            data-testid="step-back"
+            variant='default'
+            size='lg'
+            aria-label='Previous step'
+            data-testid='step-back'
             disabled={!canGoBack}
             onClick={() => onNavigate(-1)}
           >
             ←
           </ActionIcon>
           <ActionIcon
-            variant="default"
-            size="lg"
-            aria-label="Next step"
-            data-testid="step-forward"
+            variant='default'
+            size='lg'
+            aria-label='Next step'
+            data-testid='step-forward'
             disabled={!canGoForward}
             onClick={() => onNavigate(1)}
           >
@@ -388,31 +390,31 @@ export function StepPanel({
         </Group>
       </Group>
 
-      <div className="panel-scroll" ref={bodyRef}>
+      <div className='panel-scroll' ref={bodyRef}>
         {/* The prose is capped to a readable measure, while the timeline below
             it keeps the card's full width for transaction JSON. */}
-        <div className="step-narrative">
-          <Text size="sm" mt={6}>
+        <div className='step-narrative'>
+          <Text size='sm' mt={6}>
             {step.description}
           </Text>
 
           {calloutList(step.callout).map((callout) => (
             <Alert
               key={callout.title}
-              mt="sm"
-              p="sm"
+              mt='sm'
+              p='sm'
               color={callout.kind === 'warn' ? 'yellow' : 'blue'}
               title={callout.title}
             >
-              <Text size="sm">{callout.text}</Text>
+              <Text size='sm'>{callout.text}</Text>
             </Alert>
           ))}
 
           {/* Same Alert as the callout above it, so the two kinds of aside read
               as one family and differ only in color and heading. */}
           {step.learn && (
-            <Alert mt="sm" p="sm" color="teal" title="What the XRP Ledger provides">
-              <Text size="sm">{step.learn}</Text>
+            <Alert mt='sm' p='sm' color='teal' title='What the XRP Ledger provides'>
+              <Text size='sm'>{step.learn}</Text>
             </Alert>
           )}
         </div>
@@ -435,18 +437,20 @@ export function StepPanel({
           revisited: the state on the left, the way onward on the right. */}
       {continueLabel && (
         <>
-          <Divider mt="md" />
-          <Group justify="space-between" align="center" mt={12}>
-            {isCurrent ? (
-              <Text size="sm" c="teal.9" fw={600}>
-                ✓ Complete.
-              </Text>
-            ) : (
-              <Text size="sm" c="dimmed">
-                These actions already ran and can't run again.
-              </Text>
-            )}
-            <Button onClick={onContinue} rightSection="→" data-testid="step-continue">
+          <Divider mt='md' />
+          <Group justify='space-between' align='center' mt={12}>
+            {isCurrent
+              ? (
+                <Text size='sm' c='teal.9' fw={600}>
+                  ✓ Complete.
+                </Text>
+                )
+              : (
+                <Text size='sm' c='dimmed'>
+                  These actions already ran and can't run again.
+                </Text>
+                )}
+            <Button onClick={onContinue} rightSection='→' data-testid='step-continue'>
               {continueLabel}
             </Button>
           </Group>
