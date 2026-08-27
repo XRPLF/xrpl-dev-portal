@@ -59,7 +59,6 @@ import {
 /** The near leg opens the repo; the far leg unwinds it. */
 export type LegDirection = 'near' | 'far'
 
-/** One confidential send inside a leg's batch. */
 export interface LegSend {
   from: PartyKey
   to: PartyKey
@@ -67,9 +66,7 @@ export interface LegSend {
   units: bigint
 }
 
-/** What every single-transaction operation names, whatever it does. */
 interface OpBase {
-  /** Which of the deal's tokens the operation acts on. */
   token: IssuanceKey
   /** Who pays the fee, and the reserve wherever the protocol allows it. */
   sponsor?: PartyKey
@@ -77,7 +74,6 @@ interface OpBase {
   label?: string
 }
 
-/** An operation signed by a party the token itself does not name. */
 interface HolderOp extends OpBase {
   /** The party that signs, and therefore controls, the transaction. */
   actor: PartyKey
@@ -109,7 +105,6 @@ export function opSigner (op: LedgerOp): PartyKey {
     : op.actor
 }
 
-/** One party of the deal: its account, keys, and which role it plays. */
 export interface Party extends ConfidentialAccount {
   key: PartyKey
 }
@@ -134,7 +129,6 @@ export interface PartyBalances {
 
 export type BalanceSnapshot = Partial<Record<PartyKey, PartyBalances>>
 
-/** The deal's token definitions as generic MPT issuance parameters. */
 function issuanceOptions (
   issuer: string,
   token: TokenInfo,
@@ -255,7 +249,6 @@ export class RepoLedger {
   // through the same `build*` function, so what the reader inspects cannot
   // drift from what reaches the ledger.
 
-  /** The label the demo records for an operation, unless it names its own. */
   private opLabel (op: LedgerOp): string {
     if (op.label != null) {
       return op.label
@@ -459,7 +452,6 @@ export class RepoLedger {
     )
   }
 
-  /** The signature entry each counterparty has contributed so far. */
   legSigners (
     direction: LegDirection
   ): Partial<Record<PartyKey, BatchSignerEntry>> {
@@ -474,7 +466,6 @@ export class RepoLedger {
     return entries
   }
 
-  /** The combined batch, decoded for display. */
   combinedLeg (direction: LegDirection): unknown {
     const { combined } = this.leg(direction)
     return typeof combined === 'string' ? decodeBatchBlob(combined) : combined
@@ -607,7 +598,6 @@ export class RepoLedger {
     }
   }
 
-  /** The unsigned batch, once constructed. */
   previewUnsignedLeg (direction: LegDirection): unknown {
     return this.leg(direction).unsigned
   }

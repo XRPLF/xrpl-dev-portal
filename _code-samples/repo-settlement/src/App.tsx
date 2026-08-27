@@ -118,8 +118,6 @@ export default function App () {
     [steps]
   )
 
-  // The data behind the next action, recomputed each render so the reader
-  // can inspect exactly what they are about to sign.
   let preview: unknown
   if (nextAction?.preview != null && ledgerRef.current != null) {
     try {
@@ -129,8 +127,8 @@ export default function App () {
     }
   }
 
-  // The stepper condenses the steps into their seven phases, so the reader
-  // always sees where the viewed step sits in the whole flow.
+  // Consecutive steps sharing a phase name become one stepper entry, so the
+  // stepper stays short however many steps the flow has.
   const phases = useMemo(() => {
     const grouped: Array<{ name: string, steps: number[] }> = []
     steps.forEach((step, index) => {
@@ -153,12 +151,9 @@ export default function App () {
     : phases.findIndex((p) => p.steps.includes(currentStep))
   const selectedPhase = phases.findIndex((p) => p.steps.includes(selected))
 
-  /**
-   * The step's place in its phase, not in the whole flow: a count in the teens
-   * reads as a chore, while the phase the stepper already shows is a unit the
-   * reader has agreed to. Single-step phases say nothing, since the phase name
-   * beside it is the whole count.
-   */
+  // The step's place in its phase, not in the whole flow: a count in the teens
+  // reads as a chore. Single-step phases say nothing, since the phase name
+  // beside it is the whole count.
   const phaseSteps = phases[selectedPhase].steps
   const eyebrow =
     phaseSteps.length > 1
@@ -167,13 +162,12 @@ export default function App () {
 
   /**
    * Where clicking a phase lands. The phase holding the frontier lands on the
-   * frontier itself, so the live phase is the "back to where I was" target;
-   * every earlier phase lands on its own first step.
+   * frontier itself, so it is the "back to where I was" target; every earlier
+   * phase lands on its own first step.
    */
   const phaseTarget = (index: number): number =>
     phases[index].steps.includes(maxStep) ? maxStep : phases[index].steps[0]
 
-  /** How a step's dot reads: finished, the live one, or not reachable yet. */
   const dotState = (index: number): 'done' | 'live' | 'locked' => {
     if (progress[index] >= steps[index].actions.length) {
       return 'done'
@@ -192,9 +186,8 @@ export default function App () {
     // The inline gutter is left to .app-shell, which scales it with the window
     // instead of holding it at Container's fixed md.
     <Container size={1560} py='md' className='app-shell'>
-      {/* The ticket sits beside the title rather than under it: the chrome is
-          then as tall as the taller of the two, not the sum, and every pixel
-          saved goes to the step and the ledger below. */}
+      {/* The ticket sits beside the title rather than under it, so the chrome
+          is as tall as the taller of the two rather than their sum. */}
       <div className='chrome'>
         <Group align='flex-start' mb='sm' gap='md' wrap='wrap'>
           <Stack gap={4} style={{ flex: '1 1 380px', minWidth: 0 }}>
@@ -204,10 +197,8 @@ export default function App () {
             <Title order={1} size={24}>
               Repo Settlement
             </Title>
-            {/* Always shown: the ticket column beside it is the taller of the
-                two, so the preamble sits in slack that exists either way, and
-                becoming a party by clicking it is the demo's one non-obvious
-                interaction. */}
+            {/* Always shown, because becoming a party by clicking it is the
+                demo's one non-obvious interaction. */}
             <Text size='sm' c='dimmed' maw={640}>
               A two-leg repo trade, settled atomically with encrypted amounts.
               You act as every party: click one in the balances panel to become
@@ -248,9 +239,9 @@ export default function App () {
           mt='sm'
           className='phase-stepper'
         >
-          {/* completedIcon keeps the number on a finished phase: Mantine
-              replaces it with a tick, which costs the reader the one mark that
-              says which phase it is. The filled circle already says "done". */}
+          {/* completedIcon keeps the number on a finished phase, which Mantine
+              would otherwise replace with a tick. The filled circle already
+              says "done". */}
           {phases.map((item, index) => (
             <Stepper.Step
               key={item.name}
@@ -284,19 +275,17 @@ export default function App () {
         </Stepper>
       </div>
 
-      {/* Both panels take whatever height the chrome above them leaves, so the
-          step and the ledger are on screen together at any window size. Each
-          scrolls its own overflow; the page itself never scrolls. */}
+      {/* Both panels take whatever height the chrome above them leaves and
+          scroll their own overflow, so the page itself never scrolls. */}
       <Grid
         gap='md'
         mt='sm'
         className='panel-row'
         classNames={{ inner: 'panel-row-inner' }}
       >
-        {/* The ledger gets a wider share at the md breakpoint, where the
-            column is narrow enough that a party's balances would otherwise be
-            clipped; the step panel takes the extra width back on a wide
-            display, where the JSON is what needs it. */}
+        {/* The ledger gets a wider share at the md breakpoint, where a party's
+            balances would otherwise be clipped; the step panel takes it back on
+            a wide display, where the transaction JSON needs it. */}
         <Grid.Col span={{ base: 12, md: 7, lg: 7.5 }} className='panel-col'>
           <StepPanel
             step={step}

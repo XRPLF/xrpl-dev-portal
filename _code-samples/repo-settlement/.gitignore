@@ -4,6 +4,3 @@ dist
 .env.local
 *.local
 .DS_Store
-cypress/screenshots
-cypress/videos
-cypress/downloads

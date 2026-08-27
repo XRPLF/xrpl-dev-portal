@@ -17,9 +17,8 @@ function actorInitials (action: StepAction): string {
 }
 
 /**
- * The one place where things happen: themed in the acting party's color, it
- * shows who you are, the exact transaction you're about to sign, and the
- * button that does it.
+ * The only place an action runs. Themed in the acting party's color, it shows
+ * the exact transaction about to be signed and the button that signs it.
  */
 export function ActionConsole ({
   action,
@@ -132,7 +131,7 @@ export function ActionConsole ({
         </>
       )}
       {error != null && (
-        <Alert color='red' title='Action failed' mt='sm' p='sm' data-testid='action-error'>
+        <Alert color='red' title='Action failed' mt='sm' p='sm'>
           <Text size='xs' ff='monospace' style={{ overflowWrap: 'anywhere' }}>
             {error}
           </Text>

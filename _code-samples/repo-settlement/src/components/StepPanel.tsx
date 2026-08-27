@@ -29,22 +29,25 @@ export interface ActionSlot {
 
 type RowState = 'done' | 'running' | 'next' | 'locked'
 
-/** Where to read about each mechanism the flow used, in the order it used it. */
+/**
+ * Where to read about each mechanism the flow used, in the order it used it.
+ * Each label is the exact title of the page it links to.
+ */
 const NEXT_READS: Array<{ label: string, href: string }> = [
   {
-    label: 'Multi-purpose tokens',
+    label: 'Multi-Purpose Tokens (MPTs)',
     href: 'https://xrpl.org/docs/concepts/tokens/fungible-tokens/multi-purpose-tokens'
   },
   {
-    label: 'Confidential transfers',
+    label: 'Confidential Transfers',
     href: 'https://xrpl.org/docs/concepts/tokens/fungible-tokens/confidential-transfers'
   },
   {
-    label: 'Batch transactions',
+    label: 'Batch Transactions',
     href: 'https://xrpl.org/docs/concepts/transactions/batch-transactions'
   },
   {
-    label: 'Sponsored fees and reserves',
+    label: 'Sponsored Fees and Reserves',
     href: 'https://xrpl.org/docs/concepts/accounts/sponsored-fees-and-reserves'
   }
 ]
@@ -57,10 +60,9 @@ function calloutList (callout: RunnableStep['callout']): StepCallout[] {
   return Array.isArray(callout) ? callout : [callout]
 }
 
-/** Transactions, notes, and artifacts produced by one completed action. */
 function ActionResult ({ result }: { result: StepResult }) {
   return (
-    <div className='action-result' data-testid='action-result'>
+    <div className='action-result'>
       {result.txs.map((tx) => (
         <div key={tx.hash}>
           <Group gap={8} wrap='nowrap' align='baseline'>
@@ -117,7 +119,6 @@ function ActionResult ({ result }: { result: StepResult }) {
   )
 }
 
-/** The ordered actions of one step, as a timeline the reader walks down. */
 function ActionTimeline ({
   step,
   slots,
@@ -145,10 +146,8 @@ function ActionTimeline ({
   const lastStepRef = useRef(step.id)
 
   // The console pulls itself into view when an action completes, because the
-  // next one moves down the timeline as results accumulate above it. It must
-  // not do so on arriving at a step: the console is taller than the narrative
-  // above it, so revealing it would scroll the description the reader has yet
-  // to read off the top. Arrival is the panel's job (it scrolls to the top).
+  // next one moves down the timeline as results accumulate above it. Not on
+  // arrival at a step, where it would scroll the unread narrative off the top.
   useEffect(() => {
     const arrived = lastStepRef.current !== step.id
     lastStepRef.current = step.id
@@ -237,11 +236,7 @@ function ActionTimeline ({
   )
 }
 
-/**
- * The end of the flow: says so, then hands the reader the specs behind what
- * they just ran. Brief by design — it replaces the continue footer, and the
- * back arrow above it still works, so nothing here closes the flow off.
- */
+/** The end of the flow: says so, then links the mechanisms it used. */
 function CompletionView () {
   return (
     <>
@@ -281,12 +276,9 @@ function CompletionView () {
 }
 
 /**
- * One step on one card, so the whole screen stays in view. The back and
- * forward arrows move through the steps horizontally; forward stops at the
- * live step, and revisited steps show their results read-only — an executed
- * action can never run twice. The active action expands into the acting
- * party's console, and completed actions keep their results inline, so cause
- * stays next to effect.
+ * One step on one card, so the whole screen stays in view. Forward navigation
+ * stops at the live step, and revisited steps show their results read-only: an
+ * executed action can never run twice.
  */
 export function StepPanel ({
   step,
@@ -331,9 +323,8 @@ export function StepPanel ({
 }) {
   const bodyRef = useRef<HTMLDivElement>(null)
 
-  // Arriving at a step starts it at its own beginning: the body is a scroll
-  // region, so without this it keeps the previous step's offset and drops the
-  // reader mid-narrative.
+  // The body is a scroll region, so without this a new step keeps the previous
+  // one's offset and starts the reader mid-narrative.
   useEffect(() => {
     if (bodyRef.current != null) {
       bodyRef.current.scrollTop = 0
@@ -348,8 +339,7 @@ export function StepPanel ({
       aria-live='polite'
       className='step-card'
     >
-      {/* The heading and the arrows stay put; the narrative below them scrolls,
-          so the reader always knows which step they're in. */}
+      {/* Outside the scroll region below, so the step's identity stays put. */}
       <Group justify='space-between' align='flex-start' mb={4} wrap='nowrap'>
         <div>
           <Text
@@ -358,7 +348,6 @@ export function StepPanel ({
             tt='uppercase'
             c='teal.8'
             lts='0.06em'
-            data-testid='step-eyebrow'
           >
             {eyebrow}
           </Text>
@@ -371,7 +360,6 @@ export function StepPanel ({
             variant='default'
             size='lg'
             aria-label='Previous step'
-            data-testid='step-back'
             disabled={!canGoBack}
             onClick={() => onNavigate(-1)}
           >
@@ -381,7 +369,6 @@ export function StepPanel ({
             variant='default'
             size='lg'
             aria-label='Next step'
-            data-testid='step-forward'
             disabled={!canGoForward}
             onClick={() => onNavigate(1)}
           >
@@ -410,8 +397,6 @@ export function StepPanel ({
             </Alert>
           ))}
 
-          {/* Same Alert as the callout above it, so the two kinds of aside read
-              as one family and differ only in color and heading. */}
           {step.learn && (
             <Alert mt='sm' p='sm' color='teal' title='What the XRP Ledger provides'>
               <Text size='sm'>{step.learn}</Text>
@@ -433,8 +418,7 @@ export function StepPanel ({
         />
       </div>
 
-      {/* One footer for a finished step, whether it just ran or is being
-          revisited: the state on the left, the way onward on the right. */}
+      {/* One footer for a finished step, whether it just ran or is revisited. */}
       {continueLabel && (
         <>
           <Divider mt='md' />
@@ -450,7 +434,7 @@ export function StepPanel ({
                   These actions already ran and can't run again.
                 </Text>
                 )}
-            <Button onClick={onContinue} rightSection='→' data-testid='step-continue'>
+            <Button onClick={onContinue} rightSection='→'>
               {continueLabel}
             </Button>
           </Group>
