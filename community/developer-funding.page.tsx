@@ -168,12 +168,12 @@ export default function Funding() {
 
         logos={[
           {
-            logo: require("../static/img/logos/black/temp-lantern.png"),
+            logo: require("../static/img/logos/black/lantern.svg"),
             alt: translate("LANTERN"),
             href: "https://lantern.finance/",
           },
           {
-            logo: require("../static/img/logos/black/temp-soil.png"),
+            logo: require("../static/img/logos/black/soil.svg"),
             alt: translate("SOIL"),
             href: "https://soil.co/",
           },
@@ -183,17 +183,12 @@ export default function Funding() {
             href: "https://www.t54.ai/",
           },
           {
-            logo: require("../static/img/logos/black/temp-ushi.png"),
-            alt: translate("USHI"),
-            href: "https://ushi.co/",
-          },
-          {
-            logo: require("../static/img/logos/black/temp-blockvault.png"),
+            logo: require("../static/img/logos/black/blockvault.png"),
             alt: translate("BlockVault"),
             href: "https://block.vault/",
           },
           {
-            logo: require("../static/img/logos/black/temp-lobstr.png"),
+            logo: require("../static/img/logos/black/lobstr.svg"),
             alt: translate("LOBSTR"),
             href: "https://lobstr/",
           },
