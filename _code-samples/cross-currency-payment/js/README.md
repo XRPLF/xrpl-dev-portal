@@ -1,4 +1,4 @@
-# Cross-Currency Payment Examples (JavaScript)
+# Cross-Currency Payment (JavaScript)
 
 Sends a cross-currency payment where the source spends XRP and the destination is credited in USD, converted through the DEX order book.
 
