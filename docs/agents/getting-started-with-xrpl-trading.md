@@ -381,7 +381,7 @@ this combination at construction.
 **Go deeper on XRPL features**
 
 - [Decentralized Exchange](/docs/concepts/tokens/decentralized-exchange/) — XRPL DEX concepts: offer matching, quality, and the order book.
-- [Automated Market Maker](/docs/concepts/tokens/decentralized-exchange/automated-market-maker/) — AMM pools and how they interact with the DEX order book.
+- [Automated Market Maker](/docs/concepts/tokens/decentralized-exchange/automated-market-makers/) — AMM pools and how they interact with the DEX order book.
 
 **SDK references**
 
