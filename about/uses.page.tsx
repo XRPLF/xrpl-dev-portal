@@ -617,9 +617,24 @@ export default function Uses() {
   const [displayModal, setDisplayModal] = React.useState(false);
   const [currentIndex, setCurrentIndex] = React.useState(0);
   const [modalPortalTarget, setModalPortalTarget] = React.useState<HTMLElement | null>(null);
+  const filterButtonRef = React.useRef<HTMLButtonElement>(null);
+  const categoryFilterModalRef = React.useRef<HTMLDivElement>(null);
   React.useEffect(() => {
     setModalPortalTarget(document.body);
   }, []);
+  React.useEffect(() => {
+    const modal = categoryFilterModalRef.current;
+    if (!modal) {
+      return;
+    }
+    const returnFocusToOpener = () => {
+      filterButtonRef.current?.focus();
+    };
+    modal.addEventListener("hidden.bs.modal", returnFocusToOpener);
+    return () => {
+      modal.removeEventListener("hidden.bs.modal", returnFocusToOpener);
+    };
+  }, [modalPortalTarget]);
   const defaultSelectedCategories = new Set(Object.keys(featured_categories));
 
   const [selectedCategories, setSelectedCategories] = React.useState(
@@ -936,10 +951,13 @@ export default function Uses() {
               </p>
             </div>
             <button
+              ref={filterButtonRef}
               type="button"
               className="btn d-block d-lg-none"
               data-bs-toggle="modal"
               data-bs-target="#categoryFilterModal"
+              aria-haspopup="dialog"
+              aria-controls="categoryFilterModal"
             >
               <span className="me-3">
                 <svg
@@ -968,6 +986,7 @@ export default function Uses() {
               createPortal(
                 <div className="page-uses" style={{ display: "contents" }}>
                   <div
+                    ref={categoryFilterModalRef}
                     className="modal fade"
                     id="categoryFilterModal"
                     tabIndex={-1}

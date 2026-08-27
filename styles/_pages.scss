@@ -299,11 +299,17 @@
     gap: 12px;
   }
 
-  [data-bs-target="#categoryFilterModal"] .category-filter-icon {
-    color: $white;
+  [data-bs-target="#categoryFilterModal"] {
+    .category-filter-icon {
+      color: $white;
 
-    rect {
-      fill: $black;
+      rect {
+        fill: $black;
+      }
+    }
+
+    &:focus-visible {
+      outline: revert;
     }
   }
 
