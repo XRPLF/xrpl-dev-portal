@@ -33,10 +33,10 @@ describeDevnet('repo settlement on Devnet', () => {
     // Completing the step opens the way forward, by button or arrow.
     cy.get('[data-testid="step-forward"]').should('be.enabled')
     cy.get('[data-testid="step-continue"]').should('contain', 'Next:').click()
-    // The eyebrow counts within the phase, so Issue's first step reads 1 of 2.
+    // The eyebrow counts within the phase, so Issue's first step reads 1 of 3.
     cy.get('[data-testid="step-eyebrow"]').should(
       'have.text',
-      'Issue · Step 1 of 2',
+      'Issue · Step 1 of 3',
     )
 
     // Going back shows the executed step read-only, and the same footer button
@@ -48,11 +48,15 @@ describeDevnet('repo settlement on Devnet', () => {
     cy.get('[data-testid="step-continue"]').click()
     cy.get('[data-testid="step-eyebrow"]').should(
       'have.text',
-      'Issue · Step 1 of 2',
+      'Issue · Step 1 of 3',
     )
 
     // Only AlphaFund's key can sign this; clicking its row makes you AlphaFund.
-    cy.contains('button', 'Act as AlphaFund').should('be.visible')
+    // The console sits below the narrative, which resets to the top on each
+    // step, so scroll to it as a reader would before asserting.
+    cy.contains('button', 'Act as AlphaFund')
+      .scrollIntoView()
+      .should('be.visible')
     cy.get('[data-party="alphaFund"]').click()
     cy.get('[data-party="alphaFund"]').contains('you').should('be.visible')
 

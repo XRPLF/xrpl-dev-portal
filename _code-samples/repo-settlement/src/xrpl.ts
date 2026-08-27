@@ -28,9 +28,9 @@ import {
   loadMptCrypto,
   prepareConfidentialBatch,
   prepareConfidentialConvert,
-  prepareConfidentialMergeInbox,
   signAsSponsor,
   signMultiBatch,
+  xrpToDrops,
   type Batch,
   type BatchSigner,
   type ConfidentialKeypair,
@@ -113,7 +113,7 @@ export class LedgerError extends Error {
  * not several parties signing at their own pace. 600 ledgers is roughly 35
  * minutes on Devnet.
  */
-export const SUBMIT_WINDOW_LEDGERS = 600
+const SUBMIT_WINDOW_LEDGERS = 600
 
 /** The engine result code of a validated transaction, from its metadata. */
 function resultCode(response: TxResponse): string {
@@ -181,7 +181,7 @@ export async function createConfidentialAccount(
 // ---------------------------------------------------------------- submission
 
 /** Turn a validated response into a record, throwing on any failure code. */
-export function toRecord(response: TxResponse, label: string): TxRecord {
+function toRecord(response: TxResponse, label: string): TxRecord {
   const code = resultCode(response)
   const hash = response.result.hash
   if (code !== 'tesSUCCESS') {
@@ -191,7 +191,7 @@ export function toRecord(response: TxResponse, label: string): TxRecord {
 }
 
 /** Sign with one wallet, submit, and fail loudly on any non-success code. */
-export async function submit(
+async function submitSigned(
   client: Client,
   tx: SubmittableTransaction,
   wallet: Wallet,
@@ -209,7 +209,7 @@ export async function submit(
  * moves value inside an `MPToken` that already exists, and asking to sponsor
  * its reserve is rejected outright.
  */
-export function sponsorFields(
+function sponsorFields(
   sponsor: string,
   feeOnly = false,
 ): {
@@ -237,7 +237,7 @@ export interface SponsorOptions {
  * to accept the cost, and the fully signed transaction goes to the ledger
  * as-is. The sponsor cannot alter or initiate what it pays for.
  */
-export async function submitSponsored(
+async function submitSponsored(
   client: Client,
   tx: SubmittableTransaction,
   sender: Wallet,
@@ -255,7 +255,7 @@ export async function submitSponsored(
 }
 
 /** Submit as the sender, or sponsored when another account covers the cost. */
-export async function submitMaybeSponsored(
+export async function submit(
   client: Client,
   tx: SubmittableTransaction,
   sender: Wallet,
@@ -263,7 +263,7 @@ export async function submitMaybeSponsored(
   options?: SponsorOptions,
 ): Promise<TxRecord> {
   return options == null
-    ? submit(client, tx, sender, label)
+    ? submitSigned(client, tx, sender, label)
     : submitSponsored(client, tx, sender, options, label)
 }
 
@@ -379,7 +379,7 @@ export async function createIssuance(
   label: string,
   sponsor?: SponsorOptions,
 ): Promise<{ record: TxRecord; mptIssuanceID: string }> {
-  const record = await submitMaybeSponsored(
+  const record = await submit(
     client,
     buildIssuanceCreate(options),
     issuer,
@@ -414,20 +414,6 @@ export async function createIssuance(
  * convert is how a holder registers its encryption key without moving funds,
  * which it must do before it can receive a confidential send.
  */
-export async function buildConvert(
-  client: Client,
-  holder: ConfidentialAccount,
-  mptIssuanceID: string,
-  units: bigint,
-): Promise<ConfidentialMPTConvert> {
-  return prepareConfidentialConvert(client, {
-    account: holder.wallet.address,
-    mptIssuanceID,
-    amount: units,
-    holderKeypair: holder.confidentialKeys,
-  })
-}
-
 export async function convertToConfidential(
   client: Client,
   holder: ConfidentialAccount,
@@ -436,14 +422,19 @@ export async function convertToConfidential(
   label: string,
   sponsor?: SponsorOptions,
 ): Promise<TxRecord> {
-  const tx = await buildConvert(client, holder, mptIssuanceID, units)
-  return submitMaybeSponsored(client, tx, holder.wallet, label, sponsor)
+  const tx = await prepareConfidentialConvert(client, {
+    account: holder.wallet.address,
+    mptIssuanceID,
+    amount: units,
+    holderKeypair: holder.confidentialKeys,
+  })
+  return submit(client, tx, holder.wallet, label, sponsor)
 }
 
 /**
  * The plaintext intent of a convert, for showing the holder before it signs.
- * The encrypted amounts, blinding factor, and proof are added by
- * `buildConvert` at submit time, so they cannot be shown beforehand.
+ * The encrypted amounts, blinding factor, and proof are generated against live
+ * ledger state at submit time, so they cannot be shown beforehand.
  */
 export function convertIntent(
   holder: ConfidentialAccount,
@@ -495,11 +486,13 @@ export async function mergeInbox(
   label: string,
   sponsor?: SponsorOptions,
 ): Promise<TxRecord> {
-  const tx = await prepareConfidentialMergeInbox(client, {
-    account: holder.address,
-    mptIssuanceID,
-  })
-  return submitMaybeSponsored(client, tx, holder, label, sponsor)
+  return submit(
+    client,
+    buildMergeInbox(holder.address, mptIssuanceID),
+    holder,
+    label,
+    sponsor,
+  )
 }
 
 // ------------------------------------------------------------------- batches
@@ -629,6 +622,17 @@ export function isExpiredWindow(error: unknown): boolean {
 }
 
 // ------------------------------------------------------------------ balances
+
+/**
+ * What one owner reserve costs, in drops. Validators vote on this, so it is
+ * read from the network rather than assumed: a sponsor's obligation is the
+ * count times whatever the current increment is.
+ */
+export async function readOwnerReserve(client: Client): Promise<bigint | null> {
+  const info = await client.request({ command: 'server_info' })
+  const xrp = info.result.info.validated_ledger?.reserve_inc_xrp
+  return xrp == null ? null : BigInt(xrpToDrops(xrp))
+}
 
 /**
  * An account's XRP balance, plus the reserves it is covering for others. While

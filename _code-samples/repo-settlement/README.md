@@ -2,8 +2,8 @@
 
 A guided demo of a two-leg repo trade settled on XRPL Devnet:
 
-> **AlphaFund** (asset manager) tokenizes its money market fund as **tMMF**.
-> **InvestCo** buys tMMF, then repos it to **TradeDesk**: 100 tMMF against
+> **AlphaFund** (asset manager) tokenizes its money market fund as **TMMF**.
+> **InvestCo** buys TMMF, then repos it to **TradeDesk**: 100 TMMF against
 > 1,000 USD (issued by **StableCorp**), unwound 10 days later at 1,001.37
 > USD (5% annualized, computed off-chain). Both legs settle **atomically**
 > and **confidentially**. **xSecurities** orchestrates the swaps and sponsors
@@ -39,7 +39,7 @@ The demo is a small app. You act as every party, one step at a time:
 
 | Feature | Spec | Used for |
 | --- | --- | --- |
-| Multi-Purpose Tokens | XLS-33 / XLS-89 | Issuing tMMF and USD with metadata |
+| Multi-Purpose Tokens | XLS-33 / XLS-89 | Issuing TMMF and USD with metadata |
 | Confidential Transfers | XLS-96 | Encrypted balances, sends, ZK proofs |
 | Batch | XLS-56 | Atomic all-or-nothing settlement of each leg |
 | Sponsored Fees & Reserves | XLS-68 | xSecurities pays holders' fees and reserves |

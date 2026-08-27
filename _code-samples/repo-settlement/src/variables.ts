@@ -6,57 +6,108 @@
  * names, amounts, or tenor, edit this file only.
  */
 
-export type PartyKey =
-  | 'alphaFund'
-  | 'stableCorp'
-  | 'investCo'
-  | 'tradeDesk'
-  | 'xSecurities'
+/**
+ * The role a party plays, which is what the flow branches on: counterparties
+ * trade with each other and sign the batches, the orchestrator builds and
+ * sponsors them, and issuers only mint. `roleLabel` below is how the reader
+ * sees it; this is the structure behind it.
+ */
+export type PartyRole = 'counterparty' | 'orchestrator' | 'issuer'
 
 export interface PartyInfo {
-  key: PartyKey
   name: string
-  role: string
+  role: PartyRole
+  /** How the role is described in the UI. */
+  roleLabel: string
   blurb: string
+  /** Mantine palette color, used wherever the party is themed. */
+  color: string
+  /** Environment variable holding this party's optional pre-funded seed. */
+  seedEnv: string
 }
 
-export const PARTIES: Record<PartyKey, PartyInfo> = {
-  alphaFund: {
-    key: 'alphaFund',
-    name: 'AlphaFund',
-    role: 'Collateral issuer',
-    blurb:
-      'Asset manager. Issues tMMF, a tokenized money market fund, and gates who may hold it. Not a repo participant.',
-  },
-  stableCorp: {
-    key: 'stableCorp',
-    name: 'StableCorp',
-    role: 'Cash issuer',
-    blurb:
-      'Stablecoin issuer. Issues USD and distributes it to TradeDesk. Not active after setup.',
-  },
+/**
+ * Everyone in the story, in the order the UI lists them: the two who trade
+ * first, then those who support the deal. Adding a party here gives it a
+ * balance row, a color, and a seed override without touching the flow or UI.
+ */
+export const PARTIES = {
   investCo: {
-    key: 'investCo',
     name: 'InvestCo',
-    role: 'Repo seller',
+    role: 'counterparty',
+    roleLabel: 'Repo seller',
     blurb:
-      'Primary investor. Buys tMMF from AlphaFund, sells it to TradeDesk in the near leg, and buys it back in the far leg.',
+      'Primary investor. Buys TMMF from AlphaFund, sells it to TradeDesk in the near leg, and buys it back in the far leg.',
+    /* Pink, not teal: teal is the app's own accent, so a teal party badge sat
+       the same color as the ✓, the done badge, and the chrome. */
+    color: 'pink',
+    seedEnv: 'VITE_INVESTCO_SEED',
   },
   tradeDesk: {
-    key: 'tradeDesk',
     name: 'TradeDesk',
-    role: 'Repo buyer',
+    role: 'counterparty',
+    roleLabel: 'Repo buyer',
     blurb:
-      'Repo counterparty. Pays USD for tMMF in the near leg and returns the collateral in the far leg.',
+      'Repo counterparty. Pays USD for TMMF in the near leg and returns the collateral in the far leg.',
+    color: 'orange',
+    seedEnv: 'VITE_TRADEDESK_SEED',
+  },
+  alphaFund: {
+    name: 'AlphaFund',
+    role: 'issuer',
+    roleLabel: 'Collateral issuer',
+    blurb:
+      'Asset manager. Issues TMMF, a tokenized money market fund, and gates who may hold it. Not a repo participant.',
+    color: 'violet',
+    seedEnv: 'VITE_ALPHAFUND_SEED',
+  },
+  stableCorp: {
+    name: 'StableCorp',
+    role: 'issuer',
+    roleLabel: 'Cash issuer',
+    blurb:
+      'Stablecoin issuer. Issues USD and distributes it to TradeDesk. Not active after setup.',
+    color: 'blue',
+    seedEnv: 'VITE_STABLECORP_SEED',
   },
   xSecurities: {
-    key: 'xSecurities',
     name: 'xSecurities',
-    role: 'Orchestrator',
+    role: 'orchestrator',
+    roleLabel: 'Orchestrator',
     blurb:
       'Constructs the atomic swap batches, collects signatures, submits, and sponsors fees. Holds no assets.',
+    color: 'gray',
+    seedEnv: 'VITE_XSECURITIES_SEED',
   },
-} as const
+} satisfies Record<string, PartyInfo>
+
+export type PartyKey = keyof typeof PARTIES
+
+/** Every party, in the order the UI lists them. */
+export const PARTY_KEYS = Object.keys(PARTIES) as PartyKey[]
+
+/** The parties playing one role, as a type: `PartyPlaying<'counterparty'>`. */
+export type PartyPlaying<R extends PartyRole> = {
+  [K in PartyKey]: (typeof PARTIES)[K]['role'] extends R ? K : never
+}[PartyKey]
+
+function partiesPlaying<R extends PartyRole>(role: R): PartyPlaying<R>[] {
+  return PARTY_KEYS.filter(
+    (key) => PARTIES[key].role === role,
+  ) as PartyPlaying<R>[]
+}
+
+/** A party to the repo itself, as opposed to an issuer or the orchestrator. */
+export type Counterparty = PartyPlaying<'counterparty'>
+
+/** The two who trade: they sign every batch and hold every confidential pot. */
+export const COUNTERPARTIES = partiesPlaying('counterparty')
+
+/**
+ * The party that builds the batches and sponsors everything inside the deal.
+ * Only issuers, which sit outside it, pay their own way.
+ */
+export const ORCHESTRATOR = partiesPlaying('orchestrator')[0]
 
 export interface TokenInfo {
   ticker: string
@@ -65,6 +116,8 @@ export interface TokenInfo {
   /** Decimal places: on-ledger amounts are integers of 10^-assetScale units. */
   assetScale: number
   maximumAmount: string
+  /** Whether the issuer must approve each holder before it can hold any. */
+  requireAuth: boolean
   metadata: {
     desc: string
     icon: string
@@ -74,34 +127,55 @@ export interface TokenInfo {
   }
 }
 
-export const COLLATERAL: TokenInfo = {
-  ticker: 'tMMF',
-  name: 'AlphaFund Tokenized Money Market Fund',
-  issuer: 'alphaFund',
-  assetScale: 0,
-  maximumAmount: '1000000',
-  metadata: {
-    desc: 'A tokenized share class of the AlphaFund money market fund.',
-    icon: 'https://example.org/tmmf-icon.png',
-    asset_class: 'rwa',
-    asset_subclass: 'treasury',
-    issuer_name: 'AlphaFund Asset Management',
+/**
+ * The deal's tokens, keyed by the role each plays in it. Adding a token here
+ * gives it an issuance, a balance row, and an issuer view without touching the
+ * protocol or UI layers; only the storyboard names a token by its role.
+ */
+export const TOKENS = {
+  collateral: {
+    /* Uppercase letters and digits only, per XLS-89: the ledger warns on any
+       other ticker, and non-compliant tokens may not be indexed. */
+    ticker: 'TMMF',
+    name: 'AlphaFund Tokenized Money Market Fund',
+    issuer: 'alphaFund',
+    assetScale: 0,
+    maximumAmount: '1000000',
+    requireAuth: true,
+    metadata: {
+      desc: 'A tokenized share class of the AlphaFund money market fund.',
+      icon: 'https://example.org/tmmf-icon.png',
+      asset_class: 'rwa',
+      asset_subclass: 'treasury',
+      issuer_name: 'AlphaFund Asset Management',
+    },
   },
-}
+  cash: {
+    ticker: 'USD',
+    name: 'StableCorp USD',
+    issuer: 'stableCorp',
+    assetScale: 2,
+    maximumAmount: '100000000',
+    requireAuth: false,
+    metadata: {
+      desc: 'A USD-backed stablecoin issued by StableCorp.',
+      icon: 'https://example.org/usd-icon.png',
+      asset_class: 'rwa',
+      asset_subclass: 'stablecoin',
+      issuer_name: 'StableCorp Inc.',
+    },
+  },
+} satisfies Record<string, TokenInfo>
 
-export const CASH: TokenInfo = {
-  ticker: 'USD',
-  name: 'StableCorp USD',
-  issuer: 'stableCorp',
-  assetScale: 2,
-  maximumAmount: '100000000',
-  metadata: {
-    desc: 'A USD-backed stablecoin issued by StableCorp.',
-    icon: 'https://example.org/usd-icon.png',
-    asset_class: 'rwa',
-    asset_subclass: 'stablecoin',
-    issuer_name: 'StableCorp Inc.',
-  },
+/** Which of the deal's tokens an operation, balance, or row refers to. */
+export type IssuanceKey = keyof typeof TOKENS
+
+/** Every token, in the order the UI lists them. */
+export const TOKEN_KEYS = Object.keys(TOKENS) as IssuanceKey[]
+
+/** The token this party issues, if it issues one. */
+export function issuedToken(party: PartyKey): IssuanceKey | undefined {
+  return TOKEN_KEYS.find((key) => TOKENS[key].issuer === party)
 }
 
 /** Deal terms of the repo trade, in each token's base units. */
@@ -118,7 +192,7 @@ export interface DealTerms {
 
 export const DAYS_PER_YEAR = 365n
 
-/** The scenario's default terms: 100 tMMF vs 1,000.00 USD, 10 days at 5%. */
+/** The scenario's default terms: 100 TMMF vs 1,000.00 USD, 10 days at 5%. */
 export const DEFAULT_DEAL: DealTerms = {
   collateralUnits: 100n,
   cashUnits: 100_000n,
@@ -164,4 +238,9 @@ export function formatUnits(units: bigint, assetScale: number): string {
       ? `.${(abs % divisor).toString().padStart(assetScale, '0')}`
       : ''
   return `${negative ? '-' : ''}${whole}${fraction}`
+}
+
+/** An amount with its ticker, e.g. "1,001.37 USD". */
+export function formatAmount(units: bigint, token: TokenInfo): string {
+  return `${formatUnits(units, token.assetScale)} ${token.ticker}`
 }

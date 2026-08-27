@@ -1,7 +1,6 @@
 :root {
   --line: var(--mantine-color-gray-3);
   --accent: var(--mantine-color-teal-8);
-  --accent-soft: var(--mantine-color-teal-0);
 }
 
 body {

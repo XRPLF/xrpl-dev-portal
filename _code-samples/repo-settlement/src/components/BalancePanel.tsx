@@ -1,34 +1,29 @@
 import { Badge, Card, Code, Group, Stack, Text, Tooltip } from '@mantine/core'
 import type { KeyboardEvent, ReactNode } from 'react'
+import { dropsToXrp } from 'xrpl'
 
 import type { IdentityBook } from '../App'
 import type { BalanceSnapshot } from '../repo'
 import type { Decrypted, TokenBalance } from '../xrpl'
 import {
-  CASH,
-  COLLATERAL,
+  COUNTERPARTIES,
   PARTIES,
+  PARTY_KEYS,
+  TOKENS,
+  TOKEN_KEYS,
   formatUnits,
+  issuedToken,
+  type IssuanceKey,
   type PartyKey,
   type TokenInfo,
 } from '../variables'
 import { PartyBadge, partyVars } from './PartyBadge'
 
-const PARTY_ORDER: PartyKey[] = [
-  'investCo',
-  'tradeDesk',
-  'alphaFund',
-  'stableCorp',
-  'xSecurities',
-]
-
-const HOLDERS: PartyKey[] = ['investCo', 'tradeDesk']
-
 function xrp(drops: bigint | null): string {
   if (drops == null) {
     return '—'
   }
-  return (Number(drops) / 1_000_000).toFixed(2)
+  return dropsToXrp(drops.toString()).toFixed(2)
 }
 
 /* A label and its value side by side rather than stacked, so every figure in
@@ -182,30 +177,28 @@ function IssuerView({
   token,
   balances,
 }: {
-  token: TokenInfo
+  token: IssuanceKey
   balances: BalanceSnapshot
 }) {
+  const info = TOKENS[token]
   return (
     <Group gap={6} wrap="nowrap" className="issuer-view">
       <Tooltip
-        label={`Your issuer key reads every ${token.ticker} balance.`}
+        label={`Your issuer key reads every ${info.ticker} balance.`}
         multiline
       >
         <Text size="xs" c="dimmed" style={{ whiteSpace: 'nowrap' }}>
-          🔎 {token.ticker} view
+          🔎 {info.ticker} view
         </Text>
       </Tooltip>
-      {HOLDERS.map((holder) => {
-        const view =
-          balances[holder]?.[
-            token.ticker === COLLATERAL.ticker ? 'collateral' : 'cash'
-          ]?.issuerView
+      {COUNTERPARTIES.map((holder) => {
+        const view = balances[holder]?.tokens[token]?.issuerView
         return (
           <Chip key={holder} label={PARTIES[holder].name}>
             {view == null ? (
               <span className="bal-chip-value dim-value">—</span>
             ) : (
-              <DecryptedValue value={view} assetScale={token.assetScale} />
+              <DecryptedValue value={view} assetScale={info.assetScale} />
             )}
           </Chip>
         )
@@ -266,16 +259,11 @@ export function BalancePanel({
       </Group>
 
       <Stack gap={0} className="panel-scroll">
-        {PARTY_ORDER.map((key) => {
+        {PARTY_KEYS.map((key) => {
           const partyBalances = balances?.[key]
           const identity = identities[key]
-          const isHolder = HOLDERS.includes(key)
-          const issuerToken =
-            key === 'alphaFund'
-              ? COLLATERAL
-              : key === 'stableCorp'
-                ? CASH
-                : null
+          const isHolder = PARTIES[key].role === 'counterparty'
+          const issuerToken = issuedToken(key)
           const acting = turnParty === key
           return (
             <div
@@ -304,7 +292,7 @@ export function BalancePanel({
                   </Badge>
                 )}
                 <Text size="xs" c="dimmed" truncate style={{ minWidth: 0 }}>
-                  {PARTIES[key].role}
+                  {PARTIES[key].roleLabel}
                 </Text>
                 {acting && (
                   <Text
@@ -342,36 +330,34 @@ export function BalancePanel({
                     </Chip>
                   </Group>
 
-                  {/* The count is the one part of a sponsorship the ledger
-                      reports, so the row states it and nothing more; the
-                      tooltip carries the field it comes from. */}
+                  {/* A sponsored reserve is locked, not spent, so it never
+                      appears in the balance above. The XRP amount is what the
+                      sponsor actually gives up the use of, so it is stated
+                      beside the count the ledger reports. */}
                   {(partyBalances.sponsoringOwnerCount ?? 0) > 0 && (
                     <Tooltip
-                      label="The number of owner reserves this account covers for other accounts."
+                      label="Owner reserves this account covers for other accounts. The XRP stays in the balance above but cannot be spent while the sponsorships stand."
                       multiline
                       w={280}
                     >
                       <Text size="xs" c="teal.8" fw={600}>
                         Sponsoring {partyBalances.sponsoringOwnerCount} owner
                         reserves
+                        {partyBalances.sponsoredReserveDrops != null &&
+                          ` · ${xrp(partyBalances.sponsoredReserveDrops)} XRP locked`}
                       </Text>
                     </Tooltip>
                   )}
 
-                  {isHolder && (
-                    <>
+                  {isHolder &&
+                    TOKEN_KEYS.map((token) => (
                       <WalletRow
-                        token={COLLATERAL}
-                        balance={partyBalances.collateral}
+                        key={token}
+                        token={TOKENS[token]}
+                        balance={partyBalances.tokens[token]}
                         unlocked={viewer === key}
                       />
-                      <WalletRow
-                        token={CASH}
-                        balance={partyBalances.cash}
-                        unlocked={viewer === key}
-                      />
-                    </>
-                  )}
+                    ))}
 
                   {issuerToken != null && viewer === key && balances != null && (
                     <IssuerView token={issuerToken} balances={balances} />

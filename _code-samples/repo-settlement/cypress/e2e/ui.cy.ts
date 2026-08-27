@@ -31,7 +31,7 @@ describe('repo settlement UI', () => {
     // takes the screen until the reader chooses to edit the terms.
     cy.get('[data-testid="deal-summary"]')
       .should('be.visible')
-      .and('contain', '100 tMMF')
+      .and('contain', '100 TMMF')
       .and('contain', '1,001.37 USD')
 
     cy.get('[data-testid="deal-toggle"]').click()

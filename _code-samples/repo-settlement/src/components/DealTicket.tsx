@@ -12,8 +12,7 @@ import {
 import { useEffect, useState } from 'react'
 
 import {
-  CASH,
-  COLLATERAL,
+  TOKENS,
   farLegCashUnits,
   formatUnits,
   interestUnits,
@@ -21,9 +20,12 @@ import {
   type DealTerms,
 } from '../variables'
 
+const COLLATERAL = TOKENS.collateral
+const CASH = TOKENS.cash
+
 /**
  * The four terms the reader can set, each stored as integer units at its own
- * scale: 100n tMMF at scale 0, 100_000n USD at scale 2 (1,000.00), 10n days,
+ * scale: 100n TMMF at scale 0, 100_000n USD at scale 2 (1,000.00), 10n days,
  * and 500n basis points at scale 2 (5.00%). One table drives both the editable
  * inputs and the locked read-only view.
  */

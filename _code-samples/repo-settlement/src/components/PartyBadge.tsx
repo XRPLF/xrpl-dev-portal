@@ -3,19 +3,14 @@ import type { CSSProperties } from 'react'
 
 import { PARTIES, type PartyKey } from '../variables'
 
-/* Pink, not teal, for InvestCo: teal is the app's own accent, so a teal party
-   badge sat the same color as the ✓, the done badge, and the chrome. */
-export const PARTY_COLOR: Record<PartyKey, string> = {
-  alphaFund: 'violet',
-  stableCorp: 'blue',
-  investCo: 'pink',
-  tradeDesk: 'orange',
-  xSecurities: 'gray',
+/** A party's color, or the app's own accent for the demo harness. */
+export function partyColor(party?: PartyKey): string {
+  return party ? PARTIES[party].color : 'teal'
 }
 
 /** CSS variables that tint an element with a party's color. */
 export function partyVars(party?: PartyKey): CSSProperties {
-  const color = party ? PARTY_COLOR[party] : 'teal'
+  const color = partyColor(party)
   return {
     '--party-strong': `var(--mantine-color-${color}-6)`,
     '--party-soft': `var(--mantine-color-${color}-0)`,
@@ -38,8 +33,8 @@ export function PartyBadge({
 }) {
   const info = PARTIES[party]
   return (
-    <Tooltip label={`${info.role}. ${info.blurb}`} multiline w={300}>
-      <Badge variant="light" color={PARTY_COLOR[party]} size={size}>
+    <Tooltip label={`${info.roleLabel}. ${info.blurb}`} multiline w={300}>
+      <Badge variant="light" color={partyColor(party)} size={size}>
         {info.name}
       </Badge>
     </Tooltip>
