@@ -8,10 +8,18 @@
  * steps.ts to see the order a reader walks them in.
  */
 
-import type { Batch, Client } from 'xrpl'
+import type { Batch, Client, SubmittableTransaction } from 'xrpl'
 
 import { CONFIG } from './config'
-import { CASH, COLLATERAL, PARTIES, type PartyKey, type TokenInfo } from './variables'
+import {
+  PARTIES,
+  TOKENS,
+  TOKEN_KEYS,
+  formatAmount,
+  type IssuanceKey,
+  type PartyKey,
+  type TokenInfo,
+} from './variables'
 import {
   LedgerError,
   NO_TOKEN_BALANCE,
@@ -34,10 +42,11 @@ import {
   isExpiredWindow,
   mergeInbox,
   readAccountXrp,
+  readOwnerReserve,
   readTokenBalance,
   signBatchCopy,
+  submit,
   submitBatch,
-  submitMaybeSponsored,
   verifyBatchInners,
   type BatchSignerEntry,
   type ConfidentialAccount,
@@ -47,11 +56,58 @@ import {
   type TxRecord,
 } from './xrpl'
 
-/** Which of the deal's two tokens a call refers to. */
-export type IssuanceKey = 'collateral' | 'cash'
-
 /** The near leg opens the repo; the far leg unwinds it. */
 export type LegDirection = 'near' | 'far'
+
+/** One confidential send inside a leg's batch. */
+export interface LegSend {
+  from: PartyKey
+  to: PartyKey
+  token: IssuanceKey
+  units: bigint
+}
+
+/** What every single-transaction operation names, whatever it does. */
+interface OpBase {
+  /** Which of the deal's tokens the operation acts on. */
+  token: IssuanceKey
+  /** Who pays the fee, and the reserve wherever the protocol allows it. */
+  sponsor?: PartyKey
+  /** Overrides the label the demo otherwise derives from the operation. */
+  label?: string
+}
+
+/** An operation signed by a party the token itself does not name. */
+interface HolderOp extends OpBase {
+  /** The party that signs, and therefore controls, the transaction. */
+  actor: PartyKey
+}
+
+/**
+ * One transaction the deal submits, declared as data rather than as a call.
+ * The storyboard names an operation once; `RepoLedger.preview` and
+ * `RepoLedger.run` both read that one declaration, so the transaction the
+ * reader inspects is the transaction that gets submitted.
+ *
+ * The two issuer operations are signed by the token's own issuer, so they name
+ * no actor; the rest say who signs.
+ */
+export type LedgerOp =
+  | (OpBase & { kind: 'issue' })
+  | (OpBase & { kind: 'issuerKey' })
+  /** Opt in to hold a token, or, with `holder` set, approve one as the issuer. */
+  | (HolderOp & { kind: 'authorize'; holder?: PartyKey })
+  | (HolderOp & { kind: 'pay'; to: PartyKey; units: bigint })
+  /** A zero-amount convert registers the actor's encryption key. */
+  | (HolderOp & { kind: 'convert'; units: bigint })
+  | (HolderOp & { kind: 'merge' })
+
+/** Who signs an operation: the token's issuer, or the actor it names. */
+export function opSigner(op: LedgerOp): PartyKey {
+  return op.kind === 'issue' || op.kind === 'issuerKey'
+    ? TOKENS[op.token].issuer
+    : op.actor
+}
 
 /** One party of the deal: its account, keys, and which role it plays. */
 export interface Party extends ConfidentialAccount {
@@ -70,8 +126,10 @@ export interface LegState {
 export interface PartyBalances {
   xrpDrops: bigint | null
   sponsoringOwnerCount?: number
-  collateral: TokenBalance
-  cash: TokenBalance
+  /** Drops locked by those sponsorships: the count times the network's rate. */
+  sponsoredReserveDrops?: bigint
+  /** One entry per configured token, so the UI never names a token itself. */
+  tokens: Record<IssuanceKey, TokenBalance>
 }
 
 export type BalanceSnapshot = Partial<Record<PartyKey, PartyBalances>>
@@ -80,7 +138,6 @@ export type BalanceSnapshot = Partial<Record<PartyKey, PartyBalances>>
 function issuanceOptions(
   issuer: string,
   token: TokenInfo,
-  requireAuth: boolean,
   sponsor?: string,
 ): IssuanceOptions {
   return {
@@ -90,7 +147,7 @@ function issuanceOptions(
     assetScale: token.assetScale,
     maximumAmount: token.maximumAmount,
     metadata: token.metadata,
-    requireAuth,
+    requireAuth: token.requireAuth,
     sponsor,
   }
 }
@@ -109,13 +166,15 @@ export class RepoLedger {
 
   readonly parties = {} as Record<PartyKey, Party>
 
-  collateralIssuanceID?: string
-
-  cashIssuanceID?: string
+  /** Each token's ledger-assigned issuance ID, once it has been created. */
+  readonly issuanceIDs: Partial<Record<IssuanceKey, string>> = {}
 
   readonly nearLeg: LegState = { signedCopies: {} }
 
   readonly farLeg: LegState = { signedCopies: {} }
+
+  /** Cached after the first balance read; null if the server did not report it. */
+  private ownerReserve?: bigint | null
 
   constructor() {
     this.client = createClient(CONFIG.wssUrl)
@@ -166,8 +225,7 @@ export class RepoLedger {
 
   /** The ledger-assigned ID of an issuance, once it has been created. */
   requireIssuance(which: IssuanceKey): string {
-    const id =
-      which === 'collateral' ? this.collateralIssuanceID : this.cashIssuanceID
+    const id = this.issuanceIDs[which]
     if (id == null) {
       throw new LedgerError(`The ${which} token has not been issued yet`)
     }
@@ -191,172 +249,175 @@ export class RepoLedger {
       : { sponsor: this.party(sponsor).wallet, feeOnly }
   }
 
-  // ----------------------------------------------------------- token issuance
+  // ------------------------------------------------- single-transaction ops
+  // An operation is declared once, in steps.ts, and read twice here: `preview`
+  // builds the transaction to show the signer, `run` submits it. Both go
+  // through the same `build*` function, so what the reader inspects cannot
+  // drift from what reaches the ledger.
 
-  /** Create one of the deal's two token issuances and record its ID. */
-  async createIssuance(
-    token: TokenInfo,
-    which: IssuanceKey,
-    requireAuth: boolean,
-    label: string,
-    sponsor?: PartyKey,
-  ): Promise<{ record: TxRecord; issuanceID: string }> {
-    const issuer = this.party(token.issuer)
-    const { record, mptIssuanceID } = await createIssuance(
-      this.client,
-      issuer.wallet,
-      issuanceOptions(
-        issuer.wallet.address,
-        token,
-        requireAuth,
-        sponsor ? this.address(sponsor) : undefined,
-      ),
-      label,
-      this.sponsorOptions(sponsor),
-    )
-    if (which === 'collateral') {
-      this.collateralIssuanceID = mptIssuanceID
-    } else {
-      this.cashIssuanceID = mptIssuanceID
+  /** The label the demo records for an operation, unless it names its own. */
+  private opLabel(op: LedgerOp): string {
+    if (op.label != null) {
+      return op.label
     }
-    return { record, issuanceID: mptIssuanceID }
+    const token = TOKENS[op.token]
+    const actor = PARTIES[opSigner(op)].name
+    switch (op.kind) {
+      case 'issue':
+        return `Create the ${token.ticker} issuance`
+      case 'issuerKey':
+        return `Register ${actor}'s encryption key`
+      case 'authorize':
+        return op.holder == null
+          ? `${actor}: opt in to hold ${token.ticker}`
+          : `${actor}: approve ${PARTIES[op.holder].name}`
+      case 'pay':
+        return `${actor}: send ${formatAmount(op.units, token)} → ${PARTIES[op.to].name}`
+      case 'convert':
+        return op.units === 0n
+          ? `${actor}: register encryption key for ${token.ticker}`
+          : `${actor}: convert ${formatAmount(op.units, token)} → confidential inbox`
+      case 'merge':
+        return `${actor}: merge ${token.ticker} inbox → spendable`
+    }
   }
 
-  /** Register the issuer's encryption key, enabling confidential balances. */
-  async registerIssuerKey(
-    token: TokenInfo,
-    which: IssuanceKey,
-    label: string,
-    sponsor?: PartyKey,
-  ): Promise<TxRecord> {
-    const issuer = this.party(token.issuer)
-    return submitMaybeSponsored(
-      this.client,
-      buildIssuerEncryptionKey(
-        issuer.wallet.address,
-        this.requireIssuance(which),
-        issuer.confidentialKeys.publicKey,
-        sponsor ? this.address(sponsor) : undefined,
-      ),
-      issuer.wallet,
-      label,
-      this.sponsorOptions(sponsor),
-    )
+  private sponsorAddress(op: LedgerOp): string | undefined {
+    return op.sponsor == null ? undefined : this.address(op.sponsor)
+  }
+
+  /** The transaction an operation submits, built from live state but unsigned. */
+  private buildOp(
+    op: Exclude<LedgerOp, { kind: 'convert' }>,
+  ): SubmittableTransaction {
+    const token = TOKENS[op.token]
+    const sponsor = this.sponsorAddress(op)
+    switch (op.kind) {
+      case 'issue':
+        return buildIssuanceCreate(
+          issuanceOptions(this.address(token.issuer), token, sponsor),
+        )
+      case 'issuerKey':
+        return buildIssuerEncryptionKey(
+          this.address(token.issuer),
+          this.requireIssuance(op.token),
+          this.encryptionKey(token.issuer),
+          sponsor,
+        )
+      case 'authorize':
+        return buildAuthorize(
+          this.address(op.actor),
+          this.requireIssuance(op.token),
+          {
+            holder: op.holder == null ? undefined : this.address(op.holder),
+            sponsor,
+          },
+        )
+      case 'pay':
+        return buildMPTPayment(
+          this.address(op.actor),
+          this.address(op.to),
+          this.requireIssuance(op.token),
+          op.units,
+          sponsor,
+        )
+      case 'merge':
+        return buildMergeInbox(
+          this.address(op.actor),
+          this.requireIssuance(op.token),
+          sponsor,
+        )
+    }
   }
 
   /**
-   * Opt in to hold a token, or approve a holder as the issuer. Pass `sponsor`
-   * to have xSecurities pay the fee and reserve.
+   * What the acting party is about to sign. A convert has no synchronous form —
+   * its ciphertext and proof are generated against live state at submit time —
+   * so it previews as its plaintext intent, and the UI says as much.
    */
-  async authorize(
-    actor: PartyKey,
-    which: IssuanceKey,
-    label: string,
-    options: { holder?: PartyKey; sponsor?: PartyKey } = {},
-  ): Promise<TxRecord> {
-    return submitMaybeSponsored(
-      this.client,
-      this.buildAuthorize(actor, which, options),
-      this.party(actor).wallet,
-      label,
-      this.sponsorOptions(options.sponsor),
-    )
+  preview(op: LedgerOp): unknown {
+    return op.kind === 'convert'
+      ? convertIntent(
+          this.party(op.actor),
+          this.requireIssuance(op.token),
+          op.units,
+          this.sponsorAddress(op),
+        )
+      : this.buildOp(op)
   }
 
-  /** Pay a public (unencrypted) MPT amount from one party to another. */
-  async payToken(
-    from: PartyKey,
-    to: PartyKey,
-    which: IssuanceKey,
-    units: bigint,
-    label: string,
-    sponsor?: PartyKey,
-  ): Promise<TxRecord> {
-    return submitMaybeSponsored(
-      this.client,
-      buildMPTPayment(
-        this.address(from),
-        this.address(to),
-        this.requireIssuance(which),
-        units,
-        sponsor ? this.address(sponsor) : undefined,
-      ),
-      this.party(from).wallet,
-      label,
-      this.sponsorOptions(sponsor),
-    )
-  }
-
-  // ------------------------------------------------- confidential balances
-
-  /** Encrypt a public balance. The amount lands in the holder's inbox. */
-  async convertToConfidential(
-    actor: PartyKey,
-    which: IssuanceKey,
-    units: bigint,
-    label: string,
-    sponsor?: PartyKey,
-  ): Promise<TxRecord> {
-    return convertToConfidential(
-      this.client,
-      this.party(actor),
-      this.requireIssuance(which),
-      units,
-      label,
-      this.sponsorOptions(sponsor, true),
-    )
-  }
-
-  /** Move a confidential inbox balance into the spendable balance. */
-  async mergeInbox(
-    actor: PartyKey,
-    which: IssuanceKey,
-    label: string,
-    sponsor?: PartyKey,
-  ): Promise<TxRecord> {
-    return mergeInbox(
-      this.client,
-      this.party(actor).wallet,
-      this.requireIssuance(which),
-      label,
-      this.sponsorOptions(sponsor, true),
-    )
+  /**
+   * Submit one operation. A convert and a merge move value inside an MPToken
+   * that already exists, so their sponsor covers the fee alone; every other
+   * operation creates a ledger object, and its reserve is sponsored too.
+   */
+  async run(op: LedgerOp): Promise<TxRecord> {
+    const label = this.opLabel(op)
+    switch (op.kind) {
+      case 'issue': {
+        const token = TOKENS[op.token]
+        const { record, mptIssuanceID } = await createIssuance(
+          this.client,
+          this.party(token.issuer).wallet,
+          issuanceOptions(
+            this.address(token.issuer),
+            token,
+            this.sponsorAddress(op),
+          ),
+          label,
+          this.sponsorOptions(op.sponsor),
+        )
+        this.issuanceIDs[op.token] = mptIssuanceID
+        return record
+      }
+      case 'convert':
+        return convertToConfidential(
+          this.client,
+          this.party(op.actor),
+          this.requireIssuance(op.token),
+          op.units,
+          label,
+          this.sponsorOptions(op.sponsor, true),
+        )
+      case 'merge':
+        return mergeInbox(
+          this.client,
+          this.party(op.actor).wallet,
+          this.requireIssuance(op.token),
+          label,
+          this.sponsorOptions(op.sponsor, true),
+        )
+      default:
+        return submit(
+          this.client,
+          this.buildOp(op),
+          this.party(opSigner(op)).wallet,
+          label,
+          this.sponsorOptions(op.sponsor),
+        )
+    }
   }
 
   // ------------------------------------------------------ atomic settlement
 
   /**
-   * Build one repo leg as an all-or-nothing Batch of two confidential sends:
-   * the collateral one way, the cash the other. The ledger settles both or
-   * neither, and no observer sees an amount.
+   * Build one repo leg as an all-or-nothing Batch of confidential sends, one
+   * per leg of the swap. The ledger settles every send or none of them, and no
+   * observer sees an amount.
    */
   async constructLeg(
     direction: LegDirection,
-    parties: {
-      collateralSender: PartyKey
-      collateralReceiver: PartyKey
-      cashSender: PartyKey
-      cashReceiver: PartyKey
-    },
-    amounts: { collateralUnits: bigint; cashUnits: bigint },
+    sends: LegSend[],
     assembler: PartyKey,
   ): Promise<Batch> {
     const unsigned = await constructConfidentialBatch(this.client, {
       assembler: this.address(assembler),
-      sends: [
-        {
-          sender: this.party(parties.collateralSender),
-          destination: this.address(parties.collateralReceiver),
-          mptIssuanceID: this.requireIssuance('collateral'),
-          units: amounts.collateralUnits,
-        },
-        {
-          sender: this.party(parties.cashSender),
-          destination: this.address(parties.cashReceiver),
-          mptIssuanceID: this.requireIssuance('cash'),
-          units: amounts.cashUnits,
-        },
-      ],
+      sends: sends.map((send) => ({
+        sender: this.party(send.from),
+        destination: this.address(send.to),
+        mptIssuanceID: this.requireIssuance(send.token),
+        units: send.units,
+      })),
     })
 
     const leg = this.leg(direction)
@@ -471,150 +532,78 @@ export class RepoLedger {
    */
   async snapshotBalances(): Promise<BalanceSnapshot> {
     const snapshot: BalanceSnapshot = {}
+    const reserve = await this.ownerReserveDrops()
     await Promise.all(
       (Object.keys(this.parties) as PartyKey[]).map(async (key) => {
-        snapshot[key] = await this.partyBalances(key)
+        snapshot[key] = await this.partyBalances(key, reserve)
       }),
     )
     return snapshot
   }
 
-  private async partyBalances(key: PartyKey): Promise<PartyBalances> {
+  /** Read the reserve rate once: validators vote on it, but not mid-demo. */
+  private async ownerReserveDrops(): Promise<bigint | null> {
+    if (this.ownerReserve === undefined) {
+      this.ownerReserve = await readOwnerReserve(this.client)
+    }
+    return this.ownerReserve
+  }
+
+  private async partyBalances(
+    key: PartyKey,
+    reserveDrops: bigint | null,
+  ): Promise<PartyBalances> {
     const party = this.party(key)
-    const [xrp, collateral, cash] = await Promise.all([
+    const [xrp, ...tokenBalances] = await Promise.all([
       readAccountXrp(this.client, party.wallet.address),
-      this.tokenBalance(party, this.collateralIssuanceID, COLLATERAL.issuer),
-      this.tokenBalance(party, this.cashIssuanceID, CASH.issuer),
+      ...TOKEN_KEYS.map(async (token) => this.tokenBalance(party, token)),
     ])
-    return { ...xrp, collateral, cash }
+    const tokens = {} as Record<IssuanceKey, TokenBalance>
+    TOKEN_KEYS.forEach((token, index) => {
+      tokens[token] = tokenBalances[index]
+    })
+    const sponsored = xrp.sponsoringOwnerCount ?? 0
+    return {
+      ...xrp,
+      sponsoredReserveDrops:
+        reserveDrops == null || sponsored === 0
+          ? undefined
+          : reserveDrops * BigInt(sponsored),
+      tokens,
+    }
   }
 
   private async tokenBalance(
     party: Party,
-    mptIssuanceID: string | undefined,
-    issuerKey: PartyKey,
+    token: IssuanceKey,
   ): Promise<TokenBalance> {
+    const mptIssuanceID = this.issuanceIDs[token]
     if (mptIssuanceID == null) {
       return NO_TOKEN_BALANCE
     }
+    const issuer = TOKENS[token].issuer
     return readTokenBalance(this.client, {
       holder: party.wallet.address,
       mptIssuanceID,
       holderPrivateKey: party.confidentialKeys.privateKey,
-      issuerPrivateKey: this.parties[issuerKey]?.confidentialKeys.privateKey,
+      issuerPrivateKey: this.parties[issuer]?.confidentialKeys.privateKey,
     })
   }
 
-  // -------------------------------------------------------------- previews
-  // The transaction each party is about to sign, shown before it acts. Each
-  // preview returns the built transaction exactly as the matching action
-  // submits it — no renaming, decoding, or reformatting — so the reader
-  // inspects the object that goes to the ledger.
-
-  private buildAuthorize(
-    actor: PartyKey,
-    which: IssuanceKey,
-    options: { holder?: PartyKey; sponsor?: PartyKey } = {},
-  ) {
-    return buildAuthorize(this.address(actor), this.requireIssuance(which), {
-      holder: options.holder ? this.address(options.holder) : undefined,
-      sponsor: options.sponsor ? this.address(options.sponsor) : undefined,
-    })
-  }
-
-  previewCreateIssuance(
-    token: TokenInfo,
-    requireAuth: boolean,
-    sponsor?: PartyKey,
-  ): unknown {
-    return buildIssuanceCreate(
-      issuanceOptions(
-        this.address(token.issuer),
-        token,
-        requireAuth,
-        sponsor ? this.address(sponsor) : undefined,
-      ),
-    )
-  }
-
-  previewRegisterIssuerKey(
-    token: TokenInfo,
-    which: IssuanceKey,
-    sponsor?: PartyKey,
-  ): unknown {
-    return buildIssuerEncryptionKey(
-      this.address(token.issuer),
-      this.requireIssuance(which),
-      this.encryptionKey(token.issuer),
-      sponsor ? this.address(sponsor) : undefined,
-    )
-  }
-
-  previewAuthorize(
-    actor: PartyKey,
-    which: IssuanceKey,
-    options: { holder?: PartyKey; sponsor?: PartyKey } = {},
-  ): unknown {
-    return this.buildAuthorize(actor, which, options)
-  }
-
-  previewPayToken(
-    from: PartyKey,
-    to: PartyKey,
-    which: IssuanceKey,
-    units: bigint,
-    sponsor?: PartyKey,
-  ): unknown {
-    return buildMPTPayment(
-      this.address(from),
-      this.address(to),
-      this.requireIssuance(which),
-      units,
-      sponsor ? this.address(sponsor) : undefined,
-    )
-  }
-
-  previewConvert(
-    actor: PartyKey,
-    which: IssuanceKey,
-    units: bigint,
-    sponsor?: PartyKey,
-  ): unknown {
-    return convertIntent(
-      this.party(actor),
-      this.requireIssuance(which),
-      units,
-      sponsor ? this.address(sponsor) : undefined,
-    )
-  }
-
-  previewMergeInbox(
-    actor: PartyKey,
-    which: IssuanceKey,
-    sponsor?: PartyKey,
-  ): unknown {
-    return buildMergeInbox(
-      this.address(actor),
-      this.requireIssuance(which),
-      sponsor ? this.address(sponsor) : undefined,
-    )
-  }
+  // -------------------------------------------------------- batch previews
 
   /**
    * The plan for a batch, before it is constructed. Deliberately not shaped
    * like a transaction: no batch exists yet, and presenting this as wire JSON
    * would imply the reader is inspecting something that will be submitted.
    */
-  previewPlannedLeg(
-    collateralSender: string,
-    cashSender: string,
-    collateralLabel: string,
-    cashLabel: string,
-  ): unknown {
+  previewPlannedLeg(sends: LegSend[]): unknown {
     return {
-      willBuild: 'Batch (tfAllOrNothing) with two ConfidentialMPTSend inners',
-      inner1: `${collateralSender} → ${cashSender}, ${collateralLabel}`,
-      inner2: `${cashSender} → ${collateralSender}, ${cashLabel}`,
+      willBuild: `Batch (tfAllOrNothing) with ${sends.length} ConfidentialMPTSend inners`,
+      inners: sends.map(
+        (send) =>
+          `${PARTIES[send.from].name} → ${PARTIES[send.to].name}, ${formatAmount(send.units, TOKENS[send.token])}`,
+      ),
     }
   }
 

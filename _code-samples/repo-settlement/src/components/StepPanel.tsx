@@ -20,7 +20,7 @@ import type { StepCallout, StepResult } from '../types'
 import { type PartyKey } from '../variables'
 import { ActionConsole } from './ActionConsole'
 import { JsonView } from './JsonView'
-import { PARTY_COLOR, PartyBadge, partyInitials } from './PartyBadge'
+import { PartyBadge, partyColor, partyInitials } from './PartyBadge'
 
 export interface ActionSlot {
   result: StepResult | null
@@ -193,7 +193,7 @@ function ActionTimeline({
     >
       {step.actions.map((action, actionIndex) => {
         const state = rowState(actionIndex)
-        const color = action.party ? PARTY_COLOR[action.party] : 'teal'
+        const color = partyColor(action.party)
         return (
           <Timeline.Item
             key={action.id}

@@ -256,7 +256,6 @@ export default function App() {
               key={item.name}
               label={item.name}
               allowStepSelect={item.steps[0] <= maxStep}
-              data-viewing={index === selectedPhase || undefined}
               completedIcon={index + 1}
               description={
                 <span className="step-dots" aria-hidden>

@@ -3,7 +3,7 @@ import { Alert, Avatar, Button, Group, Loader, Text } from '@mantine/core'
 import type { StepAction } from '../steps'
 import { PARTIES } from '../variables'
 import { JsonView } from './JsonView'
-import { PARTY_COLOR, partyVars } from './PartyBadge'
+import { partyColor, partyVars } from './PartyBadge'
 
 function actorName(action: StepAction): string {
   return action.party ? PARTIES[action.party].name : 'Demo setup'
@@ -41,7 +41,7 @@ export function ActionConsole({
   onBecome: () => void
   onRun: () => void
 }) {
-  const color = action.party ? PARTY_COLOR[action.party] : 'teal'
+  const color = partyColor(action.party)
 
   return (
     <div className="action-console" style={partyVars(action.party)}>
@@ -58,7 +58,7 @@ export function ActionConsole({
               Your move · {actorName(action)}
               {action.party && (
                 <Text span size="xs" c="dimmed" fw={500} tt="none" ml={6}>
-                  {PARTIES[action.party].role}
+                  {PARTIES[action.party].roleLabel}
                 </Text>
               )}
             </Text>

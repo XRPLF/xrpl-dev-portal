@@ -1,4 +1,4 @@
-import type { PartyKey } from './variables'
+import { PARTIES, PARTY_KEYS, type PartyKey } from './variables'
 
 /**
  * Runtime configuration, read from environment variables so no endpoint or
@@ -18,17 +18,15 @@ function optional(value: string | undefined): string | undefined {
 }
 
 export const CONFIG = {
-  /** Needs the ConfidentialTransfer, BatchV1_1, and Sponsor amendments enabled. */
   wssUrl: optional(env.VITE_XRPL_WSS) ?? 'wss://s.devnet.rippletest.net:51233',
   explorerUrl: optional(env.VITE_EXPLORER_URL) ?? 'https://devnet.xrpl.org',
-  /** Optional pre-funded account seeds; the faucet is used where unset. */
-  seeds: {
-    alphaFund: optional(env.VITE_ALPHAFUND_SEED),
-    stableCorp: optional(env.VITE_STABLECORP_SEED),
-    investCo: optional(env.VITE_INVESTCO_SEED),
-    tradeDesk: optional(env.VITE_TRADEDESK_SEED),
-    xSecurities: optional(env.VITE_XSECURITIES_SEED),
-  } satisfies Record<PartyKey, string | undefined>,
+  /**
+   * Optional pre-funded account seeds; the faucet is used where unset. Each
+   * party names its own variable, so adding a party needs no change here.
+   */
+  seeds: Object.fromEntries(
+    PARTY_KEYS.map((key) => [key, optional(env[PARTIES[key].seedEnv])]),
+  ) as Record<PartyKey, string | undefined>,
 } as const
 
 export function explorerTxUrl(hash: string): string {
