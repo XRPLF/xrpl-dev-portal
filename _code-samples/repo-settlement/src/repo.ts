@@ -18,7 +18,7 @@ import {
   formatAmount,
   type IssuanceKey,
   type PartyKey,
-  type TokenInfo,
+  type TokenInfo
 } from './variables'
 import {
   LedgerError,
@@ -53,7 +53,7 @@ import {
   type IssuanceOptions,
   type SponsorOptions,
   type TokenBalance,
-  type TxRecord,
+  type TxRecord
 } from './xrpl'
 
 /** The near leg opens the repo; the far leg unwinds it. */
@@ -96,14 +96,14 @@ export type LedgerOp =
   | (OpBase & { kind: 'issue' })
   | (OpBase & { kind: 'issuerKey' })
   /** Opt in to hold a token, or, with `holder` set, approve one as the issuer. */
-  | (HolderOp & { kind: 'authorize'; holder?: PartyKey })
-  | (HolderOp & { kind: 'pay'; to: PartyKey; units: bigint })
+  | (HolderOp & { kind: 'authorize', holder?: PartyKey })
+  | (HolderOp & { kind: 'pay', to: PartyKey, units: bigint })
   /** A zero-amount convert registers the actor's encryption key. */
-  | (HolderOp & { kind: 'convert'; units: bigint })
+  | (HolderOp & { kind: 'convert', units: bigint })
   | (HolderOp & { kind: 'merge' })
 
 /** Who signs an operation: the token's issuer, or the actor it names. */
-export function opSigner(op: LedgerOp): PartyKey {
+export function opSigner (op: LedgerOp): PartyKey {
   return op.kind === 'issue' || op.kind === 'issuerKey'
     ? TOKENS[op.token].issuer
     : op.actor
@@ -135,10 +135,10 @@ export interface PartyBalances {
 export type BalanceSnapshot = Partial<Record<PartyKey, PartyBalances>>
 
 /** The deal's token definitions as generic MPT issuance parameters. */
-function issuanceOptions(
+function issuanceOptions (
   issuer: string,
   token: TokenInfo,
-  sponsor?: string,
+  sponsor?: string
 ): IssuanceOptions {
   return {
     issuer,
@@ -148,7 +148,7 @@ function issuanceOptions(
     maximumAmount: token.maximumAmount,
     metadata: token.metadata,
     requireAuth: token.requireAuth,
-    sponsor,
+    sponsor
   }
 }
 
@@ -176,15 +176,15 @@ export class RepoLedger {
   /** Cached after the first balance read; null if the server did not report it. */
   private ownerReserve?: bigint | null
 
-  constructor() {
+  constructor () {
     this.client = createClient(CONFIG.wssUrl)
   }
 
-  async connect(): Promise<void> {
+  async connect (): Promise<void> {
     await connect(this.client)
   }
 
-  async disconnect(): Promise<void> {
+  async disconnect (): Promise<void> {
     await disconnect(this.client)
   }
 
@@ -195,36 +195,36 @@ export class RepoLedger {
    * party to an existing funded account; otherwise the Devnet faucet funds a
    * fresh one.
    */
-  async initParty(key: PartyKey): Promise<Party> {
+  async initParty (key: PartyKey): Promise<Party> {
     const account = await createConfidentialAccount(
       this.client,
-      CONFIG.seeds[key],
+      CONFIG.seeds[key]
     )
     const party: Party = { key, ...account }
     this.parties[key] = party
     return party
   }
 
-  party(key: PartyKey): Party {
+  party (key: PartyKey): Party {
     const party = this.parties[key]
     if (party == null) {
       throw new LedgerError(
-        `${PARTIES[key].name} is not initialized. Run the setup step first`,
+        `${PARTIES[key].name} is not initialized. Run the setup step first`
       )
     }
     return party
   }
 
-  address(key: PartyKey): string {
+  address (key: PartyKey): string {
     return this.party(key).wallet.address
   }
 
-  encryptionKey(key: PartyKey): string {
+  encryptionKey (key: PartyKey): string {
     return this.party(key).confidentialKeys.publicKey
   }
 
   /** The ledger-assigned ID of an issuance, once it has been created. */
-  requireIssuance(which: IssuanceKey): string {
+  requireIssuance (which: IssuanceKey): string {
     const id = this.issuanceIDs[which]
     if (id == null) {
       throw new LedgerError(`The ${which} token has not been issued yet`)
@@ -232,7 +232,7 @@ export class RepoLedger {
     return id
   }
 
-  leg(direction: LegDirection): LegState {
+  leg (direction: LegDirection): LegState {
     return direction === 'near' ? this.nearLeg : this.farLeg
   }
 
@@ -240,9 +240,9 @@ export class RepoLedger {
    * How another party covers one transaction's cost. `feeOnly` is required for
    * transactions that create no ledger object, such as a convert or a merge.
    */
-  private sponsorOptions(
+  private sponsorOptions (
     sponsor: PartyKey | undefined,
-    feeOnly = false,
+    feeOnly = false
   ): SponsorOptions | undefined {
     return sponsor == null
       ? undefined
@@ -256,7 +256,7 @@ export class RepoLedger {
   // drift from what reaches the ledger.
 
   /** The label the demo records for an operation, unless it names its own. */
-  private opLabel(op: LedgerOp): string {
+  private opLabel (op: LedgerOp): string {
     if (op.label != null) {
       return op.label
     }
@@ -282,27 +282,27 @@ export class RepoLedger {
     }
   }
 
-  private sponsorAddress(op: LedgerOp): string | undefined {
+  private sponsorAddress (op: LedgerOp): string | undefined {
     return op.sponsor == null ? undefined : this.address(op.sponsor)
   }
 
   /** The transaction an operation submits, built from live state but unsigned. */
-  private buildOp(
-    op: Exclude<LedgerOp, { kind: 'convert' }>,
+  private buildOp (
+    op: Exclude<LedgerOp, { kind: 'convert' }>
   ): SubmittableTransaction {
     const token = TOKENS[op.token]
     const sponsor = this.sponsorAddress(op)
     switch (op.kind) {
       case 'issue':
         return buildIssuanceCreate(
-          issuanceOptions(this.address(token.issuer), token, sponsor),
+          issuanceOptions(this.address(token.issuer), token, sponsor)
         )
       case 'issuerKey':
         return buildIssuerEncryptionKey(
           this.address(token.issuer),
           this.requireIssuance(op.token),
           this.encryptionKey(token.issuer),
-          sponsor,
+          sponsor
         )
       case 'authorize':
         return buildAuthorize(
@@ -310,8 +310,8 @@ export class RepoLedger {
           this.requireIssuance(op.token),
           {
             holder: op.holder == null ? undefined : this.address(op.holder),
-            sponsor,
-          },
+            sponsor
+          }
         )
       case 'pay':
         return buildMPTPayment(
@@ -319,13 +319,13 @@ export class RepoLedger {
           this.address(op.to),
           this.requireIssuance(op.token),
           op.units,
-          sponsor,
+          sponsor
         )
       case 'merge':
         return buildMergeInbox(
           this.address(op.actor),
           this.requireIssuance(op.token),
-          sponsor,
+          sponsor
         )
     }
   }
@@ -335,14 +335,14 @@ export class RepoLedger {
    * its ciphertext and proof are generated against live state at submit time —
    * so it previews as its plaintext intent, and the UI says as much.
    */
-  preview(op: LedgerOp): unknown {
+  preview (op: LedgerOp): unknown {
     return op.kind === 'convert'
       ? convertIntent(
-          this.party(op.actor),
-          this.requireIssuance(op.token),
-          op.units,
-          this.sponsorAddress(op),
-        )
+        this.party(op.actor),
+        this.requireIssuance(op.token),
+        op.units,
+        this.sponsorAddress(op)
+      )
       : this.buildOp(op)
   }
 
@@ -351,7 +351,7 @@ export class RepoLedger {
    * that already exists, so their sponsor covers the fee alone; every other
    * operation creates a ledger object, and its reserve is sponsored too.
    */
-  async run(op: LedgerOp): Promise<TxRecord> {
+  async run (op: LedgerOp): Promise<TxRecord> {
     const label = this.opLabel(op)
     switch (op.kind) {
       case 'issue': {
@@ -362,38 +362,38 @@ export class RepoLedger {
           issuanceOptions(
             this.address(token.issuer),
             token,
-            this.sponsorAddress(op),
+            this.sponsorAddress(op)
           ),
           label,
-          this.sponsorOptions(op.sponsor),
+          this.sponsorOptions(op.sponsor)
         )
         this.issuanceIDs[op.token] = mptIssuanceID
         return record
       }
       case 'convert':
-        return convertToConfidential(
+        return await convertToConfidential(
           this.client,
           this.party(op.actor),
           this.requireIssuance(op.token),
           op.units,
           label,
-          this.sponsorOptions(op.sponsor, true),
+          this.sponsorOptions(op.sponsor, true)
         )
       case 'merge':
-        return mergeInbox(
+        return await mergeInbox(
           this.client,
           this.party(op.actor).wallet,
           this.requireIssuance(op.token),
           label,
-          this.sponsorOptions(op.sponsor, true),
+          this.sponsorOptions(op.sponsor, true)
         )
       default:
-        return submit(
+        return await submit(
           this.client,
           this.buildOp(op),
           this.party(opSigner(op)).wallet,
           label,
-          this.sponsorOptions(op.sponsor),
+          this.sponsorOptions(op.sponsor)
         )
     }
   }
@@ -405,10 +405,10 @@ export class RepoLedger {
    * per leg of the swap. The ledger settles every send or none of them, and no
    * observer sees an amount.
    */
-  async constructLeg(
+  async constructLeg (
     direction: LegDirection,
     sends: LegSend[],
-    assembler: PartyKey,
+    assembler: PartyKey
   ): Promise<Batch> {
     const unsigned = await constructConfidentialBatch(this.client, {
       assembler: this.address(assembler),
@@ -416,8 +416,8 @@ export class RepoLedger {
         sender: this.party(send.from),
         destination: this.address(send.to),
         mptIssuanceID: this.requireIssuance(send.token),
-        units: send.units,
-      })),
+        units: send.units
+      }))
     })
 
     const leg = this.leg(direction)
@@ -428,9 +428,9 @@ export class RepoLedger {
   }
 
   /** Sign a constructed leg as one counterparty, on that party's own copy. */
-  signLeg(
+  signLeg (
     direction: LegDirection,
-    actor: PartyKey,
+    actor: PartyKey
   ): BatchSignerEntry | undefined {
     const leg = this.leg(direction)
     if (leg.unsigned == null) {
@@ -442,7 +442,7 @@ export class RepoLedger {
   }
 
   /** Combine both counterparties' signatures into one submittable batch. */
-  combineLeg(direction: LegDirection, signers: PartyKey[]): string[] {
+  combineLeg (direction: LegDirection, signers: PartyKey[]): string[] {
     const leg = this.leg(direction)
     const copies = signers.map((key) => {
       const copy = leg.signedCopies[key]
@@ -455,13 +455,13 @@ export class RepoLedger {
     // The protocol requires BatchSigners sorted by account ID; read back the
     // order the SDK produced.
     return batchSignerEntries(decodeBatchBlob(leg.combined)).map(
-      (entry) => entry.Account,
+      (entry) => entry.Account
     )
   }
 
   /** The signature entry each counterparty has contributed so far. */
-  legSigners(
-    direction: LegDirection,
+  legSigners (
+    direction: LegDirection
   ): Partial<Record<PartyKey, BatchSignerEntry>> {
     const leg = this.leg(direction)
     const entries: Partial<Record<PartyKey, BatchSignerEntry>> = {}
@@ -475,7 +475,7 @@ export class RepoLedger {
   }
 
   /** The combined batch, decoded for display. */
-  combinedLeg(direction: LegDirection): unknown {
+  combinedLeg (direction: LegDirection): unknown {
     const { combined } = this.leg(direction)
     return typeof combined === 'string' ? decodeBatchBlob(combined) : combined
   }
@@ -487,23 +487,23 @@ export class RepoLedger {
    * If the submission window expired while the counterparties were signing,
    * `rebuild` is called once to construct and re-sign a fresh batch.
    */
-  async submitLeg(
+  async submitLeg (
     direction: LegDirection,
     submitter: PartyKey,
     label: string,
     innerLabels: string[],
-    rebuild?: () => Promise<void>,
-  ): Promise<{ txs: TxRecord[]; rebuilt: boolean }> {
+    rebuild?: () => Promise<void>
+  ): Promise<{ txs: TxRecord[], rebuilt: boolean }> {
     const attempt = async (): Promise<TxRecord> => {
       const { combined } = this.leg(direction)
       if (combined == null) {
         throw new LedgerError('Combine the signatures before submitting')
       }
-      return submitBatch(
+      return await submitBatch(
         this.client,
         combined,
         this.party(submitter).wallet,
-        label,
+        label
       )
     }
 
@@ -530,33 +530,33 @@ export class RepoLedger {
    * confidential balances decrypted with each holder's own key, plus each
    * issuer's lawful view of its own token.
    */
-  async snapshotBalances(): Promise<BalanceSnapshot> {
+  async snapshotBalances (): Promise<BalanceSnapshot> {
     const snapshot: BalanceSnapshot = {}
     const reserve = await this.ownerReserveDrops()
     await Promise.all(
       (Object.keys(this.parties) as PartyKey[]).map(async (key) => {
         snapshot[key] = await this.partyBalances(key, reserve)
-      }),
+      })
     )
     return snapshot
   }
 
   /** Read the reserve rate once: validators vote on it, but not mid-demo. */
-  private async ownerReserveDrops(): Promise<bigint | null> {
+  private async ownerReserveDrops (): Promise<bigint | null> {
     if (this.ownerReserve === undefined) {
       this.ownerReserve = await readOwnerReserve(this.client)
     }
     return this.ownerReserve
   }
 
-  private async partyBalances(
+  private async partyBalances (
     key: PartyKey,
-    reserveDrops: bigint | null,
+    reserveDrops: bigint | null
   ): Promise<PartyBalances> {
     const party = this.party(key)
     const [xrp, ...tokenBalances] = await Promise.all([
       readAccountXrp(this.client, party.wallet.address),
-      ...TOKEN_KEYS.map(async (token) => this.tokenBalance(party, token)),
+      ...TOKEN_KEYS.map(async (token) => await this.tokenBalance(party, token))
     ])
     const tokens = {} as Record<IssuanceKey, TokenBalance>
     TOKEN_KEYS.forEach((token, index) => {
@@ -569,24 +569,24 @@ export class RepoLedger {
         reserveDrops == null || sponsored === 0
           ? undefined
           : reserveDrops * BigInt(sponsored),
-      tokens,
+      tokens
     }
   }
 
-  private async tokenBalance(
+  private async tokenBalance (
     party: Party,
-    token: IssuanceKey,
+    token: IssuanceKey
   ): Promise<TokenBalance> {
     const mptIssuanceID = this.issuanceIDs[token]
     if (mptIssuanceID == null) {
       return NO_TOKEN_BALANCE
     }
     const issuer = TOKENS[token].issuer
-    return readTokenBalance(this.client, {
+    return await readTokenBalance(this.client, {
       holder: party.wallet.address,
       mptIssuanceID,
       holderPrivateKey: party.confidentialKeys.privateKey,
-      issuerPrivateKey: this.parties[issuer]?.confidentialKeys.privateKey,
+      issuerPrivateKey: this.parties[issuer]?.confidentialKeys.privateKey
     })
   }
 
@@ -597,18 +597,18 @@ export class RepoLedger {
    * like a transaction: no batch exists yet, and presenting this as wire JSON
    * would imply the reader is inspecting something that will be submitted.
    */
-  previewPlannedLeg(sends: LegSend[]): unknown {
+  previewPlannedLeg (sends: LegSend[]): unknown {
     return {
       willBuild: `Batch (tfAllOrNothing) with ${sends.length} ConfidentialMPTSend inners`,
       inners: sends.map(
         (send) =>
-          `${PARTIES[send.from].name} → ${PARTIES[send.to].name}, ${formatAmount(send.units, TOKENS[send.token])}`,
-      ),
+          `${PARTIES[send.from].name} → ${PARTIES[send.to].name}, ${formatAmount(send.units, TOKENS[send.token])}`
+      )
     }
   }
 
   /** The unsigned batch, once constructed. */
-  previewUnsignedLeg(direction: LegDirection): unknown {
+  previewUnsignedLeg (direction: LegDirection): unknown {
     return this.leg(direction).unsigned
   }
 }

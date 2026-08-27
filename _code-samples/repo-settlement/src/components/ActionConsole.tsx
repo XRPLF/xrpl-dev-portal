@@ -5,11 +5,11 @@ import { PARTIES } from '../variables'
 import { JsonView } from './JsonView'
 import { partyColor, partyVars } from './PartyBadge'
 
-function actorName(action: StepAction): string {
+function actorName (action: StepAction): string {
   return action.party ? PARTIES[action.party].name : 'Demo setup'
 }
 
-function actorInitials(action: StepAction): string {
+function actorInitials (action: StepAction): string {
   if (!action.party) {
     return '⚙'
   }
@@ -21,7 +21,7 @@ function actorInitials(action: StepAction): string {
  * shows who you are, the exact transaction you're about to sign, and the
  * button that does it.
  */
-export function ActionConsole({
+export function ActionConsole ({
   action,
   running,
   error,
@@ -29,7 +29,7 @@ export function ActionConsole({
   preview,
   canAct,
   onBecome,
-  onRun,
+  onRun
 }: {
   action: StepAction
   running: boolean
@@ -44,67 +44,71 @@ export function ActionConsole({
   const color = partyColor(action.party)
 
   return (
-    <div className="action-console" style={partyVars(action.party)}>
-      <Group justify="space-between" align="center" wrap="nowrap" gap="md">
-        <Group gap="md" wrap="nowrap">
-          <Avatar size={44} radius="xl" color={color} variant="filled" fz={15} fw={700}>
+    <div className='action-console' style={partyVars(action.party)}>
+      <Group justify='space-between' align='center' wrap='nowrap' gap='md'>
+        <Group gap='md' wrap='nowrap'>
+          <Avatar size={44} radius='xl' color={color} variant='filled' fz={15} fw={700}>
             {actorInitials(action)}
           </Avatar>
           <div>
-            <Text size="xs" fw={700} tt="uppercase" lts="0.06em" className="your-move">
-              <span className="pointer" aria-hidden>
+            <Text size='xs' fw={700} tt='uppercase' lts='0.06em' className='your-move'>
+              <span className='pointer' aria-hidden>
                 ➤
               </span>{' '}
               Your move · {actorName(action)}
               {action.party && (
-                <Text span size="xs" c="dimmed" fw={500} tt="none" ml={6}>
+                <Text span size='xs' c='dimmed' fw={500} tt='none' ml={6}>
                   {PARTIES[action.party].roleLabel}
                 </Text>
               )}
             </Text>
-            <Text size="md" fw={600} mt={2}>
+            <Text size='md' fw={600} mt={2}>
               {action.label}
             </Text>
-            <Text size="sm" c="dimmed" mt={2}>
+            <Text size='sm' c='dimmed' mt={2}>
               {action.detail}
             </Text>
             {!canAct && !running && (
-              <Text size="xs" fw={600} mt={4} className="your-move">
+              <Text size='xs' fw={600} mt={4} className='your-move'>
                 Only {actorName(action)} holds the key to sign this. Switch
                 identity to act.
               </Text>
             )}
           </div>
         </Group>
-        {running ? (
-          <Group gap={8} wrap="nowrap">
-            <Loader size="sm" color={color} />
-            <Text size="sm" c="dimmed">
-              On ledger…
-            </Text>
-          </Group>
-        ) : !canAct ? (
-          <Button
-            size="md"
-            variant="light"
-            color={color}
-            onClick={onBecome}
-            disabled={busy}
-            style={{ flexShrink: 0 }}
-          >
-            Act as {actorName(action)} →
-          </Button>
-        ) : (
-          <Button
-            size="md"
-            color={color}
-            onClick={onRun}
-            disabled={busy}
-            style={{ flexShrink: 0 }}
-          >
-            {error != null ? 'Retry' : action.cta}
-          </Button>
-        )}
+        {running
+          ? (
+            <Group gap={8} wrap='nowrap'>
+              <Loader size='sm' color={color} />
+              <Text size='sm' c='dimmed'>
+                On ledger…
+              </Text>
+            </Group>
+            )
+          : !canAct
+              ? (
+                <Button
+                  size='md'
+                  variant='light'
+                  color={color}
+                  onClick={onBecome}
+                  disabled={busy}
+                  style={{ flexShrink: 0 }}
+                >
+                  Act as {actorName(action)} →
+                </Button>
+                )
+              : (
+                <Button
+                  size='md'
+                  color={color}
+                  onClick={onRun}
+                  disabled={busy}
+                  style={{ flexShrink: 0 }}
+                >
+                  {error != null ? 'Retry' : action.cta}
+                </Button>
+                )}
       </Group>
 
       {preview != null && !running && (
@@ -118,18 +122,18 @@ export function ActionConsole({
             value={preview}
             defaultOpen
             mt={10}
-            bg="white"
+            bg='white'
           />
           {action.previewCaveat != null && (
-            <Text size="xs" c="dimmed" mt={6}>
+            <Text size='xs' c='dimmed' mt={6}>
               {action.previewCaveat}
             </Text>
           )}
         </>
       )}
       {error != null && (
-        <Alert color="red" title="Action failed" mt="sm" p="sm" data-testid="action-error">
-          <Text size="xs" ff="monospace" style={{ overflowWrap: 'anywhere' }}>
+        <Alert color='red' title='Action failed' mt='sm' p='sm' data-testid='action-error'>
+          <Text size='xs' ff='monospace' style={{ overflowWrap: 'anywhere' }}>
             {error}
           </Text>
         </Alert>

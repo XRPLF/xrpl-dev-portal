@@ -7,7 +7,7 @@ import {
   Stack,
   Stepper,
   Text,
-  Title,
+  Title
 } from '@mantine/core'
 import { useCallback, useMemo, useRef, useState } from 'react'
 
@@ -26,7 +26,7 @@ export interface Identity {
 
 export type IdentityBook = Partial<Record<PartyKey, Identity>>
 
-export default function App() {
+export default function App () {
   const ledgerRef = useRef<RepoLedger | null>(null)
   const getLedger = (): RepoLedger => {
     ledgerRef.current ??= new RepoLedger()
@@ -39,14 +39,14 @@ export default function App() {
   const steps = useMemo(() => buildSteps(deal), [deal])
 
   const [slots, setSlots] = useState<ActionSlot[][]>(() =>
-    steps.map((step) => step.actions.map(() => ({ result: null, error: null }))),
+    steps.map((step) => step.actions.map(() => ({ result: null, error: null })))
   )
   /** Completed-action count per step. */
   const [progress, setProgress] = useState<number[]>(() => steps.map(() => 0))
   /** The step the panel shows: one step per screen, arrows move between them. */
   const [selected, setSelected] = useState(0)
-  const [running, setRunning] = useState<{ step: number; action: number } | null>(
-    null,
+  const [running, setRunning] = useState<{ step: number, action: number } | null>(
+    null
   )
   /** The reader's current identity: gates actions and decryption. */
   const [actor, setActor] = useState<PartyKey | null>(null)
@@ -54,7 +54,7 @@ export default function App() {
   const [identities, setIdentities] = useState<IdentityBook>({})
 
   const currentStep = progress.findIndex(
-    (count, index) => count < steps[index].actions.length,
+    (count, index) => count < steps[index].actions.length
   )
   const flowDone = currentStep === -1
   /** The terms are only editable until the first transaction is signed. */
@@ -69,14 +69,14 @@ export default function App() {
   const patchSlot = (
     stepIndex: number,
     actionIndex: number,
-    value: Partial<ActionSlot>,
+    value: Partial<ActionSlot>
   ): void => {
     setSlots((prev) =>
       prev.map((step, s) =>
         s === stepIndex
           ? step.map((slot, a) => (a === actionIndex ? { ...slot, ...value } : slot))
-          : step,
-      ),
+          : step
+      )
     )
   }
 
@@ -96,26 +96,26 @@ export default function App() {
               key,
               {
                 address: party.wallet.address,
-                publicKey: party.confidentialKeys.publicKey,
-              },
-            ]),
-          ) as IdentityBook,
+                publicKey: party.confidentialKeys.publicKey
+              }
+            ])
+          ) as IdentityBook
         )
         setBalances(await ledger.snapshotBalances())
         setProgress((prev) =>
-          prev.map((count, s) => (s === stepIndex ? actionIndex + 1 : count)),
+          prev.map((count, s) => (s === stepIndex ? actionIndex + 1 : count))
         )
         return true
       } catch (error) {
         patchSlot(stepIndex, actionIndex, {
-          error: error instanceof Error ? error.message : String(error),
+          error: error instanceof Error ? error.message : String(error)
         })
         return false
       } finally {
         setRunning(null)
       }
     },
-    [steps],
+    [steps]
   )
 
   // The data behind the next action, recomputed each render so the reader
@@ -132,7 +132,7 @@ export default function App() {
   // The stepper condenses the steps into their seven phases, so the reader
   // always sees where the viewed step sits in the whole flow.
   const phases = useMemo(() => {
-    const grouped: { name: string; steps: number[] }[] = []
+    const grouped: Array<{ name: string, steps: number[] }> = []
     steps.forEach((step, index) => {
       const last = grouped.at(-1)
       if (last?.name === step.phase) {
@@ -191,14 +191,14 @@ export default function App() {
   return (
     // The inline gutter is left to .app-shell, which scales it with the window
     // instead of holding it at Container's fixed md.
-    <Container size={1560} py="md" className="app-shell">
+    <Container size={1560} py='md' className='app-shell'>
       {/* The ticket sits beside the title rather than under it: the chrome is
           then as tall as the taller of the two, not the sum, and every pixel
           saved goes to the step and the ledger below. */}
-      <div className="chrome">
-        <Group align="flex-start" mb="sm" gap="md" wrap="wrap">
+      <div className='chrome'>
+        <Group align='flex-start' mb='sm' gap='md' wrap='wrap'>
           <Stack gap={4} style={{ flex: '1 1 380px', minWidth: 0 }}>
-            <Text size="xs" fw={700} tt="uppercase" c="teal.8" lts="0.08em">
+            <Text size='xs' fw={700} tt='uppercase' c='teal.8' lts='0.08em'>
               XRP Ledger · interactive demo
             </Text>
             <Title order={1} size={24}>
@@ -208,7 +208,7 @@ export default function App() {
                 two, so the preamble sits in slack that exists either way, and
                 becoming a party by clicking it is the demo's one non-obvious
                 interaction. */}
-            <Text size="sm" c="dimmed" maw={640}>
+            <Text size='sm' c='dimmed' maw={640}>
               A two-leg repo trade, settled atomically with encrypted amounts.
               You act as every party: click one in the balances panel to become
               it. Set the terms, sign each transaction, and decrypt only what
@@ -216,20 +216,20 @@ export default function App() {
             </Text>
           </Stack>
           <Stack gap={6} style={{ flex: '0 1 560px', minWidth: 0 }}>
-            <Group gap="sm" wrap="nowrap" justify="flex-end">
+            <Group gap='sm' wrap='nowrap' justify='flex-end'>
               <Badge
-                variant="light"
-                color="gray"
-                size="md"
-                ff="monospace"
+                variant='light'
+                color='gray'
+                size='md'
+                ff='monospace'
                 fw={500}
-                visibleFrom="sm"
+                visibleFrom='sm'
               >
                 {new URL(CONFIG.wssUrl).host}
               </Badge>
               <Button
-                variant="default"
-                size="xs"
+                variant='default'
+                size='xs'
                 onClick={() => window.location.reload()}
               >
                 Reset demo
@@ -242,11 +242,11 @@ export default function App() {
         <Stepper
           active={flowDone ? phases.length : currentPhase}
           onStepClick={(index) => setSelected(phaseTarget(index))}
-          size="xs"
+          size='xs'
           iconSize={24}
-          color="teal"
-          mt="sm"
-          className="phase-stepper"
+          color='teal'
+          mt='sm'
+          className='phase-stepper'
         >
           {/* completedIcon keeps the number on a finished phase: Mantine
               replaces it with a tick, which costs the reader the one mark that
@@ -258,11 +258,11 @@ export default function App() {
               allowStepSelect={item.steps[0] <= maxStep}
               completedIcon={index + 1}
               description={
-                <span className="step-dots" aria-hidden>
+                <span className='step-dots' aria-hidden>
                   {item.steps.map((stepIndex) => (
                     <span
                       key={stepIndex}
-                      className="step-dot"
+                      className='step-dot'
                       data-step-dot={stepIndex}
                       data-state={dotState(stepIndex)}
                       data-viewing={stepIndex === selected || undefined}
@@ -288,16 +288,16 @@ export default function App() {
           step and the ledger are on screen together at any window size. Each
           scrolls its own overflow; the page itself never scrolls. */}
       <Grid
-        gap="md"
-        mt="sm"
-        className="panel-row"
+        gap='md'
+        mt='sm'
+        className='panel-row'
         classNames={{ inner: 'panel-row-inner' }}
       >
         {/* The ledger gets a wider share at the md breakpoint, where the
             column is narrow enough that a party's balances would otherwise be
             clipped; the step panel takes the extra width back on a wide
             display, where the JSON is what needs it. */}
-        <Grid.Col span={{ base: 12, md: 7, lg: 7.5 }} className="panel-col">
+        <Grid.Col span={{ base: 12, md: 7, lg: 7.5 }} className='panel-col'>
           <StepPanel
             step={step}
             eyebrow={eyebrow}
@@ -312,9 +312,8 @@ export default function App() {
             canGoForward={selected < maxStep}
             onNavigate={(delta) =>
               setSelected((index) =>
-                Math.min(Math.max(index + delta, 0), maxStep),
-              )
-            }
+                Math.min(Math.max(index + delta, 0), maxStep)
+              )}
             continueLabel={continueLabel}
             onContinue={() => setSelected(selected + 1)}
             flowComplete={flowDone && selected === steps.length - 1}
@@ -322,7 +321,7 @@ export default function App() {
             onBecome={setActor}
           />
         </Grid.Col>
-        <Grid.Col span={{ base: 12, md: 5, lg: 4.5 }} className="panel-col">
+        <Grid.Col span={{ base: 12, md: 5, lg: 4.5 }} className='panel-col'>
           <BalancePanel
             balances={balances}
             identities={identities}

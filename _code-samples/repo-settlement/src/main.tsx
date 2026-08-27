@@ -14,7 +14,7 @@ const theme = createTheme({
     '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
   fontFamilyMonospace:
     'ui-monospace, "SF Mono", "JetBrains Mono", Menlo, monospace',
-  headings: { fontWeight: '700' },
+  headings: { fontWeight: '700' }
 })
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
@@ -22,5 +22,5 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
     <MantineProvider theme={theme}>
       <App />
     </MantineProvider>
-  </React.StrictMode>,
+  </React.StrictMode>
 )

@@ -18,7 +18,7 @@ import {
   type Counterparty,
   type DealTerms,
   type IssuanceKey,
-  type PartyKey,
+  type PartyKey
 } from './variables'
 import type { StepDefinition, StepResult } from './types'
 import {
@@ -26,7 +26,7 @@ import {
   type LedgerOp,
   type LegDirection,
   type LegSend,
-  type RepoLedger,
+  type RepoLedger
 } from './repo'
 import type { TxRecord } from './xrpl'
 
@@ -111,7 +111,7 @@ const fmtCash = (units: bigint): string => fmt('cash', units)
  * first operation, and clicking submits every operation in order, so a step
  * that converts and then merges stays one click for the reader.
  */
-function opAction(action: OpAction): StepAction {
+function opAction (action: OpAction): StepAction {
   const [first] = action.ops
   const { ops, notes, ...rest } = action
   return {
@@ -119,7 +119,7 @@ function opAction(action: OpAction): StepAction {
     party: rest.party ?? opSigner(first),
     preview: (ledger) => ledger.preview(first),
     previewCaveat: first.kind === 'convert' ? CONVERT_CAVEAT : undefined,
-    async execute(ledger) {
+    async execute (ledger) {
       const txs: TxRecord[] = []
       for (const op of ops) {
         // Strictly sequential: each operation depends on the state the last one
@@ -129,18 +129,18 @@ function opAction(action: OpAction): StepAction {
       }
       return {
         txs,
-        notes: typeof notes === 'function' ? notes(ledger) : (notes ?? []),
+        notes: typeof notes === 'function' ? notes(ledger) : (notes ?? [])
       }
-    },
+    }
   }
 }
 
 /** Convert a public balance to confidential, then merge it spendable. */
-function convert(
+function convert (
   actor: Counterparty,
   token: IssuanceKey,
   units: bigint,
-  extra: Partial<OpAction> = {},
+  extra: Partial<OpAction> = {}
 ): StepAction {
   const info = TOKENS[token]
   const amount = fmt(token, units)
@@ -151,14 +151,14 @@ function convert(
     detail: `${PARTIES[actor].name} encrypts its ${info.ticker} position, then merges it from inbox to spendable.`,
     ops: [
       { kind: 'convert', actor, token, units, sponsor: SPONSOR },
-      { kind: 'merge', actor, token, sponsor: SPONSOR },
+      { kind: 'merge', actor, token, sponsor: SPONSOR }
     ],
-    ...extra,
+    ...extra
   })
 }
 
 /** Create one token's issuance, and report the ID the ledger assigned it. */
-function issueToken(token: IssuanceKey, sponsor?: PartyKey): StepAction {
+function issueToken (token: IssuanceKey, sponsor?: PartyKey): StepAction {
   const info = TOKENS[token]
   const gating = info.requireAuth
     ? 'with RequireAuth gating who may hold it'
@@ -172,13 +172,13 @@ function issueToken(token: IssuanceKey, sponsor?: PartyKey): StepAction {
     detail: `${PARTIES[info.issuer].name} submits MPTokenIssuanceCreate for ${info.ticker}, ${gating}.${cosign}`,
     ops: [{ kind: 'issue', token, sponsor }],
     notes: (ledger) => [
-      `${info.ticker} issuance ID: ${ledger.requireIssuance(token)}`,
-    ],
+      `${info.ticker} issuance ID: ${ledger.requireIssuance(token)}`
+    ]
   })
 }
 
 /** Register the issuer's encryption key, which enables confidential balances. */
-function registerIssuerKey(token: IssuanceKey, sponsor?: PartyKey): StepAction {
+function registerIssuerKey (token: IssuanceKey, sponsor?: PartyKey): StepAction {
   const info = TOKENS[token]
   return opAction({
     id: 'register-key',
@@ -186,15 +186,15 @@ function registerIssuerKey(token: IssuanceKey, sponsor?: PartyKey): StepAction {
     cta: 'Register',
     detail: `${PARTIES[info.issuer].name} registers its encryption public key on the ${info.ticker} issuance with MPTokenIssuanceSet. The private half never leaves the browser.`,
     ops: [{ kind: 'issuerKey', token, sponsor }],
-    notes: [`${info.ticker} can now be held confidentially.`],
+    notes: [`${info.ticker} can now be held confidentially.`]
   })
 }
 
 /** One party opts in to hold a token, which creates its MPToken object. */
-function optIn(
+function optIn (
   actor: PartyKey,
   token: IssuanceKey,
-  extra: Partial<OpAction> = {},
+  extra: Partial<OpAction> = {}
 ): StepAction {
   const info = TOKENS[token]
   return opAction({
@@ -203,12 +203,12 @@ function optIn(
     cta: 'Opt in',
     detail: `${PARTIES[actor].name} submits MPTokenAuthorize so its account can hold ${info.ticker}, and ${PARTIES[SPONSOR].name} co-signs as sponsor and pays the cost and reserve.`,
     ops: [{ kind: 'authorize', actor, token, sponsor: SPONSOR }],
-    ...extra,
+    ...extra
   })
 }
 
 /** The issuer approves a holder, the second half of a RequireAuth handshake. */
-function approve(holder: PartyKey, token: IssuanceKey): StepAction {
+function approve (holder: PartyKey, token: IssuanceKey): StepAction {
   const info = TOKENS[token]
   const issuer = PARTIES[info.issuer].name
   return opAction({
@@ -217,18 +217,18 @@ function approve(holder: PartyKey, token: IssuanceKey): StepAction {
     cta: 'Approve',
     detail: `${issuer} authorizes ${PARTIES[holder].name} as a ${info.ticker} holder.`,
     ops: [
-      { kind: 'authorize', actor: info.issuer, token, holder, sponsor: SPONSOR },
-    ],
+      { kind: 'authorize', actor: info.issuer, token, holder, sponsor: SPONSOR }
+    ]
   })
 }
 
 /** A public MPT payment from one party to another. */
-function pay(
+function pay (
   from: PartyKey,
   to: PartyKey,
   token: IssuanceKey,
   units: bigint,
-  extra: Partial<OpAction> & { sponsor?: PartyKey } = {},
+  extra: Partial<OpAction> & { sponsor?: PartyKey } = {}
 ): StepAction {
   const { sponsor, ...rest } = extra
   const amount = fmt(token, units)
@@ -238,15 +238,15 @@ function pay(
     cta: 'Send',
     detail: `${PARTIES[from].name} pays ${PARTIES[to].name} ${amount}.`,
     ops: [{ kind: 'pay', actor: from, to, token, units, sponsor }],
-    ...rest,
+    ...rest
   })
 }
 
 /** Merge one party's confidential inbox into its spendable balance. */
-function mergeInbox(
+function mergeInbox (
   actor: Counterparty,
   token: IssuanceKey,
-  extra: Partial<OpAction> = {},
+  extra: Partial<OpAction> = {}
 ): StepAction {
   const info = TOKENS[token]
   return opAction({
@@ -255,25 +255,25 @@ function mergeInbox(
     cta: 'Merge',
     detail: `${PARTIES[actor].name} moves the ${info.ticker} it received from its inbox to its spendable balance.`,
     ops: [{ kind: 'merge', actor, token, sponsor: SPONSOR }],
-    ...extra,
+    ...extra
   })
 }
 
 /** Sign a constructed leg as one counterparty. */
-function signLeg(
+function signLeg (
   ledger: RepoLedger,
   direction: LegDirection,
-  partyKey: Counterparty,
+  partyKey: Counterparty
 ): StepResult {
   const signer = ledger.signLeg(direction, partyKey)
   return {
     txs: [],
     notes: [
-      `${PARTIES[partyKey].name}'s signature covers every inner transaction. Any change to the batch breaks it.`,
+      `${PARTIES[partyKey].name}'s signature covers every inner transaction. Any change to the batch breaks it.`
     ],
-    artifacts: signer
+    artifacts: (signer != null)
       ? [{ label: `${PARTIES[partyKey].name}'s BatchSigner entry`, json: signer }]
-      : undefined,
+      : undefined
   }
 }
 
@@ -281,9 +281,9 @@ function signLeg(
  * One signing action per counterparty, in signing order. Each party's `detail`
  * says what its own signature authorizes on this leg.
  */
-function coSignActions(
+function coSignActions (
   direction: LegDirection,
-  details: Record<Counterparty, string>,
+  details: Record<Counterparty, string>
 ): StepAction[] {
   return COUNTERPARTIES.map((party) => ({
     id: `sign-${party.toLowerCase()}`,
@@ -292,52 +292,52 @@ function coSignActions(
     cta: 'Sign',
     detail: details[party],
     preview: (ledger: RepoLedger) => ledger.previewUnsignedLeg(direction),
-    execute: async (ledger: RepoLedger) => signLeg(ledger, direction, party),
+    execute: async (ledger: RepoLedger) => signLeg(ledger, direction, party)
   }))
 }
 
 /** Combine both counterparties' signatures into one submittable batch. */
-function combineLeg(ledger: RepoLedger, direction: LegDirection): StepResult {
+function combineLeg (ledger: RepoLedger, direction: LegDirection): StepResult {
   const accounts = ledger.combineLeg(direction, COUNTERPARTIES)
   return {
     txs: [],
     notes: ['Signatures combined, sorted by account ID as the protocol requires.'],
-    artifacts: [{ label: 'Combined signer list', json: accounts }],
+    artifacts: [{ label: 'Combined signer list', json: accounts }]
   }
 }
 
 /** Each counterparty's signature entry, or a note that it hasn't signed yet. */
-function previewSigners(ledger: RepoLedger, direction: LegDirection): unknown {
+function previewSigners (ledger: RepoLedger, direction: LegDirection): unknown {
   const entries = ledger.legSigners(direction)
   return COUNTERPARTIES.map(
-    (key) => entries[key] ?? `${PARTIES[key].name}: not signed yet`,
+    (key) => entries[key] ?? `${PARTIES[key].name}: not signed yet`
   )
 }
 
 /** Submit a combined leg, noting when an expired batch had to be rebuilt. */
-async function submitLeg(
+async function submitLeg (
   ledger: RepoLedger,
   direction: LegDirection,
   label: string,
   innerLabels: string[],
   notes: string[],
-  rebuild: () => Promise<void>,
+  rebuild: () => Promise<void>
 ): Promise<StepResult> {
   const { txs, rebuilt } = await ledger.submitLeg(
     direction,
     ORCHESTRATOR,
     label,
     innerLabels,
-    rebuild,
+    rebuild
   )
   return {
     txs,
     notes: rebuilt
       ? [
           'The submission window expired while you were signing, so the demo rebuilt and re-signed the batch, then submitted it.',
-          ...notes,
+          ...notes
         ]
-      : notes,
+      : notes
   }
 }
 
@@ -347,7 +347,7 @@ async function submitLeg(
  * the whole settlement.
  */
 // eslint-disable-next-line max-lines-per-function -- a linear storyboard reads best in one place
-export function buildSteps(deal: DealTerms): RunnableStep[] {
+export function buildSteps (deal: DealTerms): RunnableStep[] {
   const collateralAmt = fmtCollateral(deal.collateralUnits)
   const cashAmt = fmtCash(deal.cashUnits)
   const interestAmt = fmtCash(interestUnits(deal))
@@ -360,7 +360,7 @@ export function buildSteps(deal: DealTerms): RunnableStep[] {
    * and the same declaration builds the batch, so they cannot disagree. The far
    * leg is the near leg reversed, with interest added to the cash.
    */
-  function legSends(direction: LegDirection): LegSend[] {
+  function legSends (direction: LegDirection): LegSend[] {
     const near = direction === 'near'
     const [first, second] = COUNTERPARTIES
     const [collateralFrom, cashFrom] = near ? [first, second] : [second, first]
@@ -369,38 +369,38 @@ export function buildSteps(deal: DealTerms): RunnableStep[] {
         from: collateralFrom,
         to: cashFrom,
         token: 'collateral',
-        units: deal.collateralUnits,
+        units: deal.collateralUnits
       },
       {
         from: cashFrom,
         to: collateralFrom,
         token: 'cash',
-        units: near ? deal.cashUnits : farLegCashUnits(deal),
-      },
+        units: near ? deal.cashUnits : farLegCashUnits(deal)
+      }
     ]
   }
 
   /** Construct one repo leg: every send of the swap in one atomic Batch. */
-  async function constructLeg(
+  async function constructLeg (
     ledger: RepoLedger,
-    direction: LegDirection,
+    direction: LegDirection
   ): Promise<StepResult> {
     const unsigned = await ledger.constructLeg(
       direction,
       legSends(direction),
-      ORCHESTRATOR,
+      ORCHESTRATOR
     )
     return {
       txs: [],
       notes: ['Batch constructed. The amounts below are already encrypted.'],
-      artifacts: [{ label: `${direction} leg batch (unsigned)`, json: unsigned }],
+      artifacts: [{ label: `${direction} leg batch (unsigned)`, json: unsigned }]
     }
   }
 
   /** Rebuild an expired leg end to end: construct, both signatures, combine. */
-  async function rebuildLeg(
+  async function rebuildLeg (
     ledger: RepoLedger,
-    direction: LegDirection,
+    direction: LegDirection
   ): Promise<void> {
     await constructLeg(ledger, direction)
     for (const party of COUNTERPARTIES) {
@@ -414,9 +414,9 @@ export function buildSteps(deal: DealTerms): RunnableStep[] {
    * way, so only the wording differs; the preview shows the plan the same
    * declaration builds from.
    */
-  function constructAction(
+  function constructAction (
     direction: LegDirection,
-    copy: { label: string; detail: string },
+    copy: { label: string, detail: string }
   ): StepAction {
     return {
       id: 'construct',
@@ -425,7 +425,7 @@ export function buildSteps(deal: DealTerms): RunnableStep[] {
       ...copy,
       preview: (ledger) => ledger.previewPlannedLeg(legSends(direction)),
       previewCaveat: BATCH_CAVEAT,
-      execute: async (ledger) => constructLeg(ledger, direction),
+      execute: async (ledger) => await constructLeg(ledger, direction)
     }
   }
 
@@ -446,16 +446,16 @@ export function buildSteps(deal: DealTerms): RunnableStep[] {
           cta: 'Fund',
           detail:
             'Each party gets a funded account and an encryption keypair for its confidential balances.',
-          async execute(ledger) {
+          async execute (ledger) {
             await ledger.connect()
             await Promise.all(
-              PARTY_KEYS.map(async (key) => ledger.initParty(key)),
+              PARTY_KEYS.map(async (key) => await ledger.initParty(key))
             )
             return {
               txs: [],
               notes: PARTY_KEYS.map(
                 (key) =>
-                  `${PARTIES[key].name} (${PARTIES[key].roleLabel}): ${ledger.address(key)}`,
+                  `${PARTIES[key].name} (${PARTIES[key].roleLabel}): ${ledger.address(key)}`
               ),
               artifacts: [
                 {
@@ -463,15 +463,15 @@ export function buildSteps(deal: DealTerms): RunnableStep[] {
                   json: Object.fromEntries(
                     PARTY_KEYS.map((key) => [
                       PARTIES[key].name,
-                      ledger.encryptionKey(key),
-                    ]),
-                  ),
-                },
-              ],
+                      ledger.encryptionKey(key)
+                    ])
+                  )
+                }
+              ]
             }
-          },
-        },
-      ],
+          }
+        }
+      ]
     },
     {
       id: 'issue-collateral',
@@ -483,12 +483,12 @@ export function buildSteps(deal: DealTerms): RunnableStep[] {
       callout: {
         kind: 'info',
         title: 'xSecurities pays from here on',
-        text: 'The orchestrator sponsors every transaction and every object for AlphaFund, InvestCo, and TradeDesk. Each of them still signs, and therefore still controls, its own transaction.',
+        text: 'The orchestrator sponsors every transaction and every object for AlphaFund, InvestCo, and TradeDesk. Each of them still signs, and therefore still controls, its own transaction.'
       },
       actions: [
         issueToken('collateral', SPONSOR),
-        registerIssuerKey('collateral', SPONSOR),
-      ],
+        registerIssuerKey('collateral', SPONSOR)
+      ]
     },
     {
       id: 'issue-cash',
@@ -499,7 +499,7 @@ export function buildSteps(deal: DealTerms): RunnableStep[] {
         'Cash is just another MPT, so fund tokens and stablecoins settle on the same rails.',
       description:
         `StableCorp issues ${CASH.ticker} exactly as AlphaFund issued ${COLLATERAL.ticker}, minus RequireAuth, so anyone may hold the cash. It registers its encryption key the same way too.`,
-      actions: [issueToken('cash'), registerIssuerKey('cash')],
+      actions: [issueToken('cash'), registerIssuerKey('cash')]
     },
     {
       id: 'distribute-cash',
@@ -512,9 +512,9 @@ export function buildSteps(deal: DealTerms): RunnableStep[] {
         optIn('tradeDesk', 'cash'),
         pay('stableCorp', 'tradeDesk', 'cash', deal.cashUnits, {
           detail: 'StableCorp pays TradeDesk the cash it spends in the near leg.',
-          notes: [`TradeDesk now holds ${cashAmt} publicly.`],
-        }),
-      ],
+          notes: [`TradeDesk now holds ${cashAmt} publicly.`]
+        })
+      ]
     },
     {
       id: 'authorize-investco',
@@ -527,8 +527,8 @@ export function buildSteps(deal: DealTerms): RunnableStep[] {
         `${COLLATERAL.ticker} requires authorization, so onboarding is a handshake. The holder opts in, then AlphaFund approves it. InvestCo goes first, and xSecurities pays the cost and reserve on both sides.`,
       actions: [
         optIn('investCo', 'collateral'),
-        approve('investCo', 'collateral'),
-      ],
+        approve('investCo', 'collateral')
+      ]
     },
     {
       id: 'authorize-tradedesk',
@@ -539,8 +539,8 @@ export function buildSteps(deal: DealTerms): RunnableStep[] {
         'The buyer repeats the same handshake. TradeDesk opts in, AlphaFund approves it, and xSecurities pays for both again.',
       actions: [
         optIn('tradeDesk', 'collateral'),
-        approve('tradeDesk', 'collateral'),
-      ],
+        approve('tradeDesk', 'collateral')
+      ]
     },
     {
       id: 'authorize-cash',
@@ -556,10 +556,10 @@ export function buildSteps(deal: DealTerms): RunnableStep[] {
           detail:
             'InvestCo opts in to USD so it can receive the near-leg cash, and xSecurities sponsors.',
           notes: [
-            'Every object created so far is reserved against xSecurities, not against the party that owns it. Its sponsoring count in the balances panel climbs with each one.',
-          ],
-        }),
-      ],
+            'Every object created so far is reserved against xSecurities, not against the party that owns it. Its sponsoring count in the balances panel climbs with each one.'
+          ]
+        })
+      ]
     },
     {
       id: 'primary-purchase',
@@ -577,9 +577,9 @@ export function buildSteps(deal: DealTerms): RunnableStep[] {
           cta: 'Deliver',
           detail:
             'AlphaFund sends the fund tokens. The purchase price settled off-chain.',
-          notes: [`InvestCo now holds ${collateralAmt} publicly.`],
-        }),
-      ],
+          notes: [`InvestCo now holds ${collateralAmt} publicly.`]
+        })
+      ]
     },
     {
       id: 'operating-balance',
@@ -591,9 +591,9 @@ export function buildSteps(deal: DealTerms): RunnableStep[] {
       actions: [
         pay('stableCorp', 'investCo', 'cash', opUnits, {
           label: 'Send the operating balance → InvestCo',
-          detail: `StableCorp funds the ${operatingAmt} InvestCo uses to pay the ${interestAmt} far-leg interest.`,
-        }),
-      ],
+          detail: `StableCorp funds the ${operatingAmt} InvestCo uses to pay the ${interestAmt} far-leg interest.`
+        })
+      ]
     },
     {
       id: 'convert-investco',
@@ -605,7 +605,7 @@ export function buildSteps(deal: DealTerms): RunnableStep[] {
       callout: {
         kind: 'warn',
         title: 'Convert lands in the inbox',
-        text: 'A converted balance can’t be spent until you merge it from the inbox. Each action here converts and merges in one go; between the repo legs you do the merge yourself.',
+        text: 'A converted balance can’t be spent until you merge it from the inbox. Each action here converts and merges in one go; between the repo legs you do the merge yourself.'
       },
       actions: [
         convert('investCo', 'collateral', deal.collateralUnits),
@@ -614,10 +614,10 @@ export function buildSteps(deal: DealTerms): RunnableStep[] {
           detail:
             'InvestCo encrypts its operating cash, which also registers its USD key.',
           notes: [
-            `This convert also registers InvestCo’s ${CASH.ticker} encryption key, which it needs to receive the near leg.`,
-          ],
-        }),
-      ],
+            `This convert also registers InvestCo’s ${CASH.ticker} encryption key, which it needs to receive the near leg.`
+          ]
+        })
+      ]
     },
     {
       id: 'convert-tradedesk',
@@ -640,14 +640,14 @@ export function buildSteps(deal: DealTerms): RunnableStep[] {
               actor: 'tradeDesk',
               token: 'collateral',
               units: 0n,
-              sponsor: SPONSOR,
-            },
+              sponsor: SPONSOR
+            }
           ],
           notes: [
-            'A zero-amount convert registers the key without moving funds. Both positions are now dark.',
-          ],
-        }),
-      ],
+            'A zero-amount convert registers the key without moving funds. Both positions are now dark.'
+          ]
+        })
+      ]
     },
     {
       id: 'near-construct',
@@ -659,15 +659,15 @@ export function buildSteps(deal: DealTerms): RunnableStep[] {
       callout: {
         kind: 'warn',
         title: 'Proofs are perishable',
-        text: 'Each proof binds to the sender’s current balance state. Any intervening transaction invalidates it, so construct late and submit promptly.',
+        text: 'Each proof binds to the sender’s current balance state. Any intervening transaction invalidates it, so construct late and submit promptly.'
       },
       actions: [
         constructAction('near', {
           label: 'Construct the batch',
           detail:
-            'xSecurities prepares both encrypted sends and their proofs in one all-or-nothing batch.',
-        }),
-      ],
+            'xSecurities prepares both encrypted sends and their proofs in one all-or-nothing batch.'
+        })
+      ]
     },
     {
       id: 'near-cosign',
@@ -679,12 +679,12 @@ export function buildSteps(deal: DealTerms): RunnableStep[] {
       callout: {
         kind: 'info',
         title: 'Signing is an application-layer concern',
-        text: 'In production, each party’s custodian signs independently. There is no standard cross-custodian signing API. This demo signs client-side with Devnet wallets.',
+        text: 'In production, each party’s custodian signs independently. There is no standard cross-custodian signing API. This demo signs client-side with Devnet wallets.'
       },
       actions: coSignActions('near', {
         investCo: 'InvestCo authorizes its send by signing the whole batch.',
-        tradeDesk: 'TradeDesk authorizes its send by signing the whole batch.',
-      }),
+        tradeDesk: 'TradeDesk authorizes its send by signing the whole batch.'
+      })
     },
     {
       id: 'near-submit',
@@ -704,7 +704,7 @@ export function buildSteps(deal: DealTerms): RunnableStep[] {
           detail:
             'xSecurities merges both signatures into the BatchSigners array.',
           preview: (ledger) => previewSigners(ledger, 'near'),
-          execute: (ledger) => Promise.resolve(combineLeg(ledger, 'near')),
+          execute: async (ledger) => await Promise.resolve(combineLeg(ledger, 'near'))
         },
         {
           id: 'submit',
@@ -714,22 +714,22 @@ export function buildSteps(deal: DealTerms): RunnableStep[] {
           detail:
             'xSecurities signs the outer transaction and sends the batch to the ledger.',
           preview: (ledger) => ledger.combinedLeg('near'),
-          execute: (ledger) =>
-            submitLeg(
+          execute: async (ledger) =>
+            await submitLeg(
               ledger,
               'near',
               'Near leg batch',
               [
                 `InvestCo → TradeDesk: ${collateralAmt} (encrypted)`,
-                `TradeDesk → InvestCo: ${cashAmt} (encrypted)`,
+                `TradeDesk → InvestCo: ${cashAmt} (encrypted)`
               ],
               [
-                `Near leg settled. InvestCo received ${cashAmt} and TradeDesk received ${collateralAmt}, both in their confidential inboxes.`,
+                `Near leg settled. InvestCo received ${cashAmt} and TradeDesk received ${collateralAmt}, both in their confidential inboxes.`
               ],
-              async () => rebuildLeg(ledger, 'near'),
-            ),
-        },
-      ],
+              async () => await rebuildLeg(ledger, 'near')
+            )
+        }
+      ]
     },
     {
       id: 'near-merge',
@@ -741,16 +741,16 @@ export function buildSteps(deal: DealTerms): RunnableStep[] {
       callout: {
         kind: 'warn',
         title: 'Required before the far leg',
-        text: 'Inbox funds can’t be spent. Skip this merge and the far leg’s proofs can’t be built.',
+        text: 'Inbox funds can’t be spent. Skip this merge and the far leg’s proofs can’t be built.'
       },
       actions: [
         mergeInbox('investCo', 'cash', {
-          label: `Merge received ${CASH.ticker}`,
+          label: `Merge received ${CASH.ticker}`
         }),
         mergeInbox('tradeDesk', 'collateral', {
-          label: `Merge received ${COLLATERAL.ticker}`,
-        }),
-      ],
+          label: `Merge received ${COLLATERAL.ticker}`
+        })
+      ]
     },
     {
       id: 'far-construct',
@@ -762,15 +762,15 @@ export function buildSteps(deal: DealTerms): RunnableStep[] {
       callout: {
         kind: 'warn',
         title: 'Proofs are perishable',
-        text: 'These proofs bind to the balances the merge just produced. Pause here and send anything else from either account, and the batch is rejected on submit. The demo rebuilds and re-signs when that happens, but in production the orchestrator has to notice and do the same.',
+        text: 'These proofs bind to the balances the merge just produced. Pause here and send anything else from either account, and the batch is rejected on submit. The demo rebuilds and re-signs when that happens, but in production the orchestrator has to notice and do the same.'
       },
       actions: [
         constructAction('far', {
           label: 'Construct the reverse batch',
           detail:
-            'xSecurities prepares the reverse sends, with interest added to the cash amount.',
-        }),
-      ],
+            'xSecurities prepares the reverse sends, with interest added to the cash amount.'
+        })
+      ]
     },
     {
       id: 'far-cosign',
@@ -781,8 +781,8 @@ export function buildSteps(deal: DealTerms): RunnableStep[] {
         'The choreography matches the near leg. Each counterparty signs the reverse batch to authorize its own return.',
       actions: coSignActions('far', {
         investCo: 'InvestCo authorizes returning principal plus interest.',
-        tradeDesk: 'TradeDesk authorizes returning the collateral.',
-      }),
+        tradeDesk: 'TradeDesk authorizes returning the collateral.'
+      })
     },
     {
       id: 'far-submit',
@@ -802,7 +802,7 @@ export function buildSteps(deal: DealTerms): RunnableStep[] {
           detail:
             'xSecurities merges the signatures and submits the unwind.',
           preview: (ledger) => previewSigners(ledger, 'far'),
-          async execute(ledger) {
+          async execute (ledger) {
             const combined = combineLeg(ledger, 'far')
             const submitted = await submitLeg(
               ledger,
@@ -810,19 +810,19 @@ export function buildSteps(deal: DealTerms): RunnableStep[] {
               'Far leg batch',
               [
                 `TradeDesk → InvestCo: ${collateralAmt} (encrypted)`,
-                `InvestCo → TradeDesk: ${farCashAmt} (encrypted)`,
+                `InvestCo → TradeDesk: ${farCashAmt} (encrypted)`
               ],
               ['Far leg settled. The repo is unwound.'],
-              async () => rebuildLeg(ledger, 'far'),
+              async () => await rebuildLeg(ledger, 'far')
             )
             return {
               txs: submitted.txs,
               notes: submitted.notes,
-              artifacts: combined.artifacts,
+              artifacts: combined.artifacts
             }
-          },
-        },
-      ],
+          }
+        }
+      ]
     },
     {
       id: 'far-merge',
@@ -836,17 +836,17 @@ export function buildSteps(deal: DealTerms): RunnableStep[] {
       actions: [
         mergeInbox('investCo', 'collateral', {
           label: `Merge returned ${COLLATERAL.ticker}`,
-          detail: 'InvestCo makes its returned collateral spendable.',
+          detail: 'InvestCo makes its returned collateral spendable.'
         }),
         mergeInbox('tradeDesk', 'cash', {
           label: `Merge returned ${CASH.ticker}`,
           detail:
             'TradeDesk makes its returned cash spendable. The repo is closed.',
           notes: [
-            `Repo complete. InvestCo holds ${collateralAmt} and ${fmtCash(opUnits - interestUnits(deal))}. TradeDesk holds ${farCashAmt}.`,
-          ],
-        }),
-      ],
-    },
+            `Repo complete. InvestCo holds ${collateralAmt} and ${fmtCash(opUnits - interestUnits(deal))}. TradeDesk holds ${farCashAmt}.`
+          ]
+        })
+      ]
+    }
   ]
 }

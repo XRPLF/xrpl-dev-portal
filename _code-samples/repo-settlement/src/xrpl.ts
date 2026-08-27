@@ -43,7 +43,7 @@ import {
   type MPTokenMetadata,
   type Payment,
   type SubmittableTransaction,
-  type TxResponse,
+  type TxResponse
 } from 'xrpl'
 
 /** An account, plus the second keypair confidential balances need (XLS-96). */
@@ -90,7 +90,7 @@ export const NO_TOKEN_BALANCE: TokenBalance = {
   publicUnits: null,
   spendable: null,
   inbox: null,
-  issuerView: null,
+  issuerView: null
 }
 
 /** One entry of a Batch's BatchSigners array: who authorized the batch. */
@@ -98,9 +98,9 @@ export type BatchSignerEntry = BatchSigner['BatchSigner']
 
 /** A ledger interaction that failed, carrying the hash when there is one. */
 export class LedgerError extends Error {
-  constructor(
+  constructor (
     message: string,
-    public readonly hash?: string,
+    public readonly hash?: string
   ) {
     super(message)
     this.name = 'LedgerError'
@@ -116,7 +116,7 @@ export class LedgerError extends Error {
 const SUBMIT_WINDOW_LEDGERS = 600
 
 /** The engine result code of a validated transaction, from its metadata. */
-function resultCode(response: TxResponse): string {
+function resultCode (response: TxResponse): string {
   const meta = response.result.meta
   return typeof meta === 'object' && meta != null
     ? meta.TransactionResult
@@ -124,12 +124,12 @@ function resultCode(response: TxResponse): string {
 }
 
 /** Unwrap a Batch's BatchSigners array, which nests each entry one level. */
-export function batchSignerEntries(batch: Batch): BatchSignerEntry[] {
+export function batchSignerEntries (batch: Batch): BatchSignerEntry[] {
   return batch.BatchSigners?.map((entry) => entry.BatchSigner) ?? []
 }
 
 /** Decode a combined batch blob back into a Batch, for reading or signing. */
-export function decodeBatchBlob(blob: string): Batch {
+export function decodeBatchBlob (blob: string): Batch {
   return decode(blob) as unknown as Batch
 }
 
@@ -140,17 +140,17 @@ export function decodeBatchBlob(blob: string): Batch {
  * fees each need their amendment enabled there: ConfidentialTransfer,
  * BatchV1_1, and Sponsor.
  */
-export function createClient(wssUrl: string): Client {
+export function createClient (wssUrl: string): Client {
   return new Client(wssUrl)
 }
 
-export async function connect(client: Client): Promise<void> {
+export async function connect (client: Client): Promise<void> {
   if (!client.isConnected()) {
     await client.connect()
   }
 }
 
-export async function disconnect(client: Client): Promise<void> {
+export async function disconnect (client: Client): Promise<void> {
   if (client.isConnected()) {
     await client.disconnect()
   }
@@ -165,9 +165,9 @@ export async function disconnect(client: Client): Promise<void> {
  * dedicated seed in production: reusing the signing seed extends that key's
  * trust boundary into the confidential cryptography.
  */
-export async function createConfidentialAccount(
+export async function createConfidentialAccount (
   client: Client,
-  seed?: string,
+  seed?: string
 ): Promise<ConfidentialAccount> {
   const wallet = seed
     ? Wallet.fromSeed(seed)
@@ -181,7 +181,7 @@ export async function createConfidentialAccount(
 // ---------------------------------------------------------------- submission
 
 /** Turn a validated response into a record, throwing on any failure code. */
-function toRecord(response: TxResponse, label: string): TxRecord {
+function toRecord (response: TxResponse, label: string): TxRecord {
   const code = resultCode(response)
   const hash = response.result.hash
   if (code !== 'tesSUCCESS') {
@@ -191,11 +191,11 @@ function toRecord(response: TxResponse, label: string): TxRecord {
 }
 
 /** Sign with one wallet, submit, and fail loudly on any non-success code. */
-async function submitSigned(
+async function submitSigned (
   client: Client,
   tx: SubmittableTransaction,
   wallet: Wallet,
-  label: string,
+  label: string
 ): Promise<TxRecord> {
   const response = await client.submitAndWait(tx, { wallet, autofill: true })
   return toRecord(response, label)
@@ -209,18 +209,18 @@ async function submitSigned(
  * moves value inside an `MPToken` that already exists, and asking to sponsor
  * its reserve is rejected outright.
  */
-function sponsorFields(
+function sponsorFields (
   sponsor: string,
-  feeOnly = false,
+  feeOnly = false
 ): {
-  Sponsor: string
-  SponsorFlags: number
-} {
+    Sponsor: string
+    SponsorFlags: number
+  } {
   return {
     Sponsor: sponsor,
     SponsorFlags: feeOnly
       ? SponsorFlags.spfSponsorFee
-      : SponsorFlags.spfSponsorFee | SponsorFlags.spfSponsorReserve,
+      : SponsorFlags.spfSponsorFee | SponsorFlags.spfSponsorReserve
   }
 }
 
@@ -237,16 +237,16 @@ export interface SponsorOptions {
  * to accept the cost, and the fully signed transaction goes to the ledger
  * as-is. The sponsor cannot alter or initiate what it pays for.
  */
-async function submitSponsored(
+async function submitSponsored (
   client: Client,
   tx: SubmittableTransaction,
   sender: Wallet,
   options: SponsorOptions,
-  label: string,
+  label: string
 ): Promise<TxRecord> {
   const prepared = await client.autofill({
     ...tx,
-    ...sponsorFields(options.sponsor.address, options.feeOnly),
+    ...sponsorFields(options.sponsor.address, options.feeOnly)
   })
   const senderSigned = sender.sign(prepared)
   const coSigned = signAsSponsor(options.sponsor, senderSigned.tx_blob)
@@ -255,16 +255,16 @@ async function submitSponsored(
 }
 
 /** Submit as the sender, or sponsored when another account covers the cost. */
-export async function submit(
+export async function submit (
   client: Client,
   tx: SubmittableTransaction,
   sender: Wallet,
   label: string,
-  options?: SponsorOptions,
+  options?: SponsorOptions
 ): Promise<TxRecord> {
   return options == null
-    ? submitSigned(client, tx, sender, label)
-    : submitSponsored(client, tx, sender, options, label)
+    ? await submitSigned(client, tx, sender, label)
+    : await submitSponsored(client, tx, sender, options, label)
 }
 
 // ------------------------------------------------------------ token issuance
@@ -293,8 +293,8 @@ export interface IssuanceOptions {
  * holder-to-holder transfers, `tfMPTCanHoldConfidentialBalance` enables
  * encrypted balances, and `tfMPTRequireAuth` gates who may hold it.
  */
-export function buildIssuanceCreate(
-  options: IssuanceOptions,
+export function buildIssuanceCreate (
+  options: IssuanceOptions
 ): MPTokenIssuanceCreate {
   return {
     TransactionType: 'MPTokenIssuanceCreate',
@@ -304,14 +304,14 @@ export function buildIssuanceCreate(
     Flags: {
       tfMPTCanTransfer: true,
       tfMPTCanHoldConfidentialBalance: true,
-      tfMPTRequireAuth: options.requireAuth ?? false,
+      tfMPTRequireAuth: options.requireAuth ?? false
     },
     MPTokenMetadata: encodeMPTokenMetadata({
       ticker: options.ticker,
       name: options.name,
-      ...options.metadata,
+      ...options.metadata
     }),
-    ...(options.sponsor ? sponsorFields(options.sponsor) : {}),
+    ...(options.sponsor ? sponsorFields(options.sponsor) : {})
   }
 }
 
@@ -320,18 +320,18 @@ export function buildIssuanceCreate(
  * what switches confidential transfers on and gives the issuer a lawful view
  * of encrypted balances. The private half never leaves the client.
  */
-export function buildIssuerEncryptionKey(
+export function buildIssuerEncryptionKey (
   issuer: string,
   mptIssuanceID: string,
   encryptionKey: string,
-  sponsor?: string,
+  sponsor?: string
 ): MPTokenIssuanceSet {
   return {
     TransactionType: 'MPTokenIssuanceSet',
     Account: issuer,
     MPTokenIssuanceID: mptIssuanceID,
     IssuerEncryptionKey: encryptionKey,
-    ...(sponsor ? sponsorFields(sponsor) : {}),
+    ...(sponsor ? sponsorFields(sponsor) : {})
   }
 }
 
@@ -340,64 +340,64 @@ export function buildIssuerEncryptionKey(
  * the issuer. The same transaction type covers both sides of the handshake.
  * Pass `sponsor` to have another account pay the fee and reserve.
  */
-export function buildAuthorize(
+export function buildAuthorize (
   account: string,
   mptIssuanceID: string,
-  options: { holder?: string; sponsor?: string } = {},
+  options: { holder?: string, sponsor?: string } = {}
 ): MPTokenAuthorize {
   return {
     TransactionType: 'MPTokenAuthorize',
     Account: account,
     MPTokenIssuanceID: mptIssuanceID,
     ...(options.holder ? { Holder: options.holder } : {}),
-    ...(options.sponsor ? sponsorFields(options.sponsor) : {}),
+    ...(options.sponsor ? sponsorFields(options.sponsor) : {})
   }
 }
 
 /** A public (unencrypted) MPT payment of `units` base units. */
-export function buildMPTPayment(
+export function buildMPTPayment (
   from: string,
   to: string,
   mptIssuanceID: string,
   units: bigint,
-  sponsor?: string,
+  sponsor?: string
 ): Payment {
   return {
     TransactionType: 'Payment',
     Account: from,
     Destination: to,
     Amount: { mpt_issuance_id: mptIssuanceID, value: units.toString() },
-    ...(sponsor ? sponsorFields(sponsor) : {}),
+    ...(sponsor ? sponsorFields(sponsor) : {})
   }
 }
 
 /** Create an MPT issuance and read back its ledger-assigned ID. */
-export async function createIssuance(
+export async function createIssuance (
   client: Client,
   issuer: Wallet,
   options: IssuanceOptions,
   label: string,
-  sponsor?: SponsorOptions,
-): Promise<{ record: TxRecord; mptIssuanceID: string }> {
+  sponsor?: SponsorOptions
+): Promise<{ record: TxRecord, mptIssuanceID: string }> {
   const record = await submit(
     client,
     buildIssuanceCreate(options),
     issuer,
     label,
-    sponsor,
+    sponsor
   )
 
   // The issuance ID is assigned by the ledger; read it back from the metadata.
   const created: TxResponse<MPTokenIssuanceCreate> = await client.request({
     command: 'tx',
-    transaction: record.hash,
+    transaction: record.hash
   })
   const meta = created.result.meta
   const mptIssuanceID =
     typeof meta === 'object' && meta != null ? meta.mpt_issuance_id : undefined
   if (mptIssuanceID == null) {
     throw new LedgerError(
-      `No mpt_issuance_id in the ${options.ticker} create metadata`,
+      `No mpt_issuance_id in the ${options.ticker} create metadata`
     )
   }
   return { record, mptIssuanceID }
@@ -414,21 +414,21 @@ export async function createIssuance(
  * convert is how a holder registers its encryption key without moving funds,
  * which it must do before it can receive a confidential send.
  */
-export async function convertToConfidential(
+export async function convertToConfidential (
   client: Client,
   holder: ConfidentialAccount,
   mptIssuanceID: string,
   units: bigint,
   label: string,
-  sponsor?: SponsorOptions,
+  sponsor?: SponsorOptions
 ): Promise<TxRecord> {
   const tx = await prepareConfidentialConvert(client, {
     account: holder.wallet.address,
     mptIssuanceID,
     amount: units,
-    holderKeypair: holder.confidentialKeys,
+    holderKeypair: holder.confidentialKeys
   })
-  return submit(client, tx, holder.wallet, label, sponsor)
+  return await submit(client, tx, holder.wallet, label, sponsor)
 }
 
 /**
@@ -436,11 +436,11 @@ export async function convertToConfidential(
  * The encrypted amounts, blinding factor, and proof are generated against live
  * ledger state at submit time, so they cannot be shown beforehand.
  */
-export function convertIntent(
+export function convertIntent (
   holder: ConfidentialAccount,
   mptIssuanceID: string,
   units: bigint,
-  sponsor?: string,
+  sponsor?: string
 ): Pick<
   ConfidentialMPTConvert,
   | 'TransactionType'
@@ -450,14 +450,14 @@ export function convertIntent(
   | 'HolderEncryptionKey'
   | 'Sponsor'
   | 'SponsorFlags'
-> {
+  > {
   return {
     TransactionType: 'ConfidentialMPTConvert',
     Account: holder.wallet.address,
     MPTokenIssuanceID: mptIssuanceID,
     MPTAmount: units.toString(),
     HolderEncryptionKey: holder.confidentialKeys.publicKey,
-    ...(sponsor ? sponsorFields(sponsor, true) : {}),
+    ...(sponsor ? sponsorFields(sponsor, true) : {})
   }
 }
 
@@ -466,32 +466,32 @@ export function convertIntent(
  * cannot be spent, and no proof can be built against them, so this is
  * mandatory after every convert and every confidential receipt.
  */
-export function buildMergeInbox(
+export function buildMergeInbox (
   account: string,
   mptIssuanceID: string,
-  sponsor?: string,
+  sponsor?: string
 ): ConfidentialMPTMergeInbox {
   return {
     TransactionType: 'ConfidentialMPTMergeInbox',
     Account: account,
     MPTokenIssuanceID: mptIssuanceID,
-    ...(sponsor ? sponsorFields(sponsor, true) : {}),
+    ...(sponsor ? sponsorFields(sponsor, true) : {})
   }
 }
 
-export async function mergeInbox(
+export async function mergeInbox (
   client: Client,
   holder: Wallet,
   mptIssuanceID: string,
   label: string,
-  sponsor?: SponsorOptions,
+  sponsor?: SponsorOptions
 ): Promise<TxRecord> {
-  return submit(
+  return await submit(
     client,
     buildMergeInbox(holder.address, mptIssuanceID),
     holder,
     label,
-    sponsor,
+    sponsor
   )
 }
 
@@ -520,13 +520,13 @@ export interface ConfidentialSend {
  * at their own pace. The proofs stay valid as long as no other transaction
  * touches the confidential balances, so only the outer window needs extending.
  */
-export async function constructConfidentialBatch(
+export async function constructConfidentialBatch (
   client: Client,
   params: {
     assembler: string
     sends: ConfidentialSend[]
     submitWindowLedgers?: number
-  },
+  }
 ): Promise<Batch> {
   const unsigned = await prepareConfidentialBatch(client, {
     account: params.assembler,
@@ -536,9 +536,9 @@ export async function constructConfidentialBatch(
       destination: send.destination,
       mptIssuanceID: send.mptIssuanceID,
       amount: send.units,
-      senderKeypair: send.sender.confidentialKeys,
+      senderKeypair: send.sender.confidentialKeys
     })),
-    signersCount: params.sends.length,
+    signersCount: params.sends.length
   })
   unsigned.LastLedgerSequence =
     (await client.getLedgerIndex()) +
@@ -551,23 +551,23 @@ export async function constructConfidentialBatch(
  * every inner transaction. Signing a copy, rather than the batch itself, is
  * what lets the signatures be collected independently.
  */
-export function signBatchCopy(wallet: Wallet, unsigned: Batch): Batch {
+export function signBatchCopy (wallet: Wallet, unsigned: Batch): Batch {
   const copy: Batch = { ...unsigned }
   signMultiBatch(wallet, copy)
   return copy
 }
 
 /** Combine each counterparty's signed copy into one submittable blob. */
-export function combineSignedBatches(copies: Batch[]): string {
+export function combineSignedBatches (copies: Batch[]): string {
   return combineBatchSigners(copies)
 }
 
 /** Submit a combined batch, with the assembler signing the outer transaction. */
-export async function submitBatch(
+export async function submitBatch (
   client: Client,
   combined: string,
   submitter: Wallet,
-  label: string,
+  label: string
 ): Promise<TxRecord> {
   const response = await client.submitAndWait(combined, { wallet: submitter })
   return toRecord(response, label)
@@ -578,14 +578,14 @@ export async function submitBatch(
  * Hash each inner transaction and look it up individually to confirm every
  * one of them actually applied.
  */
-export async function verifyBatchInners(
+export async function verifyBatchInners (
   client: Client,
   batchHash: string,
-  labels: string[],
+  labels: string[]
 ): Promise<TxRecord[]> {
   const outer: TxResponse<Batch> = await client.request({
     command: 'tx',
-    transaction: batchHash,
+    transaction: batchHash
   })
 
   const records: TxRecord[] = []
@@ -595,13 +595,13 @@ export async function verifyBatchInners(
     const innerHash = hashes.hashSignedTx(RawTransaction)
     const innerTx: TxResponse = await client.request({
       command: 'tx',
-      transaction: innerHash,
+      transaction: innerHash
     })
     const code = resultCode(innerTx)
     if (code !== 'tesSUCCESS') {
       throw new LedgerError(
         `Inner transaction "${labels[index]}" failed: ${code}`,
-        innerHash,
+        innerHash
       )
     }
     records.push({
@@ -609,14 +609,14 @@ export async function verifyBatchInners(
       hash: innerHash,
       result: code,
       txJson: innerTx.result,
-      inner: true,
+      inner: true
     })
   }
   return records
 }
 
 /** True when a submission failed only because its ledger window expired. */
-export function isExpiredWindow(error: unknown): boolean {
+export function isExpiredWindow (error: unknown): boolean {
   const message = error instanceof Error ? error.message : String(error)
   return /tefMAX_LEDGER|LastLedgerSequence/u.test(message)
 }
@@ -628,7 +628,7 @@ export function isExpiredWindow(error: unknown): boolean {
  * read from the network rather than assumed: a sponsor's obligation is the
  * count times whatever the current increment is.
  */
-export async function readOwnerReserve(client: Client): Promise<bigint | null> {
+export async function readOwnerReserve (client: Client): Promise<bigint | null> {
   const info = await client.request({ command: 'server_info' })
   const xrp = info.result.info.validated_ledger?.reserve_inc_xrp
   return xrp == null ? null : BigInt(xrpToDrops(xrp))
@@ -639,20 +639,20 @@ export async function readOwnerReserve(client: Client): Promise<bigint | null> {
  * a sponsorship stands the reserve counts against the sponsor's
  * `SponsoringOwnerCount`, not the sponsee's `OwnerCount`.
  */
-export async function readAccountXrp(
+export async function readAccountXrp (
   client: Client,
-  address: string,
-): Promise<{ xrpDrops: bigint | null; sponsoringOwnerCount?: number }> {
+  address: string
+): Promise<{ xrpDrops: bigint | null, sponsoringOwnerCount?: number }> {
   try {
     const info = await client.request({
       command: 'account_info',
       account: address,
-      ledger_index: 'validated',
+      ledger_index: 'validated'
     })
     const root = info.result.account_data
     return {
       xrpDrops: BigInt(root.Balance),
-      sponsoringOwnerCount: root.SponsoringOwnerCount,
+      sponsoringOwnerCount: root.SponsoringOwnerCount
     }
   } catch {
     return { xrpDrops: null }
@@ -666,14 +666,14 @@ export async function readAccountXrp(
  * which every confidential transaction encrypts under the issuer's key. The
  * raw ciphertexts are returned too, since that is what every observer sees.
  */
-export async function readTokenBalance(
+export async function readTokenBalance (
   client: Client,
   params: {
     holder: string
     mptIssuanceID: string
     holderPrivateKey: string
     issuerPrivateKey?: string
-  },
+  }
 ): Promise<TokenBalance> {
   let token: LedgerEntry.MPToken
   try {
@@ -687,7 +687,7 @@ export async function readTokenBalance(
     inbox: null,
     issuerView: null,
     spendableCipher: token.ConfidentialBalanceSpending,
-    inboxCipher: token.ConfidentialBalanceInbox,
+    inboxCipher: token.ConfidentialBalanceInbox
   }
   if (
     token.ConfidentialBalanceSpending == null &&
@@ -697,14 +697,14 @@ export async function readTokenBalance(
   }
   const [issuance, crypto] = await Promise.all([
     fetchMPTokenIssuance(client, params.mptIssuanceID),
-    loadMptCrypto(),
+    loadMptCrypto()
   ])
   const bound = BigInt(issuance.ConfidentialOutstandingAmount ?? '0')
   // A ciphertext that exists but fails to decrypt is reported as `failed`,
   // never as zero: in a financial UI those must be distinct states.
   const decrypt = async (
     cipher: string | undefined,
-    privateKey: string,
+    privateKey: string
   ): Promise<Decrypted> => {
     if (cipher == null) {
       return null
@@ -717,18 +717,17 @@ export async function readTokenBalance(
   }
   balance.spendable = await decrypt(
     token.ConfidentialBalanceSpending,
-    params.holderPrivateKey,
+    params.holderPrivateKey
   )
   balance.inbox = await decrypt(
     token.ConfidentialBalanceInbox,
-    params.holderPrivateKey,
+    params.holderPrivateKey
   )
   if (params.issuerPrivateKey != null) {
     balance.issuerView = await decrypt(
       token.IssuerEncryptedBalance,
-      params.issuerPrivateKey,
+      params.issuerPrivateKey
     )
   }
   return balance
 }
-
