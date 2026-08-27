@@ -90,7 +90,7 @@ export const useCasesSubmenuData: {
       href: "/docs/use-cases/defi/institutional-credit-facilities",
       icon: "credit",
       children: [
-        { label: "Lending", labelTranslationKey: "navbar.usecases.credit.lending", href: "/docs/use-cases/defi/institutional-credit-facilities#solution-lending-on-the-xrpl" },
+        { label: "Lending (Open for Voting)", labelTranslationKey: "navbar.usecases.credit.lending", href: "/docs/use-cases/defi/institutional-credit-facilities#solution-lending-on-the-xrpl" },
       ],
     },
     {

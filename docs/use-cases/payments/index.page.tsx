@@ -281,11 +281,11 @@ export default function PaymentsPage() {
         links={[
           {
             label: translate('Share Your Work'),
-            href: 'https://xrpl.org/blog',
+            href: 'https://xrplresources.org/developer-spotlight',
           },
           {
             label: translate('View Others'),
-            href: 'https://xrplresources.org/developer-spotlight',
+            href: 'https://xrpl.org/blog',
           },
         ]}
       />
