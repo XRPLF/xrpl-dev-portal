@@ -74,37 +74,36 @@ export function TransactionButton({
     const [waitingForTransaction, setWaitingForTransaction] = useState(false)
 
     const loadingBarComplete = (loadingBar?.widthPercent ?? 0) >= 100
-    const loadingBarIdle = !!loadingBar && !loadingBar.defaultOn && loadingBar.widthPercent === 0
-    const showLoadingBar = !!loadingBar?.id && !loadingBarComplete && !loadingBarIdle
-    const loadingBarWidth = showLoadingBar
-        ? Math.min(Math.max(loadingBar.widthPercent, loadingBar.defaultOn ? 1 : 0), 99)
-        : 0
-    const animateLoadingBar = showLoadingBar && loadingBarWidth < 100
+    const loadingBarInProgress = !!loadingBar &&
+        loadingBar.widthPercent > 0 && loadingBar.widthPercent < 100
+    const showLoadingStatus = !!loadingBar && !loadingBarComplete &&
+        (loadingBar.defaultOn || loadingBar.widthPercent > 0)
 
     return (
     <div>
         <div className="form-group" id={id}>
 
-            {/* Optional loading bar - Used for Partial Payments setup and EscrowFinish wait time */}
-            {showLoadingBar && <div className="mb-1" id={loadingBar.id}>
-                <div className="progress">
-                    <div
-                        className={clsx(
-                            "progress-bar progress-bar-striped",
-                            animateLoadingBar && "progress-bar-animated"
-                        )}
-                        role="progressbar"
-                        style={{ width: `${loadingBarWidth}%` }}
-                        aria-valuenow={loadingBarWidth}
-                        aria-valuemin={0}
-                        aria-valuemax={100}
-                    >
-                        &nbsp;
+            {/* Status + optional progress: Partial Payments setup and EscrowFinish wait */}
+            {showLoadingStatus && loadingBar && <div className="mb-1" id={loadingBar.id}>
+                {loadingBarInProgress ? (
+                    <div className="progress tx-sender-progress">
+                        <div
+                            className="progress-bar progress-bar-striped progress-bar-animated"
+                            role="progressbar"
+                            style={{ width: `${Math.max(loadingBar.widthPercent, 5)}%` }}
+                            aria-valuenow={loadingBar.widthPercent}
+                            aria-valuemin={0}
+                            aria-valuemax={100}
+                        />
+                        <small className="tx-sender-progress-label">
+                            {translate(loadingBar.description)}
+                        </small>
                     </div>
-                </div>
-                <small className="d-block text-center text-muted mt-1">
-                    {translate(loadingBar.description)}
-                </small>
+                ) : (
+                    <small className="tx-sender-progress-label">
+                        {translate(loadingBar.description)}
+                    </small>
+                )}
             </div>}
 
             <div className="input-group mb-3">
