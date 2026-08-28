@@ -92,9 +92,9 @@ Most of the site's links aren't JSX — they're `[text](url)` or raw
 `<a href="...">` inside `.md`/`.mdx` files. Two mechanisms make sure those
 still get themed, without every markdown file needing to import a component:
 
-1. **`MarkdownLink` override** — [`@theme/components/MarkdownLink.tsx`](../../../@theme/components/MarkdownLink.tsx)
+1. **`MarkdownLink` override** — `@theme/components/MarkdownLink.tsx`
    replaces Redocly's default renderer for markdoc's `[text](url)` syntax
-   (registered in [`@theme/markdoc/components.tsx`](../../../@theme/markdoc/components.tsx)).
+   (registered in `@theme/markdoc/components.tsx`).
    It still renders Redocly's own routing `Link` (so client-side navigation
    keeps working) but stamps it with `Link`'s class scheme via the exported
    `linkClassName()` helper, forced to `intention="neutral" variation="inline"`

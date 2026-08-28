@@ -10,9 +10,10 @@ ignore:
   # From branch: Internal design-system showcase pages — keep out of production
   # builds. These ~32 component demos widen the module graph and contributed to
   # a Redocly cloud OOM build failure. They remain usable in `realm develop`.
+  - .claude/**
+  # Component demos and non-page documentation files
   - showcase/**/*.page.tsx
   - showcase/**/*.md
-  - .claude/**
 l10n:
   defaultLocale: en-US
   locales:
