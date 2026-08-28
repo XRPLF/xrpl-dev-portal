@@ -56,7 +56,7 @@ interface ButtonConfig {
 }
 ```
 
-**Note:** Button configurations are handled by the `ButtonGroup` component. See [ButtonGroup documentation](../ButtonGroup/README.md) for more details.
+**Note:** Button configurations are handled by the `ButtonGroup` component. See [ButtonGroup documentation](../../patterns/ButtonGroup/README.md) for more details.
 
 ## Button Behavior
 
