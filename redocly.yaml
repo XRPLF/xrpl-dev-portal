@@ -14,10 +14,6 @@ ignore:
   # Component demos and non-page documentation files
   - showcase/**/*.page.tsx
   - showcase/**/*.md
-  - shared/components/CardOffgrid/CardOffgrid.md
-  - shared/sections/FeatureSingleTopic/README.md
-  - shared/patterns/CarouselFeatured/README.md
-  - shared/components/Link/Link.md
 l10n:
   defaultLocale: en-US
   locales:

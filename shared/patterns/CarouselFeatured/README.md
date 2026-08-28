@@ -121,7 +121,8 @@ The component supports three background variants that adapt to light/dark mode:
 
 ## Examples
 
-See the [showcase page](../../../about/carousel-featured-showcase.page.tsx) for live examples with different configurations.
+See the [Props](#props) and [Transitions](#transitions) sections above for the
+available configurations.
 
 ## Notes
 

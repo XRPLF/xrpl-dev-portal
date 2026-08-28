@@ -454,4 +454,5 @@ interface CardOffgridProps {
 
 ## Examples
 
-See the [CardOffgrid Showcase](/about/card-offgrid-showcase) for live examples and interactive demos.
+See [When to Use Each Variant](#when-to-use-each-variant) and
+[Interaction Patterns](#interaction-patterns) above for examples.
