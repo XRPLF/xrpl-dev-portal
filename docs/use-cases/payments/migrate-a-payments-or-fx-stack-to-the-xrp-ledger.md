@@ -26,7 +26,7 @@ Many features that you'd implement as a smart contract on other chains are suppo
 | On-chain currency conversion | [DEX](../../concepts/tokens/decentralized-exchange/index.md) order book, [AMM](../../concepts/tokens/decentralized-exchange/automated-market-makers.md), and [pathfinding](../../concepts/tokens/fungible-tokens/paths.md) |
 | Rate quoting and price discovery | [Pathfinding](../../concepts/tokens/fungible-tokens/paths.md) and order book queries |
 | Market making and liquidity provision | [DEX offers](../../concepts/tokens/decentralized-exchange/offers.md) and [AMMs](../../concepts/tokens/decentralized-exchange/automated-market-makers.md) |
-| Compliance-gated trading | [Permissioned DEXes][]] |
+| Compliance-gated trading | [Permissioned DEXes][] |
 
 See [Transaction Types](../../references/protocol/transactions/types/index.md) for a comprehensive list of built-in transaction types. Some primitives depend on recently enabled [amendments](../../concepts/networks-and-servers/amendments.md), so check the [amendment status](/resources/known-amendments.md) on your target network before you design around it.
 
@@ -66,7 +66,7 @@ It routes each operation through the API of the custodian you've configured, so 
 With your chosen client library, you can create and fund the accounts your integration will use to submit transactions and hold balances. On the XRP Ledger, a few things about accounts work differently:
 - An account doesn't exist until it's funded. You can generate a [key pair](../../concepts/accounts/cryptographic-keys.md) offline, but the address isn't active on the ledger until it receives the [base reserve](../../concepts/accounts/reserves.md).
 - Its reserve has two parts: a fixed [base reserve](../../concepts/accounts/reserves.md) every account holds, plus an owner reserve that adds a set amount for each ledger entry it owns (for example, a trust line, offer, or escrow). You can't spend below the two combined, which doubles as one of the ledger's anti-spam mechanisms.
-- Holding and receiving issued tokens requires opting into each one, and every opt-in creates a ledger entry that adds to the account's [owner](../../concepts/accounts/reserves.md#owner-reserves). How an account opts in depends on the token type:
+- Holding and receiving issued tokens requires opting into each one, and every opt-in creates a ledger entry that adds to the account's [owner reserve](../../concepts/accounts/reserves.md#owner-reserves). How an account opts in depends on the token type:
   - **Trust Line Tokens**: The account creates a trust line to the issuer.
   - **MPTs**: The account sends an MPTokenAuthorize transaction.
 
@@ -100,7 +100,7 @@ Some common Web2 payments concepts work like this on the XRP Ledger:
 | Nonce | [`Sequence`][Sequence Number] numbers order transactions serially per account. |
 | Gas | [`Fee`][Transaction cost] is a low base cost that rises with network load. |
 | Mempool | [`LastLedgerSequence`](../../concepts/transactions/reliable-transaction-submission.md) bounds how long a transaction stays pending; the XRP Ledger has no shared mempool. |
-| Retries | [`Sequence`][Sequence Number]makes a resubmitted transaction apply at most once. |
+| Retries | [`Sequence`][Sequence Number] makes a resubmitted transaction apply at most once. |
 
 For the guarantees behind these, see [Reliable Transaction Submission](../../concepts/transactions/reliable-transaction-submission.md).
 
@@ -161,7 +161,7 @@ Handle two XRP Ledger specifics before crediting anyone:
 
 ### Supply Liquidity
 
-If you supply the liquidity that payments consume, [ripple_path_find][ripple_path_find_method] and [book_offers][book_offers method] quote a rate, while [OfferCreate][OfferCreate transaction] and [OfferCancel][OfferCancel transaction] publish and pull your own offers. You can also supply liquidity passively by depositing into an [AMM](../../concepts/tokens/decentralized-exchange/automated-market-makers.md) pool.
+If you supply the liquidity that payments consume, [ripple_path_find][ripple_path_find method] and [book_offers][book_offers method] quote a rate, while [OfferCreate][OfferCreate transaction] and [OfferCancel][OfferCancel transaction] publish and pull your own offers. You can also supply liquidity passively by depositing into an [AMM](../../concepts/tokens/decentralized-exchange/automated-market-makers.md) pool.
 
 Every offer you leave in the ledger sets aside some XRP toward your [owner reserve](../../concepts/accounts/reserves.md). Issuers can also set a [tick size](../../concepts/tokens/decentralized-exchange/ticksize.md) that limits how many significant digits your offer's exchange rate can have, which sets the minimum increment needed to beat an existing offer. See [Trade in the Decentralized Exchange](../../tutorials/defi/dex/trade-in-the-decentralized-exchange.md) for more information.
 
