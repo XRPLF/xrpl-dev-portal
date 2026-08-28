@@ -358,7 +358,7 @@ export default function Docs() {
           {
             icon: require('../static/img/icons/2026/color/lilac/xrpl-server.svg'),
             iconAlt: translate('Server'),
-            heading: translate('Install Your XRPL Server: Rippled & Clio'),
+            heading: translate('Install Your XRPL Server: xrpld & Clio'),
             description: (
               <>
                 {translate("Take ownership of your connection to the blockchain with a core server that can submit transactions, read balances, and store a complete copy of the ledger data.")}
@@ -477,7 +477,7 @@ export default function Docs() {
             callsToAction: [
               {
                 children: translate('Learn More'),
-                href: 'https://discord.gg/sfX3ERAMjH',
+                href: 'https://discord.com/invite/xrpl',
               },
             ],
             children: translate(

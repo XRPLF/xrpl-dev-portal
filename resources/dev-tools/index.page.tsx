@@ -36,14 +36,6 @@ const explorers_tools = [
     href: "https://xrpscan.com/",
     img: require("../../static/img/dev-tools/xrpscan.png"),
   },
-  {
-    id: "token-list",
-    title: "Token List",
-    description:
-      "See all tokens issued in the XRP Ledger and use preset tools to issue custom tokens at the click of a button.",
-    href: "https://xrpl.services/tokens",
-    img: require("../../static/img/dev-tools/tokenlist.png"),
-  },
 ];
 
 const api_access_tools = [

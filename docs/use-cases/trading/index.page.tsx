@@ -171,55 +171,6 @@ export default function Trading() {
         ]}
       />
 
-      <LogoRectangleGrid
-        variant="gray"
-        heading={translate("Leading DeFi Protocols on XRPL")}
-        description={translate(
-          "A connected ecosystem of blockchain trading, lending, and liquidity solutions."
-        )}
-        logos={[
-          {
-            logo: require("../../../static/img/logos/black/hidden-road.png"),
-            alt: translate("Hidden Road"),
-            href: "https://www.hiddenroad.com/",
-          },
-          {
-            logo: require("../../../static/img/logos/black/anodos.png"),
-            alt: translate("Anodos"),
-            href: "https://anodos.finance/",
-          },
-          {
-            logo: require("../../../static/img/logos/black/sologenic.png"),
-            alt: translate("Sologenic"),
-            href: "https://www.sologenic.com/",
-          },
-          {
-            logo: require("../../../static/img/logos/black/hummingbot.png"),
-            alt: translate("Hummingbot"),
-            href: "https://hummingbot.io/",
-          },
-          {
-            logo: require("../../../static/img/logos/black/first-ledger.png"),
-            alt: translate("First Ledger"),
-            href: "https://firstledger.net/",
-          },
-          {
-            logo: require("../../../static/img/logos/black/strobe.png"),
-            alt: translate("Strobe"),
-            href: "https://strobe.fi/",
-          },
-          {
-            logo: require("../../../static/img/logos/black/securd.png"),
-            alt: translate("Securd"),
-            href: "https://www.securd.finance/",
-          },
-          {
-            logo: require("../../../static/img/logos/black/magnetic.png"),
-            alt: translate("Magnetic"),
-            href: "https://magneticxrpl.com/",
-          },
-        ]}
-      />
 
       <CardsTextGrid
         heading={translate("Get Started")}
@@ -237,7 +188,7 @@ export default function Trading() {
                   {translate("Read the Documentation")}
                 </Link>
                 {" • "}
-                <Link href="https://discord.gg/sfX3ERAMjH" intention="neutral">
+                <Link href="https://discord.com/invite/xrpl" intention="neutral">
                   {translate("Join the Developer Community")}
                 </Link>
               </>
