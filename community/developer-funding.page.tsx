@@ -62,7 +62,7 @@ export default function Funding() {
       heading: translate("Explore XRPL Funding and Builders Programs"),
       features: [
         {
-          title: translate("University Blockchain Residency Initiative (UBRI)"),
+          title: translate("University Blockchain Research Initiative (UBRI)"),
           description: (
             <>
               {translate(
@@ -70,7 +70,7 @@ export default function Funding() {
               )}
               <br />
               <br />
-              {translate("→ University Digital Xcelerator (UDAX)")}
+              {translate("→ University Digital Asset Xcelerator (UDAX)")}
               <br />
               {translate(
                 "→ The Student Builder Residency"
@@ -94,6 +94,7 @@ export default function Funding() {
     },
     {
       id: "xrpl-commons",
+      heading: translate("Explore XRPL Funding and Builders Programs"),
       features: [
         {
           title: translate("XRPL Commons"),
@@ -154,7 +155,6 @@ export default function Funding() {
       />
 
       <PanelStack 
-        heading={translate("Explore XRPL Funding and Builders Programs")}
         slides={carouselSlides} 
         background="yellow" 
       />
@@ -185,12 +185,12 @@ export default function Funding() {
           {
             logo: require("../static/img/logos/black/blockvault.png"),
             alt: translate("BlockVault"),
-            href: "https://block.vault/",
+            href: "https://blockvault.finance/",
           },
           {
             logo: require("../static/img/logos/black/lobstr.svg"),
             alt: translate("LOBSTR"),
-            href: "https://lobstr/",
+            href: "https://lobstr.co/",
           },
         ]}
       />

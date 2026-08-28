@@ -210,7 +210,7 @@ export default function Develop() {
           arrange="right"
           title={translate("Testnet Faucet")}
           description={translate(
-            "Use testnets to trial XRPL updates and apps safely, without putting real funds at risk"
+            "Use testnets to trial XRPL updates and apps safely, without putting real funds at risk."
           )}
           links={[
             {
@@ -224,24 +224,6 @@ export default function Develop() {
           }}
         />
 
-        <FeatureTwoColumn
-          color="yellow"
-          arrange="left"
-          title={translate("Simulate")}
-          description={translate(
-            "The simulate method executes a dry run of any transaction type, enabling you to preview the results and metadata of a transaction without committing them to the XRP Ledger."
-          )}
-          links={[
-            {
-              label: translate("Simulate"),
-              href: "/docs/references/http-websocket-apis/public-api-methods/transaction-methods/simulate",
-            },
-          ]}
-          media={{
-            src: require("../static/img/bds-2026/develop-feature-media-6.jpg"),
-            alt: translate("Simulate"),
-          }}
-        />
       </FeatureTwoColumnWrapper>
 
       <LinkTextDirectory
@@ -318,7 +300,7 @@ export default function Develop() {
           },
           {
             label: translate("Join the Dev Forum"),
-            href: "https://discord.com/invite/sfX3ERAMjH",
+            href: "https://discord.com/invite/xrpl",
           },
         ]}
         media={{
