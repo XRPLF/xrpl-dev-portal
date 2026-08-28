@@ -214,6 +214,7 @@
             - page: docs/tutorials/sample-apps/build-a-desktop-wallet-in-python.md
             - page: docs/tutorials/sample-apps/credential-issuing-service-in-javascript.md
             - page: docs/tutorials/sample-apps/credential-issuing-service-in-python.md
+            - page: docs/tutorials/sample-apps/repo-settlement-in-typescript.md
         - group: DeFi
           groupTranslationKey: sidebar.docs.tutorials.defi
           expanded: false
