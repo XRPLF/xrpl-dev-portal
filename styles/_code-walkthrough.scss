@@ -4,7 +4,45 @@ article .code-walkthrough {
     padding-right: 0;
     grid-template-columns: 5fr 5fr;
 
-    @media screen and (max-width: 990px) {
+    @media screen and (max-width: 767px) {
+        grid-template-columns: 1fr;
+        margin-right: 0;
+        max-width: 100%;
+        padding-right: 0;
+
+        [data-component-name="Markdoc/CodeWalkthrough/CodeFilters"] {
+            position: static;
+            top: auto;
+            z-index: auto;
+            margin-left: var(--spacing-xl);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        [data-component-name="Marker/Marker"] {
+            display: none !important;
+        }
+
+        [data-component-name="Markdoc/CodeWalkthrough/CodePanel"] {
+            position: static;
+            top: auto;
+            height: auto;
+            margin-top: 0;
+            margin-left: var(--spacing-xl);
+            --code-block-max-height: min(50vh, 28rem);
+        }
+
+        [class*="CodeWalkthrough__ContentWrapper"] {
+            overflow: visible;
+            margin-left: 0;
+            max-width: 100%;
+        }
+
+        > :first-child {
+            min-height: auto;
+        }
+    }
+
+    @media screen and (max-width: 990px) and (min-width: 768px) {
         margin-right: 96px;
         max-width: calc(100% - 96px);
     }
@@ -41,6 +79,7 @@ article .code-walkthrough {
     [data-component-name="Markdoc/CodeWalkthrough/CodePanel"] {
         top: var(--navbar-height);
         border: 0;
+        margin-top: 0;
 
         [data-component-name="CodeBlock/CodeBlockContainer"] {
             border-top-left-radius: 0;
