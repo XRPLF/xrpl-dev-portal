@@ -1440,6 +1440,14 @@
     font-weight: bold;
   }
 
+  // Bootstrap's default focus ring is a 25%-alpha glow behind `outline: 0`,
+  // which all but disappears on the tab's own dark background.
+  .nav-tabs .nav-link:focus-visible {
+    outline: 2px solid $blue-purple-400;
+    outline-offset: -2px;
+    box-shadow: none;
+  }
+
   .nav-tabs {
     border-bottom: 1px solid $gray-600;
   }
