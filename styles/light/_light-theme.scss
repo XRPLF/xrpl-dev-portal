@@ -110,6 +110,10 @@ h6,
   &.disabled {
     color: $gray-600;
   }
+
+  a {
+    color: $light-fg;
+  }
 }
 
 #connection-status-item.active {
