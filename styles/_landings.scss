@@ -325,8 +325,8 @@
   }
 }
 
-// Alert banners
-.alert-info {
+// Alert banners (do not apply to tx-sender bootstrap-growl toasts)
+.alert-info:not(.bootstrap-growl) {
   color: white;
   background-color: $blue-400;
   border-width: 0;

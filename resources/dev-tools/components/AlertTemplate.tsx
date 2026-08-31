@@ -34,10 +34,7 @@ export default function AlertTemplate ({ message, options, style, close }: Alert
   const { translate } = useTranslate()
   return(
     <div className={clsx("bootstrap-growl alert alert-dismissible", typeToClass(options.type))} style={{ ...alertStyle, ...style }}>
-      <button className="close" data-dismiss="alert" type="button" onClick={close}>
-        <span aria-hidden="true">×</span>
-        <span className="sr-only">{translate("Close")}</span>
-      </button>
+      <button className="btn-close" type="button" aria-label={translate("Close")} onClick={close} />
       {message}
     </div>
   )
