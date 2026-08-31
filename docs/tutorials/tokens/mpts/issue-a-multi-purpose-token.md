@@ -248,15 +248,14 @@ Look up the issuance entry again to confirm the changes:
 ## See Also
 
 - **Concepts**:
-	- [Multi-Purpose Tokens (MPT)](../../../concepts/tokens/fungible-tokens/multi-purpose-tokens.md)
+  - [Multi-Purpose Tokens (MPT)](../../../concepts/tokens/fungible-tokens/multi-purpose-tokens.md)
 - **Tutorials**:
-  - [Sending MPTs in JavaScript](./sending-mpts-in-javascript.md)
-	- [Mutable MPTs](../../../concepts/tokens/fungible-tokens/mutable-mpts.md)
-	- [Send a Multi-Purpose Token (MPT)](../../payments/send-an-mpt.md)
+  - [Send a Multi-Purpose Token (MPT)](/docs/tutorials/tokens/mpts/send-an-mpt.md)
+  - [Mutable MPTs](../../../concepts/tokens/fungible-tokens/mutable-mpts.md)
 - **References**:
-	- [MPTokenIssuance entry][]
-	- [MPTokenIssuanceCreate transaction][]
-	- [MPTokenIssuanceDestroy transaction][]
-	- [MPTokenIssuanceSet transaction][]
+  - [MPTokenIssuance entry][]
+  - [MPTokenIssuanceCreate transaction][]
+  - [MPTokenIssuanceDestroy transaction][]
+  - [MPTokenIssuanceSet transaction][]
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}
