@@ -106,11 +106,14 @@ h6,
 
 .list-group-item {
   border-color: $light-fg-muted;
-  background-color: $light-bg;
 
   &.disabled {
     color: $gray-600;
   }
+}
+
+#connection-status-item.active {
+  background-color: $xrpl-green-9;
 }
 
 .progress {
