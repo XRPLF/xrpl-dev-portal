@@ -7,7 +7,7 @@ labels:
 status: not_enabled
 ---
 # LoanBroker
-[[Source]](https://github.com/XRPLF/rippled/blob/release-3.1/include/xrpl/protocol/detail/ledger_entries.macro#L519-L537 "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/a5d238e7d4fa6ef2b539b759d58744d0a1c33c0c/include/xrpl/protocol/detail/ledger_entries.macro#L504-L522 "Source")
 
 A `LoanBroker` ledger entry defines the configuration and state of a lending protocol instance. It tracks details such as fees and first-loss capital cover. You can create a `LoanBroker` object with the [LoanBrokerSet transaction][].
 
@@ -41,8 +41,8 @@ The lending protocol uses the pseudo-account of the associated `Vault` entry to 
   "DebtTotal": 50000,
   "DebtMaximum": 100000,
   "CoverAvailable": 10000,
-  "CoverRateMinimum": 1000,
-  "CoverRateLiquidation": 500
+  "CoverRateMinimum": 10000,
+  "CoverRateLiquidation": 5000
 }
 ```
 
@@ -63,13 +63,13 @@ In addition to the [common ledger entry fields][], {% code-page-name /%} entries
 | `Account`             | String    | AccountID     | Yes       | The address of the `LoanBroker` pseudo-account. |
 | `Owner`               | String    | AccountID     | Yes       | The account address of the vault owner. |
 | `Data`                | String    | Blob          | No        | Arbitrary metadata about the vault. Limited to 256 bytes. |
-| `ManagementFeeRate`   | Number    | UInt16        | No        | The fee charged by the lending protocol, in units of 1/10th basis points. Valid values are 0 to 100000 (inclusive), representing 0% to 100%. |
+| `ManagementFeeRate`   | Number    | UInt16        | No        | The fee charged by the lending protocol on any loan interest, in units of 1/10th basis points. Valid values are 0 to 10000 (inclusive), representing 0% to 10%. |
 | `OwnerCount`          | Number    | UInt32        | Yes       | The number of active loans issued by the LoanBroker. |
 | `DebtTotal`           | String    | Number        | Yes       | The total asset amount the protocol owes the vault, including interest. |
 | `DebtMaximum`         | String    | Number        | No        | The maximum amount the protocol can owe the vault. The default value of `0` means there is no limit to the debt. |
 | `CoverAvailable`      | String    | Number        | Yes       | The total amount of first-loss capital deposited into the lending protocol. |
 | `CoverRateMinimum`    | Number    | UInt32        | Yes       | The 1/10th basis point of the `DebtTotal` that the first-loss capital must cover. Valid values are 0 to 100000 (inclusive), representing 0% to 100%. |
-| `CoverRateLiquidation`| Number    | UInt12        | Yes       | The 1/10th basis point of minimum required first-loss capital that is moved to an asset vault to cover a loan default. Valid values are 0 to 100000 (inclusive), representing 0% to 100%. |
+| `CoverRateLiquidation`| Number    | UInt32        | Yes       | The 1/10th basis point of minimum required first-loss capital that is moved to an asset vault to cover a loan default. Valid values are 0 to 100000 (inclusive), representing 0% to 100%. |
 
 
 ## {% $frontmatter.seo.title %} Flags

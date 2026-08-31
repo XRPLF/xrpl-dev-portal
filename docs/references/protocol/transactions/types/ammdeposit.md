@@ -8,7 +8,7 @@ requiredAmendment: AMM
 txIcon: send
 ---
 # AMMDeposit
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/AMMDeposit.cpp "Source")
+{% source-link path="src/libxrpl/tx/transactors/dex/AMMDeposit.cpp" /%}
 
 Deposit funds into an [Automated Market Maker](../../../../concepts/tokens/decentralized-exchange/automated-market-makers.md) (AMM) instance and receive the AMM's liquidity provider tokens (_LP Tokens_) in exchange. You can deposit one or both of the assets in the AMM's pool.
 
@@ -173,13 +173,13 @@ Besides errors that can occur for all transactions, {% $frontmatter.seo.title %}
 | `tecAMM_EMPTY`          | The AMM currently holds no assets, so you cannot do a normal deposit. You must use the Empty AMM Special Case deposit instead. |
 | `tecAMM_NOT_EMPTY`      | The transaction specified `tfTwoAssetIfEmpty`, but the AMM was not empty. |
 | `tecAMM_FAILED`         | The conditions on the deposit could not be satisfied. For example, the requested effective price in the `EPrice` field is too low. |
-| `tecFROZEN`             | The transaction tried to deposit a [frozen](../../../../concepts/tokens/fungible-tokens/freezes.md) trust line token, or at least one of the paired tokens is frozen. |
-| `tecINSUF_RESERVE_LINE` | The sender of this transaction does meet the increased [reserve requirement](../../../../concepts/accounts/reserves.md) of processing this transaction, probably because they need a new trust line to hold the LP Tokens, and they don't have enough XRP to meet the additional owner reserve for a new trust line. |
-| `tecLOCKED`             | At least one of the assets is an MPT that is currently [locked](../../../../concepts/tokens/fungible-tokens/deep-freeze.md#how-does-mpt-freezelock-behavior-differ-from-iou). |
-| `tecNO_AUTH`            | The sender is not authorized to hold one of the deposit assets. This can occur when:<ul><li>The Trust Line token's issuer uses [Authorized Trust Lines](../../../../concepts/tokens/fungible-tokens/authorized-trust-lines.md) and the sender's trust line does not exist, or has not been authorized.</li><li>The sender is not authorized to hold the MPT.</li><li>The MPT's **Can Transfer** flag is not enabled and the sender is not the issuer.</li></ul> |
-| `tecNO_ISSUER`          | The issuer account of at least one MPT does not exist. |
-| `tecNO_PERMISSION`      | At least one of the MPT assets does not have **Can Trade** enabled. |
-| `tecOBJECT_NOT_FOUND`   | At least one of the MPT issuances does not exist. |
+| `tecFROZEN` | A token being deposited is [frozen](../../../../concepts/tokens/fungible-tokens/freezes.md) globally, for the sender, or for the AMM's pseudo-account. A freeze on one pool asset blocks deposits of both assets in the pool. {% amendment-disclaimer name="fixCleanup3_3_0" mode="updated" /%} |
+| `tecINSUF_RESERVE_LINE` | The sender of this transaction does not meet the increased [reserve requirement](../../../../concepts/accounts/reserves.md) of processing this transaction, probably because they need a new trust line to hold the LP Tokens, and they don't have enough XRP to meet the additional owner reserve for a new trust line. |
+| `tecLOCKED` | An MPT being deposited is locked globally, for the sender, or for the AMM's pseudo-account. A lock on one pool asset blocks deposits of both assets in the pool. {% amendment-disclaimer name="fixCleanup3_3_0" mode="updated" /%} |
+| `tecNO_AUTH` | The sender is not authorized to hold one of the deposit assets. This can occur when: <ul><li>The Trust Line token's issuer uses [Authorized Trust Lines](../../../../concepts/tokens/fungible-tokens/authorized-trust-lines.md) and the sender's trust line does not exist, or has not been authorized.</li><li>The sender is not authorized to hold the MPT.</li><li>The MPT's **Can Transfer** flag is not enabled and the sender is not the issuer.</li></ul> |
+| `tecNO_ISSUER` | The issuer account of at least one MPT does not exist. |
+| `tecNO_PERMISSION` | At least one of the MPT assets does not have **Can Trade** enabled. |
+| `tecOBJECT_NOT_FOUND` | At least one of the MPT issuances does not exist. |
 | `tecUNFUNDED_AMM`       | The sender does not have a high enough balance to make the specified deposit. |
 | `temDISABLED`           | At least one of the assets or amounts is an MPT, but the [MPTokensV2 amendment][] is not enabled. |
 | `temBAD_AMM_TOKENS`     | The transaction specified the LP Tokens incorrectly. For example, the `issuer` is not the AMM's associated AccountRoot address or the `currency` is not the currency code for this AMM's LP Tokens, or the transaction specified this AMM's LP Tokens in one of the asset fields. |

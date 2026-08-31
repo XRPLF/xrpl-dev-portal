@@ -8,7 +8,7 @@ txIcon: finish
 requiredAmendment: Checks
 ---
 # CheckCash
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/CashCheck.cpp "Source")
+{% source-link path="src/libxrpl/tx/transactors/check/CheckCash.cpp" /%}
 
 Attempts to redeem a [check](../../../../concepts/payment-types/checks.md) to receive up to the amount authorized by the corresponding [CheckCreate transaction][]. Only the `Destination` address of a check can cash it with a CheckCash transaction. Cashing a check this way is similar to executing a [Payment][] initiated by the destination.
 
@@ -83,7 +83,7 @@ Besides errors that can occur for all transactions, {% $frontmatter.seo.title %}
 | `tecPATH_PARTIAL` | The requested amount exceeds the Check's `SendMax`, the Check owner has insufficient available funds, or the `DeliverMin` amount could not be delivered. |
 | `temBAD_CURRENCY` | The `Amount` or `DeliverMin` does not match the currency (and issuer, if not XRP) of the Check. |
 | `temDISABLED` | `Amount` or `DeliverMin` specifies an MPT but the [MPTokensV2 amendment][] is not enabled. |
-| `temMALFORMED` | The transaction specifies both `Amount` and `DeliverMin`, or omits both. |
+| `temMALFORMED` | The transaction specifies both `Amount` and `DeliverMin`, or omits both. If the `CheckID` is an all-zero value, the transaction also fails with `temMALFORMED`. (Previously, an all-zero `CheckID` failed with `tecNO_ENTRY`.) {% amendment-disclaimer name="fixCleanup3_3_0" mode="updated" /%} |
 
 ## See Also
 

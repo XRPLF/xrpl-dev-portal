@@ -8,9 +8,9 @@ labels:
 ---
 # Use a Peer Reservation
 
-A [peer reservation][] is a setting that makes a `rippled` server always accept connections from a peer matching the reservation. This page describes how to use peer reservations to keep a consistent peer-to-peer connection between two servers, with the cooperation of the administrators of both servers.
+A [peer reservation][] is a setting that makes an `xrpld` server always accept connections from a peer matching the reservation. This page describes how to use peer reservations to keep a consistent peer-to-peer connection between two servers, with the cooperation of the administrators of both servers.
 
-Peer reservations are most useful when the two servers are run by different parties, and the server that receives the incoming connection is a [hub server](../../../concepts/networks-and-servers/rippled-server-modes.md#public-hubs) with many peers. For clarity, these instructions use the following terms:
+Peer reservations are most useful when the two servers are run by different parties, and the server that receives the incoming connection is a [hub server](../../../concepts/networks-and-servers/xrpld-server-modes.md#public-hubs) with many peers. For clarity, these instructions use the following terms:
 
 - The server making the outgoing connection is the **stock server**. This server _uses_ the peer reservation on the hub server.
 - The server receiving the incoming connection is the **hub server**. The administrator _adds_ the peer reservation to this server.
@@ -21,7 +21,7 @@ However, you can use these instructions to set up a peer reservation regardless 
 
 To complete these steps, you must meet the following prerequisites:
 
-- The administrators both servers must have `rippled` [installed](../../installation/index.md) and running.
+- The administrators both servers must have `xrpld` [installed](../../installation/index.md) and running.
 - The administrators of both servers must agree to cooperate and must be able to communicate. A public communications channel is fine because you don't need to share any secret information.
 - The hub server must be able to receive incoming peer connections. For instructions on how to configure a firewall to allow this, see [Forward Ports for Peering](forward-ports-for-peering.md).
 - Both servers must be configured to sync with the same [XRP Ledger network](../../../concepts/networks-and-servers/parallel-networks.md), such as the production XRP Ledger, the Testnet, or the Devnet.
@@ -34,7 +34,7 @@ To use a peer reservation, complete the following steps:
 
 The administrator of the stock server completes this step.
 
-If you have already configured your server with a permanent node key pair value, you can skip ahead to [step 2: Communicate your node public key to the peer's admin](#2-communicate-the-stock-servers-node-public-key). (For example, setting up a permanent node key pair for each server is part of the process of [setting up a server cluster](cluster-rippled-servers.md).)
+If you have already configured your server with a permanent node key pair value, you can skip ahead to [step 2: Communicate your node public key to the peer's admin](#2-communicate-the-stock-servers-node-public-key). (For example, setting up a permanent node key pair for each server is part of the process of [setting up a server cluster](cluster-xrpld-servers.md).)
 
 {% admonition type="success" name="Tip" %}Setting up a permanent node key pair is optional, but makes it easier to keep the peer reservation set up if you need to erase your server's databases or move to a new machine. If you don't want to set up a permanent node key pair, you can use your server's automatically-generated node public key as reported in the `pubkey_node` field of the [server_info method][] response.{% /admonition %}
 
@@ -43,9 +43,9 @@ If you have already configured your server with a permanent node key pair value,
     For example:
 
     ```
-    rippled validation_create
+    xrpld validation_create
 
-    Loading: "/etc/rippled.cfg"
+    Loading: "/etc/xrpld.cfg"
     Connecting to 127.0.0.1:5005
     {
        "result" : {
@@ -59,10 +59,10 @@ If you have already configured your server with a permanent node key pair value,
 
     Save the `validation_seed` (your node seed value) and the `validation_public_key` value (your node public key )
 
-2. Edit your `rippled`'s config file.
+2. Edit your `xrpld`'s config file.
 
     ```
-    vim /etc/opt/ripple/rippled.cfg
+    vim /etc/xrpld/xrpld.cfg
     ```
 
     {% partial file="/docs/_snippets/conf-file-location.md" /%}
@@ -78,10 +78,10 @@ If you have already configured your server with a permanent node key pair value,
 
     {% admonition type="danger" name="Warning" %}All servers should have unique `[node_seed]` values. If you copy your config file to another server, be sure to remove or change the `[node_seed]` value. Keep your `[node_seed]` secret; if a malicious actor gains access to this value, they could use it to impersonate your server in XRP Ledger peer-to-peer communications.{% /admonition %}
 
-4. Restart your `rippled` server:
+4. Restart your `xrpld` server:
 
     ```
-    systemctl restart rippled
+    systemctl restart xrpld
     ```
 
 ### 2. Communicate the stock server's node public key
@@ -95,9 +95,9 @@ The administrator of the hub server completes this step.
 Use the [peer_reservations_add method][] to add a reservation using the node public key that you got in the previous step. For example:
 
 ```sh
-$ rippled peer_reservations_add n9Mxf6qD4J55XeLSCEpqaePW4GjoCR5U1ZeGZGJUCNe3bQa4yQbG "Description here"
+$ xrpld peer_reservations_add n9Mxf6qD4J55XeLSCEpqaePW4GjoCR5U1ZeGZGJUCNe3bQa4yQbG "Description here"
 
-Loading: "/etc/opt/ripple/rippled.cfg"
+Loading: "/etc/xrpld/xrpld.cfg"
 Connecting to 127.0.0.1:5005
 
 {
@@ -111,7 +111,7 @@ Connecting to 127.0.0.1:5005
 
 ### 4. Communicate the hub server's current IP address and peer port
 
-The administrator of the hub server must tell their server's current IP address and peer port to the administrator of the stock server. If the hub server is behind a firewall that does network address translation (NAT), use the server's _external_ IP address. The default config file uses port 51235 for the peer protocol.
+The administrator of the hub server must tell their server's current IP address and peer port to the administrator of the stock server. If the hub server is behind a firewall that does network address translation (NAT), use the server's _external_ IP address. The default config file uses port 2459 for the peer protocol.
 
 ### 5. (Stock Server) Connect to the peer server
 
@@ -126,7 +126,7 @@ Use the [connect method][] to connect your server to the hub server. For example
 {
     "command": "connect",
     "ip": "169.54.2.151",
-    "port": 51235
+    "port": 2459
 }
 ```
 {% /tab %}
@@ -138,7 +138,7 @@ Use the [connect method][] to connect your server to the hub server. For example
     "params": [
         {
             "ip": "169.54.2.151",
-            "port": 51235
+            "port": 2459
         }
     ]
 }
@@ -147,7 +147,7 @@ Use the [connect method][] to connect your server to the hub server. For example
 
 {% tab label="Commandline" %}
 ```
-rippled connect 169.54.2.151 51235
+xrpld connect 169.54.2.151 2459
 ```
 {% /tab %}
 
@@ -176,7 +176,7 @@ As a server administrator, you can manage the reservations your server has for o
     - [Parallel Networks](../../../concepts/networks-and-servers/parallel-networks.md)
 - **Tutorials:**
     - [Capacity Planning](../../installation/capacity-planning.md)
-    - [Troubleshooting `rippled`](../../troubleshooting/index.md)
+    - [Troubleshooting `xrpld`](../../troubleshooting/index.md)
 - **References:**
     - [peers method][]
     - [peer_reservations_add method][]

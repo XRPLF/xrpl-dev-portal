@@ -8,7 +8,7 @@ seo:
 
 Different types of objects are uniquely identified in different ways:
 
-[Accounts](../../../concepts/accounts/index.md) are identified by their [Address][], for example `"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"`. Addresses always start with "r". Many `rippled` methods also accept a hexadecimal representation.
+[Accounts](../../../concepts/accounts/index.md) are identified by their [Address][], for example `"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"`. Addresses always start with "r". Many `xrpld` methods also accept a hexadecimal representation.
 
 [Transactions](../transactions/index.md) are identified by a [Hash][] of the transaction's binary format. You can also identify a transaction by its sending account and [Sequence Number][].
 
@@ -28,7 +28,7 @@ Each closed [Ledger](../ledger-data/index.md) has a [Ledger Index][] and a [Hash
 
 
 ### Hash Prefixes
-[[Source]](https://github.com/XRPLF/rippled/blob/master/include/xrpl/protocol/HashPrefix.h "Source")
+{% source-link path="include/xrpl/protocol/HashPrefix.h" /%}
 
 In many cases, the XRP Ledger prefixes an object's binary data with a 4-byte code before calculating its hash, so that objects of different types have different hashes even if their binary formats are the same. The existing 4-byte codes are structured as three alphabetic characters, encoded as ASCII, followed by a zero byte.
 
@@ -145,7 +145,7 @@ For more information, see [Currency Formats](currency-formats.md).
 
 ## Specifying Time
 
-The `rippled` server and its APIs represent time as an unsigned integer. This number measures the number of seconds since the "Ripple Epoch" of January 1, 2000 (00:00 UTC). This is like the way the [Unix epoch](http://en.wikipedia.org/wiki/Unix_time) works, except the Ripple Epoch is 946684800 seconds after the Unix Epoch.
+The `xrpld` server and its APIs represent time as an unsigned integer. This number measures the number of seconds since the "Ripple Epoch" of January 1, 2000 (00:00 UTC). This is like the way the [Unix epoch](http://en.wikipedia.org/wiki/Unix_time) works, except the Ripple Epoch is 946684800 seconds after the Unix Epoch.
 
 Don't convert Ripple Epoch times to UNIX Epoch times in 32-bit variables: this could lead to integer overflows.
 

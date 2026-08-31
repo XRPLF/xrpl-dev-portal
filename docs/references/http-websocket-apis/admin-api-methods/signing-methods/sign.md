@@ -5,14 +5,14 @@ labels:
     - Transaction Sending
 ---
 # sign
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/SignHandler.cpp "Source")
+{% source-link path="src/xrpld/rpc/handlers/admin/signing/Sign.cpp" /%}
 
 The `sign` method takes a [transaction in JSON format](../../../protocol/transactions/index.md) and a [seed value](../../../../concepts/accounts/cryptographic-keys.md), and returns a signed binary representation of the transaction. To contribute one signature to a [multi-signed transaction](../../../../concepts/accounts/multi-signing.md), use the [sign_for method][] instead.
 
 {% partial file="/docs/_snippets/public-signing-note.md" /%}
 
 
-{% admonition type="warning" name="Caution" %}Unless you run the `rippled` server yourself, you should do local signing using a [client library](../../../client-libraries.md) instead of using this command. For more information, see [Set Up Secure Signing](../../../../concepts/transactions/secure-signing.md).{% /admonition %}
+{% admonition type="warning" name="Caution" %}Unless you run the `xrpld` server yourself, you should do local signing using a [client library](../../../client-libraries.md) instead of using this command. For more information, see [Set Up Secure Signing](../../../../concepts/transactions/secure-signing.md).{% /admonition %}
 
 ## Request Format
 An example of the request format:
@@ -71,7 +71,7 @@ An example of the request format:
 {% tab label="Commandline" %}
 ```sh
 #Syntax: sign secret tx_json [offline]
-rippled sign s████████████████████████████ '{"TransactionType": "Payment", "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", "Destination": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX", "DeliverMax": { "currency": "USD", "value": "1", "issuer" : "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn" }, "Sequence": 360, "Fee": "10000"}' offline
+xrpld sign s████████████████████████████ '{"TransactionType": "Payment", "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", "Destination": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX", "DeliverMax": { "currency": "USD", "value": "1", "issuer" : "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn" }, "Sequence": 360, "Fee": "10000"}' offline
 ```
 {% /tab %}
 
@@ -177,7 +177,7 @@ An example of a successful response:
 
 {% tab label="Commandline" %}
 ```json
-Loading: "/etc/rippled.cfg"
+Loading: "/etc/xrpld.cfg"
 Connecting to 127.0.0.1:5005
 
 {

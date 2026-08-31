@@ -5,7 +5,7 @@ labels:
  - Non-fungible Tokens, NFTs
 ---
 # NFTokenOffer
-[[Source]](https://github.com/XRPLF/rippled/blob/f64cf9187affd69650907d0d92e097eb29693945/include/xrpl/protocol/detail/ledger_entries.macro#L34-L44 "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/a5d238e7d4fa6ef2b539b759d58744d0a1c33c0c/include/xrpl/protocol/detail/ledger_entries.macro#L26-L36 "Source")
 
 An `NFTokenOffer` entry represents an offer to buy, sell or transfer an [NFT](../../../../concepts/tokens/nfts/index.md). You can create an NFT buy or sell offer by sending an [NFTokenCreateOffer transaction][].
 
@@ -33,7 +33,7 @@ An `NFTokenOffer` entry represents an offer to buy, sell or transfer an [NFT](..
 
 | Name                |JSON Type             | [Internal Type][] | Required?   | Description |
 |:--------------------|:---------------------|:------------------|:------------|:-----------|
-| `Amount`            | [Currency Amount][]  | Amount            | Yes         | Amount expected or offered for the NFT. If the token has the `lsfOnlyXRP` flag set, the amount must be specified in XRP. Sell offers that specify assets other than XRP must specify a non-zero amount. Sell offers that specify XRP can be 'free' (that is, the Amount field can be equal to `"0"`). |
+| `Amount`            | [Currency Amount][]  | Amount            | Yes         | Amount expected or offered for the NFT. If the token has the `flagOnlyXRP` flag set, the amount must be specified in XRP. Sell offers that specify assets other than XRP must specify a non-zero amount. Sell offers that specify XRP can be 'free' (that is, the Amount field can be equal to `"0"`). |
 | `Destination`       | String - [Address][] | AccountID         | No          | The account for which this offer is intended. If present, only that account can accept the offer. |
 | `Expiration`        | Number               | UInt32            | No          | The time after which the offer is no longer active. The value is the number of seconds since the Ripple Epoch. |
 | `NFTokenID`         | String - Hexadecimal | UInt256           | Yes         | The `NFTokenID` of the NFT referenced by this offer. |

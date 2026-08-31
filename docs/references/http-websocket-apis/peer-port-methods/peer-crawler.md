@@ -7,7 +7,7 @@ labels:
 ---
 # Peer Crawler
 
-The Peer Crawler is a special [peer port method](index.md) for reporting on the health and topology of the peer-to-peer network. This API method is available by default on a non-privileged basis through the [Peer Protocol](../../../concepts/networks-and-servers/peer-protocol.md) port, which is also used for `rippled` servers' peer-to-peer communications about consensus, ledger history, and other necessary information.
+The Peer Crawler is a special [peer port method](index.md) for reporting on the health and topology of the peer-to-peer network. This API method is available by default on a non-privileged basis through the [Peer Protocol](../../../concepts/networks-and-servers/peer-protocol.md) port, which is also used for `xrpld` servers' peer-to-peer communications about consensus, ledger history, and other necessary information.
 
 The information reported by the peer crawler is effectively public, and can be used to report on the overall XRP Ledger network, its health, and topology.
 
@@ -17,10 +17,10 @@ To request the Peer Crawler information, make the following HTTP request:
 
 - **Protocol:** https
 - **HTTP Method:** GET
-- **Host:** (any `rippled` server, by hostname or IP address)
-- **Port:** (the port number where the `rippled` server uses the Peer Protocol, typically 51235)
+- **Host:** (any `xrpld` server, by hostname or IP address)
+- **Port:** (the port number where the `xrpld` server uses the Peer Protocol, typically 51235)
 - **Path:** `/crawl`
-- **Security:** Most `rippled` servers use a self-signed certificate to respond to the request. By default, most tools (including web browsers) flag or block such responses for being untrusted. You must ignore the certificate checking (for example, if using cURL, add the `--insecure` flag) to display a response from those servers.
+- **Security:** Most `xrpld` servers use a self-signed certificate to respond to the request. By default, most tools (including web browsers) flag or block such responses for being untrusted. You must ignore the certificate checking (for example, if using cURL, add the `--insecure` flag) to display a response from those servers.
 
 
 ## Response Format
@@ -47,7 +47,7 @@ Each member of the `overlay.active` array is an object with the following fields
 | `public_key` | String (Base-64 Encoded) | The public key of the ECDSA key pair used by this peer to sign RTXP messages. (This is the same data as the `pubkey_node` reported by the peer server's [server_info method][].) |
 | `type`       | String                   | The value `in` or `out`, indicating whether the TCP connection to the peer is incoming or outgoing. |
 | `uptime`     | Number                   | The number of seconds the server has been connected to this peer. |
-| `version`    | String                   | The `rippled` version number the peer reports to be using. |
+| `version`    | String                   | The `xrpld` version number the peer reports to be using. |
 
 #### Example
 

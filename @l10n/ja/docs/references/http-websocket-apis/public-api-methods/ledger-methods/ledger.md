@@ -7,7 +7,7 @@ label:
   - ブロックチェーン
 ---
 # ledger
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/LedgerHandler.cpp "Source")
+{% source-link path="src/xrpld/rpc/handlers/ledger/Ledger.cpp" /%}
 
 公開レジャーに関する情報を取得します。
 
@@ -50,7 +50,7 @@ label:
 #Syntax: ledger ledger_index|ledger_hash [full|tx]
 # "full" is equivalent to "full": true
 # "tx" is equivalent to "transactions": true
-rippled ledger current
+xrpld ledger current
 ```
 {% /tab %}
 
@@ -88,7 +88,7 @@ rippled ledger current
 {% /tab %}
 
 {% tab label="コマンドライン" %}
-{% code-snippet file="/_api-examples/ledger/jsonrpc-response.json" language="json" prefix="Loading: \"/etc/opt/ripple/rippled.cfg\"\n2023-Nov-01 21:38:14.638871262 UTC HTTPClient:NFO Connecting to 127.0.0.1:5005\n\n" /%}
+{% code-snippet file="/_api-examples/ledger/jsonrpc-response.json" language="json" prefix="Loading: \"/etc/xrpld/xrpld.cfg\"\n2023-Nov-01 21:38:14.638871262 UTC HTTPClient:NFO Connecting to 127.0.0.1:5005\n\n" /%}
 {% /tab %}
 
 {% /tabs %}

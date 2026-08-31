@@ -18,7 +18,7 @@ An example of the request format:
 {% tab label="Commandline" %}
 ```sh
 # Syntax: json method json_stanza
-rippled -q json ledger_closed '{}'
+xrpld -q json ledger_closed '{}'
 ```
 {% /tab %}
 

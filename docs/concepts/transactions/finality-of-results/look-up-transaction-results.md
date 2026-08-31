@@ -20,11 +20,11 @@ This document describes, at a low level, how to know why a transaction reached t
 To understand the outcome of a transaction as described in these instructions, you must:
 
 - Know which transaction you want to understand. If you know the transaction's [identifying hash][], you can look it up that way. You can also look at transactions that executed in a recent ledger or the transactions that most recently affected a given account.
-- Have access to a `rippled` server that provides reliable information and has the necessary history for when the transaction was submitted.
+- Have access to an `xrpld` server that provides reliable information and has the necessary history for when the transaction was submitted.
     - For looking up the outcomes of transactions you've recently submitted, the server you submitted through should be enough, as long as it maintains sync with the network during that time.
     - For outcomes of older transactions, you may want to use a [full-history server](../../networks-and-servers/ledger-history.md#full-history).
 
-{% admonition type="success" name="Tip" %}There are other ways of querying for data on transactions from the XRP Ledger, including the [Data API](../../../references/data-api.md) and other exported databases, but those interfaces are non-authoritative. This document describes how to look up data using the `rippled` API directly, for the most direct and authoritative results possible.{% /admonition %}
+{% admonition type="success" name="Tip" %}There are other ways of querying for data on transactions from the XRP Ledger, including the [Data API](../../../references/data-api.md) and other exported databases, but those interfaces are non-authoritative. This document describes how to look up data using the `xrpld` API directly, for the most direct and authoritative results possible.{% /admonition %}
 
 
 ## 1. Get Transaction Status
@@ -34,7 +34,7 @@ Knowing whether a transaction succeeded or failed is a two-part question:
 1. Was the transaction included in a validated ledger?
 2. If so, what changes to the ledger state occurred as a result?
 
-To know whether a transaction was included in a validated ledger, you usually need access to all the ledgers it could possibly be in. The simplest, most foolproof way to do this is to look up the transaction on a [full history server](../../networks-and-servers/ledger-history.md#full-history). Use the [tx method][], [account_tx method][], or other response from `rippled`. Look for `"validated": true` to indicate that this response uses a ledger version that has been validated by consensus.
+To know whether a transaction was included in a validated ledger, you usually need access to all the ledgers it could possibly be in. The simplest, most foolproof way to do this is to look up the transaction on a [full history server](../../networks-and-servers/ledger-history.md#full-history). Use the [tx method][], [account_tx method][], or other response from `xrpld`. Look for `"validated": true` to indicate that this response uses a ledger version that has been validated by consensus.
 
 - If the result does not have `"validated": true`, then the result may be tentative and you must wait for the ledger to be validated to know if the transaction's outcome is final.
 - If the result does not contain the transaction in question, or returns the error `txnNotFound`, then the transaction is not in any ledger that the server has in its available history. This may or may not mean that the transaction failed, depending on whether the transaction could be in a validated ledger version that the server does not have and whether it could be included in a future validated ledger. You can constrain the range of ledgers a transaction can be in by knowing:

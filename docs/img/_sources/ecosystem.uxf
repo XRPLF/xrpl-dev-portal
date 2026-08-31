@@ -11,7 +11,7 @@
     </coordinates>
     <panel_attributes>halign=left
 
-rippled server</panel_attributes>
+xrpld server</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -252,7 +252,7 @@ drawArc(0,height*3/5,width,height*2/5,180,180,true) fg=black //Parameters (x, y,
       <w>200</w>
       <h>70</h>
     </coordinates>
-    <panel_attributes>rippled servers
+    <panel_attributes>xrpld servers
 (direct &amp; indirect peers)
 halign=left</panel_attributes>
     <additional_attributes/>

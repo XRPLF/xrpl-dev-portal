@@ -5,7 +5,7 @@ labels:
     - Transaction Sending
 ---
 # transaction_entry
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/TransactionEntry.cpp "Source")
+{% source-link path="src/xrpld/rpc/handlers/transaction/TransactionEntry.cpp" /%}
 
 The `transaction_entry` method retrieves information on a single transaction from a specific ledger version. (The [tx method][], by contrast, searches all ledgers for the specified transaction. We recommend using that method instead.)
 
@@ -45,7 +45,7 @@ An example of the request format:
 {% tab label="Commandline" %}
 ```sh
 #Syntax: transaction_entry transaction_hash ledger_index|ledger_hash
-rippled transaction_entry C53ECF838647FA5A4C780377025FEC7999AB4182590510CA461444B207AB74A9 56865245
+xrpld transaction_entry C53ECF838647FA5A4C780377025FEC7999AB4182590510CA461444B207AB74A9 56865245
 ```
 {% /tab %}
 
@@ -324,7 +324,7 @@ An example of a successful response:
 
 {% tab label="Commandline" %}
 ```json
-Loading: "/etc/opt/ripple/rippled.cfg"
+Loading: "/etc/xrpld/xrpld.cfg"
 2025-Dec-19 03:16:00.638871262 UTC HTTPClient:NFO Connecting to 127.0.0.1:5005
 
 {

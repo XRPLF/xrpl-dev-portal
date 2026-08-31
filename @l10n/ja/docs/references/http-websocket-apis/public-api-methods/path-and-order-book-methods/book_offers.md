@@ -6,7 +6,7 @@ labels:
   - クロスカレンシー
 ---
 # book_offers
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/BookOffers.cpp "Source")
+{% source-link path="src/xrpld/rpc/handlers/orderbook/BookOffers.cpp" /%}
 
 `book_offers`メソッドは、2つの通貨間の[オファー](../../../../concepts/tokens/decentralized-exchange/offers.md)のリストを取得します。これは、_オーダーブック_ とも呼ばれます。レスポンスは、[資金供給のないオファー](../../../../concepts/tokens/decentralized-exchange/offers.md#オファーのライフサイクル)を省略し、残りの各オファーの合計に対して資金供給されている割合を報告します。
 
@@ -57,7 +57,7 @@ labels:
 {% tab label="コマンドライン" %}
 ```sh
 #Syntax: book_offers taker_pays taker_gets [taker [ledger [limit] ] ]
-rippled book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B'
+xrpld book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B'
 ```
 {% /tab %}
 

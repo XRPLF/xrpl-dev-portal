@@ -131,7 +131,7 @@ El XRP Ledger soporta los siguientes algoritmos de firma criptográfica:
 | Tipo de clave  | Algoritmo | Descripción |
 |-------------|-----------|---|
 | `secp256k1` | [ECDSA](https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm) usando la curva eliptica [secp256k1](https://en.bitcoin.it/wiki/Secp256k1) | Este es el mismo esquema que utiliza Bitcoin. El XRP Ledger utiliza este tipo de claves por defecto. |
-| `ed25519`   | [EdDSA](https://tools.ietf.org/html/rfc8032) usando la curva elíptica [Ed25519](https://ed25519.cr.yp.to/) | Este es un algoritmo más novedoso que tiene mejor rendimiento y otras propiedades convenientes. Como las claves públicas Ed25519 son un byte menos que las claves secp256k1, `rippled` prefija las claves públicas Ed25519 con el byte `0xED` así ambos tipos de claves públicas son de 33 bytes. |
+| `ed25519`   | [EdDSA](https://tools.ietf.org/html/rfc8032) usando la curva elíptica [Ed25519](https://ed25519.cr.yp.to/) | Este es un algoritmo más novedoso que tiene mejor rendimiento y otras propiedades convenientes. Como las claves públicas Ed25519 son un byte menos que las claves secp256k1, `xrpld` prefija las claves públicas Ed25519 con el byte `0xED` así ambos tipos de claves públicas son de 33 bytes. |
 
 Cuando generas un par de claves con el [método wallet_propose][], puedes especificar el `key_type` para elegir que tipo de algorítmo criptográfico se utiliza para derivar las claves. Si has generado un tipo de clave disitnto al de por defecto, debes especificar también el `key_type` cuando firmas transacciones.
 
@@ -151,15 +151,13 @@ El proceso de derivar un par de claves depende del algoritmo de firma. En todos 
 
 Los procesos de derivación de claves descritos aquí están implementados en múltiples lugares y lenguajes de programación:
 
-- En C++ en el código base de `rippled`:
-    - [Definición de semilla](https://github.com/XRPLF/rippled/blob/develop/src/ripple/protocol/Seed.h)
-    - [Derivación de clave general & Ed25519](https://github.com/XRPLF/rippled/blob/develop/src/ripple/protocol/impl/SecretKey.cpp)
-    - [Derivación de clave secp256k1](https://github.com/XRPLF/rippled/blob/develop/src/ripple/protocol/impl/SecretKey.cpp)
+- En C++ en el código base de `xrpld`:
+    - {% source-link name="Definición de semilla" path="include/xrpl/protocol/Seed.h" /%}
+    - {% source-link name="Derivación de clave" path="src/libxrpl/protocol/SecretKey.cpp" /%}
 - En Python 3 en {% repo-link path="_code-samples/key-derivation/py/key_derivation.py" %}esta sección de códigos de ejemplo del repositorio{% /repo-link %}.
 - En JavaScript en el paquete [`ripple-keypairs`](https://github.com/XRPLF/xrpl.js/tree/main/packages/ripple-keypairs).
 
 ### Derivación de clave Ed25519
-[[Fuente]](https://github.com/XRPLF/rippled/blob/fc7ecd672a3b9748bfea52ce65996e324553c05f/src/ripple/protocol/impl/SecretKey.cpp#L203 "Fuente")
 
 [{% inline-svg file="/docs/img/key-derivation-ed25519.svg" /%}](/docs/img/key-derivation-ed25519.svg "Passphrase → Semilla → Clave secreta → Prefijo + Clave pública")
 
@@ -180,7 +178,6 @@ Los procesos de derivación de claves descritos aquí están implementados en m�
     Las claves efímeras de validador no pueden ser Ed25519.
 
 ### Derivación de clave secp256k1
-[[Fuente]](https://github.com/XRPLF/rippled/blob/develop/src/ripple/protocol/impl/SecretKey.cpp "Fuente")
 
 [{% inline-svg file="/docs/img/key-derivation-secp256k1.svg" /%}](/docs/img/key-derivation-secp256k1.svg "Passphrase → Semilla → Par de claves inicial (Root Key Pair) → Par de claves intermedias → Par de claves maestras")
 
@@ -199,7 +196,7 @@ Los pasos para derivar par de claves de cuenta XRP Ledger secp256k1 desde un val
 
     2. Calcular el [SHA-512Half][] del valor concatenado ( semilla+secuencia root).
 
-    3. Si el resultado no es una clave secreta válida secp256k1, incrementa la secuencia root en 1 y vuelve a empezar. [[Fuente]](https://github.com/XRPLF/rippled/blob/fc7ecd672a3b9748bfea52ce65996e324553c05f/src/ripple/crypto/impl/GenerateDeterministicKey.cpp#L103 "Fuente")
+    3. Si el resultado no es una clave secreta válida secp256k1, incrementa la secuencia root en 1 y vuelve a empezar.
 
         Una clave válida secp256k1 debe no ser cero, y debe ser numericamente menor que _secp256k1 group order_. El orden grupo secp256k1 es un valor constante `0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEBAAEDCE6AF48A03BBFD25E8CD0364141`.
 

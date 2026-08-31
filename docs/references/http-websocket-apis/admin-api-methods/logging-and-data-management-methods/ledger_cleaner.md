@@ -5,9 +5,9 @@ labels:
     - Data Retention
 ---
 # ledger_cleaner
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/LedgerCleanerHandler.cpp "Source")
+{% source-link path="src/xrpld/rpc/handlers/admin/data/LedgerCleaner.cpp" /%}
 
-The `ledger_cleaner` command controls the [Ledger Cleaner](https://github.com/XRPLF/rippled/tree/master/src/xrpld/app/ledger#the-ledger-cleaner), an asynchronous maintenance process that can find and repair corruption in `rippled`'s database of ledgers.
+The `ledger_cleaner` command controls the {% source-link name="Ledger Cleaner" path="src/xrpld/app/ledger#the-ledger-cleaner" /%}, an asynchronous maintenance process that can find and repair corruption in `rippled`'s database of ledgers.
 
 _The `ledger_cleaner` method is an [admin method](../index.md) that cannot be run by unprivileged users._
 

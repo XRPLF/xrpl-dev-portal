@@ -5,7 +5,7 @@ labels:
     - Tokens
 ---
 # RippleState
-[[Source]](https://github.com/XRPLF/rippled/blob/f64cf9187affd69650907d0d92e097eb29693945/include/xrpl/protocol/detail/ledger_entries.macro#L277-L289 "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/a5d238e7d4fa6ef2b539b759d58744d0a1c33c0c/include/xrpl/protocol/detail/ledger_entries.macro#L277-L289 "Source")
 
 A `RippleState` ledger entry represents a [trust line](../../../../concepts/tokens/fungible-tokens/index.md) between two accounts. Each account can change its own limit and other settings, but the balance is a single shared value. A trust line that is entirely in its default state is considered the same as a trust line that does not exist and is automatically deleted. You can create or modify a trust line with a [TrustSet transaction][].
 
@@ -56,10 +56,12 @@ In addition to the [common fields](../common-fields.md), {% code-page-name /%} e
 | `HighNode`          | String    | UInt64        | Yes       | (Omitted in some historical ledgers) A hint indicating which page of the high account's owner directory links to this entry, in case the directory consists of multiple pages. |
 | `HighQualityIn`     | Number    | UInt32        | No        | The inbound quality set by the high account, as an integer in the implied ratio `HighQualityIn`:1,000,000,000. As a special case, the value 0 is equivalent to 1 billion, or face value. |
 | `HighQualityOut`    | Number    | UInt32        | No        | The outbound quality set by the high account, as an integer in the implied ratio `HighQualityOut`:1,000,000,000. As a special case, the value 0 is equivalent to 1 billion, or face value. |
+| `HighSponsor`       | String    | AccountID     | No        | The sponsor paying the reserve on behalf of the _high account_ on the trust line. This is separate from `LowSponsor` because bidirectional trust lines may have the reserve held by two accounts. {% amendment-disclaimer name="Sponsor" /%} |
 | `LowLimit`          | Object    | Amount        | Yes       | The limit that the low account has set on the trust line. The `issuer` is the address of the low account that set this limit. |
 | `LowNode`           | String    | UInt64        | Yes       | (Omitted in some historical ledgers) A hint indicating which page of the low account's owner directory links to this entry, in case the directory consists of multiple pages. |
 | `LowQualityIn`      | Number    | UInt32        | No        | The inbound quality set by the low account, as an integer in the implied ratio `LowQualityIn`:1,000,000,000. As a special case, the value 0 is equivalent to 1 billion, or face value. |
 | `LowQualityOut`     | Number    | UInt32        | No        | The outbound quality set by the low account, as an integer in the implied ratio `LowQualityOut`:1,000,000,000. As a special case, the value 0 is equivalent to 1 billion, or face value. |
+| `LowSponsor`        | String    | AccountID     | No        | The sponsor paying the reserve on behalf of the _low account_ on the trust line. This is separate from `HighSponsor` because bidirectional trust lines may have the reserve held by two accounts. {% amendment-disclaimer name="Sponsor" /%} |
 | `PreviousTxnID`     | String    | UInt256       | Yes       | The identifying hash of the transaction that most recently modified this entry. |
 | `PreviousTxnLgrSeq` | Number    | UInt32        | Yes       | The [index of the ledger][Ledger Index] that contains the transaction that most recently modified this entry. |
 

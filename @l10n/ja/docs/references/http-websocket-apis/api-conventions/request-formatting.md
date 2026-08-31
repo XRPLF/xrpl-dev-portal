@@ -44,7 +44,7 @@ Content-Type: application/json
 
 {% tab label="コマンドライン" %}
 ```sh
-rippled account_info r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated strict
+xrpld account_info r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated strict
 ```
 {% /tab %}
 
@@ -53,7 +53,7 @@ rippled account_info r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated strict
 
 ## WebSocketフォーマット
 
-`rippled`サーバへのWebSocketを開いた後、以下のフィールドを使用して、コマンドを[JSON](https://ja.wikipedia.org/wiki/JSON)オブジェクトとして送信できます。
+`xrpld`サーバへのWebSocketを開いた後、以下のフィールドを使用して、コマンドを[JSON](https://ja.wikipedia.org/wiki/JSON)オブジェクトとして送信できます。
 
 | フィールド            | 型        | 説明                                        |
 |:--------------------|:----------|:-------------------------------------------|
@@ -66,7 +66,7 @@ rippled account_info r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated strict
 
 ## JSON-RPCフォーマット
 
-JSON-RPCリクエストを実行するには、`rippled`サーバがJSON-RPC接続をリッスンしているポートおよびIPで、HTTP **POST**リクエストをルートパス（`/`）に送信します。HTTP/1.0またはHTTP/1.1を使用できます。HTTPSを使用する場合は、TLS v1.2を使用してください。セキュリティ上の理由から、`rippled`ではSSL v3以前を _サポートしていません_ 。
+JSON-RPCリクエストを実行するには、`xrpld`サーバがJSON-RPC接続をリッスンしているポートおよびIPで、HTTP **POST**リクエストをルートパス（`/`）に送信します。HTTP/1.0またはHTTP/1.1を使用できます。HTTPSを使用する場合は、TLS v1.2を使用してください。セキュリティ上の理由から、`xrpld`ではSSL v3以前を _サポートしていません_ 。
 
 `Content-Type`ヘッダ(値`application/json`)を常に指定してください。
 
@@ -97,6 +97,6 @@ APIのメソッド名は、通常の(ダッシュで始まる)コマンドライ
 
 コマンドラインは常に最新の[APIバージョン](#api-versioning)を使用します。
 
-{% admonition type="warning" name="注意" %}コマンドラインインターフェイスは管理目的でのみ使用することを意図しており、_サポートされているAPIではありません_です。新しいバージョンの`rippled`では、警告なしにコマンドラインAPIに破壊的な変更が導入される可能性があります！{% /admonition %}
+{% admonition type="warning" name="注意" %}コマンドラインインターフェイスは管理目的でのみ使用することを意図しており、_サポートされているAPIではありません_です。新しいバージョンの`xrpld`では、警告なしにコマンドラインAPIに破壊的な変更が導入される可能性があります！{% /admonition %}
 
 {% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

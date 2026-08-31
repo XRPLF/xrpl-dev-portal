@@ -7,9 +7,9 @@ labels:
   - データ保持
 ---
 # log_level
-[[ソース]](https://github.com/XRPLF/rippled/blob/155fcdbcd0b4927152892c8c8be01d9cf62bed68/src/ripple/rpc/handlers/LogLevel.cpp "Source")
+{% source-link path="src/xrpld/rpc/handlers/admin/log/LogLevel.cpp" /%}
 
-`log_level`コマンドは`rippled`サーバのログ詳細レベルを変更するか、各ログメッセージカテゴリ（_パーティション_）の現在のログレベルを返します。
+`log_level`コマンドは`xrpld`サーバのログ詳細レベルを変更するか、各ログメッセージカテゴリ（_パーティション_）の現在のログレベルを返します。
 
 _`log_level`メソッドは、権限のないユーザは実行できない[管理メソッド](../index.md)です。_
 
@@ -32,7 +32,7 @@ _`log_level`メソッドは、権限のないユーザは実行できない[管�
 {% tab label="コマンドライン" %}
 ```sh
 #Syntax: log_level [[partition] severity]
-rippled log_level PathRequest debug
+xrpld log_level PathRequest debug
 ```
 {% /tab %}
 
@@ -53,7 +53,7 @@ rippled log_level PathRequest debug
 
 {% tab label="コマンドライン（ログレベルの設定）" %}
 ```json
-Loading: "/etc/rippled.cfg"
+Loading: "/etc/xrpld.cfg"
 Connecting to 127.0.0.1:5005
 
 {
@@ -66,7 +66,7 @@ Connecting to 127.0.0.1:5005
 
 {% tab label="コマンドライン（ログレベルの確認）" %}
 ```json
-Loading: "/etc/rippled.cfg"
+Loading: "/etc/xrpld.cfg"
 Connecting to 127.0.0.1:5005
 
 {

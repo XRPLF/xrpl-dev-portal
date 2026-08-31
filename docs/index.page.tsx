@@ -17,7 +17,7 @@ const recommendedPages = [
   },
   {
     description: 'Run a Validator',
-    link: '/docs/infrastructure/configuration/server-modes/run-rippled-as-a-validator/',
+    link: '/docs/infrastructure/configuration/server-modes/run-xrpld-as-a-validator/',
   },
   {
     description: 'Reserves',
@@ -137,7 +137,7 @@ const devTools = [
   {
     title: 'WebSocket Tool',
     link: '/resources/dev-tools/websocket-api-tool',
-    description: 'Send sample requests and get responses from the rippled API.',
+    description: 'Send sample requests and get responses from the xrpld API.',
   },
   {
     title: 'XRP Ledger Explorer',

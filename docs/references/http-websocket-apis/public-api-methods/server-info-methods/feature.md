@@ -8,7 +8,7 @@ labels:
 
 # feature
 
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/Feature1.cpp "Source")<br/>
+{% source-link path="src/xrpld/rpc/handlers/server_info/Feature.cpp" /%}<br/>
 
 The `feature` command returns information about [amendments](../../../../concepts/networks-and-servers/amendments.md) this server knows about, including whether they are enabled and if the server knows how to apply the amendments.
 
@@ -47,7 +47,7 @@ An example of the request format:
 {% tab label="Commandline" %}
 ```sh
 #Syntax: feature [<feature_id>]
-rippled feature 4C97EBA926031A7CF7D7B36FDE3ED66DDA5421192D63DE53FFB46E43B9DC8373
+xrpld feature 4C97EBA926031A7CF7D7B36FDE3ED66DDA5421192D63DE53FFB46E43B9DC8373
 ```
 {% /tab %}
 
@@ -102,7 +102,7 @@ An example of a successful response:
 
 {% tab label="Commandline" %}
 ```json
-Loading: "/etc/rippled.cfg"
+Loading: "/etc/xrpld.cfg"
 Connecting to 127.0.0.1:5005
 
 {

@@ -2,7 +2,7 @@
 html: transaction-censorship-detection.html
 parent: networks-and-servers.html
 seo:
-    description: El XRP Ledger proporciona un detector de censura de transacciones automatizado que está disponible en todos los servidores rippled.
+    description: El XRP Ledger proporciona un detector de censura de transacciones automatizado que está disponible en todos los servidores xrpld.
 labels:
   - Blockchain
 ---
@@ -10,9 +10,9 @@ labels:
 
 {% badge href="https://github.com/XRPLF/rippled/releases/tag/1.2.0" %}Nuevo en: rippled 1.2.0{% /badge %}
 
-El XRP Ledger está diseñado para ser resistente a la censura. En apoyo a este diseño, el XRP Ledger proporciona un detector automatizado de censura de transacciones que está disponible en todos los servidores `rippled`, permitiendo que todos los participantes vean si la censura está afectando a la red.
+El XRP Ledger está diseñado para ser resistente a la censura. En apoyo a este diseño, el XRP Ledger proporciona un detector automatizado de censura de transacciones que está disponible en todos los servidores `xrpld`, permitiendo que todos los participantes vean si la censura está afectando a la red.
 
-Mientras un servidor `rippled` está sincronizado con la red, el detector rastrea todas las transacciones que deberían haber sido aceptadas en la última ronda de [consensus](../consensus-protocol/index.md) e incluidas en el último ledger validado. El detector emite mensajes de registro de severidad creciente cuando ve transacciones que no han sido incluidas en un ledger validado después de varias rondas de consenso.
+Mientras un servidor `xrpld` está sincronizado con la red, el detector rastrea todas las transacciones que deberían haber sido aceptadas en la última ronda de [consensus](../consensus-protocol/index.md) e incluidas en el último ledger validado. El detector emite mensajes de registro de severidad creciente cuando ve transacciones que no han sido incluidas en un ledger validado después de varias rondas de consenso.
 
 
 
@@ -28,7 +28,7 @@ A alto nivel, así es cómo el detector de censura de transacciones funciona:
 
     Mientras la transacción permanezca en el rastreador, el detector continuará emitiendo un mensaje de advertencia en el registro cada 15 ledgers, hasta cinco mensajes de advertencia. Después del quinto mensaje de advertencia, el detector emite un [mensaje de error](#ejemplo-de-mensaje-de-error) final en el registro y luego deja de emitir mensajes de advertencia y error.
 
-    Si ves estos mensajes en el registro de tu servidor rippled, debes investigar por qué otros servidores no están incluyendo la transacción, comenzando con la suposición de que la causa es más probable que sea un [falso positivo](#potenciales-falsos-positivos) (error inocente) que una censura maliciosa.
+    Si ves estos mensajes en el registro de tu servidor xrpld, debes investigar por qué otros servidores no están incluyendo la transacción, comenzando con la suposición de que la causa es más probable que sea un [falso positivo](#potenciales-falsos-positivos) (error inocente) que una censura maliciosa.
 
 ## Ejemplo de mensaje de advertencia
 

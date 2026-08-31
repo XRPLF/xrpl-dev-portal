@@ -89,6 +89,8 @@
       items:
         - page: ./docs/tutorials/get-started/get-started-javascript.md
           label: JavaScript
+        - page: ./docs/tutorials/get-started/get-started-typescript.md
+          label: TypeScript
         - page: ./docs/tutorials/get-started/get-started-python.md
           label: Python
         - page: ./docs/tutorials/get-started/get-started-java.md
@@ -156,9 +158,6 @@
       - page: ./community/events.page.tsx
         label: Events
         labelTranslationKey: topnav.community.events
-      - page: ./community/ambassadors.page.tsx
-        label: Ambassadors
-        labelTranslationKey: topnav.community.ambassadors
       - page: ./community/developer-funding.page.tsx
         label: Developer Funding
         labelTranslationKey: topnav.community.developer-funding

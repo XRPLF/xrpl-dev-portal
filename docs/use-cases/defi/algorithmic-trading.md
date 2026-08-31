@@ -78,7 +78,7 @@ Non-fungible tokens work differently; for the code and technical steps to trade 
 
 ### Reading Trade Data
 
-There are many sources of information about the trading activity in the XRP Ledger. Depending on your trading strategy and use case, you may be able to connect to the XRP Ledger through [Public Servers](../../tutorials/public-servers.md), but you can often benefit from running your own server, and some use cases may not be practical without doing so. See [Install `rippled`](../../infrastructure/installation/index.md) for instructions on how to set up a core server in P2P mode.
+There are many sources of information about the trading activity in the XRP Ledger. Depending on your trading strategy and use case, you may be able to connect to the XRP Ledger through [Public Servers](../../tutorials/public-servers.md), but you can often benefit from running your own server, and some use cases may not be practical without doing so. See [Install `xrpld`](../../infrastructure/installation/index.md) for instructions on how to set up a core server in P2P mode.
 
 If your approach involves following other transaction activity, you may need to read the transactions' detailed metadata to know exactly how much they traded. Offers can partially execute and may consume multiple matching offers. For a detailed explanation of how to interpret transaction metadata, see [Look Up Transaction Results](../../concepts/transactions/finality-of-results/look-up-transaction-results.md).
 

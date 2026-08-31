@@ -9,7 +9,7 @@ labels:
 txIcon: send
 ---
 # Payment
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/Payment.cpp "ソース")
+{% source-link path="src/libxrpl/tx/transactors/payment/Payment.cpp" /%}
 
 Paymentトランザクションは、アカウント間での価値の移動を表現するものです(通過するパスによっては、非可分的に発生する追加的な価値交換を伴うことがあります)。このトランザクションタイプはいくつかの[支払いの種類](#paymentの種類)に使用することがでできます。
 

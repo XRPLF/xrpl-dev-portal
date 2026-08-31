@@ -8,7 +8,7 @@ requiredAmendment: NonFungibleTokensV1_1
 txIcon: cancel
 ---
 # NFTokenBurn
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/NFTokenBurn.cpp "Source")
+{% source-link path="src/libxrpl/tx/transactors/nft/NFTokenBurn.cpp" /%}
 
 Burn (destroy) a [non-fungible token (NFT)](../../../../concepts/tokens/nfts/index.md). The NFT's current holder can always burn it, and if the token's **Burnable** flag is enabled, the issuer and their authorized minter (if they have one) can also burn the NFT.
 
@@ -36,7 +36,7 @@ If the transaction succeeds, it removes the corresponding [NFToken][] object fro
 | Field             | JSON Type | [Internal Type][] | Description              |
 |:------------------|:----------|:------------------|:-------------------------|
 | `NFTokenID`       | String    | UInt256           | The `NFToken` to be removed by this transaction. |
-| `Owner`           | String    | AccountID         | _(Optional)_ The owner of the `NFToken` to burn. Only used if that owner is different than the account sending this transaction. The issuer or authorized minter can use this field to burn NFTs that have the `lsfBurnable` flag enabled. |
+| `Owner`           | String    | AccountID         | _(Optional)_ The owner of the `NFToken` to burn. Only used if that owner is different than the account sending this transaction. The issuer or authorized minter can use this field to burn NFTs that have the `flagBurnable` flag enabled. |
 
 
 ## Error Cases

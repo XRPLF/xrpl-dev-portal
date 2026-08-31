@@ -17,7 +17,7 @@ The software that powers the XRP Ledger is open-source, so anyone can download, 
 | XRP Ledger Source Code |                                                     |
 |:-----------------------|:----------------------------------------------------|
 | Repository             | <https://github.com/XRPLF/rippled>                |
-| License                | [Multiple; ISC (permissive)](https://github.com/XRPLF/rippled/blob/develop/LICENSE.md) |
+| License                | {% source-link name="Multiple; ISC (permissive)" path="LICENSE.md" /%} |
 | Programming Language   | C++                                                 |
 
 If you're not sure where to start, Dev Null Productions provides a detailed and thorough [**Source Code Guide**](https://xrpintel.com/source) that describes the structure and functions of the core XRP Ledger server (`rippled`) implementation.

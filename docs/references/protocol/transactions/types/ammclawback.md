@@ -9,7 +9,7 @@ txIcon: cancel
 ---
 # AMMClawback
 
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/AMMClawback.cpp "Source")
+{% source-link path="src/libxrpl/tx/transactors/dex/AMMClawback.cpp" /%}
 
 Claw back tokens from a holder who has deposited your issued tokens into an AMM pool.
 
@@ -95,15 +95,16 @@ Clawback is disabled by default:
 
 Besides errors that can occur for all transactions, `AMMClawback` transactions can result in the following [transaction result codes](../transaction-results/index.md):
 
-| Error Code         | Description |
-|:-------------------|:------------|
-| `tecAMM_BALANCE`   | The `Holder` doesn't hold any LP tokens from the AMM pool. |
-| `tecNO_PERMISSION` | The sender does not have permission to claw back the requested asset or assets. This includes the following cases:<ul><li>For trust line tokens: the issuer account doesn't have the **Allow Trust Line Clawback** flag enabled.</li><li>For MPTs: the MPT issuance doesn't have the **Can Clawback** flag enabled.</li><li>The sender of the transaction is not the issuer of the token to be clawed back.</li><li>The `tfClawTwoAssets` flag is enabled, but the sender is not the issuer of both assets in the AMM.</li></ul> |
-| `temDISABLED`      | At least one of the assets or the amount is an MPT, but the [MPTokensV2 amendment][] is not enabled. (Also occurs if the [AMMClawback amendment][] is not enabled.) |
-| `temBAD_AMOUNT`    | The `Amount` field is less than or equal to 0, or the asset in `Amount` doesn't match `Asset`. |
-| `temINVALID_FLAG`  | You tried enabling flags besides `tfClawTwoAssets`, or `tfClawTwoAssets` is enabled but the two assets don't have the same issuer. |
-| `temMALFORMED`     | The issuer in `Asset` doesn't match `Account`, `Account` is the same as `Holder`, or `Asset` is XRP. |
-| `terNO_AMM`        | The AMM pool specified by `Asset` and `Asset2` doesn't exist. |
+| Error Code | Description |
+|:---|:---|
+| `tecAMM_BALANCE` | The `Holder` doesn't hold any LP tokens from the AMM pool. |
+| `tecNO_PERMISSION` | The sender does not have permission to claw back the requested asset or assets. This includes the following cases: <ul><li>For trust line tokens: the issuer account doesn't have the **Allow Trust Line Clawback** flag enabled.</li><li>For MPTs: the MPT issuance doesn't have the **Can Clawback** flag enabled.</li><li>The sender of the transaction is not the issuer of the token to be clawed back.</li><li>The `tfClawTwoAssets` flag is enabled, but the sender is not the issuer of both assets in the AMM.</li></ul> |
+| `tecPRECISION_LOSS` | The clawback would leave more LP Tokens outstanding than the pool's assets support. {% amendment-disclaimer name="fixAMMv1_3" /%} {% amendment-disclaimer name="fixCleanup3_3_0" /%} |
+| `temDISABLED` | At least one of the assets or the amount is an MPT, but the [MPTokensV2 amendment](../../../../concepts/tokens/fungible-tokens/multi-purpose-tokens.md) is not enabled. (Also occurs if the [AMMClawback amendment](../../../../concepts/tokens/fungible-tokens/clawback.md) is not enabled.) |
+| `temBAD_AMOUNT` | The `Amount` field is less than or equal to 0, or the asset in `Amount` doesn't match `Asset`. |
+| `temINVALID_FLAG` | You tried enabling flags besides `tfClawTwoAssets`, or `tfClawTwoAssets` is enabled but the two assets don't have the same issuer. |
+| `temMALFORMED` | The issuer in `Asset` doesn't match `Account`, `Account` is the same as `Holder`, or `Asset` is XRP. |
+| `terNO_AMM` | The AMM pool specified by `Asset` and `Asset2` doesn't exist. |
 
 ## See Also
 

@@ -43,7 +43,7 @@ An example of the request format:
 
 ```sh
 #Syntax: {{currentpage.name}} TODO
-rippled {{currentpage.name}}
+xrpld {{currentpage.name}}
 ```
 
 <!-- MULTICODE_BLOCK_END -->
@@ -80,7 +80,7 @@ An example of a successful response:
 *Commandline*
 
 ```json
-Loading: "/etc/rippled.cfg"
+Loading: "/etc/xrpld.cfg"
 Connecting to 127.0.0.1:5005
 
 {

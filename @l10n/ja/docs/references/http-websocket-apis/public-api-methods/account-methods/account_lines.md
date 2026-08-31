@@ -7,7 +7,7 @@ labels:
   - トークン
 ---
 # account_lines
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/AccountLines.cpp "Source")
+{% source-link path="src/xrpld/rpc/handlers/account/AccountLines.cpp" /%}
 
 `account_lines`メソッドは、アカウントのトラストラインに関する情報（XRP以外のあらゆる通貨の残高と資産など）を返します。取得された情報はすべて、特定バージョンのレジャーに関連付けられています。
 
@@ -43,7 +43,7 @@ labels:
 {% tab label="Commandline" %}
 ```sh
 #Syntax: account_lines <account> [<peer>] [<ledger_index>|<ledger_hash>]
-rippled account_lines r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59
+xrpld account_lines r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59
 ```
 {% /tab %}
 

@@ -6,7 +6,7 @@ labels:
   - Data Retention
 ---
 # account_objects
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/AccountObjects.cpp "Source")
+{% source-link path="src/xrpld/rpc/handlers/account/AccountObjects.cpp" /%}
 
 The `account_objects` command returns _all_ ledger entries owned by an account, in their raw [ledger format][].
 
@@ -52,7 +52,7 @@ An example of the request format:
 {% tab label="Commandline" %}
 ```sh
 #Syntax: account_objects <account> [<ledger>]
-rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
+xrpld account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
 ```
 {% /tab %}
 
@@ -70,6 +70,7 @@ The request includes the following parameters:
 | `ledger_index`           | [Ledger Index][]     | No        | The [ledger index][] of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
 | `limit`                  | Number               | No        | The maximum number of ledger entries to include in the results. Must be within the inclusive range `10` to `400` on non-admin connections. The default is `200`. |
 | `marker`                 | [Marker][]           | No        | Value from a previous paginated response. Resume retrieving data where that response left off. |
+| `sponsored`              | Boolean              | No        | If `true`, return only sponsored ledger entries (entries with a `Sponsor`, `HighSponsor`, or `LowSponsor` field). If `false`, return only entries that are not sponsored. If omitted, return entries regardless of sponsorship. {% amendment-disclaimer name="Sponsor" /%} |
 | `type`                   | String               | No        | Filter results to a specific type of ledger entry. This field accepts canonical names of [ledger entry types](../../../protocol/ledger-data/ledger-entry-types/index.md) (case insensitive) or [short names](../../api-conventions/ledger-entry-short-names.md). Ledger entry types that can't appear in an owner directory are not allowed. If omitted, return ledger entries of all types. |
 
 {% admonition type="info" name="Note" %}The commandline interface to the `account_objects` command doesn't accept the `type` field. Use the [json method][] to send the JSON-RPC format request on the commandline instead.{% /admonition %}
@@ -89,7 +90,7 @@ An example of a successful response:
 {% /tab %}
 
 {% tab label="Commandline" %}
-{% code-snippet file="/_api-examples/account_objects/jsonrpc-response.json" language="json" prefix="Loading: \"/etc/opt/ripple/rippled.cfg\"\n2025-Aug-14 19:51:30.882061715 UTC HTTPClient:NFO Connecting to 127.0.0.1:5005\n\n" /%}
+{% code-snippet file="/_api-examples/account_objects/jsonrpc-response.json" language="json" prefix="Loading: \"/etc/xrpld/xrpld.cfg\"\n2025-Aug-14 19:51:30.882061715 UTC HTTPClient:NFO Connecting to 127.0.0.1:5005\n\n" /%}
 {% /tab %}
 
 {% /tabs %}

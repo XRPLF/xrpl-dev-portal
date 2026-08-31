@@ -7,7 +7,7 @@ labels:
   - コアサーバ
 ---
 # peer_reservations_add
-[[ソース]](https://github.com/XRPLF/rippled/blob/4a1148eb2849513dd1e7ae080288fd47ab57a376/src/ripple/rpc/handlers/Reservations.cpp#L36 "Source")
+[[ソース]](https://github.com/XRPLF/rippled/blob/cdee9a675c0e571b5c86dc01550a554a42e6f85c/src/xrpld/rpc/handlers/admin/peer/PeerReservationsAdd.cpp#L18 "Source")
 
 この{% code-page-name /%}メソッドは、XRP Ledger[ピアツーピアネットワーク](../../../../concepts/networks-and-servers/peer-protocol.md)内の特定のピアサーバの予約済みスロットを追加または更新します。{% badge href="https://github.com/XRPLF/rippled/releases/tag/1.4.0" %}新規: rippled 1.4.0{% /badge %}
 
@@ -46,7 +46,7 @@ _{% code-page-name /%}メソッドは、権限のないユーザは実行でき�
 {% tab label="コマンドライン" %}
 ```sh
 #Syntax: {% $frontmatter.seo.title %} <public_key> [<description>]
-rippled {% $frontmatter.seo.title %} n9Jt8awsPzWLjBCNKVEEDQnw4bQEPjezfcQ4gttD1UzbLT1FoG99 "Ripple s1 server 'WOOL'"
+xrpld {% $frontmatter.seo.title %} n9Jt8awsPzWLjBCNKVEEDQnw4bQEPjezfcQ4gttD1UzbLT1FoG99 "Ripple s1 server 'WOOL'"
 ```
 {% /tab %}
 
@@ -99,7 +99,7 @@ rippled {% $frontmatter.seo.title %} n9Jt8awsPzWLjBCNKVEEDQnw4bQEPjezfcQ4gttD1Uz
 
 {% tab label="コマンドライン" %}
 ```json
-Loading: "/etc/rippled.cfg"
+Loading: "/etc/xrpld.cfg"
 Connecting to 127.0.0.1:5005
 
 {

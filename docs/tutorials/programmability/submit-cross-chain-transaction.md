@@ -33,7 +33,7 @@ const xchainbridge = {
   "LockingChainIssue": {
     "currency": "XRP"
   },
-  "IssuingChainDoor": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh", // Use the genesis address hardcoded in rippled
+  "IssuingChainDoor": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh", // Use the genesis address hardcoded in xrpld
   "IssuingChainIssue": {
     "currency": "XRP"
   }

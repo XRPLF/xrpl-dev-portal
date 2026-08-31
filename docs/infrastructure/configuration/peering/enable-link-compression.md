@@ -8,16 +8,16 @@ labels:
 ---
 # Enable Link Compression
 
-The `rippled` server can save bandwidth by compressing its [peer-to-peer communications](../../../concepts/networks-and-servers/peer-protocol.md), at a cost of greater CPU usage. If you enable link compression, the server automatically compresses communications with peer servers that also have link compression enabled.
+The `xrpld` server can save bandwidth by compressing its [peer-to-peer communications](../../../concepts/networks-and-servers/peer-protocol.md), at a cost of greater CPU usage. If you enable link compression, the server automatically compresses communications with peer servers that also have link compression enabled.
 
 ## Steps
 
 To enable link compression on your server, complete the following steps:
 
-### 1. Edit your `rippled` server's config file.
+### 1. Edit your `xrpld` server's config file.
 
 ```sh
-$ vim /etc/opt/ripple/rippled.cfg
+$ vim /etc/xrpld/xrpld.cfg
 ```
 
 {% partial file="/docs/_snippets/conf-file-location.md" /%}
@@ -33,10 +33,10 @@ true
 
 Use `false` to disable compression (the default).
 
-### 3. Restart the `rippled` server
+### 3. Restart the `xrpld` server
 
 ```sh
-$ sudo systemctl restart rippled.service
+$ sudo systemctl restart xrpld.service
 ```
 
 After the restart, your server automatically uses link compression with other peers that also have link compression enabled.

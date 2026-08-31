@@ -5,7 +5,7 @@ labels:
     - Transaction Sending
 ---
 # submit_multisigned
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/SubmitMultiSigned.cpp "Source")
+{% source-link path="src/xrpld/rpc/handlers/transaction/SubmitMultiSigned.cpp" /%}
 
 The `submit_multisigned` command applies a [multi-signed](../../../../concepts/accounts/multi-signing.md) transaction and sends it to the network to be included in future ledgers. (You can also submit multi-signed transactions in binary form using the [`submit` command in submit-only mode](submit.md#submit-only-mode).)
 
@@ -95,7 +95,7 @@ An example of the request format:
 {% tab label="Commandline" %}
 ```sh
 #Syntax: submit_multisigned <tx_json>
-rippled submit_multisigned '{
+xrpld submit_multisigned '{
     "Account": "rEuLyBCvcw4CFmzv8RepSiAoNgF8tTGJQC",
     "Fee": "30000",
     "Flags": 262144,
@@ -237,7 +237,7 @@ An example of a successful response:
 
 {% tab label="Commandline" %}
 ```
-Loading: "/etc/rippled.cfg"
+Loading: "/etc/xrpld.cfg"
 Connecting to 127.0.0.1:5005
 
 {

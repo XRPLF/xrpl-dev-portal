@@ -8,7 +8,7 @@ requiredAmendment: AMM
 txIcon: create
 ---
 # AMMCreate
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/AMMCreate.cpp "Source")
+{% source-link path="src/libxrpl/tx/transactors/dex/AMMCreate.cpp" /%}
 
 Create a new [Automated Market Maker](../../../../concepts/tokens/decentralized-exchange/automated-market-makers.md) (AMM) instance for trading a pair of assets ([fungible tokens](../../../../concepts/tokens/index.md) or [XRP](../../../../introduction/what-is-xrp.md)).
 
@@ -77,7 +77,7 @@ Creates both an [AMM entry][] and a [special AccountRoot entry](../../ledger-dat
 | `Amount2`    | [Currency Amount][] | Amount            | Yes       | The second of the two assets (XRP or fungible token) to fund this AMM with. This must be a positive amount. |
 | `TradingFee` | Number              | UInt16            | Yes       | The fee to charge for trades against this AMM instance, in units of 1/100,000; a value of 1 is equivalent to 0.001%. The maximum value is `1000`, indicating a 1% fee. The minimum value is `0`. |
 
-One or both of `Amount` and `Amount2` can be [fungible tokens](../../../../concepts/tokens/index.md); at most one of them can be [XRP](../../../../introduction/what-is-xrp.md). The assets _cannot_ be LP Tokens for another AMM.
+One or both of `Amount` and `Amount2` can be [fungible tokens](../../../../concepts/tokens/index.md); at most one of them can be [XRP](../../../../introduction/what-is-xrp.md). The assets **cannot** be LP Tokens for another AMM, and **cannot** be the shares of a [Single Asset Vault](../../../../concepts/tokens/single-asset-vaults.md). Vault shares are issued by a [pseudo-account](../../../../concepts/accounts/pseudo-accounts.md) and can't be held by another one.
 
 - **Trust line tokens:** Cannot have the same currency code and issuer. The issuers must have [Default Ripple](../../../../concepts/tokens/fungible-tokens/rippling.md#the-default-ripple-flag) enabled.
 - **MPTs:** Cannot have the same `mpt_issuance_id`. The issuance must have **Can Trade** and **Can Transfer** enabled.
@@ -103,7 +103,8 @@ Besides errors that can occur for all transactions, {% $frontmatter.seo.title %}
 | `tecNO_PERMISSION`  | At least one of the MPT deposit assets does not have **Can Trade** enabled. |
 | `tecOBJECT_NOT_FOUND` | At least one of the MPT issuances does not exist. |
 | `tecUNFUNDED_AMM`   | The sender does not hold enough of the assets specified in `Amount` and `Amount2` to fund the AMM. |
-| `temDISABLED`       | At least one of the amounts is an MPT, but the [MPTokensV2 amendment][] is not enabled. |
+| `tecWRONG_ASSET` | At least one of `Amount` or `Amount2` is the share token of a [Single Asset Vault](../../../../concepts/tokens/single-asset-vaults.md), which cannot be used as an AMM pool asset. |
+| `temDISABLED` | At least one of the amounts is an MPT, but the [MPTokensV2 amendment](../../../../concepts/tokens/fungible-tokens/multi-purpose-tokens.md) is not enabled. |
 | `terNO_RIPPLE`      | The issuer of at least one of the assets has not enabled the [Default Ripple flag](../../../../concepts/tokens/fungible-tokens/rippling.md#the-default-ripple-flag). |
 | `temAMM_BAD_TOKENS` | The values of `Amount` and `Amount2` are not valid: for example, both refer to the same token. |
 | `temBAD_FEE`        | The `TradingFee` value is invalid. It must be zero or a positive integer and cannot be over 1000. |

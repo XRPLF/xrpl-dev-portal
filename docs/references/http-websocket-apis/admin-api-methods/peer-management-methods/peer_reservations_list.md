@@ -5,7 +5,7 @@ labels:
     - Core Server
 ---
 # peer_reservations_list
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/Reservations.cpp "Source")
+{% source-link path="src/xrpld/rpc/handlers/admin/peer/PeerReservationsList.cpp" /%}
 
 The {% code-page-name /%} method lists [peer reservations][].
 
@@ -38,7 +38,7 @@ An example of the request format:
 {% tab label="Commandline" %}
 ```sh
 #Syntax: {% $frontmatter.seo.title %}
-rippled {% $frontmatter.seo.title %}
+xrpld {% $frontmatter.seo.title %}
 ```
 {% /tab %}
 
@@ -95,7 +95,7 @@ An example of a successful response:
 
 {% tab label="Commandline" %}
 ```json
-Loading: "/etc/rippled.cfg"
+Loading: "/etc/xrpld.cfg"
 2019-Dec-27 21:56:07.253260422 HTTPClient:NFO Connecting to 127.0.0.1:5005
 
 {

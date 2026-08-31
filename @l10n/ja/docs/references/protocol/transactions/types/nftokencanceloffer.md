@@ -9,7 +9,7 @@ requiredAmendment: NonFungibleTokensV1_1
 txIcon: cancel
 ---
 # NFTokenCancelOffer
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/NFTokenCancelOffer.cpp "ソース")
+{% source-link path="src/libxrpl/tx/transactors/nft/NFTokenCancelOffer.cpp" /%}
 
 `NFTokenCancelOffer`トランザクションは、`NFTokenCreateOffer`を使用して作成した既存のトークンへのオファーをキャンセルするために使用できます。
 

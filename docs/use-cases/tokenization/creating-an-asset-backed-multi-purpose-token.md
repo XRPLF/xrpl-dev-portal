@@ -477,13 +477,13 @@ Follow the link and scroll down to find the `MPTokenIssuanceCreate` transaction 
 
 ![Explorer record of the new T-bill MPT.](../../img/uc-mpt1-t-bill-in-explorer.png)
 
-Click **Gather MPT Information** to copy the account information and MPT Issuance ID to the result field. Copy the information and save it to send the MPT to another account as shown in [Sending MPTs](../../tutorials/tokens/mpts/sending-mpts-in-javascript.md).
+Click **Gather MPT Information** to copy the account information and MPT Issuance ID to the result field. Copy the information and save it to send the MPT to another account as shown in [Send a Multi-Purpose Token (MPT)](../../tutorials/payments/send-an-mpt.md).
 
 ![Account and MPT ID in the result field.](../../img/uc-mpt1-t-bill-gather-mpt-info.png)
 
 ## See Also
 
 - [Issue a Multi-Purpose Token (MPT)](../../tutorials/tokens/mpts/issue-a-multi-purpose-token.md)
-- [Sending MPTs](../../tutorials/tokens/mpts/sending-mpts-in-javascript.md)
+- [Send a Multi-Purpose Token (MPT)](../../tutorials/payments/send-an-mpt.md)
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

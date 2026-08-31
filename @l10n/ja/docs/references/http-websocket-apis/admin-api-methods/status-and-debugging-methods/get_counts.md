@@ -7,7 +7,7 @@ labels:
   - コアサーバ
 ---
 # get_counts
-[[ソース]](https://github.com/XRPLF/rippled/blob/c7118a183a660648aa88a3546a6b2c5bce858440/src/ripple/rpc/handlers/GetCounts.cpp "Source")
+{% source-link path="src/xrpld/rpc/handlers/admin/status/GetCounts.cpp" /%}
 
 `get_counts`コマンドは、サーバの健全性に関するさまざまな統計情報を提供します。そのほとんどは、現在メモリーに格納されている各種オブジェクトの数です。
 
@@ -44,7 +44,7 @@ _`get_counts`メソッドは、権限のないユーザは実行できない[管
 {% tab label="コマンドライン" %}
 ```sh
 #Syntax: get_counts [min_count]
-rippled get_counts 100
+xrpld get_counts 100
 ```
 {% /tab %}
 
@@ -101,7 +101,7 @@ rippled get_counts 100
 
 {% tab label="コマンドライン" %}
 ```json
-Loading: "/etc/rippled.cfg"
+Loading: "/etc/xrpld.cfg"
 Connecting to 127.0.0.1:5005
 
 {

@@ -2,7 +2,7 @@
 html: ledger-history.html
 parent: networks-and-servers.html
 seo:
-    description: Los servidores rippled almacenan una cantidad variable de transacciones e historial del estado localmente.
+    description: Los servidores xrpld almacenan una cantidad variable de transacciones e historial del estado localmente.
 labels:
   - Retención de datos
   - Blockchain
@@ -10,15 +10,15 @@ labels:
 ---
 # Histórico del ledger
 
-El [proceso de consenso](../consensus-protocol/index.md) crea una cadena de [versiones de ledgers validados](../ledgers/index.md), cada uno derivado del anterior aplicando un conjunto de [transacciones](../transactions/index.md). Cada [servidor `rippled`](index.md) almacena versiones de ledgers y el historial de transacciones locálmente. La cantidad de histórico de transacciones que un servidor almacena depende de cuanto tiempo ese servidor ha estado online y cuanto histórico está configurado para recuperar y mantener.
+El [proceso de consenso](../consensus-protocol/index.md) crea una cadena de [versiones de ledgers validados](../ledgers/index.md), cada uno derivado del anterior aplicando un conjunto de [transacciones](../transactions/index.md). Cada [servidor `xrpld`](index.md) almacena versiones de ledgers y el historial de transacciones locálmente. La cantidad de histórico de transacciones que un servidor almacena depende de cuanto tiempo ese servidor ha estado online y cuanto histórico está configurado para recuperar y mantener.
 
 Los servidores en la red peer-to-peer XRP Ledger comparten transacciones y otros datos entre sí como parte del proceso de consenso. Cada servidor construye de forma independiente una nueva versión del ledger y compara los resultados con sus validadores de confianza para asegurar la consistencia. (Si un consenso de validadores de confianza no está de acuerdo con los resultados de un servidor, ese servidor recupera los datos necesarios de sus pares para lograr consistencia.) Los servidores pueden descargar datos más antiguos de sus pares para completar huecos en su historial disponible. La estructura del ledger utiliza [hashes](../../references/protocol/data-types/basic-data-types.md#hashes) criptográficos de los datos para que cualquier servidor pueda verificar la integridad y consistencia de los datos.
 
 ## Bases de datos
 
-Los servidores mantienen datos del estado del ledger y transacciones en un almacén de clave-valor llamada almacén del ledger o _ledger store_. Además, `rippled` mantiene algunos archivos de base de datos SQLite para un acceso más flexible a cosas como el historial de transacciones y para rastrear ciertos cambios de configuración.
+Los servidores mantienen datos del estado del ledger y transacciones en un almacén de clave-valor llamada almacén del ledger o _ledger store_. Además, `xrpld` mantiene algunos archivos de base de datos SQLite para un acceso más flexible a cosas como el historial de transacciones y para rastrear ciertos cambios de configuración.
 
-Normalmente, es seguro eliminar todos los archivos de base de datos de un servidor `rippled` cuando ese servidor no está en funcionamiento. (Es posible que quieras hacer esto, por ejemplo, si cambias la configuración de almacenamiento del servidor o si estás cambiando de una red de prueba a la red de producción).
+Normalmente, es seguro eliminar todos los archivos de base de datos de un servidor `xrpld` cuando ese servidor no está en funcionamiento. (Es posible que quieras hacer esto, por ejemplo, si cambias la configuración de almacenamiento del servidor o si estás cambiando de una red de prueba a la red de producción).
 
 ## Historial disponible
 
@@ -65,7 +65,7 @@ Para instrucciones de cómo configurar un servidor full history, consultar [Conf
     - [Ledgers](../ledgers/index.md)
     - [Consenso](../consensus-protocol/index.md)
 - **Tutoriales:**
-    - [Configurar `rippled`](../../infrastructure/configuration/index.md)
+    - [Configurar `xrpld`](../../infrastructure/configuration/index.md)
         - [Configurar Online Deletion](../../infrastructure/configuration/data-retention/configure-online-deletion.md)
         - [Configurar Advisory Deletion](../../infrastructure/configuration/data-retention/configure-advisory-deletion.md)
         - [Configurar Full History](../../infrastructure/configuration/data-retention/configure-full-history.md)

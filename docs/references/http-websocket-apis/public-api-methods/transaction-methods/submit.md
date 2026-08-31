@@ -6,7 +6,7 @@ labels:
     - Payments
 ---
 # submit
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/Submit.cpp "Source")
+{% source-link path="src/xrpld/rpc/handlers/transaction/Submit.cpp" /%}
 
 The `submit` method applies a [transaction](../../../protocol/transactions/index.md) and sends it to the network to be confirmed and included in future ledgers.
 
@@ -152,7 +152,7 @@ An example of the request format:
 {% tab label="Commandline" %}
 ```sh
 #Syntax: submit secret json [offline]
-rippled submit s████████████████████████████ '{"Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", "DeliverMax": { "currency": "USD", "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", "value": "1" }, "Destination": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX", "TransactionType": "Payment", "Fee": "10000"}'
+xrpld submit s████████████████████████████ '{"Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", "DeliverMax": { "currency": "USD", "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", "value": "1" }, "Destination": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX", "TransactionType": "Payment", "Fee": "10000"}'
 ```
 {% /tab %}
 
@@ -249,7 +249,7 @@ An example of a successful response:
 
 {% tab label="Commandline" %}
 ```json
-Loading: "/etc/rippled.cfg"
+Loading: "/etc/xrpld.cfg"
 Connecting to 127.0.0.1:5005
 
 {
@@ -322,7 +322,7 @@ The response follows the [standard format][], with a successful result containin
 ## Possible Errors
 
 * Any of the [universal error types][].
-* `amendmentBlocked` - The transaction cannot be submitted to the network because the `rippled` server is [amendment blocked](../../../../concepts/networks-and-servers/amendments.md#amendment-blocked-servers).
+* `amendmentBlocked` - The transaction cannot be submitted to the network because the `xrpld` server is [amendment blocked](../../../../concepts/networks-and-servers/amendments.md#amendment-blocked-servers).
 * `highFee` - The `fee_mult_max` parameter was specified, but the server's current fee multiplier exceeds the specified one. (Sign-and-Submit mode only)
 * `internalJson` - An internal error occurred when serializing the transaction to JSON. This could be caused by many aspects of the transaction, including a bad signature or some fields being malformed.
 * `internalSubmit` - An internal error occurred when submitting the transaction. This could be caused by many aspects of the transaction, including a bad signature or some fields being malformed.

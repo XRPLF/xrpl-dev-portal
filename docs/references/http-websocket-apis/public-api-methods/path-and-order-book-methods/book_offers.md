@@ -6,7 +6,7 @@ labels:
     - Cross-Currency
 ---
 # book_offers
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/BookOffers.cpp "Source")
+{% source-link path="src/xrpld/rpc/handlers/orderbook/BookOffers.cpp" /%}
 
 The `book_offers` method retrieves a list of [offers](../../../../concepts/tokens/decentralized-exchange/offers.md) between two currencies, also known as an _order book_. The response omits [unfunded offers](../../../../concepts/tokens/decentralized-exchange/offers.md#lifecycle-of-an-offer) and reports how much of each remaining offer's total is currently funded.
 
@@ -59,7 +59,7 @@ An example of the request format:
 {% tab label="Commandline" %}
 ```sh
 #Syntax: book_offers taker_pays taker_gets [taker [ledger [limit] ] ]
-rippled book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B'
+xrpld book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B'
 ```
 {% /tab %}
 

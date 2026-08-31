@@ -7,7 +7,7 @@ labels:
   - コアサーバ
 ---
 # print
-[[ソース]](https://github.com/XRPLF/rippled/blob/315a8b6b602798a4cff4d8e1911936011e12abdb/src/ripple/rpc/handlers/Print.cpp "Source")
+{% source-link path="src/xrpld/rpc/handlers/admin/status/Print.cpp" /%}
 
 `print`コマンドは、さまざまな内部サブシステム（ピア、レジャークリーナー、リソースマネージャーなど）の現在の状況を返します。
 
@@ -29,7 +29,7 @@ labels:
 
 {% tab label="コマンドライン" %}
 ```
-rippled print
+xrpld print
 ```
 {% /tab %}
 
@@ -45,7 +45,7 @@ rippled print
 
 {% tab label="コマンドライン" %}
 ```json
-Loading: "/etc/rippled.cfg"
+Loading: "/etc/xrpld.cfg"
 Connecting to 127.0.0.1:5005
 
 {
@@ -233,7 +233,7 @@ Connecting to 127.0.0.1:5005
 
 {% /tabs %}
 
-レスポンスは[標準フォーマット][]に従っています。結果に含まれる追加フィールドは、`rippled`サーバの内部状態に応じて異なります。このコマンドの実行結果は、予告なく変更されることがあります。
+レスポンスは[標準フォーマット][]に従っています。結果に含まれる追加フィールドは、`xrpld`サーバの内部状態に応じて異なります。このコマンドの実行結果は、予告なく変更されることがあります。
 
 ### 考えられるエラー
 

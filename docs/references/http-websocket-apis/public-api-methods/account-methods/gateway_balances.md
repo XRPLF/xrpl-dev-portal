@@ -6,7 +6,7 @@ labels:
   - Accounts
 ---
 # gateway_balances
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/GatewayBalances.cpp "Source")
+{% source-link path="src/xrpld/rpc/handlers/account/GatewayBalances.cpp" /%}
 
 The `gateway_balances` command calculates the total balances issued by a given account, optionally excluding amounts held by [operational addresses](../../../../concepts/accounts/account-types.md).
 
@@ -53,7 +53,7 @@ An example of the request format:
 
 {% tab label="Commandline" %}
 ```sh
-rippled json gateway_balances ' {"account": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q", "hotwallet": ["rKm4uWpg9tfwbVSeATv4KxDe6mpE9yPkgJ", "ra7JkEzrgeKHdzKgo4EUUVBnxggY4z37kt"],"ledger_index": "validated","strict": true} '
+xrpld json gateway_balances ' {"account": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q", "hotwallet": ["rKm4uWpg9tfwbVSeATv4KxDe6mpE9yPkgJ", "ra7JkEzrgeKHdzKgo4EUUVBnxggY4z37kt"],"ledger_index": "validated","strict": true} '
 ```
 {% /tab %}
 

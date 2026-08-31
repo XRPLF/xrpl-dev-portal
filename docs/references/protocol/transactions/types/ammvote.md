@@ -8,7 +8,7 @@ requiredAmendment: AMM
 txIcon: modify
 ---
 # AMMVote
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/AMMVote.cpp "Source")
+{% source-link path="src/libxrpl/tx/transactors/dex/AMMVote.cpp" /%}
 
 Vote on the trading fee for an [Automated Market Maker](../../../../concepts/tokens/decentralized-exchange/automated-market-makers.md) instance. Up to 8 accounts can vote in proportion to the amount of the AMM's LP Tokens they hold. Each new vote re-calculates the AMM's trading fee based on a weighted average of the votes.
 
