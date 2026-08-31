@@ -101,7 +101,7 @@ export const useCasesSubmenuData: {
       children: [
         { label: "DEX", labelTranslationKey: "navbar.usecases.trading.dex", href: "/docs/concepts/tokens/decentralized-exchange" },
         { label: "Permissioned Trading", labelTranslationKey: "navbar.usecases.trading.permissioned-trading", href: "/docs/concepts/tokens/decentralized-exchange/permissioned-dexes" },
-        { label: "AMM", labelTranslationKey: "navbar.usecases.trading.amm", href: "/docs/concepts/tokens/decentralized-exchange" },
+        { label: "AMM", labelTranslationKey: "navbar.usecases.trading.amm", href: "/docs/concepts/tokens/decentralized-exchange/automated-market-makers" },
       ],
     },
   ],
@@ -149,7 +149,7 @@ export const networkSubmenuData: NetworkSubmenuSection[] = [
     icon: "resources",
     children: [
       { label: "About", labelTranslationKey: "navbar.network.resources.about", href: "/about/history" },
-      { label: "XRPL Brand Kit", labelTranslationKey: "navbar.network.resources.brand-kit", href: "/XRPL_Brand_Kit.zip" },
+      { label: "Download XRPL Brand Kit", labelTranslationKey: "navbar.network.resources.brand-kit", href: "/XRPL_Brand_Kit.zip" },
     ],
     patternColor: 'lilac',
   },

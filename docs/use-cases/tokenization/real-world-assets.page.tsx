@@ -470,7 +470,7 @@ export default function RwaTokenization() {
       links: [
         {
           text: "Join the Developer Discord",
-          url: "https://discord.gg/sfX3ERAMjH",
+          url: "https://discord.com/invite/xrpl",
         },
       ],
       backgroundClass: "learn-stay-updated",

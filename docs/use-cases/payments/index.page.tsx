@@ -190,7 +190,7 @@ export default function PaymentsPage() {
           <p>{translate('Ideal for regulated institutions')}</p>
           <ul>
             <li>
-              {translate('Connect with the ')}<Link href="https://discord.com/invite/KTNmhJDXqa" intention="brand">{translate('Community')}</Link>
+              {translate('Connect with the ')}<Link href="https://discord.com/invite/xrpl" intention="brand">{translate('Community')}</Link>
             </li>
             <li>{translate('Get help for more complex use cases')}</li>
           </ul>

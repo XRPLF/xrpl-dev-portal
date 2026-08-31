@@ -32,14 +32,14 @@ export default function Index() {
 
   const blockchainCardStats: CardStatsProps["cards"] = [
     {
-      statistic: translate("12 Years"),
+      statistic: translate("14 Years"),
       label: translate("Continuous uptime"),
       superscript: "+",
       variant: "lilac",
     },
     {
-      statistic: translate("7M"),
-      label: translate("Active wallets"),
+      statistic: translate("8M"),
+      label: translate("Funded accounts"),
       superscript: "+",
       variant: "light-gray",
     },
@@ -50,7 +50,7 @@ export default function Index() {
       variant: "dark-gray",
     },
     {
-      statistic: translate("~$0.00025"),
+      statistic: translate("0.000011 XRP"),
       label: translate("Predictable, ultra-low fees"),
       variant: "green",
     },
@@ -72,7 +72,7 @@ export default function Index() {
       buttons: [{ label: translate("Find Out More"), href: "/docs/use-cases/payments" }],
     },
     {
-      heading: translate("Trading (Coming Soon)"),
+      heading: translate("Trading"),
       description: translate(
         "Built-in trading infrastructure that blends order book precision with AMM efficiency and gives institutions the efficiency they need, with the control they expect",
       ),

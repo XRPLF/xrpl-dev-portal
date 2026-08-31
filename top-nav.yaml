@@ -109,13 +109,13 @@
           labelTranslationKey: topnav.usecases.trading-overview
         - label: DEX
           labelTranslationKey: topnav.usecases.dex
-          href: /docs/use-cases/trading/dex
+          href: /docs/use-cases/decentralized-exchange
         - label: Permissioned Trading
           labelTranslationKey: topnav.usecases.permissioned-trading
-          href: /docs/use-cases/trading/permissioned-trading
+          href: /docs/use-cases/decentralized-exchange/permissioned-dexes
         - label: AMM
           labelTranslationKey: topnav.usecases.amm
-          href: /docs/use-cases/trading/amm
+          href: /docs/use-cases/decentralized-exchange/automated-market-makers
 
 - group: Community
   groupTranslationKey: navbar.community
