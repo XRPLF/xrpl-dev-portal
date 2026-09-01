@@ -11,8 +11,8 @@ import {
 } from "use-query-params"
 import { ReactRouter6Adapter } from 'use-query-params/adapters/react-router-6';
 
-import { PermalinkButton } from './components/websocket-api/permalink-modal';
-import { CurlButton } from './components/websocket-api/curl-modal';
+import { PermalinkButton, PermalinkModal } from './components/websocket-api/permalink-modal';
+import { CurlButton, CurlModal } from './components/websocket-api/curl-modal';
 import { ConnectionModal } from "./components/websocket-api/connection-modal";
 
 import { RightSideBar } from "./components/websocket-api/right-sidebar";
@@ -42,8 +42,6 @@ export function WebsocketApiTool() {
   const { hash: slug } = useLocation();
   const { useTranslate } = useThemeHooks();
   const { translate } = useTranslate();
-  const [isConnectionModalVisible, setIsConnectionModalVisible] =
-    useState(false);
   const [selectedConnection, setSelectedConnection] = useState((params.server) ? connections.find((connection) => { return connection?.ws_url === params.server }) : connections[0]);  const [connected, setConnected] = useState(false);
   const [connectionError, setConnectionError] = useState(false);
   const [keepLast, setKeepLast] = useState(50);
@@ -94,14 +92,6 @@ export function WebsocketApiTool() {
   const handleKeepLastChange = (event) => {
     const newValue = event.target.value;
     setKeepLast(newValue);
-  };
-
-  const openConnectionModal = () => {
-    setIsConnectionModalVisible(true);
-  };
-
-  const closeConnectionModal = () => {
-    setIsConnectionModalVisible(false);
   };
 
   const [ws, setWs] = useState(null);
@@ -276,7 +266,6 @@ export function WebsocketApiTool() {
                     className={`btn connection ${
                       connected ? "btn-success" : "btn-outline-secondary"
                     } ${connectionError ?? "btn-danger"}`}
-                    onClick={openConnectionModal}
                     data-bs-toggle="modal"
                     data-bs-target="#wstool-1-connection-settings"
                   >
@@ -284,14 +273,6 @@ export function WebsocketApiTool() {
                       connected ? ` (${translate('Connected')})` : ` (${translate('Not Connected')})`
                     }${connectionError ? ` (${translate('Failed to Connect')})` : ""}`}
                   </button>
-                  {isConnectionModalVisible && (
-                    <ConnectionModal
-                      selectedConnection={selectedConnection}
-                      setSelectedConnection={setSelectedConnection}
-                      closeConnectionModal={closeConnectionModal}
-                      connections={connections}
-                    />
-                  )}
                   {wsLoading && (
                     <div className="input-group loader connect-loader">
                       <span className="input-group-append">
@@ -299,14 +280,23 @@ export function WebsocketApiTool() {
                       </span>
                     </div>
                   )}
-                  <PermalinkButton
-                    currentBody={currentBody}
-                    selectedConnection={selectedConnection}
-                  />
+                  <PermalinkButton />
                   {!currentMethod.ws_only &&
-                    (<CurlButton currentBody={currentBody} selectedConnection={selectedConnection}/>)
+                    (<CurlButton />)
                   }
                 </div>
+                <ConnectionModal
+                  selectedConnection={selectedConnection}
+                  setSelectedConnection={setSelectedConnection}
+                  connections={connections}
+                />
+                <PermalinkModal
+                  currentBody={currentBody}
+                  selectedConnection={selectedConnection}
+                />
+                {!currentMethod.ws_only && (
+                  <CurlModal currentBody={currentBody} selectedConnection={selectedConnection} />
+                )}
               </div>
             </div>
 
