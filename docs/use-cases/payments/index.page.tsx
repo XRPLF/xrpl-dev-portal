@@ -13,9 +13,9 @@ import { FeatureSingleTopic } from 'shared/sections/FeatureSingleTopic/FeatureSi
 
 export const frontmatter = {
   seo: {
-    title: 'Payments Infrastructure',
+    title: 'XRPL Payments Infrastructure',
     description:
-      'The XRP Ledger Payments Infrastructure is a payments solution for use cases including stablecoin payments, cross-border remittance, B2B payment rails, and merchant settlement.',
+      'Move money globally on XRPL. Native FX, deterministic settlement in 3-5 seconds, sub-cent fees, regulated stablecoins, and protocol-level compliance \u2014 the full payments stack on one chain.',
   },
 };
 
@@ -132,66 +132,78 @@ export default function PaymentsPage() {
   const { useTranslate } = useThemeHooks();
   const { translate } = useTranslate();
 
-  const whyChooseCards = [
+  // Wireframe v2 sections 3-5. Each use case is one numbered card. Collapsed to a
+  // single line apiece rather than the wireframe's three supporting features, so the
+  // section is roughly a third of its previous height; the detail lives on the linked
+  // concept pages.
+  const useCaseCards = [
     {
-      heading: translate('Enable Cross-Border Stablecoin Payments'),
+      heading: translate('Atomic FX and settlement, in a single transaction'),
       description: (
         <ul>
-          <li>{translate('Set of regulated stablecoins RLUSD, AUDD, BBRL, USDC etc live on XRPL')}</li>
-          <li>{translate('Easily receive, store, convert, issue and send stablecoins')}</li>
+          <li>{translate('Autobridging and pathfinding are built into the Payment transaction itself, quoting across CLOB, AMM, and Permissioned DEX.')}</li>
         </ul>
       ),
-      buttons: [],
+      buttons: [
+        {
+          label: translate('Cross-currency payments'),
+          href: '/docs/concepts/payment-types/cross-currency-payments',
+        },
+      ],
     },
     {
-      heading: translate('Access Reliable Payments Infrastructure'),
+      heading: translate('24/7 stablecoin clearing between issuers, networks, and acquirers'),
       description: (
         <ul>
-          <li>{translate('Uninterrupted performance with 99.9% uptime since 2012')}</li>
-          <li>{translate('Over $1T+ in value moving transactions processed to date')}</li>
+          <li>{translate('No batch cutoffs, so settlement runs whenever volume runs and less working capital sits against batch windows.')}</li>
         </ul>
       ),
-      buttons: [],
+      buttons: [
+        {
+          label: translate('Stablecoins on XRPL'),
+          href: '/docs/concepts/tokens/fungible-tokens/stablecoins',
+        },
+      ],
     },
     {
-      heading: translate('Move Money Efficiently'),
+      heading: translate('AI agents transact at machine speed, within rules the chain enforces'),
       description: (
         <ul>
-          <li>{translate('Transactions settle atomically, in 3-5 seconds')}</li>
-          <li>{translate('Predictable and ultra-low transaction fees')}</li>
+          <li>{translate('Fixed, predictable fees agents can budget against, with escrow, multi-sign, and Deposit Authorization bounding what they can do.')}</li>
         </ul>
       ),
-      buttons: [],
+      buttons: [
+        {
+          label: translate('Agentic transactions'),
+          href: '/docs/agents/agentic-transactions',
+        },
+      ],
     },
   ];
 
   const flexibleIntegrationCards = [
     {
-      heading: translate('Build It Yourself'),
+      heading: translate('Build it yourself'),
       description: (
         <>
-          <p>{translate('Ideal for seasoned teams with crypto experience')}</p>
+          <p>{translate('For teams with crypto experience.')}</p>
           <ul>
             <li>
-              {translate('Access open ')}<a href="https://xrpl.org/docs">{translate('documentation')}</a>
-            </li>
-            <li>
-              {translate('Use the Payments APIs + ')}<a href="https://xrpl.org/resources/dev-tools">{translate('XRPL tooling')}</a>
+              {translate('Access the ')}<a href="/docs">{translate('developer docs')}</a>{translate(', the Payments APIs, and ')}<a href="/resources/dev-tools">{translate('XRPL tooling')}</a>
             </li>
           </ul>
         </>
       ),
     },
     {
-      heading: translate('Work with a Partner'),
+      heading: translate('Work with a partner'),
       description: (
         <>
-          <p>{translate('Ideal for regulated institutions')}</p>
+          <p>{translate('For regulated institutions and complex use cases.')}</p>
           <ul>
             <li>
-              {translate('Connect with the ')}<a href="https://discord.com/invite/KTNmhJDXqa">{translate('Community')}</a>
+              {translate('Connect with the ')}<a href="https://discord.com/invite/sfX3ERAMjH">{translate('Discord community')}</a>
             </li>
-            <li>{translate('Get help for more complex use cases')}</li>
           </ul>
         </>
       ),
@@ -202,10 +214,20 @@ export default function PaymentsPage() {
     <PageWrapper className="landing">
       <HeaderHeroSplitMedia
         layout="content-left"
-        title={translate('Payments Infrastructure')}
+        title={translate('Move money across borders, on one chain')}
         description={translate(
-          'The XRP Ledger Payments Infrastructure is a payments solution for use cases including stablecoin payments, cross-border remittance, B2B payment rails, and merchant settlement.',
+          "Native FX, deterministic settlement, sub-cent fees, regulated stablecoins, protocol-level compliance, and agent-ready infrastructure. What's usually assembled at the application layer, XRPL ships at the protocol layer.",
         )}
+        primaryCta={{ label: translate('Build on XRPL'), href: '/docs' }}
+        // Wireframe v2 section 8 is dropped from the page, but its CTA copy lives on
+        // here so the migration guide keeps a prominent route in. The guide ships on
+        // the payments-fx-migration-guide branch: this page must not reach production
+        // before it does, or this link 404s. Redocly's link checker does not scan href
+        // props in .tsx, so CI will not catch that.
+        secondaryCta={{
+          label: translate('Read the migration playbook'),
+          href: '/docs/use-cases/payments/migrate-a-payments-or-fx-stack-to-the-xrp-ledger',
+        }}
         media={{
           src: '/img/payments/payments-infrastructure-hero.jpg',
           alt: translate('Payments Infrastructure'),
@@ -214,7 +236,7 @@ export default function PaymentsPage() {
 
       <LinkTextDirectory
         heading={translate('Why Choose XRPL Payments Suite for Your Payment Rails?')}
-        cards={whyChooseCards}
+        cards={useCaseCards}
       />
 
       <FeaturedVideoHero
@@ -237,8 +259,10 @@ export default function PaymentsPage() {
       />
 
       <StandardCardGroupSection
-        headline={translate('Enterprise-Grade Stablecoins, Issued Natively on XRPL')}
-        description=""
+        headline={translate('Regulated stablecoins, issued natively on XRPL')}
+        description={translate(
+          "RLUSD is the default USD instrument on XRPL: regulated, institutionally backed, deepening as the network's anchor dollar. Pair it with regional native stablecoins for in-region settlement.",
+        )}
         variant="yellow"
         cards={STABLECOIN_CARDS}
       />
