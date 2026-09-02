@@ -162,7 +162,7 @@ export default function Index() {
       callsToAction: [
         {
           children: translate("Built on the XRPL"),
-          href: "/docs/use-cases",
+          href: "/about/uses",
         },
       ] as const,
     },
@@ -191,7 +191,7 @@ export default function Index() {
       callsToAction: [
         {
           children: translate("Learn Now"),
-          href: "/docs/introduction",
+          href: "https://learn.xrpl.org/",
         },
       ] as const,
     },
