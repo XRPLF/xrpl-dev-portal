@@ -104,14 +104,10 @@ export default function Tokenization() {
         variant="gray"
         heading={translate('Trusted by Leaders in Real-World Asset Tokenization')}
         logos={[
-          { logo: require('../../../static/img/logos/black/circle.png'), alt: translate('Circle') },
           { logo: require('../../../static/img/logos/black/ondo.png'), alt: translate('Ondo Finance') },
-          { logo: require('../../../static/img/logos/black/db-schenker.png'), alt: translate('DB Schenker') },
           { logo: require('../../../static/img/logos/black/ripple.png'), alt: translate('Ripple') },
           { logo: require('../../../static/img/logos/black/societe-generale.png'), alt: translate('Société Générale') },
-          { logo: require('../../../static/img/logos/black/zeconomy.png'), alt: translate('Zeconomy') },
           { logo: require('../../../static/img/logos/black/vert.png'), alt: translate('Vert') },
-          { logo: require('../../../static/img/logos/black/braza.png'), alt: translate('Braza') },
         ]}
       />
 

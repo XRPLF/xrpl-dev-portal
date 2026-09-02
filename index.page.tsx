@@ -76,12 +76,14 @@ export default function Index() {
       description: translate(
         "Built-in trading infrastructure that blends order book precision with AMM efficiency and gives institutions the efficiency they need, with the control they expect",
       ),
+      buttons: [{ label: translate("Find Out More"), href: "/docs/use-cases/trading" }],
     },
     {
       heading: translate("Lending (Coming Soon)"),
       description: translate(
         "Native lending protocol enabling onchain credit origination with fixed-term, interest-accruing loans, and off-chain underwriting and risk management",
       ),
+      buttons: [{ label: translate("Find Out More"), href: "/docs/use-cases/defi/institutional-credit-facilities#solution-lending-on-the-xrpl" }],
     },
   ];
 
@@ -160,7 +162,7 @@ export default function Index() {
       callsToAction: [
         {
           children: translate("Built on the XRPL"),
-          href: "/docs/use-cases",
+          href: "/about/uses",
         },
       ] as const,
     },
@@ -189,7 +191,7 @@ export default function Index() {
       callsToAction: [
         {
           children: translate("Learn Now"),
-          href: "/docs/introduction",
+          href: "https://learn.xrpl.org/",
         },
       ] as const,
     },
@@ -388,8 +390,8 @@ export default function Index() {
             alt: translate("Archax logo"),
           },
           {
-            logo: "/img/home/logo-zonix.svg",
-            alt: translate("Zoniqx logo"),
+            logo: "/img/home/logo-vert.png",
+            alt: translate("Vert logo"),
           },
           {
             logo: "/img/logos/black/zeconomy.png",
@@ -421,8 +423,8 @@ export default function Index() {
           },
         ]}
         media={{
-          src: "/img/home/men-review-app.png",
-          alt: translate("Image of a man reviewing an app"),
+          src: "/img/home/community-hero-media.jpg",
+          alt: translate("Image of community members working together"),
         }}
       />
     </PageWrapper>
