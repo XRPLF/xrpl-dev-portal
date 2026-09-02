@@ -1,5 +1,7 @@
 import { useThemeHooks } from '@redocly/theme/core/hooks';
 import { Link } from '@redocly/theme/components/Link/Link';
+import Button from 'shared/components/Button';
+import { XrplArrowInternalLinkIcon } from 'shared/components/Icons';
 
 export const frontmatter = {
   seo: {
@@ -148,24 +150,28 @@ export default function AgenticTransactions() {
             )}
           </p>
           <div className="d-flex flex-wrap justify-content-center gap-3">
-            <Link
-              className="btn btn-primary btn-arrow"
-              to="/docs/agents/getting-started-with-agentic-transactions/"
+            <Button
+              intention="neutral"
+              emphasis="strong"
+              href="/docs/agents/getting-started-with-agentic-transactions/"
+              iconEnd={<XrplArrowInternalLinkIcon />}
             >
               {translate('Get Started')}
-            </Link>
-            <Link
-              className="btn btn-outline-secondary"
-              to="/docs/agents/agentic-payments-x402/"
+            </Button>
+            <Button
+              intention="neutral"
+              emphasis="standard"
+              href="/docs/agents/agentic-payments-x402/"
             >
               {translate('Agentic Payments with x402')}
-            </Link>
-            <Link
-              className="btn btn-outline-secondary"
-              to="/resources/dev-tools/ai-tools"
+            </Button>
+            <Button
+              intention="neutral"
+              emphasis="standard"
+              href="/resources/dev-tools/ai-tools"
             >
               {translate('View AI Tooling')}
-            </Link>
+            </Button>
           </div>
         </div>
       </section>
@@ -351,12 +357,14 @@ export default function AgenticTransactions() {
                 'The XRPL AI Starter Kit includes a Claude Skills file, an MCP documentation server, and a step-by-step tutorial. Connect your agent to the XRP Ledger Testnet and send your first transaction today.'
               )}
             </p>
-            <Link
-              className="btn btn-primary btn-arrow"
-              to="/docs/agents/getting-started-with-agentic-transactions/"
+            <Button
+              intention="neutral"
+              emphasis="strong"
+              href="/docs/agents/getting-started-with-agentic-transactions/"
+              iconEnd={<XrplArrowInternalLinkIcon />}
             >
               {translate('Start the Tutorial')}
-            </Link>
+            </Button>
           </div>
         </div>
       </section>

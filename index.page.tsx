@@ -1,261 +1,430 @@
-import { useThemeHooks } from '@redocly/theme/core/hooks';
-import { Link } from '@redocly/theme/components/Link/Link';
-import { BenefitsSection } from 'shared/components/benefits-section';
+import { useThemeHooks } from "@redocly/theme/core/hooks";
+import { PageWrapper } from "shared/components/PageWrapper";
+import { CalloutMediaBanner } from "shared/sections/CalloutMediaBanner";
+import { CardStats, CardStatsProps } from "shared/sections/CardStatsList";
+import { LinkTextDirectory, LinkTextDirectoryProps } from "shared/sections/LinkTextDirectory";
+import {
+  FeatureTwoColumn,
+  FeatureTwoColumnWrapper,
+} from "shared/sections/FeatureTwoColumn";
+import { LogoSquareGrid } from "shared/sections/LogoSquareGrid";
+import { StandardCardGroupSection } from "shared/sections/StandardCardGroupSection/StandardCardGroupSection";
+import { FeatureSingleTopic } from "shared/sections/FeatureSingleTopic";
+import type { StandardCardPropsWithoutVariant } from "shared/components/StandardCard";
+import { Link } from "shared/components/Link";
+import { HomeHero } from "shared/sections/HomeHero/HomeHero";
+import { PanelStack } from "shared/patterns/PanelStack";
 
 export const frontmatter = {
   seo: {
-    title: 'XRP Ledger Home | XRPL.org',
-    description: "XRPL.org is a community-driven site for the XRP Ledger (XRPL), an open-source, public blockchain. Gain access to technical documentation, reference materials, and blockchain ledger tools.",
-  }
+    title: "XRP Ledger Home | XRPL.org",
+    description:
+      "XRPL.org is a community-driven site for the XRP Ledger (XRPL), an open-source, public blockchain. Gain access to technical documentation, reference materials, and blockchain ledger tools.",
+  },
 };
 
-const cards = [
-  {
-    id: 'public',
-    title: 'Public and Decentralized',
-    description: 'Open source, open to anyone to build on, maintained by the community',
-  },
-  {
-    id: 'streamlined',
-    title: 'Streamlined Development',
-    description: 'Intentional innovations, tools and documentation reduce time to market',
-  },
-  { id: 'performance', title: 'High Performance', description: 'Thousands of transactions settled in seconds' },
-  {
-    id: 'low-cost',
-    title: 'Low Cost',
-    description: <>
-      At fractions of a penny per transaction, costs are inexpensive enough to enable a wide variety of <Link to='/about/uses'>blockchain use cases</Link>
-    </>
-  },
-  {
-    id: 'community',
-    title: 'Motivated Community',
-    description: 'Companies, developers, validators, and users work together to make the XRP Ledger better every day',
-  },
-  {
-    id: 'reliability',
-    title: 'Proven Reliability',
-    description: '10+ years of error-free, uninterrupted performance over more than 63 million ledgers',
-  },
-];
-
-const cards2 = [
-  {
-    href: '/docs/concepts/tokens/decentralized-exchange/',
-    title: 'Decentralized Exchange',
-    description:
-      'A high-performance decentralized peer-to-peer multi-currency exchange built directly into the blockchain',
-  },
-  {
-    href: '/docs/concepts/payment-types/cross-currency-payments/',
-    title: 'Cross-Currency Payments',
-    description: 'Atomically settle multi-hop payments that cross currency or national boundaries with ease',
-  },
-  {
-    href: '/docs/concepts/payment-types/payment-channels/',
-    title: "Payment Channels",
-    description: 'Batched micropayments with unlimited speed, secured with XRP',
-  },
-  {
-    href: '/docs/concepts/accounts/multi-signing/',
-    title: 'Multi-Signing',
-    description: 'Flexible options for custody and security of on-ledger accounts',
-  },
-  {
-    href: '/docs/concepts/tokens/',
-    title: 'Tokens',
-    description:
-      'All currencies other than XRP can be represented in the XRP Ledger as tokens',
-  },
-];
-
-const cards3 = [
-  {
-    href: '/docs/',
-    title: 'Documentation',
-    description: 'Access everything you need to get started working with the XRPL',
-  },
-  { href: '/docs/tutorials', title: 'Guided Tutorials', description: 'Follow step-by-step guides for frequent tasks' },
-  { href: '/docs/concepts', title: 'XRPL Fundamentals', description: 'Read about the XRPL\u2019s foundational concepts' },
-  {
-    href: '/docs/references/client-libraries/',
-    title: 'Choose a Language',
-    description: 'Find tools, documentation, and sample code in Python, Java, Javascript, or use HTTP APIs',
-  },
-  { href: '/about/uses', title: 'Get Inspired', description: 'See what your peers have built on the XRPL' },
-];
-
-const features = [
-  {
-    chip: 'In Development',
-    title: 'Confidential Transfers',
-    description: "Keep MPT balances and transaction amounts private on the public ledger, while enabling MPT issuers and designated auditors to decrypt these values offchain.",
-    href: 'https://opensource.ripple.com/docs/xls-96-confidential-transfers/',
-  },
-  {
-    chip: 'Open for Voting',
-    title: 'Lending Protocol',
-    description: "The XRPL-native lending protocol offers on-chain, fixed-term loans, utilizing pooled funds from single-asset vaults.",
-    href: '/docs/concepts/tokens/lending-protocol/',
-  },
-  {
-    chip: 'Enabled',
-    title: 'Automated Market Makers',
-    description: "Smart contracts to provide liquidity and earn passive income from facilitating currency exchange, complementary with the order-book DEX already built into the XRPL.",
-    href: '/docs/concepts/tokens/decentralized-exchange/automated-market-makers/',
-  },
-];
+const HUBSPOT_NEWSLETTER_FORM =
+  "https://share.hsforms.com/18zNvJDR4QbObGPLDh3n5Bw4vgrs";
 
 export default function Index() {
   const { useTranslate } = useThemeHooks();
   const { translate } = useTranslate();
 
+  const blockchainCardStats: CardStatsProps["cards"] = [
+    {
+      statistic: translate("14 Years"),
+      label: translate("Continuous uptime"),
+      superscript: "+",
+      variant: "lilac",
+    },
+    {
+      statistic: translate("8M"),
+      label: translate("Funded accounts"),
+      superscript: "+",
+      variant: "light-gray",
+    },
+    {
+      statistic: translate("$1T"),
+      label: translate("Value Moved"),
+      superscript: "+",
+      variant: "dark-gray",
+    },
+    {
+      statistic: translate("0.000011 XRP"),
+      label: translate("Predictable, ultra-low fees"),
+      variant: "green",
+    },
+  ];
+
+  const complianceDirectoryCards: LinkTextDirectoryProps["cards"] = [
+    {
+      heading: translate("Tokenization"),
+      description: translate(
+        "Tokenization solutions that make it easy to bring financial markets on-chain and enable dynamic, transparent and efficient financing",
+      ),
+      buttons: [{ label: translate("Find Out More"), href: "/docs/use-cases/tokenization" }],
+    },
+    {
+      heading: translate("Payments"),
+      description: translate(
+        "Simple APIs and built-in compliance and custody infrastructure for Fintechs and PSPs to integrate, launch and scale stablecoin payments",
+      ),
+      buttons: [{ label: translate("Find Out More"), href: "/docs/use-cases/payments" }],
+    },
+    {
+      heading: translate("Trading"),
+      description: translate(
+        "Built-in trading infrastructure that blends order book precision with AMM efficiency and gives institutions the efficiency they need, with the control they expect",
+      ),
+    },
+    {
+      heading: translate("Lending (Coming Soon)"),
+      description: translate(
+        "Native lending protocol enabling onchain credit origination with fixed-term, interest-accruing loans, and off-chain underwriting and risk management",
+      ),
+    },
+  ];
+
+  const beginJourneyCards: readonly StandardCardPropsWithoutVariant[] = [
+    {
+      headline: translate("Documentation"),
+      children: translate(
+        "Access the documentation you need to get started working with the XRPL.",
+      ),
+      callsToAction: [
+        { children: translate("Documentation"), href: "/docs" },
+      ] as const,
+    },
+    {
+      headline: translate("Guided Tutorials"),
+      children: translate("Follow step-by-step tutorials for frequent tasks."),
+      callsToAction: [
+        { children: translate("Start Tutorials"), href: "/docs/tutorials" },
+      ] as const,
+    },
+    {
+      headline: translate("XRPL Fundamentals"),
+      children: translate("Read about the XRPL's foundational concepts."),
+      callsToAction: [
+        {
+          children: translate("Foundational Concepts"),
+          href: "/docs/introduction",
+        },
+      ] as const,
+    },
+    {
+      headline: translate("Client Libraries"),
+      children: (
+        <span>
+          {translate("Find tools, documentation, and sample code in")}{" "}
+          <Link
+            variation="inline"
+            href="/docs/tutorials/get-started/get-started-python"
+          >
+            {translate("Python")}
+          </Link>
+          ,{" "}
+          <Link
+            variation="inline"
+            href="/docs/tutorials/get-started/get-started-java"
+          >
+            {translate("Java")}
+          </Link>
+          ,{" "}
+          <Link
+            variation="inline"
+            href="/docs/tutorials/get-started/get-started-javascript?environment=Node"
+          >
+            {translate("JavaScript")}
+          </Link>
+          {translate(", or use")}{" "}
+          <Link
+            variation="inline"
+            href="/docs/tutorials/get-started/get-started-http-websocket-apis"
+          >
+            {translate("HTTP APIs")}
+          </Link>
+          .
+        </span>
+      ),
+      callsToAction: [
+        {
+          children: translate("Explore Client Libraries"),
+          href: "/docs/references/client-libraries",
+        },
+      ] as const,
+    },
+    {
+      headline: translate("Get Inspired"),
+      children: translate("See what your peers have built on the XRPL."),
+      callsToAction: [
+        {
+          children: translate("Built on the XRPL"),
+          href: "/docs/use-cases",
+        },
+      ] as const,
+    },
+    {
+      headline: translate("XRPL Learning Portal"),
+      children: (
+        <span>
+          {translate("Start with the basics and then learn about")}{" "}
+          <Link variation="inline" href="https://learn.xrpl.org/">
+            {translate("DeFi")}
+          </Link>
+          ,{" "}
+          <Link variation="inline" href="/docs/use-cases/tokenization">
+            {translate("tokenization")}
+          </Link>
+          ,{" "}
+          <Link
+            variation="inline"
+            href="/docs/concepts/tokens/decentralized-exchange"
+          >
+            {translate("DEX")}
+          </Link>{" "}
+          {translate("trading, or how to issue stablecoins.")}
+        </span>
+      ),
+      callsToAction: [
+        {
+          children: translate("Learn Now"),
+          href: "/docs/introduction",
+        },
+      ] as const,
+    },
+  ];
+
   return (
-    <div className="landing page-home">
-      <div className="overflow-hidden">
-        <section className="container-new pb-26-until-sm mt-10 mb-10-sm text-center">
-          <div className="w-100">
-            <img id="home-hero-graphic" alt="(stylized X graphic surrounded by a diverse mix of people)" loading='eager' />
-          </div>
-          <div className="col-lg-6 mx-auto text-center pl-0 pr-0">
-            <div className="d-flex flex-column-reverse">
-              <h1 className="mb-10">
-                {translate('home.hero.h1part1', 'The Blockchain')}
-                <br className="until-sm" />
-                {translate('home.hero.h1part2', 'Built for Business')}
-              </h1>
-              <h6 className="eyebrow mb-3">{translate('XRPL | XRP Ledger')}</h6>
-            </div>
-            <Link to="/docs" className="btn btn-primary btn-arrow">
-              {translate('Start Building')}
-            </Link>
-          </div>
-        </section>
-        <div className="position-relative d-none-sm">
-          <img src={require('./static/img/backgrounds/home-purple.svg')} id="home-purple" loading="lazy" />
-          <img src={require('./static/img/backgrounds/home-green.svg')} id="home-green" loading="lazy" />
-        </div>
-        <section className="container-new py-26">
-          <div className="col-lg-6 offset-lg-3 pl-0-sm pr-0-sm p-8-sm p-10-until-sm">
-            <h2 className="h4 mb-8 h2-sm">{translate('The XRP Ledger: The Blockchain Built for Business')}</h2>
-            <h6 className="longform mb-10">
-              {translate(
-                'The XRP Ledger (XRPL) is a decentralized, public blockchain led by a global community of businesses and developers looking to solve problems and create value.'
-              )}
-            </h6>
-            <p className="mb-0">
-              {translate(
-                'Proven reliable over more than a decade of error-free functioning, the XRPL offers streamlined development, low transaction costs, high performance, and sustainability. So you can build with confidence–and move your most critical projects forward.'
-              )}
-            </p>
-          </div>
-        </section>
-        <BenefitsSection
-          eyebrow="Benefits"
-          title="Why developers choose the XRP Ledger"
-          cards={cards}
-          showImages={true}
+    <PageWrapper className="landing page-home overflow-hidden">
+      <HomeHero
+        titleLines={[
+          translate("Built for Finance."),
+          translate("Powered by Developers."),
+        ]}
+        subtitle={translate("Trusted by Institutions.")}
+        media={{
+          src: "/img/home/ripple-icon-timed.png",
+          alt: translate("XRPL home graphic"),
+          width: 1280,
+          height: 458,
+        }}
+      />
+
+      <CalloutMediaBanner
+        variant="gray"
+        heading={translate("XRP Ledger")}
+        headingAs="h2"
+        backgroundImage={"/img/backgrounds/callout-light.jpg"}
+        backgroundImageDark={"/img/backgrounds/callout-dark.jpg"}
+        subheading={translate(
+          "A decentralized public Layer 1 blockchain for creating, transferring, and exchanging digital assets with a focus on compliance. ",
+        )}
+        buttons={[{ label: translate("Get Started"), href: "/docs" }]}
+      />
+
+      <CardStats
+        heading={translate("Blockchain Trusted at Scale")}
+        description={translate(
+          "Streamline development and build powerful RWA tokenization solutions with XRP Ledger's comprehensive developer toolset.",
+        )}
+        cards={blockchainCardStats}
+      />
+
+      <PanelStack
+        slides={[
+          {
+            id: 0,
+            heading: translate("Built for Finance"),
+            features: [
+              {
+                title: translate("Low Cost, High-Speed:"),
+                description: translate(
+                  "Transactions settle in 3-5 seconds for fractions of a cent",
+                ),
+              },
+              {
+                title: translate("Compliance-Focused:"),
+                description: translate(
+                  "10+ years of enterprise-grade resilience and continuous performance",
+                ),
+              },
+              {
+                title: translate("Multi Asset Support:"),
+                description: translate(
+                  "From stablecoins to tokenized real-world assets",
+                ),
+              },
+            ],
+            imageSrc: "/img/home/coin-finance.png",
+            imageAlt: translate("Built for Finance"),
+          },
+          {
+            id: 1,
+            heading: translate("Powered by Developers"),
+            features: [
+              {
+                title: translate("$1B+ XRP Grants Program:"),
+                description: translate(
+                  "Available for developers and projects building on XRPL",
+                ),
+              },
+              {
+                title: translate("Easy-to-Integrate APIs:"),
+                description: translate(
+                  "Build with common languages and skip complex smart contract development",
+                ),
+              },
+              {
+                title: translate("Full Lifecycle Support:"),
+                description: translate(
+                  "From dev tools and testnets to deployment and growth-stage",
+                ),
+              },
+            ],
+            imageSrc: "/img/home/keyboard-switch.png",
+            imageAlt: translate("Powered by Developers"),
+          },
+          {
+            id: 2,
+            heading: translate("Trusted by Institutions"),
+            features: [
+              {
+                title: translate("Utilized by Ripple:"),
+                description: translate(
+                  "One of the leading names in enterprise blockchain",
+                ),
+              },
+              {
+                title: translate("Institutional-Grade Infrastructure:"),
+                description: translate(
+                  "Trusted network of on/off ramps, custodians, and compliance providers",
+                ),
+              },
+              {
+                title: translate("70+ Institutional Partners:"),
+                description: translate(
+                  "A growing ecosystem of regulated issuers, fintechs, and builders",
+                ),
+              },
+            ],
+            imageSrc: "/img/home/xrpl-scaffolding.png",
+            imageAlt: translate("Trusted by Institutions"),
+          },
+        ]}
+        background="grey"
+        transition="fade"
+      />
+
+      <LinkTextDirectory
+        heading={translate("The Compliance-Focused Financial Blockchain")}
+        cards={complianceDirectoryCards}
+      />
+
+      <CalloutMediaBanner
+        variant="default"
+        heading={translate("The Future of Finance is Already Onchain")}
+        headingAs="h2"
+        subheading={translate(
+          "XRPL delivers immediate value: faster, cheaper settlement with broad access and full-stack flexibility. XRPL is built for the evolving financial system.",
+        )}
+      />
+
+      <FeatureTwoColumnWrapper>
+        <FeatureTwoColumn
+          color="green"
+          arrange="left"
+          title={translate("Institutions")}
+          description={translate(
+            "Banks, asset managers, PSPs, and fintechs use XRPL to build financial products and DeFi solutions efficiently and with more flexibility.",
+          )}
+          links={[
+            {
+              label: translate("Explore Institutional Use Cases"),
+              href: "/docs/use-cases/",
+            },
+          ]}
+          media={{
+            src: "/img/home/xrpl-building-institutions.jpg",
+            alt: translate("Image of institutions using XRPL"),
+          }}
         />
-        <section className="container-new py-26">
-          <div className="d-flex flex-column-reverse col-sm-8 p-0">
-            <h3 className="h4 h2-sm">
-              {translate(
-                'Activate the proven potential of the XRP Ledger and find a trusted foundation for your next innovation'
-              )}
-            </h3>
-            <h6 className="eyebrow mb-3">{translate('Powerful Features')}</h6>
-          </div>
-          <div className="row row-cols-1 row-cols-lg-3 card-deck mt-10" id="advanced-features">
-            {cards2.map((card, idx) => (
-              <Link className="card" to={card.href} key={card.href + idx}>
-                <div className="card-body">
-                  <h4 className="card-title h5">{translate(card.title)}</h4>
-                  <p className="card-text">{translate(card.description)}</p>
-                </div>
-                <div className="card-footer">&nbsp;</div>
-              </Link>
-            ))}
-          </div>
-        </section>
-        <section className="container-new py-26">
-          <div className="d-flex flex-column-reverse col-sm-8 p-0">
-            <h3 className="h4 h2-sm">{translate('Choose a path, and bring your project to life on the XRP Ledger')}</h3>
-            <h6 className="eyebrow mb-3">{translate('Where to Start')}</h6>
-          </div>
-          <div className="row row-cols-1 row-cols-lg-3 card-deck mt-10" id="get-started">
-            {cards3.map((card, idx) => (
-              <Link className="card" to={card.href} key={card.href + idx}>
-                <div className="card-body">
-                  <h4 className="card-title h5">{translate(card.title)}</h4>
-                  <p className="card-text">{translate(card.description)}</p>
-                </div>
-                <div className="card-footer">&nbsp;</div>
-              </Link>
-            ))}
-          </div>
-        </section>
-        <section className="container-new py-26">
-          <div className="col-lg-6 offset-lg-3 p-6-sm p-10-until-sm br-8 cta-card">
-            <img src={require('./static/img/backgrounds/cta-home-purple.svg')} className="d-none-sm cta cta-top-left" />
-            <img src={require('./static/img/backgrounds/cta-home-green.svg')} className="cta cta-bottom-right" />
-            <div className="z-index-1 position-relative">
-              <h2 className="h4 mb-8-sm mb-10-until-sm">{translate('Our Shared Vision for XRPL’s Future')}</h2>
-              <p className="mb-10">
-                {translate(
-                  "Together, we're building the greenest infrastructure to drive blockchain innovation that doesn't sacrifice utility or performance, to bring the developer community's vision to life."
-                )}
-              </p>
-              <Link className="btn btn-primary btn-arrow" to="/about/">
-                {translate('Learn More')}
-              </Link>
-            </div>
-          </div>
-        </section>
-        <section className="container-new py-26">
-          <div className="d-flex flex-column-reverse col-sm-8 p-0">
-            <h3 className="h4 h2-sm">
-              {translate('Explore what the community is building to enable new features and use cases on XRPL')}
-            </h3>
-            <h6 className="eyebrow mb-3">{translate('Preview New Features')}</h6>
-          </div>
-          <ul className="mt-10 card-grid card-grid-3xN">
-            {features.map(feat => (
-              <li className="col ls-none pt-2" key={feat.href}>
-                <Link className="label chip-green" to={feat.href}>
-                  {translate(feat.chip)}
-                </Link>
-                <h4 className="mt-3 mb-0 h5">{translate(feat.title)}</h4>
-                <p className="mt-6-until-sm mt-3 mb-0">
-                  {typeof feat.description === 'string' ? translate(feat.description) : feat.description}
-                </p>
-              </li>
-            ))}
-          </ul>
-        </section>
-        <section className="container-new py-26">
-          <div className="col-md-6 offset-md-3 p-8-sm p-10-until-sm br-8 cta-card">
-            <img alt="" src={require('./static/img/backgrounds/cta-home-magenta.svg')} className="cta cta-bottom-right" />
-            <div className="z-index-1 position-relative">
-              <div className="d-flex flex-column-reverse">
-                <h2 className="h4 mb-8-sm mb-10-until-sm">
-                  {translate('Join the Community ')}
-                  <br className="until-sm" />
-                  {translate(' at XRPL.org')}
-                </h2>
-              </div>
-              <p className="mb-10">
-                {translate('Connect at XRPL.org, a community by and for the developers ')}
-                <br className="until-sm" />
-                {translate(' and entrepreneurs who rely on the XRPL.')}
-              </p>
-              <Link className="btn btn-primary btn-arrow" to="/community">
-                {translate('Get Involved')}
-              </Link>
-            </div>
-          </div>
-        </section>
-      </div>
-    </div>
+        <FeatureTwoColumn
+          arrange="right"
+          color="yellow"
+          title={translate("Developers")}
+          description={translate(
+            "Open-source tools, SDKs in multiple languages, and a thriving global community make XRPL the ideal environment to build.",
+          )}
+          media={{
+            src: "/img/home/xrpl-building-developers.jpg",
+            alt: translate("Image of developers using XRPL"),
+          }}
+          links={[
+            {
+              label: translate("Explore the Developer Hub"),
+              href: "/develop",
+            },
+          ]}
+        />
+      </FeatureTwoColumnWrapper>
+
+      <LogoSquareGrid
+        heading={translate("Explore Institutional Use Cases")}
+        variant="gray"
+        buttons={[
+          {
+            label: translate("View All"),
+            href: "/docs/use-cases/",
+          },
+        ]}
+        logos={[
+          {
+            logo: "/img/home/ondo-finance.svg",
+            alt: translate("Ondo Finance logo"),
+          },
+          {
+            logo: "/img/home/archax-logo.svg",
+            alt: translate("Archax logo"),
+          },
+          {
+            logo: "/img/home/logo-zonix.svg",
+            alt: translate("Zoniqx logo"),
+          },
+          {
+            logo: "/img/logos/black/zeconomy.png",
+            alt: translate("Zeconomy logo"),
+          },
+        ]}
+      />
+
+      <StandardCardGroupSection
+        variant="blue"
+        headline={translate("Begin Your Journey")}
+        description={translate(
+          "XRPL delivers immediate value: faster, cheaper settlement with broad access and full-stack flexibility. XRPL is built for the evolving financial system.",
+        )}
+        cards={beginJourneyCards}
+      />
+
+      <FeatureSingleTopic
+        variant="default"
+        orientation="left"
+        title={translate("Stay Connected")}
+        description={translate(
+          "Join our community and stay in the loop. Get the latest insights on payments, tokenization, trading, and more — straight to your inbox.",
+        )}
+        buttons={[
+          {
+            label: translate("Sign Up to Newsletter"),
+            href: HUBSPOT_NEWSLETTER_FORM,
+          },
+        ]}
+        media={{
+          src: "/img/home/men-review-app.png",
+          alt: translate("Image of a man reviewing an app"),
+        }}
+      />
+    </PageWrapper>
   );
 }

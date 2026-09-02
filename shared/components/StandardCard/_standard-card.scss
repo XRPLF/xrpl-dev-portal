@@ -1,0 +1,165 @@
+// =============================================================================
+// BDS StandardCard Component Styles
+// =============================================================================
+// Note: Uses centralized spacing tokens from _spacing.scss.
+
+.bds-standard-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: $bds-space-lg; // 16px - spacing('lg')
+  width: 100%;
+  height: 100%; // Stretch to fill parent column (ensures equal heights in grid rows)
+  // aspect-ratio sets a preferred ratio but allows growth if content requires more space
+  // The card will be at least this tall, but can grow taller if needed
+  gap: $bds-space-lg; // 16px - spacing('lg')
+
+  @include media-breakpoint-up(md) {
+    padding: $bds-space-xl; // 20px - spacing('xl')
+  }
+
+
+  @include media-breakpoint-up(lg) {
+    padding: $bds-space-2xl; // 24px - spacing('2xl')
+  }
+
+  @include media-breakpoint-up(xxl) {
+    aspect-ratio: 1;
+  }
+
+  &#{&}--neutral {
+    background-color: $gray-200;
+
+    @include bds-theme-mode(dark) {
+      background-color: $gray-300;
+    }
+  }
+
+  &#{&}--green {
+    background-color: $green-300;
+  }
+
+  &#{&}--yellow {
+    background-color: $yellow-100;
+  }
+
+  &#{&}--blue {
+    background-color: $blue-100;
+
+    a.bds-link {
+      color: $blue-purple-500;
+
+      &:hover {
+        color: $blue-purple-400;
+      }
+    }
+
+    :root.dark & {
+      a.bds-link {
+        color: $blue-purple-500;
+
+        &:hover {
+          color: $blue-purple-400;
+        }
+      }
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: $bds-space-sm; // 8px - spacing('sm')
+    width: 100%;
+    color: $black;
+
+
+    @include media-breakpoint-up(lg) {
+      gap: $bds-space-lg; // 16px - spacing('lg')
+    }
+  }
+
+  &__headline {
+    @include wordbreak('break-word');
+    color: $black;
+
+
+    margin: 0;
+    
+    &:before{
+      display: none;
+    }
+  }
+
+  &__description {
+    margin: 0;
+  }
+
+  &__buttons {
+    display: flex;
+    flex-direction: column;  
+    width: 100%;
+    flex-wrap: wrap;
+    align-items: flex-start;
+
+
+    @include media-breakpoint-up(lg) {
+  
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+    }
+  }
+}
+// =============================================================================
+// Description Links
+// =============================================================================
+// Every card variant has a LIGHT background in both themes ($gray-200 /
+// $gray-300 neutral, $green-300, $yellow-100, $blue-100), so the theme-level
+// link colors don't work in here. In dark mode a plain anchor resolves to
+// `--link-color-visited: white` and a `.bds-link` to $green-300 / $lilac-300 —
+// all of which are near-invisible on a pale card. In light mode a visited
+// anchor resolves to black, which reads but is indistinguishable from the
+// surrounding copy.
+//
+// Fix: pin description links to the card's own text color in every state and
+// every theme -- i.e. the "neutral" treatment, same as navigation.link's own
+// neutral group (no distinct hover/pressed color; per WCAG 1.4.11 nothing
+// requires one). Only the underline marks them as links. This also removes
+// the lilac-500 hover color a previous pass used, which read as an
+// off-brand purple and wasn't reachable via any Link `intention` prop -- see
+// StandardCard's use of Link, which renders `intention="brand"` by default;
+// this override replaces that entirely rather than relying on the prop.
+//
+// Specificity: this has to beat `html.dark a.bds-link:visited:not(...)` (0,4,2)
+// and the theme's `a:not([role="button"]):visited` (0,3,1). Repeating the block
+// parent plus the :not() chain lands at (0,6,2)+, winning without !important.
+
+$bds-standard-card-link-color: $black;
+$bds-standard-card-link-hover-color: $lilac-500; // == $light-link-hover-color
+
+html.light .bds-standard-card .bds-standard-card__description,
+html.dark .bds-standard-card .bds-standard-card__description {
+  a:not(.bds-btn):not(.bds-link--disabled):not([role="button"]) {
+    color: $bds-standard-card-link-color;
+    text-decoration: underline;
+
+    // The state this exists for: without it, visited links inherit black
+    // (light) / white (dark) from --link-color-visited.
+    &:visited,
+    &:hover,
+    &:focus,
+    &:active,
+    &:visited:hover,
+    &:visited:focus,
+    &:visited:active {
+      color: $bds-standard-card-link-color;
+      text-decoration: underline;
+    }
+
+    // Card backgrounds are light in both themes, so the focus ring is always dark
+    &:focus-visible {
+      outline: 2px solid $bds-standard-card-link-color;
+      outline-offset: 2px;
+    }
+  }
+}

@@ -1,4 +1,5 @@
 import React from "react";
+import clsx from "clsx";
 import { useThemeHooks } from '@redocly/theme/core/hooks';
 import { Link } from "@redocly/theme/components/Link/Link";
 
@@ -74,7 +75,7 @@ export const AdvantagesSection: React.FC<AdvantagesSectionProps> = ({
   const headerSpacingClass = useLinks ? "mb-16" : "mb-8"; // 32px for bullet version, 64px for links
 
   return (
-    <section className={`advantages-section container-new py-20 ${className}`}>
+    <section className={clsx("advantages-section", "container-new", "py-20", className)}>
       <div className="d-flex flex-column-reverse">
         <p className={headerSpacingClass}>
           {translate(description)}
@@ -82,7 +83,7 @@ export const AdvantagesSection: React.FC<AdvantagesSectionProps> = ({
         <h4 className="eyebrow mb-8">{translate(title)}</h4>
       </div>
       <div
-        className={`${getGridClass()} nav card-grid`}
+        className={clsx(getGridClass(), "nav", "card-grid")}
         id="security-features"
       >
         {advantages.map((advantage) => (

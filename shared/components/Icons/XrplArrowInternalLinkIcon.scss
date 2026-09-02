@@ -1,0 +1,44 @@
+// Motion for XrplArrowInternalLinkIcon.tsx
+//
+// Driven by --bds-icon-engaged; see shared.scss for the contract.
+//
+// Two motions compose into "the arrow moves forward":
+//   the artwork slides ahead inside the viewBox, and the tail retracts into the
+//   head until it is GONE. Fully engaged, the tail has zero extent and what
+//   remains is the head alone — design's arrowhead_internal, nothing else.
+//
+// Both are transforms on elements INSIDE the SVG, so neither affects layout and
+// neither changes the icon's own box. The <svg> element itself is never
+// transformed: it cannot nudge the text beside it, and nothing escapes its
+// bounds. This matters for the button, whose spec fixes padding and gap, so the
+// animation must not reflow anything. (The current Button animates padding and
+// gap instead, and reflows on every hover.)
+
+// Travel is in viewBox USER UNITS — not CSS pixels of the rendered box. Inside
+// an SVG a px length is a user unit, so this scales with the icon and needs no
+// em. The value is the whole budget the artwork allows: the tip sits at
+// x=22.3116 in a 24-wide viewBox, so 1.6884 puts it flush against the right
+// edge and anything more would clip it.
+$bds-icon-arrow-travel: 1.6884px;
+
+.bds-icon-arrow__travel {
+  transform: translateX(
+    calc(var(--bds-icon-engaged, 0) * #{$bds-icon-arrow-travel})
+  );
+}
+
+.bds-icon-arrow__tail {
+  // fill-box so the origin is the tail's own right edge rather than the
+  // viewBox's, which is what makes it retract into the head instead of toward
+  // the icon's corner.
+  transform-box: fill-box;
+  transform-origin: right center;
+  transform: scaleX(calc(1 - var(--bds-icon-engaged, 0)));
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .bds-icon-arrow__travel,
+  .bds-icon-arrow__tail {
+    transition: transform $bds-icon-duration $bds-icon-easing;
+  }
+}

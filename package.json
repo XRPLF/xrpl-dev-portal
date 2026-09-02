@@ -5,18 +5,25 @@
   "type": "module",
   "description": "The XRP Ledger Dev Portal is the authoritative source for XRP Ledger documentation, including the core server, client libraries, and other open-source XRP Ledger software.",
   "scripts": {
-    "build-css": "sass --load-path styles/scss styles/xrpl.scss ./static/css/devportal2024-v1.css --style compressed --no-source-map",
-    "build-css-watch": "sass --watch --load-path styles/scss styles/xrpl.scss ./static/css/devportal2024-v1.css --style compressed --no-source-map",
+    "analyze-css": "node scripts/analyze-css.js",
+    "button-audit": "node scripts/button-audit.mjs",
+    "contrast-check": "node scripts/contrast-check.mjs",
+    "build-css": "sass --load-path styles/scss --load-path . styles/xrpl.scss ./static/css/devportal2024-v1.tmp.css && NODE_ENV=production postcss ./static/css/devportal2024-v1.tmp.css -o ./static/css/devportal2024-v1.css && rm -f ./static/css/devportal2024-v1.tmp.css",
+    "build-css:dev": "sass --load-path styles/scss --load-path . styles/xrpl.scss ./static/css/devportal2024-v1.tmp.css --source-map && postcss ./static/css/devportal2024-v1.tmp.css -o ./static/css/devportal2024-v1.css && rm -f ./static/css/devportal2024-v1.tmp.css",
+    "build-css:watch": "sass --watch --load-path styles/scss --load-path . --silence-deprecation=import --silence-deprecation=global-builtin --silence-deprecation=color-functions styles/xrpl.scss:static/css/devportal2024-v1.css --source-map",
     "start": "realm develop"
   },
   "keywords": [],
   "license": "MIT",
   "dependencies": {
-    "@codemirror/state": "^6.6.0",
-    "@codemirror/view": "^6.22.2",
+    "@codemirror/lang-javascript": "^6.2.5",
+    "@codemirror/lang-json": "^6.0.2",
+    "@codemirror/lint": "^6.9.7",
+    "@codemirror/state": "^6.7.1",
+    "@codemirror/view": "^6.43.6",
     "@lezer/highlight": "^1.2.0",
     "@redocly/realm": "0.135.2",
-    "@uiw/codemirror-themes": "4.21.21",
+    "@uiw/codemirror-themes": "^4.25.11",
     "@uiw/react-codemirror": "^4.21.21",
     "@xrplf/isomorphic": "^1.0.0-beta.1",
     "clsx": "^2.0.0",
@@ -32,11 +39,24 @@
     "xrpl": "^5.0.0"
   },
   "overrides": {
+    "@codemirror/state": "$@codemirror/state",
+    "@codemirror/view": "$@codemirror/view",
     "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "react-dom": "^19.1.0",
+    "string-width-cjs": "npm:string-width@^4.2.0",
+    "strip-ansi-cjs": "npm:strip-ansi@^6.0.1",
+    "wrap-ansi-cjs": "npm:wrap-ansi@^7.0.0"
   },
   "devDependencies": {
-    "bootstrap": "^4.6.2",
-    "sass": "1.26.10"
+    "@fullhuman/postcss-purgecss": "^7.0.2",
+    "autoprefixer": "^10.4.21",
+    "axe-core": "^4.13.0",
+    "bootstrap": "^5.3.3",
+    "cssnano": "^7.1.1",
+    "htmltojsx": "^0.3.0",
+    "playwright-core": "^1.62.1",
+    "postcss": "^8.5.6",
+    "postcss-cli": "^11.0.1",
+    "sass": "^1.93.2"
   }
 }

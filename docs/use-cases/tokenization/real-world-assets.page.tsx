@@ -1,7 +1,13 @@
 import React, { useEffect } from "react";
 import { useThemeHooks } from "@redocly/theme/core/hooks";
 import { Link } from "@redocly/theme/components/Link/Link";
+import { Link as XrplLink } from "shared/components/Link";
 import { DeveloperResourcesSection } from "shared/components/developer-resources-section";
+import Button from "shared/components/Button";
+import {
+  MaterialSaveAltIcon,
+  XrplArrowInternalLinkIcon,
+} from "shared/components/Icons";
 
 export const frontmatter = {
   seo: {
@@ -273,15 +279,15 @@ const marketIntegrationData = [
     description: (
       <>
         Utilize XRP Ledger's native{" "}
-        <Link to="/docs/concepts/tokens/decentralized-exchange">
+        <XrplLink href="/docs/concepts/tokens/decentralized-exchange" intention="brand">
           decentralized exchange (DEX)
-        </Link>{" "}
+        </XrplLink>{" "}
         with integrated{" "}
-        <Link to="/docs/concepts/tokens/decentralized-exchange/automated-market-makers">
+        <XrplLink href="/docs/concepts/tokens/decentralized-exchange/automated-market-makers" intention="brand">
           Automated Market Makers (AMM)
-        </Link>{" "}
+        </XrplLink>{" "}
         and onchain 24/7 order books, providing a developer-friendly environment
-        to create <Link to="/docs/use-cases/defi">DeFi solutions</Link> for
+        to create <XrplLink href="/docs/use-cases/defi" intention="brand">DeFi solutions</XrplLink> for
         traditional finance applications.
       </>
     ),
@@ -291,9 +297,9 @@ const marketIntegrationData = [
     description: (
       <>
         Issuers can enable{" "}
-        <Link target="_blank" to="/docs/concepts/payment-types/escrow">
+        <XrplLink target="_blank" href="/docs/concepts/payment-types/escrow" intention="brand">
           escrow functionality
-        </Link>{" "}
+        </XrplLink>{" "}
         to lock tokens and facilitate secure, conditional transfers of assets
         based on time-locks or other conditions to enable automated financial
         use cases onchain.
@@ -367,15 +373,18 @@ function TokenVideoSection() {
           )}
         </p>
         <div className="d-lg-block small-100 __button-container">
-          <a
-            className="btn btn-primary d-block d-md-inline-block small-100"
+          <Button
+            intention="neutral"
+            emphasis="strong"
+            className="small-100"
             href="/static/pdf/Whitepaper_the_future_of_asset_tokenization.pdf"
             target="_blank"
             rel="noopener"
             download
+            iconEnd={<MaterialSaveAltIcon />}
           >
             {translate("Download White Paper")}
-          </a>
+          </Button>
         </div>
       </div>
     </section>
@@ -399,31 +408,28 @@ function TokenHeroSection() {
   const { translate } = useTranslate();
   return (
     <section className="token-hero-section">
-      <div className="position-relative d-none-sm">
-        <img
-          alt="orange waves"
-          src={require("./../../../static/img/backgrounds/events-orange.svg")}
-          id="events-orange"
-        />
-      </div>
       <div className="token-title-container">
         <h1 className="token-title">
           {translate("Real-World Asset (RWA) Tokenization")}
         </h1>
         <div className="button-container">
-          <Link
-            className="btn btn-primary p-12 btn-arrow-out"
+          <Button
+            intention="brand"
+            emphasis="strong"
             target="_blank"
-            to="/static/pdf/Whitepaper_the_future_of_asset_tokenization.pdf"
+            href="/static/pdf/Whitepaper_the_future_of_asset_tokenization.pdf"
+            iconEnd={<XrplArrowInternalLinkIcon />}
           >
             {translate("Get Started Now")}
-          </Link>
-          <Link
-            className="internal-link"
-            to="/docs/use-cases/tokenization/creating-an-asset-backed-multi-purpose-token"
+          </Button>
+          <Button
+            intention="neutral"
+            emphasis="standard"
+            href="/docs/use-cases/tokenization/creating-an-asset-backed-multi-purpose-token"
+            iconEnd={<XrplArrowInternalLinkIcon />}
           >
             {translate("Explore Institutional Solutions")}
-          </Link>
+          </Button>
         </div>
       </div>
     </section>
@@ -464,7 +470,7 @@ export default function RwaTokenization() {
       links: [
         {
           text: "Join the Developer Discord",
-          url: "https://discord.gg/sfX3ERAMjH",
+          url: "https://discord.com/invite/xrpl",
         },
       ],
       backgroundClass: "learn-stay-updated",

@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import { useThemeHooks } from '@redocly/theme/core/hooks';
 import { Connection } from './types';
 import { Modal, ModalClipboardBtn, ModalCloseBtn } from '../Modal';
@@ -8,12 +8,7 @@ interface CurlButtonProps {
   selectedConnection: Connection;
 }
 
-interface CurlProps extends CurlButtonProps{
-  closeCurlModal: () => void;
-}
-
-export const CurlModal: React.FC<CurlProps> = ({
-                                                  closeCurlModal,
+export const CurlModal: React.FC<CurlButtonProps> = ({
                                                   currentBody,
                                                   selectedConnection,
                                                }) => {
@@ -23,14 +18,13 @@ export const CurlModal: React.FC<CurlProps> = ({
 
   const footer = <>
     <ModalClipboardBtn textareaRef={curlRef} />
-    <ModalCloseBtn onClick={closeCurlModal} />
+    <ModalCloseBtn />
   </>
 
   return (
     <Modal
       id="wstool-1-curl"
       title={translate("cURL Syntax")}
-      onClose={() => {}}
       footer={footer}
     >
       <form>
@@ -54,29 +48,20 @@ export const CurlModal: React.FC<CurlProps> = ({
   );
 };
 
-export function CurlButton ({selectedConnection, currentBody}: CurlButtonProps) {
-  const [showCurlModal, setShowCurlModal] = useState(false);
+export function CurlButton () {
   const { useTranslate } = useThemeHooks();
   const { translate } = useTranslate();
 
-  return <>
+  return (
       <button
         className="btn btn-outline-secondary curl"
-        data-toggle="modal"
-        data-target="#wstool-1-curl"
+        data-bs-toggle="modal"
+        data-bs-target="#wstool-1-curl"
         title={translate("cURL Syntax")}
-        onClick={() => setShowCurlModal(true)}
       >
         <i className="fa fa-terminal"></i>
       </button>
-      {showCurlModal && (
-        <CurlModal
-          closeCurlModal={() => setShowCurlModal(false)}
-          currentBody={currentBody}
-          selectedConnection={selectedConnection}
-        />
-      )}
-  </>
+  )
 }
 
 function getCurl(selectedConnection: Connection, currentBody) {
