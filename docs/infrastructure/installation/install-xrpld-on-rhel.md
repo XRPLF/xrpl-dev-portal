@@ -25,6 +25,8 @@ Before you install `xrpld`, you must meet the [System Requirements](system-requi
     - `unstable` - Pre-release builds such as betas or release candidates
     - `nightly` - Nightly development builds
 
+    {% admonition type="danger" name="Warning" %}Unstable and nightly builds may be broken at any time. Do not use these builds for production servers.{% /admonition %}
+
     {% tabs %}
 
     ```{% label="Stable" %}

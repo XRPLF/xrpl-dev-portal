@@ -1729,11 +1729,11 @@ The response follows the [standard format][], with a successful result containin
 
 | Field          | Type             | Description                              |
 |:---------------|:-----------------|:-----------------------------------------|
-| `index`        | String           | The unique ID of this [ledger entry](../../../protocol/ledger-data/ledger-entry-types/index.md). |
+| `index`        | String           | The [ledger entry ID][] of this [ledger entry](../../../protocol/ledger-data/ledger-entry-types/index.md). |
 | `ledger_index` | Unsigned Integer | The [ledger index][] of the ledger that was used when retrieving this data. |
 | `node`         | Object           | _(Omitted if `"binary": true` specified.)_ Object containing the data of this ledger entry, according to the [ledger format][]. |
-| `node_binary`  | String           | _(Omitted unless `"binary":true` specified)_ The [binary representation](../../../protocol/binary-format.md) of the ledger object, as hexadecimal. |
-| `deleted_ledger_index` | String   | _(Clio server only, returned if `include_deleted` parameter is set.)_ The [ledger index][] where the ledger entry object was deleted. |
+| `node_binary`  | String           | _(Omitted unless `"binary":true` specified)_ The [binary representation](../../../protocol/binary-format.md) of the ledger entry, as hexadecimal. |
+| `deleted_ledger_index` | String   | _(Clio server only, returned if `include_deleted` parameter is set.)_ The [ledger index][] where the ledger entry was deleted. |
 
 An example of a successful response:
 

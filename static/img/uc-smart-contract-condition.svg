@@ -1,0 +1,32 @@
+<svg viewBox="0 0 760 320" width="760" height="320" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system,BlinkMacSystemFont,'Helvetica Neue',Helvetica,Arial,sans-serif">
+
+  <!-- Condition card -->
+  <defs>
+    <clipPath id="scCardClip"><rect x="60" y="130" width="200" height="100" rx="8"/></clipPath>
+  </defs>
+  <rect x="60.5" y="130.5" width="199" height="99" rx="7.5" fill="#232325" stroke="#72777E" stroke-width="1"/>
+  <rect x="60" y="130" width="200" height="4" fill="#21E46B" clip-path="url(#scCardClip)"/>
+  <text x="160" y="172" text-anchor="middle" font-size="12.5" fill="#8A919A">Smart Contract</text>
+  <text x="160" y="198" text-anchor="middle" font-size="22" font-weight="700" fill="#F0F3F7">Condition</text>
+
+  <!-- top branch: condition met -> action executes (green) -->
+  <path d="M260 155 C 380 155, 380 100, 470 100" stroke="#21E46B" stroke-width="1.6" fill="none"/>
+  <path d="M462 95 L472 100 L462 105" stroke="#21E46B" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- bottom branch: condition not met -> nothing happens (muted) -->
+  <g opacity="0.75">
+    <path d="M260 205 C 380 205, 380 260, 470 260" stroke="#8A919A" stroke-width="1.4" fill="none" stroke-dasharray="6 5"/>
+    <path d="M462 255 L472 260 L462 265" stroke="#8A919A" stroke-width="1.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <text x="370" y="178" text-anchor="middle" font-size="11" fill="#8A919A">Condition met?</text>
+  <text x="340" y="113" font-size="12" font-weight="700" letter-spacing="0.5" fill="#21E46B">YES</text>
+  <text x="342" y="254" font-size="12" font-weight="700" letter-spacing="0.5" fill="#8A919A">NO</text>
+
+  <!-- outcome pills -->
+  <rect x="480" y="78" width="200" height="44" rx="10" fill="#21E46B" fill-opacity="0.12" stroke="#21E46B" stroke-opacity="0.6" stroke-width="1"/>
+  <text x="580" y="105" text-anchor="middle" font-size="15" font-weight="700" fill="#21E46B">Action executes</text>
+
+  <rect x="480" y="238" width="200" height="44" rx="10" fill="#232325" stroke="#72777E" stroke-width="1"/>
+  <text x="580" y="265" text-anchor="middle" font-size="15" font-weight="500" fill="#8A919A">Nothing happens</text>
+</svg>

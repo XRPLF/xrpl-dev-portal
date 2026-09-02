@@ -14,6 +14,7 @@ _code-samples/*/ts/dist/
 _code-samples/*/go/go.sum
 _code-samples/*/java/target/
 _code-samples/*/*/*[Ss]etup.json
+_code-samples/*/*/keys.json
 
 # Link checker files
 tools/link-cache.json
