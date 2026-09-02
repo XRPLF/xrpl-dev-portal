@@ -427,10 +427,13 @@ export function buildSteps (deal: DealTerms): RunnableStep[] {
       phase: 'Setup',
       title: 'Fund the five accounts',
       actors: PARTY_KEYS,
-      learn:
-        'An account and a key pair are all a party needs to join. In production each party holds its own keys with its own custodian; no single machine sees all five.',
       description:
-        'Each party needs a funded XRP Ledger account and an encryption key pair. The Devnet faucet funds each account with test XRP, which has no real-world value. The encryption key pair is what later encrypts that party’s confidential balances.',
+        'Each party needs a funded XRP Ledger account and a confidential encryption key pair. The account’s own signing keys authorize its transactions, while the separate encryption key pair is what later encrypts that party’s confidential balances. The Devnet faucet funds each account with test XRP, which has no real-world value.',
+      callout: {
+        kind: 'info',
+        title: 'Sponsored transactions',
+        text: 'From the first issuance on, the orchestrator (xSecurities) pays the fees and reserves for AlphaFund, InvestCo, and TradeDesk. Watch for the “sponsored” tag on those transactions. Each party signs its own transaction and therefore keeps control of it.'
+      },
       actions: [
         {
           id: 'fund',
@@ -475,7 +478,7 @@ export function buildSteps (deal: DealTerms): RunnableStep[] {
       callout: {
         kind: 'info',
         title: 'xSecurities pays from here on',
-        text: 'The orchestrator sponsors every transaction and every object for AlphaFund, InvestCo, and TradeDesk. Each of them still signs, and therefore still controls, its own transaction.'
+        text: 'The orchestrator sponsors every transaction and every object for AlphaFund, InvestCo, and TradeDesk. Each of them signs its own transaction and therefore keeps control of it.'
       },
       actions: [
         issueToken('collateral', SPONSOR),
@@ -487,6 +490,7 @@ export function buildSteps (deal: DealTerms): RunnableStep[] {
       phase: 'Issue',
       title: `Issue ${CASH.ticker}, the cash`,
       actors: ['stableCorp'],
+      learnTitle: 'One rail for every token',
       learn:
         'Cash is just another MPT, so fund tokens and stablecoins settle on the same rails.',
       description:
@@ -513,6 +517,7 @@ export function buildSteps (deal: DealTerms): RunnableStep[] {
       phase: 'Authorize',
       title: 'Authorize InvestCo as a holder',
       actors: ['investCo', 'alphaFund', 'xSecurities'],
+      learnTitle: 'Compliance is a protocol-level check',
       learn:
         'Compliance is a protocol-level check rather than application code you write and audit. RequireAuth means the issuer must approve a holder on-ledger before it can hold a single unit.',
       description:
@@ -539,8 +544,6 @@ export function buildSteps (deal: DealTerms): RunnableStep[] {
       phase: 'Authorize',
       title: `Authorize InvestCo to hold ${CASH.ticker}`,
       actors: ['investCo', 'xSecurities'],
-      learn:
-        'A sponsor can pay another account’s fee and reserve while that account still signs, and therefore still controls, its own transaction.',
       description:
         `InvestCo needs to hold ${CASH.ticker} too, because the near leg pays it in cash. ${CASH.ticker} has no RequireAuth, so opting in is enough and no approval follows.`,
       actions: [
@@ -558,17 +561,15 @@ export function buildSteps (deal: DealTerms): RunnableStep[] {
       phase: 'Purchase',
       title: 'Primary purchase',
       actors: ['alphaFund', 'investCo', 'xSecurities'],
-      learn:
-        'Delivery is one payment with finality in seconds. AlphaFund’s active role ends here, and the repo itself is strictly between InvestCo and TradeDesk.',
       description:
-        `InvestCo buys ${collateralAmt} from AlphaFund. The purchase price settles off-chain. After confirmation, AlphaFund delivers the tokens with a standard MPT payment, sponsored like everything else it signs.`,
+        `InvestCo buys ${collateralAmt} from AlphaFund. The purchase price is agreed off-chain. After confirmation, AlphaFund delivers the tokens with a standard MPT payment, sponsored like everything else it signs.`,
       actions: [
         pay('alphaFund', 'investCo', 'collateral', deal.collateralUnits, {
           sponsor: SPONSOR,
           label: `Deliver ${collateralAmt} → InvestCo`,
           cta: 'Deliver',
           detail:
-            'AlphaFund sends the fund tokens. The purchase price settled off-chain.',
+            'AlphaFund sends the fund tokens. The purchase price is settled off-chain.',
           notes: [`InvestCo now holds ${collateralAmt} publicly.`]
         })
       ]
@@ -597,14 +598,14 @@ export function buildSteps (deal: DealTerms): RunnableStep[] {
       callout: {
         kind: 'warn',
         title: 'Convert lands in the inbox',
-        text: 'A converted balance can’t be spent until you merge it from the inbox. Each action here converts and merges in one go; between the repo legs you do the merge yourself.'
+        text: 'Every confidential balance lands in your inbox first, whether you converted it or received it in a send, and can’t be spent until you merge it into your spendable balance. The merge is always a separate transaction from the convert or send; each action here submits both in one click for convenience.'
       },
       actions: [
         convert('investCo', 'collateral', deal.collateralUnits),
         convert('investCo', 'cash', opUnits, {
           label: `Convert the ${operatingAmt} operating balance and merge`,
           detail:
-            'InvestCo encrypts its operating cash, which also registers its USD key.',
+            'InvestCo encrypts its operating cash position, then merges it from inbox to spendable.',
           notes: [
             `This convert also registers InvestCo’s ${CASH.ticker} encryption key, which it needs to receive the near leg.`
           ]
@@ -683,8 +684,9 @@ export function buildSteps (deal: DealTerms): RunnableStep[] {
       phase: 'Near leg',
       title: 'Assemble and submit the near leg',
       actors: ['xSecurities'],
+      learnTitle: 'Atomic settlement',
       learn:
-        'Atomic delivery versus payment, with no settlement risk and no clearing house.',
+        'Delivery and payment settle in the same instant, so no one risks handing over their side without receiving the other, and no middleman stands in between.',
       description:
         'xSecurities merges both signatures into one batch, then signs the outer transaction and submits. The ledger checks both signatures, validates both proofs, and applies both sends atomically. Either the full swap settles or nothing does. The received amounts land in each recipient’s confidential inbox.',
       actions: [
@@ -754,7 +756,7 @@ export function buildSteps (deal: DealTerms): RunnableStep[] {
       callout: {
         kind: 'warn',
         title: 'Proofs are perishable',
-        text: 'These proofs bind to the balances the merge just produced. Pause here and send anything else from either account, and the batch is rejected on submit. The demo rebuilds and re-signs when that happens, but in production the orchestrator has to notice and do the same.'
+        text: 'These proofs bind to the balances the merge just produced. Send anything else from either account and the batch is rejected. Once the batch is prepared it is valid only until a set ledger, so signing and submitting have to finish before that passes. In production, the orchestrator can’t sign for anyone, so handling either case means rebuilding the batch and re-collecting every signature.'
       },
       actions: [
         constructAction('far', {
@@ -781,8 +783,6 @@ export function buildSteps (deal: DealTerms): RunnableStep[] {
       phase: 'Far leg',
       title: 'Assemble and submit the far leg',
       actors: ['xSecurities'],
-      learn:
-        'The unwind reuses the same primitive. One batch, atomic and final.',
       description:
         'xSecurities combines the signatures and submits the unwind, exactly as it did for the near leg.',
       actions: [
@@ -821,8 +821,6 @@ export function buildSteps (deal: DealTerms): RunnableStep[] {
       phase: 'Far leg',
       title: 'Final merge',
       actors: ['investCo', 'tradeDesk', 'xSecurities'],
-      learn:
-        'A full repo lifecycle settled in minutes, with amounts hidden end to end.',
       description:
         `One last merge makes the returned assets spendable. InvestCo ends with its ${collateralAmt}. TradeDesk ends with ${farCashAmt}, its principal plus ${interestAmt} interest. No outside observer ever saw an amount.`,
       actions: [
