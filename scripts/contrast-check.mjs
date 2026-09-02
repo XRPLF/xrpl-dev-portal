@@ -97,7 +97,6 @@ const REPRESENTATIVE_PAGES = [
   '/docs/use-cases/payments/',
   '/docs/use-cases/trading/',
   '/docs/use-cases/tokenization/',
-  '/docs/use-cases/tokenization/real-world-assets',
 
   // Dev tools
   '/resources/code-samples',

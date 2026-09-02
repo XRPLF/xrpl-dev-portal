@@ -399,6 +399,10 @@ authorized-minter.html:
     to: /docs/use-cases/tokenization/authorized-minter
 digital-artist.html:
     to: /docs/use-cases/tokenization/digital-artist
+docs/use-cases/tokenization/real-world-assets.html:
+    to: /docs/use-cases/tokenization
+docs/use-cases/tokenization/real-world-assets:
+    to: /docs/use-cases/tokenization    
 defi-uc.html:
     to: /docs/use-cases/defi/
 algorithmic-trading.html:
