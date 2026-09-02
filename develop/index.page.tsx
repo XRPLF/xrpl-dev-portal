@@ -154,7 +154,7 @@ export default function Develop() {
           },
           {
             logo: require("../static/img/logos/black/hidden-road.png"),
-            alt: translate("Hidden Road"),
+            alt: translate("Ripple Prime"),
             href: "https://ripple.com/products/prime-brokerage/",
           },
           {

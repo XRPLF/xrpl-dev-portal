@@ -37,7 +37,7 @@ export default function Trading() {
       <FeaturedVideoHero
         headline={translate("Compliance-First Trading on XRPL")}
         subtitle={translate(
-          "Credentials and Permissioned Domains are native features that unlock private DeFi, enable regulated asset trading, and enforce KYC AML directly on chain. These tools create secure, programmable environments for trading tokenized money market funds, treasuries, and more."
+          "Credentials and Permissioned Domains are native features that unlock private DeFi, enable regulated asset trading, and enforce KYC AML on-chain based on verified credentials. These tools create secure, programmable environments for trading tokenized money market funds, treasuries, and more."
         )}
         video={{
           source: {
@@ -62,9 +62,9 @@ export default function Trading() {
             buttons: [],
           },
           {
-            heading: translate("No Smart Contract Risk"),
+            heading: translate("No Third-Party Contract Risk"),
             description: translate(
-              "Built into XRPL for safer use:  no smart contracts, no MEV, and full control of your funds."
+              "Built into XRPL for safer use:  no third-party contract risks, MEV-resistant by design, and self-custody of your funds by default."
             ),
             buttons: [],
           },
@@ -140,7 +140,7 @@ export default function Trading() {
             icon: require("../../../static/img/icons/2026/black/compliance-primitive.svg"),
             title: translate("Compliance Primitive"),
             description: translate(
-              "Use built-in logic to stay compliant: freeze funds, manage access, control order books, and perform on-chain KYC."
+              "Use built-in logic to stay compliant: freeze funds, manage access, control order books, and enforce access controls on-chain based on verified credentials."
             ),
             href: "/docs/concepts/transactions",
           },
@@ -158,7 +158,7 @@ export default function Trading() {
             description: translate(
               "Remove execution risk and achieve clarity on transaction economics with transaction simulation."
             ),
-            href: "/docs",
+            href: "/docs/references/http-websocket-apis/public-api-methods/transaction-methods/simulate",
           },
           {
             icon: require("../../../static/img/icons/2026/black/native-lending-protocol.svg"),
@@ -166,7 +166,7 @@ export default function Trading() {
             description: translate(
               "Access deep, affordable capital directly on-chain to power your trading strategies."
             ),
-            href: "/docs",
+            href: "/docs/concepts/tokens/lending-protocol",
           },
         ]}
       />

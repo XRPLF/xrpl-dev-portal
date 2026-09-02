@@ -40,6 +40,9 @@ time.past.years: "{{value}}年前"
 sidebar.docs: ドキュメント
 sidebar.docs.introduction.what-is-xrp: XRPとは？
 sidebar.docs.use-cases.tokenization: Tokenization
+sidebar.docs.use-cases.trading: Trading
+sidebar.docs.use-cases.credit: Credit
+sidebar.docs.use-cases.defi: DeFi
 sidebar.docs.concepts.payment-types: 様々なPaymentの種類
 sidebar.docs.tutorials: チュートリアル
 sidebar.docs.references: リファレンス
@@ -532,7 +535,7 @@ Featured real world projects: 注目の実世界プロジェクト
 Related Articles: 関連記事
 More related articles: 追加の関連記事
 
-# docs/use-cases/tokenization/real-world-assets.page.tsx
+# docs/use-cases/tokenization/real-world-assets.page.tsx - redirected to docs/use-cases/tokenization/index.page.tsx
 Build Real-World Asset Tokenization Solutions on the XRP Ledger: XRP Ledgerで現物資産のトークン化ソリューションを構築しましょう
 Get Started Now: 今すぐ始める
 Access the blockchain built for business to power financial asset tokenization with decentralized architecture, fast settlement, and institutional-grade tools.: 分散型アーキテクチャ、高速な決済、そして機関レベルのツールを備えたビジネス向けのブロックチェーンにアクセスして、金融資産のトークン化を可能にしましょう。
