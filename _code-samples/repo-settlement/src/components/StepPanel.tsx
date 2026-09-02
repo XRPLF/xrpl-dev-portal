@@ -398,7 +398,7 @@ export function StepPanel ({
           ))}
 
           {step.learn && (
-            <Alert mt='sm' p='sm' color='teal' title='What the XRP Ledger provides'>
+            <Alert mt='sm' p='sm' color='teal' title={step.learnTitle}>
               <Text size='sm'>{step.learn}</Text>
             </Alert>
           )}

@@ -195,7 +195,7 @@ export default function App () {
               XRP Ledger · interactive demo
             </Text>
             <Title order={1} size={24}>
-              Repo Settlement
+              Confidential Atomic Settlement
             </Title>
             {/* Always shown, because becoming a party by clicking it is the
                 demo's one non-obvious interaction. */}

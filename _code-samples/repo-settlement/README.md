@@ -1,4 +1,4 @@
-# Repo Settlement on the XRP Ledger
+# Confidential Atomic Settlement on the XRP Ledger
 
 A guided demo of a two-leg repo trade settled on the XRP Ledger.
 

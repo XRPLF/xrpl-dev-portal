@@ -35,4 +35,6 @@ export interface StepDefinition {
   callout?: StepCallout | StepCallout[]
   /** One sentence on what the XRP Ledger contributes in this step. */
   learn?: string
+  /** Optional heading shown above the learn note. */
+  learnTitle?: string
 }

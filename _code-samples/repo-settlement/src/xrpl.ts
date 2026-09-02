@@ -299,7 +299,9 @@ export function buildIssuanceCreate (
     Flags: {
       tfMPTCanTransfer: true,
       tfMPTCanHoldConfidentialBalance: true,
-      tfMPTRequireAuth: options.requireAuth ?? false
+      // Omitted when false: an absent flag is off, so USD's issuance doesn't
+      // carry a flag it doesn't use.
+      ...(options.requireAuth ? { tfMPTRequireAuth: true } : {})
     },
     MPTokenMetadata: encodeMPTokenMetadata({
       ticker: options.ticker,
