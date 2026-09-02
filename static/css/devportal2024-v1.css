@@ -31205,3 +31205,72 @@ html.light [data-component-name="Layout/DocumentationLayoutBottom"] {
 }
 
 /*# sourceMappingURL=devportal2024-v1.css.map */
+/* ---------------------------------------------------------------------------
+   Appended by hand, not by `npm run build-css:dev`.
+   A full rebuild of this artifact rewrites ~5,200 lines of unrelated
+   autoprefixer output, because the browserslist/caniuse data here differs from
+   whoever last committed it. Only the rules for the payments use-case page are
+   appended, so the diff stays reviewable. Sources of record:
+     shared/patterns/StablecoinCorridorMap/StablecoinCorridorMap.scss
+     styles/_landings.scss  (.payments-stat-band, .payments-text-cards)
+   The .map file is therefore stale for this trailing block only.
+   --------------------------------------------------------------------------- */
+.bds-stablecoin-corridor-map {
+  display: block;
+  width: 100%;
+  height: auto;
+  font-family: "Booton", "Noto Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --scm-yellow: #FCFC06;
+  --scm-green: #02FF88;
+  --scm-blue: #016BFF;
+  --scm-blue-deep: #1E56D6;
+  --scm-blue-soft: #7C96E8;
+  --scm-glyph-on-green: #0B2A17;
+  --scm-glyph-on-yellow: #171400;
+  --scm-glyph-light: #FFFFFF;
+  --scm-bg: #001C5D;
+  --scm-land: #00257A;
+  --scm-heading: #EDEFF7;
+  --scm-body: #5B93D6;
+  --scm-muted: #C7CCE3;
+}
+.landing .payments-text-cards .bds-card-text-icon-card {
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+.landing .payments-stat-band .bds-card-stat {
+  min-height: 0;
+  height: auto;
+  -ms-flex-item-align: stretch;
+      align-self: stretch;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  gap: 8px;
+}
+@media (min-width: 992px) {
+  
+  .landing .payments-stat-band .bds-card-stat {
+    aspect-ratio: auto;
+  }
+}
+.landing .payments-stat-band .bds-card-stat__statistic {
+  font-size: 40px;
+  line-height: 1.1;
+  letter-spacing: -1px;
+}
+@media (min-width: 992px) {
+  
+  .landing .payments-stat-band .bds-card-stat__statistic {
+    font-size: 48px;
+    letter-spacing: -1.5px;
+  }
+}
+@media (min-width: 1280px) {
+  
+  .landing .payments-stat-band .bds-card-stat__statistic {
+    font-size: 56px;
+    letter-spacing: -2px;
+  }
+}

@@ -1,0 +1,73 @@
+// BDS StablecoinCorridorMap Pattern Styles
+// Payments use-case landing page, Wireframe v2 section 6.
+//
+// Naming Convention: BEM with 'bds' namespace
+// .bds-stablecoin-corridor-map  - The inlined <svg> root
+//
+// The graphic's markup carries no literal colours. Every fill and stroke resolves to one of
+// the custom properties below, so the palette is editable from this one block without
+// touching 120KB of geometry.
+//
+// These values are the designer's originals, not _colors.scss tokens. That is a reversal of
+// an earlier pass that snapped them onto the portal palette, and it is deliberate: the
+// highlights are not decoration. Yellow keys LatAm to the USDB disc and green keys Europe
+// and Australia to the EURoP disc, so they have to be the colours the designer chose. Once
+// those two are exact, tokenising the surface and the type around them just produces a
+// graphic that half-matches. Re-tokenising any single line here is a one-line change; the
+// nearest tokens are recorded per line so that stays cheap.
+//
+// There is deliberately no light-mode block. See the note at the foot of this file.
+
+.bds-stablecoin-corridor-map {
+  display: block;
+  width: 100%;
+  height: auto;
+
+  // Inherit Booton. This is the whole reason the graphic is inlined rather than an <img>.
+  font-family: $font-family-sans-serif;
+
+  --scm-yellow: #FCFC06;       // LatAm region + USDB disc         (nearest: $yellow-400)
+  --scm-green: #02FF88;        // Europe + Australia + EURoP disc  (nearest: $green-300)
+  --scm-blue: #016BFF;         // RLUSD disc                       (nearest: $blue-400)
+  --scm-blue-deep: #1E56D6;    // XSGD disc                        (nearest: $blue-500)
+  --scm-blue-soft: #7C96E8;    // XSGD dashed ring                 (nearest: $blue-200)
+  // Two near-blacks, not one. The designer tinted each disc glyph towards its disc: the
+  // euro is a very dark green on green, the dollar a very dark olive on yellow. Collapsing
+  // them onto a single token is a visible change at the size these render, so they stay
+  // separate.
+  --scm-glyph-on-green: #0B2A17;   // euro glyph on the EURoP disc  (nearest: $black)
+  --scm-glyph-on-yellow: #171400;  // dollar glyph on the USDB disc (nearest: $black)
+  --scm-glyph-light: #FFFFFF;  // Ripple logomark + XSGD glyph     (= $white)
+
+  --scm-bg: #001C5D;           // card surface                     (nearest: $accent-blue-90)
+  --scm-land: #00257A;         // unhighlighted landmasses         (no token in this range)
+  --scm-heading: #EDEFF7;      // heading + the four labels        (nearest: $gray-100)
+  --scm-body: #5B93D6;         // body copy                        (nearest: $blue-200)
+  --scm-muted: #C7CCE3;        // AUDD/USDC rings and glyphs       (nearest: $gray-300)
+}
+
+// Why there is no light variant
+// -----------------------------
+// The labels sit on top of the map rather than beside it, so a light treatment has to
+// satisfy three constraints at once, and they conflict:
+//
+//   * the highlights must read against the landmasses
+//   * the landmasses must read against the surface
+//   * 8.6px body copy must read against whichever landmass it happens to overlap
+//
+// Measured, against a $gray-100 surface:
+//
+//   land $gray-300  ->  yellow 1.36:1, green 1.12:1   highlights vanish
+//   land $gray-400  ->  yellow 2.89:1, green 2.37:1   still under the 3:1 non-text floor
+//   land $gray-500  ->  yellow 4.10:1, green 3.36:1   but body copy over land is 4.08:1
+//                                                     at 8.6px, under the 4.5:1 floor
+//
+// Darkening the highlights instead of the land does not help either - no palette yellow
+// clears 1.66:1 on a light surface, because an acid yellow is only legible against a dark
+// surround. The dark panel is what the graphic was designed as, and on it everything passes
+// comfortably: body 4.26:1, yellow 12.34:1, green 10.13:1.
+//
+// So the panel keeps its own dark surface in both themes. It has its own rounded surface and
+// padding, so on the light theme it reads as a deliberate dark panel, which is a normal
+// pattern for a map. If a real light variant is wanted later it needs its own highlight and
+// land values from the designer, not a swap of the surface and the type.

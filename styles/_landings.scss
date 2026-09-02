@@ -76,6 +76,72 @@
     }
   }
 
+  // Payments use-case page: top-align text-only cards.
+  //
+  // Every card in the design system is flex-column with justify-content: space-between so
+  // that a trailing CTA bottom-aligns across a row, and cards in a row stretch to the
+  // tallest. CardTextIconCard has just two children - the heading block and the
+  // description - so on a card sized by a taller neighbour the description drops to the
+  // bottom and leaves a hole under the heading. These cards carry no CTA, so there is
+  // nothing to bottom-align and the gap reads as a bug.
+  //
+  // Scoped to this page rather than changed in CardTextIconCard, because the bottom-align
+  // is correct wherever those cards do have a CTA. The durable fix is for the component to
+  // align to start when no CTA is present.
+  .payments-text-cards .bds-card-text-icon-card {
+    justify-content: flex-start;
+  }
+
+  // Payments use-case page: bring the stat numbers down to a readable size.
+  //
+  // CardStat renders `statistic` at display-lg, which is 92px on desktop and 112px at xl.
+  // That is sized for a hero-scale single figure, and four of them in a band read as
+  // shouting. The family stays Booton: the smaller tokens in $type-scale (heading-lg and
+  // below) switch to Tobias, which would change the typeface, not just the size.
+  //
+  // letter-spacing has to be overridden alongside font-size. display-lg sets -6px desktop
+  // and -7px at xl, which is tuned for 92-112px glyphs and collapses the numerals into each
+  // other at half that size.
+  // Payments use-case page: shrink the stat cards to their content.
+  //
+  // CardStat is min-height 200/208/298px with justify-content: space-between, and at
+  // lg-3 it additionally takes aspect-ratio: 1/1 - so a quarter-width card becomes a
+  // ~250px square with the figure pinned to the top and the label to the bottom. With a
+  // 56px figure and a one-line label that leaves a large hole in the middle.
+  // Height comes from the content instead, and the two elements sit together.
+  // All four boxes are the same height regardless of how long each label runs. The row is
+  // display: flex with the default align-items: stretch, but CardStat sets height: 100%,
+  // and an explicit height opts a flex item out of stretching - so each box was sizing to
+  // its own text. height: auto hands the sizing back to stretch, which resolves every box
+  // to the tallest label in the row.
+  .payments-stat-band .bds-card-stat {
+    min-height: 0;
+    height: auto;
+    align-self: stretch;
+    justify-content: flex-start;
+    gap: $bds-space-sm;
+
+    @include media-breakpoint-up(lg) {
+      aspect-ratio: auto;
+    }
+  }
+
+  .payments-stat-band .bds-card-stat__statistic {
+    font-size: 40px;
+    line-height: 1.1;
+    letter-spacing: -1px;
+
+    @include media-breakpoint-up(lg) {
+      font-size: 48px;
+      letter-spacing: -1.5px;
+    }
+
+    @include media-breakpoint-up(xl) {
+      font-size: 56px;
+      letter-spacing: -2px;
+    }
+  }
+
   /* Misc. ------------------------------------------------------------------ */
 
   .display-4 {
