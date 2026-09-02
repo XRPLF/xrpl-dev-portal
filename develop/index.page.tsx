@@ -148,16 +148,6 @@ export default function Develop() {
             href: "https://archax.com/",
           },
           {
-            logo: require("../static/img/logos/black/zoniqx.png"),
-            alt: translate("Zoniqx"),
-            href: "https://www.zoniqx.com/",
-          },
-          {
-            logo: require("../static/img/logos/black/hidden-road.png"),
-            alt: translate("Ripple Prime"),
-            href: "https://ripple.com/products/prime-brokerage/",
-          },
-          {
             logo: require("../static/img/logos/black/coinpayments.png"),
             alt: translate("Coinpayments"),
             href: "https://www.coinpayments.net/",
@@ -171,11 +161,6 @@ export default function Develop() {
             logo: require("../static/img/logos/black/frii.png"),
             alt: translate("Frii"),
             href: "https://friipay.io/",
-          },
-          {
-            logo: require("../static/img/logos/black/sologenic.png"),
-            alt: translate("Sologenic"),
-            href: "https://sologenic.org/",
           },
           {
             logo: require("../static/img/logos/black/first-ledger.png"),
