@@ -173,7 +173,7 @@ export default function Funding() {
             href: "https://lantern.finance/",
           },
           {
-            logo: require("../static/img/logos/black/soil.svg"),
+            logo: require("../static/img/logos/black/soil.png"),
             alt: translate("SOIL"),
             href: "https://soil.co/",
           },
