@@ -1,0 +1,755 @@
+// Button — built from the Figma-derived specification
+// Source: github.com/samiamdesigns/pd-xrpl-developer-docs
+//   components/button.md    — the reasoning, and which token to bind
+//   components/button.json  — every value resolved per mode
+//
+// The component is selected along three styling axes plus state:
+//   intention  brand | neutral
+//   context    on-theme | on-inverse | on-saturated
+//   emphasis   strong | standard | subtle
+//   state      rest | hover | pressed | loading | inactive | disabled
+//
+// intention and context are combined into ONE group class by the TSX, because
+// that is how the token set groups them (`brand-onInverse`, not brand + inverse).
+// The five groups are the five that have tokens; neutral + on-saturated has none.
+//
+// -----------------------------------------------------------------------------
+// How this file is organised, and why
+// -----------------------------------------------------------------------------
+// 1. Geometry    — constants, straight from button.json `geometry`
+// 2. Palette     — THE DATA. Which _colors.scss variable each slot binds.
+// 3. Emit        — one loop turns the data into every custom property
+// 4. Structure   — layout, states, motion. Names no colour.
+// 5. Paint       — one block. Consumes the custom properties.
+//
+// Sections 2 and 4 are the whole component. To change a colour you edit data;
+// to change behaviour you edit structure. The two never mix, which is the point.
+//
+// Imported from styles/xrpl.scss. Depends on _colors.scss and nothing else.
+
+// =============================================================================
+// 1. Geometry
+// =============================================================================
+// From button.json `geometry`. There are no size variants and no breakpoint
+// response — button.md is explicit that 190 custom properties differ across the
+// three built breakpoints and none of them belongs to the button.
+
+$bds-btn-radius: 9999px; // fully pill-shaped
+$bds-btn-border-width: 1px; // on EVERY variant, transparent or not — see §5
+$bds-btn-min-height: 40px; // px, not rem: a physical touch target
+$bds-btn-min-width: 40px; // px, not rem
+$bds-btn-pad-y: 0.5rem; // rem: scales with the user's font-size preference
+$bds-btn-pad-x: 1rem;
+$bds-btn-gap: 0.5rem;
+// icon-size resolves to 1rem, which is 1em at the label size — applied that way
+// in §5 so it keeps tracking the label. Not a separate constant.
+
+// Typography. button.json `typography` — subtle differs from the other two.
+$bds-btn-label-size: 1rem;
+$bds-btn-label-line-height: 1; // a true RATIO, not 1px. button.md reversed this
+// on 2026-08-17; converting it to px is the documented trap.
+
+// The token set names one family, deliberately without fallbacks — composing
+// the stack is our job. This is the site's existing sans stack, carried forward
+// unchanged per implementation/font-stacks.md. Noto Sans stays in position two:
+// it is the metric-compatible bridge that stops a Booton failure reflowing.
+$bds-btn-font-stack: 'Booton', 'Noto Sans', -apple-system, blinkmacsystemfont,
+  'Segoe UI', roboto, sans-serif;
+
+// Motion. Not specified by the token set — carried over from the current
+// Button so the two are comparable on equal terms.
+$bds-btn-duration: 150ms;
+$bds-btn-easing: cubic-bezier(0.98, 0.12, 0.12, 0.98);
+
+// Focus. accessibility/focus-indicators.md, specified once for the whole system.
+// The ring's border-radius is deliberately NOT implemented: `outline` follows
+// the element's own radius automatically.
+$bds-btn-focus-width: 2px;
+$bds-btn-focus-offset: 2px; // outward. An inset ring must contrast every state's
+// fill instead of the page, which is how the current
+// codebase produced a 2.10 measurement.
+
+// =============================================================================
+// 2. Palette — the data
+// =============================================================================
+// Every slot names a variable from styles/_colors.scss. 
+
+// Each value is a (lightmode, darkmode) pair, so the modes are stated together and
+// cannot drift apart in review.
+//
+// `rest` also serves `inactive`, and `engaged` serves `hover`, `pressed` and
+// `loading`.
+//
+// The -on-inverse groups are bound literally rather than derived by swapping
+// the base group's modes due to subtle border differences.
+//
+// ON ALPHA: button.json rounds alpha to two decimals where _colors.scss carries
+// the generated 8-digit value, which is more accurate.
+$bds-btn-palette: (
+  brand: (
+    strong: (
+      rest: (
+        bg: ($xrpl-green-9, $xrpl-green-dark-9),
+        bd: ($xrpl-green-a4, $xrpl-green-dark-a2),
+        fg: ($black, $black),
+      ),
+      engaged: (
+        bg: ($xrpl-green-5, $xrpl-green-dark-7),
+        bd: ($xrpl-green-dark-a3, $xrpl-green-dark-a3),
+        fg: ($xrpl-green-12, $sage-dark-12),
+      ),
+    ),
+    standard: (
+      rest: (
+        bg: ($xrpl-green-a1, $xrpl-green-dark-a1),
+        bd: ($xrpl-green-11, $xrpl-green-dark-a10),
+        fg: ($xrpl-green-11, $xrpl-green-dark-11),
+      ),
+      engaged: (
+        bg: ($xrpl-green-3, $xrpl-green-dark-3),
+        bd: ($xrpl-green-a12, $xrpl-green-dark-a12),
+        fg: ($xrpl-green-12, $xrpl-green-dark-12),
+      ),
+    ),
+    subtle: (
+      rest: (
+        bg: (transparent, transparent),
+        bd: (transparent, transparent),
+        fg: ($xrpl-green-11, $xrpl-green-dark-11),
+      ),
+      engaged: (
+        bg: ($xrpl-green-3, $xrpl-green-dark-3),
+        bd: ($xrpl-green-a12, $xrpl-green-dark-a12),
+        fg: ($xrpl-green-12, $xrpl-green-dark-12),
+      ),
+    ),
+  ),
+  neutral: (
+    strong: (
+      rest: (
+        bg: ($sage-12, $sage-dark-12),
+        bd: ($sage-12, $sage-dark-12),
+        fg: ($sage-1, $sage-dark-1),
+      ),
+      engaged: (
+        bg: ($sage-11, $sage-dark-11),
+        bd: ($sage-a2, $sage-dark-a2),
+        fg: ($sage-1, $sage-dark-1),
+      ),
+    ),
+    standard: (
+      rest: (
+        bg: ($sage-a1, transparent),
+        bd: ($sage-a11, $sage-dark-a11),
+        fg: ($sage-12, $sage-dark-12),
+      ),
+      engaged: (
+        bg: ($sage-3, $sage-dark-3),
+        bd: ($sage-a11, $sage-dark-a8),
+        fg: ($sage-12, $sage-dark-12),
+      ),
+    ),
+    subtle: (
+      rest: (
+        bg: (transparent, transparent),
+        bd: (transparent, transparent),
+        fg: ($sage-12, $sage-dark-12),
+      ),
+      engaged: (
+        bg: ($sage-3, $sage-dark-3),
+        bd: ($sage-a11, $sage-dark-a8),
+        fg: ($sage-12, $sage-dark-12),
+      ),
+    ),
+  ),
+  brand-on-saturated: (
+    strong: (
+      rest: (
+        bg: ($black, $black),
+        bd: (transparent, transparent),
+        fg: ($sage-dark-12, $sage-dark-12),
+      ),
+      engaged: (
+        bg: ($black-overlay-a8, $black-overlay-a8),
+        bd: (transparent, transparent),
+        fg: ($sage-dark-12, $sage-dark-12),
+      ),
+    ),
+    standard: (
+      rest: (
+        bg: (transparent, transparent),
+        bd: ($black, $black),
+        fg: ($black, $black),
+      ),
+      engaged: (
+        bg: ($white-overlay-a6, $white-overlay-a6),
+        bd: ($black, $black),
+        fg: ($black, $black),
+      ),
+    ),
+    subtle: (
+      rest: (
+        bg: (transparent, transparent),
+        bd: (transparent, transparent),
+        fg: ($black, $black),
+      ),
+      engaged: (
+        bg: ($white-overlay-a6, $white-overlay-a6),
+        bd: ($black, $black),
+        fg: ($black, $black),
+      ),
+    ),
+  ),
+  brand-on-inverse: (
+    strong: (
+      rest: (
+        bg: ($xrpl-green-9, $xrpl-green-dark-9),
+        bd: ($xrpl-green-dark-a2, $xrpl-green-a4),
+        fg: ($black, $black),
+      ),
+      engaged: (
+        bg: ($xrpl-green-dark-7, $xrpl-green-5),
+        bd: ($xrpl-green-dark-a3, $xrpl-green-a3),
+        fg: ($sage-dark-12, $xrpl-green-12),
+      ),
+    ),
+    standard: (
+      rest: (
+        bg: ($xrpl-green-dark-a1, $xrpl-green-a1),
+        bd: ($xrpl-green-dark-a10, $xrpl-green-a11),
+        fg: ($xrpl-green-dark-11, $xrpl-green-11),
+      ),
+      engaged: (
+        bg: ($xrpl-green-dark-3, $xrpl-green-3),
+        bd: ($xrpl-green-dark-a5, $xrpl-green-a12),
+        fg: ($xrpl-green-dark-12, $xrpl-green-12),
+      ),
+    ),
+    subtle: (
+      rest: (
+        bg: (transparent, transparent),
+        bd: (transparent, transparent),
+        fg: ($xrpl-green-dark-11, $xrpl-green-11),
+      ),
+      engaged: (
+        bg: ($xrpl-green-dark-3, $xrpl-green-3),
+        bd: ($xrpl-green-dark-a5, $xrpl-green-a12),
+        fg: ($xrpl-green-dark-12, $xrpl-green-12),
+      ),
+    ),
+  ),
+  neutral-on-inverse: (
+    strong: (
+      rest: (
+        bg: ($sage-dark-12, $sage-12),
+        bd: ($sage-dark-12, $sage-12),
+        fg: ($sage-dark-1, $sage-1),
+      ),
+      engaged: (
+        bg: ($sage-dark-11, $sage-11),
+        bd: ($sage-dark-a2, $sage-a2),
+        fg: ($sage-dark-1, $sage-1),
+      ),
+    ),
+    standard: (
+      rest: (
+        bg: (transparent, $sage-a1),
+        bd: ($sage-dark-a11, $sage-a11),
+        fg: ($sage-dark-12, $sage-12),
+      ),
+      engaged: (
+        bg: ($sage-dark-3, $sage-3),
+        bd: ($sage-dark-a8, $sage-a11),
+        fg: ($sage-dark-12, $sage-12),
+      ),
+    ),
+    subtle: (
+      rest: (
+        bg: (transparent, transparent),
+        bd: (transparent, transparent),
+        fg: ($sage-dark-12, $sage-12),
+      ),
+      engaged: (
+        bg: ($sage-dark-3, $sage-3),
+        bd: ($sage-dark-a8, $sage-a11),
+        fg: ($sage-dark-12, $sage-12),
+      ),
+    ),
+  ),
+);
+
+// Disabled is NOT a sixth state on the group. It is a shared group selected by
+// CONTEXT alone — not by intention and not by emphasis — so a templated
+// `<group>.<emphasis>.disabled` path resolves to nothing. Verified: all five
+// groups reduce to these three entries with no conflicts.
+//
+// `strong-bd` exists only on on-saturated. Its base stroke is opaque #5b625f
+// (the others use ~13% alpha) because a near-transparent stroke over solid brand
+// green would let the green bleed through the edge — and an opaque grey stroke
+// would then rim a *filled* control, so strong overrides it with the fill.
+
+$bds-btn-disabled: (
+  on-theme: (
+    bg: ($sage-5, $sage-dark-5),
+    bd: ($sage-a5, $sage-dark-a5),
+    fg: ($sage-11, $sage-dark-11),
+  ),
+  on-inverse: (
+    bg: ($sage-dark-5, $sage-5),
+    bd: ($sage-dark-a5, $sage-a5),
+    fg: ($sage-dark-11, $sage-11),
+  ),
+  on-saturated: (
+    bg: ($sage-dark-4, $sage-dark-4),
+    bd: ($sage-dark-8, $sage-dark-8),
+    fg: ($sage-11, $sage-11),
+    strong-bd: ($sage-dark-4, $sage-dark-4),
+  ),
+);
+
+// The focus ring is chosen by the surface the ring lands on, which the button
+// does not own — so no correct value exists in action.button.* and none is
+// stored there. Same `context` as the fills, from mode-color.focus-indicator.*.
+// A button that takes context="on-inverse" for its paint and leaves the ring at
+// its default renders perfectly and is wrong. Nothing catches it.
+$bds-btn-focus-near-black: $off-black; // mode-color.focus-indicator, light backdrops
+$bds-btn-focus-true-black: $true-black; // mode-color.focus-indicator, dark/saturated
+
+$bds-btn-ring: (
+  on-theme: ($bds-btn-focus-near-black, $white),
+  on-inverse: ($white, $bds-btn-focus-true-black),
+  on-saturated: ($bds-btn-focus-near-black, $bds-btn-focus-true-black),
+);
+
+// =============================================================================
+// 3. Emit
+// =============================================================================
+// Everything above is data; everything below is one loop over it. Adding a
+// group or an emphasis means adding a map entry — no new rules to write.
+//
+// The dark selector is `:where(html.dark)`. A bare `html.dark .bds-btn--brand.bds-btn--strong` scores
+// (0,3,1), which outranks the disabled swap in §5 at (0,2,0) — so a disabled
+// button kept its resting fill in dark mode ONLY, because in light mode the
+// same rule scores (0,2,0) and loses to source order. `:where()` contributes
+// zero specificity, so the dark rules tie with their light counterparts and
+// win on source order alone, leaving the state swaps free to override both.
+//
+// This is the problem the current Button solves with three @layer declarations.
+// One pseudo-class does it here because there is only one axis to order.
+
+// $i: 1 = light, 2 = dark.
+@mixin rb-triplet($prefix, $slot, $i) {
+  --bds-btn-#{$prefix}bg: #{nth(map-get($slot, bg), $i)};
+  --bds-btn-#{$prefix}bd: #{nth(map-get($slot, bd), $i)};
+  --bds-btn-#{$prefix}fg: #{nth(map-get($slot, fg), $i)};
+}
+
+@mixin rb-group-vars($states, $i) {
+  @include rb-triplet('', map-get($states, rest), $i);
+  @include rb-triplet('engaged-', map-get($states, engaged), $i);
+}
+
+@each $group, $emphases in $bds-btn-palette {
+  @each $emphasis, $states in $emphases {
+    .bds-btn--#{$group}.bds-btn--#{$emphasis} {
+      @include rb-group-vars($states, 1);
+
+      :where(html.dark) & {
+        @include rb-group-vars($states, 2);
+      }
+    }
+  }
+}
+
+@each $context, $slot in $bds-btn-disabled {
+  .bds-btn--#{$context} {
+    @include rb-triplet('disabled-', $slot, 1);
+    --bds-btn-ring: #{nth(map-get($bds-btn-ring, $context), 1)};
+
+    :where(html.dark) & {
+      @include rb-triplet('disabled-', $slot, 2);
+      --bds-btn-ring: #{nth(map-get($bds-btn-ring, $context), 2)};
+    }
+  }
+
+  // The three disabled SHAPES. Emphasis does not choose disabled's colours, but
+  // it does choose which of them are painted: standard drops the fill, subtle
+  // drops the fill and clears the stroke. The 1px border stays either way.
+  .bds-btn--#{$context}.bds-btn--standard {
+    --bds-btn-disabled-bg: transparent;
+  }
+
+  .bds-btn--#{$context}.bds-btn--subtle {
+    --bds-btn-disabled-bg: transparent;
+    --bds-btn-disabled-bd: transparent;
+  }
+
+  @if map-has-key($slot, strong-bd) {
+    .bds-btn--#{$context}.bds-btn--strong {
+      --bds-btn-disabled-bd: #{nth(map-get($slot, strong-bd), 1)};
+
+      :where(html.dark) & {
+        --bds-btn-disabled-bd: #{nth(map-get($slot, strong-bd), 2)};
+      }
+    }
+  }
+}
+
+// =============================================================================
+// 4. Structure
+// =============================================================================
+// Layout, state swaps and motion.
+
+// The four selectors that mean "engaged". hover, pressed and loading are ONE
+// treatment: button.md is explicit that a visually distinct pressed state would
+// need a third rung in the swap chain, and that inventing one is a design
+// decision rather than a missing value. The list is needed in two places, so it
+// is written once — a copy of it is what lets the two drift apart.
+@mixin bds-btn-engaged {
+  &:hover:not(:disabled):not([aria-disabled='true']),
+  &:active:not(:disabled):not([aria-disabled='true']),
+  &:focus-visible:not(:disabled):not([aria-disabled='true']),
+  &.bds-btn--loading {
+    @content;
+  }
+}
+
+// The body of the component as a mixin rather than a rule, so that markup
+// which cannot use the React component can still BE the component rather than
+// imitate it. `.bds-btn` includes it immediately below and is the only consumer
+// on the site; `bds-button()` at the end of this file is the other entry point.
+@mixin bds-btn-structure {
+  // The two paint layers.
+  //
+  // The BACKDROP is the element's own background-color, and it is not merely the
+  // resting fill by another name: `background-color` paints to the BORDER box,
+  // so every alpha stroke in §2 ($xrpl-green-a4, $sage-a11, $sage-dark-a2 …)
+  // composites over it. The rise layer reaches only the padding box, so dropping
+  // the backdrop would leave those strokes compositing against the page instead.
+  //
+  // The RISE FILL is the lower half of the gradient in the ::before below — what
+  // slides into view on engage.
+  --bds-btn-backdrop: var(--bds-btn-bg);
+  --bds-btn-rise-fill: var(--bds-btn-engaged-bg);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  gap: $bds-btn-gap;
+  min-width: $bds-btn-min-width;
+  min-height: $bds-btn-min-height;
+  padding: $bds-btn-pad-y $bds-btn-pad-x;
+
+  // Every variant carries the border, including the ones whose stroke resolves
+  // transparent. This keeps the box model identical across emphases so a button
+  // does not change size when its emphasis changes. Do not optimise it away.
+  border: $bds-btn-border-width solid var(--bds-btn-bd);
+  border-radius: $bds-btn-radius;
+
+  font-family: $bds-btn-font-stack;
+  font-size: $bds-btn-label-size;
+  font-weight: 400;
+  line-height: $bds-btn-label-line-height;
+  letter-spacing: 0;
+  white-space: nowrap;
+  text-decoration: none;
+  cursor: pointer;
+
+  // Establishes the stacking context the rise animation lives in, and clips it
+  // to the pill. `overflow: hidden` does not clip the focus outline.
+  position: relative;
+  z-index: 0;
+  overflow: hidden;
+  margin-bottom: 0; // defends against Bootstrap's button reset
+
+  // --- The rise -------------------------------------------------------------
+  // Not in the token set; carried over from the current Button deliberately.
+  // The spec says hover swaps the whole triplet to the engaged treatment; this
+  // is only *how* the fill half of that swap arrives. Label and border colours
+  // cross-fade underneath it.
+  //
+  // ONE layer, twice the height, holding both fills as hard gradient stops. It
+  // translates by exactly half itself, so the boundary between the stops sweeps
+  // up through the pill.
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 200%;
+    z-index: -1;
+    background-image: linear-gradient(
+      to bottom,
+      var(--bds-btn-bg) 0 50%,
+      var(--bds-btn-rise-fill) 50% 100%
+    );
+    transform: translateY(0);
+  }
+
+  // --- Engaged --------------------------------------------------------------
+  @include bds-btn-engaged {
+    --bds-btn-bd: var(--bds-btn-engaged-bd);
+    --bds-btn-fg: var(--bds-btn-engaged-fg);
+
+    // Publish the state; the icons decide what it means. The button knows it is
+    // engaged and nothing else — not which icon it holds, not how that icon
+    // moves. On the slot rather than on `&`, because that is where the icon
+    // actually is: the mixin reaches one level down. See Icons/shared.scss.
+    .bds-btn__icon {
+      @include bds-icon-engaged;
+    }
+
+    &::before {
+      transform: translateY(-50%);
+    }
+  }
+
+  // --- Focus ----------------------------------------------------------------
+  // :focus-visible, never :focus. Outward offset, so the ring has the page
+  // surface on both sides and only ever contrasts one colour. Radius is the
+  // browser's job.
+  &:focus-visible {
+    outline: $bds-btn-focus-width solid var(--bds-btn-ring);
+    outline-offset: $bds-btn-focus-offset;
+  }
+
+  // --- Inactive -------------------------------------------------------------
+  // Looks exactly like rest. Stays focusable and stays in the accessibility
+  // tree — that is the entire point of it, and why it is not `disabled`.
+  &[aria-disabled='true'] {
+    cursor: not-allowed;
+  }
+
+  // --- Disabled -------------------------------------------------------------
+  // Bound by context alone. Exempt from SC 1.4.3 and 1.4.11 — a disabled button
+  // measuring below 3:1 is not a bug, so do not raise it for a checker.
+  &:disabled,
+  &.bds-btn--disabled {
+    --bds-btn-bg: var(--bds-btn-disabled-bg);
+    --bds-btn-bd: var(--bds-btn-disabled-bd);
+    --bds-btn-fg: var(--bds-btn-disabled-fg);
+    cursor: not-allowed;
+
+    &::before {
+      content: none;
+    }
+  }
+}
+
+.bds-btn {
+  @include bds-btn-structure;
+}
+
+// --- on-saturated + strong: the rise uncovers rather than overlays -----------
+// The one variant in §2 whose engaged fill is TRANSLUCENT over an OPAQUE resting
+// fill. Everywhere else the pair is opaque-over-opaque or opaque-over-transparent,
+// and the compositing base does not matter; here it decides the colour.
+@mixin bds-btn-saturated-swap {
+  &:not(:disabled):not(.bds-btn--disabled) {
+    --bds-btn-backdrop: var(--bds-btn-engaged-bg);
+    --bds-btn-rise-fill: transparent;
+    --bds-btn-bd: var(--bds-btn-bg);
+
+    // This rule and §4's engaged block both score (0,4,0); source order would
+    // hand the tie to this one and pin the stroke through hover.
+    @include bds-btn-engaged {
+      --bds-btn-bd: var(--bds-btn-engaged-bd);
+    }
+  }
+}
+
+.bds-btn--on-saturated.bds-btn--strong {
+  @include bds-btn-saturated-swap;
+}
+
+// Subtle is the only emphasis with its own type treatment: heavier, tracked out
+// and underlined. Note this makes it identical to a resting brand Link — if the
+// two ever appear in the same block of content, that is a design question.
+.bds-btn--subtle {
+  font-weight: 500;
+  letter-spacing: 0.025em;
+  text-decoration: underline;
+}
+
+.bds-btn__label {
+  position: relative;
+  z-index: 1; // above the rise
+}
+
+.bds-btn__icon {
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+  // icon-size resolves to 1rem, which is 1em at the button's 1rem label size.
+  // Expressed in em so the icon keeps tracking the label if the font size is
+  // ever overridden — "text scales, targets do not" applies to the 40px
+  // minimums, not to the icon.
+  width: 1em;
+  height: 1em;
+  // icon-color and label-color resolve identically in all 87 token pairs, so
+  // the icon inherits rather than binding its own.
+  color: inherit;
+  display: inline-flex;
+
+  // Size any icon passed in, rather than trusting each one's own attributes.
+  > svg {
+    display: block;
+    width: 1em;
+    height: 1em;
+  }
+}
+
+
+// --- Motion ------------------------------------------------------------------
+// Guarded as a whole. The current Button has five unguarded transitions and an
+// unguarded keyframe animation; button-examples.md lists carrying that forward
+// as a defect. The loader's own keyframes are guarded where they live, in
+// shared/components/Icons/LoaderIcon.scss — this file does not animate it.
+@mixin bds-btn-motion {
+  @media (prefers-reduced-motion: no-preference) {
+    transition:
+      color $bds-btn-duration $bds-btn-easing,
+      border-color $bds-btn-duration $bds-btn-easing;
+
+    &::before {
+      transition: transform $bds-btn-duration $bds-btn-easing;
+    }
+  }
+}
+
+.bds-btn {
+  @include bds-btn-motion;
+}
+
+// =============================================================================
+// 5. Paint
+// =============================================================================
+// One block, because every value is a custom property — light and dark need no
+// separate pass. Specificity is raised only to survive rules that repaint
+// content anchors:
+//
+//   Bootstrap        `a` and `a:hover`
+//   Redocly theme    a styled-components rule at (0,3,1), injected at runtime
+//                    so it also wins ties on source order
+//   container rules  e.g. `.bds-link-text-card__content a`
+//   Markdown content see `:not(.bds-btn)` in styles/_content.scss
+//
+// The class is repeated three times — (0,4,1) — to beat all of them outright.
+//
+// Do not collapse the pseudo-classes into `:is()`: PurgeCSS drops such rules,
+// so the tidy form works in dev and vanishes from the production bundle.
+
+.bds-btn,
+a.bds-btn.bds-btn.bds-btn:link,
+a.bds-btn.bds-btn.bds-btn:visited,
+a.bds-btn.bds-btn.bds-btn:hover,
+a.bds-btn.bds-btn.bds-btn:focus,
+a.bds-btn.bds-btn.bds-btn:active {
+  color: var(--bds-btn-fg);
+  background-color: var(--bds-btn-backdrop);
+  border-color: var(--bds-btn-bd);
+}
+
+a.bds-btn.bds-btn.bds-btn:link,
+a.bds-btn.bds-btn.bds-btn:visited,
+a.bds-btn.bds-btn.bds-btn:hover,
+a.bds-btn.bds-btn.bds-btn:focus,
+a.bds-btn.bds-btn.bds-btn:active {
+  text-decoration: none;
+}
+
+a.bds-btn--subtle.bds-btn--subtle.bds-btn--subtle:link,
+a.bds-btn--subtle.bds-btn--subtle.bds-btn--subtle:visited,
+a.bds-btn--subtle.bds-btn--subtle.bds-btn--subtle:hover,
+a.bds-btn--subtle.bds-btn--subtle.bds-btn--subtle:focus,
+a.bds-btn--subtle.bds-btn--subtle.bds-btn--subtle:active {
+  text-decoration: underline;
+}
+
+// =============================================================================
+// 6. bds-button() — the component, for markup that cannot use the component
+// =============================================================================
+// For `<button>` elements the site does not author in React: the interactive
+// tutorial controls in docs/ are raw HTML inside Markdown, wired to jQuery by
+// `id` and by classes like `previous-steps-required`, so they cannot become
+// `<Button>` without rewriting the tutorial engine.
+//
+// The alternative was hand-writing `class="bds-btn bds-btn--neutral …"` into
+// Markdown. That copies this file's class contract into content, where it
+// cannot be type-checked and will drift the first time a class is renamed —
+// and the audit would not catch the drift, because it also matches on classes.
+//
+// This mixin selects a variant; it never restates a value. Everything it emits
+// comes from §2's maps and §4's structure, so those controls track the
+// component the same way `.bds-btn` does.
+//
+// SCOPE: the `<button>` path only. §5's doubled-class anchor armour is not
+// included, because it exists to beat Bootstrap's `a { color }` and every
+// caller here is a real <button>. Applying this to an anchor would paint
+// correctly at rest and lose the label colour on hover — use the React
+// component for links.
+//
+//   .interactive-block .btn.btn-primary { @include bds-button(neutral, strong); }
+//
+@mixin bds-button($group: brand, $emphasis: strong, $context: on-theme) {
+  $emphases: map-get($bds-btn-palette, $group);
+  @if not $emphases {
+    @error "bds-button(): unknown group '#{$group}'. One of: #{map-keys($bds-btn-palette)}.";
+  }
+  $states: map-get($emphases, $emphasis);
+  @if not $states {
+    @error "bds-button(): unknown emphasis '#{$emphasis}'. One of: #{map-keys($emphases)}.";
+  }
+  $disabled: map-get($bds-btn-disabled, $context);
+  @if not $disabled {
+    @error "bds-button(): unknown context '#{$context}'. One of: #{map-keys($bds-btn-disabled)}.";
+  }
+
+  // The variant, both modes — the work §3's loop does for the class form.
+  @include rb-group-vars($states, 1);
+  @include rb-triplet('disabled-', $disabled, 1);
+  --bds-btn-ring: #{nth(map-get($bds-btn-ring, $context), 1)};
+
+  :where(html.dark) & {
+    @include rb-group-vars($states, 2);
+    @include rb-triplet('disabled-', $disabled, 2);
+    --bds-btn-ring: #{nth(map-get($bds-btn-ring, $context), 2)};
+  }
+
+  // Which of disabled's colours get painted, per emphasis. Mirrors §3.
+  @if $emphasis == 'standard' or $emphasis == 'subtle' {
+    --bds-btn-disabled-bg: transparent;
+  }
+  @if $emphasis == 'subtle' {
+    --bds-btn-disabled-bd: transparent;
+  }
+  @if $emphasis == 'strong' and map-has-key($disabled, strong-bd) {
+    --bds-btn-disabled-bd: #{nth(map-get($disabled, strong-bd), 1)};
+
+    :where(html.dark) & {
+      --bds-btn-disabled-bd: #{nth(map-get($disabled, strong-bd), 2)};
+    }
+  }
+
+  @include bds-btn-structure;
+  @include bds-btn-motion;
+
+  // §5's layer swap, selected by the same pair that selects it there.
+  @if $emphasis == 'strong' and $context == 'on-saturated' {
+    @include bds-btn-saturated-swap;
+  }
+
+  // Subtle's type treatment, which is a separate class in the component form.
+  @if $emphasis == 'subtle' {
+    font-weight: 500;
+    letter-spacing: 0.025em;
+    text-decoration: underline;
+  }
+
+  // §5's paint, without the anchor pseudo-classes. See SCOPE above.
+  color: var(--bds-btn-fg);
+  background-color: var(--bds-btn-backdrop);
+  border-color: var(--bds-btn-bd);
+}

@@ -36,15 +36,22 @@
                 - page: docs/use-cases/tokenization/nftoken-marketplace.md
                 - page: docs/use-cases/tokenization/authorized-minter.md
                 - page: docs/use-cases/tokenization/digital-artist.md
-            - page: docs/use-cases/tokenization/real-world-assets.page.tsx
             - page: docs/use-cases/tokenization/creating-an-asset-backed-multi-purpose-token.md
-        - page: docs/use-cases/defi/index.md
-          expanded: false
+        - group: DeFi
+          groupTranslationKey: sidebar.docs.use-cases.defi
+          expanded: true
           items:
-            - page: docs/use-cases/defi/algorithmic-trading.md
+            - page: docs/use-cases/trading/index.page.tsx
+              label: Trading
+              labelTranslationKey: sidebar.docs.use-cases.trading
+              expanded: false
+              items:
+               - page: docs/use-cases/defi/algorithmic-trading.md
+               - page: docs/use-cases/defi/list-xrp-as-an-exchange.md
+               - page: docs/use-cases/defi/enable-compliance-focused-cross-currency-payments-using-a-permissioned-dex.md
             - page: docs/use-cases/defi/institutional-credit-facilities.md
-            - page: docs/use-cases/defi/list-xrp-as-an-exchange.md
-            - page: docs/use-cases/defi/enable-compliance-focused-cross-currency-payments-using-a-permissioned-dex.md
+              label: Credit (Open for Voting)
+              labelTranslationKey: sidebar.docs.use-cases.credit
         
     - page: docs/concepts/index.md
       expanded: false
@@ -254,6 +261,7 @@
           items:
             - page: docs/tutorials/payments/send-xrp.md
             - page: docs/tutorials/payments/send-an-mpt.md
+            - page: docs/tutorials/payments/send-confidential-payments.md
             - page: docs/tutorials/payments/create-trust-line-send-currency-in-javascript.md
             - page: docs/tutorials/payments/create-trust-line-send-currency-in-python.md
             - page: docs/tutorials/payments/send-a-conditional-escrow.md
@@ -298,6 +306,8 @@
               expanded: false
               items:
                 - page: docs/tutorials/tokens/mpts/issue-a-multi-purpose-token.md
+                - page: docs/tutorials/tokens/mpts/issue-mpt-for-confidential-transfers.md
+                - page: docs/tutorials/tokens/mpts/claw-back-confidential-balances.md
         - group: Compliance Features
           groupTranslationKey: sidebar.docs.tutorials.complianceFeatures
           expanded: false
@@ -340,6 +350,10 @@
               expanded: false
               items:
                 - page: docs/tutorials/best-practices/account-management/calculate-reserves.md
+                - page: docs/tutorials/best-practices/account-management/sponsor-a-transaction-by-co-signing.md
+                - page: docs/tutorials/best-practices/account-management/sponsor-a-transaction-with-a-pre-funded-pool.md
+                - page: docs/tutorials/best-practices/account-management/manage-a-sponsorship-pool.md
+                - page: docs/tutorials/best-practices/account-management/transfer-a-reserve-sponsorship.md
         - group: Advanced Developer Topics
           groupTranslationKey: sidebar.docs.tutorials.advancedDeveloperTopics
           expanded: false
@@ -765,7 +779,7 @@
         - page: docs/agents/xrpl-payments-skill.md
         - page: docs/agents/track-agent-behavior.md
         - page: docs/agents/agentic-payments-x402.md
-- page: resources/index.md
+- page: resources/index.page.tsx
   labelTranslationKey: sidebars.resources
   expanded: false
   items:

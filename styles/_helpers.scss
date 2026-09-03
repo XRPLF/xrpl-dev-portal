@@ -1,3 +1,45 @@
+/**
+ * Theme mode mixin
+ * 
+ * Applies styles conditionally based on the theme mode (light or dark).
+ * SCSS doesn't support type constraints in parameter declarations, so we use
+ * runtime validation with @if/@error to ensure only valid values are accepted.
+ * 
+ * @param {string} $mode - Theme mode: "dark" or "light" (default: "dark")
+ * @param {boolean} $at-root - If true, emit `html.{mode} { ... }` (use at stylesheet root
+ *   where `&` is unavailable). If false (default), emit `html.{mode} & { ... }` (nested under a parent selector).
+ * @throws Error if $mode is not "dark" or "light"
+ * 
+ * @example
+ *   // Nested (inside .my-component)
+ *   @include bds-theme-mode(light) {
+ *     background-color: white;
+ *   }
+ *
+ *   // Root-level (e.g. shared/components/Button/Button.scss)
+ *   @include bds-theme-mode(light, $at-root: true) {
+ *     .bds-btn { ... }
+ *   }
+ */
+ @mixin bds-theme-mode($mode: "dark", $at-root: false) {
+  @if $mode != "dark" and $mode != "light" {
+      @error "Invalid theme mode: #{$mode}. Must be either 'dark' or 'light'.";
+  }
+
+  @if $at-root {
+    html.#{$mode} {
+      @content;
+    }
+  } @else {
+    html.#{$mode} & {
+      @content;
+    }
+  }
+}
+
+
+
+
 /* HEIGHT AND WIDTH HELPERS */
 .h32 {
   height: 32px;
@@ -462,7 +504,7 @@
 }
 
 .stat-highlight {
-  color: $green-500;
+  color: $green-400;
 }
 
 /* ETC */

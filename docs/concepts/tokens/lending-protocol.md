@@ -46,9 +46,11 @@ The lifecycle of a loan is as follows:
 
 #### First-Loss Capital
 
-First-Loss Capital is an optional mechanism to mitigate the risks associated with lending. To protect investors' assets, a loan broker can deposit assets as first-loss capital, which acts as a buffer in the event of loan defaults. The first-loss capital is placed into the vault to cover a percentage of losses from missed payments.
+First-loss capital is an optional mechanism to mitigate the risks associated with lending. To protect investors' assets, a loan broker can deposit the same asset as first-loss capital in a separate loan broker pseudo-account. First-loss capital acts as a buffer in the event of loan defaults, moving assets from the pseudo-account to the single asset vault to cover losses from missed payments.
 
-Three parameters control the First-Loss Capital:
+First-loss capital doesn't eliminate credit risk, but it does incentivize loan brokers to underwrite and manage loans more carefully since their own capital is at risk first.
+
+Three parameters control the first-loss capital:
 
 - `CoverAvailable`: The total amount of cover deposited by the lending protocol owner.
 - `CoverRateMinimum`: The percentage of debt that must be covered by `CoverAvailable`.
@@ -57,7 +59,7 @@ Three parameters control the First-Loss Capital:
 Whenever the available cover falls below the minimum required:
 
 - The loan broker can't issue new loans.
-- The loan broker can't receive fees. All fees are added to the First-Loss Capital to cover the deficit.
+- The loan broker can't receive fees. All fees are added to the first-loss capital to cover the deficit.
 
 Below is an example of how first-loss capital is used to cover a loan default:
 
@@ -132,7 +134,7 @@ If the loan broker discovers a borrower can't make an upcoming payment, impairme
 
 #### Clawback
 
-Issuers (trust line token or MPT, not XRP) can claw back funds from First-Loss Capital. To ensure there is always a minimum amount of capital available to protect depositors, issuers can't claw back the entire available amount. Instead, they can claw back up to a minimum amount of First-Loss Capital that the loan broker must maintain for the lending protocol; the minimum amount is calculated as `LoanBroker.DebtTotal * LoanBroker.CoverRateMinimum`.
+Issuers (trust line token or MPT, not XRP) can claw back funds from first-loss capital. To ensure there is always a minimum amount of capital available to protect depositors, issuers can't claw back the entire available amount. Instead, they can claw back up to a minimum amount of first-loss capital that the loan broker must maintain for the lending protocol; the minimum amount is calculated as `LoanBroker.DebtTotal * LoanBroker.CoverRateMinimum`.
 
 #### Freeze
 
@@ -198,5 +200,30 @@ Based on the timing and transaction flags, the lending protocol processes the pa
 {% admonition type="info" name="Note" %}
 In scenarios where excess payment amounts are "ignored", the transaction succeeds, but the borrower is only charged on the expected amount.
 {% /admonition %}
+
+## See Also
+
+- **Concepts:**
+    - [Single Asset Vaults](./single-asset-vaults.md)
+    - [Pseudo-Accounts](../accounts/pseudo-accounts.md)
+- **Tutorials:**
+    - [Claw Back First-Loss Capital](../../tutorials/defi/lending/use-the-lending-protocol/claw-back-cover.md)
+    - [Create a Loan](../../tutorials/defi/lending/use-the-lending-protocol/create-a-loan.md)
+    - [Create a Loan Broker](../../tutorials/defi/lending/use-the-lending-protocol/create-a-loan-broker.md)
+    - [Deposit and Withdraw First-Loss Capital](../../tutorials/defi/lending/use-the-lending-protocol/deposit-and-withdraw-cover.md)
+    - [Manage a Loan](../../tutorials/defi/lending/use-the-lending-protocol/manage-a-loan.md)
+    - [Pay Off a Loan](../../tutorials/defi/lending/use-the-lending-protocol/pay-off-a-loan.md)
+- **References:**
+    - [Loan entry](../../references/protocol/ledger-data/ledger-entry-types/loan.md)
+    - [LoanBroker entry](../../references/protocol/ledger-data/ledger-entry-types/loanbroker.md)
+    - [LoanBrokerCoverClawback transaction](../../references/protocol/transactions/types/loanbrokercoverclawback.md)
+    - [LoanBrokerCoverDeposit transaction](../../references/protocol/transactions/types/loanbrokercoverdeposit.md)
+    - [LoanBrokerCoverWithdraw transaction](../../references/protocol/transactions/types/loanbrokercoverwithdraw.md)
+    - [LoanBrokerDelete transaction](../../references/protocol/transactions/types/loanbrokerdelete.md)
+    - [LoanBrokerSet transaction](../../references/protocol/transactions/types/loanbrokerset.md)
+    - [LoanDelete transaction](../../references/protocol/transactions/types/loandelete.md)
+    - [LoanManage transaction](../../references/protocol/transactions/types/loanmanage.md)
+    - [LoanPay transaction](../../references/protocol/transactions/types/loanpay.md)
+    - [LoanSet transaction](../../references/protocol/transactions/types/loanset.md)
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

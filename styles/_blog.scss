@@ -23,6 +23,18 @@
     }
   }
 
+  // Post titles are Link components for their neutral color scheme, but they
+  // read as headings rather than in-text links: no underline (there's no
+  // surrounding body copy for color alone to have to distinguish them from),
+  // the heading's own weight instead of the component's inline 400, and no
+  // horizontal padding so they stay flush with the date and description.
+  h4 .xrpl-link,
+  h5 .xrpl-link {
+    padding: 0;
+    font-weight: inherit;
+    text-decoration: none;
+  }
+
   .line-clamp {
     display: -webkit-box;
     -webkit-line-clamp: 4;
@@ -37,6 +49,10 @@
   }
 
   .card-date {
+    color: $gray-500;
+  }
+
+  :root.dark & .card-date {
     color: $gray-400;
   }
 
@@ -200,7 +216,7 @@
     background-position: center;
     border-width: 2px;
     border-style: solid;
-    border-color: $blue-purple-600;
+    border-color: $blue-purple-300;
     border-radius: 4px;
   }
 
@@ -215,7 +231,7 @@
     border: none;
     border-width: 2px;
     border-style: solid;
-    border-color: $blue-purple-600;
+    border-color: $blue-purple-300;
     border-radius: 4px;
   }
 }

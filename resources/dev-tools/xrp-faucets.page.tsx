@@ -1,4 +1,4 @@
-import { Link } from "@redocly/theme/components/Link/Link";
+import { Link } from "shared/components/Link";
 import { useThemeHooks } from '@redocly/theme/core/hooks';
 import * as React from 'react';
 import { useState, useEffect } from 'react';
@@ -97,7 +97,7 @@ export default function XRPFaucets(): React.JSX.Element {
           <section className="container-fluid pt-3 p-md-3">
             <h1>{translate("XRP Faucets")}</h1>
             <div className="content">
-                <p>{translate("resources.dev-tool.faucet.content.part1", "These ")}<Link to="../../docs/concepts/networks-and-servers/parallel-networks">{translate("resources.dev-tool.faucet.content.part2", "parallel XRP Ledger test networks")}</Link> {translate("resources.dev-tool.faucet.content.part3", "provide platforms for testing changes to the XRP Ledger and software built on it, without using real funds.")}</p>
+                <p>{translate("resources.dev-tool.faucet.content.part1", "These ")}<Link href="../../docs/concepts/networks-and-servers/parallel-networks" intention="neutral">{translate("resources.dev-tool.faucet.content.part2", "parallel XRP Ledger test networks")}</Link> {translate("resources.dev-tool.faucet.content.part3", "provide platforms for testing changes to the XRP Ledger and software built on it, without using real funds.")}</p>
                 <p>{translate("resources.dev-tool.faucet.content.part4", "These funds are intended for")} <strong>{translate("resources.dev-tool.faucet.content.part5", "testing")}</strong> {translate("resources.dev-tool.faucet.content.part6", "only. Test networks' ledger history and balances are reset as necessary. Devnets may be reset without warning.")}</p>
                 <p>{translate("resources.dev-tool.faucet.content.part7", "All balances and XRP on these networks are separate from Mainnet. As a precaution, do not use the same credentials on Mainnet.")}</p>
                 
@@ -250,7 +250,7 @@ function TestCredentials({ selectedFaucet, selectedMode, requestedAmount, refill
   return (
     <div>
       <div className="btn-toolbar" role="toolbar" aria-label="Button"> 
-        <button id="generate-creds-button" onClick={clickGetXrp} className="btn btn-primary mr-2 mb-2">
+        <button id="generate-creds-button" onClick={clickGetXrp} className="btn btn-primary me-2 mb-2">
             {translate('Get Test XRP')}
         </button>
       </div>

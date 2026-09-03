@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from 'react';
 import { useLocation } from "react-router-dom";
 import { useThemeHooks } from '@redocly/theme/core/hooks';
-import { Link } from "@redocly/theme/components/Link/Link";
+import { Link } from "shared/components/Link";
 import {
   JsonParam,
   StringParam,
@@ -11,8 +11,8 @@ import {
 } from "use-query-params"
 import { ReactRouter6Adapter } from 'use-query-params/adapters/react-router-6';
 
-import { PermalinkButton } from './components/websocket-api/permalink-modal';
-import { CurlButton } from './components/websocket-api/curl-modal';
+import { PermalinkButton, PermalinkModal } from './components/websocket-api/permalink-modal';
+import { CurlButton, CurlModal } from './components/websocket-api/curl-modal';
 import { ConnectionModal } from "./components/websocket-api/connection-modal";
 
 import { RightSideBar } from "./components/websocket-api/right-sidebar";
@@ -42,8 +42,6 @@ export function WebsocketApiTool() {
   const { hash: slug } = useLocation();
   const { useTranslate } = useThemeHooks();
   const { translate } = useTranslate();
-  const [isConnectionModalVisible, setIsConnectionModalVisible] =
-    useState(false);
   const [selectedConnection, setSelectedConnection] = useState((params.server) ? connections.find((connection) => { return connection?.ws_url === params.server }) : connections[0]);  const [connected, setConnected] = useState(false);
   const [connectionError, setConnectionError] = useState(false);
   const [keepLast, setKeepLast] = useState(50);
@@ -94,14 +92,6 @@ export function WebsocketApiTool() {
   const handleKeepLastChange = (event) => {
     const newValue = event.target.value;
     setKeepLast(newValue);
-  };
-
-  const openConnectionModal = () => {
-    setIsConnectionModalVisible(true);
-  };
-
-  const closeConnectionModal = () => {
-    setIsConnectionModalVisible(false);
   };
 
   const [ws, setWs] = useState(null);
@@ -213,8 +203,9 @@ export function WebsocketApiTool() {
             <div className="api-method-description-wrapper">
               <h3>
                 <Link
-                  to={currentMethod.link}
+                  href={currentMethod.link}
                   className="selected_command"
+                  intention="neutral"
                 >
                   {currentMethod.name}
                 </Link>
@@ -231,8 +222,12 @@ export function WebsocketApiTool() {
               )}
               {currentMethod.link && (
                 <Link
-                  className="btn btn-outline-secondary api-readmore"
-                  to={currentMethod.link}
+                  className="api-readmore"
+                  href={currentMethod.link}
+                  intention="neutral"
+                  variation="standalone"
+                  size="lg"
+                  iconEnd
                 >
                   {translate("Read more")}
                 </Link>
@@ -248,10 +243,10 @@ export function WebsocketApiTool() {
                 />
               </div>
               <div
-                className="btn-toolbar justify-content-between pt-4"
+                className="btn-toolbar justify-content-between pt-4 d-flex"
                 role="toolbar"
               >
-                <div className="btn-group mr-3" role="group">
+                <div className="btn-group me-3" role="group">
                   <button
                     className="btn btn-outline-secondary send-request"
                     onClick={() => sendWebSocketMessage(currentBody)}
@@ -271,22 +266,13 @@ export function WebsocketApiTool() {
                     className={`btn connection ${
                       connected ? "btn-success" : "btn-outline-secondary"
                     } ${connectionError ?? "btn-danger"}`}
-                    onClick={openConnectionModal}
-                    data-toggle="modal"
-                    data-target="#wstool-1-connection-settings"
+                    data-bs-toggle="modal"
+                    data-bs-target="#wstool-1-connection-settings"
                   >
                     {`${selectedConnection.shortname}${
                       connected ? ` (${translate('Connected')})` : ` (${translate('Not Connected')})`
                     }${connectionError ? ` (${translate('Failed to Connect')})` : ""}`}
                   </button>
-                  {isConnectionModalVisible && (
-                    <ConnectionModal
-                      selectedConnection={selectedConnection}
-                      setSelectedConnection={setSelectedConnection}
-                      closeConnectionModal={closeConnectionModal}
-                      connections={connections}
-                    />
-                  )}
                   {wsLoading && (
                     <div className="input-group loader connect-loader">
                       <span className="input-group-append">
@@ -294,14 +280,23 @@ export function WebsocketApiTool() {
                       </span>
                     </div>
                   )}
-                  <PermalinkButton
-                    currentBody={currentBody}
-                    selectedConnection={selectedConnection}
-                  />
+                  <PermalinkButton />
                   {!currentMethod.ws_only &&
-                    (<CurlButton currentBody={currentBody} selectedConnection={selectedConnection}/>)
+                    (<CurlButton />)
                   }
                 </div>
+                <ConnectionModal
+                  selectedConnection={selectedConnection}
+                  setSelectedConnection={setSelectedConnection}
+                  connections={connections}
+                />
+                <PermalinkModal
+                  currentBody={currentBody}
+                  selectedConnection={selectedConnection}
+                />
+                {!currentMethod.ws_only && (
+                  <CurlModal currentBody={currentBody} selectedConnection={selectedConnection} />
+                )}
               </div>
             </div>
 
@@ -309,10 +304,10 @@ export function WebsocketApiTool() {
               <h4>{translate("Responses")}</h4>
 
               <div
-                className="btn-toolbar justify-content-between response-options"
+                className="btn-toolbar justify-content-between response-options d-flex"
                 role="toolbar"
               >
-                <div className="input-group">
+                <div className="input-group w-auto">
                   <div className="input-group-prepend">
                     <div
                       className="input-group-text"

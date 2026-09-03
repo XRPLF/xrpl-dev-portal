@@ -1,6 +1,8 @@
 import * as React from "react";
 import { useThemeHooks } from '@redocly/theme/core/hooks';
 import { Link } from "@redocly/theme/components/Link/Link";
+import Button from "shared/components/Button";
+import { XrplArrowExternalLinkIcon } from "shared/components/Icons";
 
 export const frontmatter = {
   seo: {
@@ -33,14 +35,6 @@ const explorers_tools = [
       "Explore ledger activity, view amendment voting in real-time, and get account information. API access is also available.",
     href: "https://xrpscan.com/",
     img: require("../../static/img/dev-tools/xrpscan.png"),
-  },
-  {
-    id: "token-list",
-    title: "Token List",
-    description:
-      "See all tokens issued in the XRP Ledger and use preset tools to issue custom tokens at the click of a button.",
-    href: "https://xrpl.services/tokens",
-    img: require("../../static/img/dev-tools/tokenlist.png"),
   },
 ];
 
@@ -146,8 +140,8 @@ export default function DevTools() {
                   <button
                     className="nav-link active dev-tools-tab"
                     id="explorers-tab"
-                    data-toggle="tab"
-                    data-target="#explorers"
+                    data-bs-toggle="tab"
+                    data-bs-target="#explorers"
                     role="tab"
                     aria-controls="explorers"
                     aria-selected="true"
@@ -159,8 +153,8 @@ export default function DevTools() {
                   <button
                     className="nav-link  dev-tools-tab"
                     id="api-access-tab"
-                    data-toggle="tab"
-                    data-target="#api-access"
+                    data-bs-toggle="tab"
+                    data-bs-target="#api-access"
                     role="tab"
                     aria-controls="api-access"
                     aria-selected="false"
@@ -172,8 +166,8 @@ export default function DevTools() {
                   <button
                     className="nav-link  dev-tools-tab"
                     id="other-tab"
-                    data-toggle="tab"
-                    data-target="#other"
+                    data-bs-toggle="tab"
+                    data-bs-target="#other"
                     role="tab"
                     aria-controls="other"
                     aria-selected="false"
@@ -208,7 +202,6 @@ export default function DevTools() {
                         <h4 className="card-title h5">{translate(card.title)}</h4>
                         <p className="card-text">{translate(card.description)}</p>
                       </div>
-                      <div className="card-footer">&nbsp;</div>
                     </Link>
                   ))}
                 </div>
@@ -238,7 +231,6 @@ export default function DevTools() {
                         <h4 className="card-title h5">{translate(card.title)}</h4>
                         <p className="card-text">{translate(card.description)}</p>
                       </div>
-                      <div className="card-footer">&nbsp;</div>
                     </Link>
                   ))}
                 </div>
@@ -268,7 +260,6 @@ export default function DevTools() {
                         <h4 className="card-title h5">{translate(card.title)}</h4>
                         <p className="card-text">{translate(card.description)}</p>
                       </div>
-                      <div className="card-footer">&nbsp;</div>
                     </Link>
                   ))}
                 </div>
@@ -278,16 +269,6 @@ export default function DevTools() {
         </section>
         <section className="container-new py-10 px-0">
           <div className="col-lg-12 p-6-sm p-10-until-sm br-8 cta-card">
-            <img
-              alt="purple waves"
-              src={require("../../static/img/backgrounds/cta-home-purple.svg")}
-              className="d-none-sm cta cta-top-left"
-            />
-            <img
-              alt="green waves"
-              src={require("../../static/img/backgrounds/cta-home-green.svg")}
-              className="cta cta-bottom-right"
-            />
             <div className="z-index-1 position-relative">
               <h2 className="h4 mb-8-sm mb-10-until-sm">
                 {translate("Have an Idea For a Tool?")}
@@ -297,12 +278,14 @@ export default function DevTools() {
                   "Contribute to the XRP Ledger community by submitting your idea for a tool or open a pull request if you've developed a tool."
                 )}
               </p>
-              <a
-                className="btn btn-primary btn-arrow-out"
+              <Button
+                intention="neutral"
+                emphasis="strong"
                 href="https://github.com/XRPLF/xrpl-dev-portal/"
+                iconEnd={<XrplArrowExternalLinkIcon />}
               >
                 {translate("Open a pull Request")}
-              </a>
+              </Button>
             </div>
           </div>
         </section>

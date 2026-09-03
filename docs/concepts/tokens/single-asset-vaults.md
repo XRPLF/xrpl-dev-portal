@@ -232,20 +232,25 @@ Depending on the connected on-chain protocol, vaults can be applied to various u
 
 The only supported use cases right now are _asset management_ and [_lending markets_](./lending-protocol.md).
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
-
 ## See Also
 
 - **Concepts:**
-    - [Credentials](../../concepts/decentralized-storage/credentials.md) - Define access requirements for private vaults.
-    - [Permissioned Domains](../tokens/decentralized-exchange/permissioned-domains.md) - Control access to private vaults.
-    - [Pseudo-Accounts](../accounts/pseudo-accounts.md) - Special accounts that hold assets on behalf of on-chain protocols.
+    - [Credentials](../../concepts/decentralized-storage/credentials.md)
+    - [Lending Protocol](./lending-protocol.md)
+    - [Permissioned Domains](../tokens/decentralized-exchange/permissioned-domains.md)
+    - [Pseudo-Accounts](../accounts/pseudo-accounts.md)
+- **Tutorials:**
+    - [Create a Single Asset Vault](../../tutorials/defi/lending/use-single-asset-vaults/create-a-single-asset-vault.md)
+    - [Deposit into a Vault](../../tutorials/defi/lending/use-single-asset-vaults/deposit-into-a-vault.md)
+    - [Withdraw from a Vault](../../tutorials/defi/lending/use-single-asset-vaults/withdraw-from-a-vault.md)
 - **References:**
-    - [Vault entry][] - Data structure on the ledger that records vault information.
-    - [VaultClawback transaction][] - Allow asset issuers to recover assets from the vault.
-    - [VaultCreate transaction][] - Create a new vault for aggregating assets.
-    - [VaultDelete transaction][] - Delete an existing vault entry.
-    - [VaultDeposit transaction][] - Add assets to a vault in exchange for shares.
-    - [VaultSet transaction][] - Update the configuration of an existing vault.
-    - [VaultWithdraw transaction][] - Redeem liquidity from a vault.
-    - [vault_info method][] - Retrieve information about a vault and its shares.
+    - [Vault entry][]
+    - [VaultClawback transaction][]
+    - [VaultCreate transaction][]
+    - [VaultDelete transaction][]
+    - [VaultDeposit transaction][]
+    - [VaultSet transaction][]
+    - [VaultWithdraw transaction][]
+    - [vault_info method][]
+
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

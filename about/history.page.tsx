@@ -1,6 +1,7 @@
 import * as React from "react";
 import { useThemeHooks } from '@redocly/theme/core/hooks';
-import { Link } from '@redocly/theme/components/Link/Link';
+import { Link as XrplLink } from 'shared/components/Link';
+import Button from "shared/components/Button";
 
 export const frontmatter = {
   seo: {
@@ -24,14 +25,6 @@ export default function History() {
   return (
     <div className="landing">
       <div className="overflow-hidden">
-        <div className="position-relative">
-          <img
-            alt="background orange waves"
-            src={require("../static/img/backgrounds/history-orange.svg")}
-            className="landing-bg"
-            id="history-orange"
-          />
-        </div>
         <section className="py-26 text-center">
           <div className="col-lg-5 mx-auto text-center">
             <div className="d-flex flex-column-reverse">
@@ -61,13 +54,6 @@ export default function History() {
             </p>
           </div>
         </section>
-        <div className="position-relative d-none-sm">
-          <img
-            alt="background purple waves"
-            src={require("../static/img/backgrounds/history-purple.svg")}
-            id="history-purple"
-          />
-        </div>
         <div className="container-new marketing-wrapper">
           <section className="row mb-60">
             <div className="timeline">
@@ -85,8 +71,9 @@ export default function History() {
                       "about.history.2011.part1",
                       "In early 2011, three developers—David Schwartz, Jed McCaleb, and Arthur Britto—were fascinated with Bitcoin but observed the waste inherent in mining. They sought to create a more sustainable system for sending value (an idea outlined in a "
                     )}
-                    <a
+                    <XrplLink
                       href="https://bitcointalk.org/index.php?topic=10193.0"
+                      intention="brand"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
@@ -94,17 +81,17 @@ export default function History() {
                         "about.history.2011.part2",
                         "May 2011 forum post: “Bitcoin without mining”"
                       )}
-                    </a>
+                    </XrplLink>
                     {translate("about.history.2011.part3", ").")}
                   </p>
-                  <a
-                    className={`btn btn-primary read-more mt-10 ${
-                      openSections["section-1"] && "d-none"
-                    }`}
+                  <Button
+                    intention="neutral"
+                    emphasis="strong"
                     onClick={() => toggleSection("section-1")}
+                    style={ openSections["section-1"] ? { display: "none" } : {} }
                   >
                     {translate("Read More")}
-                  </a>
+                  </Button>
                   <div
                     className={`hidden-section ${
                       openSections["section-1"] && "show"
@@ -133,15 +120,14 @@ export default function History() {
                       "The trio of developers continued the work to build a distributed ledger that improved upon these fundamental limitations of Bitcoin, originally naming the code Ripple. The ledger included a digital asset that would originally be called “ripples” (XRP as the currency code) to follow the same naming convention as Bitcoin (BTC). At the time, the name Ripple stood for the open-source project, the unique consensus ledger (Ripple Consensus Ledger), transaction protocol (Ripple Transaction Protocol or RTXP), the network (Ripple network), and the digital asset (known as “ripples”)."
                     )}
                   </p>
-                  <a
-                    className={`btn btn-primary read-more mt-10 ${
-                      openSections["section-2"] && "d-none"
-                    }`}
-                    data-target="section-2"
+                  <Button
+                    intention="neutral"
+                    emphasis="strong"
                     onClick={() => toggleSection("section-2")}
+                    style={openSections["section-2"] ? { display: "none" } : { }}
                   >
                     {translate("Read More")}
-                  </a>
+                  </Button>
                   <div
                     className={`hidden-section ${
                       openSections["section-2"] && "show"
@@ -185,20 +171,14 @@ export default function History() {
                       "Since the early days, OpenCoin set out to revolutionize the global financial system. Despite the revolutionary ideals of many of Bitcoin’s early believers, Larsen never thought blockchain technology should be used to overthrow the existing financial system. He believed that history’s most transformative innovations have always relied on the great ideas that came before them—not displacing them."
                     )}
                   </p>
-                  <a
-                    className={`btn btn-primary read-more mt-10 ${
-                      openSections["section-3"] && "d-none"
-                    }`}
-                    data-target="section-3"
-                    style={{
-                      display: openSections["section-3"]
-                        ? "none"
-                        : "inline-block",
-                    }}
+                  <Button
+                    intention="neutral"
+                    emphasis="strong"
                     onClick={() => toggleSection("section-3")}
+                    style={openSections["section-3"] ? { display: "none" } : { }}
                   >
                     {translate("Read More")}
-                  </a>
+                  </Button>
                   <div
                     className={`hidden-section ${
                       openSections["section-3"] && "show"
@@ -229,24 +209,26 @@ export default function History() {
                   </div>
                   <p>
                     {translate("about.history.xrplf.part1", "")}
-                    <a
+                    <XrplLink
                       href="https://foundation.xrpl.org/2020/09/24/xrp-ledger-foundation-launches-to-drive-growth-and-development-of-the-core-xrp-ledger-and-community/"
+                      intention="brand"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
                       {translate("about.history.xrplf.part2", "Founded")}
-                    </a>
+                    </XrplLink>
                     {translate(
                       "about.history.xrplf.part3",
                       " September 24, 2020, the XRPL Foundation is an independent and nonprofit entity with a mission to accelerate the development and adoption of the decentralized XRP Ledger. The Foundation received an initial donation of over $6.5M from Coil, Ripple, and Gatehub to fund the Foundation’s work in service of the growing number of developers and other "
                     )}
-                    <Link
-                      to="/community"
+                    <XrplLink
+                      href="/community"
+                      intention="brand"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
                       {translate("about.history.xrplf.part4", "global blockchain community")}
-                    </Link>
+                    </XrplLink>
                     {translate("about.history.xrplf.part5", " members building on the XRP Ledger.")}
                   </p>
                 </div>

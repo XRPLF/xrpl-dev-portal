@@ -1,0 +1,188 @@
+// BDS Video Component Styles
+// Brand Design System - Flexible video component supporting native video,
+// YouTube/Vimeo/Wistia embeds, and cover image + modal playback.
+//
+// .bds-video                    - Container
+// .bds-video__element          - Native video element
+// .bds-video__iframe           - Embed iframe
+// .bds-video__cover-button     - Clickable cover (opens modal)
+// .bds-video__cover-image      - Cover image
+// .bds-video__play-icon        - Play overlay icon
+// .bds-video-modal             - Full-screen modal overlay
+// .bds-video-modal__backdrop   - Backdrop (click to close)
+// .bds-video-modal__content    - Modal content wrapper
+// .bds-video-modal__close      - Close button
+// .bds-video-modal__video      - Video/iframe container in modal
+
+.bds-video {
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  position: relative;
+
+  &--aspect-16-9 {
+    aspect-ratio: 16 / 9;
+  }
+
+  &--aspect-4-3 {
+    aspect-ratio: 4 / 3;
+  }
+
+  &--aspect-1-1 {
+    aspect-ratio: 1 / 1;
+  }
+
+  &__inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+
+  &__element {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+  }
+
+  &__iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+
+  &__cover-button {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+    overflow: hidden;
+  }
+
+  &__cover-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    transition: transform 0.3s ease;
+  }
+
+  &__cover-button:hover &__cover-image {
+    transform: scale(1.02);
+  }
+
+  &__play-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+
+    svg {
+      width: 64px;
+      height: 64px;
+      transition: transform 0.2s ease;
+    }
+  }
+
+  &__cover-button:hover &__play-icon svg {
+    transform: scale(1.1);
+  }
+}
+
+// =============================================================================
+// Modal
+// =============================================================================
+
+.bds-video-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.bds-video-modal__backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  cursor: pointer;
+}
+
+.bds-video-modal__content {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  max-width: 90vw;
+  max-height: 90vh;
+  aspect-ratio: 16 / 9;
+  z-index: 2;
+}
+
+.bds-video-modal__close {
+  position: absolute;
+  top: -2.5rem;
+  right: 0;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: white;
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  span {
+    line-height: 1;
+  }
+}
+
+.bds-video-modal__video {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+
+  .bds-video__element,
+  .bds-video__iframe,
+  iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+}

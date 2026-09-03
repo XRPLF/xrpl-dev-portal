@@ -1,0 +1,43 @@
+// BDS LinkTextDirectory Pattern Styles
+// Brand Design System - Section with heading and list of numbered cards
+//
+// Naming Convention: BEM with 'bds' namespace
+// .bds-link-text-directory         - Base section container
+
+// =============================================================================
+// Design Tokens
+// =============================================================================
+
+// Section padding
+$bds-link-text-directory-padding-base: 24px;
+$bds-link-text-directory-padding-md: 32px;
+$bds-link-text-directory-padding-lg: 40px;
+
+// =============================================================================
+// Section Container
+// =============================================================================
+
+.bds-link-text-directory {
+  padding-top: $bds-link-text-directory-padding-base;
+  padding-bottom: $bds-link-text-directory-padding-base;
+
+  @include media-breakpoint-up(md) {
+    padding-top: $bds-link-text-directory-padding-md;
+    padding-bottom: $bds-link-text-directory-padding-md;
+  }
+
+  @include media-breakpoint-up(lg) {
+    padding-top: $bds-link-text-directory-padding-lg;
+    padding-bottom: $bds-link-text-directory-padding-lg;
+  }
+
+  ul {
+    padding-left: 0;
+    list-style: none;
+  }
+  @include bds-theme-mode(dark) {
+    color: $white;
+  }
+}
+
+// Header section uses SectionHeader component

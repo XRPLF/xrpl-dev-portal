@@ -1,4 +1,5 @@
 .card, .cta-card, .q-wrapper {
+  position: relative;
   @include media-breakpoint-up(lg) {
     box-shadow: $dropdown-box-shadow;
   }
@@ -38,6 +39,9 @@
 }
 
 .contribute {
+  position: relative;
+  --timeline-direction: to right;
+
   &::before {
     content:"";
     display: block;
@@ -59,24 +63,25 @@
     left: -6px;
   }
 
-  @include media-breakpoint-down(md) {
+  @include media-breakpoint-down(lg) {
+    --timeline-direction: to bottom;
+
     &::before {
-      left: 0;
-      // transform: rotate(90deg);
+      left: -10px;
       height: 100%;
       width: 2px;
       top: 15px;
     }
     .dot {
       top: 5px;
-      left: -6px;
+      left: -16px;
     }
   }
 }
 
 .contribute_1 {
   &::before {
-    background: -webkit-linear-gradient(left, rgba(254, 255, 1, 1), rgba(255, 45, 154, 1) );
+    background: linear-gradient(var(--timeline-direction), rgba(254, 255, 1, 1), rgba(255, 45, 154, 1));
   }
   .dot {
     border-color: #FBFF4C;
@@ -84,7 +89,7 @@
 }
 .contribute_2 {
   &::before {
-    background: -webkit-linear-gradient(left,  rgba(255, 45, 154, 1), rgba(226, 76, 255, 1));
+    background: linear-gradient(var(--timeline-direction), rgba(255, 45, 154, 1), rgba(226, 76, 255, 1));
   }
   .dot {
     border-color: #FF198B;
@@ -92,7 +97,7 @@
 }
 .contribute_3 {
   &::before {
-    background: -webkit-linear-gradient(left, rgba(226, 76, 255, 1),rgba(154, 82, 255, 1)    );
+    background: linear-gradient(var(--timeline-direction), rgba(226, 76, 255, 1), rgba(154, 82, 255, 1));
   }
   .dot {
     border-color: #C000E5;
@@ -100,7 +105,7 @@
 }
 .contribute_4 {
   &::before {
-    background: -webkit-linear-gradient(left, rgba(154, 82, 255, 1),rgba(154, 82, 255, 1)    );
+    background: linear-gradient(var(--timeline-direction), rgba(154, 82, 255, 1), rgba(154, 82, 255, 1));
   }
   .dot {
     border-color: #9A52FF;
@@ -169,6 +174,7 @@ a.card:hover h3 {
   .card {
     flex-grow: 0;
     flex-basis: 100%;
+    padding: 0;
     margin: 0 $card-deck-margin (4 * $card-deck-margin) $card-deck-margin;
     background-position: bottom;
     background-repeat: no-repeat;
@@ -302,18 +308,18 @@ main article .card-grid {
       }
     }
 
-    &:nth-of-type(0) {
-      @include card-footer-color(0);
-    }
-    &:nth-of-type(1) {
-      @include card-footer-color(9);
-    }
-    &:nth-of-type(2) {
-      @include card-footer-color(18);
-    }
-    &:nth-of-type(3) {
-      @include card-footer-color(27);
-    }
+    // &:nth-of-type(0) {
+    //   @include card-footer-color(0);
+    // }
+    // &:nth-of-type(1) {
+    //   @include card-footer-color(9);
+    // }
+    // &:nth-of-type(2) {
+    //   @include card-footer-color(18);
+    // }
+    // &:nth-of-type(3) {
+    //   @include card-footer-color(27);
+    // }
   }
 }
 
