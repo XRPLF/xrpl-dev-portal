@@ -1482,7 +1482,7 @@ const events = [
   {
     name: "XRPL Meetup Barcelona",
     description:
-      "Calling all spanish blockchain enthusiasts! Join XRPL Meetups to share knowledge, build real-life connections, and foster communities centered around blockchain and XRP Ledger. We're establishing local “XRPL Hubs” across Europe, and we want you to be a part of it!",
+      "Calling all Spanish blockchain enthusiasts! Join XRPL Meetups to share knowledge, build real-life connections, and foster communities centered around blockchain and XRP Ledger. We're establishing local “XRPL Hubs” across Europe, and we want you to be a part of it!",
     type: "meetup",
     link: "https://luma.com/xrpl-meetup-barcelona",
     location: "Barcelona, Spain",
