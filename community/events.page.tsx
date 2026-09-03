@@ -1431,7 +1431,7 @@ const events = [
     link: "https://luma.com/780xhfr7",
     location: "Paris, France",
     date: "April 14, 2026",
-    image: require("../static/img/events/xrpl-zone-paris.jpg"),
+    image: require("../static/img/events/commons-dark-blue.png"),
     end_date: "April 14, 2026",
   },
 
@@ -1443,7 +1443,7 @@ const events = [
     link: "https://luma.com/building-on-the-xrpl",
     location: "Online",
     date: "June 22-23, 2026",
-    image: require("../static/img/events/commons-online.png"),
+    image: require("../static/img/events/commons-purple.png"),
     end_date: "June 23, 2026",
   },
   {
@@ -1454,7 +1454,7 @@ const events = [
     link: "https://luma.com/XRPL-Blockchain-Research-Summit",
     location: "Paris, France",
     date: "June 16-17, 2026",
-    image: require("../static/img/events/commons-online.png"),
+    image: require("../static/img/events/commons-purple.png"),
     end_date: "June 17, 2026",
   },
   {
@@ -1476,7 +1476,7 @@ const events = [
     link: "https://luma.com/xrpl-dinner-club-madrid",
     location: "Madrid, Spain",
     date: "September 15, 2026",
-    image: require("../static/img/events/commons-madrid.png"),
+    image: require("../static/img/events/commons-orange-2.png"),
     end_date: "September 15, 2026",
   },
   {
@@ -1487,7 +1487,7 @@ const events = [
     link: "https://luma.com/xrpl-meetup-barcelona",
     location: "Barcelona, Spain",
     date: "September 16, 2026",
-    image: require("../static/img/events/commons-barcelona.png"),
+    image: require("../static/img/events/commons-orange-2.png"),
     end_date: "September 16, 2026",
   },
   {
@@ -1498,7 +1498,7 @@ const events = [
     link: "https://luma.com/xrpl-core-dev-bootcamp2",
     location: "NYC, USA",
     date: "October 20-22, 2026",
-    image: require("../static/img/events/commons-core-dev-bootcamp-nyc.png"),
+    image: require("../static/img/events/commons-dark-blue.png"),
     end_date: "October 22, 2026",
   },
   {
@@ -1509,7 +1509,7 @@ const events = [
     link: "https://luma.com/swell-xrpl-hackathon",
     location: "NYC, USA",
     date: "October 24-25, 2026",
-    image: require("../static/img/events/commons-hackathon-nyc.png"),
+    image: require("../static/img/events/commons-purple.png"),
     end_date: "October 25, 2026",
   },
 
@@ -1586,34 +1586,34 @@ export default function Events() {
           <div className="pe-2 col">
             <img
               alt="xrp ledger events hero"
-              src={require("../static/img/events/swell-2026-nyc.png")}
+              src={require("../static/img/events/xrp-community-night-paris.png")}
               className="w-100"
             />
           </div>
           <div className="pt-5 pe-2 col">
             <div className="d-flex flex-column-reverse">
               <h2 className="mb-8 h4 h2-sm">
-                {translate("Swell 2026 in NYC")}
+                {translate("XRP Community Night Paris")}
               </h2>
               <h6 className="mb-3 eyebrow">{translate("Save the Date")}</h6>
             </div>
             <p className="mb-4">
               {translate(
-                "Ripple's annual flagship conference returns to New York City. Connect with leaders shaping the future of payments, custody, tokenization, and digital asset infrastructure."
+                "Attending Paris Blockchain Week? ​Join us for an evening with the XRP community in Paris. Connect with the users, builders and projects innovating with and utilizing XRP."
               )}
             </p>
             <div className=" my-3 event-small-gray">
-              {translate("Location: New York City")}
+              {translate("Location: Paris, France")}
             </div>
             <div className="py-2 my-3 event-small-gray">
-              {translate("October 27-29, 2026")}
+              {translate("April 15, 2026")}
             </div>
             <div className="d-lg-block">
               <Button
                 intention="neutral"
                 emphasis="strong"
                 target="_blank"
-                href="https://swell.ripple.com/?utm_source=xrpl.org&utm_medium=cta&utm_campaign=swell2026-regular&utm_content=Register"
+                href="https://luma.com/wnkqmmqy?utm_source=xprlorg"
                 iconEnd={<XrplArrowExternalLinkIcon />}
               >
                 {translate("Register Now")}
