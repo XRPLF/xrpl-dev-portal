@@ -1468,7 +1468,51 @@ const events = [
     image: require("../static/img/events/commons-lisbon.png"),
     end_date: "June 4, 2026",
   },
-  
+  {
+    name: "XRP Ledger Dinner Club Madrid",
+    description:
+      "Join us for an exclusive, invitation-only evening bringing together founders, developers, investors, and leaders from Spain's blockchain ecosystem.",
+    type: "meetup",
+    link: "https://luma.com/xrpl-dinner-club-madrid",
+    location: "Madrid, Spain",
+    date: "September 15, 2026",
+    image: require("../static/img/events/commons-madrid.png"),
+    end_date: "September 15, 2026",
+  },
+  {
+    name: "XRPL Meetup Barcelona",
+    description:
+      "Calling all spanish blockchain enthusiasts! Join XRPL Meetups to share knowledge, build real-life connections, and foster communities centered around blockchain and XRP Ledger. We're establishing local “XRPL Hubs” across Europe, and we want you to be a part of it!",
+    type: "meetup",
+    link: "https://luma.com/xrpl-meetup-barcelona",
+    location: "Barcelona, Spain",
+    date: "September 16, 2026",
+    image: require("../static/img/events/commons-barcelona.png"),
+    end_date: "September 16, 2026",
+  },
+  {
+    name: "XRP Ledger Core Dev Bootcamp NYC",
+    description:
+      "A 3-day deep dive into xrpld, the software that runs the XRP Ledger, led by Denis Angell, CTO of the XRPL Foundation. This bootcamp is for developers who want to go beyond the application layer and work directly with our core codebase.",
+    type: "hackathon",
+    link: "https://luma.com/xrpl-core-dev-bootcamp2",
+    location: "NYC, USA",
+    date: "October 20-22, 2026",
+    image: require("../static/img/events/commons-core-dev-bootcamp-nyc.png"),
+    end_date: "October 22, 2026",
+  },
+  {
+    name: "XRP Ledger Hackathon NYC",
+    description:
+      "Build and launch on the XRP Ledger in 36 hours in New York City, just before Swell. Hosted by XRPL Commons, this hackathon connects builders with the ecosystem’s institutions, investors, and decision-makers. Whether you’re new to XRPL or a seasoned builder, there’s a track for you.",
+    type: "hackathon",
+    link: "https://luma.com/swell-xrpl-hackathon",
+    location: "NYC, USA",
+    date: "October 24-25, 2026",
+    image: require("../static/img/events/commons-hackathon-nyc.png"),
+    end_date: "October 25, 2026",
+  },
+
 ];
 
 
@@ -1542,34 +1586,34 @@ export default function Events() {
           <div className="pe-2 col">
             <img
               alt="xrp ledger events hero"
-              src={require("../static/img/events/xrp-community-night-paris.png")}
+              src={require("../static/img/events/swell-2026-nyc.png")}
               className="w-100"
             />
           </div>
           <div className="pt-5 pe-2 col">
             <div className="d-flex flex-column-reverse">
               <h2 className="mb-8 h4 h2-sm">
-                {translate("XRP Community Night Paris")}
+                {translate("Swell 2026 in NYC")}
               </h2>
               <h6 className="mb-3 eyebrow">{translate("Save the Date")}</h6>
             </div>
             <p className="mb-4">
               {translate(
-                "Attending Paris Blockchain Week? ​Join us for an evening with the XRP community in Paris. Connect with the users, builders and projects innovating with and utilizing XRP."
+                "Ripple's annual flagship conference returns to New York City. Connect with leaders shaping the future of payments, custody, tokenization, and digital asset infrastructure."
               )}
             </p>
             <div className=" my-3 event-small-gray">
-              {translate("Location: Paris, France")}
+              {translate("Location: New York City")}
             </div>
             <div className="py-2 my-3 event-small-gray">
-              {translate("April 15, 2026")}
+              {translate("October 27-29, 2026")}
             </div>
             <div className="d-lg-block">
               <Button
                 intention="neutral"
                 emphasis="strong"
                 target="_blank"
-                href="https://luma.com/wnkqmmqy?utm_source=xprlorg"
+                href="https://swell.ripple.com/?utm_source=xrpl.org&utm_medium=cta&utm_campaign=swell2026-regular&utm_content=Register"
                 iconEnd={<XrplArrowExternalLinkIcon />}
               >
                 {translate("Register Now")}
