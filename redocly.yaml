@@ -13,6 +13,9 @@ ignore:
   # a Redocly cloud OOM build failure. They remain usable in `realm develop`.
   - showcase/**/*.page.tsx
   - showcase/**/*.md
+  # Internal design handoff spec, not site content. Root-level .md is otherwise
+  # served as a page (verified: /brand-update-2026-handoff-outline returns 200).
+  - payments-page-figma-handoff.md
 l10n:
   defaultLocale: en-US
   locales:
