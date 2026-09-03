@@ -1431,7 +1431,7 @@ const events = [
     link: "https://luma.com/780xhfr7",
     location: "Paris, France",
     date: "April 14, 2026",
-    image: require("../static/img/events/xrpl-zone-paris.jpg"),
+    image: require("../static/img/events/commons-dark-blue.png"),
     end_date: "April 14, 2026",
   },
 
@@ -1443,7 +1443,7 @@ const events = [
     link: "https://luma.com/building-on-the-xrpl",
     location: "Online",
     date: "June 22-23, 2026",
-    image: require("../static/img/events/commons-online.png"),
+    image: require("../static/img/events/commons-purple.png"),
     end_date: "June 23, 2026",
   },
   {
@@ -1454,7 +1454,7 @@ const events = [
     link: "https://luma.com/XRPL-Blockchain-Research-Summit",
     location: "Paris, France",
     date: "June 16-17, 2026",
-    image: require("../static/img/events/commons-online.png"),
+    image: require("../static/img/events/commons-purple.png"),
     end_date: "June 17, 2026",
   },
   {
@@ -1468,7 +1468,51 @@ const events = [
     image: require("../static/img/events/commons-lisbon.png"),
     end_date: "June 4, 2026",
   },
-  
+  {
+    name: "XRP Ledger Dinner Club Madrid",
+    description:
+      "Join us for an exclusive, invitation-only evening bringing together founders, developers, investors, and leaders from Spain's blockchain ecosystem.",
+    type: "meetup",
+    link: "https://luma.com/xrpl-dinner-club-madrid",
+    location: "Madrid, Spain",
+    date: "September 15, 2026",
+    image: require("../static/img/events/commons-orange-2.png"),
+    end_date: "September 15, 2026",
+  },
+  {
+    name: "XRPL Meetup Barcelona",
+    description:
+      "Calling all Spanish blockchain enthusiasts! Join XRPL Meetups to share knowledge, build real-life connections, and foster communities centered around blockchain and XRP Ledger. We're establishing local “XRPL Hubs” across Europe, and we want you to be a part of it!",
+    type: "meetup",
+    link: "https://luma.com/xrpl-meetup-barcelona",
+    location: "Barcelona, Spain",
+    date: "September 16, 2026",
+    image: require("../static/img/events/commons-orange-2.png"),
+    end_date: "September 16, 2026",
+  },
+  {
+    name: "XRP Ledger Core Dev Bootcamp NYC",
+    description:
+      "A 3-day deep dive into xrpld, the software that runs the XRP Ledger, led by Denis Angell, CTO of the XRPL Foundation. This bootcamp is for developers who want to go beyond the application layer and work directly with our core codebase.",
+    type: "hackathon",
+    link: "https://luma.com/xrpl-core-dev-bootcamp2",
+    location: "NYC, USA",
+    date: "October 20-22, 2026",
+    image: require("../static/img/events/commons-dark-blue.png"),
+    end_date: "October 22, 2026",
+  },
+  {
+    name: "XRP Ledger Hackathon NYC",
+    description:
+      "Build and launch on the XRP Ledger in 36 hours in New York City, just before Swell. Hosted by XRPL Commons, this hackathon connects builders with the ecosystem’s institutions, investors, and decision-makers. Whether you’re new to XRPL or a seasoned builder, there’s a track for you.",
+    type: "hackathon",
+    link: "https://luma.com/swell-xrpl-hackathon",
+    location: "NYC, USA",
+    date: "October 24-25, 2026",
+    image: require("../static/img/events/commons-purple.png"),
+    end_date: "October 25, 2026",
+  },
+
 ];
 
 
