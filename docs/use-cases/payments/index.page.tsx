@@ -10,6 +10,7 @@ import type { StandardCardPropsWithoutVariant } from 'shared/sections/StandardCa
 import { CardsTextGrid } from 'shared/sections/CardsTextGrid/CardsTextGrid';
 import { LinkSmallGrid } from 'shared/sections/LinkSmallGrid/LinkSmallGrid';
 import { CalloutMediaBanner } from 'shared/sections/CalloutMediaBanner/CalloutMediaBanner';
+import { CarouselCardList, type CarouselCardConfig } from 'shared/sections/CarouselCardList';
 import { StablecoinCorridorMap } from 'shared/patterns/StablecoinCorridorMap/StablecoinCorridorMap';
 
 // Every string on this page comes from XRPL Payments Page - Wireframe v2, and every section
@@ -174,65 +175,67 @@ const COMPLIANCE_CARDS = [
 // to the case study. One-liners are verbatim from the wireframe's "Current version has the
 // below" table, in its order, em dashes included since they are the wireframe's own.
 //
-// The wireframe puts an [image] in each card, and CardsFeatured/CardImage is the component
-// for that shape, but not with these assets: its image area is 400px tall inside a 620px
-// card, sized for square art, and all five assets are logos (the Ripple wordmark is
-// 192x50). object-fit is contain, so nothing crops, but each logo would float in roughly
-// 350px of empty space and the section would run about 1240px. StandardCard instead - same
-// component as S6 and S10 - so the one-liners carry the section. Proper customer art would
-// let this move to CardsFeatured as drawn.
+// A carousel rather than the 3-across grid this used to be. StandardCardGroupSection spans
+// every card at 4 columns, and PageGrid is 8 columns at md and 12 at lg, so five customers
+// left a ragged trailing row at every breakpoint above mobile - 3+2 at lg/xl, 2+2+1 at md,
+// an empty cell either way. Five is also enough for a carousel to earn its controls: cards
+// are 400px wide with 8px gaps, so the track is about 2030px against a container well under
+// that, and the arrows do something. A sixth customer is now one array entry rather than a
+// worse row.
 //
-// Also missing: the sixth "See all customer stories" tile, which is what would complete the
-// 3x2 grid. There is no customer-stories listing page in the repo to link it to.
-const CUSTOMER_CARDS: readonly StandardCardPropsWithoutVariant[] = [
+// green, not the blue this section used to be, because CarouselCardList offers only neutral
+// and green, and neutral would sit directly on top of S10 below, which is already neutral.
+//
+// This also satisfies the [image] the wireframe puts in each card, which the old grid could
+// not: CardOffgrid's icon slot is an 84px container with a 68px image, and the raw assets
+// ranged from 83% to 100% ink with two of them wordmark lockups that render illegibly at
+// 68px (the Ripple lockup is 192x50, so 68x18). customer-marks/ holds a derived set, each
+// one isolated to its mark and padded to 84% ink so all five carry the same visual weight.
+// Card surfaces are $green-300 dark and $green-200 light, both bright, so the dark marks
+// work in either theme and no light-mode variants are needed.
+//
+// CardOffgrid makes the whole card the link and has no CTA slot, so the wireframe's "Case
+// study" label is gone. Every one of these five links leaves the page.
+//
+// Still missing: the sixth "See all customer stories" tile. There is no customer-stories
+// listing page in the repo to link it to.
+const CUSTOMER_MARKS = '/img/payments/customer-marks/';
+
+const CUSTOMER_CARDS: readonly CarouselCardConfig[] = [
   {
-    headline: 'CoinPayments',
-    children:
+    icon: `${CUSTOMER_MARKS}coinpayments.png`,
+    title: 'CoinPayments',
+    description:
       "CoinPayments uses XRPL's fast and low-cost payment rails to enable merchants to accept digital assets globally, with near-instant settlement and minimal transaction fees.",
-    callsToAction: [
-      {
-        children: 'Case study',
-        href: 'https://xrpl.org/blog/2025/coinpayments-xrpl-case-study-payment-processing',
-      },
-    ],
+    href: 'https://xrpl.org/blog/2025/coinpayments-xrpl-case-study-payment-processing',
   },
   {
-    headline: 'Ripple Payments',
-    children:
+    icon: `${CUSTOMER_MARKS}ripple.svg`,
+    title: 'Ripple Payments',
+    description:
       'Ripple Payments enables crypto companies, payment service providers and fintechs to facilitate real-time cross-border payments using stablecoins, digital assets and local currencies — with XRPL as a foundational transaction layer.',
-    callsToAction: [
-      { children: 'Case study', href: 'https://ripple.com/solutions/cross-border-payments/' },
-    ],
+    href: 'https://ripple.com/solutions/cross-border-payments/',
   },
   {
-    headline: 'FriiPay',
-    children:
+    icon: `${CUSTOMER_MARKS}friipay.png`,
+    title: 'FriiPay',
+    description:
       'FriiPay connects XRPL-based crypto wallets to point-of-sale terminals, allowing customers to pay with RLUSD or XRP while helping merchants save costs on card processing fees.',
-    callsToAction: [
-      {
-        children: 'Case study',
-        href: 'https://xrpl.org/blog/2025/frii-pay-xrpl-case-study-crypto-payment-solution',
-      },
-    ],
+    href: 'https://xrpl.org/blog/2025/frii-pay-xrpl-case-study-crypto-payment-solution',
   },
   {
-    headline: 'Brale',
-    children:
+    icon: `${CUSTOMER_MARKS}brale.png`,
+    title: 'Brale',
+    description:
       'Brale is an end-to-end platform for launching and managing stablecoins, now Brale goes live on XRPL, bringing regulated stablecoin issuance and Ripple USD settlement to businesses',
-    callsToAction: [
-      { children: 'Case study', href: 'https://brale.xyz/blog/brale-goes-live-on-the-xrp-ledger' },
-    ],
+    href: 'https://brale.xyz/blog/brale-goes-live-on-the-xrp-ledger',
   },
   {
-    headline: 'Braza Bank',
-    children:
+    icon: `${CUSTOMER_MARKS}brazabank.svg`,
+    title: 'Braza Bank',
+    description:
       'Braza Bank launched USDB stablecoin on XRPL, backed by Brazilian bonds and fully integrated in customer-facing services such as e-commerce, global purchases and investments',
-    callsToAction: [
-      {
-        children: 'Case study',
-        href: 'https://ripple.com/ripple-press/braza-group-announces-launch-of-bbrl-stablecoin-on-the-xrp-ledger/',
-      },
-    ],
+    href: 'https://ripple.com/ripple-press/braza-group-announces-launch-of-bbrl-stablecoin-on-the-xrp-ledger/',
   },
 ];
 
@@ -439,11 +442,13 @@ export default function PaymentsPage() {
         cards={diyVsPartnerCards}
       />
 
-      {/* Wireframe S9. H2 verbatim. */}
-      <StandardCardGroupSection
-        headline={translate('Battle-tested by industry leaders')}
+      {/* Wireframe S9. H2 verbatim. S9 gives the section no body text, and `description` is
+          required, so it is passed empty rather than filled in. */}
+      <CarouselCardList
+        variant="green"
+        buttonVariant="green"
+        heading={translate('Battle-tested by industry leaders')}
         description=""
-        variant="blue"
         cards={CUSTOMER_CARDS}
       />
 
