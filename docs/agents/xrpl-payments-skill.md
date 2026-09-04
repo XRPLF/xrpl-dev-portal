@@ -54,6 +54,8 @@ skills pair with the same shared Wallet skill. See
 
 **Need a wallet first?** If the user doesn't have an XRPL wallet yet, load the **XRPL Agent Wallet skill** — it handles wallet generation, writes the seed safely to `.env`, and never shows it in chat. Return here once the wallet is ready.
 
+**Using OWS?** The Wallet skill now supports OWS (Open Wallet Standard) as a third signing path for production agents that need policy enforcement, x402 support, or multi-agent key isolation. See [The XRPL Agent Wallet Skill](/docs/agents/xrpl-agent-wallet-skill/) for the decision guide.
+
 ## Default behavior and stack decisions
 
 - **Languages:** Python (`xrpl-py`) and TypeScript/JavaScript (`xrpl.js`) are
@@ -64,10 +66,8 @@ skills pair with the same shared Wallet skill. See
   `submitAndWait` directly.
 - **Amount handling:** Always `xrp_to_drops()` / `drops_to_xrp()` from `xrpl.utils`. Never pass raw XRP floats to the ledger.
 - **Network:** Testnet (`https://s.altnet.rippletest.net:51234`) by default. Switching to mainnet is a one-line URL change.
-- **Key storage:** Env vars for development, KMS/HSM for production. Never hardcode seeds.
-- **Agent tagging:** Set `source_tag` / `SourceTag` on every agent-initiated
-  transaction. This enables on-chain volume tracking and separates agentic
-  activity from human-initiated transactions.
+- **Key storage and signing:** Env vars for development (Pattern 1), KMS/HSM via external signer for enterprise (Pattern 2), or OWS (Open Wallet Standard) for production agents with policy enforcement (Pattern 3). Never hardcode seeds. See [The XRPL Agent Wallet Skill](/docs/agents/xrpl-agent-wallet-skill/) for setup.
+- **Agent tagging:** The XRPL Agent Wallet skill automatically applies `SourceTag = 20260530` to every transaction that passes through the signing ceremony. Domain skills may set a custom value before handoff; the Wallet skill respects any value already present.
 - **Simulate before submit:** For new payment flows, the skill calls `simulate`
   on the raw transaction object before handing it to the Wallet skill. This catches
   malformed transactions, missing trust lines, and reserve errors without
