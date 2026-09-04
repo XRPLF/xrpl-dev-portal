@@ -14,8 +14,13 @@ Create an on-ledger [check](../../../../concepts/payment-types/checks.md), which
 
 {% amendment-disclaimer name="Checks" /%}
 
+<!-- TODO: Add {% amendment-disclaimer name="MPTokensV2" mode="updated" /%} badge. -->
+
 ## Example {% $frontmatter.seo.title %} JSON
 
+{% tabs %}
+
+{% tab label="XRP" %}
 ```json
 {
   "TransactionType": "CheckCreate",
@@ -28,6 +33,27 @@ Create an on-ledger [check](../../../../concepts/payment-types/checks.md), which
   "Fee": "12"
 }
 ```
+{% /tab %}
+
+{% tab label="MPT" %}
+```json
+{
+  "TransactionType": "CheckCreate",
+  "Account": "rUn84CUYbNjRoTQ6mSW7BVJPSVJNLb1QLo",
+  "Destination": "rfkE1aSy9G8Upk4JssnwBxhEv5p4mn2KTy",
+  "SendMax": {
+    "mpt_issuance_id": "00000003430427B80BD2D09D36B70B969E12801065F22308",
+    "value": "100"
+  },
+  "Expiration": 570113521,
+  "InvoiceID": "6F1DFD1D0FE8A32E40E1F2C05CF1C15545BAB56B617F9C6C2D63A6B704BEF59B",
+  "DestinationTag": 1,
+  "Fee": "12"
+}
+```
+{% /tab %}
+
+{% /tabs %}
 
 {% tx-example txid="4E0AA11CBDD1760DE95B68DF2ABBE75C9698CEB548BEA9789053FCB3EBD444FB" /%}
 
@@ -47,14 +73,18 @@ Besides errors that can occur for all transactions, {% $frontmatter.seo.title %}
 
 | Error Code | Description |
 |:-----------|:------------|
-| `tecNO_PERMISSION` | The `Destination` account is blocking incoming Checks. {% amendment-disclaimer name="DisallowIncoming" /%} |
-| `temREDUNDANT` | The `Destination` is the sender of the transaction. |
-| `tecNO_DST` | The `Destination` [account](../../../../concepts/accounts/index.md) does not exist in the ledger. |
-| `tecDST_TAG_NEEDED` | The `Destination` account has the `RequireDest` flag enabled but the transaction does not include a `DestinationTag` field. |
-| `tecFROZEN` | `SendMax` specifies a token which is [frozen](../../../../concepts/tokens/fungible-tokens/freezes.md). |
-| `tecEXPIRED` | The `Expiration` of the transaction is in the past. |
-| `tecINSUFFICIENT_RESERVE` | The sender does not have enough XRP to meet the [owner reserve](../../../../concepts/accounts/reserves.md#owner-reserves) after adding the Check. |
 | `tecDIR_FULL` | Either the sender or the destination of the Check cannot own more objects in the ledger.<br>This error is effectively impossible to receive if {% amendment-disclaimer name="fixDirectoryLimit" compact=true /%} is enabled. |
+| `tecDST_TAG_NEEDED` | The `Destination` account has the `RequireDest` flag enabled but the transaction does not include a `DestinationTag` field. |
+| `tecEXPIRED` | The `Expiration` of the transaction is in the past. |
+| `tecFROZEN` | `SendMax` specifies a token which is [frozen](../../../../concepts/tokens/fungible-tokens/freezes.md). |
+| `tecINSUFFICIENT_RESERVE` | The sender does not have enough XRP to meet the [owner reserve](../../../../concepts/accounts/reserves.md#owner-reserves) after adding the Check. |
+| `tecLOCKED` | `SendMax` specifies an MPT that is currently [locked](../../../../concepts/tokens/fungible-tokens/deep-freeze.md#how-does-mpt-freezelock-behavior-differ-from-iou) at the issuance or individual token level. |
+| `tecNO_AUTH` | `SendMax` specifies an MPT whose **Can Transfer** flag is not enabled on the `MPTokenIssuance`, and neither the sender nor the destination is the issuer. |
+| `tecNO_DST` | The `Destination` [account](../../../../concepts/accounts/index.md) does not exist in the ledger. |
+| `tecNO_PERMISSION` | The `Destination` account is blocking incoming Checks. {% amendment-disclaimer name="DisallowIncoming" /%} |
+| `tecOBJECT_NOT_FOUND` | The `MPTokenIssuance` object for the MPT specified in `SendMax` does not exist. |
+| `temDISABLED` | `SendMax` specifies an MPT but the [MPTokensV2 amendment][] is not enabled. |
+| `temREDUNDANT` | The `Destination` is the sender of the transaction. |
 
 ## See Also
 

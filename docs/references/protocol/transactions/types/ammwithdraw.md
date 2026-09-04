@@ -12,10 +12,19 @@ txIcon: send
 
 Withdraw assets from an [Automated Market Maker](../../../../concepts/tokens/decentralized-exchange/automated-market-makers.md) (AMM) instance by returning the AMM's liquidity provider tokens (LP Tokens).
 
+{% admonition type="info" name="Note" %}
+If you withdraw an MPT but don't already have an [MPToken entry][] for it, this transaction automatically creates one for you.
+{% /admonition %}
+
 {% amendment-disclaimer name="AMM" /%}
+
+<!-- TODO: Add {% amendment-disclaimer name="MPTokensV2" mode="updated" /%} badge. -->
 
 ## Example {% $frontmatter.seo.title %} JSON
 
+{% tabs %}
+
+{% tab label="Trust Line Token/XRP" %}
 ```json
 {
     "Account" : "rJVUeRqDFNs2xqA7ncVE6ZoAhPUoaJJSQm",
@@ -38,6 +47,35 @@ Withdraw assets from an [Automated Market Maker](../../../../concepts/tokens/dec
     "TransactionType" : "AMMWithdraw"
 }
 ```
+{% /tab %}
+
+{% tab label="MPT/MPT" %}
+```json
+{
+    "Account" : "rJVUeRqDFNs2xqA7ncVE6ZoAhPUoaJJSQm",
+    "Amount" : {
+        "mpt_issuance_id" : "00002403C84A0A28E0190E208E982C352BBD71B2",
+        "value" : "250"
+    },
+    "Amount2" : {
+        "mpt_issuance_id" : "00002710D5F38CCE3B43BD597D1B6CCED4AC2D5C",
+        "value" : "500"
+    },
+    "Asset" : {
+        "mpt_issuance_id" : "00002403C84A0A28E0190E208E982C352BBD71B2"
+    },
+    "Asset2" : {
+        "mpt_issuance_id" : "00002710D5F38CCE3B43BD597D1B6CCED4AC2D5C"
+    },
+    "Fee" : "10",
+    "Flags" : 1048576,
+    "Sequence" : 11,
+    "TransactionType" : "AMMWithdraw"
+}
+```
+{% /tab %}
+
+{% /tabs %}
 
 {% tx-example txid="E606F37847E012E0D71267ED18CEA8B235AD9409BB6C2383A7D53ADEC2F314D4" /%}
 
@@ -45,8 +83,8 @@ Withdraw assets from an [Automated Market Maker](../../../../concepts/tokens/dec
 
 | Field        | JSON Type           | [Internal Type][] | Required? | Description |
 |:-------------|:--------------------|:------------------|:----------|:------------|
-| `Asset`      | Object              | Issue             | Yes       | The definition for one of the assets in the AMM's pool. The asset can be XRP, a token, or an MPT (see: [Specifying Without Amounts][]). |
-| `Asset2`     | Object              | Issue             | Yes       | The definition for the other asset in the AMM's pool. The asset can be XRP, a token, or an MPT (see: [Specifying Without Amounts][]). |
+| `Asset`      | Object              | Issue             | Yes       | The definition for one of the assets in the AMM's pool. The asset can be XRP or a fungible token (see: [Specifying Without Amounts][]). |
+| `Asset2`     | Object              | Issue             | Yes       | The definition for the other asset in the AMM's pool. The asset can be XRP or a fungible token (see: [Specifying Without Amounts][]). |
 | `Amount`     | [Currency Amount][] | Amount            | No        | The amount of one asset to withdraw from the AMM. This must match the type of one of the assets (tokens or XRP) in the AMM's pool. |
 | `Amount2`    | [Currency Amount][] | Amount            | No        | The amount of another asset to withdraw from the AMM. If present, this must match the type of the other asset in the AMM's pool and cannot be the same type as `Amount`. |
 | `EPrice`     | [Currency Amount][] | Amount            | No        | The minimum effective price, in LP Token returned, to pay per unit of the asset to withdraw. |
@@ -117,11 +155,15 @@ Besides errors that can occur for all transactions, {% $frontmatter.seo.title %}
 | `tecAMM_BALANCE`        | The transaction would withdraw all of one asset from the pool, or rounding would cause a "withdraw all" to leave a nonzero amount behind. |
 | `tecAMM_FAILED`         | The conditions on the withdrawal could not be satisfied; for example, the requested effective price in the `EPrice` field is too low. |
 | `tecAMM_INVALID_TOKENS` | The AMM for this token pair does not exist, or one of the calculations resulted in a withdrawal amount rounding to zero. |
-| `tecFROZEN`             | A token being withdrawn is [frozen](../../../../concepts/tokens/fungible-tokens/freezes.md) globally for the AMM's pseudo-account, or [deep frozen](../../../../concepts/tokens/fungible-tokens/deep-freeze.md) for the sender. A regular freeze on the sender does not cause this error. {% amendment-disclaimer name="fixCleanup3_3_0" mode="updated" /%} |
+| `tecFROZEN` | A token being withdrawn is [frozen](../../../../concepts/tokens/fungible-tokens/freezes.md) globally for the AMM's pseudo-account, or [deep frozen](../../../../concepts/tokens/fungible-tokens/deep-freeze.md) for the sender. A regular freeze on the sender does not cause this error. {% amendment-disclaimer name="fixCleanup3_3_0" mode="updated" /%} |
 | `tecINSUF_RESERVE_LINE` | The sender of this transaction does not meet the increased [reserve requirement](../../../../concepts/accounts/reserves.md) of processing this transaction, probably because they need at least one new trust line to hold one of the assets to be withdrawn, and they don't have enough XRP to meet the additional owner reserve for a new trust line. |
-| `tecLOCKED`             | An MPT being withdrawn is locked globally for the sender, or for the AMM's pseudo-account. {% amendment-disclaimer name="fixCleanup3_3_0" mode="updated" /%} |
-| `tecNO_AUTH`            | The sender is not authorized to hold one of the AMM assets. |
-| `tecPRECISION_LOSS`     | The withdrawal would leave more LP Tokens outstanding than the pool's assets support. Without the `fixCleanup3_3_0` amendment it fails with `tecINVARIANT_FAILED` instead. {% amendment-disclaimer name="fixAMMv1_3" /%} {% amendment-disclaimer name="fixCleanup3_3_0" /%} |
+| `tecLOCKED` | An MPT being withdrawn is locked globally for the sender, or for the AMM's pseudo-account. {% amendment-disclaimer name="fixCleanup3_3_0" mode="updated" /%} |
+| `tecNO_AUTH` | The sender is not authorized to hold one of the withdrawal assets. This can occur when: <ul><li>The trust line token's issuer uses [Authorized Trust Lines](../../../../concepts/tokens/fungible-tokens/authorized-trust-lines.md) and the sender's trust line does not exist, or has not been authorized.</li><li>The sender is not authorized to hold the MPT.</li><li>The MPT's **Can Transfer** flag is not enabled and the sender is not the issuer.</li></ul> |
+| `tecNO_ISSUER` | The issuer account of at least one MPT does not exist. |
+| `tecNO_PERMISSION` | At least one of the MPT withdrawal assets does not have **Can Trade** enabled. |
+| `tecOBJECT_NOT_FOUND` | At least one of the MPT issuances does not exist. |
+| `tecPRECISION_LOSS` | The withdrawal would leave more LP Tokens outstanding than the pool's assets support. Without the `fixCleanup3_3_0` amendment it fails with `tecINVARIANT_FAILED` instead. {% amendment-disclaimer name="fixAMMv1_3" /%} {% amendment-disclaimer name="fixCleanup3_3_0" /%} |
+| `temDISABLED` | At least one of the assets or amounts is an MPT, but the [MPTokensV2 amendment](../../../../concepts/tokens/fungible-tokens/multi-purpose-tokens.md) is not enabled. |
 | `temMALFORMED`          | The transaction specified an invalid combination of fields. See [AMMWithdraw Modes](#ammwithdraw-modes). (This error can also occur if the transaction is malformed in other ways.) |
 | `temBAD_AMM_TOKENS`     | The transaction specified the LP Tokens incorrectly; for example, the `issuer` is not the AMM's associated AccountRoot address or the `currency` is not the currency code for this AMM's LP Tokens, or the transaction specified this AMM's LP Tokens in one of the asset fields.  |
 | `terNO_AMM`             | The Automated Market Maker instance for the asset pair in this transaction does not exist. |
