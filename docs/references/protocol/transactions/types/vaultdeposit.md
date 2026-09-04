@@ -55,10 +55,10 @@ If successful, the transaction moves the assets from the depositor's account to 
 
 In addition to the [common fields](../../../protocol/transactions/common-fields#transaction-common-fields), {% code-page-name /%} transactions use the following fields:
 
-| Field Name              | JSON Type     | [Internal Type][] | Required? | Description         |
-| :-----------------------| :------------ | :---------------- | :-------- | :-------------------|
-| `VaultID`               | String        | Hash256           | Yes       | The unique identifier of the vault to which the asset is deposited. |
-| `Amount`                | Object        | Amount            | Yes       | The asset and quantity to be deposited into the vault.|
+| Field Name              | JSON Type           | [Internal Type][] | Required? | Description         |
+| :-----------------------| :------------------ | :---------------- | :-------- | :-------------------|
+| `VaultID`               | String              | Hash256           | Yes       | The unique identifier of the vault to which the asset is deposited. |
+| `Amount`                | [Currency Amount][] | Amount            | Yes       | The asset and quantity to be deposited into the vault.|
 
 The deposited asset must match the vault’s designated asset for the transaction to succeed. Depending on the asset type, the following changes occur:
 
