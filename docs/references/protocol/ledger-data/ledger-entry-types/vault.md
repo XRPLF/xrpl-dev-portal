@@ -51,17 +51,17 @@ In addition to the [common ledger entry fields](../../../protocol/ledger-data/co
 | `PreviousTxnID`     | String        | Hash256           | Yes       | Identifies the transaction ID that most recently modified this object. |
 | `PreviousTxnLgrSeq` | Number        | UInt32            | Yes       | The sequence of the ledger that contains the transaction that most recently modified this object. |
 | `Sequence`          | Number        | UInt32            | Yes       | The transaction sequence number that created the vault. |
-| `OwnerNode`         | Number        | UInt64            | Yes       | Identifies the page where this item is referenced in the owner's directory. |
+| `OwnerNode`         | String        | UInt64            | Yes       | Identifies the page where this item is referenced in the owner's directory. |
 | `Owner`             | String        | AccountID         | Yes       | The account address of the Vault Owner. |
 | `Account`           | String        | AccountID         | Yes       | The address of the vault's pseudo-account. |
 | `Data`              | String        | Blob              | No        | Arbitrary metadata, in hex format, about the vault. Limited to 256 bytes. See [Data Field Format](#data-field-format) for more information. |
 | `Asset`             | Object        | Issue             | Yes       | The asset of the vault. The vault supports XRP, trust line tokens, and MPTs. |
-| `AssetsTotal`       | Number        | Number            | Yes       | The total value of the vault. |
-| `AssetsAvailable`   | Number        | Number            | Yes       | The asset amount that is available in the vault. |
-| `AssetsMaximum`     | Number        | Number            | No        | The maximum asset amount that can be held in the vault. If set to 0, this indicates there is no cap. |
-| `LossUnrealized`    | Number        | Number            | Yes       | The potential loss amount that is not yet realized, expressed as the vault's asset. Only a protocol connected to the vault can modify this attribute. |
+| `AssetsTotal`       | String        | Number            | Yes       | The total value of the vault. Calculated as: `assets available + assets on loan`. |
+| `AssetsAvailable`   | String        | Number            | Yes       | The amount of assets available for loans and withdrawals. |
+| `AssetsMaximum`     | String        | Number            | No        | The maximum amount of assets that can be deposited into the vault. Set to `0` for no cap. |
+| `LossUnrealized`    | String        | Number            | Yes       | The potential loss amount that is not yet realized, expressed as the vault's asset. Only a protocol connected to the vault can modify this attribute. |
 | `ShareMPTID`        | String        | UInt192           | Yes       | The identifier of the share `MPTokenIssuance` object. |
-| `WithdrawalPolicy`  | String        | UInt8             | Yes       | Indicates the withdrawal strategy used by the vault. |
+| `WithdrawalPolicy`  | Number        | UInt8             | Yes       | Indicates the withdrawal strategy used by the vault. |
 | `Scale`             | Number        | UInt8             | No        | Specifies decimal precision for share calculations. Assets are multiplied by 10<sup>Scale</sup > to convert fractional amounts into whole number shares. For example, with a `Scale` of `6`, depositing 20.3 units creates 20,300,000 shares (20.3 × 10<sup>Scale</sup >). For **trust line tokens** this can be configured at vault creation, and valid values are between 0-18, with the default being `6`. For **XRP** and **MPTs**, this is fixed at `0`. See [Scaling Factor](#scaling-factor) for more information. |
 
 ### Data Field Format

@@ -42,11 +42,11 @@ Clawbacks cannot be performed on native XRP.
 
 ## {% $frontmatter.seo.title %} Fields
 
-| Field Name | JSON Type | [Internal Type][] | Required? | Description |
-| :--------- | :-------- | :---------------- | :-------- | :---------- |
-| `VaultID`  | String    | Hash256           | Yes       | The unique identifier of the vault from which assets are withdrawn. |
-| `Holder`   | String    | AccountID         | Yes       | The unique identifier of the account from which to claw back the assets. |
-| `Amount`   | Number    | Number            | No        | The asset amount to claw back. When this field is set to 0, the transaction claws back all funds, up to the total shares the `Holder` owns. |
+| Field Name | JSON Type           | [Internal Type][] | Required? | Description |
+| :--------- | :------------------ | :---------------- | :-------- | :---------- |
+| `VaultID`  | String              | Hash256           | Yes       | The unique identifier of the vault from which assets are withdrawn. |
+| `Holder`   | String              | AccountID         | Yes       | The unique identifier of the account from which to claw back the assets. |
+| `Amount`   | [Currency Amount][] | Amount            | No        | The asset amount to claw back. When this field is set to 0, the transaction claws back all funds, up to the total shares the `Holder` owns. |
 
 If the requested amount exceeds the vault’s available assets, the transaction claws back only up to the vault's `AssetsAvailable` balance. Otherwise, it retrieves the exact asset amount specified in the transaction.
 
