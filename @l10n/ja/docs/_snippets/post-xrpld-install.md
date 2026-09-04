@@ -30,4 +30,4 @@ xrpld APIを使用した`xrpld`サーバとの通信について詳しくは、[
 
 `xrpld`を定期的に更新して、残りのXRP Ledgerネットワークと同期させておく必要があります。[xrpldのGoogleグループ](https://groups.google.com/forum/#!forum/ripple-server)をサブスクライブすれば、`xrpld`の新しいリリースに関する通知を受け取ることができます。
 
-`xrpld`のパッケージには、[Linuxでの自動更新を有効にする](../infrastructure/installation/update-xrpld-automatically-on-linux.md)ために使用できるスクリプトが含まれています。その他のプラットフォームでは、手動での更新が必要です。
+パッケージベースのLinuxインストールでは、オペレーティングシステムに応じた更新手順に従ってください。
