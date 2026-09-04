@@ -1,0 +1,27 @@
+{
+  "result": {
+    "account": "rLEw4taUYTNLs3ZCv3vyXGmct8PagQ9GcF",
+    "ledger_hash": "6CAA8A6A2B5EB20B0D2C8DE5B54B63BA4D8FE54266EBB3A7DA9B3F60B009778B",
+    "ledger_index": 105503030,
+    "validated": true,
+    "limit": 200,
+    "mptokens": [
+      {
+        "mpt_id": "CC043159A7647CDB51F41C1DF4985D654CD1635A62299B2522B9E184D8A0573F",
+        "account": "rLEw4taUYTNLs3ZCv3vyXGmct8PagQ9GcF",
+        "mpt_issuance_id": "062B590488AF241E0720C1D54DD12798D8B0A05E7B147EE0",
+        "mpt_amount": 2412500,
+        "mpt_authorized": true
+      }
+    ]
+  },
+  "id": "example_account_mptokens",
+  "status": "success",
+  "type": "response",
+  "warnings": [
+    {
+      "id": 2001,
+      "message": "This is a clio server. clio only serves validated data. If you want to talk to rippled, include 'ledger_index':'current' in your request"
+    }
+  ]
+}
