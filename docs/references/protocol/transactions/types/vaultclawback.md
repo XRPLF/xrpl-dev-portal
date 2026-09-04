@@ -46,9 +46,17 @@ Clawbacks cannot be performed on native XRP.
 | :--------- | :------------------ | :---------------- | :-------- | :---------- |
 | `VaultID`  | String              | Hash256           | Yes       | The unique identifier of the vault from which assets are withdrawn. |
 | `Holder`   | String              | AccountID         | Yes       | The unique identifier of the account from which to claw back the assets. |
-| `Amount`   | [Currency Amount][] | Amount            | No        | The asset amount to claw back. When this field is set to 0, the transaction claws back all funds, up to the total shares the `Holder` owns. |
+| `Amount`   | [Currency Amount][] | Amount            | No        | The asset amount to claw back. When this field is set to `0`, the transaction claws back all funds, up to the total shares the `Holder` owns. If omitted, the asset is chosen based on the account submitting the transaction; _vault owners_ target vault shares while other accounts target vault assets. |
 
 If the requested amount exceeds the vault’s available assets, the transaction claws back only up to the vault's `AssetsAvailable` balance. Otherwise, it retrieves the exact asset amount specified in the transaction.
+
+### Stranded-Share Burn
+
+You can specify `Amount` as either the vault's asset or its shares. Only the asset issuer can claw back the vault asset, however the _vault owner_ can specify the shares to instead burn them. This is intended for winding down a vault when assets are gone, but shares remain outstanding and block [VaultDelete](./vaultdelete.md).
+
+- Only the vault owner can submit a clawback transaction on vault shares, whether or not they're also the asset issuer.
+- The vault's `AssetsTotal` and `AssetsAvailable` must both be `0`, and shares must still be outstanding.
+- A non-zero `Amount` must equal the holder's entire share balance, or you can specify `0` to claw back everything.
 
 ## {% $frontmatter.seo.title %} Flags
 
@@ -61,10 +69,14 @@ Besides errors that can occur for all transactions, {% code-page-name /%} transa
 | Error Code              | Description |
 | :---------------------- | :---------- |
 | `tecNO_ENTRY`           | The `Vault` object with the specified `VaultID` does not exist on the ledger. |
-| `tecNO_PERMISSION`      | The transaction attempts to claw back XRP, or the asset is a trust line token or MPT and the transaction isn't submitted by the issuing account. |
-| `tecWRONG_ASSET`        | The asset in the transaction does not match the vault's asset type. |
+| `tecNO_PERMISSION`      | When clawing back the vault's asset:<ul><li>The vault's asset is XRP.</li><li>The `Account` isn't the issuer of the vault's asset.</li><li>The `Account` is also the `Holder`. An issuer can't claw back from itself.</li><li>The asset is an MPT whose issuance doesn't have the **Can Clawback** flag enabled.</li><li>The asset is a trust line token whose issuer doesn't have **Allow Trust Line Clawback** enabled, or has **No Freeze** enabled.</li></ul>When clawing back the vault's shares:<ul><li>The `Account` isn't the vault owner.</li><li>The vault still holds assets, or has no shares outstanding.</li></ul> |
+| `tecWRONG_ASSET`        | <li>The asset in the transaction is neither the vault's asset nor its shares.</li><li>`Amount` was omitted and the vault owner is also the issuer of the vault's asset, so the intended asset (vault asset or share) is ambiguous. In this case, explicitly specify the `Amount` field.</li> |
 | `tecINSUFFICIENT_FUNDS` | The `MPToken` object for the vault share of the `Holder` account does not exist, or the `MPToken.MPTAmount` is 0. |
+| `tecLIMIT_EXCEEDED`     | The vault owner is clawing back shares, but the `Amount` isn't the `Holder`'s entire share balance. Share clawback must burn all of the holder's shares. |
+| `tecOBJECT_NOT_FOUND`   | The `mpt_issuance_id` doesn't match the MPT in the vault. |
+| `tecPRECISION_LOSS`     | Either the `Holder` has no shares, or the requested amount is too small to convert into a whole share at the vault's `Scale`. |
 | `temDISABLED`           | The Single Asset Vault amendment is not enabled.  |
+| `temBAD_AMOUNT`         | The `Amount` is negative. |
 | `temMALFORMED`          | The transaction was not validly formatted. For example, if the `VaultID` is not provided.  |
 
 ## See Also
