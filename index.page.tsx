@@ -206,7 +206,7 @@ export default function Index() {
         ]}
         subtitle={translate("Trusted by Institutions.")}
         media={{
-          src: "/img/home/ripple-icon-timed.png",
+          src: "/img/home/xrp-icon-timed.png",
           alt: translate("XRPL home graphic"),
           width: 1280,
           height: 458,
