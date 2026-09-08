@@ -31,7 +31,7 @@ export interface HomeHeroProps {
  * <HomeHero
  *   titleLines={[translate("Built for Finance."), translate("Powered by Developers.")]}
  *   subtitle={translate("Trusted by Institutions.")}
- *   media={{ src: "/img/home/ripple-icon-timed.png", alt: translate("XRPL home"), width: 1280, height: 458 }}
+ *   media={{ src: "/img/home/xrp-icon-timed.png", alt: translate("XRPL home"), width: 1280, height: 458 }}
  * />
  */
 export const HomeHero: React.FC<HomeHeroProps> = ({
