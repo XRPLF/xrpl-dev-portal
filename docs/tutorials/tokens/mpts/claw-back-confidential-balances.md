@@ -152,7 +152,7 @@ Submit a [ConfidentialMPTClawback transaction][] to claw back the holder's total
 
 ### 6. Verify the clawback
 
-The clawback sets both the spending balance and the inbox to encrypted zero, so every key that could read the holder's balance now reads zero. Decrypt all four copies to confirm this, one per key that has access.
+The clawback sets all four confidential balance copies to the [canonical encrypted zero](../../../concepts/tokens/fungible-tokens/confidential-transfers.md#split-balance-model), so every key that could read the holder's balance now reads zero. Decrypt each copy to confirm this, using the holder, issuer, and auditor keys.
 
 {% tabs %}
 {% tab label="JavaScript" %}

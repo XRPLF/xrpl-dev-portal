@@ -92,7 +92,7 @@ To prevent the _stale proof_ problem, where an incoming transfer could invalidat
 
 When a holder receives a confidential transfer, the amount goes into their inbox. Before it can be spent, the holder must merge it into their spending balance using the [ConfidentialMPTMergeInbox transaction][]. If a merge is not explicitly performed, incoming funds accumulate in the inbox, remaining safe but unspendable until consolidated into the spending balance.
 
-After a merge, the inbox is reset to a deterministic "encrypted zero" value. This zero value is a valid ElGamal ciphertext that represents zero, but is indistinguishable from other ciphertexts to observers without the private key.
+After a merge, the ledger resets the inbox to the _canonical encrypted zero_. It generates this deterministic ElGamal encryption of zero from the holder's public key, account ID, and MPT issuance ID. Because these inputs are public, anyone can reproduce the ciphertext and recognize the inbox as zero without decrypting it.
 
 #### Version Counter
 
@@ -107,7 +107,7 @@ Confidential transfers keep transaction amounts and balances private while certa
 {% tab label="Private" %}
 
 - Transaction amounts are encrypted.
-- Account balances are encrypted and only visible to the holder, issuer, and any configured auditors. Validators and network observers see only encrypted ciphertexts and cryptographic proofs, never the underlying amounts.
+- Account balances are encrypted and only visible to the holder, issuer, and any configured auditors. Validators and network observers see only encrypted ciphertexts and cryptographic proofs, never the underlying amounts. They can, however, tell when a balance holds the _canonical encrypted zero_.
 - Distribution of confidential supply across holders. The ledger does not publicly reveal which specific accounts hold how much of the confidential supply.
 
 {% /tab %}
@@ -118,12 +118,13 @@ Confidential transfers keep transaction amounts and balances private while certa
 - The type of transaction being submitted.
 - Total token supply. The ledger publicly tracks two plaintext values: `OutstandingAmount` (total tokens in circulation) and `ConfidentialOutstandingAmount` (how much of that total is held confidentially). Validators use these values to enforce supply caps without decrypting any balances.
 - Conversion amounts when converting between public and confidential forms.
+- Balances that hold a _canonical encrypted zero_. The ledger writes one when it initializes a spending balance, resets an inbox after a merge, or resets each confidential balance copy during a clawback.
 
 {% /tab %}
 
 {% /tabs %}
 
-Note that in low-volume scenarios, publicly visible elements can reveal patterns. For example, if an account converts 1,000,000 tokens to confidential form and later converts 800,000 tokens back to public form, observers know that 200,000 tokens remain in confidential form. However, they cannot determine whether those tokens were transferred to other accounts or are still held by the original account, because encrypted balances for zero are indistinguishable from non-zero balances.
+Note that in low-volume scenarios, publicly visible elements can reveal patterns. For example, if an account converts 1,000,000 tokens to confidential form and later converts 800,000 tokens back to public form, observers know that 200,000 tokens remain in confidential form. However, they cannot determine whether those tokens were transferred to other accounts or are still held by the original account.
 
 It's important to keep in mind that privacy is stronger when more participants make confidential transactions.
 
@@ -154,7 +155,7 @@ The clawback proof can become stale if a holder's confidential balance changes b
 2. Submit the ConfidentialMPTClawback transaction.
 {% /admonition %}
 
-Validators verify the proof provides cryptographic certainty that the plaintext amount matches the encrypted balance. If valid, both the holder's spending and inbox balances are set to encrypted zero, the version counter increments, and the clawed back tokens are removed from circulation.
+Validators verify the proof provides cryptographic certainty that the plaintext amount matches the encrypted balance. If valid, each confidential balance copy is set to its canonical encrypted zero, the version counter increments, and the clawed back tokens are removed from circulation. Any observer can then recognize each balance as zero.
 
 ## Privacy Controls
 
