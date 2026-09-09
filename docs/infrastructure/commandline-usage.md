@@ -40,7 +40,7 @@ The following generic options affect the amount of information written to standa
 | Option      | Short Version | Description                                    |
 |:------------|:--------------|:-----------------------------------------------|
 | `--debug`   |               | **DEPRECATED** Enables trace-level debugging (alias for `--verbose`). Use the [log_level method][] instead. |
-| `--silent`  |               | Don't write logs to standard out and standard error during startup. Recommended when starting `xrpld` as a systemd unit to reduce redundant logging. |
+| `--silent`  |               | Don't write logs to standard out and standard error. This suppresses console logging for the entire run of the process, not only during startup. (The startup banner is still printed before this flag takes effect.) Recommended when starting `xrpld` as a systemd unit to reduce redundant logging. When running under a process supervisor or in a container that captures logs from standard output/error, see the note in [Diagnosing Problems](troubleshooting/diagnosing-problems.md#check-the-server-log). |
 | `--verbose` | `-v`          | **DEPRECATED** Enables trace-level debugging. Use the [log_level method][] instead. |
 
 
