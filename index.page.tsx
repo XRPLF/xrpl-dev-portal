@@ -393,10 +393,6 @@ export default function Index() {
             logo: "/img/home/logo-vert.png",
             alt: translate("Vert logo"),
           },
-          {
-            logo: "/img/logos/black/zeconomy.png",
-            alt: translate("Zeconomy logo"),
-          },
         ]}
       />
 
@@ -418,7 +414,7 @@ export default function Index() {
         )}
         buttons={[
           {
-            label: translate("Sign Up to Newsletter"),
+            label: translate("Sign Up for Newsletter"),
             href: HUBSPOT_NEWSLETTER_FORM,
           },
         ]}
