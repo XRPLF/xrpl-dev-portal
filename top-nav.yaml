@@ -171,10 +171,9 @@
     - group: Insights
       groupTranslationKey: topnav.network.insights
       items:
-        - label: Explorer
+        - label: Explorers
           labelTranslationKey: topnav.network.explorer
-          href: https://livenet.xrpl.org
-          external: true
+          href: /resources/dev-tools/xrpl-explorers
         - label: Amendment Voting Status
           labelTranslationKey: topnav.network.amendments
           href: /resources/known-amendments

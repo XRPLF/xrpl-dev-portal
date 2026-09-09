@@ -791,6 +791,7 @@
       expanded: false
       items:
         - page: resources/dev-tools/ai-tools.md
+        - page: resources/dev-tools/xrpl-explorers.md
         - label: RPC Tool
           labelTranslationKey: sidebar.resources.dev-tools.rpc-tool
           page: resources/dev-tools/rpc-tool.page.tsx
@@ -817,10 +818,9 @@
       labelTranslationKey: sidebar.resources.xrpl-brand-kit
       href: /XRPL_Brand_Kit.zip
       external: true
-    - label: Ledger Explorer
+    - label: XRPL Explorers
       labelTranslationKey: sidebar.resources.ledger-explorer
-      href: https://livenet.xrpl.org/
-      external: true
+      href: /resources/dev-tools/xrpl-explorers
     - page: resources/known-amendments.md
     - page: resources/contribute-code/index.md
       expanded: false

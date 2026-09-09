@@ -126,14 +126,14 @@ export default function Resources() {
             ],
           },
           {
-            heading: translate("XRPL Explorer"),
+            heading: translate("XRPL Explorers"),
             description: translate(
               "Track transactions and activity on the ledger in real time."
             ),
             buttons: [
               {
-                label: translate("Explorer"),
-                href: "https://livenet.xrpl.org/",
+                label: translate("Explorers"),
+                href: "/resources/dev-tools/xrpl-explorers",
               },
             ],
           },
