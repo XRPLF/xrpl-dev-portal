@@ -48,12 +48,12 @@ A withdrawal whose destination is the issuer of the vault asset is never blocked
 
 In addition to the [common fields](../../../protocol/transactions/common-fields#transaction-common-fields), {% code-page-name /%} transactions use the following fields:
 
-| Field Name              | JSON Type     | [Internal Type][] | Required? | Description         |
-| :-----------------------| :------------ | :---------------- | :-------- | :-------------------|
-| `VaultID`               | String        | Hash256           | Yes       | The unique identifier of the vault to which the assets are deposited. |
-| `Amount`                | Number        | Amount            | Yes       | The exact amount of vault asset to withdraw or vault share to redeem. |
-| `Destination`           | String        | AccountID         | No        | An account to receive the assets. This account must be able to receive the vault asset or the transaction fails.                   |
-| `DestinationTag`        | Number        | UInt32            | No        | Arbitrary tag identifying the reason for the withdrawal to the destination. |
+| Field Name              | JSON Type           | [Internal Type][] | Required? | Description         |
+| :-----------------------| :------------------ | :---------------- | :-------- | :-------------------|
+| `VaultID`               | String              | Hash256           | Yes       | The unique identifier of the vault to which the assets are deposited. |
+| `Amount`                | [Currency Amount][] | Amount            | Yes       | The exact amount of vault asset to withdraw or vault share to redeem. |
+| `Destination`           | String              | AccountID         | No        | An account to receive the assets. This account must be able to receive the vault asset or the transaction fails. |
+| `DestinationTag`        | Number              | UInt32            | No        | Arbitrary tag identifying the reason for the withdrawal to the destination. |
 
 There are two ways to specify the transaction `Amount` field:
 
