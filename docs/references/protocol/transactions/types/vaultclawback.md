@@ -52,7 +52,7 @@ If the requested amount exceeds the vault’s available assets, the transaction 
 
 ### Stranded-Share Burn
 
-You can specify `Amount` as either the vault's asset or its shares. Only the asset issuer can claw back the vault asset, however the _vault owner_ can specify the shares to instead burn them. This is intended for winding down a vault when assets are gone, but shares remain outstanding and block [VaultDelete](./vaultdelete.md).
+You can specify `Amount` as either the vault's asset or its shares. Only the asset issuer can claw back the vault asset; the _vault owner_, however, can specify shares to burn instead. This is intended for winding down a vault when assets are gone, but shares remain outstanding and block [VaultDelete](./vaultdelete.md).
 
 - Only the vault owner can submit a clawback transaction on vault shares, whether or not they're also the asset issuer.
 - The vault's `AssetsTotal` and `AssetsAvailable` must both be `0`, and shares must still be outstanding.
