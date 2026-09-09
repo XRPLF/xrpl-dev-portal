@@ -1574,9 +1574,7 @@ Specification: [XLS-66](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
-A revision of the [LendingProtocol][] amendment with improvements and fixes, including adding a `MemoData` field to the `VaultDelete` transaction.
-
-Specification: [XLS-66](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0066-lending-protocol).
+Extends the [LendingProtocol][] and [SingleAssetVault][] amendments with a new _closed-ended_ vault and cash-basis accounting. Closed-ended vaults have a defined lifecycle split into three phases: subscription, investment, and redemption; these phases determine when assets can be deposited into vaults, loans can be originated, and when assets can be redeemed. After the amendment is enabled, new loan brokers can only be created against closed-ended vaults. Cash-basis accounting changes vault accounting to only realize interest as income when payments are actually made, shifting from a whole-life model where all scheduled interest was recognized at the time of loan origination.
 
 
 ### MPTokensV1
