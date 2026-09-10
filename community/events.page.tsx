@@ -1586,7 +1586,7 @@ export default function Events() {
           <div className="pe-2 col">
             <img
               alt="Swell 2026 in NYC"
-              src={require("../static/img/events/swell-2026-nyc.png")}
+              src={require("../static/img/events/swell-2026-nyc.jpg")}
               className="w-100"
             />
           </div>
