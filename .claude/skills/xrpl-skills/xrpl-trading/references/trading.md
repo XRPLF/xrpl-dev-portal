@@ -155,9 +155,10 @@ flags=OfferCreateFlag.TF_FILL_OR_KILL,
 
 ### 1.5 Post-only (passive)
 
-`tfPassive`: posts to the order book without crossing against existing offers,
-even if a crossing opportunity exists at the time of submission. Use for maker-only
-strategies.
+`tfPassive`: does not consume offers whose rate exactly matches this offer's
+limit rate. It will consume offers priced better than the limit rate, so the
+offer can execute immediately on submission. Use it to add liquidity at a specific
+rate without removing existing liquidity at that same rate.
 
 ```typescript
 Flags: OfferCreateFlags.tfPassive,
@@ -468,7 +469,7 @@ offer = OfferCreate(
 
 ## 5. AMM interaction
 
-XRPL AMM pools (introduced in the Clawback amendment) are integrated directly
+XRPL AMM pools (introduced in the AMM amendment) are integrated directly
 into the DEX. **There is no separate `AMMSwap` transaction type.** AMM liquidity
 is consumed automatically when the DEX path-finder routes `OfferCreate` or
 cross-currency `Payment` transactions — the AMM competes with order book offers
@@ -560,17 +561,17 @@ const offer: OfferCreate = {
 
 ```python
 from xrpl.utils import str_to_hex
-from xrpl.models.transactions.types import Memo, MemoWrapper
+from xrpl.models.transactions import Memo
 
 offer = OfferCreate(
     account="rYourAddress",
     taker_pays={ ... },
     taker_gets=xrp_to_drops(100),
     memos=[
-        MemoWrapper(memo=Memo(
+        Memo(
             memo_type=str_to_hex("agent/trade"),
             memo_data=str_to_hex('{"skill":"xrpl-trading","reason":"user-requested"}'),
-        ))
+        )
     ],
 )
 ```
@@ -613,7 +614,7 @@ important for new currency pairs, first-time trust line interactions, or large
 offers.
 
 ```python
-from xrpl.models.requests import SimulateTransaction  # xrpl-py ≥ 4.x
+from xrpl.models.requests import Simulate
 
 # Build raw tx (no Fee/Sequence)
 raw_offer = OfferCreate(
@@ -622,7 +623,7 @@ raw_offer = OfferCreate(
     taker_gets=xrp_to_drops(100),
 )
 
-sim_result = client.request(SimulateTransaction(tx_blob=raw_offer.to_xrpl()))
+sim_result = client.request(Simulate(transaction=raw_offer))
 # inspect sim_result.result["engine_result"] and sim_result.result["meta"]
 ```
 
@@ -649,7 +650,7 @@ transaction and simulate again before handing to the Wallet skill.
 | `tecEXPIRED` | Yes | `Expiration` already passed when ledger closed | Reject at construction. If boundary race, re-offer with future expiry. |
 | `tecKILLED` | Yes | `tfFillOrKill` offer could not fill completely | Do not retry. Ask user to retry with `tfImmediateOrCancel` or adjusted price. |
 | `tecNO_LINE` | Yes | No trust line for an IOU in the offer | User must establish trust line (`TrustSet`) before retrying. |
-| `tecINSUF_RESERVE_OFFER` | Yes | Insufficient XRP reserve to create new offer object | Each resting offer requires 2 XRP owner reserve. Cancel existing offers or fund account. |
+| `tecINSUF_RESERVE_OFFER` | Yes | Insufficient XRP reserve to create new offer object | Each resting offer requires 0.2 XRP owner reserve. Cancel existing offers or fund account. |
 | `tecDIR_FULL` | Yes | Offer directory is full (too many offers from this account) | Cancel some existing offers before creating new ones. |
 | `temBAD_OFFER` | No | Malformed transaction (zero amounts, invalid fields, bad flags) | Fix construction and re-simulate. |
 | `temBAD_EXPIRATION` | No | `Expiration` field value is invalid | Recompute using `XRPL_epoch = Unix_s − 946,684,800`. |
