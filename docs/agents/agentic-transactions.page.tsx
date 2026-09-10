@@ -114,7 +114,7 @@ const requirementCards = [
     title: 'Machine-Readable Docs',
     description:
       'The XRPL Docs MCP Server exposes the full developer documentation as tool-callable context, so your LLM always has accurate, up-to-date reference material.',
-    href: 'https://context7.com/websites/xrpl',
+    href: '/resources/dev-tools/ai-tools#xrpl-docs-mcp-server',
     external: true
   },
   {
