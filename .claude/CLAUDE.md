@@ -9,30 +9,16 @@
 
 ## XRPL Reference Sources
 
-For up-to-date XRPL protocol, API, or SDK info, use the `context7` MCP server. The following authoritative sources are indexed:
+For up-to-date XRPL protocol, API, or SDK info, use the `xrpl-docs` MCP server. Prefer this over web search or memory when writing code samples, documenting protocol behavior, or answering SDK API questions. The following authoritative sources are indexed weekly:
 
-### Documentation Sites
+- [xrpl.org](https://xrpl.org/docs): The official developer portal for up-to-date XRPL docs, including use cases, concepts, tutorials, references, and code samples.
+- [opensource.ripple.com](https://opensource.ripple.com/): The technical doc site for all features in development by Ripple.
+- [docs.xrplevm.org](https://docs.xrplevm.org/): The technical doc site for the XRPL EVM Sidechain.
+- [XRPL-Standards](https://github.com/XRPLF/XRPL-Standards): The repo for community defined suggestions, proposals, and feature specifications for the XRPL.
+- [XRPL JavaScript SDK](https://github.com/xrplf/xrpl.js)
+- [XRPL Python SDK](https://github.com/xrplf/xrpl-py)
 
-- `/websites/xrpl` — xrpl.org (this dev portal's published content)
-- `/websites/opensource_ripple` — opensource.ripple.com (Ripple's open-source projects)
-- `/websites/xrplevm` — docs.xrplevm.org (XRPL EVM sidechain)
-
-### Protocol Implementation
-
-- `/xrplf/rippled` — rippled (C++ reference implementation; authoritative for protocol behavior, transaction validation, and ledger entry structure)
-
-### SDK Libraries
-
-- `/xrplf/xrpl-py` — Python
-- `/xrplf/xrpl.js` — JavaScript / TypeScript
-- `/xrplf/xrpl-go` — Go
-- `/xrplf/xrpl4j` — Java
-
-Since the library IDs are listed above, skip `mcp__context7__resolve-library-id` and call `mcp__context7__query-docs` directly with the relevant ID. Prefer this over web search or memory when writing code samples, documenting protocol behavior, or answering SDK API questions.
-
-### Live xrpl.org Content
-
-Use the `xrpl-dev-portal` MCP server (xrpl.org content only) as a fallback if `context7` is unavailable. **Only `mcp__xrpl-dev-portal__search` is functional**. Do not call the other tools.
+If `xrpl-docs` isn't available, use the `xrpl.org` MCP server (xrpl.org content only) as a fallback. Only call the `search` tool when using `xrpl.org`.
 
 ## Localization
 

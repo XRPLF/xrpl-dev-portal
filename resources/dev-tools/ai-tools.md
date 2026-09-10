@@ -11,21 +11,23 @@ Augment your AI with additional tools to accelerate development, automate integr
 
 AI models are limited by their training data, which will always be out-of-date with the most recent XRPL features and SDK improvements. MCP servers solve this by giving your AI real-time access to current documentation through a standardized interface. Instead of relying on potentially outdated training data, your AI can query an MCP server for accurate, up-to-date context. Below is a list of available MCP servers:
 
-### Context7
+### XRPL Docs MCP Server
 
-[Context7](https://context7.com/) is a searchable database of user-submitted repos and websites. Official XRPL docs are maintained on the site and include:
+**Endpoint**: `https://mcp.xrpledger.ai`
+
+The XRPL Docs MCP Server can be wired into any MCP-capable client, such as Claude Code or Codex. It is an up-to-date, authoritative source for XRPL documentation that includes:
 - [xrpl.org](https://xrpl.org/docs): The official developer portal for up-to-date XRPL docs, including use cases, concepts, tutorials, references, and code samples.
 - [opensource.ripple.com](https://opensource.ripple.com/): The technical doc site for all features in development by Ripple.
 - [docs.xrplevm.org](https://docs.xrplevm.org/): The technical doc site for the XRPL EVM Sidechain.
+- [XRPL-Standards](https://github.com/XRPLF/XRPL-Standards): The repo for community defined suggestions, proposals, and feature specifications for the XRPL.
 - [XRPL JavaScript SDK](https://github.com/xrplf/xrpl.js)
 - [XRPL Python SDK](https://github.com/xrplf/xrpl-py)
-- [XRPL Go SDK](https://github.com/xrplf/xrpl-go)
-
-To set up Context7, see: [Installation](https://github.com/upstash/context7?tab=readme-ov-file#installation).
 
 ### xrpl.org MCP Server
 
-The xrpl.org site hosts a standalone MCP server, which only contains documentation hosted on the site. From any doc page, you can click the **Copy** dropdown by the page title and select either **Connect to Cursor** or **Connect to VS Code**. If you are using a different code editor, you can manually configure the MCP server using the `https://xrpl.org/mcp` endpoint.
+**Endpoint**: `https://xrpl.org/mcp`
+
+The xrpl.org site hosts a standalone MCP server, which only contains documentation hosted on the site. From any doc page, you can click the **Copy** dropdown by the page title and select either **Connect to Cursor** or **Connect to VS Code**. If you are using a different code editor, you can manually configure the MCP server using the endpoint.
 
 
 ## SKILL.md
