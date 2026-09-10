@@ -172,7 +172,7 @@
       groupTranslationKey: topnav.network.insights
       items:
         - label: Explorers
-          labelTranslationKey: topnav.network.explorer
+          labelTranslationKey: topnav.network.explorers
           href: /resources/dev-tools/xrpl-explorers
         - label: Amendment Voting Status
           labelTranslationKey: topnav.network.amendments
