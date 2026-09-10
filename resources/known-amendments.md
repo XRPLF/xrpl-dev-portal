@@ -724,7 +724,7 @@ Fixes an accounting error that can occur when performing an `AMMClawback` transa
 | Amendment ID | 12523DF04B553A0B1AD74F42DDB741DE8DC06A03FC089A0EF197E2A87F1D8107 |
 | Status       | {% amendment-disclaimer name="fixAMMOverflowOffer" statusOnly=true /%} |
 | Default Vote (Latest stable release) | Yes |
-| Pre-amendment functionality retired? | No |
+| Pre-amendment functionality retired? | Yes |
 
 This amendment fixes the improper handling of large synthetic AMM offers in the payment engine. Due to the importance of this fix, the default vote in the source code has been set to YES.
 
@@ -873,6 +873,41 @@ This amendment is a collection of fixes for Single Asset Vaults, the Lending Pro
 - Changes `CredentialCreate` to reject a pseudo-account in the `Subject` field with `tecPSEUDO_ACCOUNT`.
 - Changes `DepositPreauth` to reject a pseudo-account in the `Authorize` field with `tecPSEUDO_ACCOUNT`.
 
+### fixCleanup3_4_0
+[fixCleanup3_4_0]: #fixcleanup3_4_0
+
+| Amendment    | fixCleanup3_4_0 |
+|:-------------|:----------------|
+| Amendment ID | 98433DD001A5737F773D74F8CA2A25A065089C73B2E611C760BAF369E4FECA76 |
+| Status       | {% amendment-disclaimer name="fixCleanup3_4_0" statusOnly=true /%} |
+| Default Vote (Latest stable release) | No |
+| Pre-amendment functionality retired? | No |
+
+This amendment is a collection of fixes for Single Asset Vaults, the Lending Protocol, Automated Market Makers, the permissioned DEX, trust lines, NFTs, MPTs, Escrow, Sponsorship, and transaction signing:
+
+- Changes `VaultClawback` to reject a pseudo-account holder with `tecPSEUDO_ACCOUNT`.
+- Changes `VaultDeposit`, `VaultWithdraw`, and `VaultClawback` to round more precisely, so vault assets can't over- or under-deliver.
+- Changes `VaultWithdraw` to allow a fixed-share withdrawal to move zero assets from a fully impaired vault rather than failing.
+- Changes the `ValidVault` invariant so `VaultSet` isn't blocked when accrued interest alone pushes `AssetsTotal` over `AssetsMaximum`.
+- Adds `CredentialIDs` support to `VaultWithdraw`.
+- Changes loan lateness, impairment, and default checks to require the due date to have passed.
+- Exempts a loan default from freeze, deep freeze, and MPT lock on the broker-to-vault transfer.
+- Prevents `AMMBid` from acquiring the auction slot at a zero or dust price on a zero-fee pool.
+- Changes `AMMClawback` to fully withdraw when the LP-token amount matches the holder's balance, so the last holder can be clawed back completely.
+- Changes `AMMClawback` to reject amounts that round to zero, bypass the reserve check, and override freeze and deep freeze on AMM trust lines.
+- Changes `AMMDeposit` and `AMMWithdraw` to return `tecAMM_FAILED` instead of `tefEXCEPTION` for an out-of-range amount.
+- Changes `OfferCreate` and `Payment` to verify a specified domain exists and to delete expired credentials during processing.
+- Rejects an all-zero credential ID with `temMALFORMED`.
+- Changes the `ValidPermissionedDEX` invariant to ignore deleted domains and require an offer to match its domain book.
+- Changes authorized trust lines to implicitly authorize a pseudo-account counterparty.
+- Changes creating a trust line that already exists to return `tecDUPLICATE` as a no-op.
+- Extends `asfDisallowIncomingTrustline` to also block `OfferCreate`.
+- Rejects NFT offers that use the currency code `XRP` for a non-XRP amount with `temBAD_CURRENCY`.
+- Exempts an IOU issuer from their own global freeze on NFT offers in their currency.
+- Changes unauthorizing a locked MPToken to always return `tecNO_PERMISSION`.
+- Changes `EscrowCancel` and `EscrowFinish` to release the escrow's owner reserve before the returned or delivered amount can re-create a holding.
+- Changes ending a sponsorship to check that the sponsee can carry the reserve on its own afterward.
+- Adds distinct signing prefixes for `SponsorSignature` and `CounterpartySignature`, so a signature can no longer be moved from one role to another.
 
 ### fixDirectoryLimit
 [fixDirectoryLimit]: #fixdirectorylimit
