@@ -1606,7 +1606,7 @@ export default function Events() {
               {translate("Location: New York City")}
             </div>
             <div className="py-2 my-3 event-small-gray">
-              {translate("Oct 27-29")}
+              {translate("Oct 27-29, 2026")}
             </div>
             <div className="d-lg-block">
               <Button
