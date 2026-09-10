@@ -1585,35 +1585,35 @@ export default function Events() {
         <div className="event-hero card-grid card-grid-2xN">
           <div className="pe-2 col">
             <img
-              alt="xrp ledger events hero"
-              src={require("../static/img/events/xrp-community-night-paris.png")}
+              alt="Swell 2026 in NYC"
+              src={require("../static/img/events/swell-2026-nyc.png")}
               className="w-100"
             />
           </div>
           <div className="pt-5 pe-2 col">
             <div className="d-flex flex-column-reverse">
               <h2 className="mb-8 h4 h2-sm">
-                {translate("XRP Community Night Paris")}
+                {translate("Swell 2026 in NYC")}
               </h2>
-              <h6 className="mb-3 eyebrow">{translate("Save the Date")}</h6>
+              <h6 className="mb-3 eyebrow">{translate("Hosted")}</h6>
             </div>
             <p className="mb-4">
               {translate(
-                "Attending Paris Blockchain Week? ​Join us for an evening with the XRP community in Paris. Connect with the users, builders and projects innovating with and utilizing XRP."
+                "Ripple's annual flagship conference returns to New York City. Connect with leaders shaping the future of payments, custody, tokenization, and digital asset infrastructure. For the first time, it combines the Swell and Apex conferences into one unified experience across multiple programming tracks."
               )}
             </p>
             <div className=" my-3 event-small-gray">
-              {translate("Location: Paris, France")}
+              {translate("Location: New York City")}
             </div>
             <div className="py-2 my-3 event-small-gray">
-              {translate("April 15, 2026")}
+              {translate("Oct 27-29")}
             </div>
             <div className="d-lg-block">
               <Button
                 intention="neutral"
                 emphasis="strong"
                 target="_blank"
-                href="https://luma.com/wnkqmmqy?utm_source=xprlorg"
+                href="https://swell.ripple.com/?utm_source=xrpl.org&utm_medium=cta&utm_campaign=swell2026-regular&utm_content=Register"
                 iconEnd={<XrplArrowExternalLinkIcon />}
               >
                 {translate("Register Now")}
