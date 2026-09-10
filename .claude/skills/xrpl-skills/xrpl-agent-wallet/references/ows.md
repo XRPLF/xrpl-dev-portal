@@ -46,7 +46,7 @@ AI Agent
 XRPL Agent Wallet skill
     │  autofill → human preview → confirm
     ▼
-OWS signTransaction("xrpl", txHex)
+OWS signTransaction("xrpl-testnet", txHex)
     │
     ├── Policy Engine  ← registered policy executables
     │       │
@@ -75,7 +75,7 @@ npm install @open-wallet-standard/core
 
 ```typescript
 interface AccountInfo {
-  chainId:        string; // CAIP-2, e.g. "xrpl:mainnet"
+  chainId:        string; // CAIP-2, e.g. "xrpl:testnet"
   address:        string; // XRPL base58check, e.g. "r..."
   derivationPath: string; // "m/44'/144'/0'/0/0"
 }
@@ -127,7 +127,7 @@ import { signTransaction, signAndSend } from "@open-wallet-standard/core";
 // Caller applies TxnSignature and re-encodes (see §3).
 const { signature }: SignResult = signTransaction(
   "xrpl-agent",  // wallet name or ID
-  "xrpl",        // chain identifier
+  "xrpl-testnet",        // chain identifier
   txHex,         // XRPL canonical binary hex (from xrpl.js encode())
   passphrase,    // vault passphrase — load from env, never hardcode
   0,             // derivation index (default: 0)
@@ -136,7 +136,7 @@ const { signature }: SignResult = signTransaction(
 // Sign and broadcast in one call (skips Wallet skill submission step).
 // Prefer signTransaction + manual submitAndWait in agentic flows to preserve
 // the Wallet skill's hash-persistence and error-handling discipline.
-const sent = signAndSend("xrpl-agent", "xrpl", txHex, passphrase, 0, "wss://xrplcluster.com");
+const sent = signAndSend("xrpl-agent", "xrpl-testnet", txHex, passphrase, 0, "wss://xrplcluster.com");
 ```
 
 ### Policy management
@@ -177,7 +177,7 @@ OWS returns the raw DER-encoded secp256k1 signature, not a complete signed blob.
 The Wallet skill assembles the signed transaction:
 
 1. **Encode** the autofilled transaction with xrpl.js `encode()`
-2. Call `signTransaction("xrpl", txHex)` → receive `{ signature }`
+2. Call `signTransaction("xrpl-testnet", txHex)` → receive `{ signature }`
 3. **Apply** `TxnSignature = signature.toUpperCase()` to the transaction object
 4. **Re-encode** the complete signed transaction
 5. **Submit** via `client.submitAndWait(signedBlob)`
@@ -217,7 +217,7 @@ async function signAndSubmitPayment(params: {
   const txHex = encode(prepared as Record<string, unknown>);
 
   // 4. OWS: evaluate policies → decrypt key → sign → wipe key
-  const { signature } = signTransaction(walletName, "xrpl", txHex, OWS_PASSPHRASE);
+  const { signature } = signTransaction(walletName, "xrpl-testnet", txHex, OWS_PASSPHRASE);
 
   // 5. Apply signature and re-encode
   const signedTx   = { ...prepared, TxnSignature: signature.toUpperCase() };
@@ -243,7 +243,7 @@ never decrypted.
 // PolicyContext (passed to each executable on stdin)
 interface PolicyContext {
   transaction: string;           // serialized tx hex
-  chainId:     string;           // "xrpl"
+  chainId:     string;           // "xrpl-testnet"
   wallet:      WalletInfo;
   timestamp:   string;           // ISO 8601
   apiKeyId:    string;
@@ -270,7 +270,7 @@ createPolicy(JSON.stringify({
 createPolicy(JSON.stringify({
   id:         "mainnet-only",
   executable: "/usr/local/bin/ows-policy-chain-allowlist",
-  config:     { allowedChains: ["xrpl:mainnet"] },
+  config:     { allowedChains: ["xrpl:testnet"] },
   action:     "deny",
 }));
 ```
@@ -318,54 +318,7 @@ the skill is loaded. OWS v3 will add equivalent enforcement at the vault layer.
 
 ---
 
-## 7. Python Integration
-
-The OWS SDK is Node.js only. Python agents have two options:
-
-### Option A: OWS CLI subprocess (simple, no server required)
-
-```python
-import json, subprocess
-
-def ows_sign(wallet_name: str, tx_hex: str) -> str:
-    """Returns uppercase DER signature hex."""
-    proc = subprocess.run(
-        ["ows", "sign", "tx",
-         "--wallet", wallet_name,
-         "--chain",  "xrpl",
-         "--tx",     tx_hex],
-        capture_output=True, text=True, check=True,
-    )
-    return json.loads(proc.stdout)["signature"].upper()
-```
-
-Apply the signature and submit:
-
-```python
-from xrpl.core.binarycodec import encode, decode
-
-signed_dict = decode(tx_hex)             # start from the autofilled hex
-signed_dict["TxnSignature"] = ows_sign(wallet_name, tx_hex)
-signed_blob = encode(signed_dict)
-# → client.request(SubmitOnly(tx_blob=signed_blob))  or use submitAndWait equivalent
-```
-
-### Option B: OWS MCP/REST server
-
-```bash
-# Start the OWS MCP server (built into OWS)
-ows mcp
-
-# Or REST server
-ows rest --port 8080
-```
-
-Then call the signing endpoint from Python via `httpx` or `requests`. See the
-OWS documentation at https://docs.openwallet.sh for the API spec.
-
----
-
-## 8. Migrating from Env-Var to OWS
+## 7. Migrating from Env-Var to OWS
 
 Migrating from Pattern 1 (env-var) to Pattern 3 (OWS) does **not** require
 generating a new XRPL wallet. Import the existing seed:
@@ -389,35 +342,13 @@ After migration:
 4. Register your policies (§4)
 5. Create an API key if using the MCP/REST access mode (§9)
 
-**Code change summary:**
-
-| Before (Pattern 1) | After (Pattern 3) |
-| :---- | :---- |
-| `Wallet.fromSeed(process.env.XRPL_SEED)` | `getWallet("xrpl-agent")` → extract address |
-| `wallet.sign(prepared)` → `{ tx_blob }` | `encode(prepared)` → `signTransaction(...)` → apply `TxnSignature` → `encode(signedTx)` |
-| `client.submitAndWait(tx_blob)` | `client.submitAndWait(signedBlob)` |
-
-The autofill, preview, and submission steps in the Wallet skill are unchanged.
+{% admonition type="Info" name="Important" %}
+Only use secp256k1 seeds and do not use Ed25519 seeds. 
+{% !admonition %}
 
 ---
 
-## 9. Access Modes: SDK vs MCP/REST
-
-| | Direct SDK | OWS MCP / REST |
-| :---- | :---- | :---- |
-| Auth | Vault passphrase | API key (token) |
-| Policy binding | All registered policies | Policies scoped to the API key |
-| Key exposure | Passphrase in agent process | Agent never sees passphrase or key |
-| Setup complexity | Low | Requires running OWS MCP/REST server |
-| Recommended for | Development, trusted processes | Production agents |
-
-**Open question (Starter Kit v3):** Whether to ship the OWS MCP server as part
-of the Starter Kit deployment is an outstanding decision. The MCP server
-(`ows mcp`) is built into OWS. This decision gates v3 architecture.
-
----
-
-## 10. Error Reference
+## 8. Error Reference
 
 OWS throws JavaScript `Error` instances. Classify by message content:
 
