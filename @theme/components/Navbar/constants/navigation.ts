@@ -159,7 +159,7 @@ export const networkSubmenuData: NetworkSubmenuSection[] = [
     href: "https://livenet.xrpl.org",
     icon: "insights",
     children: [
-      { label: "Explorer", labelTranslationKey: "navbar.network.insights.explorer", href: "https://livenet.xrpl.org" },
+      { label: "Explorers", labelTranslationKey: "navbar.network.insights.explorers", href: "/resources/dev-tools/xrpl-explorers" },
       { label: "Amendment Voting Status", labelTranslationKey: "navbar.network.insights.amendment-voting-status", href: "/resources/known-amendments" },
     ],
     patternColor: 'green',

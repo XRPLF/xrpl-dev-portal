@@ -285,10 +285,9 @@ footer:
           labelTranslationKey: footer.resources.xrpl-brand-kit
           href: /XRPL_Brand_Kit.zip
           external: true
-        - label: Ledger Explorer
+        - label: XRPL Explorers
           labelTranslationKey: footer.resources.explorer
-          href: https://livenet.xrpl.org/
-          external: true
+          href: /resources/dev-tools/xrpl-explorers
         - page: resources/known-amendments.md
           label: Known Amendments
           labelTranslationKey: footer.resources.known-amendments

@@ -174,19 +174,19 @@ export default function Develop() {
         <FeatureTwoColumn
           color="yellow"
           arrange="left"
-          title={translate("XRPL Explorer")}
+          title={translate("XRPL Explorers")}
           description={translate(
             "Search, track, and understand XRP Ledger transactions through an open-source explorer."
           )}
           links={[
             {
-              label: translate("XRPL Explorer"),
-              href: "https://livenet.xrpl.org/",
+              label: translate("XRPL Explorers"),
+              href: "/resources/dev-tools/xrpl-explorers",
             },
           ]}
           media={{
             src: require("../static/img/bds-2026/develop-feature-media-4.jpg"),
-            alt: translate("XRPL Explorer"),
+            alt: translate("XRPL Explorers"),
           }}
         />
 
