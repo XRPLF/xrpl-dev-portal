@@ -243,8 +243,8 @@ After switching to `xrpld`, update anything that still references the old paths 
     - [Configure xrpld](../configuration/index.md)
     - [Run xrpld as a Validator](../configuration/server-modes/run-xrpld-as-a-validator.md)
 - **Installation:**
-    - [Update Manually on Ubuntu or Debian](update-xrpld-manually-on-ubuntu.md)
-    - [Update Manually on Red Hat Enterprise Linux](update-xrpld-manually-on-rhel.md)
+    - [Upgrade on Ubuntu or Debian](update-xrpld-on-ubuntu.md)
+    - [Upgrade on Red Hat Enterprise Linux](update-xrpld-on-rhel.md)
 - **References:**
     - [server_info method][]
 
