@@ -25,6 +25,7 @@ A depositor cannot redeem liquidity if the trust line between the pseudo-account
 A withdrawal whose destination is the issuer of the vault asset is never blocked by a freeze, not even a global freeze. When you withdraw to your own account, you are both the sender and the destination: for a trust line asset, a regular freeze does not block the withdrawal but a deep freeze does, and for an MPT any lock blocks it. {% amendment-disclaimer name="fixCleanup3_3_0" mode="updated" /%}
 
 {% amendment-disclaimer name="SingleAssetVault" /%}
+{% amendment-disclaimer name="LendingProtocolV1_1" mode="updated" /%}
 
 ## Example {% $frontmatter.seo.title %} JSON
 
@@ -76,17 +77,18 @@ Besides errors that can occur for all transactions, {% code-page-name /%} transa
 
 | Error Code              | Description                        |
 | :---------------------- | :----------------------------------|
-| `tecNO_ENTRY`           | The `Vault` object with the provided `VaultID` does not exist on the ledger. |
-| `tecOBJECT_NOT_FOUND`   | A ledger entry specified in the transaction does not exist. |
-| `tecNO_PERMISSION`      | The destination account specified does not have permission to receive the asset. |
-| `tecWRONG_ASSET`        | The unit of `Amount` is neither a share or asset of the vault. |
-| `tecINSUFFICIENT_FUNDS` | There is insufficient liquidity in the vault to fill the request. |
 | `tecFROZEN`             | The vault asset is frozen globally for the vault's pseudo-account, or deep frozen for the destination. A freeze on the sender also causes this error when `Destination` is another account. A regular freeze on the destination alone does not cause this error. {% amendment-disclaimer name="fixCleanup3_3_0" mode="updated" /%} |
+| `tecINSUFFICIENT_FUNDS` | There is insufficient liquidity in the vault to fill the request. |
 | `tecLOCKED`             | The MPT vault asset is locked globally for the vault's pseudo-account, for the sender, or for the destination account. Unlike a trust line freeze, an MPT lock also blocks a withdrawal to the sender's own account. {% amendment-disclaimer name="fixCleanup3_3_0" mode="updated" /%} |
-| `temMALFORMED`          | The transaction is not validly formatted. For example, the `VaultID` is not provided.  |
-| `temDISABLED`           | The Single Asset Vault amendment is not enabled.  |
-| `temBAD_AMOUNT`         | The `Amount` field of the transaction is invalid. For example, the provided amount is set to 0. |
 | `tecNO_AUTH`            | The asset is a non-transferable MPT. |
+| `tecNO_ENTRY`           | The `Vault` object with the provided `VaultID` does not exist on the ledger. |
+| `tecNO_PERMISSION`      | The destination account specified does not have permission to receive the asset. |
+| `tecOBJECT_NOT_FOUND`   | A ledger entry specified in the transaction does not exist. |
+| `tecTOO_SOON`           | The vault is closed-ended and in its _Investment_ phase. |
+| `tecWRONG_ASSET`        | The unit of `Amount` is neither a share or asset of the vault. |
+| `temBAD_AMOUNT`         | The `Amount` field of the transaction is invalid. For example, the provided amount is set to 0. |
+| `temDISABLED`           | The Single Asset Vault amendment is not enabled.  |
+| `temMALFORMED`          | The transaction is not validly formatted. For example, the `VaultID` is not provided.  |
 
 ## See Also
 

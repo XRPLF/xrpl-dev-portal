@@ -20,6 +20,7 @@ Currently, the account that creates the vault must also create other protocols t
 {% /admonition %}
 
 {% amendment-disclaimer name="SingleAssetVault" /%}
+{% amendment-disclaimer name="LendingProtocolV1_1" mode="updated" /%}
 
 ## Example {% $frontmatter.seo.title %} JSON
 
@@ -48,13 +49,21 @@ In addition to the [common fields](../../../../references/protocol/transactions/
 
 | Field Name         | JSON Type     | [Internal Type][] | Required? |Description        |
 |:-------------------|:--------------|:------------------|:----------|:------------------|
-| `Data`             | String        | Blob              | No        | Arbitrary vault metadata, in hex format, limited to 256 bytes. See [Data Field Format](../../ledger-data/ledger-entry-types/vault.md#data-field-format) for the recommended format. |
 | `Asset`            | Object        | Issue             | Yes       | The asset to be held in the vault. This can be XRP, a trust line token, or an MPT. If the asset is a trust line token, the transaction creates a [trust line](../../../../concepts/tokens/fungible-tokens/trust-line-tokens.md#structure) between the vault's pseudo-account and the issuer of the asset. If the asset is an MPT, the transaction creates an `MPToken` object for the vault's pseudo-account. |
 | `AssetsMaximum`    | String        | Number            | No        | The maximum asset amount that can be held in a vault. |
-| `MPTokenMetadata`  | String        | Blob              | No        | Arbitrary metadata about the shares issued by the vault, in hex format, limited to 1024 bytes. |
-| `WithdrawalPolicy` | Number        | UInt8             | No        | Indicates the withdrawal strategy used by the vault. The default value is `0x0001`, mapped to the string `vaultStrategyFirstComeFirstServe`. See [WithdrawalPolicy](#withdrawalpolicy). |
+| `Data`             | String        | Blob              | No        | Arbitrary vault metadata, in hex format, limited to 256 bytes. See [Data Field Format](../../ledger-data/ledger-entry-types/vault.md#data-field-format) for the recommended format. |
 | `DomainID`         | String        | Hash256           | No        | The [PermissionedDomain](../../../../concepts/tokens/decentralized-exchange/permissioned-domains.md) object ID associated with the shares of this vault. If provided, the transaction creates a private vault, which restricts access to accounts with [credentials](../../../../concepts/decentralized-storage/credentials.md) in the specified Permissioned Domain. |
+| `MPTokenMetadata`  | String        | Blob              | No        | Arbitrary metadata about the shares issued by the vault, in hex format, limited to 1024 bytes. |
+| `RedemptionDate`   | Number        | UInt32            | No        | _(Closed-ended vaults only)_ The time, in [seconds since the Ripple Epoch][], when the vault's investment period ends and depositors can redeem their shares. Required when `VaultKind` is `1` and immutable after the vault is created. {% amendment-disclaimer name="LendingProtocolV1_1" /%} |
 | `Scale`            | Number        | UInt8             | No        | _(Trust line tokens only)_ Specifies decimal precision for share calculations. Assets are multiplied by 10<sup>Scale</sup > to convert fractional amounts into whole number shares. For example, with a `Scale` of `6`, depositing 20.3 units creates 20,300,000 shares (20.3 × 10<sup>Scale</sup >). For **trust line tokens** this can be configured at vault creation, and valid values are between 0-18, with the default being `6`. For **XRP** and **MPTs**, this is fixed at `0`.|
+| `SubscriptionDate` | Number        | UInt32            | No        | _(Closed-ended vaults only)_ The time, in [seconds since the Ripple Epoch][], when the vault's subscription window closes and its investment period begins. Required when `VaultKind` is `1` and immutable after the vault is created. {% amendment-disclaimer name="LendingProtocolV1_1" /%} |
+| `VaultKind`        | Number        | UInt8             | No        | The kind of vault to create. If omitted, defaults to `0` and creates an open-ended vault; `1` creates a closed-ended vault. Immutable after the vault is created. {% amendment-disclaimer name="LendingProtocolV1_1" /%} |
+| `WithdrawalPolicy` | Number        | UInt8             | No        | Indicates the withdrawal strategy used by the vault. The default value is `0x0001`, mapped to the string `vaultStrategyFirstComeFirstServe`. See [WithdrawalPolicy](#withdrawalpolicy). |
+
+{% admonition type="info" name="Note" %}
+- `RedemptionDate` - `SubscriptionDate` must be at least `180` seconds and less than `946708560` seconds (30 years).
+- Both dates must be in the future relative to the parent ledger's close time.
+{% /admonition %}
 
 ## {% $frontmatter.seo.title %} Flags
 
@@ -83,15 +92,16 @@ Besides errors that can occur for all transactions, {% code-page-name /%} transa
 
 | Error Code                | Description                        |
 | :------------------------ | :----------------------------------|
+| `tecEXPIRED`              | `SubscriptionDate` or `RedemptionDate` isn't ahead of the parent ledger's close time. |
 | `tecNO_AUTH`              | The asset is an MPT and the `lsfMPTCanTransfer` flag is not set in the `MPTokenIssuance` object, meaning the vault cannot be created with a non-transferable MPT. |
 | `tecLOCKED`               | The asset is an MPT and the `lsfMPTLocked` flag is  set in the `MPTokenIssuance` object, meaning the asset is locked. |
 | `tecFROZEN`               | The issuer has frozen the asset to be held in the vault. |
 | `tecOBJECT_NOT_FOUND`     | A ledger entry specified in the transaction does not exist. For example, the provided `DomainID` does not exist. |
-| `temMALFORMED`            | The transaction was not validly formatted. For example, the `Data` field is larger than 256 bytes.  |
 | `tecINSUFFICIENT_RESERVE` | There is insufficient `AccountRoot.Balance` for the Owner Reserve. |
+| `temDISABLED`  | <li>The [SingleAssetVault amendment][] isn't enabled.</li><li>A `DomainID` is provided and the [PermissionedDomains amendment][] isn't enabled</li><li>The [MPTokensV1 amendment][] isn't enabled.</li><li>`VaultKind`, `SubscriptionDate`, or `RedemptionDate` is present and the [LendingProtocolV1_1 amendment][] isn't enabled.</li> |
+| `temMALFORMED`            | <li>`VaultKind` is present with a value other than `0` or `1`.</li><li>`VaultKind` is `0`, but `SubscriptionDate` or `RedemptionDate` is present.</li><li>`VaultKind` is `1`, but is missing `SubscriptionDate` and `RedemptionDate`.</li><li>`RedemptionDate` - `SubscriptionDate` is less than `180` seconds or is greater than or equal to `946708560` seconds.</li><li>The `Data` field is larger than 256 bytes.</li> |
 | `terNO_RIPPLE`            | The issuer of the asset has not enabled the [Default Ripple flag](../../../../concepts/tokens/fungible-tokens/stablecoins/configuration#default-ripple). |
 | `terNO_ACCOUNT`           | The issuer account of the vault's asset does not exist. |
-| `temDISABLED`             | Either the Single Asset Vault amendment is not enabled, a `DomainID` is provided and the Permissioned Domains amendment is not enabled, or the MPTokensV1 amendment is not enabled. |
 
 ## See Also
 

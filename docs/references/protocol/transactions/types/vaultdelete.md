@@ -19,6 +19,7 @@ Permanently deletes an existing `Vault` object from the ledger, removes all asso
 Only the Vault Owner can initiate this transaction, and the vault must be completely empty before deletion.
 
 {% amendment-disclaimer name="SingleAssetVault" /%}
+{% amendment-disclaimer name="LendingProtocolV1_1" mode="updated" /%}
 
 ## Example {% $frontmatter.seo.title %} JSON
 
@@ -40,6 +41,7 @@ In addition to the [common fields](https://xrpl.org/docs/references/protocol/tra
 
 | Field Name         | JSON Type | [Internal Type][] | Required? | Description  |
 | :----------------- | :-------- | :---------------- | :-------- | :------------|
+| `MemoData`         | String    | Blob              | No        | A data field to record why the vault was deleted, as hexadecimal. Limited to 256 bytes. {% amendment-disclaimer name="LendingProtocolV1_1" /%} |
 | `VaultID`          | String    | Hash256           | Yes       | The unique identifier of the vault that needs to be deleted. |
 
 ## {% $frontmatter.seo.title %} Flags
@@ -55,6 +57,8 @@ Besides errors that can occur for all transactions, VaultCreate transactions can
 | `tecNO_ENTRY`             | The `Vault` object with the provided `VaultID` does not exist on the ledger. |
 | `tecNO_PERMISSION`        | The account submitting the transaction is not the `Owner` of the vault. |
 | `tecHAS_OBLIGATIONS`      | The vault to be deleted is connected to objects that cannot be deleted in the ledger. For example, the owner directory of the vault's pseudo-account contains references to any objects other than the vault, shares, or assets. |
+| `temDISABLED`             | `MemoData` is present and the [LendingProtocolV1_1 amendment][] isn't enabled. |
+| `temMALFORMED`            | <li>`MemoData` is present but empty.</li><li>`MemoData` is larger than `256` bytes.</li> |
 
 ## See Also
 
