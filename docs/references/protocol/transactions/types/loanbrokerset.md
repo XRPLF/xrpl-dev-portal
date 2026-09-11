@@ -67,7 +67,7 @@ Besides errors that can occur for all transactions, {% code-page-name /%} transa
 |:--------------------------|:-----------------------------------|
 | `tecINSUFFICIENT_RESERVE` | The owner's account doesn't have enough to cover the reserve requirement for the new `LoanBroker` ledger entry. |
 | `tecNO_ENTRY`             | A `LoanBroker` entry with the specified ID does not exist. You can also receive this if the specified `VaultID` doesn't exist. |
-| `tecNO_PERMISSION`        | <li>The account submitting the transaction doesn't own the associated `Vault` ledger entry.</li><li>The transaction tries to modify the `VaultID` of an existing `LoanBroker` ledger entry.</li><li>The transaction is creating a new `LoanBroker` and the associated vault isn't closed-ended. Updating an existing `LoanBroker` isn't affected. |
+| `tecNO_PERMISSION`        | <li>The account submitting the transaction doesn't own the associated `Vault` ledger entry.</li><li>The transaction tries to modify the `VaultID` of an existing `LoanBroker` ledger entry.</li><li>The transaction is creating a new `LoanBroker` and the associated vault isn't closed-ended. Updating an existing `LoanBroker` isn't affected.</li> |
 | `temINVALID`              | The transaction is trying to modify a fixed field. You can only update the values for `Flags`, `Data`, or `DebtMaximum`. |
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}
