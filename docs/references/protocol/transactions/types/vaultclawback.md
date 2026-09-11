@@ -75,6 +75,7 @@ Besides errors that can occur for all transactions, {% code-page-name /%} transa
 | `tecLIMIT_EXCEEDED`     | The vault owner is clawing back shares, but the `Amount` isn't the `Holder`'s entire share balance. Share clawback must burn all of the holder's shares. |
 | `tecOBJECT_NOT_FOUND`   | The `mpt_issuance_id` doesn't match the MPT in the vault. |
 | `tecPRECISION_LOSS`     | Either the `Holder` has no shares, or the requested amount is too small to convert into a whole share at the vault's `Scale`. |
+| `tecPSEUDO_ACCOUNT`     | The holder is a pseudo-account. |
 | `temDISABLED`           | The Single Asset Vault amendment is not enabled.  |
 | `temBAD_AMOUNT`         | The `Amount` is negative. |
 | `temMALFORMED`          | The transaction was not validly formatted. For example, if the `VaultID` is not provided.  |

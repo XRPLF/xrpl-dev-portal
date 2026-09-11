@@ -54,6 +54,7 @@ In addition to the [common fields](../../../protocol/transactions/common-fields#
 | `Amount`                | [Currency Amount][] | Amount            | Yes       | The exact amount of vault asset to withdraw or vault share to redeem. |
 | `Destination`           | String              | AccountID         | No        | An account to receive the assets. This account must be able to receive the vault asset or the transaction fails. |
 | `DestinationTag`        | Number              | UInt32            | No        | Arbitrary tag identifying the reason for the withdrawal to the destination. |
+| `CredentialIDs`        | Array              | Vector256           | No        | An array of credential identifiers used to authorize the transaction, if credential-based deposit authorization is required. |
 
 There are two ways to specify the transaction `Amount` field:
 
