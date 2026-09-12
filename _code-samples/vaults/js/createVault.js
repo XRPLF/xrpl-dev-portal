@@ -26,6 +26,11 @@ console.log(`Vault owner address: ${vaultOwner.address}`)
 console.log(`MPT issuance ID: ${mptIssuanceId}`)
 console.log(`Permissioned domain ID: ${domainId}\n`)
 
+// Set the closed-ended vault schedule.
+// This example raises capital for 30 days, then runs a one-year investment period.
+const subscriptionDate = xrpl.unixTimeToRippleTime(Date.now() + 30 * 24 * 60 * 60 * 1000)
+const redemptionDate = subscriptionDate + 365 * 24 * 60 * 60
+
 // Prepare VaultCreate transaction ----------------------
 console.log(`\n=== VaultCreate transaction ===`)
 const vaultCreateTx = {
@@ -67,6 +72,10 @@ const vaultCreateTx = {
   }),
   AssetsMaximum: "0", // No cap
   WithdrawalPolicy: xrpl.VaultWithdrawalPolicy.vaultStrategyFirstComeFirstServe,
+  // Omit VaultKind, SubscriptionDate, and RedemptionDate to create an open-ended vault.
+  VaultKind: 1,
+  SubscriptionDate: subscriptionDate,
+  RedemptionDate: redemptionDate,
 };
 
 // Validate the transaction structure before submitting
@@ -96,6 +105,8 @@ if (vaultNode) {
   console.log(`\nVault ID: ${vaultNode.CreatedNode.LedgerIndex}`)
   console.log(`Vault pseudo-account address: ${vaultNode.CreatedNode.NewFields.Account}`)
   console.log(`Share MPT issuance ID: ${vaultNode.CreatedNode.NewFields.ShareMPTID}`)
+  console.log(`Subscription closes: ${new Date(xrpl.rippleTimeToUnixTime(vaultNode.CreatedNode.NewFields.SubscriptionDate)).toLocaleString()}`)
+  console.log(`Redemption opens: ${new Date(xrpl.rippleTimeToUnixTime(vaultNode.CreatedNode.NewFields.RedemptionDate)).toLocaleString()}`)
 }
 
 // Call vault_info method to retrieve the vault's information

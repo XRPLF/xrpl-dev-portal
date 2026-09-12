@@ -143,6 +143,11 @@ const domainId = domainNode.CreatedNode.LedgerIndex
 // Step 3: Depositor accepts credential, authorizes MPT, and creates vault in parallel
 process.stdout.write('Setting up tutorial: 3/6\r')
 
+// Closed-ended vault dates. The subscription window lasts 30 days.
+// Redemption date must be at least 180 seconds after the subscription date.
+const subscriptionDate = xrpl.unixTimeToRippleTime(Date.now() + 30 * 24 * 60 * 60 * 1000)
+const redemptionDate = subscriptionDate + 180
+
 const [, , vaultCreateResult] = await Promise.all([
   client.submitAndWait(
     {
@@ -201,7 +206,10 @@ const [, , vaultCreateResult] = await Promise.all([
         }
       }),
       AssetsMaximum: '0',
-      WithdrawalPolicy: xrpl.VaultWithdrawalPolicy.vaultStrategyFirstComeFirstServe
+      WithdrawalPolicy: xrpl.VaultWithdrawalPolicy.vaultStrategyFirstComeFirstServe,
+      VaultKind: 1,
+      SubscriptionDate: subscriptionDate,
+      RedemptionDate: redemptionDate
     },
     { wallet: vaultOwner, autofill: true }
   )
@@ -281,7 +289,8 @@ const setupData = {
     seed: vaultOwner.seed
   },
   vaultID,
-  vaultShareMPTIssuanceId
+  vaultShareMPTIssuanceId,
+  subscriptionDate
 }
 
 fs.writeFileSync('vaultSetup.json', JSON.stringify(setupData, null, 2))
