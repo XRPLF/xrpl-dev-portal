@@ -14,7 +14,7 @@ This guide and language-specific rules are not concrete. If the user gives you d
     |:-----|:-------|:--------|
     | HTTP | `https://s.devnet.rippletest.net:51234` | `https://s.altnet.rippletest.net:51234` |
     | WSS  | `wss://s.devnet.rippletest.net:51233`   | `wss://s.altnet.rippletest.net:51233`   |
-2. Check the SDK library documentation via the `context7` MCP server.
+2. Check the SDK library documentation via the `xrpl-docs` MCP server.
   - Get the latest stable version to pin the SDK at.
   - Get all relevant documentation for the transactions and helpers used.
   - Prefer the SDK's built-in helpers over custom code. Only use your own helpers if the library has no equivalent.
