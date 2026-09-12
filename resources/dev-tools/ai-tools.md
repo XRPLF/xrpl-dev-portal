@@ -27,7 +27,7 @@ The XRPL Docs MCP Server can be wired into any MCP-capable client, such as Claud
 
 **Endpoint**: `https://xrpl.org/mcp`
 
-The xrpl.org site hosts a standalone MCP server, which only contains documentation hosted on the site. From any doc page, you can click the **Copy** dropdown by the page title and select either **Connect to Cursor** or **Connect to VS Code**. If you are using a different code editor, you can manually configure the MCP server using the endpoint.
+The xrpl.org site hosts a standalone MCP server that only indexes what is on the site. This server is intended as a backup for the XRPL Docs MCP Server. From any doc page, you can click the **Copy** dropdown by the page title and select either **Connect to Cursor** or **Connect to VS Code**. If you are using a different code editor, you can manually configure the MCP server using the endpoint.
 
 
 ## SKILL.md
