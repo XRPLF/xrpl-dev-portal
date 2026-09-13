@@ -59,6 +59,8 @@
           label: PHP
         - page: ./docs/tutorials/get-started/get-started-go.md
           label: Go
+        - page: ./docs/tutorials/get-started/get-started-ruby.md
+          label: Ruby
         - page: ./docs/tutorials/get-started/get-started-http-websocket-apis.md
           label: HTTP / WebSocket
 
