@@ -109,9 +109,10 @@ All types of directories are automatically updated by the protocol as necessary.
 | `RootIndex`         | String    | UInt256           | Yes       | The ID of root object for this directory. |
 | `TakerGetsCurrency` | String    | UInt160           | No        | (Offer directories only) The currency code of the `TakerGets` amount from the offers in this directory. |
 | `TakerGetsIssuer`   | String    | UInt160           | No        | (Offer directories only) The issuer of the `TakerGets` amount from the offers in this directory. |
+| `TakerGetsMPT`      | String    | UInt192           | No        | (Offer directories only) The `mpt_issuance_id` of the `TakerGets` amount from the offers in this directory. {% amendment-disclaimer name="MPTokensV2" /%} |
 | `TakerPaysCurrency` | String    | UInt160           | No        | (Offer directories only) The currency code of the `TakerPays` amount from the offers in this directory. |
 | `TakerPaysIssuer`   | String    | UInt160           | No        | (Offer directories only) The issuer of the `TakerPays` amount from the offers in this directory. |
-
+| `TakerPaysMPT`      | String    | UInt192           | No        | (Offer directories only) The `mpt_issuance_id` of the `TakerPays` amount from the offers in this directory. {% amendment-disclaimer name="MPTokensV2" /%} |
 
 ## {% $frontmatter.seo.title %} Flags
 

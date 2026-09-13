@@ -10,6 +10,7 @@ labels:
 An `AMM` ledger entry describes a single [Automated Market Maker](../../../../concepts/tokens/decentralized-exchange/automated-market-makers.md) (AMM) instance. This is always paired with a [special AccountRoot entry](accountroot.md#special-amm-accountroot-pseudo-account). You can create an AMM by sending an [AMMCreate transaction][].
 
 {% amendment-disclaimer name="AMM" /%}
+{% amendment-disclaimer name="MPTokensV2" mode="updated" /%}
 
 
 ## Example AMM JSON
@@ -63,9 +64,9 @@ In addition to the [common fields](../common-fields.md), {% code-page-name /%} e
 
 | Field            | JSON Type           | [Internal Type][] | Required? | Description  |
 |:-----------------|:--------------------|:------------------|:----------|--------------|
-| `Asset`          | Object              | Issue             | Yes       | The definition for one of the two assets this AMM holds. In JSON, this is an object with `currency` and `issuer` fields. |
-| `Asset2`         | Object              | Issue             | Yes       | The definition for the other asset this AMM holds. In JSON, this is an object with `currency` and `issuer` fields. |
-| `Account`        | String - [Address][] | AccountID        | Yes       | The address of the [special account](accountroot.md#special-amm-accountroot-pseudo-account) that holds this AMM's assets. |
+| `Asset`          | Object              | Issue             | Yes       | The definition for one of the two assets this AMM holds, as a [currency without an amount](../../data-types/currency-formats.md#specifying-without-amounts). |
+| `Asset2`         | Object              | Issue             | Yes       | The definition for the other asset this AMM holds, as a [currency without an amount](../../data-types/currency-formats.md#specifying-without-amounts). |
+| `Account`        | String - [Address][] | AccountID        | Yes       | The address of the [special account](accountroot.md#special-amm-accountroot-entries) that holds this AMM's assets. |
 | `AuctionSlot`    | Object              | Object            | No        | Details of the current owner of the auction slot, as an [Auction Slot object](#auction-slot-object). |
 | `LPTokenBalance` | [Currency Amount][] | Amount            | Yes       | The total outstanding balance of liquidity provider tokens from this AMM instance. The holders of these tokens can vote on the AMM's trading fee in proportion to their holdings, or redeem the tokens for a share of the AMM's assets which grows with the trading fees collected. |
 | `PreviousTxnID`  | String - [Hash][]   | UInt256           | No        | The identifying hash of the transaction that most recently modified this entry. {% amendment-disclaimer name="fixPreviousTxnID" /%} |
