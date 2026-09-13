@@ -22,7 +22,7 @@
     "@codemirror/state": "^6.7.1",
     "@codemirror/view": "^6.43.6",
     "@lezer/highlight": "^1.2.0",
-    "@redocly/realm": "0.135.2",
+    "@redocly/realm": "0.136.2",
     "@uiw/codemirror-themes": "^4.25.11",
     "@uiw/react-codemirror": "^4.21.21",
     "@xrplf/isomorphic": "^1.0.0-beta.1",
