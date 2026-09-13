@@ -15,7 +15,12 @@ Creates or updates a `LoanBroker` ledger entry, configuring protocol parameters 
 
 Only the owner of the associated vault can initiate this transaction.
 
+{% admonition type="info" name="Note" %}
+A loan broker can only be attached to a _closed-ended_ vault. This restriction only applies to loan brokers created after the [LendingProtocolV1_1 amendment][] is enabled. If a loan broker was created before the amendment, it can still originate loans from _open-ended_ vaults.
+{% /admonition %}
+
 {% amendment-disclaimer name="LendingProtocol" /%}
+{% amendment-disclaimer name="LendingProtocolV1_1" mode="updated" /%}
 
 ## Example {% $frontmatter.seo.title %} JSON
 
@@ -60,9 +65,9 @@ Besides errors that can occur for all transactions, {% code-page-name /%} transa
 
 | Error Code                | Description                        |
 |:--------------------------|:-----------------------------------|
-| `temINVALID`              | The transaction is trying to modify a fixed field. You can only update the values for `Flags`, `Data`, or `DebtMaximum`. |
-| `tecNO_PERMISSION`        | The account submitting the transaction doesn't own the associated `Vault` ledger entry. You can also receive this error if the transaction tries to modify the `VaultID` of an existing `LoanBroker` ledger entry. |
-| `tecNO_ENTRY`             | A `LoanBroker` entry with the specified ID does not exist. You can also receive this if the specified `VaultID` doesn't exist. |
 | `tecINSUFFICIENT_RESERVE` | The owner's account doesn't have enough to cover the reserve requirement for the new `LoanBroker` ledger entry. |
+| `tecNO_ENTRY`             | A `LoanBroker` entry with the specified ID does not exist. You can also receive this if the specified `VaultID` doesn't exist. |
+| `tecNO_PERMISSION`        | <li>The account submitting the transaction doesn't own the associated `Vault` ledger entry.</li><li>The transaction tries to modify the `VaultID` of an existing `LoanBroker` ledger entry.</li><li>The transaction is creating a new `LoanBroker` and the associated vault isn't closed-ended. Updating an existing `LoanBroker` isn't affected.</li> |
+| `temINVALID`              | The transaction is trying to modify a fixed field. You can only update the values for `Flags`, `Data`, or `DebtMaximum`. |
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

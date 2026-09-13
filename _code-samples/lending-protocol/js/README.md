@@ -292,28 +292,31 @@ node loanManage.js
 The script should output the initial status of the loan, the LoanManage transaction, and the updated loan status and grace period after impairment. The script will countdown the grace period before outputting another LoanManage transaction, and then the final flags on the loan.
 
 ```sh
-Loan broker address: rKL3u76wNGdF2Th4EvCuHV5885T6h2iFTY
-LoanID: D28764B238CF3F7D7BF4AFD07394838EDD5F278B838F97A55BEAEC1E5152719C
+Loan broker address: rabrE1Ben1rrmiqthvcJH8TqLt1Eviug84
+LoanID: 96BF8F2B634899F748DFB901D513317DB0BC3455DEEC80ABA111F407FACA9F76
 
 === Loan Status ===
 
 Total Amount Owed: 1001 TSTUSD.
-Payment Due Date: 2/25/2026, 11:58:20 PM
+Payment Due Date: 9/12/2026, 6:40:00 PM
+Grace Period: 60 seconds
+
+=== Countdown until loan can be impaired ===
+
+Payment is late. Loan can now be impaired.
 
 === Preparing LoanManage transaction to impair loan ===
 
 {
   "TransactionType": "LoanManage",
-  "Account": "rKL3u76wNGdF2Th4EvCuHV5885T6h2iFTY",
-  "LoanID": "D28764B238CF3F7D7BF4AFD07394838EDD5F278B838F97A55BEAEC1E5152719C",
+  "Account": "rabrE1Ben1rrmiqthvcJH8TqLt1Eviug84",
+  "LoanID": "96BF8F2B634899F748DFB901D513317DB0BC3455DEEC80ABA111F407FACA9F76",
   "Flags": 131072
 }
 
 === Submitting LoanManage impairment transaction ===
 
 Loan impaired successfully!
-New Payment Due Date: 1/27/2026, 12:05:02 AM
-Grace Period: 60 seconds
 
 === Countdown until loan can be defaulted ===
 
@@ -323,8 +326,8 @@ Grace period expired. Loan can now be defaulted.
 
 {
   "TransactionType": "LoanManage",
-  "Account": "rKL3u76wNGdF2Th4EvCuHV5885T6h2iFTY",
-  "LoanID": "D28764B238CF3F7D7BF4AFD07394838EDD5F278B838F97A55BEAEC1E5152719C",
+  "Account": "rabrE1Ben1rrmiqthvcJH8TqLt1Eviug84",
+  "LoanID": "96BF8F2B634899F748DFB901D513317DB0BC3455DEEC80ABA111F407FACA9F76",
   "Flags": 65536
 }
 

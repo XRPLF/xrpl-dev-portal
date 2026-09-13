@@ -16,6 +16,7 @@ The {% code-page-name /%} object is tracked in an [Owner Directory](../../../pro
 Additionally, to facilitate `Vault` object lookup, the object is tracked in the owner directory of the vault's [pseudo-account](../../../../concepts/accounts/pseudo-accounts.md).
 
 {% amendment-disclaimer name="SingleAssetVault" /%}
+{% amendment-disclaimer name="LendingProtocolV1_1" mode="updated" /%}
 
 ## Example Vault JSON
 
@@ -32,13 +33,17 @@ Additionally, to facilitate `Vault` object lookup, the object is tracked in the 
   "AssetsTotal": "0",
   "Data": "5661756C74206D65746164617461",
   "Flags": 0,
+  "LEVersion": 1,
   "LossUnrealized": "0",
   "Owner": "rNGHoQwNG753zyfDrib4qDvvswbrtmV8Es",
   "OwnerNode": "0",
+  "RedemptionDate": 883008000,
   "Scale": 6,
   "Sequence": 200370,
   "ShareMPTID": "0000000169F415C9F1AB6796AB9224CE635818AFD74F8175",
-  "WithdrawalPolicy": 1,
+  "SubscriptionDate": 851472000,
+  "VaultKind": 1,
+  "WithdrawalPolicy": 1
 }
 ```
 
@@ -48,21 +53,29 @@ In addition to the [common ledger entry fields](../../../protocol/ledger-data/co
 
 | Name                | JSON Type     | [Internal Type][] | Required? | Description      |
 | :------------------ | :------------ | :---------------- | :-------- | -----------------|
-| `PreviousTxnID`     | String        | Hash256           | Yes       | Identifies the transaction ID that most recently modified this object. |
-| `PreviousTxnLgrSeq` | Number        | UInt32            | Yes       | The sequence of the ledger that contains the transaction that most recently modified this object. |
-| `Sequence`          | Number        | UInt32            | Yes       | The transaction sequence number that created the vault. |
-| `OwnerNode`         | String        | UInt64            | Yes       | Identifies the page where this item is referenced in the owner's directory. |
-| `Owner`             | String        | AccountID         | Yes       | The account address of the Vault Owner. |
 | `Account`           | String        | AccountID         | Yes       | The address of the vault's pseudo-account. |
-| `Data`              | String        | Blob              | No        | Arbitrary metadata, in hex format, about the vault. Limited to 256 bytes. See [Data Field Format](#data-field-format) for more information. |
 | `Asset`             | Object        | Issue             | Yes       | The asset of the vault. The vault supports XRP, trust line tokens, and MPTs. |
-| `AssetsTotal`       | String        | Number            | Yes       | The total value of the vault. Calculated as: `assets available + assets on loan`. |
+| `AssetsTotal`       | String        | Number            | Yes       | The total value of the vault. Calculated as: `assets available + assets on loan`.<ul><li>_Cash-basis vaults_: Potential interest from scheduled, unpaid loans **doesn't** count toward the total. {% amendment-disclaimer name="LendingProtocolV1_1" mode="updated" /%}</li><li>_Instant interest recognition vaults_: Potential interest from scheduled, unpaid loans **does** count toward the total.</li></ul> |
 | `AssetsAvailable`   | String        | Number            | Yes       | The amount of assets available for loans and withdrawals. |
 | `AssetsMaximum`     | String        | Number            | No        | The maximum amount of assets that can be deposited into the vault. Set to `0` for no cap. |
-| `LossUnrealized`    | String        | Number            | Yes       | The potential loss amount that is not yet realized, expressed as the vault's asset. Only a protocol connected to the vault can modify this attribute. |
-| `ShareMPTID`        | String        | UInt192           | Yes       | The identifier of the share `MPTokenIssuance` object. |
-| `WithdrawalPolicy`  | Number        | UInt8             | Yes       | Indicates the withdrawal strategy used by the vault. |
+| `Data`              | String        | Blob              | No        | Arbitrary metadata, in hex format, about the vault. Limited to 256 bytes. See [Data Field Format](#data-field-format) for more information. |
+| `LEVersion`         | Number        | UInt8             | No        | Indicates what type of accounting the vault uses. `1` indicates the vault uses cash-basis accounting. If this field is ommitted, the vault uses instant interest recognition accounting. {% amendment-disclaimer name="LendingProtocolV1_1" /%} |
+| `LossUnrealized`    | String        | Number            | Yes       | The potential loss amount that is not yet realized, expressed as the vault's asset. Only a protocol connected to the vault can modify this attribute.<ul><li>_Cash-basis vaults_: Unrealized losses from interest **aren't** included in this value. {% amendment-disclaimer name="LendingProtocolV1_1" mode="updated" /%}</li><li>_Instant interest recognition vaults_: Unrealized losses from interest **are** included in this value.</li></ul> |
+| `OwnerNode`         | String        | UInt64            | Yes       | Identifies the page where this item is referenced in the owner's directory. |
+| `Owner`             | String        | AccountID         | Yes       | The account address of the Vault Owner. |
+| `PreviousTxnID`     | String        | Hash256           | Yes       | Identifies the transaction ID that most recently modified this object. |
+| `RedemptionDate`    | Number        | UInt32            | No        | _(Closed-ended vaults only)_ The time, in [seconds since the Ripple Epoch][], when the vault's investment period ends and depositors can redeem their shares. {% amendment-disclaimer name="LendingProtocolV1_1" /%} |
+| `PreviousTxnLgrSeq` | Number        | UInt32            | Yes       | The sequence of the ledger that contains the transaction that most recently modified this object. |
 | `Scale`             | Number        | UInt8             | No        | Specifies decimal precision for share calculations. Assets are multiplied by 10<sup>Scale</sup > to convert fractional amounts into whole number shares. For example, with a `Scale` of `6`, depositing 20.3 units creates 20,300,000 shares (20.3 × 10<sup>Scale</sup >). For **trust line tokens** this can be configured at vault creation, and valid values are between 0-18, with the default being `6`. For **XRP** and **MPTs**, this is fixed at `0`. See [Scaling Factor](#scaling-factor) for more information. |
+| `Sequence`          | Number        | UInt32            | Yes       | The transaction sequence number that created the vault. |
+| `ShareMPTID`        | String        | UInt192           | Yes       | The identifier of the share `MPTokenIssuance` object. |
+| `SubscriptionDate`  | Number        | UInt32            | No        | _(Closed-ended vaults only)_ The time, in [seconds since the Ripple Epoch][], when the vault's subscription window closes and its investment period begins. {% amendment-disclaimer name="LendingProtocolV1_1" /%} |
+| `VaultKind`         | Number        | UInt8             | No        | Indicates the kind of vault. `1` is a closed-ended vault. If this field is omitted, it's an open-ended vault. {% amendment-disclaimer name="LendingProtocolV1_1" /%} |
+| `WithdrawalPolicy`  | Number        | UInt8             | Yes       | Indicates the withdrawal strategy used by the vault. |
+
+{% admonition type="info" name="Note" %}
+`LEVersion` is set by the [VaultCreate transaction][], but the value is determined by if the [LendingProtocolV1_1 amendment][] is enabled.
+{% /admonition %}
 
 ### Data Field Format
 

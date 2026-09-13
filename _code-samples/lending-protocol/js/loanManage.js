@@ -36,9 +36,34 @@ const loanStatus = await client.request({
 
 console.log(`Total Amount Owed: ${loanStatus.result.node.TotalValueOutstanding} TSTUSD.`)
 // Convert Ripple Epoch timestamp to local date and time
-let nextPaymentDueDate = loanStatus.result.node.NextPaymentDueDate
-let paymentDue = new Date((nextPaymentDueDate + 946684800) * 1000)
+const nextPaymentDueDate = loanStatus.result.node.NextPaymentDueDate
+const paymentDue = new Date(xrpl.rippleTimeToUnixTime(nextPaymentDueDate))
+const gracePeriod = loanStatus.result.node.GracePeriod
 console.log(`Payment Due Date: ${paymentDue.toLocaleString()}`)
+console.log(`Grace Period: ${gracePeriod} seconds`)
+
+// Countdown until the loan can be impaired ----------------------
+// A loan can only be impaired once its payment is late.
+// Lateness is measured against the ledger's close time.
+console.log(`\n=== Countdown until loan can be impaired ===\n`)
+
+let latestLedger = await client.request({
+  command: 'ledger',
+  ledger_index: 'validated'
+})
+
+for (let secondsLeft = nextPaymentDueDate - latestLedger.result.ledger.close_time + 1; secondsLeft > 0; secondsLeft--) {
+  process.stdout.write(`\x1b[K\r${secondsLeft} seconds...`)
+  await new Promise((resolve) => setTimeout(resolve, 1000))
+}
+
+// The countdown runs on the local clock, so confirm the ledger has caught up.
+while (true) {
+  latestLedger = await client.request({ command: 'ledger', ledger_index: 'validated' })
+  if (latestLedger.result.ledger.close_time > nextPaymentDueDate) break
+  await new Promise((resolve) => setTimeout(resolve, 1000))
+}
+process.stdout.write('\x1b[K\rPayment is late. Loan can now be impaired.\n')
 
 // Prepare LoanManage transaction to impair the loan ----------------------
 console.log(`\n=== Preparing LoanManage transaction to impair loan ===\n`)
@@ -68,39 +93,29 @@ if (impairResponse.result.meta.TransactionResult !== 'tesSUCCESS') {
 }
 console.log('Loan impaired successfully!')
 
-// Extract loan impairment info from transaction results ----------------------
-let loanNode = impairResponse.result.meta.AffectedNodes.find(node =>
-  node.ModifiedNode?.LedgerEntryType === 'Loan'
-)
-
-// Check grace period and next payment due date
-const gracePeriod = loanNode.ModifiedNode.FinalFields.GracePeriod
-nextPaymentDueDate = loanNode.ModifiedNode.FinalFields.NextPaymentDueDate
-const defaultTime = nextPaymentDueDate + gracePeriod
-paymentDue = new Date((nextPaymentDueDate + 946684800) * 1000)
-
-console.log(`New Payment Due Date: ${paymentDue.toLocaleString()}`)
-console.log(`Grace Period: ${gracePeriod} seconds`)
-
-// Convert current time to Ripple Epoch timestamp
-const currentTime = Math.floor(Date.now() / 1000) - 946684800
-let secondsUntilDefault = defaultTime - currentTime
-
-// Countdown until loan can be defaulted ----------------------
+// Countdown until the loan can be defaulted ----------------------
+// A loan can only be defaulted once the grace period has elapsed
+// past the payment due date. Measured against the ledger's close time.
 console.log(`\n=== Countdown until loan can be defaulted ===\n`)
 
-await new Promise((resolve) => {
-  const countdown = setInterval(() => {
-    if (secondsUntilDefault <= 0) {
-      clearInterval(countdown)
-      process.stdout.write('\rGrace period expired. Loan can now be defaulted.\n')
-      resolve()
-    } else {
-      process.stdout.write(`\r${secondsUntilDefault} seconds...`)
-      secondsUntilDefault--
-    }
-  }, 1000)
+latestLedger = await client.request({
+  command: 'ledger',
+  ledger_index: 'validated'
 })
+
+const defaultTime = nextPaymentDueDate + gracePeriod
+for (let secondsLeft = defaultTime - latestLedger.result.ledger.close_time + 1; secondsLeft > 0; secondsLeft--) {
+  process.stdout.write(`\x1b[K\r${secondsLeft} seconds...`)
+  await new Promise((resolve) => setTimeout(resolve, 1000))
+}
+
+// The countdown runs on the local clock, so confirm the ledger has caught up.
+while (true) {
+  latestLedger = await client.request({ command: 'ledger', ledger_index: 'validated' })
+  if (latestLedger.result.ledger.close_time > defaultTime) break
+  await new Promise((resolve) => setTimeout(resolve, 1000))
+}
+process.stdout.write('\x1b[K\rGrace period expired. Loan can now be defaulted.\n')
 
 // Prepare LoanManage transaction to default the loan ----------------------
 console.log(`\n=== Preparing LoanManage transaction to default loan ===\n`)
@@ -132,7 +147,7 @@ console.log('Loan defaulted successfully!')
 
 // Verify loan default status from transaction results ----------------------
 console.log(`\n=== Checking final loan status ===\n`)
-loanNode = defaultResponse.result.meta.AffectedNodes.find(node =>
+const loanNode = defaultResponse.result.meta.AffectedNodes.find(node =>
   node.ModifiedNode?.LedgerEntryType === 'Loan'
 )
 const loanFlags = loanNode.ModifiedNode.FinalFields.Flags

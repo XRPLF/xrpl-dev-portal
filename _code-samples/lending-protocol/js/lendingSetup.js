@@ -196,6 +196,11 @@ await Promise.all([
 
 process.stdout.write('Setting up tutorial: 4/7\r')
 
+// Close-ended vault schedule. Anchor it to the ledger's close time.
+let latestLedger = await client.request({ command: 'ledger', ledger_index: 'validated' })
+const subscriptionDate = latestLedger.result.ledger.close_time + 30
+const redemptionDate = subscriptionDate + 3650 * 24 * 60 * 60
+
 // Create private vault and distribute MPT to accounts
 const [vaultCreateResponse] = await Promise.all([
   client.submitAndWait({
@@ -205,7 +210,10 @@ const [vaultCreateResponse] = await Promise.all([
       mpt_issuance_id: mptID
     },
     Flags: xrpl.VaultCreateFlags.tfVaultPrivate,
-    DomainID: domainID
+    DomainID: domainID,
+    VaultKind: 1,
+    SubscriptionDate: subscriptionDate,
+    RedemptionDate: redemptionDate
   }, { wallet: loanBroker, autofill: true }),
   client.submitAndWait({
     TransactionType: 'Payment',
@@ -261,13 +269,31 @@ const loanBrokerID = loanBrokerSetResponse.result.meta.AffectedNodes.find(node =
 
 process.stdout.write('Setting up tutorial: 6/7\r')
 
-// Create 2 identical loans with complete repayment due in 30 days
+// Loans can only be originated during the investment phase.
+latestLedger = await client.request({ command: 'ledger', ledger_index: 'validated' })
+for (let secondsLeft = subscriptionDate - latestLedger.result.ledger.close_time; secondsLeft > 0; secondsLeft--) {
+  process.stdout.write(`\x1b[KSetting up tutorial: 6/7 (investment phase opens in ${secondsLeft}s)\r`)
+  await new Promise((resolve) => setTimeout(resolve, 1000))
+}
+
+// Confirm the ledger has actually advanced before originating loans.
+process.stdout.write('\x1b[KSetting up tutorial: 6/7 (waiting for ledger)\r')
+while (true) {
+  latestLedger = await client.request({ command: 'ledger', ledger_index: 'validated' })
+  if (latestLedger.result.ledger.close_time > subscriptionDate) break
+  await new Promise((resolve) => setTimeout(resolve, 1000))
+}
+process.stdout.write('\x1b[KSetting up tutorial: 6/7\r')
+
+// Create 2 loans:
+// A 60s that goes overdue quickly for loanManage.js
+// A 30-day for loanPay.js
 
 // Suppress unnecessary console warning from autofilling LoanSet.
 console.warn = () => {}
 
 // Helper function to create, sign, and submit a LoanSet transaction
-async function createLoan (ticketSequence) {
+async function createLoan (ticketSequence, paymentInterval) {
   const loanSetTx = await client.autofill({
     TransactionType: 'LoanSet',
     Account: loanBroker.address,
@@ -276,7 +302,7 @@ async function createLoan (ticketSequence) {
     PrincipalRequested: '1000',
     InterestRate: 500,
     PaymentTotal: 1,
-    PaymentInterval: 2592000,
+    PaymentInterval: paymentInterval,
     LoanOriginationFee: '100',
     LoanServiceFee: '10',
     Sequence: 0,
@@ -293,8 +319,8 @@ async function createLoan (ticketSequence) {
 }
 
 const [submitResponse1, submitResponse2] = await Promise.all([
-  createLoan(lbTickets[2]),
-  createLoan(lbTickets[3])
+  createLoan(lbTickets[2], 60),
+  createLoan(lbTickets[3], 2592000)
 ])
 
 const loanID1 = submitResponse1.result.meta.AffectedNodes.find(node =>
