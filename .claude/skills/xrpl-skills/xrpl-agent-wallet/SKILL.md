@@ -8,6 +8,8 @@ description: >
   Also trigger on onboarding phrases: "create a wallet", "generate a wallet", "I need a wallet", "set up a wallet", "get started with XRPL", "new account", "testnet wallet", or any request to produce an XRPL address for the first time.
   
   If an XRPL transaction is going to be signed, or if the user needs a wallet to begin, this skill applies.
+
+  Also trigger on OWS phrases: "ows", "open wallet standard", "@open-wallet-standard", "ows vault", "ows passphrase", "ows policy", "signing policy", "create api key for agent", "policy-gated signing".
 ---
 
 # XRPL Agent Wallet
@@ -311,6 +313,70 @@ Notes:
 - The signer must implement XRPL signing correctly (RFC-6979 deterministic nonces for ECDSA-secp256k1; correct Ed25519 if that's the key type). Cloud KMS products that only do raw secp256k1 signatures need a wrapper that handles XRPL's canonical signature encoding — that wrapper is the developer's problem, but flag it if you see a developer reaching for kms.sign() directly.
 - The signer should validate the transaction it's about to sign at its own layer if it can — defense in depth. But you still run the full ceremony on your side; never assume the signer is doing the human-confirmation step for you.
 
+### Pattern 3: OWS — Open Wallet Standard (production agents, policy enforcement)
+
+Use this when the agent needs policy-gated signing, x402 payment support, multi-agent key isolation, or any deployment where keys must be encrypted at rest and never touch the signing process.
+
+OWS stores keys in a local encrypted vault (`~/.ows/wallets/`, AES-256-GCM), evaluates registered policy executables before decrypting, and wipes the key from memory immediately after signing. The XRPL AI Starter Kit recommends OWS for all production deployments.
+
+#### Signing path inside the ceremony (Step 5 — Sign)
+
+```typescript
+import { signTransaction, getWallet } from "@open-wallet-standard/core";
+import { encode } from "xrpl";
+
+// OWS_PASSPHRASE: load from env var — never hardcode, never log, never show in preview
+const OWS_PASSPHRASE = process.env.OWS_PASSPHRASE ?? "";
+
+// After autofill and human confirmation:
+const txHex = encode(prepared as Record<string, unknown>);
+const { signature } = signTransaction(walletName, "xrpl", txHex, OWS_PASSPHRASE);
+const signedTx   = { ...prepared, TxnSignature: signature.toUpperCase() };
+const signedBlob = encode(signedTx as Record<string, unknown>);
+// Then: client.submitAndWait(signedBlob)
+```
+
+#### OWS passphrase handling
+
+The OWS passphrase is the vault decryption key. Treat it with the same discipline as `XRPL_SEED`:
+
+- Store in an environment variable (`OWS_PASSPHRASE`) — never in source code
+- Never log, echo, or include in error messages
+- Never show in the transaction preview
+- Load with `process.env.OWS_PASSPHRASE` at the call site; do not hoist to a module-level constant
+
+#### Getting the signing address
+
+```typescript
+const wallet  = getWallet(walletName);
+const account = wallet.accounts.find(a => a.chainId.startsWith("xrpl"));
+// account.address => "r..."
+```
+
+#### Python / xrpl-py + OWS
+
+The OWS SDK is Node.js only. Python agents sign via the OWS CLI as a subprocess:
+
+```python
+import json, subprocess
+
+proc = subprocess.run(
+    ["ows", "sign", "tx", "--wallet", OWS_WALLET_NAME, "--chain", "xrpl", "--tx", tx_hex],
+    capture_output=True, text=True, check=True,
+)
+signature = json.loads(proc.stdout)["signature"].upper()
+```
+
+Alternatively, run `ows mcp` or `ows rest` and call the OWS server over HTTP. See [`references/ows.md`](references/ows.md) for the full setup guide.
+
+#### Which pattern to use?
+
+| Situation | Pattern |
+| :---- | :---- |
+| Development, testnet, single agent, low-value account | **Pattern 1** — env-var |
+| Cloud KMS, HSM, hardware wallet — key never in process | **Pattern 2** — external signer |
+| Production agents, policy enforcement, x402, multi-agent | **Pattern 3** — OWS |
+
 ### Other constructors developers may reach for
 
 xrpl.js's `Wallet` has several constructors. All of the following produce a wallet with a private key in process memory — the sensitivity is the same as `fromSeed`.
@@ -338,6 +404,7 @@ The recovery flow is on-ledger: the developer creates a new account (new seed), 
 
 ## What this skill does not do
 
+- **Configure OWS policies.** Time-window, network, and future transaction-aware policies are an OWS vault concern. See [`references/ows.md`](references/ows.md) for policy setup, the v2 enforcement scope, and the v3 roadmap.
 - **Build transactions.** The transactions skill or the developer's code provides the transaction object.
 - **Multisig.** Not in scope. If you're handed a multisig transaction (one expecting a `Signers` array), refuse and tell the human that multisig signing is not handled by this skill — the developer needs a dedicated multisig flow.
 - **Manage trustlines, account settings, account state, or any XRPL state on its own initiative.** This skill signs what it is given and sets up wallets when asked. It does not propose, construct, or submit transactions unprompted.
