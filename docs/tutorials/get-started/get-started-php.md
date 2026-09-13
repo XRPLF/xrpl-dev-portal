@@ -31,7 +31,7 @@ In this tutorial, you'll learn:
 
 ## Requirements
 
-* `XRPL_PHP` requires PHP 8.1 and the PHP extension [GMP](http://php.net/manual/en/book.gmp.php).
+* `XRPL_PHP` requires PHP 8.2 and the PHP extensions [bcmath](https://www.php.net/manual/en/book.bc.php) and [GMP](https://www.php.net/manual/en/book.gmp.php).
 * The PHP extension [BCMATH](https://www.php.net/manual/de/book.bc.php) is recommended for increased performance.
  
 ## Installation
@@ -65,7 +65,7 @@ To make queries and submit transactions, you need to connect to the XRP Ledger. 
 require __DIR__ . '/vendor/autoload.php';
 
 // Imports 
-use XRPL_PHP\Client\JsonRpcClient;
+use Hardcastle\XRPL_PHP\Client\JsonRpcClient;
 
 // Create a Client using the Testnet
 $client = new JsonRpcClient("https://s.altnet.rippletest.net:51234");
@@ -80,7 +80,7 @@ The sample code in the previous section shows you how to connect to the Testnet,
 * By [installing the core server](../../infrastructure/installation/index.md) (`xrpld`) and running a node yourself. The core server connects to the Mainnet by default, but you can [change the configuration to use Testnet or Devnet](../../infrastructure/configuration/connect-your-xrpld-to-the-xrp-test-net.md). [There are good reasons to run your own core server](../../concepts/networks-and-servers/index.md#reasons-to-run-your-own-server). If you run your own server, you can connect to it like so:
 
     ```
-    use XRPL_PHP\Client\JsonRpcClient;
+    use Hardcastle\XRPL_PHP\Client\JsonRpcClient;
 
     const LOCAL_JSON_RPC_URL = "http://localhost:5005/";
     $client = new JsonRpcClient("LOCAL_JSON_RPC_URL");
@@ -91,7 +91,7 @@ The sample code in the previous section shows you how to connect to the Testnet,
 * By using one of the available [public servers][]:
 
     ```
-    use XRPL_PHP\Client\JsonRpcClient;
+    use Hardcastle\XRPL_PHP\Client\JsonRpcClient;
 
     const MAINNET_JSON_RPC_URL = "https://s2.ripple.com:51234/";
     $client = new JsonRpcClient("MAINNET_JSON_RPC_URL");
@@ -110,7 +110,7 @@ To generate a new account, `PHP_XRPL` provides the static `generate()` method in
 require __DIR__ . '/vendor/autoload.php';
 
 // Imports 
-use XRPL_PHP\Wallet\Wallet;
+use Hardcastle\XRPL_PHP\Wallet\Wallet;
 
 // Create a new wallet
 $wallet = Wallet::generate();
@@ -168,7 +168,7 @@ php get-account-info.php
 You should see output similar to this example:
 
 ```console
-XRPL_PHP\Models\Account\AccountInfoResponse Object
+Hardcastle\XRPL_PHP\Models\Account\AccountInfoResponse Object
 (
     [id:protected] => 
     [result:protected] => Array
