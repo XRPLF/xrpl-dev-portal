@@ -13,6 +13,12 @@ status: not_enabled
 This tutorial shows you how to create a [LoanBroker][] on the XRP Ledger using a private vault. A loan broker creates and manages loans, and also manages the first-loss capital for a connected single asset vault.
 
 {% amendment-disclaimer name="LendingProtocol" /%}
+{% amendment-disclaimer name="LendingProtocolV1_1" mode="updated" /%}
+
+{% admonition type="info" name="Note" %}
+- **JavaScript** code expects both `LendingProtocol` and `LendingProtocolV1_1`.
+- **Python** and **Go** code expect only `LendingProtocol`.
+{% /admonition %}
 
 ## Goals
 

@@ -15,6 +15,12 @@ This tutorial shows you how to deposit and withdraw first-loss capital from a [L
 The tutorial demonstrates how a loan broker can manage risk by depositing XRP as first-loss capital, and how they can withdraw it when needed.
 
 {% amendment-disclaimer name="LendingProtocol" /%}
+{% amendment-disclaimer name="LendingProtocolV1_1" mode="updated" /%}
+
+{% admonition type="info" name="Note" %}
+- **JavaScript** code expects both `LendingProtocol` and `LendingProtocolV1_1`.
+- **Python** and **Go** code expect only `LendingProtocol`.
+{% /admonition %}
 
 ## Goals
 

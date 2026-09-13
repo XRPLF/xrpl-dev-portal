@@ -20,6 +20,12 @@ You can create either a:
 The tutorial demonstrates how a financial institution could use a **private vault** to pool lender assets for uncollateralized lending while maintaining regulatory compliance through credential-based access control.
 
 {% amendment-disclaimer name="SingleAssetVault" /%}
+{% amendment-disclaimer name="LendingProtocolV1_1" mode="updated" /%}
+
+{% admonition type="info" name="Note" %}
+- **JavaScript** code expects both `SingleAssetVault` and `LendingProtocolV1_1`.
+- **Python** code expects only `SingleAssetVault`.
+{% /admonition %}
 
 ## Goals
 

@@ -19,6 +19,12 @@ Anyone can create a public vault, and malicious vault owners can drain your asse
 {% /admonition %}
 
 {% amendment-disclaimer name="SingleAssetVault" /%}
+{% amendment-disclaimer name="LendingProtocolV1_1" mode="updated" /%}
+
+{% admonition type="info" name="Note" %}
+- **JavaScript** code expects both `SingleAssetVault` and `LendingProtocolV1_1`.
+- **Python** code expects only `SingleAssetVault`.
+{% /admonition %}
 
 ## Goals
 
