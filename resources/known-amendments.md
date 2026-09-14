@@ -24,7 +24,6 @@ The following is a list of [amendments](../docs/concepts/networks-and-servers/am
 | [InvariantsV1_1][]                | {% badge %}In Development: TBD{% /badge %} |  |
 | [MPTokensV2][]                    | {% badge %}In Development: TBD{% /badge %} | [XLS-82 MPT DEX Integration](https://opensource.ripple.com/docs/xls-82-mpt-dex) |
 | [SmartEscrow][]                   | {% badge %}In Development: TBD{% /badge %} | [XLS-100 Smart Escrows](https://opensource.ripple.com/docs/xls-100-smart-escrows) |
-| [LendingProtocolV1_1][]           | {% badge %}In Development: TBD{% /badge %} | [XLS-66 Lending Protocol](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0066-lending-protocol) |
 
 {% admonition type="success" name="Tip" %}
 This list is updated manually. If you're working on an amendment and have a private network to test the changes, you can edit this page to add your in-development amendment to this list. For more information on contributing to the XRP Ledger, see [Contribute Code to the XRP Ledger](contribute-code/index.md).
@@ -890,7 +889,7 @@ This amendment is a collection of fixes for Single Asset Vaults, the Lending Pro
 - Changes `VaultWithdraw` to allow a fixed-share withdrawal to move zero assets from a fully impaired vault rather than failing.
 - Changes the `ValidVault` invariant so `VaultSet` isn't blocked when accrued interest alone pushes `AssetsTotal` over `AssetsMaximum`.
 - Adds `CredentialIDs` support to `VaultWithdraw`.
-- Changes loan lateness, impairment, and default checks to require the due date to have passed.
+- Changes loan lateness, impairment, and default checks to require the due date to have strictly passed.
 - Exempts a loan default from freeze, deep freeze, and MPT lock on the broker-to-vault transfer.
 - Prevents `AMMBid` from acquiring the auction slot at a zero or dust price on a zero-fee pool.
 - Changes `AMMClawback` to fully withdraw when the LP-token amount matches the holder's balance, so the last holder can be clawed back completely.
@@ -903,7 +902,7 @@ This amendment is a collection of fixes for Single Asset Vaults, the Lending Pro
 - Changes creating a trust line that already exists to return `tecDUPLICATE` as a no-op.
 - Extends `asfDisallowIncomingTrustline` to also block `OfferCreate`.
 - Rejects NFT offers that use the currency code `XRP` for a non-XRP amount with `temBAD_CURRENCY`.
-- Exempts an IOU issuer from their own global freeze on NFT offers in their currency.
+- Exempts an IOU issuer from their own global freeze on NFT offers in their own currency.
 - Changes unauthorizing a locked MPToken to always return `tecNO_PERMISSION`.
 - Changes `EscrowCancel` and `EscrowFinish` to release the escrow's owner reserve before the returned or delivered amount can re-create a holding.
 - Changes ending a sponsorship to check that the sponsee can carry the reserve on its own afterward.
@@ -1605,7 +1604,7 @@ Specification: [XLS-66](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-
 | Amendment    | LendingProtocolV1_1 |
 |:-------------|:--------------------|
 | Amendment ID | A360E2BFD775A5B0DCE1C36C16DF31B72735A57584FD163655D2F9564F8E7AC8 |
-| Status       | In Development |
+| Status       | {% amendment-disclaimer name="LendingProtocolV1_1" statusOnly=true /%} |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
