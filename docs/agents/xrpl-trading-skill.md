@@ -60,7 +60,7 @@ pair with the same shared Wallet skill. See
 - **Transaction submission:** Handled entirely by the XRPL Agent Wallet skill. This skill builds transaction objects; it does not call `submit_and_wait` or `submitAndWait` directly.
 - **Signing path:** Determined by the XRPL Agent Wallet skill configuration — env-var (development), external signer (HSM/KMS), or OWS (Open Wallet Standard). See [The XRPL Agent Wallet Skill](/docs/agents/xrpl-agent-wallet-skill/) for setup.
 - **Amount handling:** XRP amounts are always strings in drops — use `xrp_to_drops()` / `xrpToDrops()`. Never pass floats or raw XRP values. IOU amounts use `{currency, issuer, value}` objects with `value` as a decimal string.
-- **Source tag:** The XRPL Agent Wallet skill automatically applies `SourceTag = 20260530` to every transaction that passes through the signing ceremony. Override by setting `SourceTag` on the transaction object before handoff. Do not omit `SourceTag` — it is required for on-chain attribution.
+- **Source tag:** The XRPL Agent Wallet skill automatically applies `SourceTag = 20260530` to every transaction that passes through the signing ceremony. Override by setting `SourceTag` on the transaction object before handoff. You do not need to set `SourceTag` — the Wallet skill applies it. Set it only for a deliberate custom tag, or `0` to opt out.
 - **Network:** Testnet (`https://s.altnet.rippletest.net:51234`) by default. Switching to Mainnet is a one-line URL change.
 - **Simulate before handoff:** For new trading flows or unfamiliar currency pairs, call `simulate` on the raw transaction object before handing to the Wallet skill. This catches malformed offers, missing trust lines, and reserve errors without spending fees.
 

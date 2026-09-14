@@ -573,8 +573,10 @@ for attribution and volume tracking. Override by setting `SourceTag` on the
 transaction object before handoff; the Wallet skill respects any value already
 present.
 
-Do not omit `SourceTag`. Untagged agent transactions cannot be attributed in
-ledger history or monitoring.
+You do not need to set `SourceTag` — the Wallet skill applies it. Set it only for
+a deliberate custom tag, or `0` to opt out; the Wallet skill respects any value
+already present. Note that a transaction submitted outside the signing ceremony
+is untagged, and no error is raised.
 
 ### 6.2 Memos for on-chain audit trail
 

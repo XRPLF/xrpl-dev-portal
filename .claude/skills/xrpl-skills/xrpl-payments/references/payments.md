@@ -23,7 +23,6 @@ payment = Payment(
     account=wallet.address,
     destination="rDestinationAddress",
     amount=xrp_to_drops(25),
-    source_tag=AGENT_SOURCE_TAG,
 )
 
 # 2. Hand `payment` to the XRPL Agent Wallet skill, which runs the ceremony:
@@ -40,7 +39,6 @@ const payment: Payment = {
   Account: wallet.address,
   Destination: "rDestinationAddress",
   Amount: xrpToDrops("25"),
-  SourceTag: AGENT_SOURCE_TAG,
 };
 
 // 2. Hand `payment` to the XRPL Agent Wallet skill, which autofills, previews,
@@ -135,11 +133,10 @@ payment = Payment(
     account=wallet.address,
     destination="rDestinationAddress",
     amount=xrp_to_drops(25),        # always use xrp_to_drops — never raw floats
-    source_tag=AGENT_SOURCE_TAG,    # tag every agentic transaction
 )
-response = submit_and_wait(payment, client, wallet)
-print(f"Result : {response.result['meta']['TransactionResult']}")
-print(f"Hash   : {response.result['hash']}")
+# → hand to the XRPL Agent Wallet skill: it autofills, applies SourceTag if
+#   absent, previews to the human, signs locally, persists the hash, and
+#   submitAndWaits. Do NOT autofill, sign, or submit here.
 ```
 
 ```typescript
@@ -150,10 +147,10 @@ const payment: Payment = {
   Account: wallet.address,
   Destination: "rDestinationAddress",
   Amount: xrpToDrops("25"),
-  SourceTag: AGENT_SOURCE_TAG,
 };
-const response = await client.submitAndWait(payment, { wallet });
-console.log(response.result.meta?.TransactionResult);
+// → hand to the XRPL Agent Wallet skill: it autofills, applies SourceTag if
+//    absent, previews to the human, signs locally, persists the hash, and
+//    submitAndWaits. Do NOT autofill, sign, or submit here.
 ```
 
 ### With a destination tag
@@ -166,7 +163,6 @@ payment = Payment(
     destination="rExchangeAddress",
     amount=xrp_to_drops(100),
     destination_tag=987654,   # required if destination has asfRequireDestTag set
-    source_tag=AGENT_SOURCE_TAG,
 )
 ```
 
@@ -221,10 +217,10 @@ payment = Payment(
     amount=xrp_to_drops(100),        # maximum to deliver
     send_max=xrp_to_drops(100),
     flags=PaymentFlag.TF_PARTIAL_PAYMENT,
-    source_tag=AGENT_SOURCE_TAG,
 )
-response = submit_and_wait(payment, client, wallet)
-delivered = response.result["meta"]["delivered_amount"]
+# → hand to the XRPL Agent Wallet skill; read delivered_amount off the
+#   submitAndWait result it returns.
+delivered = pay_result.result["meta"]["delivered_amount"]
 print(f"Actually delivered: {drops_to_xrp(delivered)} XRP")
 ```
 
@@ -272,8 +268,9 @@ trust_set = TrustSet(
         value="10000",   # max RLUSD this wallet will hold
     ),
 )
-result = submit_and_wait(trust_set, client, wallet)
-print(f"Trust line: {result.result['meta']['TransactionResult']}")
+# → hand `trust_set` to the XRPL Agent Wallet skill: it autofills, applies SourceTag if
+#   absent, previews to the human, signs locally, persists the hash, and
+#   submitAndWaits. Do NOT autofill, sign, or submit here.
 ```
 
 ```typescript
@@ -288,7 +285,9 @@ const trustSet: TrustSet = {
     value: "10000",
   },
 };
-await client.submitAndWait(trustSet, { wallet });
+// → hand `trustSet` to the XRPL Agent Wallet skill: it autofills, applies SourceTag if
+//    absent, previews to the human, signs locally, persists the hash, and
+//    submitAndWaits. Do NOT autofill, sign, or submit here.
 ```
 
 ### Step 2: Send RLUSD
@@ -305,11 +304,10 @@ payment = Payment(
         issuer=RLUSD_ISSUER_TESTNET,
         value="250",     # 250 RLUSD
     ),
-    source_tag=AGENT_SOURCE_TAG,
 )
-response = submit_and_wait(payment, client, wallet)
-print(f"Result : {response.result['meta']['TransactionResult']}")
-print(f"Hash   : {response.result['hash']}")
+# → hand to the XRPL Agent Wallet skill: it autofills, applies SourceTag if
+#   absent, previews to the human, signs locally, persists the hash, and
+#   submitAndWaits. Do NOT autofill, sign, or submit here.
 ```
 
 ```typescript
@@ -322,9 +320,10 @@ const payment: Payment = {
     issuer: RLUSD_ISSUER_TESTNET,
     value: "250",
   },
-  SourceTag: AGENT_SOURCE_TAG,
 };
-const response = await client.submitAndWait(payment, { wallet });
+// → hand to the XRPL Agent Wallet skill: it autofills, applies SourceTag if
+//    absent, previews to the human, signs locally, persists the hash, and
+//    submitAndWaits. Do NOT autofill, sign, or submit here.
 ```
 
 > **Note:** The destination wallet must also have an RLUSD trust line, or the payment fails with `tecNO_LINE`. The exception is the issuer itself.
@@ -358,7 +357,6 @@ payment = Payment(
         issuer="rIssuerAddress",
         value="100",
     ),
-    source_tag=AGENT_SOURCE_TAG,
 )
 ```
 
@@ -383,9 +381,10 @@ payment = Payment(
         value="10",
     ),
     send_max=xrp_to_drops(15),          # maximum you'll spend
-    source_tag=AGENT_SOURCE_TAG,
 )
-response = submit_and_wait(payment, client, wallet)
+# → hand to the XRPL Agent Wallet skill: it autofills, applies SourceTag if
+#   absent, previews to the human, signs locally, persists the hash, and
+#   submitAndWaits. Do NOT autofill, sign, or submit here.
 ```
 
 ```typescript
@@ -395,7 +394,6 @@ const payment: Payment = {
   Destination: "rDestinationAddress",
   Amount: { currency: RLUSD_CURRENCY, issuer: RLUSD_ISSUER_TESTNET, value: "10" },
   SendMax: xrpToDrops("15"),
-  SourceTag: AGENT_SOURCE_TAG,
 };
 ```
 
@@ -426,8 +424,9 @@ escrow_create = EscrowCreate(
     finish_after=unix_to_ripple_time(time.time() + 86400),    # 24 hours
     cancel_after=unix_to_ripple_time(time.time() + 604800),   # 7 days
 )
-result = submit_and_wait(escrow_create, client, wallet)
-escrow_sequence = result.result["Sequence"]
+# → hand `escrow_create` to the XRPL Agent Wallet skill. The submitAndWait
+#   result it returns carries the Sequence that identifies this escrow.
+escrow_sequence = create_result.result["Sequence"]
 
 # Finish: recipient (or anyone) claims after FinishAfter
 escrow_finish = EscrowFinish(
@@ -435,7 +434,9 @@ escrow_finish = EscrowFinish(
     owner=wallet.address,
     offer_sequence=escrow_sequence,
 )
-submit_and_wait(escrow_finish, client, recipient_wallet)
+# → hand `escrow_finish` to the XRPL Agent Wallet skill: it autofills, applies SourceTag if
+#   absent, previews to the human, signs locally, persists the hash, and
+#   submitAndWaits. Do NOT autofill, sign, or submit here.
 
 # Cancel: sender reclaims after CancelAfter
 escrow_cancel = EscrowCancel(
@@ -443,7 +444,9 @@ escrow_cancel = EscrowCancel(
     owner=wallet.address,
     offer_sequence=escrow_sequence,
 )
-submit_and_wait(escrow_cancel, client, wallet)
+# → hand `escrow_cancel` to the XRPL Agent Wallet skill: it autofills, applies SourceTag if
+#   absent, previews to the human, signs locally, persists the hash, and
+#   submitAndWaits. Do NOT autofill, sign, or submit here.
 ```
 
 ### Conditional escrow (crypto-conditions)
@@ -458,16 +461,18 @@ escrow_create = EscrowCreate(
     condition="A0258020...",   # PREIMAGE-SHA-256 hex condition
     cancel_after=unix_to_ripple_time(time.time() + 604800),
 )
-result = submit_and_wait(escrow_create, client, wallet)
+# → hand `escrow_create` to the XRPL Agent Wallet skill; keep its result.
 
 escrow_finish = EscrowFinish(
     account="rRecipientAddress",
     owner=wallet.address,
-    offer_sequence=result.result["Sequence"],
+    offer_sequence=create_result.result["Sequence"],
     condition="A0258020...",
     fulfillment="A0228020...",   # preimage that satisfies the condition
 )
-submit_and_wait(escrow_finish, client, recipient_wallet)
+# → hand `escrow_finish` to the XRPL Agent Wallet skill: it autofills, applies SourceTag if
+#   absent, previews to the human, signs locally, persists the hash, and
+#   submitAndWaits. Do NOT autofill, sign, or submit here.
 ```
 
 ---
@@ -476,18 +481,35 @@ submit_and_wait(escrow_finish, client, recipient_wallet)
 
 ### SourceTag — tracking agent-generated volume
 
-Set a consistent 32-bit unsigned integer on every transaction your agent submits. This lets you filter on-chain volume by agent, report on agentic activity, and separate it from human-initiated transactions.
+You do **not** need to set `SourceTag`. The XRPL Agent Wallet skill applies the XRPL AI
+Starter Kit default (`20260530`) during the signing ceremony to any transaction that arrives
+without one. That is what keeps every domain skill tagged consistently, with no per-skill code.
+
+Set it yourself only in two cases:
+
+- **A custom tag**, to distinguish agents or deployments within one account.
+- **`SourceTag = 0`**, to opt out deliberately. The Wallet skill treats `0` as an explicit
+  value rather than an absence, and `0` is preserved on-ledger and distinguishable there from
+  a missing field.
 
 ```python
-AGENT_SOURCE_TAG = 20260530  
+# Custom per-deployment tag — overrides the Wallet skill default.
+# Omit this field entirely to get 20260530.
+MY_AGENT_TAG = 99991234
 
 payment = Payment(
     account=wallet.address,
     destination="rDestinationAddress",
     amount=xrp_to_drops(10),
-    source_tag=AGENT_SOURCE_TAG,
+    source_tag=MY_AGENT_TAG,
 )
+# → hand to the XRPL Agent Wallet skill; it respects the value already present.
 ```
+
+> **Attribution caveat.** Filtering on `20260530` alone does **not** capture all agent
+> activity. x402 payments carry a merchant-declared tag, and any transaction submitted
+> outside the Wallet ceremony is untagged with no error raised. To audit an agent completely,
+> filter by **account**, not by tag.
 
 ```typescript
 const payment: Payment = {
@@ -495,7 +517,6 @@ const payment: Payment = {
   Account: wallet.address,
   Destination: "rDestinationAddress",
   Amount: xrpToDrops("10"),
-  SourceTag: AGENT_SOURCE_TAG,
 };
 ```
 
@@ -520,10 +541,11 @@ payment = Payment(
     account=wallet.address,
     destination="rDestinationAddress",
     amount=xrp_to_drops(25),
-    source_tag=AGENT_SOURCE_TAG,
     memos=[build_memo("invoice-agent-v1", "sess-abc123", "pay_invoice", "inv-00789")],
 )
-response = submit_and_wait(payment, client, wallet)
+# → hand to the XRPL Agent Wallet skill: it autofills, applies SourceTag if
+#   absent, previews to the human, signs locally, persists the hash, and
+#   submitAndWaits. Do NOT autofill, sign, or submit here.
 ```
 
 ```typescript
@@ -537,7 +559,6 @@ const payment: Payment = {
   Account: wallet.address,
   Destination: "rDestinationAddress",
   Amount: xrpToDrops("25"),
-  SourceTag: AGENT_SOURCE_TAG,
   Memos: [buildMemo("invoice-agent-v1", "sess-abc123", "pay_invoice", "inv-00789")],
 };
 ```
@@ -600,7 +621,9 @@ account_set = AccountSet(
     account=wallet.address,
     set_flag=AccountSetAsfFlag.ASF_DEPOSIT_AUTH,
 )
-submit_and_wait(account_set, client, wallet)
+# → hand `account_set` to the XRPL Agent Wallet skill: it autofills, applies SourceTag if
+#   absent, previews to the human, signs locally, persists the hash, and
+#   submitAndWaits. Do NOT autofill, sign, or submit here.
 # Now only pre-authorized senders can pay this wallet
 ```
 
@@ -618,7 +641,6 @@ payment = Payment(
     account=wallet.address,
     destination="rDestinationAddress",
     amount=xrp_to_drops(25),
-    source_tag=AGENT_SOURCE_TAG,
 )
 filled = autofill(payment, client)
 
@@ -630,7 +652,9 @@ if sim_result != "tesSUCCESS":
     raise RuntimeError(f"Simulation failed: {sim_result} — fix before submitting")
 
 # Safe to submit — submit_and_wait handles signing internally
-response = submit_and_wait(payment, client, wallet)
+# → hand to the XRPL Agent Wallet skill: it autofills, applies SourceTag if
+#   absent, previews to the human, signs locally, persists the hash, and
+#   submitAndWaits. Do NOT autofill, sign, or submit here.
 ```
 
 ```typescript
@@ -639,7 +663,6 @@ const payment: Payment = {
   Account: wallet.address,
   Destination: "rDestinationAddress",
   Amount: xrpToDrops("25"),
-  SourceTag: AGENT_SOURCE_TAG,
 };
 
 const filled = await client.autofill(payment);
@@ -654,7 +677,9 @@ if (simResult !== "tesSUCCESS") {
   throw new Error(`Simulation failed: ${simResult}`);
 }
 
-const response = await client.submitAndWait(payment, { wallet });
+// → hand to the XRPL Agent Wallet skill: it autofills, applies SourceTag if
+//    absent, previews to the human, signs locally, persists the hash, and
+//    submitAndWaits. Do NOT autofill, sign, or submit here.
 ```
 
 > **When to skip simulation:** High-frequency agents with stable, pre-validated payment paths can skip simulation for speed. Always simulate during development and when building new payment flows.
