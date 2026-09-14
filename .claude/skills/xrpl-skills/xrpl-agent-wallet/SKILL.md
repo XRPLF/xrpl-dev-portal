@@ -380,6 +380,10 @@ Treat `OWS_AGENT_TOKEN` with the same discipline as `XRPL_SEED`: load it from
 the environment at the call site, never hardcode it, never show it in the
 transaction preview.
 
+The vault passphrase is operator-only — it mints keys and creates wallets, and
+it bypasses every policy. Apply the same handling rules to it, and never place
+it in a long-running agent's environment.
+
 #### Signing path inside the ceremony (Step 5 — Sign)
 
 XRPL needs **both** `TxnSignature` and `SigningPubKey`. OWS returns only the
