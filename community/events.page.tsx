@@ -1,6 +1,12 @@
 import { useState, useMemo } from "react";
 import { useThemeHooks } from "@redocly/theme/core/hooks";
-const moment = require("moment");
+import Button from "shared/components/Button";
+import { XrplArrowExternalLinkIcon } from "shared/components/Icons";
+
+// Parse an event `end_date` string (e.g. "September 6, 2024"). The native Date
+// constructor handles this "Month D, YYYY" format reliably; an unparseable
+// value yields an invalid Date (NaN time), which sorts last and is not "past".
+const parseEventDate = (str) => new Date(str);
 const amaImage = require("../static/img/events/AMAs.png");
 const hackathon = require("../static/img/events/Hackathons.png");
 const sanDiego = require("../static/img/events/event-meetup-san-diego@2x.jpg");
@@ -27,19 +33,20 @@ export const frontmatter = {
 };
 export const sortEvents = (arr, asc = true) => {
   return arr.sort((a, b) => {
-    const dateA = moment(a.end_date, "MMMM D, YYYY");
-    const dateB = moment(b.end_date, "MMMM D, YYYY");
-    return asc ? dateB.diff(dateA) : dateA.diff(dateB); // Returns a negative value if dateA is before dateB, positive if after, and 0 if the same
+    const dateA = parseEventDate(a.end_date).getTime();
+    const dateB = parseEventDate(b.end_date).getTime();
+    return asc ? dateB - dateA : dateA - dateB; // Returns a negative value if dateA is before dateB, positive if after, and 0 if the same
   });
 };
 function categorizeDates(arr) {
   const past = [];
   const upcoming = [];
-  const today = moment().startOf("day"); // set the time to midnight
+  const today = new Date();
+  today.setHours(0, 0, 0, 0); // set the time to midnight
 
   arr.forEach((obj) => {
-    const endDate = moment(obj.end_date, "MMMM D, YYYY"); // parse the 'end_date' string into a moment object
-    if (endDate.isBefore(today)) {
+    const endDate = parseEventDate(obj.end_date); // parse the 'end_date' string into a Date object
+    if (endDate < today) {
       obj.type = `${obj.type}-past`;
       past.push(obj);
     } else {
@@ -1424,7 +1431,7 @@ const events = [
     link: "https://luma.com/780xhfr7",
     location: "Paris, France",
     date: "April 14, 2026",
-    image: require("../static/img/events/xrpl-zone-paris.jpg"),
+    image: require("../static/img/events/commons-dark-blue.png"),
     end_date: "April 14, 2026",
   },
 
@@ -1436,7 +1443,7 @@ const events = [
     link: "https://luma.com/building-on-the-xrpl",
     location: "Online",
     date: "June 22-23, 2026",
-    image: require("../static/img/events/commons-online.png"),
+    image: require("../static/img/events/commons-purple.png"),
     end_date: "June 23, 2026",
   },
   {
@@ -1447,7 +1454,7 @@ const events = [
     link: "https://luma.com/XRPL-Blockchain-Research-Summit",
     location: "Paris, France",
     date: "June 16-17, 2026",
-    image: require("../static/img/events/commons-online.png"),
+    image: require("../static/img/events/commons-purple.png"),
     end_date: "June 17, 2026",
   },
   {
@@ -1461,7 +1468,51 @@ const events = [
     image: require("../static/img/events/commons-lisbon.png"),
     end_date: "June 4, 2026",
   },
-  
+  {
+    name: "XRP Ledger Dinner Club Madrid",
+    description:
+      "Join us for an exclusive, invitation-only evening bringing together founders, developers, investors, and leaders from Spain's blockchain ecosystem.",
+    type: "meetup",
+    link: "https://luma.com/xrpl-dinner-club-madrid",
+    location: "Madrid, Spain",
+    date: "September 15, 2026",
+    image: require("../static/img/events/commons-orange-2.png"),
+    end_date: "September 15, 2026",
+  },
+  {
+    name: "XRPL Meetup Barcelona",
+    description:
+      "Calling all Spanish blockchain enthusiasts! Join XRPL Meetups to share knowledge, build real-life connections, and foster communities centered around blockchain and XRP Ledger. We're establishing local “XRPL Hubs” across Europe, and we want you to be a part of it!",
+    type: "meetup",
+    link: "https://luma.com/xrpl-meetup-barcelona",
+    location: "Barcelona, Spain",
+    date: "September 16, 2026",
+    image: require("../static/img/events/commons-orange-2.png"),
+    end_date: "September 16, 2026",
+  },
+  {
+    name: "XRP Ledger Core Dev Bootcamp NYC",
+    description:
+      "A 3-day deep dive into xrpld, the software that runs the XRP Ledger, led by Denis Angell, CTO of the XRPL Foundation. This bootcamp is for developers who want to go beyond the application layer and work directly with our core codebase.",
+    type: "hackathon",
+    link: "https://luma.com/xrpl-core-dev-bootcamp2",
+    location: "NYC, USA",
+    date: "October 20-22, 2026",
+    image: require("../static/img/events/commons-dark-blue.png"),
+    end_date: "October 22, 2026",
+  },
+  {
+    name: "XRP Ledger Hackathon NYC",
+    description:
+      "Build and launch on the XRP Ledger in 36 hours in New York City, just before Swell. Hosted by XRPL Commons, this hackathon connects builders with the ecosystem’s institutions, investors, and decision-makers. Whether you’re new to XRPL or a seasoned builder, there’s a track for you.",
+    type: "hackathon",
+    link: "https://luma.com/swell-xrpl-hackathon",
+    location: "NYC, USA",
+    date: "October 24-25, 2026",
+    image: require("../static/img/events/commons-purple.png"),
+    end_date: "October 25, 2026",
+  },
+
 ];
 
 
@@ -1520,178 +1571,306 @@ export default function Events() {
   
   return (
     <div className="landing page-events">
-      <div>
-        <div className="position-relative d-none-sm">
-          <img
-            alt="orange waves"
-            src={require("../static/img/backgrounds/events-orange.svg")}
-            id="events-orange"
-          />
+      <section className="text-center py-26">
+        <div className="mx-auto text-center col-lg-5">
+          <div className="d-flex flex-column-reverse">
+            <h1 className="mb-0">
+              {translate("Find the XRPL Community Around the World")}
+            </h1>
+            <h6 className="mb-3 eyebrow">{translate("Events")}</h6>
+          </div>
         </div>
-        <section className="text-center py-26">
-          <div className="mx-auto text-center col-lg-5">
+      </section>
+      <section className="container-new py-26">
+        <div className="event-hero card-grid card-grid-2xN">
+          <div className="pe-2 col">
+            <img
+              alt="Swell 2026 in NYC"
+              src={require("../static/img/events/swell-2026-nyc.jpg")}
+              className="w-100"
+            />
+          </div>
+          <div className="pt-5 pe-2 col">
             <div className="d-flex flex-column-reverse">
-              <h1 className="mb-0">
-                {translate("Find the XRPL Community Around the World")}
-              </h1>
-              <h6 className="mb-3 eyebrow">{translate("Events")}</h6>
+              <h2 className="mb-8 h4 h2-sm">
+                {translate("Swell 2026 in NYC")}
+              </h2>
+              <h6 className="mb-3 eyebrow">{translate("Hosted")}</h6>
             </div>
-          </div>
-        </section>
-        <section className="container-new py-26">
-          <div className="event-hero card-grid card-grid-2xN">
-            <div className="pr-2 col">
-              <img
-                alt="xrp ledger events hero"
-                src={require("../static/img/events/xrp-community-night-paris.png")}
-                className="w-100"
-              />
-            </div>
-            <div className="pt-5 pr-2 col">
-              <div className="d-flex flex-column-reverse">
-                <h2 className="mb-8 h4 h2-sm">
-                  {translate("XRP Community Night Paris")}
-                </h2>
-                <h6 className="mb-3 eyebrow">{translate("Save the Date")}</h6>
-              </div>
-              <p className="mb-4">
-                {translate(
-                  "Attending Paris Blockchain Week? ​Join us for an evening with the XRP community in Paris. Connect with the users, builders and projects innovating with and utilizing XRP."
-                )}
-              </p>
-              <div className=" my-3 event-small-gray">
-                {translate("Location: Paris, France")}
-              </div>
-              <div className="py-2 my-3 event-small-gray">
-                {translate("April 15, 2026")}
-              </div>
-              <div className="d-lg-block">
-                <a
-                  className="btn btn-primary btn-arrow-out"
-                  target="_blank"
-                  href="https://luma.com/wnkqmmqy?utm_source=xprlorg"
-                >
-                  {translate("Register Now")}
-                </a>
-              </div>
-            </div>
-          </div>
-        </section>
-        {/* Upcoming Events */}
-        <section className="container-new py-26" id="upcoming-events">
-          <div className="p-0 pb-2 mb-4 d-flex flex-column-reverse col-lg-6 pr-lg-5">
-            <h3 className="h4 h2-sm">
+            <p className="mb-4">
               {translate(
-                "Check out meetups, hackathons, and other events hosted by the XRPL Community"
+                "Ripple's annual flagship conference returns to New York City. Connect with leaders shaping the future of payments, custody, tokenization, and digital asset infrastructure. For the first time, it combines the Swell and Apex conferences into one unified experience across multiple programming tracks."
               )}
-            </h3>
-            <h6 className="mb-3 eyebrow">{translate("Upcoming Events")}</h6>
-          </div>
-          <div className="filter row col-12 mt-lg-5 d-flex flex-column">
-            <h6 className="mb-3">{translate("Filter By:")}</h6>
-            <div>
-              <div className="form-check form-check-inline">
-                <input
-                  defaultValue="conference"
-                  id="conference-upcoming"
-                  name="conference-upcoming"
-                  type="checkbox"
-                  className="events-filter"
-                  checked={upcomingFilters.conference}
-                  onChange={handleUpcomingFilterChange}
-                />
-                <label htmlFor="conference-upcoming">
-                  {translate("Conference")}
-                </label>
-              </div>
-              <div className="form-check form-check-inline">
-                <input
-                  defaultValue="meetup"
-                  id="meetup-upcoming"
-                  name="meetup-upcoming"
-                  type="checkbox"
-                  className="events-filter"
-                  checked={upcomingFilters.meetup}
-                  onChange={handleUpcomingFilterChange}
-                />
-                <label htmlFor="meetup-upcoming">{translate("Meetups")}</label>
-              </div>
-              <div className="form-check form-check-inline">
-                <input
-                  defaultValue="hackathon"
-                  id="hackathon-upcoming"
-                  name="hackathon-upcoming"
-                  type="checkbox"
-                  className="events-filter"
-                  checked={upcomingFilters.hackathon}
-                  onChange={handleUpcomingFilterChange}
-                />
-                <label htmlFor="hackathon-upcoming">
-                  {translate("Hackathons")}
-                </label>
-              </div>
-              <div className="form-check form-check-inline">
-                <input
-                  defaultValue="ama"
-                  id="ama-upcoming"
-                  name="ama-upcoming"
-                  type="checkbox"
-                  className="events-filter"
-                  checked={upcomingFilters.ama}
-                  onChange={handleUpcomingFilterChange}
-                />
-                <label htmlFor="ama-upcoming">{translate("AMAs")}</label>
-              </div>
-              <div className="form-check form-check-inline">
-                <input
-                  defaultValue="cc"
-                  id="cc-upcoming"
-                  name="cc-upcoming"
-                  type="checkbox"
-                  className="events-filter"
-                  checked={upcomingFilters.cc}
-                  onChange={handleUpcomingFilterChange}
-                />
-                <label htmlFor="cc-upcoming">
-                  {translate("Community Calls")}
-                </label>
-              </div>
-              <div className="form-check form-check-inline">
-                <input
-                  defaultValue="zone"
-                  id="zone-upcoming"
-                  name="zone-upcoming"
-                  type="checkbox"
-                  className="events-filter"
-                  checked={upcomingFilters.zone}
-                  onChange={handleUpcomingFilterChange}
-                />
-                <label htmlFor="zone-upcoming">{translate("XRPL Zone")}</label>
-              </div>
-              <div className="form-check form-check-inline">
-                <input
-                  defaultValue="info"
-                  id="info-upcoming"
-                  name="info-upcoming"
-                  type="checkbox"
-                  className="events-filter"
-                  checked={upcomingFilters["info"]}
-                  onChange={handleUpcomingFilterChange}
-                />
-                <label htmlFor="info-upcoming">
-                  {translate("Info Session")}
-                </label>
-              </div>
+            </p>
+            <div className=" my-3 event-small-gray">
+              {translate("Location: New York City")}
+            </div>
+            <div className="py-2 my-3 event-small-gray">
+              {translate("Oct 27-29, 2026")}
+            </div>
+            <div className="d-lg-block">
+              <Button
+                intention="neutral"
+                emphasis="strong"
+                target="_blank"
+                href="https://swell.ripple.com/?utm_source=xrpl.org&utm_medium=cta&utm_campaign=swell2026-regular&utm_content=Register"
+                iconEnd={<XrplArrowExternalLinkIcon />}
+              >
+                {translate("Register Now")}
+              </Button>
             </div>
           </div>
-          {/* # Available Types - conference, hackathon, ama, cc, zone, meetup, info  */}
-          <div className="mt-2 row row-cols-1 row-cols-lg-3 card-deck">
-            {filteredUpcoming.map((event, i) => (
+        </div>
+      </section>
+      {/* Upcoming Events */}
+      <section className="container-new py-26" id="upcoming-events">
+        <div className="p-0 pb-2 mb-4 d-flex flex-column-reverse col-lg-6 pr-lg-5">
+          <h3 className="h4 h2-sm">
+            {translate(
+              "Check out meetups, hackathons, and other events hosted by the XRPL Community"
+            )}
+          </h3>
+          <h6 className="mb-3 eyebrow">{translate("Upcoming Events")}</h6>
+        </div>
+        <div className="filter row col-12 mt-lg-5 d-flex flex-column">
+          <h6 className="mb-3">{translate("Filter By:")}</h6>
+          <div>
+            <div className="form-check form-check-inline">
+              <input
+                defaultValue="conference"
+                id="conference-upcoming"
+                name="conference-upcoming"
+                type="checkbox"
+                className="events-filter"
+                checked={upcomingFilters.conference}
+                onChange={handleUpcomingFilterChange}
+              />
+              <label htmlFor="conference-upcoming">
+                {translate("Conference")}
+              </label>
+            </div>
+            <div className="form-check form-check-inline">
+              <input
+                defaultValue="meetup"
+                id="meetup-upcoming"
+                name="meetup-upcoming"
+                type="checkbox"
+                className="events-filter"
+                checked={upcomingFilters.meetup}
+                onChange={handleUpcomingFilterChange}
+              />
+              <label htmlFor="meetup-upcoming">{translate("Meetups")}</label>
+            </div>
+            <div className="form-check form-check-inline">
+              <input
+                defaultValue="hackathon"
+                id="hackathon-upcoming"
+                name="hackathon-upcoming"
+                type="checkbox"
+                className="events-filter"
+                checked={upcomingFilters.hackathon}
+                onChange={handleUpcomingFilterChange}
+              />
+              <label htmlFor="hackathon-upcoming">
+                {translate("Hackathons")}
+              </label>
+            </div>
+            <div className="form-check form-check-inline">
+              <input
+                defaultValue="ama"
+                id="ama-upcoming"
+                name="ama-upcoming"
+                type="checkbox"
+                className="events-filter"
+                checked={upcomingFilters.ama}
+                onChange={handleUpcomingFilterChange}
+              />
+              <label htmlFor="ama-upcoming">{translate("AMAs")}</label>
+            </div>
+            <div className="form-check form-check-inline">
+              <input
+                defaultValue="cc"
+                id="cc-upcoming"
+                name="cc-upcoming"
+                type="checkbox"
+                className="events-filter"
+                checked={upcomingFilters.cc}
+                onChange={handleUpcomingFilterChange}
+              />
+              <label htmlFor="cc-upcoming">
+                {translate("Community Calls")}
+              </label>
+            </div>
+            <div className="form-check form-check-inline">
+              <input
+                defaultValue="zone"
+                id="zone-upcoming"
+                name="zone-upcoming"
+                type="checkbox"
+                className="events-filter"
+                checked={upcomingFilters.zone}
+                onChange={handleUpcomingFilterChange}
+              />
+              <label htmlFor="zone-upcoming">{translate("XRPL Zone")}</label>
+            </div>
+            <div className="form-check form-check-inline">
+              <input
+                defaultValue="info"
+                id="info-upcoming"
+                name="info-upcoming"
+                type="checkbox"
+                className="events-filter"
+                checked={upcomingFilters["info"]}
+                onChange={handleUpcomingFilterChange}
+              />
+              <label htmlFor="info-upcoming">
+                {translate("Info Session")}
+              </label>
+            </div>
+          </div>
+        </div>
+        {/* # Available Types - conference, hackathon, ama, cc, zone, meetup, info  */}
+        <div className="row row-cols-1 row-cols-lg-3 g-5 mt-2">
+          {filteredUpcoming.map((event, i) => (
+            <div key={event.name + i} className="col">
               <a
-                key={event.name + i}
-                className={`event-card ${event.type}`}
+                className={`event-card ${event.type} h-100`}
                 href={event.link}
-                style={{}}
+                target="_blank"
+              >
+              <div
+                className="event-card-header"
+                style={{
+                  background: `url(${event.image}) no-repeat`,
+                }}
+              >
+                <div className="event-card-title">
+                  {translate(event.name)}
+                </div>
+              </div>
+              <div className="event-card-body">
+                <p>{translate(event.description)}</p>
+              </div>
+              <div className="mt-lg-auto event-card-footer d-flex flex-column">
+                <span className="mb-2 d-flex icon icon-location">
+                  {event.location}
+                </span>
+                <span className="d-flex icon icon-date">{event.date}</span>
+              </div>
+            </a>
+          </div>
+          ))}
+        </div>
+      </section>
+      {/* Past Events */}
+      <section className="container-new pt-26" id="past-events">
+        <div className="p-0 pb-2 mb-4 d-flex flex-column-reverse col-lg-6 pr-lg-5">
+          <h3 className="h4 h2-sm">
+            {translate("Explore past community-hosted events")}
+          </h3>
+          <h6 className="mb-3 eyebrow">{translate("Past Events")}</h6>
+        </div>
+        <div className="filter row col-12 mt-lg-5 d-flex flex-column">
+          <h6 className="mb-3">{translate("Filter By:")}</h6>
+          <div>
+            <div className="form-check form-check-inline">
+              <input
+                defaultValue="conference"
+                id="conference-past"
+                name="conference-past"
+                type="checkbox"
+                className="events-filter"
+                checked={pastFilters.conference}
+                onChange={handlePastFilterChange}
+              />
+              <label htmlFor="conference-past">
+                {translate("Conference")}
+              </label>
+            </div>
+            <div className="form-check form-check-inline">
+              <input
+                defaultValue="meetup"
+                id="meetup-past"
+                name="meetup-past"
+                type="checkbox"
+                className="events-filter"
+                checked={pastFilters.meetup}
+                onChange={handlePastFilterChange}
+              />
+              <label htmlFor="meetup-past">{translate("Meetups")}</label>
+            </div>
+            <div className="form-check form-check-inline">
+              <input
+                defaultValue="hackathon"
+                id="hackathon-past"
+                name="hackathon-past"
+                type="checkbox"
+                className="events-filter"
+                checked={pastFilters.hackathon}
+                onChange={handlePastFilterChange}
+              />
+              <label htmlFor="hackathon-past">
+                {translate("Hackathons")}
+              </label>
+            </div>
+            <div className="form-check form-check-inline">
+              <input
+                defaultValue="ama"
+                id="ama-past"
+                name="ama-past"
+                type="checkbox"
+                className="events-filter"
+                checked={pastFilters.ama}
+                onChange={handlePastFilterChange}
+              />
+              <label htmlFor="ama-past">{translate("AMAs")}</label>
+            </div>
+            <div className="form-check form-check-inline">
+              <input
+                defaultValue="cc"
+                id="cc-past"
+                name="cc-past"
+                type="checkbox"
+                className="events-filter"
+                checked={pastFilters.cc}
+                onChange={handlePastFilterChange}
+              />
+              <label htmlFor="cc-past">{translate("Community Calls")}</label>
+            </div>
+            <div className="form-check form-check-inline">
+              <input
+                defaultValue="zone"
+                id="zone-past"
+                name="zone-past"
+                type="checkbox"
+                className="events-filter"
+                checked={pastFilters.zone}
+                onChange={handlePastFilterChange}
+              />
+              <label htmlFor="zone-past">{translate("XRPL Zone")}</label>
+            </div>
+            <div className="form-check form-check-inline">
+              <input
+                defaultValue="info"
+                id="info-past"
+                name="info-past"
+                type="checkbox"
+                className="events-filter"
+                checked={pastFilters["info"]}
+                onChange={handlePastFilterChange}
+              />
+              <label htmlFor="info-past">
+                {translate("Info Session")}
+              </label>
+            </div>
+          </div>
+        </div>
+        <div className="row mt-8">
+          {filteredPast.map((event, i) => (
+            <div key={event.name + i} className="col-span-12 col-md-6 col-lg-4 mb-6">
+              <a
+                className={`event-card ${event.type} h-100`}
+                href={event.link}
                 target="_blank"
               >
                 <div
@@ -1711,147 +1890,13 @@ export default function Events() {
                   <span className="mb-2 d-flex icon icon-location">
                     {event.location}
                   </span>
-                  <span className="d-flex icon icon-date">{event.date}</span>
-                </div>
-              </a>
-            ))}
-          </div>
-        </section>
-        {/* Past Events */}
-        <section className="container-new pt-26" id="past-events">
-          <div className="p-0 pb-2 mb-4 d-flex flex-column-reverse col-lg-6 pr-lg-5">
-            <h3 className="h4 h2-sm">
-              {translate("Explore past community-hosted events")}
-            </h3>
-            <h6 className="mb-3 eyebrow">{translate("Past Events")}</h6>
-          </div>
-          <div className="filter row col-12 mt-lg-5 d-flex flex-column">
-            <h6 className="mb-3">{translate("Filter By:")}</h6>
-            <div>
-              <div className="form-check form-check-inline">
-                <input
-                  defaultValue="conference"
-                  id="conference-past"
-                  name="conference-past"
-                  type="checkbox"
-                  className="events-filter"
-                  checked={pastFilters.conference}
-                  onChange={handlePastFilterChange}
-                />
-                <label htmlFor="conference-past">
-                  {translate("Conference")}
-                </label>
+                <span className="d-flex icon icon-date">{event.date}</span>
               </div>
-              <div className="form-check form-check-inline">
-                <input
-                  defaultValue="meetup"
-                  id="meetup-past"
-                  name="meetup-past"
-                  type="checkbox"
-                  className="events-filter"
-                  checked={pastFilters.meetup}
-                  onChange={handlePastFilterChange}
-                />
-                <label htmlFor="meetup-past">{translate("Meetups")}</label>
-              </div>
-              <div className="form-check form-check-inline">
-                <input
-                  defaultValue="hackathon"
-                  id="hackathon-past"
-                  name="hackathon-past"
-                  type="checkbox"
-                  className="events-filter"
-                  checked={pastFilters.hackathon}
-                  onChange={handlePastFilterChange}
-                />
-                <label htmlFor="hackathon-past">
-                  {translate("Hackathons")}
-                </label>
-              </div>
-              <div className="form-check form-check-inline">
-                <input
-                  defaultValue="ama"
-                  id="ama-past"
-                  name="ama-past"
-                  type="checkbox"
-                  className="events-filter"
-                  checked={pastFilters.ama}
-                  onChange={handlePastFilterChange}
-                />
-                <label htmlFor="ama-past">{translate("AMAs")}</label>
-              </div>
-              <div className="form-check form-check-inline">
-                <input
-                  defaultValue="cc"
-                  id="cc-past"
-                  name="cc-past"
-                  type="checkbox"
-                  className="events-filter"
-                  checked={pastFilters.cc}
-                  onChange={handlePastFilterChange}
-                />
-                <label htmlFor="cc-past">{translate("Community Calls")}</label>
-              </div>
-              <div className="form-check form-check-inline">
-                <input
-                  defaultValue="zone"
-                  id="zone-past"
-                  name="zone-past"
-                  type="checkbox"
-                  className="events-filter"
-                  checked={pastFilters.zone}
-                  onChange={handlePastFilterChange}
-                />
-                <label htmlFor="zone-past">{translate("XRPL Zone")}</label>
-              </div>
-              <div className="form-check form-check-inline">
-                <input
-                  defaultValue="info"
-                  id="info-past"
-                  name="info-past"
-                  type="checkbox"
-                  className="events-filter"
-                  checked={pastFilters["info"]}
-                  onChange={handlePastFilterChange}
-                />
-                <label htmlFor="info-past">
-                  {translate("Info Session")}
-                </label>
-              </div>
+            </a>
             </div>
-          </div>
-          <div className="mt-2 mb-0 row row-cols-1 row-cols-lg-3 card-deck ">
-            {filteredPast.map((event, i) => (
-              <a
-                key={event.name + i}
-                className="event-card {event.type}"
-                href={event.link}
-                target="_blank"
-              >
-                <div
-                  className="event-card-header"
-                  style={{
-                    background: `url(${event.image}) no-repeat`,
-                  }}
-                >
-                  <div className="event-card-title">
-                    {translate(event.name)}
-                  </div>
-                </div>
-                <div className="event-card-body">
-                  <p>{translate(event.description)}</p>
-                </div>
-                <div className="mt-lg-auto event-card-footer d-flex flex-column">
-                  <span className="mb-2 d-flex icon icon-location">
-                    {event.location}
-                  </span>
-                  <span className="d-flex icon icon-date">{event.date}</span>
-                </div>
-              </a>
-            ))}
-          </div>
-        </section>
-      </div>
+          ))}
+        </div>
+      </section>
     </div>
   );
 }

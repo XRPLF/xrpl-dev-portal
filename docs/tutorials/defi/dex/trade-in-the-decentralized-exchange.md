@@ -23,9 +23,9 @@ This tutorial demonstrates how you can buy and sell tokens in the [decentralized
     - You can also read along and use the interactive steps in your browser without any setup.
 
 <!-- Source for this specific tutorial's interactive bits: -->
-<script type="application/javascript" src="/js/interactive-tutorial.js"></script>
+<script type="application/javascript" defer src="/js/interactive-tutorial.js"></script>
 <script src='https://cdn.jsdelivr.net/npm/bignumber.js@9.0.2/bignumber.min.js'></script>
-<script type="application/javascript" src="/js/tutorials/trade-in-the-dex.js"></script>
+<script type="application/javascript" defer src="/js/tutorials/trade-in-the-dex.js"></script>
 
 ## Example Code
 

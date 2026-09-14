@@ -1,0 +1,28 @@
+// BDS PanelStack Pattern Styles
+// Brand Design System - Vertically stacked featured panels
+//
+// Reuses CarouselFeatured slide styles (`.bds-carousel-featured*`) so each
+// panel matches a carousel slide. This file only handles the vertical stack.
+//
+// Naming Convention: BEM with 'bds' namespace
+// .bds-panel-stack         - Outer stack (document flow, no carousel track)
+// .bds-panel-stack__panel  - Individual panel (also has carousel-featured classes)
+
+.bds-panel-stack {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: $bds-space-2xl;
+
+  @include media-breakpoint-up(md) {
+    gap: $bds-space-3xl;
+  }
+
+  @include media-breakpoint-up(lg) {
+    gap: $bds-space-4xl;
+  }
+}
+
+.bds-panel-stack__panel {
+  overflow: hidden;
+}

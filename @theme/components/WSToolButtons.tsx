@@ -1,5 +1,6 @@
-import { Link } from '@redocly/theme/components/Link/Link'
 import { useThemeHooks } from '@redocly/theme/core/hooks'
+import Button from 'shared/components/Button'
+import { XrplArrowInternalLinkIcon } from 'shared/components/Icons'
 
 type TryItServer = 's1' | 's2' | 'xrplcluster' | 'testnet' | 'devnet' | 'testnet-clio' | 'devnet-clio'
 
@@ -27,7 +28,16 @@ export function TryIt(props: {
   }
   const to_path = `/resources/dev-tools/websocket-api-tool${use_server}#${props.method}`
   return (
-    <Link style={{marginBottom: "1rem", textDecoration: "none"}} className="btn btn-primary btn-arrow" to={to_path} target="_blank" role="button">{translate("component.tryit", "Try it!")}</Link>
+      <Button
+        intention="neutral"
+        emphasis="standard"
+        href={to_path}
+        target="_blank"
+        iconEnd={<XrplArrowInternalLinkIcon />}
+        className={"mb-3"}
+      >
+        {translate("component.tryit", "Try it!")}
+      </Button>
   )
 }
 
@@ -53,6 +63,15 @@ export function TxExample(props: {
   const ws_req = `req=%7B%22id%22%3A%22example_tx_lookup%22%2C%22command%22%3A%22tx%22%2C%22transaction%22%3A%22${props.txid}%22%2C%22binary%22%3Afalse%2C%22api_version%22%3A2%7D`
   const to_path = `/resources/dev-tools/websocket-api-tool?${ws_req}${use_server}`
   return (
-    <Link style={{marginBottom: "1rem", textDecoration: "none"}} className="btn btn-primary btn-arrow" to={to_path} target="_blank" role="button">{translate("component.queryexampletx", "Query example transaction")}</Link>
+      <Button
+        intention="neutral"
+        emphasis="standard"
+        href={to_path}
+        target="_blank"
+        iconEnd={<XrplArrowInternalLinkIcon />}
+        className={"mb-3"}
+      >
+        {translate("component.queryexampletx", "Query example transaction")}
+      </Button>
   )
 }

@@ -1,4 +1,4 @@
-#app_root article .code-walkthrough {
+article .code-walkthrough {
     margin-right: 112px;
     max-width: calc(100% - 112px);
     padding-right: 0;
@@ -45,6 +45,11 @@
         [data-component-name="CodeBlock/CodeBlockContainer"] {
             border-top-left-radius: 0;
             border-top-right-radius: 0;
+        }
+    }
+    [data-component-name="Markdoc/CodeWalkthrough/CodePanelHeader"] {
+        [data-component-name="Button/Button"] {
+            color: $white;
         }
     }
 

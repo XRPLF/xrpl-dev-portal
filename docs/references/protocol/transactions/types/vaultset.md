@@ -34,7 +34,7 @@ Once a vault is created, its public or private status is permanent and cannot be
   "Sequence": 8,
   "VaultID": "77D6234D074E505024D39C04C3F262997B773719AB29ACFA83119E4210328776",
   "Data": "5468697320697320617262697472617279206D657461646174612061626F757420746865207661756C742E",
-  "AssetsMaximum": 5,
+  "AssetsMaximum": "5",
   "DomainID": "77D6234D074E505024D39C04C3F262997B773719AB29ACFA83119E4210328776"
 }
 ```
@@ -47,7 +47,7 @@ In addition to the [common fields](../../../protocol/transactions/common-fields#
 | :---------------- | :-------- | :---------------- | :-------- | :-------------------|
 | `VaultID`         | String    | Hash256           | Yes       | The unique identifier of the vault that needs to be updated. |
 | `Data`            | String    | Blob              | No        | Arbitrary vault metadata, limited to 256 bytes. See [Data Field Format](../../ledger-data/ledger-entry-types/vault.md#data-field-format) for the recommended format. |
-| `AssetsMaximum`   | Number    | Number            | No        | The maximum asset amount that can be held in a vault. The value cannot be lower than the current `AssetsTotal`, unless the value is 0. |
+| `AssetsMaximum`   | String    | Number            | No        | The maximum asset amount that can be held in a vault. The value cannot be lower than the current `AssetsTotal`, unless the value is 0. |
 | `DomainID`        | String    | Hash256           | No        | The [PermissionedDomain](../../../../concepts/tokens/decentralized-exchange/permissioned-domains.md) object ID associated with the shares of this vault. The `DomainID` is only required when updating a private vault. |
 
 ## {% $frontmatter.seo.title %} Flags

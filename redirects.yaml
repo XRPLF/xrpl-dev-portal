@@ -399,6 +399,10 @@ authorized-minter.html:
     to: /docs/use-cases/tokenization/authorized-minter
 digital-artist.html:
     to: /docs/use-cases/tokenization/digital-artist
+docs/use-cases/tokenization/real-world-assets.html:
+    to: /docs/use-cases/tokenization
+docs/use-cases/tokenization/real-world-assets:
+    to: /docs/use-cases/tokenization    
 defi-uc.html:
     to: /docs/use-cases/defi/
 algorithmic-trading.html:
@@ -1333,6 +1337,10 @@ run-a-rippled-validator.html:
     to: /docs/infrastructure/configuration/server-modes/run-xrpld-as-a-validator
 list-xrp-in-your-exchange.html:
     to: /docs/use-cases/defi/list-xrp-as-an-exchange
+/docs/use-cases/defi:
+    to: /docs/use-cases/trading
+/docs/use-cases/defi.html:
+    to: /docs/use-cases/trading
 contribute-code-to-rippled.html:
     to: /resources/contribute-code
 contribute-code-to-ripple-lib.html:

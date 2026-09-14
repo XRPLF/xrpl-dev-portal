@@ -5,6 +5,9 @@ import mapLight from "../static/js/impact/mapLight.json";
 import { useLottie } from "lottie-react";
 import { useThemeFromClassList } from "../@theme/helpers";
 import { Link } from "@redocly/theme/components/Link/Link";
+import { Link as XrplLink } from "shared/components/Link";
+import Button from "shared/components/Button";
+import { XrplArrowInternalLinkIcon } from "shared/components/Icons";
 
 export const frontmatter = {
   seo: {
@@ -32,14 +35,6 @@ export default function Impact() {
   return (
     <div className="landing page-impact">
       <div className="overflow-hidden">
-        <div className="position-relative d-none-sm">
-          <img
-            alt="purple waves"
-            src={require("../static/img/backgrounds/community-purple.svg")}
-            className="landing-bg"
-            id="impact-purple"
-          />
-        </div>
         <section className="container-new py-26 text-lg-center">
           <div className="p-0 col-lg-8 mx-lg-auto">
             <div className="d-flex flex-column-reverse">
@@ -52,13 +47,6 @@ export default function Impact() {
             </div>
           </div>
         </section>
-        <div className="position-relative d-none-sm">
-          <img
-            alt="green waves"
-            src={require("../static/img/backgrounds/home-green.svg")}
-            id="impact-green"
-          />
-        </div>
         {/* World map */}
         <section className="container-new py-10">
           <div className="col-sm-10 col-lg-6 offset-md-3 p-10-until-sm pl-0-sm pr-0-sm">
@@ -78,7 +66,7 @@ export default function Impact() {
                 "about.impact.feature.ppart1",
                 "Open and decentralized, blockchain and crypto are seeing an increase in adoption across the financial services industry, from retail and institutional investment to "
               )}`}
-              <Link to="/about/uses">{translate("about.impact.feature.ppart2", "commercial use cases ")}</Link>
+              <XrplLink href="/about/uses" intention="brand">{translate("about.impact.feature.ppart2", "commercial use cases ")}</XrplLink>
               {`${translate("about.impact.feature.ppart3", "like CBDCs, NFTs, and cross-border payments.")}`}
             </p>
           </div>
@@ -133,16 +121,6 @@ export default function Impact() {
         {/* Card */}
         <section className="container-new py-26">
           <div className="col-md-6 offset-md-3 p-6-sm p-10-until-sm br-8 cta-card">
-            <img
-              alt="purple waves"
-              src={require("../static/img/backgrounds/cta-community-purple.svg")}
-              className="cta cta-top-left"
-            />
-            <img
-              alt="green waves"
-              src={require("../static/img/backgrounds/cta-calculator-green.svg")}
-              className="cta cta-bottom-right"
-            />
             <div className="z-index-1 position-relative">
               <div className="d-flex flex-column-reverse">
                 <h2 className="h4 h2-sm mb-10-until-sm mb-8-sm">
@@ -159,9 +137,14 @@ export default function Impact() {
                   "Learn more about companies and developers who are using the XRP Ledger to solve interesting problems efficiently and sustainably."
                 )}
               </p>
-              <Link to="/about/uses" className="btn btn-primary btn-arrow">
+              <Button
+                intention="brand"
+                emphasis="strong"
+                href="/about/uses"
+                iconEnd={<XrplArrowInternalLinkIcon />}
+              >
                 {translate("See More")}
-              </Link>
+              </Button>
             </div>
           </div>
         </section>
@@ -183,9 +166,14 @@ export default function Impact() {
                 )}
               </p>
               <div className="d-none d-lg-block py-lg-3">
-                <Link className="btn btn-primary btn-arrow" to="/resources/contribute-code">
+                <Button
+                  intention="brand"
+                  emphasis="standard"
+                  href="/resources/contribute-code"
+                  iconEnd={<XrplArrowInternalLinkIcon />}
+                >
                   {translate("Join the Community")}
-                </Link>
+                </Button>
               </div>
             </div>
             <div className="order-2 col-lg-6 px-0 pl-lg-3">
@@ -198,9 +186,9 @@ export default function Impact() {
                       <h6 className="mb-3">{translate("Blog")}</h6>
                       <p>
                         {`${translate("about.impact.blog.ppart1", "Check out the ")}`}
-                        <Link to="/blog">
+                        <XrplLink href="/blog" intention="brand">
                           {translate("about.impact.blog.ppart2", "XRPL dev blog ")}
-                        </Link>
+                        </XrplLink>
                         {`${translate(
                           "about.impact.blog.ppart3", 
                           "to stay up-to-date on the latest innovations and developments in the XRPL community."
@@ -215,9 +203,9 @@ export default function Impact() {
                       <h6 className="mb-3">{translate("Events")}</h6>
                       <p>
                         {`${translate("about.impact.events.ppart1", "Attend ")}`}
-                        <Link to="/community/events">
+                        <XrplLink href="/community/events" intention="brand">
                           {translate("about.impact.events.ppart2", "meetups, hackathons, and conferences ")}
-                        </Link>
+                        </XrplLink>
                         {`${translate(
                           "about.impact.events.ppart3",
                           "to meet other members of the community."
@@ -231,12 +219,13 @@ export default function Impact() {
                       <h6 className="mb-3">{translate("Code")}</h6>
                       <p>
                         {`${translate("about.impact.code.ppart1", "View the ")}`}
-                        <a
+                        <XrplLink
                           href="https://github.com/XRPLF/xrpl-dev-portal/"
+                          intention="brand"
                           target="_blank"
                         >
                           {translate("about.impact.code.ppart2", "Github repositories ")}
-                        </a>
+                        </XrplLink>
                         {`${translate(
                           "about.impact.code.ppart3",
                           "to find blockchain projects to see how you can contribute."
@@ -268,9 +257,9 @@ export default function Impact() {
                         <h6 className="mb-3">{translate("Events")}</h6>
                         <p>
                           {`${translate("about.impact.events.ppart1", "Attend ")}`}
-                          <Link to="/community/events">
+                          <XrplLink href="/community/events" intention="brand">
                             {translate("about.impact.events.ppart2", "meetups, hackathons, and conferences ")}
-                          </Link>
+                          </XrplLink>
                           {`${translate(
                             "about.impact.events.ppart3",
                             "to meet other members of the community."

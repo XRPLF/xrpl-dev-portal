@@ -1,0 +1,212 @@
+// BDS CarouselButton Component Styles
+// Brand Design System - Circular navigation button for carousels
+//
+// Naming Convention: BEM with 'bds' namespace
+// .bds-carousel-button              - Base button
+// .bds-carousel-button--prev        - Previous/left direction
+// .bds-carousel-button--next        - Next/right direction
+// .bds-carousel-button--neutral     - Neutral/gray color variant
+// .bds-carousel-button--green       - Green color variant
+// .bds-carousel-button--black       - Black/white color variant
+// .bds-carousel-button--disabled    - Disabled state modifier
+// .bds-carousel-button__arrow-icon  - Arrow icon element
+//
+// Note: This file is imported within xrpl.scss after Bootstrap and project
+// variables are loaded, so $grid-breakpoints, colors, and mixins are available.
+
+// =============================================================================
+// Design Tokens
+// =============================================================================
+
+// Button dimensions
+$bds-carousel-button-size-sm: 37px;     // Mobile/Tablet
+$bds-carousel-button-size-lg: 40px;     // Desktop
+
+// Transition
+$bds-carousel-button-transition: 200ms cubic-bezier(0.98, 0.12, 0.12, 0.98);
+
+// =============================================================================
+// Color Variant Configuration Maps
+// =============================================================================
+
+// Dark Mode color variants
+$bds-carousel-button-variants-dark: (
+  'green': (
+    'bg': $green-300,
+    'color': $black,
+    'hover': $green-400,
+    'active': $green-300,
+    'disabled-bg': $green-500,
+    'disabled-color': #F0F3F7,
+    'disabled-opacity': 0.5
+  ),
+  'neutral': (
+    'bg': $gray-300,
+    'color': $black,
+    'hover': $gray-400,
+    'active': $gray-300,
+    'disabled-bg': $gray-500,
+    'disabled-color': $gray-300,
+    'disabled-opacity': 0.5
+  ),
+  'black': (
+    'bg': $white,
+    'color': $black,
+    'hover': $gray-300,
+    'active': $white,
+    'disabled-bg': $gray-500,
+    'disabled-color': null,
+    'disabled-opacity': 0.5
+  )
+);
+
+// Light Mode color variants
+$bds-carousel-button-variants-light: (
+  'green': (
+    'bg': $green-300,
+    'color': $black,
+    'hover': $green-200,
+    'active': $green-300,
+    'disabled-bg': $green-100,
+    'disabled-color': $gray-300,
+    'disabled-opacity': 1
+  ),
+  'neutral': (
+    'bg': $gray-300,
+    'color': $black,
+    'hover': $gray-200,
+    'active': $gray-300,
+    'disabled-bg': $gray-100,
+    'disabled-color': $gray-300,
+    'disabled-opacity': 1
+  ),
+  'black': (
+    'bg': $black,
+    'color': $white,
+    'hover': $gray-500,
+    'active': $black,
+    'disabled-bg': #F0F3F7,
+    'disabled-color': $gray-300,
+    'disabled-opacity': 1
+  )
+);
+
+// =============================================================================
+// Mixin: Apply Color Variant Styles
+// =============================================================================
+
+@mixin carousel-button-variant($variant-name, $config) {
+  .bds-carousel-button--#{$variant-name} {
+    background-color: map-get($config, 'bg');
+    color: map-get($config, 'color');
+
+    &:hover:not(:disabled) {
+      background-color: map-get($config, 'hover');
+    }
+
+    &:active:not(:disabled) {
+      background-color: map-get($config, 'active');
+    }
+
+    &.bds-carousel-button--disabled,
+    &:disabled {
+      background-color: map-get($config, 'disabled-bg') !important;
+      @if map-get($config, 'disabled-color') {
+        color: map-get($config, 'disabled-color') !important;
+      }
+      opacity: map-get($config, 'disabled-opacity') !important;
+      cursor: not-allowed !important;
+    }
+  }
+}
+
+// =============================================================================
+// Base Button Styles
+// =============================================================================
+
+.bds-carousel-button {
+  // Reset button styles
+  appearance: none;
+  border: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+
+  // Layout
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: $bds-carousel-button-size-sm;
+  height: $bds-carousel-button-size-sm;
+
+  // Transition
+  transition: background-color $bds-carousel-button-transition,
+              opacity $bds-carousel-button-transition;
+
+  @include media-breakpoint-up(lg) {
+    width: $bds-carousel-button-size-lg;
+    height: $bds-carousel-button-size-lg;
+  }
+
+  // Focus styles
+  &:focus {
+    outline: 2px solid $white;
+    outline-offset: 2px;
+  }
+
+  &:focus:not(:focus-visible) {
+    outline: none;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $white;
+    outline-offset: 2px;
+  }
+}
+
+// =============================================================================
+// Arrow Icon
+// =============================================================================
+
+.bds-carousel-button__arrow-icon {
+  width: 18px;
+  height: 16px;
+
+  @include media-breakpoint-down(lg) {
+    width: 18px;
+    height: 15px;
+  }
+}
+
+// =============================================================================
+// DARK MODE (Default) - Color Variants
+// =============================================================================
+
+// Generate all dark mode variant styles using the mixin
+@each $variant-name, $config in $bds-carousel-button-variants-dark {
+  @include carousel-button-variant($variant-name, $config);
+}
+
+// =============================================================================
+// LIGHT MODE (html.light) - Color Variants
+// =============================================================================
+
+html.light {
+  // Focus styles - Light Mode
+  .bds-carousel-button {
+    &:focus {
+      outline-color: $gray-900;
+    }
+
+    &:focus-visible {
+      outline-color: $gray-900;
+    }
+  }
+
+  // Generate all light mode variant overrides using the mixin
+  @each $variant-name, $config in $bds-carousel-button-variants-light {
+    @include carousel-button-variant($variant-name, $config);
+  }
+}
+

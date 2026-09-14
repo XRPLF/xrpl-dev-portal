@@ -1,0 +1,58 @@
+// Spacing tokens - responsive
+// Note: Uses centralized spacing tokens from _spacing.scss where applicable.
+// Mobile (<768px)
+$bds-cmb-gap-mobile: $bds-space-4xl; // 48px - spacing('5xl')
+$bds-cmb-padding-mobile: $bds-space-lg; // 16px - spacing('lg')
+
+// Tablet (768px-1023px)
+$bds-cmb-gap-tablet: $bds-space-6xl; // 64px - spacing('6xl')
+$bds-cmb-padding-tablet: $bds-space-2xl; // 24px - spacing('2xl')
+
+// Desktop (≥1024px)
+$bds-cmb-gap-desktop: $bds-space-8xl; // 80px - spacing('8xl')
+$bds-cmb-padding-desktop: $bds-space-4xl $bds-space-3xl; // 40px 32px
+
+.bds-home-hero {
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: $bds-cmb-gap-mobile;
+    // Mobile-first padding and gap (default)
+    padding: $bds-cmb-padding-mobile;
+
+    // Tablet breakpoint
+    @include media-breakpoint-up(md) {
+      padding: $bds-cmb-padding-tablet;
+    }
+
+    // Desktop breakpoint
+    @include media-breakpoint-up(lg) {
+      padding: $bds-cmb-padding-desktop;
+    }
+  }
+
+  &__header {
+    @include type(display-sm);
+    font-family: $font-family-sans-serif;
+    margin: 0;
+    color: inherit !important;
+    text-align: center;
+
+    .bds-home-hero__subtitle {
+      font-family: $font-family-monospace !important;
+    }
+  }
+
+  &__description {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__media {
+    width: auto;
+    height: auto;
+    display: block;
+    object-fit: contain;
+  }
+}

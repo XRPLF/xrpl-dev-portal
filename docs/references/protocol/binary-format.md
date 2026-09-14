@@ -202,6 +202,7 @@ Transactions and ledger entries may contain fields of any of the following types
 | [Blob][]         | 7         | Variable   | Yes                  | Arbitrary binary data. One important such field is `TxnSignature`, the signature that authorizes a transaction. |
 | [Currency][]     | 26        | 160        | No                   | A currency code, such as one used in [price oracles](../../concepts/decentralized-storage/price-oracles.md). |
 | [Issue][]        | 24        | 160 or 320 | No                   | An asset definition, XRP or a token, with no quantity. |
+| [Number][]       | 9         | 96         | No                   | A decimal value with a 64-bit signed mantissa and a 32-bit signed exponent, used for quantities that need more range and fractional precision than an integer type. Vault and lending fields such as `AssetsTotal` are examples of this type. |
 | [Object][]       | 14        | Variable   | No                   | An object containing one or more nested fields. These "inner" objects may have additional formatting restrictions. |
 | [PathSet][]      | 18        | Variable   | No                   | A set of possible [payment paths](../../concepts/tokens/fungible-tokens/paths.md) for a [cross-currency payment](../../concepts/payment-types/cross-currency-payments.md). |
 | [UInt8][]        | 16        | 8          | No                   | An 8-bit unsigned integer. |
@@ -359,6 +360,19 @@ Some fields specify a _type_ of asset, which could be XRP or a fungible [token](
 
 1. The first 160 bits are the [currency code](#currency-codes) of the asset. For XRP, this is all 0's.
 2. If the first 160 bits are all 0's (the asset is XRP), the field ends there. Otherwise, the asset is a token and the next 160 bits are the [AccountID of the token issuer](#accountid-fields).
+
+
+### Number Fields
+[Number]: #number-fields
+
+A `Number` is a decimal value stored as two fixed-size integers, serialized in order with no length prefix:
+
+1. A 64-bit signed mantissa, big-endian, two's complement.
+2. A 32-bit signed exponent, big-endian, two's complement.
+
+The value is the mantissa multiplied by 10 raised to the exponent, so the type can represent fractional amounts that a `UInt64` cannot, without being tied to a currency the way an [Amount][] is.
+
+In JSON, `Number` fields are represented as strings, not as JSON numbers. For example, a vault holding one million units of its asset serializes `AssetsTotal` as `"1000000"`.
 
 
 ### Object Fields

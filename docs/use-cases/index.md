@@ -11,5 +11,9 @@ seo:
 
 Browse the documentation based on practical use cases.
 
+* [Payments](payments)
+* [Tokenization](tokenization)
+* [Trading](trading)
+* [Credit (Open for Voting)](defi/institutional-credit-facilities)
 
-{% child-pages /%}
+<!-- {% child-pages /%} -->

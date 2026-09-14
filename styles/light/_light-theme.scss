@@ -10,12 +10,12 @@ article {
 }
 
 body {
-  background-color: $light-bg;
+  background-color: $white;
   color: $light-fg;
 }
 
 #topnav-theme .custom-theme-toggle {
-  .custom-control-label::before {
+  .form-check-input {
     background-color: transparent;
     background-position: bottom right;
     transform: rotate(-15deg);
@@ -39,7 +39,7 @@ h6,
   }
 
   &.green-500 {
-    color: $green-700;
+    color: $green-400;
     text-shadow: white 0 0 2px, white -1px -1px 2px, white 1px 1px 2px;
   }
 }
@@ -106,11 +106,18 @@ h6,
 
 .list-group-item {
   border-color: $light-fg-muted;
-  background-color: $light-bg;
 
   &.disabled {
-    color: $light-fg-disabled;
+    color: $gray-600;
   }
+
+  a {
+    color: $light-fg;
+  }
+}
+
+#connection-status-item.active {
+  background-color: $xrpl-green-9;
 }
 
 .progress {
@@ -123,9 +130,15 @@ h6,
 
 // Navigation ------------------------------------------------------------------
 
-a,
-nav a,
-a:not([role="button"]) {
+// `:where(:not(...))` wraps the exclusion chain at ZERO specificity so this
+// generic anchor styling can't override more specific component-level rules
+// (e.g. `.page-tutorials .page-toc.no-sideline li a:hover`). Without `:where()`,
+// each `:not()` adds to specificity, inflating to (0,6,2) and beating most
+// component rules. With `:where()` the selectors are (0,0,1) / (0,0,2), so
+// any page- or component-scoped class chain wins as expected.
+a:where(:not(.bds-link):not(.bds-card-offgrid):not(.bds-card-icon):not(.bds-btn)),
+nav a:where(:not(.bds-link):not(.bds-card-offgrid):not(.bds-card-icon):not(.bds-btn)),
+a:where(:not([role="button"]):not(.bds-link):not(.bds-card-offgrid):not(.bds-card-icon):not(.bds-btn)) {
   color: $light-fg;
 
   &.btn-primary {
@@ -143,7 +156,7 @@ a:not([role="button"]) {
     color: $light-link-hover-color;
   }
 
-  &:not(.btn):focus {
+  &:where(:not(.btn):not(.bds-text-card)):focus {
     background-color: transparent;
   }
 }
@@ -176,7 +189,7 @@ article a.button,
 
 // Breadcrumbs
 .breadcrumb {
-  background: $light-bg;
+  background: transparent;
 }
 
 .breadcrumb-item a {
@@ -281,6 +294,14 @@ aside .sidenav_cat_title {
 .page-toc .level-1 a,
 .command-list .separator {
   color: $black;
+}
+
+// The command list's method links carry no color of their own, so in light
+// mode they fell through to `aside li a`'s $white (styles/_side-nav.scss),
+// which isn't theme-scoped -- white on white. Kept at two classes so the
+// hover/active rule below still outranks it on source order.
+.command-list a {
+  color: $light-fg;
 }
 
 aside a:hover,
@@ -407,7 +428,7 @@ aside .card {
 
 // Status labels
 .status.not_enabled {
-  color: $yellow-700;
+  color: $yellow-400;
 }
 
 // Parent ("category") page in label landings
@@ -429,8 +450,10 @@ aside .card {
     }
   }
 
-  p a,
-  .longform a {
+  // :not(.xrpl-link) so the Link component's own brand/on-theme styling
+  // isn't overridden by this rule (see also styles/_landings.scss).
+  p a:not(.bds-link):not(.xrpl-link),
+  .longform a:not(.bds-link):not(.xrpl-link) {
     color: $light-link-hover-color;
   }
 }
@@ -438,19 +461,19 @@ aside .card {
 // Callouts
 .devportal-callout.caution,
 .devportal-callout.注意 {
-  border-color: $yellow-700;
+  border-color: $yellow-400;
 
   >strong:first-child::before {
-    color: $yellow-700;
+    color: $yellow-400;
   }
 }
 
 .devportal-callout.tip,
 .devportal-callout.ヒント {
-  border-color: $green-600;
+  border-color: $green-300;
 
   >strong:first-child::before {
-    color: $green-600;
+    color: $green-300;
   }
 }
 
@@ -495,13 +518,14 @@ pre {
 
 .interactive-block {
   .breadcrumb-item.done a::after {
-    color: $green-900;
+    color: $green-500;
   }
 }
 
 // Dev tools -------------------------------------------------------------------
 .modal-content {
   background-color: $light-standout-bg;
+  color: $black;
 }
 
 .rpc-tool {
@@ -605,6 +629,18 @@ pre {
 
 // Use Cases & Featured Projects page
 .page-uses {
+
+  [data-bs-target="#categoryFilterModal"] {
+    color: $light-fg;
+
+    .category-filter-icon {
+      color: $black;
+
+      rect {
+        fill: $white;
+      }
+    }
+  }
 
   .card-body {
     background: $white;
@@ -1025,10 +1061,10 @@ $placeholder-color: $gray-600;
     background-image: url(../img/events/event-check.svg);
     background-repeat: no-repeat;
     background-position: center;
-    background-color: $blue-purple-600;
+    background-color: $blue-purple-300;
     border-width: 2px;
     border-style: solid;
-    border-color: $blue-purple-600;
+    border-color: $blue-purple-300;
     border-radius: 4px;
   }
 
@@ -1086,14 +1122,6 @@ main article .card-grid {
   .card-icon-container,
   &.card-grid-3xN .card-icon-container {
     background: $gray-300;
-  }
-}
-
-[data-component-name="Footer/Footer"] {
-  [data-component-name="Footer/FooterColumn"] {
-    text-shadow: $gray-100 0px 0px 2px, $gray-100 1px 1px 2px, $gray-100 2px 2px 3px,
-      $gray-100 2px 2px 4px, $gray-100 2px 2px 5px, $gray-100 2px 2px 6px, $gray-100 -1px -1px 2px,
-      $gray-100 -2px -2px 3px, $gray-100 -2px -2px 4px;
   }
 }
 
@@ -1475,9 +1503,9 @@ main article .card-grid {
   }
 
   a.tx-title {
-    color: $blue-purple-600;
+    color: $blue-purple-500;
     &:visited {
-      color: $blue-purple-600;
+      color: $blue-purple-500;
     }
     &:hover, &:visited:hover {
       color: $light-link-hover-color

@@ -1,10 +1,10 @@
 {
   "mcpServers": {
-    "context7": {
+    "xrpl-docs": {
       "type": "http",
-      "url": "https://mcp.context7.com/mcp"
+      "url": "https://mcp.xrpledger.ai"
     },
-    "xrpl-dev-portal": {
+    "xrpl.org": {
       "type": "http",
       "url": "https://xrpl.org/mcp"
     }

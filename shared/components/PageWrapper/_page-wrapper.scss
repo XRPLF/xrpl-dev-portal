@@ -1,0 +1,31 @@
+// PageWrapper
+// -----------------------------------------------------------------------------
+// Top-level page layout wrapper used by BDS-2026 marketing pages.
+// Stacks section children vertically with responsive inter-section spacing.
+//
+// Uses the project's section-gap tokens from `_spacing.scss` and the
+// Bootstrap `media-breakpoint-up` mixin against `$grid-breakpoints`
+// defined in `_breakpoints.scss` (md: 576px, lg: 992px).
+//
+//   - base:        $bds-gap-section-sm (24px)  — mobile
+//   - ≥md (576px): $bds-gap-section-md (32px)  — tablet
+//   - ≥lg (992px): $bds-gap-section-lg (40px)  — L desktop and up
+//
+// Source of truth: Figma "Section spacing" annotations on every page canvas.
+
+.bds-page-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: $bds-gap-section-sm;
+  margin-bottom: $bds-gap-section-sm;
+
+  @include media-breakpoint-up(md) {
+    gap: $bds-gap-section-md;
+    margin-bottom: $bds-gap-section-md;
+  }
+
+  @include media-breakpoint-up(lg) {
+    gap: $bds-gap-section-lg;
+    margin-bottom: $bds-gap-section-lg; 
+  }
+}

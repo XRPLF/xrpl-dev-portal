@@ -41,8 +41,8 @@ The lending protocol uses the pseudo-account of the associated `Vault` entry to 
   "DebtTotal": 50000,
   "DebtMaximum": 100000,
   "CoverAvailable": 10000,
-  "CoverRateMinimum": 1000,
-  "CoverRateLiquidation": 500
+  "CoverRateMinimum": 10000,
+  "CoverRateLiquidation": 5000
 }
 ```
 
@@ -69,7 +69,7 @@ In addition to the [common ledger entry fields][], {% code-page-name /%} entries
 | `DebtMaximum`         | String    | Number        | No        | The maximum amount the protocol can owe the vault. The default value of `0` means there is no limit to the debt. |
 | `CoverAvailable`      | String    | Number        | Yes       | The total amount of first-loss capital deposited into the lending protocol. |
 | `CoverRateMinimum`    | Number    | UInt32        | Yes       | The 1/10th basis point of the `DebtTotal` that the first-loss capital must cover. Valid values are 0 to 100000 (inclusive), representing 0% to 100%. |
-| `CoverRateLiquidation`| Number    | UInt12        | Yes       | The 1/10th basis point of minimum required first-loss capital that is moved to an asset vault to cover a loan default. Valid values are 0 to 100000 (inclusive), representing 0% to 100%. |
+| `CoverRateLiquidation`| Number    | UInt32        | Yes       | The 1/10th basis point of minimum required first-loss capital that is moved to an asset vault to cover a loan default. Valid values are 0 to 100000 (inclusive), representing 0% to 100%. |
 
 
 ## {% $frontmatter.seo.title %} Flags

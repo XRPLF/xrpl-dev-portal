@@ -77,4 +77,33 @@
   .container {
     margin-top: 1rem !important;
   }
+
+  [data-component-name="layouts/RootLayout"] {
+    padding-top: 0;
+  }
+
+  [data-component-name="Buttons/AIAssistantButton"],
+  [data-component-name="Buttons/EditPageButton"],
+  .osano-cm-window,
+  [data-component-name="Markdown/Markdown"] article .source-link,
+  [data-component-name="PageActions/PageActions"],
+  [data-component-name="CodeBlock/CodeBlockControls"],
+  [data-component-name="Markdown/Markdown"] article > .btn-arrow {
+    /* Hide buttons that do nothing in print */
+    display: none !important;
+  }
+  #content {
+    --md-content-max-width: 100%;
+    --md-table-border-color: black;
+    --code-block-padding: 0.5rem;
+  }
+  #content table {
+    break-inside: avoid;
+  }
+  #content table.md thead {
+    border-bottom: 1px solid black;
+  }
+  #content table.md tbody tr:last-child td {
+    border-bottom: 1px solid black;
+  }
 }

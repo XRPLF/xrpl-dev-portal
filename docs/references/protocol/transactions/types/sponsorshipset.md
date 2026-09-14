@@ -76,7 +76,7 @@ Besides errors that can occur for all transactions, {% code-page-name /%} transa
 | `tecLIMIT_EXCEEDED` | The `Sponsorship.RemainingOwnerCount` exceeds the maximum value of an unsigned 32-bit integer. |
 | `tecNO_DST` | The sponsor or sponsee account does not exist on the ledger. |
 | `tecNO_ENTRY` | The `tfDeleteObject` flag is enabled but the `Sponsorship` ledger entry does not exist. |
-| `tecNO_PERMISSION` | The transaction is not permitted. This occurs when creating or updating the entry would leave it with no budget (neither a positive `FeeAmount` nor a positive `RemainingOwnerCount`). Empty `Sponsorship` ledger entries are not allowed. |
+| `tecNO_PERMISSION` | The transaction is not permitted. This occurs when creating or updating the entry would leave it with no budget. Empty `Sponsorship` ledger entries are not allowed. |
 | `tecPSEUDO_ACCOUNT` | The sponsor or sponsee is a pseudo-account, which cannot participate in sponsorship. |
 | `tecUNFUNDED` | The sponsor does not have sufficient XRP to fund a positive `FeeAmountDelta` or to cover the reserve for the `Sponsorship` ledger entry. |
 | `temBAD_AMOUNT` | An amount field is invalid. This can occur when:<ul><li>`FeeAmountDelta` is zero or not denominated in XRP.</li><li>`MaxFee` is negative or not denominated in XRP.</li></ul> |

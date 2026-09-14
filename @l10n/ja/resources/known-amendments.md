@@ -199,6 +199,21 @@ XRP Ledgerを使用して資格情報およびコンプライアンス要件を�
 詳細については、[XLS-70: Credentials specification](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0070d-credentials)をご覧ください。
 
 
+### ConfidentialTransfer
+[ConfidentialTransfer]: #confidentialtransfer
+
+| Amendment    | ConfidentialTransfer |
+|:-------------|:---------------------|
+| Amendment ID | 2110E4A19966E2EF517C0A8C56A5F35099D7665B0BB89D7B126B30D50B86AAD5 |
+| ステータス     | {% amendment-disclaimer name="ConfidentialTransfer" statusOnly=true /%} |
+| デフォルトの投票(最新の安定版) | いいえ |
+| Amendment前の機能は廃止? | いいえ |
+
+高度な暗号技術(EC-ElGamalとZKP)を使用して、Multi-Purpose Token(MPT)に機関水準のプライバシーをもたらします。個々の残高と送金額は公開レジャーから遮蔽される一方で、権限を持つ当事者（発行者、監査人、指定された組織）が総供給量を検証し規制上の義務を果たせるよう、コンプライアンスの仕組みは維持されます。
+
+詳細については、[XLS-96: Confidential Transfers](https://opensource.ripple.com/docs/xls-96-confidential-transfers)をご覧ください。
+
+
 ### CryptoConditions
 [CryptoConditions]: #cryptoconditions
 
@@ -362,6 +377,21 @@ Adds functionality to update the `URI` field of an `NFToken` ledger entry. This 
 
 1. `NFTokenModify`: New transaction type that updates the `URI` field of an NFT.
 2. `tfMutable`: New flag that enables authorized accounts to modify the `URI` of an NFT. This flag must be enabled when the NFT is initially minted.
+
+
+### DynamicMPT
+[DynamicMPT]: #dynamicmpt
+
+| Amendment    | DynamicMPT |
+|:-------------|:-----------|
+| Amendment ID | 58E92F338758479C06084E1B6BA366BAD8F75E5329A7F0EEAFFFDA51E5106B7F |
+| ステータス     | {% amendment-disclaimer name="DynamicMPT" statusOnly=true /%} |
+| デフォルトの投票(最新の安定版) | いいえ |
+| Amendment前の機能は廃止? | いいえ |
+
+Multi-Purpose Tokenを拡張し、特定のプロパティをデフォルトで変更可能にします。対象となるのは、オンチェーンメタデータ、送金手数料、そしてMPT発行の機能フラグを有効にする権限です。発行者は、これらのプロパティを `ImmutableFlags` フィールドで宣言することで、恒久的に変更不可にできます。
+
+詳細については、[ダイナミックMPT](/@l10n/ja/docs/concepts/tokens/fungible-tokens/mutable-mpts.md)をご覧ください。
 
 
 ### EnforceInvariants

@@ -174,15 +174,15 @@ $whats-new-footers: (
 .light .page-tutorials .tutorial-cards .contribution-card {
   .contribution-icon {
     background: rgba($blue-purple-500, 0.1);
-    color: $blue-purple-600;
+    color: $blue-purple-300;
   }
 
   .card-meta-row {
     .meta-link {
-      color: $gray-600;
+      color: $gray-300;
 
       &:hover {
-        color: $blue-purple-600;
+        color: $blue-purple-300;
       }
     }
 
@@ -263,6 +263,11 @@ $whats-new-footers: (
 }
 
 // Light mode: tabs
+// Merge note: master authored this block against the pre-rebrand palette, which
+// ran $blue-purple-* up to 900. The rebrand's token consolidation truncates the
+// scale at 500 (aliased to $lilac-*), so the 600/700 steps master used no longer
+// exist. Remapped to 500 — the darkest available step — matching how the rebrand
+// migrated the other light-mode $blue-purple-600 usages in this file.
 .light .page-tutorials .tutorial-tabs {
   border-bottom-color: $gray-300;
 
@@ -270,17 +275,17 @@ $whats-new-footers: (
     color: $gray-700;
 
     &:hover {
-      color: $blue-purple-600;
+      color: $blue-purple-500;
       border-bottom-color: rgba($blue-purple-500, 0.4);
     }
 
     &:focus-visible {
-      outline-color: $blue-purple-600;
-      color: $blue-purple-600;
+      outline-color: $blue-purple-500;
+      color: $blue-purple-500;
     }
 
     &.is-active {
-      color: $blue-purple-600;
+      color: $blue-purple-500;
       border-bottom-color: $blue-purple-500;
     }
 
@@ -291,7 +296,7 @@ $whats-new-footers: (
 
     &.is-active .tutorial-tab-count {
       background-color: rgba($blue-purple-500, 0.15);
-      color: $blue-purple-700;
+      color: $blue-purple-500;
     }
   }
 }
@@ -317,16 +322,17 @@ $whats-new-footers: (
     cursor: pointer;
     font-family: inherit;
     font-size: 1.05rem;
-    color: $blue-purple-300;
+    color: $blue-purple-400;
+    margin-top: 1rem;
 
     &:hover {
       text-decoration: underline;
     }
-  }
-}
 
-.light .page-tutorials .explore-more-wrapper .explore-more-link {
-  color: $blue-purple-600;
+    :root.dark & {
+      color: $blue-purple-300;
+    }
+  }
 }
 
 // TOC navigation buttons
@@ -388,15 +394,6 @@ $whats-new-footers: (
       height: 3px;
       background: linear-gradient(90deg, $blue-purple-500, $green-400);
       border-radius: 2px;
-    }
-  }
-
-  // Different footer colors for What's New cards
-  .tutorial-cards {
-    @for $i from 1 through length($whats-new-footers) {
-      > div:nth-child(#{$i}) .card .card-footer {
-        background-image: url("../img/cards/#{nth($whats-new-footers, $i)}.svg");
-      }
     }
   }
 }
@@ -472,6 +469,10 @@ $whats-new-footers: (
     font-weight: 500;
     color: $gray-500;
     letter-spacing: 0.02em;
+
+    :root.dark & {
+      color: $gray-400;
+    }
   }
 
   .quick-ref-value {
@@ -570,7 +571,7 @@ $whats-new-footers: (
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
 
   .quick-ref-label {
-    color: $blue-purple-600;
+    color: $blue-purple-400;
   }
 
   .quick-ref-key {
@@ -586,13 +587,13 @@ $whats-new-footers: (
   }
 
   .quick-ref-value {
-    color: $blue-purple-600;
-    background: rgba($gray-300, 0.6);
+    color: $blue-purple-400;
+    background: rgba($gray-300, 0.4);
   }
 
   .quick-ref-value-btn {
     &:hover .quick-ref-value {
-      background: rgba($gray-400, 0.6);
+      background: rgba($gray-300, 0.3);
     }
 
     &.copied .quick-ref-value {
@@ -606,7 +607,7 @@ $whats-new-footers: (
   }
 
   .quick-ref-link {
-    color: $blue-purple-600;
+    color: $blue-purple-500;
   }
 
   .quick-ref-divider {
@@ -617,7 +618,7 @@ $whats-new-footers: (
     color: $gray-900;
 
     &:hover {
-      color: $blue-purple-600;
+      color: $blue-purple-300;
     }
 
     .quick-ref-arrow {

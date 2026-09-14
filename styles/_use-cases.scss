@@ -253,7 +253,6 @@ html.light {
 }
 
 .section-text-title {
-  font-family: "Work Sans";
   font-style: normal;
   font-weight: 500;
   font-size: 24px;
@@ -264,7 +263,6 @@ html.light {
 
 .section-text-description {
   max-width: 320px;
-  font-family: "Work Sans";
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -277,7 +275,6 @@ html.light {
   position: relative;
   top: 17px;
   left: 50px;
-  font-family: "Work Sans";
   font-style: normal;
   font-weight: 600;
   font-size: 12px;
@@ -288,25 +285,6 @@ html.light {
 .numbers-animation {
   width: 218px;
   height: 96px;
-}
-
-.arrow-animation {
-  position: relative;
-  right: 23px;
-  top: -11px;
-  width: 60px !important;
-}
-
-.explore-projects {
-  font-family: "Work Sans";
-  font-style: normal;
-  font-weight: 600;
-  font-size: 12px;
-  line-height: 16px;
-  color: #7919ff;
-  position: relative;
-  top: -9px;
-  right: 27px;
 }
 
 .section-separator {
@@ -402,21 +380,14 @@ html.light {
     grid-template-columns: repeat(4, 1fr);
   }
 
-  @media (max-width: 1220px) and (min-width: 1024px) {
-    grid-template-columns: repeat(3, 1fr); // Adjust to 3 columns for screens between 1024px and 1220px
+  @media (min-width: 992px) and (max-width: 1279px) {
+    // 4 columns of 250px circles + 48px gaps (1144px) don't fit
+    // .container-new's 814px content width until the xl breakpoint (1280px)
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
-.use-case-circle {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  aspect-ratio: 1 / 1; // Maintain aspect ratio
-  border: 1px solid #343437;
-  border-radius: 50%;
-  margin-bottom: 30px;
-  cursor: pointer;
-
+.use-case-circle-parent {
   // Media query for medium screens
   @include media-breakpoint-up(md) {
     aspect-ratio: 1 / 1; // Maintain aspect ratio
@@ -430,6 +401,29 @@ html.light {
     min-width: 250px !important; // Set a minimum width
     min-height: 250px !important; // Set a minimum height
   }
+
+  @media (min-width: 992px) and (max-width: 1279px) {
+    // Even at 3 columns, 250px circles + 48px gaps (846px) don't fit the
+    // 814px content width in this range; shrink circles to close the gap.
+    min-width: 238px !important;
+    min-height: 238px !important;
+  }
+}
+
+.use-case-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1 / 1; // Maintain aspect ratio
+  border: 1px solid #343437;
+  border-radius: 50%;
+  margin-bottom: 30px;
+  cursor: pointer;
+  background-color: transparent;
+  font: inherit;
+  color: inherit;
+  padding: 0;
+  width: 100%;
 }
 
 .use-case-circle:hover {
@@ -450,7 +444,6 @@ html.light {
 }
 
 .circle-text {
-  font-family: "Work Sans";
   font-style: normal;
   font-weight: 700;
   white-space: nowrap;
@@ -484,7 +477,6 @@ html.light {
   display: block;
   width: 100%;
   text-align: left;
-  font-family: "Work Sans";
   font-style: normal;
   font-weight: 400;
   font-size: 32px;
@@ -533,7 +525,6 @@ html.light {
     position: relative;
     top: 17px;
     left: 50px;
-    font-family: "Work Sans";
     font-style: normal;
     font-weight: 600;
     font-size: 12px;
@@ -545,7 +536,6 @@ html.light {
     display: block;
     width: 100%;
     text-align: left;
-    font-family: "Work Sans";
     font-style: normal;
     font-weight: 400;
     font-size: 32px;
@@ -588,7 +578,6 @@ html.light {
 }
 
 .pill-number {
-  font-family: "Work Sans";
   font-style: normal;
   font-weight: 600;
   font-size: 22.1452px;
@@ -1219,7 +1208,6 @@ body,
     
     .rest-text {
       color: var(--XRPL-Primary-White, #FFF);
-      font-family: "Work Sans";
       font-size: 16px;
       font-style: normal;
       font-weight: 400;

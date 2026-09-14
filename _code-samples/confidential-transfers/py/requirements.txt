@@ -1,0 +1,2 @@
+xrpl-py>=5.1.0
+xrpl-py-confidential>=0.1.0

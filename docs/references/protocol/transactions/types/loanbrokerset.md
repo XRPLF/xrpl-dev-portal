@@ -32,8 +32,8 @@ Only the owner of the associated vault can initiate this transaction.
   "Data": "5468697320697320617262697472617279206D657461646174612061626F757420746865206C6F616E62726F6B65722E",
   "ManagementFeeRate": 100,
   "DebtMaximum": 100000,
-  "CoverRateMinimum": 1000,
-  "CoverRateLiquidation": 500
+  "CoverRateMinimum": 10000,
+  "CoverRateLiquidation": 5000
 }
 ```
 

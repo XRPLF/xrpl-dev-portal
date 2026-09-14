@@ -25,8 +25,8 @@ If you [issue tokens](../../../concepts/tokens/index.md) in the XRP Ledger, can 
 - You don't need to have [issued a token](issue-a-fungible-token.md) in the XRP Ledger to enact a Global Freeze, but the main reason you would do so is if you have already issued such a token.
 
 <!-- Source for this specific tutorial's interactive bits: -->
-<script type="application/javascript" src="/js/interactive-tutorial.js"></script>
-<script type="application/javascript" src="/js/tutorials/enact-global-freeze.js"></script>
+<script type="application/javascript" defer src="/js/interactive-tutorial.js"></script>
+<script type="application/javascript" defer src="/js/tutorials/enact-global-freeze.js"></script>
 
 ## Example Code
 

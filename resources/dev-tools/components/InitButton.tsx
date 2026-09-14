@@ -135,6 +135,9 @@ async function onInitClick(
     }
 
     console.log("Connecting to Testnet WebSocket...")
+    // Start the partial-payments progress bar immediately so it is visible
+    // during connect + faucet, not only after issuer setup begins.
+    partialPaymentParams.setPpWidthPercent(1)
     const client = new Client(TESTNET_URL)
     client.on('connected', () => {
         setConnectionReady(true)
@@ -155,6 +158,7 @@ async function onInitClick(
       // but this shouldn't affect the learning tool as that much XRP is not given to any test account.
       setBalance(Number(dropsToXrp(fundResponse.balance)))
       setIsInitEnabled(false)
+      partialPaymentParams.setPpWidthPercent(10)
       await setUpForPartialPayments(
         client, 
         sendingWallet, 

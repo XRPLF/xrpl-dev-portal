@@ -1,47 +1,61 @@
-// Check user prefers color, toggle light/dark, save state
-// Based loosely on https://github.com/vinorodrigues/bootstrap-dark
+// Check user prefers color, toggle light/dark, save state.
+// Loaded synchronously in <head> via redocly.yaml `scripts.head` so the
+// correct theme is applied before first paint on every page load. This is
+// what makes the user's dark/light preference (stored in
+// `localStorage["user-prefers-color"]`) persist across page navigations.
+//
+// The Navbar's `ModeToggleButton` (NavControls.tsx) and the mobile menu's
+// toggle (MobileMenu.tsx) are responsible for *writing* the preference and
+// flipping the `dark`/`light` class on `<html>`; this script is responsible
+// for *reading* the preference on load and re-applying the class.
 
-function apply_color_scheme(theme) {
-  const disable_theme = (theme == "dark") ? "light" : "dark";
-  document.documentElement.classList.add(theme)
-  document.documentElement.classList.remove(disable_theme)
-  document.documentElement.setAttribute("data-theme", theme)
-  // $("#css-toggle-btn").prop( "checked", (theme == 'dark') );
-}
-
-function auto_update_theme() {
-  const upc = window.localStorage.getItem('user-prefers-color')
-  let theme = "dark"; // Default to dark theme
-  if (!upc) {
-    // User hasn't saved a preference specifically for this site; check
-    // the browser-level preferences.
-    if (window.matchMedia &&
-        window.matchMedia("(prefers-color-scheme: light)").matches) {
-      theme = "light"
-    }
-  } else { // Follow user's saved setting.
-    theme = (upc == "light") ? "light" : "dark"
+(function () {
+  function apply_color_scheme(theme) {
+    const disable_theme = (theme === "dark") ? "light" : "dark";
+    document.documentElement.classList.add(theme);
+    document.documentElement.classList.remove(disable_theme);
+    document.documentElement.setAttribute("data-theme", theme);
   }
-  apply_color_scheme(theme)
-}
 
-function user_toggle_theme() {
-  const new_theme = document.documentElement.classList.contains("dark") ? "light" : "dark"
-  window.localStorage.setItem("user-prefers-color", new_theme)
-  // Animate this style switch, but not the ones that happen on page load:
-  document.body.style.transition = "background-color .2s ease"
-  apply_color_scheme(new_theme)
-}
+  function auto_update_theme() {
+    let upc = null;
+    try {
+      upc = window.localStorage.getItem("user-prefers-color");
+    } catch (_) {
+      // localStorage may be unavailable (private mode, sandboxed iframe, etc.)
+    }
 
-auto_update_theme()
-// update automatically if the user's theme preference changes
-if (window.matchMedia) {
-  window.matchMedia("(prefers-color-scheme: dark)").addListener( auto_update_theme )
-}
-// Note: .addListener is considered deprecated, and is supposed to be updated to
-// addEventListener("change", callback) instead; however, as recently as macOS
-// High Sierra (~2017-2018) Safari does not support addEventListener here.
+    let theme = "dark"; // Default to dark theme
+    if (!upc) {
+      // No saved preference — fall back to the browser-level setting.
+      if (window.matchMedia &&
+          window.matchMedia("(prefers-color-scheme: light)").matches) {
+        theme = "light";
+      }
+    } else {
+      theme = (upc === "light") ? "light" : "dark";
+    }
+    apply_color_scheme(theme);
+  }
 
-window.addEventListener('DOMContentLoaded', (event) => {
-  document.getElementById("css-toggle-btn").onclick = user_toggle_theme
-})
+  auto_update_theme();
+
+  // Re-apply when the OS-level color scheme changes, but only when the user
+  // hasn't pinned an explicit preference for this site.
+  if (window.matchMedia) {
+    const mql = window.matchMedia("(prefers-color-scheme: dark)");
+    const onChange = function () {
+      let hasExplicit = false;
+      try {
+        hasExplicit = !!window.localStorage.getItem("user-prefers-color");
+      } catch (_) {}
+      if (!hasExplicit) auto_update_theme();
+    };
+    if (mql.addEventListener) {
+      mql.addEventListener("change", onChange);
+    } else if (mql.addListener) {
+      // Legacy Safari (<14) fallback.
+      mql.addListener(onChange);
+    }
+  }
+})();

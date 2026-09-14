@@ -1,6 +1,12 @@
 import * as React from "react";
 import { useThemeHooks } from '@redocly/theme/core/hooks';
-import { Link } from '@redocly/theme/components/Link/Link';
+import { Link as XrplLink } from 'shared/components/Link';
+import { PageGrid, PageGridCol, PageGridRow } from "shared/components/PageGrid/page-grid";
+import Button from "shared/components/Button";
+import {
+  XrplArrowExternalLinkIcon,
+  XrplArrowInternalLinkIcon,
+} from "shared/components/Icons";
 
 export const frontmatter = {
   seo: {
@@ -23,7 +29,7 @@ const faqs = [
   {
     question: "How can a blockchain be sustainable?",
     answer:
-      "It’s been widely reported that Bitcoin’s energy consumption, as of 2021, is equivalent to that used by Argentina, with much of the electricity Bitcoin miners use coming from polluting sources. The XRP Ledger confirms transactions through a “consensus” mechanism - which does not waste energy like proof of work does - and leverages carbon offsets to be <a href='https://ripple.com/ripple-press/ripple-leads-sustainability-agenda-to-achieve-carbon-neutrality-by-2030/' target='_blank'>one of the first truly carbon neutral blockchains</a>.",
+      "It’s been widely reported that Bitcoin’s energy consumption, as of 2021, is equivalent to that used by Argentina, with much of the electricity Bitcoin miners use coming from polluting sources. The XRP Ledger confirms transactions through a “consensus” mechanism - which does not waste energy like proof of work does - and leverages carbon offsets to be <a href='https://ripple.com/ripple-press/ripple-leads-sustainability-agenda-to-achieve-carbon-neutrality-by-2030/' target='_blank' class='xrpl-link xrpl-link--inline xrpl-link--md xrpl-link--brand xrpl-link--ctx-on-theme'>one of the first truly carbon neutral blockchains</a>.",
   },
 ];
 
@@ -78,14 +84,6 @@ export default function XrplOverview() {
             />
           </div>
         </div>
-        <div className="position-relative">
-          <img
-            alt="purple waves"
-            src={require("../static/img/backgrounds/xrpl-overview-purple.svg")}
-            className="landing-bg"
-            id="xrpl-overview-purple"
-          />
-        </div>
         <section className="py-26 text-center">
           <div className="col-lg-5 mx-auto text-center">
             <div className="d-flex flex-column-reverse">
@@ -100,13 +98,6 @@ export default function XrplOverview() {
             </div>
           </div>
         </section>
-        <div className="position-relative d-none-sm">
-          <img
-            alt="orange waves"
-            src={require("../static/img/backgrounds/xrpl-overview-orange.svg")}
-            id="xrpl-overview-orange"
-          />
-        </div>
         <section className="container-new py-26">
           <div className="card-grid card-grid-2xN">
             <div className="col">
@@ -128,17 +119,24 @@ export default function XrplOverview() {
                   "The peer-to-peer network that manages the ledger is open to everyone. The XRP Ledger is maintained by software engineers, server operators, users, and businesses–a global community working to solve problems and create real-world value."
                 )}
               </p>
-              <div className="d-none d-lg-block">
-                <Link className="btn btn-primary btn-arrow" to="/docs">
+              <div className="d-none d-lg-flex flex-wrap gap-3">
+                <Button
+                  intention="brand"
+                  emphasis="strong"
+                  href="/docs"
+                  iconEnd={<XrplArrowInternalLinkIcon />}
+                >
                   {translate("Read Technical Docs")}
-                </Link>{" "}
-                <a
-                  className="ml-4 video-external-link"
+                </Button>
+                <Button
+                  intention="neutral"
+                  emphasis="standard"
                   target="_blank"
                   href="https://www.youtube.com/playlist?list=PLJQ55Tj1hIVZtJ_JdTvSum2qMTsedWkNi"
+                  iconEnd={<XrplArrowExternalLinkIcon />}
                 >
                   {translate("Watch Explainer Videos")}
-                </a>
+                </Button>
               </div>
             </div>
             <div className="col">
@@ -163,24 +161,31 @@ export default function XrplOverview() {
                   />
                 </a>
               )}
-              <div className="text-center d-lg-none">
-                <Link className="btn btn-primary btn-arrow mt-5 mb-4" to="/docs">
+              <div className="d-flex d-lg-none flex-wrap justify-content-center gap-3 mt-5 mb-4">
+                <Button
+                  intention="brand"
+                  emphasis="strong"
+                  href="/docs"
+                  iconEnd={<XrplArrowInternalLinkIcon />}
+                >
                   {translate("Read Technical Docs")}
-                </Link>{" "}
-                <a
-                  className="ml-4 video-external-link"
+                </Button>
+                <Button
+                  intention="neutral"
+                  emphasis="standard"
                   target="_blank"
                   href="https://www.youtube.com/playlist?list=PLJQ55Tj1hIVZtJ_JdTvSum2qMTsedWkNi"
+                  iconEnd={<XrplArrowExternalLinkIcon />}
                 >
                   {translate("Watch Explainer Videos")}
-                </a>
+                </Button>
               </div>
             </div>
           </div>
         </section>
-        <section className="container-new py-26">
-          <div className="card-grid card-grid-2xN">
-            <div className="col">
+        <PageGrid className="py-26">
+          <PageGridRow>
+            <PageGrid.Col span={{ base: 4, lg: 6 }}>
               <div className="d-flex flex-column-reverse">
                 <h2 className="h4 h2-sm mb-8">
                   {translate("How the Consensus Protocol works")}
@@ -192,7 +197,7 @@ export default function XrplOverview() {
                   "about.index.consensus.h5part1",
                   "To uphold performance, XRPL uses a consensus protocol. Designated servers called "
                 )}`}
-                <Link to="/docs/infrastructure/configuration/server-modes/run-xrpld-as-a-validator">{translate("about.index.consensus.h5part2", "validators")}</Link>
+                <XrplLink href="/docs/infrastructure/configuration/server-modes/run-xrpld-as-a-validator" intention="brand">{translate("about.index.consensus.h5part2", "validators")}</XrplLink>
                 {`${translate(
                   "about.index.consensus.h5part3",
                   ", which anyone can operate, come to an agreement on the order and outcome of XRP transactions every three to five seconds."
@@ -206,26 +211,24 @@ export default function XrplOverview() {
               </p>
               <p className="mb-0">
                 {translate('about.index.consensus.ppart1', 'Currently, over 120 ')}
-                <a href="https://livenet.xrpl.org/network/validators" target="_blank">{translate('about.index.consensus.ppart2', 'validators')}</a>
-                   {translate('about.index.consensus.ppart3', ' are active on the ledger, operated by universities, exchanges, businesses, and individuals. As the validator pool grows, the consensus protocol ensures decentralization of the blockchain over time.')}
+                <XrplLink href="https://livenet.xrpl.org/network/validators" intention="brand" target="_blank">{translate('about.index.consensus.ppart2', 'validators')}</XrplLink>
+                    {translate('about.index.consensus.ppart3', ' are active on the ledger, operated by universities, exchanges, businesses, and individuals. As the validator pool grows, the consensus protocol ensures decentralization of the blockchain over time.')}
               </p>
-            </div>
-            <div className="col mb-16-sm">
-              <img
-                className="mw-100"
-                id="validator-graphic"
-                alt="(Graphic: Validators in Consensus)"
-              />
-            </div>
-          </div>
-        </section>
-        <section className="container-new py-26">
-          <div className="col-md-6 offset-md-3 p-6-sm p-10-until-sm br-8 cta-card">
-            <img
-              alt="green waves"
-              src={require("../static/img/backgrounds/cta-xrpl-overview-green.svg")}
-              className="cta cta-bottom-right"
-            />
+            </PageGrid.Col>
+            <PageGrid.Col span={{ base: 4, lg: 6 }}>
+              <div className="col mb-16-sm">
+                <img
+                  className="mw-100"
+                  id="validator-graphic"
+                  alt="(Graphic: Validators in Consensus)"
+                />
+              </div>
+              </PageGrid.Col>
+            </PageGridRow>
+        </PageGrid>
+        <PageGrid className="py-26">
+          <PageGridRow>
+            <PageGrid.Col span={{ base: 4, lg: 6 }} offset={{ lg: 3 }} className="p-6-sm p-10-until-sm br-8 cta-card">
             <div className="z-index-1 position-relative">
               <h2 className="h4 mb-10-until-sm mb-8-sm">
                 {translate("A Sustainable Blockchain")}
@@ -235,15 +238,22 @@ export default function XrplOverview() {
                   "Unlike most other blockchains, the XRP Ledger requires no mining and uses negligible energy, key to long-term growth and stability."
                 )}
               </p>
-              <a className="btn btn-primary btn-arrow" href="/about/impact">
+              <Button
+                intention="brand"
+                emphasis="strong"
+                href="/about/impact"
+                iconEnd={<XrplArrowInternalLinkIcon />}
+              >
                 {translate("Learn More")}
-              </a>
+              </Button>
             </div>
-          </div>
-        </section>
-        <section className="container-new py-26">
-          <div className="card-grid card-grid-2xN">
-            <div className="col">
+            </PageGrid.Col>
+          </PageGridRow>
+        </PageGrid>
+        
+        <PageGrid className="py-26">
+          <PageGridRow>
+            <PageGrid.Col span={{ base: 4, lg: 6 }}>
               <div className="d-flex flex-column-reverse">
                 <h4 className="h4 h2-sm mb-8">
                   {translate("Building with confidence on ")}
@@ -262,11 +272,21 @@ export default function XrplOverview() {
                   "With the XRPL, these developers are building innovative blockchain projects and applications across use cases including tokenization of assets, online gaming, asset custody, NFTs, and DeFi."
                 )}
               </p>
-              <a className="btn btn-primary btn-arrow mb-10-sm" href="/about/uses">
-                {translate("Explore More")}
-              </a>
-            </div>
-            <div className="col mb-0">
+              {/* The margin sits on a wrapper: `.bds-btn` resets margin-bottom
+                  and imports after _helpers.scss, so `mb-10-sm` on the button
+                  itself would lose the cascade and silently do nothing. */}
+              <div className="mb-10-sm">
+                <Button
+                  intention="brand"
+                  emphasis="standard"
+                  href="/about/uses"
+                  iconEnd={<XrplArrowInternalLinkIcon />}
+                >
+                  {translate("Explore More")}
+                </Button>
+              </div>
+            </PageGrid.Col>
+            <PageGrid.Col span={{ base: 4, lg: 6 }}>
               <div className="d-flex flex-column-reverse">
                 <h4 className="h4 h2-sm mb-8">
                   {translate("Creating new value for long-term growth")}
@@ -283,11 +303,11 @@ export default function XrplOverview() {
                   "Significant investment in development, along with low transaction costs and energy usage, is fueling growth and opening up a wide variety of use cases at scale."
                 )}
               </p>
-            </div>
-          </div>
-        </section>
+            </PageGrid.Col>
+          </PageGridRow>
+        </PageGrid>
         <section className="container-new py-26">
-          <div className="d-flex flex-column-reverse col-xl-6 mb-lg-4 pl-0 ">
+          <div className="d-flex flex-column-reverse col-xl-6 mb-lg-4 ps-0 ">
             <h2 className="h4 h2-sm">
               {translate(
                 "Watch the explainer video series to learn more about the XRP Ledger"
@@ -364,22 +384,19 @@ export default function XrplOverview() {
             </div>
           </div>
           <div className="pt-5 w-100">
-            <a
-              className="btn btn-primary btn-arrow"
+            <Button
+              intention="neutral"
+              emphasis="standard"
               target="_blank"
               href="https://www.youtube.com/channel/UC6zTJdNCBI-TKMt5ubNc_Gg"
+              iconEnd={<XrplArrowExternalLinkIcon />}
             >
               {translate("Watch Full Series on YouTube")}
-            </a>
+            </Button>
           </div>
         </section>
         <section className="container-new py-26">
-          <div className="col-md-6 offset-md-3 p-6-sm p-10-until-sm br-8 cta-card">
-            <img
-              alt="orange waves"
-              src={require("../static/img/backgrounds/cta-xrpl-overview-orange.svg")}
-              className="cta cta-bottom-right"
-            />
+          <div className="col-lg-6 offset-lg-3 p-6-sm p-10-until-sm br-8 cta-card">
             <div className="z-index-1 position-relative">
               <h4 className="h4 mb-10-until-sm mb-8-sm">
                 {translate("Tomorrow’s Blockchain Starts With You")}
@@ -389,25 +406,27 @@ export default function XrplOverview() {
                   "about.index.tomorrow.ppart1",
                   "XRP Ledger’s innovation relies on the shared community experience of builders like you. If you’re ready to start your next big blockchain project, explore the XRPL now and consider applying for funding on your next"
                 )}`}
-                <Link to="/community/developer-funding">
+                <XrplLink href="/community/developer-funding" intention="neutral">
                   {translate("about.index.tomorrow.ppart2", " blockchain project")}
-                </Link>
+                </XrplLink>
                 {translate("about.index.tomorrow.ppart3", ".")}
               </p>
 
-              <a
-                className="btn btn-primary btn-arrow"
+              <Button
+                intention="brand"
+                emphasis="strong"
                 href="https://xrplgrants.org/"
                 target="_blank"
+                iconEnd={<XrplArrowInternalLinkIcon />}
               >
                 {translate("Explore XRPL Developer Funding")}
-              </a>
+              </Button>
             </div>
           </div>
         </section>
         <section className="container-new py-26">
           <div
-            className="col-md-6 offset-md-3 w-100 pl-0 pr-0 mini-faq"
+            className="col-md-10 offset-md-1 col-lg-8 offset-lg-2 ps-0 pe-0 mini-faq"
             id="minifaq-accordion"
           >
             {faqs.map((faq, index) => (
@@ -415,8 +434,8 @@ export default function XrplOverview() {
                 <a
                   href={`#heading${index + 1}`}
                   className="expander collapsed"
-                  data-toggle="collapse"
-                  data-target={`#answer${index + 1}`}
+                  data-bs-toggle="collapse"
+                  data-bs-target={`#answer${index + 1}`}
                   aria-expanded="false"
                   aria-controls={`answer${index + 1}`}
                 >
@@ -438,9 +457,15 @@ export default function XrplOverview() {
               </div>
             ))}
             <center>
-              <a className="btn btn-primary btn-arrow mt-20" href="/about/faq">
+              <Button
+                intention="neutral"
+                emphasis="standard"
+                className="mt-20"
+                href="/about/faq"
+                iconEnd={<XrplArrowExternalLinkIcon />}
+              >
                 {translate("View Full FAQ")}
-              </a>
+              </Button>
             </center>
           </div>
         </section>

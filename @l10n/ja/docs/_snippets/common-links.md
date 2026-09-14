@@ -57,6 +57,11 @@
 [DID amendment]: /@l10n/ja/resources/known-amendments.md#did
 [DIDエントリ]: /@l10n/ja/docs/references/protocol/ledger-data/ledger-entry-types/did.md
 [DeletableAccounts amendment]: /@l10n/ja/resources/known-amendments.md#deletableaccounts
+[ConfidentialMPTClawbackトランザクション]: /@l10n/ja/docs/references/protocol/transactions/types/confidentialmptclawback.md
+[ConfidentialMPTConvertトランザクション]: /@l10n/ja/docs/references/protocol/transactions/types/confidentialmptconvert.md
+[ConfidentialMPTConvertBackトランザクション]: /@l10n/ja/docs/references/protocol/transactions/types/confidentialmptconvertback.md
+[ConfidentialMPTMergeInboxトランザクション]: /@l10n/ja/docs/references/protocol/transactions/types/confidentialmptmergeinbox.md
+[ConfidentialMPTSendトランザクション]: /@l10n/ja/docs/references/protocol/transactions/types/confidentialmptsend.md
 [DeepFreeze amendment]: /@l10n/ja/resources/known-amendments.md#deepfreeze
 [DepositAuth amendment]: /@l10n/ja/resources/known-amendments.md#depositauth
 [DepositPreauth amendment]: /@l10n/ja/resources/known-amendments.md#depositpreauth
@@ -69,6 +74,7 @@
 [DirectoryNodeエントリ]: /@l10n/ja/docs/references/protocol/ledger-data/ledger-entry-types/directorynode.md
 [DirectoryNodeオブジェクト]: /@l10n/ja/docs/references/protocol/ledger-data/ledger-entry-types/directorynode.md
 [DisallowIncoming amendment]: /@l10n/ja/resources/known-amendments.md#disallowincoming
+[DynamicMPT amendment]: /@l10n/ja/resources/known-amendments.md#dynamicmpt
 [DynamicNFT amendment]: /@l10n/ja/resources/known-amendments.md#dynamicnft
 [EnableAmendment]: /@l10n/ja/docs/references/protocol/transactions/pseudo-transaction-types/enableamendment.md
 [EnableAmendment疑似トランザクション]: /@l10n/ja/docs/references/protocol/transactions/pseudo-transaction-types/enableamendment.md
@@ -99,6 +105,10 @@
 [LedgerStateFix]: /@l10n/ja/docs/references/protocol/transactions/types/ledgerstatefix.md
 [LedgerStateFixトランザクション]: /@l10n/ja/docs/references/protocol/transactions/types/ledgerstatefix.md
 [Marker]: /@l10n/ja/docs/references/http-websocket-apis/api-conventions/markers-and-pagination.md
+[MPTokenエントリ]: /@l10n/ja/docs/references/protocol/ledger-data/ledger-entry-types/mptoken.md
+[MPTokenIssuanceエントリ]: /@l10n/ja/docs/references/protocol/ledger-data/ledger-entry-types/mptokenissuance.md
+[MPTokenIssuanceCreateトランザクション]: /@l10n/ja/docs/references/protocol/transactions/types/mptokenissuancecreate.md
+[MPTokenIssuanceSetトランザクション]: /@l10n/ja/docs/references/protocol/transactions/types/mptokenissuanceset.md
 [MPTokensV1 amendment]: /@l10n/ja/resources/known-amendments.md#mptokensv1
 [MultiSign amendment]: /@l10n/ja/resources/known-amendments.md#multisign
 [MultiSignReserve amendment]: /@l10n/ja/resources/known-amendments.md#multisignreserve
