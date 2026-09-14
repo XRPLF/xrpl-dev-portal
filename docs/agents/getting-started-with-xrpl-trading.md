@@ -85,6 +85,9 @@ npx skills add https://github.com/XRPLF/xrpl-dev-portal/tree/master/.claude/skil
 npx skills add https://github.com/XRPLF/xrpl-dev-portal/tree/master/.claude/skills/xrpl-skills/xrpl-trading --agent claude-code
 ```
 
+<!-- RELEASE GATE: the xrpl-trading path 404s on `master` until this branch merges.
+     Verify both URLs resolve before publishing this tutorial. -->
+
 Verify both skills are loaded:
 
 ```
@@ -101,7 +104,104 @@ Project skills (.claude/skills)
 
 ---
 
-## Step 2: Read the order book
+## Step 2: Get a tradeable Testnet pair
+
+**Testnet has almost no real liquidity.** The well-known Mainnet issuers (Bitstamp,
+GateHub, and so on) either do not exist on Testnet or have no usable order book there, so
+you cannot simply point at `USD.Bitstamp` and expect a market. Before you can place a
+meaningful trade you need a pair that actually has an offer on the other side.
+
+You have two options.
+
+**Option A — trade against a one-sided book (fastest).** Place a limit order that does not
+cross, let it rest, then cancel it. This exercises the full `OfferCreate` → verify →
+`OfferCancel` → verify loop and needs no counterparty. Skip to Step 3; just expect
+"one-sided book" when you read prices, and expect your order to rest rather than fill.
+
+**Option B — create your own pair (needed to see a real fill).** Issue a test token from a
+second wallet and place a maker offer against it. Four transactions:
+
+{% tabs %}
+{% tab label="TypeScript" %}
+```typescript
+import { Client, Wallet, xrpToDrops, AccountSetAsfFlags } from "xrpl";
+
+const client = new Client("wss://s.altnet.rippletest.net:51233");
+await client.connect();
+
+// Two throwaway Testnet wallets: an issuer and a market maker.
+const { wallet: issuer } = await client.fundWallet();
+const { wallet: maker  } = await client.fundWallet();
+
+const submit = async (w: Wallet, tx: any) =>
+  client.submitAndWait((w.sign(await client.autofill(tx))).tx_blob);
+
+// 1. The issuer must allow its token to move between holders.
+await submit(issuer, { TransactionType: "AccountSet", Account: issuer.classicAddress,
+                       SetFlag: AccountSetAsfFlags.asfDefaultRipple });
+
+// 2. The maker trusts the issuer for TST.
+await submit(maker, { TransactionType: "TrustSet", Account: maker.classicAddress,
+                      LimitAmount: { currency: "TST", issuer: issuer.classicAddress, value: "1000" } });
+
+// 3. The issuer sends the maker 100 TST.
+await submit(issuer, { TransactionType: "Payment", Account: issuer.classicAddress,
+                       Destination: maker.classicAddress,
+                       Amount: { currency: "TST", issuer: issuer.classicAddress, value: "100" } });
+
+// 4. The maker posts liquidity: sell 20 TST for 4 XRP (0.2 XRP/TST).
+await submit(maker, { TransactionType: "OfferCreate", Account: maker.classicAddress,
+                      TakerPays: xrpToDrops(4),
+                      TakerGets: { currency: "TST", issuer: issuer.classicAddress, value: "20" } });
+
+console.log("Tradeable pair ready. Issuer:", issuer.classicAddress);
+await client.disconnect();
+```
+{% /tab %}
+{% tab label="Python" %}
+```python
+from xrpl.clients import JsonRpcClient
+from xrpl.wallet import generate_faucet_wallet
+from xrpl.transaction import submit_and_wait
+from xrpl.utils import xrp_to_drops
+from xrpl.models.transactions import AccountSet, TrustSet, Payment, OfferCreate
+from xrpl.models.transactions.account_set import AccountSetAsfFlag
+
+client = JsonRpcClient("https://s.altnet.rippletest.net:51234")
+issuer = generate_faucet_wallet(client)
+maker  = generate_faucet_wallet(client)
+
+# 1. Allow the token to move between holders.
+submit_and_wait(AccountSet(account=issuer.classic_address,
+                           set_flag=AccountSetAsfFlag.ASF_DEFAULT_RIPPLE), client, issuer)
+
+# 2. The maker trusts the issuer for TST.
+submit_and_wait(TrustSet(account=maker.classic_address,
+    limit_amount={"currency": "TST", "issuer": issuer.classic_address, "value": "1000"}),
+    client, maker)
+
+# 3. The issuer sends the maker 100 TST.
+submit_and_wait(Payment(account=issuer.classic_address, destination=maker.classic_address,
+    amount={"currency": "TST", "issuer": issuer.classic_address, "value": "100"}),
+    client, issuer)
+
+# 4. The maker posts liquidity: sell 20 TST for 4 XRP (0.2 XRP/TST).
+submit_and_wait(OfferCreate(account=maker.classic_address, taker_pays=xrp_to_drops(4),
+    taker_gets={"currency": "TST", "issuer": issuer.classic_address, "value": "20"}),
+    client, maker)
+
+print("Tradeable pair ready. Issuer:", issuer.classic_address)
+```
+{% /tab %}
+{% /tabs %}
+
+Note the issuer address that gets printed — the rest of this tutorial uses it wherever
+`TEST_ISSUER` appears. Your trading wallet needs **no** trust line to it: the ledger creates
+one automatically the first time you receive TST. Budget 0.2 XRP of owner reserve for it.
+
+---
+
+## Step 3: Read the order book
 
 Order book reads are read-only — no signature or confirmation required. Ask Claude:
 
@@ -126,9 +226,12 @@ The code behind this request:
 {% tabs %}
 {% tab label="TypeScript" %}
 ```typescript
-import { Client } from "xrpl";
+import { Client, dropsToXrp } from "xrpl";
 
-const USD_ISSUER = "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"; // example Bitstamp issuer
+// NOTE: rvYAfWj5... is Bitstamp's MAINNET issuer. It has no meaningful book on
+// Testnet. Substitute an issuer that is actually active on Testnet, or issue your
+// own test token and trade against it.
+const USD_ISSUER = process.env.TEST_ISSUER!;   // a Testnet issuer you control
 const client    = new Client("wss://s.altnet.rippletest.net:51233");
 await client.connect();
 
@@ -147,15 +250,27 @@ const [asks, bids] = await Promise.all([
   }),
 ]);
 
-const askOffers = asks.result.offers;
-const bidOffers = bids.result.offers;
-const bestAsk   = askOffers.length ? parseFloat(askOffers[0].quality as string) : Infinity;
-const bestBid   = bidOffers.length ? parseFloat(bidOffers[0].quality as string) : 0;
-const midPrice  = (bestAsk + bestBid) / 2;
-const spreadPct = midPrice > 0 ? ((bestAsk - bestBid) / midPrice) * 100 : null;
+// `quality` is TakerPays/TakerGets in PROTOCOL units — XRP is in drops, so an
+// XRP-denominated quality is 1,000,000x off and the two book sides are inverted.
+// Always derive the price from the amounts instead.
+const amt = (a: any) => typeof a === "string" ? Number(dropsToXrp(a)) : Number(a.value);
+const price = (o: any, getsBase: boolean) =>
+  getsBase ? amt(o.TakerPays) / amt(o.TakerGets) : amt(o.TakerGets) / amt(o.TakerPays);
 
-console.log(`Mid price: ${midPrice.toFixed(6)} USD/XRP`);
-console.log(`Spread   : ${spreadPct?.toFixed(3) ?? "n/a"} %`);
+const askOffers = asks.result.offers;   // taker_gets = XRP -> getsBase = true
+const bidOffers = bids.result.offers;   // taker_pays = XRP -> getsBase = false
+const bestAsk   = askOffers.length ? price(askOffers[0], true)  : null;
+const bestBid   = bidOffers.length ? price(bidOffers[0], false) : null;
+
+// A one-sided book has no mid price and no spread. Report that honestly.
+if (bestAsk === null || bestBid === null) {
+  console.log("One-sided book — mid price and spread are undefined.");
+} else {
+  const midPrice  = (bestAsk + bestBid) / 2;
+  const spreadPct = ((bestAsk - bestBid) / midPrice) * 100;
+  console.log(`Mid price: ${midPrice.toFixed(6)} USD/XRP`);
+  console.log(`Spread   : ${spreadPct.toFixed(3)} %`);
+}
 
 await client.disconnect();
 ```
@@ -164,6 +279,7 @@ await client.disconnect();
 ```python
 from xrpl.clients import JsonRpcClient
 from xrpl.models.requests import BookOffers
+from xrpl.utils import drops_to_xrp
 
 USD_ISSUER = "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
 client     = JsonRpcClient("https://s.altnet.rippletest.net:51234")
@@ -180,20 +296,31 @@ bids = client.request(BookOffers(
     limit=20,
 )).result.get("offers", [])
 
-best_ask  = float(asks[0]["quality"]) if asks else float("inf")
-best_bid  = float(bids[0]["quality"]) if bids else 0.0
-mid_price = (best_ask + best_bid) / 2
-spread    = ((best_ask - best_bid) / mid_price * 100) if mid_price > 0 else None
+# `quality` is in PROTOCOL units (XRP as drops) and the two book sides are
+# inverted — derive the price from the amounts instead.
+def _amt(a):
+    return float(drops_to_xrp(a)) if isinstance(a, str) else float(a["value"])
 
-print(f"Mid price: {mid_price:.6f} USD/XRP")
-print(f"Spread   : {spread:.3f} %" if spread else "Spread: n/a")
+def _price(o, gets_base):
+    return (_amt(o["TakerPays"]) / _amt(o["TakerGets"])) if gets_base \
+        else (_amt(o["TakerGets"]) / _amt(o["TakerPays"]))
+
+best_ask = _price(asks[0], True)  if asks else None
+best_bid = _price(bids[0], False) if bids else None
+
+if best_ask is None or best_bid is None:
+    print("One-sided book - mid price and spread are undefined.")
+else:
+    mid_price = (best_ask + best_bid) / 2
+    print(f"Mid price: {mid_price:.6f} USD/XRP")
+    print(f"Spread   : {(best_ask - best_bid) / mid_price * 100:.3f} %")
 ```
 {% /tab %}
 {% /tabs %}
 
 ---
 
-## Step 3: Place a limit order
+## Step 4: Place a limit order
 
 Ask Claude to place a limit order. The Trading skill builds the transaction object
 and the Wallet skill runs the signing ceremony — you will see a preview before
@@ -211,10 +338,11 @@ Pre-trade summary
 ──────────────────────────────────────────────────────
 Offering:     10 XRP (10,000,000 drops)
 To receive:   5 USD (Bitstamp issuer)
-Limit price:  0.500000 USD/XRP
-Mid price:    0.511800 USD/XRP (from order book)
-Est. fill:    ~60% crosses immediately at current depth
-Slippage:     −2.3% vs mid (executing below mid)
+Limit price:  0.500000 USD/XRP  (minimum you will accept)
+Mid price:    0.511800 USD/XRP  (from order book)
+Est. fill:    100% — your limit is below the best bid, so the whole order crosses
+Exec. price:  0.511200 USD/XRP  (you receive the better book price, not your limit)
+Slippage:     0.00% vs best bid — depth exceeds order size
 Expiry:       2026-08-21T14:30:00Z (1 hour from now)
 ──────────────────────────────────────────────────────
 Proceed to sign? (yes / no)
@@ -226,14 +354,17 @@ After acknowledgement, the Wallet skill displays its transaction preview:
 ─── XRPL Transaction Preview ────────────────────────────────────────
 Network           : testnet
 Type              : OfferCreate
-From              : rYourAddress...
-TakerPays         : 5 USD (issuer: rvYAfWj5...)
-TakerGets         : 10 XRP (10,000,000 drops)
+From              : rYourFullAddressShownInFullNoTruncation
+To                : —
+Amount            : —
 Fee               : 0.000012 XRP
 Sequence          : 48291010
 LastLedgerSequence: 48291030  (expires in ~20 ledgers, ~80 seconds)
-Expiration        : 2026-08-21T14:30:00Z
 Flags             : 0
+Memos             : —
+TakerGets         : 10 XRP (10,000,000 drops)
+TakerPays         : 5 USD  issuer rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B
+Other fields      : Expiration 2026-08-21T14:30:00Z
 ─────────────────────────────────────────────────────────────────────
 Sign and submit? (yes / no)
 ```
@@ -285,8 +416,8 @@ offer = OfferCreate(
 After signing, Claude classifies the result:
 
 ```
-Fill status:    partial
-Amount filled:  6 XRP sold, 3.07 USD received (immediate crosses)
+Fill status:    partial (remainder resting)
+Amount filled:  6 of 10 XRP sold (60%), 3.07 USD received
 Remaining:      4 XRP / 2 USD resting on the book
 Offer sequence: 48291010  ← save this to cancel later
 Fee paid:       12 drops (0.000012 XRP)
@@ -297,7 +428,7 @@ Tx hash:        A3F9B2...
 
 ---
 
-## Step 4: Cancel the resting offer
+## Step 5: Cancel the resting offer
 
 If the offer doesn't fill completely, cancel it with:
 
