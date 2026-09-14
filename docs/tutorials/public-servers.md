@@ -22,6 +22,7 @@ If you don't [run your own `xrpld` server](../infrastructure/installation/index.
 |:----------|:------------|:-------------|:---------------------|
 | InFTF full history paid API via [Dhali](https://dhali.io/) | **Mainnet** | `https://xrplcluster.dhali.io/` | You must [create a paid API key](https://pay.dhali.io/?uuids=199fd80b-1776-4708-b1a1-4b2bb386435d) and embed it in the request's `Payment-Claim` header. |
 | [QuickNode](https://www.quicknode.com/chains/xrpl) | Testnet/Mainnet | N/A | QuickNode provides hosted XRPL RPC mainnet and testnet under their free and paid plans, granting flexible and reliable access to the network.
+| [node101](https://node101.io/en/rpc/xrpl) | Mainnet; Testnet on request | N/A | Paid XRP Ledger RPC services and managed dedicated nodes with HTTP JSON-RPC, WebSocket, gRPC, and REST API access. Features include distributed infrastructure, 24/7 technical support, and plan-dependent dashboard monitoring and incident reports. Archive access, testnet endpoints, and dedicated deployments in Türkiye, Europe, and the United States are available on request. Access requires a paid plan; no free public endpoint or free tier is offered. |
 
 
 ## Test Networks
