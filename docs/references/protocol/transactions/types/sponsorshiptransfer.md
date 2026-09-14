@@ -104,7 +104,8 @@ When successful:
 {% /tab %}
 
 {% tab label="End Sponsorship" %}
-Use the `tfSponsorshipEnd` flag to dissolve an existing sponsorship. Either the sponsor or the sponsee can submit the transaction with this configuration. The reserve burden returns to the object or account owner.
+Use the `tfSponsorshipEnd` flag to dissolve an existing sponsorship. Either the sponsor or the sponsee can submit the transaction with this configuration, but the sponsee must be able to cover the reserve. For sponsored objects, {% amendment-disclaimer name="fixCleanup3_4_0" /%} extends this requirement to the object's owner. If they can't cover it, the transaction fails.
+
 
 To submit a transaction for this scenario:
 
@@ -127,7 +128,7 @@ Besides errors that can occur for all transactions, {% code-page-name /%} transa
 
 | Error Code                | Description |
 | :------------------------ | :---------- |
-| `tecINSUFFICIENT_RESERVE` | The account taking on the reserve burden does not have sufficient XRP to cover it. |
+| `tecINSUFFICIENT_RESERVE` | The account taking on the reserve burden does not have sufficient XRP to cover it. Also occurs if a sponsorship ends and the sponsee can't cover the reserve on its own. Enforced for sponsored objects with {% amendment-disclaimer name="fixCleanup3_4_0" /%} enabled. |
 | `tecNO_ENTRY`             | The `ObjectID` is specified but does not exist on the ledger. |
 | `tecNO_PERMISSION`        | The transaction lacks the required permissions. This can occur when:<ul><li>The object is a ledger entry type that does not support sponsorship.</li><li>The submitter is not the current sponsor or sponsee when ending a sponsorship.</li><li>The object or account is already sponsored when creating a sponsorship.</li></ul> |
 | `temINVALID_FLAG`         | The transaction has invalid flags. This can occur when:<ul><li>The transaction does not have exactly one of `tfSponsorshipCreate`, `tfSponsorshipReassign`, or `tfSponsorshipEnd` set.</li><li>The `spfSponsorReserve` flag is missing when creating or reassigning a sponsorship.</li><li>The `SponsorFlags` field is present when ending a sponsorship.</li></ul> |

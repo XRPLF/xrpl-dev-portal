@@ -60,9 +60,10 @@ Besides errors that can occur for all transactions, {% $frontmatter.seo.title %}
 | `temDISABLED`                    | The [NonFungibleTokensV1 amendment][] is not enabled. |
 | `temBAD_AMOUNT`                  | The `Amount` field is not valid. For example, the amount was zero for a buy offer, or the amount is denominated in fungible tokens but the `NFToken` has the [`flagOnlyXRP` flag](../../data-types/nftoken.md#nftoken-flags) enabled. |
 | `temBAD_EXPIRATION`              | The specified `Expiration` time is invalid (for example, `0`). |
+| `temBAD_CURRENCY`              | The `Amount` field is an issued token using the reserved currency code `XRP`. {% amendment-disclaimer name="fixCleanup3_4_0" /%} |
 | `tecDIR_FULL`                    | The sender already owns too many objects in the ledger, or there are already too many offers to buy or sell this token.<br>This error is effectively impossible to receive if {% amendment-disclaimer name="fixDirectoryLimit" compact=true /%} is enabled. |
 | `tecEXPIRED`                     | The specified `Expiration` time has already passed. |
-| `tecFROZEN`                      | The `Amount` is denominated in fungible tokens, but one of the trust lines that would receive tokens from this offer is [frozen](../../../../concepts/tokens/fungible-tokens/freezes.md). This could be the seller's trust line or the `NFToken`'s issuer's trust line (if the `NFToken` has a transfer fee). |
+| `tecFROZEN`                      | The `Amount` is denominated in fungible tokens, but one of the trust lines that would receive tokens from this offer is [frozen](../../../../concepts/tokens/fungible-tokens/freezes.md). This could be the seller's trust line or the `NFToken`'s issuer's trust line (if the `NFToken` has a transfer fee). An IOU issuer creating an offer denominated in their own currency is exempt from their own global freeze. {% amendment-disclaimer name="fixCleanup3_4_0" /%} |
 | `tecINSUFFICIENT_RESERVE`        | The sender does not have enough XRP to meet the [reserve requirement](../../../../concepts/accounts/reserves.md) after placing this offer. |
 | `tecNO_DST`                      | The account specified in the `Destination` field does not exist in the ledger. |
 | `tecNO_ENTRY`                    | The `NFToken` is not owned by the expected account. |
