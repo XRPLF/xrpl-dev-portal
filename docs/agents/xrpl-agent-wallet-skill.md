@@ -372,7 +372,7 @@ const signedBlob = encode({
 // Then: client.submitAndWait(signedBlob)
 ```
 
-`publicKeyFor()` is the recovery helper — it is defined in full in [`references/ows.md`](…) §3. Cache its result in `OWS_XRPL_PUBLIC_KEY` and it runs once per wallet.
+`publicKeyFor()` is the recovery helper — it is defined in full in [`references/ows.md`](https://github.com/XRPLF/xrpl-dev-portal/tree/master/.claude/skills/xrpl-skills/xrpl-agent-wallet/references/ows.md). Cache its result in `OWS_XRPL_PUBLIC_KEY` and it runs once per wallet.
 
 Omitting `SigningPubKey` is the most common mistake here: `encode()` still
 succeeds, so nothing looks wrong until submission fails with

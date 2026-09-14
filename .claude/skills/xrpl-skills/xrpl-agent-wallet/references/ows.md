@@ -598,7 +598,10 @@ OWS throws JavaScript `Error` instances. Classify by message content:
 | Wallet not found | "wallet not found" | Check wallet name/ID |
 | `txHex` not valid XRPL binary | Serialization error | Fix tx construction; re-simulate |
 | Source tag missing (app check) | `SourceTagMissingError` | Add `SourceTag` before signing |
-| `signAndSend` RPC failure | XRPL engine result | Inspect for `tec*` codes |
+| `SigningPubKey` present in the payload | "unsigned transaction must not contain SigningPubKey" | Remove it before encoding; OWS adds its own |
+| `SigningPubKey` missing at submission | "Wallet must be provided when submitting an unsigned transaction" | You omitted `SigningPubKey` when assembling — see §3 |
+| Policy denied | "policy denied: chain … not in allowlist" | Check the chain string against the key's allowlist (§4) |
+| Wrong credential | Decryption error | Passphrase or token is wrong; do not retry |
 
 
 ## V3 Roadmap
