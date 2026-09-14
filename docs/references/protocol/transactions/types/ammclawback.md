@@ -17,7 +17,6 @@ Clawback is disabled by default. To use clawback, you must send an [AccountSet t
 
 {% amendment-disclaimer name="AMMClawback" /%}
 
-
 ## Example {% $frontmatter.seo.title %} JSON
 
 ```json
@@ -49,9 +48,12 @@ Clawback is disabled by default. To use clawback, you must send an [AccountSet t
 |:----------|:---------------------|:------------------|:---------|:------------------|
 | `Asset`   | Object               | Issue             | Yes      | The asset to claw back, which can be a trust line token or MPT (see: [Specifying Without Amounts][]). The issuer must be the sender of this transaction. |
 | `Asset2`  | Object               | Issue             | Yes      | The other asset of the AMM pool to claw back from. The asset can be XRP, a trust line token, or an MPT (see: [Specifying Without Amounts][]). |
-| `Amount`  | [Currency Amount][]  | Amount            | No       | The maximum amount to claw back from the AMM account. The `currency` and `issuer` subfields should match the `Asset` subfields. If this field isn't specified, or the `value` subfield exceeds the holder's available tokens in the AMM, all of the holder's tokens are clawed back. |
+| `Amount`  | [Currency Amount][]  | Amount            | No       | The maximum amount to claw back from the AMM account. The `currency` and `issuer` subfields should match the `Asset` subfields. If this field isn't specified, or the `value` subfield meets or exceeds the holder's available tokens in the AMM, all of the holder's tokens are clawed back. {% amendment-disclaimer name="fixCleanup3_4_0" /%} |
 | `Holder`  | String - [Address][] | AccountID         | Yes      | The account holding the asset to be clawed back. |
 
+{% admonition type="info" name="Note" %}
+A clawback bypasses the holder's reserve requirement, so a holder can't avoid clawback by staying below their reserve or removing the trust line or MPToken that would otherwise need to be re-created to receive the returned assets. {% amendment-disclaimer name="fixCleanup3_4_0" /%}
+{% /admonition %}
 
 ## AMMClawback Flags
 
@@ -68,6 +70,7 @@ Besides errors that can occur for all transactions, `AMMClawback` transactions c
 |:--------------------|:------------|
 | `tecNO_PERMISSION`  | Occurs if you attempt to claw back tokens from an AMM without the `lsfAllowTrustLineClawback` flag enabled, or the `tfClawTwoAssets` flag is enabled when you didn't issue both assets in the AMM. Also occurs if the `Asset` issuer doesn't match `Account`. |
 | `tecAMM_BALANCE`    | Occurs if the `Holder` doesn't hold any LP tokens from the AMM pool. |
+| `tecAMM_FAILED`    | Occurs if rounding results in zero extracted tokens on either side of the pair. {% amendment-disclaimer name="fixCleanup3_4_0" /%} |
 | `tecPRECISION_LOSS` | Occurs if the clawback would leave more LP Tokens outstanding than the pool's assets support. {% amendment-disclaimer name="fixAMMv1_3" /%} {% amendment-disclaimer name="fixCleanup3_3_0" /%} |
 | `temDISABLED`       | Occurs if the [AMMClawback amendment][] is not enabled. |
 | `temBAD_AMOUNT`     | Occurs if the `Amount` field in the `AMMClawback` transaction is less than or equal to 0, or the `currency` and `issuer` subfields don't match between `Amount` and `Asset`. |
