@@ -45,7 +45,7 @@ offer = OfferCreate(
     },
     taker_gets=xrp_to_drops(100),   # "100000000"
     # Fee, Sequence, LastLedgerSequence: set by Wallet skill autofill
-    # SourceTag: applied by Wallet skill (OWS) automatically
+    # SourceTag: applied by Wallet skill automatically
 )
 # → hand to XRPL Agent Wallet skill
 ```
@@ -76,7 +76,7 @@ const offer: OfferCreate = {
   Account: "rYourAddress",
   TakerPays: {
     currency: "EUR",
-    issuer: "rHivis7NKi5nrSBUMmJRGFMNwMdyB9rpQ6",  // example EUR issuer
+    issuer: "rEXAMPLEeurIssuerAddressGoesHere00",  // replace with a real issuer address
     value: "45",
   },
   TakerGets: {
@@ -93,7 +93,7 @@ offer = OfferCreate(
     account="rYourAddress",
     taker_pays={
         "currency": "EUR",
-        "issuer": "rHivis7NKi5nrSBUMmJRGFMNwMdyB9rpQ6",
+        "issuer": "rEXAMPLEeurIssuerAddressGoesHere00",  # replace with a real issuer address
         "value": "45",
     },
     taker_gets={
@@ -105,9 +105,13 @@ offer = OfferCreate(
 # → hand to XRPL Agent Wallet skill
 ```
 
-**⚠ Trust line check required:** Before constructing any offer with an IOU side,
-verify the signing account holds an active trust line to the relevant issuer. A
-missing trust line causes `tecNO_LINE` on submission (fee charged, no fill).
+**⚠ Trust lines are required on the sell side only.** Verify a *funded* trust line
+only for an IOU in `TakerGets` (what you are giving away) — selling an IOU you do
+not hold fails with `tecUNFUNDED_OFFER`. An IOU in `TakerPays` (what you are
+buying) needs **no** pre-existing trust line: the ledger auto-creates one with
+limit `0` when the offer executes. Budget one extra owner reserve for that
+auto-created line (see §9). Do not block an offer for a missing `TakerPays`
+trust line — doing so rejects the most common agent trade.
 
 ### 1.3 Immediate-or-cancel (market-equivalent)
 
@@ -350,31 +354,72 @@ async def get_both_sides(client: AsyncJsonRpcClient, issuer: str):
         client.request(bids_req),
     )
     return asks.result["offers"], bids.result["offers"]
+
+
+# Bind the names the next section consumes:
+ask_offers, bid_offers = await get_both_sides(client, issuer)
 ```
 
 ### 3.3 Computing mid price and slippage
 
+> **Never use `quality` as a price.** (The previous version of this section
+> imported `dropsToXrp` and then never called it — that unused import was the
+> tell: the drops conversion is mandatory, not optional.)
+> `quality` is `TakerPays / TakerGets` in
+> *protocol* units, so XRP appears in **drops** — an XRP-denominated `quality` is
+> off by 1,000,000 — and the two sides of a book are quoted in inverse
+> orientations. Feeding `quality` straight into a mid-price calculation produces
+> prices ~10^6 too large and negative spreads. Always derive price from the
+> amounts, converting drops to XRP first.
+
 ```typescript
 import { dropsToXrp } from "xrpl";
 
-// Each offer in book_offers has `quality` = taker_pays / taker_gets (as decimal string)
-const askOffers = asks.result.offers;
-const bidOffers = bids.result.offers;
+const isXRP = (a: unknown): a is string => typeof a === "string";
+const amt   = (a: any) => isXRP(a) ? Number(dropsToXrp(a)) : Number(a.value);
 
-const bestAsk = askOffers.length ? parseFloat(askOffers[0].quality) : Infinity;
-const bestBid = bidOffers.length  ? parseFloat(bidOffers[0].quality)  : 0;
-const midPrice = (bestAsk + bestBid) / 2;
-const spreadPct = midPrice > 0 ? ((bestAsk - bestBid) / midPrice) * 100 : null;
+/** Price of BASE denominated in QUOTE.
+ *  bookGetsBase = true when the book was queried with taker_gets = base. */
+const offerPrice = (o: any, bookGetsBase: boolean) =>
+  bookGetsBase ? amt(o.TakerPays) / amt(o.TakerGets)
+               : amt(o.TakerGets) / amt(o.TakerPays);
+
+const askOffers = asks.result.offers;   // taker_gets = XRP  -> bookGetsBase = true
+const bidOffers = bids.result.offers;   // taker_pays = XRP  -> bookGetsBase = false
+
+const bestAsk = askOffers.length ? offerPrice(askOffers[0], true)  : null;
+const bestBid = bidOffers.length ? offerPrice(bidOffers[0], false) : null;
+
+// A one-sided book has NO mid price and NO spread. Say so; do not invent one.
+const midPrice  = bestAsk !== null && bestBid !== null ? (bestAsk + bestBid) / 2 : null;
+const spreadPct = midPrice !== null ? ((bestAsk! - bestBid!) / midPrice) * 100 : null;
 ```
 
 ```python
-# Each offer in book_offers has "quality" = taker_pays / taker_gets (decimal string)
+from xrpl.utils import drops_to_xrp
+
+def _amt(a):
+    return float(drops_to_xrp(a)) if isinstance(a, str) else float(a["value"])
+
+def _offer_price(o, book_gets_base: bool) -> float:
+    return (_amt(o["TakerPays"]) / _amt(o["TakerGets"])) if book_gets_base \
+        else (_amt(o["TakerGets"]) / _amt(o["TakerPays"]))
+
 def compute_mid_spread(ask_offers: list, bid_offers: list):
-    best_ask = float(ask_offers[0]["quality"]) if ask_offers else float("inf")
-    best_bid = float(bid_offers[0]["quality"]) if bid_offers else 0.0
-    mid_price = (best_ask + best_bid) / 2
-    spread_pct = ((best_ask - best_bid) / mid_price * 100) if mid_price > 0 else None
-    return mid_price, spread_pct
+    best_ask = _offer_price(ask_offers[0], True)  if ask_offers else None
+    best_bid = _offer_price(bid_offers[0], False) if bid_offers else None
+    if best_ask is None or best_bid is None:
+        return None, None          # one-sided book: undefined, not zero/infinity
+    mid = (best_ask + best_bid) / 2
+    return mid, (best_ask - best_bid) / mid * 100
+
+
+# Call site, continuing from §3.2:
+mid_price, spread_pct = compute_mid_spread(ask_offers, bid_offers)
+if mid_price is None:
+    print("One-sided book - mid price and spread are undefined.")
+else:
+    print(f"Mid price: {mid_price:.6f}  Spread: {spread_pct:.3f} %")
 ```
 
 ---
@@ -522,8 +567,8 @@ manage AMM pools without explicit user instruction.
 
 ### 6.1 Source tag
 
-The XRPL Agent Wallet skill (OWS) applies `SourceTag = 20260530` to every
-transaction automatically. This tags all agent-originated transactions on-chain
+The XRPL Agent Wallet skill applies `SourceTag = 20260530` to every transaction
+automatically, on every signing path (env-var, external signer and OWS alike). This tags all agent-originated transactions on-chain
 for attribution and volume tracking. Override by setting `SourceTag` on the
 transaction object before handoff; the Wallet skill respects any value already
 present.
@@ -648,8 +693,8 @@ transaction and simulate again before handing to the Wallet skill.
 | `tesSUCCESS` | Yes | Transaction accepted and applied | Parse fill status from `meta.AffectedNodes` |
 | `tecUNFUNDED_OFFER` | Yes | Account XRP balance insufficient to fund the offer | Check balance. Account needs XRP ≥ offer value + fee + reserve buffer. |
 | `tecEXPIRED` | Yes | `Expiration` already passed when ledger closed | Reject at construction. If boundary race, re-offer with future expiry. |
-| `tecKILLED` | Yes | `tfFillOrKill` offer could not fill completely | Do not retry. Ask user to retry with `tfImmediateOrCancel` or adjusted price. |
-| `tecNO_LINE` | Yes | No trust line for an IOU in the offer | User must establish trust line (`TrustSet`) before retrying. |
+| `tecKILLED` | Yes | `tfFillOrKill` could not fill completely, **or** `tfImmediateOrCancel` matched nothing at all | Do not retry. Ask user to retry with an adjusted price. |
+| `tecUNFUNDED_OFFER` (IOU sell side) | Yes | Account does not hold the IOU in `TakerGets`; includes the no-trust-line case | Account must actually hold the asset. A `TrustSet` alone does not fund the offer. Buying an IOU needs no trust line. |
 | `tecINSUF_RESERVE_OFFER` | Yes | Insufficient XRP reserve to create new offer object | Each resting offer requires 0.2 XRP owner reserve. Cancel existing offers or fund account. |
 | `tecDIR_FULL` | Yes | Offer directory is full (too many offers from this account) | Cancel some existing offers before creating new ones. |
 | `temBAD_OFFER` | No | Malformed transaction (zero amounts, invalid fields, bad flags) | Fix construction and re-simulate. |
@@ -672,6 +717,10 @@ ownership) is **0.2 XRP** (current values — verify at `/server_info`).
 | :---- | :---- |
 | Resting offer on the book | 1 owner reserve (0.2 XRP) |
 | Trust line (each) | 1 owner reserve (0.2 XRP) |
+| Trust line **auto-created** when you buy an IOU you had no line for | 1 owner reserve (0.2 XRP) |
+
+Read the live values from `server_info` (`validated_ledger.reserve_base_xrp`,
+`reserve_inc_xrp`) rather than hard-coding them — they are governance-adjustable.
 
 **Practical rule:** Before allowing an offer to rest on the book, verify:
 
