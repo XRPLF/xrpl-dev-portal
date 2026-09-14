@@ -313,69 +313,155 @@ Notes:
 - The signer must implement XRPL signing correctly (RFC-6979 deterministic nonces for ECDSA-secp256k1; correct Ed25519 if that's the key type). Cloud KMS products that only do raw secp256k1 signatures need a wrapper that handles XRPL's canonical signature encoding — that wrapper is the developer's problem, but flag it if you see a developer reaching for kms.sign() directly.
 - The signer should validate the transaction it's about to sign at its own layer if it can — defense in depth. But you still run the full ceremony on your side; never assume the signer is doing the human-confirmation step for you.
 
-### Pattern 3: OWS — Open Wallet Standard (production agents, policy enforcement)
+### Pattern 3: OWS — Open Wallet Standard (policy-gated signing)
 
-Use this when the agent needs policy-gated signing, x402 payment support, multi-agent key isolation, or any deployment where keys must be encrypted at rest and never touch the signing process.
+Use this when the agent needs signing gated by revocable, scoped credentials —
+keys encrypted at rest, decrypted only after policy checks pass, wiped from
+memory immediately after signing.
 
-OWS stores keys in a local encrypted vault (`~/.ows/wallets/`, AES-256-GCM), evaluates registered policy executables before decrypting, and wipes the key from memory immediately after signing. The XRPL AI Starter Kit recommends OWS for all production deployments.
+OWS keeps one BIP-39 mnemonic in a local encrypted vault (`~/.ows/wallets/`,
+AES-256-GCM) and derives an XRPL secp256k1 account at `m/44'/144'/0'/0/0`.
+
+**Platform gate — check this first.** OWS ships prebuilt native binaries for
+macOS and Linux only (`darwin-x64`, `darwin-arm64`, `linux-x64`, `linux-arm64`).
+There is no Windows build; `npm install` fails with `unsupported platform`. If
+the developer is on Windows, use Pattern 1 or Pattern 2 instead — do not send
+them down this path.
+
+#### Give the agent a token, not the passphrase
+
+This is the part developers get wrong, and it silently removes every guarantee
+they installed OWS for.
+
+```
+signTransaction(wallet, chain, txHex, credential)
+                                          │
+                     ┌────────────────────┴────────────────────┐
+              vault passphrase                          ows_key_… token
+                     │                                          │
+                owner mode                                 agent mode
+            NO policy evaluation                       policies enforced
+```
+
+A passphrase is owner mode: full access to every wallet and chain, **with no
+policy checks at all**. Registering a policy and then signing with the
+passphrase enforces nothing.
+
+An `ows_key_…` token is agent mode: scoped to specific wallets and evaluated
+against its policies *before* any key material is decrypted. Revoking is
+deleting the key file — the token then decrypts nothing.
+
+Mint one once, as the owner, and give the agent only the token:
+
+```typescript
+import { createPolicy, createApiKey } from "@open-wallet-standard/core";
+
+createPolicy(JSON.stringify({
+  id: "xrpl-only", name: "XRPL only",
+  version: 1, created_at: new Date().toISOString(),
+  rules: [{ type: "allowed_chains", chain_ids: ["xrpl:mainnet"] }],
+  action: "deny",
+}));
+
+const key = createApiKey("xrpl-agent-prod", [wallet.id], ["xrpl-only"], passphrase);
+// key.token is shown exactly once — write it to .env or a secrets manager.
+// Never echo it, never put it in the preview, never log it.
+```
+
+Note `xrpl:mainnet`: OWS has no XRPL testnet chain id, so a policy must
+allowlist `xrpl:mainnet` even when signing for Testnet. XRPL addresses are
+network-agnostic, so this is correct.
+
+Treat `OWS_AGENT_TOKEN` with the same discipline as `XRPL_SEED`: load it from
+the environment at the call site, never hardcode it, never show it in the
+transaction preview.
 
 #### Signing path inside the ceremony (Step 5 — Sign)
 
-```typescript
-import { signTransaction, getWallet } from "@open-wallet-standard/core";
-import { encode } from "xrpl";
+XRPL needs **both** `TxnSignature` and `SigningPubKey`. OWS returns only the
+signature, and 1.4.2 exposes no public-key accessor — so there is a catch-22:
 
-// OWS_PASSPHRASE: load from env var — never hardcode, never log, never show in preview
-const OWS_PASSPHRASE = process.env.OWS_PASSPHRASE ?? "";
+- Include `SigningPubKey` before signing → OWS throws
+  `unsigned transaction must not contain SigningPubKey`.
+- Omit it after signing → `submitAndWait` fails with
+  `Wallet must be provided when submitting an unsigned transaction`.
+
+**Never resolve this with `exportWallet()`.** That pulls the mnemonic into the
+agent process and defeats the vault. Recover the public key from a signature
+instead — the seed stays in the vault. Recover once, then cache it.
+
+```typescript
+import { getWallet, signHash, signTransaction } from "@open-wallet-standard/core";
+import { secp256k1 } from "@noble/curves/secp256k1.js";
+import { deriveAddress } from "ripple-keypairs";
+import { encode, hashes } from "xrpl";
+
+const CREDENTIAL = process.env.OWS_AGENT_TOKEN ?? "";  // ows_key_… , not the passphrase
+const PROBE = "6f77732d7872706c2d7075626b65792d70726f62652d76310000000000000000";
+const b = (h: string) => Uint8Array.from(Buffer.from(h.replace(/^0x/, ""), "hex"));
+
+function publicKeyFor(walletName: string, address: string): string {
+  if (process.env.OWS_XRPL_PUBLIC_KEY) return process.env.OWS_XRPL_PUBLIC_KEY.toUpperCase();
+  const { signature } = signHash(walletName, "xrpl", PROBE, CREDENTIAL);
+  const sig = secp256k1.Signature.fromBytes(b(signature), "der");
+  for (let bit = 0; bit < 4; bit++) {
+    try {
+      const pt = sig.addRecoveryBit(bit).recoverPublicKey(b(PROBE));
+      const cand = Buffer.from(pt.toBytes(true)).toString("hex").toUpperCase();
+      if (deriveAddress(cand) === address) return cand;
+    } catch { /* try next recovery bit */ }
+  }
+  throw new Error(`no public key matches ${address}`);
+}
 
 // After autofill and human confirmation:
-const txHex = encode(prepared as Record<string, unknown>);
-const { signature } = signTransaction(walletName, "xrpl", txHex, OWS_PASSPHRASE);
-const signedTx   = { ...prepared, TxnSignature: signature.toUpperCase() };
-const signedBlob = encode(signedTx as Record<string, unknown>);
+const txHex = encode(prepared as Record<string, unknown>);       // no SigningPubKey
+const { signature } = signTransaction(walletName, "xrpl", txHex, CREDENTIAL);
+
+const signedBlob = encode({
+  ...(prepared as Record<string, unknown>),
+  SigningPubKey: publicKeyFor(walletName, prepared.Account),
+  TxnSignature:  signature.replace(/^0x/, "").toUpperCase(),
+} as Record<string, unknown>);
+
+const hash = hashes.hashSignedTx(signedBlob);   // persist BEFORE submitting
 // Then: client.submitAndWait(signedBlob)
 ```
 
-#### OWS passphrase handling
-
-The OWS passphrase is the vault decryption key. Treat it with the same discipline as `XRPL_SEED`:
-
-- Store in an environment variable (`OWS_PASSPHRASE`) — never in source code
-- Never log, echo, or include in error messages
-- Never show in the transaction preview
-- Load with `process.env.OWS_PASSPHRASE` at the call site; do not hoist to a module-level constant
+The signature OWS produces is byte-identical to `ripple-keypairs` signing the
+same payload — OWS applies the `0x53545800` prefix and SHA-512-half internally.
 
 #### Getting the signing address
 
 ```typescript
 const wallet  = getWallet(walletName);
 const account = wallet.accounts.find(a => a.chainId.startsWith("xrpl"));
-// account.address => "r..."
+// account.address => "r..."   (AccountInfo has no public key — see above)
 ```
 
 #### Python / xrpl-py + OWS
 
-The OWS SDK is Node.js only. Python agents sign via the OWS CLI as a subprocess:
+The OWS SDK is Node.js only. Python agents sign via the CLI — note `--json`,
+without which the CLI prints raw hex and `json.loads` fails:
 
 ```python
 import json, subprocess
 
 proc = subprocess.run(
-    ["ows", "sign", "tx", "--wallet", OWS_WALLET_NAME, "--chain", "xrpl", "--tx", tx_hex],
+    ["ows", "sign", "tx", "--wallet", OWS_WALLET_NAME,
+     "--chain", "xrpl", "--tx", tx_hex, "--json"],
     capture_output=True, text=True, check=True,
 )
 signature = json.loads(proc.stdout)["signature"].upper()
 ```
 
-Alternatively, run `ows mcp` or `ows rest` and call the OWS server over HTTP. See [`references/ows.md`](references/ows.md) for the full setup guide.
+The CLI always uses `~/.ows` — it has no vault-path option, unlike the SDK. And
+it will not give you a public key, so the recovery step above still has to
+happen somewhere. For Python agents, keeping the whole signing step in a small
+Node helper is usually simpler than reimplementing recovery.
 
-#### Which pattern to use?
-
-| Situation | Pattern |
-| :---- | :---- |
-| Development, testnet, single agent, low-value account | **Pattern 1** — env-var |
-| Cloud KMS, HSM, hardware wallet — key never in process | **Pattern 2** — external signer |
-| Production agents, policy enforcement, x402, multi-agent | **Pattern 3** — OWS |
+See [`references/ows.md`](references/ows.md) for policy setup, enforcement
+scope, and migration from the env-var pattern.
 
 ### Other constructors developers may reach for
 
