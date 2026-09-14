@@ -368,9 +368,13 @@ const key = createApiKey("xrpl-agent-prod", [wallet.id], ["xrpl-only"], passphra
 // Never echo it, never put it in the preview, never log it.
 ```
 
-Note `xrpl:mainnet`: OWS has no XRPL testnet chain id, so a policy must
-allowlist `xrpl:mainnet` even when signing for Testnet. XRPL addresses are
-network-agnostic, so this is correct.
+Note `xrpl:mainnet`: `xrpl`, `xrpl:mainnet`, `xrpl:testnet` and `xrpl-testnet`
+all sign with the same key and produce identical signatures — an XRPL account is
+the same on every network. But the string you pass is what the policy engine
+evaluates, and `AccountInfo` reports `xrpl:mainnet`. Allowlist `xrpl:mainnet`
+and pass `"xrpl"`; mixing them yields
+`policy denied: chain xrpl:testnet not in allowlist`, which looks like a key
+problem but is not.
 
 Treat `OWS_AGENT_TOKEN` with the same discipline as `XRPL_SEED`: load it from
 the environment at the call site, never hardcode it, never show it in the
@@ -462,6 +466,14 @@ Node helper is usually simpler than reimplementing recovery.
 
 See [`references/ows.md`](references/ows.md) for policy setup, enforcement
 scope, and migration from the env-var pattern.
+
+#### Which pattern to use?
+
+| Situation | Pattern |
+| :---- | :---- |
+| Development, testnet, single agent, low-value account | **Pattern 1** — env-var |
+| Cloud KMS, HSM, hardware wallet — key never in process | **Pattern 2** — external signer |
+| Policy-gated signing, revocable scoped credentials, x402, multi-agent (macOS/Linux) | **Pattern 3** — OWS |
 
 ### Other constructors developers may reach for
 

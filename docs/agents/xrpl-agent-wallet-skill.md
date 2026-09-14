@@ -334,7 +334,6 @@ the access mode, and this is easy to get wrong:
 | `ows_key_…` token | Agent | Evaluated before the key is decrypted; scoped to specific wallets; revocable |
 
 Registering a policy and then signing with the passphrase enforces nothing.
-
 Mint a token once as the owner and give the agent only that:
 
 ```typescript
@@ -351,8 +350,10 @@ const key = createApiKey("xrpl-agent-prod", [wallet.id], ["xrpl-only"], passphra
 // key.token is shown once — store it in .env or a secrets manager, never log it.
 ```
 
-OWS has no XRPL testnet chain id, so policies allowlist `xrpl:mainnet` even for
-Testnet. XRPL addresses are network-agnostic.
+All of `xrpl`, `xrpl:mainnet`, `xrpl:testnet` and `xrpl-testnet` sign with the
+same key, but the string you pass is what the policy engine evaluates, and
+`AccountInfo` reports `xrpl:mainnet`. Allowlist `xrpl:mainnet` and pass
+`"xrpl"`.
 
 **Signing.** XRPL requires both `TxnSignature` and `SigningPubKey`. OWS returns
 only the signature and exposes no public-key accessor, so you recover the key
@@ -402,7 +403,7 @@ somewhere — for Python agents, a small Node signing helper is usually simpler.
 
 For full setup, policy registration, enforcement scope, and migration from the
 env-var pattern, see
-[`references/ows.md`](rhttps://github.com/XRPLF/xrpl-dev-portal/tree/master/.claude/skills/xrpl-skills/xrpl-agent-wallet/references/ows.md).
+[`references/ows.md`](https://github.com/XRPLF/xrpl-dev-portal/tree/master/.claude/skills/xrpl-skills/xrpl-agent-wallet/references/ows.md).
 
 ### Which signing pattern should I use?
 

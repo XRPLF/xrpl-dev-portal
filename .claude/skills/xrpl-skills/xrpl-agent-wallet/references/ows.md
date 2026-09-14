@@ -165,9 +165,18 @@ createPolicy(JSON.stringify({
 `version` and `created_at` are mandatory. `action` is what happens when a rule
 **fails**, so the example above allows XRPL and denies everything else.
 
-Note the chain id: OWS has no XRPL testnet chain, so a policy must allowlist
-`xrpl:mainnet` **even when you are signing for Testnet**. XRPL addresses are
-network-agnostic, so this is correct, if surprising.
+**Use one chain string consistently.** `xrpl`, `xrpl:mainnet`, `xrpl:testnet`
+and `xrpl-testnet` all resolve to the same key and produce identical
+signatures — an XRPL account is the same on every network. But the string you
+pass becomes the chain id the **policy engine** evaluates, and `AccountInfo`
+reports `xrpl:mainnet`. So an `xrpl:mainnet` allowlist plus a
+`signTransaction("xrpl-testnet", …)` call is denied:
+
+```
+policy denied: chain xrpl:testnet not in allowlist
+```
+
+Same key, same address, rejected. Allowlist `xrpl:mainnet` and pass `"xrpl"`.
 
 ### API key management
 
@@ -394,7 +403,7 @@ the skill is loaded. OWS v3 will add equivalent enforcement at the vault layer.
 
 ## 7. Python Integration
 
-The OWS SDK is Node.js only. Python agents have two options:
+The OWS SDK is Node.js only. 
 
 ### Option A: OWS CLI subprocess (simple, no server required)
 
@@ -455,8 +464,7 @@ Only use secp256k1 seeds and do not use Ed25519 seeds.
 
 ## 9. Access Modes: Passphrase vs API Token
 
-The credential you pass to `signTransaction` selects the access mode. This is
-the single most important operational detail in OWS.
+The credential you pass to `signTransaction` selects the access mode. This is the single most important operational detail in OWS.
 
 ```
 signTransaction(wallet, chain, txHex, credential)
@@ -494,8 +502,7 @@ const key = createApiKey(
 ```
 
 Give the agent `key.token`. Do not give an agent the vault passphrase: it
-bypasses every policy you registered, which is usually the opposite of why OWS
-was chosen.
+bypasses every policy you registered, which is usually the opposite of why OWS was chosen.
 
 ## 10. Error Reference
 
