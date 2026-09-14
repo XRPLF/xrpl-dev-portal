@@ -16,11 +16,11 @@
 4. [Policy setup](#4-policy-setup)
 5. [What OWS enforces (v2)](#5-what-ows-enforces-v2)
 6. [Application-layer enforcement](#6-application-layer-enforcement)
-7. [Python integration](#7-python-integration)
-8. [Migrating from env-var (Pattern 1) to OWS (Pattern 3)](#8-migrating-from-env-var-to-ows)
-9. [Access modes: passphrase vs API token](#9-access-modes-passphrase-vs-api-token)
-10. [Error reference](#10-error-reference)
-11. [V3 roadmap](#v3-roadmap)
+<!-- 7. [Python integration](#7-python-integration) -->
+7. [Migrating from env-var (Pattern 1) to OWS (Pattern 3)](#8-migrating-from-env-var-to-ows)
+8. [Access modes: passphrase vs API token](#9-access-modes-passphrase-vs-api-token)
+9. [Error reference](#10-error-reference)
+10. [V3 roadmap](#v3-roadmap)
 
 ---
 
@@ -400,7 +400,11 @@ OWS does not enforce source tag presence. The XRPL Agent Wallet skill applies
 ceremony if no `SourceTag` is already set. Domain skills (Trading, Payments) may
 override with a custom value before handoff.
 
-**All transactions from the XRPL AI Starter Kit must carry a `SourceTag`.**
+**Every transaction signed through the Wallet skill ceremony is tagged by default.** The
+skill applies `SourceTag = 20260530` when the field is absent. A developer may set a custom
+value, or `0` to opt out deliberately — `0` is preserved on-ledger and is distinguishable
+there from a missing field. Transactions submitted *outside* the ceremony are not tagged at
+all, which is the usual reason a transaction turns up untagged.
 
 ### Domain skill guardrails
 
@@ -414,7 +418,7 @@ the skill is loaded. OWS v3 will add equivalent enforcement at the vault layer.
 
 ---
 
-## 7. Python Integration
+<!-- ## 7. Python Integration
 
 The OWS SDK is Node.js only, so Python agents shell out to the `ows` CLI.
 
@@ -467,7 +471,7 @@ def pay(destination: str, amount_xrp: int) -> str:
         account=os.environ["AGENT_ADDRESS"],
         destination=destination,
         amount=xrp_to_drops(amount_xrp),
-        source_tag=20260530,
+        # SourceTag applied by the Wallet skill ceremony
     )
     tx_dict = autofill(payment, client).to_xrpl()
 
@@ -499,7 +503,9 @@ there rather than the vault passphrase, so policies are evaluated (§9).
 
 Two further constraints: the CLI always uses `~/.ows` and has **no vault-path option**, unlike the SDK's `vaultPathOpt`. And if you need the public key recovered rather than cached, that must happen in TypeScript — the CLI will not give you one.
 
-## 8. Migrating from Env-Var to OWS
+-->
+
+## 7. Migrating from Env-Var to OWS
 
 **Check your key type first.** `xrpl.Wallet.generate()` defaults to **ed25519** (seeds beginning `sEd…`). OWS derives XRPL accounts on **secp256k1** only, so an ed25519 wallet cannot be imported — that agent needs a new address and a funded migration payment, not an import.
 
@@ -545,7 +551,7 @@ After migration:
 5. Cache the recovered public key in `OWS_XRPL_PUBLIC_KEY`.
 
 
-## 9. Access Modes: Passphrase vs API Token
+## 8. Access Modes: Passphrase vs API Token
 
 The credential you pass to `signTransaction` selects the access mode. This is the single most important operational detail in OWS.
 
@@ -587,7 +593,7 @@ const key = createApiKey(
 Give the agent `key.token`. Do not give an agent the vault passphrase: it
 bypasses every policy you registered, which is usually the opposite of why OWS was chosen.
 
-## 10. Error Reference
+## 9. Error Reference
 
 OWS throws JavaScript `Error` instances. Classify by message content:
 
@@ -597,14 +603,13 @@ OWS throws JavaScript `Error` instances. Classify by message content:
 | Vault passphrase wrong | Decryption error | Fix passphrase; do not retry |
 | Wallet not found | "wallet not found" | Check wallet name/ID |
 | `txHex` not valid XRPL binary | Serialization error | Fix tx construction; re-simulate |
-| Source tag missing (app check) | `SourceTagMissingError` | Add `SourceTag` before signing |
 | `SigningPubKey` present in the payload | "unsigned transaction must not contain SigningPubKey" | Remove it before encoding; OWS adds its own |
 | `SigningPubKey` missing at submission | "Wallet must be provided when submitting an unsigned transaction" | You omitted `SigningPubKey` when assembling — see §3 |
 | Policy denied | "policy denied: chain … not in allowlist" | Check the chain string against the key's allowlist (§4) |
 | Wrong credential | Decryption error | Passphrase or token is wrong; do not retry |
 
 
-## V3 Roadmap
+## 10. V3 Roadmap
 
 OWS v3 will extend the policy engine to parse XRPL binary payloads natively,
 enabling transaction-aware rules without custom executables.
