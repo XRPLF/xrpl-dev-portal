@@ -18,8 +18,9 @@
 6. [Application-layer enforcement](#6-application-layer-enforcement)
 7. [Python integration](#7-python-integration)
 8. [Migrating from env-var (Pattern 1) to OWS (Pattern 3)](#8-migrating-from-env-var-to-ows)
-9. [Error reference](#10-error-reference)
-10. [V3 roadmap](#v3-roadmap)
+9. [Access modes: passphrase vs API token](#9-access-modes-passphrase-vs-api-token)
+10. [Error reference](#10-error-reference)
+11. [V3 roadmap](#v3-roadmap)
 
 ---
 
@@ -45,15 +46,15 @@ AI Agent
 XRPL Agent Wallet skill
     │  autofill → human preview → confirm
     ▼
-OWS signTransaction("xrpl-testnet", txHex)
+OWS signTransaction("xrpl", txHex)        ← tx must NOT contain SigningPubKey
     │
-    ├── Policy Engine  ← registered policy executables
+    ├── Policy Engine  ← declarative rules + any custom executables
     │       │
     │       ├── PASS → decrypt key → sign → wipe key → return { signature }
     │       └── FAIL → throw (key never decrypted)
     │
     ▼
-Wallet skill applies TxnSignature → encodes signed tx → submitAndWait
+Wallet skill applies SigningPubKey + TxnSignature → encodes → submitAndWait
 ```
 
 **OWS is not a session-based adapter.** There is no `connect()` / `disconnect()`
@@ -74,7 +75,7 @@ npm install @open-wallet-standard/core
 
 ```typescript
 interface AccountInfo {
-  chainId:        string; // CAIP-2, e.g. "xrpl:testnet"
+  chainId:        string; // CAIP-2 - reports "xrpl:mainnet for XRPL"
   address:        string; // XRPL base58check, e.g. "r..."
   derivationPath: string; // "m/44'/144'/0'/0/0"
 }
@@ -165,11 +166,7 @@ createPolicy(JSON.stringify({
 `version` and `created_at` are mandatory. `action` is what happens when a rule
 **fails**, so the example above allows XRPL and denies everything else.
 
-**Use one chain string consistently.** `xrpl`, `xrpl:mainnet`, `xrpl:testnet`
-and `xrpl-testnet` all resolve to the same key and produce identical
-signatures — an XRPL account is the same on every network. But the string you
-pass becomes the chain id the **policy engine** evaluates, and `AccountInfo`
-reports `xrpl:mainnet`. So an `xrpl:mainnet` allowlist plus a
+**Use one chain string consistently.** `xrpl`, `xrpl:mainnet`, `xrpl:testnet` and `xrpl-testnet` all resolve to the same key and produce identical signatures — an XRPL account is the same on every network. But the string you pass becomes the chain id the **policy engine** evaluates, and `AccountInfo` reports `xrpl:mainnet`. So an `xrpl:mainnet` allowlist plus a
 `signTransaction("xrpl-testnet", …)` call is denied:
 
 ```
@@ -186,7 +183,7 @@ import { createApiKey } from "@open-wallet-standard/core";
 const key = createApiKey(
   "xrpl-ai-agent-prod",     // key name
   [wallet.id],               // wallet IDs this key can access
-  ["business-hours"],        // policy IDs evaluated per request
+  ["xrpl-only"],        // policy IDs evaluated per request
   passphrase,
   "2027-01-01T00:00:00Z",   // optional expiry
 );
@@ -309,54 +306,70 @@ export async function signAndSubmitPayment(params: {
 }
 ```
 
-<!-- **Upstream gap.** A `getPublicKey(wallet, chain)` — or a `publicKey` field on `AccountInfo` — would remove step 4 entirely. Until then, every XRPL integrator must reimplement this recovery or export the seed. -->
+**Upstream gap.** A `getPublicKey(wallet, chain)` — or a `publicKey` field on `AccountInfo` — would remove step 4 entirely. Until then, every XRPL integrator must reimplement this recovery or export the seed.
 
 ## 4. Policy Setup
 
 ### How policies work
 
-OWS invokes each registered policy executable with a `PolicyContext` on stdin
-and reads `{ allow: boolean, reason?: string }` from stdout. If any policy with
-`action: "deny"` returns `allow: false`, signing is rejected and the key is
-never decrypted.
+A policy is registered in the vault and attached to an API key. When an agent
+signs with an `ows_key_…` token, every policy on that key is evaluated — AND
+semantics, short-circuiting on the first denial — **before** the key is
+decrypted. A denial never touches key material.
 
-```typescript
-// PolicyContext (passed to each executable on stdin)
-interface PolicyContext {
-  transaction: string;           // serialized tx hex
-  chainId:     string;           // "xrpl-testnet"
-  wallet:      WalletInfo;
-  timestamp:   string;           // ISO 8601
-  apiKeyId:    string;
-}
-```
+Policies are **not** evaluated for passphrase (owner) access. See §9.
 
-### Time-window policy
+### Declarative rules
 
-```typescript
-createPolicy(JSON.stringify({
-  id:         "business-hours",
-  executable: "/usr/local/bin/ows-policy-time-window",
-  config: {
-    start: "09:00", end: "17:00", timezone: "UTC",
-    days:  ["monday","tuesday","wednesday","thursday","friday"],
-  },
-  action: "deny",
-}));
-```
+These are built in. No executable, no subprocess.
 
-### Network/chain restriction policy
+| Rule | Purpose |
+| :---- | :---- |
+| `allowed_chains` | Restrict which CAIP-2 chain ids the key may sign for |
+| `expires_at` | Time-bound the key (ISO 8601) |
+| `allowed_typed_data_contracts` | EIP-712 contract allowlist (EVM only) |
 
 ```typescript
 createPolicy(JSON.stringify({
-  id:         "mainnet-only",
-  executable: "/usr/local/bin/ows-policy-chain-allowlist",
-  config:     { allowedChains: ["xrpl:testnet"] },
-  action:     "deny",
-}));
+  id:         "xrpl-only",
+  name:       "XRPL only",                    // required
+  version:    1,                              // required
+  created_at: new Date().toISOString(),       // required
+  rules: [
+    { type: "allowed_chains", chain_ids: ["xrpl:mainnet"] },
+    { type: "expires_at",     timestamp: "2027-01-01T00:00:00Z" },
+  ],
+  action: "deny",                             // applied when a rule fails
+}), vaultPath);
 ```
 
----
+Omitting `name`, `version` or `created_at` throws
+``missing field `name` `` (and so on) at registration time.
+
+A token carrying this policy, asked to sign for another chain:
+
+```
+policy denied: chain eip155:1 not in allowlist
+```
+
+### Custom executable policies
+
+Anything transaction-aware — amount caps, destination allowlists, cumulative
+spend — is **not** expressible declaratively in v2 and needs a custom
+executable. OWS invokes it with a `PolicyContext` on stdin and reads
+`{ allow: boolean, reason?: string }` from stdout.
+
+**OWS ships no policy executables.** `ows-policy-time-window` and
+`ows-policy-chain-allowlist` are not provided; if you need a time window or any
+transaction-aware rule, you write and deploy the binary yourself, and it must
+parse XRPL canonical binary on its own.
+
+> The exact `PolicyContext` schema is not yet verified in this reference. Before
+> writing an executable, confirm the field names and the chain-id format by
+> round-tripping one against your OWS version.
+
+For chain restriction specifically, use the declarative `allowed_chains` rule
+above — an executable is unnecessary.
 
 ## 5. What OWS Enforces (v2)
 
@@ -403,63 +416,133 @@ the skill is loaded. OWS v3 will add equivalent enforcement at the vault layer.
 
 ## 7. Python Integration
 
-The OWS SDK is Node.js only. 
+The OWS SDK is Node.js only, so Python agents shell out to the `ows` CLI.
 
-### Option A: OWS CLI subprocess (simple, no server required)
+Three things differ from the TypeScript path, and all three will bite you:
+
+1. **Pass `--json`.** Without it the CLI prints a bare hex signature and
+   `json.loads` raises.
+2. **Remove `SigningPubKey` before encoding.** `xrpl-py`'s `to_xrpl()` sets it
+   to `""`, and OWS refuses any payload that carries the field —
+   `unsigned transaction must not contain SigningPubKey`.
+3. **Supply the public key yourself.** The CLI cannot return one, and
+   `--json` reports `"recovery_id": null`, so there is no shortcut. Recover it
+   once (TypeScript, §3), then cache it in `OWS_XRPL_PUBLIC_KEY`. It never
+   changes for a given wallet.
 
 ```python
-import json, subprocess
+import json, os, subprocess, time
+from xrpl.clients import JsonRpcClient
+from xrpl.core.binarycodec import encode
+from xrpl.models.requests import SubmitOnly, Tx
+from xrpl.models.transactions import Payment
+from xrpl.transaction import autofill
+from xrpl.utils import xrp_to_drops
 
-def ows_sign(wallet_name: str, tx_hex: str) -> str:
-    """Returns uppercase DER signature hex."""
+WALLET      = os.environ["OWS_WALLET_NAME"]
+PUBLIC_KEY  = os.environ["OWS_XRPL_PUBLIC_KEY"]   # recovered once — see §3
+CREDENTIAL  = os.environ["OWS_AGENT_TOKEN"]       # ows_key_… , policy-enforced
+
+client = JsonRpcClient("https://s.altnet.rippletest.net:51234")
+
+
+def ows_sign(tx_hex: str) -> str:
+    """Returns the uppercase DER signature hex."""
     proc = subprocess.run(
         ["ows", "sign", "tx",
-         "--wallet", wallet_name,
+         "--wallet", WALLET,
          "--chain",  "xrpl",
-         "--tx",     tx_hex],
-        capture_output=True, text=True, check=True,
+         "--tx",     tx_hex,
+         "--json"],                      # required: default output is raw hex
+        capture_output=True, text=True,
+        env={**os.environ, "OWS_PASSPHRASE": CREDENTIAL},
     )
+    if proc.returncode != 0:
+        raise RuntimeError(f"ows refused to sign: {proc.stderr.strip()}")
     return json.loads(proc.stdout)["signature"].upper()
+
+
+def pay(destination: str, amount_xrp: int) -> str:
+    payment = Payment(
+        account=os.environ["AGENT_ADDRESS"],
+        destination=destination,
+        amount=xrp_to_drops(amount_xrp),
+        source_tag=20260530,
+    )
+    tx_dict = autofill(payment, client).to_xrpl()
+
+    # to_xrpl() sets SigningPubKey to "" — OWS rejects the field entirely.
+    tx_dict.pop("SigningPubKey", None)
+
+    signature = ows_sign(encode(tx_dict))
+
+    signed = {**tx_dict,
+              "SigningPubKey": PUBLIC_KEY,
+              "TxnSignature":  signature}
+
+    response = client.request(SubmitOnly(tx_blob=encode(signed)))
+    tx_hash = response.result["tx_json"]["hash"]      # persist before waiting
+
+    for _ in range(15):
+        time.sleep(2)
+        result = client.request(Tx(transaction=tx_hash)).result
+        if result.get("validated"):
+            code = result["meta"]["TransactionResult"]
+            if code != "tesSUCCESS":
+                raise RuntimeError(f"transaction failed on-ledger: {code}")
+            return tx_hash
+    raise TimeoutError(f"{tx_hash} not validated before LastLedgerSequence")
 ```
 
-Apply the signature and submit:
+The CLI reads its credential from `OWS_PASSPHRASE` — pass an `ows_key_…` token
+there rather than the vault passphrase, so policies are evaluated (§9).
 
-```python
-from xrpl.core.binarycodec import encode, decode
-
-signed_dict = decode(tx_hex)             # start from the autofilled hex
-signed_dict["TxnSignature"] = ows_sign(wallet_name, tx_hex)
-signed_blob = encode(signed_dict)
-# → client.request(SubmitOnly(tx_blob=signed_blob))  or use submitAndWait equivalent
-```
+Two further constraints: the CLI always uses `~/.ows` and has **no vault-path option**, unlike the SDK's `vaultPathOpt`. And if you need the public key recovered rather than cached, that must happen in TypeScript — the CLI will not give you one.
 
 ## 8. Migrating from Env-Var to OWS
 
-Migrating from Pattern 1 (env-var) to Pattern 3 (OWS) does **not** require
-generating a new XRPL wallet. Import the existing seed:
+**Check your key type first.** `xrpl.Wallet.generate()` defaults to **ed25519** (seeds beginning `sEd…`). OWS derives XRPL accounts on **secp256k1** only, so an ed25519 wallet cannot be imported — that agent needs a new address and a funded migration payment, not an import.
+
+Migration also needs a conversion step: `importWalletPrivateKey` takes a
+**hex-encoded private key**, not an XRPL seed. Passing `XRPL_SEED` directly
+fails with `invalid hex private key`.
 
 ```typescript
+import { Wallet } from "xrpl";
 import { importWalletPrivateKey } from "@open-wallet-standard/core";
 
-// Import the existing seed (Pattern 1 → Pattern 3)
+const existing = Wallet.fromSeed(process.env.XRPL_SEED!);
+
+if (existing.publicKey.startsWith("ED")) {
+  throw new Error(
+    "This is an ed25519 wallet. OWS's XRPL path is secp256k1 only — " +
+    "create a new OWS wallet and move the funds instead of importing.",
+  );
+}
+
+// xrpl.js returns a 33-byte key with a 00 prefix; OWS wants the bare 32 bytes.
+const privateKeyHex = existing.privateKey.replace(/^00/, "");
+
 const wallet = importWalletPrivateKey(
-  "xrpl-agent",                           // new wallet name in OWS vault
-  process.env.XRPL_SEED!,                 // your existing seed
-  passphrase,                             // new OWS vault passphrase
+  "xrpl-agent",      // new wallet name in the OWS vault
+  privateKeyHex,
+  passphrase,        // new OWS vault passphrase
+  vaultPath,         // optional
+  "xrpl",            // source chain — selects the secp256k1 curve
 );
-// wallet.accounts[n].address matches your existing XRPL address
+// wallet.accounts[…].address === existing.classicAddress   ✅
 ```
 
 After migration:
-1. Remove `XRPL_SEED` from `.env` and your secrets store — the key now lives in the OWS vault
-2. Add `OWS_PASSPHRASE` to your secrets store
-3. Replace `Wallet.fromSeed(process.env.XRPL_SEED)` + `wallet.sign()` calls with the OWS signing flow (§3)
-4. Register your policies (§4)
-5. Create an API key if using the MCP/REST access mode (§9)
 
-{% admonition type="Info" name="Important" %}
-Only use secp256k1 seeds and do not use Ed25519 seeds. 
-{% !admonition %}
+1. Remove `XRPL_SEED` from `.env` and your secrets store — the key now lives in
+   the OWS vault.
+2. Register your policies (§4).
+3. Create an API key and give the **token** to the agent (§9). Keep the vault
+   passphrase for operator use only — it bypasses every policy.
+4. Replace `Wallet.fromSeed(...)` + `wallet.sign()` with the OWS signing flow
+   (§3). Remember it needs `SigningPubKey`, which OWS does not return.
+5. Cache the recovered public key in `OWS_XRPL_PUBLIC_KEY`.
 
 
 ## 9. Access Modes: Passphrase vs API Token
