@@ -13,7 +13,7 @@ txIcon: modify
 Control whether an account can hold a given [Multi-purpose Token (MPT)](../../../../concepts/tokens/fungible-tokens/multi-purpose-tokens.md). This transaction has several uses:
 
 - An account indicates their willingness to hold an MPT. This creates a new [MPToken entry][] with an initial zero balance owned by that account. This is a prerequisite to receive that type of MPT in a payment.
-- An account revokes their willingness to hold an MPT, deleting the [MPToken entry][]. This can only be done if their balance of the given MPT is zero.
+- An account revokes their willingness to hold an MPT, deleting the [MPToken entry][]. This can only be done if their balance of the given MPT is zero and the token is not locked. If the token is locked, it can't be deleted unless the parent token issuance has been destroyed. {% amendment-disclaimer name="fixCleanup3_4_0" /%}
 - For an MPT that uses allow-listing, an issuer grants or revokes permission for another account to hold the given MPT.
 
 {% amendment-disclaimer name="MPTokensV1" /%}
@@ -48,7 +48,7 @@ Transactions of the MPTokenAuthorize type support additional values in the `Flag
 
 | Flag Name          | Hex Value    | Decimal Value | Description                   |
 |:-------------------|:-------------|:--------------|:------------------------------|
-| `tfMPTUnauthorize` | `0x00000001` | 1             | When the holder enables this flag, if their balance of the given MPT is zero, it revokes their willingness to hold this MPT and deletes their `MPToken` entry. If their balance is non-zero, the transaction fails. When an issuer enables this flag, it revokes permission for the specified holder to hold this MPT; the transaction fails if the MPT does not use allow-listing. |
+| `tfMPTUnauthorize` | `0x00000001` | 1             | When the holder enables this flag with a balance of zero, it revokes their willingness to hold this MPT and deletes their `MPToken` entry. If their balance is non-zero or the token is locked, the transaction fails, unless the parent `MPTokenIssuance` has been destroyed. {% amendment-disclaimer name="fixCleanup3_4_0" /%} |
 
 ## See Also
 
