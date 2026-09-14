@@ -30,6 +30,8 @@ A domain serves as an abstraction layer between credentials and a resource being
 
 Users do not need to apply to join or leave a domain. When a transaction requires access to a resource that is restricted by a domain, the transaction automatically checks if the account holds a credential matching that domain's accepted credentials, and fails if they have none. The user's credential must be accepted and not expired.
 
+`OfferCreate` and `Payment` transactions that specify a `DomainID` verify that the domain still exists, failing with `tecNO_PERMISSION` if not. If the domain exists, the transaction also deletes expired credentials from the ledger for any account it checks against the domain (the sender for `OfferCreate`, or the sender and destination for `Payment`).
+
 ## Uses for Permissioned Domains
 
 Currently, there are no available XRP Ledger features that use permissioned domains. However, amendments that are in development and use domains include:

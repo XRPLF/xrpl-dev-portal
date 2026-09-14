@@ -36,7 +36,7 @@ Place an [offer](../../../../concepts/tokens/decentralized-exchange/offers.md) t
 
 | Field            | JSON Type           | [Internal Type][] | Required? | Description |
 |:-----------------|:--------------------|:------------------|:----------|-------------|
-| `DomainID`       | String - [Hash][]   | UInt256           | No        | The ledger entry ID of a permissioned domain. If provided, restrict this offer to the [permissioned DEX](../../../../concepts/tokens/decentralized-exchange/permissioned-dexes.md) of that domain. {% amendment-disclaimer name="PermissionedDEX" /%} |
+| `DomainID`       | String - [Hash][]   | UInt256           | No        | The ledger entry ID of a permissioned domain. If provided, restrict this offer to the [permissioned DEX](../../../../concepts/tokens/decentralized-exchange/permissioned-dexes.md) of that domain. {% amendment-disclaimer name="PermissionedDEX" /%} If this field is used, the transaction verifies that the domain still exists, failing with `tecNO_PERMISSION` if not. It also deletes the sender's expired credentials from the ledger. {% amendment-disclaimer name="fixCleanup3_4_0" /%} |
 | [`Expiration`](../../../../concepts/tokens/decentralized-exchange/offers.md#offer-expiration) | Number | UInt32 | No | Time after which the Offer is no longer active, in [seconds since the Ripple Epoch][]. |
 | `OfferSequence`  | Number              | UInt32            | No        | An Offer to delete first, specified in the same way as [OfferCancel][]. |
 | `TakerGets`      | [Currency Amount][] | Amount            | Yes       | The amount and type of currency being sold. |
