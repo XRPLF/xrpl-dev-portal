@@ -79,13 +79,26 @@ Create a `.env` file with your merchant configuration:
 XRPL_FACILITATOR_URL=https://xrpl-facilitator-testnet.t54.ai
 XRPL_PAY_TO=rYourWalletAddress   # Your wallet address to receive payments.
 XRPL_PRICE_DROPS=1000            # Price in drops (1 XRP = 1,000,000 drops).
-XRPL_SOURCE_TAG=20260601         # Stamped on every on-chain payment for this endpoint.
+# Endpoint-scoped tag. Identifies THIS endpoint's revenue, not the paying agent.
+# Distinct from the XRPL AI Starter Kit agent tag (20260530) applied by the Wallet skill.
+XRPL_SOURCE_TAG=20260601
 ```
 
 The `XRPL_FACILITATOR_URL` above is T54's public testnet facilitator. For Mainnet,
 T54 operates a separate facilitator endpoint — see
 [T54's X402 documentation](https://xrpl-x402.t54.ai/docs) for the current URLs.
 
+
+> **The x402 `SourceTag` is not agent attribution.** It is chosen by the *merchant* and
+> declared in the 402 payment requirements; the buying agent signs a payment carrying the
+> server's value. It answers "which endpoint was paid?", not "which agent paid?" — the reverse
+> of the convention in [Track and Measure Agent Behavior](/docs/agents/track-agent-behavior/).
+>
+> - **Filtering on the starter-kit tag `20260530` will not find x402 payments.** To audit an
+>   agent's full spend, filter by the agent's **account**, not by tag.
+> - **A remote server is choosing a field of a transaction your agent signs.** For a tag the
+>   impact is limited to attribution, but treat the 402 response as untrusted input and do not
+>   let any other server-declared value reach a signed transaction unreviewed.
 
 ### Step 3: Create your server
 

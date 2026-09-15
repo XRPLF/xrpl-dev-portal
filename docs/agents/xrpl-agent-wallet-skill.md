@@ -130,6 +130,7 @@ Use one of the two patterns in "Key handling" below. The short version:
 
 - **Env-var pattern** (development, single-agent): `xrpl.Wallet.fromSeed(process.env.XRPL_SEED)`. Wrap in a function that returns the wallet and immediately goes out of scope; do not store the wallet on a long-lived global.
 - **External-signer pattern** (production, HSM/KMS): the developer provides an object with a `sign(tx_json)` method that returns `{ tx_blob, hash }`. You never see the key. Use this object in place of the `xrpl.js` Wallet for the sign step.
+- **OWS pattern** (policy-gated signing, x402, multi-agent): `signTransaction(walletName, "xrpl", txHex, agentToken)` from `@open-wallet-standard/core`. OWS evaluates the token's policies, decrypts the key, signs, and wipes it. Give the agent a scoped `ows_key_…` token — **not** the vault passphrase, which bypasses every policy. macOS and Linux only. See [Key handling](#key-handling) for setup and the full signing code.
 
 Confirm that `wallet.address` matches `tx.Account`. If they don't match, stop — you've been handed a transaction for an account whose key you don't have.
 
@@ -313,6 +314,107 @@ Notes:
 - The signer must implement XRPL signing correctly (RFC-6979 deterministic nonces for ECDSA-secp256k1; correct Ed25519 if that's the key type). Cloud KMS products that only do raw secp256k1 signatures need a wrapper that handles XRPL's canonical signature encoding — that wrapper is the developer's problem, but flag it if you see a developer reaching for kms.sign() directly.
 - The signer should validate the transaction it's about to sign at its own layer if it can — defense in depth. But you still run the full ceremony on your side; never assume the signer is doing the human-confirmation step for you.
 
+### Pattern 3: OWS — Open Wallet Standard (policy-gated signing)
+
+Use this when the agent needs signing gated by revocable, scoped credentials.
+OWS stores keys in a local encrypted vault (`~/.ows/wallets/`, AES-256-GCM),
+evaluates policies *before* decrypting, and wipes the key immediately after
+signing.
+
+**macOS and Linux only.** OWS ships prebuilt native binaries for `darwin-x64`,
+`darwin-arm64`, `linux-x64` and `linux-arm64`. There is no Windows build — on
+Windows, use Pattern 1 or Pattern 2.
+
+**Give the agent a token, not the passphrase.** The credential you pass selects
+the access mode, and this is easy to get wrong:
+
+| Credential | Mode | Policies |
+| :---- | :---- | :---- |
+| Vault passphrase | Owner | **Not evaluated** — full access to every wallet and chain |
+| `ows_key_…` token | Agent | Evaluated before the key is decrypted; scoped to specific wallets; revocable |
+
+Registering a policy and then signing with the passphrase enforces nothing.
+Mint a token once as the owner and give the agent only that:
+
+```typescript
+import { createPolicy, createApiKey } from "@open-wallet-standard/core";
+
+createPolicy(JSON.stringify({
+  id: "xrpl-only", name: "XRPL only",
+  version: 1, created_at: new Date().toISOString(),
+  rules: [{ type: "allowed_chains", chain_ids: ["xrpl:mainnet"] }],
+  action: "deny",
+}));
+
+const key = createApiKey("xrpl-agent-prod", [wallet.id], ["xrpl-only"], passphrase);
+// key.token is shown once — store it in .env or a secrets manager, never log it.
+```
+
+All of `xrpl`, `xrpl:mainnet`, `xrpl:testnet` and `xrpl-testnet` sign with the
+same key, but the string you pass is what the policy engine evaluates, and
+`AccountInfo` reports `xrpl:mainnet`. Allowlist `xrpl:mainnet` and pass
+`"xrpl"`.
+
+**Signing.** XRPL requires both `TxnSignature` and `SigningPubKey`. OWS returns
+only the signature and exposes no public-key accessor, so you recover the key
+from a signature — never via `exportWallet()`, which would pull the mnemonic
+into the agent process:
+
+```typescript
+const txHex = encode(prepared as Record<string, unknown>);   // without SigningPubKey
+const { signature } = signTransaction(walletName, "xrpl", txHex, agentToken);
+
+const signedBlob = encode({
+  ...(prepared as Record<string, unknown>),
+  SigningPubKey: publicKeyFor(walletName, prepared.Account),  // recovered once, cached
+  TxnSignature:  signature.replace(/^0x/, "").toUpperCase(),
+} as Record<string, unknown>);
+// Then: client.submitAndWait(signedBlob)
+```
+
+`publicKeyFor()` is the recovery helper — it is defined in full in [`references/ows.md`](https://github.com/XRPLF/xrpl-dev-portal/tree/master/.claude/skills/xrpl-skills/xrpl-agent-wallet/references/ows.md). Cache its result in `OWS_XRPL_PUBLIC_KEY` and it runs once per wallet.
+
+Omitting `SigningPubKey` is the most common mistake here: `encode()` still
+succeeds, so nothing looks wrong until submission fails with
+`Wallet must be provided when submitting an unsigned transaction`.
+
+**Getting the XRPL address:**
+
+```typescript
+const wallet  = getWallet(walletName);
+const account = wallet.accounts.find(a => a.chainId.startsWith("xrpl"));
+// account.address => "r..."
+```
+
+**Python / xrpl-py:** the OWS SDK is Node.js only. Python agents call the CLI —
+`--json` is required, or the CLI prints raw hex:
+
+```python
+import json, subprocess
+
+proc = subprocess.run(
+    ["ows", "sign", "tx", "--wallet", "xrpl-agent",
+     "--chain", "xrpl", "--tx", tx_hex, "--json"],
+    capture_output=True, text=True, check=True,
+)
+signature = json.loads(proc.stdout)["signature"].upper()
+```
+
+The CLI cannot give you a public key, so the recovery step still has to happen
+somewhere — for Python agents, a small Node signing helper is usually simpler.
+
+For full setup, policy registration, enforcement scope, and migration from the
+env-var pattern, see
+[`references/ows.md`](https://github.com/XRPLF/xrpl-dev-portal/tree/master/.claude/skills/xrpl-skills/xrpl-agent-wallet/references/ows.md).
+
+### Which signing pattern should I use?
+
+| Situation | Pattern |
+| :---- | :---- |
+| Development, testnet, single agent, low-value account | **Pattern 1** — env-var |
+| Cloud KMS, HSM, hardware wallet — key never in process | **Pattern 2** — external signer |
+| Policy-gated signing, revocable credentials, x402, multi-agent (macOS/Linux) | **Pattern 3** — OWS |
+
 ### Other constructors developers may reach for
 
 xrpl.js's `Wallet` has several constructors. All of the following produce a wallet with a private key in process memory — the sensitivity is the same as `fromSeed`.
@@ -350,6 +452,8 @@ The recovery flow is on-ledger: the developer creates a new account (new seed), 
 
 - [Getting Started with Agentic Transactions](/docs/agents/getting-started-with-agentic-transactions/) —
   Wallet setup, the signing ceremony, and your first on-chain payment.
+- [Getting Started with XRPL DEX Trading](/docs/agents/getting-started-with-xrpl-trading/) —
+  Place your first autonomous limit order on the XRPL DEX.
 - [Agentic Payments with X402](/docs/agents/agentic-payments-x402/) —
   Use the Agent Wallet skill as the payment layer in an X402 flow.
 - [View AI Tooling](/resources/dev-tools/ai-tools) —

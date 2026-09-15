@@ -35,9 +35,9 @@ trading, escrow, and any domain skill built on the shared Wallet skill.
 
 ## SourceTag — agent attribution
 
-Every XRP Ledger transaction supports a `SourceTag` field: a 32-bit unsigned integer that identifies the originating application or workflow. The XRPL Agent Wallet skill applies a default SourceTag (`20260530`) automatically to every transaction that passes through the signing ceremony — you do not need to set it manually. All domain skills (Payments, and future skills) are tagged consistently without any per-skill configuration.
+Every XRP Ledger transaction supports a `SourceTag` field: a 32-bit unsigned integer that identifies the originating application or workflow. The XRPL Agent Wallet skill applies a default SourceTag (`20260530`) automatically to every transaction that passes through the signing ceremony — you do not need to set it manually. Domain skills that hand their transaction to the Wallet skill — Payments, Trading, and future skills — are tagged consistently without per-skill configuration. Two things are **not** covered: transactions submitted outside the ceremony (untagged), and x402 payments (tagged with the merchant's own value).
 
-To use a custom value — for example, to distinguish transactions from different agents in the same deployment — set `SourceTag` on the transaction object before passing it to the Wallet skill. The skill respects any value already present and only applies the default when the field is absent. Setting `SourceTag` to `0` explicitly suppresses the default.
+To use a custom value — for example, to distinguish transactions from different agents in the same deployment — set `SourceTag` on the transaction object before passing it to the Wallet skill. The skill respects any value already present and only applies the default when the field is absent. Setting `SourceTag` to `0` explicitly suppresses the default; `0` is written to the ledger and is distinguishable there from a transaction that was never tagged.
 
 {% tabs %}
 {% tab label="Python" %}
@@ -54,10 +54,10 @@ payment = Payment(
     account=wallet.address,
     amount=xrp_to_drops(10),
     destination=DESTINATION,
-    source_tag=CUSTOM_SOURCE_TAG,
+    source_tag=CUSTOM_SOURCE_TAG,   # custom override; omit to get 20260530
 )
-response = submit_and_wait(payment, client, wallet)
-print(f"Hash: {response.result['hash']}")
+# → hand to the XRPL Agent Wallet skill: autofill → preview → confirm → sign →
+#   submitAndWait. Do not sign or submit here.
 ```
 {% /tab %}
 {% tab label="JavaScript" %}
@@ -66,22 +66,32 @@ print(f"Hash: {response.result['hash']}")
  // 20260530 automatically when SourceTag is absent.
 const CUSTOM_SOURCE_TAG = 99991234; // your team's registered value
 
-const result = await client.submitAndWait(
-  {
-    TransactionType: 'Payment',
-    Account: wallet.classicAddress,
-    Amount: xrpl.xrpToDrops('10'),
-    Destination: DESTINATION,
-    SourceTag: CUSTOM_SOURCE_TAG,
-  },
-  { wallet }
-)
-console.log('Hash:', result.result.hash)
+const payment = {
+  TransactionType: 'Payment',
+  Account: wallet.classicAddress,
+  Amount: xrpl.xrpToDrops('10'),
+  Destination: DESTINATION,
+  SourceTag: CUSTOM_SOURCE_TAG,   // custom override; omit to get 20260530
+}
+// → hand to the XRPL Agent Wallet skill: autofill → preview → confirm → sign →
+//    submitAndWait. Do not sign or submit here.
 ```
 {% /tab %}
 {% /tabs %}
 
-The default tag (`20260530`) lets you filter all XRPL AI Starter Kit agentic transactions on-chain using any XRPL data API or block explorer, across every domain skill. Use a custom tag when you need per-agent or per-deployment attribution beyond the default.
+The default tag (`20260530`) lets you filter transactions signed through the Wallet skill
+ceremony using any XRPL data API or block explorer.
+
+**It is not a complete audit filter.** It will miss:
+
+| Not captured | Why |
+| :---- | :---- |
+| x402 payments | Carry the merchant's endpoint tag, e.g. `20260601` |
+| `SourceTag = 0` | A deliberate opt-out; `0` is preserved on-ledger |
+| Anything submitted outside the ceremony | Never tagged, and no error is raised |
+
+**For a complete audit, filter by the agent's account**, not by tag. Use `SourceTag` to
+segment activity within an account, not to discover it.
 
 ---
 
@@ -125,8 +135,8 @@ payment = Payment(
         task_id="inv-00789",
     )],
 )
-response = submit_and_wait(payment, client, wallet)
-print(f"Hash: {response.result['hash']}")
+# → hand to the XRPL Agent Wallet skill: autofill → preview → confirm → sign →
+#   submitAndWait. Do not sign or submit here.
 ```
 {% /tab %}
 {% tab label="JavaScript" %}
@@ -138,17 +148,16 @@ function buildMemo(agentId, sessionId, action, taskId) {
   return { Memo: { MemoData: Buffer.from(payload).toString('hex').toUpperCase() } };
 }
 
-const result = await client.submitAndWait(
-  {
-    TransactionType: 'Payment',
-    Account: wallet.classicAddress,
-    Amount: xrpl.xrpToDrops('25'),
-    Destination: DESTINATION,
-    SourceTag: CUSTOM_SOURCE_TAG,
-    Memos: [buildMemo('invoice-agent-v1', 'sess-abc123', 'pay_invoice', 'inv-00789')],
-  },
-  { wallet }
-)
+const payment = {
+  TransactionType: 'Payment',
+  Account: wallet.classicAddress,
+  Amount: xrpl.xrpToDrops('25'),
+  Destination: DESTINATION,
+  SourceTag: CUSTOM_SOURCE_TAG,
+  Memos: [buildMemo('invoice-agent-v1', 'sess-abc123', 'pay_invoice', 'inv-00789')],
+}
+// → hand to the XRPL Agent Wallet skill: autofill → preview → confirm → sign →
+//    submitAndWait. Do not sign or submit here.
 console.log('Hash:', result.result.hash)
 ```
 {% /tab %}
