@@ -294,6 +294,58 @@ if (!target) { /* inform user — offer not found */ }
 
 ## 3. Order book reads
 
+### 3.0 Funding: `book_offers` advertises more than it can deliver
+
+**`book_offers` returns offers the owner cannot currently fund, and they look
+identical to real ones unless you check.** An offer's `TakerGets`/`TakerPays`
+are the amounts it was *created* with. What it can actually deliver right now
+depends on the owner's present balance.
+
+When an offer is not fully funded, rippled adds two fields alongside the
+originals:
+
+| Field | Meaning |
+| :---- | :---- |
+| `taker_gets_funded` | What the taker can actually get from this offer now |
+| `taker_pays_funded` | What the taker would actually pay |
+| `owner_funds` | The owner's spendable balance of the `TakerGets` currency. Only on the owner's **highest-ranked** offer in this book. |
+
+Two properties matter, and both are easy to get wrong:
+
+1. **`taker_gets_funded` can be `0`.** A completely unfunded offer is still
+   returned, with a real-looking price and size. It is a phantom price level.
+2. **One owner's offers share one balance.** rippled allocates the owner's funds
+   to their best-ranked offer and returns the rest as `0` — so summing
+   `taker_gets_funded` across a book is safe and never double-counts.
+
+Observed on Mainnet: of 300 offers in the USD.Bitstamp→XRP book, **174 were
+completely unfunded**. In the XAH→XRP book the *best* offer advertised 130,000
+XAH but only 1,574 was funded (1.2%), and the third-best was 100% phantom —
+a 5,000 XAH buy costs 3.7% more than the raw book implies.
+
+**Rule: always resolve the funded amount before using an offer for anything.**
+
+```typescript
+/** What this offer can actually deliver right now. */
+const fundedGets = (o: any) => o.taker_gets_funded ?? o.TakerGets;
+const fundedPays = (o: any) => o.taker_pays_funded ?? o.TakerPays;
+
+/** Offers that can actually trade. Drop the phantoms. */
+const liveOffers = (offers: any[]) => offers.filter(o => amt(fundedGets(o)) > 0);
+```
+
+```python
+def funded_gets(o): return o.get("taker_gets_funded", o["TakerGets"])
+def funded_pays(o): return o.get("taker_pays_funded", o["TakerPays"])
+
+def live_offers(offers):
+    return [o for o in offers if _amt(funded_gets(o)) > 0]
+```
+
+An offer's *price* is always `TakerPays / TakerGets` — the original amounts.
+Funding changes the **size** available at that price, never the price itself.
+Use the original amounts for price, the funded amounts for size.
+
 ### 3.1 `book_offers` — asks side (offers to sell base)
 
 ```python
@@ -379,8 +431,9 @@ const offerPrice = (o: any, bookGetsBase: boolean) =>
   bookGetsBase ? amt(o.TakerPays) / amt(o.TakerGets)
                : amt(o.TakerGets) / amt(o.TakerPays);
 
-const askOffers = asks.result.offers;   // taker_gets = XRP  -> bookGetsBase = true
-const bidOffers = bids.result.offers;   // taker_pays = XRP  -> bookGetsBase = false
+// Drop unfunded phantoms FIRST (see 3.0) — offers[0] may not be tradeable.
+const askOffers = liveOffers(asks.result.offers);   // taker_gets = XRP  -> bookGetsBase = true
+const bidOffers = liveOffers(bids.result.offers);   // taker_pays = XRP  -> bookGetsBase = false
 
 const bestAsk = askOffers.length ? offerPrice(askOffers[0], true)  : null;
 const bestBid = bidOffers.length ? offerPrice(bidOffers[0], false) : null;
@@ -401,6 +454,9 @@ def _offer_price(o, book_gets_base: bool) -> float:
         else (_amt(o["TakerGets"]) / _amt(o["TakerPays"]))
 
 def compute_mid_spread(ask_offers: list, bid_offers: list):
+    # Drop unfunded phantoms FIRST (see 3.0) — offers[0] may not be tradeable.
+    ask_offers = live_offers(ask_offers)
+    bid_offers = live_offers(bid_offers)
     best_ask = _offer_price(ask_offers[0], True)  if ask_offers else None
     best_bid = _offer_price(bid_offers[0], False) if bid_offers else None
     if best_ask is None or best_bid is None:
@@ -416,6 +472,67 @@ if mid_price is None:
 else:
     print(f"Mid price: {mid_price:.6f}  Spread: {spread_pct:.3f} %")
 ```
+
+### 3.4 Estimated fill and slippage — walk the book by funded size
+
+The pre-trade summary's `Est. fill` and `Slippage` must be computed from
+**funded** amounts. Walking raw `TakerGets` overstates available liquidity —
+measured at 47× on a real Mainnet book.
+
+Walk offers in book order, taking the funded size of each until the order is
+filled or the book runs out. Anything left over does not cross.
+
+```typescript
+/** Estimate execution against a live book.
+ *  wantGets: how much BASE you want to acquire, in human units. */
+function estimateFill(offers: any[], wantGets: number, bookGetsBase: boolean) {
+  let remaining = wantGets, paid = 0, got = 0;
+  for (const o of offers) {
+    const avail = amt(fundedGets(o));
+    if (avail <= 0) continue;                    // phantom level — skip
+    const price = offerPrice(o, bookGetsBase);   // price from ORIGINAL amounts
+    const take  = Math.min(remaining, avail);
+    got  += take;
+    paid += take * price;
+    remaining -= take;
+    if (remaining <= 1e-12) break;
+  }
+  if (got === 0) return { fillable: 0, avgPrice: null, slippagePct: null };
+  const avgPrice = paid / got;
+  const best     = offerPrice(offers.find(o => amt(fundedGets(o)) > 0), bookGetsBase);
+  return {
+    fillable:    got / wantGets,                        // 0..1
+    avgPrice,
+    slippagePct: ((avgPrice - best) / best) * 100,      // vs best FUNDED price
+  };
+}
+```
+
+```python
+def estimate_fill(offers, want_gets: float, book_gets_base: bool):
+    remaining, paid, got = want_gets, 0.0, 0.0
+    for o in offers:
+        avail = _amt(funded_gets(o))
+        if avail <= 0:                       # phantom level - skip
+            continue
+        price = _offer_price(o, book_gets_base)
+        take  = min(remaining, avail)
+        got  += take
+        paid += take * price
+        remaining -= take
+        if remaining <= 1e-12:
+            break
+    if got == 0:
+        return {"fillable": 0.0, "avg_price": None, "slippage_pct": None}
+    avg   = paid / got
+    live  = live_offers(offers)
+    best  = _offer_price(live[0], book_gets_base)
+    return {"fillable": got / want_gets, "avg_price": avg,
+            "slippage_pct": (avg - best) / best * 100}
+```
+
+**Report a partial walk honestly.** If `fillable < 1`, the book cannot fill the
+order at any price — say so rather than extrapolating past the last offer.
 
 ---
 
@@ -693,15 +810,68 @@ transaction and simulate again before handing to the Wallet skill.
 | `tecKILLED` | Yes | `tfFillOrKill` could not fill completely, **or** `tfImmediateOrCancel` matched nothing at all | Do not retry. Ask user to retry with an adjusted price. |
 | `tecUNFUNDED_OFFER` (IOU sell side) | Yes | Account does not hold the IOU in `TakerGets`; includes the no-trust-line case | Account must actually hold the asset. A `TrustSet` alone does not fund the offer. Buying an IOU needs no trust line. |
 | `tecINSUF_RESERVE_OFFER` | Yes | Insufficient XRP reserve to create new offer object | Each resting offer requires 0.2 XRP owner reserve. Cancel existing offers or fund account. |
-| `tecDIR_FULL` | Yes | Offer directory is full (too many offers from this account) | Cancel some existing offers before creating new ones. |
-| `temBAD_OFFER` | No | Malformed transaction (zero amounts, invalid fields, bad flags) | Fix construction and re-simulate. |
+| `tecDIR_FULL` | Yes | The owner owns too many ledger items, or the order book already holds too many offers at this exact exchange rate | Cancel existing offers, or adjust the price slightly. Effectively impossible once the `fixDirectoryLimit` amendment is enabled. |
+| `tecFROZEN` | Yes | The **`TakerPays`** token has been **deep-frozen** by its issuer. A regular freeze does not produce this, and neither does a freeze on the sell side | Do not retry until the issuer lifts the deep freeze. See §8.1 for the full freeze matrix. |
+| `tecNO_AUTH` | Yes | The issuer uses [Authorized Trust Lines][] and the trust line that would receive the token exists but is **not authorized** | The issuer must authorize the line. Do not retry until then. |
+| `tecNO_ISSUER` | Yes | The `issuer` in one of the amounts is not a funded account in the ledger | Check the issuer address. Frequently a typo or a token that does not exist. |
+| `tecNO_LINE` | Yes | The issuer uses [Authorized Trust Lines][] and the required trust line **does not exist** | Create the trust line (and get it authorized) first. Only occurs for `RequireAuth` issuers — see the note below. |
+| `tecNO_PERMISSION` | Yes | The transaction sets a `DomainID` but the sender is not a member of that domain | Permissioned DEX only. Sender must join the domain. |
+| `temBAD_CURRENCY` | No | A token is specified incorrectly, e.g. currency code `"XRP"` on an issued amount | Fix construction. **xrpl.js rejects this client-side before signing**, so it usually surfaces as an SDK error, not a ledger result. |
 | `temBAD_EXPIRATION` | No | `Expiration` field value is invalid | Recompute using `XRPL_epoch = Unix_s − 946,684,800`. |
-| `temINVALID_FLAG` | No | Invalid flag combination (`tfImmediateOrCancel` + `tfFillOrKill`) | Reject at construction. |
+| `temBAD_ISSUER` | No | The `issuer` field of a token is malformed | Fix construction. |
+| `temBAD_OFFER` | No | The offer trades XRP for XRP, or an invalid/negative token amount | Fix construction and re-simulate. |
+| `temBAD_SEQUENCE` | No | `OfferSequence` is malformed, or is **higher than the transaction's own `Sequence`** | Fix construction. Never enters a ledger, so no fee is charged. |
+| `temINVALID_FLAG` | No | Invalid flag combination (`tfImmediateOrCancel` + `tfFillOrKill`), or `tfHybrid` without `DomainID` | Reject at construction. |
 | `temREDUNDANT` | No | The transaction would trade a token for the same token (same issuer and currency code). | Adjust token. |
 
 **`tec*` vs no-fee results:** Any `tec*` code means the transaction was included
 in the ledger and the fee was charged, even though no fill occurred. Always
-inform the user when a fee was consumed without a successful outcome.
+inform the user when a fee was consumed without a successful outcome. `tem*`
+codes are rejected before the transaction enters a ledger and cost nothing.
+
+### 8.1 Trust-line errors depend on the issuer and the side
+
+These four are easy to confuse. All were reproduced on Testnet.
+
+| Situation | Result |
+| :---- | :---- |
+| **Sell** an IOU you do not hold (ordinary issuer) | `tecUNFUNDED_OFFER` |
+| **Buy** an IOU, ordinary issuer, no trust line | `tesSUCCESS` — the ledger auto-creates the line (costs 1 owner reserve) |
+| **Buy** an IOU from a `RequireAuth` issuer, no trust line | `tecNO_LINE` |
+| **Buy** an IOU from a `RequireAuth` issuer, line exists but unauthorized | `tecNO_AUTH` |
+
+So a missing `TakerPays` trust line is harmless for ordinary issuers and fatal
+for `RequireAuth` issuers. Detect the difference before building the offer:
+
+```typescript
+const info = await client.request({ command: "account_info", account: issuer });
+const requiresAuth = (info.result.account_data.Flags & 0x00040000) !== 0; // lsfRequireAuth
+```
+
+Freeze is asymmetric in the same way, and the *kind* of freeze matters. All four
+combinations reproduced on Testnet:
+
+| Freeze on the line | Sell that token | Buy that token |
+| :---- | :---- | :---- |
+| Regular (`tfSetFreeze`) | `tecUNFUNDED_OFFER` | `tesSUCCESS` — **not blocked** |
+| Deep (`tfSetDeepFreeze`) | `tecUNFUNDED_OFFER` | `tecFROZEN` |
+
+So `tecFROZEN` appears only on the **buy** side of a **deep**-frozen line. Every
+other frozen combination that fails does so as `tecUNFUNDED_OFFER`. Detect freeze
+state from `account_lines` — `freeze_peer` for a regular freeze by the issuer,
+`deep_freeze_peer` for a deep freeze.
+
+### 8.2 OfferCancel
+
+The protocol reference does not document error cases for `OfferCancel`. These
+were reproduced on Testnet:
+
+| Engine result | Fee charged? | Cause |
+| :---- | :---- | :---- |
+| `tesSUCCESS` | Yes | Normal — **also returned when the offer does not exist.** The fee is charged and nothing happens. Verify with `account_offers` first. |
+| `temBAD_SEQUENCE` | No | `OfferSequence` is `0`, or is greater than the transaction's own `Sequence`. |
+
+[Authorized Trust Lines]: /docs/concepts/tokens/fungible-tokens/authorized-trust-lines/
 
 ---
 
