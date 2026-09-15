@@ -265,7 +265,9 @@ The `shares` object contains the following nested fields:
 ## Possible Errors
 
 - Any of the [universal error types][].
-- `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
+- `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing. This includes providing a non-string `vault_id`, providing `vault_id` together with `owner` or `seq`, or providing neither `vault_id` nor both `owner` and `seq`.
+- `actMalformed` - The `owner` field is not a valid address, or is not a string.
+- `entryNotFound` - The `Vault` object specified by `vault_id` (including an all-zero `vault_id`), or by `owner` and `seq`, does not exist.
 
 ## See Also
 

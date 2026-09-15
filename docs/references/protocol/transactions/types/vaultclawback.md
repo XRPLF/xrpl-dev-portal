@@ -50,6 +50,12 @@ Clawbacks cannot be performed on native XRP.
 
 If the requested amount exceeds the vault’s available assets, the transaction claws back only up to the vault's `AssetsAvailable` balance. Otherwise, it retrieves the exact asset amount specified in the transaction.
 
+The transaction retrieves the exact asset amount requested, unless the request exceeds the vault’s `AssetsAvailable`, in which case it claws back only up to the available balance.
+
+When converting between shares and assets, the clawback ignores unrealized losses if the `Holder` is the vault's only shareholder. If there are other shareholders, a discounted rate is used, which could leave some shares unburned even when clawing back all available assets. {% amendment-disclaimer name="fixCleanup3_4_0" /%}
+
+For a fixed-asset clawback, the recovered amount never exceeds the requested amount because the converted share count is rounded down, not to the nearest share. The recovered amount is also rounded down to match the vault's `AssetsTotal` precision, leaving any leftover dust for remaining shareholders. {% amendment-disclaimer name="fixCleanup3_4_0" /%}
+
 ### Stranded-Share Burn
 
 You can specify `Amount` as either the vault's asset or its shares. Only the asset issuer can claw back the vault asset; the _vault owner_, however, can specify shares to burn instead. This is intended for winding down a vault when assets are gone, but shares remain outstanding and block [VaultDelete](./vaultdelete.md).
@@ -74,7 +80,8 @@ Besides errors that can occur for all transactions, {% code-page-name /%} transa
 | `tecINSUFFICIENT_FUNDS` | The `MPToken` object for the vault share of the `Holder` account does not exist, or the `MPToken.MPTAmount` is 0. |
 | `tecLIMIT_EXCEEDED`     | The vault owner is clawing back shares, but the `Amount` isn't the `Holder`'s entire share balance. Share clawback must burn all of the holder's shares. |
 | `tecOBJECT_NOT_FOUND`   | The `mpt_issuance_id` doesn't match the MPT in the vault. |
-| `tecPRECISION_LOSS`     | Either the `Holder` has no shares, or the requested amount is too small to convert into a whole share at the vault's `Scale`. |
+| `tecPRECISION_LOSS`     | The `Holder` has no shares, the requested amount is too small to convert into a whole share at the vault's `Scale`, or the recovered amount is too small to change the vault's stored balance. {% amendment-disclaimer name="fixCleanup3_4_0" /%} |
+| `tecPSEUDO_ACCOUNT`     | The holder is a pseudo-account. {% amendment-disclaimer name="fixCleanup3_4_0" /%} |
 | `temDISABLED`           | The Single Asset Vault amendment is not enabled.  |
 | `temBAD_AMOUNT`         | The `Amount` is negative. |
 | `temMALFORMED`          | The transaction was not validly formatted. For example, if the `VaultID` is not provided.  |

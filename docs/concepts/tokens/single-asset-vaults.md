@@ -136,6 +136,9 @@ To understand how the exchange rates are applied, here are the key variables use
     Γ_assets = Γ_assets + Δ_assets // New balance of assets in the vault.
     Γ_shares = Γ_shares + Δ_shares // New share balance in the vault.
     ```
+
+    The recorded deposit is rounded down to the same representable precision. If this leaves the depositor's balance unchanged, the deposit fails instead. {% amendment-disclaimer name="fixCleanup3_4_0" /%}
+
   {% /tab %}
 
   {% tab label="Redeem" %}
@@ -163,13 +166,15 @@ To understand how the exchange rates are applied, here are the key variables use
       Δ_shares = (Δ_assets_requested * Γ_shares) / (Γ_assets - l)
       ```
 
-      The calculated share amount is rounded to the **nearest** whole number.
+      The calculated share amount is rounded down, so the payout never exceeds the requested amount. {% amendment-disclaimer name="fixCleanup3_4_0" /%}
 
   2. The rounded number of shares is used to calculate the final asset payout (`Δ_assets_out`), using the same logic as a redemption.
 
       ```js
       Δ_assets_out = (Δ_shares * (Γ_assets - l)) / Γ_shares
       ```
+
+  The final payout is rounded down, leaving any remainder in the vault. If this rounding reduces the payout to zero, the transaction fails. The only exception is a final withdrawal redeeming all remaining shares, which can succeed with a zero payout. {% amendment-disclaimer name="fixCleanup3_4_0" /%}
 
   Due to rounding in step 1, the final payout may differ slightly from the requested amount.
 
@@ -216,6 +221,8 @@ The issuer of a vault asset can enact a [freeze](./fungible-tokens/freezes) for 
 ### Clawback
 
 An asset issuer can perform a [Clawback](../../use-cases/tokenization/stablecoin-issuer#clawback) on vault assets by forcing redemption of shares held by an account. This exchanges the holder's shares for the underlying assets, which are sent directly to the issuer. This mechanism allows asset issuers to recover their issued assets from vault depositors when necessary for fraud prevention or regulatory compliance.
+
+A fixed-amount clawback is rounded down the same way as a withdrawal, so it never recovers more than the requested amount. {% amendment-disclaimer name="fixCleanup3_4_0" /%}
 
 ## Why Use a Single Asset Vault?
 

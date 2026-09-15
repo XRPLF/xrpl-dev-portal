@@ -17,10 +17,12 @@ txIcon: send
 Redeem vault shares for assets. The amount of assets received depends on the [exchange rate](../../../../concepts/tokens/single-asset-vaults.md#exchange-algorithm), which adjusts based on the vault’s total assets and any [unrealized losses](../../../../concepts/tokens/single-asset-vaults.md#unrealized-loss).
 
 {% admonition type="info" name="Note" %}
-The `VaultWithdraw` transaction does not respect the Permissioned Domain rules. In other words, any account that holds the shares of the vault can redeem them. This is to avoid a situation where a depositor deposits assets to a private vault to then have their access revoked by invalidating their credentials, and thus losing access to their funds.
+Withdrawing to yourself does not respect the Permissioned Domain rules: any account that holds the shares of a private vault can redeem them to itself, even without valid credentials. This is to avoid a situation where a depositor deposits assets to a private vault to then have their access revoked by invalidating their credentials, and thus losing access to their funds. Withdrawing to a **different** account requires both the sender and the destination to hold valid credentials in the vault's domain, unless the destination is the vault asset's issuer. {% amendment-disclaimer name="fixCleanup3_4_0" /%}
 {% /admonition %}
 
 A depositor cannot redeem liquidity if the trust line between the pseudo-account and the issuer of the vault asset is frozen, or the `MPToken` is locked.
+
+Additionally, if you already hold the asset, a self-destination withdrawal will succeed regardless of the issuer's `DefaultRipple` setting, which is only checked when creating a new trust line. {% amendment-disclaimer name="fixCleanup3_4_0" /%}
 
 A withdrawal whose destination is the issuer of the vault asset is never blocked by a freeze, not even a global freeze. When you withdraw to your own account, you are both the sender and the destination: for a trust line asset, a regular freeze does not block the withdrawal but a deep freeze does, and for an MPT any lock blocks it. {% amendment-disclaimer name="fixCleanup3_3_0" mode="updated" /%}
 
@@ -54,6 +56,7 @@ In addition to the [common fields](../../../protocol/transactions/common-fields#
 | `Amount`                | [Currency Amount][] | Amount            | Yes       | The exact amount of vault asset to withdraw or vault share to redeem. |
 | `Destination`           | String              | AccountID         | No        | An account to receive the assets. This account must be able to receive the vault asset or the transaction fails. |
 | `DestinationTag`        | Number              | UInt32            | No        | Arbitrary tag identifying the reason for the withdrawal to the destination. |
+| `CredentialIDs`        | Array              | Vector256           | No        | An array of credential identifiers used to authorize the transaction, if credential-based deposit authorization is required. {% amendment-disclaimer name="Credentials" /%} {% amendment-disclaimer name="fixCleanup3_4_0" /%} |
 
 There are two ways to specify the transaction `Amount` field:
 
@@ -61,6 +64,8 @@ There are two ways to specify the transaction `Amount` field:
 |     |Specify Assets  | Specify Shares  |
 |:--- |:-------------- |:--------------- |
 |     |<ul><li>If the `Amount` field specifies an **asset amount** (e.g., 100 XRP), the transaction burns the necessary number of shares to provide the requested amount.</li><li>If the vault has an **unrealized loss**, withdrawing the same amount of assets requires burning more shares.</li></ul> | <ul><li>If the `Amount` field specifies a **share amount** (e.g., 500 vault shares), the transaction converts those shares into the corresponding amount of assets.</li><li>If the vault has an **unrealized loss**, each share is worth less, meaning fewer assets are received.</li></ul> |
+
+For fixed-asset withdrawals, the payout never exceeds the requested amount. Both the converted share count and the final payout are rounded down to match the vault's `AssetsTotal` precision, leaving any leftover dust for remaining shareholders. However, if a withdrawal redeems all outstanding shares, it is exempt from these rounding checks and succeeds, even if it moves 0 assets (for example, if the vault has lost all its value to unrealized loss). {% amendment-disclaimer name="fixCleanup3_4_0" /%}
 
 ## {% $frontmatter.seo.title %} Flags
 
@@ -86,7 +91,10 @@ Besides errors that can occur for all transactions, {% code-page-name /%} transa
 | `temMALFORMED`          | The transaction is not validly formatted. For example, the `VaultID` is not provided.  |
 | `temDISABLED`           | The Single Asset Vault amendment is not enabled.  |
 | `temBAD_AMOUNT`         | The `Amount` field of the transaction is invalid. For example, the provided amount is set to 0. |
-| `tecNO_AUTH`            | The asset is a non-transferable MPT. |
+| `tecNO_AUTH`            | The asset is a non-transferable MPT. For private vaults, this can also occur if the sender or destination lacks valid credentials in the vault's domain. {% amendment-disclaimer name="fixCleanup3_4_0" /%} |
+| `tecEXPIRED`            | For private vaults, the sender's or destination's credentials have expired. {% amendment-disclaimer name="fixCleanup3_4_0" /%} |
+| `tecPRECISION_LOSS`            | The requested withdrawal amount rounds to zero assets, or is too small to change the vault's stored balances. {% amendment-disclaimer name="fixCleanup3_4_0" /%} |
+| `tecPSEUDO_ACCOUNT`            | The destination is a pseudo-account. {% amendment-disclaimer name="fixCleanup3_4_0" /%} |
 
 ## See Also
 

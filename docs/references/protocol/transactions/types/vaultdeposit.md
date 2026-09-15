@@ -66,6 +66,8 @@ The deposited asset must match the vault’s designated asset for the transactio
 - **Trust line token**: The [trust line](../../../../concepts/tokens/fungible-tokens/trust-line-tokens.md#structure) balance between the vault's pseudo-account and the asset issuer is adjusted.
 - **MPT**: The `MPToken.MPTAmount` of both the depositor and the vault's pseudo-account is updated.
 
+The deposit amount is rounded down to match the vault's `AssetsTotal` precision, so the vault's total and available balances change by a representable amount. {% amendment-disclaimer name="fixCleanup3_4_0" /%}
+
 ## {% $frontmatter.seo.title %} Flags
 
 There are no flags defined for {% code-page-name /%} transactions.
@@ -88,6 +90,7 @@ Besides errors that can occur for all transactions, {% code-page-name /%} transa
 | `tecNO_AUTH`            | Either the vault is private and the depositing account does not have credentials in the share's Permissioned Domain, or the asset is a non-transferable MPT. |
 | `tecFROZEN`             | The vault asset is frozen globally for the depositor, or for the vault's pseudo-account. Both regular and deep freezes cause this error. {% amendment-disclaimer name="fixCleanup3_3_0" mode="updated" /%} |
 | `tecLOCKED`             | The MPT vault asset is locked globally for the depositor, or for the vault's pseudo-account. {% amendment-disclaimer name="fixCleanup3_3_0" mode="updated" /%} |
+| `tecPRECISION_LOSS`             | The calculated deposit amount rounds to zero. {% amendment-disclaimer name="fixCleanup3_4_0" /%} |
 | `temMALFORMED`          | The transaction was not validly formatted. For example, if the `VaultID` is not provided.  |
 | `temDISABLED`           | The Single Asset Vault amendment is not enabled.  |
 | `temBAD_AMOUNT`         | The `Amount` field of the transaction is invalid. |
