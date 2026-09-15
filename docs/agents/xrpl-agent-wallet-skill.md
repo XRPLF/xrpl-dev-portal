@@ -100,7 +100,7 @@ through all six.
 4. **Preview to the human.** A fixed-shape block, identical every time, so the reviewer scans the same fields in the same places:
 
     ```
-    ─── XRPL Transaction Preview ───────────────────────────────────────
+    ─── XRPL Transaction Preview ───────────────────────────────────────-
     Network           : testnet
     Type              : Payment
     From              : rAgentAddressShownInFullNoTruncation
