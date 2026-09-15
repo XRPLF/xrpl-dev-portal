@@ -17,7 +17,7 @@ txIcon: send
 Redeem vault shares for assets. The amount of assets received depends on the [exchange rate](../../../../concepts/tokens/single-asset-vaults.md#exchange-algorithm), which adjusts based on the vault’s total assets and any [unrealized losses](../../../../concepts/tokens/single-asset-vaults.md#unrealized-loss).
 
 {% admonition type="info" name="Note" %}
-The `VaultWithdraw` transaction does not respect the Permissioned Domain rules. In other words, any account that holds the shares of the vault can redeem them. This is to avoid a situation where a depositor deposits assets to a private vault to then have their access revoked by invalidating their credentials, and thus losing access to their funds.
+Withdrawing to yourself does not respect the Permissioned Domain rules: any account that holds the shares of a private vault can redeem them to itself, even without valid credentials. This is to avoid a situation where a depositor deposits assets to a private vault to then have their access revoked by invalidating their credentials, and thus losing access to their funds. Withdrawing to a **different** account requires both the sender and the destination to hold valid credentials in the vault's domain, unless the destination is the vault asset's issuer. {% amendment-disclaimer name="fixCleanup3_4_0" /%}
 {% /admonition %}
 
 A depositor cannot redeem liquidity if the trust line between the pseudo-account and the issuer of the vault asset is frozen, or the `MPToken` is locked.
@@ -91,8 +91,10 @@ Besides errors that can occur for all transactions, {% code-page-name /%} transa
 | `temMALFORMED`          | The transaction is not validly formatted. For example, the `VaultID` is not provided.  |
 | `temDISABLED`           | The Single Asset Vault amendment is not enabled.  |
 | `temBAD_AMOUNT`         | The `Amount` field of the transaction is invalid. For example, the provided amount is set to 0. |
-| `tecNO_AUTH`            | The asset is a non-transferable MPT. |
+| `tecNO_AUTH`            | The asset is a non-transferable MPT. For private vaults, this can also occur if the sender or destination lacks valid credentials in the vault's domain. {% amendment-disclaimer name="fixCleanup3_4_0" /%} |
+| `tecEXPIRED`            | For private vaults, the sender's or destination's credentials have expired. {% amendment-disclaimer name="fixCleanup3_4_0" /%} |
 | `tecPRECISION_LOSS`            | The requested withdrawal amount rounds to zero assets, or is too small to change the vault's stored balances. {% amendment-disclaimer name="fixCleanup3_4_0" /%} |
+| `tecPSEUDO_ACCOUNT`            | The destination is a pseudo-account. {% amendment-disclaimer name="fixCleanup3_4_0" /%} |
 
 ## See Also
 

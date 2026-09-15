@@ -50,6 +50,10 @@ Clawbacks cannot be performed on native XRP.
 
 If the requested amount exceeds the vault’s available assets, the transaction claws back only up to the vault's `AssetsAvailable` balance. Otherwise, it retrieves the exact asset amount specified in the transaction.
 
+The transaction retrieves the exact asset amount requested, unless the request exceeds the vault’s `AssetsAvailable`, in which case it claws back only up to the available balance.
+
+When converting between shares and assets, the clawback ignores unrealized losses if the `Holder` is the vault's only shareholder. If there are other shareholders, a discounted rate is used, which could leave some shares unburned even when clawing back all available assets. {% amendment-disclaimer name="fixCleanup3_4_0" /%}
+
 For a fixed-asset clawback, the recovered amount never exceeds the requested amount because the converted share count is rounded down, not to the nearest share. The recovered amount is also rounded down to match the vault's `AssetsTotal` precision, leaving any leftover dust for remaining shareholders. {% amendment-disclaimer name="fixCleanup3_4_0" /%}
 
 ### Stranded-Share Burn
