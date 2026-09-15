@@ -79,6 +79,8 @@ In addition to the [common fields][], {% code-page-name /%} transactions use the
 | `TxnSignature`            | String    | Blob          | Yes       | The hex encoding of the digital signature for the first signing. |
 | `hash`                    | String    | Hash256       | Yes       | The unique identifying hash of the partially-signed transaction. |
 
+If the borrower already holds the loan's asset, the transaction succeeds regardless of the issuer's `DefaultRipple` setting since it is only checked when a new trust line needs to be created. If a `LoanOriginationFee` is specified, the broker owner must also hold the asset for this to apply. {% amendment-disclaimer name="fixCleanup3_4_0" /%}
+
 ### CounterpartySignature Fields
 
 An inner object that contains the signatures of the counterparty of the transaction. The object contains the following fields:
