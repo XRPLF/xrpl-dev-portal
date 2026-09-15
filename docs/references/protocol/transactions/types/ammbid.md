@@ -10,7 +10,7 @@ txIcon: modify
 # AMMBid
 {% source-link path="src/libxrpl/tx/transactors/dex/AMMBid.cpp" /%}
 
-Bid on an [Automated Market Maker](../../../../concepts/tokens/decentralized-exchange/automated-market-makers.md)'s (AMM's) auction slot. If you win, you can trade against the AMM at a discounted fee until you are outbid or 24 hours have passed. If you are outbid before 24 hours have passed, you are refunded part of the cost of your bid based on how much time remains. If the AMM's trading fee is zero, you can still bid, but the auction slot provides no benefit unless the trading fee changes.
+Bid on an [Automated Market Maker](../../../../concepts/tokens/decentralized-exchange/automated-market-makers.md)'s (AMM's) auction slot. If you win, you can trade against the AMM at a discounted fee until you are outbid or 24 hours have passed. If you are outbid before 24 hours have passed, you are refunded part of the cost of your bid based on how much time remains. If the AMM's trading fee is zero, you can still bid (subject to a minimum floor price in LP tokens), but the auction slot provides no trading fee discount unless the pool's fee increases.
 
 You bid using the AMM's LP Tokens; the amount of a winning bid is returned to the AMM, decreasing the outstanding balance of LP Tokens.
 
@@ -84,8 +84,12 @@ If successful, the transaction automatically outbids the previous slot owner and
     ```
 
     - `M` is the minimum bid.
-    - `L` is the total number of LP Tokens currently issued by the AMM
-    - `F` is the trading fee, as a decimal
+    - `L` is the total number of LP Tokens currently issued by the AMM.
+    - `F` is the trading fee, as a decimal.
+
+{% admonition type="info" name="Note" %}
+With `fixCleanup3_4_0` enabled, if the trading fee (F) is 0, both the minimum bid (M) and the price to outbid the current holder (P) enforce a calculated floor price in LP Tokens instead of evaluating toward zero, preventing free or near-free slot acquisition.
+{% /admonition %}
 
 - Otherwise, the price to outbid the current holder is calculated using the following formula:
 

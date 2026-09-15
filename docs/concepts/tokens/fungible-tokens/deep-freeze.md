@@ -74,12 +74,16 @@ Receipt of funds in a deep-frozen trust line as a result of a rippling step will
 
 If an offer owner is deep-frozen for the `TakerPays` token (buy amount), any offer is considered to be unfunded and the offer fails.
 
-## OfferCreate transaction
+## OfferCreate Transaction
 
 Deep Freeze requires a change to the `OfferCreate` transaction:
 
 `OfferCreate` returns `tecFROZEN` if the `TakerPays` (buy amount) token has been deep-frozen by the issuer.
 Moreover, any existing offers where the owner has been deep-frozen on the `TakerPays` token can no longer be consumed. It is considered an unfunded offer that is implicitly cancelled by new offers that cross it.
+
+## AMMClawback Transaction
+
+`AMMClawback` transactions have the `OverrideFreeze` privilege, allowing them to override ordinary freeze settings. Prior to `fixCleanup3_4_0`, this privilege didn't extend to trust lines connected to an AMM pool. With `fixCleanup3_4_0` enabled, `AMMClawback` can override individual and deep freeze on AMM trust lines too, preventing a freeze-clawback deadlock. {% amendment-disclaimer name="fixCleanup3_4_0" /%}
 
 ## How does MPT freeze/lock behavior differ from IOU?
 

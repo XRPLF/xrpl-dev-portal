@@ -135,6 +135,20 @@ Frozen LP tokens affect the following transactions:
 
 - Buyers can't accept a sell offer if the offer requires the use of frozen LP tokens as payment.
 
+### LP Token Transferability
+
+If an AMM's pool holds an MPT that doesn't have the `CanTransfer` flag enabled, the AMM's LP tokens can only be transferred to or from the MPT's issuer. This affects the following transactions:
+
+**Payment**
+
+- An account can't send these LP tokens to another non-issuer holder. The transaction fails with `tecNO_AUTH`.
+
+**OfferCreate**
+
+- Offers to sell these LP tokens are treated as unfunded, the same as an offer to sell a frozen LP token.
+
+{% amendment-disclaimer name="MPTokensV2" /%}
+
 ## AMM and Trading Fees
 
 Trading fees are a source of passive income for liquidity providers. They offset the currency risk of letting others trade against the pool's assets. Trading fees are paid to the AMM, not directly to liquidity providers. Liquidity providers benefit because they can redeem their LP tokens for a percentage of the AMM pool.
