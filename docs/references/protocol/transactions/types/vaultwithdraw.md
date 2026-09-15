@@ -78,13 +78,16 @@ Besides errors that can occur for all transactions, {% code-page-name /%} transa
 | Error Code              | Description                        |
 | :---------------------- | :----------------------------------|
 | `tecFROZEN`             | The vault asset is frozen globally for the vault's pseudo-account, or deep frozen for the destination. A freeze on the sender also causes this error when `Destination` is another account. A regular freeze on the destination alone does not cause this error. {% amendment-disclaimer name="fixCleanup3_3_0" mode="updated" /%} |
-| `tecINSUFFICIENT_FUNDS` | There is insufficient liquidity in the vault to fill the request. |
+| `tecINSUFFICIENT_FUNDS` | There is insufficient liquidity in the vault to fill the request. {% amendment-disclaimer name="fixCleanup3_4_0" /%} |
 | `tecLOCKED`             | The MPT vault asset is locked globally for the vault's pseudo-account, for the sender, or for the destination account. Unlike a trust line freeze, an MPT lock also blocks a withdrawal to the sender's own account. {% amendment-disclaimer name="fixCleanup3_3_0" mode="updated" /%} |
 | `tecNO_AUTH`            | The asset is a non-transferable MPT. |
 | `tecNO_ENTRY`           | The `Vault` object with the provided `VaultID` does not exist on the ledger. |
 | `tecNO_PERMISSION`      | The destination account specified does not have permission to receive the asset. |
 | `tecOBJECT_NOT_FOUND`   | A ledger entry specified in the transaction does not exist. |
-| `tecTOO_SOON`           | The vault is closed-ended and in its _Investment_ phase. |
+| `tecPATH_DRY`           | Arithmetic overflowed while converting between assets and shares, so the transaction can't be applied. {% amendment-disclaimer name="fixCleanup3_4_0" /%} |
+| `tecPRECISION_LOSS`     | The withdrawal rounds to zero. Either the requested shares truncate to no assets, or the amount is too small to change the vault's stored balance. {% amendment-disclaimer name="fixCleanup3_4_0" /%} |
+| `tecPSEUDO_ACCOUNT`     | The `Destination` is a pseudo-account, which belongs to a ledger entry rather than a person and can't receive a withdrawal. {% amendment-disclaimer name="fixCleanup3_4_0" /%} |
+| `tecTOO_SOON`           | The vault is closed-ended and in its _Investment_ phase. {% amendment-disclaimer name="LendingProtocolV1_1" /%} |
 | `tecWRONG_ASSET`        | The unit of `Amount` is neither a share or asset of the vault. |
 | `temBAD_AMOUNT`         | The `Amount` field of the transaction is invalid. For example, the provided amount is set to 0. |
 | `temDISABLED`           | The Single Asset Vault amendment is not enabled.  |

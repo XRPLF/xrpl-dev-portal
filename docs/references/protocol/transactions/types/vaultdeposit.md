@@ -81,7 +81,7 @@ Besides errors that can occur for all transactions, {% code-page-name /%} transa
 
 | Error Code              | Description                        |
 | :---------------------- | :----------------------------------|
-| `tecEXPIRED`            | The vault is closed-ended and in its _Investment_ or _Redemption_ phase. |
+| `tecEXPIRED`            | The vault is closed-ended and in its _Investment_ or _Redemption_ phase. {% amendment-disclaimer name="LendingProtocolV1_1" /%} |
 | `tecFROZEN`             | The vault asset is frozen globally for the depositor, or for the vault's pseudo-account. Both regular and deep freezes cause this error. {% amendment-disclaimer name="fixCleanup3_3_0" mode="updated" /%} |
 | `tecINSUFFICIENT_FUNDS` | The depositor does not have sufficient funds to make a deposit. |
 | `tecLIMIT_EXCEEDED`     | Adding the provided `Amount` to the `AssetsTotal` exceeds the `AssetsMaximum` value. |
@@ -89,6 +89,7 @@ Besides errors that can occur for all transactions, {% code-page-name /%} transa
 | `tecNO_AUTH`            | Either the vault is private and the depositing account does not have credentials in the share's Permissioned Domain, or the asset is a non-transferable MPT. |
 | `tecNO_ENTRY`           | The `Vault` object with the provided `VaultID` does not exist on the ledger. |
 | `tecOBJECT_NOT_FOUND`   | A ledger entry specified in the transaction does not exist. |
+| `tecPRECISION_LOSS`     | The deposit rounds to zero, either at the vault's scale or at the depositor's trust line scale. {% amendment-disclaimer name="fixCleanup3_4_0" /%} |
 | `tecWRONG_ASSET`        | The asset of the vault does not match the asset being deposited. |
 | `temBAD_AMOUNT`         | The `Amount` field of the transaction is invalid. |
 | `temDISABLED`           | The Single Asset Vault amendment is not enabled.  |

@@ -118,13 +118,13 @@ Besides errors that can occur for all transactions, {% code-page-name /%} transa
 
 | Error Code                | Description                        |
 |:--------------------------|:-----------------------------------|
-| `tecEXPIRED`              | The vault is closed-ended and has entered its _Redemption_ phase. |
+| `tecEXPIRED`              | The vault is closed-ended and has entered its _Redemption_ phase. {% amendment-disclaimer name="LendingProtocolV1_1" /%} |
 | `tecINSUFFICIENT_FUNDS`   | <li>The `Vault` associated with the `LoanBroker` doesn't have enough assets to fund the loan.</li><li>The `LoanBroker` ledger entry doesn't have enough first-loss capital to meet the minimum coverage requirement for the new total debt.</li> |
 | `tecINSUFFICIENT_RESERVE` | The borrower's account doesn't have enough XRP to meet the reserve requirements. |
 | `tecLIMIT_EXCEEDED`       | <li>The requested loan would cause the `LoanBroker` ledger entry to exceed its maximum allowed debt.</li><li>The vault's `AssetsTotal` already meets or exceeds its `AssetsMaximum`. Doesn't apply to cash-basis vaults.</li><li>The loan's interest would push the vault's `AssetsTotal` past its `AssetsMaximum`. Doesn't apply to cash-basis vaults.</li> |
 | `tecNO_ENTRY`             | The `LoanBroker` doesn't exist. |
-| `tecNO_PERMISSION`        | <li>Neither the transaction sender's `Account` or the `Counterparty` field owns the associated `LoanBroker` ledger entry.</li><li>The vault is closed-ended and the loan's final scheduled payment is less than 60 seconds before the vault's `RedemptionDate`.</li> |
-| `tecTOO_SOON`             | The vault is closed-ended and still in its _Subscription_ phase. |
+| `tecNO_PERMISSION`        | <li>Neither the transaction sender's `Account` or the `Counterparty` field owns the associated `LoanBroker` ledger entry.</li><li>The vault is closed-ended and the loan's final scheduled payment is less than 60 seconds before the vault's `RedemptionDate`. {% amendment-disclaimer name="LendingProtocolV1_1" mode="updated" /%}</li> |
+| `tecTOO_SOON`             | The vault is closed-ended and still in its _Subscription_ phase. {% amendment-disclaimer name="LendingProtocolV1_1" /%} |
 | `temBAD_SIGNER`           | <li>The transaction is missing a `CounterpartySignature` field.</li><li>This transaction is part of a `Batch` transaction, but didn't specify a `Counterparty`.</li> |
 | `temINVALID`              | One or more of the numeric fields are outside their valid ranges. For example, the `GracePeriod` can't be longer than the `PaymentInterval` or less than `60` seconds. |
 

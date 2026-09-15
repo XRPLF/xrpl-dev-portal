@@ -92,14 +92,14 @@ Besides errors that can occur for all transactions, {% code-page-name /%} transa
 
 | Error Code                | Description                        |
 | :------------------------ | :----------------------------------|
-| `tecEXPIRED`              | `SubscriptionDate` or `RedemptionDate` isn't ahead of the parent ledger's close time. |
+| `tecEXPIRED`              | `SubscriptionDate` or `RedemptionDate` isn't ahead of the parent ledger's close time. {% amendment-disclaimer name="LendingProtocolV1_1" /%} |
 | `tecNO_AUTH`              | The asset is an MPT and the `lsfMPTCanTransfer` flag is not set in the `MPTokenIssuance` object, meaning the vault cannot be created with a non-transferable MPT. |
 | `tecLOCKED`               | The asset is an MPT and the `lsfMPTLocked` flag is  set in the `MPTokenIssuance` object, meaning the asset is locked. |
 | `tecFROZEN`               | The issuer has frozen the asset to be held in the vault. |
 | `tecOBJECT_NOT_FOUND`     | A ledger entry specified in the transaction does not exist. For example, the provided `DomainID` does not exist. |
 | `tecINSUFFICIENT_RESERVE` | There is insufficient `AccountRoot.Balance` for the Owner Reserve. |
 | `temDISABLED`  | <li>The [SingleAssetVault amendment][] isn't enabled.</li><li>A `DomainID` is provided and the [PermissionedDomains amendment][] isn't enabled</li><li>The [MPTokensV1 amendment][] isn't enabled.</li><li>`VaultKind`, `SubscriptionDate`, or `RedemptionDate` is present and the [LendingProtocolV1_1 amendment][] isn't enabled.</li> |
-| `temMALFORMED`            | <li>`VaultKind` is present with a value other than `0` or `1`.</li><li>`VaultKind` is `0`, but `SubscriptionDate` or `RedemptionDate` is present.</li><li>`VaultKind` is `1`, but is missing `SubscriptionDate` and `RedemptionDate`.</li><li>`RedemptionDate` - `SubscriptionDate` is less than `180` seconds or is greater than or equal to `946708560` seconds.</li><li>The `Data` field is larger than 256 bytes.</li> |
+| `temMALFORMED`            | <li>`VaultKind` is present with a value other than `0` or `1`. {% amendment-disclaimer name="LendingProtocolV1_1" mode="updated" /%}</li><li>`VaultKind` is `0`, but `SubscriptionDate` or `RedemptionDate` is present. {% amendment-disclaimer name="LendingProtocolV1_1" mode="updated" /%}</li><li>`VaultKind` is `1`, but is missing `SubscriptionDate` and `RedemptionDate`. {% amendment-disclaimer name="LendingProtocolV1_1" mode="updated" /%}</li><li>`RedemptionDate` - `SubscriptionDate` is less than `180` seconds or is greater than or equal to `946708560` seconds.</li><li>The `Data` field is larger than 256 bytes.</li> |
 | `terNO_RIPPLE`            | The issuer of the asset has not enabled the [Default Ripple flag](../../../../concepts/tokens/fungible-tokens/stablecoins/configuration#default-ripple). |
 | `terNO_ACCOUNT`           | The issuer account of the vault's asset does not exist. |
 
