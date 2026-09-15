@@ -1,15 +1,7 @@
-import { useEffect, useState, useRef } from 'react';
-import { useLocation } from "react-router-dom";
+import { useEffect, useMemo, useState, useRef } from 'react';
+import { useLocation } from "react-router";
 import { useThemeHooks } from '@redocly/theme/core/hooks';
 import { Link } from "shared/components/Link";
-import {
-  JsonParam,
-  StringParam,
-  useQueryParams,
-  withDefault,
-  QueryParamProvider
-} from "use-query-params"
-import { ReactRouter6Adapter } from 'use-query-params/adapters/react-router-6';
 
 import { PermalinkButton, PermalinkModal } from './components/websocket-api/permalink-modal';
 import { CurlButton, CurlModal } from './components/websocket-api/curl-modal';
@@ -32,16 +24,32 @@ export const frontmatter = {
   }
 };
 
+// For decoding the `req` query parameter.
+function parseJsonParam(value: string | null) {
+  if (!value) return null;
+  try {
+    return JSON.parse(value);
+  } catch {
+    return null;
+  }
+}
+
 export function WebsocketApiTool() {
+  const { hash: slug, search } = useLocation();
 
-  const [params, setParams] = useQueryParams({
-    server: withDefault(StringParam, null),
-    req: withDefault(JsonParam, null)
-  })
+  // The permalink writes `?server=<ws url>&req=<json>`, read them directly from the query string:
+  const params = useMemo(() => {
+    const query = new URLSearchParams(search);
+    return {
+      server: query.get('server'),
+      req: parseJsonParam(query.get('req')),
+    };
+  }, [search]);
 
-  const { hash: slug } = useLocation();
   const { useTranslate } = useThemeHooks();
   const { translate } = useTranslate();
+  const [isConnectionModalVisible, setIsConnectionModalVisible] =
+    useState(false);
   const [selectedConnection, setSelectedConnection] = useState((params.server) ? connections.find((connection) => { return connection?.ws_url === params.server }) : connections[0]);  const [connected, setConnected] = useState(false);
   const [connectionError, setConnectionError] = useState(false);
   const [keepLast, setKeepLast] = useState(50);
@@ -377,7 +385,5 @@ export function WebsocketApiTool() {
 }
 
 export default function Page() {
-  return <QueryParamProvider adapter={ReactRouter6Adapter}>
-    <WebsocketApiTool />
-  </QueryParamProvider>
+  return <WebsocketApiTool />
 }
