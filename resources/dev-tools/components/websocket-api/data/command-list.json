@@ -172,7 +172,7 @@
         "link": "/docs/references/http-websocket-apis/public-api-methods/clio-methods/ledger_index",
         "body": {
           "command": "ledger_index",
-          "date": "2024-06-20T09:00:42.000Z"
+          "date": "2024-06-20T09:00:42Z"
         },
         "clio_only": true
       }
