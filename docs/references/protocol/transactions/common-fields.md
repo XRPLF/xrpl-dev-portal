@@ -242,8 +242,8 @@ The `SponsorSignature` field is an object containing the sponsor's signing infor
 | Field Name      | JSON Type | [Internal Type][] | Required? | Description  |
 | :-------------- | :-------- | :---------------- | :-------- | :----------- |
 | `SigningPubKey` | String    | Blob              | No        | The `SigningPubKey` for the `Sponsor`, if single-signing. |
-| `TxnSignature`  | String    | Blob              | No        | A signature of the transaction from the sponsor, to indicate their approval of this transaction, if single-signing. |
-| `Signers`       | Array     | Array             | No        | An array of signatures of the transaction from the sponsor's signers to indicate their approval of this transaction, if the sponsor is [multi-signing](../../../concepts/accounts/multi-signing.md). |
+| `TxnSignature`  | String    | Blob              | No        | A signature of the transaction indicating the sponsor's approval, if single-signing. Must be generated using role-specific hash prefixes {% amendment-disclaimer name="fixCleanup3_4_0" /%}. Standard transaction signatures will be rejected. |
+| `Signers`       | Array     | Array             | No        | An array of signatures of the transaction from the sponsor's signers to indicate their approval, if the sponsor is [multi-signing](../../../concepts/accounts/multi-signing.md). Must be generated using role-specific hash prefixes {% amendment-disclaimer name="fixCleanup3_4_0" /%}. Standard transaction signatures will be rejected. |
 
 These fields are not included in transaction signatures, though they are still included in the stored transaction. There is no additional transaction fee for using `TxnSignature`.
 
