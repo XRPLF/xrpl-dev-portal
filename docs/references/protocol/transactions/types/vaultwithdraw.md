@@ -65,7 +65,7 @@ There are two ways to specify the transaction `Amount` field:
 |:--- |:-------------- |:--------------- |
 |     |<ul><li>If the `Amount` field specifies an **asset amount** (e.g., 100 XRP), the transaction burns the necessary number of shares to provide the requested amount.</li><li>If the vault has an **unrealized loss**, withdrawing the same amount of assets requires burning more shares.</li></ul> | <ul><li>If the `Amount` field specifies a **share amount** (e.g., 500 vault shares), the transaction converts those shares into the corresponding amount of assets.</li><li>If the vault has an **unrealized loss**, each share is worth less, meaning fewer assets are received.</li></ul> |
 
-If a withdrawal redeems all of the vault's outstanding shares, it succeeds, even if it moves `0` assets (for example, when a vault has lost all of its value to unrealized loss.) This final withdrawal is exempt from rounding checks. {% amendment-disclaimer name="fixCleanup3_4_0" /%}
+For fixed-asset withdrawals, the payout never exceeds the requested amount. Both the converted share count and the final payout are rounded down to match the vault's `AssetsTotal` precision, leaving any leftover dust for remaining shareholders. However, if a withdrawal redeems all outstanding shares, it is exempt from these rounding checks and succeeds, even if it moves 0 assets (for example, if the vault has lost all its value to unrealized loss). {% amendment-disclaimer name="fixCleanup3_4_0" /%}
 
 ## {% $frontmatter.seo.title %} Flags
 
