@@ -286,7 +286,7 @@ user's stated intent.
 
 | Flag | Hex | Effect |
 | :---- | :---- | :---- |
-| `tfPassive` | `0x00010000` | Do not consume matching offers. Post to book only. Use for post-only orders. Never set by default. |
+| `tfPassive` | `0x00010000` | Do not consume matching offers. Use for post-only orders. Never set by default. It is not necessarily strict post-only: true post-only rejects any order that would immediately execute, while passive may allow execution at a price better than the limit. |
 | `tfImmediateOrCancel` | `0x00020000` | Cross what can be crossed immediately; cancel remainder. Never rests on book. |
 | `tfFillOrKill` | `0x00040000` | Must fill completely or entire transaction is cancelled (`tecKILLED`). |
 | `tfSell` | `0x00080000` | Exchange the full `TakerGets` even if `TakerPays` would be exceeded by the rate. |

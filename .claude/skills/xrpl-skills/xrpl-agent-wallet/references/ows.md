@@ -142,7 +142,7 @@ const { signature } = signTransaction(
 const { signature } = signHash("xrpl-agent", "xrpl", hashHex, credential, 0, vaultPath);
 ```
 
-`signAndSend` exists but has no XRPL transport — use `signTransaction` plus
+`signAndSend` exists but it doesn't poll for a validated response and just returns the preliminary response. Use `signTransaction` plus
 `client.submitAndWait()` so the Wallet skill keeps its hash-persistence and
 error-handling discipline.
 

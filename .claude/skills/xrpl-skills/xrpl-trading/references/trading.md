@@ -172,8 +172,9 @@ Flags: OfferCreateFlags.tfPassive,
 flags=OfferCreateFlag.TF_PASSIVE,
 ```
 
-**Never set `tfPassive` by default.** Only set when the user explicitly requests
-"post only" or "maker only" behaviour.
+**Never set `tfPassive` by default.** Only set when the user explicitly requests "post only" or "maker only" behavior.
+
+`tfPassive` is not necessarily strict "post-only": true post-only rejects any order that would immediately execute, while passive may allow execution at a price better than the limit.
 
 ### 1.6 Offer with expiry
 
