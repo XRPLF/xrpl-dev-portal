@@ -48,10 +48,9 @@ Transactions of the {% code-page-name /%} type support additional values in the 
 
 | Field Name      | Hex Value    | Decimal Value | Description |
 |:----------------|:-------------|:--------------|:------------|
-| `tfLoanDefault` | `0x00010000` | `65536`       | Indicates the loan should be defaulted. |
+| `tfLoanDefault` | `0x00010000` | `65536`       | Indicates the loan should be defaulted. Doing so moves funds from the broker to the vault regardless of freeze, deep freeze, or MPT lock on the vault's asset. {% amendment-disclaimer name="fixCleanup3_4_0" /%} |
 | `tfLoanImpair`  | `0x00020000` | `131072`      | Indicates the the loan should be impaired. |
 | `tfLoanUnimpair`| `0x00040000` | `262144`      | Indicates the the loan should be unimpaired. |
-
 
 ## Error Cases
 
@@ -63,7 +62,7 @@ Besides errors that can occur for all transactions, {% code-page-name /%} transa
 | `temINVALID_FLAG`   | Multiple management flags have been set. Only one can be set at a time. |
 | `tecNO_ENTRY`       | The loan specified by `LoanID` doesn't exist. |
 | `tecNO_PERMISSION`  | - The transaction is attempting to modify a defaulted loan, or a fully paid loan.<br>- The transaction is attempting to change the loan's impairment status to the one it already has. |
-| `tecTOO_SOON`       | The loan can't be marked as defaulted before its payment due date and grace period have passed. |
+| `tecTOO_SOON`       | The loan can't be marked as defaulted or impaired before its payment due date and grace period have passed. {% amendment-disclaimer name="fixCleanup3_4_0" mode="updated" /%} |
 | `tecLIMIT_EXCEEDED` | Marking the loan as impaired creates a loss greater than the vault's oustanding assets, which would put the vault in an invalid state. |
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}
