@@ -28,9 +28,7 @@ A domain serves as an abstraction layer between credentials and a resource being
 
 [{% inline-svg file="../../../img/permissioned-domain.svg" /%}](../../../img/permissioned-domain.svg "Diagram: a permissioned DEX points to a permissioned domain by ID. The domain's Accepted Credentials describes 3 possible credentials to get access")
 
-Users do not need to apply to join or leave a domain. When a transaction requires access to a resource that is restricted by a domain, the transaction automatically checks if the account holds a credential matching that domain's accepted credentials, and fails if they have none. The user's credential must be accepted and not expired.
-
-`OfferCreate` and `Payment` transactions that specify a `DomainID` verify that the domain still exists, failing with `tecNO_PERMISSION` if not. If the domain exists, the transaction also deletes expired credentials from the ledger for any account it checks against the domain (the sender for `OfferCreate`, or the sender and destination for `Payment`).
+Users do not need to apply to join or leave a domain. When a transaction requires access to a resource that is restricted by a domain, the transaction automatically checks if the account holds a credential matching that domain's accepted credentials, and fails if they have none. The user's credential must be accepted and not expired. When a transaction fails because an account's credentials are expired, the expired credentials are automatically deleted.
 
 ## Uses for Permissioned Domains
 
