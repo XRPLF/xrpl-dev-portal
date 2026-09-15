@@ -470,64 +470,115 @@ else:
 
 ### 3.4 Estimated fill and slippage — walk the book by funded size
 
-The pre-trade summary's `Est. fill` and `Slippage` must be computed from
-**funded** amounts. Walking raw `TakerGets` overstates available liquidity —
-measured at 47× on a real Mainnet book.
+The pre-trade summary's `Est. fill` and `Slippage` must be computed from **funded**
+amounts. Walking raw `TakerGets` overstates available liquidity.
 
-Walk offers in book order, taking the funded size of each until the order is
-filled or the book runs out. Anything left over does not cross.
+Two things determine correctness, and both are easy to get wrong:
+
+1. **Base-side capacity lives on a different field per book.** The base sits on
+   `TakerGets` for an ask book but on `TakerPays` for a bid book. Reading
+   `taker_gets_funded` on a bid book compares *quote* units against a *base*
+   order size.
+2. **The walk must stop at the limit price.** Levels beyond the limit cannot
+   cross, so counting them reports fill the order will never get.
+
+Walk offers in book order, taking the funded base-side size of each until the
+order is filled, the limit price is passed, or the book runs out. Anything left
+over does not cross.
 
 ```typescript
 /** Estimate execution against a live book.
- *  wantGets: how much BASE you want to acquire, in human units. */
-function estimateFill(offers: any[], wantGets: number, bookGetsBase: boolean) {
-  let remaining = wantGets, paid = 0, got = 0;
+ *  wantBase   — how much BASE to trade, in human units.
+ *  limitPrice — QUOTE per BASE. Omit for a market-style estimate.
+ *  midPrice   — from §3.3, for the mid-relative slippage the summary requires. */
+function estimateFill(
+  offers: any[], wantBase: number, bookGetsBase: boolean,
+  limitPrice?: number, midPrice?: number,
+) {
+  let remaining = wantBase, quote = 0, base = 0, bestCrossing: number | null = null;
+
   for (const o of offers) {
-    const avail = amt(fundedGets(o));
-    if (avail <= 0) continue;                    // phantom level — skip
-    const price = offerPrice(o, bookGetsBase);   // price from ORIGINAL amounts
-    const take  = Math.min(remaining, avail);
-    got  += take;
-    paid += take * price;
+    // Base-side capacity: TakerGets on an ask book, TakerPays on a bid book.
+    const avail = bookGetsBase ? amt(fundedGets(o)) : amt(fundedPays(o));
+    if (!(avail > 0)) continue;                      // phantom level — skip
+
+    const price = offerPrice(o, bookGetsBase);        // price from ORIGINAL amounts
+    if (!Number.isFinite(price) || price <= 0) continue;
+
+    // Buying base: pay no more than the limit. Selling base: receive no less.
+    if (limitPrice !== undefined &&
+        (bookGetsBase ? price > limitPrice : price < limitPrice)) break;
+
+    if (bestCrossing === null) bestCrossing = price;
+    const take = Math.min(remaining, avail);
+    base += take;
+    quote += take * price;
     remaining -= take;
     if (remaining <= 1e-12) break;
   }
-  if (got === 0) return { fillable: 0, avgPrice: null, slippagePct: null };
-  const avgPrice = paid / got;
-  const best     = offerPrice(offers.find(o => amt(fundedGets(o)) > 0), bookGetsBase);
+
+  if (base === 0) {
+    return { fillable: 0, avgPrice: null, slippageVsBestPct: null, slippageVsMidPct: null };
+  }
+  const avgPrice = quote / base;
   return {
-    fillable:    got / wantGets,                        // 0..1
+    fillable: base / wantBase,                                        // 0..1
     avgPrice,
-    slippagePct: ((avgPrice - best) / best) * 100,      // vs best FUNDED price
+    slippageVsBestPct: ((avgPrice - bestCrossing!) / bestCrossing!) * 100,
+    slippageVsMidPct: midPrice ? ((avgPrice - midPrice) / midPrice) * 100 : null,
   };
 }
 ```
 
 ```python
-def estimate_fill(offers, want_gets: float, book_gets_base: bool):
-    remaining, paid, got = want_gets, 0.0, 0.0
+def estimate_fill(offers, want_base: float, book_gets_base: bool,
+                  limit_price: float | None = None, mid_price: float | None = None):
+    remaining, quote, base, best_crossing = want_base, 0.0, 0.0, None
+
     for o in offers:
-        avail = _amt(funded_gets(o))
-        if avail <= 0:                       # phantom level - skip
+        # Base-side capacity: TakerGets on an ask book, TakerPays on a bid book.
+        avail = _amt(funded_gets(o)) if book_gets_base else _amt(funded_pays(o))
+        if not avail > 0:                    # phantom level - skip
             continue
-        price = _offer_price(o, book_gets_base)
-        take  = min(remaining, avail)
-        got  += take
-        paid += take * price
+
+        price = _offer_price(o, book_gets_base)   # price from ORIGINAL amounts
+        if price <= 0:
+            continue
+
+        # Buying base: pay no more than the limit. Selling base: receive no less.
+        if limit_price is not None and (
+                price > limit_price if book_gets_base else price < limit_price):
+            break
+
+        if best_crossing is None:
+            best_crossing = price
+        take = min(remaining, avail)
+        base += take
+        quote += take * price
         remaining -= take
         if remaining <= 1e-12:
             break
-    if got == 0:
-        return {"fillable": 0.0, "avg_price": None, "slippage_pct": None}
-    avg   = paid / got
-    live  = live_offers(offers)
-    best  = _offer_price(live[0], book_gets_base)
-    return {"fillable": got / want_gets, "avg_price": avg,
-            "slippage_pct": (avg - best) / best * 100}
+
+    if base == 0:
+        return {"fillable": 0.0, "avg_price": None,
+                "slippage_vs_best_pct": None, "slippage_vs_mid_pct": None}
+
+    avg = quote / base
+    return {
+        "fillable": base / want_base,
+        "avg_price": avg,
+        "slippage_vs_best_pct": (avg - best_crossing) / best_crossing * 100,
+        "slippage_vs_mid_pct": ((avg - mid_price) / mid_price * 100) if mid_price else None,
+    }
 ```
 
-**Report a partial walk honestly.** If `fillable < 1`, the book cannot fill the
-order at any price — say so rather than extrapolating past the last offer.
+Report `slippage_vs_mid_pct` in the pre-trade summary. `slippage_vs_best_pct`
+isolates depth impact from the spread and is useful for diagnostics. A negative
+value means later levels priced better than the first one that crossed.
+
+If `fillable` is `0`, nothing crosses at the limit price — say so, rather than
+reporting a slippage figure. If `fillable` is less than `1`, the remainder will
+rest on the book (or be cancelled, with `tfImmediateOrCancel`).
 
 ---
 
