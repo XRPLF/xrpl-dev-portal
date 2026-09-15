@@ -222,16 +222,20 @@ The `vault` field is an object describing the current status of a `Vault` entry 
 | :--------------------- | :------------------- | :---------- |
 | `Account`              | String - [Address][] | The address of the vault's pseudo-account. |
 | `Asset`                | Object               | The [**Asset**](#asset-object) of the vault. An asset can be XRP, a trust line token, or an MPT. |
-| `AssetsAvailable`      | Number               | The asset amount that is available in the vault. |
-| `AssetsMaximum`        | Number               | The maximum asset amount that can be held in the vault. If set to 0, this indicates there is no cap. |
-| `AssetsTotal`          | Number               | The total value of the vault. |
+| `AssetsAvailable`      | String               | The asset amount that is available in the vault. |
+| `AssetsMaximum`        | String               | The maximum asset amount that can be held in the vault. If set to 0, this indicates there is no cap. |
+| `AssetsTotal`          | String               | The total value of the vault.<ul><li>_Cash-basis vaults_: Potential interest from scheduled, unpaid loans **doesn't** count toward the total. {% badge href="https://github.com/XRPLF/rippled/releases/tag/3.4.0" %}Updated in: rippled 3.4.0{% /badge %}</li><li>_Instant interest recognition vaults_: Potential interest from scheduled, unpaid loans **does** count toward the total.</li></ul> |
 | `Flags`                | String               | Set of bit-flags for this ledger object. |
-| `LossUnrealized`       | Number               |  The potential loss amount that is not yet realized, expressed as the vault's asset. |
-| `ShareMPTID`           | String               | The identifier of the share `MPTokenIssuance` object. |
-| `WithdrawalPolicy`     | String               | Indicates the withdrawal strategy used by the vault. |
 | `index`                | String               | The unique index of the vault ledger entry.  |
-| `shares`               | Object               | A [**Shares Object**](#shares-object) containing details about the vault's issued shares.  |
+| `LEVersion`            | Number               | Indicates what type of accounting the vault uses. `1` indicates the vault uses cash-basis accounting. If this field is omitted, the vault uses instant interest recognition accounting. {% badge href="https://github.com/XRPLF/rippled/releases/tag/3.4.0" %}New in: rippled 3.4.0{% /badge %} |
+| `LossUnrealized`       | String               | The potential loss amount that is not yet realized, expressed as the vault's asset.<ul><li>_Cash-basis vaults_: Unrealized losses from interest **aren't** included in this value. {% badge href="https://github.com/XRPLF/rippled/releases/tag/3.4.0" %}Updated in: rippled 3.4.0{% /badge %}</li><li>_Instant interest recognition vaults_: Unrealized losses from interest **are** included in this value.</li></ul> |
+| `RedemptionDate`       | Number               | _(Closed-ended vaults only)_ The time, in [seconds since the Ripple Epoch][], when the vault's investment period ends and depositors can redeem their shares. {% badge href="https://github.com/XRPLF/rippled/releases/tag/3.4.0" %}New in: rippled 3.4.0{% /badge %} |
 | `Scale`                | Number               | Specifies decimal precision for share calculations. Assets are multiplied by 10<sup>Scale</sup > to convert fractional amounts into whole number shares. For example, with a `Scale` of `6`, depositing 20.3 units creates 20,300,000 shares (20.3 × 10<sup>Scale</sup >). For **trust line tokens** this can be configured at vault creation, and valid values are between 0-18, with the default being `6`. For **XRP** and **MPTs**, this is fixed at `0`. |
+| `shares`               | Object               | A [**Shares Object**](#shares-object) containing details about the vault's issued shares.  |
+| `ShareMPTID`           | String               | The identifier of the share `MPTokenIssuance` object. |
+| `SubscriptionDate`     | Number               | _(Closed-ended vaults only)_ The time, in [seconds since the Ripple Epoch][], when the vault's subscription window closes and its investment period begins. {% badge href="https://github.com/XRPLF/rippled/releases/tag/3.4.0" %}New in: rippled 3.4.0{% /badge %} |
+| `VaultKind`            | Number               | Indicates the kind of vault. `1` is a closed-ended vault. If this field is omitted, it's an open-ended vault. {% badge href="https://github.com/XRPLF/rippled/releases/tag/3.4.0" %}New in: rippled 3.4.0{% /badge %} |
+| `WithdrawalPolicy`     | Number               | Indicates the withdrawal strategy used by the vault. |
 
 ### Asset Object
 

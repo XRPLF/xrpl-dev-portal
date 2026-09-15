@@ -18,6 +18,7 @@ The lending protocol uses the pseudo-account of the associated `Vault` entry to 
 {% /admonition %}
 
 {% amendment-disclaimer name="LendingProtocol" /%}
+{% amendment-disclaimer name="LendingProtocolV1_1" mode="updated" /%}
 
 ## Example {% $frontmatter.seo.title %} JSON
 
@@ -53,23 +54,23 @@ In addition to the [common ledger entry fields][], {% code-page-name /%} entries
 
 | Name                  | JSON Type | Internal Type | Required? | Description |
 | :-------------------- | :-------- | :------------ | :-------- | :-----------|
-| `PreviousTxnID`       | String    | Hash256       | Yes       | Identifies the transaction ID that most recently modified this object. |
-| `PreviousTxnLgrSeq`   | Number    | UInt32        | Yes       | The sequence of the ledger that contains the transaction that most recently modified this object. |
-| `Sequence`            | Number    | UInt32        | Yes       | The transaction sequence number that created the LoanBroker. |
-| `LoanSequence`        | Number    | UInt32        | Yes       | A sequential identifier for `Loan` ledger entires, incremented each time a new loan is created by this `LoanBroker`. |
-| `OwnerNode`           | Number    | UInt64        | Yes       | Identifies the page where this item is referenced in the owner's directory. |
-| `VaultNode`           | Number    | UInt64        | Yes       | Identifies the page where this item is referenced in the `Vault` pseudo-account owner's directory. |
-| `VaultID`             | String    | Hash256       | Yes       | The ID of the vault that provides the loaned assets. |
 | `Account`             | String    | AccountID     | Yes       | The address of the `LoanBroker` pseudo-account. |
-| `Owner`               | String    | AccountID     | Yes       | The account address of the vault owner. |
-| `Data`                | String    | Blob          | No        | Arbitrary metadata about the vault. Limited to 256 bytes. |
-| `ManagementFeeRate`   | Number    | UInt16        | No        | The fee charged by the lending protocol on any loan interest, in units of 1/10th basis points. Valid values are 0 to 10000 (inclusive), representing 0% to 10%. |
-| `OwnerCount`          | Number    | UInt32        | Yes       | The number of active loans issued by the LoanBroker. |
-| `DebtTotal`           | String    | Number        | Yes       | The total asset amount the protocol owes the vault, including interest. |
-| `DebtMaximum`         | String    | Number        | No        | The maximum amount the protocol can owe the vault. The default value of `0` means there is no limit to the debt. |
 | `CoverAvailable`      | String    | Number        | Yes       | The total amount of first-loss capital deposited into the lending protocol. |
 | `CoverRateMinimum`    | Number    | UInt32        | Yes       | The 1/10th basis point of the `DebtTotal` that the first-loss capital must cover. Valid values are 0 to 100000 (inclusive), representing 0% to 100%. |
 | `CoverRateLiquidation`| Number    | UInt32        | Yes       | The 1/10th basis point of minimum required first-loss capital that is moved to an asset vault to cover a loan default. Valid values are 0 to 100000 (inclusive), representing 0% to 100%. |
+| `Data`                | String    | Blob          | No        | Arbitrary metadata about the vault. Limited to 256 bytes. |
+| `DebtMaximum`         | String    | Number        | No        | The maximum amount the protocol can owe the vault. The default value of `0` means there is no limit to the debt. |
+| `DebtTotal`           | String    | Number        | Yes       | The principal asset amount the protocol owes the vault. {% amendment-disclaimer name="LendingProtocolV1_1" mode="updated" /%} |
+| `LoanSequence`        | Number    | UInt32        | Yes       | A sequential identifier for `Loan` ledger entires, incremented each time a new loan is created by this `LoanBroker`. |
+| `ManagementFeeRate`   | Number    | UInt16        | No        | The fee charged by the lending protocol on any loan interest, in units of 1/10th basis points. Valid values are 0 to 10000 (inclusive), representing 0% to 10%. |
+| `Owner`               | String    | AccountID     | Yes       | The account address of the vault owner. |
+| `OwnerCount`          | Number    | UInt32        | Yes       | The number of active loans issued by the LoanBroker. |
+| `OwnerNode`           | Number    | UInt64        | Yes       | Identifies the page where this item is referenced in the owner's directory. |
+| `PreviousTxnID`       | String    | Hash256       | Yes       | Identifies the transaction ID that most recently modified this object. |
+| `PreviousTxnLgrSeq`   | Number    | UInt32        | Yes       | The sequence of the ledger that contains the transaction that most recently modified this object. |
+| `Sequence`            | Number    | UInt32        | Yes       | The transaction sequence number that created the LoanBroker. |
+| `VaultNode`           | Number    | UInt64        | Yes       | Identifies the page where this item is referenced in the `Vault` pseudo-account owner's directory. |
+| `VaultID`             | String    | Hash256       | Yes       | The ID of the vault that provides the loaned assets. |
 
 
 ## {% $frontmatter.seo.title %} Flags

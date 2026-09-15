@@ -15,6 +15,12 @@ This tutorial shows you how to manage a [Loan][] on the XRP Ledger. Loan managem
 The tutorial demonstrates how a loan broker can manually impair a loan before a payment due date passes (in cases where you suspect a borrower can't make a payment) and default the loan after the grace period expires.
 
 {% amendment-disclaimer name="LendingProtocol" /%}
+{% amendment-disclaimer name="LendingProtocolV1_1" mode="updated" /%}
+
+{% admonition type="info" name="Note" %}
+- **JavaScript** code expects both `LendingProtocol` and `LendingProtocolV1_1`.
+- **Python** and **Go** code expect only `LendingProtocol`.
+{% /admonition %}
 
 ## Goals
 
@@ -124,7 +130,7 @@ Check the current status of the loan using the [ledger_entry method][].
 
 {% tabs %}
 {% tab label="JavaScript" %}
-{% code-snippet file="/_code-samples/lending-protocol/js/loanManage.js" language="js" from="// Check loan status" before="// Prepare LoanManage transaction to impair" /%}
+{% code-snippet file="/_code-samples/lending-protocol/js/loanManage.js" language="js" from="// Check loan status" before="// Countdown until the loan can be impaired" /%}
 {% /tab %}
 {% tab label="Python" %}
 {% code-snippet file="/_code-samples/lending-protocol/py/loan_manage.py" language="py" from="# Check loan status" before="# Prepare LoanManage transaction to impair" /%}
@@ -136,7 +142,25 @@ Check the current status of the loan using the [ledger_entry method][].
 
 This shows the total amount owed and the next payment due date. The [Ripple Epoch][] timestamp is converted to a readable date format.
 
-### 4. Prepare LoanManage transaction to impair the loan
+### 4. Wait for late payment
+
+Loans can only be impaired after missing a payment.
+
+{% tabs %}
+{% tab label="JavaScript" %}
+{% code-snippet file="/_code-samples/lending-protocol/js/loanManage.js" language="js" from="// Countdown until the loan can be impaired" before="// Prepare LoanManage transaction to impair" /%}
+
+The countdown displays the expected remaining seconds in real-time, but is validated against the ledger's actual close time.
+{% /tab %}
+{% tab label="Python" %}
+This step is required if both `LendingProtocol` and `LendingProtocolV1_1` are enabled. The **Python** code is currently written for only `LendingProtocol`, which can skip this step.
+{% /tab %}
+{% tab label="Go" %}
+This step is required if both `LendingProtocol` and `LendingProtocolV1_1` are enabled. The **Go** code is currently written for only `LendingProtocol`, which can skip this step.
+{% /tab %}
+{% /tabs %}
+
+### 5. Prepare LoanManage transaction to impair the loan
 
 Create the [LoanManage transaction][] with the `tfLoanImpair` flag.
 
@@ -152,13 +176,13 @@ Create the [LoanManage transaction][] with the `tfLoanImpair` flag.
 {% /tab %}
 {% /tabs %}
 
-### 5. Submit LoanManage impairment transaction
+### 6. Submit LoanManage impairment transaction
 
 Sign and submit the `LoanManage` transaction to impair the loan.
 
 {% tabs %}
 {% tab label="JavaScript" %}
-{% code-snippet file="/_code-samples/lending-protocol/js/loanManage.js" language="js" from="// Sign, submit, and wait for impairment" before="// Extract loan impairment info" /%}
+{% code-snippet file="/_code-samples/lending-protocol/js/loanManage.js" language="js" from="// Sign, submit, and wait for impairment" before="// Countdown until the loan can be defaulted" /%}
 {% /tab %}
 {% tab label="Python" %}
 {% code-snippet file="/_code-samples/lending-protocol/py/loan_manage.py" language="py" from="# Sign, submit, and wait for impairment" before="# Extract loan impairment info" /%}
@@ -170,13 +194,13 @@ Sign and submit the `LoanManage` transaction to impair the loan.
 
 Verify that the transaction succeeded by checking for a `tesSUCCESS` result code.
 
-### 6. Get loan impairment information
+### 7. Get loan impairment information
 
 Retrieve the loan's grace period and updated payment due date from the transaction result by checking for the `Loan` entry in the transaction metadata.
 
 {% tabs %}
 {% tab label="JavaScript" %}
-{% code-snippet file="/_code-samples/lending-protocol/js/loanManage.js" language="js" from="// Extract loan impairment info" before="// Countdown until loan can be defaulted" /%}
+This step is required if only `LendingProtocol` is enabled. The **JavaScript** code is written for both `LendingProtocol` and `LendingProtocolV1_1`, which can skip this step.
 {% /tab %}
 {% tab label="Python" %}
 {% code-snippet file="/_code-samples/lending-protocol/py/loan_manage.py" language="py" from="# Extract loan impairment info" before="# Countdown until loan can be defaulted" /%}
@@ -186,25 +210,29 @@ Retrieve the loan's grace period and updated payment due date from the transacti
 {% /tab %}
 {% /tabs %}
 
-The loan can only be defaulted after the grace period expires. The example calculates when the grace period ends and displays a countdown.
+### 8. Wait for grace period to expire
 
-### 7. Wait for grace period to expire
-
-This countdown displays the remaining seconds in real-time. Once the grace period expires, the loan can be defaulted.
+Loans can only be defaulted when the grace period expires after the missed payment due date.
 
 {% tabs %}
 {% tab label="JavaScript" %}
-{% code-snippet file="/_code-samples/lending-protocol/js/loanManage.js" language="js" from="// Countdown until loan can be defaulted" before="// Prepare LoanManage transaction to default" /%}
+{% code-snippet file="/_code-samples/lending-protocol/js/loanManage.js" language="js" from="// Countdown until the loan can be defaulted" before="// Prepare LoanManage transaction to default" /%}
+
+The countdown displays the expected remaining seconds in real-time, but is validated against the ledger's actual close time.
 {% /tab %}
 {% tab label="Python" %}
 {% code-snippet file="/_code-samples/lending-protocol/py/loan_manage.py" language="py" from="# Countdown until loan can be defaulted" before="# Prepare LoanManage transaction to default" /%}
+
+The countdown displays the remaining seconds in real-time.
 {% /tab %}
 {% tab label="Go" %}
 {% code-snippet file="/_code-samples/lending-protocol/go/loan-manage/main.go" language="go" from="// Countdown until loan can be defaulted" before="// Prepare LoanManage transaction to default" /%}
+
+The countdown displays the remaining seconds in real-time.
 {% /tab %}
 {% /tabs %}
 
-### 8. Prepare LoanManage transaction to default the loan
+### 9. Prepare LoanManage transaction to default the loan
 
 After the grace period expires, create a `LoanManage` transaction with the `tfLoanDefault` flag.
 
@@ -220,7 +248,7 @@ After the grace period expires, create a `LoanManage` transaction with the `tfLo
 {% /tab %}
 {% /tabs %}
 
-### 9. Submit LoanManage default transaction
+### 10. Submit LoanManage default transaction
 
 Sign and submit the `LoanManage` transaction to default the loan.
 
@@ -238,7 +266,7 @@ Sign and submit the `LoanManage` transaction to default the loan.
 
 Verify that the transaction succeeded by checking for a `tesSUCCESS` result code.
 
-### 10. Verify loan default status
+### 11. Verify loan default status
 
 Confirm the loan has been defaulted by checking the loan flags.
 
