@@ -166,7 +166,7 @@ To understand how the exchange rates are applied, here are the key variables use
       Δ_shares = (Δ_assets_requested * Γ_shares) / (Γ_assets - l)
       ```
 
-      The calculated share amount is rounded **down** to the nearest whole number, so the payout never exceeds the requested amount. {% amendment-disclaimer name="fixCleanup3_4_0" /%}
+      The calculated share amount is rounded down, so the payout never exceeds the requested amount. {% amendment-disclaimer name="fixCleanup3_4_0" /%}
 
   2. The rounded number of shares is used to calculate the final asset payout (`Δ_assets_out`), using the same logic as a redemption.
 
