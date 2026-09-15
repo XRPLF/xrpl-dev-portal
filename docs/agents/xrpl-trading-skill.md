@@ -28,13 +28,13 @@ Both skills are required for a complete agentic trading workflow.
 | **Offer semantics** | TakerPays / TakerGets from the creator's perspective, fill outcomes (filled / partial / resting), offer quality and priority |
 | **OfferCreate** | Limit orders, immediate-or-cancel (market-equivalent), fill-or-kill, passive (post-only), atomic offer replacement, offer expiry |
 | **OfferCancel** | Cancelling resting offers by sequence number, verifying ownership before cancelling |
-| **Order book** | `book_offers` RPC, bid/ask spread, depth calculation, estimated fill and slippage |
+| **Order book** | `book_offers` RPC, unfunded-offer filtering (`taker_gets_funded`), bid/ask spread, funded depth, estimated fill and slippage |
 | **Amount handling** | XRP in drops, IOU `{currency, issuer, value}` objects, XRPL epoch conversion for expiry |
-| **Trust lines** | Pre-flight trust line verification for IOU offers, `tecNO_LINE` prevention |
+| **Trust lines** | Pre-flight trust line verification for IOU offers; `RequireAuth` issuer detection to prevent `tecNO_LINE` / `tecNO_AUTH` |
 | **AMM interaction** | Implicit AMM liquidity via OfferCreate — no separate transaction type needed |
 | **Agentic best practices** | SourceTag for agent attribution, Memos for on-chain audit trail, pre-trade summary, WebSocket monitoring for resting offer fills |
-| **Error handling** | `tec*` codes (`tecUNFUNDED_OFFER`, `tecKILLED`, `tecNO_LINE`, `tecINSUF_RESERVE_OFFER`), fee-charged vs no-fee result classification |
-| **Security** | Key management deferred to Wallet skill. Inline pre-flight guardrails (reserve check, trust line check, expiry validation, flag-conflict detection) run before every handoff. |
+| **Error handling** | Full `OfferCreate` / `OfferCancel` error set — `tec*` codes (`tecUNFUNDED_OFFER`, `tecKILLED`, `tecNO_LINE`, `tecNO_AUTH`, `tecNO_ISSUER`, `tecFROZEN`, `tecINSUF_RESERVE_OFFER`) and `tem*` codes, fee-charged vs no-fee classification |
+| **Security** | Key management deferred to Wallet skill. Inline pre-flight guardrails (reserve check, trust line check, expiry validation, flag-conflict detection) run **before the user is asked to approve**, and are re-asserted before handoff. |
 
 ---
 
@@ -62,7 +62,7 @@ pair with the same shared Wallet skill. See
 - **Amount handling:** XRP amounts are always strings in drops — use `xrp_to_drops()` / `xrpToDrops()`. Never pass floats or raw XRP values. IOU amounts use `{currency, issuer, value}` objects with `value` as a decimal string.
 - **Source tag:** The XRPL Agent Wallet skill automatically applies `SourceTag = 20260530` to every transaction that passes through the signing ceremony. Override by setting `SourceTag` on the transaction object before handoff. You do not need to set `SourceTag` — the Wallet skill applies it. Set it only for a deliberate custom tag, or `0` to opt out.
 - **Network:** Testnet (`https://s.altnet.rippletest.net:51234`) by default. Switching to Mainnet is a one-line URL change.
-- **Simulate before handoff:** For new trading flows or unfamiliar currency pairs, call `simulate` on the raw transaction object before handing to the Wallet skill. This catches malformed offers, missing trust lines, and reserve errors without spending fees.
+- **Simulate before the summary:** Where the node supports it, call `simulate` on the built transaction before showing the pre-trade summary. It returns the ledger's own `engine_result` with `applied: false` and costs no fee, catching cases no local check covers — `tecNO_LINE`, `tecNO_AUTH`, `tecFROZEN`, `tecNO_ISSUER`. Recommended, not required: fall back to the local guardrails if `simulate` is unavailable.
 
 ---
 
@@ -70,10 +70,10 @@ pair with the same shared Wallet skill. See
 
 1. **Identify the operation** — `create_offer`, `cancel_offer`, or `get_order_book`. Check the [trading.md reference](https://github.com/XRPLF/xrpl-dev-portal/tree/master/.claude/skills/xrpl-skills/xrpl-trading/references/trading.md) for full patterns and edge cases.
 2. **Check prerequisites** — Trust line exists for IOU side of offer? Account has sufficient balance including fees and reserve for a new resting offer? Expiry is in the future?
-3. **Show pre-trade summary** — For `create_offer`, always show offer details, mid price, estimated fill, and slippage. Collect user acknowledgement before proceeding.
-4. **Build** — Construct the transaction object. Do not set `Fee`, `Sequence`, or `LastLedgerSequence` — the Wallet skill's autofill populates these from the live node.
-5. **Run built-in guardrails** — Before handing off, the skill applies pre-flight checks: reserve adequacy, trust line existence, expiry sanity, and flag conflicts. Stop and surface a clear error if any check fails.
-6. **Hand off to the Wallet skill** — Pass the transaction object to the XRPL Agent Wallet skill. It will autofill, preview, sign, and submit via `submitAndWait`.
+3. **Build** — Construct the transaction object. Do not set `Fee`, `Sequence`, or `LastLedgerSequence` — the Wallet skill's autofill populates these from the live node.
+4. **Run built-in guardrails** — Apply pre-flight checks *before* asking the user to approve anything: reserve adequacy, trust line state (including `RequireAuth` issuers on the buy side), expiry sanity, and flag conflicts. Stop and surface a clear error if any check fails — never ask a user to approve a trade already known to fail, because every `tec*` failure charges a fee.
+5. **Show pre-trade summary** — For `create_offer`, always show offer details, mid price, estimated fill, slippage, and the pre-flight verdict. Collect user acknowledgement before proceeding.
+6. **Hand off to the Wallet skill** — Re-assert the guardrails against current ledger state, then pass the transaction object to the XRPL Agent Wallet skill. It will autofill, preview, sign, and submit via `submitAndWait`.
 7. **Parse and surface result** — Classify the fill outcome (filled / partial / resting). Surface the offer sequence when a remainder exists on the book. Handle `tec*` errors explicitly — every `tec*` code means a fee was charged with no fill.
 
 ---

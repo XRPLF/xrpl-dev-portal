@@ -257,8 +257,14 @@ const amt = (a: any) => typeof a === "string" ? Number(dropsToXrp(a)) : Number(a
 const price = (o: any, getsBase: boolean) =>
   getsBase ? amt(o.TakerPays) / amt(o.TakerGets) : amt(o.TakerGets) / amt(o.TakerPays);
 
-const askOffers = asks.result.offers;   // taker_gets = XRP -> getsBase = true
-const bidOffers = bids.result.offers;   // taker_pays = XRP -> getsBase = false
+// `book_offers` also returns offers their owner cannot currently fund — including
+// completely unfunded ones, which carry a real-looking price and size. Tradeable
+// size is `taker_gets_funded` when present; drop anything that resolves to 0.
+const fundedGets  = (o: any) => o.taker_gets_funded ?? o.TakerGets;
+const liveOffers  = (os: any[]) => os.filter(o => amt(fundedGets(o)) > 0);
+
+const askOffers = liveOffers(asks.result.offers);   // taker_gets = XRP -> getsBase = true
+const bidOffers = liveOffers(bids.result.offers);   // taker_pays = XRP -> getsBase = false
 const bestAsk   = askOffers.length ? price(askOffers[0], true)  : null;
 const bestBid   = bidOffers.length ? price(bidOffers[0], false) : null;
 
@@ -304,6 +310,15 @@ def _amt(a):
 def _price(o, gets_base):
     return (_amt(o["TakerPays"]) / _amt(o["TakerGets"])) if gets_base \
         else (_amt(o["TakerGets"]) / _amt(o["TakerPays"]))
+
+# `book_offers` also returns offers their owner cannot currently fund - including
+# completely unfunded ones, which carry a real-looking price and size. Tradeable
+# size is `taker_gets_funded` when present; drop anything that resolves to 0.
+def _live(offers):
+    return [o for o in offers
+            if _amt(o.get("taker_gets_funded", o["TakerGets"])) > 0]
+
+asks, bids = _live(asks), _live(bids)
 
 best_ask = _price(asks[0], True)  if asks else None
 best_bid = _price(bids[0], False) if bids else None
