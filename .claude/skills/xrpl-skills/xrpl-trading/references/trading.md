@@ -363,15 +363,9 @@ ask_offers, bid_offers = await get_both_sides(client, issuer)
 
 ### 3.3 Computing mid price and slippage
 
-> **Never use `quality` as a price.** (The previous version of this section
-> imported `dropsToXrp` and then never called it — that unused import was the
-> tell: the drops conversion is mandatory, not optional.)
-> `quality` is `TakerPays / TakerGets` in
-> *protocol* units, so XRP appears in **drops** — an XRP-denominated `quality` is
-> off by 1,000,000 — and the two sides of a book are quoted in inverse
-> orientations. Feeding `quality` straight into a mid-price calculation produces
-> prices ~10^6 too large and negative spreads. Always derive price from the
-> amounts, converting drops to XRP first.
+Each order book reports the quality of an offer as `TakerPays / TakerGets`. Never compare the two sides of a market using their quality values as-is. `TakerPays` and `TakerGets` swap places depending on which book you read, so the two values are reciprocals of each other.
+
+Before calculating mid price or spread, decide on a base asset, then invert one book so both bid and ask are expressed in the same base unit.
 
 ```typescript
 import { dropsToXrp } from "xrpl";
@@ -639,7 +633,7 @@ await client.request({
 });
 
 client.on("transaction", (tx) => {
-  if (tx.transaction.TransactionType === "OfferCreate") {
+  if (tx.tx_json.TransactionType === "OfferCreate") {
     // Check meta.AffectedNodes for DeletedNode on your resting offer
     const nodes = tx.meta?.AffectedNodes ?? [];
     const deleted = nodes.find(
@@ -694,7 +688,7 @@ transaction and simulate again before handing to the Wallet skill.
 | Engine result | Fee charged? | Meaning | Resolution |
 | :---- | :---- | :---- | :---- |
 | `tesSUCCESS` | Yes | Transaction accepted and applied | Parse fill status from `meta.AffectedNodes` |
-| `tecUNFUNDED_OFFER` | Yes | Account XRP balance insufficient to fund the offer | Check balance. Account needs XRP ≥ offer value + fee + reserve buffer. |
+| `tecUNFUNDED_OFFER` | Yes | Account XRP or IOU balance insufficient to fund the offer | Check balance. Account needs XRP ≥ offer value + fee + reserve buffer, or IOU ≥ offer value. |
 | `tecEXPIRED` | Yes | `Expiration` already passed when ledger closed | Reject at construction. If boundary race, re-offer with future expiry. |
 | `tecKILLED` | Yes | `tfFillOrKill` could not fill completely, **or** `tfImmediateOrCancel` matched nothing at all | Do not retry. Ask user to retry with an adjusted price. |
 | `tecUNFUNDED_OFFER` (IOU sell side) | Yes | Account does not hold the IOU in `TakerGets`; includes the no-trust-line case | Account must actually hold the asset. A `TrustSet` alone does not fund the offer. Buying an IOU needs no trust line. |
@@ -703,7 +697,7 @@ transaction and simulate again before handing to the Wallet skill.
 | `temBAD_OFFER` | No | Malformed transaction (zero amounts, invalid fields, bad flags) | Fix construction and re-simulate. |
 | `temBAD_EXPIRATION` | No | `Expiration` field value is invalid | Recompute using `XRPL_epoch = Unix_s − 946,684,800`. |
 | `temINVALID_FLAG` | No | Invalid flag combination (`tfImmediateOrCancel` + `tfFillOrKill`) | Reject at construction. |
-| `temREDUNDANT` | No | `TakerPays` == `TakerGets` after quality normalization | Adjust amounts. |
+| `temREDUNDANT` | No | The transaction would trade a token for the same token (same issuer and currency code). | Adjust token. |
 
 **`tec*` vs no-fee results:** Any `tec*` code means the transaction was included
 in the ledger and the fee was charged, even though no fill occurred. Always
