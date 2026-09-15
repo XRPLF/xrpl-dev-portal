@@ -294,14 +294,14 @@ if (!target) { /* inform user — offer not found */ }
 
 ## 3. Order book reads
 
-### 3.0 Funding: `book_offers` advertises more than it can deliver
+### 3.0 Funding: `book_offers` can advertise more than it can deliver
 
-**`book_offers` returns offers the owner cannot currently fund, and they look
+**`book_offers` can return offers the owner cannot currently fund, and they look
 identical to real ones unless you check.** An offer's `TakerGets`/`TakerPays`
-are the amounts it was *created* with. What it can actually deliver right now
-depends on the owner's present balance.
+are the amounts it was *created* with. What it can actually deliver depends
+on the owner's present balance.
 
-When an offer is not fully funded, rippled adds two fields alongside the
+When an offer is not fully funded, `xrpld` adds two fields alongside the
 originals:
 
 | Field | Meaning |
@@ -314,14 +314,9 @@ Two properties matter, and both are easy to get wrong:
 
 1. **`taker_gets_funded` can be `0`.** A completely unfunded offer is still
    returned, with a real-looking price and size. It is a phantom price level.
-2. **One owner's offers share one balance.** rippled allocates the owner's funds
+2. **An owner's offers share one balance.** `xrpld` allocates the owner's funds
    to their best-ranked offer and returns the rest as `0` — so summing
    `taker_gets_funded` across a book is safe and never double-counts.
-
-Observed on Mainnet: of 300 offers in the USD.Bitstamp→XRP book, **174 were
-completely unfunded**. In the XAH→XRP book the *best* offer advertised 130,000
-XAH but only 1,574 was funded (1.2%), and the third-best was 100% phantom —
-a 5,000 XAH buy costs 3.7% more than the raw book implies.
 
 **Rule: always resolve the funded amount before using an offer for anything.**
 
