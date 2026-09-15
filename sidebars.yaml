@@ -780,6 +780,10 @@
         - page: docs/agents/getting-started-with-xrpl-trading.md
         - page: docs/agents/track-agent-behavior.md
         - page: docs/agents/agentic-payments-x402.md
+        - label: XRPL MPP SDK (Beta)
+          labelTranslationKey: sidebar.docs.agentic-transactions.xrpl-mpp-sdk
+          href: https://mpp.dev/payment-methods/xrpl
+          external: true
 - page: resources/index.page.tsx
   labelTranslationKey: sidebars.resources
   expanded: false
@@ -812,6 +816,11 @@
         - label: Transaction Sender
           labelTranslationKey: sidebar.resources.dev-tools.tx-sender
           page: resources/dev-tools/tx-sender.page.tsx
+        - label: XRPL CLI (Beta)
+          labelTranslationKey: sidebar.resources.dev-tools.xrpl-up
+          href: https://github.com/ripple/xrpl-up
+          external: true
+        - label: WebSocket API Tool  
     - label: XRPL Learning Portal
       labelTranslationKey: sidebar.resources.xrpl-learning-portal
       href: https://learn.xrpl.org/

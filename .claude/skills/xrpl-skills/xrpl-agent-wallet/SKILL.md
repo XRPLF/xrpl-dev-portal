@@ -146,7 +146,7 @@ This fills `Fee`, `Sequence`, and `LastLedgerSequence` from the connected node. 
 Produce a preview block in this exact shape and show it to the user before asking for confirmation. The format is rigid on purpose — humans confirming transactions need to scan the same fields in the same place every time.
 
 ```
-─── XRPL Transaction Preview ───────────────────────────────────────
+─── XRPL Transaction Preview ───────────────────────────────────────-
 Network           : testnet (or mainnet)
 Type              : Payment (TransactionType verbatim)
 From              : rAgent... (wallet.address - full address, no truncation in the actual output)
