@@ -40,6 +40,11 @@ Since the funds for a check are not guaranteed, redeeming a check can fail becau
 
 The transaction ***must*** include either `Amount` or `DeliverMin`, but not both.
 
+{% admonition type="info" name="Note" %}
+If you cash a Check for a currency you issue yourself, you don't need a trust line to receive it and aren't subject to a holder limit. {% amendment-disclaimer name="fixCleanup3_4_0" mode="updated" /%}
+{% /admonition %}
+
+
 ## Error Cases
 
 - If the sender of the CheckCash transaction is not the `Destination` of the check, the transaction fails with the result code `tecNO_PERMISSION`.
