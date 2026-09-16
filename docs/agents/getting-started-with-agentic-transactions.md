@@ -242,9 +242,7 @@ Sign and submit? (yes / no)
 
 Review the destination address and amount carefully, then type **yes**.
 
-The transaction object the Payments skill hands over — note that it sets no
-`Fee`, `Sequence`, `LastLedgerSequence`, or `SourceTag`, because the Wallet skill
-fills those in during the ceremony:
+The transaction object the **Payments** skill hands over doesn't set `Fee`, `Sequence`, `LastLedgerSequence`, or `SourceTag`, because the Wallet skill fills those in during the ceremony:
 
 {% tabs %}
 {% tab label="JavaScript" %}
