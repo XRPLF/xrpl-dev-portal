@@ -82,6 +82,7 @@ Besides errors that can occur for all transactions, {% code-page-name /%} transa
 | `tecLOCKED`             | The MPT vault asset is locked globally for the vault's pseudo-account, for the sender, or for the destination account. Unlike a trust line freeze, an MPT lock also blocks a withdrawal to the sender's own account. {% amendment-disclaimer name="fixCleanup3_3_0" mode="updated" /%} |
 | `tecNO_AUTH`            | The asset is a non-transferable MPT. |
 | `tecNO_ENTRY`           | The `Vault` object with the provided `VaultID` does not exist on the ledger. |
+| `tecNO_LINE`            | The `Destination` doesn't have a trust line for the vault asset with a high enough limit to receive the withdrawal. It doesn't apply to MPT assets, or when the `Destination` is the sender or the asset's issuer. {% amendment-disclaimer name="fixCleanup3_1_3" /%} |
 | `tecNO_PERMISSION`      | The destination account specified does not have permission to receive the asset. |
 | `tecOBJECT_NOT_FOUND`   | A ledger entry specified in the transaction does not exist. |
 | `tecPATH_DRY`           | Converting between assets and shares overflowed the largest number the protocol can represent. This usually means the vault's `Scale` is high and the `Amount` is large. |

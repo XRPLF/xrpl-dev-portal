@@ -824,6 +824,7 @@ This amendment is a collection of fixes for NFTs, Permissioned Domains, Vaults, 
 - Fixes an issue with expired `NFTokenOffer` entries remaining on the ledger. With this amendment enabled, using the `NFTokenAcceptOffer` transaction on an expired `NFTokenOffer` now deletes it as part of transaction processing.
 - Adds an invariant check to ensure Permissioned Domains aren't modified by failed transactions.
 - Fixes a trust line token limit check that was skipped when withdrawing vault assets. With this amendment enabled, `VaultWithdraw` transactions that specify either vault shares or vault assets will respect the trust line token limit of the destination address.
+- Fixes a `VaultClawback` transaction with an `Amount` of `0` recovering more assets than the vault had available when the vault had an outstanding loan. With this amendment enabled, a zero-amount clawback is clamped to the vault's `AssetsAvailable` balance, the same as a non-zero amount.
 - Fixes loan accounting information not updating in its associated `Loan`, `LoanBroker`, and `Vault` entries if the loan was defaulted, impaired, or unimpaired. 
 - Changes a `LoanPay` error to return `tecNO_PERMISSION` instead of `temINVALID_FLAG` when attempting to overpay on a loan that doesn't permit overpayments.
 - Adds an additional check for `LoanBroker` invariants to ensure the listed `CoverAvailable` exactly matches the assets held in the associated pseudo-account.
