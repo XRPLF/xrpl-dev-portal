@@ -85,11 +85,7 @@ If successful, the transaction automatically outbids the previous slot owner and
 
     - `M` is the minimum bid.
     - `L` is the total number of LP Tokens currently issued by the AMM.
-    - `F` is the trading fee, as a decimal.
-
-{% admonition type="info" name="Note" %}
-If the trading fee (F) is 0, both the minimum bid (M) and the price to outbid the current holder (P) enforce a calculated floor price in LP Tokens instead of evaluating toward zero, preventing free or near-free slot acquisition. {% amendment-disclaimer name="fixCleanup3_4_0" /%}
-{% /admonition %}
+    - `F` is the trading fee, as a decimal, if it is nonzero. If the trading fee is 0, the minimum nonzero value (0.001% or `0.00001`) is used instead. {% amendment-disclaimer name="fixCleanup3_4_0" mode="updated" /%}
 
 - Otherwise, the price to outbid the current holder is calculated using the following formula:
 
