@@ -48,7 +48,7 @@ Transactions of the {% code-page-name /%} type support additional values in the 
 
 | Field Name      | Hex Value    | Decimal Value | Description |
 |:----------------|:-------------|:--------------|:------------|
-| `tfLoanDefault` | `0x00010000` | `65536`       | Indicates the loan should be defaulted. Doing so moves funds from the broker to the vault regardless of freeze, deep freeze, or MPT lock on the vault's asset. {% amendment-disclaimer name="fixCleanup3_4_0" /%} |
+| `tfLoanDefault` | `0x00010000` | `65536`       | Indicates the loan should be defaulted. Doing so moves funds from the broker to the vault regardless of freeze, deep freeze, or MPT lock on the vault's asset. {% amendment-disclaimer name="fixCleanup3_4_0" mode="updated" /%} |
 | `tfLoanImpair`  | `0x00020000` | `131072`      | Indicates the the loan should be impaired. |
 | `tfLoanUnimpair`| `0x00040000` | `262144`      | Indicates the the loan should be unimpaired. |
 
