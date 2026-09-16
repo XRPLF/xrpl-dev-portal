@@ -120,7 +120,7 @@ XRP is specified as a string containing an integer number of "drops" of XRP, whe
     "Amount": "13100000"
     ```
 
-- **Token** - To specify an `Amount` field with a value of 13.1 FOO issued by or to `rf1B...`:
+- **Trust Line Token** - To specify an `Amount` field with a value of 13.1 FOO issued by or to `rf1B...`:
 
     ```
     "Amount": {
