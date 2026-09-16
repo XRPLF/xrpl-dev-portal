@@ -15,7 +15,7 @@ Withdraws first-loss capital from a `LoanBroker` ledger entry.
 
 Only the owner of the associated `LoanBroker` entry can initiate this transaction.
 
-If you already hold the asset, a self-destination withdrawal succeeds regardless of the issuer's `DefaultRipple` setting since it is only checked when a new trust line needs to be created. {% amendment-disclaimer name="fixCleanup3_4_0" /%}
+If you already hold the asset, a self-destination withdrawal succeeds regardless of the issuer's `DefaultRipple` setting since it is only checked when a new trust line needs to be created. {% amendment-disclaimer name="fixCleanup3_4_0" mode="updated" /%}
 
 {% amendment-disclaimer name="LendingProtocol" /%}
 
