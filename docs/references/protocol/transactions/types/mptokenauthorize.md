@@ -48,7 +48,7 @@ Transactions of the MPTokenAuthorize type support additional values in the `Flag
 
 | Flag Name          | Hex Value    | Decimal Value | Description                   |
 |:-------------------|:-------------|:--------------|:------------------------------|
-| `tfMPTUnauthorize` | `0x00000001` | 1             | When the holder enables this flag with a balance of zero, it revokes their willingness to hold this MPT and deletes their `MPToken` entry. If their balance is non-zero or the token is locked, the transaction fails, unless the parent `MPTokenIssuance` has been destroyed. {% amendment-disclaimer name="fixCleanup3_4_0" /%} |
+| `tfMPTUnauthorize` | `0x00000001` | 1             | When the holder enables this flag with a balance of zero, it revokes their willingness to hold this MPT and deletes their `MPToken` entry. If their balance is non-zero or the token is locked, the transaction fails, unless the parent `MPTokenIssuance` has been destroyed. Unauthorizing a locked MPToken always fails with the result code `tecNO_PERMISSION`. {% amendment-disclaimer name="fixCleanup3_4_0" /%} |
 
 ## See Also
 
