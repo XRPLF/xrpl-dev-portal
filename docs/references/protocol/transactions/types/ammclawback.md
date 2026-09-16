@@ -48,7 +48,7 @@ Clawback is disabled by default. To use clawback, you must send an [AccountSet t
 |:----------|:---------------------|:------------------|:---------|:------------------|
 | `Asset`   | Object               | Issue             | Yes      | The asset to claw back, which can be a trust line token or MPT (see: [Specifying Without Amounts][]). The issuer must be the sender of this transaction. |
 | `Asset2`  | Object               | Issue             | Yes      | The other asset of the AMM pool to claw back from. The asset can be XRP, a trust line token, or an MPT (see: [Specifying Without Amounts][]). |
-| `Amount`  | [Currency Amount][]  | Amount            | No       | The maximum amount to claw back from the AMM account. The `currency` and `issuer` subfields should match the `Asset` subfields. If this field isn't specified, or the `value` subfield meets or exceeds the holder's available tokens in the AMM, all of the holder's tokens are clawed back. {% amendment-disclaimer name="fixCleanup3_4_0" /%} |
+| `Amount`  | [Currency Amount][]  | Amount            | No       | The maximum amount to claw back from the AMM account. The `currency` and `issuer` subfields should match the `Asset` subfields. If this field isn't specified, or the `value` subfield meets or exceeds the holder's available tokens in the AMM, all of the holder's tokens are clawed back. {% amendment-disclaimer name="fixCleanup3_4_0" mode="updated" /%} |
 | `Holder`  | String - [Address][] | AccountID         | Yes      | The account holding the asset to be clawed back. |
 
 {% admonition type="info" name="Note" %}

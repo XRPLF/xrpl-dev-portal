@@ -83,7 +83,7 @@ Moreover, any existing offers where the owner has been deep-frozen on the `Taker
 
 ## AMMClawback Transaction
 
-`AMMClawback` transactions have the `OverrideFreeze` privilege, allowing them to override ordinary freeze settings. Prior to `fixCleanup3_4_0`, this privilege didn't extend to trust lines connected to an AMM pool. With `fixCleanup3_4_0` enabled, `AMMClawback` can override individual and deep freeze on AMM trust lines too, preventing a freeze-clawback deadlock. {% amendment-disclaimer name="fixCleanup3_4_0" /%}
+`AMMClawback` transactions can override ordinary freeze settings. Prior to `fixCleanup3_4_0`, this didn't extend to trust lines connected to an AMM pool. With `fixCleanup3_4_0` enabled, `AMMClawback` can override individual and deep freeze on AMM trust lines too, preventing a freeze-clawback deadlock. {% amendment-disclaimer name="fixCleanup3_4_0" mode="updated" /%}
 
 ## How does MPT freeze/lock behavior differ from IOU?
 

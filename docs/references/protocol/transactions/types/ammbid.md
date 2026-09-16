@@ -88,7 +88,7 @@ If successful, the transaction automatically outbids the previous slot owner and
     - `F` is the trading fee, as a decimal.
 
 {% admonition type="info" name="Note" %}
-With `fixCleanup3_4_0` enabled, if the trading fee (F) is 0, both the minimum bid (M) and the price to outbid the current holder (P) enforce a calculated floor price in LP Tokens instead of evaluating toward zero, preventing free or near-free slot acquisition.
+If the trading fee (F) is 0, both the minimum bid (M) and the price to outbid the current holder (P) enforce a calculated floor price in LP Tokens instead of evaluating toward zero, preventing free or near-free slot acquisition. {% amendment-disclaimer name="fixCleanup3_4_0" /%}
 {% /admonition %}
 
 - Otherwise, the price to outbid the current holder is calculated using the following formula:
