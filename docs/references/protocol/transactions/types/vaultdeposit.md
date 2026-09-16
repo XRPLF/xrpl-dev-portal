@@ -67,6 +67,8 @@ The deposited asset must match the vault’s designated asset for the transactio
 - **Trust line token**: The [trust line](../../../../concepts/tokens/fungible-tokens/trust-line-tokens.md#structure) balance between the vault's pseudo-account and the asset issuer is adjusted.
 - **MPT**: The `MPToken.MPTAmount` of both the depositor and the vault's pseudo-account is updated.
 
+The deposit amount is rounded down to match the vault's `AssetsTotal` precision, so the vault's total and available balances change by a representable amount. {% amendment-disclaimer name="fixCleanup3_4_0" mode="updated" /%}
+
 ## {% $frontmatter.seo.title %} Flags
 
 There are no flags defined for {% code-page-name /%} transactions.
