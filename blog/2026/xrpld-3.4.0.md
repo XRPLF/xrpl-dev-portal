@@ -15,7 +15,13 @@ markdown:
 
 Version 3.4.0 of `xrpld`, the reference server implementation of the XRP Ledger protocol, is now available.
 
-This release introduces two new amendments alongside bug fixes and build improvements. The **LendingProtocolV1_1** amendment enables the XRP Ledger Lending Protocol — letting loan brokers originate over-collateralized, fixed-term loans funded by Single Asset Vaults (XLS-65, XLS-66) — and adds cash-basis loan accounting and closed-ended vaults with a deterministic subscription, investment, and redemption lifecycle. The **fixCleanup3_4_0** amendment bundles amendment-gated bug fixes affecting Single Asset Vaults, the Lending Protocol, the AMM, Multi-Purpose Tokens, the permissioned DEX, NFTs, escrow, and transaction signing. This release also retires the `fixAMMOverflowOffer` amendment, making it a permanent part of the protocol.
+This release introduces two new amendments, retires an amendment, and adds various bug fixes and build improvements:
+
+- **LendingProtocolV1_1**: Extends Single Asset Vaults and the Lending Protocol with closed-ended vaults and cash-basis accounting.
+- **fixCleanup3_4_0**: Bundles amendment-gated fixes.
+- **fixAMMOverflowOffer**: This amendment is retired, making it a permanent part of the protocol.
+
+With this release, the `xrpld` DEB and RPM packages are now hosted at `packages.xrplf.org` with an XRPLF signing key. For full installation instructions, see: [Installing xrpld](https://github.com/XRPLF/rippled/blob/release/3.4.x/docs/install.md).
 
 
 ## Action Required
@@ -29,8 +35,8 @@ On supported platforms, see the [instructions on installing or updating `xrpld`]
 
 | Package | SHA-256 |
 |:--------|:--------|
-| [RPM for Red Hat / CentOS (x86-64)](https://repos.ripple.com/repos/rippled-rpm/stable/xrpld-3.4.0-1.el9.x86_64.rpm) | `TODO` |
-| [DEB for Ubuntu / Debian (x86-64)](https://repos.ripple.com/repos/rippled-deb/pool/stable/xrpld_3.4.0-1_amd64.deb) | `TODO` |
+| [RPM for Red Hat / CentOS (x86-64)](https://packages.xrplf.org/repository/rpm-stable/x86_64/xrpld-3.4.0-1.el9.x86_64.rpm) | `b826d5a5ab935aa20c60e9bef9c76909721f1ec3a1d556ced61bafe54f27e8c3` |
+| [DEB for Ubuntu / Debian (x86-64)](https://packages.xrplf.org/repository/deb-stable/pool/x/xrpld/xrpld_3.4.0-1_amd64.deb) | `4dc40a21b12b7d21f2760b16545c1d842962a96978dd3199eb8de9aa0aff8339` |
 
 For other platforms, please [build from source](https://github.com/XRPLF/rippled/blob/3.4.0/BUILD.md). The most recent commit in the git log should be the change setting the version:
 
@@ -48,8 +54,8 @@ Date:   Wed Sep 16 12:10:08 2026 -0400
 
 ### Amendments
 
-- **LendingProtocolV1_1**: Enables the XRP Ledger Lending Protocol, letting loan brokers originate over-collateralized, fixed-term loans funded by Single Asset Vaults (XLS-65, XLS-66). This version adds cash-basis loan accounting, which recognizes interest as income only when it is paid ([#7817](https://github.com/XRPLF/rippled/pull/7817)), and closed-ended vaults that follow a deterministic subscription, investment, and redemption lifecycle ([#7921](https://github.com/XRPLF/rippled/pull/7921)). ([#8125](https://github.com/XRPLF/rippled/pull/8125))
-- **fixCleanup3_4_0**: Bundles these amendment-gated fixes for the 3.4.0 release:
+- **LendingProtocolV1_1**: Extends the `LendingProtocol` and `SingleAssetVault` amendments with a new _closed-ended_ vault and _cash-basis_ accounting. Closed-ended vaults have a defined lifecycle split into three phases: subscription, investment, and redemption; these phases determine when assets can be deposited into vaults, loans can be originated, and when assets can be redeemed. After the amendment is enabled, new loan brokers can only be created against closed-ended vaults. Cash-basis accounting changes vault accounting to only realize interest as income when payments are actually made, shifting from an _instant interest recognition_ model where all scheduled interest was recognized at the time of loan origination. ([#7817](https://github.com/XRPLF/rippled/pull/7817), [#7921](https://github.com/XRPLF/rippled/pull/7921))
+- **fixCleanup3_4_0**: Bundles these fixes for the 3.4.0 release:
     - Applies the `asfDisallowIncomingTrustline` blocker to `OfferCreate`, so an account without a trust line can no longer use an offer to receive tokens from an issuer that set the flag. ([#6307](https://github.com/XRPLF/rippled/pull/6307))
     - Excludes deleted domain offers from the Permissioned DEX invariant, so replacing an offer in one domain with an offer in another no longer trips `tecINVARIANT_FAILED`. ([#7387](https://github.com/XRPLF/rippled/pull/7387))
     - Prevents `AMMClawback` from silently recovering zero when integer MPT rounding floors the amount, instead of burning the holder's LP tokens for nothing. ([#7704](https://github.com/XRPLF/rippled/pull/7704))
@@ -60,9 +66,9 @@ Date:   Wed Sep 16 12:10:08 2026 -0400
     - Recycles the escrow owner reserve in `EscrowCancel` and `EscrowFinish`, so returning IOUs to an owner at the reserve boundary no longer fails with `tecNO_LINE_INSUF_RESERVE`. ([#8142](https://github.com/XRPLF/rippled/pull/8142))
     - Adds distinct signing hash prefixes for `sfCounterpartySignature` and `sfSponsorSignature`, so a signature made for one role can no longer be replayed as another. ([#8162](https://github.com/XRPLF/rippled/pull/8162))
     - Adds precision and rounding fixes across `VaultDeposit`, `VaultWithdraw`, and `VaultClawback`, so a vault's tracked total assets, available assets, and share supply stay consistent.
-    - Refines freeze, authorization, credential, and destination handling for Single Asset Vaults and the Lending Protocol — for example, exempting loan defaults from asset freeze, refusing pseudo-accounts where they cannot participate, and validating permissioned-domain withdrawal destinations.
-- The following amendments are retired:
-    - `fixAMMOverflowOffer` ([#7537](https://github.com/XRPLF/rippled/pull/7537))
+    - Refines freeze, authorization, credential, and destination handling for Single Asset Vaults and the Lending Protocol; for example, exempting loan defaults from asset freeze, refusing pseudo-accounts where they cannot participate, and validating permissioned-domain withdrawal destinations.
+    - Rejects `PaymentBurn` payments that cross a zero balance. ([`c8e767a`](https://github.com/XRPLF/rippled/commit/c8e767a))
+- The `fixAMMOverflowOffer` amendent is retired. ([#7537](https://github.com/XRPLF/rippled/pull/7537))
 
 
 ### Features
@@ -102,7 +108,6 @@ Date:   Wed Sep 16 12:10:08 2026 -0400
 - Made `calculateBaseFee` exception-safe. ([`3e4e56d`](https://github.com/XRPLF/rippled/commit/3e4e56d))
 - Skipped the `CheckCash` limit waiver for the issuer. ([`8c594c7`](https://github.com/XRPLF/rippled/commit/8c594c7))
 - Rejected variable-length prefixes the encoder cannot write. ([`00eeb0a`](https://github.com/XRPLF/rippled/commit/00eeb0a))
-- Rejected `PaymentBurn` payments that cross a zero balance. ([`c8e767a`](https://github.com/XRPLF/rippled/commit/c8e767a))
 
 
 ### Refactors

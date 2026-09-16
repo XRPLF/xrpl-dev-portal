@@ -722,7 +722,7 @@ Fixes an accounting error that can occur when performing an `AMMClawback` transa
 |:-------------|:--------|
 | Amendment ID | 12523DF04B553A0B1AD74F42DDB741DE8DC06A03FC089A0EF197E2A87F1D8107 |
 | Status       | {% amendment-disclaimer name="fixAMMOverflowOffer" statusOnly=true /%} |
-| Default Vote (Latest stable release) | Yes |
+| Default Vote (Latest stable release) | N/A |
 | Pre-amendment functionality retired? | Yes |
 
 This amendment fixes the improper handling of large synthetic AMM offers in the payment engine. Due to the importance of this fix, the default vote in the source code has been set to YES.
