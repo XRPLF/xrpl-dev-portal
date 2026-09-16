@@ -40,7 +40,6 @@ RLUSD, cross-currency, escrow, and more — and hands that object to the
 | **Error handling** | Transaction result codes (`tec*`, `tef*`, `tem*`, `ter*`), reserve requirements, simulation before submit |
 | **Security** | Key management patterns, spending controls, reserve awareness |
 
----
 
 ## Works with
 
