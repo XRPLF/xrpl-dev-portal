@@ -18,7 +18,12 @@ The `LoanSet` transaction is a mutual agreement between the _Loan Broker_ and _B
 1. The borrower or loan broker creates the transaction with the preagreed terms of the loan. They sign the transaction and set the `SigningPubKey`, `TxnSignature`, `Signers`, `Account`, `Fee`, `Sequence`, and `Counterparty` fields.
 2. The counterparty verifies the loan terms and signature before signing and submitting the transaction.
 
+{% admonition type="info" name="Note" %}
+Loans created after the [LendingProtocolV1_1 amendment][] is enabled can only be originated against a closed-ended vault during its _Investment_ phase, and only if the loan's final scheduled payment is at least 60 seconds before the vault enters its _Redemption_ phase. This means the maximum term of new loans shrinks as the vault approaches its `RedemptionDate`.
+{% /admonition %}
+
 {% amendment-disclaimer name="LendingProtocol" /%}
+{% amendment-disclaimer name="LendingProtocolV1_1" mode="updated" /%}
 
 
 ## Example {% $frontmatter.seo.title %} JSON
@@ -113,12 +118,18 @@ Besides errors that can occur for all transactions, {% code-page-name /%} transa
 
 | Error Code                | Description                        |
 |:--------------------------|:-----------------------------------|
-| `temBAD_SIGNER`           | - The transaction is missing a `CounterpartySignature` field.<br>- This transaction is part of a `Batch` transaction, but didn't specify a `Counterparty`. |
-| `temINVALID`              | One or more of the numeric fields are outside their valid ranges. For example, the `GracePeriod` can't be longer than the `PaymentInterval` or less than `60` seconds. |
-| `tecNO_ENTRY`             | The `LoanBroker` doesn't exist. |
-| `tecNO_PERMISSION`        | Neither the transaction sender's `Account` or the `Counterparty` field owns the associated `LoanBroker` ledger entry. |
-| `tecINSUFFICIENT_FUNDS`   | - The `Vault` associated with the `LoanBroker` doesn't have enough assets to fund the loan.<br>- The `LoanBroker` ledger entry doesn't have enough first-loss capital to meet the minimum coverage requirement for the new total debt. |
-| `tecLIMIT_EXCEEDED`       | The requested loan would cause the `LoanBroker` ledger entry to exceed it's maximum allowed debt. |
+| `tecEXPIRED`              | The vault is closed-ended and has entered its _Redemption_ phase. {% amendment-disclaimer name="LendingProtocolV1_1" /%} |
+| `tecINSUFFICIENT_FUNDS`   | <li>The `Vault` associated with the `LoanBroker` doesn't have enough assets to fund the loan.</li><li>The `LoanBroker` ledger entry doesn't have enough first-loss capital to meet the minimum coverage requirement for the new total debt.</li> |
 | `tecINSUFFICIENT_RESERVE` | The borrower's account doesn't have enough XRP to meet the reserve requirements. |
+| `tecKILLED`               | The `GracePeriod`, `PaymentInterval`, or `PaymentTotal` (individually or combined) exceeds the latest time the protocol can represent. |
+| `tecLIMIT_EXCEEDED`       | <li>The requested loan would cause the `LoanBroker` ledger entry to exceed its maximum allowed debt.</li><li>The vault's `AssetsTotal` already meets or exceeds its `AssetsMaximum`. Doesn't apply to cash-basis vaults.</li><li>The loan's interest would push the vault's `AssetsTotal` past its `AssetsMaximum`. Doesn't apply to cash-basis vaults.</li> |
+| `tecNO_ENTRY`             | The `LoanBroker` doesn't exist. |
+| `tecNO_PERMISSION`        | <li>Neither the transaction sender's `Account` or the `Counterparty` field owns the associated `LoanBroker` ledger entry.</li><li>The vault is closed-ended and the loan's final scheduled payment is less than 60 seconds before the vault's `RedemptionDate`. {% amendment-disclaimer name="LendingProtocolV1_1" mode="updated" /%}</li> |
+| `tecPRECISION_LOSS`       | <li>`PrincipalRequested` or one of the fee amounts is more precise than the vault's asset can hold.</li><li>The amount fits the asset, but is more precise than the loan's `LoanScale`.</li> |
+| `tecTOO_SOON`             | The vault is closed-ended and still in its _Subscription_ phase. {% amendment-disclaimer name="LendingProtocolV1_1" /%} |
+| `temBAD_SIGNATURE`        | The `SigningPubKey` inside the `CounterpartySignature` isn't a valid public key. |
+| `temBAD_SIGNER`           | <li>The transaction _isn't_ part of a `Batch` transaction and is missing a `CounterpartySignature`.</li><li>`Counterparty` is omitted and `LoanBrokerID` doesn't match an existing `LoanBroker` entry.</li> |
+| `temINVALID`              | <li>`Data` is present but empty, or longer than 256 bytes.</li><li>A numeric field is outside its valid range. For example, the `GracePeriod` can't be longer than the `PaymentInterval` or less than `60` seconds.</li><li>`LoanBrokerID` is zero.</li> |
+| `temINVALID_FLAG`         | <li>`Flags` contains a value other than `tfLoanOverpayment`.</li><li>The transaction requests reserve sponsorship, which {% code-page-name /%} doesn't support. {% amendment-disclaimer name="Sponsor" mode="updated" /%}</li> |
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

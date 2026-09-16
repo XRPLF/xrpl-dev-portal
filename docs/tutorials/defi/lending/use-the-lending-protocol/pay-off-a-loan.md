@@ -15,6 +15,12 @@ This tutorial shows you how to pay off a [Loan][] and delete it. Loans can only 
 The tutorial demonstrates how to calculate the final payment due, which includes the loan balance and any additional fees, and then pay off the loan. After the loan is fully paid off, the loan is deleted, completely removing it from the XRP Ledger.
 
 {% amendment-disclaimer name="LendingProtocol" /%}
+{% amendment-disclaimer name="LendingProtocolV1_1" mode="updated" /%}
+
+{% admonition type="info" name="Note" %}
+- **JavaScript** code expects both `LendingProtocol` and `LendingProtocolV1_1`.
+- **Python** and **Go** code expect only `LendingProtocol`.
+{% /admonition %}
 
 ## Goals
 
