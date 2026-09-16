@@ -95,10 +95,10 @@ Over time, sponsors may want to recoup their reserves, and sponsees may want to 
 
 - **Create sponsorship**: Only the sponsee can create a new sponsorship. The new sponsor provides their signature via the standard signing flow.
 - **Reassign sponsorship**: Only the sponsee can transfer an existing sponsorship to a new sponsor. The old sponsor is not directly involved.
-- **End sponsorship**: Either the sponsor or sponsee can end a sponsorship at any time. The reserve burden returns to the object owner.
+- **End sponsorship**: Either the sponsor or sponsee can end a sponsorship. The reserve burden returns to the object owner.
 
 {% admonition type="warning" name="Caution" %}
-When ending account sponsorship, the sponsee must have enough XRP to cover the account reserve. If they do not, and the sponsor needs to exit the sponsorship relationship quickly, the sponsor can send XRP to the sponsee with the `Payment` transaction. However, the sponsor will **not** get their reserve back.
+When ending a sponsorship, the sponsee must have enough XRP to cover the reserve. (For object sponsorships, this check requires the `fixCleanup3_4_0` amendment to be enabled.) If they do not, the transaction will fail. If the sponsor needs to exit the sponsorship relationship quickly, the sponsor can send XRP to the sponsee with a `Payment` transaction. However, the sponsor will **not** get their reserve back (as they are essentially spending it to fund the sponsee).
 
 These steps can be executed atomically via a [Batch transaction](../transactions/batch-transactions.md), to ensure that the sponsee cannot use the funds for something else before the transfer is validated.
 {% /admonition %}
