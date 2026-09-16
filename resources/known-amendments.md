@@ -891,6 +891,7 @@ This amendment is a collection of fixes for Single Asset Vaults, the Lending Pro
 - Adds `CredentialIDs` support to `VaultWithdraw`.
 - Changes loan lateness, impairment, and default checks to require the due date to have strictly passed.
 - Exempts a loan default from freeze, deep freeze, and MPT lock on the broker-to-vault transfer.
+- Skips the issuer's `DefaultRipple` check for `LoanSet`, `LoanBrokerCoverWithdraw`, and `VaultWithdraw` when the recipient already holds the asset.
 - Prevents `AMMBid` from acquiring the auction slot at a zero or dust price on a zero-fee pool.
 - Changes `AMMClawback` to fully withdraw when the LP-token amount matches the holder's balance, so the last holder can be clawed back completely.
 - Changes `AMMClawback` to reject amounts that round to zero, bypass the reserve check, and override freeze and deep freeze on AMM trust lines.

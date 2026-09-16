@@ -14,6 +14,10 @@ Attempts to redeem a [check](../../../../concepts/payment-types/checks.md) to re
 
 Since the funds for a check are not guaranteed, redeeming a check can fail because the sender does not have a high enough balance or because there is not enough liquidity to deliver the funds. If this happens, the check remains in the ledger and the destination can try to cash it again later, or for a different amount.
 
+{% admonition type="info" name="Note" %}
+If you cash a Check for a currency you issue yourself, you don't need a trust line to receive it and aren't subject to a holder limit. {% amendment-disclaimer name="fixCleanup3_4_0" /%}
+{% /admonition %}
+
 {% amendment-disclaimer name="Checks" /%}
 
 ## Example {% $frontmatter.seo.title %} JSON
@@ -39,6 +43,11 @@ Since the funds for a check are not guaranteed, redeeming a check can fail becau
 | `DeliverMin` | [Currency Amount][] | Amount            | _(Optional)_ Redeem the Check for at least this amount and for as much as possible. The currency must match that of the `SendMax` of the corresponding CheckCreate transaction. You must provide either this field or `Amount`. |
 
 The transaction ***must*** include either `Amount` or `DeliverMin`, but not both.
+
+{% admonition type="info" name="Note" %}
+If you cash a Check for a currency you issue yourself, you don't need a trust line to receive it and aren't subject to a holder limit. {% amendment-disclaimer name="fixCleanup3_4_0" /%}
+{% /admonition %}
+
 
 ## Error Cases
 
