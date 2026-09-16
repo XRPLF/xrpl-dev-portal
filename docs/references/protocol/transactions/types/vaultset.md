@@ -50,7 +50,9 @@ In addition to the [common fields](../../../protocol/transactions/common-fields#
 | `AssetsMaximum`   | String    | Number            | No        | The maximum asset amount that can be held in a vault. The value cannot be lower than the current `AssetsTotal`, unless the value is 0. |
 | `DomainID`        | String    | Hash256           | No        | The [PermissionedDomain](../../../../concepts/tokens/decentralized-exchange/permissioned-domains.md) object ID associated with the shares of this vault. The `DomainID` is only required when updating a private vault. |
 
-{% admonition type="info" name="Note" %}A vault's `AssetsTotal` can exceed its `AssetsMaximum` due to accrued interest. You can still submit a `VaultSet` transaction to update other fields without having to modify `AssetsMaximum`. {% amendment-disclaimer name="fixCleanup3_4_0" /%}{% /admonition %}
+{% admonition type="info" name="Note" %}
+A vault's `AssetsTotal` can exceed its `AssetsMaximum` due to accrued interest. You can still submit a `VaultSet` transaction to update other fields without having to modify `AssetsMaximum`. {% amendment-disclaimer name="fixCleanup3_4_0" mode="updated" /%}
+{% /admonition %}
 
 ## {% $frontmatter.seo.title %} Flags
 
