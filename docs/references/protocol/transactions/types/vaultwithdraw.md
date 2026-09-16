@@ -93,8 +93,6 @@ Besides errors that can occur for all transactions, {% code-page-name /%} transa
 | `temBAD_AMOUNT`         | The `Amount` field of the transaction is invalid. For example, the provided amount is set to 0. |
 | `tecNO_AUTH`            | The asset is a non-transferable MPT. For private vaults, this can also occur if the sender or destination lacks valid credentials in the vault's domain. {% amendment-disclaimer name="fixCleanup3_4_0" /%} |
 | `tecEXPIRED`            | For private vaults, the sender's or destination's credentials have expired. {% amendment-disclaimer name="fixCleanup3_4_0" /%} |
-| `tecPRECISION_LOSS`            | The requested withdrawal amount rounds to zero assets, or is too small to change the vault's stored balances. {% amendment-disclaimer name="fixCleanup3_4_0" /%} |
-| `tecPSEUDO_ACCOUNT`            | The destination is a pseudo-account. {% amendment-disclaimer name="fixCleanup3_4_0" /%} |
 
 ## See Also
 
