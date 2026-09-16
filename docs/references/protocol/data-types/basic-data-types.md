@@ -34,20 +34,25 @@ In many cases, the XRP Ledger prefixes an object's binary data with a 4-byte cod
 
 Some types of hash appear in API requests and responses. Others are only calculated as the first step of signing a certain type of data, or calculating a higher-level hash. The following table shows all 4-byte hash prefixes the XRP Ledger uses:
 
-| Object Type                           | API Fields                           | Hash Prefix (Hex) | Hash Prefix (Text) |
-|:--------------------------------------|:-------------------------------------|:------------------|:--|
-| Consensus proposal                    | N/A                                  | `0x50525000`      | `PRP\0` |
-| Ledger Version                        | `ledger_hash`                        | `0x4C575200`      | `LWR\0` |
-| Ledger state data                     | `account_state` in [ledger header][] | `0x4D4C4E00`      | `MLN\0` |
-| Ledger data inner node                | N/A                                  | `0x4D494E00`      | `MIN\0` |
-| Ledger data inner node ([SHAMapv2][]) | N/A                                  | `0x494E5200`      | `INR\0` |
-| Payment Channel Claim                 | N/A                                  | `0x434C4D00`      | `CLM\0` |
-| Signed Transaction                    | `hash` of transactions               | `0x54584E00`      | `TXN\0` |
-| Transaction with metadata             | N/A                                  | `0x534E4400`      | `SND\0` |
-| Unsigned Transaction (Single-signing) | N/A                                  | `0x53545800`      | `STX\0` |
-| Unsigned Transaction (Multi-signing)  | N/A                                  | `0x534D5400`      | `SMT\0` |
-| Validation vote                       | N/A                                  | `0x56414C00`      | `VAL\0` |
-| Validator manifest                    | N/A                                  | `0x4D414E00`      | `MAN\0` |
+| Object Type                             | API Fields                           | Hash Prefix (Hex) | Hash Prefix (Text) |
+|:----------------------------------------|:-------------------------------------|:------------------|:-------------------|
+| Consensus proposal                      | N/A                                  | `0x50525000`      | `PRP\0`            |
+| Ledger Version                          | `ledger_hash`                        | `0x4C575200`      | `LWR\0`            |
+| Ledger state data                       | `account_state` in [ledger header][] | `0x4D4C4E00`      | `MLN\0`            |
+| Ledger data inner node                  | N/A                                  | `0x4D494E00`      | `MIN\0`            |
+| Ledger data inner node ([SHAMapv2][])   | N/A                                  | `0x494E5200`      | `INR\0`            |
+| Payment Channel Claim                   | N/A                                  | `0x434C4D00`      | `CLM\0`            |
+| Signed Transaction                      | `hash` of transactions               | `0x54584E00`      | `TXN\0`            |
+| Transaction with metadata               | N/A                                  | `0x534E4400`      | `SND\0`            |
+| Unsigned Transaction (Single-signing)   | N/A                                  | `0x53545800`      | `STX\0`            |
+| Unsigned Transaction (Multi-signing)    | N/A                                  | `0x534D5400`      | `SMT\0`            |
+| Counterparty Signature (Single-signing) | N/A                                  | `0x43505400`      | `CPT\0`            |
+| Counterparty Signature (Multi-signing)  | N/A                                  | `0x43504D00`      | `CPM\0`            |
+| Sponsor Signature (Single-signing)      | N/A                                  | `0x53504E00`      | `SPN\0`            |
+| Sponsor Signature (Multi-signing)       | N/A                                  | `0x53504D00`      | `SPM\0`            |
+| Validation vote                         | N/A                                  | `0x56414C00`      | `VAL\0`            |
+| Validator manifest                      | N/A                                  | `0x4D414E00`      | `MAN\0`            |
+| Batch                                   | N/A                                  | `0x42434800`      | `BCH\0`            |
 
 [ledger header]: ../ledger-data/ledger-header.md
 [SHAMapv2]: /resources/known-amendments.md#shamapv2
