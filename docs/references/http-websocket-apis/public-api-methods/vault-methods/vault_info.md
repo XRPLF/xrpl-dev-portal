@@ -234,7 +234,7 @@ The `vault` field is an object describing the current status of a `Vault` entry 
 | `shares`               | Object               | A [**Shares Object**](#shares-object) containing details about the vault's issued shares.  |
 | `ShareMPTID`           | String               | The identifier of the share `MPTokenIssuance` object. |
 | `SubscriptionDate`     | Number               | _(Closed-ended vaults only)_ The time, in [seconds since the Ripple Epoch][], when the vault's subscription window closes and its investment period begins. {% badge href="https://github.com/XRPLF/rippled/releases/tag/3.4.0" %}New in: xrpld 3.4.0{% /badge %} |
-| `VaultKind`            | Number               | Indicates the kind of vault. `1` is a closed-ended vault. If this field is omitted, it's an open-ended vault. {% badge href="https://github.com/XRPLF/rippled/releases/tag/3.4.0" %}New in: rippled 3.4.0{% /badge %} |
+| `VaultKind`            | Number               | Indicates the kind of vault. `1` is a closed-ended vault. If this field is omitted, it's an open-ended vault. {% badge href="https://github.com/XRPLF/rippled/releases/tag/3.4.0" %}New in: xrpld 3.4.0{% /badge %} |
 | `WithdrawalPolicy`     | Number               | Indicates the withdrawal strategy used by the vault. |
 
 ### Asset Object
