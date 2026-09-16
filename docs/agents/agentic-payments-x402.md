@@ -22,9 +22,9 @@ The XRP Ledger is a supported settlement chain in the X402 ecosystem via an impl
 
 **About the `x402-xrpl` package**
 
-The `x402-xrpl` package is maintained by [T54](https://xrpl-x402.t54.ai) and is the reference implementation of X402 for the XRP Ledger. It is available on [PyPI](https://pypi.org/project/x402-xrpl/). The package is early-stage; review the [T54 changelog](https://xrpl-x402.t54.ai/docs) and pin a specific version in production rather than installing latest. The testnet facilitator at `xrpl-facilitator-testnet.t54.ai` is operated by T54 on a best-effort basis with no committed SLA; do not build production systems against it.
+The `x402-xrpl` package is maintained by [T54](https://xrpl-x402.t54.ai) and is the reference implementation of X402 for the XRP Ledger. It is available on [PyPI](https://pypi.org/project/x402-xrpl/). T54 also operates a hosted Mainnet facilitator, `xrpl-facilitator-mainnet.t54.ai`, listed as a production option in x402's official facilitator directory. The testnet facilitator, `xrpl-facilitator-testnet.t54.ai`, is intended for development only and should not be used for production traffic. 
 
----
+For a list of available environments, refer to the [XRPL x402 Quickstart](https://xrpl-x402.t54.ai/docs/quickstart) guide.
 
 ## How X402 works on the XRP Ledger
 
@@ -48,7 +48,6 @@ state to handle.
 
 ![X402 payment sequence diagram showing the end-to-end flow between Agent, Merchant, XRP Ledger, and Facilitator](../img/x402-sequence-light.svg)
 
----
 
 ## Prerequisites
 
@@ -58,7 +57,6 @@ state to handle.
   and fund one in seconds.
 - Basic familiarity with HTTP APIs.
 
----
 
 ## Merchant quickstart: accept X402 payments
 
@@ -88,17 +86,11 @@ The `XRPL_FACILITATOR_URL` above is T54's public testnet facilitator. For Mainne
 T54 operates a separate facilitator endpoint — see
 [T54's X402 documentation](https://xrpl-x402.t54.ai/docs) for the current URLs.
 
-
-> **The x402 `SourceTag` is not agent attribution.** It is chosen by the *merchant* and
-> declared in the 402 payment requirements; the buying agent signs a payment carrying the
-> server's value. It answers "which endpoint was paid?", not "which agent paid?" — the reverse
-> of the convention in [Track and Measure Agent Behavior](/docs/agents/track-agent-behavior/).
->
-> - **Filtering on the starter-kit tag `20260530` will not find x402 payments.** To audit an
->   agent's full spend, filter by the agent's **account**, not by tag.
-> - **A remote server is choosing a field of a transaction your agent signs.** For a tag the
->   impact is limited to attribution, but treat the 402 response as untrusted input and do not
->   let any other server-declared value reach a signed transaction unreviewed.
+{% admonition type="info" name="Note" %}
+The x402 `SourceTag` is not agent attribution.** It is chosen by the *merchant* and declared in the 402 payment requirements; the buying agent signs a payment carrying the server's value. It answers "which endpoint was paid?", not "which agent paid?" — the reverse of the convention in [Track and Measure Agent Behavior](/docs/agents/track-agent-behavior/).
+ - **Filtering on the starter-kit tag `20260530` will not find x402 payments.** To audit an agent's full spend, filter by the agent's **account**, not by tag.
+ - **A remote server is choosing a field of a transaction your agent signs.** For a tag the impact is limited to attribution, but treat the 402 response as untrusted input and do not let any other server-declared value reach a signed transaction unreviewed.
+{% /admonition %}
 
 ### Step 3: Create your server
 
@@ -164,7 +156,6 @@ you will receive a `402 Payment Required` response with the payment requirements
 in the response headers. The `/health` endpoint remains free and accessible without
 payment.
 
----
 
 ## Payer agent quickstart: pay for access
 
@@ -253,7 +244,6 @@ The client automatically:
 This guide currently includes Python examples only.
 {% /admonition %}
 
----
 
 ## Protecting an agentic workflow end-to-end
 
@@ -273,7 +263,6 @@ just call session.get() and session.post() without any payment logic in the
 main workflow.
 ```
 
----
 
 ## Pricing guidance
 
@@ -289,7 +278,6 @@ X402 prices on the XRP Ledger are expressed in **drops** (the smallest unit of X
 
 For dollar-denominated pricing with price stability, `x402-xrpl` supports RLUSD.
 
----
 
 ## Moving to Mainnet
 
@@ -304,7 +292,6 @@ Switching from testnet to Mainnet requires three changes:
 No other code changes are required. The `x402-xrpl` package handles the network
 difference transparently.
 
----
 
 ## Where to go next
 
