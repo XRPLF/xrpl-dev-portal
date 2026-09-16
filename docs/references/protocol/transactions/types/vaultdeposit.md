@@ -89,7 +89,8 @@ Besides errors that can occur for all transactions, {% code-page-name /%} transa
 | `tecNO_AUTH`            | Either the vault is private and the depositing account does not have credentials in the share's Permissioned Domain, or the asset is a non-transferable MPT. |
 | `tecNO_ENTRY`           | The `Vault` object with the provided `VaultID` does not exist on the ledger. |
 | `tecOBJECT_NOT_FOUND`   | A ledger entry specified in the transaction does not exist. |
-| `tecPRECISION_LOSS`     | The deposit rounds to zero, either at the vault's scale or at the depositor's trust line scale. {% amendment-disclaimer name="fixCleanup3_4_0" /%} |
+| `tecPATH_DRY`           | Converting the deposit into shares overflowed the largest number the protocol can represent. This usually means the vault's `Scale` is high and the `Amount` is large. |
+| `tecPRECISION_LOSS`     | The deposit rounds to nothing, either at the vault's scale, at the depositor's trust line scale, or when converted into shares. {% amendment-disclaimer name="fixCleanup3_2_0" mode="updated" /%} {% amendment-disclaimer name="fixCleanup3_4_0" mode="updated" /%} |
 | `tecWRONG_ASSET`        | The asset of the vault does not match the asset being deposited. |
 | `temBAD_AMOUNT`         | The `Amount` field of the transaction is invalid. |
 | `temDISABLED`           | The Single Asset Vault amendment is not enabled.  |
