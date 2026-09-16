@@ -137,7 +137,7 @@ Frozen LP tokens affect the following transactions:
 
 ### LP Token Transferability
 
-If an AMM's pool holds an MPT that doesn't have the `CanTransfer` flag enabled, the AMM's LP tokens can only be transferred to or from the MPT's issuer. This affects the following transactions:
+If an AMM's pool holds an MPT that doesn't have the `lsfMPTCanTransfer` flag enabled, the AMM's LP tokens can only be transferred to or from the MPT's issuer. This affects the following transactions:
 
 **Payment**
 
