@@ -84,13 +84,13 @@ Besides errors that can occur for all transactions, {% code-page-name /%} transa
 | `tecNO_ENTRY`           | The `Vault` object with the provided `VaultID` does not exist on the ledger. |
 | `tecNO_PERMISSION`      | The destination account specified does not have permission to receive the asset. |
 | `tecOBJECT_NOT_FOUND`   | A ledger entry specified in the transaction does not exist. |
-| `tecPATH_DRY`           | Converting between assets and shares overflowed the largest number the protocol can represent. This usually means the vault's `Scale` is high and the `Amount` is large. {% amendment-disclaimer name="fixCleanup3_4_0" mode="updated" /%} |
+| `tecPATH_DRY`           | Converting between assets and shares overflowed the largest number the protocol can represent. This usually means the vault's `Scale` is high and the `Amount` is large. |
 | `tecPRECISION_LOSS`     | The withdrawal rounds to nothing, either producing no shares to redeem or being too small to change the vault's stored balance. {% amendment-disclaimer name="fixCleanup3_4_0" mode="updated" /%} |
 | `tecPSEUDO_ACCOUNT`     | The `Destination` is a pseudo-account, which belongs to a ledger entry rather than a person and can't receive a withdrawal. {% amendment-disclaimer name="fixCleanup3_4_0" /%} |
 | `tecTOO_SOON`           | The vault is closed-ended and in its _Investment_ phase. {% amendment-disclaimer name="LendingProtocolV1_1" /%} |
 | `tecWRONG_ASSET`        | The unit of `Amount` is neither a share or asset of the vault. |
 | `temBAD_AMOUNT`         | The `Amount` field of the transaction is invalid. For example, the provided amount is set to 0. |
-| `temDISABLED`           | The Single Asset Vault amendment is not enabled.  |
+| `temDISABLED`           | The [SingleAssetVault amendment][] is not enabled.  |
 | `temMALFORMED`          | <li>`VaultID` is zero.</li><li>`Destination` is zero.</li> |
 
 ## See Also

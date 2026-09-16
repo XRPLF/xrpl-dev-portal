@@ -61,10 +61,10 @@ In addition to the [common ledger entry fields][], {% code-page-name /%} entries
 | `Data`                | String    | Blob          | No        | Arbitrary metadata about the vault. Limited to 256 bytes. |
 | `DebtMaximum`         | String    | Number        | No        | The maximum amount the protocol can owe the vault. The default value of `0` means there is no limit to the debt. |
 | `DebtTotal`           | String    | Number        | Yes       | The principal asset amount the protocol owes the vault. {% amendment-disclaimer name="LendingProtocolV1_1" mode="updated" /%} |
-| `LoanSequence`        | Number    | UInt32        | Yes       | A sequential identifier for `Loan` ledger entires, incremented each time a new loan is created by this `LoanBroker`. |
+| `LoanSequence`        | Number    | UInt32        | Yes       | A sequential identifier for `Loan` ledger entries, incremented each time a new loan is created by this `LoanBroker`. |
 | `ManagementFeeRate`   | Number    | UInt16        | No        | The fee charged by the lending protocol on any loan interest, in units of 1/10th basis points. Valid values are 0 to 10000 (inclusive), representing 0% to 10%. |
 | `Owner`               | String    | AccountID     | Yes       | The account address of the vault owner. |
-| `OwnerCount`          | Number    | UInt32        | Yes       | The number of active loans issued by the LoanBroker. |
+| `OwnerCount`          | Number    | UInt32        | Yes       | The number of active loans issued by the `LoanBroker`. |
 | `OwnerNode`           | Number    | UInt64        | Yes       | Identifies the page where this item is referenced in the owner's directory. |
 | `PreviousTxnID`       | String    | Hash256       | Yes       | Identifies the transaction ID that most recently modified this object. |
 | `PreviousTxnLgrSeq`   | Number    | UInt32        | Yes       | The sequence of the ledger that contains the transaction that most recently modified this object. |

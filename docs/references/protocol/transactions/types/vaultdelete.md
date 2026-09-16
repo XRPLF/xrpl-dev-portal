@@ -57,7 +57,7 @@ Besides errors that can occur for all transactions, VaultCreate transactions can
 | `tecNO_ENTRY`             | The `Vault` object with the provided `VaultID` does not exist on the ledger. |
 | `tecNO_PERMISSION`        | The account submitting the transaction doesn't own the vault. |
 | `tecHAS_OBLIGATIONS`      | The vault still holds assets or has outstanding shares, so it can't be deleted. |
-| `temDISABLED`             | <li>The [SingleAssetVault amendment][] isn't enabled</li><li>`MemoData` is present and the [LendingProtocolV1_1 amendment][] isn't enabled.</li> |
+| `temDISABLED`             | <li>The [SingleAssetVault amendment][] isn't enabled.</li><li>`MemoData` is present and the [LendingProtocolV1_1 amendment][] isn't enabled.</li> |
 | `temMALFORMED`            | <li>`VaultID` is zero.</li><li>`MemoData` is present but empty, or longer than 256 bytes. {% amendment-disclaimer name="LendingProtocolV1_1" mode="updated" /%}</li> |
 
 ## See Also

@@ -61,7 +61,7 @@ In addition to the [common fields](../../../../references/protocol/transactions/
 | `WithdrawalPolicy` | Number        | UInt8             | No        | Indicates the withdrawal strategy used by the vault. The default value is `0x0001`, mapped to the string `vaultStrategyFirstComeFirstServe`. See [WithdrawalPolicy](#withdrawalpolicy). |
 
 {% admonition type="info" name="Note" %}
-- `RedemptionDate` - `SubscriptionDate` must be at least `180` seconds and less than `946708560` seconds (30 years).
+- The difference between `RedemptionDate` and `SubscriptionDate` must be at least `180` seconds and less than `946708560` seconds (30 years).
 - Both dates must be in the future relative to the parent ledger's close time.
 {% /admonition %}
 
@@ -99,7 +99,7 @@ Besides errors that can occur for all transactions, {% code-page-name /%} transa
 | `tecOBJECT_NOT_FOUND`     | A ledger entry specified in the transaction does not exist. For example, the provided `DomainID` does not exist. |
 | `tecINSUFFICIENT_RESERVE` | There is insufficient `AccountRoot.Balance` for the Owner Reserve. |
 | `tecWRONG_ASSET`          | The asset's issuer is a pseudo-account (vault shares or AMM LP tokens), which aren't allowed. |
-| `temDISABLED`  | <li>The [SingleAssetVault amendment][] isn't enabled.</li><li>A `DomainID` is provided and the [PermissionedDomains amendment][] isn't enabled</li><li>The [MPTokensV1 amendment][] isn't enabled.</li><li>`VaultKind`, `SubscriptionDate`, or `RedemptionDate` is present and the [LendingProtocolV1_1 amendment][] isn't enabled.</li> |
+| `temDISABLED`             | <li>The [SingleAssetVault amendment][] isn't enabled.</li><li>A `DomainID` is provided and the [PermissionedDomains amendment][] isn't enabled.</li><li>The [MPTokensV1 amendment][] isn't enabled.</li><li>`VaultKind`, `SubscriptionDate`, or `RedemptionDate` is present and the [LendingProtocolV1_1 amendment][] isn't enabled.</li> |
 | `temMALFORMED`            | <li>`Data` is present but empty, or longer than 256 bytes.</li><li>`MPTokenMetadata` is present but empty, or longer than 1024 bytes.</li><li>`WithdrawalPolicy` isn't a supported strategy.</li><li>`DomainID` is zero, or is set on a vault that isn't private.</li><li>`AssetsMaximum` is negative.</li><li>`Scale` is set on an XRP or MPT vault, or exceeds the maximum for a trust line token.</li><li>`VaultKind` is present with a value other than `0` or `1`. {% amendment-disclaimer name="LendingProtocolV1_1" mode="updated" /%}</li><li>`VaultKind` is `0`, but `SubscriptionDate` or `RedemptionDate` is present. {% amendment-disclaimer name="LendingProtocolV1_1" mode="updated" /%}</li><li>`VaultKind` is `1`, but is missing `SubscriptionDate` or `RedemptionDate`, or the gap between them is out of range. {% amendment-disclaimer name="LendingProtocolV1_1" mode="updated" /%}</li> |
 | `terNO_RIPPLE`            | The issuer of the asset has not enabled the [Default Ripple flag](../../../../concepts/tokens/fungible-tokens/stablecoins/configuration#default-ripple). |
 | `terNO_ACCOUNT`           | The issuer account of the vault's asset does not exist. |

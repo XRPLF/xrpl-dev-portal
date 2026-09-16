@@ -93,7 +93,7 @@ Besides errors that can occur for all transactions, {% code-page-name /%} transa
 | `tecPRECISION_LOSS`     | The deposit rounds to nothing, either at the vault's scale, at the depositor's trust line scale, or when converted into shares. {% amendment-disclaimer name="fixCleanup3_2_0" mode="updated" /%} {% amendment-disclaimer name="fixCleanup3_4_0" mode="updated" /%} |
 | `tecWRONG_ASSET`        | The asset of the vault does not match the asset being deposited. |
 | `temBAD_AMOUNT`         | The `Amount` field of the transaction is invalid. |
-| `temDISABLED`           | The Single Asset Vault amendment is not enabled.  |
+| `temDISABLED`           | The [SingleAssetVault amendment][] is not enabled.  |
 | `temMALFORMED`          | The transaction was not validly formatted. For example, if the `VaultID` is not provided.  |
 
 ## See Also

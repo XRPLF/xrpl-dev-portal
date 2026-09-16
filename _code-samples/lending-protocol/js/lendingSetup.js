@@ -196,7 +196,7 @@ await Promise.all([
 
 process.stdout.write('Setting up tutorial: 4/7\r')
 
-// Close-ended vault schedule. Anchor it to the ledger's close time.
+// Closed-ended vault schedule. Anchor it to the ledger's close time.
 let latestLedger = await client.request({ command: 'ledger', ledger_index: 'validated' })
 const subscriptionDate = latestLedger.result.ledger.close_time + 30
 const redemptionDate = subscriptionDate + 3650 * 24 * 60 * 60
