@@ -29,8 +29,6 @@ offer cancellation.
 [Getting Started with Agentic Transactions](/docs/agents/getting-started-with-agentic-transactions/)
 first — it takes about 15 minutes and you will reuse the wallet here.
 
----
-
 ## The two skills
 
 XRPL agent skills are layered: one shared foundation, one domain skill per use
@@ -42,10 +40,8 @@ case. This tutorial uses the trading combination.
 | **XRPL Trading** | Domain skill | At transaction time — gives Claude accurate knowledge of XRPL DEX operations: `OfferCreate`, `OfferCancel`, order book reads, AMM interaction, fill classification, and agentic best practices. |
 
 The Wallet skill owns the signing ceremony. The Trading skill constructs the right
-transaction object for any DEX operation. Claude coordinates the handoff — you do not
-need to manage it manually.
+transaction object for any DEX operation. Claude coordinates the handoff — you do not need to manage it manually.
 
----
 
 ## Prerequisites
 
@@ -70,7 +66,6 @@ pip install xrpl-py
 {% /tab %}
 {% /tabs %}
 
----
 
 ## Step 1: Install the skills
 
@@ -101,8 +96,6 @@ Project skills (.claude/skills)
   xrpl-agent-wallet
   xrpl-trading
 ```
-
----
 
 ## Step 2: Get a tradeable Testnet pair
 
@@ -199,7 +192,6 @@ Note the issuer address that gets printed — the rest of this tutorial uses it 
 `TEST_ISSUER` appears. Your trading wallet needs **no** trust line to it: the ledger creates
 one automatically the first time you receive TST. Budget 0.2 XRP of owner reserve for it.
 
----
 
 ## Step 3: Read the order book
 
@@ -333,7 +325,6 @@ else:
 {% /tab %}
 {% /tabs %}
 
----
 
 ## Step 4: Place a limit order
 
@@ -441,7 +432,6 @@ Tx hash:        A3F9B2...
 
 **Save the offer sequence.** You will need it to cancel the resting portion.
 
----
 
 ## Step 5: Cancel the resting offer
 
@@ -494,8 +484,6 @@ as a `DeletedNode`. If the offer was already filled, the cancel still succeeds b
 does nothing — and the fee is still charged. Always verify offer existence before
 cancelling.
 
----
-
 ## Common flag combinations
 
 | Goal | Flag to set | Notes |
@@ -505,10 +493,8 @@ cancelling.
 | Must fill completely or cancel | `tfFillOrKill` | `tecKILLED` on failure — fee charged |
 | Post-only (never cross, always rest) | `tfPassive` | Use for maker strategies |
 
-**Never combine `tfImmediateOrCancel` and `tfFillOrKill`.** The Trading skill rejects
-this combination at construction.
+**Never combine `tfImmediateOrCancel` and `tfFillOrKill`.** The Trading skill rejects this combination at construction.
 
----
 
 ## Where to go next
 

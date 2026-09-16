@@ -22,8 +22,6 @@ wallet, and send a payment — all driven by natural-language prompts.
 
 **Time to complete:** approximately 30 minutes.
 
----
-
 ## The two skills
 
 XRPL agent skills are layered: one shared foundation, one domain skill per use
@@ -48,8 +46,6 @@ which reuses the wallet you are about to create.
 
 **Evaluating before you build?** Read [The XRPL Agent Wallet Skill](/docs/agents/xrpl-agent-wallet-skill/) first — it covers the security model and the eight guarantees the skill enforces on every transaction.
 
----
-
 ## Prerequisites
 
 | Requirement | Notes |
@@ -73,8 +69,6 @@ pip install xrpl-py
 {% /tab %}
 {% /tabs %}
 
----
-
 ## Step 1: Install the Wallet skill
 
 Install the Wallet skill first. It owns wallet setup and security from the
@@ -85,8 +79,6 @@ Note: `npx` is an open source command-line tool by Vercel that acts as the "pack
 ```sh
 npx skills add https://github.com/XRPLF/xrpl-dev-portal/tree/master/.claude/skills/xrpl-skills/xrpl-agent-wallet --agent claude-code
 ```
-
----
 
 ## Step 2: Generate and secure your wallet
 
@@ -125,8 +117,6 @@ Linux only. See [The XRPL Agent Wallet Skill](/docs/agents/xrpl-agent-wallet-ski
 for the full external-signer interface and the decision guide between all three
 signing paths.
 
----
-
 ## Step 3: Install the Payments skill
 
 With your wallet secured, add the Payments skill for XRPL transaction knowledge:
@@ -159,8 +149,6 @@ reserve for a new account?
 Claude should confirm the Testnet endpoint, the 1 XRP base reserve, and that
 it will preview all transactions before signing. If the response is vague,
 re-run the install commands.
-
----
 
 ## Step 4: Fund your wallet
 
@@ -208,8 +196,6 @@ print(f"Balance : {balance_drops / 1_000_000} XRP")
 
 The account is now active on the ledger. An XRPL account requires a minimum
 balance of 1 XRP (the base reserve) to exist — the faucet covers this.
-
----
 
 ## Step 5: Send a payment
 
@@ -307,8 +293,6 @@ under 50 XRP on testnet for the next hour.
 Claude echoes the scope back and waits for confirmation before applying it.
 Auto-sign skips the interactive yes/no step only — autofill, preview, hash
 capture, and `submitAndWait` all still run on every transaction.
-
----
 
 ## Where to go next
 

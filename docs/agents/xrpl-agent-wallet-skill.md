@@ -189,10 +189,6 @@ Three things to know before choosing it:
 
 - **XRPL signing needs an extra step.** XRPL requires both `TxnSignature` and `SigningPubKey`, and OWS returns only the signature with no public-key accessor — so the public key is recovered from a signature once and cached. Omitting `SigningPubKey` is the common failure: encoding still succeeds, and nothing looks wrong until submission fails with `Wallet must be provided when submitting an unsigned transaction`. The recovery helper is given in full in [ows.md](https://github.com/XRPLF/xrpl-dev-portal/tree/master/.claude/skills/xrpl-skills/xrpl-agent-wallet/references/ows.md); never use `exportWallet()` for this, as it pulls the mnemonic into the agent process and defeats the vault.
 
-The OWS SDK is Node.js only. Python agents sign through the `ows` CLI — which
-cannot return a public key, so the recovery step still has to happen somewhere,
-and a small Node signing helper is usually simpler than reimplementing it.
-
 Full setup, the policy schema, what OWS does and does not enforce, access modes,
 and migration from the env-var pattern are in
 [ows.md](https://github.com/XRPLF/xrpl-dev-portal/tree/master/.claude/skills/xrpl-skills/xrpl-agent-wallet/references/ows.md).
