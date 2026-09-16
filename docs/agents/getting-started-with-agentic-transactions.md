@@ -22,8 +22,6 @@ wallet, and send a payment — all driven by natural-language prompts.
 
 **Time to complete:** approximately 30 minutes.
 
----
-
 ## The two skills
 
 XRPL agent skills are layered: one shared foundation, one domain skill per use
@@ -31,18 +29,22 @@ case. This tutorial uses the payments combination.
 
 | Skill | Role | When it applies |
 | :---- | :---- | :---- |
-| **XRPL Agent Wallet** | Shared foundation | From the start — owns wallet creation, key loading, and the full signing ceremony (autofill -> preview -> confirm -> sign -> submit). Installed first. |
+| **XRPL Agent Wallet** | Shared foundation | From the start — owns wallet creation, key loading, and the full signing ceremony (autofill → preview → confirm → sign → submit). Installed first. |
 | **XRPL Payments** | Domain skill | At transaction time — gives Claude accurate knowledge of XRPL payment operations: XRP and token payments, trust lines, escrow, agentic best practices, and error handling. |
 
 The Wallet skill owns the wallet from day one, including first-time setup. The
 Payments skill constructs the right transaction object; the Wallet skill signs
 and submits it. Claude coordinates the handoff — you do not need to manage it
-manually. Other domain skills (trading, and more) follow the same pattern and
-work with the same Wallet skill.
+manually.
+
+**Domain skills are interchangeable.** Every one of them pairs with the same
+Wallet skill and hands off at the same boundary, so once you have completed this
+tutorial you can add another without redoing any wallet setup. The
+[XRPL Trading skill](/docs/agents/xrpl-trading-skill/) is the other one
+available today — see [Getting Started with XRPL DEX Trading](/docs/agents/getting-started-with-xrpl-trading/),
+which reuses the wallet you are about to create.
 
 **Evaluating before you build?** Read [The XRPL Agent Wallet Skill](/docs/agents/xrpl-agent-wallet-skill/) first — it covers the security model and the eight guarantees the skill enforces on every transaction.
-
----
 
 ## Prerequisites
 
@@ -67,8 +69,6 @@ pip install xrpl-py
 {% /tab %}
 {% /tabs %}
 
----
-
 ## Step 1: Install the Wallet skill
 
 Install the Wallet skill first. It owns wallet setup and security from the
@@ -79,8 +79,6 @@ Note: `npx` is an open source command-line tool by Vercel that acts as the "pack
 ```sh
 npx skills add https://github.com/XRPLF/xrpl-dev-portal/tree/master/.claude/skills/xrpl-skills/xrpl-agent-wallet --agent claude-code
 ```
-
----
 
 ## Step 2: Generate and secure your wallet
 
@@ -110,13 +108,14 @@ echo 'XRPL_SEED="sYourExistingSeedHere"' > .env
 echo ".env" >> .gitignore
 ```
 
-**For production**, use a KMS or HSM instead of an environment variable. The
-Wallet skill supports an external-signer pattern where the key never enters
-the agent's process memory. See
-[The XRPL Agent Wallet Skill](/docs/agents/xrpl-agent-wallet-skill/)
-for the full external-signer interface.
-
----
+**For production**, do not keep the seed in an environment variable. The Wallet
+skill supports two alternatives: an **external signer**, where a KMS, HSM, or
+hardware wallet holds the key and it never enters the agent's process memory;
+and **OWS** (Open Wallet Standard), a local policy-gated vault that evaluates
+revocable, scoped agent credentials before it decrypts anything — macOS and
+Linux only. See [The XRPL Agent Wallet Skill](/docs/agents/xrpl-agent-wallet-skill/)
+for the full external-signer interface and the decision guide between all three
+signing paths.
 
 ## Step 3: Install the Payments skill
 
@@ -150,8 +149,6 @@ reserve for a new account?
 Claude should confirm the Testnet endpoint, the 1 XRP base reserve, and that
 it will preview all transactions before signing. If the response is vague,
 re-run the install commands.
-
----
 
 ## Step 4: Fund your wallet
 
@@ -200,8 +197,6 @@ print(f"Balance : {balance_drops / 1_000_000} XRP")
 The account is now active on the ledger. An XRPL account requires a minimum
 balance of 1 XRP (the base reserve) to exist — the faucet covers this.
 
----
-
 ## Step 5: Send a payment
 
 Create a second account and send a payment between them. This is where the
@@ -226,46 +221,59 @@ Sequence          : 48291003
 LastLedgerSequence: 48291023  (expires in ~20 ledgers, ~80 seconds)
 Flags             : 0
 Memos             : —
+Other fields      : —
 ─────────────────────────────────────────────────────────────────────
 Sign and submit? (yes / no)
 ```
 
-Review the destination address and amount carefully, then type **yes**. After
-confirmation:
+Review the destination address and amount carefully, then type **yes**.
+
+The transaction object the **Payments** skill hands over doesn't set `Fee`, `Sequence`, `LastLedgerSequence`, or `SourceTag`, because the Wallet skill fills those in during the ceremony:
 
 {% tabs %}
 {% tab label="JavaScript" %}
 ```js
-const result = await client.submitAndWait(
-  {
-    TransactionType: 'Payment',
-    Account: sender.classicAddress,
-    Amount: xrpl.xrpToDrops('10'),
-    Destination: receiver.classicAddress,
-  },
-  { wallet: sender }
-)
-console.log('Result:', result.result.meta.TransactionResult)
-console.log('Hash  :', result.result.hash)
+const payment = {
+  TransactionType: 'Payment',
+  Account:     'rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh',   // your funded account from Step 4
+  Destination: 'rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe',   // the second account Claude created
+  Amount:      xrpl.xrpToDrops('10'),                  // "10000000" drops
+  // Fee, Sequence, LastLedgerSequence: set by Wallet skill autofill
+  // SourceTag: applied by Wallet skill (20260530) automatically
+}
+// → hand to XRPL Agent Wallet skill
 ```
 {% /tab %}
 {% tab label="Python" %}
 ```python
 from xrpl.models.transactions import Payment
 from xrpl.utils import xrp_to_drops
-from xrpl.transaction import submit_and_wait
 
 payment = Payment(
-    account=sender.classic_address,
-    destination=receiver.classic_address,
-    amount=xrp_to_drops(10),
+    account="rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",      # your funded account from Step 4
+    destination="rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe",  # the second account Claude created
+    amount=xrp_to_drops(10),                           # "10000000" drops
+    # Fee, Sequence, LastLedgerSequence: set by Wallet skill autofill
+    # source_tag: applied by Wallet skill (20260530) automatically
 )
-response = submit_and_wait(payment, client, sender)
-print(f"Result : {response.result['meta']['TransactionResult']}")
-print(f"Hash   : {response.result['hash']}")
+# → hand to XRPL Agent Wallet skill
 ```
 {% /tab %}
 {% /tabs %}
+
+You never call `submitAndWait` yourself. The Wallet skill autofills the
+transaction, shows you the preview above, signs after your confirmation, records
+the hash *before* submitting, and then submits — so a crashed process can be
+reconciled against the ledger instead of paying the fee twice.
+
+After signing, Claude reports the result:
+
+```
+Result  : tesSUCCESS
+Hash    : A3F9B2C1D4E5F6A7B8C9D0E1F2A3B4C5D6E7F8A9B0C1D2E3F4A5B6C7D8E9F0A1
+Ledger  : 48291024 (validated)
+Fee paid: 12 drops (0.000012 XRP)
+```
 
 `tesSUCCESS` means the payment confirmed in the next ledger close — typically
 3–5 seconds. Paste the hash into the
@@ -286,19 +294,20 @@ Claude echoes the scope back and waits for confirmation before applying it.
 Auto-sign skips the interactive yes/no step only — autofill, preview, hash
 capture, and `submitAndWait` all still run on every transaction.
 
----
-
 ## Where to go next
 
 **Skill reference**
 
 - [The XRPL Agent Wallet Skill](/docs/agents/xrpl-agent-wallet-skill/) —
-  Security model, signing ceremony, key handling patterns, and production setup.
+  Security model, signing ceremony, key handling patterns, and production setup including OWS.
 - [The XRPL Payments Skill](/docs/agents/xrpl-payments-skill/) —
   Full reference for payment patterns, RLUSD, trust lines, escrow, and agentic best practices.
+- [The XRPL Trading Skill](/docs/agents/xrpl-trading-skill/) —
+  Offer semantics, flag behaviour, AMM interaction, fill classification, and error codes.
 
 **Use case guides**
 
+- [Getting Started with XRPL DEX Trading](/docs/agents/getting-started-with-xrpl-trading/) — Reuse the wallet you just created to place your first autonomous limit order on the XRPL DEX.
 - [Agentic Payments with X402](/docs/agents/agentic-payments-x402/) — Enable your agent to pay for and monetize HTTP-based services autonomously.
 - [Track and Measure Agent Behavior](/docs/agents/track-agent-behavior/) — Use SourceTag, Memos, and WebSocket monitoring to attribute and audit every agent transaction.
 

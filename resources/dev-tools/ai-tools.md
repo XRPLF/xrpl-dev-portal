@@ -34,6 +34,10 @@ The xrpl.org site hosts a standalone MCP server that only indexes what is on the
 
 A `SKILL.md` file provides behavioral instructions for AI models working with XRPL code. It defines specific steps and rules to produce more precise outcomes, such as forming transactions, implementing security best practices, or issuing tokens. By loading a skill in your coding agent, you reduce the need for verbose or repeated queries.
 
+- [XRPL Wallet Skill](../../docs/agents/xrpl-agent-wallet-skill.md)
+- [XRPL Payment Skill](../../docs/agents/xrpl-payments-skill.md)
+- [XRPL Trading Skill](../../docs/agents/xrpl-trading-skill.md)
+
 ### XRPL Development Skill for Claude Code
 
 A comprehensive Claude Code skill for modern XRP Ledger development, provided by XRPL Commons. This skill uses Claude Code's progressive disclosure pattern; the main `SKILL.md` provides core guidance, and Claude reads specialized markdown files only when needed for specific tasks. For a full list of available skills, as well as installation instructions, check the [GitHub repo](https://github.com/XRPL-Commons/xrpl-dev-skills?tab=readme-ov-file#xrpl-development-skill-for-claude-code).
