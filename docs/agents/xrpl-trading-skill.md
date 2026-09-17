@@ -36,7 +36,6 @@ Both skills are required for a complete agentic trading workflow.
 | **Error handling** | Full `OfferCreate` / `OfferCancel` error set — `tec*` codes (`tecUNFUNDED_OFFER`, `tecKILLED`, `tecNO_LINE`, `tecNO_AUTH`, `tecNO_ISSUER`, `tecFROZEN`, `tecINSUF_RESERVE_OFFER`) and `tem*` codes, fee-charged vs no-fee classification |
 | **Security** | Key management deferred to Wallet skill. Inline pre-flight guardrails (reserve check, trust line check, expiry validation, flag-conflict detection) run **before the user is asked to approve**, and are re-asserted before handoff. |
 
----
 
 ## Works with
 
@@ -49,10 +48,8 @@ pair with the same shared Wallet skill. See
 [AI Tooling](/resources/dev-tools/ai-tools) for the full list.
 
 **Need a wallet first?** If the user doesn't have an XRPL wallet yet, load the
-**XRPL Agent Wallet skill** — it handles wallet generation, writes the seed safely to
-`.env`, and never shows it in chat. Return here once the wallet is ready.
+**XRPL Agent Wallet skill** — it handles wallet generation, writes the seed safely to `.env`, and never shows it in chat. Return here once the wallet is ready.
 
----
 
 ## Default behavior and stack decisions
 
@@ -64,7 +61,6 @@ pair with the same shared Wallet skill. See
 - **Network:** Testnet (`https://s.altnet.rippletest.net:51234`) by default. Switching to Mainnet is a one-line URL change.
 - **Simulate before the summary:** Where the node supports it, call `simulate` on the built transaction before showing the pre-trade summary. It returns the ledger's own `engine_result` with `applied: false` and costs no fee, catching cases no local check covers — `tecNO_LINE`, `tecNO_AUTH`, `tecFROZEN`, `tecNO_ISSUER`. Recommended, not required: fall back to the local guardrails if `simulate` is unavailable.
 
----
 
 ## Operating procedure
 
@@ -76,7 +72,6 @@ pair with the same shared Wallet skill. See
 6. **Hand off to the Wallet skill** — Re-assert the guardrails against current ledger state, then pass the transaction object to the XRPL Agent Wallet skill. It will autofill, preview, sign, and submit via `submitAndWait`.
 7. **Parse and surface result** — Classify the fill outcome (filled / partial / resting). Surface the offer sequence when a remainder exists on the book. Handle `tec*` errors explicitly — every `tec*` code means a fee was charged with no fill.
 
----
 
 ## What this skill does not do
 
@@ -85,7 +80,6 @@ pair with the same shared Wallet skill. See
 - **Construct non-trading transactions on its own initiative.** The skill responds to developer and user instructions; it does not propose offers unprompted.
 - **Retry automatically.** Any `tec*` failure or user cancellation requires explicit user instruction before retrying.
 
----
 
 ## Reference files
 
@@ -93,7 +87,6 @@ The trading skill references these files for full transaction patterns and edge 
 
 - [trading.md](https://github.com/XRPLF/xrpl-dev-portal/tree/master/.claude/skills/xrpl-skills/xrpl-trading/references/trading.md) — OfferCreate, OfferCancel, order book patterns, AMM integration, cross-currency flows, agentic patterns, error codes, reserves
 
----
 
 ## Where to go next
 
