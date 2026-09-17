@@ -165,7 +165,7 @@ async function parseXRPLToml(
     } catch(e) {
         updateLogEntry(setLogEntries, {...parsingTomlLogEntry, status: {
             icon: {
-                label: e,
+                label: e.message,
                 type: "ERROR",
             },
         }})
@@ -278,7 +278,7 @@ export async function fetchFile(
     } catch (e) {
         const errorUpdate: LogEntryItem = {...logEntry, status: {
             icon: {
-                label: e,
+                label: e.message,
                 type: "ERROR",
             },
             followUpMessage: (<p>
