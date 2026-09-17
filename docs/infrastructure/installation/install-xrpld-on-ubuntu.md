@@ -8,7 +8,7 @@ labels:
 ---
 # Install on Ubuntu or Debian Linux
 
-This page describes the recommended instructions for installing the latest stable version of `xrpld` on **Ubuntu Linux**, using a binary that has been compiled and published by Ripple as a `deb` package.
+This page describes the recommended instructions for installing the latest stable version of `xrpld` on **Ubuntu Linux**, using a binary that has been compiled and published by the XRP Ledger Foundation as a `deb` package.
 
 Currently, **Ubuntu 22.04 and Ubuntu 24.04 on x86_64 processors** have received the highest level of support and testing. Packages are also available for **Debian Linux 12 Bookworm**. You may be able to adapt these instructions to other Linux distributions that also use the `apt` package manager, but other configurations are not officially supported.
 
@@ -32,54 +32,47 @@ Before you install `xrpld`, you must meet the [System Requirements](system-requi
     sudo apt -y install apt-transport-https ca-certificates wget gnupg
     ```
 
-3. Add Ripple's package-signing GPG key to your list of trusted keys:
+3. Add the XRP Ledger Foundation's package-signing GPG key to your list of trusted keys:
 
     ```
     sudo install -m 0755 -d /etc/apt/keyrings && \
-        wget -qO- https://repos.ripple.com/repos/api/gpg/key/public | \
-        sudo gpg --dearmor -o /etc/apt/keyrings/ripple.gpg
+        sudo wget -qO /etc/apt/keyrings/xrplf.asc https://packages.xrplf.org/xrplf.asc
     ```
 
 4. Check the fingerprint of the newly-added key:
 
     ```
-    gpg --show-keys /etc/apt/keyrings/ripple.gpg
+    gpg --show-keys /etc/apt/keyrings/xrplf.asc
     ```
 
-    The output should include an entry for Ripple such as the following:
+    The output should be:
 
     ```
-    pub   ed25519 2026-02-16 [SC] [expires: 2033-02-14]
-        E057C1CF72B0DF1A4559E8577DEE9236AB06FAA6
-    uid   TechOps Team at Ripple <techops+xrpld@ripple.com>
-    sub   ed25519 2026-02-16 [S] [expires: 2029-02-15]
+    pub   rsa4096 2026-08-18 [SC]
+          B655416741221F780FBCFBC9AA84D41A11D29FA9
+    uid                      XRPLF Packages <distribution@xrplf.org>
     ```
 
-    In particular, make sure that the fingerprint matches. (In the above example, the fingerprint is on the second line, starting with `C001`.)
+    In particular, make sure that the fingerprint matches. (In the above example, the fingerprint is on the second line, starting with `B655`.)
 
-5. Add the appropriate Ripple repository for your operating system version:
+5. Add the XRP Ledger Foundation repository:
 
     ```
-    echo "deb [signed-by=/etc/apt/keyrings/ripple.gpg] https://repos.ripple.com/repos/rippled-deb noble stable" | \
-        sudo tee -a /etc/apt/sources.list.d/ripple.list
+    echo "deb [signed-by=/etc/apt/keyrings/xrplf.asc] https://packages.xrplf.org/repository/deb-stable any main" | \
+        sudo tee /etc/apt/sources.list.d/xrplf.list
     ```
 
-    The above example is appropriate for **Ubuntu 24.04 Noble Numbat**. For other operating systems, replace the word `noble` with one of the following:
+    The same line applies to every supported Ubuntu and Debian version; the suite is `any`, not your release's codename.
 
-    - `bullseye` for **Debian 11 Bullseye**
-    - `bookworm` for **Debian 12 Bookworm**
-    - `jammy` for **Ubuntu 22.04 Jammy Jellyfish**
-    - `noble` for **Ubuntu 24.04 Noble Numbat**
-    - `resolute` for **Ubuntu 26.04 Resolute Raccoon**
+    If you want access to development or pre-release versions of `xrpld`, replace `deb-stable` with one of the following:
 
-    If you want access to development or pre-release versions of `xrpld`, use one of the following instead of `stable`:
+    - `deb-rc` - Release candidates
+    - `deb-beta` - Beta builds
+    - `deb-develop` - Every push to the `develop` branch
 
-    - `unstable` - Pre-release builds such as betas or release candidates
-    - `nightly` - Nightly development builds
+    {% admonition type="danger" name="Warning" %}Channels other than `stable` may be broken at any time. Do not use these builds for production servers.{% /admonition %}
 
-    {% admonition type="danger" name="Warning" %}Unstable and nightly builds may be broken at any time. Do not use these builds for production servers.{% /admonition %}
-
-6. Update the package index to include Ripple's repo and install `xrpld`.
+6. Update the package index to include the new repository and install `xrpld`.
 
     ```
     sudo apt -y update && sudo apt -y install xrpld

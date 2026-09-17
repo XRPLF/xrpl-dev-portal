@@ -9,31 +9,57 @@ labels:
 
 This page describes how to manually update to the latest release of `xrpld` on Ubuntu Linux. You can also set up [automatic updates](update-xrpld-automatically-on-linux.md).
 
-These instructions assume you have already [installed `xrpld` on a supported version of Ubuntu using Ripple's `deb` package](install-xrpld-on-ubuntu.md). If you are upgrading from `xrpld` 1.6.x or older, remove it and perform a fresh install instead.
-
-{% admonition type="success" name="Tip" %}To perform these steps all at once, you can run the `/opt/ripple/bin/update-rippled.sh` script, which is included with the `xrpld` package and is compatible with Ubuntu and Debian. This script should be run as a `sudo` user.{% /admonition %}
+These instructions assume you have already [installed `xrpld` on a supported version of Ubuntu using the XRP Ledger Foundation's `deb` package](install-xrpld-on-ubuntu.md). If you are still running `rippled` (3.1.3 or older), follow [Migrate from rippled to xrpld](migrate-to-xrpld.md) instead.
 
 To update manually, complete the following steps:
 
-1. Update repositories:
+1. Add the XRP Ledger Foundation's package-signing key:
+
+    ```
+    sudo install -m 0755 -d /etc/apt/keyrings && \
+        sudo wget -qO /etc/apt/keyrings/xrplf.asc https://packages.xrplf.org/xrplf.asc
+    ```
+
+2. Check the fingerprint of the key:
+
+    ```
+    gpg --show-keys /etc/apt/keyrings/xrplf.asc
+    ```
+
+    The output should be:
+
+    ```
+    pub   rsa4096 2026-08-18 [SC]
+          B655416741221F780FBCFBC9AA84D41A11D29FA9
+    uid                      XRPLF Packages <distribution@xrplf.org>
+    ```
+
+3. Add the XRP Ledger Foundation repository:
+
+    ```
+    echo "deb [signed-by=/etc/apt/keyrings/xrplf.asc] https://packages.xrplf.org/repository/deb-stable any main" | \
+        sudo tee /etc/apt/sources.list.d/xrplf.list
+    ```
+
+4. Update repositories:
 
     ```
     sudo apt -y update
     ```
 
-2. Upgrade the `xrpld` package:
+5. Upgrade the `xrpld` package. If `apt` asks what to do about `xrpld.cfg`, press Enter to keep your current file:
 
     ```
     sudo apt -y upgrade xrpld
     ```
 
-3. Reload the `systemd` unit files:
+6. Reload the `systemd` unit files:
 
     ```
     sudo systemctl daemon-reload
     ```
 
-4. Restart the `xrpld` service:
+7. Restart the `xrpld` service:
 
     ```
     sudo systemctl restart xrpld
