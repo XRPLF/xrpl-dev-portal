@@ -162,7 +162,7 @@ MPTs' transfer fees have a range from **0** to **50.000%** in increments of **0.
 
 MPTs can be configured with different controls for managing the tokens, in addition to the [transferability controls](#transferability-controls). These controls include:
 
-- The issuer can lock and unlock a specific token holder's balance; while locked, it cannot increase or decrease except in payments directly to the issuer. This is functionally equivalent to [deep freeze](./deep-freeze.md) on trust line tokens.
+- The issuer can lock and unlock a specific token holder's balance; while locked, it cannot increase or decrease except in payments directly to the issuer. This is functionally equivalent to [deep freeze](./freezes.md#deep-freeze) on trust line tokens.
 - The issuer can also globally lock (freeze) all MPTs of a particular issuance.
 - The issuer can claw back funds from a particular holder. This can be used to revoke them, or to reassign the tokens in case the holder lost the keys to their account.
 
