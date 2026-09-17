@@ -32,7 +32,7 @@ LP tokens enable liquidity providers to:
 
 ## How the AMM Works
 
-An AMM holds two different assets: at most one of these can be XRP, and one or both of them can be [tokens](../index.md). For any given pair of assets, there can be up to one AMM in the ledger. Anyone can create the AMM for an asset pair if it doesn't exist, or deposit to an AMM if it already exists. [Multi-purpose tokens](../fungible-tokens/multi-purpose-tokens.md) support in AMMs requires {% amendment-disclaimer name="MPTokensV2" compact=true /%}.
+An AMM holds two different assets: at most one of these can be XRP, and one or both of them can be [trust line tokens](../fungible-tokens/trust-line-tokens.md). For any given pair of assets, there can be up to one AMM in the ledger. Anyone can create the AMM for an asset pair if it doesn't exist, or deposit to an AMM if it already exists. (Support for [Multi-Purpose Tokens](../fungible-tokens/multi-purpose-tokens.md) is planned as part of the in-development [MPTokensV2 amendment](/resources/known-amendments.md#mptokensv2).)
 
 When you want to trade in the decentralized exchange, your [offers](offers.md) and [cross-currency payments](../../payment-types/cross-currency-payments.md) can automatically use AMMs to complete the trade. A single transaction might execute by matching offers, AMMs, or a mix of both, depending on what's cheaper. You can [read a transaction's metadata](../../transactions/finality-of-results/look-up-transaction-results.md) to see what liquidity it consumed.
 
