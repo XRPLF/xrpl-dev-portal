@@ -43,6 +43,8 @@ Create or modify a [trust line](../../../../concepts/tokens/fungible-tokens/inde
 
 If the account specified in `LimitAmount.issuer` is blocking incoming trust lines, the transaction fails with the result code `tecNO_PERMISSION`. {% amendment-disclaimer name="DisallowIncoming" /%}
 
+Creating a trust line that already exists returns the result code `tecDUPLICATE` instead of succeeding. {% amendment-disclaimer name="fixCleanup3_4_0" mode="updated" /%}
+
 
 ## TrustSet Flags
 

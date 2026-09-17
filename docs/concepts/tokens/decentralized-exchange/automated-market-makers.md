@@ -32,8 +32,7 @@ LP tokens enable liquidity providers to:
 
 ## How the AMM Works
 
-An AMM holds two different assets: at most one of these can be XRP, and one or both of them can be [tokens](../index.md). 
-For any given pair of assets, there can be up to one AMM in the ledger. Anyone can create the AMM for an asset pair if it doesn't exist, or deposit to an AMM if it already exists.
+An AMM holds two different assets: at most one of these can be XRP, and one or both of them can be [trust line tokens](../fungible-tokens/trust-line-tokens.md). For any given pair of assets, there can be up to one AMM in the ledger. Anyone can create the AMM for an asset pair if it doesn't exist, or deposit to an AMM if it already exists. (Support for [Multi-Purpose Tokens](../fungible-tokens/multi-purpose-tokens.md) is planned as part of the in-development [MPTokensV2 amendment](/resources/known-amendments.md#mptokensv2).)
 
 When you want to trade in the decentralized exchange, your [offers](offers.md) and [cross-currency payments](../../payment-types/cross-currency-payments.md) can automatically use AMMs to complete the trade. A single transaction might execute by matching offers, AMMs, or a mix of both, depending on what's cheaper. You can [read a transaction's metadata](../../transactions/finality-of-results/look-up-transaction-results.md) to see what liquidity it consumed.
 
@@ -91,13 +90,13 @@ To prevent misuse, some restrictions apply to the assets used in an AMM. If you 
 
 ## AMM and LP Tokens
 
-Whoever creates the AMM becomes the first liquidity provider, and receives LP tokens that represent 100% ownership of assets in the AMM's pool. They can redeem some or all of those LP tokens to withdraw assets from the AMM in proportion to the amounts currently there. (The proportions shift over time as people trade against the AMM.) The AMM does not charge a fee when withdrawing both assets.
+Whoever creates the AMM becomes the first liquidity provider, and receives LP tokens that represent 100% ownership of assets in the AMM's pool. Whoever holds an AMM's LP tokens can redeem some or all of those LP tokens to withdraw assets from the AMM in proportion to the amounts currently there. (The proportions shift over time as people trade against the AMM.) The AMM does not charge a fee when withdrawing both assets.
 
 For example, if you created an AMM with 5 ETH and 5 USD, and then someone exchanged 1.26 USD for 1 ETH, the pool now has 4 ETH and 6.26 USD in it. You can spend half your LP tokens to withdraw 2 ETH and 3.13 USD.
 
 Anyone can deposit assets to an existing AMM. When they do, they receive new LP tokens based on how much they deposited. The amount that a liquidity provider can withdraw from an AMM is based on the proportion of the AMM's LP tokens they hold compared to the total number of LP tokens outstanding.
 
-LP tokens are like other tokens in the XRP Ledger. You can use them in many types of payment, or trade them in the decentralized exchange. (To receive LP tokens as payment, you must set up a [trust line](../fungible-tokens/index.md) with a non-zero limit with the AMM Account as the issuer.) However, you can _only_ send LP tokens directly to the AMM (redeeming them) using the [AMMWithdraw][] transaction type, not through other types of payments. Similarly, you can only send assets to the AMM's pool through the [AMMDeposit][] transaction type.
+LP tokens are a specific type of [trust line token](../fungible-tokens/trust-line-tokens.md) and share most of the properties of other trust line tokens. You can use them in many types of payment, or trade them in the decentralized exchange. To receive LP tokens as payment from other holders, you must set up a [trust line](../fungible-tokens/index.md) with a non-zero limit with the AMM Account as the issuer. However, you cannot send and receive LP tokens directly to and from the AMM through regular payments types. Instead, LP tokens are automatically issued when you do an [AMMDeposit transaction][], and you redeem them using an [AMMWithdraw transaction][].
 
 The AMM is designed so that an AMM's asset pool is empty if and only if the AMM has no outstanding LP tokens. This situation can only occur as the result of an [AMMWithdraw][] transaction; when it does, the AMM is automatically deleted.
 
@@ -134,6 +133,19 @@ Frozen LP tokens affect the following transactions:
 **NFTokenAcceptOffer**
 
 - Buyers can't accept a sell offer if the offer requires the use of frozen LP tokens as payment.
+
+### LP Token Transferability
+
+If an AMM's pool holds an MPT that doesn't have the **Can Transfer** flag enabled, the AMM's LP tokens can only be transferred to or from the MPT's issuer. This affects the following transactions:
+
+**Payment**
+
+- An account can't send these LP tokens to another non-issuer holder. The transaction fails with `tecNO_AUTH`.
+
+**OfferCreate**
+
+- Offers to sell these LP tokens are treated as unfunded, the same as an offer to sell a frozen LP token.
+
 
 ## AMM and Trading Fees
 

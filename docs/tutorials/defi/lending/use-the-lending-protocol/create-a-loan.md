@@ -15,6 +15,12 @@ This tutorial shows you how to create a [Loan][] on the XRP Ledger. A loan requi
 This tutorial demonstrates how a loan broker and a borrower can cosign the terms of a loan and create that loan on the XRPL.
 
 {% amendment-disclaimer name="LendingProtocol" /%}
+{% amendment-disclaimer name="LendingProtocolV1_1" mode="updated" /%}
+
+{% admonition type="info" name="Note" %}
+- **JavaScript** code expects both `LendingProtocol` and `LendingProtocolV1_1`.
+- **Python** and **Go** code expect only `LendingProtocol`.
+{% /admonition %}
 
 ## Goals
 

@@ -31,6 +31,7 @@ A depositor cannot deposit assets into the vault if:
 If successful, the transaction moves the assets from the depositor's account to the vault's pseudo-account, issues the corresponding vault shares, and updates the vault’s balance.
 
 {% amendment-disclaimer name="SingleAssetVault" /%}
+{% amendment-disclaimer name="LendingProtocolV1_1" mode="updated" /%}
 
 ## Example {% $frontmatter.seo.title %} JSON
 
@@ -66,6 +67,8 @@ The deposited asset must match the vault’s designated asset for the transactio
 - **Trust line token**: The [trust line](../../../../concepts/tokens/fungible-tokens/trust-line-tokens.md#structure) balance between the vault's pseudo-account and the asset issuer is adjusted.
 - **MPT**: The `MPToken.MPTAmount` of both the depositor and the vault's pseudo-account is updated.
 
+The deposit amount is rounded down to match the vault's `AssetsTotal` precision, so the vault's total and available balances change by a representable amount. {% amendment-disclaimer name="fixCleanup3_4_0" mode="updated" /%}
+
 ## {% $frontmatter.seo.title %} Flags
 
 There are no flags defined for {% code-page-name /%} transactions.
@@ -80,17 +83,20 @@ Besides errors that can occur for all transactions, {% code-page-name /%} transa
 
 | Error Code              | Description                        |
 | :---------------------- | :----------------------------------|
-| `tecNO_ENTRY`           | The `Vault` object with the provided `VaultID` does not exist on the ledger. |
-| `tecOBJECT_NOT_FOUND`   | A ledger entry specified in the transaction does not exist. |
-| `tecWRONG_ASSET`        | The asset of the vault does not match the asset being deposited. |
+| `tecEXPIRED`            | The vault is closed-ended and in its _Investment_ or _Redemption_ phase. {% amendment-disclaimer name="LendingProtocolV1_1" /%} |
+| `tecFROZEN`             | The vault asset is frozen globally for the depositor, or for the vault's pseudo-account. Both regular and deep freezes cause this error. {% amendment-disclaimer name="fixCleanup3_3_0" mode="updated" /%} |
 | `tecINSUFFICIENT_FUNDS` | The depositor does not have sufficient funds to make a deposit. |
 | `tecLIMIT_EXCEEDED`     | Adding the provided `Amount` to the `AssetsTotal` exceeds the `AssetsMaximum` value. |
-| `tecNO_AUTH`            | Either the vault is private and the depositing account does not have credentials in the share's Permissioned Domain, or the asset is a non-transferable MPT. |
-| `tecFROZEN`             | The vault asset is frozen globally for the depositor, or for the vault's pseudo-account. Both regular and deep freezes cause this error. {% amendment-disclaimer name="fixCleanup3_3_0" mode="updated" /%} |
 | `tecLOCKED`             | The MPT vault asset is locked globally for the depositor, or for the vault's pseudo-account. {% amendment-disclaimer name="fixCleanup3_3_0" mode="updated" /%} |
-| `temMALFORMED`          | The transaction was not validly formatted. For example, if the `VaultID` is not provided.  |
-| `temDISABLED`           | The Single Asset Vault amendment is not enabled.  |
+| `tecNO_AUTH`            | Either the vault is private and the depositing account does not have credentials in the share's Permissioned Domain, or the asset is a non-transferable MPT. |
+| `tecNO_ENTRY`           | The `Vault` object with the provided `VaultID` does not exist on the ledger. |
+| `tecOBJECT_NOT_FOUND`   | A ledger entry specified in the transaction does not exist. |
+| `tecPATH_DRY`           | Converting the deposit into shares overflowed the largest number the protocol can represent. This usually means the vault's `Scale` is high and the `Amount` is large. |
+| `tecPRECISION_LOSS`     | The deposit rounds to nothing, either at the vault's scale, at the depositor's trust line scale, or when converted into shares. {% amendment-disclaimer name="fixCleanup3_2_0" mode="updated" /%} {% amendment-disclaimer name="fixCleanup3_4_0" mode="updated" /%} |
+| `tecWRONG_ASSET`        | The asset of the vault does not match the asset being deposited. |
 | `temBAD_AMOUNT`         | The `Amount` field of the transaction is invalid. |
+| `temDISABLED`           | The [SingleAssetVault amendment][] is not enabled.  |
+| `temMALFORMED`          | The transaction was not validly formatted. For example, if the `VaultID` is not provided.  |
 
 ## See Also
 

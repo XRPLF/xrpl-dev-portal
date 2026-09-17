@@ -20,6 +20,12 @@ You can create either a:
 The tutorial demonstrates how a financial institution could use a **private vault** to pool lender assets for uncollateralized lending while maintaining regulatory compliance through credential-based access control.
 
 {% amendment-disclaimer name="SingleAssetVault" /%}
+{% amendment-disclaimer name="LendingProtocolV1_1" mode="updated" /%}
+
+{% admonition type="info" name="Note" %}
+- **JavaScript** code expects both `SingleAssetVault` and `LendingProtocolV1_1`.
+- **Python** code expects only `SingleAssetVault`.
+{% /admonition %}
 
 ## Goals
 
@@ -94,6 +100,8 @@ Next, fund a vault owner account, define the MPT issuance ID for the vault's ass
 {% code-snippet file="/_code-samples/vaults/js/createVault.js" language="js" from="// Create and fund" before="// Prepare VaultCreate" /%}
 
 The example uses an existing MPT issuance and permissioned domain data from the `vaultSetup.js` script, but you can also provide your own values. If you want to create a public vault, you don't need to provide the `domainID`.
+
+A `subscriptionDate` and `redemptionDate` value is also defined here, since they are required to create closed-ended vaults.
 {% /tab %}
 
 {% tab label="Python" %}
@@ -116,6 +124,8 @@ The `tfVaultPrivate` flag and `DomainID` field restrict deposits to accounts wit
 The `Data` field contains hex-encoded metadata about the vault itself, such as its name (`n`) and website (`w`). While any data structure is allowed, it's recommended to follow the [defined data schema](../../../../references/protocol/ledger-data/ledger-entry-types/vault.md#data-field-format) for better discoverability in the XRPL ecosystem.
 
 The `AssetsMaximum` is set to `0` to indicate no cap on how much of the asset the vault can hold, but you can adjust as needed.
+
+`VaultKind` is set to `1` to create a closed-ended vault. `SubscriptionDate` defines how long the vault will accept deposits, and `RedemptionDate` defines when assets can be redeemed.
 {% /tab %}
 
 {% tab label="Python" %}

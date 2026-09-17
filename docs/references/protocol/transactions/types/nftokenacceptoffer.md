@@ -98,6 +98,7 @@ Besides errors that can occur for all transactions, {% $frontmatter.seo.title %}
 |:-----------------------------------|:----------------------------------------|
 | `temDISABLED`                      | The [NonFungibleTokensV1 amendment][] is not enabled. |
 | `temMALFORMED`                     | The transaction was not validly formatted. For example, it specified neither `NFTokenSellOffer` nor `NFTokenBuyOffer`, or it specified a negative `NFTokenBrokerFee`. |
+| `temBAD_CURRENCY`              | The `NFTokenBrokerFee` field is an issued token using the reserved currency code `XRP`. {% amendment-disclaimer name="fixCleanup3_4_0" /%} |
 | `tecCANT_ACCEPT_OWN_NFTOKEN_OFFER` | The buyer and seller are the same account. |
 | `tecEXPIRED`                       | An offer specified in the transaction has already expired. |
 | `tecINSUFFICIENT_FUNDS`            | The buyer does not have the full amount they are offering. If the buy amount is specified in XRP, this could be because of the [reserve requirement](../../../../concepts/accounts/reserves.md). If the buy amount is a token, it could be because the token is [frozen](../../../../concepts/tokens/fungible-tokens/freezes.md). |

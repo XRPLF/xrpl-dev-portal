@@ -50,6 +50,10 @@ In addition to the [common fields](../../../protocol/transactions/common-fields#
 | `AssetsMaximum`   | String    | Number            | No        | The maximum asset amount that can be held in a vault. The value cannot be lower than the current `AssetsTotal`, unless the value is 0. |
 | `DomainID`        | String    | Hash256           | No        | The [PermissionedDomain](../../../../concepts/tokens/decentralized-exchange/permissioned-domains.md) object ID associated with the shares of this vault. The `DomainID` is only required when updating a private vault. |
 
+{% admonition type="info" name="Note" %}
+A vault's `AssetsTotal` can exceed its `AssetsMaximum` due to accrued interest. You can still submit a `VaultSet` transaction to update other fields without having to modify `AssetsMaximum`. {% amendment-disclaimer name="fixCleanup3_4_0" mode="updated" /%}
+{% /admonition %}
+
 ## {% $frontmatter.seo.title %} Flags
 
 There are no flags defined for {% code-page-name /%} transactions.
@@ -64,7 +68,7 @@ Besides errors that can occur for all transactions, {% code-page-name /%} transa
 | `tecOBJECT_NOT_FOUND` | The `PermissionedDomain` object with the provided `DomainID` does not exist. |
 | `tecNO_PERMISSION`    | The account submitting the transaction is not the `Owner` of the vault, or is trying to set a `DomainID` for a public vault. |
 | `temMALFORMED`        | The transaction was not validly formatted. For example, the `Data` field is larger than 256 bytes. |
-| `tecLIMIT_EXCEEDED`   | The _new_ `AssetsMaximum` value is **lower** than the vault's _current_ `AssetsTotal`. |
+| `tecLIMIT_EXCEEDED`   | The transaction attempts to set or change `AssetsMaximum` to a value lower than the `AssetsTotal`. {% amendment-disclaimer name="fixCleanup3_4_0" /%} |
 | `temDISABLED`         | Either the Single Asset Vault amendment is not enabled, or a `DomainID` is provided and the Permissioned Domains amendment is not enabled. |
 
 ## See Also

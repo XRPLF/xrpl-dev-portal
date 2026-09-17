@@ -39,31 +39,39 @@ To change the amount of history your server stores, perform the following steps:
     ```
     [node_db]
     # Other settings unchanged ...
-      online_delete=300000
+      online_delete=500000
       advisory_delete=0
+      # Optional:
+      # max_waiting_ledgers=300000
     ```
 
     Set `online_delete` to the minimum number of ledger versions to keep after running online deletion. With automatic deletion (the default), the server typically runs deletion when it has accumulated about twice this many ledger versions.
 
+    Optionally, you can configure `max_waiting_ledgers` to limit how long the deletion process waits for the server to resync. If additional ledgers are validated during that time, the process aborts the current attempt and retries later. The minimum is 64, and it defaults to your `online_delete` value. This limit only includes ledgers validated while waiting on a stalled rotation, not normal forward progress.
+
+    During the deletion process, the validated ledger is verified to ensure it is not older than `age_threshold_seconds` and that all recent ledgers are available without gaps. If these checks fail, the process waits and retries after a short period (default: 2 seconds).
+
     {% partial file="/docs/_snippets/conf-file-location.md" /%}
 
-0. Start (or restart) the `xrpld` service.
+1. Start (or restart) the `xrpld` service.
 
     ```
     $ sudo systemctl restart xrpld
     ```
 
-0. Wait for your server to sync to the network.
+2. Wait for your server to sync to the network.
 
     Depending on your network and system capabilities and how long your server was offline, it may take between 5 and 15 minutes to fully sync.
 
     When your server is synced with the network, the [server_info method][] reports a `server_state` value of `"full"`, `"proposing"`, or `"validating"`.
 
-0. Periodically check your server's `complete_ledgers` range using the [server_info method][] to confirm that ledgers are being deleted.
+3. Periodically check your server's `complete_ledgers` range using the [server_info method][] to confirm that ledgers are being deleted.
 
     After online deletion runs, the `complete_ledgers` range reflects that older ledgers are no longer available. As your server accumulates history, the total number of ledgers available should slowly increase to twice the `online_delete` value you configured, then decrease when online deletion runs.
 
-0. Monitor your `xrpld` logs for messages that begin with `SHAMapStore::WRN`. This can indicate that [online deletion is being interrupted](online-deletion.md#interrupting-online-deletion) because your server fell out of sync with the network.
+4. Monitor your `xrpld` logs for messages that begin with `SHAMapStore::WRN`. This can indicate that [online deletion is being interrupted](online-deletion.md#interrupting-online-deletion) because your server fell out of sync with the network, or because there are gaps in your recent ledger history.
+
+    The deletion process waits for the node to fully sync and fill any gaps. If it waits too long (specifically, if the network validates more ledgers than your `max_waiting_ledgers` limit during this pause), the deletion attempt is aborted and retried later.
 
     If this happens regularly, your server may not have sufficient specifications to keep up with the ledger while running online deletion. Check that other services on the same hardware (such as scheduled backups or security scans) aren't competing with the `xrpld` server for resources. You may want to try any of the following:
 

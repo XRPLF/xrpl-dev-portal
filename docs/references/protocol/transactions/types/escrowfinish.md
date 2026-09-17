@@ -59,6 +59,7 @@ Besides errors that can occur for all transactions, {% $frontmatter.seo.title %}
 | `tecNO_ENTRY`             | The destination account does not hold the MPT. |
 | `tecINSUFFICIENT_RESERVE` | Unable to create a trust line or MPToken due to lack of reserves. |
 | `tecFROZEN` | The token is deep frozen (Trust Line Tokens) or locked (for MPTs). |
+| `tecNO_LINE_INSUF_RESERVE` | The destination doesn't have a trust line with the issuer nor enough reserve to create one. |
 
 ## See Also
 

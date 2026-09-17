@@ -417,6 +417,8 @@
 [ledger_request command]: /docs/references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/ledger_request.md
 [ledger_request method]: /docs/references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/ledger_request.md
 [Lending Protocol]: /docs/concepts/tokens/lending-protocol.md
+[LendingProtocolV1_1]: /resources/known-amendments.md#lendingprotocolv1_1
+[LendingProtocolV1_1 amendment]: /resources/known-amendments.md#lendingprotocolv1_1
 [Loan]: /docs/references/protocol/ledger-data/ledger-entry-types/loan.md
 [Loan entry]: /docs/references/protocol/ledger-data/ledger-entry-types/loan.md
 [Loan ledger entry]: /docs/references/protocol/ledger-data/ledger-entry-types/loan.md

@@ -19,7 +19,7 @@ Return funds from an expired [escrow](../../../../concepts/payment-types/escrow.
     "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
     "TransactionType": "EscrowCancel",
     "Owner": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-    "OfferSequence": 7,
+    "OfferSequence": 7
 }
 ```
 
@@ -48,6 +48,7 @@ Besides errors that can occur for all transactions, {% $frontmatter.seo.title %}
 | `tecNO_LINE`              | The sender does not have a trust line with the issuer. For Trust Line Tokens only. |
 | `tecNO_ENTRY` | The sender does not hold the MPT. |
 | `tecINSUFFICIENT_RESERVE` | Unable to create a trust line or MPToken due to lack of reserves. |
+| `tecNO_LINE_INSUF_RESERVE` | The sender doesn't have a trust line with the issuer nor enough reserve to create one. |
 
 ## See Also
 

@@ -13,6 +13,7 @@ A single asset vault is an XRP Ledger primitive that aggregates assets from mult
 A Vault Owner account manages the vault and can create, update, or delete it as needed. When creating a vault, the Vault Owner can also specify whether shares are transferable or non-transferable. Non-transferable shares cannot be transferred to any other account, and can only be redeemed.
 
 {% amendment-disclaimer name="SingleAssetVault" /%}
+{% amendment-disclaimer name="LendingProtocolV1_1" mode="updated" /%}
 
 ## Public vs. Private Vaults
 
@@ -27,6 +28,56 @@ If a depositor's credentials expire, they can no longer deposit assets in a priv
 To prevent the Vault Owner from locking funds away, any shareholder in a private vault can redeem their shares for assets.
 
 Choosing between a public or private vault depends on your use case. For example, if depositor identity verification is required, use a private vault and issue credentials only to verified accounts.  
+
+## Closed-Ended vs Open-Ended Vaults
+
+The [LendingProtocolV1_1 amendment][] introduces a new _closed-ended_ vault to single asset vaults. Unlike an _open-ended_ vault, which allows depositors to deposit and withdraw at any time, a closed-ended vault has a defined lifecycle:
+
+1. **Subscription**: The fundraising window. Depositors can deposit and withdraw assets freely.
+2. **Investment**: The lockup period. Assets in the vault are now fixed and can be deployed in loans. Deposits and withdrawals are blocked during this time.
+3. **Redemption**: The wind down. Loans have matured and been repaid, no new loans can be created, and depositors can withdraw their share of the proceeds.
+
+The move from one stage to the next happens automatically at set dates that are chosen when the vault is created and can't be changed afterwards. Since the schedule is fixed and public, everyone involved knows when the fundraising window closes, how long their assets are committed, and when they can expect to be repaid.
+
+`LendingProtocolV1_1` restricts all loans to closed-ended vaults only. The following table outlines which transactions are permitted for open-ended vaults and the three phases of closed-ended vaults:
+
+| Transaction     | Open-ended | Subscription | Investment | Redemption |
+| --------------- | :--------: | :----------: | :--------: | :--------: |
+| `VaultDeposit`  | ✅         | ✅           | ❌         | ❌         |
+| `VaultWithdraw` | ✅         | ✅           | ❌         | ✅         |
+| `VaultClawback` | ✅         | ✅           | ✅         | ✅         |
+| `LoanBrokerSet` | ❌         | ✅           | ✅         | ✅         |
+| `LoanSet`       | ✅         | ❌           | ✅         | ❌         |
+| `LoanPay`       | ✅         | ✅           | ✅         | ✅         |
+| `LoanManage`    | ✅         | ✅           | ✅         | ✅         |
+| `LoanDelete`    | ✅         | ✅           | ✅         | ✅         |
+
+{% admonition type="info" name="Note" %}
+`LoanBrokerSet` is restricted on open-ended vaults. The other loan-related transactions are intentionally enabled so you can manage any loans that are created after `LendingProtocol` is enabled and before `LendingProtocolV1_1` adds the loan broker restriction.
+{% /admonition %}
+
+## Cash-Basis Accounting
+
+The [LendingProtocolV1_1 amendment][] changes how a vault recognizes interest income from the loans it funds.
+
+Before the amendment, the Lending Protocol used an _instant interest recognition_ model: the moment a loan was originated, the full interest the borrower was scheduled to pay over the life of the loan was recognized as vault income. The vault's accounting reflected money it hadn't received yet, and that recognition had to be unwound if the borrower stopped paying.
+
+With the amendment, new vaults use _cash-basis_ accounting instead and interest is accounted for only when a payment actually delivers it. Functionally, this means:
+
+- Vault share prices are tracked against realized income from interest actually paid. A vault's `AssetsTotal` doesn't rise the moment a loan is written with instant interest recognition, so a vault's shares aren't marked up on scheduled income.
+- Losses show as smaller values, since it only accounts for outstanding principal amount. Instant interest recognition included lost income from interest added to the principal loss amount.
+- Loan brokers can potentially issue more loans against cash-basis vaults, since their `DebtTotal` and `DebtMaximum` values only account for realized amounts, not including all scheduled income from interest.
+
+### Which Model a Vault Uses
+
+You can't choose which accounting model to use when creating a vault. The status of the `LendingProtocolV1_1` amendment determines the model:
+
+- If not enabled, vaults use instant interest recognition.
+- If enabled, vaults use cash-basis.
+
+{% admonition type="info" name="Note" %}
+Vaults created with instant interest recognition accounting remain so permanently, even after the amendment activates.
+{% /admonition %}
 
 ## Vault Share Distribution and Redemption
 
@@ -136,6 +187,9 @@ To understand how the exchange rates are applied, here are the key variables use
     Γ_assets = Γ_assets + Δ_assets // New balance of assets in the vault.
     Γ_shares = Γ_shares + Δ_shares // New share balance in the vault.
     ```
+
+    The recorded deposit is rounded down to the same representable precision. If this leaves the depositor's balance unchanged, the deposit fails instead. {% amendment-disclaimer name="fixCleanup3_4_0" mode="updated" /%}
+
   {% /tab %}
 
   {% tab label="Redeem" %}
@@ -163,13 +217,15 @@ To understand how the exchange rates are applied, here are the key variables use
       Δ_shares = (Δ_assets_requested * Γ_shares) / (Γ_assets - l)
       ```
 
-      The calculated share amount is rounded to the **nearest** whole number.
+      The calculated share amount is rounded down, so the payout never exceeds the requested amount. {% amendment-disclaimer name="fixCleanup3_4_0" mode="updated" /%}
 
   2. The rounded number of shares is used to calculate the final asset payout (`Δ_assets_out`), using the same logic as a redemption.
 
       ```js
       Δ_assets_out = (Δ_shares * (Γ_assets - l)) / Γ_shares
       ```
+
+  The final payout is rounded down, leaving any remainder in the vault. If this rounding reduces the payout to zero, the transaction fails. The only exception is a final withdrawal redeeming all remaining shares, which can succeed with a zero payout. {% amendment-disclaimer name="fixCleanup3_4_0" mode="updated" /%}
 
   Due to rounding in step 1, the final payout may differ slightly from the requested amount.
 
@@ -216,6 +272,8 @@ The issuer of a vault asset can enact a [freeze](./fungible-tokens/freezes) for 
 ### Clawback
 
 An asset issuer can perform a [Clawback](../../use-cases/tokenization/stablecoin-issuer#clawback) on vault assets by forcing redemption of shares held by an account. This exchanges the holder's shares for the underlying assets, which are sent directly to the issuer. This mechanism allows asset issuers to recover their issued assets from vault depositors when necessary for fraud prevention or regulatory compliance.
+
+A fixed-amount clawback is rounded down the same way as a withdrawal, so it never recovers more than the requested amount. {% amendment-disclaimer name="fixCleanup3_4_0" mode="updated" /%}
 
 ## Why Use a Single Asset Vault?
 

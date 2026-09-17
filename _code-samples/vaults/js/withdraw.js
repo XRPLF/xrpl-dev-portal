@@ -2,9 +2,16 @@ import xrpl from "xrpl"
 import { execSync } from "child_process"
 import fs from "fs"
 
-// Auto-run setup if needed
-if (!fs.existsSync("vaultSetup.json")) {
-  console.log(`\n=== Vault setup data doesn't exist. Running setup script... ===\n`)
+// The vault is closed-ended, so its subscription window eventually closes and the
+// saved setup data stops working. Regenerate it if the file is missing or expired.
+const setupIsStale = () => {
+  if (!fs.existsSync("vaultSetup.json")) return true
+  const { subscriptionDate } = JSON.parse(fs.readFileSync("vaultSetup.json", "utf8"))
+  if (typeof subscriptionDate !== "number") return true
+  return xrpl.rippleTimeToUnixTime(subscriptionDate) <= Date.now()
+}
+if (setupIsStale()) {
+  console.log(`\n=== Vault setup data is missing or expired. Running setup script... ===\n`)
   execSync("node vaultSetup.js", { stdio: "inherit" })
 }
 
@@ -158,4 +165,3 @@ if (depositorAssetNode) {
 }
 
 await client.disconnect()
-
