@@ -151,7 +151,7 @@ XRP Ledgerは、隠された残高を監査する方法として、オンチェ�
 {% admonition type="warning" name="注意" %}
 証明の生成から検証までの間に保有者の機密残高が変わると、回収の証明は古くなる場合があります。証明の正しさと状態の整合性を保ち、トランザクションがレジャー上で失敗しないようにするため、発行者は機密残高の回収について以下の流れに従ってください。
 
-1. `tfMPTLock` フラグを有効にした[MPTokenIssuanceSetトランザクション](../../../references/protocol/transactions/types/mptokenissuanceset.md)を送信し、その保有者に対してMPT発行を[ロック](./deep-freeze.md)します。
+1. `tfMPTLock` フラグを有効にした[MPTokenIssuanceSetトランザクション](../../../references/protocol/transactions/types/mptokenissuanceset.md)を送信し、その保有者に対してMPT発行を[ロック](./multi-purpose-tokens.md#コンプライアンス管理)します。
 2. ConfidentialMPTClawbackトランザクションを送信します。
 {% /admonition %}
 

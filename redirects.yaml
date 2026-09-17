@@ -1,4 +1,6 @@
 # Docs redirects for moved pages -----------------------------------------------
+/docs/concepts/tokens/fungible-tokens/deep-freeze:
+    to: /docs/concepts/tokens/fungible-tokens/freezes/
 # (not associated with a major reorg)
 /docs/tutorials/compliance-features/create-permissioned-domains-in-javascript:
     to: /docs/tutorials/compliance-features/manage-permissioned-domains/
