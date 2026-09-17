@@ -17,6 +17,7 @@ The current implementation of the lending protocol doesn't include automated on-
 To ensure compliance needs are met, asset issuers can [claw back](../../references/protocol/transactions/types/clawback.md) funds from the vault associated with the lending protocol. Issuers can also [freeze](./fungible-tokens/freezes.md) individual accounts or issue a global freeze.
 
 {% amendment-disclaimer name="LendingProtocol" /%}
+{% amendment-disclaimer name="LendingProtocolV1_1" mode="updated" /%}
 
 ## Protocol Flow
 
