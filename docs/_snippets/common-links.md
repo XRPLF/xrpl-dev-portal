@@ -6,6 +6,7 @@
 [AMMBid transactions]: /docs/references/protocol/transactions/types/ammbid.md
 [AMMBid]: /docs/references/protocol/transactions/types/ammbid.md
 [AMMClawback transaction]: /docs/references/protocol/transactions/types/ammclawback.md
+[AMMClawback transactions]: /docs/references/protocol/transactions/types/ammclawback.md
 [AMMCreate transaction]: /docs/references/protocol/transactions/types/ammcreate.md
 [AMMCreate transactions]: /docs/references/protocol/transactions/types/ammcreate.md
 [AMMCreate]: /docs/references/protocol/transactions/types/ammcreate.md

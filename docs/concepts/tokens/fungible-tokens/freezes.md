@@ -113,7 +113,19 @@ The Clawback and No Freeze settings are mutually exclusive: Clawback for trust l
 
 [Clawback transactions][] can claw back funds even when those funds are frozen, because they operate directly between the issuer and holder.
 
-[AMMClawback transactions][] can also claw back tokens that have been deposited in an [AMM](../decentralized-exchange/automated-market-makers.md) while overriding freeze settings. Without the `fixCleanup3_4_0` amendment, AMMClawback cannot claw back funds if the issuer has frozen the AMM's trust line. {% amendment-disclaimer name="fixCleanup3_4_0" mode="updated" /%}
+[AMMClawback transactions][] can also override freeze settings to claw back tokens that have been deposited in an [AMM](../decentralized-exchange/automated-market-makers.md). Without the `fixCleanup3_4_0` amendment, AMMClawback cannot claw back funds if the issuer has frozen the AMM's trust line. {% amendment-disclaimer name="fixCleanup3_4_0" mode="updated" /%}
+
+## How does MPT locking compare with freezing trust line tokens?
+
+The ability to "lock" an [MPT](./multi-purpose-tokens.md) is mostly equivalent to the ability to "deep freeze" a trust line token. See the following table for details:
+
+| Function | Trust line token | Multi-purpose Token (MPT) |
+|----------|------------------|---------------------------|
+| Individual freeze/lock | Two flags: regular **Individual Freeze** (blocks spending) and **Deep Freeze** (blocks spending and receiving) | One **Lock** flag (blocks spending _and_ receiving) |
+| Global freeze/lock | Per issuing account (**Global Freeze** setting) | Per token issuance (**MPT Lock** setting) |
+| Ability to give up freeze/lock power | Per issuing account (**No Freeze** setting) | Per token issuance (**Can Lock** setting) |
+| Relation between clawback and freeze | Cannot enable both **Clawback** and **No Freeze** | Can enable any combination of **Can Lock** and **Can Clawback** |
+
 
 
 # See Also
