@@ -14,6 +14,7 @@ import (
 	ledger "github.com/Peersyst/xrpl-go/xrpl/ledger-entry-types"
 	"github.com/Peersyst/xrpl-go/xrpl/queries/account"
 	"github.com/Peersyst/xrpl-go/xrpl/queries/common"
+	ledgerquery "github.com/Peersyst/xrpl-go/xrpl/queries/ledger"
 	requests "github.com/Peersyst/xrpl-go/xrpl/queries/transactions"
 	"github.com/Peersyst/xrpl-go/xrpl/rpc"
 	rpctypes "github.com/Peersyst/xrpl-go/xrpl/rpc/types"
@@ -214,7 +215,7 @@ func main() {
 				Account: depositorWallet.GetAddress(),
 				Flags:   transaction.TfMPTCanTransfer | transaction.TfMPTCanClawback | transaction.TfMPTCanTrade,
 			},
-			MaximumAmount:   ptr(types.XRPCurrencyAmount(100000000)),
+			MaximumAmount:   ptr(types.MPTAmount(100000000)),
 			TransferFee:     ptr(uint16(0)),
 			MPTokenMetadata: &mptMetadataHex,
 		}).Flatten(), submitOpts(&depositorWallet))
@@ -414,6 +415,17 @@ func main() {
 
 	fmt.Print("Setting up tutorial: 4/7\r")
 
+	// LendingProtocolV1_1 (rippled 3.4.0) requires new loan brokers to use
+	// closed-ended vaults. Deposits must precede SubscriptionDate, loans must
+	// follow it, and the final loan payment must precede RedemptionDate by 60s.
+	// Allow two minutes for deposits and 400 days for the 12-month tutorial loan.
+	validatedLedger, err := client.GetLedger(&ledgerquery.Request{LedgerIndex: common.Validated})
+	if err != nil {
+		panic(err)
+	}
+	subscriptionDate := uint32(validatedLedger.Ledger.CloseTime) + 120
+	redemptionDate := subscriptionDate + 400*24*60*60
+
 	// Create private vault and distribute MPT to accounts concurrently
 	vaultCh := make(chan *requests.TxResponse, 1)
 	distLbCh := make(chan struct{}, 1)
@@ -425,8 +437,11 @@ func main() {
 				Account: loanBrokerWallet.GetAddress(),
 				Flags:   transaction.TfVaultPrivate,
 			},
-			Asset:    ledger.Asset{MPTIssuanceID: mptID},
-			DomainID: &domainID,
+			Asset:            ledger.Asset{MPTIssuanceID: mptID},
+			DomainID:         &domainID,
+			VaultKind:        ptr(types.VaultKindClosed),
+			SubscriptionDate: &subscriptionDate,
+			RedemptionDate:   &redemptionDate,
 		}).Flatten(), submitOpts(&loanBrokerWallet))
 		if err != nil {
 			panic(err)
@@ -473,6 +488,9 @@ func main() {
 	}()
 
 	vaultResp := <-vaultCh
+	if vaultResp.Meta.TransactionResult != "tesSUCCESS" {
+		panic(fmt.Sprintf("VaultCreate failed: %s", vaultResp.Meta.TransactionResult))
+	}
 	<-distLbCh
 	<-distBrCh
 
@@ -484,11 +502,15 @@ func main() {
 		}
 	}
 
+	if vaultID == "" {
+		panic("VaultCreate did not return a Vault ID")
+	}
+
 	fmt.Print("Setting up tutorial: 5/7\r")
 
 	// Create LoanBroker and deposit MPT into vault
 	lbSetCh := make(chan *requests.TxResponse, 1)
-	vaultDepCh := make(chan struct{}, 1)
+	vaultDepCh := make(chan *requests.TxResponse, 1)
 
 	go func() {
 		resp, err := client.SubmitTxAndWait((&transaction.LoanBrokerSet{
@@ -504,7 +526,7 @@ func main() {
 	}()
 
 	go func() {
-		_, err := client.SubmitTxAndWait((&transaction.VaultDeposit{
+		resp, err := client.SubmitTxAndWait((&transaction.VaultDeposit{
 			BaseTx: transaction.BaseTx{
 				Account: depositorWallet.GetAddress(),
 			},
@@ -517,11 +539,17 @@ func main() {
 		if err != nil {
 			panic(err)
 		}
-		vaultDepCh <- struct{}{}
+		vaultDepCh <- resp
 	}()
 
 	lbSetResp := <-lbSetCh
-	<-vaultDepCh
+	if lbSetResp.Meta.TransactionResult != "tesSUCCESS" {
+		panic(fmt.Sprintf("LoanBrokerSet failed: %s", lbSetResp.Meta.TransactionResult))
+	}
+	vaultDepResp := <-vaultDepCh
+	if vaultDepResp.Meta.TransactionResult != "tesSUCCESS" {
+		panic(fmt.Sprintf("VaultDeposit failed: %s", vaultDepResp.Meta.TransactionResult))
+	}
 
 	var loanBrokerID string
 	for _, node := range lbSetResp.Meta.AffectedNodes {
@@ -531,12 +559,36 @@ func main() {
 		}
 	}
 
+	if loanBrokerID == "" {
+		panic("LoanBrokerSet did not return a LoanBroker ID")
+	}
+
+	// Use validated ledger time, not the local clock, to enter the investment phase.
+	deadline := time.Now().Add(5 * time.Minute)
+	for {
+		validatedLedger, err := client.GetLedger(&ledgerquery.Request{LedgerIndex: common.Validated})
+		if err != nil {
+			panic(err)
+		}
+		if uint32(validatedLedger.Ledger.CloseTime) >= subscriptionDate {
+			break
+		}
+		if time.Now().After(deadline) {
+			panic("Timed out waiting for the vault investment phase")
+		}
+		fmt.Print("Setting up tutorial: 5/7 (waiting for vault investment phase)\r")
+		time.Sleep(2 * time.Second)
+	}
+
 	fmt.Print("Setting up tutorial: 6/7\r")
 
-	// Create 2 identical loans with complete repayment due in 30 days
+	// fixCleanup3_4_0 permits impairment only after a payment becomes late.
+	// Give the management tutorial a 60-second loan and grace period so it can
+	// demonstrate impairment and default without waiting 30 days. Keep the
+	// repayment tutorial's separate loan payable in 30 days.
 
 	// Helper function to create, sign, and submit a LoanSet transaction
-	createLoan := func(ticketSequence uint32) *requests.TxResponse {
+	createLoan := func(ticketSequence uint32, paymentInterval types.PaymentInterval) *requests.TxResponse {
 		counterparty := borrowerWallet.GetAddress()
 		loanSetTx := &transaction.LoanSet{
 			BaseTx: transaction.BaseTx{
@@ -549,7 +601,8 @@ func main() {
 			Counterparty:       &counterparty,
 			InterestRate:       ptr(types.InterestRate(500)),
 			PaymentTotal:       ptr(types.PaymentTotal(1)),
-			PaymentInterval:    ptr(types.PaymentInterval(2592000)),
+			PaymentInterval:    &paymentInterval,
+			GracePeriod:        ptr(types.GracePeriod(60)),
 			LoanOriginationFee: ptr(types.XRPLNumber("100")),
 			LoanServiceFee:     ptr(types.XRPLNumber("10")),
 		}
@@ -560,13 +613,14 @@ func main() {
 		}
 
 		// Loan broker signs first
-		_, _, err := loanBrokerWallet.Sign(flatTx)
+		brokerBlob, _, err := loanBrokerWallet.Sign(flatTx)
 		if err != nil {
 			panic(err)
 		}
 
-		// Borrower signs second
-		blob, _, err := wallet.SignLoanSetByCounterparty(borrowerWallet, &flatTx, nil)
+		// Sign the returned blob: Wallet.Sign does not modify flatTx in v0.3.1.
+		// Counterparty signing also requires fixCleanup3_4_0 on the network.
+		_, blob, _, err := wallet.SignLoanSetByCounterpartyBlob(borrowerWallet, brokerBlob, nil)
 		if err != nil {
 			panic(err)
 		}
@@ -576,14 +630,17 @@ func main() {
 		if err != nil {
 			panic(err)
 		}
+		if resp.Meta.TransactionResult != "tesSUCCESS" {
+			panic(fmt.Sprintf("LoanSet failed: %s", resp.Meta.TransactionResult))
+		}
 		return resp
 	}
 
 	loan1Ch := make(chan *requests.TxResponse, 1)
 	loan2Ch := make(chan *requests.TxResponse, 1)
 
-	go func() { loan1Ch <- createLoan(lbTickets[2]) }()
-	go func() { loan2Ch <- createLoan(lbTickets[3]) }()
+	go func() { loan1Ch <- createLoan(lbTickets[2], 60) }()
+	go func() { loan2Ch <- createLoan(lbTickets[3], 2592000) }()
 
 	loan1Resp := <-loan1Ch
 	loan2Resp := <-loan2Ch
@@ -648,7 +705,7 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	if err := os.WriteFile("lending-setup.json", jsonData, 0644); err != nil {
+	if err := os.WriteFile("lending-setup.json", jsonData, 0o644); err != nil {
 		panic(err)
 	}
 

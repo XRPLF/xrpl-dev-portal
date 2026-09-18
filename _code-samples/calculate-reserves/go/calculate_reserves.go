@@ -1,4 +1,3 @@
-
 // Set up client ----------------------
 
 package main
@@ -6,6 +5,7 @@ package main
 import (
 	"fmt"
 	"strconv"
+
 	"github.com/Peersyst/xrpl-go/xrpl/currency"
 	"github.com/Peersyst/xrpl-go/xrpl/queries/account"
 	"github.com/Peersyst/xrpl-go/xrpl/queries/server"
@@ -37,12 +37,15 @@ func main() {
 
 	baseReserve := serverState.State.ValidatedLedger.ReserveBase
 	reserveInc := serverState.State.ValidatedLedger.ReserveInc
+	if reserveInc == nil {
+		panic("server_state did not return reserve_inc")
+	}
 
 	baseReserveXrp, err := currency.DropsToXrp(strconv.FormatUint(uint64(baseReserve), 10))
 	if err != nil {
 		panic(err)
 	}
-	reserveIncXrp, err := currency.DropsToXrp(strconv.FormatUint(uint64(reserveInc), 10))
+	reserveIncXrp, err := currency.DropsToXrp(strconv.FormatUint(*reserveInc, 10))
 	if err != nil {
 		panic(err)
 	}
@@ -62,7 +65,7 @@ func main() {
 
 	// Calculate total reserve ----------------------
 
-	totalReserve := baseReserve + (uint(ownerCount) * reserveInc)
+	totalReserve := uint64(baseReserve) + (uint64(ownerCount) * *reserveInc)
 
 	totalReserveXrp, err := currency.DropsToXrp(strconv.FormatUint(uint64(totalReserve), 10))
 	if err != nil {

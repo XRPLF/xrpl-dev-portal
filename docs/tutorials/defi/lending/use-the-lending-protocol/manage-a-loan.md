@@ -136,7 +136,7 @@ Check the current status of the loan using the [ledger_entry method][].
 {% code-snippet file="/_code-samples/lending-protocol/py/loan_manage.py" language="py" from="# Check loan status" before="# Prepare LoanManage transaction to impair" /%}
 {% /tab %}
 {% tab label="Go" %}
-{% code-snippet file="/_code-samples/lending-protocol/go/loan-manage/main.go" language="go" from="// Check loan status" before="// Prepare LoanManage transaction to impair" /%}
+{% code-snippet file="/_code-samples/lending-protocol/go/loan-manage/main.go" language="go" from="// Check loan status" before="// Countdown until the loan can be impaired" /%}
 {% /tab %}
 {% /tabs %}
 
@@ -156,7 +156,9 @@ The countdown displays the expected remaining seconds in real-time, but is valid
 This step is required if both `LendingProtocol` and `LendingProtocolV1_1` are enabled. The **Python** code is currently written for only `LendingProtocol`, which can skip this step.
 {% /tab %}
 {% tab label="Go" %}
-This step is required if both `LendingProtocol` and `LendingProtocolV1_1` are enabled. The **Go** code is currently written for only `LendingProtocol`, which can skip this step.
+The `fixCleanup3_4_0` amendment requires the payment to be late before impairment. The Go example waits until validated ledger time passes the payment due date. Its setup creates a loan with a 60-second payment interval for this tutorial.
+
+{% code-snippet file="/_code-samples/lending-protocol/go/loan-manage/main.go" language="go" from="// Countdown until the loan can be impaired" before="// Prepare LoanManage transaction to impair" /%}
 {% /tab %}
 {% /tabs %}
 
@@ -228,7 +230,7 @@ The countdown displays the remaining seconds in real-time.
 {% tab label="Go" %}
 {% code-snippet file="/_code-samples/lending-protocol/go/loan-manage/main.go" language="go" from="// Countdown until loan can be defaulted" before="// Prepare LoanManage transaction to default" /%}
 
-The countdown displays the remaining seconds in real-time.
+The countdown uses validated ledger time and waits until the payment due date plus the grace period has passed.
 {% /tab %}
 {% /tabs %}
 
