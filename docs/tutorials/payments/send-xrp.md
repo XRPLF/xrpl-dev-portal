@@ -28,7 +28,7 @@ To interact with the XRP Ledger, you need to set up a dev environment with the n
 - **Python** with the [`xrpl-py` library](https://xrpl-py.readthedocs.io/). See [Get Started using Python](../get-started/get-started-python.md) for setup steps.
 - **Java** with the [xrpl4j library](https://github.com/XRPLF/xrpl4j). See [Get Started Using Java](../get-started/get-started-java.md) for setup steps.
 - **PHP** with the [XRPL_PHP library](https://github.com/AlexanderBuzz/xrpl-php). See [Get Started Using PHP](../get-started/get-started-php.md) for setup steps.
-- **Go** with the [xrpl-go library](https://github.com/Peersyst/xrpl-go). See [Get Started Using Go](../get-started/get-started-go.md) for setup steps.
+- **Go** with the [xrpl-go library](https://github.com/XRPLF/xrpl-go). See [Get Started Using Go](../get-started/get-started-go.md) for setup steps.
 
 ## Send a Payment on the Test Net
 
@@ -184,7 +184,7 @@ Signing a transaction uses your credentials to authorize the transaction on your
 - **Python:** Use the [`xrpl.transaction.safe_sign_transaction()` method](https://xrpl-py.readthedocs.io/en/latest/source/xrpl.transaction.html#xrpl.transaction.safe_sign_transaction) with a model and `Wallet` object.
 - **Java:** Use a [`SignatureService`](https://javadoc.io/doc/org.xrpl/xrpl4j-crypto-core/latest/org/xrpl/xrpl4j/crypto/signing/SignatureService.html) instance to sign the transaction. For this tutorial, use the [`SingleKeySignatureService`](https://javadoc.io/doc/org.xrpl/xrpl4j-crypto-bouncycastle/latest/org/xrpl/xrpl4j/crypto/signing/SingleKeySignatureService.html).
 - **PHP:** Use a [`sign()` method of a `Wallet` instance](https://alexanderbuzz.github.io/xrpl-php-docs/wallet.html#signing-a-transaction) instance to sign the transaction. The input to this step is a completed array of transaction instructions.
-- **Go:** Use the [`Sign()` method of the `Wallet` package](https://pkg.go.dev/github.com/Peersyst/xrpl-go@v0.1.12/xrpl/wallet) to sign the transaction. 
+- **Go:** Use the [`Sign()` method of the `Wallet` package](https://pkg.go.dev/github.com/Peersyst/xrpl-go/xrpl/wallet) to sign the transaction.
 
 {% tabs %}
 
@@ -235,7 +235,7 @@ Now that you have a signed transaction, you can submit it to an XRP Ledger serve
 - **Python:** Use the [`xrpl.transaction.submit_and_wait()` method](https://xrpl-py.readthedocs.io/en/stable/source/xrpl.transaction.html#xrpl.transaction.submit_and_wait) to submit a transaction to the network and wait for a response.
 - **Java:** Use the [`XrplClient.submit(SignedTransaction)` method](https://javadoc.io/doc/org.xrpl/xrpl4j-client/latest/org/xrpl/xrpl4j/client/XrplClient.html#submit(org.xrpl.xrpl4j.crypto.signing.SignedTransaction)) to submit a transaction to the network. Use the [`XrplClient.ledger()`](https://javadoc.io/doc/org.xrpl/xrpl4j-client/latest/org/xrpl/xrpl4j/client/XrplClient.html#ledger(org.xrpl.xrpl4j.model.client.ledger.LedgerRequestParams)) method to get the latest validated ledger index.
 - **PHP:** Use the [`submitAndWait()` method of the Client](https://alexanderbuzz.github.io/xrpl-php-docs/client.html) to submit a transaction to the network and wait for the response.
-- **Go:** Use [`SubmitTxAndWait()` or `SubmitTxBlobAndWait()` methods os the Client](https://pkg.go.dev/github.com/Peersyst/xrpl-go@v0.1.12/xrpl/websocket#Client.SubmitTxAndWait) to submit a transaction to the network and wait for the response.
+- **Go:** Use [`SubmitTxAndWait()` or `SubmitTxBlobAndWait()` methods of the Client](https://pkg.go.dev/github.com/Peersyst/xrpl-go/xrpl/websocket#Client.SubmitTxAndWait) to submit a transaction to the network and wait for the response.
 
 {% tabs %}
 
