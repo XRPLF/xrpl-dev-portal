@@ -52,4 +52,8 @@ Importantly, the documents that Alice sends to Isabel can include personally ide
 
 To revoke a credential, Isabel can delete it from the ledger. Alice can also delete her own credentials.
 
+## Security Audit
+
+Credentials was independently audited by Halborn (January 2025), which identified minor issues that were reviewed and addressed during the engagement. See the full [audit report](https://www.halborn.com/audits/ripple/ripple---smart-contract-audit---credentials-c092b3).
+
 {% raw-partial file="/docs/_snippets/common-links.md" /%}
