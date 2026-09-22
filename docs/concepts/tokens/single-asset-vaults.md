@@ -290,6 +290,12 @@ Depending on the connected on-chain protocol, vaults can be applied to various u
 
 The only supported use cases right now are _asset management_ and [_lending markets_](./lending-protocol.md).
 
+## Security Audit
+
+Single Asset Vaults was independently audited by Halborn (February–March 2025), which uncovered several issues that were addressed during the engagement. See the full [audit report](https://www.halborn.com/audits/ripple/ripple---single-asset-vault---smart-contract-assessment-d39437).
+
+Multiple `fixCleanup` amendments released after the audit (`fixCleanup3_1_3` through `fixCleanup3_4_0`) made further correctness, precision, and rounding fixes to Vault behavior; see the [Known Amendments](https://xrpl.org/resources/known-amendments) page for details on each.
+
 ## See Also
 
 - **Concepts:**

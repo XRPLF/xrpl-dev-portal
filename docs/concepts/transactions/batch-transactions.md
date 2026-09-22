@@ -142,4 +142,10 @@ Explorers and indexers that display `Batch` transactions should:
 - Show inner transactions in context with their outer `Batch` transaction, rather than as standalone transactions.
 - Consider grouping inner transactions with their outer transaction in transaction lists for clarity.
 
+## Security Audit
+
+Batch Transactions was independently audited by Halborn (January–February 2025), which identified critical flaws in atomicity handling that were remediated before launch. See the full [audit report](https://www.halborn.com/audits/ripple/ripple---batch---smart-contract-assessment-420598).
+
+A separate signature-validation vulnerability was found in February 2026 (see the [vulnerability disclosure report](https://xrpl.org/blog/2026/vulnerabilitydisclosurereport-bug-feb2026)) and fixed in the `BatchV1_1` amendment. Halborn re-audited the fix in March–April 2026. See the full [re-audit report](https://www.halborn.com/audits/ripple/batch-re-audit-314089).
+
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

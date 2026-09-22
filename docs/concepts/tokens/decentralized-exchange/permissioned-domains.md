@@ -37,4 +37,10 @@ Currently, there are no available XRP Ledger features that use permissioned doma
 - [Single Asset Vault (XLS-65d)](https://opensource.ripple.com/docs/xls-65d-single-asset-vault) and [Lending Protocol (XLS-66d)](https://github.com/XRPLF/XRPL-Standards/pull/240)
 - [Permissioned DEXes](./permissioned-dexes.md)
 
+## Security Audit
+
+Permissioned Domains was independently audited by Halborn (December 2024–January 2025), which found no major flaws. See the full [audit report](https://www.halborn.com/audits/ripple/ripple---smart-contract-audit---permissioned-domains-0bd9c6).
+
+The `fixCleanup3_1_3` amendment later added an invariant check to ensure Permissioned Domains aren't modified by failed transactions; see the [Known Amendments](https://xrpl.org/resources/known-amendments) page for details.
+
 {% raw-partial file="/docs/_snippets/common-links.md" /%}
