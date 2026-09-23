@@ -8,7 +8,7 @@ labels:
 # gateway_balances
 {% source-link path="src/xrpld/rpc/handlers/account/GatewayBalances.cpp" /%}
 
-The `gateway_balances` command calculates the total balances issued by a given account, optionally excluding amounts held by [operational addresses](../../../../concepts/accounts/account-types.md).
+The `gateway_balances` command calculates the total balances of [trust line tokens](../../../../concepts/tokens/fungible-tokens/trust-line-tokens.md) issued by a given account, optionally excluding amounts held by [operational addresses](../../../../concepts/accounts/account-types.md). This method doesn't support [MPTs](../../../../concepts/tokens/fungible-tokens/multi-purpose-tokens.md).
 
 {% admonition type="warning" name="Caution" %}Some public servers disable this API method because it can require a large amount of processing.{% /admonition %}
 
@@ -131,8 +131,19 @@ An example of a successful response:
         }
       ]
     },
+    "frozen_balances": {
+      "r4keXr5myiU4iTLh68ZqZ2CgsJ8dM9FSW6": [
+        {
+          "currency": "BTC",
+          "value": "0.091207822800868"
+        }
+      ]
+    },
     "ledger_hash": "61DDBF304AF6E8101576BF161D447CA8E4F0170DDFBEAFFD993DC9383D443388",
     "ledger_index": 14483195,
+    "locked": {
+      "USD": "500.75"
+    },
     "obligations": {
       "BTC": "5908.324927635318",
       "EUR": "992471.7419793958",
@@ -197,8 +208,19 @@ An example of a successful response:
                 }
             ]
         },
+        "frozen_balances": {
+            "r4keXr5myiU4iTLh68ZqZ2CgsJ8dM9FSW6": [
+                {
+                    "currency": "BTC",
+                    "value": "0.091207822800868"
+                }
+            ]
+        },
         "ledger_hash": "980FECF48CA4BFDEC896692C31A50D484BDFE865EC101B00259C413AA3DBD672",
         "ledger_index": 14483212,
+        "locked": {
+            "USD": "500.75"
+        },
         "obligations": {
             "BTC": "5908.324927635318",
             "EUR": "992471.7419793958",
@@ -267,6 +289,9 @@ An example of a successful response:
       },
       "ledger_hash" : "6C789EAF25A931565E5936042EED037F287F3348B61A70777649552E0385B0E4",
       "ledger_index" : 57111383,
+      "locked" : {
+         "USD" : "500.75"
+      },
       "obligations" : {
          "BTC" : "1762.700511879441",
          "EUR" : "813792.4267005104",
@@ -293,6 +318,8 @@ The response follows the [standard format][], with a successful result containin
 | `ledger_hash`          | String - [Hash][]         | _(May be omitted)_ The identifying hash of the ledger version that was used to generate this response. |
 | `ledger_index`         | Number - [Ledger Index][] | _(May be omitted)_ The ledger index of the ledger version that was used to generate this response. |
 | `ledger_current_index` | Number - [Ledger Index][] | _(Omitted if `ledger_current_index` is provided)_ The [ledger index][] of the current in-progress ledger version, which was used to retrieve this information. |
+| `frozen_balances`      | Object                    | _(Omitted if empty)_ The amounts issued to other addresses that this account has frozen. The keys are addresses and the values are arrays of currency amounts they hold. |
+| `locked`               | Object                    | _(Omitted if empty)_ The total amounts of currency issued by this account that are currently locked in [Escrow entry][] ledger entries. Doesn't include amounts locked in escrow as [MPTs](../../../../concepts/tokens/fungible-tokens/multi-purpose-tokens.md) as this method excludes MPTs from all balance totals. {% amendment-disclaimer name="TokenEscrow" /%} |
 
 ## Possible Errors
 
