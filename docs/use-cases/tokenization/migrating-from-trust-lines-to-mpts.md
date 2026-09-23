@@ -48,7 +48,7 @@ Migration may not be appropriate when:
 
 ## Migration Steps
 
-The following sections outline the steps to migrate from trust line tokens to MPTs. Migration is per-asset: if your account issues multiple trust line tokens, run these steps separately for each one you migrate.
+The following sections outline the steps to migrate from trust line tokens to MPTs. Migration is per-asset: if your account issues multiple trust line tokens, run these steps separately for each asset you migrate.
 
 ### 1. Create the MPT Issuance
 
@@ -122,11 +122,11 @@ Each MPT holder signs their own opt-in, so you can't opt in for them or remove t
 
 If the issuance enables [allow-listing](../../concepts/tokens/fungible-tokens/authorized-trust-lines.md#authorized-trust-lines) (**Require Auth** flag), the opt-in is two-sided. The holder authorizes the MPT first, and then you authorize the holder with your own MPTokenAuthorize transaction. You cannot pre-approve a holder before they have opted in.
 
-### 3. Migrate the Balances
+### 3. Migrate the balances
 
 The XRP Ledger doesn't provide a transaction that converts a trust line token into an MPT. To migrate existing balances, you can use the following mechanisms:
 
-- [A DEX or AMM swap](#dex-or-amm-swap)
+- [DEX or AMM swap](#dex-or-amm-swap)
 - [Clawback and Check swap](#clawback-and-check-swap)
 - [Batch swap](#batch-swap)
 
@@ -183,7 +183,7 @@ The holder finishes the swap with a CheckCash transaction. A check doesn't move 
 
 Two preconditions decide whether this path is even available to you:
 
-- The old token's issuing account must have **Allow Trust Line Clawback** enabled, and you can only turn that setting on before the account owns any trust lines or other ledger objects. If you issued the old token without it, you can't claw back those balances.
+- The old token's issuing account must have **Allow Trust Line Clawback** enabled, and you can only turn that setting on before the account owns any trust lines or other ledger entries. If you issued the old token without it, you can't claw back those balances.
 - If the issuance requires allow-listing (**Require Auth** flag), you must authorize MPT holders before they can cash the check, so run [Step 2](#2-authorize-the-mpt) first.
 
 This swap isn't atomic end to end. Once the clawback succeeds, the holder can end up with neither token if the check expires before they cash it, so watch for expired checks and reissue them.
@@ -213,7 +213,7 @@ Because this swap involves two accounts, both of you must sign the whole batch. 
 
 A batch holds up to eight inner transactions, so you can combine several holders into one transaction as long as every account involved signs it.
 
-### 4. Retire the Old Token
+### 4. Retire the old token
 
 **Performed by:** Issuer and Holder
 
@@ -221,7 +221,7 @@ A batch holds up to eight inner transactions, so you can combine several holders
 
 - **Tutorials:** [Enact Global Freeze](../../tutorials/tokens/fungible-tokens/enact-global-freeze.md), [Freeze a Trust Line](../../tutorials/tokens/fungible-tokens/freeze-a-trust-line.md)
 - **Transactions:** [AccountSet](../../references/protocol/transactions/types/accountset.md), [TrustSet](../../references/protocol/transactions/types/trustset.md)
-- **Concepts:** [Freezes](../../concepts/tokens/fungible-tokens/freezes.md)
+- **Concepts:** [Trust Line Tokens](../../concepts/tokens/fungible-tokens/trust-line-tokens.md), [Freezes](../../concepts/tokens/fungible-tokens/freezes.md)
 
 ---
 
@@ -234,13 +234,13 @@ You can't delete holders' trust lines, so retiring the old token is a wind-down 
     {% admonition type="danger" name="Warning" %}
     If you enabled **No Freeze**, a Global Freeze becomes irreversible. You can't lift it to reactivate the old token later.
     {% /admonition %}
-5. Encourage holders to offload their old token balance, reset their trust line to the default settings, and delete it. Until then, each holder carries two owner reserve increments: one for the new `MPToken` and one for the old trust line.
+5. Encourage holders to offload their old token balance and reset their trust line to the [default settings](../../concepts/tokens/fungible-tokens/trust-line-tokens.md#trust-line-settings), which deletes it. Until then, each holder carries two owner reserve increments: one for the new `MPToken` and one for the old trust line.
 
-Offloading the balance and resetting the trust line's limit isn't always enough to delete it. Deletion also requires the holder's **No Ripple** flag to match their own **Default Ripple** setting, which a plain TrustSet transaction doesn't set. Have holders submit a final TrustSet with `tfSetNoRipple` before they try to delete the line.
+Offloading the balance and resetting the trust line's limit isn't always enough to delete it. Deletion also requires the holder's **No Ripple** flag to be in its default state, which depends on their **Default Ripple** setting. A plain TrustSet transaction doesn't set this flag, so have holders include `tfSetNoRipple` in the TrustSet that resets their limit to `0`. See [Reserves and Deletion](../../concepts/tokens/fungible-tokens/trust-line-tokens.md#reserves-and-deletion) to learn more.
 
 ## What Changes for Integrators
 
-Wallets, exchanges, explorers, and custody systems that already support MPTs still need to reconcile any token that migrates. The old trust line and the new MPT are two separate ledger objects representing one asset, so balance totals, deposit detection, and displayed tickers must resolve them as the same thing.
+Wallets, exchanges, explorers, and custody systems that already support MPTs still need to reconcile any token that migrates. The old trust line and the new MPT are two separate ledger entries representing one asset, so balance totals, deposit detection, and displayed tickers must resolve them as the same thing.
 
 | Topic | What changes | What to look out for |
 | :--- | :--- | :--- |
