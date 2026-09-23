@@ -13,7 +13,7 @@ The {% code-page-name /%} method gets information about an [Automated Market Mak
 
 {% amendment-disclaimer name="AMM" /%}
 
-### Request Format
+## Request Format
 
 An example of the request format:
 
@@ -72,7 +72,7 @@ The request includes the following parameters:
 
 You must specify _either_ `amm_account` or both `asset` and `asset2`.
 
-### Response Format
+## Response Format
 
 An example of a successful response:
 
@@ -257,7 +257,7 @@ my_asset2 = amount2.value * my_share
 
 Redeeming your LP Tokens via [AMMWithdraw](/docs/references/protocol/transactions/types/ammwithdraw) entitles you to withdraw approximately this share of each asset.
 
-### Possible Errors
+## Possible Errors
 
 - Any of the [universal error types][].
 - `actNotFound` - The AMM for this asset pair does not exist, or an account specified in the request does not exist.
