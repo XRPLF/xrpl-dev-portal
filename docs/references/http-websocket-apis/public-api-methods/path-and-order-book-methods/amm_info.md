@@ -13,7 +13,6 @@ The {% code-page-name /%} method gets information about an [Automated Market Mak
 
 {% amendment-disclaimer name="AMM" /%}
 
-
 ### Request Format
 
 An example of the request format:
@@ -202,7 +201,6 @@ The response follows the [standard format][], with a successful result containin
 | `ledger_index`         | [Ledger Index][] | _(Omitted if `ledger_current_index` is provided instead)_ The [ledger index][] of the ledger version used when retrieving this information. |
 | `validated`            | Boolean          | If `true`, the ledger used for this request is validated and these results are final; if omitted or set to `false`, the data is pending and may change. |
 
-
 ### AMM Description Object
 
 The `amm` field is an object describing the current status of an Automated Market Maker (AMM) in the ledger, and contains the following fields:
@@ -219,7 +217,6 @@ The `amm` field is an object describing the current status of an Automated Marke
 | `trading_fee`   | Number              | The AMM's current trading fee, in units of 1/100,000; a value of 1 is equivalent to a 0.001% fee. |
 | `vote_slots`    | Array               | _(May be omitted)_ The current votes for the AMM's trading fee, as [Vote Slot Objects](#vote-slot-objects). |
 
-
 ### Auction Slot Object
 
 The `auction_slot` field of the `amm` object describes the current auction slot holder of the AMM, and contains the following fields:
@@ -233,7 +230,6 @@ The `auction_slot` field of the `amm` object describes the current auction slot 
 | `price`          | [Currency Amount][] | The amount, in LP Tokens, that the auction slot holder paid to win the auction slot. This affects the price to outbid the current slot holder. |
 | `time_interval`  | Number              | The current 72-minute time interval this auction slot is in, from 0 to 19. The auction slot expires after 24 hours (20 intervals of 72 minutes) and affects the cost to outbid the current holder and how much the current holder is refunded if someone outbids them. |
 
-
 ### Vote Slot Objects
 
 Each entry in the `vote_slots` array represents one liquidity provider's vote to set the trading fee, and contains the following fields:
@@ -244,13 +240,28 @@ Each entry in the `vote_slots` array represents one liquidity provider's vote to
 | `trading_fee` | Number | The trading fee this liquidity provider voted for, in units of 1/100,000. |
 | `vote_weight` | Number | How much this liquidity provider's vote counts towards the final trading fee. This is proportional to how much of the AMM's LP Tokens this liquidity provider holds. The value is equal to 100,000 times the number of this LP Tokens this liquidity provider holds, divided by the total number of LP Tokens outstanding. For example, a value of 1000 means that the liquidity provider holds 1% of this AMM's LP Tokens. |
 
+## Calculate the Value of Your LP Tokens
+
+To calculate the worth of a given amount of LP Tokens, call `amm_info` for the asset pair, then:
+
+1. **Get your fractional share of the pool:** Divide your LP Token amount by the `value` field of `lp_token`, the pool's total outstanding LP Tokens.
+2. **Get your share of each asset:** Multiply that fraction by the `value` fields of `amount` and `amount2`.
+
+For example, if you hold `N` LP Tokens:
+
+```text
+my_share  = N / lp_token.value
+my_asset1 = amount.value  * my_share
+my_asset2 = amount2.value * my_share
+```
+
+Redeeming your LP Tokens via [AMMWithdraw](/docs/references/protocol/transactions/types/ammwithdraw) entitles you to withdraw approximately this share of each asset.
 
 ### Possible Errors
 
 - Any of the [universal error types][].
 - `actNotFound` - The AMM for this asset pair does not exist, or an account specified in the request does not exist.
 - `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
-
 
 ## See Also
 
