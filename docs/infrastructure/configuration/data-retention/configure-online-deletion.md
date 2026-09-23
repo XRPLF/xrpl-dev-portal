@@ -69,7 +69,9 @@ To change the amount of history your server stores, perform the following steps:
 
     After online deletion runs, the `complete_ledgers` range reflects that older ledgers are no longer available. As your server accumulates history, the total number of ledgers available should slowly increase to twice the `online_delete` value you configured, then decrease when online deletion runs.
 
-4. Monitor your `xrpld` logs for messages that begin with `SHAMapStore::WRN`. This can indicate that [online deletion is being interrupted](online-deletion.md#interrupting-online-deletion) because your server fell out of sync with the network, or because there are gaps in your recent ledger history.
+4. Monitor your `xrpld` logs for messages that begin with `SHAMapStore:WRN`. This can indicate that [online deletion is being interrupted](online-deletion.md#interrupting-online-deletion) because your server fell out of sync with the network, or because there are gaps in your recent ledger history.
+
+    Routine progress logs under the same prefix, so also check the message text, not just the prefix alone. A message containing mention of _finished rotation_ confirms a normal, completed rotation; an interruption instead logs a message about waiting for the node to stabilize.
 
     The deletion process waits for the node to fully sync and fill any gaps. If it waits too long (specifically, if the network validates more ledgers than your `max_waiting_ledgers` limit during this pause), the deletion attempt is aborted and retried later.
 
