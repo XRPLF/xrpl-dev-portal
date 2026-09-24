@@ -21,6 +21,13 @@ Acquiring full history from the peer-to-peer network takes a long time (several 
 
 You do not need a full history server to participate in the network, validate transactions, or know the current state of the network. Full history is only useful for knowing the outcome of transactions that occurred in the past, or the state of the ledger at a given time in the past. To get such information, you must rely on other servers having the history you need.
 
+If you transfer a database dump via Amazon S3, keep in mind that S3 limits individual objects to about 5 TB. This can be smaller than a full-history `nudb.dat` file, so split the file into smaller pieces before uploading. For example:
+
+```
+split -b 1000000000000 --numeric-suffixes=1 nudb.dat /rippled/tmp/nudb.dat
+```
+
+A full dump consists of `ledger.db`, `transaction.db`, `nudb/nudb.key`, and the split `nudb/nudb.dat.*` pieces.
 
 ## Configuration Steps
 
