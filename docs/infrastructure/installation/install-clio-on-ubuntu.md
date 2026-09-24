@@ -24,7 +24,7 @@ Before you install Clio, you must meet the following requirements.
 - Ensure that your system meets the [system requirements](system-requirements.md).
 
     {% admonition type="info" name="Note" %}
-    Clio has the same system requirements as the `xrpld` server, except Clio needs less disk space to store the same amount of ledger history.
+    Clio has the same system requirements as the `xrpld` server, except Clio needs less disk space to store the same amount of ledger history. To check the current disk usage of a running cluster, use `nodetool tablestats` or `du` on the Cassandra data directory. Since full history continuously grows, don't rely on a fixed estimate.
     {% /admonition %}
 
 - Access to a Cassandra cluster that is running locally or remote. You can choose to install and configure a Cassandra cluster manually by following the [Cassandra installation instructions](https://cassandra.apache.org/doc/latest/cassandra/getting_started/installing.html), or run Cassandra on a Docker container using one of the following commands.
