@@ -71,7 +71,7 @@ To change the amount of history your server stores, perform the following steps:
 
 4. Monitor your `xrpld` logs for messages that begin with `SHAMapStore:WRN`. This can indicate that [online deletion is being interrupted](online-deletion.md#interrupting-online-deletion) because your server fell out of sync with the network, or because there are gaps in your recent ledger history.
 
-    Normal progress also logs under the same prefix. The prefix alone doesn't identify an issue, so be sure to also check the message text. A message mentioning `finished rotation` indicates a normal, completed rotation; an interruption instead logs a message about waiting for the node to stabilize.
+    Normal progress also logs under the same prefix, so the prefix alone doesn't identify an issue. For descriptions of these log messages, see [Understanding Log Messages](../../troubleshooting/understanding-log-messages.md#rotating-validatedseq).
 
     The deletion process waits for the node to fully sync and fill any gaps. If it waits too long (specifically, if the network validates more ledgers than your `max_waiting_ledgers` limit during this pause), the deletion attempt is aborted and retried later.
 
