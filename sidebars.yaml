@@ -29,6 +29,8 @@
           labelTranslationKey: sidebar.docs.use-cases.tokenization
           expanded: false
           items:
+            - page: docs/use-cases/tokenization/creating-an-asset-backed-multi-purpose-token.md
+            - page: docs/use-cases/tokenization/migrating-from-trust-lines-to-mpts.md
             - page: docs/use-cases/tokenization/stablecoin-issuer.md
             - page: docs/use-cases/tokenization/nft-mkt-overview.md
               expanded: false
@@ -36,7 +38,6 @@
                 - page: docs/use-cases/tokenization/nftoken-marketplace.md
                 - page: docs/use-cases/tokenization/authorized-minter.md
                 - page: docs/use-cases/tokenization/digital-artist.md
-            - page: docs/use-cases/tokenization/creating-an-asset-backed-multi-purpose-token.md
         - group: DeFi
           groupTranslationKey: sidebar.docs.use-cases.defi
           expanded: true
