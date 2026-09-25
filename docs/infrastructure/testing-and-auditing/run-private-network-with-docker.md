@@ -8,7 +8,7 @@ labels:
 
 # Run a Private Network with Docker
 
-This tutorial describes how to run a private XRP Ledger network on your computer with [Docker](https://docs.docker.com/get-docker/) and the latest version of [xrpld](https://hub.docker.com/r/xrpllabsofficial/xrpld).
+This tutorial describes how to run a private XRP Ledger network on your computer with [Docker](https://docs.docker.com/get-docker/) and the latest version of [xrpld](https://hub.docker.com/r/rippleci/xrpld).
 
 While you can easily use the public XRP Testnet servers, running a private network can be useful when trying to understand how the XRP Ledger works, or when testing new features in isolation.
 
@@ -39,10 +39,10 @@ Generate the keys for **each** of your validator nodes by using the `validator-k
 1. In your terminal, run the following to execute commands within the `xrpld` Docker container shell:
 
     ```
-    docker run -it --entrypoint /bin/bash xrpllabsofficial/xrpld:latest
+    docker run -it --entrypoint /bin/bash rippleci/xrpld:latest
     ```
 
-    {% admonition type="info" name="Note" %}For Apple M1 or M2 chips, run `docker run -it --platform linux/amd64 --entrypoint /bin/bash xrpllabsofficial/xrpld:latest` instead.{% /admonition %}
+    {% admonition type="info" name="Note" %}For Apple M1 or M2 chips, run `docker run -it --platform linux/amd64 --entrypoint /bin/bash rippleci/xrpld:latest` instead.{% /admonition %}
 
     Sample output:
 
@@ -295,7 +295,7 @@ To start running your private network, follow these steps:
       validator_1:
         platform: linux/amd64
         container_name: validator_1
-        image: "xrpllabsofficial/xrpld"
+        image: "rippleci/xrpld"
         ports:
           - "8001:80"
           - "5006:5005"
@@ -306,7 +306,7 @@ To start running your private network, follow these steps:
       validator_2:
         platform: linux/amd64
         container_name: validator_2
-        image: "xrpllabsofficial/xrpld"
+        image: "rippleci/xrpld"
         ports:
           - "8002:80"
           - "5007:5005"
@@ -317,7 +317,7 @@ To start running your private network, follow these steps:
       validator_3:
         platform: linux/amd64
         container_name: validator_3
-        image: "xrpllabsofficial/xrpld"
+        image: "rippleci/xrpld"
         ports:
           - "8003:80"
           - "5008:5005"
