@@ -31,7 +31,7 @@ On supported platforms, see the [instructions on installing or updating `xrpld`]
 | [RPM for Red Hat / CentOS (x86-64)](https://packages.xrplf.org/repository/rpm-stable/x86_64/xrpld-3.4.1-1.el9.x86_64.rpm) | `04e9b56acecfdb11ba6274d33e2b7da7c96b3e71e8c2ed3890f1ca5f488bbb9a` |
 | [DEB for Ubuntu / Debian (x86-64)](https://packages.xrplf.org/repository/deb-stable/pool/x/xrpld/xrpld_3.4.1-1_amd64.deb) | `cae8ce3b9bc9451b19975c890714ba789d2004987cdfff9cbd55522c612c6f26` |
 
-Due to the security-sensitive nature of the fix, the source code for this release has not been published yet. It will be published along with a retrospective on a future date. The most recent commit in the git log should be the change setting the version:
+Due to the security-sensitive nature of the fix, the source code for this release has not been published yet. It will be published along with a retrospective on a future date. The most recent commit in the git log should be the change setting the version (however, the final commit ID will change when applied to the published code branch):
 
 ```text
 commit d147fccf54a500fce586522f28d6044c37fd8d29
