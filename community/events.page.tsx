@@ -1512,6 +1512,17 @@ const events = [
     image: require("../static/img/events/commons-purple.png"),
     end_date: "October 25, 2026",
   },
+  {
+    name: "XRP Sidekick NYC",
+    description:
+      "Join the XRP Community the night before Swell kicks off. Come together with holders and builders at Barcade for merch, food, arcade games, and conversations with the local ecosystem.",
+    type: "meetup",
+    link: "https://luma.com/xrp-sidekick-ny",
+    location: "NYC, USA",
+    date: "October 26, 2026",
+    image: require("../static/img/events/xrp-sidekick-ny.png"),
+    end_date: "October 26, 2026",
+  },
 
 ];
 
