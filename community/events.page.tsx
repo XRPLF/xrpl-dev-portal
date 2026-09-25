@@ -1513,7 +1513,7 @@ const events = [
     end_date: "October 25, 2026",
   },
   {
-    name: "XRP Sidekick - NY",
+    name: "XRP Sidekick NYC",
     description:
       "Join the XRP Community the night before Swell kicks off. Come together with holders and builders at Barcade for merch, food, arcade games, and conversations with the local ecosystem.",
     type: "meetup",
