@@ -63,7 +63,7 @@ If none of the above apply, please report the issue to Ripple as a security-sens
 
 ## Already validated sequence at or past
 
-Log messages such as the following indicate that a server received validations for different ledger indexes out of order.
+The following log message indicates that a server received validations for different ledger indexes out of order.
 
 ```text
 Validations:WRN Val for 2137ACEFC0D137EFA1D84C2524A39032802E4B74F93C130A289CD87C9C565011 trusted/full from nHUeUNSn3zce2xQZWNghQvd9WRH6FWEnCBKYVJu2vAizMxnXegfJ signing key n9KcRZYHLU9rhGVwB9e4wEMYsxXvUfgFxtmX25pc1QPNgweqzQf5 already validated sequence at or past 12133663 src=1
@@ -94,7 +94,7 @@ This error has no other impact on the `xrpld` server, which should continue to w
 
 ## Check for upgrade
 
-The following message indicates that the server has detected that it is running an older software version than at least 60% of its trusted validators:
+The following log message indicates that the server has detected that it is running an older software version than at least 60% of its trusted validators:
 
 ```text
 LedgerMaster:ERR Check for upgrade: A majority of trusted validators are running a newer version.
@@ -147,11 +147,11 @@ If neither of these scenarios applies, get a stack trace. On a Linux server, ope
 
 ## InboundLedger 11 timeouts for ledger
 
+The following log message indicates that your server is having trouble requesting specific ledger data from its peers:
+
 ```text
 InboundLedger:WRN 11 timeouts for ledger 8265938
 ```
-
-This indicates that your server is having trouble requesting specific ledger data from its peers.
 
 This is not strictly a problem, but if you want to acquire ledger history faster, you can configure `xrpld` to connect to peers with full history by adding or editing the `[ips_fixed]` config stanza and restarting the server. For example, to always try to connect to one of Ripple's full-history servers:
 
@@ -162,7 +162,7 @@ s2.ripple.com 51235
 
 ## InboundLedger Want hash
 
-Log messages such as the following indicate that the server is requesting ledger data from other servers:
+The following log message indicates that the server is requesting ledger data from other servers:
 
 ```text
 InboundLedger:WRN Want: 5AE53B5E39E6388DBACD0959E5F5A0FCAF0E0DCBA45D9AB15120E8CDD21E019B
@@ -172,7 +172,7 @@ This is normal if your server is syncing or backfilling.
 
 ## LoadMonitor Job
 
-Messages such as the following occur when a function takes a long time to run (over 11 seconds in this example):
+The following log message indicates that a function takes a long time to run (over 11 seconds in this example):
 
 ```text
 2018-Aug-28 22:56:36.180827973 LoadMonitor:WRN Job: gotFetchPack run: 11566ms wait: 0ms
@@ -203,7 +203,7 @@ type=RocksDB
 
 ## Not deleting
 
-Messages such as the following occur when [online deletion is interrupted](../configuration/data-retention/online-deletion.md#interrupting-online-deletion):
+The following log message indicates that [online deletion is interrupted](../configuration/data-retention/online-deletion.md#interrupting-online-deletion):
 
 ```text
 SHAMapStore:WRN Not deleting. state: syncing. age 25s
@@ -215,7 +215,7 @@ During startup, these messages are normal and can be safely ignored. At other ti
 
 ## Potential Censorship
 
-Log messages such as the following are issued when the XRP Ledger detects potential transaction censorship. For more information about these log messages and the transaction censorship detector, see [Transaction Censorship Detection](../../concepts/networks-and-servers/transaction-censorship-detection.md).
+The following log message indicates that the XRP Ledger detects potential transaction censorship. For more information about these log messages and the transaction censorship detector, see [Transaction Censorship Detection](../../concepts/networks-and-servers/transaction-censorship-detection.md).
 
 **Warning Message**
 
@@ -231,7 +231,7 @@ LedgerConsensus:ERR Potential Censorship: Eligible tx E08D6E9754025BA2534A787076
 
 ## rotating validatedSeq
 
-This message indicates that [online deletion](../configuration/data-retention/online-deletion.md) has started running:
+The following log message indicates that [online deletion](../configuration/data-retention/online-deletion.md) has started running:
 
 ```text
 SHAMapStore:WRN rotating  validatedSeq 54635511 lastRotated 54635255 deleteInterval 256 canDelete_ 4294967295
@@ -260,7 +260,7 @@ If the server falls out of sync while running online deletion, it interrupts onl
 
 ## Unable to determine hash of ancestor
 
-Log messages such as the following occur when the server sees a validation message from a peer and it does not know the parent ledger version that server is building on. This can occur when the server is not in sync with the rest of the network:
+The following log message indicates that the server sees a validation message from a peer and it does not know the parent ledger version that server is building on. This can occur when the server is not in sync with the rest of the network:
 
 ```text
 Validations:WRN Unable to determine hash of ancestor seq=3 from ledger hash=00B1E512EF558F2FD9A0A6C263B3D922297F26A55AEB56A009341A22895B516E seq=12133675
@@ -271,7 +271,7 @@ Validations:WRN Unable to determine hash of ancestor seq=3 from ledger hash=00B1
 ## [veto_amendments] section in config file ignored
 <!-- SPELLING_IGNORE: veto_amendments -->
 
-Log messages such as the following occur when  your `xrpld.cfg` file contains a legacy `[veto_amendments]` stanza. The first time the server starts on version 1.7.0 or higher, it reads the stanza to set amendment votes; on later restarts, it ignores the `[amendments]` and `[veto_amendments]` stanzas and prints this message instead.
+The following log message indicates that your `xrpld.cfg` file contains a legacy `[veto_amendments]` stanza. The first time the server starts on version 1.7.0 or higher, it reads the stanza to set amendment votes; on later restarts, it ignores the `[amendments]` and `[veto_amendments]` stanzas and prints this message instead.
 
 ```text
 Amendments:WRN [veto_amendments] section in config file ignored in favor of data in db/wallet.db.
@@ -282,7 +282,7 @@ To resolve this error, remove the `[amendments]` and `[veto_amendments]` stanzas
 
 ## View of consensus changed during open
 
-Log messages such as the following occur when a server is not in sync with the rest of the network:
+The following log message indicates that a server isn't in sync with the rest of the network:
 
 ```text
 LedgerConsensus:WRN View of consensus changed during open status=open,  mode=proposing
@@ -293,6 +293,8 @@ LedgerConsensus:WRN {"accepted":true,"account_hash":"89A821400087101F1BF2D2B912C
 {% partial file="/docs/_snippets/unsynced_warning_logs.md" /%}
 
 ## We are not running on the consensus ledger
+
+The following log message indicates that a server isn't in sync with the rest of the network:
 
 ```text
 NetworkOPs:WRN We are not running on the consensus ledger
