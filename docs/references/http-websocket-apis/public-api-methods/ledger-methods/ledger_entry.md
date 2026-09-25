@@ -186,6 +186,7 @@ xrpld json ledger_entry '{ "amendments": true, "ledger_index": "validated" }'
 <a id="get-amm-object"></a><!-- legacy ID -->
 
 {% amendment-disclaimer name="AMM" /%}
+{% amendment-disclaimer name="MPTokensV2" mode="updated" /%}
 
 Retrieve an Automated Market-Maker (AMM) object from the ledger. This is similar to [amm_info method][], but the `ledger_entry` version returns only the ledger entry as stored.
 
@@ -241,6 +242,24 @@ Retrieve an Automated Market-Maker (AMM) object from the ledger. This is similar
 {% tab label="Commandline" %}
 ```sh
 xrpld json ledger_entry '{ "amm": { "asset": { "currency": "XRP" }, "asset2": { "currency" : "TST", "issuer" : "rP9jPyP5kyvFRb6ZiRghAGw5u8SGAmU4bd" } }, "ledger_index": "validated" }'
+```
+{% /tab %}
+
+{% tab label="WebSocket - MPT" %}
+```json
+{
+  "id": 3,
+  "command": "ledger_entry",
+  "amm": {
+    "asset": {
+      "mpt_issuance_id": "000000045C488AAC5813270850685FFD89F4A4A8F4CD4C83"
+    },
+    "asset2": {
+      "mpt_issuance_id": "000000055C488AAC5813270850685FFD89F4A4A8F4CD4C83"
+    }
+  },
+  "ledger_index": "validated"
+}
 ```
 {% /tab %}
 
