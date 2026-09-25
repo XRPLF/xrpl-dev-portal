@@ -10,6 +10,7 @@
     - group: '2026'
       expanded: false
       items:
+        - page: 2026/xrpld-3.4.1.md
         - page: 2026/vulnerabilitydisclosurereport-bug-aug2026.md
         - page: 2026/xrpld-3.4.0.md
         - page: 2026/clio-2.8.0.md
