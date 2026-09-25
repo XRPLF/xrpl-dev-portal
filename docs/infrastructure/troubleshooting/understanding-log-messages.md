@@ -39,7 +39,6 @@ It contains the following fields:
 
 For simplicity, the examples in this page omit the date, time, and time zone indicator.
 
-
 ## Crashes
 
 Messages in the log that mention runtime errors can indicate that the server crashed. These messages usually start with a message such as one of the following examples:
@@ -62,7 +61,6 @@ If your server crashes randomly during operation or as a result of particular co
 
 If none of the above apply, please report the issue to Ripple as a security-sensitive bug. If Ripple can reproduce the crash, you may be eligible for a bounty. See <https://ripple.com/bug-bounty/> for details.
 
-
 ## Already validated sequence at or past
 
 Log messages such as the following indicate that a server received validations for different ledger indexes out of order.
@@ -76,7 +74,6 @@ Occasional messages of this type do not usually indicate a problem. If this type
 - The server writing the message is having network issues.
 - The validator described in the message is having network issues.
 - The validator described in the message is behaving maliciously.
-
 
 ## async_send failed
 
@@ -95,7 +92,6 @@ Check the `[insight]` stanza in your `xrpld`'s config file and confirm that you 
 
 This error has no other impact on the `xrpld` server, which should continue to work as normal except for the sending of StatsD metrics.
 
-
 ## Check for upgrade
 
 The following message indicates that the server has detected that it is running an older software version than at least 60% of its trusted validators:
@@ -105,7 +101,6 @@ LedgerMaster:ERR Check for upgrade: A majority of trusted validators are running
 ```
 
 This is not strictly a problem, but an old server version is likely to become [amendment blocked](../../concepts/networks-and-servers/amendments.md#amendment-blocked-servers). You should [update `xrpld`](../installation/index.md) to the latest stable version. (If you are connected to [devnet](../../concepts/networks-and-servers/parallel-networks.md), update to the latest nightly version instead.)
-
 
 ## Connection reset by peer
 
@@ -122,7 +117,6 @@ A large number of these messages around the same time may indicate a problem, su
 - Your internet connection to one or more specific peers was cut off.
 - Your server may have been overloading the peer with requests, causing the peer to disconnect your server.
 
-
 ## Consumer entry dropped with balance at or above drop threshold
 
 The following log message indicates that a client to the server's public API has been dropped as a result of [rate limiting](../../references/http-websocket-apis/api-conventions/rate-limiting.md):
@@ -136,6 +130,20 @@ The entry contains the IP address of the client that exceeded its rate limit, an
 If you see frequent messages from the same IP address, you may want to block those IP addresses from your network to reduce the load on your server's public API. (For example, you may be able to configure your firewall to block those IP addresses.)
 
 To avoid being dropped by rate limiting on your own server, [connect as an admin](../../tutorials/get-started/get-started-http-websocket-apis.md#admin-access).
+
+## Deadlock detected
+
+The following log message indicates the server detected a deadlock:
+
+```text
+LoadManager:FTL Deadlock detected. Deadlocked time: 892s
+```
+
+This occurs when: 
+- The computer is in sleep mode
+- The job queue contains numerous small jobs
+
+If neither of these scenarios applies, get a stack trace. On a Linux server, open the core file in `gdb`, then run `thread apply all bt full`.
 
 ## InboundLedger 11 timeouts for ledger
 
@@ -152,7 +160,6 @@ This is not strictly a problem, but if you want to acquire ledger history faster
 s2.ripple.com 51235
 ```
 
-
 ## InboundLedger Want hash
 
 Log messages such as the following indicate that the server is requesting ledger data from other servers:
@@ -162,7 +169,6 @@ InboundLedger:WRN Want: 5AE53B5E39E6388DBACD0959E5F5A0FCAF0E0DCBA45D9AB15120E8CD
 ```
 
 This is normal if your server is syncing or backfilling.
-
 
 ## LoadMonitor Job
 
@@ -207,7 +213,6 @@ The `state` indicates the [server state](../../references/http-websocket-apis/ap
 
 During startup, these messages are normal and can be safely ignored. At other times, messages like this usually indicate that the server does not meet the [system requirements](../installation/system-requirements.md), especially disk I/O, to run online deletion at the same time as everything else the server is doing.
 
-
 ## Potential Censorship
 
 Log messages such as the following are issued when the XRP Ledger detects potential transaction censorship. For more information about these log messages and the transaction censorship detector, see [Transaction Censorship Detection](../../concepts/networks-and-servers/transaction-censorship-detection.md).
@@ -223,7 +228,6 @@ LedgerConsensus:WRN Potential Censorship: Eligible tx E08D6E9754025BA2534A787076
 ```text
 LedgerConsensus:ERR Potential Censorship: Eligible tx E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDACFCD1698C7, which we are tracking since ledger 18851530 has not been included as of ledger 18851605. Additional warnings suppressed.
 ```
-
 
 ## rotating validatedSeq
 
@@ -254,7 +258,6 @@ The number at the end of the message is the [ledger index][] of the validated le
 
 If the server falls out of sync while running online deletion, it interrupts online deletion and writes a ["Not deleting" log message](#not-deleting) instead of a "finished rotation" message.
 
-
 ## Unable to determine hash of ancestor
 
 Log messages such as the following occur when the server sees a validation message from a peer and it does not know the parent ledger version that server is building on. This can occur when the server is not in sync with the rest of the network:
@@ -264,8 +267,6 @@ Validations:WRN Unable to determine hash of ancestor seq=3 from ledger hash=00B1
 ```
 
 {% partial file="/docs/_snippets/unsynced_warning_logs.md" /%}
-
-
 
 ## [veto_amendments] section in config file ignored
 <!-- SPELLING_IGNORE: veto_amendments -->
@@ -291,8 +292,6 @@ LedgerConsensus:WRN {"accepted":true,"account_hash":"89A821400087101F1BF2D2B912C
 
 {% partial file="/docs/_snippets/unsynced_warning_logs.md" /%}
 
-
-
 ## We are not running on the consensus ledger
 
 ```text
@@ -300,8 +299,6 @@ NetworkOPs:WRN We are not running on the consensus ledger
 ```
 
 {% partial file="/docs/_snippets/unsynced_warning_logs.md" /%}
-
-
 
 ## See Also
 
