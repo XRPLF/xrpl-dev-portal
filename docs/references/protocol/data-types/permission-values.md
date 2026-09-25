@@ -93,7 +93,7 @@ Granular Permissions have numeric types of 65537 and up, corresponding to specif
 | `65543`       | `AccountTransferRateSet` | [AccountSet][]         | Can set the [transfer fee of fungible tokens issued by the account](/docs/concepts/tokens/transfer-fees). |
 | `65544`       | `AccountTickSizeSet`     | [AccountSet][]         | Can set the [tick size of fungible tokens issued by the account](/docs/concepts/tokens/decentralized-exchange/ticksize). |
 | `65545`       | `PaymentMint`            | [Payment][]            | Can send payments that mint new fungible tokens or MPTs. |
-| `65546`       | `PaymentBurn`            | [Payment][]            | Can send payments that burn fungible tokens or MPTs, but not past a zero balance. {% amendment-disclaimer name="fixCleanup3_4_0" mode="updated" /%} |
+| `65546`       | `PaymentBurn`            | [Payment][]            | Can send payments that burn fungible tokens or MPTs, but not past a zero balance. {% amendment-disclaimer name="fixCleanup3_4_0" mode="updated" /%} **Warning:** Don't delegate this permission until the [fixCleanup3_4_0 amendment](/resources/known-amendments.md#fixcleanup3_4_0) is enabled. Before the fix, a delegate can sometimes mint fungible tokens instead of burning them. |
 | `65547`       | `MPTokenIssuanceLock`    | [MPTokenIssuanceSet][] | Can lock the balances of a particular MPT issued by the account. {% amendment-disclaimer name="MPTokensV1" /%} |
 | `65548`       | `MPTokenIssuanceUnlock`  | [MPTokenIssuanceSet][] | Can unlock the balances of a particular MPT issued by the account. {% amendment-disclaimer name="MPTokensV1" /%} |
 
