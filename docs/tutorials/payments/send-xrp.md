@@ -417,7 +417,7 @@ System.out.println(generationResult.seed()); // Example: sp6JS7f14BuwFY8Mw6bTtLK
 
 {% tab label="PHP" %}
 ```php
-use XRPL_PHP\Wallet\Wallet;
+use Hardcastle\XRPL_PHP\Wallet\Wallet;
 
 $wallet = Wallet::generate();
 
@@ -472,7 +472,7 @@ XrplClient xrplClient = new XrplClient(rippledUrl);
 
 {% tab label="PHP" %}
 ```
-use XRPL_PHP\Client\JsonRpcClient;
+use Hardcastle\XRPL_PHP\Client\JsonRpcClient;
 
 $client = new JsonRpcClient("https://xrplcluster.com");
 ```
@@ -522,7 +522,7 @@ XrplClient xrplClient = new XrplClient(rippledUrl);
 
 {% tab label="PHP" %}
 ```php
-use XRPL_PHP\Client\JsonRpcClient;
+use Hardcastle\XRPL_PHP\Client\JsonRpcClient;
 
 $client = new JsonRpcClient("http://localhost:5005");
 ```
