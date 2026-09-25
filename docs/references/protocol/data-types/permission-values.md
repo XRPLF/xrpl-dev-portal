@@ -14,6 +14,8 @@ status: not_enabled
 
 {% amendment-disclaimer name="PermissionDelegationV1_1" /%}
 
+{% partial file="/docs/_snippets/paymentburn-delegation-warning.md" /%}
+
 ## Numeric and String Values
 
 In the [canonical binary format](../binary-format.md) for transactions and ledger data, permission values are stored in a numeric form (specifically, as a 32-bit unsigned integer). However, in JSON they can be specified and returned in string format for convenience, similar to how transaction type names (`TransactionType` fields) work.
