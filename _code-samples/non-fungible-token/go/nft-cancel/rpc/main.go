@@ -13,146 +13,134 @@ import (
 )
 
 func main() {
-    // Initialize the RPC client configuration
-    cfg, err := rpc.NewClientConfig(
-        "https://s.devnet.rippletest.net:51234/",
-        rpc.WithFaucetProvider(faucet.NewDevnetFaucetProvider()),
-    )
-    if err != nil {
-        panic(err)
-    }
+	// Initialize the RPC client configuration
+	cfg, err := rpc.NewClientConfig(
+		"https://s.devnet.rippletest.net:51234/",
+		rpc.WithFaucetProvider(faucet.NewDevnetFaucetProvider()),
+	)
+	if err != nil {
+		panic(err)
+	}
 
-    // Create the RPC client
-    client := rpc.NewClient(cfg)
+	// Create the RPC client
+	client := rpc.NewClient(cfg)
 
-    // Step 1: Fund wallet
-    fmt.Println("Funding wallet...")
+	// Step 1: Fund wallet
+	fmt.Println("Funding wallet...")
 
-    // Create and fund the NFT minter wallet
-    nftMinter, err := wallet.New(crypto.ED25519())
-    if err != nil {
-        panic(err)
-    }
-    if err := client.FundWallet(&nftMinter); err != nil {
-        panic(err)
-    }
-    fmt.Println("NFT minter wallet funded!")
+	// Create and fund the NFT minter wallet
+	nftMinter, err := wallet.New(crypto.ED25519())
+	if err != nil {
+		panic(err)
+	}
+	if err := client.FundWallet(&nftMinter); err != nil {
+		panic(err)
+	}
+	fmt.Println("NFT minter wallet funded!")
 
-    // Step 2: Mint two NFTs
-    fmt.Println("Minting first NFT...")
+	// Step 2: Mint two NFTs
+	fmt.Println("Minting first NFT...")
 
-    nftMint := transaction.NFTokenMint{
-        BaseTx: transaction.BaseTx{
-            Account:         nftMinter.ClassicAddress,
-            TransactionType: transaction.NFTokenMintTx,
-        },
-        NFTokenTaxon: 0,
-        URI:          txnTypes.NFTokenURI("68747470733A2F2F676F6F676C652E636F6D"), // https://google.com
-    }
-    nftMint.SetTransferableFlag()
+	nftMint := transaction.NFTokenMint{
+		BaseTx: transaction.BaseTx{
+			Account:         nftMinter.ClassicAddress,
+			TransactionType: transaction.NFTokenMintTx,
+		},
+		NFTokenTaxon: 0,
+		URI:          txnTypes.NFTokenURI("68747470733A2F2F676F6F676C652E636F6D"), // https://google.com
+	}
+	nftMint.SetTransferableFlag()
 
-    responseMint, err := client.SubmitTxAndWait(nftMint.Flatten(), &types.SubmitOptions{
-        Autofill: true,
-        Wallet:   &nftMinter,
-    })
-    if err != nil {
-        panic(err)
-    }
-    if !responseMint.Validated {
-        fmt.Println("First NFTokenMint transaction is not in a validated ledger", responseMint)
-        return
-    }
-    fmt.Println("First NFT minted successfully! - Hash: ", responseMint.Hash)
-    fmt.Println()
+	responseMint, err := client.SubmitTxAndWait(nftMint.Flatten(), &types.SubmitOptions{
+		Autofill: true,
+		Wallet:   &nftMinter,
+	})
+	if err != nil {
+		panic(err)
+	}
+	if !responseMint.Validated {
+		fmt.Println("First NFTokenMint transaction is not in a validated ledger", responseMint)
+		return
+	}
+	fmt.Println("First NFT minted successfully! - Hash: ", responseMint.Hash)
+	fmt.Println()
 
-    // Step 3: Retrieve the NFT token ID
-    fmt.Println("Retrieving NFT ID...")
+	// Step 3: Retrieve the NFT token ID
+	fmt.Println("Retrieving NFT ID...")
 
-    metaMap, ok := responseMint.Meta.(map[string]any)
-    if !ok {
-        fmt.Println("Meta is not a map[string]any")
-        return
-    }
+	if responseMint.Meta.NFTokenID == nil {
+		fmt.Println("nftoken_id not found in metadata")
+		return
+	}
+	nftokenID1 := *responseMint.Meta.NFTokenID
 
-    nftokenID1, ok := metaMap["nftoken_id"].(string)
-    if !ok {
-        fmt.Println("nftoken_id not found or not a string")
-        return
-    }
+	fmt.Println("nftoken_id:", nftokenID1)
+	fmt.Println()
 
-    fmt.Println("nftoken_id:", nftokenID1)
-    fmt.Println()
+	// ------
 
-    // ------
+	fmt.Println("Minting second NFT...")
 
-    fmt.Println("Minting second NFT...")
+	nftMint2 := transaction.NFTokenMint{
+		BaseTx: transaction.BaseTx{
+			Account:         nftMinter.ClassicAddress,
+			TransactionType: transaction.NFTokenMintTx,
+		},
+		NFTokenTaxon: 0,
+		URI:          txnTypes.NFTokenURI("68747470733A2F2F676F6F676C652E636F6D"), // https://google.com
+	}
+	nftMint2.SetTransferableFlag()
 
-    nftMint2 := transaction.NFTokenMint{
-        BaseTx: transaction.BaseTx{
-            Account:         nftMinter.ClassicAddress,
-            TransactionType: transaction.NFTokenMintTx,
-        },
-        NFTokenTaxon: 0,
-        URI:          txnTypes.NFTokenURI("68747470733A2F2F676F6F676C652E636F6D"), // https://google.com
-    }
-    nftMint2.SetTransferableFlag()
+	responseMint2, err := client.SubmitTxAndWait(nftMint2.Flatten(), &types.SubmitOptions{
+		Autofill: true,
+		Wallet:   &nftMinter,
+	})
+	if err != nil {
+		panic(err)
+	}
+	if !responseMint.Validated {
+		fmt.Println("Second NFTokenMint transaction is not in a validated ledger", responseMint)
+		return
+	}
+	fmt.Println("Second NFT minted successfully! - Hash: ", responseMint.Hash)
+	fmt.Println()
 
-    responseMint2, err := client.SubmitTxAndWait(nftMint2.Flatten(), &types.SubmitOptions{
-        Autofill: true,
-        Wallet:   &nftMinter,
-    })
-    if err != nil {
-        panic(err)
-    }
-    if !responseMint.Validated {
-        fmt.Println("Second NFTokenMint transaction is not in a validated ledger", responseMint)
-        return
-    }
-    fmt.Println("Second NFT minted successfully! - Hash: ", responseMint.Hash)
-    fmt.Println()
+	// Step 3: Retrieve the second NFT token ID
+	fmt.Println("Retrieving second NFT ID...")
 
-    // Step 3: Retrieve the second NFT token ID
-    fmt.Println("Retrieving second NFT ID...")
+	if responseMint2.Meta.NFTokenID == nil {
+		fmt.Println("nftoken_id not found in metadata")
+		return
+	}
+	nftokenID2 := *responseMint2.Meta.NFTokenID
 
-    metaMap2, ok := responseMint2.Meta.(map[string]any)
-    if !ok {
-        fmt.Println("Meta is not a map[string]any")
-        return
-    }
+	fmt.Println("nftoken_id:", nftokenID2)
+	fmt.Println()
 
-    nftokenID2, ok := metaMap2["nftoken_id"].(string)
-    if !ok {
-        fmt.Println("nftoken_id not found or not a string")
-        return
-    }
+	// Step 4: Cancel the NFT offers
+	fmt.Println("Canceling NFT offers...")
 
-    fmt.Println("nftoken_id:", nftokenID2)
-    fmt.Println()
+	nftCancel := transaction.NFTokenCancelOffer{
+		BaseTx: transaction.BaseTx{
+			Account:         nftMinter.ClassicAddress,
+			TransactionType: transaction.NFTokenAcceptOfferTx,
+		},
+		NFTokenOffers: []txnTypes.NFTokenID{
+			txnTypes.NFTokenID(nftokenID1),
+			txnTypes.NFTokenID(nftokenID2),
+		},
+	}
 
-    // Step 4: Cancel the NFT offers
-    fmt.Println("Canceling NFT offers...")
-
-    nftCancel := transaction.NFTokenCancelOffer{
-        BaseTx: transaction.BaseTx{
-            Account:         nftMinter.ClassicAddress,
-            TransactionType: transaction.NFTokenAcceptOfferTx,
-        },
-        NFTokenOffers: []txnTypes.NFTokenID{
-            txnTypes.NFTokenID(nftokenID1),
-            txnTypes.NFTokenID(nftokenID2),
-        },
-    }
-
-    response, err := client.SubmitTxAndWait(nftCancel.Flatten(), &types.SubmitOptions{
-        Autofill: true,
-        Wallet:   &nftMinter,
-    })
-    if err != nil {
-        panic(err)
-    }
-    if !response.Validated {
-        fmt.Println("NFTokenCancelOffer transaction is not in a validated ledger", response)
-        return
-    }
-    fmt.Println("NFT offers canceled successfully! - Hash: ", response.Hash)
+	response, err := client.SubmitTxAndWait(nftCancel.Flatten(), &types.SubmitOptions{
+		Autofill: true,
+		Wallet:   &nftMinter,
+	})
+	if err != nil {
+		panic(err)
+	}
+	if !response.Validated {
+		fmt.Println("NFTokenCancelOffer transaction is not in a validated ledger", response)
+		return
+	}
+	fmt.Println("NFT offers canceled successfully! - Hash: ", response.Hash)
 }
