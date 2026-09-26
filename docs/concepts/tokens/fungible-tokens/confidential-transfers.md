@@ -151,7 +151,7 @@ The [ConfidentialMPTClawback transaction][] allows issuers to claw back a holder
 {% admonition type="warning" name="Caution" %}
 The clawback proof can become stale if a holder's confidential balance changes between proof generation and validation. To ensure proof correctness and state consistency so the transaction doesn't fail on-ledger, issuers should follow the recommended flow for confidential clawbacks:
 
-1. [Lock](./deep-freeze.md#how-does-mpt-freezelock-behavior-differ-from-iou) the MPT issuance for the holder by sending an [MPTokenIssuanceSet transaction](../../../references/protocol/transactions/types/mptokenissuanceset.md) with the `tfMPTLock` flag enabled.
+1. [Lock](./multi-purpose-tokens.md#compliance-controls) the MPT issuance for the holder by sending an [MPTokenIssuanceSet transaction](../../../references/protocol/transactions/types/mptokenissuanceset.md) with the `tfMPTLock` flag enabled.
 2. Submit the ConfidentialMPTClawback transaction.
 {% /admonition %}
 

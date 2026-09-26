@@ -106,7 +106,7 @@ For testing purposes, the example's private keys are stored in a JSON file by th
 
 A clawback proof is built against the balance the issuer reads. If the holder spends or receives anything before the clawback, the balance changes, the proof goes stale, and the clawback fails.
 
-Submit an [MPTokenIssuanceSet transaction][] with the `tfMPTLock` flag to [lock](../../../concepts/tokens/fungible-tokens/deep-freeze.md#how-does-mpt-freezelock-behavior-differ-from-iou) the MPT issuance for the holder. This requires the issuance to have the **Can Lock** flag enabled.
+Submit an [MPTokenIssuanceSet transaction][] with the `tfMPTLock` flag to [lock](../../../concepts/tokens/fungible-tokens/multi-purpose-tokens.md#compliance-controls) the MPT issuance for the holder. This requires the issuance to have the **Can Lock** flag enabled.
 
 {% tabs %}
 {% tab label="JavaScript" %}
