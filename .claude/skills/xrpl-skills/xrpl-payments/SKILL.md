@@ -35,6 +35,7 @@ This skill constructs the right transaction object for any payment task — XRP 
 | **Agentic best practices** | `SourceTag` for agent attribution, `Memos` for on-chain audit trails, WebSocket monitoring |
 | **Error handling** | Transaction result codes (`tec*`, `tef*`, `tem*`, `ter*`), reserve requirements, simulation before submit |
 | **Security** | Key management patterns, spending controls, reserve awareness |
+| **Scaling & High-Frequency** | [Off-chain x402 payments](../xrpl-dhali-x402-payments/SKILL.md) for sub-second, low-fee microtransactions |
 
 ---
 
