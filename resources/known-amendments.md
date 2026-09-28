@@ -1862,6 +1862,8 @@ This amendment was disabled in v2.6.1 due to a bug and replaced by [PermissionDe
 
 Allows accounts to delegate some permissions to other accounts. This amendment replaces [PermissionDelegation](#permissiondelegation), fixing a critical bug discovered in the original implementation of the feature. Standard: [XLS-75](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0075-permission-delegation).
 
+{% partial file="/docs/_snippets/paymentburn-delegation-warning.md" /%}
+
 
 ### PermissionedDEX
 [PermissionedDEX]: #permissioneddex
