@@ -138,6 +138,10 @@ Each inner transaction:
 - Must not be signed (the global transaction is already signed by all relevant parties). They must instead have an empty string (`""`) in the `SigningPubKey`, and the `TxnSignature` field must be omitted.
 - Must include either a `TicketSequence` or `Sequence` value greater than zero.
 
+{% admonition type="warning" name="Caution" %}
+A `Batch` transaction returns `tesSUCCESS` on the outer transaction even if some or all _inner_ transactions fail. To confirm that inner transactions succeeded, look up each transaction by its hash and check its own result and metadata. See [Metadata](../../../../concepts/transactions/batch-transactions.md#metadata) and [Check Batch transaction result](../../../../tutorials/best-practices/transaction-sending/send-a-single-account-batch-transaction.md#6-check-batch-transaction-result) to learn more.
+{% /admonition %}
+
 ### BatchSigners
 
 This field operates similarly to multi-signing on the XRPL. It is only needed if multiple accounts' transactions are included in the `Batch` transaction; otherwise, the normal transaction signature provides the same security guarantees. When required, it must contain signatures from all accounts whose inner transactions are included, excluding the account signing the outer transaction. The entries must be sorted in ascending order by `Account`, and must be unique.
@@ -164,9 +168,6 @@ Transactions of the `Batch` type support additional values in the [`Flags` field
 | `tfOnlyOne`        | `0x00020000` | 131072        | Only the first successful transaction is applied. All transactions afterward fail or are skipped. |
 | `tfUntilFailure`   | `0x00040000` | 262144        | All transactions are applied until the first failure; subsequent transactions are skipped. |
 | `tfIndependent`    | `0x00080000` | 524288        | All transactions will be applied, regardless of failure. |
-
-A transaction is considered successful if it receives a `tesSUCCESS` result.
-
 
 ## Special Transaction Cost
 
