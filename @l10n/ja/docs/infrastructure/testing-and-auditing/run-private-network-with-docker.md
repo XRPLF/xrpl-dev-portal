@@ -10,7 +10,7 @@ labels:
 
 # プライベートネットワークをDockerで構築する
 
-このチュートリアルでは、[Docker](https://docs.docker.com/get-docker/)と最新バージョンの[xrpld](https://hub.docker.com/r/xrpllabsofficial/xrpld)を使って、あなたのコンピュータ上でプライベートなXRP Ledgerネットワークを実行する方法を説明します。
+このチュートリアルでは、[Docker](https://docs.docker.com/get-docker/)と最新バージョンの[xrpld](https://hub.docker.com/r/rippleci/xrpld)を使って、あなたのコンピュータ上でプライベートなXRP Ledgerネットワークを実行する方法を説明します。
 
 公開されているXRPテストネットのサーバを利用することは簡単ですが、プライベートネットワークを実行することは、XRP Ledgerの仕組みを理解しようとするときや、新しい機能を単独でテストするときに便利です。
 
@@ -41,10 +41,10 @@ labels:
 1. ターミナルで以下を実行し、`xrpld`のDockerコンテナシェル内でコマンドを実行します：
 
     ```
-    docker run -it --entrypoint /bin/bash xrpllabsofficial/xrpld:latest
+    docker run -it --entrypoint /bin/bash rippleci/xrpld:latest
     ```
 
-    {% admonition type="info" name="注記" %}Apple M1またはM2チップの場合は、代わりに`docker run -it --platform linux/amd64 --entrypoint /bin/bash xrpllabsofficial/xrpld:latest`を実行してください。{% /admonition %}
+    {% admonition type="info" name="注記" %}Apple M1またはM2チップの場合は、代わりに`docker run -it --platform linux/amd64 --entrypoint /bin/bash rippleci/xrpld:latest`を実行してください。{% /admonition %}
 
     出力の例:
 
@@ -290,7 +290,7 @@ Docker Composeを使用すると、簡単な`yaml`ファイルの設定でコン
       validator_1:
         platform: linux/amd64
         container_name: validator_1
-        image: "xrpllabsofficial/xrpld"
+        image: "rippleci/xrpld"
         ports:
           - "8001:80"
           - "5006:5005"
@@ -301,7 +301,7 @@ Docker Composeを使用すると、簡単な`yaml`ファイルの設定でコン
       validator_2:
         platform: linux/amd64
         container_name: validator_2
-        image: "xrpllabsofficial/xrpld"
+        image: "rippleci/xrpld"
         ports:
           - "8002:80"
           - "5007:5005"
@@ -312,7 +312,7 @@ Docker Composeを使用すると、簡単な`yaml`ファイルの設定でコン
       validator_3:
         platform: linux/amd64
         container_name: validator_3
-        image: "xrpllabsofficial/xrpld"
+        image: "rippleci/xrpld"
         ports:
           - "8003:80"
           - "5008:5005"
