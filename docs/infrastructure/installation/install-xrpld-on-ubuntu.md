@@ -10,7 +10,12 @@ labels:
 
 This page describes the recommended instructions for installing the latest stable version of `xrpld` on **Ubuntu Linux**, using a binary that has been compiled and published by the XRP Ledger Foundation as a `deb` package.
 
-Currently, **Ubuntu 22.04 and Ubuntu 24.04 on x86_64 processors** have received the highest level of support and testing. Packages are also available for **Debian Linux 12 Bookworm**. You may be able to adapt these instructions to other Linux distributions that also use the `apt` package manager, but other configurations are not officially supported.
+These packages require glibc 2.31 or later. The following distributions meet this requirement on x86_64:
+
+- Ubuntu 20.04 (Focal) or later
+- Debian 11 (Bullseye) or later
+
+Other `apt`-based distributions with glibc >= 2.31 may also work but are not officially recommended.
 
 
 ## Prerequisites
