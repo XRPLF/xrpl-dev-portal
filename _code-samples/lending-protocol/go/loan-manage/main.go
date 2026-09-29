@@ -80,6 +80,30 @@ func main() {
 	paymentDue := time.UnixMilli(xrpltime.RippleTimeToUnixTime(nextPaymentDueDate))
 	fmt.Printf("Payment Due Date: %s\n", paymentDue.Local().Format(time.DateTime))
 
+	// Countdown until the loan can be impaired ----------------------
+	// fixCleanup3_4_0 (rippled 3.4.0) requires the payment to be late before
+	// impairment. Both impairment and default use ledger time, not local time.
+	waitForLedgerTime := func(target int64) {
+		deadline := time.Now().Add(5 * time.Minute)
+		for {
+			validatedLedger, err := client.GetLedger(&ledger.Request{LedgerIndex: common.Validated})
+			if err != nil {
+				panic(err)
+			}
+			closeTime := int64(validatedLedger.Ledger.CloseTime)
+			if closeTime > target {
+				break
+			}
+			if time.Now().After(deadline) {
+				panic("Timed out waiting for loan eligibility. Regenerate old lending-setup.json data to use the short-term tutorial loan.")
+			}
+			fmt.Printf("\rWaiting for ledger time to pass the deadline: %d seconds...", target-closeTime+1)
+			time.Sleep(2 * time.Second)
+		}
+		fmt.Println()
+	}
+	waitForLedgerTime(nextPaymentDueDate)
+
 	// Prepare LoanManage transaction to impair the loan ----------------------
 	fmt.Printf("\n=== Preparing LoanManage transaction to impair loan ===\n\n")
 	loanManageImpair := transaction.LoanManage{
@@ -129,19 +153,10 @@ func main() {
 	fmt.Printf("New Payment Due Date: %s\n", paymentDue.Local().Format(time.DateTime))
 	fmt.Printf("Grace Period: %d seconds\n", gracePeriod)
 
-	// Convert current time to Ripple Epoch timestamp
-	currentTime := xrpltime.UnixTimeToRippleTime(time.Now().Unix())
-	// Add a small buffer (5 seconds) to account for ledger close time
-	secondsUntilDefault := defaultTime - currentTime + 5
-
 	// Countdown until loan can be defaulted ----------------------
 	fmt.Printf("\n=== Countdown until loan can be defaulted ===\n\n")
-	for secondsUntilDefault >= 0 {
-		fmt.Printf("\r%d seconds...", secondsUntilDefault)
-		time.Sleep(time.Second)
-		secondsUntilDefault--
-	}
-	fmt.Print("\rGrace period expired. Loan can now be defaulted.\n")
+	waitForLedgerTime(defaultTime)
+	fmt.Println("Grace period expired. Loan can now be defaulted.")
 
 	// Prepare LoanManage transaction to default the loan ----------------------
 	fmt.Printf("\n=== Preparing LoanManage transaction to default loan ===\n\n")

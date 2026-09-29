@@ -62,6 +62,10 @@ You can install Realm and other necessary dependencies using NPM from the reposi
 npm i
 ```
 
+### Package Managers
+
+NPM is the XRPL Dev Portal's preferred package manager and `package-lock.json` is the standard lockfile. Do not commit lock files from other package managers to the repo; files like `bun.lock` or `yarn.lock` can get out of sync with the `package-lock.json` file and cause build failures in staging or production builds that don't occur in local builds.
+
 ## Building the Site
 
 After you've installed dependencies, you can start a local dev server with:
@@ -392,6 +396,22 @@ renders as
     "Destination": standbyDestinationField.value
   })
 ```
+
+### Commandline Examples
+
+When creating commands to run in a terminal, omit any shell prompt prefixes like `$` or `#`. Bare commands are easier to copy and paste. For example, write:
+
+```sh
+xrpld server_info
+```
+
+instead of:
+
+```sh
+$ xrpld server_info
+```
+
+If a code block shows both a command and its output, add the `$` prefix to each command so readers can distinguish between the input and output. Leave the output unprefixed.
 
 ## Markdoc Tags
 

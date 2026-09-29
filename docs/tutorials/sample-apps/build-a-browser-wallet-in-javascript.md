@@ -38,7 +38,7 @@ This application can:
 
 Before you begin, make sure you have the prerequisites installed. Check your node version by running `node -v`. If necessary, [download Node.js](https://nodejs.org/en/download/).
 
-{% admonition type="success" name="Tip" %}If you get stuck while doing this tutorial, or working on another project, feel free to ask for help in the XRPL's [Developer Discord](https://discord.com/invite/KTNmhJDXqa).{% /admonition %}
+{% admonition type="success" name="Tip" %}If you get stuck while doing this tutorial, or working on another project, feel free to ask for help in the XRPL's [Developer Discord](https://discord.com/invite/xrpl).{% /admonition %}
 
 ### 1. Set up the project
 

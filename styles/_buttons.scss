@@ -34,15 +34,15 @@ button[disabled="disabled"] {
   border: none;
   border-color: transparent;
   &:hover {
-    background: $blue-purple-600;
+    background: $blue-purple-300;
   }
 
   &.disabled,
   &[disabled="disabled"] {
-    background: $blue-purple-700;
+    background: $blue-purple-400;
 
     &:hover {
-      background: $blue-purple-700;
+      background: $blue-purple-400;
     }
   }
 }
@@ -66,7 +66,7 @@ button[disabled="disabled"] {
     transition: transform 0.3s ease-out;
   }
   &:hover {
-    background: $blue-purple-600 !important;
+    background: $blue-purple-300 !important;
     border: none;
     &::after {
       -webkit-transform: translateX(4px);

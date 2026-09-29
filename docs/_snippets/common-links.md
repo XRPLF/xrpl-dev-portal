@@ -6,6 +6,7 @@
 [AMMBid transactions]: /docs/references/protocol/transactions/types/ammbid.md
 [AMMBid]: /docs/references/protocol/transactions/types/ammbid.md
 [AMMClawback transaction]: /docs/references/protocol/transactions/types/ammclawback.md
+[AMMClawback transactions]: /docs/references/protocol/transactions/types/ammclawback.md
 [AMMCreate transaction]: /docs/references/protocol/transactions/types/ammcreate.md
 [AMMCreate transactions]: /docs/references/protocol/transactions/types/ammcreate.md
 [AMMCreate]: /docs/references/protocol/transactions/types/ammcreate.md
@@ -55,6 +56,12 @@
 [Clawback amendment]: /resources/known-amendments.md#clawback
 [Clawback transaction]: /docs/references/protocol/transactions/types/clawback.md
 [Clawback transactions]: /docs/references/protocol/transactions/types/clawback.md
+[ConfidentialMPTClawback transaction]: /docs/references/protocol/transactions/types/confidentialmptclawback.md
+[ConfidentialMPTConvert transaction]: /docs/references/protocol/transactions/types/confidentialmptconvert.md
+[ConfidentialMPTConvertBack transaction]: /docs/references/protocol/transactions/types/confidentialmptconvertback.md
+[ConfidentialMPTMergeInbox transaction]: /docs/references/protocol/transactions/types/confidentialmptmergeinbox.md
+[ConfidentialMPTSend transaction]: /docs/references/protocol/transactions/types/confidentialmptsend.md
+[ConfidentialTransfer amendment]: https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0096-confidential-mpt
 [credentials]: /docs/concepts/decentralized-storage/credentials.md
 [Credentials amendment]: /resources/known-amendments.md#credentials
 [CredentialCreate transaction]: /docs/references/protocol/transactions/types/credentialcreate.md
@@ -95,6 +102,7 @@
 [DirectoryNode object]: /docs/references/protocol/ledger-data/ledger-entry-types/directorynode.md
 [DisallowIncoming amendment]: /resources/known-amendments.md#disallowincoming
 [DynamicNFT amendment]: /resources/known-amendments.md#dynamicnft
+[DynamicMPT amendment]: /resources/known-amendments.md#dynamicmpt
 [EnableAmendment pseudo-transaction]: /docs/references/protocol/transactions/pseudo-transaction-types/enableamendment.md
 [EnableAmendment pseudo-transactions]: /docs/references/protocol/transactions/pseudo-transaction-types/enableamendment.md
 [EnableAmendment]: /docs/references/protocol/transactions/pseudo-transaction-types/enableamendment.md
@@ -204,7 +212,7 @@
 [PaymentChannelFund transactions]: /docs/references/protocol/transactions/types/paymentchannelfund.md
 [PaymentChannelFund]: /docs/references/protocol/transactions/types/paymentchannelfund.md
 [Payment]: /docs/references/protocol/transactions/types/payment.md
-[PermissionDelegation amendment]: /resources/known-amendments.md#permissiondelegation
+[PermissionDelegation amendment]: /resources/known-amendments.md#permissiondelegationv1_1
 [PermissionedDEX amendment]: /resources/known-amendments.md#permissioneddex
 [Permissioned DEXes]: /docs/concepts/tokens/decentralized-exchange/permissioned-dexes.md
 [PermissionedDomain entry]: /docs/references/protocol/ledger-data/ledger-entry-types/permissioneddomain.md
@@ -245,6 +253,13 @@
 [Specifying Ledgers]: /docs/references/protocol/data-types/basic-data-types.md#specifying-ledgers
 [Specifying Time]: /docs/references/protocol/data-types/basic-data-types.md#specifying-time
 [Specifying Without Amounts]: /docs/references/protocol/data-types/currency-formats.md#specifying-without-amounts
+[Sponsor amendment]: /resources/known-amendments.md#sponsor
+[Sponsorship ledger entry]: /docs/references/protocol/ledger-data/ledger-entry-types/sponsorship.md
+[Sponsorship entry]: /docs/references/protocol/ledger-data/ledger-entry-types/sponsorship.md
+[SponsorshipSet transaction]: /docs/references/protocol/transactions/types/sponsorshipset.md
+[SponsorshipSet]: /docs/references/protocol/transactions/types/sponsorshipset.md
+[SponsorshipTransfer transaction]: /docs/references/protocol/transactions/types/sponsorshiptransfer.md
+[SponsorshipTransfer]: /docs/references/protocol/transactions/types/sponsorshiptransfer.md
 [SusPay amendment]: /resources/known-amendments.md#suspay
 [TickSize amendment]: /resources/known-amendments.md#ticksize
 [Ticket entry]: /docs/references/protocol/ledger-data/ledger-entry-types/ticket.md
@@ -315,8 +330,8 @@
 [book_offers method]: /docs/references/http-websocket-apis/public-api-methods/path-and-order-book-methods/book_offers.md
 [can_delete command]: /docs/references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/can_delete.md
 [can_delete method]: /docs/references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/can_delete.md
-[channel_authorize command]: /docs/references/http-websocket-apis/public-api-methods/payment-channel-methods/channel_authorize.md
-[channel_authorize method]: /docs/references/http-websocket-apis/public-api-methods/payment-channel-methods/channel_authorize.md
+[channel_authorize command]: /docs/references/http-websocket-apis/admin-api-methods/signing-methods/channel_authorize.md
+[channel_authorize method]: /docs/references/http-websocket-apis/admin-api-methods/signing-methods/channel_authorize.md
 [channel_verify command]: /docs/references/http-websocket-apis/public-api-methods/payment-channel-methods/channel_verify.md
 [channel_verify method]: /docs/references/http-websocket-apis/public-api-methods/payment-channel-methods/channel_verify.md
 [common fields]: /docs/references/protocol/transactions/common-fields.md
@@ -403,6 +418,8 @@
 [ledger_request command]: /docs/references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/ledger_request.md
 [ledger_request method]: /docs/references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/ledger_request.md
 [Lending Protocol]: /docs/concepts/tokens/lending-protocol.md
+[LendingProtocolV1_1]: /resources/known-amendments.md#lendingprotocolv1_1
+[LendingProtocolV1_1 amendment]: /resources/known-amendments.md#lendingprotocolv1_1
 [Loan]: /docs/references/protocol/ledger-data/ledger-entry-types/loan.md
 [Loan entry]: /docs/references/protocol/ledger-data/ledger-entry-types/loan.md
 [Loan ledger entry]: /docs/references/protocol/ledger-data/ledger-entry-types/loan.md

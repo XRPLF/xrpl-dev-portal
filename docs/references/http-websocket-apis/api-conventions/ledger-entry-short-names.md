@@ -12,7 +12,7 @@ The "Ownable" column indicates whether the ledger entry type can appear in owner
 | `Bridge`             | `bridge`              | Yes     | {% amendment-disclaimer name="XChainBridge" compact=true /%} |
 | `Check`              | `check`               | Yes     | {% amendment-disclaimer name="Checks" compact=true /%} |
 | `Credential`         | `credential`          | Yes     | {% amendment-disclaimer name="Credentials" compact=true /%} |
-| `Delegate`           | `delegate`            | Yes     | {% amendment-disclaimer name="PermissionDelegation" compact=true /%} |
+| `Delegate`           | `delegate`            | Yes     | {% amendment-disclaimer name="PermissionDelegationV1_1" compact=true /%} |
 | `DepositPreauth`     | `deposit_preauth`     | Yes     | {% amendment-disclaimer name="DepositPreauth" compact=true /%} |
 | `DID`                | `did`                 | Yes     | {% amendment-disclaimer name="DID" compact=true /%} |
 | `DirectoryNode`      | `directory`           | No      | |
@@ -30,6 +30,7 @@ The "Ownable" column indicates whether the ledger entry type can appear in owner
 | `PermissionedDomain` | `permissioned_domain` | Yes     | {% amendment-disclaimer name="PermissionedDomains" compact=true /%} |
 | `RippleState`        | `state`               | Yes     | |
 | `SignerList`         | `signer_list`         | Yes     | |
+| `Sponsorship`        | `sponsorship`         | Yes     | {% amendment-disclaimer name="Sponsor" compact=true /%} |
 | `Ticket`             | `ticket`              | Yes     | {% amendment-disclaimer name="TicketBatch" compact=true /%} |
 | `XChainOwnedClaimID` | `xchain_owned_claim_id` | Yes   | {% amendment-disclaimer name="XChainBridge" compact=true /%} |
 | `XChainOwnedCreate`<wbr>`AccountClaimID` | `xchain_owned_`<wbr>`create_account_claim_id` | Yes | {% amendment-disclaimer name="XChainBridge" compact=true /%} |

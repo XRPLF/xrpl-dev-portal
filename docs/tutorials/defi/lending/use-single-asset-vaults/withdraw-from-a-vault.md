@@ -13,6 +13,12 @@ status: not_enabled
 This tutorial shows you how to withdraw assets from a [single asset vault](../../../../concepts/tokens/single-asset-vaults.md). You can withdraw by specifying either how many assets you want to receive or how many shares you want to redeem. The vault burns the necessary shares and transfers the corresponding assets to your account.
 
 {% amendment-disclaimer name="SingleAssetVault" /%}
+{% amendment-disclaimer name="LendingProtocolV1_1" mode="updated" /%}
+
+{% admonition type="info" name="Note" %}
+- **JavaScript** code expects both `SingleAssetVault` and `LendingProtocolV1_1`.
+- **Python** code expects only `SingleAssetVault`.
+{% /admonition %}
 
 ## Goals
 

@@ -29,7 +29,7 @@ To set up automatic updates, complete the following steps:
     sudo systemctl restart xrpld.service
     ```
 
-{% admonition type="warning" name="Caution" %}In the future, it is possible that changes to Ripple's repositories may require manual intervention to update the URLs where your script searches for updates. Stay tuned to the [XRP Ledger Blog](/blog/) or the [ripple-server mailing list](https://groups.google.com/forum/#!forum/ripple-server) for announcements on any required changes.{% /admonition %}
+{% admonition type="warning" name="Caution" %}The `xrpld` packages published at `packages.xrplf.org` do not include `update-rippled-cron` or its script. If the file exists on your server, it came from an older package; remove the symlink from `/etc/cron.d/` and update manually ([Red Hat](update-xrpld-manually-on-rhel.md) or [Ubuntu/Debian](update-xrpld-manually-on-ubuntu.md)) so that upgrades come from `packages.xrplf.org`.{% /admonition %}
 
 
 ## See Also

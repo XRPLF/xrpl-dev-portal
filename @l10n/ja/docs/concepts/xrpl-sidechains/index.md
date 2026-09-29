@@ -16,7 +16,7 @@ _（[XChainBridge Amendment][] {% not-enabled /%} が必要です）_
 サイドチェーンは、XRP Ledgerのプロトコルを特定のユースケースやプロジェクトのニーズに合わせてカスタマイズし、独自のブロックチェーンとして運用することができます。いくつかの例を紹介します。
 
 * スマートコントラクト層の追加: [Xahau](https://xahau.network/)をご覧ください。
-* イーサリアム仮想マシン(EVM)互換性の追加: [EVMサイドチェーン](https://opensource.ripple.com/docs/evm-sidechain/intro-to-evm-sidechain/)をご覧ください。
+* イーサリアム仮想マシン(EVM)互換性の追加: [XRPL EVM](https://docs.xrplevm.org/pages/users/introduction/what-is-the-xrplevm)および[ブリッジのオプション](https://docs.xrplevm.org/pages/bridge)をご覧ください。
 * 独自のアルゴリズムによるステーブルコインの構築。
 * メインネットの[分散型取引所](../tokens/decentralized-exchange/index.md)で資産を取引できる、パーミッションあり、またはほぼパーミッションレス、中央集権型、または大部分が分散されている台帳の構築。
 

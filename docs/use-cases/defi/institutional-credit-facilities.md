@@ -11,6 +11,7 @@ status: not_enabled
 Financial institutions need efficient ways to provide credit facilities while maintaining regulatory compliance. Traditional uncollateralized lending faces challenges with liquidity management, credit assessment, and operational efficiency. The XRPL's Lending Protocol, combined with Single Asset Vaults, Credentials, and Permissioned Domains, provides a solution for institutional credit facilities.
 
 {% amendment-disclaimer name="LendingProtocol" /%}
+{% amendment-disclaimer name="LendingProtocolV1_1" mode="updated" /%}
 
 
 ## Background: Challenges with traditional credit facilities
@@ -68,7 +69,7 @@ As a **Loan Broker**, I need to:
 
 | Step                           | Description | Technical Implementation |
 |:-------------------------------|:------------|:-------------------------|
-| Vault Setup                    | The Loan Broker creates a Single Asset Vault to aggregate one type of asset to lend out. They define a [permissioned domain][] to ensure only accounts that meet KYB (Know Your Business) compliance requirements can deposit into the vault. | - [Create Permissioned Domains](../../tutorials/compliance-features/create-permissioned-domains-in-javascript.md)<br>- [Create a Single Asset Vault](../../tutorials/defi/lending/use-single-asset-vaults/create-a-single-asset-vault.md) |
+| Vault Setup                    | The Loan Broker creates a Single Asset Vault to aggregate one type of asset to lend out. They define a [permissioned domain][] to ensure only accounts that meet KYB (Know Your Business) compliance requirements can deposit into the vault. | - [Manage Permissioned Domains](../../tutorials/compliance-features/manage-permissioned-domains.md)<br>- [Create a Single Asset Vault](../../tutorials/defi/lending/use-single-asset-vaults/create-a-single-asset-vault.md) |
 | Lending Protocol Setup         | The Loan Broker sets up the Lending Protocol instance, linking it to the Single Asset Vault they created, and defining parameters such as payment fees. | [Create a Loan Broker](../../tutorials/defi/lending/use-the-lending-protocol/create-a-loan-broker.md) |
 | First-loss Capital Maintenance | The Loan Broker deposits first-loss capital into the Lending Protocol to meet the minimum cover required. When there is excess cover, they withdraw first-loss capital. | [Deposit and Withdraw First-Loss Capital](../../tutorials/defi/lending/use-the-lending-protocol/deposit-and-withdraw-cover.md) |
 {% /tab %}

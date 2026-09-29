@@ -16,7 +16,7 @@
 
             &:hover, &:visited:hover {
                 color: $blue-purple-300;
-                text-decoration: none;
+                text-decoration: underline;
             }
             &:visited {
                 color: $purple;
@@ -26,6 +26,12 @@
                 height: 1rem;
                 width: 1rem;
                 filter: invert(1.0);
+            }
+        }
+
+        :root.dark & {
+            a.tx-title {
+                color: $blue-purple-300;
             }
         }
 

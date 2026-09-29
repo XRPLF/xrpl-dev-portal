@@ -148,6 +148,17 @@ export function Tabs({
     setIsReady(ready)
   }, [])
 
+  // Make Redocly's Tab focusable and respond to Enter/Space keys
+  useEffect(() => {
+    const list = containerRef.current
+    if (!list) return
+    for (const tab of list.querySelectorAll<HTMLElement>('[role="tab"]')) {
+      tab.tabIndex = 0
+      const item = tab.closest('li')
+      if (item) item.tabIndex = -1
+    }
+  })
+
   // Tab rendering (from Redocly)
   return (
     <TabsContainer

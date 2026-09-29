@@ -12,7 +12,9 @@ status: not_enabled
 - **Transaction Type Permissions** - Permission to send transactions with the specified [transaction type](../transactions/types/index.md).
 - **Granular Permissions** - Permission to send transactions with a specific subset of functionality.
 
-{% amendment-disclaimer name="PermissionDelegation" /%}
+{% amendment-disclaimer name="PermissionDelegationV1_1" /%}
+
+{% partial file="/docs/_snippets/paymentburn-delegation-warning.md" /%}
 
 ## Numeric and String Values
 
@@ -35,7 +37,7 @@ Transaction Type Permissions have numeric values from 1 to 65536 (that is, 2<sup
 
 For a mapping of transaction types known by a server and their corresponding numeric transaction type values, check the `TRANSACTION_TYPES` field in the [server_definitions method][].
 
-### List of Non-Delegatable Permissions
+### List of Non-Delegable Permissions
 
 Some transaction types can't be delegated. If you attempt to grant these permissions to a delegate, the transaction fails with a [result code](../transactions/transaction-results/) such as `tecNO_PERMISSION`. This includes all transaction types that can be used to grant other permissions to different key pairs or accounts. Additionally, all [pseudo-transaction types](/docs/references/protocol/transactions/pseudo-transaction-types/pseudo-transaction-types) can't be delegated since they can't be sent by normal accounts anyway.
 
@@ -43,33 +45,36 @@ The following permissions cannot be delegated:
 
 | Transaction Type    | Permission Value |
 |:--------------------|:-----------------|
-| [AccountSet][]      | `4` |
-| [SetRegularKey][]   | `6` |
-| [SignerListSet][]   | `13` |
 | [AccountDelete][]   | `22` |
-| [LedgerStateFix][]  | `54` |
+| [AccountSet][]      | `4` |
+| [Batch][]           | `72` |
+| [ConfidentialMPTConvert][ConfidentialMPTConvert transaction] {% amendment-disclaimer name="ConfidentialTransfer" /%} | `86` |
 | [DelegateSet][]     | `65` |
-| [VaultCreate][VaultCreate transaction] {% amendment-disclaimer name="SingleAssetVault" /%} | `66` |
-| [VaultSet][VaultSet transaction] {% amendment-disclaimer name="SingleAssetVault" /%} | `67` |
-| [VaultDelete][VaultDelete transaction] {% amendment-disclaimer name="SingleAssetVault" /%} | `68` |
-| [VaultDeposit][VaultDeposit transaction] {% amendment-disclaimer name="SingleAssetVault" /%} | `69` |
-| [VaultWithdraw][VaultWithdraw transaction] {% amendment-disclaimer name="SingleAssetVault" /%} | `70` |
-| [VaultClawback][VaultClawback transaction] {% amendment-disclaimer name="SingleAssetVault" /%} | `71` |
-| [LoanBrokerSet][LoanBrokerSet transaction] {% amendment-disclaimer name="LendingProtocol" /%} | `75` |
-| [LoanBrokerDelete][LoanBrokerDelete transaction] {% amendment-disclaimer name="LendingProtocol" /%} | `76` |
+| [EnableAmendment][] | `101` |
+| [LedgerStateFix][]  | `54` |
+| [LoanBrokerCoverClawback][LoanBrokerCoverClawback transaction] {% amendment-disclaimer name="LendingProtocol" /%} | `79` |
 | [LoanBrokerCoverDeposit][LoanBrokerCoverDeposit transaction] {% amendment-disclaimer name="LendingProtocol" /%} | `77` |
 | [LoanBrokerCoverWithdraw][LoanBrokerCoverWithdraw transaction] {% amendment-disclaimer name="LendingProtocol" /%} | `78` |
-| [LoanBrokerCoverClawback][LoanBrokerCoverClawback transaction] {% amendment-disclaimer name="LendingProtocol" /%} | `79` |
-| [LoanSet][LoanSet transaction] {% amendment-disclaimer name="LendingProtocol" /%} | `81` |
+| [LoanBrokerDelete][LoanBrokerDelete transaction] {% amendment-disclaimer name="LendingProtocol" /%} | `76` |
+| [LoanBrokerSet][LoanBrokerSet transaction] {% amendment-disclaimer name="LendingProtocol" /%} | `75` |
 | [LoanDelete][LoanDelete transaction] {% amendment-disclaimer name="LendingProtocol" /%} | `82` |
 | [LoanManage][LoanManage transaction] {% amendment-disclaimer name="LendingProtocol" /%} | `83` |
 | [LoanPay][LoanPay transaction] {% amendment-disclaimer name="LendingProtocol" /%} | `85` |
-| [EnableAmendment][] | `101` |
+| [LoanSet][LoanSet transaction] {% amendment-disclaimer name="LendingProtocol" /%} | `81` |
 | [SetFee][]          | `102` |
+| [SetRegularKey][]   | `6` |
+| [SignerListSet][]   | `13` |
+| [SponsorshipTransfer][SponsorshipTransfer transaction] {% amendment-disclaimer name="Sponsor" /%} | `91` |
+| [VaultClawback][VaultClawback transaction] {% amendment-disclaimer name="SingleAssetVault" /%} | `71` |
+| [VaultCreate][VaultCreate transaction] {% amendment-disclaimer name="SingleAssetVault" /%} | `66` |
+| [VaultDelete][VaultDelete transaction] {% amendment-disclaimer name="SingleAssetVault" /%} | `68` |
+| [VaultDeposit][VaultDeposit transaction] {% amendment-disclaimer name="SingleAssetVault" /%} | `69` |
+| [VaultSet][VaultSet transaction] {% amendment-disclaimer name="SingleAssetVault" /%} | `67` |
+| [VaultWithdraw][VaultWithdraw transaction] {% amendment-disclaimer name="SingleAssetVault" /%} | `70` |
 | [UNLModify][]       | `103` |
 
-{% admonition type="warning" name="Known Issue" %}
-With only the PermissionDelegation amendment, it's possible to assign permissions for transaction types that are reserved, unassigned, or part of amendments that are not currently enabled; it's also possible to assign PermissionValue `0` for full permissions. However, these values do not actually grant any permissions. This is a bug, and a future amendment will prevent assigning values outside of currently-enabled, delegatable transaction types or known granular permissions.
+{% admonition type="info" name="Note" %}
+The `Batch` transaction itself is non-delegable, but a delegate _can_ send inner transactions if they have permissions.
 {% /admonition %}
 
 ## Granular Permissions
@@ -88,7 +93,7 @@ Granular Permissions have numeric types of 65537 and up, corresponding to specif
 | `65543`       | `AccountTransferRateSet` | [AccountSet][]         | Can set the [transfer fee of fungible tokens issued by the account](/docs/concepts/tokens/transfer-fees). |
 | `65544`       | `AccountTickSizeSet`     | [AccountSet][]         | Can set the [tick size of fungible tokens issued by the account](/docs/concepts/tokens/decentralized-exchange/ticksize). |
 | `65545`       | `PaymentMint`            | [Payment][]            | Can send payments that mint new fungible tokens or MPTs. |
-| `65546`       | `PaymentBurn`            | [Payment][]            | Can send payments that burn fungible tokens or MPTs. |
+| `65546`       | `PaymentBurn`            | [Payment][]            | Can send payments that burn fungible tokens or MPTs, but not past a zero balance. {% amendment-disclaimer name="fixCleanup3_4_0" mode="updated" /%} **Warning:** Don't delegate this permission until the [fixCleanup3_4_0 amendment](/resources/known-amendments.md#fixcleanup3_4_0) is enabled. Before the fix, a delegate can sometimes mint new fungible tokens in certain circumstances. |
 | `65547`       | `MPTokenIssuanceLock`    | [MPTokenIssuanceSet][] | Can lock the balances of a particular MPT issued by the account. {% amendment-disclaimer name="MPTokensV1" /%} |
 | `65548`       | `MPTokenIssuanceUnlock`  | [MPTokenIssuanceSet][] | Can unlock the balances of a particular MPT issued by the account. {% amendment-disclaimer name="MPTokensV1" /%} |
 

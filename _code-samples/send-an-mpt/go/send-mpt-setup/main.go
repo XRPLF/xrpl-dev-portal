@@ -96,7 +96,7 @@ func main() {
 
 	assetScale := uint8(2)
 	transferFee := uint16(0)
-	maxAmount := types.XRPCurrencyAmount(1_000_000)
+	maxAmount := types.MPTAmount(1_000_000)
 	issueTx := &transaction.MPTokenIssuanceCreate{
 		BaseTx:          transaction.BaseTx{Account: issuer.ClassicAddress},
 		AssetScale:      &assetScale,
@@ -178,7 +178,7 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	if err := os.WriteFile("send-mpt-setup.json", jsonData, 0644); err != nil {
+	if err := os.WriteFile("send-mpt-setup.json", jsonData, 0o644); err != nil {
 		panic(err)
 	}
 }

@@ -13,6 +13,12 @@ status: not_enabled
 This tutorial shows you how to claw back tokens from a [LoanBroker][] on the XRP Ledger. The clawback feature enables token issuers (Multi-Purpose or Trust Line) to meet regulatory standards and claw back funds even if those funds have been deposited as [first-loss capital](../../../../concepts/tokens/lending-protocol.md#risk-management).
 
 {% amendment-disclaimer name="LendingProtocol" /%}
+{% amendment-disclaimer name="LendingProtocolV1_1" mode="updated" /%}
+
+{% admonition type="info" name="Note" %}
+- **JavaScript** code expects both `LendingProtocol` and `LendingProtocolV1_1`.
+- **Python** and **Go** code expect only `LendingProtocol`.
+{% /admonition %}
 
 ## Goals
 

@@ -9,6 +9,7 @@ import (
 	"os"
 	"os/exec"
 
+	binarycodec "github.com/Peersyst/xrpl-go/binary-codec"
 	"github.com/Peersyst/xrpl-go/xrpl/transaction"
 	"github.com/Peersyst/xrpl-go/xrpl/transaction/types"
 	"github.com/Peersyst/xrpl-go/xrpl/wallet"
@@ -102,10 +103,18 @@ func main() {
 
 	// Loan broker signs first
 	fmt.Printf("\n=== Adding loan broker signature ===\n\n")
-	_, _, err = loanBrokerWallet.Sign(flatLoanSetTx)
+	brokerSignedBlob, _, err := loanBrokerWallet.Sign(flatLoanSetTx)
 	if err != nil {
 		panic(err)
 	}
+
+	// Wallet.Sign returns a signed blob without modifying the original map.
+	// Decode it to display and preserve the broker signature for the borrower.
+	brokerSignedTx, err := binarycodec.Decode(brokerSignedBlob)
+	if err != nil {
+		panic(err)
+	}
+	flatLoanSetTx = transaction.FlatTransaction(brokerSignedTx)
 
 	fmt.Printf("TxnSignature: %s\n", flatLoanSetTx["TxnSignature"])
 	fmt.Printf("SigningPubKey: %s\n\n", flatLoanSetTx["SigningPubKey"])

@@ -31,7 +31,7 @@ Frii Pay’s core infrastructure is purpose-built on the XRP Ledger, leveraging 
 
 * **Instant Settlement Layer**: Utilizing XRPL's average settlement time of 3-5 seconds, Frii Pay enables real-time cross-border and domestic payments without intermediaries.
 
-* **On-Ledger Tokenization**: Frii Pay uses [XRPL’s native tokenization features](/docs/use-cases/tokenization/real-world-assets) to issue coupons and loyalty rewards in the form of merchant-specific tokens or digital money, creating new and engaging consumer interactions by unlocking the programmable finance capabilities of the XRPL.
+* **On-Ledger Tokenization**: Frii Pay uses [XRPL’s native tokenization features](/docs/use-cases/tokenization) to issue coupons and loyalty rewards in the form of merchant-specific tokens or digital money, creating new and engaging consumer interactions by unlocking the programmable finance capabilities of the XRPL.
 
 * **Real-time Currency Conversion**: Frii Pay utilizes the XRPL’s [Decentralized Exchange (DEX)](/docs/concepts/tokens/decentralized-exchange) to enable consumers to pay using any tradable currency in their wallet, while ensuring the merchant receives the exact currency and amount they have requested.
 

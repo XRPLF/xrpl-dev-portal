@@ -20,7 +20,7 @@ To be considered blackholed, an account must meet all of the following condition
 - The master key is disabled.
 - The regular key is set to a known [blackhole address](addresses.md#special-addresses).
 - The account has no [signer list](multi-signing.md).
-- The account has no [delegates](permission-delegation.md). {% amendment-disclaimer name="PermissionDelegation" /%}
+- The account has no [delegates](permission-delegation.md). {% amendment-disclaimer name="PermissionDelegationV1_1" /%}
 
 ## Checking Whether an Account Is Blackholed
 

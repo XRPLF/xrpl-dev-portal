@@ -113,7 +113,7 @@ If online deletion does not seem to be running after configuring it, try the fol
 - Check that the user who configured the `cron` job has permissions to run the `xrpld` server as a commandline client.
 - Check the syntax of your `cron` job and the time when it is supposed to run.
 - Check that the `xrpld` executable is available at the path specified in your `cron` configuration. If necessary, specify the absolute path to the executable, such as `/usr/bin/xrpld`.
-- Check your `xrpld` logs for messages that begin with `SHAMapStore::WRN`. This can indicate that [online deletion is being interrupted](online-deletion.md#interrupting-online-deletion) because your server fell out of sync with the network.
+- Check your `xrpld` logs for messages that begin with `SHAMapStore:WRN`. This can indicate that [online deletion is being interrupted](online-deletion.md#interrupting-online-deletion) because your server fell out of sync with the network.
 
 ## See Also
 

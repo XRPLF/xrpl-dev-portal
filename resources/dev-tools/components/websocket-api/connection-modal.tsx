@@ -3,20 +3,15 @@ import { Connection } from './types';
 import { ChangeEvent } from 'react';
 import { Modal } from '../Modal';
 
-interface ConnectionButtonProps {
+interface ConnectionModalProps {
   selectedConnection: Connection;
   setSelectedConnection: (value: Connection) => void;
   connections: Connection[];
 }
 
-interface ConnectionProps extends ConnectionButtonProps {
-  closeConnectionModal: any;
-}
-
-export const ConnectionModal: React.FC<ConnectionProps> = ({
+export const ConnectionModal: React.FC<ConnectionModalProps> = ({
                                                              selectedConnection,
                                                              setSelectedConnection,
-                                                             closeConnectionModal,
                                                              connections,
                                                            }) => {
   const { useTranslate } = useThemeHooks();                                                  
@@ -31,7 +26,7 @@ export const ConnectionModal: React.FC<ConnectionProps> = ({
   };
 
   return (
-    <Modal id="wstool-1-connection-settings" title={translate('Connection Settings')} onClose={closeConnectionModal}>
+    <Modal id="wstool-1-connection-settings" title={translate('Connection Settings')}>
       {connections.map((conn) => (
         <div className="form-check" key={conn.id}>
           <input

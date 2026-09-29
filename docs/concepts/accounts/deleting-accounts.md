@@ -21,6 +21,7 @@ To be deleted, an account must meet the following requirements:
 - The account must own 1000 or fewer objects in the ledger.
 - The transaction must pay a special [transaction cost][] equal to at least the [owner reserve](reserves.md) for one item (currently {% $env.PUBLIC_OWNER_RESERVE %}).
 - If the account has issued any [NFTs](../tokens/nfts/index.md), they must all have been burned. Additionally, the account's `FirstNFTSequence` number plus `MintedNFTokens` number plus 255 must be less than or equal to the current ledger index. This is to protect against reusing `NFTokenID` values. {% amendment-disclaimer name="fixNFTokenRemint" /%}
+- The account must not be [sponsoring](sponsored-fees-and-reserves.md) reserves for any other account. Those sponsorships must be transferred or dissolved first. You can check using the account's `SponsoringOwnerCount` and `SponsoringAccountCount` fields. {% amendment-disclaimer name="Sponsor" /%}
 
 ## Deletion Blockers
 
@@ -39,6 +40,7 @@ Some deletion blockers cannot be removed unilaterally. For example, if you have 
 | [MPToken][MPToken entry] | {% amendment-disclaimer name="MPTokensV1" compact=true /%} | If you are the holder of the MPT, reduce your balance to 0 (for example, using a payment), then send an [MPTokenAuthorize transaction][] with the `tfMPTUnauthorize` flag. If you are the issuer of the MPT, you can't remove the entry. |
 | [MPTokenIssuance][MPTokenIssuance entry] | {% amendment-disclaimer name="MPTokensV1" compact=true /%} | Send an [MPTokenIssuanceDestroy transaction][]. You can only do this if there are no holders of the MPT. |
 | [NFTokenPage][NFTokenPage entry] | {% amendment-disclaimer name="NonFungibleTokensV1_1" compact=true /%} | Send [NFTokenBurn transactions][] to burn, or [NFTokenCreateOffer transactions][] to sell or transfer, each NFT you hold. |
+| [Sponsorship][Sponsorship entry] | {% amendment-disclaimer name="Sponsor" compact=true /%} | Send a [SponsorshipSet transaction][] with the `tfDeleteObject` flag. Either the sponsor or the sponsee can do this, and any remaining XRP in the entry's fee budget returns to the sponsor. |
 | [Vault][Vault entry] | {% amendment-disclaimer name="SingleAssetVault" compact=true /%} | Send a [VaultDelete transaction][] to delete the vault. You can only do this if the vault is empty. |
 | [XChainOwnedClaimID][XChainOwnedClaimID entry] | {% amendment-disclaimer name="XChainBridge" compact=true /%} | Send an [XChainClaim transaction][] to complete the cross-chain transfer. |
 | [XChainOwned<br>CreateAccountClaimID][XChainOwnedCreateAccountClaimID entry] | {% amendment-disclaimer name="XChainBridge" compact=true /%} | Send enough attestations ([XChainAddAccountCreateAttestation transactions][]) to create the new account. |

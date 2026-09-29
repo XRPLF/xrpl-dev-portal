@@ -1,0 +1,108 @@
+// Colors, underline and focus come from styles/_link-tokens.scss (shared with
+// the generic <a> fallback) -- this file adds geometry/typography/display.
+//
+// The trailing icon is one of the shared arrow icons (shared/components/Icons),
+// not bespoke artwork -- its motion, sizing (1em, tracks this element's own
+// font-size) and reduced-motion handling all live in that icon's own
+// stylesheet. This file only has to trigger it: see bds-icon-engaged below.
+
+.xrpl-link {
+  font-family: $font-family-sans-serif;
+  border-radius: 2px; // inert today -- no state has a fill
+  padding: 0 0.125rem; // vertical 0 so an inline link doesn't disturb its paragraph's line box
+  cursor: pointer;
+  transition: color 150ms cubic-bezier(0.98, 0.12, 0.12, 0.98);
+
+  @include xrpl-link-underline;
+
+  // Must stay `inline`, not `inline-flex`, or it stops wrapping across lines.
+  &--inline {
+    display: inline;
+    font-weight: 400;
+
+    // inline never carries an icon (see LinkProps), but guard anyway in case
+    // one ever ends up here.
+    .bds-icon {
+      display: none;
+    }
+  }
+
+  &--standalone {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4em;
+    min-width: 40px;
+    font-weight: 500;
+  }
+
+  // The icon is a direct child of this element (see Link.tsx), so the mixin
+  // belongs directly on the state that should engage it.
+  &--standalone:hover,
+  &--standalone:focus-visible {
+    @include bds-icon-engaged;
+  }
+
+  // Sizing only applies to standalone -- inline inherits its parent's
+  // font-size/line-height/letter-spacing instead of imposing a fixed value.
+  // The icon needs no size rule of its own: it renders at 1em, so it already
+  // tracks whichever of these font-sizes is in effect.
+
+  &--sm.xrpl-link--standalone {
+    font-size: 0.75rem;
+    line-height: 16px;
+    letter-spacing: 0.025em;
+  }
+
+  &--md.xrpl-link--standalone {
+    font-size: 1rem;
+    line-height: 22px;
+    letter-spacing: 0.025em;
+  }
+
+  &--lg.xrpl-link--standalone {
+    font-size: 1.25rem;
+    line-height: 28px;
+    letter-spacing: 0.025em;
+  }
+
+  // `&.xrpl-link--x` (not `&--x`) compiles to the compound selector
+  // `.xrpl-link.xrpl-link--x`, not just `.xrpl-link--x` -- the repeated class
+  // buys an extra specificity tier. Needed here: @redocly/theme's own
+  // Markdown wrapper (a hashed class, e.g. .eMIPih) ships
+  // `.eMIPih a:not([role="button"]):hover/:focus/:visited { color: ...; }`
+  // rules that otherwise tie our un-boosted selector's specificity, and on a
+  // tie the later-loaded stylesheet wins -- which in practice is theirs, so
+  // links inside actual markdown content (rendered via the MarkdownLink
+  // override) would flash their default purple on hover/focus/visited.
+  &.xrpl-link--brand {
+    @include xrpl-link-colors(brand);
+  }
+
+  &.xrpl-link--neutral {
+    @include xrpl-link-colors(neutral);
+  }
+
+  &.xrpl-link--brand-on-inverse {
+    @include xrpl-link-colors(brand-on-inverse);
+  }
+
+  &.xrpl-link--neutral-on-inverse {
+    @include xrpl-link-colors(neutral-on-inverse);
+  }
+
+  &.xrpl-link--brand-on-saturated {
+    @include xrpl-link-colors(brand-on-saturated);
+  }
+
+  &.xrpl-link--ctx-on-theme {
+    @include xrpl-link-focus(on-theme);
+  }
+
+  &.xrpl-link--ctx-on-inverse {
+    @include xrpl-link-focus(on-inverse);
+  }
+
+  &.xrpl-link--ctx-on-saturated {
+    @include xrpl-link-focus(on-saturated);
+  }
+}

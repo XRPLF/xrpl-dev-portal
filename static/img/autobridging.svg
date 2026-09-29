@@ -1,0 +1,62 @@
+<svg viewBox="0 0 600 350" width="600" height="350" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system,BlinkMacSystemFont,'Helvetica Neue',Helvetica,Arial,sans-serif" role="img">
+  <title>Direct and auto-bridged offers interleaved by price in one combined order book</title>
+  <desc>A GBP/BRL combined order book table with columns for offer type, price in BRL per GBP, available volume, and liquidity depth. Auto-bridged offers show their composite route (GBP to XRP to BRL). The best-priced offer is auto-bridged with limited size (500 GBP); the direct offer beneath it has fuller depth (50,000 GBP). Offers interleave by price rather than sitting in separate books.</desc>
+
+  <defs>
+    <clipPath id="ab-card"><rect x="20" y="20" width="560" height="310" rx="10"/></clipPath>
+  </defs>
+
+  <!-- ============ Container: combined order book ============ -->
+  <rect x="20.5" y="20.5" width="559" height="309" rx="9.5" fill="#232325" stroke="#72777E" stroke-width="1"/>
+  <rect x="20" y="20" width="560" height="4" fill="#21E46B" clip-path="url(#ab-card)"/>
+
+  <text x="40" y="70" font-size="20" font-weight="700" fill="#F0F3F7" font-family="'SFMono-Regular','Consolas','Menlo',monospace">GBP/BRL</text>
+
+  <!-- ============ Column headers ============ -->
+  <text x="40" y="88" font-size="9.5" font-weight="600" letter-spacing="0.5" fill="#8A919A">OFFER TYPE</text>
+  <text x="220" y="88" font-size="9" font-weight="600" letter-spacing="0.4" fill="#8A919A">PRICE (BRL/GBP)</text>
+  <text x="340" y="88" font-size="9" font-weight="600" letter-spacing="0.4" fill="#8A919A">VOLUME</text>
+  <text x="560" y="88" text-anchor="end" font-size="9" font-weight="600" letter-spacing="0.3" fill="#8A919A">LIQUIDITY DEPTH</text>
+  <line x1="40" y1="98" x2="560" y2="98" stroke="#343437" stroke-width="1"/>
+
+  <!-- ============ Row 1: Auto-Bridged (best price, thin size) ============ -->
+  <g>
+    <title>Synthetic route: GBP &#8594; XRP &#8594; BRL. Best price, but limited liquidity (500 GBP available).</title>
+    <rect x="40" y="114" width="160" height="46" rx="10" fill="#343437" stroke="#72777E" stroke-width="1"/>
+    <text x="120" y="132" text-anchor="middle" font-size="12.5" font-weight="700" fill="#F0F3F7">Auto-Bridged</text>
+    <text x="120" y="148" text-anchor="middle" font-size="9.2" font-weight="500" fill="#8A919A">GBP &#8594; XRP &#8594; BRL</text>
+  </g>
+  <text x="220" y="132" font-size="13.5" font-weight="700" fill="#F0F3F7" font-family="'SFMono-Regular','Consolas','Menlo',monospace">6.42</text>
+  <text x="340" y="132" font-size="12.5" font-weight="500" fill="#F0F3F7" font-family="'SFMono-Regular','Consolas','Menlo',monospace">500 GBP</text>
+  <rect x="450" y="134" width="110" height="10" rx="5" fill="#343437"/>
+  <rect x="450" y="134" width="34" height="10" rx="5" fill="#21E46B"/>
+
+  <!-- ============ Row 2: Direct (full depth) ============ -->
+  <g>
+    <title>Direct offer: GBP &#8594; BRL. Slightly worse price, but full liquidity depth (50,000 GBP available).</title>
+    <rect x="40" y="174" width="160" height="46" rx="10" fill="#343437" stroke="#72777E" stroke-width="1"/>
+    <text x="120" y="192" text-anchor="middle" font-size="12.5" font-weight="700" fill="#F0F3F7">Direct</text>
+    <text x="120" y="208" text-anchor="middle" font-size="9.2" font-weight="500" fill="#8A919A">GBP &#8594; BRL</text>
+  </g>
+  <text x="220" y="192" font-size="13.5" font-weight="700" fill="#F0F3F7" font-family="'SFMono-Regular','Consolas','Menlo',monospace">6.40</text>
+  <text x="340" y="192" font-size="12.5" font-weight="500" fill="#F0F3F7" font-family="'SFMono-Regular','Consolas','Menlo',monospace">50,000 GBP</text>
+  <rect x="450" y="194" width="110" height="10" rx="5" fill="#343437"/>
+  <rect x="450" y="194" width="110" height="10" rx="5" fill="#CAD4DF"/>
+
+  <!-- ============ Row 3: Auto-Bridged ============ -->
+  <g>
+    <title>Synthetic route: GBP &#8594; XRP &#8594; BRL (12,000 GBP available).</title>
+    <rect x="40" y="234" width="160" height="46" rx="10" fill="#343437" stroke="#72777E" stroke-width="1"/>
+    <text x="120" y="252" text-anchor="middle" font-size="12.5" font-weight="700" fill="#F0F3F7">Auto-Bridged</text>
+    <text x="120" y="268" text-anchor="middle" font-size="9.2" font-weight="500" fill="#8A919A">GBP &#8594; XRP &#8594; BRL</text>
+  </g>
+  <text x="220" y="252" font-size="13.5" font-weight="700" fill="#F0F3F7" font-family="'SFMono-Regular','Consolas','Menlo',monospace">6.38</text>
+  <text x="340" y="252" font-size="12.5" font-weight="500" fill="#F0F3F7" font-family="'SFMono-Regular','Consolas','Menlo',monospace">12,000 GBP</text>
+  <rect x="450" y="254" width="110" height="10" rx="5" fill="#343437"/>
+  <rect x="450" y="254" width="77" height="10" rx="5" fill="#21E46B"/>
+
+  <!-- ============ caption ============ -->
+  <line x1="40" y1="294" x2="560" y2="294" stroke="#343437" stroke-width="1"/>
+  <text x="300" y="313" text-anchor="middle" font-size="11" font-weight="400" fill="#8A919A">Combined order book: offers interleave natively by price, regardless of source.</text>
+
+</svg>

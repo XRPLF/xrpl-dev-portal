@@ -79,6 +79,8 @@ If the result of the `Flags` value bitwise-AND the `lsfRequireAuth` flag value (
 
 If you are using the Authorized Trust Lines feature, others cannot hold balances you issue unless you first authorize their trust lines to you. If you issue more than one currency, you must separately authorize trust lines for each currency.
 
+If you use Authorized Trust Lines, pseudo-accounts (such as an [AMM](../decentralized-exchange/automated-market-makers.md)) can hold your tokens, even without explicit authorization, since they can't submit `TrustSet` transactions on their own. {% amendment-disclaimer name="fixCleanup3_4_0" /%}
+
 To authorize a trust line, submit a [TrustSet transaction][] from your issuing address, with the user to trust as the `issuer` of the `LimitAmount`. Leave the `value` (the amount to trust them for) as **0**, and enable the [`tfSetfAuth`](../../../references/protocol/transactions/types/trustset.md#trustset-flags) flag for the transaction.
 
 The following is an example of using a locally hosted `xrpld`'s [submit method][] to send a TrustSet transaction authorizing the customer address `rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn` to hold USD issued by the address `rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW`:
@@ -110,7 +112,6 @@ POST http://localhost:8088/
 ```
 
 {% partial file="/docs/_snippets/secret-key-warning.md" /%}
-
 
 ## Checking Whether Trust Lines Are Authorized
 

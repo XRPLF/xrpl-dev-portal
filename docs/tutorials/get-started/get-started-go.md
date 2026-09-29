@@ -7,7 +7,7 @@ labels:
 
 # Get Started Using Go Library
 
-This tutorial walks you through the basics of building an XRP Ledger-connected application using [`xrpl-go`](https://github.com/Peersyst/xrpl-go), a pure Go library built to interact with the XRP Ledger.
+This tutorial walks you through the basics of building an XRP Ledger-connected application using [`xrpl-go`](https://github.com/XRPLF/xrpl-go), a pure Go library built to interact with the XRP Ledger.
 
 This tutorial is intended for beginners and should take no longer than 30 minutes to complete.
 
@@ -22,12 +22,12 @@ In this tutorial, you'll learn:
 
 ## Requirements
 
-To follow this tutorial, you should have Go version `1.22.0` or later installed.
+To follow this tutorial, you should have Go version `1.25.13` or later installed.
 [Download latest Go version](https://go.dev/dl/).
 
 ## Installation
 
-The [`xrpl-go` library](https://github.com/Peersyst/xrpl-go) is available on [pkg.go.dev](https://pkg.go.dev/github.com/Peersyst/xrpl-go).
+The [`xrpl-go` library](https://github.com/XRPLF/xrpl-go) is available on [pkg.go.dev](https://pkg.go.dev/github.com/Peersyst/xrpl-go).
 
 Start a new project (or use an existing one) and install the `xrpl-go` library via Go modules:
 
@@ -36,7 +36,7 @@ Start a new project (or use an existing one) and install the `xrpl-go` library v
 go mod init your-module-name
 
 # Fetch the latest version of xrpl-go
-go get -u github.com/Peersyst/xrpl-go
+go get github.com/Peersyst/xrpl-go@latest
 ```
 
 ## Start Building
@@ -138,7 +138,7 @@ Use the Client's `Request()` method to access the XRP Ledger's [WebSocket API](.
 
 {% code-snippet file="/_code-samples/get-tx/go/main.go" from="// Get the latest validated ledger" language="go" /%}
 
-Or, use the getter methods from the [`websocket`](https://pkg.go.dev/github.com/Peersyst/xrpl-go@v0.1.12/xrpl/websocket) or [`rpc`](https://pkg.go.dev/github.com/Peersyst/xrpl-go@v0.1.12/xrpl/rpc) packages:
+Or, use the getter methods from the [`websocket`](https://pkg.go.dev/github.com/Peersyst/xrpl-go/xrpl/websocket) or [`rpc`](https://pkg.go.dev/github.com/Peersyst/xrpl-go/xrpl/rpc) packages:
 
 {% code-snippet file="/_code-samples/get-started/go/get-acc-info/ws/main.go" from="// Get info from" before="// Get info about" language="go" /%}
 

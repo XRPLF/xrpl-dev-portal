@@ -268,12 +268,14 @@ An `mpt_issuance_id` field is provided in JSON transaction metadata (not availab
 
 The `Amount` of a [Payment transaction][] indicates the amount to deliver to the `Destination`, so if the transaction was successful, then the destination received that much -- **except if the transaction was a [partial payment](../../../concepts/payment-types/partial-payments.md)**. (In that case, any positive amount up to `Amount` might have arrived.) Rather than choosing whether or not to trust the `Amount` field, you should use the `delivered_amount` field of the metadata to see how much actually reached its destination.
 
-The `xrpld` server provides a `delivered_amount` field in JSON transaction metadata for all successful Payment transactions. This field is formatted like a normal currency amount. However, the delivered amount is not available for transactions that meet both of the following criteria:
+The `xrpld` server provides a `delivered_amount` field in JSON transaction metadata for all successful `Payment`, `CheckCash`, and `AccountDelete` transactions. This field is formatted like a normal currency amount. However, the delivered amount is not available for transactions that meet both of the following criteria:
 
 * Is a partial payment
 * Included in a validated ledger before 2014-01-20
 
 If both conditions are true, then `delivered_amount` contains the string value `unavailable` instead of an actual amount. If this happens, you can only figure out the actual delivered amount by reading the `AffectedNodes` in the transaction's metadata.
+
+The `ledger` method's expanded output (`expand`, or admin-only `full`) includes `delivered_amount` for these same transaction types, consistent with `tx`, `account_tx`, and `subscribe`.
 
 {% admonition type="info" name="Note" %}The `delivered_amount` field is generated on-demand for the request, and is not included in the binary format for transaction metadata, nor is it used when calculating the [hash](../data-types/basic-data-types.md#hashes) of the transaction metadata. In contrast, the `DeliveredAmount` field _is_ included in the binary format for partial payment transactions after 2014-01-20.{% /admonition %}
 

@@ -16,6 +16,7 @@ navbar.about: 概要
 navbar.docs: ドキュメント
 navbar.resources: リソース
 navbar.community: コミュニティ
+navbar.showcase: ショーケース
 footer.about: 概要
 footer.docs: ドキュメント
 footer.resources: リソース
@@ -39,6 +40,9 @@ time.past.years: "{{value}}年前"
 sidebar.docs: ドキュメント
 sidebar.docs.introduction.what-is-xrp: XRPとは？
 sidebar.docs.use-cases.tokenization: Tokenization
+sidebar.docs.use-cases.trading: Trading
+sidebar.docs.use-cases.credit: Credit
+sidebar.docs.use-cases.defi: DeFi
 sidebar.docs.concepts.payment-types: 様々なPaymentの種類
 sidebar.docs.tutorials: チュートリアル
 sidebar.docs.references: リファレンス
@@ -264,7 +268,7 @@ No, the XRP Ledger is a decentralized, public blockchain. Any changes that would
 Isn’t Proof of Work the best validation mechanism?: Proof of Workが最良のコンセンサスメカニズムではないでしょうか？
 Proof of Work (PoW) was the first mechanism to solve the double spend problem without requiring a trusted 3rd party. However the XRP Ledger’s consensus mechanism solves the same problem in a far faster, cheaper and more energy efficient way.: Proof of Work(PoW)は、信頼できる第三者を必要とせずに二重消費問題を解決する最初の仕組みでした。しかし、XRP Ledgerのコンセンサスメカニズムは、同じ問題をはるかに速く、安く、エネルギー効率の良い方法で解決しています。
 How can a blockchain be sustainable?: ブロックチェーンはどうして持続可能なのでしょうか？
-It’s been widely reported that Bitcoin’s energy consumption, as of 2021, is equivalent to that used by Argentina, with much of the electricity Bitcoin miners use coming from polluting sources. The XRP Ledger confirms transactions through a “consensus” mechanism - which does not waste energy like proof of work does - and leverages carbon offsets to be <a href='https://ripple.com/ripple-press/ripple-leads-sustainability-agenda-to-achieve-carbon-neutrality-by-2030/' target='_blank'>one of the first truly carbon neutral blockchains</a>.: ビットコインのエネルギー消費量は、2021年時点で、アルゼンチンが使用するエネルギーと同等であり、ビットコインの採掘者が使用する電力の多くは環境破壊につながる資源から供給されていると広く報告されています。XRP Ledgerは、Proof of Workのようにエネルギーを浪費しない「コンセンサス」メカニズムを通じてトランザクションを検証し、カーボンオフセットを活用して、<a href='https://ripple.com/ripple-press/ripple-leads-sustainability-agenda-to-achieve-carbon-neutrality-by-2030/' target='_blank'>最初の真のカーボンニュートラルなブロックチェーンの1つとなっています。</a>
+It’s been widely reported that Bitcoin’s energy consumption, as of 2021, is equivalent to that used by Argentina, with much of the electricity Bitcoin miners use coming from polluting sources. The XRP Ledger confirms transactions through a “consensus” mechanism - which does not waste energy like proof of work does - and leverages carbon offsets to be <a href='https://ripple.com/ripple-press/ripple-leads-sustainability-agenda-to-achieve-carbon-neutrality-by-2030/' target='_blank' class='xrpl-link xrpl-link--inline xrpl-link--md xrpl-link--brand xrpl-link--ctx-on-theme'>one of the first truly carbon neutral blockchains</a>.: ビットコインのエネルギー消費量は、2021年時点で、アルゼンチンが使用するエネルギーと同等であり、ビットコインの採掘者が使用する電力の多くは環境破壊につながる資源から供給されていると広く報告されています。XRP Ledgerは、Proof of Workのようにエネルギーを浪費しない「コンセンサス」メカニズムを通じてトランザクションを検証し、カーボンオフセットを活用して、<a href='https://ripple.com/ripple-press/ripple-leads-sustainability-agenda-to-achieve-carbon-neutrality-by-2030/' target='_blank' class='xrpl-link xrpl-link--inline xrpl-link--md xrpl-link--brand xrpl-link--ctx-on-theme'>最初の真のカーボンニュートラルなブロックチェーンの1つとなっています。</a>
 View Full FAQ: 全てのFAQを見る
 
 # about/xrp.page.tsx
@@ -531,7 +535,7 @@ Featured real world projects: 注目の実世界プロジェクト
 Related Articles: 関連記事
 More related articles: 追加の関連記事
 
-# docs/use-cases/tokenization/real-world-assets.page.tsx
+# docs/use-cases/tokenization/real-world-assets.page.tsx - redirected to docs/use-cases/tokenization/index.page.tsx
 Build Real-World Asset Tokenization Solutions on the XRP Ledger: XRP Ledgerで現物資産のトークン化ソリューションを構築しましょう
 Get Started Now: 今すぐ始める
 Access the blockchain built for business to power financial asset tokenization with decentralized architecture, fast settlement, and institutional-grade tools.: 分散型アーキテクチャ、高速な決済、そして機関レベルのツールを備えたビジネス向けのブロックチェーンにアクセスして、金融資産のトークン化を可能にしましょう。
@@ -781,6 +785,7 @@ Delete All Responses: 全レスポンスを削除
 # resources/dev-tools/websocket-api/connection-modal.tsx
 Connection Settings: 接続先設定
 Close: 閉じる
+Select language: 言語を選択
 # resources/dev-tools/websocket-api/curl-modal.tsx
 cURL Syntax: cURL構文
 resources.dev-tools.websocket-api.curl.modal.desc.part1: コマンドラインインターフェースから

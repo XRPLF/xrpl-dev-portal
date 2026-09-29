@@ -1,0 +1,126 @@
+// Styling for /button-demo — the Button reference page.
+//
+// None of it belongs to the component; it exists to put every combination
+// under a backdrop that matches the `context` it is bound to. Carried over from
+// the bakeoff harness, whose comparison scaffolding is gone.
+
+.btnd {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem 6rem;
+
+  h1 {
+    margin-bottom: 0.5rem;
+  }
+
+  h2 {
+    margin: 3rem 0 0.5rem;
+  }
+
+  p {
+    max-width: 68ch;
+  }
+}
+
+.btnd-lede {
+  font-size: 1.0625rem;
+}
+
+.btnd-note {
+  font-size: 0.875rem;
+  opacity: 0.75;
+}
+
+.btnd-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 0;
+  flex-wrap: wrap;
+
+  &__label {
+    flex: 0 0 12rem;
+    font-size: 0.8125rem;
+    letter-spacing: 0;
+    word-spacing: normal;
+    opacity: 0.7;
+  }
+
+  &__items {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+}
+
+.btnd-panel {
+  border: 1px dashed rgba(128, 128, 128, 0.4);
+  border-radius: 12px;
+  padding: 0.5rem 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.btnd-icon-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin: 1.25rem 0;
+}
+
+// --- Surfaces ----------------------------------------------------------------
+// One block per `context`, each matching the backdrop that context is measured
+// against. Getting this wrong is the likeliest way to look at a button on the
+// wrong background and conclude the tokens are broken.
+
+.btnd-surface {
+  border-radius: 12px;
+  padding: 1rem 1.5rem 1.5rem;
+  margin: 1.5rem 0;
+
+  &__head {
+    display: flex;
+    gap: 1rem;
+    align-items: baseline;
+    flex-wrap: wrap;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid currentColor;
+
+    span {
+      font-size: 0.8125rem;
+      opacity: 0.7;
+    }
+  }
+
+  // Surfaces set their own foreground; everything inside must follow it rather
+  // than keep the site's default code/text colour, which is invisible on the
+  // inverted block.
+  code,
+  .btnd-row__label {
+    color: inherit;
+    background: transparent;
+  }
+
+  // on-theme: the page itself. Outlined so the block is legible.
+  &--theme {
+    border: 1px dashed rgba(128, 128, 128, 0.4);
+  }
+
+  // on-inverse: inverted against the current mode.
+  &--inverse {
+    background: #141414;
+    color: #eceeed;
+
+    html.dark & {
+      background: #eceeed;
+      color: #141414;
+    }
+  }
+
+  // on-saturated: solid brand green, identical in both modes.
+  &--saturated {
+    background: #21e46b;
+    color: #141414;
+  }
+}

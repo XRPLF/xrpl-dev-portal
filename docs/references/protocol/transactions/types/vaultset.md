@@ -34,7 +34,7 @@ Once a vault is created, its public or private status is permanent and cannot be
   "Sequence": 8,
   "VaultID": "77D6234D074E505024D39C04C3F262997B773719AB29ACFA83119E4210328776",
   "Data": "5468697320697320617262697472617279206D657461646174612061626F757420746865207661756C742E",
-  "AssetsMaximum": 5,
+  "AssetsMaximum": "5",
   "DomainID": "77D6234D074E505024D39C04C3F262997B773719AB29ACFA83119E4210328776"
 }
 ```
@@ -47,8 +47,12 @@ In addition to the [common fields](../../../protocol/transactions/common-fields#
 | :---------------- | :-------- | :---------------- | :-------- | :-------------------|
 | `VaultID`         | String    | Hash256           | Yes       | The unique identifier of the vault that needs to be updated. |
 | `Data`            | String    | Blob              | No        | Arbitrary vault metadata, limited to 256 bytes. See [Data Field Format](../../ledger-data/ledger-entry-types/vault.md#data-field-format) for the recommended format. |
-| `AssetsMaximum`   | Number    | Number            | No        | The maximum asset amount that can be held in a vault. The value cannot be lower than the current `AssetsTotal`, unless the value is 0. |
+| `AssetsMaximum`   | String    | Number            | No        | The maximum asset amount that can be held in a vault. The value cannot be lower than the current `AssetsTotal`, unless the value is 0. |
 | `DomainID`        | String    | Hash256           | No        | The [PermissionedDomain](../../../../concepts/tokens/decentralized-exchange/permissioned-domains.md) object ID associated with the shares of this vault. The `DomainID` is only required when updating a private vault. |
+
+{% admonition type="info" name="Note" %}
+A vault's `AssetsTotal` can exceed its `AssetsMaximum` due to accrued interest. You can still submit a `VaultSet` transaction to update other fields without having to modify `AssetsMaximum`. {% amendment-disclaimer name="fixCleanup3_4_0" mode="updated" /%}
+{% /admonition %}
 
 ## {% $frontmatter.seo.title %} Flags
 
@@ -64,7 +68,7 @@ Besides errors that can occur for all transactions, {% code-page-name /%} transa
 | `tecOBJECT_NOT_FOUND` | The `PermissionedDomain` object with the provided `DomainID` does not exist. |
 | `tecNO_PERMISSION`    | The account submitting the transaction is not the `Owner` of the vault, or is trying to set a `DomainID` for a public vault. |
 | `temMALFORMED`        | The transaction was not validly formatted. For example, the `Data` field is larger than 256 bytes. |
-| `tecLIMIT_EXCEEDED`   | The _new_ `AssetsMaximum` value is **lower** than the vault's _current_ `AssetsTotal`. |
+| `tecLIMIT_EXCEEDED`   | The transaction attempts to set or change `AssetsMaximum` to a value lower than the `AssetsTotal`. {% amendment-disclaimer name="fixCleanup3_4_0" /%} |
 | `temDISABLED`         | Either the Single Asset Vault amendment is not enabled, or a `DomainID` is provided and the Permissioned Domains amendment is not enabled. |
 
 ## See Also

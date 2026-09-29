@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useThemeHooks } from '@redocly/theme/core/hooks';
 import { Connection } from './types';
 import { Modal, ModalClipboardBtn, ModalCloseBtn } from '../Modal';
@@ -8,22 +8,22 @@ interface PermaLinkButtonProps {
   selectedConnection: Connection;
 }
 
-interface PermaLinkProps extends PermaLinkButtonProps {
-  closePermalinkModal: () => void;
-}
-
-const PermalinkModal: React.FC<PermaLinkProps> = ({
-                                                    closePermalinkModal,
+export const PermalinkModal: React.FC<PermaLinkButtonProps> = ({
                                                     currentBody,
                                                     selectedConnection
 }) => {
   const { useTranslate } = useThemeHooks();
   const { translate } = useTranslate();
   const permalinkRef = useRef(null);
+  const [permalink, setPermalink] = useState('');
+
+  useEffect(() => {
+    setPermalink(getPermalink(selectedConnection, currentBody));
+  }, [selectedConnection, currentBody]);
 
   const footer = <>
     <ModalClipboardBtn textareaRef={permalinkRef} />
-    <ModalCloseBtn onClick={closePermalinkModal} />
+    <ModalCloseBtn />
   </>
 
   return (
@@ -31,7 +31,6 @@ const PermalinkModal: React.FC<PermaLinkProps> = ({
       id="wstool-1-permalink"
       title={translate("Permalink")}
       footer={footer}
-      onClose={closePermalinkModal}
     >
       <form>
         <div className="form-group">
@@ -45,7 +44,7 @@ const PermalinkModal: React.FC<PermaLinkProps> = ({
             className="form-control"
             rows={8}
             ref={permalinkRef}
-            value={getPermalink(selectedConnection, currentBody)}
+            value={permalink}
             onChange={() => {}}
           />
         </div>
@@ -54,29 +53,20 @@ const PermalinkModal: React.FC<PermaLinkProps> = ({
   );
 };
 
-export function PermalinkButton ({currentBody, selectedConnection}: PermaLinkButtonProps) {
-  const [showPermalinkModal, setShowPermalinkModal] = useState(false);
+export function PermalinkButton () {
   const { useTranslate } = useThemeHooks();
   const { translate } = useTranslate();
 
-  return <>
+  return (
     <button
       className="btn btn-outline-secondary permalink"
-      data-toggle="modal"
-      data-target="#wstool-1-permalink"
+      data-bs-toggle="modal"
+      data-bs-target="#wstool-1-permalink"
       title={translate("Permalink")}
-      onClick={() => setShowPermalinkModal(true)}
     >
       <i className="fa fa-link"></i>
     </button>
-    {showPermalinkModal && (
-      <PermalinkModal
-        closePermalinkModal={() => setShowPermalinkModal(false)}
-        currentBody={currentBody}
-        selectedConnection={selectedConnection}
-      />
-    )}
-  </>
+  )
 }
 
 function getPermalink (selectedConnection: Connection, currentBody) {

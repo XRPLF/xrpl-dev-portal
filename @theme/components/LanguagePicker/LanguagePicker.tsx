@@ -19,8 +19,9 @@ export type LanguagePickerProps = {
 
 export function LanguagePicker(props: LanguagePickerProps): JSX.Element | null {
   const { currentLocale, locales, setLocale } = useLanguagePicker();
-  const { useTelemetry } = useThemeHooks();
+  const { useTelemetry, useTranslate } = useThemeHooks();
   const telemetry = useTelemetry();
+  const { translate } = useTranslate();
 
   if (locales.length < 2 || !currentLocale) {
     return null;
@@ -31,6 +32,7 @@ export function LanguagePicker(props: LanguagePickerProps): JSX.Element | null {
       icon={<GlobalOutlinedIcon color="--button-content-color" />}
       variant="text"
       size="medium"
+      aria-label={translate("Select language")}
     />
   );
 

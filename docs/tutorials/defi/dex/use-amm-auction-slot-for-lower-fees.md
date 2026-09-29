@@ -1,6 +1,6 @@
 # Use the AMM Auction Slot for Lower Fees
 
-Thsi tutorial shows how to use the auction slot of an [Automated Market Maker (AMM)](../../../concepts/tokens/decentralized-exchange/automated-market-makers.md) to save the amount of fees you pay when trading against that AMM.
+This tutorial shows how to use the auction slot of an [Automated Market Maker (AMM)](../../../concepts/tokens/decentralized-exchange/automated-market-makers.md) to save the amount of fees you pay when trading against that AMM.
 
 For a simpler example of trading currencies in the XRP Ledger's DEX, see [Trade in the Decentralized Exchange](./trade-in-the-decentralized-exchange.md).
 

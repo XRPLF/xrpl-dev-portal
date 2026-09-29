@@ -78,7 +78,7 @@ func main() {
 
 	// Issuer creates an MPT ----------------------
 	fmt.Printf("\n=== Creating MPT ===\n\n")
-	maxAmount := types.XRPCurrencyAmount(1000000)
+	maxAmount := types.MPTAmount(1000000)
 	mptCreateTx := transaction.MPTokenIssuanceCreate{
 		BaseTx: transaction.BaseTx{
 			Account: issuer.ClassicAddress,

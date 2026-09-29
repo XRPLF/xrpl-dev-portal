@@ -6,9 +6,9 @@ labels:
 status: not_enabled
 ---
 # MPToken
-[[Source]](https://github.com/XRPLF/rippled/blob/a5d238e7d4fa6ef2b539b759d58744d0a1c33c0c/include/xrpl/protocol/detail/ledger_entries.macro#L409-L417 "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/release/3.3.x/include/xrpl/protocol/detail/ledger_entries.macro#L414-L431 "Source")
 
-An `MPToken` entry tracks [MPTs](../../../../concepts/tokens/fungible-tokens/multi-purpose-tokens.md) held by an account that is not the token issuer. You can create or delete an empty `MPToken` entry by sending an [MPTokenAuthorize transaction][]. You can send and receive MPTs using several other transaction types including [Payment][] and [OfferCreate][] transactions.
+An `MPToken` entry tracks [MPTs](../../../../concepts/tokens/fungible-tokens/multi-purpose-tokens.md) held by an account that is not the token issuer. You can create or delete an empty `MPToken` entry by sending an [MPTokenAuthorize transaction][]. You can send and receive MPTs using a [Payment transaction][].
 
 {% amendment-disclaimer name="MPTokensV1" /%}
 
@@ -31,13 +31,19 @@ In addition to the [common fields](../common-fields.md), {% code-page-name /%} e
 
 | Field Name          | JSON Type            | Internal Type | Required? | Description |
 |:--------------------|:---------------------|:--------------|:----------|:------------|
-| `Account`           | String - [Address][] | AccountID     | Yes       | The owner (holder) of these MPTs. |
-| `MPTokenIssuanceID` | String - Hexadecimal | UInt192       | Yes       | The `MPTokenIssuance` identifier. |
-| `MPTAmount`         | String - Number      | UInt64        | Yes       | The amount of tokens currently held by the owner. The minimum is 0 and the maximum is 2<sup>63</sup>-1. |
-| `LockedAmount`      | String - Number      | UInt64        | No        | The amount of tokens currently locked up (for example, in escrow). {% amendment-disclaimer name="TokenEscrow" /%} |
-| `PreviousTxnID`     | String - [Hash][]    | UInt256       | Yes       | The identifying hash of the transaction that most recently modified this entry. |
-| `PreviousTxnLgrSeq` | Number               | UInt32        | Yes       | The sequence of the ledger that contains the transaction that most recently modified this object. |
-| `OwnerNode`         | String               | UInt64        | Yes       | A hint indicating which page of the owner directory links to this entry, in case the directory consists of multiple pages. |
+| `Account`                     | String - [Address][] | AccountID     | Yes       | The owner (holder) of these MPTs. |
+| `AuditorEncryptedBalance`     | String               | Blob              | No        | The holder's total confidential balance encrypted under the auditor's key for independent auditing. Only present if an auditor is configured. {% amendment-disclaimer name="ConfidentialTransfer" /%} |
+| `ConfidentialBalanceInbox`    | String               | Blob              | No        | Encrypted inbox balance that receives incoming confidential transfers. Before it can be spent, the holder must merge it into their spending balance using the [ConfidentialMPTMergeInbox transaction][]. Present when the holder has a confidential balance. {% amendment-disclaimer name="ConfidentialTransfer" /%} |
+| `ConfidentialBalanceSpending` | String               | Blob              | No        | Encrypted spending balance used to generate proofs for outgoing transactions. Present when the holder has a confidential balance. {% amendment-disclaimer name="ConfidentialTransfer" /%} |
+| `ConfidentialBalanceVersion`  | Number               | UInt32            | No        | Version number that increments each time the spending balance changes. This version is cryptographically bound to ZKPs in outgoing transactions to prevent replay attacks and ensure proof validity. If the version changes between proof generation and submission, the transaction will fail. {% amendment-disclaimer name="ConfidentialTransfer" /%} |
+| `HolderEncryptionKey`         | String               | Blob              | No        | The holder's ElGamal public key for confidential balances. Present when the holder has a confidential balance. {% amendment-disclaimer name="ConfidentialTransfer" /%} |
+| `IssuerEncryptedBalance`      | String               | Blob              | No        | Copy of the holder's total confidential balance encrypted for the issuer to audit supply. Present when the holder has a confidential balance. {% amendment-disclaimer name="ConfidentialTransfer" /%} |
+| `LockedAmount`                | String - Number      | UInt64        | No        | The amount of tokens currently locked up (for example, in escrow). {% amendment-disclaimer name="TokenEscrow" /%} |
+| `MPTAmount`                   | String - Number      | UInt64        | Yes       | The amount of tokens currently held by the owner. The minimum is 0 and the maximum is 2<sup>63</sup>-1. |
+| `MPTokenIssuanceID`           | String - Hexadecimal | UInt192       | Yes       | The `MPTokenIssuance` identifier. |
+| `OwnerNode`                   | String               | UInt64        | Yes       | A hint indicating which page of the owner directory links to this entry, in case the directory consists of multiple pages. |
+| `PreviousTxnID`               | String - [Hash][]    | UInt256       | Yes       | The identifying hash of the transaction that most recently modified this entry. |
+| `PreviousTxnLgrSeq`           | Number               | UInt32        | Yes       | The sequence of the ledger that contains the transaction that most recently modified this object. |
 
 ### MPToken Flags
 

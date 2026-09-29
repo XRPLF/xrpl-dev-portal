@@ -28,8 +28,8 @@ This tutorial demonstrates how to enable the Require Destination Tag flag on you
     - You can also read along and use the interactive steps in your browser without any setup.
 
 <!-- Source for this specific tutorial's interactive bits: -->
-<script type="application/javascript" src="/js/interactive-tutorial.js"></script>
-<script type="application/javascript" src="/js/tutorials/require-destination-tags.js"></script>
+<script type="application/javascript" defer src="/js/interactive-tutorial.js"></script>
+<script type="application/javascript" defer src="/js/tutorials/require-destination-tags.js"></script>
 
 ## Example Code
 

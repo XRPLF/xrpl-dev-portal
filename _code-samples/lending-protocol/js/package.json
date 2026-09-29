@@ -2,7 +2,7 @@
   "name": "lending-protocol-examples",
   "description": "Example code for creating and managing loans.",
   "dependencies": {
-    "xrpl": "^4.6.0"
+    "xrpl": "5.2.0"
   },
   "type": "module"
 }

@@ -1,0 +1,12 @@
+{
+  "name": "get-started-typescript",
+  "description": "Example code for the Get Started Using TypeScript tutorial.",
+  "dependencies": {
+    "xrpl": "^4.4.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.5.0",
+    "@types/node": "^22.0.0"
+  },
+  "type": "module"
+}

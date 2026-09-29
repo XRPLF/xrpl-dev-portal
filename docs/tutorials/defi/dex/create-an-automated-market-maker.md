@@ -17,8 +17,8 @@ An [Automated Market Maker (AMM)](../../../concepts/tokens/decentralized-exchang
 {% amendment-disclaimer name="AMM" /%}
 
 <!-- Source for this specific tutorial's interactive bits: -->
-<script type="application/javascript" src="/js/interactive-tutorial.js"></script>
-<script type="application/javascript" src="/js/tutorials/create-amm.js"></script>
+<script type="application/javascript" defer src="/js/interactive-tutorial.js"></script>
+<script type="application/javascript" defer src="/js/tutorials/create-amm.js"></script>
 
 ## Prerequisites
 

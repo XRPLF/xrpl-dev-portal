@@ -38,6 +38,7 @@ An AccountDelete transaction deletes an [account](../../ledger-data/ledger-entry
 | `Destination`    |  String - [Address][] | AccountID    | Yes       | The address of an account to receive any leftover XRP after deleting the sending account. Must be a funded account in the ledger, and must not be the sending account. |
 | `DestinationTag` | Number           | UInt32            | No        | Arbitrary [destination tag](../../../../concepts/transactions/source-and-destination-tags.md) that identifies a hosted recipient or other information for the recipient of the deleted account's leftover XRP. |
 
+When you delete a [sponsored account](../../../../concepts/accounts/sponsored-fees-and-reserves.md), the `Destination` must be the account's `Sponsor`, so the sponsor can recoup the reserve they provided. On successful deletion, the sponsor's `SponsoringAccountCount` decreases by one. {% amendment-disclaimer name="Sponsor" /%}
 
 ## Special Transaction Cost
 
@@ -57,8 +58,9 @@ Besides errors that can occur for all transactions, {% $frontmatter.seo.title %}
 | `tecDST_TAG_NEEDED` | Occurs if the `Destination` account requires a [destination tag](../../../../concepts/transactions/source-and-destination-tags.md), but the `DestinationTag` field was not provided. |
 | `tecNO_DST` | Occurs if the `Destination` account is not a funded account in the ledger. |
 | `tecNO_PERMISSION` | Occurs if the `Destination` account requires [deposit authorization](../../../../concepts/accounts/depositauth.md) and the sender is not preauthorized. |
+| `tecNO_SPONSOR_PERMISSION` | Occurs if the account being deleted has a `Sponsor` field but the `Destination` is not the sponsor. A sponsored account's leftover XRP must go to its sponsor. {% amendment-disclaimer name="Sponsor" /%} |
 | `tecTOO_SOON` | Occurs if the sender's `Sequence` number is too high. The transaction's `Sequence` number plus 256 must be less than the current [Ledger Index][]. This prevents replay of old transactions if this account is resurrected after it is deleted. |
-| `tecHAS_OBLIGATIONS` | Occurs if the account to be deleted is connected to objects that cannot be deleted in the ledger. (This includes objects created by other accounts, such as [escrows](../../../../concepts/payment-types/escrow.md) and for example [NFT's minted](nftokenmint.md), {% source-link name="even if owned by another account" path="src/libxrpl/tx/transactors/account/AccountDelete.cpp#L197" /%}.) |
+| `tecHAS_OBLIGATIONS` | Occurs if the account to be deleted is connected to objects that cannot be deleted in the ledger. (This includes objects created by other accounts, such as [escrows](../../../../concepts/payment-types/escrow.md) and for example [NFT's minted](nftokenmint.md), {% source-link name="even if owned by another account" path="src/libxrpl/tx/transactors/account/AccountDelete.cpp#L197" /%}.) This also occurs if the account has a non-zero `SponsoringOwnerCount` or `SponsoringAccountCount`; those sponsorships must be transferred or dissolved before the account can be deleted. {% amendment-disclaimer name="Sponsor" /%} |
 | `tefTOO_BIG` | Occurs if the sending account is linked to more than 1000 objects in the ledger. The transaction could succeed on retry if some of those objects were deleted separately first. |
 
 ## See Also

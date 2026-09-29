@@ -1,0 +1,59 @@
+// Motion for LoaderIcon.tsx
+//
+// This one is SELF-DRIVING — see shared.scss. The arrows need a trigger
+// because "engaged" is a state of whatever contains them; a spinner has no
+// such ambiguity, so rendering it IS the stimulus. It animates unconditionally,
+// with no property to set and nothing for a consumer to wire up.
+//
+// Two deliberate properties of the motion:
+//
+//   Stepped, not swept. The glyph has eight ticks at 45deg, so the rotation is
+//   quantised to eight 45deg stops with steps(). Every tick lands exactly where
+//   its neighbour was and the ring stays in register. A continuous rotation
+//   drifts the ticks off their own positions for 7/8 of every cycle.
+//
+//   Counter-clockwise. Tick opacity descends clockwise from the brightest at
+//   12 o'clock, so the bright end is the head and the fade is the tail. Turning
+//   clockwise would drive the head into its own trail.
+
+$bds-icon-loader-ticks: 8;
+$bds-icon-loader-cycle: 800ms; // 100ms per tick
+
+.bds-icon-loader {
+  transform-origin: center;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .bds-icon-loader {
+    animation: bds-icon-loader-spin $bds-icon-loader-cycle
+      steps($bds-icon-loader-ticks) infinite;
+  }
+}
+
+// Under reduced motion the spinner slows rather than stopping. Freezing it
+// would remove the only visual signal that anything is happening, and a
+// motionless spinner reads as a hung page. A stepped ring at 3.3 steps/second
+// is low motion: small area, no parallax, no scroll-linked or zooming movement.
+//
+// Note this is the opposite of what the arrows do — their transition is
+// declared inside `prefers-reduced-motion: no-preference`, so under `reduce`
+// they snap with no motion at all. The split is deliberate: an arrow's
+// flourish is decoration, a spinner carries information.
+//
+// This says nothing about assistive technology. The icon is aria-hidden and
+// announces NOTHING; see the accessibility note in LoaderIcon.tsx for what the
+// consumer has to supply.
+@media (prefers-reduced-motion: reduce) {
+  .bds-icon-loader {
+    animation: bds-icon-loader-spin ($bds-icon-loader-cycle * 3)
+      steps($bds-icon-loader-ticks) infinite;
+  }
+}
+
+// Negative, so the ring turns counter-clockwise. With steps(8) this resolves to
+// 0, -45, -90 … -315 and then loops — eight stops, each on a tick.
+@keyframes bds-icon-loader-spin {
+  to {
+    transform: rotate(-360deg);
+  }
+}

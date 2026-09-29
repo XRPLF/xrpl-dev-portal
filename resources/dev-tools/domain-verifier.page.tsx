@@ -7,7 +7,7 @@ import { parse } from "smol-toml";
 import { TextLookupForm } from "./components/TextLookupForm";
 import { addNewLogEntry, LogEntryItem, updateLogEntry } from "./components/LogEntry";
 import { hexToBytes, hexToString, stringToHex } from "@xrplf/isomorphic/utils";
-import { Link } from "@redocly/theme/components/Link/Link";
+import { Link } from "shared/components/Link";
 
 export const frontmatter = {
   seo: {
@@ -17,7 +17,7 @@ export const frontmatter = {
 };
 
 const TIPS =
-  <p>Check if the xrp-ledger.toml file is actually hosted in the /.well-known/ location at the domain in your manifest. Check your server\'s HTTPS settings and certificate, and make sure your server provides the required <Link to="../../docs/references/xrp-ledger-toml#cors-setup">CORS header.</Link></p>;
+  <p>Check if the xrp-ledger.toml file is actually hosted in the /.well-known/ location at the domain in your manifest. Check your server\'s HTTPS settings and certificate, and make sure your server provides the required <Link href="../../docs/references/xrp-ledger-toml#cors-setup" intention="neutral">CORS header.</Link></p>;
 
 const DomainVerificationPage = () => {
   const { useTranslate } = useThemeHooks();

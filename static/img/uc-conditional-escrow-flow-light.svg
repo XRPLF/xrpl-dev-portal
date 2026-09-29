@@ -1,0 +1,51 @@
+<svg viewBox="0 0 840 460" width="840" height="460" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system,BlinkMacSystemFont,'Helvetica Neue',Helvetica,Arial,sans-serif">
+
+  <!-- Sender -->
+  <circle cx="94" cy="220" r="44" fill="#E6EAF0" stroke="#72777E" stroke-width="1"/>
+  <g transform="translate(78,204) scale(1.3333)">
+    <circle cx="12" cy="8" r="4" fill="none" stroke="#141414" stroke-width="1.6"/>
+    <path d="M4 20c0-4.4 3.6-7 8-7s8 2.6 8 7" fill="none" stroke="#141414" stroke-width="1.6"/>
+  </g>
+  <text x="94" y="286" text-anchor="middle" font-size="13" fill="#141414">Sender</text>
+
+  <!-- arrow 1: sender -> escrow -->
+  <text x="224" y="196" text-anchor="middle" font-family="'SFMono-Regular','Consolas','Menlo',monospace" font-size="13" fill="#141414">EscrowCreate</text>
+  <line x1="139" y1="227" x2="301" y2="227" stroke="#72777E" stroke-width="1.4"/>
+  <path d="M295 222 L303 227 L295 232" fill="none" stroke="#72777E" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Escrow card -->
+  <defs>
+    <clipPath id="cardclip"><rect x="310" y="100" width="220" height="220" rx="8"/></clipPath>
+  </defs>
+  <rect x="310.5" y="100.5" width="219" height="219" rx="7.5" fill="#FFFFFF" stroke="#72777E" stroke-width="1"/>
+  <rect x="310" y="100" width="220" height="4" fill="#21E46B" clip-path="url(#cardclip)"/>
+  <text x="420" y="143" text-anchor="middle" font-size="14" fill="#454549">Escrow</text>
+  <text x="420" y="174" text-anchor="middle" font-size="26" font-weight="700" fill="#141414">Held</text>
+  <g transform="translate(392,201.75) scale(2.3333)">
+    <rect x="5" y="11" width="14" height="10" rx="1.6" fill="none" stroke="#141414" stroke-width="1.3"/>
+    <path d="M8 11V8a4 4 0 0 1 8 0v3" fill="none" stroke="#141414" stroke-width="1.3"/>
+  </g>
+  <!-- accent green becomes a fill in light mode so it stays bright and still reads -->
+  <rect x="368" y="272" width="104" height="26" rx="13" fill="#21E46B"/>
+  <text x="420" y="290" text-anchor="middle" font-size="15" font-weight="700" fill="#141414">Condition</text>
+
+  <!-- arrow 2: escrow -> recipient -->
+  <text x="616" y="194" text-anchor="middle" font-family="'SFMono-Regular','Consolas','Menlo',monospace" font-size="13" fill="#141414">EscrowFinish</text>
+  <text x="616" y="214" text-anchor="middle" font-family="'SFMono-Regular','Consolas','Menlo',monospace" font-size="13" fill="#141414">+ Fulfillment</text>
+  <g opacity="0.65">
+    <line x1="531" y1="227" x2="693" y2="227" stroke="#72777E" stroke-width="1.4"/>
+    <path d="M687 222 L695 227 L687 232" fill="none" stroke="#72777E" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <!-- Recipient -->
+  <circle cx="746" cy="220" r="44" fill="#E6EAF0" stroke="#72777E" stroke-width="1"/>
+  <g transform="translate(730,204) scale(1.3333)">
+    <circle cx="12" cy="8" r="4" fill="none" stroke="#141414" stroke-width="1.6"/>
+    <path d="M4 20c0-4.4 3.6-7 8-7s8 2.6 8 7" fill="none" stroke="#141414" stroke-width="1.6"/>
+  </g>
+  <text x="746" y="286" text-anchor="middle" font-size="13" fill="#141414">Recipient</text>
+
+  <!-- legend pill: emphasis by weight, since bright green text would not read here -->
+  <rect x="264" y="393" width="312" height="43" rx="21.5" fill="#FFFFFF" stroke="#72777E" stroke-width="1"/>
+  <text x="420" y="419" text-anchor="middle" font-size="15" fill="#454549"><tspan font-weight="700" fill="#141414">Condition</tspan> = Lock &#160;&#183;&#160; <tspan font-weight="700" fill="#141414">Fulfillment</tspan> = Key</text>
+</svg>

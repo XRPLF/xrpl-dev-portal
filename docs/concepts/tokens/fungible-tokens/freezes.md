@@ -15,7 +15,7 @@ In certain cases, to meet regulatory requirements, or while investigating suspic
 Trust line tokens have these settings related to freezes:
 
 * [**Individual Freeze**](#individual-freeze) - Freeze one counterparty, so they cannot spend tokens.
-* [**Deep Freeze**](./deep-freeze.md) - Further freeze one counterparty, so that they cannot receive those tokens, either.
+* [**Deep Freeze**](#deep-freeze) - Further freeze one counterparty, so that they cannot receive those tokens, either.
 * [**Global Freeze**](#global-freeze) - Freeze all counterparties.
 * [**No Freeze**](#no-freeze) - Permanently give up the ability to freeze individual counterparties, as well as the ability to end a global freeze.
 
@@ -44,6 +44,30 @@ The Individual Freeze applies to a single trust line. To freeze multiple tokens 
 An address cannot enable the Individual Freeze setting if it has enabled the [No Freeze](#no-freeze) setting.
 
 
+## Deep Freeze
+
+The **Deep Freeze** feature is a setting on a trust line that provides a more restrictive version of an individual freeze. When an issuer enables a deep freeze, the following rules apply to the tokens on that trust line:
+
+- Payments can still occur directly between the two parties of the deep-frozen trust line.
+- The counterparty can no longer increase or decrease their balance on the deep-frozen trust line, except in direct payments to the issuer.
+- The counterparty can no longer send nor receive from others on the deep-frozen trust line.
+- The counterparty's [offers](../decentralized-exchange/offers.md) to buy or sell tokens of the deep-frozen type are considered unfunded. The counterparty cannot place new offers to buy or sell the specified tokens.
+- Payments that would [ripple through](./rippling) the deep frozen trust line are disallowed. Payments must take another path, if possible, or fail.
+
+An individual address can deep freeze their trust line to an issuer. This has no effect on transactions between the issuer and other holders. However, it does the following:
+
+- It prevents others from sending tokens of the deep-frozen type to the individual.
+- It also prevents the individual address from sending those tokens to other addresses, except the issuer.
+- It stops the individual address from placing offers to buy or sell the deep-frozen tokens.
+- It stops payments from rippling through the deep-frozen trust line.
+
+A deep freeze is a _further level_ of freeze from an individual freeze: it can only be put in place on a trust line if an individual freeze is already in place or is enacted at the same time. The regular individual freeze cannot be cleared unless the deep freeze is also cleared at the same time; however, the deep freeze _can_ be cleared while leaving the individual freeze in place.
+
+An address cannot enable the Deep Freeze setting if it has enabled the [No Freeze](#no-freeze) setting.
+
+{% amendment-disclaimer name="DeepFreeze" /%}
+
+
 ## Global Freeze
 
 The **Global Freeze** feature is a setting on an account. An account can enable a global freeze only on itself. When an issuer enables the Global Freeze feature, the following rules apply to all tokens they issue:
@@ -69,16 +93,38 @@ The **No Freeze** feature is a setting on an address that permanently gives up t
 
 Reminder: XRP already cannot be frozen. The No Freeze feature only applies to other tokens issued in the XRP Ledger.
 
-The No Freeze setting has two effects:
+The No Freeze setting has the following effects:
 
-* The issuer can no longer enable Individual Freeze on trust lines to any counterparty.
+* The issuer can no longer enable Individual Freeze or Deep Freeze on trust lines to any counterparty.
 * The issuer can still enact a Global Freeze, but cannot _disable_ the Global Freeze.
+* The issuer can not enable [Clawback](./clawing-back-tokens.md) for their trust line tokens. (Clawback for MPTs is unaffected.)
 
 The XRP Ledger cannot force an issuer to honor the obligations that its issued funds represent, so No Freeze does stop a stablecoin issuer from defaulting on its obligations. However, No Freeze ensures that an issuer does not use the Global Freeze feature unfairly against specific users.
 
-The No Freeze setting applies to all tokens issued to and from an address. If you want to be able to freeze some tokens but not others, you should use different addresses for each.
+The No Freeze setting applies to all trust line tokens issued to and from an address. If you want to be able to freeze some tokens but not others, you should use different addresses for each, or use [MPTs](./multi-purpose-tokens.md).
 
 You can only enable the No Freeze setting with a transaction signed by your address's master key secret. You cannot use a [Regular Key](../../../references/protocol/transactions/types/setregularkey.md) or a [multi-signed transaction](../../accounts/multi-signing.md) to enable No Freeze.
+
+## Relation to Clawback
+
+[Clawback](./clawing-back-tokens.md) is another feature intended to let token issuers comply with financial regulations. Clawback can be used to reclaim issued tokens that are held by the counterparty, but only if the clawback functionality was enabled in advance.
+
+The Clawback and No Freeze settings are mutually exclusive: Clawback for trust line tokens cannot be enabled if the address has enabled the No Freeze setting, and the No Freeze setting cannot be enabled if Clawback is enabled for the address's trust line tokens.
+
+[Clawback transactions][] can claw back funds even when those funds are frozen, because they operate directly between the issuer and holder.
+
+[AMMClawback transactions][] can also override freeze settings to claw back tokens that have been deposited in an [AMM](../decentralized-exchange/automated-market-makers.md). Without the `fixCleanup3_4_0` amendment, AMMClawback cannot claw back funds if the issuer has frozen the AMM's trust line. {% amendment-disclaimer name="fixCleanup3_4_0" mode="updated" /%}
+
+## How does MPT locking compare with freezing trust line tokens?
+
+The ability to "lock" an [MPT](./multi-purpose-tokens.md) is mostly equivalent to the ability to "deep freeze" a trust line token. See the following table for details:
+
+| Function | Trust line token | Multi-purpose Token (MPT) |
+|----------|------------------|---------------------------|
+| Individual freeze/lock | Two flags: regular **Individual Freeze** (blocks spending) and **Deep Freeze** (blocks spending and receiving) | One **Lock** flag (blocks spending _and_ receiving) |
+| Global freeze/lock | Per issuing account (**Global Freeze** setting) | Per token issuance (**MPT Lock** setting) |
+| Ability to give up freeze/lock power | Per issuing account (**No Freeze** setting) | Per token issuance (**Can Lock** setting) |
+| Relation between clawback and freeze | Cannot enable both **Clawback** and **No Freeze** | Can enable any combination of **Can Lock** and **Can Clawback** |
 
 
 

@@ -69,6 +69,7 @@ The request includes the following parameters:
 |:-------------------|:-------------------------------------------|:-----------|
 | `account`          | String                                     | A unique identifier for the account, most commonly the account's address. |
 | `tx_type`          | String                                     | _(Optional)_ **Clio Only** Return only transactions of a specific type, such as "Clawback", "AccountSet", "AccountDelete", et al. Case-insensitive. See [Transaction Types](../../../../references//protocol/transactions/types/index.md#transaction-types). [New in: Clio v2.0](https://github.com/XRPLF/clio/releases/tag/2.0.0 "BADGE_BLUE") [AMM support since: Clio v2.1.0](https://github.com/XRPLF/clio/releases/tag/2.1.0 "BADGE_GREEN") |
+| `mpt_issuance_id`  | String                                     | _(Optional)_ **Clio Only** Return only transactions that reference the [MPTokenIssuance entry][] with this 192-bit hexadecimal `MPTokenIssuanceID`, either directly or in the metadata of a successful transaction. {% badge href="https://github.com/XRPLF/clio/releases/tag/2.8.0" %}New in: Clio v2.8.0{% /badge %} |
 | `ledger_index_min` | Integer                                    | _(Optional)_ Use to specify the earliest ledger to include transactions from. A value of `-1` instructs the server to use the earliest validated ledger version available. |
 | `ledger_index_max` | Integer                                    | _(Optional)_ Use to specify the most recent ledger to include transactions from. A value of `-1` instructs the server to use the most recent validated ledger version available. |
 | `ledger_hash`      | String                                     | _(Optional)_ Use to look for transactions from a single ledger only. (See [Specifying Ledgers][].) |
@@ -77,8 +78,18 @@ The request includes the following parameters:
 | `forward`          | Boolean                                    | _(Optional)_ Defaults to `false`. If set to `true`, returns values indexed with the oldest ledger first. Otherwise, the results are indexed with the newest ledger first. (Each page of results may not be internally ordered, but the pages are overall ordered.) |
 | `limit`            | Positive Integer                           | _(Optional)_ Default varies. Limit the number of transactions to retrieve. The server is not required to honor this value. |
 | `marker`           | [Marker][] | Value from a previous paginated response. Resume retrieving data where that response left off. This value is stable even if there is a change in the server's range of available ledgers. |
+| `delegate`         | Object                                     | _(Optional)_ Filter the results by [transaction delegation](../../../../concepts/accounts/permission-delegation.md) relationship. See [`delegate` filter](#delegate-filter) for the object's fields. {% amendment-disclaimer name="PermissionDelegationV1_1" /%} |
 
 - [API v2]: If you specify either `ledger_index` or `ledger_hash`, including `ledger_index_min` and `ledger_index_max` returns an `invalidParams` error.
+
+#### `delegate` filter
+
+The `delegate` object filters results to transactions where one account (the delegate) signed and submitted a transaction on behalf of another account (the delegator). It has the following fields:
+
+| `Field`           | Type   | Description |
+|:------------------|:-------|:------------|
+| `delegate_filter` | String | _(Required)_ The relationship to filter by. `actor` returns transactions others signed on behalf of the `account` (the delegator's view). `authorizer` returns transactions the `account` signed on behalf of others (the delegate's view). |
+| `counter_party`   | String | _(Optional)_ An [address][] to filter by. Use with `delegate_filter`:`actor` to limit results to transactions signed by this delegatee. Use with `delegate_filter`:`authorizer` to limit results to transactions signed on behalf of this delegator. |
 
 
 ### Iterating over queried data

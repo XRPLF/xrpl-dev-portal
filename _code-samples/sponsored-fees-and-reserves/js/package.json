@@ -1,0 +1,8 @@
+{
+  "name": "sponsored-fees-and-reserves-examples",
+  "description": "Example code for sponsoring transaction fees and reserves on the XRP Ledger.",
+  "dependencies": {
+    "xrpl": "^5.1.0"
+  },
+  "type": "module"
+}

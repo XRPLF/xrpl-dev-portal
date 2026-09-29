@@ -172,7 +172,7 @@
         "link": "/docs/references/http-websocket-apis/public-api-methods/clio-methods/ledger_index",
         "body": {
           "command": "ledger_index",
-          "date": "2024-06-20T09:00:42.000Z"
+          "date": "2024-06-20T09:00:42Z"
         },
         "clio_only": true
       }
@@ -965,6 +965,21 @@
           "id": "example_get_signerlist",
           "command": "ledger_entry",
           "signer_list": "A9C28A28B85CD533217F5C0A0C7767666B093FA58A0F2D80026FCC4CD932DDC7",
+          "ledger_index": "validated"
+        }
+      },
+      {
+        "name": "ledger_entry - Sponsorship",
+        "description": "Returns a Sponsorship object in its raw ledger format.",
+        "link": "/docs/references/http-websocket-apis/public-api-methods/ledger-methods/ledger_entry#get-sponsorship-entry",
+        "status": "not_enabled",
+        "body": {
+          "id": "example_get_sponsorship",
+          "command": "ledger_entry",
+          "sponsorship": {
+            "sponsor": "rpUqggHmAvbeWDr3v8QPTds7HgFBPKNkLX",
+            "sponsee": "rEfvNyfG1GC4CXxqe4ct3KJBRz6oW6NPrD"
+          },
           "ledger_index": "validated"
         }
       },

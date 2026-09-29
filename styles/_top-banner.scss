@@ -5,10 +5,16 @@
   height: $banner-height;
   background: #32E685 !important;
   padding: 7px 35px;
-  font-family: "Space Grotesk";
+  font-family: $font-family-monospace;
   z-index: 10;
   cursor: pointer;
-  
+  color: $black !important;
+  text-align: center;
+  font-size: 26px; // Further scaled down from 28px
+  font-style: normal;
+  font-weight: 600;
+  letter-spacing: -0.32px;
+
   &:hover {
     text-decoration: none;
     color: $white;
@@ -17,13 +23,6 @@
       transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
     }
   }
-  color: $black !important;
-  text-align: center;
-  font-family: "Space Grotesk";
-  font-size: 26px; // Further scaled down from 28px
-  font-style: normal;
-  font-weight: 600;
-  letter-spacing: -0.32px;
   // Pseudo-element for the fill animation
   &::after {
     content: "";

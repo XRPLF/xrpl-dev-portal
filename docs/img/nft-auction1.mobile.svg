@@ -1,0 +1,62 @@
+<svg width="420" height="782" viewBox="0 0 420 782" xmlns="http://www.w3.org/2000/svg" role="img">
+<title>Auction in Brokered Mode with a Reserve</title>
+<desc>Seller creates the NFT and sets a reserve price with the broker as destination. Bidders make bids with the broker as destination. The broker selects the winning bid, completes the sale and takes a fee, then cancels the losing bids.</desc>
+<defs>
+<marker id="arrowm1" viewBox="0 0 10 10" refX="5" refY="8" markerWidth="7" markerHeight="7" orient="auto">
+<path d="M1 1L5 8L9 1" fill="none" stroke="#838386" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+</marker>
+</defs>
+<rect x="0" y="0" width="420" height="782" fill="#f5f5f7"/>
+<line x1="210" y1="144" x2="210" y2="170" stroke="#838386" stroke-width="1.5" marker-end="url(#arrowm1)"/>
+<line x1="210" y1="300" x2="210" y2="326" stroke="#838386" stroke-width="1.5" marker-end="url(#arrowm1)"/>
+<line x1="210" y1="456" x2="210" y2="482" stroke="#838386" stroke-width="1.5" marker-end="url(#arrowm1)"/>
+<line x1="210" y1="612" x2="210" y2="638" stroke="#838386" stroke-width="1.5" marker-end="url(#arrowm1)"/>
+<g>
+<rect x="16" y="16" width="388" height="126" rx="10" fill="#232325"/>
+<rect x="18" y="30" width="4" height="98" rx="2" fill="#72E38E"/>
+<circle cx="380" cy="40" r="13" fill="#72E38E"/>
+<text x="380" y="40" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="700" fill="#ffffff">1</text>
+<text x="40" y="46" font-family="Helvetica Neue, Arial, sans-serif" font-size="12" font-weight="700" letter-spacing="0.5" fill="#72E38E">SELLER</text>
+<text x="40" y="76" font-family="Helvetica Neue, Arial, sans-serif" font-size="15" fill="#E0E0E1">Creates the NFT</text>
+<text x="40" y="126" font-family="Courier New, monospace" font-size="12" fill="#72E38E">NFTokenMint</text>
+</g>
+<g>
+<rect x="16" y="172" width="388" height="126" rx="10" fill="#232325"/>
+<rect x="18" y="186" width="4" height="98" rx="2" fill="#72E38E"/>
+<circle cx="380" cy="196" r="13" fill="#72E38E"/>
+<text x="380" y="196" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="700" fill="#ffffff">2</text>
+<text x="40" y="202" font-family="Helvetica Neue, Arial, sans-serif" font-size="12" font-weight="700" letter-spacing="0.5" fill="#72E38E">SELLER</text>
+<text x="40" y="232" font-family="Helvetica Neue, Arial, sans-serif" font-size="15" fill="#E0E0E1">Sets minimum sale price,</text>
+<text x="40" y="251" font-family="Helvetica Neue, Arial, sans-serif" font-size="15" fill="#E0E0E1">broker as destination</text>
+<text x="40" y="282" font-family="Courier New, monospace" font-size="12" fill="#72E38E">NFTokenCreateOffer</text>
+</g>
+<g>
+<rect x="16" y="328" width="388" height="126" rx="10" fill="#232325"/>
+<rect x="18" y="342" width="4" height="98" rx="2" fill="#4DA1F8"/>
+<circle cx="380" cy="352" r="13" fill="#4DA1F8"/>
+<text x="380" y="352" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="700" fill="#ffffff">3</text>
+<text x="40" y="358" font-family="Helvetica Neue, Arial, sans-serif" font-size="12" font-weight="700" letter-spacing="0.5" fill="#4DA1F8">BUYERS / BIDDERS</text>
+<text x="40" y="388" font-family="Helvetica Neue, Arial, sans-serif" font-size="15" fill="#E0E0E1">Makes bids, broker as</text>
+<text x="40" y="407" font-family="Helvetica Neue, Arial, sans-serif" font-size="15" fill="#E0E0E1">destination</text>
+<text x="40" y="438" font-family="Courier New, monospace" font-size="12" fill="#4DA1F8">NFTokenCreateOffer</text>
+</g>
+<g>
+<rect x="16" y="484" width="388" height="126" rx="10" fill="#232325"/>
+<rect x="18" y="498" width="4" height="98" rx="2" fill="#C733F6"/>
+<circle cx="380" cy="508" r="13" fill="#C733F6"/>
+<text x="380" y="508" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="700" fill="#ffffff">4</text>
+<text x="40" y="514" font-family="Helvetica Neue, Arial, sans-serif" font-size="12" font-weight="700" letter-spacing="0.5" fill="#C733F6">BROKER</text>
+<text x="40" y="544" font-family="Helvetica Neue, Arial, sans-serif" font-size="15" fill="#E0E0E1">Selects winning bid,</text>
+<text x="40" y="563" font-family="Helvetica Neue, Arial, sans-serif" font-size="15" fill="#E0E0E1">completes sale, takes fee</text>
+<text x="40" y="594" font-family="Courier New, monospace" font-size="12" fill="#C733F6">NFTokenAcceptOffer</text>
+</g>
+<g>
+<rect x="16" y="640" width="388" height="126" rx="10" fill="#232325"/>
+<rect x="18" y="654" width="4" height="98" rx="2" fill="#C733F6"/>
+<circle cx="380" cy="664" r="13" fill="#C733F6"/>
+<text x="380" y="664" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="700" fill="#ffffff">5</text>
+<text x="40" y="670" font-family="Helvetica Neue, Arial, sans-serif" font-size="12" font-weight="700" letter-spacing="0.5" fill="#C733F6">BROKER</text>
+<text x="40" y="700" font-family="Helvetica Neue, Arial, sans-serif" font-size="15" fill="#E0E0E1">Cancels remaining bids</text>
+<text x="40" y="750" font-family="Courier New, monospace" font-size="12" fill="#C733F6">NFTokenCancelOffer</text>
+</g>
+</svg>

@@ -15,7 +15,7 @@ XRP Ledgerの[分散型取引所](index.md)で、XRP以外の2種類の通貨を
 
 オートブリッジングは、あらゆる[OfferCreateトランザクション][]で自動的に行われます。[Paymentトランザクション](../../../references/protocol/transactions/types/payment.md)ではオートブリッジングはデフォルトでは _行われません_ が、path-findingにより同様の効果のある[パス](../fungible-tokens/paths.md)を検索できます。
 
-[![オートブリッジングによる直接注文と合成注文の組み合わせを示す図](/docs/img/autobridging.png)](/docs/img/autobridging.png)
+<img class="autobridging-diagram" src="/img/autobridging.svg" alt="オートブリッジングによる直接注文と合成注文の組み合わせを示す図">
 
 
 ## 関連項目

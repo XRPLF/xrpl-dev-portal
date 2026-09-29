@@ -27,8 +27,16 @@
 }
 
 #connection-status-item.active {
-  background-color: $success;
-  border-color: $success;
+  background-color: $xrpl-green-dark-6;
+}
+
+// The WebSocket tool's selected-command heading is a Link for its neutral
+// color, but it reads as a heading: no underline, the h3's own weight, and no
+// horizontal padding so it stays flush with the description below.
+h3 > .selected_command.xrpl-link {
+  padding: 0;
+  font-weight: inherit;
+  text-decoration: none;
 }
 
 .api-input-area .btn-group > .send-request.btn {
@@ -45,8 +53,29 @@
   border: 1px solid $gray-200;
 }
 
-.progress small {
-  margin-top: .5rem; // Fix "Getting ready to send..." position
+.page-tx-sender .tx-sender-progress {
+  position: relative;
+  height: 1.35rem;
+}
+
+.page-tx-sender .tx-sender-progress-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  min-height: 1.35rem;
+  font-size: 0.7rem;
+  line-height: 1;
+  color: $white;
+  text-shadow: 0 0 4px rgba(0, 0, 0, 0.9), 0 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.page-tx-sender .tx-sender-progress .tx-sender-progress-label {
+  position: absolute;
+  inset: 0;
+  min-height: 0;
+  pointer-events: none;
+  z-index: 1;
 }
 
 .page-tx-sender .input-group .form-control,
@@ -58,6 +87,13 @@
 .bootstrap-growl {
   max-width: 90vw !important;
   overflow: hidden;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.25);
+
+  .btn-close {
+    top: 8px;
+    right: 8px;
+    padding: 0;
+  }
 }
 
 .list-group-item-danger,
@@ -80,6 +116,14 @@
     // These aren't anchors, and the placement of the anchor fix thing
     // causes things above them to be unclickable
     display: none;
+  }
+}
+
+.form-text {
+  color: $gray-500;
+
+  :root.dark & {
+    color: $gray-400;
   }
 }
 

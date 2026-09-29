@@ -1,0 +1,53 @@
+// BDS CardsIconGrid Pattern Styles
+// Brand Design System - Section with heading, description, and grid of CardTextIconCard
+//
+// Naming Convention: BEM with 'bds' namespace
+// .bds-cards-icon-grid         - Base section container
+// .bds-cards-icon-grid__list   - Grid list (ul as PageGrid.Row)
+
+// =============================================================================
+// Design Tokens (uses BDS spacing from _spacing.scss)
+// =============================================================================
+
+$bds-cards-icon-grid-padding-base: $bds-space-2xl;
+$bds-cards-icon-grid-padding-md: $bds-space-3xl;
+$bds-cards-icon-grid-padding-lg: $bds-space-4xl;
+
+// =============================================================================
+// Section Container
+// =============================================================================
+
+.bds-cards-icon-grid {
+  padding-top: $bds-cards-icon-grid-padding-base;
+
+  @include media-breakpoint-up(md) {
+    padding-top: $bds-cards-icon-grid-padding-md;
+  }
+
+  @include media-breakpoint-up(lg) {
+    padding-top: $bds-cards-icon-grid-padding-lg;
+  }
+
+  ul {
+    padding-left: 0;
+    list-style: none;
+  }
+
+  @include bds-theme-mode(dark) {
+    color: $white;
+  }
+}
+
+// =============================================================================
+// List Grid - Aspect Ratios
+// =============================================================================
+
+.bds-cards-icon-grid__list > li {
+  aspect-ratio: 3 / 2;
+  @include media-breakpoint-up(md) {
+    aspect-ratio: 4 / 3;
+  }
+  @include media-breakpoint-up(lg) {
+    aspect-ratio: 4 / 3;
+  }
+}

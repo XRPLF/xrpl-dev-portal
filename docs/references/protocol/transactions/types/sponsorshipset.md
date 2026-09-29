@@ -1,0 +1,92 @@
+---
+seo:
+    description: Create, update, or delete a Sponsorship on the XRP Ledger.
+labels:
+    - Fees
+    - Accounts
+    - Sponsorship
+status: not_enabled
+requiredAmendment: Sponsor
+txIcon: modify
+---
+# SponsorshipSet
+{% source-link path="src/libxrpl/tx/transactors/sponsor/SponsorshipSet.cpp" /%}
+
+Create, update, or delete a [Sponsorship](../../../../concepts/accounts/sponsored-fees-and-reserves.md) on the XRP Ledger.
+
+{% amendment-disclaimer name="Sponsor" /%}
+
+## Example JSON
+
+```json
+{
+  "TransactionType": "SponsorshipSet",
+  "Account": "rN7n7otQDd6FczFgLdlqtyMVrn3HMfXpf",
+  "Sponsee": "rfkDkFai4jUfCvAJiZ5Vm7XvvWjYvDqeYo",
+  "FeeAmountDelta": "1000000",
+  "MaxFee": "1000",
+  "RemainingOwnerCountDelta": 5,
+  "Fee": "12",
+  "Sequence": 42
+}
+```
+
+## {% $frontmatter.seo.title %} Fields
+
+In addition to the [common fields](../common-fields.md), {% code-page-name /%} transactions use the following fields:
+
+| Field Name                 | JSON Type | [Internal Type][] | Required? | Description |
+| :------------------------- | :-------- | :---------------- | :-------- | :---------- |
+| `CounterpartySponsor`      | String    | AccountID         | No        | The sponsor associated with this relationship. This account also pays for the reserve of this entry. If this field is included, the `Account` is assumed to be the sponsee. |
+| `FeeAmountDelta`           | String    | Amount            | No        | The change to apply to the fee budget (in drops of XRP). A positive value moves that much XRP from the sponsor's account into `Sponsorship.FeeAmount`. A negative value returns that much XRP to the sponsor. Must **not** be zero, and must be positive when creating a new sponsorship. |
+| `MaxFee`                   | String    | Amount            | No        | The maximum fee per sponsored transaction. This prevents abuse or excessive draining of the sponsored fee pool. |
+| `RemainingOwnerCountDelta` | Number    | Int32             | No        | The change to apply to the reserve budget. A positive value adds that many owner reserves to `Sponsorship.RemainingOwnerCount`. A negative value removes that many, or empties the budget if it exceeds the current count. Must **not** be zero, and must be positive when creating a new sponsorship. |
+| `Sponsee`                  | String    | AccountID         | No        | The sponsee associated with this relationship. If this field is included, the `Account` is assumed to be the sponsor. |
+
+This transaction requires that you specify either the **CounterpartySponsor** or **Sponsee**, but not both.
+
+`FeeAmountDelta` and `RemainingOwnerCountDelta` add to the budgets stored on the [Sponsorship ledger entry][] instead of replacing them, so you can top up or draw down a pool without reading its current values first. Omitting a delta leaves that budget unchanged.
+
+A sponsorship entry must keep at least some fee budget (`FeeAmount`) or reserve budget (`RemainingOwnerCount`). If you try to create or update the entry with neither, the transaction fails, because an empty entry still consumes an owner reserve while giving the sponsee nothing to draw on.
+
+## {% $frontmatter.seo.title %} Flags
+
+{% code-page-name /%} transactions support additional values in the `Flags` field, as follows:
+
+| Flag Name                                   | Hex Value    | Decimal Value | Description |
+| :------------------------------------------ | :----------- | :------------ | :---------- |
+| `tfSponsorshipSetRequireSignForFee`         | `0x00010000` | 65536         | Adds the restriction that every use of this sponsor for sponsoring fees requires a signature from the sponsor. |
+| `tfSponsorshipClearRequireSignForFee`       | `0x00020000` | 131072        | Removes the restriction that every use of this sponsor for sponsoring fees requires a signature from the sponsor. |
+| `tfSponsorshipSetRequireSignForReserve`     | `0x00040000` | 262144        | Adds the restriction that every use of this sponsor for sponsoring reserves requires a signature from the sponsor. |
+| `tfSponsorshipClearRequireSignForReserve`   | `0x00080000` | 524288        | Removes the restriction that every use of this sponsor for sponsoring reserves requires a signature from the sponsor. |
+| `tfDeleteObject`                            | `0x00100000` | 1048576       | Deletes the `Sponsorship` ledger entry. When enabled, no other fields (except `Sponsee` and `CounterpartySponsor`) or flag-setting fields may be specified. Deleting returns any remaining XRP in `Sponsorship.FeeAmount` to the sponsor's account. |
+
+## Deleting a Sponsorship Ledger Entry
+
+To delete a `Sponsorship` ledger entry, the sponsor or sponsee submits a {% code-page-name /%} transaction with the `tfDeleteObject` flag enabled. Any remaining XRP in `Sponsorship.FeeAmount` is returned to the sponsor's account upon deletion.
+
+Deleting the `Sponsorship` entry only removes the pre-funded fee and reserve arrangement between the sponsor and sponsee. Ledger entries that were previously created using sponsored reserves retain their `Sponsor` field and remain sponsored. To transfer or dissolve sponsorship for those existing ledger entries, use the [SponsorshipTransfer transaction][].
+
+## Error Cases
+
+Besides errors that can occur for all transactions, {% code-page-name /%} transactions can result in the following [transaction result codes](../transaction-results/index.md):
+
+| Error Code | Description |
+| :--- | :--- |
+| `tecLIMIT_EXCEEDED` | The `Sponsorship.RemainingOwnerCount` exceeds the maximum value of an unsigned 32-bit integer. |
+| `tecNO_DST` | The sponsor or sponsee account does not exist on the ledger. |
+| `tecNO_ENTRY` | The `tfDeleteObject` flag is enabled but the `Sponsorship` ledger entry does not exist. |
+| `tecNO_PERMISSION` | The transaction is not permitted. This occurs when creating or updating the entry would leave it with no budget. Empty `Sponsorship` ledger entries are not allowed. |
+| `tecPSEUDO_ACCOUNT` | The sponsor or sponsee is a pseudo-account, which cannot participate in sponsorship. |
+| `tecUNFUNDED` | The sponsor does not have sufficient XRP to fund a positive `FeeAmountDelta` or to cover the reserve for the `Sponsorship` ledger entry. |
+| `temBAD_AMOUNT` | An amount field is invalid. This can occur when:<ul><li>`FeeAmountDelta` is zero or not denominated in XRP.</li><li>`MaxFee` is negative or not denominated in XRP.</li></ul> |
+| `temINVALID` | The `RemainingOwnerCountDelta` value is zero. This is not permitted. |
+| `temINVALID_FLAG` | The transaction has invalid flags. This can occur when:<ul><li>Conflicting flags are enabled, such as both `tfSponsorshipSetRequireSignForFee` and `tfSponsorshipClearRequireSignForFee`.</li><li>The `tfDeleteObject` flag is enabled along with additional flags. `tfDeleteObject` must be the only flag.</li></ul> |
+| `temMALFORMED` | The transaction is malformed. This can occur when:<ul><li>Both `CounterpartySponsor` and `Sponsee` are specified.</li><li>Neither `CounterpartySponsor` nor `Sponsee` is specified.</li><li>The `tfDeleteObject` flag is enabled and `FeeAmountDelta`, `MaxFee`, or `RemainingOwnerCountDelta` is specified.</li><li>The sponsor and sponsee are the same account.</li></ul> |
+
+## See Also
+
+- **References:**
+    - [Sponsorship ledger entry][]
+
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

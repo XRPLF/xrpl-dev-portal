@@ -144,13 +144,13 @@ An example of the response format:
 
 {% admonition type="info" name="Notes" %}
 
+- Duplicate `{account, oracle_document_id}` pairs in the `oracles` array are ignored, so the same oracle's price isn't counted more than once.
 - The most recent `Oracle` objects are obtained for the specified oracles.
 - The most recent `LastUpdateTime` among all objects is chosen as the upper time threshold.
 - An `Oracle` object is included in the aggregation dataset if it contains the specified `base_asset`/`quote_asset` pair, has an `AssetPrice` field, and its `LastUpdateTime` is within the time range specified.
 - If an `Oracle` object doesn't contain an `AssetPrice` for the specified token pair, then up to three previous `Oracle` objects are examined and the most recent one that fulfills the requirements is included.
 
 {% /admonition %}
-
 
 ## Possible Errors
 

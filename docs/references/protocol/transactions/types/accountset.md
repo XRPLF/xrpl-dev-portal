@@ -82,7 +82,7 @@ The available AccountSet flags are:
 | `asfDisallowIncomingCheck`        | 13            | Block incoming Checks. {% amendment-disclaimer name="DisallowIncoming" /%} |
 | `asfDisallowIncomingNFTokenOffer` | 12            | Block incoming NFTokenOffers. {% amendment-disclaimer name="DisallowIncoming" /%} |
 | `asfDisallowIncomingPayChan`      | 14            | Block incoming Payment Channels. {% amendment-disclaimer name="DisallowIncoming" /%} |
-| `asfDisallowIncomingTrustline`    | 15            | Block incoming trust lines. {% amendment-disclaimer name="DisallowIncoming" /%} |
+| `asfDisallowIncomingTrustline`    | 15            | Block incoming trust lines, including ones that an `OfferCreate` transaction would otherwise create implicitly to receive your tokens. {% amendment-disclaimer name="DisallowIncoming" /%} {% amendment-disclaimer name="fixCleanup3_4_0" /%} |
 | `asfDisallowXRP`                  | 3             | XRP should not be sent to this account. (Advisory; not enforced by the XRP Ledger protocol.) |
 | `asfGlobalFreeze`                 | 7             | [Freeze](../../../../concepts/tokens/fungible-tokens/freezes.md) all assets issued by this account. |
 | `asfNoFreeze`                     | 6             | Permanently give up the ability to [freeze individual trust lines or disable Global Freeze](../../../../concepts/tokens/fungible-tokens/freezes.md). This flag can never be disabled after being enabled. |
@@ -144,7 +144,7 @@ If the [DisallowIncoming amendment][] is enabled, you also have the option to bl
 - `asfDisallowIncomingPayChan` - for PayChannel objects
 - `asfDisallowIncomingTrustline` - for RippleState (trust line) objects
 
-When a transaction would create one of these ledger entries, if the destination account has the corresponding flag enabled, the transaction fails with the result code `tecNO_PERMISSION`. Unlike Deposit Authorization, these settings do not prevent you from receiving payments in general. Also, enabling this setting doesn't stop you from creating these types of objects yourself (unless the destination of your transaction is also using the setting, of course).
+When a transaction would create one of these ledger entries, if the destination account has the corresponding flag enabled, the transaction fails with the result code `tecNO_PERMISSION`. If a trust line is implicitly created by an `OfferCreate` transaction, it fails with `tecNO_LINE` instead. {% amendment-disclaimer name="fixCleanup3_4_0" /%} Unlike Deposit Authorization, these settings do not prevent you from receiving payments in general. Also, enabling this setting doesn't stop you from creating these types of objects yourself (unless the destination of your transaction is also using the setting, of course).
 
 
 ## TransferRate

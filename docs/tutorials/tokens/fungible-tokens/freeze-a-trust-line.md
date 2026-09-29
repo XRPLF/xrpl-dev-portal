@@ -27,8 +27,8 @@ This tutorial shows the steps to [freeze an individual trust line](../../../conc
 - You **cannot** have enabled the [No Freeze setting](../../../concepts/tokens/fungible-tokens/freezes.md#no-freeze), which gives up your ability to freeze individual trust lines.
 
 <!-- Source for this specific tutorial's interactive bits: -->
-<script type="application/javascript" src="/js/interactive-tutorial.js"></script>
-<script type="application/javascript" src="/js/tutorials/freeze-individual-line.js"></script>
+<script type="application/javascript" defer src="/js/interactive-tutorial.js"></script>
+<script type="application/javascript" defer src="/js/tutorials/freeze-individual-line.js"></script>
 
 
 ## Example Code

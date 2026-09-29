@@ -1,7 +1,7 @@
 import { useThemeHooks } from '@redocly/theme/core/hooks';
 import { Link } from '@redocly/theme/components/Link/Link';
 import { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation } from "react-router";
 import JsonView from 'react18-json-view'
 import { Client, isValidAddress } from 'xrpl'
 

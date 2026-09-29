@@ -2,7 +2,7 @@
 // tutorials; not recommended for new tutorials.
 
 import * as React from 'react'
-import { useLocation } from 'react-router-dom'
+import { useLocation } from 'react-router'
 import dynamicReact from '@markdoc/markdoc/dist/react'
 import { idify } from '../helpers'
 

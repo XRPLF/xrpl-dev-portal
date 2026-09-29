@@ -210,6 +210,17 @@ Demonstration:
 {% repo-link path="_code-samples/build-a-desktop-wallet/js/1_ledger-index.js" %}`1-ledger-index/index.js`{% /repo-link %}
 
 
+### Responsive Graphic
+
+Display a different graphic depending on if the site is being viewed in "mobile" or "desktop" style. The graphic is also a link to the desktop version of the graphic, which is usually the larger version, so that the user can view the enlarged version. Provide the (absolute, from repo top) path to the desktop graphic in the `desktop` attribute, mobile graphic in the `mobile` attribute, and alt text in the `alt` attribute. All three attributes are required.
+
+Example usage:
+
+<pre><code>
+{% responsive-graphic desktop="/docs/img/nft-brokered-mode-with-reserve.svg" mobile="/docs/img/nft-brokered-mode-with-reserve.mobile.svg" alt="Brokered mode with reserve: the seller mints and lists the NFT at a minimum price, buyers bid, and the broker matches the sale, takes a fee, and cancels remaining bids." /%}
+</code></pre>
+
+
 ### Source Link
 
 Link to an `xrpld` source code file. The link is built using a `path` parameter and `PUBLIC_XRPLD_RELEASE` variable in this repository's `.env` file. If an optional `name` parameter is provided, the link is styled differently.

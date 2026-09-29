@@ -6,6 +6,10 @@ This directory contains Go examples demonstrating how to create a loan broker, c
 
 All commands should be run from this `go/` directory.
 
+The setup targets Devnet with the `LendingProtocolV1_1` and `fixCleanup3_4_0` amendments enabled (rippled 3.4.0). It creates a closed-ended vault, deposits during its subscription period, and waits about two minutes for the investment period before creating loans. The redemption date is 400 days later to allow the 12-month loan tutorial to run.
+
+If you have setup data from an earlier version, remove `lending-setup.json` and run `go run ./lending-setup` to create a new vault. An existing vault's kind cannot be changed.
+
 Install dependencies before running any examples:
 
 ```sh
@@ -288,42 +292,46 @@ Loan created successfully!
 go run ./loan-manage
 ```
 
-The script should output the initial status of the loan, the LoanManage transaction, and the updated loan status and grace period after impairment. The script will countdown the grace period before outputting another LoanManage transaction, and then the final flags on the loan.
+The setup creates a separate management loan with a 60-second payment interval and a 60-second grace period. With `fixCleanup3_4_0` enabled, the script waits for a late payment before impairment, then waits for the grace period to expire before default. Both waits use validated ledger time. The script outputs the transactions and final loan flags. Regenerate older setup data to avoid waiting for a 30-day loan.
 
 ```sh
-Loan broker address: rN7eCZhKHcq5LEC2W2RrrGcUPBYwZagEPX
-LoanID: 2BD3F3F587D1BD4FB247B0935FB098E2DC6E3B571F493472CED914216990EC6C
+Loan broker address: rE6rqycr6xGDzCGJwzDCBc7QYKxtXA1Mwz
+LoanID: D012D269C6E479D866841A47BE2EA2E5ACF591A90B997DC5169D11AEC9274DBC
 
 === Loan Status ===
 
 Total Amount Owed: 1001 TSTUSD.
-Payment Due Date: 2026-03-23 01:23:40
+Payment Due Date: 2026-09-18 12:37:41
+
+Waiting for ledger time to pass the deadline: 70 seconds...
 
 === Preparing LoanManage transaction to impair loan ===
 
 {
-  "Account": "rN7eCZhKHcq5LEC2W2RrrGcUPBYwZagEPX",
+  "Account": "rE6rqycr6xGDzCGJwzDCBc7QYKxtXA1Mwz",
   "Flags": 131072,
-  "LoanID": "2BD3F3F587D1BD4FB247B0935FB098E2DC6E3B571F493472CED914216990EC6C",
+  "LoanID": "D012D269C6E479D866841A47BE2EA2E5ACF591A90B997DC5169D11AEC9274DBC",
   "TransactionType": "LoanManage"
 }
 
 === Submitting LoanManage impairment transaction ===
 
 Loan impaired successfully!
-New Payment Due Date: 2026-02-21 00:24:10
+New Payment Due Date: 2026-09-18 12:37:41
 Grace Period: 60 seconds
 
 === Countdown until loan can be defaulted ===
 
+
+Waiting for ledger time to pass the deadline: 51 seconds...
 Grace period expired. Loan can now be defaulted.
 
 === Preparing LoanManage transaction to default loan ===
 
 {
-  "Account": "rN7eCZhKHcq5LEC2W2RrrGcUPBYwZagEPX",
+  "Account": "rE6rqycr6xGDzCGJwzDCBc7QYKxtXA1Mwz",
   "Flags": 65536,
-  "LoanID": "2BD3F3F587D1BD4FB247B0935FB098E2DC6E3B571F493472CED914216990EC6C",
+  "LoanID": "D012D269C6E479D866841A47BE2EA2E5ACF591A90B997DC5169D11AEC9274DBC",
   "TransactionType": "LoanManage"
 }
 

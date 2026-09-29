@@ -8,9 +8,9 @@ labels:
 ---
 # yumを使用したCentOS/Red Hatへのインストール
 
-このページでは、Rippleの[yum](https://en.wikipedia.org/wiki/Yellowdog_Updater,_Modified)リポジトリを使用して、**CentOS 7**または**Red Hat Enterprise Linux 7**に、`xrpld`の安定した最新バージョンをインストールする場合の推奨手順を説明します。
+このページでは、XRPLFの[yum](https://en.wikipedia.org/wiki/Yellowdog_Updater,_Modified)リポジトリを使用して、**CentOS 7**または**Red Hat Enterprise Linux 7**に、`xrpld`の安定した最新バージョンをインストールする場合の推奨手順を説明します。
 
-以下の手順では、Rippleによってコンパイルされたバイナリーをインストールします。
+以下の手順では、XRPLFによってコンパイルされたバイナリーをインストールします。
 
 
 ## 前提条件
@@ -20,17 +20,15 @@ labels:
 
 ## インストール手順
 
-1. Ripple RPMリポジトリをインストールします。
+1. XRPLFのパッケージ署名キーをインポートし、XRPLF RPMリポジトリをインストールします。
 
     ```
-    $ cat << REPOFILE | sudo tee /etc/yum.repos.d/ripple.repo
-    [ripple-stable]
-    name=XRP Ledger Packages
-    baseurl=https://repos.ripple.com/repos/rippled-rpm/stable/
-    enabled=1
-    gpgcheck=0
-    gpgkey=https://repos.ripple.com/repos/rippled-rpm/stable/repodata/repomd.xml.key
-    repo_gpgcheck=1
+    $ sudo rpm --import https://packages.xrplf.org/xrplf.asc
+    $ cat << REPOFILE | sudo tee /etc/yum.repos.d/xrplf.repo
+    [xrplf]
+    baseurl=https://packages.xrplf.org/repository/rpm-stable/x86_64/
+    gpgkey=https://packages.xrplf.org/xrplf.asc
+    gpgcheck=1
     REPOFILE
     ```
 

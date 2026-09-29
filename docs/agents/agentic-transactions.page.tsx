@@ -1,5 +1,7 @@
 import { useThemeHooks } from '@redocly/theme/core/hooks';
 import { Link } from '@redocly/theme/components/Link/Link';
+import Button from 'shared/components/Button';
+import { XrplArrowInternalLinkIcon } from 'shared/components/Icons';
 
 export const frontmatter = {
   seo: {
@@ -91,25 +93,29 @@ const requirementCards = [
     title: 'A Wallet',
     description:
       'An XRPL account with a funded balance. On Testnet, use the faucet. In production, generate a key pair and store it securely in a KMS or HSM.',
+    href: '/docs/introduction/crypto-wallets',
   },
   {
     number: '02',
     title: 'Network Access',
     description:
       'A connection to an XRPL node via JSON-RPC or WebSocket. Public Testnet endpoints are available at altnet.rippletest.net.',
+    href: '/docs/tutorials/public-servers',
   },
   {
     number: '03',
     title: 'A Transaction Library',
     description:
       'xrpl-py (Python) or xrpl.js (JavaScript/TypeScript) handle serialization, signing, and submission. No raw RPC calls required.',
+    href: '/docs/references/client-libraries',
   },
   {
     number: '04',
     title: 'Machine-Readable Docs',
     description:
       'The XRPL Docs MCP Server exposes the full developer documentation as tool-callable context, so your LLM always has accurate, up-to-date reference material.',
-    href: 'https://context7.com/websites/xrpl',
+    href: '/resources/dev-tools/ai-tools#xrpl-docs-mcp-server',
+    external: true
   },
   {
     number: '05',
@@ -144,24 +150,28 @@ export default function AgenticTransactions() {
             )}
           </p>
           <div className="d-flex flex-wrap justify-content-center gap-3">
-            <Link
-              className="btn btn-primary btn-arrow"
-              to="/docs/agents/getting-started-with-agentic-transactions/"
+            <Button
+              intention="neutral"
+              emphasis="strong"
+              href="/docs/agents/getting-started-with-agentic-transactions/"
+              iconEnd={<XrplArrowInternalLinkIcon />}
             >
               {translate('Get Started')}
-            </Link>
-            <Link
-              className="btn btn-outline-secondary"
-              to="/docs/agents/agentic-payments-x402/"
+            </Button>
+            <Button
+              intention="neutral"
+              emphasis="standard"
+              href="/docs/agents/agentic-payments-x402/"
             >
               {translate('Agentic Payments with x402')}
-            </Link>
-            <Link
-              className="btn btn-outline-secondary"
-              to="/resources/dev-tools/ai-tools"
+            </Button>
+            <Button
+              intention="neutral"
+              emphasis="standard"
+              href="/resources/dev-tools/ai-tools"
             >
               {translate('View AI Tooling')}
-            </Link>
+            </Button>
           </div>
         </div>
       </section>
@@ -306,7 +316,12 @@ export default function AgenticTransactions() {
               >
                 {inner}
                 <div className="card-footer">
+                { card.external ? (
+                  <span className="req-arrow">↗</span>
+                ) : (
                   <span className="req-arrow">→</span>
+                )
+                }
                 </div>
               </Link>
             ) : (
@@ -342,12 +357,14 @@ export default function AgenticTransactions() {
                 'The XRPL AI Starter Kit includes a Claude Skills file, an MCP documentation server, and a step-by-step tutorial. Connect your agent to the XRP Ledger Testnet and send your first transaction today.'
               )}
             </p>
-            <Link
-              className="btn btn-primary btn-arrow"
-              to="/docs/agents/getting-started-with-agentic-transactions/"
+            <Button
+              intention="neutral"
+              emphasis="strong"
+              href="/docs/agents/getting-started-with-agentic-transactions/"
+              iconEnd={<XrplArrowInternalLinkIcon />}
             >
               {translate('Start the Tutorial')}
-            </Link>
+            </Button>
           </div>
         </div>
       </section>

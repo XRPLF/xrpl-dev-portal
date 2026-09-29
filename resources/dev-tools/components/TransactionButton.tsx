@@ -46,11 +46,14 @@ function shouldDisableButton(
     waitingForTransaction: boolean,
     loadingBar?: {
         widthPercent: number
+        defaultOn: boolean
     }
 ): boolean {
-    return !canSendTransaction(connectionReady, sendingWallet?.address) 
-    || waitingForTransaction 
-    || (!!(loadingBar?.widthPercent) && loadingBar.widthPercent < 100)
+    const loadingBarInProgress = !!loadingBar && loadingBar.widthPercent < 100 &&
+        (loadingBar.defaultOn || loadingBar.widthPercent > 0)
+    return !canSendTransaction(connectionReady, sendingWallet?.address)
+    || waitingForTransaction
+    || loadingBarInProgress
 }
 
 export function TransactionButton({
@@ -70,23 +73,37 @@ export function TransactionButton({
 
     const [waitingForTransaction, setWaitingForTransaction] = useState(false)
 
+    const loadingBarComplete = (loadingBar?.widthPercent ?? 0) >= 100
+    const loadingBarInProgress = !!loadingBar &&
+        loadingBar.widthPercent > 0 && loadingBar.widthPercent < 100
+    const showLoadingStatus = !!loadingBar && !loadingBarComplete &&
+        (loadingBar.defaultOn || loadingBar.widthPercent > 0)
+
     return (
     <div>
         <div className="form-group" id={id}>
 
-            {/* Optional loading bar - Used for Partial Payments setup and EscrowFinish wait time */}
-            {loadingBar?.id && <div className="progress mb-1" id={loadingBar?.id ?? ""}>
-                <div className={
-                    clsx("progress-bar progress-bar-striped w-0", 
-                        (loadingBar?.widthPercent < 100 && loadingBar?.widthPercent > 0) && "progress-bar-animated")}
-                    style={{width: (Math.min(loadingBar?.widthPercent + (loadingBar?.defaultOn ? 1 : 0), 100)).toString() + "%",
-                    display: (loadingBar?.widthPercent >= 100) ? 'none' : ''}}>
-                        &nbsp;
-                </div>
-                {(loadingBar?.widthPercent < 100 && loadingBar?.widthPercent > 0 || (loadingBar.defaultOn && loadingBar?.widthPercent === 0)) 
-                    && <small className="justify-content-center d-flex position-absolute w-100">
-                        {translate(loadingBar?.description)}
-                    </small>}
+            {/* Status + optional progress: Partial Payments setup and EscrowFinish wait */}
+            {showLoadingStatus && loadingBar && <div className="mb-1" id={loadingBar.id}>
+                {loadingBarInProgress ? (
+                    <div className="progress tx-sender-progress">
+                        <div
+                            className="progress-bar progress-bar-striped progress-bar-animated"
+                            role="progressbar"
+                            style={{ width: `${Math.max(loadingBar.widthPercent, 5)}%` }}
+                            aria-valuenow={loadingBar.widthPercent}
+                            aria-valuemin={0}
+                            aria-valuemax={100}
+                        />
+                        <small className="tx-sender-progress-label">
+                            {translate(loadingBar.description)}
+                        </small>
+                    </div>
+                ) : (
+                    <small className="tx-sender-progress-label">
+                        {translate(loadingBar.description)}
+                    </small>
+                )}
             </div>}
 
             <div className="input-group mb-3">

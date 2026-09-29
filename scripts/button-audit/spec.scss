@@ -1,0 +1,68 @@
+// Emits the Button specification as data, for scripts/button-audit.mjs.
+//
+// This file states no values of its own. It imports Button.scss and re-emits
+// the maps that ARE the spec — $bds-btn-palette, $bds-btn-disabled,
+// $bds-btn-ring and the geometry constants — as custom properties the auditor
+// parses. Change a colour in Button.scss §2 and the expectations move with it;
+// there is no second copy to drift.
+//
+// The audit compares these against getComputedStyle on the live page, so it
+// measures what the cascade actually produced, not what Button.scss asked for.
+// That gap is the whole point: a rogue `a { color }` or a container rule that
+// out-specifies §5 shows up here and nowhere else.
+//
+// Button.scss consumes the icon mixin, so Icons/shared.scss comes first — the
+// same order xrpl.scss uses.
+
+@import "../../styles/colors";
+@import "../../shared/components/Icons/shared";
+@import "../../shared/components/Button/Button";
+
+// Sass emits `transparent` as the keyword; the browser computes it to
+// rgba(0, 0, 0, 0). Both sides are normalised through a probe element in the
+// auditor rather than here, so the keyword is passed through untouched.
+
+#bds-btn-spec-palette {
+  @each $group, $emphases in $bds-btn-palette {
+    @each $emphasis, $states in $emphases {
+      @each $state, $slot in $states {
+        @each $slot-name, $pair in $slot {
+          --#{$group}--#{$emphasis}--#{$state}--#{$slot-name}--light: #{nth($pair, 1)};
+          --#{$group}--#{$emphasis}--#{$state}--#{$slot-name}--dark: #{nth($pair, 2)};
+        }
+      }
+    }
+  }
+}
+
+#bds-btn-spec-disabled {
+  @each $context, $slot in $bds-btn-disabled {
+    @each $slot-name, $pair in $slot {
+      --#{$context}--#{$slot-name}--light: #{nth($pair, 1)};
+      --#{$context}--#{$slot-name}--dark: #{nth($pair, 2)};
+    }
+  }
+}
+
+#bds-btn-spec-ring {
+  @each $context, $pair in $bds-btn-ring {
+    --#{$context}--light: #{nth($pair, 1)};
+    --#{$context}--dark: #{nth($pair, 2)};
+  }
+}
+
+// Geometry and typography. Unitless values are quoted so Sass does not fold
+// them; the auditor compares them as strings against the computed value.
+#bds-btn-spec-geometry {
+  --radius: #{$bds-btn-radius};
+  --border-width: #{$bds-btn-border-width};
+  --min-height: #{$bds-btn-min-height};
+  --min-width: #{$bds-btn-min-width};
+  --pad-y: #{$bds-btn-pad-y};
+  --pad-x: #{$bds-btn-pad-x};
+  --gap: #{$bds-btn-gap};
+  --label-size: #{$bds-btn-label-size};
+  --label-line-height: #{$bds-btn-label-line-height};
+  --focus-width: #{$bds-btn-focus-width};
+  --focus-offset: #{$bds-btn-focus-offset};
+}

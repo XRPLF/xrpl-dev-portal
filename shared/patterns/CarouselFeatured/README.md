@@ -1,0 +1,133 @@
+# CarouselFeatured
+
+A featured image carousel pattern with a two-column layout on desktop (image left, content right) and single-column layout on tablet/mobile (content top, image bottom). Features a heading, feature list with dividers, optional buttons, and navigation controls.
+
+## Usage
+
+```tsx
+import { CarouselFeatured } from '@/shared/patterns/CarouselFeatured';
+
+<CarouselFeatured
+  slides={[
+    {
+      id: 1,
+      heading: "Powered by Developers",
+      features: [
+        { title: "Easy-to-Integrate APIs", description: "Build with common languages..." },
+        { title: "Full Lifecycle Support", description: "From dev tools to deployment..." },
+      ],
+      buttons: [
+        { label: "Get Started", href: "/docs" },
+        { label: "Learn More", href: "/about" }
+      ],
+      imageSrc: '/image1.jpg',
+      imageAlt: 'Slide 1'
+    },
+  ]}
+  background="grey"
+/>
+```
+
+## Props
+
+### Required Props
+
+| Prop | Type | Description |
+|------|------|-------------|
+| `slides` | `CarouselSlide[]` | Array of slides to display in the carousel |
+
+### Optional Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `background` | `'grey' \| 'neutral' \| 'yellow'` | `'grey'` | Background color variant |
+| `transition` | `'slide' \| 'fade'` | `'fade'` | Slide transition style. See [Transitions](#transitions) |
+
+## Transitions
+
+| Value | Behavior |
+|-------|----------|
+| `'fade'` (default) | Slides crossfade in place with no lateral movement. The image and heading lead, then the feature list, then the buttons, each on a 60ms stagger. Reads best when slides share a heading and only the supporting content changes — a horizontal wipe would drag the identical heading across the screen and set it back down where it started. |
+| `'slide'` | Slides wipe horizontally. Opt into this when each slide is a genuinely distinct panel and the lateral movement communicates that. |
+
+Both styles collapse to an instant swap under `prefers-reduced-motion: reduce`.
+
+`'fade'` stacks every slide in a single CSS grid cell, so the carousel still sizes
+to the tallest slide and won't change height between slides.
+
+## Type Definitions
+
+### CarouselSlide
+
+```tsx
+interface CarouselSlide {
+  id: string | number;  // Unique identifier for the slide
+  heading: string;      // Heading text for the slide
+  features: CarouselFeatureItem[]; // Slide feature list
+  buttons?: ButtonConfig[]; // Optional slide buttons
+  imageSrc: string;     // Image source URL
+  imageAlt: string;     // Alt text for the image
+}
+```
+
+### CarouselFeatureItem
+
+```tsx
+interface CarouselFeatureItem {
+  title: React.ReactNode;        // Feature title node
+  description: React.ReactNode;  // Feature description node
+}
+```
+
+### ButtonConfig
+
+```tsx
+interface ButtonConfig {
+  label: string;        // Button text
+  href?: string;        // Optional link URL
+  onClick?: () => void; // Optional click handler
+}
+```
+
+## Background Variants
+
+The component supports three background variants that adapt to light/dark mode:
+
+- **`grey`** (default): Light mode: gray-200 (#E6EAF0), Dark mode: gray-300 (#CAD4DF)
+- **`neutral`**: Light mode: white (#FFF), Dark mode: black (#141414)
+- **`yellow`**: Light mode: yellow-100 (#F3F1EB), Dark mode: yellow-100 (#F3F1EB)
+
+## Features
+
+- **Responsive Layout**: Two-column on desktop (lg+), single-column on mobile/tablet
+- **Image Carousel**: Navigate through multiple slides with prev/next buttons
+- **Auto-hide Navigation**: Navigation buttons automatically hide when only one slide is present
+- **Feature List**: Display multiple features with dividers
+- **Button Group**: Supports 1-2 buttons with validation
+- **Background Variants**: Three color options with light/dark mode support
+- **Accessibility**: Proper ARIA labels for navigation buttons
+
+## Layout Behavior
+
+### Desktop (lg+)
+- Image column on the left (6 columns)
+- Content column on the right (6 columns)
+- Navigation buttons in header (desktop variant)
+
+### Tablet/Mobile
+- Content section at the top
+- Image section at the bottom
+- Navigation buttons in CTA section (mobile variant)
+
+## Examples
+
+See the [Props](#props) and [Transitions](#transitions) sections above for the
+available configurations.
+
+## Notes
+
+- Navigation buttons are automatically hidden when `slides.length === 1`
+- Buttons are validated using `validateButtonGroup` with a maximum of 2 buttons
+- Button colors are automatically adjusted based on the background variant
+- The component uses `ButtonGroup` pattern for consistent button styling
+

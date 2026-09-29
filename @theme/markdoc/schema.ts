@@ -1,6 +1,8 @@
 import { Schema, Tag } from '@markdoc/markdoc';
 import type { MarkdocTagSchema } from '@redocly/theme/markdoc/tags/types';
 import { sourceLinkForLlms } from '../components/SourceLink';
+import { ResposiveGraphicForLlms } from '../components/ResponsiveGraphic'
+import { amendmentsTableForLlms, amendmentDisclaimerForLlms, obsoleteAmendmentsTableForLlms } from '../components/Amendments';
 
 export const childPages: Schema & { tagName: string } = {
   tagName: 'child-pages',
@@ -240,13 +242,21 @@ export const txExample: Schema &  { tagName: string } = {
   selfClosing: true
 }
 
-export const amendmentsTable: Schema & { tagName: string } = {
+export const amendmentsTable: MarkdocTagSchema & { tagName: string } = {
   tagName: 'amendments-table',
   render: 'AmendmentsTable',
-  selfClosing: true
+  selfClosing: true,
+  renderForLlms: amendmentsTableForLlms,
 }
 
-export const amendmentDisclaimer: Schema &  { tagName: string } = {
+export const obsoleteAmendmentsTable: MarkdocTagSchema & { tagName: string } = {
+  tagName: 'obsolete-amendments-table',
+  render: 'ObsoleteAmendmentsTable',
+  selfClosing: true,
+  renderForLlms: obsoleteAmendmentsTableForLlms,
+}
+
+export const amendmentDisclaimer: MarkdocTagSchema &  { tagName: string } = {
   tagName: 'amendment-disclaimer',
   attributes: {
     name: {
@@ -258,6 +268,11 @@ export const amendmentDisclaimer: Schema &  { tagName: string } = {
       required: false,
       default: false
     },
+    statusOnly: {
+      type: 'Boolean',
+      required: false,
+      default: false
+    },
     mode: {
       type: 'String',
       required: false,
@@ -265,6 +280,7 @@ export const amendmentDisclaimer: Schema &  { tagName: string } = {
     }
   },
   render: 'AmendmentDisclaimer',
+  renderForLlms: amendmentDisclaimerForLlms,
   selfClosing: true
 }
 
@@ -283,5 +299,28 @@ export const txCategory: Schema & { tagName: string } = {
 export const txIconLegend: Schema & { tagName: string } = {
   tagName: 'tx-icon-legend',
   render: 'TxIconLegend',
+  selfClosing: true,
+};
+
+export const responsiveGraphic: Schema & { tagName: string } = {
+  tagName: 'responsive-graphic',
+  attributes: {
+    alt: {
+      type: 'String',
+      required: true
+    },
+    desktop: {
+      type: 'String',
+      required: true,
+      resolver: 'link'
+    },
+    mobile: {
+      type: 'String',
+      required: true,
+      resolver: 'link'
+    }
+  },
+  render: 'ResponsiveGraphic',
+  renderForLlms: ResposiveGraphicForLlms,
   selfClosing: true,
 };

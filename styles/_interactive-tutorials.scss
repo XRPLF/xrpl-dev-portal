@@ -14,6 +14,30 @@
   margin: 10px 0;
 }
 
+/* The tutorial step controls, as the real Button.
+ *
+ * These are raw HTML <button>s in Markdown, wired to jQuery by `id` and by
+ * `previous-steps-required`, so they cannot be authored as <Button>. Styling
+ * them here means no file under docs/ changes and no JS hook moves — the
+ * lightest touch available for controls whose behaviour is hard to test.
+ *
+ * Editors keep writing `class="btn btn-primary"`; that stays the one correct
+ * way to write a tutorial button.
+ *
+ * Scoped to .interactive-block deliberately. It is not a partial fix: every
+ * `btn btn-primary` in docs/ that actually renders is inside one. The eleven in
+ * configuring-accounts.md, creating-an-asset-backed-multi-purpose-token.md and
+ * build-a-desktop-wallet-in-javascript.md sit in raw HTML blocks that never
+ * reach the DOM at all — a separate pre-existing bug, not something to style.
+ *
+ * The wider `.btn-primary` on /resources/dev-tools is out of scope by design:
+ * those are the application buttons the design review marked "DO NOT REPLACE",
+ * so this must not become a global rule.
+ */
+.interactive-block .btn.btn-primary {
+  @include bds-button(neutral, strong, on-theme);
+}
+
 .interactive-block {
   input:invalid {
     box-shadow: inset 0 0 5px 5px $danger;
@@ -40,7 +64,11 @@
   }
 
   .breadcrumb-item.disabled a {
-    color: $gray-600;
+    color: $gray-300;
+
+    html.light & {
+      color: $gray-600;
+    }
   }
 
   .breadcrumb-item.done a:after {

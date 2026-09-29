@@ -6,11 +6,11 @@ interface ModalProps {
   title: string,
   children: ReactNode,
   footer?: ReactNode,
-  onClose: () => void;
+  onClose?: () => void;
 }
 
 /**
- * Reusable component that leverages bootstrap's jquery library
+ * Reusable Bootstrap 5 modal. Markup must stay in the DOM so data-bs-toggle can find it.
  */
 export const Modal = ({title, footer, children, onClose, id}: ModalProps) => {
   return <div
@@ -29,7 +29,7 @@ export const Modal = ({title, footer, children, onClose, id}: ModalProps) => {
             className="close"
             aria-label="Close"
             onClick={onClose}
-            data-dismiss="modal"
+            data-bs-dismiss="modal"
           >
             <span aria-hidden="true">&times;</span>
           </button>
@@ -47,14 +47,14 @@ export const Modal = ({title, footer, children, onClose, id}: ModalProps) => {
   </div>
 }
 
-export const ModalCloseBtn = ({onClick}) => {
+export const ModalCloseBtn = ({onClick}: {onClick?: () => void}) => {
   const { useTranslate } = useThemeHooks();
   const { translate } = useTranslate();
 
   return <button
     type="button"
     className="btn btn-outline-secondary"
-    data-dismiss="modal"
+    data-bs-dismiss="modal"
     onClick={onClick}
   >
     {translate('Close')}

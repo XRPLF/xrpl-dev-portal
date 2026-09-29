@@ -202,6 +202,7 @@ Transactions and ledger entries may contain fields of any of the following types
 | [Blob][]         | 7         | Variable   | Yes                  | Arbitrary binary data. One important such field is `TxnSignature`, the signature that authorizes a transaction. |
 | [Currency][]     | 26        | 160        | No                   | A currency code, such as one used in [price oracles](../../concepts/decentralized-storage/price-oracles.md). |
 | [Issue][]        | 24        | 160 or 320 | No                   | An asset definition, XRP or a token, with no quantity. |
+| [Number][]       | 9         | 96         | No                   | A decimal value with a 64-bit signed mantissa and a 32-bit signed exponent, used for quantities that need more range and fractional precision than an integer type. Vault and lending fields such as `AssetsTotal` are examples of this type. |
 | [Object][]       | 14        | Variable   | No                   | An object containing one or more nested fields. These "inner" objects may have additional formatting restrictions. |
 | [PathSet][]      | 18        | Variable   | No                   | A set of possible [payment paths](../../concepts/tokens/fungible-tokens/paths.md) for a [cross-currency payment](../../concepts/payment-types/cross-currency-payments.md). |
 | [UInt8][]        | 16        | 8          | No                   | An 8-bit unsigned integer. |
@@ -215,7 +216,7 @@ Transactions and ledger entries may contain fields of any of the following types
 | [UInt256][]      | 5         | 256        | No                   | A 256-bit binary value. This usually represents the hash of a transaction, ledger version, or ledger entry. |
 | [UInt384][]      | 22        | 384        | No                   | **UNUSED.** A 384-bit binary value. |
 | [UInt512][]      | 23        | 512        | No                   | **UNUSED.** A 512-bit binary value. |
-| [Int32][]        | 10        | 32         | No                   | **UNUSED.** A 32-bit signed integer. |
+| [Int32][]        | 10        | 32         | No                   | A 32-bit signed integer. The `RemainingOwnerCountDelta` field of the [SponsorshipSet transaction][] is an example of this type. |
 | [Int64][]        | 11        | 64         | No                   | **UNUSED.** A 64-bit signed integer. |
 | [Vector256][]    | 19        | Variable   | Yes                  | A list of 256-bit binary values. This may be a list of ledger entries or other hash values. |
 | [XChainBridge][] | 25        | Variable   | No                   | A bridge between two blockchains, identified by the door accounts and issued assets on both chains. |
@@ -346,6 +347,11 @@ Some fields specify a currency code, which could be a fungible token, the ticker
 
 These fields consist of 160 bits of binary data. If the data matches the ["standard" currency code format](#currency-codes), it may be represented as a three-letter currency code string in JSON. Otherwise, it is represented as hexadecimal. Client libraries _may_ attempt to interpret this as a string of ASCII or UTF-8, but it is not guaranteed to be valid. The {% repo-link path="_code-samples/normalize-currency-codes/" %}Normalize Currency Codes code sample{% /repo-link %} demonstrates best practices for converting most common formats for this data into a string for humans to read.
 
+Even though both Currency and [UInt160][] fields write 160 bits when serialized, they represent different types:
+
+- Field Usage: UInt160 is used only in the `TakerPaysCurrency`, `TakerPaysIssuer`, `TakerGetsCurrency`, and `TakerGetsIssuer` fields of [Offer directories](ledger-data/ledger-entry-types/directorynode.md). Currency is used only in the `BaseAsset` and `QuoteAsset` fields of [Price Oracles](../../concepts/decentralized-storage/price-oracles.md).
+- Type Codes: The two types have different type codes, and a field's type code is included in its serialized form. Because the type code contributes to an entry's hash, consolidating the two types would alter the hashes of entries already recorded in ledger history.
+- JSON Representation: UInt160 fields are always represented in hexadecimal (even when containing an Account ID), whereas Currency fields can also use standard three-letter currency codes.
 
 ### Issue Fields
 [Issue]: #issue-fields
@@ -354,6 +360,19 @@ Some fields specify a _type_ of asset, which could be XRP or a fungible [token](
 
 1. The first 160 bits are the [currency code](#currency-codes) of the asset. For XRP, this is all 0's.
 2. If the first 160 bits are all 0's (the asset is XRP), the field ends there. Otherwise, the asset is a token and the next 160 bits are the [AccountID of the token issuer](#accountid-fields).
+
+
+### Number Fields
+[Number]: #number-fields
+
+A `Number` is a decimal value stored as two fixed-size integers, serialized in order with no length prefix:
+
+1. A 64-bit signed mantissa, big-endian, two's complement.
+2. A 32-bit signed exponent, big-endian, two's complement.
+
+The value is the mantissa multiplied by 10 raised to the exponent, so the type can represent fractional amounts that a `UInt64` cannot, without being tied to a currency the way an [Amount][] is.
+
+In JSON, `Number` fields are represented as strings, not as JSON numbers. For example, a vault holding one million units of its asset serializes `AssetsTotal` as `"1000000"`.
 
 
 ### Object Fields
@@ -418,6 +437,8 @@ The XRP Ledger has several unsigned integer types: UInt8, UInt16, UInt32, UInt64
 
 When representing these fields in JSON, these fields may be represented as JSON numbers, strings containing hexadecimal, or as strings containing decimal numbers, depending on the bit size and intended use of the data. UInt64 and up are never converted to JSON numbers, because some JSON decoders may try to represent them as "double precision" floating point numbers, which cannot represent all distinct UInt64 values with full precision. UInt128 and UInt256 typically represent hash values or arbitrary data, so they are typically represented in JSON as hexadecimal.
 
+Some UInt160 fields hold a currency code or an account ID, but they are not [Currency][] or [AccountID][] fields. See [Currency Fields](#currency-fields) for how these types differ.
+
 The types UInt96, UInt384, and UInt512 are currently defined but not used.
 
 The `TransactionType` field is a special case. In JSON, this field is conventionally represented as a string with the name of the transaction type. In binary, this field is a UInt16. The `TRANSACTION_TYPES` object in the [definitions file](#definitions-file) maps these strings to the numeric values used in the binary format.
@@ -434,8 +455,7 @@ In JSON format, Int32 fields can be represented as:
 - JSON numbers (for values within JavaScript's safe integer range).
 - Strings containing decimal numbers.
 
-Although the protocol supports the Int32 type, no fields currently use it. An Int64 type has also been defined, but is unsupported.
-
+Although the protocol supports the Int64 type, no fields currently use it.
 
 ### Vector256 Fields
 [Vector256]: #vector256-fields

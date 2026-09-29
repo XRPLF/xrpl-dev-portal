@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"strconv"
 
+	"github.com/Peersyst/xrpl-go/pkg/crypto"
 	"github.com/Peersyst/xrpl-go/xrpl/currency"
 	"github.com/Peersyst/xrpl-go/xrpl/faucet"
 	"github.com/Peersyst/xrpl-go/xrpl/rpc"
@@ -14,90 +15,94 @@ import (
 	rpctypes "github.com/Peersyst/xrpl-go/xrpl/rpc/types"
 )
 
-const (
-    WalletSeed = "sn3nxiW7v8KXzPzAqzyHXbSSKNuN9"
-)
-
 func main() {
+	cfg, err := rpc.NewClientConfig(
+		"https://s.altnet.rippletest.net:51234/",
+		rpc.WithMaxFeeXRP("5"),
+		rpc.WithFeeCushion(1.5),
+		rpc.WithFaucetProvider(faucet.NewTestnetFaucetProvider()),
+	)
+	if err != nil {
+		panic(err)
+	}
 
-    cfg, err := rpc.NewClientConfig(
-        "https://s.altnet.rippletest.net:51234/",
-        rpc.WithMaxFeeXRP(5.0),
-        rpc.WithFeeCushion(1.5),
-        rpc.WithFaucetProvider(faucet.NewTestnetFaucetProvider()),
-    )
-    if err != nil {
-        panic(err)
-    }
+	client := rpc.NewClient(cfg)
 
-    client := rpc.NewClient(cfg)
+	// A fresh test wallet avoids shared accounts with disabled master keys.
+	w, err := wallet.New(crypto.ED25519())
+	if err != nil {
+		panic(err)
+	}
 
-    w, err := wallet.FromSeed(WalletSeed, "")
-    if err != nil {
-        panic(err)
-    }
+	fmt.Println("Funding wallet...")
+	if err := client.FundWallet(&w); err != nil {
+		panic(err)
+	}
 
-    fmt.Println("Funding wallet...")
-    if err := client.FundWallet(&w); err != nil {
-        panic(err)
-    }
+	fmt.Println("Wallet funded")
+	fmt.Println()
 
-    fmt.Println("Wallet funded")
-    fmt.Println()
+	xrpAmount, err := currency.XrpToDrops("1")
+	if err != nil {
+		panic(err)
+	}
 
-    xrpAmount, err := currency.XrpToDrops("1")
-    if err != nil {
-        panic(err)
-    }
+	xrpAmountInt, err := strconv.ParseInt(xrpAmount, 10, 64)
+	if err != nil {
+		panic(err)
+	}
 
-    xrpAmountInt, err := strconv.ParseInt(xrpAmount, 10, 64)
-    if err != nil {
-        panic(err)
-    }
+	fmt.Println("Sending 1 XRP to rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe...")
+	p := &transaction.Payment{
+		BaseTx: transaction.BaseTx{
+			Account: types.Address(w.GetAddress()),
+		},
+		Destination: "rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe",
+		Amount:      types.XRPCurrencyAmount(xrpAmountInt),
+		DeliverMax:  types.XRPCurrencyAmount(xrpAmountInt),
+	}
 
-    fmt.Println("Sending 1 XRP to rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe...")
-    p := &transaction.Payment{
-        BaseTx: transaction.BaseTx{
-            Account: types.Address(w.GetAddress()),
-        },
-        Destination: "rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe",
-        Amount:      types.XRPCurrencyAmount(xrpAmountInt),
-        DeliverMax:  types.XRPCurrencyAmount(xrpAmountInt),
-    }
+	flattenedTx := p.Flatten()
 
-    flattenedTx := p.Flatten()
+	if err := client.Autofill(&flattenedTx); err != nil {
+		panic(err)
+	}
 
-    if err := client.Autofill(&flattenedTx); err != nil {
-        panic(err)
-    }
+	txBlob, _, err := w.Sign(flattenedTx)
+	if err != nil {
+		panic(err)
+	}
 
-    txBlob, _, err := w.Sign(flattenedTx)
-    if err != nil {
-        panic(err)
-    }
+	res, err := client.SubmitTxBlobAndWait(txBlob, false)
+	if err != nil {
+		panic(err)
+	}
 
-    res, err := client.SubmitTxBlobAndWait(txBlob, false)
-    if err != nil {
-        panic(err)
-    }
+	if res.Meta.TransactionResult != "tesSUCCESS" {
+		panic(fmt.Sprintf("Payment failed: %s", res.Meta.TransactionResult))
+	}
 
-    fmt.Println("Payment submitted")
-    fmt.Printf("Hash: %s\n", res.Hash)
-    fmt.Printf("Validated: %t\n", res.Validated)
-    fmt.Println()
-    fmt.Println("Using SubmitTxAndWait with wallet")
-    fmt.Println()
+	fmt.Println("Payment submitted")
+	fmt.Printf("Hash: %s\n", res.Hash)
+	fmt.Printf("Validated: %t\n", res.Validated)
+	fmt.Println()
+	fmt.Println("Using SubmitTxAndWait with wallet")
+	fmt.Println()
 
-    flattenedTx2 := p.Flatten()
-    resp, err := client.SubmitTxAndWait(flattenedTx2, &rpctypes.SubmitOptions{
-        Autofill: true,
-        Wallet:   &w,
-    })
-    if err != nil {
-        panic(err)
-    }
+	flattenedTx2 := p.Flatten()
+	resp, err := client.SubmitTxAndWait(flattenedTx2, &rpctypes.SubmitOptions{
+		Autofill: true,
+		Wallet:   &w,
+	})
+	if err != nil {
+		panic(err)
+	}
 
-    fmt.Println("Payment submitted via SubmitTxAndWait")
-    fmt.Printf("Hash: %s\n", resp.Hash)
-    fmt.Printf("Validated: %t\n", resp.Validated)
+	if resp.Meta.TransactionResult != "tesSUCCESS" {
+		panic(fmt.Sprintf("Payment failed: %s", resp.Meta.TransactionResult))
+	}
+
+	fmt.Println("Payment submitted via SubmitTxAndWait")
+	fmt.Printf("Hash: %s\n", resp.Hash)
+	fmt.Printf("Validated: %t\n", resp.Validated)
 }

@@ -16,7 +16,7 @@ Every transaction must [specify how much XRP to destroy](#specifying-the-transac
 
 ## Current Transaction Cost
 
-The current minimum transaction cost required by the network for a standard transaction is **0.00001 XRP** (10 drops). It sometimes increases due to higher than usual load.
+The current minimum transaction cost required by the network for a standard transaction is {% $env.PUBLIC_BASE_FEE %}. It sometimes increases due to higher than usual load.
 
 You can also [query `xrpld` for the current transaction cost](#querying-the-transaction-cost).
 
@@ -26,12 +26,15 @@ Some transactions have different transaction costs:
 
 | Transaction           | Cost Before Load Scaling |
 |-----------------------|--------------------------|
-| [Reference Transaction](#reference-transaction-cost) (Most transactions) | 10 drops |
+| [Reference Transaction](#reference-transaction-cost) (Most transactions) | {% $env.PUBLIC_BASE_FEE %} |
 | [Key Reset Transaction](#key-reset-transaction) | 0 |
-| [Multi-signed Transaction](../accounts/multi-signing.md) | 10 drops × (1 + Number of Signatures Provided) |
-| [EscrowFinish Transaction with Fulfillment](../../references/protocol/transactions/types/escrowfinish.md) | 10 drops × (33 + (Fulfillment size in bytes ÷ 16)) |
+| [Multi-signed Transaction](../accounts/multi-signing.md) | {% $env.PUBLIC_BASE_FEE %} × (1 + Number of Signatures Provided) |
+| [EscrowFinish Transaction with Fulfillment](../../references/protocol/transactions/types/escrowfinish.md) | {% $env.PUBLIC_BASE_FEE %} × (33 + (Fulfillment size in bytes ÷ 16)) |
 | [AccountDelete Transaction](../accounts/deleting-accounts.md) | 200,000 drops |
 | [AMMCreate Transaction](../tokens/decentralized-exchange/automated-market-makers.md) | 200,000 drops |
+| [Batch Transaction](../transactions/batch-transactions.md) | {% $env.PUBLIC_BASE_FEE %} x (2 + Number of Signatures Provided) + (Sum of Inner Transactions Fees) |
+| [Confidential MPT Transaction](../tokens/fungible-tokens/confidential-transfers.md) (single-signed) {% amendment-disclaimer name="ConfidentialTransfer" /%} | 100 drops |
+| [Confidential MPT Transaction](../tokens/fungible-tokens/confidential-transfers.md) (multi-signed) {% amendment-disclaimer name="ConfidentialTransfer" /%} | 10 drops × (10 + Number of Signatures Provided) |
 
 <!-- RESERVES_REMINDER: update cost in drops if reserves change -->
 
@@ -88,7 +91,7 @@ _Fee levels_ represent the proportional difference between the minimum cost and 
 | [Key reset transaction](transaction-cost.md#key-reset-transaction) | 0 | (Effectively infinite) | N/A | (Effectively infinite) |
 | [EscrowFinish transaction](../../references/protocol/transactions/types/escrowfinish.md) with 32-byte preimage. | 350 | 256 | 700 | 512 |
 
-{% admonition type="info" name="Note" %}The standard ledger base fee is typically 10 drops, occasionally increased due to high volume. Should the validators vote to increase or lower the base fee, costs based on the standard fee (for example, the EscrowFinish transaction with Fulfillment) are adjusted accordingly.{% /admonition %}
+{% admonition type="info" name="Note" %}The standard ledger base fee is typically {% $env.PUBLIC_BASE_FEE %}, occasionally increased due to high volume. Should the validators vote to increase or lower the base fee, costs based on the standard fee (for example, the EscrowFinish transaction with Fulfillment) are adjusted accordingly.{% /admonition %}
 
 ## Querying the Transaction Cost
 

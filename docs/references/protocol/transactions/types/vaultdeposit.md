@@ -31,6 +31,7 @@ A depositor cannot deposit assets into the vault if:
 If successful, the transaction moves the assets from the depositor's account to the vault's pseudo-account, issues the corresponding vault shares, and updates the vault’s balance.
 
 {% amendment-disclaimer name="SingleAssetVault" /%}
+{% amendment-disclaimer name="LendingProtocolV1_1" mode="updated" /%}
 
 ## Example {% $frontmatter.seo.title %} JSON
 
@@ -55,16 +56,18 @@ If successful, the transaction moves the assets from the depositor's account to 
 
 In addition to the [common fields](../../../protocol/transactions/common-fields#transaction-common-fields), {% code-page-name /%} transactions use the following fields:
 
-| Field Name              | JSON Type     | [Internal Type][] | Required? | Description         |
-| :-----------------------| :------------ | :---------------- | :-------- | :-------------------|
-| `VaultID`               | String        | Hash256           | Yes       | The unique identifier of the vault to which the asset is deposited. |
-| `Amount`                | Object        | Amount            | Yes       | The asset and quantity to be deposited into the vault.|
+| Field Name              | JSON Type           | [Internal Type][] | Required? | Description         |
+| :-----------------------| :------------------ | :---------------- | :-------- | :-------------------|
+| `VaultID`               | String              | Hash256           | Yes       | The unique identifier of the vault to which the asset is deposited. |
+| `Amount`                | [Currency Amount][] | Amount            | Yes       | The asset and quantity to be deposited into the vault.|
 
 The deposited asset must match the vault’s designated asset for the transaction to succeed. Depending on the asset type, the following changes occur:
 
 - **XRP**: The vault’s pseudo-account balance increases, and the depositor’s balance decreases.
 - **Trust line token**: The [trust line](../../../../concepts/tokens/fungible-tokens/trust-line-tokens.md#structure) balance between the vault's pseudo-account and the asset issuer is adjusted.
 - **MPT**: The `MPToken.MPTAmount` of both the depositor and the vault's pseudo-account is updated.
+
+The deposit amount is rounded down to match the vault's `AssetsTotal` precision, so the vault's total and available balances change by a representable amount. {% amendment-disclaimer name="fixCleanup3_4_0" mode="updated" /%}
 
 ## {% $frontmatter.seo.title %} Flags
 
@@ -80,17 +83,20 @@ Besides errors that can occur for all transactions, {% code-page-name /%} transa
 
 | Error Code              | Description                        |
 | :---------------------- | :----------------------------------|
-| `tecNO_ENTRY`           | The `Vault` object with the provided `VaultID` does not exist on the ledger. |
-| `tecOBJECT_NOT_FOUND`   | A ledger entry specified in the transaction does not exist. |
-| `tecWRONG_ASSET`        | The asset of the vault does not match the asset being deposited. |
+| `tecEXPIRED`            | The vault is closed-ended and in its _Investment_ or _Redemption_ phase. {% amendment-disclaimer name="LendingProtocolV1_1" /%} |
+| `tecFROZEN`             | The vault asset is frozen globally for the depositor, or for the vault's pseudo-account. Both regular and deep freezes cause this error. {% amendment-disclaimer name="fixCleanup3_3_0" mode="updated" /%} |
 | `tecINSUFFICIENT_FUNDS` | The depositor does not have sufficient funds to make a deposit. |
 | `tecLIMIT_EXCEEDED`     | Adding the provided `Amount` to the `AssetsTotal` exceeds the `AssetsMaximum` value. |
+| `tecLOCKED`             | The MPT vault asset is locked globally for the depositor, or for the vault's pseudo-account. {% amendment-disclaimer name="fixCleanup3_3_0" mode="updated" /%} |
 | `tecNO_AUTH`            | Either the vault is private and the depositing account does not have credentials in the share's Permissioned Domain, or the asset is a non-transferable MPT. |
-| `tecFROZEN`             | Either the trust line between the issuer and the depositor is frozen, or the asset is globally frozen.  |
-| `tecLOCKED`             | Either the MPT asset is locked for the depositor, or if the asset is globally locked. |
-| `temMALFORMED`          | The transaction was not validly formatted. For example, if the `VaultID` is not provided.  |
-| `temDISABLED`           | The Single Asset Vault amendment is not enabled.  |
+| `tecNO_ENTRY`           | The `Vault` object with the provided `VaultID` does not exist on the ledger. |
+| `tecOBJECT_NOT_FOUND`   | A ledger entry specified in the transaction does not exist. |
+| `tecPATH_DRY`           | Converting the deposit into shares overflowed the largest number the protocol can represent. This usually means the vault's `Scale` is high and the `Amount` is large. |
+| `tecPRECISION_LOSS`     | The deposit rounds to nothing, either at the vault's scale, at the depositor's trust line scale, or when converted into shares. {% amendment-disclaimer name="fixCleanup3_2_0" mode="updated" /%} {% amendment-disclaimer name="fixCleanup3_4_0" mode="updated" /%} |
+| `tecWRONG_ASSET`        | The asset of the vault does not match the asset being deposited. |
 | `temBAD_AMOUNT`         | The `Amount` field of the transaction is invalid. |
+| `temDISABLED`           | The [SingleAssetVault amendment][] is not enabled.  |
+| `temMALFORMED`          | The transaction was not validly formatted. For example, if the `VaultID` is not provided.  |
 
 ## See Also
 

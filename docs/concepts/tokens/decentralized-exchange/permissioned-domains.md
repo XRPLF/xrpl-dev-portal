@@ -28,7 +28,7 @@ A domain serves as an abstraction layer between credentials and a resource being
 
 [{% inline-svg file="../../../img/permissioned-domain.svg" /%}](../../../img/permissioned-domain.svg "Diagram: a permissioned DEX points to a permissioned domain by ID. The domain's Accepted Credentials describes 3 possible credentials to get access")
 
-Users do not need to apply to join or leave a domain. When a transaction requires access to a resource that is restricted by a domain, the transaction automatically checks if the account holds a credential matching that domain's accepted credentials, and fails if they have none. The user's credential must be accepted and not expired.
+Users do not need to apply to join or leave a domain. When a transaction requires access to a resource that is restricted by a domain, the transaction automatically checks if the account holds a credential matching that domain's accepted credentials, and fails if they have none. The user's credential must be accepted and not expired. When a transaction fails because an account's credentials are expired, the expired credentials are automatically deleted.
 
 ## Uses for Permissioned Domains
 
@@ -36,5 +36,11 @@ Currently, there are no available XRP Ledger features that use permissioned doma
 
 - [Single Asset Vault (XLS-65d)](https://opensource.ripple.com/docs/xls-65d-single-asset-vault) and [Lending Protocol (XLS-66d)](https://github.com/XRPLF/XRPL-Standards/pull/240)
 - [Permissioned DEXes](./permissioned-dexes.md)
+
+## Security Audit
+
+Permissioned Domains was independently audited by Halborn (December 2024–January 2025), which found no major flaws. See the full [audit report](https://www.halborn.com/audits/ripple/ripple---smart-contract-audit---permissioned-domains-0bd9c6).
+
+The `fixCleanup3_1_3` amendment later added an invariant check to ensure Permissioned Domains aren't modified by failed transactions; see the [Known Amendments](https://xrpl.org/resources/known-amendments) page for details.
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

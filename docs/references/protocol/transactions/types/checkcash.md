@@ -40,9 +40,15 @@ Since the funds for a check are not guaranteed, redeeming a check can fail becau
 
 The transaction ***must*** include either `Amount` or `DeliverMin`, but not both.
 
+{% admonition type="info" name="Note" %}
+If you cash a Check for a currency you issue yourself, you don't need a trust line to receive it and aren't subject to a holder limit. {% amendment-disclaimer name="fixCleanup3_4_0" mode="updated" /%}
+{% /admonition %}
+
+
 ## Error Cases
 
 - If the sender of the CheckCash transaction is not the `Destination` of the check, the transaction fails with the result code `tecNO_PERMISSION`.
+- If the `CheckID` is an all-zero value, the transaction fails with the result `temMALFORMED`. Previously, the transaction would fail with the result `tecNO_ENTRY`. {% amendment-disclaimer name="fixCleanup3_3_0" mode="updated" /%}
 - If the Check identified by the `CheckID` field does not exist, the transaction fails with the result `tecNO_ENTRY`.
 - If the Check identified by the `CheckID` field has already expired, the transaction fails with the result `tecEXPIRED`.
 - If the destination of the Check has the `RequireDest` flag enabled but the Check, as created, does not have a destination tag, the transaction fails with the result code `tecDST_TAG_NEEDED`.

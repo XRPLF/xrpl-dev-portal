@@ -20,8 +20,8 @@ steps: ['Generate', 'Connect', 'Prepare', 'Sign', 'Submit', 'Wait', 'Check']
 ## 前提条件
 
 <!-- このチュートリアルのインタラクティブ部分のソースコード： -->
-<script type="application/javascript" src="/js/interactive-tutorial.js"></script>
-<script type="application/javascript" src="/js/tutorials/send-xrp.js"></script>
+<script type="application/javascript" defer src="/js/interactive-tutorial.js"></script>
+<script type="application/javascript" defer src="/js/tutorials/send-xrp.js"></script>
 
 - このページでは、xrpl.jsライブラリーを使用するJavaScriptの例を紹介します。[xrpl.js入門ガイド](/docs/tutorials/get-started/get-started-javascript.md)に、xrpl.jsを使用してJavaScriptからXRP Ledgerデータにアクセスする方法の説明があります。
 

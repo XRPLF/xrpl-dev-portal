@@ -15,6 +15,8 @@ Withdraws first-loss capital from a `LoanBroker` ledger entry.
 
 Only the owner of the associated `LoanBroker` entry can initiate this transaction.
 
+If you already hold the asset, a self-destination withdrawal succeeds regardless of the issuer's `DefaultRipple` setting since it is only checked when a new trust line needs to be created. {% amendment-disclaimer name="fixCleanup3_4_0" mode="updated" /%}
+
 {% amendment-disclaimer name="LendingProtocol" /%}
 
 
@@ -63,7 +65,9 @@ Besides errors that can occur for all transactions, {% code-page-name /%} transa
 | `tecWRONG_ASSET`          | The withdrawal asset doesn't match the asset in the vault. |
 | `tecNO_DST`               | The `Destination` provided doesn't exist on the ledger. |
 | `tecDST_TAG_NEEDED`       | The `Destination` account requires a destination tag. |
-| `tecINSUFFICIENT_FUNDS`   | There isn't enough first-loss capital to withdraw. You can also receive this error if the issuer of the asset has frozen the account or placed a global freeze. |
+| `tecINSUFFICIENT_FUNDS`   | There isn't enough first-loss capital to withdraw. |
+| `tecFROZEN`               | The asset is frozen globally for the `LoanBroker` pseudo-account, or deep frozen for the destination. A regular freeze on the destination alone does not cause this error. {% amendment-disclaimer name="fixCleanup3_3_0" mode="updated" /%} |
+| `tecLOCKED`               | The MPT asset is locked globally for the `LoanBroker` pseudo-account, for the sender, or for the destination account. Unlike a trust line freeze, an MPT lock also blocks a withdrawal to the sender's own account. {% amendment-disclaimer name="fixCleanup3_3_0" mode="updated" /%} |
 | `tecNO_PERMISSION`        | The account sending the transaction isn't the owner of the `LoanBroker` ledger entry. |
 | `tecPATH_DRY`             | The XRP Ledger failed to send the funds to the `Destination`. |
 
