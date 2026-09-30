@@ -104,6 +104,19 @@ advisory_delete=0
 
 (Adjust the `path` to the directory where you want to keep the ledger store on disk. Adjust the `online_delete` and `advisory_delete` settings as desired for your configuration.)
 
+### Transaction Tables
+
+The `use_tx_tables` parameter in the `[ledger_tx_tables]` stanza controls whether `xrpld` maintains the SQLite transaction and account transaction tables. The default is `1` (enabled).
+
+Set `use_tx_tables` to `0` to stop writing to these tables and improve throughput. This is useful for any `xrpld` server running in peer-to-peer mode that doesn't need to answer [tx method][] or [account_tx method][] requests.
+
+```
+[ledger_tx_tables]
+use_tx_tables=0
+```
+
+{% admonition type="warning" name="Caution" %}Disabling `use_tx_tables` also causes the server to reject [tx method][] or [account_tx method][] requests.{% /admonition %}
+
 ### Log Level
 
 The example `xrpld-example.cfg` file sets the logging verbosity to `warning` in the `[rpc_startup]` stanza. This setting greatly reduces disk space and I/O requirements over more verbose logging. However, more verbose logging provides increased visibility for troubleshooting.
