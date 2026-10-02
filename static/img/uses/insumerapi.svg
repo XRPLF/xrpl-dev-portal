@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <rect width="200" height="200" rx="24" fill="#0a1628"/>
+  <circle cx="90" cy="100" r="52" fill="none" stroke="#64748b" stroke-width="4" opacity="0.5"/>
+  <circle cx="120" cy="100" r="40" fill="#d4a853" opacity="0.85"/>
+  <text x="100" y="112" font-family="Georgia, serif" font-size="48" font-weight="bold" fill="#0a1628" text-anchor="middle">I</text>
+</svg>
