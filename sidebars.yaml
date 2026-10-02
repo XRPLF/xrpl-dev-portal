@@ -630,6 +630,7 @@
                     - page: docs/references/http-websocket-apis/public-api-methods/clio-methods/server_info-clio.md
                     - page: docs/references/http-websocket-apis/public-api-methods/clio-methods/ledger-clio.md
                     - page: docs/references/http-websocket-apis/public-api-methods/clio-methods/mpt_holders.md
+                    - page: docs/references/http-websocket-apis/public-api-methods/clio-methods/mptoken_issuance_history.md
                     - page: docs/references/http-websocket-apis/public-api-methods/clio-methods/ledger_index.md
                     - page: docs/references/http-websocket-apis/public-api-methods/clio-methods/nft_history.md
                     - page: docs/references/http-websocket-apis/public-api-methods/clio-methods/nft_info.md
