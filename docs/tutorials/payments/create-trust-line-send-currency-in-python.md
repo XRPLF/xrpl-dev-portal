@@ -133,6 +133,14 @@ Define the `TrustSet` transaction.
         )
     )
 ```
+{% admonition type="info" name="Note" %}
+The XRP Ledger supports standard 3-character currency codes and non-standard 160-bit hexadecimal currency codes. If the token's currency code is longer than 3 characters, use its 40-character hexadecimal representation in the `currency` field.
+
+For example:
+
+- USD: `USD`
+- RLUSD: `524C555344000000000000000000000000000000`
+{% /admonition %}
 
 Submit the transaction to the XRP Ledger.
 
