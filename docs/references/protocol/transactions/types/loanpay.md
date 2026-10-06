@@ -75,6 +75,14 @@ Besides errors that can occur for all transactions, {% code-page-name /%} transa
 | `tecTOO_SOON` | The loan hasn't started yet. |
 | `tecKILLED` | The loan is already fully paid. |
 | `tecWRONG_ASSET` | The asset specified by `Amount` doesn't match the asset of the loan. |
-| `tecFROZEN` | The borrower's account is frozen for the specified asset, or the loan broker's pseudo-account is deep-frozen and can't receive funds. |
+| `tecFROZEN` | The borrower's account is frozen for the specified trust line token, or the loan broker's pseudo-account is deep-frozen and can't receive funds. |
+| `tecLOCKED` | The MPT asset is locked globally, for the borrower, for the vault's pseudo-account, or for the `LoanBroker` pseudo-account. |
+| `tecEXPIRED` | The loan payment is late, and the `tfLoanLatePayment` flag isn't enabled. {% amendment-disclaimer name="fixCleanup3_4_0" mode="updated" /%} |
+| `tecINSUFFICIENT_PAYMENT` | The `Amount` is less than the minimum amount required for the [loan payment type](../../../../concepts/tokens/lending-protocol.md#loan-payment-processing). |
+| `tecINSUFFICIENT_FUNDS` | The borrower doesn't hold the full `Amount`, even if the payment needs less than that. If the asset is XRP, this could be because of the [reserve requirement](../../../../concepts/accounts/reserves.md). |
+| `tecNO_AUTH` | The asset requires authorization, and the borrower isn't authorized to hold it. |
+| `tecNO_LINE` | The asset is a trust line token whose issuer requires authorization, and the borrower doesn't have a trust line for it. |
+| `tecPRECISION_LOSS` | The payment's effect on the vault is too small to register after rounding to the vault's precision, so the vault's `AssetsAvailable` or `AssetsTotal` wouldn't change. |
+| `temINVALID_FLAG` | The transaction enables more than one of `tfLoanOverpayment`, `tfLoanFullPayment`, and `tfLoanLatePayment`. Only one can be enabled at a time. |
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}
