@@ -44,6 +44,8 @@ Each version of `xrpld` is compiled with a list of [known amendments](/resources
 
 {% admonition type="info" name="Note" %}The default vote can change between software releases. {% badge href="https://github.com/XRPLF/rippled/releases/tag/1.8.1" %}Updated in: rippled 1.8.1{% /badge %}{% /admonition %}
 
+Only validators vote on amendments, and only votes from trusted validators count. Individual servers can't enable or disable amendments on the network. If your server only submits transactions or serves API requests, you don't need to configure amendment voting. In particular, you don't need the `[amendments]` or `[features]` stanzas to use Mainnet.
+
 Amendments must maintain two weeks of support from more than 80% of trusted validators to be enabled. If support drops below 80%, the amendment is temporarily rejected, and the two week period restarts. Amendments can gain and lose a majority any number of times before they become permanently enabled.
 
 Amendments that have had their source code removed without being enabled are considered **Vetoed** by the network.

@@ -184,7 +184,7 @@ The response follows the [standard format][], with a successful result containin
 
 | `Field`     | Type    | Description                                          |
 |:------------|:--------|:-----------------------------------------------------|
-| `enabled`   | Boolean | Whether this amendment is currently enabled in the latest ledger. |
+| `enabled`   | Boolean | Whether this amendment is currently enabled in the latest ledger. If `vetoed` is `Obsolete`, the amendment's code has been removed, and `enabled: false` doesn't always mean the feature is unavailable. If the network enabled the amendment before its code was removed, the software always applies it, even on a network whose ledger doesn't list it. |
 | `name`      | String  | (May be omitted) The human-readable name for this amendment, if known. |
 | `supported` | Boolean | Whether the server knows how to apply this amendment. If this field is set to `false` (the server does not know how to apply this amendment) and `enabled` is set to `true` (this amendment is enabled in the latest ledger), this amendment may cause your server to be [amendment blocked](../../../../concepts/networks-and-servers/amendments.md#amendment-blocked-servers). |
 | `vetoed`    | Boolean or String | For most amendments, this is a boolean value indicating whether the server has been instructed to vote against this amendment. For amendments that are marked as obsolete in the code, this is the string `Obsolete` instead. {% badge href="https://github.com/XRPLF/rippled/releases/tag/1.11.0" %}Updated in: rippled 1.11.0{% /badge %} |
