@@ -110,6 +110,9 @@ attestation = "A59AB577E14A7BEC053752ABFE78C3DED6DCEC81A7C41DF1931BC61742BB4FAEA
 network = "main"
 owner_country = "us"
 server_country = "us"
+server_location = "Example Cloud SFO2 (San Francisco, US)"
+server_cloud = true
+network_asn = 64496
 unl = "https://vl.ripple.com"
 
 [[VALIDATORS]]
@@ -191,7 +194,14 @@ For _each_ `[[VALIDATORS]]` entry, you MAY provide any of the following fields:
 | `network`  | String | Which network chain this validator follows. If omitted, clients SHOULD assume that the validator follows the production XRP Ledger. Use `main` to explicitly specify the production XRP Ledger. Use `testnet` for Ripple's XRP Ledger Test Net. You MAY provide other values to describe other test nets or non-standard network chains. |
 | `owner_country` | String | The two-letter ISO-3166-2 country code describing the main legal jurisdiction that you (the validator's owner) are subject to. |
 | `server_country` | String | The two-letter ISO-3166-2 country code describing the physical location where this validating server is. |
+| `server_location` | String | A short, human-readable description of where this validating server is hosted, such as the provider and data center, for example `"DigitalOcean AMS3 (Amsterdam, NL)"` or `"Private datacenter (Utrecht area, NL)"`. Optional but recommended. |
+| `server_cloud` | Boolean | `true` if this validating server runs on infrastructure you rent from a provider (VPS, cloud, or rented dedicated server). `false` if it runs on hardware you own, self-hosted or colocated. Optional but recommended. |
+| `network_asn` | Number | The autonomous system number (ASN), as an integer, of the IP address this validating server uses for outbound connections. Optional but recommended. |
 | `unl` | String | An HTTPS URL where one can find the list of other validators this validator trusts. If the validator is configured to use a validator list site for UNL recommendations, this MUST match the server's configuration. For the production XRP Ledger network, use `https://vl.ripple.com` (trailing slash optional). |
+
+The `server_location`, `server_cloud`, and `network_asn` fields are defined in [XLS-50](https://xls.xrpl.org/xls/XLS-0050-validator-toml-infra-details.html). They help UNL publishers and other operators avoid concentrating validators on one provider, data center, or network.
+
+{% admonition type="warning" name="Caution" %}Never publish a validator's IP address in your `xrp-ledger.toml` file.{% /admonition %}
 
 
 ### Accounts
