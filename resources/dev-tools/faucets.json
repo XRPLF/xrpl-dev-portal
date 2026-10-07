@@ -34,9 +34,9 @@
         },
         {
             "id": "faucet-select-wasm",
-            "wsUrl": "wss://wasm.devnet.rippletest.net:51233",
-            "jsonRpcUrl": "https://wasm.devnet.rippletest.net:51234",
-            "faucetHost": "wasmfaucet.devnet.rippletest.net",
+            "wsUrl": "wss://wasm-devnet.dev.ripplex.io:51233",
+            "jsonRpcUrl": "https://wasm-devnet.dev.ripplex.io:51234",
+            "faucetHost": "wasm-devnet-faucet.dev.ripplex.io",
             "shortName": "WASM Devnet",
             "desc": "Preview of XLS-100d Smart Escrows and other WASM-based programmability."
         }
