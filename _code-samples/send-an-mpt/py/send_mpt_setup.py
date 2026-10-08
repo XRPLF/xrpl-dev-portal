@@ -46,7 +46,7 @@ async def main():
                 account=issuer.address,
                 asset_scale=2,
                 maximum_amount="1000000",
-                transfer_fee=30,
+                transfer_fee=0,
                 flags=MPTokenIssuanceCreateFlag.TF_MPT_CAN_TRANSFER,
                 mptoken_metadata=encode_mptoken_metadata(metadata),
             ),
