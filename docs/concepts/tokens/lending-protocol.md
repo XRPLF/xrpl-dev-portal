@@ -70,7 +70,9 @@ Below is an example of how first-loss capital is used to cover a loan default:
 -- Vault --
 AssetsTotal             = 100,090 Tokens
 AssetsAvailable         = 99,000 Tokens
-SharesTotal             = 100,000 Tokens
+
+-- Vault Share MPTokenIssuance --
+OutstandingAmount       = 100,000 Shares
 
 -- Lending Protocol --
 DebtTotal               = 1,090 Tokens
@@ -114,7 +116,8 @@ AssetsAvailable = AssetsAvailable + FundsReturned
                 = 99,000 + 10.9
                 = 99,010.9 Tokens
 
-SharesTotal = (UNCHANGED)
+-- Vault Share MPTokenIssuance --
+OutstandingAmount = (UNCHANGED)
 
 -- Lending Protocol --
 DebtTotal       = DebtTotal - PrincipleOutstanding + InterestOutstanding
