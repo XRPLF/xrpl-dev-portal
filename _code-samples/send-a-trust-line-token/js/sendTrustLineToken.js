@@ -13,80 +13,144 @@ if (!fs.existsSync('sendTrustLineTokenSetup.json')) {
   await setup()
 }
 
-// Load preconfigured issuer, sender, and receiver accounts.
+// Load the preconfigured sender account.
 const setupData = JSON.parse(fs.readFileSync('sendTrustLineTokenSetup.json', 'utf8'))
-const issuer = xrpl.Wallet.fromSeed(setupData.issuer.seed)
 const sender = xrpl.Wallet.fromSeed(setupData.sender.seed)
-const receiver = xrpl.Wallet.fromSeed(setupData.receiver.seed)
-const currencyCode = 'FOO'
 
-console.log(`Issuer address:   ${issuer.address}`)
+// The token to send and who to send it to. TST is a test token on Testnet,
+// and the receiver is a well-known account that already holds a TST trust
+// line. You can replace these values with your own.
+const issuerAddress = 'rP9jPyP5kyvFRb6ZiRghAGw5u8SGAmU4bd'
+const currencyCode = 'TST'
+const receiverAddress = 'rG6ZCtKCURU58DP2iiff4qziApBGSuvPqE'
+const sendQuantity = '2'
+
+// The highest transfer fee this script is willing to pay, as a percentage of
+// the amount sent. Protects against approving a large fee by accident.
+const maxTransferFeePercent = 10
+
+console.log(`Issuer address:   ${issuerAddress}`)
 console.log(`Sender address:   ${sender.address}`)
-console.log(`Receiver address: ${receiver.address}`)
+console.log(`Receiver address: ${receiverAddress}`)
 
-// Create trust line ----------------------
-// The receiver opts in to the token by creating a trust line to the issuer.
-// The LimitAmount sets the maximum amount of the token the receiver will hold.
-console.log(`\n=== Creating trust line from receiver to issuer... ===\n`)
-const trustSetTx = {
-  TransactionType: 'TrustSet',
-  Account: receiver.address,
-  LimitAmount: {
-    currency: currencyCode,
-    issuer: issuer.address,
-    value: '1000000000'
-  }
-}
-xrpl.validate(trustSetTx)
-console.log(JSON.stringify(trustSetTx, null, 2))
-
-const trustSetResponse = await client.submitAndWait(trustSetTx, {
-  wallet: receiver,
-  autofill: true
-})
-if (trustSetResponse.result.meta?.TransactionResult !== 'tesSUCCESS') {
-  const resultCode = trustSetResponse.result.meta?.TransactionResult
-  console.error('Error: Unable to create trust line:', resultCode)
-  await client.disconnect()
-  process.exit(1)
-}
-console.log('Trust line created from receiver to issuer!')
-console.log(`Explorer link: https://testnet.xrpl.org/transactions/${trustSetResponse.result.hash}`)
-
-// Check initial balances ----------------------
-// getTrustLineBalance returns the trust line balance between `account` and
-// `peer` for the given currency.
-async function getTrustLineBalance(account, currency, peer) {
+// getTrustLine returns the trust line between `account` and `peer` for the
+// given currency, or undefined if no such trust line exists.
+async function getTrustLine(account, currency, peer) {
   const response = await client.request({
     command: 'account_lines',
     account,
     peer,
     ledger_index: 'validated'
   })
-  const line = response.result.lines.find(l => l.currency === currency)
-  return line?.balance ?? '0'
+  return response.result.lines.find(line => line.currency === currency)
 }
 
-console.log(`\n=== Checking initial ${currencyCode} balances... ===\n`)
-console.log("Holders' perspective:")
-console.log(`  Sender's balance:   ${await getTrustLineBalance(sender.address, currencyCode, issuer.address)}`)
-console.log(`  Receiver's balance: ${await getTrustLineBalance(receiver.address, currencyCode, issuer.address)}`)
-console.log("Issuer's perspective:")
-console.log(`  Owed to sender:   ${await getTrustLineBalance(issuer.address, currencyCode, sender.address)}`)
-console.log(`  Owed to receiver: ${await getTrustLineBalance(issuer.address, currencyCode, receiver.address)}`)
+// Check sender balance ----------------------
+// Confirm the sender holds enough of the token to make the payment.
+console.log(`\n=== Checking sender's ${currencyCode} balance... ===\n`)
+const senderLine = await getTrustLine(sender.address, currencyCode, issuerAddress)
+if (!senderLine) {
+  console.error(`Error: Sender has no ${currencyCode} trust line with the issuer.`)
+  await client.disconnect()
+  process.exit(1)
+}
+console.log(`Sender's balance: ${senderLine.balance}`)
+if (Number(senderLine.balance) < Number(sendQuantity)) {
+  console.error(`Error: Sender's balance is less than the ${sendQuantity} ${currencyCode} to send.`)
+  await client.disconnect()
+  process.exit(1)
+}
 
-// Send issued token ----------------------
-// The sender pays the receiver with the issued currency.
-const sendQuantity = '100'
-console.log(`\n=== Sending ${currencyCode} payment... ===\n`)
+// Check receiver ----------------------
+// Confirm the receiver can accept the payment before sending it.
+console.log(`\n=== Checking receiver can receive ${currencyCode}... ===\n`)
+const issuerInfo = await client.request({
+  command: 'account_info',
+  account: issuerAddress,
+  ledger_index: 'validated'
+})
+// parseAccountRootFlags turns the Flags bitmask into an object of booleans.
+const issuerFlags = xrpl.parseAccountRootFlags(issuerInfo.result.account_data.Flags)
+const defaultRipple = issuerFlags.lsfDefaultRipple === true
+const requireAuth = issuerFlags.lsfRequireAuth === true
+const receiverLine = await getTrustLine(receiverAddress, currencyCode, issuerAddress)
+
+// 1. The receiver must have a trust line to the issuer for this currency.
+if (!receiverLine) {
+  console.error(`Error: Receiver has no ${currencyCode} trust line with the issuer.`)
+  await client.disconnect()
+  process.exit(1)
+}
+console.log('✓ Receiver has a trust line to the issuer')
+
+// 2. The issuer must allow rippling on both trust lines, since a payment
+//    between holders moves through the issuer. Default Ripple on the issuer
+//    is the usual way to allow this, but check the lines themselves.
+if (senderLine.no_ripple_peer || receiverLine.no_ripple_peer) {
+  console.error('Error: The issuer has disabled rippling on the sender or receiver trust line.')
+  await client.disconnect()
+  process.exit(1)
+}
+console.log(`✓ Rippling is allowed (issuer Default Ripple: ${defaultRipple})`)
+
+// 3. The receiver's limit must cover their current balance plus the payment.
+if (Number(receiverLine.balance) + Number(sendQuantity) > Number(receiverLine.limit)) {
+  console.error(`Error: Payment would exceed the receiver's limit of ${receiverLine.limit} ${currencyCode}.`)
+  await client.disconnect()
+  process.exit(1)
+}
+console.log(`✓ Receiver's limit covers the payment`)
+
+// 4. If the issuer requires authorization, the receiver's line must be authorized.
+if (requireAuth && !receiverLine.peer_authorized) {
+  console.error('Error: The issuer requires authorization and has not authorized the receiver.')
+  await client.disconnect()
+  process.exit(1)
+}
+console.log(`✓ Authorization OK (issuer Require Auth: ${requireAuth})`)
+
+// 5. If the issuer charges a transfer fee, the sender pays more than the
+//    receiver gets. Work out the SendMax needed and refuse unreasonable fees.
+//    TransferRate is a multiplier in billionths, e.g. 1005000000 = 1.005 = 0.5% fee.
+const transferRate = issuerInfo.result.account_data.TransferRate ?? 1000000000
+const transferFee = Number(xrpl.transferRateToDecimal(transferRate))
+const transferFeePercent = transferFee * 100
+if (transferFeePercent > maxTransferFeePercent) {
+  console.error(`Error: Transfer fee of ${transferFeePercent}% exceeds the ${maxTransferFeePercent}% limit.`)
+  await client.disconnect()
+  process.exit(1)
+}
+let sendMax
+if (transferFeePercent > 0) {
+  sendMax = String(Number(sendQuantity) * (1 + transferFee))
+  console.log(`✓ Transfer fee is ${transferFeePercent}%; sender will pay up to ${sendMax} ${currencyCode}`)
+} else {
+  console.log('✓ No transfer fee')
+}
+
+console.log(`\nBalances before payment:`)
+console.log(`  Sender:   ${senderLine.balance} ${currencyCode}`)
+console.log(`  Receiver: ${receiverLine.balance} ${currencyCode}`)
+
+// Send payment ----------------------
+// The sender pays the receiver with the token. Amount is what the receiver
+// gets; SendMax (if set) is the most the sender is willing to spend.
+console.log(`\n=== Sending ${sendQuantity} ${currencyCode} to receiver... ===\n`)
 const paymentTx = {
   TransactionType: 'Payment',
   Account: sender.address,
-  Destination: receiver.address,
+  Destination: receiverAddress,
   Amount: {
     currency: currencyCode,
-    issuer: issuer.address,
+    issuer: issuerAddress,
     value: sendQuantity
+  }
+}
+if (sendMax) {
+  paymentTx.SendMax = {
+    currency: currencyCode,
+    issuer: issuerAddress,
+    value: sendMax
   }
 }
 xrpl.validate(paymentTx)
@@ -106,13 +170,11 @@ console.log('Payment successful!')
 console.log(`Explorer link: https://testnet.xrpl.org/transactions/${paymentResponse.result.hash}`)
 
 // Verify balances ----------------------
-// Check account balances after the payment.
+// Check both balances again to confirm the transfer.
 console.log(`\n=== Checking final ${currencyCode} balances... ===\n`)
-console.log("Holders' perspective:")
-console.log(`  Sender's balance:   ${await getTrustLineBalance(sender.address, currencyCode, issuer.address)}`)
-console.log(`  Receiver's balance: ${await getTrustLineBalance(receiver.address, currencyCode, issuer.address)}`)
-console.log("Issuer's perspective:")
-console.log(`  Owed to sender:   ${await getTrustLineBalance(issuer.address, currencyCode, sender.address)}`)
-console.log(`  Owed to receiver: ${await getTrustLineBalance(issuer.address, currencyCode, receiver.address)}`)
+const senderLineAfter = await getTrustLine(sender.address, currencyCode, issuerAddress)
+const receiverLineAfter = await getTrustLine(receiverAddress, currencyCode, issuerAddress)
+console.log(`  Sender:   ${senderLineAfter.balance} ${currencyCode}`)
+console.log(`  Receiver: ${receiverLineAfter.balance} ${currencyCode}`)
 
 await client.disconnect()

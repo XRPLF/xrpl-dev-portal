@@ -1,6 +1,6 @@
 # Send a Trust Line Token (JavaScript)
 
-Example code for sending a trust line token between two accounts on Testnet with [xrpl.js](https://github.com/XRPLF/xrpl.js).
+Example code for sending a trust line token from one holder to another on Testnet with [xrpl.js](https://github.com/XRPLF/xrpl.js). Before sending, the script checks that the receiver is able to receive the payment.
 
 ## Setup
 
@@ -14,57 +14,51 @@ npm install
 node sendTrustLineToken.js
 ```
 
+Loads a sender that already holds TST, runs the pre-flight checks on the receiver, sends 2 TST, and prints both balances before and after. If no setup data exists, the setup script runs first and buys TST for the sender on the DEX.
+
 You should see output like the following:
 
 ```sh
-Issuer address:   rUrWYSHAX8kVwwPRxgVzhYQg9Ko3kxoqoy
-Sender address:   rEx369HEEn1S2Cg2WC6Wi66awc45KzNBfV
-Receiver address: rE1LWiuCAB7VogxWAAymFegbB7t1WKsD6v
+=== Tutorial setup data doesn't exist. Running setup script... ===
 
-=== Creating trust line from receiver to issuer... ===
+Setting up tutorial: Complete!
+Issuer address:   rP9jPyP5kyvFRb6ZiRghAGw5u8SGAmU4bd
+Sender address:   r4dLURGAzr6DfQgvLd3pVq5TgHV6cRRW7g
+Receiver address: rG6ZCtKCURU58DP2iiff4qziApBGSuvPqE
 
-{
-  "TransactionType": "TrustSet",
-  "Account": "rE1LWiuCAB7VogxWAAymFegbB7t1WKsD6v",
-  "LimitAmount": {
-    "currency": "FOO",
-    "issuer": "rUrWYSHAX8kVwwPRxgVzhYQg9Ko3kxoqoy",
-    "value": "1000000000"
-  }
-}
-Trust line created from receiver to issuer!
-Explorer link: https://testnet.xrpl.org/transactions/76AE546380FFA6CBDD3967FFECF2F75093D0EEC9925DE7969CF63FCFC71A439E
+=== Checking sender's TST balance... ===
 
-=== Checking initial FOO balances... ===
+Sender's balance: 5
 
-Holders' perspective:
-  Sender's balance:   600
-  Receiver's balance: 400
-Issuer's perspective:
-  Owed to sender:   -600
-  Owed to receiver: -400
+=== Checking receiver can receive TST... ===
 
-=== Sending FOO payment... ===
+✓ Receiver has a trust line to the issuer
+✓ Rippling is allowed (issuer Default Ripple: true)
+✓ Receiver's limit covers the payment
+✓ Authorization OK (issuer Require Auth: false)
+✓ No transfer fee
+
+Balances before payment:
+  Sender:   5 TST
+  Receiver: 12 TST
+
+=== Sending 2 TST to receiver... ===
 
 {
   "TransactionType": "Payment",
-  "Account": "rEx369HEEn1S2Cg2WC6Wi66awc45KzNBfV",
-  "Destination": "rE1LWiuCAB7VogxWAAymFegbB7t1WKsD6v",
+  "Account": "r4dLURGAzr6DfQgvLd3pVq5TgHV6cRRW7g",
+  "Destination": "rG6ZCtKCURU58DP2iiff4qziApBGSuvPqE",
   "Amount": {
-    "currency": "FOO",
-    "issuer": "rUrWYSHAX8kVwwPRxgVzhYQg9Ko3kxoqoy",
-    "value": "100"
+    "currency": "TST",
+    "issuer": "rP9jPyP5kyvFRb6ZiRghAGw5u8SGAmU4bd",
+    "value": "2"
   }
 }
 Payment successful!
-Explorer link: https://testnet.xrpl.org/transactions/E6313B9CEA42C45EA1047790BCF1DC5B8D49A35AEAC5735288ABBD252C56D1AD
+Explorer link: https://testnet.xrpl.org/transactions/5A09469A0F618C79CA30565C88161ABF706322FE645278F3C1DD71506858C0F4
 
-=== Checking final FOO balances... ===
+=== Checking final TST balances... ===
 
-Holders' perspective:
-  Sender's balance:   500
-  Receiver's balance: 500
-Issuer's perspective:
-  Owed to sender:   -500
-  Owed to receiver: -500
+  Sender:   3 TST
+  Receiver: 14 TST
 ```

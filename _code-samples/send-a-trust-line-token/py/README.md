@@ -1,11 +1,11 @@
 # Send a Trust Line Token (Python)
 
-Example code for sending a trust line token between two accounts on Testnet with [xrpl-py](https://github.com/XRPLF/xrpl-py).
+Example code for sending a trust line token from one holder to another on Testnet with [xrpl-py](https://github.com/XRPLF/xrpl-py). Before sending, the script checks that the receiver is able to receive the payment.
 
 ## Setup
 
 ```sh
-python -m venv .venv
+python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 ```
@@ -13,62 +13,55 @@ pip install -r requirements.txt
 ## Send a Trust Line Token
 
 ```sh
-python send_trust_line_token.py
+python3 send_trust_line_token.py
 ```
+
+Loads a sender that already holds TST, runs the pre-flight checks on the receiver, sends 2 TST, and prints both balances before and after. If no setup data exists, the setup script runs first and buys TST for the sender on the DEX.
 
 You should see output like the following:
 
 ```sh
-Issuer address:   rpQrTB7Zko3i8QTZa1jn3MqTjFFtjvnpDD
-Sender address:   rNXVfWdMs8oScEDBUfZgv5Auds6ahWvgMS
-Receiver address: rQpATksgqj3XNatYZ89mnxPrCXgSvuWKkN
+=== Tutorial setup data doesn't exist. Running setup script... ===
 
-=== Creating trust line from receiver to issuer... ===
+Setting up tutorial: Complete!
+Issuer address:   rP9jPyP5kyvFRb6ZiRghAGw5u8SGAmU4bd
+Sender address:   r4SFRbzmGwzfqQg7mNvygrDPk2RPY74MwN
+Receiver address: rG6ZCtKCURU58DP2iiff4qziApBGSuvPqE
 
-{
-  "Account": "rQpATksgqj3XNatYZ89mnxPrCXgSvuWKkN",
-  "TransactionType": "TrustSet",
-  "SigningPubKey": "",
-  "LimitAmount": {
-    "currency": "FOO",
-    "issuer": "rpQrTB7Zko3i8QTZa1jn3MqTjFFtjvnpDD",
-    "value": "1000000000"
-  }
-}
-Trust line created from receiver to issuer!
-Explorer link: https://testnet.xrpl.org/transactions/9DA16FEE0B361C96BAD6F341E15E4FD6A6601BC4DD6227EC7EF655C29A1A412D
+=== Checking sender's TST balance... ===
 
-=== Checking initial FOO balances... ===
+Sender's balance: 5
 
-Holders' perspective:
-  Sender's balance:   900
-  Receiver's balance: 100
-Issuer's perspective:
-  Owed to sender:   -900
-  Owed to receiver: -100
+=== Checking receiver can receive TST... ===
 
-=== Sending FOO payment... ===
+✓ Receiver has a trust line to the issuer
+✓ Rippling is allowed (issuer Default Ripple: True)
+✓ Receiver's limit covers the payment
+✓ Authorization OK (issuer Require Auth: False)
+✓ No transfer fee
+
+Balances before payment:
+  Sender:   5 TST
+  Receiver: 14 TST
+
+=== Sending 2 TST to receiver... ===
 
 {
-  "Account": "rNXVfWdMs8oScEDBUfZgv5Auds6ahWvgMS",
+  "Account": "r4SFRbzmGwzfqQg7mNvygrDPk2RPY74MwN",
   "TransactionType": "Payment",
   "SigningPubKey": "",
   "Amount": {
-    "currency": "FOO",
-    "issuer": "rpQrTB7Zko3i8QTZa1jn3MqTjFFtjvnpDD",
-    "value": "100"
+    "currency": "TST",
+    "issuer": "rP9jPyP5kyvFRb6ZiRghAGw5u8SGAmU4bd",
+    "value": "2"
   },
-  "Destination": "rQpATksgqj3XNatYZ89mnxPrCXgSvuWKkN"
+  "Destination": "rG6ZCtKCURU58DP2iiff4qziApBGSuvPqE"
 }
 Payment successful!
-Explorer link: https://testnet.xrpl.org/transactions/7779331C8AE458A8342A36CCCD53CA5ED03219C61B8F159EDC36A1BBD6FC85EC
+Explorer link: https://testnet.xrpl.org/transactions/F65337A9533DE3B6A7E1913F2F014E2B07DB99BA6B3491E92797E5EAF27D5B09
 
-=== Checking final FOO balances... ===
+=== Checking final TST balances... ===
 
-Holders' perspective:
-  Sender's balance:   800
-  Receiver's balance: 200
-Issuer's perspective:
-  Owed to sender:   -800
-  Owed to receiver: -200
+  Sender:   3 TST
+  Receiver: 16 TST
 ```

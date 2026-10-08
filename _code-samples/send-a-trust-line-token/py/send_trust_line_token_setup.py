@@ -1,3 +1,4 @@
+# Setup script for the Send a Trust Line Token tutorial
 import asyncio
 import json
 
@@ -5,96 +6,77 @@ from xrpl.asyncio.clients import AsyncWebsocketClient
 from xrpl.asyncio.transaction import submit_and_wait
 from xrpl.asyncio.wallet import generate_faucet_wallet
 from xrpl.models.amounts import IssuedCurrencyAmount
-from xrpl.models.transactions import AccountSet, Payment, TrustSet
-from xrpl.models.transactions.account_set import AccountSetAsfFlag
+from xrpl.models.transactions import OfferCreate, OfferCreateFlag, TrustSet
+from xrpl.utils import xrp_to_drops
 
 WSS_URL = "wss://s.altnet.rippletest.net:51233"
-CURRENCY_CODE = "FOO"
-TOTAL_STEPS = 4
+
+# TST is a test token on Testnet. Its issuer has
+# Default Ripple enabled and keeps standing DEX offers at ~1 TST = 10 XRP
+# (plus spread), so anyone can buy it with faucet XRP.
+TST_ISSUER = "rP9jPyP5kyvFRb6ZiRghAGw5u8SGAmU4bd"
+CURRENCY_CODE = "TST"
+TOTAL_STEPS = 3
 
 
 async def main():
     async with AsyncWebsocketClient(WSS_URL) as client:
         print(f"Setting up tutorial: 0/{TOTAL_STEPS}", end="\r")
 
-        # Fund issuer, sender, and receiver wallets from the Testnet faucet in parallel.
-        issuer, sender, receiver = await asyncio.gather(
-            generate_faucet_wallet(client),
-            generate_faucet_wallet(client),
-            generate_faucet_wallet(client),
-        )
+        # Fund the sender wallet from the Testnet faucet
+        sender = await generate_faucet_wallet(client)
 
         print(f"Setting up tutorial: 1/{TOTAL_STEPS}", end="\r")
 
-        # Enable Default Ripple on the issuer so holders can send
-        # the token to each other.
-        account_set_response = await submit_and_wait(
-            AccountSet(
-                account=issuer.address,
-                set_flag=AccountSetAsfFlag.ASF_DEFAULT_RIPPLE,
-            ),
-            client,
-            issuer,
-        )
-        result_code = account_set_response.result["meta"]["TransactionResult"]
-        if result_code != "tesSUCCESS":
-            raise RuntimeError(f"AccountSet failed: {result_code}")
-
-        print(f"Setting up tutorial: 2/{TOTAL_STEPS}", end="\r")
-
-        # Create a trust line from the sender to the issuer so the sender can hold the token.
-        sender_trust_response = await submit_and_wait(
+        # Create a trust line from the sender to the TST issuer so the sender can hold TST
+        trust_set_response = await submit_and_wait(
             TrustSet(
                 account=sender.address,
                 limit_amount=IssuedCurrencyAmount(
                     currency=CURRENCY_CODE,
-                    issuer=issuer.address,
+                    issuer=TST_ISSUER,
                     value="1000000000",
                 ),
             ),
             client,
             sender,
         )
-        result_code = sender_trust_response.result["meta"]["TransactionResult"]
+        result_code = trust_set_response.result["meta"]["TransactionResult"]
         if result_code != "tesSUCCESS":
             raise RuntimeError(f"Sender TrustSet failed: {result_code}")
 
-        print(f"Setting up tutorial: 3/{TOTAL_STEPS}", end="\r")
+        print(f"Setting up tutorial: 2/{TOTAL_STEPS}", end="\r")
 
-        # Issue the token from the issuer to the sender so the sender has a balance to send.
-        issue_response = await submit_and_wait(
-            Payment(
-                account=issuer.address,
-                destination=sender.address,
-                amount=IssuedCurrencyAmount(
+        # Buy TST on the DEX so the sender has a balance to send. The sender offers
+        # up to 60 XRP for 5 TST (12 XRP each), which crosses the issuer's standing
+        # sell offer at ~11.5 XRP per TST. TF_FILL_OR_KILL ensures the whole amount
+        # is bought or the transaction fails, so nothing is left on the order book.
+        offer_create_response = await submit_and_wait(
+            OfferCreate(
+                account=sender.address,
+                taker_pays=IssuedCurrencyAmount(
                     currency=CURRENCY_CODE,
-                    issuer=issuer.address,
-                    value="1000",
+                    issuer=TST_ISSUER,
+                    value="5",
                 ),
+                taker_gets=xrp_to_drops(60),
+                flags=OfferCreateFlag.TF_FILL_OR_KILL,
             ),
             client,
-            issuer,
+            sender,
         )
-        result_code = issue_response.result["meta"]["TransactionResult"]
+        result_code = offer_create_response.result["meta"]["TransactionResult"]
         if result_code != "tesSUCCESS":
-            raise RuntimeError(f"Issuer Payment failed: {result_code}")
+            raise RuntimeError(f"Sender OfferCreate failed: {result_code}")
 
-        print(f"Setting up tutorial: 4/{TOTAL_STEPS}", end="\r")
+        print(f"Setting up tutorial: 3/{TOTAL_STEPS}", end="\r")
 
-        # Write setup data to JSON file.
+        # Write setup data
         setup_data = {
             "description": "This file is auto-generated by send_trust_line_token_setup.py. It stores XRPL account info for use in the Send a Trust Line Token tutorial.",
-            "issuer": {
-                "address": issuer.address,
-                "seed": issuer.seed,
-            },
             "sender": {
                 "address": sender.address,
                 "seed": sender.seed,
-            },
-            "receiver": {
-                "address": receiver.address,
-                "seed": receiver.seed,
             },
         }
 
