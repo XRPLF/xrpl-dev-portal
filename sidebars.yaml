@@ -21,6 +21,7 @@
           labelTranslationKey: sidebar.docs.use-cases.payments
           expanded: false
           items:
+            - page: docs/use-cases/payments/migrate-a-payments-or-fx-stack-to-the-xrp-ledger.md
             - page: docs/use-cases/payments/peer-to-peer-payments-uc.md
             - page: docs/use-cases/payments/restricting-deposits-uc.md
             - page: docs/use-cases/payments/smart-contracts-uc.md
