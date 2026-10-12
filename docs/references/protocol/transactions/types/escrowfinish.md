@@ -36,7 +36,7 @@ Deliver funds from an [escrow](../../../../concepts/payment-types/escrow.md) to 
 | `OfferSequence` | Number               | UInt32            | Yes       | Transaction sequence of [EscrowCreate transaction][] that created the escrow to finish. |
 | `Condition`     | String - Hexadecimal | Blob              | No        | The (previously-supplied) [PREIMAGE-SHA-256 crypto-condition](https://tools.ietf.org/html/draft-thomas-crypto-conditions-02#section-8.1) of the escrow. |
 | `CredentialIDs` | Array of Strings     | Vector256         | No        | Set of Credentials to authorize a deposit made by this transaction. Each member of the array must be the ledger entry ID of a Credential entry in the ledger. For details, see [Credential IDs](./payment.md#credential-ids). |
-| `Fulfillment`   | String - Hexadecmial | Blob              | No        | The [PREIMAGE-SHA-256 crypto-condition fulfillment](https://tools.ietf.org/html/draft-thomas-crypto-conditions-02#section-8.1.4) matching the escrow's `Condition`. |
+| `Fulfillment`   | String - Hexadecimal | Blob              | No        | The [PREIMAGE-SHA-256 crypto-condition fulfillment](https://tools.ietf.org/html/draft-thomas-crypto-conditions-02#section-8.1.4) matching the escrow's `Condition`. |
 
 Any account may submit an EscrowFinish transaction.
 

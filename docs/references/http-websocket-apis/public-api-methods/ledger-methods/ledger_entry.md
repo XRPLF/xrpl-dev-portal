@@ -429,7 +429,7 @@ Retrieve a [DepositPreauth entry](../../../protocol/ledger-data/ledger-entry-typ
 
 | Field                        | Type                 | Required? | Description |
 |:-----------------------------|:---------------------|:----------|-------------|
-| `deposit_preauth`            | Object or String     | Yes       | Specify the DepositPreauth to retrieve. If a string, must be the [ledger entry ID][] of the DepositPreauth entry, as hexadecimal. If an object, requires `owner` sub-field and either `authorized` or `authorize_credentials` sub-field. |
+| `deposit_preauth`            | Object or String     | Yes       | Specify the DepositPreauth to retrieve. If a string, must be the [ledger entry ID][] of the DepositPreauth entry, as hexadecimal. If an object, requires `owner` sub-field and either `authorized` or `authorized_credentials` sub-field. |
 | `deposit_preauth.owner`      | String - [Address][] | Yes       | The account that provided the preauthorization. |
 | `deposit_preauth.authorized` | String - [Address][] | No        | The account that received the preauthorization. |
 | `deposit_preauth.authorized_credentials` | Array    | No        | A set of 1 to 8 credentials that received the preauthorization. |
@@ -883,9 +883,9 @@ Return an `MPToken` object.
 
 | Field                     | Type             | Required? | Description |
 |:--------------------------|:-----------------|:----------|:------------|
-| `mptoken`                 | ️Object or String | Yes       | Specify the [MPToken entry][] to retrieve. If a string, must be the [ledger entry ID][] of the MPToken. If an object, requires the sub-fields `account` and `mpt_issuance_id` to uniquely identify the MPToken. |
+| `mptoken`                 | Object or String | Yes       | Specify the [MPToken entry][] to retrieve. If a string, must be the [ledger entry ID][] of the MPToken. If an object, requires the sub-fields `account` and `mpt_issuance_id` to uniquely identify the MPToken. |
 | `mptoken.mpt_issuance_id` | String           | No        | The 192-bit MPTokenIssuanceID that's associated with the MPTokenIssuance. |
-| `mptoken.account` ️        | String           | No        | The account that owns the MPToken. |
+| `mptoken.account`         | String           | No        | The account that owns the MPToken. |
 
 {% tabs %}
 
@@ -1175,7 +1175,7 @@ Retrieve an [Oracle entry](../../../protocol/ledger-data/ledger-entry-types/orac
 |-----------------------------|----------------------|-----------|-------------|
 | `oracle`                    | Object               | Yes       | The oracle identifier. |
 | `oracle.account`            | String - [Address][] | Yes       | The account that controls the `Oracle` object. |
-| `oracle.oracle_document_id` | Number               | Yes       | A unique identifier of the price oracle for the `Account` |
+| `oracle.oracle_document_id` | Number               | Yes       | A unique identifier of the price oracle for the `Account`. |
 
 {% tabs %}
 
