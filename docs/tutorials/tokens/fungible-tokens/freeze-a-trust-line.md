@@ -47,7 +47,7 @@ To transact on the XRP Ledger, you need an address and secret key, and some XRP.
 
 ### 2. Connect to the Network
 
-You must be connected to the network to submit transactions to it. The following code shows how to connect to a public XRP Ledger Testnet server a supported [client library](/docs/references/client-libraries.md):
+You must be connected to the network to submit transactions to it. The following code shows how to connect to a public XRP Ledger Testnet server using a supported [client library](/docs/references/client-libraries.md):
 
 {% tabs %}
 

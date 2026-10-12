@@ -20,7 +20,7 @@ A best practice is to use `Tickets` to reserve the transaction sequence numbers.
 
 ## Usage
 
-You can download or clone the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/quickstart/py/)to try the sample in your own browser.
+You can download or clone the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/quickstart/py/) to try the sample locally.
 
 ## Get an Account
 
@@ -44,7 +44,7 @@ This example lets you mint multiple NFTs for a single unique item. The NFT might
 To batch mint non-fungible token objects:
 
 1. Enter the **NFT URI**. This is a URI that points to the data or metadata associated with the NFT object. You can use this sample URI if you do not have one of your own: ipfs://bafybeigdyrzt5sfp7udm7hu76uh7y26nf4dfuylqabf3oclgtqy55fbzdi.
-2. Set the **Flags** field. For testing purposes, we recommend setting the value to _8_. This sets the _tsTransferable_ flag, meaning that the NFT object can be transferred to another account. Otherwise, the NFT object can only be transferred back to the issuing account. See [NFTokenMint](../../../references/protocol/transactions/types/nftokenmint.md) for available NFT minting flags.
+2. Set the **Flags** field. For testing purposes, we recommend setting the value to _8_. This sets the _tfTransferable_ flag, meaning that the NFT object can be transferred to another account. Otherwise, the NFT object can only be transferred back to the issuing account. See [NFTokenMint](../../../references/protocol/transactions/types/nftokenmint.md) for available NFT minting flags.
 3. Enter the **Transfer Fee**, a percentage of the proceeds that the original creator receives from future sales of the NFT. This is a value of 0-50000 inclusive, allowing transfer fees between 0.000% and 50.000% in increments of 0.001%. If you do not set the **Flags** field to allow the NFT to be transferrable, set this field to 0.
 4. Enter the **Taxon** for the NFT. If you do not have a need for the Taxon field, set this value to 0.
 5. Enter an **NFT Count** of up to 200 NFTs to create in one batch.
@@ -58,7 +58,7 @@ The difference between this function and the `getTokens()` function used earlier
 
 # Code Walkthrough
 
-You can download or clone the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/quickstart/py/)to try each of the samples locally.
+You can download or clone the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/quickstart/py/) to try each of the samples locally.
 
 Import dependencies and define the testnet_url variable. 
 
