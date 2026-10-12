@@ -64,7 +64,7 @@ For example, a ledger that only has one `Batch` transaction containing 2 inner t
 
 ### Outer Transaction
 
-Each outer transaction contains the metadata for its sequence and fee processing, not for the inner transaction processing. Any error code is only based on the outer transaction processing (for example, sequence and fee), and it returns a tesSUCCESS error even if inner transaction processing fails.
+Each outer transaction contains the metadata for its sequence and fee processing, not for the inner transaction processing. Any error code is only based on the outer transaction processing (for example, sequence and fee), and it returns a `tesSUCCESS` result even if inner transaction processing fails.
 
 ### Inner Transaction
 
@@ -120,7 +120,7 @@ The following sections cover additional recommendations for specific types of in
 
 Client libraries that implement `Batch` transaction support should:
 
-- Provide a helper method to calculate the fee for a `Batch` transaction, since the fee includes the sum of all inner transaction fees. See [XRPL Batch Transaction Fees](#xrpl-batch-transaction-fees).
+- Provide a helper method to calculate the fee for a `Batch` transaction, since the fee includes the sum of all inner transaction fees. See [Special Transaction Cost](../../references/protocol/transactions/types/batch.md#special-transaction-cost).
 - Provide a helper method to construct and sign multi-account `Batch` transactions, where one party signs the outer transaction and the other parties sign the inner transactions.
 - Provide an auto-fill method that sets each inner transaction's `Fee` to `"0"` and the `SigningPubKey` to an empty string (`""`), while omitting the `TxnSignature` field.
 
