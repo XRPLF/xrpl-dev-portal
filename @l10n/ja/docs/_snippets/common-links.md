@@ -164,7 +164,6 @@
 [PermissionedDomainSetトランザクション]: /@l10n/ja/docs/references/protocol/transactions/types/permissioneddomainset.md
 [許可型ドメイン]: /@l10n/ja/docs/concepts/tokens/decentralized-exchange/permissioned-domains.md
 [PriceOracle amendment]: /@l10n/ja/resources/known-amendments.md#priceoracle
-[MPTokensV1_1 amendment]: /@l10n/ja/resources/known-amendments.md#priceoracle
 [RFC-1751]: https://tools.ietf.org/html/rfc1751
 [レポートモード]: /@l10n/ja/docs/concepts/networks-and-servers/xrpld-server-modes.md#レポートモード
 [RequireFullyCanonicalSig amendment]: /@l10n/ja/resources/known-amendments.md#requirefullycanonicalsig
