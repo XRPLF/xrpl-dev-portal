@@ -50,7 +50,12 @@ To set up a specific server as a private peer, complete the following steps:
     ```
     [ips_fixed]
     r.ripple.com 51235
+    sahyadri.isrdc.in 51235
+    hubs.xrpkuwait.com 51235
+    hub.xrpl-commons.org 51235
     ```
+
+    {% admonition type="warning" name="Caution" %}Configure several hubs, run by different operators. `[peer_private]` disables peer discovery, so `[ips_fixed]` is not a starting point your server can build on -- it is the complete set of peers your server will ever have. If every hub listed here becomes unreachable at the same time, the server cannot find a replacement on its own and stays disconnected until an operator intervenes. See [Pros and Cons of Peering Configurations](../../../concepts/networks-and-servers/peer-protocol.md#pros-and-cons-of-peering-configurations).{% /admonition %}
 
     If your server connects using **proxies**, the IP addresses and ports should match the configurations of the `xrpld` servers you are using as proxies. For each of those servers, the port number should match the `protocol = peer` port in that server's config file (usually 51235). For example, your configuration might look like this:
 
