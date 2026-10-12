@@ -429,6 +429,19 @@
           "mpt_issuance_id": "05EECEBE97A7D635DE2393068691A015FED5A89AD203F5AA",
           "ledger_index": "validated"
         }
+      },
+      {
+        "name": "mptoken_issuance_history",
+        "description": "Get past transactions associated with an MPT issuance.",
+        "link": "/docs/references/http-websocket-apis/public-api-methods/clio-methods/mptoken_issuance_history",
+        "clio_only": true,
+        "body": {
+          "id": "example_mptoken_issuance_history",
+          "command": "mptoken_issuance_history",
+          "mpt_issuance_id": "05EECEBE97A7D635DE2393068691A015FED5A89AD203F5AA",
+          "tx_type": "MPTokenIssuanceCreate",
+          "limit": 5
+        }
       }
     ]
   },
