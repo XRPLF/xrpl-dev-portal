@@ -15,7 +15,7 @@ Set aside funds in an [escrow](../../../../concepts/payment-types/escrow.md) tha
 {% admonition type="info" name="Note" %}
 To escrow fungible tokens you must take note of the following:
 
-- Trust Line Tokens must have the **Allow Trust Line Locking** flag enabled on their account.
+- Trust Line Tokens must have the **Allow Trust Line Locking** flag enabled on the issuer's account.
 - Multi-Purpose-Tokens (MPTs) must have both the **Can Escrow** and **Can Transfer** flags enabled.
 - If the token requires **authorization**, both sender and recipient must be pre-authorized by the issuer.
 {% /admonition %}
