@@ -227,7 +227,6 @@
 [MPTokenIssuanceCreate transaction]: /docs/references/protocol/transactions/types/mptokenissuancecreate.md
 [MPTokenIssuanceDestroy transaction]: /docs/references/protocol/transactions/types/mptokenissuancedestroy.md
 [MPTokenIssuanceSet transaction]: /docs/references/protocol/transactions/types/mptokenissuanceset.md
-[MPTokensV1_1 amendment]: /resources/known-amendments.md#priceoracle
 [RFC-1751]: https://tools.ietf.org/html/rfc1751
 [RequireFullyCanonicalSig amendment]: /resources/known-amendments.md#requirefullycanonicalsig
 [Require Destination Tag]: docs/tutorials/compliance-features/require-destination-tags.md
