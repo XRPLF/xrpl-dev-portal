@@ -3,7 +3,6 @@ seo:
     description: Multi-Purpose Tokens (MPT) of one issuance held by a specific account.
 labels:
   - Multi-purpose Tokens, MPTs, Tokens
-status: not_enabled
 ---
 # MPToken
 [[Source]](https://github.com/XRPLF/rippled/blob/release/3.3.x/include/xrpl/protocol/detail/ledger_entries.macro#L414-L431 "Source")
@@ -51,7 +50,7 @@ In addition to the [common fields](../common-fields.md), {% code-page-name /%} e
 
 | Flag Name         | Flag Value | Description                                 |
 |:------------------|:-----------|:--------------------------------------------|
-| `lsfMPTLocked`     | `0x00000001`   | If enabled, indicates that the MPT owned by this account is currently locked and cannot be used in any XRP transactions other than sending value back to the issuer. |
+| `lsfMPTLocked`     | `0x00000001`   | If enabled, indicates that the MPT owned by this account is currently locked and cannot be used in any XRP Ledger transactions other than sending value back to the issuer. |
 | `lsfMPTAuthorized` | `0x00000002`   | (Only applicable for allow-listing) If set, indicates that the issuer has authorized the holder for the MPT. This flag can be set using a `MPTokenAuthorize` transaction; it can also be "un-set" using a `MPTokenAuthorize` transaction specifying the `tfMPTUnauthorize` flag. |
 
 

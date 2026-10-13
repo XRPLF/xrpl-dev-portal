@@ -65,7 +65,7 @@ The [`Paths` field](types/payment.md#paths) of the [Payment transaction][] type 
 
 If the `Delegate` field is provided, this transaction is being sent by a different account on behalf of the account in the `Account` field. The account in the `Account` is the _delegating account_ and the account in the `Delegate` field is the _delegate_ account. The transaction functions as if it was sent by the delegating account, with the following exceptions:
 
-- The signature must be valid for the delegate account. (It can by signed with a master key, regular key, or multi-signing list that is authorized by the delegate.)
+- The signature must be valid for the delegate account. (It can be signed with a master key, regular key, or multi-signing list that is authorized by the delegate.)
 - The transaction cost (in the `Fee` field) is paid by the delegate account.
 
 Sending a transaction this way is only possible if the delegating account has granted the appropriate transaction permissions to the delegate account. For more information, see [Permission Delegation](/docs/concepts/accounts/permission-delegation.md).
@@ -89,7 +89,7 @@ The only flags that apply globally to all transactions are as follows:
 | Flag Name             | Hex Value  | Decimal Value | Description               |
 |:----------------------|:-----------|:--------------|:--------------------------|
 | `tfFullyCanonicalSig` | `0x80000000` | 2147483648  | **DEPRECATED** No effect. (If the [RequireFullyCanonicalSig amendment][] is not enabled, this flag enforces a [fully-canonical signature](../../../concepts/transactions/finality-of-results/transaction-malleability.md#alternate-secp256k1-signatures).) |
-| `tfInnerBatchTxn`	| `0x40000000` | 1073741824 | This flag is only used if a transaction is an inner transaction in a [Batch][] transaction. This signifies that the transaction isn't signed. Any normal transaction that includes this flag is rejected. |
+| `tfInnerBatchTxn` | `0x40000000` | 1073741824 | This flag is only used if a transaction is an inner transaction in a [Batch][] transaction. This signifies that the transaction isn't signed. Any normal transaction that includes this flag is rejected. |
 
 When using the [sign method][] (or [submit method][] in "sign-and-submit" mode), `xrpld` adds a `Flags` field with `tfFullyCanonicalSig` enabled unless the `Flags` field is already present. The `tfFullyCanonicalSig` flag is not automatically enabled if `Flags` is explicitly specified. The flag is not automatically enabled when using the [sign_for method][] to add a signature to a multi-signed transaction.
 
