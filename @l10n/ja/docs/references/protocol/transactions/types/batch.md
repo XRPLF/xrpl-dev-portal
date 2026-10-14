@@ -1,19 +1,20 @@
 ---
 seo:
-    description: 最大8件のトランザクションをまとめて作成・送信し、それらがすべて成功するか、すべて失敗するようにアトミックに処理されるようにします。
+    description: 最大8件のトランザクションをまとめて作成・送信し、それらがアトミックに成功または失敗するようにします。
 labels:
     - Transaction Sending
     - Other Transactions
-requiredAmendment: Batch
+requiredAmendment: BatchV1_1
 status: not_enabled
 txIcon: other
 ---
 # Batch
 {% source-link path="src/libxrpl/tx/transactors/system/Batch.cpp" /%}
 
-`Batch`トランザクションは、最大8つのトランザクションを単一のバッチで送信します。各トランザクションは、4つのモード(全て成功または全て失敗（All or Nothing）、一つのみ成功（Only One）、失敗まで継続（Until Failure）、および独立実行（Independent）)のいずれかでアトミックに実行されます。
+最大8件のトランザクションを単一の[バッチ](../../../../concepts/transactions/batch-transactions.md)として送信します。バッチ内のトランザクションは、4つのモード(全て成功または全て失敗（All or Nothing）、一つのみ成功（Only One）、失敗まで継続（Until Failure）、および独立実行（Independent）)のいずれかでアトミックに実行されます。
 
-{% amendment-disclaimer name="Batch" /%}
+{% amendment-disclaimer name="BatchV1_1" /%}
+
 
 ## {% $frontmatter.seo.title %} JSONの例
 
@@ -123,23 +124,27 @@ txIcon: other
 | フィールド          | JSONの型 | [内部の型][] | 必須？ | 説明                                                         |
 | :---------------- | :--------- | :--------- | :----- | :----------------------------------------------------------- |
 | `Flags`           | 数値       | UInt32     | はい     | このトランザクションのビットフラグです。トランザクションのバッチモードを表すために、正確に1つ指定する必要があります。[バッチのフラグ](#バッチのフラグ)をご覧ください。 |
-| `RawTransactions` | 配列       | Array      | はい     | 適用するトランザクションのリストです。                             |
+| `RawTransactions` | 配列       | Array      | はい     | 適用するトランザクションのリストです。[RawTransactions](#rawtransactions)をご覧ください。 |
 | `BatchSigners`    | 配列       | Array      | いいえ    | 複数アカウントの`Batch`トランザクションを承認する署名です。          |
 
 ### RawTransactions
 
-`RawTransactions` には、適用される**内部トランザクションのリスト**が含まれます。最大8つのトランザクションを含めることができます。単一のアカウントからでも、複数のアカウントからでも構いません。
+`RawTransactions`には、適用される内部トランザクションのリストが含まれます。最小**2**件、最大**8**件のトランザクションを含める必要があります。これらのトランザクションは、単一のアカウントからでも、複数のアカウントからでも構いません。
 
 各内部トランザクションは以下の条件を満たす必要があります。
 
-* `tfInnerBatchTxn` (10進数値: `1073741824`、または16進数値: `0x40000000`) フラグを含める必要があります。
-* `Fee` の値が `"0"` である必要があります。
-* 署名されていてはなりません（グローバルトランザクションはすべての関係者によってすでに署名されています）。代わりに、`SigningPubKey` には空の文字列 (`""`) を含み、`TxnSignature` フィールドは省略する必要があります。
-* `TicketSequence` または `Sequence` の値がゼロより大きい必要があります。
+- `tfInnerBatchTxn` (10進数値: `1073741824`、または16進数値: `0x40000000`) フラグを含める必要があります。
+- `Fee`の値が`"0"`である必要があります。
+- 署名されていてはなりません（グローバルトランザクションはすべての関係者によってすでに署名されています）。代わりに、`SigningPubKey`には空の文字列 (`""`) を指定し、`TxnSignature`フィールドは省略する必要があります。
+- `TicketSequence`または`Sequence`のいずれかに、ゼロより大きい値を含める必要があります。
+
+{% admonition type="warning" name="注意" %}
+`Batch`トランザクションは、一部またはすべての _内部_ トランザクションが失敗した場合でも、外部トランザクションの結果として`tesSUCCESS`を返します。内部トランザクションが成功したことを確認するには、各トランザクションをそのハッシュで検索し、それぞれの結果とメタデータを確認してください。詳細は、[メタデータ](../../../../concepts/transactions/batch-transactions.md#メタデータ)および[Batchトランザクションの結果を確認する](../../../../tutorials/best-practices/transaction-sending/send-a-single-account-batch-transaction.md#6-check-batch-transaction-result)をご覧ください。
+{% /admonition %}
 
 ### BatchSigners
 
-このフィールドは、XRPLにおけるマルチシグ機能と同様の仕組みで動作します。複数のアカウントのトランザクションが`Batch`トランザクションに含まれている場合にのみ必要で、それ以外の場合は通常のトランザクション署名で同じセキュリティが保証されます。
+このフィールドは、XRPLにおけるマルチシグ機能と同様の仕組みで動作します。複数のアカウントのトランザクションが`Batch`トランザクションに含まれている場合にのみ必要で、それ以外の場合は通常のトランザクション署名で同じセキュリティが保証されます。必要な場合、このフィールドには、外部トランザクションに署名するアカウントを除き、内部トランザクションが含まれるすべてのアカウントの署名を含める必要があります。エントリは`Account`の昇順にソートされ、かつ一意である必要があります。
 
 | フィールド        | JSONの型 | [内部の型][] | 必須？ | 説明                                                         |
 | :-------------- | :--------- | :--------- | :----- | :----------------------------------------------------------- |
@@ -148,14 +153,14 @@ txIcon: other
 | `TxnSignature`  | 文字列     | Blob       | いいえ    | このトランザクションが、それが由来するとされるアカウントからのものであることを検証する署名。 |
 | `Signers`       | 配列       | Array      | いいえ    | このトランザクションを承認するマルチシグを表すオブジェクトの配列。         |
 
-{% admonition type="info" name="Note" %}
-`Batch`トランザクションを送信するアカウントが単一署名を使用する場合、`Flags`フィールドと内部トランザクションのハッシュに署名します。この場合、含まれるのは`SigningPubKey`と`TxnSignature`のみです。一方で、複数署名を使用する場合は代わりに`Signers`フィールドが使用され、そこに`Flags`フィールドおよび内部トランザクションのハッシュに対する署名が格納されます。
+{% admonition type="info" name="注記" %}
+`BatchSigners`エントリのアカウントが単一署名で承認する場合は、`SigningPubKey`と`TxnSignature`のみを含めます。マルチシグを使用するアカウントは、代わりに`Signers`フィールドを使用します。
 {% /admonition %}
 
 
 ## バッチのフラグ
 
-`Batch`タイプのトランザクションは、[`Flags`フィールド](../common-fields.md#flags-field)に追加の値をサポートしており、以下のとおりです。
+`Batch`タイプのトランザクションは、[`Flags`フィールド](../common-fields.md#flagsフィールド)に追加の値をサポートしており、以下のとおりです。
 
 | フラグ名          | 16進数値   | 10進数値 | 説明                               |
 | :--------------- | :--------- | :------- | :--------------------------------- |
@@ -164,14 +169,31 @@ txIcon: other
 | `tfUntilFailure` | `0x00040000` | 262144   | 最初の失敗が発生するまで、すべてのトランザクションが順に適用されます。失敗以降のトランザクションはスキップされます。 |
 | `tfIndependent`  | `0x00080000` | 524288   | 各トランザクションは、成功・失敗に関係なくすべて適用されます。 |
 
-トランザクションは`tesSUCCESS`を結果として返す場合、成功とみなされます。
+## 特殊なトランザクションコスト
+
+`Batch`トランザクションの[トランザクションコスト][]は、標準的なトランザクションよりも高くなります。手数料は以下の合計として計算されます。
+
+- {% $env.PUBLIC_BASE_FEE %} * 2。
+- 外部トランザクションの署名1つにつき、追加で{% $env.PUBLIC_BASE_FEE %}。
+- すべての内部トランザクションの手数料の合計。
 
 
 ## エラーケース
 
-| エラーコード                | 説明                                       |
-|:--------------------------|:--------------------------------------------------|
-| `temINVALID_INNER_BATCH`  | 内部トランザクションの形式が不正です。              |
-| `temSEQ_AND_TICKET`       | トランザクションに`TicketSequence`フィールドと、0以外の`Sequence`フィールドの両方が含まれています。両方を同時に指定することはできませんが、いずれか一方は必須です。 |
+すべてのトランザクションで発生する可能性のあるエラーに加えて、{% $frontmatter.seo.title %}トランザクションでは、次の[トランザクション結果コード](../transaction-results/index.md)が発生する可能性があります。
+
+| エラーコード | 説明 |
+|:-----------|:------------|
+| `tefBAD_AUTH` | `BatchSigners`エントリが疑似アカウントを参照しています。疑似アカウントはトランザクションに署名できません。 |
+| `temARRAY_EMPTY` | `RawTransactions`フィールドのトランザクションが2件未満です。バッチには少なくとも2件の内部トランザクションを含める必要があります。 |
+| `temARRAY_TOO_LARGE` | `RawTransactions`のエントリが8件を超えているか、`BatchSigners`の署名が24件を超えています。 |
+| `temBAD_FEE` | 内部トランザクションのいずれかの`Fee`が`0`より大きくなっています。 |
+| `temBAD_REGKEY` | 内部トランザクションのいずれかの`SigningPubKey`が空ではありません。 |
+| `temBAD_SIGNATURE` | 内部トランザクションのいずれかに`TxnSignature`フィールドが含まれています。 |
+| `temBAD_SIGNER` | <li>内部トランザクションのいずれかに`Signers`フィールドが含まれています。</li><li>`BatchSigners`フィールドに、外部トランザクションに署名するアカウントの署名が含まれています。</li><li>`BatchSigners`フィールドに重複する署名者が含まれています。</li><li>`BatchSigners`フィールドが`Account`の昇順に厳密にソートされていません。</li><li>`BatchSigners`フィールドに、内部トランザクションを持たないアカウントの署名が含まれています。</li><li>`BatchSigners`フィールドに、内部トランザクションを持つアカウントの署名が含まれていません。</li> |
+| `temINVALID_FLAG` | <li>`Flags`フィールドに、サポートされている[バッチモード](#バッチのフラグ)のいずれか1つが正確に設定されていません。</li><li>内部トランザクションのいずれかに`tfInnerBatchTxn`フラグが設定されていません。</li> |
+| `temINVALID_INNER_BATCH` | `RawTransactions`フィールドに、`Batch`など、無効化されているか不正な`TransactionType`が含まれています。現在無効化されているトランザクションは次のとおりです: `LoanBrokerCoverClawback`、`LoanBrokerCoverDeposit`、`LoanBrokerCoverWithdraw`、`LoanBrokerDelete`、`LoanBrokerSet`、`LoanDelete`、`LoanManage`、`LoanPay`、`LoanSet`、`VaultCreate`、`VaultSet`、`VaultDelete`、`VaultDeposit`、`VaultWithdraw`、`VaultClawback`。 |
+| `temREDUNDANT` | `RawTransactions`フィールドに重複するトランザクションが含まれています。 |
+| `temSEQ_AND_TICKET` | 内部トランザクションのいずれかに、`TicketSequence`と0以外の`Sequence`の両方が設定されているか、どちらも設定されていません。いずれか一方のみが必要です。 |
 
 {% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}
