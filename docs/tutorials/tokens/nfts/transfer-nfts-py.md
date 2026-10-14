@@ -421,7 +421,7 @@ Add the response to the _allOffers_ variable and return the results.
 
 ## Cancel Offer
 
-The creator of an offer can cancel it at any time before it is accepted. Anyone can cancel an offer if its expiration date has expired.
+The creator of an offer can cancel it at any time before it is accepted. Anyone can cancel an expired offer.
 
 Pass the seed and the NFT Offer ID to be canceled.
 
