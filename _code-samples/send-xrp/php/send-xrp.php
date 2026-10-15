@@ -4,15 +4,15 @@
 require __DIR__ . '/vendor/autoload.php';
 
 // Imports
-use XRPL_PHP\Client\JsonRpcClient;
-use XRPL_PHP\Models\Account\AccountInfoRequest;
-use XRPL_PHP\Wallet\Wallet;
-use function XRPL_PHP\Sugar\fundWallet;
-use function XRPL_PHP\Sugar\xrpToDrops;
+use Hardcastle\XRPL_PHP\Client\JsonRpcClient;
+use Hardcastle\XRPL_PHP\Models\Account\AccountInfoRequest;
+use Hardcastle\XRPL_PHP\Wallet\Wallet;
+use function Hardcastle\XRPL_PHP\Sugar\fundWallet;
+use function Hardcastle\XRPL_PHP\Sugar\xrpToDrops;
 
 // Example credentials
 $wallet = Wallet::fromSeed("sEd7zwWAu7vXMCBkkzokJHEXiKw2B2s");
-print_r('Wallet Address: ' . $wallet->getAddress() .PHP_EOL); // rMCcNuTcajgw7YTgBy1sys3b89QqjUrMpH
+print_r('Wallet Address: ' . $wallet->getAddress() .PHP_EOL); // rUYHuEvNGemBkF9LpcStHcGUhf84fbnUcN
 
 // Create a client using the Testnet
 $client = new JsonRpcClient("https://s.altnet.rippletest.net:51234");
