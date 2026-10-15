@@ -18,6 +18,8 @@ The [TokenEscrow amendment][] extends escrow functionality to fungible tokens, w
 
 For Trust Line Tokens to be held in escrow, the issuing account must have the **Allow Trust Line Locking** flag enabled, which allows tokens issued by the account to be held in escrow. For MPTs, the issuer needs to enable the **Can Escrow** and **Can Transfer** flags when creating the token issuance, so that the tokens can be held in escrow and transferred.
 
+Unlike the Allow Trust Line Clawback flag, the Allow Trust Line Locking flag is not permanent. The issuer can disable it later. After the flag is disabled, new escrows of that issuer's tokens fail with the `tecNO_PERMISSION` result code, but escrows created while the flag was enabled can still be finished or canceled. The issuer can also re-enable the flag at any time.
+
 While issuers can't create escrows with their own issued tokens, they can serve as recipients. When an issuer receives escrowed tokens, the process works the same way as a direct payment.
 
 If a token requires authorization, the sender must be pre-authorized by the issuer before creating an escrow and must also be authorized to receive the tokens back when an expired escrow is canceled, regardless of who submits the cancellation transaction. The recipient must be pre-authorized before the escrow can be finished.
