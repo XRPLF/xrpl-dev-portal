@@ -211,6 +211,7 @@
             - page: docs/tutorials/get-started/get-started-java.md
             - page: docs/tutorials/get-started/get-started-go.md
             - page: docs/tutorials/get-started/get-started-php.md
+            - page: docs/tutorials/get-started/get-started-ruby.md
             - page: docs/tutorials/get-started/get-started-http-websocket-apis.md
         - group: Sample Apps
           groupTranslationKey: sidebar.docs.tutorials.sampleApps
@@ -540,7 +541,7 @@
               href: https://javadoc.io/doc/org.xrpl/
               external: true
             - label: Ruby Client Library
-              href: https://www.rubydoc.info/gems/xrbp
+              href: https://www.rubydoc.info/gems/xrpl-ruby
               external: true
             - label: Go Client Library
               href: https://pkg.go.dev/github.com/Peersyst/xrpl-go
