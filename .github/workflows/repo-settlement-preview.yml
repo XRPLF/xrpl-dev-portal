@@ -74,7 +74,14 @@ jobs:
       # No VITE_*_SEED is set here on purpose. Vite inlines env vars into the
       # bundle, so any seed would be readable in the published JavaScript. The
       # preview funds itself from the Devnet faucet instead.
+      #
+      # VITE_GTM_ID is the portal's own Google Tag Manager container, so the
+      # demo's engagement events land in xrpl.org's GA4 property. The ID is
+      # public (it is in redocly.yaml). Only built bundles send; the dev server
+      # logs events to the console instead. See src/analytics.ts.
       - name: Build
+        env:
+          VITE_GTM_ID: GTM-KCQZ3L8
         run: npm run build -- --base="/${GITHUB_REPOSITORY#*/}/${PREVIEW_PATH}/"
 
       - name: Publish to ${{ env.PAGES_BRANCH }}

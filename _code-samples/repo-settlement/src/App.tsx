@@ -9,8 +9,9 @@ import {
   Text,
   Title
 } from '@mantine/core'
-import { useCallback, useMemo, useRef, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 
+import { trackPhaseComplete } from './analytics'
 import { BalancePanel } from './components/BalancePanel'
 import { DealTicket } from './components/DealTicket'
 import { StepPanel, type ActionSlot } from './components/StepPanel'
@@ -141,6 +142,22 @@ export default function App () {
     })
     return grouped
   }, [steps])
+
+  // One engagement event per phase, the first time its last action completes.
+  // Driven off progress rather than the click handler, so it can't double-fire
+  // on a retried action and needs no knowledge of which step closed the phase.
+  const reportedPhases = useRef(new Set<string>())
+  useEffect(() => {
+    phases.forEach((phase, index) => {
+      const done = phase.steps.every(
+        (stepIndex) => progress[stepIndex] >= steps[stepIndex].actions.length
+      )
+      if (done && !reportedPhases.current.has(phase.name)) {
+        reportedPhases.current.add(phase.name)
+        trackPhaseComplete(phase.name, index)
+      }
+    })
+  }, [progress, phases, steps])
 
   const step = steps[selected]
   /** The furthest step the reader may navigate to: the live one, never beyond. */

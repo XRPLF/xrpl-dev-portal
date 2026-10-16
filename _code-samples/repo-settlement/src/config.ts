@@ -20,6 +20,8 @@ function optional (value: string | undefined): string | undefined {
 export const CONFIG = {
   wssUrl: optional(env.VITE_XRPL_WSS) ?? 'wss://s.devnet.rippletest.net:51233',
   explorerUrl: optional(env.VITE_EXPLORER_URL) ?? 'https://devnet.xrpl.org',
+  /** Google Tag Manager container to load. Unset = no analytics. */
+  gtmId: optional(env.VITE_GTM_ID),
   /**
    * Optional pre-funded account seeds; the faucet is used where unset. Each
    * party names its own variable, so adding a party needs no change here.

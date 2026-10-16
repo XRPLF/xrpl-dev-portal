@@ -5,7 +5,10 @@ import { MantineProvider, createTheme } from '@mantine/core'
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 
+import { initAnalytics } from './analytics'
 import App from './App'
+
+initAnalytics()
 
 const theme = createTheme({
   primaryColor: 'teal',

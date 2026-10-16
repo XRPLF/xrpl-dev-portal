@@ -78,6 +78,28 @@ accumulates is ledger entries, two issuances per run plus the counterparties'
 enough runs the issuers run out of it. Clear the seeds to go back to faucet
 wallets, or fund fresh accounts.
 
+## Analytics
+
+The demo reports one engagement event per phase, the first time that phase's
+last action completes, as a funnel of seven events from `cas-demo-step1-fund`
+to `cas-demo-step7-far-leg`. The full list is `PHASE_EVENTS` in
+`src/analytics.ts`. Each event carries only the phase name and its index,
+never an address, seed, or deal term.
+
+Under `npm run dev` nothing is sent. Each event is logged to the browser
+console instead, so you can check the funnel fires without a container.
+
+A built bundle logs nothing and pushes every event to the Google Tag Manager
+(GTM) data layer. Set `VITE_GTM_ID` to a container ID and the app loads GTM
+with analytics storage denied by default, matching xrpl.org's consent
+defaults. Leave it unset and nothing loads, though the pushes still happen,
+so a build embedded in a page that already runs GTM reports without it. To
+test real sending on your machine, build and serve the bundle:
+
+```sh
+VITE_GTM_ID=GTM-XXXXXXX npm run build && npm run preview
+```
+
 ## Encryption-key lifecycle
 
 Confidential Transfers use a second key pair per party, separate from the
