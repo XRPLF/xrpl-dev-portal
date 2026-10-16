@@ -16,7 +16,7 @@ go mod tidy
 go run ./send-trust-line-token
 ```
 
-Loads a sender that already holds TST, runs the pre-flight checks on the receiver, sends 2 TST, and prints both balances before and after. If no setup data exists, the setup script runs first and buys TST for the sender on the DEX.
+Loads a sender that already holds TST, checks the sender's balance including any transfer fee, runs the pre-flight checks on the receiver, sends 2 TST, and prints both balances before and after along with the delivered amount. If no setup data exists, the setup script runs first and buys TST for the sender on the DEX.
 
 You should see output like the following:
 
@@ -25,11 +25,12 @@ You should see output like the following:
 
 Setting up tutorial: Complete!
 Issuer address:   rP9jPyP5kyvFRb6ZiRghAGw5u8SGAmU4bd
-Sender address:   raYRphA6ATRiM2QYPeYydtSfveqdkSNNhv
+Sender address:   rMD2XQ6s2JgxNK3ibA41VJogCNYBjekfjT
 Receiver address: rG6ZCtKCURU58DP2iiff4qziApBGSuvPqE
 
 === Checking sender's TST balance... ===
 
+✓ No transfer fee
 Sender's balance: 5
 
 === Checking receiver can receive TST... ===
@@ -38,16 +39,15 @@ Sender's balance: 5
 ✓ Rippling is allowed (issuer Default Ripple: true)
 ✓ Receiver's limit covers the payment
 ✓ Authorization OK (issuer Require Auth: false)
-✓ No transfer fee
 
 Balances before payment:
   Sender:   5 TST
-  Receiver: 16 TST
+  Receiver: 54 TST
 
 === Sending 2 TST to receiver... ===
 
 {
-  "Account": "raYRphA6ATRiM2QYPeYydtSfveqdkSNNhv",
+  "Account": "rMD2XQ6s2JgxNK3ibA41VJogCNYBjekfjT",
   "Amount": {
     "currency": "TST",
     "issuer": "rP9jPyP5kyvFRb6ZiRghAGw5u8SGAmU4bd",
@@ -57,10 +57,11 @@ Balances before payment:
   "TransactionType": "Payment"
 }
 Payment successful!
-Explorer link: https://testnet.xrpl.org/transactions/4B09AA3496547EF4383E880C8DB29DA0C24D183B9C92EF9FAC9556644579DCD8
+Explorer link: https://testnet.xrpl.org/transactions/55647900766CDF65522FADF294BFD1E0D7A3E4E60D6723CADBC5CB7A491C5293
 
 === Checking final TST balances... ===
 
+Delivered amount: 2 TST
   Sender:   3 TST
-  Receiver: 18 TST
+  Receiver: 56 TST
 ```

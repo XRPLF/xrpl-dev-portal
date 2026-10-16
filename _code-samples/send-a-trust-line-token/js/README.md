@@ -14,7 +14,7 @@ npm install
 node sendTrustLineToken.js
 ```
 
-Loads a sender that already holds TST, runs the pre-flight checks on the receiver, sends 2 TST, and prints both balances before and after. If no setup data exists, the setup script runs first and buys TST for the sender on the DEX.
+Loads a sender that already holds TST, checks the sender's balance including any transfer fee, runs the pre-flight checks on the receiver, sends 2 TST, and prints both balances before and after along with the delivered amount. If no setup data exists, the setup script runs first and buys TST for the sender on the DEX.
 
 You should see output like the following:
 
@@ -23,11 +23,12 @@ You should see output like the following:
 
 Setting up tutorial: Complete!
 Issuer address:   rP9jPyP5kyvFRb6ZiRghAGw5u8SGAmU4bd
-Sender address:   r4dLURGAzr6DfQgvLd3pVq5TgHV6cRRW7g
+Sender address:   rDcyeDEgsjBrcoYmy9MgSBUDhxDnzP6bnc
 Receiver address: rG6ZCtKCURU58DP2iiff4qziApBGSuvPqE
 
 === Checking sender's TST balance... ===
 
+✓ No transfer fee
 Sender's balance: 5
 
 === Checking receiver can receive TST... ===
@@ -36,17 +37,16 @@ Sender's balance: 5
 ✓ Rippling is allowed (issuer Default Ripple: true)
 ✓ Receiver's limit covers the payment
 ✓ Authorization OK (issuer Require Auth: false)
-✓ No transfer fee
 
 Balances before payment:
   Sender:   5 TST
-  Receiver: 12 TST
+  Receiver: 50 TST
 
 === Sending 2 TST to receiver... ===
 
 {
   "TransactionType": "Payment",
-  "Account": "r4dLURGAzr6DfQgvLd3pVq5TgHV6cRRW7g",
+  "Account": "rDcyeDEgsjBrcoYmy9MgSBUDhxDnzP6bnc",
   "Destination": "rG6ZCtKCURU58DP2iiff4qziApBGSuvPqE",
   "Amount": {
     "currency": "TST",
@@ -55,10 +55,11 @@ Balances before payment:
   }
 }
 Payment successful!
-Explorer link: https://testnet.xrpl.org/transactions/5A09469A0F618C79CA30565C88161ABF706322FE645278F3C1DD71506858C0F4
+Explorer link: https://testnet.xrpl.org/transactions/ABE86C65E484CA0B2EAC25ED2E68E6ACDCBABF1C88849943BEF7D87664245056
 
 === Checking final TST balances... ===
 
+Delivered amount: 2 TST
   Sender:   3 TST
-  Receiver: 14 TST
+  Receiver: 52 TST
 ```

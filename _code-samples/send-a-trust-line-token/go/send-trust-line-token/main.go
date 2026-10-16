@@ -18,23 +18,6 @@ import (
 	wstypes "github.com/Peersyst/xrpl-go/xrpl/websocket/types"
 )
 
-// The token to send and who to send it to. TST is a test token on Testnet,
-// and the receiver is a well-known account that already holds a TST trust
-// line. You can replace these values with your own.
-const (
-	issuerAddress   = "rP9jPyP5kyvFRb6ZiRghAGw5u8SGAmU4bd"
-	currencyCode    = "TST"
-	receiverAddress = "rG6ZCtKCURU58DP2iiff4qziApBGSuvPqE"
-	sendQuantity    = "2"
-
-	// The highest transfer fee this command is willing to pay, as a percentage
-	// of the amount sent. Protects against approving a large fee by accident.
-	maxTransferFeePercent = 10
-
-	// TransferRate is in billionths; this value (or unset) means no fee.
-	noTransferFee = 1000000000
-)
-
 // decimal parses a token value string into a big.Float. Token values can have
 // up to 16 significant digits, so avoid float64 for comparisons.
 func decimal(value string) *big.Float {
@@ -83,6 +66,23 @@ func main() {
 		panic(err)
 	}
 
+	// The token to send and who to send it to. TST is a test token on Testnet,
+	// and the receiver is a well-known account that already holds a TST trust
+	// line. You can replace these values with your own.
+	const (
+		issuerAddress   = "rP9jPyP5kyvFRb6ZiRghAGw5u8SGAmU4bd"
+		currencyCode    = "TST"
+		receiverAddress = "rG6ZCtKCURU58DP2iiff4qziApBGSuvPqE"
+		sendQuantity    = "2"
+
+		// The highest transfer fee this command is willing to pay, as a percentage
+		// of the amount sent. Protects against approving a large fee by accident.
+		maxTransferFeePercent = 10
+
+		// TransferRate is in billionths; this value (or unset) means no fee.
+		noTransferFee = 1000000000
+	)
+
 	fmt.Printf("Issuer address:   %s\n", issuerAddress)
 	fmt.Printf("Sender address:   %s\n", sender.ClassicAddress)
 	fmt.Printf("Receiver address: %s\n", receiverAddress)
@@ -90,39 +90,32 @@ func main() {
 	// getTrustLine returns the trust line between `addr` and `peer` for the
 	// given currency, or nil if no such trust line exists.
 	getTrustLine := func(addr, peer types.Address, currency string) *accounttypes.TrustLine {
-		resp, err := client.GetAccountLines(&account.LinesRequest{
+		req := &account.LinesRequest{
 			Account:     addr,
 			Peer:        peer,
 			LedgerIndex: common.Validated,
-		})
-		if err != nil {
-			panic(err)
 		}
-		for _, line := range resp.Lines {
-			if line.Currency == currency {
-				return &line
+		for {
+			resp, err := client.GetAccountLines(req)
+			if err != nil {
+				panic(err)
 			}
+			for _, line := range resp.Lines {
+				if line.Currency == currency {
+					return &line
+				}
+			}
+			if resp.Marker == nil {
+				return nil
+			}
+			req.Marker = resp.Marker
 		}
-		return nil
 	}
 
 	// Check sender balance ----------------------
-	// Confirm the sender holds enough of the token to make the payment.
+	// Confirm the sender holds enough of the token to make the payment, including
+	// the issuer's transfer fee, which the sender pays on top of the amount sent.
 	fmt.Printf("\n=== Checking sender's %s balance... ===\n\n", currencyCode)
-	senderLine := getTrustLine(sender.ClassicAddress, issuerAddress, currencyCode)
-	if senderLine == nil {
-		fmt.Printf("Error: Sender has no %s trust line with the issuer.\n", currencyCode)
-		os.Exit(1)
-	}
-	fmt.Printf("Sender's balance: %s\n", senderLine.Balance)
-	if decimal(senderLine.Balance).Cmp(decimal(sendQuantity)) < 0 {
-		fmt.Printf("Error: Sender's balance is less than the %s %s to send.\n", sendQuantity, currencyCode)
-		os.Exit(1)
-	}
-
-	// Check receiver ----------------------
-	// Confirm the receiver can accept the payment before sending it.
-	fmt.Printf("\n=== Checking receiver can receive %s... ===\n\n", currencyCode)
 	issuerInfo, err := client.GetAccountInfo(&account.InfoRequest{
 		Account:     issuerAddress,
 		LedgerIndex: common.Validated,
@@ -131,6 +124,46 @@ func main() {
 		panic(err)
 	}
 	issuerFlags := issuerInfo.AccountData.Flags
+
+	// If the issuer charges a transfer fee, the sender pays more than the
+	// receiver gets. Work out the SendMax needed and refuse unreasonable fees.
+	// TransferRate is a multiplier in billionths, e.g. 1005000000 = 1.005 = 0.5% fee.
+	transferRate := issuerInfo.AccountData.TransferRate
+	if transferRate == 0 {
+		transferRate = noTransferFee
+	}
+	transferFeePercent := float64(transferRate-noTransferFee) / 10000000
+	if transferFeePercent > maxTransferFeePercent {
+		fmt.Printf("Error: Transfer fee of %g%% exceeds the %d%% limit.\n", transferFeePercent, maxTransferFeePercent)
+		os.Exit(1)
+	}
+	sendMax := ""
+	if transferFeePercent > 0 {
+		rate := new(big.Float).Quo(decimal(fmt.Sprint(transferRate)), decimal(fmt.Sprint(noTransferFee)))
+		sendMax = new(big.Float).Mul(decimal(sendQuantity), rate).Text('g', 16)
+		fmt.Printf("✓ Transfer fee is %g%%; sender will pay up to %s %s\n", transferFeePercent, sendMax, currencyCode)
+	} else {
+		fmt.Println("✓ No transfer fee")
+	}
+	needed := sendQuantity
+	if sendMax != "" {
+		needed = sendMax
+	}
+
+	senderLine := getTrustLine(sender.ClassicAddress, issuerAddress, currencyCode)
+	if senderLine == nil {
+		fmt.Printf("Error: Sender has no %s trust line with the issuer.\n", currencyCode)
+		os.Exit(1)
+	}
+	fmt.Printf("Sender's balance: %s\n", senderLine.Balance)
+	if decimal(senderLine.Balance).Cmp(decimal(needed)) < 0 {
+		fmt.Printf("Error: Sender's balance is less than the %s %s to send.\n", needed, currencyCode)
+		os.Exit(1)
+	}
+
+	// Check receiver ----------------------
+	// Confirm the receiver can accept the payment before sending it.
+	fmt.Printf("\n=== Checking receiver can receive %s... ===\n\n", currencyCode)
 	receiverLine := getTrustLine(receiverAddress, issuerAddress, currencyCode)
 
 	// 1. The receiver must have a trust line to the issuer for this currency.
@@ -140,11 +173,11 @@ func main() {
 	}
 	fmt.Println("✓ Receiver has a trust line to the issuer")
 
-	// 2. The issuer must allow rippling on both trust lines, since a payment
-	//    between holders moves through the issuer. Default Ripple on the issuer
-	//    is the usual way to allow this, but check the lines themselves.
-	if senderLine.NoRipplePeer || receiverLine.NoRipplePeer {
-		fmt.Println("Error: The issuer has disabled rippling on the sender or receiver trust line.")
+	// 2. The issuer must allow rippling on at least one of the two trust lines, since
+	//    a payment between holders moves through the issuer. Default Ripple on the
+	//    issuer is the usual way to allow this, but check the lines themselves.
+	if senderLine.NoRipplePeer && receiverLine.NoRipplePeer {
+		fmt.Println("Error: The issuer has disabled rippling on both the sender and receiver trust lines.")
 		os.Exit(1)
 	}
 	defaultRipple := issuerFlags&ledger.LsfDefaultRipple != 0
@@ -165,27 +198,6 @@ func main() {
 		os.Exit(1)
 	}
 	fmt.Printf("✓ Authorization OK (issuer Require Auth: %t)\n", requireAuth)
-
-	// 5. If the issuer charges a transfer fee, the sender pays more than the
-	//    receiver gets. Work out the SendMax needed and refuse unreasonable fees.
-	//    TransferRate is a multiplier in billionths, e.g. 1005000000 = 1.005 = 0.5% fee.
-	transferRate := issuerInfo.AccountData.TransferRate
-	if transferRate == 0 {
-		transferRate = noTransferFee
-	}
-	transferFeePercent := float64(transferRate-noTransferFee) / 10000000
-	if transferFeePercent > maxTransferFeePercent {
-		fmt.Printf("Error: Transfer fee of %g%% exceeds the %d%% limit.\n", transferFeePercent, maxTransferFeePercent)
-		os.Exit(1)
-	}
-	sendMax := ""
-	if transferFeePercent > 0 {
-		rate := new(big.Float).Quo(decimal(fmt.Sprint(transferRate)), decimal(fmt.Sprint(noTransferFee)))
-		sendMax = new(big.Float).Mul(decimal(sendQuantity), rate).Text('g', 16)
-		fmt.Printf("✓ Transfer fee is %g%%; sender will pay up to %s %s\n", transferFeePercent, sendMax, currencyCode)
-	} else {
-		fmt.Println("✓ No transfer fee")
-	}
 
 	fmt.Println("\nBalances before payment:")
 	fmt.Printf("  Sender:   %s %s\n", senderLine.Balance, currencyCode)
@@ -234,6 +246,13 @@ func main() {
 	// Verify balances ----------------------
 	// Check both balances again to confirm the transfer.
 	fmt.Printf("\n=== Checking final %s balances... ===\n\n", currencyCode)
+
+	// The metadata's delivered_amount is the amount the receiver actually got.
+	// Always read this field rather than the transaction's Amount, because a
+	// partial payment can succeed while delivering less than Amount.
+	deliveredAmount := paymentResponse.Meta.DeliveredAmount.(map[string]any)
+	fmt.Printf("  Delivered amount: %s %s\n", deliveredAmount["value"], deliveredAmount["currency"])
+
 	senderLineAfter := getTrustLine(sender.ClassicAddress, issuerAddress, currencyCode)
 	receiverLineAfter := getTrustLine(receiverAddress, issuerAddress, currencyCode)
 	fmt.Printf("  Sender:   %s %s\n", senderLineAfter.Balance, currencyCode)

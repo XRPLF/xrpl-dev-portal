@@ -16,7 +16,7 @@ pip install -r requirements.txt
 python3 send_trust_line_token.py
 ```
 
-Loads a sender that already holds TST, runs the pre-flight checks on the receiver, sends 2 TST, and prints both balances before and after. If no setup data exists, the setup script runs first and buys TST for the sender on the DEX.
+Loads a sender that already holds TST, checks the sender's balance including any transfer fee, runs the pre-flight checks on the receiver, sends 2 TST, and prints both balances before and after along with the delivered amount. If no setup data exists, the setup script runs first and buys TST for the sender on the DEX.
 
 You should see output like the following:
 
@@ -25,11 +25,12 @@ You should see output like the following:
 
 Setting up tutorial: Complete!
 Issuer address:   rP9jPyP5kyvFRb6ZiRghAGw5u8SGAmU4bd
-Sender address:   r4SFRbzmGwzfqQg7mNvygrDPk2RPY74MwN
+Sender address:   r9p2y2p15aNhmChZHWbNmybd7X3gwJRaEB
 Receiver address: rG6ZCtKCURU58DP2iiff4qziApBGSuvPqE
 
 === Checking sender's TST balance... ===
 
+✓ No transfer fee
 Sender's balance: 5
 
 === Checking receiver can receive TST... ===
@@ -38,16 +39,15 @@ Sender's balance: 5
 ✓ Rippling is allowed (issuer Default Ripple: True)
 ✓ Receiver's limit covers the payment
 ✓ Authorization OK (issuer Require Auth: False)
-✓ No transfer fee
 
 Balances before payment:
   Sender:   5 TST
-  Receiver: 14 TST
+  Receiver: 52 TST
 
 === Sending 2 TST to receiver... ===
 
 {
-  "Account": "r4SFRbzmGwzfqQg7mNvygrDPk2RPY74MwN",
+  "Account": "r9p2y2p15aNhmChZHWbNmybd7X3gwJRaEB",
   "TransactionType": "Payment",
   "SigningPubKey": "",
   "Amount": {
@@ -58,10 +58,11 @@ Balances before payment:
   "Destination": "rG6ZCtKCURU58DP2iiff4qziApBGSuvPqE"
 }
 Payment successful!
-Explorer link: https://testnet.xrpl.org/transactions/F65337A9533DE3B6A7E1913F2F014E2B07DB99BA6B3491E92797E5EAF27D5B09
+Explorer link: https://testnet.xrpl.org/transactions/B85330A25158DB333A87D6691D92DF2675051305F5967F424A59D35D032F684C
 
 === Checking final TST balances... ===
 
+Delivered amount: 2 TST
   Sender:   3 TST
-  Receiver: 16 TST
+  Receiver: 54 TST
 ```

@@ -111,11 +111,13 @@ Next, load the sender wallet, and set the token to send and the receiver address
 {% /tab %}
 {% /tabs %}
 
-TST is a test token available on Testnet, and the receiver is an account that already holds a TST trust line. The `getTrustLine` helper uses the [account_lines method][] to look up the trust line between an account and the issuer, and the remaining steps use it to read balances.
+TST is a test token available on Testnet, and the receiver is an account that already holds a TST trust line.
+
+The `getTrustLine` helper uses the [account_lines method][] to look up the trust line between an account and the issuer, and the remaining steps use it to read balances. The response is paginated, and an account that owns many ledger entries can return a first page with no matching lines and a `marker`, so the helper follows the markers until it finds the line.
 
 ### 3. Check the sender's balance
 
-Before sending the payment, check the sender's balance using the [account_lines method][]. The sender should have an initial balance from the setup script, and at least enough to cover the payment.
+Before sending the payment, check the sender's balance using the [account_lines method][]. The sender should have an initial balance from the setup script, and at least enough to cover the payment plus any [transfer fee](../../concepts/tokens/fungible-tokens/transfer-fees.md) the issuer charges.
 
 {% tabs %}
 {% tab label="JavaScript" %}
@@ -135,7 +137,7 @@ A trust line is a bidirectional relationship with a single, shared balance that 
 
 A payment between two holders can fail for reasons that have nothing to do with the sender. Check the receiver's trust line and the issuer's settings before submitting, so you can tell the user why a payment can't go through instead of letting it fail on the ledger.
 
-First, request the issuer's settings with the [account_info method][] and the receiver's trust line with `account_lines`.
+First, request the receiver's trust line with `account_lines`.
 
 {% tabs %}
 {% tab label="JavaScript" %}
@@ -154,7 +156,6 @@ Then, run the following checks:
 {% tabs %}
 {% tab label="JavaScript" %}
 {% code-snippet file="/_code-samples/send-a-trust-line-token/js/sendTrustLineToken.js" language="js" from="// 1. The receiver must" before="// Send payment" /%}
-
 {% /tab %}
 {% tab label="Python" %}
 {% code-snippet file="/_code-samples/send-a-trust-line-token/py/send_trust_line_token.py" language="py" from="# 1. The receiver must" before="# Send payment" /%}
@@ -165,10 +166,9 @@ Then, run the following checks:
 {% /tabs %}
 
 1. **Trust line exists**: The receiver has a trust line to the issuer for this currency.
-2. **Rippling is allowed**: The issuer hasn't set `no_ripple_peer` on the sender's or receiver's line.
+2. **Rippling is allowed**: The issuer hasn't set `no_ripple_peer` on **both** the sender's and receiver's lines.
 3. **Limit covers the payment**: The receiver's `limit` is at least their `balance` plus the amount.
 4. **Authorization**: If the issuer requires auth, the receiver's line has `peer_authorized` set.
-5. **Transfer fee**: If the issuer sets a `TransferRate`, the payment includes a `SendMax` to cover it, and the code refuses fees above a threshold.
 
 ### 5. Send the token payment
 
@@ -186,7 +186,7 @@ Once the checks pass, the sender can send the token to the receiver with a [Paym
 {% /tab %}
 {% /tabs %}
 
-The TST issuer doesn't charge a [transfer fee](../../concepts/tokens/fungible-tokens/transfer-fees.md), so the sender's balance decreases by the same amount the receiver gains. If you replace the issuer with one that has a non-zero `TransferRate`, the sender's balance decreases by more than the receiver gains. The `SendMax` field set in the previous step covers the difference.
+The TST issuer doesn't charge a transfer fee, so the sender's balance decreases by the same amount the receiver gains. If you replace the issuer with one that has a non-zero `TransferRate`, the sender's balance decreases by more than the receiver gains. The `SendMax` field set in step 3 covers the difference.
 
 {% admonition type="warning" name="Caution" %}
 If the payment fails, it could be for one of the following reasons:
@@ -211,7 +211,13 @@ Check the account balances again to confirm the transfer.
 {% /tab %}
 {% /tabs %}
 
-The sender's balance should have decreased by the amount sent and the receiver's should have increased by the same amount.
+The code first prints the **delivered amount** from the transaction metadata, which is the amount the receiver actually got. Always read this field when processing incoming payments, because a [partial payment](../../concepts/payment-types/partial-payments.md) can return `tesSUCCESS` while delivering less than `Amount`.
+
+{% admonition type="info" name="Note" %}
+If either trust line has a non-default [Quality setting](../../concepts/tokens/fungible-tokens/trust-line-tokens.md#trust-line-settings), that can also affect the amounts each side sees.
+{% /admonition %}
+
+The sender's balance should have decreased by the amount sent plus the transfer fee, while the receiver's balance should have increased by only the delivered amount.
 
 ## See Also
 

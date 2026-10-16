@@ -36,34 +36,19 @@ console.log(`Receiver address: ${receiverAddress}`)
 // getTrustLine returns the trust line between `account` and `peer` for the
 // given currency, or undefined if no such trust line exists.
 async function getTrustLine(account, currency, peer) {
-  const response = await client.request({
+  const pages = await client.requestAll({
     command: 'account_lines',
     account,
     peer,
     ledger_index: 'validated'
   })
-  return response.result.lines.find(line => line.currency === currency)
+  return pages.flatMap(page => page.result.lines).find(line => line.currency === currency)
 }
 
 // Check sender balance ----------------------
-// Confirm the sender holds enough of the token to make the payment.
+// Confirm the sender holds enough of the token to make the payment, including
+// the issuer's transfer fee, which the sender pays on top of the amount sent.
 console.log(`\n=== Checking sender's ${currencyCode} balance... ===\n`)
-const senderLine = await getTrustLine(sender.address, currencyCode, issuerAddress)
-if (!senderLine) {
-  console.error(`Error: Sender has no ${currencyCode} trust line with the issuer.`)
-  await client.disconnect()
-  process.exit(1)
-}
-console.log(`Sender's balance: ${senderLine.balance}`)
-if (Number(senderLine.balance) < Number(sendQuantity)) {
-  console.error(`Error: Sender's balance is less than the ${sendQuantity} ${currencyCode} to send.`)
-  await client.disconnect()
-  process.exit(1)
-}
-
-// Check receiver ----------------------
-// Confirm the receiver can accept the payment before sending it.
-console.log(`\n=== Checking receiver can receive ${currencyCode}... ===\n`)
 const issuerInfo = await client.request({
   command: 'account_info',
   account: issuerAddress,
@@ -71,47 +56,10 @@ const issuerInfo = await client.request({
 })
 // parseAccountRootFlags turns the Flags bitmask into an object of booleans.
 const issuerFlags = xrpl.parseAccountRootFlags(issuerInfo.result.account_data.Flags)
-const defaultRipple = issuerFlags.lsfDefaultRipple === true
-const requireAuth = issuerFlags.lsfRequireAuth === true
-const receiverLine = await getTrustLine(receiverAddress, currencyCode, issuerAddress)
 
-// 1. The receiver must have a trust line to the issuer for this currency.
-if (!receiverLine) {
-  console.error(`Error: Receiver has no ${currencyCode} trust line with the issuer.`)
-  await client.disconnect()
-  process.exit(1)
-}
-console.log('✓ Receiver has a trust line to the issuer')
-
-// 2. The issuer must allow rippling on both trust lines, since a payment
-//    between holders moves through the issuer. Default Ripple on the issuer
-//    is the usual way to allow this, but check the lines themselves.
-if (senderLine.no_ripple_peer || receiverLine.no_ripple_peer) {
-  console.error('Error: The issuer has disabled rippling on the sender or receiver trust line.')
-  await client.disconnect()
-  process.exit(1)
-}
-console.log(`✓ Rippling is allowed (issuer Default Ripple: ${defaultRipple})`)
-
-// 3. The receiver's limit must cover their current balance plus the payment.
-if (Number(receiverLine.balance) + Number(sendQuantity) > Number(receiverLine.limit)) {
-  console.error(`Error: Payment would exceed the receiver's limit of ${receiverLine.limit} ${currencyCode}.`)
-  await client.disconnect()
-  process.exit(1)
-}
-console.log(`✓ Receiver's limit covers the payment`)
-
-// 4. If the issuer requires authorization, the receiver's line must be authorized.
-if (requireAuth && !receiverLine.peer_authorized) {
-  console.error('Error: The issuer requires authorization and has not authorized the receiver.')
-  await client.disconnect()
-  process.exit(1)
-}
-console.log(`✓ Authorization OK (issuer Require Auth: ${requireAuth})`)
-
-// 5. If the issuer charges a transfer fee, the sender pays more than the
-//    receiver gets. Work out the SendMax needed and refuse unreasonable fees.
-//    TransferRate is a multiplier in billionths, e.g. 1005000000 = 1.005 = 0.5% fee.
+// If the issuer charges a transfer fee, the sender pays more than the
+// receiver gets. Work out the SendMax needed and refuse unreasonable fees.
+// TransferRate is a multiplier in billionths, e.g. 1005000000 = 1.005 = 0.5% fee.
 const transferRate = issuerInfo.result.account_data.TransferRate ?? 1000000000
 const transferFee = Number(xrpl.transferRateToDecimal(transferRate))
 const transferFeePercent = transferFee * 100
@@ -127,6 +75,60 @@ if (transferFeePercent > 0) {
 } else {
   console.log('✓ No transfer fee')
 }
+
+const senderLine = await getTrustLine(sender.address, currencyCode, issuerAddress)
+if (!senderLine) {
+  console.error(`Error: Sender has no ${currencyCode} trust line with the issuer.`)
+  await client.disconnect()
+  process.exit(1)
+}
+console.log(`Sender's balance: ${senderLine.balance}`)
+if (Number(senderLine.balance) < Number(sendMax ?? sendQuantity)) {
+  console.error(`Error: Sender's balance is less than the ${sendMax ?? sendQuantity} ${currencyCode} to send.`)
+  await client.disconnect()
+  process.exit(1)
+}
+
+// Check receiver ----------------------
+// Confirm the receiver can accept the payment before sending it.
+console.log(`\n=== Checking receiver can receive ${currencyCode}... ===\n`)
+const receiverLine = await getTrustLine(receiverAddress, currencyCode, issuerAddress)
+
+// 1. The receiver must have a trust line to the issuer for this currency.
+if (!receiverLine) {
+  console.error(`Error: Receiver has no ${currencyCode} trust line with the issuer.`)
+  await client.disconnect()
+  process.exit(1)
+}
+console.log('✓ Receiver has a trust line to the issuer')
+
+// 2. The issuer must allow rippling on at least one of the two trust lines, since
+//    a payment between holders moves through the issuer. Default Ripple on the
+//    issuer is the usual way to allow this, but check the lines themselves.
+if (senderLine.no_ripple_peer && receiverLine.no_ripple_peer) {
+  console.error('Error: The issuer has disabled rippling on both the sender and receiver trust lines.')
+  await client.disconnect()
+  process.exit(1)
+}
+const defaultRipple = issuerFlags.lsfDefaultRipple === true
+console.log(`✓ Rippling is allowed (issuer Default Ripple: ${defaultRipple})`)
+
+// 3. The receiver's limit must cover their current balance plus the payment.
+if (Number(receiverLine.balance) + Number(sendQuantity) > Number(receiverLine.limit)) {
+  console.error(`Error: Payment would exceed the receiver's limit of ${receiverLine.limit} ${currencyCode}.`)
+  await client.disconnect()
+  process.exit(1)
+}
+console.log(`✓ Receiver's limit covers the payment`)
+
+// 4. If the issuer requires authorization, the receiver's line must be authorized.
+const requireAuth = issuerFlags.lsfRequireAuth === true
+if (requireAuth && !receiverLine.peer_authorized) {
+  console.error('Error: The issuer requires authorization and has not authorized the receiver.')
+  await client.disconnect()
+  process.exit(1)
+}
+console.log(`✓ Authorization OK (issuer Require Auth: ${requireAuth})`)
 
 console.log(`\nBalances before payment:`)
 console.log(`  Sender:   ${senderLine.balance} ${currencyCode}`)
@@ -172,6 +174,13 @@ console.log(`Explorer link: https://testnet.xrpl.org/transactions/${paymentRespo
 // Verify balances ----------------------
 // Check both balances again to confirm the transfer.
 console.log(`\n=== Checking final ${currencyCode} balances... ===\n`)
+
+// The metadata's delivered_amount is the amount the receiver actually got.
+// Always read this field rather than the transaction's Amount, because a
+// partial payment can succeed while delivering less than Amount.
+const deliveredAmount = paymentResponse.result.meta.delivered_amount
+console.log(`  Delivered amount: ${deliveredAmount.value} ${deliveredAmount.currency}`)
+
 const senderLineAfter = await getTrustLine(sender.address, currencyCode, issuerAddress)
 const receiverLineAfter = await getTrustLine(receiverAddress, currencyCode, issuerAddress)
 console.log(`  Sender:   ${senderLineAfter.balance} ${currencyCode}`)
