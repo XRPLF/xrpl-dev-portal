@@ -45,7 +45,7 @@
     "wrap-ansi-cjs": "npm:wrap-ansi@^7.0.0"
   },
   "devDependencies": {
-    "@fullhuman/postcss-purgecss": "^7.0.2",
+    "@fullhuman/postcss-purgecss": "^8.0.0",
     "autoprefixer": "^10.4.21",
     "axe-core": "^4.13.0",
     "bootstrap": "^5.3.3",
