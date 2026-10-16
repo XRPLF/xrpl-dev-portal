@@ -32,6 +32,13 @@ function copyMptCryptoWasm (): Plugin {
 
 export default defineConfig({
   plugins: [react(), copyMptCryptoWasm()],
+  css: {
+    // An inline config stops Vite searching parent directories for one. This
+    // sample lives inside the xrpl-dev-portal repo, whose root PostCSS config
+    // needs packages only the portal installs, and would purge Mantine's
+    // classes from this build if it did load.
+    postcss: { plugins: [] }
+  },
   optimizeDeps: {
     // Pre-bundle the CommonJS xrpl build, but leave the ESM wasm wrapper
     // untouched so its import.meta.url-relative wasm fetch keeps working in dev.
