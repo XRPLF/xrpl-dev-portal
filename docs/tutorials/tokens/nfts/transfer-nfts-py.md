@@ -22,13 +22,13 @@ This example shows how to:
 
 [![Quickstart form with NFT transfer fields](/docs/img/quickstart-py15.png)](/docs/img/quickstart-py15.png)
 
-You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/quickstart/py/) archive to try each of the samples in your own browser.
+You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/quickstart/py/) archive to try each of the samples locally.
 
 # Usage
 
 ## Get Accounts
 
-1. Open `4.transfer-nfts.html` in a browser.
+1. Open and run `lesson4-transfer-tokens.py`.
 2. Choose your ledger instance (**Testnet** or **Devnet**).
 3. Get test accounts.
     1. If you have existing test account seeds
@@ -42,7 +42,7 @@ You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-port
         1. Click **Get Standby Account**.
         2. Click **Get Standby Account Info**.
         3. Click **Get Operational Account**.
-        4. Click **Get Get Op Account Info**.
+        4. Click **Get Op Account Info**.
 
 [![Form with account information](/docs/img/quickstart-py16.png)](/docs/img/quickstart-py16.png)
 
@@ -125,7 +125,7 @@ To cancel a buy or sell offer that you have created:
 
 # Code Walkthrough
 
-You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/quickstart/py/) archive to try each of the samples in your own browser.
+You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/quickstart/py/) archive to try each of the samples locally.
 
 ## mod4.py
 This module contains the new methods `create_sell_offer`, `create_buy_offer`, `accept_sell_offer`, `accept_buy_offer`, `get_offers`, and `cancel_offer`.
@@ -421,7 +421,7 @@ Add the response to the _allOffers_ variable and return the results.
 
 ## Cancel Offer
 
-The creator of an offer can cancel it at any time before it is accepted. Anyone can cancel and offer if its expiration data has expired.
+The creator of an offer can cancel it at any time before it is accepted. Anyone can cancel an expired offer.
 
 Pass the seed and the NFT Offer ID to be canceled.
 

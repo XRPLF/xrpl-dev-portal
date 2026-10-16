@@ -33,7 +33,7 @@ You can download the [NFT Modular Tutorials](../../../../_code-samples/nft-modul
     2. If you have an existing account seed:
         1. Paste the account seed to the **Account 1 Seed** or **Account 2 Seed** field.
         2. Click **Get Account 1 from Seed** or **Get Account 2 from Seed**.
-    2. If you do not have existing accounts:
+    3. If you do not have existing accounts:
         1. Click **Get New Account 1**.
         2. Click **Get New Account 2**.
 
@@ -164,7 +164,7 @@ Begin constructing the transaction JSON object.
       };
 ```
 
-Configure the amount. To give the NFT away, set the **Amount** to 0. `configureAmount()` determines whether the currency is XRP or an issued currency, and returns the properly formattted object to add to the JSON transaction object.
+Configure the amount. To give the NFT away, set the **Amount** to 0. `configureAmount()` determines whether the currency is XRP or an issued currency, and returns the properly formatted object to add to the JSON transaction object.
 
 ```javascript
       const amount = configureAmount();
@@ -457,7 +457,7 @@ const wallet = xrpl.Wallet.fromSeed(accountSeedField.value)
   results += '\n\n=== Sell Offers ===\n' 
 ```
 
-Prepare and an `nft_sell_offers` request for the selected NFT ID. Catch any errors and report the results.
+Prepare an `nft_sell_offers` request for the selected NFT ID. Catch any errors and report the results.
 
 ```javascript
   let nftSellOffers
@@ -473,7 +473,7 @@ Prepare and an `nft_sell_offers` request for the selected NFT ID. Catch any erro
   resultField.value = results 
 ```
 
-Prepare and an `nft_buy_offers` request for the selected NFT ID. Catch any errors and report the results.
+Prepare an `nft_buy_offers` request for the selected NFT ID. Catch any errors and report the results.
 
 ```javascript
   // --- Buy Offers ---
@@ -578,8 +578,9 @@ Disconnect from the XRP Ledger.
     client.disconnect()
   }
 }// End of acceptSellOffer()
+```
 
-### Accept Buy Offer
+## Accept Buy Offer
 
 ```javascript
 // *******************************************************
@@ -662,7 +663,7 @@ Disconnect from the XRP Ledger.
 } // End of acceptBuyOffer()
 ```
 
-## 4.transfer-nfts.html
+## transfer-nfts.html
 
 ```html
 <html>

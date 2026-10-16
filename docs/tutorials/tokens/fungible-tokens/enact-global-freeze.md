@@ -13,7 +13,7 @@ steps: ['Generate', 'Connect', 'Send AccountSet (Start Freeze)', 'Wait', 'Confir
 ---
 # Enact Global Freeze
 
-If you [issue tokens](../../../concepts/tokens/index.md) in the XRP Ledger, can enact a [Global Freeze](../../../concepts/tokens/fungible-tokens/freezes.md#global-freeze) to prevent users from sending your tokens to each other and trading your token in the [decentralized exchange](../../../concepts/tokens/decentralized-exchange/index.md). This tutorial shows how to enact and end a Global Freeze. You might want to do this, for example, if you see signs of suspicious activity related to your issuing address in the ledger, or to off-ledger systems you use to manage your token. (For example, if your token is a stablecoin and you process withdrawals and deposits from the ledger, you may want to freeze your token while you investigate if you suspect your systems have been hacked.) You can later disable the Global Freeze setting unless you have also enabled the [No Freeze setting](../../../concepts/tokens/fungible-tokens/freezes.md#no-freeze).
+If you [issue tokens](../../../concepts/tokens/index.md) in the XRP Ledger, you can enact a [Global Freeze](../../../concepts/tokens/fungible-tokens/freezes.md#global-freeze) to prevent users from sending your tokens to each other and trading your token in the [decentralized exchange](../../../concepts/tokens/decentralized-exchange/index.md). This tutorial shows how to enact and end a Global Freeze. You might want to do this, for example, if you see signs of suspicious activity related to your issuing address in the ledger, or to off-ledger systems you use to manage your token. (For example, if your token is a stablecoin and you process withdrawals and deposits from the ledger, you may want to freeze your token while you investigate if you suspect your systems have been hacked.) You can later disable the Global Freeze setting unless you have also enabled the [No Freeze setting](../../../concepts/tokens/fungible-tokens/freezes.md#no-freeze).
 
 {% admonition type="success" name="Tip" %}As a reminder, freezes only apply to issued tokens, not XRP, and do not prevent users from sending the tokens _directly_ back to the issuer.{% /admonition %}
 
@@ -51,7 +51,7 @@ When you're building production-ready software, you should use an existing accou
 
 ### 2. Connect to the Network
 
-You must be connected to the network to submit transactions to it. The following code shows how to connect to a public XRP Ledger Testnet server a supported [client library](../../../references/client-libraries.md):
+You must be connected to the network to submit transactions to it. The following code shows how to connect to a public XRP Ledger Testnet server using a supported [client library](../../../references/client-libraries.md):
 
 {% tabs %}
 
@@ -191,7 +191,7 @@ Response:
 
 ### Intermission: While Frozen
 
-At this point all token issued by your address are frozen. During this time, you may want to investigate the potential security breach or take a snapshot of the balances of your token, depending on your reasons for enacting the global freeze.
+At this point all tokens issued by your address are frozen. During this time, you may want to investigate the potential security breach or take a snapshot of the balances of your token, depending on your reasons for enacting the global freeze.
 
 Keep in mind that while a token is frozen, it is still possible for the frozen token to be sent _directly to_ or _directly from_ the issuer, so you may still want to disable any systems you have that are configured to send such transactions, and you may want to track incoming transactions without processing them so that you can eventually process the legitimate ones.
 
