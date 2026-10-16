@@ -9,14 +9,16 @@ import {
   Text,
   Title
 } from '@mantine/core'
-import { useCallback, useMemo, useRef, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 
+import { trackActionError, trackPhaseComplete } from './analytics'
 import { BalancePanel } from './components/BalancePanel'
 import { DealTicket } from './components/DealTicket'
 import { StepPanel, type ActionSlot } from './components/StepPanel'
 import { CONFIG } from './config'
 import { buildSteps } from './steps'
 import { RepoLedger, type BalanceSnapshot } from './repo'
+import type { Phase } from './types'
 import { DEFAULT_DEAL, type DealTerms, type PartyKey } from './variables'
 
 export interface Identity {
@@ -80,6 +82,21 @@ export default function App () {
     )
   }
 
+  // Consecutive steps sharing a phase name become one stepper entry, so the
+  // stepper stays short however many steps the flow has.
+  const phases = useMemo(() => {
+    const grouped: Array<{ name: Phase, steps: number[] }> = []
+    steps.forEach((step, index) => {
+      const last = grouped.at(-1)
+      if (last?.name === step.phase) {
+        last.steps.push(index)
+      } else {
+        grouped.push({ name: step.phase, steps: [index] })
+      }
+    })
+    return grouped
+  }, [steps])
+
   const runAction = useCallback(
     async (stepIndex: number, actionIndex: number): Promise<boolean> => {
       const ledger = getLedger()
@@ -110,12 +127,23 @@ export default function App () {
         patchSlot(stepIndex, actionIndex, {
           error: error instanceof Error ? error.message : String(error)
         })
+        const phaseIndex = phases.findIndex((p) => p.steps.includes(stepIndex))
+        trackActionError(
+          {
+            phase: steps[stepIndex].phase,
+            phaseIndex,
+            step: steps[stepIndex].id,
+            stepIndex: phases[phaseIndex].steps.indexOf(stepIndex),
+            action: action.id
+          },
+          error
+        )
         return false
       } finally {
         setRunning(null)
       }
     },
-    [steps]
+    [steps, phases]
   )
 
   let preview: unknown
@@ -127,20 +155,21 @@ export default function App () {
     }
   }
 
-  // Consecutive steps sharing a phase name become one stepper entry, so the
-  // stepper stays short however many steps the flow has.
-  const phases = useMemo(() => {
-    const grouped: Array<{ name: string, steps: number[] }> = []
-    steps.forEach((step, index) => {
-      const last = grouped.at(-1)
-      if (last?.name === step.phase) {
-        last.steps.push(index)
-      } else {
-        grouped.push({ name: step.phase, steps: [index] })
+  // One engagement event per phase, the first time its last action completes.
+  // Driven off progress rather than the click handler, so it can't double-fire
+  // on a retried action and needs no knowledge of which step closed the phase.
+  const reportedPhases = useRef(new Set<string>())
+  useEffect(() => {
+    phases.forEach((phase, index) => {
+      const done = phase.steps.every(
+        (stepIndex) => progress[stepIndex] >= steps[stepIndex].actions.length
+      )
+      if (done && !reportedPhases.current.has(phase.name)) {
+        reportedPhases.current.add(phase.name)
+        trackPhaseComplete(phase.name, index)
       }
     })
-    return grouped
-  }, [steps])
+  }, [progress, phases, steps])
 
   const step = steps[selected]
   /** The furthest step the reader may navigate to: the live one, never beyond. */

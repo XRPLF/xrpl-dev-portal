@@ -20,6 +20,8 @@ function optional (value: string | undefined): string | undefined {
 export const CONFIG = {
   wssUrl: optional(env.VITE_XRPL_WSS) ?? 'wss://s.devnet.rippletest.net:51233',
   explorerUrl: optional(env.VITE_EXPLORER_URL) ?? 'https://devnet.xrpl.org',
+  /** Google Analytics 4 measurement ID to send to. Unset = no analytics. */
+  gaMeasurementId: optional(env.VITE_GA_MEASUREMENT_ID),
   /**
    * Optional pre-funded account seeds; the faucet is used where unset. Each
    * party names its own variable, so adding a party needs no change here.

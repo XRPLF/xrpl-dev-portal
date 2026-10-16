@@ -24,9 +24,23 @@ export interface StepCallout {
   text: string
 }
 
+/**
+ * The flow's phases, in order. Consecutive steps sharing a phase form one
+ * entry in the stepper, and each phase reports one engagement event when it
+ * completes (see analytics.ts), so this list is the contract between the two.
+ */
+export type Phase =
+  | 'Setup'
+  | 'Issue'
+  | 'Authorize'
+  | 'Purchase'
+  | 'Convert'
+  | 'Near leg'
+  | 'Far leg'
+
 export interface StepDefinition {
   id: string
-  phase: string
+  phase: Phase
   title: string
   actors: PartyKey[]
   /** Narrative shown on the step card. */

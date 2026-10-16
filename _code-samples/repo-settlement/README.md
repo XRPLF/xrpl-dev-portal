@@ -78,6 +78,40 @@ accumulates is ledger entries, two issuances per run plus the counterparties'
 enough runs the issuers run out of it. Clear the seeds to go back to faucet
 wallets, or fund fresh accounts.
 
+## Analytics
+
+The demo reports one engagement event per phase, the first time that phase's
+last action completes, as a funnel of seven events from `cas-demo-step1-fund`
+to `cas-demo-step7-far-leg`. The full list is `PHASE_EVENTS` in
+`src/analytics.ts`. Each event carries only the phase name and its index,
+never an address, seed, or deal term.
+
+Every failed action also sends `cas-demo-error`, with the phase, the step and
+action IDs from `src/steps.ts`, the step's position within its phase, and
+an `error_code`: the ledger result code
+when there is one (`tecPATH_DRY`, `temBAD_SIGNATURE`), otherwise which
+xrpl.js failure it was (`faucet`, `not_connected`, `timeout`,
+`xrpld`). The raw message never leaves the page. Together with the phase events this separates
+readers who gave up from readers the demo failed.
+
+Under `npm run dev` nothing is sent. Each event is logged to the browser
+console instead, so you can check the funnel fires without a container.
+
+A built bundle logs nothing. Set `VITE_GA_MEASUREMENT_ID` to a Google
+Analytics 4 measurement ID and the app loads gtag.js, sends a page view, and
+sends each phase event straight to that property. Analytics storage is
+granted, since the demo holds no personal data; advertising storage is
+denied. Leave the variable unset and nothing loads or sends. To test real sending on your machine, build and serve
+the bundle, then watch the property's DebugView with the Google Analytics
+Debugger browser extension switched on:
+
+```sh
+VITE_GA_MEASUREMENT_ID=G-XXXXXXXXXX npm run build && npm run preview
+```
+
+Add `?ga_debug` to the URL of any built bundle, local or deployed, to mark
+that session's events for DebugView without the extension.
+
 ## Encryption-key lifecycle
 
 Confidential Transfers use a second key pair per party, separate from the

@@ -100,7 +100,9 @@ export type BatchSignerEntry = BatchSigner['BatchSigner']
 export class LedgerError extends Error {
   constructor (
     message: string,
-    public readonly hash?: string
+    public readonly hash?: string,
+    /** The transaction result code, when the ledger returned one. */
+    public readonly code?: string
   ) {
     super(message)
     this.name = 'LedgerError'
@@ -183,7 +185,7 @@ function toRecord (response: TxResponse, label: string): TxRecord {
   const code = resultCode(response)
   const hash = response.result.hash
   if (code !== 'tesSUCCESS') {
-    throw new LedgerError(`${label} failed: ${code}`, hash)
+    throw new LedgerError(`${label} failed: ${code}`, hash, code)
   }
   return { label, hash, result: code, txJson: response.result }
 }
@@ -595,7 +597,8 @@ export async function verifyBatchInners (
     if (code !== 'tesSUCCESS') {
       throw new LedgerError(
         `Inner transaction "${labels[index]}" failed: ${code}`,
-        innerHash
+        innerHash,
+        code
       )
     }
     records.push({
