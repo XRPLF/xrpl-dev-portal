@@ -21,7 +21,7 @@ This example shows how to:
 
 # Usage
 
-You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/quickstart/py/) archive to try the sample in your own browser.
+You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/quickstart/py/) archive to try the sample locally.
 
 ## Get Accounts
 
@@ -48,11 +48,11 @@ You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-port
 
 To mint a non-fungible token object:
 
-1. Set the **Flags** field. For testing purposes, we recommend setting the value to _8_. This sets the _tsTransferable_ flag, meaning that the NFT can be transferred to another account. Otherwise, the NFT can only be transferred back to the issuing account. See [NFToken Mint](/docs/references/protocol/transactions/types/nftokenmint/#nftokenmint-flags) for information about all of the available flags for minting NFTs.
+1. Set the **Flags** field. For testing purposes, we recommend setting the value to _8_. This sets the _tfTransferable_ flag, meaning that the NFT can be transferred to another account. Otherwise, the NFT can only be transferred back to the issuing account. See [NFToken Mint](/docs/references/protocol/transactions/types/nftokenmint/#nftokenmint-flags) for information about all of the available flags for minting NFTs.
 2. Enter the **NFT URI**. This is a URI that points to the data or metadata associated with the NFT. You can use the sample URI provided if you do not have one of your own.
 3. Enter the **Transfer Fee**, a percentage of the proceeds from future sales of the NFT that will be returned to the original creator. This is a value of 0-50000 inclusive, allowing transfer rates between 0.000% and 50.000% in increments of 0.001%. If you do not set the **Flags** field to allow the NFT to be transferrable, set this field to 0.
 4. Optionally a **Taxon** value as an integer. If you choose not to use a taxon, enter _0_.
-4. Click **Mint NFT**.
+5. Click **Mint NFT**.
 
 [![Mint NFT fields](/docs/img/quickstart-py12.png)](/docs/img/quickstart-py12.png)
 
@@ -93,7 +93,7 @@ from xrpl.models.requests import AccountNFTs
 testnet_url = "https://s.altnet.rippletest.net:51234"
 ```
 
-## mintToken
+## mint_token
 
 Pass the arguments account seed, NFT URI, transaction flags, the transfer fee, and optional taxon.
 
@@ -133,7 +133,7 @@ Submit the transaction and return results.
     return reply
 ```
 
-## getTokens
+## get_tokens
 
 ```python
 def get_tokens(account):
@@ -161,7 +161,7 @@ Send the request and return the result.
     return response.result
 ```
 
-## burn_token 
+## burn_token
 
 Pass the owner's seed value and the NFT ID.
 

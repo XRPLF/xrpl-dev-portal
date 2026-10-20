@@ -23,11 +23,11 @@ This example shows how to:
 
 # Usage
 
-You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/quickstart/py/) archive to try the sample in your own browser.
+You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/quickstart/py/) archive to try the sample locally.
 
 ## Get Accounts
 
-1. Open and run `py-authorize-minter.md`.
+1. Open and run `lesson6-auth-minter.py`.
 2. Get accounts.
     1. If you have existing test account seeds:
         1. Paste a seed in the **Standby Seed** field.
@@ -35,7 +35,7 @@ You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-port
         3. Click **Get Standby Account Info**.
         4. Paste a seed in the **Operational Seed** field.
         5. Click **Get Operational Account**.
-        6. Click **Get Operational Account** info.
+        6. Click **Get Operational Account Info**.
     2. If you do not have existing test accounts:
         1. Click **Get Standby Account**.
         2. Click **Get Standby Account Info**.
@@ -66,9 +66,9 @@ To mint a non-fungible token for another account:
 2. Enter the **NFT URI**. This is a URI that points to the data or metadata associated with the NFT. You can use the sample URI provided if you do not have one of your own.
 3. Enter the **Transfer Fee**, a percentage of the proceeds that the original creator receives from future sales of the NFT. This is a value of 0-50000 inclusive, allowing transfer rates between 0.000% and 50.000% in increments of 0.001%. If you do not set the **Flags** field to allow the NFT to be transferrable, set this field to 0.
 4. Enter a **Taxon** for the NFT. If you don't have a use for the field, set it to _0_.
-4. Copy the **Standby Account** value.
-5. Paste the **Standby Account** value in the Operational account **Issuer** field.
-6. Click the Operational account **Mint Other** button.
+5. Copy the **Standby Account** value.
+6. Paste the **Standby Account** value in the Operational account **Issuer** field.
+7. Click the Operational account **Mint Other** button.
 
 [![Minted NFT for Another Account](/docs/img/quickstart-py32.png)](/docs/img/quickstart-py32.png)
 
@@ -102,7 +102,7 @@ To accept an available sell offer:
 
 [![Transaction Results](/docs/img/quickstart-py34.png)](/docs/img/quickstart-py34.png)
 
-The Buyer account was debited the 100 XRP price plus 10 drops as the transaction cost. The Seller (Authorized Minter) account is credited 90 XRP. the Issuer and the Seller can divide the proceeds per their agreement in a separate transaction. The original Standby account receives a transfer fee of 10 XRP.
+The Buyer account was debited the 100 XRP price plus 10 drops as the transaction cost. The Seller (Authorized Minter) account is credited 90 XRP. The Issuer and the Seller can divide the proceeds per their agreement in a separate transaction. The original Standby account receives a transfer fee of 10 XRP.
 
 [![Transaction Results](/docs/img/quickstart-py35.png)](/docs/img/quickstart-py35.png)
 
