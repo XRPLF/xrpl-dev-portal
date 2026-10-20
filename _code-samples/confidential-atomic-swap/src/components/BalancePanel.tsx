@@ -3,7 +3,7 @@ import type { KeyboardEvent, ReactNode } from 'react'
 import { dropsToXrp } from 'xrpl'
 
 import type { IdentityBook } from '../App'
-import type { BalanceSnapshot } from '../repo'
+import type { BalanceSnapshot } from '../swap'
 import type { Decrypted, TokenBalance } from '../xrpl'
 import {
   COUNTERPARTIES,

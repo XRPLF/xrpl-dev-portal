@@ -1,7 +1,7 @@
 /**
  * Narrative types: the shape of the storyboard the UI renders. Everything
  * ledger-facing (transactions, balances, decryption) lives in xrpl.ts, and the
- * deal's own vocabulary in repo.ts.
+ * deal's own vocabulary in swap.ts.
  */
 
 import type { PartyKey } from './variables'
@@ -35,8 +35,8 @@ export type Phase =
   | 'Authorize'
   | 'Purchase'
   | 'Convert'
-  | 'Near leg'
-  | 'Far leg'
+  | 'Opening leg'
+  | 'Closing leg'
 
 export interface StepDefinition {
   id: string

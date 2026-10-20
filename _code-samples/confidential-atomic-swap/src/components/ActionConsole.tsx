@@ -80,7 +80,7 @@ export function ActionConsole ({
             <Group gap={8} wrap='nowrap'>
               <Loader size='sm' color={color} />
               <Text size='sm' c='dimmed'>
-                On ledger…
+                {action.progress ?? 'Submitting…'}
               </Text>
             </Group>
             )

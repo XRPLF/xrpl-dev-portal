@@ -1,9 +1,9 @@
 /**
- * Fictional example variables for the repo settlement tutorial.
+ * Fictional example variables for the confidential atomic swap demo.
  *
  * Everything scenario-specific lives here (parties, tokens, and deal terms)
  * so the flow logic and UI stay generic. To retell the story with different
- * names, amounts, or tenor, edit this file only.
+ * names, amounts, or term, edit this file only.
  */
 
 /**
@@ -34,9 +34,9 @@ export const PARTIES = {
   investCo: {
     name: 'InvestCo',
     role: 'counterparty',
-    roleLabel: 'Repo seller',
+    roleLabel: 'Asset holder',
     blurb:
-      'Primary investor. Buys TMMF from AlphaFund, sells it to TradeDesk in the near leg, and buys it back in the far leg.',
+      'Buys TKN from AlphaFund, swaps it with TradeDesk for USD in the opening leg, and swaps it back in the closing leg.',
     /* Pink, not teal: teal is the app's own accent, so a teal party badge sat
        the same color as the ✓, the done badge, and the chrome. */
     color: 'pink',
@@ -45,18 +45,18 @@ export const PARTIES = {
   tradeDesk: {
     name: 'TradeDesk',
     role: 'counterparty',
-    roleLabel: 'Repo buyer',
+    roleLabel: 'Counterparty',
     blurb:
-      'Repo counterparty. Pays USD for TMMF in the near leg and returns the collateral in the far leg.',
+      'Pays USD for TKN in the opening leg and returns the TKN in the closing leg.',
     color: 'orange',
     seedEnv: 'VITE_TRADEDESK_SEED'
   },
   alphaFund: {
     name: 'AlphaFund',
     role: 'issuer',
-    roleLabel: 'Collateral issuer',
+    roleLabel: 'Asset issuer',
     blurb:
-      'Asset manager. Issues TMMF, a tokenized money market fund, and gates who may hold it. Not a repo participant.',
+      'Issues TKN and controls who may hold it. Not a party to the swap.',
     color: 'violet',
     seedEnv: 'VITE_ALPHAFUND_SEED'
   },
@@ -131,20 +131,20 @@ export interface TokenInfo {
  * protocol or UI layers; only the storyboard names a token by its role.
  */
 export const TOKENS = {
-  collateral: {
+  asset: {
     /* Uppercase letters and digits only, per XLS-89: the ledger warns on any
        other ticker, and non-compliant tokens may not be indexed. */
-    ticker: 'TMMF',
-    name: 'AlphaFund Tokenized Money Market Fund',
+    ticker: 'TKN',
+    name: 'AlphaFund Tokenized Asset',
     issuer: 'alphaFund',
     assetScale: 0,
     maximumAmount: '1000000',
     requireAuth: true,
     metadata: {
-      desc: 'A tokenized share class of the AlphaFund money market fund.',
-      icon: 'https://example.org/tmmf-icon.png',
+      desc: 'A tokenized asset issued by AlphaFund.',
+      icon: 'https://example.org/tkn-icon.png',
       asset_class: 'rwa',
-      asset_subclass: 'treasury',
+      asset_subclass: 'other',
       issuer_name: 'AlphaFund Asset Management'
     }
   },
@@ -174,52 +174,52 @@ export function issuedToken (party: PartyKey): IssuanceKey | undefined {
   return TOKEN_KEYS.find((key) => TOKENS[key].issuer === party)
 }
 
-/** Deal terms of the repo trade, in each token's base units. */
+/** Deal terms of the swap, in each token's base units. */
 export interface DealTerms {
-  /** Near leg: InvestCo sells this much collateral… */
-  collateralUnits: bigint
+  /** Opening leg: InvestCo swaps this much asset… */
+  assetUnits: bigint
   /** …to TradeDesk for this much cash. */
   cashUnits: bigint
-  /** Days until the far leg unwinds the trade. */
-  tenorDays: bigint
-  /** Annualized interest ("repo rate") in basis points, tracked off-chain. */
-  interestRateBps: bigint
+  /** Days until the closing leg reverses the swap. */
+  termDays: bigint
+  /** Annualized agreed return in basis points, tracked off-chain. */
+  returnRateBps: bigint
 }
 
 export const DAYS_PER_YEAR = 365n
 
-/** The scenario's default terms: 100 TMMF vs 1,000.00 USD, 10 days at 5%. */
+/** The scenario's default terms: 100 TKN vs 1,000.00 USD, 10 days at 5%. */
 export const DEFAULT_DEAL: DealTerms = {
-  collateralUnits: 100n,
+  assetUnits: 100n,
   cashUnits: 100_000n,
-  tenorDays: 10n,
-  interestRateBps: 500n
+  termDays: 10n,
+  returnRateBps: 500n
 }
 
 /**
- * Interest on the cash leg, rounded half-up to the smallest cash unit.
+ * The agreed return on the cash, rounded half-up to the smallest cash unit.
  * With the defaults: 1,000.00 × 5% × 10/365 = 1.37 USD. Computed off-chain
- * by the orchestrator; the ledger itself never calculates interest.
+ * by the orchestrator; the ledger itself never calculates it.
  */
-export function interestUnits (deal: DealTerms): bigint {
-  const numerator = deal.cashUnits * deal.interestRateBps * deal.tenorDays
+export function agreedReturnUnits (deal: DealTerms): bigint {
+  const numerator = deal.cashUnits * deal.returnRateBps * deal.termDays
   const denominator = 10_000n * DAYS_PER_YEAR
   return (numerator + denominator / 2n) / denominator
 }
 
-/** Far leg: InvestCo returns principal plus interest. */
-export function farLegCashUnits (deal: DealTerms): bigint {
-  return deal.cashUnits + interestUnits(deal)
+/** Closing leg: InvestCo returns the cash plus the agreed return. */
+export function closingLegCashUnits (deal: DealTerms): bigint {
+  return deal.cashUnits + agreedReturnUnits(deal)
 }
 
 /**
- * The cash operating balance InvestCo carries: the far leg returns principal
- * *plus interest*, so the repo seller must fund the interest from somewhere,
- * a detail term sheets gloss over but settlement cannot. Twice the interest,
- * with a 10.00 floor.
+ * The cash operating balance InvestCo carries: the closing leg returns the
+ * cash *plus the agreed return*, so the asset holder must fund that return
+ * from somewhere, a detail term sheets gloss over but settlement cannot.
+ * Twice the return, with a 10.00 floor.
  */
 export function operatingCashUnits (deal: DealTerms): bigint {
-  const doubled = 2n * interestUnits(deal)
+  const doubled = 2n * agreedReturnUnits(deal)
   return doubled > 1_000n ? doubled : 1_000n
 }
 

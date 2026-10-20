@@ -243,7 +243,7 @@ function CompletionView () {
       <Divider mt='md' />
       <Group justify='space-between' align='center' mt={12} gap='sm' wrap='wrap'>
         <Text size='sm' c='teal.9' fw={600}>
-          ✓ Repo settled. That's the whole lifecycle.
+          ✓ Swap settled. That's the whole lifecycle.
         </Text>
         <Group gap={4} wrap='wrap' justify='flex-end'>
           <Text size='sm' fw={700} c='dimmed'>

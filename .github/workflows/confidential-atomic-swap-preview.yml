@@ -1,6 +1,6 @@
-name: Repo settlement demo preview
+name: Confidential atomic swap demo preview
 
-# Builds the repo-settlement demo and publishes it to the pushing repo's own
+# Builds the confidential atomic swap demo and publishes it to the pushing repo's own
 # GitHub Pages site, so a reviewer can click through the flow instead of
 # reading the diff. Link the resulting URL from the upstream PR by hand.
 #
@@ -12,23 +12,23 @@ on:
   push:
     branches-ignore: [master, gh-pages]
     paths:
-      - '_code-samples/repo-settlement/**'
-      - '.github/workflows/repo-settlement-preview.yml'
+      - '_code-samples/confidential-atomic-swap/**'
+      - '.github/workflows/confidential-atomic-swap-preview.yml'
   workflow_dispatch: {}
 
 # Serialize per branch: publishing pushes to the Pages branch, and two pushes
 # racing on it fail. Don't cancel in progress — a cancelled run can leave the
 # preview directory half-written.
 concurrency:
-  group: repo-settlement-preview-${{ github.ref }}
+  group: confidential-atomic-swap-preview-${{ github.ref }}
   cancel-in-progress: false
 
 defaults:
   run:
-    working-directory: _code-samples/repo-settlement
+    working-directory: _code-samples/confidential-atomic-swap
 
 env:
-  DEMO_DIR: _code-samples/repo-settlement
+  DEMO_DIR: _code-samples/confidential-atomic-swap
   # A dedicated orphan branch holding nothing but previews. Pages uploads the
   # whole branch as a single artifact against a 1 GB limit, so this must not
   # share a branch with a full portal build.
@@ -51,7 +51,7 @@ jobs:
         with:
           node-version: lts/*
           cache: npm
-          cache-dependency-path: _code-samples/repo-settlement/package-lock.json
+          cache-dependency-path: _code-samples/confidential-atomic-swap/package-lock.json
 
       - run: npm ci
 
@@ -113,7 +113,7 @@ jobs:
           if git diff --cached --quiet; then
             echo "Preview unchanged; nothing to push."
           else
-            git commit -qm "preview: repo settlement demo for $GITHUB_REF_NAME"
+            git commit -qm "preview: confidential atomic swap demo for $GITHUB_REF_NAME"
             pushed=false
             for attempt in 1 2 3; do
               if git pull -q --rebase origin "$PAGES_BRANCH" \
@@ -130,7 +130,7 @@ jobs:
           fi
 
           {
-            echo "### Repo settlement demo preview"
+            echo "### Confidential atomic swap demo preview"
             echo
             echo "[$PREVIEW_URL]($PREVIEW_URL)"
             echo

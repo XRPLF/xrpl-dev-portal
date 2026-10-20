@@ -41,8 +41,8 @@ export const PHASE_EVENTS: Record<Phase, string> = {
   Authorize: 'cas-demo-step3-authorize',
   Purchase: 'cas-demo-step4-purchase',
   Convert: 'cas-demo-step5-convert',
-  'Near leg': 'cas-demo-step6-near-leg',
-  'Far leg': 'cas-demo-step7-far-leg'
+  'Opening leg': 'cas-demo-step6-opening-leg',
+  'Closing leg': 'cas-demo-step7-closing-leg'
 }
 
 /**
@@ -93,7 +93,7 @@ export function initAnalytics (): void {
 
 /** Send one event, or log it under the dev server. */
 function send (event: string, params: Record<string, string | number>): void {
-  const payload = { demo: 'repo-settlement', ...params }
+  const payload = { demo: 'confidential-atomic-swap', ...params }
   if (LOCAL) {
     console.info('[analytics] not sent locally:', { event, ...payload })
     return
@@ -113,7 +113,7 @@ export function trackPhaseComplete (phase: Phase, phaseIndex: number): void {
 export interface ActionContext {
   phase: Phase
   phaseIndex: number
-  /** Step and action IDs from steps.ts, for example 'near-submit' / 'submit'. */
+  /** Step and action IDs from steps.ts, for example 'open-submit' / 'submit'. */
   step: string
   /** The step's position within its phase, as the screen shows it. */
   stepIndex: number

@@ -17,7 +17,7 @@ import { DealTicket } from './components/DealTicket'
 import { StepPanel, type ActionSlot } from './components/StepPanel'
 import { CONFIG } from './config'
 import { buildSteps } from './steps'
-import { RepoLedger, type BalanceSnapshot } from './repo'
+import { SwapLedger, type BalanceSnapshot } from './swap'
 import type { Phase } from './types'
 import { DEFAULT_DEAL, type DealTerms, type PartyKey } from './variables'
 
@@ -29,9 +29,9 @@ export interface Identity {
 export type IdentityBook = Partial<Record<PartyKey, Identity>>
 
 export default function App () {
-  const ledgerRef = useRef<RepoLedger | null>(null)
-  const getLedger = (): RepoLedger => {
-    ledgerRef.current ??= new RepoLedger()
+  const ledgerRef = useRef<SwapLedger | null>(null)
+  const getLedger = (): SwapLedger => {
+    ledgerRef.current ??= new SwapLedger()
     return ledgerRef.current
   }
 
@@ -224,12 +224,12 @@ export default function App () {
               XRP Ledger · interactive demo
             </Text>
             <Title order={1} size={24}>
-              Confidential Atomic Settlement
+              Confidential Atomic Swap
             </Title>
             {/* Always shown, because becoming a party by clicking it is the
                 demo's one non-obvious interaction. */}
             <Text size='sm' c='dimmed' maw={640}>
-              A two-leg repo trade, settled atomically with encrypted amounts.
+              A swap, settled atomically with encrypted amounts.
               You act as every party: click one in the balances panel to become
               it. Set the terms, sign each transaction, and decrypt only what
               your keys allow.

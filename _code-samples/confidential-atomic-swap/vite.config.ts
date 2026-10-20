@@ -33,10 +33,10 @@ function copyMptCryptoWasm (): Plugin {
 export default defineConfig({
   plugins: [react(), copyMptCryptoWasm()],
   css: {
-    // An inline config stops Vite searching parent directories for one. This
-    // sample lives inside the xrpl-dev-portal repo, whose root PostCSS config
-    // needs packages only the portal installs, and would purge Mantine's
-    // classes from this build if it did load.
+    // An inline config stops Vite searching parent directories for one, so a
+    // PostCSS config added at the repository root can never leak into this
+    // app's build. (Inside xrpl-dev-portal the root config purged Mantine's
+    // classes and needed packages the app doesn't install.)
     postcss: { plugins: [] }
   },
   optimizeDeps: {

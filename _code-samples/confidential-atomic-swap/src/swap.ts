@@ -1,7 +1,7 @@
 /**
- * The scenario layer: the repo trade's own vocabulary — two counterparties,
- * two tokens, a near leg and a far leg — expressed with the generic protocol
- * functions in xrpl.ts.
+ * The scenario layer: the swap's own vocabulary — two counterparties, two
+ * tokens, an opening leg and a closing leg — expressed with the generic
+ * protocol functions in xrpl.ts.
  *
  * Nothing here is protocol knowledge. Read xrpl.ts to learn how the XRP Ledger
  * pieces work; read this file to see how one deal wires them together, and
@@ -56,8 +56,8 @@ import {
   type TxRecord
 } from './xrpl'
 
-/** The near leg opens the repo; the far leg unwinds it. */
-export type LegDirection = 'near' | 'far'
+/** The opening leg makes the swap; the closing leg reverses it. */
+export type LegDirection = 'opening' | 'closing'
 
 export interface LegSend {
   from: PartyKey
@@ -81,8 +81,8 @@ interface HolderOp extends OpBase {
 
 /**
  * One transaction the deal submits, declared as data rather than as a call.
- * The storyboard names an operation once; `RepoLedger.preview` and
- * `RepoLedger.run` both read that one declaration, so the transaction the
+ * The storyboard names an operation once; `SwapLedger.preview` and
+ * `SwapLedger.run` both read that one declaration, so the transaction the
  * reader inspects is the transaction that gets submitted.
  *
  * The two issuer operations are signed by the token's own issuer, so they name
@@ -155,7 +155,7 @@ function issuanceOptions (
  * The storyboard in steps.ts calls them in order; neither file imports the
  * `xrpl` package itself.
  */
-export class RepoLedger {
+export class SwapLedger {
   readonly client: Client
 
   readonly parties = {} as Record<PartyKey, Party>
@@ -163,9 +163,9 @@ export class RepoLedger {
   /** Each token's ledger-assigned issuance ID, once it has been created. */
   readonly issuanceIDs: Partial<Record<IssuanceKey, string>> = {}
 
-  readonly nearLeg: LegState = { signedCopies: {} }
+  readonly openingLeg: LegState = { signedCopies: {} }
 
-  readonly farLeg: LegState = { signedCopies: {} }
+  readonly closingLeg: LegState = { signedCopies: {} }
 
   /** Cached after the first balance read; null if the server did not report it. */
   private ownerReserve?: bigint | null
@@ -227,7 +227,7 @@ export class RepoLedger {
   }
 
   leg (direction: LegDirection): LegState {
-    return direction === 'near' ? this.nearLeg : this.farLeg
+    return direction === 'opening' ? this.openingLeg : this.closingLeg
   }
 
   /**
@@ -394,8 +394,8 @@ export class RepoLedger {
   // ------------------------------------------------------ atomic settlement
 
   /**
-   * Build one repo leg as an all-or-nothing Batch of confidential sends, one
-   * per leg of the swap. The ledger settles every send or none of them, and no
+   * Build one leg of the swap as an all-or-nothing Batch of confidential
+   * sends, one per side. The ledger settles every send or none of them, and no
    * observer sees an amount.
    */
   async constructLeg (

@@ -1,7 +1,7 @@
 {
-  "name": "confidential-repo-settlement",
+  "name": "confidential-atomic-swap",
   "version": "0.1.0",
-  "description": "Demo: an atomic, Repo trade settled on the XRP Ledger with Confidential MPTs, Batch, and Sponsored Fees.",
+  "description": "Demo: a two-leg atomic swap settled on the XRP Ledger with Confidential MPTs, Batch, and Sponsored Fees.",
   "type": "module",
   "scripts": {
     "dev": "vite",

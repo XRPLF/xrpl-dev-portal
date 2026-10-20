@@ -13,19 +13,19 @@ import { useEffect, useState } from 'react'
 
 import {
   TOKENS,
-  farLegCashUnits,
+  closingLegCashUnits,
   formatUnits,
-  interestUnits,
+  agreedReturnUnits,
   operatingCashUnits,
   type DealTerms
 } from '../variables'
 
-const COLLATERAL = TOKENS.collateral
+const ASSET = TOKENS.asset
 const CASH = TOKENS.cash
 
 /**
  * The four terms the reader can set, each stored as integer units at its own
- * scale: 100n TMMF at scale 0, 100_000n USD at scale 2 (1,000.00), 10n days,
+ * scale: 100n TKN at scale 0, 100_000n USD at scale 2 (1,000.00), 10n days,
  * and 500n basis points at scale 2 (5.00%). One table drives both the editable
  * inputs and the locked read-only view.
  */
@@ -40,11 +40,11 @@ const TERMS: Array<{
   step: number
 }> = [
   {
-    field: 'collateralUnits',
-    label: `Collateral (${COLLATERAL.ticker})`,
+    field: 'assetUnits',
+    label: `Asset (${ASSET.ticker})`,
     description: 'InvestCo sells',
     suffix: '',
-    scale: COLLATERAL.assetScale,
+    scale: ASSET.assetScale,
     min: 1,
     max: 100_000,
     step: 10
@@ -60,9 +60,9 @@ const TERMS: Array<{
     step: 100
   },
   {
-    field: 'tenorDays',
-    label: 'Tenor (days)',
-    description: 'Until the far leg',
+    field: 'termDays',
+    label: 'Term (days)',
+    description: 'Until the closing leg',
     suffix: ' days',
     scale: 0,
     min: 1,
@@ -70,8 +70,8 @@ const TERMS: Array<{
     step: 1
   },
   {
-    field: 'interestRateBps',
-    label: 'Repo rate (% p.a.)',
+    field: 'returnRateBps',
+    label: 'Agreed return (% p.a.)',
     description: 'Agreed off-chain',
     suffix: '%',
     scale: 2,
@@ -85,20 +85,20 @@ const TERMS: Array<{
 function DealSummary ({ deal }: { deal: DealTerms }) {
   return (
     <Text size='sm'>
-      {formatUnits(deal.collateralUnits, COLLATERAL.assetScale)}{' '}
-      {COLLATERAL.ticker} ↔ {formatUnits(deal.cashUnits, CASH.assetScale)}{' '}
-      {CASH.ticker} · {deal.tenorDays.toString()} days @{' '}
-      {(Number(deal.interestRateBps) / 100).toFixed(2)}% · far leg returns{' '}
+      {formatUnits(deal.assetUnits, ASSET.assetScale)}{' '}
+      {ASSET.ticker} ↔ {formatUnits(deal.cashUnits, CASH.assetScale)}{' '}
+      {CASH.ticker} · {deal.termDays.toString()} days @{' '}
+      {(Number(deal.returnRateBps) / 100).toFixed(2)}% · closing leg returns{' '}
       <Text span fw={600} c='teal.8'>
-        {formatUnits(farLegCashUnits(deal), CASH.assetScale)} {CASH.ticker}
+        {formatUnits(closingLegCashUnits(deal), CASH.assetScale)} {CASH.ticker}
       </Text>
     </Text>
   )
 }
 
 /**
- * The trade's economics, set before the flow starts. The interest math updates
- * live, making it plain that the repo rate is an off-chain agreement the
+ * The trade's economics, set before the flow starts. The agreed-return math updates
+ * live, making it plain that the agreed return is an off-chain agreement the
  * orchestrator turns into an amount. Terms freeze once the first transaction is
  * signed, because the flow's amounts are baked into every step from then on.
  */
@@ -200,30 +200,30 @@ export function DealTicket ({
   )
 }
 
-/** The interest math the terms imply, shown under them. */
+/** The agreed-return math the terms imply, shown under them. */
 function TicketMath ({ deal }: { deal: DealTerms }) {
-  const interest = interestUnits(deal)
-  const farTotal = farLegCashUnits(deal)
+  const agreedReturn = agreedReturnUnits(deal)
+  const closingTotal = closingLegCashUnits(deal)
   const operating = operatingCashUnits(deal)
   return (
     <Stack gap={2} mt='sm'>
       <Text size='xs' c='dimmed'>
-        Interest = {formatUnits(deal.cashUnits, CASH.assetScale)} ×{' '}
-        {(Number(deal.interestRateBps) / 100).toFixed(2)}% ×{' '}
-        {deal.tenorDays.toString()}/365 ={' '}
+        Agreed return = {formatUnits(deal.cashUnits, CASH.assetScale)} ×{' '}
+        {(Number(deal.returnRateBps) / 100).toFixed(2)}% ×{' '}
+        {deal.termDays.toString()}/365 ={' '}
         <Text span fw={600} c='teal.8'>
-          {formatUnits(interest, CASH.assetScale)} {CASH.ticker}
+          {formatUnits(agreedReturn, CASH.assetScale)} {CASH.ticker}
         </Text>
       </Text>
       <Text size='xs' c='dimmed'>
-        Far leg: InvestCo returns{' '}
+        Closing leg: InvestCo returns{' '}
         <Text span fw={600} c='teal.8'>
-          {formatUnits(farTotal, CASH.assetScale)} {CASH.ticker}
+          {formatUnits(closingTotal, CASH.assetScale)} {CASH.ticker}
         </Text>{' '}
-        for its {formatUnits(deal.collateralUnits, COLLATERAL.assetScale)}{' '}
-        {COLLATERAL.ticker} ·{' '}
+        for its {formatUnits(deal.assetUnits, ASSET.assetScale)}{' '}
+        {ASSET.ticker} ·{' '}
         <Tooltip
-          label='The far leg returns principal plus interest, so InvestCo carries cash to pay it (twice the interest, with a 10.00 floor).'
+          label='The closing leg returns the cash plus the agreed return, so InvestCo carries extra cash to pay it (twice the return, with a 10.00 floor).'
           multiline
           w={300}
         >
