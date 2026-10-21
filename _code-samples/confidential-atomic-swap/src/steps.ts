@@ -132,7 +132,6 @@ function opAction (action: OpAction): StepAction {
       for (const op of ops) {
         // Strictly sequential: each operation depends on the state the last one
         // left, and a confidential proof binds to that state.
-        // eslint-disable-next-line no-await-in-loop
         txs.push(await ledger.run(op))
       }
       return {
@@ -291,7 +290,7 @@ function coSignActions (
   details: Record<Counterparty, string>
 ): StepAction[] {
   return COUNTERPARTIES.map((party) => ({
-    id: `sign-${party.toLowerCase()}`,
+    id: `sign-${party}`,
     party,
     label: 'Sign the batch',
     cta: 'Sign',
@@ -351,7 +350,6 @@ async function submitLeg (
  * and narratives derive from `deal`, so the reader's own numbers flow through
  * the whole settlement.
  */
-// eslint-disable-next-line max-lines-per-function -- a linear storyboard reads best in one place
 export function buildSteps (deal: DealTerms): RunnableStep[] {
   const assetAmt = fmtAsset(deal.assetUnits)
   const cashAmt = fmtCash(deal.cashUnits)
@@ -639,7 +637,7 @@ export function buildSteps (deal: DealTerms): RunnableStep[] {
       actions: [
         convert('tradeDesk', 'cash', deal.cashUnits),
         opAction({
-          id: 'tradedesk-register-asset',
+          id: 'tradeDesk-register-asset',
           label: `Register key to receive ${ASSET.ticker}`,
           cta: 'Register',
           detail:

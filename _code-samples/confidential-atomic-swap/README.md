@@ -26,7 +26,7 @@ The same flow covers more than one kind of trade. Swap a tokenized asset for a s
 
 ## Prerequisites
 
-Node.js 20.19 or later, the minimum for `xrpl` 5.x. Everything else installs from npm, including `@xrplf/mpt-crypto`, the WASM module that generates confidential proofs.
+Node.js 22.12 or later. `.nvmrc` pins 24, the current LTS line, so `nvm use` picks it up. Everything else installs from npm, including `@xrplf/mpt-crypto`, the WASM module that generates confidential proofs. npm 11 blocks packages' install scripts by default and records the ones it allows in an `allowScripts` field in `package.json`, so you may see that field appear after an install.
 
 ## Run it
 

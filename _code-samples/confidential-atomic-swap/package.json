@@ -3,30 +3,27 @@
   "version": "0.1.0",
   "description": "Demo: a two-leg atomic swap settled on the XRP Ledger with Confidential MPTs, Batch, and Sponsored Fees.",
   "type": "module",
+  "engines": {
+    "node": ">=22.12.0"
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
     "preview": "vite preview"
   },
   "dependencies": {
-    "@mantine/core": "^9.5.1",
-    "@mantine/hooks": "^9.5.1",
-    "react": "^19.2.8",
-    "react-dom": "^19.2.8",
+    "@mantine/core": "^9.7.3",
+    "@mantine/hooks": "^9.7.3",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
     "xrpl": "^5.3.0"
   },
   "devDependencies": {
-    "@types/node": "^26.2.0",
-    "@types/react": "^19.2.18",
-    "@types/react-dom": "^19.2.4",
-    "@vitejs/plugin-react": "^4.3.4",
-    "ts-standard": "^12.0.2",
-    "tsx": "^4.19.2",
-    "typescript": "^5.6.3",
-    "vite": "^5.4.11"
-  },
-  "allowScripts": {
-    "esbuild@0.28.2": true,
-    "esbuild@0.21.5": true
+    "@types/node": "^24",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.2",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.5"
   }
 }

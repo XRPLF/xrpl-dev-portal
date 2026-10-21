@@ -2,15 +2,9 @@ import { PARTIES, PARTY_KEYS, type PartyKey } from './variables'
 
 /**
  * Runtime configuration, read from environment variables so no endpoint or
- * secret is hard-coded. In the browser Vite injects `import.meta.env` from
- * .env files; the headless e2e script falls back to `process.env`.
+ * secret is hard-coded. Vite injects `import.meta.env` from .env files.
  */
-const env: Record<string, string | undefined> =
-  typeof import.meta !== 'undefined' && import.meta.env != null
-    ? (import.meta.env as Record<string, string | undefined>)
-    : // eslint-disable-next-line no-process-env -- Node fallback for scripts
-      (globalThis as { process?: { env: Record<string, string | undefined> } })
-        .process?.env ?? {}
+const env = import.meta.env as Record<string, string | undefined>
 
 function optional (value: string | undefined): string | undefined {
   const trimmed = value?.trim()

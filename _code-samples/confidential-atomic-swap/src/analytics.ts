@@ -53,7 +53,6 @@ export const PHASE_EVENTS: Record<Phase, string> = {
  */
 function gtag (...args: unknown[]): void {
   window.dataLayer ??= []
-  // eslint-disable-next-line prefer-rest-params
   window.gtag ??= function () { window.dataLayer?.push(arguments) }
   window.gtag(...args)
 }
