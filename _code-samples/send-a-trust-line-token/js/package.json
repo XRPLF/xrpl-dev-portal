@@ -2,6 +2,7 @@
   "name": "send-a-trust-line-token-examples",
   "description": "Example code for sending a trust line token on the XRP Ledger.",
   "dependencies": {
+    "bignumber.js": "^10.0.2",
     "xrpl": "^5.3.0"
   },
   "type": "module"

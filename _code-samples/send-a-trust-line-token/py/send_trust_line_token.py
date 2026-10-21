@@ -1,7 +1,7 @@
 import json
 import os
 import sys
-from decimal import Decimal
+from decimal import ROUND_UP, Context, Decimal
 
 from xrpl.clients import JsonRpcClient
 from xrpl.models import AccountInfo, AccountLines
@@ -88,7 +88,9 @@ if transfer_fee_percent > max_transfer_fee_percent:
     sys.exit(1)
 send_max = None
 if transfer_fee_percent > 0:
-    send_max = str(Decimal(send_quantity) * Decimal(transfer_rate) / Decimal(1000000000))
+    # Token amounts have at most 16 significant digits. Round up so SendMax
+    # never falls short of the exact cost.
+    send_max = str(Context(prec=16, rounding=ROUND_UP).divide(Decimal(send_quantity) * Decimal(transfer_rate), Decimal(1000000000)))
     print(f"✓ Transfer fee is {transfer_fee_percent}%; sender will pay up to {send_max} {currency_code}")
 else:
     print("✓ No transfer fee")

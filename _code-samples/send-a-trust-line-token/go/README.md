@@ -25,7 +25,7 @@ You should see output like the following:
 
 Setting up tutorial: Complete!
 Issuer address:   rP9jPyP5kyvFRb6ZiRghAGw5u8SGAmU4bd
-Sender address:   rMD2XQ6s2JgxNK3ibA41VJogCNYBjekfjT
+Sender address:   rVoo4grfu8gMQhSHAAjez6A9rVP1MLtaj
 Receiver address: rG6ZCtKCURU58DP2iiff4qziApBGSuvPqE
 
 === Checking sender's TST balance... ===
@@ -42,12 +42,12 @@ Sender's balance: 5
 
 Balances before payment:
   Sender:   5 TST
-  Receiver: 54 TST
+  Receiver: 64 TST
 
 === Sending 2 TST to receiver... ===
 
 {
-  "Account": "rMD2XQ6s2JgxNK3ibA41VJogCNYBjekfjT",
+  "Account": "rVoo4grfu8gMQhSHAAjez6A9rVP1MLtaj",
   "Amount": {
     "currency": "TST",
     "issuer": "rP9jPyP5kyvFRb6ZiRghAGw5u8SGAmU4bd",
@@ -57,11 +57,11 @@ Balances before payment:
   "TransactionType": "Payment"
 }
 Payment successful!
-Explorer link: https://testnet.xrpl.org/transactions/55647900766CDF65522FADF294BFD1E0D7A3E4E60D6723CADBC5CB7A491C5293
+Explorer link: https://testnet.xrpl.org/transactions/192CED94E7B9878E93A413A39A64F9B515028270C88DA73D2C1551F70F914745
 
 === Checking final TST balances... ===
 
-Delivered amount: 2 TST
+  Delivered amount: 2 TST
   Sender:   3 TST
-  Receiver: 56 TST
+  Receiver: 66 TST
 ```

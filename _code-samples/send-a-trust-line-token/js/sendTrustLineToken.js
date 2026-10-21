@@ -1,4 +1,5 @@
 import xrpl from 'xrpl'
+import BigNumber from 'bignumber.js'
 import fs from 'fs'
 import { setup } from './sendTrustLineTokenSetup.js'
 
@@ -61,16 +62,18 @@ const issuerFlags = xrpl.parseAccountRootFlags(issuerInfo.result.account_data.Fl
 // receiver gets. Work out the SendMax needed and refuse unreasonable fees.
 // TransferRate is a multiplier in billionths, e.g. 1005000000 = 1.005 = 0.5% fee.
 const transferRate = issuerInfo.result.account_data.TransferRate ?? 1000000000
-const transferFee = Number(xrpl.transferRateToDecimal(transferRate))
-const transferFeePercent = transferFee * 100
-if (transferFeePercent > maxTransferFeePercent) {
+const transferFee = new BigNumber(xrpl.transferRateToDecimal(transferRate))
+const transferFeePercent = transferFee.times(100)
+if (transferFeePercent.gt(maxTransferFeePercent)) {
   console.error(`Error: Transfer fee of ${transferFeePercent}% exceeds the ${maxTransferFeePercent}% limit.`)
   await client.disconnect()
   process.exit(1)
 }
 let sendMax
-if (transferFeePercent > 0) {
-  sendMax = String(Number(sendQuantity) * (1 + transferFee))
+if (transferFeePercent.gt(0)) {
+  // Token amounts have at most 16 significant digits. Round up so SendMax
+  // never falls short of the exact cost.
+  sendMax = new BigNumber(sendQuantity).times(transferFee.plus(1)).precision(16, BigNumber.ROUND_UP).toString()
   console.log(`✓ Transfer fee is ${transferFeePercent}%; sender will pay up to ${sendMax} ${currencyCode}`)
 } else {
   console.log('✓ No transfer fee')
@@ -83,7 +86,7 @@ if (!senderLine) {
   process.exit(1)
 }
 console.log(`Sender's balance: ${senderLine.balance}`)
-if (Number(senderLine.balance) < Number(sendMax ?? sendQuantity)) {
+if (new BigNumber(senderLine.balance).lt(sendMax ?? sendQuantity)) {
   console.error(`Error: Sender's balance is less than the ${sendMax ?? sendQuantity} ${currencyCode} to send.`)
   await client.disconnect()
   process.exit(1)
@@ -114,7 +117,7 @@ const defaultRipple = issuerFlags.lsfDefaultRipple === true
 console.log(`✓ Rippling is allowed (issuer Default Ripple: ${defaultRipple})`)
 
 // 3. The receiver's limit must cover their current balance plus the payment.
-if (Number(receiverLine.balance) + Number(sendQuantity) > Number(receiverLine.limit)) {
+if (new BigNumber(receiverLine.balance).plus(sendQuantity).gt(receiverLine.limit)) {
   console.error(`Error: Payment would exceed the receiver's limit of ${receiverLine.limit} ${currencyCode}.`)
   await client.disconnect()
   process.exit(1)

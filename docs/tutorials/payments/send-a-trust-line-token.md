@@ -73,6 +73,7 @@ To get started, import the necessary libraries and instantiate a client to conne
 {% tabs %}
 {% tab label="JavaScript" %}
 - `xrpl`: Used for XRPL client connection, transaction submission, and wallet handling.
+- `bignumber.js`: Used to compare token amounts without floating-point rounding.
 - `fs`: Used to check for and load the tutorial setup data.
 - `./sendTrustLineTokenSetup.js`: The tutorial set up script, imported and called directly.
 
@@ -90,7 +91,7 @@ To get started, import the necessary libraries and instantiate a client to conne
 {% tab label="Go" %}
 - `xrpl-go`: Used for XRPL client connection, transaction submission, wallet handling, and ledger entry flag constants.
 - `encoding/json` and `fmt`: Used for formatting and printing results to the console.
-- `math/big`: Used to compare token amounts without floating-point rounding.
+- `math` and `math/big`: Used to compare token amounts without floating-point rounding.
 - `os` and `os/exec`: Used to run the tutorial setup script.
 
 {% code-snippet file="/_code-samples/send-a-trust-line-token/go/send-trust-line-token/main.go" language="go" before="// This step checks" /%}

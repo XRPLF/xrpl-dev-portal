@@ -3,6 +3,7 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"math"
 	"math/big"
 	"os"
 	"os/exec"
@@ -18,14 +19,26 @@ import (
 	wstypes "github.com/Peersyst/xrpl-go/xrpl/websocket/types"
 )
 
-// decimal parses a token value string into a big.Float. Token values can have
-// up to 16 significant digits, so avoid float64 for comparisons.
-func decimal(value string) *big.Float {
-	f, ok := new(big.Float).SetString(value)
+// decimal parses a token value string into a big.Rat, which is exact. Token
+// values can have up to 16 significant digits, so avoid float64.
+func decimal(value string) *big.Rat {
+	r, ok := new(big.Rat).SetString(value)
 	if !ok {
 		panic("invalid decimal value: " + value)
 	}
-	return f
+	return r
+}
+
+// amountString formats a token amount with at most 16 significant digits, the
+// ledger's precision, rounding up so a SendMax never falls short.
+func amountString(x *big.Rat) string {
+	s := new(big.Float).SetRat(x).Text('g', 16)
+	if rounded := decimal(s); rounded.Cmp(x) < 0 {
+		f, _ := x.Float64()
+		unit := new(big.Rat).SetFloat64(math.Pow10(int(math.Floor(math.Log10(f))) - 15))
+		s = new(big.Float).SetRat(rounded.Add(rounded, unit)).Text('g', 16)
+	}
+	return s
 }
 
 func main() {
@@ -139,8 +152,8 @@ func main() {
 	}
 	sendMax := ""
 	if transferFeePercent > 0 {
-		rate := new(big.Float).Quo(decimal(fmt.Sprint(transferRate)), decimal(fmt.Sprint(noTransferFee)))
-		sendMax = new(big.Float).Mul(decimal(sendQuantity), rate).Text('g', 16)
+		rate := new(big.Rat).SetFrac64(int64(transferRate), noTransferFee)
+		sendMax = amountString(new(big.Rat).Mul(decimal(sendQuantity), rate))
 		fmt.Printf("✓ Transfer fee is %g%%; sender will pay up to %s %s\n", transferFeePercent, sendMax, currencyCode)
 	} else {
 		fmt.Println("✓ No transfer fee")
@@ -184,7 +197,7 @@ func main() {
 	fmt.Printf("✓ Rippling is allowed (issuer Default Ripple: %t)\n", defaultRipple)
 
 	// 3. The receiver's limit must cover their current balance plus the payment.
-	newBalance := new(big.Float).Add(decimal(receiverLine.Balance), decimal(sendQuantity))
+	newBalance := new(big.Rat).Add(decimal(receiverLine.Balance), decimal(sendQuantity))
 	if newBalance.Cmp(decimal(receiverLine.Limit)) > 0 {
 		fmt.Printf("Error: Payment would exceed the receiver's limit of %s %s.\n", receiverLine.Limit, currencyCode)
 		os.Exit(1)
