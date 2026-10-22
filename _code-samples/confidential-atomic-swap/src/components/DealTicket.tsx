@@ -89,7 +89,7 @@ function DealSummary ({ deal }: { deal: DealTerms }) {
       {ASSET.ticker} ↔ {formatUnits(deal.cashUnits, CASH.assetScale)}{' '}
       {CASH.ticker} · {deal.termDays.toString()} days @{' '}
       {(Number(deal.returnRateBps) / 100).toFixed(2)}% · closing leg returns{' '}
-      <Text span fw={600} c='teal.8'>
+      <Text span fw={600} className='accent-text'>
         {formatUnits(closingLegCashUnits(deal), CASH.assetScale)} {CASH.ticker}
       </Text>
     </Text>
@@ -126,13 +126,19 @@ export function DealTicket ({
       withBorder
       shadow='sm'
       padding={open ? 'md' : 'xs'}
+      className='deal-card'
     >
       <Group justify='space-between' wrap='nowrap'>
         <Group gap='sm' wrap='nowrap'>
           <Text fw={700} size='sm'>
             Deal ticket
           </Text>
-          <Badge variant='light' size='sm' color={locked ? 'gray' : 'teal'}>
+          <Badge
+            variant='light'
+            size='sm'
+            color={locked ? 'gray' : 'teal'}
+            className={locked ? 'badge-gray' : 'badge-teal'}
+          >
             {locked ? 'Terms locked' : 'Set your terms, then run step 1'}
           </Badge>
         </Group>
@@ -152,7 +158,9 @@ export function DealTicket ({
       <Collapse expanded={open}>
         {/* The four terms divide whatever width the row leaves rather than each
             claiming a fixed one, and fold before any gets too narrow to read. */}
-        <Group gap={locked ? 24 : 'xs'} align='flex-start' wrap='wrap' mt='sm'>
+        {/* Bottom-aligned, so the inputs share a baseline whatever their
+            labels do above them. */}
+        <Group gap={locked ? 24 : 'xs'} align='flex-end' wrap='wrap' mt='sm'>
           {TERMS.map((term) =>
             locked
               ? (
@@ -188,7 +196,7 @@ export function DealTicket ({
                   step={term.step}
                   decimalScale={term.scale}
                   allowDecimal={term.scale > 0}
-                  style={{ flex: '1 1 108px', minWidth: 0 }}
+                  style={{ flex: '1 1 120px', minWidth: 0 }}
                 />
                 )
           )}
@@ -211,13 +219,13 @@ function TicketMath ({ deal }: { deal: DealTerms }) {
         Agreed return = {formatUnits(deal.cashUnits, CASH.assetScale)} ×{' '}
         {(Number(deal.returnRateBps) / 100).toFixed(2)}% ×{' '}
         {deal.termDays.toString()}/365 ={' '}
-        <Text span fw={600} c='teal.8'>
+        <Text span fw={600} className='accent-text'>
           {formatUnits(agreedReturn, CASH.assetScale)} {CASH.ticker}
         </Text>
       </Text>
       <Text size='xs' c='dimmed'>
         Closing leg: InvestCo returns{' '}
-        <Text span fw={600} c='teal.8'>
+        <Text span fw={600} className='accent-text'>
           {formatUnits(closingTotal, CASH.assetScale)} {CASH.ticker}
         </Text>{' '}
         for its {formatUnits(deal.assetUnits, ASSET.assetScale)}{' '}
@@ -227,7 +235,11 @@ function TicketMath ({ deal }: { deal: DealTerms }) {
           multiline
           w={300}
         >
-          <Text span td='underline dotted' style={{ cursor: 'help' }}>
+          <Text
+            span
+            td='underline dotted'
+            style={{ cursor: 'help', whiteSpace: 'nowrap' }}
+          >
             operating balance {formatUnits(operating, CASH.assetScale)}{' '}
             {CASH.ticker}
           </Text>

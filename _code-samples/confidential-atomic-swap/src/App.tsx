@@ -1,5 +1,5 @@
 import {
-  Badge,
+  ActionIcon,
   Button,
   Container,
   Grid,
@@ -7,7 +7,9 @@ import {
   Stack,
   Stepper,
   Text,
-  Title
+  Title,
+  useComputedColorScheme,
+  useMantineColorScheme
 } from '@mantine/core'
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 
@@ -27,6 +29,36 @@ export interface Identity {
 }
 
 export type IdentityBook = Partial<Record<PartyKey, Identity>>
+
+/** Light or dark, remembered across runs. Follows the system until clicked. */
+function SchemeToggle () {
+  const { setColorScheme } = useMantineColorScheme()
+  const scheme = useComputedColorScheme('light')
+  const next = scheme === 'dark' ? 'light' : 'dark'
+  return (
+    <ActionIcon
+      variant='default'
+      size='lg'
+      aria-label={`Switch to ${next} mode`}
+      title={`Switch to ${next} mode`}
+      onClick={() => setColorScheme(next)}
+      className='scheme-toggle'
+    >
+      {scheme === 'dark'
+        ? (
+          <svg width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='2' strokeLinecap='round' aria-hidden>
+            <circle cx='12' cy='12' r='4' />
+            <path d='M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41' />
+          </svg>
+          )
+        : (
+          <svg width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='2' strokeLinecap='round' strokeLinejoin='round' aria-hidden>
+            <path d='M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z' />
+          </svg>
+          )}
+    </ActionIcon>
+  )
+}
 
 export default function App () {
   const ledgerRef = useRef<SwapLedger | null>(null)
@@ -214,39 +246,31 @@ export default function App () {
   return (
     // The inline gutter is left to .app-shell, which scales it with the window
     // instead of holding it at Container's fixed md.
-    <Container size={1560} py='md' className='app-shell'>
+    <Container size={1560} py='sm' className='app-shell'>
       {/* The ticket sits beside the title rather than under it, so the chrome
           is as tall as the taller of the two rather than their sum. */}
       <div className='chrome'>
         <Group align='flex-start' mb='sm' gap='md' wrap='wrap'>
-          <Stack gap={4} style={{ flex: '1 1 380px', minWidth: 0 }}>
-            <Text size='xs' fw={700} tt='uppercase' c='teal.8' lts='0.08em'>
-              XRP Ledger · interactive demo
-            </Text>
-            <Title order={1} size={24}>
+          <Stack gap={4} className='hero-col'>
+            <Text className='eyebrow eyebrow-wide'>XRP Ledger · interactive demo</Text>
+            <Title order={1} className='display-title'>
               Confidential Atomic Swap
             </Title>
             {/* Always shown, because becoming a party by clicking it is the
                 demo's one non-obvious interaction. */}
-            <Text size='sm' c='dimmed' maw={640}>
+            <Text className='hero-sub'>
               A swap, settled atomically with encrypted amounts.
               You act as every party: click one in the balances panel to become
               it. Set the terms, sign each transaction, and decrypt only what
               your keys allow.
             </Text>
           </Stack>
-          <Stack gap={6} style={{ flex: '0 1 560px', minWidth: 0 }}>
+          <Stack gap={6} className='ticket-col'>
             <Group gap='sm' wrap='nowrap' justify='flex-end'>
-              <Badge
-                variant='light'
-                color='gray'
-                size='md'
-                ff='monospace'
-                fw={500}
-                visibleFrom='sm'
-              >
+              <Text component='span' className='net-pill' visibleFrom='sm'>
+                <span className='status-dot' aria-hidden />
                 {new URL(CONFIG.wssUrl).host}
-              </Badge>
+              </Text>
               <Button
                 variant='default'
                 size='xs'
@@ -254,6 +278,7 @@ export default function App () {
               >
                 Reset demo
               </Button>
+              <SchemeToggle />
             </Group>
             <DealTicket deal={deal} onChange={setDeal} locked={dealLocked} />
           </Stack>
@@ -265,7 +290,7 @@ export default function App () {
           size='xs'
           iconSize={24}
           color='teal'
-          mt='sm'
+          mt='lg'
           className='phase-stepper'
         >
           {/* completedIcon keeps the number on a finished phase, which Mantine
@@ -308,14 +333,14 @@ export default function App () {
           scroll their own overflow, so the page itself never scrolls. */}
       <Grid
         gap='md'
-        mt='sm'
+        mt='md'
         className='panel-row'
         classNames={{ inner: 'panel-row-inner' }}
       >
         {/* The ledger gets a wider share at the md breakpoint, where a party's
             balances would otherwise be clipped; the step panel takes it back on
             a wide display, where the transaction JSON needs it. */}
-        <Grid.Col span={{ base: 12, md: 7, lg: 7.5 }} className='panel-col'>
+        <Grid.Col span={{ base: 12, md: 6.5, lg: 7.5 }} className='panel-col'>
           <StepPanel
             step={step}
             eyebrow={eyebrow}
@@ -339,7 +364,7 @@ export default function App () {
             onBecome={setActor}
           />
         </Grid.Col>
-        <Grid.Col span={{ base: 12, md: 5, lg: 4.5 }} className='panel-col'>
+        <Grid.Col span={{ base: 12, md: 5.5, lg: 4.5 }} className='panel-col'>
           <BalancePanel
             balances={balances}
             identities={identities}

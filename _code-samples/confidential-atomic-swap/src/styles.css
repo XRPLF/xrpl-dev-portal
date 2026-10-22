@@ -1,13 +1,403 @@
+/* Mantine's own palette, as the demo first shipped: gray-0 page, white cards
+   on a gray-3 hairline, teal as the accent, tinted pills for parties and
+   status, the system sans and monospace. The layer on top is xrpl.org's: pill
+   controls, soft 16px cards, and the portal's grays in dark mode. Every colour the stylesheet uses is one of these tokens, and the dark
+   block below restates them, so a rule never has to know its scheme. */
 :root {
+  --xrpl-page: var(--mantine-color-gray-0);
+  --xrpl-text: var(--mantine-color-black);
+  /* Small mono labels are set in gray-7, a step darker than Mantine's dimmed
+     text, because at 10px gray-6 falls under 4.5:1 on white. */
+  --xrpl-muted: var(--mantine-color-gray-7);
+  --surface: #ffffff;
+  --surface-2: var(--mantine-color-gray-0);
+  --input-bg: #ffffff;
+  --surface-hover: var(--mantine-color-gray-1);
+  --well: var(--mantine-color-gray-0);
+  --well-text: var(--mantine-color-black);
+  --well-muted: var(--mantine-color-gray-7);
   --line: var(--mantine-color-gray-3);
-  --accent: var(--mantine-color-teal-8);
+  --line-strong: var(--mantine-color-gray-4);
+  --line-disabled: var(--mantine-color-gray-5);
+  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.03), 0 10px 30px rgba(0, 0, 0, 0.05);
+  --shadow-console: 0 2px 4px rgba(0, 0, 0, 0.04), 0 14px 36px rgba(0, 0, 0, 0.1);
+  --accent: var(--mantine-color-teal-6);
+  --accent-text: var(--mantine-color-teal-8);
+  --mono: var(--mantine-font-family-monospace);
+  --r-card: 16px;
+  --r-inner: 12px;
+}
+
+/* Dark: xrpl.org's grays (the dark palette in main.tsx), with cards a step
+   above the page and wells a step below it, as on the portal. */
+:root[data-mantine-color-scheme='dark'] {
+  --xrpl-page: var(--mantine-color-dark-7);
+  --xrpl-text: var(--mantine-color-dark-0);
+  --xrpl-muted: var(--mantine-color-dark-2);
+  --surface: var(--mantine-color-dark-6);
+  --surface-2: var(--mantine-color-dark-5);
+  --input-bg: var(--mantine-color-dark-7);
+  --surface-hover: var(--mantine-color-dark-5);
+  --well: var(--mantine-color-dark-8);
+  --well-text: var(--mantine-color-dark-0);
+  --well-muted: var(--mantine-color-dark-2);
+  --line: var(--mantine-color-dark-4);
+  --line-strong: var(--mantine-color-dark-3);
+  --line-disabled: var(--mantine-color-dark-3);
+  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.2), 0 10px 30px rgba(0, 0, 0, 0.25);
+  --shadow-console: 0 2px 4px rgba(0, 0, 0, 0.3), 0 14px 36px rgba(0, 0, 0, 0.45);
+  --accent: var(--mantine-color-teal-6);
+  --accent-text: var(--mantine-color-teal-4);
 }
 
 body {
-  background: var(--mantine-color-gray-0);
+  background: var(--xrpl-page);
+  color: var(--xrpl-text);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+
+.accent-text {
+  color: var(--accent-text);
+}
+
+/* ------------------------------------------------------------- typography */
+
+/* The bold teal label above a title: the product name over the page title,
+   the phase over a step. It is the one thing on a card set in the accent, so
+   the reader's eye finds where they are first. */
+.eyebrow {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent-text);
+  line-height: 1;
+}
+
+/* The product line over the page title, a touch wider still. */
+.eyebrow-wide {
+  letter-spacing: 0.08em;
+}
+
+/* The title and its line are chrome: they share the strip with the ticket
+   and take as little height as they can, so the two cards below get the rest
+   of a laptop screen. */
+.display-title {
+  font-size: clamp(22px, 1.9vw, 27px);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+  color: var(--xrpl-text);
+  margin-top: 2px;
+}
+
+.hero-sub {
+  font-size: 15px;
+  line-height: 1.45;
+  color: var(--mantine-color-dimmed);
+  max-width: 720px;
+  margin-top: 4px;
+}
+
+.step-title {
+  font-size: clamp(21px, 1.7vw, 24px);
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  line-height: 1.15;
+  color: var(--xrpl-text);
+}
+
+/* --------------------------------------------------------------- surfaces */
+
+.mantine-Card-root {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-card);
+  box-shadow: var(--shadow-card);
+  transition: border-color 0.2s ease;
+}
+
+.mantine-Paper-root {
+  background: var(--surface);
+}
+
+.mantine-Divider-root {
+  --divider-color: var(--line);
+}
+
+/* --------------------------------------------------------------- controls */
+
+.mantine-Button-root,
+.mantine-ActionIcon-root {
+  transition: background-color 0.15s ease, border-color 0.15s ease,
+    transform 0.15s ease;
+}
+
+.mantine-Button-root[data-variant='default'],
+.mantine-ActionIcon-root[data-variant='default'],
+.mantine-ActionIcon-root[data-variant='subtle'] {
+  background: var(--surface);
+  border: 1px solid var(--line-strong);
+  color: var(--xrpl-text);
+}
+
+.mantine-Button-root[data-variant='default']:hover:not(:disabled),
+.mantine-ActionIcon-root[data-variant='default']:hover:not(:disabled),
+.mantine-ActionIcon-root[data-variant='subtle']:hover:not(:disabled) {
+  background: var(--surface-hover);
+  border-color: var(--xrpl-text);
+}
+
+.mantine-ActionIcon-root:disabled,
+.mantine-ActionIcon-root[data-disabled] {
+  background: transparent;
+  border-color: var(--line);
+  color: var(--line-disabled);
+}
+
+/* Inputs, with small uppercase labels. */
+.mantine-NumberInput-input {
+  background: var(--input-bg);
+  border: 1px solid var(--line-strong);
+  color: var(--xrpl-text);
+  font-size: 14px;
+}
+
+.mantine-NumberInput-input:focus {
+  border-color: var(--xrpl-text);
+}
+
+.mantine-NumberInput-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--xrpl-text);
+  white-space: nowrap;
+}
+
+.mantine-NumberInput-description {
+  font-size: 12px;
+}
+
+/* The ticket's own text, a step above the small sizes it first used. */
+.deal-card .mantine-NumberInput-input {
+  font-size: 15px;
+}
+
+
+
+.mantine-NumberInput-control {
+  border-color: var(--line);
+  color: var(--xrpl-muted);
+}
+
+.mantine-Tooltip-tooltip {
+  background: var(--mantine-color-gray-9);
+  color: #fff;
+  font-size: 12px;
+}
+
+:root[data-mantine-color-scheme='dark'] .mantine-Tooltip-tooltip {
+  background: var(--mantine-color-gray-1);
+  color: var(--mantine-color-dark-9);
+}
+
+/* Callouts in the original's tints: the colour's palest shade as the panel
+   with its deepest as the title and icon, in light mode. In dark mode a deep shade
+   is mixed mostly into the card for a clearly tinted panel, with the
+   title in the colour's bright shade and white body text. */
+.callout {
+  --callout-bg: var(--surface);
+  --callout-bd: transparent;
+  --callout-fg: var(--xrpl-text);
+  --callout-title: var(--xrpl-text);
+  background-color: var(--callout-bg);
+  border: 1px solid var(--callout-bd);
+  border-radius: var(--r-inner);
+  color: var(--callout-fg);
+  --mantine-color-text: var(--callout-fg);
+  --mantine-color-dimmed: var(--callout-fg);
+}
+
+.callout .mantine-Alert-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--callout-title);
+}
+
+/* The body is set as xrpl.org sets admonition text: a step larger than the
+   app's small text, with open leading, in solid black or white. */
+.callout .mantine-Alert-message {
+  color: var(--callout-fg);
+}
+
+.callout .mantine-Alert-message .mantine-Text-root {
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--callout-fg);
+}
+
+.callout .mantine-Alert-icon {
+  width: 18px;
+  height: 18px;
+  margin-top: 1px;
+  color: var(--callout-title);
+}
+
+.callout-note {
+  --callout-bg: var(--mantine-color-blue-1);
+  --callout-title: var(--mantine-color-blue-9);
+}
+
+.callout-tip {
+  --callout-bg: var(--mantine-color-teal-1);
+  --callout-title: var(--mantine-color-teal-9);
+}
+
+/* The dark caution inverted: the same yellow at the same strength washed
+   over white instead of the card, the deep yellow title where dark has the
+   bright one, black body where dark has white. */
+/* Cautions are yellow, the one hue no party uses. The same rule as the
+   other callouts, palest shade as the panel and a deep one as the title,
+   except Mantine's deepest yellow is an orange, so the title is a dark gold
+   of the same hue instead. */
+.callout-warn {
+  --callout-bg: var(--mantine-color-yellow-1);
+  --callout-title: #8a6a00;
+}
+
+.callout-danger {
+  --callout-bg: var(--mantine-color-red-2);
+  --callout-title: var(--mantine-color-red-9);
+}
+
+:root[data-mantine-color-scheme='dark'] .callout {
+  --callout-fg: #ffffff;
+}
+
+:root[data-mantine-color-scheme='dark'] .callout-note {
+  --callout-bg: color-mix(in srgb, var(--mantine-color-blue-8) 70%, var(--surface));
+  --callout-title: var(--mantine-color-blue-2);
+}
+
+:root[data-mantine-color-scheme='dark'] .callout-tip {
+  --callout-bg: color-mix(in srgb, var(--mantine-color-teal-8) 70%, var(--surface));
+  --callout-title: var(--mantine-color-teal-2);
+}
+
+/* Mantine's deep yellows are orange, so the dark panel is the true yellow
+   washed over the card instead, with a bright yellow title. */
+:root[data-mantine-color-scheme='dark'] .callout-warn {
+  --callout-bg: color-mix(in srgb, var(--mantine-color-yellow-5) 26%, var(--surface));
+  --callout-title: var(--mantine-color-yellow-3);
+}
+
+/* Red's deep shade is far more saturated than blue's or teal's, so the same
+   mix lands louder; a lower strength of the deepest red sits at the note's
+   weight. */
+:root[data-mantine-color-scheme='dark'] .callout-danger {
+  --callout-bg: color-mix(in srgb, var(--mantine-color-red-9) 45%, var(--surface));
+  /* The light panel's pink-red, as the title here: the two schemes share it. */
+  --callout-title: var(--mantine-color-red-3);
+}
+
+/* Focus rings: 2px ink, offset. */
+.mantine-Button-root:focus-visible,
+.mantine-ActionIcon-root:focus-visible,
+.party-row.clickable:focus-visible,
+.panel-hint:focus-visible,
+.mantine-Stepper-step:focus-visible {
+  outline: 2px solid var(--xrpl-text);
+  outline-offset: 2px;
+}
+
+/* ------------------------------------------------------------ status dots */
+
+/* Party badges: the party's tint, so the same colour reads at a glance on
+   the timeline row, the console, and the party's row in the ledger. */
+.party-badge {
+  font-weight: 700;
+}
+
+/* The same two colours as the light-mode pill, swapped: the deep shade as
+   the fill and the pale one as the text. Mantine would otherwise derive a
+   different, darker tint, so pink would read as burgundy. */
+:root[data-mantine-color-scheme='dark'] .party-badge {
+  background-color: var(--party-pill-fg);
+  color: var(--party-pill-bg);
+}
+
+/* Grey is the exception: its deep shade is the card itself, so a grey pill
+   keeps its light-mode form in dark mode, pale fill and dark text. Covers the
+   orchestrator's party pill and the grey status tags. */
+:root[data-mantine-color-scheme='dark'] .badge-gray {
+  background-color: var(--mantine-color-gray-3);
+  color: var(--mantine-color-gray-9);
+}
+
+/* Status in teal: in dark mode the same green as the action buttons, the
+   strong shade with white text, as the buttons and progress marks are. */
+:root[data-mantine-color-scheme='dark'] .badge-teal {
+  background-color: var(--mantine-color-teal-6);
+  color: #ffffff;
+}
+
+/* The dot that marks the network endpoint as live. */
+.status-dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--party-strong, var(--accent));
+  flex: none;
+}
+
+.net-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--xrpl-muted);
+  white-space: nowrap;
 }
 
 /* ------------------------------------------------------------------- layout */
+
+/* The title block and the deal ticket share the strip. On a wide display the
+   ticket holds its full width; in a narrower window both shrink so they stay
+   side by side rather than stacking, which would cost the cards 150px. */
+.hero-col {
+  flex: 1 1 380px;
+  min-width: 0;
+}
+
+.ticket-col {
+  flex: 0 1 560px;
+  min-width: 0;
+}
+
+@media (max-width: 62em) {
+  .hero-col {
+    flex-basis: 300px;
+  }
+
+  .ticket-col {
+    flex-basis: 400px;
+  }
+
+  /* The console's button drops under the text instead of crushing it. */
+  .action-console .console-head {
+    flex-wrap: wrap !important;
+  }
+
+  .action-console .console-head > .mantine-Button-root {
+    margin-left: auto;
+  }
+}
 
 /* The app is exactly the viewport, and nothing outside the two cards scrolls:
    the reader's scroll always lands in the step or the ledger, never on the
@@ -76,13 +466,73 @@ body,
   flex-direction: column;
 }
 
-/* Only the body scrolls: each card's heading stays put as its own anchor. */
+/* The step's heading sits on a hairline, so scrolled content passes under an
+   edge rather than straight into the title. */
+.step-head {
+  padding-bottom: 10px;
+  margin-bottom: 6px;
+  border-bottom: 1px solid var(--line);
+}
+
+/* The frame around the step body holds the fade that says there is more
+   below the fold. It appears only while something is below. */
+.scroll-frame {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.scroll-frame::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 36px;
+  pointer-events: none;
+  background: linear-gradient(to bottom, transparent, var(--surface));
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.scroll-frame.has-more::after {
+  opacity: 1;
+}
+
+/* Only the body scrolls: each card's heading stays put as its own anchor.
+   The region reaches into the card's right padding, so the scrollbar sits at
+   the card's edge and the content keeps its full gutter beside it. The bar
+   itself is thin and in the hairline tone, so it reads as part of the card. */
 .panel-scroll {
   flex: 1;
   min-height: 0;
   overflow-y: auto;
+  margin-inline-end: calc(-1 * var(--mantine-spacing-md));
+  padding-inline-end: var(--mantine-spacing-md);
   /* Room for a scrollbar without the text reflowing when one appears. */
   scrollbar-gutter: stable;
+  scrollbar-width: thin;
+  scrollbar-color: var(--line-strong) transparent;
+}
+
+.panel-scroll::-webkit-scrollbar {
+  width: 10px;
+}
+
+.panel-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.panel-scroll::-webkit-scrollbar-thumb {
+  background: var(--line-strong);
+  border-radius: 8px;
+  border: 3px solid var(--surface);
+}
+
+.panel-scroll::-webkit-scrollbar-thumb:hover {
+  background: var(--xrpl-muted);
 }
 
 /* The extra width on a wide display goes to the JSON and the ledger, not to the
@@ -101,10 +551,11 @@ body,
   margin-top: 10px;
 }
 
-/* Stacked below the md breakpoint, where a split screen would leave each panel
-   too short to read: the container scrolls instead, one panel after the other.
-   The page is still pinned, so the scroll stays inside the app. */
-@media (max-width: 62em) {
+/* Stacked below the md breakpoint (54em, set in main.tsx), where a split
+   screen would leave each panel too narrow to read: the container scrolls
+   instead, one panel after the other. The page is still pinned, so the scroll
+   stays inside the app. */
+@media (max-width: 54em) {
   .app-shell {
     overflow-y: auto;
   }
@@ -160,7 +611,7 @@ body,
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: var(--line);
+  background: var(--line-strong);
   cursor: pointer;
   /* The ring is drawn in the border, transparent until it's the viewed step,
      so gaining it doesn't move the dot or the ones beside it. */
@@ -172,7 +623,7 @@ body,
 
 .step-dot[data-state='done'],
 .step-dot[data-state='live'] {
-  background-color: var(--accent);
+  background-color: var(--accent-text);
 }
 
 /* Not reachable yet, so it reads as inert and doesn't invite the click. */
@@ -181,40 +632,96 @@ body,
 }
 
 .step-dot[data-viewing] {
-  border-color: var(--accent);
+  border-color: var(--accent-text);
 }
 
 .step-dot:not([data-state='locked']):not([data-viewing]):hover {
-  border-color: var(--line);
-}
-
-@keyframes pulse {
-  50% {
-    box-shadow: 0 0 0 5px rgba(12, 133, 100, 0.15);
-  }
+  border-color: var(--line-strong);
 }
 
 /* ----------------------------------------------------------------- actions */
 
-/* The active action expands into a console themed in the acting party's
-   color: identity on the left, one button on the right. */
+/* A party's tint: the palest shade of its colour in light mode, as the demo
+   first shipped, and Mantine's derived dark tint in dark mode. */
+.action-console,
+.party-row {
+  --party-soft: var(--party-soft-light);
+}
+
+/* In dark mode the panel is the party's strong colour laid thinly over the
+   card, which is how light mode's pale panel relates to white: same colour,
+   same recipe. Identity is carried by the border, avatar, pill, and eyebrow,
+   so the surface itself stays quiet and the text on it reads. */
+:root[data-mantine-color-scheme='dark'] .action-console {
+  --party-soft: color-mix(in srgb, var(--party-strong) 16%, var(--surface));
+  --mantine-color-text: #ffffff;
+  --mantine-color-dimmed: var(--mantine-color-dark-1);
+}
+
+:root[data-mantine-color-scheme='dark'] .party-row {
+  --party-soft: color-mix(in srgb, var(--party-strong) 22%, var(--surface));
+}
+
+:root[data-mantine-color-scheme='dark'] .ledger-card .bal-chip {
+  background: var(--well);
+  border-color: var(--mantine-color-dark-3);
+}
+
+/* On the page, the ledger's secondary text sits a step brighter than the
+   dimmed gray, which was a step too close to the dark page. */
+:root[data-mantine-color-scheme='dark'] .ledger-card {
+  --mantine-color-dimmed: var(--mantine-color-dark-1);
+}
+
+:root[data-mantine-color-scheme='dark'] .party-address {
+  color: var(--mantine-color-dark-1);
+}
+
+/* "Act as": the card surface for its fill, the party's edge and ink, as in
+   light mode. */
+:root[data-mantine-color-scheme='dark'] .action-console .mantine-Button-root[data-variant='light'] {
+  color: var(--party-ink);
+}
+
+/* The active action expands into a console in the acting party's tint,
+   edged in its colour: identity on the left, one button on the right. The
+   same tint marks the party's row in the ledger, so the eye links the two. */
 .action-console {
-  padding: 14px 16px;
+  padding: 20px 22px;
   border: 2px solid var(--party-strong);
-  border-radius: var(--mantine-radius-md);
+  border-radius: var(--r-inner);
   background: var(--party-soft);
-  box-shadow: var(--mantine-shadow-sm);
+  box-shadow: var(--shadow-console);
   /* Room left above and below when the console scrolls itself into view, so it
      never lands flush against an edge. */
   scroll-margin: 16px 0;
 }
 
-.your-move {
-  color: var(--party-strong);
+.action-console .your-move {
+  color: var(--party-ink);
 }
 
+/* "Act as" sits on the party's tint, so it gets a solid surface and the
+   party's outline rather than the tinted variant it would otherwise share
+   with its background. */
+.action-console .mantine-Button-root[data-variant='light'] {
+  background: var(--surface);
+  border: 1px solid var(--party-strong);
+  color: var(--party-ink);
+}
+
+.action-console .mantine-Button-root[data-variant='light']:hover:not(:disabled) {
+  background: var(--surface-hover);
+}
+
+/* The arrow nudges right, so it needs room on that side or it rides into
+   the first letter at the end of each nudge. */
 .pointer {
   display: inline-block;
+  margin-right: 3px;
+  font-size: 1.25em;
+  line-height: 0;
+  vertical-align: -0.08em;
   animation: nudge 1.1s ease-in-out infinite;
 }
 
@@ -241,6 +748,17 @@ body,
   animation: check-pop 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
+.tx-link {
+  color: var(--accent-text);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  letter-spacing: 0.02em;
+}
+
+.tx-link:hover {
+  color: var(--xrpl-text);
+}
+
 @keyframes result-in {
   from {
     opacity: 0;
@@ -262,6 +780,8 @@ body,
 
 /* --------------------------------------------------------- action timeline */
 
+/* Action markers: the party's initials, white on the party's fill while the
+   action is next or running, white on teal once done. */
 .action-timeline .t-bullet {
   display: inline-flex;
   align-items: center;
@@ -273,8 +793,19 @@ body,
   color: #fff;
 }
 
+.action-timeline .t-bullet.next,
+.action-timeline .t-bullet.running {
+  background: var(--party-strong);
+  border-radius: 50%;
+}
+
+.action-timeline .mantine-Timeline-itemBullet:has(.t-bullet.next),
+.action-timeline .mantine-Timeline-itemBullet:has(.t-bullet.running) {
+  border-color: transparent;
+}
+
 .action-timeline .t-bullet.locked {
-  color: var(--mantine-color-gray-6);
+  color: var(--xrpl-muted);
 }
 
 /* The marker beside a panel heading that holds its explanation. Sized to the
@@ -286,28 +817,75 @@ body,
   width: 14px;
   height: 14px;
   border-radius: 50%;
-  border: 1px solid var(--line);
+  border: 1px solid var(--line-strong);
+  font-family: var(--mono);
   font-size: 9px;
-  font-weight: 700;
-  color: var(--mantine-color-gray-6);
+  color: var(--xrpl-muted);
   cursor: help;
 }
 
 .panel-hint:hover,
 .panel-hint:focus-visible {
-  border-color: var(--accent);
-  color: var(--accent);
-  outline: none;
+  border-color: var(--xrpl-text);
+  color: var(--xrpl-text);
 }
 
 /* -------------------------------------------------------------- ledger room */
 
+/* Each party is an inset tile on the ledger card with a permanent rail in
+   its colour down the left, so all five colours are on the panel at all
+   times and match the pills. The live party's tile fills with its tint and
+   gains a ring; the reader's own party keeps the "you" chip. */
 .party-row {
-  border-left: 3px solid transparent;
-  padding: 4px 0 5px 8px;
-  margin-left: -8px;
-  border-radius: var(--mantine-radius-sm);
-  transition: border-color 0.2s ease, background 0.2s ease;
+  border-left: 3px solid var(--party-strong);
+  padding: 10px 10px 11px 12px;
+  margin-left: 0;
+  margin-bottom: 4px;
+  border-radius: 10px;
+  background: var(--surface-2);
+  transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Chips sit on the tile a tone apart from it, with a firm edge, so figures
+   lift off in both schemes. */
+.ledger-card .bal-chip {
+  background: var(--surface);
+  border-color: var(--line-strong);
+}
+
+.ledger-card .party-row + .party-row {
+  margin-top: 0;
+}
+
+/* The five tiles must fit a laptop screen, browser chrome included, so they
+   keep a compact rhythm by default: snug padding, a small gap, one-line
+   chips, and the card's own padding a step down. A taller window gets the
+   roomier spacing back. */
+.party-row {
+  padding-block: 5px 6px;
+}
+
+.ledger-card .bal-chip {
+  padding-block: 0;
+}
+
+.ledger-card.mantine-Card-root {
+  padding-block: 12px;
+}
+
+@media (min-height: 730px) {
+  .party-row {
+    padding-block: 7px 8px;
+    margin-bottom: 6px;
+  }
+
+  .ledger-card .bal-chip {
+    padding-block: 1px;
+  }
+
+  .ledger-card .party-lines {
+    gap: 4px;
+  }
 }
 
 /* Every row is a button: clicking a party makes it "you". */
@@ -315,24 +893,97 @@ body,
   cursor: pointer;
 }
 
+/* Hovering a party fills its tile with its own tint, as the demo first
+   shipped: a preview of becoming it. The live party, already tinted, deepens
+   a step so the hover still shows. */
 .party-row.clickable:hover,
 .party-row.clickable:focus-visible {
   background: var(--party-soft);
-  outline: none;
+}
+
+.party-row.acting.clickable:hover,
+.party-row.acting.clickable:focus-visible {
+  background: color-mix(in srgb, var(--party-strong) 14%, var(--party-soft));
 }
 
 .party-row.is-you {
-  border-left-color: var(--mantine-color-dark-5);
+  background: var(--surface-2);
+}
+
+/* The reader's own party: ink on paper. A solid black pill with white text
+   in light mode, a solid white pill with black text in dark. One colour,
+   no hue, so it can never be read as a party or a status. */
+.you-badge {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+:root[data-mantine-color-scheme='dark'] .you-badge {
+  background-color: #ffffff;
+  color: #000000;
 }
 
 .party-row.acting {
-  border-left-color: var(--party-strong);
   background: var(--party-soft);
+  box-shadow: inset 0 0 0 1px var(--party-strong);
 }
 
 .acting-label {
-  color: var(--party-strong);
-  animation: pulse 1.4s ease-in-out infinite;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  /* Room for the ring that ripples out of the dot, so it never crosses the
+     role text before it. */
+  margin-left: 8px;
+  color: var(--party-ink);
+}
+
+/* The "next" marker: a dot in the party's colour with a ring rippling out of
+   it, the live indicator people know. The ring is the party colour at full
+   strength fading as it grows, so it shows on white and on the dark card. */
+.live-dot {
+  position: relative;
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--party-strong);
+  flex: none;
+}
+
+.live-dot::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 50%;
+  border: 2px solid var(--party-strong);
+  animation: ripple 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(0.7);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(2.6);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .live-dot::after {
+    animation: none;
+    transform: scale(1.6);
+    opacity: 0.5;
+  }
+}
+
+/* In a narrow ledger the pills keep their full names and the role text is
+   what gives way, since the pill is the party's identity. */
+.party-row .party-badge,
+.party-row .you-badge {
+  flex: none;
 }
 
 /* Pushes the address to the end of the party's line, so the addresses form a
@@ -343,52 +994,50 @@ body,
 }
 
 /* Head and tail with the middle elided, which is how an r-address is
-   recognized. An address is read character by character to check it, so it gets
-   full contrast and letter-spacing, and the same gray pill as the endpoint in
-   the header: both are a fixed piece of network identity rather than a figure
-   that moves. */
+   recognized. An address is read character by character to check it, so it
+   gets letter-spacing and a mono face; it is network identity, not a figure
+   that moves, so it stays quiet. */
 .party-address {
   flex: none;
-  padding: 1px 6px;
-  border-radius: var(--mantine-radius-sm);
-  background: var(--mantine-color-gray-1);
   font-size: 11px;
-  letter-spacing: 0.02em;
-  color: var(--mantine-color-gray-7);
+  letter-spacing: 0.04em;
+  color: var(--xrpl-muted);
   user-select: all;
 }
 
-/* Label and figure on one line, in a bordered pill: the same information as the
-   old stacked block in half the height, which is what lets all five parties
-   share the panel without a scroll. */
+/* Label and figure on one line, in a hairline chip: the same information as
+   the old stacked block in half the height, which is what lets all five
+   parties share the panel without a scroll. */
 .bal-chip {
   display: inline-flex;
   align-items: baseline;
-  gap: 5px;
+  gap: 6px;
   flex: none;
-  padding: 1px 6px;
+  padding: 2px 8px;
   border: 1px solid var(--line);
-  border-radius: var(--mantine-radius-sm);
-  background: #fff;
+  border-radius: 6px;
+  background: var(--surface);
   white-space: nowrap;
 }
 
 .bal-chip-label {
   font-size: 9px;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
-  color: var(--mantine-color-gray-6);
+  letter-spacing: 0.05em;
+  color: var(--xrpl-muted);
 }
 
 .bal-chip-value {
+  font-family: var(--mono);
   font-size: 12px;
-  font-weight: 600;
+  font-weight: 400;
+  color: var(--xrpl-text);
   font-variant-numeric: tabular-nums;
 }
 
 .bal-chip-value.dim-value {
-  color: var(--mantine-color-gray-5);
-  font-weight: 400;
+  color: var(--xrpl-muted);
 }
 
 .bal-chip-value.locked-value {
@@ -403,7 +1052,7 @@ body,
 }
 
 .wallet-arrow {
-  color: var(--mantine-color-gray-4);
+  color: var(--line-strong);
   font-size: 14px;
   font-weight: 700;
 }
@@ -422,8 +1071,80 @@ body,
 /* Tinted by the enclosing .party-row's party variables. One line, like the
    holder wallets above it, so gaining the lawful view doesn't resize the row. */
 .issuer-view {
-  padding: 2px 6px;
+  padding: 3px 8px;
   border-left: 2px solid var(--party-strong, var(--accent));
-  background: var(--mantine-color-gray-0);
-  border-radius: 0 var(--mantine-radius-sm) var(--mantine-radius-sm) 0;
+  background: var(--surface-2);
+  border-radius: 0 6px 6px 0;
+}
+
+/* ---------------------------------------------------------------- json view */
+
+/* Transaction payloads sit in a quiet well with a mono summary line: gray on
+   a white card, white inside the tinted console. */
+.json-view {
+  background: var(--well);
+  border: 1px solid var(--line);
+  border-radius: var(--r-inner);
+}
+
+.action-console .json-view {
+  background: var(--surface);
+}
+
+.json-view > summary {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--xrpl-text);
+  background: var(--surface-2);
+  border-bottom: 1px solid transparent;
+}
+
+.json-view[open] > summary {
+  border-bottom-color: var(--line);
+}
+
+.json-view > summary:hover {
+  background: var(--surface-hover);
+}
+
+.json-pre {
+  margin: 0;
+  padding: 10px 12px;
+  background: transparent;
+  color: var(--well-text);
+  font-family: var(--mono);
+  font-size: 11.5px;
+  line-height: 1.55;
+  font-variant-ligatures: none;
+  /* Hashes and ciphertexts are longer than any card is wide: wrap them rather
+     than scroll sideways, so nothing is hidden off the edge on a phone. */
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+/* Keys in the text colour, strings in the accent, numbers and literals in
+   blue, from the same palette in both schemes. Punctuation stays quiet. */
+.json-pre {
+  color: var(--well-muted);
+  --j-str: var(--mantine-color-teal-8);
+  --j-num: var(--mantine-color-blue-7);
+}
+
+:root[data-mantine-color-scheme='dark'] .json-pre {
+  --j-str: var(--mantine-color-teal-4);
+  --j-num: var(--mantine-color-blue-4);
+}
+
+.j-key {
+  color: var(--well-text);
+  font-weight: 700;
+}
+
+.j-str {
+  color: var(--j-str);
+}
+
+.j-num,
+.j-lit {
+  color: var(--j-num);
 }

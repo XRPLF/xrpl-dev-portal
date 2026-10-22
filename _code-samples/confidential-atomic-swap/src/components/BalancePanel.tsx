@@ -239,9 +239,9 @@ export function BalancePanel ({
   }
 
   return (
-    <Card withBorder shadow='sm' padding='sm' className='ledger-card'>
+    <Card withBorder shadow='sm' padding='md' className='ledger-card'>
       {/* Outside the scroll area, so it stays while the parties scroll. */}
-      <Group gap={6} align='center' mb={8}>
+      <Group gap={6} align='center' mb={6}>
         <Text fw={700} size='sm'>
           Account balances
         </Text>
@@ -277,10 +277,10 @@ export function BalancePanel ({
               onClick={() => onSelect(key)}
               onKeyDown={(event) => keyActivate(event, key)}
             >
-              <Group align='center' gap={6} wrap='nowrap' mb={4}>
+              <Group align='center' gap={6} wrap='nowrap' mb={3}>
                 <PartyBadge party={key} />
                 {viewer === key && (
-                  <Badge size='xs' variant='filled' color='dark'>
+                  <Badge size='xs' variant='filled' className='you-badge'>
                     you
                   </Badge>
                 )}
@@ -294,7 +294,8 @@ export function BalancePanel ({
                     className='acting-label'
                     style={{ whiteSpace: 'nowrap' }}
                   >
-                    ● next
+                    <span className='live-dot' aria-hidden />
+                    next
                   </Text>
                 )}
                 <span className='party-spacer' />
@@ -309,7 +310,7 @@ export function BalancePanel ({
                   No account yet — run the first step to fund it.
                 </Text>
               ) : (
-                <Stack gap={6}>
+                <Stack gap={3} className='party-lines'>
                   {/* XRP first, so it shares the ticker column with the tokens
                       below and every figure reads as one column. */}
                   <Group gap={6} wrap='nowrap'>
@@ -331,7 +332,7 @@ export function BalancePanel ({
                       multiline
                       w={280}
                     >
-                      <Text size='xs' c='teal.8' fw={600}>
+                      <Text size='xs' className='accent-text' fw={600}>
                         Sponsoring {partyBalances.sponsoringOwnerCount} owner
                         reserves
                         {partyBalances.sponsoredReserveDrops != null &&

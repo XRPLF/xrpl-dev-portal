@@ -2,6 +2,7 @@ import { Alert, Avatar, Button, Group, Loader, Text } from '@mantine/core'
 
 import type { StepAction } from '../steps'
 import { PARTIES } from '../variables'
+import { CalloutIcon } from './CalloutIcon'
 import { JsonView } from './JsonView'
 import { partyColor, partyVars } from './PartyBadge'
 
@@ -44,13 +45,13 @@ export function ActionConsole ({
 
   return (
     <div className='action-console' style={partyVars(action.party)}>
-      <Group justify='space-between' align='center' wrap='nowrap' gap='md'>
+      <Group justify='space-between' align='center' wrap='nowrap' gap='md' className='console-head'>
         <Group gap='md' wrap='nowrap'>
           <Avatar size={44} radius='xl' color={color} variant='filled' fz={15} fw={700}>
             {actorInitials(action)}
           </Avatar>
           <div>
-            <Text size='xs' fw={700} tt='uppercase' lts='0.06em' className='your-move'>
+            <Text className='eyebrow your-move'>
               <span className='pointer' aria-hidden>
                 ➤
               </span>{' '}
@@ -103,6 +104,7 @@ export function ActionConsole ({
                   color={color}
                   onClick={onRun}
                   disabled={busy}
+                  rightSection={<span aria-hidden>→</span>}
                   style={{ flexShrink: 0 }}
                 >
                   {error != null ? 'Retry' : action.cta}
@@ -121,7 +123,6 @@ export function ActionConsole ({
             value={preview}
             defaultOpen
             mt={10}
-            bg='white'
           />
           {action.previewCaveat != null && (
             <Text size='xs' c='dimmed' mt={6}>
@@ -131,7 +132,14 @@ export function ActionConsole ({
         </>
       )}
       {error != null && (
-        <Alert color='red' title='Action failed' mt='sm' p='sm'>
+        <Alert
+          color='red'
+          title='Action failed'
+          mt='sm'
+          p='sm'
+          className='callout callout-danger'
+          icon={<CalloutIcon kind='danger' />}
+        >
           <Text size='xs' ff='monospace' style={{ overflowWrap: 'anywhere' }}>
             {error}
           </Text>

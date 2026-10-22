@@ -3,6 +3,23 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light dark" />
+    <!-- Paint the canvas in the scheme Mantine will pick (the saved choice,
+         else the system's) before the bundle loads, so there is no flash. -->
+    <script>
+      ;(function () {
+        try {
+          var saved = localStorage.getItem('mantine-color-scheme-value')
+          var dark =
+            saved === 'dark' ||
+            (saved !== 'light' &&
+              window.matchMedia('(prefers-color-scheme: dark)').matches)
+          var html = document.documentElement
+          html.style.background = dark ? '#242424' : '#f8f9fa'
+          html.style.colorScheme = dark ? 'dark' : 'light'
+        } catch (e) {}
+      })()
+    </script>
     <title>Confidential Atomic Swap · XRP Ledger Demo</title>
   </head>
   <body>

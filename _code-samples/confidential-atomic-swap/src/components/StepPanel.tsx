@@ -12,15 +12,16 @@ import {
   Title,
   Tooltip
 } from '@mantine/core'
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 import { explorerTxUrl } from '../config'
 import type { RunnableStep, StepAction } from '../steps'
 import type { StepCallout, StepResult } from '../types'
 import { type PartyKey } from '../variables'
 import { ActionConsole } from './ActionConsole'
+import { CalloutIcon } from './CalloutIcon'
 import { JsonView } from './JsonView'
-import { PartyBadge, partyColor, partyInitials } from './PartyBadge'
+import { PartyBadge, partyColor, partyInitials, partyVars } from './PartyBadge'
 
 export interface ActionSlot {
   result: StepResult | null
@@ -66,24 +67,47 @@ function ActionResult ({ result }: { result: StepResult }) {
       {result.txs.map((tx) => (
         <div key={tx.hash}>
           <Group gap={8} wrap='nowrap' align='baseline'>
-            <Text size='sm' c='teal.8' fw={700} className='success-check'>
+            <Text size='sm' fw={700} className='accent-text success-check'>
               ✓
             </Text>
             <Text size='sm' style={{ flex: 1 }}>
               {tx.label}
+              {/* Grey, like the orchestrator that paid for it. */}
               {tx.sponsored && (
-                <Badge component='span' size='xs' variant='light' color='gray' ml={6}>
+                <Badge
+                  component='span'
+                  size='xs'
+                  variant='light'
+                  color='gray'
+                  className='badge-gray'
+                  ml={6}
+                >
                   sponsored
                 </Badge>
               )}
+              {/* Grey too: blue would read as StableCorp. */}
               {tx.inner && (
-                <Badge component='span' size='xs' variant='light' color='blue' ml={6}>
+                <Badge
+                  component='span'
+                  size='xs'
+                  variant='light'
+                  color='gray'
+                  className='badge-gray'
+                  ml={6}
+                >
                   inner tx
                 </Badge>
               )}
             </Text>
             <Tooltip label='The engine result the validators recorded for this transaction.'>
-              <Badge size='xs' variant='light' color='teal' ff='monospace' tt='none'>
+              <Badge
+                size='xs'
+                variant='light'
+                color='teal'
+                className='badge-teal'
+                ff='monospace'
+                tt='none'
+              >
                 {tx.result}
               </Badge>
             </Tooltip>
@@ -93,6 +117,7 @@ function ActionResult ({ result }: { result: StepResult }) {
               rel='noreferrer'
               size='xs'
               ff='monospace'
+              className='tx-link'
               title={tx.hash}
             >
               {tx.hash.slice(0, 8)}…
@@ -176,7 +201,7 @@ function ActionTimeline ({
             {action.label}
           </Text>
           {state === 'done' && (
-            <Badge size='xs' variant='light' color='teal'>
+            <Badge size='xs' variant='light' color='teal' className='badge-teal'>
               done
             </Badge>
           )}
@@ -201,7 +226,10 @@ function ActionTimeline ({
             color={state === 'done' ? 'teal' : color}
             lineVariant={state === 'locked' ? 'dashed' : 'solid'}
             bullet={
-              <span className={`t-bullet ${state}`}>
+              <span
+                className={`t-bullet ${state}`}
+                style={partyVars(action.party)}
+              >
                 {state === 'done' ? '✓' : partyInitials(action.party)}
               </span>
             }
@@ -242,7 +270,7 @@ function CompletionView () {
     <>
       <Divider mt='md' />
       <Group justify='space-between' align='center' mt={12} gap='sm' wrap='wrap'>
-        <Text size='sm' c='teal.9' fw={600}>
+        <Text size='sm' className='accent-text' fw={600}>
           ✓ Swap settled. That's the whole lifecycle.
         </Text>
         <Group gap={4} wrap='wrap' justify='flex-end'>
@@ -251,13 +279,13 @@ function CompletionView () {
           </Text>
           {NEXT_READS.map((read, index) => (
             <Text size='sm' key={read.href}>
-              {/* Blue, not the teal primary: teal carries state in this UI
-                  (balances, completion), so links get their own color. */}
+              {/* Blue, not the green primary: green carries state in this
+                  UI (balances, completion), so links get their own color. */}
               <Anchor
                 href={read.href}
                 target='_blank'
                 rel='noreferrer'
-                c='blue.7'
+                c='blue'
                 underline='always'
               >
                 {read.label}
@@ -322,6 +350,8 @@ export function StepPanel ({
   onBecome: (party: PartyKey) => void
 }) {
   const bodyRef = useRef<HTMLDivElement>(null)
+  /** Whether the body has content below its fold, which draws a fade. */
+  const [more, setMore] = useState(false)
 
   // The body is a scroll region, so without this a new step keeps the previous
   // one's offset and starts the reader mid-narrative.
@@ -330,6 +360,27 @@ export function StepPanel ({
       bodyRef.current.scrollTop = 0
     }
   }, [step.id])
+
+  // The fade at the bottom of the body only shows while something is below
+  // the fold: it follows scrolling and any change in the body's content.
+  useEffect(() => {
+    const body = bodyRef.current
+    if (body == null) {
+      return
+    }
+    const update = (): void => {
+      setMore(body.scrollHeight - body.scrollTop - body.clientHeight > 4)
+    }
+    update()
+    body.addEventListener('scroll', update, { passive: true })
+    const observer = new ResizeObserver(update)
+    observer.observe(body)
+    Array.from(body.children).forEach((child) => observer.observe(child))
+    return () => {
+      body.removeEventListener('scroll', update)
+      observer.disconnect()
+    }
+  }, [step.id, completedActions, runningAction])
 
   return (
     <Card
@@ -340,18 +391,15 @@ export function StepPanel ({
       className='step-card'
     >
       {/* Outside the scroll region below, so the step's identity stays put. */}
-      <Group justify='space-between' align='flex-start' mb={4} wrap='nowrap'>
+      <Group
+        justify='space-between'
+        align='flex-start'
+        wrap='nowrap'
+        className='step-head'
+      >
         <div>
-          <Text
-            size='xs'
-            fw={700}
-            tt='uppercase'
-            c='teal.8'
-            lts='0.06em'
-          >
-            {eyebrow}
-          </Text>
-          <Title order={2} size={22} mt={2}>
+          <Text className='eyebrow'>{eyebrow}</Text>
+          <Title order={2} className='step-title' mt={4}>
             {step.title}
           </Title>
         </div>
@@ -377,6 +425,7 @@ export function StepPanel ({
         </Group>
       </Group>
 
+      <div className={`scroll-frame ${more ? 'has-more' : ''}`}>
       <div className='panel-scroll' ref={bodyRef}>
         {/* The prose is capped to a readable measure, while the timeline below
             it keeps the card's full width for transaction JSON. */}
@@ -385,12 +434,16 @@ export function StepPanel ({
             {step.description}
           </Text>
 
+          {/* Coloured and iconed as xrpl.org's admonitions: a note is blue,
+              a caution yellow, a tip green. */}
           {calloutList(step.callout).map((callout) => (
             <Alert
               key={callout.title}
               mt='sm'
               p='sm'
               color={callout.kind === 'warn' ? 'yellow' : 'blue'}
+              className={`callout callout-${callout.kind === 'warn' ? 'warn' : 'note'}`}
+              icon={<CalloutIcon kind={callout.kind === 'warn' ? 'warn' : 'note'} />}
               title={callout.title}
             >
               <Text size='sm'>{callout.text}</Text>
@@ -398,7 +451,14 @@ export function StepPanel ({
           ))}
 
           {step.learn && (
-            <Alert mt='sm' p='sm' color='teal' title={step.learnTitle}>
+            <Alert
+              mt='sm'
+              p='sm'
+              color='teal'
+              className='callout callout-tip'
+              icon={<CalloutIcon kind='tip' />}
+              title={step.learnTitle}
+            >
               <Text size='sm'>{step.learn}</Text>
             </Alert>
           )}
@@ -417,6 +477,7 @@ export function StepPanel ({
           onBecome={onBecome}
         />
       </div>
+      </div>
 
       {/* One footer for a finished step, whether it just ran or is revisited. */}
       {continueLabel && (
@@ -425,7 +486,7 @@ export function StepPanel ({
           <Group justify='space-between' align='center' mt={12}>
             {isCurrent
               ? (
-                <Text size='sm' c='teal.9' fw={600}>
+                <Text size='sm' className='accent-text' fw={600}>
                   ✓ Complete.
                 </Text>
                 )
