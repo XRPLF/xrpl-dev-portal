@@ -161,6 +161,10 @@ Validators verify the proof provides cryptographic certainty that the plaintext 
 
 Issuers can enable confidential features by setting the **Can Hold Confidential Balance** flag on an MPT issuance. This can be done either during the initial [MPTokenIssuanceCreate transaction][] or later using an [MPTokenIssuanceSet transaction][].
 
+{% admonition type="info" name="Note" %}
+Enabling the flag later requires the [DynamicMPT amendment][] in addition to ConfidentialTransfer. Enabling it at creation doesn't.
+{% /admonition %}
+
 Like other [MPT issuance flags](../../../references/protocol/ledger-data/ledger-entry-types/mptokenissuance.md#mptokenissuance-flags), enabling the **Can Hold Confidential Balance** flag is a **one-way** operation: no subsequent transaction can disable it.
 
 When enabling confidential transfers, the issuer must also register their ElGamal public key, and optionally an auditor's key. Keys can only be registered with an MPTokenIssuanceSet transaction, so an issuer who sets the flag at creation must follow up with one before holders can convert. No key can be registered once any confidential balance is in circulation.
