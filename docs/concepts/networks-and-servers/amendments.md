@@ -73,7 +73,7 @@ The Clio server can become amendment blocked if it encounters an unknown field t
 
 When amendments are enabled, the source code for pre-amendment behaviors remain in `xrpld`. While there are use-cases for keeping old code, such as reconstructing ledger outcomes for verification, tracking amendments and legacy code adds complexity over time.
 
-[XLS-11](https://github.com/XRPLF/XRPL-Standards/blob/master/XLS-0011-retiring-amendments/README.md) defines the process for retiring old amendments and associated pre-amendment code. After an amendment has been enabled on the Mainnet for two years, it can be retired. Retiring an amendment makes it part of the core protocol unconditionally; it's no longer tracked or treated as an amendment, and all pre-amendment code is removed.
+[XLS-11](https://github.com/XRPLF/XRPL-Standards/blob/master/XLS-0011-retiring-amendments/README.md) defines the process for retiring old amendments and associated pre-amendment code. After an amendment has been enabled on the Mainnet for two years, it can be retired. Retiring an amendment makes it part of the core protocol unconditionally; all pre-amendment code is removed, along with the switches to toggle between pre- and post-amendment code paths. On networks where the amendment was enabled, the [Amendments entry][] maintains a record of the amendment's existence, and the [feature method][] also lists retired amendments.
 
 After an amendment is retired, new test networks will always use the amended code from the start, but the list of enabled amendments recorded in the ledger won't include any amendments that were already retired when the new network started.
 
