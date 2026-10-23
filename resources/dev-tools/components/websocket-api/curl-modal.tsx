@@ -73,10 +73,9 @@ function getCurl(selectedConnection: Connection, currentBody) {
     const method = params.command;
     delete params.command;
     const body_json = { method: method, params: [params] };
-    body = JSON.stringify(body_json, null, null);
+    body = JSON.stringify(body_json, null, 0);
   } catch (e) {
-    alert("Can't provide curl format of invalid JSON syntax");
-    return;
+    return "Can't provide curl format of invalid JSON syntax";
   }
 
   const server = selectedConnection.jsonrpc_url;
