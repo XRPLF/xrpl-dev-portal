@@ -142,7 +142,7 @@ The example sets `tfMPTCanTransfer` so holders can send the token to each other,
 {% /tab %}
 {% /tabs %}
 
-You can also add this capability to an existing issuance with the `tfMPTSetCanHoldConfidentialBalance` flag on an [MPTokenIssuanceSet transaction][], as long as the issuer didn't mark the capability immutable at creation. Enabling it is **one-way**, so there is no flag to turn it off.
+You can also add this capability to an existing issuance with the `tfMPTSetCanHoldConfidentialBalance` flag on an [MPTokenIssuanceSet transaction][], as long as the [DynamicMPT amendment][] is enabled and the issuer didn't mark the capability immutable at creation. Enabling it is **one-way**, so there is no flag to turn it off.
 
 {% admonition type="warning" name="Caution" %}
 The `TransferFee` must be `0` on an issuance that can hold confidential balances, because the ledger can't compute a percentage fee on an encrypted amount.
