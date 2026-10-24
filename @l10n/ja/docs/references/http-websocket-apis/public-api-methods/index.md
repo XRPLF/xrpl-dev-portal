@@ -68,8 +68,11 @@ XRP Ledgerのアカウントとは、XRPの保有者と取引の送信者を意�
 
 Payment Channel は、2名の当事者間での一方向の繰り返しの支払い、またはそれに伴う一時的な貸付を容易に行えるようにするためのツールです。Payment Channelに関しては、以下のメソッドを使用します。
 
-* **[`channel_authorize`](payment-channel-methods/channel_authorize.md)** - ペイメントチャネルへのクレーム（支払請求）に署名します。
 * **[`channel_verify`](payment-channel-methods/channel_verify.md)** - payment channel クレームの署名をチェックします。
+
+デフォルトでは、以下のメソッドは[管理者専用](../admin-api-methods/index.md)です。サーバ管理者が[パブリック署名を有効にしている](../../../infrastructure/configuration/enable-public-signing.md)場合は、パブリックメソッドとして使用できます。
+
+* **[`channel_authorize`](../admin-api-methods/signing-methods/channel_authorize.md)** - ペイメントチャネルへのクレーム（支払請求）に署名します。
 
 
 ## [サブスクリプションメソッド](subscription-methods/index.md)
@@ -85,6 +88,7 @@ Payment Channel は、2名の当事者間での一方向の繰り返しの支払
 以下のメソッドを使用して、`xrpld`サーバの現在の状態についての情報を取得します。
 
 * **[`fee`](server-info-methods/fee.md)** - トランザクションコストについての情報を取得します。
+* **[`feature`](server-info-methods/feature.md)** - サーバが認識しているAmendmentに関する情報を返します。
 * **[`server_info`](server-info-methods/server_info.md)** - サーバのステータスを人間が読めるフォーマットで取得します。
 * **[`server_state`](server-info-methods/server_state.md)** - サーバのステータスを機械が読み取れるフォーマットで取得します。
 

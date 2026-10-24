@@ -224,7 +224,7 @@
 [base58]: /@l10n/ja/docs/references/protocol/data-types/base58-encodings.md
 [book_offersメソッド]: /@l10n/ja/docs/references/http-websocket-apis/public-api-methods/path-and-order-book-methods/book_offers.md
 [can_deleteメソッド]: /@l10n/ja/docs/references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/can_delete.md
-[channel_authorizeメソッド]: /@l10n/ja/docs/references/http-websocket-apis/public-api-methods/payment-channel-methods/channel_authorize.md
+[channel_authorizeメソッド]: /@l10n/ja/docs/references/http-websocket-apis/admin-api-methods/signing-methods/channel_authorize.md
 [channel_verifyメソッド]: /@l10n/ja/docs/references/http-websocket-apis/public-api-methods/payment-channel-methods/channel_verify.md
 [共通フィールド]: /@l10n/ja/docs/references/protocol/transactions/common-fields.md
 [connectメソッド]: /@l10n/ja/docs/references/http-websocket-apis/admin-api-methods/peer-management-methods/connect.md

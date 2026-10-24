@@ -2,14 +2,14 @@
 html: channel_verify.html
 parent: payment-channel-methods.html
 seo:
-    description: 特定額のXRPをPayment Channelから清算するときに使用できる署名の有効性を検証します。
+    description: Payment Channelのクレームの署名を検証します。
 labels:
   - Payment Channel
 ---
 # channel_verify
 {% source-link path="src/xrpld/rpc/handlers/ChannelVerify.cpp" /%}
 
-`channel_verify`メソッドは、特定額のXRPをPayment Channelから清算するときに使用できる署名の有効性を検証します。
+`channel_verify`メソッドは、Payment Channelから特定額のXRPを受け取るために使用できる署名の有効性を検証します。
 
 ## リクエストのフォーマット
 リクエストのフォーマットの例:
@@ -114,7 +114,7 @@ xrpld channel_verify aB44YfzW24VDEJQ2UuLPV2PvqcPCSoLnL7y5M1EzhdW4LnK5xMS3 5DB01B
 
 {% admonition type="warning" name="注意" %}これは、Channelに十分なXRPが割り当てられていることを確認するものではありません。クレームが有効であると判断する前に、最新の検証済みレジャーでこのChannelを調べ、このChannelがオープンでありその`amount`の値がクレームの`amount`以上であることを確認してください。このためには[account_channelsメソッド][]を使用します。{% /admonition %}
 
-## 考えられるエラー
+## 想定されるエラー
 
 * [汎用エラータイプ][]のすべて。
 * `invalidParams` - 1つ以上のフィールドの指定が正しくないか、1つ以上の必須フィールドが指定されていません。
