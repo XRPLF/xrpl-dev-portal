@@ -27,10 +27,10 @@ labels:
 ブラックホール化を暗号学的に証明する手段はありません。アカウントが上記の条件を満たしていることを検証できるだけです。
 
 確認するには、[account_infoメソッド][]を呼び出し、次の点をすべて満たしていることを確かめます。
-1. `lsfDisableMaster`フラグが設定されている。
-2. `RegularKey`フィールドが既知の[ブラックホールアドレス](addresses.md#特別なアドレス)(ACCOUNT_ZEROの`rrrrrrrrrrrrrrrrrrrrrhoLvTp`、またはACCOUNT_ONEの`rrrrrrrrrrrrrrrrrrrrBZbvji`のいずれか)に設定されている。
-3. [account_objectsメソッド][]を呼び出して、そのアカウントに[SignerListエントリ][]が存在しないことを確認する。
-4. 同様に、そのアカウントに[Delegateレジャーエントリ](../../references/protocol/ledger-data/ledger-entry-types/delegate.md)が存在しないことを確認する。
+1. `lsfDisableMaster`フラグが設定されていること。
+2. `RegularKey`フィールドが既知の[ブラックホールアドレス](addresses.md#特別なアドレス)(ACCOUNT_ZEROの`rrrrrrrrrrrrrrrrrrrrrhoLvTp`、またはACCOUNT_ONEの`rrrrrrrrrrrrrrrrrrrrBZbvji`のいずれか)に設定されていること。
+3. [account_objectsメソッド][]を呼び出して、そのアカウントに[SignerListエントリ][]が存在しないこと。
+4. 同様に、そのアカウントに[Delegateレジャーエントリ](../../references/protocol/ledger-data/ledger-entry-types/delegate.md)が存在しないこと。
 
 ACCOUNT_ZEROとACCOUNT_ONEは、秘密鍵ではなく整数の0と1から導出されたアドレスであるため、既知のブラックホールアドレスとみなされます。このため、対応する秘密鍵を誰かが生成することは事実上不可能です。
 
@@ -44,7 +44,7 @@ ACCOUNT_ZEROとACCOUNT_ONEは、秘密鍵ではなく整数の0と1から導出�
 
 ブラックホール化は取り消せません。アカウントをブラックホール化する前に、次の点に注意してください。
 - アカウントが保有するXRPはすべて恒久的に失われ、取り戻すことはできません。
-- ブラックホール化後は、アカウントはいかなるトランザクションも送信できません。誤った設定(送金手数料、フリーズ権限、Ripplingなど)があっても、恒久的にそのまま固定されます。
+- ブラックホール化後は、アカウントはいかなるトランザクションも送信できません。誤った設定(送金手数料、フリーズ権限、Ripplingなど)があっても、恒久的に固定され変更できなくなります。
 - ブラックホール化前に作成された既存のレジャーエントリ(未決済のオファー、Escrow、Payment Channel、Checkなど)は、その後も成立(完了)する可能性があります。つまり、ブラックホール化後も追加のトークンが発行されたり、XRPがアカウントから流出したりする可能性があります。
 
 ## 関連項目
