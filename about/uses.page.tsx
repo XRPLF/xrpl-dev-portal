@@ -3,12 +3,14 @@ import { createPortal } from "react-dom";
 import { useThemeHooks } from '@redocly/theme/core/hooks';
 import Button from "shared/components/Button";
 import { Link } from "shared/components/Link";
+import clsx from "clsx";
 import {
   MaterialArrowDownwardIcon,
   XrplArrowInternalLinkIcon,
 } from "shared/components/Icons";
 import numLight from "../static/js/ecosystem/numbers-animation-light.json";
 import numDark from "../static/js/ecosystem/numbers-animation.json";
+import ecosystem from "../@theme/data/ecosystem-projects.json";
 
 export const frontmatter = {
   seo: {
@@ -20,424 +22,78 @@ export const frontmatter = {
 import { useLottie } from "lottie-react";
 import { useThemeFromClassList } from "../@theme/helpers";
 
-const logos = {
-  infrastructure: [
-    "xrp-ledger",
-    "gatehub",
-    "towolabs",
-    "xrpscan",
-    "xrp-toolkit",
-    "bithomp",
-    "onthedex",
-  ],
-  developer_tooling: ["cryptum", "evernode", "threezy", "tokenize"],
-  interoperability: ["multichain"],
-  wallet: ["crossmark", "edge", "gem-wallet", "xumm", "joey-wallet", "bifrost-wallet", "bitget-wallet"],
-  nfts: [
-    "aesthetes",
-    "audiotarky",
-    "nftmaster",
-    "peerkat",
-    "sologenic_dex",
-    "xrp-cafe",
-    "xrp-oval",
-  ],
-  exchanges: ["sologenic_dex", "xpmarket", 'orchestra-finance','moai-finance', 'first-ledger-bot'],
-  gaming: ["forte", "ledger-city", "futureverse", 'zerpmon'],
-  security: ["anchain"],
-  payments: ["ripple", "supermojo"],
-  cbdc: ["ripple"],
-  sustainability: ["carbonland-trust"],
-  custody: ["gatehub", "bitgo"],
+type Project = {
+  slug: string;
+  name: string;
+  description: string;
+  url: string;
+  logo: string | null;
+  logoOnDark?: boolean;
+  categories: string[];
 };
-const cardsData = [
-  {
-    id: "aesthetes",
-    title: "Aesthetes",
-    description:
-      "Aesthetes is a bridge between fine art and blockchain, enabling everyone, around the world, to buy and sell with just a click for fractional ownership of international physical art.",
-    category_id: "nfts",
-    category_name: "NFTs",
-    link: "https://aesthetes.art/",
-  },
-  {
-    id: "anchain-ai",
-    title: "Anchain.AI",
-    description:
-      "AnChain.AI offers AI-powered intelligence enhancing blockchain security, risk, and compliance strategies.",
-    category_id: "security",
-    category_name: "Security",
-    link: "https://anchain.ai",
-  },
-  {
-    id: "audiotarky",
-    title: "Audiotarky",
-    description:
-      "Audiotarky is a new music streaming platform that prioritises artists and privacy over algorithms and shareholders.",
-    category_id: "nfts",
-    category_name: "NFTs",
-    link: "https://www.audiotarky.com/",
-  },
-  {
-    id: "bitgo",
-    title: "BitGo",
-    description:
-      "BitGo provides custodial and non-custodial asset holdings for digital assets including XRP. BitGo's enterprise-level security empowers businesses to integrate digital currencies like XRP into new and existing financial systems.",
-    category_id: "custody",
-    category_name: "Custody",
-    link: "https://www.bitgo.com/",
-  },
-  {
-    id: "forte",
-    title: "Forte",
-    description:
-      "Forte offers an unprecedented set of easy-to-use tools and services for game developers to integrate blockchain technology into their games, to unlock new economic and creative opportunities for gamers across the world.",
-    category_id: "gaming",
-    category_name: "Gaming",
-    link: "https://forte.io",
-  },
-  {
-    id: "futureverse",
-    title: "Futureverse",
-    description:
-      "Revolutionary AI + metaverse technologies that enable open, scalable, and interoperable apps, games, and experiences.",
-    category_id: "gaming",
-    category_name: "Gaming",
-    link: "https://www.futureverse.com/",
-  },
-  {
-    id: "zerpmon",
-    title: "Zerpmon",
-    description:
-      "Zerpmon is an original collection of digital collectible creatures that live on the XRPL, with each Zerpmon being a completely unique 1/1. Train and level-up your Zerpmon by taking them on Missions, then Battle other Trainers for XRP, NFTs, massive Tournament prizes, and the glory that comes with becoming the very best.",
-    category_id: "gaming",
-    category_name: "Gaming",
-    link: "https://www.zerpmon.world/",
-  },
-  {
-    id: "gatehub",
-    title: "Gatehub",
-    description:
-      "Gatehub XRP Ledger Markets is an explorer to track Gatehub's inssuances on the XRP Ledger.",
-    category_id: "custody",
-    category_name: "Custody",
-    link: "https://gatehub.net/markets",
-  },
-  {
-    id: "bithomp",
-    title: "Bithomp",
-    description:
-      "Bithomp is an XRPL explorer and toolkit, used by many cryptocurrency exchanges. Bithomp was launched in 2015 with a mission to build the most user-friendly XRPL explorer.",
-    category_id: "infrastructure",
-    category_name: "Infrastructure",
-    link: "https://bithomp.com/",
-  },
-  {
-    id: "bitpay",
-    title: "bitpay",
-    description:
-      "BitPay builds powerful, enterprise-grade tools for accepting and spending cryptocurrencies, including XRP.",
-    category_id: "payments",
-    category_name: "Payments",
-    link: "https://bitpay.com/",
-  },
-  {
-    id: "carbonland-trust",
-    title: "Carbonland Trust",
-    description:
-      "Carbonland Trust offers transparent nature-based carbon credits, and inclusive access to voluntary carbon markets for landowners and corporations alike. ",
-    category_id: "sustainability",
-    category_name: "Carbon Markets/Sustainability",
-    link: "https://www.carbonlandtrust.com/",
-  },
-  {
-    id: "cryptum",
-    title: "Cryptum",
-    description:
-      "Cryptum is an API/SDK platform for integrating the XRP Ledger with any application.",
-    category_id: "developer_tooling",
-    category_name: "Developer Tooling",
-    link: "https://blockforce.in/products/cryptum",
-  },
-  {
-    id: "evernode",
-    title: "Evernode",
-    description:
-      "Evernode proposes a permissionless, flexible, scalable Layer 2 smart contract network built from the XRP Ledger.",
-    category_id: "developer_tooling",
-    category_name: "Developer Tooling",
-    link: "https://evernode.org/",
-  },
-  {
-    id: "gatehub",
-    title: "Gatehub",
-    description:
-      "Gatehub XRP Ledger Markets is an explorer to track Gatehub's inssuances on the XRP Ledger.",
-    category_id: "infrastructure",
-    category_name: "Infrastructure",
-    link: "https://gatehub.net/markets",
-  },
-  {
-    id: "gem-wallet",
-    title: "Gem Wallet",
-    description:
-      "GemWallet is a web extension that enables users to make fast payments on the XRP Ledger via a browser. It's a safer alternative to copying and pasting private keys for use with web applications.",
-    category_id: "wallet",
-    category_name: "Wallet",
-    link: "https://gemwallet.app/",
-  },
-  {
-    id: "ledger-city",
-    title: "Ledger City",
-    description:
-      "Ledger City is a crypto real estate game powered by the XRP Ledger.",
-    category_id: "gaming",
-    category_name: "Gaming",
-    link: "https://ledgercitygame.com/",
-  },
-  {
-    id: "multichain",
-    title: "Multichain",
-    description:
-      "Multichain is the ultimate Router for web3. It is an infrastructure developed for arbitrary cross-chain interactions.",
-    category_id: "interoperability",
-    category_name: "Interoperability",
-    link: "https://multichain.org/",
-  },
-  {
-    id: "nft-master",
-    title: "NFT Master",
-    description:
-      "NFT Master is an NFT marketplace where creators can buy, mint and sell NFTs.",
-    category_id: "nfts",
-    category_name: "NFTs",
-    link: "https://nftmaster.com/",
-  },
-  {
-    id: "onthedex",
-    title: "OnTheDex",
-    description:
-      "OnTheDex is a quality source of information for aggregator sites to take live feeds of XRPL token activity.",
-    category_id: "infrastructure",
-    category_name: "Infrastructure",
-    link: "https://onthedex.live/",
-  },
-  {
-    id: "onxrp",
-    title: "onXRP",
-    description:
-      "onXRP is an NFT marketplace where creators can buy, mint and sell NFTs built by the XPUNKs.",
-    category_id: "nfts",
-    category_name: "NFTs",
-    link: "https://onxrp.com/about/",
-  },
-  {
-    id: "peerkat",
-    title: "Peerkat",
-    description:
-      "Peerkat is an NFT services and tooling provider for the XRPL community.",
-    category_id: "nfts",
-    category_name: "NFTs",
-    link: "https://peerkat.io/",
-  },
-  {
-    id: "Crossmark",
-    title: "Crossmark",
-    description:
-      "Crossmark is a browser extension wallet built for interacting with the XRP Ledger.",
-    category_id: "wallet",
-    category_name: "Wallet",
-    link: "https://github.com/crossmarkio",
-  },
-  {
-    id: "joey-wallet",
-    title: "Joey Wallet",
-    description:
-      "Joey Wallet is a secure, self-custody cryptocurrency wallet and gateway to Web3 decentralized applications (dApps) on the XRP Ledger (XRPL).",
-    category_id: "wallet",
-    category_name: "Wallet",
-    link: "https://joeywallet.xyz/",
-  },
-  {
-    id: "Edge",
-    title: "Edge",
-    description:
-      "Edge is a secure, easy, and private way to use, store, trade, and exchange crypto assets. Edge ensures sure you're always in control of your money and information while also providing the tools necessary to protect yourself from others and your own mistakes. Edge has rich functionality, a battle-tested security architecture, and the industry's best customer support.",
-    category_id: "wallet",
-    category_name: "Wallet",
-    link: "https://edge.app/ripple-wallet/",
-  },
-  {
-    id: "ripples-cbdc-platform",
-    title: "Ripple's CBDC Platform",
-    description:
-      "Ripple's Central Bank Digital Currency (CBDC) solution enables banks to mint, manage, transact and redeem currency to easily manage the full CBDC lifecycle. Each solution is built on a private ledger that is based upon XRP Ledger technology.",
-    category_id: "cbdcs",
-    category_name: "CBDC",
-    link: "https://ripple.com/solutions/central-bank-digital-currency/",
-  },
-  {
-    id: "ripples-on-demand-liquidity",
-    title: "Ripple's On-Demand Liquidity",
-    description:
-      "Ripple powers real-time, low-cost cross-border payment settlement  by using XRP as a bridge currency between two fiat currencies.",
-    category_id: "payments",
-    category_name: "Payments",
-    link: "https://ripple.com/",
-  },
-  {
-    id: "sologenic-dex",
-    title: "Sologenic DEX",
-    description:
-      "Sologenic DEX is a popular decentralized exchange on the XRP Ledger made by Sologenic.",
-    category_id: "exchanges",
-    category_name: "Exchanges",
-    link: "https://sologenic.org/",
-  },
-  {
-    id: "orchestra-finance",
-    title: "Orchestra Finance",
-    description:
-      "Orchestra Finance is a first-in-class AMM DEX on the XRP Ledger(XRPL). We provide the quintessential AMM experience, with low fees, speedy transactions, and a user-friendly interface.",
-    category_id: "exchanges",
-    category_name: "Exchanges",
-    link: "https://orchestra.finance/",
-  },
-  {
-    id: "moai-finance",
-    title: "Moai Finance",
-    description:
-      "Moai Finance is an innovative multi-chain DEX and cross-chain DEX aggregator, strategically positioned within the XRPL ecosystem to harness its untapped liquidity across various side-chains. ",
-    category_id: "exchanges",
-    category_name: "Exchanges",
-    link: "https://moai-finance.xyz/",
-  },
-  {
-    id: "first-ledger-bot",
-    title: "First Ledger Bot",
-    description:
-      "First Ledger is the fastest way to trade on the xrpl. This tool allows you to trade with speed within a couple of clicks.",
-    category_id: "exchanges",
-    category_name: "Exchanges",
-    link: "https://firstledger.net/",
-  },
-  {
-    id: "sologenic-nft",
-    title: "Sologenic NFT",
-    description: "Sologenic NFT is an NFT marketplace designed by Sologenic.",
-    category_id: "nfts",
-    category_name: "NFTs",
-    link: "https://sologenic.org/nfts/marketplace?network=mainnet",
-  },
-  {
-    id: "towo-labs",
-    title: "Towo Labs",
-    description:
-      "Towo Labs was founded in 2019, to develop XRP Ledger and Interledger infrastructures and make non-custodial crypto management easier.",
-    category_id: "infrastructure",
-    category_name: "Infrastructure",
-    link: "https://towolabs.com/",
-  },
-  {
-    id: "x-tokenize",
-    title: "X-tokenize",
-    description:
-      "X-Tokenize is a command line tool to simplify the process of creating, managing and distributing issued currencies and eventually NFTs on the XRPL.",
-    category_id: "developer_tooling",
-    category_name: "Developer Tooling",
-    link: "https://x-tokenize.com/",
-  },
-  {
-    id: "threezy",
-    title: "3ZY",
-    description:
-      "3ZY develops SaaS solutions that combine web2 and web3 technologies with marketing to enhance the user experience for newcomers in the market, making it easier for them to purchase, stay secure, and engage in trustless decentralized finance and transactions.",
-    category_id: "developer_tooling",
-    category_name: "Developer Tooling",
-    link: "https://3zyconnect.com/",
-  },
-  {
-    id: "xp-market",
-    title: "XP Market",
-    description:
-      "XP Market is a price-tracking website for cryptoassets on the XRPL coupled with a decentralized exchange.",
-    category_id: "exchanges",
-    category_name: "Exchanges",
-    link: "https://xpmarket.com/",
-  },
-  {
-    id: "xrp-cafe",
-    title: "XRP Cafe",
-    description:
-      "XRP Cafe is an NFT marketplace built by the community that aims to be the easiest way to build, sell and mint NFTs.",
-    category_id: "nfts",
-    category_name: "NFTs",
-    link: "https://xrp.cafe/",
-  },
-  {
-    id: "xrp-toolkit",
-    title: "XRP Toolkit",
-    description:
-      "XRP Toolkit is a platform for managing crypto assets and trading on the XRP Ledger's decentralized exchange.",
-    category_id: "infrastructure",
-    category_name: "Infrastructure",
-    link: "https://www.xrptoolkit.com/",
-  },
-  {
-    id: "xrpl-rosetta",
-    title: "XRPL Rosetta",
-    description:
-      "XRPL Rosetta explores fiat data on XRPL through visualization.",
-    category_id: "infrastructure",
-    category_name: "Infrastructure",
-    link: "https://threexrp.dev/",
-  },
-  {
-    id: "xrpl-org-ledger-explorer",
-    title: "XRPL.org Ledger Explorer",
-    description:
-      "XRPL.org's Ledger Explorer is a block explorer of the XRP Ledger.",
-    category_id: "infrastructure",
-    category_name: "Infrastructure",
-    link: "https://livenet.xrpl.org/",
-  },
-  {
-    id: "xrpscan",
-    title: "XRPScan",
-    description:
-      "XRPSCAN is an explorer and analytics platform for the XRP Ledger. We provide a clean and simple way to look up accounts, ledgers and transactions.",
-    category_id: "infrastructure",
-    category_name: "Infrastructure",
-    link: "https://xrpscan.com/",
-  },
-  {
-    id: "xumm-wallet",
-    title: "Xaman",
-    description:
-      "Xaman is a non custodial wallet with superpower for the XRP Ledger.",
-    category_id: "wallet",
-    category_name: "Wallet",
-    link: "https://xaman.app/#team",
-  },
-  {
-    id: "bifrost-wallet",
-    title: "Bifrost Wallet",
-    description:
-      "Bifrost Wallet is a secure, independently audited self-custodial wallet for the XRP Ledger with multi-chain support. Purpose-built for XRPFi: a wallet where your XRP works for you and earns yield.",
-    category_id: "wallet",
-    category_name: "Wallet",
-    link: "https://bifrostwallet.com/",
-  },
-  {
-    id: "bitget-wallet",
-    title: "Bitget Wallet",
-    description:
-      "Bitget Wallet is a non-custodial wallet designed to make crypto simple and secure for everyone.",
-    category_id: "wallet",
-    category_name: "Wallet",
-    link: "https://web3.bitget.com/",
-  },
-];
+
+// From the XRPL Commons ecosystem map. Refresh with tools/fetch-ecosystem-map.py
+const cardsData: Project[] = ecosystem.projects;
+
+const categoryCounts = cardsData.reduce<Record<string, number>>((counts, card) => {
+  card.categories.forEach((category) => {
+    counts[category] = (counts[category] || 0) + 1;
+  });
+  return counts;
+}, {});
+
+// Shown first in each category's popup; the rest follow alphabetically.
+const spotlight: string[] = ecosystem.spotlight;
+
+function popupLogos(category: string) {
+  const rank = (card: Project) => {
+    const index = spotlight.indexOf(card.slug);
+    return index === -1 ? spotlight.length : index;
+  };
+  return cardsData
+    .filter((card) => card.logo && card.categories.includes(category))
+    .sort((a, b) => rank(a) - rank(b))
+    .slice(0, 7);
+}
+
+// The hero counter is a Lottie "slot machine": each digit is a text column of
+// 0-9 that scrolls up behind a mask and stops on its digit. Rebuild it so it
+// lands on the number of projects listed on this page.
+const DIGIT_HEIGHT = 191.95; // one row of a digit column, in animation units
+const PLUS_OFFSET = 79.507; // the "+" sits this far right of the last column
+const COUNTER_WIDTH = 218; // width of .numbers-animation at four digits
+
+function counterAnimation(base, count: number) {
+  const data = JSON.parse(JSON.stringify(base));
+  const digits = String(count).split("").map(Number);
+  const columns = data.layers
+    .filter((layer) => layer.ty === 5 && /^0+$/.test(layer.nm))
+    .sort((a, b) => a.nm.length - b.nm.length);
+  if (digits.length > columns.length) {
+    return base;
+  }
+  columns.forEach((layer, i) => {
+    if (i >= digits.length) {
+      // Drop the unused column and the mask layer just above it.
+      data.layers.splice(data.layers.indexOf(layer) - 1, 2);
+      return;
+    }
+    layer.t.d.k[0].s.t = [...Array(10).keys(), ...Array(digits[i] + 1).keys()].join("\r");
+    const [start, end] = layer.ks.p.k;
+    const distance = -DIGIT_HEIGHT * (10 + digits[i]);
+    end.s = [start.s[0], start.s[1] + distance, 0];
+    start.to = [0, distance / 6, 0];
+    start.ti = [0, -distance / 6, 0];
+  });
+  const plus = data.layers.find((layer) => layer.nm === "+");
+  const plusGap = base.w - plus.ks.p.k[0];
+  plus.ks.p.k[0] = columns[digits.length - 1].ks.p.k[0].s[0] + PLUS_OFFSET;
+  data.w = Math.ceil(plus.ks.p.k[0] + plusGap);
+  return data;
+}
+
+const counterDark = counterAnimation(numDark, cardsData.length);
+const counterLight = counterAnimation(numLight, cardsData.length);
 
 const featured_categories = {
   infrastructure: "Infrastructure",
@@ -453,15 +109,16 @@ const other_categories = {
   security: "Security",
   payments: "Payments",
   sustainability: "Sustainability",
-  cbdcs: "CBDCs",
+  cbdc: "CBDC",
   custody: "Custody",
 };
+
+const category_names = { ...featured_categories, ...other_categories };
 
 const uses = [
   {
     id: "infrastructure",
     title: "Infrastructure",
-    number: 7,
     description:
       "Build and operate components or systems that help the functionality of the XRP Ledger, such as Nodes, dev tools, storage, security and more."
   },
@@ -469,49 +126,42 @@ const uses = [
   {
     id: "developer_tooling",
     title: "Developer Tooling",
-    number: 4,
     description:
       "Developers can leverage open-source libraries, SDKs and more to help build their project and access essential XRP Ledger functionality."
   },
   {
     id: "interoperability",
     title: "Interoperability",
-    number: 1,
     description:
       "Developers and node operators can build and run custom sidechains while leveraging the XRPL's lean and efficient feature set."
   },
   {
     id: "wallet",
     title: "Wallet",
-    number: 7,
     description:
       "Build digital wallets to store passwords and interact with various blockchains to send and receive digital assets, including XRP."
   },
   {
     id: "nfts",
     title: "NFTs",
-    number: 7,
     description:
       "XRPL supports the issuance of IOUs that represent a currency of any value, as well as non-fungible tokens (NFTs)."
   },
   {
     id: "exchanges",
     title: "Exchanges",
-    number: 5,
     description:
       "Build sophisticated exchanges where users can invest and trade crypto and assets such as stocks, ETFs, and commodities."
   },
   {
     id: "gaming",
     title: "Gaming",
-    number: 4,
     description:
       "The XRPL supports gaming at high speed given its reliable throughput, low fees, and sidechain interoperability."
   },
   {
     id: "security",
     title: "Security",
-    number: 1,
     description:
       "Build services and tools that help prevent and combat fraudulent activity with the XRPL."
   },
@@ -519,7 +169,6 @@ const uses = [
   {
     id: "payments",
     title: "Payments",
-    number: 2,
     description:
       "Leverage the efficiency and speed of the XRP Ledger to move value all over the globe."
   },
@@ -527,7 +176,6 @@ const uses = [
   {
     id: "cbdc",
     title: "CBDC",
-    number: 1,
     description:
       "A private version of the XRP Ledger provides Central Banks a secure, controlled, and flexible solution to issue and manage Central Bank Issued Digital Currencies (CBDCs)."
   },
@@ -535,7 +183,6 @@ const uses = [
   {
     id: "sustainability",
     title: "Sustainability",
-    number: 1,
     description:
       "Use the XRP Ledger to tokenize carbon offsets as non-fungible tokens (NFTs)."
   },
@@ -543,7 +190,6 @@ const uses = [
   {
     id: "custody",
     title: "Custody",
-    number: 2,
     description:
       "Use the XRP Ledger to build crypto custody and securely hold, store and use your assets."
   },
@@ -683,7 +329,7 @@ export default function Uses() {
   };
 
   const filteredCards = cards.filter((card) =>
-    selectedCategories.has(card.category_id)
+    card.categories.some((category) => selectedCategories.has(category))
   );
   const featuredCount = Array.from(selectedCategories).filter((category) =>
     featured_categories.hasOwnProperty(category)
@@ -738,7 +384,7 @@ export default function Uses() {
 
   const options = React.useMemo(() => {
     return {
-      animationData: theme === "dark" ? numDark : numLight,
+      animationData: theme === "dark" ? counterDark : counterLight,
       loop: false,
     };
   }, [theme]);
@@ -746,16 +392,19 @@ export default function Uses() {
     id: "",
     title: "",
     description: "",
-    number: ""
   });
   const { View } = useLottie(options);
 
-  const UpdateModalContent = ({ id, title, description, logos }) => {
-    const logoArray = logos[id] || [];
-    const createLogoElement = (logoClassName, title, id) => {
+  const UpdateModalContent = ({ id, title, description }) => {
+    const logoArray = popupLogos(id);
+    const createLogoElement = (project: Project) => {
       return (
-        <div key={logoClassName} className={`logo-item ${logoClassName}`}>
-        </div>
+        <span
+          key={project.slug}
+          className={clsx("logo-item", project.logoOnDark && "logo-item--dark")}
+        >
+          <img src={project.logo} alt={project.name} loading="lazy" />
+        </span>
       );
     };
 
@@ -787,15 +436,11 @@ export default function Uses() {
       return (
         <>
           <div className="top-row">
-            {topRow.map((logoClassName) =>
-              createLogoElement(logoClassName, title, id)
-            )}
+            {topRow.map((project) => createLogoElement(project))}
           </div>
           {bottomRow.length > 0 && (
             <div className="bottom-row" style={bottomRowStyle}>
-              {bottomRow.map((logoClassName) =>
-                createLogoElement(logoClassName, title, id)
-              )}
+              {bottomRow.map((project) => createLogoElement(project))}
             </div>
           )}
         </>
@@ -889,7 +534,12 @@ export default function Uses() {
               </div>
             </div>
             <div className="col-lg-5 offset-lg-2 p-5 d-flex">
-              <div className="mb-4 pb-3 numbers-animation">{View}</div>
+              <div
+                className="mb-4 pb-3 numbers-animation"
+                style={{ width: (COUNTER_WIDTH * counterDark.w) / numDark.w }}
+              >
+                {View}
+              </div>
               <div className="apps-built">
                 {translate('about.uses.apps-build-1', 'Apps/exchanges ')}<br />
                 {translate('about.uses.apps-build-2', 'built on the ')}<br />
@@ -908,7 +558,7 @@ export default function Uses() {
                     data-id={use.id}
                     data-title={use.title}
                     data-description={use.description}
-                    data-number={use.number}
+                    data-number={categoryCounts[use.id] || 0}
                     aria-haspopup="dialog"
                     onClick={() => {
                       setModalData(use);
@@ -920,7 +570,7 @@ export default function Uses() {
                       <img className="circle-img" id={use.id} alt="" />
                       <p className="circle-text">{translate(use.title)}</p>
                       <div className="pill-box">
-                        <span className="pill-number">{use.number}</span>
+                        <span className="pill-number">{categoryCounts[use.id] || 0}</span>
                       </div>
                     </div>
                   </button>
@@ -940,14 +590,13 @@ export default function Uses() {
                 id={modalData?.id}
                 title={modalData?.title}
                 description={modalData?.description}
-                logos={logos}
               />
             </div>
           </div>
           <section className="join-xrpl-section py-26">
             <div className="colorful-join-text-wrapper">
               <span className="colorful-join-text">
-                {translate('Join the XRPL Ecosystem and showcase your XRPL project, application, or product. Get featured on the Developer Reflections blog or Ecosystem page.')}
+                {translate('Join the XRPL Ecosystem and showcase your XRPL project, application, or product. Get featured on the Developer Reflections blog.')}
               </span>
               <div className="mt-10">
                 <Button
@@ -978,6 +627,13 @@ export default function Uses() {
                 {translate(
                   "With intentional innovations, tools and documentation that accelerate development and minimize time to market, XRP Ledger is used to create solutions across an expansive range of industries and use cases."
                 )}
+              </p>
+              <p className="mb-0 mt-3">
+                {translate("about.uses.source-1", "Listings come from the ")}
+                <Link href="https://map.xrpl-commons.org" target="_blank">
+                  {translate("about.uses.source-2", "XRPL Commons ecosystem map")}
+                </Link>
+                {translate("about.uses.source-3", ", where you can add or update a project.")}
               </p>
             </div>
             <button
@@ -1085,25 +741,30 @@ export default function Uses() {
               >
                 {filteredCards.map((card) => (
                   <a
-                    key={card.id}
-                    className={`card-uses category_${card.category_id}`}
-                    href={card.link}
+                    key={card.slug}
+                    className="card-uses"
+                    href={card.url}
                     target="_blank"
-                    id={card.id}
+                    rel="noopener noreferrer"
                   >
-                    <div className="card-body row">
-                      <span className="w-100 mb-3 pb-3">
-                        <img
-                          className="mw-100 biz-logo"
-                          alt={`${card.title}|default${card.id}`}
-                        />
+                    <div className="card-body d-flex flex-column">
+                      <span
+                        className={clsx("biz-logo-frame mb-4", card.logoOnDark && "biz-logo-frame--dark")}
+                      >
+                        {card.logo ? (
+                          <img className="biz-logo" src={card.logo} alt="" loading="lazy" />
+                        ) : (
+                          <span className="biz-logo-name" aria-hidden="true">{card.name}</span>
+                        )}
                       </span>
-                      <h4 className="card-title h6">{card.title}</h4>
-                      <p className="card-text">{translate(card.description)}</p>
-                      <div className="align-self-end">
-                        <span className={`label label-use-${card.category_id}`}>
-                          {translate(card.category_name)}
-                        </span>
+                      <h4 className="card-title h6">{card.name}</h4>
+                      <p className="card-text">{card.description}</p>
+                      <div className="mt-auto d-flex flex-wrap gap-2">
+                        {card.categories.map((category) => (
+                          <span key={category} className={`label label-use-${category}`}>
+                            {translate(category_names[category])}
+                          </span>
+                        ))}
                       </div>
                     </div>
                   </a>

@@ -1,0 +1,2089 @@
+{
+  "source": "https://map.xrpl-commons.org",
+  "spotlight": [
+    "xrpscan",
+    "bithomp",
+    "onthedexlive",
+    "cryptum",
+    "evernode",
+    "xaman",
+    "crossmark",
+    "edge",
+    "gemwallet",
+    "joey-wallet",
+    "bifrost-wallet",
+    "bitget-wallet",
+    "aesthetes",
+    "audiotarky",
+    "xrpcafe",
+    "xpmarket",
+    "x-tokenize",
+    "zerpmon",
+    "anchain",
+    "ripple",
+    "carbonland-trust",
+    "gatehub",
+    "bitgo"
+  ],
+  "projects": [
+    {
+      "slug": "abra",
+      "name": "Abra",
+      "description": "Access best-in-class trading, yield, borrowing, and funds.",
+      "url": "https://www.abra.com/",
+      "logo": "/img/uses/projects/abra-8a340286.webp",
+      "categories": [
+        "exchanges"
+      ]
+    },
+    {
+      "slug": "aesthetes",
+      "name": "Aesthetes",
+      "description": "Aesthetes is the bridge between fine art and blockchain and wants to enable the Internet of Value, letting everyone, around the world, to buy and sell with just a click, a fractional ownership of international physical masterpieces. Through Phygital NFTs, collectors, in fact, will be able to buy not only Digital Artworks based on exclusive Physical oeuvres, but also a fractional ownership of these.",
+      "url": "https://aesthetes.com/",
+      "logo": "/img/uses/projects/aesthetes-6efc69e7.webp",
+      "categories": [
+        "nfts"
+      ]
+    },
+    {
+      "slug": "allbridge",
+      "name": "Allbridge",
+      "description": "Allbridge Core enables the transfer of value between blockchains by offering cross-chain swaps of native stablecoins",
+      "url": "https://allbridge.io/",
+      "logo": "/img/uses/projects/allbridge-3c822884.webp",
+      "categories": [
+        "interoperability"
+      ]
+    },
+    {
+      "slug": "alphaday",
+      "name": "Alphaday",
+      "description": "Alphaday is a powerful crypto workflow aggregator that pulls in news, on-chain data, social media, web3 services, and more into one customizable UI. Alphaday builds crypto experience dashboards for enthusiasts, developers, and projects. Users can drag and drop from hundreds of services, news and social feeds, charts, and dapp functionality to create their daily workflows inside a single dashboard. This eliminates the need to have multiple browser tabs open to get different bits of information. i.e. imagine having token prices, gas prices, Twitter feed, latest news headlines, and any other information any user could possibly want all within one single dashboard.",
+      "url": "https://alphaday.com/",
+      "logo": "/img/uses/projects/alphaday-638e5988.webp",
+      "categories": [
+        "infrastructure"
+      ]
+    },
+    {
+      "slug": "amped-studio",
+      "name": "Amped Studio",
+      "description": "Amped Studio is the most advanced online music creation platform to date with virtual instruments and effects, an integrated sound library, video chats, shared projects, hum to midi, VSTRemote, and automation.",
+      "url": "https://ampedstudio.com/",
+      "logo": "/img/uses/projects/amped-studio-d0e5de8e.webp",
+      "categories": [
+        "nfts"
+      ]
+    },
+    {
+      "slug": "anchain",
+      "name": "AnChain",
+      "description": "AnChain.AI is a Web3 risk management firm specializing in AI-powered products. Web3 Security Tools. NFT Tools. Blockchain Security Tools. NFT Analytics Tools.",
+      "url": "https://www.anchain.ai/",
+      "logo": "/img/uses/projects/anchain-fdf35583.webp",
+      "categories": [
+        "security"
+      ]
+    },
+    {
+      "slug": "anodex",
+      "name": "ANODEX",
+      "description": "A one-stop shop for all things DeFI on the XRP Ledger. On/offramp, trade, provide liquidity, and manage your XRPL account - all in one place.",
+      "url": "https://anodos.finance/",
+      "logo": "/img/uses/projects/anodex-c72ee746.webp",
+      "categories": [
+        "exchanges"
+      ]
+    },
+    {
+      "slug": "archax",
+      "name": "Archax",
+      "description": "UK's first FCA-regulated digital asset exchange, broker, and custodian. Partnered with Ripple to bring hundreds of millions of dollars in tokenized Real-World Assets (RWAs) to the XRP Ledger, establishing XRPL as a leading blockchain for institutional RWA tokenization.",
+      "url": "https://archax.com",
+      "logo": "/img/uses/projects/archax-28c82b93.svg",
+      "categories": [
+        "exchanges",
+        "custody"
+      ],
+      "logoOnDark": true
+    },
+    {
+      "slug": "audiotarky",
+      "name": "Audiotarky",
+      "description": "Audiotarky is a grassroots ethical music streaming platform for music lovers and creators.",
+      "url": "https://www.audiotarky.com/",
+      "logo": "/img/uses/projects/audiotarky-8bbbf9b9.webp",
+      "categories": [
+        "nfts"
+      ]
+    },
+    {
+      "slug": "axelar",
+      "name": "AXELAR",
+      "description": "Axelar is the Web3 interoperability platform for the xrplevm and 69+ chains. An open stack to connect all blockchains. A single click to use and build everywhere.",
+      "url": "https://www.axelar.network/",
+      "logo": "/img/uses/projects/axelar-bcfcc516.webp",
+      "categories": [
+        "interoperability"
+      ]
+    },
+    {
+      "slug": "axelarscan",
+      "name": "AXELARSCAN",
+      "description": "Axelarscan is the go-to explorer for the Axelar network, built to monitor cross-chain activity with precision. Its powerful GMP Search lets users instantly check the status of bridge transfers across connected blockchains - perfect for tracking General Message Passing (GMP) interactions and ensuring cross-chain execution is smooth and secure.",
+      "url": "https://axelarscan.io/",
+      "logo": "/img/uses/projects/axelarscan-c0cce690.webp",
+      "categories": [
+        "infrastructure",
+        "interoperability"
+      ]
+    },
+    {
+      "slug": "axiology",
+      "name": "Axiology",
+      "description": "Institutional-grade DLT Trading and Settlement System (TSS) built on XRPL open-source technology. Licensed under the EU DLT Pilot Regime, Axiology compresses capital market intermediaries into a single compliant layer, enabling full-lifecycle management of tokenized securities including issuance, custody, trading, and settlement.",
+      "url": "https://axiology.xyz",
+      "logo": "/img/uses/projects/axiology-2efe3cb6.webp",
+      "categories": [
+        "exchanges"
+      ]
+    },
+    {
+      "slug": "banco-redimento",
+      "name": "Banco Redimento",
+      "description": "Banco Rendimento operates with import and export transactions in a wide variety of currencies, being one of the largest suppliers of banknotes in the Brazilian currency exchange segment.",
+      "url": "https://www.rendimento.com.br/",
+      "logo": "/img/uses/projects/banco-redimento-9c22b58d.webp",
+      "categories": [
+        "payments"
+      ]
+    },
+    {
+      "slug": "band-protocol",
+      "name": "Band Protocol",
+      "description": "Secure, Scalable Cross-Chain Decentralized Oracle - We connect smart contracts to external data and APIs",
+      "url": "https://www.bandprotocol.com/",
+      "logo": "/img/uses/projects/band-protocol-b3ca7feb.webp",
+      "categories": [
+        "infrastructure"
+      ]
+    },
+    {
+      "slug": "banxa",
+      "name": "Banxa",
+      "description": "Global fiat-to-crypto on-ramp and off-ramp infrastructure provider founded in 2014. Supports XRP and integrates payment solutions directly into XRPL-based wallets and platforms, enabling compliant fiat-to-crypto payments for the broader XRP Ledger ecosystem.",
+      "url": "https://banxa.com",
+      "logo": "/img/uses/projects/banxa-b7ab8e41.webp",
+      "categories": [
+        "payments"
+      ],
+      "logoOnDark": true
+    },
+    {
+      "slug": "bcremit",
+      "name": "BCremit",
+      "description": "Money transfer to simple as 1-2-3. Great Exchange Rate & Transfer Fee from",
+      "url": "https://www.bcremit.com/",
+      "logo": "/img/uses/projects/bcremit-5f0d0d6d.webp",
+      "categories": [
+        "payments"
+      ]
+    },
+    {
+      "slug": "beetech",
+      "name": "BeeTech",
+      "description": "BeeTech is a Brazilian financial service provider, providing international payment solutions and cross border infrastructure.",
+      "url": "https://beetech.global/en/",
+      "logo": "/img/uses/projects/beetech-b2e7d49d.webp",
+      "categories": [
+        "payments"
+      ]
+    },
+    {
+      "slug": "bei-api",
+      "name": "BEI API",
+      "description": "The team behind AnChain has created and opened up for every XRPL developer a free version of its AI/ML risk engine via API, enabling each project to build in best-practice risk management from day one. The product will include free suspicious activity reporting tools for the community so that the entire community is notified and can access that information through our API.",
+      "url": "https://www.anchain.ai/bei",
+      "logo": "/img/uses/projects/bei-api-f3921da3.webp",
+      "categories": [
+        "security"
+      ]
+    },
+    {
+      "slug": "betterment",
+      "name": "Betterment",
+      "description": "Betterment is built to help you achieve what you want with your money. Invest with an automated, expert-built portfolio. Save with a high-interest cash account, earning 4.75% APY* (variable) with up to $2 million† in FDIC insurance at our program banks.",
+      "url": "https://www.betterment.com/",
+      "logo": "/img/uses/projects/betterment-03151094.webp",
+      "categories": [
+        "exchanges"
+      ]
+    },
+    {
+      "slug": "onxrp",
+      "name": "Bidds",
+      "description": "Bidds is a modular ecosystem for everything that is happening on the XRPL. Bidds was made with the aim to make the XRPL more accessible for new entrants and provide the right tools for every investor to make their way through the XRPL. The ecosystem is built up in different modules",
+      "url": "https://bidds.com/",
+      "logo": "/img/uses/projects/onxrp-7d9e8231.webp",
+      "categories": [
+        "nfts",
+        "exchanges"
+      ]
+    },
+    {
+      "slug": "bifrost-wallet",
+      "name": "Bifrost Wallet",
+      "description": "Bifrost Wallet is a mobile crypto wallet and dapp browser for Songbird and Flare.",
+      "url": "https://bifrostwallet.com/",
+      "logo": "/img/uses/projects/bifrost-wallet-3189078d.webp",
+      "categories": [
+        "wallet"
+      ]
+    },
+    {
+      "slug": "bit2me",
+      "name": "Bit2me",
+      "description": "Bit2Me provides an integrated multi-currency wallet that allows users to send, receive, store, exchange, buy and sell multiple cryptocurrencies including XRPL",
+      "url": "https://bit2me.com/sell-ripple",
+      "logo": "/img/uses/projects/bit2me-6789dcbb.webp",
+      "categories": [
+        "exchanges"
+      ]
+    },
+    {
+      "slug": "bitget-wallet",
+      "name": "Bitget Wallet",
+      "description": "Bitget Wallet is a non-custodial wallet designed to make crypto simple and secure for everyone.",
+      "url": "https://web3.bitget.com/",
+      "logo": "/img/uses/projects/bitget-wallet.svg",
+      "categories": [
+        "wallet"
+      ]
+    },
+    {
+      "slug": "bitgo",
+      "name": "BitGo",
+      "description": "BitGo provides regulated custody, financial services, and core infrastructure for investors and builders alike.",
+      "url": "https://www.bitgo.com/",
+      "logo": "/img/uses/projects/bitgo-bb2cfc5c.webp",
+      "categories": [
+        "custody"
+      ]
+    },
+    {
+      "slug": "bithomp",
+      "name": "Bithomp",
+      "description": "Bithomp is a popular blockchain explorer and XRP Ledger analytics platform that provides users with detailed information and tools to explore and understand XRP transactions and account activities.",
+      "url": "https://bithomp.com/",
+      "logo": "/img/uses/projects/bithomp-e1cdc35e.webp",
+      "categories": [
+        "infrastructure"
+      ]
+    },
+    {
+      "slug": "bitmart",
+      "name": "BitMart",
+      "description": "Global cryptocurrency exchange founded in 2018 supporting XRP and XRPL-based token trading. Provides spot and futures trading with deep liquidity for XRP pairs, serving millions of users across 180+ countries with a wide range of digital asset trading services.",
+      "url": "https://www.bitmart.com",
+      "logo": "/img/uses/projects/bitmart-ae9bef35.webp",
+      "categories": [
+        "exchanges"
+      ]
+    },
+    {
+      "slug": "bitpay",
+      "name": "Bitpay",
+      "description": "BitPay is a payment processing software designed to help merchants accept crypto and manage digital currency transactions.",
+      "url": "https://bitpay.com/",
+      "logo": "/img/uses/projects/bitpay-23c80d1e.webp",
+      "categories": [
+        "payments"
+      ]
+    },
+    {
+      "slug": "bitrue",
+      "name": "Bitrue",
+      "description": "Bitrue is a crypto exchange and a digital asset management platform",
+      "url": "https://www.bitrue.com/home",
+      "logo": "/img/uses/projects/bitrue-39d57026.webp",
+      "categories": [
+        "exchanges"
+      ]
+    },
+    {
+      "slug": "bitso",
+      "name": "Bitso",
+      "description": "The first financial services provider powered by crypto in Latin America that’s internationally regulated. We hold a DLT license granted by the Gibraltar Financial Services Commission (GFSC), one of the most innovative financial regulators in the world. We operate under the GFSC’s principles.",
+      "url": "https://bitso.com",
+      "logo": "/img/uses/projects/bitso-c420ba73.webp",
+      "categories": [
+        "exchanges",
+        "payments"
+      ]
+    },
+    {
+      "slug": "bitstamp",
+      "name": "Bitstamp",
+      "description": "Buy & trade with ease on the trusted crypto exchange.",
+      "url": "https://www.bitstamp.net/",
+      "logo": "/img/uses/projects/bitstamp-0473811d.webp",
+      "categories": [
+        "exchanges"
+      ]
+    },
+    {
+      "slug": "bitszn",
+      "name": "bitszn",
+      "description": "Bitszn is the team behind valopers.com, a versatile and high-performance multi-chain explorer platform.",
+      "url": "https://xrplevm.valopers.com/",
+      "logo": "/img/uses/projects/bitszn-46b2c5b7.webp",
+      "categories": [
+        "infrastructure"
+      ],
+      "logoOnDark": true
+    },
+    {
+      "slug": "btc-markets",
+      "name": "BTC Markets",
+      "description": "Exchange website that connects cryptocurrency buyers and sellers",
+      "url": "https://www.btcmarkets.net/",
+      "logo": "/img/uses/projects/btc-markets-7b695dee.webp",
+      "categories": [
+        "exchanges"
+      ]
+    },
+    {
+      "slug": "carbonland-trust",
+      "name": "Carbonland Trust",
+      "description": "Carbonland Trust Protocol and NFTs are carbon-capturing digital assets. Carbonland DAO governance tokens fund forest conservation. Both brands use smart contracts to scale the voluntary carbon markets. Carbonland Trust offers transparency and more co-benefits than most of the current carbon credits on the market. Carbon Credit Buyers will get more impactful credits from Carbonland than currently exist on the market and more liquidity for them. Landowners will have more inclusive access to take part in the voluntary carbon market, and receive equal or better economic opportunities to protect forestland than they would cutting it down.",
+      "url": "https://www.carbonlandtrust.com/",
+      "logo": "/img/uses/projects/carbonland-trust-efcaf530.webp",
+      "categories": [
+        "sustainability"
+      ]
+    },
+    {
+      "slug": "changelly",
+      "name": "Changelly",
+      "description": "Changelly is an instant cryptocurrency exchange",
+      "url": "https://changelly.com/",
+      "logo": "/img/uses/projects/changelly-9864ae6d.webp",
+      "categories": [
+        "exchanges"
+      ]
+    },
+    {
+      "slug": "co-pass",
+      "name": "Co Pass",
+      "description": "Proof of Human , sybil-resistant identity verification protocol.",
+      "url": "https://copass.app",
+      "logo": "/img/uses/projects/co-pass-bc29f72d.webp",
+      "categories": [
+        "security"
+      ]
+    },
+    {
+      "slug": "cobridge",
+      "name": "COBRIDGE",
+      "description": "coBridge is a fast and secure EVM cross-chain bridge enabling seamless asset and data transfers between Ethereum-compatible blockchains.",
+      "url": "https://cobridge.xyz",
+      "logo": "/img/uses/projects/cobridge-1ef0b738.webp",
+      "categories": [
+        "interoperability"
+      ]
+    },
+    {
+      "slug": "coinshares",
+      "name": "CoinShares",
+      "description": "European digital asset investment firm founded in 2014, offering institutional-grade crypto investment products including XRP Exchange Traded Products (ETPs). Provides regulated investment vehicles for XRP and other digital assets, serving institutional and professional investors across Europe.",
+      "url": "https://coinshares.com",
+      "logo": "/img/uses/projects/coinshares-483ee646.svg",
+      "categories": [
+        "exchanges"
+      ],
+      "logoOnDark": true
+    },
+    {
+      "slug": "confiel",
+      "name": "conFIEL",
+      "description": "conFIEL is a digital certificates manager which allows KYC Tier 1 payments to be made on the XRPL by using RSA keys issued by the Mexican tax-revenue service (\"SAT\").",
+      "url": "https://confiel.vercel.app/",
+      "logo": "/img/uses/projects/confiel-96880469.webp",
+      "categories": [
+        "cbdc"
+      ]
+    },
+    {
+      "slug": "conft",
+      "name": "conft",
+      "description": "conft is a Multi-Chain Web3 Utility Hub offering comprehensive services such as Web3 Name Service, NFT Aggregator, and Launchpad.",
+      "url": "https://conft.app/",
+      "logo": "/img/uses/projects/conft-c6a37d07.webp",
+      "categories": [
+        "nfts"
+      ]
+    },
+    {
+      "slug": "copump",
+      "name": "COPUMP",
+      "description": "coPump - A launchpad for meme tokens, enabling rapid and efficient token launches, driving initial liquidity and user excitement.",
+      "url": "https://copump.xyz",
+      "logo": "/img/uses/projects/copump-13e03352.webp",
+      "categories": [
+        "exchanges"
+      ]
+    },
+    {
+      "slug": "cosmostation-wallet",
+      "name": "Cosmostation Wallet",
+      "description": "Non-custodial multi-chain cryptocurrency browser extension wallet.",
+      "url": "https://www.cosmostation.io",
+      "logo": "/img/uses/projects/cosmostation-wallet-faf64938.webp",
+      "categories": [
+        "wallet"
+      ]
+    },
+    {
+      "slug": "crossmark",
+      "name": "Crossmark",
+      "description": "Crossmark is a browser extension wallet built for interacting with the XRP Ledger. Adding to an already diverse network of wallets. The wallet will enable an easy way to switch between custom networks and will help bridge communities and cross-chain features.",
+      "url": "https://crossmark.io",
+      "logo": "/img/uses/projects/crossmark-12bc4390.webp",
+      "categories": [
+        "wallet"
+      ]
+    },
+    {
+      "slug": "cryptum",
+      "name": "Cryptum",
+      "description": "Cryptum is a decentralized blockchain based ecosystem that involves a network of interlinked projects. The platform host a number of different projects from mining ventures to board gaming among others.",
+      "url": "https://cryptum.io/",
+      "logo": "/img/uses/projects/cryptum-3d4738a5.webp",
+      "categories": [
+        "developer_tooling"
+      ]
+    },
+    {
+      "slug": "cumulo",
+      "name": "Cumulo",
+      "description": "Cumulo is a professional validator with a presence in 8 mainnets (Celestia, Avail, Fuel, Dymension, Seda, and more) and 5 testnets. They secure over $60M in delegated assets and manage 7.7k+ active stakers. Their XRPL EVM services include public endpoints (RPC, API, gRPC), node guides, snapshots, advanced metrics dashboards (Grafana, Prometheus), and thorough user support. Cumulo excels in Spanish language community building, content creation, and is known for rapid incident response and technical expertise.",
+      "url": "https://cumulo.pro/services/xrplevm_mainnet/",
+      "logo": "/img/uses/projects/cumulo-47358134.webp",
+      "categories": [
+        "infrastructure"
+      ],
+      "logoOnDark": true
+    },
+    {
+      "slug": "d3-labs",
+      "name": "D3 Labs",
+      "description": "D3 Labs specializes in programmable asset infrastructure, aiming to improve real-time value transfer, particularly in Southeast Asia. Their product, Seaseed, bridges the gap between digital and business operations by using digital currencies in the remittance process. This innovative approach allows for seamless, round-the-clock trading and cross-border currency movement, making transactions faster and more cost-effective compared to traditional methods. In essence, Seaseed offers businesses greater efficiency and global financial connectivity, contributing to a more inclusive financial landscape.",
+      "url": "https://d3labs.io/",
+      "logo": "/img/uses/projects/d3-labs-82d806e9.webp",
+      "categories": [
+        "payments"
+      ]
+    },
+    {
+      "slug": "dallipay",
+      "name": "DalliPay",
+      "description": "DalliPay enables interoperability between ISO 20022 file formats and XRPL payments. It facilitates sending and processing received XRPL payments within existing financial software's ISO 20022 capabilities. DalliPay allows SMEs worldwide to send and receive payments in various currencies globally and in real-time.",
+      "url": "https://dallipay.com/",
+      "logo": "/img/uses/projects/dallipay-c5e2dda2.webp",
+      "categories": [
+        "payments"
+      ]
+    },
+    {
+      "slug": "dhali",
+      "name": "Dhali",
+      "description": "Dhali is a Tokenized API Marketplace that makes it easy for users to monetize their code by using payment streaming and NFT ownership. Dhali enables users to expose their projects via an API in the marketplace. Other users can then consume these APIs by streaming XRP payments to the platform. APIs and their corresponding cash flows are owned via NFTs, which can be sold on any secondary market.",
+      "url": "https://dhali.io/",
+      "logo": "/img/uses/projects/dhali-31b48a70.webp",
+      "categories": [
+        "developer_tooling",
+        "payments"
+      ]
+    },
+    {
+      "slug": "dia",
+      "name": "DIA",
+      "description": "XRP API and Price Oracle",
+      "url": "https://www.diadata.org/",
+      "logo": "/img/uses/projects/dia-c84ec593.webp",
+      "categories": [
+        "infrastructure"
+      ]
+    },
+    {
+      "slug": "easya",
+      "name": "EasyA",
+      "description": "EasyA is the world's biggest Web3 education app. With its XRP Ledger EVM Sidechain crash course, you can learn everything you need to know to start building on the XRP Ledger EVM Sidechain. So what are you waiting for? Join the community today!",
+      "url": "https://easya.io",
+      "logo": "/img/uses/projects/easya-224559f4.webp",
+      "categories": [
+        "developer_tooling"
+      ]
+    },
+    {
+      "slug": "edge",
+      "name": "Edge",
+      "description": "Edge empowers users worldwide to interact with the crypto economy by making self-custody intuitive and accessible.",
+      "url": "https://edge.app/",
+      "logo": "/img/uses/projects/edge-75fb7718.webp",
+      "categories": [
+        "wallet"
+      ]
+    },
+    {
+      "slug": "elys-network",
+      "name": "Elys Network",
+      "description": "Elys Network is redefining online investing, bridging TradFi and DeFi into one platform. Built for institutions, designed for retail, Elys lets you invest across crypto, real estate, commodities, and stocks - all in one unified app. Whether you're DeFi-native or TradFi-curious, Elys gives you full asset ownership, 24/7 access, and multi-yield opportunities. One platform. Every market. Built for everyone.",
+      "url": "https://elys.network/",
+      "logo": "/img/uses/projects/elys-network-714e4512.webp",
+      "categories": [
+        "exchanges"
+      ]
+    },
+    {
+      "slug": "ens-xrplevm-org",
+      "name": "ens.xrplevm.org",
+      "description": "Send XRP on XRPL EVM Mainnet. Supports .xrpl domain resolution via ZNS.",
+      "url": "https://ens.xrplevm.org/",
+      "logo": "/img/uses/projects/ens-xrplevm-org-7f3c69ed.webp",
+      "categories": [
+        "infrastructure"
+      ]
+    },
+    {
+      "slug": "eolas",
+      "name": "Eolas",
+      "description": "Join us today to unlock your full potential and achieve your educational goals. Advance your career with our premium courses, and earn rewards with our unique learn-to-earn initiative.",
+      "url": "https://eolasinnovation.com/",
+      "logo": "/img/uses/projects/eolas-9778ff9e.webp",
+      "categories": [
+        "developer_tooling"
+      ]
+    },
+    {
+      "slug": "equil",
+      "name": "EQUIL",
+      "description": "EQLX is a social media for sports performance data built on the XRP Ledger. The platform is built for athletes, fans, leagues and clubs to have an ownership layer over sports data and to abstract value for virality. Likes, comments & advertising are exchanged using the EQL token. Posts are NFTs which can be traded with secondary market features. A user connects a wallet to register an account which enables control over their data. EQLX at its core enables an ownership layer over performance data so athletes have ownership benefits and value earning capacity for stats they produce. Thus leading to a democratization of the existing and rapidly growing sports data space. The EQL token itself is built for the health, wellness & sports community and enables users to earn for sports performance, wellness and self improvement through a suite of apps built by EQUIL. EQLX is the first app to utilize the EQL token utility. The vision is to bring metaverse rewards to",
+      "url": "https://equil.io/",
+      "logo": "/img/uses/projects/equil-340e02b4.webp",
+      "categories": [
+        "nfts"
+      ]
+    },
+    {
+      "slug": "evernode",
+      "name": "Evernode",
+      "description": "Evernode is a layer 2 smart contract solution composed from the XRP Ledger. Evernode is a smart contract hosting platform consisting of off-chain nodes that directly run pieces of code, consensus and maintain a distributed, canonical state to provide flexible layer 2 smart contracts to the XRP Ledger.",
+      "url": "https://www.evernode.org/",
+      "logo": "/img/uses/projects/evernode-a309b2d8.webp",
+      "categories": [
+        "interoperability",
+        "developer_tooling"
+      ]
+    },
+    {
+      "slug": "exodus",
+      "name": "Exodus",
+      "description": "Exodus is a cryptocurrency wallet",
+      "url": "https://www.exodus.com/",
+      "logo": "/img/uses/projects/exodus-4e53b4c2.webp",
+      "categories": [
+        "wallet"
+      ]
+    },
+    {
+      "slug": "exploreme",
+      "name": "Exploreme",
+      "description": "XRPL Explorer - a faster, smarter, and more user-friendly tool for exploring the XRP project. Gain real-time insights, track transactions seamlessly, and experience a streamlined interface designed.",
+      "url": "https://xrpl.exploreme.pro/",
+      "logo": "/img/uses/projects/exploreme-c59725a7.webp",
+      "categories": [
+        "infrastructure"
+      ]
+    },
+    {
+      "slug": "falcon-finance",
+      "name": "falcon Finance",
+      "description": "The first universal collateralization infrastructure powering onchain liquidity and yield. $1B+ USDf in circulation.",
+      "url": "https://falcon.finance/",
+      "logo": "/img/uses/projects/falcon-finance-7e4003e8.webp",
+      "categories": [
+        "exchanges",
+        "payments"
+      ]
+    },
+    {
+      "slug": "feeturre",
+      "name": "Feeturre",
+      "description": "Feeturre is a Web3 tokenized and incentivized global collaborative creator marketplace connecting artists, producers, influencers and their representation in commerce through the XRPL. Creators can manifest their ideas into an actual product that is ready for sale, distribution and promotion. It is also a two-sided, buyer and seller marketplace, ensuring both parties get what they want out of an agreement safely and securely. This is a continuation of the Feeturre project from Wave 2.",
+      "url": "https://feeturre.com/",
+      "logo": "/img/uses/projects/feeturre-6b611831.webp",
+      "categories": [
+        "nfts"
+      ]
+    },
+    {
+      "slug": "fireblocks",
+      "name": "Fireblocks",
+      "description": "Institutional digital asset custody and infrastructure platform founded in 2018. Supports XRP and XRPL-based asset management, providing secure MPC wallet technology and API infrastructure for financial institutions to store, transfer, and issue digital assets on the XRP Ledger.",
+      "url": "https://www.fireblocks.com",
+      "logo": "/img/uses/projects/fireblocks-0f6869f9.svg",
+      "categories": [
+        "custody"
+      ]
+    },
+    {
+      "slug": "first-ledger",
+      "name": "First Ledger",
+      "description": "First Ledger is a trading bot and token launchpad for the XRP Ledger, used through Telegram.",
+      "url": "https://firstledger.net/",
+      "logo": "/img/uses/projects/first-ledger.svg",
+      "categories": [
+        "exchanges"
+      ]
+    },
+    {
+      "slug": "flare",
+      "name": "Flare",
+      "description": "The Flare blockchain is a distributed network that functions as a means of scaling smart contract networks.",
+      "url": "https://flare.network/",
+      "logo": "/img/uses/projects/flare-ecfb7ada.webp",
+      "categories": [
+        "interoperability"
+      ]
+    },
+    {
+      "slug": "fluidefi",
+      "name": "FLUIDEFI",
+      "description": "By providing a user-friendly suite of tools, InstiLink seamlessly bridges the gap between traditional institutions and the world of blockchain. It offers a secure and efficient platform for institutions to effortlessly participate in DeFi protocols, explore various investment opportunities, and benefit from the potential of decentralized financial systems.",
+      "url": "https://fluidefi.com/",
+      "logo": "/img/uses/projects/fluidefi-d320a7bb.webp",
+      "categories": [
+        "exchanges"
+      ]
+    },
+    {
+      "slug": "forte",
+      "name": "Forte",
+      "description": "Digital property rights are the next frontier of gaming. Lead the charge.",
+      "url": "https://www.forte.io/",
+      "logo": "/img/uses/projects/forte-0ebe3138.webp",
+      "categories": [
+        "security"
+      ]
+    },
+    {
+      "slug": "friipay",
+      "name": "FriiPay",
+      "description": "Frii Pay will use the XRP Ledger to establish a market-ready framework for delivering payment by cryptocurrencies and NFTs, alongside traditional cards, at Merchant point of sale.",
+      "url": "https://friipay.io/",
+      "logo": "/img/uses/projects/friipay-6e49b590.webp",
+      "categories": [
+        "payments"
+      ]
+    },
+    {
+      "slug": "gadget-78",
+      "name": "Gadget 78",
+      "description": "Gadget78 is a spreadsheet of tokens that contain a lot of helpful information and a credit-like rating.",
+      "url": "https://gadget78.uk/",
+      "logo": "/img/uses/projects/gadget-78-158e0a41.webp",
+      "categories": [
+        "infrastructure"
+      ]
+    },
+    {
+      "slug": "gas-zip",
+      "name": "Gas.zip",
+      "description": "Instant one-stop refuel bridge for 350+ chains.",
+      "url": "https://www.gas.zip/",
+      "logo": "/img/uses/projects/gas-zip-69cef7ba.webp",
+      "categories": [
+        "interoperability"
+      ],
+      "logoOnDark": true
+    },
+    {
+      "slug": "gatehub",
+      "name": "Gatehub",
+      "description": "GateHub is a platform that offers access to the XRP Ledger (XRPL) and its transaction history through its Data API. This API provides comprehensive data on XRPL transactions, including details on exchanges, transaction volumes, balance changes, and more, enabling users to analyze and track XRPL data effectively.",
+      "url": "https://gatehub.net/",
+      "logo": "/img/uses/projects/gatehub-898a6d2f.webp",
+      "categories": [
+        "wallet",
+        "exchanges"
+      ]
+    },
+    {
+      "slug": "gemwallet",
+      "name": "GemWallet",
+      "description": "GemWallet is a web extension that allows users to make online payments with one click on the XRPL. It also provides an API that bridges web browsers to the blockchain, allowing developers to easily build web3 applications integrated with the XRP Ledger.",
+      "url": "https://gemwallet.app/",
+      "logo": "/img/uses/projects/gemwallet-ab6453f4.webp",
+      "categories": [
+        "wallet"
+      ]
+    },
+    {
+      "slug": "geochain",
+      "name": "GeoChain",
+      "description": "GeoChain is an innovative, onchain marketplace that brings transparency, security, and instant settlement to the geospatial data economy. By leveraging the XRPL EVM Sidechain, GeoChain combines EVM compatibility for smart contracts with the speed, low fees, and reliability of the XRP Ledger.",
+      "url": "https://geo-chain.xyz/",
+      "logo": "/img/uses/projects/geochain-56800b84.webp",
+      "categories": [
+        "infrastructure"
+      ]
+    },
+    {
+      "slug": "girin-wallet",
+      "name": "Girin Wallet",
+      "description": "The Ultimate Crypto Wallet for the #XRPL & #Futureverse Ecosystem",
+      "url": "https://girin.app/",
+      "logo": "/img/uses/projects/girin-wallet-8cde18b3.webp",
+      "categories": [
+        "wallet"
+      ]
+    },
+    {
+      "slug": "gmt",
+      "name": "GMT",
+      "description": "GMT TECH INNOVATION LTD is Israel’s largest and leading financial services company. GMT specializes in international money transfers (cash pickup abroad, money transfers to a bank account and credit card abroad), money transfers within Israel, foreign exchange, and prepaid cards. They also provide a range of financial services for Israelis and foreign workers in the field of agriculture: salaries paid into prepaid cards, money transfers to Thailand and more.",
+      "url": "https://gmtonline.co.il/en/",
+      "logo": "/img/uses/projects/gmt-f95e89e5.webp",
+      "categories": [
+        "payments"
+      ]
+    },
+    {
+      "slug": "goldsky",
+      "name": "GOLDSKY",
+      "description": "Build powerful dApps faster with high-performance blockchain indexing, instant subgraphs, and custom data streaming pipelines.",
+      "url": "https://goldsky.com/",
+      "logo": "/img/uses/projects/goldsky-df5b2fc4.webp",
+      "categories": [
+        "infrastructure"
+      ]
+    },
+    {
+      "slug": "gotreefs",
+      "name": "GOTReefs",
+      "description": "Guardians of the Reefs features a 10,000 piece NFT collection composed of eight unique and interactive sub-collections. Each sub-collection will directly enable the community to support the conservation of our oceans and marine life. By partnering with conservation agencies from around the world, Guardians of the Reefs will bring NFTs of their own class to provide a fun, interactive, and educational experience to the XRPL. Its community can look forward to conservation-funding art collections, P2E gaming to incentivize global recycling, metaverse aquariums, and most of all: helping to keep our oceans clean, marine-life in better health, and learning together along the way.",
+      "url": "https://linktr.ee/GOTReefs",
+      "logo": "/img/uses/projects/gotreefs-7ab9bb33.webp",
+      "categories": [
+        "nfts"
+      ]
+    },
+    {
+      "slug": "helix-app",
+      "name": "Helix App",
+      "description": "The premier decentralized exchange on Injective. Trade on-chain perps, spot, and tradfi assets 24/7 with leverage.",
+      "url": "https://helixapp.com/",
+      "logo": "/img/uses/projects/helix-app-255e43d7.webp",
+      "categories": [
+        "exchanges"
+      ]
+    },
+    {
+      "slug": "hex-trust",
+      "name": "hex trust",
+      "description": "Hex Trust is a fully-licensed digital asset custodian that provides solutions for protocols, foundations, financial institutions, and the Web3 ecosystem.",
+      "url": "https://hextrust.com/",
+      "logo": "/img/uses/projects/hex-trust-29bf5a29.webp",
+      "categories": [
+        "custody"
+      ]
+    },
+    {
+      "slug": "honeycluster",
+      "name": "Honeycluster",
+      "description": "Honeycluster is an enterprise-grade infrastructure and data provider for developers building on the XRP Ledger, offering full-history nodes, REST APIs, and WebSocket connections with 99.9% uptime and sub-50ms latency across 15+ global regions.",
+      "url": "https://honeycluster.io/",
+      "logo": "/img/uses/projects/honeycluster-41be3cb4.webp",
+      "categories": [
+        "infrastructure"
+      ]
+    },
+    {
+      "slug": "humanode-biomapper",
+      "name": "Humanode Biomapper",
+      "description": "Biomapper is an on-chain private facial recognition tool that ensures that a person verified only one Ethereum-compatible address in the Dapp. It was created as a response to Sybil attacks - attempts to trick the rating systems in web3 using multiple accounts and automated bots.Biomapper is an on-chain private facial recognition tool that ensures that a person verified only one Ethereum-compatible address in the Dapp. It was created as a response to Sybil attacks - attempts to trick the rating systems in web3 using multiple accounts and automated bots.",
+      "url": "https://mainnet.biomapper.hmnd.app/dashboard",
+      "logo": "/img/uses/projects/humanode-biomapper-5bfa3e2b.webp",
+      "categories": [
+        "security"
+      ]
+    },
+    {
+      "slug": "hummingbot",
+      "name": "Hummingbot",
+      "description": "Hummingbot is an open-source framework for building market-making and trading bots, with a connector for the XRP Ledger DEX.",
+      "url": "https://hummingbot.org/exchanges/xrpl/",
+      "logo": "/img/uses/projects/hummingbot.webp",
+      "categories": [
+        "developer_tooling",
+        "exchanges"
+      ]
+    },
+    {
+      "slug": "ibcprotocol",
+      "name": "IBCProtocol",
+      "description": "IBC is a blockchain interoperability protocol used by 100+ chains. It enables secure, permissionless, feature-rich cross-chain interactions.",
+      "url": "https://ibcprotocol.dev/",
+      "logo": "/img/uses/projects/ibcprotocol-8a8e9113.webp",
+      "categories": [
+        "interoperability"
+      ]
+    },
+    {
+      "slug": "ident-agency",
+      "name": "Ident Agency",
+      "description": "Ident.Agency is a metadata registry that maps between social identifiers (like email addresses) and any data you want.",
+      "url": "https://www.ident.agency/",
+      "logo": "/img/uses/projects/ident-agency-ab339650.webp",
+      "categories": [
+        "security"
+      ]
+    },
+    {
+      "slug": "imperator-co",
+      "name": "Imperator.co",
+      "description": "Imperator is a trusted Proof-of-Stake validator and blockchain infrastructure provider, with 4+ years of end-to-end infrastructure management. Managing over $400M TVL across 50+ networks, Imperator has clients like Distributed Global, Flowdesk, Leap Wallet, and many others. They run a whitelabel validator on XRP, providing robust RPC, gRPC, snapshots, and more for XRPL EVM Devnet. Imperator focuses on low-latency, high-performance services, plus real-time monitoring and scalability support for foundations and large enterprise users.",
+      "url": "https://www.imperator.co/services/chain-services/mainnets/xrp",
+      "logo": "/img/uses/projects/imperator-co-62f7e14f.webp",
+      "categories": [
+        "infrastructure"
+      ]
+    },
+    {
+      "slug": "indusind-bank",
+      "name": "IndusInd Bank",
+      "description": "IndusInd Bank is one of India's leading financial services brand. They are the preferred banking solutions provider and partner for approximately 38 million customers across the country, including individuals, large corporations, various government entities and PSUs. The Bank offers a wide range of products and services for individuals and corporates, including microfinance, personal loans, personal and commercial vehicle loans, credit cards and SME loans.",
+      "url": "https://www.indusind.com/",
+      "logo": "/img/uses/projects/indusind-bank-c7241602.webp",
+      "categories": [
+        "payments"
+      ]
+    },
+    {
+      "slug": "interledger-foundation",
+      "name": "Interledger Foundation",
+      "description": "The Interledger Foundation is a non-profit advocate for the web, promoting innovation, creativity, and inclusion by advancing open payment standards and technologies that seamlessly connect our global society.",
+      "url": "https://interledger.org/",
+      "logo": "/img/uses/projects/interledger-foundation-8fe96cae.webp",
+      "categories": [
+        "payments",
+        "interoperability"
+      ]
+    },
+    {
+      "slug": "joey-wallet",
+      "name": "Joey Wallet",
+      "description": "Your Trusted Crypto Pouch. Hold tokens and NFTs, swap, explore, and stay in control.",
+      "url": "https://joeywallet.xyz/",
+      "logo": "/img/uses/projects/joey-wallet-b31aecd0.webp",
+      "categories": [
+        "wallet"
+      ]
+    },
+    {
+      "slug": "keplr",
+      "name": "Keplr",
+      "description": "Introducing Keplr, the fast,simple, secure wallet that plugs you into any blockchains and apps wherever you go. Pioneering its ways in the multichain future from day one.",
+      "url": "https://www.keplr.app/",
+      "logo": "/img/uses/projects/keplr-61561bad.webp",
+      "categories": [
+        "wallet"
+      ]
+    },
+    {
+      "slug": "keystone",
+      "name": "Keystone",
+      "description": "Keystone is a hardware wallet that's integrated with both the MetaMask's Web Extension and Mobile App",
+      "url": "https://keyst.one/",
+      "logo": "/img/uses/projects/keystone-f2aef8f9.webp",
+      "categories": [
+        "wallet"
+      ]
+    },
+    {
+      "slug": "kraken",
+      "name": "Kraken",
+      "description": "Kraken is a cryptocurrency exchange based in San Francisco where market participants can trade various cryptocurrencies included XRPL",
+      "url": "https://www.kraken.com/",
+      "logo": "/img/uses/projects/kraken-4c1a98e7.webp",
+      "categories": [
+        "exchanges"
+      ]
+    },
+    {
+      "slug": "kudos",
+      "name": "Kudos",
+      "description": "Kudos is an open algorithm to fund the creators you depend on.",
+      "url": "https://www.kudos.community/",
+      "logo": "/img/uses/projects/kudos-4de7d29a.webp",
+      "categories": [
+        "payments"
+      ]
+    },
+    {
+      "slug": "ledger-hardware-wallet",
+      "name": "Ledger",
+      "description": "Ledger's hardware wallets are multicurrency wallets that are used to store private keys for cryptocurrencies offline",
+      "url": "https://www.ledger.com/",
+      "logo": "/img/uses/projects/ledger-hardware-wallet-33ffcf62.webp",
+      "categories": [
+        "wallet"
+      ]
+    },
+    {
+      "slug": "lemonway",
+      "name": "Lemonway",
+      "description": "Lemonway is a pan-European payment institution dedicated to marketplaces, alternative finance platforms and other companies looking for payment processing, wallet management and third-party payment in a KYC/AML - regulated framework.",
+      "url": "https://www.lemonway.com/",
+      "logo": "/img/uses/projects/lemonway-6810fb26.webp",
+      "categories": [
+        "payments"
+      ]
+    },
+    {
+      "slug": "liquify",
+      "name": "Liquify",
+      "description": "Tokenize everything 🌊 Check out the smart, p2p on-chain Lending & Borrowing made for everyone 💰",
+      "url": "https://liquify.fi/",
+      "logo": "/img/uses/projects/liquify-4e5fc63e.webp",
+      "categories": [
+        "exchanges"
+      ]
+    },
+    {
+      "slug": "magnetic",
+      "name": "Magnetic",
+      "description": "Magnetic is a decentralized exchange on the XRP Ledger with AMM pools, farming, NFTs and a token launchpad.",
+      "url": "https://xmagnetic.org/",
+      "logo": "/img/uses/projects/magnetic.webp",
+      "categories": [
+        "exchanges"
+      ]
+    },
+    {
+      "slug": "mandla-wallet",
+      "name": "Mandla Wallet",
+      "description": "Mandla Wallet is a digital wallet that allows users to receive, transact, and store value using digital assets via SMS, with no need for a smartphone or an internet connection.",
+      "url": "https://mandla.money/web/",
+      "logo": "/img/uses/projects/mandla-wallet-60c064f6.webp",
+      "categories": [
+        "wallet"
+      ]
+    },
+    {
+      "slug": "meta-carbon",
+      "name": "Meta Carbon",
+      "description": "Creating XRP based NFTs backed by retired carbon offsets as incentives and at point of sale.",
+      "url": "https://meta-carbon.com/",
+      "logo": "/img/uses/projects/meta-carbon-d7fa202e.webp",
+      "categories": [
+        "sustainability"
+      ]
+    },
+    {
+      "slug": "metamask",
+      "name": "MetaMask",
+      "description": "MetaMask is a powerful crypto wallet and Web3 gateway that lets you securely manage digital assets and connect to thousands of decentralized apps - right from your browser or mobile device.",
+      "url": "https://metamask.io/",
+      "logo": "/img/uses/projects/metamask-d939f6a5.webp",
+      "categories": [
+        "wallet"
+      ]
+    },
+    {
+      "slug": "midasrwa",
+      "name": "MidasRWA",
+      "description": "At Midas, we are building financial infrastructure for the internet era. Our mission is to make institutional-grade financial products available through blockchain-based architecture - while maintaining the rigour, compliance, and controls expected in traditional finance. We focus on creating secure, transparent, and efficient structures that allow investors to access the performance of select reference strategies through tokenized formats. All Midas products are issued with careful consideration of applicable regulatory frameworks in Europe and globally. We are committed to building responsibly - ensuring clarity of investor rights, compliance with relevant laws, and the use of best-in-class service providers for custody, structuring, and reporting.",
+      "url": "https://midas.app/mxrp",
+      "logo": "/img/uses/projects/midasrwa-a56a0cbc.webp",
+      "categories": [
+        "nfts",
+        "exchanges"
+      ]
+    },
+    {
+      "slug": "modulr",
+      "name": "Modulr",
+      "description": "Partnership with Ripple from February 2022 to enable seamless payments into the UK and Europe.",
+      "url": "https://www.modulrfinance.com/",
+      "logo": "/img/uses/projects/modulr-19d15166.webp",
+      "categories": [
+        "payments"
+      ]
+    },
+    {
+      "slug": "nfts2me",
+      "name": "NFTs2Me",
+      "description": "Our goal is to make the process of creating, deploying, and minting your NFT collections as simple and straightforward as possible, while providing advanced and unique functionalities available for everyone.",
+      "url": "https://nfts2me.com/",
+      "logo": "/img/uses/projects/nfts2me-ebb12bfb.webp",
+      "categories": [
+        "nfts"
+      ]
+    },
+    {
+      "slug": "nium",
+      "name": "Nium",
+      "description": "Accelerate business growth on the world's leading real-time payments infrastructure. Collect, convert, and disburse funds around the world instantly to accounts, cards and wallets.",
+      "url": "https://www.nium.com/",
+      "logo": "/img/uses/projects/nium-c8ede35b.webp",
+      "categories": [
+        "payments"
+      ]
+    },
+    {
+      "slug": "nodestake",
+      "name": "NodeStake",
+      "description": "NodeStake is a professional validator and IBC relayer operator running across 70+ networks with over $30M in staked assets. They deliver 24/7 monitoring, multi-cloud redundancy, and user-friendly infrastructure. For XRPL EVM, NodeStake provides API/RPC/gRPC/EVM endpoints, seeds, an explorer, and additional network data (peers, seeds, and snapshots). Their extensive multi-chain experience ensures stable performance and top-notch support.",
+      "url": "https://nodestake.org/",
+      "logo": "/img/uses/projects/nodestake-e47e4a40.webp",
+      "categories": [
+        "infrastructure"
+      ]
+    },
+    {
+      "slug": "novatti",
+      "name": "Novatti",
+      "description": "Novatti is an innovative high-growth payment services provider, enabling businesses to pay and be paid, from any device, anywhere.",
+      "url": "https://novatti.com/",
+      "logo": "/img/uses/projects/novatti-3786a472.webp",
+      "categories": [
+        "payments"
+      ]
+    },
+    {
+      "slug": "onafriq",
+      "name": "Onafriq",
+      "description": "Onafriq is a pan-African payments company which enables interoperable cross-border and domestic digital payments.",
+      "url": "https://onafriq.com/",
+      "logo": "/img/uses/projects/onafriq-4c4941b1.webp",
+      "categories": [
+        "payments"
+      ]
+    },
+    {
+      "slug": "onchaingm",
+      "name": "OnChainGm",
+      "description": "ONCHAINGM is the leading multi-chain platform revolutionizing blockchain interactions through innovative daily engagement protocols. Experience seamless cross-chain connectivity with enterprise-grade reliability.",
+      "url": "https://onchaingm.com/",
+      "logo": null,
+      "categories": [
+        "gaming"
+      ]
+    },
+    {
+      "slug": "onthedexlive",
+      "name": "OntheDEX.live",
+      "description": "OnTheDex.live provides up-to-the-ledger info and stats on all tokens traded, including data such as USD-equivalent market prices for all pairs, trading volumes, market capitalization, rolling 24h/7d/30d stats, rich lists and transaction explorer for any token. Users can see DEX and CEX data side-by-side when tokens trade from multiple sources and promote genuine XRPL token growth with trust metrics and ratings. OnTheDex.live also provides third-party APIs to allow services such as CoinMarketCap, CoinGecko, LCW etc. to aggregate trusted ledger token trading information and promote DEX tokens on their services.",
+      "url": "https://onthedex.live/",
+      "logo": "/img/uses/projects/onthedexlive-c033436c.webp",
+      "categories": [
+        "infrastructure"
+      ]
+    },
+    {
+      "slug": "opulencex",
+      "name": "OpulenceX",
+      "description": "OpulenceX builds the OpulX NFT marketplace and an AMM and yield farm on the XRP Ledger.",
+      "url": "https://www.opulencex.io/",
+      "logo": "/img/uses/projects/opulencex.webp",
+      "categories": [
+        "nfts",
+        "exchanges"
+      ]
+    },
+    {
+      "slug": "orbit-chain",
+      "name": "orbit chain",
+      "description": "Orbit Chain is a cross-chain project that challenges scalability limitations due to the lack of connectivity and limited resources of existing public chains.",
+      "url": "https://orbitchain.io/about",
+      "logo": "/img/uses/projects/orbit-chain-2382c695.webp",
+      "categories": [
+        "interoperability"
+      ]
+    },
+    {
+      "slug": "ospree",
+      "name": "Ospree",
+      "description": "Ospree is dedicated to simplifying and enhancing digital asset compliance infrastructure for both centralized and decentralized institutions. Addressing a prevalent challenge, the current landscape comprises highly specialized solution providers, adept at tackling specific issues, yet limited in scope. This results in disjointed compliance procedures, where multiple disconnected solutions must be utilized. Ospree aims to bridge this gap by offering a comprehensive solution that streamlines and unifies compliance processes, allowing institutions to navigate digital asset regulations with ease and reliability. In doing so, Ospree revolutionizes the compliance paradigm, fostering efficiency and coherence within the industry.",
+      "url": "https://ospree.io/",
+      "logo": "/img/uses/projects/ospree-8227738b.webp",
+      "categories": [
+        "security"
+      ]
+    },
+    {
+      "slug": "palisade",
+      "name": "Palisade",
+      "description": "Palisade is a fully compliant digital asset custody platform that utilises the latest advancements in secure technology to protect and govern your assets. Provision private keys and sign transactions using a choice of secure technologies including HSM, MPC and multi-sig.",
+      "url": "https://palisade.co/",
+      "logo": "/img/uses/projects/palisade-12e9e6eb.webp",
+      "categories": [
+        "custody"
+      ]
+    },
+    {
+      "slug": "palmera",
+      "name": "Palmera",
+      "description": "Powered by Safe, Palmera streamlines your Safes operations and treasury management across multiple chains, all from a single dashboard",
+      "url": "https://safe.palmeradao.xyz/welcome",
+      "logo": "/img/uses/projects/palmera-f46d9180.webp",
+      "categories": [
+        "wallet",
+        "custody"
+      ]
+    },
+    {
+      "slug": "papaya-global",
+      "name": "papaya global",
+      "description": "Master payroll & payments. Fund in 12 currencies, pay in 160+ countries.",
+      "url": "https://www.papayaglobal.com/",
+      "logo": "/img/uses/projects/papaya-global-b51435d6.webp",
+      "categories": [
+        "payments"
+      ]
+    },
+    {
+      "slug": "peak",
+      "name": "Peak",
+      "description": "Peak is a wellness and sports monitoring tool developed by Equil.",
+      "url": "https://peak.app",
+      "logo": "/img/uses/projects/peak-e4bc2263.webp",
+      "categories": [
+        "nfts"
+      ]
+    },
+    {
+      "slug": "peerhive",
+      "name": "PeerHive",
+      "description": "PeerHive is a decentralized lending platform that utilizes blockchain technology to revolutionize the traditional lending experience. With smart contract deployment, their platform increases security, transparency, efficiency, and compliance, creating new opportunities for borrowers and lenders worldwide.",
+      "url": "https://peerhive.app/",
+      "logo": "/img/uses/projects/peerhive-a200cc94.webp",
+      "categories": [
+        "exchanges"
+      ]
+    },
+    {
+      "slug": "petproof",
+      "name": "PetProof",
+      "description": "PetProof uses NFTs to create a record of pet ownership. The NFT links to a photo of the pet to help identify, as well as owner contact info. The NFT holder can easily be verified as the rightful owner of their pet.",
+      "url": "https://www.petproof.app/",
+      "logo": "/img/uses/projects/petproof-c4a97074.webp",
+      "categories": [
+        "nfts"
+      ]
+    },
+    {
+      "slug": "phiwallet",
+      "name": "phiwallet",
+      "description": "Digitally buy, and physically own Gold! A revolutionary way to enjoy the security that only gold can provide.",
+      "url": "https://www.phiwallet.com/",
+      "logo": "/img/uses/projects/phiwallet-d7873ef1.webp",
+      "categories": [
+        "nfts",
+        "wallet"
+      ]
+    },
+    {
+      "slug": "polkachu",
+      "name": "Polkachu",
+      "description": "Founded by a team of technology professionals, Polkachu secures $485M worth of crypto assets across 112 networks including Aptos, Celestia, CosmosHub, NEAR, and Solana. With a mission to deliver top-tier infrastructure, Polkachu provides XRPL EVM endpoints (API, RPC, gRPC), snapshots, seeds, and state-sync tools. They also assist fellow node operators with free public resources. Polkachu’s extensive multi-chain experience and reliability make them a formidable validator and ecosystem partner.",
+      "url": "https://polkachu.com/networks/xrp",
+      "logo": "/img/uses/projects/polkachu-86728d2b.webp",
+      "categories": [
+        "infrastructure"
+      ]
+    },
+    {
+      "slug": "posthuman",
+      "name": "POSTHUMAN",
+      "description": "POSTHUMAN is a distributed validator securing 40+ networks across Cosmos, Solana, and Kusama. Backed by 150K+ delegators and the $PHMN governance token, they combine infrastructure, education, and ecosystem tools.",
+      "url": "https://nodes.posthuman.digital/chains/exrp",
+      "logo": "/img/uses/projects/posthuman-6ee9b1a7.webp",
+      "categories": [
+        "infrastructure"
+      ]
+    },
+    {
+      "slug": "proprhome",
+      "name": "ProprHome",
+      "description": "Next generation real estate marketplace to enable a more trusted real estate experience.",
+      "url": "https://www.proprhome.com/",
+      "logo": "/img/uses/projects/proprhome-e1e9a1d1.webp",
+      "categories": [
+        "nfts"
+      ]
+    },
+    {
+      "slug": "quicknode",
+      "name": "QuickNode",
+      "description": "Blockchain infrastructure provider founded in 2017, offering fast and reliable RPC and WebSocket endpoints for the XRP Ledger. Enables developers to build and scale applications on XRPL with dedicated node infrastructure, advanced analytics, and global low-latency access.",
+      "url": "https://www.quicknode.com",
+      "logo": "/img/uses/projects/quicknode-38eea65e.webp",
+      "categories": [
+        "infrastructure"
+      ]
+    },
+    {
+      "slug": "quidli",
+      "name": "Quidli",
+      "description": "Quidli is a social middle layer between web3 assets and Web 2.0 collaboration apps for users to build token reward flows directly into the apps they use to digitally collaborate, starting with Discord and Slack. This funding will be used to kick off the initial integration of the XRPL blockchain and the XRP token to the Quidli environment to be accessible by the general public.",
+      "url": "https://quid.li/",
+      "logo": "/img/uses/projects/quidli-91fa238a.webp",
+      "categories": [
+        "payments"
+      ]
+    },
+    {
+      "slug": "range",
+      "name": "Range",
+      "description": "Helping the best teams build and use DeFi protocols, blockchains, rollups, and cross-chain bridges with peace of mind.",
+      "url": "https://app.range.org/xrplevm/general",
+      "logo": "/img/uses/projects/range-068add9b.webp",
+      "categories": [
+        "security",
+        "infrastructure"
+      ]
+    },
+    {
+      "slug": "redimi",
+      "name": "Redimi",
+      "description": "Redimi is an innovative platform for shopping malls and outlets for issuing, managing, and redeeming digital gift cards & coupons.",
+      "url": "https://redimi.net/",
+      "logo": "/img/uses/projects/redimi-b2a730aa.webp",
+      "categories": [
+        "payments"
+      ]
+    },
+    {
+      "slug": "reown",
+      "name": "reown",
+      "description": "Reown empowers builders to create secure, user-friendly and insight-rich wallet and app UX. Providing all the tools to launch faster and scale smarter. Effortlessly integrate Reown’s suite of SDKs.",
+      "url": "https://reown.com/",
+      "logo": "/img/uses/projects/reown-b5b25076.webp",
+      "categories": [
+        "developer_tooling"
+      ]
+    },
+    {
+      "slug": "reown-dapp-with-social-login",
+      "name": "reown dApp with Social login",
+      "description": "A simple decentralized application (dApp) demonstrating social login integration using Reown AppKit (formerly WalletConnect) for XRPL EVM Testnet with transfer functionality.",
+      "url": "https://reown-xrpl-dapp.vercel.app/",
+      "logo": "/img/uses/projects/reown-dapp-with-social-login-d1ba52ff.webp",
+      "categories": [
+        "developer_tooling"
+      ]
+    },
+    {
+      "slug": "ripple",
+      "name": "Ripple",
+      "description": "Ripple is a blockchain technology company known for its digital payment solution built on XRP Ledger, which aims to facilitate fast and low-cost cross-border transactions.",
+      "url": "https://ripple.com/",
+      "logo": "/img/uses/projects/ripple-a7da0cc7.webp",
+      "categories": [
+        "payments",
+        "custody"
+      ]
+    },
+    {
+      "slug": "ripplebids",
+      "name": "RippleBids",
+      "description": "The next generation marketplace powered by XRPB tokens, enabling seamless trading across multiple blockchain networks",
+      "url": "https://ripplebids.com/",
+      "logo": "/img/uses/projects/ripplebids-1479d75b.webp",
+      "categories": [
+        "payments"
+      ]
+    },
+    {
+      "slug": "ripplefox",
+      "name": "RippleFox",
+      "description": "Ripplefox is a cryptocurrency exchange platform.",
+      "url": "https://ripplefox.com/exchange/ripple/",
+      "logo": "/img/uses/projects/ripplefox-6eba0a14.webp",
+      "categories": [
+        "exchanges"
+      ]
+    },
+    {
+      "slug": "rocketfuel",
+      "name": "Rocketfuel",
+      "description": "RocketFuel provides e-commerce and in-store merchants with a cutting-edge payment platform enabling them to accept Bitcoin and 160+ cryptocurrencies.",
+      "url": "https://rocketfuel.inc/",
+      "logo": "/img/uses/projects/rocketfuel-0e8dc1ac.webp",
+      "categories": [
+        "payments"
+      ]
+    },
+    {
+      "slug": "rubyscore",
+      "name": "RubyScore",
+      "description": "Analytics platform for blockchain and wallet, which combines on-chain data with a massive and constantly growing database containing millions of wallet labels.",
+      "url": "https://rubyscore.io/dashboard?net=xrpl",
+      "logo": "/img/uses/projects/rubyscore-92e0993a.webp",
+      "categories": [
+        "infrastructure"
+      ]
+    },
+    {
+      "slug": "sab",
+      "name": "SAB",
+      "description": "Saudi Awwal Bank is one of the largest banks in Saudi Arabia, offering integrated financial and banking services, including corporate banking, investment, private banking, and treasury.",
+      "url": "https://www.sab.com/en/",
+      "logo": "/img/uses/projects/sab-5b1daaa6.webp",
+      "categories": [
+        "payments"
+      ]
+    },
+    {
+      "slug": "safe-global-multisig",
+      "name": "Safe Global Multisig",
+      "description": "Safe platform offers secure multi-signature wallets, requiring multiple approvals for transactions, enhancing security and mitigating risks in cryptocurrency transactions.",
+      "url": "https://safe.xrplevm.org",
+      "logo": "/img/uses/projects/safe-global-multisig-b2bb01c8.webp",
+      "categories": [
+        "wallet"
+      ]
+    },
+    {
+      "slug": "safehaven",
+      "name": "SAFEHaven",
+      "description": "SAFEhaven allows everyone to own a cold wallet for free. The app converts old and unused mobile devices into a cold wallet that prioritizes utility, convenience and security. Streamlining blockchain adoption, the platform ensures effortless storage, interaction, and transactions. Unlike prevailing solutions that demand trade-offs between security and convenience, SAFEhaven harmonizes both aspects. The integrated cold wallet and extensive feature set reflect a user-centric approach, catering to diverse needs while maintaining high security standards, especially suited for Digital Identity. Positioned to drive mass adoption, SAFEhaven emerges as a versatile, user-friendly solution enhancing the accessibility and usability of blockchain technology for a broader audience.",
+      "url": "https://www.mysafehavenwallet.com/",
+      "logo": "/img/uses/projects/safehaven-da5a6ab0.webp",
+      "categories": [
+        "wallet"
+      ]
+    },
+    {
+      "slug": "sbi-remit",
+      "name": "SBI Remit",
+      "description": "Japan’s largest remittance technology firm, a subsidiary of SBI Group, an Internet financial services pioneer founded in Japan. SBI Remit seeks to provide low fees, quick remittance, and services that fit the user's lifestyle, in addition to safety.",
+      "url": "https://www.remit.co.jp/en/",
+      "logo": "/img/uses/projects/sbi-remit-6383c91d.webp",
+      "categories": [
+        "payments"
+      ]
+    },
+    {
+      "slug": "securitize",
+      "name": "Securitize",
+      "description": "Securitize is unlocking alternative assets with a fully digital, regulatory compliant platform for issuing and trading digital asset securities.",
+      "url": "https://securitize.io/",
+      "logo": "/img/uses/projects/securitize-473e4d82.webp",
+      "categories": [
+        "nfts",
+        "exchanges"
+      ]
+    },
+    {
+      "slug": "self",
+      "name": "Self",
+      "description": "We built Self so we can have trust. Trust that the review we see online is real, trust in the person we bought from in an auction, trust the invoice should be paid, trust the user is a human, trust in the news and trust in the integrity of a vote. Where there is online trust we can build relationships that match those we value in the real world. And the things we do everyday will become easier: we can glide through airports, shop without tills, consume without barriers and do it all safe from fraud. But Self is also about people. People taking ownership of and responsibility for their own data and in doing so gaining a voice and control. It's a vision in which we are each an individual, without the labels of nationality, gender, faith or race unless we choose to reveal them.",
+      "url": "https://www.joinself.com/",
+      "logo": "/img/uses/projects/self-4ebb2530.webp",
+      "categories": [
+        "security"
+      ]
+    },
+    {
+      "slug": "sentbe",
+      "name": "Sentbe",
+      "description": "SentBe is a financial technology company specializing in international money transfers. It's based in Korea and launched in 2015, but only recently launched in the US early in 2023. It also serves customers in Korea, Singapore and Indonesia.",
+      "url": "https://www.sentbe.com/",
+      "logo": "/img/uses/projects/sentbe-8c74b720.webp",
+      "categories": [
+        "payments"
+      ]
+    },
+    {
+      "slug": "siam-commercial-bank-scb",
+      "name": "Siam Commercial Bank (SCB)",
+      "description": "Siam Commercial Bank was established by royal charter on January 30, 1907 as the first Thai bank. During its more than 110 years in business, the Bank has played a leading role in providing the financial services needed in Thailand, developing deep expertise. Today, SCB is a leading universal bank, offering deposits and lending and a wide range of other products and services, to meet the needs of all customers.",
+      "url": "https://www.scb.co.th/",
+      "logo": "/img/uses/projects/siam-commercial-bank-scb-089278a6.webp",
+      "categories": [
+        "payments"
+      ]
+    },
+    {
+      "slug": "skip-go",
+      "name": "Skip Go",
+      "description": "Skip Go enables seamless cross-chain transfers across multiple blockchains, leveraging IBC and Axelar for secure and efficient interoperability. Built by the Cosmos ecosystem.",
+      "url": "https://go.skip.build/",
+      "logo": "/img/uses/projects/skip-go-755c04df.webp",
+      "categories": [
+        "interoperability"
+      ]
+    },
+    {
+      "slug": "sonar-muse",
+      "name": "Sonar muse",
+      "description": "Sonar Muse is a music store and streaming platform for NFT. The platform's goal is to leverage blockchain technology to unite and elevate musical artists and users.",
+      "url": "https://sonarmuse.org/",
+      "logo": "/img/uses/projects/sonar-muse-a10e4fc6.webp",
+      "categories": [
+        "nfts"
+      ]
+    },
+    {
+      "slug": "spacewatch",
+      "name": "SpaceWatch",
+      "description": "SpaceWatch is the #1 NFT & Token Holder verification and gating service on the XRP Ledger for Discord.",
+      "url": "https://spacewatch.app",
+      "logo": "/img/uses/projects/spacewatch-8780d36e.webp",
+      "categories": [
+        "nfts"
+      ]
+    },
+    {
+      "slug": "spend-the-bits",
+      "name": "Spend the bits",
+      "description": "Welcome to SpendTheBits, the ultimate payment solution for your digital assets. We are committed to providing a fast and secure transaction platform based on the XRP Ledger, enabling you to manage your cryptocurrency with ease and confidence. Our mission is to create an innovative payment solution that is easy to use, affordable, and reliable, offering you a seamless experience that you can enjoy every day.",
+      "url": "https://spendthebits.com/",
+      "logo": "/img/uses/projects/spend-the-bits-e46abb24.webp",
+      "categories": [
+        "payments"
+      ]
+    },
+    {
+      "slug": "squid",
+      "name": "Squid",
+      "description": "Squid and Axelar power cross-chain connection between XRPL, XRPL EVM, and 80+ chains. Squid's API, SDK, and Widget offer developers the integration tools to enable seamless connectivity across ecosystems.",
+      "url": "https://app.squidrouter.com/xrpl-xrpl-evm",
+      "logo": "/img/uses/projects/squid-166350e2.webp",
+      "categories": [
+        "interoperability"
+      ]
+    },
+    {
+      "slug": "stably",
+      "name": "stably",
+      "description": "Trade digital assets across multiple networks with fiat and stablecoins in 170+ countries/regions",
+      "url": "https://stably.io/",
+      "logo": "/img/uses/projects/stably-08a5997d.webp",
+      "categories": [
+        "payments"
+      ]
+    },
+    {
+      "slug": "stasis",
+      "name": "Stasis",
+      "description": "STASIS is a European fintech company that designs user-oriented Web3 tools allowing institutional and retail clients to handle digital currencies and public blockchains with elegant simplicity. Stasis is fully prepared to operate in accordance with MiCA regulations.",
+      "url": "https://stasis.net/",
+      "logo": "/img/uses/projects/stasis-46ab4168.webp",
+      "categories": [
+        "payments"
+      ]
+    },
+    {
+      "slug": "staticbit",
+      "name": "StaticBit Wallet",
+      "description": "StaticBit is a decentralized wallet and DEX interface built from the ground up with a focus on full XRPL support and a multi-protocol architecture. Initialize transactions from dApp. Full access to all XRPL features open and extensible interface support for future protocols (EVM, etc.)",
+      "url": "https://staticbit.io",
+      "logo": "/img/uses/projects/staticbit-a127fd53.webp",
+      "categories": [
+        "wallet"
+      ]
+    },
+    {
+      "slug": "supermojo",
+      "name": "Supermojo",
+      "description": "Supermojo is building the embedded customer lending experiences to power the growth of NFTs as a powerful new asset class.",
+      "url": "https://supermojo.com/",
+      "logo": "/img/uses/projects/supermojo-b1630c10.webp",
+      "categories": [
+        "payments"
+      ]
+    },
+    {
+      "slug": "tangem",
+      "name": "Tangem",
+      "description": "Tangem is a card-shaped self-custodial cold wallet",
+      "url": "https://tangem.com/en/",
+      "logo": "/img/uses/projects/tangem-fb7b4f3d.webp",
+      "categories": [
+        "wallet"
+      ]
+    },
+    {
+      "slug": "textrp",
+      "name": "TextRP",
+      "description": "A discord killer with XRPL features baked in",
+      "url": "https://textrp.io",
+      "logo": "/img/uses/projects/textrp-31ccdb07.webp",
+      "categories": [
+        "payments"
+      ]
+    },
+    {
+      "slug": "thallo",
+      "name": "Thallo",
+      "description": "Thallo employs blockchain technology to digitize verified carbon credits in collaboration with carbon registries and project developers.",
+      "url": "https://www.thallo.io/",
+      "logo": "/img/uses/projects/thallo-fd1ead29.webp",
+      "categories": [
+        "sustainability"
+      ]
+    },
+    {
+      "slug": "the-nexus-portal",
+      "name": "The Nexus Portal",
+      "description": "A multi-dimensional DeFi ecosystem, with a unique holographic UI, multi-reward superfarm and multi-staking system.",
+      "url": "https://www.thenexusportal.io/",
+      "logo": "/img/uses/projects/the-nexus-portal-e107a7d8.webp",
+      "categories": [
+        "exchanges"
+      ]
+    },
+    {
+      "slug": "the-shillverse",
+      "name": "The Shillverse",
+      "description": "The Shillverse is a Play2Mint NFT game on the XRPL. It provides a mix of classic idle and passive gameplay features, and has a Unity game in development. The Shillverse is also an advocate for Open Source tooling on the XRPL, aiming to create and distribute as much information as possible to make developing on the XRPL easier.",
+      "url": "https://app.theshillverse.com/",
+      "logo": "/img/uses/projects/the-shillverse-73db0a9a.webp",
+      "categories": [
+        "gaming"
+      ]
+    },
+    {
+      "slug": "thingsgoonline",
+      "name": "ThingsGo.Online",
+      "description": "ThingsGo.Online (TGO)'s mission is \"To Create the Internet Value for Sustainability.\" The main product is a global rewards ecosystem built on top of the XRP Ledger based on the TGO Reward Token as a bridge between the environmental and social credit suppliers, responsible for the sustainable projects and attitudes, and the environmental and social balance sheets from companies and people who need or want to mitigate their environmental and social footprints. Its circular economy's wealth is backed by the physical measurement and tokenization of produced, saved, or recovered environmental or social resources.",
+      "url": "https://thingsgo.online/",
+      "logo": "/img/uses/projects/thingsgoonline-b9e95500.webp",
+      "categories": [
+        "sustainability"
+      ]
+    },
+    {
+      "slug": "tranglo",
+      "name": "Tranglo",
+      "description": "Tranglo enables secure and seamless cross-border payments to thousands of banks, cards, wallets, cash and mobile operators globally.",
+      "url": "https://tranglo.com/",
+      "logo": "/img/uses/projects/tranglo-75884de2.webp",
+      "categories": [
+        "payments"
+      ]
+    },
+    {
+      "slug": "transfero",
+      "name": "transfero",
+      "description": "Financial solutions in blockchain for you and your business: access the global market through a payments platform, stablecoins and financial products.",
+      "url": "https://transfero.com/",
+      "logo": "/img/uses/projects/transfero-a081e106.webp",
+      "categories": [
+        "payments"
+      ]
+    },
+    {
+      "slug": "travelex",
+      "name": "Travelex",
+      "description": "Cash and card delivered direct to your door or to a convenient click and collect location.",
+      "url": "https://www.travelex.co.uk/",
+      "logo": "/img/uses/projects/travelex-457f2897.webp",
+      "categories": [
+        "payments"
+      ]
+    },
+    {
+      "slug": "trezor",
+      "name": "Trezor",
+      "description": "Trezor is a hardware wallet that allows you to store your cryptocurrency offline.",
+      "url": "https://trezor.io/",
+      "logo": "/img/uses/projects/trezor-b48436ca.webp",
+      "categories": [
+        "wallet"
+      ]
+    },
+    {
+      "slug": "trm-labs",
+      "name": "TRM Labs",
+      "description": "TRM enables risk management & compliance for financial institutions and crypto businesses.",
+      "url": "https://www.trmlabs.com/",
+      "logo": "/img/uses/projects/trm-labs-f5e2df28.webp",
+      "categories": [
+        "security"
+      ]
+    },
+    {
+      "slug": "trust-wallet",
+      "name": "Trust Wallet",
+      "description": "Trust Wallet is Binance's official cryptocurrency wallet and provides support for 65 blockchains and access to over 4.5 million crypto assets.",
+      "url": "https://trustwallet.com/",
+      "logo": "/img/uses/projects/trust-wallet-f46c651a.webp",
+      "categories": [
+        "wallet"
+      ]
+    },
+    {
+      "slug": "uphold",
+      "name": "Uphold",
+      "description": "Uphold is a global, multi-asset digital trading platform with more than 10M users.",
+      "url": "https://uphold.com/en-eu",
+      "logo": "/img/uses/projects/uphold-9552ca67.webp",
+      "categories": [
+        "exchanges"
+      ]
+    },
+    {
+      "slug": "verifyed",
+      "name": "VerifyED",
+      "description": "VerifyEd aims to build a solution that will allow anyone in any industry to make storing data on the blockchain and verifying it as simple as calling an API endpoint. VerifyEd intends to provide users with two key services: allowing them to send data to add to the blockchain and allowing them to verify any data records are identical to that which they stored on the blockchain. This would enable companies within any vertical to begin using blockchain to improve the integrity of the data in their system. It would also allow companies who are using expensive, energy-inefficient cryptocurrencies to switch to XRP through the VerifyEd tool, which would be a cheaper and more eco-friendly alternative.",
+      "url": "https://www.verifyed.io/",
+      "logo": "/img/uses/projects/verifyed-23228d49.webp",
+      "categories": [
+        "security"
+      ]
+    },
+    {
+      "slug": "vnx-on-xrpl",
+      "name": "VNX on XRPL",
+      "description": "VNX Commodities is Europe's first regulated tokenization platform and stablecoin issuer, registered with the Liechtenstein FMA under the TT Token Providers and Services Act (TVTG). In 2021 VNX launched VNXAU, a multichain token backed by physical gold, later VNX launched two fully backed stablecoins: VEUR and VCHF. With this project, VNX aims to expand operations to the XRPL ledger by issuing VNX tokens on the XRPL.",
+      "url": "https://vnx.li/",
+      "logo": "/img/uses/projects/vnx-on-xrpl-86c61ae1.webp",
+      "categories": [
+        "payments"
+      ]
+    },
+    {
+      "slug": "wanchain",
+      "name": "Wanchain",
+      "description": "Wanchain is a distributed ledger that allows for cross-chain transactions and the interoperability of multiple chains. Although Wanchain facilitates transactions between blockchains, it is also a stand-alone blockchain that runs autonomously.",
+      "url": "https://www.wanchain.org/",
+      "logo": "/img/uses/projects/wanchain-847584f1.webp",
+      "categories": [
+        "interoperability"
+      ]
+    },
+    {
+      "slug": "ward-protocol",
+      "name": "Ward Protocol",
+      "description": "Deterministic default resolution for XLS-66 lending vaults on the XRP Ledger. Ward defines a 9-step on-ledger validation process for default claims - no oracle, no human judgment, no Ward signature. ward_signed = False - always.",
+      "url": "https://wardprotocol.org",
+      "logo": "/img/uses/projects/ward-protocol-6a7f78f1.webp",
+      "categories": [
+        "developer_tooling"
+      ]
+    },
+    {
+      "slug": "wirex",
+      "name": "Wirex",
+      "description": "Buy, trade and grow your money",
+      "url": "https://www.wirexapp.com/",
+      "logo": "/img/uses/projects/wirex-cf827c3c.webp",
+      "categories": [
+        "payments"
+      ]
+    },
+    {
+      "slug": "x-tokenize",
+      "name": "X-Tokenize",
+      "description": "X-Tokenize is a platform dedicated to transforming the world of tokenization and NFT management on the XRP Ledger.",
+      "url": "https://www.x-tokenize.com/",
+      "logo": "/img/uses/projects/x-tokenize-4c80a6b6.webp",
+      "categories": [
+        "nfts"
+      ]
+    },
+    {
+      "slug": "xaman",
+      "name": "Xaman",
+      "description": "Xaman is a non custodial client (wallet) for the XRP Ledger, with superpowers. Xaman allows you to interact with the XRP Ledger and 3rd party tools while keeping your keys super safe. The Xaman platform allows developers and app users to \"meet up\". The true power of Xaman is the platform available for developers and app users.",
+      "url": "https://xaman.app/",
+      "logo": "/img/uses/projects/xaman-f5d07693.webp",
+      "categories": [
+        "wallet"
+      ]
+    },
+    {
+      "slug": "xao-dao",
+      "name": "XAO.DAO",
+      "description": "XAO.DAO, the first Decentralized Autonomous Organization to represent the community of the XRP Ledger.",
+      "url": "https://www.xaodao.io",
+      "logo": "/img/uses/projects/xao-dao-7b64cdfc.webp",
+      "categories": [
+        "developer_tooling"
+      ]
+    },
+    {
+      "slug": "xpmarket",
+      "name": "XPMarket",
+      "description": "XPmarket is designing a user-centric ecosystem to unleash the full potential of the XRP Ledger. On-chain data paired with big data analysis are wrapped into a user-friendly environment, allowing a detailed overview of the XRPL ecosystem. A wide range of key infrastructure elements are being directly integrated into XPmarket that are both familiar for a novice blockchain user and advanced enough for the most sophisticated members. As a result, XPmarket aims to have the whole XRPL world at the community's fingertips.",
+      "url": "https://xpmarket.com/",
+      "logo": "/img/uses/projects/xpmarket-391a2c0d.webp",
+      "categories": [
+        "exchanges",
+        "nfts"
+      ]
+    },
+    {
+      "slug": "xrise33",
+      "name": "XRiSE33",
+      "description": "Built on XRPL EVM, XRiSE33 empowers communities through the (3,3) cooperative game theory model. By leveraging a vote-escrow (ve) token system, it rewards users for locking tokens with boosted yields and voting power. With rapid transactions, low fees, and decentralized governance, XRiSE33 fosters shared success and scalable DeFi innovation.",
+      "url": "https://xrise33.com",
+      "logo": "/img/uses/projects/xrise33-d7687bfb.webp",
+      "categories": [
+        "exchanges"
+      ]
+    },
+    {
+      "slug": "xrp-address",
+      "name": "XRP Address",
+      "description": "Generate secure keys in a protected environment",
+      "url": "https://www.xrpaddress.org/",
+      "logo": "/img/uses/projects/xrp-address-4181591b.webp",
+      "categories": [
+        "wallet"
+      ]
+    },
+    {
+      "slug": "xrp-for-salesforce",
+      "name": "XRP for Salesforce",
+      "description": "XRP for Salesforce is an open-source data mapping layer from the XRPL to Salesforce. In addition to the open source Salesforce project, it includes relevant configuration of related Webhooks and any relevant JavaScript code to support the integration between XRPL and XRP for Salesforce.",
+      "url": "https://web3enabler.com/product/xrp-for-salesforce/",
+      "logo": "/img/uses/projects/xrp-for-salesforce-9a6e5166.webp",
+      "categories": [
+        "developer_tooling"
+      ]
+    },
+    {
+      "slug": "xrp-ledger",
+      "name": "XRP Ledger",
+      "description": "Provides comprehensive information and resources about the XRP Ledger (XRPL) and serves as a hub for developers, businesses, and individuals interested in understanding and utilizing the XRPL technology. It covers the XRPL's architecture, features, use cases, and guides for building applications and integrating with the XRPL network.",
+      "url": "https://xrpl.org",
+      "logo": "/img/uses/projects/xrp-ledger-835321f4.webp",
+      "categories": [
+        "developer_tooling",
+        "infrastructure"
+      ]
+    },
+    {
+      "slug": "xrp-ledger-foundation",
+      "name": "XRP Ledger Foundation",
+      "description": "The XRP Ledger Foundation is an independent non-profit entity which works to support development and usage of the XRP Ledger.",
+      "url": "https://xrpl.foundation",
+      "logo": "/img/uses/projects/xrp-ledger-foundation-da16ec83.webp",
+      "categories": [
+        "infrastructure",
+        "developer_tooling"
+      ]
+    },
+    {
+      "slug": "xrp-toolkit",
+      "name": "XRP Toolkit",
+      "description": "XRP Toolkit is a client-side interface helping you interact with the XRP Ledger and its on-ledger decentralized exchange.",
+      "url": "https://www.xrptoolkit.com/",
+      "logo": "/img/uses/projects/xrp-toolkit-7b88604b.webp",
+      "categories": [
+        "wallet"
+      ]
+    },
+    {
+      "slug": "xrpcafe",
+      "name": "xrp.cafe",
+      "description": "Founded in 2022, xrp.cafe is the leading marketplace for tokens and NFTs on the XRP Ledger. Since day one, xrp.cafe has been a community-driven platform connecting thousands of creators, collectors, and communities from around the world.",
+      "url": "https://xrp.cafe",
+      "logo": "/img/uses/projects/xrpcafe-a12499d9.webp",
+      "categories": [
+        "nfts"
+      ]
+    },
+    {
+      "slug": "xrpawz",
+      "name": "XRPawz",
+      "description": "XRPawz is a community-driven meme token that automatically rewards holders with XRP. Every buy and sell routes a small fee into a smart contract that purchases XRP on the open market and redistributes it to $PAWZ holders - no staking, no claiming, just hold and let the pup fetch.",
+      "url": "https://www.xrpawz.com",
+      "logo": "/img/uses/projects/xrpawz-ebb38838.webp",
+      "categories": [
+        "nfts"
+      ]
+    },
+    {
+      "slug": "xrpl-ai-signals-by-liisa",
+      "name": "XRPL AI Signals by Liisa",
+      "description": "Liisa helps NFT investors by analyzing the multifaceted landscape of NFT projects, considering both quantitative and qualitative factors like on-chain transactions, social activity, and NFT utilities. By employing machine learning, the platform deciphers market data to forecast floor price movements and aggregates qualitative insights from diverse sources. With the grant, the primary objective is to integrate XRPL NFTs, further enhancing the platform's capability and offering investors an edge in the XRPL NFT ecosystem.",
+      "url": "https://www.liisa.io/",
+      "logo": "/img/uses/projects/xrpl-ai-signals-by-liisa-0ea80b21.webp",
+      "categories": [
+        "infrastructure",
+        "nfts"
+      ]
+    },
+    {
+      "slug": "xrpl-cheat-sheet",
+      "name": "XRPL Cheat Sheet",
+      "description": "A curated list of everything related to the XRP Ledger.",
+      "url": "https://github.com/NotReallyACreativeName/awesome-xrpl",
+      "logo": "/img/uses/projects/xrpl-cheat-sheet-34f7fc03.webp",
+      "categories": [
+        "developer_tooling"
+      ]
+    },
+    {
+      "slug": "xrpl-commons",
+      "name": "XRPL Commons",
+      "description": "XRPL Commons is a Paris-based non-profit providing resources, guidance, and smart networking to developers, academics, and entrepreneurs.",
+      "url": "https://www.xrpl-commons.org",
+      "logo": "/img/uses/projects/xrpl-commons-60fbad3a.webp",
+      "categories": [
+        "developer_tooling"
+      ]
+    },
+    {
+      "slug": "xrpl-discord-bot",
+      "name": "XRPL Discord Bot",
+      "description": "A bot to connect your XRPL account to Discord and listen to any transaction on it",
+      "url": "https://github.com/jacobpretorius/XRPL-Discord-Bot/wiki",
+      "logo": "/img/uses/projects/xrpl-discord-bot-3e12555b.webp",
+      "categories": [
+        "developer_tooling"
+      ]
+    },
+    {
+      "slug": "xrpl-elixir",
+      "name": "XRPL Elixir",
+      "description": "An Elixir-based RPC library (XRPC), allowing Elixir developers to easily integrate with #XRPL blockchain HTTP APIs.",
+      "url": "https://github.com/lucca65/xrpl",
+      "logo": "/img/uses/projects/xrpl-elixir-db810b6c.webp",
+      "categories": [
+        "developer_tooling"
+      ]
+    },
+    {
+      "slug": "xrpl-hooks-builder",
+      "name": "XRPL Hooks builder",
+      "description": "Hooks Builder permit to develop, test, debug and deploy Hooks on testnet",
+      "url": "https://hooks-builder.xrpl.org/develop",
+      "logo": "/img/uses/projects/xrpl-hooks-builder-39822c77.webp",
+      "categories": [
+        "developer_tooling"
+      ]
+    },
+    {
+      "slug": "xrpl-jobs",
+      "name": "XRPL Jobs",
+      "description": "XRPL Jobs is the primary hub and community platform for the XRPL community, providing a wealth of information, and featuring a dedicated section for job listings.",
+      "url": "https://jobs.xrpl.org/jobs",
+      "logo": "/img/uses/projects/xrpl-jobs-36d720af.webp",
+      "categories": [
+        "developer_tooling"
+      ]
+    },
+    {
+      "slug": "xrpl-labs",
+      "name": "XRPL Labs",
+      "description": "The XRPL Labs flagship product is Xaman, a non custodial XRP Ledger client. The Xaman app relies on the XRP Ledger and the Xaman platform (backend). XRPL Labs is a software development company dedicated to building user-friendly XRP-based applications and tools to enhance the functionality and adoption of the XRP Ledger.",
+      "url": "https://status.xrpl-labs.com/",
+      "logo": "/img/uses/projects/xrpl-labs-547cfafc.webp",
+      "categories": [
+        "developer_tooling",
+        "wallet"
+      ]
+    },
+    {
+      "slug": "xrpl-learning-portal",
+      "name": "XRPL Learning portal",
+      "description": "A learning portal featuring different accessible online courses to get started with the XRP Ledger.",
+      "url": "https://learn.xrpl.org/",
+      "logo": "/img/uses/projects/xrpl-learning-portal-bbc4391c.webp",
+      "categories": [
+        "developer_tooling"
+      ]
+    },
+    {
+      "slug": "xrpl-livenet",
+      "name": "XRPL Livenet",
+      "description": "The XRP Ledger mainnet is the production blockchain network where real XRP transactions occur, offering secure, decentralized validation, and serving as the foundation for a wide range of financial applications and services built upon the XRP Ledger's technology.",
+      "url": "https://livenet.xrpl.org/",
+      "logo": "/img/uses/projects/xrpl-livenet-ba30caeb.webp",
+      "categories": [
+        "infrastructure"
+      ]
+    },
+    {
+      "slug": "xrpl-meta",
+      "name": "XRPL Meta",
+      "description": "Metadata API for XRPL Assets. XRPL Meta provides a uniform way of writing and reading metadata, token issuers only have to publish this data once. At the same time, app developers can read this metadata in a convenient and trusted way.",
+      "url": "https://xrplmeta.org/",
+      "logo": "/img/uses/projects/xrpl-meta-d441e83b.webp",
+      "categories": [
+        "developer_tooling"
+      ]
+    },
+    {
+      "slug": "xrpl-metamask-snap",
+      "name": "XRPL MetaMask Snap",
+      "description": "Unlock XRPL's potential with your MetaMask. If you have a MetaMask wallet now you have an XRPL one too. With our XRP Ledger Snap with MetaMask snap support, you will have most of the features of XRPL right in your MetaMask wallet.",
+      "url": "https://snap.xrplevm.org",
+      "logo": "/img/uses/projects/xrpl-metamask-snap-2d25f4d0.webp",
+      "categories": [
+        "wallet"
+      ]
+    },
+    {
+      "slug": "xrpl-nft-api",
+      "name": "XRPL NFT Api",
+      "description": "XRP NFT Api by XRPL Services",
+      "url": "https://api.xrpldata.com/docs/static/index.html",
+      "logo": "/img/uses/projects/xrpl-nft-api-cc26c051.webp",
+      "categories": [
+        "developer_tooling"
+      ]
+    },
+    {
+      "slug": "xrpl-pulse",
+      "name": "XRPL Pulse",
+      "description": "XRPL Pulse is the no-BS hub that voids the noise and spotlights real builders shipping on the XRP Ledger. Here's everything you need to know. We're a human-curated directory highlighting the wildest, most innovative projects actually building on XRPL, from DeFi protocols and payment tools to games, media platforms, dev utilities, and NFT-integrated experiences. We focus on genuine utility and active development, not hype, rugs, or paid promotions.",
+      "url": "https://www.xrplpulse.com/",
+      "logo": "/img/uses/projects/xrpl-pulse-980d84a7.webp",
+      "categories": [
+        "developer_tooling"
+      ]
+    },
+    {
+      "slug": "xrpl-services",
+      "name": "XRPL Services",
+      "description": "Execute different XRP Ledger transactions with XUMM",
+      "url": "https://xrpl.services/",
+      "logo": "/img/uses/projects/xrpl-services-dbaaf9e6.webp",
+      "categories": [
+        "developer_tooling"
+      ]
+    },
+    {
+      "slug": "xrpl-x-address-format",
+      "name": "XRPL X-address format",
+      "description": "The new X-address format can replace the use of a separate address and destination tag for XRP deposits. By using the X-address, it will no longer be possible to forget adding a destination tag or entering the wrong one when sending deposits to exchanges and other platforms accepting XRP deposits.",
+      "url": "https://xrpaddress.info/",
+      "logo": "/img/uses/projects/xrpl-x-address-format-40044b78.webp",
+      "categories": [
+        "developer_tooling"
+      ]
+    },
+    {
+      "slug": "xrpl-rust",
+      "name": "xrpl-rust",
+      "description": "A 100% Rust library to interact with the XRP Ledger.",
+      "url": "https://github.com/sephynox/xrpl-rust",
+      "logo": "/img/uses/projects/xrpl-rust-c817ce05.webp",
+      "categories": [
+        "developer_tooling"
+      ]
+    },
+    {
+      "slug": "xrpnft",
+      "name": "XRPNFT",
+      "description": "XRPNFT is a fee-free platform for trading XRPL NFTs on the XRP Ledger, connecting creators and collectors in a seamless NFT marketplace.",
+      "url": "https://xrpnft.com/",
+      "logo": "/img/uses/projects/xrpnft-7407ffaf.webp",
+      "categories": [
+        "nfts"
+      ]
+    },
+    {
+      "slug": "xrpscan",
+      "name": "XRPScan",
+      "description": "XRPScan is the largest XRPL explorer with a strong focus on presenting XRP Ledger validator, network and governance data in a format that's easy to understand. This project aims to bring independent, accurate XRP Ledger network data to the network participants. It will also support network participants, such as node operators, make informed choices about their UNLs, and provide support for NFT application builders.",
+      "url": "https://xrpscan.com/",
+      "logo": "/img/uses/projects/xrpscan-81c02cb8.webp",
+      "categories": [
+        "infrastructure"
+      ]
+    },
+    {
+      "slug": "xspectar",
+      "name": "Xspectar",
+      "description": "The social and immersive, multi-chain and user-generated metaverse",
+      "url": "https://www.xspectar.com/",
+      "logo": "/img/uses/projects/xspectar-0e42c183.webp",
+      "categories": [
+        "gaming"
+      ]
+    },
+    {
+      "slug": "xumm4j",
+      "name": "Xumm4J",
+      "description": "The xumm4j SDK is for BACKEND USE only. Please DO NOT use your API credentials in a FRONTEND environment",
+      "url": "https://github.com/francisrosario/xumm4j",
+      "logo": "/img/uses/projects/xumm4j-c3eff07f.webp",
+      "categories": [
+        "developer_tooling"
+      ]
+    },
+    {
+      "slug": "xyra-wallet",
+      "name": "Xyra Wallet",
+      "description": "Browser based XRPL & Xahau wallet. Easy to integrate with and easy to use across any device. No need to install any apps or extensions. Being built as a passion project by PuppyTools.",
+      "url": "https://xyra.now",
+      "logo": "/img/uses/projects/xyra-wallet-8c1cfcfd.webp",
+      "categories": [
+        "wallet"
+      ]
+    },
+    {
+      "slug": "yellow-network",
+      "name": "Yellow Network",
+      "description": "Leverage our trustless infrastructure to create powerful businesses that are governed by logic - giving you the freedom to focus on your vision, not the operations.",
+      "url": "https://www.yellow.org/",
+      "logo": "/img/uses/projects/yellow-network-f97edc85.webp",
+      "categories": [
+        "developer_tooling",
+        "exchanges"
+      ]
+    },
+    {
+      "slug": "zerpmon",
+      "name": "Zerpmon",
+      "description": "Zerpmon is an engaging creature collecting game that leverages XRPL-based NFTs and tokens to enrich gameplay, ownership, and rewards for players. It offers a unique avenue for users to delve into the XRPL NFT ecosystem, featuring dynamic creature NFTs that can be battled and evolve over time. The game also provides necessary XRPL NFT tooling such as P2P NFT trading and dynamic NFT auctions. Zerpmon is currently building a mobile-optimized Web App interface to deliver a seamless gameplay and user experience for players across the globe.",
+      "url": "https://www.zerpmon.world/",
+      "logo": "/img/uses/projects/zerpmon-f93c7ed1.webp",
+      "categories": [
+        "gaming"
+      ]
+    },
+    {
+      "slug": "zkcodex",
+      "name": "ZKCODEX",
+      "description": "Track wallets across 105+ networks, engage on-chain across 125+ networks, and discover airdrops - all in one place!",
+      "url": "https://zkcodex.com/xrpl",
+      "logo": "/img/uses/projects/zkcodex-ad391091.webp",
+      "categories": [
+        "infrastructure"
+      ]
+    },
+    {
+      "slug": "zns-bio",
+      "name": "ZNS Bio",
+      "description": "#ZNSConnect decentralized ID platform powered by decentralized addresses.",
+      "url": "https://zns.bio/",
+      "logo": "/img/uses/projects/zns-bio-876ee218.webp",
+      "categories": [
+        "infrastructure"
+      ]
+    },
+    {
+      "slug": "zns-connect",
+      "name": "ZNS Connect",
+      "description": "Decentralized naming solutions for the #Web3 🟢 Personalized for blockchain interactions with #AI on XRPL Side Chain",
+      "url": "https://www.znsconnect.io/",
+      "logo": "/img/uses/projects/zns-connect-240a94e5.webp",
+      "categories": [
+        "infrastructure"
+      ]
+    }
+  ]
+}
