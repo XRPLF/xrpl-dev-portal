@@ -11,7 +11,7 @@ txIcon: other
 # Batch
 {% source-link path="src/libxrpl/tx/transactors/system/Batch.cpp" /%}
 
-最大8件のトランザクションを単一の[バッチ](../../../../concepts/transactions/batch-transactions.md)として送信します。バッチ内のトランザクションは、4つのモード(全て成功または全て失敗（All or Nothing）、一つのみ成功（Only One）、失敗まで継続（Until Failure）、および独立実行（Independent）)のいずれかでアトミックに実行されます。
+`Batch`トランザクションは、最大8件のトランザクションを単一の[バッチ](../../../../concepts/transactions/batch-transactions.md)として送信します。バッチ内のトランザクションは、4つのモード（全て成功か全て失敗［All or Nothing］、1つだけ［Only One］、失敗まで［Until Failure］、独立［Independent］）のいずれかでアトミックに実行されます。
 
 {% amendment-disclaimer name="BatchV1_1" /%}
 
@@ -173,7 +173,7 @@ txIcon: other
 
 `Batch`トランザクションの[トランザクションコスト][]は、標準的なトランザクションよりも高くなります。手数料は以下の合計として計算されます。
 
-- {% $env.PUBLIC_BASE_FEE %} * 2。
+- {% $env.PUBLIC_BASE_FEE %}の2倍。
 - 外部トランザクションの署名1つにつき、追加で{% $env.PUBLIC_BASE_FEE %}。
 - すべての内部トランザクションの手数料の合計。
 
@@ -191,9 +191,9 @@ txIcon: other
 | `temBAD_REGKEY` | 内部トランザクションのいずれかの`SigningPubKey`が空ではありません。 |
 | `temBAD_SIGNATURE` | 内部トランザクションのいずれかに`TxnSignature`フィールドが含まれています。 |
 | `temBAD_SIGNER` | <li>内部トランザクションのいずれかに`Signers`フィールドが含まれています。</li><li>`BatchSigners`フィールドに、外部トランザクションに署名するアカウントの署名が含まれています。</li><li>`BatchSigners`フィールドに重複する署名者が含まれています。</li><li>`BatchSigners`フィールドが`Account`の昇順に厳密にソートされていません。</li><li>`BatchSigners`フィールドに、内部トランザクションを持たないアカウントの署名が含まれています。</li><li>`BatchSigners`フィールドに、内部トランザクションを持つアカウントの署名が含まれていません。</li> |
-| `temINVALID_FLAG` | <li>`Flags`フィールドに、サポートされている[バッチモード](#batchのフラグ)のいずれか1つが正確に設定されていません。</li><li>内部トランザクションのいずれかに`tfInnerBatchTxn`フラグが設定されていません。</li> |
+| `temINVALID_FLAG` | <li>`Flags`フィールドに、サポートされている[Batchのフラグ](#batchのフラグ)のうちちょうど1つだけが指定されていません。</li><li>内部トランザクションのいずれかに`tfInnerBatchTxn`フラグが設定されていません。</li> |
 | `temINVALID_INNER_BATCH` | `RawTransactions`フィールドに、`Batch`など、無効化されているか不正な`TransactionType`が含まれています。現在無効化されているトランザクションは次のとおりです: `LoanBrokerCoverClawback`、`LoanBrokerCoverDeposit`、`LoanBrokerCoverWithdraw`、`LoanBrokerDelete`、`LoanBrokerSet`、`LoanDelete`、`LoanManage`、`LoanPay`、`LoanSet`、`VaultCreate`、`VaultSet`、`VaultDelete`、`VaultDeposit`、`VaultWithdraw`、`VaultClawback`。 |
 | `temREDUNDANT` | `RawTransactions`フィールドに重複するトランザクションが含まれています。 |
-| `temSEQ_AND_TICKET` | 内部トランザクションのいずれかに、`TicketSequence`と0以外の`Sequence`の両方が設定されているか、どちらも設定されていません。いずれか一方のみが必要です。 |
+| `temSEQ_AND_TICKET` | 内部トランザクションのいずれかに、`TicketSequence`と0以外の`Sequence`の両方が設定されているか、どちらも設定されていません。いずれか一方のみを指定する必要があります。 |
 
 {% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

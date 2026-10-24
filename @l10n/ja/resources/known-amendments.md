@@ -108,7 +108,7 @@ AMMDepositトランザクションタイプを修正し、AMMにフリーズさ�
 | デフォルトの投票(最新の安定版) | いいえ |
 | Amendment前の機能は廃止? | いいえ |
 
-複数のトランザクションを1つのバッチにまとめて、まとめて処理できるようにします。
+複数のトランザクションを1つのバッチにまとめ、一括して処理できるようにします。
 
 {% admonition type="danger" name="警告" %}
 このAmendmentはバグのためv3.1.1で無効化され、[BatchV1_1](#batchv1_1)に置き換えられました。
@@ -125,7 +125,7 @@ AMMDepositトランザクションタイプを修正し、AMMにフリーズさ�
 | デフォルトの投票(最新の安定版) | いいえ |
 | Amendment前の機能は廃止? | いいえ |
 
-複数のトランザクションを1つのバッチにまとめて、まとめて処理できるようにします。このAmendmentは、この機能の元の実装で発見された重大なバグを修正し、[Batch](#batch)を置き換えます。標準規格: [XLS-56](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0056-batch)
+複数のトランザクションを1つのバッチにまとめ、一括して処理できるようにします。このAmendmentは、この機能の元の実装で発見された重大なバグを修正し、[Batch](#batch)を置き換えます。標準規格: [XLS-56](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0056-batch)
 
 
 ### CheckCashMakesTrustLine
