@@ -16,7 +16,13 @@ The XRP Ledger takes escrow a step further, replacing the third party with an au
 
 The [TokenEscrow amendment][] extends escrow functionality to fungible tokens, which means [Trust Line Tokens](../../concepts/tokens/fungible-tokens/trust-line-tokens.md) and [Multi-Purpose Tokens (MPTs)](../../concepts/tokens/fungible-tokens/multi-purpose-tokens.md#transferability-controls) can be held in escrow.
 
-For Trust Line Tokens to be held in escrow, the issuing account must have the **Allow Trust Line Locking** flag enabled, which allows tokens issued by the account to be held in escrow. For MPTs, the issuer needs to enable the **Can Escrow** and **Can Transfer** flags when creating the token issuance, so that the tokens can be held in escrow and transferred.
+For Trust Line Tokens to be held in escrow, the issuing account must have the **Allow Trust Line Locking** flag enabled, which allows tokens issued by the account to be held in escrow.
+
+{% admonition type="info" name="Note" %}
+The Allow Trust Line Locking flag is not permanent. If the issuer disables it, new escrows of that issuer's tokens fail with `tecNO_PERMISSION`, but existing escrows can still be finished or canceled. The issuer can re-enable the flag at any time.
+{% /admonition %}
+
+For MPTs, the issuer needs to enable the **Can Escrow** and **Can Transfer** flags when creating the token issuance, so that the tokens can be held in escrow and transferred.
 
 While issuers can't create escrows with their own issued tokens, they can serve as recipients. When an issuer receives escrowed tokens, the process works the same way as a direct payment.
 
