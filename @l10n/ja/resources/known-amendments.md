@@ -27,7 +27,7 @@ labels:
  | [SingleAssetVault][]              | {% badge %}開発中: 未定{% /badge %} | [Single Asset Vault (Ripple Opensource)](https://opensource.ripple.com/docs/xls-65d-single-asset-vault) |
 
 {% admonition type="info" name="注記" %}
-このリストは手動で更新されています。もしあなたがAmendmentに取り組んでいて、その変更をテストするためのテストネットワークを持っているなら、このページを編集して開発中のamendmentをこのリストに追加することができます。XRP Ledgerへの貢献についての詳細は、[XRP Ledgerのコードへの貢献](contribute-code/index.md)をご覧ください。
+このリストは手動で更新されています。もしあなたがAmendmentに取り組んでいて、その変更をテストするためのテストネットワークを持っているなら、このページを編集して開発中のamendmentをこのリストに追加することができます。XRP Ledgerへの貢献についての詳細は、[XRP Ledgerのコードへの貢献](contribute-code/index.md)を参照してください。
 {% /admonition %}
 
 
@@ -95,7 +95,7 @@ labels:
 
 AMMDepositトランザクションタイプを修正し、AMMにフリーズされたトークンを預けることを防ぎます。
 
-詳細については、[XLS-73: AMMClawback specification](https://github.com/XRPLF/XRPL-Standards/discussions/212)をご覧ください。
+詳細については、[XLS-73: AMMClawback specification](https://github.com/XRPLF/XRPL-Standards/discussions/212)を参照してください。
 
 
 ### Batch
@@ -159,7 +159,7 @@ Allows multiple transactions to be bundled into a batch that's processed all tog
 
 Clawbackはデフォルトでは無効になっています。Clawbackを使用するには、`AccountSet`トランザクションを使用して`lsfAllowTrustLineClawback`フラグを設定する必要があります。
 
-この修正の詳細については、[Clawback](../docs/concepts/tokens/fungible-tokens/clawing-back-tokens.md)をご覧ください。
+この修正の詳細については、[Clawback](../docs/concepts/tokens/fungible-tokens/clawing-back-tokens.md)を参照してください。
 
 
 ### Credentials
@@ -196,7 +196,7 @@ XRP Ledgerを使用して資格情報およびコンプライアンス要件を�
 
 `deposit_authorized` APIメソッドを修正し、Credentialに基づく認証をチェックするようにします。また、`ledger_entry`メソッドを修正し、Credentialエントリの検索を許可します。
 
-詳細については、[XLS-70: Credentials specification](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0070d-credentials)をご覧ください。
+詳細については、[XLS-70: Credentials specification](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0070d-credentials)を参照してください。
 
 
 ### ConfidentialTransfer
@@ -211,7 +211,7 @@ XRP Ledgerを使用して資格情報およびコンプライアンス要件を�
 
 高度な暗号技術(EC-ElGamalとZKP)を使用して、Multi-Purpose Token(MPT)に機関水準のプライバシーをもたらします。個々の残高と送金額は公開レジャーから遮蔽される一方で、権限を持つ当事者（発行者、監査人、指定された組織）が総供給量を検証し規制上の義務を果たせるよう、コンプライアンスの仕組みは維持されます。
 
-詳細については、[XLS-96: Confidential Transfers](https://opensource.ripple.com/docs/xls-96-confidential-transfers)をご覧ください。
+詳細については、[XLS-96: Confidential Transfers](https://opensource.ripple.com/docs/xls-96-confidential-transfers)を参照してください。
 
 
 ### CryptoConditions
@@ -276,7 +276,7 @@ This amendment enables issuers to deep freeze trustlines from interacting with p
 
 この修正を適用しない場合、新しいアカウントは`Sequence`番号が必ず1で始まります。また、レジャーの状態データからアカウントを削除できません。
 
-この修正を適用した場合、新しいアカウントは、そのアカウントが作成された[レジャーのインデックス][レジャーインデックス]に一致する`Sequence`番号に等しい`Sequence`番号で始まります。この変更により、一度削除され、その後再作成されたアカウントが、古いトランザクションを再度実行しないように保護することができます。新しい`AccountDelete`トランザクションタイプを追加すると、アカウントと、そのアカウントがレジャーに所有する特定のオブジェクトが削除されます。ただし、特定の種類のオブジェクトはこの方法で削除できないため、そのようなオブジェクトに関連付けられているアカウントは削除できません。また、現行のレジャーインデックスから256を引いた値がアカウントの現行`Sequence`番号より低い場合も、アカウントは削除できません。この修正に関する詳しい解説については、[XRP Community Standards Draft 7](https://github.com/XRPLF/XRPL-Standards/issues/8)をご覧ください。
+この修正を適用した場合、新しいアカウントは、そのアカウントが作成された[レジャーのインデックス][レジャーインデックス]に一致する`Sequence`番号に等しい`Sequence`番号で始まります。この変更により、一度削除され、その後再作成されたアカウントが、古いトランザクションを再度実行しないように保護することができます。新しい`AccountDelete`トランザクションタイプを追加すると、アカウントと、そのアカウントがレジャーに所有する特定のオブジェクトが削除されます。ただし、特定の種類のオブジェクトはこの方法で削除できないため、そのようなオブジェクトに関連付けられているアカウントは削除できません。また、現行のレジャーインデックスから256を引いた値がアカウントの現行`Sequence`番号より低い場合も、アカウントは削除できません。この修正に関する詳しい解説については、[XRP Community Standards Draft 7](https://github.com/XRPLF/XRPL-Standards/issues/8)を参照してください。
 
 
 ### DepositAuth
@@ -391,7 +391,7 @@ Adds functionality to update the `URI` field of an `NFToken` ledger entry. This 
 
 Multi-Purpose Tokenを拡張し、特定のプロパティをデフォルトで変更可能にします。対象となるのは、オンチェーンメタデータ、送金手数料、そしてMPT発行の機能フラグを有効にする権限です。発行者は、これらのプロパティを `ImmutableFlags` フィールドで宣言することで、恒久的に変更不可にできます。
 
-詳細については、[ダイナミックMPT](/@l10n/ja/docs/concepts/tokens/fungible-tokens/mutable-mpts.md)をご覧ください。
+詳細については、[ダイナミックMPT](/@l10n/ja/docs/concepts/tokens/fungible-tokens/mutable-mpts.md)を参照してください。
 
 
 ### EnforceInvariants
@@ -826,8 +826,8 @@ Checksトランザクションがアカウントのメタデータに影響を�
 
 NFTの転送手数料とトラストラインの処理に関する2つのバグを修正します。
 
-- NFTの発行者が送金手数料を受け取るためのトラストラインを持っていることを確認するため、[NFTokenAcceptOfferトランザクション][]にチェックを追加します。このAmendmentがない場合、このチェックはNFT取引のオファーが作成されるときにのみ適用され、オファーが承認されるときには適用されません。その結果、オファーの作成と承認の間に必要なトラストラインが削除された場合、オファーが承認されるときに不適切にトラストラインが再作成されてしまいます。このAmendmentでは、ミンターが送金手数料を受け取るためのトラストラインを持っていない場合、NFT取引オファーを承認するトランザクションは失敗します。(詳細については、[issue #4925](https://github.com/XRPLF/rippled/issues/4925)をご覧ください。)
-- NFTの発行者が、送金手数料として支払われる代替可能トークンの発行者でもある場合のトラストラインの存在チェックを調整します。このAmendmentがない場合、対象のNFTに送金手数料が設定されており、オファー額が発行者が発行した代替可能トークンで指定され、オファーを出すアカウントがそれらのトークンのトラストラインを持っていない場合、[NFTokenCreateOfferトランザクション][]は結果コード`tecNO_LINE`で失敗します。このAmendmentでは、オファーは正常に作成できます。(詳細については、[issue #4941](https://github.com/XRPLF/rippled/issues/4941)をご覧ください。)
+- NFTの発行者が送金手数料を受け取るためのトラストラインを持っていることを確認するため、[NFTokenAcceptOfferトランザクション][]にチェックを追加します。このAmendmentがない場合、このチェックはNFT取引のオファーが作成されるときにのみ適用され、オファーが承認されるときには適用されません。その結果、オファーの作成と承認の間に必要なトラストラインが削除された場合、オファーが承認されるときに不適切にトラストラインが再作成されてしまいます。このAmendmentでは、ミンターが送金手数料を受け取るためのトラストラインを持っていない場合、NFT取引オファーを承認するトランザクションは失敗します。(詳細については、[issue #4925](https://github.com/XRPLF/rippled/issues/4925)を参照してください。)
+- NFTの発行者が、送金手数料として支払われる代替可能トークンの発行者でもある場合のトラストラインの存在チェックを調整します。このAmendmentがない場合、対象のNFTに送金手数料が設定されており、オファー額が発行者が発行した代替可能トークンで指定され、オファーを出すアカウントがそれらのトークンのトラストラインを持っていない場合、[NFTokenCreateOfferトランザクション][]は結果コード`tecNO_LINE`で失敗します。このAmendmentでは、オファーは正常に作成できます。(詳細については、[issue #4941](https://github.com/XRPLF/rippled/issues/4941)を参照してください。)
 
 
 ### fixEnforceNFTokenTrustlineV2
@@ -997,7 +997,7 @@ Adds flag checks for `CredentialCreate`, `CredentialAccept`, `CredentialDelete`,
 
 - [LedgerStateFixトランザクション][]は、レジャーデータの破損を修復するために使用できます。このAmendmentが有効になると、LedgerStateFixトランザクションを使用してNFTディレクトリの破損したリンクを修復できます。将来のバグによって新しいタイプのレジャー破損が発生した場合、このトランザクションタイプを拡張して他のタイプの破損も修復できるようになります。
 
-このAmendmentがない場合、特定の状況下でNFTディレクトリの最後のページを削除し、その後、前のページへのリンクが欠落した新しい最後のページを作成することが可能です。この問題を引き起こす可能性のあるシナリオの詳細な説明については、[PR #4945](https://github.com/XRPLF/rippled/pull/4945)をご覧ください。このAmendmentにより、その破損を引き起こしたバグが修正されます。さらに、新しい不変性チェックにより、他のバグが不適切に最後のページを削除できないようになります。
+このAmendmentがない場合、特定の状況下でNFTディレクトリの最後のページを削除し、その後、前のページへのリンクが欠落した新しい最後のページを作成することが可能です。この問題を引き起こす可能性のあるシナリオの詳細な説明については、[PR #4945](https://github.com/XRPLF/rippled/pull/4945)を参照してください。このAmendmentにより、その破損を引き起こしたバグが修正されます。さらに、新しい不変性チェックにより、他のバグが不適切に最後のページを削除できないようになります。
 
 
 ### fixNFTokenRemint
@@ -1018,7 +1018,7 @@ Adds flag checks for `CredentialCreate`, `CredentialAccept`, `CredentialDelete`,
 
 このamendmentにより、アカウント削除の制限も導入されます。アカウントは、`FirstNFTSequence` + `MintedNFTokens` + 256が現在のレジャーシーケンスより小さい場合にのみ削除できます（256はアカウント削除のヒューリスティックな制限として選択されたもので、アカウント削除制約にすでに存在します）。この制約がなければ、特定の条件下で同一のNFTが再ミントされる可能性があります。
 
-{% admonition type="warning" name="注意" %}これは、トークンをミントするためにローカルでNFTokenIDを計算しているプロジェクトやツールにとっては **破壊的な変更** です。NFTokenIDを計算するコードがある場合は、新しい計算式に合わせて更新する必要があります。後方互換性を保ちながらこれを行う方法の例については、こちらをご覧ください。[JavaScriptでのよく知られたリファレンス実装](https://gist.github.com/N3TC4T/a20fb528931ed009ebdd708be4938748?permalink_comment_id=4738760#gistcomment-4738760).{% /admonition %}
+{% admonition type="warning" name="注意" %}これは、トークンをミントするためにローカルでNFTokenIDを計算しているプロジェクトやツールにとっては **破壊的な変更** です。NFTokenIDを計算するコードがある場合は、新しい計算式に合わせて更新する必要があります。後方互換性を保ちながらこれを行う方法の例については、こちらを参照してください。[JavaScriptでのよく知られたリファレンス実装](https://gist.github.com/N3TC4T/a20fb528931ed009ebdd708be4938748?permalink_comment_id=4738760#gistcomment-4738760).{% /admonition %}
 
 
 ### fixNFTokenReserve
@@ -1370,7 +1370,7 @@ XRP Ledgerの分散型取引所において、オファーの掛け合わせの�
 | デフォルトの投票(最新の安定版) | いいえ |
 | Amendment前の機能は廃止? | いいえ |
 
-トランザクションの前後にアカウント上で実行できる小さなコードという形式で、オンチェーンのスマートコントラクトを追加します。詳細は[Hooksドキュメント （英語のみ）](https://xrpl-hooks.readme.io/)をご覧ください。
+トランザクションの前後にアカウント上で実行できる小さなコードという形式で、オンチェーンのスマートコントラクトを追加します。詳細は[Hooksドキュメント （英語のみ）](https://xrpl-hooks.readme.io/)を参照してください。
 
 
 ### ImmediateOfferKilled
@@ -1599,7 +1599,7 @@ XRPの「Payment Channel」を作成します。Payment Channelは、2名の当�
 
 新たに作成するトランザクションタイプは次の3つです。[PaymentChannelCreate][]、[PaymentChannelClaim][]、[PaymentChannelFund][]。新たに作成するレジャーオブジェクトタイプは[PayChannel](../docs/references/protocol/ledger-data/ledger-entry-types/paychannel.md)です。レジャー外のデータ構造`Claim`を定義し、ChannelClaimトランザクションに使用します。新たに作成する`xrpld`APIメソッドは次のとおりです。[`channel_authorize`](../docs/references/http-websocket-apis/admin-api-methods/signing-methods/channel_authorize.md)（署名されたクレームを作成します）、[`channel_verify`](../docs/references/http-websocket-apis/public-api-methods/payment-channel-methods/channel_verify.md)（署名されたクレームを検証します）、[`account_channels`](../docs/references/http-websocket-apis/public-api-methods/account-methods/account_channels.md)（アカウントに関連するチャンネルをリストを作成します）。
 
-詳細は、[Payment Channelsのチュートリアル](../docs/tutorials/payments/use-payment-channels.md)をご覧ください。
+詳細は、[Payment Channelsのチュートリアル](../docs/tutorials/payments/use-payment-channels.md)を参照してください。
 
 
 ### PermissionDelegation
@@ -1678,7 +1678,7 @@ XRP Ledgerプロトコルの署名要件を変更し、いかなる場合にも�
 
 この修正により、単独署名のトランザクションは展性になりません。(署名者が必要以上の署名を提供した場合、[マルチシグのトランザクションはまだ展性であるかもしれません](../docs/concepts/transactions/finality-of-results/transaction-malleability.md#マルチシグの展性))。すべてのトランザクションは、tfFullyCanonicalSigフラグに関係なく、署名の完全な正規の形式を使用する必要があります。完全に正規化された署名を作成しない署名ユーティリティはサポートされていません。Ripple社が提供するすべての署名ユーティリティは、少なくとも2014年以降、完全に正規化された署名のみを提供するようになっています。
 
-詳しくは、[`rippled` issue #3042](https://github.com/XRPLF/rippled/issues/3042)をご覧ください。
+詳しくは、[`rippled` issue #3042](https://github.com/XRPLF/rippled/issues/3042)を参照してください。
 
 
 ### SHAMapV2

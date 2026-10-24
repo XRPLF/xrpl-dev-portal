@@ -8,7 +8,7 @@ labels:
 
 {% source-link path="src/xrpld/rpc/handlers/server_info/Version.h" /%}
 
-`version`コマンドは、xrpldサーバのAPIバージョン情報を取得します。[Clioサーバ](../../../../concepts/networks-and-servers/the-clio-server.md)については、[`version` (`clio`)](/docs/references/http-websocket-apis/public-api-methods/clio-methods/version.md)をご覧ください。
+`version`コマンドは、xrpldサーバのAPIバージョン情報を取得します。[Clioサーバ](../../../../concepts/networks-and-servers/the-clio-server.md)については、[`version` (`clio`)](/docs/references/http-websocket-apis/public-api-methods/clio-methods/version.md)を参照してください。
 
 
 ## リクエストのフォーマット
@@ -106,9 +106,9 @@ xrpld version
 
 {% /tabs %}
 
-レスポンスは[標準フォーマット][]に従っており、正常に完了した場合は結果に`version`オブジェクトのみがフィールドとして含まれています。
+レスポンスは[標準フォーマット][]に従い、正常に完了した場合は結果に`version`オブジェクトのみがフィールドとして含まれます。
 
-`version`オブジェクトには、以下のフィールドのいくつかの組み合わせが含まれます。
+`version`オブジェクトでは、以下のフィールドのいくつかの組み合わせが返されます。
 
 | `Field`  | 型     | 説明                                   |
 |:---------|:-------|:---------------------------------------|
@@ -116,7 +116,7 @@ xrpld version
 | `last`   | 文字列 | サポートされている最も新しいAPIリリース |
 | `good`   | 文字列 | 指定がない場合に使用されるデフォルトのAPI |
 
-## 考えられるエラー
+## 想定されるエラー
 
 * いずれかの[汎用エラータイプ][]。
 

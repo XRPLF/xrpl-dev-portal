@@ -1,13 +1,13 @@
 ---
 seo:
-    description: 特定額のXRPをPayment Channelから清算するときに使用できる署名を作成します。
+    description: Payment Channelからの支払いに対するクレームに署名します。
 labels:
     - Payment Channels
 ---
 # channel_authorize
 {% source-link path="src/xrpld/rpc/handlers/admin/signing/ChannelAuthorize.cpp" /%}
 
-`channel_authorize`メソッドは、特定額のXRPをPayment Channelから清算するときに使用できる署名を作成します。
+`channel_authorize`メソッドは、Payment Channelから特定額のXRPを受け取るために使用できる署名を作成します。
 
 {% partial file="/@l10n/ja/docs/_snippets/public-signing-note.md" /%}
 
@@ -60,16 +60,16 @@ xrpld channel_authorize s██████████████████�
 | フィールド | 型 | 説明        |
 |-------|------|-------------|
 | `channel_id` | 文字列 | Payment Channelが使用する一意のID。
-| `secret` | 文字列 | _（省略可）_ クレームへの署名に使用する秘密鍵。これは、Channelに指定されている公開鍵と同じキーペアである必要があります。`seed`、`seed_hex`、`passphrase`と同時に使用することはできません。{% badge href="https://github.com/XRPLF/rippled/releases/tag/1.4.0" %}更新: rippled 1.4.0{% /badge %} |
-| `seed` | 文字列 | _（省略可）_ クレームへの署名に使用する秘密シード。これは、Channelに指定されている公開鍵と同じキーペアである必要があります。XRP Ledgerの[base58][]フォーマットにする必要があります。指定する場合は、`key_type`も指定する必要があります。`secret`、`seed_hex`、`passphrase`と同時に使用することはできません。 |
-| `seed_hex` | 文字列 | _（省略可）_ クレームへの署名に使用する秘密シード。これは、Channelに指定されている公開鍵と同じキーペアである必要があります。16進フォーマットにする必要があります。指定する場合は、`key_type`も指定する必要があります。`secret`、`seed`、`passphrase`と同時に使用することはできません。 |
-| `passphrase` | 文字列 | _（省略可）_ クレームへの署名に使用する文字列パスフレーズ。これは、Channelに指定されている公開鍵と同じキーペアである必要があります。[このパスフレーズから導出した鍵](../../../../concepts/accounts/cryptographic-keys.md#鍵導出)は、チャネルで指定された公開鍵と一致する必要があります。指定する場合は、`key_type`も指定する必要があります。`secret`、`seed`、`seed_hex`と同時に使用することはできません。 |
+| `secret` | 文字列 | _（省略可）_ クレームへの署名に使用する秘密鍵。これは、Channelに指定されている公開鍵と同じキーペアである必要があります。`seed`、`seed_hex`、`passphrase`とは併用できません。{% badge href="https://github.com/XRPLF/rippled/releases/tag/1.4.0" %}更新: rippled 1.4.0{% /badge %} |
+| `seed` | 文字列 | _（省略可）_ クレームへの署名に使用する秘密シード。これは、Channelに指定されている公開鍵と同じキーペアである必要があります。XRP Ledgerの[base58][]フォーマットにする必要があります。指定する場合は、`key_type`も指定する必要があります。`secret`、`seed_hex`、`passphrase`とは併用できません。 |
+| `seed_hex` | 文字列 | _（省略可）_ クレームへの署名に使用する秘密シード。これは、Channelに指定されている公開鍵と同じキーペアである必要があります。16進フォーマットにする必要があります。指定する場合は、`key_type`も指定する必要があります。`secret`、`seed`、`passphrase`とは併用できません。 |
+| `passphrase` | 文字列 | _（省略可）_ クレームへの署名に使用する文字列パスフレーズ。これは、Channelに指定されている公開鍵と同じキーペアである必要があります。[このパスフレーズから導出した鍵](../../../../concepts/accounts/cryptographic-keys.md#鍵導出)は、チャネルで指定された公開鍵と一致する必要があります。指定する場合は、`key_type`も指定する必要があります。`secret`、`seed`、`seed_hex`とは併用できません。 |
 | `key_type` | 文字列 | _（省略可）_ 指定された暗号化キーペアの[署名アルゴリズム](../../../../concepts/accounts/cryptographic-keys.md#署名アルゴリズム)。有効な種類は、`secp256k1`または`ed25519`です。デフォルトは`secp256k1`です。 |
 | `amount` | 文字列 | 承認するXRPの累積額（drop数）送金先がこのChannelからすでに受領しているXRPの額がこのフィールドの額よりも少ない場合、このメソッドで作成される署名を使用して差額を清算できます。 |
 
 リクエストでは、`secret`、`seed`、`seed_hex`、`passphrase`のうち1つだけを指定する**必要があります**。
 
-{% admonition type="danger" name="警告" %}信頼できないサーバに対して、またはセキュリティが確保されていないネットワーク接続を通じて秘密鍵を送信しないでください。（これには、このリクエストの`secret`、`seed`、`seed_hex`、または`passphrase`フィールドも含まれます）このメソッドは、自身が実行するサーバ、または資金を預けている十分に信頼できるサーバへの、安全で暗号化されたネットワーク接続でのみ使用してください。そうでない場合、盗聴者があなたの秘密鍵を使用してクレームに署名し、同じキーペアを使用してこのPayment Channelなどから資金をすべて持ち出す可能性があります。手順については、[安全な署名の設定](../../../../concepts/transactions/secure-signing.md)をご覧ください。{% /admonition %}
+{% admonition type="danger" name="警告" %}信頼できないサーバに対して、またはセキュリティが確保されていないネットワーク接続を通じて秘密鍵を送信しないでください。（これには、このリクエストの`secret`、`seed`、`seed_hex`、または`passphrase`フィールドも含まれます）このメソッドは、自身が実行するサーバ、または資金を預けている十分に信頼できるサーバへの、安全で暗号化されたネットワーク接続でのみ使用してください。そうでない場合、盗聴者があなたの秘密鍵を使用してクレームに署名し、同じキーペアを使用してこのPayment Channelなどから資金をすべて持ち出す可能性があります。手順については、[安全な署名の設定](../../../../concepts/transactions/secure-signing.md)を参照してください。{% /admonition %}
 
 ## レスポンスのフォーマット
 
@@ -121,12 +121,12 @@ xrpld channel_authorize s██████████████████�
 |-------|------|-------------|
 | `signature` | 文字列 | このクレームの署名（16進値）。このクレームを処理するには、Payment Channelの送金先アカウントがこの署名、正確なChannel ID、XRPの額、およびChannelの公開鍵が指定された[PaymentChannelClaimトランザクション][]を送信する必要があります。 |
 
-## 考えられるエラー
+## 想定されるエラー
 
 * いずれかの[汎用エラータイプ][]。
 * `badKeyType` - リクエストの`key_type`パラメーターは、有効なキータイプではありません。(有効なタイプは、`secp256k1`または`ed25519`です。)
 * `badSeed` - リクエストの`secret`が有効なシークレットキーではありません。
 * `channelAmtMalformed` - リクエストの`amount`が有効な額ではありません。
-* `channelMalformed` - リクエストの`channel_id`が有効なChannel IDではありません。Channel IDは256ビット（64文字）の16進文字列です。
+* `channelMalformed` - リクエストの`channel_id`が有効なChannel IDではありません。Channel IDは256ビット（64文字）の16進文字列である必要があります。
 
 {% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

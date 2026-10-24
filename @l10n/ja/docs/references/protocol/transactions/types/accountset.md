@@ -1,6 +1,6 @@
 ---
 seo:
-    description: XRP Ledgerのアカウントのプロパティーを修正します。
+    description: アカウントの各種設定を変更します。
 labels:
     - Accounts
 txIcon: modify
