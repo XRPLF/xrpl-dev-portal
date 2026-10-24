@@ -41,6 +41,17 @@ xrpldサーバの管理には、以下のメソッドを使用します。
 * **[`stop`](server-control-methods/stop.md)** - xrpldサーバをシャットダウンします。
 
 
+## [署名メソッド](signing-methods/index.md)
+
+トランザクションへの署名には、以下のメソッドを使用します。
+
+* **[`sign`](signing-methods/sign.md)** - トランザクションに暗号で署名します。
+* **[`sign_for`](signing-methods/sign_for.md)** - マルチ署名に署名を提供します。
+* **[`channel_authorize`](signing-methods/channel_authorize.md)** - ペイメントチャネルへのクレーム（支払請求）に署名します。
+
+デフォルトでは、これらのメソッドは[管理者専用](/docs/tutorials/get-started/get-started-http-websocket-apis.md#admin-access)です。サーバ管理者が[パブリック署名を有効にしている](../../../infrastructure/configuration/enable-public-signing.md)場合は、パブリックメソッドとして使用できます。
+
+
 ## [ステータスおよびデバッグメソッド](status-and-debugging-methods/index.md)
 
 ネットワークとサーバのステータスを確認するには、以下のメソッドを使用します。
