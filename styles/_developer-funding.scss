@@ -1,0 +1,424 @@
+// Developer Funding hub (/community/developer-funding)
+//
+// Persona picker and program cards for the funding hub. Visitors pick who
+// they are and the page filters the programs below. xrpl.org only routes
+// people; every program links out to its operator.
+//
+// Naming Convention: BEM, page-scoped
+// .funding-hub                      - Picker section container
+// .funding-hub__status              - Live status line under the picker
+// .funding-hub-personas             - Radiogroup grid of persona tiles
+// .funding-hub-persona              - One persona tile (button role="radio")
+// .funding-hub-persona--selected    - Selected tile (green, like CardIcon green)
+// .funding-hub-persona__overlay     - Window shade hover layer
+// .funding-hub-card__meta           - Operator / type / location line in a card
+//
+// Colors and states follow CardIcon: neutral tiles use the gray scale, the
+// selected tile uses the green variant. The site defaults to dark mode;
+// light mode is html.light.
+
+// =============================================================================
+// Design Tokens
+// =============================================================================
+
+$funding-hub-padding-top-sm: $bds-space-5xl;   // 48px
+$funding-hub-padding-top-md: $bds-space-6xl;   // 64px
+$funding-hub-padding-top-lg: $bds-space-8xl;   // 80px
+
+$funding-hub-persona-icon-sm: 32px;
+$funding-hub-persona-icon-md: 40px;
+$funding-hub-persona-icon-lg: 56px;
+$funding-hub-persona-min-height-lg: 264px;
+
+// =============================================================================
+// Section
+// =============================================================================
+
+.funding-hub {
+  padding-top: $funding-hub-padding-top-sm;
+  scroll-margin-top: $bds-space-6xl;
+
+  @include media-breakpoint-up(md) {
+    padding-top: $funding-hub-padding-top-md;
+  }
+
+  @include media-breakpoint-up(lg) {
+    padding-top: $funding-hub-padding-top-lg;
+  }
+
+  @include bds-theme-mode(dark) {
+    color: $white;
+  }
+}
+
+.funding-hub__picker {
+  margin-top: $bds-space-2xl;
+
+  @include media-breakpoint-up(lg) {
+    margin-top: $bds-space-4xl;
+  }
+}
+
+.funding-hub__status {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: $bds-space-sm $bds-space-lg;
+  margin-top: $bds-space-lg;
+  min-height: 40px;
+
+  p {
+    margin: 0;
+  }
+}
+
+// The results section sits directly under the picker, so it does not need
+// the full section gap above it.
+.funding-hub-results.bds-standard-card-group-section {
+  padding-top: $bds-space-2xl;
+
+  @include media-breakpoint-up(lg) {
+    padding-top: $bds-space-4xl;
+  }
+}
+
+// =============================================================================
+// Persona Grid
+// =============================================================================
+// Two columns of compact tiles on phones and tablets, five tiles in one row
+// on desktop.
+
+.funding-hub-personas {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: $bds-grid-gutter;
+
+  @include media-breakpoint-up(lg) {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+// Odd tile out on the two-column layout spans the row
+.funding-hub-persona:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+
+  @include media-breakpoint-up(lg) {
+    grid-column: auto;
+  }
+}
+
+// =============================================================================
+// Persona Tile
+// =============================================================================
+
+.funding-hub-persona {
+  // Reset button styles
+  appearance: none;
+  border: none;
+  margin: 0;
+  font: inherit;
+  text-align: left;
+  text-decoration: none;
+
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "icon"
+    "title"
+    "count";
+  row-gap: $bds-space-sm;
+  align-items: start;
+  padding: $bds-space-lg;
+  cursor: pointer;
+  background-color: $gray-500;
+  color: $white;
+  transition: background-color $bds-transition-duration $bds-transition-timing;
+
+  @include media-breakpoint-up(md) {
+    grid-template-columns: $funding-hub-persona-icon-md 1fr;
+    grid-template-areas:
+      "icon title"
+      "icon description"
+      "icon count";
+    column-gap: $bds-space-lg;
+    row-gap: $bds-space-xs;
+  }
+
+  @include media-breakpoint-up(lg) {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto 1fr auto;
+    grid-template-areas:
+      "icon"
+      "title"
+      "description"
+      "count";
+    row-gap: $bds-space-sm;
+    min-height: $funding-hub-persona-min-height-lg;
+    padding: $bds-space-xl;
+  }
+
+  &:focus {
+    outline: $bds-focus-border-width solid $white;
+    outline-offset: 2px;
+  }
+
+  &:focus:not(:focus-visible) {
+    outline: none;
+  }
+}
+
+.funding-hub-persona__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  // Darker than the tile so white text keeps at least 4.5:1 on hover
+  background-color: $gray-500-pressed-dark;
+  clip-path: inset(100% 0 0 0);
+  transition: clip-path $bds-transition-duration $bds-transition-timing;
+}
+
+.funding-hub-persona:hover .funding-hub-persona__overlay,
+.funding-hub-persona:focus-visible .funding-hub-persona__overlay {
+  clip-path: inset(0 0 0 0);
+}
+
+.funding-hub-persona:active .funding-hub-persona__overlay {
+  clip-path: inset(0 0 0 0);
+  background-color: $gray-600;
+}
+
+.funding-hub-persona__icon,
+.funding-hub-persona__title,
+.funding-hub-persona__description,
+.funding-hub-persona__count {
+  position: relative;
+  z-index: 1;
+}
+
+.funding-hub-persona__icon {
+  grid-area: icon;
+  width: $funding-hub-persona-icon-sm;
+  height: $funding-hub-persona-icon-sm;
+  object-fit: contain;
+  // Icons ship as #141414 strokes; force white on the dark neutral tile
+  filter: brightness(0) invert(1);
+
+  @include media-breakpoint-up(md) {
+    width: $funding-hub-persona-icon-md;
+    height: $funding-hub-persona-icon-md;
+  }
+
+  @include media-breakpoint-up(lg) {
+    width: $funding-hub-persona-icon-lg;
+    height: $funding-hub-persona-icon-lg;
+    margin-bottom: $bds-space-lg;
+  }
+}
+
+.funding-hub-persona__title {
+  grid-area: title;
+  margin: 0;
+}
+
+// Phones show icon, title and count only
+.funding-hub-persona__description {
+  grid-area: description;
+  display: none;
+  margin: 0;
+
+  @include media-breakpoint-up(md) {
+    display: block;
+  }
+}
+
+.funding-hub-persona__count {
+  grid-area: count;
+  margin-top: $bds-space-xs;
+
+  @include media-breakpoint-up(lg) {
+    margin-top: $bds-space-lg;
+  }
+}
+
+// Selected (green variant, dark mode values from CardIcon)
+.funding-hub-persona--selected {
+  background-color: $green-300;
+  color: $black;
+  // Selection is not shown by colour alone
+  box-shadow: inset 0 0 0 2px $black;
+
+  .funding-hub-persona__overlay {
+    background-color: $green-200;
+  }
+
+  .funding-hub-persona__icon {
+    filter: none;
+  }
+
+  // Dark text on light tiles still clears 8:1 at this opacity
+  .funding-hub-persona__count {
+    opacity: 0.8;
+  }
+
+  .funding-hub-persona--selected .funding-hub-persona__count {
+    opacity: 1;
+  }
+
+  &:active .funding-hub-persona__overlay {
+    background-color: $green-400;
+  }
+}
+
+// =============================================================================
+// Light Mode
+// =============================================================================
+
+html.light {
+  .funding-hub-persona {
+    background-color: $gray-200;
+    color: $black;
+
+    &:focus {
+      outline-color: $black;
+    }
+  }
+
+  .funding-hub-persona__overlay {
+    background-color: $gray-300;
+  }
+
+  .funding-hub-persona:active .funding-hub-persona__overlay {
+    background-color: $gray-400;
+  }
+
+  .funding-hub-persona__icon {
+    filter: none;
+  }
+
+  .funding-hub-persona--selected {
+    background-color: $green-200;
+
+    .funding-hub-persona__overlay {
+      background-color: $green-300;
+    }
+
+    &:active .funding-hub-persona__overlay {
+      background-color: $green-400;
+    }
+  }
+}
+
+// =============================================================================
+// Program Cards (inside StandardCard)
+// =============================================================================
+
+.funding-hub-card__meta {
+  display: block;
+  margin-bottom: $bds-space-sm;
+  // Cards are light in both themes; 75% black keeps the meta line above 4.5:1
+  color: rgba($black, 0.75);
+}
+
+.funding-hub-card__summary {
+  display: block;
+}
+
+// Windows high contrast: draw borders so tiles and the selection stay visible
+@media (forced-colors: active) {
+  .funding-hub-persona {
+    border: 1px solid ButtonText;
+  }
+
+  .funding-hub-persona--selected {
+    border: 3px solid Highlight;
+  }
+}
+
+// =============================================================================
+// Organization Overview Links
+// =============================================================================
+
+.funding-hub-panel-links {
+  margin: $bds-space-sm 0 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    display: flex;
+    align-items: center;
+    gap: $bds-space-xs;
+    min-height: 28px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .funding-hub-persona,
+  .funding-hub-persona__overlay {
+    transition: none;
+  }
+}
+
+// =============================================================================
+// Organization Logos
+// =============================================================================
+// Logos are used exactly as each organization publishes them. Cards and
+// overview panels are light in both themes, so dark-ink logos need no filter;
+// white-only logos sit on the organization's own brand color (set inline from
+// the data file).
+
+.funding-hub-card__org {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: $bds-space-sm;
+  min-height: 24px;
+  margin-bottom: $bds-space-xs;
+  color: rgba($black, 0.75);
+}
+
+.funding-hub-logo {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.funding-hub-logo__image {
+  display: block;
+  height: 20px;
+  width: auto;
+  max-width: 120px;
+}
+
+.funding-hub-logo--on-brand {
+  padding: $bds-space-xs $bds-space-sm;
+  border-radius: 2px;
+
+  .funding-hub-logo__image {
+    height: 16px;
+  }
+}
+
+.funding-hub-logo--panel {
+  display: flex;
+  width: fit-content;
+  margin-bottom: $bds-space-md;
+
+  .funding-hub-logo__image {
+    height: 32px;
+    max-width: 200px;
+  }
+
+  &.funding-hub-logo--on-brand {
+    padding: $bds-space-sm $bds-space-md;
+
+    .funding-hub-logo__image {
+      height: 26px;
+    }
+  }
+}
