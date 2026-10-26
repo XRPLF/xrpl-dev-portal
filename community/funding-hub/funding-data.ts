@@ -1,5 +1,5 @@
 /**
- * Programs listed on the developer funding hub (/community/developer-funding).
+ * Programs listed on the funding hub (/community/funding).
  *
  * xrpl.org does not run any of these programs. Every entry links out to the
  * operator's own page, which is where people apply.
@@ -290,7 +290,7 @@ export const FUNDING_PROGRAMS: readonly FundingProgram[] = [
     organizationId: "xrpl-commons",
     type: "Grants",
     summary:
-      "Funding across three tracks: Glow, building on XRPL (including The Aquarium and Early Stage Grants), and Strategic Integrations.",
+      "Funding across three tracks: Early stage direct grants, Glow, Make Waves (Buildathon)",
     personas: ["founder", "developer"],
     stage: "launch",
     url: "https://www.xrpl-commons.org/newsroom/introducing-the-xrpl-commons-grants-program",

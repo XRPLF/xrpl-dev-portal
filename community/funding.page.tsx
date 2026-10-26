@@ -40,7 +40,7 @@ export const frontmatter = {
   },
 };
 
-const PAGE_PATH = "/community/developer-funding";
+const PAGE_PATH = "/community/funding";
 
 /** Query parameter that deep-links to a persona, for example ?for=student */
 const PERSONA_PARAM = "for";
@@ -330,7 +330,7 @@ export default function DeveloperFunding() {
       <HeaderHeroSplitMedia
         title={translate("Bring Your Vision to Life")}
         subtitle={translate(
-          "Grants, accelerators, incubators, training, and rewards from across the XRP Ledger ecosystem, in one place. Choose your profile to see where to start."
+          "Training, incubators, accelerators, rewards and funding opportunitiesfrom across the XRP Ledger ecosystem, in one place. Choose your profile to see where to start."
         )}
         primaryCta={{
           label: translate("Find Your Program"),

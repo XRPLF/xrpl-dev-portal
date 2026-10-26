@@ -334,7 +334,9 @@ ambassadors.html:
 community/ambassadors:
     to: https://ripple.com/impact/ubri/
 developer-funding.html:
-    to: /community/developer-funding
+    to: /community/funding
+community/developer-funding.html:    
+    to: /community/funding
 code-samples.html:
     to: /resources/code-samples
 dev-tools.html:
