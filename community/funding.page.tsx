@@ -330,7 +330,7 @@ export default function DeveloperFunding() {
       <HeaderHeroSplitMedia
         title={translate("Bring Your Vision to Life")}
         subtitle={translate(
-          "Training, incubators, accelerators, rewards and funding opportunitiesfrom across the XRP Ledger ecosystem, in one place. Choose your profile to see where to start."
+          "Training, incubators, accelerators, rewards and funding opportunities from across the XRP Ledger ecosystem, in one place. Choose your profile to see where to start."
         )}
         primaryCta={{
           label: translate("Find Your Program"),
