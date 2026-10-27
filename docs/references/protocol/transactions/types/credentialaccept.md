@@ -17,15 +17,15 @@ Accept a [credential](../../../../concepts/decentralized-storage/credentials.md)
 
 ```json
 {
-    "TransactionType" : "CredentialAccept",
-    "Account": "rsUiUMpnrgxQp24dJYZDhmV4bE3aBtQyt8",
-    "Issuer": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
-    "CredentialType": "6D795F63726564656E7469616C",
-    "Fee": "10",
-    "Flags": 0,
-    "Sequence": 234203
+    "TransactionType": "CredentialAccept",
+    "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+    "Issuer": "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW",
+    "CredentialType": "6D795F63726564656E7469616C"
 }
 ```
+
+{% tx-example txid="D594C7AFAEE554770C441502D4F88E63B97F8D16D6579CDE7A91658AC2044D2C" /%}
+
 
 {% raw-partial file="/docs/_snippets/tx-fields-intro.md" /%}
 

@@ -20,17 +20,17 @@ Create a [payment channel](../../../../concepts/payment-types/payment-channels.m
 {
     "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
     "TransactionType": "PaymentChannelCreate",
-    "Amount": "10000",
+    "Amount": "1000",
     "Destination": "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW",
+    "PublicKey": "EDD9C57E1923EB8FDE4EAB6118D55361D1D1AC28D178700A87D97688C7A0CFFB1C",
+    "CancelAfter": 1162029106,
     "SettleDelay": 86400,
-    "PublicKey": "32D2471DB72B27E3310F355BB33E339BF26F8392D5A93D3BC0FC3B566612DA0F0A",
-    "CancelAfter": 533171558,
     "DestinationTag": 23480,
     "SourceTag": 11747
 }
 ```
 
-{% tx-example txid="711C4F606C63076137FAE90ADC36379D7066CF551E96DA6FE2BDAB5ECBFACF2B" /%}
+{% tx-example txid="B4290B80E64AAAFF6E32367BE0C5EE22CE094680DD056F8220E2101E5C3BB1F9" /%}
 
 {% raw-partial file="/docs/_snippets/tx-fields-intro.md" /%}
 

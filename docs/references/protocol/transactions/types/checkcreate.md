@@ -18,18 +18,20 @@ Create an on-ledger [check](../../../../concepts/payment-types/checks.md), which
 
 ```json
 {
-  "TransactionType": "CheckCreate",
-  "Account": "rUn84CUYbNjRoTQ6mSW7BVJPSVJNLb1QLo",
-  "Destination": "rfkE1aSy9G8Upk4JssnwBxhEv5p4mn2KTy",
-  "SendMax": "100000000",
-  "Expiration": 570113521,
-  "InvoiceID": "6F1DFD1D0FE8A32E40E1F2C05CF1C15545BAB56B617F9C6C2D63A6B704BEF59B",
-  "DestinationTag": 1,
-  "Fee": "12"
+    "Account": "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW",
+    "TransactionType": "CheckCreate",
+    "SendMax": {
+        "currency": "FOO",
+        "issuer": "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW",
+        "value": "100"
+    },
+    "Expiration": 1162029167,
+    "Destination": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+    "DestinationTag": 67
 }
 ```
 
-{% tx-example txid="4E0AA11CBDD1760DE95B68DF2ABBE75C9698CEB548BEA9789053FCB3EBD444FB" /%}
+{% tx-example txid="6ACA27C7BDA456C5B282B17F2E9A4508CD47D4ED6DECAE0CF8842F7115A16FD0" /%}
 
 {% raw-partial file="/docs/_snippets/tx-fields-intro.md" /%}
 
