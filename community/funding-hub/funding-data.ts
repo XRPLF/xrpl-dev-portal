@@ -35,7 +35,7 @@ export type FundingPersonaId =
 export type FundingStage = "learn" | "build" | "launch" | "grow";
 
 /** Every organization id. Add new organizations here first. */
-export type FundingOrganizationId = "ripplex" | "ubri" | "xrpl-commons";
+export type FundingOrganizationId = "ripplex" | "xrpl-commons";
 
 export interface FundingPersona {
   id: FundingPersonaId;
@@ -75,6 +75,24 @@ export interface FundingOrganization {
   logoBackground?: string;
   /** Show the short name next to the logo, when the logo doesn't spell it */
   showNameWithLogo?: boolean;
+  /**
+   * Program links for the organization overview, in headed groups. Omit to
+   * list the organization's programs grouped by stage.
+   */
+  programGroups?: FundingProgramGroup[];
+}
+
+/**
+ * A link in an overview group: a program from FUNDING_PROGRAMS by id, with an
+ * optional label, or a program that isn't listed there.
+ */
+export type FundingProgramLink =
+  | { programId: string; label?: string }
+  | { name: string; url: string };
+
+export interface FundingProgramGroup {
+  heading: string;
+  links: FundingProgramLink[];
 }
 
 export interface FundingProgram {
@@ -173,7 +191,7 @@ export const FUNDING_ORGANIZATIONS: readonly FundingOrganization[] = [
     name: "RippleX",
     fullName: "RippleX Ecosystem Programs",
     description:
-      "Ripple's programs for teams building on XRPL: grants, accelerators with venture partners, hackathons, security bounties, and the FinTech Builder Program.",
+      "Ripple's programs for fintech teams building on XRPL: grants, accelerators with venture partners, hackathons, security bounties, and the FinTech Builder Program.",
     // Ripple has announced a dedicated XRPL funding hub. When it launches,
     // update this url and the RippleX program urls below.
     url: "https://xrplgrants.org/",
@@ -182,18 +200,48 @@ export const FUNDING_ORGANIZATIONS: readonly FundingOrganization[] = [
     // Ripple logo exactly as the ripple.com header shows it (2026-10-02).
     logo: require("../../static/img/logos/ripple-color.svg"),
     showNameWithLogo: true,
-  },
-  {
-    id: "ubri",
-    name: "UBRI",
-    fullName: "University Blockchain Research Initiative (UBRI)",
-    description:
-      "Ripple's university program, supporting blockchain research, technical development, and innovation at universities around the world.",
-    url: "https://ripple.com/impact/ubri/",
-    image: require("../../static/img/bds-2026/community-developer-funding-carousel-2.jpg"),
-    // UBRI has no logo of its own; ripple.com/impact/ubri uses the Ripple logo.
-    logo: require("../../static/img/logos/ripple-color.svg"),
-    showNameWithLogo: true,
+    programGroups: [
+      {
+        heading: "University Blockchain Research Initiative (UBRI)",
+        links: [
+          {
+            programId: "student-builder-residency",
+            label: "UBRI's Student Builder Residency",
+          },
+          {
+            programId: "udax",
+            label: "UBRI's University Digital Asset Xcelerator (UDAX)",
+          },
+        ],
+      },
+      {
+        heading: "Bug Bounties",
+        links: [{ programId: "ripple-bug-bounty" }],
+      },
+      {
+        heading: "RippleX Ecosystem Growth Programs",
+        links: [
+          { programId: "ripplex-ecosystem-programs" },
+          { programId: "fintech-builder-program", label: "FinTech Program" },
+        ],
+      },
+      {
+        // Partner-run accelerators, listed here only rather than as program
+        // cards. Tenity publishes one SFIIP page per cohort year; update it.
+        heading: "Accelerator Program partners",
+        links: [
+          {
+            name: "Hong Kong Financial Innovation Program (HFIP)",
+            url: "https://brinc.io/xrpl-program",
+          },
+          {
+            name: "Singapore Financial Infrastructure Innovation Program (SFIIP)",
+            url: "https://www.tenity.com/program/sfiip-2026/",
+          },
+          { name: "FENASBAC Next", url: "https://next.fenasbac.io/" },
+        ],
+      },
+    ],
   },
   {
     id: "xrpl-commons",
@@ -249,7 +297,7 @@ export const FUNDING_PROGRAMS: readonly FundingProgram[] = [
   },
   {
     id: "commons-hackathons",
-    name: "XRPL Hackathons",
+    name: "XRPL Commons Hackathons",
     organizationId: "xrpl-commons",
     type: "Hackathon",
     summary:
@@ -297,87 +345,25 @@ export const FUNDING_PROGRAMS: readonly FundingProgram[] = [
     ctaLabel: "Read the Announcement",
   },
   {
-    id: "commons-strategic-integrations",
-    name: "Strategic Integrations",
-    organizationId: "xrpl-commons",
-    type: "Integration support",
-    summary:
-      "Technical and go-to-market support for proven teams with users on other chains that want to integrate the XRP Ledger.",
-    personas: ["business"],
-    stage: "grow",
-    url: "https://www.xrpl-commons.org/newsroom/introducing-the-xrpl-commons-grants-program",
-    ctaLabel: "Read the Announcement",
-  },
-  {
-    id: "commons-adopt",
-    name: "Adopt",
-    organizationId: "xrpl-commons",
-    type: "Advisory",
-    summary:
-      "XRPL Commons advisory for corporates and institutions, from discovery workshops to proofs of concept and scaling.",
-    personas: ["business"],
-    stage: "grow",
-    url: "https://www.xrpl-commons.org/adopt",
-  },
-  {
-    id: "doctorblock",
-    name: "DoctorBlock",
-    organizationId: "xrpl-commons",
-    type: "Contest",
-    summary:
-      "A three-minute science communication contest for doctoral students and recent PhDs researching blockchain.",
-    personas: ["researcher"],
-    stage: "learn",
-    location: "Final in Paris",
-    url: "https://www.xrpl-commons.org/learn/doctorblock",
-  },
-  {
-    id: "commons-university-partnerships",
-    name: "University Partnerships",
-    organizationId: "xrpl-commons",
-    type: "Partnership",
-    summary:
-      "XRPL Commons works with universities on blockchain courses, teacher training, and research collaborations.",
-    personas: ["researcher"],
-    stage: "learn",
-    url: "https://www.xrpl-commons.org/learn/university-partnerships",
-  },
-
-  // --- UBRI ---------------------------------------------------------------
-  {
-    id: "ubri",
-    name: "University Blockchain Research Initiative",
-    organizationId: "ubri",
-    type: "University program",
-    summary:
-      "Ripple's partnership with more than 60 universities for blockchain research, courses, and student projects, reached through partner universities.",
-    personas: ["researcher", "student"],
-    stage: "learn",
-    url: "https://ripple.com/impact/ubri/",
-    secondaryCta: {
-      // Paper database from UBRI partner universities, hosted by XRPL Commons
-      label: "Browse the Research Corpus",
-      url: "https://www.xrpl-commons.org/learn/ubri-research-database",
-    },
-  },
-  {
     // Only public page is RippleX's recap of Cohort 3.0 (spring 2026); no
     // application page. Swap in a program page if UBRI publishes one.
     id: "student-builder-residency",
     name: "Student Builder Residency",
-    organizationId: "ubri",
+    organizationId: "ripplex",
+    organizationLabel: "UBRI",
     type: "Residency",
     summary:
       "A UBRI residency where university students build and ship XRP Ledger projects with mentors, run in cohorts.",
     personas: ["student"],
     stage: "build",
-    url: "https://dev.to/ripplexdev/ubri-student-builder-residency-cohort-30-a-new-frontier-for-high-impact-xrpl-innovation-3j18",
+    url: "https://student-builder-residency.notion.site/",
     ctaLabel: "Read About the Residency",
   },
   {
     id: "udax",
     name: "University Digital Asset Xcelerator (UDAX)",
-    organizationId: "ubri",
+    organizationId: "ripplex",
+    organizationLabel: "UBRI",
     type: "Accelerator",
     summary:
       "A cohort accelerator from UBRI and partner universities, including UC Berkeley, FGV, and Oxford, open to founders building on XRPL.",
@@ -388,21 +374,6 @@ export const FUNDING_PROGRAMS: readonly FundingProgram[] = [
 
   // --- RippleX ------------------------------------------------------------
   // Several urls below are on xrplgrants.org; see the note in FUNDING_ORGANIZATIONS.
-  {
-    // Ripple co-hosts or sponsors these event by event (for example with
-    // XRPL Commons, UBRI, or local partners), so link the evergreen events page.
-    id: "ripplex-hackathons",
-    name: "Hackathons and Builder Competitions",
-    organizationId: "ripplex",
-    type: "Hackathon",
-    summary:
-      "Ripple co-hosts and sponsors XRPL hackathons and builder competitions around the world, often with UBRI, XRPL Commons, and local partners.",
-    personas: ["developer", "student", "founder"],
-    stage: "build",
-    location: "In person, worldwide",
-    url: "/community/events",
-    ctaLabel: "See Upcoming Events",
-  },
   {
     id: "ripple-bug-bounty",
     name: "Ripple Bug Bounty Programs",
@@ -421,65 +392,12 @@ export const FUNDING_PROGRAMS: readonly FundingProgram[] = [
     id: "ripplex-ecosystem-programs",
     name: "RippleX Ecosystem Programs",
     organizationId: "ripplex",
-    type: "Grants and support",
+    type: "Incentives and support",
     summary:
       "Ripple's single application for grants, accelerator programs, technical mentorship, product integrations, and partnerships for XRPL projects.",
     personas: ["founder", "business", "developer"],
     stage: "launch",
     url: "https://submit.xrplgrants.org/submit",
-  },
-  {
-    id: "xrpl-accelerator",
-    name: "XRPL Accelerator",
-    organizationId: "ripplex",
-    type: "Accelerator",
-    summary:
-      "Ripple's accelerator for startups with an MVP on the XRP Ledger, run with partners such as Tenity and Fenasbac, with milestone-based grant funding.",
-    personas: ["founder", "business"],
-    stage: "grow",
-    url: "https://xrplgrants.org/accelerator",
-  },
-  {
-    id: "brinc-hfip",
-    name: "Hong Kong Financial Innovation Program",
-    organizationId: "ripplex",
-    operator: "Brinc with Ripple",
-    type: "Accelerator",
-    summary:
-      "A 12-week program led by Brinc with Ripple for startups building financial applications on XRPL, with a Demo Day in Hong Kong.",
-    personas: ["founder"],
-    stage: "grow",
-    location: "Online, Demo Day in Hong Kong",
-    url: "https://brinc.io/xrpl-program",
-  },
-  {
-    // Tenity publishes one page per cohort year; update the url each year.
-    id: "tenity-sfiip",
-    name: "Singapore Financial Infrastructure Innovation Program",
-    organizationId: "ripplex",
-    operator: "Tenity with Ripple",
-    type: "Accelerator",
-    summary:
-      "A six-week program by Tenity and Ripple for companies building institutional-grade financial products on the XRP Ledger.",
-    personas: ["founder", "business"],
-    stage: "grow",
-    location: "Online, Demo Day in Singapore",
-    url: "https://www.tenity.com/program/sfiip-2026/",
-  },
-  {
-    // Portuguese-language site. Ripple and Mercado Bitcoin are listed as
-    // maintainers of the current edition.
-    id: "fenasbac-next",
-    name: "Next",
-    organizationId: "ripplex",
-    operator: "Fenasbac with Ripple",
-    type: "Accelerator",
-    summary:
-      "A fintech accelerator in Brazil run by Fenasbac, with Ripple among its maintainers, for startups building financial products.",
-    personas: ["founder", "business"],
-    stage: "grow",
-    location: "Brazil, in Portuguese",
-    url: "https://next.fenasbac.io/",
   },
   {
     // Announced February 2026 with no program page yet; the announcement is
@@ -493,6 +411,6 @@ export const FUNDING_PROGRAMS: readonly FundingProgram[] = [
     personas: ["business", "founder"],
     stage: "grow",
     url: "https://ripple.com/insights/supporting-innovation-on-the-xrp-ledger/",
-    ctaLabel: "Read the Announcement",
+    ctaLabel: "Coming Soon",
   },
 ];

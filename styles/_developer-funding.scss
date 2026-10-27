@@ -344,8 +344,17 @@ html.light {
 // Organization Overview Links
 // =============================================================================
 
+.funding-hub-panel-group {
+  margin-top: $bds-space-md;
+}
+
+.funding-hub-panel-group__heading {
+  margin: 0;
+  font-weight: 600;
+}
+
 .funding-hub-panel-links {
-  margin: $bds-space-sm 0 0;
+  margin: $bds-space-xs 0 0;
   padding: 0;
   list-style: none;
 

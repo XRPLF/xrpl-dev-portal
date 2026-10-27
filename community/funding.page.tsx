@@ -30,6 +30,7 @@ import {
   type FundingOrganizationId,
   type FundingPersonaId,
   type FundingProgram,
+  type FundingStage,
 } from "./funding-hub/funding-data";
 
 export const frontmatter = {
@@ -83,6 +84,51 @@ function programsFor(personaId: FundingPersonaId | null): FundingProgram[] {
 
 function findOrganization(id: FundingOrganizationId) {
   return FUNDING_ORGANIZATIONS.find((entry) => entry.id === id);
+}
+
+const STAGE_HEADINGS: Record<FundingStage, string> = {
+  learn: "Learn",
+  build: "Build",
+  launch: "Launch",
+  grow: "Grow",
+};
+
+interface OverviewLink {
+  name: string;
+  url: string;
+}
+
+/**
+ * Program links for an organization's overview panel, in headed groups:
+ * the organization's own programGroups, or else its programs by stage.
+ * Untranslated; the panel translates at render time.
+ */
+function overviewGroups(
+  organization: FundingOrganization
+): { heading: string; links: OverviewLink[] }[] {
+  if (organization.programGroups) {
+    return organization.programGroups.map((group) => ({
+      heading: group.heading,
+      links: group.links.flatMap((link) => {
+        if ("url" in link) {
+          return [link];
+        }
+        const program = FUNDING_PROGRAMS.find(
+          (entry) => entry.id === link.programId
+        );
+        return program
+          ? [{ name: link.label ?? program.name, url: program.url }]
+          : [];
+      }),
+    }));
+  }
+  const programs = FUNDING_PROGRAMS.filter(
+    (program) => program.organizationId === organization.id
+  );
+  return FUNDING_STAGE_ORDER.map((stage) => ({
+    heading: STAGE_HEADINGS[stage],
+    links: programs.filter((program) => program.stage === stage),
+  })).filter((group) => group.links.length > 0);
 }
 
 /**
@@ -288,22 +334,27 @@ export default function DeveloperFunding() {
         description: (
           <>
             {translate(organization.description)}
-            <ul className="funding-hub-panel-links">
-              {FUNDING_PROGRAMS.filter(
-                (program) => program.organizationId === organization.id
-              ).map((program) => (
-                <li key={program.id}>
-                  <span aria-hidden="true">→ </span>
-                  <Link
-                    href={program.url}
-                    target={isExternal(program.url) ? "_blank" : undefined}
-                    intention="neutral"
-                  >
-                    {translate(program.name)}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+            {overviewGroups(organization).map((group) => (
+              <div key={group.heading} className="funding-hub-panel-group">
+                <p className="funding-hub-panel-group__heading">
+                  {translate(group.heading)}
+                </p>
+                <ul className="funding-hub-panel-links">
+                  {group.links.map((link) => (
+                    <li key={link.url}>
+                      <span aria-hidden="true">→ </span>
+                      <Link
+                        href={link.url}
+                        target={isExternal(link.url) ? "_blank" : undefined}
+                        intention="neutral"
+                      >
+                        {translate(link.name)}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </>
         ),
       },
