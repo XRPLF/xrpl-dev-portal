@@ -441,7 +441,7 @@ export default function DeveloperFunding() {
         description={translate(
           persona
             ? persona.resultsDescription
-            : "Grants, accelerators, incubators, training, and rewards for XRPL builders from across the ecosystem. Pick a profile above to narrow the list."
+            : "Training, incubators, accelerators, rewards and funding opportunities for XRPL builders from across the ecosystem. Pick a profile above to narrow the list."
         )}
         cards={programCards}
       />
