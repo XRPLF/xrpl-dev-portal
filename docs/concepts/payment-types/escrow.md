@@ -46,7 +46,7 @@ The lifecycle of an escrow is as follows:
     - The conditions to release the funds.
       - For **XRP escrows** this can include a time when the escrow can complete, a cryptographic condition that must be fulfilled, and optionally a time when the escrow expires.
       - For **token escrows** similar conditions apply, but an expiration time is _mandatory_.
-    - The recipient of the funds. Any applicable transfer rates or fees are captured at creation time and will apply when the escrow completes, ensuring predictability for the recipient.
+    - The recipient of the funds. Any applicable transfer rates or fees are captured at creation time. When the escrow completes, the lower of the captured rate and the issuer's current rate applies, so the recipient never pays more than the rate captured at creation.
 
 2. When the transaction is processed successfully, the XRP Ledger creates an `Escrow` object that holds the escrowed funds.
 

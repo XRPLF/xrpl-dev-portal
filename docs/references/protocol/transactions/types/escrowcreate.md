@@ -72,9 +72,11 @@ Besides errors that can occur for all transactions, {% $frontmatter.seo.title %}
 
 | Error Code            | Description                                  |
 |:--------------------- |:---------------------------------------------|
-| `tecNO_PERMISSION` | The transaction failed because the necessary permissions for token escrow are not in place. For example, the issuer hasn't enabled the Allow Trust Line Locking flag for a Trust Line Token.|
+| `tecNO_PERMISSION` | The transaction failed because the necessary permissions for token escrow are not in place. For example, the issuer hasn't enabled the Allow Trust Line Locking flag for a Trust Line Token, or the sender's trust line balance shows that the sender owes the issuer.|
 | `tecNO_AUTH` | The transaction failed because authorization requirements for the token were not met. For example, the sender lacks authorization when creating the escrow. |
-| `tecUNFUNDED`         | The sender lacks sufficient spendable balance. For Trust Line Tokens, this means the sender's trust line with the issuer has insufficient available balance. For XRP escrows, this means the sender doesn't have enough XRP. |
+| `tecUNFUNDED`         | The sender doesn't have enough XRP for an XRP escrow. |
+| `tecINSUFFICIENT_FUNDS` | The sender lacks sufficient spendable balance of the token. For Trust Line Tokens, this means the sender's trust line with the issuer has insufficient available balance. For MPTs, this means the sender's MPT balance is insufficient. |
+| `tecNO_LINE`          | The sender doesn't have a trust line with the issuer of the Trust Line Token. |
 | `tecOBJECT_NOT_FOUND` | The sender does not hold the MPT. |
 | `tecFROZEN`           | The token is frozen (for Trust Line Tokens) or locked (for MPTs) for the sender. |
 

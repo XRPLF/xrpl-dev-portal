@@ -51,7 +51,7 @@ In addition to the [common fields](../common-fields.md), {% code-page-name /%} e
 | `PreviousTxnID`     | String    | UInt256           | Yes       | The identifying hash of the transaction that most recently modified this entry. |
 | `PreviousTxnLgrSeq` | Number    | UInt32            | Yes       | The [index of the ledger][Ledger Index] that contains the transaction that most recently modified this entry. |
 | `SourceTag`         | Number    | UInt32            | No        | An arbitrary tag to further specify the source for this escrow, such as a hosted recipient at the owner's address. |
-| `TransferRate`      | Number    | UInt32            | No        | The transfer rate or fee to charge when users finish an escrow, locked at the creation of an escrow contract and used during settlement. Applicable to Trust Line Tokens and MPTs only. {% amendment-disclaimer name="TokenEscrow" /%} |
+| `TransferRate`      | Number    | UInt32            | No        | The transfer rate or fee recorded at the creation of an escrow contract. When the escrow finishes, the lower of this value and the issuer's current transfer rate or fee is charged. Applicable to Trust Line Tokens and MPTs only. {% amendment-disclaimer name="TokenEscrow" /%} |
 | `IssuerNode`        | Number    | UInt64            | No        | The ledger index of the issuer's directory node associated with the `Escrow`. Used when the issuer is neither the source nor destination account. {% amendment-disclaimer name="TokenEscrow" /%} |
 
 

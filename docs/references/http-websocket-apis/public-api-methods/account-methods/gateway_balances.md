@@ -326,7 +326,7 @@ The response follows the [standard format][], with a successful result containin
 * Any of the [universal error types][].
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
 * `invalidHotWallet` - One or more of the addresses specified in the `hotwallet` field is not the [Address][] of an account holding currency issued by the account from the request.
-* `actNotFound` - The [Address][] specified in the `account` field of the request does not correspond to an account in the ledger.
+* `actNotFound` - The [Address][] specified in the `account` field of the request does not correspond to an account in the ledger. In [API v1][], you won't receive this error; the response succeeds with no balances.
 * `lgrNotFound` - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.
 
 {% admonition type="info" name="Note" %}
