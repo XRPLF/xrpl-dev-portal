@@ -12,7 +12,6 @@ This page explains possible reasons [an `xrpld` server](../../concepts/networks-
 
 These instructions assume you have [installed `xrpld`](../installation/index.md) on a supported platform.
 
-
 ## Normal Syncing Behavior
 
 Syncing with the network normally takes about 5 to 15 minutes. During that time, the server does several things:
@@ -25,7 +24,6 @@ Syncing with the network normally takes about 5 to 15 minutes. During that time,
 
 If the server is unable to keep up with the network while doing these tasks, the server does not sync to the network.
 
-
 ## First Step: Restart
 
 Many syncing issues can be resolved by restarting the server. No matter why it didn't sync the first time, it may succeed on the second try.
@@ -33,7 +31,6 @@ Many syncing issues can be resolved by restarting the server. No matter why it d
 If the [server_info method][] shows a [`server_state`](../../references/http-websocket-apis/api-conventions/xrpld-server-states.md) other than `proposing` or `full` and a `server_state_duration_us` of more than `900000000` (15 minutes in microseconds), then you should shut down the `xrpld` service, wait a few seconds, and start it again. Optionally, restart the entire machine.
 
 If the problem persists, check the other possibilities listed on this page. If none of them seem to apply, [open an issue in the `rippled` repository](https://github.com/XRPLF/rippled/issues) and add the "Syncing issue" label.
-
 
 ## Usual Causes of Syncing Issues
 
@@ -45,7 +42,6 @@ The most common cause of syncing issues is not meeting the [system requirements]
 
 If you are having trouble remaining synced, double-check that your server meets the system requirements. Depending on how you use your server, you may need to meet the higher "Recommended" requirements. If you meet the "Recommended" requirements and still cannot sync, try the other possibilities on this page.
 
-
 ## Couldn't Load Validator List
 
 The default configuration uses a recommended list of validators retrieved from `vl.ripple.com`. This list is signed by Ripple's cryptographic key pair and has a built-in expiration date. If your server cannot download the list from `vl.ripple.com` for some reason, your server does not choose a set of trusted validators and cannot determine which possible ledgers to declare as valid. (If you are connected to [the testnet or another parallel network](../../concepts/networks-and-servers/parallel-networks.md), your server uses a list of trusted validators for that network instead.)
@@ -54,15 +50,24 @@ The `validator_list` block in the [server_info method][] response shows the stat
 
 You can also use the [validator_list_sites method][] to get more detailed information. If the `last_refresh_status` and `last_refresh_time` fields are missing from the validator site objects in the response, that probably indicates that your server is having trouble connecting to the validator list site. Check your firewall configuration to make sure you're not blocking outgoing traffic on port 80 (HTTP) or 443 (HTTPS). Also check that your DNS is able to resolve the domain of your validator list site.
 
-<!-- TODO: create a tutorial for how to sideload a validator list from file and link it here -->
+If your server can reach the validator list site but fails TLS certificate verification, the server's log contains warnings like the following:
 
+```text
+ValidatorSite:WRN Outbound SSL connection to vl.example.com fails certificate verification
+ValidatorSite:WRN Problem retrieving from https://vl.example.com/ [...] certificate verify failed (SSL routines)
+```
+
+On Linux and macOS, the server utilizes the operating system's default certificate authorities (CAs). This error can happen if the machine doesn't have any installed. To resolve it on Debian or Ubuntu, install the `ca-certificates` package. 
+
+If the CAs are installed, the site's certificate may be invalid or may not match the site's domain name.
+
+<!-- TODO: create a tutorial for how to sideload a validator list from file and link it here -->
 
 ## Not Enough Peers
 
 If your server does not connect to enough [peer servers](../../concepts/networks-and-servers/peer-protocol.md), it may not be able to download enough data to remain synced with the network as the network continues processing new transactions. This can happen if your network connection is unreliable, or if you configure your server as a [private server](../../concepts/networks-and-servers/peer-protocol.md#private-peers) without adding enough reliable fixed peers.
 
 Use the [peers method][] to get information about your server's current peers. If you have exactly 10 or 11 peers, that may indicate that your firewall is blocking incoming peer connections. [Set up port forwarding](../configuration/peering/forward-ports-for-peering.md) to allow more incoming connections. If your server is configured as a private server, double-check the contents and syntax of the `[ips_fixed]` stanza in your config file, and add more proxies or public hubs if possible.
-
 
 ## Stuck in `connected` or `syncing` State with RocksDB
 
@@ -133,7 +138,6 @@ As a test, you can temporarily change the paths to your server's databases as lo
     ```
 
     If the server successfully syncs using the fresh databases, you can delete the folders that hold the old databases. You may also want to check for hardware failures, especially to your disk and RAM.
-
 
 ## See Also
 

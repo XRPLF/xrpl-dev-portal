@@ -48,6 +48,21 @@ After you've created an XLS draft, you now need to determine if your change requ
 
 {% admonition type="info" name="Note" %}If your change doesn't need an amendment, you can go straight to coding and deployment.{% /admonition %}
 
+### Design Considerations
+
+Before you write the code, work through these questions for your amendment. The only way to change the ledger is with a transaction (including pseudo-transactions), so each answer affects what every server on the network must compute identically.
+
+1. Does the change affect transaction processing?
+2. Does the change affect ledger entries?
+3. Does the change affect anything else about the binary format or hash of the ledger?
+4. Does the change affect which transactions get into the consensus set?
+5. What invariants should hold for the ledger entries?
+6. How much computation does the transaction consume?
+7. How much data space does the transaction use? Based on the answers to this and the previous question, decide what the [transaction cost](../../docs/concepts/transactions/transaction-cost.md) for the new or modified transactions should be.
+8. Does any transaction transfer funds from one party to another? If so, consider [Deposit Authorization](../../docs/concepts/accounts/depositauth.md).
+9. Should any transaction be disallowed as an inner transaction of a [Batch transaction](../../docs/concepts/transactions/batch-transactions.md)? See the `temINVALID_INNER_BATCH` entry in the [Batch result codes](../../docs/references/protocol/transactions/types/batch.md) for the types that are currently disallowed.
+10. Should any transaction be excluded from [permission delegation](../../docs/concepts/accounts/permission-delegation.md)? See the [list of non-delegable permissions](../../docs/references/protocol/data-types/permission-values.md#list-of-non-delegable-permissions).
+
 Implementing code as an amendment requires you to add the amendment to these files:
 
 - **Feature.cpp**:

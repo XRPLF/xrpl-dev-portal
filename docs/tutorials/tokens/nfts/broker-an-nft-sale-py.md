@@ -24,11 +24,11 @@ This example shows how to:
 
 [![Quickstart form with Broker Account](/docs/img/quickstart-py23.png)](/docs/img/quickstart-py23.png)
 
-You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/quickstart/py/) archive to try each of the samples in your own browser.
+You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/quickstart/py/) archive to try each of the samples locally.
 
 ## Get Accounts
 
-1. Open and run `broker-nfts.py`.
+1. Open and run `lesson5-broker-nfts.py`.
 2. Get test accounts.
     1. If you have existing account seeds:
         1. Paste account seed in the **Broker Seed** field.
@@ -40,7 +40,7 @@ You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-port
     2. If you do not have account seeds:
         1. Click **Get Broker Account**.
         2. Click **Get Standby Account**.
-        2. Click **Get Operational Account**.
+        3. Click **Get Operational Account**.
     3. Click **Get Broker Account Info**.
     4. Click **Get Standby Account Info**.
     5. Click **Get Operational Account Info**.
@@ -103,8 +103,7 @@ After accepting a buy offer, a best practice for the broker is to cancel all oth
 
 You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/quickstart/py/) archive to examine the code samples.
 
-## ripplex5-broker-nfts.js
-<!-- SPELLING_IGNORE: ripplex5 -->
+## mod5.py
 
 Four of the five buttons for the Broker are supported by existing methods. The only new method required is the Broker Sale method.
 
@@ -880,4 +879,4 @@ btn_op_cancel_offer.grid(row=16, column=3, sticky="nsew")
 
 # Start the application
 window.mainloop()
-```x
+```

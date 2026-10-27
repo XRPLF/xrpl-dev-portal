@@ -60,7 +60,7 @@ Grant preauthorization to send payments to your account. This is only useful if 
 |:-------------------------|:---------------------|:------------------|:----------|:------------|
 | `Authorize`              | String - [Address][] | AccountID         | No        | An account to preauthorize. |
 | `AuthorizeCredentials`   | Array                | Array             | No        | A set of credentials to authorize. {% amendment-disclaimer name="Credentials" /%} |
-| `Unauthorize`            | String               | AccountID         | No        | An account whose preauthorization should be revoked. |
+| `Unauthorize`            | String - [Address][] | AccountID         | No        | An account whose preauthorization should be revoked. |
 | `UnauthorizeCredentials` | Array                | Array             | No        | A set of credentials whose preauthorization should be revoked. {% amendment-disclaimer name="Credentials" /%} |
 
 You must provide **exactly one** of `Authorize`, `AuthorizeCredentials`, `Unauthorize`, or `UnauthorizeCredentials`.

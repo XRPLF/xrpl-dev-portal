@@ -11,7 +11,7 @@ A `DepositPreauth` entry tracks a preauthorization from one account. You can cre
 
 A preauthorization allows specific others to send money directly to you even if you have Deposit Authorization enabled. Preauthorizations are one-directional, and have no effect on payments going the opposite direction.
 
-You can preauthorize a specific _account_ or a _set of credentials_. In the case of a set of credentials, any account that has a matching set of credentials on-ledger can send you money. _(Credential preauthorization requires the [Credentials amendment][]. {% not-enabled /%})_
+You can preauthorize a specific _account_ or a _set of credentials_. In the case of a set of credentials, any account that has a matching set of credentials on-ledger can send you money. {% amendment-disclaimer name="Credentials" /%}
 
 ## Example {% $frontmatter.seo.title %} JSON
 

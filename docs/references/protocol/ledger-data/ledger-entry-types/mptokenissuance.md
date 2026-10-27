@@ -3,7 +3,6 @@ seo:
     description: Definition of a Multi-Purpose Token (MPT) issuance.
 labels:
   - Multi-purpose Tokens, MPTs, Tokens
-status: not_enabled
 ---
 # MPTokenIssuance
 [[Source]](https://github.com/XRPLF/rippled/blob/release/3.3.x/include/xrpl/protocol/detail/ledger_entries.macro#L391-L412 "Source")
@@ -38,7 +37,7 @@ In addition to the [common fields](../common-fields.md), {% code-page-name /%} e
 
 | Field Name          | JSON Type            | Internal Type | Required? | Description |
 |:--------------------|:---------------------|:--------------|:----------|:------------|
-| `AssetScale`                    | Number               | UInt8         | Yes       | Where to put the decimal place when displaying amounts of this MPT. More formally, the asset scale is a non-negative integer (0, 1, 2, …) such that one standard unit equals 10^(-scale) of a corresponding fractional unit. For example, if a US Dollar Stablecoin has an asset scale of _2_, then 1 unit of that MPT would equal 0.01 US Dollars. This indicates to how many decimal places the MPT can be subdivided. The default is `0`, meaning that the MPT cannot be divided into smaller than 1 unit. |
+| `AssetScale`                    | Number               | UInt8         | No        | Where to put the decimal place when displaying amounts of this MPT. More formally, the asset scale is a non-negative integer (0, 1, 2, …) such that one standard unit equals 10^(-scale) of a corresponding fractional unit. For example, if a US Dollar Stablecoin has an asset scale of _2_, then 1 unit of that MPT would equal 0.01 US Dollars. This indicates to how many decimal places the MPT can be subdivided. The default is `0`, meaning that the MPT cannot be divided into smaller than 1 unit. |
 | `AuditorEncryptionKey`          | String               | Blob          | No        | A 33-byte compressed ElGamal public key for an optional on-chain auditor. {% amendment-disclaimer name="ConfidentialTransfer" /%} |
 | `ConfidentialOutstandingAmount` | Number               | UInt64        | No        | The total amount of this token that is currently held in confidential balances. {% amendment-disclaimer name="ConfidentialTransfer" /%} |
 | `DomainID`                      | String - [Hash][]    | UInt256       | No        | The ledger entry ID of a permissioned domain that grants access to the MPT. This field is _always_ mutable. {% amendment-disclaimer name="SingleAssetVault" /%} |
@@ -53,7 +52,7 @@ In addition to the [common fields](../common-fields.md), {% code-page-name /%} e
 | `PreviousTxnID`                 | String - Hexadecimal | UInt256       | Yes       | The identifying hash of the transaction that most recently modified this entry. |
 | `PreviousTxnLgrSeq`             | Number               | UInt32        | Yes       | The [index of the ledger][Ledger Index] that contains the transaction that most recently modified this object. |
 | `Sequence`                      | Number               | UInt32        | Yes       | The `Sequence` (or `Ticket`) number of the transaction that created this issuance. This helps to uniquely identify the issuance and distinguish it from any other later MPT issuances created by this account. |
-| `TransferFee`                   | Number               | UInt16        | Yes       | This value specifies the fee, in tenths of a basis point, charged by the issuer for secondary sales of the token, if such sales are allowed at all. Valid values for this field are between 0 and 50,000 inclusive. A value of 1 is equivalent to 1/10 of a basis point or 0.001%, allowing transfer rates between 0% and 50%. A `TransferFee` of 50,000 corresponds to 50%. The default value for this field is 0. Any decimals in the transfer fee are rounded down. The fee can be rounded down to zero if the payment is small. Issuers should make sure that their MPT's `AssetScale` is large enough. <br><br>This field is mutable by default, but can be made immutable. {% amendment-disclaimer name="DynamicMPT" mode="updated" /%} |
+| `TransferFee`                   | Number               | UInt16        | No        | This value specifies the fee, in tenths of a basis point, charged by the issuer for secondary sales of the token, if such sales are allowed at all. Valid values for this field are between 0 and 50,000 inclusive. A value of 1 is equivalent to 1/10 of a basis point or 0.001%, allowing transfer rates between 0% and 50%. A `TransferFee` of 50,000 corresponds to 50%. The default value for this field is 0. Any decimals in the transfer fee are rounded down. The fee can be rounded down to zero if the payment is small. Issuers should make sure that their MPT's `AssetScale` is large enough. <br><br>This field is mutable by default, but can be made immutable. {% amendment-disclaimer name="DynamicMPT" mode="updated" /%} |
 
 ## MPTokenIssuance Flags
 

@@ -106,7 +106,7 @@ Other settings you may want to, optionally, configure for your cold address (iss
 | Disallow XRP                 | Enabled or Disabled | Enable if this address isn't meant to process XRP payments. |
 | [Transfer Fee][]             | 0–1%                | Charge a percentage fee when users send your token to each other. |
 | [Tick Size][]                | 5                   | Limit the number of decimal places in exchange rates for your token in the [decentralized exchange](../../../concepts/tokens/decentralized-exchange/index.md). A tick size of 5-6 reduces churn of almost-equivalent offers and speeds up price discovery compared to the default of 15. |
-| [Domain][]                   | (Your domain name)  | Set to a domain you own so can [verify ownership of the accounts](../../../references/xrp-ledger-toml.md#account-verification). This can help reduce confusion or impersonation attempts. |
+| [Domain][]                   | (Your domain name)  | Set to a domain you own so you can [verify ownership of the accounts](../../../references/xrp-ledger-toml.md#account-verification). This can help reduce confusion or impersonation attempts. |
 
 [Require Destination Tags]: ../../compliance-features/require-destination-tags.md
 [Transfer Fee]: ../../../concepts/tokens/fungible-tokens/transfer-fees.md
@@ -221,7 +221,7 @@ The hot address does not strictly require any settings changes from the default,
 | [Authorized Trust Lines][]   | Enabled             | Enable this setting on the hot address—and never approve any trust lines to the hot address—to prevent accidentally issuing tokens from the wrong address. (Optional, but recommended.) |
 | [Require Destination Tags][] | Enabled or Disabled | Enable if you process withdrawals of your token to outside systems. (For example, your token is a stablecoin.) |
 | Disallow XRP                 | Enabled or Disabled | Enable if this address isn't meant to process XRP payments. |
-| [Domain][]                   | (Your domain name)  | Set to a domain you own so can [verify ownership of the accounts](../../../references/xrp-ledger-toml.md#account-verification). This can help reduce confusion or impersonation attempts. |
+| [Domain][]                   | (Your domain name)  | Set to a domain you own so you can [verify ownership of the accounts](../../../references/xrp-ledger-toml.md#account-verification). This can help reduce confusion or impersonation attempts. |
 
 The following code sample shows how to send an [AccountSet transaction][] to enable the recommended hot address settings:
 
@@ -253,7 +253,7 @@ The following code sample shows how to send an [AccountSet transaction][] to ena
   <div class="form-inline">
     <div class="input-group form-check">
       <input type="checkbox" class="form-check-input mr-3" value="" id="hot-require-auth" disabled="disabled" checked="checked" title="The hot address should enable Authorized Trust Lines as a precaution." />
-      <label for="hot-default-ripple" class="form-check-label" title="The hot address should enable Authorized Trust Lines as a precaution.">Authorized Trust Lines</label>
+      <label for="hot-require-auth" class="form-check-label" title="The hot address should enable Authorized Trust Lines as a precaution.">Authorized Trust Lines</label>
     </div>
   </div>
   <div class="form-inline">
@@ -391,7 +391,7 @@ Now you can create tokens by sending a [Payment transaction][] from the cold add
 |---|---|
 | `TransactionType` | `"Payment"` |
 | `Account` | The cold address issuing the token. |
-| `Amount` | An [token amount](../../../references/protocol/data-types/basic-data-types.md#specifying-currency-amounts) specifying how much of which token to create. |
+| `Amount` | A [token amount](../../../references/protocol/data-types/basic-data-types.md#specifying-currency-amounts) specifying how much of which token to create. |
 | `Amount.currency` | The currency code of the token. |
 | `Amount.value` | Decimal amount of the token to issue, as a string. |
 | `Amount.issuer` | The cold address issuing the token. |

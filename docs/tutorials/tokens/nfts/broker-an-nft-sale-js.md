@@ -42,7 +42,7 @@ To create a brokered sale, you need a broker account, a Sell Offer with the brok
     2. If you have an existing account seed:
         1. Paste the account seed to the **Account 1 Seed** or **Account 2 Seed** field.
         2. Click **Get Account 1 from Seed** or **Get Account 2 from Seed**.
-    2. If you do not have existing accounts:
+    3. If you do not have existing accounts:
         1. Click **Get New Account 1**.
         2. Click **Get New Account 2**.
 
@@ -59,12 +59,12 @@ To create a brokered sale, you need a broker account, a Sell Offer with the brok
 ## Broker the Sale
 
 1. Click the Account 1 or Account 2 radio button. The account information populates the uneditable fields of the form.
-1. Copy the _nft_offer_index_ of the sell offer and paste it in the **Sell Offer Index** field.
-2. Copy the _nft_offer_index_ of the buy offer and paste it in the **Buy Offer Index** field.
-3. Enter a **Broker Fee**, in drops.
-4. Click **Broker Sale**.
+2. Copy the _nft_offer_index_ of the sell offer and paste it in the **Sell Offer Index** field.
+3. Copy the _nft_offer_index_ of the buy offer and paste it in the **Buy Offer Index** field.
+4. Enter a **Broker Fee**, in drops.
+5. Click **Broker Sale**.
 
-In this example, the sale succeeds with 25 XRP going to the issuer account (Felicia), 30 XRP taken from the buyer account (Unknown 3rd Pary), and 5 XRP minus the transaction cost going to the broker account (Hisham).
+In this example, the sale succeeds with 25 XRP going to the issuer account (Felicia), 30 XRP taken from the buyer account (Unknown 3rd Party), and 5 XRP minus the transaction cost going to the broker account (Hisham).
 
 [![Brokered Sale](../../../img/mt-broker-nfts-4-broker-sale.png)](../../../img/mt-broker-nfts-4-broker-sale.png)
 

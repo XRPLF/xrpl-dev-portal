@@ -261,8 +261,7 @@
             - page: docs/tutorials/payments/send-xrp.md
             - page: docs/tutorials/payments/send-an-mpt.md
             - page: docs/tutorials/payments/send-confidential-payments.md
-            - page: docs/tutorials/payments/create-trust-line-send-currency-in-javascript.md
-            - page: docs/tutorials/payments/create-trust-line-send-currency-in-python.md
+            - page: docs/tutorials/payments/send-a-trust-line-token.md
             - page: docs/tutorials/payments/send-a-conditional-escrow.md
             - page: docs/tutorials/payments/send-a-timed-escrow.md
             - page: docs/tutorials/payments/send-fungible-token-escrows.md
@@ -630,6 +629,8 @@
                     - page: docs/references/http-websocket-apis/public-api-methods/clio-methods/server_info-clio.md
                     - page: docs/references/http-websocket-apis/public-api-methods/clio-methods/ledger-clio.md
                     - page: docs/references/http-websocket-apis/public-api-methods/clio-methods/mpt_holders.md
+                    - page: docs/references/http-websocket-apis/public-api-methods/clio-methods/account_mptokens.md
+                    - page: docs/references/http-websocket-apis/public-api-methods/clio-methods/account_mptoken_issuances.md
                     - page: docs/references/http-websocket-apis/public-api-methods/clio-methods/ledger_index.md
                     - page: docs/references/http-websocket-apis/public-api-methods/clio-methods/nft_history.md
                     - page: docs/references/http-websocket-apis/public-api-methods/clio-methods/nft_info.md

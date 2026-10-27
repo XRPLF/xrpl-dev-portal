@@ -121,7 +121,7 @@ For example, consider a vault with a total value of $1.0m and total shares of 1.
 1. The new exchange rate is calculated as:
 
     ```js
-    // ExchangeRate = (AssetsTotal - LossUnrealized) / SharesTotal
+    // ExchangeRate = (AssetsTotal - LossUnrealized) / OutstandingAmount
     exchangeRate = (1,000,000 - 900,000) / 1,000,000
     ```
 
@@ -130,7 +130,7 @@ For example, consider a vault with a total value of $1.0m and total shares of 1.
 2. After the unrealized loss is cleared, the new effective exchange rate would be:
 
     ```js
-    // ExchangeRate = AssetsTotal / SharesTotal
+    // ExchangeRate = AssetsTotal / OutstandingAmount
     exchangeRate = 1,000,000 / 1,000,000
     ```
 

@@ -328,6 +328,8 @@ ul.nav.navbar-nav {
   --admonition-info-bg-color: var(--color-blue-9);
   --admonition-warning-bg-color: var(--color-yellow-9);
   --admonition-danger-bg-color: var(--color-red-9);
+
+  --bs-link-color-rgb: var(--link-color-primary);
 }
 
 :root.dark {

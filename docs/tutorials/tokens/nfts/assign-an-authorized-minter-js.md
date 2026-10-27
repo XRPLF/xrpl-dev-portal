@@ -22,7 +22,7 @@ This example shows how to:
 
 # Usage
 
-You can download the [NFT Modular Sam;ples](../../../../_code-samples/nft-modular-tutorials/nft-modular-tutorials.zip) archive to try the sample in your own browser.
+You can download the [NFT Modular Samples](../../../../_code-samples/nft-modular-tutorials/nft-modular-tutorials.zip) archive to try the sample in your own browser.
 
 ## Get Accounts
 
@@ -35,7 +35,7 @@ You can download the [NFT Modular Sam;ples](../../../../_code-samples/nft-modula
     2. If you have an existing account seed:
         1. Paste the account seed to the **Account 1 Seed** or **Account 2 Seed** field.
         2. Click **Get Account 1 from Seed** or **Get Account 2 from Seed**.
-    2. If you do not have existing accounts:
+    3. If you do not have existing accounts:
         1. Click **Get New Account 1**.
         2. Click **Get New Account 2**.
         

@@ -30,7 +30,7 @@ You can download the [NFT Modular Tutorials](../../../../_code-samples/nft-modul
     2. If you have an existing account seed:
         1. Paste the account seed to the **Account 1 Seed** or **Account 2 Seed** field.
         2. Click **Get Account 1 from Seed** or **Get Account 2 from Seed**.
-    2. If you do not have existing accounts:
+    3. If you do not have existing accounts:
         1. Click **Get New Account 1**.
         2. Click **Get New Account 2**.
 
@@ -41,14 +41,14 @@ You can download the [NFT Modular Tutorials](../../../../_code-samples/nft-modul
 To mint a non-fungible token object:
 
 1. Click the Account 1 or Account 2 radio button. The account information populates the uneditable fields of the form.
-2. Set the **Flags** field. For testing purposes, we recommend setting the value to _8_. This sets the _tsTransferable_ flag, meaning that the NFT object can be transferred to another account. Otherwise, the NFT object can only be transferred back to the issuing account.
-2. Enter the **NFT URL**. This is a URI that points to the data or metadata associated with the NFT object. You can use the sample URI provided if you do not have one of your own.
-3. Enter the **Transfer Fee**, a percentage of the proceeds from future sales of the NFT that will be returned to the original creator. This is a value of 0-50000 inclusive, allowing transfer rates between 0.000% and 50.000% in increments of 0.001%. If you do not set the **Flags** field to allow the NFT to be transferrable, set this field to 0. If you impose a transfer fee, your NFT can only be traded for tokens for which your account has a trust line. See [Trust Line Tokens](../../../concepts/tokens/fungible-tokens/trust-line-tokens.md).
-4. Enter an **NFT Taxon**. This is a required value, but if you are not using the field to create an integer-based taxon entry, you can set the value to 0.
-5. (Optional) You can set an expected price for the NFT. To set a price in XRP, enter the amount in drops in the **Amount** field. To use an issued currency, enter the **Currency**, **Issuer**, and **Amount**.
-6. Optionally, you can enter a **Destination** address that will be the only account authorized to purchase the NFT.
-7. Optionally, you can enter an **Expiration** value in days, after which the offer will no longer be available.
-8. Click **Mint NFT**.
+2. Set the **Flags** field. For testing purposes, we recommend setting the value to _8_. This sets the _tfTransferable_ flag, meaning that the NFT object can be transferred to another account. Otherwise, the NFT object can only be transferred back to the issuing account.
+3. Enter the **NFT URL**. This is a URI that points to the data or metadata associated with the NFT object. You can use the sample URI provided if you do not have one of your own.
+4. Enter the **Transfer Fee**, a percentage of the proceeds from future sales of the NFT that will be returned to the original creator. This is a value of 0-50000 inclusive, allowing transfer rates between 0.000% and 50.000% in increments of 0.001%. If you do not set the **Flags** field to allow the NFT to be transferrable, set this field to 0. If you impose a transfer fee, your NFT can only be traded for tokens for which your account has a trust line. See [Trust Line Tokens](../../../concepts/tokens/fungible-tokens/trust-line-tokens.md).
+5. Enter an **NFT Taxon**. This is a required value, but if you are not using the field to create an integer-based taxon entry, you can set the value to 0.
+6. (Optional) You can set an expected price for the NFT. To set a price in XRP, enter the amount in drops in the **Amount** field. To use an issued currency, enter the **Currency**, **Issuer**, and **Amount**.
+7. Optionally, you can enter a **Destination** address that will be the only account authorized to purchase the NFT.
+8. Optionally, you can enter an **Expiration** value in days, after which the offer will no longer be available.
+9. Click **Mint NFT**.
 
 [![Mint NFT fields](../../../img/mt-mint-token-3-mint-token.png)](../../../img/mt-mint-token-3-mint-token.png)
 
@@ -67,7 +67,7 @@ To permanently destroy an NFT:
 
 1. Enter or select the account that owns the NFT.
 2. Enter the **NFT ID**.
-2. Click **Burn NFT**.
+3. Click **Burn NFT**.
 
 [![Burn NFTs](../../../img/mt-mint-token-5-burn-token.png)](../../../img/mt-mint-token-5-burn-token.png)
 

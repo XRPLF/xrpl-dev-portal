@@ -106,6 +106,9 @@ Use these methods to retrieve information using Clio server APIs.
 * **[`nft_info`](clio-methods/nft_info.md)** - Retrieve information about the specified NFT using Clio server's `nft_info` API.
 * **[`nft_history`](clio-methods/nft_history.md)** - Retrieve the history of ownership and transfers for the specified NFT.
 * **[`nfts_by_issuer`](clio-methods/nfts_by_issuer.md)** - Returns a list of NFTokens that are issued by the specified account.
+* **[`mpt_holders`](clio-methods/mpt_holders.md)** - Returns all holders of a given MPT issuance and their balances.
+* **[`account_mptokens`](clio-methods/account_mptokens.md)** - Returns the MPTokens held by the specified account and their balances.
+* **[`account_mptoken_issuances`](clio-methods/account_mptoken_issuances.md)** - Returns the MPTokenIssuances created by the specified account.
 
 ## [Utility Methods](utility-methods/index.md)
 

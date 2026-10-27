@@ -44,6 +44,8 @@ Each version of `xrpld` is compiled with a list of [known amendments](/resources
 
 {% admonition type="info" name="Note" %}The default vote can change between software releases. {% badge href="https://github.com/XRPLF/rippled/releases/tag/1.8.1" %}Updated in: rippled 1.8.1{% /badge %}{% /admonition %}
 
+Only validators vote on amendments, and only votes from trusted validators count. Individual servers can't enable or disable amendments on the network. If your server only submits transactions or serves API requests, you don't need to configure amendment voting. In particular, you don't need the `[amendments]` or `[features]` stanzas to use Mainnet.
+
 Amendments must maintain two weeks of support from more than 80% of trusted validators to be enabled. If support drops below 80%, the amendment is temporarily rejected, and the two week period restarts. Amendments can gain and lose a majority any number of times before they become permanently enabled.
 
 Amendments that have had their source code removed without being enabled are considered **Vetoed** by the network.
@@ -71,7 +73,13 @@ The Clio server can become amendment blocked if it encounters an unknown field t
 
 When amendments are enabled, the source code for pre-amendment behaviors remain in `xrpld`. While there are use-cases for keeping old code, such as reconstructing ledger outcomes for verification, tracking amendments and legacy code adds complexity over time.
 
-The [XRP Ledger Standard 11d](https://github.com/XRPLF/XRPL-Standards/discussions/19) defines a process for retiring old amendments and associated pre-amendment code. After an amendment has been enabled on the Mainnet for two years, it can be retired. Retiring an amendment makes it part of the core protocol unconditionally; it's no longer tracked or treated as an amendment, and all pre-amendment code is removed.
+[XLS-11](https://github.com/XRPLF/XRPL-Standards/blob/master/XLS-0011-retiring-amendments/README.md) defines the process for retiring old amendments and associated pre-amendment code. After an amendment has been enabled on the Mainnet for two years, it can be retired. Retiring an amendment makes it part of the core protocol unconditionally; all pre-amendment code is removed, along with the switches to toggle between pre- and post-amendment code paths. On networks where the amendment was enabled, the [Amendments entry][] maintains a record of the amendment's existence, and the [feature method][] also lists retired amendments.
+
+After an amendment is retired, new test networks will always use the amended code from the start, but the list of enabled amendments recorded in the ledger won't include any amendments that were already retired when the new network started.
+
+{% admonition type="info" name="Note" %}
+If you are replaying historical ledgers that are more than 2 years old (that is, re-processing old transactions to debug or verify the outcome), be aware that the `xrpld` server cannot accurately replay historical ledgers that were built using pre-amendment code of retired amendments. (This mostly matters when amendments modify existing functionality, not when they create new features entirely.) To accurately replay historical ledgers, you must use a server build that is roughly contemporary with the ledger you are replaying.
+{% /admonition %}
 
 
 ## See Also

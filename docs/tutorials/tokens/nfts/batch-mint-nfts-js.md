@@ -1,6 +1,6 @@
 ---
 seo:
-    description: Broker a sale between a sell offer and a buy offer.
+    description: Mint multiple NFTs with the press of a button.
 labels:
   - Accounts
   - NFTs
@@ -17,7 +17,7 @@ A best practice is to use `Tickets` to reserve the transaction sequence numbers.
 
 ## Usage
 
-You can download the [NFT Modular Samples](../../../../_code-samples/nft-modular-tutorials/nft-modular-tutorials.zip)) archive to try the sample in your own browser.
+You can download the [NFT Modular Samples](../../../../_code-samples/nft-modular-tutorials/nft-modular-tutorials.zip) archive to try the sample in your own browser.
 
 ## Get an Account
 
@@ -35,7 +35,7 @@ This example lets you mint multiple NFTs for a single unique item. The NFT might
 To batch mint NFTs:
 
 1. Click the Account 1 or Account 2 radio button. The account information populates the uneditable fields of the form.
-2. Set the **Flags** field. For testing purposes, we recommend setting the value to _8_. This sets the _tsTransferable_ flag, meaning that the NFT object can be transferred to another account. Otherwise, the NFT object can only be transferred back to the issuing account. See [NFTokenMint](../../../../docs/references/protocol/transactions/types/nftokenmint.md) for information about all of the available flags for minting NFTs.
+2. Set the **Flags** field. For testing purposes, we recommend setting the value to _8_. This sets the _tfTransferable_ flag, meaning that the NFT object can be transferred to another account. Otherwise, the NFT object can only be transferred back to the issuing account. See [NFTokenMint](../../../references/protocol/transactions/types/nftokenmint.md) for information about all of the available flags for minting NFTs.
 3. Enter the **NFT URL**. This is a URI that points to the data or metadata associated with the NFT object. You can use the sample URI provided if you do not have one of your own.
 4. Set the **NFT Taxon**. If you don't have a use for this field, set it to _0_. 
 5. Enter an **NFT Count** of up to 200 NFTs to create in one batch.

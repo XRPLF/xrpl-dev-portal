@@ -74,15 +74,16 @@ Besides errors that can occur for all transactions, {% code-page-name /%} transa
 | Error Code | Description |
 | :--- | :--- |
 | `tecLIMIT_EXCEEDED` | The `Sponsorship.RemainingOwnerCount` exceeds the maximum value of an unsigned 32-bit integer. |
-| `tecNO_DST` | The sponsor or sponsee account does not exist on the ledger. |
-| `tecNO_ENTRY` | The `tfDeleteObject` flag is enabled but the `Sponsorship` ledger entry does not exist. |
-| `tecNO_PERMISSION` | The transaction is not permitted. This occurs when creating or updating the entry would leave it with no budget. Empty `Sponsorship` ledger entries are not allowed. |
-| `tecPSEUDO_ACCOUNT` | The sponsor or sponsee is a pseudo-account, which cannot participate in sponsorship. |
-| `tecUNFUNDED` | The sponsor does not have sufficient XRP to fund a positive `FeeAmountDelta` or to cover the reserve for the `Sponsorship` ledger entry. |
+| `tecNO_DST` | The sponsor or sponsee account doesn't exist on the ledger. |
+| `tecNO_ENTRY` | The `tfDeleteObject` flag is enabled but the `Sponsorship` ledger entry doesn't exist. |
+| `tecNO_PERMISSION` | The transaction isn't permitted. This occurs when creating or updating the entry would leave it with no budget. Empty `Sponsorship` ledger entries aren't allowed. |
+| `tecPSEUDO_ACCOUNT` | The sponsor or sponsee is a pseudo-account, which can't participate in sponsorship. |
+| `tecUNFUNDED` | The sponsor doesn't have sufficient XRP to fund a positive `FeeAmountDelta` or to cover the reserve for the `Sponsorship` ledger entry. |
 | `temBAD_AMOUNT` | An amount field is invalid. This can occur when:<ul><li>`FeeAmountDelta` is zero or not denominated in XRP.</li><li>`MaxFee` is negative or not denominated in XRP.</li></ul> |
-| `temINVALID` | The `RemainingOwnerCountDelta` value is zero. This is not permitted. |
+| `temINVALID` | The `RemainingOwnerCountDelta` value is zero. This isn't permitted. |
 | `temINVALID_FLAG` | The transaction has invalid flags. This can occur when:<ul><li>Conflicting flags are enabled, such as both `tfSponsorshipSetRequireSignForFee` and `tfSponsorshipClearRequireSignForFee`.</li><li>The `tfDeleteObject` flag is enabled along with additional flags. `tfDeleteObject` must be the only flag.</li></ul> |
-| `temMALFORMED` | The transaction is malformed. This can occur when:<ul><li>Both `CounterpartySponsor` and `Sponsee` are specified.</li><li>Neither `CounterpartySponsor` nor `Sponsee` is specified.</li><li>The `tfDeleteObject` flag is enabled and `FeeAmountDelta`, `MaxFee`, or `RemainingOwnerCountDelta` is specified.</li><li>The sponsor and sponsee are the same account.</li></ul> |
+| `temMALFORMED` | The transaction is malformed. This can occur when:<ul><li>Both `CounterpartySponsor` and `Sponsee` are specified.</li><li>Neither `CounterpartySponsor` nor `Sponsee` is specified.</li><li>The `tfDeleteObject` flag is enabled and `FeeAmountDelta`, `MaxFee`, or `RemainingOwnerCountDelta` is specified.</li><li>The sponsor and sponsee are the same account.</li><li>`CounterpartySponsor` is specified (meaning the sponsee is the sender) and the `tfDeleteObject` flag isn't enabled. Only the sponsor can create or update a `Sponsorship` ledger entry.</li></ul> |
+| `temREDUNDANT` | The transaction doesn't request any change: it doesn't specify `FeeAmountDelta`, `MaxFee`, or `RemainingOwnerCountDelta`, and doesn't enable any {% code-page-name /%}-specific flags. |
 
 ## See Also
 

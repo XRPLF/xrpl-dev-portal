@@ -8,7 +8,7 @@ status: not_enabled
 ---
 # Permission Delegation
 
-Permission delegation is the function of granting various permissions to another account to send permissions on behalf of your account. You can use permission delegation to enable flexible security paradigms such as role-based access control, instead of or alongside techniques such as [multi-signing](./multi-signing.md).
+Permission delegation is the function of granting various permissions to another account to send transactions on behalf of your account. You can use permission delegation to enable flexible security paradigms such as role-based access control, instead of or alongside techniques such as [multi-signing](./multi-signing.md).
 
 {% amendment-disclaimer name="PermissionDelegationV1_1" /%}
 
