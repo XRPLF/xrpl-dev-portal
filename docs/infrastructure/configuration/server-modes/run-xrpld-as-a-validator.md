@@ -194,7 +194,9 @@ _**To connect your validator to the XRP Ledger network using proxies:**_
 
 6. Use the [peers method][] on your validator to confirm that `[peer_private]` is working. The `peers` array should contain _only_ the stock `xrpld` servers you configured: no inbound connections, and no `address` outside the `[ips_fixed]` stanza. If other peers appear, double-check your config file and restart the validator.
 
-    {% admonition type="info" name="Note" %}The [Peer Crawler](../../../references/http-websocket-apis/peer-port-methods/peer-crawler.md) does not confirm this setting. A server's `ip` and `port` are omitted from crawler results if it is configured **as a validator _or_ as a private peer**, so your validator's address is suppressed whether or not `[peer_private]` is set.{% /admonition %}
+    {% admonition type="info" name="Note" %}
+    The [Peer Crawler](../../../references/http-websocket-apis/peer-port-methods/peer-crawler.md) does not confirm this setting. A server's `ip` and `port` are omitted from crawler results if it is configured **as a validator _or_ as a private peer**, so your validator's address is suppressed whether or not `[peer_private]` is set.
+    {% /admonition %}
 
     ```
     $ curl --insecure https://STOCK_SERVER_IP_ADDRESS_HERE:51235/crawl | python3 -m json.tool
