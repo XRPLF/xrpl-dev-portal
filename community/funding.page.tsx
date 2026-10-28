@@ -35,9 +35,9 @@ import {
 
 export const frontmatter = {
   seo: {
-    title: "Developer Funding",
+    title: "XRP Ledger Programming and Funding",
     description:
-      "Find grants, accelerators, incubators, training, and rewards for building on the XRP Ledger, from across the ecosystem, in one place.",
+      "Find training, incubators, accelerators, rewards and funding opportunities for building on the XRP Ledger, from across the ecosystem, in one place.",
   },
 };
 

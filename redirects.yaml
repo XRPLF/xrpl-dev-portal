@@ -337,6 +337,8 @@ developer-funding.html:
     to: /community/funding
 community/developer-funding.html:    
     to: /community/funding
+community/developer-funding:    
+    to: /community/funding    
 code-samples.html:
     to: /resources/code-samples
 dev-tools.html:

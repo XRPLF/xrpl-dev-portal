@@ -222,7 +222,7 @@ export const FUNDING_ORGANIZATIONS: readonly FundingOrganization[] = [
         heading: "RippleX Ecosystem Growth Programs",
         links: [
           { programId: "ripplex-ecosystem-programs" },
-          { programId: "fintech-builder-program", label: "FinTech Program" },
+          { programId: "fintech-program", label: "FinTech Program" },
         ],
       },
       {
@@ -394,23 +394,23 @@ export const FUNDING_PROGRAMS: readonly FundingProgram[] = [
     organizationId: "ripplex",
     type: "Incentives and support",
     summary:
-      "Ripple's single application for grants, accelerator programs, technical mentorship, product integrations, and partnerships for XRPL projects.",
+      "Accelerators, integration support, and milestone-based incentive funding for FinTech start-ups building on the XRPL. Currently available by invitation only.",
     personas: ["founder", "business", "developer"],
     stage: "launch",
-    url: "https://submit.xrplgrants.org/submit",
+    url: "https://xrplgrants.org/",
   },
   {
     // Announced February 2026 with no program page yet; the announcement is
     // a placeholder until Ripple publishes one.
-    id: "fintech-builder-program",
-    name: "FinTech Builder Program",
+    id: "fintech-program",
+    name: "FinTech Program",
     organizationId: "ripplex",
-    type: "Builder program",
+    type: "FinTech program",
     summary:
-      "Ripple's program for startups building institutional-grade financial apps, spanning accelerators, regional startup competitions, and builder awards.",
+      "Ripple's program for startups building institutional-grade financial apps. Launching soon.",
     personas: ["business", "founder"],
     stage: "grow",
     url: "https://ripple.com/insights/supporting-innovation-on-the-xrp-ledger/",
-    ctaLabel: "Coming Soon",
+    ctaLabel: "Read the Announcement",
   },
 ];
