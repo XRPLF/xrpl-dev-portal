@@ -17,15 +17,14 @@ Provisionally issue a [credential](../../../../concepts/decentralized-storage/cr
 
 ```json
 {
-    "TransactionType" : "CredentialCreate",
-    "Account": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
-    "Subject": "rsUiUMpnrgxQp24dJYZDhmV4bE3aBtQyt8",
-    "CredentialType": "6D795F63726564656E7469616C",
-    "Fee": "10",
-    "Flags": 0,
-    "Sequence": 234200
+    "TransactionType": "CredentialCreate",
+    "Account": "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW",
+    "Subject": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+    "CredentialType": "6D795F63726564656E7469616C"
 }
 ```
+
+{% tx-example txid="900D734F84635889FB9F23FC712DFD463C1B147D3F51585A8704E74D0EEA53FF" /%}
 
 {% raw-partial file="/docs/_snippets/tx-fields-intro.md" /%}
 
