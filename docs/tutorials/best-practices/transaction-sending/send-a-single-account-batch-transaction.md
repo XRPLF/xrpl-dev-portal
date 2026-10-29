@@ -25,12 +25,14 @@ By the end of this tutorial, you will be able to:
 To complete this tutorial, you should:
 
 - Have a basic understanding of the XRP Ledger.
-- Have an XRP Ledger client library set up in your development environment. This page provides examples for the following:
-  - **JavaScript** with the [xrpl.js library](https://github.com/XRPLF/xrpl.js). See [Get Started Using JavaScript](../../get-started/get-started-javascript.md) for setup steps.
+- Have an [XRP Ledger client library](../../../references/client-libraries.md) installed. This page provides examples for the following:
+  - **JavaScript** with the [xrpl.js library][]. See [Get Started Using JavaScript][] for setup steps.
+  - **Python** with the [xrpl-py library][]. See [Get Started Using Python][] for setup steps.
+  - **Go** with the [xrpl-go library][]. See [Get Started Using Go][] for setup steps.
 
 ## Source Code
 
-You can find the complete source code for this tutorial's examples in the [code samples section of this website's repository](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/batch/).
+You can find the complete source code for this tutorial's examples in the {% repo-link path="_code-samples/batch/" %}code samples section of this website's repository{% /repo-link %}.
 
 ## Steps
 
@@ -39,13 +41,30 @@ The example in this tutorial demonstrates a scenario where an account sends mult
 ### 1. Install dependencies
 
 {% tabs %}
-{% tab label="Javascript" %}
-From the code sample folder, use npm to install dependencies:
+{% tab label="JavaScript" %}
+From the code sample folder, use `npm` to install dependencies:
 
 ```bash
-npm install xrpl
+npm install
 ```
+{% /tab %}
 
+{% tab label="Python" %}
+From the code sample folder, set up a virtual environment and use `pip` to install dependencies:
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+```
+{% /tab %}
+
+{% tab label="Go" %}
+From the code sample folder, use `go` to install dependencies:
+
+```bash
+go mod tidy
+```
 {% /tab %}
 {% /tabs %}
 
@@ -54,8 +73,16 @@ npm install xrpl
 To get started, import the client library and instantiate a client to connect to the XRPL. For this tutorial you need a funded account for the `Batch` transaction **sender**, and two other accounts to **receive** the payments.
 
 {% tabs %}
-{% tab label="Javascript" %}
+{% tab label="JavaScript" %}
 {% code-snippet file="/_code-samples/batch/js/singleAccountBatch.js" language="js" from="import xrpl" before="// Create inner transactions" /%}
+{% /tab %}
+
+{% tab label="Python" %}
+{% code-snippet file="/_code-samples/batch/py/send_single_account_batch.py" language="py" from="import json" before="# Create inner transactions" /%}
+{% /tab %}
+
+{% tab label="Go" %}
+{% code-snippet file="/_code-samples/batch/go/send-single-account-batch/main.go" language="go" from="package main" before="// Create inner transactions" /%}
 {% /tab %}
 {% /tabs %}
 
@@ -64,8 +91,16 @@ To get started, import the client library and instantiate a client to connect to
 Next, prepare the inner transactions that will be included in the batch.
 
 {% tabs %}
-{% tab label="Javascript" %}
-{% code-snippet file="/_code-samples/batch/js/singleAccountBatch.js" language="js" from="// Create inner transactions" to="// Send Batch transaction" /%}
+{% tab label="JavaScript" %}
+{% code-snippet file="/_code-samples/batch/js/singleAccountBatch.js" language="js" from="// Create inner transactions" before="// Prepare Batch transaction" /%}
+{% /tab %}
+
+{% tab label="Python" %}
+{% code-snippet file="/_code-samples/batch/py/send_single_account_batch.py" language="py" from="# Create inner transactions" before="# Prepare Batch transaction" /%}
+{% /tab %}
+
+{% tab label="Go" %}
+{% code-snippet file="/_code-samples/batch/go/send-single-account-batch/main.go" language="go" from="// Create inner transactions" before="// Prepare Batch transaction" /%}
 {% /tab %}
 {% /tabs %}
 
@@ -91,8 +126,16 @@ Create the `Batch` transaction and provide the inner transactions. The key field
 | RawTransactions  | Contains the list of inner transactions to be applied. Must include a minimum of **2** transactions and a maximum of **8** transactions. These transactions can come from one account or multiple accounts. |
 
 {% tabs %}
-{% tab label="Javascript" %}
-{% code-snippet file="/_code-samples/batch/js/singleAccountBatch.js" language="js" from="// Send Batch transaction" before="// Submit" /%}
+{% tab label="JavaScript" %}
+{% code-snippet file="/_code-samples/batch/js/singleAccountBatch.js" language="js" from="// Prepare Batch transaction" before="// Submit" /%}
+{% /tab %}
+
+{% tab label="Python" %}
+{% code-snippet file="/_code-samples/batch/py/send_single_account_batch.py" language="py" from="# Prepare Batch transaction" before="# Submit" /%}
+{% /tab %}
+
+{% tab label="Go" %}
+{% code-snippet file="/_code-samples/batch/go/send-single-account-batch/main.go" language="go" from="// Prepare Batch transaction" before="// Submit" /%}
 {% /tab %}
 {% /tabs %}
 
@@ -101,40 +144,62 @@ Create the `Batch` transaction and provide the inner transactions. The key field
 Now the sender can submit the `Batch` transaction:
 
 {% tabs %}
-{% tab label="Javascript" %}
+{% tab label="JavaScript" %}
 {% code-snippet file="/_code-samples/batch/js/singleAccountBatch.js" language="js" from="// Submit" before="// Check Batch transaction" /%}
+{% /tab %}
+
+{% tab label="Python" %}
+{% code-snippet file="/_code-samples/batch/py/send_single_account_batch.py" language="py" from="# Submit" before="# Check Batch transaction" /%}
+{% /tab %}
+
+{% tab label="Go" %}
+{% code-snippet file="/_code-samples/batch/go/send-single-account-batch/main.go" language="go" from="// Submit" before="// Check Batch transaction" /%}
 {% /tab %}
 {% /tabs %}
 
-Because `autofill` is set to `true`, the client library automatically fills in any missing fields, like the `Fee` and `SigningPubKey`, before submitting the batch.
+Because `autofill` is enabled, the client library automatically fills in any missing fields, like the `Fee` and `SigningPubKey`, before submitting the batch.
 
 ### 6. Check Batch transaction result
 
 To check the result of the `Batch` transaction submission:
 
 {% tabs %}
-{% tab label="Javascript" %}
+{% tab label="JavaScript" %}
 {% code-snippet file="/_code-samples/batch/js/singleAccountBatch.js" language="js" from="// Check Batch transaction" before="// Calculate and verify" /%}
+{% /tab %}
+
+{% tab label="Python" %}
+{% code-snippet file="/_code-samples/batch/py/send_single_account_batch.py" language="py" from="# Check Batch transaction" before="# Calculate and verify" /%}
+{% /tab %}
+
+{% tab label="Go" %}
+{% code-snippet file="/_code-samples/batch/go/send-single-account-batch/main.go" language="go" from="// Check Batch transaction" before="// Calculate and verify" /%}
 {% /tab %}
 {% /tabs %}
 
 The code checks for a `tesSUCCESS` result and displays the response details.
 
 {% admonition type="warning" name="Warning" %}
-A `tesSUCCESS` result indicates that the `Batch` transaction was processed successfully, but does not guarantee the inner transactions succeeded.
-
-For example, see the [following transaction on the XRPL Explorer](https://devnet.xrpl.org/transactions/20CFCE5CF75E93E6D1E9C1E42F8E8C8C4CB1786A65BE23D2EA77EAAB65A455C5/simple).
+A `tesSUCCESS` result indicates that the `Batch` transaction was processed successfully, but does not guarantee the inner transactions succeeded. For example, see the [following transaction on the XRPL Explorer](https://devnet.xrpl.org/transactions/20CFCE5CF75E93E6D1E9C1E42F8E8C8C4CB1786A65BE23D2EA77EAAB65A455C5/simple).
 {% /admonition %}
 
-Because the `Batch` transaction is configured with a `tfAllOrNothing` flag, if any inner transaction fails, **all** inner transactions wil fail, and only the `Batch` transaction fee is deducted from the **third-party wallet**.
+Because the `Batch` transaction is configured with a `tfAllOrNothing` flag, if any inner transaction fails, **all** inner transactions will fail, and only the `Batch` transaction fee is deducted from the **sender**.
 
 ### 7. Verify inner transactions
 
 Since there is no way to check the status of inner transactions in the `Batch` transaction result, you need to calculate the inner transaction hashes and look them up on the ledger:
 
 {% tabs %}
-{% tab label="Javascript" %}
+{% tab label="JavaScript" %}
 {% code-snippet file="/_code-samples/batch/js/singleAccountBatch.js" language="js" from="// Calculate and verify" before="// Verify balances after transaction" /%}
+{% /tab %}
+
+{% tab label="Python" %}
+{% code-snippet file="/_code-samples/batch/py/send_single_account_batch.py" language="py" from="# Calculate and verify" before="# Verify balances after transaction" /%}
+{% /tab %}
+
+{% tab label="Go" %}
+{% code-snippet file="/_code-samples/batch/go/send-single-account-batch/main.go" language="go" from="// Calculate and verify" before="// Verify balances after transaction" /%}
 {% /tab %}
 {% /tabs %}
 
@@ -145,8 +210,16 @@ The code extracts the actual inner transactions from the batch response, calcula
 You can also verify that the inner transactions executed successfully by checking the account balances to confirm the expected changes.
 
 {% tabs %}
-{% tab label="Javascript" %}
+{% tab label="JavaScript" %}
 {% code-snippet file="/_code-samples/batch/js/singleAccountBatch.js" language="js" from="// Verify balances after transaction" /%}
+{% /tab %}
+
+{% tab label="Python" %}
+{% code-snippet file="/_code-samples/batch/py/send_single_account_batch.py" language="py" from="# Verify balances after transaction" /%}
+{% /tab %}
+
+{% tab label="Go" %}
+{% code-snippet file="/_code-samples/batch/go/send-single-account-batch/main.go" language="go" from="// Verify balances after transaction" /%}
 {% /tab %}
 {% /tabs %}
 

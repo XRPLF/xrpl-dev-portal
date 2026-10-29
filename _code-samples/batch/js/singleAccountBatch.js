@@ -10,6 +10,7 @@
 
 import xrpl from "xrpl"
 
+// Connect to the network ----------------------
 const client = new xrpl.Client("wss://s.devnet.rippletest.net:51233/")
 await client.connect()
 
@@ -26,7 +27,7 @@ console.log(`Sender: ${sender.address}, Balance: ${await client.getXrpBalance(se
 console.log(`Wallet1: ${wallet1.address}, Balance: ${await client.getXrpBalance(wallet1.address)} XRP`)
 console.log(`Wallet2: ${wallet2.address}, Balance: ${await client.getXrpBalance(wallet2.address)} XRP`)
 
-// Create inner transactions  --------------------------------------------
+// Create inner transactions ----------------------
 // REQUIRED: Inner transactions MUST have the tfInnerBatchTxn flag (0x40000000).
 // This marks them as part of a batch (requires Fee: 0 and empty SigningPubKey).
 
@@ -48,7 +49,7 @@ const payment2 = {
   Flags: xrpl.GlobalFlags.tfInnerBatchTxn // THIS IS REQUIRED
 }
 
-// Send Batch transaction --------------------------------------------
+// Prepare Batch transaction ----------------------
 console.log("\n=== Creating Batch transaction... ===")
 const batchTx = {
   TransactionType: "Batch",
@@ -65,7 +66,7 @@ console.log(JSON.stringify(batchTx, null, 2))
 // Validate the transaction structure before submitting
 xrpl.validate(batchTx)
 
-// Submit and wait for validation
+// Submit and wait for validation ----------------------
 console.log("\n=== Submitting Batch transaction... ===")
 const submitResponse = await client.submitAndWait(batchTx, {
   wallet: sender,
@@ -73,7 +74,7 @@ const submitResponse = await client.submitAndWait(batchTx, {
   autofill: true
 })
 
-// Check Batch transaction result --------------------------------
+// Check Batch transaction result ----------------------
 if (submitResponse.result.meta.TransactionResult !== "tesSUCCESS") {
   const resultCode = submitResponse.result.meta.TransactionResult
   console.warn(`\nTransaction failed with result code ${resultCode}`)
@@ -82,10 +83,10 @@ if (submitResponse.result.meta.TransactionResult !== "tesSUCCESS") {
 }
 console.log("\nBatch transaction submitted successfully!")
 console.log("Result:\n", JSON.stringify(submitResponse.result, null, 2))
-// View the batch transaction on the XRPL Explorer 
+// View the batch transaction on the XRPL Explorer
 console.log(`\nBatch transaction URL:\nhttps://devnet.xrpl.org/transactions/${submitResponse.result.hash}`)
 
-// Calculate and verify inner transaction hashes --------------------------------------------
+// Calculate and verify inner transaction hashes ----------------------
 console.log("\n=== Verifying inner transactions... ===")
 const rawTransactions = submitResponse.result.tx_json.RawTransactions
 let hasFailure = false

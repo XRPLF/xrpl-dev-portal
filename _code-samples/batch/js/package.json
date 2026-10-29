@@ -1,6 +1,8 @@
 {
+  "name": "batch-examples",
+  "description": "Example code for sending single-account and multi-account Batch transactions.",
   "dependencies": {
-    "xrpl": "^4.4.3"
+    "xrpl": "^5.3.0"
   },
   "type": "module"
 }
