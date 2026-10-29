@@ -188,13 +188,13 @@ export const FUNDING_PERSONAS: readonly FundingPersona[] = [
 export const FUNDING_ORGANIZATIONS: readonly FundingOrganization[] = [
   {
     id: "ripplex",
-    name: "RippleX",
+    name: "Ripple",
     fullName: "RippleX Ecosystem Programs",
     description:
       "Ripple's programs for fintech teams building on XRPL: grants, accelerators with venture partners, hackathons, security bounties, and the FinTech Builder Program.",
     // Ripple has announced a dedicated XRPL funding hub. When it launches,
     // update this url and the RippleX program urls below.
-    url: "https://xrplgrants.org/",
+    url: "https://ripple.com/",
     image: require("../../static/img/bds-2026/community-developer-funding-carousel-1.jpg"),
     // Ripple publishes no RippleX logo for light backgrounds; this is the
     // Ripple logo exactly as the ripple.com header shows it (2026-10-02).
