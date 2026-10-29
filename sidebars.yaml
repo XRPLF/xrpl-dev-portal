@@ -821,7 +821,6 @@
           labelTranslationKey: sidebar.resources.dev-tools.xrpl-up
           href: https://github.com/ripple/xrpl-up
           external: true
-        - label: WebSocket API Tool  
     - label: XRPL Learning Portal
       labelTranslationKey: sidebar.resources.xrpl-learning-portal
       href: https://learn.xrpl.org/
