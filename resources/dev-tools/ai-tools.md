@@ -29,6 +29,11 @@ The XRPL Docs MCP Server can be wired into any MCP-capable client, such as Claud
 
 The xrpl.org site hosts a standalone MCP server that only indexes what is on the site. This server is intended as a backup for the XRPL Docs MCP Server. From any doc page, you can click the **Copy** dropdown by the page title and select either **Connect to Cursor** or **Connect to VS Code**. If you are using a different code editor, you can manually configure the MCP server using the endpoint.
 
+### AgentTrust MCP Server
+
+**Endpoint**: `https://mcp.cryptovault.co.uk/mcp`
+
+AgentTrust is a third-party MCP server, maintained by Boxclever Media Ltd, for agent-to-agent payments on the XRP Ledger. An agent locks XRP in a native conditional [escrow](../../docs/concepts/payment-types/escrow.md), and the payment is released when the delivered work passes the checks the buyer set: on-ledger or credential proofs (NFT ownership, a wallet's `Domain` and `xrp-ledger.toml`, W3C Verifiable Credentials, or XRPL transaction hashes), or an AI review of the deliverable. If the checks never pass, the buyer can cancel the escrow after it expires. The server operates on XRPL Mainnet and charges service fees. For source code and documentation, see the [GitHub repo](https://github.com/eamwhite1/xrpl-referee).
 
 ## SKILL.md
 
