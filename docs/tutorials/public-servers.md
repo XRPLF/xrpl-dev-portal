@@ -24,6 +24,8 @@ If you don't [run your own `xrpld` server](../infrastructure/installation/index.
 | [QuickNode](https://www.quicknode.com/chains/xrpl) | Testnet/Mainnet | N/A | QuickNode provides hosted XRPL RPC mainnet and testnet under their free and paid plans, granting flexible and reliable access to the network.
 | [Chainstack](https://chainstack.com/build-better-with-xrp-ledger/) | Testnet/Mainnet | N/A | Chainstack provides hosted XRPL Mainnet and Testnet nodes with JSON-RPC and WebSocket access under its free and paid plans. The nodes keep recent ledger history, not full history. |
 
+For developers evaluating additional XRPL infrastructure options, [Chain.Love](https://xrpl.chain.love/toolbox/apis) provides a network-specific directory for discovering and comparing API providers. Check each provider's documentation for current network support, protocol availability, ledger-history coverage, rate limits, and pricing before selecting a service.
+
 
 ## Test Networks
 
