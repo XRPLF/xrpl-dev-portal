@@ -33,10 +33,10 @@ The `Loan` ledger entry is tracked in two [Owner Directories](./directorynode.md
   "LoanBrokerNode": 1,
   "LoanBrokerID": "ABCDEF1234567890ABCDEF1234567890ABCDEF1234567890ABCDEF1234567890",
   "Borrower": "rEXAMPLE9AbCdEfGhIjKlMnOpQrStUvWxYz",
-  "LoanOriginationFee": 100,
-  "LoanServiceFee": 10,
-  "LatePaymentFee": 5,
-  "ClosePaymentFee": 20,
+  "LoanOriginationFee": "100",
+  "LoanServiceFee": "10",
+  "LatePaymentFee": "5",
+  "ClosePaymentFee": "20",
   "OverpaymentFee": 5,
   "InterestRate": 500,
   "LateInterestRate": 1000,
@@ -48,10 +48,10 @@ The `Loan` ledger entry is tracked in two [Owner Directories](./directorynode.md
   "PreviousPaymentDueDate": 1234587890,
   "NextPaymentDueDate": 1234597890,
   "PaymentRemaining": 12,
-  "PrincipalOutstanding": 10000,
-  "TotalValueOutstanding": 12000,
-  "ManagementFeeOutstanding": 2000,
-  "PeriodicPayment": 1000
+  "PrincipalOutstanding": "10000",
+  "TotalValueOutstanding": "12000",
+  "ManagementFeeOutstanding": "2000",
+  "PeriodicPayment": "1000"
 }
 ```
 
@@ -80,13 +80,13 @@ In addition to the [common ledger entry fields][], {% code-page-name /%} entries
 | `StartDate`           | Number    | UInt32        | Yes       | The timestamp of when the loan started, in [seconds since the Ripple Epoch][]. |
 | `PaymentInterval`     | Number    | UInt32        | Yes       | The number of seconds between loan payments. |
 | `GracePeriod`         | Number    | UInt32        | Yes       | The number of seconds after a loan payment is due before the loan defaults. |
-| `PreviousPaymentDueDate` | Number    | UInt32        | Yes       | The timestamp of when the previous payment was made, in [seconds since the Ripple Epoch][]. |
+| `PreviousPaymentDueDate` | Number | UInt32        | Yes       | The timestamp of when the previous payment was made, in [seconds since the Ripple Epoch][]. |
 | `NextPaymentDueDate`  | Number    | UInt32        | Yes       | The timestamp of when the next payment is due, in [seconds since the Ripple Epoch][]. |
 | `PaymentRemaining`    | Number    | UInt32        | Yes       | The number of payments remaining on the loan. |
 | `PrincipalOutstanding` | String   | Number        | Yes       | The principal amount still owed on the loan. |
 | `TotalValueOutstanding` | String  | Number        | Yes       | The total amount owed on the loan, including remaining principal and fees. |
-| `ManagementFeeOutstanding` | String | Number      | Yes       | The remaining management fee owed to the loan broker. |
-| `PeriodicPayment`     | String    | Number        | Yes       | The amount due for each payment interval. |
+| `ManagementFeeOutstanding` | String | Number      | No        | The remaining management fee owed to the loan broker. Omitted when zero. |
+| `PeriodicPayment`     | String    | Number        | Yes       | The amount due for each payment interval, excluding the `LoanServiceFee`. This value is stored with full precision and can contain more decimal places than the loan's asset supports. To calculate the amount to pay, round decimals up to the next whole number (or to the loan's `LoanScale` for trust line tokens), then add the `LoanServiceFee`. The final payment is the remaining `TotalValueOutstanding` plus the `LoanServiceFee` instead. |
 | `LoanScale`           | Number    | Int32         | No        | The scale factor that ensures all computed amounts are rounded to the same number of decimal places. It is based on the total loan value at creation time. |
 
 {% admonition type="info" name="Note" %}
