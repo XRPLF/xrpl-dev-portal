@@ -89,7 +89,7 @@ const REPRESENTATIVE_PAGES = [
   '/blog',
   '/community',
   '/community/events',
-  '/community/developer-funding',
+  '/community/funding',
   '/develop',
   '/resources',
 
@@ -143,7 +143,7 @@ const REDESIGNED = [
   '/develop/',
   '/resources/',
   '/community/',
-  '/community/developer-funding',
+  '/community/funding',
   '/docs/use-cases/payments/',
   '/docs/use-cases/trading/',
   '/docs/use-cases/tokenization/',

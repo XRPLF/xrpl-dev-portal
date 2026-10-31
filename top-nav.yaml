@@ -136,7 +136,7 @@
     - group: Funding
       groupTranslationKey: topnav.community.funding
       items:
-        - page: ./community/developer-funding.page.tsx
+        - page: ./community/funding.page.tsx
           label: Developer Funding
           labelTranslationKey: topnav.community.developer-funding
     - group: Contribute
