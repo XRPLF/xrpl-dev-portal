@@ -371,12 +371,15 @@ Sustainability: 持続可能性
 Use the XRP Ledger to tokenize carbon offsets as non-fungible tokens (NFTs).: XRP Ledgerを使用して、カーボンオフセットをNFT(Non-Fungible Token)としてトークン化します。
 Custody: カストディ
 Use the XRP Ledger to build crypto custody and securely hold, store and use your assets.: XRP Ledgerを使用して暗号資産カストディを構築し、資産を安全に保持、保管、使用することができます。
-Join the XRPL Ecosystem and showcase your XRPL project, application, or product. Get featured on the Developer Reflections blog or Ecosystem page.: XRPLエコシステムに参加して、あなたのXRPLプロジェクト、アプリケーション、製品を紹介しましょう。開発者向けブログやエコシステムのページで紹介されます。
+Join the XRPL Ecosystem and showcase your XRPL project, application, or product. Get featured on the Developer Reflections blog.: XRPLエコシステムに参加して、あなたのXRPLプロジェクト、アプリケーション、製品を紹介しましょう。開発者向けブログで紹介されます。
 Submit Your Project: プロジェクトを登録
 about.uses.businesses.h3part1: XRP Ledgerを活用する
 about.uses.businesses.h3part2: プロジェクトと開発者
 Solving Real-World Problems: 実世界の問題の解決
 With intentional innovations, tools and documentation that accelerate development and minimize time to market, XRP Ledger is used to create solutions across an expansive range of industries and use cases.: XRP Ledgerは、開発を加速させ、市場投入までの時間を最短にするイノベーション、ツール、ドキュメントによって、幅広い業界やユースケースにおけるソリューションの構築に利用されています。
+about.uses.source-1: 掲載プロジェクトは
+about.uses.source-2: XRPL Commonsのエコシステムマップ
+about.uses.source-3: から取得しています。プロジェクトの追加や更新はマップから行えます。
 Filter by Categories: カテゴリで絞り込む
 Featured Categories: 注目のカテゴリ
 Other Categories: 他のカテゴリ
@@ -960,15 +963,7 @@ Everything You Need to Know: 全てはここに
 XRP Ledger address, transaction ID, or ledger index: XRP Ledgerアドレス、トランザクションID、またはレジャーインデックス
 Status: ステータス
 (loading): （ローディング中）
-Carbon Markets/Sustainability: 持続可能性
-Ledger City is a crypto real estate game powered by the XRP Ledger.: Ledger Cityは、XRP Ledgerを利用した暗号不動産ゲームです。
-Ripple's CBDC Platform: Ripple社のCBDC Platform\
-Ripple's On-Demand Liquidity: Ripple社のOn-Demand Liquidity
-XRPL Rosetta explores fiat data on XRPL through visualization.: XRPL Rosettaは、XRPL上のフィアットデータを可視化することで素晴らしさを追求します。
-XRPL.org's Ledger Explorer is a block explorer of the XRP Ledger.: XRPL.orgのLedger Explorerは、XRP Ledgerのブロックエクスプローラーです。
-Xaman is a non custodial wallet with superpower for the XRP Ledger.: Xamanは、XRP Ledgerのための最高能力を備えた非カストディアルウォレットです。
 Web Monetization: ウェブ収益化
-CBDCs: CBDC
 Cancel: キャンセル
 Proven Powerful for Innovation: イノベーションのための確かな実績
 XRPL Use Cases: XRPLのユースケース
