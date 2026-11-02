@@ -1,0 +1,670 @@
+// Styles for the Amendments page (amendments/index.page.tsx).
+// Dark is the default theme; html.light overrides the tokens below.
+// $font-family-monospace is the Tobias display face, so code uses its own stack.
+//
+// Stages still in progress (development, voting, majority) get filled pills
+// in one fill for both themes; Enabled gets an outline with a green check.
+
+$amd-code-font: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
+$amd-ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+
+.amd-page,
+.amd-panel-root {
+  --amd-bg: #{$black};
+  --amd-surface: #{$gray-800};
+  --amd-surface-hover: #{$gray-700};
+  --amd-line: #{$gray-600};
+  --amd-line-strong: #{$gray-500};
+  --amd-fg: #{$white};
+  --amd-muted: #{$gray-300};
+  --amd-subtle: #{$gray-400};
+  --amd-track: #{$gray-700};
+  --amd-focus: #{$white};
+  --amd-enabled: #{$green-300};
+  --amd-majority: #{$yellow-300};
+  --amd-voting: #{$lilac-300};
+  --amd-development: #{$blue-200};
+  --amd-on-fill: #{$black};
+  --amd-bar: #{$lilac-300};
+}
+
+html.light {
+  .amd-page,
+  .amd-panel-root {
+    --amd-bg: #{$white};
+    --amd-surface: #{$gray-100};
+    --amd-surface-hover: #{$gray-200};
+    --amd-line: #{$gray-300};
+    --amd-line-strong: #{$gray-400};
+    --amd-fg: #{$black};
+    --amd-muted: #{$gray-600};
+    --amd-subtle: #{$gray-600};
+    --amd-track: #{$gray-200};
+    --amd-focus: #{$black};
+    --amd-enabled: #{$green-500};
+    --amd-bar: #{$lilac-400};
+  }
+}
+
+// Inside raised surfaces the subtle gray drops below 4.5:1, so use muted.
+.amd-feature {
+  --amd-subtle: var(--amd-muted);
+}
+
+.amd-page {
+  color: var(--amd-fg);
+  padding-bottom: 112px;
+
+  :is(a, button):focus-visible {
+    outline: 2px solid var(--amd-focus);
+    outline-offset: 2px;
+  }
+}
+
+// Cards are plain anchors that open the panel. Scoped under the page so the
+// light theme's anchor color rule does not win.
+.amd-page a.amd-feature,
+.amd-page a.amd-feature:hover {
+  color: var(--amd-fg);
+  text-decoration: none;
+}
+
+.amd-eyebrow {
+  color: var(--amd-subtle);
+  margin: 0 0 16px;
+}
+
+// Hero ---------------------------------------------------------------------
+.amd-hero {
+  padding-top: 64px;
+
+  @include media-breakpoint-up(lg) {
+    padding-top: 112px;
+  }
+}
+
+.amd-hero__title {
+  margin: 0 0 24px;
+}
+
+.amd-hero__lead {
+  color: var(--amd-muted);
+  max-width: 720px;
+  margin: 0;
+}
+
+.amd-hero__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  margin: 24px 0 0;
+
+  a {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+}
+
+.amd-section {
+  padding-top: 56px;
+
+  @include media-breakpoint-up(lg) {
+    padding-top: 80px;
+  }
+}
+
+.amd-attribution {
+  margin: 32px 0 0;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--amd-muted);
+
+  a {
+    text-decoration: underline;
+  }
+}
+
+// Filter chips -----------------------------------------------------------------
+.amd-chips {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+
+  // One scrollable row on phones instead of wrapped rows.
+  @media (max-width: 575.98px) {
+    overflow-x: auto;
+    scrollbar-width: none;
+    margin-right: -16px;
+    padding-right: 16px;
+
+    > * {
+      flex-shrink: 0;
+    }
+  }
+}
+
+.amd-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border: 1px solid var(--amd-line-strong);
+  border-radius: 999px;
+  background: none;
+  color: var(--amd-fg);
+  font: inherit;
+  font-size: 14px;
+  line-height: 20px;
+  cursor: pointer;
+
+  &:hover {
+    border-color: var(--amd-fg);
+  }
+
+  &.is-active {
+    background: var(--amd-fg);
+    border-color: var(--amd-fg);
+    color: var(--amd-bg);
+  }
+}
+
+.amd-chip__count {
+  font-variant-numeric: tabular-nums;
+  opacity: 0.7;
+}
+
+// Status pill ----------------------------------------------------------------
+.amd-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 10px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  font-size: 14px;
+  line-height: 18px;
+  white-space: nowrap;
+}
+
+.amd-pill--small {
+  padding: 1px 8px;
+}
+
+.amd-pill--development { background: var(--amd-development); color: var(--amd-on-fill); }
+.amd-pill--voting { background: var(--amd-voting); color: var(--amd-on-fill); }
+.amd-pill--majority { background: var(--amd-majority); color: var(--amd-on-fill); }
+
+.amd-pill--enabled {
+  border-color: var(--amd-line-strong);
+  color: var(--amd-fg);
+}
+
+.amd-pill__check {
+  color: var(--amd-enabled);
+}
+
+// Feature cards ------------------------------------------------------------------
+.amd-features {
+  row-gap: 24px;
+}
+
+.amd-feature {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  height: 100%;
+  padding: 24px;
+  background: var(--amd-surface);
+  transition: background-color 0.2s $amd-ease;
+
+  &:hover {
+    background: var(--amd-surface-hover);
+  }
+
+  &:hover .amd-feature__arrow {
+    @include bds-icon-engaged;
+  }
+
+  // Phones get a compact card: no stage bars.
+  @media (max-width: 575.98px) {
+    padding: 20px;
+
+    .amd-stages {
+      display: none;
+    }
+  }
+}
+
+.amd-feature__top {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.amd-feature__xls {
+  font-size: 14px;
+  color: var(--amd-subtle);
+  white-space: nowrap;
+}
+
+.amd-feature__title {
+  margin: 4px 0 0;
+}
+
+.amd-feature__summary {
+  color: var(--amd-muted);
+  flex: 1;
+}
+
+.amd-stages {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4px;
+  margin-top: 8px;
+}
+
+.amd-stages__step {
+  --amd-c: var(--amd-fg);
+  display: block;
+  height: 4px;
+  background: var(--amd-track);
+
+  &.is-development { --amd-c: var(--amd-development); }
+  &.is-voting { --amd-c: var(--amd-voting); }
+  &.is-majority { --amd-c: var(--amd-majority); }
+  &.is-enabled { --amd-c: var(--amd-enabled); }
+
+  &.is-done {
+    background: var(--amd-muted);
+  }
+
+  &.is-current {
+    background: var(--amd-c);
+  }
+}
+
+.amd-feature__foot {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 8px;
+  padding-top: 16px;
+  border-top: 1px solid var(--amd-line);
+}
+
+.amd-feature__more {
+  font-size: 14px;
+  color: var(--amd-subtle);
+}
+
+.amd-feature__arrow {
+  margin-left: auto;
+  font-size: 20px;
+}
+
+// Side panel -----------------------------------------------------------------
+.amd-panel-root {
+  position: fixed;
+  inset: 0;
+  z-index: 1050;
+  color: var(--amd-fg);
+
+  code {
+    font-family: $amd-code-font;
+    background: none;
+    padding: 0;
+  }
+
+  :is(a, button):focus-visible {
+    outline: 2px solid var(--amd-focus);
+    outline-offset: 2px;
+  }
+}
+
+.amd-panel__scrim {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  animation: amd-fade 0.2s ease-out;
+}
+
+.amd-panel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 600px;
+  background: var(--amd-bg);
+  border-left: 1px solid var(--amd-line);
+  box-shadow: -24px 0 48px rgba(0, 0, 0, 0.35);
+  animation: amd-slide 0.3s $amd-ease;
+}
+
+@keyframes amd-fade {
+  from { opacity: 0; }
+}
+
+@keyframes amd-slide {
+  from { transform: translateX(32px); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .amd-panel,
+  .amd-panel__scrim {
+    animation: none;
+  }
+}
+
+.amd-panel__head {
+  position: relative;
+  padding: 24px 24px 20px;
+  border-bottom: 1px solid var(--amd-line);
+
+  @include media-breakpoint-up(lg) {
+    padding: 32px 32px 24px;
+  }
+}
+
+.amd-panel__eyebrow {
+  font-size: 14px;
+  color: var(--amd-subtle);
+  padding-right: 56px;
+}
+
+.amd-panel__close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--amd-line);
+  border-radius: 50%;
+  background: none;
+  color: var(--amd-fg);
+  cursor: pointer;
+
+  &:hover {
+    border-color: var(--amd-fg);
+  }
+
+  @include media-breakpoint-up(lg) {
+    top: 24px;
+    right: 24px;
+  }
+}
+
+.amd-panel__title {
+  margin: 8px 0 12px;
+}
+
+.amd-panel__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 14px;
+}
+
+.amd-panel__name {
+  font-size: 14px;
+  color: var(--amd-muted);
+}
+
+.amd-panel__body {
+  flex: 1;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 24px;
+
+  @include media-breakpoint-up(lg) {
+    padding: 28px 32px 40px;
+  }
+}
+
+.amd-panel__summary {
+  margin: 0;
+  font-size: 18px;
+  line-height: 26px;
+}
+
+.amd-panel__desc {
+  margin: 12px 0 0;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--amd-muted);
+}
+
+.amd-panel__section {
+  margin-top: 32px;
+}
+
+.amd-panel__h {
+  margin: 0 0 12px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  color: var(--amd-subtle);
+}
+
+// Key dates ------------------------------------------------------------------------
+.amd-dates {
+  padding: 20px 20px 4px;
+  background: var(--amd-surface);
+  --amd-subtle: var(--amd-muted);
+}
+
+.amd-steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.amd-steps__item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 20px 1fr;
+  grid-template-areas:
+    "dot label"
+    "dot date";
+  column-gap: 12px;
+  padding-bottom: 18px;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 5px;
+    top: 14px;
+    bottom: -2px;
+    width: 1px;
+    background: var(--amd-line-strong);
+  }
+
+  &:last-child::before {
+    display: none;
+  }
+}
+
+.amd-steps__dot {
+  grid-area: dot;
+  position: relative;
+  z-index: 1;
+  width: 11px;
+  height: 11px;
+  margin-top: 5px;
+  border: 1px solid var(--amd-line-strong);
+  border-radius: 50%;
+  background: var(--amd-surface);
+}
+
+.amd-steps__item.is-done .amd-steps__dot {
+  background: var(--amd-enabled);
+  border-color: var(--amd-enabled);
+}
+
+.amd-steps__item.is-current .amd-steps__dot {
+  background: var(--amd-fg);
+  border-color: var(--amd-fg);
+  box-shadow: 0 0 0 3px var(--amd-surface), 0 0 0 4px var(--amd-fg);
+}
+
+.amd-steps__label {
+  grid-area: label;
+  font-size: 16px;
+  line-height: 22px;
+}
+
+.amd-steps__item.is-upcoming .amd-steps__label {
+  color: var(--amd-muted);
+}
+
+.amd-steps__date {
+  grid-area: date;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--amd-muted);
+
+  a,
+  a:hover {
+    color: inherit;
+    text-decoration: underline;
+  }
+}
+
+.amd-consensus {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-top: 2px;
+}
+
+.amd-consensus__bar {
+  position: relative;
+  display: block;
+  height: 6px;
+  max-width: 320px;
+  background: var(--amd-track);
+}
+
+.amd-consensus__fill {
+  display: block;
+  height: 100%;
+  background: var(--amd-bar);
+}
+
+.amd-consensus__mark {
+  position: absolute;
+  top: -3px;
+  bottom: -3px;
+  width: 2px;
+  margin-left: -1px;
+  background: var(--amd-fg);
+}
+
+// Resources ------------------------------------------------------------------------
+.amd-resources {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--amd-line);
+}
+
+.amd-panel-root a.amd-resource,
+.amd-panel-root a.amd-resource:hover {
+  display: grid;
+  grid-template-columns: 92px 1fr auto;
+  align-items: start;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--amd-line);
+  color: var(--amd-fg);
+  text-decoration: none;
+}
+
+.amd-panel-root a.amd-resource:hover {
+  .amd-resource__title {
+    text-decoration: underline;
+  }
+
+  .amd-resource__icon {
+    @include bds-icon-engaged;
+  }
+}
+
+.amd-resource__kind {
+  justify-self: start;
+  padding: 1px 8px;
+  border: 1px solid var(--amd-line-strong);
+  border-radius: 999px;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--amd-muted);
+}
+
+.amd-resource__text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.amd-resource__title {
+  font-size: 16px;
+  line-height: 22px;
+}
+
+.amd-resource__desc {
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--amd-subtle);
+}
+
+.amd-resource__icon {
+  font-size: 18px;
+  margin-top: 2px;
+}
+
+.amd-panel-root .amd-resource__github {
+  display: inline-block;
+  margin: -6px 0 12px 108px;
+  font-size: 14px;
+  color: var(--amd-muted);
+}
+
+.amd-panel-root .amd-resources--compact a.amd-resource {
+  padding: 12px 0;
+}
+
+@media (max-width: 575.98px) {
+  .amd-panel-root a.amd-resource,
+  .amd-panel-root a.amd-resource:hover {
+    grid-template-columns: 1fr auto;
+    gap: 8px 12px;
+  }
+
+  .amd-resource__kind {
+    grid-column: 1 / -1;
+  }
+
+  .amd-panel-root .amd-resource__github {
+    margin-left: 0;
+  }
+}
+
+.amd-panel__source {
+  margin: 40px 0 0;
+  font-size: 14px;
+  line-height: 22px;
+  color: var(--amd-subtle);
+
+  a,
+  a:hover {
+    color: inherit;
+    text-decoration: underline;
+  }
+}

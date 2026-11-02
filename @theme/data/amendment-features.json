@@ -1,0 +1,1298 @@
+{
+  "fetched_at": "2026-11-02T03:13:07Z",
+  "dunl": {
+    "newest_ledger": 108058444,
+    "validators": [
+      {
+        "master_key": "nHBWa56Vr7csoFcCnEPzCCKVvnDQw3L28mATgHYQMGtbEfUjuYyB",
+        "signing_key": "n94a894ARPe5RdcaRgdMBB9gG9ukS5mqsd7q2oNmC1NKqtZqEJnb",
+        "last_seen": 108058444
+      },
+      {
+        "master_key": "nHBidG3pZK11zQD6kpNDoAhDxH6WLGui6ZxSbUx7LSqLHsgzMPec",
+        "signing_key": "n9KaxgJv69FucW5kkiaMhCqS6sAR1wUVxpZaZmLGVXxAcAse9YhR",
+        "last_seen": 108058444
+      },
+      {
+        "master_key": "nHUryiyDqEtyWVtFG24AAhaYjMf9FRLietbGzviF3piJsMm9qyDR",
+        "signing_key": "n9JCsBDizMDQWSjtHycVM8Uyp7S4eVxqViKeHmhJHPstJ6qwBedK",
+        "last_seen": 108058443
+      },
+      {
+        "master_key": "nHUfxETNHsA9reyYCVYwNztEbifMg6U9YUdcgVvzMwGNpphKSSf6",
+        "signing_key": "n9KRttNtSJ2NHX7P2RkoYpqf2cxhDfkcGCFswarLqHdjjfjPJFJB",
+        "last_seen": 108058443
+      },
+      {
+        "master_key": "nHUDpRzvY8fSRfQkmJMqjmVSaFmMEVxBNn2tNQy5VAhFJ6is6GFk",
+        "signing_key": "n9MxDjQMr1DkzW3Z5X1guKJq4QNDEeYFPgqGgHfpzerGbHWGZvj4",
+        "last_seen": 108058443
+      },
+      {
+        "master_key": "nHULqGBkJtWeNFjhTzYeAsHA3qKKS7HoBh8CV3BAGTGMZuepEhWC",
+        "signing_key": "n9MZ7EVGKypqdyNguP31xSqhFqDBF4V5FESLMmLiGrBJ3khP2AzQ",
+        "last_seen": 108058443
+      },
+      {
+        "master_key": "nHUbgDd63HiuP68VRWazKwZRzS61N37K3NbfQaZLhSQ24LGGmjtn",
+        "signing_key": "n94npttJE5zwQo4DvjaeENKFbb4cnKAkQ54ZQ5CSUMKGuwDnwbmC",
+        "last_seen": 108058444
+      },
+      {
+        "master_key": "nHDH7bQJpVfDhVSqdui3Z8GPvKEBQpo6AKHcnXe21zoD4nABA6xj",
+        "signing_key": "n9MSTcx1fmfyKpaDTtpXucugcqM7yxpaggmwRxcyA3Nr4pE1pN3x",
+        "last_seen": 108058444
+      },
+      {
+        "master_key": "nHUFCyRCrUjvtZmKiLeF8ReopzKuUoKeDeXo3wEUBVSaawzcSBpW",
+        "signing_key": "n9JyJtfqKVAJz7C8mszr9eLii4XsMY252X3Su71PqM7C1JCgGEbg",
+        "last_seen": 108058444
+      },
+      {
+        "master_key": "nHB8QMKGt9VB4Vg71VszjBVQnDW3v3QudM4DwFaJfy96bj4Pv9fA",
+        "signing_key": "n9KeTQ3UyMtaJJD78vT7QiGRMv1GcWHEnhNbwKfdbW2HfRqtvUUt",
+        "last_seen": 108058443
+      },
+      {
+        "master_key": "nHBVACxZaNbUjZZkBfj7gRxF3xgG2vbcP4m48KzVwntdTogi5Tfs",
+        "signing_key": "n94rGrfuwvYTS1HEeWboW2nGvAQgVDpiD8id2pLWSHFVggBRpQRE",
+        "last_seen": 108058444
+      },
+      {
+        "master_key": "nHBgyVGAEhgU6GoEqoriKmkNBjzhy6WJhX9Z7cZ71yJbv28dzvVN",
+        "signing_key": "n9LbPrCy3SC2n6YsxYd7MAABKptTbrk4kNQYKQKc3PWphUWNRPXS",
+        "last_seen": 108058444
+      },
+      {
+        "master_key": "nHUwGQrfZfieeLFeGRdGnAmGpHBCZq9wvm5c59wTc2JhJMjoXmd8",
+        "signing_key": "n9LabXG8Vo7SfrUcZudeDCuFvWXW5TXbhUSYwgqmgYMFpUYuMN87",
+        "last_seen": 108058444
+      },
+      {
+        "master_key": "nHUVPzAmAmQ2QSc4oE1iLfsGi17qN2ado8PhxvgEkou76FLxAz7C",
+        "signing_key": "n9JeA5Q54JhUQYHieb2j7ZTCg9RTBagDkam3UP2kWQxTXfxFkA8R",
+        "last_seen": 108058443
+      },
+      {
+        "master_key": "nHUY14bKLLm72ukzo2t6AVnQiu4bCd1jkimwWyJk3txvLeGhvro5",
+        "signing_key": "n9M2UqXLK25h9YEQTskmCXbWPGhQmB1pFVqeXia38UwLaL838VbG",
+        "last_seen": 108058444
+      },
+      {
+        "master_key": "nHU2k8Po4dgygiQUG8wAADMk9RqkrActeKwsaC9MdtJ9KBvcpVji",
+        "signing_key": "n9MhLZsK7Av6ny2gV5SAGLDsnFXE9p85aYR8diD8xvuvuucqad85",
+        "last_seen": 108058444
+      },
+      {
+        "master_key": "nHUge3GFusbqmfYAJjxfKgm2j4JXGxrRsfYMcEViHrFSzQDdk5Hq",
+        "signing_key": "n9LL7K3Ubnob3ExqmgpigL3AgzKKhTaVvnZiXqsvz85VjbY3KqFp",
+        "last_seen": 108058444
+      },
+      {
+        "master_key": "nHDB2PAPYqF86j9j3c6w1F1ZqwvQfiWcFShZ9Pokg9q4ohNDSkAz",
+        "signing_key": "n9Jk38y9XCznqiLq53UjREJQbZWnz4Pvmph55GP5ofUPg3RG8eVr",
+        "last_seen": 108058444
+      },
+      {
+        "master_key": "nHUrUNXCy4DgPPNABX9C6mUctpoq7CwgLKAUxjw6zYtTfiqsj1ew",
+        "signing_key": "n9KcrNBzrJUhdujcP8PK57WAmaZKcyXTNRaUFnqBmxwQj18eu3LU",
+        "last_seen": 108058443
+      },
+      {
+        "master_key": "nHUP4RcLQdPHh3kMtFm9NFGnjEYLGXiQAyyB7qFsjATHMw2YVxHi",
+        "signing_key": "n9KkK4BiTTXjeF31KX4fTJkyVtH89ik4apq4wF7sQzqmbqBYcU3H",
+        "last_seen": 108058444
+      },
+      {
+        "master_key": "nHUdjQgg33FRu88GQDtzLWRw95xKnBurUZcqPpe3qC9XVeBNrHeJ",
+        "signing_key": "n94RkpbJYRYQrWUmL8PAVQ1XTVKtfyKkLm8C6SWzWPcKEbuNb6EV",
+        "last_seen": 108058444
+      },
+      {
+        "master_key": "nHUfPizyJyhAJZzeq3duRVrZmsTZfcLn7yLF5s2adzHdcHMb9HmQ",
+        "signing_key": "n9MngHUqEeJXd8cgeEGsjvm9FqQRm4DwhCrTYCtrfnm5FWGFaR6m",
+        "last_seen": 108058444
+      },
+      {
+        "master_key": "nHUvcCcmoH1FJMMC6NtF9KKA4LpCWhjsxk2reCQidsp5AHQ7QY9H",
+        "signing_key": "n9KQ2DVL7QhgovChk81W8idxm7wDsYzXutDMQzwUBKuxb9WTWBVG",
+        "last_seen": 108058443
+      },
+      {
+        "master_key": "nHU3AenyRuJ4Yei4YHkh6frZg8y2RwXznkMAomUE1ptV5Spvqsih",
+        "signing_key": "n9JgxBLdCHii4xnRNMk7WJhD2qmfJGRvCxmmNNivBZXPRVpeZkH3",
+        "last_seen": 108058444
+      },
+      {
+        "master_key": "nHDHzXZKtmMHCkTVgdWY4dqdigDrESiseUF8JkzE93DUtfbt6s3W",
+        "signing_key": "n9LY8MFrFKudddAjrs3BZ33SwqCypV4aYqP7sH3VKgaJSz3aJUwL",
+        "last_seen": 108058443
+      },
+      {
+        "master_key": "nHUXeusfwk61c4xJPneb9Lgy7Ga6DVaVLEyB29ftUdt9k2KxD6Hw",
+        "signing_key": "n9McDrz9tPujrQK3vMXJXzuEJv1B8UG3opfZEsFA8t6QxdZh1H6m",
+        "last_seen": 108058443
+      },
+      {
+        "master_key": "nHU4bLE3EmSqNwfL4AP1UZeTNPrSPPP6FXLKXo2uqfHuvBQxDVKd",
+        "signing_key": "n9LbM9S5jeGopF5J1vBDoGxzV6rNS8K1T5DzhNynkFLqR9N2fywX",
+        "last_seen": 108058444
+      },
+      {
+        "master_key": "nHUED59jjpQ5QbNhesXMhqii9gA8UfbBmv3i5StgyxG98qjsT4yn",
+        "signing_key": "n9Km4Xz53K9kcTaVn3mYAHsXqNuAo7A2HazSr34SFufvNwBxYGLn",
+        "last_seen": 108058444
+      },
+      {
+        "master_key": "nHUcNC5ni7XjVYfCMe38Rm3KQaq27jw7wJpcUYdo4miWwpNePRTw",
+        "signing_key": "n9Lo7qSD4qwjoMLFE5jDJihJG7r1VXqDpEgRjWfxgukqdbojBnkv",
+        "last_seen": 108058444
+      },
+      {
+        "master_key": "nHUUgpUVNxXfxkkoyh2QDjfLfHapcut8gYwKeShnJYd3SdPui19A",
+        "signing_key": "n9KkB2VrSQuRNF1KpaS7G9i6yz7pinN4XAoREhqKya2aWirjcEXz",
+        "last_seen": 108058444
+      },
+      {
+        "master_key": "nHUxjxKPeErbN7pNk9UWA5Ee7ZPMtesSeRGJtmdqkTxe94tqM2YX",
+        "signing_key": "n9LkWXS9HEY9adzT4y4J4Fbc1EFpKfuLf1gj2sTAktgZRukJcFiS",
+        "last_seen": 108058443
+      },
+      {
+        "master_key": "nHUKgFa4diHC9sN7YnVt4AUPGkaHtShrT76xJBUFdH2B5Tz5nwVQ",
+        "signing_key": "n9M5q9FaYgrBYSU5TuV3tATpy1DuAFKdtdjufDAzWUGXLKr3Trfq",
+        "last_seen": 108058444
+      },
+      {
+        "master_key": "nHUHeq3QdVyLTUENPHAAJ1d5M1SbvY49rajs31mJS8CEfrvTfjn3",
+        "signing_key": "n9KToXL6QaiMMDJWEpnJg5yt26nEoftNnkLjaJYLCikdfaveR2hr",
+        "last_seen": 108058443
+      },
+      {
+        "master_key": "nHUinfdpmtfXsMUnoSoBeZ93mTwDkPkA2gmCiQTyEi1c1Ybx6unE",
+        "signing_key": "n94JBmHVjAFvpH7UA9YSPwUdZjG93LwTVgN4zzZkhRdkVmP71jBz",
+        "last_seen": 108058444
+      },
+      {
+        "master_key": "nHUZRwL96AD7by5icnptu22KGbvDcN9pExAYwtMj1cpY2dsRfC4K",
+        "signing_key": "n9MkZiiEddwZc25NNknh8XZ66R4hQCW7CR665CVyA2BhSGE3mZzx",
+        "last_seen": 108058444
+      }
+    ]
+  },
+  "features": [
+    {
+      "slug": "xls-100-smart-escrows",
+      "xls": "XLS-100",
+      "title": "Smart Escrows",
+      "summary": "Create escrows with custom, programmable release conditions.",
+      "description": "The Smart Escrows amendment introduces a new programmability layer to the XRPL, powered by a WebAssembly (WASM) engine. Developers can write custom functions that control when an escrow can be finished.",
+      "xls_spec_date": "2025-09-26",
+      "devnet_date": null,
+      "fixed_dates": [],
+      "source_url": "https://opensource.ripple.com/docs/xls-100-smart-escrows",
+      "resources": [
+        {
+          "title": "XLS Spec",
+          "kind": "spec",
+          "url": "https://xls.xrpl.org/xls/XLS-0100-smart-escrows.html",
+          "text": "Technical spec for the feature outlining requirements, design, and implementation details, currently in review."
+        },
+        {
+          "title": "Docs",
+          "kind": "concept",
+          "url": "https://opensource.ripple.com/docs/xls-100-smart-escrows/concepts/programmability",
+          "text": "Documentation on the feature, including how it works and why."
+        },
+        {
+          "title": "WASM Developer Docs",
+          "kind": "concept",
+          "url": "https://ripple.github.io/xrpl-wasm-stdlib/xrpl_common_stdlib/guide/index.html",
+          "text": "Docs for developing custom smart functions in Rust using the XRPL WASM standard library."
+        }
+      ],
+      "subpages": [
+        {
+          "title": "Programmability",
+          "url": "https://opensource.ripple.com/docs/xls-100-smart-escrows/concepts/programmability"
+        },
+        {
+          "title": "Fee Voting",
+          "url": "https://opensource.ripple.com/docs/xls-100-smart-escrows/concepts/fee-voting"
+        },
+        {
+          "title": "Escrow",
+          "url": "https://opensource.ripple.com/docs/xls-100-smart-escrows/references/escrow-entry"
+        },
+        {
+          "title": "FeeSettings",
+          "url": "https://opensource.ripple.com/docs/xls-100-smart-escrows/references/feesettings"
+        },
+        {
+          "title": "EscrowCreate",
+          "url": "https://opensource.ripple.com/docs/xls-100-smart-escrows/references/escrowcreate"
+        },
+        {
+          "title": "EscrowFinish",
+          "url": "https://opensource.ripple.com/docs/xls-100-smart-escrows/references/escrowfinish"
+        },
+        {
+          "title": "SetFee",
+          "url": "https://opensource.ripple.com/docs/xls-100-smart-escrows/references/setfee"
+        }
+      ],
+      "amendment": "SmartEscrow"
+    },
+    {
+      "slug": "xls-96-confidential-transfers",
+      "xls": "XLS-96",
+      "title": "Confidential Transfers",
+      "summary": "Private auditable transactions for Multi-Purpose Tokens (MPTs).",
+      "description": "",
+      "xls_spec_date": "2026-01-15",
+      "devnet_date": "2025-12-01",
+      "fixed_dates": [],
+      "source_url": "https://opensource.ripple.com/docs/xls-96-confidential-transfers",
+      "resources": [
+        {
+          "title": "XLS Spec",
+          "kind": "spec",
+          "url": "https://xls.xrpl.org/xls/XLS-0096-confidential-mpt.html",
+          "text": "Technical spec for the feature outlining requirements, design, and implementation details."
+        },
+        {
+          "title": "Concepts",
+          "kind": "concept",
+          "url": "https://xrpl.org/docs/concepts/tokens/fungible-tokens/confidential-transfers",
+          "text": "Documentation on the feature, including how it works and why."
+        },
+        {
+          "title": "Security Audit",
+          "kind": "audit",
+          "url": "https://trailofbits.com/library/ripple-labs-xrp-ledger-confidential-transfer/",
+          "text": "The security audit performed by third-party security experts, including a link to the full, detailed security audit report."
+        }
+      ],
+      "subpages": [],
+      "amendment": "ConfidentialTransfer"
+    },
+    {
+      "slug": "xls-94-dynamic-mpts",
+      "xls": "XLS-94",
+      "title": "Dynamic MPTs",
+      "summary": "Issue Multi-Purpose Tokens with modifiable properties.",
+      "description": "The Dynamic MPT amendment extends Multi-Purpose Tokens to allow issuers to designate specific properties as mutable during token creation, enabling selected attributes to be updated later as business needs change.",
+      "xls_spec_date": "2025-09-06",
+      "devnet_date": null,
+      "fixed_dates": [],
+      "source_url": "https://opensource.ripple.com/docs/xls-94-dynamic-mpts",
+      "resources": [
+        {
+          "title": "XLS Spec",
+          "kind": "spec",
+          "url": "https://xls.xrpl.org/xls/XLS-0094-dynamic-MPT.html",
+          "text": "Technical spec for the feature outlining requirements, design, and implementation details."
+        },
+        {
+          "title": "Concepts",
+          "kind": "concept",
+          "url": "https://xrpl.org/docs/concepts/tokens/fungible-tokens/mutable-mpts",
+          "text": "Documentation on the feature, including how it works and why."
+        }
+      ],
+      "subpages": [],
+      "amendment": "DynamicMPT"
+    },
+    {
+      "slug": "xls-85-token-escrow",
+      "xls": "XLS-85",
+      "title": "Token Escrow",
+      "summary": "Token escrow supports both XRP and tokenized assets.",
+      "description": "Token escrow supports both XRP and tokenized assets.",
+      "xls_spec_date": "2025-02-26",
+      "devnet_date": "2025-06-04",
+      "fixed_dates": [],
+      "source_url": "https://opensource.ripple.com/docs/xls-85-token-escrow",
+      "resources": [
+        {
+          "title": "XLS Spec",
+          "kind": "spec",
+          "url": "https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0085-token-escrow",
+          "text": "Technical spec for the feature outlining requirements, design, and implementation details."
+        },
+        {
+          "title": "Concepts",
+          "kind": "concept",
+          "url": "https://xrpl.org/docs/concepts/payment-types/escrow",
+          "text": "Documentation on the feature, including how it works and why."
+        },
+        {
+          "title": "Blog",
+          "kind": "blog",
+          "url": "https://dev.to/dangell7/xrpl-token-escrow-features-benefits-and-getting-started-2ogi",
+          "text": "An overview of the feature and why it matters to institutional issuers, explained in a Ripple blog post."
+        },
+        {
+          "title": "Tutorials",
+          "kind": "tutorial",
+          "url": "https://xrpl.org/docs/tutorials/payments/send-fungible-token-escrows",
+          "text": "Follow step-by-step tutorials to start building."
+        },
+        {
+          "title": "Security Audit",
+          "kind": "audit",
+          "url": "https://dev.to/ripplexdev/token-escrow-security-audit-findings-39hn",
+          "text": "The security audit performed by third-party security experts, including a link to the full, detailed security audit report."
+        },
+        {
+          "title": "QA Test Report",
+          "kind": "qa",
+          "url": "https://dev.to/ripplexdev/token-escrow-qa-test-report-306i",
+          "text": "The QA Test Report presents results of QA testing performed on the feature across rippled and Clio servers."
+        }
+      ],
+      "subpages": [],
+      "amendment": "TokenEscrow"
+    },
+    {
+      "slug": "xls-82-mpt-dex",
+      "xls": "XLS-82",
+      "title": "MPT DEX Integration",
+      "summary": "Trade Multi-Purpose Tokens on the XRP Ledger's decentralized exchange.",
+      "description": "The MPT DEX Integration amendment extends the XRPL's decentralized exchange to natively support Multi-Purpose Tokens (MPTs) as a tradeable asset class. MPTs can be paired with XRP, trust line tokens, or other MPTs across existing DEX transactions such as OfferCreate, Payment, AMM, and Checks.",
+      "xls_spec_date": "2024-09-19",
+      "devnet_date": null,
+      "fixed_dates": [],
+      "source_url": "https://opensource.ripple.com/docs/xls-82-mpt-dex",
+      "resources": [
+        {
+          "title": "XLS Spec",
+          "kind": "spec",
+          "url": "https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0082-mpt-dex",
+          "text": "Technical spec for the feature outlining requirements, design, and implementation details."
+        }
+      ],
+      "subpages": [],
+      "amendment": "MPTokensV2"
+    },
+    {
+      "slug": "xls-81-permissioned-dexes",
+      "xls": "XLS-81",
+      "title": "Permissioned DEXes",
+      "summary": "Trade in controlled environments within the XRPL's decentralized exchange.",
+      "description": "Permissioned DEXes use Permissioned Domains (XLS-80) to enable on-chain trading within controlled environments where every participant holds specific credentials, allowing institutions to ensure that they're complying with financial regulations while trading in the XRPL's decentralized exchange.",
+      "xls_spec_date": "2024-12-06",
+      "devnet_date": "2025-05-31",
+      "fixed_dates": [],
+      "source_url": "https://opensource.ripple.com/docs/xls-81-permissioned-dexes",
+      "resources": [
+        {
+          "title": "XLS Spec",
+          "kind": "spec",
+          "url": "https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0081-permissioned-dex",
+          "text": "Technical spec for the feature outlining requirements, design, and implementation details."
+        },
+        {
+          "title": "Docs",
+          "kind": "concept",
+          "url": "https://xrpl.org/docs/concepts/tokens/decentralized-exchange/permissioned-dexes",
+          "text": "Documentation on the feature, including how it works and why."
+        },
+        {
+          "title": "Blog",
+          "kind": "blog",
+          "url": "https://ripple.com/insights/unlocking-institutional-access-to-defi-on-the-xrp-ledger/",
+          "text": "An overview of the feature and why it matters to institutional issuers, explained in a Ripple blog post."
+        },
+        {
+          "title": "Security Audit",
+          "kind": "audit",
+          "url": "https://github.com/fyeo-io/public-audit-reports/blob/main/Code%20Audit%20Reports/2025/Ripple/Ripple%20-%20Security%20Code%20Review%20of%20XRPL%20Permissioned%20DEX%20v1.0.pdf",
+          "text": "The security audit performed by third-party security experts, including a link to the full, detailed security audit report."
+        },
+        {
+          "title": "Performance Testing",
+          "kind": "performance",
+          "url": "https://dev.to/ripplexdev/permissioned-dex-performance-test-report-ok0",
+          "text": "The performance testing report to assess the performance implications of the feature."
+        },
+        {
+          "title": "QA Test Report",
+          "kind": "qa",
+          "url": "https://dev.to/ripplexdev/permissioned-dex-qa-test-report-ajp",
+          "text": "The QA Test Report presents results of QA testing performed on the feature across rippled and Clio servers."
+        }
+      ],
+      "subpages": [],
+      "amendment": "PermissionedDEX"
+    },
+    {
+      "slug": "xls-80-permissioned-domains",
+      "xls": "XLS-80",
+      "title": "Permissioned Domains",
+      "summary": "Enabling controlled environments within the broader XRPL blockchain ecosystem.",
+      "description": "Permissioned domains are controlled environments within the broader ecosystem of the XRP Ledger blockchain. Domains do nothing on their own. However, they enable other features such as Permissioned DEXes and Lending Protocols to restrict access, thereby enabling compliance on chain.",
+      "xls_spec_date": "2024-10-20",
+      "devnet_date": "2025-02-15",
+      "fixed_dates": [
+        {
+          "date": "Oct 20, 2024",
+          "event": "XLS Spec Live"
+        },
+        {
+          "date": "Feb 15, 2025",
+          "event": "Available to Test on Devnet"
+        },
+        {
+          "date": "Mar 6, 2025 (2.4.0)",
+          "event": "Open for Voting on Mainnet"
+        },
+        {
+          "date": "Enabled Feb 4, 2026",
+          "event": "Vote Consensus"
+        }
+      ],
+      "source_url": "https://opensource.ripple.com/docs/xls-80-permissioned-domains",
+      "resources": [
+        {
+          "title": "XLS Spec",
+          "kind": "spec",
+          "url": "https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0080-permissioned-domains",
+          "text": "Technical spec for the feature outlining requirements, design, and implementation details."
+        },
+        {
+          "title": "Concepts",
+          "kind": "concept",
+          "url": "https://xrpl.org/docs/concepts/tokens/decentralized-exchange/permissioned-domains",
+          "text": "Documentation on the feature, including how it works and why."
+        },
+        {
+          "title": "Blog",
+          "kind": "blog",
+          "url": "https://dev.to/ripplexdev/permissioned-domains-enabling-compliance-driven-onchain-finance-on-the-xrpl-29k2",
+          "text": "An overview of the feature and why it matters to institutional issuers, explained in a Ripple blog post."
+        },
+        {
+          "title": "Tutorials",
+          "kind": "tutorial",
+          "url": "https://xrpl.org/docs/tutorials/compliance-features/manage-permissioned-domains",
+          "text": "Follow step-by-step tutorials to start building."
+        },
+        {
+          "title": "QA Test Report",
+          "kind": "qa",
+          "url": "https://dev.to/ripplexdev/permissioned-domains-qa-test-report-3pjl",
+          "text": "The QA Test Report presents results of QA testing performed on the feature across rippled and Clio servers."
+        },
+        {
+          "title": "Security Audit",
+          "kind": "audit",
+          "url": "https://www.halborn.com/audits/ripple/ripple---smart-contract-audit---permissioned-domains-0bd9c6",
+          "text": "The security audit performed by third-party security experts, including a link to the full, detailed security audit report."
+        }
+      ],
+      "subpages": [],
+      "amendment": "PermissionedDomains"
+    },
+    {
+      "slug": "xls-77-deep-freeze",
+      "xls": "XLS-77",
+      "title": "Deep Freeze",
+      "summary": "Prevent token misuse by frozen account holders.",
+      "description": "Deep freeze lets token issuers on the XRP Ledger prevent token misuse by frozen account holders. It enhances interactions between frozen assets and payments, ensuring that frozen token holders cannot receive funds until or unless their trust line is unfrozen. These changes enable token issuers to more easily comply with regulations on the XRPL.",
+      "xls_spec_date": "2024-12-17",
+      "devnet_date": "2025-01-11",
+      "fixed_dates": [
+        {
+          "date": "Dec 17, 2024",
+          "event": "XLS Spec Live"
+        },
+        {
+          "date": "Jan 11, 2025",
+          "event": "Available to Test on Devnet"
+        },
+        {
+          "date": "Mar 06, 2025 (2.4.0)",
+          "event": "Open for Voting on Mainnet"
+        },
+        {
+          "date": "Enabled May 04, 2025",
+          "event": "Vote Consensus"
+        }
+      ],
+      "source_url": "https://opensource.ripple.com/docs/xls-77-deep-freeze",
+      "resources": [
+        {
+          "title": "XLS Spec",
+          "kind": "spec",
+          "url": "https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0077-deep-freeze",
+          "text": "Technical spec for the feature outlining requirements, design, and implementation details."
+        },
+        {
+          "title": "Documentation",
+          "kind": "concept",
+          "url": "https://xrpl.org/docs/concepts/tokens/fungible-tokens/freezes#deep-freeze",
+          "text": "Explore key concepts, find detailed references, and follow step-by-step tutorials."
+        },
+        {
+          "title": "Blog",
+          "kind": "blog",
+          "url": "https://dev.to/ripplexdev/deep-freeze-strengthening-institutional-asset-control-on-xrpl-2j2a",
+          "text": "An overview of the feature and why it matters to institutional issuers, explained in a Ripple blog post."
+        }
+      ],
+      "subpages": [],
+      "amendment": "DeepFreeze"
+    },
+    {
+      "slug": "xls-75-permission-delegation",
+      "xls": "XLS-75",
+      "title": "Permission Delegation",
+      "summary": "An on-chain primitive for delegating transaction permissions between accounts.",
+      "description": "XRPL accounts can delegate both transaction permissions and granular permissions to other accounts, enhancing flexibility and enabling use cases such as implementing role-based access control.",
+      "xls_spec_date": "2025-05-08",
+      "devnet_date": null,
+      "fixed_dates": [],
+      "source_url": "https://opensource.ripple.com/docs/xls-75-permission-delegation",
+      "resources": [
+        {
+          "title": "XLS Spec",
+          "kind": "spec",
+          "url": "https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0075-permission-delegation",
+          "text": "Technical spec for the feature outlining requirements, design, and implementation details."
+        },
+        {
+          "title": "Concepts",
+          "kind": "concept",
+          "url": "https://xrpl.org/docs/concepts/accounts/permission-delegation",
+          "text": "Documentation on the feature, including how it works and why."
+        },
+        {
+          "title": "Blog",
+          "kind": "blog",
+          "url": "https://dev.to/ripplexdev/permission-delegation-unlocking-a-new-era-of-xrpl-account-management-34ec",
+          "text": "An overview of the feature and why it matters to developers, explained in a Ripple blog post."
+        },
+        {
+          "title": "Code Samples",
+          "kind": "code",
+          "url": "https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/delegate-permissions/",
+          "text": "Explore working code samples to get started."
+        },
+        {
+          "title": "Security Audit: FYEO",
+          "kind": "audit",
+          "url": "https://dev.to/ripplexdev/permission-delegation-security-audit-findings-2h83",
+          "text": "The security audit performed by third-party security experts, including a link to the full, detailed security audit report."
+        },
+        {
+          "title": "Security Audit: Cantina",
+          "kind": "audit",
+          "url": "https://cantina.xyz/portfolio/0a506caa-5532-437e-8b29-62258b652db7",
+          "text": "The security audit performed by third-party security experts, including a link to the full, detailed security audit report."
+        },
+        {
+          "title": "Performance Testing",
+          "kind": "performance",
+          "url": "https://dev.to/ripplexdev/xls-0075d-permission-delegation-performance-test-report-3jmm",
+          "text": "The performance testing report to assess the performance implications of the feature."
+        },
+        {
+          "title": "QA Test Report",
+          "kind": "qa",
+          "url": "https://dev.to/ripplexdev/account-permission-delegation-qa-test-report-4ia0",
+          "text": "The QA Test Report presents results of QA testing performed on the feature across rippled and Clio servers."
+        }
+      ],
+      "subpages": [],
+      "amendment": "PermissionDelegationV1_1"
+    },
+    {
+      "slug": "xls-70-credentials",
+      "xls": "XLS-70",
+      "title": "Credentials",
+      "summary": "A W3C-aligned framework for handling on-chain authorization.",
+      "description": "Credentials provide a set of tools for managing authorization and compliance requirements on the XRP Ledger, while respecting privacy and decentralization.",
+      "xls_spec_date": "2024-09-10",
+      "devnet_date": "2024-11-06",
+      "fixed_dates": [
+        {
+          "date": "Sep 10, 2024",
+          "event": "XLS Spec Live"
+        },
+        {
+          "date": "Nov 6, 2024",
+          "event": "Available to Test on Devnet"
+        },
+        {
+          "date": "Nov 25, 2024 (2.3.0)",
+          "event": "Open for Voting on Mainnet"
+        },
+        {
+          "date": "Enabled Sep 3, 2025",
+          "event": "Vote Consensus"
+        }
+      ],
+      "source_url": "https://opensource.ripple.com/docs/xls-70-credentials",
+      "resources": [
+        {
+          "title": "XLS Spec",
+          "kind": "spec",
+          "url": "https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0070-credentials",
+          "text": "Technical spec for the feature outlining requirements, design, and implementation details."
+        },
+        {
+          "title": "Concepts",
+          "kind": "concept",
+          "url": "https://xrpl.org/docs/concepts/decentralized-storage/credentials",
+          "text": "Documentation on the feature, including how it works and why."
+        },
+        {
+          "title": "Blog",
+          "kind": "blog",
+          "url": "https://www.idos.network/blog/debate-contribution-xrpl-credentials-are-a-game-changer?ref=twitter",
+          "text": "Read how this feature provides a straightforward, W3C-aligned framework for handling on-chain authorization, and why it matters to institutions."
+        },
+        {
+          "title": "Tutorials",
+          "kind": "tutorial",
+          "url": "https://xrpl.org/docs/tutorials/compliance-features/manage-credentials",
+          "text": "Follow step-by-step tutorials to start building."
+        },
+        {
+          "title": "Security Audit",
+          "kind": "audit",
+          "url": "https://www.halborn.com/audits/ripple/ripple---smart-contract-audit---credentials-c092b3",
+          "text": "The security audit performed by third-party security experts, including a link to the full, detailed security audit report."
+        }
+      ],
+      "subpages": [],
+      "amendment": "Credentials"
+    },
+    {
+      "slug": "xls-69-simulate",
+      "xls": "XLS-69",
+      "title": "Simulate",
+      "summary": "Execute a dry run of any transaction type.",
+      "description": "Simulate is a new RPC method that applies a transaction, returning the results and metadata, without ever sending it to the network for confirmation or inclusion in a ledger.",
+      "xls_spec_date": "2024-08-01",
+      "devnet_date": null,
+      "fixed_dates": [
+        {
+          "date": "Aug 01, 2024",
+          "event": "XLS Spec Review Complete"
+        },
+        {
+          "date": "Mar 06, 2025",
+          "event": "Feature in rippled 2.4.0"
+        },
+        {
+          "date": "Mar 06, 2025",
+          "event": "Enabled on Mainnet"
+        }
+      ],
+      "source_url": "https://opensource.ripple.com/docs/xls-69-simulate",
+      "resources": [
+        {
+          "title": "XLS Spec",
+          "kind": "spec",
+          "url": "https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0069-simulate",
+          "text": "Technical spec for the feature outlining requirements, design, and implementation details."
+        },
+        {
+          "title": "Documentation",
+          "kind": "concept",
+          "url": "https://xrpl.org/docs/references/http-websocket-apis/public-api-methods/transaction-methods/simulate",
+          "text": "Explore key concepts, find detailed references, and follow step-by-step tutorials."
+        }
+      ],
+      "subpages": [],
+      "amendment": null
+    },
+    {
+      "slug": "xls-68-sponsored-fees-and-reserves",
+      "xls": "XLS-68",
+      "title": "Sponsored Fees and Reserves",
+      "summary": "Sponsors pay transaction fees and reserves on behalf of other accounts (sponsees).",
+      "description": "Sponsored Fees and Reserves removes onboarding friction by allowing companies, token issuers, and other entities to subsidize transaction costs and reserve requirements for end users. Sponsors can co-sign transactions or pre-fund sponsorships, covering fees and reserves, while sponsees retain full control of their accounts and keys.",
+      "xls_spec_date": "2026-01-30",
+      "devnet_date": null,
+      "fixed_dates": [],
+      "source_url": "https://opensource.ripple.com/docs/xls-68-sponsored-fees-and-reserves",
+      "resources": [
+        {
+          "title": "XLS Spec",
+          "kind": "spec",
+          "url": "https://xls.xrpl.org/xls/XLS-0068-sponsored-fees-and-reserves.html",
+          "text": "Technical spec for the feature outlining requirements, design, and implementation details."
+        },
+        {
+          "title": "Concepts",
+          "kind": "concept",
+          "url": "https://xrpl.org/docs/concepts/accounts/sponsored-fees-and-reserves",
+          "text": "Documentation on the feature, including how it works and why."
+        },
+        {
+          "title": "Security Audit",
+          "kind": "audit",
+          "url": "https://github.com/fyeo-io/public-audit-reports/blob/main/Code%20Audit%20Reports/2026/Ripple/Ripple%20-%20Security%20Code%20Review%20of%20XRPL%20Sponsored%20Fees%20and%20Reserves%20v1.0.pdf",
+          "text": "The security audit performed by third-party security experts, including a link to the full, detailed security audit report."
+        }
+      ],
+      "subpages": [],
+      "amendment": "Sponsor"
+    },
+    {
+      "slug": "lending-protocol-v1-1",
+      "xls": "XLS-65, XLS-66",
+      "title": "Lending Protocol V1.1",
+      "summary": "Extends Single Asset Vaults and the Lending Protocol with closed-ended vaults and cash-basis accounting.",
+      "description": "The LendingProtocolV1_1 amendment extends Single Asset Vaults and the Lending Protocol in two ways. It restricts loans to a new type of closed-ended vault, which has defined subscription, investment, and redemption phases. Newly created vaults also utilize an updated cash-basis accounting model instead of the whole-life model implemented by the original Single Asset Vaults amendment.",
+      "xls_spec_date": "2026-09-10",
+      "devnet_date": null,
+      "fixed_dates": [],
+      "source_url": "https://opensource.ripple.com/docs/lending-protocol-v1-1",
+      "resources": [
+        {
+          "title": "XLS-65 Spec",
+          "kind": "spec",
+          "url": "https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0065-single-asset-vault",
+          "text": "Technical spec for Single Asset Vaults outlining requirements, design, and implementation details. Updated for LendingProtocolV1_1."
+        },
+        {
+          "title": "XLS-66 Spec",
+          "kind": "spec",
+          "url": "https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0066-lending-protocol",
+          "text": "Technical spec for the Lending Protocol outlining requirements, design, and implementation details. Updated for LendingProtocolV1_1."
+        },
+        {
+          "title": "Closed-Ended Vaults",
+          "kind": "concept",
+          "url": "https://opensource.ripple.com/docs/lending-protocol-v1-1/closed-ended-vaults",
+          "text": "Learn how a closed-ended vault moves through its Subscription, Investment, and Redemption phases."
+        },
+        {
+          "title": "Cash-Basis Accounting",
+          "kind": "concept",
+          "url": "https://opensource.ripple.com/docs/lending-protocol-v1-1/cash-basis-accounting",
+          "text": "Learn how vaults and loans recognize interest income under the new cash-basis accounting model."
+        }
+      ],
+      "subpages": [
+        {
+          "title": "Closed-Ended Vaults",
+          "url": "https://opensource.ripple.com/docs/lending-protocol-v1-1/closed-ended-vaults"
+        },
+        {
+          "title": "Cash-Basis Accounting",
+          "url": "https://opensource.ripple.com/docs/lending-protocol-v1-1/cash-basis-accounting"
+        },
+        {
+          "title": "Updated Ledger Entries",
+          "url": "https://opensource.ripple.com/docs/lending-protocol-v1-1/updated-ledger-entries"
+        },
+        {
+          "title": "Updated Transactions",
+          "url": "https://opensource.ripple.com/docs/lending-protocol-v1-1/updated-transactions"
+        }
+      ],
+      "amendment": "LendingProtocolV1_1"
+    },
+    {
+      "slug": "xls-66-lending-protocol",
+      "xls": "XLS-66",
+      "title": "Lending Protocol",
+      "summary": "An XRP Ledger DeFi primitive that enables loans from a Single Asset Vault.",
+      "description": "The Lending Protocol is an XRP Ledger DeFi primitive that enables on-chain, fixed-term, uncollateralized loans using pooled funds from a Single Asset Vault. The implementation relies on off-chain underwriting and risk management to assess the creditworthiness of borrowers, but offers configurable, peer-to-peer loans without intermediaries like banks or financial institutions.",
+      "xls_spec_date": "2025-12-02",
+      "devnet_date": null,
+      "fixed_dates": [],
+      "source_url": "https://opensource.ripple.com/docs/xls-66-lending-protocol",
+      "resources": [
+        {
+          "title": "XLS Spec",
+          "kind": "spec",
+          "url": "https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0066-lending-protocol",
+          "text": "Technical spec for the feature outlining requirements, design, and implementation details."
+        },
+        {
+          "title": "Blog",
+          "kind": "blog",
+          "url": "https://dev.to/ripplexdev/xrp-ledger-lending-protocol-2pla",
+          "text": "An overview of the feature and why it matters to developers, explained in a Ripple blog post."
+        },
+        {
+          "title": "Insights",
+          "kind": "blog",
+          "url": "https://ripple.com/insights/the-xrpl-lending-protocol-bringing-credit-infrastructure-onchain/",
+          "text": "Discover how the Lending Protocol and Single Asset Vaults unlock productive assets onchain."
+        },
+        {
+          "title": "Concepts",
+          "kind": "concept",
+          "url": "https://xrpl.org/docs/concepts/tokens/lending-protocol",
+          "text": "Documentation on the feature, including how it works and why."
+        },
+        {
+          "title": "Tutorials",
+          "kind": "tutorial",
+          "url": "https://xrpl.org/docs/tutorials/defi/lending/use-the-lending-protocol/create-a-loan-broker",
+          "text": "Follow step-by-step tutorials to start building."
+        },
+        {
+          "title": "Demo App",
+          "kind": "demo",
+          "url": "https://lending.xls-demo.com/",
+          "text": "Explore a full lending platform built on the Lending Protocol and Single Asset Vaults, featuring dedicated dashboards for brokers, depositors, and borrowers.",
+          "github": "https://github.com/ripple/xrpl-reference-app-lending-sav"
+        },
+        {
+          "title": "Security Audit",
+          "kind": "audit",
+          "url": "https://www.halborn.com/audits/ripple/lending-protocol-re-audit-2769d2",
+          "text": "The security audit performed by third-party security experts, including a link to the full, detailed security audit report."
+        },
+        {
+          "title": "Security Update",
+          "kind": "security",
+          "url": "https://dev.to/ripplexdev/the-road-toward-mainnet-a-security-first-approach-to-xrpl-lending-protocol-3bn6",
+          "text": "An update on the security philosophy and approach taken by the Ripple team to ensure the safety and reliability of the Lending Protocol and Single Asset Vaults."
+        },
+        {
+          "title": "Performance Testing",
+          "kind": "performance",
+          "url": "https://dev.to/ripplexdev/lending-protocol-performance-test-report-3cjn",
+          "text": "The performance testing report to assess the performance implications of the feature."
+        }
+      ],
+      "subpages": [],
+      "amendment": "LendingProtocol"
+    },
+    {
+      "slug": "xls-65-single-asset-vault",
+      "xls": "XLS-65",
+      "title": "Single Asset Vault",
+      "summary": "An on-chain primitive for aggregating assets from one or more depositors.",
+      "description": "A single asset vault is an XRP Ledger primitive that aggregates assets from multiple depositors and makes them available to other on-chain protocols, such as a Lending Protocol. A vault asset can be XRP, a trust line token, or an MPT (Multi-Purpose Token).",
+      "xls_spec_date": "2025-02-28",
+      "devnet_date": "2026-01-14",
+      "fixed_dates": [],
+      "source_url": "https://opensource.ripple.com/docs/xls-65-single-asset-vault",
+      "resources": [
+        {
+          "title": "XLS Spec",
+          "kind": "spec",
+          "url": "https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0065-single-asset-vault",
+          "text": "Technical spec for the feature outlining requirements, design, and implementation details."
+        },
+        {
+          "title": "Blog",
+          "kind": "blog",
+          "url": "https://dev.to/ripplexdev/xrp-ledger-lending-protocol-2pla",
+          "text": "An overview of the feature and why it matters to developers, explained in a Ripple blog post."
+        },
+        {
+          "title": "Insights",
+          "kind": "blog",
+          "url": "https://ripple.com/insights/the-xrpl-lending-protocol-bringing-credit-infrastructure-onchain/",
+          "text": "Discover how the Lending Protocol and Single Asset Vaults unlock productive assets onchain."
+        },
+        {
+          "title": "Concepts",
+          "kind": "concept",
+          "url": "https://xrpl.org/docs/concepts/tokens/single-asset-vaults",
+          "text": "Documentation on the feature, including how it works and why."
+        },
+        {
+          "title": "Tutorials",
+          "kind": "tutorial",
+          "url": "https://xrpl.org/docs/tutorials/defi/lending/use-single-asset-vaults/create-a-single-asset-vault",
+          "text": "Follow step-by-step tutorials to start building."
+        },
+        {
+          "title": "Demo App",
+          "kind": "demo",
+          "url": "https://lending.xls-demo.com/",
+          "text": "Explore a full lending platform built on the Lending Protocol and Single Asset Vaults, featuring dedicated dashboards for brokers, depositors, and borrowers.",
+          "github": "https://github.com/ripple/xrpl-reference-app-lending-sav"
+        },
+        {
+          "title": "Security Audit",
+          "kind": "audit",
+          "url": "https://www.halborn.com/audits/ripple/ripple---single-asset-vault---smart-contract-assessment-d39437",
+          "text": "The security audit performed by third-party security experts, including a link to the full, detailed security audit report."
+        },
+        {
+          "title": "Security Update",
+          "kind": "security",
+          "url": "https://dev.to/ripplexdev/the-road-toward-mainnet-a-security-first-approach-to-xrpl-lending-protocol-3bn6",
+          "text": "An update on the security philosophy and approach taken by the Ripple team to ensure the safety and reliability of the Lending Protocol and Single Asset Vaults."
+        },
+        {
+          "title": "Performance Testing",
+          "kind": "performance",
+          "url": "https://dev.to/ripplexdev/lending-protocol-performance-test-report-3cjn",
+          "text": "The performance testing report to assess the performance implications of the feature."
+        }
+      ],
+      "subpages": [],
+      "amendment": "SingleAssetVault"
+    },
+    {
+      "slug": "xls-56-batch-transactions",
+      "xls": "XLS-56",
+      "title": "Batch",
+      "summary": "Submit up to 8 transactions that are processed atomically.",
+      "description": "Batch lets you package multiple transactions together and execute them as a single unit. It eliminates the risk of partial completion and unexpected outcomes, giving you a more reliable and predictable experience for complex operations.",
+      "xls_spec_date": "2025-01-23",
+      "devnet_date": null,
+      "fixed_dates": [],
+      "source_url": "https://opensource.ripple.com/docs/xls-56-batch-transactions",
+      "resources": [
+        {
+          "title": "XLS Spec",
+          "kind": "spec",
+          "url": "https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0056-batch",
+          "text": "Technical spec for the feature outlining requirements, design, and implementation details."
+        },
+        {
+          "title": "Concepts",
+          "kind": "concept",
+          "url": "https://xrpl.org/docs/concepts/transactions/batch-transactions",
+          "text": "Documentation on the feature, including how it works and why."
+        },
+        {
+          "title": "Blog",
+          "kind": "blog",
+          "url": "https://dev.to/ripplexdev/introducing-batch-transactions-on-the-xrp-ledger-more-opportunities-less-friction-50h5",
+          "text": "An overview of the feature and why it matters to developers, explained in a Ripple blog post."
+        },
+        {
+          "title": "Tutorials",
+          "kind": "tutorial",
+          "url": "https://xrpl.org/docs/tutorials/best-practices/transaction-sending/send-a-single-account-batch-transaction",
+          "text": "Follow step-by-step tutorials to start building."
+        },
+        {
+          "title": "Security Audit",
+          "kind": "audit",
+          "url": "https://www.halborn.com/audits/ripple/batch-re-audit-314089",
+          "text": "The security audit performed by third-party security experts, including a link to the full, detailed security audit report."
+        },
+        {
+          "title": "Performance Testing",
+          "kind": "performance",
+          "url": "https://dev.to/ripplexdev/batch-transaction-performance-testing-report-13j8",
+          "text": "The performance testing report to assess the performance implications of the feature."
+        },
+        {
+          "title": "QA Test Report",
+          "kind": "qa",
+          "url": "https://dev.to/ripplexdev/batch-transaction-qa-test-report-5g5g",
+          "text": "The QA Test Report presents results of QA testing performed on the feature across rippled and Clio servers."
+        }
+      ],
+      "subpages": [],
+      "amendment": "BatchV1_1"
+    }
+  ],
+  "amendments": [
+    {
+      "id": "78ECD9CE17B0BF5B83BB3B275921FB5F5E0F672E9D24BD2E848B7C6277AE296E",
+      "name": "SmartEscrow",
+      "introduced": null,
+      "devnet": false
+    },
+    {
+      "id": "2110E4A19966E2EF517C0A8C56A5F35099D7665B0BB89D7B126B30D50B86AAD5",
+      "name": "ConfidentialTransfer",
+      "introduced": "3.3.0",
+      "devnet": true,
+      "mainnet": {
+        "status": "voting",
+        "majority_since": null,
+        "eta": null
+      },
+      "votes": [
+        "nHB8QMKGt9VB4Vg71VszjBVQnDW3v3QudM4DwFaJfy96bj4Pv9fA",
+        "nHDH7bQJpVfDhVSqdui3Z8GPvKEBQpo6AKHcnXe21zoD4nABA6xj",
+        "nHU3AenyRuJ4Yei4YHkh6frZg8y2RwXznkMAomUE1ptV5Spvqsih",
+        "nHU4bLE3EmSqNwfL4AP1UZeTNPrSPPP6FXLKXo2uqfHuvBQxDVKd",
+        "nHUED59jjpQ5QbNhesXMhqii9gA8UfbBmv3i5StgyxG98qjsT4yn",
+        "nHUFCyRCrUjvtZmKiLeF8ReopzKuUoKeDeXo3wEUBVSaawzcSBpW",
+        "nHUHeq3QdVyLTUENPHAAJ1d5M1SbvY49rajs31mJS8CEfrvTfjn3",
+        "nHULqGBkJtWeNFjhTzYeAsHA3qKKS7HoBh8CV3BAGTGMZuepEhWC",
+        "nHUP4RcLQdPHh3kMtFm9NFGnjEYLGXiQAyyB7qFsjATHMw2YVxHi",
+        "nHUUgpUVNxXfxkkoyh2QDjfLfHapcut8gYwKeShnJYd3SdPui19A",
+        "nHUVPzAmAmQ2QSc4oE1iLfsGi17qN2ado8PhxvgEkou76FLxAz7C",
+        "nHUY14bKLLm72ukzo2t6AVnQiu4bCd1jkimwWyJk3txvLeGhvro5",
+        "nHUbgDd63HiuP68VRWazKwZRzS61N37K3NbfQaZLhSQ24LGGmjtn",
+        "nHUdjQgg33FRu88GQDtzLWRw95xKnBurUZcqPpe3qC9XVeBNrHeJ",
+        "nHUfPizyJyhAJZzeq3duRVrZmsTZfcLn7yLF5s2adzHdcHMb9HmQ",
+        "nHUfxETNHsA9reyYCVYwNztEbifMg6U9YUdcgVvzMwGNpphKSSf6",
+        "nHUge3GFusbqmfYAJjxfKgm2j4JXGxrRsfYMcEViHrFSzQDdk5Hq",
+        "nHUrUNXCy4DgPPNABX9C6mUctpoq7CwgLKAUxjw6zYtTfiqsj1ew",
+        "nHUryiyDqEtyWVtFG24AAhaYjMf9FRLietbGzviF3piJsMm9qyDR",
+        "nHUvcCcmoH1FJMMC6NtF9KKA4LpCWhjsxk2reCQidsp5AHQ7QY9H"
+      ],
+      "release_post": "/blog/2026/xrpld-3.3.0",
+      "release_date": "2026-08-06"
+    },
+    {
+      "id": "58E92F338758479C06084E1B6BA366BAD8F75E5329A7F0EEAFFFDA51E5106B7F",
+      "name": "DynamicMPT",
+      "introduced": "3.3.0",
+      "devnet": true,
+      "mainnet": {
+        "status": "voting",
+        "majority_since": null,
+        "eta": null
+      },
+      "votes": [
+        "nHB8QMKGt9VB4Vg71VszjBVQnDW3v3QudM4DwFaJfy96bj4Pv9fA",
+        "nHDH7bQJpVfDhVSqdui3Z8GPvKEBQpo6AKHcnXe21zoD4nABA6xj",
+        "nHU3AenyRuJ4Yei4YHkh6frZg8y2RwXznkMAomUE1ptV5Spvqsih",
+        "nHU4bLE3EmSqNwfL4AP1UZeTNPrSPPP6FXLKXo2uqfHuvBQxDVKd",
+        "nHUED59jjpQ5QbNhesXMhqii9gA8UfbBmv3i5StgyxG98qjsT4yn",
+        "nHUFCyRCrUjvtZmKiLeF8ReopzKuUoKeDeXo3wEUBVSaawzcSBpW",
+        "nHUHeq3QdVyLTUENPHAAJ1d5M1SbvY49rajs31mJS8CEfrvTfjn3",
+        "nHULqGBkJtWeNFjhTzYeAsHA3qKKS7HoBh8CV3BAGTGMZuepEhWC",
+        "nHUVPzAmAmQ2QSc4oE1iLfsGi17qN2ado8PhxvgEkou76FLxAz7C",
+        "nHUY14bKLLm72ukzo2t6AVnQiu4bCd1jkimwWyJk3txvLeGhvro5",
+        "nHUbgDd63HiuP68VRWazKwZRzS61N37K3NbfQaZLhSQ24LGGmjtn",
+        "nHUfPizyJyhAJZzeq3duRVrZmsTZfcLn7yLF5s2adzHdcHMb9HmQ",
+        "nHUge3GFusbqmfYAJjxfKgm2j4JXGxrRsfYMcEViHrFSzQDdk5Hq",
+        "nHUrUNXCy4DgPPNABX9C6mUctpoq7CwgLKAUxjw6zYtTfiqsj1ew",
+        "nHUryiyDqEtyWVtFG24AAhaYjMf9FRLietbGzviF3piJsMm9qyDR",
+        "nHUvcCcmoH1FJMMC6NtF9KKA4LpCWhjsxk2reCQidsp5AHQ7QY9H"
+      ],
+      "release_post": "/blog/2026/xrpld-3.3.0",
+      "release_date": "2026-08-06"
+    },
+    {
+      "id": "138B968F25822EFBF54C00F97031221C47B1EAB8321D93C7C2AEAF85F04EC5DF",
+      "name": "TokenEscrow",
+      "introduced": "2.5.0",
+      "devnet": true,
+      "mainnet": {
+        "status": "enabled",
+        "date": "2026-02-12T21:24:40.000Z",
+        "tx_hash": "90A1297408C5F76769626A94242BCBD671E3CCD02ABEF80D92D8C7D7623840D5"
+      },
+      "release_post": "/blog/2025/rippled-2.5.0",
+      "release_date": "2025-06-24"
+    },
+    {
+      "id": "BE2D87DF21B690ED1497B593FDC013CC04276302380B1BD50A033DCF8DEFB2EB",
+      "name": "MPTokensV2",
+      "introduced": null,
+      "devnet": false
+    },
+    {
+      "id": "677E401A423E3708363A36BA8B3A7D019D21AC5ABD00387BDBEA6BDE4C91247E",
+      "name": "PermissionedDEX",
+      "introduced": "2.5.0",
+      "devnet": true,
+      "mainnet": {
+        "status": "enabled",
+        "date": "2026-02-18T10:58:10.000Z",
+        "tx_hash": "AE56481023FBF05BE5E6272F5D1E1D7BC5239D0A913B981FBE2E302C389A8002"
+      },
+      "release_post": "/blog/2025/rippled-2.5.0",
+      "release_date": "2025-06-24"
+    },
+    {
+      "id": "A730EB18A9D4BB52502C898589558B4CCEB4BE10044500EE5581137A2E80E849",
+      "name": "PermissionedDomains",
+      "introduced": "2.4.0",
+      "devnet": true,
+      "mainnet": {
+        "status": "enabled",
+        "date": "2026-02-04T10:06:41.000Z",
+        "tx_hash": "CC30BAB4CDE71E2B07E73AC980D3464F2515E9FBA51489E0B2C89C39D1A51416"
+      },
+      "release_post": "/blog/2025/rippled-2.4.0",
+      "release_date": "2025-03-06"
+    },
+    {
+      "id": "DAF3A6EB04FA5DC51E8E4F23E9B7022B693EFA636F23F22664746C77B5786B23",
+      "name": "DeepFreeze",
+      "introduced": "2.4.0",
+      "devnet": true,
+      "mainnet": {
+        "status": "enabled",
+        "date": "2025-05-04T12:09:01.000Z",
+        "tx_hash": "976281D793337FF5377A36409F2A1432DADAB64DB5064E12E71B1AC491EA3021"
+      },
+      "release_post": "/blog/2025/rippled-2.4.0",
+      "release_date": "2025-03-06"
+    },
+    {
+      "id": "0F48FF561C709540328F31F1C97FD512ACC8B4E42138A161CB0E21ECA292540B",
+      "name": "PermissionDelegationV1_1",
+      "introduced": "3.3.0",
+      "devnet": true,
+      "mainnet": {
+        "status": "enabled",
+        "date": "2026-10-08T21:29:50.000Z",
+        "tx_hash": "478284066BA0B83CC35CA1174F667F43D9577782F221440AFCC5541788F25A77"
+      },
+      "release_post": "/blog/2026/xrpld-3.3.0",
+      "release_date": "2026-08-06"
+    },
+    {
+      "id": "1CB67D082CF7D9102412D34258CEDB400E659352D3B207348889297A6D90F5EF",
+      "name": "Credentials",
+      "introduced": "2.3.0",
+      "devnet": true,
+      "mainnet": {
+        "status": "enabled",
+        "date": "2025-09-04T03:55:30.000Z",
+        "tx_hash": "182C9331AB917370E9799C9A2946DE15F3E41D81522FBB55A1508829F8933A16"
+      },
+      "release_post": "/blog/2024/rippled-2.3.0",
+      "release_date": "2024-11-25"
+    },
+    {
+      "id": "BE1F90581635DBCEBFC4678C4B54FEDDC1A17B50FD02CFE765A4132A342126AC",
+      "name": "Sponsor",
+      "introduced": "3.3.0",
+      "devnet": true,
+      "mainnet": {
+        "status": "voting",
+        "majority_since": null,
+        "eta": null
+      },
+      "votes": [
+        "nHB8QMKGt9VB4Vg71VszjBVQnDW3v3QudM4DwFaJfy96bj4Pv9fA",
+        "nHDH7bQJpVfDhVSqdui3Z8GPvKEBQpo6AKHcnXe21zoD4nABA6xj",
+        "nHU4bLE3EmSqNwfL4AP1UZeTNPrSPPP6FXLKXo2uqfHuvBQxDVKd",
+        "nHUFCyRCrUjvtZmKiLeF8ReopzKuUoKeDeXo3wEUBVSaawzcSBpW",
+        "nHUHeq3QdVyLTUENPHAAJ1d5M1SbvY49rajs31mJS8CEfrvTfjn3",
+        "nHULqGBkJtWeNFjhTzYeAsHA3qKKS7HoBh8CV3BAGTGMZuepEhWC",
+        "nHUVPzAmAmQ2QSc4oE1iLfsGi17qN2ado8PhxvgEkou76FLxAz7C",
+        "nHUryiyDqEtyWVtFG24AAhaYjMf9FRLietbGzviF3piJsMm9qyDR",
+        "nHUvcCcmoH1FJMMC6NtF9KKA4LpCWhjsxk2reCQidsp5AHQ7QY9H"
+      ],
+      "release_post": "/blog/2026/xrpld-3.3.0",
+      "release_date": "2026-08-06"
+    },
+    {
+      "id": "A360E2BFD775A5B0DCE1C36C16DF31B72735A57584FD163655D2F9564F8E7AC8",
+      "name": "LendingProtocolV1_1",
+      "introduced": "3.4.0",
+      "devnet": true,
+      "mainnet": {
+        "status": "voting",
+        "majority_since": null,
+        "eta": null
+      },
+      "votes": [
+        "nHB8QMKGt9VB4Vg71VszjBVQnDW3v3QudM4DwFaJfy96bj4Pv9fA",
+        "nHDB2PAPYqF86j9j3c6w1F1ZqwvQfiWcFShZ9Pokg9q4ohNDSkAz",
+        "nHDH7bQJpVfDhVSqdui3Z8GPvKEBQpo6AKHcnXe21zoD4nABA6xj",
+        "nHU3AenyRuJ4Yei4YHkh6frZg8y2RwXznkMAomUE1ptV5Spvqsih",
+        "nHU4bLE3EmSqNwfL4AP1UZeTNPrSPPP6FXLKXo2uqfHuvBQxDVKd",
+        "nHUED59jjpQ5QbNhesXMhqii9gA8UfbBmv3i5StgyxG98qjsT4yn",
+        "nHUFCyRCrUjvtZmKiLeF8ReopzKuUoKeDeXo3wEUBVSaawzcSBpW",
+        "nHUHeq3QdVyLTUENPHAAJ1d5M1SbvY49rajs31mJS8CEfrvTfjn3",
+        "nHULqGBkJtWeNFjhTzYeAsHA3qKKS7HoBh8CV3BAGTGMZuepEhWC",
+        "nHUP4RcLQdPHh3kMtFm9NFGnjEYLGXiQAyyB7qFsjATHMw2YVxHi",
+        "nHUUgpUVNxXfxkkoyh2QDjfLfHapcut8gYwKeShnJYd3SdPui19A",
+        "nHUVPzAmAmQ2QSc4oE1iLfsGi17qN2ado8PhxvgEkou76FLxAz7C",
+        "nHUbgDd63HiuP68VRWazKwZRzS61N37K3NbfQaZLhSQ24LGGmjtn",
+        "nHUdjQgg33FRu88GQDtzLWRw95xKnBurUZcqPpe3qC9XVeBNrHeJ",
+        "nHUfPizyJyhAJZzeq3duRVrZmsTZfcLn7yLF5s2adzHdcHMb9HmQ",
+        "nHUfxETNHsA9reyYCVYwNztEbifMg6U9YUdcgVvzMwGNpphKSSf6",
+        "nHUinfdpmtfXsMUnoSoBeZ93mTwDkPkA2gmCiQTyEi1c1Ybx6unE",
+        "nHUvcCcmoH1FJMMC6NtF9KKA4LpCWhjsxk2reCQidsp5AHQ7QY9H",
+        "nHUwGQrfZfieeLFeGRdGnAmGpHBCZq9wvm5c59wTc2JhJMjoXmd8"
+      ],
+      "release_post": "/blog/2026/xrpld-3.4.0",
+      "release_date": "2026-09-16"
+    },
+    {
+      "id": "565B90CA1AB2B9D42208ED10884188C64F9E19083DECB9634AAF06EB03299509",
+      "name": "LendingProtocol",
+      "introduced": "3.1.0",
+      "devnet": true,
+      "mainnet": {
+        "status": "voting",
+        "majority_since": null,
+        "eta": null
+      },
+      "votes": [
+        "nHB8QMKGt9VB4Vg71VszjBVQnDW3v3QudM4DwFaJfy96bj4Pv9fA",
+        "nHDB2PAPYqF86j9j3c6w1F1ZqwvQfiWcFShZ9Pokg9q4ohNDSkAz",
+        "nHDH7bQJpVfDhVSqdui3Z8GPvKEBQpo6AKHcnXe21zoD4nABA6xj",
+        "nHU3AenyRuJ4Yei4YHkh6frZg8y2RwXznkMAomUE1ptV5Spvqsih",
+        "nHU4bLE3EmSqNwfL4AP1UZeTNPrSPPP6FXLKXo2uqfHuvBQxDVKd",
+        "nHUED59jjpQ5QbNhesXMhqii9gA8UfbBmv3i5StgyxG98qjsT4yn",
+        "nHUFCyRCrUjvtZmKiLeF8ReopzKuUoKeDeXo3wEUBVSaawzcSBpW",
+        "nHUHeq3QdVyLTUENPHAAJ1d5M1SbvY49rajs31mJS8CEfrvTfjn3",
+        "nHULqGBkJtWeNFjhTzYeAsHA3qKKS7HoBh8CV3BAGTGMZuepEhWC",
+        "nHUP4RcLQdPHh3kMtFm9NFGnjEYLGXiQAyyB7qFsjATHMw2YVxHi",
+        "nHUUgpUVNxXfxkkoyh2QDjfLfHapcut8gYwKeShnJYd3SdPui19A",
+        "nHUVPzAmAmQ2QSc4oE1iLfsGi17qN2ado8PhxvgEkou76FLxAz7C",
+        "nHUbgDd63HiuP68VRWazKwZRzS61N37K3NbfQaZLhSQ24LGGmjtn",
+        "nHUfPizyJyhAJZzeq3duRVrZmsTZfcLn7yLF5s2adzHdcHMb9HmQ",
+        "nHUfxETNHsA9reyYCVYwNztEbifMg6U9YUdcgVvzMwGNpphKSSf6",
+        "nHUge3GFusbqmfYAJjxfKgm2j4JXGxrRsfYMcEViHrFSzQDdk5Hq",
+        "nHUinfdpmtfXsMUnoSoBeZ93mTwDkPkA2gmCiQTyEi1c1Ybx6unE",
+        "nHUvcCcmoH1FJMMC6NtF9KKA4LpCWhjsxk2reCQidsp5AHQ7QY9H",
+        "nHUwGQrfZfieeLFeGRdGnAmGpHBCZq9wvm5c59wTc2JhJMjoXmd8"
+      ],
+      "release_post": "/blog/2026/rippled-3.1.0",
+      "release_date": "2026-01-28"
+    },
+    {
+      "id": "81BD2619B6B3C8625AC5D0BC01DE17F06C3F0AB95C7C87C93715B87A4FD240D8",
+      "name": "SingleAssetVault",
+      "introduced": "3.1.0",
+      "devnet": true,
+      "mainnet": {
+        "status": "voting",
+        "majority_since": null,
+        "eta": null
+      },
+      "votes": [
+        "nHB8QMKGt9VB4Vg71VszjBVQnDW3v3QudM4DwFaJfy96bj4Pv9fA",
+        "nHBgyVGAEhgU6GoEqoriKmkNBjzhy6WJhX9Z7cZ71yJbv28dzvVN",
+        "nHDB2PAPYqF86j9j3c6w1F1ZqwvQfiWcFShZ9Pokg9q4ohNDSkAz",
+        "nHDH7bQJpVfDhVSqdui3Z8GPvKEBQpo6AKHcnXe21zoD4nABA6xj",
+        "nHU3AenyRuJ4Yei4YHkh6frZg8y2RwXznkMAomUE1ptV5Spvqsih",
+        "nHU4bLE3EmSqNwfL4AP1UZeTNPrSPPP6FXLKXo2uqfHuvBQxDVKd",
+        "nHUED59jjpQ5QbNhesXMhqii9gA8UfbBmv3i5StgyxG98qjsT4yn",
+        "nHUFCyRCrUjvtZmKiLeF8ReopzKuUoKeDeXo3wEUBVSaawzcSBpW",
+        "nHUHeq3QdVyLTUENPHAAJ1d5M1SbvY49rajs31mJS8CEfrvTfjn3",
+        "nHULqGBkJtWeNFjhTzYeAsHA3qKKS7HoBh8CV3BAGTGMZuepEhWC",
+        "nHUP4RcLQdPHh3kMtFm9NFGnjEYLGXiQAyyB7qFsjATHMw2YVxHi",
+        "nHUUgpUVNxXfxkkoyh2QDjfLfHapcut8gYwKeShnJYd3SdPui19A",
+        "nHUVPzAmAmQ2QSc4oE1iLfsGi17qN2ado8PhxvgEkou76FLxAz7C",
+        "nHUbgDd63HiuP68VRWazKwZRzS61N37K3NbfQaZLhSQ24LGGmjtn",
+        "nHUdjQgg33FRu88GQDtzLWRw95xKnBurUZcqPpe3qC9XVeBNrHeJ",
+        "nHUfPizyJyhAJZzeq3duRVrZmsTZfcLn7yLF5s2adzHdcHMb9HmQ",
+        "nHUfxETNHsA9reyYCVYwNztEbifMg6U9YUdcgVvzMwGNpphKSSf6",
+        "nHUge3GFusbqmfYAJjxfKgm2j4JXGxrRsfYMcEViHrFSzQDdk5Hq",
+        "nHUinfdpmtfXsMUnoSoBeZ93mTwDkPkA2gmCiQTyEi1c1Ybx6unE",
+        "nHUvcCcmoH1FJMMC6NtF9KKA4LpCWhjsxk2reCQidsp5AHQ7QY9H",
+        "nHUwGQrfZfieeLFeGRdGnAmGpHBCZq9wvm5c59wTc2JhJMjoXmd8"
+      ],
+      "release_post": "/blog/2026/rippled-3.1.0",
+      "release_date": "2026-01-28"
+    },
+    {
+      "id": "9F287AED3CDB50A7BD1ACEC24296A30C9B5230CCD136219317AC790E3B884377",
+      "name": "BatchV1_1",
+      "introduced": "3.3.0",
+      "devnet": true,
+      "mainnet": {
+        "status": "enabled",
+        "date": "2026-10-09T14:47:52.000Z",
+        "tx_hash": "1717BD8BE3FED93C142C8CD38DA5AD1208A0E9AE4E24F0F7ED545FC750BCA20A"
+      },
+      "release_post": "/blog/2026/xrpld-3.3.0",
+      "release_date": "2026-08-06"
+    }
+  ]
+}

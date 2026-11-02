@@ -79,7 +79,7 @@ let inFlight: Promise<AmendmentsCache> | null = null
 
 // Cache-first: return the fresh combined cache, or fetch both endpoints in parallel,
 // stamp them with a single timestamp, and store them under one cache key.
-function getAmendmentsCache(): Promise<AmendmentsCache> {
+export function getAmendmentsCache(): Promise<AmendmentsCache> {
   const cached = readCache()
   if (cached) return Promise.resolve(cached)
   if (inFlight) return inFlight
