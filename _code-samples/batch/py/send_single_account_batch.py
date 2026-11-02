@@ -21,7 +21,7 @@ from xrpl.utils import drops_to_xrp, xrp_to_drops
 from xrpl.wallet import generate_faucet_wallet
 
 # Set up client ----------------------
-client = JsonRpcClient("https://s.devnet.rippletest.net:51234")
+client = JsonRpcClient("https://s.altnet.rippletest.net:51234")
 
 # Create and fund wallets
 print("=== Funding new wallets from faucet... ===")
@@ -76,7 +76,7 @@ if submit_response.result["meta"]["TransactionResult"] != "tesSUCCESS":
 print("\nBatch transaction submitted successfully!")
 print("Result:\n", json.dumps(submit_response.result, indent=2))
 # View the batch transaction on the XRPL Explorer
-print(f"\nBatch transaction URL:\nhttps://devnet.xrpl.org/transactions/{submit_response.result['hash']}")
+print(f"\nBatch transaction URL:\nhttps://testnet.xrpl.org/transactions/{submit_response.result['hash']}")
 
 # Calculate and verify inner transaction hashes ----------------------
 print("\n=== Verifying inner transactions... ===")
@@ -92,7 +92,7 @@ for i, raw_tx in enumerate(raw_transactions):
     if tx_response.is_successful():
         status = tx_response.result["meta"]["TransactionResult"]
         print(f" - Status: {status} (Ledger {tx_response.result['ledger_index']})")
-        print(f" - Transaction URL: https://devnet.xrpl.org/transactions/{tx_hash}")
+        print(f" - Transaction URL: https://testnet.xrpl.org/transactions/{tx_hash}")
     else:
         has_failure = True
         print(f" - Transaction not found: {tx_response.result['error']}")

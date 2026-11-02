@@ -44,8 +44,8 @@ func main() {
 	// Connect to the network ----------------------
 	client := websocket.NewClient(
 		websocket.NewClientConfig().
-			WithHost("wss://s.devnet.rippletest.net:51233").
-			WithFaucetProvider(faucet.NewDevnetFaucetProvider()),
+			WithHost("wss://s.altnet.rippletest.net:51233").
+			WithFaucetProvider(faucet.NewTestnetFaucetProvider()),
 	)
 	defer client.Disconnect()
 
@@ -188,7 +188,7 @@ func main() {
 	resultJSON, _ := json.MarshalIndent(submitResponse, "", "  ")
 	fmt.Printf("Result:\n%s\n", string(resultJSON))
 	// View the transaction on the XRPL Explorer
-	fmt.Printf("\nBatch transaction URL:\nhttps://devnet.xrpl.org/transactions/%s\n", submitResponse.Hash)
+	fmt.Printf("\nBatch transaction URL:\nhttps://testnet.xrpl.org/transactions/%s\n", submitResponse.Hash)
 
 	// Calculate and verify inner transaction hashes ----------------------
 	fmt.Printf("\n=== Verifying inner transactions ===\n")
@@ -214,7 +214,7 @@ func main() {
 			panic(err)
 		}
 		fmt.Printf(" - Status: %s (Ledger %d)\n", tx.Meta.TransactionResult, tx.LedgerIndex)
-		fmt.Printf(" - Transaction URL: https://devnet.xrpl.org/transactions/%s\n", txHash)
+		fmt.Printf(" - Transaction URL: https://testnet.xrpl.org/transactions/%s\n", txHash)
 	}
 	if hasFailure {
 		fmt.Printf("\n--- Error: One or more inner transactions failed. ---\n")

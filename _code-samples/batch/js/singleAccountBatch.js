@@ -11,7 +11,7 @@
 import xrpl from "xrpl"
 
 // Connect to the network ----------------------
-const client = new xrpl.Client("wss://s.devnet.rippletest.net:51233/")
+const client = new xrpl.Client("wss://s.altnet.rippletest.net:51233/")
 await client.connect()
 
 // Create and fund wallets
@@ -84,7 +84,7 @@ if (submitResponse.result.meta.TransactionResult !== "tesSUCCESS") {
 console.log("\nBatch transaction submitted successfully!")
 console.log("Result:\n", JSON.stringify(submitResponse.result, null, 2))
 // View the batch transaction on the XRPL Explorer
-console.log(`\nBatch transaction URL:\nhttps://devnet.xrpl.org/transactions/${submitResponse.result.hash}`)
+console.log(`\nBatch transaction URL:\nhttps://testnet.xrpl.org/transactions/${submitResponse.result.hash}`)
 
 // Calculate and verify inner transaction hashes ----------------------
 console.log("\n=== Verifying inner transactions... ===")
@@ -100,7 +100,7 @@ for (let i = 0; i < rawTransactions.length; i++) {
     const tx = await client.request({ command: 'tx', transaction: hash })
     const status = tx.result.meta?.TransactionResult
     console.log(` - Status: ${status} (Ledger ${tx.result.ledger_index})`)
-    console.log(` - Transaction URL: https://devnet.xrpl.org/transactions/${hash}`)
+    console.log(` - Transaction URL: https://testnet.xrpl.org/transactions/${hash}`)
   } catch (error) {
     hasFailure = true
     console.log(` - Transaction not found: ${error}`)

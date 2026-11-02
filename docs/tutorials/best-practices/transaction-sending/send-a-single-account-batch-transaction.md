@@ -180,7 +180,7 @@ To check the result of the `Batch` transaction submission:
 The code checks for a `tesSUCCESS` result and displays the response details.
 
 {% admonition type="warning" name="Warning" %}
-A `tesSUCCESS` result indicates that the `Batch` transaction was processed successfully, but does not guarantee the inner transactions succeeded. For example, see the [following transaction on the XRPL Explorer](https://devnet.xrpl.org/transactions/20CFCE5CF75E93E6D1E9C1E42F8E8C8C4CB1786A65BE23D2EA77EAAB65A455C5/simple).
+A `tesSUCCESS` result indicates that the `Batch` transaction was processed successfully, but does not guarantee the inner transactions succeeded. For example, see the [following transaction on the XRPL Explorer](https://livenet.xrpl.org/transactions/31A944F359D18C1C9DB3ACFC17BBFF5750E71B3CF2D9158701D8F477B81E63C4).
 {% /admonition %}
 
 Because the `Batch` transaction is configured with a `tfAllOrNothing` flag, if any inner transaction fails, **all** inner transactions will fail, and only the `Batch` transaction fee is deducted from the **sender**.
