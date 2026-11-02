@@ -18,7 +18,6 @@ A transaction that fails with a `tec` code destroys the XRP paid as a [transacti
 | Code                       | Value | Explanation                             |
 |:---------------------------|:------|:----------------------------------------|
 | `tecAMM_ACCOUNT`           | 168   | The transaction failed because the operation is not allowed on Automated Market Maker (AMM) accounts. {% amendment-disclaimer name="AMM" /%}  |
-| `tecAMM_UNFUNDED`          | 162   | The [AMMCreate transaction][] failed because the sender does not have enough of the specified assets to fund it. {% amendment-disclaimer name="AMM" /%}  |
 | `tecAMM_BALANCE`           | 163   | The [AMMDeposit][] or [AMMWithdraw][] transaction failed because either the AMM or the user does not hold enough of one of the specified assets. (For example, you tried to withdraw more than the AMM holds.) {% amendment-disclaimer name="AMM" /%}  |
 | `tecAMM_EMPTY`             | 166   | The AMM-related transaction failed because the AMM has no assets in its pool. In this state, you can only delete the AMM or fund it with a new deposit. {% amendment-disclaimer name="AMM" /%}  |
 | `tecAMM_FAILED`            | 164   | The AMM-related transaction failed. For [AMMDeposit][] or [AMMWithdraw][] this could be because the sender does not have enough of the specified assets, or the transaction requested an effective price that isn't possible with the available amounts. For [AMMBid][] this could be because the account does not have enough to win the bid or needs more than their specified maximum bid. For [AMMVote][], this could be because there are already too many votes from other accounts that hold more of this AMM's LP Tokens. {% amendment-disclaimer name="AMM" /%}  |
@@ -74,6 +73,7 @@ A transaction that fails with a `tec` code destroys the XRP paid as a [transacti
 | `tecTOO_SOON`              | 152   | The [AccountDelete transaction][] failed because the account to be deleted had a `Sequence` number that is too high. The current ledger index must be at least 256 higher than the account's sequence number. |
 | `tecUNFUNDED`              | 129   | The transaction failed because the account does not hold enough XRP to pay the amount in the transaction _and_ satisfy the additional [reserve](../../../../concepts/accounts/reserves.md) necessary to execute this transaction. |
 | `tecUNFUNDED_ADD`          | 102   | **DEPRECATED.**                         |
+| `tecUNFUNDED_AMM`          | 162   | The [AMMCreate transaction][] failed because the sender does not have enough of the specified assets to fund it. {% amendment-disclaimer name="AMM" /%}  |
 | `tecUNFUNDED_PAYMENT`      | 104   | The transaction failed because the sending account is trying to send more XRP than it holds, not counting the [reserve](../../../../concepts/accounts/reserves.md). |
 | `tecUNFUNDED_OFFER`        | 103   | The [OfferCreate transaction][] failed because the account creating the offer does not have any of the `TakerGets` currency. |
 
