@@ -27,7 +27,7 @@ labels:
 | `telINSUF_FEE_P`       | トランザクションの`Fee`が、サーバの負荷レベルに基づいて定められるサーバの現在の[トランザクションコスト](../../../../concepts/transactions/transaction-cost.md)要件を満たすのに十分な値ではありあません。 |
 | `telLOCAL_ERROR`        | 不明なローカルエラー。                             |
 | `telNETWORK_ID_MAKES_TX_NON_CANONICAL` | トランザクションは[`NetworkID`フィールド](../common-fields.md#networkidフィールド)を指定していますが、現在のネットワークルールでは`NetworkID`フィールドは指定しないことになっています。(メインネットやその他のチェーンIDが1024以下のネットワークではこのフィールドは使用されません)。もしトランザクションが`NetworkID`を使用しないネットワーク向けであった場合、そのフィールドを削除して再試行してください。トランザクションが別のネットワーク向けだった場合は、正しいネットワークに接続されているサーバに送信してください。 {% badge href="https://github.com/XRPLF/rippled/releases/tag/1.11.0" %}新規: rippled 1.11.0{% /badge %} |
-| `telNO_DST`_`PARTIAL`   | トランザクションは、新しいアカウントに資金を供給するためのXRPによる支払いですが、[tfPartialPaymentフラグ](../../../../concepts/payment-types/partial-payments.md)が有効になっていました。これは許可されていません。 |
+| `telNO_DST_PARTIAL`   | トランザクションは、新しいアカウントに資金を供給するためのXRPによる支払いですが、[tfPartialPaymentフラグ](../../../../concepts/payment-types/partial-payments.md)が有効になっていました。これは許可されていません。 |
 | `telREQUIRES_NETWORK_ID` | トランザクションは[`NetworkID`フィールド](../common-fields.md#networkidフィールド)を指定していません。トランザクションが`NetworkID`を必要とするネットワーク向けであった場合、フィールドを追加して再試行してください。トランザクションが別のネットワーク向けであった場合、正しいネットワークに接続されているサーバに送信してください。{% badge href="https://github.com/XRPLF/rippled/releases/tag/1.11.0" %}新規: rippled 1.11.0{% /badge %} |
 | `telWRONG_NETWORK` | トランザクションが現在のネットワークに対して間違った [`NetworkID` 値](../common-fields.md#networkidフィールド) を指定しています。目的のネットワークに対して正しい `NetworkID`値を指定するか、正しいネットワークに接続されているサーバにトランザクションを送信してください。{% badge href="https://github.com/XRPLF/rippled/releases/tag/1.11.0" %}新規: rippled 1.11.0{% /badge %} |
 
