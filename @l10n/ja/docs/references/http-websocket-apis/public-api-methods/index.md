@@ -21,6 +21,7 @@ XRP Ledgerのアカウントとは、XRPの保有者と取引の送信者を意�
 * **[`account_currencies`](account-methods/account_currencies.md)** - アカウントが送受信できる通貨のリストを取得します。
 * **[`account_info`](account-methods/account_info.md)** - アカウントについての基本データを取得します。
 * **[`account_lines`](account-methods/account_lines.md)** - アカウントのトラストラインについての情報を取得します。
+* **[`account_nfts`](account-methods/account_nfts.md)** - アカウントが保有する非代替性トークン（NFT）のリストを取得します。
 * **[`account_objects`](account-methods/account_objects.md)** - アカウントが保有しているすべてのレジャーオブジェクトを取得します。
 * **[`account_offers`](account-methods/account_offers.md)** - アカウントの通貨取引オファーについての情報を取得します。
 * **[`account_tx`](account-methods/account_tx.md)** - アカウントのトランザクションについての情報を取得します。
@@ -43,12 +44,15 @@ XRP Ledgerのアカウントとは、XRPの保有者と取引の送信者を意�
 
 トランザクションだけが、XRP Ledgerの共有されている状態を変更できます。XRP Ledgerに対するすべてのビジネスはトランザクションの形態をとります。以下のメソッドを使用して、トランザクションを処理します。
 
-* **[`sign`](../admin-api-methods/signing-methods/sign.md)** - トランザクションに暗号で署名します。
-* **[`sign_for`](../admin-api-methods/signing-methods/sign_for.md)** - マルチ署名に署名を提供します。
 * **[`submit`](transaction-methods/submit.md)** - トランザクションをネットワークに送信します。
 * **[`submit_multisigned`](transaction-methods/submit_multisigned.md)** - マルチ署名済みトランザクションをネットワークに送信します。
 * **[`transaction_entry`](transaction-methods/transaction_entry.md)** - レジャーの特定のバージョンからトランザクションについての情報を取得します。
 * **[`tx`](transaction-methods/tx.md)** - 手元にあるすべてのレジャーからトランザクションについての情報を取得します。
+
+デフォルトでは、以下のメソッドは[管理者専用](../admin-api-methods/index.md)です。サーバ管理者が[パブリック署名を有効にしている](../../../infrastructure/configuration/enable-public-signing.md)場合は、パブリックメソッドとして使用できます。
+
+* **[`sign`](../admin-api-methods/signing-methods/sign.md)** - トランザクションに暗号で署名します。
+* **[`sign_for`](../admin-api-methods/signing-methods/sign_for.md)** - マルチ署名に署名を提供します。
 
 
 ## [パスおよびオーダーブックのメソッド](path-and-order-book-methods/index.md)
@@ -58,8 +62,8 @@ XRP Ledgerのアカウントとは、XRPの保有者と取引の送信者を意�
 * **[`amm_info`](path-and-order-book-methods/amm_info.md)** - 自動マーケットメイカー(AMM)についての情報を取得します。
 * **[`book_offers`](path-and-order-book-methods/book_offers.md)** - 2つの通貨を交換するオファーに関する情報を取得します。
 * **[`deposit_authorized`](path-and-order-book-methods/deposit_authorized.md)** - あるアカウントが別のアカウントへの支払いの直接送信について承認されているかどうかを調べます。
-* **[`nft_buy_offers`](path-and-order-book-methods/nft_buy_offers.md)** - Retrieve a list of buy offers for a specified NFToken object.
-* **[`nft_sell_offers`](path-and-order-book-methods/nft_sell_offers.md)** - Retrieve a list of sell offers for a specified NFToken object.
+* **[`nft_buy_offers`](path-and-order-book-methods/nft_buy_offers.md)** - 指定したNFTokenオブジェクトに対する購入オファーのリストを取得します。
+* **[`nft_sell_offers`](path-and-order-book-methods/nft_sell_offers.md)** - 指定したNFTokenオブジェクトに対する売却オファーのリストを取得します。
 * **[`path_find`](path-and-order-book-methods/path_find.md)** - 2つのアカウント間の支払いのパスを見つけて、更新を受け取ります。
 * **[`ripple_path_find`](path-and-order-book-methods/ripple_path_find.md)** - 2つのアカウント間の支払いのパスを1回だけ見つけます。
 
@@ -91,6 +95,22 @@ Payment Channel は、2名の当事者間での一方向の繰り返しの支払
 * **[`feature`](server-info-methods/feature.md)** - サーバが認識しているAmendmentに関する情報を返します。
 * **[`server_info`](server-info-methods/server_info.md)** - サーバのステータスを人間が読めるフォーマットで取得します。
 * **[`server_state`](server-info-methods/server_state.md)** - サーバのステータスを機械が読み取れるフォーマットで取得します。
+* **[`server_definitions`](server-info-methods/server_definitions.md)** - XRPLの正規バイナリフォーマットで使用される型とフィールドのリストを取得します。
+* **[`manifest`](server-info-methods/manifest.md)** - 既知のバリデータに関する最新の一時公開鍵の情報を取得します。
+
+
+## [Clioメソッド](clio-methods/index.md)
+
+以下のメソッドを使用して、ClioサーバのAPIから情報を取得します。
+
+* **[`server_info`](clio-methods/server_info-clio.md)** - Clioサーバのステータスを取得します。
+* **[`ledger`](clio-methods/ledger-clio.md)** - Clioサーバの`ledger`APIを使用して、レジャーバージョンについての情報を取得します。
+* **[`nft_info`](clio-methods/nft_info.md)** - Clioサーバの`nft_info`APIを使用して、指定したNFTに関する情報を取得します。
+* **[`nft_history`](clio-methods/nft_history.md)** - 指定したNFTの所有権と移転の履歴を取得します。
+* **[`nfts_by_issuer`](clio-methods/nfts_by_issuer.md)** - 指定したアカウントが発行したNFTokenのリストを取得します。
+* **[`mpt_holders`](clio-methods/mpt_holders.md)** - 指定したMPT発行のすべての保有者とその残高を取得します。
+* **[`account_mptokens`](clio-methods/account_mptokens.md)** - 指定したアカウントが保有するMPTokenとその残高を取得します。
+* **[`account_mptoken_issuances`](clio-methods/account_mptoken_issuances.md)** - 指定したアカウントが作成したMPTokenIssuanceを取得します。
 
 
 ## [ユーティリティメソッド](utility-methods/index.md)
@@ -100,6 +120,13 @@ Payment Channel は、2名の当事者間での一方向の繰り返しの支払
 * **[`json`](utility-methods/json.md)** - プロキシとして使用して、他のコマンドを実行します。コマンドのパラメーターをJSON値として受け入れます。_コマンドラインのみ。_
 * **[`ping`](utility-methods/ping.md)** - サーバとの接続を確認します。
 * **[`random`](utility-methods/random.md)** - 乱数を生成します。
+
+
+## [Vaultメソッド](vault-methods/index.md)
+
+以下のメソッドを使用して、Vaultの情報を取得します。
+
+* **[`vault_info`](vault-methods/vault_info.md)** - 特定のVaultに関する情報を取得します。
 
 
 ## 非推奨のメソッド
