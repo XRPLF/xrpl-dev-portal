@@ -16,7 +16,6 @@ labels:
 | コード                             | 値  | 説明                                    |
 |:---------------------------------- |:----|:----------------------------------------|
 | `tecAMM_ACCOUNT`                   | 168 | 自動マーケットメーカー（AMM）アカウントではこの操作が許可されていないため、トランザクションが失敗しました。 {% amendment-disclaimer name="AMM" /%}  |
-| `tecAMM_UNFUNDED`                  | 162 | 送信者が指定された資産を十分に保有していないため[AMMCreateトランザクション][]が失敗しました。 {% amendment-disclaimer name="AMM" /%}  |
 | `tecAMM_BALANCE`                   | 163 | AMMまたはユーザーが指定された資産の十分な量を保有していないため[AMMDeposit][]または[AMMWithdraw][]トランザクションが失敗しました。(例えば、AMMが保有するよりも多くを引き出そうとしている場合） {% amendment-disclaimer name="AMM" /%}  |
 | `tecAMM_EMPTY`                     | 166 | AMMのプールに資産がないためAMM関連のトランザクションが失敗しました。この状態では、AMMを削除するか、新しい入金でAMMに資金を供給することしかできません。 {% amendment-disclaimer name="AMM" /%}  |
 | `tecAMM_FAILED`                    | 164 | AMM関連のトランザクションは失敗しました。[AMMDeposit][]または[AMMWithdraw][]の場合、これは送信者が指定された資産を十分に持っていないか、利用可能な金額では不可能な実効価格がトランザクションで要求されたことが原因である可能性があります。[AMMBid][]の場合、これは当該アカウントが落札に必要な金額を十分に持っていないか、指定された最高入札価格よりも高い金額が必要であることが原因である可能性があります。[AMMVote] の場合、このAMMのLPトークンをより多く保有している他のアカウントからの投票がすでに多すぎるのが原因である可能性があります。 {% amendment-disclaimer name="AMM" /%}  |
@@ -66,6 +65,7 @@ labels:
 | `tecTOO_SOON`                      | 152 | 削除するアカウントの`Sequence`番号が大きすぎるため、[AccountDeleteトランザクション][]が失敗しました。現行のレジャーインデックスは、アカウントのシーケンス番号より256以上大きくなければなりません。 |
 | `tecUNFUNDED`                      | 129 | トランザクションが失敗しました。アカウントがトランザクションの支払額に十分なXRPを保有しておらず、 _かつ_ このトランザクションを実行するのに追加で必要となる準備金が不足しています。([準備金](../../../../concepts/accounts/reserves.md)をご覧ください。) |
 | `tecUNFUNDED_ADD`                  | 102 | **廃止。** |
+| `tecUNFUNDED_AMM`                  | 162 | 送信者が指定された資産を十分に保有していないため[AMMCreateトランザクション][]が失敗しました。 {% amendment-disclaimer name="AMM" /%}  |
 | `tecUNFUNDED_PAYMENT`              | 104 | 送信側アカウントが準備金を考慮せずに、保有するXRPを超える額の送信を試みたため、トランザクションが失敗しました。([準備金](../../../../concepts/accounts/reserves.md)をご覧ください。) |
 | `tecUNFUNDED_OFFER`                | 103 | [OfferCreateトランザクション][]が失敗しました。オファーの作成元アカウントに`TakerGets`通貨がありません。 |
 
