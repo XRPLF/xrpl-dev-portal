@@ -68,7 +68,7 @@ AMMを表す[AMMエントリ][]と[特殊なAccountRootエントリ](../../ledge
 | `tecNO_PERMISSION`  | 少なくとも1つの入金資産はAMMで使用できません。 |
 | `tecUNFUNDED_AMM`   | 送信者は`Amount`と`Amount2`で指定された金額をAMMに入金するための十分な資金を保有していません。 |
 | `terNO_RIPPLE`      | 少なくとも1つの資産の発行者が[Default Rippleフラグ](../../../../concepts/tokens/fungible-tokens/rippling.md#defaultrippleフラグ)を有効にしていません。 |
-| `temAMM_BAD_TOKENS` | `Amount`と`Amount2`値が正しくありません。例えば、両方とも同じトークンを参照している場合です。 |
+| `temBAD_AMM_TOKENS` | `Amount`と`Amount2`値が正しくありません。例えば、両方とも同じトークンを参照している場合です。 |
 | `temBAD_FEE`        | `TradingFee`の値が不正です。ゼロまたは正の整数でなければならず、1000を超えることはできません。 |
 | `temDISABLED`       | このネットワークでは、AMM機能が無効になっています。 |
 
