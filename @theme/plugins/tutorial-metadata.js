@@ -14,6 +14,9 @@ const PROJECT_ROOT = resolve(__dirname, '../..');
  * Only includes tutorials that appear in the sidebar navigation (sidebars.yaml).
  * This creates shared data for displaying "What's New" tutorials and
  * auto-generating tutorial sections on the landing page.
+ *
+ * Each tutorial also carries `labels` (the free-form topic labels authors add
+ * to the page's frontmatter), which the landing page's search matches against.
  */
 export function tutorialMetadata() {
   /** @type {import("@redocly/realm/dist/server/plugins/types").PluginInstance } */
@@ -24,7 +27,7 @@ export function tutorialMetadata() {
         // Only tutorials present in the sidebar are included.
         const { pageCategory, categories } = extractSidebarData();
 
-        /** @type {Array<{path: string, title: string, description: string, lastModified: string, category: string}>} */
+        /** @type {Array<{path: string, title: string, description: string, lastModified: string, category: string, labels: string[]}>} */
         const tutorials = [];
         const allFiles = await fs.scan();
 
@@ -53,6 +56,11 @@ export function tutorialMetadata() {
             // Get description from frontmatter or first paragraph
             const description = frontmatter?.seo?.description || '';
 
+            // Topic labels, normalized to strings
+            const labels = Array.isArray(frontmatter?.labels)
+              ? frontmatter.labels.map((label) => String(label))
+              : [];
+
             // Convert file path to URL path
             const urlPath = '/' + relativePath
               .replace(/[\/\\]index\.md$/, '/')
@@ -65,6 +73,7 @@ export function tutorialMetadata() {
               description,
               lastModified,
               category,
+              labels,
             });
           } catch (err) {
             continue; // Skip files that can't be parsed

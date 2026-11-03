@@ -45,7 +45,9 @@ export function tutorialLanguages() {
 
             if (languages.length > 0) {
               // Convert file path to URL path
+              // Same conversion as tutorial-metadata.js, so the two maps share keys
               const urlPath = '/' + relativePath
+                .replace(/[\/\\]index\.md$/, '/')
                 .replace(/\.md$/, '/')
                 .replace(/\\/g, '/')
               tutorialLanguagesMap[urlPath] = languages
@@ -182,6 +184,9 @@ function detectLanguageFromPathAndTitle(relativePath, title) {
   }
   if (titleLower.includes('php')) {
     return 'php'
+  }
+  if (titleLower.includes('http') || titleLower.includes('websocket')) {
+    return 'http'
   }
 
   return null
