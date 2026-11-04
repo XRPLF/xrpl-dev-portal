@@ -32,6 +32,15 @@ $tutorials-network-stack: 360px;
   overflow: hidden;
 }
 
+// The Markdown page template keeps the docs layout; its content column
+// (the layout's first section) spans the full width on this page.
+.tutorials-landing-layout > section {
+  width: 100%;
+  max-width: none;
+  margin-right: 0;
+  margin-left: 0;
+}
+
 .page-tutorials {
   color: $black;
 

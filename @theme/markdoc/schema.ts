@@ -3,6 +3,14 @@ import type { MarkdocTagSchema } from '@redocly/theme/markdoc/tags/types';
 import { sourceLinkForLlms } from '../components/SourceLink';
 import { ResposiveGraphicForLlms } from '../components/ResponsiveGraphic'
 import { amendmentsTableForLlms, amendmentDisclaimerForLlms, obsoleteAmendmentsTableForLlms } from '../components/Amendments';
+import { tutorialsLandingForLlms } from '../components/Tutorials/forLlms';
+
+export const tutorialsLanding: MarkdocTagSchema & { tagName: string } = {
+  tagName: 'tutorials-landing',
+  render: 'TutorialsLanding',
+  selfClosing: true,
+  renderForLlms: tutorialsLandingForLlms,
+};
 
 export const childPages: Schema & { tagName: string } = {
   tagName: 'child-pages',
