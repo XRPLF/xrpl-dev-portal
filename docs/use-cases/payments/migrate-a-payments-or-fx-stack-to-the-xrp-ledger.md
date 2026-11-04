@@ -30,12 +30,14 @@ See [Transaction Types](../../references/protocol/transactions/types/index.md) f
 
 ## 2. Choose Your Infrastructure Path
 
-Once you've mapped the capabilities to XRP Ledger primitives, you have to decide how to connect to the network. You can choose one of two paths, depending on your infrastructure experience and custody preferences (see the [payments overview](../payments/) for more).
+Once you've mapped the capabilities to XRP Ledger primitives, you have to decide how to connect to the network. You can choose one of two paths, depending on your infrastructure experience and custody preferences:
 
 - **Custodian integration:** Your provider's API handles keys, signing, submission, and node access in the background. Lowest security load and fastest integration, but provides least control over funds and features, vendor lock-in, and potential compliance implications.
 - **Direct XRP Ledger integration:** You hold your own keys and use a [client library](../../references/client-libraries.md) to interact with the XRP Ledger. Choose one of the following methods:
   - **Managed node provider:** Fastest way to ship with low upfront costs. Someone else runs the nodes while you hold your keys and signing. Provides less control over [history retention](../../concepts/networks-and-servers/ledger-history.md), query privacy, and configuration, and you depend on their SLA.
   - **Self-hosted [`xrpld`](../../concepts/networks-and-servers/xrpld-server-modes.md) and [Clio](../../concepts/networks-and-servers/the-clio-server.md) servers:** Most control over ledger history, query privacy, and throughput, without third-party dependencies. Requires high operational overhead for hardware and maintaining synced servers. Suited to teams with higher volume or strict SLA needs. See [Install and Run](../../infrastructure/index.md).
+
+For more information, see the [payments overview](../payments/).
 
 ### Pick a Client Library
 
