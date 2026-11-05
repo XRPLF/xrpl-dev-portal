@@ -104,9 +104,9 @@ Now that your accounts are funded, you can port your business logic into built-i
 If you use a custodian integration, your custodian's API replaces the client library calls in the code samples below, so you don't build, sign, or submit transactions yourself. The concepts still apply, so check your custodian's documentation for how it reports transaction results, partial payments, and incoming payments.
 {% /admonition %}
 
-Some common Web2 payments concepts work like this on the XRP Ledger:
+Some concepts you may know from other chains work like this on the XRP Ledger:
 
-| Web2 Concept | XRP Ledger Field |
+| Concept from Other Chains | XRP Ledger Field |
 | --- | --- |
 | Nonce | [`Sequence`][Sequence Number] numbers order transactions serially per account. |
 | Gas | [`Fee`][Transaction cost] is a low base cost that rises with network load. |
