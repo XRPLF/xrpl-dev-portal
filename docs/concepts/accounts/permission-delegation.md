@@ -12,7 +12,6 @@ Permission delegation is the function of granting various permissions to another
 
 {% amendment-disclaimer name="PermissionDelegationV1_1" /%}
 
-{% partial file="/docs/_snippets/paymentburn-delegation-warning.md" /%}
 
 ## Background: The Need for Permission Delegation
 
