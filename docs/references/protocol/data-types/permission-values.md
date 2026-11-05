@@ -3,7 +3,6 @@ seo:
     description: Format for permissions that can be granted to other accounts.
 label:
     - Permissions
-status: not_enabled
 ---
 # Permission Values
 

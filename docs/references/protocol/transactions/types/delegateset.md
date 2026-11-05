@@ -5,7 +5,6 @@ labels:
   - Accounts
   - Permissions
   - Delegate
-status: not_enabled
 requiredAmendment: PermissionDelegationV1_1
 txIcon: modify
 ---
