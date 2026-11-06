@@ -31,13 +31,13 @@ In this tutorial, you'll learn:
 `xrpl-ruby` is available as a [RubyGem](https://rubygems.org/gems/xrpl-ruby):
 
 ```sh
-gem install xrpl-ruby
+gem install xrpl-ruby -v 0.9.1
 ```
 
 Or add it to your `Gemfile`:
 
 ```ruby
-gem 'xrpl-ruby'
+gem 'xrpl-ruby', '0.9.1'
 ```
 
 ## Start Building
@@ -161,32 +161,51 @@ client.disconnect
 To run the app, you can copy the code from [this website's GitHub Repository](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/get-started/ruby/) and run it from the command line:
 
 ```sh
-gem install xrpl-ruby
+gem install xrpl-ruby -v 0.9.1
 ruby get-account-info.rb
 ```
 
 You should see output similar to this example:
 
-```json
+```sh
+Classic address: rMPPPP1e3RkYUmqUgKKcajCG6YDQAEZaG
 {
-  "id": "e4f1...",
-  "status": "success",
-  "type": "response",
+  "id": "41427554-0ed5-4233-983e-a79d8006b40e",
   "result": {
     "account_data": {
-      "Account": "rTEST...",
+      "Account": "rMPPPP1e3RkYUmqUgKKcajCG6YDQAEZaG",
       "Balance": "100000000",
       "Flags": 0,
       "LedgerEntryType": "AccountRoot",
       "OwnerCount": 0,
-      "PreviousTxnID": "AE18...",
-      "PreviousTxnLgrSeq": 12345678,
-      "Sequence": 12345678,
-      "index": "4DD9..."
+      "PreviousTxnID": "D5D4BAAE6B5B04203CB063BA4F51F3A9DD0343FB0D6CFB77D256E7255D944589",
+      "PreviousTxnLgrSeq": 22109724,
+      "Sequence": 22109724,
+      "index": "D8841F8C9BF788A063078AEEA2DB5D8FBF53A2A066A46279B9B65B9AE0161E86"
     },
-    "ledger_index": 12345678,
+    "account_flags": {
+      "allowTrustLineClawback": false,
+      "allowTrustLineLocking": false,
+      "defaultRipple": false,
+      "depositAuth": false,
+      "disableMasterKey": false,
+      "disallowIncomingCheck": false,
+      "disallowIncomingNFTokenOffer": false,
+      "disallowIncomingPayChan": false,
+      "disallowIncomingTrustline": false,
+      "disallowIncomingXRP": false,
+      "globalFreeze": false,
+      "noFreeze": false,
+      "passwordSpent": false,
+      "requireAuthorization": false,
+      "requireDestinationTag": false
+    },
+    "ledger_hash": "F6D120328267564A9E7EC4AF98266697A0C541C329126F97E687034CFBB5D2BE",
+    "ledger_index": 22109724,
     "validated": true
-  }
+  },
+  "status": "success",
+  "type": "response"
 }
 ```
 
