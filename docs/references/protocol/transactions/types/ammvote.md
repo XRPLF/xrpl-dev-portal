@@ -52,9 +52,10 @@ Besides errors that can occur for all transactions, {% $frontmatter.seo.title %}
 |:------------------------|:---------------------------------------------|
 | `tecAMM_EMPTY`          | The AMM has no assets in its pool. In this state, you can only delete the AMM or fund it with a new deposit. |
 | `tecAMM_INVALID_TOKENS` | The sender cannot vote because they do not hold any of this AMM's LP Tokens. |
-| `tecAMM_FAILED_VOTE`    | There are already 8 votes from accounts that hold more LP Tokens than the sender of this transaction. |
 | `temBAD_FEE`            | The `TradingFee` from this transaction is not valid. |
 | `terNO_AMM`             | The Automated Market Maker instance for the asset pair in this transaction does not exist. |
+
+If all eight vote slots are full and the sender holds fewer LP Tokens than the existing voter with the fewest LP Tokens, the transaction succeeds with [`tesSUCCESS`](../transaction-results/tes-success.md) but doesn't record the sender's vote. The same happens if the sender holds the same amount of LP Tokens as that voter and votes for a trading fee that is lower than or equal to that voter's. In either case, the transaction still recalculates the weights of the existing votes and the AMM's trading fee based on the voters' current LP Token balances. To find out whether the vote was recorded, check the `VoteSlots` field of the [AMM entry][] after the transaction is validated.
 
 ## See Also
 
