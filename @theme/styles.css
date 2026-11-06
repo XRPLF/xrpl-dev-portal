@@ -459,3 +459,72 @@ button[role="tab"].active {
     display: inline-flex;
   }
 }
+
+/* Code walkthrough: make the active chunk unmistakable and tie it to the blue
+   step bar on the left. Scoped to the walkthrough so ordinary highlighted
+   code blocks keep the theme defaults. The .highlighted / .greyed-out classes
+   are generated at runtime, so these rules live here rather than in the
+   PurgeCSS-processed SCSS bundle. */
+.code-walkthrough {
+  --walkthrough-accent: var(--color-blue-5);
+  --code-block-highlighted-bg-color: var(--color-blue-10);
+  --code-block-highlighted-border-left: 3px solid var(--walkthrough-accent);
+  --code-step-vertical-line-bg-active: var(--walkthrough-accent);
+}
+:root.dark .code-walkthrough {
+  --walkthrough-accent: var(--color-blue-6);
+  --code-block-highlighted-bg-color: color-mix(in srgb, var(--color-blue-6) 14%, transparent);
+}
+
+/* The BDS navbar scrolls away with the page, so the framework's sticky offset
+   would leave an 80px gap above the code panel once scrolled (the sidebar and
+   table of contents get the same fix in styles/_bds-navbar.scss). Pin the panel
+   flush to the top so it sits level with the active step. Its height is left
+   as the framework sets it. */
+body:has(.bds-navbar) .code-walkthrough [data-component-name="Markdoc/CodeWalkthrough/CodePanel"] {
+  --navbar-height: 0px;
+}
+/* The sticky filter bar (Node / Web on the JavaScript and TypeScript pages)
+   has the same offset baked into its `top`, so pin it flush as well. */
+body:has(.bds-navbar) .code-walkthrough [data-component-name="Markdoc/CodeWalkthrough/CodeFilters"] {
+  top: 0;
+}
+/* With a filter bar, the docs column starts at the bar's top edge; start the
+   code panel on the same line instead of a spacing step lower. */
+.code-walkthrough:has([data-component-name="Markdoc/CodeWalkthrough/CodeFilters"]) [data-component-name="Markdoc/CodeWalkthrough/CodePanel"] {
+  margin-top: 0;
+}
+/* Clicking a step scrolls its marker to the top of the viewport. On pages
+   with a filter bar that would tuck the step heading under the bar, so leave
+   room for it. The height matches the bar as styled in _code-walkthrough.scss
+   (spacing-xs padding around a large tag). */
+.code-walkthrough:has([data-component-name="Markdoc/CodeWalkthrough/CodeFilters"]) [data-component-name="Marker/Marker"] {
+  scroll-margin-top: 52px;
+}
+
+/* Lines outside the active chunk: dim them enough to recede in both modes. */
+:root.light .code-walkthrough [data-component-name="Markdoc/CodeWalkthrough/CodeContainer"] {
+  --text-color-helper: var(--color-gray-5);
+}
+
+.code-walkthrough [data-component-name="Markdoc/CodeWalkthrough/CodeContainer"] pre {
+  /* Room below the last line so any chunk, including the final one, can be
+     scrolled up level with its step. */
+  padding-bottom: calc(0.6 * (100vh - var(--navbar-stack-height) - 2 * var(--spacing-xl)));
+}
+.code-walkthrough [data-component-name="Markdoc/CodeWalkthrough/CodeContainer"] pre span.line.highlighted::before {
+  color: var(--walkthrough-accent);
+  font-weight: var(--font-weight-semibold);
+}
+
+/* File tabs sit on the blue header in both modes: white-on-dark-blue for the
+   active tab, light blue for the rest, so both stay legible. */
+.code-walkthrough [data-component-name="Markdoc/CodeWalkthrough/CodePanelHeader"] {
+  --text-color-primary: white;
+  --text-color-secondary: var(--color-blue-10);
+  --text-color-description: var(--color-blue-9);
+  --tab-bg-color-filled: var(--color-blue-2);
+}
+:root.dark .code-walkthrough [data-component-name="Markdoc/CodeWalkthrough/CodePanelHeader"] {
+  --tab-bg-color-filled: var(--color-blue-1);
+}
