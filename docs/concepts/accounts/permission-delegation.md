@@ -4,7 +4,6 @@ seo:
 labels:
   - Accounts
   - Permissions
-status: not_enabled
 ---
 # Permission Delegation
 
