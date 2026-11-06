@@ -1,5 +1,5 @@
 {
   "require": {
-    "hardcastle/xrpl_php": "^2.3"
+    "hardcastle/xrpl_php": "3.2.0"
   }
 }

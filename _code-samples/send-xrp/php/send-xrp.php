@@ -5,9 +5,7 @@ require __DIR__ . '/vendor/autoload.php';
 
 // Imports
 use Hardcastle\XRPL_PHP\Client\JsonRpcClient;
-use Hardcastle\XRPL_PHP\Models\Account\AccountInfoRequest;
 use Hardcastle\XRPL_PHP\Wallet\Wallet;
-use function Hardcastle\XRPL_PHP\Sugar\fundWallet;
 use function Hardcastle\XRPL_PHP\Sugar\xrpToDrops;
 
 // Example credentials
@@ -16,6 +14,11 @@ print_r('Wallet Address: ' . $wallet->getAddress() .PHP_EOL); // rUYHuEvNGemBkF9
 
 // Create a client using the Testnet
 $client = new JsonRpcClient("https://s.altnet.rippletest.net:51234");
+
+// Get credentials from the Testnet faucet
+// For production, instead create a Wallet instance as above.
+$wallet = $client->fundWallet();
+print_r('Funded account: ' . $wallet->getAddress() . PHP_EOL);
 
 // Transaction definition
 $paymentTx = [

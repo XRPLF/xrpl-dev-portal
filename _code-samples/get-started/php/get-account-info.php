@@ -7,7 +7,6 @@ require __DIR__ . '/vendor/autoload.php';
 use Hardcastle\XRPL_PHP\Client\JsonRpcClient;
 use Hardcastle\XRPL_PHP\Models\Account\AccountInfoRequest;
 use Hardcastle\XRPL_PHP\Wallet\Wallet;
-use function Hardcastle\XRPL_PHP\Sugar\fundWallet;
 
 // Create a client using the Testnet
 $client = new JsonRpcClient("https://s.altnet.rippletest.net:51234");
@@ -16,7 +15,7 @@ $client = new JsonRpcClient("https://s.altnet.rippletest.net:51234");
 $wallet = Wallet::generate();
 
 // Fund (and activate) the wallet
-fundWallet($client, $wallet);
+$client->fundWallet($wallet);
 
 // Create an AccountInfoRequest method
 $accountInfoRequest = new AccountInfoRequest(
