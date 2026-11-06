@@ -95,13 +95,13 @@ For details, see the [XLS-73: AMMClawback specification](https://github.com/XRPL
 |:-------------|:------|
 | Amendment ID | 894646DD5284E97DECFE6674A6D6152686791C4A95F8C132CCA9BAF9E5812FB6 |
 | Status       | {% amendment-disclaimer name="Batch" statusOnly=true /%} |
-| Default Vote (Latest stable release) | No |
-| Pre-amendment functionality retired? | No |
+| Default Vote (Latest stable release) | N/A |
+| Pre-amendment functionality retired? | N/A |
 
 Allows multiple transactions to be bundled into a batch that's processed all together.
 
 {% admonition type="danger" name="Warning" %}
-This amendment was disabled in v3.1.1 due to a bug and replaced by [BatchV1_1](#batchv1_1).
+This amendment was disabled in v3.1.1 due to a [bug](../blog/2026/vulnerabilitydisclosurereport-bug-feb2026.md) and replaced by [BatchV1_1](#batchv1_1).
 {% /admonition %}
 
 
@@ -115,7 +115,7 @@ This amendment was disabled in v3.1.1 due to a bug and replaced by [BatchV1_1](#
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
-Allows multiple transactions to be bundled into a batch that's processed all together. This amendment replaces [Batch](#batch), fixing a critical bug discovered in the original implementation of the feature. Standard: [XLS-56](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0056-batch).
+Allows multiple transactions to be bundled into a batch that's processed all together. This amendment replaces [Batch](#batch), fixing a [critical bug](../blog/2026/vulnerabilitydisclosurereport-bug-feb2026.md) discovered in the original implementation of the feature. The [fixBatchV1_2](#fixbatchv1_2) amendment adds a check that each inner transaction is wrapped in a `RawTransaction` field. Standard: [XLS-56](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0056-batch).
 
 
 ### CheckCashMakesTrustLine
@@ -789,8 +789,21 @@ Adds several fixes to Automated Market Maker code, specifically:
 This amendment fixes an issue where inner transactions of a `Batch` transaction would be flagged as having valid signatures. Since inner transactions aren't signed directly, they should never have valid signatures.
 
 {% admonition type="danger" name="Warning" %}
-This amendment was disabled in v3.1.1 due to a bug in `Batch`. The `BatchV1_1` amendment includes this fix.
+This amendment was disabled in v3.1.1 due to a [bug in `Batch`](../blog/2026/vulnerabilitydisclosurereport-bug-feb2026.md). The `BatchV1_1` amendment includes this fix.
 {% /admonition %}
+
+
+### fixBatchV1_2
+[fixBatchV1_2]: #fixbatchv1_2
+
+| Amendment    | fixBatchV1_2 |
+|:-------------|:-------------|
+| Amendment ID | 14A2B45E48A4A124D1BBA657AC7B0DC3D5EA8C256C89E8F0D8142D32960A7944 |
+| Status       | {% amendment-disclaimer name="fixBatchV1_2" statusOnly=true /%} |
+| Default Vote (Latest stable release) | Yes |
+| Pre-amendment functionality retired? | No |
+
+This amendment fixes a bug in the [BatchV1_1][] amendment code where servers could accept a `Batch` transaction even if an inner transaction was wrapped in an object field other than `RawTransaction`, and servers running different versions could disagree on whether such a transaction was valid. With this amendment, a `Batch` transaction fails with `temMALFORMED` if any inner transaction isn't wrapped in a `RawTransaction` field. For more information, see the [vulnerability disclosure report](../blog/2026/vulnerabilitydisclosurereport-bug-20261009.md#batch-inner-transaction-wrapper-validation-fixbatchv1_2).
 
 
 ### fixCheckThreading
@@ -1846,7 +1859,7 @@ For more information, see the [Payment Channels Tutorial](../docs/tutorials/paym
 Allows accounts to delegate some permissions to other accounts.
 
 {% admonition type="danger" name="Warning" %}
-This amendment was disabled in v2.6.1 due to a bug and replaced by [PermissionDelegationV1_1](#permissiondelegationv1_1).
+This amendment was disabled in v2.6.1 due to a [bug](../blog/2025/vulnerabilitydisclosurereport-bug-sep2025.md) and replaced by [PermissionDelegationV1_1](#permissiondelegationv1_1).
 {% /admonition %}
 
 
@@ -1857,10 +1870,10 @@ This amendment was disabled in v2.6.1 due to a bug and replaced by [PermissionDe
 |:-------------|:---------------------|
 | Amendment ID | 0F48FF561C709540328F31F1C97FD512ACC8B4E42138A161CB0E21ECA292540B |
 | Status       | {% amendment-disclaimer name="PermissionDelegationV1_1" statusOnly=true /%} |
-| Default Vote (Latest stable release) | N/A |
-| Pre-amendment functionality retired? | N/A |
+| Default Vote (Latest stable release) | No |
+| Pre-amendment functionality retired? | No |
 
-Allows accounts to delegate some permissions to other accounts. This amendment replaces [PermissionDelegation](#permissiondelegation), fixing a critical bug discovered in the original implementation of the feature. Standard: [XLS-75](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0075-permission-delegation).
+Allows accounts to delegate some permissions to other accounts. This amendment replaces [PermissionDelegation](#permissiondelegation), fixing a [critical bug](../blog/2025/vulnerabilitydisclosurereport-bug-sep2025.md) discovered in the original implementation of the feature. Standard: [XLS-75](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0075-permission-delegation).
 
 {% partial file="/docs/_snippets/paymentburn-delegation-warning.md" /%}
 
@@ -2018,6 +2031,8 @@ Older versions of `rippled` that do not know about this amendment may crash when
 | Pre-amendment functionality retired? | No |
 
 The Sponsor amendment removes onboarding friction by allowing companies, token issuers, and other entities to subsidize transaction costs and reserve requirements for end users. Sponsors can co-sign transactions or pre-fund sponsorships, covering fees and reserves, while sponsees retain full control of their accounts and keys.
+
+The [fixCleanup3_4_0](#fixcleanup3_4_0) amendment fixes a [reserve-accounting bug](../blog/2026/vulnerabilitydisclosurereport-bug-aug2026.md) in this amendment.
 
 For more details, see [XLS-68: Sponsored Fees and Reserves](https://opensource.ripple.com/docs/xls-68-sponsored-fees-and-reserves).
 
