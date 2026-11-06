@@ -169,6 +169,11 @@ scripts:
       defer: true
     - src: ./static/js/osano.js
       type: text/javascript
+    # Keeps the code walkthrough panel (Get Started pages) level with the
+    # active step. Reads only the walkthrough DOM, so it is safe across
+    # Realm upgrades. See static/js/code-walkthrough-align.js.
+    - src: ./static/js/code-walkthrough-align.js
+      defer: true
 links:
   # Warm up the Google Fonts connections before the render-blocking stylesheet
   # below is fetched, saving DNS + TCP + TLS round-trips on every page. (The
