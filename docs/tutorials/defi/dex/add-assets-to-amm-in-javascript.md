@@ -1,3 +1,7 @@
+---
+seo:
+    description: Deposit assets into an existing Automated Market Maker (AMM), vote on its trading fee, and redeem LP tokens using JavaScript.
+---
 # Add Assets to an AMM in JavaScript
 
 Follow the steps from the [Create an AMM](./create-an-automated-market-maker.md) tutorial before proceeding.

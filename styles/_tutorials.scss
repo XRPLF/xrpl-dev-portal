@@ -1,405 +1,1002 @@
-// Tutorials landing page styles
+// Tutorials landing page (docs/tutorials/index.page.tsx)
 
-// Card footer gradient images
-$card-footers: (
-  "3-col-pink",
-  "3col-blue-light-blue",
-  "3-col-light-blue",
-  "3col-blue-green",
-  "3col-magenta",
-  "3-col-orange"
-);
+// Card height from md up: fits a two-line title and four-line description at ~305px wide.
+$tutorials-card-height: 344px;
+// Grid widths at which cards go two- and three-up.
+$tutorials-grid-two-up: 480px;
+$tutorials-grid-three-up: 820px;
+// Anchor offset below the fixed navbar.
+$tutorials-anchor-offset: $bds-navbar-height-desktop + $bds-space-lg;
+// Panel width below which protocol labels stack above their URLs.
+$tutorials-network-stack: 360px;
 
-$whats-new-footers: (
-  "3col-green-purple",
-  "3col-purple-blue-green",
-  "3col-green-blue"
-);
+// Small print for the network panel.
+@mixin tutorials-small-text {
+  font-size: 13px;
+  line-height: 20px;
+}
 
-// Tutorial cards
-.page-tutorials .tutorial-cards {
-  > div {
-    display: flex;
+// Secondary text: eyebrow, counts, notes, status line.
+@mixin tutorials-muted-text {
+  color: $gray-500;
+
+  @include bds-theme-mode(dark) {
+    color: $gray-300;
+  }
+}
+
+@mixin tutorials-line-clamp($lines) {
+  display: -webkit-box;
+  -webkit-line-clamp: $lines;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+// The Markdown page template keeps the docs layout; its content column
+// (the layout's first section) spans the full width on this page.
+.tutorials-landing-layout > section {
+  width: 100%;
+  max-width: none;
+  margin-right: 0;
+  margin-left: 0;
+}
+
+.page-tutorials {
+  color: $black;
+
+  @include bds-theme-mode(dark) {
+    color: $white;
   }
 
-  .card {
+  // Page width: 32px sides and a 1280px cap, so the docs-layout column is used in full.
+  .bds-grid__container {
+    @include media-breakpoint-up(xl) {
+      max-width: 1280px;
+      padding-right: $bds-space-3xl;
+      padding-left: $bds-space-3xl;
+    }
+  }
+
+  // Hero
+  .tutorials-hero {
+    padding-top: $bds-space-4xl;
+
+    @include media-breakpoint-up(lg) {
+      padding-top: $bds-space-6xl;
+    }
+
+    &__row {
+      row-gap: $bds-space-3xl;
+      align-items: flex-start;
+    }
+
+    // Gap to the panel goes inside the column; grid widths assume the 8px gutter.
+    &__copy {
+      @include media-breakpoint-up(lg) {
+        padding-right: $bds-space-5xl;
+      }
+    }
+
+    // Eyebrow above the h1; reversed visually so the h1 stays first in the DOM.
+    &__heading {
+      display: flex;
+      flex-direction: column-reverse;
+      margin-bottom: $bds-space-2xl;
+
+      @include media-breakpoint-up(lg) {
+        margin-bottom: $bds-space-4xl;
+      }
+    }
+
+    &__eyebrow {
+      @include tutorials-muted-text;
+      margin: 0 0 $bds-space-sm;
+    }
+
+    &__title {
+      margin: 0;
+      max-width: 12em;
+    }
+  }
+
+  // Network panel. Below 360px the protocol labels stack above the URLs.
+  .tutorials-network-host {
+    container-type: inline-size;
+  }
+
+  .tutorials-network {
     display: flex;
     flex-direction: column;
-    height: 100%;
-    width: 100%;
-    min-height: 300px;
-    transition: all 0.35s ease-out;
-    cursor: pointer;
+    gap: $bds-space-md;
+    padding: $bds-space-lg $bds-space-xl;
+    border: 1px solid $gray-300;
+    border-left: 3px solid $lilac-400;
+    border-radius: $border-radius-lg;
+    background-color: $white;
+    color: $black;
 
-    &:hover {
-      transform: translateY(-16px);
+    @include bds-theme-mode(dark) {
+      border-color: $gray-700;
+      border-left-color: $lilac-300;
+      background-color: $gray-800;
+      color: $white;
     }
 
-    .card-header {
-      border-bottom: none;
-      background: transparent;
-      padding: 1.5rem 1.5rem 0 2rem;
+    &__label {
+      margin: 0;
+      color: $lilac-400;
+
+      @include bds-theme-mode(dark) {
+        color: $lilac-300;
+      }
     }
 
-    .circled-logo {
-      margin-left: -10px;
+    &__list {
+      display: flex;
+      flex-direction: column;
+      gap: $bds-space-md;
+      margin: 0;
+    }
+
+    &__group {
+      display: flex;
+      flex-direction: column;
+      gap: $bds-space-xs;
+    }
+
+    &__net {
+      margin: 0;
+      font-weight: 400;
+    }
+
+    &__urls {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
+      gap: $bds-space-xs $bds-space-md;
+      align-items: center;
+      margin: 0;
+
+      @container (max-width: #{$tutorials-network-stack - 1px}) {
+        grid-template-columns: minmax(0, 1fr);
+        row-gap: 0;
+      }
+    }
+
+    @container (max-width: #{$tutorials-network-stack - 1px}) {
+      &__proto:not(:first-child) {
+        margin-top: $bds-space-xs;
+      }
+    }
+
+    &__proto {
+      @include tutorials-small-text;
+      color: $gray-500;
+
+      @include bds-theme-mode(dark) {
+        color: $gray-400;
+      }
+    }
+
+    // CopyableUrl renders <button class="quick-ref-value-btn"><code class="quick-ref-value">
+    .quick-ref-value-btn {
       display: inline-flex;
       align-items: center;
-      justify-content: center;
-    }
-
-    .card-body {
-      padding: 1rem 1.5rem;
-      flex: 1;
-    }
-
-    .card-title {
-      font-weight: 700;
-      margin-bottom: 1rem;
-    }
-
-    .card-text {
-      font-size: 1rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .card-footer {
-      background-color: transparent;
-      border-top: none;
+      gap: $bds-space-sm;
+      max-width: 100%;
+      min-height: 28px;
       padding: 0;
-      height: 40px;
-      background-size: cover;
-      background-position: bottom;
-      background-repeat: no-repeat;
-      margin-top: auto;
+      border: 0;
+      background: none;
+      color: inherit;
+      font: inherit;
+      cursor: pointer;
+      @include bds-focus-styles($black);
+
+      .quick-ref-value {
+        display: block;
+        min-width: 0;
+        padding: 2px $bds-space-sm;
+        border-radius: $border-radius-sm;
+        @include tutorials-small-text;
+        background-color: $gray-100;
+        color: $lilac-500;
+        letter-spacing: 0;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        transition: background-color $bds-transition-duration $bds-transition-timing;
+      }
+
+      &:hover .quick-ref-value {
+        background-color: $lilac-100;
+      }
+
+      &.copied .quick-ref-value {
+        background-color: $green-100;
+        color: $green-500;
+      }
+
+      .copy-icon {
+        flex-shrink: 0;
+        min-width: 1em;
+        color: $green-500;
+        font-size: 13px;
+        line-height: 1;
+      }
+
+      @include bds-theme-mode(dark) {
+        @include bds-focus-styles($white);
+
+        .quick-ref-value {
+          background-color: $gray-900;
+          color: $lilac-300;
+        }
+
+        &:hover .quick-ref-value {
+          background-color: $gray-700;
+        }
+
+        &.copied .quick-ref-value {
+          background-color: $green-500;
+          color: $white;
+        }
+
+        .copy-icon {
+          color: $green-300;
+        }
+      }
+    }
+
+    &__faucet {
+      padding-top: $bds-space-md;
+      border-top: 1px solid $gray-300;
+
+      @include bds-theme-mode(dark) {
+        border-top-color: $gray-700;
+      }
+
+      .xrpl-link {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+      }
     }
   }
 
-  // Apply colored footers to each card
-  @for $i from 1 through length($card-footers) {
-    > div:nth-child(#{$i}) .card .card-footer {
-      background-image: url("../img/cards/#{nth($card-footers, $i)}.svg");
+  // What's New
+  .tutorials-whats-new {
+    padding-top: $bds-space-2xl;
+
+    @include media-breakpoint-up(lg) {
+      padding-top: $bds-space-4xl;
     }
   }
-}
 
-// Light mode: invert HTTP/WebSocket icon
-.light .page-tutorials .tutorial-cards .circled-logo img[alt="HTTP / WebSocket"] {
-  filter: invert(1);
-}
+  // Directory
+  .tutorials-directory {
+    padding-top: $bds-space-2xl;
+    scroll-margin-top: $tutorials-anchor-offset;
 
-// Contribution Card - community contribution with meta links
-.page-tutorials .tutorial-cards .contribution-card {
-  // Unlike TutorialCard, the Contribution card isn't a link, so reset the inherited
-  // pointer cursor.
-  cursor: default;
+    @include media-breakpoint-up(lg) {
+      padding-top: $bds-space-4xl;
+    }
 
-  .contribution-header {
-    display: flex;
+    &__toolbar {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      gap: $bds-space-md;
+
+      @include media-breakpoint-up(md) {
+        flex-direction: row;
+        align-items: center;
+      }
+    }
+
+    &__search {
+      flex: 1 1 auto;
+      width: 100%;
+      max-width: 480px;
+      margin: 0;
+
+      input {
+        width: 100%;
+        min-height: 40px;
+        padding: 0 $bds-space-lg;
+        border: 1px solid $gray-400;
+        border-radius: 0;
+        background-color: $white;
+        color: $black;
+        font-family: $font-family-sans-serif;
+        font-size: 16px;
+        line-height: 23.2px;
+        appearance: none;
+
+        &::placeholder {
+          color: $gray-500;
+          opacity: 1;
+        }
+
+        &:hover {
+          border-color: $black;
+        }
+
+        @include bds-focus-styles($black);
+
+        &:focus-visible {
+          border-color: $black;
+        }
+
+        @include bds-theme-mode(dark) {
+          @include bds-focus-styles($white);
+          border-color: $gray-500;
+          background-color: $black;
+          color: $white;
+
+          &::placeholder {
+            color: $gray-300;
+          }
+
+          &:hover,
+          &:focus-visible {
+            border-color: $white;
+          }
+        }
+      }
+    }
+
+    &__topics {
+      display: flex;
+      flex-wrap: wrap;
+      gap: $bds-space-sm;
+      margin-top: $bds-space-2xl;
+    }
+
+    &__status {
+      @include tutorials-muted-text;
+      min-height: 23px;
+      margin: $bds-space-md 0 0;
+    }
+
+    &__body {
+      margin-top: $bds-space-2xl;
+
+      @include media-breakpoint-up(lg) {
+        margin-top: $bds-space-4xl;
+      }
+    }
+
+    &__empty {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: $bds-space-lg;
+
+      p {
+        margin: 0;
+      }
+    }
+  }
+
+  // Language dropdown: navbar pill trigger + the navbar's .bds-lang-dropdown menu.
+  .tutorials-select {
+    position: relative;
+    flex: 0 0 auto;
+
+    &__button {
+      display: inline-flex;
+      align-items: center;
+      gap: $bds-space-sm;
+      min-height: 40px;
+      margin: 0; // label-r adds paragraph spacing
+      padding: 0 $bds-space-md 0 $bds-space-lg;
+      border: 1.3px solid $black; // matches the navbar pill at desktop
+      border-radius: 100px;
+      background: transparent;
+      color: $black;
+      white-space: nowrap;
+      cursor: pointer;
+      transition:
+        background-color $bds-transition-duration $bds-transition-timing,
+        border-color $bds-transition-duration $bds-transition-timing;
+
+      @include bds-focus-styles($green-400);
+
+      &:hover {
+        background-color: $gray-100;
+      }
+
+      &.is-open {
+        border-color: $green-400;
+
+        .tutorials-select__icon {
+          color: $green-400;
+          transform: rotate(180deg);
+        }
+      }
+
+      @include bds-theme-mode(dark) {
+        @include bds-focus-styles($green-300);
+        border-color: $white;
+        color: $white;
+
+        &:hover {
+          background-color: $gray-700;
+        }
+
+        &.is-open {
+          border-color: $green-300;
+
+          .tutorials-select__icon {
+            color: $green-300;
+          }
+        }
+      }
+    }
+
+    &__icon {
+      width: 24px;
+      height: 24px;
+      flex-shrink: 0;
+      transition: transform $bds-transition-duration $bds-transition-timing;
+    }
+
+    &__menu {
+      right: auto;
+      left: 0;
+      min-width: 100%;
+    }
+  }
+
+  // Topic chips
+  .tutorials-chip {
+    display: inline-flex;
     align-items: center;
-    gap: 0.6rem;
-  }
-
-  // Drop the body's own padding and hand it to the link, so the link fills the
-  // entire body box (padding included) and clicks anywhere in the body navigate.
-  .card-body {
-    padding: 0;
-    display: flex;
-  }
-
-  .card-body-link {
-    flex: 1;
-    display: block;
-    padding: 1rem 1.5rem;
-    color: inherit;
-    text-decoration: none;
+    gap: $bds-space-xs;
+    min-height: 32px;
+    margin: 0; // label-r adds paragraph spacing
+    padding: 0 $bds-space-md;
+    border: 1px solid $gray-400;
+    border-radius: 100px;
+    background-color: transparent;
+    color: $black;
     cursor: pointer;
+    transition:
+      background-color $bds-transition-duration $bds-transition-timing,
+      border-color $bds-transition-duration $bds-transition-timing;
+
+    @include bds-focus-styles($black);
+
+    &:hover {
+      border-color: $black;
+      background-color: $gray-200;
+    }
+
+    &.is-active {
+      border-color: $black;
+      background-color: $black;
+      color: $white;
+
+      .tutorials-chip__count {
+        color: $gray-300;
+      }
+    }
+
+    &__count {
+      @include tutorials-muted-text;
+    }
+
+    @include bds-theme-mode(dark) {
+      @include bds-focus-styles($white);
+      border-color: $gray-500;
+      color: $white;
+
+      &:hover {
+        border-color: $white;
+        background-color: $gray-700;
+      }
+
+      &.is-active {
+        border-color: $white;
+        background-color: $white;
+        color: $black;
+
+        .tutorials-chip__count {
+          color: $gray-500;
+        }
+      }
+    }
+  }
+
+  // Topic section
+  .tutorials-topic {
+    scroll-margin-top: $tutorials-anchor-offset;
+
+    &:not(:first-child) {
+      margin-top: $bds-space-5xl;
+
+      @include media-breakpoint-up(lg) {
+        margin-top: $bds-space-6xl;
+      }
+    }
+
+    &__header {
+      display: flex;
+      flex-direction: column;
+      gap: $bds-space-sm;
+      max-width: 44em;
+      margin-bottom: $bds-space-2xl;
+
+      h3,
+      p {
+        margin: 0;
+      }
+    }
+
+    &__more {
+      margin-top: $bds-space-2xl;
+    }
+
+    &__note {
+      @include tutorials-muted-text;
+      max-width: 44em;
+      margin: 0 0 $bds-space-lg;
+    }
+  }
+
+  // Tabs (Sample Apps: xrpl.org vs. community)
+  .tutorials-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 0 $bds-space-lg;
+    border-bottom: 1px solid $gray-300;
+
+    @include bds-theme-mode(dark) {
+      border-bottom-color: $gray-500;
+    }
+  }
+
+  .tutorials-tab {
+    display: inline-flex;
+    align-items: center;
+    gap: $bds-space-sm;
+    margin: 0 0 -1px;
+    padding: $bds-space-sm $bds-space-lg;
+    border: 0;
+    border-bottom: 2px solid transparent;
+    background: none;
+    color: $black;
+    font-family: $font-family-sans-serif;
+    cursor: pointer;
+    transition: border-color $bds-transition-duration $bds-transition-timing;
+
+    &:hover {
+      border-bottom-color: $gray-400;
+    }
+
+    &:focus-visible {
+      outline: $bds-focus-border-width solid $black;
+      outline-offset: -2px;
+    }
+
+    &.is-active {
+      border-bottom-color: $black;
+      font-weight: 400;
+    }
+
+    &__count {
+      @include tutorials-muted-text;
+    }
+
+    @include bds-theme-mode(dark) {
+      color: $white;
+
+      &:focus-visible {
+        outline-color: $white;
+      }
+
+      &.is-active {
+        border-bottom-color: $white;
+      }
+    }
+  }
+
+  // Card grid: columns follow the grid's own width; the media queries are the no-container-query fallback.
+  .tutorials-grid-host {
+    container-type: inline-size;
+  }
+
+  .tutorials-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $bds-grid-gutter;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    @supports not (container-type: inline-size) {
+      @include media-breakpoint-up(md) {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      @include media-breakpoint-up(xl) {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    @container (min-width: #{$tutorials-grid-two-up}) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    @container (min-width: #{$tutorials-grid-three-up}) {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    > li {
+      display: flex;
+      flex-direction: column;
+      margin: 0;
+
+      &[hidden] {
+        display: none;
+      }
+    }
+  }
+
+  // Tutorial card
+  .tutorial-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: $bds-space-lg;
+    flex: 1 1 auto;
+    padding: $bds-space-lg;
+    overflow: hidden;
+    background-color: $gray-200;
+    color: $black;
+    text-decoration: none;
+    transition: background-color $bds-transition-duration $bds-transition-timing;
+
+    @include media-breakpoint-up(md) {
+      height: $tutorials-card-height;
+      padding: $bds-space-xl;
+    }
+
+    @container (min-width: #{$tutorials-grid-three-up}) {
+      padding: $bds-space-2xl;
+    }
+
+    > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    @include bds-focus-styles($black);
 
     &:hover,
     &:focus {
-      color: inherit;
+      color: $black;
       text-decoration: none;
     }
-  }
 
-  .contribution-icon {
-    background: rgba($blue-purple-500, 0.15);
-    color: $blue-purple-300;
-    font-size: 26px;
-  }
+    &__overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background-color: $gray-300;
+      clip-path: inset(100% 0 0 0);
+      transition: clip-path $bds-transition-duration $bds-transition-timing;
+      pointer-events: none;
+    }
 
-  .card-external-icon {
-    font-size: 0.85rem;
-    margin-left: 0.35rem;
-    color: $gray-500;
-    vertical-align: middle;
-  }
+    // `&:hover &__overlay` would repeat the parent chain and never match.
+    &:hover .tutorial-card__overlay,
+    &:focus-visible .tutorial-card__overlay {
+      clip-path: inset(0 0 0 0);
+    }
 
-  .card-meta-row {
-    display: flex;
-    align-items: center;
-    gap: 0.4rem;
-    font-size: 0.8rem;
-    flex-wrap: wrap;
-    margin-left: auto;
-    margin-top: -4px;
+    &:active .tutorial-card__overlay {
+      background-color: $gray-400;
+      clip-path: inset(0 0 0 0);
+    }
 
-    .meta-link {
-      display: inline-flex;
+    &__top {
+      display: flex;
       align-items: center;
-      gap: 0.35rem;
-      color: $gray-300;
-      text-decoration: none;
-      cursor: pointer;
-      transition: color 0.15s ease;
-
-      .fa {
-        font-size: 0.8rem;
-      }
-
-      &:hover {
-        color: $blue-purple-300;
-      }
+      justify-content: space-between;
+      gap: $bds-space-sm;
+      min-height: 24px;
     }
 
-    .meta-dot {
-      color: $gray-500;
-      font-weight: bold;
-      user-select: none;
-    }
-  }
-}
+    &__langs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: $bds-space-sm;
 
-// Light mode: Contribution Card
-.light .page-tutorials .tutorial-cards .contribution-card {
-  .contribution-icon {
-    background: rgba($blue-purple-500, 0.1);
-    color: $blue-purple-300;
-  }
-
-  .card-meta-row {
-    .meta-link {
-      color: $gray-300;
-
-      &:hover {
-        color: $blue-purple-300;
+      img {
+        display: block;
+        width: 24px;
+        height: 24px;
+        object-fit: contain;
       }
     }
 
-    .meta-dot {
-      color: $gray-500;
-    }
-  }
-}
-
-// Tabbed section (used by Sample Apps to split xrpl.org vs. community)
-.page-tutorials .tutorial-tabs {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0;
-  width: 100%;
-  margin-bottom: 1.5rem;
-  border-bottom: 1px solid $gray-700;
-
-  .tutorial-tab {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    border: none;
-    background-color: transparent;
-    color: $gray-300;
-    padding: 0.75rem 1.25rem;
-    margin-bottom: -1px;
-    border-bottom: 3px solid transparent;
-    font-size: 0.95rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: color 0.15s ease, border-color 0.15s ease;
-    position: relative;
-
-    &:hover {
-      color: $white;
-      border-bottom-color: rgba($blue-purple-500, 0.4);
+    &__body {
+      display: flex;
+      flex: 1 1 auto;
+      flex-direction: column;
+      gap: $bds-space-sm;
     }
 
-    &:focus-visible {
-      outline: 2px solid $blue-purple-500;
-      outline-offset: -2px;
-      color: $white;
-    }
-
-    &.is-active {
-      color: $white;
-      border-bottom-color: $blue-purple-500;
-      font-weight: 600;
-    }
-
-    .tutorial-tab-count {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-width: 1.5rem;
-      padding: 0 0.45rem;
-      height: 1.35rem;
-      font-size: 0.72rem;
-      font-weight: 700;
-      border-radius: 100px;
-      background-color: rgba($gray-500, 0.3);
-      color: $gray-200;
-    }
-
-    &.is-active .tutorial-tab-count {
-      background-color: rgba($blue-purple-500, 0.25);
-      color: $white;
-    }
-  }
-}
-
-.page-tutorials .tutorial-tab-description {
-  width: 100%;
-  margin: -0.5rem 0 1.5rem;
-  max-width: 720px;
-  color: $gray-200;
-}
-
-// Light mode: tabs
-// Merge note: master authored this block against the pre-rebrand palette, which
-// ran $blue-purple-* up to 900. The rebrand's token consolidation truncates the
-// scale at 500 (aliased to $lilac-*), so the 600/700 steps master used no longer
-// exist. Remapped to 500 — the darkest available step — matching how the rebrand
-// migrated the other light-mode $blue-purple-600 usages in this file.
-.light .page-tutorials .tutorial-tabs {
-  border-bottom-color: $gray-300;
-
-  .tutorial-tab {
-    color: $gray-700;
-
-    &:hover {
-      color: $blue-purple-500;
-      border-bottom-color: rgba($blue-purple-500, 0.4);
-    }
-
-    &:focus-visible {
-      outline-color: $blue-purple-500;
-      color: $blue-purple-500;
-    }
-
-    &.is-active {
-      color: $blue-purple-500;
-      border-bottom-color: $blue-purple-500;
-    }
-
-    .tutorial-tab-count {
-      background-color: rgba($gray-500, 0.15);
-      color: $gray-700;
-    }
-
-    &.is-active .tutorial-tab-count {
-      background-color: rgba($blue-purple-500, 0.15);
-      color: $blue-purple-500;
-    }
-  }
-}
-
-.light .page-tutorials .tutorial-tab-description {
-  color: $gray-700;
-}
-
-// Tutorial category section spacing
-.page-tutorials .category-section + .category-section {
-  margin-top: 2rem;
-}
-
-// Explore more link
-.page-tutorials .explore-more-wrapper {
-  margin-top: -1.5rem;
-  margin-bottom: 1.5rem;
-
-  .explore-more-link {
-    background: none;
-    border: none;
-    padding: 0;
-    cursor: pointer;
-    font-family: inherit;
-    font-size: 1.05rem;
-    color: $blue-purple-400;
-    margin-top: 1rem;
-
-    &:hover {
-      text-decoration: underline;
-    }
-
-    :root.dark & {
-      color: $blue-purple-300;
-    }
-  }
-}
-
-// TOC navigation buttons
-.page-tutorials .page-toc.no-sideline {
-  border-left: none;
-  gap: 0.75rem;
-
-  li {
-    a {
-      border-radius: 100px;
-      padding: 0.5rem 1rem;
+    &__title {
+      @include tutorials-line-clamp(3);
       margin: 0;
-      background-color: $gray-800;
-      color: $gray-200;
-      font-weight: 500;
-      transition: all 0.2s ease;
+      font-weight: 400;
+      @include wordbreak('break-word');
+
+      &::before {
+        display: none;
+      }
+    }
+
+    &__desc {
+      @include tutorials-line-clamp(4);
+      margin: 0;
+    }
+
+    &__foot {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: $bds-space-sm;
+      margin-top: auto;
+    }
+
+    &__date {
+      margin: 0;
+    }
+
+    &__arrow {
+      display: inline-flex;
+      flex-shrink: 0;
+      font-size: 24px;
+      line-height: 1;
+    }
+
+    &:hover .tutorial-card__arrow,
+    &:focus-visible .tutorial-card__arrow {
+      @include bds-icon-engaged;
+    }
+
+    @include bds-theme-mode(dark) {
+      background-color: $gray-500;
+      color: $white;
+
+      @include bds-focus-styles($white);
 
       &:hover,
-      &:focus,
-      &:active {
-        background-color: $blue-purple-500;
+      &:focus {
         color: $white;
-        border-left: none;
-        margin-left: 0;
+      }
+
+      .tutorial-card__overlay {
+        background-color: $gray-400;
+      }
+
+      &:active .tutorial-card__overlay {
+        background-color: $gray-500-pressed-dark;
+      }
+
+      // Black logo artwork reads as white on the dark neutral surface
+      .tutorial-card__langs img {
+        filter: brightness(0) invert(1);
       }
     }
   }
-}
 
-// Light mode: TOC buttons
-.light .page-tutorials .page-toc.no-sideline {
-  li a {
-    background-color: $gray-200;
-    color: $gray-800;
+  // Community card: stretched title link with the author and GitHub links above it; isolation keeps the overlay under the text.
+  .tutorial-card--community {
+    isolation: isolate;
+
+    > * {
+      position: static;
+      z-index: auto;
+    }
+
+    .tutorial-card__overlay {
+      z-index: -1;
+    }
+
+    .tutorial-card__title {
+      -webkit-line-clamp: 2;
+    }
+
+    .tutorial-card__link {
+      color: inherit;
+      font-weight: inherit;
+      text-decoration: none;
+
+      &::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+      }
+
+      &:hover,
+      &:focus {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    .tutorial-card__author,
+    .tutorial-card__source {
+      position: relative;
+      z-index: 2;
+    }
+
+    .tutorial-card__author {
+      display: inline-flex;
+      align-items: center;
+      gap: $bds-space-sm;
+      margin: 0;
+      color: inherit;
+      text-decoration: none;
+
+      &:hover,
+      &:focus {
+        color: inherit;
+      }
+
+      &:hover span:last-child {
+        text-decoration: underline;
+        text-underline-offset: 3px;
+      }
+
+      @include bds-focus-styles($black);
+    }
+
+    .tutorial-card__avatar {
+      position: relative;
+      display: grid;
+      place-items: center;
+      width: 28px;
+      height: 28px;
+      flex-shrink: 0;
+      border-radius: 50%;
+      overflow: hidden;
+      background-color: $black;
+      color: $white;
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 1;
+
+      img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    .tutorial-card__source .xrpl-link {
+      white-space: nowrap;
+    }
+
+    &:has(.tutorial-card__link:focus-visible) .tutorial-card__overlay {
+      clip-path: inset(0 0 0 0);
+    }
+
+    &:has(.tutorial-card__link:active) .tutorial-card__overlay {
+      background-color: $gray-400;
+    }
+
+    &:has(.tutorial-card__link:focus-visible) .tutorial-card__arrow {
+      @include bds-icon-engaged;
+    }
+
+    &:has(.tutorial-card__link:focus-visible) {
+      outline: $bds-focus-border-width solid $black;
+      outline-offset: 2px;
+    }
+
+    @include bds-theme-mode(dark) {
+      .tutorial-card__avatar {
+        background-color: $white;
+        color: $black;
+      }
+
+      .tutorial-card__author {
+        @include bds-focus-styles($white);
+      }
+
+      &:has(.tutorial-card__link:focus-visible) {
+        outline-color: $white;
+      }
+
+      &:has(.tutorial-card__link:active) .tutorial-card__overlay {
+        background-color: $gray-500-pressed-dark;
+      }
+    }
+  }
+
+  // Green variant (What's New), matching the green cards on docs/index.page.tsx.
+  .tutorial-card--green {
+    background-color: $green-200;
+    color: $black;
+
+    // Black in both themes, pinned per element so theme rules can't override it.
+    html.light &,
+    html.dark &,
+    html.light & .tutorial-card__title,
+    html.dark & .tutorial-card__title,
+    html.light & .tutorial-card__desc,
+    html.dark & .tutorial-card__desc,
+    html.light & .tutorial-card__date,
+    html.dark & .tutorial-card__date,
+    html.light & .tutorial-card__arrow,
+    html.dark & .tutorial-card__arrow {
+      color: $black;
+    }
 
     &:hover,
-    &:focus,
-    &:active {
-      background-color: $blue-purple-500;
-      color: $white;
+    &:focus {
+      color: $black;
+    }
+
+    .tutorial-card__overlay {
+      background-color: $green-300;
+    }
+
+    &:active .tutorial-card__overlay {
+      background-color: $green-400;
+    }
+
+    @include bds-theme-mode(dark) {
+      background-color: $green-300;
+
+      &:hover,
+      &:focus {
+        color: $black;
+      }
+
+      .tutorial-card__overlay {
+        background-color: $green-200;
+      }
+
+      &:active .tutorial-card__overlay {
+        background-color: $green-400;
+      }
+
+      // Black logo artwork stays black on green
+      .tutorial-card__langs img {
+        filter: none;
+      }
+    }
+  }
+
+  // Reduced motion
+  @media (prefers-reduced-motion: reduce) {
+    .tutorial-card,
+    .tutorial-card__overlay,
+    .tutorials-chip,
+    .tutorials-tab,
+    .tutorials-select__button,
+    .tutorials-select__icon,
+    .tutorials-network .quick-ref-value {
+      transition: none;
     }
   }
 }
 
-// What's New section
-.whats-new-section {
-  // Gradient underline on section title
-  h3 {
-    display: inline-block;
-    position: relative;
-    padding-bottom: 8px;
+// Quick Reference Card: used only by resources/dev-tools/xrp-faucets.page.tsx
 
-    &::after {
-      content: "";
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 60px;
-      height: 3px;
-      background: linear-gradient(90deg, $blue-purple-500, $green-400);
-      border-radius: 2px;
-    }
-  }
-}
-
-// Quick Reference Card
-.page-tutorials .quick-ref-card,
 .page-faucet .quick-ref-card {
   background: rgba($gray-800, 0.7);
   border: 1px solid $gray-700;
@@ -562,8 +1159,7 @@ $whats-new-footers: (
   }
 }
 
-// Light mode: Quick Reference Card
-.light .page-tutorials .quick-ref-card,
+// Light mode: Quick Reference Card (faucets page)
 .light .page-faucet .quick-ref-card {
   background: rgba($white, 0.95);
   border-color: $gray-300;
