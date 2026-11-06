@@ -82,9 +82,9 @@ const cardContent = (
       )}
       <HeadingElement className="bds-card-text-icon-card__heading sh-md-r">{heading}</HeadingElement>
     </div>
-    <p className="bds-card-text-icon-card__description body-l">
+    <div className="bds-card-text-icon-card__description body-l">
       {description}
-    </p>
+    </div>
   </>
   );
 };
