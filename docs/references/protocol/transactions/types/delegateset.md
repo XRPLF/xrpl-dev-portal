@@ -15,8 +15,6 @@ txIcon: modify
 
 {% amendment-disclaimer name="PermissionDelegationV1_1" /%}
 
-{% partial file="/docs/_snippets/paymentburn-delegation-warning.md" /%}
-
 ## Example {% $frontmatter.seo.title %} JSON
 
 ```json
