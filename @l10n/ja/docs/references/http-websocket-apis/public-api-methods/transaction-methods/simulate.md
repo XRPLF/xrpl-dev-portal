@@ -187,6 +187,7 @@ labels:
 ## 考えられるエラー
 
 * `invalidParams` - 1つ以上のフィールドの指定が正しくないか、1つ以上の必須フィールドが指定されていません。
+* `notImpl` - トランザクションタイプが`simulate`メソッドでサポートされていません（例：`Batch`トランザクション）。
 * `transactionSigned` - トランザクションが署名済みです。シミュレーションで使用するトランザクションは、未署名でなければなりません。
 
 {% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

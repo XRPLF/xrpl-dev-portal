@@ -42,6 +42,7 @@ labels:
 | `temREDUNDANT`                 | トランザクションは処理を行いません。例えば、送信側アカウントに支払いを直接送金する場合や、同一イシュアーの同一通貨を売買するオファーを作成する場合などです。 |
 | `temREDUNDANT_SEND_MAX`      | {% badge href="https://github.com/XRPLF/rippled/releases/tag/0.28.0" %}削除: rippled 0.28.0{% /badge %} |
 | `temRIPPLE_EMPTY`             | [Paymentトランザクション][]に指定されている`Paths`フィールドが空ですが、この支払いを完了するにはパスが必要です。 |
+| `temSEQ_AND_TICKET`           | トランザクションに`TicketSequence`フィールドと0以外の`Sequence`値の両方が含まれています。トランザクションに両方を含めることはできません。 {% amendment-disclaimer name="TicketBatch" /%} |
 | `temBAD_WEIGHT`                | [SignerListSetトランザクション][]に無効な`SignerWeight`が指定されています。例えば、0やマイナス値など。 |
 | `temBAD_SIGNER`                | [SignerListSetトランザクション][]に指定されている署名者が無効です。例えば、重複するエントリが指定されている場合や、SignerListの所有者がメンバーでもある場合などです。 |
 | `temBAD_QUORUM`                | [SignerListSetトランザクション][]に無効な`SignerQuorum`値が指定されています。この値が0以下であるか、またはリストのすべての署名者の合計数を超えています。 |
