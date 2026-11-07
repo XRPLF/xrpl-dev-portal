@@ -647,6 +647,10 @@ pre {
     color: $gray-700;
   }
 
+  .biz-logo-frame:not(.biz-logo-frame--dark) {
+    border: 1px solid $gray-200;
+  }
+
   .modal-footer,
   .modal-header {
     background-color: $gray-050;
@@ -688,78 +692,6 @@ pre {
     color: #000;
   }
 
-  @each $company, $type in ('bitgo': 'svg',
-    'sologenic-nft': 'svg',
-    'carbonland-trust': 'svg',
-    'futureverse': 'png',
-    "moai-finance": "svg",
-    "orchestra-finance": "svg",
-    'x-tokenize': 'svg',
-    'casino-coin': 'svg',
-    'xrp-cafe': 'svg',
-    'coil': 'svg',
-    'xrp-toolkit': 'svg',
-    'first-ledger-bot': 'svg',
-    'cryptum': 'svg',
-    'xrpl-org-ledger-explorer': 'svg',
-    'evernode': 'svg',
-    'xrpl-rosetta': 'svg',
-    'ripples-cbdc-platform': 'svg',
-    'xrpscan': 'svg',
-    'ripples-on-demand-liquidity': 'svg',
-    'xumm-wallet': 'svg',
-    'bifrost-wallet': 'svg',
-    'bitget-wallet': 'svg',
-    'sologenic-dex': 'svg',
-    'joey-wallet': 'svg',
-    'Crossmark': 'png'
-
-  ) {
-    #use_case_companies_list {
-      ##{$company} {
-        .biz-logo {
-          max-height: 40px;
-          content: url("../img/uses/lightmode/#{$company}.#{$type}");
-        }
-      }
-    }
-  }
-
-  #use_case_companies_list {
-    #threezy {
-      .biz-logo {
-        max-height: 40px;
-        content: url("../img/uses/lightmode/threezy.png");
-      }
-    }
-  }
-
-  .modal-content-uses {
-    .first-ledger-bot {
-      content: url("../img/uses/lightmode/first-ledger-bot.svg");
-    }
-
-    .moai-finance {
-      content: url("../img/uses/lightmode/moai-finance.svg");
-    }
-
-    .orchestra-finance {
-      max-height: 52px;
-      margin: 0;
-      content: url("../img/uses/lightmode/orchestra-finance.svg");
-    }
-  }
-
-  // Monochrome logos; invert.
-  #bitpay,
-  // #coil,
-  #forte,
-  #xrplorer,
-  #gatehub {
-    .biz-logo {
-      filter: invert(100%);
-    }
-  }
 
 }
 
