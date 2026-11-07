@@ -123,7 +123,7 @@ export const communitySubmenuData: {
         { label: "Blog", labelTranslationKey: "navbar.community.blog", href: "/blog" },
       ],
     },
-    { label: "Funding", labelTranslationKey: "navbar.community.funding", href: "/community/developer-funding", icon: "funding" },
+    { label: "Funding", labelTranslationKey: "navbar.community.funding", href: "/community/funding", icon: "funding" },
   ],
   right: [
     {
