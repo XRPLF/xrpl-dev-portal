@@ -47,7 +47,7 @@ Besides errors that can occur for all transactions, {% code-page-name /%} transa
 | Error Code           | Description                        |
 | :--------------------| :----------------------------------|
 | `tecNO_ENTRY`        | The `LoanBroker` ledger entry specified doesn't exist. |
-| `tec_NO_PERMISSION`  | The transaction submitter is not the owner of the `LoanBroker` ledger entry. |
+| `tecNO_PERMISSION`   | The transaction submitter is not the owner of the `LoanBroker` ledger entry. |
 | `tecHAS_OBLIGATIONS` | The `OwnerCount` field is greater than zero (active loans exist). This error can also occur if the loan broker's pseudo-account has a balance, owns other ledger entries, or has an owner directory. |
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}
