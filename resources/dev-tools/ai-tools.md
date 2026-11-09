@@ -29,6 +29,12 @@ The XRPL Docs MCP Server can be wired into any MCP-capable client, such as Claud
 
 The xrpl.org site hosts a standalone MCP server that only indexes what is on the site. This server is intended as a backup for the XRPL Docs MCP Server. From any doc page, you can click the **Copy** dropdown by the page title and select either **Connect to Cursor** or **Connect to VS Code**. If you are using a different code editor, you can manually configure the MCP server using the endpoint.
 
+### XRPL.to MCP Server
+
+**Endpoint**: `https://api.xrpl.to/v1/mcp`
+
+Live XRP Ledger data for AI agents from [XRPL.to](https://xrpl.to): token prices and charts, holders, DEX and AMM trades, NFTs, accounts and scam checks. Tool calls need an XRPL.to API key, sent as the `X-Api-Key` header. Setup: [xrpl.to/mcp](https://xrpl.to/mcp).
+
 
 ## SKILL.md
 
