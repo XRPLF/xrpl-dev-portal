@@ -58,7 +58,7 @@ SignerListSetトランザクションは、トランザクションの[マルチ
 
 アカウントは複数のSignerListを所有できません。既存のSignerListが存在する場合は、SignerListSetトランザクションが成功するとその既存のSignerListが置き換えられます。SignerListを削除するには、`SignerQuorum`を`0`に設定し、_かつ_`SignerEntries`フィールドを省略します。このようにしないと、トランザクションは[temMALFORMED](../transaction-results/tem-codes.md)エラーで失敗します。SignerListを削除するトランザクションは、削除するSignerListがない場合でも成功したとみなされます。
 
-SignerQuorumを満たせない方法でSignerListを作成することはできません。SignerQuorumは0よりも大きく、リストの`SignerWeight`値の合計以下でなければなりません。このようにしないと、トランザクションは[temMALFORMED](../transaction-results/tem-codes.md)エラーで失敗します。
+SignerQuorumを満たせない方法でSignerListを作成することはできません。`SignerQuorum`の値がリストの`SignerWeight`値の合計を超える場合、トランザクションは[temBAD_QUORUM](../transaction-results/tem-codes.md)エラーで失敗します。
 
 トランザクションの署名にマスターキー、レギュラーキー、または現行のSignerListを使用できる場合は、これらを使用してSignerListを作成、更新、削除できます。
 

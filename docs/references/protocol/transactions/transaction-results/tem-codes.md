@@ -47,7 +47,7 @@ These codes indicate that the transaction was malformed, and cannot succeed acco
 | `temSEQ_AND_TICKET`           | The transaction contains both a `TicketSequence` field and a non-zero `Sequence` value. A transaction cannot include both. {% amendment-disclaimer name="TicketBatch" /%} |
 | `temBAD_WEIGHT`               | The [SignerListSet transaction][] includes a `SignerWeight` that is invalid, for example a zero or negative value. |
 | `temBAD_SIGNER`               | The [SignerListSet transaction][] includes a signer who is invalid. For example, there may be duplicate entries, or the owner of the SignerList may also be a member. |
-| `temBAD_QUORUM`               | The [SignerListSet transaction][] has an invalid `SignerQuorum` value. Either the value is not greater than zero, or it is more than the sum of all signers in the list. |
+| `temBAD_QUORUM`               | The [SignerListSet transaction][] has an invalid `SignerQuorum` value. The value is greater than the sum of the `SignerWeight` values in the list. |
 | `temUNCERTAIN`                | Used internally only. This code should never be returned. |
 | `temUNKNOWN`                  | Used internally only. This code should never be returned. |
 | `temDISABLED`                 | The transaction requires logic that is disabled. Typically this means you are trying to use an [amendment](../../../../concepts/networks-and-servers/amendments.md) that is not enabled for the current ledger. |
