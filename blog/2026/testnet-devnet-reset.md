@@ -18,7 +18,7 @@ Testnet and Devnet are scheduled for a reset on **Wednesday, November 25, 2026**
 
 Ripple operates Testnet and Devnet to help the community test new features and integrations without risking real money. Testnet is meant to closely mirror the amendment status of Mainnet while Devnet acts as a preview of proposed and upcoming features based on the `develop` branch of the source code.
 
-Testnet relied on a single full history server, which crashed and can't be recovered without a reset. To prevent this from happening again, we're adding a second full history server to Testnet. Together with enhanced storage capacity, this should significantly reduce how often Testnet needs to be reset.
+Testnet relied on a single full history server, which crashed and can't be recovered without a reset. To prevent this from happening again, we're upgrading server storage capacity. We will still have some retention limits, but this should reduce how often Testnet needs to be reset.
 
 ## Impact
 
