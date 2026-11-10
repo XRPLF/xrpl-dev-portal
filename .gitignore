@@ -22,4 +22,5 @@ tools/broken-links-report.md
 
 # PHP
 composer.lock
+_code-samples/*/php/vendor/
 .cursor/
