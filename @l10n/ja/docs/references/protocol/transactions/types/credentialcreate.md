@@ -52,7 +52,7 @@ CredentialCreateトランザクションは、レジャーにCredentialを作成
 | `tecEXPIRED`            | Credentialの有効期限に過去の日時が設定されています。 |
 | `tecNO_TARGET`          | `Subject`フィールドで指定されたアカウントはレジャーで資金提供されているアカウントではありません。 |
 | `temDISABLED`           | 関連するAmendmentが有効になっていません。 |
-| `temINVALID_ACCOUNT_ID` | 提供された`Subject`フィールドが無効です。例えば、[ACCOUNT_ZERO](../../../../concepts/accounts/addresses.md#特別なアドレス)が含まれている場合です。 |
+| `temMALFORMED`          | トランザクションの形式が正しくありません。主な原因は以下のとおりです。<br>- `Subject`フィールドが無効です。例えば、[ACCOUNT_ZERO](../../../../concepts/accounts/addresses.md#特別なアドレス)が含まれている場合です。<br>- `CredentialType`フィールドが空であるか、64バイトを超えています。<br>- `URI`フィールドが指定されていますが、空であるか、256バイトを超えています。 |
 
 
 {% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

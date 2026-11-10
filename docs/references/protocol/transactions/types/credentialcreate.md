@@ -47,8 +47,8 @@ Besides errors that can occur for all transactions, CredentialCreate transaction
 | `tecEXPIRED` | The credential's expiration time is in the past. |
 | `tecNO_TARGET` | The account specified in the `Subject` field is not a funded account in the ledger. |
 | `temDISABLED` | The related amendment is not enabled. |
-| `temINVALID_ACCOUNT_ID` | The provided `Subject` field is invalid. For example, it contains [ACCOUNT_ZERO](../../../../concepts/accounts/addresses.md#special-addresses). |
 | `temINVALID_FLAG` | The transaction includes a [Flag](../common-fields.md#flags-field) that does not exist, or includes a contradictory combination of flags. {% amendment-disclaimer name="fixInvalidTxFlags" /%} |
+| `temMALFORMED` | The transaction is malformed. Common causes include:<br>- The `Subject` field is invalid. For example, it contains [ACCOUNT_ZERO](../../../../concepts/accounts/addresses.md#special-addresses).<br>- The `CredentialType` field is empty or longer than 64 bytes.<br>- The `URI` field is present but empty or longer than 256 bytes. |
 
 ## See Also
 
