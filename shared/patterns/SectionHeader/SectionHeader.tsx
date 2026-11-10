@@ -17,6 +17,8 @@ export interface SectionHeaderProps {
   description?: React.ReactNode;
   /** Polymorphic heading element - h1 through h6 */
   as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+  /** id for the heading element, e.g. to label the enclosing section via aria-labelledby */
+  headingId?: string;
   /** PageGrid.Col span - defaults to { base: 'fill', md: 6, lg: 8 } */
   span?: ResponsiveValue<PageGridSpanValue>;
   /** Optional slot for trailing content (e.g. ButtonGroup) */
@@ -56,6 +58,12 @@ export interface SectionHeaderProps {
  * <SectionHeader heading="Products">
  *   <ButtonGroup buttons={[...]} />
  * </SectionHeader>
+ *
+ * @example
+ * // Labelling the enclosing landmark
+ * <section aria-labelledby="pricing-heading">
+ *   <SectionHeader heading="Pricing" headingId="pricing-heading" />
+ * </section>
  */
 export const SectionHeader = React.forwardRef<HTMLDivElement, SectionHeaderProps>(
   (props, ref) => {
@@ -63,6 +71,7 @@ export const SectionHeader = React.forwardRef<HTMLDivElement, SectionHeaderProps
       heading,
       description,
       as = 'h2',
+      headingId,
       span = DEFAULT_SPAN,
       children,
       className,
@@ -89,7 +98,7 @@ export const SectionHeader = React.forwardRef<HTMLDivElement, SectionHeaderProps
             className={clsx('bds-section-header', className)}
           >
             {heading != null && heading !== '' && (
-              <HeadingTag className="bds-section-header__heading h-md">
+              <HeadingTag id={headingId} className="bds-section-header__heading h-md">
                 {heading}
               </HeadingTag>
             )}
