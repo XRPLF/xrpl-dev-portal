@@ -57,7 +57,7 @@ Create, replace, or remove a list of signers that can be used to [multi-sign](..
 
 A successful SignerListSet transaction replaces the account's [`SignerList` object](../../ledger-data/ledger-entry-types/signerlist.md) in the ledger, or adds one if it did not exist before. An account may not have more than one signer list. To delete a signer list, you must set `SignerQuorum` to `0` _and_ omit the `SignerEntries` field. Otherwise, the transaction fails with the error [`temMALFORMED`](../transaction-results/tem-codes.md). A transaction to delete a signer list is considered successful even if there was no signer list to delete.
 
-You cannot create a signer list such that the `SignerQuorum` could never be met. The `SignerQuorum` must be greater than 0 but less than or equal to the sum of the `SignerWeight` values in the list. Otherwise, the transaction fails with the error [`temMALFORMED`](../transaction-results/tem-codes.md).
+You cannot create a signer list such that the `SignerQuorum` could never be met. If the `SignerQuorum` value is greater than the sum of the `SignerWeight` values in the list, the transaction fails with the error [`temBAD_QUORUM`](../transaction-results/tem-codes.md).
 
 You can create, update, or remove a signer list using the master key, regular key, or the current signer list, if those methods of signing transactions are available.
 
