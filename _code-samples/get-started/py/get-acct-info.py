@@ -1,10 +1,12 @@
-# @chunk {"steps": ["connect-tag"]}
+# @chunk {"steps": ["connect-tag", "connect-mainnet-tag"]}
 # Define the network client
+# @chunk {"steps": ["import-tag"]}
 from xrpl.clients import JsonRpcClient
 from xrpl.wallet import generate_faucet_wallet
 from xrpl.core import addresscodec
 from xrpl.models.requests.account_info import AccountInfo
 import json
+# @chunk-end
 
 JSON_RPC_URL = "https://s.altnet.rippletest.net:51234/"
 client = JsonRpcClient(JSON_RPC_URL)
