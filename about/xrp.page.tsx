@@ -55,12 +55,10 @@ const exchanges = [
   { href: "https://www.bitstamp.net/", id: "exch-bitstamp", alt: "Bitstamp" },
   { href: "https://www.kraken.com/", id: "exch-kraken", alt: "Kraken" },
   { href: "https://cex.io/", id: "exch-cex-io", alt: "Cex.io" },
-  { href: "https://www.liquid.com/", id: "exch-liquid", alt: "Liquid" },
   { href: "https://www.lmax.com/", id: "exch-lmax", alt: "LMAX" },
   { href: "https://www.bitfinex.com/", id: "exch-bitfinex", alt: "Bitfinex" },
   { href: "https://www.etoro.com/crypto/exchange/", id: "exch-etoro", alt: "eToro"},
   { href: "https://currency.com", id: "exch-currency-com", alt: "Currency.com"},
-  { href: "https://bittrex.com/", id: "exch-bittrex", alt: "Bittrex" },
 ];
 
 export default function XrpOverview() {
