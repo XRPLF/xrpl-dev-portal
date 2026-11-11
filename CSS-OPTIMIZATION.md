@@ -110,7 +110,7 @@ Created separate development and production builds:
 
 ### 3. PurgeCSS Configuration
 
-Created `postcss.config.cjs` with intelligent safelist:
+Created `styles/postcss.config.cjs` with intelligent safelist:
 
 ```javascript
 // Content paths - scan these for class names
@@ -216,7 +216,7 @@ When adding new component styles:
 
 3. **If using dynamic classes, update safelist:**
    ```javascript
-   // postcss.config.cjs
+   // styles/postcss.config.cjs
    deep: [
      /my-component/, // Keeps all .my-component-* classes
    ]
@@ -246,7 +246,7 @@ If styles are missing after a production build:
 
 3. **Add to PurgeCSS safelist:**
    ```javascript
-   // postcss.config.cjs
+   // styles/postcss.config.cjs
    safelist: {
      deep: [
        /missing-class/, // Preserve this pattern
