@@ -1,122 +1,5 @@
 /* Use Cases ---------------------------------------------------------------- */
 
-// Define each category's logos
-$infrastructure-logos: "xrp-ledger", "gatehub", "towolabs", "xrpscan", "xrp-toolkit", "bithomp", "onthedex";
-$developer-tooling-logos: "cryptum", "evernode", "threezy", "tokenize";
-$interoperability-logos: "multichain";
-$wallet-logos: "crossmark", "edge", "gem-wallet", "xumm", "joey-wallet", "bifrost-wallet", "bitget-wallet";
-$nfts-logos: "aesthetes", "audiotarky", "nftmaster", "peerkat", "sologenic_dex", "xrp-cafe", "xrp-oval";
-$exchanges-logos: "sologenic_dex", "xpmarket", "orchestra-finance", "moai-finance", "first-ledger-bot";
-$gaming-logos: "forte", "ledger-city", "futureverse", "zerpmon";
-$security-logos: "anchain";
-$payments-logos: "ripple", "supermojo";
-$cbdc-logos: "ripple";
-$carbon-markets-logos: "carbonland-trust";
-$custody-logos: "gatehub", "bitgo";
-
-// Create a mixin to handle the common logic
-@mixin create-logo-classes($logo-list) {
-  @each $logo in $logo-list {
-    .#{$logo} {
-      content: url(../img/uses/modallogos/#{$logo}.png);
-    }
-
-    html.light {
-      .#{$logo} {
-        content: url(../img/uses/lightmode/#{$logo}.png);
-      }
-    }
-  }
-}
-
-.modal-uses.exchanges {
-  .logo-item {
-    max-height: 58px;
-    margin: 5px;
-    width: 145px;
-    height: 28px;
-    max-width: none;
-  }
-}
-
-.modal-content-uses {
-  .carbonland-trust {
-    max-width: 218px;
-  }
-
-  .first-ledger-bot {
-    min-height: 100px !important;
-    position: relative;
-    bottom: 20px;
-    content: url("../img/uses/first-ledger-bot.svg");
-  }
-
-  .orchestra-finance {
-    min-height: 56px !important;
-    content: url("../img/uses/orchestra-finance.svg");
-  }
-
-  .moai-finance {
-    min-height: 100px !important;
-    position: relative;
-    bottom: 20px;
-    content: url("../img/uses/moai-finance.svg");
-  }
-
-  .ledger-city {
-    margin: 0px !important;
-    position: relative;
-    bottom: 4px;
-    left: 6px;
-    max-height: 47px !important;
-  }
-
-  .zerpmon {
-    margin: 0px;
-    min-width: 80px;
-    min-height: 84px;
-    position: relative;
-    bottom: 13px;
-    content: url("../img/uses/zerpmon.png") !important;
-  }
-}
-
-#use_case_companies_list {
-  #threezy {
-    .biz-logo {
-      max-height: 40px;
-      content: url("../img/uses/modallogos/threezy.png");
-    }
-  }
-
-}
-
-html.light {
-  .cryptum {
-    content: url(../img/uses/lightmode/cryptum.jpg) !important;
-    height: 58px;
-    max-width: max-content;
-    width: 184px;
-    max-height: none;
-    margin: 0px;
-    padding-bottom: 10px;
-  }
-}
-
-// Use the mixin for each category
-@include create-logo-classes($infrastructure-logos);
-@include create-logo-classes($developer-tooling-logos);
-@include create-logo-classes($interoperability-logos);
-@include create-logo-classes($wallet-logos);
-@include create-logo-classes($nfts-logos);
-@include create-logo-classes($exchanges-logos);
-@include create-logo-classes($gaming-logos);
-@include create-logo-classes($security-logos);
-@include create-logo-classes($payments-logos);
-@include create-logo-classes($cbdc-logos);
-@include create-logo-classes($carbon-markets-logos);
-@include create-logo-classes($custody-logos);
-
 .arrow-button.left-arrow img {
   content: url(../img/uses/left-arrow.svg);
 }
@@ -293,25 +176,6 @@ html.light {
   border-top: 1px solid #ccc;
 }
 
-.logo-item.anchain {
-  height: 34px !important;
-  max-width: 146px !important;
-}
-
-.threezy-logo {
-  margin: 4px;
-  max-height: 55px !important;
-}
-
-.blockforce-logo {
-  margin: 0px !important;
-  max-height: 45px !important;
-}
-
-.Evernode-logo {
-  margin-right: 39px;
-}
-
 .logo-grid {
   display: grid;
   grid-template-rows: repeat(2, 1fr);
@@ -349,9 +213,25 @@ html.light {
 }
 
 .logo-item {
-  max-height: 45px;
-  max-width: 108px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 108px;
+  height: 52px;
   margin: 5px;
+  padding: 8px;
+  background: $white;
+  border-radius: 8px;
+
+  img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+}
+
+.logo-item--dark {
+  background: $black;
 }
 
 .close {
@@ -511,6 +391,10 @@ html.light {
 
   .modal-content-uses {
     background: #ffffff;
+
+    .logo-item {
+      border: 1px solid $gray-200;
+    }
   }
 
   #numbersAnimation {
