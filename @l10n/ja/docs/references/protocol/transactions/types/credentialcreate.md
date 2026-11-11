@@ -53,7 +53,7 @@ CredentialCreateトランザクションは、レジャーにCredentialを作成
 | `tecNO_TARGET`          | `Subject`フィールドで指定されたアカウントはレジャーで資金提供されているアカウントではありません。 |
 | `tecPSEUDO_ACCOUNT`     | `Subject`フィールドで指定されたアカウントが[疑似アカウント](../../../../concepts/accounts/pseudo-accounts.md)です。 {% amendment-disclaimer name="fixCleanup3_3_0" /%} |
 | `temDISABLED`           | 関連するAmendmentが有効になっていません。 |
-| `temMALFORMED`          | トランザクションの形式が正しくありません。主な原因は以下のとおりです。<br>- `Subject`フィールドが無効です。例えば、[ACCOUNT_ZERO](../../../../concepts/accounts/addresses.md#特別なアドレス)が含まれている場合です。<br>- `CredentialType`フィールドが空であるか、64バイトを超えています。<br>- `URI`フィールドが指定されていますが、空であるか、256バイトを超えています。 |
+| `temINVALID_ACCOUNT_ID` | 提供された`Subject`フィールドが無効です。例えば、[ACCOUNT_ZERO](../../../../concepts/accounts/addresses.md#特別なアドレス)が含まれている場合です。 |
 
 
 {% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}
