@@ -18,7 +18,7 @@ labels:
 | `tecAMM_ACCOUNT`                   | 168 | 自動マーケットメーカー（AMM）アカウントではこの操作が許可されていないため、トランザクションが失敗しました。 {% amendment-disclaimer name="AMM" /%}  |
 | `tecAMM_BALANCE`                   | 163 | AMMまたはユーザーが指定された資産の十分な量を保有していないため[AMMDeposit][]または[AMMWithdraw][]トランザクションが失敗しました。(例えば、AMMが保有するよりも多くを引き出そうとしている場合） {% amendment-disclaimer name="AMM" /%}  |
 | `tecAMM_EMPTY`                     | 166 | AMMのプールに資産がないためAMM関連のトランザクションが失敗しました。この状態では、AMMを削除するか、新しい入金でAMMに資金を供給することしかできません。 {% amendment-disclaimer name="AMM" /%}  |
-| `tecAMM_FAILED`                    | 164 | AMM関連のトランザクションは失敗しました。[AMMDeposit][]または[AMMWithdraw][]の場合、これは送信者が指定された資産を十分に持っていないか、利用可能な金額では不可能な実効価格がトランザクションで要求されたことが原因である可能性があります。[AMMBid][]の場合、これは当該アカウントが落札に必要な金額を十分に持っていないか、指定された最高入札価格よりも高い金額が必要であることが原因である可能性があります。[AMMVote] の場合、このAMMのLPトークンをより多く保有している他のアカウントからの投票がすでに多すぎるのが原因である可能性があります。 {% amendment-disclaimer name="AMM" /%}  |
+| `tecAMM_FAILED`                    | 164 | AMM関連のトランザクションは失敗しました。[AMMDeposit][]または[AMMWithdraw][]の場合、これは送信者が指定された資産を十分に持っていないか、利用可能な金額では不可能な実効価格がトランザクションで要求されたことが原因である可能性があります。[AMMBid][]の場合、これは当該アカウントが落札に必要な金額を十分に持っていないか、指定された最高入札価格よりも高い金額が必要であることが原因である可能性があります。 {% amendment-disclaimer name="AMM" /%}  |
 | `tecAMM_INVALID_TOKENS`            | 165 | LPトークンの不足や丸め処理の問題により、AMM関連のトランザクションが失敗しました。例えば、返却されるLPトークンの額がゼロに切り捨てられる場合、「非常に少量の資産を預け入れる」という行為が失敗する可能性があります。 {% amendment-disclaimer name="AMM" /%}  |
 | `tecAMM_NOT_EMPTY`                 | 167 | トランザクションは、資産プールが空のAMMで動作するように設計されていましたが、指定されたAMMは資産を保有しています。 {% amendment-disclaimer name="AMM" /%}  |
 | `tecCANT_ACCEPT_OWN_NFTOKEN_OFFER` | 158 | トランザクションは、同じアカウントが購入または売却するために作成された[非代替可能トークン(NFT)](../../../../concepts/tokens/nfts/index.md)のオファーを受け入れようとしました。 {% amendment-disclaimer name="NonFungibleTokensV1_1" /%} |
