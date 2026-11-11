@@ -45,7 +45,7 @@ El campo `[ledger_history]` define el número mínimo de ledgers que se acumulan
 
 
 
-## Histórico completo
+## Histórico completo {% #full-history %}
 
 Algunos servidores en la red XRP Ledger están configurados como servidores "full-history". Estos servidores, los cuales requieren sifnificativamente más espacio de disco que otros servidores de seguimiento, almacenan todo el histórico disponible XRP Ledger y **no usan la opción online deletion**.
 

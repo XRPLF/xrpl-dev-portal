@@ -12,7 +12,7 @@ seo:
 
 [トランザクション](../transactions/index.md)は、トランザクションのバイナリフォーマットの[ハッシュ][]で識別されます。また、トランザクションは送信アカウントと[シーケンス番号][]でも識別できます。
 
-閉鎖された各[レジャー](../ledger-data/index.md)は、[レジャーインデックス][]と[ハッシュ][]値を保有します。[レジャーを指定する](#レジャーの指定)場合、いずれか1つを使用できます。
+閉鎖された各[レジャー](../ledger-data/index.md)は、[レジャーインデックス][]と[ハッシュ][]値を保有します。[レジャーを指定する](#specifying-ledgers)場合、いずれか1つを使用できます。
 
 ## アドレス
 [アドレス]: #アドレス
@@ -21,8 +21,8 @@ seo:
 
 
 
-## ハッシュ
-[ハッシュ]: #ハッシュ
+## ハッシュ {% #hashes %}
+[ハッシュ]: #hashes
 
 {% partial file="/@l10n/ja/docs/_snippets/data_types/hash.md" /%}
 
@@ -55,8 +55,8 @@ seo:
 [レジャーオブジェクトID](../ledger-data/common-fields.md)も似た方法で計算されますが、ここで説明したプレフィクスの代わりに「スペースキー」という2バイトのプレフィクスを使用します。
 
 
-## アカウントシーケンス
-[シーケンス番号]: #アカウントシーケンス
+## アカウントシーケンス {% #account-sequence %}
+[シーケンス番号]: #account-sequence
 
 {% partial file="/@l10n/ja/docs/_snippets/data_types/account_sequence.md" /%}
 
@@ -69,7 +69,7 @@ seo:
 
 
 
-### レジャーの指定
+### レジャーの指定 {% #specifying-ledgers %}
 
 APIメソッドの多くは、レジャーのインスタンスを指定する必要があります。その場合、共有されたレジャーの特定バージョンで最新と見なされるデータで指定する必要があります。レジャーバージョンを受け入れるコマンドは、すべて同様に機能します。使用するレジャーを指定するには、以下の3つの方法があります。
 
@@ -87,7 +87,7 @@ APIメソッドの多くは、レジャーのインスタンスを指定する�
 
 3. `ledger_index`パラメータに以下のいずれかのショートカットを指定します。
 
-    * `validated`: [コンセンサスで検証](../../../concepts/consensus-protocol/consensus-structure.md#検証)された最新のレジャー
+    * `validated`: [コンセンサスで検証](../../../concepts/consensus-protocol/consensus-structure.md#validation)された最新のレジャー
 
         ```
         "ledger_index": "validated"

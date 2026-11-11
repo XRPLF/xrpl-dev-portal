@@ -13,7 +13,7 @@ _(Añadido por la [enmienda DepositAuth][].)_
 
 La Autorización para depositar es una configuración opcional de la [cuenta](index.md) en el XRP Ledger. Si se activa, La Autorización para depositar, bloquea todas las transferencias de desconocidos, incluidas las transferencias de XRP o [tokens](../tokens/index.md). Una cuenta con Autorización para depositar solo puede recibir valor de dos maneras:
 
-- Desde cuentas que tiene [preautorizadas](#preautorización).
+- Desde cuentas que tiene [preautorizadas](#preauthorization).
 - Enviando una transacción para recibir los fondos. Por ejemplo, una cuenta con Autorización para depositar puede finalizar un [Escrow](../payment-types/escrow.md) que fue iniciado por un desconocido.
 
 Por defecto, las cuentas nuevas tienen DepositAuth desactivado y pueden recibir XRP de cualquiera.
@@ -26,7 +26,7 @@ La marca (flag) de Deposit Authorization introduce una opción para aquellos que
 
 Cuando tienes la opción Deposit Authorization activada, puedes recibir dinero de [Checks](/resources/known-amendments.md#checks), [Escrow](../payment-types/escrow.md), y [Payment Channels](/resources/known-amendments.md#paychan). En esas transacciones de tipo "dos pasos", primero el origen manda una transacción para autorizar los fondos, después el destinatario manda una transacción que autoriza recibir esos fondos.
 
-Para recibir dinero de [transacciones Payment][] cuando tienes la opción Deposit Authorization activada, debes [preautorizar](#preautorización) los remitentes de esos Payments. _(Añadido por la [enmienda DepositPreauth][].)_
+Para recibir dinero de [transacciones Payment][] cuando tienes la opción Deposit Authorization activada, debes [preautorizar](#preauthorization) los remitentes de esos Payments. _(Añadido por la [enmienda DepositPreauth][].)_
 
 ## Uso recomendado
 
@@ -36,19 +36,19 @@ Para conseguir un efecto total de Deposit Authorization, Ripple recomienda adem�
 - Mantener la marca (flag) Default Ripple en su estado por defecto (desactivada). No actives [rippling](../tokens/fungible-tokens/rippling.md) en ninguna trust lines. Cuando envíes [transacciones TrustSet][], siempre utiliza el [flag `tfSetNoRipple`](../../references/protocol/transactions/types/trustset.md).
 - No crees [Offers](../../references/protocol/transactions/types/offercreate.md). Es imposible conocer de antemano que ofertas coincidentes serán utilizadas para ejecutar dicha operación. <!-- STYLE_OVERRIDE: will -->
 
-## Precisión en la semántica
+## Precisión en la semántica {% #precise-semantics %}
 
 Una cuenta con Deposit Authorization activado:
 
 - **No puede** ser destinatario de [transacciones Payment][], con **las siguientes excepciones**:
-    - Si el destinatario tiene [preautorizado](#preautorización) al remitente del pago. _(Añadido con la [enmienda DepositPreauth][])_
+    - Si el destinatario tiene [preautorizado](#preauthorization) al remitente del pago. _(Añadido con la [enmienda DepositPreauth][])_
     - Si el balance XRP de la cuenta es igual o inferior al [requisito de reserva](reserves.md) de la cuenta, puede ser el destinatario de un pago XRP cuya cantidad `Amount` es igual o menor que el mínimo de reserva de la cuenta (actualmente {% $env.PUBLIC_BASE_RESERVE %}). Esto es para prevenir a una cuenta de quedarse "atascada" no siendo posible enviar transacciones ni tampoco recibir XRP. La reserva de la cuenta del propietario no importa en este caso.
 - Puede recibir XRP de [transacciones PaymentChannelClaim][] **únicamente en los siguientes casos**:
     - El remitente de la transacción PaymentChannelClaim es el destino del canal de pago (payment channel).
-    - El destino de la transacción del PaymentChannelClaim tiene [preautorizado](#preautorización) al remitente del PaymentChannelClaim. _(Añadido en la [enmienda DepositPreauth][])_
+    - El destino de la transacción del PaymentChannelClaim tiene [preautorizado](#preauthorization) al remitente del PaymentChannelClaim. _(Añadido en la [enmienda DepositPreauth][])_
 - Puede recibir XRP de [transacciones EscrowFinish][] **únicamente en los siguientes casos**:
     - El remitente de una transacción EscrowFinish es el destino de un escrow.
-    - El destino de una transacción EscrowFinish tiene [preautorizado](#preautorización) al remitente de un EscrowFinish. _(Añadido en la [enmienda DepositPreauth][])_
+    - El destino de una transacción EscrowFinish tiene [preautorizado](#preauthorization) al remitente de un EscrowFinish. _(Añadido en la [enmienda DepositPreauth][])_
 - **Puede** recibir XRP o tokens enviando una transacción [CheckCash][]. _(Añadido por la [enmienda Checks][].)_
 - **Puede** recibir XRP o tokens enviando [transacciones OfferCreate][].
     - Si la cuenta envía una transacción OfferCreate que no está completamente ejecutada in mediatamente, **puede** recibir el resto del XRP o token solicitado después cuando la oferta sea consumida por otras transacciones [Payment][] y [OfferCreate][] de la cuenta.
@@ -74,7 +74,7 @@ Para ver cuando una cuenta tiene Deposit Authorization activado, utiliza el [mé
 
 Si el resultado de los valores  bitwise `Flags` Y el valor del flag `lsfDepositAuth` (`0x01000000`) es distinto a cero, entonces la cuenta tiene el DepositAuth activado. Si el resultado es cero, entonces la cuenta tiene DepositAuth desactivado.
 
-## Preautorización
+## Preautorización {% #preauthorization %}
 
 _(Añadido por la [enmienda DepositPreauth][].)_
 

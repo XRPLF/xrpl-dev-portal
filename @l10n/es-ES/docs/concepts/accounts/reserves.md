@@ -30,7 +30,7 @@ Los requerimientos de reserva actuales en Mainnet son:
 
 Reservas en otras redes pueden variar.
 
-## Reservas de propietario
+## Reservas de propietario {% #owner-reserves %}
 
 Muchos objetos en el ledger (entradas en el ledger) pertenecen a una cuenta en particular. Normalmente, el propietario es una cuenta que ha creado el objeto. Cada objeto aumenta el requisito de reserva total en la reserva de propietario. Cuando los objetos son eliminados del ledger, ya no cuentan para el requisito de reserva.
 

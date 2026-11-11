@@ -11,7 +11,7 @@ labels:
 
 En el XRP Ledger, una firma digital _autoriza_ a una [transacción](../transactions/index.md) a hacer un grupo específico de acciones. Solo las transacciones firmadas pueden ser enviadas a la red y ser incluidas en un ledger validado.
 
-Para realizar una firma digital, utilizas un par de claves criptográficas asociadas con la cuenta de envío de la transacción. Un par de claves se puede generar utilizando cualquiera de los [algoritmos de firma criptorgráfica](#algoritmos-de-firma) soportados por el XRP Ledger. Un par de claves puede ser utilizado como [par de claves maestras](#par-de-claves-maestras), [par de claves normales](#par-de-claves-normales) o un miembro de una [lista de firmantes](multi-signing.md), sin importar qué algoritmo se ha utilizado para generarlo.
+Para realizar una firma digital, utilizas un par de claves criptográficas asociadas con la cuenta de envío de la transacción. Un par de claves se puede generar utilizando cualquiera de los [algoritmos de firma criptorgráfica](#signing-algorithms) soportados por el XRP Ledger. Un par de claves puede ser utilizado como [par de claves maestras](#par-de-claves-maestras), [par de claves normales](#par-de-claves-normales) o un miembro de una [lista de firmantes](multi-signing.md), sin importar qué algoritmo se ha utilizado para generarlo.
 
 **Atención:** Es importante mantener una seguridad adecuada sobre tus claves criptográficas. Las firmas digitales son la única forma de autorizar transacciones en el XRP Ledger, y no hay administrador privilegiado que pueda deshacer o revertir cualquier transacción tras haber sido aplicadas. Si alguien más conoce la semilla o la clave privada de tu cuenta del XRP Ledger, esa persona puede crear firmas digitales para autorizar cualquier transacción al igual que tú.
 
@@ -22,7 +22,7 @@ Muchas [librerías de cliente](../../references/client-libraries.md) y aplicacio
 
 ## Componentes de clave
 
-Un par de claves criptográficas es una **clave privada** y una **clave pública** que están conectadas matemáticamente a través de un proceso de derivación de claves. Cada clave es un número; la clave privada debería elegirse usando una fuente de aleatoriedad fuerte. El [algoritmo de firma criptográfica](#algoritmos-de-firma) define el proceso de derivación de claves y establece restricciones en los números que pueden ser claves criptográficas.
+Un par de claves criptográficas es una **clave privada** y una **clave pública** que están conectadas matemáticamente a través de un proceso de derivación de claves. Cada clave es un número; la clave privada debería elegirse usando una fuente de aleatoriedad fuerte. El [algoritmo de firma criptográfica](#signing-algorithms) define el proceso de derivación de claves y establece restricciones en los números que pueden ser claves criptográficas.
 
 Al tratar con el XRP Ledger, también puedes utilizar algunos valores relacionados como passphrase, semilla, ID de cuenta, y dirección.
 
@@ -33,7 +33,7 @@ La passphrase, semilla, y la clave privada son **secretos**: si conoces alguno d
 
 La clave pública, el ID de cuenta, y dirección son información pública. Puede haber situaciones en las que puedes conservar la clave pública para ti mismo, pero en algún momento necesites publicarla como parte de una transacción para que el XRP Ledger pueda verificar la firma y el proceso de la transacción.
 
-Para más detalles técnicos y como la derivación de clave funciona, ver [Derivación de claves](#derivación-de-claves).
+Para más detalles técnicos y como la derivación de clave funciona, ver [Derivación de claves](#key-derivation).
 
 ### Passphrase
 
@@ -43,13 +43,13 @@ La passphrase es información secreta, por lo que debes protegerla con mucho cui
 
 ### Semilla 
 
-Un valor _semilla_ es un valor compacto que se utiliza para [derivar](#derivación-de-claves) las claves privada y pública actual de una cuenta. En la respuesta de un [método wallet_propose][], las `master_key`, `master_seed`, y `master_seed_hex` todas representan el mismo valor semilla, en varios formatos. Cualquiera de esos formatos puede ser utilizado para firmar transacciones. A pesar de tener el prefijo `master_`, las claves que esta semilla representa no necesariamente representan las claves maestras de una cuenta; puedes usar un par de claves como una clave normal o un miembro de una lista de firmantes.
+Un valor _semilla_ es un valor compacto que se utiliza para [derivar](#key-derivation) las claves privada y pública actual de una cuenta. En la respuesta de un [método wallet_propose][], las `master_key`, `master_seed`, y `master_seed_hex` todas representan el mismo valor semilla, en varios formatos. Cualquiera de esos formatos puede ser utilizado para firmar transacciones. A pesar de tener el prefijo `master_`, las claves que esta semilla representa no necesariamente representan las claves maestras de una cuenta; puedes usar un par de claves como una clave normal o un miembro de una lista de firmantes.
 
 El valor semilla es una información secreta, por lo que debes que protegerla con mucho cuidado. Cualquiera que conozca el valor semilla de una dirección tiene control total sobre la dirección.
 
 ### Clave privada
 
-La _clave privada_ es un valor utilizado para crear una firma digital. La mayoría de software XRP Ledger no muestra explicitamente la clave privada, y [deriva la clave privada](#derivación-de-claves) desde el valor semilla cuando es necesario. Es técnicamente posible guardar la clave privada en vez de la semilla para usarla con el fin de firmar transacciones directamente, pero no es algo común.
+La _clave privada_ es un valor utilizado para crear una firma digital. La mayoría de software XRP Ledger no muestra explicitamente la clave privada, y [deriva la clave privada](#key-derivation) desde el valor semilla cuando es necesario. Es técnicamente posible guardar la clave privada en vez de la semilla para usarla con el fin de firmar transacciones directamente, pero no es algo común.
 
 Como la semilla, la clave privada es información secreta, por lo que debes protegerla con mucho cuidado. Cualquiera que conozca la clave privada de la dirección tiene control total sobre la dirección.
 
@@ -75,7 +75,7 @@ Incluso si una ID de cuenta o dirección no se refiere a una cuenta con fodos, _
 
 ### Tipo de clave
 
-El XRP Ledger soporta más de un [algoritmo de firma criptográfica](#algoritmos-de-firma). Cualquier par de claves determinado es únicamente válida para un algoritmo de firma criptográfica específico. Algunas claves privadas pueden técnicamente ser claves válidas para más de un algoritmo, pero esas claves privadas tendrían distintas claves públicas para cada algoritmo, y no deberías reutilizar las claves privadas.
+El XRP Ledger soporta más de un [algoritmo de firma criptográfica](#signing-algorithms). Cualquier par de claves determinado es únicamente válida para un algoritmo de firma criptográfica específico. Algunas claves privadas pueden técnicamente ser claves válidas para más de un algoritmo, pero esas claves privadas tendrían distintas claves públicas para cada algoritmo, y no deberías reutilizar las claves privadas.
 
 El campo `key_type` en el [método wallet_propose][] se refiere al algoritmo de firma criptográfica que se utilizará.
 
@@ -94,7 +94,7 @@ Mantener tu par de claves maestras offline significa no colocar tu información 
 
 
 
-### Permisos especiales
+### Permisos especiales {% #special-permissions %}
 
 **Solo** el par de claves maestras pueden autorizar transacciones para hacer ciertas cosas:
 
@@ -113,7 +113,7 @@ Una clave normal o [multi-firma](multi-signing.md) puede hacer cualquier otra co
 
 Una cuenta XRP Ledger puede autorizar un par de claves secundario, conocido como _par de claves normales_. Tras hacerlo, puedes utilizar cualquiera, el [par de claves maestras](#par-de-claves-maestras) o el par de claves normales para autorizar transacciones. Puedes eliminar o reemplazar tu par de claves normales en cualquier momento sin cambiar el resto de la cuenta.
 
-Un par de claves normales pueden autorizar la mayoría de tipos de transacciones que una par de claves maestras puede, con [ciertas excepciones](#pemrisos-especiales). Por ejemplo, un par de claves nomales _puede_ autorizar una transacción para cambiar el par de claves normales.
+Un par de claves normales pueden autorizar la mayoría de tipos de transacciones que una par de claves maestras puede, con [ciertas excepciones](#special-permissions). Por ejemplo, un par de claves nomales _puede_ autorizar una transacción para cambiar el par de claves normales.
 
 Una buena práctica de seguridad es guardar tu clave privada maestra en algun sitio offline, y usar un par de claves normales la mayor parte del tiempo. Como precaución, puedes cambiar el par de claves normales regularmente. Si un usuario malicioso descubre tu clave privada normal, puedes tomar el par de claves maestras de tu escondite offline y usarlo para cambiar o eliminar el par de claves normales. De este modo, puedes volver a retomar el control de la cuenta. Incluso si no eres demasiado rápido para parar al usuario malicioso de robar tu dinero, al menos no tendrás necesidad de moverte a una nueva cuenta y tener que recrear tu configuración y relaciones desde el principio.
 
@@ -122,7 +122,7 @@ El par de claves normales tiene el mismo formato que el par de claves maestras. 
 La [transacción SetRegularKey][] asigna o cambia el par de claves normales de una cuenta. Para un tutorial de asignación o cambio de un par de claves normales, ver [Asignar par de claves normales](/docs/tutorials/best-practices/key-management/assign-a-regular-key-pair.md).
 
 
-## Algorítmos de firma
+## Algorítmos de firma {% #signing-algorithms %}
 
 Los pares de claves criptográficas están siempre atadas a un algorítmo de firma específico, el cual define la relación matemática entre la clave secreta y la clave pública. Los algorítmos de firma criptográficos tienen la propiedad de, dado el estado actual de las técnicas de criptografía, es "fácil" utilizar una clave secreta para clacular la clave pública coincidente, pero es imposible calcular la clave secreta vinculante partiendo de la clave pública. <!-- STYLE_OVERRIDE: easy -->
 
@@ -143,7 +143,7 @@ Los tipos de pares de claves admitidos pueden utilizarse indistintatemente en to
 En el futuro, es posible que el XRP Ledger necesite nuevos algoritmos de firma criptográficos para mantenerse al día con el desarrollo en criptográfia. Por ejemplo, si los ordenadores cuánticos utilizasen el [algoritmo de Shor](https://en.wikipedia.org/wiki/Shor's_algorithm) (o algo similar) no tardarán en romper la curva elíptica criptográfica, los desarrolladores XRP Ledger pueden añadir un algoritmo criptográfico que no es facil de romper. A mediados de 2020, no existe un algoritmo de firma "resistente a la cuántica" y los ordenadores cuánticos no son lo suficientemente prácticos para ser una amenaza, por lo que no hay planes inmediatos para añadir algoritmos específicos. <!-- STYLE_OVERRIDE: will, easily -->
 
 
-## Derivación de claves
+## Derivación de claves {% #key-derivation %}
 
 El proceso de derivar un par de claves depende del algoritmo de firma. En todos los casos, las claves son generadas desde un valor _seed_ (semilla) que es de 16 bytes (128 bits) de longitud. El valor semilla puede ser totalmente aleatorio (recomendado) o puede ser derivado de una passphrase específica tomando el [hash SHA-512][Hash] y manteniendo los primeros 16 bytes (como [SHA-512Half][], pero manteniendo solo 128 bits en vez de los 256 bits de la salida).
 

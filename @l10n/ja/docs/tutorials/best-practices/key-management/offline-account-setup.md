@@ -332,7 +332,7 @@ Loading: "/etc/xrpld/xrpld.cfg"
   - [レギュラーキーペアの割り当て](assign-a-regular-key-pair.md)
   - [マルチシグの設定](set-up-multi-signing.md)
 - **リファレンス:**
-  - [基本的なデータタイプ: ](../../../references/protocol/data-types/basic-data-types.md#アカウントシーケンス)[ ](../../../references/protocol/data-types/basic-data-types.md#アカウントシーケンス)[アカウントシーケンス](../../../references/protocol/data-types/basic-data-types.md#アカウントシーケンス)
+  - [基本的なデータタイプ: ](../../../references/protocol/data-types/basic-data-types.md#account-sequence)[ ](../../../references/protocol/data-types/basic-data-types.md#account-sequence)[アカウントシーケンス](../../../references/protocol/data-types/basic-data-types.md#account-sequence)
   - [account_infoメソッド][]
   - [signメソッド][]
   - [submitメソッド][]

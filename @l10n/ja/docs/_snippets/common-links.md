@@ -95,7 +95,7 @@
 [Flow amendment]: /@l10n/ja/resources/known-amendments.md#flow
 [FlowCross amendment]: /@l10n/ja/resources/known-amendments.md#flowcross
 [FlowV2 amendment]: /@l10n/ja/resources/known-amendments.md#flowv2
-[ハッシュ]: /@l10n/ja/docs/references/protocol/data-types/basic-data-types.md#ハッシュ
+[ハッシュ]: /@l10n/ja/docs/references/protocol/data-types/basic-data-types.md#hashes
 [ImmediateOfferKilled amendment]: /@l10n/ja/resources/known-amendments.md#immediateofferkilled
 [Interledger Protocol]: https://interledger.org/
 [内部の型]: /@l10n/ja/docs/references/protocol/binary-format.md
@@ -170,9 +170,9 @@
 [RippleStateエントリ]: /@l10n/ja/docs/references/protocol/ledger-data/ledger-entry-types/ripplestate.md
 [RippleStateオブジェクト]: /@l10n/ja/docs/references/protocol/ledger-data/ledger-entry-types/ripplestate.md
 [Rippleエポック以降の経過秒数]: /@l10n/ja/docs/references/protocol/data-types/basic-data-types.md#時間の指定
-[SHA-512Half]: /@l10n/ja/docs/references/protocol/data-types/basic-data-types.md#ハッシュ
+[SHA-512Half]: /@l10n/ja/docs/references/protocol/data-types/basic-data-types.md#hashes
 [SHAMapV2 amendment]: /@l10n/ja/resources/known-amendments.md#shamapv2
-[シーケンス番号]: /@l10n/ja/docs/references/protocol/data-types/basic-data-types.md#アカウントシーケンス
+[シーケンス番号]: /@l10n/ja/docs/references/protocol/data-types/basic-data-types.md#account-sequence
 [SetFee]: /@l10n/ja/docs/references/protocol/transactions/pseudo-transaction-types/setfee.md
 [SetFee疑似トランザクション]: /@l10n/ja/docs/references/protocol/transactions/pseudo-transaction-types/setfee.md
 [SetRegularKey]: /@l10n/ja/docs/references/protocol/transactions/types/setregularkey.md
@@ -184,7 +184,7 @@
 [SingleAssetVault amendment]: /@l10n/ja/resources/known-amendments.md#singleassetvault
 [SortedDirectories amendment]: /@l10n/ja/resources/known-amendments.md#sorteddirectories
 [通貨額の指定]: /@l10n/ja/docs/references/protocol/data-types/basic-data-types.md#通貨額の指定
-[レジャーの指定]: /@l10n/ja/docs/references/protocol/data-types/basic-data-types.md#レジャーの指定
+[レジャーの指定]: /@l10n/ja/docs/references/protocol/data-types/basic-data-types.md#specifying-ledgers
 [時間の指定]: /@l10n/ja/docs/references/protocol/data-types/basic-data-types.md#時間の指定
 [金額なしの指定]: /@l10n/ja/docs/references/protocol/data-types/currency-formats.md#金額なしでの通貨の指定
 [SusPay amendment]: /@l10n/ja/resources/known-amendments.md#suspay

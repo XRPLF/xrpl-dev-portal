@@ -36,7 +36,7 @@ P2Pモードのサーバは、デフォルトで[Mainnet](parallel-networks.md)�
 
 ### APIサーバ
 
-全てのP2Pモードサーバは、トランザクションの送信、残高や設定の確認、サーバの管理などの目的で、[API](../../references/http-websocket-apis/index.md)を提供しています。もしあなたがXRP Ledgerにデータを照会したり、ビジネス用途でトランザクションを送信するのであれば、[独自サーバを運営する](index.md#独自サーバを運用する理由)ことが有効でしょう。
+全てのP2Pモードサーバは、トランザクションの送信、残高や設定の確認、サーバの管理などの目的で、[API](../../references/http-websocket-apis/index.md)を提供しています。もしあなたがXRP Ledgerにデータを照会したり、ビジネス用途でトランザクションを送信するのであれば、[独自サーバを運営する](index.md#reasons-to-run-your-own-server)ことが有効でしょう。
 
 #### 全履歴サーバ
 

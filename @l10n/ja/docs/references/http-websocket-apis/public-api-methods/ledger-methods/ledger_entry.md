@@ -34,7 +34,7 @@ label:
 - [ledger\_entry](#ledger_entry)
   - [リクエストのフォーマット](#リクエストのフォーマット)
     - [一般的なフィールド](#一般的なフィールド)
-    - [IDからレジャーエントリを取得する](#idからレジャーオントリを取得する)
+    - [IDからレジャーエントリを取得する](#get-ledger-entry-by-id)
     - [AccountRootエントリを取得する](#accountrootエントリを取得する)
     - [AMMエントリを取得する](#ammエントリを取得する)
     - [Bridgeエントリを取得する](#bridgeエントリを取得する)
@@ -51,13 +51,13 @@ label:
     - [Nft Pageを取得する](#nft-pageを取得する)
     - [MPT Issuanceオブジェクトを取得する](#mpt-issuanceオブジェクトを取得する)
     - [MPTokenオブジェクトを取得する](#mptokenオブジェクトを取得する)
-  - [レスポンスのフォーマット](#レスポンスのフォーマット)
+  - [レスポンスのフォーマット](#response-format)
   - [考えられるエラー](#考えられるエラー)
 
 {% admonition type="warning" name="注意" %}リクエストでこれらの型固有のフィールドを1つ以上指定した場合、サーバはそのうちの1つだけの結果を取得します。サーバがどれを選択するかは定義されていないため、こうした指定方法は避けるべきです。{% /admonition %}
 
 
-### IDからレジャーエントリを取得する
+### IDからレジャーエントリを取得する {% #get-ledger-entry-by-id %}
 <a id="idからレジャーオブジェクトを取得する"></a><!-- legacy ID -->
 
 ユニークな ID を使用して、任意のタイプのレジャーエントリを取得します。
@@ -982,7 +982,7 @@ xrpld json ledger_entry '{ "mptoken": {"mpt_issuance_id": "000002DFA4D893CFBC4DC
 [Try it! >](/resources/dev-tools/websocket-api-tool#ledger_entry-mptoken)
  -->
 
-## レスポンスフォーマット
+## レスポンスフォーマット {% #response-format %}
 
 レスポンスは[標準フォーマット][]に従い、成功した結果には次のフィールドが含まれます。
 

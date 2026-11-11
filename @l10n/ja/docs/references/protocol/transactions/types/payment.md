@@ -42,7 +42,7 @@ Paymentは、[アカウントを作成](#アカウントの作成)する唯一�
 | :--------------- | :-------------------- | :----------- | :---------- | :---- |
 | `Amount`         | [通貨額][]            | Amount       | APIv1: はい | `DeliverMax`のエイリアス |
 | `CredentialIDs`  | 文字列の配列          | Vector256    | いいえ      | このトランザクションによって作成される入金を承認するための、受取人によって事前承認された資格証明のセット。配列の各メンバは、レジャーのCredentialエントリのレジャーエントリIDでなければなりません。(_[**Credentials** amendment](../../../../../resources/known-amendments.md#credentials)が必要です。_ {% not-enabled /%}) |
-| `DeliverMax`     | [通貨額][]            | Amount       | はい        | [API v2][]: 送金する通貨額。XRP以外の金額の場合、入れ子フィールドの名前では、アルファベットの小文字のみ使用してください。[**tfPartialPayment**フラグ](#paymentのフラグ)が設定されている場合は、この金額を _上限_ とする金額を送金します。 {% badge href="https://github.com/XRPLF/rippled/releases/tag/2.0.0" %}新規: rippled 2.0.0{% /badge %} |
+| `DeliverMax`     | [通貨額][]            | Amount       | はい        | [API v2][]: 送金する通貨額。XRP以外の金額の場合、入れ子フィールドの名前では、アルファベットの小文字のみ使用してください。[**tfPartialPayment**フラグ](#payment-flags)が設定されている場合は、この金額を _上限_ とする金額を送金します。 {% badge href="https://github.com/XRPLF/rippled/releases/tag/2.0.0" %}新規: rippled 2.0.0{% /badge %} |
 | `DeliverMin`     | [通貨額][]            | Amount       | いいえ      | _（省略可）_ このトランザクションで送金する、宛先通貨での最少金額。[Partial Payments](#partial-payments)の場合のみ有効になります。XRP以外の金額の場合、入れ子フィールドの名前では、アルファベットの小文字のみ使用してください。 |
 | `Destination`    | 文字列 - [アドレス][] | AccountID    | はい        | 支払いを受取るアカウントの一意アドレス。 |
 | `DestinationTag` | 数値                  | UInt32       | いいえ      | 宛先（支払先となる、ホスティングされている受取人）への支払い理由を明確にするための任意のタグ。 |
@@ -62,7 +62,7 @@ Paymentトランザクションタイプは、いくつかの異なるタイプ�
 | [XRP同士の直接支払い][]            | 文字列 (XRP)                        | 省略                                | 省略       | いいえ                     | アカウント間でへ直接XRPを送金します。常に正確な金額を送信します。基本的な[取引コスト](../../../../concepts/transactions/transaction-cost.md)以外の手数料は適用されません。 |
 | [発行通貨の作成・償還][]           | オブジェクト                        | オブジェクト (任意)                 | 任意       | いいえ                     | XRP Ledgerに追跡されているXRP以外の通貨や資産の量を増減させます。[送金手数料](../../../../concepts/tokens/fungible-tokens/transfer-fees.md)と[フリーズ](../../../../concepts/tokens/fungible-tokens/freezes.md)は、直接送金・換金する際には適用されません。 |
 | [クロスカレンシー（通貨間）決済][] | オブジェクト (非XRP) / 文字列 (XRP) | オブジェクト (非XRP) / 文字列 (XRP) | 通常は必須 | いいえ                     | 発行された通貨を保有者から別の保有者に送信します。`Amount`と`SendMax`の両方をXRPにすることはできません。これらの支払いは、発行者を介して[リップリング](../../../../concepts/tokens/fungible-tokens/rippling.md)し、トランザクションがパスセットを指定した場合、複数の仲介者を介してより長い[パス](../../../../concepts/tokens/fungible-tokens/paths.md)を取ることができます。トランザクション形式には、発行者が設定した[送金手数料](../../../../concepts/tokens/fungible-tokens/transfer-fees.md) が適用されます。これらのトランザクションは、異なる通貨間や、場合によっては同じ通貨コードで異なる発行者の通貨間を接続するために、[分散型取引所](../../../../concepts/tokens/decentralized-exchange/index.md)のオファーを利用します。 |
-| [Partial payment][]                | オブジェクト (非XRP) / 文字列 (XRP) | オブジェクト (非XRP) / 文字列 (XRP) | 通常は必須 | いいえ                     | 任意の通貨を特定の金額まで送ります。[`tfPartialPayment` フラグ](#paymentのフラグ)を使用します。トランザクションが成功するための最小値を指定する `DeliverMin` 値を含めることができます。トランザクションが `DeliverMin` を指定しない場合、_任意の正の値_ を指定して成功させることができる。 |
+| [Partial payment][]                | オブジェクト (非XRP) / 文字列 (XRP) | オブジェクト (非XRP) / 文字列 (XRP) | 通常は必須 | いいえ                     | 任意の通貨を特定の金額まで送ります。[`tfPartialPayment` フラグ](#payment-flags)を使用します。トランザクションが成功するための最小値を指定する `DeliverMin` 値を含めることができます。トランザクションが `DeliverMin` を指定しない場合、_任意の正の値_ を指定して成功させることができる。 |
 | 通貨変換                           | オブジェクト (非XRP) / 文字列 (XRP) | オブジェクト (非XRP) / 文字列 (XRP) | 必須       | はい                       | [分散型取引所](../../../../concepts/tokens/decentralized-exchange/index.md)のオファーを消費して、ある通貨を別の通貨に交換し、[裁定取引](https://ja.wikipedia.org/wiki/%E8%A3%81%E5%AE%9A%E5%8F%96%E5%BC%95)の機会を得ることが出来ます。`Amount`と `SendMax` の両方を XRP にすることはできません。[Data API](../../../data-api.md) は、このタイプの取引を "payment" ではなく、"exchange" として追跡しています。 |
 | MPTの支払い                        | オブジェクト                        | 省略                                | 省略       | いいえ                     | MPTを保有者に送信します。[MPTの支払い](#mpt-payments)をご覧ください。 |
 
@@ -103,9 +103,9 @@ Payment型のトランザクションでは、資金供給のないアドレス�
 
 詳細は、[Paths](../../../../concepts/tokens/fungible-tokens/paths.md)をご覧ください。
 
-## Paymentのフラグ
+## Paymentのフラグ {% #payment-flags %}
 
-Payment型のトランザクションについては、[`Flags`フィールド](../common-fields.md#flagsフィールド)で以下の値が追加でサポートされます。
+Payment型のトランザクションについては、[`Flags`フィールド](../common-fields.md#flags-field)で以下の値が追加でサポートされます。
 
 | フラグの名前       | 16進値       | 10進値 | 説明 |
 | :----------------- | :----------- | :----- | ---- |
@@ -128,7 +128,7 @@ Partial Paymentsとは、**tfPartialPayment**フラグが有効になってい�
 
 XRP Ledgerでは、ある通貨での入金額と別の通貨での出金額の比率として、通貨取引の「クオリティ」を定義します。例えば、2米ドルと引き換えに1イギリスポンドを受け取る場合、その交換の「クオリティ」は`0.5`です。
 
-[*tfLimitQuality*フラグ](#paymentのフラグ)を使用すると、実行する変換のクオリティについて下限を設定できます。このクオリティの制限は、宛先の`Amount`を`SendMax`の金額（通貨にかかわらず金額のみ）で除算することによって定義します。設定した場合、支払い処理エンジンは、クオリティの制限よりもクオリティ（為替レート）が低い（数値が小さい）パスの使用を回避します。
+[*tfLimitQuality*フラグ](#payment-flags)を使用すると、実行する変換のクオリティについて下限を設定できます。このクオリティの制限は、宛先の`Amount`を`SendMax`の金額（通貨にかかわらず金額のみ）で除算することによって定義します。設定した場合、支払い処理エンジンは、クオリティの制限よりもクオリティ（為替レート）が低い（数値が小さい）パスの使用を回避します。
 
 tfLimitQualityフラグは、それ自体、トランザクションが成功する状況を減少させるものになります。具体的には、好ましくない変換が支払いの一部で使用されている場合、支払いにおける変換の*平均*的なクオリティが全体としてクオリティの制限と同一か、それ以上であっても、支払いが拒否されます。支払いがこの形で拒否される場合、[トランザクションの結果](../transaction-results/index.md)は`tecPATH_DRY`です。
 
@@ -140,7 +140,7 @@ tfLimitQualityフラグが最も有用となるのは、[Partial Payments](../..
 
 95人民元/15米ドルのオファーと5人民元/2米ドルのオファーがある上の例で、トランザクションに関してtfPartialPaymentとtfLimitQualityの両方が有効になっている場合、状況は異なります。20米ドルの`SendMax`および100人民元の宛先`Amount`を維持する場合も、クオリティの制限は`5`です。ただし、実行しようとするのはPartial Paymentsであるため、宛先に対する送金の全額を一度で送金できない場合、トランザクションを失敗とするのではなく、送金可能な最大限の金額が送金されます。つまり、トランザクションでは、クオリティが約`6.3`である95人民元/15米ドルのオファーは受け入れますが、5人民元/2米ドルのオファーはクオリティが`2.5`であり、クオリティの制限の`5`より低いため、拒否します。最終的に、トランザクションで送金されるのは満額の100人民元ではなく95人民元になりますが、不利な為替レートで資金を浪費することを避けられます。
 
-## MPTの支払い
+## MPTの支払い {% #mpt-payments %}
 
 _([MPTokensV1 amendment][]が必要です。 {% not-enabled /%})_
 
@@ -171,7 +171,7 @@ MPTokenのバージョン1では、アカウント間の直接支払いのみを
 }
 ```
 
-## Credential ID
+## Credential ID {% #credential-ids %}
 
 _([Credentials amendment][]が必要です。 {% not-enabled /%})_
 

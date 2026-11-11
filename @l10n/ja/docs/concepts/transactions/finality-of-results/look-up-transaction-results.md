@@ -90,7 +90,7 @@ XRP Ledgerは共有システムとなっていて、すべてのデータが公�
 
 {% partial file="/@l10n/ja/docs/_snippets/tx-metadata-field-table.md" /%} 
 
-ほとんどのメタデータは、[`AffectedNodes`配列](../../../references/protocol/transactions/metadata.md#affectednodes)に含まれています。この配列で探す対象は、トランザクションのタイプによって異なります。ほぼすべてのトランザクションが、送金元の[AccountRootオブジェクト][]を変更してXRP[トランザクションコスト](../transaction-cost.md)を消却し、[アカウントのシーケンス番号](../../../references/protocol/data-types/basic-data-types.md#アカウントシーケンス)を増やします。
+ほとんどのメタデータは、[`AffectedNodes`配列](../../../references/protocol/transactions/metadata.md#affectednodes)に含まれています。この配列で探す対象は、トランザクションのタイプによって異なります。ほぼすべてのトランザクションが、送金元の[AccountRootオブジェクト][]を変更してXRP[トランザクションコスト](../transaction-cost.md)を消却し、[アカウントのシーケンス番号](../../../references/protocol/data-types/basic-data-types.md#account-sequence)を増やします。
 
 **情報:** このルールの例外として[疑似トランザクション](../../../references/protocol/transactions/pseudo-transaction-types/index.md)があります。このトランザクションは実在するアカウントから送信されないため、AccountRootオブジェクトを変更しません。その他の例外として、AccountRootオブジェクトの`Balance`フィールドを変更せずに、AccountRootオブジェクトを変更するトランザクションがあります。[Free Key Resetトランザクション](../transaction-cost.md#key-resetトランザクション)の場合、送金元のXRP残高は変わりません。トランザクションによって消却される金額と同額のXRPをアカウントが受け取る場合（ただし、このようなことはほとんどありません）、そのアカウントの正味残高は変わりません。（XRPを受領したアカウントに関係なくトランザクションコストはメタデータの別の場所に反映されます。）
 
@@ -221,7 +221,7 @@ rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpnのアカウントの`ModifiedNode`エント�
 
 XRPの額は、`AccountRoot`オブジェクトの`Balance`フィールドで追跡されます。（XRPは[Escrowオブジェクト](../../../references/protocol/ledger-data/ledger-entry-types/escrow.md)および[PayChannelオブジェクト](../../../references/protocol/ledger-data/ledger-entry-types/paychannel.md)にも存在する可能性がありますが、Paymentトランザクションがそれらに影響を及ぼすことはありません。）
 
-支払いでいくら支払われたかを確認するには、必ず[delivered_amountフィールド](../../payment-types/partial-payments.md#delivered_amountフィールド)を使用する必要があります。
+支払いでいくら支払われたかを確認するには、必ず[delivered_amountフィールド](../../payment-types/partial-payments.md#the-delivered_amount-field)を使用する必要があります。
 
 支払いにLedgerEntryTypeが`AccountRoot`の`CreatedNode`が含まれている場合は、その支払いによってレジャーの[新しいアカウントへの資金供給](../../accounts/index.md#アカウントの作成)が行われたことを意味します。
 
