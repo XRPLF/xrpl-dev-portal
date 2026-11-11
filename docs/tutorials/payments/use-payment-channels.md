@@ -278,6 +278,8 @@ Response:
 }
 ```
 
+{% admonition type="info" name="Note" %}By default, the `channel_authorize` method is [admin-only](../../references/http-websocket-apis/admin-api-methods/index.md). This example works because the example config file treats connections to `localhost` on port 5005 as admin connections. For more information, see [Admin Access](../get-started/get-started-http-websocket-apis.md#admin-access). Public servers can't process this method unless their admin has [enabled public signing](../../infrastructure/configuration/enable-public-signing.md). Even then, don't send your secret key to a server you don't run or fully trust.{% /admonition %}
+
 
 ## 4. The payer sends a claim to the payee as payment for goods or services.
 

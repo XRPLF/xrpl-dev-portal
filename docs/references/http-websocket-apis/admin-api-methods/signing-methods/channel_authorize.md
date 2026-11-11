@@ -11,6 +11,8 @@ The `channel_authorize` method creates a signature that can be used to redeem a 
 
 {% partial file="/docs/_snippets/public-signing-note.md" /%}
 
+In versions before 2.5.0, this method was not restricted: it worked on public connections even if public signing was disabled. {% badge href="https://github.com/XRPLF/rippled/releases/tag/2.5.0" %}Updated in: rippled 2.5.0{% /badge %}
+
 ## Request Format
 An example of the request format:
 
