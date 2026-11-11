@@ -194,12 +194,14 @@ Based on the timing and transaction flags, the lending protocol processes the pa
 - **On-Time Payments**: If the payment is on-time, it's further classified into these payment scenarios:
   - **Sequential Periodic Payments**: The payment is applied to as many complete payment cycles as possible; cycles are calculated as the amount due each payment period (including fees).
   - **Overpayments**: After all possible cycles are fully paid, any remaining amount is treated as an overpayment and applied to the principal. This type of payment requires the `lsfLoanOverpayment` flag to be enabled on the `Loan` ledger entry, as well as the `tfLoanOverpayment` flag to be enabled on the `LoanPay` transaction. If these flags are missing, the excess amount is ignored.
-  - **Full Early Repayment**: The payment has the `tfLoanFullPayment` flag set, and the amount covers the remainder of the loan (including fees).
-- **Late Payments**: The payment is late on a payment cycle. Late payments must be for an exact amount, calculated as:
+  - **Full Early Repayment**: The payment has the `tfLoanFullPayment` flag set, and the amount covers the remainder of the loan (including fees). The final payment on a loan can't be a full early repayment.
+- **Late Payments**: The payment is late on a payment cycle, and must have the `tfLoanLatePayment` flag set. A late payment covers one payment cycle, and must be at least:
 
   `totalDue = periodicPayment + loanServiceFee + latePaymentFee + latePaymentInterest`
   
   Overpayments aren't permitted on late payments; any excess amount is ignored.
+
+  If a loan payment is overdue, the borrower can't make on-time payment types (including full early repayments) until they make late payments for every overdue cycle. Because the `LoanPay` flags are mutually exclusive, a single transaction can't combine `tfLoanLatePayment` with `tfLoanFullPayment`.
 
 {% admonition type="info" name="Note" %}
 In scenarios where excess payment amounts are "ignored", the transaction succeeds, but the borrower is only charged on the expected amount.
