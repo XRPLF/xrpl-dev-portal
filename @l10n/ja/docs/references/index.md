@@ -57,5 +57,5 @@ xrp-ledger.tomlファイルは、他のXRP Ledgerユーザに、あなたのXRP 
 - [**ファイルの提供方法**](/ja/docs/references/xrp-ledger-toml/#ファイルの提供方法)
 - [**内容**](/ja/docs/references/xrp-ledger-toml/#内容)
 - [**CORSの設定**](/ja/docs/references/xrp-ledger-toml/#corsの設定)
-- [**ドメイン検証**](/ja/docs/references/xrp-ledger-toml/#ドメイン検証)
+- [**ドメイン検証**](/ja/docs/references/xrp-ledger-toml/#domain-verification)
 - [**アカウント検証**](/ja/docs/references/xrp-ledger-toml/#アカウント検証)

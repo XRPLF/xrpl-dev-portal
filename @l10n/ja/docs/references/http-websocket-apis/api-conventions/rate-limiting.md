@@ -10,7 +10,7 @@ labels:
 
 `xrpld`サーバはAPIクライアントが公開APIにリクエストできるレートを制限できます。レート制限はクライアントのIPアドレスに基づいて行われるため、[ネットワークアドレス変換](https://ja.wikipedia.org/wiki/ネットワークアドレス変換)の背後にいるクライアントは公開IPアドレスに基づく制限を共有します。
 
-{% admonition type="success" name="ヒント" %}レート制限は、クライアントが[管理者](/docs/tutorials/get-started/get-started-http-websocket-apis.md#管理者アクセス権限)として接続されているときには適用されません{% /admonition %}
+{% admonition type="success" name="ヒント" %}レート制限は、クライアントが[管理者](/docs/tutorials/get-started/get-started-http-websocket-apis.md#admin-access)として接続されているときには適用されません{% /admonition %}
 
 クライアントがレート制限に近づいている場合、サーバは[APIレスポンス](response-formatting.md)のトップレベルにフィールド`"warning"： "load"`というフィールドを[APIレスポンス](response-formatting.md)のトップレベルに追加します。この警告はすべてのレスポンスに追加されるわけではありませんが、サーバはクライアントを切断する前に何度かこのような警告を送ることがあります。
 

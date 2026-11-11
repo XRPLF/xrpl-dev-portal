@@ -705,7 +705,7 @@ labels:
 | `type`         | 文字列                   | 値`bookChanges`は、これがBook Changesストリームからのものであることを示します。 |
 | `ledger_index` | [レジャーインデックス][] | これらの変更を含むレジャーのレジャーインデックス。 |
 | `ledger_hash`  | [ハッシュ][]             | これらの変更を含むレジャーの識別用ハッシュ。 |
-| `ledger_time`  | 数値                     | これらの変更を含むレジャーの公式的な閉鎖時刻。[リップルエポック](../../../../concepts/ledgers/index.md#ripple-epoch)からの秒数。 |
+| `ledger_time`  | 数値                     | これらの変更を含むレジャーの公式的な閉鎖時刻。[リップルエポック](../../../protocol/data-types/basic-data-types.md#specifying-time)からの秒数。 |
 | `changes`      | 配列                     | [Book Update Objects](../path-and-order-book-methods/book_changes.md#book-update-objects)のリスト。このレジャーバージョンで更新された各オーダーブックに対して1つのエントリが含まれます。オーダーブックが更新されなかった場合、配列は空です。 |
 
 

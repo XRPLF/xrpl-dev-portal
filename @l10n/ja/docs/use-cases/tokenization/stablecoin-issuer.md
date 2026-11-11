@@ -128,7 +128,7 @@ How to transparently report the current number of stablecoins held in reserve.
 
 各トラストラインは、指定された通貨コードに対して固有のものです。2つのアカウントは、異なる通貨コードのトラストラインをいくつでも持つことができますが、特定の通貨コードの共有トラストラインは1つだけです。
 
-[トラストライン](../../concepts/tokens/fungible-tokens/index.md#トラストライン)をご覧ください。
+[トラストライン](../../concepts/tokens/fungible-tokens/index.md#trust-line-tokens)をご覧ください。
 
 ### 認可トラストライン
 

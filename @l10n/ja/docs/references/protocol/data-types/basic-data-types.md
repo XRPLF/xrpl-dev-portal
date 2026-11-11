@@ -133,7 +133,7 @@ XRPは、XRPの “drop"数を含む整数の文字列として指定され、10
 詳しくは[通貨フォーマット](currency-formats.md)をご覧ください。
 
 
-## 時間の指定
+## 時間の指定 {% #specifying-time %}
 
 `xrpld`サーバとそのAPIでは、時間を符号なし整数で表します。この数値は、「Rippleエポック」である2000年1月1日（00:00 UTC）から経過した秒数を表しています。これは[UNIXエポック](http://en.wikipedia.org/wiki/Unix_time)と同様に機能しますが、RippleエポックはUNIXエポックより946684800秒遅れています。
 

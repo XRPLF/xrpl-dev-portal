@@ -32,7 +32,7 @@ XRP間の直接支払いではPartial Paymentは使用できませんが、Parti
 
 XRP Ledgerにそのアドレスの記録が事前に存在していなくても、支払いで[口座準備金](../accounts/reserves.md)の最少額を満たすのに十分なXRPが送金されれば、数学的に有効なアドレスで支払いを受け取ることができます。支払いで十分なXRPを送金できない場合は失敗します。
 
-詳細は、[アカウント](../accounts/index.md#アカウントの作成)をご覧ください。
+詳細は、[アカウント](../accounts/index.md#creating-accounts)をご覧ください。
 
 
 ## アドレスの再利用

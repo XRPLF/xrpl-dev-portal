@@ -32,7 +32,7 @@ XRP Ledgerの「アカウント」は、XRPの所有者と[トランザクショ
 {% admonition type="success" name="ヒント" %}XRP Ledgerの「アカウント」は、財務上の用途（例:「銀行口座」）やコンピュータ上の用途（例:「UNIXアカウント」）で使用されます。XRP以外の通貨および資産はXRP Ledgerアカウント自体には保存されません。そのような資産はそれぞれ、両当事者を結ぶ「トラストライン」と呼ばれる会計関係に保存されます。{% /admonition %}
 
 
-### アカウントの作成
+### アカウントの作成 {% #creating-accounts %}
 
 「アカウント作成」専用のトランザクションはありません。Paymentトランザクションでまだアカウントを所有していない数学的に有効なアドレスに[アカウントの準備金](reserves.md)以上のXRPが送信されると、[Paymentトランザクション][]で自動的に新しいアカウントが作成されます。これはアカウントへの _資金提供_ と呼ばれ、レジャーに[AccountRootエントリ](../../references/protocol/ledger-data/ledger-entry-types/accountroot.md)が作成されます。それ以外のトランザクションでアカウントを作成することはできません。
 

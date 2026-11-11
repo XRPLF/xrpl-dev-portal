@@ -49,7 +49,7 @@ Amendmentが有効になるには、信頼できるバリデータの80%超か�
 有効化されずにソースコードが削除されたAmendmentは、ネットワークによって**撤回**されたとみなされます。
 
 
-### Amendmentブロックされたサーバ
+### Amendmentブロックされたサーバ {% #amendment-blocked-servers %}
 <a id="amendment-blocked"></a>
 
 AmendmentブロックはXRP Ledgerデータの正確性を守るためのセキュリティ機能です。Amendmentが有効になると、Amendmentのソースコードなしで以前のバージョンの`xrpld`を実行しているサーバは、ネットワークのルールを認識できなくなります。レジャーデータを推測して誤って解釈するのではなく、これらのサーバは**Amendmentブロック**された状態になります。Amendmentブロック状態のサーバは次のことが行えません。

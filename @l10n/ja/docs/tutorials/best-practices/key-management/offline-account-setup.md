@@ -80,7 +80,7 @@ Loading: "/etc/xrpld/xrpld.cfg"
 
 ### 3.新しいアドレスへの資金の供給
 
-オンラインマシンから、ステップ1でメモした**アカウントアドレス** に十分なXRPを送金します。詳細は、[アカウントの作成](../../../concepts/accounts/index.md#アカウントの作成)をご覧ください。
+オンラインマシンから、ステップ1でメモした**アカウントアドレス** に十分なXRPを送金します。詳細は、[アカウントの作成](../../../concepts/accounts/index.md#creating-accounts)をご覧ください。
 
 {% admonition type="success" name="ヒント" %}テストの目的で、[Testnet Faucet](/resources/dev-tools/xrp-faucets)を使用して、テスト用のXRPが入った新しいアカウントを取得できます。そのアカウントを使用して、オフラインで生成されたアドレスに資金を供給します。{% /admonition %}
 

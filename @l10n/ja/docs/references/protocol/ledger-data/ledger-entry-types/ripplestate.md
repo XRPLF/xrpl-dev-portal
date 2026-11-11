@@ -74,8 +74,8 @@ labels:
 | フラグ名           | 16進数値       | 10進数値 | 対応する[TrustSetフラグ](../../transactions/types/trustset.md#trustsetのフラグ) | 説明 | 
 |-------------------|--------------|----------|-------------|------------------------|
 | `lsfAMMNode`      | `0x01000000` | 16777216 | (なし)  | このトラストラインがAMMアカウントに紐づくことを表します。 |
-| `lsfLowReserve`   | `0x00010000` | 65536    | （なし） | このRippleStateオブジェクトは[低位アカウント所有者の準備金に資金を供給します](#所有者の準備金への資金供給)。 |
-| `lsfHighReserve`  | `0x00020000` | 131072   | （なし） | このRippleStateオブジェクトは[高位アカウント所有者の準備金に資金を供給します](#所有者の準備金への資金供給)。 |
+| `lsfLowReserve`   | `0x00010000` | 65536    | （なし） | このRippleStateオブジェクトは[低位アカウント所有者の準備金に資金を供給します](#contributing-to-the-owner-reserve)。 |
+| `lsfHighReserve`  | `0x00020000` | 131072   | （なし） | このRippleStateオブジェクトは[高位アカウント所有者の準備金に資金を供給します](#contributing-to-the-owner-reserve)。 |
 | `lsfLowAuth`      | `0x00040000` | 262144   | `tfSetAuth` | 低位アカウントにより、高位アカウントが低位アカウントのイシュアンスを保有することが承認されています。 |
 | `lsfHighAuth`     | `0x00080000` | 524288   | `tfSetAuth` | 高位アカウントにより、低位アカウントが高位アカウントのイシュアンスを保有することが承認されています。 |
 | `lsfLowNoRipple`  | `0x00100000` | 1048576  | `tfSetNoRipple` | 低位アカウントで、このトラストラインから、同じアカウントのNoRippleフラグが設定されている他のトラストラインへの[Ripplingが無効化されています](../../../../concepts/tokens/fungible-tokens/rippling.md)。 |

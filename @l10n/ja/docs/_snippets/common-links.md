@@ -169,7 +169,7 @@
 [RequireFullyCanonicalSig amendment]: /@l10n/ja/resources/known-amendments.md#requirefullycanonicalsig
 [RippleStateエントリ]: /@l10n/ja/docs/references/protocol/ledger-data/ledger-entry-types/ripplestate.md
 [RippleStateオブジェクト]: /@l10n/ja/docs/references/protocol/ledger-data/ledger-entry-types/ripplestate.md
-[Rippleエポック以降の経過秒数]: /@l10n/ja/docs/references/protocol/data-types/basic-data-types.md#時間の指定
+[Rippleエポック以降の経過秒数]: /@l10n/ja/docs/references/protocol/data-types/basic-data-types.md#specifying-time
 [SHA-512Half]: /@l10n/ja/docs/references/protocol/data-types/basic-data-types.md#hashes
 [SHAMapV2 amendment]: /@l10n/ja/resources/known-amendments.md#shamapv2
 [シーケンス番号]: /@l10n/ja/docs/references/protocol/data-types/basic-data-types.md#account-sequence
@@ -185,7 +185,7 @@
 [SortedDirectories amendment]: /@l10n/ja/resources/known-amendments.md#sorteddirectories
 [通貨額の指定]: /@l10n/ja/docs/references/protocol/data-types/basic-data-types.md#通貨額の指定
 [レジャーの指定]: /@l10n/ja/docs/references/protocol/data-types/basic-data-types.md#specifying-ledgers
-[時間の指定]: /@l10n/ja/docs/references/protocol/data-types/basic-data-types.md#時間の指定
+[時間の指定]: /@l10n/ja/docs/references/protocol/data-types/basic-data-types.md#specifying-time
 [金額なしの指定]: /@l10n/ja/docs/references/protocol/data-types/currency-formats.md#金額なしでの通貨の指定
 [SusPay amendment]: /@l10n/ja/resources/known-amendments.md#suspay
 [TickSize amendment]: /@l10n/ja/resources/known-amendments.md#ticksize

@@ -223,7 +223,7 @@ XRPの額は、`AccountRoot`オブジェクトの`Balance`フィールドで追�
 
 支払いでいくら支払われたかを確認するには、必ず[delivered_amountフィールド](../../payment-types/partial-payments.md#the-delivered_amount-field)を使用する必要があります。
 
-支払いにLedgerEntryTypeが`AccountRoot`の`CreatedNode`が含まれている場合は、その支払いによってレジャーの[新しいアカウントへの資金供給](../../accounts/index.md#アカウントの作成)が行われたことを意味します。
+支払いにLedgerEntryTypeが`AccountRoot`の`CreatedNode`が含まれている場合は、その支払いによってレジャーの[新しいアカウントへの資金供給](../../accounts/index.md#creating-accounts)が行われたことを意味します。
 
 #### トークンでの支払い
 

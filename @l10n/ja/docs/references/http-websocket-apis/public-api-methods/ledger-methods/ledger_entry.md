@@ -45,7 +45,7 @@ label:
     - [RippleStateエントリを取得する](#ripplestateエントリを取得する)
     - [Checkエントリを取得する](#checkエントリを取得する)
     - [Escrowエントリを取得する](#escrowエントリを取得する)
-    - [Paychannelエントリを取得する](#paychannelエントリを取得する)
+    - [Paychannelエントリを取得する](#get-paychannel-entry)
     - [DepositPreauthエントリを取得する](#depositpreauthエントリを取得する)
     - [Ticketエントリを取得する](#ticketエントリを取得する)
     - [Nft Pageを取得する](#nft-pageを取得する)
@@ -679,7 +679,7 @@ xrpld json ledger_entry '{ "escrow": { "owner": "rL4fPHi2FWGwRGRQSH7gBcxkuo2b9NT
 
 
 
-### PayChannelエントリを取得する
+### PayChannelエントリを取得する {% #get-paychannel-entry %}
 <a id="paychannelオブジェクトを取得する"></a><!-- legacy ID -->
 非同期決済用のXRPを保持する[PayChannelエントリ](../../../protocol/ledger-data/ledger-entry-types/paychannel.md)を取得します。{% badge href="https://github.com/XRPLF/rippled/releases/tag/1.0.0" %}新規: rippled 1.0.0{% /badge %}.
 
