@@ -41,7 +41,9 @@ txIcon: create
 | フィールド            | JSONの型              | [内部の型][] | 必須?  | 説明 |
 |:----------------------|:----------------------|:-------------|:-------|:------------|
 | `DomainID`            | 文字列 - [ハッシュ][] | Hash256      | いいえ | 変更する既存の許可型ドメインのレジャーエントリID。省略すると、新しい許可型ドメインが作成されます。 |
-| `AcceptedCredentials` | 配列                  | Array        | はい   | このドメインへのアクセスを許可する1から10個の[**Accepted Credentialsオブジェクト**](#accepted-credentials-objects)のリスト。リストはソートする必要はありませんが、重複ことはできません。既存のドメインを変更する場合、このリストは既存のリストを置き換えます。 |
+| `AcceptedCredentials` | 配列                  | Array        | はい   | このドメインへのアクセスを許可する1から10個の[**Accepted Credentialsオブジェクト**](#acceptedcredentials-objects)のリスト。リストはソートする必要はありませんが、重複ことはできません。既存のドメインを変更する場合、このリストは既存のリストを置き換えます。 |
+
+### AcceptedCredentialsオブジェクト {% #acceptedcredentials-objects %}
 
 {% raw-partial file="/@l10n/ja/docs/_snippets/accepted-credentials-objects.md" /%}
 

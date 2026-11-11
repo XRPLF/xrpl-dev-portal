@@ -16,7 +16,7 @@ XRP Ledgerでは、スパムや悪意のある使用によって、共有グロ�
 
 準備金要件は、バリデータが新しい準備金設定に合意する[手数料の投票](../consensus-protocol/fee-voting.md)プロセスにより、随時変更されます。
 
-## 基本準備金と所有者準備金
+## 基本準備金と所有者準備金 {% #base-reserve-and-owner-reserve %}
 
 準備金は2つの部分に分けられます。
 
@@ -38,8 +38,8 @@ XRP Ledgerでは、スパムや悪意のある使用によって、共有グロ�
 
 次のようないくつかの特殊なケースが存在します。
 
-- 非代替性トークン(NFT)は、それぞれ最大32個のNFTを含むページにグループ化され、所有者準備金はNFTごとではなくページごとに適用されます。ページの分割と結合の仕組みにより、実際に保存されるNFTの数はページごとに異なります。[NFTokenPageオブジェクトの準備金](../../references/protocol/ledger-data/ledger-entry-types/nftokenpage.md#nftokenpage-オブジェクトの準備金)もご覧ください。
-- トラストライン(`RippleState`エントリ)は2つのアカウント間で共有されます。所有者準備金はどちらか一方、または両方に適用できます。多くの場合、トークン所有者は準備金を負担し、発行者は負担しません。[RippleState: 所有者準備金への資金提供](../../references/protocol/ledger-data/ledger-entry-types/ripplestate.md#所有者の準備金への資金供給)もご覧ください。
+- 非代替性トークン(NFT)は、それぞれ最大32個のNFTを含むページにグループ化され、所有者準備金はNFTごとではなくページごとに適用されます。ページの分割と結合の仕組みにより、実際に保存されるNFTの数はページごとに異なります。[NFTokenPageオブジェクトの準備金](../../references/protocol/ledger-data/ledger-entry-types/nftokenpage.md#nftokenpage-reserve)もご覧ください。
+- トラストライン(`RippleState`エントリ)は2つのアカウント間で共有されます。所有者準備金はどちらか一方、または両方に適用できます。多くの場合、トークン所有者は準備金を負担し、発行者は負担しません。[RippleState: 所有者準備金への資金提供](../../references/protocol/ledger-data/ledger-entry-types/ripplestate.md#contributing-to-the-owner-reserve)もご覧ください。
 - 2019年4月に有効化された[MultiSignReserve amendment][]以前に作成された署名者リストは、複数のオブジェクトとしてカウントされます。[署名者リストと準備金](../../references/protocol/ledger-data/ledger-entry-types/signerlist.md#signerlistと準備金)もご覧ください。
 - [所有者ディレクトリ](../../references/protocol/ledger-data/ledger-entry-types/directorynode.md)は、アカウントが所有するすべてのオブジェクトを含む、アカウントに関連するすべてのオブジェクトをリストしたレジャーエントリです。ただし、所有者ディレクトリ自体は準備金にカウントされません。
 
@@ -54,7 +54,7 @@ XRP Ledgerでは、スパムや悪意のある使用によって、共有グロ�
 
 アカウントの所有者準備金を決定するには、増分準備金にアカウントが所有するオブジェクトの数を掛けます。アカウントが所有しているオブジェクトの数を調べるには、[account_infoメソッド][]を呼び出し、`account_data.OwnerCount`を取得します。
 
-アドレスの必要となる合計準備金を計算するには、`OwnerCount`に`reserve_inc_xrp`を掛け、次に`reserve_base_xrp`を加えます。[この計算をPythonで行うデモ](/docs/tutorials/sample-apps/build-a-desktop-wallet-in-python.md#codeblock-17)があります。
+アドレスの必要となる合計準備金を計算するには、`OwnerCount`に`reserve_inc_xrp`を掛け、次に`reserve_base_xrp`を加えます。[この計算をPythonで行うデモ](/docs/tutorials/sample-apps/build-a-desktop-wallet-in-python.md#3-display-an-account)があります。
 
 
 ## 必要準備金を下回る

@@ -20,7 +20,7 @@ outdated_translation: true
 
 XRP Ledgerバリデータを実行するか、ビジネスにXRP Ledgerを使用する場合、機械が読み取れる形式の **`xrp-ledger.toml`** ファイルで自分のXRP Ledgerの使用状況に関する情報を世界中に提供することができます。スクリプトとアプリケーションで`xrp-ledger.toml`ファイルの情報を使用して、XRP Ledgerでの自分の情報を分かりやすく示すことができます。また、同じファイルを人間が読むことが便利な場合もあります。
 
-`xrp-ledger.toml`ファイルの主な使用例のひとつに、[ドメインの検証](#ドメイン検証)があります。
+`xrp-ledger.toml`ファイルの主な使用例のひとつに、[ドメインの検証](#domain-verification)があります。
 
 #### 表記法
 
@@ -273,7 +273,7 @@ location /.well-known/xrp-ledger.toml {
 
 [CORS]: https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
 
-## ドメイン検証
+## ドメイン検証 {% #domain-verification %}
 
 `xrp-ledger.toml`ファイルの用途のひとつは、同じエンティティが特定のドメインを運用し、かつバリデータの公開鍵によって識別される特定のバリデータも運用することを検証することです。ドメインとバリデータが同じエンティティによって所有されていることを検証することで、バリデータオペレーターとしてのIDを確実に保証できます。また、これは信頼できるバリデータになるための推奨手順でもあります。（他の推奨事項については、[優れたバリデータの特徴の理解](../infrastructure/configuration/server-modes/run-xrpld-as-a-validator.md#1-優れたバリデータの特徴の理解)をご覧ください。）
 
@@ -289,7 +289,7 @@ location /.well-known/xrp-ledger.toml {
 
 ## アカウント検証
 
-[ドメイン検証](#ドメイン検証)と同様に、アカウント検証は、同じエンティティが特定のドメインと特定のXRP Ledgerアドレスを運用していることを証明するという考え方を示します。XRP Ledgerの使用や`xrp-ledger.toml`ファイルの提供にはアカウント検証は必要ありませんが、透明性の確保のために、アカウントを検証することもできます。
+[ドメイン検証](#domain-verification)と同様に、アカウント検証は、同じエンティティが特定のドメインと特定のXRP Ledgerアドレスを運用していることを証明するという考え方を示します。XRP Ledgerの使用や`xrp-ledger.toml`ファイルの提供にはアカウント検証は必要ありませんが、透明性の確保のために、アカウントを検証することもできます。
 
 アカウント検証では、ドメインオペレーターとアドレスの間に双方向リンクを確立する必要があります。
 

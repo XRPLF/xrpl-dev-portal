@@ -65,7 +65,7 @@ labels:
 | `Asset`             | オブジェクト | STIssue      | はい   | このAMMが保有する2つのアセットのうちの1つの定義。JSONでは、`currency`と`issuer`フィールドを持つオブジェクトになります。 |
 | `Asset2`            | オブジェクト | STIssue      | はい   | このAMMが保有するもう一つの資産の定義。JSONでは、`currency`と`issuer`フィールドを持つオブジェクトになります。 |
 | `Account`           | 文字列       | AccountID    | はい   | このAMMの資産を保有する[特殊なアカウント](accountroot.md#ammの特殊なaccountrootエントリ)のアドレス。 |
-| `AuctionSlot`       | オブジェクト | Object     | いいえ | オークションスロットの現在の所有者の詳細。[オークションスロットオブジェクト](#オークションスロットオブジェクト)形式です。|
+| `AuctionSlot`       | オブジェクト | Object     | いいえ | オークションスロットの現在の所有者の詳細。[オークションスロットオブジェクト](#auction-slot-object)形式です。|
 | `LPTokenBalance`    | [通貨額][]   | Amount       | はい   | AMMインスタンスの流動性供給者トークンの発行残高の合計。このトークンの保有者は、保有量に比例してAMMの取引手数料に投票したり、取引手数料の徴収とともに増えていくAMMの資産の一部とトークンを交換したりすることができます。 |
 | `PreviousTxnID`     | 文字列       | UInt256      | いいえ | このエントリを最後に変更したトランザクションの識別ハッシュ。{% amendment-disclaimer name="fixPreviousTxnID" /%} |
 | `PreviousTxnLgrSeq` | 数値         | UInt32       | いいえ | このエントリを最後に変更したトランザクションが含まれる[レジャーインデックス](../ledger-header.md)。{% amendment-disclaimer name="fixPreviousTxnID" /%} |
@@ -73,7 +73,7 @@ labels:
 | `VoteSlots`         | 配列         | Array      | いいえ | プールの取引手数料に関する投票を表す、投票オブジェクトのリスト。|
 
 
-### AuctionSlotオブジェクト
+### AuctionSlotオブジェクト {% #auction-slot-object %}
 
 `AuctionSlot`フィールドは、以下のネストしたフィールドを持つオブジェクトを含んでいます。
 

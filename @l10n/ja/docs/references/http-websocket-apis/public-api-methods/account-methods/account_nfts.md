@@ -146,7 +146,7 @@ labels:
 
 | `Field`        | 型                  | 説明                                  |
 |:---------------|:------------------- |:-------------------------------------|
-| `Flags`        | 数値                | このNFTokenで有効なブール値フラグのビットマップ。指定できる値については、[NFTokenフラグ](../../../protocol/data-types/nftoken.md#nftoken-フラグ)をご覧ください。 |
+| `Flags`        | 数値                | このNFTokenで有効なブール値フラグのビットマップ。指定できる値については、[NFTokenフラグ](../../../protocol/data-types/nftoken.md#nftoken-flags)をご覧ください。 |
 | `Issuer`       | 文字列 - [アドレス][] | このNFTokenを発行したアカウント。 |
 | `NFTokenID`    | 文字列               | このNFTokenの一意の識別子（16進数）。 |
 | `NFTokenTaxon` | 数値                | このトークンの[taxon](../../../protocol/data-types/nftoken.md#nftokentaxon分類群)の非乱数化した値。同じtaxonを持つ複数のトークンは、一つの限定されたシリーズのインスタンスを表すかもしれません。 |

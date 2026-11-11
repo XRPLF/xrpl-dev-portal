@@ -1,115 +1,59 @@
 // @ts-check
+// The sample list the code samples page reads as `usePageSharedData('code-samples')`.
 
-import { getInnerText } from '@redocly/realm/dist/markdoc/helpers/get-inner-text.js';
+import { dirname, join, relative } from 'node:path';
+import { createEntityLoader } from '@redocly/framework/plugin';
 
-import { dirname, relative, join as joinPath } from 'path';
+import { attachTo } from './blog-posts.js';
+import { extractFirstHeading, getInnerText, parseContentFile, toTitleCase } from './markdoc-text.js';
 
-export function codeSamples() {
-  /** @type {import("@redocly/realm/dist/server/types").ExternalPlugin } */
-  const instance = {
-    id: 'code-samples',
-    processContent: async (actions, { fs, cache }) => {
-      try {
-        const samples = [];
-        const allLands = new Set();
-        const allCodeSampleFiles = await fs.scan();
+const README_RE = /^_code-samples\/([^/]*)\/README\.md$/;
+const SHARED_DATA_KEY = 'code-samples';
+const ROUTES = ['/resources/code-samples', '/ja/resources/code-samples', '/es-es/resources/code-samples'];
 
-        const readmes = allCodeSampleFiles.filter((file) => file.relativePath.match(/^_code-samples[\/\\]([^\\\/]*)[\/\\]README\.md$/));
+export const codeSamplesLoader = createEntityLoader('xrpl:code-samples', async (ctx) => {
+  const samples = [];
+  const allLangs = new Set();
 
-        for (const { relativePath } of readmes) {
-          const { data } = await cache.load(relativePath, 'markdown-ast');
-
-          const dirPath = dirname(relativePath);
-          const langs = unique(
-            allCodeSampleFiles
-              .filter((file) => file.relativePath.startsWith(dirPath) && !file.relativePath.endsWith('README.md'))
-              .map((file) => relative(dirPath, file.relativePath).split('/')[0])
-          );
-          const title = extractFirstHeading(data.ast) || '';
-          samples.push({
-            path: dirPath,
-            title: title || toTitleCase(dirname(dirPath)),
-            description: getInnerText([data.ast.children[1]]).trim(),
-            href: joinPath('content', dirPath),
-            langs,
-          });
-
-          langs.forEach((l) => allLands.add(l));
-        }
-
-        const sortedSamples = samples.sort((a, b) => normalizeTitleForSort(a).localeCompare(normalizeTitleForSort(b)));
-
-        actions.createSharedData('code-samples', {
-          codeSamples: sortedSamples,
-          langs: Array.from(allLands),
-        });
-        actions.addRouteSharedData('/resources/code-samples/', 'code-samples', 'code-samples');
-        actions.addRouteSharedData('/ja/resources/code-samples/', 'code-samples', 'code-samples');
-        actions.addRouteSharedData('/es-es/resources/code-samples/', 'code-samples', 'code-samples');
-      } catch (e) {
-        console.log(e);
-      }
-    },
-  };
-  return instance;
-}
-
-function normalizeTitleForSort(cs) {
-  if (cs.title.includes('Intro') || cs.title.includes('Quickstart')) {
-    return ` ${cs.title}`;
+  for (const { readme, langs } of ctx.args.samples) {
+    const ast = await parseContentFile(ctx, readme);
+    const dirPath = dirname(readme);
+    const title = extractFirstHeading(ast) || '';
+    samples.push({
+      path: dirPath,
+      title: title || toTitleCase(dirname(dirPath)),
+      description: getInnerText([ast.children[1]]).trim(),
+      href: join('content', dirPath),
+      langs,
+    });
+    langs.forEach((lang) => allLangs.add(lang));
   }
-  return cs.title;
-}
 
-const WORDS_TO_CAPS = ['xrp'];
+  samples.sort((a, b) => normalizeTitleForSort(a).localeCompare(normalizeTitleForSort(b)));
+  return { value: { codeSamples: samples, langs: Array.from(allLangs) } };
+});
 
-function toTitleCase(s) {
-  const words = s.split(/_|[^\w']/);
-  return words
-    .filter((word) => word)
-    .map((word) => (WORDS_TO_CAPS.includes(word) ? word.toUpperCase() : word.charAt(0).toUpperCase() + word.slice(1)))
-    .join(' ')
-    .replace("'S", "'s")
-    .replace(' A ', ' a ');
-}
-
-function unique(array) {
-  return Array.from(new Set(array));
-}
-
-function extractFirstHeading(ast) {
-  let heading;
-
-  visit(ast, (node) => {
-    if (!isNode(node)) {
-      return;
-    }
-
-    if (node.type === 'heading') {
-      heading = getInnerText([node]);
-      return EXIT;
-    }
-  });
-
-  return heading;
-}
-
-function isNode(value) {
-  return !!(value?.$$mdtype === 'Node');
-}
-
-const EXIT = Symbol('Exit visitor');
-function visit(node, visitor) {
-  if (!node) return;
-
-  const res = visitor(node);
-  if (res === EXIT) return res;
-
-  for (const child of node.children) {
-    if (!child || typeof child === 'string') {
-      continue;
-    }
-    const res = visit(child, visitor);
-    if (res === EXIT) return res;
+export async function codeSamples(ctx) {
+  // The READMEs are in `ignore` (they must not become pages), so neither `ctx.files` nor
+  // `glob` lists them; `exists` and `readFile` still reach ignored files.
+  const sampleFiles = await ctx.io.glob('_code-samples/**');
+  const sampleDirs = Array.from(new Set(sampleFiles.map((path) => path.split('/').slice(0, 2).join('/'))));
+  const samples = [];
+  for (const dirPath of sampleDirs.sort()) {
+    const readme = `${dirPath}/README.md`;
+    if (!README_RE.test(readme) || !(await ctx.io.exists(readme))) continue;
+    const langs = sampleFiles
+      .filter((path) => path.startsWith(`${dirPath}/`))
+      .map((path) => relative(dirPath, path).split('/')[0]);
+    samples.push({ readme, langs: Array.from(new Set(langs)) });
   }
+
+  const ref = codeSamplesLoader.withArgs({ samples }, { stableKey: 'xrpl:code-samples' });
+  return { entities: [ref], attach: attachTo(ctx, ROUTES, SHARED_DATA_KEY, ref) };
+}
+
+function normalizeTitleForSort(sample) {
+  return sample.title.includes('Intro') || sample.title.includes('Quickstart')
+    ? ` ${sample.title}`
+    : sample.title;
 }

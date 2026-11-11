@@ -90,7 +90,7 @@ xrpld -a [OPTIONS]
 | `--start`             | デバッグのためのオプションです。既知のすべてのAmendment（反対票を投じるようにサーバに設定されているAmendmentを除く）が適用されている新しいジェネシスレジャーを使用して開始します。したがってこれらのAmendmentの機能は、2週間の[Amendmentプロセス](../concepts/networks-and-servers/amendments.md)期間ではなく、2番目のレジャーの開始時から使用可能になります。 |
 | `--valid`            | **廃止予定** デバッグのためのオプションです。ネットワークとの完全同期の前であっても、初期レジャーを有効なネットワークレジャーと見なします。 |
 
-## クライアントモードのオプション
+## クライアントモードのオプション {% #client-mode-options %}
 
 ```bash
 xrpld [OPTIONS] -- {COMMAND} {COMMAND_PARAMETERS}

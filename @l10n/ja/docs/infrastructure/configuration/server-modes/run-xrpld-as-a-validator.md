@@ -61,7 +61,7 @@ top_nav_name: UNLに参加しよう
 
 
 
-## 3. `xrpld`サーバで検証を有効化
+## 3. `xrpld`サーバで検証を有効化 {% #3-enable-validation-on-your-xrpld-server %}
 
 `xrpld`サーバで検証を有効にすることは、サーバの`xrpld.cfg`ファイルにあるバリデータトークンを提供することを意味します。バリデータキーとトークンを安全に生成して管理するために、`validator-keys`ツール（`xrpld` RPMに含まれる）を使用することをお勧めします。
 
@@ -175,7 +175,7 @@ _**プロキシを使用してバリデータをXRP Ledgerネットワークに�
 
 2. バリデータとストック`xrpld`サーバを設定して、[クラスター](../peering/cluster-xrpld-servers.md)内で実行します。
 
-3. バリデータの`xrpld.cfg`ファイルで、`[peer_private]`を`1`に設定します。そうすることで、バリデータのIPアドレスが転送されないようにします。詳細は、[プライベートピア](../../../concepts/networks-and-servers/peer-protocol.md#プライベートピア)をご覧ください。また、これによりクラスター内でバリデータを実行するよう`[ips_fixed]`スタンザで定義したサーバ以外のサーバに、バリデータが接続しないようになります。
+3. バリデータの`xrpld.cfg`ファイルで、`[peer_private]`を`1`に設定します。そうすることで、バリデータのIPアドレスが転送されないようにします。詳細は、[プライベートピア](../../../concepts/networks-and-servers/peer-protocol.md#private-peers)をご覧ください。また、これによりクラスター内でバリデータを実行するよう`[ips_fixed]`スタンザで定義したサーバ以外のサーバに、バリデータが接続しないようになります。
 
    {% admonition type="danger" name="警告" %}バリデータのIPアドレスを、その他の方法で公開していないことを確認してください。{% /admonition %}
 

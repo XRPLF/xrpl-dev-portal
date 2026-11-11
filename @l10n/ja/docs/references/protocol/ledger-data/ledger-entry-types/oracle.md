@@ -65,7 +65,7 @@ Oracleのレジャーエントリには、単一資産の価格オラクルオ�
 
 ## Oracleの準備金
 
-Oracleオブジェクトは、1~5個のPriceDataオブジェクトを含む場合は1つの[所有者準備金](../../../../concepts/accounts/reserves.md#基本準備金と所有者準備金)としてカウントされ、6~10個のPriceDataオブジェクトを含む場合は2つとしてカウントされます。
+Oracleオブジェクトは、1~5個のPriceDataオブジェクトを含む場合は1つの[所有者準備金](../../../../concepts/accounts/reserves.md#base-reserve-and-owner-reserve)としてカウントされ、6~10個のPriceDataオブジェクトを含む場合は2つとしてカウントされます。
 
 ## Oracle IDのフォーマット
 

@@ -80,7 +80,7 @@ Loading: "/etc/xrpld/xrpld.cfg"
 
 ### 3.新しいアドレスへの資金の供給
 
-オンラインマシンから、ステップ1でメモした**アカウントアドレス** に十分なXRPを送金します。詳細は、[アカウントの作成](../../../concepts/accounts/index.md#アカウントの作成)をご覧ください。
+オンラインマシンから、ステップ1でメモした**アカウントアドレス** に十分なXRPを送金します。詳細は、[アカウントの作成](../../../concepts/accounts/index.md#creating-accounts)をご覧ください。
 
 {% admonition type="success" name="ヒント" %}テストの目的で、[Testnet Faucet](/resources/dev-tools/xrp-faucets)を使用して、テスト用のXRPが入った新しいアカウントを取得できます。そのアカウントを使用して、オフラインで生成されたアドレスに資金を供給します。{% /admonition %}
 
@@ -332,7 +332,7 @@ Loading: "/etc/xrpld/xrpld.cfg"
   - [レギュラーキーペアの割り当て](assign-a-regular-key-pair.md)
   - [マルチシグの設定](set-up-multi-signing.md)
 - **リファレンス:**
-  - [基本的なデータタイプ: ](../../../references/protocol/data-types/basic-data-types.md#アカウントシーケンス)[ ](../../../references/protocol/data-types/basic-data-types.md#アカウントシーケンス)[アカウントシーケンス](../../../references/protocol/data-types/basic-data-types.md#アカウントシーケンス)
+  - [基本的なデータタイプ: ](../../../references/protocol/data-types/basic-data-types.md#account-sequence)[ ](../../../references/protocol/data-types/basic-data-types.md#account-sequence)[アカウントシーケンス](../../../references/protocol/data-types/basic-data-types.md#account-sequence)
   - [account_infoメソッド][]
   - [signメソッド][]
   - [submitメソッド][]

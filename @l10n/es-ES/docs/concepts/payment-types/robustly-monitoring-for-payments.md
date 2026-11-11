@@ -13,7 +13,7 @@ Para verificar robustamente los pagos entrantes, los emisores deberían hacer lo
 * Mantener un registro de la transacción y el ledger más recientemente procesados. De esta manera, si pierdes temporalmente la conectividad, sabrás hasta dónde retroceder.
 * Verificar el código de resultado de cada pago entrante. Algunos pagos ingresan al ledger para cobrar una tarifa contra el spam, incluso si fallan. Solo las transacciones con el código de resultado `tesSUCCESS` pueden cambiar saldos que no sean de XRP. Solo las transacciones de un ledger validado son definitivas.
 * Mirar los [pagos parciales](partial-payments.md). Los pagos con el flag de pago parcial activado pueden ser condierados "exitosos" si se entrega cualquier cantidad distinta a cero, incluso cantidades minúsculas.
-    * Comprobar la transacción en busca del [campo `delivered_amount`](partial-payments.md#el-campo-delivered_amount). Si está presente, el campo indica cuanto dinero _realmente_ se envió a la dirección `Destination`.
+    * Comprobar la transacción en busca del [campo `delivered_amount`](partial-payments.md#the-delivered_amount-field). Si está presente, el campo indica cuanto dinero _realmente_ se envió a la dirección `Destination`.
     * En xrpl.js, puedes usar el [método `xrpl.getBalanceChanges()`](https://js.xrpl.org/modules.html#getBalanceChanges) para ver cuánto recibió cada dirección. En algunos casos, esto puede dividirse en varias partes en diferentes líneas de confianza (trustlines).
 * Algunas transacciones cambian tus balances sin ser pagos directos hacia o desde una de tus direcciones.
 

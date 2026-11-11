@@ -23,7 +23,7 @@ seo:
 
 上記のトランザクション指示によって、以下のように実行されます。rf1Bi ...からra5nK... にPaymentを送信することで、ちょうど13 XRPが送金されます。トランザクションが正常に処理されると、その内容が正確に実行されます。新しいレジャーバージョンが[検証済み](../consensus-protocol/index.md)になるまでに、通常約4秒かかるため、現在処理中のレジャーの後にレジャーバージョンのキューに入れられても、正常なトランザクションを作成、送信、実行後、8秒以内に最終結果を出すことができます。
 
-{% admonition type="warning" name="注意" %}[Paymentトランザクションタイプ][Payment]は、[通貨間の支払い](cross-currency-payments.md)や[Partial Payment](partial-payments.md)を含む、より特殊な支払いにも使用できます。Partial Paymentの場合、トランザクションで非常に少ない金額しか送金しなかった場合でも、多額のXRPが`Amount`に表示される可能性があります。誤った金額を顧客に入金しないようにする方法については、[Partial Paymentの悪用](partial-payments.md#partial-paymentの悪用)をご覧ください。{% /admonition %}
+{% admonition type="warning" name="注意" %}[Paymentトランザクションタイプ][Payment]は、[通貨間の支払い](cross-currency-payments.md)や[Partial Payment](partial-payments.md)を含む、より特殊な支払いにも使用できます。Partial Paymentの場合、トランザクションで非常に少ない金額しか送金しなかった場合でも、多額のXRPが`Amount`に表示される可能性があります。誤った金額を顧客に入金しないようにする方法については、[Partial Paymentの悪用](partial-payments.md#partial-payments-exploit)をご覧ください。{% /admonition %}
 
 XRP間の直接支払いではPartial Paymentは使用できませんが、Partial Paymentでは複数の送金元通貨から変換後にXRPを送金できます。
 
@@ -32,7 +32,7 @@ XRP間の直接支払いではPartial Paymentは使用できませんが、Parti
 
 XRP Ledgerにそのアドレスの記録が事前に存在していなくても、支払いで[口座準備金](../accounts/reserves.md)の最少額を満たすのに十分なXRPが送金されれば、数学的に有効なアドレスで支払いを受け取ることができます。支払いで十分なXRPを送金できない場合は失敗します。
 
-詳細は、[アカウント](../accounts/index.md#アカウントの作成)をご覧ください。
+詳細は、[アカウント](../accounts/index.md#creating-accounts)をご覧ください。
 
 
 ## アドレスの再利用

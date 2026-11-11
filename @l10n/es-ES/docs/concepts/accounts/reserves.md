@@ -30,7 +30,7 @@ Los requerimientos de reserva actuales en Mainnet son:
 
 Reservas en otras redes pueden variar.
 
-## Reservas de propietario
+## Reservas de propietario {% #owner-reserves %}
 
 Muchos objetos en el ledger (entradas en el ledger) pertenecen a una cuenta en particular. Normalmente, el propietario es una cuenta que ha creado el objeto. Cada objeto aumenta el requisito de reserva total en la reserva de propietario. Cuando los objetos son eliminados del ledger, ya no cuentan para el requisito de reserva.
 
@@ -54,7 +54,7 @@ Las aplicaciones pueden buscar los valores de las reservas base e incremental ac
 
 Para determinar las reservas de propietario de una cuenta, hay que multiplicar la reserva incremental por el número de objetos que la cuenta posee. Para mirar el número de objetos que una cuenta posee, llama al [método account_info][] y toma `account_data.OwnerCount`.
 
-Para calcular el requisito total de direcciones, multiplica `OwnerCount` por `reserve_inc_xrp`, y luego suma `reserve_base_xrp`. [Aquí tienes una demostración](/docs/tutorials/sample-apps/build-a-desktop-wallet-in-python.md#codeblock-17) del cálculo en Python.
+Para calcular el requisito total de direcciones, multiplica `OwnerCount` por `reserve_inc_xrp`, y luego suma `reserve_base_xrp`. [Aquí tienes una demostración](/docs/tutorials/sample-apps/build-a-desktop-wallet-in-python.md#3-display-an-account) del cálculo en Python.
 
 
 ## Quedarse por debajo del requisito de reserva

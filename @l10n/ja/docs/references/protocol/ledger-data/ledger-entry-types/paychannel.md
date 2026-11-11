@@ -48,7 +48,7 @@ labels:
 | `Destination`       | 文字列    | AccountID   | はい   | このPayment Channelの宛先アドレス。Payment Channelが開いている場合、このアドレスは、このChannelからXRPを受領できる唯一のアドレスです。これは、Channelを作成したトランザクションの`Destination`フィールドから取得されます。 |
 | `DestinationTag`    | 数値      | UInt32      | いいえ | _（省略可）_ このPayment Channelの宛先（宛先アドレスのホスティングされている受取人など） を詳しく指定するための任意のタグ。 |
 | `DestinationNode`   | 文字列    | UInt64      | いいえ | _（省略可）_ 宛先の所有者ディレクトリが複数ページで構成されている場合に、このオブジェクトにリンクしているページを示すヒントです。[fixPayChanRecipientOwnerDir Amendment][]を有効にする前に作成されたPayment Channelでは省略されています。 |
-| `Expiration`        | 数値      | UInt32      | いいえ | _（省略可）_ このPayment Channelの変更可能な有効期限（[Rippleエポック以降の経過秒数][]）。この値が指定されており、前のレジャーの[`close_time`フィールド](../ledger-header.md)よりも小さい場合、Channelは有効期限切れです。詳細は、[Channel有効期限の設定](#channel有効期限の設定)をご覧ください。 |
+| `Expiration`        | 数値      | UInt32      | いいえ | _（省略可）_ このPayment Channelの変更可能な有効期限（[Rippleエポック以降の経過秒数][]）。この値が指定されており、前のレジャーの[`close_time`フィールド](../ledger-header.md)よりも小さい場合、Channelは有効期限切れです。詳細は、[Channel有効期限の設定](#channel-expiration)をご覧ください。 |
 | `LedgerEntryType`   | 文字列    | UInt16      | はい   | 値`0x0078`が文字列`PayChannel`にマッピングされている場合は、このオブジェクトがPayment Channelオブジェクトであることを示します。 |
 | `OwnerNode`         | 文字列    | UInt64      | はい   | 支払元アドレスの所有者のディレクトリが複数ページで構成されている場合に、このオブジェクトにリンクしているページを示すヒントです。 |
 | `PreviousTxnID`     | 文字列    | UInt256     | はい   | 最後にこのオブジェクトを変更したトランザクションの識別用ハッシュ。 |
@@ -57,7 +57,7 @@ labels:
 | `SettleDelay`       | 数値      | UInt32      | はい   | ChannelにXRPがまだある場合に、支払元アドレスがそのChannelを閉鎖するまでに待機する秒数。値が小さい場合、支払元アドレスがChannelの閉鎖を要求した後で、宛先アドレスが未処理のクレームを精算できる時間が短くなります。32ビットの符号なし整数に収まる値（0～2^32-1）であれば任意の値を指定できます。これは、Channelを作成するトランザクションにより設定されます。 |
 | `SourceTag`         | 数値      | UInt32      | いいえ | _（省略可）_ このPayment Channelの支払元（所有者のアドレスのホスティングされている受取人など） を詳しく指定するための任意のタグ。 |
 
-## Channelの有効期限
+## Channelの有効期限 {% #channel-expiration %}
 
 Payment Channelの`Expiration`フィールドは、`CancelAfter`フィールドが表す変更不可能な有効期限とは対照的な変更可能な有効期限です。Channelの有効期限は常に、前のレジャーの[`close_time`フィールド](../ledger-header.md)を基準にしているものとみなされます。`PayChannel`オブジェクトの作成時には、`Expiration`フィールドが省略されます。`PayChannel`オブジェクトの`Expiration`フィールドはさまざまな方法で更新できます。要約すると、Channelが最初の閉鎖試行の操作の後、`SettleDelay`秒以上チャネルが常に開いたままであれば、Channelの支払元アドレスはChannelの`Expiration`を自由に設定できます。
 

@@ -37,7 +37,7 @@ XRPLで作成できる通貨トークンには、法定通貨担保、暗号資�
 
 小規模なユースケースや個人であれば、無料のパブリックサーバを利用することができます。しかし、XRP Ledgerの利用が本格的になればなるほど、独自のインフラを持つことが重要になります。
 
-独自のサーバを運用すべき理由はたくさんありますが、そのほとんどは、「自分のサーバが信頼できる」、「ワークロードをコントロールできる」、「いつ、どのようにアクセスするかを他人に依存しない」という点に集約されます。[独自サーバを運用する理由](../../concepts/networks-and-servers/index.md#独自サーバを運用する理由)をご覧ください。
+独自のサーバを運用すべき理由はたくさんありますが、そのほとんどは、「自分のサーバが信頼できる」、「ワークロードをコントロールできる」、「いつ、どのようにアクセスするかを他人に依存しない」という点に集約されます。[独自サーバを運用する理由](../../concepts/networks-and-servers/index.md#reasons-to-run-your-own-server)をご覧ください。
 
 または、OpenNodeのような外部のノードサービスプロバイダを使用することもできます。[OpenNode](https://www.opennodecloud.com)をご覧ください。
 
@@ -128,7 +128,7 @@ How to transparently report the current number of stablecoins held in reserve.
 
 各トラストラインは、指定された通貨コードに対して固有のものです。2つのアカウントは、異なる通貨コードのトラストラインをいくつでも持つことができますが、特定の通貨コードの共有トラストラインは1つだけです。
 
-[トラストライン](../../concepts/tokens/fungible-tokens/index.md#トラストライン)をご覧ください。
+[トラストライン](../../concepts/tokens/fungible-tokens/index.md#trust-line-tokens)をご覧ください。
 
 ### 認可トラストライン
 
