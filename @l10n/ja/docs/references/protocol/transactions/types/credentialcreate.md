@@ -51,6 +51,7 @@ CredentialCreateトランザクションは、レジャーにCredentialを作成
 | `tecDUPLICATE`          | 同じSubject、Issuer、およびCredentialTypeを持つCredentialがすでに存在しています。 |
 | `tecEXPIRED`            | Credentialの有効期限に過去の日時が設定されています。 |
 | `tecNO_TARGET`          | `Subject`フィールドで指定されたアカウントはレジャーで資金提供されているアカウントではありません。 |
+| `tecPSEUDO_ACCOUNT`     | `Subject`フィールドで指定されたアカウントが[疑似アカウント](../../../../concepts/accounts/pseudo-accounts.md)です。 {% amendment-disclaimer name="fixCleanup3_3_0" /%} |
 | `temDISABLED`           | 関連するAmendmentが有効になっていません。 |
 | `temMALFORMED`          | トランザクションの形式が正しくありません。主な原因は以下のとおりです。<br>- `Subject`フィールドが無効です。例えば、[ACCOUNT_ZERO](../../../../concepts/accounts/addresses.md#特別なアドレス)が含まれている場合です。<br>- `CredentialType`フィールドが空であるか、64バイトを超えています。<br>- `URI`フィールドが指定されていますが、空であるか、256バイトを超えています。 |
 
