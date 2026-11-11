@@ -22,7 +22,7 @@ Testnet relied on a single full history server, which crashed and can't be recov
 
 ## Impact
 
-The resets affect Testnet and Devnet only. Other networks will continue to operate as usual, including Mainnet, Xahau, and the Hooks Testnet.
+The resets affect Testnet and Devnet only. Other networks, including Mainnet, will continue to operate as usual.
 
 The resets will delete all ledger data in Testnet and Devnet, including all accounts, transactions, balances, settings, offers, AMMs, escrows, and other data. Testnet will have its Amendment statuses restored to match Mainnet's. If you use existing accounts or other data in either network, you will need to get new test XRP from the faucet and re-create them.
 
