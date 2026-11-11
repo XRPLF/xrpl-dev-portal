@@ -1,6 +1,6 @@
 ---
 seo:
-    description: トランザクションのタイプは、どういったタイプの操作を実行することが想定されているのかを示します。
+    description: XRP Ledgerが処理できるすべてのトランザクションのタイプです。
 metadata:
     indexPage: true
 labels:
@@ -8,7 +8,11 @@ labels:
 ---
 # トランザクションのタイプ
 
-トランザクションのタイプ（`TransactionType`フィールド）は、どういったタイプの操作を実行することが想定されているのかを示します。すべてのトランザクションに、[共通フィールド](../common-fields.md)が含まれています。
+`TransactionType`フィールドは、トランザクションが実行する操作を決定します。すべてのトランザクションには、[共通フィールド](../common-fields.md)と、トランザクションのタイプに固有のフィールドが含まれます。
+
+以下の表は、すべてのトランザクションのタイプを機能領域ごとにまとめたものです。
+
+{% tx-icon-legend /%}
 
 ## アカウント
 
@@ -29,6 +33,10 @@ labels:
 ## 分散型ストレージ
 
 {% tx-category name="Decentralized Storage" /%}
+
+## レンディング
+
+{% tx-category name="Lending Protocol" /%}
 
 ## XRPLサイドチェーン
 
