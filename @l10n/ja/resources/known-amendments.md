@@ -104,11 +104,28 @@ AMMDepositトランザクションタイプを修正し、AMMにフリーズさ�
 | Amendment    | Batch |
 |:-------------|:------|
 | Amendment ID | 894646DD5284E97DECFE6674A6D6152686791C4A95F8C132CCA9BAF9E5812FB6 |
-| ステータス     | 投票中 |
+| ステータス     | {% amendment-disclaimer name="Batch" statusOnly=true /%} |
 | デフォルトの投票(最新の安定版) | いいえ |
 | Amendment前の機能は廃止? | いいえ |
 
-Allows multiple transactions to be bundled into a batch that's processed all together. Standard: [XLS-56d](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0056d-batch)
+複数のトランザクションを1つのバッチにまとめ、一括して処理できるようにします。
+
+{% admonition type="danger" name="警告" %}
+このAmendmentはバグのためv3.1.1で無効化され、[BatchV1_1](#batchv1_1)に置き換えられました。
+{% /admonition %}
+
+
+### BatchV1_1
+[BatchV1_1]: #batchv1_1
+
+| Amendment    | BatchV1_1 |
+|:-------------|:----------|
+| Amendment ID | 9F287AED3CDB50A7BD1ACEC24296A30C9B5230CCD136219317AC790E3B884377 |
+| ステータス     | {% amendment-disclaimer name="BatchV1_1" statusOnly=true /%} |
+| デフォルトの投票(最新の安定版) | いいえ |
+| Amendment前の機能は廃止? | いいえ |
+
+複数のトランザクションを1つのバッチにまとめ、一括して処理できるようにします。このAmendmentは、この機能の元の実装で発見された重大なバグを修正し、[Batch](#batch)を置き換えます。標準規格: [XLS-56](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0056-batch)
 
 
 ### CheckCashMakesTrustLine
