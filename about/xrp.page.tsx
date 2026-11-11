@@ -26,6 +26,7 @@ const softwallets = [
   { href: "https://gatehub.net/", id: "wallet-gatehub", alt: "Gatehub", imgclasses: "invertible-img" },
   { href: "https://gemwallet.com/", id: "wallet-gem", alt: "Gem Wallet" },
   { href: "https://joeywallet.xyz/", id: "wallet-joey", alt: "Joey Wallet" },
+  { href: "https://oathwallet.org/", id: "wallet-oath", alt: "Oath Wallet" },
   { href: "https://trustwallet.com/", id: "wallet-trust", alt: "Trust Wallet" },
   { href: "https://xaman.app/", id: "wallet-xumm", alt: "Xaman" }
 ];
@@ -350,7 +351,11 @@ export default function XrpOverview() {
                   "Digital wallets are pieces of software that allow people to send, receive, and store cryptocurrencies, including XRP. There are two types of digital wallets: hardware and software."
                 )}
               </h5>
-              <ul className={`nav nav-grid-lg cols-of-${totalCols}`} id="wallets">
+              <ul
+                className="nav nav-grid-lg"
+                style={{ gridTemplateRows: `repeat(${totalCols}, min-content)` }}
+                id="wallets"
+              >
                 <li className="nav-item nav-grid-head">
                   <h6 className="subhead-sm-r">{translate("Software Wallets")}</h6>
                 </li>
