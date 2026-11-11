@@ -23,6 +23,3 @@ tools/broken-links-report.md
 # PHP
 composer.lock
 .cursor/
-
-# @redocly/framework build output
-.realm/
