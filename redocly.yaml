@@ -306,9 +306,9 @@ footer:
         - page: community/events.page.tsx
           label: Events
           labelTranslationKey: footer.community.events
-        - page: community/developer-funding.page.tsx
+        - page: community/funding.page.tsx
           label: Developer Funding
-          labelTranslationKey: footer.community.developer-funding
+          labelTranslationKey: footer.community.funding
         - label: XRPL Jobs
           labelTranslationKey: footer.community.xrpl-jobs
           href: https://jobs.xrpl.org/

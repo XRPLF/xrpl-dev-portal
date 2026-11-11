@@ -65,7 +65,7 @@ export default function Docs() {
             description: translate(
               'Explore funding and development opportunities for your project on the XRPL.'
             ),
-            href: '/community/developer-funding/',
+            href: '/community/funding/',
           },
         ]}
       />

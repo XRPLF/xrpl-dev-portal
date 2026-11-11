@@ -103,7 +103,7 @@ topnav.community.title: コミュニティ
 topnav.community.description: 話題に加わろう。
 topnav.community.get-involved: 参加する
 topnav.community.events: イベント
-topnav.community.developer-funding: 開発者向け資金提供
+topnav.community.funding: 開発者向け資金提供
 topnav.community.xrpl-jobs: XRPLの仕事
 topnav.community.dev-blog: 開発者ブログ
 topnav.community.xrpl-grants: XRPL Grants
@@ -134,7 +134,7 @@ footer.resources.contribute-code: コードへの貢献
 footer.resources.contribute-documentation: ドキュメントへの貢献
 footer.community.community: コミュニティ
 footer.community.events: イベント
-footer.community.developer-funding: 開発者向け資金提供
+footer.community.funding: 開発者向け資金提供
 footer.community.xrpl-jobs: XRPLの仕事
 footer.community.dev-blog: 開発者ブログ
 footer.community.xrpl-grants: XRPL Grants
@@ -663,7 +663,7 @@ Explore past community-hosted events: 過去のコミュニティ主催のイベ
 Past Events: 過去のイベント
 # TODO: translate past events
 
-# community/developer-funding.tsx
+# community/funding.tsx
 XRPL Developer Funding Programs: XRPL開発者向け資金提供プログラム
 Project Resources: プロジェクト資金
 Explore funding opportunities for developers and teams: 開発者やチームのための資金調達の方法を見つけましょう
