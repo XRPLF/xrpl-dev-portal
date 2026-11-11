@@ -111,6 +111,14 @@ const other = [
     href: "https://xrplmeta.org/",
     img: require("../../static/img/dev-tools/token-metadata.png"),
   },
+  {
+    id: "delegation-checker",
+    title: "Delegation Checker",
+    description:
+      "See which accounts hold delegated permissions over an address, revoke them, and check a transaction before signing it.",
+    href: "https://cryptolwa.io/tools/xrpl-delegation-checker/",
+    img: require("../../static/img/dev-tools/delegation-checker.png"),
+  },
 ];
 
 export default function DevTools() {
