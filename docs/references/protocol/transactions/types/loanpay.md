@@ -61,7 +61,9 @@ Transactions of the {% code-page-name /%} type support additional values in the 
 | `tfLoanFullPayment` | `0x00020000` | 131072        | Indicates that the borrower is making a full early repayment. If only one payment remains, submit a regular payment instead. |
 | `tfLoanLatePayment` | `0x00040000` | 262144        | Indicates that the borrower is making a late loan payment. You must submit a late loan payment for each overdue payment period. |
 
+{% admonition type="info" name="Note" %}
 These flags are mutually exclusive; only enable one at a time. All late payment periods must be repaid before you can enable other loan payment flags.
+{% /admonition %}
 
 
 ## Error Cases
