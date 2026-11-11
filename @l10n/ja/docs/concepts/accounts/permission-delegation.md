@@ -4,15 +4,12 @@ seo:
 labels:
   - アカウント
   - 権限
-status: not_enabled
 ---
 # 権限委任
 
 権限委任(Permission Delegation)とは、自分のアカウントに代わってトランザクションを送信する権限を、別のアカウントに付与する機能です。権限委任を使うと、[マルチシグ](./multi-signing.md)などの手法の代わりに、あるいはそれらと組み合わせて、ロールベースのアクセス制御のような柔軟なセキュリティモデルを実現できます。
 
 {% amendment-disclaimer name="PermissionDelegationV1_1" /%}
-
-{% partial file="/@l10n/ja/docs/_snippets/paymentburn-delegation-warning.md" /%}
 
 ## 背景: 権限委任の必要性
 
