@@ -31,15 +31,14 @@ In this tutorial, you'll learn:
 
 ## Requirements
 
-* `XRPL_PHP` requires PHP 8.1 and the PHP extension [GMP](http://php.net/manual/en/book.gmp.php).
-* The PHP extension [BCMATH](https://www.php.net/manual/de/book.bc.php) is recommended for increased performance.
+* `XRPL_PHP` 3.2.0 requires PHP 8.2 or later and the PHP extensions [bcmath](https://www.php.net/manual/en/book.bc.php) and [GMP](https://www.php.net/manual/en/book.gmp.php).
  
 ## Installation
 
 `XRPL_PHP` can be installed via [Composer](https://getcomposer.org/doc/00-intro.md):
 
 ```console
-composer require hardcastle/xrpl_php
+composer require "hardcastle/xrpl_php:3.2.0"
 ```
 
 
@@ -65,7 +64,7 @@ To make queries and submit transactions, you need to connect to the XRP Ledger. 
 require __DIR__ . '/vendor/autoload.php';
 
 // Imports 
-use XRPL_PHP\Client\JsonRpcClient;
+use Hardcastle\XRPL_PHP\Client\JsonRpcClient;
 
 // Create a Client using the Testnet
 $client = new JsonRpcClient("https://s.altnet.rippletest.net:51234");
@@ -80,7 +79,7 @@ The sample code in the previous section shows you how to connect to the Testnet,
 * By [installing the core server](../../infrastructure/installation/index.md) (`xrpld`) and running a node yourself. The core server connects to the Mainnet by default, but you can [change the configuration to use Testnet or Devnet](../../infrastructure/configuration/connect-your-xrpld-to-the-xrp-test-net.md). [There are good reasons to run your own core server](../../concepts/networks-and-servers/index.md#reasons-to-run-your-own-server). If you run your own server, you can connect to it like so:
 
     ```
-    use XRPL_PHP\Client\JsonRpcClient;
+    use Hardcastle\XRPL_PHP\Client\JsonRpcClient;
 
     const LOCAL_JSON_RPC_URL = "http://localhost:5005/";
     $client = new JsonRpcClient("LOCAL_JSON_RPC_URL");
@@ -91,7 +90,7 @@ The sample code in the previous section shows you how to connect to the Testnet,
 * By using one of the available [public servers][]:
 
     ```
-    use XRPL_PHP\Client\JsonRpcClient;
+    use Hardcastle\XRPL_PHP\Client\JsonRpcClient;
 
     const MAINNET_JSON_RPC_URL = "https://s2.ripple.com:51234/";
     $client = new JsonRpcClient("MAINNET_JSON_RPC_URL");
@@ -101,7 +100,7 @@ The sample code in the previous section shows you how to connect to the Testnet,
 
 To store value and execute transactions on the XRP Ledger, you need to get an account: a [set of keys](../../concepts/accounts/cryptographic-keys.md#key-components) and an [address](../../concepts/accounts/addresses.md) that's been [funded with enough XRP](../../concepts/accounts/index.md#creating-accounts) to meet the [account reserve](../../concepts/accounts/reserves.md). The address is the identifier of your account and you use the [private key](../../concepts/accounts/cryptographic-keys.md#private-key) to sign transactions that you submit to the XRP Ledger. For production purposes, you should take care to store your keys and set up a [secure signing method](../../concepts/transactions/secure-signing.md).
 
-To generate a new account, `PHP_XRPL` provides the static `generate()` method in the `Wallet` class:
+To generate a new account, `XRPL_PHP` provides the static `generate()` method in the `Wallet` class:
 
 ```php
 <?php
@@ -110,7 +109,7 @@ To generate a new account, `PHP_XRPL` provides the static `generate()` method in
 require __DIR__ . '/vendor/autoload.php';
 
 // Imports 
-use XRPL_PHP\Wallet\Wallet;
+use Hardcastle\XRPL_PHP\Wallet\Wallet;
 
 // Create a new wallet
 $wallet = Wallet::generate();
@@ -138,7 +137,7 @@ print_r([
 
 ```
 
-For testing and development purposes, you can use the `fundWallet()` helper function on the XRP Ledger [Testnet](../../concepts/networks-and-servers/parallel-networks.md):
+For testing and development purposes, you can use the client's `fundWallet()` method on the XRP Ledger [Testnet](../../concepts/networks-and-servers/parallel-networks.md):
 
 {% code-snippet file="/_code-samples/get-started/php/get-account-info.php" from="<?php" before="// Create an AccountInfoRequest" language="php" /%}
 
@@ -161,33 +160,35 @@ Now, we have a simple application that:
 To run the app, you can copy the code from {% repo-link path="_code-samples/get-started/php/" %}this website's GitHub Repository{% /repo-link %} and run it from the command line:
 
 ```console
-composer require hardcastle/xrpl_php
+composer require "hardcastle/xrpl_php:3.2.0"
 php get-account-info.php
 ```
 
 You should see output similar to this example:
 
 ```console
-XRPL_PHP\Models\Account\AccountInfoResponse Object
+Hardcastle\XRPL_PHP\Models\Account\AccountInfoResponse Object
 (
     [id:protected] => 
     [result:protected] => Array
         (
             [account_data] => Array
                 (
-                    [Account] => rDTRjR6sWrRmGe18KMVwBuL212gLpArVLy
-                    [Balance] => 10000000000
+                    [Account] => rpiT7LnzxupJCvEDzApdu5ybbt9WgJbT7R
+                    [Balance] => 100000000
                     [Flags] => 0
                     [LedgerEntryType] => AccountRoot
                     [OwnerCount] => 0
-                    [PreviousTxnID] => AE18C0B30DE740490E66E92D9F45162C8860A6D9FCF279CF7A51FAFE05F573FB
-                    [PreviousTxnLgrSeq] => 42719256
-                    [Sequence] => 42719256
-                    [index] => 4DD9F7FAE7365B7A917932D6453DBA9B223AA4FF7193691EF6E5EE230519F4CA
+                    [PreviousTxnID] => 400980FC2F93CA14AB6E21F4D7DD602D69333E7BEEFAF4D43597F3AED11531DF
+                    [PreviousTxnLgrSeq] => 22109704
+                    [Sequence] => 22109704
+                    [index] => F182392517DF475C33E3B8B68A6431A5A9AA9D80519B4F643E4F73D0EB0C96CA
                 )
 
             [account_flags] => Array
                 (
+                    [allowTrustLineClawback] => 
+                    [allowTrustLineLocking] => 
                     [defaultRipple] => 
                     [depositAuth] => 
                     [disableMasterKey] => 
@@ -203,8 +204,8 @@ XRPL_PHP\Models\Account\AccountInfoResponse Object
                     [requireDestinationTag] => 
                 )
 
-            [ledger_hash] => 57F0CB8311CDEAE9AC60854CC482990CE971D1FD36DB1CC215B7A6634E27E739
-            [ledger_index] => 42719256
+            [ledger_hash] => 04B91D430B7DBF303B806F234B79ACC38B83AD31931A631D0721466B102568D7
+            [ledger_index] => 22109704
             [status] => success
             [validated] => 1
         )

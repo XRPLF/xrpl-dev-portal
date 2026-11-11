@@ -88,7 +88,7 @@ The following code connects to a public Testnet servers:
 {% /tab %}
 
 {% tab label="PHP" %}
-{% code-snippet file="/_code-samples/send-xrp/php/send-xrp.php" from="// Create a client" before="// Transaction definition" language="php" /%}
+{% code-snippet file="/_code-samples/send-xrp/php/send-xrp.php" from="// Create a client" before="// Get credentials" language="php" /%}
 {% /tab %}
 
 {% tab label="Go" %}
@@ -294,7 +294,7 @@ Most transactions are accepted into the next ledger version after they're submit
 
 - **Java** Poll the [`XrplClient.transaction()` method](https://javadoc.io/doc/org.xrpl/xrpl4j-client/latest/org/xrpl/xrpl4j/client/XrplClient.html#transaction(org.xrpl.xrpl4j.model.client.transactions.TransactionRequestParams,java.lang.Class)) to see if your transaction has a final result. Periodically check that the latest validated ledger index has not passed the `LastLedgerIndex` of the transaction using the [`XrplClient.ledger()`](https://javadoc.io/doc/org.xrpl/xrpl4j-client/latest/org/xrpl/xrpl4j/client/XrplClient.html#ledger(org.xrpl.xrpl4j.model.client.ledger.LedgerRequestParams)) method.
 
-- **PHP:**  If you used the [`.submitAndWait()` method](https://alexanderbuzz.github.io/xrpl-php-docs/client.html), you can wait until the returned Promise resolves. Other, more asynchronous approaches are also possible.
+- **PHP:** If you used the [`submitAndWait()` method](https://alexanderbuzz.github.io/xrpl-php-docs/client.html), it already blocks until the transaction is in a validated ledger (or its `LastLedgerSequence` has passed), so there's nothing more to do here.
 
 - **Go:** If you used the `SubmitTxAndWait()` or `SubmitTxBlobAndWait()` methods, the client will handle submission and wait until the transaction is confirmed in a ledger. Internally, these methods use a polling mechanism, querying the transaction status with the client's `Request()` method and a `TxRequest`.
 
@@ -417,7 +417,7 @@ System.out.println(generationResult.seed()); // Example: sp6JS7f14BuwFY8Mw6bTtLK
 
 {% tab label="PHP" %}
 ```php
-use XRPL_PHP\Wallet\Wallet;
+use Hardcastle\XRPL_PHP\Wallet\Wallet;
 
 $wallet = Wallet::generate();
 
@@ -472,7 +472,7 @@ XrplClient xrplClient = new XrplClient(rippledUrl);
 
 {% tab label="PHP" %}
 ```
-use XRPL_PHP\Client\JsonRpcClient;
+use Hardcastle\XRPL_PHP\Client\JsonRpcClient;
 
 $client = new JsonRpcClient("https://xrplcluster.com");
 ```
@@ -522,7 +522,7 @@ XrplClient xrplClient = new XrplClient(rippledUrl);
 
 {% tab label="PHP" %}
 ```php
-use XRPL_PHP\Client\JsonRpcClient;
+use Hardcastle\XRPL_PHP\Client\JsonRpcClient;
 
 $client = new JsonRpcClient("http://localhost:5005");
 ```
