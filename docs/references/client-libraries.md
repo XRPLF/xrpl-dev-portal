@@ -22,3 +22,4 @@ These client libraries simplify some of the common work of accessing and process
 | **Java**                        | `xrpl4j`          | [Get Started Using Java](../tutorials/get-started/get-started-java.md) | [API Reference](https://javadoc.io/doc/org.xrpl/) | [Repo](https://github.com/XRPLF/xrpl4j) |
 | **PHP**                         | `XRPL_PHP`        | [Get Started Using PHP](../tutorials/get-started/get-started-php.md) | [XRPL_PHP Docs](https://alexanderbuzz.github.io/xrpl-php-docs/) | [Repo](https://github.com/AlexanderBuzz/xrpl-php) |
 | **Ruby**                         | `XRPB`           |  | [XRPB Docs](https://www.rubydoc.info/gems/xrbp) | [Repo](https://github.com/DevNullProd/XRBP) |
+| **Python**                         | `bristlecone-x402` | [PyPI](https://pypi.org/project/bristlecone-x402/) | [Docs](https://github.com/Bristlecone2026/bristlecone-x402#readme) | [Repo](https://github.com/Bristlecone2026/bristlecone-x402) |
