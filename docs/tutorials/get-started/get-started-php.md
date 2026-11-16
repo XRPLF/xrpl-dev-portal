@@ -31,14 +31,14 @@ In this tutorial, you'll learn:
 
 ## Requirements
 
-* `XRPL_PHP` 3.2.0 requires PHP 8.2 or later and the PHP extensions [bcmath](https://www.php.net/manual/en/book.bc.php) and [GMP](https://www.php.net/manual/en/book.gmp.php).
+* `XRPL_PHP` 4.0.0 requires PHP 8.2 or later and the PHP extensions [bcmath](https://www.php.net/manual/en/book.bc.php) and [GMP](https://www.php.net/manual/en/book.gmp.php).
  
 ## Installation
 
 `XRPL_PHP` can be installed via [Composer](https://getcomposer.org/doc/00-intro.md):
 
 ```console
-composer require "hardcastle/xrpl_php:3.2.0"
+composer require "hardcastle/xrpl_php:4.0.0"
 ```
 
 
@@ -160,7 +160,7 @@ Now, we have a simple application that:
 To run the app, you can copy the code from {% repo-link path="_code-samples/get-started/php/" %}this website's GitHub Repository{% /repo-link %} and run it from the command line:
 
 ```console
-composer require "hardcastle/xrpl_php:3.2.0"
+composer require "hardcastle/xrpl_php:4.0.0"
 php get-account-info.php
 ```
 
