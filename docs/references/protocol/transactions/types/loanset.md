@@ -92,9 +92,9 @@ An inner object that contains the signatures of the counterparty of the transact
 
 | Field Name      | JSON Type | Internal Type | Required? | Description |
 |:----------------|:----------|:--------------|:----------|:------------|
-| `SigningPubKey` | String    | STBlob        | No        | The public key used to verify the validity of the signature. |
-| `TxnSignature`     | String    | STBlob        | No        | The signature over all signing fields. Must be generated using role-specific hash prefixes {% amendment-disclaimer name="fixCleanup3_4_0" mode="updated" /%}. Standard transaction signatures are rejected. |
-| `Signers`       | List      | STArray       | No        | An array of transaction signatures from the counterparty. Each signature must be generated using role-specific hash prefixes {% amendment-disclaimer name="fixCleanup3_4_0" mode="updated" /%}. Standard transaction signatures are rejected. |
+| `SigningPubKey` | String    | Blob          | No        | The public key used to verify the validity of the signature. |
+| `TxnSignature`  | String    | Blob          | No        | The signature over all signing fields. Must be generated using role-specific hash prefixes {% amendment-disclaimer name="fixCleanup3_4_0" mode="updated" /%}. Standard transaction signatures are rejected. |
+| `Signers`       | Array     | Array         | No        | An array of transaction signatures from the counterparty. Each signature must be generated using role-specific hash prefixes {% amendment-disclaimer name="fixCleanup3_4_0" mode="updated" /%}. Standard transaction signatures are rejected. |
 
 The final transaction must include either:
 - Both the `SigningPubKey` and `TxnSignature` fields.
