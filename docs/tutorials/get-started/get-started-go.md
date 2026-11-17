@@ -56,9 +56,11 @@ Start a new project by creating an empty folder, then move into that folder and 
 # Initialize your module (if you haven't already)
 go mod init your-module-name
 
-# Fetch the latest version of xrpl-go
-go get github.com/Peersyst/xrpl-go@latest
+# Fetch the latest version of xrpl-go and all of its packages
+go get github.com/Peersyst/xrpl-go/...@latest
 ```
+
+In your project folder, create a `get-acct-info` folder with a `main.go` file inside it. As you work through the following steps, add the code shown in the code panel to this file.
 
 Alternatively, if you're using the downloaded source code, you can install the dependencies listed in the `go.mod` file:
 
