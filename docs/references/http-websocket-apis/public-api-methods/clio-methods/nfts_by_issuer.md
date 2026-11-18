@@ -29,9 +29,9 @@ The request contains the following parameters:
 | `issuer`       | String - [Address][] | Yes       | Look up NFTs issued by this account. |
 | `ledger_hash`  | String - [Hash][]    | No        | The unique hash of a ledger; if provided, only return NFTs issued up to the specified ledger. By default, use the latest validated ledger. |
 | `ledger_index` | [Ledger Index][]     | No        | The ledger index of a ledger; if provided, only return NFTs issued up to the specified ledger. By default, use the latest validated ledger. |
-| `limit`        | Number               | No        | If provided, limit the number of NFTs to retrieve. The server is not required to honor this value. |
+| `limit`        | Integer              | No        | If provided, limit the number of NFTs to retrieve. The server is not required to honor this value. |
 | `marker`       | [Marker][]           | No        | Value from a previous paginated response. Resume retrieving data where that response left off. |
-| `nft_taxon`    | Number               | No        | If provided, filter NFTs to ones with this taxon. The default is to return all NFTs from the specified issuer. |
+| `nft_taxon`    | Integer              | No        | If provided, filter NFTs to ones with this taxon. The default is to return all NFTs from the specified issuer. |
 
 
 ## Response Format
@@ -72,13 +72,15 @@ An example of a successful response:
 
 The response follows the [standard format][], with a successful result containing the following fields:
 
-| Field       | Type                 | Required? | Description |
-|:------------|:---------------------|:----------|-------------|
-| `issuer`    | String - [Address][] | Yes       | The address of the specified issuer. |
-| `limit`     | Integer              | No        | The `limit`, as specified in the request. |
-| `marker`    | Marker               | No        | Server-defined value indicating the response is paginated. Pass this to the next call to resume where this call left off. |
-| `nft_taxon` | Integer              | No        | The `nft_taxon`, as specified in the request. |
-| `nfts`      | Array                | Yes       | A list of NFTs issued by the account. The order of the NFTs is not associated with the date the NFTs were minted. Each member of this field is an NFT object with fields in the same format as provided by the [nft_info method][]. |
+| Field          | Type                       | Required? | Description |
+|:---------------|:---------------------------|:----------|-------------|
+| `issuer`       | String - [Address][]       | Yes       | The address of the specified issuer. |
+| `ledger_index` | Integer - [Ledger Index][] | Yes       | The ledger index of the ledger version used to generate this response. |
+| `limit`        | Integer                    | Yes       | The maximum applied limit. May differ from the requested `limit` due to server settings. |
+| `marker`       | [Marker][]                 | No        | Server-defined value indicating the response is paginated. Pass this to the next call to resume where this call left off. |
+| `nft_taxon`    | Integer                    | No        | The `nft_taxon`, as specified in the request. |
+| `nfts`         | Array                      | Yes       | A list of NFTs issued by the account. The order of the NFTs is not associated with the date the NFTs were minted. Each member of this field is an NFT object with fields in the same format as provided by the [nft_info method][]. |
+| `validated`    | Boolean                    | Yes       | If `true`, the information in this response comes from a validated ledger version. |
 
 {% admonition type="warning" name="Caution" %}
 If the `nfts` field is an empty array but the `marker` field is provided, there may still be additional NFTs on later pages. To ensure you get all NFTs, continue [paginating][Marker] until the response does not include a `marker` field.
