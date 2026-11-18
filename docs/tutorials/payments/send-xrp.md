@@ -322,7 +322,7 @@ Most transactions are accepted into the next ledger version after they're submit
 - **PHP:**  If you used the [`.submitAndWait()` method](https://alexanderbuzz.github.io/xrpl-php-docs/client.html), you can wait until the returned Promise resolves. Other, more asynchronous approaches are also possible.
 
 - **Go:** If you used the `SubmitTxAndWait()` or `SubmitTxBlobAndWait()` methods, the client will handle submission and wait until the transaction is confirmed in a ledger. Internally, these methods use a polling mechanism, querying the transaction status with the client's `Request()` method and a `TxRequest`.
-- **Ruby:** If you used `submit_and_wait`, it already blocks until the transaction is in a validated ledger (or its `LastLedgerSequence` has passed), so there's nothing more to do here.
+- **Ruby:** If you used `submit_and_wait`, it already blocks until the transaction is in a validated ledger, so there's nothing more to do here.
 
 {% tabs %}
 

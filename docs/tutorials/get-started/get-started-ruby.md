@@ -31,13 +31,13 @@ In this tutorial, you'll learn:
 `xrpl-ruby` is available as a [RubyGem](https://rubygems.org/gems/xrpl-ruby):
 
 ```sh
-gem install xrpl-ruby -v 0.9.3
+gem install xrpl-ruby -v '~> 0.9.3'
 ```
 
 Or add it to your `Gemfile`:
 
 ```ruby
-gem 'xrpl-ruby', '0.9.3'
+gem 'xrpl-ruby', '~> 0.9.3'
 ```
 
 ## Start Building
@@ -161,7 +161,7 @@ client.disconnect
 To run the app, you can copy the code from [this website's GitHub Repository](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/get-started/ruby/) and run it from the command line:
 
 ```sh
-gem install xrpl-ruby -v 0.9.3
+gem install xrpl-ruby -v '~> 0.9.3'
 ruby get-account-info.rb
 ```
 
