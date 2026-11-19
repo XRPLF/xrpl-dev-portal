@@ -14,7 +14,7 @@ import {
 const output = document.getElementById('output') as HTMLElement
 // @chunk-end
 
-// @chunk {"steps": ["connect-tag"]}
+// @chunk {"steps": ["connect-tag", "connect-mainnet-tag"]}
 // Define the network client. The Client type is inferred from the constructor.
 const SERVER_URL = 'wss://s.altnet.rippletest.net:51233/'
 const client = new Client(SERVER_URL)

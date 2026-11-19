@@ -3,7 +3,7 @@
 import xrpl from "xrpl"
 // @chunk-end
 
-// @chunk {"steps": ["connect-tag"]}
+// @chunk {"steps": ["connect-tag", "connect-mainnet-tag"]}
 // Define the network client
 const SERVER_URL = "wss://s.altnet.rippletest.net:51233/"
 const client = new xrpl.Client(SERVER_URL)
