@@ -57,6 +57,7 @@ export function tutorialMetadata() {
     id: 'tutorial-metadata',
     afterRoutesCreated: async (actions, { fs, cache, logger }) => {
       try {
+        console.log(`[order] ${new Date().toISOString()} plugin afterRoutesCreated start`);
         const sidebar = await readTutorialSidebar(actions);
         const locales = getLocales(actions, fs);
         const data = sidebar ? await collectTutorials(sidebar, locales, actions, fs, cache) : lastData;
@@ -73,6 +74,7 @@ export function tutorialMetadata() {
         }
 
         await writeSnapshot(resolve(actions.contentDir, SNAPSHOT_PATH), data);
+        console.log(`[order] ${new Date().toISOString()} plugin wrote snapshot`);
       } catch (e) {
         logger.error('[tutorial-metadata] Failed to collect tutorials: %s', e instanceof Error ? e.stack ?? e.message : String(e));
       }

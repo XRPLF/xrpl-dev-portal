@@ -2,7 +2,7 @@
   "tutorials": [
     {
       "path": "/docs/tutorials/defi/dex/add-assets-to-amm-in-javascript/",
-      "title": "Add Assets to an AMM in JavaScript",
+      "title": "STALEMARKER Add Assets to an AMM in JavaScript",
       "description": "Deposit assets into an existing Automated Market Maker (AMM), vote on its trading fee, and redeem LP tokens using JavaScript.",
       "lastModified": "2026-11-03T19:19:55.000Z",
       "category": "defi",

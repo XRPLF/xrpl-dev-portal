@@ -63,6 +63,13 @@ function sectionLines(section: TutorialSection, prefix: string, translate: Trans
 }
 
 export function tutorialsLandingForLlms(_node: Node, { locale, translate }: RenderForLlmsContext): string {
+  const fs = (globalThis as any).process?.getBuiltinModule?.("fs")
+  const onDisk = fs?.readFileSync(`${process.cwd()}/@theme/data/tutorials-metadata.json`, "utf8") ?? ""
+  console.log(
+    `[order] ${new Date().toISOString()} renderForLlms locale=${locale}` +
+      ` bundledStale=${JSON.stringify(snapshot).includes("STALEMARKER")}` +
+      ` onDiskStale=${onDisk.includes("STALEMARKER")}`,
+  )
   const { prefix, sections, whatsNew } = buildLanding(snapshot, locale)
   const total = sections.reduce((sum, section) => sum + section.tutorials.length, 0)
   const link = (href: string) => `${SITE_URL}${prefix}${href}`
