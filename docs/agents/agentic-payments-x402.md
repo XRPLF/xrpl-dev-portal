@@ -241,7 +241,7 @@ The client automatically:
 5. Returns the response once the server verifies settlement
 
 {% admonition type="info" name="Note" %}
-This guide currently includes Python examples only.
+This guide currently includes Python examples only. For TypeScript, the [`@x402/xrpl`](https://www.npmjs.com/package/@x402/xrpl) package provides the `exact` scheme for XRPL client, resource server and facilitator roles, including an in-process reference facilitator.
 {% /admonition %}
 
 
