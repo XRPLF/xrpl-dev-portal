@@ -44,7 +44,7 @@ Ver [Consenso](../docs/concepts/consensus-protocol/index.md) para más informaci
 Mantener un validador no requiere de comisiones o XRP. Es comparable al gasto de ejecutar un servidor de correo electrónico en términos de uso de electricidad.
 
 
-#### ¿Qué son Las Listas de Nodos Únicos (UNLs)?
+#### ¿Qué son Las Listas de Nodos Únicos (UNLs)? {% #what-are-unique-node-lists-unls %}
 
 Las UNLs son las listas de validadores que un participante determinado cree que no conspirarán para defraudarle. Cada operador de servidor puede elegir su propia UNL, generalmente basándose en un cojunto determinado proporcionado por un publicador de confianza. (La lista predeterminada de un publicador a veces es llamada UNL predeterminada, o _dUNL_.) <!-- STYLE_OVERRIDE: will --> <!-- SPELLING_IGNORE: dUNL -->
 

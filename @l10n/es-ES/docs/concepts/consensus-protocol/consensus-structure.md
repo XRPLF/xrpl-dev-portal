@@ -87,7 +87,7 @@ Las transacciones candidatas que no están incluidas en la propuesta acordada si
 
 En algunas circunstancias, una transacción puede fallar para conseguir alcanzar consenso indefinidamente. Una de esas circunstancias es si la red incrementa el [coste de transacción](../transactions/transaction-cost.md) requerido a un valor superior al que proporciona la transacción. La transacción podría ser exitosa si las comisiones se reducen en algún momento futuro. Para asegurar que una transacción tenga éxito o falle dentro de una limitada cantidad de tiempo, las transacciones se pueden preparar para caducar si no son procesadas por un determinado ledger index. Para más información, ver [Envío de transacciones confiables](../transactions/reliable-transaction-submission.md).
 
-### Validación
+### Validación {% #validation %}
 
 La validación es la segunda etapa del proceso de consenso general, que verifica que los servidores tienen los mismos resultados y declara la versión final del ledger. En raras ocasiones, la primera etapa del [consenso puede fallar](consensus-principles-and-rules.md#consensus-can-fail); la validación proporciona una confirmación posterior para que los servidores puedan reconocer esto y actuar en consecuencia.
 
@@ -99,7 +99,7 @@ La validación puede dividirse en aproximadamente dos partes:
 Cada servidor en la red realiza una validación separada y local.
 
 
-#### Calcular y compartir validaciones
+#### Calcular y compartir validaciones {% #calculate-and-share-validations %}
 
 Cuando el proceso de consenso se completa, cada servidor independientemente computa un nuevo ledger a partir del conjunto de transacciones acordado. Cada servidor calcula los resultados siguiendo las mismas reglas, las cuales pueden ser resumidas de la siguiente manera:
 

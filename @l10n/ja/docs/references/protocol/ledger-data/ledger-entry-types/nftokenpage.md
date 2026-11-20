@@ -82,7 +82,7 @@ labels:
 `NFToken`の削除も追加と同じように動作します。ページ内の`NFToken`の数がある閾値を下回ると、サーバはそのページを前後のページと統合して準備金を取り戻そうとします。
 
 
-### {% $frontmatter.seo.title %}の準備金
+### {% $frontmatter.seo.title %}の準備金 {% #nftokenpage-reserve %}
 
 `NFTokenPage`ごとに、所有者アカウントに追加で準備金の費用がかかります。つまり、複数のNFTを保有するアカウントでは、NFTあたりの _実効_ 準備金コストは _R_ /32（ _R_ は準備金増分）と低くすることが可能です。
 

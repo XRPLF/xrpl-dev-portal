@@ -182,7 +182,7 @@ Terminating thread doJob:AcquisitionDone: unhandled
 
 11. `xrpld`サービスが正常に起動したかどうかを確認します。
 
-    [コマンドラインインターフェイス](/docs/tutorials/get-started/get-started-http-websocket-apis.md#コマンドライン)を使用してサーバの状況を確認できます（サーバがJSON-RPCリクエストを受け入れないように設定している場合を除く）。次に例を示します。
+    [コマンドラインインターフェイス](/docs/tutorials/get-started/get-started-http-websocket-apis.md#commandline)を使用してサーバの状況を確認できます（サーバがJSON-RPCリクエストを受け入れないように設定している場合を除く）。次に例を示します。
 
     ```
     /usr/bin/xrpld server_info

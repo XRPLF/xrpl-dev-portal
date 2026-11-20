@@ -57,7 +57,7 @@ labels:
 
 2. サーバに対してオンライン削除を指示する[can_deleteメソッド][]の実行をテストします。
 
-    このコマンドの実行には[`xrpld`コマンドラインインターフェイス](/docs/tutorials/get-started/get-started-http-websocket-apis.md#コマンドライン)を使用できます。例:
+    このコマンドの実行には[`xrpld`コマンドラインインターフェイス](/docs/tutorials/get-started/get-started-http-websocket-apis.md#commandline)を使用できます。例:
 
     ```
     $ xrpld --conf=/etc/xrpld/xrpld.cfg can_delete now

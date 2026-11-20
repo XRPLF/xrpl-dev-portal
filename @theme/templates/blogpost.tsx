@@ -1,6 +1,7 @@
 import { Markdown } from '@redocly/theme/components/Markdown/Markdown';
 import { DocumentationLayout } from '@redocly/theme/layouts/DocumentationLayout';
 import { TableOfContent } from '@redocly/theme/components/TableOfContent/TableOfContent';
+import { PageActionsContext } from '@redocly/theme/core/contexts';
 import styled from 'styled-components';
 
 const LayoutWrapper = styled.div`
@@ -22,7 +23,9 @@ export default function BlogPost({ pageProps, children }) {
     <LayoutWrapper>
       <DocumentationLayout {...pageProps}>
         <PostInfo data={pageProps.frontmatter} />
-        <Markdown>{children}</Markdown>
+        <PageActionsContext.Provider value={true}>
+          <Markdown>{children}</Markdown>
+        </PageActionsContext.Provider>
       </DocumentationLayout>
       <TableOfContent {...pageProps} />
     </LayoutWrapper>

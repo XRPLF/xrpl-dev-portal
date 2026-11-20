@@ -28,9 +28,9 @@ labels:
 
 [自動入力可能]: #自動入力可能なフィールド
 [AccountTxnID]: #accounttxnid
-[Flags]: #flagsフィールド
+[Flags]: #flags-field
 [Memos]: #memosフィールド
-[Signers]: #signersフィールド
+[Signers]: #signers-field
 
 {% badge href="https://github.com/XRPLF/rippled/releases/tag/0.28.0" %}削除: rippled 0.28.0{% /badge %}: トランザクションの`PreviousTxnID`フィールドは、[AccountTxnID][]フィールドに置き換えられました。この文字列/UInt256フィールドは、過去に発生したトランザクションの一部に記述されています。このフィールドは、一部の[レジャーオブジェクト](../ledger-data/index.md)にある`PreviousTxnID`という同じ名前のフィールドとは無関係です。
 
@@ -59,7 +59,7 @@ AccountTxnIDを使用するには、アカウントの1つ前のトランザク�
 [Paymentトランザクション][]タイプの[`Paths`フィールド](types/payment.md#パス)についても、値を自動入力できます。
 
 
-## Flagsフィールド
+## Flagsフィールド {% #flags-field %}
 
 `Flags`フィールドには、トランザクションの行動を調整する各種のオプションを設定できます。オプションは、ビット単位のOR操作と組み合わせることで複数のフラグを同時に設定できるバイナリー値として表現します。
 
@@ -69,7 +69,7 @@ AccountTxnIDを使用するには、アカウントの1つ前のトランザク�
 
 フラグとして定義しないビットは、0にする必要があります([fix1543 Amendment][]では、一部のタイプのトランザクションについて、このルールが適用されます。デフォルトでは、ほとんどのタイプのトランザクションでこのルールが強制されます)。
 
-### グローバルフラグ
+### グローバルフラグ {% #global-flags %}
 
 すべてのトランザクションにグローバルに適用されるフラグは、以下のとおりです。
 
@@ -151,7 +151,7 @@ MemoTypeフィールドとMemoFormatフィールドには、以下の文字の�
 - ネットワークが両方とも1024以下のIDを持っているか、両方のネットワークが同じIDを使用しているか、2つ目のネットワークが`NetworkID`フィールドを必要としないかのいずれか。
 
 
-## Signersフィールド
+## Signersフィールド {% #signers-field %}
 
 `Signers`フィールドには、最大8つのキーペアから取得された署名を保持し、トランザクションを承認するための[マルチシグ](../../../concepts/accounts/multi-signing.md)が含まれています。`Signers`リストはオブジェクトの配列であり、各オブジェクトが1つの`Signer`フィールドを保持しています。`Signer`フィールドには、以下の入れ子フィールドがあります。
 

@@ -52,11 +52,11 @@ El XRP Ledger comprueba todas las siguientes invariantes en cada transación:
 
 [[Fuente]](https://github.com/XRPLF/rippled/blob/dcd2ff0b5f2019c40c3f38640e751426df97d3c8/include/xrpl/tx/invariants/InvariantCheck.h#L194 "Fuente")
 
-- [Comprobaciones de balance XRP](#comprobaciones-de-balance-XRP)
+- [Comprobaciones de balance XRP](#xrp-balance-checks)
 
 [[Fuente]](https://github.com/XRPLF/rippled/blob/dcd2ff0b5f2019c40c3f38640e751426df97d3c8/include/xrpl/tx/invariants/InvariantCheck.h#L210 "Fuente")
 
-- [Coincidencia de tipos de entradas ledger](#coincidencia-de-tipos-de-entradas-de-ledger)
+- [Coincidencia de tipos de entradas ledger](#ledger-entry-types-match)
 
 [[Fuente]](https://github.com/XRPLF/rippled/blob/dcd2ff0b5f2019c40c3f38640e751426df97d3c8/include/xrpl/tx/invariants/InvariantCheck.h#L229 "Fuente")
 
@@ -94,13 +94,13 @@ El XRP Ledger comprueba todas las siguientes invariantes en cada transación:
     - Una transacción AccountDelete exitosa siempre borra exactamente 1 cuenta.
 
 
-### Comprobaciones de balance XRP
+### Comprobaciones de balance XRP {% #xrp-balance-checks %}
 
 - **Condicion(es) invariantes:**
     - El balance de XRP de una cuenta debe ser de tipo XRP, y no puede ser menor a 0 o más de 100 mil millones XRP exactamente.
 
 
-### Coincidencia de tipos de entrada de ledger
+### Coincidencia de tipos de entrada de ledger {% #ledger-entry-types-match %}
 
 - **Condicion(es) invariantes:**
     - Las entradas de los ledgers modificados deberían coincidir en tipo y las entradas añadidas deben ser de un [tipo válido](../../references/protocol/ledger-data/ledger-entry-types/index.md).
