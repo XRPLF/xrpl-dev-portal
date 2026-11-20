@@ -48,7 +48,11 @@ In addition to the [common fields][], {% code-page-name /%} transactions use the
 | Field Name      | JSON Type           | Internal Type | Required? | Description |
 |:--------------- |:--------------------|:--------------|:----------|:------------|
 | `LoanID`        | String              | Hash256       | Yes       | The ID of the `Loan` ledger entry to repay. |
-| `Amount`        | [Currency Amount][] | Amount        | Yes       | The amount to pay toward the loan. |
+| `Amount`        | [Currency Amount][] | Amount        | Yes       | The maximum amount to pay toward the loan. |
+
+{% admonition type="info" name="Note" %}
+The transaction only sends the portion that the protocol applies to the loan. For example, if an overpayment has a fee and interest rate that reduce the overpayment amount applied to the principal to zero or less, the protocol skips that portion of the payment while still returning a `tesSUCCESS` result. Check the transaction metadata for the amounts actually transferred.
+{% /admonition %}
 
 
 ## {% $frontmatter.seo.title %} Flags

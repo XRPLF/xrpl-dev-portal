@@ -71,11 +71,11 @@ In addition to the [common fields][], {% code-page-name /%} transactions use the
 | `LoanServiceFee`          | String    | Number        | No        | The amount paid to the `LoanBroker` owner with each loan payment. |
 | `LatePaymentFee`          | String    | Number        | No        | The amount paid to the `LoanBroker` owner for late payments. |
 | `ClosePaymentFee`         | String    | Number        | No        | The amount paid to the `LoanBroker` owner for early full repayment. |
-| `OverpaymentFee`          | Number    | UInt32        | No        | A fee charged on overpayments, in units of 1/10th basis points. Valid values are 0 to 100000 (inclusive), representing 0% to 100%. |
+| `OverpaymentFee`          | Number    | UInt32        | No        | A percentage fee charged on overpayments, in units of 1/10th basis points. Valid values are 0 to 100000 (inclusive), representing 0% to 100%. The sum of `OverpaymentFee` and `OverpaymentInterestRate` must be less than 100000, or the protocol skips overpayments. |
 | `InterestRate`            | Number    | UInt32        | No        | The annualized interest rate of the loan, in units of 1/10th basis points. Valid values are 0 to 100000 (inclusive), representing 0% to 100%. |
 | `LateInterestRate`        | Number    | UInt32        | No        | A premium added to the interest rate for late payments, in units of 1/10th basis points. Valid values are 0 to 100000 (inclusive), representing 0% to 100%. |
 | `CloseInterestRate`       | Number    | UInt32        | No        | A fee charged for repaying the loan early, in units of 1/10th basis points. Valid values are 0 to 100000 (inclusive), representing 0% to 100%. |
-| `OverpaymentInterestRate` | Number    | UInt32        | No        | The interest rate charged on overpayments, in units of 1/10th basis points. Valid values are 0 to 100000 (inclusive), representing 0% to 100%. |
+| `OverpaymentInterestRate` | Number    | UInt32        | No        | The interest rate charged on overpayments, in units of 1/10th basis points. Valid values are 0 to 100000 (inclusive), representing 0% to 100%. The sum of `OverpaymentInterestRate` and `OverpaymentFee` must be less than 100000, or the protocol skips overpayments. |
 | `PrincipalRequested`      | String    | Number        | Yes       | The principal loan amount requested by the borrower. |
 | `PaymentTotal`            | Number    | UInt32        | No        | The total number of payments to be made against the loan. |
 | `PaymentInterval`         | Number    | UInt32        | No        | The number of seconds between loan payments. |
