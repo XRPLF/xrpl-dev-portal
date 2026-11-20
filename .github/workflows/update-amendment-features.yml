@@ -1,0 +1,50 @@
+name: Update amendment features
+
+on:
+  #schedule:
+    # Every 6 hours at :23 to avoid top of the hour congestion.
+  #  - cron: '23 */6 * * *'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-amendment-features
+  cancel-in-progress: true
+
+jobs:
+  update-features:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 1
+          sparse-checkout: |
+            tools
+            @theme/data
+            blog
+
+      - name: Fetch latest amendment feature data
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python3 tools/fetch-amendment-features.py
+
+      - name: Commit and push data
+        run: |
+          FILE='@theme/data/amendment-features.json'
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- "$FILE"
+          git commit -m "chore(data): update amendment features"
+          # Rebase to guard against master advancing between checkout and push
+          for attempt in 1 2 3; do
+            if git pull --rebase origin "$GITHUB_REF_NAME" \
+               && git push origin "HEAD:$GITHUB_REF_NAME"; then
+              echo "Pushed amendment features update."
+              exit 0
+            fi
+            echo "Push raced; retrying (attempt $attempt)..."
+          done
+          echo "::error::Failed to push after 3 attempts."
+          exit 1
