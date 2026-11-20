@@ -194,6 +194,9 @@ Based on the timing and transaction flags, the lending protocol processes the pa
 - **On-Time Payments**: If the payment is on-time, it's further classified into these payment scenarios:
   - **Sequential Periodic Payments**: The payment is applied to as many complete payment cycles as possible; cycles are calculated as the amount due each payment period (including fees).
   - **Overpayments**: After all possible cycles are fully paid, any remaining amount is treated as an overpayment and applied to the principal. This type of payment requires the `lsfLoanOverpayment` flag to be enabled on the `Loan` ledger entry, as well as the `tfLoanOverpayment` flag to be enabled on the `LoanPay` transaction. If these flags are missing, the excess amount is ignored.
+    {% admonition type="info" name="Note" %}
+    If the overpayment fee and interest would consume the entire overpayment, the protocol still processes the periodic payments but skips the overpayment.
+    {% /admonition %}
   - **Full Early Repayment**: The payment has the `tfLoanFullPayment` flag set, and the amount covers the remainder of the loan (including fees). The final payment on a loan can't be a full early repayment.
 - **Late Payments**: The payment is late on a payment cycle, and must have the `tfLoanLatePayment` flag set. A late payment covers one payment cycle, and must be at least:
 
