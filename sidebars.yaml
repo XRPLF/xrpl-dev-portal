@@ -39,6 +39,9 @@
                 - page: docs/use-cases/tokenization/nftoken-marketplace.md
                 - page: docs/use-cases/tokenization/authorized-minter.md
                 - page: docs/use-cases/tokenization/digital-artist.md
+        - page: docs/use-cases/collateral-management/index.page.tsx
+          label: Collateral Management
+          labelTranslationKey: sidebar.docs.use-cases.collateral-management
         - group: DeFi
           groupTranslationKey: sidebar.docs.use-cases.defi
           expanded: true

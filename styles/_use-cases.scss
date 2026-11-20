@@ -1512,3 +1512,52 @@ html.light {
     content: url(../img/uc-escrow-oracle-light.svg);
   }
 }
+
+// Collateral Management page -----------------------------------------------
+.page-use-cases-collateral-management {
+  // Custodian section is split in two components (intro + image, then the
+  // requirement cards). Collapse the padding between them so they read as one
+  // section.
+  .cm-custodian-intro .bds-feature-single-topic__container {
+    padding-bottom: $bds-space-2xl;
+  }
+
+  // The atomic swap diagram (1200x680, dark background baked in) replaces a
+  // photo in this FeatureSingleTopic. The component crops media to a fixed
+  // desktop height with object-fit: cover, which would cut off the diagram.
+  // Show the whole diagram at its own aspect ratio and let the row size to
+  // its content instead.
+  .cm-custodian-intro {
+    .bds-feature-single-topic__row,
+    .bds-feature-single-topic__media-col {
+      height: auto;
+    }
+
+    .bds-feature-single-topic__media-col {
+      display: flex;
+      align-items: center;
+    }
+
+    .bds-feature-single-topic__media-img,
+    .bds-feature-single-topic__media-img:is(img) {
+      aspect-ratio: 1200 / 680;
+      height: auto;
+      object-fit: contain;
+    }
+  }
+
+  .cm-custodian-requirements {
+    padding-top: 0;
+
+    @include media-breakpoint-up(md) {
+      padding-top: 0;
+    }
+  }
+
+  // StandardCard forces aspect-ratio: 1 at xxl, which locks the card height to
+  // its width and clips the long bullet lists in this section. Let these cards
+  // size to their content instead.
+  .cm-custodian-requirements .bds-standard-card {
+    aspect-ratio: auto;
+  }
+}

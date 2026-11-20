@@ -40,6 +40,7 @@ time.past.years: "{{value}}年前"
 sidebar.docs: ドキュメント
 sidebar.docs.introduction.what-is-xrp: XRPとは？
 sidebar.docs.use-cases.tokenization: Tokenization
+sidebar.docs.use-cases.collateral-management: Collateral Management
 sidebar.docs.use-cases.trading: Trading
 sidebar.docs.use-cases.credit: Credit
 sidebar.docs.use-cases.defi: DeFi

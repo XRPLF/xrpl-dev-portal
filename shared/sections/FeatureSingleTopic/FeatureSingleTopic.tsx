@@ -33,6 +33,11 @@ export interface FeatureSingleTopicProps {
   media: {
     src: string;
     alt: string;
+    /** Optional URL to open a full-size view of the media (opens in a new tab).
+     * When set, the image becomes a link and a caption link is shown below it. */
+    href?: string;
+    /** Caption link text shown below the media when `href` is set */
+    linkLabel?: string;
   };
   /** Additional CSS classes */
   className?: string;
@@ -100,15 +105,43 @@ export const FeatureSingleTopic: React.FC<FeatureSingleTopicProps> = ({
   );
 
   // Render media section
-  const renderMedia = () => (
-    <div className="bds-feature-single-topic__media">
+  const renderMedia = () => {
+    const img = (
       <img
         src={media.src}
         alt={media.alt}
         className="bds-feature-single-topic__media-img"
       />
-    </div>
-  );
+    );
+
+    if (!media.href) {
+      return <div className="bds-feature-single-topic__media">{img}</div>;
+    }
+
+    const linkLabel = media.linkLabel || 'View full size';
+    return (
+      <div className="bds-feature-single-topic__media bds-feature-single-topic__media--linked">
+        <a
+          href={media.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="bds-feature-single-topic__media-link"
+          title={`${linkLabel} (opens in a new tab)`}
+        >
+          {img}
+        </a>
+        <a
+          href={media.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="bds-feature-single-topic__media-caption label-s"
+        >
+          {linkLabel}
+          <span className="visually-hidden"> (opens in a new tab)</span>
+        </a>
+      </div>
+    );
+  };
 
   return (
     <section className={rootClasses}>
