@@ -46,6 +46,7 @@ Besides errors that can occur for all transactions, CredentialCreate transaction
 | `tecDUPLICATE` | A credential with the same subject, issuer, and credential type already exists in the ledger. |
 | `tecEXPIRED` | The credential's expiration time is in the past. |
 | `tecNO_TARGET` | The account specified in the `Subject` field is not a funded account in the ledger. |
+| `tecPSEUDO_ACCOUNT` | The account specified in the `Subject` field is a [pseudo-account](../../../../concepts/accounts/pseudo-accounts.md). {% amendment-disclaimer name="fixCleanup3_3_0" /%} |
 | `temDISABLED` | The related amendment is not enabled. |
 | `temINVALID_ACCOUNT_ID` | The provided `Subject` field is invalid. For example, it contains [ACCOUNT_ZERO](../../../../concepts/accounts/addresses.md#special-addresses). |
 | `temINVALID_FLAG` | The transaction includes a [Flag](../common-fields.md#flags-field) that does not exist, or includes a contradictory combination of flags. {% amendment-disclaimer name="fixInvalidTxFlags" /%} |
