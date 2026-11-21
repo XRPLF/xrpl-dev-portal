@@ -1533,9 +1533,45 @@ html.light {
       height: auto;
     }
 
-    .bds-feature-single-topic__media-col {
-      display: flex;
-      align-items: center;
+    // Desktop: start the diagram level with the description text rather than
+    // the heading. Flatten the content column into the row's grid so the
+    // heading sits on its own row and the description + diagram share the
+    // next one. Same 12-column split (5 text / 7 media) and gutter as PageGrid.
+    @include media-breakpoint-up(lg) {
+      .bds-feature-single-topic__row {
+        display: grid;
+        grid-template-columns: repeat(12, minmax(0, 1fr));
+        column-gap: $bds-grid-gutter;
+        row-gap: 0;
+        align-items: start;
+      }
+
+      .bds-feature-single-topic__content-col,
+      .bds-feature-single-topic__content {
+        display: contents;
+      }
+
+      .bds-feature-single-topic__title-section,
+      .bds-feature-single-topic__description-section {
+        grid-column: 1 / span 5;
+        padding-left: $bds-space-sm;
+      }
+
+      .bds-feature-single-topic__title-section {
+        grid-row: 1;
+        padding-bottom: $bds-space-2xl;
+      }
+
+      .bds-feature-single-topic__description-section {
+        grid-row: 2;
+      }
+
+      .bds-feature-single-topic__media-col {
+        grid-column: 6 / span 7;
+        grid-row: 2;
+        width: auto;
+        max-width: none;
+      }
     }
 
     .bds-feature-single-topic__media-img,
