@@ -89,6 +89,7 @@ module.exports = {
                 // template literal in about/uses.page.tsx, so PurgeCSS never
                 // sees the finished class name.
                 /^label-use-/,
+                /^cols-of-/,
 
                 /^g-/, // Gap utilities
                 /^p-/, // Padding utilities
