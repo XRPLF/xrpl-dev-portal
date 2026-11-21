@@ -9,7 +9,7 @@ labels:
 ---
 # プライベートサーバの設定
 
-[プライベートサーバ](../../../concepts/networks-and-servers/peer-protocol.md#プライベートピア)は、オープンなピアツーピアネットワーク内の検出されたピアに直接接続するのではなく、特定の信頼できるピアのみを通じてネットワークに接続する`xrpld`サーバです。この種の構成は、[バリデータ](../server-modes/run-xrpld-as-a-validator.md)に一般的に推奨される任意の対策ですが、その他の特定の目的でも役立ちます。
+[プライベートサーバ](../../../concepts/networks-and-servers/peer-protocol.md#private-peers)は、オープンなピアツーピアネットワーク内の検出されたピアに直接接続するのではなく、特定の信頼できるピアのみを通じてネットワークに接続する`xrpld`サーバです。この種の構成は、[バリデータ](../server-modes/run-xrpld-as-a-validator.md)に一般的に推奨される任意の対策ですが、その他の特定の目的でも役立ちます。
 
 ## 前提条件
 

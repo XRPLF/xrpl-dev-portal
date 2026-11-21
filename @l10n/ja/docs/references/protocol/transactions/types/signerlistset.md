@@ -64,6 +64,6 @@ SignerQuorumを満たせない方法でSignerListを作成することはでき�
 
 トランザクションに署名する最後の方法をアカウントから削除することはできません。アカウントのマスターキーが無効で（[`lsfDisableMaster`フラグ](../../ledger-data/ledger-entry-types/accountroot.md#accountrootのフラグ)が有効な場合）、アカウントで[レギュラーキー](../../../../concepts/accounts/cryptographic-keys.md)が設定されていない場合、アカウントからSignerListを削除できません。その代わりにトランザクションは[`tecNO_ALTERNATIVE_KEY`](../transaction-results/tec-codes.md)エラーで失敗します。
 
-[MultiSignReserve Amendment][]が有効な場合、SignerListを作成または置換すると、SignerListオブジェクトでlsfOneOwnerCountフラグが有効になります。このフラグが有効な場合、MultiSignReserve Amendmentに定められているとおり、XRP LedgerはSignerListの[`OwnerCount`](../../ledger-data/ledger-entry-types/accountroot.md#accountrootフィールド)と[所有者準備金](../../../../concepts/accounts/reserves.md#所有者準備金)を減らせます。詳細は、[SignerListのフラグ](../../ledger-data/ledger-entry-types/signerlist.md#signerlistのフラグ)をご覧ください。
+[MultiSignReserve Amendment][]が有効な場合、SignerListを作成または置換すると、SignerListオブジェクトでlsfOneOwnerCountフラグが有効になります。このフラグが有効な場合、MultiSignReserve Amendmentに定められているとおり、XRP LedgerはSignerListの[`OwnerCount`](../../ledger-data/ledger-entry-types/accountroot.md#accountroot-fields)と[所有者準備金](../../../../concepts/accounts/reserves.md#所有者準備金)を減らせます。詳細は、[SignerListのフラグ](../../ledger-data/ledger-entry-types/signerlist.md#signerlist-flags)をご覧ください。
 
 {% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

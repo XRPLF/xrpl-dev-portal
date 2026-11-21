@@ -70,7 +70,7 @@ XRPは任意のアドレスに直接送金できるため、[XRP間のトラン�
 有効なすべてのデフォルトパスを次の図に示します。
 [{% inline-svg file="/docs/img/default-paths.ja.svg" /%}](/docs/img/default-paths.ja.svg "デフォルトパスの図")
 
-デフォルトパスを無効にするには[`tfNoDirectRipple`フラグ](../../../references/protocol/transactions/types/payment.md#paymentのフラグ)を使用します。このケースでは、トランザクションに明示的に指定されたパスを使用してトランザクションを実行することだけが可能です。トレーダーはこのオプションを使用して裁定取引を実行できます。
+デフォルトパスを無効にするには[`tfNoDirectRipple`フラグ](../../../references/protocol/transactions/types/payment.md#payment-flags)を使用します。このケースでは、トランザクションに明示的に指定されたパスを使用してトランザクションを実行することだけが可能です。トレーダーはこのオプションを使用して裁定取引を実行できます。
 
 
 ## パスの仕様

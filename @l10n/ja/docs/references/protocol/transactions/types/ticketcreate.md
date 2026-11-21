@@ -10,7 +10,7 @@ txIcon: create
 # TicketCreate
 {% source-link path="src/libxrpl/tx/transactors/system/TicketCreate.cpp" /%}
 
-TicketCreateトランザクションは、1つまたは複数の[シーケンス番号](../../data-types/basic-data-types.md#アカウントシーケンス)を[Tickets](../../ledger-data/ledger-entry-types/ticket.md)として確保します。
+TicketCreateトランザクションは、1つまたは複数の[シーケンス番号](../../data-types/basic-data-types.md#account-sequence)を[Tickets](../../ledger-data/ledger-entry-types/ticket.md)として確保します。
 
 {% amendment-disclaimer name="TicketBatch" /%}
 

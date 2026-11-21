@@ -72,7 +72,7 @@ Seguir el estado de financiación de todas las Ofertas puede ser computacionalme
 Una aplicación de cliente puede seguir localmente el estado de financiación de las Ofertas. Para hacerlo, primero recupera un libro de órdenes utilizando el [método book_offers][] y verifica el campo `taker_gets_funded` de las Ofertas. Luego, [suscríbete](../../../references/http-websocket-apis/public-api-methods/subscription-methods/subscribe.md) al flujo de `transactions` y observa los metadatos de transacción para ver qué Ofertas se modifican.
 
 
-## Ofertas y confianza
+## Ofertas y confianza {% #offers-and-trust %}
 
 Los valores límite de las [trust lines](../fungible-tokens/index.md) no afectan a las Ofertas. En otras palabras, puedes usar una Oferta para adquirir más de la cantidad máxima en la que confías en un emisor.
 
@@ -81,14 +81,14 @@ Sin embargo, mantener tokens aún requiere una trust line con el emisor. Cuando 
 Los límites de la trust line te protegen de recibir más de un token como pago de lo que deseas. Las Ofertas pueden superar esos límites porque son una declaración explícita de cuánto del token deseas.
 
 
-## Preferencia de Oferta
+## Preferencia de Oferta {% #offer-preference %}
 
 Las Ofertas existentes se agrupan por tipo de cambio, que se mide como la relación entre `TakerGets` y `TakerPays`. Las Ofertas con un tipo de cambio más alto se toman preferentemente. (Es decir, la persona que acepta la oferta recibe tanto como sea posible por la cantidad de moneda que paga). Las Ofertas con el mismo tipo de cambio se toman en función de cuál se colocó primero.
 
 Cuando las Ofertas se ejecutan en el mismo bloque del ledger, el orden en que se ejecutan se determina por el {% source-link name="orden canónico" path="src/libxrpl/ledger/CanonicalTXSet.cpp" /%} en el que las transacciones fueron {% source-link name="aplicadas en el ledger" path="src/libxrpl/ledger/CanonicalTXSet.cpp" /%}. Este comportamiento está diseñado para ser determinista, eficiente y difícil de manipular.
 
 
-## Caducidad de la oferta
+## Caducidad de la oferta {% #offer-expiration %}
 
 Cuando colocas una Oferta, puedes opcionalmente añadirle un tiempo de caducidad. Por defecto, las Ofertas no caducan. No puedes crear una nueva Oferta que ya esté caducada.
 

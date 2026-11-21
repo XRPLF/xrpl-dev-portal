@@ -16,7 +16,7 @@ _`validation_create`メソッドは、権限のないユーザは実行できな
 
 サーバを設定することにより、生成されたキーペアを検証の署名（検証キーペア）に使用するか、または通常のピアツーピア通信の署名（[ノードキーペア](../../../../concepts/networks-and-servers/peer-protocol.md#ノードキーペア)）に使用するかを指定できます。
 
-**ヒント:**　堅牢なバリデータを設定するには、`validator-keys`ツール（`xrpld` RPMに付属）を使用してバリデータトークン（ローテーション可能）とオフラインマスターキーを生成してください。詳細は、[xrpldサーバで検証を有効化](../../../../infrastructure/configuration/server-modes/run-xrpld-as-a-validator.md#3-xrpldサーバで検証を有効化)をご覧ください。
+**ヒント:**　堅牢なバリデータを設定するには、`validator-keys`ツール（`xrpld` RPMに付属）を使用してバリデータトークン（ローテーション可能）とオフラインマスターキーを生成してください。詳細は、[xrpldサーバで検証を有効化](../../../../infrastructure/configuration/server-modes/run-xrpld-as-a-validator.md#3-enable-validation-on-your-xrpld-server)をご覧ください。
 
 
 ### リクエストのフォーマット

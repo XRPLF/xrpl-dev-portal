@@ -28,7 +28,7 @@ XRP Ledgerの中心であるピアツーピアネットワークは、コンセ�
 
 ![コアサーバ](/docs/img/ecosystem-peer-to-peer.svg)
 
-各コアサーバは、（[テストネットワーク](../concepts/networks-and-servers/parallel-networks.md)に従うように構成されていない限り）同じネットワークに同期され、ネットワーク全体のあらゆる通信にアクセスできます。ネットワーク上の各サーバは、最近のトランザクションと、それらのトランザクションで行われた変更の記録とともに、XRP Ledger全体の最新の状態データの完全なコピーを保持します。また、各サーバは各トランザクションを単独で処理すると同時に、そのトランザクションの結果が残りのネットワークに一致するか検証します。サーバは、より多くの[レジャー履歴](../concepts/networks-and-servers/ledger-history.md)を保持したり、[バリデータ](../concepts/networks-and-servers/xrpld-server-modes.md#バリデータ)としてコンセンサスプロセスに参加するように構成することができます。
+各コアサーバは、（[テストネットワーク](../concepts/networks-and-servers/parallel-networks.md)に従うように構成されていない限り）同じネットワークに同期され、ネットワーク全体のあらゆる通信にアクセスできます。ネットワーク上の各サーバは、最近のトランザクションと、それらのトランザクションで行われた変更の記録とともに、XRP Ledger全体の最新の状態データの完全なコピーを保持します。また、各サーバは各トランザクションを単独で処理すると同時に、そのトランザクションの結果が残りのネットワークに一致するか検証します。サーバは、より多くの[レジャー履歴](../concepts/networks-and-servers/ledger-history.md)を保持したり、[バリデータ](../concepts/networks-and-servers/xrpld-server-modes.md#validators)としてコンセンサスプロセスに参加するように構成することができます。
 
 コアサーバは、ユーザがデータを調べたり、サーバを管理したり、トランザクションを送信したりするために、[HTTP / WebSocket API](../references/http-websocket-apis/index.md)を公開します。また、HTTP / WebSocket APIを提供するものの、ピアツーピアネットワークに直接接続せず、トランザクションを処理したりコンセンサスに参加したりしないサーバも存在します。Reportingモードで動作する`xrpld`サーバやClioサーバなどのこれらのサーバは、トランザクションを処理するためにP2Pモードのコアサーバに依存しています。
 

@@ -275,7 +275,7 @@ NFTを含むトランザクション（`tx`と`account_tx`）はメタデータ�
 
 両方の条件に該当する場合、`delivered_amount`には、実際の金額ではなく文字列値`unavailable`が記述されます。この場合、トランザクションのメタデータにあるAffectedNodesを読み取ることが、実際に送金された金額を割り出せる唯一の手段になります。
 
-{% admonition type="info" name="注記" %}`delivered_amount`フィールドはリクエストに対してオンデマンドで生成され、トランザクションメタデータのバイナリフォーマットには含まれず、トランザクションメタデータの[ハッシュ](../data-types/basic-data-types.md#ハッシュ)を計算する際にも使用されません。一方、`DeliveredAmount`フィールドは2014-01-20以降のpartial paymentトランザクションのバイナリフォーマットに _含まれます_ 。{% /admonition %}
+{% admonition type="info" name="注記" %}`delivered_amount`フィールドはリクエストに対してオンデマンドで生成され、トランザクションメタデータのバイナリフォーマットには含まれず、トランザクションメタデータの[ハッシュ](../data-types/basic-data-types.md#hashes)を計算する際にも使用されません。一方、`DeliveredAmount`フィールドは2014-01-20以降のpartial paymentトランザクションのバイナリフォーマットに _含まれます_ 。{% /admonition %}
 
 関連項目: [Partial Payments](../../../concepts/payment-types/partial-payments.md)
 

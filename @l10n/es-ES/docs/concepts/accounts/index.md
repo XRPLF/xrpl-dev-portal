@@ -32,7 +32,7 @@ Los datos principales de una cuenta se guardan en una entrada del ledger [Accoun
 **Consejo:** Una "Cuenta" en el XRP Ledger está en algún lugar entre el uso financiero (como una "cuenta bancaria") y el uso informático (como una "cuenta UNIX"). Las monedas y activos no XRP no se guardan en una cuenta del XRP Ledger en sí misma; cada uno de estos activos se almacena en una relación contable llamada "Línea de confianza" (trust line en inglés) que conecta a dos partes.
 
 
-## Creación de cuentas
+## Creación de cuentas {% #creating-accounts %}
 
 No hay una transacción dedicada a "crear una cuenta". La [transacción Payment][] automáticamente crea una nueva cuenta si el pago envía suficiente XRP a una dirección matemáticamente válida que aún no tiene una cuenta. Esto se llama _finnaciar_ una cuenta, y crea una [entrada AccountRoot](../../references/protocol/ledger-data/ledger-entry-types/accountroot.md) en el ledger. No hay otra transacción que cree una cuenta.
 

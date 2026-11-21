@@ -60,7 +60,7 @@ CEOのウェイトを3、副社長3人のウェイトを各2、取締役3人の�
 
 * トランザクションを送信するアドレス（`Account`に指定されるアドレス）は、[レジャーに`SignerList`](../../references/protocol/ledger-data/ledger-entry-types/signerlist.md)を所有する必要があります。この方法については、[マルチシグを設定する](../../tutorials/best-practices/key-management/set-up-multi-signing.md)をご覧ください。
 * トランザクションに`SigningPubKey`フィールドを空の文字列として含める必要があります。
-* トランザクションに、署名の配列が指定されている[`Signers`フィールド](../../references/protocol/transactions/common-fields.md#signersフィールド)を含める必要があります。
+* トランザクションに、署名の配列が指定されている[`Signers`フィールド](../../references/protocol/transactions/common-fields.md#signers-field)を含める必要があります。
 * `Signers`配列に含まれている署名は、`SignerList`で定義されている署名と一致している必要があります。
 * 指定された署名で、これらの署名者に関連付けられている`weight`の合計が、`SignerList`の`quorum`以上である必要があります。
 * [トランザクションコスト](../transactions/transaction-cost.md)（`Fee`フィールドで指定）は、通常のトランザクションコストの（N+1）倍以上である必要があります。このNは、指定される署名の数です。

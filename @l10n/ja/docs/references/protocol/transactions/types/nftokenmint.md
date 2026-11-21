@@ -55,7 +55,7 @@ txIcon: create
 
 ## NFTokenMintのフラグ
 
-NFTokenMint型のトランザクションでは、以下のように[`Flags`フィールド](../common-fields.md#flagsフィールド)に追加の値を設定することが可能です。
+NFTokenMint型のトランザクションでは、以下のように[`Flags`フィールド](../common-fields.md#flags-field)に追加の値を設定することが可能です。
 
 | フラグ名         | 16進数値     | 整数値 | 説明 |
 | :--------------- | :----------- | :----- | ---- |
