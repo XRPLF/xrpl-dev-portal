@@ -399,7 +399,7 @@ Each member of the `peers` array is a peer object with the following fields:
 | `sanity`           | String  | _(May be omitted)_ Whether this peer is following the same rules and ledger history as the current server. A value of `insane` probably indicates that the peer is part of a [parallel network](../../../../concepts/networks-and-servers/parallel-networks.md). The value `unknown` indicates that the current server is unsure whether the peer is compatible. <!-- STYLE_OVERRIDE: insane --> |
 | `status`           | String  | _(May be omitted)_ The most recent status message from the peer. Could be `connecting`, `connected`, `monitoring`, `validating`, or `shutting`. |
 | `uptime`           | Number  | The number of seconds that your `xrpld` server has been continuously connected to this peer. |
-| `version`          | string  | _(May be omitted)_ The `xrpld` version number of the peer server |
+| `version`          | String  | _(May be omitted)_ The `xrpld` version number of the peer server |
 
 The `metrics` object contains the following fields:
 
