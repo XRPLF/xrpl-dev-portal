@@ -3,8 +3,10 @@ export interface PinnedExternalTutorial {
   title: string
   description: string
   author: { name: string; url: string }
+  /** Source repository; the card links here when there is no live demo */
+  github: string
+  /** Live demo, when one is hosted */
   url?: string
-  github?: string
 }
 
 // Pinned tutorial entry:
@@ -13,8 +15,11 @@ export interface PinnedExternalTutorial {
 export type PinnedTutorial = string | { path: string; description?: string }
 
 // ── Section configuration -----------------------------------------------------------
-// Categories and their titles are auto-detected by the tutorial-metadata plugin.
-// Use the config to customize the category titles, add descriptions, change the default category order, and pin tutorials.
+// Categories and their titles are auto-detected by the tutorial-metadata plugin
+// from the top-level groups under Tutorials in sidebars.yaml.
+// Use this config to rename a category, add a description, set the default order,
+// pin tutorials to the front of a category, and attach community contributions.
+// Categories that exist in the sidebar but not here are appended at the end.
 export const sectionConfig: Record<string, {
   title?: string
   description?: string
@@ -23,14 +28,12 @@ export const sectionConfig: Record<string, {
     description?: string
     items: PinnedExternalTutorial[]
   }
-  showFooter?: boolean
 }> = {
   "whats-new": {
     title: "What's New",
     description: "Recently added/updated tutorials to help you build on the XRP Ledger.",
   },
   "get-started": {
-    showFooter: true,
     title: "Get Started with SDKs",
     description: "These tutorials walk you through the basics of building a very simple XRP Ledger-connected application using your favorite programming language.",
     pinned: [
