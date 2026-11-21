@@ -25,12 +25,12 @@ The `Loan` ledger entry is tracked in two [Owner Directories](./directorynode.md
 {
   "LedgerEntryType": "Loan",
   "LedgerIndex": "E123F4567890ABCDE123F4567890ABCDEF1234567890ABCDEF1234567890ABCD",
-  "Flags": "0",
+  "Flags": 0,
   "PreviousTxnID": "9A8765B4321CDE987654321CDE987654321CDE987654321CDE987654321CDE98",
   "PreviousTxnLgrSeq": 12345678,
   "LoanSequence": 1,
-  "OwnerNode": 2,
-  "LoanBrokerNode": 1,
+  "OwnerNode": "2",
+  "LoanBrokerNode": "1",
   "LoanBrokerID": "ABCDEF1234567890ABCDEF1234567890ABCDEF1234567890ABCDEF1234567890",
   "Borrower": "rEXAMPLE9AbCdEfGhIjKlMnOpQrStUvWxYz",
   "LoanOriginationFee": "100",
@@ -64,28 +64,28 @@ In addition to the [common ledger entry fields][], {% code-page-name /%} entries
 | `PreviousTxnID`       | String    | Hash256       | Yes       | Identifies the transaction ID that most recently modified this object. |
 | `PreviousTxnLgrSeq`   | Number    | UInt32        | Yes       | The sequence of the ledger that contains the transaction that most recently modified this object. |
 | `LoanSequence`        | Number    | UInt32        | Yes       | The sequence number of the loan. |
-| `OwnerNode`           | Number    | UInt64        | Yes       | Identifies the page where this item is referenced in the owner's directory. |
-| `LoanBrokerNode`      | Number    | UInt64        | Yes       | Identifies the page where this item is referenced in the `LoanBroker` owner directory. |
+| `OwnerNode`           | String    | UInt64        | Yes       | Identifies the page where this item is referenced in the owner's directory. |
+| `LoanBrokerNode`      | String    | UInt64        | Yes       | Identifies the page where this item is referenced in the `LoanBroker` owner directory. |
 | `LoanBrokerID`        | String    | Hash256       | Yes       | The ID of the _Loan Broker_ associated with this loan. |
 | `Borrower`            | String    | AccountID     | Yes       | The account address of the _Borrower_. |
-| `LoanOriginationFee`  | String    | Number        | Yes       | The amount paid to the _Loan Broker_, taken from the principal loan at creation. |
-| `LoanServiceFee`      | String    | Number        | Yes       | The amount paid to the _Loan Broker_ with each loan payment. |
-| `LatePaymentFee`      | String    | Number        | Yes       | The amount paid to the _Loan Broker_ for each late payment. |
-| `ClosePaymentFee`     | String    | Number        | Yes       | The amount paid to the _Loan Broker_ when a full early payment is made. |
-| `OverpaymentFee`      | Number    | UInt32        | Yes       | The fee charged on overpayments, in units of 1/10th basis points. Valid values are 0 to 100000 (inclusive), representing 0% to 100%. |
-| `InterestRate`        | Number    | UInt32        | Yes       | The annualized interest rate of the loan, in 1/10th basis points. |
-| `LateInterestRate`    | Number    | UInt32        | Yes       | The premium added to the interest rate for late payments, in units of 1/10th basis points. Valid values are 0 to 100000 (inclusive), representing 0% to 100%. |
-| `CloseInterestRate`   | Number    | UInt32        | Yes       | The interest rate charged for repaying the loan early, in units of 1/10th basis points. Valid values are 0 to 100000 (inclusive), representing 0% to 100%. |
-| `OverpaymentInterestRate` | Number | UInt32       | Yes       | The interest rate charged on overpayments, in units of 1/10th basis points. Valid values are 0 to 100000 (inclusive), representing 0% to 100%. |
+| `LoanOriginationFee`  | String    | Number        | No        | The amount paid to the _Loan Broker_, taken from the principal loan at creation. |
+| `LoanServiceFee`      | String    | Number        | No        | The amount paid to the _Loan Broker_ with each loan payment. |
+| `LatePaymentFee`      | String    | Number        | No        | The amount paid to the _Loan Broker_ for each late payment. |
+| `ClosePaymentFee`     | String    | Number        | No        | The amount paid to the _Loan Broker_ when a full early payment is made. |
+| `OverpaymentFee`      | Number    | UInt32        | No        | A percentage fee charged on overpayments, in units of 1/10th basis points. Valid values are 0 to 100000 (inclusive), representing 0% to 100%. The sum of `OverpaymentFee` and `OverpaymentInterestRate` must be less than 100000, or the protocol skips overpayments. |
+| `InterestRate`        | Number    | UInt32        | No        | The annualized interest rate of the loan, in 1/10th basis points. |
+| `LateInterestRate`    | Number    | UInt32        | No        | The premium added to the interest rate for late payments, in units of 1/10th basis points. Valid values are 0 to 100000 (inclusive), representing 0% to 100%. |
+| `CloseInterestRate`   | Number    | UInt32        | No        | The interest rate charged for repaying the loan early, in units of 1/10th basis points. Valid values are 0 to 100000 (inclusive), representing 0% to 100%. |
+| `OverpaymentInterestRate` | Number    | UInt32        | No        | The interest rate charged on overpayments, in units of 1/10th basis points. Valid values are 0 to 100000 (inclusive), representing 0% to 100%. The sum of `OverpaymentInterestRate` and `OverpaymentFee` must be less than 100000, or the protocol skips overpayments. |
 | `StartDate`           | Number    | UInt32        | Yes       | The timestamp of when the loan started, in [seconds since the Ripple Epoch][]. |
 | `PaymentInterval`     | Number    | UInt32        | Yes       | The number of seconds between loan payments. |
-| `GracePeriod`         | Number    | UInt32        | Yes       | The number of seconds after a loan payment is due before the loan defaults. |
-| `PreviousPaymentDueDate` | Number | UInt32        | Yes       | The timestamp of when the previous payment was made, in [seconds since the Ripple Epoch][]. |
-| `NextPaymentDueDate`  | Number    | UInt32        | Yes       | The timestamp of when the next payment is due, in [seconds since the Ripple Epoch][]. |
-| `PaymentRemaining`    | Number    | UInt32        | Yes       | The number of payments remaining on the loan. |
-| `PrincipalOutstanding` | String   | Number        | Yes       | The principal amount still owed on the loan. |
-| `TotalValueOutstanding` | String  | Number        | Yes       | The total amount owed on the loan, including remaining principal and fees. |
-| `ManagementFeeOutstanding` | String | Number      | No        | The remaining management fee owed to the loan broker. Omitted when zero. |
+| `GracePeriod`         | Number    | UInt32        | No        | The number of seconds after a loan payment is due before the loan defaults. |
+| `PreviousPaymentDueDate` | Number | UInt32        | No        | The timestamp of when the previous payment was made, in [seconds since the Ripple Epoch][]. |
+| `NextPaymentDueDate`  | Number    | UInt32        | No        | The timestamp of when the next payment is due, in [seconds since the Ripple Epoch][]. |
+| `PaymentRemaining`    | Number    | UInt32        | No        | The number of payments remaining on the loan. |
+| `PrincipalOutstanding` | String   | Number        | No        | The principal amount still owed on the loan. |
+| `TotalValueOutstanding` | String  | Number        | No        | The total amount owed on the loan, including remaining principal and fees. |
+| `ManagementFeeOutstanding` | String | Number      | No        | The remaining management fee owed to the loan broker. |
 | `PeriodicPayment`     | String    | Number        | Yes       | The amount due for each payment interval, excluding the `LoanServiceFee`. This value is stored with full precision and can contain more decimal places than the loan's asset supports. To calculate the amount to pay, round decimals up to the next whole number (or to the loan's `LoanScale` for trust line tokens), then add the `LoanServiceFee`. The final payment is the remaining `TotalValueOutstanding` plus the `LoanServiceFee` instead. |
 | `LoanScale`           | Number    | Int32         | No        | The scale factor that ensures all computed amounts are rounded to the same number of decimal places. It is based on the total loan value at creation time. |
 
