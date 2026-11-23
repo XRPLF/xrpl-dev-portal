@@ -53,7 +53,7 @@ Channelの**宛先アドレス**は以下の操作を実行できます。
 | `Amount`        | 文字列       | Amount       | いいえ | `Signature`により承認された[XRPのdrop数][]の額。これは、署名済みメッセージの額に一致している必要があります。これは、Channelが利用できるXRPの累計額であり、以前に精算されたXRPを含みます。 |
 | `Balance`       | 文字列       | Amount       | いいえ | このクレームの処理後にこのChannelから送金される[XRPのdrop数][]。XRPを送金する場合に必須です。Channelからこれまでに送金された総額よりも大きく、署名済みクレームの`Amount`よりも少ない額である必要があります。Channelを閉鎖する場合を除き、指定する必要があります。 |
 | `Channel`       | 文字列       | UInt256      | はい   | Channelの一意のID(64文字の16進文字列) |
-| `CredentialIDs` | 文字列の配列 | Vector256    | いいえ | このトランザクションによる入金を承認するための資格情報のセット。配列の各要素は、レジャーのCredentialエントリのレジャエントリIDでなければなりません。詳細は、[Credential ID](./payment.md#credential-id)をご覧ください。 |
+| `CredentialIDs` | 文字列の配列 | Vector256    | いいえ | このトランザクションによる入金を承認するための資格情報のセット。配列の各要素は、レジャーのCredentialエントリのレジャエントリIDでなければなりません。詳細は、[Credential ID](./payment.md#credential-ids)をご覧ください。 |
 | `PublicKey`     | 文字列       | Blob         | いいえ | 署名に使用する公開鍵(16進数)。公開鍵はレジャーに保管されているこのChannelの`PublicKey`と一致している必要があります。トランザクションの送信者がChannelの支払元アドレスでない場合には必須です。また`Signature`フィールドは省略されます。(`xrpld`がトランザクションをレジャーに適用する前に署名の有効性をチェックできるように、トランザクションにPubKeyが指定されています。) |
 | `Signature`     | 文字列       | Blob         | いいえ | クレームの署名(16進数)。署名付きメッセージには、Channel IDとクレームの額が含まれています。トランザクションの送信者がChannelの支払元アドレスでない場合には必須です。 |
 
@@ -62,7 +62,7 @@ Channelの**宛先アドレス**は以下の操作を実行できます。
 
 ## PaymentChannelClaimフラグ
 
-PaymentChannelClaimタイプのトランザクションについては、[`Flags`フィールド](../common-fields.md#flagsフィールド)で以下の値が追加でサポートされます。
+PaymentChannelClaimタイプのトランザクションについては、[`Flags`フィールド](../common-fields.md#flags-field)で以下の値が追加でサポートされます。
 
 | フラグ名  | 16進数値     | 10進数値 | 説明 |
 | :-------- | :----------- | :------- | ---- |

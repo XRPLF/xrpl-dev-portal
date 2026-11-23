@@ -128,7 +128,7 @@ XRP Ledgerは、各トランザクションについて、以下のすべての�
 
 - **不変条件:**
     - 新しい[アカウントルート](../../references/protocol/ledger-data/ledger-entry-types/accountroot.md)は、支払いの結果でなければなりません。
-    - 新しいアカウントルートは、正しい開始[シーケンス](../../references/protocol/data-types/basic-data-types.md#アカウントシーケンス)を持たなければなりません。
+    - 新しいアカウントルートは、正しい開始[シーケンス](../../references/protocol/data-types/basic-data-types.md#account-sequence)を持たなければなりません。
     - 1つのトランザクションで複数の新しい[アカウント](../accounts/index.md)を作成してはいけません。
 
 

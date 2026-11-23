@@ -11,11 +11,11 @@ labels:
 
 {% admonition type="warning" name="警告" %}このページでは、`Payment`トランザクションおよび各種APIメソッドに表示される`Amount`フィールドの詳細について説明します。`Amount`とPartial Paymentに関するコンテキスト情報は依然として関連性がありますが、`xrpld` [API v2](../../references/http-websocket-apis/index.md)においてフィールド名が`DeliverMax`に変更されました。これは、フィールド名をその動作に特化させ、以下に説明する誤解や悪用を防ぐためです。{% /admonition %}
 
-デフォルトのケースでは、XRP Ledgerの[Paymentトランザクション][]の`Amount`フィールドに、為替レートと[送金手数料](../tokens/fungible-tokens/transfer-fees.md)を差し引いた実際の送金額が指定されます。「Partial Payment」フラグ（[**tfPartialPayment**](../../references/protocol/transactions/types/payment.md#paymentのフラグ)）を使うと、送金額を増額する代わりに受取金額を減額して、支払を正常に実行できます。Partial Paymentは、追加コストなしで[支払を返金](bouncing-payments.md)したい場合に便利です。
+デフォルトのケースでは、XRP Ledgerの[Paymentトランザクション][]の`Amount`フィールドに、為替レートと[送金手数料](../tokens/fungible-tokens/transfer-fees.md)を差し引いた実際の送金額が指定されます。「Partial Payment」フラグ（[**tfPartialPayment**](../../references/protocol/transactions/types/payment.md#payment-flags)）を使うと、送金額を増額する代わりに受取金額を減額して、支払を正常に実行できます。Partial Paymentは、追加コストなしで[支払を返金](bouncing-payments.md)したい場合に便利です。
 
 [トランザクションコスト](../transactions/transaction-cost.md)に使用されるXRPの額は、トランザクションタイプに関わらず常に送金元のアカウントから差し引かれます。
 
-Partial Paymentは、XRP Ledgerとのネイティブ統合を悪用して取引所およびゲートウェイから資金を盗むのに使用される恐れがあります。本書の[Partial Paymentの悪用](#partial-paymentの悪用)セクションで、この悪用の仕組みと防止対策を説明します。
+Partial Paymentは、XRP Ledgerとのネイティブ統合を悪用して取引所およびゲートウェイから資金を盗むのに使用される恐れがあります。本書の[Partial Paymentの悪用](#partial-payments-exploit)セクションで、この悪用の仕組みと防止対策を説明します。
 
 ## セマンティクス
 
@@ -55,7 +55,7 @@ Partial Paymentには次の制限事項があります。
 
 [結果コード]: ../../references/protocol/transactions/transaction-results/index.md
 
-### `delivered_amount`フィールド
+### `delivered_amount`フィールド {% #the-delivered_amount-field %}
 
 Partial Paymentでの実際の送金額を把握できるように、正常に完了したPaymentトランザクションのメタデータには`delivered_amount`フィールドが含まれています。このフィールドには送金額が`Amount`フィールドと[同じフォーマット](../../references/protocol/data-types/basic-data-types.md#通貨額の指定)で示されています。
 
@@ -83,11 +83,11 @@ Partial Payment以外の場合、トランザクションのメタデータの`d
 [WebSocket]: ../../references/http-websocket-apis/index.md
 [JSON-RPC / WebSocket]: ../../references/http-websocket-apis/index.md
 
-## Partial Paymentの悪用
+## Partial Paymentの悪用 {% #partial-payments-exploit %}
 
 金融機関によるXRP Ledgerとの統合が、Paymentの`Amount`フィールドは常に総送金額であると想定して行われる場合、不正使用者がその想定を悪用して、金融機関から資金を盗むことが可能になります。Partial Paymentがゲートウェイ、取引所、または業者のソフトウェアで正しく処理されない限り、これらの機関に対してこのような悪用が行われる可能性があります。
 
-**着信Paymentトランザクションを正しく処理するには、**`Amount`フィールドではなく **[`delivered_amount`メタデータフィールド](#delivered_amountフィールド)を使用します。** これにより、金融機関が _実際の_ 受取金額を間違えることがなくなります。
+**着信Paymentトランザクションを正しく処理するには、**`Amount`フィールドではなく **[`delivered_amount`メタデータフィールド](#the-delivered_amount-field)を使用します。** これにより、金融機関が _実際の_ 受取金額を間違えることがなくなります。
 
 
 ### 悪用シナリオの流れ
@@ -114,7 +114,7 @@ Partial Payment以外の場合、トランザクションのメタデータの`d
 
 ### その他の緩和対策
 
-このような悪用を防ぐには、着信トランザクションの処理で[`delivered_amount`フィールド](#delivered_amountフィールド)を使用すれば十分です。ただし、積極的な取り組みを追加することによっても、このような悪用が発生する可能性を回避または緩和できます。例:
+このような悪用を防ぐには、着信トランザクションの処理で[`delivered_amount`フィールド](#the-delivered_amount-field)を使用すれば十分です。ただし、積極的な取り組みを追加することによっても、このような悪用が発生する可能性を回避または緩和できます。例:
 
 - 出金処理のビジネスロジックにサニティチェックを追加します。XRP Ledgerで保有している残高の合計が、予期されている資産と債務に一致しない場合は、出金を処理をしません。
 - 「顧客確認」のガイドラインに従い、顧客の身元情報を厳密に検証します。不正使用者を事前に認識して阻止したり、システムを悪用した不正使用者に対して法的措置を講じたりすることができます。

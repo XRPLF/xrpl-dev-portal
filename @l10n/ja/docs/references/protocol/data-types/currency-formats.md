@@ -11,7 +11,7 @@ labels:
 
 XRP Ledgerには2種類の通貨、XRPと[トークン](../../../concepts/tokens/index.md)があります。XRP Ledgerでは、これらの通貨のフォーマットは異なりますが、どちらも高精度です。
 
-## 比較
+## 比較 {% #comparison %}
 
 以下の表は、XRP LedgerにおけるXRPとトークンの違いをまとめたものです。
 

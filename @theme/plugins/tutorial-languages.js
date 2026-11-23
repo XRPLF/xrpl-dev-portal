@@ -1,76 +1,45 @@
 // @ts-check
+// Languages per tutorial page, read on the tutorials landing page as
+// `usePageSharedData('tutorial-languages')`.
+//
+// Detection methods (in priority order):
+// 1. Tab labels in the markdown (for multi-language tutorials)
+// 2. Filename patterns like "-js.md", "-py.md" (for single-language tutorials)
+// 3. Title containing language name (for single-language tutorials)
 
-import { getInnerText } from '@redocly/realm/dist/markdoc/helpers/get-inner-text.js'
+import { createEntityLoader } from '@redocly/framework/plugin'
 
-/**
- * Plugin to detect languages supported in tutorial pages.
- *
- * Detection methods (in priority order):
- * 1. Tab labels in the markdown (for multi-language tutorials)
- * 2. Filename patterns like "-js.md", "-py.md" (for single-language tutorials)
- * 3. Title containing language name (for single-language tutorials)
- *
- * This creates shared data that maps tutorial paths to their supported languages.
- */
-export function tutorialLanguages() {
-  /** @type {import("@redocly/realm/dist/server/types").ExternalPlugin } */
-  const instance = {
-    id: 'tutorial-languages',
-    processContent: async (actions, { fs, cache }) => {
-      try {
-        /** @type {Record<string, string[]>} */
-        const tutorialLanguagesMap = {}
-        const allFiles = await fs.scan()
+import { attachTo } from './blog-posts.js'
+import { isNode, visit } from './markdoc-text.js'
 
-        // Find all markdown files in tutorials directory
-        const tutorialFiles = allFiles.filter((file) =>
-          file.relativePath.match(/^docs[\/\\]tutorials[\/\\].*\.md$/)
-        )
+const SHARED_DATA_KEY = 'tutorial-languages'
+const ROUTES = ['/docs/tutorials', '/ja/docs/tutorials', '/es-es/docs/tutorials']
 
-        for (const { relativePath } of tutorialFiles) {
-          try {
-            const { data } = await cache.load(relativePath, 'markdown-ast')
-
-            // Try to detect languages from tab labels first
-            let languages = extractLanguagesFromAst(data.ast)
-
-            // Fallback: detect language from filename/title for single-language tutorials
-            if (languages.length === 0) {
-              const title = extractFirstHeading(data.ast) || ''
-              const fallbackLang = detectLanguageFromPathAndTitle(relativePath, title)
-              if (fallbackLang) {
-                languages = [fallbackLang]
-              }
-            }
-
-            if (languages.length > 0) {
-              // Convert file path to URL path
-              const urlPath = '/' + relativePath
-                .replace(/\.md$/, '/')
-                .replace(/\\/g, '/')
-              tutorialLanguagesMap[urlPath] = languages
-            }
-          } catch (err) {
-            continue // Skip files that can't be parsed.
-          }
-        }
-
-        actions.createSharedData('tutorial-languages', tutorialLanguagesMap)
-        actions.addRouteSharedData('/docs/tutorials/', 'tutorial-languages', 'tutorial-languages')
-        actions.addRouteSharedData('/ja/docs/tutorials/', 'tutorial-languages', 'tutorial-languages')
-        actions.addRouteSharedData('/es-es/docs/tutorials/', 'tutorial-languages', 'tutorial-languages')
-      } catch (e) {
-        console.log('[tutorial-languages] Error:', e)
-      }
-    },
+export const tutorialLanguagesLoader = createEntityLoader('xrpl:tutorial-languages', async (ctx) => {
+  /** @type {Record<string, string[]>} */
+  const languagesByUrl = {}
+  for (const { path, key } of ctx.args.tutorials) {
+    const { languages } = await ctx.entities.load(key)
+    if (languages.length > 0) {
+      languagesByUrl['/' + path.replace(/\.md$/, '/')] = languages
+    }
   }
-  return instance
+  return { value: languagesByUrl }
+})
+
+/** `tutorials`: the tutorial files and the keys of their per-file entities. */
+export function tutorialLanguages(ctx, tutorials) {
+  const ref = tutorialLanguagesLoader.withArgs(
+    { tutorials: tutorials.map(({ path, key }) => ({ path, key })) },
+    { stableKey: 'xrpl:tutorial-languages' },
+  )
+  return { entities: [ref], attach: attachTo(ctx, ROUTES, SHARED_DATA_KEY, ref) }
 }
 
 /**
  * Extract language names from tab labels in the markdown AST
  */
-function extractLanguagesFromAst(ast) {
+export function extractLanguagesFromAst(ast) {
   const languages = new Set()
 
   visit(ast, (node) => {
@@ -140,7 +109,7 @@ function normalizeLanguage(label) {
  * Detect language from file path and title for single-language tutorials.
  * This is a fallback when no tab labels are found in the markdown.
  */
-function detectLanguageFromPathAndTitle(relativePath, title) {
+export function detectLanguageFromPathAndTitle(relativePath, title) {
   const pathLower = relativePath.toLowerCase()
   const titleLower = (title || '').toLowerCase()
 
@@ -185,44 +154,4 @@ function detectLanguageFromPathAndTitle(relativePath, title) {
   }
 
   return null
-}
-
-const EXIT = Symbol('Exit visitor')
-
-/**
- * Extract the first heading from the markdown AST
- */
-function extractFirstHeading(ast) {
-  let heading = null
-
-  visit(ast, (node) => {
-    if (!isNode(node)) return
-    if (node.type === 'heading') {
-      heading = getInnerText([node])
-      return EXIT
-    }
-  })
-
-  return heading
-}
-
-function isNode(value) {
-  return !!(value?.$$mdtype === 'Node')
-}
-
-function visit(node, visitor) {
-  if (!node) return
-
-  const res = visitor(node)
-  if (res === EXIT) return res
-
-  if (node.children) {
-    for (const child of node.children) {
-      if (!child || typeof child === 'string') {
-        continue
-      }
-      const res = visit(child, visitor)
-      if (res === EXIT) return res
-    }
-  }
 }
