@@ -10,8 +10,6 @@ labels:
 
 The `xrpld` server limits the rate at which API clients can make requests on public APIs. Rate limiting is based on the IP address of the client, so clients behind [network address translation](https://en.wikipedia.org/wiki/Network_address_translation) share a limit based on their public IP address.
 
-{% admonition type="success" name="Tip" %}Rate limiting does not apply when the client is connected [as an admin](../../../tutorials/get-started/get-started-http-websocket-apis.md#admin-access).{% /admonition %}
-
 When a client is approaching the rate limit, the server adds the field `"warning": "load"` at the top level of an [API response](response-formatting.md). This warning is not added to every response, but the server may send several such warnings before it disconnects a client.
 
 If a client exceeds the rate limit, the server disconnects that client and does not serve further requests from the client's IP address for a while. The WebSocket and JSON-RPC APIs use different disconnect messages.
@@ -51,6 +49,27 @@ Server is overloaded
 The server calculates a client's usage rate based on the number of requests made over time, and weighs different types of requests based on approximately how much work the server must do to serve them. Follow-up messages from the server for the [subscribe method][] and [path_find method][] also count towards a client's usage rate.
 
 The usage rate drops off exponentially over time, so a client that does not make requests automatically has its access restored after a period of seconds to minutes.
+
+## Bypassing Rate Limits for Trusted Clients
+
+### Admin Access
+
+To bypass rate limits for testing purposes, you can grant an IP address or CIDR range access to unlimited resources using the `admin` field in the port stanza. Admin access also allows stopping the server, so use it only with fully trusted hosts. The following example grants admin access to the local machine:
+
+```text
+[port_ws_admin_local]
+port = 6006
+ip = 127.0.0.1
+admin = 127.0.0.1
+protocol = ws
+send_queue_limit = 500
+```
+
+For more information about admin access, see [Admin Access](../../../tutorials/get-started/get-started-http-websocket-apis.md#admin-access).
+
+### `secure_gateway`
+
+Alternatively, you can use the `secure_gateway` field in the port stanza to grant unlimited resources without admin access. Set it to the IP addresses or subnets of trusted proxies. When a proxy sends a non-empty `X-User` HTTP header with a request, the server lifts the rate limit for that session. Requests that have no `X-User` header, or an empty one, stay rate limited.
 
 ## See Also
 
