@@ -351,7 +351,7 @@ WS_HANDLERS["transaction"] = log_tx
 
   - **[Paymentトランザクション][]** はXRPまたは[トークン](../../../concepts/tokens/index.md)を送金できます。受取人のアドレスを含んでいる`transaction.Destination`フィールドによってこれらを絞り込み、必ず`meta.delivered_amount`を使用して実際に支払われた額を確認します。XRPの額は、[文字列のフォーマットで記述されます](../../../references/protocol/data-types/basic-data-types.md#通貨額の指定)。
 
-    {% admonition type="danger" name="警告" %}代わりに`transaction.Amount`フィールドを使用すると、[Partial Paymentの悪用](../../../concepts/payment-types/partial-payments.md#partial-paymentの悪用)に対して脆弱になる可能性があります。不正使用者はこの悪用を行ってあなたをだまし、あなたが支払ったよりも多くの金額を交換または引き出すことができます。{% /admonition %}
+    {% admonition type="danger" name="警告" %}代わりに`transaction.Amount`フィールドを使用すると、[Partial Paymentの悪用](../../../concepts/payment-types/partial-payments.md#partial-payments-exploit)に対して脆弱になる可能性があります。不正使用者はこの悪用を行ってあなたをだまし、あなたが支払ったよりも多くの金額を交換または引き出すことができます。{% /admonition %}
 
   - **[CheckCashトランザクション][]**では、アカウントは別のアカウントの[CheckCreateトランザクション][]によって承認された金額を受け取ることができます。**CheckCashトランザクション**のメタデータを確認すると、アカウントが受け取った通貨の額を確認できます。
 

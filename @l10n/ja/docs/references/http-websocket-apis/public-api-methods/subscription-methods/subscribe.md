@@ -94,7 +94,7 @@ labels:
 
 {% admonition type="info" name="注記" %}以下のストリームは Clioおよび[レポートモード][]の`rippled`サーバからは利用できません: `server`、`peer_status`、`consensus`。これらのストリームを要求すると、どちらも`reportingUnsupported`エラーを返します。 {% badge href="https://github.com/XRPLF/rippled/releases/tag/1.8.1" %}更新: rippled 1.8.1{% /badge %} {% badge href="https://github.com/XRPLF/clio/releases/tag/2.0.0" %}新規: Clio v2.0{% /badge %}{% /admonition %}
 
-### Bookオブジェクト
+### Bookオブジェクト {% #book-objects %}
 
 `books`配列が指定されている場合、この配列の各要素は、以下のフィールドを持つオブジェクトです。
 
@@ -228,7 +228,7 @@ labels:
 | `ledger_hash`           | 文字列        | 提案されたレジャーの識別ハッシュを検証中です。 |
 | `ledger_index`          | 文字列 - 整数 | 提案されたレジャーの[レジャーインデックス][]。 |
 | `load_fee`              | 整数          | （省略される場合があります）このバリデータにより現在施行されているローカルの負荷スケーリングされたトランザクションコスト（手数料単位）。 |
-| `master_key`            | 文字列        | _（省略される場合があります）_ バリデータのマスター公開鍵（バリデータがXRP Ledgerの[base58][]フォーマットのバリデータトークンを使用している場合）。（関連項目: [`xrpld`サーバで検証を有効化](../../../../infrastructure/configuration/server-modes/run-xrpld-as-a-validator.md#3-xrpldサーバで検証を有効化)。） |
+| `master_key`            | 文字列        | _（省略される場合があります）_ バリデータのマスター公開鍵（バリデータがXRP Ledgerの[base58][]フォーマットのバリデータトークンを使用している場合）。（関連項目: [`xrpld`サーバで検証を有効化](../../../../infrastructure/configuration/server-modes/run-xrpld-as-a-validator.md#3-enable-validation-on-your-xrpld-server)。） |
 | `reserve_base`          | 整数          | （省略される場合があります）このバリデータが[手数料投票](../../../../concepts/consensus-protocol/fee-voting.md)による設定を希望する最低必要準備金（`account_reserve`値）。 |
 | `reserve_inc`           | 整数          | （省略される場合があります）このバリデータが[手数料投票](../../../../concepts/consensus-protocol/fee-voting.md)による設定を希望する必要準備金（`owner_reserve`値）の増分。 |
 | `server_version`        | 文字列 - 数値 | _(省略される場合があります)_ バリデータサーバのバージョン番号を表す 64 ビットの整数。例えば`「1745990410175512576」`。256レジャーに一度だけ提供されます。 {% badge href="https://github.com/XRPLF/rippled/releases/tag/1.8.1" %}新規: rippled 1.8.1{% /badge %} |
@@ -705,7 +705,7 @@ labels:
 | `type`         | 文字列                   | 値`bookChanges`は、これがBook Changesストリームからのものであることを示します。 |
 | `ledger_index` | [レジャーインデックス][] | これらの変更を含むレジャーのレジャーインデックス。 |
 | `ledger_hash`  | [ハッシュ][]             | これらの変更を含むレジャーの識別用ハッシュ。 |
-| `ledger_time`  | 数値                     | これらの変更を含むレジャーの公式的な閉鎖時刻。[リップルエポック](../../../../concepts/ledgers/index.md#ripple-epoch)からの秒数。 |
+| `ledger_time`  | 数値                     | これらの変更を含むレジャーの公式的な閉鎖時刻。[リップルエポック](../../../protocol/data-types/basic-data-types.md#specifying-time)からの秒数。 |
 | `changes`      | 配列                     | [Book Update Objects](../path-and-order-book-methods/book_changes.md#book-update-objects)のリスト。このレジャーバージョンで更新された各オーダーブックに対して1つのエントリが含まれます。オーダーブックが更新されなかった場合、配列は空です。 |
 
 

@@ -10,12 +10,12 @@ labels:
 
 {% partial file="/docs/_snippets/data_types/address.md" /%}
 
-Cualquier dirección válida puede [convertirse en una cuenta en el XRP Ledger](index.md#creacion-de-cuentas) al recibir fondos. Puedes utilizar una cuenta que no ha recibido fondos para representar una [clave normal, regular key en inglés](cryptographic-keys.md) o ser miembro de una [lista de firmantes](multi-signing.md). Solo una cuenta que ha recibido fondos puede ser el remitente de una transacción.
+Cualquier dirección válida puede [convertirse en una cuenta en el XRP Ledger](index.md#creating-accounts) al recibir fondos. Puedes utilizar una cuenta que no ha recibido fondos para representar una [clave normal, regular key en inglés](cryptographic-keys.md) o ser miembro de una [lista de firmantes](multi-signing.md). Solo una cuenta que ha recibido fondos puede ser el remitente de una transacción.
 
 Crear una dirección válida es una tarea estríctamente matemática que empieza con el par de claves. Puedes generar un par de claves y calcular su dirección completamente offline sin comunicarte con el XRP Ledger o con cualquier otra entidad. La conversión desde una clave pública a una dirección implica una función hash unidireccional, por lo que es posible confirmar que esa clave pública coincide con una dirección pero es imposible derivar la clave pública únicamente a partir de la dirección. (Esta es parte de la razón por la que las transacciones firmadas incluyen la clave pública _y_ la dirección del remitente.)
 
 
-## Direcciones especiales
+## Direcciones especiales {% #special-addresses %}
 
 Algunas direcciones tienen un significado especial, o usos históricos, en el XRP Ledger. En muchos casos, se tratan de direcciones "black hole" o agujero negro, lo que significa que la dirección no se deriva de una clave secreta conocida. Como es efectivamente imposible adivinar una clave secreta a partir de una sola dirección, cualquier XRP que posean direcciones black hole estarán perdidos para siempre.
 
@@ -29,7 +29,7 @@ Algunas direcciones tienen un significado especial, o usos históricos, en el XR
 | `rrrrrrrrrrrrrrrrrrrn5RM1rHd` | Dirección NaN | Versiones previas de [ripple-lib](https://github.com/XRPLF/xrpl.js) generaban esta dirección cuando se codificaba el valor [NaN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN) utilizan el formato de codificación [base58][] del XRP Ledger. | Sí |
 
 
-## Codificación de una dirección
+## Codificación de una dirección {% #address-encoding %}
 
 **Consejo:** ¡Estos detalles técnicos son solo relevantse para personas que crean librerias de software de bajo nivel para la compatibilidad con el XRP Ledger!
 

@@ -2,7 +2,7 @@
 
 `xrpld`ログメッセージの詳細は、[ログメッセージについて](../infrastructure/troubleshooting/understanding-log-messages.md)をご覧ください。
 
-`xrpld`が残りのネットワークと同期されたら、ストック`xrpld`サーバが完全に機能するようになります。このサーバを、ローカル署名やXRP LedgerへのAPIアクセスに使用できます。`xrpld`サーバがネットワークと同期されているかどうかを判別するには、[`xrpld`サーバの状況](../references/http-websocket-apis/api-conventions/xrpld-server-states.md)を使用します。[`xrpld`のコマンドラインインターフェイス](../tutorials/get-started/get-started-http-websocket-apis.md#コマンドライン)を使用すれば、これを迅速にテストできます。
+`xrpld`が残りのネットワークと同期されたら、ストック`xrpld`サーバが完全に機能するようになります。このサーバを、ローカル署名やXRP LedgerへのAPIアクセスに使用できます。`xrpld`サーバがネットワークと同期されているかどうかを判別するには、[`xrpld`サーバの状況](../references/http-websocket-apis/api-conventions/xrpld-server-states.md)を使用します。[`xrpld`のコマンドラインインターフェイス](../tutorials/get-started/get-started-http-websocket-apis.md#commandline)を使用すれば、これを迅速にテストできます。
 
 ```sh
 xrpld server_info

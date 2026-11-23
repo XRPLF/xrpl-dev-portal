@@ -111,7 +111,7 @@ HTTPステータスコード200 OKが返されるその他のエラーの場合�
 
 - `amendmentBlocked` - サーバの状態が[Amendmentブロック](../../../concepts/networks-and-servers/amendments.md#amendment-blocked)されたであるため、XRP Ledgerネットワークとの同期を維持するために最新バージョンに更新する必要があります。
 - `failedToForward` - ([レポートモード][]のサーバのみ)サーバはこのリクエストをP2Pモードサーバに転送しようとしましたが、接続に失敗しました。
-- `invalid_API_version` - サーバはリクエストの[APIバージョン番号](request-formatting.md#apiのバージョン管理)をサポートしていません。
+- `invalid_API_version` - サーバはリクエストの[APIバージョン番号](../index.md#default-api-versions)をサポートしていません。
 - `jsonInvalid` -（WebSocketのみ）リクエストは適切なJSONオブジェクトではありません。
   - この場合JSON-RPCは、代わりに400 Bad Request HTTPエラーを返します。
 - `missingCommand` -（WebSocketのみ）リクエストに`command`フィールドが指定されていませんでした。

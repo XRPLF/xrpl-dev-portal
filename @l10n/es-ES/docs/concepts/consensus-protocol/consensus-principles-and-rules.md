@@ -71,7 +71,7 @@ Para prevenir que el consenso se atasque cerca del 50% y para reducir el superpo
 
 Cuando un participante ve a una sobremayoría que está de acuerdo en el conjunto de transacciones que van a ser procesadas, declara que un consenso ha sido alcanzado.
 
-### El consenso puede fallar
+### El consenso puede fallar {% #consensus-can-fail %}
 
 No es práctico desarrollar un algoritmo de consenso que nunca falla para alcanzar un consenso perfecto. Para entender el por qué, considera cómo finaliza el proceso de consenso. En algún momento, cada participante debe declarar que ha alcanzado consenso y que un grupo de transacciones conocido ha sido el resultado de  ese proceso. Esta declaración compromete al participante de que un particular grupo de transacciones como resultado de ese proceso de consenso.
 

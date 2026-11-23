@@ -141,8 +141,8 @@ XRP Ledgerとのインフターフェイスに使用するソフトウェアか�
     - [トランザクションの結果の確認](look-up-transaction-results.md)
     - [信頼できるトランザクションの送信](../reliable-transaction-submission.md)
 - **リファレンス:**
-    - [基本的なデータ型 - ハッシュ](../../../references/protocol/data-types/basic-data-types.md#ハッシュ)
-    - [トランザクションの共通フィールド](../../../references/protocol/transactions/common-fields.md#グローバルフラグ)
+    - [基本的なデータ型 - ハッシュ](../../../references/protocol/data-types/basic-data-types.md#hashes)
+    - [トランザクションの共通フィールド](../../../references/protocol/transactions/common-fields.md#global-flags)
     - [トランザクションの結果](../../../references/protocol/transactions/transaction-results/index.md)
     - [シリアル化フォーマット](../../../references/protocol/binary-format.md)
 

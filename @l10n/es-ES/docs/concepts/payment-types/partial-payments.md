@@ -55,7 +55,7 @@ Los pagos parciales tienen las siguientes limitaciones:
 
 [código de resultado]: ../../references/protocol/transactions/transaction-results/index.md
 
-### El campo `delivered_amount`
+### El campo `delivered_amount` {% #the-delivered_amount-field %}
 
 Para ayudar a entender cuánto entregó realmente un pago parcial, los metadatos de una transacción de Pago exitosa incluyen un campo `delivered_amount`. Este campo describe la cantidad realmente entregada, en el [mismo formato](../../references/protocol/data-types/basic-data-types.md#specifying-currency-amounts) que el campo `Amount`.
 

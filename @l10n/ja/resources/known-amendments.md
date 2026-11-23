@@ -1672,7 +1672,7 @@ This amendment creates a new ledger entry type, `PermissionedDomain`, and new tr
 | デフォルトの投票(最新の安定版) | はい |
 | Amendment前の機能は廃止? | いいえ |
 
-XRP Ledgerプロトコルの署名要件を変更し、いかなる場合にも完全に正規でない署名は無効とします。これにより、[tfFullyCanonicalSigフラグ](../docs/references/protocol/transactions/common-fields.md#グローバルフラグ)を有効にしたトランザクションのみを保護することに代わって、_すべての_ トランザクションにおいて[トランザクションの展性](../docs/concepts/transactions/finality-of-results/transaction-malleability.md)から守られます。
+XRP Ledgerプロトコルの署名要件を変更し、いかなる場合にも完全に正規でない署名は無効とします。これにより、[tfFullyCanonicalSigフラグ](../docs/references/protocol/transactions/common-fields.md#global-flags)を有効にしたトランザクションのみを保護することに代わって、_すべての_ トランザクションにおいて[トランザクションの展性](../docs/concepts/transactions/finality-of-results/transaction-malleability.md)から守られます。
 
 この修正が適用されない場合、トランザクションがsecp256k1署名を使用し、tfFullyCanonicalSigが有効でない場合は、変更可能となります。ほとんどの署名ユーティリティは、デフォルトでtfFullyCanonicalSigを有効にしていますが、例外もあります。
 

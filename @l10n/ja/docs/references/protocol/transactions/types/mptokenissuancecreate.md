@@ -52,7 +52,7 @@ txIcon: create
 
 ## MPTokenIssuanceCreateのフラグ
 
-MPTokenIssuanceCreateトランザクションでは、[`Flags`フィールド](../common-fields.md#Flagsフィールド)に以下の追加の値がサポートされています。
+MPTokenIssuanceCreateトランザクションでは、[`Flags`フィールド](../common-fields.md#flags-field)に以下の追加の値がサポートされています。
 
 | フラグ名           | 16進数値     | 10進数値      | 説明 |
 | :----------------- | :----------- | :------------ | ---- |
