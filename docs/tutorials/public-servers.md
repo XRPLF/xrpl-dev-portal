@@ -23,6 +23,7 @@ If you don't [run your own `xrpld` server](../infrastructure/installation/index.
 | InFTF full history paid API via [Dhali](https://dhali.io/) | **Mainnet** | `https://xrplcluster.dhali.io/` | You must [create a paid API key](https://pay.dhali.io/?uuids=199fd80b-1776-4708-b1a1-4b2bb386435d) and embed it in the request's `Payment-Claim` header. |
 | [QuickNode](https://www.quicknode.com/chains/xrpl) | Testnet/Mainnet | N/A | QuickNode provides hosted XRPL RPC mainnet and testnet under their free and paid plans, granting flexible and reliable access to the network.
 | [Chainstack](https://chainstack.com/build-better-with-xrp-ledger/) | Testnet/Mainnet | N/A | Chainstack provides hosted XRPL Mainnet and Testnet nodes with JSON-RPC and WebSocket access under its free and paid plans. The nodes keep recent ledger history, not full history. |
+| [Tatum](https://tatum.io/chain/ripple) | **Mainnet** | `https://ripple-mainnet.gateway.tatum.io` | JSON-RPC over HTTPS only. 5 requests per minute without an API key, all free networks at [freerpc.com/ripple](https://freerpc.com/ripple). Paid plans raise the limit. |
 
 
 ## Test Networks
@@ -33,6 +34,7 @@ If you don't [run your own `xrpld` server](../infrastructure/installation/index.
 | Honeycluster  | Testnet     | `https://testnet.honeycluster.io/` | `wss://testnet.honeycluster.io/` | Testnet public server |
 | XRPL Labs     | Testnet     | `https://testnet.xrpl-labs.com/` | `wss://testnet.xrpl-labs.com/` | Testnet public server with CORS support |
 | Ripple[¹][]   | Testnet (Clio) | `https://clio.altnet.rippletest.net:51234/`	| `wss://clio.altnet.rippletest.net:51233/` | Testnet public server with Clio |
+| Tatum         | Testnet     | `https://ripple-testnet.gateway.tatum.io` | N/A | Testnet public server, JSON-RPC only |
 | Ripple[¹][]   | Devnet      | `https://s.devnet.rippletest.net:51234/` | `wss://s.devnet.rippletest.net:51233/` | Devnet public server |
 | Ripple[¹][]   | Devnet (Clio)  | `https://clio.devnet.rippletest.net:51234/`	| `wss://clio.devnet.rippletest.net:51233/` | Devnet public server with Clio |
 | Honeycluster  | Devnet      | `https://devnet.honeycluster.io/` | `wss://devnet.honeycluster.io/` | Devnet public server |
