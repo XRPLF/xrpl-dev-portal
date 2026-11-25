@@ -15,7 +15,7 @@ markdown:
 Traditional payment rails make sub-cent AI agent transactions economically unviable, with processing fees often exceeding the query cost itself. On the XRP Ledger, high-volume inference queries clear in seconds at just $0.014 per 1,000 calls—making XRPL roughly 75x cheaper than Solana and Base.
 
 **TLDR**
-* 15 million agentic payments have settled on the XRP Ledger over the past year, and volume is still climbing every week.
+* More than 15 million agentic payments have settled on the XRP Ledger over the past year, and volume is still climbing every week.
 * Agents settle in both XRP and RLUSD on the rail, through the x402 facilitator t54 built and runs on XRPL.
 * Fees are paid in XRP, and they are low and known in advance. 99.37% of payments pay the same 10 drop minimum, about $0.014 per 1,000 agent calls.
 * Compliance is built into the ledger. Credentials (live since September 2025) and Permissioned Domains (live since February 2026) let businesses control which agents can pay which merchants before funds move.
