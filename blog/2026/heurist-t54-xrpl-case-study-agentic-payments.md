@@ -1,6 +1,6 @@
 ---
 category: 2026
-date: "2026-11-18"
+date: "2026-11-24"
 template: '../../@theme/templates/blogpost'
 seo:
     description: Discover how Heurist and t54 scaled to over 15 million agentic micropayments on the XRP Ledger using RLUSD, x402 open standards, and built-in compliance. Read the full case study.
