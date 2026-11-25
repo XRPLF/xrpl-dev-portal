@@ -64,7 +64,7 @@ function sectionLines(section: TutorialSection, prefix: string, translate: Trans
 
 export function tutorialsLandingForLlms(_node: Node, { locale, translate }: RenderForLlmsContext): string {
   const { prefix, sections, whatsNew } = buildLanding(snapshot, locale)
-  const total = sections.reduce((sum, section) => sum + section.tutorials.length, 0)
+  const total = sections.reduce((sum, section) => sum + section.tutorials.length + (section.community?.length ?? 0), 0)
   const link = (href: string) => `${SITE_URL}${prefix}${href}`
 
   const lines: string[] = [

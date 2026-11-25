@@ -104,7 +104,6 @@ export const NETWORK_PANEL = {
   faucet: { label: "Get Test XRP", href: "/resources/dev-tools/xrp-faucets/" },
 }
 export const DIRECTORY_TITLE = "All tutorials"
-export const COMMUNITY_TAB = "Community"
 export const KEEP_BUILDING = {
   title: "Keep building",
   description: "The source behind every tutorial, tooling for AI assistants, and how to add a tutorial of your own.",
