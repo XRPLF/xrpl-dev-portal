@@ -600,9 +600,18 @@ pre {
 
   #wallet-bitget {
     content: url("../img/wallets/lightmode/bitget.svg");
-  }  
+  }
+
+  #wallet-ownbit {
+    content: url("../img/wallets/lightmode/ownbit.svg");
+  }
 }
 
+
+.page-uses #use_case_companies_list #ownbit .biz-logo,
+.modal-content-uses .ownbit {
+  content: url("../img/wallets/lightmode/ownbit.svg");
+}
 
 #top-exchanges {
   // Kraken, eToro are OK on both light and dark

@@ -32,7 +32,7 @@ const logos = {
   ],
   developer_tooling: ["cryptum", "evernode", "threezy", "tokenize"],
   interoperability: ["multichain"],
-  wallet: ["crossmark", "edge", "gem-wallet", "xumm", "joey-wallet", "bifrost-wallet", "bitget-wallet"],
+  wallet: ["crossmark", "edge", "gem-wallet", "xumm", "joey-wallet", "bifrost-wallet", "bitget-wallet", "ownbit"],
   nfts: [
     "aesthetes",
     "audiotarky",
@@ -437,6 +437,15 @@ const cardsData = [
     category_name: "Wallet",
     link: "https://web3.bitget.com/",
   },
+  {
+    id: "ownbit",
+    title: "Ownbit",
+    description:
+      "Ownbit is a paid, proprietary self-custody wallet for iOS and Android. It supports XRP and issued tokens, native XRP Ledger multisigning, and optional QR-based offline signing.",
+    category_id: "wallet",
+    category_name: "Wallet",
+    link: "https://ownbit.io/en/ripple-wallet/",
+  },
 ];
 
 const featured_categories = {
@@ -483,7 +492,7 @@ const uses = [
   {
     id: "wallet",
     title: "Wallet",
-    number: 7,
+    number: 8,
     description:
       "Build digital wallets to store passwords and interact with various blockchains to send and receive digital assets, including XRP."
   },
