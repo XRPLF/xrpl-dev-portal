@@ -256,3 +256,42 @@ html.dark {
   }
 }
 
+
+// =============================================================================
+// Linked media (optional media.href): image opens a full-size view
+// =============================================================================
+.bds-feature-single-topic__media--linked {
+  overflow: visible;
+
+  .bds-feature-single-topic__media-link {
+    display: block;
+    overflow: hidden;
+    cursor: zoom-in;
+
+    &:focus-visible {
+      outline: 2px solid $green-400;
+      outline-offset: 2px;
+    }
+  }
+
+  .bds-feature-single-topic__media-caption {
+    display: inline-block;
+    margin-top: $bds-space-sm;
+    color: $bds-single-topic-description-color;
+    text-decoration: underline;
+
+    &:hover,
+    &:focus-visible {
+      color: $green-500;
+    }
+  }
+}
+
+html.dark .bds-feature-single-topic__media--linked .bds-feature-single-topic__media-caption {
+  color: $gray-300;
+
+  &:hover,
+  &:focus-visible {
+    color: $green-300;
+  }
+}
