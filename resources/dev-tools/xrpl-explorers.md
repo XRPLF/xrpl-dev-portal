@@ -28,3 +28,4 @@ The following table lists the explorers available for the XRP Ledger, along with
 | XRPLWin | [XRPLWin](https://xrplwin.com) |
 | RWA.xyz | [RWA.xyz](https://app.rwa.xyz/networks/xrp-ledger) |
 | XRPL.to | [XRPL.to](https://xrpl.to/) |
+| HestiaX | [XRPL Consensus Explorer](https://consensus.hestiax.org/) |
