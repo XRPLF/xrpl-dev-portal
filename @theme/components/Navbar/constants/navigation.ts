@@ -160,6 +160,7 @@ export const networkSubmenuData: NetworkSubmenuSection[] = [
     icon: "insights",
     children: [
       { label: "Explorers", labelTranslationKey: "navbar.network.insights.explorers", href: "/resources/dev-tools/xrpl-explorers" },
+      { label: "Amendments", labelTranslationKey: "navbar.network.insights.amendments", href: "/amendments" },
       { label: "Amendment Voting Status", labelTranslationKey: "navbar.network.insights.amendment-voting-status", href: "/resources/known-amendments" },
     ],
     patternColor: 'green',
