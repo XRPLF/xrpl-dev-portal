@@ -3,7 +3,7 @@ category: 2026
 date: "2026-11-18"
 template: '../../@theme/templates/blogpost'
 seo:
-    description: Discover how Heurist and t54 scaled to 15 million agentic micropayments on the XRP Ledger using RLUSD, x402 open standards, and built-in compliance. Read the full case study.
+    description: Discover how Heurist and t54 scaled to over 15 million agentic micropayments on the XRP Ledger using RLUSD, x402 open standards, and built-in compliance. Read the full case study.
 labels:
     - Case Study
 markdown:
@@ -23,9 +23,9 @@ Traditional payment rails make sub-cent AI agent transactions economically unvia
 
 <!-- BREAK -->
 
-**Agentic commerce just crossed 15 million settled transactions on XRP Ledger, with volume still climbing every week.**
+**Agentic commerce just crossed more than 15 million settled transactions on XRP Ledger, with volume still climbing every week.**
 
-Over the past year, 15 million agentic transactions [have settled on the XRP Ledger](https://xrpl-ai.org/), the 7-day average is 134,618 transactions per day and the pace is still climbing every week. Each micropayment clears in seconds, at a minimal protocol cost of 10 drops, regardless of transaction size or volume. 
+Over the past year, over 15 million agentic transactions [have settled on the XRP Ledger](https://xrpl-ai.org/), the 7-day average is 134,618 transactions per day and the pace is still climbing every week. Each micropayment clears in seconds, at a minimal protocol cost of 10 drops, regardless of transaction size or volume. 
 
 
 ## The challenge
