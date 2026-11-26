@@ -36,6 +36,14 @@ const explorers_tools = [
     href: "https://xrpscan.com/",
     img: require("../../static/img/dev-tools/xrpscan.png"),
   },
+  {
+    id: "xrpl-consensus-explorer",
+    title: "XRPL Consensus Explorer",
+    description:
+      "Watch XRP Ledger consensus round by round: proposals, disputed transactions, votes, validations, quorum, and network incidents.",
+    href: "https://consensus.hestiax.org/",
+    img: require("../../static/img/dev-tools/xrpl-consensus-explorer.png"),
+  },
 ];
 
 const api_access_tools = [
