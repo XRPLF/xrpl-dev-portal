@@ -12,7 +12,11 @@ markdown:
 ---
 # Upcoming Testnet and Devnet Resets
 
-Testnet and Devnet are scheduled for a reset on **Wednesday, November 25, 2026** to improve full history server stability.
+Testnet and Devnet are scheduled for resets on **Wednesday, November 25, 2026** to improve full history server stability.
+
+{% admonition type="success" name="Update" %}
+The resets have completed successfully. Testnet and Devnet are online and fully operational.
+{% /admonition %}
 
 ## Background
 
