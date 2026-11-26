@@ -279,6 +279,25 @@ The values you can provide to the `server` parameter are as follows:
 | `testnet` | The `s.devnet.rippletest.net` cluster of Devnet servers. |
 
 
+### Tutorials Landing
+
+Render the Tutorials landing page (`docs/tutorials/index.md` and its Japanese copy under `@l10n/`). The tag renders the React page for people and a Markdown version of the same content for the page's `.md` URL, `llms.txt`, AI search, and the MCP server. This tag is self-closing, takes no parameters, and is not meant for any other page.
+
+Example usage:
+
+<pre><code>
+{% tutorials-landing /%}
+</code></pre>
+
+The page has no content of its own. Its tutorials come from the site, and its community sample apps are curated by hand:
+
+- The `tutorial-metadata` plugin collects every tutorial under the Tutorials section of `sidebars.yaml`, with its title, description, last change, topic, labels, and the programming languages it has code for. Adding a tutorial to the sidebar adds it to the page.
+- `docs/tutorials/sections.config.ts` renames a topic, adds a description, pins tutorials to the front of a topic, and lists community sample apps. A topic shows an Official and a Community tab only when its `community.items` list has entries, and each entry is written by hand: title, description, author, GitHub repository, and an optional live demo. The plugin does not touch these.
+- `@theme/data/tutorials-metadata.json` is a snapshot of the plugin's data that the Markdown version reads, because the plugin's data is not available when the `.md` version is built.
+
+The snapshot is a build artifact. Running the dev server (`npm start`) regenerates it whenever a tutorial is added, moved, retitled, or given a new description. Commit the regenerated file with your change, or the `.md` version of the landing page lags behind the page people see. Changes to `sections.config.ts` do not need the snapshot regenerated; both renderings read the config directly.
+
+
 ### Tx Category
 
 Display a group of transaction types in a rich table. This tag is only intended for use in the [Transaction Type Reference](/docs/references/protocol/transactions/types/).  Example usage:

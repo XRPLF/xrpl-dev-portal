@@ -12,6 +12,8 @@ The template below shows the full structure a tutorial should follow. HTML comme
 
 If the tutorial doesn't already link to a specific code sample, prompt the user for which code samples to use.
 
+After adding, moving, retitling, or re-describing a tutorial, start the dev server (`npm start`) so the `tutorial-metadata` plugin regenerates `@theme/data/tutorials-metadata.json`, and include that file in the change. The Tutorials landing page's `.md` version reads it; see Tutorials Landing in `resources/contribute-documentation/markdoc-tags.md`.
+
 ---
 
 # Tutorial Title

@@ -1,3 +1,7 @@
+---
+seo:
+    description: Bid on an Automated Market Maker (AMM) auction slot to trade against the pool at a discounted fee.
+---
 # Use the AMM Auction Slot for Lower Fees
 
 This tutorial shows how to use the auction slot of an [Automated Market Maker (AMM)](../../../concepts/tokens/decentralized-exchange/automated-market-makers.md) to save the amount of fees you pay when trading against that AMM.
