@@ -21,7 +21,7 @@
     "@codemirror/state": "^6.6.0",
     "@codemirror/view": "^6.22.2",
     "@lezer/highlight": "^1.2.0",
-    "@redocly/realm": "0.139.0",
+    "@redocly/realm": "0.140.0",
     "@uiw/codemirror-themes": "4.21.21",
     "@uiw/react-codemirror": "^4.21.21",
     "@xrplf/isomorphic": "^1.0.0-beta.1",
@@ -46,7 +46,7 @@
     "dompurify": "3.4.17"
   },
   "devDependencies": {
-    "@fullhuman/postcss-purgecss": "^7.0.2",
+    "@fullhuman/postcss-purgecss": "^8.0.0",
     "autoprefixer": "^10.4.21",
     "axe-core": "^4.13.0",
     "bootstrap": "^5.3.3",
