@@ -34,6 +34,8 @@ By standardizing price feeds in this manner, all XRPL apps can access a dependab
 
 ## See Also
 
+- **Tutorials:**
+    - [Create, Query, and Delete a Price Oracle](../../tutorials/defi/price-oracles/manage-a-price-oracle.md)
 - **References:**
     - [get_aggregate_price method][]
     - [Oracle entry][]
