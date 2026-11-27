@@ -43,7 +43,7 @@ $ sudo systemctl restart xrpld.service
 
 ## 関連項目
 
-- [容量の計画](../../installation/capacity-planning.md)
+- [容量の計画](../../prerequisites/capacity-planning.md)
 - [ピアプロトコル](../../../concepts/networks-and-servers/peer-protocol.md)
 
 {% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

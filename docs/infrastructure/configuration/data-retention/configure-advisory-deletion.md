@@ -9,7 +9,7 @@ labels:
 ---
 # Configure Advisory Deletion
 
-The default config file sets [`xrpld`](../../../concepts/networks-and-servers/index.md) to automatically delete outdated [history](../../../concepts/networks-and-servers/ledger-history.md) of XRP Ledger state and transactions as new ledger versions become available. If your server uses most of its hardware resources during peak hours, you can configure the server to delete ledgers only when prompted by a command scheduled to run during off-peak hours, so that online deletion is less likely to impact [server performance](../../installation/capacity-planning.md).
+The default config file sets [`xrpld`](../../../concepts/networks-and-servers/index.md) to automatically delete outdated [history](../../../concepts/networks-and-servers/ledger-history.md) of XRP Ledger state and transactions as new ledger versions become available. If your server uses most of its hardware resources during peak hours, you can configure the server to delete ledgers only when prompted by a command scheduled to run during off-peak hours, so that online deletion is less likely to impact [server performance](../../prerequisites/capacity-planning.md).
 
 ## Prerequisites
 
@@ -19,7 +19,7 @@ This tutorial assumes your server meets the following prerequisites:
 
 - The `xrpld` server is already [installed](../../installation/index.md) and [online deletion](online-deletion.md) is enabled.
 
-    The default config file enables online deletion after 2000 ledger versions.
+    The default config file enables online deletion after 512 ledger versions.
 
 - A `cron` daemon is installed and running.
 
@@ -33,7 +33,7 @@ This tutorial assumes your server meets the following prerequisites:
 
 - Your server has enough disk space to store your chosen amount of history in its ledger store.
 
-    See [Capacity Planning](../../installation/capacity-planning.md) for details of how much storage is required for different configurations. With advisory deletion enabled, the maximum history a server may accumulate before deletion is equal to the number of ledger versions configured in the `online_delete` setting **plus** the amount of time between online deletion prompts.
+    See [Capacity Planning](../../prerequisites/capacity-planning.md) for details of how much storage is required for different configurations. With advisory deletion enabled, a rotation runs only after at least `online_delete` ledger versions have passed since the last one. Just before it runs, the server holds about two of those periods, so plan for at least twice the `online_delete` value in ledger versions. If you prompt less often than that, the periods are longer, and the disk figure grows with them.
 
 - You know which hours are least busy for your server.
 
@@ -63,7 +63,7 @@ To configure advisory deletion with a daily schedule, perform the following step
     $ xrpld --conf=/etc/xrpld/xrpld.cfg can_delete now
     ```
 
-    The response indicates the maximum ledger index that the server may delete from its ledger store. For example, the following message indicates that ledger versions up to and including ledger index 43633667 can be deleted:
+    The response indicates the ledger index that deletion may go up to. For `now`, that is the ledger index of the last rotation, so the number doesn't move toward the newest ledger. For example, the following message indicates that ledger versions before ledger index 43633667 can be deleted in the next rotation:
 
     ```
     {
@@ -74,7 +74,7 @@ To configure advisory deletion with a daily schedule, perform the following step
     }
     ```
 
-    The server only deletes those ledger versions if the number of _newer_ validated ledger versions it has is equal to or greater than the `online_delete` setting.
+    The server only runs a rotation once the validated ledger is at least `online_delete` ledger versions past the previous rotation.
 
 3. Configure your `cron` daemon to run the `can_delete` method you tested in the previous step at a scheduled time.
 
@@ -92,7 +92,9 @@ To configure advisory deletion with a daily schedule, perform the following step
 
     Be sure that you schedule the command to run based on your server's configured time zone.
 
-    {% admonition type="success" name="Tip" %}You do not need to schedule a `cron` job to run online deletion if you have `advisory_delete` disabled. In that case, `xrpld` runs online deletion automatically when the difference between the server's oldest and current validated ledger versions is at least the value of `online_delete`.{% /admonition %}
+    With advisory deletion nothing deletes unless this job runs. If it stops (a removed crontab, a changed path, a disabled cron service), the ledger store keeps growing until the disk is full. Alert on disk usage or on the lowest ledger in `complete_ledgers` not moving for longer than your schedule.
+
+    {% admonition type="success" name="Tip" %}You don't need to schedule a `cron` job to run online deletion if you have `advisory_delete` disabled. In that case, `xrpld` runs online deletion automatically when the validated ledger is at least `online_delete` ledger versions past the previous rotation.{% /admonition %}
 
 4. Start (or restart) the `xrpld` service.
 
@@ -108,7 +110,7 @@ To configure advisory deletion with a daily schedule, perform the following step
 
 ## Troubleshooting
 
-If online deletion does not seem to be running after configuring it, try the following:
+If online deletion doesn't seem to be running after configuring it, try the following:
 
 - Check that the user who configured the `cron` job has permissions to run the `xrpld` server as a commandline client.
 - Check the syntax of your `cron` job and the time when it is supposed to run.

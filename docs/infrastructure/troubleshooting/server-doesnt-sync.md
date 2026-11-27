@@ -16,35 +16,35 @@ These instructions assume you have [installed `xrpld`](../installation/index.md)
 
 Syncing with the network normally takes about 5 to 15 minutes. During that time, the server does several things:
 
-- Loads a recommended validator list (for example, from `vl.ripple.com`) to determine which validators it trusts.
+- Loads recommended validator lists (for example, from `vl.ripple.com` and `unl.xrplf.org`) to determine which validators it trusts.
 - [Discovers peer servers](../../concepts/networks-and-servers/peer-protocol.md#peer-discovery) and connects to them.
 - Listens to its trusted validators to find which ledger hashes have been recently validated.
 - Downloads the full latest ledger from its peers, and uses that to build its internal database of ledger data.
 - Collects newly-broadcast transactions and attempts to apply them to its in-progress ledger.
 
-If the server is unable to keep up with the network while doing these tasks, the server does not sync to the network.
+If the server is unable to keep up with the network while doing these tasks, the server doesn't sync to the network.
 
 ## First Step: Restart
 
 Many syncing issues can be resolved by restarting the server. No matter why it didn't sync the first time, it may succeed on the second try.
 
-If the [server_info method][] shows a [`server_state`](../../references/http-websocket-apis/api-conventions/xrpld-server-states.md) other than `proposing` or `full` and a `server_state_duration_us` of more than `900000000` (15 minutes in microseconds), then you should shut down the `xrpld` service, wait a few seconds, and start it again. Optionally, restart the entire machine.
+If the [server_info method][] shows a [`server_state`](../../references/http-websocket-apis/api-conventions/xrpld-server-states.md) other than `proposing` or `full` and a `server_state_duration_us` of more than `900000000` (15 minutes in microseconds), then you should shut down the `xrpld` service, wait until the process has exited, and start it again. If the server uses `online_delete`, check first that a rotation isn't running, and give the server time to stop. See [Restart with care](../configuration/best-practices/validator.md#restart-with-care). Optionally, restart the entire machine.
 
 If the problem persists, check the other possibilities listed on this page. If none of them seem to apply, [open an issue in the `rippled` repository](https://github.com/XRPLF/rippled/issues) and add the "Syncing issue" label.
 
 ## Usual Causes of Syncing Issues
 
-The most common cause of syncing issues is not meeting the [system requirements](../installation/system-requirements.md). The three most common shortfalls are:
+The most common cause of syncing issues isn't meeting the [system requirements](../prerequisites/system-requirements/index.md). The three most common shortfalls are:
 
 - **Slow disks.** You need a consistently fast solid state disk (SSD). Cloud providers like AWS usually don't guarantee disk performance, because it depends on hardware shared with other customers.
 - **Insufficient RAM.** The memory requirements vary depending on several factors including ones that are hard to predict like network load and how people use the XRP Ledger, so it's good to have more than the minimum system requirements.
 - **Poor network connection.** Network requirements vary the most based on how people use the XRP Ledger, but a slow or unstable connection can make it impossible to keep up with new transactions and data added to the XRP Ledger.
 
-If you are having trouble remaining synced, double-check that your server meets the system requirements. Depending on how you use your server, you may need to meet the higher "Recommended" requirements. If you meet the "Recommended" requirements and still cannot sync, try the other possibilities on this page.
+If you are having trouble remaining synced, double-check that your server meets the system requirements. Depending on how you use your server, you may need to meet the higher "Recommended" requirements. If you meet the "Recommended" requirements and still can't sync, try the other possibilities on this page.
 
 ## Couldn't Load Validator List
 
-The default configuration uses a recommended list of validators retrieved from `vl.ripple.com`. This list is signed by Ripple's cryptographic key pair and has a built-in expiration date. If your server cannot download the list from `vl.ripple.com` for some reason, your server does not choose a set of trusted validators and cannot determine which possible ledgers to declare as valid. (If you are connected to [the testnet or another parallel network](../../concepts/networks-and-servers/parallel-networks.md), your server uses a list of trusted validators for that network instead.)
+The default configuration uses recommended lists of validators retrieved from `vl.ripple.com` and `unl.xrplf.org`. Each list is signed by its publisher's cryptographic key pair and has a built-in expiration date. If your server can't download the lists for some reason, your server doesn't choose a set of trusted validators and can't determine which possible ledgers to declare as valid. (If you are connected to [the testnet or another parallel network](../../concepts/networks-and-servers/parallel-networks.md), your server uses a list of trusted validators for that network instead.)
 
 The `validator_list` block in the [server_info method][] response shows the status of your validator list including its expiration date. If you have a list, but it's expired, it's possible that your server had connectivity to the validator list site before but hasn't been able to connect lately, so your current list expired while your server was unable to download a more updated list.
 
@@ -65,9 +65,9 @@ If the CAs are installed, the site's certificate may be invalid or may not match
 
 ## Not Enough Peers
 
-If your server does not connect to enough [peer servers](../../concepts/networks-and-servers/peer-protocol.md), it may not be able to download enough data to remain synced with the network as the network continues processing new transactions. This can happen if your network connection is unreliable, or if you configure your server as a [private server](../../concepts/networks-and-servers/peer-protocol.md#private-peers) without adding enough reliable fixed peers.
+If your server doesn't connect to enough [peer servers](../../concepts/networks-and-servers/peer-protocol.md), it may not be able to download enough data to remain synced with the network as the network continues processing new transactions. This can happen if your network connection is unreliable, or if you configure your server as a [private server](../../concepts/networks-and-servers/peer-protocol.md#private-peers) without adding enough reliable fixed peers.
 
-Use the [peers method][] to get information about your server's current peers. If you have exactly 10 or 11 peers, that may indicate that your firewall is blocking incoming peer connections. [Set up port forwarding](../configuration/peering/forward-ports-for-peering.md) to allow more incoming connections. If your server is configured as a private server, double-check the contents and syntax of the `[ips_fixed]` stanza in your config file, and add more proxies or public hubs if possible.
+Use the [peers method][] to get information about your server's current peers. If you have about 10 peers, that may indicate that your firewall is blocking incoming peer connections. [Set up port forwarding](../configuration/peering/forward-ports-for-peering.md) to allow more incoming connections. If your server is configured as a private server, double-check the contents and syntax of the `[ips_fixed]` stanza in your config file, and add more proxies or public hubs if possible.
 
 ## Stuck in `connected` or `syncing` State with RocksDB
 
@@ -85,7 +85,7 @@ If you are running solid state disks (SSDs) with a RocksDB backend, and your ser
     sudo systemctl stop xrpld
     ```
 
-3. Edit the config file to set the `type` field of the `[node_db]` stanza to `NuDB`. Point the `path` field (and, optionally, the `[database_path]` stanza) at a new, empty directory that the user has permission to write to, so there is no existing data to conflict with. For the recommended NuDB settings, see [Capacity Planning](../installation/capacity-planning.md#more-about-using-nudb).
+3. Edit the config file to set the `type` field of the `[node_db]` stanza to `NuDB`. Point the `path` field and the `[database_path]` stanza at a new, empty directory that the user has permission to write to, so there is no existing data to conflict with. If you use `online_delete`, changing only `path` makes the server stop at start with a `state db error`. For the recommended NuDB settings, see [Capacity Planning](../prerequisites/capacity-planning.md#more-about-using-nudb).
 
     {% partial file="/docs/_snippets/conf-file-location.md" /%}
 
@@ -99,11 +99,11 @@ Typically, the server should reach the `full` state within a few minutes.
 
 ## Corrupt Databases
 
-In rare cases, corrupt data saved in your `xrpld` server's internal databases could cause it to fail to sync. You can safely delete your server's databases in most circumstances as long as the server is not running. Corrupt data can be the result of a momentary hardware failure when copying or writing to disk, a more serious disk failure, a different process crashing and writing to the wrong part of the disk, or other issues.
+In rare cases, corrupt data saved in your `xrpld` server's internal databases could cause it to fail to sync. You can safely delete your server's databases in most circumstances as long as the server isn't running. Corrupt data can be the result of a momentary hardware failure when copying or writing to disk, a more serious disk failure, a different process crashing and writing to the wrong part of the disk, or other issues.
 
 As a test, you can temporarily change the paths to your server's databases as long as you have enough free space to re-download the current ledger and store other settings.
 
-{% admonition type="info" name="Note" %}When you change the database paths, the server does not load some saved settings, such as the server's current [node key pair][] and [peer reservations](../../concepts/networks-and-servers/peer-protocol.md#fixed-peers-and-peer-reservations). If changing the database paths fixes your server' syncing problems, you may want to re-create some of these settings.{% /admonition %}
+{% admonition type="info" name="Note" %}When you change the database paths, the server doesn't load some saved settings, such as the server's current [node key pair][], [peer reservations](../../concepts/networks-and-servers/peer-protocol.md#fixed-peers-and-peer-reservations), and amendment votes. If changing the database paths fixes your server' syncing problems, you may want to re-create some of these settings.{% /admonition %}
 
 1. Stop the `xrpld` server if it is running.
 
@@ -147,7 +147,7 @@ As a test, you can temporarily change the paths to your server's databases as lo
     - [Technical FAQ](/about/faq.md)
 - **Tutorials:**
     - [Understanding Log Messages](understanding-log-messages.md)
-    - [Capacity Planning](../installation/capacity-planning.md)
+    - [Capacity Planning](../prerequisites/capacity-planning.md)
 - **References:**
     - [xrpld API Reference](../../references/http-websocket-apis/index.md)
         - [peers method][]

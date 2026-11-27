@@ -9,7 +9,7 @@ labels:
 ---
 # Configure a Private Server
 
-A [private server](../../../concepts/networks-and-servers/peer-protocol.md#private-peers) is an `xrpld` server that connects to the network only through specific, trusted peers instead of connecting directly to discovered peers in the open peer-to-peer network. This kind of configuration is an optional precaution most commonly recommended for [validators](../server-modes/run-xrpld-as-a-validator.md), but it can be useful for other specific purposes.
+A [private server](../../../concepts/networks-and-servers/peer-protocol.md#private-peers) is an `xrpld` server that connects to the network only through specific, trusted peers instead of connecting directly to discovered peers in the open peer-to-peer network. This kind of configuration is an optional precaution most commonly recommended for [validators](../server-modes/validator.md), but it can be useful for other specific purposes.
 
 ## Prerequisites
 
@@ -34,7 +34,7 @@ To set up a specific server as a private peer, complete the following steps:
 
 2. Enable private peering.
 
-    Add or uncomment the following stanza in your config file:
+    Add or uncomment the following stanza in your config file. It turns off automatic connections, so the server connects only to your `[ips_fixed]` peers. (A server that holds a validator key already asks its peers not to share its address, even without this stanza, but it still makes automatic connections.)
 
     ```
     [peer_private]
@@ -52,12 +52,12 @@ To set up a specific server as a private peer, complete the following steps:
     r.ripple.com 51235
     ```
 
-    If your server connects using **proxies**, the IP addresses and ports should match the configurations of the `xrpld` servers you are using as proxies. For each of those servers, the port number should match the `protocol = peer` port in that server's config file (usually 51235). For example, your configuration might look like this:
+    If your server connects using **proxies**, the IP addresses and ports should match the configurations of the `xrpld` servers you are using as proxies. For each of those servers, the port number should match the `protocol = peer` port in that server's config file (2459 by default on current versions; 51235 on many older installs). For example, your configuration might look like this:
 
     ```
     [ips_fixed]
-    192.168.0.1 51235
-    192.168.0.2 51235
+    192.168.0.1 2459
+    192.168.0.2 2459
     ```
 
     {% admonition type="info" name="Note" %}If you omit the port number, the server uses port 2459, the IANA-assigned port for the XRP Ledger protocol.{% /admonition %}
@@ -71,25 +71,25 @@ To set up a specific server as a private peer, complete the following steps:
     Restart `xrpld` on the proxies one-by-one. On each proxy server:
 
     ```
-    sudo service systemctl restart xrpld
+    sudo systemctl restart xrpld
     ```
 
 5. Start `xrpld` on the private server.
 
     ```
-    sudo service systemctl start xrpld
+    sudo systemctl start xrpld
     ```
 
 6. Use the [peers method][] to confirm that your private server is connected _only_ to its peers.
 
-    The `peers` array in the response should not contain any objects whose `address` is not one of your configured peers. If this is not the case, double-check your config file and restart the private server.
+    The `peers` array in the response shouldn't contain any objects whose `address` isn't one of your configured peers. If this isn't the case, double-check your config file and restart the private server.
 
 
 ## Next Steps
 
-As an additional precaution, you should configure your firewall to block incoming connections to your private server from servers that are not your specific peers. If you are running proxy servers, [forward peer ports](forward-ports-for-peering.md) through your firewall to the proxies, but **not** to the private peer. The exact details of how to configure this depend on what firewall you use.
+As an additional precaution, you should configure your firewall to block incoming connections to your private server from servers that aren't your specific peers. If you are running proxy servers, [forward peer ports](forward-ports-for-peering.md) through your firewall to the proxies, but **not** to the private peer. The exact details of how to configure this depend on what firewall you use.
 
-Be sure the firewall **does not block** outgoing HTTP connections on port 80. The default configuration uses this port to download the latest recommended validator list from **vl.ripple.com**. Without a validator list, the server does not know which validators to trust and cannot recognize when the network reaches a consensus.
+Be sure the firewall **doesn't block** outgoing HTTPS connections on port 443. The default configuration uses this port to download the latest recommended validator lists from **vl.ripple.com** and **unl.xrplf.org**. Without a validator list, the server doesn't know which validators to trust and can't recognize when the network reaches a consensus.
 
 ## See Also
 

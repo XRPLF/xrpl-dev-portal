@@ -11,7 +11,7 @@ This page describes how to update manually to the latest release of `xrpld` on R
 
 These instructions assume you have already [installed `xrpld` on a supported version of Red Hat Enterprise Linux using the XRP Ledger Foundation's `rpm` package](install-xrpld-on-rhel.md). If you are still running `rippled` (3.1.3 or older), follow [Migrate from rippled to xrpld](migrate-to-xrpld.md) instead.
 
-To update manually, complete the following steps:
+Before you update, read the release notes for every release between your version and the new one, and keep a copy of the installed package and your `xrpld.cfg` so you can roll back. To update manually, complete the following steps:
 
 1. Download the XRP Ledger Foundation's package-signing key and check its fingerprint:
 
@@ -51,7 +51,7 @@ To update manually, complete the following steps:
     sudo yum update xrpld
     ```
 
-    This update procedure leaves your existing config files in place.
+    This update procedure leaves your existing config files in place. If the package ships a newer default, RPM saves it next to yours as `xrpld.cfg.rpmnew` or `validators.txt.rpmnew`. Compare them after the update.
 
 5. Reload the `systemd` unit files:
 
@@ -62,8 +62,10 @@ To update manually, complete the following steps:
 6. Restart the `xrpld` service:
 
     ```
-    sudo service xrpld restart
+    sudo systemctl restart xrpld
     ```
+
+    On a validator, check for an in-flight online delete rotation before you restart, and give the service up to five minutes to stop. See [Restart with care](../configuration/best-practices/validator.md#restart-with-care) in Validator Best Practices. Then watch `server_state` with `xrpld server_info` until it reads `full` or `proposing`.
 
 
 ## See Also

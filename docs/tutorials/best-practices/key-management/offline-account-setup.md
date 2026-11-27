@@ -17,7 +17,7 @@ A highly secure [signing configuration](../../../concepts/transactions/secure-si
 
 To use offline signing, you must meet the following prerequisites:
 
-- You must have one computer to use as an offline machine. This machine must be set up with a [supported operating system](../../../infrastructure/installation/system-requirements.md). See your operating system's support for offline setup instructions. (For example, [Red Hat Enterprise Linux DVD ISO installation instructions](https://access.redhat.com/solutions/7227).) Be sure that the software and physical media you use are not infected with malware.
+- You must have one computer to use as an offline machine. This machine must be set up with a [supported operating system](../../../infrastructure/prerequisites/system-requirements/index.md). See your operating system's support for offline setup instructions. (For example, [Red Hat Enterprise Linux DVD ISO installation instructions](https://access.redhat.com/solutions/7227).) Be sure that the software and physical media you use are not infected with malware.
 - You must have a separate computer to use as an online machine. This machine does not need to run `xrpld` but it must be able to connect to the XRP Ledger network and receive information about the state of the shared ledger. For example, you can use a [WebSocket connection to a public server](../../get-started/get-started-http-websocket-apis.md).
 - You must have a secure way to transfer signed transaction binary data from the offline machine to the online machine.
     - One way to do this is with a QR code generator on the offline machine, and a QR code scanner on the online machine. (In this case, your "online machine" could be a handheld device such as a smartphone.)

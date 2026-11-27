@@ -179,7 +179,7 @@ XRP Ledgerに送信されたトランザクションはすぐには処理され�
   - [コンセンサスの仕組み(動画)](https://www.youtube.com/watch?v=pj1QVb1vlC0)
 - **チュートリアル:**
   - [信頼できるトランザクションの送信](../transactions/reliable-transaction-submission.md)
-  - [バリデータとしての`xrpld`の実行](../../infrastructure/configuration/server-modes/run-xrpld-as-a-validator.md)
+  - [バリデータとしての`xrpld`の実行](../../infrastructure/configuration/server-modes/validator.md)
 - **リファレンス:**
   - [レジャーフォーマットのリファレンス](../../references/protocol/ledger-data/index.md)
   - [トランザクションフォーマットのリファレンス](../../references/protocol/transactions/index.md)

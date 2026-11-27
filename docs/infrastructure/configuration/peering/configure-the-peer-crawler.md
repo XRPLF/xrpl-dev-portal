@@ -40,6 +40,8 @@ To configure how much information your server provides in response to peer crawl
 
     The fields in this stanza control which fields the server returns in the [peer crawler response](../../../references/http-websocket-apis/peer-port-methods/peer-crawler.md#response-format). The names of the config fields match the fields of the API response. A setting with a value of `1` means to include the field in the response. A value of `0` means to omit that field from the response. This example shows the default values for each setting.
 
+    With `overlay = 1` the response lists the servers you are connected to, with their IP addresses and ports. A peer that has asked to stay hidden is listed by its public key only. Validators and servers with `[peer_private]` ask for that. If you don't want your peer list public, set `overlay = 0`. [Validator Security](../security/validator.md) recommends disabling the crawler entirely on a validator.
+
 3. After saving the changes to the config file, restart your `xrpld` server to apply the updated configuration:
 
     ```
@@ -49,7 +51,7 @@ To configure how much information your server provides in response to peer crawl
 
 ## Disable the Peer Crawler
 
-To disable the peer crawler API on your server, so it does not respond to peer crawler requests at all, complete the following steps:
+To disable the peer crawler API on your server, so it doesn't respond to peer crawler requests at all, complete the following steps:
 
 1. Edit your `xrpld`'s config file.
 

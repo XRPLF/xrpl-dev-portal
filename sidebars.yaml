@@ -707,10 +707,27 @@
       expanded: false
       items:
         - page: docs/infrastructure/commandline-usage.md
+        - page: docs/infrastructure/prerequisites/index.md
+          expanded: false
+          items:
+            - page: docs/infrastructure/prerequisites/how-the-network-fits-together.md
+            - page: docs/infrastructure/prerequisites/node-types.md
+            - page: docs/infrastructure/prerequisites/system-requirements/index.md
+              expanded: false
+              items:
+                - page: docs/infrastructure/prerequisites/system-requirements/development-and-testing.md
+                - page: docs/infrastructure/prerequisites/system-requirements/stock-node.md
+                - page: docs/infrastructure/prerequisites/system-requirements/validator.md
+                - page: docs/infrastructure/prerequisites/system-requirements/full-history.md
+                - page: docs/infrastructure/prerequisites/system-requirements/hub.md
+                - page: docs/infrastructure/prerequisites/system-requirements/pathing.md
+                - page: docs/infrastructure/prerequisites/system-requirements/clio.md
+            - page: docs/infrastructure/prerequisites/capacity-planning.md
+            - page: docs/infrastructure/prerequisites/monitoring.md
+            - page: docs/infrastructure/prerequisites/backup-and-recovery.md
         - page: docs/infrastructure/installation/index.md
           expanded: false
           items:
-            - page: docs/infrastructure/installation/system-requirements.md
             - page: docs/infrastructure/installation/install-xrpld-on-rhel.md
             - page: docs/infrastructure/installation/install-xrpld-on-ubuntu.md
             - page: docs/infrastructure/installation/install-clio-on-ubuntu.md
@@ -719,15 +736,22 @@
             - page: docs/infrastructure/installation/update-xrpld-manually-on-ubuntu.md
             - page: docs/infrastructure/installation/migrate-to-xrpld.md
             - page: docs/infrastructure/installation/build-on-linux-mac-windows.md
-            - page: docs/infrastructure/installation/capacity-planning.md
         - page: docs/infrastructure/configuration/index.md
           expanded: false
           items:
+            - page: docs/infrastructure/configuration/minimal-configurations.md
+            - page: docs/infrastructure/configuration/example-configurations.md
             - page: docs/infrastructure/configuration/server-modes/index.md
               expanded: false
               items:
-                - page: docs/infrastructure/configuration/server-modes/run-xrpld-as-a-validator.md
-                - page: docs/infrastructure/configuration/server-modes/run-xrpld-as-a-stock-server.md
+                - page: docs/infrastructure/configuration/server-modes/stock-node.md
+                - page: docs/infrastructure/configuration/server-modes/validator.md
+                - page: docs/infrastructure/configuration/server-modes/full-history.md
+                - page: docs/infrastructure/configuration/server-modes/hub.md
+                - page: docs/infrastructure/configuration/server-modes/pathing.md
+                - page: docs/infrastructure/configuration/server-modes/clio.md
+                - page: docs/infrastructure/configuration/server-modes/clio-simple-setup.md
+                - page: docs/infrastructure/configuration/server-modes/clio-robust-setup.md
             - page: docs/infrastructure/configuration/data-retention/index.md
               expanded: false
               items:
@@ -739,6 +763,7 @@
               expanded: false
               items:
                 - page: docs/infrastructure/configuration/peering/cluster-xrpld-servers.md
+                - page: docs/infrastructure/configuration/peering/connect-to-public-hubs.md
                 - page: docs/infrastructure/configuration/peering/configure-a-private-server.md
                 - page: docs/infrastructure/configuration/peering/configure-the-peer-crawler.md
                 - page: docs/infrastructure/configuration/peering/enable-link-compression.md
@@ -746,6 +771,24 @@
                 - page: docs/infrastructure/configuration/peering/manually-connect-to-a-specific-peer.md
                 - page: docs/infrastructure/configuration/peering/set-max-number-of-peers.md
                 - page: docs/infrastructure/configuration/peering/use-a-peer-reservation.md
+            - page: docs/infrastructure/configuration/best-practices/index.md
+              expanded: false
+              items:
+                - page: docs/infrastructure/configuration/best-practices/stock-node.md
+                - page: docs/infrastructure/configuration/best-practices/validator.md
+                - page: docs/infrastructure/configuration/best-practices/full-history.md
+                - page: docs/infrastructure/configuration/best-practices/hub.md
+                - page: docs/infrastructure/configuration/best-practices/pathing.md
+                - page: docs/infrastructure/configuration/best-practices/clio.md
+            - page: docs/infrastructure/configuration/security/index.md
+              expanded: false
+              items:
+                - page: docs/infrastructure/configuration/security/stock-node.md
+                - page: docs/infrastructure/configuration/security/validator.md
+                - page: docs/infrastructure/configuration/security/full-history.md
+                - page: docs/infrastructure/configuration/security/hub.md
+                - page: docs/infrastructure/configuration/security/pathing.md
+                - page: docs/infrastructure/configuration/security/clio.md
             - page: docs/infrastructure/configuration/configure-amendment-voting.md
             - page: docs/infrastructure/configuration/configure-statsd.md
             - page: docs/infrastructure/configuration/configure-validator-list-threshold.md
@@ -770,6 +813,8 @@
             - page: docs/infrastructure/troubleshooting/server-is-amendment-blocked.md
             - page: docs/infrastructure/troubleshooting/server-wont-start.md
             - page: docs/infrastructure/troubleshooting/fix-sqlite-tx-db-page-size-issue.md
+            - page: docs/infrastructure/troubleshooting/validator-not-visible-on-explorers.md
+        - page: docs/infrastructure/acknowledgments.md
     - page: docs/agents/agentic-transactions.page.tsx
       label: Agentic Transactions
       labelTranslationKey: sidebar.docs.agentic-transactions

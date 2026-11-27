@@ -9,7 +9,7 @@ labels:
 ---
 # Configure Online Deletion
 
-In its default configuration, [the `xrpld` server](../../../concepts/networks-and-servers/index.md) [deletes history](online-deletion.md) older than the most recent 2000 [ledger versions](../../../concepts/ledgers/index.md), keeping approximately 15 minutes of [ledger history](../../../concepts/networks-and-servers/ledger-history.md) (based on the current rate between ledgers). This page describes how to configure the amount of history your `xrpld` server stores before deleting.
+In its default configuration, [the `xrpld` server](../../../concepts/networks-and-servers/index.md) [deletes history](online-deletion.md) older than the most recent 512 [ledger versions](../../../concepts/ledgers/index.md), keeping roughly 25 to 35 minutes of [ledger history](../../../concepts/networks-and-servers/ledger-history.md) (based on the current rate between ledgers). This page describes how to configure the amount of history your `xrpld` server stores before deleting.
 
 ## Prerequisites
 
@@ -19,9 +19,9 @@ This tutorial assumes your server meets the following prerequisites:
 
 - The `xrpld` server is already [installed](../../installation/index.md) and [online deletion](online-deletion.md) is enabled.
 
-    If you followed the installation instructions for a recommended platform, online deletion is enabled by default.
+    If you followed the installation instructions for a recommended platform, online deletion is enabled by default. The server itself doesn't delete any history unless `online_delete` is set; the packaged config file sets it.
 
-- Your server has [enough disk space](../../installation/capacity-planning.md#disk-space) to store your chosen amount of history in its ledger store.
+- Your server has [enough disk space](../../prerequisites/capacity-planning.md#disk-space) to store your chosen amount of history in its ledger store.
 
 
 ## Configuration Steps
@@ -30,7 +30,7 @@ To change the amount of history your server stores, perform the following steps:
 
 1. Decide how many ledger versions' worth of history to store.
 
-    New ledger versions are usually validated 3 to 4 seconds apart, so the number of ledger versions corresponds roughly to the amount of time you want to store. See [Capacity Planning](../../installation/capacity-planning.md) for details of how much storage is required for different configurations.
+    New ledger versions are usually validated 3 to 4 seconds apart, so the number of ledger versions corresponds roughly to the amount of time you want to store. See [Capacity Planning](../../prerequisites/capacity-planning.md) for details of how much storage is required for different configurations.
 
     Online deletion is based on how many ledger versions to keep _after_ deleting history, so you should have enough disk space to store twice as many ledgers as you set it to keep.
 
@@ -45,11 +45,11 @@ To change the amount of history your server stores, perform the following steps:
       # max_waiting_ledgers=300000
     ```
 
-    Set `online_delete` to the minimum number of ledger versions to keep after running online deletion. With automatic deletion (the default), the server typically runs deletion when it has accumulated about twice this many ledger versions.
+    Set `online_delete` to the minimum number of ledger versions to keep after running online deletion. It must be at least 256 and at least as large as `[ledger_history]` (256 by default), or the server refuses to start. With automatic deletion (the default), the server typically runs deletion when it has accumulated about twice this many ledger versions.
 
     Optionally, you can configure `max_waiting_ledgers` to limit how long the deletion process waits for the server to resync. If additional ledgers are validated during that time, the process aborts the current attempt and retries later. The minimum is 64, and it defaults to your `online_delete` value. This limit only includes ledgers validated while waiting on a stalled rotation, not normal forward progress.
 
-    During the deletion process, the validated ledger is verified to ensure it is not older than `age_threshold_seconds` and that all recent ledgers are available without gaps. If these checks fail, the process waits and retries after a short period (default: 2 seconds).
+    During the deletion process, the validated ledger is verified to ensure it isn't older than `age_threshold_seconds` (60 by default) and that all recent ledgers are available without gaps. If these checks fail, the process waits and retries after a short period (`recovery_wait_seconds`, 2 seconds by default).
 
     {% partial file="/docs/_snippets/conf-file-location.md" /%}
 
@@ -77,10 +77,10 @@ To change the amount of history your server stores, perform the following steps:
 
     If this happens regularly, your server may not have sufficient specifications to keep up with the ledger while running online deletion. Check that other services on the same hardware (such as scheduled backups or security scans) aren't competing with the `xrpld` server for resources. You may want to try any of the following:
 
-    - Increase your system specs. See [System Requirements](../../installation/system-requirements.md) for recommendations.
+    - Increase your system specs. See [System Requirements](../../prerequisites/system-requirements/index.md) for recommendations.
     - Change your configuration to store less history. (Step 2 of this tutorial)
-    - Change your server's [`node_size` parameter](../../installation/capacity-planning.md).
-    - Use [NuDB instead of RocksDB](../../installation/capacity-planning.md) for the ledger store.
+    - Change your server's [`node_size` parameter](../../prerequisites/capacity-planning.md).
+    - Use [NuDB instead of RocksDB](../../prerequisites/capacity-planning.md) for the ledger store.
     - [Schedule online deletion using Advisory Deletion](configure-advisory-deletion.md).
 
 
@@ -91,7 +91,7 @@ To change the amount of history your server stores, perform the following steps:
         - [Online Deletion](online-deletion.md)
 - **Tutorials:**
     - [Configure Advisory Deletion](configure-advisory-deletion.md)
-    - [Capacity Planning](../../installation/capacity-planning.md)
+    - [Capacity Planning](../../prerequisites/capacity-planning.md)
 - **References:**
     - [server_info method][]
     - [Ledger Data Formats](../../../references/protocol/ledger-data/index.md)

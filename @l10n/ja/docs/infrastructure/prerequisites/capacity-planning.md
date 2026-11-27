@@ -121,7 +121,7 @@ XRP Ledgerネットワークの各サーバは、ネットワークのすべて�
 
 ### 推奨事項
 
-推奨されるハードウェアのスペックをまとめたものは、[システム要件](system-requirements.md)をご覧ください
+推奨されるハードウェアのスペックをまとめたものは、[システム要件](system-requirements/index.md)をご覧ください
 
 #### CPU使用率および仮想化
 
@@ -168,7 +168,7 @@ XRP Ledgerネットワークの各サーバは、ネットワークのすべて�
 
 ##### Amazon Web Services
 
-Amazon Web Services（AWS）は、人気のある仮想化ホスト環境です。AWSで`xrpld`を実行することはできますが、Elastic Block Storage（EBS）は使用しないでください。詳しくは[システム要件](system-requirements.md)をご覧ください。
+Amazon Web Services（AWS）は、人気のある仮想化ホスト環境です。AWSで`xrpld`を実行することはできますが、Elastic Block Storage（EBS）は使用しないでください。詳しくは[システム要件](system-requirements/index.md)をご覧ください。
 
 AWSインスタンスストア（`ephemeral`ストレージ）では適切なパフォーマンスが提供されます。しかし、インスタンスを開始/停止するときなど、いくつかの状況でデータが失われる可能性があります。しかし、個々のXRP Ledgerサーバは、通常、失われたレジャーの履歴を他サーバから再取得することができるので、これは許容範囲内でしょう。設定内容は、より信頼性の高いストレージに保存する必要があります。
 

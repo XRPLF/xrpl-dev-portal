@@ -10,7 +10,7 @@ labels:
 You can test how the `xrpld` server behaves, before amendments are fully enabled on Mainnet, using one of the following approaches:
 
 - **Connect to Devnet:** Devnet runs beta `xrpld` releases and is the public network where new amendments are previewed before reaching Mainnet.
-- **Stand-Alone Mode:** Run a single `xrpld` server in offline mode with the amendment forced on. Does not connect to the peer-to-peer network or use consensus.
+- **Stand-Alone Mode:** Run a single `xrpld` server in offline mode with the amendment forced on. Doesn't connect to the peer-to-peer network or use consensus.
 - **Private Test Network:** Initialize a self-hosted network with multiple validators where you control how amendments activate.
 
 ## Connect to Devnet
@@ -25,23 +25,23 @@ Once connected, confirm the amendment is active by inspecting `Amendments` via t
 
 To test locally without setting up validators or connecting to a network, run your server in [stand-alone mode](start-a-new-genesis-ledger-in-stand-alone-mode.md) with the amendment forced on.
 
-{% admonition type="warning" name="Caution" %}This approach uses the `[features]` stanza to force amendments on. Do not use `[features]` while connected to Mainnet, Testnet, or Devnet. Forcing different features than other validators can cause your server to diverge from the network.{% /admonition %}
+{% admonition type="warning" name="Caution" %}This approach uses the `[features]` stanza to force amendments on. Don't use `[features]` while connected to Mainnet, Testnet, or Devnet. Forcing different features than other validators can cause your server to diverge from the network.{% /admonition %}
 
-Two stanzas in `xrpld.cfg` interact with amendments: `[amendments]` records which amendments a server votes to support, while `[features]` forces specific features to be treated as enabled, only on the local server. Add a `[features]` stanza with one amendment short name per line:
+Two stanzas in `xrpld.cfg` interact with amendments: `[amendments]` records which amendments a server votes to support, while `[features]` forces specific features to be treated as enabled, only on the local server. Add a `[features]` stanza with one amendment short name per line, using the short names shown by `xrpld feature`:
 
 {% tabs %}
 
 {% tab label="Example" %}
 ```
 [features]
-MultiSign
-TrustSetAuth
+AmendmentName
+AnotherAmendmentName
 ```
 {% /tab %}
 
 {% /tabs %}
 
-To confirm the amendment is active, query the `Amendments` ledger entry with the [ledger_entry method][].
+A feature forced with `[features]` is treated as enabled by your local server, but it isn't recorded in the ledger. It won't appear in the `Amendments` ledger entry, and `xrpld feature` reports it as not enabled. To confirm the effect, submit a transaction that needs the amendment and check that the server accepts it.
 
 ## Private Test Network
 
@@ -57,7 +57,9 @@ Start each validator with the `--start` flag to enable amendments at the genesis
 xrpld --start --conf /etc/xrpld/xrpld.cfg
 ```
 
-`--start` enables the amendments your build supports and votes _in favor of_ by default. An amendment that defaults to voting against stays disabled unless listed in the `[amendments]` stanza of `xrpld.cfg`. The server only reads that stanza the first time it starts with a database. If you reuse a data directory when resetting a network, the server uses the votes already saved in `wallet.db` and logs a warning that the stanza is ignored.
+The `rippleci/xrpld` image runs `--net --silent --conf /etc/xrpld/xrpld.cfg` by default. In Docker Compose, override it with `command: ["--start", "--conf", "/etc/xrpld/xrpld.cfg"]`.
+
+`--start` enables the amendments your build supports and votes _in favor of_ by default. An amendment that defaults to voting against stays disabled unless listed in the `[amendments]` stanza of `xrpld.cfg`. Each line is the 64-character amendment ID followed by a space and the name. `[features]` takes short names, but `[amendments]` doesn't. The server only reads that stanza the first time it starts with a database. If you reuse a data directory when resetting a network, the server uses the votes already saved in `wallet.db` and logs a warning that the stanza is ignored.
 
 Once the network is producing ledgers, subsequent restarts don't require `--start`.
 
@@ -69,7 +71,7 @@ Changing which amendments are enabled requires resetting the network to a new ge
 
 ### Compress the Voting Timer
 
-To exercise the amendment voting and activation flow on a quicker schedule, set `[amendment_majority_time]` in each validator's `xrpld.cfg`. This shortens the delay between an amendment reaching majority support and its activation. Do not use it on Mainnet, Testnet, or Devnet.
+To exercise the amendment voting and activation flow on a quicker schedule, set `[amendment_majority_time]` in each validator's `xrpld.cfg`. This shortens the delay between an amendment reaching majority support and its activation. Don't use it on Mainnet, Testnet, or Devnet.
 
 ```
 [amendment_majority_time]

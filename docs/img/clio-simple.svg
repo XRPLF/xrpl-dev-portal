@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 680" role="img" aria-labelledby="title desc">
+  <title id="title">Simple Clio deployment</title>
+  <desc id="desc">Inside a private network, one synced xrpld source feeds one Clio process over WebSocket and gRPC. Clio is both writer and reader, serves a local application, and stores history in one persistent Cassandra node. There is no redundancy.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10Z" fill="#2b3e51"/></marker>
+  </defs>
+  <rect x="16" y="16" width="528" height="648" rx="16" fill="none" stroke="#b1b3b5" stroke-width="2" stroke-dasharray="7 6"/>
+  <g font-family="system-ui, -apple-system, sans-serif" fill="#2c3e50">
+    <text x="36" y="55" font-size="18" font-weight="700" letter-spacing="1">PRIVATE DEPLOYMENT</text>
+    <rect x="36" y="88" width="280" height="106" rx="14" fill="#8ad6f4" stroke="#00aae4" stroke-width="2"/>
+    <text x="176" y="126" text-anchor="middle" font-size="25" font-weight="700">xrpld source</text>
+    <text x="176" y="160" text-anchor="middle" font-size="20" fill="#2c3e50">Synced ledger source</text>
+    <path d="M176 194V290" fill="none" stroke="#2b3e51" stroke-width="2.5" marker-end="url(#arrow)"/>
+    <text x="194" y="233" font-size="18" fill="#2b3e51">Private WebSocket</text>
+    <text x="194" y="259" font-size="18" fill="#2b3e51">+ gRPC</text>
+    <rect x="36" y="290" width="280" height="130" rx="14" fill="#e6e7e8" stroke="#27a2db" stroke-width="2"/>
+    <text x="176" y="328" text-anchor="middle" font-size="25" font-weight="700">One Clio process</text>
+    <text x="176" y="362" text-anchor="middle" font-size="22">Writer + reader</text>
+    <text x="176" y="396" text-anchor="middle" font-size="19" fill="#2789b9">read_only: false</text>
+    <rect x="366" y="305" width="158" height="100" rx="14" fill="#ffffff" stroke="#8A919A" stroke-width="2"/>
+    <text x="445" y="344" text-anchor="middle" font-size="22" font-weight="700">Local app</text>
+    <text x="445" y="378" text-anchor="middle" font-size="19" fill="#2b3e51">API client</text>
+    <path d="M322 355H360" fill="none" stroke="#2b3e51" stroke-width="2.5" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+    <text x="341" y="337" text-anchor="middle" font-size="16" fill="#2b3e51">API</text>
+    <path d="M176 430V522" fill="none" stroke="#2b3e51" stroke-width="2.5" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+    <text x="194" y="466" font-size="19" fill="#2b3e51">Write / read</text>
+    <text x="194" y="493" font-size="19" fill="#2b3e51">ledger history</text>
+    <rect x="36" y="532" width="280" height="106" rx="14" fill="#CAD4DF" stroke="#21aa47" stroke-width="2"/>
+    <text x="176" y="571" text-anchor="middle" font-size="25" font-weight="700">Cassandra</text>
+    <text x="176" y="606" text-anchor="middle" font-size="19" fill="#21aa47">One persistent node · RF 1</text>
+    <text x="344" y="574" font-size="19" font-weight="600" fill="#2b3e51">No redundancy</text>
+    <text x="344" y="602" font-size="18" fill="#2b3e51">Downtime is</text>
+    <text x="344" y="627" font-size="18" fill="#2b3e51">acceptable</text>
+  </g>
+</svg>

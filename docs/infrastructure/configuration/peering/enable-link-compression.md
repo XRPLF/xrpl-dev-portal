@@ -43,7 +43,7 @@ After the restart, your server automatically uses link compression with other pe
 
 ## See Also
 
-- [Capacity Planning](../../installation/capacity-planning.md)
+- [Capacity Planning](../../prerequisites/capacity-planning.md)
 - [Peer Protocol](../../../concepts/networks-and-servers/peer-protocol.md)
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

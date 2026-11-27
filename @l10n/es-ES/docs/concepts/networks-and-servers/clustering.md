@@ -20,7 +20,7 @@ Si estás ejecutando un validador como un [par privado](peer-protocol.md#pares-p
 
 - **Tutoriales:**
     - [Cluster de servidores `xrpld`](../../infrastructure/configuration/peering/cluster-xrpld-servers.md)
-    - [Ejecutar xrpld como validador](../../infrastructure/configuration/server-modes/run-xrpld-as-a-validator.md)
+    - [Ejecutar xrpld como validador](../../infrastructure/configuration/server-modes/validator.md)
 - **Referencias:**
     - [método peers][]
     - [método connect][]

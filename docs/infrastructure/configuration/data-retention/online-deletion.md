@@ -14,23 +14,23 @@ The online deletion feature lets the `xrpld` server delete the server's local co
 
 The server always keeps the complete _current_ state of the ledger, with all the balances and settings it contains. The deleted data includes older transactions and versions of the ledger state that are older than the stored history.
 
-The default config file sets the `xrpld` server to keep the most recent 2000 ledger versions and automatically delete older data.
+The default config file sets the `xrpld` server to keep the most recent 512 ledger versions and automatically delete older data.
 
-{% admonition type="success" name="Tip" %}Even with online deletion, the amount of disk space required to store the same time span's worth of ledger data increases over time, because the size of individual ledger versions tends to grow over time. This growth is very slow in comparison to the accumulation of data that occurs without deleting old ledgers. For more information on disk space needs, see [Capacity Planning](../../installation/capacity-planning.md).{% /admonition %}
+{% admonition type="success" name="Tip" %}Even with online deletion, the amount of disk space required to store the same time span's worth of ledger data increases over time, because the size of individual ledger versions tends to grow over time. This growth is very slow in comparison to the accumulation of data that occurs without deleting old ledgers. For more information on disk space needs, see [Capacity Planning](../../prerequisites/capacity-planning.md).{% /admonition %}
 
 
 ## Background
 
 The `xrpld` server stores [ledger history](../../../concepts/networks-and-servers/ledger-history.md) in its _ledger store_. This data accumulates over time.
 
-Inside the ledger store, ledger data is "de-duplicated". In other words, data that doesn't change from version to version is only stored once. The records themselves in the ledger store do not indicate which ledger version(s) contain them; part of the work of online deletion is identifying which records are only used by outdated ledger versions. This process is time consuming and affects the disk I/O and application cache, so the server cannot delete old data every time it closes a new ledger.
+Inside the ledger store, ledger data is "de-duplicated". In other words, data that doesn't change from version to version is only stored once. The records themselves in the ledger store don't indicate which ledger version(s) contain them; part of the work of online deletion is identifying which records are only used by outdated ledger versions. This process is time consuming and affects the disk I/O and application cache, so the server can't delete old data every time it closes a new ledger.
 
 
 ## Online Deletion Behavior
 
 The online deletion settings configure how many ledger versions the `xrpld` server should keep available in the ledger store at a time. However, the specified number is a guideline, not a hard rule:
 
-- The server never deletes data more recent than the configured number of ledger versions, but it may have less than that amount available if it has not been running for long enough or if it lost sync with the network at any time. (The server attempts to backfill at least some history; see [fetching history](../../../concepts/networks-and-servers/ledger-history.md#fetching-history) for details.)
+- The server never deletes data more recent than the configured number of ledger versions, but it may have less than that amount available if it hasn't been running for long enough or if it lost sync with the network at any time. (The server attempts to backfill at least some history; see [fetching history](../../../concepts/networks-and-servers/ledger-history.md#fetching-history) for details.)
 - The server may store up to slightly over twice the configured number of ledger versions if online deletion is set to run automatically. (Each time it runs, it reduces the number of stored ledger versions to approximately the configured number.)
 
     If online deletion is delayed because the server is busy, ledger versions can continue to accumulate. When functioning normally, online deletion begins when the server has twice the configured number of ledger versions, but it may not complete until after several more ledger versions have accumulated.
@@ -41,7 +41,7 @@ The online deletion settings configure how many ledger versions the `xrpld` serv
 
     - If you call `can_delete` _more often_ than your `online_delete` interval, the server stores **up to twice the `online_delete` number** of ledger versions. (After deletion, this is reduced to approximately the `online_delete` value.)
 
-        For example, if you call `can_delete` with a value of `now` once per day and an `online_delete` value of 50,000, the server typically stores up to 100,000 ledger versions before running deletion. After running deletion, the server keeps at least 50,000 ledger versions (about two days' worth). With this configuration, approximately every other `can_delete` call results in no change because the server does not have enough ledger versions to delete.
+        For example, if you call `can_delete` with a value of `now` once per day and an `online_delete` value of 50,000, the server typically stores up to 100,000 ledger versions before running deletion. After running deletion, the server keeps at least 50,000 ledger versions (about two days' worth). With this configuration, approximately every other `can_delete` call results in no change because the server doesn't have enough ledger versions to delete.
 
     - If you call `can_delete` _less often_ than your `online_delete` interval, the server stores at most ledger versions spanning an amount of time that is approximately **twice the interval between `can_delete` calls**. (After deletion, this is reduced to approximately one interval's worth of data.)
 
@@ -50,15 +50,15 @@ The online deletion settings configure how many ledger versions the `xrpld` serv
 
 With online deletion enabled and running automatically (that is, with advisory delete disabled), the total amount of ledger data stored should remain at minimum equal to the number of ledger versions the server is configured to keep, with the maximum being roughly twice that many.
 
-When online deletion runs, it does not reduce the size of SQLite database files on disk; it only makes space within those files available to be reused for new data. Online deletion _does_ reduce the size of RocksDB or NuDB database files containing the ledger store.
+When online deletion runs, it doesn't reduce the size of SQLite database files on disk; it only makes space within those files available to be reused for new data. Online deletion _does_ reduce the size of RocksDB or NuDB database files containing the ledger store.
 
-The server only counts validated ledger versions when deciding how far back it can delete. In exceptional circumstances where the server is unable to validate new ledger versions (either because of an outage in its local network connection or because the global XRP Ledger network is unable to reach a consensus) `xrpld` continues to close ledgers so that it can recover quickly when the network is restored. In this case, the server may accumulate many closed but not validated ledger versions. These unvalidated ledgers do not affect how many _validated_ ledger versions the server keeps before running online deletion.
+The server only counts validated ledger versions when deciding how far back it can delete. In exceptional circumstances where the server is unable to validate new ledger versions (either because of an outage in its local network connection or because the global XRP Ledger network is unable to reach a consensus) `xrpld` continues to close ledgers so that it can recover quickly when the network is restored. In this case, the server may accumulate many closed but not validated ledger versions. These unvalidated ledgers don't affect how many _validated_ ledger versions the server keeps before running online deletion.
 
 ### Interrupting Online Deletion
 
-Online deletion automatically stops if the [server state](../../../references/http-websocket-apis/api-conventions/xrpld-server-states.md) becomes less than `full`. If this happens, the server writes a log message with the prefix `SHAMapStore:WRN`. The server attempts to start online deletion again after the next validated ledger version after becoming fully synced.
+Online deletion pauses if the [server state](../../../references/http-websocket-apis/api-conventions/xrpld-server-states.md) becomes less than `full` (other than `disconnected`), if the newest validated ledger is older than `age_threshold_seconds` (60 by default), or if recent ledgers are missing. While it is paused it checks again every `recovery_wait_seconds` (2 by default). Waits caused by the server state or ledger age, and long waits, are logged with the prefix `SHAMapStore:WRN`; shorter waits for missing ledgers are logged at `SHAMapStore:INF` or below. If the network validates more than `max_waiting_ledgers` ledgers while it waits, the server gives up on that attempt (logged at `SHAMapStore:ERR`) and tries again on a later validated ledger. See [Configure Online Deletion](configure-online-deletion.md).
 
-If you stop the server or it crashes while online deletion is running, online deletion resumes after the server is restarted and the server becomes fully synced.
+If you stop the server or it crashes while online deletion is running, the rotation starts over after the server is restarted and becomes fully synced. The rotation point is saved only when a rotation finishes, so an interrupted rotation doesn't count. If you plan a restart, look for `finished rotation` in the logs first and wait for it when you can. See [An empty range after a restart is normal](../best-practices/validator.md#an-empty-range-after-a-restart-is-normal) before you touch the data directory.
 
 To temporarily disable online deletion, you can use the [can_delete method][] with an argument of `never`. This change persists until you re-enable online deletion by calling [can_delete][can_delete method] again. For more information on controlling when online deletion happens, see [Advisory Deletion](#advisory-deletion).
 
@@ -69,11 +69,11 @@ The following settings relate to online deletion:
 
 - **`online_delete`** - Specify how many validated ledger versions to keep. The server periodically deletes any ledger versions that are older than this number. If not specified, no ledgers are deleted.
 
-    The default config file specifies 2000 for this value. This cannot be less than 256, because some events like [Fee Voting](../../../concepts/consensus-protocol/fee-voting.md) and the [Amendment Process](../../../concepts/networks-and-servers/amendments.md#amendment-process) update only every 256 ledgers.
+    The default config file specifies 512 for this value. This can't be less than 256, because some events like [Fee Voting](../../../concepts/consensus-protocol/fee-voting.md) and the [Amendment Process](../../../concepts/networks-and-servers/amendments.md#amendment-process) update only every 256 ledgers.
 
-    {% admonition type="warning" name="Caution" %}If you run `xrpld` with `online_delete` disabled, then later enable `online_delete` and restart the server, the server disregards but does not delete existing ledger history that your server already downloaded while `online_delete` was disabled. To save disk space, delete your existing history before re-starting the server after changing the `online_delete` setting.{% /admonition %}
+    {% admonition type="warning" name="Caution" %}If you run `xrpld` with `online_delete` disabled, then later enable `online_delete` and restart the server, the server disregards but doesn't delete existing ledger history that your server already downloaded while `online_delete` was disabled. To save disk space, delete your existing history before re-starting the server after changing the `online_delete` setting.{% /admonition %}
 
-- **`[ledger_history]`** - Specify how many validated ledgers to backfill. Must be equal to or less than `online_delete`. If the server does not have at least this many validated ledger versions, it attempts to fetch the data from peers when it can.
+- **`[ledger_history]`** - Specify how many validated ledgers to backfill. Must be equal to or less than `online_delete`. If the server doesn't have at least this many validated ledger versions, it attempts to fetch the data from peers when it can.
 
     The default for this setting is 256 ledgers.
 
@@ -81,25 +81,25 @@ The following settings relate to online deletion:
 
     [{% inline-svg file="/docs/img/online_delete-vs-ledger_history.svg" /%}](/docs/img/online_delete-vs-ledger_history.svg "Ledgers older than `online_delete` are automatically deleted. Ledgers newer than `ledger_history` are backfilled. Ledgers in between are kept if available but not backfilled")
 
-- **`advisory_delete`** - If enabled, online deletion is not scheduled automatically. Instead, an administrator must manually trigger online deletion. Use the value `0` for disabled or `1` for enabled.
+- **`advisory_delete`** - If enabled, online deletion isn't scheduled automatically. Instead, an administrator must manually trigger online deletion. Use the value `0` for disabled or `1` for enabled.
 
     This setting is disabled by default.
 
-- **`[fetch_depth]`** - Specify how many ledger versions to serve to peers. The server does not accept fetch requests from peers for historical data that is older than the specified number of ledger versions. Specify the value `full` to serve any available data to peers.
+- **`[fetch_depth]`** - Specify how many ledger versions to serve to peers. The server doesn't accept fetch requests from peers for historical data that is older than the specified number of ledger versions. Specify the value `full` to serve any available data to peers.
 
     The default for `fetch_depth` is `full` (serve all available data).
 
-    The `fetch_depth` setting cannot be higher than `online_delete` if both are specified. If `fetch_depth` is set higher, the server treats it as equal to `online_delete` instead.
+    The `fetch_depth` setting can't be higher than `online_delete` if both are specified. If `fetch_depth` is set higher, the server treats it as equal to `online_delete` instead.
 
     The following diagram shows how `fetch_depth` works:
 
-    [{% inline-svg file="/docs/img/fetch_depth.svg" /%}](/docs/img/fetch_depth.svg "Ledger versions older than fetch_depth are not served to peers")
+    [{% inline-svg file="/docs/img/fetch_depth.svg" /%}](/docs/img/fetch_depth.svg "Ledger versions older than fetch_depth aren't served to peers")
 
-For estimates of how much disk space is required to store different amounts of history, see [Capacity Planning](../../installation/capacity-planning.md#disk-space).
+For estimates of how much disk space is required to store different amounts of history, see [Capacity Planning](../../prerequisites/capacity-planning.md#disk-space).
 
 ### Advisory Deletion
 
-The default config file schedules online deletion to happen automatically and periodically. If the config file does not specify an `online_delete` interval, online deletion does not occur. If config file enables the `advisory_delete` setting, online deletion only happens when an administrator triggers it using the [can_delete method][].
+The default config file schedules online deletion to happen automatically and periodically. If the config file doesn't specify an `online_delete` interval, online deletion doesn't occur. If config file enables the `advisory_delete` setting, online deletion only happens when an administrator triggers it using the [can_delete method][].
 
 You can use advisory deletion with a scheduled job to trigger automatic deletion based on clock time instead of the number of ledger versions closed. If your server is heavily used, the extra load from online deletion can cause your server to fall behind and temporarily de-sync from the consensus network. If this is the case, you can use advisory deletion and schedule online deletion to happen only during off-peak times.
 
@@ -110,9 +110,9 @@ The `can_delete` API method can enable or disable automatic deletion, in general
 
 ## How It Works
 
-Online deletion works by creating two databases: at any given time, there is an "old" database, which is read-only, and a "current" database, which is writable. The `xrpld` server can read objects from either database, so current ledger versions may contain objects in either one. If an object in a ledger does not change from ledger version to ledger version, only one copy of that object remains in the database, so the server does not store redundant copies of that object. When a new ledger version modifies an object, the server stores the modified object in the "new" database, while the previous version of the object (which is still used by previous ledger versions) remains in the "old" database.
+Online deletion works by creating two databases: at any given time, there is an "old" database, which is read-only, and a "current" database, which is writable. The `xrpld` server can read objects from either database, so current ledger versions may contain objects in either one. If an object in a ledger doesn't change from ledger version to ledger version, only one copy of that object remains in the database, so the server doesn't store redundant copies of that object. When a new ledger version modifies an object, the server stores the modified object in the "new" database, while the previous version of the object (which is still used by previous ledger versions) remains in the "old" database.
 
-When it comes time for online deletion, the server first walks through the oldest ledger version to keep, and copies all objects in that ledger version from the read-only "old" database into the "current" database. This guarantees that the "current" database now contains all objects used in the chosen ledger version and all newer versions. Then, the server deletes the "old" database, and changes the existing "current" database to become "old" and read-only. The server starts a new "current" database to contain any newer changes after this point.
+When it comes time for online deletion, the server first walks through the state of the newest validated ledger, and copies all objects in that ledger from the read-only "old" database into the "current" database. This guarantees that the "current" database now contains all objects used in the chosen ledger version and all newer versions. Then, the server deletes the "old" database, and changes the existing "current" database to become "old" and read-only. The server starts a new "current" database to contain any newer changes after this point.
 
 [{% inline-svg file="/docs/img/online-deletion-process.svg" /%}](/docs/img/online-deletion-process.svg 'Diagram showing how online deletion uses two databases')
 
@@ -122,7 +122,7 @@ When it comes time for online deletion, the server first walks through the oldes
     - [Ledgers](../../../concepts/ledgers/index.md)
     - [Consensus](../../../concepts/consensus-protocol/index.md)
 - **Tutorials:**
-    - [Capacity Planning](../../installation/capacity-planning.md)
+    - [Capacity Planning](../../prerequisites/capacity-planning.md)
     - [Configure `xrpld`](../index.md)
         - [Configure Online Deletion](configure-online-deletion.md)
         - [Configure Advisory Deletion](configure-advisory-deletion.md)

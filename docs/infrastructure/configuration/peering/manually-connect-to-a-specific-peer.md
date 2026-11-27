@@ -10,15 +10,16 @@ labels:
 
 Use these steps to manually connect your server to a specific [peer](../../../concepts/networks-and-servers/peer-protocol.md) in the XRP Ledger network.
 
-{% admonition type="success" name="Tip" %}If you want to make sure your server automatically connects to this server on startup and remains connected later, you may want to configure a [peer reservation](use-a-peer-reservation.md) for that peer.{% /admonition %}
+{% admonition type="success" name="Tip" %}The `connect` method makes one attempt, and the server doesn't remember it after a restart. If you want your server to connect to this server on startup and keep trying later, add it to your `[ips_fixed]`. If that server is often full, also ask its operator for a [peer reservation](use-a-peer-reservation.md), which gives your server a slot there.{% /admonition %}
 
 
 ## Prerequisites
 
 - You must know the IP address of the peer you want to connect to.
-- You must know what port the peer you want to connect to uses for the XRP Ledger [peer protocol](../../../concepts/networks-and-servers/peer-protocol.md). The default config file uses port 2459.
+- You must know what port the peer you want to connect to uses for the XRP Ledger [peer protocol](../../../concepts/networks-and-servers/peer-protocol.md). The default config file uses port 2459, but many existing servers still use 51235, so ask the operator.
 - You must have a network connection from your server to the peer. For example, the peer server must [forward the appropriate port through its firewall](forward-ports-for-peering.md).
 - The peer server must have available peer slots. If the peer is already at its maximum number of peers, you can ask the peer server's operator to add a [peer reservation](use-a-peer-reservation.md) for your server.
+- Your own server must have a free outbound slot, unless the peer is in your `[ips_fixed]` or `[cluster_nodes]`; otherwise the connection fails with `Outbound Full`.
 
 ## Steps
 
@@ -65,7 +66,7 @@ xrpld connect 169.54.2.151 2459
     - [Peer Protocol](../../../concepts/networks-and-servers/peer-protocol.md)
     - [The `xrpld` Server](../../../concepts/networks-and-servers/index.md)
 - **Tutorials:**
-    - [Capacity Planning](../../installation/capacity-planning.md)
+    - [Capacity Planning](../../prerequisites/capacity-planning.md)
     - [Troubleshoot the `xrpld` Server](../../troubleshooting/index.md)
 - **References:**
     - [connect method][]

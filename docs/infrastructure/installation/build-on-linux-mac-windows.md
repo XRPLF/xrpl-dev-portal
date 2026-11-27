@@ -12,6 +12,6 @@ top_nav_grouping: Popular Pages
 
 Building `xrpld` across various platforms such as Windows, Linux, or macOS requires a C++ development environment. You will need tools like Git, Python, Conan, CMake, and a suitable C++ compiler.
 
-To continue, proceed to {% source-link name="the latest rippled build instructions on GitHub" path="BUILD.md" /%}.
+To continue, proceed to {% source-link name="the xrpld build instructions on GitHub" path="BUILD.md" /%}.
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

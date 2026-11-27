@@ -15,13 +15,13 @@ Peer reservations are most useful when the two servers are run by different part
 - The server making the outgoing connection is the **stock server**. This server _uses_ the peer reservation on the hub server.
 - The server receiving the incoming connection is the **hub server**. The administrator _adds_ the peer reservation to this server.
 
-However, you can use these instructions to set up a peer reservation regardless of whether one server or both are hubs, validators, or stock servers. It is also possible to use a peer reservation when the busier server is the one making the outgoing connection, but this process does not describe that configuration.
+However, you can use these instructions to set up a peer reservation regardless of whether one server or both are hubs, validators, or stock servers. It is also possible to use a peer reservation when the busier server is the one making the outgoing connection, but this process doesn't describe that configuration.
 
 ## Prerequisites
 
 To complete these steps, you must meet the following prerequisites:
 
-- The administrators both servers must have `xrpld` [installed](../../installation/index.md) and running.
+- The administrators of both servers must have `xrpld` [installed](../../installation/index.md) and running.
 - The administrators of both servers must agree to cooperate and must be able to communicate. A public communications channel is fine because you don't need to share any secret information.
 - The hub server must be able to receive incoming peer connections. For instructions on how to configure a firewall to allow this, see [Forward Ports for Peering](forward-ports-for-peering.md).
 - Both servers must be configured to sync with the same [XRP Ledger network](../../../concepts/networks-and-servers/parallel-networks.md), such as the production XRP Ledger, the Testnet, or the Devnet.
@@ -45,7 +45,7 @@ If you have already configured your server with a permanent node key pair value,
     ```
     xrpld validation_create
 
-    Loading: "/etc/xrpld.cfg"
+    Loading: "/etc/xrpld/xrpld.cfg"
     Connecting to 127.0.0.1:5005
     {
        "result" : {
@@ -57,7 +57,7 @@ If you have already configured your server with a permanent node key pair value,
     }
     ```
 
-    Save the `validation_seed` (your node seed value) and the `validation_public_key` value (your node public key )
+    Save the `validation_seed` (your node seed value) and the `validation_public_key` value (your node public key).
 
 2. Edit your `xrpld`'s config file.
 
@@ -153,12 +153,17 @@ xrpld connect 169.54.2.151 2459
 
 {% /tabs %}
 
-If the hub server's administrator has set up the peer reservation as described in the previous steps, this should automatically connect and remain connected as long as possible.
+If the hub server's administrator has set up the peer reservation as described in the previous steps, this connects. The `connect` method makes one attempt, so to reconnect after a restart or a dropped connection, also add the hub server to the stock server's `[ips_fixed]`:
+
+```
+[ips_fixed]
+169.54.2.151 2459
+```
 
 
 ## Next Steps
 
-As a server administrator, you can manage the reservations your server has for other peers. (It is not possible to check which other servers have reservations for yours.) You can:
+As a server administrator, you can manage the reservations your server has for other peers. (It isn't possible to check which other servers have reservations for yours.) You can:
 
 - Add more peer reservations or update their descriptions, using the [peer_reservations_add method][].
 - Check which servers you have configured reservations for, using the [peer_reservations_list method][].
@@ -175,7 +180,7 @@ As a server administrator, you can manage the reservations your server has for o
     - [Consensus](../../../concepts/consensus-protocol/index.md)
     - [Parallel Networks](../../../concepts/networks-and-servers/parallel-networks.md)
 - **Tutorials:**
-    - [Capacity Planning](../../installation/capacity-planning.md)
+    - [Capacity Planning](../../prerequisites/capacity-planning.md)
     - [Troubleshooting `xrpld`](../../troubleshooting/index.md)
 - **References:**
     - [peers method][]

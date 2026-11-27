@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 400" width="880" height="400" role="img" aria-labelledby="t d">
+<title id="t">How the XRP Ledger server roles connect</title>
+<desc id="d">Clients talk to stock nodes and Clio. Stock nodes connect to the peer network through public hubs. Validators are shown behind proxy servers their operators run, the strongest of several topologies. Full history servers keep every ledger, and can fill a new Clio database.</desc>
+<style>
+.box{fill:#ffffff;stroke:#27a2db;stroke-width:1.5}
+.box.val{fill:#e9f6fc}
+.box.proxy{fill:#f3f3f3;stroke:#8a8a8a}
+.region{fill:none;stroke:#8a8a8a;stroke-dasharray:5 4;stroke-width:1}
+.lbl{font-family:ui-sans-serif,system-ui,-apple-system,Helvetica,Arial,sans-serif;font-size:13px;fill:#1f1f1f;text-anchor:middle}
+.sub{font-size:11px;fill:#5a5a5a}
+.cap{font-family:ui-sans-serif,system-ui,-apple-system,Helvetica,Arial,sans-serif;font-size:11px;fill:#5a5a5a;text-anchor:start}
+.peer{stroke:#27a2db;stroke-width:1.5;fill:none}
+.read{stroke:#8a8a8a;stroke-width:1.5;stroke-dasharray:4 3;fill:none}
+@media (prefers-color-scheme: dark){
+.box{fill:#1b1f24;stroke:#4fb8e8}
+.box.val{fill:#15323f}
+.box.proxy{fill:#262a30;stroke:#9a9a9a}
+.region{stroke:#9a9a9a}
+.lbl{fill:#e6e6e6}
+.sub,.cap{fill:#b0b0b0}
+.peer{stroke:#4fb8e8}
+.read{stroke:#9a9a9a}
+}
+</style>
+<defs>
+<marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#27a2db"/></marker>
+<marker id="g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#8a8a8a"/></marker>
+</defs>
+
+<!-- regions -->
+<rect class="region" x="18" y="60" width="130" height="300" rx="8"/>
+<text class="lbl sub" x="83" y="50">Clients</text>
+<rect class="region" x="178" y="60" width="190" height="300" rx="8"/>
+<text class="lbl sub" x="273" y="50">Serving nodes</text>
+<rect class="region" x="398" y="60" width="160" height="300" rx="8"/>
+<text class="lbl sub" x="478" y="50">Peer network</text>
+<rect class="region" x="588" y="60" width="274" height="300" rx="8"/>
+<text class="lbl sub" x="725" y="50">Validators, here behind their own proxies</text>
+
+<!-- clients -->
+<rect class="box" x="33" y="110" width="100" height="40" rx="6"/><text class="lbl" x="83" y="134">Wallet</text>
+<rect class="box" x="33" y="180" width="100" height="40" rx="6"/><text class="lbl" x="83" y="204">Application</text>
+<rect class="box" x="33" y="250" width="100" height="40" rx="6"/><text class="lbl" x="83" y="274">Explorer</text>
+
+<!-- serving -->
+<rect class="box" x="198" y="95" width="150" height="44" rx="6"/><text class="lbl" x="273" y="113">Stock node</text><text class="lbl sub" x="273" y="129">xrpld</text>
+<rect class="box" x="198" y="165" width="150" height="44" rx="6"/><text class="lbl" x="273" y="183">Clio</text><text class="lbl sub" x="273" y="199">API server, not a peer</text>
+<rect class="box" x="198" y="290" width="150" height="44" rx="6"/><text class="lbl" x="273" y="308">Full history server</text><text class="lbl sub" x="273" y="324">xrpld, deletes nothing</text>
+
+<!-- hubs -->
+<rect class="box" x="418" y="120" width="120" height="44" rx="6"/><text class="lbl" x="478" y="138">Public hub</text><text class="lbl sub" x="478" y="154">xrpld, many peers</text>
+<rect class="box" x="418" y="220" width="120" height="44" rx="6"/><text class="lbl" x="478" y="238">Public hub</text><text class="lbl sub" x="478" y="254">xrpld, many peers</text>
+
+<!-- validators -->
+<rect class="box proxy" x="608" y="95" width="90" height="36" rx="6"/><text class="lbl" x="653" y="117">Proxy</text>
+<rect class="box proxy" x="608" y="145" width="90" height="36" rx="6"/><text class="lbl" x="653" y="167">Proxy</text>
+<rect class="box val" x="738" y="112" width="104" height="52" rx="6"/><text class="lbl" x="790" y="134">Validator</text><text class="lbl sub" x="790" y="150">private, signs ledgers</text>
+
+<rect class="box proxy" x="608" y="235" width="90" height="36" rx="6"/><text class="lbl" x="653" y="257">Proxy</text>
+<rect class="box proxy" x="608" y="285" width="90" height="36" rx="6"/><text class="lbl" x="653" y="307">Proxy</text>
+<rect class="box val" x="738" y="252" width="104" height="52" rx="6"/><text class="lbl" x="790" y="274">Validator</text><text class="lbl sub" x="790" y="290">private, signs ledgers</text>
+
+<!-- client to serving (API) -->
+<path class="read" d="M133 130 L198 117" marker-end="url(#g)"/>
+<path class="read" d="M133 200 L198 187" marker-end="url(#g)"/>
+<path class="read" d="M133 200 L198 122" marker-end="url(#g)"/>
+<path class="read" d="M133 270 L198 192" marker-end="url(#g)"/>
+
+<!-- clio reads from xrpld -->
+<path class="read" d="M273 165 L273 139" marker-end="url(#g)"/>
+<path class="read" d="M273 290 L273 209" marker-end="url(#g)"/>
+
+<!-- peer connections -->
+<path class="peer" d="M348 117 L418 142" marker-start="url(#a)" marker-end="url(#a)"/>
+<path class="peer" d="M348 312 L418 242" marker-start="url(#a)" marker-end="url(#a)"/>
+<path class="peer" d="M478 164 L478 220" marker-start="url(#a)" marker-end="url(#a)"/>
+<path class="peer" d="M538 142 L608 113" marker-start="url(#a)" marker-end="url(#a)"/>
+<path class="peer" d="M538 150 L608 163" marker-start="url(#a)" marker-end="url(#a)"/>
+<path class="peer" d="M538 242 L608 253" marker-start="url(#a)" marker-end="url(#a)"/>
+<path class="peer" d="M538 250 L608 303" marker-start="url(#a)" marker-end="url(#a)"/>
+<path class="peer" d="M698 113 L738 132" marker-start="url(#a)" marker-end="url(#a)"/>
+<path class="peer" d="M698 163 L738 144" marker-start="url(#a)" marker-end="url(#a)"/>
+<path class="peer" d="M698 253 L738 272" marker-start="url(#a)" marker-end="url(#a)"/>
+<path class="peer" d="M698 303 L738 284" marker-start="url(#a)" marker-end="url(#a)"/>
+
+<!-- legend -->
+<path class="peer" d="M30 382 L70 382" marker-start="url(#a)" marker-end="url(#a)"/><text class="cap" x="78" y="386">peer connection (same software on both ends)</text>
+<path class="read" d="M360 382 L400 382" marker-end="url(#g)"/><text class="cap" x="408" y="386">API request or data read</text>
+</svg>

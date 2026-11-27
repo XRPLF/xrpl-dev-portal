@@ -8,9 +8,9 @@ labels:
 ---
 # Forward Ports for Peering
 
-Servers in the XRP Ledger peer-to-peer network communicate over the [peer protocol](../../../concepts/networks-and-servers/peer-protocol.md). For the best combination of security and connectivity to the rest of the network, you should use a firewall to protect your server from most ports, but open or forward the peer protocol port.
+Servers in the XRP Ledger peer-to-peer network communicate over the [peer protocol](../../../concepts/networks-and-servers/peer-protocol.md). For the best combination of security and connectivity to the rest of the network, you should use a firewall to protect your server from most ports, but open or forward the peer protocol port. Skip this on a [private server](configure-a-private-server.md), such as a validator that connects through proxies or hubs. It dials out and shouldn't accept inbound peers.
 
-While your `xrpld` server is running, you can check to see how many peers you have by running the [server_info method][]. The `peers` field of the `info` object shows how many peers are currently connected to your server. If this number is exactly 10 or 11, that usually means your firewall is blocking incoming connections.
+While your `xrpld` server is running, you can check to see how many peers you have by running the [server_info method][]. The `peers` field of the `info` object shows how many peers are currently connected to your server. If this number is exactly 10 or 11, that usually means your firewall is blocking incoming connections. (The default limit of 21 is 10 outgoing plus up to 11 incoming, so a server nobody can reach stays near 10.)
 
 Example of a `server_info` result (trimmed) showing only 10 peers, likely because a firewall is blocking incoming peer connections:
 
@@ -38,7 +38,7 @@ Loading: "/etc/xrpld/xrpld.cfg"
 }
 ```
 
-To allow incoming connections, configure your firewall to allow incoming traffic on the peer protocol port, which is served on **port 2459** in the default config file. The instructions to open a port depend on your firewall. If your server is behind a router that performs Network Address Translation (NAT), you must configure your router to forward the port to your server.
+To allow incoming connections, configure your firewall to allow incoming traffic on the peer protocol port, which is served on **port 2459** in the default config file. Use the `port` in your own `[port_peer]` stanza, which is 51235 on many older installs. The instructions to open a port depend on your firewall. If your server is behind a router that performs Network Address Translation (NAT), you must configure your router to forward the port to your server.
 
 If you use the `firewalld` software firewall on Red Hat Enterprise Linux, you can [use the `firewall-cmd` tool](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/security_guide/sec-using_zones_to_manage_incoming_traffic_depending_on_source) to open **port 2459** to all incoming traffic.
 
@@ -62,7 +62,7 @@ $ sudo firewall-cmd --zone=public --permanent --add-port=2459/tcp
 
 For other software and hardware firewalls, see the manufacturer's official documentation.
 
-If you are using a hosting service with a virtual firewall (for example, [AWS Security Groups](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html)), you do not need to use `firewalld`, but you still need to allow inbound traffic from the open internet on the peer port. Make sure you apply the relevant rules to your host or virtual machine.
+If you are using a hosting service with a virtual firewall (for example, [AWS Security Groups](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html)), you don't need to use `firewalld`, but you still need to allow inbound traffic from the open internet on the peer port. Make sure you apply the relevant rules to your host or virtual machine.
 
 
 ## See Also
@@ -71,7 +71,7 @@ If you are using a hosting service with a virtual firewall (for example, [AWS Se
     - [Peer Protocol](../../../concepts/networks-and-servers/peer-protocol.md)
     - [The `xrpld` Server](../../../concepts/networks-and-servers/index.md)
 - **Tutorials:**
-    - [Capacity Planning](../../installation/capacity-planning.md)
+    - [Capacity Planning](../../prerequisites/capacity-planning.md)
     - [Troubleshoot the `xrpld` Server](../../troubleshooting/index.md)
 - **References:**
     - [connect method][]

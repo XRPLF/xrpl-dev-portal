@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 920" role="img" aria-labelledby="title desc">
+  <title id="title">Robust Clio client query path</title>
+  <desc id="desc">API clients connect through TLS to a redundant gateway or managed high-availability load balancer. Only read-only Clio readers receive client traffic. Readers access the same ScyllaDB cluster used by both writers. Readers and database share a low-latency private network behind a firewall. Both writers are excluded from the client route.</desc>
+  <defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 10 5 0 10Z" fill="#2b3e51"/></marker></defs>
+  <g font-family="system-ui, -apple-system, sans-serif" fill="#2c3e50" text-anchor="middle">
+    <rect x="120" y="28" width="320" height="80" rx="14" fill="#ffffff" stroke="#8A919A" stroke-width="2"/>
+    <text x="280" y="78" font-size="26" font-weight="700">API clients</text>
+    <path d="M280 108V194" fill="none" stroke="#2b3e51" stroke-width="2.5" marker-end="url(#arrow)"/>
+    <text x="280" y="159" font-size="20" fill="#2b3e51" stroke="#ffffff" stroke-width="7" paint-order="stroke">TLS · HTTP / WebSocket</text>
+    <rect x="60" y="204" width="440" height="112" rx="14" fill="#fad26b" stroke="#f8a136" stroke-width="2"/>
+    <text x="280" y="245" font-size="25" font-weight="700">HA gateway / load balancer</text>
+    <text x="280" y="280" font-size="20" fill="#f7931a">Health checks · rate limits · draining</text>
+    <rect x="16" y="358" width="528" height="542" rx="16" fill="none" stroke="#b1b3b5" stroke-width="2" stroke-dasharray="7 6"/>
+    <path d="M280 316V422H151V458M280 422H409V458" fill="none" stroke="#2b3e51" stroke-width="2.5" marker-end="url(#arrow)"/>
+    <text x="280" y="394" font-size="18" font-weight="700" letter-spacing="1" stroke="#ffffff" stroke-width="7" paint-order="stroke">PRIVATE NETWORK · FIREWALLED</text>
+    <rect x="36" y="468" width="230" height="108" rx="14" fill="#e6e7e8" stroke="#27a2db" stroke-width="2"/>
+    <rect x="294" y="468" width="230" height="108" rx="14" fill="#e6e7e8" stroke="#27a2db" stroke-width="2"/>
+    <text x="151" y="509" font-size="24" font-weight="700">Clio reader 1</text>
+    <text x="409" y="509" font-size="24" font-weight="700">Clio reader 2+</text>
+    <text x="151" y="545" font-size="20" fill="#2789b9">read_only: true</text>
+    <text x="409" y="545" font-size="20" fill="#2789b9">read_only: true</text>
+    <path d="M151 576V614H409V576" fill="none" stroke="#2b3e51" stroke-width="2.5"/>
+    <path d="M280 614V708" fill="none" stroke="#2b3e51" stroke-width="2.5" marker-end="url(#arrow)"/>
+    <text x="280" y="664" font-size="20" fill="#2b3e51" stroke="#ffffff" stroke-width="7" paint-order="stroke">Read stored ledger history</text>
+    <rect x="60" y="718" width="440" height="108" rx="14" fill="#CAD4DF" stroke="#21aa47" stroke-width="2"/>
+    <text x="280" y="758" font-size="25" font-weight="700">Shared ScyllaDB cluster</text>
+    <text x="280" y="794" font-size="20" fill="#21aa47">Same database used by both writers</text>
+    <text x="280" y="862" font-size="19" font-weight="600" fill="#2b3e51">Readers + database: same low-latency LAN</text>
+  </g>
+</svg>

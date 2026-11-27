@@ -31,7 +31,7 @@ These options apply to most modes:
 
 | Option          | Description                                                |
 |:----------------|:-----------------------------------------------------------|
-| `--conf {FILE}` | Use `{FILE}` as the config file instead of looking for config files in the default locations. If not specified, `xrpld` first checks the local working directory for an `xrpld.cfg` file. On Linux, if that file is not found, `xrpld` next checks for `$XDG_CONFIG_HOME/xrpld/xrpld.cfg`. (Typically, `$XDG_CONFIG_HOME` maps to `$HOME/.config`.) |
+| `--conf {FILE}` | Use `{FILE}` as the config file instead of looking for config files in the default locations. If not specified, `xrpld` first checks the local working directory for an `xrpld.cfg` file, then `$XDG_CONFIG_HOME/xrpld/xrpld.cfg` (with `$HOME/.config` standing in when `$XDG_CONFIG_HOME` isn't set), then `/etc/xrpld/xrpld.cfg`. A `rippled.cfg` is accepted in each place as a fallback. The packaged service always passes `--conf /etc/xrpld/xrpld.cfg`. |
 
 ### Verbosity Options
 
@@ -39,9 +39,9 @@ The following generic options affect the amount of information written to standa
 
 | Option      | Short Version | Description                                    |
 |:------------|:--------------|:-----------------------------------------------|
-| `--debug`   |               | **DEPRECATED** Enables trace-level debugging (alias for `--verbose`). Use the [log_level method][] instead. |
-| `--silent`  |               | Don't write logs to standard out and standard error during startup. Recommended when starting `xrpld` as a systemd unit to reduce redundant logging. |
-| `--verbose` | `-v`          | **DEPRECATED** Enables trace-level debugging. Use the [log_level method][] instead. |
+| `--debug`   |               | Enables the server's normally suppressed internal debug journal at trace level. Not an alias for `--verbose`. For ordinary log verbosity, use the [log_level method][] instead. |
+| `--silent`  |               | Don't echo log lines to standard error for the whole run (the debug log file is unaffected). The packaged `systemd` unit passes this so the journal doesn't duplicate `debug.log`. |
+| `--verbose` | `-v`          | Sets every log partition to trace level at startup. The `log_level` command in the packaged config's `[rpc_startup]` then lowers it again, so prefer the [log_level method][] for targeted debugging. |
 
 
 
@@ -55,7 +55,7 @@ Daemon mode is the default mode of operation for `xrpld`. In addition to the [Ge
 
 | Option              | Description                                            |
 |:--------------------|:-------------------------------------------------------|
-| `--fg`              | Run the daemon as a single process in the foreground. Otherwise, `xrpld` forks a second process for the daemon while the first process runs as a monitor. |
+| `--fg`              | Deprecated and ignored. The server always runs as a single foreground process; use `systemd` or another supervisor to run it as a service. |
 | `--import`          | Before fully starting, import ledger data from another `xrpld` server's ledger store. Requires a valid `[import_db]` stanza in the config file. |
 | `--newnodeid`       | Generate a random node identity for the server. |
 | `--nodeid {VALUE}`  | Specify a node identity. `{VALUE}` can also be a parameter associated with the container or hardware running the server, such as `$HOSTNAME`. |
@@ -100,7 +100,7 @@ Besides the individual commands, client mode accepts the [Generic Options](#gene
 | Option                  | Description                                        |
 |:------------------------|:---------------------------------------------------|
 | `--rpc`                 | Explicitly specify that the server should run in client mode. Not required. |
-| `--rpc_ip {IP_ADDRESS}` | Connect to the `xrpld` server at the specified IP Address, optionally including a port number. |
+| `--rpc_ip {IP_ADDRESS}` | Connect to the `xrpld` server at the specified address and port, in the form `IP:PORT`. The port is required; without it the client prints `No port specified in rpc_ip.` and exits. |
 | `--rpc_port {PORT}`     | **DEPRECATED** Connect to the `xrpld` server on the specified port. Specify the port alongside the IP address using `--rpc_ip` instead. |
 
 {% admonition type="success" name="Tip" %}Some arguments accept negative numbers as values. To ensure that arguments to API commands are not interpreted as options instead, pass the `--` argument before the command name.{% /admonition %}

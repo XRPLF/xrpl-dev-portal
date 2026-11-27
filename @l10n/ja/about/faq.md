@@ -95,7 +95,7 @@ XRP Ledgerのコンセンサスメカニズムが不利な状況でどのよう�
 
 個々のデフォルトUNLの発行者は、推奨リストにいつバリデータを追加したり削除したりするかについて、独自のポリシーを設けています。
 
-推奨事項やベストプラクティスについては、[バリデータとしての`xrpld`の実行](../docs/infrastructure/configuration/server-modes/run-xrpld-as-a-validator.md)をご覧ください。
+推奨事項やベストプラクティスについては、[バリデータとしての`xrpld`の実行](../docs/infrastructure/configuration/server-modes/validator.md)をご覧ください。
 
 
 #### デフォルトUNL(dUNL)がネットワークに最も影響力を持つなら、XRPLは中央集権的ではないでしょうか？

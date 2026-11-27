@@ -24,25 +24,27 @@ The settings in this section are parameters in the `xrpld.cfg` file. You can acc
 
 ### Node Size
 
-The `[node_size]` parameter should match the overall hardware capacity of your server. You can omit this parameter to have the server automatically choose an appropriate setting based on the system's total RAM and number of CPU threads. You can set this value explicitly if the automatic setting is wrong for your system, for example if some of the system's RAM or threads need to be set aside for other software, or the amounts reported by the operating system are inaccurate. (This can occur in some containers.)
+The `[node_size]` parameter should match the overall hardware capacity of your server. You can omit this parameter to have the server automatically choose an appropriate setting based on the system's total RAM and number of CPU threads. You can set this value explicitly if the automatic setting is wrong for your system, for example if some of the system's RAM or threads need to be set aside for other software, or the amounts reported by the operating system are inaccurate. (This can occur in some containers.) To see which value a running server is using, call the [server_info method][] on an admin connection; the response's `node_size` field reports it. The public form of the call omits the field.
 
 As a general rule, you should always use the largest node size your available RAM can support. See the following table for recommended settings.
 
 #### Recommendation
 
-Each `[node_size]` has a corresponding requirement for available RAM. For example, if you set `[node_size]` to `huge`, you should have at least 32 GB of available RAM to help ensure that `xrpld` can run smoothly.
+Each `[node_size]` has a comfortable host size. `huge` runs on 32 GB hosts in production; 64 GB is the comfortable build. The table is a guide to host sizing, not a list of hard requirements: the server auto-selects `huge` from 24 GB of RAM upward when it has 8 or more hardware threads.
 
 To tune your server, it may be useful to start with `tiny` and increase the size to `small`, `medium`, and so on as you refine the requirements for your use case.
 
-| RAM available | `node_size` value | Notes                                    |
+| Comfortable host RAM | `node_size` value | Notes                                    |
 |:--------------|:------------------|:-----------------------------------------|
 | < 8 GB        | `tiny`            | **Not recommended.** A server with this setting may not sync to a busy network. |
 | 8 GB          | `small`           | Recommended for test servers that only need to run occasionally. |
-| 16 GB         | `medium`          | The `xrpld-example.cfg` file uses this value. |
-| 32 GB         | `large`           | **Not recommended.** In practice, this setting performs worse than `huge` in most circumstances. Always use `huge` if you want stability. |
+| 16 GB         | `medium`          | The most a 4-thread host auto-selects, whatever its RAM; see the thread rule below. A 16 GB host with 6 or more threads auto-selects `large`. |
+| 32 GB         | `large` or `huge` | `large` performs comparably to `huge` in measured tests. Most production validators run `huge`, including on 32 GB hosts. |
 | 64 GB         | `huge`            | Recommended for production servers.      |
 
 If you set the `[node_size]` parameter to an invalid value, the [server fails to start](../troubleshooting/server-wont-start.md#bad-node_size-value).
+
+The RAM figures above describe a comfortable host size for each setting, not the process footprint, which is about 12 to 16 GB at `huge` on a stock server and 13 to 18 GB on a validator. The example configuration ships no live `[node_size]` line. When it is omitted, the server selects a value from the RAM it sees at startup (under 6 GB `tiny`, under 8 `small`, under 12 `medium`, under 24 `large`, otherwise `huge`) and then caps the result at half the hardware thread count, so a 4-thread host never auto-selects above `medium` and `huge` needs 8 threads; see [Node size](system-requirements/validator.md#node-size). A proposed change to the core server (XRPLF/rippled [#7965](https://github.com/XRPLF/rippled/pull/7965)) would replace `node_size` with a memory limit.
 
 
 ### Node DB Type
@@ -63,13 +65,13 @@ NuDB has nearly constant performance and memory footprints regardless of the [am
 
 Production servers should be configured to use NuDB and to store the amount of historical data required for your use case.
 
-Here is the recommended `[node_db]` configuration for an `xrpld` server using NuDB:
+Here is an example `[node_db]` configuration for an `xrpld` server using NuDB, with the retention the shipped `xrpld-example.cfg` uses:
 
 ```
 [node_db]
 type=NuDB
 path=/var/lib/xrpld/db/nudb
-online_delete=2000
+online_delete=512
 advisory_delete=0
 ```
 
@@ -98,7 +100,7 @@ filter_bits=12
 cache_mb=512
 file_size_mb=64
 file_size_mult=2
-online_delete=2000
+online_delete=512
 advisory_delete=0
 ```
 
@@ -121,7 +123,7 @@ use_tx_tables=0
 
 The example `xrpld-example.cfg` file sets the logging verbosity to `warning` in the `[rpc_startup]` stanza. This setting greatly reduces disk space and I/O requirements over more verbose logging. However, more verbose logging provides increased visibility for troubleshooting.
 
-{% admonition type="warning" name="Caution" %}If you omit the `log_level` command from the `[rpc_startup]` stanza, the server writes logs to disk at the `debug` level and outputs `warning` level logs to the console. Logging at the `debug` level requires several more GB of disk space per day than `warning` level, depending on transaction volumes and client activity.{% /admonition %}
+{% admonition type="warning" name="Caution" %}If you omit the `log_level` command from the `[rpc_startup]` stanza, a server with a `[debug_logfile]` (as the packaged config has) writes logs at the `debug` level, and the same lines go to the file and to the console; there is no separate console level, and the packaged service passes `--silent` to suppress console output. Without a `[debug_logfile]` the threshold is `info` and nothing is written to disk. Logging at the `debug` level requires several more GB of disk space per day than `warning` level, depending on transaction volumes and client activity.{% /admonition %}
 
 
 ## Network and Hardware
@@ -130,7 +132,7 @@ Each server in the XRP Ledger network performs all of the transaction processing
 
 ### Recommendation
 
-See [System Requirements](system-requirements.md) for a summary of the recommended hardware specs.
+See [System Requirements](system-requirements/index.md), then the page for your role, for the recommended hardware specs.
 
 #### CPU Utilization and Virtualization
 <!-- STYLE_OVERRIDE: utilization -->
@@ -148,39 +150,30 @@ The speed of storage is one of the most important factors in a server's capacity
 
 #### Disk Space
 
-The `[node_db]` stanza controls the server's _ledger store_, which holds [ledger history](../../concepts/networks-and-servers/ledger-history.md). The amount of disk space you need depends on how much history you plan to keep available locally. An XRP Ledger server does not need to store more than the most recent 256 ledger versions to follow the consensus process and report the complete state of the ledger, but you can only query your server for transactions that executed in ledger versions it has stored locally. Configure the `path` of the `[node_db]` to point to your chosen storage location for the ledger store.
+The `[node_db]` stanza controls the server's _ledger store_, which holds [ledger history](../../concepts/networks-and-servers/ledger-history.md). The amount of disk space you need depends on how much history you plan to keep available locally. An XRP Ledger server doesn't need to store more than the most recent 256 ledger versions to follow the consensus process and report the complete state of the ledger, but you can only query your server for transactions that executed in ledger versions it has stored locally. Configure the `path` of the `[node_db]` to point to your chosen storage location for the ledger store.
 
-You can control how much data you keep with [online deletion](../configuration/data-retention/online-deletion.md); the default config file has the server keep the latest 2000 ledger versions. Without online deletion, the server's disk requirements grow without bounds.
+You can control how much data you keep with [online deletion](../configuration/data-retention/online-deletion.md); the default config file has the server keep the latest 512 ledger versions, about half an hour. About a day (25,000 ledgers) is the recommended floor for anything that serves clients; see [Minimal Configurations](../configuration/minimal-configurations.md). Without online deletion, the server's disk requirements grow without bounds.
 
-The following table approximates the requirements for different amounts of history, at the time of writing (2023-07-19):
+The size of the ledger store follows from a rule, not a table. Peak NuDB size = measured MB per ledger x the number of ledgers between rotations x 2. The factor of 2 is there because online deletion keeps two copies of the store until the next rotation, so the peak comes right before one.
 
-| Real Time Amount | Number of Ledger Versions | Disk Space Required (NuDB) |
-|:-----------------|:--------------------------|:---------------------------|
-| 2 hours          | 2,000                     | 450 MB |
-| 1 day            | 25,000                    | 12 GB |
-| 14 days          | 350,000                   | 168 GB |
-| 30 days          | 750,000                   | 360 GB |
-| 90 days          | 2,250,000                 | 1 TB |
-| 1 year           | 10,000,000                | 4.5 TB |
-| 2 years          | 20,000,000                | 9 TB |
-| Full history     | 81,000,000+               | ~26 TB |
+Measure MB per ledger on your own server and write down the date, because it moves with network activity; one production validator measured 0.65 to 1.3 MB per ledger over 16 rotations in late 2026. Count the ledgers between rotations from the real schedule. With `advisory_delete=0` that is about `online_delete`; with a scheduled `can_delete` it is whatever the schedule allows. Don't scale a figure measured at one `online_delete` setting to another: each rotation copies the current state forward, so the cost per ledger changes with the interval.
 
-These numbers are estimates. They depend on several factors, most importantly the volume of transactions in the network. As transaction volume increases, each ledger version stores more unique data. You should provision extra storage capacity to prepare for future growth.
+Add the SQLite databases in `[database_path]`: about 0.3 to 0.4 MB per ledger of the range they hold, which reaches about two rotation intervals. They don't shrink when rows are deleted, although SQLite reuses the freed space. Keep at least 30% of the volume free on top of the peak.
 
-The `online_delete` setting tells the server how many ledger versions to keep after deleting old history. You should plan for enough disk space to store twice that many ledger versions at maximum (right before online deletion runs).
+[Validator System Requirements](system-requirements/validator.md#disk) has a worked example with measured figures. For the other roles, see [Stock Node System Requirements](system-requirements/stock-node.md), [Hub System Requirements](system-requirements/hub.md), and [Full History System Requirements](system-requirements/full-history.md), which carries a measured full history store of about 44 TB.
 
 For instructions on how to change the amount of history you keep, see [Configure Online Deletion](../configuration/data-retention/configure-online-deletion.md).
 
 The `[database_path]` configures separate bookkeeping databases: these include transaction data as well as some runtime configurations.
 
-As a general rule, you can safely delete the database files (both the ledger store and the bookkeeping databases) for an `xrpld` server when it isn't running; this clears any stored ledger history the server has, but it can re-acquire that data from the network. However, if you delete the `wallet.db` file in the `[database_path]`, you must manually reapply runtime configuration changes such as [amendment votes](../configuration/configure-amendment-voting.md) and [peer reservations](../configuration/peering/use-a-peer-reservation.md).
+As a general rule, you can delete the database files (both the ledger store and the bookkeeping databases) for an `xrpld` server when it isn't running; this clears any stored ledger history the server has, but it can re-acquire that data from the network. However, if you delete the `wallet.db` file in the `[database_path]`, the server creates a new node identity (unless `[node_seed]` is set) and you must manually reapply runtime configuration changes such as [amendment votes](../configuration/configure-amendment-voting.md) and [peer reservations](../configuration/peering/use-a-peer-reservation.md). Servers that list your old node key, in `[cluster_nodes]` or in a peer reservation, no longer recognize you.
 
 If your config file has a `[shard_db]` stanza, you can safely remove it. This section is obsolete and has no effect. {% badge href="https://github.com/XRPLF/rippled/releases/tag/2.3.0" %}Removed in: rippled 2.3.0{% /badge %}
 
 
 ##### Amazon Web Services
 
-Amazon Web Services (AWS) is a popular virtualized hosting environment. You can run `xrpld` in AWS, but do not use Elastic Block Storage (EBS). See [System Requirements](system-requirements.md). <!-- SPELLING_IGNORE: ebs, aws -->
+Amazon Web Services (AWS) is a popular virtualized hosting environment. You can run `xrpld` in AWS, but don't use Elastic Block Storage (EBS). See [Stock Node System Requirements](system-requirements/stock-node.md). <!-- SPELLING_IGNORE: ebs, aws -->
 
 AWS instance stores (`ephemeral` storage) provide suitable performance, but you may lose data in some circumstances, including when you start/stop an instance. This may be acceptable, since an individual XRP Ledger server can usually re-acquire lost ledger history from its peers. Configuration settings should be stored on more permanent storage.
 

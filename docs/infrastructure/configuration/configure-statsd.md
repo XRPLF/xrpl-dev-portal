@@ -8,7 +8,7 @@ labels:
 ---
 # Configure StatsD
 
-`rippled` can export health and behavioral information about itself in [StatsD](https://github.com/statsd/statsd) format. Those metrics can be consumed and visualized through [`rippledmon`](https://github.com/ripple/rippledmon) or any other collector that accepts StatsD formatted metrics.
+`xrpld` can export health and behavioral information about itself in [StatsD](https://github.com/statsd/statsd) format. Those metrics can be consumed and visualized through [`rippledmon`](https://github.com/ripple/rippledmon) or any other collector that accepts StatsD formatted metrics.
 
 ## Configuration Steps
 
@@ -30,7 +30,7 @@ To enable StatsD on your `xrpld` server, perform the following steps:
     [insight]
     server=statsd
     address=192.0.2.0:8125
-    prefix=my_rippled
+    prefix=my_xrpld
     ```
 
     - For the `address`, use the IP address and port where `rippledmon` is listening. By default, this port is 8125.
@@ -64,7 +64,7 @@ To enable StatsD on your `xrpld` server, perform the following steps:
 
 After you enable StatsD, the core server exports metrics about its own health and behavior. Each metric arrives as `<prefix>.<group>.<metric>`, where `prefix` is the value you set in the `[insight]` stanza and `group` is the server subsystem that reports it. For example, with `prefix=my_xrpld`, the validated ledger age arrives as `my_xrpld.LedgerMaster.Validated_Ledger_Age`.
 
-All of the metrics in this section are reported as StatsD gauges. Cumulative values are not reset between reports, so calculate rates in your collector. For the complete list of exported metrics, see the [`rippledmon` repository](https://github.com/ripple/rippledmon).
+All of the metrics in this section are reported as StatsD gauges. Cumulative values aren't reset between reports, so calculate rates in your collector. For the complete list of exported metrics, see the [`rippledmon` repository](https://github.com/ripple/rippledmon).
 
 ### Ledger
 
@@ -119,7 +119,7 @@ If your collector runs on a different machine, use that machine's network interf
     - [The `xrpld` Server](../../concepts/networks-and-servers/index.md)
 - **Tutorials:**
     - [Install `xrpld`](../installation/index.md)
-    - [Capacity Planning](../installation/capacity-planning.md)
+    - [Capacity Planning](../prerequisites/capacity-planning.md)
 - **References:**
     - [server_info method](../../references/http-websocket-apis/public-api-methods/server-info-methods/server_info.md)
     - [print method](../../references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/print.md)

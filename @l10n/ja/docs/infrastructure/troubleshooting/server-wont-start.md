@@ -183,7 +183,7 @@ Terminating thread rippled: main: unhandled St13runtime_error 'online_delete mus
 Terminating thread rippled: main: unhandled N5beast14BadLexicalCastE 'std::bad_cast'
 ```
 
-`node_size`フィールドの有効なパラメーターは`tiny`、`small`、`medium`、`large`、`huge`です。詳細は、[ノードサイズ](../installation/capacity-planning.md#ノードサイズ)をご覧ください。
+`node_size`フィールドの有効なパラメーターは`tiny`、`small`、`medium`、`large`、`huge`です。詳細は、[ノードサイズ](../prerequisites/capacity-planning.md#ノードサイズ)をご覧ください。
 
 
 
@@ -194,7 +194,7 @@ Terminating thread rippled: main: unhandled N5beast14BadLexicalCastE 'std::bad_c
     - [技術に関するよくある質問](/about/faq.md)
 - **チュートリアル:**
     - [ログメッセージについて](understanding-log-messages.md)
-    - [容量の計画](../installation/capacity-planning.md)
+    - [容量の計画](../prerequisites/capacity-planning.md)
 - **リファレンス:**
     - [xrpld APIリファレンス](../../references/http-websocket-apis/index.md)
       - [`xrpld`コマンドラインの使用](../commandline-usage.md)

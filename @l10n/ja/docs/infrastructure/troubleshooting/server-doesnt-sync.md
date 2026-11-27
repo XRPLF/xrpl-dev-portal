@@ -37,7 +37,7 @@ labels:
 
 ## 同期の問題のよくある原因
 
-同期の問題の原因として最もよくあるのは、[システム要件](../installation/system-requirements.md)を満たしていないことです。要件を満たせない主な原因は次の3つです。
+同期の問題の原因として最もよくあるのは、[システム要件](../prerequisites/system-requirements/index.md)を満たしていないことです。要件を満たせない主な原因は次の3つです。
 
 -  **低速なディスク。** 安定して高速な性能を発揮するソリッドステートディスク（SSD）が必要です。AWSなどのクラウドプロバイダーはディスク性能を保証しておらず、ハードウェアを共有する他のユーザの影響を受ける可能性があります。
 -  **不十分なRAM。** メモリー要件はさまざまな要因に大きく左右されます。例えば、ネットワークの負荷やXRP Ledgerがどのように使われるかなど、予測しづらい要因もあるため、念のため最小システム要件よりも大きいメモリーを用意することをお勧めします。
@@ -115,7 +115,7 @@ labels:
     - [技術に関するよくある質問](/about/faq.md)
 - **チュートリアル:**
     - [ログメッセージについて](understanding-log-messages.md)
-    - [容量の計画](../installation/capacity-planning.md)
+    - [容量の計画](../prerequisites/capacity-planning.md)
 - **リファレンス:**
     - [xrpld APIリファレンス](../../references/http-websocket-apis/index.md)
       - [peersメソッド][]

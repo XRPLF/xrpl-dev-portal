@@ -17,7 +17,7 @@ labels:
 
 Clioをインストールする前に、以下の条件を満たしている必要があります。
 
-- お使いのシステムが[システム要件](system-requirements.md)を満たしていることを確認してください。
+- お使いのシステムが[システム要件](../prerequisites/system-requirements/index.md)を満たしていることを確認してください。
 
     {% admonition type="info" name="Note" %}Clioのシステム要件は`xrpld`サーバと同じですが、同じ量のレジャー履歴を保存するのに必要なディスク容量はClioの方が少なくなります。{% /admonition %}
 
