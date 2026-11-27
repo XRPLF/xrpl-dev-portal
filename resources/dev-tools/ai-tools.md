@@ -37,6 +37,7 @@ A `SKILL.md` file provides behavioral instructions for AI models working with XR
 - [XRPL Wallet Skill](../../docs/agents/xrpl-agent-wallet-skill.md)
 - [XRPL Payment Skill](../../docs/agents/xrpl-payments-skill.md)
 - [XRPL Trading Skill](../../docs/agents/xrpl-trading-skill.md)
+- [XRPL Identity Skill](../../docs/agents/xrpl-identity-skill.md)
 
 ### XRPL Development Skill for Claude Code
 
