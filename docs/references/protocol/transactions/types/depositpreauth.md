@@ -88,6 +88,7 @@ In addition to error types that can occur for all transactions, DepositPreauth t
 | `tecNO_ENTRY`             | The transaction tried to revoke a preauthorization that does not exist in the ledger. |
 | `tecNO_ISSUER`            | One or more specified credential issuers does not exist in the ledger. |
 | `tecNO_TARGET`            | The transaction tried to authorize an account that is not a funded account in the ledger. |
+| `tecPSEUDO_ACCOUNT`       | The account specified in the `Authorize` field is a [pseudo-account](../../../../concepts/accounts/pseudo-accounts.md). {% amendment-disclaimer name="fixCleanup3_3_0" /%} |
 | `temCANNOT_PREAUTH_SELF`  | The address in the `Authorize` field is the sender of the transaction. You cannot preauthorize yourself. |
 | `temDISABLED`             | A required amendment is not enabled. |
 

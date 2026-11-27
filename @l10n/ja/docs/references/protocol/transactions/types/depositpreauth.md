@@ -90,6 +90,7 @@ DepositPreauthトランザクションは、あなたのアカウントへの支
 | `tecNO_ENTRY`             | トランザクションは存在しない事前承認を取り消そうとしました。 |
 | `tecNO_ISSUER`            | 指定された資格証明書発行者の1つ以上がレジャーに存在しません。 |
 | `tecNO_TARGET`            | トランザクションは、レジャーの資金提供アカウントではないアカウントを承認しようとしました。 |
+| `tecPSEUDO_ACCOUNT`       | `Authorize`フィールドで指定されたアカウントが[疑似アカウント](../../../../concepts/accounts/pseudo-accounts.md)です。 {% amendment-disclaimer name="fixCleanup3_3_0" /%} |
 | `temCANNOT_PREAUTH_SELF`  | `Authorize`フィールドのアドレスはトランザクションの送信者です。自分自身を事前承認することはできません。 |
 | `temDISABLED`             | 必要なAmendmentが有効になっていません。 |
 
