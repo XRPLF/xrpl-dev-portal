@@ -87,7 +87,7 @@ If you are replaying historical ledgers that are more than 2 years old (that is,
 - **Concepts:**
     - [Consensus](../consensus-protocol/index.md)
 - **Tutorials:**
-    - [Run xrpld as a Validator](../../infrastructure/configuration/server-modes/run-xrpld-as-a-validator.md)
+    - [Run xrpld as a Validator](../../infrastructure/configuration/server-modes/validator.md)
     - [Configure Amendment Voting](../../infrastructure/configuration/configure-amendment-voting.md)
     - [Contribute Code to the XRP Ledger](/resources/contribute-code/index.md)
 - **References:**

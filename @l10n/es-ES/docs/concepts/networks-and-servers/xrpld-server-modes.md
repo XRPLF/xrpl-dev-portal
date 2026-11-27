@@ -63,7 +63,7 @@ La validación utiliza solo una pequeña cantidad de recursos informáticos, per
 
 Puedes habilitar de forma segura la validación en un servidor que también se utiliza para otros fines; este tipo de configuración se llama un _servidor multiuso_. Alternativamente, puedes ejecutar un _validador dedicado_ que no realice otras tareas, posiblemente en un [cluster](clustering.md) con otros servidores `xrpld` en Modo P2P.
 
-Para más información sobre como ejecutar un validador, ver [Ejecutar `xrpld` como un validador](../../infrastructure/configuration/server-modes/run-xrpld-as-a-validator.md).
+Para más información sobre como ejecutar un validador, ver [Ejecutar `xrpld` como un validador](../../infrastructure/configuration/server-modes/validator.md).
 
 
 ## Modo solitario

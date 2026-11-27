@@ -10,13 +10,13 @@ xrpld server_info
 
 xrpld APIを使用した`xrpld`サーバとの通信について詳しくは、[xrpld API reference](../references/http-websocket-apis/index.md)をご覧ください。
 
-ストック`xrpld`サーバを実行できたら、次に検証サーバとして実行してみましょう。検証サーバについて、そして検証サーバを実行する理由については、[バリデータとしてのxrpldの実行](../infrastructure/configuration/server-modes/run-xrpld-as-a-validator.md)をご覧ください。
+ストック`xrpld`サーバを実行できたら、次に検証サーバとして実行してみましょう。検証サーバについて、そして検証サーバを実行する理由については、[バリデータとしてのxrpldの実行](../infrastructure/configuration/server-modes/validator.md)をご覧ください。
 
 `xrpld`サーバの起動でお困りですか? [xrpldサーバが起動しない](../infrastructure/troubleshooting/server-wont-start.md)をご覧ください。
 
 ### その他の構成
 
-`xrpld`は、デフォルト構成でXRP Ledgerに接続する必要があります。ただし、`xrpld.cfg`ファイルを編集すれば、設定を変更できます。推奨される構成設定については、[容量の計画](../infrastructure/installation/capacity-planning.md)をご覧ください。
+`xrpld`は、デフォルト構成でXRP Ledgerに接続する必要があります。ただし、`xrpld.cfg`ファイルを編集すれば、設定を変更できます。推奨される構成設定については、[容量の計画](../infrastructure/prerequisites/capacity-planning.md)をご覧ください。
 
 {% partial file="/@l10n/ja/docs/_snippets/conf-file-location.md" /%}
 

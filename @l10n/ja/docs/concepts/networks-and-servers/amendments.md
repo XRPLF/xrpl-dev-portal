@@ -81,7 +81,7 @@ Amendmentを有効にすると、修正前の動作のソースコードは`xrpl
 - **コンセプト:**
     - [コンセンサスについて](../consensus-protocol/index.md)
 - **チュートリアル:**
-    - [バリデータとしてxrpldを実行](../../infrastructure/configuration/server-modes/run-xrpld-as-a-validator.md)
+    - [バリデータとしてxrpldを実行](../../infrastructure/configuration/server-modes/validator.md)
     - [Amendment投票機能の設定](../../infrastructure/configuration/configure-amendment-voting.md)
     - [XRP Ledgerのコードへの貢献](/resources/contribute-code/index.md)
 - **リファレンス:**

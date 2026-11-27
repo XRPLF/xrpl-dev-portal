@@ -8,11 +8,11 @@ labels:
 
 # Run a Private Network with Docker
 
-This tutorial describes how to run a private XRP Ledger network on your computer with [Docker](https://docs.docker.com/get-docker/) and the latest version of [xrpld](https://hub.docker.com/r/rippleci/xrpld).
+This tutorial describes how to run a private XRP Ledger network on your computer with [Docker](https://docs.docker.com/get-docker/) and a current release of [xrpld](https://hub.docker.com/r/rippleci/xrpld). It uses `rippleci/xrpld:3.4.1`; replace the tag with the release you want to test.
 
 While you can easily use the public XRP Testnet servers, running a private network can be useful when trying to understand how the XRP Ledger works, or when testing new features in isolation.
 
-{% admonition type="warning" name="Caution" %}This tutorial is suited for development or testing purposes only, and does not involve using real money. You should **not** use this configuration for a production network.{% /admonition %}
+{% admonition type="warning" name="Caution" %}This tutorial is suited for development or testing purposes only, and doesn't involve using real money. You should **not** use this configuration for a production network.{% /admonition %}
 
 ## Learning Goals
 
@@ -39,10 +39,10 @@ Generate the keys for **each** of your validator nodes by using the `validator-k
 1. In your terminal, run the following to execute commands within the `xrpld` Docker container shell:
 
     ```
-    docker run -it --entrypoint /bin/bash rippleci/xrpld:latest
+    docker run -it --entrypoint /bin/bash rippleci/xrpld:3.4.1
     ```
 
-    {% admonition type="info" name="Note" %}For Apple M1 or M2 chips, run `docker run -it --platform linux/amd64 --entrypoint /bin/bash rippleci/xrpld:latest` instead.{% /admonition %}
+    {% admonition type="info" name="Note" %}For Apple M1 or M2 chips, run `docker run -it --platform linux/amd64 --entrypoint /bin/bash rippleci/xrpld:3.4.1` instead.{% /admonition %}
 
     Sample output:
 
@@ -53,8 +53,7 @@ Generate the keys for **each** of your validator nodes by using the `validator-k
 2. Generate a validator keypair using the `create_keys` command.
 
     ```
-    cd /opt/ripple/bin &&
-        ./validator-keys create_keys --keyfile /PATH/TO/YOUR/validator-<NUMBER>-keys.json
+    validator-keys create_keys --keyfile /PATH/TO/YOUR/validator-<NUMBER>-keys.json
     ```
 
     Sample output:
@@ -88,7 +87,7 @@ Generate the keys for **each** of your validator nodes by using the `validator-k
 4. Create a validator token using the `create_token` command.
 
     ```
-    ./validator-keys create_token --keyfile /PATH/TO/YOUR/validator-<NUMBER>-keys.json
+    validator-keys create_token --keyfile /PATH/TO/YOUR/validator-<NUMBER>-keys.json
     ```
 
     Copy the token value from the output and save it in a text file on your computer. For example:
@@ -295,41 +294,41 @@ To start running your private network, follow these steps:
       validator_1:
         platform: linux/amd64
         container_name: validator_1
-        image: "rippleci/xrpld"
+        image: "rippleci/xrpld:3.4.1"
         ports:
           - "8001:80"
           - "5006:5005"
           - "4001:6006"
           - "9001:51235"
         volumes:
-          - ./validator_1/config:/config/
+          - ./validator_1/config:/etc/xrpld
       validator_2:
         platform: linux/amd64
         container_name: validator_2
-        image: "rippleci/xrpld"
+        image: "rippleci/xrpld:3.4.1"
         ports:
           - "8002:80"
           - "5007:5005"
           - "4002:6006"
           - "9002:51235"
         volumes:
-          - ./validator_2/config:/config/
+          - ./validator_2/config:/etc/xrpld
       validator_3:
         platform: linux/amd64
         container_name: validator_3
-        image: "rippleci/xrpld"
+        image: "rippleci/xrpld:3.4.1"
         ports:
           - "8003:80"
           - "5008:5005"
           - "4003:6006"
           - "9003:51235"
         volumes:
-          - ./validator_3/config:/config/
+          - ./validator_3/config:/etc/xrpld
     ```
 
-    The `volumes` key in each `service` represents the location where your config files are stored. For example, `./validator_1/config:/config/` maps the `/validator_1/config` directory on your host computer to `/config/` in the Docker container. Any changes made in the host directory will be reflected in the container automatically.
+    The `volumes` key in each `service` represents the location where your config files are stored. For example, `./validator_1/config:/etc/xrpld` maps the `/validator_1/config` directory on your host computer to `/etc/xrpld` in the Docker container, where `xrpld` looks for `xrpld.cfg` and `validators.txt`. The container runs as the user `xrpld`, not root, so the config files must be readable by other users. (To see that user's uid, run `docker run --rm --entrypoint id rippleci/xrpld:3.4.1`.) Changes you make in the host directory show up in the container, but you need to restart the container for `xrpld` to read them.
 
-2. From your terminal, in the location where you created the `docker-compose.yml` file, run `docker-compose up -d`. You should see a similar output to the one below:
+2. From your terminal, in the location where you created the `docker-compose.yml` file, run `docker compose up -d`. You should see a similar output to the one below:
 
     ```
     [+] Running 4/4
@@ -363,7 +362,7 @@ Now that the private ledger network is up, you need to verify that **each** vali
     "server_state" : "proposing"
     ```
 
-    {% admonition type="info" name="Note" %}If the state is not updated to **proposing**, repeat step **2** after a few minutes as the ledger can take some time to update.{% /admonition %}
+    {% admonition type="info" name="Note" %}If the state isn't updated to **proposing**, repeat step **2** after a few minutes as the ledger can take some time to update. If it still isn't, read `docker exec validator_1 tail -n 50 /var/log/xrpld/debug.log`. The image starts `xrpld` with `--silent`, so `docker logs` shows very little.{% /admonition %}
 
 4. Verify the number of peers connected to the validator.
 
@@ -407,7 +406,7 @@ Now that the private ledger network is up, you need to verify that **each** vali
     }
     ```
 
-    If the ledger does not have `"validated": true`, double check that you put matching `validators.txt` files with all three public keys in each container's config directory, and restart the container if you need to make changes.
+    If the ledger doesn't have `"validated": true`, double check that you put matching `validators.txt` files with all three public keys in each container's config directory, and restart the container if you need to make changes.
 
 6. To leave the Docker container shell, enter `exit` in the terminal.
 
@@ -448,7 +447,7 @@ Perform a **test** transaction to ensure you can send money to an account.
     }
     ```
 
-2. For each validator, verify that the destination account `r9wRwVgL2vWVnKhTPdtxva5vdH7FNw1zPs` has 1000000000 XRP. For example:
+2. For each validator, verify that the destination account `r9wRwVgL2vWVnKhTPdtxva5vdH7FNw1zPs` has a balance of 1000000000 drops (1,000 XRP). For example:
 
     ```
     docker exec -it validator_1 \
@@ -479,7 +478,7 @@ Perform a **test** transaction to ensure you can send money to an account.
     }
 
     ```
-    All validator nodes should respond with the same balance of 1000000000 XRP for the `r9wRwVgL2vWVnKhTPdtxva5vdH7FNw1zPs` account.
+    All validator nodes should respond with the same balance of 1000000000 drops for the `r9wRwVgL2vWVnKhTPdtxva5vdH7FNw1zPs` account.
 
 ## Stop the Network
 
@@ -489,7 +488,7 @@ If you wish to stop running the private network:
 2. Run the following command to shut down the network:
 
     ```
-    docker-compose down
+    docker compose down
     ```
 
     Sample Output:
@@ -501,6 +500,8 @@ If you wish to stop running the private network:
      ✔ Container validator_2                 Removed                                                       1.6s
      ✔ Network xrpl-private-network_default  Removed                                                       0.0s
     ```
+
+The `down` command removes the containers and the ledger data inside them. Use `docker compose stop` instead if you want to start the same network again later. With three validators and the default quorum, all three need to be running for ledgers to validate.
 
 ## See Also
 

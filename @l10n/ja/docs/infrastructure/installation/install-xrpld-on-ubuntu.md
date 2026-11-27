@@ -15,7 +15,7 @@ labels:
 
 ## 前提条件
 
-`xrpld`をインストールする前に、[システム要件](system-requirements.md)を満たす必要があります。
+`xrpld`をインストールする前に、[システム要件](../prerequisites/system-requirements/index.md)を満たす必要があります。
 
 
 ## インストール手順

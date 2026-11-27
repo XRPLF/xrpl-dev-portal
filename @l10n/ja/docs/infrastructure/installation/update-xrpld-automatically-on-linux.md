@@ -42,7 +42,7 @@ Linuxでは、`xrpld`が1回限りの`cron`構成を使用して最新バージ�
     - [`xrpld`サーバ](../../concepts/networks-and-servers/index.md)
     - [コンセンサスについて](../../concepts/consensus-protocol/index.md)
 - **チュートリアル:**
-    - [容量の計画](capacity-planning.md)
+    - [容量の計画](../prerequisites/capacity-planning.md)
     - [xrpldのトラブルシューティング](../troubleshooting/index.md)
 - **リファレンス:**
     - [xrpld APIリファレンス](../../references/http-websocket-apis/index.md)

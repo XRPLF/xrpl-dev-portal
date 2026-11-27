@@ -11,7 +11,7 @@ This page describes how to manually update to the latest release of `xrpld` on U
 
 These instructions assume you have already [installed `xrpld` on a supported version of Ubuntu using the XRP Ledger Foundation's `deb` package](install-xrpld-on-ubuntu.md). If you are still running `rippled` (3.1.3 or older), follow [Migrate from rippled to xrpld](migrate-to-xrpld.md) instead.
 
-To update manually, complete the following steps:
+Before you update, read the release notes for every release between your version and the new one, and keep a copy of the installed package and your `xrpld.cfg` so you can roll back. To update manually, complete the following steps:
 
 1. Add the XRP Ledger Foundation's package-signing key:
 
@@ -47,7 +47,7 @@ To update manually, complete the following steps:
     sudo apt -y update
     ```
 
-5. Upgrade the `xrpld` package. If `apt` asks what to do about `xrpld.cfg`, press Enter to keep your current file:
+5. Upgrade the `xrpld` package. The Debian package restarts a running `xrpld` as part of the upgrade, so on a validator check for an in-flight online delete rotation first; see [Restart with care](../configuration/best-practices/validator.md#restart-with-care) in Validator Best Practices. If `apt` asks what to do about `xrpld.cfg`, `validators.txt`, or the logrotate file, press Enter to keep your current file:
 
     ```
     sudo apt -y upgrade xrpld
@@ -59,11 +59,14 @@ To update manually, complete the following steps:
     sudo systemctl daemon-reload
     ```
 
-7. Restart the `xrpld` service:
+7. Confirm the service came back after the upgrade, and restart it only if it isn't running:
 
     ```
+    sudo systemctl status xrpld
     sudo systemctl restart xrpld
     ```
+
+    Give the service up to five minutes to stop if you do restart it. Then watch `server_state` with `xrpld server_info` until it reads `full` or `proposing`.
 
 
 ## See Also

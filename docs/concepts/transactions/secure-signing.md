@@ -41,7 +41,7 @@ In this configuration, you run `xrpld` on the machine that generates the transac
 
 1. [Install `xrpld`](../../infrastructure/installation/index.md).
 
-    Be sure that your local machine meets the minimum [system requirements for `xrpld`](../../infrastructure/installation/system-requirements.md).
+    Be sure that your local machine meets the minimum [system requirements for `xrpld`](../../infrastructure/prerequisites/system-requirements/index.md).
 
 2. When you need to sign transactions, connect to your server on `localhost` or `127.0.0.1`. Use the [sign method][] (for single signatures) or [sign_for method][] (for multi-signatures).
 

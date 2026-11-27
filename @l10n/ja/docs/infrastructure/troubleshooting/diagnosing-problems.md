@@ -24,7 +24,7 @@ xrpld server_info
 
 このコマンドに対するレスポンスには大量の情報が含まれています。これについては、[server_infoメソッド][]で説明します。トラブルシューティングで最も重要なフィールドは以下のとおりです（最も一般的に使われるものから順に説明します）。
 
-- **`server_state`** - ほとんどの場合、このフィールドには`proposing`（[バリデータとして設定されている](../configuration/server-modes/run-xrpld-as-a-validator.md)サーバの場合）または`full`（バリデータではないサーバの場合）が表示されます。値が`connected`の場合は、サーバはピアツーピアネットワークの他の部分と通信できますが、共有レジャーの状態を追跡するのに十分なデータがありません。通常、レジャーの残りの部分の状態を同期するには起動後約5～15分かかります。
+- **`server_state`** - ほとんどの場合、このフィールドには`proposing`（[バリデータとして設定されている](../configuration/server-modes/validator.md)サーバの場合）または`full`（バリデータではないサーバの場合）が表示されます。値が`connected`の場合は、サーバはピアツーピアネットワークの他の部分と通信できますが、共有レジャーの状態を追跡するのに十分なデータがありません。通常、レジャーの残りの部分の状態を同期するには起動後約5～15分かかります。
 
   - サーバが数時間にわたり`connected`状態である場合、または`full`あるいは`proposing`状態になってから`connected`状態に戻る場合は通常、サーバがネットワークの他の部分よりも遅れています。最も一般的なボトルネックはディスクI/O、ネットワーク帯域幅、RAMです。
 
@@ -127,7 +127,7 @@ xrpld server_info
     - [`xrpld`サーバ](../../concepts/networks-and-servers/index.md)
     - [Amendment](../../concepts/networks-and-servers/amendments.md)
 - **チュートリアル:**
-    - [容量の計画](../installation/capacity-planning.md)
+    - [容量の計画](../prerequisites/capacity-planning.md)
     - [xrpldの構成](../configuration/index.md)
 - **リファレンス:**
     - [xrpld APIリファレンス](../../references/http-websocket-apis/index.md)

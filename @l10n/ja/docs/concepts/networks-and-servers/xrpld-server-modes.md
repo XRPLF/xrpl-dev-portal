@@ -62,7 +62,7 @@ XRP Ledgerの堅牢性は、他のバリデータが共謀しないことをそ�
 
 他の目的にも使用されているサーバで、安全にバリデーションを有効にすることができます。このような構成は _汎用サーバ_ と呼ばれます。あるいは、他のタスクを実行しない _専用バリデータ_ を、P2Pモードの他の`xrpld`サーバと一緒に[クラスタ](clustering.md)で実行することもできます。
 
-バリデータの実行についての詳細は、[バリデータとしての`xrpld`の実行](../../infrastructure/configuration/server-modes/run-xrpld-as-a-validator.md)をご覧ください。
+バリデータの実行についての詳細は、[バリデータとしての`xrpld`の実行](../../infrastructure/configuration/server-modes/validator.md)をご覧ください。
 
 
 

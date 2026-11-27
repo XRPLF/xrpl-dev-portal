@@ -199,7 +199,7 @@ WebSocketツールの[server_info](/resources/dev-tools/websocket-api-tool#serve
     - [並列ネットワーク](../../concepts/networks-and-servers/parallel-networks.md)
     - [コンセンサス](../../concepts/consensus-protocol/index.md)
 - **チュートリアル:**
-    - [バリデータとしてのxrpldの実行](server-modes/run-xrpld-as-a-validator.md)
+    - [バリデータとしてのxrpldの実行](server-modes/validator.md)
     - [オフラインで`xrpld`をスタンドアロンモードでテストする](../testing-and-auditing/index.md)
     - [`xrpld`のトラブルシューティング](../troubleshooting/index.md)
 - **References:**

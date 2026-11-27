@@ -27,11 +27,21 @@ One of the first signs that your `xrpld` server is [amendment blocked](../../con
 }
 ```
 
-The following `xrpld` log message also indicates that your server is amendment blocked:
+The server warns before it blocks. Once an amendment it doesn't support reaches majority, it logs this at every flag ledger until you upgrade:
 
 ```
-2018-Feb-12 19:38:30 LedgerMaster:ERR One or more unsupported amendments activated: server blocked.
+LedgerMaster:ERR One or more unsupported amendments reached majority. Upgrade before 2026-Nov-20 12:00:00.000000000 UTC to prevent your server from becoming amendment blocked.
 ```
+
+An admin `server_info` also shows it in `result.info.warnings` ("One or more unsupported amendments have reached majority...") with `details.expected_date_UTC`. The date is the earliest the amendment could activate.
+
+The following `xrpld` log message indicates that your server is amendment blocked:
+
+```
+LedgerMaster:ERR One or more unsupported amendments activated: server blocked.
+```
+
+The server also logs the ID of the amendment that blocked it: `Unsupported amendment 157D2D480E006395B76F948E3E07A45A05FE10230D88A7993C71F97AE4B1F2D1 activated: server blocked.`
 
 You can verify that your `xrpld` server is amendment blocked using the `server_info` command. In the response, look for `result.info.amendment_blocked`. If `amendment_blocked` is set to `true`, your server is amendment blocked.
 

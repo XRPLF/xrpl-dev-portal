@@ -17,7 +17,7 @@ Validators are the lifeblood of the XRP Ledger. This post seeks to explain the f
 
 ## Background
 
-Like all decentralized ledgers, the XRP Ledger is a program that lives on a distributed set of servers. These servers run a program called [`rippled`](https://github.com/ripple/rippled). Every server can follow the network with a local copy of the ledger and submit transactions to the network. A smaller subset of servers contribute to the consensus process that helps to maintain forward progress of the network. These servers are called validators. Any server that runs rippled can operate as a validator by [enabling validation](https://xrpl.org/run-rippled-as-a-validator.html).
+Like all decentralized ledgers, the XRP Ledger is a program that lives on a distributed set of servers. These servers run a program called [`rippled`](https://github.com/ripple/rippled). Every server can follow the network with a local copy of the ledger and submit transactions to the network. A smaller subset of servers contribute to the consensus process that helps to maintain forward progress of the network. These servers are called validators. Any server that runs rippled can operate as a validator by [enabling validation](https://xrpl.org/validator.html).
 
 Validators agree on the set of the candidate transactions to be considered for the next ledger through the [consensus process](https://xrpl.org/consensus.html). Each validator evaluates transaction proposals from a specific set of trusted validators called a Unique Node List (UNL). Validators that appear on a UNL are "trusted" not to collude in an attempt to defraud the server evaluating the proposals. In each round of consensus, validators add transactions to their proposals if a threshold number of trusted validators also propose those transactions. The threshold is increased until a supermajority of validators propose the same set of transactions.
 
@@ -35,7 +35,7 @@ Validator operators that appear on a UNL also partake in the governance of the X
 
 ## Being a Good Validator
 
-The characteristics of a good validator include high availability, agreement with the network, timeliness, and identification. In order to achieve these properties, it is important to adhere to the [recommended system specifications](https://xrpl.org/system-requirements.html#recommended-specifications) for production servers and [properly configure](https://xrpl.org/run-rippled-as-a-validator.html) the validator.
+The characteristics of a good validator include high availability, agreement with the network, timeliness, and identification. In order to achieve these properties, it is important to adhere to the [recommended system specifications](https://xrpl.org/system-requirements.html#recommended-specifications) for production servers and [properly configure](https://xrpl.org/validator.html) the validator.
 
 Beyond the administrative elements of running a validator, it is important for validator operators to be involved in the XRP community by announcing potential downtime or maintenance work ahead of time. Validators that appear on a UNL have the opportunity to vote on amendments and fees, thereby having a voice in the evolution of the network. Therefore, it is imperative that validator operators stay abreast of the [latest updates](https://xrpl.org/blog/) coming to the XRP Ledger.
 

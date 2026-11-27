@@ -17,7 +17,7 @@ While the [docs](https://xrpl.org/manage-the-rippled-server.html) on xrpl.org ma
 
 <!-- BREAK -->
 
-Before you set up an XRPL node, you need to know why you're setting up a server. Not everyone has the exact same needs. You might want to [set up rippled on your Mac](https://xrpl.org/build-run-rippled-macos.html) or [on your server](https://xrpl.org/build-run-rippled-ubuntu.html) to play around and familiarize yourself with the software, you may only need the server to run RPC commands or APIs locally or to test your application code, or you might want to help the network by [running a Validator](https://xrpl.org/run-rippled-as-a-validator.html).
+Before you set up an XRPL node, you need to know why you're setting up a server. Not everyone has the exact same needs. You might want to [set up rippled on your Mac](https://xrpl.org/build-run-rippled-macos.html) or [on your server](https://xrpl.org/build-run-rippled-ubuntu.html) to play around and familiarize yourself with the software, you may only need the server to run RPC commands or APIs locally or to test your application code, or you might want to help the network by [running a Validator](https://xrpl.org/validator.html).
 
 Here are some questions you need to answer when configuring a node:
 

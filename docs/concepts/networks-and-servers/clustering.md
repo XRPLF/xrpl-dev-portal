@@ -18,7 +18,7 @@ If you are running a validator as a [private peer](peer-protocol.md#private-peer
 
 - **Tutorials:**
     - [Cluster `xrpld` Servers](../../infrastructure/configuration/peering/cluster-xrpld-servers.md)
-    - [Run xrpld as a Validator](../../infrastructure/configuration/server-modes/run-xrpld-as-a-validator.md)
+    - [Run xrpld as a Validator](../../infrastructure/configuration/server-modes/validator.md)
 - **References:**
     - [peers method][]
     - [connect method][]

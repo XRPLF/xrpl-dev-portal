@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 730" role="img" aria-labelledby="title desc">
+  <title id="title">Two Clio writers connected to shared ScyllaDB</title>
+  <desc id="desc">Two parallel ingestion paths show xrpld A feeding Writer A and xrpld B feeding Writer B over private WebSocket and gRPC. Both writers run with read_only false and connect to the same ScyllaDB cluster and keyspace. Neither writer serves client traffic. The accompanying configuration gives both writers access to both sources.</desc>
+  <defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 10 5 0 10Z" fill="#2b3e51"/></marker></defs>
+  <rect x="16" y="16" width="528" height="698" rx="16" fill="none" stroke="#b1b3b5" stroke-width="2" stroke-dasharray="7 6"/>
+  <g font-family="system-ui, -apple-system, sans-serif" fill="#2c3e50" text-anchor="middle">
+    <text x="280" y="55" font-size="18" font-weight="700" letter-spacing="1">PRIVATE NETWORK · FIREWALLED</text>
+    <rect x="36" y="88" width="230" height="106" rx="14" fill="#8ad6f4" stroke="#00aae4" stroke-width="2"/>
+    <rect x="294" y="88" width="230" height="106" rx="14" fill="#8ad6f4" stroke="#00aae4" stroke-width="2"/>
+    <text x="151" y="129" font-size="25" font-weight="700">xrpld A</text>
+    <text x="409" y="129" font-size="25" font-weight="700">xrpld B</text>
+    <text x="151" y="165" font-size="20" fill="#2c3e50">Synced source</text>
+    <text x="409" y="165" font-size="20" fill="#2c3e50">Synced source</text>
+    <path d="M151 194V306" fill="none" stroke="#2b3e51" stroke-width="2.5" marker-end="url(#arrow)"/>
+    <path d="M409 194V306" fill="none" stroke="#2b3e51" stroke-width="2.5" marker-end="url(#arrow)"/>
+    <text x="280" y="259" font-size="18" fill="#2b3e51" stroke="#ffffff" stroke-width="7" paint-order="stroke">Private WebSocket + gRPC</text>
+    <rect x="36" y="316" width="230" height="130" rx="14" fill="#e6e7e8" stroke="#27a2db" stroke-width="2"/>
+    <rect x="294" y="316" width="230" height="130" rx="14" fill="#e6e7e8" stroke="#27a2db" stroke-width="2"/>
+    <text x="151" y="355" font-size="25" font-weight="700">Clio Writer A</text>
+    <text x="409" y="355" font-size="25" font-weight="700">Clio Writer B</text>
+    <text x="151" y="389" font-size="20" fill="#2789b9">read_only: false</text>
+    <text x="409" y="389" font-size="20" fill="#2789b9">read_only: false</text>
+    <text x="151" y="422" font-size="19" fill="#2b3e51">No client traffic</text>
+    <text x="409" y="422" font-size="19" fill="#2b3e51">No client traffic</text>
+    <path d="M151 446V556" fill="none" stroke="#2b3e51" stroke-width="2.5" marker-end="url(#arrow)"/>
+    <path d="M409 446V556" fill="none" stroke="#2b3e51" stroke-width="2.5" marker-end="url(#arrow)"/>
+    <text x="280" y="491" font-size="19" fill="#2b3e51" stroke="#ffffff" stroke-width="7" paint-order="stroke">Both connected to the same keyspace</text>
+    <rect x="60" y="566" width="440" height="106" rx="14" fill="#CAD4DF" stroke="#21aa47" stroke-width="2"/>
+    <text x="280" y="606" font-size="25" font-weight="700">Shared ScyllaDB cluster</text>
+    <text x="280" y="641" font-size="20" fill="#21aa47">3+ hosts · replication factor 3</text>
+  </g>
+</svg>

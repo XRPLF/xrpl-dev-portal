@@ -2,6 +2,14 @@
 /docs/concepts/tokens/fungible-tokens/deep-freeze:
     to: /docs/concepts/tokens/fungible-tokens/freezes/
 # (not associated with a major reorg)
+/docs/infrastructure/installation/system-requirements/:
+    to: /docs/infrastructure/prerequisites/system-requirements/
+/docs/infrastructure/installation/capacity-planning/:
+    to: /docs/infrastructure/prerequisites/capacity-planning/
+/docs/infrastructure/configuration/server-modes/run-xrpld-as-a-stock-server/:
+    to: /docs/infrastructure/configuration/server-modes/stock-node/
+/docs/infrastructure/configuration/server-modes/run-xrpld-as-a-validator/:
+    to: /docs/infrastructure/configuration/server-modes/validator/
 /docs/tutorials/compliance-features/create-permissioned-domains-in-javascript:
     to: /docs/tutorials/compliance-features/manage-permissioned-domains/
 /docs/tutorials/payments/issue-and-send-tokens/:
@@ -360,7 +368,7 @@ production-readiness.html:
 get-started.html:
     to: /docs/tutorials
 run-rippled-as-a-wallet-server.html:
-    to: /docs/infrastructure/configuration/server-modes/run-xrpld-as-a-stock-server
+    to: /docs/infrastructure/configuration/server-modes/stock-node
 faq:
     to: /about/faq
 faq.html:
@@ -1232,7 +1240,7 @@ commandline-usage.html:
 install-rippled.html:
     to: /docs/infrastructure/installation/
 system-requirements.html:
-    to: /docs/infrastructure/installation/system-requirements
+    to: /docs/infrastructure/prerequisites/system-requirements
 install-rippled-on-centos-rhel-with-yum.html:
     to: /docs/infrastructure/installation/install-xrpld-on-rhel
 install-rippled-on-ubuntu.html:
@@ -1250,7 +1258,7 @@ build-on-linux-mac-windows.html:
 build-run-rippled-in-reporting-mode.html:
     to: /docs/infrastructure/installation/build-run-xrpld-in-reporting-mode
 capacity-planning.html:
-    to: /docs/infrastructure/installation/capacity-planning
+    to: /docs/infrastructure/prerequisites/capacity-planning
 rippled-1-3-migration-instructions.html:
     to: /docs/infrastructure/installation/rippled-1-3-migration-instructions
 configure-rippled.html:
@@ -1258,9 +1266,9 @@ configure-rippled.html:
 server-modes.html:
     to: /docs/infrastructure/configuration/server-modes/
 run-rippled-as-a-validator.html:
-    to: /docs/infrastructure/configuration/server-modes/run-xrpld-as-a-validator
+    to: /docs/infrastructure/configuration/server-modes/validator
 run-rippled-as-a-stock-server.html:
-    to: /docs/infrastructure/configuration/server-modes/run-xrpld-as-a-stock-server
+    to: /docs/infrastructure/configuration/server-modes/stock-node
 data-retention.html:
     to: /docs/infrastructure/configuration/data-retention/
 configure-full-history.html:
@@ -1342,7 +1350,7 @@ update-rippled-automatically-on-centos-rhel.html:
 install-rippled-on-ubuntu-with-alien.html:
     to: /docs/infrastructure/installation/install-xrpld-on-ubuntu
 run-a-rippled-validator.html:
-    to: /docs/infrastructure/configuration/server-modes/run-xrpld-as-a-validator
+    to: /docs/infrastructure/configuration/server-modes/validator
 list-xrp-in-your-exchange.html:
     to: /docs/use-cases/defi/list-xrp-as-an-exchange
 /docs/use-cases/defi:
@@ -1850,9 +1858,9 @@ code_of_conduct.ja:
 /docs/infrastructure/configuration/peering/cluster-rippled-servers/:
     to: /docs/infrastructure/configuration/peering/cluster-xrpld-servers/
 /docs/infrastructure/configuration/server-modes/run-rippled-as-a-stock-server/:
-    to: /docs/infrastructure/configuration/server-modes/run-xrpld-as-a-stock-server/
+    to: /docs/infrastructure/configuration/server-modes/stock-node/
 /docs/infrastructure/configuration/server-modes/run-rippled-as-a-validator/:
-    to: /docs/infrastructure/configuration/server-modes/run-xrpld-as-a-validator/
+    to: /docs/infrastructure/configuration/server-modes/validator/
 /docs/infrastructure/installation/build-run-rippled-in-reporting-mode/:
     to: /docs/infrastructure/installation/build-run-xrpld-in-reporting-mode/
 /docs/infrastructure/installation/install-rippled-on-rhel/:

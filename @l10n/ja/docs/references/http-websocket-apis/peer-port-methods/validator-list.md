@@ -47,9 +47,9 @@ JSONオブジェクトには以下のフィールドがあります。
 ### マニフェストデータ
 [[ソース]](https://github.com/XRPLF/rippled/blob/242ce3e9e4280aa7f9e6292062117c8ccd8861c8/src/libxrpl/server/Manifest.cpp#L60-L88 "ソース")
 
-"マニフェスト"には、コンセンサスプロセスに関与する個人または組織（***バリデータ**または**リスト発行者**）を一意に識別する情報が含まれます。バリデータのマニフェストには、その[バリデータのトークン](../../../infrastructure/configuration/server-modes/run-xrpld-as-a-validator.md#3-enable-validation-on-your-xrpld-server)の _公開_ 情報が含まれます。リスト発行者のマニフェストはリスト発行者に関する情報を提供します。どちらも通常、XRP Ledgerの標準的な[バイナリフォーマット](../../protocol/binary-format.md)でバイナリにエンコードされます。(マニフェストの標準的なJSON形式はありません)。
+"マニフェスト"には、コンセンサスプロセスに関与する個人または組織（***バリデータ**または**リスト発行者**）を一意に識別する情報が含まれます。バリデータのマニフェストには、その[バリデータのトークン](../../../infrastructure/configuration/server-modes/validator.md#3-enable-validation-on-your-xrpld-server)の _公開_ 情報が含まれます。リスト発行者のマニフェストはリスト発行者に関する情報を提供します。どちらも通常、XRP Ledgerの標準的な[バイナリフォーマット](../../protocol/binary-format.md)でバイナリにエンコードされます。(マニフェストの標準的なJSON形式はありません)。
 
-マニフェストの主な目的の1つは、バリデータ鍵のローテーションです。バリデータはそのエフェメラル鍵ペアを変更すると、新しいエフェメラル公開鍵を共有するために新しいマニフェストを発行します。バリデータは[コンセンサスプロセス](../../../concepts/consensus-protocol/index.md)の一部としてバリデーションに署名するためにエフェメラル鍵ペアを使用し、新しいマニフェストに署名するためにのみマスター鍵ペアを使用します。(マニフェストは、[バリデータ管理者が`xrpld.cfg`設定ファイルに追加する](../../../infrastructure/configuration/server-modes/run-xrpld-as-a-validator.md#3-enable-validation-on-your-xrpld-server)プライベートデータと一緒にバリデータトークンに組み込まれます)。
+マニフェストの主な目的の1つは、バリデータ鍵のローテーションです。バリデータはそのエフェメラル鍵ペアを変更すると、新しいエフェメラル公開鍵を共有するために新しいマニフェストを発行します。バリデータは[コンセンサスプロセス](../../../concepts/consensus-protocol/index.md)の一部としてバリデーションに署名するためにエフェメラル鍵ペアを使用し、新しいマニフェストに署名するためにのみマスター鍵ペアを使用します。(マニフェストは、[バリデータ管理者が`xrpld.cfg`設定ファイルに追加する](../../../infrastructure/configuration/server-modes/validator.md#3-enable-validation-on-your-xrpld-server)プライベートデータと一緒にバリデータトークンに組み込まれます)。
 
 マニフェストでエンコードされるデータは次のとおりです。
 

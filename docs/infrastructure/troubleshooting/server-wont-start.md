@@ -8,7 +8,7 @@ labels:
 ---
 # xrpld Server Won't Start
 
-This page explains possible reasons [the `xrpld` server](../../concepts/networks-and-servers/index.md) does not start and how to fix them.
+This page explains possible reasons [the `xrpld` server](../../concepts/networks-and-servers/index.md) doesn't start and how to fix them.
 
 These instructions assume you have [installed `xrpld`](../installation/index.md) on a supported platform.
 
@@ -18,13 +18,12 @@ These instructions assume you have [installed `xrpld`](../installation/index.md)
 On some Linux variants, you may get an error message such as the following when trying to run `xrpld`:
 
 ```text
-WARNING: There are only 1024 file descriptors (soft limit) available, which
-limit the number of simultaneous connections.
+Insufficient number of file descriptors: 1224 are needed, but only 1024 are available.
 ```
 
 This occurs because the system has a security limit on the number of files a single process may open, but the limit is set too low for `xrpld`. To fix the problem, **root access is required**. Increase the number of files `xrpld` is allowed to open with the following steps:
 
-1. Add the following lines to the end of your `/etc/security/limits.conf` file:
+1. If you run `xrpld` under `systemd` (the packaged unit already sets `LimitNOFILE=65536`), set `LimitNOFILE=65536` in a drop-in for the service. `limits.conf` applies to login sessions, not services. If you start `xrpld` from a shell, add the following lines to the end of your `/etc/security/limits.conf` file:
 
     ```
     *                soft    nofile          65536
@@ -45,49 +44,51 @@ This occurs because the system has a security limit on the number of files a sin
     systemctl start xrpld
     ```
 
-4. If `rippled` still does not start, open `/etc/sysctl.conf` and append the following kernel-level setting:
+4. If `xrpld` still doesn't start, check the kernel-level limit with `sysctl fs.file-max`. Only if it is below `65536`, open `/etc/sysctl.conf` and append the following setting:
 
     ```
     fs.file-max = 65536
     ```
 
 
-## Failed to open /etc/xrpld/xrpld.cfg
+## Failed to read xrpld.cfg
 
-If `xrpld` crashes on startup with an error such as the following, it means that `xrpld` cannot read its config file:
+If `xrpld` crashes on startup with an error such as the following, it means that `xrpld` can't read its config file:
 
 ```text
 Loading: "/etc/xrpld/xrpld.cfg"
-Failed to open '"/etc/xrpld/xrpld.cfg"'.
-Terminating thread rippled: main: unhandled St13runtime_error 'Can not create "/var/opt/ripple"'
-Aborted (core dumped)
+Failed to read '"/etc/xrpld/xrpld.cfg"'.2: No such file or directory
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  Can not create /var/lib/xrpld
 ```
+
+A missing config file isn't fatal by itself: the server continues with defaults and crashes only when it can't create its default data directory. Started from a root shell, it can therefore come up on default settings instead of failing, so check which file it loaded. The lines around the `what():` message vary by platform; search for the message itself.
 
 Possible solutions:
 
-- Check that the config file exists (the default location is `/etc/xrpld/xrpld.cfg`) and the user that runs your `rippled` process (usually `rippled`) has read permissions to the file.
+- Check that the config file exists (the default location is `/etc/xrpld/xrpld.cfg`) and the user that runs your `xrpld` process (usually `xrpld`) has read permissions to the file.
 
 - Create a config file that can be read by the `xrpld` user at `$HOME/.config/xrpld/xrpld.cfg` (where `$HOME` points to the `xrpld` user's home directory).
 
-    {% admonition type="success" name="Tip" %}The `rippled` repository contains {% source-link name="an example xrpld.cfg file" path="cfg/xrpld-example.cfg" /%} which is provided as the default config when you do an installation from a binary package. If you do not have the file, you can copy it from there.{% /admonition %}
+    {% admonition type="success" name="Tip" %}The `rippled` repository contains {% source-link name="an example xrpld.cfg file" path="cfg/xrpld-example.cfg" /%} which is provided as the default config when you do an installation from a binary package. If you don't have the file, you can copy it from there.{% /admonition %}
 
 - Specify the path to your preferred config file using the `--conf` [commandline option](../commandline-usage.md).
 
 ## Failed to open validators file
 
-If `xrpld` crashes on startup with an error such as the following, it means it can read its primary config file, but that config file specifies a separate validators config file (typically named `validators.txt`), which `xrpld` cannot read.
+If `xrpld` crashes on startup with an error such as the following, it means it can read its primary config file, but that config file specifies a separate validators config file (typically named `validators.txt`), which `xrpld` can't read.
 
 ```text
-Loading: "/home/rippled/.config/xrpld/xrpld.cfg"
-Terminating thread rippled: main: unhandled St13runtime_error 'The file specified in [validators_file] does not exist: /home/rippled/.config/xrpld/validators.txt'
-Aborted (core dumped)
+Loading: "/home/xrpld/.config/xrpld/xrpld.cfg"
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  The file specified in [validators_file] does not exist: /home/xrpld/.config/xrpld/validators.txt
 ```
 
 Possible solutions:
 
 - Check that the `validators.txt` file exists and the `xrpld` user has permissions to read it.
 
-    {% admonition type="success" name="Tip" %}The `rippled` repository contains {% source-link name="an example validators.txt file" path="cfg/validators-example.txt" /%} which is provided as the default config when you do an installation from a binary package. If you do not have the file, you can copy it from there.{% /admonition %}
+    {% admonition type="success" name="Tip" %}The `rippled` repository contains {% source-link name="an example validators.txt file" path="cfg/validators-example.txt" /%} which is provided as the default config when you do an installation from a binary package. If you don't have the file, you can copy it from there.{% /admonition %}
 
 - Edit your `xrpld.cfg` file and modify the `[validators_file]` setting to have the correct path to your `validators.txt` (or equivalent) file. Check for extra whitespace before or after the filename.
 
@@ -104,15 +105,15 @@ Possible solutions:
 
 ## Cannot create database path
 
-If `xrpld` crashes on startup with an error such as the following, it means the server does not have write permissions to the `[database_path]` from its config file.
+If `xrpld` crashes on startup with an error such as the following, it means the server doesn't have write permissions to the `[database_path]` from its config file.
 
 ```text
-Loading: "/home/rippled/.config/xrpld/xrpld.cfg"
-Terminating thread rippled: main: unhandled St13runtime_error 'Can not create "/var/lib/xrpld/db"'
-Aborted (core dumped)
+Loading: "/home/xrpld/.config/xrpld/xrpld.cfg"
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  Can not create /var/lib/xrpld/db
 ```
 
-The paths to the configuration file (`/home/rippled/.config/xrpld/xrpld.cfg`) and the database path (`/var/lib/xrpld/db`) may vary depending on your system.
+The paths to the configuration file (`/home/xrpld/.config/xrpld/xrpld.cfg`) and the database path (`/var/lib/xrpld/db`) may vary depending on your system.
 
 Possible solutions:
 
@@ -130,26 +131,29 @@ The following error can occur if the `xrpld` server's state database is corrupte
 ```text
 2018-Aug-21 23:06:38.675117810 SHAMapStore:ERR state db error:
   writableDbExists false archiveDbExists false
-  writableDb '/var/lib/xrpld/db/rocksdb/rippledb.11a9' archiveDb '/var/lib/xrpld/db/rocksdb/rippledb.2d73'
+  writableDb '/var/lib/xrpld/db/nudb/rippledb.11a9' archiveDb '/var/lib/xrpld/db/nudb/rippledb.2d73
 
-To resume operation, make backups of and remove the files matching /var/lib/xrpld/db/state* and contents of the directory /var/lib/xrpld/db/rocksdb
-
-Terminating thread rippled: main: unhandled St13runtime_error 'state db error'
+The existing data is in a corrupted state.
+To resume operation, remove the files matching /var/lib/xrpld/db/state* and contents of the directory /var/lib/xrpld/db/nudb
+Optionally, you can move those files to another
+location if you wish to analyze or back up the data.
+However, there is no guarantee that the data in its
+existing form is usable.
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  state db error
 ```
 
-The easiest way to fix this problem is to delete the databases entirely. You may want to back them up elsewhere instead. For example:
+Move aside only what the error names: the files matching `state*` in your `[database_path]` and the contents of the `[node_db]` `path` directory. For example:
 
 ```sh
-mv /var/lib/xrpld/db /var/lib/xrpld/db-bak
+sudo mkdir -p /var/lib/xrpld/db-bak
+mv /var/lib/xrpld/db/state* /var/lib/xrpld/db-bak/
+mv /var/lib/xrpld/db/nudb /var/lib/xrpld/db-bak/
 ```
 
-Or, if you are sure you don't need the databases:
+Keep `wallet.db`. It holds the node key, peer reservations, and amendment votes. On a full history server, removing the store means a full resync, so back it up rather than deleting it.
 
-```sh
-rm -r /var/lib/xrpld/db
-```
-
-{% admonition type="success" name="Tip" %}It is generally safe to delete the `xrpld` databases, because any individual server can re-download ledger history from other servers in the XRP Ledger network.{% /admonition %}
+{% admonition type="success" name="Tip" %}It is generally safe to delete the `xrpld` ledger store, because any individual server can re-download ledger history from other servers in the XRP Ledger network.{% /admonition %}
 
 Alternatively, you can change the paths to the databases in the config file. For example:
 
@@ -168,12 +172,13 @@ path=/var/lib/xrpld/custom_nudb_path
 An error message such as the following indicates that the `xrpld.cfg` file has contradictory values for `[ledger_history]` and `online_delete`.
 
 ```text
-Terminating thread rippled: main: unhandled St13runtime_error 'online_delete must not be less than ledger_history (currently 3000)
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  online_delete must not be less than ledger_history (currently 3000)
 ```
 
 The `[ledger_history]` setting represents how many ledgers of history the server should seek to back-fill. The `online_delete` field (in the `[node_db]` stanza) indicates how many ledgers of history to keep when dropping older history. The `online_delete` value must be equal to or larger than `[ledger_history]` to prevent the server from deleting historical ledgers that it is also trying to download.
 
-To fix the problem, edit the `xrpld.cfg` file and change or remove either the `[ledger_history]` or `online_delete` options. (If you omit `[ledger_history]`, it uses a default of 256 ledger versions. If you specify the `online_delete` field, it must be larger than 256. If you omit `online_delete`, it disables automatic deletion of old ledger versions.)
+To fix the problem, edit the `xrpld.cfg` file and change or remove either the `[ledger_history]` or `online_delete` options. (If you omit `[ledger_history]`, it uses a default of 256 ledger versions. If you specify the `online_delete` field, it must be at least 256. If you omit `online_delete`, it disables automatic deletion of old ledger versions.)
 
 
 ## Bad node_size value
@@ -181,10 +186,11 @@ To fix the problem, edit the `xrpld.cfg` file and change or remove either the `[
 An error such as the following indicates that the `xrpld.cfg` file has an improper value for the `node_size` setting:
 
 ```text
-Terminating thread rippled: main: unhandled N5beast14BadLexicalCastE 'std::bad_cast'
+terminate called after throwing an instance of 'beast::BadLexicalCast'
+  what():  std::bad_cast
 ```
 
-Valid parameters for the `node_size` field are `tiny`, `small`, `medium`, `large`, or `huge`. For more information see [Node Size](../installation/capacity-planning.md#node-size).
+Valid parameters for the `node_size` field are `tiny`, `small`, `medium`, `large`, or `huge` (case doesn't matter). A number from 0 to 4 also works, and larger numbers are treated as 4; only a word that isn't one of the five names produces this error. For more information see [Node Size](../prerequisites/capacity-planning.md#node-size).
 
 
 ## See Also
@@ -194,7 +200,7 @@ Valid parameters for the `node_size` field are `tiny`, `small`, `medium`, `large
     - [Technical FAQ](/about/faq.md)
 - **Tutorials:**
     - [Understanding Log Messages](understanding-log-messages.md)
-    - [Capacity Planning](../installation/capacity-planning.md)
+    - [Capacity Planning](../prerequisites/capacity-planning.md)
 - **References:**
     - [xrpld API Reference](../../references/http-websocket-apis/index.md)
         - [`xrpld` Commandline Usage](../commandline-usage.md)

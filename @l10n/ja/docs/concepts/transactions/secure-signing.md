@@ -42,7 +42,7 @@ labels:
 
 1. [`xrpld`をインストール](../../infrastructure/installation/index.md)します。
 
-    ローカルマシンが[`xrpld`の最小システム要件](../../infrastructure/installation/system-requirements.md)を満たしていることを確認します。
+    ローカルマシンが[`xrpld`の最小システム要件](../../infrastructure/prerequisites/system-requirements/index.md)を満たしていることを確認します。
 
 2. トランザクションに署名する必要がある場合は、`localhost`または`127.0.0.1`のサーバに接続します。シングル署名の場合は[signメソッド][]、マルチシグの場合は[sign_forメソッド][]を使用します。
 

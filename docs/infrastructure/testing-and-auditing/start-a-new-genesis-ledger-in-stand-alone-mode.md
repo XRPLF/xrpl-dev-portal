@@ -26,9 +26,9 @@ In a genesis ledger, the [genesis address](../../concepts/accounts/addresses.md#
 
 ## Settings in New Genesis Ledgers
 
-In a new genesis ledger, the hard-coded default [Reserve](../../concepts/accounts/reserves.md) is **1 XRP** minimum for funding a new address, with an increment of **0.2 XRP** per object in the ledger. The production network's reserve requirements are set separately through [Fee Voting](../../concepts/consensus-protocol/fee-voting.md).
+In a new genesis ledger, the hard-coded default [Reserve](../../concepts/accounts/reserves.md) is **10 XRP** minimum for funding a new address, with an increment of **2 XRP** per object in the ledger. To use other values, set `account_reserve` and `owner_reserve` (in drops) in the `[voting]` stanza. The production network's reserve requirements are set separately through [Fee Voting](../../concepts/consensus-protocol/fee-voting.md).
 
-By default, a new genesis ledger has no [amendments](../../concepts/networks-and-servers/amendments.md) enabled. If you start a new genesis ledger with `--start`, the genesis ledger contains an [EnableAmendment pseudo-transaction](../../references/protocol/transactions/pseudo-transaction-types/enableamendment.md) to turn on all amendments natively supported by the `xrpld` server, except for amendments that you explicitly disable in the config file. The effects of those amendments are available starting from the very next ledger version. (Reminder: in stand-alone mode, you must [advance the ledger manually](advance-the-ledger-in-stand-alone-mode.md).)
+By default, a new genesis ledger has no [amendments](../../concepts/networks-and-servers/amendments.md) enabled. If you start a new genesis ledger with `--start`, the genesis ledger enables the amendments that the `xrpld` server supports and votes in favor of by default. Amendments that default to voting against stay disabled unless you list them in the `[amendments]` stanza, and amendments you list in `[veto_amendments]` are left out. Each line in those stanzas is the amendment ID followed by its name. Run `xrpld feature` to see which amendments are enabled. The effects of enabled amendments are available starting from the very next ledger version. (Reminder: in stand-alone mode, you must [advance the ledger manually](advance-the-ledger-in-stand-alone-mode.md).)
 
 ## See Also
 

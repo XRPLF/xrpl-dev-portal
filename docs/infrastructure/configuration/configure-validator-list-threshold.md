@@ -14,6 +14,8 @@ By default, the minimum threshold is calculated as follows:
 - floor(`validator_list_keys` / 2) + 1
 - If there are only 1 or 2 `validator_list_keys`, the threshold is `1`.
 
+The packaged `validators.txt` lists two publishers, so the default threshold is `1`. A validator that appears on either list is trusted. Set the threshold to `2` to trust only the validators that appear on both lists. Run `xrpld validators` and check `validator_list_threshold` to see the value the server is using.
+
 
 ## Modify the Validators File
 
@@ -22,11 +24,11 @@ By default, the minimum threshold is calculated as follows:
     /etc/xrpld/validators.txt
     ```
 
-2. Add the following stanza and a valid threshold number.
+2. Find the `[validator_list_threshold]` stanza in the file and change its value to your threshold. If the stanza isn't there, add it. The stanza takes a single value. For example:
 
     ```
     [validator_list_threshold]
-    0
+    2
     ```
 
 Be sure to save the changes and restart your server.

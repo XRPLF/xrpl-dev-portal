@@ -1,5 +1,5 @@
 ---
-html: run-xrpld-as-a-validator.html
+html: validator.html
 parent: server-modes.html
 seo:
     description: サーバがコンセンサスレジャーで投票できるようにします。
@@ -9,7 +9,7 @@ labels:
 top_nav_grouping: 人気ページ
 top_nav_name: UNLに参加しよう
 ---
-# バリデータとしてのxrpldの実行
+# バリデータ
 
 [バリデータモード](../../../concepts/networks-and-servers/xrpld-server-modes.md)で実行されている[`xrpld`サーバ](../../../concepts/networks-and-servers/index.md)は、ストックサーバが実行するあらゆる処理を実行します。
 
@@ -43,7 +43,7 @@ top_nav_name: UNLに参加しよう
 
 - **適時の投票**
 
-    優れたバリデータの投票は、コンセンサスラウンドが終了する前に、素早く届きます。適時の投票を維持するには、バリデータが推奨される[システム要件](../../installation/system-requirements.md)を満たしていることを確認してください。これには、高速のインターネット接続が含まれます。
+    優れたバリデータの投票は、コンセンサスラウンドが終了する前に、素早く届きます。適時の投票を維持するには、バリデータが推奨される[システム要件](../../prerequisites/system-requirements/index.md)を満たしていることを確認してください。これには、高速のインターネット接続が含まれます。
 
     バリデータを使って新しいトランザクションを送信したりデータを検索したりすることは可能ですが、APIクエリの負荷が高くなるとバリデータがコンセンサスに追いつけなくなる可能性があります。APIの負荷が十分軽ければ、サーバを両方の目的に使うことができます。理想的には、バリデータはコンセンサスに参加するために特化したものであるべきです。
 
@@ -329,7 +329,7 @@ _**公開ハブを使用してバリデータをネットワークに接続す�
 - **チュートリアル:**
   - [xrpldサーバのクラスター化](../peering/cluster-xrpld-servers.md)
   - [`xrpld`のインストール](../../installation/index.md)
-  - [容量の計画](../../installation/capacity-planning.md)
+  - [容量の計画](../../prerequisites/capacity-planning.md)
 - **リファレンス:**
   - [Validator Keysツールガイド](https://github.com/ripple/validator-keys-tool/blob/master/doc/validator-keys-tool-guide.md)
   - [consensus_infoメソッド][]

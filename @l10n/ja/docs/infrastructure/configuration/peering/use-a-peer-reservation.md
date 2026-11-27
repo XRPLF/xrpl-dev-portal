@@ -176,7 +176,7 @@ xrpld connect 169.54.2.151 51235
   - [コンセンサス](../../../concepts/consensus-protocol/index.md)
   - [並列ネットワーク](../../../concepts/networks-and-servers/parallel-networks.md)
 - **チュートリアル:**
-  - [容量の計画](../../installation/capacity-planning.md)
+  - [容量の計画](../../prerequisites/capacity-planning.md)
   - [`xrpld`のトラブルシューティング](../../troubleshooting/index.md)
 - **リファレンス:**
   - [peersメソッド][]

@@ -8,14 +8,14 @@ labels:
 
 As part of [XLS-0095](https://xls.xrpl.org/xls/XLS-0095-rename-rippled-to-xrpld.html), the core server binary was renamed from `rippled` to `xrpld`, and its config file from `rippled.cfg` to `xrpld.cfg`. {% badge href="https://xrpl.org/blog/2026/xrpld-3.2.0" %}New in: xrpld 3.2.0{% /badge %}
 
-This page describes how to migrate a node from `rippled` to `xrpld`, upgrading from 3.1.3 to 3.2.0.
+This page describes how to migrate a node from `rippled` to `xrpld`, upgrading from 3.1.3 to the current `xrpld` release. Read the release notes for every release in between, because the rename in 3.2.0 changed default paths and the packaged config.
 
 
 ## Prerequisites
 
 Before you migrate:
 
-- **Update the package-signing key.** The GPG key used to sign the `.deb` and `.rpm` packages changed earlier this year. For Debian-based distros, follow steps 1-5 of the [Ubuntu or Debian installation guide](install-xrpld-on-ubuntu.md) to update it. For RHEL-based distros, the package manager fetches the new key for you.
+- **Switch to the XRP Ledger Foundation's repository and signing key.** The `.deb` and `.rpm` packages are now published at `packages.xrplf.org` and signed with a different GPG key. For Debian-based distros, follow steps 1 to 5 of the [Ubuntu or Debian installation guide](install-xrpld-on-ubuntu.md). For RHEL-based distros, follow steps 1 to 3 of the [Red Hat installation guide](install-xrpld-on-rhel.md) to import the key and add the repository.
 - **Update your installed packages.** On Debian-based systems, run:
 
     ```sh
@@ -49,7 +49,7 @@ Run these steps on each host you are migrating and adjust the paths to match you
 
 Back up the following files. In a default install they live here:
 
-**Configuration and identity** (cannot be regenerated - losing these loses your settings and, for validators, your on-ledger identity):
+**Configuration and identity** (can't be regenerated - losing these loses your settings and, for validators, your on-ledger identity):
 
 - `/opt/ripple/etc/rippled.cfg` - main server config, including your `[validator_token]` on validators.
 - `/opt/ripple/etc/validators.txt` - your trusted validator list (UNL). Skip if your `[validators]` section lives inside `rippled.cfg`.
@@ -79,11 +79,25 @@ sudo cp /opt/ripple/etc/validators.txt  /root/rippled-backup/   # if present
 sudo cp /var/lib/rippled/db/wallet.db   /root/rippled-backup/
 ```
 
-Then copy that directory **off the host**, so a disk failure or a failed migration does not also destroy your backup. For example, pull it to your own machine over SSH:
+Then copy that directory **off the host**, so a disk failure or a failed migration doesn't also destroy your backup. A normal SSH login can't read `/root`, so first pack the directory into an archive in your home directory. The archive contains your `rippled.cfg`, including the `[validator_token]` on validators, so restrict who can read it:
+
+```sh
+sudo tar -czf ~/rippled-backup.tar.gz -C /root rippled-backup
+sudo chown "$USER" ~/rippled-backup.tar.gz
+chmod 600 ~/rippled-backup.tar.gz
+```
+
+Then, from your own machine:
 
 ```sh
 # Replace user@your-node with your SSH login and host
-scp -r user@your-node:/root/rippled-backup ./rippled-backup
+scp user@your-node:rippled-backup.tar.gz .
+```
+
+Once the copy is on your machine, delete the archive from the host:
+
+```sh
+rm ~/rippled-backup.tar.gz
 ```
 
 {% admonition type="info" name="Optional: full-history and large-history nodes" %}
@@ -137,9 +151,9 @@ For RHEL-based distros, run:
 sudo yum install -y xrpld
 ```
 
-This installs the `xrpld` binary at `/usr/bin/xrpld`, creates the `xrpld` user and group, and installs a default mainnet config at `/etc/xrpld/xrpld.cfg`. The `xrpld` service starts automatically.
+This installs the `xrpld` binary at `/usr/bin/xrpld`, creates the `xrpld` user and group, and installs a default mainnet config at `/etc/xrpld/xrpld.cfg`. On Debian and Ubuntu the `xrpld` service starts automatically; on RHEL it is enabled but not started.
 
-**Important: stop the auto-started service before continuing.** It is running on the default config and writing into a fresh `/var/lib/xrpld/`. Stop it so nothing changes those directories while you restore your config:
+**Important: make sure the service is stopped before continuing.** If it started, it is running on the default config and writing into a fresh `/var/lib/xrpld/`. Stop it so nothing changes those directories while you restore your config:
 
 ```sh
 sudo systemctl stop xrpld
@@ -166,7 +180,7 @@ sudo cp /root/rippled-backup/validators.txt /etc/xrpld/validators.txt
 ```
 
 {% admonition type="info" name="No separate validators.txt?" %}
-Some operators keep the `[validators]` and `[validator_token]` sections inside `xrpld.cfg` instead of a separate file. In that case there is nothing to restore here - remove the package-shipped list so it cannot override your embedded section:
+Some operators keep the `[validators]` and `[validator_token]` sections inside `xrpld.cfg` instead of a separate file. In that case there is nothing to restore here. The server adds the contents of `validators.txt` to your own sections, so the package-shipped list would bring in its two list publishers on top of your embedded list. Remove it. If your config has a `[validators_file]` section, delete that section too, because the server stops at startup when the file it names is missing:
 
 ```sh
 sudo rm /etc/xrpld/validators.txt
@@ -180,6 +194,13 @@ There are two scenarios, depending on whether you need to keep your ledger data.
 #### Re-sync small-history nodes and validators from the network
 
 For validators and nodes that keep only a small window of history (a day or so). Re-syncing from peers takes only minutes, so there is no need to carry the old data across - point `xrpld` at the new default paths so it rebuilds from the network.
+
+Do carry `wallet.db` across, so the node keeps its identity, its peer reservations, and its amendment votes. With the service still stopped from Step 3, copy the file you backed up in Step 1 over the new one:
+
+```sh
+sudo cp /root/rippled-backup/wallet.db /var/lib/xrpld/db/wallet.db
+sudo chown xrpld:xrpld /var/lib/xrpld/db/wallet.db
+```
 
 Set these paths in `/etc/xrpld/xrpld.cfg` (they match the default config):
 
@@ -199,13 +220,21 @@ path=/var/lib/xrpld/db/nudb
 /var/log/xrpld/debug.log
 ```
 
+The old `/var/lib/rippled` stays on disk, so make sure there is room for both stores while the new one fills. Delete the old directory once the server reaches `full` or `proposing` and you no longer need it as a fallback.
+
 #### Keep existing data on full-history nodes
 
-Backfilling large amounts of ledger history is impractical; re-downloading the ledger store from peers can take months to years for full history. The simplest and safest option is to leave your data where it is and hand ownership to the new `xrpld` user. The config you restored in Step 4 already points at `/var/lib/rippled` and `/var/log/rippled`, so no paths need to change:
+Backfilling large amounts of ledger history is impractical; re-downloading the ledger store from peers can take months to years for full history. The simplest and safest option is to leave your data where it is and hand ownership to the new `xrpld` user. The config you restored in Step 4 already points at `/var/lib/rippled`, so no data paths need to change. Move the log to the new location so the packaged log rotation covers it. In `/etc/xrpld/xrpld.cfg`, set:
+
+```
+[debug_logfile]
+/var/log/xrpld/debug.log
+```
+
+Then hand ownership of the data directory to the new user:
 
 ```sh
 sudo chown -R xrpld:xrpld /var/lib/rippled
-sudo chown -R xrpld:xrpld /var/log/rippled
 ```
 
 `xrpld` reads your existing data in place. The empty `/var/lib/xrpld/` the install created stays unused, and you can remove it whenever you like.
@@ -247,10 +276,12 @@ After switching to `xrpld`, update anything that still references the old paths 
 - **Log paths:** Repoint log shippers (such as alloy, vector, fluentbit, or filebeat), logrotate configs, and rotation cron jobs to use `/var/log/xrpld/` instead of `/var/log/rippled/`.
 - **Metrics and monitoring:** Update Prometheus exporters and process-name matchers to recognize `xrpld`, and fix any Grafana dashboards with hardcoded process or service names.
 - **Coredump handling:** Update coredump filename patterns and analysis scripts to include `xrpld` and the new binary path `/usr/bin/xrpld`.
-- **Cron jobs:** Update any job that touches the data directory, such as online delete, to use the new paths.
+- **Cron jobs:** Update any job that touches the data directory, such as online delete, to use the new paths. If you enabled the old automatic update, remove `/etc/cron.d/update-rippled-cron`. The script behind it went away with the `rippled` package.
+- **Old package repository:** If you added a `ripple.list` or similar file for `rippled`, remove it so `xrpld` upgrades come from one source. Keep it only if you install Clio from it.
+- **Legacy command name:** The `xrpld` package installs a `/usr/local/bin/rippled` link to `/usr/bin/xrpld` for old scripts. It is marked for removal, so update any script that calls `rippled`.
 - **Ownership and ACLs:** Update scripts that ran as `rippled:ripple` to run as `xrpld:xrpld`, or adjust group memberships to read the new paths.
 - **Backup jobs:** Repoint snapshot and backup tooling to the new data path.
-- **Firewalls and security groups:** The rename doesn't change port assignments, though a recent change set the example config's default port to the IANA-registered XRPL port `2459`. If you harden file permissions, account for the new user and group ownership.
+- **Firewalls and security groups:** The rename doesn't change port assignments, and the config you restored in Step 4 keeps its `[port_peer]` port. The config the package installs listens on the IANA-registered XRPL port `2459` instead of `51235`, so a fresh install, or a reset to the packaged config, needs that port open. If you harden file permissions, account for the new user and group ownership.
 
 
 ## See Also
@@ -260,7 +291,7 @@ After switching to `xrpld`, update anything that still references the old paths 
     - [Understanding Log Messages](../troubleshooting/understanding-log-messages.md)
 - **Configuration:**
     - [Configure xrpld](../configuration/index.md)
-    - [Run xrpld as a Validator](../configuration/server-modes/run-xrpld-as-a-validator.md)
+    - [Run xrpld as a Validator](../configuration/server-modes/validator.md)
 - **Installation:**
     - [Update Manually on Ubuntu or Debian](update-xrpld-manually-on-ubuntu.md)
     - [Update Manually on Red Hat Enterprise Linux](update-xrpld-manually-on-rhel.md)

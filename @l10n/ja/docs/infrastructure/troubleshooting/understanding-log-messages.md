@@ -30,7 +30,7 @@ Terminating thread rippled: main: unhandled St13runtime_error
 
 - サーバのメモリーが不足していませんか。一部のシステムでは、OOM（Out Of Memory）Killerやその他の監視プロセスによって`xrpld`が終了されることがあります。
 - サーバが共有環境で稼働している場合、他のユーザや管理者によってマシンまたはサービスが再起動されますか。たとえば、一部のホステッドプロバイダーは、長期にわたって共有マシンのリソースを大量に消費するサービスを自動的に終了します。
-- サーバは`xrpld`を実行するための[最小要件](../installation/system-requirements.md)を満たしていますか。[本番環境サーバに関する推奨事項](../installation/system-requirements.md#推奨される仕様)を適用していますか。
+- サーバは`xrpld`を実行するための[最小要件](../prerequisites/system-requirements/index.md)を満たしていますか。[本番環境サーバに関する推奨事項](../prerequisites/system-requirements/index.md#推奨される仕様)を適用していますか。
 
 上記のいずれにも該当しない場合は、その問題をセキュリティ上重要なバグとしてRippleに報告してください。Rippleでクラッシュを再現できる場合は、報奨を受領できる可能性があります。詳細は<https://ripple.com/bug-bounty/>をご覧ください。
 
@@ -186,7 +186,7 @@ NetworkOPs:WRN We are not running on the consensus ledger
     - [技術に関するよくある質問](/about/faq.md)
 - **チュートリアル:**
     - [問題の診断](diagnosing-problems.md)
-    - [容量の計画](../installation/capacity-planning.md)
+    - [容量の計画](../prerequisites/capacity-planning.md)
 - **リファレンス:**
     - [xrpld APIリファレンス](../../references/http-websocket-apis/index.md)
       - [`xrpld`コマンドラインの使用](../commandline-usage.md)

@@ -14,22 +14,37 @@ These packages require glibc 2.31 or later. The following distributions meet thi
 - Rocky Linux 9 or later
 - AlmaLinux 9 or later
 
-Other RPM-based distributions with glibc >= 2.31 may also work but are not officially recommended.
+Other RPM-based distributions with glibc >= 2.31 may also work but aren't officially recommended.
 
 ## Prerequisites
 
-Before you install `xrpld`, you must meet the [System Requirements](system-requirements.md).
+Before you install `xrpld`, you must meet the [System Requirements](../prerequisites/system-requirements/index.md).
 
 
 ## Installation Steps
 
-1. Add the XRP Ledger Foundation's package-signing key:
+1. Download the XRP Ledger Foundation's package-signing key and check its fingerprint:
 
     ```
-    sudo rpm --import https://packages.xrplf.org/xrplf.asc
+    curl -fsS https://packages.xrplf.org/xrplf.asc -o /tmp/xrplf.asc
+    gpg --show-keys /tmp/xrplf.asc
     ```
 
-2. Install the XRP Ledger Foundation RPM repository:
+    The output should be:
+
+    ```
+    pub   rsa4096 2026-08-18 [SC]
+          B655416741221F780FBCFBC9AA84D41A11D29FA9
+    uid                      XRPLF Packages <distribution@xrplf.org>
+    ```
+
+2. Import the key:
+
+    ```
+    sudo rpm --import /tmp/xrplf.asc
+    ```
+
+3. Install the XRP Ledger Foundation RPM repository:
 
     Choose the appropriate RPM repository for the stability of releases you want:
 
@@ -38,7 +53,7 @@ Before you install `xrpld`, you must meet the [System Requirements](system-requi
     - `beta` - Beta builds
     - `develop` - Every push to the `develop` branch
 
-    {% admonition type="danger" name="Warning" %}Channels other than `stable` may be broken at any time. Do not use these builds for production servers.{% /admonition %}
+    {% admonition type="danger" name="Warning" %}Channels other than `stable` may be broken at any time. Don't use these builds for production servers.{% /admonition %}
 
     {% tabs %}
 
@@ -80,31 +95,31 @@ Before you install `xrpld`, you must meet the [System Requirements](system-requi
 
     {% /tabs %}
 
-3. Fetch the latest repo updates:
+4. Refresh the repository metadata:
 
     ```
-    sudo yum -y update
+    sudo yum makecache
     ```
 
-4. Install the new `xrpld` package:
+5. Install the new `xrpld` package:
 
     ```
     sudo yum install xrpld
     ```
 
-5. Reload systemd unit files:
+6. Reload systemd unit files:
 
     ```
     sudo systemctl daemon-reload
     ```
 
-6. Configure the `xrpld` service to start on boot:
+7. Configure the `xrpld` service to start on boot:
 
     ```
     sudo systemctl enable xrpld.service
     ```
 
-7. Start the `xrpld` service:
+8. Start the `xrpld` service:
 
     ```
     sudo systemctl start xrpld.service

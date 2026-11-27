@@ -15,12 +15,12 @@ These packages require glibc 2.31 or later. The following distributions meet thi
 - Ubuntu 20.04 (Focal) or later
 - Debian 11 (Bullseye) or later
 
-Other `apt`-based distributions with glibc >= 2.31 may also work but are not officially recommended.
+Other `apt`-based distributions with glibc >= 2.31 may also work but aren't officially recommended.
 
 
 ## Prerequisites
 
-Before you install `xrpld`, you must meet the [System Requirements](system-requirements.md).
+Before you install `xrpld`, you must meet the [System Requirements](../prerequisites/system-requirements/index.md).
 
 
 ## Installation Steps
@@ -75,7 +75,7 @@ Before you install `xrpld`, you must meet the [System Requirements](system-requi
     - `deb-beta` - Beta builds
     - `deb-develop` - Every push to the `develop` branch
 
-    {% admonition type="danger" name="Warning" %}Channels other than `stable` may be broken at any time. Do not use these builds for production servers.{% /admonition %}
+    {% admonition type="danger" name="Warning" %}Channels other than `stable` may be broken at any time. Don't use these builds for production servers.{% /admonition %}
 
 6. Update the package index to include the new repository and install `xrpld`.
 
@@ -97,22 +97,25 @@ Before you install `xrpld`, you must meet the [System Requirements](system-requi
 
 8. Optional: allow `xrpld` to bind to privileged ports.
 
-    This allows you to serve incoming API requests on port 80 or 443. (If you want to do so, you must also update the config file's port settings.)
+    This allows you to serve incoming API requests on port 80 or 443. (If you want to do so, you must also update the config file's port settings.) The packaged service sets `NoNewPrivileges=true`, which stops a file capability from taking effect, so grant the capability to the service instead. Run `sudo systemctl edit xrpld` and add:
 
     ```
-    sudo setcap 'cap_net_bind_service=+ep' /usr/bin/xrpld
+    [Service]
+    AmbientCapabilities=CAP_NET_BIND_SERVICE
     ```
+
+    Restart the service for the change to apply.
 
 9. Optional: configure core dumps
 
-    By default Ubuntu is not configured to produce core files useful for debugging crashes.
+    By default Ubuntu isn't configured to produce core files useful for debugging crashes.
     First run:
     
     ```
     ulimit -c unlimited
     ```
     
-    Now run `sudo systemctl edit rippled`. The default editor should open and add
+    Now run `sudo systemctl edit xrpld`. The default editor should open and add
 
     ```
     [Service]

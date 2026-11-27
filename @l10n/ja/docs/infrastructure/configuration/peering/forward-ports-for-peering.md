@@ -53,7 +53,7 @@ $ sudo firewall-cmd --add-forward-port=port=51235:proto=tcp:toport=51235
   - [ピアプロトコル](../../../concepts/networks-and-servers/peer-protocol.md)
   - [`xrpld`サーバ](../../../concepts/networks-and-servers/index.md)
 - **チュートリアル:**
-  - [容量の計画](../../installation/capacity-planning.md)
+  - [容量の計画](../../prerequisites/capacity-planning.md)
   - [`xrpld`サーバのトラブルシューティング](../../troubleshooting/index.md)
 - **リファレンス:**
   - [connectメソッド][]

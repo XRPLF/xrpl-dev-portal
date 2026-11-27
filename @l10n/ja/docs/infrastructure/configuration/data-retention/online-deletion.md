@@ -16,7 +16,7 @@ labels:
 
 デフォルトの構成ファイルは、`xrpld`サーバが2000の最新レジャーバージョンを保持し、古いデータを自動的に削除するように設定されています。
 
-{% admonition type="success" name="ヒント" %}オンライン削除を使用しても、同一期間のレジャーデータを保管するのに必要なディスク容量は時間の経過とともに増加します。これは、個々のレジャーバージョンのサイズが時間とともに増加する傾向にあるためです。蓄積データが増加するペースは、古いレジャーを削除しない場合に比べると、非常にゆっくりとしています。必要なディスク容量に関する詳細は、[容量の計画](../../installation/capacity-planning.md)をご覧ください。{% /admonition %}
+{% admonition type="success" name="ヒント" %}オンライン削除を使用しても、同一期間のレジャーデータを保管するのに必要なディスク容量は時間の経過とともに増加します。これは、個々のレジャーバージョンのサイズが時間とともに増加する傾向にあるためです。蓄積データが増加するペースは、古いレジャーを削除しない場合に比べると、非常にゆっくりとしています。必要なディスク容量に関する詳細は、[容量の計画](../../prerequisites/capacity-planning.md)をご覧ください。{% /admonition %}
 
 
 ## 背景
@@ -95,7 +95,7 @@ labels:
 
     [{% inline-svg file="/docs/img/fetch_depth.ja.svg" /%}](/docs/img/fetch_depth.ja.svg "fetch_depthよりも古いレジャーバージョンはピアに提供されません")
 
-さまざまな量の履歴の保管に必要なディスク容量の見積もりについては、[容量の計画](../../installation/capacity-planning.md#ディスク容量)をご覧ください。
+さまざまな量の履歴の保管に必要なディスク容量の見積もりについては、[容量の計画](../../prerequisites/capacity-planning.md#ディスク容量)をご覧ください。
 
 ### 指示による削除
 
@@ -119,7 +119,7 @@ labels:
 
 ## 関連項目
 
-- [容量の計画](../../installation/capacity-planning.md)
+- [容量の計画](../../prerequisites/capacity-planning.md)
 - [can_deleteメソッド][] - APIリファレンス資料
 - [オンライン削除の設定](configure-online-deletion.md)
 - [指示による削除の設定](configure-advisory-deletion.md)

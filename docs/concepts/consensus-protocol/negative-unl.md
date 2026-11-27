@@ -166,7 +166,7 @@ The following example demonstrates how the Negative UNL affects the consensus pr
     - [Consensus Protocol](index.md)
 - **Tutorials:**
     - [Connect Your `xrpld` to a Parallel Network](../../infrastructure/configuration/connect-your-xrpld-to-the-xrp-test-net.md)
-    - [Run `xrpld` as a Validator](../../infrastructure/configuration/server-modes/run-xrpld-as-a-validator.md)
+    - [Run `xrpld` as a Validator](../../infrastructure/configuration/server-modes/validator.md)
 - **References:**
     - [NegativeUNL Object](../../references/protocol/ledger-data/ledger-entry-types/negativeunl.md)
     - [UNLModify pseudo-transaction][]
