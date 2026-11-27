@@ -1,10 +1,8 @@
 ---
-html: nft_history.html
-parent: clio-methods.html
 seo:
-    description: Retrieve the history of ownership and transfers for the specified NFT using Clio server's `nft_history` API.
+    description: Retrieve the history of ownership and transfers for a specific NFT.
 labels:
-  - Non-fungible Tokens, NFTs
+    - Non-fungible Tokens, NFTs
 ---
 # nft_history
 
@@ -48,17 +46,17 @@ An example of the request format:
 
 The request contains the following parameters:
 
-| `Field`            | Type                       | Description |
-|:-------------------|:---------------------------|:------------|
-| `nft_id`           | String                     | A unique identifier for the non-fungible token (NFT). |
-| `ledger_index_min` | Integer                    | _(Optional)_ Use to specify the earliest ledger from which to include NFTs. A value of `-1` instructs the server to use the earliest validated ledger version available. |
-| `ledger_index_max` | Integer                    | _(Optional)_ Use to specify the most recent ledger to include NFTs from. A value of `-1` instructs the server to use the most recent validated ledger version available. |
-| `ledger_hash`      | String                     | _(Optional)_ The unique hash of the ledger version to use. (See [Specifying Ledgers][]) |
-| `ledger_index`     | String or Unsigned Integer | _(Optional)_ The [ledger index][] of the ledger to use, or a shortcut string to choose a ledger automatically. Do not specify the `ledger_index` as `closed` or `current`; doing so forwards the request to the P2P `xrpld` server and the `nft_history` API is not available on `xrpld`. (See [Specifying Ledgers][]) |
-| `binary`           | Boolean                    | _(Optional)_ Defaults to `false`. If set to `true`, returns transactions as hex strings instead of JSON. |
-| `forward`          | Boolean                    | _(Optional)_ Defaults to `false`. If set to `true`, returns values indexed with the oldest ledger first. Otherwise, the results are indexed with the newest ledger first. (Each page of results might not be internally ordered, but the pages are ordered overall.) |
-| `limit`            | UInt32                     | _(Optional)_ Limit the number of NFTs to retrieve. The server is not required to honor this value. |
-| `marker`           | Marker                     | Value from a previous paginated response. Resume retrieving data where that response left off. This value is NOT stable if there is a change in the server's range of available ledgers. If you are querying the “validated” ledger, it is possible that new NFTs are created during your paging. |
+| Field              | Type              | Required? | Description |
+|:-------------------|:------------------|:----------|-------------|
+| `binary`           | Boolean           | No        | Defaults to `false`. If set to `true`, returns transactions as hex strings instead of JSON. |
+| `forward`          | Boolean           | No        | Defaults to `false`. If set to `true`, returns values indexed with the oldest ledger first. Otherwise, the results are indexed with the newest ledger first. (Each page of results might not be internally ordered, but the pages are ordered overall.) |
+| `ledger_hash`      | String - [Hash][] | No        | The unique hash of the ledger version to use. (See [Specifying Ledgers][]) |
+| `ledger_index`     | [Ledger Index][]  | No        | The ledger index of the ledger to use, or a shortcut string to choose a ledger automatically. Do not specify the `ledger_index` as `closed` or `current`; Clio only serves validated ledgers and rejects these with `invalidParams`. (See [Specifying Ledgers][]) |
+| `ledger_index_max` | Integer           | No        | The most recent ledger to include transactions from. A value of `-1` instructs the server to use the most recent validated ledger version available. |
+| `ledger_index_min` | Integer           | No        | The earliest ledger to include transactions from. A value of `-1` instructs the server to use the earliest validated ledger version available. |
+| `limit`            | Integer           | No        | If provided, limit the number of transactions to retrieve. The server is not required to honor this value. |
+| `marker`           | [Marker][]        | No        | Value from a previous paginated response. Resume retrieving data where that response left off. |
+| `nft_id`           | String            | Yes       | A unique identifier for the non-fungible token (NFT). |
 
 {% admonition type="info" name="Note" %}If you do not specify a ledger version, Clio uses the latest validated ledger.{% /admonition %}
 
@@ -640,15 +638,15 @@ The example response below uses `api_version: 2`.
 
 The response follows the [standard format][], with a successful result containing the following fields:
 
-| `Field`            | Type                       | Description                |
-|:-------------------|:---------------------------|:---------------------------|
-| `nft_id`           | String                     | A unique identifier for the non-fungible token (NFT). |
-| `ledger_index_min` | Integer - [Ledger Index][] | The ledger index of the earliest ledger actually searched for transactions. |
-| `ledger_index_max` | Integer - [Ledger Index][] | The ledger index of the most recent ledger actually searched for transactions. |
-| `limit`            | Integer                    | The `limit` value used in the request. (This may differ from the actual limit value enforced by the server.) |
-| `marker`           | [Marker][]                 | Server-defined value indicating the response is paginated. Pass this to the next call to resume where this call left off. |
-| `transactions`     | Array                      | Array of transactions matching the request's criteria, as explained below. |
-| `validated`        | Boolean                    | If included and set to `true`, the information in this response comes from a validated ledger version. Otherwise, the information is subject to change. |
+| Field              | Type                       | Required? | Description |
+|:-------------------|:---------------------------|:----------|-------------|
+| `ledger_index_max` | Integer - [Ledger Index][] | Yes       | The ledger index of the most recent ledger actually searched for transactions. |
+| `ledger_index_min` | Integer - [Ledger Index][] | Yes       | The ledger index of the earliest ledger actually searched for transactions. |
+| `limit`            | Integer                    | No        | The maximum applied limit. May be lower than the requested `limit` due to server settings. |
+| `marker`           | [Marker][]                 | No        | Server-defined value indicating the response is paginated. Pass this to the next call to resume where this call left off. |
+| `nft_id`           | String                     | Yes       | A unique identifier for the non-fungible token (NFT). |
+| `transactions`     | Array                      | Yes       | Array of transactions matching the request's criteria, as explained below. |
+| `validated`        | Boolean                    | Yes       | If `true`, the information in this response comes from a validated ledger version. |
 
 {% admonition type="info" name="Note" %}The server may respond with different values of `ledger_index_min` and `ledger_index_max` than you provided in the request, for example if it did not have the versions you specified on hand.{% /admonition %}
 
