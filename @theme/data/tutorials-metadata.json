@@ -4,7 +4,7 @@
       "path": "/docs/tutorials/defi/dex/add-assets-to-amm-in-javascript/",
       "title": "Add Assets to an AMM in JavaScript",
       "description": "Deposit assets into an existing Automated Market Maker (AMM), vote on its trading fee, and redeem LP tokens using JavaScript.",
-      "lastModified": "2026-11-03T19:19:55.000Z",
+      "lastModified": "2026-11-26T13:58:00.000Z",
       "category": "defi",
       "labels": [],
       "languages": [
@@ -15,11 +15,56 @@
       "path": "/docs/tutorials/defi/dex/use-amm-auction-slot-for-lower-fees/",
       "title": "Use the AMM Auction Slot for Lower Fees",
       "description": "Bid on an Automated Market Maker (AMM) auction slot to trade against the pool at a discounted fee.",
-      "lastModified": "2026-11-03T19:19:55.000Z",
+      "lastModified": "2026-11-26T13:58:00.000Z",
       "category": "defi",
       "labels": [],
       "languages": [
         "javascript"
+      ]
+    },
+    {
+      "path": "/docs/tutorials/get-started/get-started-go/",
+      "title": "Get Started Using Go Library",
+      "description": "Build a Go application that interacts with the XRP Ledger.",
+      "lastModified": "2026-11-19T09:30:24.000Z",
+      "category": "get-started",
+      "labels": [
+        "Development"
+      ],
+      "languages": [
+        "go"
+      ]
+    },
+    {
+      "path": "/docs/tutorials/best-practices/transaction-sending/send-a-single-account-batch-transaction/",
+      "title": "Send a Single Account Batch Transaction",
+      "description": "Send a Batch transaction from a single account.",
+      "lastModified": "2026-11-05T16:12:41.000Z",
+      "category": "best-practices",
+      "labels": [
+        "Batch",
+        "Transactions"
+      ],
+      "languages": [
+        "javascript",
+        "python",
+        "go"
+      ]
+    },
+    {
+      "path": "/docs/tutorials/best-practices/transaction-sending/send-a-multi-account-batch-transaction/",
+      "title": "Send a Multi-Account Batch Transaction",
+      "description": "Send a Batch transaction containing transactions from multiple accounts.",
+      "lastModified": "2026-11-05T16:12:41.000Z",
+      "category": "best-practices",
+      "labels": [
+        "Batch",
+        "Transactions"
+      ],
+      "languages": [
+        "javascript",
+        "python",
+        "go"
       ]
     },
     {
@@ -279,19 +324,6 @@
       "languages": [
         "javascript",
         "python"
-      ]
-    },
-    {
-      "path": "/docs/tutorials/get-started/get-started-go/",
-      "title": "Get Started Using Go Library",
-      "description": "Build a Go application that interacts with the XRP Ledger.",
-      "lastModified": "2026-09-25T10:06:32.000Z",
-      "category": "get-started",
-      "labels": [
-        "Development"
-      ],
-      "languages": [
-        "go"
       ]
     },
     {
@@ -1125,34 +1157,6 @@
       "languages": [
         "javascript",
         "python"
-      ]
-    },
-    {
-      "path": "/docs/tutorials/best-practices/transaction-sending/send-a-single-account-batch-transaction/",
-      "title": "Send a Single Account Batch Transaction",
-      "description": "Send a Batch transaction from a single account.",
-      "lastModified": "2025-08-18T20:38:57.000Z",
-      "category": "best-practices",
-      "labels": [
-        "Batch",
-        "Transactions"
-      ],
-      "languages": [
-        "javascript"
-      ]
-    },
-    {
-      "path": "/docs/tutorials/best-practices/transaction-sending/send-a-multi-account-batch-transaction/",
-      "title": "Send a Multi-Account Batch Transaction",
-      "description": "Send a Batch transaction containing transactions from multiple accounts.",
-      "lastModified": "2025-08-18T20:38:57.000Z",
-      "category": "best-practices",
-      "labels": [
-        "Batch",
-        "Transactions"
-      ],
-      "languages": [
-        "javascript"
       ]
     }
   ],
