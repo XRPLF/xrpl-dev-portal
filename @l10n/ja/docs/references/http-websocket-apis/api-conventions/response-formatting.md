@@ -10,16 +10,28 @@ seo:
 
 成功した場合のレスポンスに含まれるフィールドは、以下の通りです。
 
-| `Field`         | 型         | 説明                                            |
-|:----------------|:-----------|:------------------------------------------------|
-| `id`            | （場合により異なる） | （WebSocketのみ）このレスポンスのリクエスト元となったリクエストで指定されているID。    |
-| `status`        | 文字列      | （WebSocketのみ）値が`success`である場合、リクエストがサーバによって正常に受信され、理解されたことを示します。 |
-| `result.status` | 文字列      | （JSON-RPCおよびコマンドライン）値が`success`である場合、リクエストがサーバによって正常に受信され、理解されたことを示します。 |
-| `type`          | 文字列      | （WebSocketのみ）値が`response`の場合、コマンドに対する正常なレスポンスであることを示します。[非同期の通知](../public-api-methods/subscription-methods/subscribe.md)では、`ledgerClosed`や`transaction`など異なる値が使用されます。 |
-| `result`        | オブジェクト | クエリーの結果。内容はコマンドによって異なります。 |
-| `warning`       | 文字列      | _(省略可)_ このフィールドが存在する場合、値は文字列`load`です。これはクライアントがサーバがこのクライアントを切断する[レートリミット](rate-limiting.md)の閾値に近づいていることを意味します。 |
-| `warnings`      | 配列        | _(省略可)_ このフィールドが存在する場合、重要な警告を含む1つ以上の**Warningsオブジェクト**が含まれます。詳細については、[API警告](#apiの警告)をご覧ください。 |
-| `forwarded`     | 真偽値      | _(省略可)_ `true`の場合、このリクエストとレスポンスは[レポートモード][]サーバからP2Pモードサーバに転送されます。デフォルトは`false`です。 |
+{% tabs %}
+{% tab label="WebSocket" %}
+| フィールド        | 型                 | 必須？ | 説明 |
+|:----------------|:-------------------|:------|------|
+| `status`        | 文字列              | はい   | 値が`success`である場合、リクエストがサーバによって正常に受信され、理解されたことを示します。一部の[クライアントライブラリ](../../client-libraries.md)では、成功時にこのフィールドが省略されます。 |
+| `type`          | 文字列              | はい   | 値が`response`の場合、APIリクエストに対する直接のレスポンスであることを示します。[非同期の通知](../public-api-methods/subscription-methods/subscribe.md)では、`ledgerClosed`や`transaction`など異なる値が使用されます。 |
+| `result`        | オブジェクト         | はい   | クエリーの結果。内容はAPIメソッドによって異なります。 |
+| `id`            | （場合により異なる） | いいえ | このレスポンスの元になったリクエストで指定された任意のID。リクエストでIDが指定されていない場合は省略されます。 |
+| `warning`       | 文字列              | いいえ | このフィールドが存在する場合、値は文字列`load`です。これは、サーバがこのクライアントを切断する[レートリミット](rate-limiting.md)の閾値に、クライアントが近づいていることを意味します。 |
+| `warnings`      | 配列                | いいえ | このフィールドが存在する場合、重要な警告を含む1つ以上の**Warningsオブジェクト**が含まれます。詳細については、[APIの警告](#apiの警告)を参照してください。 |
+| `forwarded`     | 真偽値              | いいえ | `true`の場合、リクエストにClioでは利用できないデータが必要なため、このリクエストとレスポンスはClioサーバからP2Pモードサーバに転送され（て戻され）ています。デフォルトは`false`です。 |
+{% /tab %}
+{% tab label="JSON-RPC" %}
+| フィールド        | 型          | 必須？ | 説明 |
+|:----------------|:------------|:------|------|
+| `result`        | オブジェクト  | はい   | クエリーの結果。内容はコマンドによって異なります。 |
+| `result.status` | 文字列       | はい   | 値が`success`である場合、リクエストがサーバによって正常に受信され、理解されたことを示します。一部の[クライアントライブラリ](../../client-libraries.md)では、成功時にこのフィールドが省略されます。 |
+| `warning`       | 文字列       | いいえ | このフィールドが存在する場合、値は文字列`load`です。これは、サーバがこのクライアントを切断する[レートリミット](rate-limiting.md)の閾値に、クライアントが近づいていることを意味します。 |
+| `warnings`      | 配列         | いいえ | このフィールドが存在する場合、重要な警告を含む1つ以上の**Warningsオブジェクト**が含まれます。詳細については、[APIの警告](#apiの警告)を参照してください。 |
+| `forwarded`     | 真偽値       | いいえ | `true`の場合、リクエストにClioでは利用できないデータが必要なため、このリクエストとレスポンスはClioサーバからP2Pモードサーバに転送され（て戻され）ています。デフォルトは`false`です。 |
+{% /tab %}
+{% /tabs %}
 
 
 ## 成功した場合のレスポンスの例
@@ -128,9 +140,9 @@ HTTP Status: 200 OK
 ]
 ```
 
-この警告は、XRP Ledgerプロトコルの1つ以上の[Amendment](../../../concepts/networks-and-servers/amendments.md)が有効になる予定であるが、現在のサーバにはそれらのAmendmentの実装がないことを示しています。これらのAmendmentが有効になると、現在のサーバは[Amendmentブロック](../../../concepts/networks-and-servers/amendments.md#amendment-blocked-servers)されるため、できるだけ早く[最新の`xrpld`バージョンにアップグレード](../../../infrastructure/installation/index.md)する必要があります。
+この警告は、XRP Ledgerプロトコルの1つ以上の[Amendment](../../../concepts/networks-and-servers/amendments.md)が有効になる予定であるが、現在のサーバにはそれらのAmendmentの実装がないことを示しています。これらのAmendmentが有効になると、現在のサーバは[Amendmentブロック](../../../concepts/networks-and-servers/amendments.md#amendment-blocked)されるため、できるだけ早く[最新の`xrpld`バージョンにアップグレード](../../../infrastructure/installation/index.md)する必要があります。
 
-サーバは、この警告を送信するのは、クライアントが[管理者として接続している](/docs/tutorials/get-started/get-started-http-websocket-apis.md#admin-access)場合のみです。
+サーバがこの警告を送信するのは、クライアントが[管理者として接続している](/docs/tutorials/get-started/get-started-http-websocket-apis.md#admin-access)場合のみです。
 
 この警告には、以下のフィールドを含む`details`フィールドが含まれます。
 
@@ -155,28 +167,28 @@ HTTP Status: 200 OK
 ]
 ```
 
-この警告は、サーバが[Amendmentブロック](../../../concepts/networks-and-servers/amendments.md)され、同期を取ることができなくなったことを示しています。
+この警告は、サーバが[Amendmentブロック](../../../concepts/networks-and-servers/amendments.md#amendment-blocked)され、XRP Ledgerとの同期を維持できなくなったことを示しています。
 
 サーバの管理者は、アクティブ化されたAmendmentをサポートするバージョンに[`xrpld`をアップグレード](../../../infrastructure/installation/index.md)する必要があります。
 
-### 1003. This is a reporting server
+### 2001. This is a clio server
 
 警告の例:
 
 ```json
-"warnings" : [
+"warnings": [
   {
-    "id" : 1003,
-    "message" : "This is a reporting server. The default behavior of a reporting server is to only return validated data. If you are looking for not yet validated data, include \"ledger_index : current\" in your request, which will cause this server to forward the request to a p2p node. If the forward is successful the response will include \"forwarded\" : \"true\""
+    "id": 2001,
+    "message": "This is a clio server. clio only serves validated data. If you want to talk to rippled, include 'ledger_index':'current' in your request"
   }
 ]
 ```
 
-この警告は、リクエストに応答するサーバが[レポートモード][]で実行されていることを示しています。レポートモードはピアツーピアネットワークに接続せず、まだ検証されていないレジャーデータを追跡しないため、一部のAPIメソッドが利用できないか、異なる動作をすることがあります。
+この警告は、リクエストに応答したサーバがClioサーバであり、ピアツーピアネットワークに直接アクセスできないことを示しています。一部のAPIメソッドは動作が異なったり、追加の情報を含んだりすることがあります。また、検証されていないデータが必要なリクエストは、ピアツーピアサーバに転送されます。
 
 一般的に、この警告は無視しても安全です。
 
-{% admonition type="warning" name="注意" %}レポートモードで検証されていないデータをリクエストする場合、明示的に[レジャーバージョンを指定][レジャーの指定]しない限り、レポートモードはデフォルトで最新の検証済みレジャーを使用します。{% /admonition %}
+{% admonition type="warning" name="注意" %}明示的に[レジャーバージョンを指定][レジャーの指定]せずにレジャーデータをリクエストすると、Clioはデフォルトで、処理中の現在のレジャーではなく最新の検証済みレジャーを使用します。{% /admonition %}
 
 
 ## 関連項目
