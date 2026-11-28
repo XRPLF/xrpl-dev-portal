@@ -17,6 +17,7 @@ labels:
 | Fee                | 文字列           | Amount            | _（必須。[自動入力可能][]）_ 整数で表したXRPの額（drop単位）。このトランザクションをネットワークに送信するためのコストとして消却されます。トランザクションのタイプによっては、最小要件が異なります。詳細は、[トランザクションコスト][]をご覧ください。 |
 | Sequence           | 符号なし整数 | UInt32            | _（必須。[自動入力可能][]）_ トランザクションを開始したアカウントに関連付けられた、トランザクションのシーケンス番号。トランザクションが有効とみなされるのは、その`Sequence`番号が、同一のアカウントの直前トランザクションよりも1大きい場合のみです。保留中のトランザクションを`Sequence`番号を使用して無効にする方法については、[トランザクションのキャンセルまたはスキップ](../../../concepts/transactions/finality-of-results/canceling-a-transaction.md)をご覧ください。 |
 | [AccountTxnID][]   | 文字列           | UInt256           | _（省略可）_ 別のトランザクションを識別するためのハッシュ値。このハッシュがある場合、このトランザクションが有効になるのは、送信側のアカウントの直前送信トランザクションがこのハッシュと一致しているときのみです。 |
+| [Delegate](#delegate) | 文字列           | AccountID         | _（省略可）_ `Account`に代わってこのトランザクションを送信する被委任者のアカウント。 {% amendment-disclaimer name="PermissionDelegationV1_1" /%} |
 | [Flags][]          | 符号なし整数 | UInt32            | _（省略可）_ このトランザクションのビットフラグのセット。 |
 | LastLedgerSequence | 数値           | UInt32            | _（省略可。使用を強く推奨）_ このトランザクションを登録できるレジャーインデックスの最大値。このフィールドを指定することにより、トランザクションが検証または拒否されるのを待たなければならない期間の上限を設定することができます。詳細は、[信頼できるトランザクションの送信](../../../concepts/transactions/reliable-transaction-submission.md)をご覧ください。 |
 | [`NetworkID`](#networkidフィールド) | Number | UInt32           | _(Network-specific)_ The network ID of the chain this transaction is intended for. **MUST BE OMITTED** for Mainnet and some test networks. **REQUIRED** on chains whose network ID is 1025 or higher. |
@@ -57,6 +58,17 @@ AccountTxnIDを使用するには、アカウントの1つ前のトランザク�
 本番システムについては、これらのフィールドの値がサーバによって入力される状態に _しない_ ことをお勧めします。例えば、ネットワークの負荷が一時的に急上昇したためにトランザクションコストが高騰した場合、トランザクションによっては、一時的な高額のコストを支払うよりも、必要に応じて待機し、コストが低下してから送信したほうが好ましいことがあります。
 
 [Paymentトランザクション][]タイプの[`Paths`フィールド](types/payment.md#パス)についても、値を自動入力できます。
+
+## Delegate
+
+`Delegate`フィールドを指定した場合、このトランザクションは`Account`フィールドのアカウントに代わって、別のアカウントから送信されます。`Account`のアカウントが _委任者_ 、`Delegate`フィールドのアカウントが _被委任者_ です。トランザクションは委任者が送信したかのように機能しますが、次の点が異なります。
+
+- 署名は被委任者のアカウントに対して有効である必要があります（被委任者が承認したマスターキー、レギュラーキー、マルチシグの署名者リストのいずれかで署名できます）。
+- トランザクションコスト（`Fee`フィールド）は被委任者のアカウントが支払います。
+
+この方法でトランザクションを送信できるのは、委任者が被委任者に適切なトランザクションの権限を付与している場合のみです。詳細は、[権限委任](../../../concepts/accounts/permission-delegation.md)を参照してください。
+
+{% amendment-disclaimer name="PermissionDelegationV1_1" /%}
 
 
 ## Flagsフィールド

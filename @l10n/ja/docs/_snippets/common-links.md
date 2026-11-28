@@ -63,6 +63,9 @@
 [ConfidentialMPTMergeInboxトランザクション]: /@l10n/ja/docs/references/protocol/transactions/types/confidentialmptmergeinbox.md
 [ConfidentialMPTSendトランザクション]: /@l10n/ja/docs/references/protocol/transactions/types/confidentialmptsend.md
 [DeepFreeze amendment]: /@l10n/ja/resources/known-amendments.md#deepfreeze
+[Delegateエントリ]: /@l10n/ja/docs/references/protocol/ledger-data/ledger-entry-types/delegate.md
+[DelegateSet]: /@l10n/ja/docs/references/protocol/transactions/types/delegateset.md
+[DelegateSetトランザクション]: /@l10n/ja/docs/references/protocol/transactions/types/delegateset.md
 [DepositAuth amendment]: /@l10n/ja/resources/known-amendments.md#depositauth
 [DepositPreauth amendment]: /@l10n/ja/resources/known-amendments.md#depositpreauth
 [DepositPreauthエントリ]: /@l10n/ja/docs/references/protocol/transactions/types/depositpreauth.md
@@ -305,6 +308,7 @@
 [結果コード]: /@l10n/ja/docs/references/protocol/transactions/transaction-results/index.md
 [ripple-lib]: https://github.com/XRPLF/xrpl.js
 [ripple_path_findメソッド]: /@l10n/ja/docs/references/http-websocket-apis/public-api-methods/path-and-order-book-methods/ripple_path_find.md
+[server_definitionsメソッド]: /@l10n/ja/docs/references/http-websocket-apis/public-api-methods/server-info-methods/server_definitions.md
 [server_infoメソッド]: /@l10n/ja/docs/references/http-websocket-apis/public-api-methods/server-info-methods/server_info.md
 [server_stateメソッド]: /@l10n/ja/docs/references/http-websocket-apis/public-api-methods/server-info-methods/server_state.md
 [sign_forメソッド]: /@l10n/ja/docs/references/http-websocket-apis/admin-api-methods/signing-methods/sign_for.md
