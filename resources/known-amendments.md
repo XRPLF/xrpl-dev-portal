@@ -822,7 +822,7 @@ Without this amendment, Checks transactions ([CheckCreate][], [CheckCash][], and
 
 
 ### fixCleanup3_1_3
-[fixCleanup3_1_3]: fixcleanup3_1_3
+[fixCleanup3_1_3]: #fixcleanup3_1_3
 
 | Amendment    | fixCleanup3_1_3 |
 |:-------------|:----------------|
@@ -843,7 +843,7 @@ This amendment is a collection of fixes for NFTs, Permissioned Domains, Vaults, 
 
 
 ### fixCleanup3_2_0
-[fixCleanup3_2_0]: fixcleanup3_2_0
+[fixCleanup3_2_0]: #fixcleanup3_2_0
 
 | Amendment    | fixCleanup3_2_0 |
 |:-------------|:----------------|
@@ -928,7 +928,7 @@ This amendment is a collection of fixes for Single Asset Vaults, the Lending Pro
 ### fixDirectoryLimit
 [fixDirectoryLimit]: #fixdirectorylimit
 
-| Amendment    | fixdirectorylimit |
+| Amendment    | fixDirectoryLimit |
 |:-------------|:--------|
 | Amendment ID | 41765F664A8D67FF03DDB1C1A893DE6273690BA340A6C2B07C8D29D0DD013D3A |
 | Status       | {% amendment-disclaimer name="fixDirectoryLimit" statusOnly=true /%} |
@@ -1042,7 +1042,7 @@ This amendment has no effect unless the [FlowCross][] amendment is enabled.
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
-This amendment fixes a loophole that enabled blacklisted accounts to transfer frozen LP tokens through alternative mechanisms, such as such as payments, checks, offers, or NFTs.
+This amendment fixes a loophole that enabled blacklisted accounts to transfer frozen LP tokens through alternative mechanisms, such as payments, checks, offers, or NFTs.
 
 With this amendment enabled, if an LP token is associated with a liquidity pool that contains at least one frozen asset, the LP token is also frozen. This means:
 
@@ -2101,7 +2101,7 @@ Introduces a `TickSize` field to accounts, which can be set with the [AccountSet
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
-Extends escrow functionality to fungible tokens, enabling Trust Line Tokens and Multi-Purpose Tokens (MPTs) to be held in escrow. Issuers can control whether their tokens can be escrowed through flags. To issue Trust Line Tokens, issuers must enable the **Allow TrustLine Locking** flag on their account, or the **Can Escrow** and **Can Transfer** flags for an MPT issuance.
+Extends escrow functionality to fungible tokens, enabling Trust Line Tokens and Multi-Purpose Tokens (MPTs) to be held in escrow. Issuers can control whether their tokens can be escrowed through flags. To allow their tokens to be escrowed, issuers must enable the **Allow TrustLine Locking** flag on their account for Trust Line Tokens, or the **Can Escrow** and **Can Transfer** flags for an MPT issuance.
 
 Modifies existing transactions:
 
