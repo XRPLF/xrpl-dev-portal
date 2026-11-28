@@ -6,18 +6,23 @@ labels:
 ---
 # トークンの回収
 
-規制上の目的から、トークンがアカウントに送信された後にトークンを回収する機能を必要とする発行者が存在します。例えば、トークンが違法行為で制裁を受けたアカウントに送られたことが発覚した場合、発行者はその資金を「回収」することができます。
+規制上の目的から、トークンがアカウントに配布された後にトークンを取り戻す機能を必要とする発行者がいます。たとえば、違法行為で制裁を受けたアカウントにトークンが送られたことが発覚した場合、発行者はその資金を取り戻す、つまり *回収（Clawback）* することができます。資金を回収する機能の制御方法は、トークンの種類によって異なります。
 
-発行者は、発行アカウントで**Allow Clawback**フラグを有効にすることで、トークンを回収する権限を得ることができます。発行者がすでにトークンを発行している場合、このフラグを有効にすることはできません。
+- 発行者は、発行アカウントで**Allow Clawback**フラグを有効にすると、自身が発行するすべての[トラストライントークン](./trust-line-tokens.md)を回収する機能を得られます。発行者がすでにトラストライントークンを発行している場合、このフラグは有効にできません。{% amendment-disclaimer name="Clawback" /%}
+- [MPT](./multi-purpose-tokens.md)は、MPTの発行で**Can Clawback**フラグが有効になっている場合に、発行者が回収できます。{% amendment-disclaimer name="MPTokensV1" /%}
+- XRPはトークンではないため、回収できません。
 
-{% admonition type="info" name="注記" %}アカウント自身が発行したトークンのみを回収することができます。この方法でXRPを回収することはできません。{% /admonition %}
 
-Clawback機能はデフォルトで無効になっています。使用するには、[AccountSetトランザクション][]を送信して、**Allow Trust Line Clawback**設定を有効にする必要があります。**既存のトークンを持つ発行者はClawback機能を有効にすることはできません**。**Allow Trust Line Clawback**を有効にできるのは、所有者ディレクトリが完全に空の場合のみです。つまり、トラストライン、オファー、エスクロー、ペイメントチャネル、チェック、または署名者リストを設定する前に有効にする必要があります。
+## トラストライントークンの回収を許可する
 
-`lsfNoFreeze`が設定されているときに`lsfAllowTrustLineClawback`を設定しようとすると、トランザクションは`tecNO_PERMISSION`を返します。
-逆に、`lsfAllowTrustLineClawback`が設定されている時に`lsfNoFreeze`を設定しようとすると、トランザクションは`tecNO_PERMISSION`を返します。
+Clawback機能はデフォルトで無効になっています。使用するには、[AccountSetトランザクション][]を送信して、**Allow Trust Line Clawback**設定を有効にする必要があります。**既存のトークンを持つ発行者は、Clawback機能を有効にできません。** **Allow Trust Line Clawback**を有効にできるのは、所有者ディレクトリが完全に空の場合のみです。つまり、トラストライン、オファー、エスクロー、ペイメントチャネル、チェック、署名者リストを設定する前に有効にする必要があります。
 
-{% amendment-disclaimer name="Clawback" /%}
+`lsfNoFreeze`が設定されているときに`lsfAllowTrustLineClawback`を設定しようとすると、トランザクションは`tecNO_PERMISSION`を返します。トラストラインをフリーズする機能をすでに放棄したアカウントでは、Clawbackを有効にできないためです。
+逆に、`lsfAllowTrustLineClawback`が設定されているときに`lsfNoFreeze`を設定しようとした場合も、トランザクションは`tecNO_PERMISSION`を返します。
+
+## MPTの回収を許可する
+
+Clawback機能はデフォルトで無効になっています。使用するには、MPTで**Can Clawback**フラグを有効にしておく必要があります。このフラグはMPTの発行の定義の一部で、トークンを発行する前に設定します。
 
 ## Clawbackトランザクションの例
 
@@ -33,6 +38,6 @@ Clawback機能はデフォルトで無効になっています。使用するに
 }
 ```
 
-このトランザクションが成功した場合、rp6abvbTbjoce8ZDJkT6snvxTZSYMBCC9Sが発行し、rsA2LpzuawewSBQXkiju3YQTMzW13pAAdWが保有する最大314.159FOOを回収することになります。
+このトランザクションが成功した場合、rp6abvbTbjoce8ZDJkT6snvxTZSYMBCC9Sが発行し、rsA2LpzuawewSBQXkiju3YQTMzW13pAAdWが保有する最大314.159 FOOが回収されます。
 
 {% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

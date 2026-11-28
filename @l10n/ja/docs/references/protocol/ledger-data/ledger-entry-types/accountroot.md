@@ -161,7 +161,7 @@ AccountRootエントリのIDは、以下の値をこの順序で連結した[SHA
 
 ## 関連項目
 
-- **概念:**
+- **コンセプト:**
     - [疑似アカウント](../../../../concepts/accounts/pseudo-accounts.md)
 
 - **トランザクション:**
