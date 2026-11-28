@@ -52,7 +52,7 @@ A request can include the following fields:
 
 | `Field`        | Type             | Required? | Description    |
 |:---------------|:-----------------|:----------|----------------|
-| `ledger_hash`  | [Hash][]         | No        | A 20-byte hex string identifying the ledger version to use. |
+| `ledger_hash`  | [Hash][]         | No        | The unique hash of the ledger version to use. |
 | `ledger_index` | [Ledger Index][] | No        | The [ledger index][] of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
 | `binary`       | Boolean          | No        | If `true`, return ledger entries as hexadecimal strings instead of JSON. The default is `false`. |
 | `limit`        | Number           | No        | Limit the number of ledger entries to retrieve. The server may return fewer than this number of entries. Cannot be more than 2048 (when requesting binary) or 256 (when requesting JSON). Positive values outside this range are replaced with the closest valid option. The default is the maximum. |
