@@ -123,8 +123,8 @@ txIcon: other
 
 | フィールド          | JSONの型 | [内部の型][] | 必須？ | 説明                                                         |
 | :---------------- | :--------- | :--------- | :----- | :----------------------------------------------------------- |
-| `Flags`           | 数値       | UInt32     | はい     | このトランザクションのビットフラグです。トランザクションのバッチモードを表すために、正確に1つ指定する必要があります。[Batchのフラグ](#batchのフラグ)をご覧ください。 |
-| `RawTransactions` | 配列       | Array      | はい     | 適用するトランザクションのリストです。[RawTransactions](#rawtransactions)をご覧ください。 |
+| `Flags`           | 数値       | UInt32     | はい     | このトランザクションのビットフラグです。トランザクションのバッチモードを表すために、正確に1つ指定する必要があります。[Batchのフラグ](#batchのフラグ)を参照してください。 |
+| `RawTransactions` | 配列       | Array      | はい     | 適用するトランザクションのリストです。[RawTransactions](#rawtransactions)を参照してください。 |
 | `BatchSigners`    | 配列       | Array      | いいえ    | 複数アカウントの`Batch`トランザクションを承認する署名です。          |
 
 ### RawTransactions
@@ -139,7 +139,7 @@ txIcon: other
 - `TicketSequence`または`Sequence`のいずれかに、ゼロより大きい値を含める必要があります。
 
 {% admonition type="warning" name="注意" %}
-`Batch`トランザクションは、一部またはすべての _内部_ トランザクションが失敗した場合でも、外部トランザクションの結果として`tesSUCCESS`を返します。内部トランザクションが成功したことを確認するには、各トランザクションをそのハッシュで検索し、それぞれの結果とメタデータを確認してください。詳細は、[メタデータ](../../../../concepts/transactions/batch-transactions.md#メタデータ)および[Batchトランザクションの結果を確認する](../../../../tutorials/best-practices/transaction-sending/send-a-single-account-batch-transaction.md#6-check-batch-transaction-result)をご覧ください。
+`Batch`トランザクションは、一部またはすべての _内部_ トランザクションが失敗した場合でも、外部トランザクションの結果として`tesSUCCESS`を返します。内部トランザクションが成功したことを確認するには、各トランザクションをそのハッシュで検索し、それぞれの結果とメタデータを確認してください。詳細は、[メタデータ](../../../../concepts/transactions/batch-transactions.md#メタデータ)および[Batchトランザクションの結果を確認する](../../../../tutorials/best-practices/transaction-sending/send-a-single-account-batch-transaction.md#6-check-batch-transaction-result)を参照してください。
 {% /admonition %}
 
 ### BatchSigners

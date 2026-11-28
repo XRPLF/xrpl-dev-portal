@@ -105,13 +105,13 @@ AMMDepositトランザクションタイプを修正し、AMMにフリーズさ�
 |:-------------|:------|
 | Amendment ID | 894646DD5284E97DECFE6674A6D6152686791C4A95F8C132CCA9BAF9E5812FB6 |
 | ステータス     | {% amendment-disclaimer name="Batch" statusOnly=true /%} |
-| デフォルトの投票(最新の安定版) | いいえ |
-| Amendment前の機能は廃止? | いいえ |
+| デフォルトの投票(最新の安定版) | N/A |
+| Amendment前の機能は廃止? | N/A |
 
 複数のトランザクションを1つのバッチにまとめ、一括して処理できるようにします。
 
 {% admonition type="danger" name="警告" %}
-このAmendmentはバグのためv3.1.1で無効化され、[BatchV1_1](#batchv1_1)に置き換えられました。
+このAmendmentは[バグ](../blog/2026/vulnerabilitydisclosurereport-bug-feb2026.md)のためv3.1.1で無効化され、[BatchV1_1](#batchv1_1)に置き換えられました。
 {% /admonition %}
 
 
@@ -125,7 +125,7 @@ AMMDepositトランザクションタイプを修正し、AMMにフリーズさ�
 | デフォルトの投票(最新の安定版) | いいえ |
 | Amendment前の機能は廃止? | いいえ |
 
-複数のトランザクションを1つのバッチにまとめ、一括して処理できるようにします。このAmendmentは、この機能の元の実装で発見された重大なバグを修正し、[Batch](#batch)を置き換えます。標準規格: [XLS-56](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0056-batch)
+複数のトランザクションを1つのバッチにまとめ、一括して処理できるようにします。このAmendmentは、この機能の元の実装で発見された[重大なバグ](../blog/2026/vulnerabilitydisclosurereport-bug-feb2026.md)を修正し、[Batch](#batch)を置き換えます。[fixBatchV1_2](#fixbatchv1_2) Amendmentにより、各内部トランザクションが`RawTransaction`フィールドで包まれていることのチェックが追加されます。標準規格: [XLS-56](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0056-batch)
 
 
 ### CheckCashMakesTrustLine
@@ -771,6 +771,36 @@ Adds several fixes to Automated Market Maker code, specifically:
     - On deposit, tokens out are rounded downward and deposit amount is rounded upward.
     - On withdrawal, tokens in are rounded upward and withdrawal amount is rounded downward.
 - Fix validation of [AMMBid transactions][] to ensure that `AuthAccounts` cannot contain duplicates or the transaction sender.
+
+
+### fixBatchInnerSigs
+[fixBatchInnerSigs]: #fixbatchinnersigs
+
+| Amendment    | fixBatchInnerSigs |
+|:-------------|:------------------|
+| Amendment ID | 267624F8F744C4A4F1B5821A7D54410BCEBABE987F0172EE89E5FC4B6EDBC18A |
+| ステータス     | {% amendment-disclaimer name="fixBatchInnerSigs" statusOnly=true /%} |
+| デフォルトの投票(最新の安定版) | N/A |
+| Amendment前の機能は廃止? | N/A |
+
+このAmendmentは、`Batch`トランザクションの内部トランザクションが有効な署名を持つものとして扱われてしまう問題を修正します。内部トランザクションは直接署名されないため、有効な署名を持つことはありません。
+
+{% admonition type="danger" name="警告" %}
+このAmendmentは[`Batch`のバグ](../blog/2026/vulnerabilitydisclosurereport-bug-feb2026.md)のためv3.1.1で無効化されました。この修正は`BatchV1_1` Amendmentに含まれています。
+{% /admonition %}
+
+
+### fixBatchV1_2
+[fixBatchV1_2]: #fixbatchv1_2
+
+| Amendment    | fixBatchV1_2 |
+|:-------------|:-------------|
+| Amendment ID | 14A2B45E48A4A124D1BBA657AC7B0DC3D5EA8C256C89E8F0D8142D32960A7944 |
+| ステータス     | {% amendment-disclaimer name="fixBatchV1_2" statusOnly=true /%} |
+| デフォルトの投票(最新の安定版) | はい |
+| Amendment前の機能は廃止? | いいえ |
+
+このAmendmentは、[BatchV1_1][] Amendmentのコードにあるバグを修正します。このバグにより、内部トランザクションが`RawTransaction`以外のオブジェクトフィールドで包まれていてもサーバが`Batch`トランザクションを受け入れてしまい、異なるバージョンを実行しているサーバ間で、そのトランザクションが有効かどうかの判断が食い違う可能性がありました。このAmendmentにより、いずれかの内部トランザクションが`RawTransaction`フィールドで包まれていない場合、`Batch`トランザクションは`temMALFORMED`で失敗します。詳細は、[脆弱性開示レポート](../blog/2026/vulnerabilitydisclosurereport-bug-20261009.md#batch-inner-transaction-wrapper-validation-fixbatchv1_2)を参照してください。
 
 
 ### fixCheckThreading
