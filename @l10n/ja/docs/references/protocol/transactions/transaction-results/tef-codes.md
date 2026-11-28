@@ -19,6 +19,7 @@ labels:
 | `tefBAD_AUTH` | このアカウントの署名に使用したキーには、このアカウントを変更する権限がありません。（このアカウントが[レギュラーキー](../../../../concepts/accounts/cryptographic-keys.md)として同じキーセットを持っている場合は変更が承認される可能性があります。） |
 | `tefBAD_AUTH_MASTER` | このトランザクションを承認するために指定された1つの署名がマスターキーと一致していませんが、このアドレスに関連付けられているレギュラーキーもありません。 |
 | `tefBAD_LEDGER` | トランザクションの処理中に、レジャーが予期しない状態にあることが検出されました。このエラーを再現できる場合は、修正のため[問題を報告](https://github.com/XRPLF/rippled/issues)してください。 |
+| `tefBAD_PATH_COUNT` | [Batch][]の内部トランザクションとして含まれる[Payment][]で、指定されたパスが多すぎます。 {% amendment-disclaimer name="BatchV1_1" /%} |
 | `tefBAD_QUORUM` | トランザクションは[マルチシグ](../../../../concepts/accounts/multi-signing.md)トランザクションでしたが、そこに含まれるすべての署名の重みの合計が定数を満たしていません。 |
 | `tefBAD_SIGNATURE` | トランザクションは[マルチシグ](../../../../concepts/accounts/multi-signing.md)トランザクションでしたが、送信側アカウントに関連付けられているSignerListにないアドレスの署名が含まれていました。 |
 | `tefCREATED` | **廃止予定。** |
@@ -29,6 +30,7 @@ labels:
 | `tefMASTER_DISABLED` | トランザクションはアカウントのマスターキーで署名されていましたが、アカウントに`lsfDisableMaster`フィールドが設定されていました。 |
 | `tefMAX_LEDGER` | トランザクションには[`LastLedgerSequence`](../../../../concepts/transactions/reliable-transaction-submission.md#lastledgersequence)パラメーターが指定されていましたが、現在のレジャーのシーケンス番号はすでに指定値を上回っています。 |
 | `tefNO_AUTH_REQUIRED` | [TrustSetトランザクション][]で相手トラストラインを承認済みとしてマークしようとしましたが、自身のアカウントにおいて`lsfRequireAuth`フラグが有効になっていないため、承認できません。 |
+| `tefNO_DST_PARTIAL` | 新しいアカウントに資金を供給する部分的な[Payment][]は、[Batch][]の内部トランザクションとして許可されていません。 {% amendment-disclaimer name="BatchV1_1" /%} |
 | `tefNOT_MULTI_SIGNING` | トランザクションは[マルチシグ](../../../../concepts/accounts/multi-signing.md)トランザクションでしたが、送信側アカウントでSignerListが定義されていません。 |
 | `tefPAST_SEQ` | トランザクションのシーケンス番号は、トランザクションの送信元アカウントの現在のシーケンス番号よりも小さい番号です。 |
 | `tefTOO_BIG` | レジャー内にある、トランザクションの影響を受けるオブジェクトが多過ぎます。例えば、これは[AccountDeleteトランザクション][]でしたが、削除されるアカウントのレジャーには1,000個を超えるオブジェクトがあります。 |

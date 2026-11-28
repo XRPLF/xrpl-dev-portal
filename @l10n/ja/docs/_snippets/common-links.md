@@ -28,6 +28,7 @@
 [Amendmentsオブジェクト]: /@l10n/ja/docs/concepts/networks-and-servers/amendments.md
 [Batch amendment]: /@l10n/ja/resources/known-amendments.md#batch
 [Batch]: /@l10n/ja/docs/references/protocol/transactions/types/batch.md
+[Batchトランザクション]: /@l10n/ja/docs/references/protocol/transactions/types/batch.md
 [Checkエントリ]: /@l10n/ja/docs/references/protocol/ledger-data/ledger-entry-types/check.md
 [Checkオブジェクト]: /@l10n/ja/docs/references/protocol/ledger-data/ledger-entry-types/check.md
 [CheckCancel]: /@l10n/ja/docs/references/protocol/transactions/types/checkcancel.md
@@ -308,6 +309,7 @@
 [server_infoメソッド]: /@l10n/ja/docs/references/http-websocket-apis/public-api-methods/server-info-methods/server_info.md
 [server_stateメソッド]: /@l10n/ja/docs/references/http-websocket-apis/public-api-methods/server-info-methods/server_state.md
 [sign_forメソッド]: /@l10n/ja/docs/references/http-websocket-apis/admin-api-methods/signing-methods/sign_for.md
+[simulateメソッド]: /@l10n/ja/docs/references/http-websocket-apis/public-api-methods/transaction-methods/simulate.md
 [signメソッド]: /@l10n/ja/docs/references/http-websocket-apis/admin-api-methods/signing-methods/sign.md
 [スタンドアロンモード]: /@l10n/ja/docs/concepts/networks-and-servers/xrpld-server-modes.md#スタンドアロンモード
 [標準フォーマット]: /@l10n/ja/docs/references/http-websocket-apis/api-conventions/response-formatting.md
