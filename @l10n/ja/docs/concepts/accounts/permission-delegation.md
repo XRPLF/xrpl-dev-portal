@@ -37,7 +37,7 @@ labels:
 - **トランザクションタイプ権限** - 特定の[トランザクションタイプ](../../references/protocol/transactions/types/index.md)のトランザクションを送信する権限です。一部のタイプは委任できません。
 - **詳細権限(Granular Permission)** - 特定の機能に限定してトランザクションを送信する権限です。
 
-委任の可否を含むトランザクションタイプの一覧と詳細権限の一覧は、[権限の値](../../references/protocol/data-types/permission-values.md)をご覧ください。
+委任の可否を含むトランザクションタイプの一覧と詳細権限の一覧は、[権限の値](../../references/protocol/data-types/permission-values.md)を参照してください。
 
 ### 権限委任の制限事項
 
