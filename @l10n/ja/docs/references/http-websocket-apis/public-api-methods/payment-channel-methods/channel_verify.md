@@ -2,14 +2,14 @@
 html: channel_verify.html
 parent: payment-channel-methods.html
 seo:
-    description: 特定額のXRPをPayment Channelから清算するときに使用できる署名の有効性を検証します。
+    description: Payment Channelのクレームの署名を検証します。
 labels:
   - Payment Channel
 ---
 # channel_verify
 {% source-link path="src/xrpld/rpc/handlers/ChannelVerify.cpp" /%}
 
-`channel_verify`メソッドは、特定額のXRPをPayment Channelから清算するときに使用できる署名の有効性を検証します。
+`channel_verify`メソッドは、Payment Channelから特定額のXRPを受け取るために使用できる署名の有効性を検証します。
 
 ## リクエストのフォーマット
 リクエストのフォーマットの例:
@@ -56,9 +56,9 @@ xrpld channel_verify aB44YfzW24VDEJQ2UuLPV2PvqcPCSoLnL7y5M1EzhdW4LnK5xMS3 5DB01B
 
 | フィールド | 型 | 説明 |
 |-------|------|-------------|
-| `amount` | 文字列 | 指定された`signature`で承認する[XRP、drop単位][]の額。 |
+| `amount` | 文字列 | 指定された`signature`で承認するXRPの額（[XRPのdrop数][]）。 |
 | `channel_id` | 文字列 | XRPを供給するChannelのChannel ID。これは64文字の16進文字列です。 |
-| `public_key` | 文字列 | Channelの公開鍵と、署名の作成に使用されたキーペア（16進数またはXRP Ledgerの[base58][]形式）。[更新: rippled 0.90.0][新規: rippled 0.90.0] |
+| `public_key` | 文字列 | Channelの公開鍵と、署名の作成に使用されたキーペア（16進数またはXRP Ledgerの[base58][]形式）。{% badge href="https://github.com/XRPLF/rippled/releases/tag/0.90.0" %}更新: rippled 0.90.0{% /badge %} |
 | `signature` | 文字列 | 検証する署名（16進数）。 |
 
 ## レスポンスのフォーマット
@@ -114,12 +114,12 @@ xrpld channel_verify aB44YfzW24VDEJQ2UuLPV2PvqcPCSoLnL7y5M1EzhdW4LnK5xMS3 5DB01B
 
 {% admonition type="warning" name="注意" %}これは、Channelに十分なXRPが割り当てられていることを確認するものではありません。クレームが有効であると判断する前に、最新の検証済みレジャーでこのChannelを調べ、このChannelがオープンでありその`amount`の値がクレームの`amount`以上であることを確認してください。このためには[account_channelsメソッド][]を使用します。{% /admonition %}
 
-## 考えられるエラー
+## 想定されるエラー
 
 * [汎用エラータイプ][]のすべて。
 * `invalidParams` - 1つ以上のフィールドの指定が正しくないか、1つ以上の必須フィールドが指定されていません。
 * `publicMalformed` - リクエストの`public_key`フィールドが、正しいフォーマットの有効な公開鍵ではありません。公開鍵は33バイトであり、base58または16進数で表記されている必要があります。[アカウントの公開鍵のbase58表現は文字`a`から始まります](../../../protocol/data-types/base58-encodings.md)。16進表現は66文字です。
 * `channelMalformed` - リクエストの`channel_id`フィールドが有効なChannel IDではありません。Channel IDは256ビット（64文字）の16進文字列である必要があります。
-* `channelAmtMalformed` - リクエストの`amount`に指定された値が、有効な[XRPの額][XRP、drop単位]ではありませんでした。
+* `channelAmtMalformed` - リクエストの`amount`に指定された値が、有効な[XRPの額][XRPのdrop数]ではありませんでした。
 
 {% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}
