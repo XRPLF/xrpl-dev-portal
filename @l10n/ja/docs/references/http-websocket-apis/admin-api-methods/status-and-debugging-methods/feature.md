@@ -10,11 +10,11 @@ labels:
 # feature
 {% source-link path="src/xrpld/rpc/handlers/server_info/Feature.cpp" /%}
 
-`feature`コマンドは、[Amendment](../../../../concepts/networks-and-servers/amendments.md)に関してこのサーバが認識している情報（Amendmentが有効であるかどうか、サーバが[Amendmentプロセス](../../../../concepts/networks-and-servers/amendments.md#amendmentプロセス)でこれらのAmendmentに賛成票を投じたかどうかなど）を返します。{% badge href="https://github.com/XRPLF/rippled/releases/tag/0.31.0" %}新規: rippled 0.31.0{% /badge %}
+`feature`コマンドは、[Amendment](../../../../concepts/networks-and-servers/amendments.md)に関してこのサーバが認識している情報（Amendmentが有効であるかどうか、サーバが[Amendmentプロセス](../../../../concepts/networks-and-servers/amendments.md#amendmentプロセス)でこれらのAmendmentに賛成票を投じたかどうかなど）を返します。
 
-`feature`コマンドを使用して、Amendmentへの賛成票または反対票を投じるようにサーバを一時的に設定できます。この変更は、サーバの再起動後も保持されます。{% badge href="https://github.com/XRPLF/rippled/releases/tag/1.7.0" %}更新: rippled 1.7.0{% /badge %}
+`feature`コマンドを使用して、Amendmentへの賛成票または反対票を投じるようにサーバを設定できます。この変更は、サーバの再起動後も保持されます。
 
-_`feature`メソッドは、権限のないユーザは実行できない[管理メソッド](../index.md)です。_
+_このページで説明する`feature`メソッドは、権限のないユーザは実行できない[管理メソッド](../index.md)です。管理者権限が不要なバージョンについては、[パブリックAPIメソッドの`feature`](../../public-api-methods/server-info-methods/feature.md)を参照してください。_
 
 ### リクエストのフォーマット
 リクエストのフォーマットの例:
@@ -69,7 +69,7 @@ xrpld feature 4C97EBA926031A7CF7D7B36FDE3ED66DDA5421192D63DE53FFB46E43B9DC8373 a
 | `Field`   | 型    | 説明                                            |
 |:----------|:--------|:-------------------------------------------------------|
 | `feature` | 文字列  | _（省略可）_ Amendmentの一意のID（16進数）またはAmendmentの短い名前。指定されている場合は、レスポンスが1つのAmendmentに限定されます。それ以外の場合はレスポンスにすべてのAmendmentのリストが表示されます。 |
-| `vetoed`  | ブール値 | （省略可、`feature`が指定されていない場合は無視されます）trueの場合、サーバに対し`feature`で指定されたAmendmentに反対票を投じるように指示します。falseの場合、サーバに対しAmendmentに賛成票を投じるように指示します。 |
+| `vetoed`  | ブール値 | _（省略可、`feature`が指定されていない場合は無視されます）_ `true`の場合、サーバに対し`feature`で指定されたAmendmentに反対票を投じるように指示します。`false`の場合、サーバに対しAmendmentに賛成票を投じるように指示します。コマンドラインでは、`true`や`false`の代わりに`accept`または`reject`を使用します。サーバのソースコードで _廃止_ とマークされているAmendmentには、賛成票を投じることはできません。{% badge href="https://github.com/XRPLF/rippled/releases/tag/1.11.0" %}更新: rippled 1.11.0{% /badge %} |
 
 {% admonition type="info" name="注記" %}サーバが新しいAmendmentの適用方法を現在認識していない場合でも、`feature`フィールドにAmendment IDを指定すれば、新しいAmendmentに賛成票を投じるようにサーバを設定できます。たとえば、Amendmentをサポートする新しい`xrpld`バージョンに _確実に_ アップグレードする予定がある場合などにこのように設定できます。{% /admonition %}
 
@@ -186,14 +186,14 @@ Connecting to 127.0.0.1:5005
 
 | `Field`     | 型    | 説明                                          |
 |:------------|:--------|:-----------------------------------------------------|
-| `enabled`   | ブール値 | 最新レジャーでこのAmendmentが現在有効であるかどうか。 |
+| `enabled`   | ブール値 | 最新レジャーでこのAmendmentが現在有効であるかどうか。ただし、値が`false`であっても、その機能が利用できないとは限りません。Amendmentが[削除](../../../../concepts/networks-and-servers/amendments.md#amendmentの削除)されている場合、プロトコルは常にAmendment適用後のコードに従います。この例外は主に、Amendmentの削除後に開始されたテストネットワークに当てはまります。どのAmendmentが削除されているかについては、[既知のAmendment](/resources/known-amendments.md)を参照してください。 |
 | `name`      | 文字列  | （省略される場合があります）このAmendmentの人間が読める形式の名前（判明している場合）。 |
 | `supported` | ブール値 | サーバがこのAmendmentの適用方法を認識しているかどうか。このフィールドが`false`（サーバがこのAmendmentの適用方法を認識していない）に設定されており、`enabled`が`true`（このAmendmentが最新レジャーで有効である）に設定されている場合、このAmendmentによりサーバが[Amendmentブロック](../../../../concepts/networks-and-servers/amendments.md#amendment-blocked)される可能性があります。 |
-| `vetoed`    | ブール値 または 文字列 | ほとんどのAmendmentにおいて、これはサーバがこのAmendmentに反対票を投じるように指示されているかどうかを示すブール値です。コードの中で廃止とマークされているAmendmentについては、代わりに`Obsolete`という文字列を指定します。{% badge href="https://github.com/XRPLF/rippled/releases/tag/1.11.0" %}更新: rippled 1.11.0{% /badge %}. |
+| `vetoed`    | ブール値 または 文字列 | ほとんどのAmendmentにおいて、これはサーバがこのAmendmentに反対票を投じるように指示されているかどうかを示すブール値です。コードの中で廃止とマークされているAmendmentについては、代わりに`Obsolete`という文字列を指定します。{% badge href="https://github.com/XRPLF/rippled/releases/tag/1.11.0" %}更新: rippled 1.11.0{% /badge %} |
 
 {% admonition type="warning" name="注意" %}Amendmentの`name`は、Amendmentの内容を厳密に示すものではありません。サーバ間でこの名前が一意であることや整合性があることは保証されません。{% /admonition %}
 
-### 考えられるエラー
+### 想定されるエラー
 
 * [汎用エラータイプ][]のすべて。
 * `badFeature` - 指定されている`feature`のフォーマットが正しくないか、サーバがその名前のAmendmentを認識していません。

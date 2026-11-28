@@ -59,13 +59,13 @@ xrpld channel_authorize s██████████████████�
 
 | フィールド | 型 | 説明        |
 |-------|------|-------------|
-| `channel_id` | 文字列 | Payment Channelが使用する一意のID。
+| `channel_id` | 文字列 | 使用するPayment Channelの一意のID。 |
 | `secret` | 文字列 | _（省略可）_ クレームへの署名に使用する秘密鍵。これは、Channelに指定されている公開鍵と同じキーペアである必要があります。`seed`、`seed_hex`、`passphrase`とは併用できません。{% badge href="https://github.com/XRPLF/rippled/releases/tag/1.4.0" %}更新: rippled 1.4.0{% /badge %} |
 | `seed` | 文字列 | _（省略可）_ クレームへの署名に使用する秘密シード。これは、Channelに指定されている公開鍵と同じキーペアである必要があります。XRP Ledgerの[base58][]フォーマットにする必要があります。指定する場合は、`key_type`も指定する必要があります。`secret`、`seed_hex`、`passphrase`とは併用できません。 |
 | `seed_hex` | 文字列 | _（省略可）_ クレームへの署名に使用する秘密シード。これは、Channelに指定されている公開鍵と同じキーペアである必要があります。16進フォーマットにする必要があります。指定する場合は、`key_type`も指定する必要があります。`secret`、`seed`、`passphrase`とは併用できません。 |
 | `passphrase` | 文字列 | _（省略可）_ クレームへの署名に使用する文字列パスフレーズ。これは、Channelに指定されている公開鍵と同じキーペアである必要があります。[このパスフレーズから導出した鍵](../../../../concepts/accounts/cryptographic-keys.md#鍵導出)は、チャネルで指定された公開鍵と一致する必要があります。指定する場合は、`key_type`も指定する必要があります。`secret`、`seed`、`seed_hex`とは併用できません。 |
 | `key_type` | 文字列 | _（省略可）_ 指定された暗号化キーペアの[署名アルゴリズム](../../../../concepts/accounts/cryptographic-keys.md#署名アルゴリズム)。有効な種類は、`secp256k1`または`ed25519`です。デフォルトは`secp256k1`です。 |
-| `amount` | 文字列 | 承認するXRPの累積額（drop数）送金先がこのChannelからすでに受領しているXRPの額がこのフィールドの額よりも少ない場合、このメソッドで作成される署名を使用して差額を清算できます。 |
+| `amount` | 文字列 | 承認するXRPの累積額（drop数）。送金先がこのChannelからすでに受領しているXRPの額がこのフィールドの額よりも少ない場合、このメソッドで作成される署名を使用して差額を清算できます。 |
 
 リクエストでは、`secret`、`seed`、`seed_hex`、`passphrase`のうち1つだけを指定する**必要があります**。
 

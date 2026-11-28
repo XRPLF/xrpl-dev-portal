@@ -56,9 +56,9 @@ xrpld channel_verify aB44YfzW24VDEJQ2UuLPV2PvqcPCSoLnL7y5M1EzhdW4LnK5xMS3 5DB01B
 
 | フィールド | 型 | 説明 |
 |-------|------|-------------|
-| `amount` | 文字列 | 指定された`signature`で承認する[XRP、drop単位][]の額。 |
+| `amount` | 文字列 | 指定された`signature`で承認するXRPの額（[XRPのdrop数][]）。 |
 | `channel_id` | 文字列 | XRPを供給するChannelのChannel ID。これは64文字の16進文字列です。 |
-| `public_key` | 文字列 | Channelの公開鍵と、署名の作成に使用されたキーペア（16進数またはXRP Ledgerの[base58][]形式）。[更新: rippled 0.90.0][新規: rippled 0.90.0] |
+| `public_key` | 文字列 | Channelの公開鍵と、署名の作成に使用されたキーペア（16進数またはXRP Ledgerの[base58][]形式）。{% badge href="https://github.com/XRPLF/rippled/releases/tag/0.90.0" %}更新: rippled 0.90.0{% /badge %} |
 | `signature` | 文字列 | 検証する署名（16進数）。 |
 
 ## レスポンスのフォーマット
@@ -120,6 +120,6 @@ xrpld channel_verify aB44YfzW24VDEJQ2UuLPV2PvqcPCSoLnL7y5M1EzhdW4LnK5xMS3 5DB01B
 * `invalidParams` - 1つ以上のフィールドの指定が正しくないか、1つ以上の必須フィールドが指定されていません。
 * `publicMalformed` - リクエストの`public_key`フィールドが、正しいフォーマットの有効な公開鍵ではありません。公開鍵は33バイトであり、base58または16進数で表記されている必要があります。[アカウントの公開鍵のbase58表現は文字`a`から始まります](../../../protocol/data-types/base58-encodings.md)。16進表現は66文字です。
 * `channelMalformed` - リクエストの`channel_id`フィールドが有効なChannel IDではありません。Channel IDは256ビット（64文字）の16進文字列である必要があります。
-* `channelAmtMalformed` - リクエストの`amount`に指定された値が、有効な[XRPの額][XRP、drop単位]ではありませんでした。
+* `channelAmtMalformed` - リクエストの`amount`に指定された値が、有効な[XRPの額][XRPのdrop数]ではありませんでした。
 
 {% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}
