@@ -9,91 +9,76 @@ labels:
 ---
 # Rippling
 
-XRP Ledgerでは、「Rippling」とは同一通貨の[トラストライン](index.md)を有する複数の接続当事者間での非可分なネット決済のプロセスを指しています。Ripplingはトークンの基幹的なプロセスです。Ripplingを利用すれば、同一イシュアーを信頼するユーザは、そのイシュアーを受動的な仲介機関として発行済み残高を相互に送金できるようになります。Ripplingは、受動的かつ双方向の[通貨取引オーダー](../decentralized-exchange/offers.md)のようなもので、制限がなく、通貨コードが同一でイシュアーが異なる2つの通貨間の為替レートは1:1です。
+Ripplingとは、[トラストライントークン](./trust-line-tokens.md)の支払いで発生する資金の _間接的な移動_ です（発行アカウントが別のアカウントと直接トークンをやり取りする場合を除きます）。これには、ある保有者が同じトークンの別の保有者にトークンを送る場合も含まれます。
 
-Ripplingは、支払[パス](paths.md)でのみ発生します。[XRP間の直接決済](../../payment-types/direct-xrp-payments.md)にはRipplingは使用されません。
+Ripplingでは、通貨コードが同じであれば、発行者が異なるトークン同士でも自動的に交換できます。これにより、アカウント間のより長く複雑な支払いが可能になります。
 
-発行アカウント以外のアカウントでは、Ripplingが望ましくない場合があります。Ripplingを使えば、他のユーザが同一通貨のイシュアー間で債権債務を移動できるようになるためです。このため、アカウントの[DefaultRippleフラグ](#defaultrippleフラグ)を有効にして、アカウントがデフォルトでRipplingを有効にしない限り、デフォルトでは[NoRippleフラグ](#norippleフラグ)により着信トラストラインでのRipplingが無効になっています。
-
-{% admonition type="warning" name="注意" %}別のアドレスへのトラストラインを作成する場合、そのトラストラインのあなたの側でRipplingをブロックするには、tfSetNoRippleフラグを明示的に有効にする必要があります。{% /admonition %}
+[MPT](./multi-purpose-tokens.md)は、意図的にRipplingをサポートしていません。
 
 ## Ripplingの例
 
-「Rippling」は、支払いを行うために複数のトラストラインが調整されたときに発生します。たとえば、AliceがCharlieにお金を借りており、さらにAliceはBobからもお金を借りている場合、XRP Ledgerではトラストラインは次のようになります:
+発行者は、トラストラインを通じて保有者に通貨を配布します。保有者が特定のトークンについて発行者へのトラストラインを作成すると、その保有者はそのトークンによる支払いを受け入れることになります。たとえば次の図では、保有者Aと保有者Bの両方が、USDトークンの発行者へのトラストラインを持っています。
 
-[{% inline-svg file="/docs/img/noripple-01.svg" /%}](/docs/img/noripple-01.svg "Charlie --($10)-- Alice -- ($20) -- Bob")
+[![2人の保有者とのトラストラインを持つ発行者。](/docs/img/cpt-rippling1.png "2人の保有者とのトラストラインを持つ発行者。")](/docs/img/cpt-rippling1.png)
 
-BobがCharlieに$3を支払いたい場合、BobはAliceに対して「Alice、君に貸しているお金の中から$3をCharlieに支払ってくれ。」と言えます。AliceはBobに借りているお金の一部をCharlieに送金します。最終的にはトラストラインは次のようになります。
+発行者は、保有者Aに50 USDを、保有者Bに10 USDを送金します。これらのトラストラインにおける発行者の正味残高は-60 USDになります。
 
-[{% inline-svg file="/docs/img/noripple-02.svg" /%}](/docs/img/noripple-02.svg "Charlie --($13)-- Alice --($17)-- Bob")
+[![発行者が保有者にトークンを送る。](/docs/img/cpt-rippling2.png "発行者が保有者にトークンを送る。")](/docs/img/cpt-rippling2.png)
 
-2つのアドレスが、アドレス間のトラストライン上の残高を調整することで相互に支払うこのプロセスを「Rippling」と呼びます。これはXRP Ledgerの有用で重要な機能です。Ripplingは、同一の[通貨コード][]を使用するトラストラインによってアドレスがリンクされている場合に起こります。イシュアーが同一でなくてもかまいません。実際、大規模なチェーンでは常にイシュアーが変更されます。
+両方のアカウントがUSDトークンによる支払いを受け入れるため、保有者Aは保有者Bに20 USDを支払うことができます。これは1つのトランザクションのように見えますが、実際には2つのステップで行われます。保有者Aの残高は20 USD減り、保有者Bの残高は20 USD増えます。しかし、その裏では、発行者へのトラストラインの保有者A側が20 USD減ります。トラストラインの発行者側は20 USD増え、発行者の正味残高は-40 USDになります。
 
-## NoRippleフラグ
+[![保有者Aが発行者を通じて通貨を送る。](/docs/img/cpt-rippling3.png "保有者Aが発行者を通じて通貨を送る。")](/docs/img/cpt-rippling3.png)
 
-発行アカウント以外のアカウント、特に手数料やポリシーが異なる複数のイシュアーの残高を保有している流動性プロバイダーは、一般的に残高がRipplingされることを望みません。
+次に、保有者Bへのトラストラインの発行者側が20 USD減り、保有者Bのアカウントが20 USD増えます。
 
-「NoRipple」フラグは、トラストライン上の設定です。2つのトラストラインの両方で、同じアドレスによってNoRippleが有効に設定されている場合、第三者からの支払を、これらのトラストラインでこのアドレスを通じて「Rippling」することはできません。これにより、同一通貨の複数イシュアー間で流動性プロバイダーの残高が予期せず移動されるのを防ぎます。
+[![保有者Bが発行者を通じてトークンを受け取る。](/docs/img/cpt-rippling4.png "保有者Bが発行者を通じてトークンを受け取る。")](/docs/img/cpt-rippling4.png)
 
-アカウントは1つのトラストラインでNoRippleを無効にできます。これにより、そのトラストラインを含む任意のペアを通じてのRipplingが可能になります。アカウントにてデフォルトでRipplingを有効にするには、[DefaultRippleフラグ](#defaultrippleフラグ)を有効にします。
+トークンは発行者を通じて移動しますが、最終的に発行者の残高は変わりません。このトークンの流れを _Rippling_ と呼びます。保有者同士がトークンを送金できるように、発行アカウントはRipplingを許可する必要があります。
 
-たとえば、Emilyが2つの異なる金融機関から発行されたお金を保有しているとします。
+XRP Ledgerがトークンを送金するためのパスを見つける際、Ripplingには複数のアカウントが関わることがあります。たとえば、互いにトラストラインを持つ2つの発行者アカウントの間をトークンが流れることがあります。
 
-[{% inline-svg file="/docs/img/noripple-03.svg" /%}](/docs/img/noripple-03.svg "Charlie --（$10）-- 金融機関A --（$1）-- Emily --（$100）-- 金融機関B --（$2）-- Daniel")
+[![保有者Aが、発行者Aと発行者Bを通じて保有者Bにトークンを送る。](/docs/img/cpt-rippling5.png "保有者Aが、発行者Aと発行者Bを通じて保有者Bにトークンを送る。")](/docs/img/cpt-rippling5.png)
 
-CharlieはDanielに支払うため、Emilyのアドレスを通じてRipplingします。たとえば、CharlieがDanielに$10を支払うとします:
+また、トークンが仲介役のエクスチェンジャーアカウントを経由して保有者に届くこともあります。
 
-[{% inline-svg file="/docs/img/noripple-04.svg" /%}](/docs/img/noripple-04.svg "Charlie --（$0）-- 金融機関A --（$11）-- Emily --（$90）-- 金融機関B --（$12）-- Daniel")
+[![保有者Aが、発行者A、発行者B、エクスチェンジャーXを通じて保有者Bにトークンを送る。](/docs/img/cpt-rippling6.png "保有者Aが、発行者A、発行者B、エクスチェンジャーXを通じて保有者Bにトークンを送る。")](/docs/img/cpt-rippling6.png)
 
-この場合、CharlieやDanielと面識のないEmilyは驚く可能性があります。さらに、金融機関Aが金融機関Bよりも高い出金手数料をEmilyに請求した場合、Emilyがコストを負担することになる可能性があります。NoRippleフラグはこの状況を回避するためのフラグです。Emilyが両方のトラストラインでNoRippleフラグを設定していれば、この2つのトラストラインを使用しているEmilyのアドレスを通じて、支払がRipplingされることはありません。
-
-例:
-
-[{% inline-svg file="/docs/img/noripple-05.svg" /%}](/docs/img/noripple-05.svg "Charlie --（$10）-- 金融機関A --（$1、NoRipple）-- Emily --（$100、NoRipple）-- 金融機関B --（$2）-- Daniel")
-
-このように、CharlieがEmilyのアドレスを通じてRipplingし、Danielに支払うという上記のシナリオは、不可能になります。
-
-### 詳細
-
-NoRippleフラグにより特定のパスが無効になり、無効になったパスは支払に使用できなくなります。パスが無効であると見なされるのは、パスが、あるアドレスに対してNoRippleが有効となっているトラストラインを通じて、そのアドレスノードに入り**かつ**そのノードから出た場合に限られます。
-
-[{% inline-svg file="/docs/img/noripple-06.ja.svg" /%}](/docs/img/noripple-06.ja.svg "処理を行うためには同一アドレスによって両方のトラストラインにNoRippleが設定されている必要があることを示す図")
-
+流動性プロバイダーや通常の保有者など、その他のアカウントはRipplingを許可すべきではありません。Ripplingを許可すると、残高が予期せず移動したり、トークンがより高いレートで割り当てられたり、保有者が関与していないトランザクションで価値を失ったりする悪用につながる可能性があります。
 
 ## DefaultRippleフラグ
 
-DefaultRippleフラグは、デフォルトで着信トラストラインでのRipplingを有効にするアカウント設定です。ゲートウェイやその他の通貨イシュアーは、顧客が通貨を相互に送金できるようにするには、このフラグを有効にする必要があります。
+DefaultRippleフラグは、すべての受信トラストラインでRipplingを有効にするアカウントレベルの設定です。DefaultRippleフラグのデフォルトはfalseです。顧客同士がトークンを送金できるようにするには、発行者がこのフラグを有効にする必要があります。
 
-アカウントのDefaultRipple設定は、他者があなたに対してオープンしたトラストラインにのみ影響し、あなたが作成するトラストラインには影響しません。アカウントのDefaultRipple設定を変更する場合、変更前に作成したトラストラインでは既存のNoRipple設定が維持されます。アドレスの新しいデフォルトに合わせてトラストラインのNoRipple設定を変更するには、[TrustSetトランザクション][]を使用します。
+DefaultRipple設定は、あなたが作成するトラストラインには影響せず、他者があなたのアカウントに対して開いたトラストラインにのみ影響します。設定を変更しても、変更前に作成されたトラストラインでは既存のNoRipple設定が維持されます。トラストラインのNoRipple設定をアカウントの新しいデフォルトに合わせるには、[TrustSetトランザクション][]を使用します。
 
+## NoRippleフラグ
 
-## NoRippleを使用する
-<!--{# TODO: move these things into their own tutorials #}-->
+Ripplingを許可したくないアカウントは、NoRippleフラグを有効にできます。2つのトラストラインでNoRippleフラグを有効にすると、他のアカウントは、その2つのトラストラインの組み合わせを使ってあなたのアカウントを通じて支払いをRipplingさせることができなくなります。ただし、NoRippleフラグが有効になっていない他のトラストラインがある場合は、関係するトラストラインの _いずれか_ でNoRippleが有効になっていなければ、支払いがあなたのアカウントを通じてRipplingされることがあります。
 
-### NoRippleを有効/無効にする
+### NoRippleを使用する
 
-トラストライン上のNoRippleフラグは、トラストライン上のアドレスの残高がプラスまたはゼロの場合に限り、有効にできます。これにより、この機能を悪用してトラストラインの残高に示される債務を不履行にすることができなくなります。（ただし、アドレスを放棄すれば債務を不履行にできます。）
+NoRippleフラグは、トラストライン上のアドレスの残高がプラスまたはゼロの場合にのみ有効にできます。これは、この機能を悪用して、トラストラインの残高が表す債務を消せないようにするためです。
 
-[`xrpld` API](../../../references/http-websocket-apis/index.md)でNoRippleフラグを有効にするには、`tfSetNoRipple`フラグを設定した[TrustSetトランザクション][]を送信します。NoRippleを無効にする（Ripplingを有効にする）には、`tfClearNoRipple`フラグを使用します。
-
+NoRippleフラグを有効にするには、`tfSetNoRipple`フラグを指定した[TrustSetトランザクション][]を送信します。NoRippleフラグを無効にするには、`tfClearNoRipple`フラグを指定したTrustSetトランザクションを送信します。
 
 ### NoRippleステータスの確認
 
-相互に信頼し合っている2つのアカウントの場合、NoRippleフラグはアカウントごとに管理されます。
+相互に信頼し合う2つのアカウントの場合、NoRippleフラグはアカウントごとに個別に管理されます。
 
-[`xrpld` API](../../../references/http-websocket-apis/index.md)でアドレスに関連付けられているトラストラインを確認するには、[account_linesメソッド][]を使用します。各トラストラインの`no_ripple`フィールドには、現在のアドレスがそのトラストラインに対してNoRippleフラグを有効にしているか否かが表示され、`no_ripple_peer`フィールドには、取引相手がNoRippleフラグを有効にしているか否かが表示されます。
-
+HTTP / WebSocket APIまたはお好みのクライアントライブラリで、`account_lines`メソッドを使ってトラストラインを確認します。各トラストラインの`no_ripple`フィールドは、現在のアドレスがそのトラストラインでNoRippleフラグを有効にしているかどうかを示します。`no_ripple_peer`フィールドは、取引相手がNoRippleフラグを有効にしているかどうかを示します。
 
 ## 関連項目
 
 - **コンセプト:**
-  - [パス](paths.md)
+    - [パス](paths.md)
+- **ユースケース:**
+    - [ステーブルコインの発行者](../../../use-cases/tokenization/stablecoin-issuer.md)
 - **リファレンス:**
-  - [account_linesメソッド][]
-  - [account_infoメソッド][]
-  - [AccountSetトランザクション][]
-  - [TrustSetトランザクション][]
-  - [AccountRootのフラグ](../../../references/protocol/ledger-data/ledger-entry-types/accountroot.md#accountrootのフラグ)
-  - [RippleState（トラストライン）のフラグ](../../../references/protocol/ledger-data/ledger-entry-types/ripplestate.md#ripplestateのフラグ)
+    - [account_linesメソッド][]
+    - [account_infoメソッド][]
+    - [AccountSetトランザクション][]
+    - [TrustSetトランザクション][]
+    - [AccountRootのフラグ](../../../references/protocol/ledger-data/ledger-entry-types/accountroot.md#accountrootのフラグ)
+    - [RippleState（トラストライン）のフラグ](../../../references/protocol/ledger-data/ledger-entry-types/ripplestate.md#ripplestateのフラグ)
 
 {% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}
