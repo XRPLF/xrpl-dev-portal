@@ -57,6 +57,7 @@ The request contains the following parameters:
 | `ledger_hash`     | String                     | No        | A 32-byte hex string for the ledger version to use. You must specify either `ledger_index` or ledger_hash. See [Specifying Ledgers][]. |
 | `marker`          | [Marker][]                 | No        | Used to continue your query where it left off in paginating. |
 | `limit`           | Number (positive integer)  | No        | Specify a limit to the number of MPTs returned. |
+| `accounts`        | Array of Strings           | No        | Return only the holdings of specific accounts, from 1 to 100 [addresses][Address]. Results are not paginated, so `limit` has no effect and you cannot use this field with `marker`. {% badge href="https://github.com/XRPLF/clio/releases/tag/2.8.1" %}New in: Clio v2.8.1{% /badge %} |
 
 ## Response Format
 
@@ -140,12 +141,19 @@ The response follows the [standard format][], with the result containing the fol
 
 An `MPToken` object has the following parameters:
 
-| Field                  | Type              | Description |
-|:-----------------------|:------------------|:------------------------------------------|
-| `account`              | String            | The account address of the holder who owns the `MPToken`. |
-| `flags`                | Number            | The flags assigned to the`MPToken` object. |
-| `mpt_amount`           | [String Number][] | Specifies a positive amount of tokens currently held by the owner. |
-| `mptoken_index`        | String            | Key of the `MPToken` object. |
+| Field                          | Type              | Description                               |
+|:-------------------------------|:------------------|:------------------------------------------|
+| `account`                      | String            | The account address of the holder who owns the `MPToken`. |
+| `flags`                         | Number            | The flags assigned to the`MPToken` object. |
+| `mpt_amount`                   | [String Number][] | Specifies a positive amount of tokens currently held by the owner. |
+| `mptoken_index`                | String            | Key of the `MPToken` object. |
+| `locked_amount`                | [String Number][] | _(May be omitted)_ The amount of tokens currently locked up in escrow. |
+| `confidential_balance_inbox`    | String            | _(May be omitted)_ The encrypted inbox balance that receives incoming confidential transfers. |
+| `confidential_balance_spending` | String            | _(May be omitted)_ The encrypted spending balance used to generate proofs for outgoing transactions. |
+| `confidential_balance_version`  | Number            | _(May be omitted)_ A version number that increments each time the spending balance changes. |
+| `issuer_encrypted_balance`     | String            | _(May be omitted)_ The holder's total confidential balance encrypted for the issuer to audit supply. |
+| `auditor_encrypted_balance`    | String            | _(May be omitted)_ The holder's total confidential balance encrypted under the auditor's key for independent auditing. Only present if an auditor is configured. |
+| `holder_encryption_key`        | String            | _(May be omitted)_ The holder's El Gamal _public_ key for confidential balances. |
 
 ## Possible Errors
 
